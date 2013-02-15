@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using EasyHttp.Http;
 using System.Dynamic;
@@ -33,8 +34,13 @@ namespace Auth0.Net
             payload.client_secret = this.clientSecret;
             payload.grant_type = "client_credentials";
 
-            var result = http.Post("https://" + this.domain + "/oauth/token", payload , HttpContentTypes.ApplicationXWwwFormUrlEncoded);
+            HttpResponse result = http.Post("https://" + this.domain + "/oauth/token", payload , HttpContentTypes.ApplicationXWwwFormUrlEncoded);
             
+            if (result.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                throw new ArgumentException("invalid clientid, secret or domain");
+            }
+
             return result.DynamicBody.access_token;
         }
 
@@ -68,6 +74,28 @@ namespace Auth0.Net
         public IEnumerable<Auth0Connection> GetEnterpriseConnections()
         {
             return GetConnectionsInternal(onlyEnterprise: true);
+        }
+
+        public Auth0Connection CreateConnection(Auth0Connection ticket)
+        {
+            var accessToken = GetAccessToken();
+            var http = new HttpClient();
+            http.Request.Accept = HttpContentTypes.ApplicationJson;
+
+            var result = http.Post(apiUrl + "/connections", 
+                ticket, 
+                HttpContentTypes.ApplicationJson, 
+                new { access_token = accessToken });
+
+            return result.StaticBody<Auth0Connection>();
+        }
+
+        public void DeleteConnection(string connectionName)
+        {
+            var accessToken = GetAccessToken();
+            var http = new HttpClient();
+            http.Delete(apiUrl + "/connections/" + connectionName,
+                new { access_token = accessToken });
         }
     }
 }
