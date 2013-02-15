@@ -1,12 +1,15 @@
-﻿using JsonFx.Json;
+﻿using System;
+using JsonFx.Json;
 
 namespace Auth0
 {
     public class Connection
     {
-        public Connection(string name, string strategy, string tenantDomain)
+        public Connection(string strategy, string tenantDomain, string name = null)
         {
-            Name = name;
+            if (strategy == null) throw new ArgumentNullException("strategy");
+            if (tenantDomain == null) throw new ArgumentNullException("tenantDomain");
+            Name = string.IsNullOrEmpty(name) ? name : tenantDomain;
             Strategy = strategy;
             Options = new ConnectionOptions { TenantDomain = tenantDomain };
         }
