@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessToken.cs" />
     <Compile Include="Auth0Connection.cs" />
     <Compile Include="Auth0Client.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

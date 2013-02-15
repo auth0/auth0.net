@@ -12,6 +12,7 @@ namespace Auth0.Net
         private readonly string clientSecret;
         private readonly string domain;
         private readonly string apiUrl;
+        private AccessToken currentToken;
 
         public Auth0Client(string clientID, string clientSecret, string domain)
         {
@@ -21,8 +22,14 @@ namespace Auth0.Net
             this.apiUrl = "https://" + this.domain + "/api";
         }
 
+
         private string GetAccessToken()
         {
+            if (currentToken != null && currentToken.RetrievedIn + TimeSpan.FromHours(10) > DateTime.Now)
+            {
+                return currentToken.Token;
+            }
+
             var http = new HttpClient();
             
             http.Request.Accept = HttpContentTypes.ApplicationJson;
@@ -39,7 +46,9 @@ namespace Auth0.Net
                 throw new ArgumentException("invalid clientid, secret or domain");
             }
 
-            return result.DynamicBody.access_token;
+            var tk = result.DynamicBody.access_token;
+            this.currentToken = new AccessToken(DateTime.Now, tk);
+            return this.currentToken.Token;
         }
 
         private IEnumerable<Auth0Connection> GetConnectionsInternal(bool onlySocials = false, bool onlyEnterprise = false)

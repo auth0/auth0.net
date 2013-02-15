@@ -14,7 +14,8 @@ namespace Auth0.Net_tests
     public class ConnectionTests
     {
         private Auth0Client auth0Client;
-        [SetUp]
+
+        [TestFixtureSetUp]
         public void setup() 
         {
             auth0Client = new Auth0Client(ConfigurationManager.AppSettings["AUTH0_CLIENT_ID"],
