@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
 using EasyHttp.Http;
 using System.Dynamic;
 
@@ -10,10 +8,10 @@ namespace Auth0.Net
 {
     public class Auth0Client
     {
-        private string clientID;
-        private string clientSecret;
-        private string domain;
-        private string apiUrl;
+        private readonly string clientID;
+        private readonly string clientSecret;
+        private readonly string domain;
+        private readonly string apiUrl;
 
         public Auth0Client(string clientID, string clientSecret, string domain)
         {
@@ -30,11 +28,11 @@ namespace Auth0.Net
             http.Request.Accept = HttpContentTypes.ApplicationJson;
 
             dynamic payload = new ExpandoObject();
-            payload.client_id = this.clientID;
-            payload.client_secret = this.clientSecret;
+            payload.client_id = clientID;
+            payload.client_secret = clientSecret;
             payload.grant_type = "client_credentials";
 
-            HttpResponse result = http.Post("https://" + this.domain + "/oauth/token", payload , HttpContentTypes.ApplicationXWwwFormUrlEncoded);
+            var result = http.Post("https://" + domain + "/oauth/token", payload , HttpContentTypes.ApplicationXWwwFormUrlEncoded);
             
             if (result.StatusCode == HttpStatusCode.Unauthorized)
             {
@@ -50,7 +48,7 @@ namespace Auth0.Net
             var http = new HttpClient();
             http.Request.Accept = HttpContentTypes.ApplicationJson;
 
-            var result = http.Get(this.apiUrl + "/connections", new
+            var result = http.Get(apiUrl + "/connections", new
             {
                 access_token = accessToken,
                 only_socials = onlySocials,
