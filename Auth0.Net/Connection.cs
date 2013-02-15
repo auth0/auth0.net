@@ -1,22 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using JsonFx.Json;
-using JsonFx.Serialization;
+﻿using JsonFx.Json;
 
-namespace Auth0.Net
+namespace Auth0
 {
-    public class Auth0Connection
+    public class Connection
     {
-        public Auth0Connection(string name, string strategy, string tenantDomain)
+        public Connection(string name, string strategy, string tenantDomain)
         {
             Name = name;
             Strategy = strategy;
             Options = new ConnectionOptions { TenantDomain = tenantDomain };
         }
 
-        public Auth0Connection()
+        public Connection()
         {
             Options = new ConnectionOptions();
         }

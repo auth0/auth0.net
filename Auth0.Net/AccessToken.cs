@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Auth0.Net
+namespace Auth0
 {
     class AccessToken
     {

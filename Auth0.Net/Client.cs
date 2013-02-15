@@ -4,9 +4,9 @@ using System.Net;
 using EasyHttp.Http;
 using System.Dynamic;
 
-namespace Auth0.Net
+namespace Auth0
 {
-    public class Auth0Client
+    public class Client
     {
         private readonly string clientID;
         private readonly string clientSecret;
@@ -14,7 +14,7 @@ namespace Auth0.Net
         private readonly string apiUrl;
         private AccessToken currentToken;
 
-        public Auth0Client(string clientID, string clientSecret, string domain)
+        public Client(string clientID, string clientSecret, string domain)
         {
             this.clientID = clientID;
             this.clientSecret = clientSecret;
@@ -51,7 +51,7 @@ namespace Auth0.Net
             return this.currentToken.Token;
         }
 
-        private IEnumerable<Auth0Connection> GetConnectionsInternal(bool onlySocials = false, bool onlyEnterprise = false)
+        private IEnumerable<Connection> GetConnectionsInternal(bool onlySocials = false, bool onlyEnterprise = false)
         {
             var accessToken = GetAccessToken();
             var http = new HttpClient();
@@ -64,26 +64,26 @@ namespace Auth0.Net
                 only_enterprise = onlyEnterprise
             });
 
-            return result.StaticBody<List<Auth0Connection>>();
+            return result.StaticBody<List<Connection>>();
         }
 
 
-        public IEnumerable<Auth0Connection> GetConnections()
+        public IEnumerable<Connection> GetConnections()
         {
             return GetConnectionsInternal();
         }
 
-        public IEnumerable<Auth0Connection> GetSocialConnections()
+        public IEnumerable<Connection> GetSocialConnections()
         {
             return GetConnectionsInternal(onlySocials: true);
         }
 
-        public IEnumerable<Auth0Connection> GetEnterpriseConnections()
+        public IEnumerable<Connection> GetEnterpriseConnections()
         {
             return GetConnectionsInternal(onlyEnterprise: true);
         }
 
-        public Auth0Connection CreateConnection(Auth0Connection ticket)
+        public Connection CreateConnection(Connection ticket)
         {
             var accessToken = GetAccessToken();
             var http = new HttpClient();
@@ -94,7 +94,7 @@ namespace Auth0.Net
                 HttpContentTypes.ApplicationJson, 
                 new { access_token = accessToken });
 
-            return result.StaticBody<Auth0Connection>();
+            return result.StaticBody<Connection>();
         }
 
         public void DeleteConnection(string connectionName)
@@ -103,6 +103,35 @@ namespace Auth0.Net
             var http = new HttpClient();
             http.Delete(apiUrl + "/connections/" + connectionName,
                 new { access_token = accessToken });
+        }
+
+
+        public IEnumerable<User> GetUsersByConnection(string connectionName)
+        {
+            var accessToken = GetAccessToken();
+            var http = new HttpClient();
+            http.Request.Accept = HttpContentTypes.ApplicationJson;
+
+            var result = http.Get(apiUrl + "/connections/" + connectionName + "/users", new
+            {
+                access_token = accessToken
+            });
+
+            return result.StaticBody<List<User>>();
+        }
+
+        public IEnumerable<User> GetSocialUsers()
+        {
+            var accessToken = GetAccessToken();
+            var http = new HttpClient();
+            http.Request.Accept = HttpContentTypes.ApplicationJson;
+
+            var result = http.Get(apiUrl + "/socialconnections/users", new
+            {
+                access_token = accessToken
+            });
+
+            return result.StaticBody<List<User>>();
         }
     }
 }

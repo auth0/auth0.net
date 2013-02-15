@@ -8,8 +8,8 @@
     <ProjectGuid>{EBDB4E43-153E-4CD1-B601-42BAF186F401}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Auth0.Net</RootNamespace>
-    <AssemblyName>Auth0.Net</AssemblyName>
+    <RootNamespace>Auth0</RootNamespace>
+    <AssemblyName>Auth0</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -47,8 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessToken.cs" />
-    <Compile Include="Auth0Connection.cs" />
-    <Compile Include="Auth0Client.cs" />
+    <Compile Include="Connection.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
