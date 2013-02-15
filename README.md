@@ -10,9 +10,9 @@ Initialize your client class with the credentials in the [settings section](http
 
 ~~~csharp
 var client = new Auth0.Client(
-  clientID:     'your-client-id',
-  clientSecret: 'your-client-secret'
-  domain:       'yourdomain.auth0.com'
+  clientID:     "your-client-id",
+  clientSecret: "your-client-secret",
+  domain:       "yourdomain.auth0.com"
 );
 ~~~
 
@@ -47,7 +47,7 @@ This method returns a list of users of the connection.
 It will search the users on the directory of the connection. Suppose it is a **Windows Azure Active Directory** connection it will fetch all the users from the directory. If the connection doesn't have a directory or it is a Social connection like **Google OAuth 2** it will return all the users that have logged in to your application at least once.
 
 ~~~csharp
-var users = client.GetUsers('contoso.com'});
+var users = client.GetUsers("contoso.com");
 ~~~
 
 The result is an IEnumerable<Auth0.User>.
