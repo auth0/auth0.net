@@ -49,6 +49,8 @@
     <Compile Include="AccessToken.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="Client.cs" />
+    <Compile Include="CreateConnectionResult.cs" />
+    <Compile Include="ProvisioningTicket.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
