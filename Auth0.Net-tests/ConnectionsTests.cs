@@ -57,5 +57,18 @@ namespace Auth0.Net_tests
             connection.ProvisioningTicketUrl.Should().Not.Be.Null();
         }
 
+        [Test]
+        public void when_creating_a_connection_with_invalid_domain_throw_exception()
+        {
+            var ticket = new Connection(
+                    name: "testconn",
+                    strategy: "google-apps",
+                    tenantDomain: "desopilante.com"
+                );
+
+            Assert.Throws<ArgumentException>(() => client.CreateConnection(ticket)).Message
+                .Should().Be.EqualTo("desopilante.com is not a valid google apps domain");
+
+        }
     }
 }

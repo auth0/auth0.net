@@ -83,6 +83,34 @@ namespace Auth0
             return GetConnectionsInternal(onlyEnterprise: true);
         }
 
+        public CreateConnectionResult CreateConnection(ProvisioningTicket provisioningTicket)
+        {
+            var connectionTicket = new Connection(
+                provisioningTicket.strategy, 
+                provisioningTicket.options["tenant_domain"]);
+            
+            if (!string.IsNullOrEmpty(provisioningTicket.options["adfs_server"]))
+            {
+                connectionTicket.Options.AdfsServer = provisioningTicket.options["adfs_server"];
+            }
+
+            try
+            {
+                var connection = this.CreateConnection(connectionTicket);
+                return new CreateConnectionResult() {
+                    worked = true,
+                    provisioning_ticket_url = connection.ProvisioningTicketUrl
+                };
+            }
+            catch (Exception ex)
+            {
+                return new CreateConnectionResult() {
+                    worked = false,
+                    error = ex.Message
+                };
+            }
+        }
+
         public Connection CreateConnection(Connection ticket)
         {
             var accessToken = GetAccessToken();
@@ -93,7 +121,10 @@ namespace Auth0
                 ticket, 
                 HttpContentTypes.ApplicationJson, 
                 new { access_token = accessToken });
-
+            if (result.StatusCode == HttpStatusCode.BadRequest)
+            {
+                throw new ArgumentException(result.DynamicBody.detail);
+            }
             return result.StaticBody<Connection>();
         }
 

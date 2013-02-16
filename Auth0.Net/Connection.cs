@@ -42,5 +42,8 @@ namespace Auth0
     {
         [JsonName("tenant_domain")]
         public string TenantDomain { get; set; }
+
+        [JsonName("adfs_server")]
+        public string AdfsServer { get; set; }
     }
 }
