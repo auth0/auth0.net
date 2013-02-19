@@ -9,9 +9,10 @@ namespace Auth0
         {
             if (strategy == null) throw new ArgumentNullException("strategy");
             if (tenantDomain == null) throw new ArgumentNullException("tenantDomain");
-            Name = string.IsNullOrEmpty(name) ? name : tenantDomain;
+            Name = string.IsNullOrEmpty(name) ? tenantDomain : name;
             Strategy = strategy;
             Options = new ConnectionOptions { TenantDomain = tenantDomain };
+            Enabled = true;
         }
 
         public Connection()

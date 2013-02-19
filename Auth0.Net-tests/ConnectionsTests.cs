@@ -15,7 +15,7 @@ namespace Auth0.Net_tests
     {
         private Client client;
 
-        [TestFixtureSetUp]
+        [SetUp]
         public void setup() 
         {
             client = new Client(ConfigurationManager.AppSettings["AUTH0_CLIENT_ID"],
@@ -37,7 +37,7 @@ namespace Auth0.Net_tests
         [Test]
         public void can_get_social_connections()
         {
-            var result = client.GetConnections();
+            var result = client.GetSocialConnections();
             var gc = result.First();
             gc.Name.Should().Be.EqualTo("google-oauth2");
             gc.Strategy.Should().Be.EqualTo("google-oauth2");
@@ -55,6 +55,24 @@ namespace Auth0.Net_tests
             var connection = client.CreateConnection(ticket);
 
             connection.ProvisioningTicketUrl.Should().Not.Be.Null();
+            connection.Enabled.Should().Be.True();
+        }
+
+        [Test]
+        public void can_create_a_disabled_connection()
+        {
+            var ticket = new Connection(
+                name: "testconn",
+                strategy: "google-apps",
+                tenantDomain: "kluglabs.com"
+            );
+
+            ticket.Enabled = false;
+
+            var connection = client.CreateConnection(ticket);
+
+            connection.ProvisioningTicketUrl.Should().Not.Be.Null();
+            connection.Enabled.Should().Be.False();
         }
 
         [Test]

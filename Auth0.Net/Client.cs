@@ -89,14 +89,15 @@ namespace Auth0
                 provisioningTicket.strategy, 
                 provisioningTicket.options["tenant_domain"]);
             
-            if (!string.IsNullOrEmpty(provisioningTicket.options["adfs_server"]))
+            if (provisioningTicket.options.ContainsKey("adfs_server") && 
+                !string.IsNullOrEmpty(provisioningTicket.options["adfs_server"]))
             {
                 connectionTicket.Options.AdfsServer = provisioningTicket.options["adfs_server"];
             }
 
             try
             {
-                var connection = this.CreateConnection(connectionTicket);
+                var connection = CreateConnection(connectionTicket);
                 return new CreateConnectionResult() {
                     worked = true,
                     provisioning_ticket_url = connection.ProvisioningTicketUrl
