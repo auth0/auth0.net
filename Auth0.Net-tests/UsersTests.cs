@@ -48,5 +48,14 @@ namespace Auth0.Net_tests
             first.Identities.First().AccessToken.Should().Not.Be.Empty();
             first.GivenName.Should().Not.Be.NullOrEmpty();
         }
+
+        [Test]
+        public void exchange_auth_code_with_wrong_code()
+        {
+            Assert.Throws<OAuthException>(() =>
+                client.ExchangeAuthorizationCodePerAccessToken("httiadisad", "http://localhost/callback")
+            ).Message.Should().Be.EqualTo("invalid code");
+
+        }
     }
 }

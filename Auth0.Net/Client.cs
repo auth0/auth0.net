@@ -187,6 +187,11 @@ namespace Auth0
 
             var response = client.Execute<Dictionary<string, string>>(request).Data;
 
+            if(response.ContainsKey("error") ||  response.ContainsKey("error_description"))
+            {
+                throw new OAuthException(response["error_description"], response["error"]);
+            }
+
             return new TokenResult
             {
                 AccessToken = response["access_token"],
