@@ -6,7 +6,7 @@
 
 ## Usage
 
-Initialize your client class with the credentials in the [settings section](https://app.auth0.com/#/settings) of the dashboard.
+Create an instance of Client with the credentials provided in the [settings section](https://app.auth0.com/#/settings) of the dashboard.
 
 ~~~csharp
 var client = new Auth0.Client(
