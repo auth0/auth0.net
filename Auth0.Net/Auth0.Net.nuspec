@@ -12,7 +12,7 @@
     <copyright>Copyright 2013</copyright>
     <tags>Auth0 OAuth Federation Wsfed ADFS Office365 GoogleApps</tags>
     <dependencies>
-      <dependency id="EasyHttp" version="1.6.52.0"  />
+      <dependency id="RestSharp" version="104.1" />
       <dependency id="JsonFx" version="2.0.1209.2802"  />
     </dependencies>
   </metadata>

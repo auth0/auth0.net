@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using RestSharp;
+using Newtonsoft.Json;
 
 namespace Auth0
 {
@@ -11,7 +12,8 @@ namespace Auth0
         private readonly string clientSecret;
         private readonly string domain;
         private AccessToken currentToken;
-        private RestClient client; 
+        private RestClient client;
+
         public Client(string clientID, string clientSecret, string domain)
         {
             this.clientID = clientID;
@@ -82,11 +84,17 @@ namespace Auth0
             var connectionTicket = new Connection(
                 provisioningTicket.strategy, 
                 provisioningTicket.options["tenant_domain"]);
-            
-            if (provisioningTicket.options.ContainsKey("adfs_server") && 
+
+            if (provisioningTicket.options.ContainsKey("adfs_server") &&
                 !string.IsNullOrEmpty(provisioningTicket.options["adfs_server"]))
             {
                 connectionTicket.Options.AdfsServer = provisioningTicket.options["adfs_server"];
+            }
+
+            if (provisioningTicket.options.ContainsKey("server_url") &&
+                !string.IsNullOrEmpty(provisioningTicket.options["server_url"]))
+            {
+                connectionTicket.Options.ServerUrl = provisioningTicket.options["server_url"];
             }
 
             try
@@ -109,81 +117,93 @@ namespace Auth0
         public Connection CreateConnection(Connection ticket)
         {
             var accessToken = GetAccessToken();
-            var http = new HttpClient();
-            http.Request.Accept = HttpContentTypes.ApplicationJson;
 
-            var result = http.Post(apiUrl + "/connections", 
-                ticket, 
-                HttpContentTypes.ApplicationJson, 
-                new { access_token = accessToken });
+            var request = new RestRequest("/api/connections?access_token=" + accessToken, Method.POST);
+            request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
+            
+            request.RequestFormat = DataFormat.Json;
+            request.AddHeader("Content-Type", "application/json");
+            request.AddBody(ticket);
+
+            var result = client.Execute(request);
             if (result.StatusCode == HttpStatusCode.BadRequest)
             {
-                throw new ArgumentException(result.StaticBody<Dictionary<string, string>>()["detail"]);
+                var detail = JsonConvert.DeserializeObject<Dictionary<string, string>>(result.Content)["detail"];
+                throw new ArgumentException(detail);
             }
-            return result.StaticBody<Connection>();
+            return JsonConvert.DeserializeObject<Connection>(result.Content);
         }
 
         public void DeleteConnection(string connectionName)
         {
             var accessToken = GetAccessToken();
-            var http = new HttpClient();
-            http.Delete(apiUrl + "/connections/" + connectionName,
-                new { access_token = accessToken });
+            var request = new RestRequest("/api/connections/{name}?access_token={accessToken}", Method.DELETE);
+            
+            request.AddParameter("name", connectionName, ParameterType.UrlSegment);
+            request.AddParameter("accessToken", accessToken, ParameterType.UrlSegment);
+
+            client.Execute(request);
         }
         
         public IEnumerable<User> GetUsersByConnection(string connectionName)
         {
             var accessToken = GetAccessToken();
-            var http = new HttpClient();
-            http.Request.Accept = HttpContentTypes.ApplicationJson;
+            var request = new RestRequest("/api/connections/{connectionName}/users?access_token={accessToken}");
+            
+            request.AddHeader("accept", "application/json");
+            request.AddParameter("connectionName", connectionName, ParameterType.UrlSegment);
+            request.AddParameter("accessToken", accessToken, ParameterType.UrlSegment);
 
-            var result = http.Get(apiUrl + "/connections/" + connectionName + "/users", new
-            {
-                access_token = accessToken
-            });
+            var response = client.Execute(request);
 
-            return result.StaticBody<List<User>>();
+            return JsonConvert.DeserializeObject<List<User>>(response.Content);
         }
 
         public IEnumerable<User> GetSocialUsers()
         {
             var accessToken = GetAccessToken();
-            var http = new HttpClient();
-            http.Request.Accept = HttpContentTypes.ApplicationJson;
+            var request = new RestRequest("/api/socialconnections/users?access_token={accessToken}");
+            
+            request.AddHeader("accept", "application/json");
+            request.AddParameter("accessToken", accessToken, ParameterType.UrlSegment);
 
-            var result = http.Get(apiUrl + "/socialconnections/users", new
-            {
-                access_token = accessToken
-            });
+            var response = client.Execute(request);
 
-            return result.StaticBody<List<User>>();
+            return JsonConvert.DeserializeObject<List<User>>(response.Content);
         }
 
 
-        public string ExchangeAuthorizationCodePerAccessToken(string code, string redirectUri)
+        public TokenResult ExchangeAuthorizationCodePerAccessToken(string code, string redirectUri)
         {
-            var http = new HttpClient();
+            var request = new RestRequest("/oauth/token");
+            
+            request.AddHeader("accept", "application/json");
+         
+            request.AddParameter("client_id", clientID, ParameterType.GetOrPost);
+            request.AddParameter("client_secret", clientSecret, ParameterType.GetOrPost);
+            request.AddParameter("code", code, ParameterType.GetOrPost);
+            request.AddParameter("grant_type", "authorization_code", ParameterType.GetOrPost);
+            request.AddParameter("redirect_uri", redirectUri, ParameterType.GetOrPost);
 
-            var payload = new Dictionary<string, string>{
-                {"client_id",       clientID},
-                {"client_secret",   clientSecret},
-                {"code",            code},
-                {"grant_type",      "authorization_code"},
-                {"redirect_uri",    redirectUri}
+            var response = client.Execute<Dictionary<string, string>>(request).Data;
+
+            return new TokenResult
+            {
+                AccessToken = response["access_token"],
+                IdToken = response.ContainsKey("id_token") ? response["id_token"] : string.Empty
             };
-
-            var tokenResult = http.Post("https://" + this.domain + "/oauth/token", payload, "application/json");
-
-            return tokenResult.StaticBody<Dictionary<string, string>>()["access_token"];
         }
 
         public UserProfile GetUserInfo(string accessToken)
         {
-            var url = "https://" + this.domain + "/userinfo";
-            var http = new HttpClient();
-            var response = http.Get(url, new { access_token = accessToken });
-            var result = response.StaticBody<UserProfile>();
-            return result;
+            var request = new RestRequest("/userinfo?access_token={accessToken}");
+
+            request.AddHeader("accept", "application/json");
+            request.AddParameter("accessToken", accessToken, ParameterType.UrlSegment);
+
+            var response = client.Execute(request);
+
+            return JsonConvert.DeserializeObject<UserProfile>(response.Content);
         }
 
     }

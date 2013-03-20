@@ -1,62 +1,63 @@
 ﻿using System.Collections.Generic;
-using JsonFx.Json;
+using System.Runtime.Serialization;
+using Newtonsoft.Json;
 
 namespace Auth0
 {
     public class Identity
     {
-        [JsonName("access_token")]
+        [JsonProperty(PropertyName ="access_token")]
         public string AccessToken { get; set; }
 
-        [JsonName("provider")]
+        [JsonProperty(PropertyName ="provider")]
         public string Provider { get; set; }
 
-        [JsonName("user_id")]
+        [JsonProperty(PropertyName ="user_id")]
         public string UserId { get; set; }
 
-        [JsonName("connection")]
+        [JsonProperty(PropertyName ="connection")]
         public string Connection { get; set; }
 
-        [JsonName("isSocial")]
+        [JsonProperty(PropertyName ="isSocial")]
         public bool IsSocial { get; set; }
     }
 
     public class User
     {
-        [JsonName("identities")]
+        [JsonProperty(PropertyName ="identities")]
         public IEnumerable<Identity> Identities { get; set; }
 
-        [JsonName("email")]
+        [JsonProperty(PropertyName ="email")]
         public string Email { get; set; }
 
-        [JsonName("family_name")]
+        [JsonProperty(PropertyName ="family_name")]
         public string FamilyName { get; set; }
 
-        [JsonName("gender")]
+        [JsonProperty(PropertyName ="gender")]
         public string Gender { get; set; }
 
-        [JsonName("given_name")]
+        [JsonProperty(PropertyName ="given_name")]
         public string GivenName { get; set; }
 
-        [JsonName("lastLogin")]
+        [JsonProperty(PropertyName ="lastLogin")]
         public string LastLogin { get; set; }
 
-        [JsonName("locale")]
+        [JsonProperty(PropertyName ="locale")]
         public string Locale { get; set; }
 
-        [JsonName("loginsCount")]
+        [JsonProperty(PropertyName ="loginsCount")]
         public string LoginsCount { get; set; }
 
-        [JsonName("name")]
+        [JsonProperty(PropertyName ="name")]
         public string Name { get; set; }
 
-        [JsonName("nickname")]
+        [JsonProperty(PropertyName ="nickname")]
         public string Nickname { get; set; }
 
-        [JsonName("picture")]
+        [JsonProperty(PropertyName ="picture")]
         public string Picture { get; set; }
 
-        [JsonName("user_id")]
+        [JsonProperty(PropertyName ="user_id")]
         public string UserId { get; set; }
     }
 }

@@ -7,6 +7,7 @@ using NUnit.Framework;
 using Auth0;
 using System.Configuration;
 using SharpTestsEx;
+using Newtonsoft.Json;
 
 namespace Auth0.Net_tests
 {
@@ -43,10 +44,11 @@ namespace Auth0.Net_tests
             gc.Strategy.Should().Be.EqualTo("google-oauth2");
         }
 
+
         [Test]
         public void can_create_connection()
         {
-            var ticket = new Connection (
+            var ticket = new Connection(
                 name: "testconn",
                 strategy: "google-apps",
                 tenantDomain: "kluglabs.com"
