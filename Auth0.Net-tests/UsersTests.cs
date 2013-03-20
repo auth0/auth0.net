@@ -48,17 +48,5 @@ namespace Auth0.Net_tests
             first.Identities.First().AccessToken.Should().Not.Be.Empty();
             first.GivenName.Should().Not.Be.NullOrEmpty();
         }
-
-        [Test]
-        public void test()
-        {
-            var client = new Auth0.Client(
-                                "gGmTcDYQB6tmnVq1tVx3HDaoR3YUJQwF",
-                                "_hdJ9rbIwPxW4WRezgUYn0WzhW9Gl_0WVwN3me7VHlhsu6PrhTlnzDiEIgJB490m",
-                                "auth0.auth0.com");
-            var token = client.ExchangeAuthorizationCodePerAccessToken("P9Q2eiYVkhu83GWP", "http://localhost:2232/Auth/Callback");
-
-            Console.WriteLine(token);
-        }
     }
 }
