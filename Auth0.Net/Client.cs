@@ -175,7 +175,7 @@ namespace Auth0
 
         public TokenResult ExchangeAuthorizationCodePerAccessToken(string code, string redirectUri)
         {
-            var request = new RestRequest("/oauth/token");
+            var request = new RestRequest("/oauth/token", Method.POST);
             
             request.AddHeader("accept", "application/json");
          
