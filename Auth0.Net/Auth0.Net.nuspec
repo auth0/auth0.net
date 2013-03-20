@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Auth0</id>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <authors>Auth0</authors>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
     <projectUrl>https://github.com/auth0/auth0.net</projectUrl>
@@ -13,7 +13,7 @@
     <tags>Auth0 OAuth Federation Wsfed ADFS Office365 GoogleApps</tags>
     <dependencies>
       <dependency id="RestSharp" version="104.1" />
-      <dependency id="JsonFx" version="2.0.1209.2802"  />
+      <dependency id="Newtonsoft.Json" version="4.5.11" />
     </dependencies>
   </metadata>
   <files>
