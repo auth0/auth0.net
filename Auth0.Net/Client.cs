@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Net;
 using RestSharp;
@@ -55,12 +56,16 @@ namespace Auth0
             var accessToken = GetAccessToken();
 
             var request = new RestRequest("/api/connections");
+            request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
+
+
             request.AddParameter("access_token", accessToken);
             request.AddParameter("only_socials", onlySocials);
             request.AddParameter("only_enterprise", onlyEnterprise);
 
-            var response = client.Execute<List<Connection>>(request);
-            return response.Data;
+            var response = client.Execute(request);
+
+            return JsonConvert.DeserializeObject<List<Connection>>(response.Content);
         }
 
 
@@ -206,9 +211,23 @@ namespace Auth0
             request.AddHeader("accept", "application/json");
             request.AddParameter("accessToken", accessToken, ParameterType.UrlSegment);
 
-            var response = client.Execute(request);
+            var response = client.Execute<Dictionary<string, string>>(request);
 
-            return JsonConvert.DeserializeObject<UserProfile>(response.Content);
+            var mappedProperties = new String[] {"email",
+                                                "family_name",
+                                                "gender",
+                                                "given_name",
+                                                "locale",
+                                                "name",
+                                                "nickname",
+                                                "picture",
+                                                "user_id",
+                                                "identities"};
+
+            var userProfile = JsonConvert.DeserializeObject<UserProfile>(response.Content);
+            userProfile.ExtraProperties = response.Data.Keys.Where(x => !mappedProperties.Contains(x))
+                                    .ToDictionary(x => x, x => response.Data[x]);
+            return userProfile;
         }
 
     }

@@ -26,6 +26,16 @@ namespace Auth0.Net_tests
             client.DeleteConnection("testconn");
         }
 
+        [Test, Ignore]
+        public void test1234()
+        {
+            var client1 = new Client("",
+                                    "",
+                                    "");
+
+            var socialConnections = client1.GetSocialConnections();
+        }
+
         [Test]
         public void can_get_connections()
         {
