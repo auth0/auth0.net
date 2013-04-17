@@ -177,7 +177,6 @@ namespace Auth0
             return JsonConvert.DeserializeObject<List<User>>(response.Content);
         }
 
-
         public TokenResult ExchangeAuthorizationCodePerAccessToken(string code, string redirectUri)
         {
             var request = new RestRequest("/oauth/token", Method.POST);
