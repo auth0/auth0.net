@@ -1,12 +1,12 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Net;
-using RestSharp;
-using Newtonsoft.Json;
-
-namespace Auth0
+﻿namespace Auth0
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net;
+    using Newtonsoft.Json;
+    using RestSharp;
+
     public class Client
     {
         private readonly string clientID;
@@ -21,67 +21,22 @@ namespace Auth0
             this.clientSecret = clientSecret;
             this.domain = domain;
             var url = "https://" + this.domain;
-            client = new RestClient(url);
+            this.client = new RestClient(url);
         }
-
-
-        private string GetAccessToken()
-        {
-            if (currentToken != null && currentToken.RetrievedIn + TimeSpan.FromHours(10) > DateTime.Now)
-            {
-                return currentToken.Token;
-            }
-
-            var request = new RestRequest("/oauth/token", Method.POST);
-
-            request.AddHeader("accept", "application/json");
-            request.AddParameter("client_id", clientID, ParameterType.GetOrPost);
-            request.AddParameter("client_secret", clientSecret, ParameterType.GetOrPost);
-            request.AddParameter("grant_type", "client_credentials", ParameterType.GetOrPost);
-
-            var response = client.Execute<Dictionary<string, string>>(request);
-
-            if (response.StatusCode == HttpStatusCode.Unauthorized)
-            {
-                throw new ArgumentException("invalid clientid, secret or domain");
-            }
-
-            var tk = response.Data["access_token"];
-            currentToken = new AccessToken(DateTime.Now, tk);
-            return currentToken.Token;
-        }
-
-        private IEnumerable<Connection> GetConnectionsInternal(bool onlySocials = false, bool onlyEnterprise = false)
-        {
-            var accessToken = GetAccessToken();
-
-            var request = new RestRequest("/api/connections");
-            request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
-
-
-            request.AddParameter("access_token", accessToken);
-            request.AddParameter("only_socials", onlySocials);
-            request.AddParameter("only_enterprise", onlyEnterprise);
-
-            var response = client.Execute(request);
-
-            return JsonConvert.DeserializeObject<List<Connection>>(response.Content);
-        }
-
 
         public IEnumerable<Connection> GetConnections()
         {
-            return GetConnectionsInternal();
+            return this.GetConnectionsInternal();
         }
 
         public IEnumerable<Connection> GetSocialConnections()
         {
-            return GetConnectionsInternal(onlySocials: true);
+            return this.GetConnectionsInternal(onlySocials: true);
         }
 
         public IEnumerable<Connection> GetEnterpriseConnections()
         {
-            return GetConnectionsInternal(onlyEnterprise: true);
+            return this.GetConnectionsInternal(onlyEnterprise: true);
         }
 
         public CreateConnectionResult CreateConnection(ProvisioningTicket provisioningTicket)
@@ -104,15 +59,17 @@ namespace Auth0
 
             try
             {
-                var connection = CreateConnection(connectionTicket);
-                return new CreateConnectionResult() {
+                var connection = this.CreateConnection(connectionTicket);
+                return new CreateConnectionResult
+                {
                     worked = true,
                     provisioning_ticket_url = connection.ProvisioningTicketUrl
                 };
             }
             catch (Exception ex)
             {
-                return new CreateConnectionResult() {
+                return new CreateConnectionResult
+                {
                     worked = false,
                     error = ex.Message
                 };
@@ -121,7 +78,7 @@ namespace Auth0
 
         public Connection CreateConnection(Connection ticket)
         {
-            var accessToken = GetAccessToken();
+            var accessToken = this.GetAccessToken();
 
             var request = new RestRequest("/api/connections?access_token=" + accessToken, Method.POST);
             request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
@@ -130,51 +87,49 @@ namespace Auth0
             request.AddHeader("Content-Type", "application/json");
             request.AddBody(ticket);
 
-            var result = client.Execute(request);
+            var result = this.client.Execute(request);
             if (result.StatusCode == HttpStatusCode.BadRequest)
             {
                 var detail = JsonConvert.DeserializeObject<Dictionary<string, string>>(result.Content)["detail"];
                 throw new ArgumentException(detail);
             }
+
             return JsonConvert.DeserializeObject<Connection>(result.Content);
         }
 
         public void DeleteConnection(string connectionName)
         {
-            var accessToken = GetAccessToken();
+            var accessToken = this.GetAccessToken();
             var request = new RestRequest("/api/connections/{name}?access_token={accessToken}", Method.DELETE);
             
             request.AddParameter("name", connectionName, ParameterType.UrlSegment);
             request.AddParameter("accessToken", accessToken, ParameterType.UrlSegment);
 
-            client.Execute(request);
+            this.client.Execute(request);
         }
         
         public IEnumerable<User> GetUsersByConnection(string connectionName)
         {
-            var accessToken = GetAccessToken();
+            var accessToken = this.GetAccessToken();
             var request = new RestRequest("/api/connections/{connectionName}/users?access_token={accessToken}");
             
             request.AddHeader("accept", "application/json");
             request.AddParameter("connectionName", connectionName, ParameterType.UrlSegment);
             request.AddParameter("accessToken", accessToken, ParameterType.UrlSegment);
 
-            var response = client.Execute(request);
+            var response = this.client.Execute(request);
 
             return JsonConvert.DeserializeObject<List<User>>(response.Content);
         }
 
-        public IEnumerable<User> GetSocialUsers()
+        public IEnumerable<User> GetSocialUsers(string search = "")
         {
-            var accessToken = GetAccessToken();
-            var request = new RestRequest("/api/socialconnections/users?access_token={accessToken}");
-            
-            request.AddHeader("accept", "application/json");
-            request.AddParameter("accessToken", accessToken, ParameterType.UrlSegment);
+            return this.GetUsers("socialconnections", search);
+        }
 
-            var response = client.Execute(request);
-
-            return JsonConvert.DeserializeObject<List<User>>(response.Content);
+        public IEnumerable<User> GetEnterpriseUsers(string search = "")
+        {
+            return this.GetUsers("enterpriseconnections", search);
         }
 
         public TokenResult ExchangeAuthorizationCodePerAccessToken(string code, string redirectUri)
@@ -182,16 +137,16 @@ namespace Auth0
             var request = new RestRequest("/oauth/token", Method.POST);
             
             request.AddHeader("accept", "application/json");
-         
-            request.AddParameter("client_id", clientID, ParameterType.GetOrPost);
-            request.AddParameter("client_secret", clientSecret, ParameterType.GetOrPost);
+
+            request.AddParameter("client_id", this.clientID, ParameterType.GetOrPost);
+            request.AddParameter("client_secret", this.clientSecret, ParameterType.GetOrPost);
             request.AddParameter("code", code, ParameterType.GetOrPost);
             request.AddParameter("grant_type", "authorization_code", ParameterType.GetOrPost);
             request.AddParameter("redirect_uri", redirectUri, ParameterType.GetOrPost);
 
-            var response = client.Execute<Dictionary<string, string>>(request).Data;
+            var response = this.client.Execute<Dictionary<string, string>>(request).Data;
 
-            if(response.ContainsKey("error") ||  response.ContainsKey("error_description"))
+            if (response.ContainsKey("error") || response.ContainsKey("error_description"))
             {
                 throw new OAuthException(response["error_description"], response["error"]);
             }
@@ -210,18 +165,21 @@ namespace Auth0
             request.AddHeader("accept", "application/json");
             request.AddParameter("accessToken", accessToken, ParameterType.UrlSegment);
 
-            var response = client.Execute<Dictionary<string, string>>(request);
+            var response = this.client.Execute<Dictionary<string, string>>(request);
 
-            var mappedProperties = new String[] {"email",
-                                                "family_name",
-                                                "gender",
-                                                "given_name",
-                                                "locale",
-                                                "name",
-                                                "nickname",
-                                                "picture",
-                                                "user_id",
-                                                "identities"};
+            var mappedProperties = new string[] 
+            {
+                "email",
+                "family_name",
+                "gender",
+                "given_name",
+                "locale",
+                "name",
+                "nickname",
+                "picture",
+                "user_id",
+                "identities"
+            };
 
             var userProfile = JsonConvert.DeserializeObject<UserProfile>(response.Content);
             userProfile.ExtraProperties = response.Data.Keys.Where(x => !mappedProperties.Contains(x))
@@ -229,5 +187,70 @@ namespace Auth0
             return userProfile;
         }
 
+        private string GetAccessToken()
+        {
+            if (this.currentToken != null && this.currentToken.RetrievedIn + TimeSpan.FromHours(10) > DateTime.Now)
+            {
+                return this.currentToken.Token;
+            }
+
+            var request = new RestRequest("/oauth/token", Method.POST);
+
+            request.AddHeader("accept", "application/json");
+            request.AddParameter("client_id", this.clientID, ParameterType.GetOrPost);
+            request.AddParameter("client_secret", this.clientSecret, ParameterType.GetOrPost);
+            request.AddParameter("grant_type", "client_credentials", ParameterType.GetOrPost);
+
+            var response = this.client.Execute<Dictionary<string, string>>(request);
+
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                throw new ArgumentException("invalid clientid, secret or domain");
+            }
+
+            var tk = response.Data["access_token"];
+            this.currentToken = new AccessToken(DateTime.Now, tk);
+
+            return this.currentToken.Token;
+        }
+
+        private IEnumerable<Connection> GetConnectionsInternal(bool onlySocials = false, bool onlyEnterprise = false)
+        {
+            var accessToken = this.GetAccessToken();
+
+            var request = new RestRequest("/api/connections");
+            request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
+            request.AddParameter("access_token", accessToken);
+            request.AddParameter("only_socials", onlySocials);
+            request.AddParameter("only_enterprise", onlyEnterprise);
+
+            var response = this.client.Execute(request);
+
+            return JsonConvert.DeserializeObject<List<Connection>>(response.Content);
+        }
+
+        private IEnumerable<User> GetUsers(string connectionType, string search)
+        {
+            if (string.IsNullOrEmpty(connectionType))
+            {
+                throw new ArgumentNullException("connectionType");
+            }
+
+            var accessToken = this.GetAccessToken();
+            var request = new RestRequest("/api/{connectionType}/users");
+
+            request.AddHeader("accept", "application/json");
+            request.AddParameter("connectionType", connectionType, ParameterType.UrlSegment);
+            request.AddParameter("access_token", accessToken);
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                request.AddParameter("search", search);
+            }
+
+            var response = this.client.Execute(request);
+
+            return JsonConvert.DeserializeObject<List<User>>(response.Content);
+        }
     }
 }
