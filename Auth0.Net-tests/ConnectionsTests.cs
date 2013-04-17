@@ -41,8 +41,8 @@ namespace Auth0.Net_tests
         {
             var result = client.GetConnections();
             var gc = result.First();
-            gc.Name.Should().Be.EqualTo("google-oauth2");
-            gc.Strategy.Should().Be.EqualTo("google-oauth2");
+            gc.Name.Should().Be.EqualTo("facebook");
+            gc.Strategy.Should().Be.EqualTo("facebook");
         }
 
         [Test]
@@ -50,8 +50,8 @@ namespace Auth0.Net_tests
         {
             var result = client.GetSocialConnections();
             var gc = result.First();
-            gc.Name.Should().Be.EqualTo("google-oauth2");
-            gc.Strategy.Should().Be.EqualTo("google-oauth2");
+            gc.Name.Should().Be.EqualTo("facebook");
+            gc.Strategy.Should().Be.EqualTo("facebook");
         }
 
 
