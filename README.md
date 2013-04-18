@@ -56,7 +56,7 @@ Delete a connection identified by connectionName.
 client.DeleteConnection(connectionName);
 ~~~
 
-### client.GetUsersByConnection(connectionName)
+### client.GetUsersByConnection(connectionName, search = "")
 
 This method returns a list of users of the connection.
 
@@ -64,6 +64,8 @@ It will search the users on the directory of the connection. Suppose it is a **W
 
 ~~~csharp
 var users = client.GetUsersByConnection("contoso.com");
+// or
+var users = client.GetUsersByConnection("contoso.com", "jdoe");
 ~~~
 
 The result is an IEnumerable<Auth0.User>.

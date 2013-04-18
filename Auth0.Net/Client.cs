@@ -108,7 +108,12 @@
             this.client.Execute(request);
         }
 
-        public IEnumerable<User> GetUsersByConnection(string connectionName, string search = "")
+        public IEnumerable<User> GetUsersByConnection(string connectionName)
+        {
+            return this.GetUsersByConnection(connectionName, string.Empty);
+        }
+
+        public IEnumerable<User> GetUsersByConnection(string connectionName, string search)
         {
             var accessToken = this.GetAccessToken();
             var request = new RestRequest("/api/connections/{connectionName}/users");
@@ -127,12 +132,22 @@
             return JsonConvert.DeserializeObject<List<User>>(response.Content);
         }
 
-        public IEnumerable<User> GetSocialUsers(string search = "")
+        public IEnumerable<User> GetSocialUsers()
+        {
+            return this.GetSocialUsers(string.Empty);
+        }
+
+        public IEnumerable<User> GetSocialUsers(string search)
         {
             return this.GetUsers("socialconnections", search);
         }
 
-        public IEnumerable<User> GetEnterpriseUsers(string search = "")
+        public IEnumerable<User> GetEnterpriseUsers()
+        {
+            return this.GetEnterpriseUsers(string.Empty);
+        }
+
+        public IEnumerable<User> GetEnterpriseUsers(string search)
         {
             return this.GetUsers("enterpriseconnections", search);
         }
