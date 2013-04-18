@@ -107,15 +107,20 @@
 
             this.client.Execute(request);
         }
-        
-        public IEnumerable<User> GetUsersByConnection(string connectionName)
+
+        public IEnumerable<User> GetUsersByConnection(string connectionName, string search = "")
         {
             var accessToken = this.GetAccessToken();
-            var request = new RestRequest("/api/connections/{connectionName}/users?access_token={accessToken}");
+            var request = new RestRequest("/api/connections/{connectionName}/users");
             
             request.AddHeader("accept", "application/json");
             request.AddParameter("connectionName", connectionName, ParameterType.UrlSegment);
-            request.AddParameter("accessToken", accessToken, ParameterType.UrlSegment);
+            request.AddParameter("access_token", accessToken);
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                request.AddParameter("search", search);
+            }
 
             var response = this.client.Execute(request);
 

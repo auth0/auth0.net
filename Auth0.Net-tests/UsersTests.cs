@@ -37,6 +37,22 @@ namespace Auth0.Net_tests
         }
 
         [Test]
+        public void can_get_users_by_connection_with_search()
+        {
+            var email = "TODO@gmail.com";
+            var users = client.GetUsersByConnection("google-oauth2", email);
+            users.Count().Should().Be.EqualTo(1);
+
+            var first = users.First();
+            first.Email.Should().Be.EqualTo(email);
+            first.FamilyName.Should().Not.Be.NullOrEmpty();
+            first.UserId.Should().Not.Be.NullOrEmpty();
+            first.Identities.Should().Not.Be.Empty();
+            first.Identities.First().AccessToken.Should().Not.Be.Empty();
+            first.GivenName.Should().Not.Be.NullOrEmpty();
+        }
+
+        [Test]
         public void can_get_social_users()
         {
             var users = client.GetSocialUsers();
