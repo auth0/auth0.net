@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Auth0</id>
-    <version>1.0.20</version>
+    <version>1.0.21</version>
     <authors>Auth0</authors>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
     <projectUrl>https://github.com/auth0/auth0.net</projectUrl>
