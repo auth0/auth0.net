@@ -54,6 +54,14 @@ namespace Auth0.Net_tests
             gc.Strategy.Should().Be.EqualTo("facebook");
         }
 
+        [Test]
+        public void can_get_enterprise_connections()
+        {
+            var result = client.GetEnterpriseConnections();
+            var gc = result.First();
+            gc.Name.Should().Be.EqualTo("contoso.com");
+            gc.Strategy.Should().Be.EqualTo("google-apps");
+        }
 
         [Test]
         public void can_create_connection()
