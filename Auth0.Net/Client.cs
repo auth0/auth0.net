@@ -88,10 +88,11 @@
             request.AddBody(ticket);
 
             var result = this.client.Execute(request);
-            if (result.StatusCode == HttpStatusCode.BadRequest)
+            if (result.StatusCode != HttpStatusCode.OK && result.StatusCode != HttpStatusCode.Created)
             {
-                var detail = JsonConvert.DeserializeObject<Dictionary<string, string>>(result.Content)["detail"];
-                throw new ArgumentException(detail);
+                var detail = GetErrorDetails(result.Content);
+                throw new InvalidOperationException(
+                    string.Format("{0} - {1}", result.StatusDescription, detail));
             }
 
             return JsonConvert.DeserializeObject<Connection>(result.Content);
@@ -207,6 +208,19 @@
             return userProfile;
         }
 
+        private static string GetErrorDetails(string resultContent)
+        {
+            try
+            {
+                return JsonConvert.DeserializeObject(resultContent).ToString();
+            }
+            catch (JsonReaderException)
+            {
+            }
+
+            return resultContent;
+        }
+
         private string GetAccessToken()
         {
             if (this.currentToken != null && this.currentToken.RetrievedIn + TimeSpan.FromHours(10) > DateTime.Now)
@@ -226,6 +240,11 @@
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
                 throw new ArgumentException("invalid clientid, secret or domain");
+            }
+            else if (response.StatusCode != HttpStatusCode.OK && response.StatusCode != HttpStatusCode.NotModified)
+            {
+                throw new InvalidOperationException(
+                    string.Format("{0} - {1}", response.StatusCode, GetErrorDetails(response.Content)));
             }
 
             var tk = response.Data["access_token"];

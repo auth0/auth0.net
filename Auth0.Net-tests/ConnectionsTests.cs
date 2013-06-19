@@ -24,6 +24,7 @@ namespace Auth0.Net_tests
                                           ConfigurationManager.AppSettings["AUTH0_CLIENT_DOMAIN"]);
 
             client.DeleteConnection("testconn");
+            client.DeleteConnection("new-testconn");
         }
 
         [Test, Ignore]
@@ -41,8 +42,8 @@ namespace Auth0.Net_tests
         {
             var result = client.GetConnections();
             var gc = result.First();
-            gc.Name.Should().Be.EqualTo("facebook");
-            gc.Strategy.Should().Be.EqualTo("facebook");
+            gc.Name.Should().Be.EqualTo("auth0waadtests.onmicrosoft.com");
+            gc.Strategy.Should().Be.EqualTo("waad");
         }
 
         [Test]
@@ -50,8 +51,8 @@ namespace Auth0.Net_tests
         {
             var result = client.GetSocialConnections();
             var gc = result.First();
-            gc.Name.Should().Be.EqualTo("facebook");
-            gc.Strategy.Should().Be.EqualTo("facebook");
+            gc.Name.Should().Be.EqualTo("github");
+            gc.Strategy.Should().Be.EqualTo("github");
         }
 
         [Test]
@@ -59,27 +60,12 @@ namespace Auth0.Net_tests
         {
             var result = client.GetEnterpriseConnections();
             var gc = result.First();
-            gc.Name.Should().Be.EqualTo("contoso.com");
-            gc.Strategy.Should().Be.EqualTo("google-apps");
+            gc.Name.Should().Be.EqualTo("auth0waadtests.onmicrosoft.com");
+            gc.Strategy.Should().Be.EqualTo("waad");
         }
 
         [Test]
         public void can_create_connection()
-        {
-            var ticket = new Connection(
-                name: "testconn",
-                strategy: "google-apps",
-                tenantDomain: "kluglabs.com"
-            );
-
-            var connection = client.CreateConnection(ticket);
-
-            connection.ProvisioningTicketUrl.Should().Not.Be.Null();
-            connection.Enabled.Should().Be.True();
-        }
-
-        [Test]
-        public void can_create_a_disabled_connection()
         {
             var ticket = new Connection(
                 name: "testconn",
@@ -104,8 +90,24 @@ namespace Auth0.Net_tests
                     tenantDomain: "desopilante.com"
                 );
 
-            Assert.Throws<ArgumentException>(() => client.CreateConnection(ticket)).Message
-                .Should().Be.EqualTo("desopilante.com is not a valid google apps domain");
+            ticket.Enabled = false;
+
+            Assert.Throws<InvalidOperationException>(() => client.CreateConnection(ticket)).Message
+                .Should().Be.EqualTo("Bad Request - desopilante.com is not a valid google apps domain");
+
+        }
+
+        [Test]
+        public void when_creating_a_connection_exceeding_limit_throw_exception()
+        {
+            var ticket = new Connection(
+                    name: "new-testconn",
+                    strategy: "google-apps",
+                    tenantDomain: "kluglabs.com"
+                );
+
+            Assert.Throws<InvalidOperationException>(() => client.CreateConnection(ticket)).Message
+                .Should().Be.EqualTo("Payment Required - You have reached the limit of enterprise connections (Max number: 1 - Plan: free)");
 
         }
     }
