@@ -36,6 +36,7 @@ namespace Auth0
         [DataMember(Name = "identities")]
         public IEnumerable<Identity> Identities { get; set; }
 
+        [DataContract]
         public class Identity
         {
             [DataMember(Name ="access_token")]
