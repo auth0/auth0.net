@@ -6,6 +6,7 @@
     using System.Net;
     using Newtonsoft.Json;
     using RestSharp;
+    using Newtonsoft.Json.Linq;
 
     public class Client
     {
@@ -186,7 +187,11 @@
             request.AddHeader("accept", "application/json");
             request.AddParameter("accessToken", accessToken, ParameterType.UrlSegment);
 
-            var response = this.client.Execute<Dictionary<string, string>>(request);
+            var response = this.client.Execute(request);
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                throw new InvalidOperationException(GetErrorDetails(response.Content));
+            }
 
             var mappedProperties = new string[] 
             {
@@ -203,8 +208,23 @@
             };
 
             var userProfile = JsonConvert.DeserializeObject<UserProfile>(response.Content);
-            userProfile.ExtraProperties = response.Data.Keys.Where(x => !mappedProperties.Contains(x))
-                                    .ToDictionary(x => x, x => response.Data[x]);
+            var responseData = JsonConvert.DeserializeObject<Dictionary<string, object>>(response.Content);
+            userProfile.ExtraProperties = responseData != null ?
+                responseData.Keys.Where(x => !mappedProperties.Contains(x)).ToDictionary(x => x, x => responseData[x]) :
+                new Dictionary<string, object>();
+
+            // Convert JArray to string[]
+            for (int i = 0; i < userProfile.ExtraProperties.Count; i++)
+            {
+                var item = userProfile.ExtraProperties.ElementAt(i);
+                if (item.Value is JArray)
+                {
+                    var stringArray = ((JArray)item.Value).Select(v => v.ToString()).ToArray();
+                    userProfile.ExtraProperties.Remove(item.Key);
+                    userProfile.ExtraProperties.Add(item.Key, stringArray);
+                }
+            }
+
             return userProfile;
         }
 

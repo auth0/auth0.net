@@ -51,6 +51,6 @@ namespace Auth0
             public bool IsSocial { get; set; }
         }
 
-        public Dictionary<string, string> ExtraProperties { get; set; }
+        public Dictionary<string, object> ExtraProperties { get; set; }
     }
 }
