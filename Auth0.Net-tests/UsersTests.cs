@@ -39,9 +39,14 @@ namespace Auth0.Net_tests
         [Test]
         public void can_get_users_by_connection_with_search()
         {
-            var email = "TODO@gmail.com";
-            var users = client.GetUsersByConnection("google-oauth2", email);
-            users.Count().Should().Be.EqualTo(1);
+            var connection = "google-oauth2";
+            var allUsers = client.GetUsersByConnection(connection);
+
+            var email = allUsers.First().Email;
+            var users = client.GetUsersByConnection(connection, email);
+
+            // There may be more than one search result, just make sure it filtered to only this user
+            users.All(u => u.Email == email).Should().Be.True();
 
             var first = users.First();
             first.Email.Should().Be.EqualTo(email);
@@ -68,9 +73,13 @@ namespace Auth0.Net_tests
         [Test]
         public void can_get_social_users_with_search()
         {
-            var email = "TODO@gmail.com";
+            var allUsers = client.GetSocialUsers();
+
+            var email = allUsers.First().Email;
             var users = client.GetSocialUsers(email);
-            users.Count().Should().Be.EqualTo(1);
+            
+            // There may be more than one search result, just make sure it filtered to only this user
+            users.All(u => u.Email == email).Should().Be.True();
             
             var first = users.First();
             first.Email.Should().Be.EqualTo(email);
@@ -97,9 +106,13 @@ namespace Auth0.Net_tests
         [Test]
         public void can_get_enterprise_users_with_search()
         {
-            var email = "TODO@contoso.com";
+            var allUsers = client.GetEnterpriseUsers();
+
+            var email = allUsers.First().Email;
             var users = client.GetEnterpriseUsers(email);
-            users.Count().Should().Be.EqualTo(1);
+
+            // There may be more than one search result, just make sure it filtered to only this user
+            users.All(u => u.Email == email).Should().Be.True();
 
             var first = users.First();
             first.Email.Should().Be.EqualTo(email);
