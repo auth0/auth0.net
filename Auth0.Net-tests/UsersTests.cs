@@ -102,7 +102,7 @@ namespace Auth0.Net_tests
             first.Identities.First().AccessToken.Should().Not.Be.Empty();
             first.GivenName.Should().Not.Be.NullOrEmpty();
         }
-
+        
         [Test]
         public void can_get_enterprise_users_with_search()
         {
@@ -129,7 +129,90 @@ namespace Auth0.Net_tests
             Assert.Throws<OAuthException>(() =>
                 client.ExchangeAuthorizationCodePerAccessToken("httiadisad", "http://localhost/callback")
             ).Message.Should().Be.EqualTo("invalid code");
+        }
 
+        [Test]
+        public void can_get_enterprise_users_pages()
+        {
+            var users = client.GetEnterpriseUsers(2);
+
+            users.HasNextPage.Should().Be.True();
+            users.GetNextPage().Count().Should().Be.GreaterThan(0);
+        }
+
+        [TestCase(1)]
+        [TestCase(2)]
+        [TestCase(5)]
+        public void can_get_enterprise_users_using_different_size_pages(int pageSize)
+        {
+            var users = client.GetEnterpriseUsers(pageSize);
+
+            users.Count().Should().Be.EqualTo(pageSize);
+        }
+
+        [Test]
+        public void can_use_autopaged_to_enumerate_all_enterprise_users()
+        {
+            var users = client.GetEnterpriseUsers(2);
+            var count = users.AutoPaged().Count();
+
+            count.Should().Be.GreaterThan(2);
+        }
+
+        [Test]
+        public void can_get_social_users_pages()
+        {
+            var users = client.GetSocialUsers(2);
+
+            users.HasNextPage.Should().Be.True();
+            users.GetNextPage().Count().Should().Be.GreaterThan(0);
+        }
+
+        [TestCase(1)]
+        [TestCase(10)]
+        [TestCase(25)]
+        public void can_get_social_users_using_different_size_pages(int pageSize)
+        {
+            var users = client.GetSocialUsers(pageSize);
+
+            users.Count().Should().Be.EqualTo(pageSize);
+        }
+
+        [Test]
+        public void can_use_autopaged_to_enumerate_all_social_users()
+        {
+            var users = client.GetSocialUsers(2);
+            var count = users.AutoPaged().Count();
+
+            count.Should().Be.GreaterThan(2);
+        }
+
+        [Test]
+        public void can_get_enterprise_users_by_connection_pages()
+        {
+            var users = client.GetUsersByConnection("google-oauth2", 2);
+
+            users.HasNextPage.Should().Be.True();
+            users.GetNextPage().Count().Should().Be.GreaterThan(0);
+        }
+
+        [TestCase(1)]
+        [TestCase(10)]
+        [TestCase(25)]
+        public void can_get_enterprise_users_by_connection_using_different_size_pages(int pageSize)
+        {
+            var users = client.GetUsersByConnection("google-oauth2", pageSize);
+
+            users.Count().Should().Be.EqualTo(pageSize);
+        }
+
+        [Test]
+        public void can_use_autopaged_to_enumerate_all_enterprise_users_by_connection()
+        {
+            var users = client.GetUsersByConnection("google-oauth2", 2);
+            var count = users.AutoPaged().Count();
+
+            count.Should().Be.GreaterThan(2);
         }
     }
 }
