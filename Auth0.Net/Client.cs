@@ -1,4 +1,5 @@
-﻿namespace Auth0
+﻿using System.Collections.Generic;
+namespace Auth0
 {
     using System;
     using System.Collections.Generic;
@@ -134,22 +135,22 @@
             return JsonConvert.DeserializeObject<List<User>>(response.Content);
         }
 
-        public IEnumerable<User> GetSocialUsers()
+        public PaginatedList<User> GetSocialUsers(int perPage = 0)
         {
-            return this.GetSocialUsers(string.Empty);
+            return this.GetSocialUsers(string.Empty, perPage);
         }
 
-        public IEnumerable<User> GetSocialUsers(string search)
+        public PaginatedList<User> GetSocialUsers(string search, int perPage = 0)
         {
-            return this.GetUsers("socialconnections", search);
+            return this.GetUsers("socialconnections", search, perPage);
         }
 
-        public IEnumerable<User> GetEnterpriseUsers()
+        public PaginatedList<User> GetEnterpriseUsers()
         {
             return this.GetEnterpriseUsers(string.Empty);
         }
 
-        public IEnumerable<User> GetEnterpriseUsers(string search)
+        public PaginatedList<User> GetEnterpriseUsers(string search)
         {
             return this.GetUsers("enterpriseconnections", search);
         }
@@ -288,7 +289,7 @@
             return JsonConvert.DeserializeObject<List<Connection>>(response.Content);
         }
 
-        private IEnumerable<User> GetUsers(string connectionType, string search)
+        private PaginatedList<User> GetUsers(string connectionType, string search, int perPage = 0)
         {
             if (string.IsNullOrEmpty(connectionType))
             {
@@ -301,6 +302,10 @@
             request.AddHeader("accept", "application/json");
             request.AddParameter("connectionType", connectionType, ParameterType.UrlSegment);
             request.AddParameter("access_token", accessToken);
+            if (perPage > 0)
+            {
+                request.AddParameter("per_page", perPage);
+            }
 
             if (!string.IsNullOrEmpty(search))
             {
@@ -308,8 +313,9 @@
             }
 
             var response = this.client.Execute(request);
-
-            return JsonConvert.DeserializeObject<List<User>>(response.Content);
+            var linkHeader = response.Headers.FirstOrDefault(h => h.Name == "Link" );
+            
+            return new PaginatedList<User>(JsonConvert.DeserializeObject<List<User>>(response.Content), linkHeader != null ? linkHeader.Value.ToString() : "");
         }
     }
 }

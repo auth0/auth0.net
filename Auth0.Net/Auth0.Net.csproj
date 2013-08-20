@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccessToken.cs" />
+    <Compile Include="PaginatedList.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="CreateConnectionResult.cs" />
