@@ -36,7 +36,7 @@ namespace Auth0.Net_tests
             first.GivenName.Should().Not.Be.NullOrEmpty();
         }
 
-        [Test]
+        [Test, Ignore("replace TODO for one user from the previous test")]
         public void can_get_users_by_connection_with_search()
         {
             var email = "TODO@gmail.com";
@@ -66,6 +66,15 @@ namespace Auth0.Net_tests
         }
 
         [Test]
+        public void can_get_social_users_pages()
+        {
+            var users = client.GetSocialUsers(2);
+
+            users.HasNextPage.Should().Be.True();
+            users.GetNextPage().Count.Should().Be.GreaterThan(0);
+        }
+
+        [Test, Ignore("replace TODO for one user from the previous test")]
         public void can_get_social_users_with_search()
         {
             var email = "TODO@gmail.com";
@@ -94,7 +103,7 @@ namespace Auth0.Net_tests
             first.GivenName.Should().Not.Be.NullOrEmpty();
         }
 
-        [Test]
+        [Test, Ignore("replace TODO for one user from the previous test")]
         public void can_get_enterprise_users_with_search()
         {
             var email = "TODO@contoso.com";

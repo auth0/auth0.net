@@ -41,27 +41,26 @@ namespace Auth0.Net_tests
         public void can_get_connections()
         {
             var result = client.GetConnections();
-            var gc = result.First();
-            gc.Name.Should().Be.EqualTo("auth0waadtests.onmicrosoft.com");
-            gc.Strategy.Should().Be.EqualTo("waad");
+            result.ToList().Count.Should().Be.GreaterThan(0);
         }
 
         [Test]
         public void can_get_social_connections()
         {
-            var result = client.GetSocialConnections();
-            var gc = result.First();
-            gc.Name.Should().Be.EqualTo("github");
-            gc.Strategy.Should().Be.EqualTo("github");
+            client.GetSocialConnections()
+                .Select(c => c.Strategy)
+                .Should().Contain("google-oauth2")
+                        .And.Contain("github")
+                        .And.Contain("amazon")
+                        .And.Not.Contain("office365");
         }
 
         [Test]
         public void can_get_enterprise_connections()
         {
             var result = client.GetEnterpriseConnections();
-            var gc = result.First();
-            gc.Name.Should().Be.EqualTo("auth0waadtests.onmicrosoft.com");
-            gc.Strategy.Should().Be.EqualTo("waad");
+            result.Select(c => c.Strategy)
+                  .Should().Contain("office365").And.Contain("google-apps");
         }
 
         [Test]
@@ -90,14 +89,14 @@ namespace Auth0.Net_tests
                     tenantDomain: "desopilante.com"
                 );
 
-            ticket.Enabled = false;
+            ticket.Enabled = true;
 
             Assert.Throws<InvalidOperationException>(() => client.CreateConnection(ticket)).Message
                 .Should().Be.EqualTo("Bad Request - desopilante.com is not a valid google apps domain");
 
         }
 
-        [Test]
+        [Test, Ignore("need to change to free tier")]
         public void when_creating_a_connection_exceeding_limit_throw_exception()
         {
             var ticket = new Connection(
