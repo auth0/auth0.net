@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
 using System.Linq;
-using System.Text;
 using NUnit.Framework;
-using Auth0;
 using System.Configuration;
 using SharpTestsEx;
 
@@ -157,6 +153,8 @@ namespace Auth0.Net_tests
             var count = users.AutoPaged().Count();
 
             count.Should().Be.GreaterThan(2);
+            // Ensure same user not returned twice
+            users.AutoPaged().Select(u => u.GetHashCode()).Distinct().Count().Should().Be.EqualTo(count);
         }
 
         [Test]
@@ -169,8 +167,8 @@ namespace Auth0.Net_tests
         }
 
         [TestCase(1)]
-        [TestCase(10)]
-        [TestCase(25)]
+        [TestCase(2)]
+        [TestCase(5)]
         public void can_get_social_users_using_different_size_pages(int pageSize)
         {
             var users = client.GetSocialUsers(pageSize);
@@ -181,10 +179,12 @@ namespace Auth0.Net_tests
         [Test]
         public void can_use_autopaged_to_enumerate_all_social_users()
         {
-            var users = client.GetSocialUsers(2);
+            var users = client.GetSocialUsers(20);
             var count = users.AutoPaged().Count();
 
-            count.Should().Be.GreaterThan(2);
+            count.Should().Be.GreaterThan(20);
+            // Ensure same user not returned twice
+            users.AutoPaged().Select(u => u.GetHashCode()).Distinct().Count().Should().Be.EqualTo(count);
         }
 
         [Test]
@@ -197,8 +197,8 @@ namespace Auth0.Net_tests
         }
 
         [TestCase(1)]
-        [TestCase(10)]
-        [TestCase(25)]
+        [TestCase(2)]
+        [TestCase(5)]
         public void can_get_enterprise_users_by_connection_using_different_size_pages(int pageSize)
         {
             var users = client.GetUsersByConnection("google-oauth2", pageSize);
@@ -213,6 +213,8 @@ namespace Auth0.Net_tests
             var count = users.AutoPaged().Count();
 
             count.Should().Be.GreaterThan(2);
+            // Ensure same user not returned twice
+            users.AutoPaged().Select(u => u.GetHashCode()).Distinct().Count().Should().Be.EqualTo(count);
         }
     }
 }

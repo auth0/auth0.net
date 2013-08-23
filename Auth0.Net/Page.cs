@@ -128,7 +128,7 @@ namespace Auth0
                     
                     currentPage = currentPage.GetNextPage();
                     current = currentPage.ElementAt(0);
-                    pageIndex = 0;
+                    pageIndex = 1;
 
                     return true;
                 }
