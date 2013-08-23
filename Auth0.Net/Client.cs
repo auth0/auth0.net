@@ -1,8 +1,11 @@
-﻿namespace Auth0
+﻿using System.IO;
+
+namespace Auth0
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text.RegularExpressions;
     using System.Net;
     using Newtonsoft.Json;
     using RestSharp;
@@ -10,6 +13,8 @@
 
     public class Client
     {
+        private static readonly Regex NextRelLinkRegex = new Regex("<(?<url>.*)>.*rel=\"next\"", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
         private readonly string clientID;
         private readonly string clientSecret;
         private readonly string domain;
@@ -25,19 +30,19 @@
             this.client = new RestClient(url);
         }
 
-        public IEnumerable<Connection> GetConnections()
+        public Page<Connection> GetConnections(int pageSize = 0)
         {
-            return this.GetConnectionsInternal();
+            return this.GetConnectionsInternal(pageSize: pageSize);
         }
 
-        public IEnumerable<Connection> GetSocialConnections()
+        public Page<Connection> GetSocialConnections(int pageSize = 0)
         {
-            return this.GetConnectionsInternal(onlySocials: true);
+            return this.GetConnectionsInternal(onlySocials: true, pageSize: pageSize);
         }
 
-        public IEnumerable<Connection> GetEnterpriseConnections()
+        public Page<Connection> GetEnterpriseConnections(int pageSize = 0)
         {
-            return this.GetConnectionsInternal(onlyEnterprise: true);
+            return this.GetConnectionsInternal(onlyEnterprise: true, pageSize: pageSize);
         }
 
         public CreateConnectionResult CreateConnection(ProvisioningTicket provisioningTicket)
@@ -110,48 +115,47 @@
             this.client.Execute(request);
         }
 
-        public IEnumerable<User> GetUsersByConnection(string connectionName)
+        public Page<User> GetUsersByConnection(string connectionName, int pageSize = 0)
         {
-            return this.GetUsersByConnection(connectionName, string.Empty);
+            return this.GetUsersByConnection(connectionName, string.Empty, pageSize);
         }
 
-        public IEnumerable<User> GetUsersByConnection(string connectionName, string search)
+        public Page<User> GetUsersByConnection(string connectionName, string search, int pageSize = 0)
         {
-            var accessToken = this.GetAccessToken();
             var request = new RestRequest("/api/connections/{connectionName}/users");
-            
-            request.AddHeader("accept", "application/json");
             request.AddParameter("connectionName", connectionName, ParameterType.UrlSegment);
-            request.AddParameter("access_token", accessToken);
 
             if (!string.IsNullOrEmpty(search))
             {
                 request.AddParameter("search", search);
             }
 
-            var response = this.client.Execute(request);
+            if (pageSize > 0)
+            {
+                request.AddParameter("per_page", pageSize);
+            }
 
-            return JsonConvert.DeserializeObject<List<User>>(response.Content);
+            return LoadPagedResource<User>(request);
         }
 
-        public IEnumerable<User> GetSocialUsers()
+        public Page<User> GetSocialUsers(int pageSize = 0)
         {
-            return this.GetSocialUsers(string.Empty);
+            return this.GetSocialUsers(string.Empty, pageSize);
         }
 
-        public IEnumerable<User> GetSocialUsers(string search)
+        public Page<User> GetSocialUsers(string search, int pageSize = 0)
         {
-            return this.GetUsers("socialconnections", search);
+            return this.GetUsers("socialconnections", search, pageSize);
         }
 
-        public IEnumerable<User> GetEnterpriseUsers()
+        public Page<User> GetEnterpriseUsers(int pageSize = 0)
         {
-            return this.GetEnterpriseUsers(string.Empty);
+            return this.GetEnterpriseUsers(string.Empty, pageSize);
         }
 
-        public IEnumerable<User> GetEnterpriseUsers(string search)
+        public Page<User> GetEnterpriseUsers(string search, int pageSize = 0)
         {
-            return this.GetUsers("enterpriseconnections", search);
+            return this.GetUsers("enterpriseconnections", search, pageSize);
         }
 
         public TokenResult ExchangeAuthorizationCodePerAccessToken(string code, string redirectUri)
@@ -273,43 +277,95 @@
             return this.currentToken.Token;
         }
 
-        private IEnumerable<Connection> GetConnectionsInternal(bool onlySocials = false, bool onlyEnterprise = false)
+        private Page<Connection> GetConnectionsInternal(bool onlySocials = false, bool onlyEnterprise = false, int pageSize = 0)
         {
-            var accessToken = this.GetAccessToken();
-
             var request = new RestRequest("/api/connections");
-            request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
-            request.AddParameter("access_token", accessToken);
             request.AddParameter("only_socials", onlySocials);
             request.AddParameter("only_enterprise", onlyEnterprise);
+            
+            if (pageSize > 0)
+            {
+                request.AddParameter("per_page", pageSize);
+            }
 
-            var response = this.client.Execute(request);
-
-            return JsonConvert.DeserializeObject<List<Connection>>(response.Content);
+            return LoadPagedResource<Connection>(request);
         }
 
-        private IEnumerable<User> GetUsers(string connectionType, string search)
+        private Page<User> GetUsers(string connectionType, string search, int pageSize = 0)
         {
             if (string.IsNullOrEmpty(connectionType))
             {
                 throw new ArgumentNullException("connectionType");
             }
 
-            var accessToken = this.GetAccessToken();
             var request = new RestRequest("/api/{connectionType}/users");
-
-            request.AddHeader("accept", "application/json");
             request.AddParameter("connectionType", connectionType, ParameterType.UrlSegment);
-            request.AddParameter("access_token", accessToken);
 
             if (!string.IsNullOrEmpty(search))
             {
                 request.AddParameter("search", search);
             }
 
-            var response = this.client.Execute(request);
+            if (pageSize > 0)
+            {
+                request.AddParameter("per_page", pageSize);
+            }
 
-            return JsonConvert.DeserializeObject<List<User>>(response.Content);
+            return LoadPagedResource<User>(request);
         }
+
+        private Page<T> LoadPagedResource<T>(RestRequest request)
+        {
+            var accessToken = GetAccessToken();
+            request.AddParameter("access_token", accessToken);
+
+            request.AddHeader("accept", "application/json");
+
+            var response = client.Execute(request);
+            return BuildPage<T>(response);
+        }
+
+        private Page<T> LoadPageFromLink<T>(string url)
+        {
+            // URL is absolute, so we cannot use previously created client (it has a base URL)
+            var client = new RestClient();
+            var request = new RestRequest(url);
+            request.AddHeader("accept", "application/json");
+
+            var response = client.Execute(request);
+            return BuildPage<T>(response);
+        }
+
+        private Page<T> BuildPage<T>(IRestResponse response)
+        {
+            var results = JsonConvert.DeserializeObject<List<T>>(response.Content);
+            var links = ParseLinks(response.Headers.FirstOrDefault(h => h.Name == "Link"));
+
+            if (!links.ContainsKey("next"))
+            {
+                return new Page<T>(results, false, null);
+            }
+
+            return new Page<T>(results, true, () => LoadPageFromLink<T>(links["next"]));
+        }
+
+        /// <summary>
+        /// Given the 'Links' header will parse the links that have been returned from the API.
+        /// </summary>
+        /// <param name="linksHeader">The links header, which may be null or contain an empty string.</param>
+        /// <returns>A dictionary of links, with the key being the <c>rel</c> and the value the URL.</returns>
+        private Dictionary<string, string> ParseLinks(Parameter linksHeader)
+        {
+            if (linksHeader == null || linksHeader.Value == null || string.IsNullOrEmpty(linksHeader.Value.ToString()))
+            {
+                return new Dictionary<string, string>();
+            }
+
+            var entries = linksHeader.Value.ToString().Split(',');
+
+            return entries.ToDictionary(
+                e => Regex.Match(e, "rel=\"(.*)\"").Groups[1].Value, 
+                e => Regex.Match(e, "<(.*)>").Groups[1].Value);
+        } 
     }
 }
