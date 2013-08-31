@@ -52,6 +52,7 @@
     <Compile Include="AccessToken.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="Client.cs" />
+    <Compile Include="DelegationTokenResult.cs" />
     <Compile Include="CreateConnectionResult.cs" />
     <Compile Include="JsonSerializer.cs" />
     <Compile Include="OAuthException.cs" />

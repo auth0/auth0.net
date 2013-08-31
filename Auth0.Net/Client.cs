@@ -228,6 +228,31 @@
             return userProfile;
         }
 
+        public DelegationTokenResult GetDelegationToken(string token, string targetClientId)
+        {
+            var request = new RestRequest("/delegation", Method.POST);
+
+            request.AddHeader("accept", "application/json");
+
+            request.AddParameter("client_id", this.clientID, ParameterType.GetOrPost);
+            request.AddParameter("client_secret", this.clientSecret, ParameterType.GetOrPost);
+            request.AddParameter("grant_type", "urn:ietf:params:oauth:grant-type:jwt-bearer", ParameterType.GetOrPost);
+            request.AddParameter("id_token", token, ParameterType.GetOrPost);
+            request.AddParameter("target", targetClientId, ParameterType.GetOrPost);
+
+            var response = this.client.Execute<Dictionary<string, string>>(request).Data;
+
+            if (response.ContainsKey("error") || response.ContainsKey("error_description"))
+            {
+                throw new OAuthException(response["error_description"], response["error"]);
+            }
+
+            return new DelegationTokenResult
+            {
+                IdToken = response.ContainsKey("id_token") ? response["id_token"] : string.Empty
+            };
+        }
+
         private static string GetErrorDetails(string resultContent)
         {
             try
