@@ -30,15 +30,7 @@
             this.clientID = clientID;
             this.clientSecret = clientSecret;
             this.domain = domain;
-            string url;
-            if (domain.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
-            {
-                url = this.domain;
-            }
-            else
-            {
-                url = "https://" + this.domain;
-            }
+            string url = "https://" + this.domain;
             this.client = new RestClient(url);
         }
 
