@@ -8,38 +8,72 @@
     using RestSharp;
     using Newtonsoft.Json.Linq;
 
+    /// <summary>
+    /// Provides access to Auth0 services.
+    /// </summary>
     public class Client
     {
         private readonly string clientID;
         private readonly string clientSecret;
         private readonly string domain;
         private AccessToken currentToken;
-        private RestClient client;
+        private readonly RestClient client;
 
+        /// <summary>
+        /// Creates an instance of the client.
+        /// </summary>
+        /// <param name="clientID">The client id of the application, as shown in the dashboard settings.</param>
+        /// <param name="clientSecret">The client secret of the application, as shown in the dashboard settings.</param>
+        /// <param name="domain">The domain for the Auth0 server.</param>
         public Client(string clientID, string clientSecret, string domain)
         {
             this.clientID = clientID;
             this.clientSecret = clientSecret;
             this.domain = domain;
-            var url = "https://" + this.domain;
+            string url;
+            if (domain.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+            {
+                url = this.domain;
+            }
+            else
+            {
+                url = "https://" + this.domain;
+            }
             this.client = new RestClient(url);
         }
 
+        /// <summary>
+        /// Returns a list of all the connections defined for the application.
+        /// </summary>
+        /// <returns>An IEnumerable of connections.</returns>
         public IEnumerable<Connection> GetConnections()
         {
             return this.GetConnectionsInternal();
         }
 
+        /// <summary>
+        /// Returns a list of all the social connections defined for the application.
+        /// </summary>
+        /// <returns>An IEnumerable of connections.</returns>
         public IEnumerable<Connection> GetSocialConnections()
         {
             return this.GetConnectionsInternal(onlySocials: true);
         }
 
+        /// <summary>
+        /// Returns a list of all the enterprise connections defined for the application.
+        /// </summary>
+        /// <returns>An IEnumerable of connections.</returns>
         public IEnumerable<Connection> GetEnterpriseConnections()
         {
             return this.GetConnectionsInternal(onlyEnterprise: true);
         }
 
+        /// <summary>
+        /// Creates a new connection using a provisioning ticket.
+        /// </summary>
+        /// <param name="provisioningTicket">The provisioning ticket containing the options for the new connection.</param>
+        /// <returns>An instance of CreateConnectionResult containing the results of the operation.</returns>
         public CreateConnectionResult CreateConnection(ProvisioningTicket provisioningTicket)
         {
             var connectionTicket = new Connection(
@@ -77,6 +111,11 @@
             }
         }
 
+        /// <summary>
+        /// Creates a new connection.
+        /// </summary>
+        /// <param name="ticket">An instance of a Connection object representing the connection to create.</param>
+        /// <returns>An instance of the Connection object created.</returns>
         public Connection CreateConnection(Connection ticket)
         {
             var accessToken = this.GetAccessToken();
@@ -99,6 +138,10 @@
             return JsonConvert.DeserializeObject<Connection>(result.Content);
         }
 
+        /// <summary>
+        /// Deletes a previously created connection.
+        /// </summary>
+        /// <param name="connectionName">The name of the connection to delete.</param>
         public void DeleteConnection(string connectionName)
         {
             var accessToken = this.GetAccessToken();
@@ -110,11 +153,25 @@
             this.client.Execute(request);
         }
 
+        /// <summary>
+        /// Gets all the users available in a connection.
+        /// </summary>
+        /// <param name="connectionName">The connection name.</param>
+        /// <returns>An IEnumerable of User instances.</returns>
         public IEnumerable<User> GetUsersByConnection(string connectionName)
         {
             return this.GetUsersByConnection(connectionName, string.Empty);
         }
 
+        /// <summary>
+        /// Gets all the users available in a connection that match a search string.
+        /// If the connection doesn't have a directory or it is a social connection like 
+        /// Google OAuth 2 it will return all the users that have logged in to your 
+        /// application at least once.
+        /// </summary>
+        /// <param name="connectionName">The connection name.</param>
+        /// <param name="search">The search string to use.</param>
+        /// <returns>An IEnumerable of User instances.</returns>
         public IEnumerable<User> GetUsersByConnection(string connectionName, string search)
         {
             var accessToken = this.GetAccessToken();
@@ -134,26 +191,62 @@
             return JsonConvert.DeserializeObject<List<User>>(response.Content);
         }
 
+        /// <summary>
+        /// Gets all the users available in social connections.
+        /// If the connection doesn't have a directory or it is a social connection like 
+        /// Google OAuth 2 it will return all the users that have logged in to your 
+        /// application at least once.
+        /// </summary>
+        /// <returns>An IEnumerable of User instances.</returns>
         public IEnumerable<User> GetSocialUsers()
         {
             return this.GetSocialUsers(string.Empty);
         }
 
+        /// <summary>
+        /// Gets all the users available in social connections that match a search string.
+        /// If the connection doesn't have a directory or it is a social connection like 
+        /// Google OAuth 2 it will return all the users that have logged in to your 
+        /// application at least once.
+        /// </summary>
+        /// <param name="search">The search string to use.</param>
+        /// <returns>An IEnumerable of User instances.</returns>
         public IEnumerable<User> GetSocialUsers(string search)
         {
             return this.GetUsers("socialconnections", search);
         }
 
+        /// <summary>
+        /// Gets all the users available in enterprise connections.
+        /// If the connection doesn't have a directory or it is a social connection like 
+        /// Google OAuth 2 it will return all the users that have logged in to your 
+        /// application at least once.
+        /// </summary>
+        /// <returns>An IEnumerable of User instances.</returns>
         public IEnumerable<User> GetEnterpriseUsers()
         {
             return this.GetEnterpriseUsers(string.Empty);
         }
 
+        /// <summary>
+        /// Gets all the users available in enterprise connections that match a search string.
+        /// If the connection doesn't have a directory or it is a social connection like 
+        /// Google OAuth 2 it will return all the users that have logged in to your 
+        /// application at least once.
+        /// </summary>
+        /// <param name="search">The search string to use.</param>
+        /// <returns>An IEnumerable of User instances.</returns>
         public IEnumerable<User> GetEnterpriseUsers(string search)
         {
             return this.GetUsers("enterpriseconnections", search);
         }
 
+        /// <summary>
+        /// Asks the server an access token, providing an authorization code.
+        /// </summary>
+        /// <param name="code">The authorization code received.</param>
+        /// <param name="redirectUri">The redirect uri.</param>
+        /// <returns>An instance of TokenResult containing the access token.</returns>
         public TokenResult ExchangeAuthorizationCodePerAccessToken(string code, string redirectUri)
         {
             var request = new RestRequest("/oauth/token", Method.POST);
@@ -180,6 +273,11 @@
             };
         }
 
+        /// <summary>
+        /// Gets user information from an access token.
+        /// </summary>
+        /// <param name="accessToken">The access token.</param>
+        /// <returns>An instance of UserProfile contaning the user information.</returns>
         public UserProfile GetUserInfo(string accessToken)
         {
             var request = new RestRequest("/userinfo?access_token={accessToken}");
@@ -228,6 +326,12 @@
             return userProfile;
         }
 
+        /// <summary>
+        /// Gets a delegation token.
+        /// </summary>
+        /// <param name="token">The current access token.</param>
+        /// <param name="targetClientId">The client id of the target application.</param>
+        /// <returns>An instance of DelegationTokenResult containing the delegation token id.</returns>
         public DelegationTokenResult GetDelegationToken(string token, string targetClientId)
         {
             var request = new RestRequest("/delegation", Method.POST);

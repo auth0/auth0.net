@@ -110,5 +110,18 @@ namespace Auth0.Net_tests
                 .Should().Be.EqualTo("Payment Required - You have reached the limit of enterprise connections (Max number: 1 - Plan: free)");
 
         }
+
+        [SetUp]
+        public void can_use_https_in_domain()
+        {
+            var alternative = new Client(ConfigurationManager.AppSettings["AUTH0_CLIENT_ID"],
+                                          ConfigurationManager.AppSettings["AUTH0_CLIENT_SECRET"],
+                                          "https://" + ConfigurationManager.AppSettings["AUTH0_CLIENT_DOMAIN"]);
+
+            var result = alternative.GetConnections();
+            var gc = result.First();
+            gc.Name.Should().Be.EqualTo("auth0waadtests.onmicrosoft.com");
+            gc.Strategy.Should().Be.EqualTo("waad");
+        }
     }
 }
