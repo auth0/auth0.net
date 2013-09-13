@@ -115,8 +115,8 @@ namespace Auth0.Net_tests
         public void can_use_https_in_domain()
         {
             var alternative = new Client(ConfigurationManager.AppSettings["AUTH0_CLIENT_ID"],
-                                          ConfigurationManager.AppSettings["AUTH0_CLIENT_SECRET"],
-                                          "https://" + ConfigurationManager.AppSettings["AUTH0_CLIENT_DOMAIN"]);
+                                         ConfigurationManager.AppSettings["AUTH0_CLIENT_SECRET"],
+                                         ConfigurationManager.AppSettings["AUTH0_CLIENT_DOMAIN"]);
 
             var result = alternative.GetConnections();
             var gc = result.First();

@@ -151,20 +151,26 @@ namespace Auth0
         }
 
         /// <summary>
-        /// Gets all the users available in a connection.
+        /// Gets the first page of users available in a connection.
+        ///
         /// </summary>
         /// <param name="connectionName">The connection name.</param>
-        /// <returns>An IEnumerable of User instances.</returns>
+        /// <returns>An Page and IEnumerable of User instances.</returns>
         public Page<User> GetUsersByConnection(string connectionName, int pageSize = 0)
         {
             return this.GetUsersByConnection(connectionName, string.Empty, pageSize);
         }
 
         /// <summary>
-        /// Gets all the users available in a connection that match a search string.
+        /// Gets the first page of users available in a connection that match a search string.
+        /// 
         /// If the connection doesn't have a directory or it is a social connection like 
         /// Google OAuth 2 it will return all the users that have logged in to your 
         /// application at least once.
+        /// 
+        /// If the connection is an enterprise connection and supports directory queries it will fetch
+        /// the users from there.
+        /// 
         /// </summary>
         /// <param name="connectionName">The connection name.</param>
         /// <param name="search">The search string to use.</param>
@@ -188,7 +194,7 @@ namespace Auth0
         }
 
         /// <summary>
-        /// Gets all the users available in social connections.
+        /// Gets the first page of users available in social connections.
         /// If the connection doesn't have a directory or it is a social connection like 
         /// Google OAuth 2 it will return all the users that have logged in to your 
         /// application at least once.
@@ -200,7 +206,7 @@ namespace Auth0
         }
 
         /// <summary>
-        /// Gets all the users available in social connections that match a search string.
+        /// Gets the first page of users available in social connections that match a search string.
         /// If the connection doesn't have a directory or it is a social connection like 
         /// Google OAuth 2 it will return all the users that have logged in to your 
         /// application at least once.
@@ -213,7 +219,7 @@ namespace Auth0
         }
 
         /// <summary>
-        /// Gets all the users available in enterprise connections.
+        /// Gets the first page of users available in enterprise connections.
         /// If the connection doesn't have a directory or it is a social connection like 
         /// Google OAuth 2 it will return all the users that have logged in to your 
         /// application at least once.
@@ -225,7 +231,7 @@ namespace Auth0
         }
 
         /// <summary>
-        /// Gets all the users available in enterprise connections that match a search string.
+        /// Gets the first page of users available in enterprise connections that match a search string.
         /// If the connection doesn't have a directory or it is a social connection like 
         /// Google OAuth 2 it will return all the users that have logged in to your 
         /// application at least once.
