@@ -1,15 +1,15 @@
 ﻿
 namespace Auth0
 {
-	using System.IO;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    using RestSharp;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text.RegularExpressions;
     using System.Net;
-    using Newtonsoft.Json;
-    using RestSharp;
-    using Newtonsoft.Json.Linq;
+    using System.Text;
+    using System.Text.RegularExpressions;
 
     /// <summary>
     /// Provides access to Auth0 services.
@@ -280,19 +280,29 @@ namespace Auth0
         /// </summary>
         /// <param name="accessToken">The access token.</param>
         /// <returns>An instance of UserProfile contaning the user information.</returns>
+        [ObsoleteAttribute("This method is obsolete. Call GetUserInfo(TokenResult tokenResult) instead.")] 
         public UserProfile GetUserInfo(string accessToken)
         {
-            var request = new RestRequest("/userinfo?access_token={accessToken}");
+            return this.GetUserInfo(new TokenResult { AccessToken = accessToken });
+        }
 
-            request.AddHeader("accept", "application/json");
-            request.AddParameter("accessToken", accessToken, ParameterType.UrlSegment);
-
-            var response = this.client.Execute(request);
-            if (response.StatusCode == HttpStatusCode.Unauthorized)
+        /// <summary>
+        /// Gets user information from an token result.
+        /// </summary>
+        /// <param name="tokenResult">The token result.</param>
+        /// <returns>An instance of UserProfile contaning the user information.</returns>
+        public UserProfile GetUserInfo(TokenResult tokenResult)
+        {
+            if (tokenResult == null)
             {
-                throw new InvalidOperationException(GetErrorDetails(response.Content));
+                throw new ArgumentNullException("tokenResult");
             }
 
+            var jsonProfile = !string.IsNullOrEmpty(tokenResult.IdToken) ?
+                this.GetJsonProfileFromIdToken(tokenResult.IdToken) :
+                this.GetJsonProfileFromAccessToken(tokenResult.AccessToken);
+
+            var ignoredProperties = new string[] { "iss", "sub", "aud", "exp", "iat" };
             var mappedProperties = new string[] 
             {
                 "email",
@@ -307,10 +317,10 @@ namespace Auth0
                 "identities"
             };
 
-            var userProfile = JsonConvert.DeserializeObject<UserProfile>(response.Content);
-            var responseData = JsonConvert.DeserializeObject<Dictionary<string, object>>(response.Content);
+            var userProfile = JsonConvert.DeserializeObject<UserProfile>(jsonProfile);
+            var responseData = JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonProfile);
             userProfile.ExtraProperties = responseData != null ?
-                responseData.Keys.Where(x => !mappedProperties.Contains(x)).ToDictionary(x => x, x => responseData[x]) :
+                responseData.Keys.Where(x => !mappedProperties.Contains(x) && !ignoredProperties.Contains(x)).ToDictionary(x => x, x => responseData[x]) :
                 new Dictionary<string, object>();
 
             // Convert JArray to string[]
@@ -323,6 +333,11 @@ namespace Auth0
                     userProfile.ExtraProperties.Remove(item.Key);
                     userProfile.ExtraProperties.Add(item.Key, stringArray);
                 }
+            }
+
+            if (string.IsNullOrEmpty(userProfile.UserId) && responseData.ContainsKey("sub"))
+            {
+                userProfile.UserId = responseData["sub"].ToString();
             }
 
             return userProfile;
@@ -370,6 +385,28 @@ namespace Auth0
             }
 
             return resultContent;
+        }
+
+        private string GetJsonProfileFromIdToken(string idToken)
+        {
+            return Encoding.Default.GetString(
+                Utils.Base64UrlDecode(
+                    idToken.Split('.')[1]));
+        }
+
+        private string GetJsonProfileFromAccessToken(string accessToken)
+        {
+            var request = new RestRequest("/userinfo?access_token={accessToken}");
+            request.AddHeader("accept", "application/json");
+            request.AddParameter("accessToken", accessToken, ParameterType.UrlSegment);
+
+            var response = this.client.Execute(request);
+            if (response.StatusCode == HttpStatusCode.Unauthorized)
+            {
+                throw new InvalidOperationException(GetErrorDetails(response.Content));
+            }
+
+            return response.Content;
         }
 
         private string GetAccessToken()
