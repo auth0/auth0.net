@@ -335,9 +335,9 @@ namespace Auth0
                 }
             }
 
-            if (string.IsNullOrEmpty(userProfile.UserId) && responseData.ContainsKey("sub"))
+            if (string.IsNullOrEmpty(userProfile.UserId))
             {
-                userProfile.UserId = responseData["sub"].ToString();
+                return this.GetUserInfo(new TokenResult { AccessToken = tokenResult.AccessToken });
             }
 
             return userProfile;
