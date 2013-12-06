@@ -32,6 +32,21 @@ namespace Auth0
         /// <param name="domain">The domain for the Auth0 server.</param>
         public Client(string clientID, string clientSecret, string domain)
         {
+            if (string.IsNullOrEmpty(clientID))
+            {
+                throw new ArgumentNullException("clientID");
+            }
+
+            if (string.IsNullOrEmpty(clientSecret))
+            {
+                throw new ArgumentNullException("clientSecret");
+            }
+            
+            if (string.IsNullOrEmpty(domain))
+            {
+                throw new ArgumentNullException("domain");
+            }
+
             this.clientID = clientID;
             this.clientSecret = clientSecret;
             this.domain = domain;
@@ -302,6 +317,18 @@ namespace Auth0
                 this.GetJsonProfileFromIdToken(tokenResult.IdToken) :
                 this.GetJsonProfileFromAccessToken(tokenResult.AccessToken);
 
+            var userProfile = this.GetUserProfileFromJson(jsonProfile);
+
+            if (string.IsNullOrEmpty(userProfile.UserId))
+            {
+                return this.GetUserInfo(new TokenResult { AccessToken = tokenResult.AccessToken });
+            }
+
+            return userProfile;
+        }
+
+        private UserProfile GetUserProfileFromJson(string jsonProfile)
+        {
             var ignoredProperties = new string[] { "iss", "sub", "aud", "exp", "iat" };
             var mappedProperties = new string[] 
             {
@@ -334,12 +361,7 @@ namespace Auth0
                     userProfile.ExtraProperties.Add(item.Key, stringArray);
                 }
             }
-
-            if (string.IsNullOrEmpty(userProfile.UserId))
-            {
-                return this.GetUserInfo(new TokenResult { AccessToken = tokenResult.AccessToken });
-            }
-
+            
             return userProfile;
         }
 
@@ -372,6 +394,201 @@ namespace Auth0
             {
                 IdToken = response.ContainsKey("id_token") ? response["id_token"] : string.Empty
             };
+        }
+
+        /// <summary>
+        /// Updates a user metadata. Existing metadata will not be modified or deleted
+        /// unless new data is provided with the same key.
+        /// </summary>
+        /// <param name="userId">The user id.</param>
+        /// <param name="metadata">An object that contains the metadata to set for the user.</param>
+        public void UpdateUserMetadata(string userId, object metadata)
+        {
+            this.UpdateUserMetadataInternal(Method.PATCH, userId, metadata);
+        }
+
+        /// <summary>
+        /// Updates a user metadata. Existing metadata will not be modified or deleted
+        /// unless new data is provided with the same key.
+        /// </summary>
+        /// <param name="userId">The user id.</param>
+        /// <param name="metadata">An object that contains the metadata to set for the user.</param>
+        public void UpdateUserMetadata(string userId, IDictionary<string, object> metadata)
+        {
+            this.UpdateUserMetadataInternal(Method.PATCH, userId, metadata);
+        }
+
+        /// <summary>
+        /// Sets user metadata. All existing metadata will be replaced with
+        /// the data provided here.
+        /// </summary>
+        /// <param name="userId">The user id.</param>
+        /// <param name="metadata">An object that contains the metadata to set for the user.</param>
+        public void SetUserMetadata(string userId, object metadata)
+        {
+            this.UpdateUserMetadataInternal(Method.PUT, userId, metadata);
+        }
+
+        /// <summary>
+        /// Sets user metadata. All existing metadata will be replaced with
+        /// the data provided here.
+        /// </summary>
+        /// <param name="userId">The user id.</param>
+        /// <param name="metadata">An object that contains the metadata to set for the user.</param>
+        public void SetUserMetadata(string userId, IDictionary<string, object> metadata)
+        {
+            this.UpdateUserMetadataInternal(Method.PUT, userId, metadata);
+        }
+
+        private void UpdateUserMetadataInternal(Method method, string userId, object metadata)
+        {
+            if (string.IsNullOrEmpty(userId))
+            {
+                throw new ArgumentNullException("userId");
+            }
+
+            if (metadata == null)
+            {
+                throw new ArgumentNullException("metadata");
+            }
+
+            var accessToken = this.GetAccessToken();
+
+            var request = new RestRequest("/api/users/" + userId + "/metadata?access_token=" + accessToken, method);
+            
+            request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
+            request.RequestFormat = DataFormat.Json;
+            request.AddHeader("Content-Type", "application/json");
+            request.AddBody(metadata);
+
+            var result = this.client.Execute(request);
+            if (result.StatusCode != HttpStatusCode.OK && result.StatusCode != HttpStatusCode.Created)
+            {
+                var detail = GetErrorDetails(result.Content);
+                throw new InvalidOperationException(
+                    string.Format("{0} - {1}", result.StatusDescription, detail));
+            }
+        }
+
+        /// <summary>
+        /// Creates a new user (only valid for database connections).
+        /// </summary>
+        /// <param name="email">The user's email.</param>
+        /// <param name="password">The password for the new user.</param>
+        /// <param name="connection">The name of the database connection to store the user.</param>
+        /// <param name="emailVerified">True if the emails is already verified, false if a verification message is required.</param>
+        /// <returns>The profile of the user created.</returns>
+        public UserProfile CreateUser(string email, string password, string connection, bool emailVerified)
+        {
+            return CreateUser(email, password, connection, emailVerified, null);
+        }
+
+        /// <summary>
+        /// Creates a new user (only valid for database connections).
+        /// </summary>
+        /// <param name="email">The user's email.</param>
+        /// <param name="password">The password for the new user.</param>
+        /// <param name="connection">The name of the database connection to store the user.</param>
+        /// <param name="emailVerified">True if the emails is already verified, false if a verification message is required.</param>
+        /// <param name="metadata">Additional metadata to include in the user's profile.</param>
+        /// <returns>The profile of the user created.</returns>
+        public UserProfile CreateUser(
+            string email, string password, string connection, bool emailVerified, IDictionary<string, object> metadata)
+        {
+            return this.CreateUser(email, password, connection, emailVerified, metadata);
+        }
+
+        /// <summary>
+        /// Creates a new user (only valid for database connections).
+        /// </summary>
+        /// <param name="email">The user's email.</param>
+        /// <param name="password">The password for the new user.</param>
+        /// <param name="connection">The name of the database connection to store the user.</param>
+        /// <param name="emailVerified">True if the emails is already verified, false if a verification message is required.</param>
+        /// <param name="metadata">Additional metadata to include in the user's profile.</param>
+        /// <returns>The profile of the user created.</returns>
+        public UserProfile CreateUser(string email, string password, string connection, bool emailVerified, object metadata)
+        {
+            if (string.IsNullOrEmpty(email))
+            {
+                throw new ArgumentNullException("email");
+            }
+
+            if (string.IsNullOrEmpty(password))
+            {
+                throw new ArgumentNullException("password");
+            }
+
+            if (string.IsNullOrEmpty(connection))
+            {
+                throw new ArgumentNullException("connection");
+            }
+
+            var accessToken = this.GetAccessToken();
+
+            var request = new RestRequest("/api/users/?access_token=" + accessToken, Method.POST);
+
+            request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
+            request.RequestFormat = DataFormat.Json;
+            request.AddHeader("Content-Type", "application/json");
+
+            var requestBodyDict = metadata == null
+                                  ? new Dictionary<string, object>()
+                                  // from object to json and back to dictionary
+                                  : JsonConvert.DeserializeObject<Dictionary<string, object>>(
+                                      JsonConvert.SerializeObject(metadata));
+            requestBodyDict["email"] = email;
+            requestBodyDict["password"] = password;
+            requestBodyDict["connection"] = connection;
+            requestBodyDict["email_verified"] = emailVerified;
+            request.AddBody(requestBodyDict);
+
+            var result = this.client.Execute(request);
+            if (result.StatusCode != HttpStatusCode.OK && result.StatusCode != HttpStatusCode.Created)
+            {
+                var detail = GetErrorDetails(result.Content);
+                throw new InvalidOperationException(
+                    string.Format("{0} - {1}", result.StatusDescription, detail));
+            }
+            var userProfile = GetUserProfileFromJson(result.Content);
+
+            return userProfile;
+        }
+
+        /// <summary>
+        /// Changes a user password (only for database connections).
+        /// </summary>
+        /// <param name="userId">The user id.</param>
+        /// <param name="newPassword">The new password to set.</param>
+        /// <param name="verify">True if a verification email message is required, false otherwise.</param>
+        public void ChangePassword(string userId, string newPassword, bool verify)
+        {
+            if (string.IsNullOrEmpty(userId))
+            {
+                throw new ArgumentNullException("userId");
+            }
+
+            if (string.IsNullOrEmpty(newPassword))
+            {
+                throw new ArgumentNullException("newPassword");
+            }
+
+            var accessToken = this.GetAccessToken();
+
+            var request = new RestRequest("/api/users/" + userId + "/password?access_token=" + accessToken, Method.PUT);
+
+            request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
+            request.RequestFormat = DataFormat.Json;
+            request.AddHeader("Content-Type", "application/json");
+            request.AddBody(new { password = newPassword, verify = verify });
+
+            var result = this.client.Execute(request);
+            if (result.StatusCode != HttpStatusCode.OK && result.StatusCode != HttpStatusCode.Created)
+            {
+                var detail = GetErrorDetails(result.Content);
+                throw new InvalidOperationException(
+                    string.Format("{0} - {1}", result.StatusDescription, detail));
+            }
         }
 
         private static string GetErrorDetails(string resultContent)
@@ -530,6 +747,7 @@ namespace Auth0
             return entries.ToDictionary(
                 e => Regex.Match(e, "rel=\"(.*)\"").Groups[1].Value, 
                 e => Regex.Match(e, "<(.*)>").Groups[1].Value);
-        } 
+        }
+
     }
 }

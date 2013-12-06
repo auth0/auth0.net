@@ -216,5 +216,36 @@ namespace Auth0.Net_tests
             // Ensure same user not returned twice
             users.AutoPaged().Select(u => u.GetHashCode()).Distinct().Count().Should().Be.EqualTo(count);
         }
+
+        // todo: update these new tests to work with provided sample data
+        [Test]
+        public void can_create_user()
+        {
+            var result = client.CreateUser("john@contoso.com", "secretpass", "internalDB", false, new { additionalData = "22343" });
+            // todo: assert user is created, with data as provided
+        }
+
+        [Test]
+        public void can_set_user_metadata()
+        {
+            const string UserId = "auth0-adldap|725a3e91-c4f1-4d61-bf75-3de1df331b4e";
+            client.SetUserMetadata(UserId, new { Policy = "1234", CustomerId = "4442" });
+            // todo: assert changes
+        }
+
+        [Test]
+        public void can_update_user_metadata()
+        {
+            const string UserId = "auth0-adldap|725a3e91-c4f1-4d61-bf75-3de1df331b4e";
+            client.UpdateUserMetadata(UserId, new { CustomerId = "1111", booleanFalse = false, booleanTrue = true });
+        }
+
+        [Test]
+        public void can_change_user_password()
+        {
+            const string UserId = "auth0|5298d61621ec5e4738000003";
+            client.ChangePassword(UserId, "lalala", false);
+        }
+
     }
 }
