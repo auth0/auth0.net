@@ -6,9 +6,13 @@ using SharpTestsEx;
 
 namespace Auth0.Net_tests
 {
+    using System.Reflection;
+
     [TestFixture]
     public class UsersTests
     {
+        const string DbConn = "Auth0-NET-TestDb";
+
         private Client client;
 
         [TestFixtureSetUp]
@@ -17,8 +21,8 @@ namespace Auth0.Net_tests
             client = new Client(ConfigurationManager.AppSettings["AUTH0_CLIENT_ID"],
                                           ConfigurationManager.AppSettings["AUTH0_CLIENT_SECRET"],
                                           ConfigurationManager.AppSettings["AUTH0_CLIENT_DOMAIN"]);
-        }
 
+        }
         [Test]
         public void can_get_users_by_connection()
         {
@@ -217,35 +221,106 @@ namespace Auth0.Net_tests
             users.AutoPaged().Select(u => u.GetHashCode()).Distinct().Count().Should().Be.EqualTo(count);
         }
 
-        // todo: update these new tests to work with provided sample data
         [Test]
         public void can_create_user()
         {
-            var result = client.CreateUser("john@contoso.com", "secretpass", "internalDB", false, new { additionalData = "22343" });
-            // todo: assert user is created, with data as provided
+            DeleteIfFound("john@contoso.com");
+            var result = client.CreateUser("john@contoso.com", "secretpass", DbConn, true, new { additionalData = "22343" });
+
+            result.Email.Should().Be.EqualTo("john@contoso.com");
+            result.Identities.Single().Connection.Should().Be.EqualTo(DbConn);
+            ((bool)result.ExtraProperties["email_verified"]).Should().Be.True();
+            result.ExtraProperties["additionalData"].Should().Be.EqualTo("22343");
+
+            // just in case, we'll verify from a fresh read
+            var internalId = (string)result.ExtraProperties["_id"];
+            var newUser = this.GetProfileFromInternalId(internalId);
+
+            newUser.Email.Should().Be.EqualTo("john@contoso.com");
+            newUser.Identities.Single().Connection.Should().Be.EqualTo(DbConn);
+            ((bool)result.ExtraProperties["email_verified"]).Should().Be.True();
+            result.ExtraProperties["additionalData"].Should().Be.EqualTo("22343");
         }
 
         [Test]
         public void can_set_user_metadata()
         {
-            const string UserId = "auth0-adldap|725a3e91-c4f1-4d61-bf75-3de1df331b4e";
-            client.SetUserMetadata(UserId, new { Policy = "1234", CustomerId = "4442" });
-            // todo: assert changes
+            DeleteIfFound("john@contoso.com");
+
+            var result = client.CreateUser("john@contoso.com", "secretpass", DbConn, true, new { additionalData = "22343" });
+
+            client.SetUserMetadata(result.UserId, new { Policy = "1234", CustomerId = 4442 });
+
+            var internalId = (string)result.ExtraProperties["_id"];
+            var newUser = this.GetProfileFromInternalId(internalId);
+            newUser.ExtraProperties.ContainsKey("additionalData").Should().Be.False();
+            newUser.ExtraProperties["Policy"].Should().Be.EqualTo("1234");
+            newUser.ExtraProperties["CustomerId"].Should().Be.EqualTo((long)4442);
         }
 
         [Test]
         public void can_update_user_metadata()
         {
-            const string UserId = "auth0-adldap|725a3e91-c4f1-4d61-bf75-3de1df331b4e";
-            client.UpdateUserMetadata(UserId, new { CustomerId = "1111", booleanFalse = false, booleanTrue = true });
+            DeleteIfFound("john@contoso.com");
+
+            var result = client.CreateUser("john@contoso.com", "secretpass", DbConn, true, new { additionalData = "22343" });
+
+            client.UpdateUserMetadata(result.UserId, new { Policy = "1234"});
+            client.UpdateUserMetadata(result.UserId, new { CustomerId = 4442 });
+
+            var internalId = (string)result.ExtraProperties["_id"];
+            var newUser = this.GetProfileFromInternalId(internalId);
+            newUser.ExtraProperties["additionalData"].Should().Be.EqualTo("22343");
+            newUser.ExtraProperties["Policy"].Should().Be.EqualTo("1234");
+            newUser.ExtraProperties["CustomerId"].Should().Be.EqualTo((long)4442);
         }
 
         [Test]
         public void can_change_user_password()
         {
-            const string UserId = "auth0|5298d61621ec5e4738000003";
-            client.ChangePassword(UserId, "lalala", false);
+            DeleteIfFound("john@contoso.com");
+
+            var result = client.CreateUser("john@contoso.com", "secretpass", DbConn, true, new { additionalData = "22343" });
+            client.ChangePassword(result.UserId, "lalala", false);
         }
 
+        [Test]
+        public void can_delete_user()
+        {
+            DeleteIfFound("john@contoso.com");
+
+            var result = client.CreateUser("john@contoso.com", "secretpass", DbConn, true, new { additionalData = "22343" });
+            var internalId = (string)result.ExtraProperties["_id"];
+
+            this.GetProfileFromInternalId(internalId);
+            client.DeleteUser(result.UserId);
+
+            Assert.Throws<InvalidOperationException>(() =>
+                this.GetProfileFromInternalId(internalId)
+                ).Message.Should().Contain("user not found");
+        }
+
+        private void DeleteIfFound(string userName)
+        {
+            foreach (var user in client.GetUsersByConnection(DbConn, "john@contoso.com"))
+            {
+                client.DeleteUser(user.UserId);
+            }
+        }
+
+        private UserProfile GetProfileFromInternalId(string internalId)
+        {
+            var method = typeof(Client).GetMethod(
+                "GetUserInfoFromInternalId", BindingFlags.Instance | BindingFlags.NonPublic);
+            try
+            {
+                var userProfile = (UserProfile)method.Invoke(this.client, new object[] { internalId });
+                return userProfile;
+            }
+            catch (TargetInvocationException ex)
+            {
+                throw ex.InnerException;
+            }
+        }
     }
 }

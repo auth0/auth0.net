@@ -327,6 +327,35 @@ namespace Auth0
             return userProfile;
         }
 
+        /// <summary>
+        /// Gets user information from the internal id (_id).
+        /// </summary>
+        /// <param name="internalId">The internal id.</param>
+        /// <returns>An instance of UserProfile contaning the user information.</returns>
+        private UserProfile GetUserInfoFromInternalId(string internalId)
+        {
+            if (internalId == null)
+            {
+                throw new ArgumentNullException("internalId");
+            }
+
+            var request = new RestRequest("/api/users/{internalId}?access_token={accessToken}");
+            var accessToken = this.GetAccessToken();
+            request.AddHeader("accept", "application/json");
+            request.AddParameter("accessToken", accessToken, ParameterType.UrlSegment);
+            request.AddParameter("internalId", internalId, ParameterType.UrlSegment);
+
+            var response = this.client.Execute(request);
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                throw new InvalidOperationException(GetErrorDetails(response.Content));
+            }
+
+            var userProfile = this.GetUserProfileFromJson(response.Content);
+
+            return userProfile;
+        }
+
         private UserProfile GetUserProfileFromJson(string jsonProfile)
         {
             var ignoredProperties = new string[] { "iss", "sub", "aud", "exp", "iat" };
@@ -589,6 +618,34 @@ namespace Auth0
                 throw new InvalidOperationException(
                     string.Format("{0} - {1}", result.StatusDescription, detail));
             }
+        }
+
+        /// <summary>
+        /// Deletes a user.
+        /// </summary>
+        /// <param name="userId">The id of the user to delete.</param>
+        public void DeleteUser(string userId)
+        {
+            if (string.IsNullOrEmpty(userId))
+            {
+                throw new ArgumentNullException("userId");
+            }
+
+            var accessToken = this.GetAccessToken();
+
+            var request = new RestRequest("/api/users/" + userId + "?access_token=" + accessToken, Method.DELETE);
+
+            request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
+
+            var result = this.client.Execute(request);
+            if (result.StatusCode != HttpStatusCode.OK)
+            {
+                var detail = GetErrorDetails(result.Content);
+                throw new InvalidOperationException(
+                    string.Format("{0} - {1}", result.StatusDescription, detail));
+            }
+
+
         }
 
         private static string GetErrorDetails(string resultContent)
