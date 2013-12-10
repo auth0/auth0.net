@@ -524,7 +524,7 @@ namespace Auth0
         public UserProfile CreateUser(
             string email, string password, string connection, bool emailVerified, IDictionary<string, object> metadata)
         {
-            return this.CreateUser(email, password, connection, emailVerified, metadata);
+            return this.CreateUser(email, password, connection, emailVerified, (object) metadata);
         }
 
         /// <summary>
