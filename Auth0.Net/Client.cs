@@ -332,18 +332,18 @@ namespace Auth0
         /// </summary>
         /// <param name="internalId">The internal id.</param>
         /// <returns>An instance of UserProfile contaning the user information.</returns>
-        private UserProfile GetUserInfoFromInternalId(string internalId)
+        public UserProfile GetUser(string userId)
         {
-            if (internalId == null)
+            if (userId == null)
             {
                 throw new ArgumentNullException("internalId");
             }
 
-            var request = new RestRequest("/api/users/{internalId}?access_token={accessToken}");
+            var request = new RestRequest("/api/users/{userId}?access_token={accessToken}");
             var accessToken = this.GetAccessToken();
             request.AddHeader("accept", "application/json");
             request.AddParameter("accessToken", accessToken, ParameterType.UrlSegment);
-            request.AddParameter("internalId", internalId, ParameterType.UrlSegment);
+            request.AddParameter("userId", userId, ParameterType.UrlSegment);
 
             var response = this.client.Execute(request);
             if (response.StatusCode != HttpStatusCode.OK)

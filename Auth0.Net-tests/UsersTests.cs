@@ -310,12 +310,9 @@ namespace Auth0.Net_tests
 
         private UserProfile GetProfileFromInternalId(string internalId)
         {
-            var method = typeof(Client).GetMethod(
-                "GetUserInfoFromInternalId", BindingFlags.Instance | BindingFlags.NonPublic);
             try
             {
-                var userProfile = (UserProfile)method.Invoke(this.client, new object[] { internalId });
-                return userProfile;
+                return this.client.GetUser(internalId);
             }
             catch (TargetInvocationException ex)
             {
