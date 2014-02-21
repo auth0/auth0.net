@@ -663,7 +663,7 @@ namespace Auth0
 
         private string GetJsonProfileFromIdToken(string idToken)
         {
-            return Encoding.Default.GetString(
+            return Encoding.UTF8.GetString(
                 Utils.Base64UrlDecode(
                     idToken.Split('.')[1]));
         }
