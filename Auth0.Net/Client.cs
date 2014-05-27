@@ -776,6 +776,12 @@ namespace Auth0
 
         private Page<T> BuildPage<T>(IRestResponse response)
         {
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                throw new InvalidOperationException(
+                    string.Format("A non-success status code of '{0}' was returned, with response '{1}'", response.StatusCode, response.Content));
+            }
+
             var results = JsonConvert.DeserializeObject<List<T>>(response.Content);
             var links = ParseLinks(response.Headers.FirstOrDefault(h => h.Name == "Link"));
 
