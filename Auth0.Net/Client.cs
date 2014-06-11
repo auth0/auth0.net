@@ -104,6 +104,20 @@ namespace Auth0
                 connectionTicket.Options.ServerUrl = provisioningTicket.options["server_url"];
             }
 
+            if (provisioningTicket.options.ContainsKey("entityId") &&
+                !string.IsNullOrEmpty(provisioningTicket.options["entityId"]))
+            {
+                connectionTicket.Options.EntityId = provisioningTicket.options["entityId"];
+            }
+
+            var extraProperties = provisioningTicket.options.Keys.Except(
+                new string[] { "tenant_domain", "adfs_server", "server_url", "entityId" });
+
+            extraProperties.ToList().ForEach(k =>
+            {
+                connectionTicket.Options.ExtraProperties.Add(k, provisioningTicket.options[k]);
+            });
+
             try
             {
                 var connection = this.CreateConnection(connectionTicket);

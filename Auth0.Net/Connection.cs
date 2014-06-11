@@ -1,6 +1,6 @@
-﻿using System;
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 
 namespace Auth0
 {
@@ -43,6 +43,11 @@ namespace Auth0
 
     public class ConnectionOptions
     {
+        public ConnectionOptions()
+        {
+            this.ExtraProperties = new Dictionary<string, object>();
+        }
+
         [JsonProperty(PropertyName = "tenant_domain")]
         public string TenantDomain { get; set; }
 
@@ -51,5 +56,10 @@ namespace Auth0
 
         [JsonProperty(PropertyName = "server_url")]
         public string ServerUrl { get; set; }
+
+        [JsonProperty(PropertyName = "entityId")]
+        public string EntityId { get; set; }
+
+        public IDictionary<string, object> ExtraProperties { get; set; }
     }
 }
