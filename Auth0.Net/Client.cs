@@ -92,30 +92,12 @@ namespace Auth0
                 provisioningTicket.strategy, 
                 provisioningTicket.options["tenant_domain"]);
 
-            if (provisioningTicket.options.ContainsKey("adfs_server") &&
-                !string.IsNullOrEmpty(provisioningTicket.options["adfs_server"]))
-            {
-                connectionTicket.Options.AdfsServer = provisioningTicket.options["adfs_server"];
-            }
-
-            if (provisioningTicket.options.ContainsKey("server_url") &&
-                !string.IsNullOrEmpty(provisioningTicket.options["server_url"]))
-            {
-                connectionTicket.Options.ServerUrl = provisioningTicket.options["server_url"];
-            }
-
-            if (provisioningTicket.options.ContainsKey("entityId") &&
-                !string.IsNullOrEmpty(provisioningTicket.options["entityId"]))
-            {
-                connectionTicket.Options.EntityId = provisioningTicket.options["entityId"];
-            }
-
             var extraProperties = provisioningTicket.options.Keys.Except(
-                new string[] { "tenant_domain", "adfs_server", "server_url", "entityId" });
+                new string[] { "tenant_domain" });
 
             extraProperties.ToList().ForEach(k =>
             {
-                connectionTicket.Options.ExtraProperties.Add(k, provisioningTicket.options[k]);
+                connectionTicket.Options.Add(k, provisioningTicket.options[k]);
             });
 
             try
