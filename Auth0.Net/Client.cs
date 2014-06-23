@@ -397,7 +397,7 @@ namespace Auth0
         /// <param name="targetClientId">The client id of the target application.</param>
         /// <param name="scope">The openid scope.</param>
         /// <returns>An instance of DelegationTokenResult containing the delegation token id.</returns>
-        public DelegationTokenResult GetDelegationToken(string token, string targetClientId, string scope = "openid profile")
+        public DelegationTokenResult GetDelegationToken(string token, string targetClientId, string scope = "passthrough")
         {
             var request = new RestRequest("/delegation", Method.POST);
 
