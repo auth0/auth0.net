@@ -395,8 +395,9 @@ namespace Auth0
         /// </summary>
         /// <param name="token">The current access token.</param>
         /// <param name="targetClientId">The client id of the target application.</param>
+        /// <param name="scope">The openid scope.</param>
         /// <returns>An instance of DelegationTokenResult containing the delegation token id.</returns>
-        public DelegationTokenResult GetDelegationToken(string token, string targetClientId)
+        public DelegationTokenResult GetDelegationToken(string token, string targetClientId, string scope = "openid profile")
         {
             var request = new RestRequest("/delegation", Method.POST);
 
@@ -407,6 +408,7 @@ namespace Auth0
             request.AddParameter("grant_type", "urn:ietf:params:oauth:grant-type:jwt-bearer", ParameterType.GetOrPost);
             request.AddParameter("id_token", token, ParameterType.GetOrPost);
             request.AddParameter("target", targetClientId, ParameterType.GetOrPost);
+            request.AddParameter("scope", scope, ParameterType.GetOrPost);
 
             var response = this.client.Execute<Dictionary<string, string>>(request).Data;
 
