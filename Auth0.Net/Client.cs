@@ -419,6 +419,45 @@ namespace Auth0
 
             return new DelegationTokenResult
             {
+                IdToken = response.ContainsKey("id_token") ? response["id_token"] : string.Empty,
+                TokenType = response.ContainsKey("token_type") ? response["token_type"] : null,
+                ValidFrom = DateTime.UtcNow,
+                ValidTo = response.ContainsKey("expires_in") ? DateTime.UtcNow.AddSeconds(int.Parse(response["expires_in"])) : DateTime.MaxValue
+            };
+        }
+
+        /// <summary>
+        /// Logs a user with username/password (active authentication).
+        /// </summary>
+        /// <param name="username">The username.</param>
+        /// <param name="password">The password.</param>
+        /// <param name="connection">The connection name.</param>
+        /// <param name="scope">The openid scope.</param>
+        /// <returns></returns>
+        public TokenResult LoginUser(
+            string username, string password, string connection, string scope = "openid")
+        {
+            var request = new RestRequest("/oauth/ro", Method.POST);
+
+            request.AddHeader("accept", "application/json");
+
+            request.AddParameter("client_id", this.clientID, ParameterType.GetOrPost);
+            request.AddParameter("username", username, ParameterType.GetOrPost);
+            request.AddParameter("password", password, ParameterType.GetOrPost);
+            request.AddParameter("connection", connection, ParameterType.GetOrPost);
+            request.AddParameter("grant_type", "password", ParameterType.GetOrPost);
+            request.AddParameter("scope", scope, ParameterType.GetOrPost);
+
+            var result = this.client.Execute<Dictionary<string, string>>(request);
+            var response = result.Data;
+            if (response.ContainsKey("error") || response.ContainsKey("error_description"))
+            {
+                throw new OAuthException(response["error_description"], response["error"]);
+            }
+
+            return new TokenResult
+            {
+                AccessToken = response["access_token"],
                 IdToken = response.ContainsKey("id_token") ? response["id_token"] : string.Empty
             };
         }
