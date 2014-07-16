@@ -681,8 +681,27 @@ namespace Auth0
                 throw new InvalidOperationException(
                     string.Format("{0} - {1}", result.StatusDescription, detail));
             }
+        }
 
+        public void SendVerificationEmail(string userId)
+        {
+            if (string.IsNullOrEmpty(userId))
+            {
+                throw new ArgumentNullException("userId");
+            }
 
+            var accessToken = this.GetAccessToken();
+
+            var request = new RestRequest("/api/users/" + userId + "/send_verification_email?access_token=" + accessToken, Method.POST);
+            request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
+            var result = this.client.Execute(request);
+
+            if (result.StatusCode != HttpStatusCode.OK)
+            {
+                var detail = GetErrorDetails(result.Content);
+                throw new InvalidOperationException(
+                    string.Format("{0} - {1}", result.StatusDescription, detail));
+            }
         }
 
         private static string GetErrorDetails(string resultContent)
