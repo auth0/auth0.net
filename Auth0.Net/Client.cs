@@ -704,6 +704,43 @@ namespace Auth0
             }
         }
 
+        /// <summary>
+        /// Generates change password ticket.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="newPassword"></param>
+        /// <param name="resultUrl">Post verification url</param>
+        /// <returns></returns>
+        public string GenerateChangePasswordTicket(string userId, string newPassword, string resultUrl = null)
+        {
+            if (string.IsNullOrEmpty(userId))
+            {
+                throw new ArgumentNullException("userId");
+            }
+
+            var accessToken = this.GetAccessToken();
+
+            var request = new RestRequest("/api/users/" + userId + "/change_password_ticket?access_token=" + accessToken, Method.POST);
+            request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
+            request.AddParameter("newPassword", newPassword, ParameterType.GetOrPost);
+
+            if (!string.IsNullOrEmpty(resultUrl))
+            {
+                request.AddParameter("resultUrl", resultUrl, ParameterType.GetOrPost);
+            }
+
+            var result = this.client.Execute<Dictionary<string, string>>(request);
+
+            if (result.StatusCode != HttpStatusCode.OK)
+            {
+                var detail = GetErrorDetails(result.Content);
+                throw new InvalidOperationException(
+                    string.Format("{0} - {1}", result.StatusDescription, detail));
+            }
+
+            return result.Data["ticket"];
+        }
+
         private static string GetErrorDetails(string resultContent)
         {
             try
