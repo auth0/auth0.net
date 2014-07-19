@@ -658,6 +658,41 @@ namespace Auth0
         }
 
         /// <summary>
+        /// Changes a user email (the email used to login)
+        /// </summary>
+        /// <param name="userId">The user id.</param>
+        /// <param name="newEmail">The new email to set.</param>
+        public void ChangeEmail(string userId, string newEmail, bool verify)
+        {
+            if (string.IsNullOrEmpty(userId))
+            {
+                throw new ArgumentNullException("userId");
+            }
+
+            if (string.IsNullOrEmpty(newEmail))
+            {
+                throw new ArgumentNullException("newEmail");
+            }
+
+            var accessToken = this.GetAccessToken();
+
+            var request = new RestRequest("/api/users/" + userId + "/email?access_token=" + accessToken, Method.PUT);
+
+            request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
+            request.RequestFormat = DataFormat.Json;
+            request.AddHeader("Content-Type", "application/json");
+            request.AddBody(new { email = newEmail, verify = verify });
+
+            var result = this.client.Execute(request);
+            if (result.StatusCode != HttpStatusCode.OK && result.StatusCode != HttpStatusCode.Created)
+            {
+                var detail = GetErrorDetails(result.Content);
+                throw new InvalidOperationException(
+                    string.Format("{0} - {1}", result.StatusDescription, detail));
+            }
+        }
+
+        /// <summary>
         /// Deletes a user.
         /// </summary>
         /// <param name="userId">The id of the user to delete.</param>
