@@ -41,6 +41,8 @@ namespace Auth0
         {
             [DataMember(Name ="access_token")]
             public string AccessToken { get; set; }
+            [DataMember(Name = "access_token_secret")]
+            public string AccessTokenSecret { get; set; }
             [DataMember(Name ="provider")]
             public string Provider { get; set; }
             [DataMember(Name ="user_id")]
