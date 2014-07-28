@@ -354,8 +354,8 @@ namespace Auth0
 
         private UserProfile GetUserProfileFromJson(string jsonProfile)
         {
-            var ignoredProperties = new string[] { "iss", "sub", "aud", "exp", "iat" };
-            var mappedProperties = new string[] 
+            var ignoredProperties = new HashSet<string> { "iss", "sub", "aud", "exp", "iat" };
+            var mappedProperties = new HashSet<string> 
             {
                 "email",
                 "family_name",
@@ -369,34 +369,67 @@ namespace Auth0
                 "identities"
             };
 
+            ignoredProperties.UnionWith(mappedProperties);
+
             var userProfile = JsonConvert.DeserializeObject<UserProfile>(jsonProfile);
             var responseData = JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonProfile);
+           
             userProfile.ExtraProperties = responseData != null ?
-                responseData.Keys.Where(x => !mappedProperties.Contains(x) && !ignoredProperties.Contains(x)).ToDictionary(x => x, x => responseData[x]) :
+                ConvertJArrayToStringArray(ExcludeKeys(responseData, ignoredProperties)) :
                 new Dictionary<string, object>();
             
-            // Convert JArray to string[]
-            for (int i = 0; i < userProfile.ExtraProperties.Count; i++)
-            {
-                var item = userProfile.ExtraProperties.ElementAt(i);
-                if (item.Value is JArray)
-                {
-                    var stringArray = ((JArray)item.Value).Select(v => v.ToString()).ToArray();
-                    userProfile.ExtraProperties.Remove(item.Key);
-                    userProfile.ExtraProperties.Add(item.Key, stringArray);
-                }
-            }
+            var identitiesExtraPropertiesStringArray = responseData["identities"] as JArray;
 
-            // Get Extra Properties for each Identity Provider
-            for (int i = 0; i < userProfile.Identities.Count(); i++)
+            if (identitiesExtraPropertiesStringArray != null)
             {
-                var item = userProfile.Identities.ElementAt(i);
-                var identitiesExtraPropertiesStringArray = ((JArray)responseData["identities"]);
-                var identityExtraProperties = JsonConvert.DeserializeObject<Dictionary<string, object>>(identitiesExtraPropertiesStringArray.ElementAt(i).ToString());
-                item.ExtraProperties = identityExtraProperties;
+                DeserializeIdentityExtraProperties(userProfile, identitiesExtraPropertiesStringArray);
             }
             
             return userProfile;
+        }
+
+        private static Dictionary<string, object> ExcludeKeys(Dictionary<string, object> dictionary, HashSet<string> toExclude)
+        {
+            return dictionary.Where(kvp => !toExclude.Contains(kvp.Key)).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+        }
+
+        private static Dictionary<string, object> ConvertJArrayToStringArray(Dictionary<string, object> extraProperties)
+        {
+            return extraProperties.Select(kvp => {
+               if (kvp.Value is JArray){
+                   return new KeyValuePair<string, object>(kvp.Key, ((JArray)kvp.Value).Select(v => v.ToString()).ToArray());
+               }
+
+                return kvp;
+            }).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+        }
+
+        private static void DeserializeIdentityExtraProperties(
+            UserProfile userProfile,
+            JArray identitiesExtraPropertiesStringArray)
+        {
+            var identitiesMappedProperties = new HashSet<string>{
+                    "access_token",
+                    "provider",
+                    "user_id",
+                    "connection",
+                    "isSocial"
+                };
+
+            // Get Extra Properties for each Identity Provider
+            var identitiesList = userProfile.Identities.ToList();
+
+            for (int i = 0; i < identitiesList.Count; i++)
+            {
+                var item = identitiesList[i];
+
+                var identityExtraProperties = JsonConvert.DeserializeObject<Dictionary<string, object>>(
+                    identitiesExtraPropertiesStringArray[i].ToString());
+
+                item.ExtraProperties = identityExtraProperties != null ?
+                    ConvertJArrayToStringArray(ExcludeKeys(identityExtraProperties, identitiesMappedProperties)) :
+                    new Dictionary<string, object>();
+            }
         }
 
         /// <summary>
