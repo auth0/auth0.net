@@ -41,8 +41,8 @@ namespace Auth0
         {
             [DataMember(Name ="access_token")]
             public string AccessToken { get; set; }
-            [DataMember(Name = "access_token_secret")]
-            public string AccessTokenSecret { get; set; }
+            //[DataMember(Name = "access_token_secret")]
+            //public string AccessTokenSecret { get; set; }
             [DataMember(Name ="provider")]
             public string Provider { get; set; }
             [DataMember(Name ="user_id")]
@@ -51,6 +51,7 @@ namespace Auth0
             public string Connection { get; set; }
             [DataMember(Name ="isSocial")]
             public bool IsSocial { get; set; }
+            public Dictionary<string, object> ExtraProperties { get; set; }
         }
 
         public Dictionary<string, object> ExtraProperties { get; set; }

@@ -374,7 +374,7 @@ namespace Auth0
             userProfile.ExtraProperties = responseData != null ?
                 responseData.Keys.Where(x => !mappedProperties.Contains(x) && !ignoredProperties.Contains(x)).ToDictionary(x => x, x => responseData[x]) :
                 new Dictionary<string, object>();
-
+            
             // Convert JArray to string[]
             for (int i = 0; i < userProfile.ExtraProperties.Count; i++)
             {
@@ -385,6 +385,15 @@ namespace Auth0
                     userProfile.ExtraProperties.Remove(item.Key);
                     userProfile.ExtraProperties.Add(item.Key, stringArray);
                 }
+            }
+
+            // Get Extra Properties for each Identity Provider
+            for (int i = 0; i < userProfile.Identities.Count(); i++)
+            {
+                var item = userProfile.Identities.ElementAt(i);
+                var identitiesExtraPropertiesStringArray = ((JArray)responseData["identities"]);
+                var identityExtraProperties = JsonConvert.DeserializeObject<Dictionary<string, object>>(identitiesExtraPropertiesStringArray.ElementAt(i).ToString());
+                item.ExtraProperties = identityExtraProperties;
             }
             
             return userProfile;
