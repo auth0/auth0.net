@@ -49,6 +49,7 @@ namespace Auth0
             public string Connection { get; set; }
             [DataMember(Name ="isSocial")]
             public bool IsSocial { get; set; }
+            public Dictionary<string, object> ExtraProperties { get; set; }
         }
 
         public Dictionary<string, object> ExtraProperties { get; set; }
