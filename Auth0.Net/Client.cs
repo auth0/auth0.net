@@ -30,7 +30,8 @@ namespace Auth0
         /// <param name="clientID">The client id of the application, as shown in the dashboard settings.</param>
         /// <param name="clientSecret">The client secret of the application, as shown in the dashboard settings.</param>
         /// <param name="domain">The domain for the Auth0 server.</param>
-        public Client(string clientID, string clientSecret, string domain)
+        /// <param name="webProxy">Proxy to use for requests made by this client instance. Passed on to underying WebRequest if set.</param>
+        public Client(string clientID, string clientSecret, string domain, IWebProxy webProxy = null)
         {
             if (string.IsNullOrEmpty(clientID))
             {
@@ -41,7 +42,7 @@ namespace Auth0
             {
                 throw new ArgumentNullException("clientSecret");
             }
-            
+
             if (string.IsNullOrEmpty(domain))
             {
                 throw new ArgumentNullException("domain");
@@ -50,8 +51,13 @@ namespace Auth0
             this.clientID = clientID;
             this.clientSecret = clientSecret;
             this.domain = domain;
-            string url = "https://" + this.domain;
-            this.client = new RestClient(url);
+
+            this.client = new RestClient("https://" + this.domain);
+
+            if (webProxy != null)
+            {
+                this.client.Proxy = webProxy;
+            }
         }
 
         /// <summary>
