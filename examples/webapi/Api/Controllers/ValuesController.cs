@@ -9,7 +9,7 @@ using System.Web.Http.Cors;
 
 namespace Api.Controllers
 {
-    [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ValuesController : ApiController
     {
         [HttpGet]
