@@ -11,9 +11,9 @@ namespace Api
     {
         public static void Register(HttpConfiguration config)
         {
-
-
             // Web API configuration and services
+            config.EnableCors();
+
             var clientID = WebConfigurationManager.AppSettings["Auth0ClientID"];
             var clientSecret = WebConfigurationManager.AppSettings["Auth0ClientSecret"];
             

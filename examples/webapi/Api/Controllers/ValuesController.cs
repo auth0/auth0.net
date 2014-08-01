@@ -5,9 +5,11 @@ using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Api.Controllers
 {
+    [EnableCors(origins: "http://localhost:3000", headers: "*", methods: "*")]
     public class ValuesController : ApiController
     {
         [HttpGet]
@@ -20,6 +22,7 @@ namespace Api.Controllers
         [Authorize]
         [HttpGet]
         [Route("secured/ping")]
+
         public IHttpActionResult Secured()
         {
             return this.Ok("All good. You only get this message if you are authenticated.");
