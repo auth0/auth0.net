@@ -414,6 +414,11 @@ namespace Auth0
             UserProfile userProfile,
             JArray identitiesExtraPropertiesStringArray)
         {
+            if (userProfile.Identities == null)
+            {
+                return;
+            }
+
             var identitiesMappedProperties = new HashSet<string>{
                     "access_token",
                     "provider",
