@@ -494,6 +494,24 @@ namespace Auth0
         }
 
         /// <summary>
+        /// Block a user by setting block metadata to true
+        /// </summary>
+        /// <param name="userId">The userId to be blocked</param>
+        public void BlockUser(string userId) 
+        {
+            this.UpdateUserMetadata(userId, new { blocked = true });
+        }
+
+        /// <summary>
+        /// Unblock a user by setting block metadata to false
+        /// </summary>
+        /// <param name="userId">The userId to be unblocked</param>
+        public void UnblockUser(string userId)
+        {
+            this.UpdateUserMetadata(userId, new { blocked = false });
+        }
+
+        /// <summary>
         /// Sets user metadata. All existing metadata will be replaced with
         /// the data provided here.
         /// </summary>
