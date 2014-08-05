@@ -383,12 +383,22 @@ namespace Auth0
             userProfile.ExtraProperties = responseData != null ?
                 ConvertJArrayToStringArray(ExcludeKeys(responseData, ignoredProperties)) :
                 new Dictionary<string, object>();
-            
-            var identitiesExtraPropertiesStringArray = responseData["identities"] as JArray;
 
-            if (identitiesExtraPropertiesStringArray != null)
+            if (userProfile.Identities == null)
             {
-                DeserializeIdentityExtraProperties(userProfile, identitiesExtraPropertiesStringArray);
+                userProfile.Identities = Enumerable.Empty<UserProfile.Identity>();
+            }
+
+            object identities;
+
+            if (responseData.TryGetValue("identities", out identities))
+            {
+                var identitiesExtraPropertiesStringArray = identities as JArray;
+
+                if (identitiesExtraPropertiesStringArray != null)
+                {
+                    DeserializeIdentityExtraProperties(userProfile, identitiesExtraPropertiesStringArray);
+                }
             }
             
             return userProfile;
@@ -414,7 +424,7 @@ namespace Auth0
             UserProfile userProfile,
             JArray identitiesExtraPropertiesStringArray)
         {
-            if (userProfile.Identities == null)
+            if (!userProfile.Identities.Any())
             {
                 return;
             }
