@@ -59,5 +59,8 @@ namespace Auth0
 
         [JsonProperty(PropertyName ="user_id")]
         public string UserId { get; set; }
+
+        [JsonProperty(PropertyName="blocked")]
+        public bool Blocked { get; set; }
     }
 }
