@@ -553,7 +553,7 @@ namespace Auth0
         /// <param name="userId">The userId to be blocked</param>
         public void BlockUser(string userId) 
         {
-            this.UpdateUserMetadata(userId, new { blocked = true });
+            this.PatchUser(userId, new { blocked = true });
         }
 
         /// <summary>
@@ -562,7 +562,7 @@ namespace Auth0
         /// <param name="userId">The userId to be unblocked</param>
         public void UnblockUser(string userId)
         {
-            this.UpdateUserMetadata(userId, new { blocked = false });
+            this.PatchUser(userId, new { blocked = false });
         }
 
         /// <summary>
@@ -585,6 +585,35 @@ namespace Auth0
         public void SetUserMetadata(string userId, IDictionary<string, object> metadata)
         {
             this.UpdateUserMetadataInternal(Method.PUT, userId, metadata);
+        }
+
+        private void PatchUser(string userId, object changes)
+        {
+            if (string.IsNullOrEmpty(userId))
+            {
+                throw new ArgumentNullException("userId");
+            }
+
+            if (changes == null)
+            {
+                throw new ArgumentNullException("metadata");
+            }
+
+            var accessToken = this.GetAccessToken();
+
+            var request = new RestRequest("/api/users/" + userId + "?access_token=" + accessToken, Method.PATCH);
+
+            request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
+            request.RequestFormat = DataFormat.Json;
+            request.AddHeader("Content-Type", "application/json");
+            request.AddBody(changes);
+
+            var result = this.client.Execute(request);
+            if (result.StatusCode != HttpStatusCode.OK)
+            {
+                var detail = GetErrorDetails(result.Content);
+                throw new InvalidOperationException(string.Format("{0} - {1}", result.StatusDescription, detail));
+            }
         }
 
         private void UpdateUserMetadataInternal(Method method, string userId, object metadata)
