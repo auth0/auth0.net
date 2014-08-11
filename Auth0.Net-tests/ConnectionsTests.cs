@@ -111,17 +111,40 @@ namespace Auth0.Net_tests
 
         }
 
-        [SetUp]
+        [Test]
         public void can_use_https_in_domain()
         {
             var alternative = new Client(ConfigurationManager.AppSettings["AUTH0_CLIENT_ID"],
                                          ConfigurationManager.AppSettings["AUTH0_CLIENT_SECRET"],
                                          ConfigurationManager.AppSettings["AUTH0_CLIENT_DOMAIN"]);
-
             var result = alternative.GetConnections();
             var gc = result.First();
             gc.Name.Should().Be.EqualTo("auth0waadtests.onmicrosoft.com");
             gc.Strategy.Should().Be.EqualTo("waad");
+
         }
+
+        [Test]
+        public void can_login_user()
+        {
+            var result = client.LoginUser("SomeValidUser", "pwd", "adldap", "openid profile");
+            result.Should().Not.Be.Null();
+            result.AccessToken.Should().Not.Be.NullOrEmpty();
+            result.IdToken.Should().Not.Be.NullOrEmpty();
+        }
+
+        [Test]
+        public void can_get_delegation_token()
+        {
+            var result = client.LoginUser("SomeValidUser", "pwd", "adldap");
+            var delegation = client.GetDelegationToken(result.IdToken, ConfigurationManager.AppSettings["AUTH0_CLIENT_ID"]);
+            delegation.Should().Not.Be.Null();
+            delegation.IdToken.Should().Not.Be.NullOrEmpty();
+            delegation.TokenType.Should().Not.Be.NullOrEmpty();
+            var difference = delegation.ValidTo.Subtract(delegation.ValidFrom);
+            difference.Hours.Should().Be.EqualTo(10);
+            DateTime.UtcNow.Subtract(delegation.ValidFrom).TotalMilliseconds.Should().Be.LessThan(10);
+        }
+
     }
 }

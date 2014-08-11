@@ -30,7 +30,8 @@ namespace Auth0
         /// <param name="clientID">The client id of the application, as shown in the dashboard settings.</param>
         /// <param name="clientSecret">The client secret of the application, as shown in the dashboard settings.</param>
         /// <param name="domain">The domain for the Auth0 server.</param>
-        public Client(string clientID, string clientSecret, string domain)
+        /// <param name="webProxy">Proxy to use for requests made by this client instance. Passed on to underying WebRequest if set.</param>
+        public Client(string clientID, string clientSecret, string domain, IWebProxy webProxy = null)
         {
             if (string.IsNullOrEmpty(clientID))
             {
@@ -41,7 +42,7 @@ namespace Auth0
             {
                 throw new ArgumentNullException("clientSecret");
             }
-            
+
             if (string.IsNullOrEmpty(domain))
             {
                 throw new ArgumentNullException("domain");
@@ -50,8 +51,13 @@ namespace Auth0
             this.clientID = clientID;
             this.clientSecret = clientSecret;
             this.domain = domain;
-            string url = "https://" + this.domain;
-            this.client = new RestClient(url);
+
+            this.client = new RestClient("https://" + this.domain);
+
+            if (webProxy != null)
+            {
+                this.client.Proxy = webProxy;
+            }
         }
 
         /// <summary>
@@ -92,17 +98,13 @@ namespace Auth0
                 provisioningTicket.strategy, 
                 provisioningTicket.options["tenant_domain"]);
 
-            if (provisioningTicket.options.ContainsKey("adfs_server") &&
-                !string.IsNullOrEmpty(provisioningTicket.options["adfs_server"]))
-            {
-                connectionTicket.Options.AdfsServer = provisioningTicket.options["adfs_server"];
-            }
+            var extraProperties = provisioningTicket.options.Keys.Except(
+                new string[] { "tenant_domain" });
 
-            if (provisioningTicket.options.ContainsKey("server_url") &&
-                !string.IsNullOrEmpty(provisioningTicket.options["server_url"]))
+            extraProperties.ToList().ForEach(k =>
             {
-                connectionTicket.Options.ServerUrl = provisioningTicket.options["server_url"];
-            }
+                connectionTicket.Options.Add(k, provisioningTicket.options[k]);
+            });
 
             try
             {
@@ -358,8 +360,8 @@ namespace Auth0
 
         private UserProfile GetUserProfileFromJson(string jsonProfile)
         {
-            var ignoredProperties = new string[] { "iss", "sub", "aud", "exp", "iat" };
-            var mappedProperties = new string[] 
+            var ignoredProperties = new HashSet<string> { "iss", "sub", "aud", "exp", "iat" };
+            var mappedProperties = new HashSet<string> 
             {
                 "email",
                 "family_name",
@@ -373,25 +375,82 @@ namespace Auth0
                 "identities"
             };
 
+            ignoredProperties.UnionWith(mappedProperties);
+
             var userProfile = JsonConvert.DeserializeObject<UserProfile>(jsonProfile);
             var responseData = JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonProfile);
+           
             userProfile.ExtraProperties = responseData != null ?
-                responseData.Keys.Where(x => !mappedProperties.Contains(x) && !ignoredProperties.Contains(x)).ToDictionary(x => x, x => responseData[x]) :
+                ConvertJArrayToStringArray(ExcludeKeys(responseData, ignoredProperties)) :
                 new Dictionary<string, object>();
 
-            // Convert JArray to string[]
-            for (int i = 0; i < userProfile.ExtraProperties.Count; i++)
+            if (userProfile.Identities == null)
             {
-                var item = userProfile.ExtraProperties.ElementAt(i);
-                if (item.Value is JArray)
+                userProfile.Identities = Enumerable.Empty<UserProfile.Identity>();
+            }
+
+            object identities;
+
+            if (responseData.TryGetValue("identities", out identities))
+            {
+                var identitiesExtraPropertiesStringArray = identities as JArray;
+
+                if (identitiesExtraPropertiesStringArray != null)
                 {
-                    var stringArray = ((JArray)item.Value).Select(v => v.ToString()).ToArray();
-                    userProfile.ExtraProperties.Remove(item.Key);
-                    userProfile.ExtraProperties.Add(item.Key, stringArray);
+                    DeserializeIdentityExtraProperties(userProfile, identitiesExtraPropertiesStringArray);
                 }
             }
             
             return userProfile;
+        }
+
+        private static Dictionary<string, object> ExcludeKeys(Dictionary<string, object> dictionary, HashSet<string> toExclude)
+        {
+            return dictionary.Where(kvp => !toExclude.Contains(kvp.Key)).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+        }
+
+        private static Dictionary<string, object> ConvertJArrayToStringArray(Dictionary<string, object> extraProperties)
+        {
+            return extraProperties.Select(kvp => {
+               if (kvp.Value is JArray){
+                   return new KeyValuePair<string, object>(kvp.Key, ((JArray)kvp.Value).Select(v => v.ToString()).ToArray());
+               }
+
+                return kvp;
+            }).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
+        }
+
+        private static void DeserializeIdentityExtraProperties(
+            UserProfile userProfile,
+            JArray identitiesExtraPropertiesStringArray)
+        {
+            if (!userProfile.Identities.Any())
+            {
+                return;
+            }
+
+            var identitiesMappedProperties = new HashSet<string>{
+                    "access_token",
+                    "provider",
+                    "user_id",
+                    "connection",
+                    "isSocial"
+                };
+
+            // Get Extra Properties for each Identity Provider
+            var identitiesList = userProfile.Identities.ToList();
+
+            for (int i = 0; i < identitiesList.Count; i++)
+            {
+                var item = identitiesList[i];
+
+                var identityExtraProperties = JsonConvert.DeserializeObject<Dictionary<string, object>>(
+                    identitiesExtraPropertiesStringArray[i].ToString());
+
+                item.ExtraProperties = identityExtraProperties != null ?
+                    ConvertJArrayToStringArray(ExcludeKeys(identityExtraProperties, identitiesMappedProperties)) :
+                    new Dictionary<string, object>();
+            }
         }
 
         /// <summary>
@@ -399,8 +458,9 @@ namespace Auth0
         /// </summary>
         /// <param name="token">The current access token.</param>
         /// <param name="targetClientId">The client id of the target application.</param>
+        /// <param name="scope">The openid scope.</param>
         /// <returns>An instance of DelegationTokenResult containing the delegation token id.</returns>
-        public DelegationTokenResult GetDelegationToken(string token, string targetClientId)
+        public DelegationTokenResult GetDelegationToken(string token, string targetClientId, string scope = "passthrough")
         {
             var request = new RestRequest("/delegation", Method.POST);
 
@@ -411,6 +471,7 @@ namespace Auth0
             request.AddParameter("grant_type", "urn:ietf:params:oauth:grant-type:jwt-bearer", ParameterType.GetOrPost);
             request.AddParameter("id_token", token, ParameterType.GetOrPost);
             request.AddParameter("target", targetClientId, ParameterType.GetOrPost);
+            request.AddParameter("scope", scope, ParameterType.GetOrPost);
 
             var response = this.client.Execute<Dictionary<string, string>>(request).Data;
 
@@ -421,6 +482,45 @@ namespace Auth0
 
             return new DelegationTokenResult
             {
+                IdToken = response.ContainsKey("id_token") ? response["id_token"] : string.Empty,
+                TokenType = response.ContainsKey("token_type") ? response["token_type"] : null,
+                ValidFrom = DateTime.UtcNow,
+                ValidTo = response.ContainsKey("expires_in") ? DateTime.UtcNow.AddSeconds(int.Parse(response["expires_in"])) : DateTime.MaxValue
+            };
+        }
+
+        /// <summary>
+        /// Logs a user with username/password (active authentication).
+        /// </summary>
+        /// <param name="username">The username.</param>
+        /// <param name="password">The password.</param>
+        /// <param name="connection">The connection name.</param>
+        /// <param name="scope">The openid scope.</param>
+        /// <returns></returns>
+        public TokenResult LoginUser(
+            string username, string password, string connection, string scope = "openid")
+        {
+            var request = new RestRequest("/oauth/ro", Method.POST);
+
+            request.AddHeader("accept", "application/json");
+
+            request.AddParameter("client_id", this.clientID, ParameterType.GetOrPost);
+            request.AddParameter("username", username, ParameterType.GetOrPost);
+            request.AddParameter("password", password, ParameterType.GetOrPost);
+            request.AddParameter("connection", connection, ParameterType.GetOrPost);
+            request.AddParameter("grant_type", "password", ParameterType.GetOrPost);
+            request.AddParameter("scope", scope, ParameterType.GetOrPost);
+
+            var result = this.client.Execute<Dictionary<string, string>>(request);
+            var response = result.Data;
+            if (response.ContainsKey("error") || response.ContainsKey("error_description"))
+            {
+                throw new OAuthException(response["error_description"], response["error"]);
+            }
+
+            return new TokenResult
+            {
+                AccessToken = response["access_token"],
                 IdToken = response.ContainsKey("id_token") ? response["id_token"] : string.Empty
             };
         }
@@ -448,6 +548,24 @@ namespace Auth0
         }
 
         /// <summary>
+        /// Block a user by setting block metadata to true
+        /// </summary>
+        /// <param name="userId">The userId to be blocked</param>
+        public void BlockUser(string userId) 
+        {
+            this.PatchUser(userId, new { blocked = true });
+        }
+
+        /// <summary>
+        /// Unblock a user by setting block metadata to false
+        /// </summary>
+        /// <param name="userId">The userId to be unblocked</param>
+        public void UnblockUser(string userId)
+        {
+            this.PatchUser(userId, new { blocked = false });
+        }
+
+        /// <summary>
         /// Sets user metadata. All existing metadata will be replaced with
         /// the data provided here.
         /// </summary>
@@ -467,6 +585,35 @@ namespace Auth0
         public void SetUserMetadata(string userId, IDictionary<string, object> metadata)
         {
             this.UpdateUserMetadataInternal(Method.PUT, userId, metadata);
+        }
+
+        private void PatchUser(string userId, object changes)
+        {
+            if (string.IsNullOrEmpty(userId))
+            {
+                throw new ArgumentNullException("userId");
+            }
+
+            if (changes == null)
+            {
+                throw new ArgumentNullException("metadata");
+            }
+
+            var accessToken = this.GetAccessToken();
+
+            var request = new RestRequest("/api/users/" + userId + "?access_token=" + accessToken, Method.PATCH);
+
+            request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
+            request.RequestFormat = DataFormat.Json;
+            request.AddHeader("Content-Type", "application/json");
+            request.AddBody(changes);
+
+            var result = this.client.Execute(request);
+            if (result.StatusCode != HttpStatusCode.OK)
+            {
+                var detail = GetErrorDetails(result.Content);
+                throw new InvalidOperationException(string.Format("{0} - {1}", result.StatusDescription, detail));
+            }
         }
 
         private void UpdateUserMetadataInternal(Method method, string userId, object metadata)
@@ -621,6 +768,41 @@ namespace Auth0
         }
 
         /// <summary>
+        /// Changes a user email (the email used to login)
+        /// </summary>
+        /// <param name="userId">The user id.</param>
+        /// <param name="newEmail">The new email to set.</param>
+        public void ChangeEmail(string userId, string newEmail, bool verify)
+        {
+            if (string.IsNullOrEmpty(userId))
+            {
+                throw new ArgumentNullException("userId");
+            }
+
+            if (string.IsNullOrEmpty(newEmail))
+            {
+                throw new ArgumentNullException("newEmail");
+            }
+
+            var accessToken = this.GetAccessToken();
+
+            var request = new RestRequest("/api/users/" + userId + "/email?access_token=" + accessToken, Method.PUT);
+
+            request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
+            request.RequestFormat = DataFormat.Json;
+            request.AddHeader("Content-Type", "application/json");
+            request.AddBody(new { email = newEmail, verify = verify });
+
+            var result = this.client.Execute(request);
+            if (result.StatusCode != HttpStatusCode.OK && result.StatusCode != HttpStatusCode.Created)
+            {
+                var detail = GetErrorDetails(result.Content);
+                throw new InvalidOperationException(
+                    string.Format("{0} - {1}", result.StatusDescription, detail));
+            }
+        }
+
+        /// <summary>
         /// Deletes a user.
         /// </summary>
         /// <param name="userId">The id of the user to delete.</param>
@@ -644,8 +826,64 @@ namespace Auth0
                 throw new InvalidOperationException(
                     string.Format("{0} - {1}", result.StatusDescription, detail));
             }
+        }
 
+        public void SendVerificationEmail(string userId)
+        {
+            if (string.IsNullOrEmpty(userId))
+            {
+                throw new ArgumentNullException("userId");
+            }
 
+            var accessToken = this.GetAccessToken();
+
+            var request = new RestRequest("/api/users/" + userId + "/send_verification_email?access_token=" + accessToken, Method.POST);
+            request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
+            var result = this.client.Execute(request);
+
+            if (result.StatusCode != HttpStatusCode.OK)
+            {
+                var detail = GetErrorDetails(result.Content);
+                throw new InvalidOperationException(
+                    string.Format("{0} - {1}", result.StatusDescription, detail));
+            }
+        }
+
+        /// <summary>
+        /// Generates change password ticket.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="newPassword"></param>
+        /// <param name="resultUrl">Post verification url</param>
+        /// <returns></returns>
+        public string GenerateChangePasswordTicket(string userId, string newPassword, string resultUrl = null)
+        {
+            if (string.IsNullOrEmpty(userId))
+            {
+                throw new ArgumentNullException("userId");
+            }
+
+            var accessToken = this.GetAccessToken();
+
+            var request = new RestRequest("/api/users/" + userId + "/change_password_ticket?access_token=" + accessToken, Method.POST);
+            request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
+            request.AddParameter("newPassword", newPassword, ParameterType.GetOrPost);
+
+            if (!string.IsNullOrEmpty(resultUrl))
+            {
+                request.AddParameter("resultUrl", resultUrl, ParameterType.GetOrPost);
+            }
+
+            var result = this.client.Execute<Dictionary<string, string>>(request);
+
+            if (result.StatusCode != HttpStatusCode.OK)
+            {
+                var detail = GetErrorDetails(result.Content);
+                throw new InvalidOperationException(
+                    string.Format("{0} - {1}", result.StatusDescription, detail));
+            }
+
+            return result.Data["ticket"];
         }
 
         private static string GetErrorDetails(string resultContent)
@@ -776,6 +1014,12 @@ namespace Auth0
 
         private Page<T> BuildPage<T>(IRestResponse response)
         {
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                throw new InvalidOperationException(
+                    string.Format("A non-success status code of '{0}' was returned, with response '{1}'", response.StatusCode, response.Content));
+            }
+
             var results = JsonConvert.DeserializeObject<List<T>>(response.Content);
             var links = ParseLinks(response.Headers.FirstOrDefault(h => h.Name == "Link"));
 

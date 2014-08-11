@@ -1,6 +1,6 @@
-﻿using System;
-using System.Runtime.Serialization;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 
 namespace Auth0
 {
@@ -9,11 +9,19 @@ namespace Auth0
     {
         public Connection(string strategy, string tenantDomain, string name = null)
         {
-            if (strategy == null) throw new ArgumentNullException("strategy");
-            if (tenantDomain == null) throw new ArgumentNullException("tenantDomain");
+            if (strategy == null)
+            {
+                throw new ArgumentNullException("strategy");
+            }
+
+            if (tenantDomain == null)
+            {
+                throw new ArgumentNullException("tenantDomain");
+            }
+
             Name = string.IsNullOrEmpty(name) ? tenantDomain : name;
             Strategy = strategy;
-            Options = new ConnectionOptions { TenantDomain = tenantDomain };
+            Options = new ConnectionOptions(tenantDomain);
             Enabled = true;
         }
 
@@ -41,15 +49,15 @@ namespace Auth0
         public bool Enabled { get; set; }
     }
 
-    public class ConnectionOptions
+    public class ConnectionOptions : Dictionary<string, object>
     {
-        [JsonProperty(PropertyName = "tenant_domain")]
-        public string TenantDomain { get; set; }
+        public ConnectionOptions() : this(string.Empty)
+        {
+        }
 
-        [JsonProperty(PropertyName = "adfs_server")]
-        public string AdfsServer { get; set; }
-
-        [JsonProperty(PropertyName = "server_url")]
-        public string ServerUrl { get; set; }
+        public ConnectionOptions(string tenantDomain)
+        {
+            this.Add("tenant_domain", tenantDomain);
+        }
     }
 }
