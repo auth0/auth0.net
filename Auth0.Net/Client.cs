@@ -5,6 +5,7 @@ namespace Auth0
     using Newtonsoft.Json.Linq;
     using RestSharp;
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
@@ -662,6 +663,19 @@ namespace Auth0
         /// <summary>
         /// Creates a new user (only valid for database connections).
         /// </summary>
+        /// <param name="identifier">The user's identifier.</param>
+        /// <param name="password">The password for the new user.</param>
+        /// <param name="connection">The name of the database connection to store the user.</param>
+        /// <param name="emailVerified">True if the emails is already verified, false if a verification message is required.</param>
+        /// <returns>The profile of the user created.</returns>
+        public UserProfile CreateUser(UserIdentifier identifier, string password, string connection, bool emailVerified)
+        {
+            return this.CreateUser(identifier, password, connection, emailVerified, null);
+        }
+
+        /// <summary>
+        /// Creates a new user (only valid for database connections).
+        /// </summary>
         /// <param name="email">The user's email.</param>
         /// <param name="password">The password for the new user.</param>
         /// <param name="connection">The name of the database connection to store the user.</param>
@@ -671,7 +685,21 @@ namespace Auth0
         public UserProfile CreateUser(
             string email, string password, string connection, bool emailVerified, IDictionary<string, object> metadata)
         {
-            return this.CreateUser(email, password, connection, emailVerified, (object) metadata);
+            return this.CreateUser(email, password, connection, emailVerified, (object)metadata);
+        }
+
+        /// <summary>
+        /// Creates a new user (only valid for database connections).
+        /// </summary>
+        /// <param name="identifier">The user's identifier.</param>
+        /// <param name="password">The password for the new user.</param>
+        /// <param name="connection">The name of the database connection to store the user.</param>
+        /// <param name="emailVerified">True if the emails is already verified, false if a verification message is required.</param>
+        /// <param name="metadata">Additional metadata to include in the user's profile.</param>
+        /// <returns>The profile of the user created.</returns>
+        public UserProfile CreateUser(UserIdentifier identifier, string password, string connection, bool emailVerified, IDictionary<string, object> metadata)
+        {
+            return this.CreateUser(identifier, password, connection, emailVerified, (object)metadata);
         }
 
         /// <summary>
@@ -690,6 +718,20 @@ namespace Auth0
                 throw new ArgumentNullException("email");
             }
 
+            return this.CreateUser(UserIdentifier.Email(email), password, connection, emailVerified, metadata);
+        }
+
+        /// <summary>
+        /// Creates a new user (only valid for database connections).
+        /// </summary>
+        /// <param name="identifier">The user's identifier.</param>
+        /// <param name="password">The password for the new user.</param>
+        /// <param name="connection">The name of the database connection to store the user.</param>
+        /// <param name="emailVerified">True if the emails is already verified, false if a verification message is required.</param>
+        /// <param name="metadata">Additional metadata to include in the user's profile.</param>
+        /// <returns>The profile of the user created.</returns>
+        public UserProfile CreateUser(UserIdentifier identifier, string password, string connection, bool emailVerified, object metadata)
+        {
             if (string.IsNullOrEmpty(password))
             {
                 throw new ArgumentNullException("password");
@@ -710,10 +752,10 @@ namespace Auth0
 
             var requestBodyDict = metadata == null
                                   ? new Dictionary<string, object>()
-                                  // from object to json and back to dictionary
+                // from object to json and back to dictionary
                                   : JsonConvert.DeserializeObject<Dictionary<string, object>>(
                                       JsonConvert.SerializeObject(metadata));
-            requestBodyDict["email"] = email;
+            requestBodyDict[identifier.Type.ToString().ToLowerInvariant()] = identifier.Value;
             requestBodyDict["password"] = password;
             requestBodyDict["connection"] = connection;
             requestBodyDict["email_verified"] = emailVerified;
