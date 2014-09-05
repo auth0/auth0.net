@@ -774,6 +774,34 @@ namespace Auth0
         }
 
         /// <summary>
+        /// Unlink an identity from the primary account/identity
+        /// </summary>
+        /// <param name="userId">the userId that must be unlinked in the provider|id format</param>
+        /// <param name="accessToken">primary identity access token</param>
+        public void Unlink(string userId, string accessToken) 
+        {
+            if (string.IsNullOrEmpty(userId))
+            {
+                throw new ArgumentNullException("userId");
+            }  
+            
+            var request = new RestRequest("/unlink", Method.POST);
+
+            request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
+            request.RequestFormat = DataFormat.Json;
+            request.AddHeader("Content-Type", "application/json");
+            request.AddBody(new { access_token = accessToken, user_id = userId, clientID = clientID });
+
+            var result = this.client.Execute(request);
+            if (result.StatusCode != HttpStatusCode.OK)
+            {
+                var detail = GetErrorDetails(result.Content);
+                throw new InvalidOperationException(
+                    string.Format("{0} - {1}", result.StatusDescription, detail));
+            }
+        }
+
+        /// <summary>
         /// Deletes a user.
         /// </summary>
         /// <param name="userId">The id of the user to delete.</param>
