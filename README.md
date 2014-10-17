@@ -92,7 +92,7 @@ var users = client.GetEnterpriseUsers();
 
 ## Authentication
 
-This library is useful to consume the http api of Auth0, in order to authenticate users you can use the our [DotNetOpenAuth client](https://github.com/auth0/aspnet-auth0). 
+This library is useful to consume the http api of Auth0, in order to authenticate users you can use the our [DotNetOpenAuth client](https://github.com/auth0/auth0-aspnet). 
 
 ## Documentation
 
