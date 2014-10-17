@@ -92,7 +92,14 @@ var users = client.GetEnterpriseUsers();
 
 ## Authentication
 
-This library is useful to consume the http api of Auth0, in order to authenticate users you can use the our [DotNetOpenAuth client](https://github.com/auth0/auth0-aspnet). 
+This library is useful to consume the http api of Auth0, in order to authenticate users you can use our platform specific SDKs:
+* [ASP.NET OWIN](https://github.com/auth0/auth0-aspnet-owin)
+* [ASP.NET](https://github.com/auth0/auth0-aspnet)
+* [Winforms or WPF](https://github.com/auth0/Auth0.WinformsWPF)
+* [Windows Phone](https://github.com/auth0/Auth0.WindowsPhone)
+* [Windows 8 C#](https://github.com/auth0/Auth0.Windows8.Cs)
+* [Windows 8 JS](https://github.com/auth0/Auth0.Windows8.Js)
+* [WCF](https://docs.auth0.com/wcf-tutorial) 
 
 ## Documentation
 
