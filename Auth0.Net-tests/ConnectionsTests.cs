@@ -135,7 +135,7 @@ namespace Auth0.Net_tests
         [Test]
         public void can_login_user()
         {
-            var result = lowPrivilegeClient.LoginUser("nsabena", "Martes4", "adldap", "openid profile");
+            var result = lowPrivilegeClient.LoginUser("SomeValidUser", "pwd", "adldap", "openid profile");
             result.Should().Not.Be.Null();
             result.AccessToken.Should().Not.Be.NullOrEmpty();
             result.IdToken.Should().Not.Be.NullOrEmpty();
