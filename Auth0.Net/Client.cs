@@ -1,6 +1,8 @@
 ﻿
 namespace Auth0
 {
+    using System.Security;
+
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
     using RestSharp;
@@ -62,6 +64,47 @@ namespace Auth0
         }
 
         /// <summary>
+        /// Creates an instance of the client for unauthenticated requests.
+        /// </summary>
+        /// <remarks>This constructor does not take a clientSecret, and thus only provides
+        /// access to operations that don't require a clientSecret or access token.</remarks>
+        /// <param name="clientID">The client id of the application, as shown in the dashboard settings.</param>
+        /// <param name="domain">The domain for the Auth0 server.</param>
+        /// <param name="webProxy">Proxy to use for requests made by this client instance. Passed on to underying WebRequest if set.</param>
+        public Client(string clientID, string domain, IWebProxy webProxy = null)
+        {
+            if (string.IsNullOrEmpty(clientID))
+            {
+                throw new ArgumentNullException("clientID");
+            }
+
+            if (string.IsNullOrEmpty(domain))
+            {
+                throw new ArgumentNullException("domain");
+            }
+
+            this.clientID = clientID;
+            this.domain = domain;
+
+            this.client = new RestClient("https://" + this.domain);
+
+            if (webProxy != null)
+            {
+                this.client.Proxy = webProxy;
+            }
+        }
+
+        private string GetClientSecretOrThrow()
+        {
+            if (string.IsNullOrEmpty(clientSecret))
+            {
+                throw new SecurityException("This operation requires a clientSecret, which was not provided. Try using the constructor that takes a clientSecret.");
+            }
+
+            return this.clientSecret;
+        }
+
+        /// <summary>
         /// Returns a list of all the connections defined for the application.
         /// </summary>
         /// <returns>An IEnumerable of connections.</returns>
@@ -111,18 +154,22 @@ namespace Auth0
             {
                 var connection = this.CreateConnection(connectionTicket);
                 return new CreateConnectionResult
-                {
-                    worked = true,
-                    provisioning_ticket_url = connection.ProvisioningTicketUrl
-                };
+                       {
+                           worked = true,
+                           provisioning_ticket_url = connection.ProvisioningTicketUrl
+                       };
+            }
+            catch (SecurityException)
+            {
+                throw;
             }
             catch (Exception ex)
             {
                 return new CreateConnectionResult
-                {
-                    worked = false,
-                    error = ex.Message
-                };
+                       {
+                           worked = false,
+                           error = ex.Message
+                       };
             }
         }
 
@@ -274,7 +321,7 @@ namespace Auth0
             request.AddHeader("accept", "application/json");
 
             request.AddParameter("client_id", this.clientID, ParameterType.GetOrPost);
-            request.AddParameter("client_secret", this.clientSecret, ParameterType.GetOrPost);
+            request.AddParameter("client_secret", this.GetClientSecretOrThrow(), ParameterType.GetOrPost);
             request.AddParameter("code", code, ParameterType.GetOrPost);
             request.AddParameter("grant_type", "authorization_code", ParameterType.GetOrPost);
             request.AddParameter("redirect_uri", redirectUri, ParameterType.GetOrPost);
@@ -333,7 +380,7 @@ namespace Auth0
         /// <summary>
         /// Gets user information from the internal id (_id).
         /// </summary>
-        /// <param name="internalId">The internal id.</param>
+        /// <param name="userId">The internal id.</param>
         /// <returns>An instance of UserProfile contaning the user information.</returns>
         public UserProfile GetUser(string userId)
         {
@@ -468,7 +515,7 @@ namespace Auth0
             request.AddHeader("accept", "application/json");
 
             request.AddParameter("client_id", this.clientID, ParameterType.GetOrPost);
-            request.AddParameter("client_secret", this.clientSecret, ParameterType.GetOrPost);
+            request.AddParameter("client_secret", this.GetClientSecretOrThrow(), ParameterType.GetOrPost);
             request.AddParameter("grant_type", "urn:ietf:params:oauth:grant-type:jwt-bearer", ParameterType.GetOrPost);
             request.AddParameter("id_token", token, ParameterType.GetOrPost);
             request.AddParameter("target", targetClientId, ParameterType.GetOrPost);
@@ -1002,7 +1049,7 @@ namespace Auth0
 
             request.AddHeader("accept", "application/json");
             request.AddParameter("client_id", this.clientID, ParameterType.GetOrPost);
-            request.AddParameter("client_secret", this.clientSecret, ParameterType.GetOrPost);
+            request.AddParameter("client_secret", this.GetClientSecretOrThrow(), ParameterType.GetOrPost);
             request.AddParameter("grant_type", "client_credentials", ParameterType.GetOrPost);
 
             var response = this.client.Execute<Dictionary<string, string>>(request);
