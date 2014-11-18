@@ -133,7 +133,7 @@ namespace Auth0.Net_tests
         }
 
         [Test]
-        public void can_login_user()
+        public void can_login_user_with_client_without_client_secret()
         {
             var result = lowPrivilegeClient.LoginUser("SomeValidUser", "pwd", "adldap", "openid profile");
             result.Should().Not.Be.Null();
@@ -192,15 +192,13 @@ namespace Auth0.Net_tests
                 try
                 {
                     var method = exp.Body as MethodCallExpression;
-                    if (method != null)
-                        Console.WriteLine(method.Method.Name);
 
                     var action = exp.Compile();
                     action();
 
                     Assert.Fail("{0} should have thrown Security Exception.", method.Method.Name);
                 }
-                catch (SecurityException)
+                catch (InvalidOperationException)
                 {
                     // ok
                 }

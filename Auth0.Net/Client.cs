@@ -35,32 +35,14 @@ namespace Auth0
         /// <param name="domain">The domain for the Auth0 server.</param>
         /// <param name="webProxy">Proxy to use for requests made by this client instance. Passed on to underying WebRequest if set.</param>
         public Client(string clientID, string clientSecret, string domain, IWebProxy webProxy = null)
+            : this(clientID, domain, webProxy)
         {
-            if (string.IsNullOrEmpty(clientID))
-            {
-                throw new ArgumentNullException("clientID");
-            }
-
             if (string.IsNullOrEmpty(clientSecret))
             {
                 throw new ArgumentNullException("clientSecret");
             }
 
-            if (string.IsNullOrEmpty(domain))
-            {
-                throw new ArgumentNullException("domain");
-            }
-
-            this.clientID = clientID;
             this.clientSecret = clientSecret;
-            this.domain = domain;
-
-            this.client = new RestClient("https://" + this.domain);
-
-            if (webProxy != null)
-            {
-                this.client.Proxy = webProxy;
-            }
         }
 
         /// <summary>
@@ -98,7 +80,7 @@ namespace Auth0
         {
             if (string.IsNullOrEmpty(clientSecret))
             {
-                throw new SecurityException("This operation requires a clientSecret, which was not provided. Try using the constructor that takes a clientSecret.");
+                throw new InvalidOperationException("This operation requires a clientSecret, which was not provided. Try using the constructor that takes a clientSecret.");
             }
 
             return this.clientSecret;
@@ -154,22 +136,22 @@ namespace Auth0
             {
                 var connection = this.CreateConnection(connectionTicket);
                 return new CreateConnectionResult
-                       {
-                           worked = true,
-                           provisioning_ticket_url = connection.ProvisioningTicketUrl
-                       };
+                {
+                    worked = true,
+                    provisioning_ticket_url = connection.ProvisioningTicketUrl
+                };
             }
-            catch (SecurityException)
+            catch (InvalidOperationException)
             {
                 throw;
             }
             catch (Exception ex)
             {
                 return new CreateConnectionResult
-                       {
-                           worked = false,
-                           error = ex.Message
-                       };
+                {
+                    worked = false,
+                    error = ex.Message
+                };
             }
         }
 
