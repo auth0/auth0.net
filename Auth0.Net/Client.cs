@@ -80,7 +80,7 @@ namespace Auth0
         {
             if (string.IsNullOrEmpty(clientSecret))
             {
-                throw new InvalidOperationException("This operation requires a clientSecret, which was not provided. Try using the constructor that takes a clientSecret.");
+                throw new InvalidOperationException("This operation requires a clientSecret, which was not provided. Use the constructor that receives the clientSecret as an argument.");
             }
 
             return this.clientSecret;

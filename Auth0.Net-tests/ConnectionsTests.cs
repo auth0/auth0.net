@@ -12,7 +12,6 @@ using Newtonsoft.Json;
 namespace Auth0.Net_tests
 {
     using System.Linq.Expressions;
-    using System.Security;
 
     [TestFixture]
     public class ConnectionTests
@@ -196,7 +195,7 @@ namespace Auth0.Net_tests
                     var action = exp.Compile();
                     action();
 
-                    Assert.Fail("{0} should have thrown Security Exception.", method.Method.Name);
+                    Assert.Fail("{0} should have thrown InvalidOperationException.", method.Method.Name);
                 }
                 catch (InvalidOperationException)
                 {
