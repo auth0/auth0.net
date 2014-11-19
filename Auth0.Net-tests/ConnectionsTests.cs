@@ -11,10 +11,14 @@ using Newtonsoft.Json;
 
 namespace Auth0.Net_tests
 {
+    using System.Linq.Expressions;
+
     [TestFixture]
     public class ConnectionTests
     {
         private Client client;
+
+        private Client lowPrivilegeClient;
 
         [SetUp]
         public void setup() 
@@ -25,6 +29,9 @@ namespace Auth0.Net_tests
 
             client.DeleteConnection("testconn");
             client.DeleteConnection("new-testconn");
+
+            lowPrivilegeClient = new Client(ConfigurationManager.AppSettings["AUTH0_CLIENT_ID"],
+                                          ConfigurationManager.AppSettings["AUTH0_CLIENT_DOMAIN"]);
         }
 
         [Test, Ignore]
@@ -125,9 +132,9 @@ namespace Auth0.Net_tests
         }
 
         [Test]
-        public void can_login_user()
+        public void can_login_user_with_client_without_client_secret()
         {
-            var result = client.LoginUser("SomeValidUser", "pwd", "adldap", "openid profile");
+            var result = lowPrivilegeClient.LoginUser("SomeValidUser", "pwd", "adldap", "openid profile");
             result.Should().Not.Be.Null();
             result.AccessToken.Should().Not.Be.NullOrEmpty();
             result.IdToken.Should().Not.Be.NullOrEmpty();
@@ -146,5 +153,55 @@ namespace Auth0.Net_tests
             DateTime.UtcNow.Subtract(delegation.ValidFrom).TotalMilliseconds.Should().Be.LessThan(10);
         }
 
+        [Test]
+        public void RestrictedOperationsThrowWithLowPrivilegesClient()
+        {
+            // Unlink, GetUserInfo and LoginUser don't require clientSecret
+            
+            var restrictedActions = new Expression<Action>[]
+                                    {
+                                        () => lowPrivilegeClient.BlockUser("someUser"),
+                                        () => lowPrivilegeClient.ChangeEmail("someUser", "newEmail", true),
+                                        () => lowPrivilegeClient.ChangePassword("someUser", "newPassword", true),
+                                        () => lowPrivilegeClient.DeleteConnection("connection"),
+                                        () => lowPrivilegeClient.SendVerificationEmail("someUser"),
+                                        () => lowPrivilegeClient.SetUserMetadata("someUser", new {metadata = "something"}),
+                                        () => lowPrivilegeClient.UnblockUser("someUser"),
+                                        () => lowPrivilegeClient.CreateConnection(new ProvisioningTicket()
+                                                                                  {
+                                                                                      options = new Dictionary<string, string>() {{"tenant_domain", "tnt"}},
+                                                                                      strategy = "strategy"
+                                                                                  }),
+                                        () => lowPrivilegeClient.CreateUser("email", "password", "connection", true),
+                                        () => lowPrivilegeClient.ExchangeAuthorizationCodePerAccessToken("code", "redirect"),
+                                        () => lowPrivilegeClient.GenerateChangePasswordTicket("user", "password", null),
+                                        () => lowPrivilegeClient.GetConnections(0),
+                                        () => lowPrivilegeClient.GetDelegationToken("token", "targetClientId", "passthrough"),
+                                        () => lowPrivilegeClient.GetEnterpriseConnections(0),
+                                        () => lowPrivilegeClient.GetEnterpriseUsers(0),
+                                        () => lowPrivilegeClient.GetSocialConnections(0),
+                                        () => lowPrivilegeClient.GetSocialUsers(0),
+                                        () => lowPrivilegeClient.GetUser("userId"),
+                                        () => lowPrivilegeClient.GetUsersByConnection("connection", 0)
+
+                                    };
+
+            foreach (var exp in restrictedActions)
+            {
+                try
+                {
+                    var method = exp.Body as MethodCallExpression;
+
+                    var action = exp.Compile();
+                    action();
+
+                    Assert.Fail("{0} should have thrown InvalidOperationException.", method.Method.Name);
+                }
+                catch (InvalidOperationException)
+                {
+                    // ok
+                }
+            }
+        }
     }
 }
