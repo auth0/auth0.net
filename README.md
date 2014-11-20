@@ -105,6 +105,10 @@ This library is useful to consume the http api of Auth0, in order to authenticat
 
 For more information about [auth0](http://auth0.com) visit our [documentation page](http://docs.auth0.com/).
 
+## Issue Reporting
+
+If you have found a bug or if you have a feature request, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
+
 ## License
 
 This client library is MIT licensed.
