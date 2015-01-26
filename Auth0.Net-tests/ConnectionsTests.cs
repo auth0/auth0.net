@@ -175,6 +175,7 @@ namespace Auth0.Net_tests
                                         () => lowPrivilegeClient.CreateUser("email", "password", "connection", true),
                                         () => lowPrivilegeClient.ExchangeAuthorizationCodePerAccessToken("code", "redirect"),
                                         () => lowPrivilegeClient.GenerateChangePasswordTicket("user", "password", null),
+                                        () => lowPrivilegeClient.GenerateVerificationTicket("user", null),
                                         () => lowPrivilegeClient.GetConnections(0),
                                         () => lowPrivilegeClient.GetDelegationToken("token", "targetClientId", "passthrough"),
                                         () => lowPrivilegeClient.GetEnterpriseConnections(0),
