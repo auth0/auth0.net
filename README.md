@@ -90,6 +90,17 @@ var users = client.GetEnterpriseUsers("jdoe@contoso.com");
 var users = client.GetEnterpriseUsers();
 ~~~
 
+### client.GenerateVerificationTicket(userId, resultUrl = "")
+
+Generate an email verification link which can be added to custom emails an be used for email verification. Clicking this link will set ```email_verified``` to true for the user and optionally redirect to a page in the application.
+
+~~~csharp
+var verificationUrl = client.GenerateVerificationTicket("auth0|54c6322f6936d15310dca942");
+// or
+var verificationUrl = client.GenerateVerificationTicket("auth0|54c6322f6936d15310dca942",
+   "http://myapp.com/activated");
+~~~
+
 ## Authentication
 
 This library is useful to consume the http api of Auth0, in order to authenticate users you can use our platform specific SDKs:
