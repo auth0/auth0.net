@@ -68,7 +68,15 @@ namespace Auth0
             this.clientID = clientID;
             this.domain = domain;
 
-            this.client = new RestClient(this.domain.Contains("https://") ? this.domain : "https://" + this.domain);
+            Uri myDomain;
+            if (Uri.TryCreate(this.domain, UriKind.Absolute, out myDomain) || Uri.TryCreate("https://" + this.domain, UriKind.Absolute, out myDomain))
+            {
+                this.client = new RestClient(myDomain);
+            }
+            else
+            {
+                throw new ArgumentException("the domain URI could not be parsed", "domain");
+            }
 
             if (webProxy != null)
             {
@@ -121,7 +129,7 @@ namespace Auth0
         public CreateConnectionResult CreateConnection(ProvisioningTicket provisioningTicket)
         {
             var connectionTicket = new Connection(
-                provisioningTicket.strategy, 
+                provisioningTicket.strategy,
                 provisioningTicket.options["tenant_domain"]);
 
             var extraProperties = provisioningTicket.options.Keys.Except(
@@ -166,7 +174,7 @@ namespace Auth0
 
             var request = new RestRequest("/api/connections?access_token=" + accessToken, Method.POST);
             request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
-            
+
             request.RequestFormat = DataFormat.Json;
             request.AddHeader("Content-Type", "application/json");
             request.AddBody(ticket);
@@ -190,7 +198,7 @@ namespace Auth0
         {
             var accessToken = this.GetAccessToken();
             var request = new RestRequest("/api/connections/{name}?access_token={accessToken}", Method.DELETE);
-            
+
             request.AddParameter("name", connectionName, ParameterType.UrlSegment);
             request.AddParameter("accessToken", accessToken, ParameterType.UrlSegment);
 
@@ -299,7 +307,7 @@ namespace Auth0
         public TokenResult ExchangeAuthorizationCodePerAccessToken(string code, string redirectUri)
         {
             var request = new RestRequest("/oauth/token", Method.POST);
-            
+
             request.AddHeader("accept", "application/json");
 
             request.AddParameter("client_id", this.clientID, ParameterType.GetOrPost);
@@ -327,7 +335,7 @@ namespace Auth0
         /// </summary>
         /// <param name="accessToken">The access token.</param>
         /// <returns>An instance of UserProfile contaning the user information.</returns>
-        [ObsoleteAttribute("This method is obsolete. Call GetUserInfo(TokenResult tokenResult) instead.")] 
+        [ObsoleteAttribute("This method is obsolete. Call GetUserInfo(TokenResult tokenResult) instead.")]
         public UserProfile GetUserInfo(string accessToken)
         {
             return this.GetUserInfo(new TokenResult { AccessToken = accessToken });
@@ -409,7 +417,7 @@ namespace Auth0
 
             var userProfile = JsonConvert.DeserializeObject<UserProfile>(jsonProfile);
             var responseData = JsonConvert.DeserializeObject<Dictionary<string, object>>(jsonProfile);
-           
+
             userProfile.ExtraProperties = responseData != null ?
                 ConvertJArrayToStringArray(ExcludeKeys(responseData, ignoredProperties)) :
                 new Dictionary<string, object>();
@@ -430,7 +438,7 @@ namespace Auth0
                     DeserializeIdentityExtraProperties(userProfile, identitiesExtraPropertiesStringArray);
                 }
             }
-            
+
             return userProfile;
         }
 
@@ -441,10 +449,12 @@ namespace Auth0
 
         private static Dictionary<string, object> ConvertJArrayToStringArray(Dictionary<string, object> extraProperties)
         {
-            return extraProperties.Select(kvp => {
-               if (kvp.Value is JArray){
-                   return new KeyValuePair<string, object>(kvp.Key, ((JArray)kvp.Value).Select(v => v.ToString()).ToArray());
-               }
+            return extraProperties.Select(kvp =>
+            {
+                if (kvp.Value is JArray)
+                {
+                    return new KeyValuePair<string, object>(kvp.Key, ((JArray)kvp.Value).Select(v => v.ToString()).ToArray());
+                }
 
                 return kvp;
             }).ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
@@ -581,7 +591,7 @@ namespace Auth0
         /// Block a user by setting block metadata to true
         /// </summary>
         /// <param name="userId">The userId to be blocked</param>
-        public void BlockUser(string userId) 
+        public void BlockUser(string userId)
         {
             this.PatchUser(userId, new { blocked = true });
         }
@@ -661,7 +671,7 @@ namespace Auth0
             var accessToken = this.GetAccessToken();
 
             var request = new RestRequest("/api/users/" + userId + "/metadata?access_token=" + accessToken, method);
-            
+
             request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
             request.RequestFormat = DataFormat.Json;
             request.AddHeader("Content-Type", "application/json");
@@ -878,13 +888,13 @@ namespace Auth0
         /// </summary>
         /// <param name="userId">the userId that must be unlinked in the provider|id format</param>
         /// <param name="accessToken">primary identity access token</param>
-        public void Unlink(string userId, string accessToken) 
+        public void Unlink(string userId, string accessToken)
         {
             if (string.IsNullOrEmpty(userId))
             {
                 throw new ArgumentNullException("userId");
-            }  
-            
+            }
+
             var request = new RestRequest("/unlink", Method.POST);
 
             request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
@@ -1001,7 +1011,7 @@ namespace Auth0
 
             var request = new RestRequest("/api/users/" + userId + "/verification_ticket?access_token=" + accessToken, Method.POST);
             request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
-            
+
             if (!string.IsNullOrEmpty(resultUrl))
             {
                 request.AddParameter("resultUrl", resultUrl, ParameterType.GetOrPost);
@@ -1091,7 +1101,7 @@ namespace Auth0
             var request = new RestRequest("/api/connections");
             request.AddParameter("only_socials", onlySocials);
             request.AddParameter("only_enterprise", onlyEnterprise);
-            
+
             if (pageSize > 0)
             {
                 request.AddParameter("per_page", pageSize);
@@ -1179,7 +1189,7 @@ namespace Auth0
             var entries = linksHeader.Value.ToString().Split(',');
 
             return entries.ToDictionary(
-                e => Regex.Match(e, "rel=\"(.*)\"").Groups[1].Value, 
+                e => Regex.Match(e, "rel=\"(.*)\"").Groups[1].Value,
                 e => Regex.Match(e, "<(.*)>").Groups[1].Value);
         }
 
