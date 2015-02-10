@@ -68,7 +68,7 @@ namespace Auth0
             this.clientID = clientID;
             this.domain = domain;
 
-            this.client = new RestClient("https://" + this.domain);
+            this.client = new RestClient(this.domain.Contains("https://") ? this.domain : "https://" + this.domain);
 
             if (webProxy != null)
             {
