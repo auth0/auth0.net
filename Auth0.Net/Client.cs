@@ -23,7 +23,6 @@ namespace Auth0
 
         private readonly string clientID;
         private readonly string clientSecret;
-        private readonly string domain;
         private AccessToken currentToken;
         private readonly RestClient client;
 
@@ -66,12 +65,12 @@ namespace Auth0
             }
 
             this.clientID = clientID;
-            this.domain = domain;
 
-            Uri myDomain;
-            if (Uri.TryCreate(this.domain, UriKind.Absolute, out myDomain) || Uri.TryCreate("https://" + this.domain, UriKind.Absolute, out myDomain))
+            Uri parsedDomain;
+            if (Uri.TryCreate(domain, UriKind.Absolute, out parsedDomain) ||
+                Uri.TryCreate("https://" + domain, UriKind.Absolute, out parsedDomain))
             {
-                this.client = new RestClient(myDomain);
+                this.client = new RestClient(parsedDomain);
             }
             else
             {
