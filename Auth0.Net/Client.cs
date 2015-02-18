@@ -1148,7 +1148,7 @@ namespace Auth0
             var request = new RestRequest(new Uri(url));
             request.AddHeader("accept", "application/json");
 
-            var response = client.Execute(request);
+            var response = this.client.Execute(request);
             return BuildPage<T>(response);
         }
 
