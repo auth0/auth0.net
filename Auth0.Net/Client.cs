@@ -1102,9 +1102,7 @@ namespace Auth0
 
         private Page<T> LoadPageFromLink<T>(string url)
         {
-            // URL is absolute, so we cannot use previously created client (it has a base URL)
-            var client = new RestClient();
-            var request = new RestRequest(url);
+            var request = new RestRequest(new Uri(url));
             request.AddHeader("accept", "application/json");
 
             var response = client.Execute(request);
