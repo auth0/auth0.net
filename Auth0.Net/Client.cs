@@ -848,6 +848,48 @@ namespace Auth0
         }
 
         /// <summary>
+        /// Changes a user password (only for database connections).
+        /// </summary>
+        /// <param name="email">The email address of the user.</param>
+        /// <param name="newPassword">The new password to set.</param>
+        /// <param name="connection">The name of the connection in which the user exists.</param>
+        /// <param name="verify">True if a verification email message is required, false otherwise.</param>
+        public void ChangePassword(string email, string newPassword, string connection, bool verify)
+        {
+            if (string.IsNullOrEmpty(email))
+            {
+                throw new ArgumentNullException("email");
+            }
+
+            if (string.IsNullOrEmpty(newPassword))
+            {
+                throw new ArgumentNullException("newPassword");
+            }
+
+            if (string.IsNullOrEmpty(connection))
+            {
+                throw new ArgumentNullException("connection");
+            }
+
+            var accessToken = this.GetAccessToken();
+
+            var request = new RestRequest("/api/users/" + email + "/password?access_token=" + accessToken, Method.PUT);
+
+            request.JsonSerializer = new RestSharp.Serializers.JsonSerializer();
+            request.RequestFormat = DataFormat.Json;
+            request.AddHeader("Content-Type", "application/json");
+            request.AddBody(new { password = newPassword, verify, email, connection });
+
+            var result = this.client.Execute(request);
+            if (result.StatusCode != HttpStatusCode.OK && result.StatusCode != HttpStatusCode.Created)
+            {
+                var detail = GetErrorDetails(result.Content);
+                throw new InvalidOperationException(
+                    string.Format("{0} - {1}", result.StatusDescription, detail));
+            }
+        }
+
+        /// <summary>
         /// Changes a user email (the email used to login)
         /// </summary>
         /// <param name="userId">The user id.</param>
