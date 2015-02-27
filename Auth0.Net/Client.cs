@@ -1059,6 +1059,13 @@ namespace Auth0
             request.AddParameter("client_id", clientID);
 
             var result = this.client.Execute(request);
+            if (result.StatusCode != HttpStatusCode.OK && result.StatusCode != HttpStatusCode.NotFound)
+            {
+                var detail = GetErrorDetails(result.Content);
+                throw new InvalidOperationException(
+                    string.Format("{0} - {1}", result.StatusDescription, detail));
+            }
+
             return new UserValidationResult
             {
                 IsValid = result.StatusCode == HttpStatusCode.OK,
@@ -1071,6 +1078,9 @@ namespace Auth0
             try
             {
                 return JsonConvert.DeserializeObject(resultContent).ToString();
+            }
+            catch (NullReferenceException)
+            {
             }
             catch (JsonReaderException)
             {
