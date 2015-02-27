@@ -67,6 +67,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserIdentifier.cs" />
     <Compile Include="UserProfile.cs" />
+    <Compile Include="UserValidationResult.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>

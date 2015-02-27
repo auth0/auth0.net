@@ -101,6 +101,22 @@ var verificationUrl = client.GenerateVerificationTicket("auth0|54c6322f6936d1531
    "http://myapp.com/activated");
 ~~~
 
+### client.ValidateUser(username, password, connection)
+
+Verify if the username and password are correct for a given connection.
+
+~~~csharp
+var validationResult = client.ValidateUser("some@user.com", "Passw0rd!", "Username-Password-Authentication");
+if (validationResult.IsValid)
+{
+    return "User is valid.";
+}
+else
+{
+    return "Invalid user. Details: " + validationResult.Message;
+}
+~~~
+
 ## Authentication
 
 This library is useful to consume the http api of Auth0, in order to authenticate users you can use our platform specific SDKs:
