@@ -1028,6 +1028,44 @@ namespace Auth0
             return result.Data["ticket"];
         }
 
+        /// <summary>
+        /// Validate the username and password for a specific connection.
+        /// </summary>
+        /// <param name="username">The username.</param>
+        /// <param name="password">The password.</param>
+        /// <param name="connection">The connection name.</param>
+        public UserValidationResult ValidateUser(string username, string password, string connection)
+        {
+            if (string.IsNullOrEmpty(username))
+            {
+                throw new ArgumentNullException("username");
+            }
+
+            if (string.IsNullOrEmpty(password))
+            {
+                throw new ArgumentNullException("password");
+            }
+
+            if (string.IsNullOrEmpty(connection))
+            {
+                throw new ArgumentNullException("connection");
+            }
+
+            var request = new RestRequest("/public/api/users/validate_userpassword", Method.POST);
+            request.AddHeader("Content-Type", "application/x-www-form-urlencoded");
+            request.AddParameter("connection", connection);
+            request.AddParameter("username", username);
+            request.AddParameter("password", password);
+            request.AddParameter("client_id", clientID);
+
+            var result = this.client.Execute(request);
+            return new UserValidationResult
+            {
+                IsValid = result.StatusCode == HttpStatusCode.OK,
+                Message = result.Content
+            };
+        }
+
         private static string GetErrorDetails(string resultContent)
         {
             try
