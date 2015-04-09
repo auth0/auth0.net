@@ -181,9 +181,7 @@ namespace Auth0
             var result = this.client.Execute(request);
             if (result.StatusCode != HttpStatusCode.OK && result.StatusCode != HttpStatusCode.Created)
             {
-                var detail = GetErrorDetails(result.Content);
-                throw new InvalidOperationException(
-                    string.Format("{0} - {1}", result.StatusDescription, detail));
+                throw new InvalidOperationException(GetErrorDetails(result));
             }
 
             return JsonConvert.DeserializeObject<Connection>(result.Content);
@@ -387,7 +385,7 @@ namespace Auth0
             var response = this.client.Execute(request);
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                throw new InvalidOperationException(GetErrorDetails(response.Content));
+                throw new InvalidOperationException(GetErrorDetails(response));
             }
 
             var userProfile = this.GetUserProfileFromJson(response.Content);
@@ -650,8 +648,7 @@ namespace Auth0
             var result = this.client.Execute(request);
             if (result.StatusCode != HttpStatusCode.OK)
             {
-                var detail = GetErrorDetails(result.Content);
-                throw new InvalidOperationException(string.Format("{0} - {1}", result.StatusDescription, detail));
+                throw new InvalidOperationException(GetErrorDetails(result));
             }
         }
 
@@ -679,9 +676,7 @@ namespace Auth0
             var result = this.client.Execute(request);
             if (result.StatusCode != HttpStatusCode.OK && result.StatusCode != HttpStatusCode.Created)
             {
-                var detail = GetErrorDetails(result.Content);
-                throw new InvalidOperationException(
-                    string.Format("{0} - {1}", result.StatusDescription, detail));
+                throw new InvalidOperationException(GetErrorDetails(result));
             }
         }
 
@@ -802,9 +797,7 @@ namespace Auth0
             var result = this.client.Execute(request);
             if (result.StatusCode != HttpStatusCode.OK && result.StatusCode != HttpStatusCode.Created)
             {
-                var detail = GetErrorDetails(result.Content);
-                throw new InvalidOperationException(
-                    string.Format("{0} - {1}", result.StatusDescription, detail));
+                throw new InvalidOperationException(GetErrorDetails(result));
             }
             var userProfile = GetUserProfileFromJson(result.Content);
 
@@ -841,9 +834,7 @@ namespace Auth0
             var result = this.client.Execute(request);
             if (result.StatusCode != HttpStatusCode.OK && result.StatusCode != HttpStatusCode.Created)
             {
-                var detail = GetErrorDetails(result.Content);
-                throw new InvalidOperationException(
-                    string.Format("{0} - {1}", result.StatusDescription, detail));
+                throw new InvalidOperationException(GetErrorDetails(result));
             }
         }
 
@@ -883,9 +874,7 @@ namespace Auth0
             var result = this.client.Execute(request);
             if (result.StatusCode != HttpStatusCode.OK && result.StatusCode != HttpStatusCode.Created)
             {
-                var detail = GetErrorDetails(result.Content);
-                throw new InvalidOperationException(
-                    string.Format("{0} - {1}", result.StatusDescription, detail));
+                throw new InvalidOperationException(GetErrorDetails(result));
             }
         }
 
@@ -918,9 +907,7 @@ namespace Auth0
             var result = this.client.Execute(request);
             if (result.StatusCode != HttpStatusCode.OK && result.StatusCode != HttpStatusCode.Created)
             {
-                var detail = GetErrorDetails(result.Content);
-                throw new InvalidOperationException(
-                    string.Format("{0} - {1}", result.StatusDescription, detail));
+                throw new InvalidOperationException(GetErrorDetails(result));
             }
         }
 
@@ -946,9 +933,7 @@ namespace Auth0
             var result = this.client.Execute(request);
             if (result.StatusCode != HttpStatusCode.OK)
             {
-                var detail = GetErrorDetails(result.Content);
-                throw new InvalidOperationException(
-                    string.Format("{0} - {1}", result.StatusDescription, detail));
+                throw new InvalidOperationException(GetErrorDetails(result));
             }
         }
 
@@ -972,9 +957,7 @@ namespace Auth0
             var result = this.client.Execute(request);
             if (result.StatusCode != HttpStatusCode.OK)
             {
-                var detail = GetErrorDetails(result.Content);
-                throw new InvalidOperationException(
-                    string.Format("{0} - {1}", result.StatusDescription, detail));
+                throw new InvalidOperationException(GetErrorDetails(result));
             }
         }
 
@@ -993,9 +976,7 @@ namespace Auth0
 
             if (result.StatusCode != HttpStatusCode.OK)
             {
-                var detail = GetErrorDetails(result.Content);
-                throw new InvalidOperationException(
-                    string.Format("{0} - {1}", result.StatusDescription, detail));
+                throw new InvalidOperationException(GetErrorDetails(result));
             }
         }
 
@@ -1027,9 +1008,7 @@ namespace Auth0
             var result = this.client.Execute<Dictionary<string, string>>(request);
             if (result.StatusCode != HttpStatusCode.OK)
             {
-                var detail = GetErrorDetails(result.Content);
-                throw new InvalidOperationException(
-                    string.Format("{0} - {1}", result.StatusDescription, detail));
+                throw new InvalidOperationException(GetErrorDetails(result));
             }
 
             return result.Data["ticket"];
@@ -1062,9 +1041,7 @@ namespace Auth0
 
             if (result.StatusCode != HttpStatusCode.OK)
             {
-                var detail = GetErrorDetails(result.Content);
-                throw new InvalidOperationException(
-                    string.Format("{0} - {1}", result.StatusDescription, detail));
+                throw new InvalidOperationException(GetErrorDetails(result));
             }
 
             return result.Data["ticket"];
@@ -1103,9 +1080,7 @@ namespace Auth0
             var result = this.client.Execute(request);
             if (result.StatusCode != HttpStatusCode.OK && result.StatusCode != HttpStatusCode.NotFound)
             {
-                var detail = GetErrorDetails(result.Content);
-                throw new InvalidOperationException(
-                    string.Format("{0} - {1}", result.StatusDescription, detail));
+                throw new InvalidOperationException(GetErrorDetails(result));
             }
 
             return new UserValidationResult
@@ -1115,20 +1090,11 @@ namespace Auth0
             };
         }
 
-        private static string GetErrorDetails(string resultContent)
+        private static string GetErrorDetails(IRestResponse response)
         {
-            try
-            {
-                return JsonConvert.DeserializeObject(resultContent).ToString();
-            }
-            catch (NullReferenceException)
-            {
-            }
-            catch (JsonReaderException)
-            {
-            }
+            var detail = response.Content ?? "No error details available";
 
-            return resultContent;
+            return string.Format("{0} - {1}", response.StatusDescription, detail);
         }
 
         private string GetJsonProfileFromIdToken(string idToken)
@@ -1147,7 +1113,7 @@ namespace Auth0
             var response = this.client.Execute(request);
             if (response.StatusCode == HttpStatusCode.Unauthorized)
             {
-                throw new InvalidOperationException(GetErrorDetails(response.Content));
+                throw new InvalidOperationException(GetErrorDetails(response));
             }
 
             return response.Content;
@@ -1175,8 +1141,7 @@ namespace Auth0
             }
             else if (response.StatusCode != HttpStatusCode.OK && response.StatusCode != HttpStatusCode.NotModified)
             {
-                throw new InvalidOperationException(
-                    string.Format("{0} - {1}", response.StatusCode, GetErrorDetails(response.Content)));
+                throw new InvalidOperationException(GetErrorDetails(response));
             }
 
             var tk = response.Data["access_token"];
