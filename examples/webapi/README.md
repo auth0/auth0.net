@@ -12,4 +12,7 @@ You also need to set the ClientSecret and ClientId of your Auth0 app in the web.
 <add key="Auth0ClientSecret" value="{CLIENT_SECRET}"/>
 ```
 
+Run `Install-Package Microsoft.AspNet.WebApi.Cors` from VS2013's package manager console.
+
+
 After that just press **F5** to run the application. It will start running in port **3001**. If you browse to [http://localhost:3001/ping](http://localhost:3001/ping) you should receive a response message.
