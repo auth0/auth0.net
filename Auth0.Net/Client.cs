@@ -93,13 +93,10 @@
                     dependencies = assembly.GetReferencedAssemblies()
                         // filter core Framework assemblies
                         .Where(a => a.Name != "mscorlib" && a.Name != "System" && !a.Name.StartsWith("System."))
-                        .Select(a => new {
-                            name = a.Name,
-                            version = a.Version.ToString()
-                        }),
+                        .Select(a => new Dependency(a)),
                     environment = new[] {
-                        new { name = ".NET CLR", version = Environment.Version.ToString() },
-                        new { name = "OS", version = Environment.OSVersion.ToString() }
+                        new Dependency(".NET CLR", Environment.Version),
+                        new Dependency("OS", Environment.OSVersion)
                     }
                 };
 
