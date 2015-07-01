@@ -117,9 +117,11 @@ else
 }
 ~~~
 
-## Diagnostic headers
+## Diagnostic Headers
 
-By default this SDK will send the diagnostic HTTP request header `Auth0-Client` to the Auth0 REST API that contains information about the version of the SDK, its dependencies, and the environment.  If you do not wish to pass this header, you can opt out by passing a value of `true` to the `suppressDiagnosticHeaders` `Auth0.Client` constructor parameter:
+By default this SDK will send the diagnostic HTTP request header `Auth0-Client` to the Auth0 REST API.  The header contains information about the version of the SDK, its dependencies, and the execution environment.
+
+If you do not wish to pass this header, you can opt out by passing the `DiagnosticsHeader.Suppress` instance to the `diagnostics` `Auth0.Client` constructor parameter:
 
 ~~~csharp
 var client = new Auth0.Client(
@@ -127,7 +129,21 @@ var client = new Auth0.Client(
   clientSecret: "your-client-secret",
   domain:       "yourdomain.auth0.com",
   //suppress the Auth0-Client header
-  suppressDiagnosticHeaders: true
+  diagnostics: Auth0.DiagnosticsHeader.Suppress
+);
+~~~
+
+Alternatively, if you'd like to pass additional diagnostic information to Auth0 you can easily add environment information using the `DiagnosticsHeader.Default` instance:
+
+~~~csharp
+var client = new Auth0.Client(
+  clientID:     "your-client-id",
+  clientSecret: "your-client-secret",
+  domain:       "yourdomain.auth0.com",
+  //the AddEnvironment method takes a name and a version
+  diagnostics: Auth0.DiagnosticsHeader.Default
+    .AddEnvironment("SharePoint", "2010")
+    .AddEnvironment("VMWare ESXi", "6.0")
 );
 ~~~
 

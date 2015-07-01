@@ -9,7 +9,6 @@
     using System.Net;
     using System.Text;
     using System.Text.RegularExpressions;
-    using System.Reflection;
 
     /// <summary>
     /// Provides access to Auth0 services.
@@ -30,9 +29,9 @@
         /// <param name="clientSecret">The client secret of the application, as shown in the dashboard settings.</param>
         /// <param name="domain">The domain for the Auth0 server.</param>
         /// <param name="webProxy">Proxy to use for requests made by this client instance. Passed on to underying WebRequest if set.</param>
-        /// <param name="suppressDiagnosticHeaders">True to not send diagnostic request headers to Auth0; default is false.</param>
-        public Client(string clientID, string clientSecret, string domain, IWebProxy webProxy = null, bool suppressDiagnosticHeaders = false)
-            : this(clientID, domain, webProxy, suppressDiagnosticHeaders)
+        /// <param name="diagnostics">A <see cref="DiagnosticsHeader"/> instance that contains diagnostic information sent to Auth0.  Default = <see cref="DiagnosticsHeader.Default"/> </param>
+        public Client(string clientID, string clientSecret, string domain, IWebProxy webProxy = null, DiagnosticsHeader diagnostics = null)
+            : this(clientID, domain, webProxy, diagnostics)
         {
             if (string.IsNullOrEmpty(clientSecret))
             {
@@ -50,8 +49,8 @@
         /// <param name="clientID">The client id of the application, as shown in the dashboard settings.</param>
         /// <param name="domain">The domain for the Auth0 server.</param>
         /// <param name="webProxy">Proxy to use for requests made by this client instance. Passed on to underying WebRequest if set.</param>
-        /// <param name="suppressDiagnosticHeaders">True to not send diagnostic request headers to Auth0; default is false.</param>
-        public Client(string clientID, string domain, IWebProxy webProxy = null, bool suppressDiagnosticHeaders = false)
+        /// <param name="diagnostics">A <see cref="DiagnosticsHeader"/> instance that contains diagnostic information sent to Auth0.  Default = <see cref="DiagnosticsHeader.Default"/> </param>
+        public Client(string clientID, string domain, IWebProxy webProxy = null, DiagnosticsHeader diagnostics = null)
         {
             if (string.IsNullOrEmpty(clientID))
             {
@@ -81,30 +80,13 @@
                 this.client.Proxy = webProxy;
             }
 
-            if (!suppressDiagnosticHeaders)
+            if (diagnostics == null)
             {
-                // build client header
-                var assembly = Assembly.GetExecutingAssembly();
-                var assemblyName = assembly.GetName();
-                var auth0Client = new
-                {
-                    name = assemblyName.Name,
-                    version = assemblyName.Version.ToString(),
-                    dependencies = assembly.GetReferencedAssemblies()
-                        // filter core Framework assemblies
-                        .Where(a => a.Name != "mscorlib" && a.Name != "System" && !a.Name.StartsWith("System."))
-                        .Select(a => new Dependency(a)),
-                    environment = new[] {
-                        new Dependency(".NET CLR", Environment.Version),
-                        new Dependency("OS", Environment.OSVersion)
-                    }
-                };
-
-                // convert to JSON and Base64 URL-encode
-                var json = JsonConvert.SerializeObject(auth0Client);
-                var base64 = Utils.Base64UrlEncode(Encoding.UTF8.GetBytes(json));
-
-                this.client.AddDefaultHeader("Auth0-Client", base64);
+                diagnostics = DiagnosticsHeader.Default;
+            }
+            if (!Object.ReferenceEquals(diagnostics, DiagnosticsHeader.Suppress))
+            {
+                client.AddDefaultHeader("Auth0-Client", diagnostics.ToString());
             }
         }
 
