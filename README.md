@@ -35,7 +35,7 @@ var connectionTicket =  new Auth0.Connection("office365", "contoso.com");
 
 var newConnection = client.CreateConnection(connectionTicket);
 
-// newConnection will have ProvisioningTicketUrl 
+// newConnection will have ProvisioningTicketUrl
 ~~~
 
 Because this example uses Office 365, the returned connection object will have a ```ProvisioningTicketUrl``` property to which you have to redirect the client in order to complete the authorization process.
@@ -117,6 +117,20 @@ else
 }
 ~~~
 
+## Diagnostic headers
+
+By default this SDK will send the diagnostic HTTP request header `Auth0-Client` to the Auth0 REST API that contains information about the version of the SDK, its dependencies, and the environment.  If you do not wish to pass this header, you can opt out by passing a value of `true` to the `suppressDiagnosticHeaders` `Auth0.Client` constructor parameter:
+
+~~~csharp
+var client = new Auth0.Client(
+  clientID:     "your-client-id",
+  clientSecret: "your-client-secret",
+  domain:       "yourdomain.auth0.com",
+  //suppress the Auth0-Client header
+  suppressDiagnosticHeaders: true
+);
+~~~
+
 ## Authentication
 
 This library is useful to consume the http api of Auth0, in order to authenticate users you can use our platform specific SDKs:
@@ -126,7 +140,7 @@ This library is useful to consume the http api of Auth0, in order to authenticat
 * [Windows Phone](https://github.com/auth0/Auth0.WindowsPhone)
 * [Windows 8 C#](https://github.com/auth0/Auth0.Windows8.Cs)
 * [Windows 8 JS](https://github.com/auth0/Auth0.Windows8.Js)
-* [WCF](https://docs.auth0.com/wcf-tutorial) 
+* [WCF](https://docs.auth0.com/wcf-tutorial)
 
 ## Documentation
 

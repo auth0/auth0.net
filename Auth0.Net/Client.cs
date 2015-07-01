@@ -9,6 +9,7 @@
     using System.Net;
     using System.Text;
     using System.Text.RegularExpressions;
+    using System.Reflection;
 
     /// <summary>
     /// Provides access to Auth0 services.
@@ -29,8 +30,9 @@
         /// <param name="clientSecret">The client secret of the application, as shown in the dashboard settings.</param>
         /// <param name="domain">The domain for the Auth0 server.</param>
         /// <param name="webProxy">Proxy to use for requests made by this client instance. Passed on to underying WebRequest if set.</param>
-        public Client(string clientID, string clientSecret, string domain, IWebProxy webProxy = null)
-            : this(clientID, domain, webProxy)
+        /// <param name="suppressDiagnosticHeaders">True to not send diagnostic request headers to Auth0; default is false.</param>
+        public Client(string clientID, string clientSecret, string domain, IWebProxy webProxy = null, bool suppressDiagnosticHeaders = false)
+            : this(clientID, domain, webProxy, suppressDiagnosticHeaders)
         {
             if (string.IsNullOrEmpty(clientSecret))
             {
@@ -48,7 +50,8 @@
         /// <param name="clientID">The client id of the application, as shown in the dashboard settings.</param>
         /// <param name="domain">The domain for the Auth0 server.</param>
         /// <param name="webProxy">Proxy to use for requests made by this client instance. Passed on to underying WebRequest if set.</param>
-        public Client(string clientID, string domain, IWebProxy webProxy = null)
+        /// <param name="suppressDiagnosticHeaders">True to not send diagnostic request headers to Auth0; default is false.</param>
+        public Client(string clientID, string domain, IWebProxy webProxy = null, bool suppressDiagnosticHeaders = false)
         {
             if (string.IsNullOrEmpty(clientID))
             {
@@ -76,6 +79,37 @@
             if (webProxy != null)
             {
                 this.client.Proxy = webProxy;
+            }
+
+            if (!suppressDiagnosticHeaders)
+            {
+                // build client header
+                var assembly = Assembly.GetExecutingAssembly();
+                var assemblyName = assembly.GetName();
+                var auth0Client = new
+                {
+                    name = assemblyName.Name,
+                    version = assemblyName.Version.ToString(),
+                    dependencies = assembly.GetReferencedAssemblies()
+                        // filter core Framework assemblies
+                        .Where(a => a.Name != "mscorlib" && a.Name != "System" && !a.Name.StartsWith("System."))
+                        .Select(a => new {
+                            name = a.Name,
+                            version = a.Version.ToString()
+                        }),
+                    environment = new[] {
+                        new { name = ".NET CLR", version = Environment.Version.ToString() },
+                        new { name = "OS", version = Environment.OSVersion.ToString() }
+                    }
+                };
+
+                // convert to JSON and Base64 URL-encode
+                var json = JsonConvert.SerializeObject(auth0Client);
+                var base64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(json));
+                base64 = base64.Replace('-', '+').Replace('_', '/');
+                base64 = base64.PadRight(base64.Length + (4 - base64.Length % 4) % 4, '=');
+
+                this.client.AddDefaultHeader("Auth0-Client", base64);
             }
         }
 
