@@ -1,11 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.Net", "Auth0.Net\Auth0.Net.csproj", "{EBDB4E43-153E-4CD1-B601-42BAF186F401}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.Net-tests", "Auth0.Net-tests\Auth0.Net-tests.csproj", "{92CAAA6F-3595-475A-B765-937D53513990}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{D3999165-E653-4700-91EE-130A27450FB5}"
+	ProjectSection(SolutionItems) = preProject
+		nuget\Auth0.nuspec = nuget\Auth0.nuspec
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
