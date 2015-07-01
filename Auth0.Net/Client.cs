@@ -105,9 +105,7 @@
 
                 // convert to JSON and Base64 URL-encode
                 var json = JsonConvert.SerializeObject(auth0Client);
-                var base64 = Convert.ToBase64String(Encoding.UTF8.GetBytes(json));
-                base64 = base64.Replace('-', '+').Replace('_', '/');
-                base64 = base64.PadRight(base64.Length + (4 - base64.Length % 4) % 4, '=');
+                var base64 = Utils.Base64UrlEncode(Encoding.UTF8.GetBytes(json));
 
                 this.client.AddDefaultHeader("Auth0-Client", base64);
             }
