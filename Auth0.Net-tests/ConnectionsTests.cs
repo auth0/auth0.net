@@ -13,7 +13,8 @@ namespace Auth0.Net_tests
 {
     using System.Linq.Expressions;
 
-    [TestFixture]
+    // ignore for now since we don't have the necessary configuration to run these tests
+    [TestFixture, Ignore]
     public class ConnectionTests
     {
         private Client client;
