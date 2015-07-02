@@ -13,6 +13,8 @@ namespace Auth0
     public class DiagnosticsHeader
         : DiagnosticsComponent
     {
+        private static object syncRoot = new Object();
+
         // object creation is done via one of the static fields
         private DiagnosticsHeader() { }
         private DiagnosticsHeader(AssemblyName sdkAssemblyName)
@@ -20,15 +22,49 @@ namespace Auth0
         {
         }
 
+        private static volatile DiagnosticsHeader _default;
         /// <summary>
-        /// The <see cref="DiagnosticsHeader"/> instance that contains the default set of SDK information.
+        /// Gets the <see cref="DiagnosticsHeader"/> instance that contains the default set of SDK information.
         /// </summary>
-        public static readonly DiagnosticsHeader Default = CreateDefault();
+        public static DiagnosticsHeader Default
+        {
+            get
+            {
+                if (_default == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (_default == null)
+                        {
+                            _default = CreateDefault();
+                        }
+                    }
+                }
+                return _default;
+            }
+        }
 
+        private static volatile DiagnosticsHeader _suppress;
         /// <summary>
-        /// The <see cref="DiagnosticsHeader"/> instance that tells the SDK to not send the diagnostic header.
+        /// Gets the <see cref="DiagnosticsHeader"/> instance that tells the SDK to not send the diagnostic header.
         /// </summary>
-        public static readonly DiagnosticsHeader Suppress = new DiagnosticsHeader();
+        public static DiagnosticsHeader Suppress
+        {
+            get
+            {
+                if (_suppress == null)
+                {
+                    lock (syncRoot)
+                    {
+                        if (_suppress == null)
+                        {
+                            _suppress = new DiagnosticsHeader();
+                        }
+                    }
+                }
+                return _suppress;
+            }
+        }
 
         private static DiagnosticsHeader CreateDefault()
         {
@@ -107,6 +143,15 @@ namespace Auth0
             var base64 = Utils.Base64UrlEncode(Encoding.UTF8.GetBytes(json));
 
             return base64;
+        }
+
+        /// <summary>
+        /// Resets the <see cref="Default"/> and <see cref="Suppress"/> instances.
+        /// </summary>
+        public static void Reset()
+        {
+            _default = null;
+            _suppress = null;
         }
     }
 }
