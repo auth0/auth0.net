@@ -20,5 +20,15 @@
 
             return Convert.FromBase64String(output);    // Standard base64 decoder
         }
+
+        internal static string Base64UrlEncode(byte[] input)
+        {
+            var output = Convert.ToBase64String(input);
+            output = output.Replace('-', '+');
+            output = output.Replace('_', '/');
+            output = output.PadRight(output.Length + (4 - output.Length % 4) % 4, '=');
+
+            return output;
+        }
     }
 }

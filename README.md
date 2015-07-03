@@ -35,7 +35,7 @@ var connectionTicket =  new Auth0.Connection("office365", "contoso.com");
 
 var newConnection = client.CreateConnection(connectionTicket);
 
-// newConnection will have ProvisioningTicketUrl 
+// newConnection will have ProvisioningTicketUrl
 ~~~
 
 Because this example uses Office 365, the returned connection object will have a ```ProvisioningTicketUrl``` property to which you have to redirect the client in order to complete the authorization process.
@@ -117,6 +117,36 @@ else
 }
 ~~~
 
+## Diagnostic Headers
+
+By default this SDK will send the diagnostic HTTP request header `Auth0-Client` to the Auth0 REST API.  The header contains information about the version of the SDK, its dependencies, and the execution environment.
+
+If you do not wish to pass this header, you can opt out by passing the `DiagnosticsHeader.Suppress` instance to the `diagnostics` `Auth0.Client` constructor parameter:
+
+~~~csharp
+var client = new Auth0.Client(
+  clientID:     "your-client-id",
+  clientSecret: "your-client-secret",
+  domain:       "yourdomain.auth0.com",
+  //suppress the Auth0-Client header
+  diagnostics: Auth0.DiagnosticsHeader.Suppress
+);
+~~~
+
+Alternatively, if you'd like to pass additional diagnostic information to Auth0 you can easily add environment information using the `DiagnosticsHeader.Default` instance:
+
+~~~csharp
+var client = new Auth0.Client(
+  clientID:     "your-client-id",
+  clientSecret: "your-client-secret",
+  domain:       "yourdomain.auth0.com",
+  //the AddEnvironment method takes a name and a version
+  diagnostics: Auth0.DiagnosticsHeader.Default
+    .AddEnvironment("SharePoint", "2010")
+    .AddEnvironment("VMWare ESXi", "6.0")
+);
+~~~
+
 ## Authentication
 
 This library is useful to consume the http api of Auth0, in order to authenticate users you can use our platform specific SDKs:
@@ -126,7 +156,7 @@ This library is useful to consume the http api of Auth0, in order to authenticat
 * [Windows Phone](https://github.com/auth0/Auth0.WindowsPhone)
 * [Windows 8 C#](https://github.com/auth0/Auth0.Windows8.Cs)
 * [Windows 8 JS](https://github.com/auth0/Auth0.Windows8.Js)
-* [WCF](https://docs.auth0.com/wcf-tutorial) 
+* [WCF](https://docs.auth0.com/wcf-tutorial)
 
 ## Documentation
 

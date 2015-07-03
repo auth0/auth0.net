@@ -29,8 +29,9 @@
         /// <param name="clientSecret">The client secret of the application, as shown in the dashboard settings.</param>
         /// <param name="domain">The domain for the Auth0 server.</param>
         /// <param name="webProxy">Proxy to use for requests made by this client instance. Passed on to underying WebRequest if set.</param>
-        public Client(string clientID, string clientSecret, string domain, IWebProxy webProxy = null)
-            : this(clientID, domain, webProxy)
+        /// <param name="diagnostics">A <see cref="DiagnosticsHeader"/> instance that contains diagnostic information sent to Auth0.  Default = <see cref="DiagnosticsHeader.Default"/> </param>
+        public Client(string clientID, string clientSecret, string domain, IWebProxy webProxy = null, DiagnosticsHeader diagnostics = null)
+            : this(clientID, domain, webProxy, diagnostics)
         {
             if (string.IsNullOrEmpty(clientSecret))
             {
@@ -48,7 +49,8 @@
         /// <param name="clientID">The client id of the application, as shown in the dashboard settings.</param>
         /// <param name="domain">The domain for the Auth0 server.</param>
         /// <param name="webProxy">Proxy to use for requests made by this client instance. Passed on to underying WebRequest if set.</param>
-        public Client(string clientID, string domain, IWebProxy webProxy = null)
+        /// <param name="diagnostics">A <see cref="DiagnosticsHeader"/> instance that contains diagnostic information sent to Auth0.  Default = <see cref="DiagnosticsHeader.Default"/> </param>
+        public Client(string clientID, string domain, IWebProxy webProxy = null, DiagnosticsHeader diagnostics = null)
         {
             if (string.IsNullOrEmpty(clientID))
             {
@@ -76,6 +78,15 @@
             if (webProxy != null)
             {
                 this.client.Proxy = webProxy;
+            }
+
+            if (diagnostics == null)
+            {
+                diagnostics = DiagnosticsHeader.Default;
+            }
+            if (!Object.ReferenceEquals(diagnostics, DiagnosticsHeader.Suppress))
+            {
+                client.AddDefaultHeader("Auth0-Client", diagnostics.ToString());
             }
         }
 
