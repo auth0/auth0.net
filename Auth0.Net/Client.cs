@@ -320,17 +320,29 @@
             request.AddParameter("grant_type", "authorization_code", ParameterType.GetOrPost);
             request.AddParameter("redirect_uri", redirectUri, ParameterType.GetOrPost);
 
-            var response = this.client.Execute<Dictionary<string, string>>(request).Data;
+            var response = this.client.Execute<Dictionary<string, string>>(request);
 
-            if (response.ContainsKey("error") || response.ContainsKey("error_description"))
+            if (response.ResponseStatus != ResponseStatus.Completed)
             {
-                throw new OAuthException(response["error_description"], response["error"]);
+                throw new OAuthException(
+                    "The Auth0 API did not return a complete response; ResponseStatus=" + response.ResponseStatus + "; ErrorMessage=" + response.ErrorMessage ?? string.Empty, 
+                    string.Empty);
+            }
+
+            var body = response.Data;
+            if (response.StatusCode != HttpStatusCode.OK)
+            {
+                var errorDescription = (body != null && body.ContainsKey("error_description")) ? body["error_description"] : "(no description)";
+                errorDescription += "; StatusCode=" + (int)response.StatusCode;
+                var errorCode = (body != null && body.ContainsKey("error")) ? body["error"] : string.Empty;
+
+                throw new OAuthException(errorDescription, errorCode);
             }
 
             return new TokenResult
             {
-                AccessToken = response["access_token"],
-                IdToken = response.ContainsKey("id_token") ? response["id_token"] : string.Empty
+                AccessToken = body["access_token"],
+                IdToken = body.ContainsKey("id_token") ? body["id_token"] : string.Empty
             };
         }
 
