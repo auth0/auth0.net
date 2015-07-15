@@ -321,7 +321,6 @@
             request.AddParameter("redirect_uri", redirectUri, ParameterType.GetOrPost);
 
             var response = this.client.Execute<Dictionary<string, string>>(request);
-            var body = response.Data;
 
             if (response.ResponseStatus != ResponseStatus.Completed)
             {
@@ -330,6 +329,7 @@
                     string.Empty);
             }
 
+            var body = response.Data;
             if (response.StatusCode != HttpStatusCode.OK)
             {
                 var errorDescription = body.ContainsKey("error_description") ? body["error_description"] : "(no description)";
