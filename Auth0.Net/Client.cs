@@ -332,9 +332,9 @@
             var body = response.Data;
             if (response.StatusCode != HttpStatusCode.OK)
             {
-                var errorDescription = body.ContainsKey("error_description") ? body["error_description"] : "(no description)";
+                var errorDescription = (body != null && body.ContainsKey("error_description")) ? body["error_description"] : "(no description)";
                 errorDescription += "; StatusCode=" + (int)response.StatusCode;
-                var errorCode = body.ContainsKey("error") ? body["error"] : string.Empty;
+                var errorCode = (body != null && body.ContainsKey("error")) ? body["error"] : string.Empty;
 
                 throw new OAuthException(errorDescription, errorCode);
             }
