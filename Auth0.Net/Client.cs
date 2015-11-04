@@ -326,7 +326,8 @@
             {
                 throw new OAuthException(
                     "The Auth0 API did not return a complete response; ResponseStatus=" + response.ResponseStatus + "; ErrorMessage=" + response.ErrorMessage ?? string.Empty, 
-                    string.Empty);
+                    string.Empty,
+                    response.ErrorException);
             }
 
             var body = response.Data;

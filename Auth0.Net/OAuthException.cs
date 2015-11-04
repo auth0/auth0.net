@@ -13,6 +13,12 @@ namespace Auth0
             Code = code;
         }
 
+        public OAuthException(string description, string code, Exception innerException)
+            : base(description, innerException)
+        {
+            Code = code;
+        }
+
         public string Code { get; private set; }
         public string Description { get { return this.Message; } }
     }
