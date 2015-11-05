@@ -57,6 +57,10 @@
     <Compile Include="Models\DeviceCredentialCreate.cs" />
     <Compile Include="Models\Mobile.cs" />
     <Compile Include="Models\ResourceServer.cs" />
+    <Compile Include="Models\Rule.cs" />
+    <Compile Include="Models\RuleBase.cs" />
+    <Compile Include="Models\RuleCreate.cs" />
+    <Compile Include="Models\RuleUpdate.cs" />
     <Compile Include="RefreshTokenDelegationRequest.cs" />
     <Compile Include="Properties\JetBrains.Annotations.cs" />
     <Compile Include="Models\EncryptionKey.cs" />
