@@ -37,6 +37,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Models\Addons.cs" />
+    <Compile Include="Models\BlacklistToken.cs" />
+    <Compile Include="Models\BlacklistTokenBase.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="DelegatedIdToken.cs" />
     <Compile Include="DelegatedRefreshToken.cs" />
@@ -50,10 +52,12 @@
     <Compile Include="Models\ConnectionBase.cs" />
     <Compile Include="Models\ConnectionCreate.cs" />
     <Compile Include="Models\ConnectionUpdate.cs" />
+    <Compile Include="Models\CreateBlacklistTokenRequest.cs" />
     <Compile Include="Models\DeviceCredential.cs" />
     <Compile Include="Models\DeviceCredentialBase.cs" />
     <Compile Include="Models\DeviceCredentialCreate.cs" />
     <Compile Include="Models\Identity.cs" />
+    <Compile Include="Models\LinkUserAccountRequest.cs" />
     <Compile Include="Models\Mobile.cs" />
     <Compile Include="Models\ResourceServer.cs" />
     <Compile Include="Models\Rule.cs" />
