@@ -37,9 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Models\Addons.cs" />
-    <Compile Include="AppMetadataBase.cs" />
     <Compile Include="Models\Client.cs" />
-    <Compile Include="Auth0User.cs" />
     <Compile Include="DelegatedIdToken.cs" />
     <Compile Include="DelegatedRefreshToken.cs" />
     <Compile Include="DelegatedTokenBase.cs" />
@@ -69,13 +67,11 @@
     <Compile Include="RefreshTokenDelegationRequest.cs" />
     <Compile Include="Properties\JetBrains.Annotations.cs" />
     <Compile Include="Models\EncryptionKey.cs" />
-    <Compile Include="Identity.cs" />
     <Compile Include="Models\JwtConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScopeEntry.cs" />
     <Compile Include="Scopes.cs" />
     <Compile Include="Models\SigningKey.cs" />
-    <Compile Include="UserMetadataBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
