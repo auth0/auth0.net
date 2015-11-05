@@ -55,12 +55,17 @@
     <Compile Include="Models\DeviceCredential.cs" />
     <Compile Include="Models\DeviceCredentialBase.cs" />
     <Compile Include="Models\DeviceCredentialCreate.cs" />
+    <Compile Include="Models\Identity.cs" />
     <Compile Include="Models\Mobile.cs" />
     <Compile Include="Models\ResourceServer.cs" />
     <Compile Include="Models\Rule.cs" />
     <Compile Include="Models\RuleBase.cs" />
     <Compile Include="Models\RuleCreate.cs" />
     <Compile Include="Models\RuleUpdate.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserBase.cs" />
+    <Compile Include="Models\UserCreate.cs" />
+    <Compile Include="Models\UserUpdate.cs" />
     <Compile Include="RefreshTokenDelegationRequest.cs" />
     <Compile Include="Properties\JetBrains.Annotations.cs" />
     <Compile Include="Models\EncryptionKey.cs" />
