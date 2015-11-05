@@ -53,9 +53,14 @@
     <Compile Include="Models\ConnectionCreateRequest.cs" />
     <Compile Include="Models\ConnectionUpdateRequest.cs" />
     <Compile Include="Models\BlacklistTokenCreateRequest.cs" />
+    <Compile Include="Models\Credentials.cs" />
     <Compile Include="Models\DeviceCredential.cs" />
     <Compile Include="Models\DeviceCredentialBase.cs" />
     <Compile Include="Models\DeviceCredentialCreateRequest.cs" />
+    <Compile Include="Models\EmailProvider.cs" />
+    <Compile Include="Models\EmailProviderBase.cs" />
+    <Compile Include="Models\EmailProviderConfigureRequest.cs" />
+    <Compile Include="Models\EmailProviderUpdateRequest.cs" />
     <Compile Include="Models\Identity.cs" />
     <Compile Include="Models\UserAccountLinkRequest.cs" />
     <Compile Include="Models\Mobile.cs" />
@@ -66,8 +71,8 @@
     <Compile Include="Models\RuleUpdateRequest.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserBase.cs" />
-    <Compile Include="Models\UserCreate.cs" />
-    <Compile Include="Models\UserUpdate.cs" />
+    <Compile Include="Models\UserCreateRequest.cs" />
+    <Compile Include="Models\UserUpdateRequest.cs" />
     <Compile Include="RefreshTokenDelegationRequest.cs" />
     <Compile Include="Properties\JetBrains.Annotations.cs" />
     <Compile Include="Models\EncryptionKey.cs" />
