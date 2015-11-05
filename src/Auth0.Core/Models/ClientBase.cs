@@ -2,7 +2,7 @@
 
 namespace Auth0.Core.Models
 {
-    public class ClientBase
+    public abstract class ClientBase
     {
         [JsonProperty("addons")]
         public Addons AddOns { get; set; }

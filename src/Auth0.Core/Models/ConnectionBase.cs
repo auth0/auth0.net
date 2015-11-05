@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace Auth0.Core.Models
 {
-    public class ConnectionBase
+    public abstract class ConnectionBase
     {
         [JsonProperty("name")]
         public string Name { get; set; }

@@ -2,7 +2,7 @@
 
 namespace Auth0.Core.Models
 {
-    public class ClientCreate : ClientBase
+    public class ClientCreateRequest : ClientBase
     {
         /// <summary>
         ///     True if the client is a heroku application, false otherwise

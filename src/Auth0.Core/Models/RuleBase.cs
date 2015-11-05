@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace Auth0.Core.Models
 {
-    public class RuleBase
+    public abstract class RuleBase
     {
         /// <summary>
         /// Gets or sets the name of the rule.

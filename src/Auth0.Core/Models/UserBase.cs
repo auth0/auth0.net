@@ -2,7 +2,7 @@
 
 namespace Auth0.Core.Models
 {
-    public class UserBase
+    public abstract class UserBase
     {
         /// <summary>
         /// Gets or sets the user's email address.

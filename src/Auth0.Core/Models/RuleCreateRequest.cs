@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace Auth0.Core.Models
 {
-    public class RuleCreate : RuleBase
+    public class RuleCreateRequest : RuleBase
     {
         /// <summary>
         /// Gets or sets the execution stage of the rule.

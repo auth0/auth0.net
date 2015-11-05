@@ -2,7 +2,7 @@
 
 namespace Auth0.Core.Models
 {
-    public class UserCreate : UserBase
+    public class UserCreateRequest : UserBase
     {
         /// <summary>
         /// Gets or sets the connection the user belongs to.

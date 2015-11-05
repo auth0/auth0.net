@@ -3,7 +3,7 @@
 namespace Auth0.Core.Models
 {
 
-    public class LinkUserAccountRequest
+    public class UserAccountLinkRequest
     {
         /// <summary>
         /// Gets or sets the type of identity provider of the secondary account being linked.

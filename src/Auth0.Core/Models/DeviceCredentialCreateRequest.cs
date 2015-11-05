@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace Auth0.Core.Models
 {
-    public class DeviceCredentialCreate : DeviceCredentialBase
+    public class DeviceCredentialCreateRequest : DeviceCredentialBase
     {
         /// <summary>
         /// Gets or sets the ID of the client for which the credential will be created.

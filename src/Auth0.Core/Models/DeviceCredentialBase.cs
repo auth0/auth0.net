@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace Auth0.Core.Models
 {
-    public class DeviceCredentialBase
+    public abstract class DeviceCredentialBase
     {
         /// <summary>
         /// Gets or sets the device's name.
