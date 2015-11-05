@@ -45,6 +45,9 @@
     <Compile Include="DelegatedTokenBase.cs" />
     <Compile Include="DelegationRequestBase.cs" />
     <Compile Include="IdTokenDelegationRequest.cs" />
+    <Compile Include="Models\ClientBase.cs" />
+    <Compile Include="Models\ClientCreate.cs" />
+    <Compile Include="Models\ClientUpdate.cs" />
     <Compile Include="Models\Mobile.cs" />
     <Compile Include="Models\ResourceServer.cs" />
     <Compile Include="RefreshTokenDelegationRequest.cs" />
