@@ -52,6 +52,9 @@
     <Compile Include="Models\ConnectionBase.cs" />
     <Compile Include="Models\ConnectionCreate.cs" />
     <Compile Include="Models\ConnectionUpdate.cs" />
+    <Compile Include="Models\DeviceCredential.cs" />
+    <Compile Include="Models\DeviceCredentialBase.cs" />
+    <Compile Include="Models\DeviceCredentialCreate.cs" />
     <Compile Include="Models\Mobile.cs" />
     <Compile Include="Models\ResourceServer.cs" />
     <Compile Include="RefreshTokenDelegationRequest.cs" />
