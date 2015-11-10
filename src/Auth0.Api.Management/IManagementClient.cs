@@ -1,0 +1,9 @@
+﻿using Auth0.Api.Management.Clients;
+
+namespace Auth0.Api.Management
+{
+    public interface IManagementClient
+    {
+        IClientsClient Clients { get; }
+    }
+}

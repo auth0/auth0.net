@@ -53,7 +53,7 @@
     <Compile Include="Models\ConnectionCreateRequest.cs" />
     <Compile Include="Models\ConnectionUpdateRequest.cs" />
     <Compile Include="Models\BlacklistTokenCreateRequest.cs" />
-    <Compile Include="Models\Credentials.cs" />
+    <Compile Include="Models\EmailProviderCredentials.cs" />
     <Compile Include="Models\DeviceCredential.cs" />
     <Compile Include="Models\DeviceCredentialBase.cs" />
     <Compile Include="Models\DeviceCredentialCreateRequest.cs" />

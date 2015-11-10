@@ -12,6 +12,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C9550C3F-90E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.Core", "src\Auth0.Core\Auth0.Core.csproj", "{C5395825-EF6D-438E-9E22-95975F1276E8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.Api.Management", "src\Auth0.Api.Management\Auth0.Api.Management.csproj", "{01898E06-FA70-42B8-AE35-28D2BACDFBD7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0EBAD055-E431-443B-8212-411D1AFE3796}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTestWorkbench", "tests\ConsoleTestWorkbench\ConsoleTestWorkbench.csproj", "{779564FF-1CEE-4C4F-A867-F8A0EA60FC03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,11 +28,21 @@ Global
 		{C5395825-EF6D-438E-9E22-95975F1276E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5395825-EF6D-438E-9E22-95975F1276E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5395825-EF6D-438E-9E22-95975F1276E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01898E06-FA70-42B8-AE35-28D2BACDFBD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01898E06-FA70-42B8-AE35-28D2BACDFBD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01898E06-FA70-42B8-AE35-28D2BACDFBD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01898E06-FA70-42B8-AE35-28D2BACDFBD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{779564FF-1CEE-4C4F-A867-F8A0EA60FC03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{779564FF-1CEE-4C4F-A867-F8A0EA60FC03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{779564FF-1CEE-4C4F-A867-F8A0EA60FC03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{779564FF-1CEE-4C4F-A867-F8A0EA60FC03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C5395825-EF6D-438E-9E22-95975F1276E8} = {C9550C3F-90EB-42C0-B530-E728566A13C2}
+		{01898E06-FA70-42B8-AE35-28D2BACDFBD7} = {C9550C3F-90EB-42C0-B530-E728566A13C2}
+		{779564FF-1CEE-4C4F-A867-F8A0EA60FC03} = {0EBAD055-E431-443B-8212-411D1AFE3796}
 	EndGlobalSection
 EndGlobal
