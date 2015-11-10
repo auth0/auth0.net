@@ -19,5 +19,34 @@ namespace Auth0.Api.Management.Clients
         {
             return apiConnection.GetAsync<IList<Client>>("clients", null, null);
         }
+
+        public Task<Client> Update(string id, ClientUpdateRequest request)
+        {
+            return apiConnection.PatchAsync<Client>("clients/{id}", request, new Dictionary<string, string>
+            {
+                {"id", id}
+            });
+        }
+
+        public Task<Client> Create(ClientCreateRequest request)
+        {
+            return apiConnection.PostAsync<Client>("clients", request);
+        }
+
+        public Task Delete(string id)
+        {
+            return apiConnection.DeleteAsync<object>("clients/{id}", new Dictionary<string, string>
+            {
+                {"id", id}
+            });
+        }
+
+        public Task<Client> Get(string id, string fields = null, bool includeFields = true)
+        {
+            return apiConnection.GetAsync<Client>("clients/{id}", new Dictionary<string, string>
+            {
+                { "id" , id }
+            }, null);
+        }
     }
 }
