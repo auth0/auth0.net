@@ -11,5 +11,7 @@ namespace Auth0.Api.Management
         IDeviceCredentialsClient DeviceCredentials { get; }
 
         IRulesClient Rules { get; }
+
+        IUsersClient Users { get; }
     }
 }

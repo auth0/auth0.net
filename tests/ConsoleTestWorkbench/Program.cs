@@ -31,7 +31,10 @@ namespace ConsoleTestWorkbench
             //await TestDeviceCredentialsMethods(apiClient);
 
             // Test rules
-            await TestRuleMethods(apiClient);
+            //await TestRuleMethods(apiClient);
+
+            // Test users
+            await TestUserMethods(apiClient);
         }
 
         private static async Task TestClientMethods(IManagementClient apiClient)
@@ -136,6 +139,39 @@ namespace ConsoleTestWorkbench
 
             // Delete a rule
             await apiClient.Rules.Delete(newRule.Id);
+        }
+
+        private static async Task TestUserMethods(ManagementClient apiClient)
+        {
+            // Create a new user
+            var newUserRequest = new UserCreateRequest
+            {
+                Connection = "Username-Password-Authentication",
+                Email = "test123@test.com",
+                EmailVerified = true,
+                Password = "password"
+            };
+            var newUser = await apiClient.Users.Create(newUserRequest);
+
+            // Get a single user
+            var user = await apiClient.Users.Get(newUser.UserId);
+
+            // Get all users
+            var users = await apiClient.Users.GetAll();
+
+            // Update the user
+            var updateUserRequest = new UserUpdateRequest
+            {
+                Email = "test456@test.com",
+                VerifyEmail = false
+            };
+            //var updatedUser = await apiClient.Users.Update(newUser.UserId, updateUserRequest);
+
+            // Delete the user
+            await apiClient.Users.Delete(newUser.UserId);
+
+            // Delete all users
+            //await apiClient.Users.DeleteAll();
         }
 
     }

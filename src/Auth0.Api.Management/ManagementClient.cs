@@ -11,6 +11,7 @@ namespace Auth0.Api.Management
         public IConnectionsClient Connections { get; }
         public IDeviceCredentialsClient DeviceCredentials { get; }
         public IRulesClient Rules { get; }
+        public IUsersClient Users { get; }
 
         public ManagementClient(string token, Uri baseUri)
         {
@@ -20,6 +21,7 @@ namespace Auth0.Api.Management
             Connections = new ConnectionsClient(apiConnection);
             DeviceCredentials = new DeviceCredentialsClient(apiConnection);
             Rules = new RulesClient(apiConnection);
+            Users = new UsersClient(apiConnection);
         }
     }
 }

@@ -49,7 +49,9 @@
     <Compile Include="Clients\IConnectionsClient.cs" />
     <Compile Include="Clients\IDeviceCredentialsClient.cs" />
     <Compile Include="Clients\IRulesClient.cs" />
+    <Compile Include="Clients\IUsersClient.cs" />
     <Compile Include="Clients\RulesClient.cs" />
+    <Compile Include="Clients\UsersClient.cs" />
     <Compile Include="IManagementClient.cs" />
     <Compile Include="IApiConnection.cs" />
     <Compile Include="ManagementClient.cs" />
