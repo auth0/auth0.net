@@ -25,7 +25,10 @@ namespace ConsoleTestWorkbench
             //await TestClientMethods(apiClient);
 
             // Test connection methods
-            await TestConnectionMethods(apiClient);
+            //await TestConnectionMethods(apiClient);
+
+            // Test device credentials
+            await TestDeviceCredentialsMethods(apiClient);
         }
 
         private static async Task TestClientMethods(IManagementClient apiClient)
@@ -80,5 +83,27 @@ namespace ConsoleTestWorkbench
             // Delete the connection
             await apiClient.Connections.Delete(newConnection.Id);
         }
+
+        private static async Task TestDeviceCredentialsMethods(ManagementClient apiClient)
+        {
+            // Get all the device credentials
+            //var credentials = await apiClient.DeviceCredentials.GetAll();
+
+            // Create a new device credential
+            //var newCredentialRequest = new DeviceCredentialCreateRequest
+            //{
+            //    DeviceName = "Jerrie's Phone",
+            //    DeviceId = "ABCDEF",
+            //    ClientId = "XACGwwyX820Fso9gspzV7a90WxOPcYEm",
+            //    UserId = "YXV0aDB8NTYzYWZlZmViZWFlOTVmMDAxMmI1NzY5",
+            //    Type = "public_key",
+            //    Value = "new-key-value"
+            //};
+            //var credential = await apiClient.DeviceCredentials.Create(newCredentialRequest);
+
+            // Delete a device credential
+            // ...
+        }
+
     }
 }

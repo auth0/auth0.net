@@ -7,5 +7,7 @@ namespace Auth0.Api.Management
         IClientsClient Clients { get; }
 
         IConnectionsClient Connections { get; }
+
+        IDeviceCredentialsClient DeviceCredentials { get; }
     }
 }
