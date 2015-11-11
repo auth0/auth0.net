@@ -5,5 +5,7 @@ namespace Auth0.Api.Management
     public interface IManagementClient
     {
         IClientsClient Clients { get; }
+
+        IConnectionsClient Connections { get; }
     }
 }

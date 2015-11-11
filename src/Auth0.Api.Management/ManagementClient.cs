@@ -8,12 +8,14 @@ namespace Auth0.Api.Management
         private readonly ApiConnection apiConnection;
 
         public IClientsClient Clients { get; }
+        public IConnectionsClient Connections { get; }
 
         public ManagementClient(string token, Uri baseUri)
         {
             apiConnection = new ApiConnection(token, baseUri.AbsoluteUri);
 
             Clients = new ClientsClient(apiConnection);
+            Connections = new ConnectionsClient(apiConnection);
         }
     }
 }

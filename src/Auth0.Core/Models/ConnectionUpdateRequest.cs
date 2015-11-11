@@ -1,7 +1,7 @@
 namespace Auth0.Core.Models
 {
-    public class ConnectionUpdateRequest
+    public class ConnectionUpdateRequest : ConnectionBase
     {
-        
+
     }
 }

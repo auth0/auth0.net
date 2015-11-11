@@ -95,7 +95,8 @@ namespace Auth0.Api.Management
             {
                 foreach (var pair in urlSegments)
                 {
-                    request.AddUrlSegment(pair.Key, pair.Value);
+                    if (pair.Key != null && pair.Value != null)
+                        request.AddUrlSegment(pair.Key, pair.Value);
                 }
             }
 
@@ -104,7 +105,8 @@ namespace Auth0.Api.Management
             {
                 foreach (var pair in queryStrings)
                 {
-                    request.AddQueryString(pair.Key, pair.Value);
+                    if (pair.Key != null && pair.Value != null)
+                        request.AddQueryString(pair.Key, pair.Value);
                 }
             }
 
@@ -113,7 +115,8 @@ namespace Auth0.Api.Management
             {
                 foreach (var pair in parameters)
                 {
-                    request.AddParameter(pair.Key, pair.Value);
+                    if (pair.Key != null && pair.Value != null)
+                        request.AddParameter(pair.Key, pair.Value);
                 }
             }
 
@@ -125,7 +128,8 @@ namespace Auth0.Api.Management
             {
                 foreach (var pair in headers)
                 {
-                    request.AddHeader(pair.Key, pair.Value);
+                    if (pair.Key != null && pair.Value != null)
+                        request.AddHeader(pair.Key, pair.Value);
                 }
             }
 

@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Auth0.Core.Models;
-using PortableRest;
 
 namespace Auth0.Api.Management.Clients
 {
@@ -13,19 +11,6 @@ namespace Auth0.Api.Management.Clients
         public ClientsClient(IApiConnection apiConnection)
         {
             this.apiConnection = apiConnection;
-        }
-
-        public Task<IList<Client>> GetAll(string fields = null, bool includeFields = true)
-        {
-            return apiConnection.GetAsync<IList<Client>>("clients", null, null);
-        }
-
-        public Task<Client> Update(string id, ClientUpdateRequest request)
-        {
-            return apiConnection.PatchAsync<Client>("clients/{id}", request, new Dictionary<string, string>
-            {
-                {"id", id}
-            });
         }
 
         public Task<Client> Create(ClientCreateRequest request)
@@ -43,10 +28,35 @@ namespace Auth0.Api.Management.Clients
 
         public Task<Client> Get(string id, string fields = null, bool includeFields = true)
         {
-            return apiConnection.GetAsync<Client>("clients/{id}", new Dictionary<string, string>
+            return apiConnection.GetAsync<Client>("clients/{id}",
+                new Dictionary<string, string>
+                {
+                    {"id", id}
+                },
+                new Dictionary<string, string>
+                {
+                    {"fields", fields},
+                    {"include_fields", includeFields.ToString().ToLower()}
+                });
+        }
+
+        public Task<IList<Client>> GetAll(string fields = null, bool includeFields = true)
+        {
+            return apiConnection.GetAsync<IList<Client>>("clients", null,
+                new Dictionary<string, string>
+                {
+                    {"fields", fields},
+                    {"include_fields", includeFields.ToString().ToLower()}
+                });
+        }
+
+        // TODO: Look at making fields Nullable, otherwise default values are sent during PATCH
+        public Task<Client> Update(string id, ClientUpdateRequest request)
+        {
+            return apiConnection.PatchAsync<Client>("clients/{id}", request, new Dictionary<string, string>
             {
-                { "id" , id }
-            }, null);
+                {"id", id}
+            });
         }
     }
 }

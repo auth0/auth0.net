@@ -22,7 +22,10 @@ namespace ConsoleTestWorkbench
             var apiClient = new ManagementClient(ConfigurationManager.AppSettings["ApiToken"], new Uri(ConfigurationManager.AppSettings["ApiBaseUrl"]));
 
             // Test client methods
-            await TestClientMethods(apiClient);
+            //await TestClientMethods(apiClient);
+
+            // Test connection methods
+            await TestConnectionMethods(apiClient);
         }
 
         private static async Task TestClientMethods(IManagementClient apiClient)
@@ -49,6 +52,33 @@ namespace ConsoleTestWorkbench
 
             // Delete the client
             await apiClient.Clients.Delete(newClientResponse.ClientId);
+        }
+
+        private static async Task TestConnectionMethods(IManagementClient apiClient)
+        {
+            // Create a new connection
+            var newConnectionRequest = new ConnectionCreateRequest
+            {
+                Name = "jerrie-new-connection",
+                Strategy = "github"
+            };
+            var newConnection = await apiClient.Connections.Create(newConnectionRequest);
+
+            // Get a single connection
+            var connection = await apiClient.Connections.Get(newConnection.Id);
+
+            // Get all GitHub connections
+            var connections = await apiClient.Connections.GetAll("github");
+
+            // Update a connection
+            var updateConnectionRequest = new ConnectionUpdateRequest
+            {
+                Name = "jerrie-updated-connection"
+            };
+            connection = await apiClient.Connections.Update(newConnection.Id, updateConnectionRequest);
+
+            // Delete the connection
+            await apiClient.Connections.Delete(newConnection.Id);
         }
     }
 }
