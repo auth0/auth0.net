@@ -9,5 +9,7 @@ namespace Auth0.Api.Management
         IConnectionsClient Connections { get; }
 
         IDeviceCredentialsClient DeviceCredentials { get; }
+
+        IRulesClient Rules { get; }
     }
 }

@@ -28,7 +28,10 @@ namespace ConsoleTestWorkbench
             //await TestConnectionMethods(apiClient);
 
             // Test device credentials
-            await TestDeviceCredentialsMethods(apiClient);
+            //await TestDeviceCredentialsMethods(apiClient);
+
+            // Test rules
+            await TestRuleMethods(apiClient);
         }
 
         private static async Task TestClientMethods(IManagementClient apiClient)
@@ -39,7 +42,7 @@ namespace ConsoleTestWorkbench
             // Create a new client
             var newClientRequest = new ClientCreateRequest
             {
-                Name = "New test client"    
+                Name = "New test client"
             };
             var newClientResponse = await apiClient.Clients.Create(newClientRequest);
 
@@ -103,6 +106,36 @@ namespace ConsoleTestWorkbench
 
             // Delete a device credential
             // ...
+        }
+
+        private static async Task TestRuleMethods(ManagementClient apiClient)
+        {
+            // Create a new rule
+            var newRuleRequest = new RuleCreateRequest
+            {
+                Name = "New rule",
+                Script = @"function (user, context, callback) {
+                              // TODO: implement your rule
+                              callback(null, user, context);
+                            }"
+            };
+            var newRule = await apiClient.Rules.Create(newRuleRequest);
+
+            // Get a single rule
+            var rule = await apiClient.Rules.Get(newRule.Id);
+
+            // Get all rules
+            var rules = await apiClient.Rules.GetAll();
+
+            // Update a rule
+            var updateRuleRequest = new RuleUpdateRequest
+            {
+                Name = "Updated rule"
+            };
+            var updatedRule = await apiClient.Rules.Update(newRule.Id, updateRuleRequest);
+
+            // Delete a rule
+            await apiClient.Rules.Delete(newRule.Id);
         }
 
     }
