@@ -171,7 +171,7 @@ namespace ConsoleTestWorkbench
             //await apiClient.Users.Delete(newUser.UserId);
 
             // Delete all users
-            //await apiClient.Users.DeleteAll();
+            await apiClient.Users.DeleteAll();
         }
 
     }

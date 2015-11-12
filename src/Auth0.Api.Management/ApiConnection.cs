@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Auth0.Api.Management.Exceptions;
 using Auth0.Core.Models;
 using Newtonsoft.Json;
 using PortableRest;
@@ -136,13 +137,31 @@ namespace Auth0.Api.Management
             // Send the request
             var response = await SendAsync<T>(request).ConfigureAwait(false);
 
-            HandleErrors(response);
+            await HandleErrors(response);
 
             return response.Content;
         }
 
-        private void HandleErrors<T>(RestResponse<T> response) where T : class
+        private async Task HandleErrors<T>(RestResponse<T> response) where T : class
         {
+            if (!response.HttpResponseMessage.IsSuccessStatusCode)
+            {
+                ApiError apiError = null;
+
+                // Grab the content
+                string responseContent = await response.HttpResponseMessage.Content.ReadAsStringAsync();
+
+                if (!string.IsNullOrEmpty(responseContent))
+                {
+                    apiError = JsonConvert.DeserializeObject<ApiError>(responseContent, new JsonSerializerSettings
+                    {
+                        // Suppress any parsing errors of payload
+                        Error = (sender, args) => { args.ErrorContext.Handled = true; }
+                    });
+                }
+
+                throw new ApiException(response.HttpResponseMessage.StatusCode, apiError);
+            }
         }
     }
 }

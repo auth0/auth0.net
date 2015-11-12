@@ -61,6 +61,7 @@
     <Compile Include="Models\EmailProviderBase.cs" />
     <Compile Include="Models\EmailProviderConfigureRequest.cs" />
     <Compile Include="Models\EmailProviderUpdateRequest.cs" />
+    <Compile Include="Models\ApiError.cs" />
     <Compile Include="Models\Identity.cs" />
     <Compile Include="Models\UserAccountLinkRequest.cs" />
     <Compile Include="Models\Mobile.cs" />

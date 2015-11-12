@@ -53,6 +53,7 @@
     <Compile Include="Clients\IUsersClient.cs" />
     <Compile Include="Clients\RulesClient.cs" />
     <Compile Include="Clients\UsersClient.cs" />
+    <Compile Include="Exceptions\ApiException.cs" />
     <Compile Include="IManagementClient.cs" />
     <Compile Include="IApiConnection.cs" />
     <Compile Include="ManagementClient.cs" />
