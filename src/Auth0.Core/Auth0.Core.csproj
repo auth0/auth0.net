@@ -63,6 +63,7 @@
     <Compile Include="Models\EmailProviderUpdateRequest.cs" />
     <Compile Include="Models\ApiError.cs" />
     <Compile Include="Models\Identity.cs" />
+    <Compile Include="Models\UserAccountJwtLinkRequest.cs" />
     <Compile Include="Models\UserAccountLinkRequest.cs" />
     <Compile Include="Models\Mobile.cs" />
     <Compile Include="Models\ResourceServer.cs" />

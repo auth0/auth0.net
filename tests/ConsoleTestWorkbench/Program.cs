@@ -34,7 +34,10 @@ namespace ConsoleTestWorkbench
             //await TestRuleMethods(apiClient);
 
             // Test users
-            await TestUserMethods(apiClient);
+            //await TestUserMethods(apiClient);
+
+            // Test user account linking
+            await TestUserAccountLinkMethods(apiClient);
         }
 
         private static async Task TestClientMethods(IManagementClient apiClient)
@@ -174,5 +177,17 @@ namespace ConsoleTestWorkbench
             await apiClient.Users.DeleteAll();
         }
 
+        private static async Task TestUserAccountLinkMethods(ManagementClient apiClient)
+        {
+            // Link user
+            var userLinkRequest = new UserAccountLinkRequest
+            {
+                UserId = "auth0|56443cae950b505a3399c3bd",
+                Provider = "auth0"
+            };
+            await apiClient.Users.LinkAccount("auth0|56443c91950b505a3399c3b3", userLinkRequest);
+
+            //[{"profileData":{"email":"jerrie+1@jerriepelser.com","email_verified":false},"connection":"Username-Password-Authentication","user_id":"56443c91950b505a3399c3b3","provider":"auth0","isSocial":false},{"provider":"auth0","user_id":"auth0|56443cae950b505a3399c3bd"}]
+        }
     }
 }

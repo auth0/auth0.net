@@ -43,12 +43,12 @@ namespace Auth0.Api.Management
                 ).ConfigureAwait(false);
         }
 
-        public async Task<T> PostAsync<T>(string resource, object body) where T : class
+        public async Task<T> PostAsync<T>(string resource, object body, Dictionary<string, string> urlSegments) where T : class
         {
             return await RunAsync<T>(resource,
                 HttpMethod.Post,
                 ContentTypes.Json, 
-                null,
+                urlSegments,
                 null,
                 new Dictionary<string, object>
                 {

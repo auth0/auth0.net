@@ -2,7 +2,6 @@
 
 namespace Auth0.Core.Models
 {
-
     public class UserAccountLinkRequest
     {
         /// <summary>
@@ -25,15 +24,6 @@ namespace Auth0.Core.Models
         /// </summary>
         [JsonProperty("user_id")]
         public string UserId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the JWT of the secondary account being linked.
-        /// </summary>
-        /// <remarks>
-        ///  If sending this parameter, the 'Provider', 'UserId' and 'ConnectionId' parameters are invalid.
-        /// </remarks>
-        [JsonProperty("link_with")]
-        public string LinkWith { get; set; }
     }
 
 }

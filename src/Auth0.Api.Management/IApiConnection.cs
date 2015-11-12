@@ -10,7 +10,7 @@ namespace Auth0.Api.Management
 
         Task<T> GetAsync<T>(string resource, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings) where T : class;
 
-        Task<T> PostAsync<T>(string resource, object body) where T : class;
+        Task<T> PostAsync<T>(string resource, object body, Dictionary<string, string> urlSegments) where T : class;
 
         Task<T> PatchAsync<T>(string resource, object body, Dictionary<string, string> urlSegments) where T : class;
     }

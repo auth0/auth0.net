@@ -14,7 +14,7 @@ namespace Auth0.Api.Management.Clients
 
         public Task<Connection> Create(ConnectionCreateRequest request)
         {
-            return Connection.PostAsync<Connection>("connections", request);
+            return Connection.PostAsync<Connection>("connections", request, null);
         }
 
         public Task Delete(string id)

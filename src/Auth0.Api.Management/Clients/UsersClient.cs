@@ -14,7 +14,7 @@ namespace Auth0.Api.Management.Clients
 
         public Task<User> Create(UserCreateRequest request)
         {
-            return Connection.PostAsync<User>("users", request);
+            return Connection.PostAsync<User>("users", request, null);
         }
 
         public Task Delete(string id)
@@ -70,6 +70,19 @@ namespace Auth0.Api.Management.Clients
             {
                 {"id", id}
             });
+        }
+
+        public Task LinkAccount(string id, UserAccountLinkRequest request)
+        {
+            return Connection.PostAsync<User>("users/{id}/identities", request, new Dictionary<string, string>
+            {
+                {"id", id}
+            });
+        }
+
+        public Task LinkAccount(string id, string primaryJwtToken, string secondaryJwtToken)
+        {
+            throw new NotImplementedException();
         }
     }
 }
