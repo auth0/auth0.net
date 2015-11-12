@@ -5,23 +5,21 @@ using Auth0.Core.Models;
 
 namespace Auth0.Api.Management.Clients
 {
-    public class RulesClient : IRulesClient
+    public class RulesClient : ClientBase, IRulesClient
     {
-        private readonly ApiConnection apiConnection;
-
-        public RulesClient(ApiConnection apiConnection)
+        public RulesClient(ApiConnection connection)
+            : base(connection)
         {
-            this.apiConnection = apiConnection;
         }
 
         public Task<Rule> Create(RuleCreateRequest request)
         {
-            return apiConnection.PostAsync<Rule>("rules", request);
+            return Connection.PostAsync<Rule>("rules", request);
         }
 
         public Task Delete(string id)
         {
-            return apiConnection.DeleteAsync<object>("rules/{id}", new Dictionary<string, string>
+            return Connection.DeleteAsync<object>("rules/{id}", new Dictionary<string, string>
             {
                 {"id", id}
             });
@@ -29,7 +27,7 @@ namespace Auth0.Api.Management.Clients
 
         public Task<Rule> Get(string id, string fields = null, bool includeFields = true)
         {
-            return apiConnection.GetAsync<Rule>("rules/{id}",
+            return Connection.GetAsync<Rule>("rules/{id}",
                 new Dictionary<string, string>
                 {
                     {"id", id}
@@ -43,7 +41,7 @@ namespace Auth0.Api.Management.Clients
 
         public Task<IList<Rule>> GetAll(bool? enabled = null, string fields = null, bool includeFields = true, string stage = null)
         {
-            return apiConnection.GetAsync<IList<Rule>>("rules", null,
+            return Connection.GetAsync<IList<Rule>>("rules", null,
                 new Dictionary<string, string>
                 {
                     {"enabled", enabled.HasValue ? enabled.Value.ToString().ToLower() : null},
@@ -56,7 +54,7 @@ namespace Auth0.Api.Management.Clients
         // TODO: Look at making fields Nullable, otherwise default values are sent during PATCH
         public Task<Rule> Update(string id, RuleUpdateRequest request)
         {
-            return apiConnection.PatchAsync<Rule>("rules/{id}", request, new Dictionary<string, string>
+            return Connection.PatchAsync<Rule>("rules/{id}", request, new Dictionary<string, string>
             {
                 {"id", id}
             });

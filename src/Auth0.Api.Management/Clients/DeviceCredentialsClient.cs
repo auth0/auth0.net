@@ -4,18 +4,16 @@ using Auth0.Core.Models;
 
 namespace Auth0.Api.Management.Clients
 {
-    public class DeviceCredentialsClient : IDeviceCredentialsClient
+    public class DeviceCredentialsClient : ClientBase, IDeviceCredentialsClient
     {
-        private ApiConnection apiConnection;
-
-        public DeviceCredentialsClient(ApiConnection apiConnection)
+        public DeviceCredentialsClient(ApiConnection connection)
+            : base(connection)
         {
-            this.apiConnection = apiConnection;
         }
 
         public Task<IList<DeviceCredential>> GetAll(string fields = null, bool includeFields = true, string userId = null, string clientId = null, string type = null)
         {
-            return apiConnection.GetAsync<IList<DeviceCredential>>("device-credentials", null,
+            return Connection.GetAsync<IList<DeviceCredential>>("device-credentials", null,
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
@@ -28,12 +26,12 @@ namespace Auth0.Api.Management.Clients
 
         public Task<DeviceCredential> Create(DeviceCredentialCreateRequest request)
         {
-            return apiConnection.PostAsync<DeviceCredential>("device-credentials", request);
+            return Connection.PostAsync<DeviceCredential>("device-credentials", request);
         }
 
         public Task Delete(string id)
         {
-            return apiConnection.DeleteAsync<object>("device-credentials/{id}", new Dictionary<string, string>
+            return Connection.DeleteAsync<object>("device-credentials/{id}", new Dictionary<string, string>
             {
                 {"id", id}
             });

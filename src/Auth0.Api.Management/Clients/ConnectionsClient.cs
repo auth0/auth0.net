@@ -5,23 +5,21 @@ using Auth0.Core.Models;
 
 namespace Auth0.Api.Management.Clients
 {
-    public class ConnectionsClient : IConnectionsClient
+    public class ConnectionsClient : ClientBase, IConnectionsClient
     {
-        private readonly IApiConnection apiConnection;
-
-        public ConnectionsClient(IApiConnection apiConnection)
+        public ConnectionsClient(IApiConnection connection)
+            : base(connection)
         {
-            this.apiConnection = apiConnection;
         }
 
         public Task<Connection> Create(ConnectionCreateRequest request)
         {
-            return apiConnection.PostAsync<Connection>("connections", request);
+            return Connection.PostAsync<Connection>("connections", request);
         }
 
         public Task Delete(string id)
         {
-            return apiConnection.DeleteAsync<object>("connections/{id}", new Dictionary<string, string>
+            return Connection.DeleteAsync<object>("connections/{id}", new Dictionary<string, string>
             {
                 {"id", id}
             });
@@ -29,7 +27,7 @@ namespace Auth0.Api.Management.Clients
 
         public Task<Connection> Get(string id, string fields = null, bool includeFields = true)
         {
-            return apiConnection.GetAsync<Connection>("connections/{id}",
+            return Connection.GetAsync<Connection>("connections/{id}",
                 new Dictionary<string, string>
                 {
                     {"id", id}
@@ -43,7 +41,7 @@ namespace Auth0.Api.Management.Clients
 
         public Task<IList<Connection>> GetAll(string strategy, string fields = null, bool includeFields = true)
         {
-            return apiConnection.GetAsync<IList<Connection>>("connections", null, 
+            return Connection.GetAsync<IList<Connection>>("connections", null, 
                 new Dictionary<string, string>
                 {
                     { "strategy", strategy },
@@ -55,7 +53,7 @@ namespace Auth0.Api.Management.Clients
         // TODO: Look at making fields Nullable, otherwise default values are sent during PATCH
         public Task<Connection> Update(string id, ConnectionUpdateRequest request)
         {
-            return apiConnection.PatchAsync<Connection>("connections/{id}", request, new Dictionary<string, string>
+            return Connection.PatchAsync<Connection>("connections/{id}", request, new Dictionary<string, string>
             {
                 {"id", id}
             });
