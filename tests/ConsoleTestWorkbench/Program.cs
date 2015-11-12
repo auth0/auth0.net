@@ -165,10 +165,10 @@ namespace ConsoleTestWorkbench
                 Email = "test456@test.com",
                 VerifyEmail = false
             };
-            //var updatedUser = await apiClient.Users.Update(newUser.UserId, updateUserRequest);
+            var updatedUser = await apiClient.Users.Update(newUser.UserId, updateUserRequest);
 
             // Delete the user
-            await apiClient.Users.Delete(newUser.UserId);
+            //await apiClient.Users.Delete(newUser.UserId);
 
             // Delete all users
             //await apiClient.Users.DeleteAll();

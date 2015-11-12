@@ -8,6 +8,6 @@ namespace Auth0.Core.Models
         ///     True if the client is a heroku application, false otherwise
         /// </summary>
         [JsonProperty("is_heroku_app")]
-        public bool IsHerokuApp { get; set; }
+        public bool? IsHerokuApp { get; set; }
     }
 }

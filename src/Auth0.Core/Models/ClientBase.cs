@@ -45,7 +45,7 @@ namespace Auth0.Core.Models
         /// True if the custom login page is to be used, false otherwise. Defaults to true.
         /// </summary>
         [JsonProperty("custom_login_page_on")]
-        public bool IsCustomLoginPageOn { get; set; }
+        public bool? IsCustomLoginPageOn { get; set; }
 
         /// <summary>
         ///     The content (HTML, CSS, JS) of the custom login page.
@@ -86,6 +86,6 @@ namespace Auth0.Core.Models
         ///     True to use Auth0 instead of the IdP to do Single Sign On, false otherwise.
         /// </summary>
         [JsonProperty("sso")]
-        public bool Sso { get; set; }
+        public bool? Sso { get; set; }
     }
 }

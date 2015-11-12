@@ -10,13 +10,13 @@ namespace Auth0.Core.Models
         ///     True if the client secret is base64 encoded, false otherwise. Defaults to true.
         /// </summary>
         [JsonProperty("secret_encoded")]
-        public bool IsSecretEncoded { get; set; }
+        public bool? IsSecretEncoded { get; set; }
 
         /// <summary>
         ///     The amount of time (in seconds) that the token will be valid after being issued. (affects 'exp' claim)
         /// </summary>
         [JsonProperty("lifetime_in_seconds")]
-        public int LifetimeInSeconds { get; set; }
+        public int? LifetimeInSeconds { get; set; }
 
         [JsonProperty("scopes")]
         public Scopes Scopes { get; set; }

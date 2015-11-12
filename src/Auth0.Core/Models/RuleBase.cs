@@ -17,7 +17,7 @@ namespace Auth0.Core.Models
         /// True if the connection is enabled, false otherwise.
         /// </remarks>
         [JsonProperty("enabled")]
-        public bool Enabled { get; set; }
+        public bool? Enabled { get; set; }
 
         /// <summary>
         /// Gets or sets the code to be executed when the rule runs.
@@ -29,6 +29,6 @@ namespace Auth0.Core.Models
         /// Gets or sets the order of the rule in relation to other rules. A rule with a lower order than another rule executes first.
         /// </summary>
         [JsonProperty("order")]
-        public int Order { get; set; }
+        public int? Order { get; set; }
     }
 }

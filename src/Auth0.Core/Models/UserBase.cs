@@ -17,7 +17,7 @@ namespace Auth0.Core.Models
         /// True if the email address is verified, otherwise false.
         /// </remarks>
         [JsonProperty("email_verified")]
-        public bool EmailVerified { get; set; }
+        public bool? EmailVerified { get; set; }
 
         /// <summary>
         /// Gets or sets the user' username.

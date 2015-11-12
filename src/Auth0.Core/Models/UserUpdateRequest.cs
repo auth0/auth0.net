@@ -23,25 +23,25 @@ namespace Auth0.Core.Models
         /// True if the phone is verified, otherwise false.
         /// </remarks>
         [JsonProperty("phone_verified")]
-        public bool PhoneVerified { get; set; }
+        public bool? PhoneVerified { get; set; }
 
         /// <summary>
         /// Gets or sets whether the user's email change must be verified. True if it must be verified, otherwise false.
         /// </summary>
         [JsonProperty("verify_email")]
-        public bool VerifyEmail { get; set; }
+        public bool? VerifyEmail { get; set; }
 
         /// <summary>
         /// Gets or sets whether the user's password change needs to be verified via email. True if it must be verified, otherwise false.
         /// </summary>
         [JsonProperty("verify_password")]
-        public bool VerifyPassword { get; set; }
+        public bool? VerifyPassword { get; set; }
 
         /// <summary>
         /// Gets or sets whether the user's phone number change needs to be verified via email. True if it must be verified, otherwise false.
         /// </summary>
         [JsonProperty("verify_phone_number")]
-        public bool VerifyPhoneNumber { get; set; }
+        public bool? VerifyPhoneNumber { get; set; }
 
         /// <summary>
         /// Gets or sets the Auth0 clientID. Only useful when updating the email.
@@ -53,6 +53,6 @@ namespace Auth0.Core.Models
         /// Gets or sets whether the user is blocked. True if the user is blocked, otherwise false.
         /// </summary>
         [JsonProperty("blocked")]
-        public bool Blocked { get; set; }
+        public bool? Blocked { get; set; }
     }
 }

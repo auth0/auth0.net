@@ -14,7 +14,7 @@ namespace Auth0.Core.Models
         /// Gets or sets whether using your own email provider is enabled.
         /// </summary>
         [JsonProperty("enabled")]
-        public bool IsEnabled { get; set; }
+        public bool? IsEnabled { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the email provider.

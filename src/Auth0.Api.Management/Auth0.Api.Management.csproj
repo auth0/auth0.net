@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiConnection.cs" />
+    <Compile Include="Clients\ClientBase.cs" />
     <Compile Include="Clients\ClientsClient.cs" />
     <Compile Include="Clients\ConnectionsClient.cs" />
     <Compile Include="Clients\DeviceCredentialsClient.cs" />

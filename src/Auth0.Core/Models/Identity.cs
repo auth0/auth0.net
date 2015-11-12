@@ -14,6 +14,6 @@ namespace Auth0.Core.Models
         public string Provider { get; set; }
 
         [JsonProperty("isSocial")]
-        public bool IsSocial { get; set; }
+        public bool? IsSocial { get; set; }
     }
 }
