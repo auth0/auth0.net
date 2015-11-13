@@ -40,7 +40,10 @@ namespace ConsoleTestWorkbench
             //await TestUserAccountLinkMethods(apiClient);
 
             // Test emails
-            await TestEmailsMethods(apiClient);
+            //await TestEmailsMethods(apiClient);
+
+            // Test jobs
+            await TestJobsMethods(apiClient);
         }
 
         private static async Task TestClientMethods(IManagementClient apiClient)
@@ -148,6 +151,19 @@ namespace ConsoleTestWorkbench
                 }
             };
             var updateResponse = await apiClient.Emails.Update(updateRequest);
+        }
+
+        private static async Task TestJobsMethods(ManagementClient apiClient)
+        {
+            // Send an email verification request
+            var emailRequest = new VerifyEmailJobRequest
+            {
+                UserId = "auth0|56443c91950b505a3399c3b3"
+            };
+            var emailRequestResponse = await apiClient.Jobs.SendVerificationEmail(emailRequest);
+
+            // Get the job status
+            var job = await apiClient.Jobs.Get(emailRequestResponse.Id);
         }
 
         private static async Task TestRuleMethods(ManagementClient apiClient)

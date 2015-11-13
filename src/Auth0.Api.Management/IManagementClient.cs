@@ -12,6 +12,8 @@ namespace Auth0.Api.Management
 
         IEmailsClient Emails { get; }
 
+        IJobsClient Jobs { get; }
+
         IRulesClient Rules { get; }
 
         IUsersClient Users { get; }

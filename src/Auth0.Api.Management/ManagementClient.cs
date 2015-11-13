@@ -11,6 +11,7 @@ namespace Auth0.Api.Management
         public IConnectionsClient Connections { get; }
         public IDeviceCredentialsClient DeviceCredentials { get; }
         public IEmailsClient Emails { get; }
+        public IJobsClient Jobs { get; }
         public IRulesClient Rules { get; }
         public IUsersClient Users { get; }
 
@@ -24,6 +25,7 @@ namespace Auth0.Api.Management
             Rules = new RulesClient(apiConnection);
             Users = new UsersClient(apiConnection);
             Emails = new EmailsClient(apiConnection);
+            Jobs = new JobsClient(apiConnection);
         }
     }
 }

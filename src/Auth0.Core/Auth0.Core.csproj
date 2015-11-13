@@ -64,6 +64,7 @@
     <Compile Include="Models\EmailProviderUpdateRequest.cs" />
     <Compile Include="Models\ApiError.cs" />
     <Compile Include="Models\Identity.cs" />
+    <Compile Include="Models\Job.cs" />
     <Compile Include="Models\UserAccountJwtLinkRequest.cs" />
     <Compile Include="Models\UserAccountLinkRequest.cs" />
     <Compile Include="Models\Mobile.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="Models\UserBase.cs" />
     <Compile Include="Models\UserCreateRequest.cs" />
     <Compile Include="Models\UserUpdateRequest.cs" />
+    <Compile Include="Models\VerifyEmailJobRequest.cs" />
     <Compile Include="RefreshTokenDelegationRequest.cs" />
     <Compile Include="Properties\JetBrains.Annotations.cs" />
     <Compile Include="Models\EncryptionKey.cs" />
