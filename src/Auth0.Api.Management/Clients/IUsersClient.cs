@@ -71,7 +71,7 @@ namespace Auth0.Api.Management.Clients
         /// <param name="id">The ID of the primary account.</param>
         /// <param name="request">The <see cref="UserAccountLinkRequest" /> containing details of the secondary account to link.</param>
         /// <returns></returns>
-        Task LinkAccount(string id, UserAccountLinkRequest request);
+        Task<IList<AccountLinkResponse>> LinkAccount(string id, UserAccountLinkRequest request);
 
         /// <summary>
         ///     Links a secondary account to a primary account.
@@ -80,7 +80,16 @@ namespace Auth0.Api.Management.Clients
         /// <param name="primaryJwtToken">The JWT of the primary account.</param>
         /// <param name="secondaryJwtToken">The JWT for the secondary account you wish to link.</param>
         /// <returns></returns>
-        Task LinkAccount(string id, string primaryJwtToken, string secondaryJwtToken);
+        Task<IList<AccountLinkResponse>> LinkAccount(string id, string primaryJwtToken, string secondaryJwtToken);
+
+        /// <summary>
+        ///     Unlinks user accounts
+        /// </summary>
+        /// <param name="primaryUserId">The ID of the primary account.</param>
+        /// <param name="provider">The type of the identity provider.</param>
+        /// <param name="secondaryUserId">The ID for the secondary account</param>
+        /// <returns></returns>
+        Task<IList<AccountLinkResponse>> UnlinkAccount(string primaryUserId, string provider, string secondaryUserId);
 
         /// <summary>
         ///     Updates a user.

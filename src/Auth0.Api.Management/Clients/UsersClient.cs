@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Auth0.Core.Models;
@@ -63,6 +64,16 @@ namespace Auth0.Api.Management.Clients
                 });
         }
 
+        public Task<IList<AccountLinkResponse>> UnlinkAccount(string primaryUserId, string provider, string secondaryUserId)
+        {
+            return Connection.DeleteAsync<IList<AccountLinkResponse>>("users/{id}/identities/{provider}/{secondaryid}", new Dictionary<string, string>
+            {
+                {"id", primaryUserId},
+                {"provider", provider},
+                {"secondaryid", secondaryUserId}
+            });
+        }
+
         // TODO: Look at making fields Nullable, otherwise default values are sent during PATCH
         public Task<User> Update(string id, UserUpdateRequest request)
         {
@@ -72,15 +83,15 @@ namespace Auth0.Api.Management.Clients
             });
         }
 
-        public Task LinkAccount(string id, UserAccountLinkRequest request)
+        public Task<IList<AccountLinkResponse>> LinkAccount(string id, UserAccountLinkRequest request)
         {
-            return Connection.PostAsync<User>("users/{id}/identities", request, new Dictionary<string, string>
+            return Connection.PostAsync<IList<AccountLinkResponse>>("users/{id}/identities", request, new Dictionary<string, string>
             {
                 {"id", id}
             });
         }
 
-        public Task LinkAccount(string id, string primaryJwtToken, string secondaryJwtToken)
+        public Task<IList<AccountLinkResponse>> LinkAccount(string id, string primaryJwtToken, string secondaryJwtToken)
         {
             throw new NotImplementedException();
         }

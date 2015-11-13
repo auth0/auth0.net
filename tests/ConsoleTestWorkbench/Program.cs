@@ -182,12 +182,12 @@ namespace ConsoleTestWorkbench
             // Link user
             var userLinkRequest = new UserAccountLinkRequest
             {
-                UserId = "auth0|56443cae950b505a3399c3bd",
+                UserId = "auth0|564547d3f9500515315ccb2e",
                 Provider = "auth0"
             };
-            await apiClient.Users.LinkAccount("auth0|56443c91950b505a3399c3b3", userLinkRequest);
+            //var linkResponse = await apiClient.Users.LinkAccount("auth0|56443c91950b505a3399c3b3", userLinkRequest);
 
-            //[{"profileData":{"email":"jerrie+1@jerriepelser.com","email_verified":false},"connection":"Username-Password-Authentication","user_id":"56443c91950b505a3399c3b3","provider":"auth0","isSocial":false},{"provider":"auth0","user_id":"auth0|56443cae950b505a3399c3bd"}]
+            //var unlinkResponse = await apiClient.Users.UnlinkAccount("auth0|56443c91950b505a3399c3b3", "auth0", "auth0|564547d3f9500515315ccb2e");
         }
     }
 }
