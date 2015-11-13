@@ -37,7 +37,10 @@ namespace ConsoleTestWorkbench
             //await TestUserMethods(apiClient);
 
             // Test user account linking
-            await TestUserAccountLinkMethods(apiClient);
+            //await TestUserAccountLinkMethods(apiClient);
+
+            // Test emails
+            await TestEmailsMethods(apiClient);
         }
 
         private static async Task TestClientMethods(IManagementClient apiClient)
@@ -112,6 +115,39 @@ namespace ConsoleTestWorkbench
 
             // Delete a device credential
             // ...
+        }
+
+        private static async Task TestEmailsMethods(ManagementClient apiClient)
+        {
+            // Get the email provider
+            var provider = await apiClient.Emails.Get("name,enabled,credentials,settings");
+
+            // Delete the email provider
+            await apiClient.Emails.Delete();
+
+            // Configure the email provider
+            var configureRequest = new EmailProviderConfigureRequest
+            {
+                Name = "mandrill",
+                IsEnabled = true,
+                Credentials = new EmailProviderCredentials
+                {
+                    ApiKey = "ABC"
+                }
+            };
+            var configureResponse = await apiClient.Emails.Configure(configureRequest);
+
+            // Update the email provider
+            var updateRequest = new EmailProviderUpdateRequest
+            {
+                Name = "mandrill",
+                IsEnabled = true,
+                Credentials = new EmailProviderCredentials
+                {
+                    ApiKey = "XYZ"
+                }
+            };
+            var updateResponse = await apiClient.Emails.Update(updateRequest);
         }
 
         private static async Task TestRuleMethods(ManagementClient apiClient)
