@@ -14,6 +14,7 @@ namespace Auth0.Api.Management
         public IEmailsClient Emails { get; }
         public IJobsClient Jobs { get; }
         public IRulesClient Rules { get; }
+        public ITicketsClient Tickets { get; }
         public IStatsClient Stats { get; }
         public IUsersClient Users { get; }
 
@@ -24,11 +25,12 @@ namespace Auth0.Api.Management
             Clients = new ClientsClient(apiConnection);
             Connections = new ConnectionsClient(apiConnection);
             DeviceCredentials = new DeviceCredentialsClient(apiConnection);
-            Rules = new RulesClient(apiConnection);
-            Users = new UsersClient(apiConnection);
             Emails = new EmailsClient(apiConnection);
             Jobs = new JobsClient(apiConnection);
+            Rules = new RulesClient(apiConnection);
             Stats = new StatsClient(apiConnection);
+            Tickets = new TicketsClient(apiConnection);
+            Users = new UsersClient(apiConnection);
         }
     }
 }

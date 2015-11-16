@@ -48,6 +48,9 @@ namespace ConsoleTestWorkbench
 
             // Test stats
             //await TestStatsMethods(apiClient);
+
+            // Test tickets
+            await TestTicketsMethods(apiClient);
         }
 
         private static async Task TestClientMethods(IManagementClient apiClient)
@@ -213,6 +216,24 @@ namespace ConsoleTestWorkbench
 
             // Get daily stats
             var dailyStats = await apiClient.Stats.GetDailyStats(new DateTime(2015, 11, 1), new DateTime(2015, 11, 30));
+        }
+
+        private static async Task TestTicketsMethods(ManagementClient apiClient)
+        {
+            // Send email verification ticket
+            var ticket = await apiClient.Tickets.CreateEmailVerificationTicket(new EmailVerificationTicketRequest
+            {
+                UserId = "auth0|56443c91950b505a3399c3b3",
+                ResultUrl = "http://www.test.com/success"
+            });
+
+            // Send password change ticket
+            ticket = await apiClient.Tickets.CreatePasswordChangeTicket(new PasswordChangeTicketRequest
+            {
+                UserId = "auth0|56443c91950b505a3399c3b3",
+                ResultUrl = "http://www.test.com/success",
+                NewPassword = "password"
+            });
         }
 
         private static async Task TestUserMethods(ManagementClient apiClient)

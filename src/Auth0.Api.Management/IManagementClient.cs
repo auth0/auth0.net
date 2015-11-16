@@ -16,6 +16,8 @@ namespace Auth0.Api.Management
 
         IRulesClient Rules { get; }
 
+        ITicketsClient Tickets { get; }
+
         IStatsClient Stats { get; }
 
         IUsersClient Users { get; }
