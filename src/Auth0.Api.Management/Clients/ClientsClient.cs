@@ -13,7 +13,7 @@ namespace Auth0.Api.Management.Clients
 
         public Task<Client> Create(ClientCreateRequest request)
         {
-            return Connection.PostAsync<Client>("clients", request, null, null);
+            return Connection.PostAsync<Client>("clients", request, null, null, null);
         }
 
         public Task Delete(string id)

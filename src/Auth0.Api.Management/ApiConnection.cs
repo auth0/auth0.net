@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
 using Auth0.Api.Management.Exceptions;
+using Auth0.Api.Management.Models;
 using Auth0.Core.Models;
 using Newtonsoft.Json;
 using PortableRest;
@@ -28,8 +29,8 @@ namespace Auth0.Api.Management
                 urlSegments,
                 null,
                 null,
-                null
-                ).ConfigureAwait(false);
+                null, 
+                null).ConfigureAwait(false);
         }
 
         public async Task<T> GetAsync<T>(string resource, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings) where T : class
@@ -40,11 +41,11 @@ namespace Auth0.Api.Management
                 urlSegments,
                 queryStrings,
                 null,
-                null
-                ).ConfigureAwait(false);
+                null, 
+                null).ConfigureAwait(false);
         }
 
-        public async Task<T> PostAsync<T>(string resource, object body, IDictionary<string, string> urlSegments, IDictionary<string, object> headers) where T : class
+        public async Task<T> PostAsync<T>(string resource, object body, IDictionary<string, string> urlSegments, IDictionary<string, object> headers, IList<FileUploadParameter> fileParameters) where T : class
         {
             return await RunAsync<T>(resource,
                 HttpMethod.Post,
@@ -55,8 +56,8 @@ namespace Auth0.Api.Management
                 {
                     { "body", body}
                 }, 
-                headers
-                ).ConfigureAwait(false);
+                headers, 
+                fileParameters).ConfigureAwait(false);
         }
 
         public async Task<T> PatchAsync<T>(string resource, object body, Dictionary<string, string> urlSegments) where T : class
@@ -70,18 +71,11 @@ namespace Auth0.Api.Management
                 {
                     { "body", body}
                 },
-                null
-                ).ConfigureAwait(false);
+                null, 
+                null).ConfigureAwait(false);
         }
 
-        private async Task<T> RunAsync<T>(string resource,
-            HttpMethod httpMethod,
-            ContentTypes contentTypes,
-            IDictionary<string, string> urlSegments,
-            IDictionary<string, string> queryStrings,
-            IDictionary<string, object> parameters,
-            IDictionary<string, object> headers
-            ) where T : class
+        private async Task<T> RunAsync<T>(string resource, HttpMethod httpMethod, ContentTypes contentTypes, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings, IDictionary<string, object> parameters, IDictionary<string, object> headers, IList<FileUploadParameter> fileParameters) where T : class
         {
             var request = new RestRequest(resource, httpMethod)
             {
@@ -121,6 +115,15 @@ namespace Auth0.Api.Management
                         request.AddParameter(pair.Key, pair.Value);
                 }
             }
+
+            // Apply the file parameters
+            //if (fileParameters != null)
+            //{
+            //    foreach (var parameter in fileParameters)
+            //    {
+            //        request.AddFileParameter(parameter.Key, parameter.FileStream, parameter.Filename);
+            //    }
+            //}
 
             // Set the authorization header
             if (headers == null || (headers != null && !headers.ContainsKey("Authorization"))) // Auth header can be overriden by passing custom value in headers dictionary

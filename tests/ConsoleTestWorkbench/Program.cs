@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,7 +38,7 @@ namespace ConsoleTestWorkbench
             //await TestUserMethods(apiClient);
 
             // Test user account linking
-            await TestUserAccountLinkMethods(apiClient);
+            //await TestUserAccountLinkMethods(apiClient);
 
             // Test emails
             //await TestEmailsMethods(apiClient);
@@ -155,15 +156,21 @@ namespace ConsoleTestWorkbench
 
         private static async Task TestJobsMethods(ManagementClient apiClient)
         {
-            // Send an email verification request
-            var emailRequest = new VerifyEmailJobRequest
-            {
-                UserId = "auth0|56443c91950b505a3399c3b3"
-            };
-            var emailRequestResponse = await apiClient.Jobs.SendVerificationEmail(emailRequest);
+            //// Send an email verification request
+            //var emailRequest = new VerifyEmailJobRequest
+            //{
+            //    UserId = "auth0|56443c91950b505a3399c3b3"
+            //};
+            //var emailRequestResponse = await apiClient.Jobs.SendVerificationEmail(emailRequest);
 
-            // Get the job status
-            var job = await apiClient.Jobs.Get(emailRequestResponse.Id);
+            //// Get the job status
+            //var job = await apiClient.Jobs.Get(emailRequestResponse.Id);
+
+            // Send a user import request
+            //using (FileStream fs = new FileStream("user-import-test.json", FileMode.Open))
+            //{
+            //    var importUsersResponse = await apiClient.Jobs.ImportUsers("con_lQKQee7ZnEGc6OYH", "user-import-test.json", fs);
+            //}
         }
 
         private static async Task TestRuleMethods(ManagementClient apiClient)

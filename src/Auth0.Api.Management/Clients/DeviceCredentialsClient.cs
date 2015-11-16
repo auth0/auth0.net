@@ -26,7 +26,7 @@ namespace Auth0.Api.Management.Clients
 
         public Task<DeviceCredential> Create(DeviceCredentialCreateRequest request)
         {
-            return Connection.PostAsync<DeviceCredential>("device-credentials", request, null, null);
+            return Connection.PostAsync<DeviceCredential>("device-credentials", request, null, null, null);
         }
 
         public Task Delete(string id)
