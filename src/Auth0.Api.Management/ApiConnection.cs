@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Runtime.InteropServices.ComTypes;
 using System.Threading.Tasks;
 using Auth0.Api.Management.Exceptions;
 using Auth0.Core.Models;
@@ -43,7 +44,7 @@ namespace Auth0.Api.Management
                 ).ConfigureAwait(false);
         }
 
-        public async Task<T> PostAsync<T>(string resource, object body, Dictionary<string, string> urlSegments) where T : class
+        public async Task<T> PostAsync<T>(string resource, object body, IDictionary<string, string> urlSegments, IDictionary<string, object> headers) where T : class
         {
             return await RunAsync<T>(resource,
                 HttpMethod.Post,
@@ -54,7 +55,7 @@ namespace Auth0.Api.Management
                 {
                     { "body", body}
                 }, 
-                null
+                headers
                 ).ConfigureAwait(false);
         }
 
@@ -122,7 +123,8 @@ namespace Auth0.Api.Management
             }
 
             // Set the authorization header
-            request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+            if (headers == null || (headers != null && !headers.ContainsKey("Authorization"))) // Auth header can be overriden by passing custom value in headers dictionary
+                request.AddHeader("Authorization", string.Format("Bearer {0}", token));
 
             // Apply other headers
             if (headers != null)

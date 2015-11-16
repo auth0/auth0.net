@@ -23,7 +23,7 @@ namespace Auth0.Api.Management.Clients
 
         public Task<Job> SendVerificationEmail(VerifyEmailJobRequest request)
         {
-            return Connection.PostAsync<Job>("jobs/verification-email", request, null);
+            return Connection.PostAsync<Job>("jobs/verification-email", request, null, null);
         }
     }
 }

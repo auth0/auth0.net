@@ -13,7 +13,7 @@ namespace Auth0.Api.Management.Clients
 
         public Task<EmailProvider> Configure(EmailProviderConfigureRequest request)
         {
-            return Connection.PostAsync<EmailProvider>("emails/provider", request, null);
+            return Connection.PostAsync<EmailProvider>("emails/provider", request, null, null);
         }
 
         public Task<EmailProvider> Get(string fields = null, bool includeFields = true)

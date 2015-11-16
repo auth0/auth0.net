@@ -37,13 +37,13 @@ namespace ConsoleTestWorkbench
             //await TestUserMethods(apiClient);
 
             // Test user account linking
-            //await TestUserAccountLinkMethods(apiClient);
+            await TestUserAccountLinkMethods(apiClient);
 
             // Test emails
             //await TestEmailsMethods(apiClient);
 
             // Test jobs
-            await TestJobsMethods(apiClient);
+            //await TestJobsMethods(apiClient);
         }
 
         private static async Task TestClientMethods(IManagementClient apiClient)
@@ -232,14 +232,21 @@ namespace ConsoleTestWorkbench
         private static async Task TestUserAccountLinkMethods(ManagementClient apiClient)
         {
             // Link user
-            var userLinkRequest = new UserAccountLinkRequest
-            {
-                UserId = "auth0|564547d3f9500515315ccb2e",
-                Provider = "auth0"
-            };
+            //var userLinkRequest = new UserAccountLinkRequest
+            //{
+            //    UserId = "56443cae950b505a3399c3bd",
+            //    Provider = "auth0"
+            //};
             //var linkResponse = await apiClient.Users.LinkAccount("auth0|56443c91950b505a3399c3b3", userLinkRequest);
 
-            //var unlinkResponse = await apiClient.Users.UnlinkAccount("auth0|56443c91950b505a3399c3b3", "auth0", "auth0|564547d3f9500515315ccb2e");
+            // Link user with JWT
+            //var linkResponse = await apiClient.Users.LinkAccount(
+            //    "auth0|56443c91950b505a3399c3b3",
+            //    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2plcnJpZS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NTY0NDNjOTE5NTBiNTA1YTMzOTljM2IzIiwiYXVkIjoiWEFDR3d3eVg4MjBGc285Z3NwelY3YTkwV3hPUGNZRW0iLCJleHAiOjE0NDc2OTU5NjEsImlhdCI6MTQ0NzY0Nzk2MX0.EipV2WM-bhSakqIOwL31UtCBAwCKhMVnAu8uNjnINqg",
+            //    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2plcnJpZS5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NTY0NDNjYWU5NTBiNTA1YTMzOTljM2JkIiwiYXVkIjoiWEFDR3d3eVg4MjBGc285Z3NwelY3YTkwV3hPUGNZRW0iLCJleHAiOjE0NDc2OTU5ODAsImlhdCI6MTQ0NzY0Nzk4MH0.0u1VKZrqymSQTk7HyrJ2ACcwfohkJASMfdGL9Cp9uD0"
+            //    );
+
+            //var unlinkResponse = await apiClient.Users.UnlinkAccount("auth0|56443c91950b505a3399c3b3", "auth0", "56443cae950b505a3399c3bd");
         }
     }
 }
