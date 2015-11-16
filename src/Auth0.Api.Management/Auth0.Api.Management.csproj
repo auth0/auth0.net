@@ -53,9 +53,11 @@
     <Compile Include="Clients\IEmailsClient.cs" />
     <Compile Include="Clients\IJobsClient.cs" />
     <Compile Include="Clients\IRulesClient.cs" />
+    <Compile Include="Clients\IStatsClient.cs" />
     <Compile Include="Clients\IUsersClient.cs" />
     <Compile Include="Clients\JobsClient.cs" />
     <Compile Include="Clients\RulesClient.cs" />
+    <Compile Include="Clients\StatsClient.cs" />
     <Compile Include="Clients\UsersClient.cs" />
     <Compile Include="Exceptions\ApiException.cs" />
     <Compile Include="IManagementClient.cs" />

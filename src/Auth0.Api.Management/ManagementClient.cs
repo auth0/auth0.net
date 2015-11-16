@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using Auth0.Api.Management.Clients;
 
 namespace Auth0.Api.Management
@@ -13,6 +14,7 @@ namespace Auth0.Api.Management
         public IEmailsClient Emails { get; }
         public IJobsClient Jobs { get; }
         public IRulesClient Rules { get; }
+        public IStatsClient Stats { get; }
         public IUsersClient Users { get; }
 
         public ManagementClient(string token, Uri baseUri)
@@ -26,6 +28,7 @@ namespace Auth0.Api.Management
             Users = new UsersClient(apiConnection);
             Emails = new EmailsClient(apiConnection);
             Jobs = new JobsClient(apiConnection);
+            Stats = new StatsClient(apiConnection);
         }
     }
 }

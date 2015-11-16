@@ -45,6 +45,9 @@ namespace ConsoleTestWorkbench
 
             // Test jobs
             //await TestJobsMethods(apiClient);
+
+            // Test stats
+            //await TestStatsMethods(apiClient);
         }
 
         private static async Task TestClientMethods(IManagementClient apiClient)
@@ -201,6 +204,15 @@ namespace ConsoleTestWorkbench
 
             // Delete a rule
             await apiClient.Rules.Delete(newRule.Id);
+        }
+
+        private static async Task TestStatsMethods(ManagementClient apiClient)
+        {
+            // Get active users
+            var users = await apiClient.Stats.GetActiveUsers();
+
+            // Get daily stats
+            var dailyStats = await apiClient.Stats.GetDailyStats(new DateTime(2015, 11, 1), new DateTime(2015, 11, 30));
         }
 
         private static async Task TestUserMethods(ManagementClient apiClient)
