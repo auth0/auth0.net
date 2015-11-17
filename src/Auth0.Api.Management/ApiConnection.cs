@@ -45,13 +45,14 @@ namespace Auth0.Api.Management
                 null).ConfigureAwait(false);
         }
 
-        public async Task<T> PostAsync<T>(string resource, object body, IDictionary<string, string> urlSegments, IDictionary<string, object> headers, IList<FileUploadParameter> fileParameters) where T : class
+        public async Task<T> PostAsync<T>(string resource, ContentTypes contentTypes, object body, IDictionary<string, object> parameters, IList<FileUploadParameter> fileParameters, IDictionary<string, string> urlSegments, IDictionary<string, object> headers) where T : class
         {
             return await RunAsync<T>(resource,
                 HttpMethod.Post,
-                ContentTypes.Json, 
+                contentTypes, 
                 urlSegments,
                 null,
+                parameters ??
                 new Dictionary<string, object>
                 {
                     { "body", body}
@@ -117,13 +118,13 @@ namespace Auth0.Api.Management
             }
 
             // Apply the file parameters
-            //if (fileParameters != null)
-            //{
-            //    foreach (var parameter in fileParameters)
-            //    {
-            //        request.AddFileParameter(parameter.Key, parameter.FileStream, parameter.Filename);
-            //    }
-            //}
+            if (fileParameters != null)
+            {
+                foreach (var parameter in fileParameters)
+                {
+                    request.AddFileParameter(parameter.Key, parameter.FileStream, parameter.Filename);
+                }
+            }
 
             // Set the authorization header
             if (headers == null || (headers != null && !headers.ContainsKey("Authorization"))) // Auth header can be overriden by passing custom value in headers dictionary

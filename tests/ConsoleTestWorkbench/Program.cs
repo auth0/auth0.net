@@ -44,13 +44,13 @@ namespace ConsoleTestWorkbench
             //await TestEmailsMethods(apiClient);
 
             // Test jobs
-            //await TestJobsMethods(apiClient);
+            await TestJobsMethods(apiClient);
 
             // Test stats
             //await TestStatsMethods(apiClient);
 
             // Test tickets
-            await TestTicketsMethods(apiClient);
+            //await TestTicketsMethods(apiClient);
         }
 
         private static async Task TestClientMethods(IManagementClient apiClient)
@@ -162,15 +162,15 @@ namespace ConsoleTestWorkbench
 
         private static async Task TestJobsMethods(ManagementClient apiClient)
         {
-            //// Send an email verification request
-            //var emailRequest = new VerifyEmailJobRequest
-            //{
-            //    UserId = "auth0|56443c91950b505a3399c3b3"
-            //};
-            //var emailRequestResponse = await apiClient.Jobs.SendVerificationEmail(emailRequest);
+            // Send an email verification request
+            var emailRequest = new VerifyEmailJobRequest
+            {
+                UserId = "auth0|56443c91950b505a3399c3b3"
+            };
+            var emailRequestResponse = await apiClient.Jobs.SendVerificationEmail(emailRequest);
 
-            //// Get the job status
-            //var job = await apiClient.Jobs.Get(emailRequestResponse.Id);
+            // Get the job status
+            var job = await apiClient.Jobs.Get(emailRequestResponse.Id);
 
             // Send a user import request
             //using (FileStream fs = new FileStream("user-import-test.json", FileMode.Open))

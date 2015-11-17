@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Auth0.Core.Models;
+using PortableRest;
 
 namespace Auth0.Api.Management.Clients
 {
@@ -15,7 +16,7 @@ namespace Auth0.Api.Management.Clients
 
         public Task<User> Create(UserCreateRequest request)
         {
-            return Connection.PostAsync<User>("users", request, null, null, null);
+            return Connection.PostAsync<User>("users", ContentTypes.Json, request, null, null, null, null);
         }
 
         public Task Delete(string id)
@@ -85,10 +86,10 @@ namespace Auth0.Api.Management.Clients
 
         public Task<IList<AccountLinkResponse>> LinkAccount(string id, UserAccountLinkRequest request)
         {
-            return Connection.PostAsync<IList<AccountLinkResponse>>("users/{id}/identities", request, new Dictionary<string, string>
+            return Connection.PostAsync<IList<AccountLinkResponse>>("users/{id}/identities", ContentTypes.Json, request, null, null, new Dictionary<string, string>
             {
                 {"id", id}
-            }, null, null);
+            }, null);
         }
 
         public Task<IList<AccountLinkResponse>> LinkAccount(string id, string primaryJwtToken, string secondaryJwtToken)
@@ -98,14 +99,13 @@ namespace Auth0.Api.Management.Clients
                 LinkWith = secondaryJwtToken
             };
 
-            return Connection.PostAsync<IList<AccountLinkResponse>>("users/{id}/identities", request, new Dictionary<string, string>
-                {
-                    {"id", id}
-                },
-                new Dictionary<string, object>
-                {
-                    {"Authorization", string.Format("Bearer {0}", primaryJwtToken)}
-                }, null);
+            return Connection.PostAsync<IList<AccountLinkResponse>>("users/{id}/identities", ContentTypes.Json, request, null, null, new Dictionary<string, string>
+            {
+                {"id", id}
+            }, new Dictionary<string, object>
+            {
+                {"Authorization", string.Format("Bearer {0}", primaryJwtToken)}
+            });
         }
     }
 }

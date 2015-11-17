@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Auth0.Core.Models;
+using PortableRest;
 
 namespace Auth0.Api.Management.Clients
 {
@@ -14,7 +15,7 @@ namespace Auth0.Api.Management.Clients
 
         public Task<Rule> Create(RuleCreateRequest request)
         {
-            return Connection.PostAsync<Rule>("rules", request, null, null, null);
+            return Connection.PostAsync<Rule>("rules", ContentTypes.Json, request, null, null, null, null);
         }
 
         public Task Delete(string id)

@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Auth0.Core.Models;
+using PortableRest;
 
 namespace Auth0.Api.Management.Clients
 {
@@ -12,12 +13,12 @@ namespace Auth0.Api.Management.Clients
 
         public Task<Ticket> CreateEmailVerificationTicket(EmailVerificationTicketRequest request)
         {
-            return Connection.PostAsync<Ticket>("tickets/email-verification", request, null, null, null);
+            return Connection.PostAsync<Ticket>("tickets/email-verification", ContentTypes.Json, request, null, null, null, null);
         }
 
         public Task<Ticket> CreatePasswordChangeTicket(PasswordChangeTicketRequest request)
         {
-            return Connection.PostAsync<Ticket>("tickets/password-change", request, null, null, null);
+            return Connection.PostAsync<Ticket>("tickets/password-change", ContentTypes.Json, request, null, null, null, null);
         }
     }
 }
