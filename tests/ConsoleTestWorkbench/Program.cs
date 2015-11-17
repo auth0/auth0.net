@@ -130,10 +130,10 @@ namespace ConsoleTestWorkbench
         private static async Task TestEmailsMethods(ManagementClient apiClient)
         {
             // Get the email provider
-            var provider = await apiClient.Emails.Get("name,enabled,credentials,settings");
+            var provider = await apiClient.EmailProvider.Get("name,enabled,credentials,settings");
 
             // Delete the email provider
-            await apiClient.Emails.Delete();
+            await apiClient.EmailProvider.Delete();
 
             // Configure the email provider
             var configureRequest = new EmailProviderConfigureRequest
@@ -145,7 +145,7 @@ namespace ConsoleTestWorkbench
                     ApiKey = "ABC"
                 }
             };
-            var configureResponse = await apiClient.Emails.Configure(configureRequest);
+            var configureResponse = await apiClient.EmailProvider.Configure(configureRequest);
 
             // Update the email provider
             var updateRequest = new EmailProviderUpdateRequest
@@ -157,7 +157,7 @@ namespace ConsoleTestWorkbench
                     ApiKey = "XYZ"
                 }
             };
-            var updateResponse = await apiClient.Emails.Update(updateRequest);
+            var updateResponse = await apiClient.EmailProvider.Update(updateRequest);
         }
 
         private static async Task TestJobsMethods(ManagementClient apiClient)

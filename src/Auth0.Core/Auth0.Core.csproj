@@ -66,7 +66,6 @@
     <Compile Include="Models\EmailProviderUpdateRequest.cs" />
     <Compile Include="Models\ApiError.cs" />
     <Compile Include="Models\Identity.cs" />
-    <Compile Include="Models\ImportUsersJobRequest.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\PasswordChangeTicketRequest.cs" />
     <Compile Include="Models\Ticket.cs" />

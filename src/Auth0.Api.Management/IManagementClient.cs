@@ -10,7 +10,7 @@ namespace Auth0.Api.Management
 
         IDeviceCredentialsClient DeviceCredentials { get; }
 
-        IEmailsClient Emails { get; }
+        IEmailProviderClient EmailProvider { get; }
 
         IJobsClient Jobs { get; }
 

@@ -46,11 +46,11 @@
     <Compile Include="Clients\ClientsClient.cs" />
     <Compile Include="Clients\ConnectionsClient.cs" />
     <Compile Include="Clients\DeviceCredentialsClient.cs" />
-    <Compile Include="Clients\EmailsClient.cs" />
+    <Compile Include="Clients\EmailProviderClient.cs" />
     <Compile Include="Clients\IClientsClient.cs" />
     <Compile Include="Clients\IConnectionsClient.cs" />
     <Compile Include="Clients\IDeviceCredentialsClient.cs" />
-    <Compile Include="Clients\IEmailsClient.cs" />
+    <Compile Include="Clients\IEmailProviderClient.cs" />
     <Compile Include="Clients\IJobsClient.cs" />
     <Compile Include="Clients\IRulesClient.cs" />
     <Compile Include="Clients\IStatsClient.cs" />
