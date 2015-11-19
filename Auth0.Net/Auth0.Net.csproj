@@ -63,6 +63,13 @@
     <Compile Include="OAuthException.cs" />
     <Compile Include="Page.cs" />
     <Compile Include="ProvisioningTicket.cs" />
+    <Compile Include="Rules\Auth0Request.cs" />
+    <Compile Include="Rules\Auth0User.cs" />
+    <Compile Include="Rules\Context.cs" />
+    <Compile Include="Rules\Identity.cs" />
+    <Compile Include="Rules\Query.cs" />
+    <Compile Include="Rules\Request.cs" />
+    <Compile Include="Rules\Stats.cs" />
     <Compile Include="TokenResult.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
