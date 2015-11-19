@@ -5,8 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Auth0.Api.Management;
 using Auth0.Core.Models;
+using Auth0.ManagementApi.Client;
 using Nito.AsyncEx;
 
 namespace ConsoleTestWorkbench
@@ -20,7 +20,7 @@ namespace ConsoleTestWorkbench
 
         private static async void MainAsync(string[] args)
         {
-            var apiClient = new ManagementClient(ConfigurationManager.AppSettings["ApiToken"], new Uri(ConfigurationManager.AppSettings["ApiBaseUrl"]));
+            var apiClient = new ManagementApiClient(ConfigurationManager.AppSettings["ApiToken"], new Uri(ConfigurationManager.AppSettings["ApiBaseUrl"]));
 
             // Test client methods
             //await TestClientMethods(apiClient);
@@ -53,7 +53,7 @@ namespace ConsoleTestWorkbench
             //await TestTicketsMethods(apiClient);
         }
 
-        private static async Task TestClientMethods(IManagementClient apiClient)
+        private static async Task TestClientMethods(IManagementApiClient apiClient)
         {
             // Get all clients
             var clients = await apiClient.Clients.GetAll();
@@ -79,7 +79,7 @@ namespace ConsoleTestWorkbench
             await apiClient.Clients.Delete(newClientResponse.ClientId);
         }
 
-        private static async Task TestConnectionMethods(IManagementClient apiClient)
+        private static async Task TestConnectionMethods(IManagementApiClient apiClient)
         {
             // Create a new connection
             var newConnectionRequest = new ConnectionCreateRequest
@@ -106,7 +106,7 @@ namespace ConsoleTestWorkbench
             await apiClient.Connections.Delete(newConnection.Id);
         }
 
-        private static async Task TestDeviceCredentialsMethods(ManagementClient apiClient)
+        private static async Task TestDeviceCredentialsMethods(ManagementApiClient apiClient)
         {
             // Get all the device credentials
             //var credentials = await apiClient.DeviceCredentials.GetAll();
@@ -127,7 +127,7 @@ namespace ConsoleTestWorkbench
             // ...
         }
 
-        private static async Task TestEmailsMethods(ManagementClient apiClient)
+        private static async Task TestEmailsMethods(ManagementApiClient apiClient)
         {
             // Get the email provider
             var provider = await apiClient.EmailProvider.Get("name,enabled,credentials,settings");
@@ -160,7 +160,7 @@ namespace ConsoleTestWorkbench
             var updateResponse = await apiClient.EmailProvider.Update(updateRequest);
         }
 
-        private static async Task TestJobsMethods(ManagementClient apiClient)
+        private static async Task TestJobsMethods(ManagementApiClient apiClient)
         {
             // Send an email verification request
             var emailRequest = new VerifyEmailJobRequest
@@ -179,7 +179,7 @@ namespace ConsoleTestWorkbench
             //}
         }
 
-        private static async Task TestRuleMethods(ManagementClient apiClient)
+        private static async Task TestRuleMethods(ManagementApiClient apiClient)
         {
             // Create a new rule
             var newRuleRequest = new RuleCreateRequest
@@ -209,7 +209,7 @@ namespace ConsoleTestWorkbench
             await apiClient.Rules.Delete(newRule.Id);
         }
 
-        private static async Task TestStatsMethods(ManagementClient apiClient)
+        private static async Task TestStatsMethods(ManagementApiClient apiClient)
         {
             // Get active users
             var users = await apiClient.Stats.GetActiveUsers();
@@ -218,7 +218,7 @@ namespace ConsoleTestWorkbench
             var dailyStats = await apiClient.Stats.GetDailyStats(new DateTime(2015, 11, 1), new DateTime(2015, 11, 30));
         }
 
-        private static async Task TestTicketsMethods(ManagementClient apiClient)
+        private static async Task TestTicketsMethods(ManagementApiClient apiClient)
         {
             // Send email verification ticket
             var ticket = await apiClient.Tickets.CreateEmailVerificationTicket(new EmailVerificationTicketRequest
@@ -236,7 +236,7 @@ namespace ConsoleTestWorkbench
             });
         }
 
-        private static async Task TestUserMethods(ManagementClient apiClient)
+        private static async Task TestUserMethods(ManagementApiClient apiClient)
         {
             // Create a new user
             var newUserRequest = new UserCreateRequest
@@ -269,7 +269,7 @@ namespace ConsoleTestWorkbench
             await apiClient.Users.DeleteAll();
         }
 
-        private static async Task TestUserAccountLinkMethods(ManagementClient apiClient)
+        private static async Task TestUserAccountLinkMethods(ManagementApiClient apiClient)
         {
             // Link user
             //var userLinkRequest = new UserAccountLinkRequest

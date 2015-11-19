@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Auth0.Core.Models;
 
-namespace Auth0.Api.Management.Clients
+namespace Auth0.ManagementApi.Client.Clients
 {
     public interface IEmailProviderClient
     {
