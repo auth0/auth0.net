@@ -2,7 +2,7 @@
 using Auth0.Core.Models;
 using PortableRest;
 
-namespace Auth0.Api.Management.Clients
+namespace Auth0.ManagementApi.Client.Clients
 {
     public class TicketsClient : ClientBase, ITicketsClient
     {

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Auth0.Core.Models;
 
-namespace Auth0.Api.Management.Clients
+namespace Auth0.ManagementApi.Client.Clients
 {
     public interface IClientsClient
     {
@@ -11,7 +11,7 @@ namespace Auth0.Api.Management.Clients
         /// </summary>
         /// <param name="request">The request containing the properties of the new client.</param>
         /// <returns></returns>
-        Task<Client> Create(ClientCreateRequest request);
+        Task<Core.Models.Client> Create(ClientCreateRequest request);
 
         /// <summary>
         ///     Deletes a client and all its related assets (like rules, connections, etc) given its id.
@@ -33,7 +33,7 @@ namespace Auth0.Api.Management.Clients
         ///     true)
         /// </param>
         /// <returns></returns>
-        Task<Client> Get(string id, string fields = null, bool includeFields = true);
+        Task<Core.Models.Client> Get(string id, string fields = null, bool includeFields = true);
 
         /// <summary>
         ///     Retrieves a list of all client applications. Accepts a list of fields to include or exclude.
@@ -47,7 +47,7 @@ namespace Auth0.Api.Management.Clients
         ///     true)
         /// </param>
         /// <returns></returns>
-        Task<IList<Client>> GetAll(string fields = null, bool includeFields = true);
+        Task<IList<Core.Models.Client>> GetAll(string fields = null, bool includeFields = true);
 
         /// <summary>
         ///     Updates a client application.
@@ -55,6 +55,6 @@ namespace Auth0.Api.Management.Clients
         /// <param name="id">The id of the client you want to update.</param>
         /// <param name="request">The request containing the properties of the client you want to update.</param>
         /// <returns></returns>
-        Task<Client> Update(string id, ClientUpdateRequest request);
+        Task<Core.Models.Client> Update(string id, ClientUpdateRequest request);
     }
 }

@@ -67,9 +67,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Auth0.Api.Management\Auth0.Api.Management.csproj">
+    <ProjectReference Include="..\..\src\Auth0.ManagementApi.Client\Auth0.ManagementApi.Client.csproj">
       <Project>{01898e06-fa70-42b8-ae35-28d2bacdfbd7}</Project>
-      <Name>Auth0.Api.Management</Name>
+      <Name>Auth0.ManagementApi.Client</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\Auth0.Core\Auth0.Core.csproj">
       <Project>{c5395825-ef6d-438e-9e22-95975f1276e8}</Project>
