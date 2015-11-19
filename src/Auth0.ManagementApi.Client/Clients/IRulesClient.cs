@@ -4,6 +4,9 @@ using Auth0.Core.Models;
 
 namespace Auth0.ManagementApi.Client.Clients
 {
+    /// <summary>
+    /// Contains all the methods to call the /rules endpoints.
+    /// </summary>
     public interface IRulesClient
     {
         /// <summary>

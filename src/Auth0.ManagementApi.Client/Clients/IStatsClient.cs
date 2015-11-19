@@ -5,6 +5,9 @@ using Auth0.Core.Models;
 
 namespace Auth0.ManagementApi.Client.Clients
 {
+    /// <summary>
+    /// Contains all the methods to call the /stats endpoints.
+    /// </summary>
     public interface IStatsClient
     {
         /// <summary>

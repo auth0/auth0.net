@@ -2,6 +2,9 @@
 
 namespace Auth0.ManagementApi.Client
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IManagementApiClient
     {
         IClientsClient Clients { get; }
