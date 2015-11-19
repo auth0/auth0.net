@@ -5,6 +5,9 @@ using PortableRest;
 
 namespace Auth0.ManagementApi.Client.Clients
 {
+    /// <summary>
+    /// Contains all the methods to call the /clients endpoints.
+    /// </summary>
     public class ClientsClient : ClientBase, IClientsClient
     {
         public ClientsClient(IApiConnection connection)

@@ -13,7 +13,9 @@ namespace Auth0.Core.Models
         [JsonProperty("name")]
         public string Name { get; set; }
 
-
+        /// <summary>
+        /// The options for the connection.
+        /// </summary>
         [JsonProperty("options")]
         public dynamic Options { get; set; }
 

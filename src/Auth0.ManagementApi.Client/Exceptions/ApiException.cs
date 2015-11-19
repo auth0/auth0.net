@@ -4,6 +4,9 @@ using Auth0.Core.Models;
 
 namespace Auth0.ManagementApi.Client.Exceptions
 {
+    /// <summary>
+    /// Represents errors that occur when making API calls.
+    /// </summary>
     public class ApiException: Exception
     {
         /// <summary>

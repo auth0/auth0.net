@@ -5,6 +5,9 @@ using PortableRest;
 
 namespace Auth0.ManagementApi.Client
 {
+    /// <summary>
+    /// The communication layer between the various API clients and the actual API backend. All API calls happen through this interface.
+    /// </summary>
     public interface IApiConnection
     {
         Task<T> DeleteAsync<T>(string resource, IDictionary<string, string> urlSegments) where T : class;
