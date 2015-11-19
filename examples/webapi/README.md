@@ -6,6 +6,12 @@ This example is deployed in an Azure Web Site at https://auth0-aspnet-webapi.azu
 #Running the example
 In order to run the example you need to have Visual Studio 2013 installed.
 
+Install package Auth0.ASPNET via Package Manager or running the following command:
+
+```Powershell
+Install-Package Auth0-ASPNET
+```
+
 You also need to set the ClientSecret and ClientId of your Auth0 app in the web.config file. To do that just find the following lines and modify accordingly:
 ```CSharp
 <add key="Auth0ClientID" value="{CLIENT_ID}"/>
