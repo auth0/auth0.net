@@ -65,6 +65,9 @@
     <Compile Include="Clients\TentantSettingsClient.cs" />
     <Compile Include="Clients\TicketsClient.cs" />
     <Compile Include="Clients\UsersClient.cs" />
+    <Compile Include="Diagnostics\DiagnosticsComponent.cs" />
+    <Compile Include="Diagnostics\DiagnosticsHeader.cs" />
+    <Compile Include="Diagnostics\Utils.cs" />
     <Compile Include="Exceptions\ApiException.cs" />
     <Compile Include="IManagementApiClient.cs" />
     <Compile Include="IApiConnection.cs" />
