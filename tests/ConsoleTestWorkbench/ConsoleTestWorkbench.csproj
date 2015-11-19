@@ -62,9 +62,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="secrets.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="user-import-test.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
