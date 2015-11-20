@@ -4,6 +4,9 @@ using Auth0.Core.Models;
 
 namespace Auth0.ManagementApi.Client.Clients
 {
+    /// <summary>
+    /// Contains all the methods to call the /clients endpoints.
+    /// </summary>
     public interface IClientsClient
     {
         /// <summary>

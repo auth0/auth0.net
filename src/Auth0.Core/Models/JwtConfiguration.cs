@@ -18,6 +18,9 @@ namespace Auth0.Core.Models
         [JsonProperty("lifetime_in_seconds")]
         public int? LifetimeInSeconds { get; set; }
 
+        /// <summary>
+        ///     The scopes for the JWT.
+        /// </summary>
         [JsonProperty("scopes")]
         public Scopes Scopes { get; set; }
 
