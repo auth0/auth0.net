@@ -4,14 +4,14 @@ using System.Threading.Tasks;
 using Auth0.Core.Models;
 using Auth0.ManagementApi.Client.Exceptions;
 using FluentAssertions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Auth0.ManagementApi.Client.FunctionalTests
 {
-    [TestClass]
+    [TestFixture]
     public class ClientTests : TestBase
     {
-        [TestMethod]
+        [Test]
         public async Task Test_client_crud_sequence()
         {
             var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_CLIENTS"), new Uri(GetVariable("AUTH0_API_URL")));
