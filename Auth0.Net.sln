@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24627.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{D3999165-E653-4700-91EE-130A27450FB5}"
 	ProjectSection(SolutionItems) = preProject
@@ -17,6 +17,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0EBAD055-E431-443B-8212-411D1AFE3796}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTestWorkbench", "tests\ConsoleTestWorkbench\ConsoleTestWorkbench.csproj", "{779564FF-1CEE-4C4F-A867-F8A0EA60FC03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.ManagementApi.Client.FunctionalTests", "tests\Auth0.ManagementApi.Client.FunctionalTests\Auth0.ManagementApi.Client.FunctionalTests.csproj", "{BFD5E1F6-053E-490E-AE4E-8CF12F74FFE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +38,10 @@ Global
 		{779564FF-1CEE-4C4F-A867-F8A0EA60FC03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{779564FF-1CEE-4C4F-A867-F8A0EA60FC03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{779564FF-1CEE-4C4F-A867-F8A0EA60FC03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFD5E1F6-053E-490E-AE4E-8CF12F74FFE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFD5E1F6-053E-490E-AE4E-8CF12F74FFE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFD5E1F6-053E-490E-AE4E-8CF12F74FFE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFD5E1F6-053E-490E-AE4E-8CF12F74FFE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,5 +50,6 @@ Global
 		{C5395825-EF6D-438E-9E22-95975F1276E8} = {C9550C3F-90EB-42C0-B530-E728566A13C2}
 		{01898E06-FA70-42B8-AE35-28D2BACDFBD7} = {C9550C3F-90EB-42C0-B530-E728566A13C2}
 		{779564FF-1CEE-4C4F-A867-F8A0EA60FC03} = {0EBAD055-E431-443B-8212-411D1AFE3796}
+		{BFD5E1F6-053E-490E-AE4E-8CF12F74FFE6} = {0EBAD055-E431-443B-8212-411D1AFE3796}
 	EndGlobalSection
 EndGlobal
