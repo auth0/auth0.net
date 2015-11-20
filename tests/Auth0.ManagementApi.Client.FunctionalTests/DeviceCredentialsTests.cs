@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Auth0.Core.Models;
+using FluentAssertions;
 using NUnit.Framework;
 
 namespace Auth0.ManagementApi.Client.FunctionalTests
 {
-    [TestFixture]
+    [TestFixture, Ignore("Damn, how difficult is it to get the correct token combinations for this...?")]
     public class DeviceCredentialsTests : TestBase
     {
         private Core.Models.Client client;
         private Connection connection;
+        private User user;
 
         [SetUp]
         public async Task Initialize()
@@ -24,7 +26,14 @@ namespace Auth0.ManagementApi.Client.FunctionalTests
             connection = await apiClient.Connections.Create(new ConnectionCreateRequest
             {
                 Name = "integration-new-connection",
-                Strategy = "github"
+                Strategy = "auth0"
+            });
+            user = await apiClient.Users.Create(new UserCreateRequest
+            {
+                Connection = "integration-new-connection",
+                Email = "test123@test.com",
+                EmailVerified = true,
+                Password = "password"
             });
         }
 
@@ -35,28 +44,42 @@ namespace Auth0.ManagementApi.Client.FunctionalTests
 
             await apiClient.Clients.Delete(client.ClientId);
             await apiClient.Connections.Delete(connection.Id);
+            await apiClient.Users.Delete(user.UserId);
         }
 
         [Test]
-        public void Test_device_credentials_crud_sequence()
+        public async Task Test_device_credentials_crud_sequence()
         {
-            //var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_DEVICE_CREDENTIALS"), new Uri(GetVariable("AUTH0_API_URL")));
+            var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_DEVICE_CREDENTIALS"), new Uri(GetVariable("AUTH0_API_URL")));
 
+            //Get all the device credentials
+            var credentialsBefore = await apiClient.DeviceCredentials.GetAll();
 
-            ////Get all the device credentials
-            //var credentials = await apiClient.DeviceCredentials.GetAll();
+            //Create a new device credential
+            var newCredentialRequest = new DeviceCredentialCreateRequest
+            {
+                DeviceName = "Integrations Test Device",
+                DeviceId = "INTEGRATIONTEST",
+                ClientId = client.ClientId,
+                UserId = user.UserId,
+                Type = "public_key",
+                Value = "new-key-value"
+            };
+            var newCredentialResponse = await apiClient.DeviceCredentials.Create(newCredentialRequest);
+            newCredentialResponse.Should().NotBeNull();
+            newCredentialResponse.DeviceId.Should().Be(newCredentialRequest.DeviceId);
+            newCredentialResponse.DeviceName.Should().Be(newCredentialRequest.DeviceName);
 
-            ////Create a new device credential
-            //var newCredentialRequest = new DeviceCredentialCreateRequest
-            //{
-            //    DeviceName = "Jerrie's Phone",
-            //    DeviceId = "ABCDEF",
-            //    ClientId = "XACGwwyX820Fso9gspzV7a90WxOPcYEm",
-            //    UserId = "YXV0aDB8NTYzYWZlZmViZWFlOTVmMDAxMmI1NzY5",
-            //    Type = "public_key",
-            //    Value = "new-key-value"
-            //};
-            //var credential = await apiClient.DeviceCredentials.Create(newCredentialRequest);
+            // Check that we now have one more device credential
+            var credentialsAfterCreate = await apiClient.DeviceCredentials.GetAll();
+            credentialsAfterCreate.Count.Should().Be(credentialsBefore.Count + 1);
+
+            // Delete the device credential
+            await apiClient.DeviceCredentials.Delete(newCredentialResponse.Id);
+
+            // Check that we now have one less device credential
+            var credentialsAfterDelete = await apiClient.DeviceCredentials.GetAll();
+            credentialsAfterDelete.Count.Should().Be(credentialsAfterCreate.Count - 1);
         }
     }
 }
