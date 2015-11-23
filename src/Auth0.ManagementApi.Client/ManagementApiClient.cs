@@ -7,6 +7,7 @@ namespace Auth0.ManagementApi.Client
     {
         private readonly ApiConnection apiConnection;
 
+        public IBlacklistedTokensClient BlacklistedTokens { get; }
         public IClientsClient Clients { get; }
         public IConnectionsClient Connections { get; }
         public IDeviceCredentialsClient DeviceCredentials { get; }
@@ -21,6 +22,7 @@ namespace Auth0.ManagementApi.Client
         {
             apiConnection = new ApiConnection(token, baseUri.AbsoluteUri);
 
+            BlacklistedTokens = new BlacklistedTokensClient(apiConnection);
             Clients = new ClientsClient(apiConnection);
             Connections = new ConnectionsClient(apiConnection);
             DeviceCredentials = new DeviceCredentialsClient(apiConnection);

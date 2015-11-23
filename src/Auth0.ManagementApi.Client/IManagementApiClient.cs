@@ -4,6 +4,8 @@ namespace Auth0.ManagementApi.Client
 {
     public interface IManagementApiClient
     {
+        IBlacklistedTokensClient BlacklistedTokens { get; }
+
         IClientsClient Clients { get; }
 
         IConnectionsClient Connections { get; }
