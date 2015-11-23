@@ -58,25 +58,25 @@ namespace ConsoleTestWorkbench
             // Get all clients
             var clients = await apiClient.Clients.GetAll();
 
-            // Create a new client
-            var newClientRequest = new ClientCreateRequest
-            {
-                Name = "New test client"
-            };
-            var newClientResponse = await apiClient.Clients.Create(newClientRequest);
+            //// Create a new client
+            //var newClientRequest = new ClientCreateRequest
+            //{
+            //    Name = "New test client"
+            //};
+            //var newClientResponse = await apiClient.Clients.Create(newClientRequest);
 
-            // Get a single client
-            var client = await apiClient.Clients.Get(newClientResponse.ClientId);
+            //// Get a single client
+            //var client = await apiClient.Clients.Get(newClientResponse.ClientId);
 
-            // Update the client
-            var updateClientRequest = new ClientUpdateRequest
-            {
-                Name = "This is an updated name"
-            };
-            var updateClientResponse = await apiClient.Clients.Update(newClientResponse.ClientId, updateClientRequest);
+            //// Update the client
+            //var updateClientRequest = new ClientUpdateRequest
+            //{
+            //    Name = "This is an updated name"
+            //};
+            //var updateClientResponse = await apiClient.Clients.Update(newClientResponse.ClientId, updateClientRequest);
 
-            // Delete the client
-            await apiClient.Clients.Delete(newClientResponse.ClientId);
+            //// Delete the client
+            //await apiClient.Clients.Delete(newClientResponse.ClientId);
         }
 
         private static async Task TestConnectionMethods(IManagementApiClient apiClient)

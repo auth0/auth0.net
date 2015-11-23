@@ -22,3 +22,10 @@ create:users
 delete:users
 update:users
 update:users_app_metadata
+create:connections
+delete:connections
+
+
+## AUTH0_TOKEN_BLACKLISTS
+
+blacklist:tokens
