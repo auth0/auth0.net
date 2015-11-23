@@ -89,6 +89,7 @@
   <ItemGroup>
     <Compile Include="DeviceCredentialsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RulesTests.cs" />
     <Compile Include="TestBase.cs" />
     <Compile Include="ClientTests.cs" />
     <Compile Include="ConnectionTests.cs" />
@@ -96,6 +97,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Readme.md" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Auth0.Core\Auth0.Core.csproj">
