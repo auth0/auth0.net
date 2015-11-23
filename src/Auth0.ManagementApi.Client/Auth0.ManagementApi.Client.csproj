@@ -42,11 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiConnection.cs" />
+    <Compile Include="Clients\BlacklistedTokensClient.cs" />
     <Compile Include="Clients\ClientBase.cs" />
     <Compile Include="Clients\ClientsClient.cs" />
     <Compile Include="Clients\ConnectionsClient.cs" />
     <Compile Include="Clients\DeviceCredentialsClient.cs" />
     <Compile Include="Clients\EmailProviderClient.cs" />
+    <Compile Include="Clients\IBlacklistedTokensClient.cs" />
     <Compile Include="Clients\IClientsClient.cs" />
     <Compile Include="Clients\IConnectionsClient.cs" />
     <Compile Include="Clients\IDeviceCredentialsClient.cs" />
