@@ -36,10 +36,10 @@ namespace Auth0.Core.Models
 
         // TODO: This is a JSON document in the API. What would be the best suggested way to handle this?
         [JsonProperty("app_metadata")]
-        public string AppMetadata { get; set; }
+        public dynamic AppMetadata { get; set; }
 
         // TODO: This is a JSON document in the API. What would be the best suggested way to handle this?
         [JsonProperty("user_metadata")]
-        public string UserMetadata { get; set; }
+        public dynamic UserMetadata { get; set; }
     }
 }
