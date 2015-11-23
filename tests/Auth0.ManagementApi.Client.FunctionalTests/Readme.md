@@ -14,3 +14,11 @@ read:rules
 create:rules
 delete:rules
 update:rules
+
+## AUTH0_TOKEN_USERS
+
+read:users
+create:users
+delete:users
+update:users
+update:users_app_metadata

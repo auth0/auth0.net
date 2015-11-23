@@ -44,7 +44,7 @@ namespace ConsoleTestWorkbench
             //await TestEmailsMethods(apiClient);
 
             // Test jobs
-            await TestJobsMethods(apiClient);
+            //await TestJobsMethods(apiClient);
 
             // Test stats
             //await TestStatsMethods(apiClient);
@@ -239,34 +239,34 @@ namespace ConsoleTestWorkbench
         private static async Task TestUserMethods(ManagementApiClient apiClient)
         {
             // Create a new user
-            var newUserRequest = new UserCreateRequest
-            {
-                Connection = "Username-Password-Authentication",
-                Email = "test123@test.com",
-                EmailVerified = true,
-                Password = "password"
-            };
-            var newUser = await apiClient.Users.Create(newUserRequest);
+            //var newUserRequest = new UserCreateRequest
+            //{
+            //    Connection = "Username-Password-Authentication",
+            //    Email = "test123@test.com",
+            //    EmailVerified = true,
+            //    Password = "password"
+            //};
+            //var newUser = await apiClient.Users.Create(newUserRequest);
 
             // Get a single user
-            var user = await apiClient.Users.Get(newUser.UserId);
+            //var user = await apiClient.Users.Get(newUser.UserId);
 
             // Get all users
-            var users = await apiClient.Users.GetAll();
+            //var users = await apiClient.Users.GetAll();
 
             // Update the user
-            var updateUserRequest = new UserUpdateRequest
-            {
-                Email = "test456@test.com",
-                VerifyEmail = false
-            };
-            var updatedUser = await apiClient.Users.Update(newUser.UserId, updateUserRequest);
+            //var updateUserRequest = new UserUpdateRequest
+            //{
+            //    Email = "test456@test.com",
+            //    VerifyEmail = false
+            //};
+            //var updatedUser = await apiClient.Users.Update(newUser.UserId, updateUserRequest);
 
             // Delete the user
             //await apiClient.Users.Delete(newUser.UserId);
 
             // Delete all users
-            await apiClient.Users.DeleteAll();
+            //await apiClient.Users.DeleteAll();
         }
 
         private static async Task TestUserAccountLinkMethods(ManagementApiClient apiClient)
