@@ -42,7 +42,7 @@ namespace Auth0.ManagementApi.Client.IntegrationTests
             var newUserRequest = new UserCreateRequest
             {
                 Connection = connection.Name,
-                Email = $"{Guid.NewGuid().ToString("N")}@test.com",
+                Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
                 EmailVerified = true,
                 Password = "password"
             };
@@ -57,7 +57,7 @@ namespace Auth0.ManagementApi.Client.IntegrationTests
             // Update the user
             var updateUserRequest = new UserUpdateRequest
             {
-                Email = $"{Guid.NewGuid().ToString("N")}@test.com",
+                Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
                 VerifyEmail = false
             };
             var updateUserResponse = await apiClient.Users.Update(newUserResponse.UserId, updateUserRequest);
