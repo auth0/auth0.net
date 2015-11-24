@@ -44,3 +44,15 @@ update:users
 delete:users
 create:connections
 delete:connections
+
+## AUTH0_TOKEN_STATS
+
+read:stats
+
+## AUTH0_TOKEN_TICKETS
+
+create:user_tickets
+delete:users
+create:users
+create:connections
+delete:connections
