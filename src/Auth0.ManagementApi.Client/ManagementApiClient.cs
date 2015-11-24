@@ -14,8 +14,9 @@ namespace Auth0.ManagementApi.Client
         public IEmailProviderClient EmailProvider { get; }
         public IJobsClient Jobs { get; }
         public IRulesClient Rules { get; }
-        public ITicketsClient Tickets { get; }
         public IStatsClient Stats { get; }
+        public ITentantSettingsClient TenantSettings { get; set; }
+        public ITicketsClient Tickets { get; }
         public IUsersClient Users { get; }
 
         public ManagementApiClient(string token, Uri baseUri)
@@ -30,6 +31,7 @@ namespace Auth0.ManagementApi.Client
             Jobs = new JobsClient(apiConnection);
             Rules = new RulesClient(apiConnection);
             Stats = new StatsClient(apiConnection);
+            TenantSettings = new TentantSettingsClient(apiConnection);
             Tickets = new TicketsClient(apiConnection);
             Users = new UsersClient(apiConnection);
         }

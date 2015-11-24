@@ -56,3 +56,8 @@ delete:users
 create:users
 create:connections
 delete:connections
+
+## AUTH0_TOKEN_TENANT_SETTINGS
+
+read:tenant_settings
+update:tenant_settings
