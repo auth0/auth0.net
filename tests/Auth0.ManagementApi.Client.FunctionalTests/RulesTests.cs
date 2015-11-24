@@ -21,7 +21,7 @@ namespace Auth0.ManagementApi.Client.FunctionalTests
             // Add a new rule
             var newRuleRequest = new RuleCreateRequest
             {
-                Name = "integration-test-rule",
+                Name = $"integration-test-rule-{Guid.NewGuid().ToString("N")}",
                 Script = @"function (user, context, callback) {
                               // TODO: implement your rule
                               callback(null, user, context);
@@ -38,7 +38,7 @@ namespace Auth0.ManagementApi.Client.FunctionalTests
             // Update the Rule
             var updateRuleRequest = new RuleUpdateRequest
             {
-                Name = "integration-test-rule-updated"
+                Name = $"integration-test-rule-{Guid.NewGuid().ToString("N")}"
             };
             var updateRuleResponse = await apiClient.Rules.Update(newRuleResponse.Id, updateRuleRequest);
             updateRuleResponse.Should().NotBeNull();

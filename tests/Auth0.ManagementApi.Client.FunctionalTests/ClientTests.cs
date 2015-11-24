@@ -22,7 +22,7 @@ namespace Auth0.ManagementApi.Client.FunctionalTests
             // Add a new client
             var newClientRequest = new ClientCreateRequest
             {
-                Name = "Integration testing client"
+                Name = $"Integration testing {Guid.NewGuid().ToString("N")}"
             };
             var newClientResponse = await apiClient.Clients.Create(newClientRequest);
             newClientResponse.Should().NotBeNull();
@@ -35,7 +35,7 @@ namespace Auth0.ManagementApi.Client.FunctionalTests
             // Update the client
             var updateClientRequest = new ClientUpdateRequest
             {
-                Name = "Integration testing client - Updated"
+                Name = $"Integration testing {Guid.NewGuid().ToString("N")}"
             };
             var updateClientResponse = await apiClient.Clients.Update(newClientResponse.ClientId, updateClientRequest);
             updateClientResponse.Should().NotBeNull();

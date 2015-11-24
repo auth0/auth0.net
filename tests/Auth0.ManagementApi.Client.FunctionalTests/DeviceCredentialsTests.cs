@@ -21,17 +21,17 @@ namespace Auth0.ManagementApi.Client.FunctionalTests
             // Set up the correct Client, Connection and User
             client = await apiClient.Clients.Create(new ClientCreateRequest
             {
-                Name = "Integration testing client"
+                Name = Guid.NewGuid().ToString("N")
             });
             connection = await apiClient.Connections.Create(new ConnectionCreateRequest
             {
-                Name = "integration-new-connection",
+                Name = Guid.NewGuid().ToString("N"),
                 Strategy = "auth0"
             });
             user = await apiClient.Users.Create(new UserCreateRequest
             {
-                Connection = "integration-new-connection",
-                Email = "test123@test.com",
+                Connection = connection.Name,
+                Email = $"{Guid.NewGuid().ToString("N")}@test.com",
                 EmailVerified = true,
                 Password = "password"
             });
@@ -58,8 +58,8 @@ namespace Auth0.ManagementApi.Client.FunctionalTests
             //Create a new device credential
             var newCredentialRequest = new DeviceCredentialCreateRequest
             {
-                DeviceName = "Integrations Test Device",
-                DeviceId = "INTEGRATIONTEST",
+                DeviceName = Guid.NewGuid().ToString("N"),
+                DeviceId = Guid.NewGuid().ToString("N"),
                 ClientId = client.ClientId,
                 UserId = user.UserId,
                 Type = "public_key",

@@ -21,7 +21,7 @@ namespace Auth0.ManagementApi.Client.FunctionalTests
             // Create a new connection
             var newConnectionRequest = new ConnectionCreateRequest
             {
-                Name = "integration-new-connection",
+                Name = Guid.NewGuid().ToString("N"),
                 Strategy = "github"
             };
             var newConnectionResponse = await apiClient.Connections.Create(newConnectionRequest);
@@ -36,7 +36,7 @@ namespace Auth0.ManagementApi.Client.FunctionalTests
             // Update a connection
             var updateConnectionRequest = new ConnectionUpdateRequest
             {
-                Name = "integration-new-connection-updated"
+                Name = Guid.NewGuid().ToString("N")
             };
             var updateConnectionResponse = await apiClient.Connections.Update(newConnectionResponse.Id, updateConnectionRequest);
             updateConnectionResponse.Name.Should().Be(updateConnectionRequest.Name);
