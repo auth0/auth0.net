@@ -21,7 +21,7 @@ namespace Auth0.ManagementApi.Client.FunctionalTests
             // We will need a connection to add the users to...
             connection = await apiClient.Connections.Create(new ConnectionCreateRequest
             {
-                Name = "integration-new-connection",
+                Name = Guid.NewGuid().ToString("N"),
                 Strategy = "auth0"
             });
         }
@@ -42,7 +42,7 @@ namespace Auth0.ManagementApi.Client.FunctionalTests
             var newUserRequest = new UserCreateRequest
             {
                 Connection = connection.Name,
-                Email = "test123@test.com",
+                Email = $"{Guid.NewGuid().ToString("N")}@test.com",
                 EmailVerified = true,
                 Password = "password"
             };
@@ -57,7 +57,7 @@ namespace Auth0.ManagementApi.Client.FunctionalTests
             // Update the user
             var updateUserRequest = new UserUpdateRequest
             {
-                Email = "test456@test.com",
+                Email = $"{Guid.NewGuid().ToString("N")}@test.com",
                 VerifyEmail = false
             };
             var updateUserResponse = await apiClient.Users.Update(newUserResponse.UserId, updateUserRequest);
