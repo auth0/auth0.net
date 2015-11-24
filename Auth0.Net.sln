@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0EBAD055
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTestWorkbench", "tests\ConsoleTestWorkbench\ConsoleTestWorkbench.csproj", "{779564FF-1CEE-4C4F-A867-F8A0EA60FC03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.ManagementApi.Client.FunctionalTests", "tests\Auth0.ManagementApi.Client.FunctionalTests\Auth0.ManagementApi.Client.FunctionalTests.csproj", "{BFD5E1F6-053E-490E-AE4E-8CF12F74FFE6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.ManagementApi.Client.IntegrationTests", "tests\Auth0.ManagementApi.Client.IntegrationTests\Auth0.ManagementApi.Client.IntegrationTests.csproj", "{BFD5E1F6-053E-490E-AE4E-8CF12F74FFE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

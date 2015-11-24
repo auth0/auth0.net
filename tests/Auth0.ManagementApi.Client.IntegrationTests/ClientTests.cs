@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Configuration;
 using System.Threading.Tasks;
 using Auth0.Core.Models;
 using Auth0.ManagementApi.Client.Exceptions;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Auth0.ManagementApi.Client.FunctionalTests
+namespace Auth0.ManagementApi.Client.IntegrationTests
 {
     [TestFixture]
     public class ClientTests : TestBase

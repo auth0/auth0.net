@@ -1,18 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.IdentityModel.Protocols.WSTrust;
-using System.IdentityModel.Tokens;
-using System.Security.Claims;
 using System.Threading.Tasks;
 using Auth0.Core.Models;
 using Auth0.ManagementApi.Client.Exceptions;
 using FluentAssertions;
 using Microsoft.Owin.Security.DataHandler.Encoder;
-using Newtonsoft.Json;
 using NUnit.Framework;
 
-namespace Auth0.ManagementApi.Client.FunctionalTests
+namespace Auth0.ManagementApi.Client.IntegrationTests
 {
     [TestFixture]
     public class BlacklistedTokensTests : TestBase

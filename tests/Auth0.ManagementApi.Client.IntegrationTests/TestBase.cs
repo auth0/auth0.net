@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 
-namespace Auth0.ManagementApi.Client.FunctionalTests
+namespace Auth0.ManagementApi.Client.IntegrationTests
 {
     public class TestBase
     {

@@ -5,7 +5,7 @@ using Auth0.ManagementApi.Client.Exceptions;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Auth0.ManagementApi.Client.FunctionalTests
+namespace Auth0.ManagementApi.Client.IntegrationTests
 {
     [TestFixture]
     public class UsersTests : TestBase
