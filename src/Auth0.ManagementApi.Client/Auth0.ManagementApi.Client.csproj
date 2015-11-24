@@ -42,11 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiConnection.cs" />
+    <Compile Include="Clients\BlacklistedTokensClient.cs" />
     <Compile Include="Clients\ClientBase.cs" />
     <Compile Include="Clients\ClientsClient.cs" />
     <Compile Include="Clients\ConnectionsClient.cs" />
     <Compile Include="Clients\DeviceCredentialsClient.cs" />
     <Compile Include="Clients\EmailProviderClient.cs" />
+    <Compile Include="Clients\IBlacklistedTokensClient.cs" />
     <Compile Include="Clients\IClientsClient.cs" />
     <Compile Include="Clients\IConnectionsClient.cs" />
     <Compile Include="Clients\IDeviceCredentialsClient.cs" />
@@ -54,11 +56,13 @@
     <Compile Include="Clients\IJobsClient.cs" />
     <Compile Include="Clients\IRulesClient.cs" />
     <Compile Include="Clients\IStatsClient.cs" />
+    <Compile Include="Clients\ITentantSettingsClient.cs" />
     <Compile Include="Clients\ITicketsClient.cs" />
     <Compile Include="Clients\IUsersClient.cs" />
     <Compile Include="Clients\JobsClient.cs" />
     <Compile Include="Clients\RulesClient.cs" />
     <Compile Include="Clients\StatsClient.cs" />
+    <Compile Include="Clients\TentantSettingsClient.cs" />
     <Compile Include="Clients\TicketsClient.cs" />
     <Compile Include="Clients\UsersClient.cs" />
     <Compile Include="Exceptions\ApiException.cs" />

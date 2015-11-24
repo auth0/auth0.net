@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Auth0.Core.Models;
@@ -150,18 +151,24 @@ namespace Auth0.ManagementApi.Client
         {
             if (!response.HttpResponseMessage.IsSuccessStatusCode)
             {
+                if (response.Exception != null)
+                    throw new ApiException(response.Exception.Message, response.Exception);;
+
                 ApiError apiError = null;
 
                 // Grab the content
-                string responseContent = await response.HttpResponseMessage.Content.ReadAsStringAsync();
-
-                if (!string.IsNullOrEmpty(responseContent))
+                if (response.HttpResponseMessage.Content != null)
                 {
-                    apiError = JsonConvert.DeserializeObject<ApiError>(responseContent, new JsonSerializerSettings
+                    string responseContent = await response.HttpResponseMessage.Content.ReadAsStringAsync();
+
+                    if (!string.IsNullOrEmpty(responseContent))
                     {
-                        // Suppress any parsing errors of payload
-                        Error = (sender, args) => { args.ErrorContext.Handled = true; }
-                    });
+                        apiError = JsonConvert.DeserializeObject<ApiError>(responseContent, new JsonSerializerSettings
+                        {
+                            // Suppress any parsing errors of payload
+                            Error = (sender, args) => { args.ErrorContext.Handled = true; }
+                        });
+                    }
                 }
 
                 throw new ApiException(response.HttpResponseMessage.StatusCode, apiError);

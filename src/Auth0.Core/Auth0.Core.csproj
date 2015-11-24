@@ -38,8 +38,8 @@
   <ItemGroup>
     <Compile Include="Models\AccountLinkResponse.cs" />
     <Compile Include="Models\Addons.cs" />
-    <Compile Include="Models\BlacklistToken.cs" />
-    <Compile Include="Models\BlacklistTokenBase.cs" />
+    <Compile Include="Models\BlacklistedToken.cs" />
+    <Compile Include="Models\BlacklistedTokenBase.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="DelegatedIdToken.cs" />
     <Compile Include="DelegatedRefreshToken.cs" />
@@ -53,7 +53,7 @@
     <Compile Include="Models\ConnectionBase.cs" />
     <Compile Include="Models\ConnectionCreateRequest.cs" />
     <Compile Include="Models\ConnectionUpdateRequest.cs" />
-    <Compile Include="Models\BlacklistTokenCreateRequest.cs" />
+    <Compile Include="Models\BlacklistedTokenCreateRequest.cs" />
     <Compile Include="Models\EmailVerificationTicketRequest.cs" />
     <Compile Include="Models\DailyStatistics.cs" />
     <Compile Include="Models\EmailProviderCredentials.cs" />
@@ -68,6 +68,10 @@
     <Compile Include="Models\Identity.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\PasswordChangeTicketRequest.cs" />
+    <Compile Include="Models\TenantErrorPage.cs" />
+    <Compile Include="Models\TenantSettings.cs" />
+    <Compile Include="Models\TenantSettingsBase.cs" />
+    <Compile Include="Models\TenantSettingsUpdateRequest.cs" />
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\UserAccountJwtLinkRequest.cs" />
     <Compile Include="Models\UserAccountLinkRequest.cs" />
