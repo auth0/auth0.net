@@ -4,7 +4,7 @@ using Auth0.Core.Models;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace Auth0.ManagementApi.Client.FunctionalTests
+namespace Auth0.ManagementApi.Client.IntegrationTests
 {
     [TestFixture, Ignore("Damn, how difficult is it to get the correct token combinations for this...?")]
     public class DeviceCredentialsTests : TestBase

@@ -6,8 +6,8 @@
     <ProjectGuid>{BFD5E1F6-053E-490E-AE4E-8CF12F74FFE6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Auth0.ManagementApi.Client.FunctionalTests</RootNamespace>
-    <AssemblyName>Auth0.ManagementApi.Client.FunctionalTests</AssemblyName>
+    <RootNamespace>Auth0.ManagementApi.Client.IntegrationTests</RootNamespace>
+    <AssemblyName>Auth0.ManagementApi.Client.IntegrationTests</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
