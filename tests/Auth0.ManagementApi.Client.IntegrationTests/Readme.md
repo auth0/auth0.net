@@ -29,3 +29,10 @@ delete:connections
 ## AUTH0_TOKEN_BLACKLISTS
 
 blacklist:tokens
+
+## AUTH0_TOKEN_EMAIL_PROVIDER
+
+read:email_provider
+create:email_provider
+delete:email_provider
+update:email_provider

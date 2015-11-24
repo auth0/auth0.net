@@ -110,6 +110,7 @@
   <ItemGroup>
     <Compile Include="BlacklistedTokensTests.cs" />
     <Compile Include="DeviceCredentialsTests.cs" />
+    <Compile Include="EmailProviderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RulesTests.cs" />
     <Compile Include="TestBase.cs" />
