@@ -68,6 +68,10 @@
     <Compile Include="Models\Identity.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\PasswordChangeTicketRequest.cs" />
+    <Compile Include="Models\TenantErrorPage.cs" />
+    <Compile Include="Models\TenantSettings.cs" />
+    <Compile Include="Models\TenantSettingsBase.cs" />
+    <Compile Include="Models\TenantSettingsUpdateRequest.cs" />
     <Compile Include="Models\Ticket.cs" />
     <Compile Include="Models\UserAccountJwtLinkRequest.cs" />
     <Compile Include="Models\UserAccountLinkRequest.cs" />
