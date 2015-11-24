@@ -36,3 +36,11 @@ read:email_provider
 create:email_provider
 delete:email_provider
 update:email_provider
+
+## AUTH0_TOKEN_JOBS
+
+create:users
+update:users
+delete:users
+create:connections
+delete:connections
