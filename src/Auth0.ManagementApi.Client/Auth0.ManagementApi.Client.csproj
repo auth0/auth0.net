@@ -38,7 +38,7 @@
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
     <None Include="app.config" />
-    <None Include="packages.config" />
+    <EmbeddedResource Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiConnection.cs" />

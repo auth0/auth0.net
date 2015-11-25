@@ -1,6 +1,6 @@
 using System;
 
-namespace Auth0.Api.Management.Diagnostics
+namespace Auth0.ManagementApi.Client.Diagnostics
 {
     internal static class Utils
     {

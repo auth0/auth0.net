@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Auth0.Core.Models;
+using Auth0.ManagementApi.Client.Diagnostics;
 using Auth0.ManagementApi.Client.Exceptions;
 using Auth0.ManagementApi.Client.Models;
 using Newtonsoft.Json;
@@ -13,10 +14,12 @@ namespace Auth0.ManagementApi.Client
     public class ApiConnection : RestClient, IApiConnection
     {
         private readonly string token;
+        private readonly DiagnosticsHeader diagnostics;
 
-        public ApiConnection(string token, string baseUrl)
+        public ApiConnection(string token, string baseUrl, DiagnosticsHeader diagnostics)
         {
             this.token = token;
+            this.diagnostics = diagnostics;
             BaseUrl = baseUrl;
         }
 
@@ -124,6 +127,13 @@ namespace Auth0.ManagementApi.Client
                     request.AddFileParameter(parameter.Key, parameter.FileStream, parameter.Filename);
                 }
             }
+
+            // Add the diagnostics header, unless user explicitly opted out of it
+            if (!object.ReferenceEquals(diagnostics, DiagnosticsHeader.Suppress))
+                request.AddHeader("Auth0-Client", diagnostics.ToString());
+
+            // Add the user agent
+            request.AddHeader("User-Agent", ".NET/PCL");
 
             // Set the authorization header
             if (headers == null || (headers != null && !headers.ContainsKey("Authorization"))) // Auth header can be overriden by passing custom value in headers dictionary

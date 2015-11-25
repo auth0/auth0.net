@@ -4,9 +4,23 @@
 
 ## AUTH0_TOKEN_CLIENTS
 
+read:clients
+create:clients
+delete:clients
+update:clients
+update:client_keys
+read:client_keys
+
 ## AUTH0_TOKEN_CONNECTIONS
 
+read:connections
+create:connections
+delete:connections
+update:connections
+
 ## AUTH0_TOKEN_DEVICE_CREDENTIALS
+
+??
 
 ## AUTH0_TOKEN_RULES
 

@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Xml.Linq;
 using Newtonsoft.Json;
 
-namespace Auth0.Api.Management.Diagnostics
+namespace Auth0.ManagementApi.Client.Diagnostics
 {
     /// <summary>
     ///     Represents important information pertaining to the SDK that is sent to Auth0 for diagnostic purposes.
@@ -125,15 +126,20 @@ namespace Auth0.Api.Management.Diagnostics
 
             var header = new DiagnosticsHeader(sdkAssemblyName);
 
-            //header.Dependencies = sdkAssembly.GetReferencedAssemblies()
-            //    .Where(a => a.Name != "mscorlib" && a.Name != "System" && !a.Name.StartsWith("System."))
-            //    .Select(a => new DiagnosticsComponent(a));
+            // Extract dependencies from the Nuget packages.config
+            using (var stream = sdkAssembly.GetManifestResourceStream("Auth0.ManagementApi.Client.packages.config"))
+            {
+                XElement root = XElement.Load(stream);
+                header.Dependencies = root.Elements("package")
+                    .Select(e => new DiagnosticsComponent(e.Attribute("id").Value, e.Attribute("version").Value))
+                    .ToList();
+            }
 
-            //header.Environments = new[]
-            //{
-            //    new DiagnosticsComponent(".NET CLR", Environment.Version),
-            //    new DiagnosticsComponent("OS", Environment.OSVersion)
-            //};
+            // Hard code PCL header for now
+            header.Environments = new[]
+            {
+                new DiagnosticsComponent(".NET PCL", "Profile111"),
+            };
 
             return header;
         }

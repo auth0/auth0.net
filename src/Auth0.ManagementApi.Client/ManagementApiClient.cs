@@ -1,5 +1,6 @@
 ﻿using System;
 using Auth0.ManagementApi.Client.Clients;
+using Auth0.ManagementApi.Client.Diagnostics;
 
 namespace Auth0.ManagementApi.Client
 {
@@ -19,9 +20,15 @@ namespace Auth0.ManagementApi.Client
         public ITicketsClient Tickets { get; }
         public IUsersClient Users { get; }
 
-        public ManagementApiClient(string token, Uri baseUri)
+        public ManagementApiClient(string token, Uri baseUri, DiagnosticsHeader diagnostics)
         {
-            apiConnection = new ApiConnection(token, baseUri.AbsoluteUri);
+            // If no diagnostics header structure was specified, then revert to the default one
+            if (diagnostics == null)
+            {
+                diagnostics = DiagnosticsHeader.Default;
+            }
+
+            apiConnection = new ApiConnection(token, baseUri.AbsoluteUri, diagnostics);
 
             BlacklistedTokens = new BlacklistedTokensClient(apiConnection);
             Clients = new ClientsClient(apiConnection);
@@ -34,6 +41,11 @@ namespace Auth0.ManagementApi.Client
             TenantSettings = new TentantSettingsClient(apiConnection);
             Tickets = new TicketsClient(apiConnection);
             Users = new UsersClient(apiConnection);
+
+        }
+        public ManagementApiClient(string token, Uri baseUri)
+            : this(token, baseUri, null)
+        {
         }
     }
 }
