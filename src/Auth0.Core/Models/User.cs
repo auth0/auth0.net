@@ -97,4 +97,5 @@ namespace Auth0.Core.Models
         public string UserId { get; set; }
 
     }
+
 }
