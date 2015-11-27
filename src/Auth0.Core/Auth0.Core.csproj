@@ -44,8 +44,6 @@
     <Compile Include="DelegatedIdToken.cs" />
     <Compile Include="DelegatedRefreshToken.cs" />
     <Compile Include="DelegatedTokenBase.cs" />
-    <Compile Include="DelegationRequestBase.cs" />
-    <Compile Include="IdTokenDelegationRequest.cs" />
     <Compile Include="Models\ClientBase.cs" />
     <Compile Include="Models\ClientCreateRequest.cs" />
     <Compile Include="Models\ClientUpdateRequest.cs" />
@@ -86,7 +84,6 @@
     <Compile Include="Models\UserCreateRequest.cs" />
     <Compile Include="Models\UserUpdateRequest.cs" />
     <Compile Include="Models\VerifyEmailJobRequest.cs" />
-    <Compile Include="RefreshTokenDelegationRequest.cs" />
     <Compile Include="Properties\JetBrains.Annotations.cs" />
     <Compile Include="Models\EncryptionKey.cs" />
     <Compile Include="Models\JwtConfiguration.cs" />
