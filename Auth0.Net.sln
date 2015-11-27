@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTestWorkbench", "tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.ManagementApi.Client.IntegrationTests", "tests\Auth0.ManagementApi.Client.IntegrationTests\Auth0.ManagementApi.Client.IntegrationTests.csproj", "{BFD5E1F6-053E-490E-AE4E-8CF12F74FFE6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.AuthenticationApi.Client", "src\Auth0.AuthenticationApi.Client\Auth0.AuthenticationApi.Client.csproj", "{6225AD9D-983E-42BB-825B-A36B143D4D31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,10 @@ Global
 		{BFD5E1F6-053E-490E-AE4E-8CF12F74FFE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFD5E1F6-053E-490E-AE4E-8CF12F74FFE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFD5E1F6-053E-490E-AE4E-8CF12F74FFE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6225AD9D-983E-42BB-825B-A36B143D4D31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6225AD9D-983E-42BB-825B-A36B143D4D31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6225AD9D-983E-42BB-825B-A36B143D4D31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6225AD9D-983E-42BB-825B-A36B143D4D31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,5 +57,6 @@ Global
 		{01898E06-FA70-42B8-AE35-28D2BACDFBD7} = {C9550C3F-90EB-42C0-B530-E728566A13C2}
 		{779564FF-1CEE-4C4F-A867-F8A0EA60FC03} = {0EBAD055-E431-443B-8212-411D1AFE3796}
 		{BFD5E1F6-053E-490E-AE4E-8CF12F74FFE6} = {0EBAD055-E431-443B-8212-411D1AFE3796}
+		{6225AD9D-983E-42BB-825B-A36B143D4D31} = {C9550C3F-90EB-42C0-B530-E728566A13C2}
 	EndGlobalSection
 EndGlobal
