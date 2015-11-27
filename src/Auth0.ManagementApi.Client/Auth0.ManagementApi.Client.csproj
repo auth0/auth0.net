@@ -38,7 +38,7 @@
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
     <None Include="app.config" />
-    <None Include="packages.config" />
+    <EmbeddedResource Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiConnection.cs" />
@@ -65,6 +65,9 @@
     <Compile Include="Clients\TentantSettingsClient.cs" />
     <Compile Include="Clients\TicketsClient.cs" />
     <Compile Include="Clients\UsersClient.cs" />
+    <Compile Include="Diagnostics\DiagnosticsComponent.cs" />
+    <Compile Include="Diagnostics\DiagnosticsHeader.cs" />
+    <Compile Include="Diagnostics\Utils.cs" />
     <Compile Include="Exceptions\ApiException.cs" />
     <Compile Include="IManagementApiClient.cs" />
     <Compile Include="IApiConnection.cs" />
