@@ -138,7 +138,7 @@ namespace Auth0.ManagementApi.Client.Diagnostics
             // Hard code PCL header for now
             header.Environments = new[]
             {
-                new DiagnosticsComponent(".NET PCL", "Profile111"),
+                new DiagnosticsComponent(".NET PCL", "Profile111")
             };
 
             return header;

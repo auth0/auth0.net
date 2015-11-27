@@ -21,6 +21,9 @@ namespace Auth0.ManagementApi.Client
             this.token = token;
             this.diagnostics = diagnostics;
             BaseUrl = baseUrl;
+
+            // Ensure user agent is set on all requests
+            SetUserAgent<ApiConnection>();
         }
 
         public async Task<T> DeleteAsync<T>(string resource, IDictionary<string, string> urlSegments) where T : class
@@ -131,9 +134,6 @@ namespace Auth0.ManagementApi.Client
             // Add the diagnostics header, unless user explicitly opted out of it
             if (!object.ReferenceEquals(diagnostics, DiagnosticsHeader.Suppress))
                 request.AddHeader("Auth0-Client", diagnostics.ToString());
-
-            // Add the user agent
-            request.AddHeader("User-Agent", ".NET/PCL");
 
             // Set the authorization header
             if (headers == null || (headers != null && !headers.ContainsKey("Authorization"))) // Auth header can be overriden by passing custom value in headers dictionary
