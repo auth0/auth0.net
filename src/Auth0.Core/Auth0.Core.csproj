@@ -88,6 +88,13 @@
     <Compile Include="Models\EncryptionKey.cs" />
     <Compile Include="Models\JwtConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rules\LoginRequest.cs" />
+    <Compile Include="Rules\LoginRequestGeography.cs" />
+    <Compile Include="Rules\LoginRequestQuery.cs" />
+    <Compile Include="Rules\RulesContext.cs" />
+    <Compile Include="Rules\RulesContextSsoConfiguration.cs" />
+    <Compile Include="Rules\RulesContextStats.cs" />
+    <Compile Include="Rules\RulesRequest.cs" />
     <Compile Include="ScopeEntry.cs" />
     <Compile Include="Scopes.cs" />
     <Compile Include="Models\SigningKey.cs" />
