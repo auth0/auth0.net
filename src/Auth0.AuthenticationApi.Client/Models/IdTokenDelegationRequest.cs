@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Auth0.Core
+namespace Auth0.AuthenticationApi.Client.Models
 {
     public class IdTokenDelegationRequest : DelegationRequestBase
     {
