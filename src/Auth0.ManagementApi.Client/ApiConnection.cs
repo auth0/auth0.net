@@ -61,13 +61,13 @@ namespace Auth0.AuthenticationApi.Client
                 null).ConfigureAwait(false);
         }
 
-        public async Task<T> PostAsync<T>(string resource, ContentTypes contentTypes, object body, IDictionary<string, object> parameters, IList<FileUploadParameter> fileParameters, IDictionary<string, string> urlSegments, IDictionary<string, object> headers) where T : class
+        public async Task<T> PostAsync<T>(string resource, ContentTypes contentTypes, object body, IDictionary<string, object> parameters, IList<FileUploadParameter> fileParameters, IDictionary<string, string> urlSegments, IDictionary<string, object> headers, IDictionary<string, string> queryStrings) where T : class
         {
             return await RunAsync<T>(resource,
                 HttpMethod.Post,
                 contentTypes, 
                 urlSegments,
-                null,
+                queryStrings,
                 parameters ??
                 new Dictionary<string, object>
                 {
@@ -148,7 +148,10 @@ namespace Auth0.AuthenticationApi.Client
 
             // Set the authorization header
             if (headers == null || (headers != null && !headers.ContainsKey("Authorization"))) // Auth header can be overriden by passing custom value in headers dictionary
-                request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+            {
+                if (!string.IsNullOrEmpty(token))
+                    request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+            }
 
             // Apply other headers
             if (headers != null)

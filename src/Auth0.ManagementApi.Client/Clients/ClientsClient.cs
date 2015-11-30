@@ -17,7 +17,7 @@ namespace Auth0.ManagementApi.Client.Clients
 
         public Task<Core.Models.Client> Create(ClientCreateRequest request)
         {
-            return Connection.PostAsync<Core.Models.Client>("clients", ContentTypes.Json, request, null, null, null, null);
+            return Connection.PostAsync<Core.Models.Client>("clients", ContentTypes.Json, request, null, null, null, null, null);
         }
 
         public Task Delete(string id)

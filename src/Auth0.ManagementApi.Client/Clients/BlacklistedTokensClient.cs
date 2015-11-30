@@ -23,7 +23,7 @@ namespace Auth0.ManagementApi.Client.Clients
 
         public Task Create(BlacklistedTokenCreateRequest request)
         {
-            return Connection.PostAsync<Core.Models.Client>("blacklists/tokens", ContentTypes.Json, request, null, null, null, null);
+            return Connection.PostAsync<Core.Models.Client>("blacklists/tokens", ContentTypes.Json, request, null, null, null, null, null);
         }
     }
 }

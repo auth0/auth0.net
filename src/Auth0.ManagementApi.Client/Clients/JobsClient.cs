@@ -26,7 +26,7 @@ namespace Auth0.ManagementApi.Client.Clients
 
         public Task<Job> SendVerificationEmail(VerifyEmailJobRequest request)
         {
-            return Connection.PostAsync<Job>("jobs/verification-email", ContentTypes.Json, request, null, null, null, null);
+            return Connection.PostAsync<Job>("jobs/verification-email", ContentTypes.Json, request, null, null, null, null, null);
         }
 
         public Task<Job> ImportUsers(string connectionId, string fileName, Stream file)
@@ -46,7 +46,7 @@ namespace Auth0.ManagementApi.Client.Clients
                 }
             };
 
-            return Connection.PostAsync<Job>("jobs/users-imports", ContentTypes.MultiPartFormData, null, parameters, fileParameters, null, null);
+            return Connection.PostAsync<Job>("jobs/users-imports", ContentTypes.MultiPartFormData, null, parameters, fileParameters, null, null, null);
         }
     }
 }
