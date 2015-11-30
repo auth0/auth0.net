@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Auth0.Core.Models;
+using Auth0.Core;
 using PortableRest;
+using Auth0.ManagementApi.Client.Models;
 
 namespace Auth0.ManagementApi.Client.Clients
 {
     public class EmailProviderClient : ClientBase, IEmailProviderClient
     {
-        public EmailProviderClient(IApiConnection connection)
+        internal EmailProviderClient(IApiConnection connection)
             : base(connection)
         {
         }

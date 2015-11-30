@@ -8,13 +8,13 @@ namespace Auth0.ManagementApi.Client.Clients
         /// <summary>
         /// The <see cref="IApiConnection"/> which is used to make all API calls.
         /// </summary>
-        protected IApiConnection Connection { get; }
+        internal IApiConnection Connection { get; }
 
         /// <summary>
         /// Creates a new instance of the ClientBase class.
         /// </summary>
         /// <param name="connection">The <see cref="IApiConnection"/> which is used to communicate with the API.</param>
-        public ClientBase(IApiConnection connection)
+        internal ClientBase(IApiConnection connection)
         {
             Connection = connection;
         }

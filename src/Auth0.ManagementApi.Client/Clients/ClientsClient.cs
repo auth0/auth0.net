@@ -1,7 +1,7 @@
+using Auth0.ManagementApi.Client.Models;
+using PortableRest;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Auth0.Core.Models;
-using PortableRest;
 
 namespace Auth0.ManagementApi.Client.Clients
 {
@@ -15,9 +15,9 @@ namespace Auth0.ManagementApi.Client.Clients
         {
         }
 
-        public Task<Core.Models.Client> Create(ClientCreateRequest request)
+        public Task<Core.Client> Create(ClientCreateRequest request)
         {
-            return Connection.PostAsync<Core.Models.Client>("clients", ContentTypes.Json, request, null, null, null, null);
+            return Connection.PostAsync<Core.Client>("clients", ContentTypes.Json, request, null, null, null, null);
         }
 
         public Task Delete(string id)
@@ -28,9 +28,9 @@ namespace Auth0.ManagementApi.Client.Clients
             });
         }
 
-        public Task<Core.Models.Client> Get(string id, string fields = null, bool includeFields = true)
+        public Task<Core.Client> Get(string id, string fields = null, bool includeFields = true)
         {
-            return Connection.GetAsync<Core.Models.Client>("clients/{id}",
+            return Connection.GetAsync<Core.Client>("clients/{id}",
                 new Dictionary<string, string>
                 {
                     {"id", id}
@@ -42,9 +42,9 @@ namespace Auth0.ManagementApi.Client.Clients
                 });
         }
 
-        public Task<IList<Core.Models.Client>> GetAll(string fields = null, bool includeFields = true)
+        public Task<IList<Core.Client>> GetAll(string fields = null, bool includeFields = true)
         {
-            return Connection.GetAsync<IList<Core.Models.Client>>("clients", null,
+            return Connection.GetAsync<IList<Core.Client>>("clients", null,
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
@@ -53,9 +53,9 @@ namespace Auth0.ManagementApi.Client.Clients
         }
 
         // TODO: Look at making fields Nullable, otherwise default values are sent during PATCH
-        public Task<Core.Models.Client> Update(string id, ClientUpdateRequest request)
+        public Task<Core.Client> Update(string id, ClientUpdateRequest request)
         {
-            return Connection.PatchAsync<Core.Models.Client>("clients/{id}", request, new Dictionary<string, string>
+            return Connection.PatchAsync<Core.Client>("clients/{id}", request, new Dictionary<string, string>
             {
                 {"id", id}
             });

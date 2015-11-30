@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Auth0.Core.Models;
+using Auth0.Core;
 using FluentAssertions;
 using NUnit.Framework;
+using Auth0.ManagementApi.Client.Models;
 
 namespace Auth0.ManagementApi.Client.IntegrationTests
 {
     [TestFixture, Ignore("Damn, how difficult is it to get the correct token combinations for this...?")]
     public class DeviceCredentialsTests : TestBase
     {
-        private Core.Models.Client client;
+        private Core.Client client;
         private Connection connection;
         private User user;
 

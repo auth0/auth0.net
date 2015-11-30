@@ -1,10 +1,11 @@
 ﻿using System;
 using System.IO;
 using System.Threading.Tasks;
-using Auth0.Core.Models;
+using Auth0.Core;
 using FluentAssertions;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
+using Auth0.ManagementApi.Client.Models;
 
 namespace Auth0.ManagementApi.Client.IntegrationTests
 {

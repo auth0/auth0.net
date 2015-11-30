@@ -1,10 +1,14 @@
-﻿using System.Collections;
+﻿using Auth0.Core;
+using Auth0.ManagementApi.Client.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Auth0.Core.Models;
 
 namespace Auth0.ManagementApi.Client.Clients
 {
+
+    /// <summary>
+    /// 
+    /// </summary>
     public interface IBlacklistedTokensClient
     {
         /// <summary>
@@ -20,5 +24,7 @@ namespace Auth0.ManagementApi.Client.Clients
         /// <param name="request">The <see cref="BlacklistedTokenCreateRequest"/> containing the information of the token to blacklist.</param>
         /// <returns></returns>
         Task Create(BlacklistedTokenCreateRequest request);
+
     }
+
 }

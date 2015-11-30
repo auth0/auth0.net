@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Net;
-using Auth0.Core.Models;
+using Auth0.Core;
 
 namespace Auth0.ManagementApi.Client.Exceptions
 {
