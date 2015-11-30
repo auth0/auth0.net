@@ -6,7 +6,11 @@ using System.Text;
 using System.Xml.Linq;
 using Newtonsoft.Json;
 
+#if MANAGEMENT_API
 namespace Auth0.ManagementApi.Client.Diagnostics
+#elif AUTHENTICATION_API
+namespace Auth0.AuthenticationApi.Client.Diagnostics
+#endif
 {
     /// <summary>
     ///     Represents important information pertaining to the SDK that is sent to Auth0 for diagnostic purposes.

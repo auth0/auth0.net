@@ -1,9 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Auth0.ManagementApi.Client.Models;
 using PortableRest;
 
+#if MANAGEMENT_API
+using Auth0.ManagementApi.Client.Models;
+#elif AUTHENTICATION_API
+using Auth0.AuthenticationApi.Client.Models;
+#endif
+
+#if MANAGEMENT_API
 namespace Auth0.ManagementApi.Client
+#elif AUTHENTICATION_API
+namespace Auth0.AuthenticationApi.Client
+#endif
 {
     /// <summary>
     /// The communication layer between the various API clients and the actual API backend. All API calls happen through this interface.
