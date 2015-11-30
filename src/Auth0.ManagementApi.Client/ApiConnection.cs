@@ -1,5 +1,6 @@
 ﻿using Auth0.Core;
 using Auth0.Core.ApiClients;
+using Auth0.ManagementApi.Client;
 using Auth0.ManagementApi.Client.Diagnostics;
 using Auth0.ManagementApi.Client.Exceptions;
 using Newtonsoft.Json;
