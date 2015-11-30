@@ -2,7 +2,11 @@
 using System.Net;
 using Auth0.Core;
 
+#if MANAGEMENT_API
 namespace Auth0.ManagementApi.Client.Exceptions
+#elif AUTHENTICATION_API
+namespace Auth0.AuthenticationApi.Client.Exceptions
+#endif
 {
     /// <summary>
     /// Represents errors that occur when making API calls.

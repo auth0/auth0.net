@@ -1,15 +1,29 @@
-﻿using Auth0.Core;
-using Auth0.Core.ApiClients;
-using Auth0.ManagementApi.Client;
-using Auth0.ManagementApi.Client.Diagnostics;
-using Auth0.ManagementApi.Client.Exceptions;
-using Newtonsoft.Json;
-using PortableRest;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Auth0.Core.Models;
+using Newtonsoft.Json;
+using PortableRest;
+using Auth0.Core;
+using Auth0.Core.ApiClients;
+
+#if MANAGEMENT_API
+using Auth0.ManagementApi.Client.Diagnostics;
+using Auth0.ManagementApi.Client.Exceptions;
+using Auth0.ManagementApi.Client.Models;
+#elif AUTHENTICATION_API
+using Auth0.AuthenticationApi.Client.Diagnostics;
+using Auth0.AuthenticationApi.Client.Exceptions;
+using Auth0.AuthenticationApi.Client.Models;
+#endif
 
 namespace Auth0.Core.ApiClients
+//#if MANAGEMENT_API
+//namespace Auth0.ManagementApi.Client
+//#elif AUTHENTICATION_API
+//namespace Auth0.AuthenticationApi.Client
+//#endif
 {
     public class ApiConnection : RestClient, IApiConnection
     {
