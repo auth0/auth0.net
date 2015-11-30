@@ -1,4 +1,4 @@
-﻿using Auth0.Core.Models;
+﻿using Auth0.Core;
 using Newtonsoft.Json;
 
 namespace Auth0.Core.Rules

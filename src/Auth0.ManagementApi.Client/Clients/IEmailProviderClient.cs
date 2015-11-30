@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
-using Auth0.Core.Models;
+using Auth0.Core;
+using Auth0.ManagementApi.Client.Models;
 
 namespace Auth0.ManagementApi.Client.Clients
 {

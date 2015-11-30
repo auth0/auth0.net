@@ -69,10 +69,29 @@
     <Compile Include="Diagnostics\DiagnosticsHeader.cs" />
     <Compile Include="Diagnostics\Utils.cs" />
     <Compile Include="Exceptions\ApiException.cs" />
-    <Compile Include="IManagementApiClient.cs" />
     <Compile Include="IApiConnection.cs" />
+    <Compile Include="IManagementApiClient.cs" />
     <Compile Include="ManagementApiClient.cs" />
-    <Compile Include="Models\FileUploadParameter.cs" />
+    <Compile Include="Models\AccountLinkResponse.cs" />
+    <Compile Include="Models\AccountLinkResponseProfileData.cs" />
+    <Compile Include="Models\BlacklistedTokenCreateRequest.cs" />
+    <Compile Include="Models\ClientCreateRequest.cs" />
+    <Compile Include="Models\ClientUpdateRequest.cs" />
+    <Compile Include="Models\ConnectionCreateRequest.cs" />
+    <Compile Include="Models\ConnectionUpdateRequest.cs" />
+    <Compile Include="Models\DeviceCredentialCreateRequest.cs" />
+    <Compile Include="Models\EmailProviderConfigureRequest.cs" />
+    <Compile Include="Models\EmailProviderUpdateRequest.cs" />
+    <Compile Include="Models\EmailVerificationTicketRequest.cs" />
+    <Compile Include="Models\PasswordChangeTicketRequest.cs" />
+    <Compile Include="Models\RuleCreateRequest.cs" />
+    <Compile Include="Models\RuleUpdateRequest.cs" />
+    <Compile Include="Models\TenantSettingsUpdateRequest.cs" />
+    <Compile Include="Models\UserAccountJwtLinkRequest.cs" />
+    <Compile Include="Models\UserAccountLinkRequest.cs" />
+    <Compile Include="Models\UserCreateRequest.cs" />
+    <Compile Include="Models\UserUpdateRequest.cs" />
+    <Compile Include="Models\VerifyEmailJobRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

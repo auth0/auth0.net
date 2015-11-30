@@ -36,57 +36,39 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Models\AccountLinkResponse.cs" />
-    <Compile Include="Models\Addons.cs" />
-    <Compile Include="Models\BlacklistedToken.cs" />
-    <Compile Include="Models\BlacklistedTokenBase.cs" />
-    <Compile Include="Models\Client.cs" />
+    <Compile Include="ApiClients\FileUploadParameter.cs" />
+    <Compile Include="Addons.cs" />
+    <Compile Include="Base\TenantSettingsBase.cs" />
+    <Compile Include="BlacklistedToken.cs" />
+    <Compile Include="Base\BlacklistedTokenBase.cs" />
+    <Compile Include="Client.cs" />
     <Compile Include="DelegatedIdToken.cs" />
     <Compile Include="DelegatedRefreshToken.cs" />
     <Compile Include="DelegatedTokenBase.cs" />
-    <Compile Include="Models\ClientBase.cs" />
-    <Compile Include="Models\ClientCreateRequest.cs" />
-    <Compile Include="Models\ClientUpdateRequest.cs" />
-    <Compile Include="Models\Connection.cs" />
-    <Compile Include="Models\ConnectionBase.cs" />
-    <Compile Include="Models\ConnectionCreateRequest.cs" />
-    <Compile Include="Models\ConnectionUpdateRequest.cs" />
-    <Compile Include="Models\BlacklistedTokenCreateRequest.cs" />
-    <Compile Include="Models\EmailVerificationTicketRequest.cs" />
-    <Compile Include="Models\DailyStatistics.cs" />
-    <Compile Include="Models\EmailProviderCredentials.cs" />
-    <Compile Include="Models\DeviceCredential.cs" />
-    <Compile Include="Models\DeviceCredentialBase.cs" />
-    <Compile Include="Models\DeviceCredentialCreateRequest.cs" />
-    <Compile Include="Models\EmailProvider.cs" />
-    <Compile Include="Models\EmailProviderBase.cs" />
-    <Compile Include="Models\EmailProviderConfigureRequest.cs" />
-    <Compile Include="Models\EmailProviderUpdateRequest.cs" />
-    <Compile Include="Models\ApiError.cs" />
-    <Compile Include="Models\Identity.cs" />
-    <Compile Include="Models\Job.cs" />
-    <Compile Include="Models\PasswordChangeTicketRequest.cs" />
-    <Compile Include="Models\TenantErrorPage.cs" />
-    <Compile Include="Models\TenantSettings.cs" />
-    <Compile Include="Models\TenantSettingsBase.cs" />
-    <Compile Include="Models\TenantSettingsUpdateRequest.cs" />
-    <Compile Include="Models\Ticket.cs" />
-    <Compile Include="Models\UserAccountJwtLinkRequest.cs" />
-    <Compile Include="Models\UserAccountLinkRequest.cs" />
-    <Compile Include="Models\Mobile.cs" />
-    <Compile Include="Models\ResourceServer.cs" />
-    <Compile Include="Models\Rule.cs" />
-    <Compile Include="Models\RuleBase.cs" />
-    <Compile Include="Models\RuleCreateRequest.cs" />
-    <Compile Include="Models\RuleUpdateRequest.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserBase.cs" />
-    <Compile Include="Models\UserCreateRequest.cs" />
-    <Compile Include="Models\UserUpdateRequest.cs" />
-    <Compile Include="Models\VerifyEmailJobRequest.cs" />
+    <Compile Include="Base\ClientBase.cs" />
+    <Compile Include="Connection.cs" />
+    <Compile Include="Base\ConnectionBase.cs" />
+    <Compile Include="Management\DailyStatistics.cs" />
+    <Compile Include="Management\EmailProviderCredentials.cs" />
+    <Compile Include="DeviceCredential.cs" />
+    <Compile Include="Base\DeviceCredentialBase.cs" />
+    <Compile Include="Management\EmailProvider.cs" />
+    <Compile Include="Base\EmailProviderBase.cs" />
+    <Compile Include="ApiError.cs" />
+    <Compile Include="Identity.cs" />
+    <Compile Include="Management\Job.cs" />
+    <Compile Include="Management\TenantErrorPage.cs" />
+    <Compile Include="Management\TenantSettings.cs" />
+    <Compile Include="Management\Ticket.cs" />
+    <Compile Include="Mobile.cs" />
+    <Compile Include="ResourceServer.cs" />
+    <Compile Include="Management\Rule.cs" />
+    <Compile Include="Base\RuleBase.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="Base\UserBase.cs" />
     <Compile Include="Properties\JetBrains.Annotations.cs" />
-    <Compile Include="Models\EncryptionKey.cs" />
-    <Compile Include="Models\JwtConfiguration.cs" />
+    <Compile Include="EncryptionKey.cs" />
+    <Compile Include="JwtConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rules\LoginRequest.cs" />
     <Compile Include="Rules\LoginRequestGeography.cs" />
@@ -97,7 +79,7 @@
     <Compile Include="Rules\RulesRequest.cs" />
     <Compile Include="ScopeEntry.cs" />
     <Compile Include="Scopes.cs" />
-    <Compile Include="Models\SigningKey.cs" />
+    <Compile Include="SigningKey.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -108,6 +90,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

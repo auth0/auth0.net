@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Auth0.Core.Models;
+using Auth0.Core;
 
 namespace Auth0.ManagementApi.Client.Clients
 {

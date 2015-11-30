@@ -1,7 +1,8 @@
+using Auth0.Core;
+using Auth0.ManagementApi.Client.Models;
+using PortableRest;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Auth0.Core.Models;
-using PortableRest;
 
 namespace Auth0.ManagementApi.Client.Clients
 {

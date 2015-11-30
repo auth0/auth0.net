@@ -15,6 +15,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
+[assembly: InternalsVisibleTo("Auth0.AuthenticationApi.Client")]
+[assembly: InternalsVisibleTo("Auth0.ManagementApi.Client")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -28,3 +30,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+

@@ -5,9 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Auth0.Core.Models;
+using Auth0.Core;
 using Auth0.ManagementApi.Client;
 using Nito.AsyncEx;
+using Auth0.ManagementApi.Client.Models;
 
 namespace ConsoleTestWorkbench
 {
