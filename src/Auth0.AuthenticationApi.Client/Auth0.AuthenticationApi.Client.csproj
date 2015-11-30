@@ -45,6 +45,8 @@
     <Compile Include="Models\DelegationRequestBase.cs" />
     <Compile Include="Models\IdTokenDelegationRequest.cs" />
     <Compile Include="Models\RefreshTokenDelegationRequest.cs" />
+    <Compile Include="Models\AuthorizationResponseType.cs" />
+    <Compile Include="Models\BuildAuthorizationUriRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
