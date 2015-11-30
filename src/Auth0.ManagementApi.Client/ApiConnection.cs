@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Auth0.ManagementApi.Client
+namespace Auth0.Core.ApiClients
 {
     public class ApiConnection : RestClient, IApiConnection
     {

@@ -44,7 +44,7 @@
     <Compile Include="Client.cs" />
     <Compile Include="DelegatedIdToken.cs" />
     <Compile Include="DelegatedRefreshToken.cs" />
-    <Compile Include="DelegatedTokenBase.cs" />
+    <Compile Include="Base\DelegatedTokenBase.cs" />
     <Compile Include="Base\ClientBase.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="Base\ConnectionBase.cs" />
