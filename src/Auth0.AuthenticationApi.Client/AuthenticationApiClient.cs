@@ -38,15 +38,22 @@ namespace Auth0.AuthenticationApi.Client
 
         public Task<Uri> BuildAuthorizationUri(BuildAuthorizationUriRequest request)
         {
-            //RestRequest restRequest = new RestRequest("authorize");
-            //restRequest.AddQueryString("response_type", request.ResponseType);
-            //restRequest.AddQueryString("client_id", request.ClientId);
-            //// etc.
+            RestRequest restRequest = new RestRequest("authorize");
+            restRequest.AddQueryString("response_type", request.ResponseType.ToString().ToLower());
+            if (!string.IsNullOrEmpty(request.ClientId))
+                restRequest.AddQueryString("client_id", request.ClientId);
+            if (!string.IsNullOrEmpty(request.Connection))
+                restRequest.AddQueryString("connection", request.Connection);
+            if (request.RedirectUri != null)
+                restRequest.AddQueryString("redirect_uri", request.RedirectUri);
+            if (!string.IsNullOrEmpty(request.State))
+                restRequest.AddQueryString("state", request.State);
+            if (!string.IsNullOrEmpty(request.Scope))
+                restRequest.AddQueryString("scope", request.Scope);
+            if (!string.IsNullOrEmpty(request.Device))
+                restRequest.AddQueryString("device", request.Device);
 
-            //// And then
-            //return restRequest.GetResourceUri(baseUri);
-
-            throw new NotImplementedException();
+            return Task.FromResult(restRequest.GetResourceUri(baseUri.ToString()));
         }
 
         public Task<AuthenticationResponse> Authenticate(AuthenticationRequest request)
