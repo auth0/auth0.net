@@ -53,11 +53,15 @@
     <Compile Include="IAuthenticationApiClient.cs" />
     <Compile Include="Models\AuthenticationRequest.cs" />
     <Compile Include="Models\AuthenticationResponse.cs" />
+    <Compile Include="Models\ChangePasswordRequest.cs" />
     <Compile Include="Models\DelegationRequestBase.cs" />
+    <Compile Include="Models\SignupUserResponse.cs" />
     <Compile Include="Models\IdTokenDelegationRequest.cs" />
     <Compile Include="Models\RefreshTokenDelegationRequest.cs" />
     <Compile Include="Models\AuthorizationResponseType.cs" />
     <Compile Include="Models\BuildAuthorizationUriRequest.cs" />
+    <Compile Include="Models\SignupUserRequest.cs" />
+    <Compile Include="Models\UserMaintenanceRequestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

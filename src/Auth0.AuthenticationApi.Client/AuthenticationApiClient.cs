@@ -56,6 +56,18 @@ namespace Auth0.AuthenticationApi.Client
             return Task.FromResult(restRequest.GetResourceUri(baseUri.ToString()));
         }
 
+        public Task<string> ChangePassword(ChangePasswordRequest request)
+        {
+            return Connection.PostAsync<string>("dbconnections/change_password", ContentTypes.Json,
+                request, null, null, null, null, null);
+        }
+
+        public Task<SignupUserResponse> SignupUser(SignupUserRequest request)
+        {
+            return Connection.PostAsync<SignupUserResponse>("dbconnections/signup", ContentTypes.Json,
+                request, null, null, null, null, null);
+        }
+
         public Task<AuthenticationResponse> Authenticate(AuthenticationRequest request)
         {
             return Connection.PostAsync<AuthenticationResponse>("auth/ro", ContentTypes.Json,

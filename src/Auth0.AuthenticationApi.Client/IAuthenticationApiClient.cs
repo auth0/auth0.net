@@ -6,8 +6,9 @@ namespace Auth0.AuthenticationApi.Client
 {
     public interface IAuthenticationApiClient
     {
-        Task<Uri> BuildAuthorizationUri(BuildAuthorizationUriRequest request);
-
         Task<AuthenticationResponse> Authenticate(AuthenticationRequest request);
+        Task<Uri> BuildAuthorizationUri(BuildAuthorizationUriRequest request);
+        Task<string> ChangePassword(ChangePasswordRequest request);
+        Task<SignupUserResponse> SignupUser(SignupUserRequest request);
     }
 }
