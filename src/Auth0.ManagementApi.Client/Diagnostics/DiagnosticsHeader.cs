@@ -131,7 +131,7 @@ namespace Auth0.AuthenticationApi.Client.Diagnostics
             var header = new DiagnosticsHeader(sdkAssemblyName);
 
             // Extract dependencies from the Nuget packages.config
-            using (var stream = sdkAssembly.GetManifestResourceStream("Auth0.ManagementApi.Client.packages.config"))
+            using (var stream = sdkAssembly.GetManifestResourceStream(string.Format("{0}.packages.config", sdkAssemblyName.Name)))
             {
                 XElement root = XElement.Load(stream);
                 header.Dependencies = root.Elements("package")

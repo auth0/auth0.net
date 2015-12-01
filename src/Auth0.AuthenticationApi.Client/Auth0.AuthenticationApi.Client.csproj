@@ -37,7 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <None Include="packages.config" />
+    <EmbeddedResource Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Auth0.ManagementApi.Client\ApiConnection.cs">
@@ -58,11 +58,10 @@
     <Compile Include="..\Auth0.ManagementApi.Client\IApiConnection.cs">
       <Link>IApiConnection.cs</Link>
     </Compile>
-    <Compile Include="..\Auth0.ManagementApi.Client\Models\FileUploadParameter.cs">
-      <Link>Models\FileUploadParameter.cs</Link>
-    </Compile>
     <Compile Include="AuthenticationApiClient.cs" />
     <Compile Include="IAuthenticationApiClient.cs" />
+    <Compile Include="Models\AuthenticationRequest.cs" />
+    <Compile Include="Models\AuthenticationResponse.cs" />
     <Compile Include="Models\DelegationRequestBase.cs" />
     <Compile Include="Models\IdTokenDelegationRequest.cs" />
     <Compile Include="Models\RefreshTokenDelegationRequest.cs" />

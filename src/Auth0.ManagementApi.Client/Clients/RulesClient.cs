@@ -16,7 +16,7 @@ namespace Auth0.ManagementApi.Client.Clients
 
         public Task<Rule> Create(RuleCreateRequest request)
         {
-            return Connection.PostAsync<Rule>("rules", ContentTypes.Json, request, null, null, null, null);
+            return Connection.PostAsync<Rule>("rules", ContentTypes.Json, request, null, null, null, null, null);
         }
 
         public Task Delete(string id)

@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using Newtonsoft.Json;
 
 #if MANAGEMENT_API

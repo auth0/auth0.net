@@ -7,5 +7,7 @@ namespace Auth0.AuthenticationApi.Client
     public interface IAuthenticationApiClient
     {
         Task<Uri> BuildAuthorizationUri(BuildAuthorizationUriRequest request);
+
+        Task<AuthenticationResponse> Authenticate(AuthenticationRequest request);
     }
 }
