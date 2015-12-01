@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.ManagementApi.Client.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.AuthenticationApi.Client", "src\Auth0.AuthenticationApi.Client\Auth0.AuthenticationApi.Client.csproj", "{6225AD9D-983E-42BB-825B-A36B143D4D31}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.AuthenticationApi.Client.IntegrationTests", "tests\Auth0.AuthenticationApi.Client.IntegrationTests\Auth0.AuthenticationApi.Client.IntegrationTests.csproj", "{174CFC4B-5544-4151-969B-0B9F16087349}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +50,10 @@ Global
 		{6225AD9D-983E-42BB-825B-A36B143D4D31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6225AD9D-983E-42BB-825B-A36B143D4D31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6225AD9D-983E-42BB-825B-A36B143D4D31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{174CFC4B-5544-4151-969B-0B9F16087349}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{174CFC4B-5544-4151-969B-0B9F16087349}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{174CFC4B-5544-4151-969B-0B9F16087349}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{174CFC4B-5544-4151-969B-0B9F16087349}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,5 +64,6 @@ Global
 		{779564FF-1CEE-4C4F-A867-F8A0EA60FC03} = {0EBAD055-E431-443B-8212-411D1AFE3796}
 		{BFD5E1F6-053E-490E-AE4E-8CF12F74FFE6} = {0EBAD055-E431-443B-8212-411D1AFE3796}
 		{6225AD9D-983E-42BB-825B-A36B143D4D31} = {C9550C3F-90EB-42C0-B530-E728566A13C2}
+		{174CFC4B-5544-4151-969B-0B9F16087349} = {0EBAD055-E431-443B-8212-411D1AFE3796}
 	EndGlobalSection
 EndGlobal

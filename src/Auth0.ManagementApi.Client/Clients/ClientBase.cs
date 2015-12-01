@@ -1,3 +1,5 @@
+using Auth0.Core.Http;
+
 namespace Auth0.ManagementApi.Client.Clients
 {
     /// <summary>

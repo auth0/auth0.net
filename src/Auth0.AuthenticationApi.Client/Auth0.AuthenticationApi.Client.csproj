@@ -23,7 +23,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;AUTHENTICATION_API</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -31,20 +31,33 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>TRACE;AUTHENTICATION_API</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <None Include="packages.config" />
+    <EmbeddedResource Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Auth0.ManagementApi.Client\Core\Http\ApiConnection.cs">
+      <Link>Core\Http\ApiConnection.cs</Link>
+    </Compile>
+    <Compile Include="..\Auth0.ManagementApi.Client\Core\Http\DiagnosticsHeader.cs">
+      <Link>Core\Http\DiagnosticsHeader.cs</Link>
+    </Compile>
+    <Compile Include="..\Auth0.ManagementApi.Client\Core\Http\IApiConnection.cs">
+      <Link>Core\Http\IApiConnection.cs</Link>
+    </Compile>
     <Compile Include="AuthenticationApiClient.cs" />
     <Compile Include="IAuthenticationApiClient.cs" />
+    <Compile Include="Models\AuthenticationRequest.cs" />
+    <Compile Include="Models\AuthenticationResponse.cs" />
     <Compile Include="Models\DelegationRequestBase.cs" />
     <Compile Include="Models\IdTokenDelegationRequest.cs" />
     <Compile Include="Models\RefreshTokenDelegationRequest.cs" />
+    <Compile Include="Models\AuthorizationResponseType.cs" />
+    <Compile Include="Models\BuildAuthorizationUriRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +85,12 @@
       <HintPath>..\..\packages\Microsoft.Net.Http.2.2.29\lib\portable-net45+win8+wpa81\System.Net.Http.Primitives.dll</HintPath>
       <Private>True</Private>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Auth0.Core\Auth0.Core.csproj">
+      <Project>{c5395825-ef6d-438e-9e22-95975f1276e8}</Project>
+      <Name>Auth0.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

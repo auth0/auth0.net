@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Auth0.Core;
+using Auth0.Core.Http;
 using PortableRest;
 using Auth0.ManagementApi.Client.Models;
-using Auth0.Core.ApiClients;
 
 namespace Auth0.ManagementApi.Client.Clients
 {
@@ -29,7 +29,7 @@ namespace Auth0.ManagementApi.Client.Clients
 
         public Task<DeviceCredential> Create(DeviceCredentialCreateRequest request)
         {
-            return Connection.PostAsync<DeviceCredential>("device-credentials", ContentTypes.Json, request, null, null, null, null);
+            return Connection.PostAsync<DeviceCredential>("device-credentials", ContentTypes.Json, request, null, null, null, null, null);
         }
 
         public Task Delete(string id)

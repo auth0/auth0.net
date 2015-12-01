@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Auth0.Core.ApiClients
+namespace Auth0.Core.Http
 {
 
     /// <summary>

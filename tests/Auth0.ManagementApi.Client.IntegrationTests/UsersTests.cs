@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Auth0.Core;
-using Auth0.ManagementApi.Client.Exceptions;
+using Auth0.Core.Exceptions;
 using FluentAssertions;
 using NUnit.Framework;
 using Auth0.ManagementApi.Client.Models;
@@ -23,7 +23,8 @@ namespace Auth0.ManagementApi.Client.IntegrationTests
             connection = await apiClient.Connections.Create(new ConnectionCreateRequest
             {
                 Name = Guid.NewGuid().ToString("N"),
-                Strategy = "auth0"
+                Strategy = "auth0",
+                EnabledClients = new[] { "rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW" }
             });
         }
 

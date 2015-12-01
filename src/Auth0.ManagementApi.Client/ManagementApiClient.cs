@@ -1,7 +1,6 @@
 ﻿using System;
+using Auth0.Core.Http;
 using Auth0.ManagementApi.Client.Clients;
-using Auth0.ManagementApi.Client.Diagnostics;
-using Auth0.Core.ApiClients;
 
 namespace Auth0.ManagementApi.Client
 {

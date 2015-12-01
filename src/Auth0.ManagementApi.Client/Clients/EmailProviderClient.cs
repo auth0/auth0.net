@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Auth0.Core;
+using Auth0.Core.Http;
 using PortableRest;
 using Auth0.ManagementApi.Client.Models;
 
@@ -15,7 +16,7 @@ namespace Auth0.ManagementApi.Client.Clients
 
         public Task<EmailProvider> Configure(EmailProviderConfigureRequest request)
         {
-            return Connection.PostAsync<EmailProvider>("emails/provider", ContentTypes.Json, request, null, null, null, null);
+            return Connection.PostAsync<EmailProvider>("emails/provider", ContentTypes.Json, request, null, null, null, null, null);
         }
 
         public Task<EmailProvider> Get(string fields = null, bool includeFields = true)
