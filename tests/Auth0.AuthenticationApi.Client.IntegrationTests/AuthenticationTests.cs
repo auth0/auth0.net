@@ -25,7 +25,8 @@ namespace Auth0.AuthenticationApi.Client.IntegrationTests
             connection = await managementApiClient.Connections.Create(new ConnectionCreateRequest
             {
                 Name = Guid.NewGuid().ToString("N"),
-                Strategy = "auth0"
+                Strategy = "auth0",
+                EnabledClients = new []{ "rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW" }
             });
 
             // And add a dummy user to test agains

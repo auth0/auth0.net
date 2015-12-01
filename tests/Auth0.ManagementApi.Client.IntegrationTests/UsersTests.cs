@@ -23,7 +23,8 @@ namespace Auth0.ManagementApi.Client.IntegrationTests
             connection = await apiClient.Connections.Create(new ConnectionCreateRequest
             {
                 Name = Guid.NewGuid().ToString("N"),
-                Strategy = "auth0"
+                Strategy = "auth0",
+                EnabledClients = new[] { "rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW" }
             });
         }
 
