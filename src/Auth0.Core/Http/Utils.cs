@@ -1,10 +1,6 @@
 using System;
 
-#if MANAGEMENT_API
-namespace Auth0.ManagementApi.Client.Diagnostics
-#elif AUTHENTICATION_API
-namespace Auth0.AuthenticationApi.Client.Diagnostics
-#endif
+namespace Auth0.Core.Http
 {
     internal static class Utils
     {

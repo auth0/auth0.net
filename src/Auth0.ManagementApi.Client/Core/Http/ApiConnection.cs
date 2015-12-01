@@ -1,26 +1,12 @@
-using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Auth0.Core.Exceptions;
 using Newtonsoft.Json;
 using PortableRest;
-using Auth0.Core;
-using Auth0.Core.ApiClients;
-#if MANAGEMENT_API
-using Auth0.ManagementApi.Client.Diagnostics;
-using Auth0.ManagementApi.Client.Exceptions;
-using Auth0.ManagementApi.Client.Models;
-#elif AUTHENTICATION_API
-using Auth0.AuthenticationApi.Client.Diagnostics;
-using Auth0.AuthenticationApi.Client.Exceptions;
-using Auth0.AuthenticationApi.Client.Models;
-#endif
 
-#if MANAGEMENT_API
-namespace Auth0.ManagementApi.Client
-#elif AUTHENTICATION_API
-namespace Auth0.AuthenticationApi.Client
-#endif
+// ReSharper disable once CheckNamespace
+namespace Auth0.Core.Http
 {
     public class ApiConnection : RestClient, IApiConnection
     {

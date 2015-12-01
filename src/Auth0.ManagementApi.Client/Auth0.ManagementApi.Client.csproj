@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -41,7 +41,7 @@
     <EmbeddedResource Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiConnection.cs" />
+    <Compile Include="Core\Http\ApiConnection.cs" />
     <Compile Include="Clients\BlacklistedTokensClient.cs" />
     <Compile Include="Clients\ClientBase.cs" />
     <Compile Include="Clients\ClientsClient.cs" />
@@ -65,11 +65,8 @@
     <Compile Include="Clients\TentantSettingsClient.cs" />
     <Compile Include="Clients\TicketsClient.cs" />
     <Compile Include="Clients\UsersClient.cs" />
-    <Compile Include="Diagnostics\DiagnosticsComponent.cs" />
-    <Compile Include="Diagnostics\DiagnosticsHeader.cs" />
-    <Compile Include="Diagnostics\Utils.cs" />
-    <Compile Include="Exceptions\ApiException.cs" />
-    <Compile Include="IApiConnection.cs" />
+    <Compile Include="Core\Http\DiagnosticsHeader.cs" />
+    <Compile Include="Core\Http\IApiConnection.cs" />
     <Compile Include="IManagementApiClient.cs" />
     <Compile Include="ManagementApiClient.cs" />
     <Compile Include="Models\AccountLinkResponse.cs" />

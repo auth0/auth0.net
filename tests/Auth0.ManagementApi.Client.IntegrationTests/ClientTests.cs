@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Auth0.ManagementApi.Client.Exceptions;
+using Auth0.Core.Exceptions;
 using FluentAssertions;
 using NUnit.Framework;
 using Auth0.ManagementApi.Client.Models;

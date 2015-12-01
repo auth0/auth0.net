@@ -1,11 +1,7 @@
 using System.Reflection;
 using Newtonsoft.Json;
 
-#if MANAGEMENT_API
-namespace Auth0.ManagementApi.Client.Diagnostics
-#elif AUTHENTICATION_API
-namespace Auth0.AuthenticationApi.Client.Diagnostics
-#endif
+namespace Auth0.Core.Http
 {
     /// <summary>
     /// Represents information about a software component that's used for diagnostic purposes.

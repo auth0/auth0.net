@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Auth0.Core;
+using Auth0.Core.Http;
 using PortableRest;
 using Auth0.ManagementApi.Client.Models;
 

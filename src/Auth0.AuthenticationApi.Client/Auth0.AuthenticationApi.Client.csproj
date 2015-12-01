@@ -40,23 +40,14 @@
     <EmbeddedResource Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Auth0.ManagementApi.Client\ApiConnection.cs">
-      <Link>ApiConnection.cs</Link>
+    <Compile Include="..\Auth0.ManagementApi.Client\Core\Http\ApiConnection.cs">
+      <Link>Core\Http\ApiConnection.cs</Link>
     </Compile>
-    <Compile Include="..\Auth0.ManagementApi.Client\Diagnostics\DiagnosticsComponent.cs">
-      <Link>Diagnostics\DiagnosticsComponent.cs</Link>
+    <Compile Include="..\Auth0.ManagementApi.Client\Core\Http\DiagnosticsHeader.cs">
+      <Link>Core\Http\DiagnosticsHeader.cs</Link>
     </Compile>
-    <Compile Include="..\Auth0.ManagementApi.Client\Diagnostics\DiagnosticsHeader.cs">
-      <Link>Diagnostics\DiagnosticsHeader.cs</Link>
-    </Compile>
-    <Compile Include="..\Auth0.ManagementApi.Client\Diagnostics\Utils.cs">
-      <Link>Diagnostics\Utils.cs</Link>
-    </Compile>
-    <Compile Include="..\Auth0.ManagementApi.Client\Exceptions\ApiException.cs">
-      <Link>Exceptions\ApiException.cs</Link>
-    </Compile>
-    <Compile Include="..\Auth0.ManagementApi.Client\IApiConnection.cs">
-      <Link>IApiConnection.cs</Link>
+    <Compile Include="..\Auth0.ManagementApi.Client\Core\Http\IApiConnection.cs">
+      <Link>Core\Http\IApiConnection.cs</Link>
     </Compile>
     <Compile Include="AuthenticationApiClient.cs" />
     <Compile Include="IAuthenticationApiClient.cs" />

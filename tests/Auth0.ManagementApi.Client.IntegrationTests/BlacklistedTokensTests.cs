@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Auth0.Core;
-using Auth0.ManagementApi.Client.Exceptions;
+using Auth0.Core.Exceptions;
 using FluentAssertions;
 using Microsoft.Owin.Security.DataHandler.Encoder;
 using NUnit.Framework;

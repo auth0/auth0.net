@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Auth0.AuthenticationApi.Client.Diagnostics;
 using Auth0.AuthenticationApi.Client.Models;
+using Auth0.Core.Http;
 using PortableRest;
 
 namespace Auth0.AuthenticationApi.Client

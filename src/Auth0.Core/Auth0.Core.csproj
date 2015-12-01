@@ -36,7 +36,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ApiClients\FileUploadParameter.cs" />
+    <Compile Include="Exceptions\ApiException.cs" />
+    <Compile Include="Http\DiagnosticsComponent.cs" />
+    <Compile Include="Http\Utils.cs" />
+    <Compile Include="Http\FileUploadParameter.cs" />
     <Compile Include="Addons.cs" />
     <Compile Include="Base\TenantSettingsBase.cs" />
     <Compile Include="BlacklistedToken.cs" />
