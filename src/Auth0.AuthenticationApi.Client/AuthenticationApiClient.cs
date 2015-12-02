@@ -96,18 +96,21 @@ namespace Auth0.AuthenticationApi.Client
 
         public Task<AuthenticationResponse> Authenticate(AuthenticationRequest request)
         {
-            return Connection.PostAsync<AuthenticationResponse>("auth/ro", ContentTypes.Json,
-                null, null, null, null, null, new Dictionary<string, string>
-                {
-                    { "client_id", request.ClientId },
-                    { "username", request.Username },
-                    { "password", request.Password },
-                    { "id_token", request.IdToken },
-                    { "connection", request.Connection },
-                    { "grant_type", request.GrantType },
-                    { "scope", request.Scope },
-                    { "device", request.Device }
-                });
+            return Connection.PostAsync<AuthenticationResponse>("oauth/ro", ContentTypes.Json,
+                request, null, null, null, null, null);
+
+            //return Connection.PostAsync<AuthenticationResponse>("oauth/ro", ContentTypes.Json,
+            //    null, null, null, null, null, new Dictionary<string, string>
+            //    {
+            //        { "client_id", request.ClientId },
+            //        { "username", request.Username },
+            //        { "password", request.Password },
+            //        { "id_token", request.IdToken },
+            //        { "connection", request.Connection },
+            //        { "grant_type", request.GrantType },
+            //        { "scope", request.Scope },
+            //        { "device", request.Device }
+            //    });
         }
     }
 }
