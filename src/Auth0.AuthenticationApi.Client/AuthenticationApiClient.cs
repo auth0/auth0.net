@@ -68,6 +68,32 @@ namespace Auth0.AuthenticationApi.Client
                 request, null, null, null, null, null);
         }
 
+        public Task<PasswordlessEmailResponse> StartPasswordlessEmailFlow(PasswordlessEmailRequest request)
+        {
+            return Connection.PostAsync<PasswordlessEmailResponse>("passwordless/start", ContentTypes.Json,
+                new
+                {
+                    client_id = request.ClientId,
+                    connection  = "email",
+                    email = request.Email,
+                    send = request.Type.ToString().ToLower(),
+                    authParams = request.AuthenticationParameters
+                }, 
+                null, null, null, null, null);
+        }
+
+        public Task<PasswordlessSmsResponse> StartPasswordlessSmsFlow(PasswordlessSmsRequest request)
+        {
+            return Connection.PostAsync<PasswordlessSmsResponse>("passwordless/start", ContentTypes.Json,
+                new
+                {
+                    client_id = request.ClientId,
+                    connection = "sms",
+                    phone_number = request.PhoneNumber
+                },
+                null, null, null, null, null);
+        }
+
         public Task<AuthenticationResponse> Authenticate(AuthenticationRequest request)
         {
             return Connection.PostAsync<AuthenticationResponse>("auth/ro", ContentTypes.Json,

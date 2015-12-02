@@ -55,6 +55,11 @@
     <Compile Include="Models\AuthenticationResponse.cs" />
     <Compile Include="Models\ChangePasswordRequest.cs" />
     <Compile Include="Models\DelegationRequestBase.cs" />
+    <Compile Include="Models\PasswordlessEmailRequest.cs" />
+    <Compile Include="Models\PasswordlessEmailRequestType.cs" />
+    <Compile Include="Models\PasswordlessEmailResponse.cs" />
+    <Compile Include="Models\PasswordlessSmsRequest.cs" />
+    <Compile Include="Models\PasswordlessSmsResponse.cs" />
     <Compile Include="Models\SignupUserResponse.cs" />
     <Compile Include="Models\IdTokenDelegationRequest.cs" />
     <Compile Include="Models\RefreshTokenDelegationRequest.cs" />

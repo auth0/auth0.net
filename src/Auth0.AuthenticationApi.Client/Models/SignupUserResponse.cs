@@ -4,13 +4,13 @@ namespace Auth0.AuthenticationApi.Client.Models
 {
     public class SignupUserResponse
     {
-        [JsonProperty("_id")]
+        [JsonProperty("Id")]
         public string Id { get; set; }
 
         [JsonProperty("email_verified")]
         public bool EmailVerified { get; set; }
 
-        [JsonProperty("email")]
+        [JsonProperty("Email")]
         public string Email { get; set; }
 
         [JsonProperty("username")]

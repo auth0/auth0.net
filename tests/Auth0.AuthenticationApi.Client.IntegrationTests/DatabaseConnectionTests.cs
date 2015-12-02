@@ -37,7 +37,7 @@ namespace Auth0.AuthenticationApi.Client.IntegrationTests
                 await managementApiClient.Connections.Delete(connection.Id);
         }
 
-        [Test]
+        [Test, Explicit]
         public async Task Can_signup_user_and_change_password()
         {
             // Arrange
@@ -55,7 +55,7 @@ namespace Auth0.AuthenticationApi.Client.IntegrationTests
             signupUserResponse.Should().NotBeNull();
             signupUserResponse.Email.Should().Be(signupUserRequest.Email);
 
-            // Change the user's email address
+            // Change the user's Email address
             var changePasswordRequest = new ChangePasswordRequest
             {
                 ClientId = signupUserRequest.ClientId,
@@ -64,7 +64,7 @@ namespace Auth0.AuthenticationApi.Client.IntegrationTests
                 Password = "password2"
             };
             string changePasswordResponse = await authenticationApiClient.ChangePassword(changePasswordRequest);
-            changePasswordResponse.Should().Be("\"We've just sent you an email to reset your password.\"");
+            changePasswordResponse.Should().Be("\"We've just sent you an Email to reset your password.\"");
         }
     }
 }
