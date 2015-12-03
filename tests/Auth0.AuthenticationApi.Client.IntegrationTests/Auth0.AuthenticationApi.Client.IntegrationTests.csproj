@@ -80,7 +80,7 @@
   <ItemGroup>
     <Compile Include="AccessTokenTests.cs" />
     <Compile Include="AuthenticationTests.cs" />
-    <Compile Include="AuthorizationUriTests.cs" />
+    <Compile Include="UriBuildersTests.cs" />
     <Compile Include="DatabaseConnectionTests.cs" />
     <Compile Include="PasswordlessTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

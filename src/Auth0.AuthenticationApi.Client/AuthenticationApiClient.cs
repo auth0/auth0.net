@@ -57,6 +57,15 @@ namespace Auth0.AuthenticationApi.Client
             return Task.FromResult(restRequest.GetResourceUri(baseUri.ToString()));
         }
 
+        public Task<Uri> BuildLogoutUri(Uri returnUri)
+        {
+            RestRequest restRequest = new RestRequest("logout");
+            if (returnUri != null)
+                restRequest.AddQueryString("returnTo", returnUri.ToString());
+
+            return Task.FromResult(restRequest.GetResourceUri(baseUri.ToString()));
+        }
+
         public Task<string> ChangePassword(ChangePasswordRequest request)
         {
             return Connection.PostAsync<string>("dbconnections/change_password", ContentTypes.Json,

@@ -11,6 +11,8 @@ namespace Auth0.AuthenticationApi.Client
 
         Task<Uri> BuildAuthorizationUri(BuildAuthorizationUriRequest request);
 
+        Task<Uri> BuildLogoutUri(Uri returnUri);
+
         Task<string> ChangePassword(ChangePasswordRequest request);
 
         /// <summary>
