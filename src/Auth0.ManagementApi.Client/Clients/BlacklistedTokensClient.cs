@@ -20,7 +20,7 @@ namespace Auth0.ManagementApi.Client.Clients
                 new Dictionary<string, string>
                 {
                     {"aud", aud}
-                });
+                }, null);
         }
 
         public Task Create(BlacklistedTokenCreateRequest request)

@@ -57,5 +57,47 @@ namespace Auth0.AuthenticationApi.Client.IntegrationTests
             delegationToken.Should().NotBeNull();
             delegationToken.IdToken.Should().NotBeNull();
         }
+
+        [Test, Explicit]
+        public async Task Can_obtain_user_info()
+        {
+            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+
+            // First get the access token
+            var token = await authenticationApiClient.GetAccessToken(new AccessTokenRequest
+            {
+                ClientId = GetVariable("AUTH0_CLIENT_ID"),
+                Connection = "google-oauth2",
+                AccessToken = accessToken,
+                Scope = "openid"
+            });
+
+
+            // Get the user info
+            var user = await authenticationApiClient.GetUserInfo(token.AccessToken);
+            user.Should().NotBeNull();
+            user.Email.Should().NotBeNull();
+        }
+
+        [Test, Explicit]
+        public async Task Can_obtain_token_info()
+        {
+            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+
+            // First get the access token
+            var token = await authenticationApiClient.GetAccessToken(new AccessTokenRequest
+            {
+                ClientId = GetVariable("AUTH0_CLIENT_ID"),
+                Connection = "google-oauth2",
+                AccessToken = accessToken,
+                Scope = "openid"
+            });
+
+
+            // Get the user info
+            var user = await authenticationApiClient.GetTokenInfo(token.IdToken);
+            user.Should().NotBeNull();
+            user.Email.Should().NotBeNull();
+        }
     }
 }

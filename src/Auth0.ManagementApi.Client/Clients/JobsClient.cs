@@ -22,7 +22,7 @@ namespace Auth0.ManagementApi.Client.Clients
                 {
                     {"id", id}
                 },
-                null);
+                null, null);
         }
 
         public Task<Job> SendVerificationEmail(VerifyEmailJobRequest request)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Auth0.AuthenticationApi.Client.Models;
+using Auth0.Core;
 
 namespace Auth0.AuthenticationApi.Client
 {
@@ -23,6 +24,18 @@ namespace Auth0.AuthenticationApi.Client
         Task<AccessToken> GetAccessToken(AccessTokenRequest request);
 
         Task<AccessToken> GetDelegationToken(DelegationRequestBase request);
+
+        /// <summary>
+        /// Returns the user information based on the Auth0 access token (obtained during login).
+        /// </summary>
+        /// <returns></returns>
+        Task<User> GetUserInfo(string accessToken);
+
+        /// <summary>
+        /// Validates a JSON Web Token (signature and expiration) and returns the user information associated with the user id (sub property) of the token.
+        /// </summary>
+        /// <returns></returns>
+        Task<User> GetTokenInfo(string idToken);
 
         Task<SignupUserResponse> SignupUser(SignupUserRequest request);
 

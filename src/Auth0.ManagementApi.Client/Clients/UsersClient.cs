@@ -43,7 +43,7 @@ namespace Auth0.ManagementApi.Client.Clients
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                });
+                }, null);
         }
 
         public Task<IList<User>> GetAll(int? page = null, int? perPage = null, bool? includeTotals = null, string sort = null, string connection = null, string fields = null,
@@ -62,7 +62,7 @@ namespace Auth0.ManagementApi.Client.Clients
                     {"include_fields", includeFields?.ToString().ToLower()},
                     {"q", q},
                     {"search_engine", searchEngine}
-                });
+                }, null);
         }
 
         public Task<IList<AccountLinkResponse>> UnlinkAccount(string primaryUserId, string provider, string secondaryUserId)

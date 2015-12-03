@@ -35,7 +35,7 @@ namespace Auth0.Core.Http
                 null).ConfigureAwait(false);
         }
 
-        public async Task<T> GetAsync<T>(string resource, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings) where T : class
+        public async Task<T> GetAsync<T>(string resource, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings, IDictionary<string, object> headers) where T : class
         {
             return await RunAsync<T>(resource,
                 HttpMethod.Get,
@@ -43,7 +43,7 @@ namespace Auth0.Core.Http
                 urlSegments,
                 queryStrings,
                 null,
-                null, 
+                headers, 
                 null).ConfigureAwait(false);
         }
 

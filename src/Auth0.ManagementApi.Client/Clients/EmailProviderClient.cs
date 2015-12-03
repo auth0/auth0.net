@@ -27,7 +27,7 @@ namespace Auth0.ManagementApi.Client.Clients
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                });
+                }, null);
         }
 
         public Task<EmailProvider> Update(EmailProviderUpdateRequest request)

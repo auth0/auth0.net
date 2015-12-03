@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Auth0.AuthenticationApi.Client.Models;
+using Auth0.Core;
 using Auth0.Core.Http;
 using PortableRest;
 
@@ -72,6 +73,23 @@ namespace Auth0.AuthenticationApi.Client
         {
             return Connection.PostAsync<AccessToken>("delegation", ContentTypes.Json,
                 request, null, null, null, null, null);
+        }
+
+        public Task<User> GetUserInfo(string accessToken)
+        {
+            return Connection.GetAsync<User>("userinfo", null, null, new Dictionary<string, object>
+                {
+                    { "Authorization", string.Format("Bearer {0}", accessToken) }
+                });
+        }
+
+        public Task<User> GetTokenInfo(string idToken)
+        {
+            return Connection.PostAsync<User>("tokeninfo", ContentTypes.Json,
+                new
+                {
+                    id_token = idToken
+                }, null, null, null, null, null);
         }
 
         public Task<SignupUserResponse> SignupUser(SignupUserRequest request)

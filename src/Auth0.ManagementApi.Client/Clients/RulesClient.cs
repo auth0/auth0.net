@@ -38,7 +38,7 @@ namespace Auth0.ManagementApi.Client.Clients
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                });
+                }, null);
         }
 
         public Task<IList<Rule>> GetAll(bool? enabled = null, string fields = null, bool includeFields = true, string stage = null)
@@ -50,7 +50,7 @@ namespace Auth0.ManagementApi.Client.Clients
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()},
                     {"stage", stage}
-                });
+                }, null);
         }
 
         // TODO: Look at making fields Nullable, otherwise default values are sent during PATCH

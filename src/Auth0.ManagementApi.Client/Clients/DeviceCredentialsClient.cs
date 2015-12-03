@@ -24,7 +24,7 @@ namespace Auth0.ManagementApi.Client.Clients
                     {"user_id", userId},
                     {"client_id", clientId},
                     {"type", type}
-                });
+                }, null);
         }
 
         public Task<DeviceCredential> Create(DeviceCredentialCreateRequest request)
