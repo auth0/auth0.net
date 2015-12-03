@@ -62,6 +62,12 @@ namespace Auth0.AuthenticationApi.Client
                 request, null, null, null, null, null);
         }
 
+        public Task<AccessToken> GetAccessToken(AccessTokenRequest request)
+        {
+            return Connection.PostAsync<AccessToken>("oauth/access_token", ContentTypes.Json,
+                request, null, null, null, null, null);
+        }
+
         public Task<SignupUserResponse> SignupUser(SignupUserRequest request)
         {
             return Connection.PostAsync<SignupUserResponse>("dbconnections/signup", ContentTypes.Json,

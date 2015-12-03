@@ -78,6 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessTokenTests.cs" />
     <Compile Include="AuthenticationTests.cs" />
     <Compile Include="AuthorizationUriTests.cs" />
     <Compile Include="DatabaseConnectionTests.cs" />

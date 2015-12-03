@@ -51,10 +51,13 @@
     </Compile>
     <Compile Include="AuthenticationApiClient.cs" />
     <Compile Include="IAuthenticationApiClient.cs" />
+    <Compile Include="Models\AccessToken.cs" />
     <Compile Include="Models\AuthenticationRequest.cs" />
     <Compile Include="Models\AuthenticationResponse.cs" />
     <Compile Include="Models\ChangePasswordRequest.cs" />
     <Compile Include="Models\DelegationRequestBase.cs" />
+    <Compile Include="Models\AccessTokenRequest.cs" />
+    <Compile Include="Models\OAuthToken.cs" />
     <Compile Include="Models\PasswordlessEmailRequest.cs" />
     <Compile Include="Models\PasswordlessEmailRequestType.cs" />
     <Compile Include="Models\PasswordlessEmailResponse.cs" />
@@ -66,6 +69,7 @@
     <Compile Include="Models\AuthorizationResponseType.cs" />
     <Compile Include="Models\BuildAuthorizationUriRequest.cs" />
     <Compile Include="Models\SignupUserRequest.cs" />
+    <Compile Include="Models\TokenBase.cs" />
     <Compile Include="Models\UserMaintenanceRequestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
