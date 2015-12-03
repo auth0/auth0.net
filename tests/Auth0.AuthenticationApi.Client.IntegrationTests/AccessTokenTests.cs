@@ -9,23 +9,53 @@ namespace Auth0.AuthenticationApi.Client.IntegrationTests
     [TestFixture]
     public class AccessTokenTests : TestBase
     {
+        private string accessToken = "ya29.PwJLAWo_GAzjn7O2neeJY-vZySGK9ABBEPtGydN5lIM69OQ_gUFZgVgtqB-QhchtcttTIg";
+
         [Test, Explicit]
         public async Task Can_log_in_with_access_token()
         {
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
-            var accessToken = await authenticationApiClient.GetAccessToken(new AccessTokenRequest
+            var token = await authenticationApiClient.GetAccessToken(new AccessTokenRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 Connection = "google-oauth2",
-                AccessToken = "your access token",
+                AccessToken = accessToken,
                 Scope = "openid"
             });
 
-            accessToken.Should().NotBeNull();
-            accessToken.IdToken.Should().NotBeNull();
-            accessToken.AccessToken.Should().NotBeNull();
-            accessToken.TokenType.Should().Be("bearer");
+            token.Should().NotBeNull();
+            token.IdToken.Should().NotBeNull();
+            token.AccessToken.Should().NotBeNull();
+        }
+
+        [Test, Explicit]
+        public async Task Can_get_delegation_token()
+        {
+            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            
+            // First get the access token
+            var token = await authenticationApiClient.GetAccessToken(new AccessTokenRequest
+            {
+                ClientId = GetVariable("AUTH0_CLIENT_ID"),
+                Connection = "google-oauth2",
+                AccessToken = accessToken,
+                Scope = "openid"
+            });
+
+            // Then request the delegation token
+            var delegationToken = await authenticationApiClient.GetDelegationToken(new IdTokenDelegationRequest(
+                GetVariable("AUTH0_CLIENT_ID"),
+                GetVariable("AUTH0_CLIENT_ID"),
+                token.IdToken)
+            {
+                Scope = "openid",
+                GrantType = "urn:ietf:params:oauth:grant-type:jwt-bearer",
+                ApiType = "app"
+            });
+
+            delegationToken.Should().NotBeNull();
+            delegationToken.IdToken.Should().NotBeNull();
         }
     }
 }

@@ -22,6 +22,8 @@ namespace Auth0.AuthenticationApi.Client
         /// <returns></returns>
         Task<AccessToken> GetAccessToken(AccessTokenRequest request);
 
+        Task<AccessToken> GetDelegationToken(DelegationRequestBase request);
+
         Task<SignupUserResponse> SignupUser(SignupUserRequest request);
 
         Task<PasswordlessEmailResponse> StartPasswordlessEmailFlow(PasswordlessEmailRequest request);

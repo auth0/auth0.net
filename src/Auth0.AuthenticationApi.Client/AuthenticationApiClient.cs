@@ -68,6 +68,12 @@ namespace Auth0.AuthenticationApi.Client
                 request, null, null, null, null, null);
         }
 
+        public Task<AccessToken> GetDelegationToken(DelegationRequestBase request)
+        {
+            return Connection.PostAsync<AccessToken>("delegation", ContentTypes.Json,
+                request, null, null, null, null, null);
+        }
+
         public Task<SignupUserResponse> SignupUser(SignupUserRequest request)
         {
             return Connection.PostAsync<SignupUserResponse>("dbconnections/signup", ContentTypes.Json,
