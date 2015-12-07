@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Auth0.AuthenticationApi.Client.Models;
 using Auth0.Core;
 using Auth0.Core.Http;
-using PortableRest;
 
 namespace Auth0.AuthenticationApi.Client
 {
@@ -39,49 +38,46 @@ namespace Auth0.AuthenticationApi.Client
 
         public Task<Uri> BuildAuthorizationUri(BuildAuthorizationUriRequest request)
         {
-            RestRequest restRequest = new RestRequest("authorize");
-            restRequest.AddQueryString("response_type", request.ResponseType.ToString().ToLower());
+            IDictionary<string, string> queryStrings = new Dictionary<string, string>();
+            queryStrings.Add("response_type", request.ResponseType.ToString().ToLower());
             if (!string.IsNullOrEmpty(request.ClientId))
-                restRequest.AddQueryString("client_id", request.ClientId);
+                queryStrings.Add("client_id", request.ClientId);
             if (!string.IsNullOrEmpty(request.Connection))
-                restRequest.AddQueryString("connection", request.Connection);
+                queryStrings.Add("connection", request.Connection);
             if (request.RedirectUri != null)
-                restRequest.AddQueryString("redirect_uri", request.RedirectUri);
+                queryStrings.Add("redirect_uri", request.RedirectUri.ToString());
             if (!string.IsNullOrEmpty(request.State))
-                restRequest.AddQueryString("state", request.State);
+                queryStrings.Add("state", request.State);
             if (!string.IsNullOrEmpty(request.Scope))
-                restRequest.AddQueryString("scope", request.Scope);
+                queryStrings.Add("scope", request.Scope);
             if (!string.IsNullOrEmpty(request.Device))
-                restRequest.AddQueryString("device", request.Device);
+                queryStrings.Add("device", request.Device);
 
-            return Task.FromResult(restRequest.GetResourceUri(baseUri.ToString()));
+            return Task.FromResult(Utils.BuildUri(baseUri.ToString(), "authorize", null, queryStrings));
         }
 
         public Task<Uri> BuildLogoutUri(Uri returnUri)
         {
-            RestRequest restRequest = new RestRequest("logout");
+            Dictionary<string, string> queryStrings = new Dictionary<string, string>();
             if (returnUri != null)
-                restRequest.AddQueryString("returnTo", returnUri.ToString());
+                queryStrings.Add("returnTo", returnUri.ToString());
 
-            return Task.FromResult(restRequest.GetResourceUri(baseUri.ToString()));
+            return Task.FromResult(Utils.BuildUri(baseUri.ToString(), "logout", null, queryStrings));
         }
 
         public Task<string> ChangePassword(ChangePasswordRequest request)
         {
-            return Connection.PostAsync<string>("dbconnections/change_password", ContentTypes.Json,
-                request, null, null, null, null, null);
+            return Connection.PostAsync<string>("dbconnections/change_password", request, null, null, null, null, null);
         }
 
         public Task<AccessToken> GetAccessToken(AccessTokenRequest request)
         {
-            return Connection.PostAsync<AccessToken>("oauth/access_token", ContentTypes.Json,
-                request, null, null, null, null, null);
+            return Connection.PostAsync<AccessToken>("oauth/access_token", request, null, null, null, null, null);
         }
 
         public Task<AccessToken> GetDelegationToken(DelegationRequestBase request)
         {
-            return Connection.PostAsync<AccessToken>("delegation", ContentTypes.Json,
-                request, null, null, null, null, null);
+            return Connection.PostAsync<AccessToken>("delegation", request, null, null, null, null, null);
         }
 
         public Task<User> GetUserInfo(string accessToken)
@@ -94,7 +90,7 @@ namespace Auth0.AuthenticationApi.Client
 
         public Task<User> GetTokenInfo(string idToken)
         {
-            return Connection.PostAsync<User>("tokeninfo", ContentTypes.Json,
+            return Connection.PostAsync<User>("tokeninfo", 
                 new
                 {
                     id_token = idToken
@@ -103,13 +99,12 @@ namespace Auth0.AuthenticationApi.Client
 
         public Task<SignupUserResponse> SignupUser(SignupUserRequest request)
         {
-            return Connection.PostAsync<SignupUserResponse>("dbconnections/signup", ContentTypes.Json,
-                request, null, null, null, null, null);
+            return Connection.PostAsync<SignupUserResponse>("dbconnections/signup", request, null, null, null, null, null);
         }
 
         public Task<PasswordlessEmailResponse> StartPasswordlessEmailFlow(PasswordlessEmailRequest request)
         {
-            return Connection.PostAsync<PasswordlessEmailResponse>("passwordless/start", ContentTypes.Json,
+            return Connection.PostAsync<PasswordlessEmailResponse>("passwordless/start", 
                 new
                 {
                     client_id = request.ClientId,
@@ -123,7 +118,7 @@ namespace Auth0.AuthenticationApi.Client
 
         public Task<PasswordlessSmsResponse> StartPasswordlessSmsFlow(PasswordlessSmsRequest request)
         {
-            return Connection.PostAsync<PasswordlessSmsResponse>("passwordless/start", ContentTypes.Json,
+            return Connection.PostAsync<PasswordlessSmsResponse>("passwordless/start", 
                 new
                 {
                     client_id = request.ClientId,
@@ -135,21 +130,7 @@ namespace Auth0.AuthenticationApi.Client
 
         public Task<AuthenticationResponse> Authenticate(AuthenticationRequest request)
         {
-            return Connection.PostAsync<AuthenticationResponse>("oauth/ro", ContentTypes.Json,
-                request, null, null, null, null, null);
-
-            //return Connection.PostAsync<AuthenticationResponse>("oauth/ro", ContentTypes.Json,
-            //    null, null, null, null, null, new Dictionary<string, string>
-            //    {
-            //        { "client_id", request.ClientId },
-            //        { "username", request.Username },
-            //        { "password", request.Password },
-            //        { "id_token", request.IdToken },
-            //        { "connection", request.Connection },
-            //        { "grant_type", request.GrantType },
-            //        { "scope", request.Scope },
-            //        { "device", request.Device }
-            //    });
+            return Connection.PostAsync<AuthenticationResponse>("oauth/ro", request, null, null, null, null, null);
         }
     }
 }

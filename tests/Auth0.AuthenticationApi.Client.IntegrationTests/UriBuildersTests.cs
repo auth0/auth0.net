@@ -26,7 +26,7 @@ namespace Auth0.AuthenticationApi.Client.IntegrationTests
 
             authorizationUri.Should()
                 .Be(
-                    @"https://auth0-dotnet-integration-tests.auth0.com/authorize?&response_type=code&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&connection=google-oauth2&redirect_uri=http%3A%2F%2Fwww.jerriepelser.com%2Ftest&scope=openid%20offline_access");
+                    @"https://auth0-dotnet-integration-tests.auth0.com/authorize?response_type=code&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&connection=google-oauth2&redirect_uri=http%3A%2F%2Fwww.jerriepelser.com%2Ftest&scope=openid%20offline_access");
         }
 
         [Test]
@@ -38,7 +38,7 @@ namespace Auth0.AuthenticationApi.Client.IntegrationTests
 
             logoutUri.Should()
                 .Be(
-                    @"https://auth0-dotnet-integration-tests.auth0.com/logout?&returnTo=http:%2F%2Fwww.jerriepelser.com%2Ftest");
+                    @"https://auth0-dotnet-integration-tests.auth0.com/logout?returnTo=http:%2F%2Fwww.jerriepelser.com%2Ftest");
         }
     }
 }

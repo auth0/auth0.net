@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Auth0.Core;
 using Auth0.Core.Http;
-using PortableRest;
 using Auth0.ManagementApi.Client.Models;
 
 namespace Auth0.ManagementApi.Client.Clients
@@ -16,7 +15,7 @@ namespace Auth0.ManagementApi.Client.Clients
 
         public Task<User> Create(UserCreateRequest request)
         {
-            return Connection.PostAsync<User>("users", ContentTypes.Json, request, null, null, null, null, null);
+            return Connection.PostAsync<User>("users", request, null, null, null, null, null);
         }
 
         public Task Delete(string id)
@@ -86,7 +85,7 @@ namespace Auth0.ManagementApi.Client.Clients
 
         public Task<IList<AccountLinkResponse>> LinkAccount(string id, UserAccountLinkRequest request)
         {
-            return Connection.PostAsync<IList<AccountLinkResponse>>("users/{id}/identities", ContentTypes.Json, request, null, null, new Dictionary<string, string>
+            return Connection.PostAsync<IList<AccountLinkResponse>>("users/{id}/identities", request, null, null, new Dictionary<string, string>
             {
                 {"id", id}
             }, null, null);
@@ -99,7 +98,7 @@ namespace Auth0.ManagementApi.Client.Clients
                 LinkWith = secondaryJwtToken
             };
 
-            return Connection.PostAsync<IList<AccountLinkResponse>>("users/{id}/identities", ContentTypes.Json, request, null, null, new Dictionary<string, string>
+            return Connection.PostAsync<IList<AccountLinkResponse>>("users/{id}/identities", request, null, null, new Dictionary<string, string>
             {
                 {"id", id}
             }, new Dictionary<string, object>

@@ -1,5 +1,4 @@
 using Auth0.ManagementApi.Client.Models;
-using PortableRest;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Auth0.Core.Http;
@@ -18,7 +17,7 @@ namespace Auth0.ManagementApi.Client.Clients
 
         public Task<Core.Client> Create(ClientCreateRequest request)
         {
-            return Connection.PostAsync<Core.Client>("clients", ContentTypes.Json, request, null, null, null, null, null);
+            return Connection.PostAsync<Core.Client>("clients", request, null, null, null, null, null);
         }
 
         public Task Delete(string id)
