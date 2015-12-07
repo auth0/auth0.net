@@ -9,7 +9,7 @@ namespace Auth0.AuthenticationApi.Client.IntegrationTests
     [TestFixture]
     public class AccessTokenTests : TestBase
     {
-        private string accessToken = "ya29.PwJLAWo_GAzjn7O2neeJY-vZySGK9ABBEPtGydN5lIM69OQ_gUFZgVgtqB-QhchtcttTIg";
+        private string accessToken = "your access token";
 
         [Test, Explicit]
         public async Task Can_log_in_with_access_token()
