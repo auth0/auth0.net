@@ -65,6 +65,11 @@ namespace Auth0.AuthenticationApi.Client
             return Task.FromResult(Utils.BuildUri(baseUri.ToString(), "logout", null, queryStrings));
         }
 
+        public SamlUrlBuilder BuildSamlUrl(string client)
+        {
+            return new SamlUrlBuilder(client);
+        }
+
         public Task<string> ChangePassword(ChangePasswordRequest request)
         {
             return Connection.PostAsync<string>("dbconnections/change_password", request, null, null, null, null, null);

@@ -13,6 +13,8 @@ namespace Auth0.AuthenticationApi.Client
 
         Task<Uri> BuildLogoutUri(Uri returnUri);
 
+        SamlUrlBuilder BuildSamlUrl(string client);
+
         Task<string> ChangePassword(ChangePasswordRequest request);
 
         /// <summary>

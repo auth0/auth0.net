@@ -40,5 +40,15 @@ namespace Auth0.AuthenticationApi.Client.IntegrationTests
                 .Be(
                     @"https://auth0-dotnet-integration-tests.auth0.com/logout?returnTo=http:%2F%2Fwww.jerriepelser.com%2Ftest");
         }
+
+        [Test]
+        public void Can_build_saml_url()
+        {
+            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+
+            authenticationApiClient.BuildSamlUrl("aaa")
+                .WithConnection("aaa")
+                .WithValue("asasas", "dsfsdfsd");
+        }
     }
 }
