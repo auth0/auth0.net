@@ -1,4 +1,6 @@
-﻿using JetBrains.Annotations;
+﻿using System.Collections.Generic;
+using JetBrains.Annotations;
+using System.Linq;
 
 namespace Auth0.AuthenticationApi.Client.Builders
 {
@@ -17,16 +19,30 @@ namespace Auth0.AuthenticationApi.Client.Builders
             return this;
         }
 
-        public WsFedUrlBuilder WithWhr(string connectionName)
+        public WsFedUrlBuilder WithWhr(string value)
         {
-            AddQueryString("whr", $"urn:{connectionName}");
+            AddQueryString("whr", value);
 
             return this;
         }
 
-        public WsFedUrlBuilder WithWtrealm(string clientId)
+        public WsFedUrlBuilder WithWctx(string value)
         {
-            AddQueryString("wtrealm", $"urn:{clientId}");
+            AddQueryString("wctx", value);
+
+            return this;
+        }
+
+        public WsFedUrlBuilder WithWctx(IDictionary<string, string> values)
+        {
+            AddQueryString("wctx", string.Join("&", values.Select(kvp => string.Format("{0}={1}", kvp.Key, kvp.Value))));
+
+            return this;
+        }
+
+        public WsFedUrlBuilder WithWtrealm(string value)
+        {
+            AddQueryString("wtrealm", value);
 
             return this;
         }
