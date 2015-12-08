@@ -41,8 +41,11 @@ namespace Auth0.Core.Http
             {
                 foreach (var urlSegment in urlSegments)
                 {
-                    resource = resource.Replace(string.Format("{{{0}}}", urlSegment.Key), Uri.EscapeUriString(urlSegment.Value));
+                    resource = resource.Replace(string.Format("{{{0}}}", urlSegment.Key), Uri.EscapeUriString(urlSegment.Value ?? String.Empty));
                 }
+
+                // Remove trailing slash
+                resource = resource.TrimEnd('/');
             }
 
             // Add the query strings

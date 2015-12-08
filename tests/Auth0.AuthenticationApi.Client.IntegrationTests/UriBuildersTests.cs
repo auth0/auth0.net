@@ -66,5 +66,41 @@ namespace Auth0.AuthenticationApi.Client.IntegrationTests
 
             samlUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/samlp/myclientid?connection=my-connection-name");
         }
+
+        [Test]
+        public void Can_build_wsfed_with_client()
+        {
+            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+
+            var wsfedUrl = authenticationApiClient.BuildWsFedUrl()
+                .WithClient("my-client-id")
+                .Build();
+
+            wsfedUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/wsfed/my-client-id");
+        }
+
+        [Test]
+        public void Can_build_wsfed_with_realm()
+        {
+            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+
+            var wsfedUrl = authenticationApiClient.BuildWsFedUrl()
+                .WithWtrealm("my-client-id")
+                .Build();
+
+            wsfedUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/wsfed?wtrealm=urn:my-client-id");
+        }
+
+        [Test]
+        public void Can_build_wsfed_with_whr()
+        {
+            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+
+            var wsfedUrl = authenticationApiClient.BuildWsFedUrl()
+                .WithWhr("my-connection-name")
+                .Build();
+
+            wsfedUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/wsfed?whr=urn:my-connection-name");
+        }
     }
 }

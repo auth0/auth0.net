@@ -16,6 +16,8 @@ namespace Auth0.AuthenticationApi.Client
 
         SamlUrlBuilder BuildSamlUrl(string client);
 
+        WsFedUrlBuilder BuildWsFedUrl();
+
         Task<string> ChangePassword(ChangePasswordRequest request);
 
         /// <summary>

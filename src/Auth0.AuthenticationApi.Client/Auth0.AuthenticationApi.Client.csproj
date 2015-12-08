@@ -54,6 +54,7 @@
     <Compile Include="Builders\LogoutUrlBuilder.cs" />
     <Compile Include="Builders\SamlUrlBuilder.cs" />
     <Compile Include="Builders\UrlBuilderBase.cs" />
+    <Compile Include="Builders\WsFedUrlBuilder.cs" />
     <Compile Include="IAuthenticationApiClient.cs" />
     <Compile Include="Models\AccessToken.cs" />
     <Compile Include="Models\AuthenticationRequest.cs" />

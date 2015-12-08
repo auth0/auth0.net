@@ -52,6 +52,11 @@ namespace Auth0.AuthenticationApi.Client
             return new SamlUrlBuilder(baseUri.ToString(), client);
         }
 
+        public WsFedUrlBuilder BuildWsFedUrl()
+        {
+            return new WsFedUrlBuilder(baseUri.ToString());
+        }
+
         public Task<string> ChangePassword(ChangePasswordRequest request)
         {
             return Connection.PostAsync<string>("dbconnections/change_password", request, null, null, null, null, null);
