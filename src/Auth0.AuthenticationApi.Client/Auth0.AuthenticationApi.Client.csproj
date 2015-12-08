@@ -71,7 +71,6 @@
     <Compile Include="Models\IdTokenDelegationRequest.cs" />
     <Compile Include="Models\RefreshTokenDelegationRequest.cs" />
     <Compile Include="Models\AuthorizationResponseType.cs" />
-    <Compile Include="Models\BuildAuthorizationUriRequest.cs" />
     <Compile Include="Models\SignupUserRequest.cs" />
     <Compile Include="Models\TokenBase.cs" />
     <Compile Include="Models\UserMaintenanceRequestBase.cs" />
