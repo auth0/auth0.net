@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="AccessTokenTests.cs" />
     <Compile Include="AuthenticationTests.cs" />
+    <Compile Include="MetadataTests.cs" />
     <Compile Include="UriBuildersTests.cs" />
     <Compile Include="DatabaseConnectionTests.cs" />
     <Compile Include="PasswordlessTests.cs" />

@@ -72,6 +72,14 @@ namespace Auth0.AuthenticationApi.Client
             return Connection.PostAsync<AccessToken>("delegation", request, null, null, null, null, null);
         }
 
+        public Task<string> GetSamlMetadata(string clientId)
+        {
+            return Connection.GetAsync<string>("wsfed/{clientid}", new Dictionary<string, string>
+            {
+                {"clientid", clientId}
+            }, null, null);
+        }
+
         public Task<User> GetUserInfo(string accessToken)
         {
             return Connection.GetAsync<User>("userinfo", null, null, new Dictionary<string, object>
@@ -87,6 +95,11 @@ namespace Auth0.AuthenticationApi.Client
                 {
                     id_token = idToken
                 }, null, null, null, null, null);
+        }
+
+        public Task<string> GetWsFedMetadata()
+        {
+            return Connection.GetAsync<string>("wsfed/FederationMetadata/2007-06/FederationMetadata.xml", null, null, null);
         }
 
         public Task<SignupUserResponse> SignupUser(SignupUserRequest request)

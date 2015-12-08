@@ -91,7 +91,11 @@ namespace Auth0.Core.Http
             await HandleErrors(response);
 
             // Deserialize the content
-            var content = await response.Content.ReadAsStringAsync();
+            string content = await response.Content.ReadAsStringAsync();
+
+            if (typeof (T)== typeof (string)) // Let string content pass throug
+                return (T)(object)content;
+
             return JsonConvert.DeserializeObject<T>(content);
         }
 

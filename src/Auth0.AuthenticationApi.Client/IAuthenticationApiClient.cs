@@ -32,6 +32,8 @@ namespace Auth0.AuthenticationApi.Client
 
         Task<AccessToken> GetDelegationToken(DelegationRequestBase request);
 
+        Task<string> GetSamlMetadata(string clientId);
+
         /// <summary>
         /// Returns the user information based on the Auth0 access token (obtained during login).
         /// </summary>
@@ -43,6 +45,8 @@ namespace Auth0.AuthenticationApi.Client
         /// </summary>
         /// <returns></returns>
         Task<User> GetTokenInfo(string idToken);
+
+        Task<string> GetWsFedMetadata();
 
         Task<SignupUserResponse> SignupUser(SignupUserRequest request);
 
