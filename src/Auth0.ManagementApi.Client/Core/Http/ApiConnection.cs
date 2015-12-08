@@ -1,15 +1,18 @@
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Auth0.Core.Exceptions;
 using Newtonsoft.Json;
-using PortableRest;
+using System.Text;
+using System.Linq;
 
 // ReSharper disable once CheckNamespace
 namespace Auth0.Core.Http
 {
-    public class ApiConnection : RestClient, IApiConnection
+    public class ApiConnection : IApiConnection
     {
+        private readonly string baseUrl;
         private readonly string token;
         private readonly DiagnosticsHeader diagnostics;
 
@@ -17,17 +20,14 @@ namespace Auth0.Core.Http
         {
             this.token = token;
             this.diagnostics = diagnostics;
-            BaseUrl = baseUrl;
-
-            // Ensure user agent is set on all requests
-            SetUserAgent<ApiConnection>();
+            this.baseUrl = baseUrl;
         }
 
         public async Task<T> DeleteAsync<T>(string resource, IDictionary<string, string> urlSegments) where T : class
         {
             return await RunAsync<T>(resource,
-                HttpMethod.Delete,
-                ContentTypes.Json,
+                HttpMethod.Delete, 
+                null,
                 urlSegments,
                 null,
                 null,
@@ -35,30 +35,26 @@ namespace Auth0.Core.Http
                 null).ConfigureAwait(false);
         }
 
-        public async Task<T> GetAsync<T>(string resource, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings) where T : class
+        public async Task<T> GetAsync<T>(string resource, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings, IDictionary<string, object> headers) where T : class
         {
             return await RunAsync<T>(resource,
-                HttpMethod.Get,
-                ContentTypes.Json, 
+                HttpMethod.Get, 
+                null, 
                 urlSegments,
                 queryStrings,
                 null,
-                null, 
+                headers, 
                 null).ConfigureAwait(false);
         }
 
-        public async Task<T> PostAsync<T>(string resource, ContentTypes contentTypes, object body, IDictionary<string, object> parameters, IList<FileUploadParameter> fileParameters, IDictionary<string, string> urlSegments, IDictionary<string, object> headers, IDictionary<string, string> queryStrings) where T : class
+        public async Task<T> PostAsync<T>(string resource, object body, IDictionary<string, object> parameters, IList<FileUploadParameter> fileParameters, IDictionary<string, string> urlSegments, IDictionary<string, object> headers, IDictionary<string, string> queryStrings) where T : class
         {
             return await RunAsync<T>(resource,
-                HttpMethod.Post,
-                contentTypes, 
+                HttpMethod.Post, 
+                body, 
                 urlSegments,
                 queryStrings,
-                parameters ??
-                new Dictionary<string, object>
-                {
-                    { "body", body}
-                }, 
+                parameters, 
                 headers, 
                 fileParameters).ConfigureAwait(false);
         }
@@ -67,77 +63,57 @@ namespace Auth0.Core.Http
         {
             return await RunAsync<T>(resource,
                 new HttpMethod("PATCH"), 
-                ContentTypes.Json,
+                body,
                 urlSegments,
                 null,
-                new Dictionary<string, object>
-                {
-                    { "body", body}
-                },
+                null,
                 null, 
                 null).ConfigureAwait(false);
         }
 
-        private async Task<T> RunAsync<T>(string resource, HttpMethod httpMethod, ContentTypes contentTypes, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings, IDictionary<string, object> parameters, IDictionary<string, object> headers, IList<FileUploadParameter> fileParameters) where T : class
+        private async Task<T> RunAsync<T>(string resource, HttpMethod httpMethod, object body, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings, IDictionary<string, object> parameters, IDictionary<string, object> headers, IList<FileUploadParameter> fileParameters) where T : class
         {
-            var request = new RestRequest(resource, httpMethod)
-            {
-                ContentType = contentTypes,
-                JsonSerializerSettings = new JsonSerializerSettings
-                {
-                    NullValueHandling = NullValueHandling.Ignore
-                }
-            };
+            // Build the request URL
+            var requestMessage = new HttpRequestMessage(httpMethod, BuildRequestUri(resource, urlSegments, queryStrings));
 
-            // Apply the URL Segments
-            if (urlSegments != null)
-            {
-                foreach (var pair in urlSegments)
-                {
-                    if (pair.Key != null && pair.Value != null)
-                        request.AddUrlSegment(pair.Key, pair.Value);
-                }
-            }
+            // Get the message content
+            if (httpMethod != HttpMethod.Get)
+                requestMessage.Content = BuildMessageContent(body, parameters, fileParameters);
 
-            // Apply the Query strings
-            if (queryStrings != null)
-            {
-                foreach (var pair in queryStrings)
-                {
-                    if (pair.Key != null && pair.Value != null)
-                        request.AddQueryString(pair.Key, pair.Value);
-                }
-            }
+            // Apply the headers
+            ApplyHeaders(requestMessage, headers);
 
-            // Apply the Parameters
-            if (parameters != null)
-            {
-                foreach (var pair in parameters)
-                {
-                    if (pair.Key != null && pair.Value != null)
-                        request.AddParameter(pair.Key, pair.Value);
-                }
-            }
+            // Send the request
+            var httpClient = new HttpClient();
+            var response = await httpClient.SendAsync(requestMessage).ConfigureAwait(false);
 
-            // Apply the file parameters
-            if (fileParameters != null)
-            {
-                foreach (var parameter in fileParameters)
-                {
-                    request.AddFileParameter(parameter.Key, parameter.FileStream, parameter.Filename);
-                }
-            }
+            // Handle API errors
+            await HandleErrors(response);
 
+            // Deserialize the content
+            string content = await response.Content.ReadAsStringAsync();
+
+            if (typeof (T)== typeof (string)) // Let string content pass throug
+                return (T)(object)content;
+
+            return JsonConvert.DeserializeObject<T>(content);
+        }
+
+        private void ApplyHeaders(HttpRequestMessage message, IDictionary<string, object> headers)
+        {
             // Add the diagnostics header, unless user explicitly opted out of it
             if (!object.ReferenceEquals(diagnostics, DiagnosticsHeader.Suppress))
-                request.AddHeader("Auth0-Client", diagnostics.ToString());
+                message.Headers.Add("Auth0-Client", diagnostics.ToString());
 
             // Set the authorization header
             if (headers == null || (headers != null && !headers.ContainsKey("Authorization"))) // Auth header can be overriden by passing custom value in headers dictionary
             {
                 if (!string.IsNullOrEmpty(token))
-                    request.AddHeader("Authorization", string.Format("Bearer {0}", token));
+                    message.Headers.Add("Authorization", string.Format("Bearer {0}", token));
             }
+
+            // Add the user agent
+            message.Headers.Add("User-Agent", ".NET/PCL");
 
             // Apply other headers
             if (headers != null)
@@ -145,31 +121,68 @@ namespace Auth0.Core.Http
                 foreach (var pair in headers)
                 {
                     if (pair.Key != null && pair.Value != null)
-                        request.AddHeader(pair.Key, pair.Value);
+                        message.Headers.Add(pair.Key, pair.Value.ToString());
                 }
             }
-
-            // Send the request
-            var response = await SendAsync<T>(request).ConfigureAwait(false);
-
-            await HandleErrors(response);
-
-            return response.Content;
         }
 
-        private async Task HandleErrors<T>(RestResponse<T> response) where T : class
+        private HttpContent BuildMessageContent(object body, IDictionary<string, object> parameters, IList<FileUploadParameter> fileParameters)
         {
-            if (!response.HttpResponseMessage.IsSuccessStatusCode)
+            // If user sent in file parameters, then we handle this as a multipart content
+            if (fileParameters != null && fileParameters.Count > 0)
             {
-                if (response.Exception != null)
-                    throw new ApiException(response.Exception.Message, response.Exception);;
+                var multipartContent = new MultipartFormDataContent();
+
+                // Add the file parameters
+                foreach (var fileParameter in fileParameters)
+                {
+                    if (string.IsNullOrEmpty(fileParameter.Filename))
+                    {
+                        multipartContent.Add(new StreamContent(fileParameter.FileStream), fileParameter.Key);
+                    }
+                    else
+                    {
+                        multipartContent.Add(new StreamContent(fileParameter.FileStream), fileParameter.Key, fileParameter.Filename);
+                    }
+                }
+
+                // Add the other parameters
+                foreach (var parameter in parameters)
+                {
+                    multipartContent.Add(new StringContent(Uri.EscapeDataString(parameter.Value.ToString())), parameter.Key);
+                }
+
+                return multipartContent;
+            }
+            else if (parameters != null)
+            {
+                return new FormUrlEncodedContent(parameters.Select(kvp => new KeyValuePair<string, string>(kvp.Key, kvp.Value.ToString())));
+            }
+            else // Serialize the body
+                return new StringContent(JsonConvert.SerializeObject(body, new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore
+                }), Encoding.UTF8, "application/json");
+        }
+
+        private Uri BuildRequestUri(string resource, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings)
+        {
+            return Utils.BuildUri(baseUrl, resource, urlSegments, queryStrings);
+        }
+
+        private async Task HandleErrors(HttpResponseMessage response)
+        {
+            if (!response.IsSuccessStatusCode)
+            {
+                //if (response.Exception != null)
+                //    throw new ApiException(response.Exception.Message, response.Exception);;
 
                 ApiError apiError = null;
 
                 // Grab the content
-                if (response.HttpResponseMessage.Content != null)
+                if (response.Content != null)
                 {
-                    string responseContent = await response.HttpResponseMessage.Content.ReadAsStringAsync();
+                    string responseContent = await response.Content.ReadAsStringAsync();
 
                     if (!string.IsNullOrEmpty(responseContent))
                     {
@@ -181,7 +194,7 @@ namespace Auth0.Core.Http
                     }
                 }
 
-                throw new ApiException(response.HttpResponseMessage.StatusCode, apiError);
+                throw new ApiException(response.StatusCode, apiError);
             }
         }
     }

@@ -54,13 +54,13 @@ namespace Auth0.AuthenticationApi.Client.IntegrationTests
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
             // Act
-            var authenticationResponse = authenticationApiClient.Authenticate(new AuthenticationRequest
+            var authenticationResponse = await authenticationApiClient.Authenticate(new AuthenticationRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 Connection = connection.Name,
                 GrantType = "password",
                 Scope = "openid",
-                Username = user.UserName,
+                Username = user.Email,
                 Password = "password"
             });
 

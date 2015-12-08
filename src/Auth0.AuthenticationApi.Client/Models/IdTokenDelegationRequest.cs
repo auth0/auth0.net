@@ -16,6 +16,9 @@ namespace Auth0.AuthenticationApi.Client.Models
         [JsonProperty("id_token")]
         public string IdToken { get; set; }
 
+        [JsonProperty("api_type")]
+        public string ApiType { get; set; }
+
 
         /// <summary>
         /// 
@@ -25,7 +28,7 @@ namespace Auth0.AuthenticationApi.Client.Models
         /// <param name="idToken"></param>
         public IdTokenDelegationRequest(string sourceClientId, string targetClientId, string idToken) : base(sourceClientId, targetClientId)
         {
-            IdToken = IdToken;
+            IdToken = idToken;
         }
 
 

@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Auth0.Core;
 using Auth0.Core.Http;
-using PortableRest;
 using Auth0.ManagementApi.Client.Models;
 
 namespace Auth0.ManagementApi.Client.Clients
@@ -24,12 +23,12 @@ namespace Auth0.ManagementApi.Client.Clients
                     {"user_id", userId},
                     {"client_id", clientId},
                     {"type", type}
-                });
+                }, null);
         }
 
         public Task<DeviceCredential> Create(DeviceCredentialCreateRequest request)
         {
-            return Connection.PostAsync<DeviceCredential>("device-credentials", ContentTypes.Json, request, null, null, null, null, null);
+            return Connection.PostAsync<DeviceCredential>("device-credentials", request, null, null, null, null, null);
         }
 
         public Task Delete(string id)

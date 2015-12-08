@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Auth0.AuthenticationApi.Client.Builders;
 using Auth0.AuthenticationApi.Client.Models;
+using Auth0.Core;
 using Auth0.Core.Http;
-using PortableRest;
 
 namespace Auth0.AuthenticationApi.Client
 {
@@ -36,33 +37,105 @@ namespace Auth0.AuthenticationApi.Client
             get { return apiConnection; }
         }
 
-        public Task<Uri> BuildAuthorizationUri(BuildAuthorizationUriRequest request)
+        public AuthorizationUrlBuilder BuildAuthorizationUrl()
         {
-            //RestRequest restRequest = new RestRequest("authorize");
-            //restRequest.AddQueryString("response_type", request.ResponseType);
-            //restRequest.AddQueryString("client_id", request.ClientId);
-            //// etc.
+            return new AuthorizationUrlBuilder(baseUri.ToString());
+        }
 
-            //// And then
-            //return restRequest.GetResourceUri(baseUri);
+        public LogoutUrlBuilder BuildLogoutUrl()
+        {
+            return new LogoutUrlBuilder(baseUri.ToString());
+        }
 
-            throw new NotImplementedException();
+        public SamlUrlBuilder BuildSamlUrl(string client)
+        {
+            return new SamlUrlBuilder(baseUri.ToString(), client);
+        }
+
+        public WsFedUrlBuilder BuildWsFedUrl()
+        {
+            return new WsFedUrlBuilder(baseUri.ToString());
+        }
+
+        public Task<string> ChangePassword(ChangePasswordRequest request)
+        {
+            return Connection.PostAsync<string>("dbconnections/change_password", request, null, null, null, null, null);
+        }
+
+        public Task<AccessToken> GetAccessToken(AccessTokenRequest request)
+        {
+            return Connection.PostAsync<AccessToken>("oauth/access_token", request, null, null, null, null, null);
+        }
+
+        public Task<AccessToken> GetDelegationToken(DelegationRequestBase request)
+        {
+            return Connection.PostAsync<AccessToken>("delegation", request, null, null, null, null, null);
+        }
+
+        public Task<string> GetSamlMetadata(string clientId)
+        {
+            return Connection.GetAsync<string>("wsfed/{clientid}", new Dictionary<string, string>
+            {
+                {"clientid", clientId}
+            }, null, null);
+        }
+
+        public Task<User> GetUserInfo(string accessToken)
+        {
+            return Connection.GetAsync<User>("userinfo", null, null, new Dictionary<string, object>
+                {
+                    { "Authorization", string.Format("Bearer {0}", accessToken) }
+                });
+        }
+
+        public Task<User> GetTokenInfo(string idToken)
+        {
+            return Connection.PostAsync<User>("tokeninfo", 
+                new
+                {
+                    id_token = idToken
+                }, null, null, null, null, null);
+        }
+
+        public Task<string> GetWsFedMetadata()
+        {
+            return Connection.GetAsync<string>("wsfed/FederationMetadata/2007-06/FederationMetadata.xml", null, null, null);
+        }
+
+        public Task<SignupUserResponse> SignupUser(SignupUserRequest request)
+        {
+            return Connection.PostAsync<SignupUserResponse>("dbconnections/signup", request, null, null, null, null, null);
+        }
+
+        public Task<PasswordlessEmailResponse> StartPasswordlessEmailFlow(PasswordlessEmailRequest request)
+        {
+            return Connection.PostAsync<PasswordlessEmailResponse>("passwordless/start", 
+                new
+                {
+                    client_id = request.ClientId,
+                    connection  = "email",
+                    email = request.Email,
+                    send = request.Type.ToString().ToLower(),
+                    authParams = request.AuthenticationParameters
+                }, 
+                null, null, null, null, null);
+        }
+
+        public Task<PasswordlessSmsResponse> StartPasswordlessSmsFlow(PasswordlessSmsRequest request)
+        {
+            return Connection.PostAsync<PasswordlessSmsResponse>("passwordless/start", 
+                new
+                {
+                    client_id = request.ClientId,
+                    connection = "sms",
+                    phone_number = request.PhoneNumber
+                },
+                null, null, null, null, null);
         }
 
         public Task<AuthenticationResponse> Authenticate(AuthenticationRequest request)
         {
-            return Connection.PostAsync<AuthenticationResponse>("auth/ro", ContentTypes.Json,
-                null, null, null, null, null, new Dictionary<string, string>
-                {
-                    { "client_id", request.ClientId },
-                    { "username", request.Username },
-                    { "password", request.Password },
-                    { "id_token", request.IdToken },
-                    { "connection", request.Connection },
-                    { "grant_type", request.GrantType },
-                    { "scope", request.Scope },
-                    { "device", request.Device }
-                });
+            return Connection.PostAsync<AuthenticationResponse>("oauth/ro", request, null, null, null, null, null);
         }
     }
 }

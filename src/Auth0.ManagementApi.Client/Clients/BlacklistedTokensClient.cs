@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Auth0.Core;
 using Auth0.Core.Http;
-using PortableRest;
 using Auth0.ManagementApi.Client.Models;
 
 namespace Auth0.ManagementApi.Client.Clients
@@ -20,12 +19,12 @@ namespace Auth0.ManagementApi.Client.Clients
                 new Dictionary<string, string>
                 {
                     {"aud", aud}
-                });
+                }, null);
         }
 
         public Task Create(BlacklistedTokenCreateRequest request)
         {
-            return Connection.PostAsync<Core.Client>("blacklists/tokens", ContentTypes.Json, request, null, null, null, null, null);
+            return Connection.PostAsync<Core.Client>("blacklists/tokens", request, null, null, null, null, null);
         }
     }
 }

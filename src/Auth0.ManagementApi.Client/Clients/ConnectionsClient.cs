@@ -1,6 +1,5 @@
 using Auth0.Core;
 using Auth0.ManagementApi.Client.Models;
-using PortableRest;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Auth0.Core.Http;
@@ -16,7 +15,7 @@ namespace Auth0.ManagementApi.Client.Clients
 
         public Task<Connection> Create(ConnectionCreateRequest request)
         {
-            return Connection.PostAsync<Connection>("connections", ContentTypes.Json, request, null, null, null, null, null);
+            return Connection.PostAsync<Connection>("connections", request, null, null, null, null, null);
         }
 
         public Task Delete(string id)
@@ -38,7 +37,7 @@ namespace Auth0.ManagementApi.Client.Clients
                 {
                     { "fields", fields },
                     { "include_fields", includeFields.ToString().ToLower() }
-                });
+                }, null);
         }
 
         public Task<IList<Connection>> GetAll(string strategy, string fields = null, bool includeFields = true)
@@ -49,7 +48,7 @@ namespace Auth0.ManagementApi.Client.Clients
                     { "strategy", strategy },
                     { "fields", fields },
                     { "include_fields", includeFields.ToString().ToLower() }
-                });
+                }, null);
         }
 
         // TODO: Look at making fields Nullable, otherwise default values are sent during PATCH

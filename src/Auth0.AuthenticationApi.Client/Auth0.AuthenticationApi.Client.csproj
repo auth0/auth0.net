@@ -50,14 +50,31 @@
       <Link>Core\Http\IApiConnection.cs</Link>
     </Compile>
     <Compile Include="AuthenticationApiClient.cs" />
+    <Compile Include="Builders\AuthorizationUrlBuilder.cs" />
+    <Compile Include="Builders\LogoutUrlBuilder.cs" />
+    <Compile Include="Builders\SamlUrlBuilder.cs" />
+    <Compile Include="Builders\UrlBuilderBase.cs" />
+    <Compile Include="Builders\WsFedUrlBuilder.cs" />
     <Compile Include="IAuthenticationApiClient.cs" />
+    <Compile Include="Models\AccessToken.cs" />
     <Compile Include="Models\AuthenticationRequest.cs" />
     <Compile Include="Models\AuthenticationResponse.cs" />
+    <Compile Include="Models\ChangePasswordRequest.cs" />
     <Compile Include="Models\DelegationRequestBase.cs" />
+    <Compile Include="Models\AccessTokenRequest.cs" />
+    <Compile Include="Models\OAuthToken.cs" />
+    <Compile Include="Models\PasswordlessEmailRequest.cs" />
+    <Compile Include="Models\PasswordlessEmailRequestType.cs" />
+    <Compile Include="Models\PasswordlessEmailResponse.cs" />
+    <Compile Include="Models\PasswordlessSmsRequest.cs" />
+    <Compile Include="Models\PasswordlessSmsResponse.cs" />
+    <Compile Include="Models\SignupUserResponse.cs" />
     <Compile Include="Models\IdTokenDelegationRequest.cs" />
     <Compile Include="Models\RefreshTokenDelegationRequest.cs" />
     <Compile Include="Models\AuthorizationResponseType.cs" />
-    <Compile Include="Models\BuildAuthorizationUriRequest.cs" />
+    <Compile Include="Models\SignupUserRequest.cs" />
+    <Compile Include="Models\TokenBase.cs" />
+    <Compile Include="Models\UserMaintenanceRequestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -71,10 +88,6 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="PortableRest, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\PortableRest.3.1.0-Beta2a\lib\portable-net45+sl5+wp8+win8+wpa81+MonoTouch10+MonoAndroid10+xamarinmac20+xamarinios10\PortableRest.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.Extensions, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -91,6 +104,9 @@
       <Project>{c5395825-ef6d-438e-9e22-95975f1276e8}</Project>
       <Name>Auth0.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

@@ -15,7 +15,7 @@ namespace Auth0.ManagementApi.Client.Clients
 
         public async Task<long> GetActiveUsers()
         {
-            var result = await Connection.GetAsync<object>("stats/active-users", null, null);
+            var result = await Connection.GetAsync<object>("stats/active-users", null, null, null);
 
             return Convert.ToInt64(result);
         }
@@ -27,7 +27,7 @@ namespace Auth0.ManagementApi.Client.Clients
                 {
                     { "from", from.ToString("yyyyMMdd") },
                     { "to", to.ToString("yyyyMMdd") }
-                });
+                }, null);
         }
     }
 }
