@@ -1,20 +1,24 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
+using Auth0.Core.Http;
 
-namespace Auth0.AuthenticationApi.Client
+namespace Auth0.AuthenticationApi.Client.Builders
 {
     public class UrlBuilderBase<T> where T : UrlBuilderBase<T>
     {
         private readonly string baseUrl;
+        private readonly string resource;
         private readonly IDictionary<string, string> queryStrings = new Dictionary<string, string>();
         private readonly IDictionary<string, string> urlSegments = new Dictionary<string, string>();
 
-        public UrlBuilderBase([NotNull] string baseUrl)
+        public UrlBuilderBase(string baseUrl, [NotNull] string resource)
         {
             if (baseUrl == null) throw new ArgumentNullException(nameof(baseUrl));
+            if (resource == null) throw new ArgumentNullException(nameof(resource));
 
             this.baseUrl = baseUrl;
+            this.resource = resource;
         }
 
         protected void AddUrlSegment(string name, string value)
@@ -33,23 +37,10 @@ namespace Auth0.AuthenticationApi.Client
 
             return (T) this;
         }
-    }
 
-    public class SamlUrlBuilder : UrlBuilderBase<SamlUrlBuilder>
-    {
-        private string ConnectionName { get; set; }
-
-        public SamlUrlBuilder(string baseUrl, string client)
-            :base(baseUrl)
+        public Uri Build()
         {
-            AddUrlSegment("client", client);
-        }
-
-        public SamlUrlBuilder WithConnection(string connectionName)
-        {
-            AddQueryString("connectionName", connectionName);
-
-            return this;
+            return Utils.BuildUri(baseUrl, resource, urlSegments, queryStrings);
         }
     }
 }

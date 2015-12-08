@@ -50,6 +50,10 @@
       <Link>Core\Http\IApiConnection.cs</Link>
     </Compile>
     <Compile Include="AuthenticationApiClient.cs" />
+    <Compile Include="Builders\AuthorizationUrlBuilder.cs" />
+    <Compile Include="Builders\LogoutUrlBuilder.cs" />
+    <Compile Include="Builders\SamlUrlBuilder.cs" />
+    <Compile Include="Builders\UrlBuilderBase.cs" />
     <Compile Include="IAuthenticationApiClient.cs" />
     <Compile Include="Models\AccessToken.cs" />
     <Compile Include="Models\AuthenticationRequest.cs" />
@@ -72,7 +76,6 @@
     <Compile Include="Models\TokenBase.cs" />
     <Compile Include="Models\UserMaintenanceRequestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SamlUrlBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">

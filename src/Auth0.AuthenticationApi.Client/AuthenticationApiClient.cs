@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Auth0.AuthenticationApi.Client.Builders;
 using Auth0.AuthenticationApi.Client.Models;
 using Auth0.Core;
 using Auth0.Core.Http;
@@ -36,38 +37,19 @@ namespace Auth0.AuthenticationApi.Client
             get { return apiConnection; }
         }
 
-        public Task<Uri> BuildAuthorizationUri(BuildAuthorizationUriRequest request)
+        public AuthorizationUrlBuilder BuildAuthorizationUrl()
         {
-            IDictionary<string, string> queryStrings = new Dictionary<string, string>();
-            queryStrings.Add("response_type", request.ResponseType.ToString().ToLower());
-            if (!string.IsNullOrEmpty(request.ClientId))
-                queryStrings.Add("client_id", request.ClientId);
-            if (!string.IsNullOrEmpty(request.Connection))
-                queryStrings.Add("connection", request.Connection);
-            if (request.RedirectUri != null)
-                queryStrings.Add("redirect_uri", request.RedirectUri.ToString());
-            if (!string.IsNullOrEmpty(request.State))
-                queryStrings.Add("state", request.State);
-            if (!string.IsNullOrEmpty(request.Scope))
-                queryStrings.Add("scope", request.Scope);
-            if (!string.IsNullOrEmpty(request.Device))
-                queryStrings.Add("device", request.Device);
-
-            return Task.FromResult(Utils.BuildUri(baseUri.ToString(), "authorize", null, queryStrings));
+            return new AuthorizationUrlBuilder(baseUri.ToString());
         }
 
-        public Task<Uri> BuildLogoutUri(Uri returnUri)
+        public LogoutUrlBuilder BuildLogoutUrl()
         {
-            Dictionary<string, string> queryStrings = new Dictionary<string, string>();
-            if (returnUri != null)
-                queryStrings.Add("returnTo", returnUri.ToString());
-
-            return Task.FromResult(Utils.BuildUri(baseUri.ToString(), "logout", null, queryStrings));
+            return new LogoutUrlBuilder(baseUri.ToString());
         }
 
         public SamlUrlBuilder BuildSamlUrl(string client)
         {
-            return new SamlUrlBuilder(client);
+            return new SamlUrlBuilder(baseUri.ToString(), client);
         }
 
         public Task<string> ChangePassword(ChangePasswordRequest request)

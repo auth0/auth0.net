@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Auth0.AuthenticationApi.Client.Builders;
 using Auth0.AuthenticationApi.Client.Models;
 using Auth0.Core;
 
@@ -9,9 +10,9 @@ namespace Auth0.AuthenticationApi.Client
     {
         Task<AuthenticationResponse> Authenticate(AuthenticationRequest request);
 
-        Task<Uri> BuildAuthorizationUri(BuildAuthorizationUriRequest request);
+        AuthorizationUrlBuilder BuildAuthorizationUrl();
 
-        Task<Uri> BuildLogoutUri(Uri returnUri);
+        LogoutUrlBuilder BuildLogoutUrl();
 
         SamlUrlBuilder BuildSamlUrl(string client);
 
