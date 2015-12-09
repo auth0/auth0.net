@@ -5,6 +5,7 @@ using Auth0.ManagementApi.Client;
 using FluentAssertions;
 using NUnit.Framework;
 using System.Collections.Generic;
+using Auth0.Tests.Shared;
 
 namespace Auth0.AuthenticationApi.Client.IntegrationTests
 {

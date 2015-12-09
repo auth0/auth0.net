@@ -5,6 +5,7 @@ using Auth0.Core.Exceptions;
 using FluentAssertions;
 using NUnit.Framework;
 using Auth0.ManagementApi.Client.Models;
+using Auth0.Tests.Shared;
 
 namespace Auth0.ManagementApi.Client.IntegrationTests
 {
@@ -14,7 +15,16 @@ namespace Auth0.ManagementApi.Client.IntegrationTests
         [Test]
         public async Task Test_email_provider_crud_sequence()
         {
-            var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_EMAIL_PROVIDER"), new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
+            var scopes = new
+            {
+                email_provider = new
+                {
+                    actions = new string[] { "read", "create", "delete", "update" }
+                }
+            };
+            string token = GenerateToken(scopes);
+
+            var apiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
             // Delete the email provider to ensure we start on a clean slate
             await apiClient.EmailProvider.Delete();

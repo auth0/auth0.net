@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using Auth0.Tests.Shared;
+using FluentAssertions;
 using NUnit.Framework;
 using System;
 using System.Threading.Tasks;

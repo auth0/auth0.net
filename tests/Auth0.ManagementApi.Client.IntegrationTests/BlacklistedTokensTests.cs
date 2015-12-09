@@ -6,6 +6,7 @@ using FluentAssertions;
 using Microsoft.Owin.Security.DataHandler.Encoder;
 using NUnit.Framework;
 using Auth0.ManagementApi.Client.Models;
+using Auth0.Tests.Shared;
 
 namespace Auth0.ManagementApi.Client.IntegrationTests
 {
@@ -24,8 +25,15 @@ namespace Auth0.ManagementApi.Client.IntegrationTests
             var tokensBefore = await apiClient.BlacklistedTokens.GetAll(apiKey);
 
             // Generate a token which allows us to list all clients
+            var scopes = new
+            {
+                clients = new
+                {
+                    actions = new string[] { "read" }
+                }
+            };
             string jti = Guid.NewGuid().ToString("N");
-            string token = GenerateToken(jti);
+            string token = GenerateToken(scopes, jti);
 
             // Confirm that the token is working
             var confirmationApiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
@@ -47,32 +55,6 @@ namespace Auth0.ManagementApi.Client.IntegrationTests
             // Try and get all the clients again with that token
             Func<Task> getFunc = async () => await confirmationApiClient.Clients.GetAll();
             getFunc.ShouldThrow<ApiException>().And.ApiError.StatusCode.Should().Be(401);
-        }
-
-        private string GenerateToken(string jti)
-        {
-            // Generate a token to 
-            string apiKey = GetVariable("AUTH0_API_KEY");
-            string apiSecret = GetVariable("AUTH0_API_SECRET");
-
-            // Set scopes
-            var scopes = new
-            {
-                clients = new
-                {
-                    actions = new string[] { "read" }
-                }
-            };
-
-            // Set token payload
-            var payload = new Dictionary<string, object>()
-            {
-                {"aud", apiKey},
-                {"jti", jti},
-                {"scopes", scopes}
-            };
-
-            return JWT.JsonWebToken.Encode(payload, TextEncodings.Base64Url.Decode(apiSecret), JWT.JwtHashAlgorithm.HS256);
         }
     }
 }

@@ -4,6 +4,7 @@ using Auth0.Core;
 using FluentAssertions;
 using NUnit.Framework;
 using Auth0.ManagementApi.Client.Models;
+using Auth0.Tests.Shared;
 
 namespace Auth0.ManagementApi.Client.IntegrationTests
 {
@@ -13,7 +14,16 @@ namespace Auth0.ManagementApi.Client.IntegrationTests
         [Test]
         public async Task Test_tenant_settings_sequence()
         {
-            var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_TENANT_SETTINGS"), new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
+            var scopes = new
+            {
+                tenant_settings = new
+                {
+                    actions = new string[] { "read", "update" }
+                }
+            };
+            string token = GenerateToken(scopes);
+
+            var apiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
             // Get the current settings
             var settings = apiClient.TenantSettings.Get();

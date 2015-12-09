@@ -4,6 +4,7 @@ using Auth0.Core.Exceptions;
 using FluentAssertions;
 using NUnit.Framework;
 using Auth0.ManagementApi.Client.Models;
+using Auth0.Tests.Shared;
 
 namespace Auth0.ManagementApi.Client.IntegrationTests
 {
@@ -13,7 +14,20 @@ namespace Auth0.ManagementApi.Client.IntegrationTests
         [Test]
         public async Task Test_client_crud_sequence()
         {
-            var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_CLIENTS"), new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
+            var scopes = new
+            {
+                clients = new
+                {
+                    actions = new string[] { "read", "create", "delete", "update" }
+                },
+                client_keys = new
+                {
+                    actions = new string[] { "read", "update" }
+                }
+            };
+            string token = GenerateToken(scopes);
+
+            var apiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
             // Get all clients
             var clientsBefore = await apiClient.Clients.GetAll();

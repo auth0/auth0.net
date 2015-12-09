@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Auth0.AuthenticationApi.Client.Models;
 using FluentAssertions;
 using NUnit.Framework;
+using Auth0.Tests.Shared;
 
 namespace Auth0.AuthenticationApi.Client.IntegrationTests
 {

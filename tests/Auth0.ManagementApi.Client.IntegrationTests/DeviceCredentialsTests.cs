@@ -4,6 +4,7 @@ using Auth0.Core;
 using FluentAssertions;
 using NUnit.Framework;
 using Auth0.ManagementApi.Client.Models;
+using Auth0.Tests.Shared;
 
 namespace Auth0.ManagementApi.Client.IntegrationTests
 {

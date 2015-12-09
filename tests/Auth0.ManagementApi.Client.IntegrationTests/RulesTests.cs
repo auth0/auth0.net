@@ -5,6 +5,9 @@ using Auth0.Core.Exceptions;
 using FluentAssertions;
 using NUnit.Framework;
 using Auth0.ManagementApi.Client.Models;
+using System.Collections.Generic;
+using Microsoft.Owin.Security.DataHandler.Encoder;
+using Auth0.Tests.Shared;
 
 namespace Auth0.ManagementApi.Client.IntegrationTests
 {
@@ -14,7 +17,17 @@ namespace Auth0.ManagementApi.Client.IntegrationTests
         [Test]
         public async Task Test_rules_crud_sequence()
         {
-            var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_RULES"), new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
+            var scopes = new
+            {
+                rules = new
+                {
+                    actions = new string[] { "read", "create", "delete", "update" }
+                }
+            };
+
+            string token = GenerateToken(scopes);
+
+            var apiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
             // Get all rules
             var rulesBefore = await apiClient.Rules.GetAll();

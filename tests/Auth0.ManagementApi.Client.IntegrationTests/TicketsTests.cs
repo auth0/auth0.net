@@ -4,6 +4,7 @@ using Auth0.Core;
 using FluentAssertions;
 using NUnit.Framework;
 using Auth0.ManagementApi.Client.Models;
+using Auth0.Tests.Shared;
 
 namespace Auth0.ManagementApi.Client.IntegrationTests
 {
@@ -17,7 +18,24 @@ namespace Auth0.ManagementApi.Client.IntegrationTests
         [SetUp]
         public async Task SetUp()
         {
-            apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_TICKETS"), new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
+            var scopes = new
+            {
+                users = new
+                {
+                    actions = new string[] { "create", "delete" }
+                },
+                connections = new
+                {
+                    actions = new string[] { "create", "delete" }
+                },
+                user_tickets = new
+                {
+                    actions = new string[] { "create" }
+                }
+            };
+            string token = GenerateToken(scopes);
+
+            apiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
             // Create a connection
             connection = await apiClient.Connections.Create(new ConnectionCreateRequest
