@@ -14,7 +14,7 @@ namespace Auth0.ManagementApi.Client.IntegrationTests
         [Test]
         public async Task Test_rules_crud_sequence()
         {
-            var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_RULES"), new Uri(GetVariable("AUTH0_API_URL")));
+            var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_RULES"), new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
             // Get all rules
             var rulesBefore = await apiClient.Rules.GetAll();

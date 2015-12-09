@@ -11,7 +11,7 @@ namespace Auth0.ManagementApi.Client.IntegrationTests
         [Test]
         public async Task Test_stats_sequence()
         {
-            var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_STATS"), new Uri(GetVariable("AUTH0_API_URL")));
+            var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_STATS"), new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
             // Get stats for the past 10 days
             var dailyStats = await apiClient.Stats.GetDailyStats(DateTime.Now.AddDays(-10), DateTime.Now);

@@ -17,7 +17,7 @@ namespace Auth0.ManagementApi.Client.IntegrationTests
         [SetUp]
         public async Task SetUp()
         {
-            apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_TICKETS"), new Uri(GetVariable("AUTH0_API_URL")));
+            apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_TICKETS"), new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
             // Create a connection
             connection = await apiClient.Connections.Create(new ConnectionCreateRequest

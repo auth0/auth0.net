@@ -17,7 +17,7 @@ namespace Auth0.ManagementApi.Client.IntegrationTests
         [SetUp]
         public async Task SetUp()
         {
-            apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_USERS"), new Uri(GetVariable("AUTH0_API_URL")));
+            apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_USERS"), new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
             // We will need a connection to add the users to...
             connection = await apiClient.Connections.Create(new ConnectionCreateRequest

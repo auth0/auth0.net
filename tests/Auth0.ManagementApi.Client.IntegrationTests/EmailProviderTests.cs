@@ -14,7 +14,7 @@ namespace Auth0.ManagementApi.Client.IntegrationTests
         [Test]
         public async Task Test_email_provider_crud_sequence()
         {
-            var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_EMAIL_PROVIDER"), new Uri(GetVariable("AUTH0_API_URL")));
+            var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_EMAIL_PROVIDER"), new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
             // Delete the email provider to ensure we start on a clean slate
             await apiClient.EmailProvider.Delete();

@@ -18,7 +18,7 @@ namespace Auth0.ManagementApi.Client.IntegrationTests
         {
             string apiKey = GetVariable("AUTH0_API_KEY");
 
-            var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_BLACKLISTED_TOKENS"), new Uri(GetVariable("AUTH0_API_URL")));
+            var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_BLACKLISTED_TOKENS"), new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
             // Get all the blacklisted tokens
             var tokensBefore = await apiClient.BlacklistedTokens.GetAll(apiKey);
@@ -28,7 +28,7 @@ namespace Auth0.ManagementApi.Client.IntegrationTests
             string token = GenerateToken(jti);
 
             // Confirm that the token is working
-            var confirmationApiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_API_URL")));
+            var confirmationApiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
             var clients = await confirmationApiClient.Clients.GetAll();
             clients.Should().NotBeNull();
 

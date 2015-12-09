@@ -17,7 +17,7 @@ namespace Auth0.ManagementApi.Client.IntegrationTests
         [SetUp]
         public async Task Initialize()
         {
-            var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_DEVICE_CREDENTIALS"), new Uri(GetVariable("AUTH0_API_URL")));
+            var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_DEVICE_CREDENTIALS"), new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
             // Set up the correct Client, Connection and User
             client = await apiClient.Clients.Create(new ClientCreateRequest
@@ -41,7 +41,7 @@ namespace Auth0.ManagementApi.Client.IntegrationTests
         [TearDown]
         public async Task Cleanup()
         {
-            var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_DEVICE_CREDENTIALS"), new Uri(GetVariable("AUTH0_API_URL")));
+            var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_DEVICE_CREDENTIALS"), new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
             await apiClient.Clients.Delete(client.ClientId);
             await apiClient.Connections.Delete(connection.Id);
@@ -52,7 +52,7 @@ namespace Auth0.ManagementApi.Client.IntegrationTests
         [Ignore("Damn, how difficult is it to get the correct token combinations for this...?")]
         public async Task Test_device_credentials_crud_sequence()
         {
-            var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_DEVICE_CREDENTIALS"), new Uri(GetVariable("AUTH0_API_URL")));
+            var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_DEVICE_CREDENTIALS"), new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
             //Get all the device credentials
             var credentialsBefore = await apiClient.DeviceCredentials.GetAll();

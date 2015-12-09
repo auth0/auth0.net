@@ -13,7 +13,7 @@ namespace Auth0.ManagementApi.Client.IntegrationTests
         [Test]
         public async Task Test_tenant_settings_sequence()
         {
-            var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_TENANT_SETTINGS"), new Uri(GetVariable("AUTH0_API_URL")));
+            var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_TENANT_SETTINGS"), new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
             // Get the current settings
             var settings = apiClient.TenantSettings.Get();
