@@ -1,0 +1,24 @@
+version: 2.0.{build}-pre
+environment:
+  AUTH0_API_URL: https://auth0-dotnet-integration-tests.auth0.com/api/v2/
+  CONFIGURATION: Release
+  AUTH0_AUTHENTICATION_API_URL: https://auth0-dotnet-integration-tests.auth0.com/
+  AUTH0_MANAGEMENT_API_URL: https://auth0-dotnet-integration-tests.auth0.com/api/v2/
+before_build:
+- cmd: >-
+    nuget restore
+
+    set PATH=C:\Tools\NUnit3\bin;%PATH%
+build:
+  project: Auth0.Net.sln
+  publish_nuget: true
+  publish_nuget_symbols: true
+  include_nuget_references: true
+  verbosity: minimal
+after_build:
+- cmd: 
+artifacts:
+- path: '**\*.nupkg'
+  name: Nuget Packages
+on_finish:
+- ps: 
