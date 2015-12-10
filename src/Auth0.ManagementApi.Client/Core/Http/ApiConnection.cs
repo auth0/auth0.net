@@ -10,12 +10,21 @@ using System.Linq;
 // ReSharper disable once CheckNamespace
 namespace Auth0.Core.Http
 {
+    /// <summary>
+    /// The communication layer between the various API clients and the actual API backend.
+    /// </summary>
     public class ApiConnection : IApiConnection
     {
         private readonly string baseUrl;
         private readonly string token;
         private readonly DiagnosticsHeader diagnostics;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApiConnection"/> class.
+        /// </summary>
+        /// <param name="token">The API token.</param>
+        /// <param name="baseUrl">The base URL of the requests.</param>
+        /// <param name="diagnostics">The diagnostics. header</param>
         public ApiConnection(string token, string baseUrl, DiagnosticsHeader diagnostics)
         {
             this.token = token;
@@ -23,6 +32,13 @@ namespace Auth0.Core.Http
             this.baseUrl = baseUrl;
         }
 
+        /// <summary>
+        /// Performs an HTTP DELETE.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="resource">The resource.</param>
+        /// <param name="urlSegments">The URL segments.</param>
+        /// <returns>Task&lt;T&gt;.</returns>
         public async Task<T> DeleteAsync<T>(string resource, IDictionary<string, string> urlSegments) where T : class
         {
             return await RunAsync<T>(resource,
@@ -35,6 +51,15 @@ namespace Auth0.Core.Http
                 null).ConfigureAwait(false);
         }
 
+        /// <summary>
+        /// Performs an HTTP GET.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="resource">The resource.</param>
+        /// <param name="urlSegments">The URL segments.</param>
+        /// <param name="queryStrings">The query strings.</param>
+        /// <param name="headers">The headers.</param>
+        /// <returns>Task&lt;T&gt;.</returns>
         public async Task<T> GetAsync<T>(string resource, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings, IDictionary<string, object> headers) where T : class
         {
             return await RunAsync<T>(resource,
@@ -47,6 +72,18 @@ namespace Auth0.Core.Http
                 null).ConfigureAwait(false);
         }
 
+        /// <summary>
+        /// Performs an HTTP POST.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="resource">The resource.</param>
+        /// <param name="body">The body.</param>
+        /// <param name="parameters">The parameters.</param>
+        /// <param name="fileParameters">The file parameters.</param>
+        /// <param name="urlSegments">The URL segments.</param>
+        /// <param name="headers">The headers.</param>
+        /// <param name="queryStrings">The query strings.</param>
+        /// <returns>Task&lt;T&gt;.</returns>
         public async Task<T> PostAsync<T>(string resource, object body, IDictionary<string, object> parameters, IList<FileUploadParameter> fileParameters, IDictionary<string, string> urlSegments, IDictionary<string, object> headers, IDictionary<string, string> queryStrings) where T : class
         {
             return await RunAsync<T>(resource,
@@ -59,6 +96,14 @@ namespace Auth0.Core.Http
                 fileParameters).ConfigureAwait(false);
         }
 
+        /// <summary>
+        /// Performs an HTTP PATCH.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="resource">The resource.</param>
+        /// <param name="body">The body.</param>
+        /// <param name="urlSegments">The URL segments.</param>
+        /// <returns>Task&lt;T&gt;.</returns>
         public async Task<T> PatchAsync<T>(string resource, object body, Dictionary<string, string> urlSegments) where T : class
         {
             return await RunAsync<T>(resource,
@@ -71,6 +116,19 @@ namespace Auth0.Core.Http
                 null).ConfigureAwait(false);
         }
 
+        /// <summary>
+        /// Executes the request. All requests will pass through this method as it will apply the headers, do the JSON formatting, check for errors on return, etc.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="resource">The resource.</param>
+        /// <param name="httpMethod">The HTTP method.</param>
+        /// <param name="body">The body.</param>
+        /// <param name="urlSegments">The URL segments.</param>
+        /// <param name="queryStrings">The query strings.</param>
+        /// <param name="parameters">The parameters.</param>
+        /// <param name="headers">The headers.</param>
+        /// <param name="fileParameters">The file parameters.</param>
+        /// <returns>Task&lt;T&gt;.</returns>
         private async Task<T> RunAsync<T>(string resource, HttpMethod httpMethod, object body, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings, IDictionary<string, object> parameters, IDictionary<string, object> headers, IList<FileUploadParameter> fileParameters) where T : class
         {
             // Build the request URL
@@ -126,6 +184,13 @@ namespace Auth0.Core.Http
             }
         }
 
+        /// <summary>
+        /// Builds the content of the message. This will build the appropriate <see cref="HttpContent"/> for the request based on the type of the parameters passed in.
+        /// </summary>
+        /// <param name="body">The body.</param>
+        /// <param name="parameters">The parameters.</param>
+        /// <param name="fileParameters">The file parameters.</param>
+        /// <returns>HttpContent.</returns>
         private HttpContent BuildMessageContent(object body, IDictionary<string, object> parameters, IList<FileUploadParameter> fileParameters)
         {
             // If user sent in file parameters, then we handle this as a multipart content
@@ -165,11 +230,24 @@ namespace Auth0.Core.Http
                 }), Encoding.UTF8, "application/json");
         }
 
+        /// <summary>
+        /// Builds up the URL for the request by substituting values for URL segments and adding query string parameters.
+        /// </summary>
+        /// <param name="resource">The resource.</param>
+        /// <param name="urlSegments">The URL segments.</param>
+        /// <param name="queryStrings">The query strings.</param>
+        /// <returns>Uri.</returns>
         private Uri BuildRequestUri(string resource, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings)
         {
             return Utils.BuildUri(baseUrl, resource, urlSegments, queryStrings);
         }
 
+        /// <summary>
+        /// Handles errors returned from the API. It will check the response code, deserialize any relevant JSON error payload and throw an appropriate exception.
+        /// </summary>
+        /// <param name="response">The <see cref="HttpResponseMessage"/> returned from the API.</param>
+        /// <returns>A <see cref="Task"/>.</returns>
+        /// <exception cref="ApiException"></exception>
         private async Task HandleErrors(HttpResponseMessage response)
         {
             if (!response.IsSuccessStatusCode)
