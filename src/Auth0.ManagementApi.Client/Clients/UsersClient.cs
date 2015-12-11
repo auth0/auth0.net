@@ -106,5 +106,15 @@ namespace Auth0.ManagementApi.Client.Clients
                 {"Authorization", string.Format("Bearer {0}", primaryJwtToken)}
             }, null);
         }
+
+        public Task DeleteMultifactorProvider(string id, string provider)
+        {
+            return Connection.DeleteAsync<User>("users/{id}/multifactor/{provider}",
+                new Dictionary<string, string>
+                {
+                    {"id", id},
+                    {"provider", provider},
+                });
+        }
     }
 }

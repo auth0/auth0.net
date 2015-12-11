@@ -96,6 +96,11 @@ namespace Auth0.Core
         [JsonProperty("user_id")]
         public string UserId { get; set; }
 
+        /// <summary>
+        /// Multifactor settings.
+        /// </summary>
+        [JsonProperty("multifactor")]
+        public string[] Multifactor { get; set; }
     }
 
 }
