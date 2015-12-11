@@ -2,6 +2,9 @@
 
 namespace Auth0.Core
 {
+    /// <summary>
+    /// Represents a client (App) in Auth0
+    /// </summary>
     public class Client : ClientBase
     {
         /// <summary>

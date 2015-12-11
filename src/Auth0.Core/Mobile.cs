@@ -2,6 +2,9 @@ using Newtonsoft.Json;
 
 namespace Auth0.Core
 {
+    /// <summary>
+    /// Represents configuration of mobile apps for a client.
+    /// </summary>
     public class Mobile
     {
         /// <summary>
@@ -16,19 +19,28 @@ namespace Auth0.Core
         [JsonProperty("ios")]
         public MobileIos Ios { get; set; }
 
+        /// <summary>
+        /// Represents Android configuration for a client.
+        /// </summary>
         public class MobileAndroid
         {
             /// <summary>
-            /// The package name uniquely identifies the app.
+            /// The package name which uniquely identifies the Android app.
             /// </summary>
             [JsonProperty("app_package_name")]
             public string AppPackageName { get; set; }
 
+            /// <summary>
+            /// Gets or sets the keystore hash for an Android app.
+            /// </summary>
+            /// <value>The keystore hash.</value>
             [JsonProperty("keystore_hash")]
             public string KeystoreHash { get; set; }
         }
 
-
+        /// <summary>
+        /// Represents iOS configuration for a client.
+        /// </summary>
         public class MobileIos
         {
             /// <summary>

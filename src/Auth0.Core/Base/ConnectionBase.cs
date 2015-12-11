@@ -2,6 +2,9 @@ using Newtonsoft.Json;
 
 namespace Auth0.Core
 {
+    /// <summary>
+    /// Base class for connections.
+    /// </summary>
     public abstract class ConnectionBase
     {
         /// <summary>

@@ -2,6 +2,9 @@
 
 namespace Auth0.Core
 {
+    /// <summary>
+    /// Represents a background job.
+    /// </summary>
     public class Job
     {
         /// <summary>

@@ -46,7 +46,7 @@ namespace Auth0.AuthenticationApi.Client.Builders
         /// <summary>
         /// Adds a wctx query string parameter.
         /// </summary>
-        /// <param name="value">A string with the value of the wctx parameter. Must be in a name-value pair format, e.g. xcrf=abc&ru=/foo</param>
+        /// <param name="value">A string with the value of the wctx parameter. Must be in a name-value pair format, e.g. xcrf=abc&amp;ru=/foo</param>
         /// <returns>WsFedUrlBuilder.</returns>
         public WsFedUrlBuilder WithWctx(string value)
         {

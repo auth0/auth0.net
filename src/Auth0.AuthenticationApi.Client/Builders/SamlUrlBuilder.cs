@@ -35,7 +35,7 @@ namespace Auth0.AuthenticationApi.Client.Builders
         /// <summary>
         /// Adds a relayState query string parameter.
         /// </summary>
-        /// <param name="value">A string with the value of relayState parameter. Must be in a name-value pair format, e.g. xcrf=abc&ru=/foo</param>
+        /// <param name="value">A string with the value of relayState parameter. Must be in a name-value pair format, e.g. xcrf=abc&amp;ru=/foo</param>
         /// <returns>The <see cref="SamlUrlBuilder"/>.</returns>
         public SamlUrlBuilder WithRelayState(string value)
         {
