@@ -10,16 +10,30 @@ namespace Auth0.ManagementApi.Client.Clients
     /// </summary>
     public class ClientsClient : ClientBase, IClientsClient
     {
+        /// <summary>
+        /// Creates a new instance of the ClientBase class.
+        /// </summary>
+        /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
         public ClientsClient(IApiConnection connection)
             : base(connection)
         {
         }
 
+        /// <summary>
+        /// Creates a new client application.
+        /// </summary>
+        /// <param name="request">The request containing the properties of the new client.</param>
+        /// <returns>Task&lt;Core.Client&gt;.</returns>
         public Task<Core.Client> Create(ClientCreateRequest request)
         {
             return Connection.PostAsync<Core.Client>("clients", request, null, null, null, null, null);
         }
 
+        /// <summary>
+        /// Deletes a client and all its related assets (like rules, connections, etc) given its id.
+        /// </summary>
+        /// <param name="id">The id of the client to delete.</param>
+        /// <returns>Task.</returns>
         public Task Delete(string id)
         {
             return Connection.DeleteAsync<object>("clients/{id}", new Dictionary<string, string>
@@ -28,6 +42,15 @@ namespace Auth0.ManagementApi.Client.Clients
             });
         }
 
+        /// <summary>
+        /// Retrieves a client by its id.
+        /// </summary>
+        /// <param name="id">The id of the client to retrieve</param>
+        /// <param name="fields">A comma separated list of fields to include or exclude (depending on includeFields) from the
+        /// result, empty to retrieve all fields</param>
+        /// <param name="includeFields">true if the fields specified are to be included in the result, false otherwise (defaults to
+        /// true)</param>
+        /// <returns>Task&lt;Core.Client&gt;.</returns>
         public Task<Core.Client> Get(string id, string fields = null, bool includeFields = true)
         {
             return Connection.GetAsync<Core.Client>("clients/{id}",
@@ -42,6 +65,14 @@ namespace Auth0.ManagementApi.Client.Clients
                 }, null);
         }
 
+        /// <summary>
+        /// Retrieves a list of all client applications. Accepts a list of fields to include or exclude.
+        /// </summary>
+        /// <param name="fields">A comma separated list of fields to include or exclude (depending on includeFields) from the
+        /// result, empty to retrieve all fields</param>
+        /// <param name="includeFields">true if the fields specified are to be included in the result, false otherwise (defaults to
+        /// true)</param>
+        /// <returns>Task&lt;IList&lt;Core.Client&gt;&gt;.</returns>
         public Task<IList<Core.Client>> GetAll(string fields = null, bool includeFields = true)
         {
             return Connection.GetAsync<IList<Core.Client>>("clients", null,
@@ -52,7 +83,12 @@ namespace Auth0.ManagementApi.Client.Clients
                 }, null);
         }
 
-        // TODO: Look at making fields Nullable, otherwise default values are sent during PATCH
+        /// <summary>
+        /// Updates a client application.
+        /// </summary>
+        /// <param name="id">The id of the client you want to update.</param>
+        /// <param name="request">The request containing the properties of the client you want to update.</param>
+        /// <returns>Task&lt;Core.Client&gt;.</returns>
         public Task<Core.Client> Update(string id, ClientUpdateRequest request)
         {
             return Connection.PatchAsync<Core.Client>("clients/{id}", request, new Dictionary<string, string>

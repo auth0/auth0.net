@@ -27,6 +27,16 @@ namespace Auth0.ManagementApi.Client.Clients
         /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
         Task<Job> SendVerificationEmail(VerifyEmailJobRequest request);
 
+        /// <summary>
+        /// Imports users to a connection from a file using a long running job. 
+        /// </summary>
+        /// <remarks>
+        /// The documentation for the file format is <a href="https://auth0.com/docs/bulk-import">here</a>.
+        /// </remarks>
+        /// <param name="connectionId">The connection identifier.</param>
+        /// <param name="fileName">Name of the file.</param>
+        /// <param name="file">The file.</param>
+        /// <returns>Task&lt;Job&gt;.</returns>
         Task<Job> ImportUsers(string connectionId, string fileName, Stream file);
     }
 }

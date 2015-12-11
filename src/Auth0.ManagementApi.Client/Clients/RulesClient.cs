@@ -6,18 +6,35 @@ using Auth0.ManagementApi.Client.Models;
 
 namespace Auth0.ManagementApi.Client.Clients
 {
+    /// <summary>
+    /// Contains all the methods to call the /rules endpoints.
+    /// </summary>
     public class RulesClient : ClientBase, IRulesClient
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RulesClient"/> class.
+        /// </summary>
+        /// <param name="connection">The connection.</param>
         public RulesClient(ApiConnection connection)
             : base(connection)
         {
         }
 
+        /// <summary>
+        /// Creates a new rule according to the request.
+        /// </summary>
+        /// <param name="request">The <see cref="RuleCreateRequest" /> containing the details of the rule to create.</param>
+        /// <returns>The newly created <see cref="Rule" />.</returns>
         public Task<Rule> Create(RuleCreateRequest request)
         {
             return Connection.PostAsync<Rule>("rules", request, null, null, null, null, null);
         }
 
+        /// <summary>
+        /// Deletes a rule.
+        /// </summary>
+        /// <param name="id">The ID of the rule to delete.</param>
+        /// <returns>Task.</returns>
         public Task Delete(string id)
         {
             return Connection.DeleteAsync<object>("rules/{id}", new Dictionary<string, string>
@@ -26,6 +43,15 @@ namespace Auth0.ManagementApi.Client.Clients
             });
         }
 
+        /// <summary>
+        /// Retrieves a rule by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the rule to retrieve.</param>
+        /// <param name="fields">A comma separated list of fields to include or exclude (depending on
+        /// <paramref name="includeFields" />) from the result, empty to retrieve all fields.</param>
+        /// <param name="includeFields">True if the fields specified are to be included in the result, false otherwise (defaults to
+        /// true).</param>
+        /// <returns>The <see cref="Rule" />.</returns>
         public Task<Rule> Get(string id, string fields = null, bool includeFields = true)
         {
             return Connection.GetAsync<Rule>("rules/{id}",
@@ -40,6 +66,16 @@ namespace Auth0.ManagementApi.Client.Clients
                 }, null);
         }
 
+        /// <summary>
+        /// Retrieves a list of all rules.
+        /// </summary>
+        /// <param name="enabled">If provided retrieves rules that match the value, otherwise all rules are retrieved.</param>
+        /// <param name="fields">A comma separated list of fields to include or exclude (depending on
+        /// <paramref name="includeFields" />) from the result, empty to retrieve all fields.</param>
+        /// <param name="includeFields">True if the fields specified are to be included in the result, false otherwise (defaults to
+        /// true).</param>
+        /// <param name="stage">Retrieves rules that match the execution stage (defaults to login_success).</param>
+        /// <returns>A list of <see cref="Rule" /> objects.</returns>
         public Task<IList<Rule>> GetAll(bool? enabled = null, string fields = null, bool includeFields = true, string stage = null)
         {
             return Connection.GetAsync<IList<Rule>>("rules", null,
@@ -52,7 +88,12 @@ namespace Auth0.ManagementApi.Client.Clients
                 }, null);
         }
 
-        // TODO: Look at making fields Nullable, otherwise default values are sent during PATCH
+        /// <summary>
+        /// Updates a rule.
+        /// </summary>
+        /// <param name="id">The ID of the rule to update.</param>
+        /// <param name="request">A <see cref="RuleUpdateRequest" /> containing the information to update.</param>
+        /// <returns>Task&lt;Rule&gt;.</returns>
         public Task<Rule> Update(string id, RuleUpdateRequest request)
         {
             return Connection.PatchAsync<Rule>("rules/{id}", request, new Dictionary<string, string>

@@ -7,7 +7,7 @@ namespace Auth0.ManagementApi.Client.Clients
 {
 
     /// <summary>
-    /// 
+    /// Contains all the methods to call the /blacklists/tokens endpoints.
     /// </summary>
     public interface IBlacklistedTokensClient
     {

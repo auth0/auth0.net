@@ -4,6 +4,9 @@ using Auth0.ManagementApi.Client.Models;
 
 namespace Auth0.ManagementApi.Client.Clients
 {
+    /// <summary>
+    /// Contains all the methods to call the /tenants/settings endpoints.
+    /// </summary>
     public interface ITentantSettingsClient
     {
         /// <summary>
