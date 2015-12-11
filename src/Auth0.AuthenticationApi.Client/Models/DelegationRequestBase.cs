@@ -71,7 +71,6 @@ namespace Auth0.AuthenticationApi.Client.Models
         /// </summary>
         /// <param name="sourceClientId"></param>
         /// <param name="targetClientId"></param>
-        /// <param name="idToken"></param>
         /// <param name="apiType"></param>
         public DelegationRequestBase(string sourceClientId, string targetClientId, string apiType) : this(sourceClientId, targetClientId)
         {

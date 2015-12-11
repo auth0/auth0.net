@@ -102,7 +102,7 @@ namespace Auth0.Core.Http
         }
 
         /// <summary>
-        ///     Adds a new environment entry instance to the SDK's <see cref="Environment" />.
+        ///     Adds a new environment entry instance to the SDK's Environment />.
         /// </summary>
         public DiagnosticsHeader AddEnvironment(DiagnosticsComponent environment)
         {
@@ -112,7 +112,7 @@ namespace Auth0.Core.Http
         }
 
         /// <summary>
-        ///     Adds a new environment to the SDK's <see cref="Environment" />.
+        ///     Adds a new environment to the SDK's Environment />.
         /// </summary>
         public DiagnosticsHeader AddEnvironment(string name, object version)
         {
