@@ -102,5 +102,13 @@ namespace Auth0.ManagementApi.Client.Clients
         /// <param name="request">The <see cref="UserUpdateRequest" /> containing the information you wish to update.</param>
         /// <returns></returns>
         Task<User> Update(string id, UserUpdateRequest request);
+
+        /// <summary>
+        ///     Deletes users multifactor provider.
+        /// </summary>
+        /// <param name="id">The id of the user to update.</param>
+        /// <param name="provider">The type of the multifactor provider. Supported values 'duo' or 'google-authenticator'</param>
+        /// <returns></returns>
+        Task DeleteMultifactorProvider(string id, string provider);
     }
 }
