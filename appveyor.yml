@@ -19,6 +19,8 @@ after_build:
     nuget pack $env:APPVEYOR_BUILD_FOLDER\nuget\Auth0.Core.nuspec
     
     nuget pack $env:APPVEYOR_BUILD_FOLDER\nuget\Auth0.ManagementApi.Client.nuspec
+
+	nuget pack $env:APPVEYOR_BUILD_FOLDER\nuget\Auth0.AuthenticationApi.Client.nuspec
 artifacts:
 - path: '**\*.nupkg'
   name: Nuget Packages
