@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Auth0.Core;
-using Auth0.ManagementApi.Client;
+using Auth0.ManagementApi;
+using Auth0.ManagementApi.Models;
 using Nito.AsyncEx;
-using Auth0.ManagementApi.Client.Models;
 
 namespace ConsoleTestWorkbench
 {
