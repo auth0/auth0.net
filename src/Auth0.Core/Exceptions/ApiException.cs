@@ -19,17 +19,30 @@ namespace Auth0.Core.Exceptions
         /// </summary>
         public HttpStatusCode StatusCode { get; private set; }
 
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApiException"/> class.
+        /// </summary>
+        /// <param name="message">The message.</param>
+        /// <param name="innerException">The inner exception.</param>
         public ApiException(string message, Exception innerException)
             : base(message, innerException)
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApiException"/> class.
+        /// </summary>
+        /// <param name="statusCode">The HTTP status code.</param>
         public ApiException(HttpStatusCode statusCode)
             : base(statusCode.ToString())
         {
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApiException"/> class.
+        /// </summary>
+        /// <param name="statusCode">The status code.</param>
+        /// <param name="apiError">The API error.</param>
         public ApiException(HttpStatusCode statusCode, ApiError apiError)
             : base(apiError == null ? statusCode.ToString() : apiError.Message)
         {

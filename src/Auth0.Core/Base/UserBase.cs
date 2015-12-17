@@ -9,7 +9,9 @@ namespace Auth0.Core
     public abstract class UserBase
     {
 
-        // TODO: This is a JSON document in the API. What would be the best suggested way to handle this?
+        /// <summary>
+        /// Contains user meta data. The user has read-only access to this.
+        /// </summary>
         [JsonProperty("app_metadata")]
         public dynamic AppMetadata { get; set; }
 
@@ -37,7 +39,9 @@ namespace Auth0.Core
         [JsonProperty("phone_number")]
         public string PhoneNumber { get; set; }
 
-        // TODO: This is a JSON document in the API. What would be the best suggested way to handle this?
+        /// <summary>
+        /// Contains user meta data. The user has read/write access to this.
+        /// </summary>
         [JsonProperty("user_metadata")]
         public dynamic UserMetadata { get; set; }
 

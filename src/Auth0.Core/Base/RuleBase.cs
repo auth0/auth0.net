@@ -2,6 +2,9 @@ using Newtonsoft.Json;
 
 namespace Auth0.Core
 {
+    /// <summary>
+    /// Base class for rules.
+    /// </summary>
     public abstract class RuleBase
     {
         /// <summary>

@@ -4,6 +4,10 @@ namespace Auth0.Core
 {
     // TODO: There are a limited number of email providers. Should we not try something more specific which will prevent the user 
     // from making mistakes in configuring this? All fields are not required for all providers...
+
+    /// <summary>
+    /// Credentials for an email provider.
+    /// </summary>
     public class EmailProviderCredentials
     {
         /// <summary>

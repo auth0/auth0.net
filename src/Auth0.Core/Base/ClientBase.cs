@@ -2,8 +2,14 @@
 
 namespace Auth0.Core
 {
+    /// <summary>
+    /// Base class for clients.
+    /// </summary>
     public abstract class ClientBase
     {
+        /// <summary>
+        /// Gets or sets the addons which are associated with the client.
+        /// </summary>
         [JsonProperty("addons")]
         public Addons AddOns { get; set; }
 
@@ -86,6 +92,7 @@ namespace Auth0.Core
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
+
 
         [JsonProperty("resource_servers")]
         public ResourceServer[] ResourceServers { get; set; }

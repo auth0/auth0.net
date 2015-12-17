@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>Auth0.ManagementApi</id>
+        <version>2.0.0-beta1</version>
+        <authors>Auth0</authors>
+        <owners>Auth0</owners>
+        <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+        <projectUrl>https://github.com/auth0/auth0.net</projectUrl>
+        <iconUrl>http://secure.gravatar.com/avatar/805765c256ff8617fcad483b5476faf2</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Client library for the Auth0 Management API</description>
+        <copyright>Copyright 2015</copyright>
+        <tags>Auth0 OAuth</tags>
+        <dependencies>
+            <dependency id="Newtonsoft.Json" version="7.0.1" />
+            <dependency id="Auth0.Core" version="2.0.0-beta1" />
+        </dependencies>
+    </metadata>
+	<files>
+		<file src="..\src\Auth0.ManagementApi\bin\Release\Auth0.ManagementApi.dll" target="lib\portable45-net45+win8+wpa81" />
+		<file src="..\src\Auth0.ManagementApi\bin\Release\Auth0.ManagementApi.pdb" target="lib\portable45-net45+win8+wpa81" />
+		<file src="..\src\Auth0.ManagementApi\bin\Release\Auth0.ManagementApi.XML" target="lib\portable45-net45+win8+wpa81" />
+	</files>
+</package>

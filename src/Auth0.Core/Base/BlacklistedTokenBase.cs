@@ -2,6 +2,10 @@
 
 namespace Auth0.Core
 {
+
+    /// <summary>
+    /// Base class for blacklisted tokens.
+    /// </summary>
     public class BlacklistedTokenBase
     {
         /// <summary>

@@ -2,6 +2,9 @@
 
 namespace Auth0.Core
 {
+    /// <summary>
+    /// Represents a ticket. Tickets can be for either email verification or a password change.
+    /// </summary>
     public class Ticket
     {
         /// <summary>

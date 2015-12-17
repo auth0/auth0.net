@@ -1,151 +1,43 @@
 .Net client library for the Auth0 platform.
 
-## Installation
 
-    Install-Package Auth0
+## Management API
 
-## Usage
+### Installation
 
-Create an instance of Client with the credentials provided in the [settings section](https://app.auth0.com/#/settings) of the dashboard.
+```
+Install-Package Auth0.ManagementApi
+```
 
-~~~csharp
-var client = new Auth0.Client(
-  clientID:     "your-client-id",
-  clientSecret: "your-client-secret",
-  domain:       "yourdomain.auth0.com"
-);
-~~~
+### Usage
 
-### client.GetConnections()
-
-Return a list of all the connections in your application:
+Generate a token for the API calls you wish to make (see [https://auth0.com/docs/api/v2/tokens](https://auth0.com/docs/api/v2/tokens)). Create an instance of the `ManagementApiClient` class with the token and the API URL of your Auth0 instance:
 
 ~~~csharp
-var connections = client.GetConnections();
+ var client = new ManagementApiClient("your token", new Uri("https://auth0-dotnet-integration-tests.auth0.com/api/v2"));
 ~~~
 
-Returns an IEnumerable<Connection>. Additionally there is a ```GetSocialConnections``` and ```GetEnterpriseConnections```.
+The API calls are divided into groups which correlate to the [Management API documentation](https://auth0.com/docs/api/v2). For example all Connection related methods can be found under the `ManagementApiClient.Connections` property. So to get a list of all database (Auth0) connections, you can make the following API call:
 
-### client.CreateConnection(connection)
+```
+await client.Connections.GetAll("auth0");
+```
 
-Let's say one of your customers wants to use its own directory to authenticate to your app. You will have to create a **connection** in Auth0 for this customer and if you want to automate that for N customers, you will want to use the API. Typically, you will ask the customer domain name and depending on the directory you are connecting to, some metadata.
+## Authentication API
 
-~~~csharp
-var connectionTicket =  new Auth0.Connection("office365", "contoso.com");
+### Installation
 
-var newConnection = client.CreateConnection(connectionTicket);
+```
+Install-Package Auth0.AuthenticationApi
+```
 
-// newConnection will have ProvisioningTicketUrl
-~~~
+### Usage
 
-Because this example uses Office 365, the returned connection object will have a ```ProvisioningTicketUrl``` property to which you have to redirect the client in order to complete the authorization process.
+To use the Authentication API, create a new instance of the `AuthenticationApiClient` class, passing in the URL of your Auth0 instance, e.g.:
 
-### client.CreateConnection(provisioningTicket)
-
-Create connection using a provisioning ticket.
-
-~~~csharp
-var newConnection = client.CreateConnection(provisioningTicket);
-~~~
-
-### client.DeleteConnection(string connectionName)
-
-Delete a connection identified by connectionName.
-
-~~~csharp
-client.DeleteConnection(connectionName);
-~~~
-
-### client.GetUsersByConnection(connectionName, search = "")
-
-This method returns a list of users of the connection.
-
-It will search the users on the directory of the connection. Suppose it is a **Windows Azure Active Directory** connection it will fetch all the users from the directory. If the connection doesn't have a directory or it is a Social connection like **Google OAuth 2** it will return all the users that have logged in to your application at least once.
-
-~~~csharp
-var users = client.GetUsersByConnection("contoso.com");
-// or
-var users = client.GetUsersByConnection("contoso.com", "jdoe");
-~~~
-
-The result is an IEnumerable<Auth0.User>.
-
-### client.GetSocialUsers(search = "")
-
-The same than ```GetUsersByConnection``` but this method returns users for all social connections ie: not enterprise connections.
-
-~~~csharp
-var users = client.GetSocialUsers("mary@gmail.com");
-// or
-var users = client.GetSocialUsers();
-~~~
-
-### client.GetEnterpriseUsers(search = "")
-
-The same than ```GetUsersByConnection``` but this method returns users for all enterprise connections ie: not social connections.
-
-~~~csharp
-var users = client.GetEnterpriseUsers("jdoe@contoso.com");
-// or
-var users = client.GetEnterpriseUsers();
-~~~
-
-### client.GenerateVerificationTicket(userId, resultUrl = "")
-
-Generate an email verification link which can be added to custom emails an be used for email verification. Clicking this link will set ```email_verified``` to true for the user and optionally redirect to a page in the application.
-
-~~~csharp
-var verificationUrl = client.GenerateVerificationTicket("auth0|54c6322f6936d15310dca942");
-// or
-var verificationUrl = client.GenerateVerificationTicket("auth0|54c6322f6936d15310dca942",
-   "http://myapp.com/activated");
-~~~
-
-### client.ValidateUser(username, password, connection)
-
-Verify if the username and password are correct for a given connection.
-
-~~~csharp
-var validationResult = client.ValidateUser("some@user.com", "Passw0rd!", "Username-Password-Authentication");
-if (validationResult.IsValid)
-{
-    return "User is valid.";
-}
-else
-{
-    return "Invalid user. Details: " + validationResult.Message;
-}
-~~~
-
-## Diagnostic Headers
-
-By default this SDK will send the diagnostic HTTP request header `Auth0-Client` to the Auth0 REST API.  The header contains information about the version of the SDK, its dependencies, and the execution environment.
-
-If you do not wish to pass this header, you can opt out by passing the `DiagnosticsHeader.Suppress` instance to the `diagnostics` `Auth0.Client` constructor parameter:
-
-~~~csharp
-var client = new Auth0.Client(
-  clientID:     "your-client-id",
-  clientSecret: "your-client-secret",
-  domain:       "yourdomain.auth0.com",
-  //suppress the Auth0-Client header
-  diagnostics: Auth0.DiagnosticsHeader.Suppress
-);
-~~~
-
-Alternatively, if you'd like to pass additional diagnostic information to Auth0 you can easily add environment information using the `DiagnosticsHeader.Default` instance:
-
-~~~csharp
-var client = new Auth0.Client(
-  clientID:     "your-client-id",
-  clientSecret: "your-client-secret",
-  domain:       "yourdomain.auth0.com",
-  //the AddEnvironment method takes a name and a version
-  diagnostics: Auth0.DiagnosticsHeader.Default
-    .AddEnvironment("SharePoint", "2010")
-    .AddEnvironment("VMWare ESXi", "6.0")
-);
-~~~
+```
+var client = new AuthenticationApiClient(new Uri("https://auth0-dotnet-integration-tests.auth0.com"));
+```
 
 ## Authentication
 

@@ -2,6 +2,9 @@
 
 namespace Auth0.Core
 {
+    /// <summary>
+    /// Base class for email provider.
+    /// </summary>
     public abstract class EmailProviderBase
     {
         /// <summary>

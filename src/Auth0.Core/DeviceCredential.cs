@@ -2,6 +2,9 @@
 
 namespace Auth0.Core
 {
+    /// <summary>
+    /// Represents credentials for a device.
+    /// </summary>
     public class DeviceCredential : DeviceCredentialBase
     {
         /// <summary>
