@@ -552,9 +552,10 @@
         /// <param name="password">The password.</param>
         /// <param name="connection">The connection name.</param>
         /// <param name="scope">The openid scope.</param>
+        /// <param name="device">The user's device.</param>
         /// <returns></returns>
         public TokenResult LoginUser(
-            string username, string password, string connection, string scope = "openid")
+            string username, string password, string connection, string scope = "openid", string device = null)
         {
             var request = new RestRequest("/oauth/ro", Method.POST);
 
@@ -566,6 +567,7 @@
             request.AddParameter("connection", connection, ParameterType.GetOrPost);
             request.AddParameter("grant_type", "password", ParameterType.GetOrPost);
             request.AddParameter("scope", scope, ParameterType.GetOrPost);
+            request.AddParameter("device", device, ParameterType.GetOrPost);
 
             var result = this.client.Execute<Dictionary<string, string>>(request);
             var response = result.Data;
