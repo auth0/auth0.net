@@ -523,7 +523,7 @@
             request.AddHeader("accept", "application/json");
 
             request.AddParameter("client_id", this.clientID, ParameterType.GetOrPost);
-            request.AddParameter("client_secret", this.GetClientSecretOrThrow(), ParameterType.GetOrPost);
+            request.AddParameter("client_secret", this.clientSecret, ParameterType.GetOrPost);
             request.AddParameter("grant_type", "urn:ietf:params:oauth:grant-type:jwt-bearer", ParameterType.GetOrPost);
             request.AddParameter("id_token", token, ParameterType.GetOrPost);
             request.AddParameter("target", targetClientId, ParameterType.GetOrPost);
