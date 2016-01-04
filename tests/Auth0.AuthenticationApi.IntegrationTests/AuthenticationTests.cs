@@ -16,6 +16,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         private ManagementApiClient managementApiClient;
         private Connection connection;
         private User user;
+        private User plusUser;
 
         [SetUp]
         public async Task SetUp()
@@ -43,7 +44,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 EnabledClients = new []{ "rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW" }
             });
 
-            // And add a dummy user to test agains
+            // And add a dummy user to test against
             user = await managementApiClient.Users.Create(new UserCreateRequest
             {
                 Connection = connection.Name,
@@ -52,6 +53,14 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 Password = "password"
             });
 
+            // Add a user with a + in the username
+            plusUser = await managementApiClient.Users.Create(new UserCreateRequest
+            {
+                Connection = connection.Name,
+                Email = $"{Guid.NewGuid().ToString("N")}+1@nonexistingdomain.aaa",
+                EmailVerified = true,
+                Password = "password"
+            });
         }
 
         [TearDown]
@@ -80,6 +89,27 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
             // Assert
             authenticationResponse.Should().NotBeNull();
-        }    
+        }
+
+        [Test]
+        public async Task Can_authenticate_user_with_plus_in_username()
+        {
+            // Arrange
+            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+
+            // Act
+            var authenticationResponse = await authenticationApiClient.Authenticate(new AuthenticationRequest
+            {
+                ClientId = GetVariable("AUTH0_CLIENT_ID"),
+                Connection = connection.Name,
+                GrantType = "password",
+                Scope = "openid",
+                Username = plusUser.Email,
+                Password = "password"
+            });
+
+            // Assert
+            authenticationResponse.Should().NotBeNull();
+        }
     }
 }
