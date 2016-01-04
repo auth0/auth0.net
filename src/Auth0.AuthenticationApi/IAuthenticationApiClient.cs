@@ -53,6 +53,14 @@ namespace Auth0.AuthenticationApi
         Task<string> ChangePassword(ChangePasswordRequest request);
 
         /// <summary>
+        /// Exhanges an OAuth authorization code for an access token. This needs to be called as part of the OAuth authentication process, after the user has
+        /// authenticated and the redirect URI is called with an authorization code. 
+        /// </summary>
+        /// <param name="request">The <see cref="ExchangeCodeRequest"/> containing the authorization code and other information needed to exchange the code for an access token.</param>
+        /// <returns></returns>
+        Task<AccessToken> ExchangeCodeForAccessToken(ExchangeCodeRequest request);
+
+        /// <summary>
         /// Given the social provider's access token and the connection specified, it will do the authentication on the provider and return an <see cref="AccessToken"/>.
         /// </summary>
         /// <remarks>
@@ -61,7 +69,6 @@ namespace Auth0.AuthenticationApi
         /// <param name="request">The <see cref="AccessTokenRequest"/> containing details about the request.</param>
         /// <returns>The <see cref="AccessToken"/>.</returns>
         Task<AccessToken> GetAccessToken(AccessTokenRequest request);
-
 
         /// <summary>
         /// Given an existing token, this endpoint will generate a new token signed with the target client secret. This is used to flow the identity of the user from the application to an API or across different APIs that are protected with different secrets.

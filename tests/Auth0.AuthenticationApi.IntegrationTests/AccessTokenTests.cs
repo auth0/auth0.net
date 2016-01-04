@@ -100,5 +100,23 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             user.Should().NotBeNull();
             user.Email.Should().NotBeNull();
         }
+
+        [Test, Explicit]
+        public async Task Can_exchange_authorization_code_for_access_token()
+        {
+            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+
+            // Exchange the authorization code
+            var token = await authenticationApiClient.ExchangeCodeForAccessToken(new ExchangeCodeRequest
+            {
+                ClientId = GetVariable("AUTH0_CLIENT_ID"),
+                ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
+                RedirectUri = "http://www.blah.com/test",
+                AuthorizationCode = "AaBhdAOl4OKvjX2I"
+            });
+
+            // Assert
+            token.Should().NotBeNull();
+        }
     }
 }

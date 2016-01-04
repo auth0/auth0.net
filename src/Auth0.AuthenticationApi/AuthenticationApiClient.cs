@@ -120,6 +120,28 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <summary>
+        /// Exhanges an OAuth authorization code for an access token. This needs to be called as part of the OAuth authentication process, after the user has
+        /// authenticated and the redirect URI is called with an authorization code. 
+        /// </summary>
+        /// <param name="request">The <see cref="ExchangeCodeRequest"/> containing the authorization code and other information needed to exchange the code for an access token.</param>
+        /// <returns></returns>
+        public Task<AccessToken> ExchangeCodeForAccessToken(ExchangeCodeRequest request)
+        {
+            return Connection.PostAsync<AccessToken>("oauth/token", null, new Dictionary<string, object>
+            {
+                {"client_id", request.ClientId},
+                {"redirect_uri", request.RedirectUri},
+                {"client_secret", request.ClientSecret},
+                {"code", request.AuthorizationCode},
+                {"grant_type", "authorization_code"}
+            },
+                null,
+                null,
+                null,
+                null);
+        }
+
+        /// <summary>
         /// Given the social provider's access token and the connection specified, it will do the authentication on the provider and return an <see cref="AccessToken" />.
         /// </summary>
         /// <param name="request">The request.</param>

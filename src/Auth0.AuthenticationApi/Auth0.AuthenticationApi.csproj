@@ -64,6 +64,7 @@
     <Compile Include="Models\ChangePasswordRequest.cs" />
     <Compile Include="Models\DelegationRequestBase.cs" />
     <Compile Include="Models\AccessTokenRequest.cs" />
+    <Compile Include="Models\ExchangeCodeRequest.cs" />
     <Compile Include="Models\OAuthToken.cs" />
     <Compile Include="Models\PasswordlessEmailRequest.cs" />
     <Compile Include="Models\PasswordlessEmailRequestType.cs" />
