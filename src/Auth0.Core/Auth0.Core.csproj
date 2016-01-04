@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C5395825-EF6D-438E-9E22-95975F1276E8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Auth0.Core</RootNamespace>
+    <AssemblyName>Auth0.Core</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Auth0.Core.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Auth0.Core.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Exceptions\ApiException.cs" />
+    <Compile Include="Http\DiagnosticsComponent.cs" />
+    <Compile Include="Http\Utils.cs" />
+    <Compile Include="Http\FileUploadParameter.cs" />
+    <Compile Include="Addons.cs" />
+    <Compile Include="Base\TenantSettingsBase.cs" />
+    <Compile Include="BlacklistedToken.cs" />
+    <Compile Include="Base\BlacklistedTokenBase.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="DelegatedIdToken.cs" />
+    <Compile Include="DelegatedRefreshToken.cs" />
+    <Compile Include="Base\DelegatedTokenBase.cs" />
+    <Compile Include="Base\ClientBase.cs" />
+    <Compile Include="Connection.cs" />
+    <Compile Include="Base\ConnectionBase.cs" />
+    <Compile Include="Management\DailyStatistics.cs" />
+    <Compile Include="Management\EmailProviderCredentials.cs" />
+    <Compile Include="DeviceCredential.cs" />
+    <Compile Include="Base\DeviceCredentialBase.cs" />
+    <Compile Include="Management\EmailProvider.cs" />
+    <Compile Include="Base\EmailProviderBase.cs" />
+    <Compile Include="ApiError.cs" />
+    <Compile Include="Identity.cs" />
+    <Compile Include="Management\Job.cs" />
+    <Compile Include="Management\TenantErrorPage.cs" />
+    <Compile Include="Management\TenantSettings.cs" />
+    <Compile Include="Management\Ticket.cs" />
+    <Compile Include="Mobile.cs" />
+    <Compile Include="ResourceServer.cs" />
+    <Compile Include="Management\Rule.cs" />
+    <Compile Include="Base\RuleBase.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="Base\UserBase.cs" />
+    <Compile Include="Properties\JetBrains.Annotations.cs" />
+    <Compile Include="EncryptionKey.cs" />
+    <Compile Include="JwtConfiguration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rules\LoginRequest.cs" />
+    <Compile Include="Rules\LoginRequestGeography.cs" />
+    <Compile Include="Rules\LoginRequestQuery.cs" />
+    <Compile Include="Rules\RulesContext.cs" />
+    <Compile Include="Rules\RulesContextSsoConfiguration.cs" />
+    <Compile Include="Rules\RulesContextStats.cs" />
+    <Compile Include="Rules\RulesRequest.cs" />
+    <Compile Include="ScopeEntry.cs" />
+    <Compile Include="Scopes.cs" />
+    <Compile Include="SigningKey.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.7.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<ArrayOfArrayOfArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ArrayOfArrayOfString>
+    <ArrayOfString>
+      <string>E:\GitHub\auth0.net\Auth0.Net\Rules\Auth0Request.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>E:\GitHub\auth0.net\Auth0.Net\Rules\Auth0User.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>E:\GitHub\auth0.net\Auth0.Net\Rules\Identity.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>E:\GitHub\auth0.net\Auth0.Net\Rules\Query.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>E:\GitHub\auth0.net\Auth0.Net\Rules\Context.cs</string>
+    </ArrayOfString>
+    <ArrayOfString>
+      <string>E:\GitHub\auth0.net\Auth0.Net\Rules\Request.cs</string>
+    </ArrayOfString>
+  </ArrayOfArrayOfString>
+</ArrayOfArrayOfArrayOfString>
