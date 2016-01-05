@@ -78,6 +78,7 @@
     <Compile Include="Models\AuthorizationResponseType.cs" />
     <Compile Include="Models\SignupUserRequest.cs" />
     <Compile Include="Models\TokenBase.cs" />
+    <Compile Include="Models\UnlinkUserRequest.cs" />
     <Compile Include="Models\UserMaintenanceRequestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

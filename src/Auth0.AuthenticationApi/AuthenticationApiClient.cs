@@ -284,5 +284,15 @@ namespace Auth0.AuthenticationApi
                 },
                 null, null, null, null, null);
         }
+
+        /// <summary>
+        /// Unlinks a secondary account from a primary account.
+        /// </summary>
+        /// <param name="request">The <see cref="UnlinkUserRequest"/> containing the information of the accounts to unlink.</param>
+        /// <returns>Nothing</returns>
+        public async Task UnlinkUser(UnlinkUserRequest request)
+        {
+            await Connection.PostAsync<object>("unlink", request, null, null, null, null, null);
+        }
     }
 }
