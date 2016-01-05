@@ -85,6 +85,7 @@
     </Compile>
     <Compile Include="AccessTokenTests.cs" />
     <Compile Include="AuthenticationTests.cs" />
+    <Compile Include="ImpersonationTests.cs" />
     <Compile Include="MetadataTests.cs" />
     <Compile Include="UriBuildersTests.cs" />
     <Compile Include="DatabaseConnectionTests.cs" />

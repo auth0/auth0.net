@@ -2,6 +2,7 @@
 using Auth0.AuthenticationApi.Builders;
 using Auth0.AuthenticationApi.Models;
 using Auth0.Core;
+using System;
 
 namespace Auth0.AuthenticationApi
 {
@@ -76,6 +77,13 @@ namespace Auth0.AuthenticationApi
         /// <param name="request">The <see cref="DelegationRequestBase"/> containing details about the request.</param>
         /// <returns>The <see cref="AccessToken"/>.</returns>
         Task<AccessToken> GetDelegationToken(DelegationRequestBase request);
+
+        /// <summary>
+        /// Generates a link that can be used once to log in as a specific user.
+        /// </summary>
+        /// <param name="request">The <see cref="ImpersonationRequest"/> containing the details of the user to impersonate.</param>
+        /// <returns>A <see cref="Uri"/> which can be used to sign in as the specified user.</returns>
+        Task<Uri> GetImpersonationUrl(ImpersonationRequest request);
 
         /// <summary>
         /// Returns the SAML 2.0 meta data for a client.
