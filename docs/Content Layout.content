@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Topics>
-  <Topic id="82e4d841-782f-4d8b-9fd6-21d172fbb9b0" visible="True" isDefault="true" />
-  <Topic id="51ca43f1-ab9d-4c83-859d-9eb1af04f37b" visible="True" />
-  <Topic id="98535358-304b-445b-9b15-37fda98b7dee" visible="True" />
-  <Topic id="8357c1e0-0ac8-4fa3-9ba1-55dd66403551" visible="True" isSelected="true" />
-  <Topic id="927b8ec5-5553-4aea-8ff6-9798daedc76a" visible="True" noFile="true" apiParentMode="InsertAsChild" title="Auth0 .NET SDK Class Reference" />
-</Topics>

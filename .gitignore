@@ -18,11 +18,9 @@ TestResults
 *.user
 *.sln.docstates
 
-# Sandcastle Help File Builder is a documentation generator add-in
-docs/**/Help/
-docs/WebHelp/
-**/Doc/Help/
-*.shfbproj_*
+# Documentation
+docs/obj/
+docs/_site/
 
 # Build results
 [Dd]ebug/
