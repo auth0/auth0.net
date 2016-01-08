@@ -47,13 +47,13 @@ Ensure that you include the Authentication API namespace in your source code fil
 using Auth0.AuthenticationApi;
 ```
 
-To start using the API, you need to create an instance of the @"Auth0.AuthenticationApi.AuthenticationApiClient" class, passing the URL of your Auth0 instance:
+To start using the API, you need to create an instance of the <a href="/api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient">AuthenticationApiClient</a> class, passing the URL of your Auth0 instance:
 
 ```
 var client = new AuthenticationApiClient(new Uri("https://auth0-dotnet-integration-tests.auth0.com/"));
 ```
 
-For more details on the various methods that are available, please refer to the documentation of the @Auth0.AuthenticationApi.AuthenticationApiClient class.
+For more details on the various methods that are available, please refer to the documentation of the <a href="/api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient">AuthenticationApiClient</a> class.
 
 ### Using URL Builders
 
@@ -94,7 +94,7 @@ Ensure that you include the Management API namespace in your source code file:</
 using Auth0.ManagementApi;
 ```
 
-To start using the API, you need to create an instance of the @Auth0.ManagementApi.ManagementApiClient class, passing a token and the URL to the Management API of your Auth0 instance:
+To start using the API, you need to create an instance of the <a href="/api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient">ManagementApiClient</a> class, passing a token and the URL to the Management API of your Auth0 instance:
 
 ```
 var client = new ManagementApiClient("token", new Uri("https://auth0-dotnet-integration-tests.auth0.com/api/v2"));
@@ -103,4 +103,21 @@ var client = new ManagementApiClient("token", new Uri("https://auth0-dotnet-inte
 > [!NOTE]
 > For details on how to generate the token, please see the "Getting an API token" section of the [Management API documentation](https://auth0.com/docs/api/v2)
 
-For more details on the various methods that are available, please refer to the documentation of the @Auth0.ManagementApi.ManagementApiClient class.
+For more details on the various methods that are available, please refer to the documentation of the <a href="/api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient">ManagementApiClient</a> class.
+
+### Organization of the ManagementApiClient
+
+All methods for the Management API are grouped together in a similar fashion as what you will find when browsing the [Management API documentation](https://auth0.com/docs/api/v2). 	
+
+In the screenshot of the API documentation below you can see that the API methods are organized by functional group, e.g Clients, Connections, Device Credentials, etc.
+
+![](images/api-docs-structure.png)
+
+The .NET Client SDK for the Management API also groups the API methods according to these functional groups. The functional groups are available as properties on the `ManagementApiClient` class, so you will for example find all Clients related API calls under the @Auth0.ManagementApi.ManagementApiClient.Clients property. 
+
+Below is an example of how you can get a list of all clients:
+
+```
+var apiClient = new ManagementApiClient("token", new Uri("https://auth0-dotnet-integration-tests.auth0.com/api/v2"));
+var allClients = await apiClient.Clients.GetAll();
+```
