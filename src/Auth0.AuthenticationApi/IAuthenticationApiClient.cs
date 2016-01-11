@@ -2,6 +2,7 @@
 using Auth0.AuthenticationApi.Builders;
 using Auth0.AuthenticationApi.Models;
 using Auth0.Core;
+using System;
 
 namespace Auth0.AuthenticationApi
 {
@@ -78,6 +79,13 @@ namespace Auth0.AuthenticationApi
         Task<AccessToken> GetDelegationToken(DelegationRequestBase request);
 
         /// <summary>
+        /// Generates a link that can be used once to log in as a specific user.
+        /// </summary>
+        /// <param name="request">The <see cref="ImpersonationRequest"/> containing the details of the user to impersonate.</param>
+        /// <returns>A <see cref="Uri"/> which can be used to sign in as the specified user.</returns>
+        Task<Uri> GetImpersonationUrl(ImpersonationRequest request);
+
+        /// <summary>
         /// Returns the SAML 2.0 meta data for a client.
         /// </summary>
         /// <param name="clientId">The client (App) ID for which meta data must be returned.</param>
@@ -124,5 +132,12 @@ namespace Auth0.AuthenticationApi
         /// <param name="request">The <see cref="PasswordlessSmsRequest"/> containing the information about the new Passwordless flow to start.</param>
         /// <returns>A <see cref="PasswordlessSmsResponse"/> containing the response.</returns>
         Task<PasswordlessSmsResponse> StartPasswordlessSmsFlow(PasswordlessSmsRequest request);
+
+        /// <summary>
+        /// Unlinks a secondary account from a primary account.
+        /// </summary>
+        /// <param name="request">The <see cref="UnlinkUserRequest"/> containing the information of the accounts to unlink.</param>
+        /// <returns>Nothing</returns>
+        Task UnlinkUser(UnlinkUserRequest request);
     }
 }

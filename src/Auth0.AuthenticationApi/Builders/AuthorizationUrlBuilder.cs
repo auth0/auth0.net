@@ -17,6 +17,18 @@ namespace Auth0.AuthenticationApi.Builders
         }
 
         /// <summary>
+        /// Adds an access_token query string parameter.
+        /// </summary>
+        /// <param name="accessToken"></param>
+        /// <returns></returns>
+        public AuthorizationUrlBuilder WithAccessToken(string accessToken)
+        {
+            AddQueryString("access_token", accessToken);
+
+            return this;
+        }
+
+        /// <summary>
         /// Adds a new client_id query string parameter.
         /// </summary>
         /// <param name="clientId">The client identifier.</param>

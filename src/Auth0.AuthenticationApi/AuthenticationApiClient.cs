@@ -163,6 +163,34 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <summary>
+        /// Generates a link that can be used once to log in as a specific user.
+        /// </summary>
+        /// <param name="request">The <see cref="ImpersonationRequest"/> containing the details of the user to impersonate.</param>
+        /// <returns>A <see cref="Uri"/> which can be used to sign in as the specified user.</returns>
+        public async Task<Uri> GetImpersonationUrl(ImpersonationRequest request)
+        {
+            string url = await Connection.PostAsync<string>("users/{impersonate_id}/impersonate",
+                new
+                {
+                    protocol = request.Protocol,
+                    impersonator_id = request.ImpersonatorId,
+                    client_id = request.ClientId,
+                    response_type = request.ResponseType,
+                    state = request.State
+                }, null, null,
+                new Dictionary<string, string>
+                {
+                    {"impersonate_id", request.ImpersonateId}
+                },
+                new Dictionary<string, object>
+                {
+                    {"Authorization", string.Format("Bearer {0}", request.Token)}
+                }, null);
+
+            return new Uri(url);
+        }
+
+        /// <summary>
         /// Returns the SAML 2.0 meta data for a client.
         /// </summary>
         /// <param name="clientId">The client (App) ID for which meta data must be returned.</param>
@@ -255,6 +283,16 @@ namespace Auth0.AuthenticationApi
                     phone_number = request.PhoneNumber
                 },
                 null, null, null, null, null);
+        }
+
+        /// <summary>
+        /// Unlinks a secondary account from a primary account.
+        /// </summary>
+        /// <param name="request">The <see cref="UnlinkUserRequest"/> containing the information of the accounts to unlink.</param>
+        /// <returns>Nothing</returns>
+        public async Task UnlinkUser(UnlinkUserRequest request)
+        {
+            await Connection.PostAsync<object>("unlink", request, null, null, null, null, null);
         }
     }
 }
