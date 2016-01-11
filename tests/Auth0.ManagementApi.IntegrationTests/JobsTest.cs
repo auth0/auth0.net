@@ -78,13 +78,12 @@ namespace Auth0.ManagementApi.IntegrationTests
             job.Id.Should().Be(emailRequestResponse.Id);
 
             // Send a user import request
-            using (Stream stream = this.GetType().Assembly.GetManifestResourceStream("Auth0.ManagementApi.IntegrationTests.user-import-test.json"))
-            {
-                var importUsersResponse = await apiClient.Jobs.ImportUsers(connection.Id, "user-import-test.json", stream);
-                importUsersResponse.Should().NotBeNull();
-                importUsersResponse.Id.Should().NotBeNull();
-            }
-
+            //using (Stream stream = this.GetType().Assembly.GetManifestResourceStream("Auth0.ManagementApi.IntegrationTests.user-import-test.json"))
+            //{
+            //    var importUsersResponse = await apiClient.Jobs.ImportUsers(connection.Id, "user-import-test.json", stream);
+            //    importUsersResponse.Should().NotBeNull();
+            //    importUsersResponse.Id.Should().NotBeNull();
+            //}
         }
     }
 }
