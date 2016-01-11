@@ -18,6 +18,10 @@ TestResults
 *.user
 *.sln.docstates
 
+# Documentation
+docs/obj/
+docs/_site/
+
 # Build results
 [Dd]ebug/
 [Rr]elease/
