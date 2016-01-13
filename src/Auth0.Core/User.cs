@@ -17,18 +17,6 @@ namespace Auth0.Core
         public DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// The first name of the user (if available).
-        /// </summary>
-        [JsonProperty("given_name")]
-        public string FirstName { get; set; }
-
-        /// <summary>
-        /// The full name of the user (e.g.: John Foo). ALWAYS GENERATED.
-        /// </summary>
-        [JsonProperty("name")]
-        public string FullName { get; set; }
-
-        /// <summary>
         /// An array of objects with information about the user's identities. More than one will exists in case accounts are linked
         /// </summary>
         [JsonProperty("identities")]
@@ -47,12 +35,6 @@ namespace Auth0.Core
         public DateTime LastLogin { get; set; }
 
         /// <summary>
-        /// The last name of the user (if available).
-        /// </summary>
-        [JsonProperty("family_name")]
-        public string LastName { get; set; }
-
-        /// <summary>
         /// 
         /// </summary>
         /// <remarks>
@@ -66,12 +48,6 @@ namespace Auth0.Core
         /// </summary>
         [JsonProperty("logins_count")]
         public string LoginsCount { get; set; }
-
-        /// <summary>
-        /// URL pointing to the user picture (if not available, will use gravatar.com with the email). ALWAYS GENERATED
-        /// </summary>
-        [JsonProperty("picture")]
-        public string Picture { get; set; }
 
         /// <summary>
         /// Gets or sets whether the user's phone number is verified.
