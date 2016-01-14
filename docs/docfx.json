@@ -16,7 +16,8 @@
     "content": [
       {
         "files": [ "**/*.yml" ],
-        "cwd": "obj/"
+        "src": "obj/api",
+        "dest": "api"
       },
       {
         "files": [ "articles/**/*.md", "*.md", "toc.yml" ]
