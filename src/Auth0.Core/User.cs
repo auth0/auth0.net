@@ -96,6 +96,12 @@ namespace Auth0.Core
         [JsonProperty("user_id")]
         public string UserId { get; set; }
 
+        /// <summary>
+        /// Gets or sets whether the user is blocked. True if the user is blocked, otherwise false.
+        /// </summary>
+        [JsonProperty("blocked")]
+        public bool Blocked { get; set; }
+
     }
 
 }

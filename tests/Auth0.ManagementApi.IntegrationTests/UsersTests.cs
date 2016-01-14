@@ -95,5 +95,39 @@ namespace Auth0.ManagementApi.IntegrationTests
             Func<Task> getFunc = async () => await apiClient.Users.Get(user.UserId);
             getFunc.ShouldThrow<ApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_user");
         }
+
+        [Test]
+        public async Task Test_user_blocking()
+        {
+            // Add a new user, and ensure user is not blocked
+            var newUserRequest = new UserCreateRequest
+            {
+                Connection = connection.Name,
+                Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
+                EmailVerified = true,
+                Password = "password"
+            };
+            var newUserResponse = await apiClient.Users.Create(newUserRequest);
+            newUserResponse.Blocked.Should().BeFalse();
+
+            // Ensure the user is not blocked when we select the user individually
+            var user = await apiClient.Users.Get(newUserResponse.UserId);
+            user.Blocked.Should().BeFalse();
+
+            // Block the user, and ensure returned user is blocked
+            var updateUserRequest = new UserUpdateRequest
+            {
+                Blocked = true
+            };
+            var updateUserResponse = await apiClient.Users.Update(newUserResponse.UserId, updateUserRequest);
+            updateUserResponse.Blocked.Should().BeTrue();
+
+            // Ensure the user is not blocked when we select the user individually
+            user = await apiClient.Users.Get(newUserResponse.UserId);
+            user.Blocked.Should().BeTrue();
+
+            // Delete the user
+            await apiClient.Users.Delete(user.UserId);
+        }
     }
 }
