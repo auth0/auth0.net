@@ -1,5 +1,8 @@
 ﻿using System;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Runtime.Serialization;
+using System.Collections.Generic;
 
 namespace Auth0.Core
 {
@@ -7,6 +10,7 @@ namespace Auth0.Core
     /// <summary>
     /// 
     /// </summary>
+    //[JsonConverter(typeof(TestConverter))]
     public class User : UserBase
     {
 
@@ -78,6 +82,11 @@ namespace Auth0.Core
         [JsonProperty("blocked")]
         public bool Blocked { get; set; }
 
+        /// <summary>
+        /// Contains a lists of all the extra provider specific user attributes over and above those contained in the <a href="https://auth0.com/docs/user-profile/normalized">normalized user profile</a>.
+        /// </summary>
+        [JsonExtensionData]
+        public IDictionary<string, JToken> ProviderAttributes { get; set; }
     }
-
+    
 }
