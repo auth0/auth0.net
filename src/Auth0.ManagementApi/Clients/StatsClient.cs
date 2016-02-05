@@ -26,7 +26,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The number of users.</returns>
         public async Task<long> GetActiveUsers()
         {
-            var result = await Connection.GetAsync<object>("stats/active-users", null, null, null);
+            var result = await Connection.GetAsync<object>("stats/active-users", null, null, null, null);
 
             return Convert.ToInt64(result);
         }
@@ -42,9 +42,9 @@ namespace Auth0.ManagementApi.Clients
             return Connection.GetAsync<IList<DailyStatistics>>("stats/daily", null, 
                 new Dictionary<string, string>
                 {
-                    { "from", from.ToString("yyyyMMdd") },
+                    { "from", @from.ToString("yyyyMMdd") },
                     { "to", to.ToString("yyyyMMdd") }
-                }, null);
+                }, null, null);
         }
     }
 }

@@ -48,6 +48,7 @@ namespace Auth0.Core.Http
                 null,
                 null,
                 null, 
+                null, 
                 null).ConfigureAwait(false);
         }
 
@@ -59,8 +60,9 @@ namespace Auth0.Core.Http
         /// <param name="urlSegments">The URL segments.</param>
         /// <param name="queryStrings">The query strings.</param>
         /// <param name="headers">The headers.</param>
+        /// <param name="converters">The list of <see cref="JsonConverter"/> to use during deserialization.</param>
         /// <returns>Task&lt;T&gt;.</returns>
-        public async Task<T> GetAsync<T>(string resource, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings, IDictionary<string, object> headers) where T : class
+        public async Task<T> GetAsync<T>(string resource, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings, IDictionary<string, object> headers, params JsonConverter[] converters) where T : class
         {
             return await RunAsync<T>(resource,
                 HttpMethod.Get, 
@@ -69,7 +71,8 @@ namespace Auth0.Core.Http
                 queryStrings,
                 null,
                 headers, 
-                null).ConfigureAwait(false);
+                null, 
+                converters).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -93,7 +96,8 @@ namespace Auth0.Core.Http
                 queryStrings,
                 parameters, 
                 headers, 
-                fileParameters).ConfigureAwait(false);
+                fileParameters, 
+                null).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -113,6 +117,7 @@ namespace Auth0.Core.Http
                 null,
                 null,
                 null, 
+                null, 
                 null).ConfigureAwait(false);
         }
 
@@ -128,8 +133,9 @@ namespace Auth0.Core.Http
         /// <param name="parameters">The parameters.</param>
         /// <param name="headers">The headers.</param>
         /// <param name="fileParameters">The file parameters.</param>
+        /// <param name="converters">The list of <see cref="JsonConverter"/> to use during deserialization.</param>
         /// <returns>Task&lt;T&gt;.</returns>
-        private async Task<T> RunAsync<T>(string resource, HttpMethod httpMethod, object body, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings, IDictionary<string, object> parameters, IDictionary<string, object> headers, IList<FileUploadParameter> fileParameters) where T : class
+        private async Task<T> RunAsync<T>(string resource, HttpMethod httpMethod, object body, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings, IDictionary<string, object> parameters, IDictionary<string, object> headers, IList<FileUploadParameter> fileParameters, params JsonConverter[] converters) where T : class
         {
             // Build the request URL
             var requestMessage = new HttpRequestMessage(httpMethod, BuildRequestUri(resource, urlSegments, queryStrings));
@@ -154,7 +160,7 @@ namespace Auth0.Core.Http
             if (typeof (T)== typeof (string)) // Let string content pass throug
                 return (T)(object)content;
 
-            return JsonConvert.DeserializeObject<T>(content);
+            return JsonConvert.DeserializeObject<T>(content, converters);
         }
 
         private void ApplyHeaders(HttpRequestMessage message, IDictionary<string, object> headers)

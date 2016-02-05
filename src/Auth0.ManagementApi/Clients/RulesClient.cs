@@ -63,7 +63,7 @@ namespace Auth0.ManagementApi.Clients
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                }, null);
+                }, null, null);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Auth0.ManagementApi.Clients
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()},
                     {"stage", stage}
-                }, null);
+                }, null, null);
         }
 
         /// <summary>
