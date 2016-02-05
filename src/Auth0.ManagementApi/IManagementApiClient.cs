@@ -1,4 +1,5 @@
-﻿using Auth0.ManagementApi.Clients;
+﻿using Auth0.Core.Http;
+using Auth0.ManagementApi.Clients;
 
 namespace Auth0.ManagementApi
 {
@@ -61,5 +62,10 @@ namespace Auth0.ManagementApi
         /// Contains all the methods to call the /users endpoints.
         /// </summary>
         IUsersClient Users { get; }
+
+        /// <summary>
+        /// Gets information about the last API call;
+        /// </summary>
+        ApiInfo GetLastApiInfo();
     }
 }

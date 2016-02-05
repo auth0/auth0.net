@@ -67,8 +67,11 @@
     <Compile Include="Clients\TentantSettingsClient.cs" />
     <Compile Include="Clients\TicketsClient.cs" />
     <Compile Include="Clients\UsersClient.cs" />
+    <Compile Include="Core\Http\ApiInfo.cs" />
+    <Compile Include="Core\Http\ApiInfoParser.cs" />
     <Compile Include="Core\Http\DiagnosticsHeader.cs" />
     <Compile Include="Core\Http\IApiConnection.cs" />
+    <Compile Include="Core\Http\RateLimit.cs" />
     <Compile Include="IManagementApiClient.cs" />
     <Compile Include="ManagementApiClient.cs" />
     <Compile Include="Models\AccountLinkResponse.cs" />
