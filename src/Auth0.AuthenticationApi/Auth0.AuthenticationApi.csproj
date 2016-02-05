@@ -45,11 +45,20 @@
     <Compile Include="..\Auth0.ManagementApi\Core\Http\ApiConnection.cs">
       <Link>Core\Http\ApiConnection.cs</Link>
     </Compile>
+    <Compile Include="..\Auth0.ManagementApi\Core\Http\ApiInfo.cs">
+      <Link>Core\Http\ApiInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Auth0.ManagementApi\Core\Http\ApiInfoParser.cs">
+      <Link>Core\Http\ApiInfoParser.cs</Link>
+    </Compile>
     <Compile Include="..\Auth0.ManagementApi\Core\Http\DiagnosticsHeader.cs">
       <Link>Core\Http\DiagnosticsHeader.cs</Link>
     </Compile>
     <Compile Include="..\Auth0.ManagementApi\Core\Http\IApiConnection.cs">
       <Link>Core\Http\IApiConnection.cs</Link>
+    </Compile>
+    <Compile Include="..\Auth0.ManagementApi\Core\Http\RateLimit.cs">
+      <Link>Core\Http\RateLimit.cs</Link>
     </Compile>
     <Compile Include="AuthenticationApiClient.cs" />
     <Compile Include="Builders\AuthorizationUrlBuilder.cs" />

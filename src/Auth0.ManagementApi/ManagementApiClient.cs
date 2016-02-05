@@ -78,6 +78,14 @@ namespace Auth0.ManagementApi
         public IUsersClient Users { get; }
 
         /// <summary>
+        /// Gets information about the last API call;
+        /// </summary>
+        public ApiInfo GetLastApiInfo()
+        {
+            return apiConnection.ApiInfo;
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
         /// </summary>
         /// <param name="token">The token.</param>

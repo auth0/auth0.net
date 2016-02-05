@@ -20,6 +20,11 @@ namespace Auth0.Core.Http
         private readonly DiagnosticsHeader diagnostics;
 
         /// <summary>
+        /// Contains information about the last API call made by the connection.
+        /// </summary>
+        public ApiInfo ApiInfo { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ApiConnection"/> class.
         /// </summary>
         /// <param name="token">The API token.</param>
@@ -154,6 +159,9 @@ namespace Auth0.Core.Http
             // Handle API errors
             await HandleErrors(response);
 
+            // Extract the relevate API headers
+            ExtractApiInfo(response);
+
             // Deserialize the content
             string content = await response.Content.ReadAsStringAsync();
 
@@ -161,6 +169,11 @@ namespace Auth0.Core.Http
                 return (T)(object)content;
 
             return JsonConvert.DeserializeObject<T>(content, converters);
+        }
+
+        private void ExtractApiInfo(HttpResponseMessage response)
+        {
+            ApiInfo = ApiInfoParser.Parse(response.Headers);
         }
 
         private void ApplyHeaders(HttpRequestMessage message, IDictionary<string, object> headers)
