@@ -92,6 +92,7 @@
     <Compile Include="Models\UserUpdateRequest.cs" />
     <Compile Include="Models\VerifyEmailJobRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization\UserPagedListConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">

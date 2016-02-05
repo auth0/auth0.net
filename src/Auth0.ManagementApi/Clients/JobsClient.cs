@@ -34,7 +34,7 @@ namespace Auth0.ManagementApi.Clients
                 {
                     {"id", id}
                 },
-                null, null);
+                null, null, null);
         }
 
         /// <summary>

@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Auth0.Core;
+using Auth0.Core.Collections;
 using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
+using Auth0.ManagementApi.Serialization;
 
 namespace Auth0.ManagementApi.Clients
 {
@@ -72,7 +74,7 @@ namespace Auth0.ManagementApi.Clients
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                }, null);
+                }, null, null);
         }
 
         /// <summary>
@@ -90,12 +92,12 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="q">Query in Lucene query string syntax. Only fields in app_metadata, user_metadata or the normalized user
         /// profile are searchable.</param>
         /// <param name="searchEngine">Use 'v2' if you want to try the new search engine, or 'v1' for the old search engine.</param>
-        /// <returns>Task&lt;IList&lt;User&gt;&gt;.</returns>
-        public Task<IList<User>> GetAll(int? page = null, int? perPage = null, bool? includeTotals = null, string sort = null, string connection = null, string fields = null,
+        /// <returns>A <see cref="IPagedList{User}"/> with the paged list of users.</returns>
+        public Task<IPagedList<User>> GetAll(int? page = null, int? perPage = null, bool? includeTotals = null, string sort = null, string connection = null, string fields = null,
             bool? includeFields = null,
             string q = null, string searchEngine = null)
         {
-            return Connection.GetAsync<IList<User>>("users", null,
+            return Connection.GetAsync<IPagedList<User>>("users", null,
                 new Dictionary<string, string>
                 {
                     {"page", page?.ToString()},
@@ -107,7 +109,7 @@ namespace Auth0.ManagementApi.Clients
                     {"include_fields", includeFields?.ToString().ToLower()},
                     {"q", q},
                     {"search_engine", searchEngine}
-                }, null);
+                }, null, new UserPagedListConverter());
         }
 
         /// <summary>

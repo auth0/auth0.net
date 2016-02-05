@@ -129,5 +129,14 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Delete the user
             await apiClient.Users.Delete(user.UserId);
         }
+
+        [Test]
+        public async Task Test_pagination_totals_deserialize_correctly()
+        {
+            var users = await apiClient.Users.GetAll(includeTotals: true);
+
+            users.Should().NotBeNull();
+            users.Paging.Should().NotBeNull();
+        }
     }
 }

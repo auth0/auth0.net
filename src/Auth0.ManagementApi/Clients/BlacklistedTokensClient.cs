@@ -31,7 +31,7 @@ namespace Auth0.ManagementApi.Clients
                 new Dictionary<string, string>
                 {
                     {"aud", aud}
-                }, null);
+                }, null, null);
         }
 
         /// <summary>

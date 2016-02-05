@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Auth0.Core;
+using Auth0.Core.Collections;
 using Auth0.ManagementApi.Models;
 
 namespace Auth0.ManagementApi.Clients
@@ -66,7 +67,7 @@ namespace Auth0.ManagementApi.Clients
         /// </param>
         /// <param name="searchEngine">Use 'v2' if you want to try the new search engine, or 'v1' for the old search engine.</param>
         /// <returns></returns>
-        Task<IList<User>> GetAll(int? page = null, int? perPage = null, bool? includeTotals = null, string sort = null, string connection = null, string fields = null,
+        Task<IPagedList<User>> GetAll(int? page = null, int? perPage = null, bool? includeTotals = null, string sort = null, string connection = null, string fields = null,
             bool? includeFields = null, string q = null, string searchEngine = null);
 
         /// <summary>

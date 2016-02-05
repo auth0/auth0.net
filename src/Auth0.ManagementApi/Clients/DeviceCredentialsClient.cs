@@ -39,7 +39,7 @@ namespace Auth0.ManagementApi.Clients
                     {"user_id", userId},
                     {"client_id", clientId},
                     {"type", type}
-                }, null);
+                }, null, null);
         }
 
         /// <summary>
