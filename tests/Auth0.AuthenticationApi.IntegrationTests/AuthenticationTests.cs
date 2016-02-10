@@ -89,6 +89,9 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
             // Assert
             authenticationResponse.Should().NotBeNull();
+            authenticationResponse.TokenType.Should().NotBeNull();
+            authenticationResponse.AccessToken.Should().NotBeNull();
+            authenticationResponse.IdToken.Should().NotBeNull();
         }
 
         [Test]
@@ -110,6 +113,9 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
             // Assert
             authenticationResponse.Should().NotBeNull();
+            authenticationResponse.TokenType.Should().NotBeNull();
+            authenticationResponse.AccessToken.Should().NotBeNull();
+            authenticationResponse.IdToken.Should().NotBeNull();
         }
     }
 }
