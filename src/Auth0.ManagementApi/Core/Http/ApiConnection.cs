@@ -271,9 +271,6 @@ namespace Auth0.Core.Http
         {
             if (!response.IsSuccessStatusCode)
             {
-                //if (response.Exception != null)
-                //    throw new ApiException(response.Exception.Message, response.Exception);;
-
                 ApiError apiError = null;
 
                 // Grab the content
@@ -283,11 +280,20 @@ namespace Auth0.Core.Http
 
                     if (!string.IsNullOrEmpty(responseContent))
                     {
-                        apiError = JsonConvert.DeserializeObject<ApiError>(responseContent, new JsonSerializerSettings
+                        try
                         {
-                            // Suppress any parsing errors of payload
-                            Error = (sender, args) => { args.ErrorContext.Handled = true; }
-                        });
+                            apiError = JsonConvert.DeserializeObject<ApiError>(responseContent, new JsonSerializerSettings()
+                            {
+                                ContractResolver = new ApiErrorContractResolver()
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            apiError = new ApiError();
+                            apiError.Error = responseContent;
+                            apiError.Message = responseContent;
+                            apiError.StatusCode = (int)response.StatusCode;
+                        }
                     }
                 }
 

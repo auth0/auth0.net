@@ -294,5 +294,28 @@ namespace Auth0.AuthenticationApi
         {
             await Connection.PostAsync<object>("unlink", request, null, null, null, null, null);
         }
+        
+        /// <summary>
+        /// Given an <see cref="UsernamePasswordLoginRequest"/>, it will do the authentication on the provider and return a <see cref="UsernamePasswordLoginResponse"/>
+        /// </summary>
+        /// <param name="request">The authentication request details containing information regarding the connection, username, password etc.</param>
+        /// <returns>A <see cref="UsernamePasswordLoginResponse"/> containing the WS-Federation Login Form, which can be posted by the user to trigger a server-side login.</returns>
+        public async Task<UsernamePasswordLoginResponse> UsernamePasswordLogin(UsernamePasswordLoginRequest request)
+        {
+            if (request != null && string.IsNullOrEmpty(request.Tenant) && baseUri.Host.Contains("."))
+            {
+                request.Tenant = baseUri.Host.Split('.')[0];
+            }
+
+            if (request != null && string.IsNullOrEmpty(request.ResponseType))
+            {
+                request.ResponseType = "code";
+            }
+
+            return new UsernamePasswordLoginResponse()
+            {
+                HtmlForm = await Connection.PostAsync<string>("usernamepassword/login", request, null, null, null, null, null).ConfigureAwait(false)
+            };
+        }
     }
 }

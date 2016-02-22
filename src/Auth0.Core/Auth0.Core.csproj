@@ -41,6 +41,7 @@
     <Compile Include="Base\PagingInformation.cs" />
     <Compile Include="Collections\IPagedList.cs" />
     <Compile Include="Collections\PagedList.cs" />
+    <Compile Include="ApiErrorContractResolver.cs" />
     <Compile Include="Exceptions\ApiException.cs" />
     <Compile Include="Http\DiagnosticsComponent.cs" />
     <Compile Include="Http\Utils.cs" />
