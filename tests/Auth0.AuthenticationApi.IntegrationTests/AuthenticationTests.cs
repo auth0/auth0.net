@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Web;
+using AngleSharp;
+using AngleSharp.Dom.Html;
+using AngleSharp.Extensions;
 using Auth0.AuthenticationApi.Models;
 using Auth0.Core;
 using Auth0.ManagementApi;
@@ -116,6 +120,46 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             authenticationResponse.TokenType.Should().NotBeNull();
             authenticationResponse.AccessToken.Should().NotBeNull();
             authenticationResponse.IdToken.Should().NotBeNull();
+        }
+
+        [Test]
+        public async Task Returns_username_and_password_login_form()
+        {
+            // Arrange
+            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+
+            // Act
+            var authenticationResponse = await authenticationApiClient.UsernamePasswordLogin(new UsernamePasswordLoginRequest
+            {
+                ClientId = GetVariable("AUTH0_CLIENT_ID"),
+                Connection = connection.Name,
+                Scope = "openid",
+                Username = user.Email,
+                Password = "password",
+                RedirectUri = "http://www.blah.com/test"
+            });
+
+            // Assert
+            authenticationResponse.Should().NotBeNull();
+            authenticationResponse.HtmlForm.Should().NotBeNull();
+
+
+            // Load the form, and submit it
+            var configuration = Configuration.Default.WithDefaultLoader().WithCookies();
+            var context = BrowsingContext.New(configuration);
+            await context.OpenAsync(request =>
+            {
+                request.Content(authenticationResponse.HtmlForm);
+            });
+
+            await context.Active.QuerySelector<IHtmlFormElement>("form").Submit();
+
+            // Extract the URL and query from the postback
+            var uri = new Uri(context.Active.Url);
+            var code = HttpUtility.ParseQueryString(uri.Query)["code"];
+
+            // Assert that callback is made and code is passed back
+            code.Should().NotBeNull();
         }
     }
 }
