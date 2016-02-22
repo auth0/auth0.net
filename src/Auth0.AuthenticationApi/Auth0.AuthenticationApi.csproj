@@ -68,6 +68,8 @@
     <Compile Include="Builders\WsFedUrlBuilder.cs" />
     <Compile Include="IAuthenticationApiClient.cs" />
     <Compile Include="Models\AccessToken.cs" />
+    <Compile Include="Models\UsernamePasswordLoginResponse.cs" />
+    <Compile Include="Models\UsernamePasswordLoginRequest.cs" />
     <Compile Include="Models\AuthenticationRequest.cs" />
     <Compile Include="Models\AuthenticationResponse.cs" />
     <Compile Include="Models\ChangePasswordRequest.cs" />

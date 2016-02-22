@@ -139,5 +139,12 @@ namespace Auth0.AuthenticationApi
         /// <param name="request">The <see cref="UnlinkUserRequest"/> containing the information of the accounts to unlink.</param>
         /// <returns>Nothing</returns>
         Task UnlinkUser(UnlinkUserRequest request);
+
+        /// <summary>
+        /// Given an <see cref="UsernamePasswordLoginRequest"/>, it will do the authentication on the provider and return a <see cref="UsernamePasswordLoginResponse"/>
+        /// </summary>
+        /// <param name="request">The authentication request details containing information regarding the connection, username, password etc.</param>
+        /// <returns>A <see cref="UsernamePasswordLoginResponse"/> containing the WS-Federation Login Form, which can be posted by the user to trigger a server-side login.</returns>
+        Task<UsernamePasswordLoginResponse> UsernamePasswordLogin(UsernamePasswordLoginRequest request);
     }
 }
