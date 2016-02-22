@@ -10,7 +10,7 @@ namespace Auth0.AuthenticationApi.Models
         /// <summary>
         /// Gets or sets the identifier of the response..
         /// </summary>
-        [JsonProperty("Id")]
+        [JsonProperty("id")]
         public string Id { get; set; }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace Auth0.AuthenticationApi.Models
         /// <summary>
         /// The email address of the new user.
         /// </summary>
-        [JsonProperty("Email")]
+        [JsonProperty("email")]
         public string Email { get; set; }
 
         /// <summary>
