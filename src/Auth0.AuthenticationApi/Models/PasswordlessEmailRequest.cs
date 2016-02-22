@@ -16,7 +16,7 @@ namespace Auth0.AuthenticationApi.Models
         /// <summary>
         /// Gets or sets the email to which the link or code must be sent.
         /// </summary>
-        [JsonProperty("Email")]
+        [JsonProperty("email")]
         public string Email { get; set; }
 
         /// <summary>

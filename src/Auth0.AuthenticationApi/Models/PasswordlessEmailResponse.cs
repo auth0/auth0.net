@@ -10,13 +10,13 @@ namespace Auth0.AuthenticationApi.Models
         /// <summary>
         /// The identifier of the request.
         /// </summary>
-        [JsonProperty("Id")]
+        [JsonProperty("id")]
         public string Id { get; set; }
 
         /// <summary>
         /// The email to which the request was sent.
         /// </summary>
-        [JsonProperty("Email")]
+        [JsonProperty("email")]
         public string Email { get; set; }
     }
 }
