@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>Auth0.AuthenticationApi</id>
-        <version>2.2.0</version>
+        <version>2.2.1</version>
         <authors>Auth0</authors>
         <owners>Auth0</owners>
         <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
@@ -11,9 +11,12 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Client library for the Auth0 Authentication API</description>
         <releaseNotes>
+          Version 2.2.1
+          - Fix NuGet package dependencies
+
           Version 2.2.0
           - Adds support for the usernamepassword/login endpoint through the UsernamePasswordLogin method
-          
+
           Version 2.1.3
           - Fix serialization issues on some response structures
 
@@ -28,7 +31,7 @@
         <tags>Auth0 OAuth</tags>
         <dependencies>
             <dependency id="Newtonsoft.Json" version="7.0.1" />
-            <dependency id="Auth0.Core" version="2.1.0" />
+            <dependency id="Auth0.Core" version="2.1.1" />
         </dependencies>
     </metadata>
 	<files>
