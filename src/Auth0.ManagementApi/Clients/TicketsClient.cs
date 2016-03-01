@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.ComponentModel;
+using System.Threading.Tasks;
 using Auth0.Core;
 using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
@@ -24,7 +26,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="request">The <see cref="EmailVerificationTicketRequest" /> containing the details of the ticket to create.</param>
         /// <returns>The <see cref="Ticket" />.</returns>
-        public Task<Ticket> CreateEmailVerificationTicket(EmailVerificationTicketRequest request)
+        public Task<Ticket> CreateEmailVerificationTicketAsync(EmailVerificationTicketRequest request)
         {
             return Connection.PostAsync<Ticket>("tickets/email-verification", request, null, null, null, null, null);
         }
@@ -34,9 +36,29 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="request">The <see cref="PasswordChangeTicketRequest" /> containing the details of the ticket to create.</param>
         /// <returns>The <see cref="Ticket" />.</returns>
-        public Task<Ticket> CreatePasswordChangeTicket(PasswordChangeTicketRequest request)
+        public Task<Ticket> CreatePasswordChangeTicketAsync(PasswordChangeTicketRequest request)
         {
             return Connection.PostAsync<Ticket>("tickets/password-change", request, null, null, null, null, null);
         }
+
+        #region Obsolete Methods
+#pragma warning disable 1591
+
+        [Obsolete("Use CreateEmailVerificationTicketAsync instead")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public Task<Ticket> CreateEmailVerificationTicket(EmailVerificationTicketRequest request)
+        {
+            return CreateEmailVerificationTicketAsync(request);
+        }
+
+        [Obsolete("Use CreatePasswordChangeTicketAsync instead")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public Task<Ticket> CreatePasswordChangeTicket(PasswordChangeTicketRequest request)
+        {
+            return CreatePasswordChangeTicketAsync(request);
+        }
+
+#pragma warning restore 1591
+        #endregion
     }
 }
