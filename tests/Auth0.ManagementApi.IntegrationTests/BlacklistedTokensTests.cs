@@ -20,7 +20,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_BLACKLISTED_TOKENS"), new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
             // Get all the blacklisted tokens
-            var tokensBefore = await apiClient.BlacklistedTokens.GetAll(apiKey);
+            var tokensBefore = await apiClient.BlacklistedTokens.GetAllAsync(apiKey);
 
             // Generate a token which allows us to list all clients
             var scopes = new
@@ -35,7 +35,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Confirm that the token is working
             var confirmationApiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
-            var clients = await confirmationApiClient.Clients.GetAll();
+            var clients = await confirmationApiClient.Clients.GetAllAsync();
             clients.Should().NotBeNull();
 
             // Now blacklist that new token
@@ -44,14 +44,14 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Aud = apiKey,
                 Jti = jti
             };
-            await apiClient.BlacklistedTokens.Create(blacklistRequest);
+            await apiClient.BlacklistedTokens.CreateAsync(blacklistRequest);
 
             // Get all the blacklisted tokens and check that we have one more
-            var tokensAfter = await apiClient.BlacklistedTokens.GetAll(apiKey);
+            var tokensAfter = await apiClient.BlacklistedTokens.GetAllAsync(apiKey);
             tokensAfter.Count.Should().Be(tokensBefore.Count + 1);
 
             // Try and get all the clients again with that token
-            Func<Task> getFunc = async () => await confirmationApiClient.Clients.GetAll();
+            Func<Task> getFunc = async () => await confirmationApiClient.Clients.GetAllAsync();
             getFunc.ShouldThrow<ApiException>().And.ApiError.StatusCode.Should().Be(401);
         }
     }

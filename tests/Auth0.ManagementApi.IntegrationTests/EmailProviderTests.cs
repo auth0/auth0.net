@@ -27,10 +27,10 @@ namespace Auth0.ManagementApi.IntegrationTests
             var apiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
             // Delete the email provider to ensure we start on a clean slate
-            await apiClient.EmailProvider.Delete();
+            await apiClient.EmailProvider.DeleteAsync();
 
             // Getting the email provider now should throw, since none is configured
-            Func<Task> getFunc = async () => await apiClient.EmailProvider.Get("name,enabled,credentials,settings");
+            Func<Task> getFunc = async () => await apiClient.EmailProvider.GetAsync("name,enabled,credentials,settings");
             getFunc.ShouldThrow<ApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_email_provider");
 
             // Configure the email provider
@@ -43,13 +43,13 @@ namespace Auth0.ManagementApi.IntegrationTests
                     ApiKey = "ABC"
                 }
             };
-            var configureResponse = await apiClient.EmailProvider.Configure(configureRequest);
+            var configureResponse = await apiClient.EmailProvider.ConfigureAsync(configureRequest);
             configureResponse.Name.Should().Be(configureRequest.Name);
             configureResponse.IsEnabled.Should().Be(configureRequest.IsEnabled);
             configureResponse.Credentials.ApiKey.Should().Be(configureRequest.Credentials.ApiKey);
 
             // Check that we can get the email provider details 
-            var provider = await apiClient.EmailProvider.Get("name,enabled,credentials,settings");
+            var provider = await apiClient.EmailProvider.GetAsync("name,enabled,credentials,settings");
             provider.Name.Should().Be(configureRequest.Name);
             provider.IsEnabled.Should().Be(configureRequest.IsEnabled);
             provider.Credentials.ApiKey.Should().Be(configureRequest.Credentials.ApiKey);
@@ -64,16 +64,16 @@ namespace Auth0.ManagementApi.IntegrationTests
                     ApiKey = "XYZ"
                 }
             };
-            var updateResponse = await apiClient.EmailProvider.Update(updateRequest);
+            var updateResponse = await apiClient.EmailProvider.UpdateAsync(updateRequest);
             updateResponse.Name.Should().Be(updateRequest.Name);
             updateResponse.IsEnabled.Should().Be(updateRequest.IsEnabled);
             updateResponse.Credentials.ApiKey.Should().Be(updateRequest.Credentials.ApiKey);
 
             // Delete the email provider again
-            await apiClient.EmailProvider.Delete();
+            await apiClient.EmailProvider.DeleteAsync();
 
             // Check than once again the email provider should throw, since none is configured
-            getFunc = async () => await apiClient.EmailProvider.Get("name,enabled,credentials,settings");
+            getFunc = async () => await apiClient.EmailProvider.GetAsync("name,enabled,credentials,settings");
             getFunc.ShouldThrow<ApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_email_provider");
 
         }

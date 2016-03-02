@@ -57,7 +57,7 @@ namespace ConsoleTestWorkbench
         private static async Task TestClientMethods(IManagementApiClient apiClient)
         {
             // Get all clients
-            var clients = await apiClient.Clients.GetAll();
+            var clients = await apiClient.Clients.GetAllAsync();
 
             //// Create a new client
             //var newClientRequest = new ClientCreateRequest
@@ -88,23 +88,23 @@ namespace ConsoleTestWorkbench
                 Name = "jerrie-new-connection",
                 Strategy = "github"
             };
-            var newConnection = await apiClient.Connections.Create(newConnectionRequest);
+            var newConnection = await apiClient.Connections.CreateAsync(newConnectionRequest);
 
             // Get a single connection
-            var connection = await apiClient.Connections.Get(newConnection.Id);
+            var connection = await apiClient.Connections.GetAsync(newConnection.Id);
 
             // Get all GitHub connections
-            var connections = await apiClient.Connections.GetAll("github");
+            var connections = await apiClient.Connections.GetAllAsync("github");
 
             // Update a connection
             var updateConnectionRequest = new ConnectionUpdateRequest
             {
                 Name = "jerrie-updated-connection"
             };
-            connection = await apiClient.Connections.Update(newConnection.Id, updateConnectionRequest);
+            connection = await apiClient.Connections.UpdateAsync(newConnection.Id, updateConnectionRequest);
 
             // Delete the connection
-            await apiClient.Connections.Delete(newConnection.Id);
+            await apiClient.Connections.DeleteAsync(newConnection.Id);
         }
 
         private static async Task TestDeviceCredentialsMethods(ManagementApiClient apiClient)
@@ -131,10 +131,10 @@ namespace ConsoleTestWorkbench
         private static async Task TestEmailsMethods(ManagementApiClient apiClient)
         {
             // Get the email provider
-            var provider = await apiClient.EmailProvider.Get("name,enabled,credentials,settings");
+            var provider = await apiClient.EmailProvider.GetAsync("name,enabled,credentials,settings");
 
             // Delete the email provider
-            await apiClient.EmailProvider.Delete();
+            await apiClient.EmailProvider.DeleteAsync();
 
             // Configure the email provider
             var configureRequest = new EmailProviderConfigureRequest
@@ -146,7 +146,7 @@ namespace ConsoleTestWorkbench
                     ApiKey = "ABC"
                 }
             };
-            var configureResponse = await apiClient.EmailProvider.Configure(configureRequest);
+            var configureResponse = await apiClient.EmailProvider.ConfigureAsync(configureRequest);
 
             // Update the email provider
             var updateRequest = new EmailProviderUpdateRequest
@@ -158,7 +158,7 @@ namespace ConsoleTestWorkbench
                     ApiKey = "XYZ"
                 }
             };
-            var updateResponse = await apiClient.EmailProvider.Update(updateRequest);
+            var updateResponse = await apiClient.EmailProvider.UpdateAsync(updateRequest);
         }
 
         private static async Task TestJobsMethods(ManagementApiClient apiClient)
@@ -168,10 +168,10 @@ namespace ConsoleTestWorkbench
             {
                 UserId = "auth0|56443c91950b505a3399c3b3"
             };
-            var emailRequestResponse = await apiClient.Jobs.SendVerificationEmail(emailRequest);
+            var emailRequestResponse = await apiClient.Jobs.SendVerificationEmailAsync(emailRequest);
 
             // Get the job status
-            var job = await apiClient.Jobs.Get(emailRequestResponse.Id);
+            var job = await apiClient.Jobs.GetAsync(emailRequestResponse.Id);
 
             // Send a user import request
             //using (FileStream fs = new FileStream("user-import-test.json", FileMode.Open))
@@ -191,45 +191,45 @@ namespace ConsoleTestWorkbench
                               callback(null, user, context);
                             }"
             };
-            var newRule = await apiClient.Rules.Create(newRuleRequest);
+            var newRule = await apiClient.Rules.CreateAsync(newRuleRequest);
 
             // Get a single rule
-            var rule = await apiClient.Rules.Get(newRule.Id);
+            var rule = await apiClient.Rules.GetAsync(newRule.Id);
 
             // Get all rules
-            var rules = await apiClient.Rules.GetAll();
+            var rules = await apiClient.Rules.GetAllAsync();
 
             // Update a rule
             var updateRuleRequest = new RuleUpdateRequest
             {
                 Name = "Updated rule"
             };
-            var updatedRule = await apiClient.Rules.Update(newRule.Id, updateRuleRequest);
+            var updatedRule = await apiClient.Rules.UpdateAsync(newRule.Id, updateRuleRequest);
 
             // Delete a rule
-            await apiClient.Rules.Delete(newRule.Id);
+            await apiClient.Rules.DeleteAsync(newRule.Id);
         }
 
         private static async Task TestStatsMethods(ManagementApiClient apiClient)
         {
             // Get active users
-            var users = await apiClient.Stats.GetActiveUsers();
+            var users = await apiClient.Stats.GetActiveUsersAsync();
 
             // Get daily stats
-            var dailyStats = await apiClient.Stats.GetDailyStats(new DateTime(2015, 11, 1), new DateTime(2015, 11, 30));
+            var dailyStats = await apiClient.Stats.GetDailyStatsAsync(new DateTime(2015, 11, 1), new DateTime(2015, 11, 30));
         }
 
         private static async Task TestTicketsMethods(ManagementApiClient apiClient)
         {
             // Send email verification ticket
-            var ticket = await apiClient.Tickets.CreateEmailVerificationTicket(new EmailVerificationTicketRequest
+            var ticket = await apiClient.Tickets.CreateEmailVerificationTicketAsync(new EmailVerificationTicketRequest
             {
                 UserId = "auth0|56443c91950b505a3399c3b3",
                 ResultUrl = "http://www.test.com/success"
             });
 
             // Send password change ticket
-            ticket = await apiClient.Tickets.CreatePasswordChangeTicket(new PasswordChangeTicketRequest
+            ticket = await apiClient.Tickets.CreatePasswordChangeTicketAsync(new PasswordChangeTicketRequest
             {
                 UserId = "auth0|56443c91950b505a3399c3b3",
                 ResultUrl = "http://www.test.com/success",

@@ -26,7 +26,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var apiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
             // Get the current settings
-            var settings = apiClient.TenantSettings.Get();
+            var settings = apiClient.TenantSettings.GetAsync();
             settings.Should().NotBeNull();
 
             // Update the tenant settings
@@ -43,7 +43,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 SupportEmail = $"support@{Guid.NewGuid().ToString("N")}.aaa",
                 SupportUrl = $"www.{Guid.NewGuid().ToString("N")}.aaa/support"
             };
-            var settingsUpdateResponse = await apiClient.TenantSettings.Update(settingsUpdateRequest);
+            var settingsUpdateResponse = await apiClient.TenantSettings.UpdateAsync(settingsUpdateRequest);
             settingsUpdateResponse.ShouldBeEquivalentTo(settingsUpdateRequest);
         }
     }

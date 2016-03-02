@@ -35,7 +35,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             apiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
             // Create a connection
-            connection = await apiClient.Connections.Create(new ConnectionCreateRequest
+            connection = await apiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
                 Name = Guid.NewGuid().ToString("N"),
                 Strategy = "auth0",
@@ -43,7 +43,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             });
 
             // Create a user
-            user = await apiClient.Users.Create(new UserCreateRequest
+            user = await apiClient.Users.CreateAsync(new UserCreateRequest
             {
                 Connection = connection.Name,
                 Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
@@ -55,8 +55,8 @@ namespace Auth0.ManagementApi.IntegrationTests
         [TearDown]
         public async Task TearDown()
         {
-            await apiClient.Users.Delete(user.UserId);
-            await apiClient.Connections.Delete(connection.Id);
+            await apiClient.Users.DeleteAsync(user.UserId);
+            await apiClient.Connections.DeleteAsync(connection.Id);
         }
 
         [Test]
@@ -68,12 +68,12 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 UserId = user.UserId
             };
-            var emailRequestResponse = await apiClient.Jobs.SendVerificationEmail(emailRequest);
+            var emailRequestResponse = await apiClient.Jobs.SendVerificationEmailAsync(emailRequest);
             emailRequestResponse.Should().NotBeNull();
             emailRequestResponse.Id.Should().NotBeNull();
 
             // Check to see whether we can get the exact same job again
-            var job = await apiClient.Jobs.Get(emailRequestResponse.Id);
+            var job = await apiClient.Jobs.GetAsync(emailRequestResponse.Id);
             job.Should().NotBeNull();
             job.Id.Should().Be(emailRequestResponse.Id);
 

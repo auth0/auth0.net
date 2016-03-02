@@ -24,11 +24,11 @@ namespace Auth0.ManagementApi.IntegrationTests
             var apiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
             // Get stats for the past 10 days
-            var dailyStats = await apiClient.Stats.GetDailyStats(DateTime.Now.AddDays(-10), DateTime.Now);
+            var dailyStats = await apiClient.Stats.GetDailyStatsAsync(DateTime.Now.AddDays(-10), DateTime.Now);
             dailyStats.Should().NotBeNull();
 
             // Get the active users
-            var activeUsers = await apiClient.Stats.GetActiveUsers();
+            var activeUsers = await apiClient.Stats.GetActiveUsersAsync();
             activeUsers.Should().BeGreaterOrEqualTo(0);
         }
     }
