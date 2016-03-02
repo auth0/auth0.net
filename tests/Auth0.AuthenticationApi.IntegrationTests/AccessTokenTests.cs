@@ -17,7 +17,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         {
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
-            var token = await authenticationApiClient.GetAccessToken(new AccessTokenRequest
+            var token = await authenticationApiClient.GetAccessTokenAsync(new AccessTokenRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 Connection = "google-oauth2",
@@ -36,7 +36,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
             
             // First get the access token
-            var token = await authenticationApiClient.GetAccessToken(new AccessTokenRequest
+            var token = await authenticationApiClient.GetAccessTokenAsync(new AccessTokenRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 Connection = "google-oauth2",
@@ -45,7 +45,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             });
 
             // Then request the delegation token
-            var delegationToken = await authenticationApiClient.GetDelegationToken(new IdTokenDelegationRequest(
+            var delegationToken = await authenticationApiClient.GetDelegationTokenAsync(new IdTokenDelegationRequest(
                 GetVariable("AUTH0_CLIENT_ID"),
                 GetVariable("AUTH0_CLIENT_ID"),
                 token.IdToken)
@@ -65,7 +65,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
             // First get the access token
-            var token = await authenticationApiClient.GetAccessToken(new AccessTokenRequest
+            var token = await authenticationApiClient.GetAccessTokenAsync(new AccessTokenRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 Connection = "google-oauth2",
@@ -75,7 +75,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
 
             // Get the user info
-            var user = await authenticationApiClient.GetUserInfo(token.AccessToken);
+            var user = await authenticationApiClient.GetUserInfoAsync(token.AccessToken);
             user.Should().NotBeNull();
             user.Email.Should().NotBeNull();
         }
@@ -86,7 +86,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
             // First get the access token
-            var token = await authenticationApiClient.GetAccessToken(new AccessTokenRequest
+            var token = await authenticationApiClient.GetAccessTokenAsync(new AccessTokenRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 Connection = "google-oauth2",
@@ -96,7 +96,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
 
             // Get the user info
-            var user = await authenticationApiClient.GetTokenInfo(token.IdToken);
+            var user = await authenticationApiClient.GetTokenInfoAsync(token.IdToken);
             user.Should().NotBeNull();
             user.Email.Should().NotBeNull();
         }
@@ -107,7 +107,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
             // Exchange the authorization code
-            var token = await authenticationApiClient.ExchangeCodeForAccessToken(new ExchangeCodeRequest
+            var token = await authenticationApiClient.ExchangeCodeForAccessTokenAsync(new ExchangeCodeRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),

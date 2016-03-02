@@ -282,17 +282,18 @@ namespace Auth0.Core.Http
                     {
                         try
                         {
-                            apiError = JsonConvert.DeserializeObject<ApiError>(responseContent, new JsonSerializerSettings()
-                            {
-                                ContractResolver = new ApiErrorContractResolver()
-                            });
+                            apiError = JsonConvert.DeserializeObject<ApiError>(responseContent);
+                            if (apiError.StatusCode == 0)
+                                apiError.StatusCode = (int)response.StatusCode;
                         }
                         catch (Exception ex)
                         {
-                            apiError = new ApiError();
-                            apiError.Error = responseContent;
-                            apiError.Message = responseContent;
-                            apiError.StatusCode = (int)response.StatusCode;
+                            apiError = new ApiError
+                            {
+                                Error = responseContent,
+                                Message = responseContent,
+                                StatusCode = (int) response.StatusCode
+                            };
                         }
                     }
                 }

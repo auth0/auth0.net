@@ -17,7 +17,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         {
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
-            var uri = await authenticationApiClient.GetImpersonationUrl(new ImpersonationRequest
+            var uri = await authenticationApiClient.GetImpersonationUrlAsync(new ImpersonationRequest
             {
                 ImpersonateId = "impersonate id",
                 Token = accessToken,

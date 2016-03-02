@@ -39,7 +39,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             apiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
             // We will need a connection to add the users to...
-            connection = await apiClient.Connections.Create(new ConnectionCreateRequest
+            connection = await apiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
                 Name = Guid.NewGuid().ToString("N"),
                 Strategy = "auth0",
@@ -50,14 +50,14 @@ namespace Auth0.ManagementApi.IntegrationTests
         [TearDown]
         public async Task TearDown()
         {
-            await apiClient.Connections.Delete(connection.Id);
+            await apiClient.Connections.DeleteAsync(connection.Id);
         } 
 
         [Test]
         public async Task Test_users_crud_sequence()
         {
             // Get all the users
-            var usersBefore = await apiClient.Users.GetAll();
+            var usersBefore = await apiClient.Users.GetAllAsync();
 
             // Add a new user
             var newUserRequest = new UserCreateRequest
@@ -67,12 +67,12 @@ namespace Auth0.ManagementApi.IntegrationTests
                 EmailVerified = true,
                 Password = "password"
             };
-            var newUserResponse = await apiClient.Users.Create(newUserRequest);
+            var newUserResponse = await apiClient.Users.CreateAsync(newUserRequest);
             newUserResponse.Should().NotBeNull();
             newUserResponse.Email.Should().Be(newUserRequest.Email);
 
             // Get all the users again. Verify we now have one more
-            var usersAfter = await apiClient.Users.GetAll();
+            var usersAfter = await apiClient.Users.GetAllAsync();
             usersAfter.Count.Should().Be(usersBefore.Count + 1);
 
             // Update the user
@@ -81,18 +81,18 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
                 VerifyEmail = false
             };
-            var updateUserResponse = await apiClient.Users.Update(newUserResponse.UserId, updateUserRequest);
+            var updateUserResponse = await apiClient.Users.UpdateAsync(newUserResponse.UserId, updateUserRequest);
             updateUserResponse.Should().NotBeNull();
             updateUserResponse.Email.Should().Be(updateUserRequest.Email);
 
             // Get a single user
-            var user = await apiClient.Users.Get(newUserResponse.UserId);
+            var user = await apiClient.Users.GetAsync(newUserResponse.UserId);
             user.Should().NotBeNull();
             user.Email.Should().Be(updateUserResponse.Email);
 
             // Delete the user and ensure we get an exception when trying to fetch them again
-            await apiClient.Users.Delete(user.UserId);
-            Func<Task> getFunc = async () => await apiClient.Users.Get(user.UserId);
+            await apiClient.Users.DeleteAsync(user.UserId);
+            Func<Task> getFunc = async () => await apiClient.Users.GetAsync(user.UserId);
             getFunc.ShouldThrow<ApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_user");
         }
 
@@ -107,11 +107,11 @@ namespace Auth0.ManagementApi.IntegrationTests
                 EmailVerified = true,
                 Password = "password"
             };
-            var newUserResponse = await apiClient.Users.Create(newUserRequest);
+            var newUserResponse = await apiClient.Users.CreateAsync(newUserRequest);
             newUserResponse.Blocked.Should().BeFalse();
 
             // Ensure the user is not blocked when we select the user individually
-            var user = await apiClient.Users.Get(newUserResponse.UserId);
+            var user = await apiClient.Users.GetAsync(newUserResponse.UserId);
             user.Blocked.Should().BeFalse();
 
             // Block the user, and ensure returned user is blocked
@@ -119,21 +119,21 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 Blocked = true
             };
-            var updateUserResponse = await apiClient.Users.Update(newUserResponse.UserId, updateUserRequest);
+            var updateUserResponse = await apiClient.Users.UpdateAsync(newUserResponse.UserId, updateUserRequest);
             updateUserResponse.Blocked.Should().BeTrue();
 
             // Ensure the user is not blocked when we select the user individually
-            user = await apiClient.Users.Get(newUserResponse.UserId);
+            user = await apiClient.Users.GetAsync(newUserResponse.UserId);
             user.Blocked.Should().BeTrue();
 
             // Delete the user
-            await apiClient.Users.Delete(user.UserId);
+            await apiClient.Users.DeleteAsync(user.UserId);
         }
 
         [Test]
         public async Task Test_pagination_totals_deserialize_correctly()
         {
-            var users = await apiClient.Users.GetAll(includeTotals: true);
+            var users = await apiClient.Users.GetAllAsync(includeTotals: true);
 
             users.Should().NotBeNull();
             users.Paging.Should().NotBeNull();

@@ -36,7 +36,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             managementApiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
             // We will need a connection to add the users to...
-            connection = await managementApiClient.Connections.Create(new ConnectionCreateRequest
+            connection = await managementApiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
                 Name = Guid.NewGuid().ToString("N"),
                 Strategy = "auth0",
@@ -48,7 +48,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         public async Task TearDown()
         {
             if (connection != null)
-                await managementApiClient.Connections.Delete(connection.Id);
+                await managementApiClient.Connections.DeleteAsync(connection.Id);
         }
 
         [Test, Explicit]
@@ -65,7 +65,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
                 Password = "password"
             };
-            var signupUserResponse = await authenticationApiClient.SignupUser(signupUserRequest);
+            var signupUserResponse = await authenticationApiClient.SignupUserAsync(signupUserRequest);
             signupUserResponse.Should().NotBeNull();
             signupUserResponse.Email.Should().Be(signupUserRequest.Email);
 
@@ -77,7 +77,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 Email = signupUserRequest.Email,
                 Password = "password2"
             };
-            string changePasswordResponse = await authenticationApiClient.ChangePassword(changePasswordRequest);
+            string changePasswordResponse = await authenticationApiClient.ChangePasswordAsync(changePasswordRequest);
             changePasswordResponse.Should().Be("\"We've just sent you an Email to reset your password.\"");
         }
     }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using Auth0.Core;
 using Auth0.Core.Http;
@@ -29,7 +31,7 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="clientId">The client id of the devices to retrieve.</param>
         /// <param name="type">The type of credentials</param>
         /// <returns>A list of <see cref="DeviceCredential" /> which conforms to the criteria specified.</returns>
-        public Task<IList<DeviceCredential>> GetAll(string fields = null, bool includeFields = true, string userId = null, string clientId = null, string type = null)
+        public Task<IList<DeviceCredential>> GetAllAsync(string fields = null, bool includeFields = true, string userId = null, string clientId = null, string type = null)
         {
             return Connection.GetAsync<IList<DeviceCredential>>("device-credentials", null,
                 new Dictionary<string, string>
@@ -47,7 +49,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="request">The request containing the details of the device credential to create.</param>
         /// <returns>Tnew newly created <see cref="DeviceCredential" /></returns>
-        public Task<DeviceCredential> Create(DeviceCredentialCreateRequest request)
+        public Task<DeviceCredential> CreateAsync(DeviceCredentialCreateRequest request)
         {
             return Connection.PostAsync<DeviceCredential>("device-credentials", request, null, null, null, null, null);
         }
@@ -57,12 +59,39 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="id">The id of the device credential to delete</param>
         /// <returns>Task.</returns>
-        public Task Delete(string id)
+        public Task DeleteAsync(string id)
         {
             return Connection.DeleteAsync<object>("device-credentials/{id}", new Dictionary<string, string>
             {
                 {"id", id}
             });
         }
+
+        #region Obsolete Methods
+#pragma warning disable 1591
+
+        [Obsolete("Use CreateAsync instead")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public Task<DeviceCredential> Create(DeviceCredentialCreateRequest request)
+        {
+            return CreateAsync(request);
+        }
+
+        [Obsolete("Use DeleteAsync instead")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public Task Delete(string id)
+        {
+            return DeleteAsync(id);
+        }
+
+        [Obsolete("Use GetAllAsync instead")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public Task<IList<DeviceCredential>> GetAll(string fields = null, bool includeFields = true, string userId = null, string clientId = null, string type = null)
+        {
+            return GetAllAsync(fields, includeFields, userId, clientId, type);
+        }
+
+#pragma warning restore 1591
+        #endregion
     }
 }

@@ -41,7 +41,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             managementApiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
             // We will need a connection to add the users to...
-            connection = await managementApiClient.Connections.Create(new ConnectionCreateRequest
+            connection = await managementApiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
                 Name = Guid.NewGuid().ToString("N"),
                 Strategy = "auth0",
@@ -49,7 +49,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             });
 
             // And add a dummy user to test against
-            user = await managementApiClient.Users.Create(new UserCreateRequest
+            user = await managementApiClient.Users.CreateAsync(new UserCreateRequest
             {
                 Connection = connection.Name,
                 Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
@@ -58,7 +58,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             });
 
             // Add a user with a + in the username
-            plusUser = await managementApiClient.Users.Create(new UserCreateRequest
+            plusUser = await managementApiClient.Users.CreateAsync(new UserCreateRequest
             {
                 Connection = connection.Name,
                 Email = $"{Guid.NewGuid().ToString("N")}+1@nonexistingdomain.aaa",
@@ -70,8 +70,8 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [TearDown]
         public async Task TearDown()
         {
-            await managementApiClient.Users.Delete(user.UserId);
-            await managementApiClient.Connections.Delete(connection.Id);
+            await managementApiClient.Users.DeleteAsync(user.UserId);
+            await managementApiClient.Connections.DeleteAsync(connection.Id);
         }
 
         [Test]
@@ -81,7 +81,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
             // Act
-            var authenticationResponse = await authenticationApiClient.Authenticate(new AuthenticationRequest
+            var authenticationResponse = await authenticationApiClient.AuthenticateAsync(new AuthenticationRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 Connection = connection.Name,
@@ -105,7 +105,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
             // Act
-            var authenticationResponse = await authenticationApiClient.Authenticate(new AuthenticationRequest
+            var authenticationResponse = await authenticationApiClient.AuthenticateAsync(new AuthenticationRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 Connection = connection.Name,
@@ -129,7 +129,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
             // Act
-            var authenticationResponse = await authenticationApiClient.UsernamePasswordLogin(new UsernamePasswordLoginRequest
+            var authenticationResponse = await authenticationApiClient.UsernamePasswordLoginAsync(new UsernamePasswordLoginRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 Connection = connection.Name,

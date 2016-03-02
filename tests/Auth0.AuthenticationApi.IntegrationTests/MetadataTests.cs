@@ -16,7 +16,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
             // Act
-            var response = await authenticationApiClient.GetSamlMetadata(GetVariable("AUTH0_CLIENT_ID"));
+            var response = await authenticationApiClient.GetSamlMetadataAsync(GetVariable("AUTH0_CLIENT_ID"));
 
             // Assert
             response.Should().NotBeNull();
@@ -29,7 +29,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
             // Act
-            var response = await authenticationApiClient.GetWsFedMetadata();
+            var response = await authenticationApiClient.GetWsFedMetadataAsync();
 
             // Assert
             response.Should().NotBeNull();

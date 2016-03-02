@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using Auth0.Core;
 using Auth0.Core.Http;
@@ -28,7 +30,7 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="includeFields">true if the fields specified are to be included in the result, false otherwise (defaults to
         /// true)</param>
         /// <returns>A <see cref="TenantSettings" /> containing the settings for the tenant.</returns>
-        public Task<TenantSettings> Get(string fields = null, bool includeFields = true)
+        public Task<TenantSettings> GetAsync(string fields = null, bool includeFields = true)
         {
             return Connection.GetAsync<TenantSettings>("tenants/settings",
                 null,
@@ -45,9 +47,29 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="request">A <see cref="TenantSettingsUpdateRequest" /> containing the settings for the tenant which are to
         /// be updated.</param>
         /// <returns>A <see cref="TenantSettings" /> containing the updated settings for the tenant.</returns>
-        public Task<TenantSettings> Update(TenantSettingsUpdateRequest request)
+        public Task<TenantSettings> UpdateAsync(TenantSettingsUpdateRequest request)
         {
             return Connection.PatchAsync<TenantSettings>("tenants/settings", request, null);
         }
+
+        #region Obsolete Methods
+#pragma warning disable 1591
+
+        [Obsolete("Use GetAsync instead")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public Task<TenantSettings> Get(string fields = null, bool includeFields = true)
+        {
+            return GetAsync(fields, includeFields);
+        }
+
+        [Obsolete("Use UpdateAsync instead")]
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public Task<TenantSettings> Update(TenantSettingsUpdateRequest request)
+        {
+            return UpdateAsync(request);
+        }
+
+#pragma warning restore 1591
+        #endregion
     }
 }

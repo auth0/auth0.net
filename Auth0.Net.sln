@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{D3999165
 		nuget\Auth0.AuthenticationApi.nuspec = nuget\Auth0.AuthenticationApi.nuspec
 		nuget\Auth0.Core.nuspec = nuget\Auth0.Core.nuspec
 		nuget\Auth0.ManagementApi.nuspec = nuget\Auth0.ManagementApi.nuspec
+		nuget\readme.txt = nuget\readme.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C9550C3F-90EB-42C0-B530-E728566A13C2}"
@@ -25,6 +26,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.AuthenticationApi", "src\Auth0.AuthenticationApi\Auth0.AuthenticationApi.csproj", "{6225AD9D-983E-42BB-825B-A36B143D4D31}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.AuthenticationApi.IntegrationTests", "tests\Auth0.AuthenticationApi.IntegrationTests\Auth0.AuthenticationApi.IntegrationTests.csproj", "{174CFC4B-5544-4151-969B-0B9F16087349}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.Core.UnitTests", "tests\Auth0.Core.UnitTests\Auth0.Core.UnitTests.csproj", "{BD25EDDC-6D8C-4E63-9CD1-DF5DC0D9E97E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,6 +59,10 @@ Global
 		{174CFC4B-5544-4151-969B-0B9F16087349}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{174CFC4B-5544-4151-969B-0B9F16087349}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{174CFC4B-5544-4151-969B-0B9F16087349}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD25EDDC-6D8C-4E63-9CD1-DF5DC0D9E97E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD25EDDC-6D8C-4E63-9CD1-DF5DC0D9E97E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD25EDDC-6D8C-4E63-9CD1-DF5DC0D9E97E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD25EDDC-6D8C-4E63-9CD1-DF5DC0D9E97E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,5 +74,6 @@ Global
 		{BFD5E1F6-053E-490E-AE4E-8CF12F74FFE6} = {0EBAD055-E431-443B-8212-411D1AFE3796}
 		{6225AD9D-983E-42BB-825B-A36B143D4D31} = {C9550C3F-90EB-42C0-B530-E728566A13C2}
 		{174CFC4B-5544-4151-969B-0B9F16087349} = {0EBAD055-E431-443B-8212-411D1AFE3796}
+		{BD25EDDC-6D8C-4E63-9CD1-DF5DC0D9E97E} = {0EBAD055-E431-443B-8212-411D1AFE3796}
 	EndGlobalSection
 EndGlobal

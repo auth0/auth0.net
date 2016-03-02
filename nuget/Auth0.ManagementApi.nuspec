@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>Auth0.ManagementApi</id>
-        <version>2.1.0</version>
+        <version>3.0.0</version>
         <authors>Auth0</authors>
         <owners>Auth0</owners>
         <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
@@ -11,6 +11,9 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Client library for the Auth0 Management API</description>
         <releaseNotes>
+          Version 3.0.0
+          - Library conforms to the correct naming convention of ending the name of async methods with "Async". The old methods still work but have been marked as obsolete. Please change your code to use the new methods.
+
           Version 2.1.0
           - Add support for paged collections
           - Return information about the last API call to obtain rate limits.
@@ -19,12 +22,13 @@
         <tags>Auth0 OAuth</tags>
         <dependencies>
             <dependency id="Newtonsoft.Json" version="7.0.1" />
-            <dependency id="Auth0.Core" version="2.1.0" />
+            <dependency id="Auth0.Core" version="3.0.0" />
         </dependencies>
     </metadata>
 	<files>
 		<file src="..\src\Auth0.ManagementApi\bin\Release\Auth0.ManagementApi.dll" target="lib\portable45-net45+win8+wpa81" />
 		<file src="..\src\Auth0.ManagementApi\bin\Release\Auth0.ManagementApi.pdb" target="lib\portable45-net45+win8+wpa81" />
 		<file src="..\src\Auth0.ManagementApi\bin\Release\Auth0.ManagementApi.XML" target="lib\portable45-net45+win8+wpa81" />
+    <file src="readme.txt" target="" />
 	</files>
 </package>

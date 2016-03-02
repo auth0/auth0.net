@@ -20,7 +20,7 @@ Generate a token for the API calls you wish to make (see [https://auth0.com/docs
 The API calls are divided into groups which correlate to the [Management API documentation](https://auth0.com/docs/api/v2). For example all Connection related methods can be found under the `ManagementApiClient.Connections` property. So to get a list of all database (Auth0) connections, you can make the following API call:
 
 ```
-await client.Connections.GetAll("auth0");
+await client.Connections.GetAllAsync("auth0");
 ```
 
 ## Authentication API
@@ -44,10 +44,9 @@ var client = new AuthenticationApiClient(new Uri("https://YOUR_AUTH0_DOMAIN"));
 This library is useful to consume the http api of Auth0, in order to authenticate users you can use our platform specific SDKs:
 * [ASP.NET OWIN](https://github.com/auth0/auth0-aspnet-owin)
 * [ASP.NET](https://github.com/auth0/auth0-aspnet)
-* [Winforms or WPF](https://github.com/auth0/Auth0.WinformsWPF)
+* [Windows 10 (UWP)](https://github.com/auth0/Auth0.Windows.UWP)
 * [Windows Phone](https://github.com/auth0/Auth0.WindowsPhone)
-* [Windows 8 C#](https://github.com/auth0/Auth0.Windows8.Cs)
-* [Windows 8 JS](https://github.com/auth0/Auth0.Windows8.Js)
+* [Winforms or WPF](https://github.com/auth0/Auth0.WinformsWPF)
 * [WCF](https://docs.auth0.com/wcf-tutorial)
 
 ## Documentation

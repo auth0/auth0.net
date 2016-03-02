@@ -23,7 +23,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 Email = "your email",
                 Type = PasswordlessEmailRequestType.Link
             };
-            var response = await authenticationApiClient.StartPasswordlessEmailFlow(request);
+            var response = await authenticationApiClient.StartPasswordlessEmailFlowAsync(request);
             response.Should().NotBeNull();
             response.Email.Should().Be(request.Email);
         }
@@ -41,7 +41,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 Email = "your email",
                 Type = PasswordlessEmailRequestType.Code
             };
-            var response = await authenticationApiClient.StartPasswordlessEmailFlow(request);
+            var response = await authenticationApiClient.StartPasswordlessEmailFlowAsync(request);
             response.Should().NotBeNull();
             response.Email.Should().Be(request.Email);
         }
@@ -58,7 +58,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 ClientId = GetVariable("AUTH0_PASSWORDLESSDEMO_CLIENT_ID"),
                 PhoneNumber = "your phone number"
             };
-            var response = await authenticationApiClient.StartPasswordlessSmsFlow(request);
+            var response = await authenticationApiClient.StartPasswordlessSmsFlowAsync(request);
             response.Should().NotBeNull();
             response.PhoneNumber.Should().Be(request.PhoneNumber);
         }
@@ -70,7 +70,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
             // Arrange
-            var authenticationResponse = await authenticationApiClient.Authenticate(new AuthenticationRequest
+            var authenticationResponse = await authenticationApiClient.AuthenticateAsync(new AuthenticationRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 Connection = "email",
