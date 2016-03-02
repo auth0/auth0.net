@@ -1,10 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using Auth0.Core.Serialization;
+using Newtonsoft.Json;
 
 namespace Auth0.Core
 {
     /// <summary>
     /// Contains information about an error returned from the API.
     /// </summary>
+    [JsonConverter(typeof(ApiErrorConverter))]
     public class ApiError
     {
         /// <summary>
