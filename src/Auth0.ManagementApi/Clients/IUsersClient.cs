@@ -33,6 +33,14 @@ namespace Auth0.ManagementApi.Clients
         Task DeleteAsync(string id);
 
         /// <summary>
+        ///     Deletes a user's multifactor provider.
+        /// </summary>
+        /// <param name="id">The id of the user who multi factor provider to delete.</param>
+        /// <param name="provider">The type of the multifactor provider. Supported values 'duo' or 'google-authenticator'</param>
+        /// <returns></returns>
+        Task DeleteMultifactorProviderAsync(string id, string provider);
+
+        /// <summary>
         ///     Lists or search for users based on criteria.
         /// </summary>
         /// <param name="page">The page number. Zero based.</param>

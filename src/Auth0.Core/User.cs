@@ -87,6 +87,12 @@ namespace Auth0.Core
         /// </summary>
         [JsonExtensionData]
         public IDictionary<string, JToken> ProviderAttributes { get; set; }
+
+        /// <summary>
+        /// Multifactor settings.
+        /// </summary>
+        [JsonProperty("multifactor")]
+        public string[] Multifactor { get; set; }
     }
     
 }
