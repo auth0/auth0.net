@@ -12,5 +12,11 @@ namespace Auth0.AuthenticationApi.Models
         /// </summary>
         [JsonProperty("id_token")]
         public string IdToken { get; set; }
+
+        /// <summary>
+        /// Gets or sets the expiry time in seconds.
+        /// </summary>
+        [JsonProperty("expires_in")]
+        public int ExpiresIn { get; set; }
     }
 }
