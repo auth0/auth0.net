@@ -23,5 +23,11 @@ namespace Auth0.AuthenticationApi.Models
         /// </summary>
         [JsonProperty("token_type")]
         public string TokenType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the refresh token
+        /// </summary>
+        [JsonProperty("refresh_token")]
+        public string RefreshToken { get; set; }
     }
 }
