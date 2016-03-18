@@ -96,6 +96,33 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             authenticationResponse.TokenType.Should().NotBeNull();
             authenticationResponse.AccessToken.Should().NotBeNull();
             authenticationResponse.IdToken.Should().NotBeNull();
+            authenticationResponse.RefreshToken.Should().BeNull(); // No refresh token if offline access was not requested
+        }
+
+        [Test]
+        public async Task Can_request_offline_access()
+        {
+            // Arrange
+            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+
+            // Act
+            var authenticationResponse = await authenticationApiClient.AuthenticateAsync(new AuthenticationRequest
+            {
+                ClientId = GetVariable("AUTH0_CLIENT_ID"),
+                Connection = connection.Name,
+                GrantType = "password",
+                Scope = "openid offline_access",
+                Username = user.Email,
+                Password = "password",
+                Device = "Offline Device"
+            });
+
+            // Assert
+            authenticationResponse.Should().NotBeNull();
+            authenticationResponse.TokenType.Should().NotBeNull();
+            authenticationResponse.AccessToken.Should().NotBeNull();
+            authenticationResponse.IdToken.Should().NotBeNull();
+            authenticationResponse.RefreshToken.Should().NotBeNull(); // Requested offline access, so we should get a refresh token
         }
 
         [Test]
