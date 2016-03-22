@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Dynamic;
 using System.Threading.Tasks;
 using Auth0.Core;
 using Auth0.Core.Exceptions;
@@ -137,6 +138,42 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             users.Should().NotBeNull();
             users.Paging.Should().NotBeNull();
+        }
+
+        [Test, Explicit]
+        public async Task Can_update_user_metadata()
+        {
+            // Add a new user with metadata
+            var newUserRequest = new UserCreateRequest
+            {
+                Connection = connection.Name,
+                Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
+                EmailVerified = true,
+                Password = "password",
+                AppMetadata = new
+                {
+                    a = 1,
+                    b = 2
+                },
+                UserMetadata = new
+                {
+                    c = 3,
+                    d = 4
+                }
+            };
+            var newUserResponse = await apiClient.Users.CreateAsync(newUserRequest);
+
+            // Do some updating
+            var updateUserRequest = new UserUpdateRequest();
+            updateUserRequest.AppMetadata = new ExpandoObject();
+            updateUserRequest.AppMetadata.IsSubscribedTo = "1";
+            var updateUserResponse = await apiClient.Users.UpdateAsync(newUserResponse.UserId, updateUserRequest);
+
+            // Get the user to ensure the metadata was set
+            var user = await apiClient.Users.GetAsync(newUserResponse.UserId);
+
+            // Delete the user
+            await apiClient.Users.DeleteAsync(user.UserId);
         }
     }
 }
