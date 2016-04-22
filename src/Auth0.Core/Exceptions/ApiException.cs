@@ -36,6 +36,7 @@ namespace Auth0.Core.Exceptions
         public ApiException(HttpStatusCode statusCode)
             : base(statusCode.ToString())
         {
+            StatusCode = statusCode;
         }
 
         /// <summary>
