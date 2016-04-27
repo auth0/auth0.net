@@ -3,6 +3,10 @@
 
 ## Management API
 
+### Full Documentation
+
+Full documentation on how to use this library can be found at [http://auth0.github.io/auth0.net](http://auth0.github.io/auth0.net)
+
 ### Installation
 
 ```
