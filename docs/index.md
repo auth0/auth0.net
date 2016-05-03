@@ -50,8 +50,10 @@ using Auth0.AuthenticationApi;
 To start using the API, you need to create an instance of the @Auth0.AuthenticationApi.AuthenticationApiClient class, passing the URL of your Auth0 instance:
 
 ```
-var client = new AuthenticationApiClient(new Uri("https://auth0-dotnet-integration-tests.auth0.com/"));
+var client = new AuthenticationApiClient(new Uri("https://YOUR_AUTH0_DOMAIN/"));
 ```
+
+> You can obtain your Auth0 Domain from the [Application section of the Auth0 Dashboard](https://manage.auth0.com/#/applications) by looking at the settings for your particular application. 
 
 For more details on the various methods that are available, please refer to the documentation of the @Auth0.AuthenticationApi.AuthenticationApiClient class.
 
@@ -71,7 +73,7 @@ The following are the list of URL builder helper methods:
 For example, to build up an authorization URL, you can write the following code:
 
 ```
-var client = new AuthenticationApiClient(new Uri("https://auth0-dotnet-integration-tests.auth0.com/"));
+var client = new AuthenticationApiClient(new Uri("https://YOUR_AUTH0_DOMAIN/"));
 
 var authorizationUrl = client.BuildAuthorizationUrl()
 	.WithResponseType(AuthorizationResponseType.Code)
@@ -97,8 +99,10 @@ using Auth0.ManagementApi;
 To start using the API, you need to create an instance of the @Auth0.ManagementApi.ManagementApiClient class, passing a token and the URL to the Management API of your Auth0 instance:
 
 ```
-var client = new ManagementApiClient("token", new Uri("https://auth0-dotnet-integration-tests.auth0.com/api/v2"));
+var client = new ManagementApiClient("token", new Uri("https://YOUR_AUTH0_DOMAIN/api/v2"));
 ```
+
+> You can obtain your Auth0 Domain from the [Application section of the Auth0 Dashboard](https://manage.auth0.com/#/applications) by looking at the settings for your particular application. 
 
 > [!NOTE]
 > For details on how to generate the token, please see the "Getting an API token" section of the [Management API documentation](https://auth0.com/docs/api/v2)
@@ -118,6 +122,6 @@ The .NET Client SDK for the Management API also groups the API methods according
 Below is an example of how you can get a list of all clients:
 
 ```
-var apiClient = new ManagementApiClient("token", new Uri("https://auth0-dotnet-integration-tests.auth0.com/api/v2"));
+var apiClient = new ManagementApiClient("token", new Uri("https://YOUR_AUTH0_DOMAIN/api/v2"));
 var allClients = await apiClient.Clients.GetAll();
 ```
