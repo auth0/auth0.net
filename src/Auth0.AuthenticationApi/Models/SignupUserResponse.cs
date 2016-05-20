@@ -10,7 +10,7 @@ namespace Auth0.AuthenticationApi.Models
         /// <summary>
         /// Gets or sets the identifier of the response..
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("_id")]
         public string Id { get; set; }
 
         /// <summary>

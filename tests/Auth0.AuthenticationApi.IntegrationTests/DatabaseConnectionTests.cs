@@ -67,6 +67,8 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             };
             var signupUserResponse = await authenticationApiClient.SignupUserAsync(signupUserRequest);
             signupUserResponse.Should().NotBeNull();
+            signupUserResponse.Id.Should().NotBeNull();
+            signupUserResponse.EmailVerified.Should().BeFalse();
             signupUserResponse.Email.Should().Be(signupUserRequest.Email);
 
             // Change the user's Email address
@@ -78,7 +80,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 Password = "password2"
             };
             string changePasswordResponse = await authenticationApiClient.ChangePasswordAsync(changePasswordRequest);
-            changePasswordResponse.Should().Be("\"We've just sent you an Email to reset your password.\"");
+            changePasswordResponse.Should().Be("\"We've just sent you an email to reset your password.\"");
         }
     }
 }

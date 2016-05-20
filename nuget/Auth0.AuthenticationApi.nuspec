@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>Auth0.AuthenticationApi</id>
-        <version>3.1.0</version>
+        <version>3.1.1</version>
         <authors>Auth0</authors>
         <owners>Auth0</owners>
         <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
@@ -11,6 +11,9 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Client library for the Auth0 Authentication API</description>
         <releaseNotes>
+          Version 3.1.1
+          - Fix deserialization of DB Signup response
+
           Version 3.1.0
           - Support of offline tokens
 
