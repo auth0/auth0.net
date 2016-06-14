@@ -125,3 +125,9 @@ Below is an example of how you can get a list of all clients:
 var apiClient = new ManagementApiClient("token", new Uri("https://YOUR_AUTH0_DOMAIN/api/v2"));
 var allClients = await apiClient.Clients.GetAll();
 ```
+
+### Client reuse and thread safety
+
+Neither the `ManagementApiClient` or the `AuthenticationApiClient` are threadsafe, as they store the result of the last call to an API (obtainable by the `GetLastApiInfo` method). It's ok to reuse them in the same thread to do subsequent calls, but they shouldn't be created as a singleton instance used across multiple threads. 
+
+Both clients are really lightweight to instantiate, so creating a new instance every time they are needed shouldn't be a concern.
