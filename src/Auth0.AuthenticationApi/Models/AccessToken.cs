@@ -18,5 +18,12 @@ namespace Auth0.AuthenticationApi.Models
         /// </summary>
         [JsonProperty("expires_in")]
         public int ExpiresIn { get; set; }
+
+        /// <summary>
+        /// Gets or sets the refresh token
+        /// </summary>
+        [JsonProperty("refresh_token")]
+        public string RefreshToken { get; set; }
+
     }
 }

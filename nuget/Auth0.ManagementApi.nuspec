@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>Auth0.ManagementApi</id>
-        <version>3.1.0</version>
+        <version>3.1.1</version>
         <authors>Auth0</authors>
         <owners>Auth0</owners>
         <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
@@ -25,7 +25,7 @@
         <tags>Auth0 OAuth</tags>
         <dependencies>
             <dependency id="Newtonsoft.Json" version="7.0.1" />
-            <dependency id="Auth0.Core" version="3.1.0" />
+            <dependency id="Auth0.Core" version="3.1.1" />
         </dependencies>
     </metadata>
 	<files>
