@@ -33,8 +33,8 @@
         </dependencies>
     </metadata>
 	<files>
-		<file src="..\src\Auth0.Core\bin\Release\Auth0.Core.dll" target="lib\portable45-net45+win8+wpa81" />
-		<file src="..\src\Auth0.Core\bin\Release\Auth0.Core.pdb" target="lib\portable45-net45+win8+wpa81" />
-		<file src="..\src\Auth0.Core\bin\Release\Auth0.Core.XML" target="lib\portable45-net45+win8+wpa81" />
+		<file src="..\src\Auth0.Core\bin\Release\Auth0.Core.dll" target="lib\portable-net45+win8+wpa81" />
+		<file src="..\src\Auth0.Core\bin\Release\Auth0.Core.pdb" target="lib\portable-net45+win8+wpa81" />
+		<file src="..\src\Auth0.Core\bin\Release\Auth0.Core.XML" target="lib\portable-net45+win8+wpa81" />
 	</files>
 </package>

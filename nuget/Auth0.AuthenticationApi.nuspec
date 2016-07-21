@@ -47,9 +47,9 @@
         </dependencies>
     </metadata>
 	<files>
-		<file src="..\src\Auth0.AuthenticationApi\bin\Release\Auth0.AuthenticationApi.dll" target="lib\portable45-net45+win8+wpa81" />
-		<file src="..\src\Auth0.AuthenticationApi\bin\Release\Auth0.AuthenticationApi.pdb" target="lib\portable45-net45+win8+wpa81" />
-		<file src="..\src\Auth0.AuthenticationApi\bin\Release\Auth0.AuthenticationApi.XML" target="lib\portable45-net45+win8+wpa81" />
+		<file src="..\src\Auth0.AuthenticationApi\bin\Release\Auth0.AuthenticationApi.dll" target="lib\portable-net45+win8+wpa81" />
+		<file src="..\src\Auth0.AuthenticationApi\bin\Release\Auth0.AuthenticationApi.pdb" target="lib\portable-net45+win8+wpa81" />
+		<file src="..\src\Auth0.AuthenticationApi\bin\Release\Auth0.AuthenticationApi.XML" target="lib\portable-net45+win8+wpa81" />
     <file src="readme.txt" target="" />
 	</files>
 </package>

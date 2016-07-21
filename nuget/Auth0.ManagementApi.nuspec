@@ -29,9 +29,9 @@
         </dependencies>
     </metadata>
 	<files>
-		<file src="..\src\Auth0.ManagementApi\bin\Release\Auth0.ManagementApi.dll" target="lib\portable45-net45+win8+wpa81" />
-		<file src="..\src\Auth0.ManagementApi\bin\Release\Auth0.ManagementApi.pdb" target="lib\portable45-net45+win8+wpa81" />
-		<file src="..\src\Auth0.ManagementApi\bin\Release\Auth0.ManagementApi.XML" target="lib\portable45-net45+win8+wpa81" />
+		<file src="..\src\Auth0.ManagementApi\bin\Release\Auth0.ManagementApi.dll" target="lib\portable-net45+win8+wpa81" />
+		<file src="..\src\Auth0.ManagementApi\bin\Release\Auth0.ManagementApi.pdb" target="lib\portable-net45+win8+wpa81" />
+		<file src="..\src\Auth0.ManagementApi\bin\Release\Auth0.ManagementApi.XML" target="lib\portable-net45+win8+wpa81" />
     <file src="readme.txt" target="" />
 	</files>
 </package>
