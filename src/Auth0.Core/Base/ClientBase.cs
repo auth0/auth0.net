@@ -41,6 +41,12 @@ namespace Auth0.Core
         public string[] ClientAliases { get; set; }
 
         /// <summary>
+        /// Metadata associated with this client
+        /// </summary>
+        [JsonProperty("client_metadata")]
+        public dynamic ClientMetaData { get; set; }
+
+        /// <summary>
         /// The secret used to sign tokens for the client.
         /// </summary>
         [JsonProperty("client_secret")]

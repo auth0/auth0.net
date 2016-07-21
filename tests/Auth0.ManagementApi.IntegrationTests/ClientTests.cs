@@ -35,11 +35,20 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Add a new client
             var newClientRequest = new ClientCreateRequest
             {
-                Name = $"Integration testing {Guid.NewGuid().ToString("N")}"
+                Name = $"Integration testing {Guid.NewGuid().ToString("N")}",
+                ClientMetaData = new
+                {
+                    Prop1 = "1",
+                    Prop2 = "2"
+                }
             };
             var newClientResponse = await apiClient.Clients.CreateAsync(newClientRequest);
             newClientResponse.Should().NotBeNull();
             newClientResponse.Name.Should().Be(newClientRequest.Name);
+            string prop1 = newClientResponse.ClientMetaData.Prop1;
+            prop1.Should().Be("1");
+            string prop2 = newClientResponse.ClientMetaData.Prop2;
+            prop2.Should().Be("2");
 
             // Get all clients again, and ensure we have one client more
             var clientsAfter = await apiClient.Clients.GetAllAsync();
