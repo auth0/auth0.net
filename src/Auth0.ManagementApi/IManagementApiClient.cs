@@ -14,6 +14,11 @@ namespace Auth0.ManagementApi
         IBlacklistedTokensClient BlacklistedTokens { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /client-grants endpoints
+        /// </summary>
+        IClientGrantsClient ClientGrants { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /clients endpoints.
         /// </summary>
         IClientsClient Clients { get; }

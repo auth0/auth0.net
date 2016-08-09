@@ -43,6 +43,8 @@
     <EmbeddedResource Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clients\ClientGrantsClient.cs" />
+    <Compile Include="Clients\IClientGrantsClient.cs" />
     <Compile Include="Core\Http\ApiConnection.cs" />
     <Compile Include="Clients\BlacklistedTokensClient.cs" />
     <Compile Include="Clients\ClientBase.cs" />
@@ -78,6 +80,7 @@
     <Compile Include="Models\AccountLinkResponseProfileData.cs" />
     <Compile Include="Models\BlacklistedTokenCreateRequest.cs" />
     <Compile Include="Models\ClientCreateRequest.cs" />
+    <Compile Include="Models\ClientGrantCreateRequest.cs" />
     <Compile Include="Models\ClientUpdateRequest.cs" />
     <Compile Include="Models\ConnectionCreateRequest.cs" />
     <Compile Include="Models\ConnectionUpdateRequest.cs" />
@@ -89,6 +92,7 @@
     <Compile Include="Models\RuleCreateRequest.cs" />
     <Compile Include="Models\RuleUpdateRequest.cs" />
     <Compile Include="Models\TenantSettingsUpdateRequest.cs" />
+    <Compile Include="Models\ClientGrantUpdateRequest.cs" />
     <Compile Include="Models\UserAccountJwtLinkRequest.cs" />
     <Compile Include="Models\UserAccountLinkRequest.cs" />
     <Compile Include="Models\UserCreateRequest.cs" />

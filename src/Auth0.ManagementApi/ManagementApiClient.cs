@@ -18,6 +18,11 @@ namespace Auth0.ManagementApi
         public IBlacklistedTokensClient BlacklistedTokens { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /client-grants endpoints
+        /// </summary>
+        public IClientGrantsClient ClientGrants { get;  }
+
+        /// <summary>
         /// Contains all the methods to call the /clients endpoints.
         /// </summary>
         /// <value>The clients.</value>
@@ -102,6 +107,7 @@ namespace Auth0.ManagementApi
             apiConnection = new ApiConnection(token, baseUri.AbsoluteUri, diagnostics);
 
             BlacklistedTokens = new BlacklistedTokensClient(apiConnection);
+            ClientGrants = new ClientGrantsClient(apiConnection);
             Clients = new ClientsClient(apiConnection);
             Connections = new ConnectionsClient(apiConnection);
             DeviceCredentials = new DeviceCredentialsClient(apiConnection);
