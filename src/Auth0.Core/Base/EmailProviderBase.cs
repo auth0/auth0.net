@@ -8,6 +8,12 @@ namespace Auth0.Core
     public abstract class EmailProviderBase
     {
         /// <summary>
+        /// Gets or sets the default from address
+        /// </summary>
+        [JsonProperty("default_from_address")]
+        public string DefaultFromAddress { get; set; }
+
+        /// <summary>
         /// Gets or sets the name of the provider.
         /// </summary>
         [JsonProperty("name")]

@@ -2,9 +2,6 @@
 
 namespace Auth0.Core
 {
-    // TODO: There are a limited number of email providers. Should we not try something more specific which will prevent the user 
-    // from making mistakes in configuring this? All fields are not required for all providers...
-
     /// <summary>
     /// Credentials for an email provider.
     /// </summary>
@@ -54,5 +51,32 @@ namespace Auth0.Core
         /// </remarks>
         [JsonProperty("region")]
         public string Region { get; set; }
+
+        /// <summary>
+        /// Gets or sets the host name or IP address of the SMTP server
+        /// </summary>
+        [JsonProperty("smtp_host")]
+        public string SmtpHost { get; set; }
+
+        /// <summary>
+        /// Gets or sets the port used by the SMTP server
+        /// </summary>
+        /// <remarks>
+        /// Common ports include 25, 465, and 587. Please avoid using port 25 if you can, since many providers have limitations on this port.
+        /// </remarks>
+        [JsonProperty("smtp_port")]
+        public string SmtpPort { get; set; }
+
+        /// <summary>
+        /// Gets or sets the username for the SMTP server
+        /// </summary>
+        [JsonProperty("smtp_user")]
+        public string SmtpUsername { get; set; }
+
+        /// <summary>
+        /// Gets or sets the password for the SMTP server
+        /// </summary>
+        [JsonProperty("smtp_pass")]
+        public string SmtpPassword { get; set; }
     }
 }
