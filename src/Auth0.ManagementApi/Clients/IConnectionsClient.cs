@@ -42,8 +42,9 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="strategy">Provide a type of strategy to only retrieve connections with that strategy.</param>
         /// <param name="fields">A comma separated list of fields to include or exclude (depending on include_fields) from the result, empty to retrieve all fields.</param>
         /// <param name="includeFields">True if the fields specified are to be included in the result, false otherwise (defaults to true).</param>
+        /// <param name="name">Provide the name of the connection to retrieve</param>
         /// <returns>A list of <see cref="Connection"/> objects matching the strategy.</returns>
-        Task<IList<Connection>> GetAllAsync(string strategy, string fields = null, bool includeFields = true);
+        Task<IList<Connection>> GetAllAsync(string strategy, string fields = null, bool includeFields = true, string name = null);
 
         /// <summary>
         /// Retrieves a connection by its <paramref name="id"/>
