@@ -39,7 +39,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>Task.</returns>
         public Task DeleteAsync()
         {
-            return Connection.DeleteAsync<object>("emails/provider", null);
+            return Connection.DeleteAsync<object>("emails/provider", null, null);
         }
 
         /// <summary>

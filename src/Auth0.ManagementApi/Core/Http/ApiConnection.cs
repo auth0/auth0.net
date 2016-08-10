@@ -43,14 +43,15 @@ namespace Auth0.Core.Http
         /// <typeparam name="T"></typeparam>
         /// <param name="resource">The resource.</param>
         /// <param name="urlSegments">The URL segments.</param>
+        /// <param name="queryStrings"></param>
         /// <returns>Task&lt;T&gt;.</returns>
-        public async Task<T> DeleteAsync<T>(string resource, IDictionary<string, string> urlSegments) where T : class
+        public async Task<T> DeleteAsync<T>(string resource, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings) where T : class
         {
             return await RunAsync<T>(resource,
                 HttpMethod.Delete, 
                 null,
                 urlSegments,
-                null,
+                queryStrings,
                 null,
                 null, 
                 null, 

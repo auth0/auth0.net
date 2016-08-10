@@ -64,7 +64,7 @@ namespace Auth0.ManagementApi.Clients
             return Connection.DeleteAsync<object>("device-credentials/{id}", new Dictionary<string, string>
             {
                 {"id", id}
-            });
+            }, null);
         }
 
         #region Obsolete Methods

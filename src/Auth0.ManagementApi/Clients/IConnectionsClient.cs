@@ -26,6 +26,17 @@ namespace Auth0.ManagementApi.Clients
         Task DeleteAsync(string id);
 
         /// <summary>
+        /// Deletes a specified connection user by its email 
+        /// </summary>
+        /// <remarks>
+        /// Currently only database connections are supported and you cannot delete all users from specific connection
+        /// </remarks>
+        /// <param name="id">The identifier of the connection</param>
+        /// <param name="email">The email of the user to delete</param>
+        /// <returns></returns>
+        Task DeleteUserAsync(string id, string email);
+
+        /// <summary>
         /// Retrieves every connection matching the specified strategy. All connections are retrieved if no strategy is being specified. Accepts a list of fields to include or exclude in the resulting list of connection objects.
         /// </summary>
         /// <param name="strategy">Provide a type of strategy to only retrieve connections with that strategy.</param>

@@ -42,7 +42,28 @@ namespace Auth0.ManagementApi.Clients
             return Connection.DeleteAsync<object>("connections/{id}", new Dictionary<string, string>
             {
                 {"id", id}
-            });
+            }, null);
+        }
+
+        /// <summary>
+        /// Deletes a specified connection user by its email 
+        /// </summary>
+        /// <remarks>
+        /// Currently only database connections are supported and you cannot delete all users from specific connection
+        /// </remarks>
+        /// <param name="id">The identifier of the connection</param>
+        /// <param name="email">The email of the user to delete</param>
+        /// <returns></returns>
+        public Task DeleteUserAsync(string id, string email)
+        {
+            return Connection.DeleteAsync<object>("connections/{id}/users", new Dictionary<string, string>
+                {
+                    {"id", id}
+                },
+                new Dictionary<string, string>
+                {
+                    {"email", email},
+                });
         }
 
         /// <summary>
@@ -61,8 +82,8 @@ namespace Auth0.ManagementApi.Clients
                 },
                 new Dictionary<string, string>
                 {
-                    { "fields", fields },
-                    { "include_fields", includeFields.ToString().ToLower() }
+                    {"fields", fields},
+                    {"include_fields", includeFields.ToString().ToLower()}
                 }, null, null);
         }
 
@@ -78,9 +99,9 @@ namespace Auth0.ManagementApi.Clients
             return Connection.GetAsync<IList<Connection>>("connections", null,
                 new Dictionary<string, string>
                 {
-                    { "strategy", strategy },
-                    { "fields", fields },
-                    { "include_fields", includeFields.ToString().ToLower() }
+                    {"strategy", strategy},
+                    {"fields", fields},
+                    {"include_fields", includeFields.ToString().ToLower()}
                 }, null, null);
         }
 
@@ -99,6 +120,7 @@ namespace Auth0.ManagementApi.Clients
         }
 
         #region Obsolete Methods
+
 #pragma warning disable 1591
 
         [Obsolete("Use CreateAsync instead")]
@@ -137,6 +159,7 @@ namespace Auth0.ManagementApi.Clients
         }
 
 #pragma warning restore 1591
+
         #endregion
     }
 }

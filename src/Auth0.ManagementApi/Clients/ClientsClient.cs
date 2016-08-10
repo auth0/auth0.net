@@ -41,7 +41,7 @@ namespace Auth0.ManagementApi.Clients
             return Connection.DeleteAsync<object>("clients/{id}", new Dictionary<string, string>
             {
                 {"id", id}
-            });
+            }, null);
         }
 
         /// <summary>

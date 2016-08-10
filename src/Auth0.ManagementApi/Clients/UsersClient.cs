@@ -41,7 +41,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>Task.</returns>
         public Task DeleteAllAsync()
         {
-            return Connection.DeleteAsync<object>("users", null);
+            return Connection.DeleteAsync<object>("users", null, null);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Auth0.ManagementApi.Clients
             return Connection.DeleteAsync<object>("users/{id}", new Dictionary<string, string>
             {
                 {"id", id}
-            });
+            }, null);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Auth0.ManagementApi.Clients
                 {
                     {"id", id},
                     {"provider", provider},
-                });
+                }, null);
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace Auth0.ManagementApi.Clients
                 {"id", primaryUserId},
                 {"provider", provider},
                 {"secondaryid", secondaryUserId}
-            });
+            }, null);
         }
 
         /// <summary>

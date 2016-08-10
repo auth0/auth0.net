@@ -33,7 +33,6 @@ namespace Auth0.ManagementApi.IntegrationTests
                 {
                     actions = new string[] { "update" }
                 }
-
             };
             string token = GenerateToken(scopes);
 
@@ -129,6 +128,24 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Delete the user
             await apiClient.Users.DeleteAsync(user.UserId);
+        }
+
+        [Test]
+        public async Task Test_deleting_user_from_connection()
+        {
+            // Add a new user, and ensure user is not blocked
+            var newUserRequest = new UserCreateRequest
+            {
+                Connection = connection.Name,
+                Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
+                EmailVerified = true,
+                Password = "password"
+            };
+            var newUserResponse = await apiClient.Users.CreateAsync(newUserRequest);
+            newUserResponse.Blocked.Should().BeFalse();
+
+            // Delete the user from the connection
+            await apiClient.Connections.DeleteUserAsync(connection.Id, newUserRequest.Email);
         }
 
         [Test]
