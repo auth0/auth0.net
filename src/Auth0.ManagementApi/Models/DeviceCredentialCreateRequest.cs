@@ -1,3 +1,4 @@
+using System;
 using Auth0.Core;
 using Newtonsoft.Json;
 
@@ -19,6 +20,8 @@ namespace Auth0.ManagementApi.Models
         /// <summary>
         /// Gets or sets the ID of the user using the device for which the credential will be created.
         /// </summary>
+        [Obsolete("This property has been removed from the Auth0 API and sending it has no effect")]
+        [JsonIgnore]
         [JsonProperty("user_id")]
         public string UserId { get; set; }
 
