@@ -45,13 +45,17 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="connectionId">The connection identifier.</param>
         /// <param name="fileName">Name of the file.</param>
         /// <param name="file">The file.</param>
+        /// <param name="upsert">Update the user if already exists</param>
+        /// <param name="externalId">Customer defined id</param>
         /// <returns>Task&lt;Job&gt;.</returns>
         /// <remarks>The documentation for the file format is <a href="https://auth0.com/docs/bulk-import">here</a>.</remarks>
-        public Task<Job> ImportUsersAsync(string connectionId, string fileName, Stream file)
+        public Task<Job> ImportUsersAsync(string connectionId, string fileName, Stream file, bool? upsert = null, string externalId = null)
         {
             var parameters = new Dictionary<string, object>
             {
-                { "connection_id", connectionId }
+                { "connection_id", connectionId },
+                { "upsert", upsert },
+                { "external_id", externalId }
             };
 
             var fileParameters = new List<FileUploadParameter>

@@ -31,8 +31,10 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="connectionId">The connection identifier.</param>
         /// <param name="fileName">Name of the file.</param>
         /// <param name="file">The file.</param>
+        /// <param name="upsert">Update the user if already exists</param>
+        /// <param name="externalId">Customer defined id</param>
         /// <returns>Task&lt;Job&gt;.</returns>
-        Task<Job> ImportUsersAsync(string connectionId, string fileName, Stream file);
+        Task<Job> ImportUsersAsync(string connectionId, string fileName, Stream file, bool? upsert = null, string externalId = null);
 
         /// <summary>
         /// Send an email to the specified user that asks them to click a link to verify their email address.
