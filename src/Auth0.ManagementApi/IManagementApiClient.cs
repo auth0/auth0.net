@@ -44,6 +44,11 @@ namespace Auth0.ManagementApi
         IJobsClient Jobs { get; }
 
         /// <summary>
+        /// Contains a ll the methods to call the /logs endpoints.
+        /// </summary>
+        ILogsClient Logs { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /rules endpoints.
         /// </summary>
         IRulesClient Rules { get; }

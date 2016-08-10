@@ -69,7 +69,7 @@ namespace Auth0.ManagementApi.Clients
                 new Dictionary<string, string>
                 {
                     {"id", id},
-                    {"provider", provider},
+                    {"provider", provider}
                 }, null);
         }
 
@@ -105,7 +105,7 @@ namespace Auth0.ManagementApi.Clients
                     {"include_fields", includeFields?.ToString().ToLower()},
                     {"q", q},
                     {"search_engine", searchEngine}
-                }, null, new UserPagedListConverter());
+                }, null, new PagedListConverter<User>("users"));
         }
 
 

@@ -60,6 +60,7 @@
     <Compile Include="Base\ClientBase.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="Base\ConnectionBase.cs" />
+    <Compile Include="LogEntry.cs" />
     <Compile Include="Management\DailyStatistics.cs" />
     <Compile Include="Management\EmailProviderCredentials.cs" />
     <Compile Include="DeviceCredential.cs" />

@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="Clients\ClientGrantsClient.cs" />
     <Compile Include="Clients\IClientGrantsClient.cs" />
+    <Compile Include="Clients\ILogsClient.cs" />
+    <Compile Include="Clients\LogsClient.cs" />
     <Compile Include="Core\Http\ApiConnection.cs" />
     <Compile Include="Clients\BlacklistedTokensClient.cs" />
     <Compile Include="Clients\ClientBase.cs" />
@@ -99,7 +101,7 @@
     <Compile Include="Models\UserUpdateRequest.cs" />
     <Compile Include="Models\VerifyEmailJobRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Serialization\UserPagedListConverter.cs" />
+    <Compile Include="Serialization\PagedListConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Threading.Tasks, Version=1.0.12.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">

@@ -53,6 +53,12 @@ namespace Auth0.ManagementApi
         public IJobsClient Jobs { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /logs endpoints.
+        /// </summary>
+        /// <value>The rules.</value>
+        public ILogsClient Logs { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /rules endpoints.
         /// </summary>
         /// <value>The rules.</value>
@@ -113,6 +119,7 @@ namespace Auth0.ManagementApi
             DeviceCredentials = new DeviceCredentialsClient(apiConnection);
             EmailProvider = new EmailProviderClient(apiConnection);
             Jobs = new JobsClient(apiConnection);
+            Logs = new LogsClient(apiConnection);
             Rules = new RulesClient(apiConnection);
             Stats = new StatsClient(apiConnection);
             TenantSettings = new TentantSettingsClient(apiConnection);
