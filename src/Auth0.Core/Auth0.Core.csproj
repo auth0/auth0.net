@@ -38,8 +38,10 @@
     <DocumentationFile>bin\Release\Auth0.Core.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Base\ClientApplicationType.cs" />
     <Compile Include="Base\ClientGrantBase.cs" />
     <Compile Include="Base\PagingInformation.cs" />
+    <Compile Include="Base\TokenEndpointAuthMethod.cs" />
     <Compile Include="ClientGrant.cs" />
     <Compile Include="Collections\IPagedList.cs" />
     <Compile Include="Collections\PagedList.cs" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Auth0.Core;
 using Auth0.Core.Exceptions;
 using Auth0.ManagementApi.Models;
 using FluentAssertions;
@@ -36,6 +37,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var newClientRequest = new ClientCreateRequest
             {
                 Name = $"Integration testing {Guid.NewGuid().ToString("N")}",
+                TokenEndpointAuthMethod = TokenEndpointAuthMethod.ClientSecretPost,
                 ClientMetaData = new
                 {
                     Prop1 = "1",
@@ -45,6 +47,9 @@ namespace Auth0.ManagementApi.IntegrationTests
             var newClientResponse = await apiClient.Clients.CreateAsync(newClientRequest);
             newClientResponse.Should().NotBeNull();
             newClientResponse.Name.Should().Be(newClientRequest.Name);
+            newClientResponse.TokenEndpointAuthMethod.Should().Be(TokenEndpointAuthMethod.ClientSecretPost);
+            newClientResponse.ApplicationType.Should().Be(ClientApplicationType.Native);
+            newClientResponse.IsFirstParty = null;
             string prop1 = newClientResponse.ClientMetaData.Prop1;
             prop1.Should().Be("1");
             string prop2 = newClientResponse.ClientMetaData.Prop2;
@@ -57,11 +62,17 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Update the client
             var updateClientRequest = new ClientUpdateRequest
             {
-                Name = $"Integration testing {Guid.NewGuid().ToString("N")}"
+                Name = $"Integration testing {Guid.NewGuid().ToString("N")}",
+                TokenEndpointAuthMethod = TokenEndpointAuthMethod.ClientSecretPost,
+                ApplicationType = ClientApplicationType.Spa,
+                IsFirstParty = false
             };
             var updateClientResponse = await apiClient.Clients.UpdateAsync(newClientResponse.ClientId, updateClientRequest);
             updateClientResponse.Should().NotBeNull();
             updateClientResponse.Name.Should().Be(updateClientRequest.Name);
+            updateClientResponse.TokenEndpointAuthMethod.Should().Be(TokenEndpointAuthMethod.ClientSecretPost);
+            updateClientResponse.ApplicationType.Should().Be(ClientApplicationType.Spa);
+            updateClientResponse.IsFirstParty = false;
 
             // Get a single client
             var client = await apiClient.Clients.GetAsync(newClientResponse.ClientId);

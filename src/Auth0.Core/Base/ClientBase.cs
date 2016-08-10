@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Auth0.Core
 {
@@ -23,10 +24,23 @@ namespace Auth0.Core
         public string[] AllowedClients { get; set; }
 
         /// <summary>
+        /// The URLs that Auth0 can redirect to after logout
+        /// </summary>
+        [JsonProperty("allowed_logout_urls")]
+        public string[] AllowedLogoutUrls { get; set; }
+
+        /// <summary>
         /// A set of URLs that represents valid origins for CORS.
         /// </summary>
         [JsonProperty("allowed_origins")]
         public string[] AllowedOrigins { get; set; }
+
+        /// <summary>
+        /// The type of application this client represents
+        /// </summary>
+        [JsonProperty("app_type")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ClientApplicationType ApplicationType { get; set; }
 
         /// <summary>
         /// A set of URLs that are valid to call back from Auth0 when authenticating users.
@@ -57,6 +71,12 @@ namespace Auth0.Core
         /// </summary>
         [JsonProperty("custom_login_page_on")]
         public bool? IsCustomLoginPageOn { get; set; }
+
+        /// <summary>
+        /// Whether this client a first party client or not
+        /// </summary>
+        [JsonProperty("is_first_party")]
+        public bool? IsFirstParty { get; set; }
 
         /// <summary>
         /// The content (HTML, CSS, JS) of the custom login page.
@@ -108,5 +128,16 @@ namespace Auth0.Core
         /// </summary>
         [JsonProperty("sso")]
         public bool? Sso { get; set; }
+
+        /// <summary>
+        /// Defines the requested authentication method for the token endpoint.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        [JsonProperty("token_endpoint_auth_method")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public TokenEndpointAuthMethod TokenEndpointAuthMethod { get; set; }
     }
 }
+

@@ -8,6 +8,11 @@ namespace Auth0.Core
     /// </summary>
     public class EncryptionKey
     {
+        /// <summary>
+        /// Encryption certificate
+        /// </summary>
+        [JsonProperty("cert")]
+        public string Certificate { get; set; }
 
         /// <summary>
         /// Encryption public key
@@ -15,11 +20,10 @@ namespace Auth0.Core
         [JsonProperty("pub")]
         public string PublicKey { get; set; }
 
-
         /// <summary>
-        /// Encryption certificate
+        /// The subject of the Enryption key
         /// </summary>
-        [JsonProperty("cert")]
-        public string Certificate { get; set; }
+        [JsonProperty("subject")]
+        public string Subject { get; set; }
     }
 }
