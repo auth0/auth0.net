@@ -49,6 +49,11 @@ namespace Auth0.ManagementApi
         ILogsClient Logs { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /resource-servers endpoints.
+        /// </summary>
+        IResourceServersClient ResourceServers { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /rules endpoints.
         /// </summary>
         IRulesClient Rules { get; }

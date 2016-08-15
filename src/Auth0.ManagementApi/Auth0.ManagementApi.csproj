@@ -46,7 +46,9 @@
     <Compile Include="Clients\ClientGrantsClient.cs" />
     <Compile Include="Clients\IClientGrantsClient.cs" />
     <Compile Include="Clients\ILogsClient.cs" />
+    <Compile Include="Clients\IResourceServersClient.cs" />
     <Compile Include="Clients\LogsClient.cs" />
+    <Compile Include="Clients\ResourceServersClient.cs" />
     <Compile Include="Core\Http\ApiConnection.cs" />
     <Compile Include="Clients\BlacklistedTokensClient.cs" />
     <Compile Include="Clients\ClientBase.cs" />
@@ -91,6 +93,8 @@
     <Compile Include="Models\EmailProviderUpdateRequest.cs" />
     <Compile Include="Models\EmailVerificationTicketRequest.cs" />
     <Compile Include="Models\PasswordChangeTicketRequest.cs" />
+    <Compile Include="Models\ResourceServerCreateRequest.cs" />
+    <Compile Include="Models\ResourceServerUpdateRequest.cs" />
     <Compile Include="Models\RuleCreateRequest.cs" />
     <Compile Include="Models\RuleUpdateRequest.cs" />
     <Compile Include="Models\TenantSettingsUpdateRequest.cs" />

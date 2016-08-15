@@ -59,6 +59,11 @@ namespace Auth0.ManagementApi
         public ILogsClient Logs { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /resource-servers endpoints.
+        /// </summary>
+        public IResourceServersClient ResourceServers { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /rules endpoints.
         /// </summary>
         /// <value>The rules.</value>
@@ -120,6 +125,7 @@ namespace Auth0.ManagementApi
             EmailProvider = new EmailProviderClient(apiConnection);
             Jobs = new JobsClient(apiConnection);
             Logs = new LogsClient(apiConnection);
+            ResourceServers = new ResourceServersClient(apiConnection);
             Rules = new RulesClient(apiConnection);
             Stats = new StatsClient(apiConnection);
             TenantSettings = new TentantSettingsClient(apiConnection);

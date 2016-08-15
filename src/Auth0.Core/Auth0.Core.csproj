@@ -41,6 +41,8 @@
     <Compile Include="Base\ClientApplicationType.cs" />
     <Compile Include="Base\ClientGrantBase.cs" />
     <Compile Include="Base\PagingInformation.cs" />
+    <Compile Include="Base\ResourceServerBase.cs" />
+    <Compile Include="ResourceServerScope.cs" />
     <Compile Include="Base\TokenEndpointAuthMethod.cs" />
     <Compile Include="ClientGrant.cs" />
     <Compile Include="Collections\IPagedList.cs" />
@@ -78,6 +80,7 @@
     <Compile Include="Management\Rule.cs" />
     <Compile Include="Base\RuleBase.cs" />
     <Compile Include="Serialization\ApiErrorConverter.cs" />
+    <Compile Include="SigningAlgorithm.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Base\UserBase.cs" />
     <Compile Include="Properties\JetBrains.Annotations.cs" />
