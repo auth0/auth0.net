@@ -81,6 +81,18 @@ namespace Auth0.ManagementApi.Clients
         Task<User> GetAsync(string id, string fields = null, bool includeFields = true);
 
         /// <summary>
+        /// Retrieve every log event for a specific user id
+        /// </summary>
+        /// <param name="userId">The user id of the logs to retrieve</param>
+        /// <param name="page">The zero-based page number</param>
+        /// <param name="perPage">The amount of entries per page. Default: 50. Max value: 100</param>
+        /// <param name="sort">The field to use for sorting. Use field:order where order is 1 for ascending and -1 for descending. For example date:-1</param>
+        /// <param name="includeTotals">True if a query summary must be included in the result, false otherwise. Default false.</param>
+        /// <returns></returns>
+        Task<IPagedList<LogEntry>> GetLogsAsync(string userId, int? page = null, int? perPage = null, string sort = null,
+            bool? includeTotals = null);
+
+        /// <summary>
         ///     Links a secondary account to a primary account.
         /// </summary>
         /// <param name="id">The ID of the primary account.</param>

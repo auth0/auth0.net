@@ -23,15 +23,19 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 users = new
                 {
-                    actions = new string[] { "read", "create", "update", "delete" }
+                    actions = new string[] {"read", "create", "update", "delete"}
                 },
                 connections = new
                 {
-                    actions = new string[] { "create", "delete" }
+                    actions = new string[] {"create", "delete"}
                 },
                 users_app_metadata = new
                 {
-                    actions = new string[] { "update" }
+                    actions = new string[] {"update"}
+                },
+                logs = new
+                {
+                    actions = new string[] {"read"}
                 }
             };
             string token = GenerateToken(scopes);
@@ -43,7 +47,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 Name = Guid.NewGuid().ToString("N"),
                 Strategy = "auth0",
-                EnabledClients = new[] { "rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW" }
+                EnabledClients = new[] {"rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW"}
             });
         }
 
@@ -51,7 +55,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task TearDown()
         {
             await apiClient.Connections.DeleteAsync(connection.Id);
-        } 
+        }
 
         [Test]
         public async Task Test_users_crud_sequence()
@@ -191,6 +195,46 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Delete the user
             await apiClient.Users.DeleteAsync(user.UserId);
+        }
+
+        [Test]
+        public async Task Test_logs_deserialization_without_totals()
+        {
+            var newUserRequest = new UserCreateRequest
+            {
+                Connection = connection.Name,
+                Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
+                EmailVerified = true,
+                Password = "password"
+            };
+            var user = await apiClient.Users.CreateAsync(newUserRequest);
+
+            var logEntries = await apiClient.Users.GetLogsAsync(user.UserId);
+
+            await apiClient.Users.DeleteAsync(user.UserId);
+
+            logEntries.Should().NotBeNull();
+            logEntries.Paging.Should().BeNull();
+        }
+
+        [Test]
+        public async Task Test_logs_deserialization_with_totals()
+        {
+            var newUserRequest = new UserCreateRequest
+            {
+                Connection = connection.Name,
+                Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
+                EmailVerified = true,
+                Password = "password"
+            };
+            var user = await apiClient.Users.CreateAsync(newUserRequest);
+
+            var logEntries = await apiClient.Logs.GetAllAsync(includeTotals: true);
+
+            await apiClient.Users.DeleteAsync(user.UserId);
+
+            logEntries.Should().NotBeNull();
+            logEntries.Paging.Should().NotBeNull();
         }
     }
 }

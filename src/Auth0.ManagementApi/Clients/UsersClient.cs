@@ -133,6 +133,31 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
+        /// Retrieve every log event for a specific user id
+        /// </summary>
+        /// <param name="userId">The user id of the logs to retrieve</param>
+        /// <param name="page">The zero-based page number</param>
+        /// <param name="perPage">The amount of entries per page. Default: 50. Max value: 100</param>
+        /// <param name="sort">The field to use for sorting. Use field:order where order is 1 for ascending and -1 for descending. For example date:-1</param>
+        /// <param name="includeTotals">True if a query summary must be included in the result, false otherwise. Default false.</param>
+        /// <returns></returns>
+        public Task<IPagedList<LogEntry>> GetLogsAsync(string userId, int? page = null, int? perPage = null, string sort = null, bool? includeTotals = null)
+        {
+            return Connection.GetAsync<IPagedList<LogEntry>>("users/{id}/logs",
+                new Dictionary<string, string>
+                {
+                    {"id", userId}
+                },
+                new Dictionary<string, string>
+                {
+                    {"page", page?.ToString()},
+                    {"per_page", perPage?.ToString()},
+                    {"sort", sort},
+                    {"include_totals", includeTotals?.ToString().ToLower()}
+                }, null, new PagedListConverter<LogEntry>("logs"));
+        }
+
+        /// <summary>
         /// Links a secondary account to a primary account.
         /// </summary>
         /// <param name="id">The ID of the primary account.</param>
