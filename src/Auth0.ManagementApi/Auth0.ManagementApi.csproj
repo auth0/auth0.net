@@ -47,8 +47,10 @@
     <Compile Include="Clients\IClientGrantsClient.cs" />
     <Compile Include="Clients\ILogsClient.cs" />
     <Compile Include="Clients\IResourceServersClient.cs" />
+    <Compile Include="Clients\IUserBlocksClient.cs" />
     <Compile Include="Clients\LogsClient.cs" />
     <Compile Include="Clients\ResourceServersClient.cs" />
+    <Compile Include="Clients\UserBlocksClient.cs" />
     <Compile Include="Core\Http\ApiConnection.cs" />
     <Compile Include="Clients\BlacklistedTokensClient.cs" />
     <Compile Include="Clients\ClientBase.cs" />

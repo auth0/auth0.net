@@ -74,6 +74,11 @@ namespace Auth0.ManagementApi
         ITicketsClient Tickets { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /user-blocks endpoints.
+        /// </summary>
+        IUserBlocksClient UserBlocks { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /users endpoints.
         /// </summary>
         IUsersClient Users { get; }

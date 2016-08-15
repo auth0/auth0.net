@@ -88,6 +88,11 @@ namespace Auth0.ManagementApi
         public ITicketsClient Tickets { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /user-blocks endpoints.
+        /// </summary>
+        public IUserBlocksClient UserBlocks { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /users endpoints.
         /// </summary>
         /// <value>The users.</value>
@@ -130,6 +135,7 @@ namespace Auth0.ManagementApi
             Stats = new StatsClient(apiConnection);
             TenantSettings = new TentantSettingsClient(apiConnection);
             Tickets = new TicketsClient(apiConnection);
+            UserBlocks = new UserBlocksClient(apiConnection);
             Users = new UsersClient(apiConnection);
 
         }
