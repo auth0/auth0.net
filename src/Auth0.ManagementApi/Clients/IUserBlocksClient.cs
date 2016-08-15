@@ -13,27 +13,27 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="identifier">The identifier of the user. Can be a user's email address, username or phone number</param>
         /// <returns></returns>
-        Task<UserBlocks> GetByIdentifier(string identifier);
+        Task<UserBlocks> GetByIdentifierAsync(string identifier);
 
         /// <summary>
         /// Get a user's blocks by user id.
         /// </summary>
         /// <param name="id">The id of the user</param>
         /// <returns></returns>
-        Task<UserBlocks> GetByUserId(string id);
+        Task<UserBlocks> GetByUserIdAsync(string id);
 
         /// <summary>
         /// Unblock a user by their identifier.
         /// </summary>
         /// <param name="identifier">The identifier of the user. Can be a user's email address, username or phone number</param>
         /// <returns></returns>
-        Task UnblockByIdentifier(string identifier);
+        Task UnblockByIdentifierAsync(string identifier);
 
         /// <summary>
         /// Unblock a user by their id.
         /// </summary>
         /// <param name="id">The id of the user</param>
         /// <returns></returns>
-        Task UnblockByUserId(string id);
+        Task UnblockByUserIdAsync(string id);
     }
 }

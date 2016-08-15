@@ -24,7 +24,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="identifier">The identifier of the user. Can be a user's email address, username or phone number</param>
         /// <returns></returns>
-        public Task<UserBlocks> GetByIdentifier(string identifier)
+        public Task<UserBlocks> GetByIdentifierAsync(string identifier)
         {
             return Connection.GetAsync<UserBlocks>("user-blocks",
                 null,
@@ -39,7 +39,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="id">The id of the user</param>
         /// <returns></returns>
-        public Task<UserBlocks> GetByUserId(string id)
+        public Task<UserBlocks> GetByUserIdAsync(string id)
         {
             return Connection.GetAsync<UserBlocks>("user-blocks/{id}",
                 new Dictionary<string, string>
@@ -54,7 +54,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="identifier">The identifier of the user. Can be a user's email address, username or phone number</param>
         /// <returns></returns>
-        public Task UnblockByIdentifier(string identifier)
+        public Task UnblockByIdentifierAsync(string identifier)
         {
             return Connection.DeleteAsync<object>("user-blocks",
                 null,
@@ -69,7 +69,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="id">The id of the user</param>
         /// <returns></returns>
-        public Task UnblockByUserId(string id)
+        public Task UnblockByUserIdAsync(string id)
         {
             return Connection.DeleteAsync<object>("user-blocks/{id}", new Dictionary<string, string>
             {
