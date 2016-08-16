@@ -1,4 +1,5 @@
-﻿using Auth0.Core;
+﻿using System;
+using Auth0.Core;
 using Newtonsoft.Json;
 
 namespace Auth0.ManagementApi.Models
@@ -61,6 +62,49 @@ namespace Auth0.ManagementApi.Models
         [JsonProperty("blocked")]
         public bool? Blocked { get; set; }
 
+        /// <summary>
+        /// The Nickname of the user.
+        /// </summary>
+        [Obsolete("Nickname cannot be updated. This property will be ignored if specified, and will be removed from a future release.")]
+        [JsonIgnore]
+        public string NickName { get; set; }
+
+        /// <summary>
+        /// The first name of the user (if available).
+        /// </summary>
+        /// <remarks>
+        /// This is the given_name attribute supplied by the underlying API.
+        /// </remarks>
+        [Obsolete("Nickname (given_name) cannot be updated. This property will be ignored if specified, and will be removed from a future release.")]
+        [JsonIgnore]
+        public string FirstName { get; set; }
+
+        /// <summary>
+        /// The full name of the user (e.g.: John Foo). ALWAYS GENERATED.
+        /// </summary>
+        /// <remarks>
+        /// This is the name attribute supplied by the underlying API.
+        /// </remarks>
+        [Obsolete("Fullname (name) cannot be updated. This property will be ignored if specified, and will be removed from a future release.")]
+        [JsonIgnore]
+        public string FullName { get; set; }
+
+        /// <summary>
+        /// The last name of the user (if available).
+        /// </summary>
+        /// <remarks>
+        /// This is the family_name attribute supplied by the underlying API.
+        /// </remarks>
+        [Obsolete("LastName (family_name) cannot be updated. This property will be ignored if specified, and will be removed from a future release.")]
+        [JsonIgnore]
+        public string LastName { get; set; }
+
+        /// <summary>
+        /// URL pointing to the user picture (if not available, will use gravatar.com with the email). ALWAYS GENERATED
+        /// </summary>
+        [Obsolete("Picture cannot be updated. This property will be ignored if specified, and will be removed from a future release.")]
+        [JsonIgnore]
+        public string Picture { get; set; }
     }
 
 }

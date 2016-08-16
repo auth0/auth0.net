@@ -89,6 +89,18 @@ namespace Auth0.ManagementApi.IntegrationTests
             updateUserResponse.Should().NotBeNull();
             updateUserResponse.Email.Should().Be(updateUserRequest.Email);
 
+            // Ensure firstname, lastname etc are ignored and not sent to Auth0. If not, the following will throw an exception
+            updateUserRequest = new UserUpdateRequest
+            {
+                EmailVerified = true, // We need to pass in at least one property, so we set this as the other properties below will not be serialized
+                FirstName = "firstname",
+                LastName = "lastname",
+                NickName = "nickname",
+                FullName = "fullname",
+                Picture = "picture url.."
+            };
+            await apiClient.Users.UpdateAsync(newUserResponse.UserId, updateUserRequest);
+
             // Get a single user
             var user = await apiClient.Users.GetAsync(newUserResponse.UserId);
             user.Should().NotBeNull();
