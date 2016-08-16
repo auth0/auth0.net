@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>Auth0.Core</id>
-        <version>3.2.0</version>
+        <version>3.3.0</version>
         <authors>Auth0</authors>
         <owners>Auth0</owners>
         <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
@@ -11,6 +11,9 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Core classes for the Auth0 API</description>
         <releaseNotes>
+          Version 3.3.0
+          - Updates to includes all latest API methods
+          
           Version 3.2.0
           - Support serializing client_metadata
           - Fix NuGet target

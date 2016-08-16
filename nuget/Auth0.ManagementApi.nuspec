@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>Auth0.ManagementApi</id>
-        <version>3.2.0</version>
+        <version>3.3.0</version>
         <authors>Auth0</authors>
         <owners>Auth0</owners>
         <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
@@ -11,13 +11,16 @@
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Client library for the Auth0 Management API</description>
         <releaseNotes>
+          Version 3.3.0
+          - Updates to includes all latest API methods
+
           Version 3.2.0
           - Support serializing client_metadata
           - Fix NuGet target
-          
+
           Version 3.1.0
           - Support for removing MFA provider for a user
-          
+
           Version 3.0.0
           - Library conforms to the correct naming convention of ending the name of async methods with "Async". The old methods still work but have been marked as obsolete. Please change your code to use the new methods.
 
@@ -29,7 +32,7 @@
         <tags>Auth0 OAuth</tags>
         <dependencies>
             <dependency id="Newtonsoft.Json" version="7.0.1" />
-            <dependency id="Auth0.Core" version="3.2.0" />
+            <dependency id="Auth0.Core" version="3.3.0" />
         </dependencies>
     </metadata>
 	<files>
