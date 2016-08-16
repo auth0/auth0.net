@@ -67,7 +67,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var newUserRequest = new UserCreateRequest
             {
                 Connection = connection.Name,
-                Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
                 EmailVerified = true,
                 Password = "password"
             };
@@ -82,7 +82,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Update the user
             var updateUserRequest = new UserUpdateRequest
             {
-                Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
                 VerifyEmail = false
             };
             var updateUserResponse = await apiClient.Users.UpdateAsync(newUserResponse.UserId, updateUserRequest);
@@ -101,13 +101,23 @@ namespace Auth0.ManagementApi.IntegrationTests
         }
 
         [Test]
+        [TestCase(null)]
+        [TestCase("")]
+        [TestCase("  ")]
+        public void Attempting_to_delete_users_with_null_or_empty_id_should_throw(string id)
+        {
+            Func<Task> deleteFunc = async () => await apiClient.Users.DeleteAsync(id);
+            deleteFunc.ShouldThrow<ArgumentException>().And.Message.Should().Be("Value cannot be null or whitespace.\r\nParameter name: id");
+        }
+
+        [Test]
         public async Task Test_user_blocking()
         {
             // Add a new user, and ensure user is not blocked
             var newUserRequest = new UserCreateRequest
             {
                 Connection = connection.Name,
-                Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
                 EmailVerified = true,
                 Password = "password"
             };
@@ -141,7 +151,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var newUserRequest = new UserCreateRequest
             {
                 Connection = connection.Name,
-                Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
                 EmailVerified = true,
                 Password = "password"
             };
@@ -203,7 +213,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var newUserRequest = new UserCreateRequest
             {
                 Connection = connection.Name,
-                Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
                 EmailVerified = true,
                 Password = "password"
             };
@@ -223,7 +233,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var newUserRequest = new UserCreateRequest
             {
                 Connection = connection.Name,
-                Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
                 EmailVerified = true,
                 Password = "password"
             };
