@@ -110,6 +110,7 @@
     <Compile Include="ClientTests.cs" />
     <Compile Include="ConnectionTests.cs" />
     <Compile Include="TicketsTests.cs" />
+    <Compile Include="UserBlockTests.cs" />
     <Compile Include="UsersTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -119,6 +120,10 @@
     <EmbeddedResource Include="user-import-test.json" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\src\Auth0.AuthenticationApi\Auth0.AuthenticationApi.csproj">
+      <Project>{6225ad9d-983e-42bb-825b-a36b143d4d31}</Project>
+      <Name>Auth0.AuthenticationApi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\Auth0.Core\Auth0.Core.csproj">
       <Project>{c5395825-ef6d-438e-9e22-95975f1276e8}</Project>
       <Name>Auth0.Core</Name>
