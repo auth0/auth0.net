@@ -1,0 +1,118 @@
+{
+  "locked": false,
+  "version": 2,
+  "targets": {
+    ".NETFramework,Version=v4.5": {
+      "Newtonsoft.Json/7.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.5/win": {
+      "Newtonsoft.Json/7.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {}
+        }
+      }
+    },
+    ".NETPortable,Version=v4.5,Profile=Profile111": {
+      "Newtonsoft.Json/7.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        }
+      }
+    },
+    ".NETPortable,Version=v4.5,Profile=Profile111/win": {
+      "Newtonsoft.Json/7.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Newtonsoft.Json/7.0.1": {
+      "sha512": "q3V4KLetMLnt1gpAVWgtXnHjKs0UG/RalBc29u2ZKxd5t5Ze4JBL5WiiYIklJyK/5CRiIiNwigVQUo0FgbsuWA==",
+      "type": "package",
+      "path": "Newtonsoft.Json/7.0.1",
+      "files": [
+        "Newtonsoft.Json.7.0.1.nupkg.sha512",
+        "Newtonsoft.Json.nuspec",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.dll",
+        "lib/portable-net45+wp80+win8+wpa81+dnxcore50/Newtonsoft.Json.xml",
+        "tools/install.ps1"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "": [
+      "Newtonsoft.Json >= 7.0.1"
+    ],
+    ".NETFramework,Version=v4.5": [
+      "System.Data",
+      "System.Numerics",
+      "System.Runtime.Serialization",
+      "System.Xml",
+      "System.Xml.Linq"
+    ],
+    ".NETPortable,Version=v4.5,Profile=Profile111": [
+      "Microsoft.CSharp",
+      "System",
+      "System.Collections",
+      "System.Core",
+      "System.Diagnostics.Debug",
+      "System.Dynamic.Runtime",
+      "System.Globalization",
+      "System.IO",
+      "System.Linq",
+      "System.Linq.Expressions",
+      "System.Net.Primitives",
+      "System.ObjectModel",
+      "System.Reflection",
+      "System.Reflection.Extensions",
+      "System.Resources.ResourceManager",
+      "System.Runtime",
+      "System.Runtime.Extensions",
+      "System.Runtime.Serialization",
+      "System.Runtime.Serialization.Primitives",
+      "System.Text.Encoding",
+      "System.Text.Encoding.Extensions",
+      "System.Text.RegularExpressions",
+      "System.Threading",
+      "System.Threading.Tasks",
+      "System.Xml",
+      "System.Xml.Linq",
+      "System.Xml.ReaderWriter",
+      "System.Xml.XDocument"
+    ]
+  },
+  "tools": {},
+  "projectFileToolGroups": {}
+}
