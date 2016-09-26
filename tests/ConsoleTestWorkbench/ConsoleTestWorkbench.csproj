@@ -70,16 +70,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\Auth0.ManagementApi\Auth0.ManagementApi.csproj">
-      <Project>{01898e06-fa70-42b8-ae35-28d2bacdfbd7}</Project>
-      <Name>Auth0.ManagementApi</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Auth0.Core\Auth0.Core.csproj">
-      <Project>{c5395825-ef6d-438e-9e22-95975f1276e8}</Project>
-      <Name>Auth0.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

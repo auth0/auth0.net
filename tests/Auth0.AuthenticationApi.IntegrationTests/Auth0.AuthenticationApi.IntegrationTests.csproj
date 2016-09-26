@@ -98,20 +98,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Auth0.AuthenticationApi\Auth0.AuthenticationApi.csproj">
-      <Project>{6225ad9d-983e-42bb-825b-a36b143d4d31}</Project>
-      <Name>Auth0.AuthenticationApi</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Auth0.Core\Auth0.Core.csproj">
-      <Project>{c5395825-ef6d-438e-9e22-95975f1276e8}</Project>
-      <Name>Auth0.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\src\Auth0.ManagementApi\Auth0.ManagementApi.csproj">
-      <Project>{01898e06-fa70-42b8-ae35-28d2bacdfbd7}</Project>
-      <Name>Auth0.ManagementApi</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>

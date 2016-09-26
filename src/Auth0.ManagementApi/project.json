@@ -1,16 +1,25 @@
-﻿{
+{
+  "buildOptions": {
+    "define": [
+      "MANAGEMENT_API" 
+    ]
+  },
   "dependencies": {
+    "Auth0.Core": "1.0.0-*",
     "Newtonsoft.Json": "9.0.1"
   },
   "frameworks": {
     "netstandard1.1": {
       "dependencies": {
+        "System.Net.Http": "4.1.0", 
         "System.Net.Primitives": "4.0.11"
       }
     },
     "net45": {
       "frameworkAssemblies": {
         "System.Data": "",
+        "System.Linq": "",
+        "System.Net.Http": "",
         "System.Numerics": "",
         "System.Runtime.Serialization": "",
         "System.Xml": "",
@@ -44,7 +53,17 @@
         "System.Text.Encoding": "",
         "System.Text.Encoding.Extensions": "",
         "System.Threading": "",
-        "System.Threading.Tasks": ""
+        "System.Threading.Tasks": "",
+        "System.Xml": "",
+        "System.Xml.Linq": "",
+        "System.Xml.ReaderWriter": "",
+        "System.Xml.XDocument": ""
+      },
+      "dependencies": {
+        "Microsoft.Bcl": "1.1.10",
+        "Microsoft.Bcl.Async": "1.0.168",
+        "Microsoft.Bcl.Build": "1.0.21",
+        "Microsoft.Net.Http": "2.2.29"
       }
     }
   }
