@@ -1,4 +1,8 @@
 {
+  "title": "Auth0 Authentication API",
+  "version": "3.4.0",
+  "copyright": "Auth0",
+  "description": ".NET SDK for using the Auth0 Authentication API",
   "buildOptions": {
     "compile": {
         "include": [
@@ -11,8 +15,9 @@
         ]
     },
     "define": [
-      "AUTHENTICATION_API" 
-    ]
+      "AUTHENTICATION_API"
+    ],
+    "xmlDoc": true
   },
   "dependencies": {
     "Auth0.Core": "1.0.0-*",

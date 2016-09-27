@@ -1,44 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
-    <metadata>
-        <id>Auth0.ManagementApi</id>
-        <version>3.3.0</version>
-        <authors>Auth0</authors>
-        <owners>Auth0</owners>
-        <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
-        <projectUrl>https://github.com/auth0/auth0.net</projectUrl>
-        <iconUrl>http://secure.gravatar.com/avatar/805765c256ff8617fcad483b5476faf2</iconUrl>
-        <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Client library for the Auth0 Management API</description>
-        <releaseNotes>
-          Version 3.3.0
-          - Updates to includes all latest API methods
+  <metadata>
+    <id>Auth0.ManagementApi</id>
+    <version>3.4.0</version>
+    <authors>Auth0</authors>
+    <owners>Auth0</owners>
+    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/auth0/auth0.net</projectUrl>
+    <iconUrl>http://secure.gravatar.com/avatar/805765c256ff8617fcad483b5476faf2</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Client library for the Auth0 Management API</description>
+    <releaseNotes>
+      Version 3.4.0
+      - .NET Standard support
 
-          Version 3.2.0
-          - Support serializing client_metadata
-          - Fix NuGet target
+      Version 3.3.0
+      - Updates to includes all latest API methods
 
-          Version 3.1.0
-          - Support for removing MFA provider for a user
+      Version 3.2.0
+      - Support serializing client_metadata
+      - Fix NuGet target
 
-          Version 3.0.0
-          - Library conforms to the correct naming convention of ending the name of async methods with "Async". The old methods still work but have been marked as obsolete. Please change your code to use the new methods.
+      Version 3.1.0
+      - Support for removing MFA provider for a user
 
-          Version 2.1.0
-          - Add support for paged collections
-          - Return information about the last API call to obtain rate limits.
-        </releaseNotes>
-      <copyright>Copyright 2016</copyright>
-        <tags>Auth0 OAuth</tags>
-        <dependencies>
-            <dependency id="Newtonsoft.Json" version="7.0.1" />
-            <dependency id="Auth0.Core" version="3.3.0" />
-        </dependencies>
-    </metadata>
-	<files>
-		<file src="..\src\Auth0.ManagementApi\bin\Release\Auth0.ManagementApi.dll" target="lib\portable-net45+win8+wpa81" />
-		<file src="..\src\Auth0.ManagementApi\bin\Release\Auth0.ManagementApi.pdb" target="lib\portable-net45+win8+wpa81" />
-		<file src="..\src\Auth0.ManagementApi\bin\Release\Auth0.ManagementApi.XML" target="lib\portable-net45+win8+wpa81" />
-    <file src="readme.txt" target="" />
-	</files>
+      Version 3.0.0
+      - Library conforms to the correct naming convention of ending the name of async methods with "Async". The old methods still work but have been marked as obsolete. Please change your code to use the new methods.
+
+      Version 2.1.0
+      - Add support for paged collections
+      - Return information about the last API call to obtain rate limits.
+    </releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>Auth0 OAuth</tags>
+    <dependencies>
+      <group targetFramework="net45">
+        <dependency id="Newtonsoft.Json" version="9.0.1" />
+        <dependency id="Auth0.Core" version="3.4.0" />
+      </group>
+
+      <group targetFramework="portable-net45+win8+wpa81">
+        <dependency id="Newtonsoft.Json" version="9.0.1" />
+        <dependency id="Auth0.Core" version="3.4.0" />
+        <dependency id="Microsoft.Net.Http" version="2.2.29" />
+      </group>
+
+      <group targetFramework="netstandard1.1">
+        <dependency id="Newtonsoft.Json" version="9.0.1" />
+        <dependency id="Auth0.Core" version="3.4.0" />
+        <dependency id="System.Net.Http" version="4.1.0" />
+        <dependency id="System.Net.Primitives" version="4.0.11" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\src\Auth0.ManagementApi\bin\Release\portable45-net45+win8+wpa81\Auth0.ManagementApi.dll"
+          target="lib\portable-net45+win8+wpa81" />
+    <file src="..\src\Auth0.ManagementApi\bin\Release\portable45-net45+win8+wpa81\Auth0.ManagementApi.pdb"
+          target="lib\portable-net45+win8+wpa81" />
+    <file src="..\src\Auth0.ManagementApi\bin\Release\portable45-net45+win8+wpa81\Auth0.ManagementApi.XML"
+          target="lib\portable-net45+win8+wpa81" />
+    <file src="..\src\Auth0.ManagementApi\bin\Release\net45\Auth0.ManagementApi.dll" target="lib\net45" />
+    <file src="..\src\Auth0.ManagementApi\bin\Release\net45\Auth0.ManagementApi.pdb" target="lib\net45" />
+    <file src="..\src\Auth0.ManagementApi\bin\Release\net45\Auth0.ManagementApi.XML" target="lib\net45" />
+    <file src="..\src\Auth0.ManagementApi\bin\Release\netstandard1.1\Auth0.ManagementApi.dll"
+          target="lib\netstandard1.1" />
+    <file src="..\src\Auth0.ManagementApi\bin\Release\netstandard1.1\Auth0.ManagementApi.pdb"
+          target="lib\netstandard1.1" />
+    <file src="..\src\Auth0.ManagementApi\bin\Release\netstandard1.1\Auth0.ManagementApi.XML"
+          target="lib\netstandard1.1" />
+  </files>
 </package>

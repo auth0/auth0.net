@@ -127,19 +127,19 @@ namespace Auth0.Core.Http
             var header = new DiagnosticsHeader(sdkAssemblyName);
 
             // Extract dependencies from the Nuget packages.config
-            using (var stream = sdkAssembly.GetManifestResourceStream(string.Format("{0}.packages.config", sdkAssemblyName.Name)))
-            {
-                XElement root = XElement.Load(stream);
-                header.Dependencies = root.Elements("package")
-                    .Select(e => new DiagnosticsComponent(e.Attribute("id").Value, e.Attribute("version").Value))
-                    .ToList();
-            }
+            //using (var stream = sdkAssembly.GetManifestResourceStream(string.Format("{0}.packages.config", sdkAssemblyName.Name)))
+            //{
+            //    XElement root = XElement.Load(stream);
+            //    header.Dependencies = root.Elements("package")
+            //        .Select(e => new DiagnosticsComponent(e.Attribute("id").Value, e.Attribute("version").Value))
+            //        .ToList();
+            //}
 
             // Hard code PCL header for now
-            header.Environments = new[]
-            {
-                new DiagnosticsComponent(".NET PCL", "Profile111")
-            };
+            //header.Environments = new[]
+            //{
+            //    new DiagnosticsComponent(".NET SDK", "Profile111")
+            //};
 
             return header;
         }

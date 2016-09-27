@@ -1,8 +1,13 @@
 {
+  "title": "Auth0 Management API",
+  "version": "3.4.0",
+  "copyright": "Auth0",
+  "description": ".NET SDK for using the Auth0 Management API",
   "buildOptions": {
     "define": [
-      "MANAGEMENT_API" 
-    ]
+      "MANAGEMENT_API"
+    ],
+    "xmlDoc": true
   },
   "dependencies": {
     "Auth0.Core": "1.0.0-*",
