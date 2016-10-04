@@ -64,7 +64,7 @@ namespace Auth0.AuthenticationApi.Models
         /// <summary>
         /// Gets or sets the device.
         /// </summary>
-		[JsonProperty("device")]
-		public string Device { get; set; }
+        [JsonProperty("device")]
+        public string Device { get; set; }
     }
 }
