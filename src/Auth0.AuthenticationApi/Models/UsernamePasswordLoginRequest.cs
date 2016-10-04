@@ -60,5 +60,11 @@ namespace Auth0.AuthenticationApi.Models
         /// </summary>
         [JsonProperty("tenant")]
         public string Tenant { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the device.
+        /// </summary>
+		[JsonProperty("device")]
+		public string Device { get; set; }
     }
 }
