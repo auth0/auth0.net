@@ -8,6 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{D3999165
 		nuget\Auth0.AuthenticationApi.nuspec = nuget\Auth0.AuthenticationApi.nuspec
 		nuget\Auth0.Core.nuspec = nuget\Auth0.Core.nuspec
 		nuget\Auth0.ManagementApi.nuspec = nuget\Auth0.ManagementApi.nuspec
+		nuget\Auth0.nuspec = nuget\Auth0.nuspec
 		nuget\readme.txt = nuget\readme.txt
 	EndProjectSection
 EndProject

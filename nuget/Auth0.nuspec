@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>Auth0</id>
-        <version>3.3.0</version>
+        <version>3.5.0</version>
         <authors>Auth0</authors>
         <owners>Auth0</owners>
         <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
@@ -19,8 +19,8 @@
         <copyright>Copyright 2016</copyright>
         <tags>Auth0 OAuth Federation Wsfed ADFS Office365 GoogleApps</tags>
         <dependencies>
-            <dependency id="Auth0.AuthenticationApi" version="3.3.0" />
-            <dependency id="Auth0.ManagementApi" version="3.3.0" />
+            <dependency id="Auth0.AuthenticationApi" version="3.5.0" />
+            <dependency id="Auth0.ManagementApi" version="3.5.0" />
         </dependencies>
     </metadata>
 </package>
