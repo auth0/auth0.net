@@ -18,6 +18,7 @@ namespace Auth0.Core.Http
         private readonly string baseUrl;
         private readonly string token;
         private readonly DiagnosticsHeader diagnostics;
+        private readonly HttpMessageHandler handler;
 
         /// <summary>
         /// Contains information about the last API call made by the connection.
@@ -30,10 +31,12 @@ namespace Auth0.Core.Http
         /// <param name="token">The API token.</param>
         /// <param name="baseUrl">The base URL of the requests.</param>
         /// <param name="diagnostics">The diagnostics. header</param>
-        public ApiConnection(string token, string baseUrl, DiagnosticsHeader diagnostics)
+        /// <param name="handler"></param>
+        public ApiConnection(string token, string baseUrl, DiagnosticsHeader diagnostics, HttpMessageHandler handler = null)
         {
             this.token = token;
             this.diagnostics = diagnostics;
+            this.handler = handler;
             this.baseUrl = baseUrl;
         }
 
@@ -154,7 +157,7 @@ namespace Auth0.Core.Http
             ApplyHeaders(requestMessage, headers);
 
             // Send the request
-            var httpClient = new HttpClient();
+            var httpClient = new HttpClient(handler ?? new HttpClientHandler());
             var response = await httpClient.SendAsync(requestMessage).ConfigureAwait(false);
 
             // Handle API errors

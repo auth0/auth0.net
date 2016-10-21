@@ -1,6 +1,6 @@
 {
   "title": "Auth0 Authentication API",
-  "version": "3.4.1",
+  "version": "3.5.0",
   "copyright": "Auth0",
   "description": ".NET SDK for using the Auth0 Authentication API",
   "buildOptions": {

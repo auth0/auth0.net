@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 using Auth0.Core.Http;
 using Auth0.ManagementApi.Clients;
 
@@ -112,7 +113,8 @@ namespace Auth0.ManagementApi
         /// <param name="token">The token.</param>
         /// <param name="baseUri">The base URI.</param>
         /// <param name="diagnostics">The diagnostics.</param>
-        public ManagementApiClient(string token, Uri baseUri, DiagnosticsHeader diagnostics)
+        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
+        public ManagementApiClient(string token, Uri baseUri, DiagnosticsHeader diagnostics, HttpMessageHandler handler)
         {
             // If no diagnostics header structure was specified, then revert to the default one
             if (diagnostics == null)
@@ -120,7 +122,7 @@ namespace Auth0.ManagementApi
                 diagnostics = DiagnosticsHeader.Default;
             }
 
-            apiConnection = new ApiConnection(token, baseUri.AbsoluteUri, diagnostics);
+            apiConnection = new ApiConnection(token, baseUri.AbsoluteUri, diagnostics, handler);
 
             BlacklistedTokens = new BlacklistedTokensClient(apiConnection);
             ClientGrants = new ClientGrantsClient(apiConnection);
@@ -145,9 +147,76 @@ namespace Auth0.ManagementApi
         /// </summary>
         /// <param name="token">The token.</param>
         /// <param name="baseUri">The base URI.</param>
-        public ManagementApiClient(string token, Uri baseUri)
-            : this(token, baseUri, null)
+        /// <param name="diagnostics">The diagnostics.</param>
+        public ManagementApiClient(string token, Uri baseUri, DiagnosticsHeader diagnostics)
+            : this(token, baseUri, diagnostics, null)
         {
         }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <param name="baseUri">The base URI.</param>
+        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
+        public ManagementApiClient(string token, Uri baseUri, HttpMessageHandler handler)
+            : this(token, baseUri, null, handler)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <param name="baseUri">The base URI.</param>
+        public ManagementApiClient(string token, Uri baseUri)
+            : this(token, baseUri, null, null)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <param name="domain">Your Auth0 domain, e.g. mydomain.auth0.com.</param>
+        /// <param name="diagnostics">The diagnostics.</param>
+        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
+        public ManagementApiClient(string token, string domain, DiagnosticsHeader diagnostics, HttpMessageHandler handler)
+            : this(token, new Uri($"https://{domain}/api/v2"), diagnostics, handler)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <param name="domain">Your Auth0 domain, e.g. mydomain.auth0.com.</param>
+        /// <param name="diagnostics">The diagnostics.</param>
+        public ManagementApiClient(string token, string domain, DiagnosticsHeader diagnostics)
+            : this(token, new Uri($"https://{domain}/api/v2"), diagnostics, null)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <param name="domain">Your Auth0 domain, e.g. mydomain.auth0.com.</param>
+        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
+        public ManagementApiClient(string token, string domain, HttpMessageHandler handler)
+            : this(token, new Uri($"https://{domain}/api/v2"), null, handler)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
+        /// </summary>
+        /// <param name="token">The token.</param>
+        /// <param name="domain">Your Auth0 domain, e.g. mydomain.auth0.com.</param>
+        public ManagementApiClient(string token, string domain)
+            : this(token, new Uri($"https://{domain}/api/v2"), null, null)
+        {
+        }
+
     }
 }

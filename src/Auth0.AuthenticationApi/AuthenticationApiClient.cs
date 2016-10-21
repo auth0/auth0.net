@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Auth0.AuthenticationApi.Builders;
 using Auth0.AuthenticationApi.Models;
@@ -32,7 +33,8 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="baseUri">The base URI.</param>
         /// <param name="diagnostics">The diagnostics.</param>
-        public AuthenticationApiClient(Uri baseUri, DiagnosticsHeader diagnostics)
+        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
+        public AuthenticationApiClient(Uri baseUri, DiagnosticsHeader diagnostics, HttpMessageHandler handler)
         {
             this.baseUri = baseUri;
 
@@ -42,7 +44,27 @@ namespace Auth0.AuthenticationApi
                 diagnostics = DiagnosticsHeader.Default;
             }
 
-            apiConnection = new ApiConnection(null, baseUri.AbsoluteUri, diagnostics);
+            apiConnection = new ApiConnection(null, baseUri.AbsoluteUri, diagnostics, handler);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
+        /// </summary>
+        /// <param name="baseUri">The base URI.</param>
+        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
+        public AuthenticationApiClient(Uri baseUri, HttpMessageHandler handler)
+            : this(baseUri, null, handler)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
+        /// </summary>
+        /// <param name="baseUri">The base URI.</param>
+        /// <param name="diagnostics">The diagnostics.</param>
+        public AuthenticationApiClient(Uri baseUri, DiagnosticsHeader diagnostics)
+            : this(baseUri, diagnostics, null)
+        {
         }
 
         /// <summary>
@@ -50,7 +72,47 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="baseUri">The base URI.</param>
         public AuthenticationApiClient(Uri baseUri)
-            : this(baseUri, null)
+            : this(baseUri, null, null)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
+        /// </summary>
+        /// <param name="domain">Your Auth0 domain, e.g. mydomain.auth0.com.</param>
+        /// <param name="diagnostics">The diagnostics.</param>
+        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
+        public AuthenticationApiClient(string domain, DiagnosticsHeader diagnostics, HttpMessageHandler handler)
+            : this(new Uri($"https://{domain}"), diagnostics, handler)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
+        /// </summary>
+        /// <param name="domain">Your Auth0 domain, e.g. mydomain.auth0.com.</param>
+        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
+        public AuthenticationApiClient(string domain, HttpMessageHandler handler)
+            : this(new Uri($"https://{domain}"), null, handler)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
+        /// </summary>
+        /// <param name="domain">Your Auth0 domain, e.g. mydomain.auth0.com.</param>
+        /// <param name="diagnostics">The diagnostics.</param>
+        public AuthenticationApiClient(string domain, DiagnosticsHeader diagnostics)
+            : this(new Uri($"https://{domain}"), diagnostics, null)
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
+        /// </summary>
+        /// <param name="domain">Your Auth0 domain, e.g. mydomain.auth0.com.</param>
+        public AuthenticationApiClient(string domain)
+            : this(new Uri($"https://{domain}"), null, null)
         {
         }
 

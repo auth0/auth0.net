@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0-*",
+  "buildOptions": {
+    "emitEntryPoint": true
+  },
+
+  "dependencies": {
+    "Auth0.AuthenticationApi": "3.5.0",
+    "Auth0.Core": "3.5.0",
+    "Auth0.ManagementApi": "3.5.0",
+    "Microsoft.NETCore.App": {
+      "type": "platform",
+      "version": "1.0.1"
+    }
+  },
+
+  "frameworks": {
+    "netcoreapp1.0": {
+      "imports": "dnxcore50"
+    }
+  }
+}
