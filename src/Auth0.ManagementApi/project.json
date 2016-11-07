@@ -1,6 +1,6 @@
 {
   "title": "Auth0 Management API",
-  "version": "3.5.0",
+  "version": "3.5.2",
   "copyright": "Auth0",
   "description": ".NET SDK for using the Auth0 Management API",
   "buildOptions": {

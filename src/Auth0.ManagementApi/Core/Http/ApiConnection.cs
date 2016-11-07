@@ -237,7 +237,7 @@ namespace Auth0.Core.Http
                 // Add the other parameters
                 foreach (var parameter in parameters)
                 {
-                    multipartContent.Add(new StringContent(Uri.EscapeDataString(parameter.Value.ToString())), parameter.Key);
+                    multipartContent.Add(new StringContent(Uri.EscapeDataString(parameter.Value?.ToString() ?? "")), parameter.Key);
                 }
 
                 return multipartContent;
