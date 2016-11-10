@@ -72,7 +72,7 @@ The following are the list of URL builder helper methods:
 
 For example, to build up an authorization URL, you can write the following code:
 
-```
+```csharp
 var client = new AuthenticationApiClient(new Uri("https://YOUR_AUTH0_DOMAIN/"));
 
 var authorizationUrl = client.BuildAuthorizationUrl()
@@ -82,6 +82,25 @@ var authorizationUrl = client.BuildAuthorizationUrl()
 	.WithRedirectUrl("http://www.myapp.com/redirect")
 	.WithScope("openid offline_access")
 	.Build();
+```
+
+The sample code above will generate a URL for you to which you can redirect a user. For example, in an ASP.NET MVC Controller Action, you may do the following:
+
+```csharp
+public ActionResult Login()
+{
+	var client = new AuthenticationApiClient(new Uri("https://YOUR_AUTH0_DOMAIN/"));
+
+	var authorizationUrl = client.BuildAuthorizationUrl()
+		.WithResponseType(AuthorizationResponseType.Code)
+		.WithClient("abcdef")
+		.WithConnection("google-oauth2")
+		.WithRedirectUrl("http://www.myapp.com/redirect")
+		.WithScope("openid offline_access")
+		.Build();
+
+	return Redirect(authorizationUrl);
+}
 ```
 
 ## Using the Management API
