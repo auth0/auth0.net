@@ -123,7 +123,7 @@ Below is an example of how you can get a list of all clients:
 
 ```
 var apiClient = new ManagementApiClient("token", new Uri("https://YOUR_AUTH0_DOMAIN/api/v2"));
-var allClients = await apiClient.Clients.GetAll();
+var allClients = await apiClient.Clients.GetAllAsync();
 ```
 
 ### Client reuse and thread safety
