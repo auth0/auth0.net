@@ -14,7 +14,7 @@ namespace Auth0.ManagementApi.IntegrationTests
     public class ClientGrantTests : TestBase
     {
         private ManagementApiClient apiClient;
-        private Client client;
+        private Core.Client client;
 
         [SetUp]
         public async Task SetUp()

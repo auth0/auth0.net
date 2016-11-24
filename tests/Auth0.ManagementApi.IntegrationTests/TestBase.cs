@@ -1,12 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using Microsoft.Owin.Security.DataHandler.Encoder;
+using Microsoft.Extensions.Configuration;
 
 namespace Auth0.Tests.Shared
 {
     public class TestBase
     {
+        private IConfigurationRoot _config;
+
+        public TestBase()
+        {
+            _config = new ConfigurationBuilder()
+                .AddJsonFile("client-secrets.json")
+                .Build();
+        }
+
         protected string GenerateToken(object scopes)
         {
             string jti = Guid.NewGuid().ToString("N");
@@ -27,7 +35,9 @@ namespace Auth0.Tests.Shared
                 {"scopes", scopes}
             };
 
-            return JWT.JsonWebToken.Encode(payload, TextEncodings.Base64Url.Decode(apiSecret), JWT.JwtHashAlgorithm.HS256);
+            var keyAsBase64 = apiSecret.Replace('_', '/').Replace('-', '+');
+            var secret = Convert.FromBase64String(keyAsBase64);
+            return JWT.JsonWebToken.Encode(payload, secret, JWT.JwtHashAlgorithm.HS256);
         }
 
         protected string GetVariable(string variableName)
@@ -37,7 +47,7 @@ namespace Auth0.Tests.Shared
                 return Environment.GetEnvironmentVariable(variableName);
 
             // By default return variable from config file
-            return ConfigurationManager.AppSettings[variableName];
+            return _config[variableName];
         }
 
         protected bool IsRunningUnderAppVeyorCi()
