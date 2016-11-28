@@ -12,7 +12,7 @@
           "lib/net45/Newtonsoft.Json.dll": {}
         }
       },
-      "Auth0.Core/1.0.0": {
+      "Auth0.Core/3.6.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5",
         "dependencies": {
@@ -87,7 +87,7 @@
           "lib/portable-net45+wp80+win8+wpa81/Newtonsoft.Json.dll": {}
         }
       },
-      "Auth0.Core/1.0.0": {
+      "Auth0.Core/3.6.0": {
         "type": "project",
         "framework": ".NETPortable,Version=v4.5,Profile=Profile111",
         "dependencies": {
@@ -453,7 +453,7 @@
           "ref/netstandard1.0/System.Xml.XDocument.dll": {}
         }
       },
-      "Auth0.Core/1.0.0": {
+      "Auth0.Core/3.6.0": {
         "type": "project",
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
@@ -2491,7 +2491,7 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "Auth0.Core/1.0.0": {
+    "Auth0.Core/3.6.0": {
       "type": "project",
       "path": "../Auth0.Core/project.json",
       "msbuildProject": "../Auth0.Core/Auth0.Core.xproj"
@@ -2499,7 +2499,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "Auth0.Core >= 1.0.0-*",
+      "Auth0.Core",
       "Newtonsoft.Json >= 9.0.1"
     ],
     ".NETFramework,Version=v4.5": [

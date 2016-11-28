@@ -1034,7 +1034,7 @@
           "lib/net45/_._": {}
         }
       },
-      "Auth0.AuthenticationApi/3.5.0": {
+      "Auth0.AuthenticationApi/3.6.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5",
         "dependencies": {
@@ -1057,7 +1057,7 @@
           "net45/Auth0.AuthenticationApi.dll": {}
         }
       },
-      "Auth0.Core/3.5.0": {
+      "Auth0.Core/3.6.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5",
         "dependencies": {
@@ -1077,7 +1077,7 @@
           "net45/Auth0.Core.dll": {}
         }
       },
-      "Auth0.ManagementApi/3.5.2": {
+      "Auth0.ManagementApi/3.6.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5",
         "dependencies": {
@@ -4176,17 +4176,17 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "Auth0.AuthenticationApi/3.5.0": {
+    "Auth0.AuthenticationApi/3.6.0": {
       "type": "project",
       "path": "../../src/Auth0.AuthenticationApi/project.json",
       "msbuildProject": "../../src/Auth0.AuthenticationApi/Auth0.AuthenticationApi.xproj"
     },
-    "Auth0.Core/3.5.0": {
+    "Auth0.Core/3.6.0": {
       "type": "project",
       "path": "../../src/Auth0.Core/project.json",
       "msbuildProject": "../../src/Auth0.Core/Auth0.Core.xproj"
     },
-    "Auth0.ManagementApi/3.5.2": {
+    "Auth0.ManagementApi/3.6.0": {
       "type": "project",
       "path": "../../src/Auth0.ManagementApi/project.json",
       "msbuildProject": "../../src/Auth0.ManagementApi/Auth0.ManagementApi.xproj"

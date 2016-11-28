@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Auth0.Core</id>
-    <version>3.5.0</version>
+    <version>3.6.0</version>
     <authors>Auth0</authors>
     <owners>Auth0</owners>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
@@ -12,8 +12,11 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Core classes for the Auth0 API</description>
     <releaseNotes>
+      Version 3.6.0
+      - Optimized usage of HttpClient
+
       Version 3.5.0
-      - .Proxy support (via HttpMessageHandler)
+      - Proxy support (via HttpMessageHandler)
 
       Version 3.4.0
       - .NET Standard support

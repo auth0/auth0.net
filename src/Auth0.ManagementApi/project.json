@@ -1,6 +1,6 @@
 {
   "title": "Auth0 Management API",
-  "version": "3.5.2",
+  "version": "3.6.0",
   "copyright": "Auth0",
   "description": ".NET SDK for using the Auth0 Management API",
   "buildOptions": {
@@ -10,7 +10,7 @@
     "xmlDoc": true
   },
   "dependencies": {
-    "Auth0.Core": "1.0.0-*",
+    "Auth0.Core": { "target": "project" },
     "Newtonsoft.Json": "9.0.1"
   },
   "frameworks": {

@@ -1,6 +1,6 @@
 {
   "title": "Auth0 .NET SDK Core classes",
-  "version": "3.5.0",
+  "version": "3.6.0",
   "copyright": "Auth0",
   "description": "Core classes to support Auth0 .NET SDKs",
   "dependencies": {
