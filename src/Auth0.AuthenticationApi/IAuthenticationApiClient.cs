@@ -104,8 +104,8 @@ namespace Auth0.AuthenticationApi
         /// Returns the user information based on the Auth0 access token (obtained during login).
         /// </summary>
         /// <param name="accessToken">The access token.</param>
-        /// <returns>The <see cref="User"/> associated with the token.</returns>
-        Task<User> GetUserInfoAsync(string accessToken);
+        /// <returns>The <see cref="UserInfo"/> associated with the token.</returns>
+        Task<UserInfo> GetUserInfoAsync(string accessToken);
 
         /// <summary>
         /// Returns the WS Federation meta data.
