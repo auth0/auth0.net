@@ -285,9 +285,9 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="accessToken">The access token.</param>
         /// <returns>The <see cref="User" /> associated with the token.</returns>
-        public Task<User> GetUserInfoAsync(string accessToken)
+        public Task<UserInfo> GetUserInfoAsync(string accessToken)
         {
-            return Connection.GetAsync<User>("userinfo", null, null, new Dictionary<string, object>
+            return Connection.GetAsync<UserInfo>("userinfo", null, null, new Dictionary<string, object>
             {
                 {"Authorization", string.Format("Bearer {0}", accessToken)}
             });
