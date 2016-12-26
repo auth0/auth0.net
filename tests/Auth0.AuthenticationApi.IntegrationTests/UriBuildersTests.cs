@@ -22,6 +22,27 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 .WithConnection("google-oauth2")
                 .WithRedirectUrl("http://www.jerriepelser.com/test")
                 .WithScope("openid offline_access")
+                .WithAudience("https://myapi.com/v2")
+                .WithNonce("MyNonce")
+                .WithState("MyState")
+                .Build();
+
+            authorizationUrl.Should()
+                .Be(
+                    new Uri("https://auth0-dotnet-integration-tests.auth0.com/authorize?response_type=code&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&connection=google-oauth2&redirect_uri=http%3A%2F%2Fwww.jerriepelser.com%2Ftest&scope=openid%20offline_access&audience=https%3A%2F%2Fmyapi.com%2Fv2&nonce=MyNonce&state=MyState"));
+        }
+
+        [Test]
+        public async Task Can_provide_multiple_response_type()
+        {
+            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+
+            var authorizationUrl = authenticationApiClient.BuildAuthorizationUrl()
+                .WithResponseType(AuthorizationResponseType.Code)
+                .WithClient("rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW")
+                .WithConnection("google-oauth2")
+                .WithRedirectUrl("http://www.jerriepelser.com/test")
+                .WithScope("openid offline_access")
                 .Build();
 
             authorizationUrl.Should()

@@ -6,13 +6,18 @@ namespace Auth0.AuthenticationApi.Models
     public enum AuthorizationResponseType
     {
         /// <summary>
-        /// The response type is a code
+        /// The response type is an authorization code.
         /// </summary>
         Code,
 
         /// <summary>
-        /// The response type is a token.
+        /// The response type is an access_token.
         /// </summary>
-        Token
+        Token,
+
+        /// <summary>
+        /// The response type is an id_token.
+        /// </summary>
+        IdToken
     }
 }
