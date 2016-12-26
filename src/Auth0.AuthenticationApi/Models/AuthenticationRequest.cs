@@ -13,6 +13,7 @@ namespace Auth0.AuthenticationApi.Models
         public string ClientId { get; set; }
 
         /// <summary>
+        /// Gets or sets the client (app) secret.
         /// </summary>
         public string ClientSecret { get; set; }
 
