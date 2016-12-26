@@ -2,7 +2,8 @@
 
 Major version 4 is meant to be used with **OIDC-conformant clients**.
 
-OIDC-conformant clients can be specified by first enabling the "OAuth 2.0 API Authorization" feature in the account-wide **Settings**, under the **Advanced** tab. After enabling that toggle, you can set the OIDC-conformant flag by selecting a client and clicking the **Advanced Settings** button.
+OIDC-conformant clients can be specified by first enabling the "OAuth 2.0 API Authorization" feature in the [Advanced tab of the Account Settings](https://manage.auth0.com/#/account/advanced). 
+After enabling that toggle, you can set the OIDC-conformant flag by selecting a client and clicking the **Advanced Settings** button.
 
 ## Breaking changes
 
