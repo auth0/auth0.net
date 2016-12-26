@@ -80,32 +80,5 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection.PostAsync<Job>("jobs/verification-email", request, null, null, null, null, null);
         }
-
-        #region Obsolete Methods
-#pragma warning disable 1591
-
-        [Obsolete("Use GetAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<Job> Get(string id)
-        {
-            return GetAsync(id);
-        }
-
-        [Obsolete("Use ImportUsersAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<Job> ImportUsers(string connectionId, string fileName, Stream file)
-        {
-            return ImportUsersAsync(connectionId, fileName, file);
-        }
-
-        [Obsolete("Use SendVerificationEmailAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<Job> SendVerificationEmail(VerifyEmailJobRequest request)
-        {
-            return SendVerificationEmailAsync(request);
-        }
-
-#pragma warning restore 1591
-        #endregion
     }
 }

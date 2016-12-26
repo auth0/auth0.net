@@ -40,25 +40,5 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection.PostAsync<Ticket>("tickets/password-change", request, null, null, null, null, null);
         }
-
-        #region Obsolete Methods
-#pragma warning disable 1591
-
-        [Obsolete("Use CreateEmailVerificationTicketAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<Ticket> CreateEmailVerificationTicket(EmailVerificationTicketRequest request)
-        {
-            return CreateEmailVerificationTicketAsync(request);
-        }
-
-        [Obsolete("Use CreatePasswordChangeTicketAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<Ticket> CreatePasswordChangeTicket(PasswordChangeTicketRequest request)
-        {
-            return CreatePasswordChangeTicketAsync(request);
-        }
-
-#pragma warning restore 1591
-        #endregion
     }
 }

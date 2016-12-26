@@ -125,49 +125,5 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="request">The <see cref="UserUpdateRequest" /> containing the information you wish to update.</param>
         /// <returns></returns>
         Task<User> UpdateAsync(string id, UserUpdateRequest request);
-
-        #region Obsolete Methods
-        #pragma warning disable 1591
-
-        [Obsolete("Use CreateAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<User> Create(UserCreateRequest request);
-
-        [Obsolete("Use DeleteAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task Delete(string id);
-
-        [Obsolete("Use DeleteAllAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task DeleteAll();
-
-        [Obsolete("Use GetAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<User> Get(string id, string fields = null, bool includeFields = true);
-
-        [Obsolete("Use GetAllAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<IPagedList<User>> GetAll(int? page = null, int? perPage = null, bool? includeTotals = null,
-            string sort = null, string connection = null, string fields = null,
-            bool? includeFields = null, string q = null, string searchEngine = null);
-
-        [Obsolete("Use LinkAccountAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<IList<AccountLinkResponse>> LinkAccount(string id, UserAccountLinkRequest request);
-
-        [Obsolete("Use LinkAccountAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<IList<AccountLinkResponse>> LinkAccount(string id, string primaryJwtToken, string secondaryJwtToken);
-
-        [Obsolete("Use UnlinkAccountAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<IList<AccountLinkResponse>> UnlinkAccount(string primaryUserId, string provider, string secondaryUserId);
-
-        [Obsolete("Use UpdateAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<User> Update(string id, UserUpdateRequest request);
-
-        #pragma warning restore 1591
-        #endregion
     }
 }

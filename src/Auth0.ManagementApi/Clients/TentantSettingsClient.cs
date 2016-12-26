@@ -51,25 +51,5 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection.PatchAsync<TenantSettings>("tenants/settings", request, null);
         }
-
-        #region Obsolete Methods
-#pragma warning disable 1591
-
-        [Obsolete("Use GetAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<TenantSettings> Get(string fields = null, bool includeFields = true)
-        {
-            return GetAsync(fields, includeFields);
-        }
-
-        [Obsolete("Use UpdateAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<TenantSettings> Update(TenantSettingsUpdateRequest request)
-        {
-            return UpdateAsync(request);
-        }
-
-#pragma warning restore 1591
-        #endregion
     }
 }
