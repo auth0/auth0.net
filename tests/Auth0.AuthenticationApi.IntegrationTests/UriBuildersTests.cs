@@ -56,11 +56,14 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
             var logoutUrl = authenticationApiClient.BuildLogoutUrl()
+                .Federated()
+                .WithClientId("rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW")
+                .WithReturnUrl("https://myapp/logged_out")
                 .Build();
 
             logoutUrl.Should()
                 .Be(
-                    @"https://auth0-dotnet-integration-tests.auth0.com/logout");
+                    @"https://auth0-dotnet-integration-tests.auth0.com//v2/logout?federated&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&returnTo=https%3A%2F%2Fmyapp%2Flogged_out");
         }
 
         [Test]

@@ -58,7 +58,9 @@ namespace Auth0.Core.Http
                             sb = sb.Append("&");
 
                         if (kvp.Value != null)
-                            return sb.Append(string.Format("{0}={1}", Uri.EscapeUriString(kvp.Key), Uri.EscapeDataString(kvp.Value)));
+                            sb.Append(string.Format("{0}={1}", Uri.EscapeUriString(kvp.Key), Uri.EscapeDataString(kvp.Value)));
+                        else
+                            sb.Append(string.Format("{0}", Uri.EscapeUriString(kvp.Key)));
 
                         return sb;
                     })
