@@ -68,6 +68,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                     var authenticationResponse = await authenticationApiClient.AuthenticateAsync(new AuthenticationRequest
                     {
                         ClientId = GetVariable("AUTH0_CLIENT_ID"),
+                        ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
                         Connection = connection.Name,
                         GrantType = "password",
                         Scope = "openid",
