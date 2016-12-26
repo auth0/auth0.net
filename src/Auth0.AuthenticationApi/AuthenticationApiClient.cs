@@ -132,7 +132,26 @@ namespace Auth0.AuthenticationApi
         /// <returns>A <see cref="AuthenticationResponse" /> with the access token.</returns>
         public Task<AuthenticationResponse> AuthenticateAsync(AuthenticationRequest request)
         {
-            return Connection.PostAsync<AuthenticationResponse>("oauth/ro", request, null, null, null, null, null);
+            var parameters = new Dictionary<string, object>
+            {
+                { "client_id", request.ClientId },
+                { "client_secret", request.ClientSecret },
+                { "username", request.Username },
+                { "password", request.Password },
+                { "scope", request.Scope }
+            };
+
+            if (string.IsNullOrEmpty(request.Connection))
+            {
+                parameters.Add("grant_type", "password");
+            }
+            else
+            {
+                parameters.Add("grant_type", "http://auth0.com/oauth/grant-type/password-realm");
+                parameters.Add("realm", request.Connection);
+            }
+
+            return Connection.PostAsync<AuthenticationResponse>("oauth/token", null, parameters, null, null, null, null);
         }
 
         /// <summary>

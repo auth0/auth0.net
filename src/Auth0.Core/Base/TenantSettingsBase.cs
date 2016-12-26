@@ -40,6 +40,12 @@ namespace Auth0.Core
         [JsonProperty("support_url")]
         public string SupportUrl { get; set; }
 
+        /// <summary>
+        /// Gets or sets the default connection for "password" grant types.
+        /// </summary>
+        [JsonProperty("default_directory")]
+        public string DefaultDirectory { get; set; }
+
     }
 
 }
