@@ -63,31 +63,5 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="request">A <see cref="RuleUpdateRequest" /> containing the information to update.</param>
         /// <returns></returns>
         Task<Rule> UpdateAsync(string id, RuleUpdateRequest request);
-
-        #region Obsolete Methods
-#pragma warning disable 1591
-
-        [Obsolete("Use CreateAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<Rule> Create(RuleCreateRequest request);
-
-        [Obsolete("Use DeleteAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task Delete(string id);
-
-        [Obsolete("Use GetAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<Rule> Get(string id, string fields = null, bool includeFields = true);
-
-        [Obsolete("Use GetAllAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<IList<Rule>> GetAll(bool? enabled = null, string fields = null, bool includeFields = true, string stage = null);
-
-        [Obsolete("Use UpdateAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<Rule> Update(string id, RuleUpdateRequest request);
-
-#pragma warning restore 1591
-        #endregion
     }
 }

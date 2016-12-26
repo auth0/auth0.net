@@ -35,23 +35,5 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="type">The type of credentials</param>
         /// <returns>A list of <see cref="DeviceCredential"/> which conforms to the criteria specified.</returns>
         Task<IList<DeviceCredential>> GetAllAsync(string fields = null, bool includeFields = true, string userId = null, string clientId = null, string type = null);
-
-        #region Obsolete Methods
-#pragma warning disable 1591
-
-        [Obsolete("Use CreateAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<DeviceCredential> Create(DeviceCredentialCreateRequest request);
-
-        [Obsolete("Use DeleteAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task Delete(string id);
-
-        [Obsolete("Use GetAllAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<IList<DeviceCredential>> GetAll(string fields = null, bool includeFields = true, string userId = null, string clientId = null, string type = null);
-
-#pragma warning restore 1591
-        #endregion
     }
 }

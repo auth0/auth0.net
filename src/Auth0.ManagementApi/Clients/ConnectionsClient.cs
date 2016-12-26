@@ -121,48 +121,5 @@ namespace Auth0.ManagementApi.Clients
                 {"id", id}
             });
         }
-
-        #region Obsolete Methods
-
-#pragma warning disable 1591
-
-        [Obsolete("Use CreateAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<Connection> Create(ConnectionCreateRequest request)
-        {
-            return CreateAsync(request);
-        }
-
-        [Obsolete("Use DeleteAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task Delete(string id)
-        {
-            return DeleteAsync(id);
-        }
-
-        [Obsolete("Use GetAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<Connection> Get(string id, string fields = null, bool includeFields = true)
-        {
-            return GetAsync(id, fields, includeFields);
-        }
-
-        [Obsolete("Use GetAllAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<IList<Connection>> GetAll(string strategy, string fields = null, bool includeFields = true)
-        {
-            return GetAllAsync(strategy, fields, includeFields);
-        }
-
-        [Obsolete("Use UpdateAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<Connection> Update(string id, ConnectionUpdateRequest request)
-        {
-            return UpdateAsync(id, request);
-        }
-
-#pragma warning restore 1591
-
-        #endregion
     }
 }

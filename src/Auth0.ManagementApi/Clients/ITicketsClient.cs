@@ -24,19 +24,5 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="request">The <see cref="PasswordChangeTicketRequest"/> containing the details of the ticket to create.</param>
         /// <returns>The <see cref="Ticket"/>.</returns>
         Task<Ticket> CreatePasswordChangeTicketAsync(PasswordChangeTicketRequest request);
-
-        #region Obsolete Methods
-        #pragma warning disable 1591
-
-        [Obsolete("Use CreateEmailVerificationTicketAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<Ticket> CreateEmailVerificationTicket(EmailVerificationTicketRequest request);
-
-        [Obsolete("Use CreatePasswordChangeTicketAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<Ticket> CreatePasswordChangeTicket(PasswordChangeTicketRequest request);
-
-        #pragma warning restore 1591
-        #endregion
     }
 }

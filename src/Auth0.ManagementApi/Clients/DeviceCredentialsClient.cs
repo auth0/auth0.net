@@ -66,32 +66,5 @@ namespace Auth0.ManagementApi.Clients
                 {"id", id}
             }, null);
         }
-
-        #region Obsolete Methods
-#pragma warning disable 1591
-
-        [Obsolete("Use CreateAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<DeviceCredential> Create(DeviceCredentialCreateRequest request)
-        {
-            return CreateAsync(request);
-        }
-
-        [Obsolete("Use DeleteAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task Delete(string id)
-        {
-            return DeleteAsync(id);
-        }
-
-        [Obsolete("Use GetAllAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<IList<DeviceCredential>> GetAll(string fields = null, bool includeFields = true, string userId = null, string clientId = null, string type = null)
-        {
-            return GetAllAsync(fields, includeFields, userId, clientId, type);
-        }
-
-#pragma warning restore 1591
-        #endregion
     }
 }

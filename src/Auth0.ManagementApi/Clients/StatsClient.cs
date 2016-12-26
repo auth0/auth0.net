@@ -48,25 +48,5 @@ namespace Auth0.ManagementApi.Clients
                     { "to", to.ToString("yyyyMMdd") }
                 }, null, null);
         }
-
-        #region Obsolete Methods
-#pragma warning disable 1591
-
-        [Obsolete("Use GetActiveUsersAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<long> GetActiveUsers()
-        {
-            return GetActiveUsersAsync();
-        }
-
-        [Obsolete("Use GetDailyStatsAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<IList<DailyStatistics>> GetDailyStats(DateTime from, DateTime to)
-        {
-            return GetDailyStatsAsync(from, to);
-        }
-
-#pragma warning restore 1591
-        #endregion
     }
 }

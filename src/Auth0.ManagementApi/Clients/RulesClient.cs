@@ -103,47 +103,5 @@ namespace Auth0.ManagementApi.Clients
                 {"id", id}
             });
         }
-
-        #region Obsolete Methods
-#pragma warning disable 1591
-
-        [Obsolete("Use CreateAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<Rule> Create(RuleCreateRequest request)
-        {
-            return CreateAsync(request);
-        }
-
-        [Obsolete("Use DeleteAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task Delete(string id)
-        {
-            return DeleteAsync(id);
-        }
-
-        [Obsolete("Use GetAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<Rule> Get(string id, string fields = null, bool includeFields = true)
-        {
-            return GetAsync(id, fields, includeFields);
-        }
-
-        [Obsolete("Use GetAllAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<IList<Rule>> GetAll(bool? enabled = null, string fields = null, bool includeFields = true,
-            string stage = null)
-        {
-            return GetAllAsync(enabled, fields, includeFields, stage);
-        }
-
-        [Obsolete("Use UpdateAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<Rule> Update(string id, RuleUpdateRequest request)
-        {
-            return UpdateAsync(id, request);
-        }
-
-#pragma warning restore 1591
-        #endregion
     }
 }
