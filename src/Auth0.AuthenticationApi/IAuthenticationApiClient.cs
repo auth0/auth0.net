@@ -147,5 +147,12 @@ namespace Auth0.AuthenticationApi
         /// <param name="request">The authentication request details containing information regarding the connection, username, password etc.</param>
         /// <returns>A <see cref="UsernamePasswordLoginResponse"/> containing the WS-Federation Login Form, which can be posted by the user to trigger a server-side login.</returns>
         Task<UsernamePasswordLoginResponse> UsernamePasswordLoginAsync(UsernamePasswordLoginRequest request);
+
+        /// <summary>
+        /// Given a <see cref="TokenRefreshRequest"/>, it will retrieve a refreshed access token from the authorization server.
+        /// </summary>
+        /// <param name="request">The refresh token request details, containing a valid refresh token.</param>
+        /// <returns>The new token issued by the server.</returns>
+        Task<AccessToken> GetRefreshedTokenAsync(TokenRefreshRequest request);
     }
 }

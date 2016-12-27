@@ -399,5 +399,26 @@ namespace Auth0.AuthenticationApi
                 HtmlForm = await Connection.PostAsync<string>("usernamepassword/login", request, null, null, null, null, null).ConfigureAwait(false)
             };
         }
+
+        /// <summary>
+        /// Given a <see cref="TokenRefreshRequest"/>, it will retrieve a refreshed access token from the authorization server.
+        /// </summary>
+        /// <param name="request">The refresh token request details, containing a valid refresh token.</param>
+        /// <returns>The new token issued by the server.</returns>
+        public async Task<AccessToken> GetRefreshedTokenAsync(TokenRefreshRequest request)
+        {
+            var parameters = new Dictionary<string, object> {
+                { "grant_type", "refresh_token" },
+                { "refresh_token", request.RefreshToken },
+                { "client_id", request.ClientId },
+                { "client_secret", request.ClientSecret }
+            };
+
+            if (!string.IsNullOrEmpty(request.Scope))
+            {
+                parameters.Add("scope", request.Scope);
+            }
+            return await Connection.PostAsync<AccessToken>("oauth/token", null, parameters, null, null, null, null);
+        }
     }
 }
