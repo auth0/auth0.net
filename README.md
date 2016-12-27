@@ -11,13 +11,15 @@ After enabling that toggle, you can set the OIDC-conformant flag by selecting a 
 
   Most members previously marked as obsolete were removed.
   
-* `AuthenticationClient.AuthenticateAsync()` now requires a `ClientSecret` in the `AuthenticationRequest`, since it is calling the newer `/oauth/token` endpoint using the [Resource Owner Password grant type](https://auth0.com/docs/api/authentication#resource-owner-password).
+* `AuthenticationClient.AuthenticateAsync()` now requires a `ClientSecret` in the `AuthenticationRequest`, since it is calling the newer `oauth/token` endpoint using the [Resource Owner Password grant type](https://auth0.com/docs/api/authentication#resource-owner-password).
 
 ## Non-breaking changes
 
 * `AuthenticationClient.AuthenticateAsync()` does not require a `Connection` value in the `AuthenticationRequest`. If not provided, the Authentication API will use the connection specified as the Default Directory in the [Account Settings](https://manage.auth0.com/#/account).
 
+* `AuthorizationUrlBuilder` now supports `nonce`, `audience` and multiple `response_type`s.
 
+* `LogoutUrlBuilder` now uses the `v2/logout` endpoint, and supports the `federated` and `clientId` values.
 
 ## Management API
 
