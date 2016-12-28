@@ -23,9 +23,11 @@
     "net45": {
       "frameworkAssemblies": {
         "System.Data": "",
+        "System.IO": "",
         "System.Linq": "",
         "System.Net.Http": "",
         "System.Numerics": "",
+        "System.Runtime": "",
         "System.Runtime.Serialization": "",
         "System.Xml": "",
         "System.Xml.Linq": ""
