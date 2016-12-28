@@ -11,7 +11,14 @@ After enabling that toggle, you can set the OIDC-conformant flag by selecting a 
 
   Most members previously marked as obsolete were removed.
   
-* `AuthenticationClient.AuthenticateAsync()` now requires a `ClientSecret` in the `AuthenticationRequest`, since it is calling the newer `oauth/token` endpoint using the [Resource Owner Password grant type](https://auth0.com/docs/api/authentication#resource-owner-password).
+* `AuthenticationClient.AuthenticateAsync()` now requires a `ClientSecret` in the `AuthenticationRequest`, 
+since it is calling the newer `oauth/token` endpoint using the 
+[Resource Owner Password grant type](https://auth0.com/docs/api/authentication#resource-owner-password).
+
+* The token refresh exchange must be done using the `AuthenticationClient.GetRefreshedTokenAsync()` with a `TokenRefreshRequest` instead of using `AuthenticationClient.GetDelegationTokenAsync()` with a `RefreshTokenDelegationRequest`.
+
+* The `AuthenticationClient.GetUserInfoAsync()` method now returns a `UserInfo` class instead of `User`.
+ 
 
 ## Non-breaking changes
 
