@@ -36,6 +36,7 @@
         "System.Linq": "",
         "System.Net.Http": "",
         "System.Numerics": "",
+        "System.Runtime": "",
         "System.Runtime.Serialization": "",
         "System.Xml": "",
         "System.Xml.Linq": ""
