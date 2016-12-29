@@ -7,6 +7,7 @@ using Auth0.ManagementApi.Models;
 using FluentAssertions;
 using NUnit.Framework;
 using Auth0.Tests.Shared;
+using System.Linq;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
@@ -257,6 +258,49 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             logEntries.Should().NotBeNull();
             logEntries.Paging.Should().NotBeNull();
+        }
+
+        [Test]
+        public async Task Can_read_profileData()
+        {
+            // 'profileData' is available on linked identities,
+            // so first let's create a linked user
+
+            var mainIdentityCreateRequest = new UserCreateRequest
+            {
+                Connection = connection.Name,
+                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                EmailVerified = true,
+                Password = "password"
+            };
+
+            var mainUser = await apiClient.Users.CreateAsync(mainIdentityCreateRequest);
+
+            var secondaryIdentityUserCreateRequest = new UserCreateRequest
+            {
+                Connection = connection.Name,
+                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                EmailVerified = true,
+                Password = "password"
+            };
+
+            var secondaryUser = await apiClient.Users.CreateAsync(secondaryIdentityUserCreateRequest);
+
+            var linkUserResponse = await apiClient.Users.LinkAccountAsync(mainUser.UserId, new UserAccountLinkRequest
+            {
+                ConnectionId = connection.Id,
+                Provider = "auth0",
+                UserId = secondaryUser.UserId.Split('|')[1]
+            });
+
+
+            var linkedUser = await apiClient.Users.GetAsync(mainUser.UserId);
+            linkedUser.Should().NotBeNull();
+            linkedUser.Identities.Count().Should().Be(2);
+            var secondaryIdentity = linkedUser.Identities[1];
+            secondaryIdentity.ProfileData.Should().NotBeNull();
+            secondaryIdentity.ProfileData["email"].Should().Be(secondaryUser.Email);
+
         }
     }
 }

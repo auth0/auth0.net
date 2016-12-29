@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Auth0.Core
 {
@@ -45,6 +46,11 @@ namespace Auth0.Core
         /// </summary>
         [JsonProperty("user_id")]
         public string UserId { get; set; }
-        
+
+        /// <summary>
+        /// Contains additional profile information for linked identities.
+        /// </summary>
+        [JsonProperty("profileData")]
+        public IDictionary<string, object> ProfileData { get; set; }
     }
 }
