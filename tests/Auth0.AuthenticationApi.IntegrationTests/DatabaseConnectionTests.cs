@@ -15,7 +15,6 @@ namespace Auth0.AuthenticationApi.IntegrationTests
     {
         private ManagementApiClient managementApiClient;
         private Connection connection;
-        private string clientId = "rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW";
 
         [SetUp]
         public async Task SetUp()
@@ -40,7 +39,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             {
                 Name = Guid.NewGuid().ToString("N"),
                 Strategy = "auth0",
-                EnabledClients = new[] { clientId }
+                EnabledClients = new[] { GetVariable("AUTH0_CLIENT_ID") }
             });
         }
 
@@ -51,7 +50,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 await managementApiClient.Connections.DeleteAsync(connection.Id);
         }
 
-        [Test, Explicit]
+        [Test]
         public async Task Can_signup_user_and_change_password()
         {
             // Arrange
@@ -60,7 +59,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             // Sign up the user
             var signupUserRequest = new SignupUserRequest
             {
-                ClientId = clientId,
+                ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 Connection = connection.Name,
                 Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
                 Password = "password"
