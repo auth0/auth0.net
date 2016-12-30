@@ -64,7 +64,6 @@ namespace Auth0.ManagementApi.IntegrationTests
                 DeviceName = Guid.NewGuid().ToString("N"),
                 DeviceId = Guid.NewGuid().ToString("N"),
                 ClientId = client.ClientId,
-                UserId = user.UserId,
                 Type = "public_key",
                 Value = "new-key-value"
             };
