@@ -1,33 +1,13 @@
 .Net client library for the Auth0 platform.
 
-Major version 4 is meant to be used with **OIDC-conformant clients**.
+Version **4.x** is meant to be used with [OIDC-conformant clients](https://auth0-docs-content-pr-3100.herokuapp.com/docs/api-auth/tutorials/migration/oidc-conformant).
 
-OIDC-conformant clients can be specified by first enabling the "OAuth 2.0 API Authorization" feature in the [Advanced tab of the Account Settings](https://manage.auth0.com/#/account/advanced). 
-After enabling that toggle, you can set the OIDC-conformant flag by selecting a client and clicking the **Advanced Settings** button.
+Non OIDC-conformant clients should continue to use **v3.x**.
 
-## Breaking changes
+## Changes
 
-* Removal of previously marked obsolete methods and properties
-
-  Most members previously marked as obsolete were removed.
-  
-* `AuthenticationClient.AuthenticateAsync()` now requires a `ClientSecret` in the `AuthenticationRequest`, 
-since it is calling the newer `oauth/token` endpoint using the 
-[Resource Owner Password grant type](https://auth0.com/docs/api/authentication#resource-owner-password).
-
-* The token refresh exchange must be done using the `AuthenticationClient.GetRefreshedTokenAsync()` with a `TokenRefreshRequest` instead of using `AuthenticationClient.GetDelegationTokenAsync()` with a `RefreshTokenDelegationRequest`.
-
-* The `AuthenticationClient.GetUserInfoAsync()` method now returns a `UserInfo` class instead of `User`.
- 
-
-## Non-breaking changes
-
-* `AuthenticationClient.AuthenticateAsync()` does not require a `Connection` value in the `AuthenticationRequest`. If not provided, the Authentication API will use the connection specified as the Default Directory in the [Account Settings](https://manage.auth0.com/#/account).
-
-* `AuthorizationUrlBuilder` now supports `nonce`, `audience` and multiple `response_type`s.
-
-* `LogoutUrlBuilder` now uses the `v2/logout` endpoint, and supports the `federated` and `clientId` values.
-
+* V4 contains some breaking changes (mostly to accomodate OIDC-conformant clients, 
+but also fix some inconsistencies) and some new functionality. Changes are listed [here](v4-changes.md).
 ## Management API
 
 ### Full Documentation
