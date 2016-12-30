@@ -126,11 +126,11 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <summary>
-        /// Given an <see cref="AuthenticationRequest" />, it will do the authentication on the provider and return a <see cref="AuthenticationResponse" />
+        /// Given an <see cref="AuthenticationRequest" />, it will do the authentication on the provider and return an <see cref="AccessToken"./>
         /// </summary>
         /// <param name="request">The authentication request details containing information regarding the connection, username, password etc.</param>
-        /// <returns>A <see cref="AuthenticationResponse" /> with the access token.</returns>
-        public Task<AuthenticationResponse> AuthenticateAsync(AuthenticationRequest request)
+        /// <returns>An <see cref="AccessToken" /> with the response.</returns>
+        public Task<AccessToken> AuthenticateAsync(AuthenticationRequest request)
         {
             var parameters = new Dictionary<string, object>
             {
@@ -151,7 +151,7 @@ namespace Auth0.AuthenticationApi
                 parameters.Add("realm", request.Connection);
             }
 
-            return Connection.PostAsync<AuthenticationResponse>("oauth/token", null, parameters, null, null, null, null);
+            return Connection.PostAsync<AccessToken>("oauth/token", null, parameters, null, null, null, null);
         }
 
         /// <summary>

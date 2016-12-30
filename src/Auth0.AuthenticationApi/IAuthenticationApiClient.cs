@@ -16,11 +16,11 @@ namespace Auth0.AuthenticationApi
     public interface IAuthenticationApiClient
     {
         /// <summary>
-        /// Given an <see cref="AuthenticationRequest"/>, it will do the authentication on the provider and return a <see cref="AuthenticationResponse"/>
+        /// Given an <see cref="AuthenticationRequest"/>, it will do the authentication on the provider and return an <see cref="AccessToken"./>
         /// </summary>
         /// <param name="request">The authentication request details containing information regarding the connection, username, password etc.</param>
-        /// <returns>A Task object with <see cref="AuthenticationResponse"/> which contains the access token.</returns>
-        Task<AuthenticationResponse> AuthenticateAsync(AuthenticationRequest request);
+        /// <returns>A Task object with <see cref="AccessToken"/> which contains the token response.</returns>
+        Task<AccessToken> AuthenticateAsync(AuthenticationRequest request);
 
         /// <summary>
         /// Creates a <see cref="AuthorizationUrlBuilder"/> which is used to build an authorization URL.
