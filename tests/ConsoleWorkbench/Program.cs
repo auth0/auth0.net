@@ -29,9 +29,9 @@ namespace ConsoleWorkbench
                 };
                 var api = new AuthenticationApiClient("jerrie.auth0.com");
 
-                var tokenInfo = await api.GetTokenInfoAsync(token);
+                var userInfo = await api.GetUserInfoAsync(token);
 
-                Console.WriteLine(tokenInfo.Email);
+                Console.WriteLine(userInfo.Email);
             }
             catch (Exception ex)
             {

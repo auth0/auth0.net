@@ -290,20 +290,6 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <summary>
-        /// Validates a JSON Web Token (signature and expiration) and returns the user information associated with the user id (sub property) of the token.
-        /// </summary>
-        /// <param name="idToken">The identifier token.</param>
-        /// <returns>The <see cref="User" /> associated with the token.</returns>
-        public Task<User> GetTokenInfoAsync(string idToken)
-        {
-            return Connection.PostAsync<User>("tokeninfo",
-                new
-                {
-                    id_token = idToken
-                }, null, null, null, null, null);
-        }
-
-        /// <summary>
         /// Returns the user information based on the Auth0 access token (obtained during login).
         /// </summary>
         /// <param name="accessToken">The access token.</param>

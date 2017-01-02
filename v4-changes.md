@@ -14,6 +14,8 @@ instead of using `AuthenticationClient.GetDelegationTokenAsync()` with a `Refres
 
 * `AuthenticationClient.AuthenticateAsync()` now returns an `AccessToken` instead of `AuthorizationResponse`. 
 
+* Removed `GetTokenInfoAsync` method (deprecated `/tokeninfo` endpoint).
+
 ## Non-breaking changes
 
 * `AuthenticationClient.AuthenticateAsync()` does not require a `Connection` value in the `AuthenticationRequest`. If not provided, the Authentication API will use the connection specified as the Default Directory in the [Account Settings](https://manage.auth0.com/#/account).

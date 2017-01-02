@@ -138,27 +138,6 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         }
 
         [Test, Explicit]
-        public async Task Can_obtain_token_info()
-        {
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
-
-            // First get the access token
-            var token = await authenticationApiClient.AuthenticateAsync(new AuthenticationRequest
-            {
-                ClientId = GetVariable("AUTH0_CLIENT_ID"),
-                Connection = connection.Name,
-                Username = newUser.Email,
-                Password = "password",
-                Scope = "openid"
-            });
-
-            // Get the user info
-            var user = await authenticationApiClient.GetTokenInfoAsync(token.IdToken);
-            user.Should().NotBeNull();
-            user.Email.Should().NotBeNull();
-        }
-
-        [Test, Explicit]
         public async Task Can_exchange_authorization_code_for_access_token()
         {
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
