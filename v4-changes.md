@@ -21,3 +21,5 @@ instead of using `AuthenticationClient.GetDelegationTokenAsync()` with a `Refres
 * `AuthorizationUrlBuilder` now supports `nonce`, `audience` and multiple `response_type`s.
 
 * `LogoutUrlBuilder` now uses the `v2/logout` endpoint, and supports the `federated` and `clientId` values.
+
+* Removal of (unused) class `OAuthToken`. 
