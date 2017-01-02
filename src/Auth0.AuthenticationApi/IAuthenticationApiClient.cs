@@ -94,13 +94,6 @@ namespace Auth0.AuthenticationApi
         Task<string> GetSamlMetadataAsync(string clientId);
 
         /// <summary>
-        /// Validates a JSON Web Token (signature and expiration) and returns the user information associated with the user id (sub property) of the token.
-        /// </summary>
-        /// <param name="idToken">The identifier token.</param>
-        /// <returns>The <see cref="User"/> associated with the token.</returns>
-        Task<User> GetTokenInfoAsync(string idToken);
-
-        /// <summary>
         /// Returns the user information based on the Auth0 access token (obtained during login).
         /// </summary>
         /// <param name="accessToken">The access token.</param>
