@@ -14,7 +14,9 @@ instead of using `AuthenticationClient.GetDelegationTokenAsync()` with a `Refres
 
 * `AuthenticationClient.AuthenticateAsync()` now returns an `AccessToken` instead of `AuthorizationResponse`. 
 
-* Removed `GetTokenInfoAsync` method (deprecated `/tokeninfo` endpoint).
+* Removed `GetTokenInfoAsync` method, based on the deprecated `/tokeninfo` endpoint.
+
+* Removed `GetAccessTokenAsync` method, based on the deprecated `/oauth/access_token` endpoint.
 
 ## Non-breaking changes
 

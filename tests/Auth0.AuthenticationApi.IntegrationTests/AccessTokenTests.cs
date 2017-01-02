@@ -64,25 +64,6 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 await managementApiClient.Connections.DeleteAsync(connection.Id);
         }
 
-
-        [Test, Explicit]
-        public async Task Can_log_in_with_social_access_token()
-        {
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
-
-            var token = await authenticationApiClient.GetAccessTokenAsync(new AccessTokenRequest
-            {
-                ClientId = GetVariable("AUTH0_CLIENT_ID"),
-                Connection = "google-oauth2",
-                AccessToken = socialAccessToken,
-                Scope = "openid"
-            });
-
-            token.Should().NotBeNull();
-            token.IdToken.Should().NotBeNull();
-            token.AccessToken.Should().NotBeNull();
-        }
-
         [Test, Explicit]
         public async Task Can_get_delegation_token()
         {
