@@ -135,11 +135,15 @@ namespace Auth0.AuthenticationApi
             var parameters = new Dictionary<string, object>
             {
                 { "client_id", request.ClientId },
-                { "client_secret", request.ClientSecret },
                 { "username", request.Username },
                 { "password", request.Password },
                 { "scope", request.Scope }
             };
+
+            if (!string.IsNullOrEmpty(request.ClientSecret))
+            {
+                parameters.Add("client_secret", request.ClientSecret);
+            }
 
             if (string.IsNullOrEmpty(request.Connection))
             {
