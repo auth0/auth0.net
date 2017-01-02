@@ -244,7 +244,7 @@ namespace Auth0.Core.Http
             }
             else if (parameters != null)
             {
-                return new FormUrlEncodedContent(parameters.Select(kvp => new KeyValuePair<string, string>(kvp.Key, kvp.Value.ToString())));
+                return new FormUrlEncodedContent(parameters.Select(kvp => new KeyValuePair<string, string>(kvp.Key, kvp.Value?.ToString() ?? string.Empty)));
             }
             else // Serialize the body
                 return new StringContent(JsonConvert.SerializeObject(body, new JsonSerializerSettings
