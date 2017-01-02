@@ -63,16 +63,6 @@ namespace Auth0.AuthenticationApi
         Task<AccessToken> ExchangeCodeForAccessTokenAsync(ExchangeCodeRequest request);
 
         /// <summary>
-        /// Given the social provider's access token and the connection specified, it will do the authentication on the provider and return an <see cref="AccessToken"/>.
-        /// </summary>
-        /// <remarks>
-        /// Currently, this endpoint only works for Facebook, Google, Twitter and Weibo.
-        /// </remarks>
-        /// <param name="request">The <see cref="AccessTokenRequest"/> containing details about the request.</param>
-        /// <returns>The <see cref="AccessToken"/>.</returns>
-        Task<AccessToken> GetAccessTokenAsync(AccessTokenRequest request);
-
-        /// <summary>
         /// Given an existing token, this endpoint will generate a new token signed with the target client secret. This is used to flow the identity of the user from the application to an API or across different APIs that are protected with different secrets.
         /// </summary>
         /// <param name="request">The <see cref="DelegationRequestBase"/> containing details about the request.</param>

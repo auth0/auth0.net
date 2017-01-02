@@ -228,17 +228,6 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <summary>
-        /// Given the social provider's access token and the connection specified, it will do the authentication on the provider and return an <see cref="AccessToken" />.
-        /// </summary>
-        /// <param name="request">The request.</param>
-        /// <returns>Task&lt;AccessToken&gt;.</returns>
-        /// <remarks>Currently, this endpoint only works for Facebook, Google, Twitter and Weibo.</remarks>
-        public Task<AccessToken> GetAccessTokenAsync(AccessTokenRequest request)
-        {
-            return Connection.PostAsync<AccessToken>("oauth/access_token", request, null, null, null, null, null);
-        }
-
-        /// <summary>
         /// Given an existing token, this endpoint will generate a new token signed with the target client secret. This is used to flow the identity of the user from the application to an API or across different APIs that are protected with different secrets.
         /// </summary>
         /// <param name="request">The <see cref="DelegationRequestBase" /> containing details about the request.</param>
