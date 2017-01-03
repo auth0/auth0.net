@@ -29,7 +29,7 @@ instead of using `AuthenticationClient.GetDelegationTokenAsync()` with a `Refres
 
 ## Non-breaking changes
 
-* `AuthorizationUrlBuilder` now supports `nonce`, `audience` and multiple `response_type`s.
+* `AuthorizationUrlBuilder` now supports adding `nonce`, `audience`, `response_mode` and multiple `response_type`s to the `/authorize` URL.
 
 * `LogoutUrlBuilder` now uses the `v2/logout` endpoint, and supports the `federated` and `clientId` values.
 
