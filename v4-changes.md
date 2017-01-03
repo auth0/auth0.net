@@ -18,6 +18,8 @@ instead of using `AuthenticationClient.GetDelegationTokenAsync()` with a `Refres
 
 * Removed `GetAccessTokenAsync` method, based on the deprecated `/oauth/access_token` endpoint.
 
+* Remove `WithDevice()` method from `AuthorizationUrlBuilder`, because of obsoleted `device` parameter.
+
 ## Non-breaking changes
 
 * `AuthenticationClient.AuthenticateAsync()` does not require a `Connection` value in the `AuthenticationRequest`. If not provided, the Authentication API will use the connection specified as the Default Directory in the [Account Settings](https://manage.auth0.com/#/account).
