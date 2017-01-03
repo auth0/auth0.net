@@ -3,9 +3,9 @@ using Newtonsoft.Json;
 namespace Auth0.AuthenticationApi.Models
 {
     /// <summary>
-    /// Represents an access token.
+    /// Represents an access token response.
     /// </summary>
-    public class AccessToken : TokenBase
+    public class AccessTokenResponse : TokenBase
     {
         /// <summary>
         /// Gets or sets the identifier token.

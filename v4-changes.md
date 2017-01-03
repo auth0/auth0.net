@@ -15,9 +15,11 @@ and thus it requires a `ClientSecret` in the `AuthenticationRequest` for confide
 * The token refresh exchange must be done using the `AuthenticationClient.GetRefreshedTokenAsync()` with a `TokenRefreshRequest` 
 instead of using `AuthenticationClient.GetDelegationTokenAsync()` with a `RefreshTokenDelegationRequest`.
 
-* The `AuthenticationClient.GetUserInfoAsync()` method now returns a `UserInfo` class instead of `User`.
+* The `AccessToken` class returned on authentication methods is renamed `AccessTokenResponse`. 
 
-* `AuthenticationClient.AuthenticateAsync()` now returns an `AccessToken` instead of `AuthorizationResponse`. 
+* `AuthenticationClient.AuthenticateAsync()` now returns an `AccessTokenResponse` instead of `AuthorizationResponse`. 
+
+* The `AuthenticationClient.GetUserInfoAsync()` method now returns a `UserInfo` class instead of `User`.
 
 * Removed `GetTokenInfoAsync` method, based on the deprecated `/tokeninfo` endpoint.
 

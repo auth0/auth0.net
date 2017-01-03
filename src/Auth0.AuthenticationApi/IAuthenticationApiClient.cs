@@ -16,11 +16,11 @@ namespace Auth0.AuthenticationApi
     public interface IAuthenticationApiClient
     {
         /// <summary>
-        /// Given an <see cref="AuthenticationRequest"/>, it will do the authentication on the provider and return an <see cref="AccessToken"./>
+        /// Given an <see cref="AuthenticationRequest"/>, it will do the authentication on the provider and return an <see cref="AccessTokenResponse"./>
         /// </summary>
         /// <param name="request">The authentication request details containing information regarding the connection, username, password etc.</param>
-        /// <returns>A Task object with <see cref="AccessToken"/> which contains the token response.</returns>
-        Task<AccessToken> AuthenticateAsync(AuthenticationRequest request);
+        /// <returns>A Task object with <see cref="AccessTokenResponse"/> which contains the token response.</returns>
+        Task<AccessTokenResponse> AuthenticateAsync(AuthenticationRequest request);
 
         /// <summary>
         /// Creates a <see cref="AuthorizationUrlBuilder"/> which is used to build an authorization URL.
@@ -60,14 +60,14 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="request">The <see cref="ExchangeCodeRequest"/> containing the authorization code and other information needed to exchange the code for an access token.</param>
         /// <returns></returns>
-        Task<AccessToken> ExchangeCodeForAccessTokenAsync(ExchangeCodeRequest request);
+        Task<AccessTokenResponse> ExchangeCodeForAccessTokenAsync(ExchangeCodeRequest request);
 
         /// <summary>
         /// Given an existing token, this endpoint will generate a new token signed with the target client secret. This is used to flow the identity of the user from the application to an API or across different APIs that are protected with different secrets.
         /// </summary>
         /// <param name="request">The <see cref="DelegationRequestBase"/> containing details about the request.</param>
-        /// <returns>The <see cref="AccessToken"/>.</returns>
-        Task<AccessToken> GetDelegationTokenAsync(DelegationRequestBase request);
+        /// <returns>The <see cref="AccessTokenResponse"/>.</returns>
+        Task<AccessTokenResponse> GetDelegationTokenAsync(DelegationRequestBase request);
 
         /// <summary>
         /// Generates a link that can be used once to log in as a specific user.
@@ -136,6 +136,6 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="request">The refresh token request details, containing a valid refresh token.</param>
         /// <returns>The new token issued by the server.</returns>
-        Task<AccessToken> GetRefreshedTokenAsync(TokenRefreshRequest request);
+        Task<AccessTokenResponse> GetRefreshedTokenAsync(TokenRefreshRequest request);
     }
 }
