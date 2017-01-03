@@ -145,14 +145,14 @@ namespace Auth0.AuthenticationApi
                 parameters.Add("client_secret", request.ClientSecret);
             }
 
-            if (string.IsNullOrEmpty(request.Connection))
+            if (string.IsNullOrEmpty(request.Realm))
             {
                 parameters.Add("grant_type", "password");
             }
             else
             {
                 parameters.Add("grant_type", "http://auth0.com/oauth/grant-type/password-realm");
-                parameters.Add("realm", request.Connection);
+                parameters.Add("realm", request.Realm);
             }
 
             return Connection.PostAsync<AccessToken>("oauth/token", null, parameters, null, null, null, null);

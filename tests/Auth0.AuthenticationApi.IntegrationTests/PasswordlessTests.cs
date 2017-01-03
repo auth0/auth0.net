@@ -73,7 +73,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             var authenticationResponse = await authenticationApiClient.AuthenticateAsync(new AuthenticationRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
-                Connection = "email",
+                Realm = "email",
                 GrantType = "password",
                 Scope = "openid",
                 Username = "your email or phone number",

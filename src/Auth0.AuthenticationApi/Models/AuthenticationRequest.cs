@@ -18,9 +18,9 @@ namespace Auth0.AuthenticationApi.Models
         public string ClientSecret { get; set; }
 
         /// <summary>
-        /// Gets or sets the connection.
+        /// Gets or sets the realm where to do the authentication.
         /// </summary>
-        public string Connection { get; set; }
+        public string Realm { get; set; }
 
         /// <summary>
         /// Gets or sets the grant type requested.
