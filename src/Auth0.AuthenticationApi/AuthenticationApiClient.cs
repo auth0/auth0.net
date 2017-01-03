@@ -126,11 +126,11 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <summary>
-        /// Given an <see cref="AuthenticationRequest" />, it will do the authentication on the provider and return an <see cref="AccessToken"./>
+        /// Given an <see cref="AuthenticationRequest" />, it will do the authentication on the provider and return an <see cref="AccessTokenResponse"./>
         /// </summary>
         /// <param name="request">The authentication request details containing information regarding the connection, username, password etc.</param>
-        /// <returns>An <see cref="AccessToken" /> with the response.</returns>
-        public Task<AccessToken> AuthenticateAsync(AuthenticationRequest request)
+        /// <returns>An <see cref="AccessTokenResponse" /> with the response.</returns>
+        public Task<AccessTokenResponse> AuthenticateAsync(AuthenticationRequest request)
         {
             var parameters = new Dictionary<string, object>
             {
@@ -155,7 +155,7 @@ namespace Auth0.AuthenticationApi
                 parameters.Add("realm", request.Realm);
             }
 
-            return Connection.PostAsync<AccessToken>("oauth/token", null, parameters, null, null, null, null);
+            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, null, null);
         }
 
         /// <summary>
@@ -211,9 +211,9 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="request">The <see cref="ExchangeCodeRequest"/> containing the authorization code and other information needed to exchange the code for an access token.</param>
         /// <returns></returns>
-        public Task<AccessToken> ExchangeCodeForAccessTokenAsync(ExchangeCodeRequest request)
+        public Task<AccessTokenResponse> ExchangeCodeForAccessTokenAsync(ExchangeCodeRequest request)
         {
-            return Connection.PostAsync<AccessToken>("oauth/token", null, new Dictionary<string, object>
+            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
             {
                 {"client_id", request.ClientId},
                 {"redirect_uri", request.RedirectUri},
@@ -231,10 +231,10 @@ namespace Auth0.AuthenticationApi
         /// Given an existing token, this endpoint will generate a new token signed with the target client secret. This is used to flow the identity of the user from the application to an API or across different APIs that are protected with different secrets.
         /// </summary>
         /// <param name="request">The <see cref="DelegationRequestBase" /> containing details about the request.</param>
-        /// <returns>The <see cref="AccessToken" />.</returns>
-        public Task<AccessToken> GetDelegationTokenAsync(DelegationRequestBase request)
+        /// <returns>The <see cref="AccessTokenResponse" />.</returns>
+        public Task<AccessTokenResponse> GetDelegationTokenAsync(DelegationRequestBase request)
         {
-            return Connection.PostAsync<AccessToken>("delegation", request, null, null, null, null, null);
+            return Connection.PostAsync<AccessTokenResponse>("delegation", request, null, null, null, null, null);
         }
 
         /// <summary>
@@ -384,7 +384,7 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="request">The refresh token request details, containing a valid refresh token.</param>
         /// <returns>The new token issued by the server.</returns>
-        public async Task<AccessToken> GetRefreshedTokenAsync(TokenRefreshRequest request)
+        public async Task<AccessTokenResponse> GetRefreshedTokenAsync(TokenRefreshRequest request)
         {
             var parameters = new Dictionary<string, object> {
                 { "grant_type", "refresh_token" },
@@ -397,7 +397,7 @@ namespace Auth0.AuthenticationApi
             {
                 parameters.Add("scope", request.Scope);
             }
-            return await Connection.PostAsync<AccessToken>("oauth/token", null, parameters, null, null, null, null);
+            return await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, null, null);
         }
     }
 }
