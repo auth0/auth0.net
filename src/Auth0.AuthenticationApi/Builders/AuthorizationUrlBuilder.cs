@@ -54,18 +54,6 @@ namespace Auth0.AuthenticationApi.Builders
         }
 
         /// <summary>
-        /// Adds a new device query string parameter.
-        /// </summary>
-        /// <param name="device">The device.</param>
-        /// <returns>The <see cref="AuthorizationUrlBuilder"/>.</returns>
-        public AuthorizationUrlBuilder WithDevice(string device)
-        {
-            AddQueryString("device", device);
-
-            return this;
-        }
-
-        /// <summary>
         /// Adds a new redirect_uri query string parameter
         /// </summary>
         /// <param name="url">The URL of the redirect URI</param>
