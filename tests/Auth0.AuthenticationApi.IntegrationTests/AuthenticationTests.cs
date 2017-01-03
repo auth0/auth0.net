@@ -110,7 +110,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
-                Connection = connection.Name,
+                Realm = connection.Name,
                 GrantType = "password",
                 Scope = "openid",
                 Username = user.Email,
@@ -163,7 +163,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
-                Connection = connection.Name,
+                Realm = connection.Name,
                 GrantType = "password",
                 Scope = "openid offline_access",
                 Username = user.Email,
@@ -189,7 +189,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
-                Connection = connection.Name,
+                Realm = connection.Name,
                 GrantType = "password",
                 Scope = "openid",
                 Username = plusUser.Email,

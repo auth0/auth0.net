@@ -69,7 +69,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                     {
                         ClientId = GetVariable("AUTH0_CLIENT_ID"),
                         ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
-                        Connection = connection.Name,
+                        Realm = connection.Name,
                         GrantType = "password",
                         Scope = "openid",
                         Username = user.Email,
