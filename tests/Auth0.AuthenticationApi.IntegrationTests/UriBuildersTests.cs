@@ -12,7 +12,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
     public class UriBuildersTests : TestBase
     {
         [Test]
-        public async Task Can_build_authorization_uri()
+        public void Can_build_authorization_uri()
         {
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
@@ -33,7 +33,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         }
 
         [Test]
-        public async Task Can_provide_multiple_response_type()
+        public void Can_provide_multiple_response_type()
         {
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
@@ -48,6 +48,24 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             authorizationUrl.Should()
                 .Be(
                     @"https://auth0-dotnet-integration-tests.auth0.com/authorize?response_type=code&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&connection=google-oauth2&redirect_uri=http%3A%2F%2Fwww.jerriepelser.com%2Ftest&scope=openid%20offline_access");
+        }
+
+        [Test]
+        public void Can_provide_response_mode()
+        {
+            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+
+            var authorizationUrl = authenticationApiClient.BuildAuthorizationUrl()
+                .WithResponseType(AuthorizationResponseType.Code)
+                .WithClient("rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW")
+                .WithRedirectUrl("http://www.jerriepelser.com/test")
+                .WithScope("openid")
+                .WithResponseMode(AuthorizationResponseMode.FormPost)
+                .Build();
+
+            authorizationUrl.Should()
+                .Be(
+                    @"https://auth0-dotnet-integration-tests.auth0.com/authorize?response_type=code&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&redirect_uri=http%3A%2F%2Fwww.jerriepelser.com%2Ftest&scope=openid&response_mode=form_post");
         }
 
         [Test]
@@ -183,8 +201,5 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
             wsfedUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/wsfed?wctx=xcrf%3Dabc%26ru%3D%2Ffoo");
         }
-
-
-        
     }
 }
