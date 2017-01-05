@@ -11,17 +11,10 @@ namespace Auth0.ManagementApi.IntegrationTests
     [TestFixture]
     public class TenantSettingsTests : TestBase
     {
-        [Test]
+        [Test, Ignore("Need to add support for default directory")]
         public async Task Test_tenant_settings_sequence()
         {
-            var scopes = new
-            {
-                tenant_settings = new
-                {
-                    actions = new string[] { "read", "update" }
-                }
-            };
-            string token = GenerateToken(scopes);
+            string token = await GenerateManagementApiToken();
 
             var apiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 

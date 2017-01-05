@@ -19,26 +19,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [SetUp]
         public async Task SetUp()
         {
-            var scopes = new
-            {
-                users = new
-                {
-                    actions = new string[] {"read", "create", "update", "delete"}
-                },
-                connections = new
-                {
-                    actions = new string[] {"create", "delete"}
-                },
-                users_app_metadata = new
-                {
-                    actions = new string[] {"update"}
-                },
-                logs = new
-                {
-                    actions = new string[] {"read"}
-                }
-            };
-            string token = GenerateToken(scopes);
+            string token = await GenerateManagementApiToken();
 
             apiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
@@ -47,7 +28,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 Name = Guid.NewGuid().ToString("N"),
                 Strategy = "auth0",
-                EnabledClients = new[] {"rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW"}
+                EnabledClients = new[] { GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
             });
         }
 

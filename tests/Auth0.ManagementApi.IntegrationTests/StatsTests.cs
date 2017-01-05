@@ -12,14 +12,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Test]
         public async Task Test_stats_sequence()
         {
-            var scopes = new
-            {
-                stats = new
-                {
-                    actions = new string[] { "read" }
-                }
-            };
-            string token = GenerateToken(scopes);
+            string token = await GenerateManagementApiToken();
 
             var apiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
