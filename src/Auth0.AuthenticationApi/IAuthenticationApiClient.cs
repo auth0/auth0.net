@@ -132,6 +132,13 @@ namespace Auth0.AuthenticationApi
         Task<UsernamePasswordLoginResponse> UsernamePasswordLoginAsync(UsernamePasswordLoginRequest request);
 
         /// <summary>
+        /// Request an Access Token using the Client Credentials Grant flow.
+        /// </summary>
+        /// <param name="request">The <see cref="ClientCredentialsTokenRequest"/> containing the information of the request.</param>
+        /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
+        Task<AccessTokenResponse> GetToken(ClientCredentialsTokenRequest request);
+
+        /// <summary>
         /// Given a <see cref="TokenRefreshRequest"/>, it will retrieve a refreshed access token from the authorization server.
         /// </summary>
         /// <param name="request">The refresh token request details, containing a valid refresh token.</param>
