@@ -7,20 +7,36 @@ using System.Threading.Tasks;
 
 namespace Auth0.Core.Serialization
 {
-    public class UnixEpochConverter : DateTimeConverterBase
+    /// <summary>
+    /// A JSON date converter that reads both ISO 8601 and epoch dates.
+    /// </summary>
+    public class FlexibleDateTimeConverter : IsoDateTimeConverter
     {
         private static readonly DateTime _epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            writer.WriteRawValue(GetIntDate((DateTime)value).ToString());
+            throw new NotImplementedException();
+        }
+
+        public override bool CanWrite
+        {
+            get
+            {
+                return false;
+            }
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             if (reader.Value == null) { return null; }
 
-            return Add(_epoch, TimeSpan.FromSeconds((long)reader.Value));
+            if (reader.TokenType == JsonToken.Integer)
+            {
+                return Add(_epoch, TimeSpan.FromSeconds((long)reader.Value));
+            }
+
+            return reader.Value;
         }
 
         private static long GetIntDate(DateTime datetime)

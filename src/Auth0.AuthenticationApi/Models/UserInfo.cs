@@ -179,7 +179,7 @@ namespace Auth0.AuthenticationApi.Models
         /// Its value is a JSON number representing the number of seconds from 1970-01-01T0:0:0Z as measured in UTC until the date/time.
         /// </summary>
         [JsonProperty("updated_at")]
-        [JsonConverter(typeof(UnixEpochConverter))]
+        [JsonConverter(typeof(FlexibleDateTimeConverter))]
         public DateTime? UpdatedAt { get; set; }
 
         /// <summary>
