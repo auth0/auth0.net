@@ -1,10 +1,8 @@
-﻿using Auth0.Core.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using Auth0.Core.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Auth0.Core
 {

@@ -15,7 +15,7 @@ namespace Auth0.Core
         public string Audience { get; set; }
 
         /// <summary>
-        /// Gets or sets the identifier of the <see cref="Client"/>
+        /// Gets or sets the identifier of the <see cref="Auth0.Core.Client"/>
         /// </summary>
         [JsonProperty("client_id")]
         public string ClientId { get; set; }
