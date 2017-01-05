@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace Auth0.Core
+namespace Auth0.ManagementApi.Models
 {
     // TODO: Ensure list of addons are up to date
 

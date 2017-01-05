@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Auth0.Core
+namespace Auth0.ManagementApi.Models
 {
     /// <summary>
     /// Information about a log entry

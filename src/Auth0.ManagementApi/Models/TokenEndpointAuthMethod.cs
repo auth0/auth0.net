@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Auth0.Core
+namespace Auth0.ManagementApi.Models
 {
     /// <summary>
     /// Authentication method for the token endpoint

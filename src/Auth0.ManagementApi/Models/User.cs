@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Auth0.Core
+namespace Auth0.ManagementApi.Models
 {
 
     /// <summary>

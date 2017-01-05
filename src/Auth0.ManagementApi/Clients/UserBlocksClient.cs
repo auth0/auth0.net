@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Auth0.Core;
 using Auth0.Core.Http;
+using Auth0.ManagementApi.Models;
 
 namespace Auth0.ManagementApi.Clients
 {

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Auth0.Core
+namespace Auth0.ManagementApi.Models
 {
     /// <summary>
     /// Represents a rule. A rule is arbitrary JavaScript code that can be used to extend Auth0's default behavior when authenticating a user.

@@ -4,7 +4,7 @@ using Auth0.Core.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Auth0.Core
+namespace Auth0.AuthenticationApi.Models
 {
     /// <summary>
     /// Represents the information of a user as available from

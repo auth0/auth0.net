@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Auth0.Core;
 using Auth0.Core.Collections;
 using Auth0.Core.Http;
+using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Serialization;
 
 namespace Auth0.ManagementApi.Clients

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Auth0.Core
+namespace Auth0.AuthenticationApi.Models
 {
     /// <summary>
     /// Represents a physical mailing address of an user.

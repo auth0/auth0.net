@@ -1,9 +1,9 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Auth0.Core
+namespace Auth0.ManagementApi.Models
 {
     /// <summary>
-    /// The type of application for a <see cref="Auth0.Core.Client"/>
+    /// The type of application for a <see cref="Client"/>
     /// </summary>
     public enum ClientApplicationType
     {
