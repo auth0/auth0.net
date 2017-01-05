@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Auth0.AuthenticationApi;
+using Auth0.AuthenticationApi.Models;
 using Microsoft.Extensions.Configuration;
 
 namespace Auth0.Tests.Shared
@@ -15,12 +18,27 @@ namespace Auth0.Tests.Shared
                 .Build();
         }
 
-        protected string GenerateToken(object scopes)
+        protected async Task<string> GenerateManagementApiToken()
         {
-            string jti = Guid.NewGuid().ToString("N");
+            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
-            return GenerateToken(scopes, jti);
+            // Get the access token
+            var token = await authenticationApiClient.GetToken(new ClientCredentialsTokenRequest
+            {
+                ClientId = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
+                ClientSecret = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET"),
+                Audience = GetVariable("AUTH0_MANAGEMENT_API_AUDIENCE")
+            });
+
+            return token.AccessToken;
         }
+
+        //protected string GenerateToken(object scopes)
+        //{
+        //    string jti = Guid.NewGuid().ToString("N");
+
+        //    return GenerateToken(scopes, jti);
+        //}
 
         protected string GenerateToken(object scopes, string jti)
         {

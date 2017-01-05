@@ -16,14 +16,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [SetUp]
         public async Task SetUp()
         {
-            var scopes = new
-            {
-                logs = new
-                {
-                    actions = new string[] { "read" }
-                }
-            };
-            string token = GenerateToken(scopes);
+            string token = await GenerateManagementApiToken();
 
             apiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
         }

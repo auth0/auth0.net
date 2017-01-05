@@ -14,14 +14,15 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Test]
         public async Task Test_connection_crud_sequence()
         {
-            var scopes = new
-            {
-                connections = new
-                {
-                    actions = new string[] { "read", "create", "delete", "update" }
-                }
-            };
-            string token = GenerateToken(scopes);
+            //var scopes = new
+            //{
+            //    connections = new
+            //    {
+            //        actions = new string[] { "read", "create", "delete", "update" }
+            //    }
+            //};
+            //string token = GenerateToken(scopes);
+            string token = await GenerateManagementApiToken();
 
             var apiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 

@@ -81,7 +81,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
             logoutUrl.Should()
                 .Be(
-                    @"https://auth0-dotnet-integration-tests.auth0.com//v2/logout?federated&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&returnTo=https%3A%2F%2Fmyapp%2Flogged_out");
+                    @"https://auth0-dotnet-integration-tests.auth0.com/v2/logout?federated&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&returnTo=https%3A%2F%2Fmyapp%2Flogged_out");
         }
 
         [Test]
@@ -95,7 +95,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
             logoutUrl.Should()
                 .Be(
-                    @"https://auth0-dotnet-integration-tests.auth0.com/logout?returnTo=http:%2F%2Fwww.jerriepelser.com%2Ftest");
+                    @"https://auth0-dotnet-integration-tests.auth0.com/v2/logout?returnTo=http:%2F%2Fwww.jerriepelser.com%2Ftest");
         }
 
         [Test]

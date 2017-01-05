@@ -14,15 +14,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Test]
         public async Task Test_rules_crud_sequence()
         {
-            var scopes = new
-            {
-                rules = new
-                {
-                    actions = new string[] { "read", "create", "delete", "update" }
-                }
-            };
-
-            string token = GenerateToken(scopes);
+            string token = await GenerateManagementApiToken();
 
             var apiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 

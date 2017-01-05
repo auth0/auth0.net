@@ -32,7 +32,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                     actions = new string[] { "create", "delete" }
                 }
             };
-            string token = GenerateToken(scopes);
+            string token = await GenerateManagementApiToken();
 
             managementApiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
@@ -41,7 +41,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             {
                 Name = Guid.NewGuid().ToString("N"),
                 Strategy = "auth0",
-                EnabledClients = new[] { GetVariable("AUTH0_CLIENT_ID") }
+                EnabledClients = new[] { GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
             });
 
             // Add a new user
