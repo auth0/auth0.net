@@ -16,7 +16,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="request">The request containing the properties of the Client Grant.</param>
         /// <returns>The new <see cref="ClientGrant"/></returns>
-        Task<Core.ClientGrant> CreateAsync(ClientGrantCreateRequest request);
+        Task<ClientGrant> CreateAsync(ClientGrantCreateRequest request);
 
         /// <summary>
         /// Deletes a client grant.

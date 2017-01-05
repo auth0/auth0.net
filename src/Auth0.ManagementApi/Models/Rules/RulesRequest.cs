@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Auth0.Core.Rules
+namespace Auth0.ManagementApi.Models.Rules
 {
 
     /// <summary>

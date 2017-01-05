@@ -11,7 +11,7 @@ namespace Auth0.ManagementApi.IntegrationTests
     [TestFixture]
     public class DeviceCredentialsTests : TestBase
     {
-        private Core.Client client;
+        private Client client;
         private Connection connection;
         private User user;
 

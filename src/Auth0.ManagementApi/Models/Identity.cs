@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Auth0.Core
+namespace Auth0.ManagementApi.Models
 {
 
     /// <summary>

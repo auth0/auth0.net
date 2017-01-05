@@ -43,7 +43,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>Task.</returns>
         public Task CreateAsync(BlacklistedTokenCreateRequest request)
         {
-            return Connection.PostAsync<Core.Client>("blacklists/tokens", request, null, null, null, null, null);
+            return Connection.PostAsync<Client>("blacklists/tokens", request, null, null, null, null, null);
         }
     }
 }

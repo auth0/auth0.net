@@ -16,7 +16,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="request">The request containing the properties of the new client.</param>
         /// <returns></returns>
-        Task<Core.Client> CreateAsync(ClientCreateRequest request);
+        Task<Client> CreateAsync(ClientCreateRequest request);
 
         /// <summary>
         ///     Deletes a client and all its related assets (like rules, connections, etc) given its id.
@@ -37,7 +37,7 @@ namespace Auth0.ManagementApi.Clients
         ///     true)
         /// </param>
         /// <returns></returns>
-        Task<IList<Core.Client>> GetAllAsync(string fields = null, bool includeFields = true);
+        Task<IList<Client>> GetAllAsync(string fields = null, bool includeFields = true);
 
         /// <summary>
         ///     Retrieves a client by its id.
@@ -52,7 +52,7 @@ namespace Auth0.ManagementApi.Clients
         ///     true)
         /// </param>
         /// <returns></returns>
-        Task<Core.Client> GetAsync(string id, string fields = null, bool includeFields = true);
+        Task<Client> GetAsync(string id, string fields = null, bool includeFields = true);
 
         /// <summary>
         ///     Updates a client application.
@@ -60,6 +60,6 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="id">The id of the client you want to update.</param>
         /// <param name="request">The request containing the properties of the client you want to update.</param>
         /// <returns></returns>
-        Task<Core.Client> UpdateAsync(string id, ClientUpdateRequest request);
+        Task<Client> UpdateAsync(string id, ClientUpdateRequest request);
     }
 }

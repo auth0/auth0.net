@@ -1,4 +1,5 @@
 ﻿using System;
+using Auth0.AuthenticationApi.Models;
 using Auth0.Core;
 using FluentAssertions;
 using Newtonsoft.Json;

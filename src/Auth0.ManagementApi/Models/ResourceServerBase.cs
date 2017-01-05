@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Auth0.Core
+namespace Auth0.ManagementApi.Models
 {
     /// <summary>
     /// Base class for resource server payloads

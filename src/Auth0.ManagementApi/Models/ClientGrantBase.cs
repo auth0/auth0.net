@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Auth0.Core
+namespace Auth0.ManagementApi.Models
 {
     /// <summary>
     /// Base class for Client Grants
@@ -15,7 +15,7 @@ namespace Auth0.Core
         public string Audience { get; set; }
 
         /// <summary>
-        /// Gets or sets the identifier of the <see cref="Auth0.Core.Client"/>
+        /// Gets or sets the identifier of the <see cref="Client"/>
         /// </summary>
         [JsonProperty("client_id")]
         public string ClientId { get; set; }

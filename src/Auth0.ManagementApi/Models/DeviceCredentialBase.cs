@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace Auth0.Core
+namespace Auth0.ManagementApi.Models
 {
     /// <summary>
     /// Base class for device credentials.

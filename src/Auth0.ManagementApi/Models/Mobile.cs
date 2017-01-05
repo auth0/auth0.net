@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace Auth0.Core
+namespace Auth0.ManagementApi.Models
 {
     /// <summary>
     /// Represents configuration of mobile apps for a client.
