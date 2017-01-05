@@ -1,17 +1,12 @@
-﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
+using Auth0.Core;
+using FluentAssertions;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using NUnit.Framework;
 
-namespace Auth0.Core.UnitTests
+namespace Auth0.AuthenticationApi.IntegrationTests
 {
-    using Core;
-    using FluentAssertions;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
-    using NUnit.Framework;
-
     [TestFixture]
     public class UserInfoDeserializationTests
     {

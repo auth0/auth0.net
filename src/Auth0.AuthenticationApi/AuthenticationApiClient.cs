@@ -282,7 +282,7 @@ namespace Auth0.AuthenticationApi
         /// Returns the user information based on the Auth0 access token (obtained during login).
         /// </summary>
         /// <param name="accessToken">The access token.</param>
-        /// <returns>The <see cref="User" /> associated with the token.</returns>
+        /// <returns>The <see cref="Auth0.Core.User" /> associated with the token.</returns>
         public Task<UserInfo> GetUserInfoAsync(string accessToken)
         {
             return Connection.GetAsync<UserInfo>("userinfo", null, null, new Dictionary<string, object>

@@ -1,10 +1,9 @@
 ﻿using System.Runtime.Serialization;
-using Newtonsoft.Json;
 
 namespace Auth0.Core
 {
     /// <summary>
-    /// The type of application for a <see cref="Client"/>
+    /// The type of application for a <see cref="Auth0.Core.Client"/>
     /// </summary>
     public enum ClientApplicationType
     {

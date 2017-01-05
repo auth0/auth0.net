@@ -4,7 +4,7 @@ namespace Auth0.Core
 {
 
     /// <summary>
-    /// Contains common elements used for both constructing <see cref="User"/>-related requests, and comprising <see cref="User"/>-related responses.
+    /// Contains common elements used for both constructing <see cref="Auth0.Core.User"/>-related requests, and comprising <see cref="Auth0.Core.User"/>-related responses.
     /// </summary>
     public abstract class UserBase
     {
