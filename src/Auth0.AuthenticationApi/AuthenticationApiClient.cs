@@ -279,6 +279,26 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <summary>
+        /// Request an Access Token using the Client Credentials Grant flow.
+        /// </summary>
+        /// <param name="request">The <see cref="ClientCredentialsTokenRequest"/> containing the information of the request.</param>
+        /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
+        public Task<AccessTokenResponse> GetToken(ClientCredentialsTokenRequest request)
+        {
+            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
+                {
+                    {"grant_type", "client_credentials"},
+                    {"client_id", request.ClientId},
+                    {"client_secret", request.ClientSecret},
+                    {"audience", request.Audience}
+                },
+                null,
+                null,
+                null,
+                null);
+        }
+
+        /// <summary>
         /// Returns the user information based on the Auth0 access token (obtained during login).
         /// </summary>
         /// <param name="accessToken">The access token.</param>
