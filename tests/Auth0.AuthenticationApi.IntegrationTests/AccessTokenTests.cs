@@ -95,8 +95,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             delegationToken.IdToken.Should().NotBeNull();
         }
 
-        [Test, Explicit]
-        [Ignore("updated_at is not a long value as expected. this will be fixed soon.")]
+        [Test]
         public async Task Can_obtain_user_info()
         {
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
