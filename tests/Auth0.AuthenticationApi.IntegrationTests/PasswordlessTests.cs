@@ -4,6 +4,7 @@ using Auth0.AuthenticationApi.Models;
 using Auth0.Tests.Shared;
 using FluentAssertions;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace Auth0.AuthenticationApi.IntegrationTests
 {
@@ -22,6 +23,31 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 Email = "your email",
                 Type = PasswordlessEmailRequestType.Link
+            };
+            var response = await authenticationApiClient.StartPasswordlessEmailFlowAsync(request);
+            response.Should().NotBeNull();
+            response.Email.Should().Be(request.Email);
+        }
+
+        [Test, Explicit]
+        public async Task Can_launch_email_link_flow_with_auth_parameters()
+        {
+            // Arrange 
+            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+
+            // Act
+            var request = new PasswordlessEmailRequest
+            {
+                ClientId = GetVariable("AUTH0_CLIENT_ID"),
+                Email = "your email",
+                Type = PasswordlessEmailRequestType.Link,
+                AuthenticationParameters = new Dictionary<string, object>()
+                {
+                    { "response_type","code" },
+                    { "scope" , "openid" },
+                    {  "nonce" , "mynonce" },
+                    { "redirect_uri", "http://localhost:5000/signin-auth0" }
+                }
             };
             var response = await authenticationApiClient.StartPasswordlessEmailFlowAsync(request);
             response.Should().NotBeNull();

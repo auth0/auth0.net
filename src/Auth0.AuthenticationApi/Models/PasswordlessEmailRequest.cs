@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Auth0.AuthenticationApi.Models
 {
@@ -29,6 +30,6 @@ namespace Auth0.AuthenticationApi.Models
         /// Gets or sets extra authentication parameters.
         /// </summary>
         [JsonProperty("authParams")]
-        public string AuthenticationParameters { get; set; }
+        public IDictionary<string, object> AuthenticationParameters { get; set; } = new Dictionary<string, object>();
     }
 }
