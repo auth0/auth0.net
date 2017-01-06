@@ -299,6 +299,39 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <summary>
+        /// Given an <see cref="ResourceOwnerTokenRequest" />, it will do the authentication on the provider and return an <see cref="AccessTokenResponse"./>
+        /// </summary>
+        /// <param name="request">The authentication request details containing information regarding the username, password etc.</param>
+        /// <returns>An <see cref="AccessTokenResponse" /> with the response.</returns>
+        public Task<AccessTokenResponse> GetToken(ResourceOwnerTokenRequest request)
+        {
+            var parameters = new Dictionary<string, object>
+            {
+                { "client_id", request.ClientId },
+                { "username", request.Username },
+                { "password", request.Password },
+                { "scope", request.Scope }
+            };
+
+            if (!string.IsNullOrEmpty(request.ClientSecret))
+            {
+                parameters.Add("client_secret", request.ClientSecret);
+            }
+
+            if (string.IsNullOrEmpty(request.Realm))
+            {
+                parameters.Add("grant_type", "password");
+            }
+            else
+            {
+                parameters.Add("grant_type", "http://auth0.com/oauth/grant-type/password-realm");
+                parameters.Add("realm", request.Realm);
+            }
+
+            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, null, null);
+        }
+
+        /// <summary>
         /// Returns the user information based on the Auth0 access token (obtained during login).
         /// </summary>
         /// <param name="accessToken">The access token.</param>

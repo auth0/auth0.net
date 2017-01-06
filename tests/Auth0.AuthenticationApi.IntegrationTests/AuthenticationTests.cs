@@ -98,12 +98,11 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
             // Act
-            var authenticationResponse = await authenticationApiClient.AuthenticateAsync(new AuthenticationRequest
+            var authenticationResponse = await authenticationApiClient.GetToken(new ResourceOwnerTokenRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
                 Realm = connection.Name,
-                GrantType = "password",
                 Scope = "openid",
                 Username = user.Email,
                 Password = "password"
@@ -125,11 +124,10 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
             // Act
-            var authenticationResponse = await authenticationApiClient.AuthenticateAsync(new AuthenticationRequest
+            var authenticationResponse = await authenticationApiClient.GetToken(new ResourceOwnerTokenRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
-                GrantType = "password",
                 Scope = "openid",
                 Username = userInDefaultDirectory.Email,
                 Password = "password"
@@ -151,12 +149,11 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
             // Act
-            var authenticationResponse = await authenticationApiClient.AuthenticateAsync(new AuthenticationRequest
+            var authenticationResponse = await authenticationApiClient.GetToken(new ResourceOwnerTokenRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
                 Realm = connection.Name,
-                GrantType = "password",
                 Scope = "openid offline_access",
                 Username = user.Email,
                 Password = "password"
@@ -177,12 +174,11 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
             // Act
-            var authenticationResponse = await authenticationApiClient.AuthenticateAsync(new AuthenticationRequest
+            var authenticationResponse = await authenticationApiClient.GetToken(new ResourceOwnerTokenRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
                 Realm = connection.Name,
-                GrantType = "password",
                 Scope = "openid",
                 Username = plusUser.Email,
                 Password = "password"
