@@ -917,7 +917,7 @@
           "lib/net45/_._": {}
         }
       },
-      "Auth0.Core/3.5.0": {
+      "Auth0.Core/3.6.0": {
         "type": "project",
         "framework": ".NETFramework,Version=v4.5",
         "dependencies": {
@@ -925,6 +925,9 @@
         },
         "frameworkAssemblies": [
           "System.Data",
+          "System.IO",
+          "System.Linq",
+          "System.Net.Http",
           "System.Numerics",
           "System.Runtime.Serialization",
           "System.Xml",
@@ -3907,7 +3910,7 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "Auth0.Core/3.5.0": {
+    "Auth0.Core/3.6.0": {
       "type": "project",
       "path": "../../src/Auth0.Core/project.json",
       "msbuildProject": "../../src/Auth0.Core/Auth0.Core.xproj"

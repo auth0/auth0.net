@@ -114,7 +114,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             // Get the user info
             var user = await authenticationApiClient.GetUserInfoAsync(token.AccessToken);
             user.Should().NotBeNull();
-            user.Email.Should().NotBeNull();
+            user.UserId.Should().NotBeNull();
         }
 
         [Test, Explicit]
