@@ -130,32 +130,18 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="request">The authentication request details containing information regarding the connection, username, password etc.</param>
         /// <returns>An <see cref="AccessTokenResponse" /> with the response.</returns>
+        [Obsolete("Use GetTokenAsync(ResourceOwnerTokenRequest) instead")]
         public Task<AccessTokenResponse> AuthenticateAsync(AuthenticationRequest request)
         {
-            var parameters = new Dictionary<string, object>
+            return GetTokenAsync(new ResourceOwnerTokenRequest
             {
-                { "client_id", request.ClientId },
-                { "username", request.Username },
-                { "password", request.Password },
-                { "scope", request.Scope }
-            };
-
-            if (!string.IsNullOrEmpty(request.ClientSecret))
-            {
-                parameters.Add("client_secret", request.ClientSecret);
-            }
-
-            if (string.IsNullOrEmpty(request.Realm))
-            {
-                parameters.Add("grant_type", "password");
-            }
-            else
-            {
-                parameters.Add("grant_type", "http://auth0.com/oauth/grant-type/password-realm");
-                parameters.Add("realm", request.Realm);
-            }
-
-            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, null, null);
+                ClientId = request.ClientId,
+                ClientSecret = request.ClientSecret,
+                Username = request.Username,
+                Password = request.Password,
+                Realm = request.Realm,
+                Scope = request.Scope
+            });
         }
 
         /// <summary>

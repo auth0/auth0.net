@@ -20,6 +20,7 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="request">The authentication request details containing information regarding the connection, username, password etc.</param>
         /// <returns>A Task object with <see cref="AccessTokenResponse"/> which contains the token response.</returns>
+        [Obsolete("Use GetTokenAsync(ResourceOwnerTokenRequest) instead")]
         Task<AccessTokenResponse> AuthenticateAsync(AuthenticationRequest request);
 
         /// <summary>
