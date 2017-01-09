@@ -136,14 +136,14 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="request">The <see cref="ClientCredentialsTokenRequest"/> containing the information of the request.</param>
         /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
-        Task<AccessTokenResponse> GetToken(ClientCredentialsTokenRequest request);
+        Task<AccessTokenResponse> GetTokenAsync(ClientCredentialsTokenRequest request);
 
         /// <summary>
         /// Given an <see cref="ResourceOwnerTokenRequest" />, it will do the authentication on the provider and return an <see cref="AccessTokenResponse"./>
         /// </summary>
         /// <param name="request">The authentication request details containing information regarding the username, password etc.</param>
         /// <returns>An <see cref="AccessTokenResponse" /> with the response.</returns>
-        Task<AccessTokenResponse> GetToken(ResourceOwnerTokenRequest request);
+        Task<AccessTokenResponse> GetTokenAsync(ResourceOwnerTokenRequest request);
 
         /// <summary>
         /// Given a <see cref="TokenRefreshRequest"/>, it will retrieve a refreshed access token from the authorization server.

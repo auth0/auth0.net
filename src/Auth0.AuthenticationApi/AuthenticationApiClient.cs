@@ -283,7 +283,7 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="request">The <see cref="ClientCredentialsTokenRequest"/> containing the information of the request.</param>
         /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
-        public Task<AccessTokenResponse> GetToken(ClientCredentialsTokenRequest request)
+        public Task<AccessTokenResponse> GetTokenAsync(ClientCredentialsTokenRequest request)
         {
             return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
                 {
@@ -303,7 +303,7 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="request">The authentication request details containing information regarding the username, password etc.</param>
         /// <returns>An <see cref="AccessTokenResponse" /> with the response.</returns>
-        public Task<AccessTokenResponse> GetToken(ResourceOwnerTokenRequest request)
+        public Task<AccessTokenResponse> GetTokenAsync(ResourceOwnerTokenRequest request)
         {
             var parameters = new Dictionary<string, object>
             {
