@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Auth0.ManagementApi</id>
-    <version>3.6.0</version>
+    <version>3.7.0</version>
     <authors>Auth0</authors>
     <owners>Auth0</owners>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
@@ -12,6 +12,9 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Client library for the Auth0 Management API</description>
     <releaseNotes>
+      Version 3.7.0
+      - Support for profileData on LinkedIdentities
+
       Version 3.6.0
       - Optimized usage of HttpClient
 
@@ -47,18 +50,18 @@
     <dependencies>
       <group targetFramework="net45">
         <dependency id="Newtonsoft.Json" version="9.0.1" />
-        <dependency id="Auth0.Core" version="3.6.0" />
+        <dependency id="Auth0.Core" version="3.7.0" />
       </group>
 
       <group targetFramework="portable-net45+win8+wpa81">
         <dependency id="Newtonsoft.Json" version="9.0.1" />
-        <dependency id="Auth0.Core" version="3.6.0" />
+        <dependency id="Auth0.Core" version="3.7.0" />
         <dependency id="Microsoft.Net.Http" version="2.2.29" />
       </group>
 
       <group targetFramework="netstandard1.1">
         <dependency id="Newtonsoft.Json" version="9.0.1" />
-        <dependency id="Auth0.Core" version="3.6.0" />
+        <dependency id="Auth0.Core" version="3.7.0" />
         <dependency id="System.Net.Http" version="4.1.0" />
         <dependency id="System.Net.Primitives" version="4.0.11" />
       </group>
