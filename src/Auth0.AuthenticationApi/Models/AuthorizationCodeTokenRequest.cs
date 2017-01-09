@@ -1,14 +1,14 @@
-namespace Auth0.AuthenticationApi.Models
+﻿namespace Auth0.AuthenticationApi.Models
 {
     /// <summary>
     /// Represents a request to exchange an authorization code for an access token during the OAuth authentication flow.
     /// </summary>
-    public class ExchangeCodeRequest
+    public class AuthorizationCodeTokenRequest
     {
         /// <summary>
         /// The authorization code which will be exchanged
         /// </summary>
-        public string AuthorizationCode { get; set; }
+        public string Code { get; set; }
 
         /// <summary>
         /// The client ID of the Application

@@ -123,12 +123,12 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
             // Exchange the authorization code
-            var token = await authenticationApiClient.ExchangeCodeForAccessTokenAsync(new ExchangeCodeRequest
+            var token = await authenticationApiClient.GetTokenAsync(new AuthorizationCodeTokenRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
                 RedirectUri = "http://www.blah.com/test",
-                AuthorizationCode = "AaBhdAOl4OKvjX2I"
+                Code= "AaBhdAOl4OKvjX2I"
             });
 
             // Assert

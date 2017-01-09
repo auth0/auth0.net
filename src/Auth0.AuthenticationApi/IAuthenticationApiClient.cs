@@ -133,6 +133,20 @@ namespace Auth0.AuthenticationApi
         Task<UsernamePasswordLoginResponse> UsernamePasswordLoginAsync(UsernamePasswordLoginRequest request);
 
         /// <summary>
+        /// Request an Access Token using the Authorization Code Grant flow.
+        /// </summary>
+        /// <param name="request">The <see cref="ClientCredentialsTokenRequest"/> containing the information of the request.</param>
+        /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
+        Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodeTokenRequest request);
+
+        /// <summary>
+        /// Request an Access Token using the Authorization Code (PKCE) flow.
+        /// </summary>
+        /// <param name="request">The <see cref="ClientCredentialsTokenRequest"/> containing the information of the request.</param>
+        /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
+        Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodePkceTokenRequest request);
+
+        /// <summary>
         /// Request an Access Token using the Client Credentials Grant flow.
         /// </summary>
         /// <param name="request">The <see cref="ClientCredentialsTokenRequest"/> containing the information of the request.</param>

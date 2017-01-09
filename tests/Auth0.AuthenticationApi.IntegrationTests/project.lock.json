@@ -1057,6 +1057,8 @@
           "System.Numerics",
           "System.Runtime",
           "System.Runtime.Serialization",
+          "System.Threading",
+          "System.Threading.Tasks",
           "System.Xml",
           "System.Xml.Linq"
         ],
@@ -1080,6 +1082,8 @@
           "System.Net.Http",
           "System.Numerics",
           "System.Runtime.Serialization",
+          "System.Threading",
+          "System.Threading.Tasks",
           "System.Xml",
           "System.Xml.Linq"
         ],
@@ -1105,6 +1109,8 @@
           "System.Numerics",
           "System.Runtime",
           "System.Runtime.Serialization",
+          "System.Threading",
+          "System.Threading.Tasks",
           "System.Xml",
           "System.Xml.Linq"
         ],
