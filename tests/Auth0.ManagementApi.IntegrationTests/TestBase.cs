@@ -23,7 +23,7 @@ namespace Auth0.Tests.Shared
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
             // Get the access token
-            var token = await authenticationApiClient.GetToken(new ClientCredentialsTokenRequest
+            var token = await authenticationApiClient.GetTokenAsync(new ClientCredentialsTokenRequest
             {
                 ClientId = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET"),

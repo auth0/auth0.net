@@ -199,6 +199,13 @@ namespace Auth0.AuthenticationApi
         /// <returns></returns>
         public Task<AccessTokenResponse> ExchangeCodeForAccessTokenAsync(ExchangeCodeRequest request)
         {
+            return GetTokenAsync(new AuthorizationCodeTokenRequest
+            {
+                ClientId = request.ClientId,
+                ClientSecret = request.ClientSecret,
+                Code = request.AuthorizationCode,
+                RedirectUri = request.RedirectUri
+            });
             return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
             {
                 {"client_id", request.ClientId},
@@ -262,6 +269,43 @@ namespace Auth0.AuthenticationApi
             {
                 {"clientid", clientId}
             }, null, null);
+        }
+
+        /// <summary>
+        /// Request an Access Token using the Authorization Code Grant flow.
+        /// </summary>
+        /// <param name="request">The <see cref="ClientCredentialsTokenRequest"/> containing the information of the request.</param>
+        /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
+        public Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodeTokenRequest request)
+        {
+            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
+            {
+                {"grant_type", "authorization_code"},
+                {"client_id", request.ClientId},
+                {"client_secret", request.ClientSecret},
+                {"code", request.Code},
+                {"redirect_uri", request.RedirectUri},
+            },
+                null,
+                null,
+                null,
+                null);
+        }
+
+        public Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodePkceTokenRequest request)
+        {
+            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
+            {
+                {"grant_type", "authorization_code"},
+                {"client_id", request.ClientId},
+                {"code", request.Code},
+                {"code_verifier", request.CodeVerifier},
+                {"redirect_uri", request.RedirectUri}
+            },
+                null,
+                null,
+                null,
+                null);
         }
 
         /// <summary>
