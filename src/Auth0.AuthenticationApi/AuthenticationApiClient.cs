@@ -197,6 +197,7 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="request">The <see cref="ExchangeCodeRequest"/> containing the authorization code and other information needed to exchange the code for an access token.</param>
         /// <returns></returns>
+        [Obsolete("Use GetTokenAsync(AuthorizationCodeTokenRequest) instead.")]
         public Task<AccessTokenResponse> ExchangeCodeForAccessTokenAsync(ExchangeCodeRequest request)
         {
             return GetTokenAsync(new AuthorizationCodeTokenRequest

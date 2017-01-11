@@ -70,7 +70,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
             
             // First get the access token
-            var token = await authenticationApiClient.AuthenticateAsync(new AuthenticationRequest
+            var token = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),

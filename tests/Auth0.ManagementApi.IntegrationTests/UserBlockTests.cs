@@ -54,7 +54,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 {
                     attempts++;
 
-                    var authenticationResponse = await authenticationApiClient.AuthenticateAsync(new AuthenticationRequest
+                    var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
                     {
                         ClientId = GetVariable("AUTH0_CLIENT_ID"),
                         ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
