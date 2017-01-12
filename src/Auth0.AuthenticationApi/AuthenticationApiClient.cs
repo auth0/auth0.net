@@ -329,6 +329,27 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <summary>
+        /// Given a <see cref="RefreshTokenRequest"/>, it will retrieve a refreshed access token from the authorization server.
+        /// </summary>
+        /// <param name="request">The refresh token request details, containing a valid refresh token.</param>
+        /// <returns>The new token issued by the server.</returns>
+        public async Task<AccessTokenResponse> GetTokenAsync(RefreshTokenRequest request)
+        {
+            var parameters = new Dictionary<string, object> {
+                { "grant_type", "refresh_token" },
+                { "refresh_token", request.RefreshToken },
+                { "client_id", request.ClientId },
+                { "client_secret", request.ClientSecret }
+            };
+
+            if (!string.IsNullOrEmpty(request.Scope))
+            {
+                parameters.Add("scope", request.Scope);
+            }
+            return await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, null, null);
+        }
+
+        /// <summary>
         /// Given an <see cref="ResourceOwnerTokenRequest" />, it will do the authentication on the provider and return an <see cref="AccessTokenResponse"./>
         /// </summary>
         /// <param name="request">The authentication request details containing information regarding the username, password etc.</param>
@@ -460,27 +481,6 @@ namespace Auth0.AuthenticationApi
             {
                 HtmlForm = await Connection.PostAsync<string>("usernamepassword/login", request, null, null, null, null, null).ConfigureAwait(false)
             };
-        }
-
-        /// <summary>
-        /// Given a <see cref="TokenRefreshRequest"/>, it will retrieve a refreshed access token from the authorization server.
-        /// </summary>
-        /// <param name="request">The refresh token request details, containing a valid refresh token.</param>
-        /// <returns>The new token issued by the server.</returns>
-        public async Task<AccessTokenResponse> GetRefreshedTokenAsync(TokenRefreshRequest request)
-        {
-            var parameters = new Dictionary<string, object> {
-                { "grant_type", "refresh_token" },
-                { "refresh_token", request.RefreshToken },
-                { "client_id", request.ClientId },
-                { "client_secret", request.ClientSecret }
-            };
-
-            if (!string.IsNullOrEmpty(request.Scope))
-            {
-                parameters.Add("scope", request.Scope);
-            }
-            return await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, null, null);
         }
     }
 }

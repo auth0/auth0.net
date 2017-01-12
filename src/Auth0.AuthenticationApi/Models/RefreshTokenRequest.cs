@@ -9,8 +9,10 @@ namespace Auth0.AuthenticationApi.Models
     /// Represents a request to get a new token,
     /// based on a previously issued refresh token.
     /// </summary>
-    public class TokenRefreshRequest
+    public class RefreshTokenRequest
     {
+        public string Audience { get; set; }
+
         /// <summary>
         /// A valid refresh token previously issued to the client.
         /// </summary>
