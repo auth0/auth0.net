@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Auth0 .NET SDK </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Auth0 .NET SDK ">
+    <meta name="generator" content="docfx 2.7.3.0">
+    
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+              <h1 id="auth0-net-sdk">Auth0 .NET SDK</h1>
+              
+<h2 id="description">Description</h2>
+<p>Welcome to the documentation for the Auth0 .NET SDK. This reference will give you basic guidance on how to use the .NET SDK to access the Auth0 Management API and Authentication API.</p>
+<p>This documentation is supplemental to the official <a href="https://auth0.com/docs">Auth0 API documentation</a>. For more information on the Authentication and Management APIs, you can visit their official documentation by following one of the links below:</p>
+<ul>
+<li><a href="https://auth0.com/docs/auth-api">Authentication API documentation</a></li>
+<li><a href="https://auth0.com/docs/api/v2">Management API documentation</a></li>
+</ul>
+<p>The rest of this documentation will guide your through the process of installing the various Nuget Packages, as well as some basic examples. You will also find the full references for all the classes and types in the Auth0 .NET SDK.</p>
+<h2 id="installation">Installation</h2>
+<p>You can install the Auth0 .NET SDK trough <a href="https://www.nuget.org">Nuget</a>. Two different Nuget packages are available, one for the Authentication API, and one for the Management API.</p>
+<h3 id="installing-the-sdk-for-the-authentication-api">Installing the SDK for the Authentication API</h3>
+<p>You can install the SDK for the Authentication API throug the <a href="http://docs.nuget.org/consume/Package-Manager-Console">Package Manager Console</a> inside Visual Studio:</p>
+<pre><code>Install-Package Auth0.AuthenticationApi
+</code></pre><p>Alternatively you can install it through the <a href="http://docs.nuget.org/consume/package-manager-dialog">Package Manager Dialog</a> by searching for the <code>Auth0.AuthenticationApi</code> package.</p>
+<h3 id="installing-the-sdk-for-the-management-api">Installing the SDK for the Management API</h3>
+<p>You can install the SDK for the Management API throug the <a href="http://docs.nuget.org/consume/Package-Manager-Console">Package Manager Console</a> inside Visual Studio:</p>
+<pre><code>Install-Package Auth0.ManagementApi
+</code></pre><p>Alternatively you can install it through the <a href="http://docs.nuget.org/consume/package-manager-dialog">Package Manager Dialog</a> by searching for the <code>Auth0.ManagementApi</code> package.</p>
+<h2 id="using-the-authentication-api">Using the Authentication API</h2>
+<p>This section will take your through the basics of using the Authentication API.</p>
+<h3 id="basic-usage">Basic Usage</h3>
+<p>Ensure that you include the Authentication API namespace in your source code file:</p>
+<pre><code>using Auth0.AuthenticationApi;
+</code></pre><p>To start using the API, you need to create an instance of the <a class="xref" href="api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient">AuthenticationApiClient</a> class, passing the URL of your Auth0 instance:</p>
+<pre><code>var client = new AuthenticationApiClient(new Uri(&quot;https://YOUR_AUTH0_DOMAIN/&quot;));
+</code></pre><blockquote><p>You can obtain your Auth0 Domain from the <a href="https://manage.auth0.com/#/applications">Application section of the Auth0 Dashboard</a> by looking at the settings for your particular application. </p>
+</blockquote>
+<p>For more details on the various methods that are available, please refer to the documentation of the <a class="xref" href="api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient">AuthenticationApiClient</a> class.</p>
+<h3 id="using-url-builders">Using URL Builders</h3>
+<p>Several helper methods are available to allow you to build URLs that you can redirect your user to for example to build up an authorization URL.<br>These methods follow a fluent syntax, meaning that you can keep chaining method calls together to build up the URL.
+Finally, to build the actual URL, you will need to call the <a class="xref" href="api/Auth0.AuthenticationApi.Builders.UrlBuilderBase-1.html#Auth0_AuthenticationApi_Builders_UrlBuilderBase_1_Build">Build()</a> method.</p>
+<p>The following are the list of URL builder helper methods:</p>
+<ul>
+<li><a class="xref" href="api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_BuildAuthorizationUrl">BuildAuthorizationUrl()</a></li>
+<li><a class="xref" href="api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_BuildLogoutUrl">BuildLogoutUrl()</a></li>
+<li><a class="xref" href="api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_BuildSamlUrl_System_String_">BuildSamlUrl(String)</a></li>
+<li><a class="xref" href="api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_BuildWsFedUrl">BuildWsFedUrl()</a></li>
+</ul>
+<p>For example, to build up an authorization URL, you can write the following code:</p>
+<pre><code class="lang-csharp">var client = new AuthenticationApiClient(new Uri(&quot;https://YOUR_AUTH0_DOMAIN/&quot;));
+
+var authorizationUrl = client.BuildAuthorizationUrl()
+    .WithResponseType(AuthorizationResponseType.Code)
+    .WithClient(&quot;abcdef&quot;)
+    .WithConnection(&quot;google-oauth2&quot;)
+    .WithRedirectUrl(&quot;http://www.myapp.com/redirect&quot;)
+    .WithScope(&quot;openid offline_access&quot;)
+    .Build();
+</code></pre><p>The sample code above will generate a URL for you to which you can redirect a user. For example, in an ASP.NET MVC Controller Action, you may do the following:</p>
+<pre><code class="lang-csharp">public ActionResult Login()
+{
+    var client = new AuthenticationApiClient(new Uri(&quot;https://YOUR_AUTH0_DOMAIN/&quot;));
+
+    var authorizationUrl = client.BuildAuthorizationUrl()
+        .WithResponseType(AuthorizationResponseType.Code)
+        .WithClient(&quot;abcdef&quot;)
+        .WithConnection(&quot;google-oauth2&quot;)
+        .WithRedirectUrl(&quot;http://www.myapp.com/redirect&quot;)
+        .WithScope(&quot;openid offline_access&quot;)
+        .Build();
+
+    return Redirect(authorizationUrl);
+}
+</code></pre><h2 id="using-the-management-api">Using the Management API</h2>
+<p>This section will take your through the basics of using the Management API. </p>
+<h3 id="basic-usage-1">Basic Usage</h3>
+<p>Ensure that you include the Management API namespace in your source code file:</p>
+<pre><code>using Auth0.ManagementApi;
+</code></pre><p>To start using the API, you need to create an instance of the <a class="xref" href="api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient">ManagementApiClient</a> class, passing a token and the URL to the Management API of your Auth0 instance:</p>
+<pre><code>var client = new ManagementApiClient(&quot;token&quot;, new Uri(&quot;https://YOUR_AUTH0_DOMAIN/api/v2&quot;));
+</code></pre><blockquote><p>You can obtain your Auth0 Domain from the <a href="https://manage.auth0.com/#/applications">Application section of the Auth0 Dashboard</a> by looking at the settings for your particular application. </p>
+</blockquote>
+<div class="NOTE"><h5>Note</h5><p>For details on how to generate the token, please see the &quot;Getting an API token&quot; section of the <a href="https://auth0.com/docs/api/v2">Management API documentation</a></p>
+</div>
+<p>For more details on the various methods that are available, please refer to the documentation of the <a class="xref" href="api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient">ManagementApiClient</a> class.</p>
+<h3 id="organization-of-the-managementapiclient">Organization of the ManagementApiClient</h3>
+<p>All methods for the Management API are grouped together in a similar fashion as what you will find when browsing the <a href="https://auth0.com/docs/api/v2">Management API documentation</a>.     </p>
+<p>In the screenshot of the API documentation below you can see that the API methods are organized by functional group, e.g Clients, Connections, Device Credentials, etc.</p>
+<p><img src="images/api-docs-structure.png" alt=""></p>
+<p>The .NET Client SDK for the Management API also groups the API methods according to these functional groups. The functional groups are available as properties on the <code>ManagementApiClient</code> class, so you will for example find all Clients related API calls under the <a class="xref" href="api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_Clients">Clients</a> property. </p>
+<p>Below is an example of how you can get a list of all clients:</p>
+<pre><code>var apiClient = new ManagementApiClient(&quot;token&quot;, new Uri(&quot;https://YOUR_AUTH0_DOMAIN/api/v2&quot;));
+var allClients = await apiClient.Clients.GetAllAsync();
+</code></pre><h3 id="client-reuse-and-thread-safety">Client reuse and thread safety</h3>
+<p>Neither the <code>ManagementApiClient</code> or the <code>AuthenticationApiClient</code> are threadsafe, as they store the result of the last call to an API (obtainable by the <code>GetLastApiInfo</code> method). It&#39;s ok to reuse them in the same thread to do subsequent calls, but they shouldn&#39;t be created as a singleton instance used across multiple threads. </p>
+<p>Both clients are really lightweight to instantiate, so creating a new instance every time they are needed shouldn&#39;t be a concern.</p>
+
+            </article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/auth0/auth0.net/blob/v4/docs-source/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2015-2016 Microsoft<br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>
