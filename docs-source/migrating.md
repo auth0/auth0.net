@@ -8,9 +8,9 @@ The main reason for the breaking changes is related to the OIDC-conformance whic
 
 For a full background and other details please refer to the official [OIDC-conformant authentication migration guide](https://auth0-docs-content-pr-3100.herokuapp.com/docs/api-auth/tutorials/migration).
 
-## Better Separation of the Authentication and Management API
+## Better separation of the Authentication and Management API
 
-Because of the changes to the Authentication pipeline for OIDC conformance, some breaking changes was introduced and weare therefore required to increase the version number of the Authentication API SDK. One problem however was that some classes were shared in between the Authentication API SDK and the Management API SDK, in particular the information returned from the `/userinfo` endpoint. 
+Because of the changes to the Authentication pipeline for OIDC conformance, some breaking changes were introduced and we are therefore required to increase the version number of the Authentication API SDK. One problem however was that some classes were shared in between the Authentication API SDK and the Management API SDK, in particular the information returned from the `/userinfo` endpoint. 
 
 In the new OIDC conformant pipeline this is not the case anymore, as the endpoint return claims which conform to the [OIDC standard](http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims).
 
@@ -44,7 +44,7 @@ Here follows the list of changes made from Version 3 to Version 4 of the Auth0.N
 
 * **Removed** all members previously marked as obsolete. This relates mostly to the methods which did not conform to the *Async naming convention for .NET `async` methods.
 
-* **Deprecated** the `AuthenticateAsync()` method as the legacy `oauth/ro` endpoint has been disabled. You should use `GetTokenAsync(ResourceOwnerTokenRequest)` instead, and the `AuthenticateAsync()` has been changed to simply call the new `GetTokenAsync(ResourceOwnerTokenRequest)` method. For more information see the [Resource Owner Password grant type](https://auth0.com/docs/api/authentication#resource-owner-password). 
+* **Deprecated** the `AuthenticateAsync()` method as the legacy `oauth/ro` endpoint has been disabled. You should use `GetTokenAsync(ResourceOwnerTokenRequest)` instead, and the `AuthenticateAsync()` has been changed to simply call the new `GetTokenAsync(ResourceOwnerTokenRequest)` method. Note that confidential clients will need to provide a `ClientSecret` in addition to the `ClientId`. For more information see the [Resource Owner Password grant type](https://auth0.com/docs/api/authentication#resource-owner-password). 
 
 * **Changed** the response of `AuthenticateAsync()` to now return an `AccessTokenResponse` instead of `AuthorizationResponse`. 
 
