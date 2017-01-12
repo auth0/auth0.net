@@ -4,16 +4,6 @@
   "copyright": "Auth0",
   "description": ".NET SDK for using the Auth0 Authentication API",
   "buildOptions": {
-    "compile": {
-        "include": [
-            "../Auth0.ManagementApi/Core/Http/ApiConnection.cs",
-            "../Auth0.ManagementApi/Core/Http/ApiInfo.cs",
-            "../Auth0.ManagementApi/Core/Http/ApiInfoParser.cs",
-            "../Auth0.ManagementApi/Core/Http/DiagnosticsHeader.cs",
-            "../Auth0.ManagementApi/Core/Http/IApiConnection.cs",
-            "../Auth0.ManagementApi/Core/Http/RateLimit.cs"
-        ]
-    },
     "define": [
       "AUTHENTICATION_API"
     ],
@@ -36,7 +26,10 @@
         "System.Linq": "",
         "System.Net.Http": "",
         "System.Numerics": "",
+        "System.Runtime": "",
         "System.Runtime.Serialization": "",
+        "System.Threading": "",
+        "System.Threading.Tasks": "",
         "System.Xml": "",
         "System.Xml.Linq": ""
       }

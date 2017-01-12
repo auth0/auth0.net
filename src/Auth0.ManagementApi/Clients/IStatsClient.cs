@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
 using Auth0.Core;
+using Auth0.ManagementApi.Models;
 
 namespace Auth0.ManagementApi.Clients
 {
@@ -24,19 +25,5 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="to">The last day of the period (inclusive).</param>
         /// <returns>A list of <see cref="DailyStatistics"/> containing the statistics for each day in the period.</returns>
         Task<IList<DailyStatistics>> GetDailyStatsAsync(DateTime from, DateTime to);
-
-        #region Obsolete Methods
-        #pragma warning disable 1591
-
-        [Obsolete("Use GetActiveUsersAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<long> GetActiveUsers();
-
-        [Obsolete("Use GetDailyStatsAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<IList<DailyStatistics>> GetDailyStats(DateTime from, DateTime to);
-
-        #pragma warning restore 1591
-        #endregion
     }
 }

@@ -1,6 +1,13 @@
 .Net client library for the Auth0 platform.
 
+Version **4.x** is meant to be used with [OIDC-conformant clients](https://auth0-docs-content-pr-3100.herokuapp.com/docs/api-auth/tutorials/migration/oidc-conformant).
 
+Non OIDC-conformant clients should continue to use **v3.x**.
+
+## Changes
+
+* V4 contains some breaking changes (mostly to accomodate OIDC-conformant clients, 
+but also fix some inconsistencies) and some new functionality. Changes are listed [here](v4-changes.md).
 ## Management API
 
 ### Full Documentation

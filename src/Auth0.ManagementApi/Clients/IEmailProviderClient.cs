@@ -50,27 +50,5 @@ namespace Auth0.ManagementApi.Clients
         /// </param>
         /// <returns>A <see cref="EmailProvider" /> instance containing the email provider details.</returns>
         Task<EmailProvider> UpdateAsync(EmailProviderUpdateRequest request);
-
-        #region Obsolete Methods
-#pragma warning disable 1591
-
-        [Obsolete("Use ConfigureAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<EmailProvider> Configure(EmailProviderConfigureRequest request);
-
-        [Obsolete("Use DeleteAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task Delete();
-
-        [Obsolete("Use GetAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<EmailProvider> Get(string fields = null, bool includeFields = true);
-
-        [Obsolete("Use UpdateAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<EmailProvider> Update(EmailProviderUpdateRequest request);
-
-#pragma warning restore 1591
-        #endregion
     }
 }

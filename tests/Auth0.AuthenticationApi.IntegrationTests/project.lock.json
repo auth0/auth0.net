@@ -1055,7 +1055,10 @@
           "System.Linq",
           "System.Net.Http",
           "System.Numerics",
+          "System.Runtime",
           "System.Runtime.Serialization",
+          "System.Threading",
+          "System.Threading.Tasks",
           "System.Xml",
           "System.Xml.Linq"
         ],
@@ -1074,8 +1077,13 @@
         },
         "frameworkAssemblies": [
           "System.Data",
+          "System.IO",
+          "System.Linq",
+          "System.Net.Http",
           "System.Numerics",
           "System.Runtime.Serialization",
+          "System.Threading",
+          "System.Threading.Tasks",
           "System.Xml",
           "System.Xml.Linq"
         ],
@@ -1095,10 +1103,14 @@
         },
         "frameworkAssemblies": [
           "System.Data",
+          "System.IO",
           "System.Linq",
           "System.Net.Http",
           "System.Numerics",
+          "System.Runtime",
           "System.Runtime.Serialization",
+          "System.Threading",
+          "System.Threading.Tasks",
           "System.Xml",
           "System.Xml.Linq"
         ],

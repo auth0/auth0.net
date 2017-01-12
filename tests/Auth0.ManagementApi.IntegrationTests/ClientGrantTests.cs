@@ -14,23 +14,12 @@ namespace Auth0.ManagementApi.IntegrationTests
     public class ClientGrantTests : TestBase
     {
         private ManagementApiClient apiClient;
-        private Core.Client client;
+        private Client client;
 
         [SetUp]
         public async Task SetUp()
         {
-            var scopes = new
-            {
-                clients = new
-                {
-                    actions = new string[] { "read", "create", "delete" }
-                },
-                client_grants = new
-                {
-                    actions = new string[] { "read", "create", "delete", "update" }
-                }
-            };
-            string token = GenerateToken(scopes);
+            string token = await GenerateManagementApiToken();
 
             apiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 

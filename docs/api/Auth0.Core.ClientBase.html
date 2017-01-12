@@ -1,0 +1,805 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class ClientBase
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class ClientBase
+   ">
+    <meta name="generator" content="docfx 2.7.3.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content">
+              
+              
+              <h1 id="Auth0_Core_ClientBase" data-uid="Auth0.Core.ClientBase">Class ClientBase
+              </h1>
+              <div class="markdown level0 summary"><p>Base class for clients.</p>
+</div>
+              <div class="markdown level0 conceptual"></div>
+              <div class="inheritance">
+                <h5>Inheritance</h5>
+                  <div class="level0"><span class="xref">System.Object</span></div>
+                  <div class="level1"><span class="xref">ClientBase</span></div>
+              </div>
+              <div class="inheritedMembers">
+                <h5>Inherited Members</h5>
+                <div>
+                  <span class="xref">System.Object.Equals(System.Object)</span>
+                </div>
+                <div>
+                  <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+                </div>
+                <div>
+                  <span class="xref">System.Object.GetHashCode()</span>
+                </div>
+                <div>
+                  <span class="xref">System.Object.GetType()</span>
+                </div>
+                <div>
+                  <span class="xref">System.Object.MemberwiseClone()</span>
+                </div>
+                <div>
+                  <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+                </div>
+                <div>
+                  <span class="xref">System.Object.ToString()</span>
+                </div>
+              </div>
+              <h6><strong>Namespace</strong>:Auth0.Core</h6>
+              <h6><strong>Assembly</strong>:Auth0.Core.dll</h6>
+              <h5 id="Auth0_Core_ClientBase_syntax">Syntax</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public abstract class ClientBase</code></pre>
+              </div>
+              <h3 id="properties">Properties
+              </h3>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_ClientBase_AddOns.md&amp;value=---%0Auid%3A%20Auth0.Core.ClientBase.AddOns%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Base/ClientBase.cs/#L14">View Source</a>
+              </span>
+              <h4 id="Auth0_Core_ClientBase_AddOns" data-uid="Auth0.Core.ClientBase.AddOns">AddOns</h4>
+              <div class="markdown level1 summary"><p>Gets or sets the addons which are associated with the client.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[JsonProperty(&quot;addons&quot;)]
+public Addons AddOns { get; set; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="Auth0.Core.Addons.html#Auth0_Core_Addons">Addons</a></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_ClientBase_AllowedClients.md&amp;value=---%0Auid%3A%20Auth0.Core.ClientBase.AllowedClients%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Base/ClientBase.cs/#L23">View Source</a>
+              </span>
+              <h4 id="Auth0_Core_ClientBase_AllowedClients" data-uid="Auth0.Core.ClientBase.AllowedClients">AllowedClients</h4>
+              <div class="markdown level1 summary"><p>Ids of clients that will be allowed to perform delegation requests. Clients that will be allowed to make delegation request.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[JsonProperty(&quot;allowed_clients&quot;)]
+public string[] AllowedClients { get; set; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.String</span>[]</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 id="Auth0_Core_ClientBase_AllowedClients_remarks">Remarks</h5>
+              <div class="markdown level1 remarks"><p>By default, all your clients will be allowed. This field allows you to specify specific clients.</p>
+</div>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_ClientBase_AllowedLogoutUrls.md&amp;value=---%0Auid%3A%20Auth0.Core.ClientBase.AllowedLogoutUrls%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Base/ClientBase.cs/#L29">View Source</a>
+              </span>
+              <h4 id="Auth0_Core_ClientBase_AllowedLogoutUrls" data-uid="Auth0.Core.ClientBase.AllowedLogoutUrls">AllowedLogoutUrls</h4>
+              <div class="markdown level1 summary"><p>The URLs that Auth0 can redirect to after logout</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[JsonProperty(&quot;allowed_logout_urls&quot;)]
+public string[] AllowedLogoutUrls { get; set; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.String</span>[]</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_ClientBase_AllowedOrigins.md&amp;value=---%0Auid%3A%20Auth0.Core.ClientBase.AllowedOrigins%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Base/ClientBase.cs/#L35">View Source</a>
+              </span>
+              <h4 id="Auth0_Core_ClientBase_AllowedOrigins" data-uid="Auth0.Core.ClientBase.AllowedOrigins">AllowedOrigins</h4>
+              <div class="markdown level1 summary"><p>A set of URLs that represents valid origins for CORS.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[JsonProperty(&quot;allowed_origins&quot;)]
+public string[] AllowedOrigins { get; set; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.String</span>[]</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_ClientBase_ApplicationType.md&amp;value=---%0Auid%3A%20Auth0.Core.ClientBase.ApplicationType%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Base/ClientBase.cs/#L41">View Source</a>
+              </span>
+              <h4 id="Auth0_Core_ClientBase_ApplicationType" data-uid="Auth0.Core.ClientBase.ApplicationType">ApplicationType</h4>
+              <div class="markdown level1 summary"><p>The type of application this client represents</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[JsonProperty(&quot;app_type&quot;)]
+[JsonConverter(typeof (StringEnumConverter))]
+public ClientApplicationType ApplicationType { get; set; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="Auth0.Core.ClientApplicationType.html#Auth0_Core_ClientApplicationType">ClientApplicationType</a></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_ClientBase_Callbacks.md&amp;value=---%0Auid%3A%20Auth0.Core.ClientBase.Callbacks%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Base/ClientBase.cs/#L48">View Source</a>
+              </span>
+              <h4 id="Auth0_Core_ClientBase_Callbacks" data-uid="Auth0.Core.ClientBase.Callbacks">Callbacks</h4>
+              <div class="markdown level1 summary"><p>A set of URLs that are valid to call back from Auth0 when authenticating users.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[JsonProperty(&quot;callbacks&quot;)]
+public string[] Callbacks { get; set; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.String</span>[]</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_ClientBase_ClientAliases.md&amp;value=---%0Auid%3A%20Auth0.Core.ClientBase.ClientAliases%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Base/ClientBase.cs/#L54">View Source</a>
+              </span>
+              <h4 id="Auth0_Core_ClientBase_ClientAliases" data-uid="Auth0.Core.ClientBase.ClientAliases">ClientAliases</h4>
+              <div class="markdown level1 summary"><p>List of audiences for SAML protocol.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[JsonProperty(&quot;client_aliases&quot;)]
+public string[] ClientAliases { get; set; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.String</span>[]</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_ClientBase_ClientMetaData.md&amp;value=---%0Auid%3A%20Auth0.Core.ClientBase.ClientMetaData%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Base/ClientBase.cs/#L60">View Source</a>
+              </span>
+              <h4 id="Auth0_Core_ClientBase_ClientMetaData" data-uid="Auth0.Core.ClientBase.ClientMetaData">ClientMetaData</h4>
+              <div class="markdown level1 summary"><p>Metadata associated with this client</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[JsonProperty(&quot;client_metadata&quot;)]
+public dynamic ClientMetaData { get; set; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Object</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_ClientBase_ClientSecret.md&amp;value=---%0Auid%3A%20Auth0.Core.ClientBase.ClientSecret%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Base/ClientBase.cs/#L66">View Source</a>
+              </span>
+              <h4 id="Auth0_Core_ClientBase_ClientSecret" data-uid="Auth0.Core.ClientBase.ClientSecret">ClientSecret</h4>
+              <div class="markdown level1 summary"><p>The secret used to sign tokens for the client.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[JsonProperty(&quot;client_secret&quot;)]
+public string ClientSecret { get; set; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.String</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_ClientBase_CustomLoginPage.md&amp;value=---%0Auid%3A%20Auth0.Core.ClientBase.CustomLoginPage%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Base/ClientBase.cs/#L84">View Source</a>
+              </span>
+              <h4 id="Auth0_Core_ClientBase_CustomLoginPage" data-uid="Auth0.Core.ClientBase.CustomLoginPage">CustomLoginPage</h4>
+              <div class="markdown level1 summary"><p>The content (HTML, CSS, JS) of the custom login page.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[JsonProperty(&quot;custom_login_page&quot;)]
+public string CustomLoginPage { get; set; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.String</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_ClientBase_CustomLoginPagePreview.md&amp;value=---%0Auid%3A%20Auth0.Core.ClientBase.CustomLoginPagePreview%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Base/ClientBase.cs/#L90">View Source</a>
+              </span>
+              <h4 id="Auth0_Core_ClientBase_CustomLoginPagePreview" data-uid="Auth0.Core.ClientBase.CustomLoginPagePreview">CustomLoginPagePreview</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[JsonProperty(&quot;custom_login_page_preview&quot;)]
+public string CustomLoginPagePreview { get; set; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.String</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_ClientBase_EncryptionKey.md&amp;value=---%0Auid%3A%20Auth0.Core.ClientBase.EncryptionKey%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Base/ClientBase.cs/#L96">View Source</a>
+              </span>
+              <h4 id="Auth0_Core_ClientBase_EncryptionKey" data-uid="Auth0.Core.ClientBase.EncryptionKey">EncryptionKey</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[JsonProperty(&quot;encryption_key&quot;)]
+public EncryptionKey EncryptionKey { get; set; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="Auth0.Core.EncryptionKey.html#Auth0_Core_EncryptionKey">EncryptionKey</a></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_ClientBase_FormTemplate.md&amp;value=---%0Auid%3A%20Auth0.Core.ClientBase.FormTemplate%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Base/ClientBase.cs/#L102">View Source</a>
+              </span>
+              <h4 id="Auth0_Core_ClientBase_FormTemplate" data-uid="Auth0.Core.ClientBase.FormTemplate">FormTemplate</h4>
+              <div class="markdown level1 summary"><p>Form template for WS-Federation protocol.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[JsonProperty(&quot;form_template&quot;)]
+public string FormTemplate { get; set; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.String</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_ClientBase_IsCustomLoginPageOn.md&amp;value=---%0Auid%3A%20Auth0.Core.ClientBase.IsCustomLoginPageOn%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Base/ClientBase.cs/#L72">View Source</a>
+              </span>
+              <h4 id="Auth0_Core_ClientBase_IsCustomLoginPageOn" data-uid="Auth0.Core.ClientBase.IsCustomLoginPageOn">IsCustomLoginPageOn</h4>
+              <div class="markdown level1 summary"><p>True if the custom login page is to be used, false otherwise. Defaults to true.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[JsonProperty(&quot;custom_login_page_on&quot;)]
+public bool ? IsCustomLoginPageOn { get; set; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Nullable&lt;T&gt;</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_ClientBase_IsFirstParty.md&amp;value=---%0Auid%3A%20Auth0.Core.ClientBase.IsFirstParty%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Base/ClientBase.cs/#L78">View Source</a>
+              </span>
+              <h4 id="Auth0_Core_ClientBase_IsFirstParty" data-uid="Auth0.Core.ClientBase.IsFirstParty">IsFirstParty</h4>
+              <div class="markdown level1 summary"><p>Whether this client a first party client or not</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[JsonProperty(&quot;is_first_party&quot;)]
+public bool ? IsFirstParty { get; set; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Nullable&lt;T&gt;</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_ClientBase_JwtConfiguration.md&amp;value=---%0Auid%3A%20Auth0.Core.ClientBase.JwtConfiguration%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Base/ClientBase.cs/#L107">View Source</a>
+              </span>
+              <h4 id="Auth0_Core_ClientBase_JwtConfiguration" data-uid="Auth0.Core.ClientBase.JwtConfiguration">JwtConfiguration</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[JsonProperty(&quot;jwt_configuration&quot;)]
+public JwtConfiguration JwtConfiguration { get; set; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="Auth0.Core.JwtConfiguration.html#Auth0_Core_JwtConfiguration">JwtConfiguration</a></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_ClientBase_Mobile.md&amp;value=---%0Auid%3A%20Auth0.Core.ClientBase.Mobile%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Base/ClientBase.cs/#L113">View Source</a>
+              </span>
+              <h4 id="Auth0_Core_ClientBase_Mobile" data-uid="Auth0.Core.ClientBase.Mobile">Mobile</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[JsonProperty(&quot;mobile&quot;)]
+public Mobile Mobile { get; set; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="Auth0.Core.Mobile.html#Auth0_Core_Mobile">Mobile</a></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_ClientBase_Name.md&amp;value=---%0Auid%3A%20Auth0.Core.ClientBase.Name%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Base/ClientBase.cs/#L119">View Source</a>
+              </span>
+              <h4 id="Auth0_Core_ClientBase_Name" data-uid="Auth0.Core.ClientBase.Name">Name</h4>
+              <div class="markdown level1 summary"><p>The name of the client. Must contain at least one character. Does not allow &#39;&lt;&#39; or &#39;&gt;&#39;.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[JsonProperty(&quot;name&quot;)]
+public string Name { get; set; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.String</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_ClientBase_ResourceServers.md&amp;value=---%0Auid%3A%20Auth0.Core.ClientBase.ResourceServers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Base/ClientBase.cs/#L123">View Source</a>
+              </span>
+              <h4 id="Auth0_Core_ClientBase_ResourceServers" data-uid="Auth0.Core.ClientBase.ResourceServers">ResourceServers</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[JsonProperty(&quot;resource_servers&quot;)]
+public ResourceServer[] ResourceServers { get; set; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="Auth0.Core.ResourceServer.html#Auth0_Core_ResourceServer">ResourceServer</a>[]</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_ClientBase_Sso.md&amp;value=---%0Auid%3A%20Auth0.Core.ClientBase.Sso%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Base/ClientBase.cs/#L129">View Source</a>
+              </span>
+              <h4 id="Auth0_Core_ClientBase_Sso" data-uid="Auth0.Core.ClientBase.Sso">Sso</h4>
+              <div class="markdown level1 summary"><p>True to use Auth0 instead of the IdP to do Single Sign On, false otherwise.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[JsonProperty(&quot;sso&quot;)]
+public bool ? Sso { get; set; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Nullable&lt;T&gt;</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <span class="small pull-right mobile-hide">
+                <span class="divider">|</span>
+                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_ClientBase_TokenEndpointAuthMethod.md&amp;value=---%0Auid%3A%20Auth0.Core.ClientBase.TokenEndpointAuthMethod%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+              </span>
+              <span class="small pull-right mobile-hide">
+                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Base/ClientBase.cs/#L138">View Source</a>
+              </span>
+              <h4 id="Auth0_Core_ClientBase_TokenEndpointAuthMethod" data-uid="Auth0.Core.ClientBase.TokenEndpointAuthMethod">TokenEndpointAuthMethod</h4>
+              <div class="markdown level1 summary"><p>Defines the requested authentication method for the token endpoint.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">[JsonProperty(&quot;token_endpoint_auth_method&quot;)]
+[JsonConverter(typeof (StringEnumConverter))]
+public TokenEndpointAuthMethod TokenEndpointAuthMethod { get; set; }</code></pre>
+              </div>
+              <h5 class="propertyValue">Property Value</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="Auth0.Core.TokenEndpointAuthMethod.html#Auth0_Core_TokenEndpointAuthMethod">TokenEndpointAuthMethod</a></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+            </article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_ClientBase.md&amp;value=---%0Auid%3A%20Auth0.Core.ClientBase%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Base/ClientBase.cs/#L9" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2015-2016 Microsoft<br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

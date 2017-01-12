@@ -62,31 +62,5 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="request">The request containing the properties of the connection you wish to update.</param>
         /// <returns>A <see cref="Connection"/> containing the updated connection.</returns>
         Task<Connection> UpdateAsync(string id, ConnectionUpdateRequest request);
-
-        #region Obsolete Methods
-#pragma warning disable 1591
-
-        [Obsolete("Use CreateAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<Connection> Create(ConnectionCreateRequest request);
-
-        [Obsolete("Use DeleteAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task Delete(string id);
-
-        [Obsolete("Use GetAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<Connection> Get(string id, string fields = null, bool includeFields = true);
-
-        [Obsolete("Use GetAllAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<IList<Connection>> GetAll(string strategy, string fields = null, bool includeFields = true);
-
-        [Obsolete("Use UpdateAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<Connection> Update(string id, ConnectionUpdateRequest request);
-
-#pragma warning restore 1591
-        #endregion
     }
 }

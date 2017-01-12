@@ -8,21 +8,21 @@ namespace Auth0.AuthenticationApi.Models
         /// <summary>
         /// The authorization code which will be exchanged
         /// </summary>
-        public object AuthorizationCode { get; set; }
+        public string AuthorizationCode { get; set; }
 
         /// <summary>
         /// The client ID of the Application
         /// </summary>
-        public object ClientId { get; set; }
+        public string ClientId { get; set; }
 
         /// <summary>
         /// The client secret of the application.
         /// </summary>
-        public object ClientSecret { get; set; }
+        public string ClientSecret { get; set; }
 
         /// <summary>
         /// The redirect URI which was passed during the login process
         /// </summary>
-        public object RedirectUri { get; set; }
+        public string RedirectUri { get; set; }
     }
 }

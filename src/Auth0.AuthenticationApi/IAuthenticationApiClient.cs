@@ -16,11 +16,12 @@ namespace Auth0.AuthenticationApi
     public interface IAuthenticationApiClient
     {
         /// <summary>
-        /// Given an <see cref="AuthenticationRequest"/>, it will do the authentication on the provider and return a <see cref="AuthenticationResponse"/>
+        /// Given an <see cref="AuthenticationRequest"/>, it will do the authentication on the provider and return an <see cref="AccessTokenResponse"./>
         /// </summary>
         /// <param name="request">The authentication request details containing information regarding the connection, username, password etc.</param>
-        /// <returns>A Task object with <see cref="AuthenticationResponse"/> which contains the access token.</returns>
-        Task<AuthenticationResponse> AuthenticateAsync(AuthenticationRequest request);
+        /// <returns>A Task object with <see cref="AccessTokenResponse"/> which contains the token response.</returns>
+        [Obsolete("Use GetTokenAsync(ResourceOwnerTokenRequest) instead")]
+        Task<AccessTokenResponse> AuthenticateAsync(AuthenticationRequest request);
 
         /// <summary>
         /// Creates a <see cref="AuthorizationUrlBuilder"/> which is used to build an authorization URL.
@@ -60,24 +61,14 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="request">The <see cref="ExchangeCodeRequest"/> containing the authorization code and other information needed to exchange the code for an access token.</param>
         /// <returns></returns>
-        Task<AccessToken> ExchangeCodeForAccessTokenAsync(ExchangeCodeRequest request);
-
-        /// <summary>
-        /// Given the social provider's access token and the connection specified, it will do the authentication on the provider and return an <see cref="AccessToken"/>.
-        /// </summary>
-        /// <remarks>
-        /// Currently, this endpoint only works for Facebook, Google, Twitter and Weibo.
-        /// </remarks>
-        /// <param name="request">The <see cref="AccessTokenRequest"/> containing details about the request.</param>
-        /// <returns>The <see cref="AccessToken"/>.</returns>
-        Task<AccessToken> GetAccessTokenAsync(AccessTokenRequest request);
+        Task<AccessTokenResponse> ExchangeCodeForAccessTokenAsync(ExchangeCodeRequest request);
 
         /// <summary>
         /// Given an existing token, this endpoint will generate a new token signed with the target client secret. This is used to flow the identity of the user from the application to an API or across different APIs that are protected with different secrets.
         /// </summary>
         /// <param name="request">The <see cref="DelegationRequestBase"/> containing details about the request.</param>
-        /// <returns>The <see cref="AccessToken"/>.</returns>
-        Task<AccessToken> GetDelegationTokenAsync(DelegationRequestBase request);
+        /// <returns>The <see cref="AccessTokenResponse"/>.</returns>
+        Task<AccessTokenResponse> GetDelegationTokenAsync(DelegationRequestBase request);
 
         /// <summary>
         /// Generates a link that can be used once to log in as a specific user.
@@ -94,18 +85,11 @@ namespace Auth0.AuthenticationApi
         Task<string> GetSamlMetadataAsync(string clientId);
 
         /// <summary>
-        /// Validates a JSON Web Token (signature and expiration) and returns the user information associated with the user id (sub property) of the token.
-        /// </summary>
-        /// <param name="idToken">The identifier token.</param>
-        /// <returns>The <see cref="User"/> associated with the token.</returns>
-        Task<User> GetTokenInfoAsync(string idToken);
-
-        /// <summary>
         /// Returns the user information based on the Auth0 access token (obtained during login).
         /// </summary>
         /// <param name="accessToken">The access token.</param>
-        /// <returns>The <see cref="User"/> associated with the token.</returns>
-        Task<User> GetUserInfoAsync(string accessToken);
+        /// <returns>The <see cref="UserInfo"/> associated with the token.</returns>
+        Task<UserInfo> GetUserInfoAsync(string accessToken);
 
         /// <summary>
         /// Returns the WS Federation meta data.
@@ -148,70 +132,40 @@ namespace Auth0.AuthenticationApi
         /// <returns>A <see cref="UsernamePasswordLoginResponse"/> containing the WS-Federation Login Form, which can be posted by the user to trigger a server-side login.</returns>
         Task<UsernamePasswordLoginResponse> UsernamePasswordLoginAsync(UsernamePasswordLoginRequest request);
 
-        #region Obsolete Methods
-#pragma warning disable 1591
+        /// <summary>
+        /// Request an Access Token using the Authorization Code Grant flow.
+        /// </summary>
+        /// <param name="request">The <see cref="ClientCredentialsTokenRequest"/> containing the information of the request.</param>
+        /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
+        Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodeTokenRequest request);
 
-        [Obsolete("Use AuthenticateAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<AuthenticationResponse> Authenticate(AuthenticationRequest request);
+        /// <summary>
+        /// Request an Access Token using the Authorization Code (PKCE) flow.
+        /// </summary>
+        /// <param name="request">The <see cref="ClientCredentialsTokenRequest"/> containing the information of the request.</param>
+        /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
+        Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodePkceTokenRequest request);
 
-        [Obsolete("Use ChangePasswordAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<string> ChangePassword(ChangePasswordRequest request);
+        /// <summary>
+        /// Request an Access Token using the Client Credentials Grant flow.
+        /// </summary>
+        /// <param name="request">The <see cref="ClientCredentialsTokenRequest"/> containing the information of the request.</param>
+        /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
+        Task<AccessTokenResponse> GetTokenAsync(ClientCredentialsTokenRequest request);
 
-        [Obsolete("Use ExchangeCodeForAccessTokenAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<AccessToken> ExchangeCodeForAccessToken(ExchangeCodeRequest request);
+        /// <summary>
+        /// Given a <see cref="RefreshTokenRequest"/>, it will retrieve a refreshed access token from the authorization server.
+        /// </summary>
+        /// <param name="request">The refresh token request details, containing a valid refresh token.</param>
+        /// <returns>The new token issued by the server.</returns>
+        Task<AccessTokenResponse> GetTokenAsync(RefreshTokenRequest request);
 
-        [Obsolete("Use GetAccessTokenAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<AccessToken> GetAccessToken(AccessTokenRequest request);
+        /// <summary>
+        /// Given an <see cref="ResourceOwnerTokenRequest" />, it will do the authentication on the provider and return an <see cref="AccessTokenResponse"./>
+        /// </summary>
+        /// <param name="request">The authentication request details containing information regarding the username, password etc.</param>
+        /// <returns>An <see cref="AccessTokenResponse" /> with the response.</returns>
+        Task<AccessTokenResponse> GetTokenAsync(ResourceOwnerTokenRequest request);
 
-        [Obsolete("Use GetDelegationTokenAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<AccessToken> GetDelegationToken(DelegationRequestBase request);
-
-        [Obsolete("Use GetImpersonationUrlAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<Uri> GetImpersonationUrl(ImpersonationRequest request);
-
-        [Obsolete("Use GetSamlMetadataAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<string> GetSamlMetadata(string clientId);
-
-        [Obsolete("Use GetTokenInfoAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<User> GetTokenInfo(string idToken);
-
-        [Obsolete("Use GetUserInfoAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<User> GetUserInfo(string accessToken);
-
-        [Obsolete("Use GetWsFedMetadataAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<string> GetWsFedMetadata();
-
-        [Obsolete("Use SignupUserAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<SignupUserResponse> SignupUser(SignupUserRequest request);
-
-        [Obsolete("Use StartPasswordlessEmailFlowAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<PasswordlessEmailResponse> StartPasswordlessEmailFlow(PasswordlessEmailRequest request);
-
-        [Obsolete("Use StartPasswordlessSmsFlowAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<PasswordlessSmsResponse> StartPasswordlessSmsFlow(PasswordlessSmsRequest request);
-
-        [Obsolete("Use UnlinkUserAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task UnlinkUser(UnlinkUserRequest request);
-
-        [Obsolete("Use UsernamePasswordLoginAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<UsernamePasswordLoginResponse> UsernamePasswordLogin(UsernamePasswordLoginRequest request);
-
-#pragma warning restore 1591
-        #endregion
     }
 }

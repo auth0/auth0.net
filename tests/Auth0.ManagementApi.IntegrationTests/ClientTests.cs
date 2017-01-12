@@ -15,18 +15,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Test]
         public async Task Test_client_crud_sequence()
         {
-            var scopes = new
-            {
-                clients = new
-                {
-                    actions = new string[] { "read", "create", "delete", "update" }
-                },
-                client_keys = new
-                {
-                    actions = new string[] { "read", "update" }
-                }
-            };
-            string token = GenerateToken(scopes);
+            string token = await GenerateManagementApiToken();
 
             var apiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
@@ -38,6 +27,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 Name = $"Integration testing {Guid.NewGuid().ToString("N")}",
                 TokenEndpointAuthMethod = TokenEndpointAuthMethod.ClientSecretPost,
+                IsFirstParty = true,
                 ClientMetaData = new
                 {
                     Prop1 = "1",
@@ -49,7 +39,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             newClientResponse.Name.Should().Be(newClientRequest.Name);
             newClientResponse.TokenEndpointAuthMethod.Should().Be(TokenEndpointAuthMethod.ClientSecretPost);
             newClientResponse.ApplicationType.Should().Be(ClientApplicationType.Native);
-            newClientResponse.IsFirstParty = null;
+            newClientResponse.IsFirstParty.Should().BeTrue();
             string prop1 = newClientResponse.ClientMetaData.Prop1;
             prop1.Should().Be("1");
             string prop2 = newClientResponse.ClientMetaData.Prop2;
@@ -64,15 +54,13 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 Name = $"Integration testing {Guid.NewGuid().ToString("N")}",
                 TokenEndpointAuthMethod = TokenEndpointAuthMethod.ClientSecretPost,
-                ApplicationType = ClientApplicationType.Spa,
-                IsFirstParty = false
+                ApplicationType = ClientApplicationType.Spa
             };
             var updateClientResponse = await apiClient.Clients.UpdateAsync(newClientResponse.ClientId, updateClientRequest);
             updateClientResponse.Should().NotBeNull();
             updateClientResponse.Name.Should().Be(updateClientRequest.Name);
             updateClientResponse.TokenEndpointAuthMethod.Should().Be(TokenEndpointAuthMethod.ClientSecretPost);
             updateClientResponse.ApplicationType.Should().Be(ClientApplicationType.Spa);
-            updateClientResponse.IsFirstParty = false;
 
             // Get a single client
             var client = await apiClient.Clients.GetAsync(newClientResponse.ClientId);

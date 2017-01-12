@@ -42,23 +42,5 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="request">The <see cref="VerifyEmailJobRequest"/> containing the information of the user whose email you want verified.</param>
         /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
         Task<Job> SendVerificationEmailAsync(VerifyEmailJobRequest request);
-
-        #region Obsolete Methods
-#pragma warning disable 1591
-
-        [Obsolete("Use GetAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<Job> Get(string id);
-
-        [Obsolete("Use ImportUsersAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<Job> ImportUsers(string connectionId, string fileName, Stream file);
-
-        [Obsolete("Use SendVerificationEmailAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        Task<Job> SendVerificationEmail(VerifyEmailJobRequest request);
-
-#pragma warning restore 1591
-        #endregion
     }
 }

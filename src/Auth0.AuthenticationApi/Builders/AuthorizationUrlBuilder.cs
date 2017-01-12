@@ -1,4 +1,5 @@
 using Auth0.AuthenticationApi.Models;
+using System.Linq;
 
 namespace Auth0.AuthenticationApi.Builders
 {
@@ -53,18 +54,6 @@ namespace Auth0.AuthenticationApi.Builders
         }
 
         /// <summary>
-        /// Adds a new device query string parameter.
-        /// </summary>
-        /// <param name="device">The device.</param>
-        /// <returns>The <see cref="AuthorizationUrlBuilder"/>.</returns>
-        public AuthorizationUrlBuilder WithDevice(string device)
-        {
-            AddQueryString("device", device);
-
-            return this;
-        }
-
-        /// <summary>
         /// Adds a new redirect_uri query string parameter
         /// </summary>
         /// <param name="url">The URL of the redirect URI</param>
@@ -77,13 +66,14 @@ namespace Auth0.AuthenticationApi.Builders
         }
 
         /// <summary>
-        /// Adds a new response_type query string parameter indicating whether a code or a token must be returned.
+        /// Adds a new response_type query string parameter indicating 
+        /// the type of response that the client expects.
         /// </summary>
         /// <param name="responseType">Type of the response.</param>
         /// <returns>The <see cref="AuthorizationUrlBuilder"/>.</returns>
-        public AuthorizationUrlBuilder WithResponseType(AuthorizationResponseType responseType)
+        public AuthorizationUrlBuilder WithResponseType(params AuthorizationResponseType[] responseType)
         {
-            AddQueryString("response_type", responseType.ToString().ToLower());
+            AddQueryString("response_type", string.Join(" ",responseType.Select(x => AuthorizationResponseTypeHelper.ConvertToString(x))));
 
             return this;
         }
@@ -108,6 +98,42 @@ namespace Auth0.AuthenticationApi.Builders
         public AuthorizationUrlBuilder WithState(string state)
         {
             AddQueryString("state", state);
+
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a new audience query string parameter.
+        /// </summary>
+        /// <param name="audience">The audience.</param>
+        /// <returns>The <see cref="AuthorizationUrlBuilder"/>.</returns>
+        public AuthorizationUrlBuilder WithAudience(string audience)
+        {
+            AddQueryString("audience", audience);
+
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a new nonce query string parameter.
+        /// </summary>
+        /// <param name="nonce">The nonce.</param>
+        /// <returns>The <see cref="AuthorizationUrlBuilder"/>.</returns>
+        public AuthorizationUrlBuilder WithNonce(string nonce)
+        {
+            AddQueryString("nonce", nonce);
+
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a new response_mode query string parameter.
+        /// </summary>
+        /// <param name="responseMode">The response mode.</param>
+        /// <returns>The <see cref="AuthorizationUrlBuilder"/>.</returns>
+        public AuthorizationUrlBuilder WithResponseMode(AuthorizationResponseMode responseMode)
+        {
+            AddQueryString("response_mode", AuthorizationResponseModeHelper.ConvertToString(responseMode));
 
             return this;
         }

@@ -34,7 +34,7 @@ namespace Auth0.Core.Http
             return output;
         }
 
-        internal static Uri BuildUri(string baseUrl, string resource, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings)
+        internal static Uri BuildUri(string baseUrl, string resource, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings, bool includeEmptyParameters = false)
         {
             // Replace the URL Segments
             if (urlSegments != null)
@@ -58,7 +58,9 @@ namespace Auth0.Core.Http
                             sb = sb.Append("&");
 
                         if (kvp.Value != null)
-                            return sb.Append(string.Format("{0}={1}", Uri.EscapeUriString(kvp.Key), Uri.EscapeDataString(kvp.Value)));
+                            sb.Append(string.Format("{0}={1}", Uri.EscapeUriString(kvp.Key), Uri.EscapeDataString(kvp.Value)));
+                        else if (includeEmptyParameters)
+                            sb.Append(string.Format("{0}", Uri.EscapeUriString(kvp.Key)));
 
                         return sb;
                     })

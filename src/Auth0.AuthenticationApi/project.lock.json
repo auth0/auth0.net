@@ -20,8 +20,13 @@
         },
         "frameworkAssemblies": [
           "System.Data",
+          "System.IO",
+          "System.Linq",
+          "System.Net.Http",
           "System.Numerics",
           "System.Runtime.Serialization",
+          "System.Threading",
+          "System.Threading.Tasks",
           "System.Xml",
           "System.Xml.Linq"
         ],
@@ -91,6 +96,10 @@
         "type": "project",
         "framework": ".NETPortable,Version=v4.5,Profile=Profile111",
         "dependencies": {
+          "Microsoft.Bcl": "1.1.10",
+          "Microsoft.Bcl.Async": "1.0.168",
+          "Microsoft.Bcl.Build": "1.0.21",
+          "Microsoft.Net.Http": "2.2.29",
           "Newtonsoft.Json": "9.0.1"
         },
         "frameworkAssemblies": [
@@ -114,7 +123,11 @@
           "System.Text.Encoding",
           "System.Text.Encoding.Extensions",
           "System.Threading",
-          "System.Threading.Tasks"
+          "System.Threading.Tasks",
+          "System.Xml",
+          "System.Xml.Linq",
+          "System.Xml.ReaderWriter",
+          "System.Xml.XDocument"
         ],
         "compile": {
           "portable45-net45+win8+wpa81/Auth0.Core.dll": {}
@@ -458,6 +471,7 @@
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
           "Newtonsoft.Json": "9.0.1",
+          "System.Net.Http": "4.1.0",
           "System.Net.Primitives": "4.0.11"
         },
         "compile": {
@@ -2507,7 +2521,10 @@
       "System.Linq",
       "System.Net.Http",
       "System.Numerics",
+      "System.Runtime",
       "System.Runtime.Serialization",
+      "System.Threading",
+      "System.Threading.Tasks",
       "System.Xml",
       "System.Xml.Linq"
     ],

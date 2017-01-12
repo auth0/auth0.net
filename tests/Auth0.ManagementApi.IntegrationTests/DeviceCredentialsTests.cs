@@ -11,7 +11,7 @@ namespace Auth0.ManagementApi.IntegrationTests
     [TestFixture]
     public class DeviceCredentialsTests : TestBase
     {
-        private Core.Client client;
+        private Client client;
         private Connection connection;
         private User user;
 
@@ -64,7 +64,6 @@ namespace Auth0.ManagementApi.IntegrationTests
                 DeviceName = Guid.NewGuid().ToString("N"),
                 DeviceId = Guid.NewGuid().ToString("N"),
                 ClientId = client.ClientId,
-                UserId = user.UserId,
                 Type = "public_key",
                 Value = "new-key-value"
             };

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using Auth0.Core;
 using Auth0.Core.Http;
+using Auth0.ManagementApi.Models;
 
 namespace Auth0.ManagementApi.Clients
 {
@@ -48,25 +49,5 @@ namespace Auth0.ManagementApi.Clients
                     { "to", to.ToString("yyyyMMdd") }
                 }, null, null);
         }
-
-        #region Obsolete Methods
-#pragma warning disable 1591
-
-        [Obsolete("Use GetActiveUsersAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<long> GetActiveUsers()
-        {
-            return GetActiveUsersAsync();
-        }
-
-        [Obsolete("Use GetDailyStatsAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<IList<DailyStatistics>> GetDailyStats(DateTime from, DateTime to)
-        {
-            return GetDailyStatsAsync(from, to);
-        }
-
-#pragma warning restore 1591
-        #endregion
     }
 }

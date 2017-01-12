@@ -43,27 +43,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>Task.</returns>
         public Task CreateAsync(BlacklistedTokenCreateRequest request)
         {
-            return Connection.PostAsync<Core.Client>("blacklists/tokens", request, null, null, null, null, null);
+            return Connection.PostAsync<Client>("blacklists/tokens", request, null, null, null, null, null);
         }
-
-        #region Obsolete Methods
-#pragma warning disable 1591
-
-        [Obsolete("Use CreateAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task Create(BlacklistedTokenCreateRequest request)
-        {
-            return CreateAsync(request);
-        }
-
-        [Obsolete("Use GetAllAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<IList<BlacklistedToken>> GetAll(string aud)
-        {
-            return GetAllAsync(aud);
-        }
-
-#pragma warning restore 1591
-        #endregion
     }
 }

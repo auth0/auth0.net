@@ -10,7 +10,7 @@ namespace Auth0.AuthenticationApi.Builders
         /// </summary>
         /// <param name="baseUrl">The base URL.</param>
         public LogoutUrlBuilder(string baseUrl) 
-            : base(baseUrl, "logout")
+            : base(baseUrl, "v2/logout")
         {
         }
 
@@ -25,5 +25,30 @@ namespace Auth0.AuthenticationApi.Builders
 
             return this;
         }
+
+        /// <summary>
+        /// Adds a client_id query string parameter.
+        /// </summary>
+        /// <param name="clientId">The URL.</param>
+        /// <returns>The <see cref="LogoutUrlBuilder"/>.</returns>
+        public LogoutUrlBuilder WithClientId(string clientId)
+        {
+            AddQueryString("client_id", clientId);
+
+            return this;
+        }
+
+        /// <summary>
+        /// Adds a federated query string parameter.
+        /// </summary>
+        /// <returns>The <see cref="LogoutUrlBuilder"/>.</returns>
+        public LogoutUrlBuilder Federated()
+        {
+            AddQueryString("federated", null);
+
+            return this;
+        }
+
+
     }
 }

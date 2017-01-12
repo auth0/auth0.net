@@ -2087,6 +2087,7 @@
         "framework": ".NETStandard,Version=v1.1",
         "dependencies": {
           "Newtonsoft.Json": "9.0.1",
+          "System.Net.Http": "4.1.0",
           "System.Net.Primitives": "4.0.11"
         },
         "compile": {

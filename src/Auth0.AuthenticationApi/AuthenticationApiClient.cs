@@ -126,13 +126,22 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <summary>
-        /// Given an <see cref="AuthenticationRequest" />, it will do the authentication on the provider and return a <see cref="AuthenticationResponse" />
+        /// Given an <see cref="AuthenticationRequest" />, it will do the authentication on the provider and return an <see cref="AccessTokenResponse"./>
         /// </summary>
         /// <param name="request">The authentication request details containing information regarding the connection, username, password etc.</param>
-        /// <returns>A <see cref="AuthenticationResponse" /> with the access token.</returns>
-        public Task<AuthenticationResponse> AuthenticateAsync(AuthenticationRequest request)
+        /// <returns>An <see cref="AccessTokenResponse" /> with the response.</returns>
+        [Obsolete("Use GetTokenAsync(ResourceOwnerTokenRequest) instead")]
+        public Task<AccessTokenResponse> AuthenticateAsync(AuthenticationRequest request)
         {
-            return Connection.PostAsync<AuthenticationResponse>("oauth/ro", request, null, null, null, null, null);
+            return GetTokenAsync(new ResourceOwnerTokenRequest
+            {
+                ClientId = request.ClientId,
+                ClientSecret = request.ClientSecret,
+                Username = request.Username,
+                Password = request.Password,
+                Realm = request.Realm,
+                Scope = request.Scope
+            });
         }
 
         /// <summary>
@@ -188,41 +197,25 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="request">The <see cref="ExchangeCodeRequest"/> containing the authorization code and other information needed to exchange the code for an access token.</param>
         /// <returns></returns>
-        public Task<AccessToken> ExchangeCodeForAccessTokenAsync(ExchangeCodeRequest request)
+        public Task<AccessTokenResponse> ExchangeCodeForAccessTokenAsync(ExchangeCodeRequest request)
         {
-            return Connection.PostAsync<AccessToken>("oauth/token", null, new Dictionary<string, object>
+            return GetTokenAsync(new AuthorizationCodeTokenRequest
             {
-                {"client_id", request.ClientId},
-                {"redirect_uri", request.RedirectUri},
-                {"client_secret", request.ClientSecret},
-                {"code", request.AuthorizationCode},
-                {"grant_type", "authorization_code"}
-            },
-                null,
-                null,
-                null,
-                null);
-        }
-
-        /// <summary>
-        /// Given the social provider's access token and the connection specified, it will do the authentication on the provider and return an <see cref="AccessToken" />.
-        /// </summary>
-        /// <param name="request">The request.</param>
-        /// <returns>Task&lt;AccessToken&gt;.</returns>
-        /// <remarks>Currently, this endpoint only works for Facebook, Google, Twitter and Weibo.</remarks>
-        public Task<AccessToken> GetAccessTokenAsync(AccessTokenRequest request)
-        {
-            return Connection.PostAsync<AccessToken>("oauth/access_token", request, null, null, null, null, null);
+                ClientId = request.ClientId,
+                ClientSecret = request.ClientSecret,
+                Code = request.AuthorizationCode,
+                RedirectUri = request.RedirectUri
+            });
         }
 
         /// <summary>
         /// Given an existing token, this endpoint will generate a new token signed with the target client secret. This is used to flow the identity of the user from the application to an API or across different APIs that are protected with different secrets.
         /// </summary>
         /// <param name="request">The <see cref="DelegationRequestBase" /> containing details about the request.</param>
-        /// <returns>The <see cref="AccessToken" />.</returns>
-        public Task<AccessToken> GetDelegationTokenAsync(DelegationRequestBase request)
+        /// <returns>The <see cref="AccessTokenResponse" />.</returns>
+        public Task<AccessTokenResponse> GetDelegationTokenAsync(DelegationRequestBase request)
         {
-            return Connection.PostAsync<AccessToken>("delegation", request, null, null, null, null, null);
+            return Connection.PostAsync<AccessTokenResponse>("delegation", request, null, null, null, null, null);
         }
 
         /// <summary>
@@ -267,27 +260,129 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <summary>
-        /// Validates a JSON Web Token (signature and expiration) and returns the user information associated with the user id (sub property) of the token.
+        /// Request an Access Token using the Authorization Code Grant flow.
         /// </summary>
-        /// <param name="idToken">The identifier token.</param>
-        /// <returns>The <see cref="User" /> associated with the token.</returns>
-        public Task<User> GetTokenInfoAsync(string idToken)
+        /// <param name="request">The <see cref="ClientCredentialsTokenRequest"/> containing the information of the request.</param>
+        /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
+        public Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodeTokenRequest request)
         {
-            return Connection.PostAsync<User>("tokeninfo",
-                new
+            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
+            {
+                {"grant_type", "authorization_code"},
+                {"client_id", request.ClientId},
+                {"client_secret", request.ClientSecret},
+                {"code", request.Code},
+                {"redirect_uri", request.RedirectUri},
+            },
+                null,
+                null,
+                null,
+                null);
+        }
+
+        /// <summary>
+        /// Request an Access Token using the Authorization Code (PKCE) flow.
+        /// </summary>
+        /// <param name="request">The <see cref="ClientCredentialsTokenRequest"/> containing the information of the request.</param>
+        /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
+        public Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodePkceTokenRequest request)
+        {
+            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
+            {
+                {"grant_type", "authorization_code"},
+                {"client_id", request.ClientId},
+                {"code", request.Code},
+                {"code_verifier", request.CodeVerifier},
+                {"redirect_uri", request.RedirectUri}
+            },
+                null,
+                null,
+                null,
+                null);
+        }
+
+        /// <summary>
+        /// Request an Access Token using the Client Credentials Grant flow.
+        /// </summary>
+        /// <param name="request">The <see cref="ClientCredentialsTokenRequest"/> containing the information of the request.</param>
+        /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
+        public Task<AccessTokenResponse> GetTokenAsync(ClientCredentialsTokenRequest request)
+        {
+            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
                 {
-                    id_token = idToken
-                }, null, null, null, null, null);
+                    {"grant_type", "client_credentials"},
+                    {"client_id", request.ClientId},
+                    {"client_secret", request.ClientSecret},
+                    {"audience", request.Audience}
+                },
+                null,
+                null,
+                null,
+                null);
+        }
+
+        /// <summary>
+        /// Given a <see cref="RefreshTokenRequest"/>, it will retrieve a refreshed access token from the authorization server.
+        /// </summary>
+        /// <param name="request">The refresh token request details, containing a valid refresh token.</param>
+        /// <returns>The new token issued by the server.</returns>
+        public async Task<AccessTokenResponse> GetTokenAsync(RefreshTokenRequest request)
+        {
+            var parameters = new Dictionary<string, object> {
+                { "grant_type", "refresh_token" },
+                { "refresh_token", request.RefreshToken },
+                { "client_id", request.ClientId },
+                { "client_secret", request.ClientSecret }
+            };
+
+            if (!string.IsNullOrEmpty(request.Scope))
+            {
+                parameters.Add("scope", request.Scope);
+            }
+            return await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, null, null);
+        }
+
+        /// <summary>
+        /// Given an <see cref="ResourceOwnerTokenRequest" />, it will do the authentication on the provider and return an <see cref="AccessTokenResponse"./>
+        /// </summary>
+        /// <param name="request">The authentication request details containing information regarding the username, password etc.</param>
+        /// <returns>An <see cref="AccessTokenResponse" /> with the response.</returns>
+        public Task<AccessTokenResponse> GetTokenAsync(ResourceOwnerTokenRequest request)
+        {
+            var parameters = new Dictionary<string, object>
+            {
+                { "client_id", request.ClientId },
+                { "username", request.Username },
+                { "password", request.Password },
+                { "scope", request.Scope }
+            };
+
+            if (!string.IsNullOrEmpty(request.ClientSecret))
+            {
+                parameters.Add("client_secret", request.ClientSecret);
+            }
+
+            if (string.IsNullOrEmpty(request.Realm))
+            {
+                parameters.Add("grant_type", "password");
+            }
+            else
+            {
+                parameters.Add("grant_type", "http://auth0.com/oauth/grant-type/password-realm");
+                parameters.Add("realm", request.Realm);
+            }
+
+            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, null, null);
         }
 
         /// <summary>
         /// Returns the user information based on the Auth0 access token (obtained during login).
         /// </summary>
         /// <param name="accessToken">The access token.</param>
-        /// <returns>The <see cref="User" /> associated with the token.</returns>
-        public Task<User> GetUserInfoAsync(string accessToken)
+        /// <returns>The <see cref="UserInfo"/> associated with the token.</returns>
+        public Task<UserInfo> GetUserInfoAsync(string accessToken)
         {
-            return Connection.GetAsync<User>("userinfo", null, null, new Dictionary<string, object>
+            return Connection.GetAsync<UserInfo>("userinfo", null, null, new Dictionary<string, object>
             {
                 {"Authorization", string.Format("Bearer {0}", accessToken)}
             });
@@ -380,184 +475,5 @@ namespace Auth0.AuthenticationApi
                 HtmlForm = await Connection.PostAsync<string>("usernamepassword/login", request, null, null, null, null, null).ConfigureAwait(false)
             };
         }
-
-        #region Obsolete Methods
-#pragma warning disable 1591
-
-        [Obsolete("Use AuthenticateAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<AuthenticationResponse> Authenticate(AuthenticationRequest request)
-        {
-            return Connection.PostAsync<AuthenticationResponse>("oauth/ro", request, null, null, null, null, null);
-        }
-
-        [Obsolete("Use ChangePasswordAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<string> ChangePassword(ChangePasswordRequest request)
-        {
-            return Connection.PostAsync<string>("dbconnections/change_password", request, null, null, null, null, null);
-        }
-
-        [Obsolete("Use ExchangeCodeForAccessTokenAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<AccessToken> ExchangeCodeForAccessToken(ExchangeCodeRequest request)
-        {
-            return Connection.PostAsync<AccessToken>("oauth/token", null, new Dictionary<string, object>
-            {
-                {"client_id", request.ClientId},
-                {"redirect_uri", request.RedirectUri},
-                {"client_secret", request.ClientSecret},
-                {"code", request.AuthorizationCode},
-                {"grant_type", "authorization_code"}
-            },
-                null,
-                null,
-                null,
-                null);
-        }
-
-        [Obsolete("Use GetAccessTokenAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<AccessToken> GetAccessToken(AccessTokenRequest request)
-        {
-            return Connection.PostAsync<AccessToken>("oauth/access_token", request, null, null, null, null, null);
-        }
-
-        [Obsolete("Use GetDelegationTokenAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<AccessToken> GetDelegationToken(DelegationRequestBase request)
-        {
-            return Connection.PostAsync<AccessToken>("delegation", request, null, null, null, null, null);
-        }
-
-        [Obsolete("Use GetImpersonationUrlAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public async Task<Uri> GetImpersonationUrl(ImpersonationRequest request)
-        {
-            string url = await Connection.PostAsync<string>("users/{impersonate_id}/impersonate",
-                new
-                {
-                    protocol = request.Protocol,
-                    impersonator_id = request.ImpersonatorId,
-                    client_id = request.ClientId,
-                    response_type = request.ResponseType,
-                    state = request.State
-                }, null, null,
-                new Dictionary<string, string>
-                {
-                    {"impersonate_id", request.ImpersonateId}
-                },
-                new Dictionary<string, object>
-                {
-                    {"Authorization", string.Format("Bearer {0}", request.Token)}
-                }, null);
-
-            return new Uri(url);
-        }
-
-        [Obsolete("Use GetSamlMetadataAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<string> GetSamlMetadata(string clientId)
-        {
-            return Connection.GetAsync<string>("wsfed/{clientid}", new Dictionary<string, string>
-            {
-                {"clientid", clientId}
-            }, null, null);
-        }
-
-        [Obsolete("Use GetTokenInfoAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<User> GetTokenInfo(string idToken)
-        {
-            return Connection.PostAsync<User>("tokeninfo",
-                new
-                {
-                    id_token = idToken
-                }, null, null, null, null, null);
-        }
-
-        [Obsolete("Use GetUserInfoAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<User> GetUserInfo(string accessToken)
-        {
-            return Connection.GetAsync<User>("userinfo", null, null, new Dictionary<string, object>
-            {
-                {"Authorization", string.Format("Bearer {0}", accessToken)}
-            });
-        }
-
-        [Obsolete("Use GetWsFedMetadataAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<string> GetWsFedMetadata()
-        {
-            return Connection.GetAsync<string>("wsfed/FederationMetadata/2007-06/FederationMetadata.xml", null, null, null);
-        }
-
-        [Obsolete("Use SignupUserAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<SignupUserResponse> SignupUser(SignupUserRequest request)
-        {
-            return Connection.PostAsync<SignupUserResponse>("dbconnections/signup", request, null, null, null, null, null);
-        }
-
-        [Obsolete("Use StartPasswordlessEmailFlowAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<PasswordlessEmailResponse> StartPasswordlessEmailFlow(PasswordlessEmailRequest request)
-        {
-            return Connection.PostAsync<PasswordlessEmailResponse>("passwordless/start",
-                new
-                {
-                    client_id = request.ClientId,
-                    connection = "email",
-                    email = request.Email,
-                    send = request.Type.ToString().ToLower(),
-                    authParams = request.AuthenticationParameters
-                },
-                null, null, null, null, null);
-        }
-
-        [Obsolete("Use StartPasswordlessSmsFlowAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public Task<PasswordlessSmsResponse> StartPasswordlessSmsFlow(PasswordlessSmsRequest request)
-        {
-            return Connection.PostAsync<PasswordlessSmsResponse>("passwordless/start",
-                new
-                {
-                    client_id = request.ClientId,
-                    connection = "sms",
-                    phone_number = request.PhoneNumber
-                },
-                null, null, null, null, null);
-        }
-
-        [Obsolete("Use UnlinkUserAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public async Task UnlinkUser(UnlinkUserRequest request)
-        {
-            await Connection.PostAsync<object>("unlink", request, null, null, null, null, null);
-        }
-
-        [Obsolete("Use UsernamePasswordLoginAsync instead")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public async Task<UsernamePasswordLoginResponse> UsernamePasswordLogin(UsernamePasswordLoginRequest request)
-        {
-            if (request != null && string.IsNullOrEmpty(request.Tenant) && baseUri.Host.Contains("."))
-            {
-                request.Tenant = baseUri.Host.Split('.')[0];
-            }
-
-            if (request != null && string.IsNullOrEmpty(request.ResponseType))
-            {
-                request.ResponseType = "code";
-            }
-
-            return new UsernamePasswordLoginResponse()
-            {
-                HtmlForm = await Connection.PostAsync<string>("usernamepassword/login", request, null, null, null, null, null).ConfigureAwait(false)
-            };
-        }
-
-#pragma warning restore 1591
-        #endregion
     }
 }
