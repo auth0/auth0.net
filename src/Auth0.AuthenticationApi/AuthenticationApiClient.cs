@@ -206,18 +206,6 @@ namespace Auth0.AuthenticationApi
                 Code = request.AuthorizationCode,
                 RedirectUri = request.RedirectUri
             });
-            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
-            {
-                {"client_id", request.ClientId},
-                {"redirect_uri", request.RedirectUri},
-                {"client_secret", request.ClientSecret},
-                {"code", request.AuthorizationCode},
-                {"grant_type", "authorization_code"}
-            },
-                null,
-                null,
-                null,
-                null);
         }
 
         /// <summary>
@@ -292,6 +280,11 @@ namespace Auth0.AuthenticationApi
                 null);
         }
 
+        /// <summary>
+        /// Request an Access Token using the Authorization Code (PKCE) flow.
+        /// </summary>
+        /// <param name="request">The <see cref="ClientCredentialsTokenRequest"/> containing the information of the request.</param>
+        /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
         public Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodePkceTokenRequest request)
         {
             return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
