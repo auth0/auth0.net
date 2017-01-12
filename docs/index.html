@@ -82,20 +82,20 @@
 <h3 id="basic-usage">Basic Usage</h3>
 <p>Ensure that you include the Authentication API namespace in your source code file:</p>
 <pre><code>using Auth0.AuthenticationApi;
-</code></pre><p>To start using the API, you need to create an instance of the <a class="xref" href="api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient">AuthenticationApiClient</a> class, passing the URL of your Auth0 instance:</p>
+</code></pre><p>To start using the API, you need to create an instance of the @Auth0.AuthenticationApi.AuthenticationApiClient class, passing the URL of your Auth0 instance:</p>
 <pre><code>var client = new AuthenticationApiClient(new Uri(&quot;https://YOUR_AUTH0_DOMAIN/&quot;));
 </code></pre><blockquote><p>You can obtain your Auth0 Domain from the <a href="https://manage.auth0.com/#/applications">Application section of the Auth0 Dashboard</a> by looking at the settings for your particular application. </p>
 </blockquote>
-<p>For more details on the various methods that are available, please refer to the documentation of the <a class="xref" href="api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient">AuthenticationApiClient</a> class.</p>
+<p>For more details on the various methods that are available, please refer to the documentation of the @Auth0.AuthenticationApi.AuthenticationApiClient class.</p>
 <h3 id="using-url-builders">Using URL Builders</h3>
 <p>Several helper methods are available to allow you to build URLs that you can redirect your user to for example to build up an authorization URL.<br>These methods follow a fluent syntax, meaning that you can keep chaining method calls together to build up the URL.
-Finally, to build the actual URL, you will need to call the <a class="xref" href="api/Auth0.AuthenticationApi.Builders.UrlBuilderBase-1.html#Auth0_AuthenticationApi_Builders_UrlBuilderBase_1_Build">Build()</a> method.</p>
+Finally, to build the actual URL, you will need to call the @Auth0.AuthenticationApi.Builders.UrlBuilderBase`1.Build method.</p>
 <p>The following are the list of URL builder helper methods:</p>
 <ul>
-<li><a class="xref" href="api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_BuildAuthorizationUrl">BuildAuthorizationUrl()</a></li>
-<li><a class="xref" href="api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_BuildLogoutUrl">BuildLogoutUrl()</a></li>
-<li><a class="xref" href="api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_BuildSamlUrl_System_String_">BuildSamlUrl(String)</a></li>
-<li><a class="xref" href="api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_BuildWsFedUrl">BuildWsFedUrl()</a></li>
+<li>@Auth0.AuthenticationApi.AuthenticationApiClient.BuildAuthorizationUrl</li>
+<li>@Auth0.AuthenticationApi.AuthenticationApiClient.BuildLogoutUrl</li>
+<li>@Auth0.AuthenticationApi.AuthenticationApiClient.BuildSamlUrl(System.String)</li>
+<li>@Auth0.AuthenticationApi.AuthenticationApiClient.BuildWsFedUrl</li>
 </ul>
 <p>For example, to build up an authorization URL, you can write the following code:</p>
 <pre><code class="lang-csharp">var client = new AuthenticationApiClient(new Uri(&quot;https://YOUR_AUTH0_DOMAIN/&quot;));
@@ -127,18 +127,18 @@ var authorizationUrl = client.BuildAuthorizationUrl()
 <h3 id="basic-usage-1">Basic Usage</h3>
 <p>Ensure that you include the Management API namespace in your source code file:</p>
 <pre><code>using Auth0.ManagementApi;
-</code></pre><p>To start using the API, you need to create an instance of the <a class="xref" href="api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient">ManagementApiClient</a> class, passing a token and the URL to the Management API of your Auth0 instance:</p>
+</code></pre><p>To start using the API, you need to create an instance of the @Auth0.ManagementApi.ManagementApiClient class, passing a token and the URL to the Management API of your Auth0 instance:</p>
 <pre><code>var client = new ManagementApiClient(&quot;token&quot;, new Uri(&quot;https://YOUR_AUTH0_DOMAIN/api/v2&quot;));
 </code></pre><blockquote><p>You can obtain your Auth0 Domain from the <a href="https://manage.auth0.com/#/applications">Application section of the Auth0 Dashboard</a> by looking at the settings for your particular application. </p>
 </blockquote>
 <div class="NOTE"><h5>Note</h5><p>For details on how to generate the token, please see the &quot;Getting an API token&quot; section of the <a href="https://auth0.com/docs/api/v2">Management API documentation</a></p>
 </div>
-<p>For more details on the various methods that are available, please refer to the documentation of the <a class="xref" href="api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient">ManagementApiClient</a> class.</p>
+<p>For more details on the various methods that are available, please refer to the documentation of the @Auth0.ManagementApi.ManagementApiClient class.</p>
 <h3 id="organization-of-the-managementapiclient">Organization of the ManagementApiClient</h3>
 <p>All methods for the Management API are grouped together in a similar fashion as what you will find when browsing the <a href="https://auth0.com/docs/api/v2">Management API documentation</a>.     </p>
 <p>In the screenshot of the API documentation below you can see that the API methods are organized by functional group, e.g Clients, Connections, Device Credentials, etc.</p>
 <p><img src="images/api-docs-structure.png" alt=""></p>
-<p>The .NET Client SDK for the Management API also groups the API methods according to these functional groups. The functional groups are available as properties on the <code>ManagementApiClient</code> class, so you will for example find all Clients related API calls under the <a class="xref" href="api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_Clients">Clients</a> property. </p>
+<p>The .NET Client SDK for the Management API also groups the API methods according to these functional groups. The functional groups are available as properties on the <code>ManagementApiClient</code> class, so you will for example find all Clients related API calls under the @Auth0.ManagementApi.ManagementApiClient.Clients property. </p>
 <p>Below is an example of how you can get a list of all clients:</p>
 <pre><code>var apiClient = new ManagementApiClient(&quot;token&quot;, new Uri(&quot;https://YOUR_AUTH0_DOMAIN/api/v2&quot;));
 var allClients = await apiClient.Clients.GetAllAsync();
@@ -154,7 +154,7 @@ var allClients = await apiClient.Clients.GetAllAsync();
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/auth0/auth0.net/blob/v4/docs-source/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/auth0/auth0.net/blob/master/docs-source/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
