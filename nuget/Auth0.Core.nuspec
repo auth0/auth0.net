@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Auth0.Core</id>
-    <version>3.7.0</version>
+    <version>4.0.0-beta1</version>
     <authors>Auth0</authors>
     <owners>Auth0</owners>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
@@ -12,9 +12,12 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Core classes for the Auth0 API</description>
     <releaseNotes>
+      Version 4.0.0
+      - Major version to split dependencies between Authentication and Management API SDKs
+
       Version 3.7.0
       - Support for profileData on LinkedIdentities
-     
+
       Version 3.6.0
       - Optimized usage of HttpClient
 
@@ -76,5 +79,6 @@
     <file src="..\src\Auth0.Core\bin\Release\netstandard1.1\Auth0.Core.dll" target="lib\netstandard1.1" />
     <file src="..\src\Auth0.Core\bin\Release\netstandard1.1\Auth0.Core.pdb" target="lib\netstandard1.1" />
     <file src="..\src\Auth0.Core\bin\Release\netstandard1.1\Auth0.Core.XML" target="lib\netstandard1.1" />
+    <file src="readme.txt" target="" />
   </files>
 </package>

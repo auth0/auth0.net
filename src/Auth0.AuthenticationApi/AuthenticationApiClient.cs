@@ -209,6 +209,7 @@ namespace Auth0.AuthenticationApi
             });
         }
 
+        /*
         /// <summary>
         /// Given an existing token, this endpoint will generate a new token signed with the target client secret. This is used to flow the identity of the user from the application to an API or across different APIs that are protected with different secrets.
         /// </summary>
@@ -218,6 +219,7 @@ namespace Auth0.AuthenticationApi
         {
             return Connection.PostAsync<AccessTokenResponse>("delegation", request, null, null, null, null, null);
         }
+        */
 
         /// <summary>
         /// Generates a link that can be used once to log in as a specific user.

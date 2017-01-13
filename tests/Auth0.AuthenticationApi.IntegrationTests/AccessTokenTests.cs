@@ -64,36 +64,36 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 await managementApiClient.Connections.DeleteAsync(connection.Id);
         }
 
-        [Test, Explicit]
-        public async Task Can_get_delegation_token()
-        {
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+        //[Test, Explicit]
+        //public async Task Can_get_delegation_token()
+        //{
+        //    var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
             
-            // First get the access token
-            var token = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
-            {
-                ClientId = GetVariable("AUTH0_CLIENT_ID"),
-                ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
-                Realm = connection.Name,
-                Username = newUser.Email,
-                Password = "password",
-                Scope = "openid"
-            });
+        //    // First get the access token
+        //    var token = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+        //    {
+        //        ClientId = GetVariable("AUTH0_CLIENT_ID"),
+        //        ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
+        //        Realm = connection.Name,
+        //        Username = newUser.Email,
+        //        Password = "password",
+        //        Scope = "openid"
+        //    });
 
-            // Then request the delegation token
-            var delegationToken = await authenticationApiClient.GetDelegationTokenAsync(new IdTokenDelegationRequest(
-                GetVariable("AUTH0_CLIENT_ID"),
-                GetVariable("AUTH0_CLIENT_ID"),
-                token.IdToken)
-            {
-                Scope = "openid",
-                GrantType = "urn:ietf:params:oauth:grant-type:jwt-bearer",
-                ApiType = "app"
-            });
+        //    // Then request the delegation token
+        //    var delegationToken = await authenticationApiClient.GetDelegationTokenAsync(new IdTokenDelegationRequest(
+        //        GetVariable("AUTH0_CLIENT_ID"),
+        //        GetVariable("AUTH0_CLIENT_ID"),
+        //        token.IdToken)
+        //    {
+        //        Scope = "openid",
+        //        GrantType = "urn:ietf:params:oauth:grant-type:jwt-bearer",
+        //        ApiType = "app"
+        //    });
 
-            delegationToken.Should().NotBeNull();
-            delegationToken.IdToken.Should().NotBeNull();
-        }
+        //    delegationToken.Should().NotBeNull();
+        //    delegationToken.IdToken.Should().NotBeNull();
+        //}
 
         [Test]
         public async Task Can_obtain_user_info()

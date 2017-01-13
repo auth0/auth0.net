@@ -63,12 +63,14 @@ namespace Auth0.AuthenticationApi
         /// <returns></returns>
         Task<AccessTokenResponse> ExchangeCodeForAccessTokenAsync(ExchangeCodeRequest request);
 
+        /*
         /// <summary>
         /// Given an existing token, this endpoint will generate a new token signed with the target client secret. This is used to flow the identity of the user from the application to an API or across different APIs that are protected with different secrets.
         /// </summary>
         /// <param name="request">The <see cref="DelegationRequestBase"/> containing details about the request.</param>
         /// <returns>The <see cref="AccessTokenResponse"/>.</returns>
-        Task<AccessTokenResponse> GetDelegationTokenAsync(DelegationRequestBase request);
+        //Task<AccessTokenResponse> GetDelegationTokenAsync(DelegationRequestBase request);
+        */
 
         /// <summary>
         /// Generates a link that can be used once to log in as a specific user.

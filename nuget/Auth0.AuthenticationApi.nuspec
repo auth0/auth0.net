@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Auth0.AuthenticationApi</id>
-    <version>3.7.0</version>
+    <version>4.0.0-beta1</version>
     <authors>Auth0</authors>
     <owners>Auth0</owners>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
@@ -12,6 +12,9 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Client library for the Auth0 Authentication API</description>
     <releaseNotes>
+      Version 4.0.0
+      - Support for OIDC-conformant clients
+
       Version 3.7.0
       - Corrects the type for AuthenticationParams in passwordless/start
 
@@ -67,18 +70,18 @@
     <dependencies>
       <group targetFramework="net45">
         <dependency id="Newtonsoft.Json" version="9.0.1" />
-        <dependency id="Auth0.Core" version="3.7.0" />
+        <dependency id="Auth0.Core" version="4.0.0-beta1" />
       </group>
 
       <group targetFramework="portable-net45+win8+wpa81">
         <dependency id="Newtonsoft.Json" version="9.0.1" />
-        <dependency id="Auth0.Core" version="3.7.0" />
+        <dependency id="Auth0.Core" version="4.0.0-beta1" />
         <dependency id="Microsoft.Net.Http" version="2.2.29" />
       </group>
 
       <group targetFramework="netstandard1.1">
         <dependency id="Newtonsoft.Json" version="9.0.1" />
-        <dependency id="Auth0.Core" version="3.7.0" />
+        <dependency id="Auth0.Core" version="4.0.0-beta1" />
         <dependency id="System.Net.Http" version="4.1.0" />
         <dependency id="System.Net.Primitives" version="4.0.11" />
       </group>
@@ -100,5 +103,6 @@
           target="lib\netstandard1.1" />
     <file src="..\src\Auth0.AuthenticationApi\bin\Release\netstandard1.1\Auth0.AuthenticationApi.XML"
           target="lib\netstandard1.1" />
+    <file src="readme.txt" target="" />
   </files>
 </package>
