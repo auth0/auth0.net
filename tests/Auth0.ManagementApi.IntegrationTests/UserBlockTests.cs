@@ -7,20 +7,18 @@ using Auth0.Core.Exceptions;
 using Auth0.ManagementApi.Models;
 using Auth0.Tests.Shared;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    [TestFixture]
-    public class UserBlockTests : TestBase
+    public class UserBlockTests : TestBase, IAsyncLifetime
     {
         private ManagementApiClient apiClient;
         private AuthenticationApiClient authenticationApiClient;
         private Connection connection;
         private User user;
 
-        [SetUp]
-        public async Task SetUp()
+        public async Task InitializeAsync()
         {
             string token = await GenerateManagementApiToken();
 
@@ -74,14 +72,13 @@ namespace Auth0.ManagementApi.IntegrationTests
 
         }
 
-        [TearDown]
-        public async Task TearDown()
+        public async Task DisposeAsync()
         {
             await apiClient.Users.DeleteAsync(user.UserId);
             await apiClient.Connections.DeleteAsync(connection.Id);
         }
 
-        [Test, Ignore("Need to fix user blocks tests")]
+        [Fact(Skip = "Need to fix user blocks tests")]
         public async Task Test_user_blocks_by_identifier()
         {
             // Check we should have 1 block for the user
@@ -97,7 +94,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         }
 
 
-        [Test, Ignore("Need to fix user blocks tests")]
+        [Fact(Skip = "Need to fix user blocks tests")]
         public async Task Test_user_blocks_by_userid()
         {
             // Check we should have 1 block for the user

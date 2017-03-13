@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Threading.Tasks;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 using Auth0.Tests.Shared;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    [TestFixture]
     public class StatsTests : TestBase
     {
-        [Test]
+        [Fact]
         public async Task Test_stats_sequence()
         {
             string token = await GenerateManagementApiToken();

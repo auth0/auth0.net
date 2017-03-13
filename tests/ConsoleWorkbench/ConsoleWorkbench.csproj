@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Auth0.AuthenticationApi\Auth0.AuthenticationApi.csproj" />
+    <ProjectReference Include="..\..\src\Auth0.Core\Auth0.Core.csproj" />
+    <ProjectReference Include="..\..\src\Auth0.ManagementApi\Auth0.ManagementApi.csproj" />
+  </ItemGroup>
+
+</Project>

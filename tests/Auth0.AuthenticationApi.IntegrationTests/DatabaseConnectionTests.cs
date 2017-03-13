@@ -1,23 +1,20 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Auth0.AuthenticationApi.Models;
-using Auth0.Core;
 using Auth0.ManagementApi;
 using Auth0.ManagementApi.Models;
 using Auth0.Tests.Shared;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Auth0.AuthenticationApi.IntegrationTests
 {
-    [TestFixture]
-    public class DatabaseConnectionTests : TestBase
+    public class DatabaseConnectionTests : TestBase, IAsyncLifetime
     {
         private ManagementApiClient managementApiClient;
         private Connection connection;
 
-        [SetUp]
-        public async Task SetUp()
+        public async Task InitializeAsync()
         {
             string token = await GenerateManagementApiToken();
 
@@ -32,14 +29,13 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             });
         }
 
-        [TearDown]
-        public async Task TearDown()
+        public async Task DisposeAsync()
         {
             if (connection != null)
                 await managementApiClient.Connections.DeleteAsync(connection.Id);
         }
 
-        [Test]
+        [Fact]
         public async Task Can_signup_user_and_change_password()
         {
             // Arrange

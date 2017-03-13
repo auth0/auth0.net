@@ -5,20 +5,18 @@ using Auth0.Core;
 using Auth0.Core.Exceptions;
 using Auth0.ManagementApi.Models;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 using Auth0.Tests.Shared;
 using System.Linq;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    [TestFixture]
-    public class UsersTests : TestBase
+    public class UsersTests : TestBase, IAsyncLifetime
     {
         private ManagementApiClient apiClient;
         private Connection connection;
 
-        [SetUp]
-        public async Task SetUp()
+        public async Task InitializeAsync()
         {
             string token = await GenerateManagementApiToken();
 
@@ -33,13 +31,12 @@ namespace Auth0.ManagementApi.IntegrationTests
             });
         }
 
-        [TearDown]
-        public async Task TearDown()
+        public async Task DisposeAsync()
         {
             await apiClient.Connections.DeleteAsync(connection.Id);
         }
 
-        [Test]
+        [Fact]
         public async Task Test_users_crud_sequence()
         {
             // Get all the users
@@ -94,17 +91,17 @@ namespace Auth0.ManagementApi.IntegrationTests
             getFunc.ShouldThrow<ApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_user");
         }
 
-        [Test]
-        [TestCase(null)]
-        [TestCase("")]
-        [TestCase("  ")]
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData("  ")]
         public void Attempting_to_delete_users_with_null_or_empty_id_should_throw(string id)
         {
             Func<Task> deleteFunc = async () => await apiClient.Users.DeleteAsync(id);
             deleteFunc.ShouldThrow<ArgumentException>().And.Message.Should().Be("Value cannot be null or whitespace.\r\nParameter name: id");
         }
 
-        [Test]
+        [Fact]
         public async Task Test_user_blocking()
         {
             // Add a new user, and ensure user is not blocked
@@ -138,7 +135,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             await apiClient.Users.DeleteAsync(user.UserId);
         }
 
-        [Test]
+        [Fact]
         public async Task Test_deleting_user_from_connection()
         {
             // Add a new user, and ensure user is not blocked
@@ -156,7 +153,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             await apiClient.Connections.DeleteUserAsync(connection.Id, newUserRequest.Email);
         }
 
-        [Test]
+        [Fact]
         public async Task Test_pagination_totals_deserialize_correctly()
         {
             var users = await apiClient.Users.GetAllAsync(includeTotals: true);
@@ -165,7 +162,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             users.Paging.Should().NotBeNull();
         }
 
-        [Test, Explicit]
+        [Fact(Skip = "Run manually")]
         public async Task Can_update_user_metadata()
         {
             // Add a new user with metadata
@@ -201,7 +198,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             await apiClient.Users.DeleteAsync(user.UserId);
         }
 
-        [Test]
+        [Fact]
         public async Task Test_logs_deserialization_without_totals()
         {
             var newUserRequest = new UserCreateRequest
@@ -221,7 +218,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             logEntries.Paging.Should().BeNull();
         }
 
-        [Test]
+        [Fact]
         public async Task Test_logs_deserialization_with_totals()
         {
             var newUserRequest = new UserCreateRequest
@@ -241,7 +238,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             logEntries.Paging.Should().NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public async Task Can_read_profileData()
         {
             // 'profileData' is available on linked identities,

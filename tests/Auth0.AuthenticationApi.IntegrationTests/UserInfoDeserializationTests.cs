@@ -4,15 +4,14 @@ using Auth0.Core;
 using FluentAssertions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using NUnit.Framework;
+using Xunit;
 
 namespace Auth0.AuthenticationApi.IntegrationTests
 {
-    [TestFixture]
     public class UserInfoDeserializationTests
     {
 
-        [Test]
+        [Fact]
         public void Can_read_standard_claims()
         {
             var jsonPayload = @"{
@@ -73,19 +72,19 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             userInfo.UpdatedAt.Should().Be(new DateTime(2009, 1, 29, 12, 48, 53));
         }
 
-        [Test]
+        [Fact]
         public void Missing_values_are_null()
         {
             var jsonPayload = @"{ 'sub': '123456'}";
             var userInfo = GetUserInfoFromJsonPayload(jsonPayload);
-            Assert.IsNull(userInfo.FullName);
-            Assert.IsNull(userInfo.EmailVerified);
-            Assert.IsNull(userInfo.PhoneNumberVerified);
-            Assert.IsNull(userInfo.Address);
-            Assert.IsNull(userInfo.UpdatedAt);
+            Assert.Null(userInfo.FullName);
+            Assert.Null(userInfo.EmailVerified);
+            Assert.Null(userInfo.PhoneNumberVerified);
+            Assert.Null(userInfo.Address);
+            Assert.Null(userInfo.UpdatedAt);
         }
 
-        [Test]
+        [Fact]
         public void Can_read_additional_claims()
         {
             var jsonPayload = @"{
@@ -98,9 +97,9 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
             var groups = (JArray)userInfo.AdditionalClaims["http://acme.com/claims/groupIds"];
 
-            Assert.AreEqual(2, groups.Count);
-            Assert.AreEqual("bobsdepartment", (string)groups[0]);
-            Assert.AreEqual("administrators", (string)groups[1]);
+            Assert.Equal(2, groups.Count);
+            Assert.Equal("bobsdepartment", (string)groups[0]);
+            Assert.Equal("administrators", (string)groups[1]);
 
             dynamic manager = userInfo.AdditionalClaims["http://acme.com/claims/manager"];
             string managerName = manager.name;
@@ -111,9 +110,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
         private UserInfo GetUserInfoFromJsonPayload(string jsonPayload)
         {
-            var userInfo = JsonConvert.DeserializeObject<UserInfo>(jsonPayload);
-
-            return userInfo;
+            return JsonConvert.DeserializeObject<UserInfo>(jsonPayload);
         }
     }
 }

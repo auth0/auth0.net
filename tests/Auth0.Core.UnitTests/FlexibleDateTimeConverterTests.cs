@@ -1,19 +1,15 @@
-﻿using Auth0.Core.Serialization;
+﻿using System;
+using System.Linq;
+using Auth0.Core.Serialization;
 using FluentAssertions;
 using Newtonsoft.Json;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+using Xunit;
 
 namespace Auth0.Core.UnitTests
 {
-    [TestFixture]
     public class FlexibleDateTimeConverterTests
     {
-        [Test]
+        [Fact]
         public void HandlesIsoStringDates()
         {
 
@@ -23,7 +19,7 @@ namespace Auth0.Core.UnitTests
             result.DateValue.Should().Be(new DateTime(2017, 1, 3, 19, 23, 3, 807));
         }
 
-        [Test]
+        [Fact]
         public void HandlesEpochDates()
         {
             var json = "{ \"DateValue\": 1483650127 }";
@@ -31,7 +27,7 @@ namespace Auth0.Core.UnitTests
             result.DateValue.Should().Be(new DateTime(2017, 1, 5, 21, 2, 7));
         }
 
-        [Test]
+        [Fact]
         public void HandlesMissingValues()
         {
             var json = "{}";

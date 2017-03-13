@@ -7,7 +7,6 @@ using Auth0.Core.Collections;
 using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Serialization;
-using JetBrains.Annotations;
 
 namespace Auth0.ManagementApi.Clients
 {
@@ -50,7 +49,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="id">The id of the user to delete.</param>
         /// <returns>Task.</returns>
-        public Task DeleteAsync([NotNull] string id)
+        public Task DeleteAsync(string id)
         {
             if (string.IsNullOrWhiteSpace(id))
                 throw new ArgumentException("Value cannot be null or whitespace.", nameof(id));

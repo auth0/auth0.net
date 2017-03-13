@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{D3999165-E653-4700-91EE-130A27450FB5}"
 	ProjectSection(SolutionItems) = preProject
@@ -16,26 +16,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C9550C3F-90E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0EBAD055-E431-443B-8212-411D1AFE3796}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Auth0.Core", "src\Auth0.Core\Auth0.Core.xproj", "{0F45514D-6CF8-4962-8FED-BE000AE6FD09}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Auth0.ManagementApi", "src\Auth0.ManagementApi\Auth0.ManagementApi.xproj", "{78B2102E-B5F2-4C35-A485-BFAC3576C6DD}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Auth0.AuthenticationApi", "src\Auth0.AuthenticationApi\Auth0.AuthenticationApi.xproj", "{DB8AFC1D-2A56-4CF4-9F54-7B7511B674ED}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ConsoleWorkbench", "tests\ConsoleWorkbench\ConsoleWorkbench.xproj", "{069CF38F-891B-4106-88B8-DE76D740EAC3}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4936DB52-593A-4670-9557-3A190EFDFE24}"
 	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
 		README.md = README.md
 		v4-changes.md = v4-changes.md
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Auth0.Core.UnitTests", "tests\Auth0.Core.UnitTests\Auth0.Core.UnitTests.xproj", "{49CFAA66-C4A3-45DA-AD10-DBE9B5B35F2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth0.Core", "src\Auth0.Core\Auth0.Core.csproj", "{0F45514D-6CF8-4962-8FED-BE000AE6FD09}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Auth0.AuthenticationApi.IntegrationTests", "tests\Auth0.AuthenticationApi.IntegrationTests\Auth0.AuthenticationApi.IntegrationTests.xproj", "{72307777-1064-4E95-95FC-957FBDF117B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth0.ManagementApi", "src\Auth0.ManagementApi\Auth0.ManagementApi.csproj", "{78B2102E-B5F2-4C35-A485-BFAC3576C6DD}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Auth0.ManagementApi.IntegrationTests", "tests\Auth0.ManagementApi.IntegrationTests\Auth0.ManagementApi.IntegrationTests.xproj", "{AE75D5CF-1AB0-4630-B53C-EA6C7347A114}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth0.AuthenticationApi", "src\Auth0.AuthenticationApi\Auth0.AuthenticationApi.csproj", "{DB8AFC1D-2A56-4CF4-9F54-7B7511B674ED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleWorkbench", "tests\ConsoleWorkbench\ConsoleWorkbench.csproj", "{069CF38F-891B-4106-88B8-DE76D740EAC3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth0.Core.UnitTests", "tests\Auth0.Core.UnitTests\Auth0.Core.UnitTests.csproj", "{49CFAA66-C4A3-45DA-AD10-DBE9B5B35F2B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth0.AuthenticationApi.IntegrationTests", "tests\Auth0.AuthenticationApi.IntegrationTests\Auth0.AuthenticationApi.IntegrationTests.csproj", "{72307777-1064-4E95-95FC-957FBDF117B2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth0.ManagementApi.IntegrationTests", "tests\Auth0.ManagementApi.IntegrationTests\Auth0.ManagementApi.IntegrationTests.csproj", "{AE75D5CF-1AB0-4630-B53C-EA6C7347A114}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

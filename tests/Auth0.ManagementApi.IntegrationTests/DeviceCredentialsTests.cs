@@ -1,22 +1,19 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Auth0.Core;
 using Auth0.ManagementApi.Models;
-using FluentAssertions;
-using NUnit.Framework;
 using Auth0.Tests.Shared;
+using FluentAssertions;
+using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    [TestFixture]
-    public class DeviceCredentialsTests : TestBase
+    public class DeviceCredentialsTests : TestBase, IAsyncLifetime
     {
         private Client client;
         private Connection connection;
         private User user;
 
-        [SetUp]
-        public async Task Initialize()
+        public async Task InitializeAsync()
         {
             var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_DEVICE_CREDENTIALS"), new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
@@ -39,8 +36,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             });
         }
 
-        [TearDown]
-        public async Task Cleanup()
+        public async Task DisposeAsync()
         {
             var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_DEVICE_CREDENTIALS"), new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
@@ -49,8 +45,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             await apiClient.Users.DeleteAsync(user.UserId);
         }
 
-        [Test]
-        [Ignore("Damn, how difficult is it to get the correct token combinations for this...?")]
+        [Fact(Skip = "Damn, how difficult is it to get the correct token combinations for this...?")]
         public async Task Test_device_credentials_crud_sequence()
         {
             var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_DEVICE_CREDENTIALS"), new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));

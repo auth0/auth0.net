@@ -3,23 +3,21 @@ using System.Threading.Tasks;
 using Auth0.AuthenticationApi.Models;
 using Auth0.Tests.Shared;
 using FluentAssertions;
-using NUnit.Framework;
 using Auth0.ManagementApi;
 using Auth0.Core;
 using Auth0.ManagementApi.Models;
+using Xunit;
 
 namespace Auth0.AuthenticationApi.IntegrationTests
 {
-    [TestFixture]
-    public class AccessTokenTests : TestBase
+    public class AccessTokenTests : TestBase, IAsyncLifetime
     {
         private string socialAccessToken = "your google access token";
         private ManagementApiClient managementApiClient;
         private Connection connection;
         private User newUser;
 
-        [SetUp]
-        public async Task SetUp()
+        public async Task InitializeAsync()
         {
             var scopes = new
             {
@@ -54,11 +52,9 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             };
 
             newUser = await managementApiClient.Users.CreateAsync(newUserRequest);
-
         }
 
-        [TearDown]
-        public async Task TearDown()
+        public async Task DisposeAsync()
         {
             if (connection != null)
                 await managementApiClient.Connections.DeleteAsync(connection.Id);
@@ -95,7 +91,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         //    delegationToken.IdToken.Should().NotBeNull();
         //}
 
-        [Test]
+        [Fact]
         public async Task Can_obtain_user_info()
         {
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
@@ -117,7 +113,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             user.UserId.Should().NotBeNull();
         }
 
-        [Test, Explicit]
+        [Fact(Skip = "Run manually")]
         public async Task Can_exchange_authorization_code_for_access_token()
         {
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
@@ -134,5 +130,6 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             // Assert
             token.Should().NotBeNull();
         }
+
     }
 }

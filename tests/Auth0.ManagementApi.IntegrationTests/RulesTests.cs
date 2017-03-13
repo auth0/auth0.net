@@ -3,15 +3,14 @@ using System.Threading.Tasks;
 using Auth0.Core.Exceptions;
 using Auth0.ManagementApi.Models;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 using Auth0.Tests.Shared;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    [TestFixture]
     public class RulesTests : TestBase
     {
-        [Test]
+        [Fact]
         public async Task Test_rules_crud_sequence()
         {
             string token = await GenerateManagementApiToken();

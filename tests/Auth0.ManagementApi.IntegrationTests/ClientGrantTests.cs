@@ -1,23 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using Auth0.Tests.Shared;
-using NUnit.Framework;
 using System.Threading.Tasks;
 using Auth0.ManagementApi.Models;
-using Auth0.Core;
+using Auth0.Tests.Shared;
 using FluentAssertions;
-using FluentAssertions.Equivalency;
+using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    [TestFixture]
-    public class ClientGrantTests : TestBase
+    public class ClientGrantTests : TestBase, IAsyncLifetime
     {
         private ManagementApiClient apiClient;
         private Client client;
 
-        [SetUp]
-        public async Task SetUp()
+        public async Task InitializeAsync()
         {
             string token = await GenerateManagementApiToken();
 
@@ -30,13 +26,12 @@ namespace Auth0.ManagementApi.IntegrationTests
             });
         }
 
-        [TearDown]
-        public async Task TearDown()
+        public async Task DisposeAsync()
         {
             await apiClient.Clients.DeleteAsync(client.ClientId);
         }
 
-        [Test]
+        [Fact]
         public async Task Test_client_credentials_crud_sequence()
         {
 

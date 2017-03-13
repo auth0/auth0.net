@@ -3,15 +3,14 @@ using System.Threading.Tasks;
 using Auth0.Core;
 using Auth0.ManagementApi.Models;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 using Auth0.Tests.Shared;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    [TestFixture]
     public class TenantSettingsTests : TestBase
     {
-        [Test, Ignore("Need to add support for default directory")]
+        [Fact(Skip ="Need to add support for default directory")]
         public async Task Test_tenant_settings_sequence()
         {
             string token = await GenerateManagementApiToken();

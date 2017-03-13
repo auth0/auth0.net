@@ -4,20 +4,18 @@ using System.Threading.Tasks;
 using Auth0.Core;
 using Auth0.ManagementApi.Models;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 using Auth0.Tests.Shared;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    [TestFixture]
-    public class JobsTest : TestBase
+    public class JobsTest : TestBase, IAsyncLifetime
     {
         private ManagementApiClient apiClient;
         private Connection connection;
         private User user;
 
-        [SetUp]
-        public async Task SetUp()
+        public async Task InitializeAsync()
         {
             string token = await GenerateManagementApiToken();
 
@@ -41,14 +39,13 @@ namespace Auth0.ManagementApi.IntegrationTests
             });
         }
 
-        [TearDown]
-        public async Task TearDown()
+        public async Task DisposeAsync()
         {
             await apiClient.Users.DeleteAsync(user.UserId);
             await apiClient.Connections.DeleteAsync(connection.Id);
         }
 
-        [Test]
+        [Fact]
         public async Task Test_jobs_sequence()
         {
 

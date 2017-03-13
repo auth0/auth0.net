@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Auth0.Core.Http;
-using JetBrains.Annotations;
-
 namespace Auth0.AuthenticationApi.Builders
 {
     /// <summary>
@@ -23,7 +21,7 @@ namespace Auth0.AuthenticationApi.Builders
         /// <param name="resource">The resource being accessed.</param>
         /// <exception cref="System.ArgumentNullException">
         /// </exception>
-        public UrlBuilderBase(string baseUrl, [NotNull] string resource)
+        public UrlBuilderBase(string baseUrl, string resource)
         {
             if (baseUrl == null) throw new ArgumentNullException(nameof(baseUrl));
             if (resource == null) throw new ArgumentNullException(nameof(resource));

@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 
+[assembly: InternalsVisibleTo("Auth0.AuthenticationApi")]
+[assembly: InternalsVisibleTo("Auth0.ManagementApi")]
 namespace Auth0.Core.Http
 {
     internal static class Utils

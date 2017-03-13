@@ -33,31 +33,6 @@ namespace Auth0.Tests.Shared
             return token.AccessToken;
         }
 
-        //protected string GenerateToken(object scopes)
-        //{
-        //    string jti = Guid.NewGuid().ToString("N");
-
-        //    return GenerateToken(scopes, jti);
-        //}
-
-        protected string GenerateToken(object scopes, string jti)
-        {
-            string apiKey = GetVariable("AUTH0_API_KEY");
-            string apiSecret = GetVariable("AUTH0_API_SECRET");
-
-            // Set token payload
-            var payload = new Dictionary<string, object>()
-            {
-                {"aud", apiKey},
-                {"jti", jti},
-                {"scopes", scopes}
-            };
-
-            var keyAsBase64 = apiSecret.Replace('_', '/').Replace('-', '+');
-            var secret = Convert.FromBase64String(keyAsBase64);
-            return JWT.JsonWebToken.Encode(payload, secret, JWT.JwtHashAlgorithm.HS256);
-        }
-
         protected string GetVariable(string variableName)
         {
             // Check to see whether we are running inside AopVeyor CI environment

@@ -2,14 +2,13 @@
 using System.Threading.Tasks;
 using Auth0.Tests.Shared;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Auth0.AuthenticationApi.IntegrationTests
 {
-    [TestFixture]
     public class MetadataTests : TestBase
     {
-        [Test]
+        [Fact]
         public async Task Can_retrieve_saml_metadata()
         {
             // Arrange
@@ -22,7 +21,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             response.Should().NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public async Task Can_retrieve_wsfed_metadata()
         {
             // Arrange

@@ -4,14 +4,13 @@ using System.Threading.Tasks;
 using Auth0.AuthenticationApi.Models;
 using Auth0.Tests.Shared;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Auth0.AuthenticationApi.IntegrationTests
 {
-    [TestFixture]
     public class UriBuildersTests : TestBase
     {
-        [Test]
+        [Fact]
         public void Can_build_authorization_uri()
         {
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
@@ -32,7 +31,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                     new Uri("https://auth0-dotnet-integration-tests.auth0.com/authorize?response_type=code&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&connection=google-oauth2&redirect_uri=http%3A%2F%2Fwww.jerriepelser.com%2Ftest&scope=openid%20offline_access&audience=https%3A%2F%2Fmyapi.com%2Fv2&nonce=MyNonce&state=MyState"));
         }
 
-        [Test]
+        [Fact]
         public void Can_provide_multiple_response_type()
         {
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
@@ -50,7 +49,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                     @"https://auth0-dotnet-integration-tests.auth0.com/authorize?response_type=code&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&connection=google-oauth2&redirect_uri=http%3A%2F%2Fwww.jerriepelser.com%2Ftest&scope=openid%20offline_access");
         }
 
-        [Test]
+        [Fact]
         public void Can_provide_response_mode()
         {
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
@@ -68,7 +67,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                     @"https://auth0-dotnet-integration-tests.auth0.com/authorize?response_type=code&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&redirect_uri=http%3A%2F%2Fwww.jerriepelser.com%2Ftest&scope=openid&response_mode=form_post");
         }
 
-        [Test]
+        [Fact]
         public void Can_build_logout_url()
         {
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
@@ -84,7 +83,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                     @"https://auth0-dotnet-integration-tests.auth0.com/v2/logout?federated&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&returnTo=https%3A%2F%2Fmyapp%2Flogged_out");
         }
 
-        [Test]
+        [Fact]
         public void Can_build_logout_url_with_return_url()
         {
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
@@ -98,7 +97,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                     @"https://auth0-dotnet-integration-tests.auth0.com/v2/logout?returnTo=http:%2F%2Fwww.jerriepelser.com%2Ftest");
         }
 
-        [Test]
+        [Fact]
         public void Can_build_saml_url()
         {
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
@@ -110,7 +109,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             samlUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/samlp/myclientid?connection=my-connection-name");
         }
 
-        [Test]
+        [Fact]
         public void Can_build_wsfed_with_relaystate_dictionary()
         {
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
@@ -126,7 +125,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             samlUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/samlp/myclientid?relayState=xcrf%3Dabc%26ru%3D%2Ffoo");
         }
 
-        [Test]
+        [Fact]
         public void Can_build_wsfed_with_relaystate_string()
         {
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
@@ -138,7 +137,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             samlUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/samlp/myclientid?relayState=xcrf%3Dabc%26ru%3D%2Ffoo");
         }
 
-        [Test]
+        [Fact]
         public void Can_build_wsfed_with_client()
         {
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
@@ -150,7 +149,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             wsfedUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/wsfed/my-client-id");
         }
 
-        [Test]
+        [Fact]
         public void Can_build_wsfed_with_realm()
         {
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
@@ -162,7 +161,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             wsfedUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/wsfed?wtrealm=urn:my-client-id");
         }
 
-        [Test]
+        [Fact]
         public void Can_build_wsfed_with_whr()
         {
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
@@ -174,7 +173,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             wsfedUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/wsfed?whr=urn:my-connection-name");
         }
 
-        [Test]
+        [Fact]
         public void Can_build_wsfed_with_wxtx_dictionary()
         {
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
@@ -190,7 +189,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             wsfedUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/wsfed?wctx=xcrf%3Dabc%26ru%3D%2Ffoo");
         }
 
-        [Test]
+        [Fact]
         public void Can_build_wsfed_with_wxtx_string()
         {
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));

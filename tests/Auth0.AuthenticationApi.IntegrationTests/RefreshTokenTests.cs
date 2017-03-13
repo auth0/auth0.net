@@ -1,15 +1,7 @@
-﻿using Auth0.AuthenticationApi.Models;
-using Auth0.Tests.Shared;
-using FluentAssertions;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Auth0.Tests.Shared;
 
 namespace Auth0.AuthenticationApi.IntegrationTests
 {
-    [TestFixture]
     public class RefreshTokenTests : TestBase
     {
         private const string RefreshToken = "your token";

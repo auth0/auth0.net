@@ -6,14 +6,13 @@ using Auth0.Core.Exceptions;
 using Auth0.ManagementApi.Models;
 using Auth0.Tests.Shared;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    [TestFixture]
     public class ResourceServerTests : TestBase
     {
-        [Test]
+        [Fact]
         public async Task Test_resource_server_crud_sequence()
         {
             string token = await GenerateManagementApiToken();

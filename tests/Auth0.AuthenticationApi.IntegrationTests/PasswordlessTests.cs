@@ -3,15 +3,14 @@ using System.Threading.Tasks;
 using Auth0.AuthenticationApi.Models;
 using Auth0.Tests.Shared;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 using System.Collections.Generic;
 
 namespace Auth0.AuthenticationApi.IntegrationTests
 {
-    [TestFixture]
     public class PasswordlessTests : TestBase
     {
-        [Test, Explicit]
+        [Fact(Skip = "Run manually")]
         public async Task Can_launch_email_link_flow()
         {
             // Arrange
@@ -29,7 +28,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             response.Email.Should().Be(request.Email);
         }
 
-        [Test, Explicit]
+        [Fact(Skip = "Run manually")]
         public async Task Can_launch_email_link_flow_with_auth_parameters()
         {
             // Arrange 
@@ -54,7 +53,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             response.Email.Should().Be(request.Email);
         }
 
-        [Test, Explicit]
+        [Fact(Skip = "Run manually")]
         public async Task Can_launch_email_code_flow()
         {
             // Arrange
@@ -72,7 +71,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             response.Email.Should().Be(request.Email);
         }
 
-        [Test, Explicit]
+        [Fact(Skip = "Run manually")]
         public async Task Can_launch_sms_flow()
         {
             // Arrange
@@ -89,7 +88,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             response.PhoneNumber.Should().Be(request.PhoneNumber);
         }
 
-        [Test, Explicit]
+        [Fact(Skip = "Run manually")]
         public async Task Can_authenticate_with_passwordless_email_code()
         {
             // Arrange

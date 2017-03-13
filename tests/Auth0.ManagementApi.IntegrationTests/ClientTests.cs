@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Auth0.Core;
 using Auth0.Core.Exceptions;
 using Auth0.ManagementApi.Models;
-using FluentAssertions;
-using NUnit.Framework;
 using Auth0.Tests.Shared;
+using FluentAssertions;
+using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    [TestFixture]
     public class ClientTests : TestBase
     {
-        [Test]
+        [Fact]
         public async Task Test_client_crud_sequence()
         {
             string token = await GenerateManagementApiToken();

@@ -5,14 +5,13 @@ using System.Threading.Tasks;
 using Auth0.AuthenticationApi.Models;
 using Auth0.Tests.Shared;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Auth0.AuthenticationApi.IntegrationTests
 {
-    [TestFixture]
     public class TokenTests : TestBase
     {
-        [Test]
+        [Fact]
         public async Task Can_get_token_using_client_credentials()
         {
             var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));

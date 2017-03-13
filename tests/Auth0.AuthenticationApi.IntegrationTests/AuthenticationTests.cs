@@ -1,21 +1,18 @@
 ﻿using System;
 using System.Threading.Tasks;
-using System.Web;
 using AngleSharp;
 using AngleSharp.Dom.Html;
 using AngleSharp.Extensions;
 using Auth0.AuthenticationApi.Models;
-using Auth0.Core;
 using Auth0.ManagementApi;
 using Auth0.ManagementApi.Models;
 using Auth0.Tests.Shared;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 namespace Auth0.AuthenticationApi.IntegrationTests
 {
-    [TestFixture]
-    public class AuthenticationTests : TestBase
+    public class AuthenticationTests : TestBase, IAsyncLifetime
     {
         private ManagementApiClient managementApiClient;
         private Connection connection;
@@ -23,8 +20,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         private User plusUser;
         private User userInDefaultDirectory;
 
-        [SetUp]
-        public async Task SetUp()
+        public async Task InitializeAsync()
         {
             string token = await GenerateManagementApiToken();
 
@@ -34,7 +30,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
             if (string.IsNullOrEmpty(tenantSettings.DefaultDirectory))
             {
-                Assert.Fail("Tests require a tenant with a Default Directory selected.\r\n" +
+                throw new Exception("Tests require a tenant with a Default Directory selected.\r\n" +
                     "Enable OAuth 2.0 API Authorization under Account Settings | General and "+
                     "select a Default Directory under Account Settings | General");
             }
@@ -75,8 +71,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             });
         }
 
-        [TearDown]
-        public async Task TearDown()
+        public async Task DisposeAsync()
         {
             if (user != null)
                 await managementApiClient.Users.DeleteAsync(user.UserId);
@@ -91,7 +86,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 await managementApiClient.Connections.DeleteAsync(connection.Id);
         }
 
-        [Test]
+        [Fact]
         public async Task Can_authenticate_against_Auth0()
         {
             // Arrange
@@ -117,7 +112,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             authenticationResponse.RefreshToken.Should().BeNull(); // No refresh token if offline access was not requested
         }
 
-        [Test]
+        [Fact]
         public async Task Can_authenticate_to_default_directory()
         {
             // Arrange
@@ -142,7 +137,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             authenticationResponse.RefreshToken.Should().BeNull(); // No refresh token if offline access was not requested
         }
 
-        [Test, Ignore("Need to look into offline_access")]
+        [Fact(Skip = "Need to look into offline_access")]
         public async Task Can_request_offline_access()
         {
             // Arrange
@@ -167,7 +162,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             authenticationResponse.RefreshToken.Should().NotBeNull(); // Requested offline access, so we should get a refresh token
         }
 
-        [Test]
+        [Fact]
         public async Task Can_authenticate_user_with_plus_in_username()
         {
             // Arrange
@@ -191,7 +186,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             authenticationResponse.IdToken.Should().NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public async Task Returns_username_and_password_login_form()
         {
             // Arrange
