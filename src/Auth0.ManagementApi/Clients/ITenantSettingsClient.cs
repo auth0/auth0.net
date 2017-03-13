@@ -9,7 +9,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains all the methods to call the /tenants/settings endpoints.
     /// </summary>
-    public interface ITentantSettingsClient
+    public interface ITenantSettingsClient
     {
         /// <summary>
         ///     Gets the settings for the tenant.

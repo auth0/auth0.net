@@ -39,6 +39,11 @@ namespace Auth0.ManagementApi
         IEmailProviderClient EmailProvider { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /guardian endpoints.
+        /// </summary>
+        IGuardianClient Guardian { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /jobs endpoints.
         /// </summary>
         IJobsClient Jobs { get; }
@@ -66,7 +71,7 @@ namespace Auth0.ManagementApi
         /// <summary>
         /// Contains all the methods to call the /tenants/settings endpoints.
         /// </summary>
-        ITentantSettingsClient TenantSettings { get; set; }
+        ITenantSettingsClient TenantSettings { get; set; }
 
         /// <summary>
         /// Contains all the methods to call the /tickets endpoints.

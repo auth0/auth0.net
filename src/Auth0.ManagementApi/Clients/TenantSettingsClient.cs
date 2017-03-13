@@ -11,13 +11,13 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains all the methods to call the /tenants/settings endpoints.
     /// </summary>
-    public class TentantSettingsClient : ClientBase, ITentantSettingsClient
+    public class TenantSettingsClient : ClientBase, ITenantSettingsClient
     {
         /// <summary>
         /// Creates a new instance of the ClientBase class.
         /// </summary>
         /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
-        public TentantSettingsClient(IApiConnection connection)
+        public TenantSettingsClient(IApiConnection connection)
             : base(connection)
         {
         }

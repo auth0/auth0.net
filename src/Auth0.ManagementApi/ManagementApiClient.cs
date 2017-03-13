@@ -48,6 +48,11 @@ namespace Auth0.ManagementApi
         public IEmailProviderClient EmailProvider { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /guardian endpoints.
+        /// </summary>
+        public IGuardianClient Guardian { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /jobs endpoints.
         /// </summary>
         /// <value>The jobs.</value>
@@ -80,7 +85,7 @@ namespace Auth0.ManagementApi
         /// Contains all the methods to call the /tenants/settings endpoints.
         /// </summary>
         /// <value>The tenant settings.</value>
-        public ITentantSettingsClient TenantSettings { get; set; }
+        public ITenantSettingsClient TenantSettings { get; set; }
 
         /// <summary>
         /// Contains all the methods to call the /tickets endpoints.
@@ -130,12 +135,13 @@ namespace Auth0.ManagementApi
             Connections = new ConnectionsClient(apiConnection);
             DeviceCredentials = new DeviceCredentialsClient(apiConnection);
             EmailProvider = new EmailProviderClient(apiConnection);
+            Guardian = new GuardianClient(apiConnection);
             Jobs = new JobsClient(apiConnection);
             Logs = new LogsClient(apiConnection);
             ResourceServers = new ResourceServersClient(apiConnection);
             Rules = new RulesClient(apiConnection);
             Stats = new StatsClient(apiConnection);
-            TenantSettings = new TentantSettingsClient(apiConnection);
+            TenantSettings = new TenantSettingsClient(apiConnection);
             Tickets = new TicketsClient(apiConnection);
             UserBlocks = new UserBlocksClient(apiConnection);
             Users = new UsersClient(apiConnection);
