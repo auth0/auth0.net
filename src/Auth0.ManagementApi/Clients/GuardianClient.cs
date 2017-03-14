@@ -13,9 +13,18 @@ namespace Auth0.ManagementApi.Clients
         {
         }
 
+        public Task<CreateGuardianEnrollmentTicketResponse> CreateEnrollmentTicket(
+            CreateGuardianEnrollmentTicketRequest request)
+        {
+            return Connection.PostAsync<CreateGuardianEnrollmentTicketResponse>("guardian/enrollments/ticket", request,
+                null,
+                null, null, null, null);
+        }
+
         public Task DeleteEnrollment(string id)
         {
-            return Connection.DeleteAsync<object>("guardian/enrollments/{id}", new Dictionary<string, string> {{"id", id}}, null);
+            return Connection.DeleteAsync<object>("guardian/enrollments/{id}",
+                new Dictionary<string, string> {{"id", id}}, null);
         }
 
         public Task<GuardianEnrollment> GetEnrollment(string id)
@@ -31,7 +40,8 @@ namespace Auth0.ManagementApi.Clients
 
         public Task<GuardianSmsEnrollmentTemplates> GetSmsTemplates()
         {
-            return Connection.GetAsync<GuardianSmsEnrollmentTemplates>("guardian/factors/sms/templates", null, null, null, null);
+            return Connection.GetAsync<GuardianSmsEnrollmentTemplates>("guardian/factors/sms/templates", null, null,
+                null, null);
         }
 
         public Task<GuardianSmsEnrollmentTemplates> UpdateSmsTemplates(GuardianSmsEnrollmentTemplates templates)

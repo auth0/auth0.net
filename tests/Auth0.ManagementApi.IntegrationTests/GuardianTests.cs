@@ -68,5 +68,41 @@ namespace Auth0.ManagementApi.IntegrationTests
             var templateUpdateResponse = await _managementApiClient.Guardian.UpdateSmsTemplates(templateUpdateRequest);
             templateUpdateResponse.ShouldBeEquivalentTo(templateUpdateRequest);
         }
+
+        [Fact]
+        public async Task Can_create_enrollment_ticket()
+        {
+            // Create a connection for creating a user
+            var connection = await _managementApiClient.Connections.CreateAsync(new ConnectionCreateRequest
+            {
+                Name = Guid.NewGuid().ToString("N"),
+                Strategy = "auth0",
+                EnabledClients = new[] { GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
+            });
+
+            // Create a new user
+            var userCreateRequest = new UserCreateRequest
+            {
+                Connection = connection.Name,
+                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                EmailVerified = true,
+                Password = "password"
+            };
+            var user = await _managementApiClient.Users.CreateAsync(userCreateRequest);
+
+            // Create an enrollment request
+            var request = new CreateGuardianEnrollmentTicketRequest
+            {
+                UserId = user.UserId,
+                MustSendMail = false
+            };
+            var response = await _managementApiClient.Guardian.CreateEnrollmentTicket(request);
+            response.TicketId.Should().NotBeNull();
+            response.TicketUrl.Should().NotBeNull();
+
+            // Clean up after ourselves
+            await _managementApiClient.Users.DeleteAsync(user.UserId);
+            await _managementApiClient.Connections.DeleteAsync(connection.Id);
+        }
     }
 }

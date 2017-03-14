@@ -7,6 +7,14 @@ namespace Auth0.ManagementApi.Clients
     public interface IGuardianClient
     {
         /// <summary>
+        /// Generate an email with a link to start the Guardian enrollment process.
+        /// </summary>
+        /// <param name="request">The <see cref="CreateGuardianEnrollmentTicketRequest"/> containing the information about the user who should be enrolled.</param>
+        /// <returns>A <see cref="CreateGuardianEnrollmentTicketResponse"/> with the details of the ticket that was created.</returns>
+        Task<CreateGuardianEnrollmentTicketResponse> CreateEnrollmentTicket(
+            CreateGuardianEnrollmentTicketRequest request);
+
+        /// <summary>
         ///     Deletes an enrollment.
         /// </summary>
         /// <param name="id">The ID of the enrollment.</param>
@@ -33,9 +41,9 @@ namespace Auth0.ManagementApi.Clients
         Task<GuardianSmsEnrollmentTemplates> GetSmsTemplates();
 
         /// <summary>
-        /// Updates enrollment and verification templates. Useful to send custom messages on SMS enrollment and verification.
+        ///     Updates enrollment and verification templates. Useful to send custom messages on SMS enrollment and verification.
         /// </summary>
-        /// <param name="templates">A <see cref="GuardianSmsEnrollmentTemplates"/> containing the updated templates.</param>
+        /// <param name="templates">A <see cref="GuardianSmsEnrollmentTemplates" /> containing the updated templates.</param>
         /// <returns>A <see cref="GuardianSmsEnrollmentTemplates" /> containing the templates.</returns>
         Task<GuardianSmsEnrollmentTemplates> UpdateSmsTemplates(GuardianSmsEnrollmentTemplates templates);
     }
