@@ -42,6 +42,13 @@ namespace Auth0.ManagementApi.Clients
                 null, null);
         }
 
+        public Task<GuardianSnsConfiguration> GetSnsConfigurationAsync()
+        {
+            return Connection.GetAsync<GuardianSnsConfiguration>("guardian/factors/push-notification/providers/sns",
+                null, null,
+                null, null);
+        }
+
         public Task<GuardianTwilioConfiguration> GetTwilioConfigurationAsync()
         {
             return Connection.GetAsync<GuardianTwilioConfiguration>("guardian/factors/sms/providers/twilio", null, null,
@@ -63,16 +70,23 @@ namespace Auth0.ManagementApi.Clients
                 }, null, null);
         }
 
-        public Task<GuardianTwilioConfiguration> UpdateTwilioConfigurationAsync(UpdateGuardianTwilioConfigurationRequest request)
-        {
-            return Connection.PutAsync<GuardianTwilioConfiguration>("guardian/factors/sms/providers/twilio",
-                request, null, null, null, null, null);
-        }
-
         public Task<GuardianSmsEnrollmentTemplates> UpdateSmsTemplatesAsync(GuardianSmsEnrollmentTemplates templates)
         {
             return Connection.PutAsync<GuardianSmsEnrollmentTemplates>("guardian/factors/sms/templates", templates, null,
                 null, null, null, null);
+        }
+
+        public Task<GuardianSnsConfiguration> UpdateSnsConfigurationAsync(UpdateGuardianSnsConfigurationRequest request)
+        {
+            return Connection.PutAsync<GuardianSnsConfiguration>("guardian/factors/push-notification/providers/sns",
+                request, null, null, null, null, null);
+        }
+
+        public Task<GuardianTwilioConfiguration> UpdateTwilioConfigurationAsync(
+            UpdateGuardianTwilioConfigurationRequest request)
+        {
+            return Connection.PutAsync<GuardianTwilioConfiguration>("guardian/factors/sms/providers/twilio",
+                request, null, null, null, null, null);
         }
     }
 }
