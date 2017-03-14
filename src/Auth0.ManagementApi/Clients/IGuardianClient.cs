@@ -11,7 +11,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="request">The <see cref="CreateGuardianEnrollmentTicketRequest"/> containing the information about the user who should be enrolled.</param>
         /// <returns>A <see cref="CreateGuardianEnrollmentTicketResponse"/> with the details of the ticket that was created.</returns>
-        Task<CreateGuardianEnrollmentTicketResponse> CreateEnrollmentTicket(
+        Task<CreateGuardianEnrollmentTicketResponse> CreateEnrollmentTicketAsync(
             CreateGuardianEnrollmentTicketRequest request);
 
         /// <summary>
@@ -19,14 +19,14 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="id">The ID of the enrollment.</param>
         /// <returns></returns>
-        Task DeleteEnrollment(string id);
+        Task DeleteEnrollmentAsync(string id);
 
         /// <summary>
         ///     Retrieves an enrollment.
         /// </summary>
         /// <param name="id">The ID of the enrollment.</param>
         /// <returns></returns>
-        Task<GuardianEnrollment> GetEnrollment(string id);
+        Task<GuardianEnrollment> GetEnrollmentAsync(string id);
 
         /// <summary>
         ///     Retrieves all factors. Useful to check factor enablement and trial status.
@@ -38,20 +38,34 @@ namespace Auth0.ManagementApi.Clients
         ///     Retrieves enrollment and verification templates. You can use it to check the current values for your templates.
         /// </summary>
         /// <returns>A <see cref="GuardianSmsEnrollmentTemplates" /> containing the templates.</returns>
-        Task<GuardianSmsEnrollmentTemplates> GetSmsTemplates();
+        Task<GuardianSmsEnrollmentTemplates> GetSmsTemplatesAsync();
+
+        /// <summary>
+        /// Returns configuration for the Guardian Twilio provider.
+        /// </summary>
+        /// <returns><see cref="GuardianTwilioConfiguration"/> with the Twilio configuration.</returns>
+        Task<GuardianTwilioConfiguration> GetTwilioConfigurationAsync();
 
         /// <summary>
         /// Enable or Disable a Guardian factor.
         /// </summary>
         /// <param name="request">The <see cref="UpdateGuardianFactorRequest"/> containing the details of the factor to update.</param>
         /// <returns>The <see cref="UpdateGuardianFactorResponse"/> indicating the status of the factor.</returns>
-        Task<UpdateGuardianFactorResponse> UpdateGuardianFactor(UpdateGuardianFactorRequest request);
+        Task<UpdateGuardianFactorResponse> UpdateFactorAsync(UpdateGuardianFactorRequest request);
+
+        /// <summary>
+        /// Configure the Guardian Twilio provider.
+        /// </summary>
+        /// <param name="request">The <see cref="UpdateGuardianTwilioConfigurationRequest"/> containing the configuration settings.</param>
+        /// <returns>The <see cref="GuardianTwilioConfiguration"/> containing the updated configuration settings.</returns>
+        Task<GuardianTwilioConfiguration> UpdateTwilioConfigurationAsync(
+            UpdateGuardianTwilioConfigurationRequest request);
 
         /// <summary>
         ///     Updates enrollment and verification templates. Useful to send custom messages on SMS enrollment and verification.
         /// </summary>
         /// <param name="templates">A <see cref="GuardianSmsEnrollmentTemplates" /> containing the updated templates.</param>
         /// <returns>A <see cref="GuardianSmsEnrollmentTemplates" /> containing the templates.</returns>
-        Task<GuardianSmsEnrollmentTemplates> UpdateSmsTemplates(GuardianSmsEnrollmentTemplates templates);
+        Task<GuardianSmsEnrollmentTemplates> UpdateSmsTemplatesAsync(GuardianSmsEnrollmentTemplates templates);
     }
 }

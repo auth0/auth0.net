@@ -37,7 +37,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Retrieving_non_existent_enrollment_throws()
         {
-            Func<Task> getFunc = async () => await _managementApiClient.Guardian.GetEnrollment("dev_123456");
+            Func<Task> getFunc = async () => await _managementApiClient.Guardian.GetEnrollmentAsync("dev_123456");
 
             getFunc.ShouldThrow<ApiException>()
                 .And.ApiError.ErrorCode.Should().Be("enrollment_not_found");
@@ -46,7 +46,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Deleting_non_existent_enrollment_throws()
         {
-            Func<Task> deleteFunc = async () => await _managementApiClient.Guardian.DeleteEnrollment("dev_123456");
+            Func<Task> deleteFunc = async () => await _managementApiClient.Guardian.DeleteEnrollmentAsync("dev_123456");
 
             deleteFunc.ShouldThrow<ApiException>()
                 .And.ApiError.ErrorCode.Should().Be("enrollment_not_found");
@@ -56,7 +56,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Can_perform_sms_template_maintenance()
         {
             // Get the current templates
-            var initialTemplates = await _managementApiClient.Guardian.GetSmsTemplates();
+            var initialTemplates = await _managementApiClient.Guardian.GetSmsTemplatesAsync();
             initialTemplates.Should().NotBeNull();
 
             // Update the templates
@@ -65,7 +65,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 EnrollmentMessage = $"This is the enrollment message {Guid.NewGuid()}",
                 VerificationMessage = $"This is the verification message {Guid.NewGuid()}"
             };
-            var templateUpdateResponse = await _managementApiClient.Guardian.UpdateSmsTemplates(templateUpdateRequest);
+            var templateUpdateResponse = await _managementApiClient.Guardian.UpdateSmsTemplatesAsync(templateUpdateRequest);
             templateUpdateResponse.ShouldBeEquivalentTo(templateUpdateRequest);
         }
 
@@ -96,7 +96,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 UserId = user.UserId,
                 MustSendMail = false
             };
-            var response = await _managementApiClient.Guardian.CreateEnrollmentTicket(request);
+            var response = await _managementApiClient.Guardian.CreateEnrollmentTicketAsync(request);
             response.TicketId.Should().NotBeNull();
             response.TicketUrl.Should().NotBeNull();
 
@@ -110,33 +110,59 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             UpdateGuardianFactorResponse response;
 
-            response = await _managementApiClient.Guardian.UpdateGuardianFactor(new UpdateGuardianFactorRequest
+            response = await _managementApiClient.Guardian.UpdateFactorAsync(new UpdateGuardianFactorRequest
             {
                 Factor = GuardianFactorName.Sms,
                 IsEnabled = false
             });
             response.IsEnabled.Should().BeFalse();
 
-            response = await _managementApiClient.Guardian.UpdateGuardianFactor(new UpdateGuardianFactorRequest
+            response = await _managementApiClient.Guardian.UpdateFactorAsync(new UpdateGuardianFactorRequest
             {
                 Factor = GuardianFactorName.Sms,
                 IsEnabled = true
             });
             response.IsEnabled.Should().BeTrue();
 
-            response = await _managementApiClient.Guardian.UpdateGuardianFactor(new UpdateGuardianFactorRequest
+            response = await _managementApiClient.Guardian.UpdateFactorAsync(new UpdateGuardianFactorRequest
             {
                 Factor = GuardianFactorName.PushNotifications,
                 IsEnabled = false
             });
             response.IsEnabled.Should().BeFalse();
 
-            response = await _managementApiClient.Guardian.UpdateGuardianFactor(new UpdateGuardianFactorRequest
+            response = await _managementApiClient.Guardian.UpdateFactorAsync(new UpdateGuardianFactorRequest
             {
                 Factor = GuardianFactorName.Sms,
                 IsEnabled = true
             });
             response.IsEnabled.Should().BeTrue();
+        }
+
+        [Fact]
+        public async Task Can_update_twilio_provider_configuration()
+        {
+            var request = new UpdateGuardianTwilioConfigurationRequest
+            {
+                AuthToken = Guid.NewGuid().ToString("N"),
+                From = "+123456789",
+                Sid = Guid.NewGuid().ToString("N")
+            };
+            var response = await _managementApiClient.Guardian.UpdateTwilioConfigurationAsync(request);
+            response.ShouldBeEquivalentTo(request);
+
+
+            request = new UpdateGuardianTwilioConfigurationRequest
+            {
+                AuthToken = Guid.NewGuid().ToString("N"),
+                MessagingServiceSid = Guid.NewGuid().ToString("N"),
+                Sid = Guid.NewGuid().ToString("N")
+            };
+            response = await _managementApiClient.Guardian.UpdateTwilioConfigurationAsync(request);
+            response.ShouldBeEquivalentTo(request);
+
+            response = await _managementApiClient.Guardian.GetTwilioConfigurationAsync();
+            response.ShouldBeEquivalentTo(request);
         }
     }
 }

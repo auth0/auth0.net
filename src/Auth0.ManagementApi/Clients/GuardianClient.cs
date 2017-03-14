@@ -11,7 +11,7 @@ namespace Auth0.ManagementApi.Clients
         {
         }
 
-        public Task<CreateGuardianEnrollmentTicketResponse> CreateEnrollmentTicket(
+        public Task<CreateGuardianEnrollmentTicketResponse> CreateEnrollmentTicketAsync(
             CreateGuardianEnrollmentTicketRequest request)
         {
             return Connection.PostAsync<CreateGuardianEnrollmentTicketResponse>("guardian/enrollments/ticket", request,
@@ -19,13 +19,13 @@ namespace Auth0.ManagementApi.Clients
                 null, null, null, null);
         }
 
-        public Task DeleteEnrollment(string id)
+        public Task DeleteEnrollmentAsync(string id)
         {
             return Connection.DeleteAsync<object>("guardian/enrollments/{id}",
                 new Dictionary<string, string> {{"id", id}}, null);
         }
 
-        public Task<GuardianEnrollment> GetEnrollment(string id)
+        public Task<GuardianEnrollment> GetEnrollmentAsync(string id)
         {
             return Connection.GetAsync<GuardianEnrollment>("guardian/enrollments/{id}",
                 new Dictionary<string, string> {{"id", id}}, null, null, null);
@@ -36,13 +36,19 @@ namespace Auth0.ManagementApi.Clients
             return Connection.GetAsync<IList<GuardianFactor>>("guardian/factors", null, null, null, null);
         }
 
-        public Task<GuardianSmsEnrollmentTemplates> GetSmsTemplates()
+        public Task<GuardianSmsEnrollmentTemplates> GetSmsTemplatesAsync()
         {
             return Connection.GetAsync<GuardianSmsEnrollmentTemplates>("guardian/factors/sms/templates", null, null,
                 null, null);
         }
 
-        public Task<UpdateGuardianFactorResponse> UpdateGuardianFactor(UpdateGuardianFactorRequest request)
+        public Task<GuardianTwilioConfiguration> GetTwilioConfigurationAsync()
+        {
+            return Connection.GetAsync<GuardianTwilioConfiguration>("guardian/factors/sms/providers/twilio", null, null,
+                null, null);
+        }
+
+        public Task<UpdateGuardianFactorResponse> UpdateFactorAsync(UpdateGuardianFactorRequest request)
         {
             return Connection.PutAsync<UpdateGuardianFactorResponse>("guardian/factors/{name}",
                 new
@@ -57,7 +63,13 @@ namespace Auth0.ManagementApi.Clients
                 }, null, null);
         }
 
-        public Task<GuardianSmsEnrollmentTemplates> UpdateSmsTemplates(GuardianSmsEnrollmentTemplates templates)
+        public Task<GuardianTwilioConfiguration> UpdateTwilioConfigurationAsync(UpdateGuardianTwilioConfigurationRequest request)
+        {
+            return Connection.PutAsync<GuardianTwilioConfiguration>("guardian/factors/sms/providers/twilio",
+                request, null, null, null, null, null);
+        }
+
+        public Task<GuardianSmsEnrollmentTemplates> UpdateSmsTemplatesAsync(GuardianSmsEnrollmentTemplates templates)
         {
             return Connection.PutAsync<GuardianSmsEnrollmentTemplates>("guardian/factors/sms/templates", templates, null,
                 null, null, null, null);
