@@ -41,6 +41,13 @@ namespace Auth0.ManagementApi.Clients
         Task<GuardianSmsEnrollmentTemplates> GetSmsTemplates();
 
         /// <summary>
+        /// Enable or Disable a Guardian factor.
+        /// </summary>
+        /// <param name="request">The <see cref="UpdateGuardianFactorRequest"/> containing the details of the factor to update.</param>
+        /// <returns>The <see cref="UpdateGuardianFactorResponse"/> indicating the status of the factor.</returns>
+        Task<UpdateGuardianFactorResponse> UpdateGuardianFactor(UpdateGuardianFactorRequest request);
+
+        /// <summary>
         ///     Updates enrollment and verification templates. Useful to send custom messages on SMS enrollment and verification.
         /// </summary>
         /// <param name="templates">A <see cref="GuardianSmsEnrollmentTemplates" /> containing the updated templates.</param>

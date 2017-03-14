@@ -104,5 +104,39 @@ namespace Auth0.ManagementApi.IntegrationTests
             await _managementApiClient.Users.DeleteAsync(user.UserId);
             await _managementApiClient.Connections.DeleteAsync(connection.Id);
         }
+
+        [Fact]
+        public async Task Can_update_factors()
+        {
+            UpdateGuardianFactorResponse response;
+
+            response = await _managementApiClient.Guardian.UpdateGuardianFactor(new UpdateGuardianFactorRequest
+            {
+                Factor = GuardianFactorName.Sms,
+                IsEnabled = false
+            });
+            response.IsEnabled.Should().BeFalse();
+
+            response = await _managementApiClient.Guardian.UpdateGuardianFactor(new UpdateGuardianFactorRequest
+            {
+                Factor = GuardianFactorName.Sms,
+                IsEnabled = true
+            });
+            response.IsEnabled.Should().BeTrue();
+
+            response = await _managementApiClient.Guardian.UpdateGuardianFactor(new UpdateGuardianFactorRequest
+            {
+                Factor = GuardianFactorName.PushNotifications,
+                IsEnabled = false
+            });
+            response.IsEnabled.Should().BeFalse();
+
+            response = await _managementApiClient.Guardian.UpdateGuardianFactor(new UpdateGuardianFactorRequest
+            {
+                Factor = GuardianFactorName.Sms,
+                IsEnabled = true
+            });
+            response.IsEnabled.Should().BeTrue();
+        }
     }
 }

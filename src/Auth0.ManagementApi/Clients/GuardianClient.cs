@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
-using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
@@ -42,6 +40,21 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection.GetAsync<GuardianSmsEnrollmentTemplates>("guardian/factors/sms/templates", null, null,
                 null, null);
+        }
+
+        public Task<UpdateGuardianFactorResponse> UpdateGuardianFactor(UpdateGuardianFactorRequest request)
+        {
+            return Connection.PutAsync<UpdateGuardianFactorResponse>("guardian/factors/{name}",
+                new
+                {
+                    enabled = request.IsEnabled
+                }, null, null,
+                new Dictionary<string, string>
+                {
+                    {
+                        "name", request.Factor == GuardianFactorName.PushNotifications ? "push-notification" : "sms"
+                    }
+                }, null, null);
         }
 
         public Task<GuardianSmsEnrollmentTemplates> UpdateSmsTemplates(GuardianSmsEnrollmentTemplates templates)
