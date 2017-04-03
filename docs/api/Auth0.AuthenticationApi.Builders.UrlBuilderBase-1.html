@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class UrlBuilderBase&lt;T&gt;
    ">
-    <meta name="generator" content="docfx 2.7.3.0">
+    <meta name="generator" content="docfx 2.15.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="../styles/main.css">
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
+    
     
   </head>
   <body data-spy="scroll" data-target="#affix">
@@ -33,6 +34,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
+              
               <a class="navbar-brand" href="../index.html">
                 <img id="logo" class="svg" src="../logo.svg" alt="">
               </a>
@@ -77,14 +79,24 @@
                 <h5>Inheritance</h5>
                   <div class="level0"><span class="xref">System.Object</span></div>
                   <div class="level1"><span class="xref">UrlBuilderBase&lt;T&gt;</span></div>
+                  <div class="level2"><a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a></div>
+                  <div class="level2"><a class="xref" href="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.html">LogoutUrlBuilder</a></div>
+                  <div class="level2"><a class="xref" href="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.html">SamlUrlBuilder</a></div>
+                  <div class="level2"><a class="xref" href="Auth0.AuthenticationApi.Builders.WsFedUrlBuilder.html">WsFedUrlBuilder</a></div>
               </div>
               <div class="inheritedMembers">
                 <h5>Inherited Members</h5>
+                <div>
+                  <span class="xref">System.Object.ToString()</span>
+                </div>
                 <div>
                   <span class="xref">System.Object.Equals(System.Object)</span>
                 </div>
                 <div>
                   <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+                </div>
+                <div>
+                  <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
                 </div>
                 <div>
                   <span class="xref">System.Object.GetHashCode()</span>
@@ -95,15 +107,9 @@
                 <div>
                   <span class="xref">System.Object.MemberwiseClone()</span>
                 </div>
-                <div>
-                  <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Object.ToString()</span>
-                </div>
               </div>
               <h6><strong>Namespace</strong>:Auth0.AuthenticationApi.Builders</h6>
-              <h6><strong>Assembly</strong>:Auth0.AuthenticationApi.dll</h6>
+              <h6><strong>Assembly</strong>:cs.temp.dll.dll</h6>
               <h5 id="Auth0_AuthenticationApi_Builders_UrlBuilderBase_1_syntax">Syntax</h5>
               <div class="codewrapper">
                 <pre><code class="lang-csharp hljs">public class UrlBuilderBase&lt;T&gt;
@@ -119,22 +125,18 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><em>T</em></td>
+                    <td><span class="parametername">T</span></td>
                     <td></td>
                   </tr>
                 </tbody>
               </table>
               <h3 id="constructors">Constructors
               </h3>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_Builders_UrlBuilderBase_1__ctor_System_String_System_String_.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.Builders.UrlBuilderBase%601.%23ctor(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/Builders/UrlBuilderBase.cs/#L26">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_AuthenticationApi_Builders_UrlBuilderBase_1__ctor_" data-uid="Auth0.AuthenticationApi.Builders.UrlBuilderBase`1.#ctor*"></a>
               <h4 id="Auth0_AuthenticationApi_Builders_UrlBuilderBase_1__ctor_System_String_System_String_" data-uid="Auth0.AuthenticationApi.Builders.UrlBuilderBase`1.#ctor(System.String,System.String)">UrlBuilderBase(String, String)</h4>
-              <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.AuthenticationApi.Builders.UrlBuilderBase-1.html#Auth0_AuthenticationApi_Builders_UrlBuilderBase_1">UrlBuilderBase&lt;T&gt;</a> class.</p>
+              <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.AuthenticationApi.Builders.UrlBuilderBase-1.html">UrlBuilderBase&lt;T&gt;</a> class.</p>
 </div>
               <div class="markdown level1 conceptual"></div>
               <h5 class="decalaration">Declaration</h5>
@@ -153,13 +155,13 @@
                 <tbody>
                   <tr>
                     <td><span class="xref">System.String</span></td>
-                    <td><em>baseUrl</em></td>
+                    <td><span class="parametername">baseUrl</span></td>
                     <td><p>The base URL.</p>
 </td>
                   </tr>
                   <tr>
                     <td><span class="xref">System.String</span></td>
-                    <td><em>resource</em></td>
+                    <td><span class="parametername">resource</span></td>
                     <td><p>The resource being accessed.</p>
 </td>
                   </tr>
@@ -182,13 +184,9 @@
               </table>
               <h3 id="methods">Methods
               </h3>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_Builders_UrlBuilderBase_1_AddQueryString_System_String_System_String_.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.Builders.UrlBuilderBase%601.AddQueryString(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/Builders/UrlBuilderBase.cs/#L54">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_AuthenticationApi_Builders_UrlBuilderBase_1_AddQueryString_" data-uid="Auth0.AuthenticationApi.Builders.UrlBuilderBase`1.AddQueryString*"></a>
               <h4 id="Auth0_AuthenticationApi_Builders_UrlBuilderBase_1_AddQueryString_System_String_System_String_" data-uid="Auth0.AuthenticationApi.Builders.UrlBuilderBase`1.AddQueryString(System.String,System.String)">AddQueryString(String, String)</h4>
               <div class="markdown level1 summary"><p>Adds the query string parameter to the URL.</p>
 </div>
@@ -209,25 +207,21 @@
                 <tbody>
                   <tr>
                     <td><span class="xref">System.String</span></td>
-                    <td><em>name</em></td>
+                    <td><span class="parametername">name</span></td>
                     <td><p>The name of the query string parameter.</p>
 </td>
                   </tr>
                   <tr>
                     <td><span class="xref">System.String</span></td>
-                    <td><em>value</em></td>
+                    <td><span class="parametername">value</span></td>
                     <td><p>The value of the query string parameter.</p>
 </td>
                   </tr>
                 </tbody>
               </table>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_Builders_UrlBuilderBase_1_AddUrlSegment_System_String_System_String_.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.Builders.UrlBuilderBase%601.AddUrlSegment(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/Builders/UrlBuilderBase.cs/#L44">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_AuthenticationApi_Builders_UrlBuilderBase_1_AddUrlSegment_" data-uid="Auth0.AuthenticationApi.Builders.UrlBuilderBase`1.AddUrlSegment*"></a>
               <h4 id="Auth0_AuthenticationApi_Builders_UrlBuilderBase_1_AddUrlSegment_System_String_System_String_" data-uid="Auth0.AuthenticationApi.Builders.UrlBuilderBase`1.AddUrlSegment(System.String,System.String)">AddUrlSegment(String, String)</h4>
               <div class="markdown level1 summary"><p>Adds a new URL segment.</p>
 </div>
@@ -248,13 +242,13 @@
                 <tbody>
                   <tr>
                     <td><span class="xref">System.String</span></td>
-                    <td><em>name</em></td>
+                    <td><span class="parametername">name</span></td>
                     <td><p>The name of the segment (without the curly braces).</p>
 </td>
                   </tr>
                   <tr>
                     <td><span class="xref">System.String</span></td>
-                    <td><em>value</em></td>
+                    <td><span class="parametername">value</span></td>
                     <td><p>The value of the segment.</p>
 </td>
                   </tr>
@@ -264,13 +258,9 @@
               <div class="markdown level1 remarks"><p>When specifying the resource, a URL segment can be specified with curly braces. For example, the resource can specified as &quot;samlp/{client}&quot;. This method
 can be used to specify a value for the {client} segment of the resource.</p>
 </div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_Builders_UrlBuilderBase_1_Build.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.Builders.UrlBuilderBase%601.Build%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/Builders/UrlBuilderBase.cs/#L76">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_AuthenticationApi_Builders_UrlBuilderBase_1_Build_" data-uid="Auth0.AuthenticationApi.Builders.UrlBuilderBase`1.Build*"></a>
               <h4 id="Auth0_AuthenticationApi_Builders_UrlBuilderBase_1_Build" data-uid="Auth0.AuthenticationApi.Builders.UrlBuilderBase`1.Build">Build()</h4>
               <div class="markdown level1 summary"><p>Builds the URL.</p>
 </div>
@@ -289,19 +279,15 @@ can be used to specify a value for the {client} segment of the resource.</p>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><span class="xref">System.Uri</span></td>
-                    <td><p>A <span class="xref">System.Uri</span> with the URL.</p>
+                    <td><span class="xref">Uri</span></td>
+                    <td><p>A <see cref="!:Uri"></see> with the URL.</p>
 </td>
                   </tr>
                 </tbody>
               </table>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_Builders_UrlBuilderBase_1_WithValue_System_String_System_String_.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.Builders.UrlBuilderBase%601.WithValue(System.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/Builders/UrlBuilderBase.cs/#L65">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_AuthenticationApi_Builders_UrlBuilderBase_1_WithValue_" data-uid="Auth0.AuthenticationApi.Builders.UrlBuilderBase`1.WithValue*"></a>
               <h4 id="Auth0_AuthenticationApi_Builders_UrlBuilderBase_1_WithValue_System_String_System_String_" data-uid="Auth0.AuthenticationApi.Builders.UrlBuilderBase`1.WithValue(System.String,System.String)">WithValue(String, String)</h4>
               <div class="markdown level1 summary"><p>Adds an arbitrary query string parameter to the URL.</p>
 </div>
@@ -322,13 +308,13 @@ can be used to specify a value for the {client} segment of the resource.</p>
                 <tbody>
                   <tr>
                     <td><span class="xref">System.String</span></td>
-                    <td><em>name</em></td>
+                    <td><span class="parametername">name</span></td>
                     <td><p>The name of the query string parameter.</p>
 </td>
                   </tr>
                   <tr>
                     <td><span class="xref">System.String</span></td>
-                    <td><em>value</em></td>
+                    <td><span class="parametername">value</span></td>
                     <td><p>The value of the query string parameter.</p>
 </td>
                   </tr>
@@ -350,19 +336,13 @@ can be used to specify a value for the {client} segment of the resource.</p>
                   </tr>
                 </tbody>
               </table>
-            </article>
+                        </article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
-                  <li>
-                    <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_Builders_UrlBuilderBase_1.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.Builders.UrlBuilderBase%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/Builders/UrlBuilderBase.cs/#L12" class="contribution-link">View Source</a>
-                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ApiException
    ">
-    <meta name="generator" content="docfx 2.7.3.0">
+    <meta name="generator" content="docfx 2.15.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="../styles/main.css">
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
+    
     
   </head>
   <body data-spy="scroll" data-target="#affix">
@@ -33,6 +34,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
+              
               <a class="navbar-brand" href="../index.html">
                 <img id="logo" class="svg" src="../logo.svg" alt="">
               </a>
@@ -88,25 +90,37 @@
                   <span class="xref">System.Exception.ToString()</span>
                 </div>
                 <div>
-                  <span class="xref">System.Exception.Data</span>
+                  <span class="xref">System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)</span>
                 </div>
                 <div>
-                  <span class="xref">System.Exception.HelpLink</span>
-                </div>
-                <div>
-                  <span class="xref">System.Exception.HResult</span>
-                </div>
-                <div>
-                  <span class="xref">System.Exception.InnerException</span>
+                  <span class="xref">System.Exception.GetType()</span>
                 </div>
                 <div>
                   <span class="xref">System.Exception.Message</span>
                 </div>
                 <div>
-                  <span class="xref">System.Exception.Source</span>
+                  <span class="xref">System.Exception.Data</span>
+                </div>
+                <div>
+                  <span class="xref">System.Exception.InnerException</span>
+                </div>
+                <div>
+                  <span class="xref">System.Exception.TargetSite</span>
                 </div>
                 <div>
                   <span class="xref">System.Exception.StackTrace</span>
+                </div>
+                <div>
+                  <span class="xref">System.Exception.HelpLink</span>
+                </div>
+                <div>
+                  <span class="xref">System.Exception.Source</span>
+                </div>
+                <div>
+                  <span class="xref">System.Exception.HResult</span>
+                </div>
+                <div>
+                  <span class="xref">System.Exception.SerializeObjectState</span>
                 </div>
                 <div>
                   <span class="xref">System.Object.Equals(System.Object)</span>
@@ -115,35 +129,28 @@
                   <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
                 </div>
                 <div>
-                  <span class="xref">System.Object.GetHashCode()</span>
+                  <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
                 </div>
                 <div>
-                  <span class="xref">System.Object.GetType()</span>
+                  <span class="xref">System.Object.GetHashCode()</span>
                 </div>
                 <div>
                   <span class="xref">System.Object.MemberwiseClone()</span>
                 </div>
-                <div>
-                  <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-                </div>
               </div>
               <h6><strong>Namespace</strong>:Auth0.Core.Exceptions</h6>
-              <h6><strong>Assembly</strong>:Auth0.Core.dll</h6>
+              <h6><strong>Assembly</strong>:cs.temp.dll.dll</h6>
               <h5 id="Auth0_Core_Exceptions_ApiException_syntax">Syntax</h5>
               <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public class ApiException : Exception</code></pre>
+                <pre><code class="lang-csharp hljs">public class ApiException : Exception, ISerializable, _Exception</code></pre>
               </div>
               <h3 id="constructors">Constructors
               </h3>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_Exceptions_ApiException__ctor_System_Net_HttpStatusCode_.md&amp;value=---%0Auid%3A%20Auth0.Core.Exceptions.ApiException.%23ctor(System.Net.HttpStatusCode)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Exceptions/ApiException.cs/#L36">View Source</a>
-              </span>
-              <h4 id="Auth0_Core_Exceptions_ApiException__ctor_System_Net_HttpStatusCode_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor(System.Net.HttpStatusCode)">ApiException(HttpStatusCode)</h4>
-              <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Exceptions.ApiException.html#Auth0_Core_Exceptions_ApiException">ApiException</a> class.</p>
+              
+              
+              <a id="Auth0_Core_Exceptions_ApiException__ctor_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor*"></a>
+              <h4 id="Auth0_Core_Exceptions_ApiException__ctor_HttpStatusCode_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor(HttpStatusCode)">ApiException(HttpStatusCode)</h4>
+              <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Exceptions.ApiException.html">ApiException</a> class.</p>
 </div>
               <div class="markdown level1 conceptual"></div>
               <h5 class="decalaration">Declaration</h5>
@@ -161,22 +168,18 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><span class="xref">System.Net.HttpStatusCode</span></td>
-                    <td><em>statusCode</em></td>
+                    <td><span class="xref">HttpStatusCode</span></td>
+                    <td><span class="parametername">statusCode</span></td>
                     <td><p>The HTTP status code.</p>
 </td>
                   </tr>
                 </tbody>
               </table>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_Exceptions_ApiException__ctor_System_Net_HttpStatusCode_Auth0_Core_ApiError_.md&amp;value=---%0Auid%3A%20Auth0.Core.Exceptions.ApiException.%23ctor(System.Net.HttpStatusCode%2CAuth0.Core.ApiError)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Exceptions/ApiException.cs/#L47">View Source</a>
-              </span>
-              <h4 id="Auth0_Core_Exceptions_ApiException__ctor_System_Net_HttpStatusCode_Auth0_Core_ApiError_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor(System.Net.HttpStatusCode,Auth0.Core.ApiError)">ApiException(HttpStatusCode, ApiError)</h4>
-              <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Exceptions.ApiException.html#Auth0_Core_Exceptions_ApiException">ApiException</a> class.</p>
+              
+              
+              <a id="Auth0_Core_Exceptions_ApiException__ctor_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor*"></a>
+              <h4 id="Auth0_Core_Exceptions_ApiException__ctor_HttpStatusCode_Auth0_Core_ApiError_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor(HttpStatusCode,Auth0.Core.ApiError)">ApiException(HttpStatusCode, ApiError)</h4>
+              <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Exceptions.ApiException.html">ApiException</a> class.</p>
 </div>
               <div class="markdown level1 conceptual"></div>
               <h5 class="decalaration">Declaration</h5>
@@ -194,28 +197,24 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><span class="xref">System.Net.HttpStatusCode</span></td>
-                    <td><em>statusCode</em></td>
+                    <td><span class="xref">HttpStatusCode</span></td>
+                    <td><span class="parametername">statusCode</span></td>
                     <td><p>The status code.</p>
 </td>
                   </tr>
                   <tr>
-                    <td><a class="xref" href="Auth0.Core.ApiError.html#Auth0_Core_ApiError">ApiError</a></td>
-                    <td><em>apiError</em></td>
+                    <td><a class="xref" href="Auth0.Core.ApiError.html">ApiError</a></td>
+                    <td><span class="parametername">apiError</span></td>
                     <td><p>The API error.</p>
 </td>
                   </tr>
                 </tbody>
               </table>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_Exceptions_ApiException__ctor_System_String_System_Exception_.md&amp;value=---%0Auid%3A%20Auth0.Core.Exceptions.ApiException.%23ctor(System.String%2CSystem.Exception)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Exceptions/ApiException.cs/#L27">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_Core_Exceptions_ApiException__ctor_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor*"></a>
               <h4 id="Auth0_Core_Exceptions_ApiException__ctor_System_String_System_Exception_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor(System.String,System.Exception)">ApiException(String, Exception)</h4>
-              <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Exceptions.ApiException.html#Auth0_Core_Exceptions_ApiException">ApiException</a> class.</p>
+              <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Exceptions.ApiException.html">ApiException</a> class.</p>
 </div>
               <div class="markdown level1 conceptual"></div>
               <h5 class="decalaration">Declaration</h5>
@@ -234,13 +233,13 @@
                 <tbody>
                   <tr>
                     <td><span class="xref">System.String</span></td>
-                    <td><em>message</em></td>
+                    <td><span class="parametername">message</span></td>
                     <td><p>The message.</p>
 </td>
                   </tr>
                   <tr>
                     <td><span class="xref">System.Exception</span></td>
-                    <td><em>innerException</em></td>
+                    <td><span class="parametername">innerException</span></td>
                     <td><p>The inner exception.</p>
 </td>
                   </tr>
@@ -248,16 +247,12 @@
               </table>
               <h3 id="properties">Properties
               </h3>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_Exceptions_ApiException_ApiError.md&amp;value=---%0Auid%3A%20Auth0.Core.Exceptions.ApiException.ApiError%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Exceptions/ApiException.cs/#L15">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_Core_Exceptions_ApiException_ApiError_" data-uid="Auth0.Core.Exceptions.ApiException.ApiError*"></a>
               <h4 id="Auth0_Core_Exceptions_ApiException_ApiError" data-uid="Auth0.Core.Exceptions.ApiException.ApiError">ApiError</h4>
-              <div class="markdown level1 summary"><pre><code>The exception payload from the response
-</code></pre></div>
+              <div class="markdown level1 summary"><p>The exception payload from the response</p>
+</div>
               <div class="markdown level1 conceptual"></div>
               <h5 class="decalaration">Declaration</h5>
               <div class="codewrapper">
@@ -273,21 +268,17 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.Core.ApiError.html#Auth0_Core_ApiError">ApiError</a></td>
+                    <td><a class="xref" href="Auth0.Core.ApiError.html">ApiError</a></td>
                     <td></td>
                   </tr>
                 </tbody>
               </table>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_Exceptions_ApiException_StatusCode.md&amp;value=---%0Auid%3A%20Auth0.Core.Exceptions.ApiException.StatusCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Exceptions/ApiException.cs/#L20">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_Core_Exceptions_ApiException_StatusCode_" data-uid="Auth0.Core.Exceptions.ApiException.StatusCode*"></a>
               <h4 id="Auth0_Core_Exceptions_ApiException_StatusCode" data-uid="Auth0.Core.Exceptions.ApiException.StatusCode">StatusCode</h4>
-              <div class="markdown level1 summary"><pre><code>The HTTP status code associated with the repsonse
-</code></pre></div>
+              <div class="markdown level1 summary"><p>The HTTP status code associated with the repsonse</p>
+</div>
               <div class="markdown level1 conceptual"></div>
               <h5 class="decalaration">Declaration</h5>
               <div class="codewrapper">
@@ -303,24 +294,18 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><span class="xref">System.Net.HttpStatusCode</span></td>
+                    <td><span class="xref">HttpStatusCode</span></td>
                     <td></td>
                   </tr>
                 </tbody>
               </table>
-            </article>
+                        </article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
-                  <li>
-                    <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_Core_Exceptions_ApiException.md&amp;value=---%0Auid%3A%20Auth0.Core.Exceptions.ApiException%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.Core/Exceptions/ApiException.cs/#L10" class="contribution-link">View Source</a>
-                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

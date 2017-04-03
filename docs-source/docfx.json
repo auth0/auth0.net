@@ -3,7 +3,7 @@
     {
       "src": [
         {
-          "files": [ "Auth0.Core/Auth0.Core.csproj", "Auth0.AuthenticationApi/Auth0.AuthenticationApi.csproj", "Auth0.ManagementApi/Auth0.ManagementApi.csproj" ],
+          "files": [ "Auth0.Core/**/*.cs", "Auth0.AuthenticationApi/**/*.cs", "Auth0.ManagementApi/**/*.cs" ],
           "exclude": [ "**/bin/**", "**/obj/**" ],
           "cwd": "../src"
         }

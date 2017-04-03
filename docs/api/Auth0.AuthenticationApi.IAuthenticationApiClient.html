@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IAuthenticationApiClient
    ">
-    <meta name="generator" content="docfx 2.7.3.0">
+    <meta name="generator" content="docfx 2.15.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="../styles/main.css">
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
+    
     
   </head>
   <body data-spy="scroll" data-target="#affix">
@@ -33,6 +34,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
+              
               <a class="navbar-brand" href="../index.html">
                 <img id="logo" class="svg" src="../logo.svg" alt="">
               </a>
@@ -74,7 +76,7 @@
 </div>
               <div class="markdown level0 conceptual"></div>
               <h6><strong>Namespace</strong>:Auth0.AuthenticationApi</h6>
-              <h6><strong>Assembly</strong>:Auth0.AuthenticationApi.dll</h6>
+              <h6><strong>Assembly</strong>:cs.temp.dll.dll</h6>
               <h5 id="Auth0_AuthenticationApi_IAuthenticationApiClient_syntax">Syntax</h5>
               <div class="codewrapper">
                 <pre><code class="lang-csharp hljs">public interface IAuthenticationApiClient</code></pre>
@@ -84,20 +86,16 @@
 </div>
               <h3 id="methods">Methods
               </h3>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_IAuthenticationApiClient_AuthenticateAsync_Auth0_AuthenticationApi_Models_AuthenticationRequest_.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.IAuthenticationApiClient.AuthenticateAsync(Auth0.AuthenticationApi.Models.AuthenticationRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/IAuthenticationApiClient.cs/#L23">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_AuthenticateAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.AuthenticateAsync*"></a>
               <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_AuthenticateAsync_Auth0_AuthenticationApi_Models_AuthenticationRequest_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.AuthenticateAsync(Auth0.AuthenticationApi.Models.AuthenticationRequest)">AuthenticateAsync(AuthenticationRequest)</h4>
-              <div class="markdown level1 summary"><p>Given an <a class="xref" href="Auth0.AuthenticationApi.Models.AuthenticationRequest.html#Auth0_AuthenticationApi_Models_AuthenticationRequest">AuthenticationRequest</a>, it will do the authentication on the provider and return a <a class="xref" href="Auth0.AuthenticationApi.Models.AuthenticationResponse.html#Auth0_AuthenticationApi_Models_AuthenticationResponse">AuthenticationResponse</a></p>
-</div>
+              <div class="markdown level1 summary"></div>
               <div class="markdown level1 conceptual"></div>
               <h5 class="decalaration">Declaration</h5>
               <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;AuthenticationResponse&gt; AuthenticateAsync(AuthenticationRequest request)</code></pre>
+                <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use GetTokenAsync(ResourceOwnerTokenRequest) instead&quot;)]
+Task&lt;AccessTokenResponse&gt; AuthenticateAsync(AuthenticationRequest request)</code></pre>
               </div>
               <h5 class="parameters">Parameters</h5>
               <table class="table table-bordered table-striped table-condensed">
@@ -110,10 +108,9 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.AuthenticationRequest.html#Auth0_AuthenticationApi_Models_AuthenticationRequest">AuthenticationRequest</a></td>
-                    <td><em>request</em></td>
-                    <td><p>The authentication request details containing information regarding the connection, username, password etc.</p>
-</td>
+                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.AuthenticationRequest.html">AuthenticationRequest</a></td>
+                    <td><span class="parametername">request</span></td>
+                    <td></td>
                   </tr>
                 </tbody>
               </table>
@@ -127,21 +124,16 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AuthenticationResponse.html#Auth0_AuthenticationApi_Models_AuthenticationResponse">AuthenticationResponse</a>&gt;</td>
-                    <td><p>A Task object with <a class="xref" href="Auth0.AuthenticationApi.Models.AuthenticationResponse.html#Auth0_AuthenticationApi_Models_AuthenticationResponse">AuthenticationResponse</a> which contains the access token.</p>
-</td>
+                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
+                    <td></td>
                   </tr>
                 </tbody>
               </table>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_IAuthenticationApiClient_BuildAuthorizationUrl.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.IAuthenticationApiClient.BuildAuthorizationUrl%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/IAuthenticationApiClient.cs/#L29">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_BuildAuthorizationUrl_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.BuildAuthorizationUrl*"></a>
               <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_BuildAuthorizationUrl" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.BuildAuthorizationUrl">BuildAuthorizationUrl()</h4>
-              <div class="markdown level1 summary"><p>Creates a <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html#Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder">AuthorizationUrlBuilder</a> which is used to build an authorization URL.</p>
+              <div class="markdown level1 summary"><p>Creates a <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a> which is used to build an authorization URL.</p>
 </div>
               <div class="markdown level1 conceptual"></div>
               <h5 class="decalaration">Declaration</h5>
@@ -158,21 +150,17 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html#Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder">AuthorizationUrlBuilder</a></td>
-                    <td><p>A new <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html#Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder">AuthorizationUrlBuilder</a> instance.</p>
+                    <td><a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a></td>
+                    <td><p>A new <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a> instance.</p>
 </td>
                   </tr>
                 </tbody>
               </table>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_IAuthenticationApiClient_BuildLogoutUrl.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.IAuthenticationApiClient.BuildLogoutUrl%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/IAuthenticationApiClient.cs/#L35">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_BuildLogoutUrl_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.BuildLogoutUrl*"></a>
               <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_BuildLogoutUrl" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.BuildLogoutUrl">BuildLogoutUrl()</h4>
-              <div class="markdown level1 summary"><p>Creates a <a class="xref" href="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.html#Auth0_AuthenticationApi_Builders_LogoutUrlBuilder">LogoutUrlBuilder</a> which is used to build a logout URL.</p>
+              <div class="markdown level1 summary"><p>Creates a <a class="xref" href="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.html">LogoutUrlBuilder</a> which is used to build a logout URL.</p>
 </div>
               <div class="markdown level1 conceptual"></div>
               <h5 class="decalaration">Declaration</h5>
@@ -189,21 +177,17 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.html#Auth0_AuthenticationApi_Builders_LogoutUrlBuilder">LogoutUrlBuilder</a></td>
-                    <td><p>A new <a class="xref" href="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.html#Auth0_AuthenticationApi_Builders_LogoutUrlBuilder">LogoutUrlBuilder</a> instance.</p>
+                    <td><a class="xref" href="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.html">LogoutUrlBuilder</a></td>
+                    <td><p>A new <a class="xref" href="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.html">LogoutUrlBuilder</a> instance.</p>
 </td>
                   </tr>
                 </tbody>
               </table>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_IAuthenticationApiClient_BuildSamlUrl_System_String_.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.IAuthenticationApiClient.BuildSamlUrl(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/IAuthenticationApiClient.cs/#L42">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_BuildSamlUrl_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.BuildSamlUrl*"></a>
               <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_BuildSamlUrl_System_String_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.BuildSamlUrl(System.String)">BuildSamlUrl(String)</h4>
-              <div class="markdown level1 summary"><p>Creates a <a class="xref" href="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.html#Auth0_AuthenticationApi_Builders_SamlUrlBuilder">SamlUrlBuilder</a> which is used to build a SAML authentication URL.</p>
+              <div class="markdown level1 summary"><p>Creates a <a class="xref" href="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.html">SamlUrlBuilder</a> which is used to build a SAML authentication URL.</p>
 </div>
               <div class="markdown level1 conceptual"></div>
               <h5 class="decalaration">Declaration</h5>
@@ -222,7 +206,7 @@
                 <tbody>
                   <tr>
                     <td><span class="xref">System.String</span></td>
-                    <td><em>client</em></td>
+                    <td><span class="parametername">client</span></td>
                     <td><p>The name of the client.</p>
 </td>
                   </tr>
@@ -238,21 +222,17 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.html#Auth0_AuthenticationApi_Builders_SamlUrlBuilder">SamlUrlBuilder</a></td>
-                    <td><p>A new <a class="xref" href="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.html#Auth0_AuthenticationApi_Builders_SamlUrlBuilder">SamlUrlBuilder</a> instance.</p>
+                    <td><a class="xref" href="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.html">SamlUrlBuilder</a></td>
+                    <td><p>A new <a class="xref" href="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.html">SamlUrlBuilder</a> instance.</p>
 </td>
                   </tr>
                 </tbody>
               </table>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_IAuthenticationApiClient_BuildWsFedUrl.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.IAuthenticationApiClient.BuildWsFedUrl%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/IAuthenticationApiClient.cs/#L48">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_BuildWsFedUrl_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.BuildWsFedUrl*"></a>
               <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_BuildWsFedUrl" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.BuildWsFedUrl">BuildWsFedUrl()</h4>
-              <div class="markdown level1 summary"><p>Creates a <a class="xref" href="Auth0.AuthenticationApi.Builders.WsFedUrlBuilder.html#Auth0_AuthenticationApi_Builders_WsFedUrlBuilder">WsFedUrlBuilder</a> which is used to build a WS-FED authentication URL.</p>
+              <div class="markdown level1 summary"><p>Creates a <a class="xref" href="Auth0.AuthenticationApi.Builders.WsFedUrlBuilder.html">WsFedUrlBuilder</a> which is used to build a WS-FED authentication URL.</p>
 </div>
               <div class="markdown level1 conceptual"></div>
               <h5 class="decalaration">Declaration</h5>
@@ -269,19 +249,15 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.AuthenticationApi.Builders.WsFedUrlBuilder.html#Auth0_AuthenticationApi_Builders_WsFedUrlBuilder">WsFedUrlBuilder</a></td>
-                    <td><p>A new <a class="xref" href="Auth0.AuthenticationApi.Builders.WsFedUrlBuilder.html#Auth0_AuthenticationApi_Builders_WsFedUrlBuilder">WsFedUrlBuilder</a> instance.</p>
+                    <td><a class="xref" href="Auth0.AuthenticationApi.Builders.WsFedUrlBuilder.html">WsFedUrlBuilder</a></td>
+                    <td><p>A new <a class="xref" href="Auth0.AuthenticationApi.Builders.WsFedUrlBuilder.html">WsFedUrlBuilder</a> instance.</p>
 </td>
                   </tr>
                 </tbody>
               </table>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_IAuthenticationApiClient_ChangePasswordAsync_Auth0_AuthenticationApi_Models_ChangePasswordRequest_.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.IAuthenticationApiClient.ChangePasswordAsync(Auth0.AuthenticationApi.Models.ChangePasswordRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/IAuthenticationApiClient.cs/#L55">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_ChangePasswordAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.ChangePasswordAsync*"></a>
               <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_ChangePasswordAsync_Auth0_AuthenticationApi_Models_ChangePasswordRequest_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.ChangePasswordAsync(Auth0.AuthenticationApi.Models.ChangePasswordRequest)">ChangePasswordAsync(ChangePasswordRequest)</h4>
               <div class="markdown level1 summary"><p>Given the user&#39;s details, Auth0 will send a forgot password email.</p>
 </div>
@@ -301,9 +277,9 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.ChangePasswordRequest.html#Auth0_AuthenticationApi_Models_ChangePasswordRequest">ChangePasswordRequest</a></td>
-                    <td><em>request</em></td>
-                    <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.ChangePasswordRequest.html#Auth0_AuthenticationApi_Models_ChangePasswordRequest">ChangePasswordRequest</a> specifying the user and connection details.</p>
+                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.ChangePasswordRequest.html">ChangePasswordRequest</a></td>
+                    <td><span class="parametername">request</span></td>
+                    <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.ChangePasswordRequest.html">ChangePasswordRequest</a> specifying the user and connection details.</p>
 </td>
                   </tr>
                 </tbody>
@@ -318,19 +294,15 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<span class="xref">System.String</span>&gt;</td>
+                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.String</span>&gt;</td>
                     <td><p>A task object with a string containing the message returned from Auth0.</p>
 </td>
                   </tr>
                 </tbody>
               </table>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_IAuthenticationApiClient_ExchangeCodeForAccessTokenAsync_Auth0_AuthenticationApi_Models_ExchangeCodeRequest_.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.IAuthenticationApiClient.ExchangeCodeForAccessTokenAsync(Auth0.AuthenticationApi.Models.ExchangeCodeRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/IAuthenticationApiClient.cs/#L63">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_ExchangeCodeForAccessTokenAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.ExchangeCodeForAccessTokenAsync*"></a>
               <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_ExchangeCodeForAccessTokenAsync_Auth0_AuthenticationApi_Models_ExchangeCodeRequest_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.ExchangeCodeForAccessTokenAsync(Auth0.AuthenticationApi.Models.ExchangeCodeRequest)">ExchangeCodeForAccessTokenAsync(ExchangeCodeRequest)</h4>
               <div class="markdown level1 summary"><p>Exhanges an OAuth authorization code for an access token. This needs to be called as part of the OAuth authentication process, after the user has
 authenticated and the redirect URI is called with an authorization code. </p>
@@ -338,7 +310,7 @@ authenticated and the redirect URI is called with an authorization code. </p>
               <div class="markdown level1 conceptual"></div>
               <h5 class="decalaration">Declaration</h5>
               <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;AccessToken&gt; ExchangeCodeForAccessTokenAsync(ExchangeCodeRequest request)</code></pre>
+                <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; ExchangeCodeForAccessTokenAsync(ExchangeCodeRequest request)</code></pre>
               </div>
               <h5 class="parameters">Parameters</h5>
               <table class="table table-bordered table-striped table-condensed">
@@ -351,9 +323,9 @@ authenticated and the redirect URI is called with an authorization code. </p>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.ExchangeCodeRequest.html#Auth0_AuthenticationApi_Models_ExchangeCodeRequest">ExchangeCodeRequest</a></td>
-                    <td><em>request</em></td>
-                    <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.ExchangeCodeRequest.html#Auth0_AuthenticationApi_Models_ExchangeCodeRequest">ExchangeCodeRequest</a> containing the authorization code and other information needed to exchange the code for an access token.</p>
+                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.ExchangeCodeRequest.html">ExchangeCodeRequest</a></td>
+                    <td><span class="parametername">request</span></td>
+                    <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.ExchangeCodeRequest.html">ExchangeCodeRequest</a> containing the authorization code and other information needed to exchange the code for an access token.</p>
 </td>
                   </tr>
                 </tbody>
@@ -368,119 +340,14 @@ authenticated and the redirect URI is called with an authorization code. </p>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessToken.html#Auth0_AuthenticationApi_Models_AccessToken">AccessToken</a>&gt;</td>
+                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
                     <td></td>
                   </tr>
                 </tbody>
               </table>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_IAuthenticationApiClient_GetAccessTokenAsync_Auth0_AuthenticationApi_Models_AccessTokenRequest_.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.IAuthenticationApiClient.GetAccessTokenAsync(Auth0.AuthenticationApi.Models.AccessTokenRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/IAuthenticationApiClient.cs/#L73">View Source</a>
-              </span>
-              <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetAccessTokenAsync_Auth0_AuthenticationApi_Models_AccessTokenRequest_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetAccessTokenAsync(Auth0.AuthenticationApi.Models.AccessTokenRequest)">GetAccessTokenAsync(AccessTokenRequest)</h4>
-              <div class="markdown level1 summary"><p>Given the social provider&#39;s access token and the connection specified, it will do the authentication on the provider and return an <a class="xref" href="Auth0.AuthenticationApi.Models.AccessToken.html#Auth0_AuthenticationApi_Models_AccessToken">AccessToken</a>.</p>
-</div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;AccessToken&gt; GetAccessTokenAsync(AccessTokenRequest request)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenRequest.html#Auth0_AuthenticationApi_Models_AccessTokenRequest">AccessTokenRequest</a></td>
-                    <td><em>request</em></td>
-                    <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenRequest.html#Auth0_AuthenticationApi_Models_AccessTokenRequest">AccessTokenRequest</a> containing details about the request.</p>
-</td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessToken.html#Auth0_AuthenticationApi_Models_AccessToken">AccessToken</a>&gt;</td>
-                    <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.AccessToken.html#Auth0_AuthenticationApi_Models_AccessToken">AccessToken</a>.</p>
-</td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetAccessTokenAsync_Auth0_AuthenticationApi_Models_AccessTokenRequest__remarks">Remarks</h5>
-              <div class="markdown level1 remarks"><p>Currently, this endpoint only works for Facebook, Google, Twitter and Weibo.</p>
-</div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_IAuthenticationApiClient_GetDelegationTokenAsync_Auth0_AuthenticationApi_Models_DelegationRequestBase_.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.IAuthenticationApiClient.GetDelegationTokenAsync(Auth0.AuthenticationApi.Models.DelegationRequestBase)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/IAuthenticationApiClient.cs/#L80">View Source</a>
-              </span>
-              <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetDelegationTokenAsync_Auth0_AuthenticationApi_Models_DelegationRequestBase_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetDelegationTokenAsync(Auth0.AuthenticationApi.Models.DelegationRequestBase)">GetDelegationTokenAsync(DelegationRequestBase)</h4>
-              <div class="markdown level1 summary"><p>Given an existing token, this endpoint will generate a new token signed with the target client secret. This is used to flow the identity of the user from the application to an API or across different APIs that are protected with different secrets.</p>
-</div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;AccessToken&gt; GetDelegationTokenAsync(DelegationRequestBase request)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.DelegationRequestBase.html#Auth0_AuthenticationApi_Models_DelegationRequestBase">DelegationRequestBase</a></td>
-                    <td><em>request</em></td>
-                    <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.DelegationRequestBase.html#Auth0_AuthenticationApi_Models_DelegationRequestBase">DelegationRequestBase</a> containing details about the request.</p>
-</td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessToken.html#Auth0_AuthenticationApi_Models_AccessToken">AccessToken</a>&gt;</td>
-                    <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.AccessToken.html#Auth0_AuthenticationApi_Models_AccessToken">AccessToken</a>.</p>
-</td>
-                  </tr>
-                </tbody>
-              </table>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_IAuthenticationApiClient_GetImpersonationUrlAsync_Auth0_AuthenticationApi_Models_ImpersonationRequest_.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.IAuthenticationApiClient.GetImpersonationUrlAsync(Auth0.AuthenticationApi.Models.ImpersonationRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/IAuthenticationApiClient.cs/#L87">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetImpersonationUrlAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetImpersonationUrlAsync*"></a>
               <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetImpersonationUrlAsync_Auth0_AuthenticationApi_Models_ImpersonationRequest_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetImpersonationUrlAsync(Auth0.AuthenticationApi.Models.ImpersonationRequest)">GetImpersonationUrlAsync(ImpersonationRequest)</h4>
               <div class="markdown level1 summary"><p>Generates a link that can be used once to log in as a specific user.</p>
 </div>
@@ -500,9 +367,9 @@ authenticated and the redirect URI is called with an authorization code. </p>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.ImpersonationRequest.html#Auth0_AuthenticationApi_Models_ImpersonationRequest">ImpersonationRequest</a></td>
-                    <td><em>request</em></td>
-                    <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.ImpersonationRequest.html#Auth0_AuthenticationApi_Models_ImpersonationRequest">ImpersonationRequest</a> containing the details of the user to impersonate.</p>
+                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.ImpersonationRequest.html">ImpersonationRequest</a></td>
+                    <td><span class="parametername">request</span></td>
+                    <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.ImpersonationRequest.html">ImpersonationRequest</a> containing the details of the user to impersonate.</p>
 </td>
                   </tr>
                 </tbody>
@@ -517,19 +384,15 @@ authenticated and the redirect URI is called with an authorization code. </p>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<span class="xref">System.Uri</span>&gt;</td>
-                    <td><p>A <span class="xref">System.Uri</span> which can be used to sign in as the specified user.</p>
+                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">Uri</span>&gt;</td>
+                    <td><p>A <see cref="!:Uri"></see> which can be used to sign in as the specified user.</p>
 </td>
                   </tr>
                 </tbody>
               </table>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_IAuthenticationApiClient_GetSamlMetadataAsync_System_String_.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.IAuthenticationApiClient.GetSamlMetadataAsync(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/IAuthenticationApiClient.cs/#L94">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetSamlMetadataAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetSamlMetadataAsync*"></a>
               <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetSamlMetadataAsync_System_String_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetSamlMetadataAsync(System.String)">GetSamlMetadataAsync(String)</h4>
               <div class="markdown level1 summary"><p>Returns the SAML 2.0 meta data for a client.</p>
 </div>
@@ -550,7 +413,7 @@ authenticated and the redirect URI is called with an authorization code. </p>
                 <tbody>
                   <tr>
                     <td><span class="xref">System.String</span></td>
-                    <td><em>clientId</em></td>
+                    <td><span class="parametername">clientId</span></td>
                     <td><p>The client (App) ID for which meta data must be returned.</p>
 </td>
                   </tr>
@@ -566,26 +429,22 @@ authenticated and the redirect URI is called with an authorization code. </p>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<span class="xref">System.String</span>&gt;</td>
+                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.String</span>&gt;</td>
                     <td><p>The meta data XML .</p>
 </td>
                   </tr>
                 </tbody>
               </table>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenInfoAsync_System_String_.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenInfoAsync(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/IAuthenticationApiClient.cs/#L101">View Source</a>
-              </span>
-              <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenInfoAsync_System_String_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenInfoAsync(System.String)">GetTokenInfoAsync(String)</h4>
-              <div class="markdown level1 summary"><p>Validates a JSON Web Token (signature and expiration) and returns the user information associated with the user id (sub property) of the token.</p>
+              
+              
+              <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync*"></a>
+              <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_AuthorizationCodePkceTokenRequest_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.AuthorizationCodePkceTokenRequest)">GetTokenAsync(AuthorizationCodePkceTokenRequest)</h4>
+              <div class="markdown level1 summary"><p>Request an Access Token using the Authorization Code (PKCE) flow.</p>
 </div>
               <div class="markdown level1 conceptual"></div>
               <h5 class="decalaration">Declaration</h5>
               <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;User&gt; GetTokenInfoAsync(string idToken)</code></pre>
+                <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; GetTokenAsync(AuthorizationCodePkceTokenRequest request)</code></pre>
               </div>
               <h5 class="parameters">Parameters</h5>
               <table class="table table-bordered table-striped table-condensed">
@@ -598,9 +457,9 @@ authenticated and the redirect URI is called with an authorization code. </p>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><span class="xref">System.String</span></td>
-                    <td><em>idToken</em></td>
-                    <td><p>The identifier token.</p>
+                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.AuthorizationCodePkceTokenRequest.html">AuthorizationCodePkceTokenRequest</a></td>
+                    <td><span class="parametername">request</span></td>
+                    <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest.html">ClientCredentialsTokenRequest</a> containing the information of the request.</p>
 </td>
                   </tr>
                 </tbody>
@@ -615,26 +474,199 @@ authenticated and the redirect URI is called with an authorization code. </p>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<a class="xref" href="Auth0.Core.User.html#Auth0_Core_User">User</a>&gt;</td>
-                    <td><p>The <a class="xref" href="Auth0.Core.User.html#Auth0_Core_User">User</a> associated with the token.</p>
+                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
+                    <td><p>An <a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a> containing the token information</p>
 </td>
                   </tr>
                 </tbody>
               </table>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_IAuthenticationApiClient_GetUserInfoAsync_System_String_.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.IAuthenticationApiClient.GetUserInfoAsync(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/IAuthenticationApiClient.cs/#L108">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync*"></a>
+              <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_AuthorizationCodeTokenRequest_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest)">GetTokenAsync(AuthorizationCodeTokenRequest)</h4>
+              <div class="markdown level1 summary"><p>Request an Access Token using the Authorization Code Grant flow.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; GetTokenAsync(AuthorizationCodeTokenRequest request)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest.html">AuthorizationCodeTokenRequest</a></td>
+                    <td><span class="parametername">request</span></td>
+                    <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest.html">ClientCredentialsTokenRequest</a> containing the information of the request.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
+                    <td><p>An <a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a> containing the token information</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+              
+              <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync*"></a>
+              <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_ClientCredentialsTokenRequest_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest)">GetTokenAsync(ClientCredentialsTokenRequest)</h4>
+              <div class="markdown level1 summary"><p>Request an Access Token using the Client Credentials Grant flow.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; GetTokenAsync(ClientCredentialsTokenRequest request)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest.html">ClientCredentialsTokenRequest</a></td>
+                    <td><span class="parametername">request</span></td>
+                    <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest.html">ClientCredentialsTokenRequest</a> containing the information of the request.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
+                    <td><p>An <a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a> containing the token information</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+              
+              <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync*"></a>
+              <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_RefreshTokenRequest_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.RefreshTokenRequest)">GetTokenAsync(RefreshTokenRequest)</h4>
+              <div class="markdown level1 summary"><p>Given a <a class="xref" href="Auth0.AuthenticationApi.Models.RefreshTokenRequest.html">RefreshTokenRequest</a>, it will retrieve a refreshed access token from the authorization server.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; GetTokenAsync(RefreshTokenRequest request)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.RefreshTokenRequest.html">RefreshTokenRequest</a></td>
+                    <td><span class="parametername">request</span></td>
+                    <td><p>The refresh token request details, containing a valid refresh token.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
+                    <td><p>The new token issued by the server.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+              
+              <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync*"></a>
+              <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest)">GetTokenAsync(ResourceOwnerTokenRequest)</h4>
+              <div class="markdown level1 summary"></div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; GetTokenAsync(ResourceOwnerTokenRequest request)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.html">ResourceOwnerTokenRequest</a></td>
+                    <td><span class="parametername">request</span></td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              <h5 class="returns">Returns</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
+                    <td></td>
+                  </tr>
+                </tbody>
+              </table>
+              
+              
+              <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetUserInfoAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetUserInfoAsync*"></a>
               <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetUserInfoAsync_System_String_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetUserInfoAsync(System.String)">GetUserInfoAsync(String)</h4>
               <div class="markdown level1 summary"><p>Returns the user information based on the Auth0 access token (obtained during login).</p>
 </div>
               <div class="markdown level1 conceptual"></div>
               <h5 class="decalaration">Declaration</h5>
               <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;User&gt; GetUserInfoAsync(string accessToken)</code></pre>
+                <pre><code class="lang-csharp hljs">Task&lt;UserInfo&gt; GetUserInfoAsync(string accessToken)</code></pre>
               </div>
               <h5 class="parameters">Parameters</h5>
               <table class="table table-bordered table-striped table-condensed">
@@ -648,7 +680,7 @@ authenticated and the redirect URI is called with an authorization code. </p>
                 <tbody>
                   <tr>
                     <td><span class="xref">System.String</span></td>
-                    <td><em>accessToken</em></td>
+                    <td><span class="parametername">accessToken</span></td>
                     <td><p>The access token.</p>
 </td>
                   </tr>
@@ -664,19 +696,15 @@ authenticated and the redirect URI is called with an authorization code. </p>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<a class="xref" href="Auth0.Core.User.html#Auth0_Core_User">User</a>&gt;</td>
-                    <td><p>The <a class="xref" href="Auth0.Core.User.html#Auth0_Core_User">User</a> associated with the token.</p>
+                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.UserInfo.html">UserInfo</a>&gt;</td>
+                    <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.UserInfo.html">UserInfo</a> associated with the token.</p>
 </td>
                   </tr>
                 </tbody>
               </table>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_IAuthenticationApiClient_GetWsFedMetadataAsync.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.IAuthenticationApiClient.GetWsFedMetadataAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/IAuthenticationApiClient.cs/#L114">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetWsFedMetadataAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetWsFedMetadataAsync*"></a>
               <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetWsFedMetadataAsync" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetWsFedMetadataAsync">GetWsFedMetadataAsync()</h4>
               <div class="markdown level1 summary"><p>Returns the WS Federation meta data.</p>
 </div>
@@ -695,19 +723,15 @@ authenticated and the redirect URI is called with an authorization code. </p>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<span class="xref">System.String</span>&gt;</td>
+                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.String</span>&gt;</td>
                     <td><p>The meta data XML</p>
 </td>
                   </tr>
                 </tbody>
               </table>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_IAuthenticationApiClient_SignupUserAsync_Auth0_AuthenticationApi_Models_SignupUserRequest_.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.IAuthenticationApiClient.SignupUserAsync(Auth0.AuthenticationApi.Models.SignupUserRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/IAuthenticationApiClient.cs/#L121">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_SignupUserAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.SignupUserAsync*"></a>
               <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_SignupUserAsync_Auth0_AuthenticationApi_Models_SignupUserRequest_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.SignupUserAsync(Auth0.AuthenticationApi.Models.SignupUserRequest)">SignupUserAsync(SignupUserRequest)</h4>
               <div class="markdown level1 summary"><p>Given the user credentials, the connection specified and the Auth0 account information, it will create a new user. </p>
 </div>
@@ -727,9 +751,9 @@ authenticated and the redirect URI is called with an authorization code. </p>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.SignupUserRequest.html#Auth0_AuthenticationApi_Models_SignupUserRequest">SignupUserRequest</a></td>
-                    <td><em>request</em></td>
-                    <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.SignupUserRequest.html#Auth0_AuthenticationApi_Models_SignupUserRequest">SignupUserRequest</a> containing information of the user to sign up.</p>
+                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.SignupUserRequest.html">SignupUserRequest</a></td>
+                    <td><span class="parametername">request</span></td>
+                    <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.SignupUserRequest.html">SignupUserRequest</a> containing information of the user to sign up.</p>
 </td>
                   </tr>
                 </tbody>
@@ -744,19 +768,15 @@ authenticated and the redirect URI is called with an authorization code. </p>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.SignupUserResponse.html#Auth0_AuthenticationApi_Models_SignupUserResponse">SignupUserResponse</a>&gt;</td>
-                    <td><p>A <a class="xref" href="Auth0.AuthenticationApi.Models.SignupUserResponse.html#Auth0_AuthenticationApi_Models_SignupUserResponse">SignupUserResponse</a> with the information of the signed up user.</p>
+                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.SignupUserResponse.html">SignupUserResponse</a>&gt;</td>
+                    <td><p>A <a class="xref" href="Auth0.AuthenticationApi.Models.SignupUserResponse.html">SignupUserResponse</a> with the information of the signed up user.</p>
 </td>
                   </tr>
                 </tbody>
               </table>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_IAuthenticationApiClient_StartPasswordlessEmailFlowAsync_Auth0_AuthenticationApi_Models_PasswordlessEmailRequest_.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessEmailFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/IAuthenticationApiClient.cs/#L128">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_StartPasswordlessEmailFlowAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessEmailFlowAsync*"></a>
               <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_StartPasswordlessEmailFlowAsync_Auth0_AuthenticationApi_Models_PasswordlessEmailRequest_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessEmailFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailRequest)">StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest)</h4>
               <div class="markdown level1 summary"><p>Starts a new Passwordless email flow.</p>
 </div>
@@ -776,9 +796,9 @@ authenticated and the redirect URI is called with an authorization code. </p>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessEmailRequest.html#Auth0_AuthenticationApi_Models_PasswordlessEmailRequest">PasswordlessEmailRequest</a></td>
-                    <td><em>request</em></td>
-                    <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessEmailRequest.html#Auth0_AuthenticationApi_Models_PasswordlessEmailRequest">PasswordlessEmailRequest</a> containing the information about the new Passwordless flow to start.</p>
+                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessEmailRequest.html">PasswordlessEmailRequest</a></td>
+                    <td><span class="parametername">request</span></td>
+                    <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessEmailRequest.html">PasswordlessEmailRequest</a> containing the information about the new Passwordless flow to start.</p>
 </td>
                   </tr>
                 </tbody>
@@ -793,19 +813,15 @@ authenticated and the redirect URI is called with an authorization code. </p>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessEmailResponse.html#Auth0_AuthenticationApi_Models_PasswordlessEmailResponse">PasswordlessEmailResponse</a>&gt;</td>
-                    <td><p>A <a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessEmailResponse.html#Auth0_AuthenticationApi_Models_PasswordlessEmailResponse">PasswordlessEmailResponse</a> containing the response.</p>
+                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessEmailResponse.html">PasswordlessEmailResponse</a>&gt;</td>
+                    <td><p>A <a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessEmailResponse.html">PasswordlessEmailResponse</a> containing the response.</p>
 </td>
                   </tr>
                 </tbody>
               </table>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_IAuthenticationApiClient_StartPasswordlessSmsFlowAsync_Auth0_AuthenticationApi_Models_PasswordlessSmsRequest_.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessSmsFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessSmsRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/IAuthenticationApiClient.cs/#L135">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_StartPasswordlessSmsFlowAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessSmsFlowAsync*"></a>
               <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_StartPasswordlessSmsFlowAsync_Auth0_AuthenticationApi_Models_PasswordlessSmsRequest_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessSmsFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessSmsRequest)">StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest)</h4>
               <div class="markdown level1 summary"><p>Starts a new Passwordless SMS flow.</p>
 </div>
@@ -825,9 +841,9 @@ authenticated and the redirect URI is called with an authorization code. </p>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.html#Auth0_AuthenticationApi_Models_PasswordlessSmsRequest">PasswordlessSmsRequest</a></td>
-                    <td><em>request</em></td>
-                    <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.html#Auth0_AuthenticationApi_Models_PasswordlessSmsRequest">PasswordlessSmsRequest</a> containing the information about the new Passwordless flow to start.</p>
+                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.html">PasswordlessSmsRequest</a></td>
+                    <td><span class="parametername">request</span></td>
+                    <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.html">PasswordlessSmsRequest</a> containing the information about the new Passwordless flow to start.</p>
 </td>
                   </tr>
                 </tbody>
@@ -842,19 +858,15 @@ authenticated and the redirect URI is called with an authorization code. </p>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessSmsResponse.html#Auth0_AuthenticationApi_Models_PasswordlessSmsResponse">PasswordlessSmsResponse</a>&gt;</td>
-                    <td><p>A <a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessSmsResponse.html#Auth0_AuthenticationApi_Models_PasswordlessSmsResponse">PasswordlessSmsResponse</a> containing the response.</p>
+                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessSmsResponse.html">PasswordlessSmsResponse</a>&gt;</td>
+                    <td><p>A <a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessSmsResponse.html">PasswordlessSmsResponse</a> containing the response.</p>
 </td>
                   </tr>
                 </tbody>
               </table>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_IAuthenticationApiClient_UnlinkUserAsync_Auth0_AuthenticationApi_Models_UnlinkUserRequest_.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.IAuthenticationApiClient.UnlinkUserAsync(Auth0.AuthenticationApi.Models.UnlinkUserRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/IAuthenticationApiClient.cs/#L142">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_UnlinkUserAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.UnlinkUserAsync*"></a>
               <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_UnlinkUserAsync_Auth0_AuthenticationApi_Models_UnlinkUserRequest_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.UnlinkUserAsync(Auth0.AuthenticationApi.Models.UnlinkUserRequest)">UnlinkUserAsync(UnlinkUserRequest)</h4>
               <div class="markdown level1 summary"><p>Unlinks a secondary account from a primary account.</p>
 </div>
@@ -874,9 +886,9 @@ authenticated and the redirect URI is called with an authorization code. </p>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.UnlinkUserRequest.html#Auth0_AuthenticationApi_Models_UnlinkUserRequest">UnlinkUserRequest</a></td>
-                    <td><em>request</em></td>
-                    <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.UnlinkUserRequest.html#Auth0_AuthenticationApi_Models_UnlinkUserRequest">UnlinkUserRequest</a> containing the information of the accounts to unlink.</p>
+                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.UnlinkUserRequest.html">UnlinkUserRequest</a></td>
+                    <td><span class="parametername">request</span></td>
+                    <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.UnlinkUserRequest.html">UnlinkUserRequest</a> containing the information of the accounts to unlink.</p>
 </td>
                   </tr>
                 </tbody>
@@ -897,15 +909,11 @@ authenticated and the redirect URI is called with an authorization code. </p>
                   </tr>
                 </tbody>
               </table>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_IAuthenticationApiClient_UsernamePasswordLoginAsync_Auth0_AuthenticationApi_Models_UsernamePasswordLoginRequest_.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.IAuthenticationApiClient.UsernamePasswordLoginAsync(Auth0.AuthenticationApi.Models.UsernamePasswordLoginRequest)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/IAuthenticationApiClient.cs/#L149">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_UsernamePasswordLoginAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.UsernamePasswordLoginAsync*"></a>
               <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_UsernamePasswordLoginAsync_Auth0_AuthenticationApi_Models_UsernamePasswordLoginRequest_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.UsernamePasswordLoginAsync(Auth0.AuthenticationApi.Models.UsernamePasswordLoginRequest)">UsernamePasswordLoginAsync(UsernamePasswordLoginRequest)</h4>
-              <div class="markdown level1 summary"><p>Given an <a class="xref" href="Auth0.AuthenticationApi.Models.UsernamePasswordLoginRequest.html#Auth0_AuthenticationApi_Models_UsernamePasswordLoginRequest">UsernamePasswordLoginRequest</a>, it will do the authentication on the provider and return a <a class="xref" href="Auth0.AuthenticationApi.Models.UsernamePasswordLoginResponse.html#Auth0_AuthenticationApi_Models_UsernamePasswordLoginResponse">UsernamePasswordLoginResponse</a></p>
+              <div class="markdown level1 summary"><p>Given an <a class="xref" href="Auth0.AuthenticationApi.Models.UsernamePasswordLoginRequest.html">UsernamePasswordLoginRequest</a>, it will do the authentication on the provider and return a <a class="xref" href="Auth0.AuthenticationApi.Models.UsernamePasswordLoginResponse.html">UsernamePasswordLoginResponse</a></p>
 </div>
               <div class="markdown level1 conceptual"></div>
               <h5 class="decalaration">Declaration</h5>
@@ -923,8 +931,8 @@ authenticated and the redirect URI is called with an authorization code. </p>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.UsernamePasswordLoginRequest.html#Auth0_AuthenticationApi_Models_UsernamePasswordLoginRequest">UsernamePasswordLoginRequest</a></td>
-                    <td><em>request</em></td>
+                    <td><a class="xref" href="Auth0.AuthenticationApi.Models.UsernamePasswordLoginRequest.html">UsernamePasswordLoginRequest</a></td>
+                    <td><span class="parametername">request</span></td>
                     <td><p>The authentication request details containing information regarding the connection, username, password etc.</p>
 </td>
                   </tr>
@@ -940,25 +948,19 @@ authenticated and the redirect URI is called with an authorization code. </p>
                 </thead>
                 <tbody>
                   <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task&lt;TResult&gt;</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.UsernamePasswordLoginResponse.html#Auth0_AuthenticationApi_Models_UsernamePasswordLoginResponse">UsernamePasswordLoginResponse</a>&gt;</td>
-                    <td><p>A <a class="xref" href="Auth0.AuthenticationApi.Models.UsernamePasswordLoginResponse.html#Auth0_AuthenticationApi_Models_UsernamePasswordLoginResponse">UsernamePasswordLoginResponse</a> containing the WS-Federation Login Form, which can be posted by the user to trigger a server-side login.</p>
+                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.UsernamePasswordLoginResponse.html">UsernamePasswordLoginResponse</a>&gt;</td>
+                    <td><p>A <a class="xref" href="Auth0.AuthenticationApi.Models.UsernamePasswordLoginResponse.html">UsernamePasswordLoginResponse</a> containing the WS-Federation Login Form, which can be posted by the user to trigger a server-side login.</p>
 </td>
                   </tr>
                 </tbody>
               </table>
-            </article>
+                        </article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
-                  <li>
-                    <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_AuthenticationApi_IAuthenticationApiClient.md&amp;value=---%0Auid%3A%20Auth0.AuthenticationApi.IAuthenticationApiClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.AuthenticationApi/IAuthenticationApiClient.cs/#L16" class="contribution-link">View Source</a>
-                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

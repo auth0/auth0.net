@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ManagementApiClient
    ">
-    <meta name="generator" content="docfx 2.7.3.0">
+    <meta name="generator" content="docfx 2.15.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="../styles/main.css">
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
+    
     
   </head>
   <body data-spy="scroll" data-target="#affix">
@@ -33,6 +34,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
+              
               <a class="navbar-brand" href="../index.html">
                 <img id="logo" class="svg" src="../logo.svg" alt="">
               </a>
@@ -81,10 +83,16 @@
               <div class="inheritedMembers">
                 <h5>Inherited Members</h5>
                 <div>
+                  <span class="xref">System.Object.ToString()</span>
+                </div>
+                <div>
                   <span class="xref">System.Object.Equals(System.Object)</span>
                 </div>
                 <div>
                   <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+                </div>
+                <div>
+                  <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
                 </div>
                 <div>
                   <span class="xref">System.Object.GetHashCode()</span>
@@ -95,30 +103,184 @@
                 <div>
                   <span class="xref">System.Object.MemberwiseClone()</span>
                 </div>
-                <div>
-                  <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Object.ToString()</span>
-                </div>
               </div>
               <h6><strong>Namespace</strong>:Auth0.ManagementApi</h6>
-              <h6><strong>Assembly</strong>:Auth0.ManagementApi.dll</h6>
+              <h6><strong>Assembly</strong>:cs.temp.dll.dll</h6>
               <h5 id="Auth0_ManagementApi_ManagementApiClient_syntax">Syntax</h5>
               <div class="codewrapper">
                 <pre><code class="lang-csharp hljs">public class ManagementApiClient : IManagementApiClient</code></pre>
               </div>
               <h3 id="constructors">Constructors
               </h3>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_ManagementApi_ManagementApiClient__ctor_System_String_System_Uri_.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.ManagementApiClient.%23ctor(System.String%2CSystem.Uri)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/ManagementApiClient.cs/#L148">View Source</a>
-              </span>
-              <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_System_Uri_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,System.Uri)">ManagementApiClient(String, Uri)</h4>
-              <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient">ManagementApiClient</a> class.</p>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient__ctor_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor*"></a>
+              <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_System_String_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,System.String)">ManagementApiClient(String, String)</h4>
+              <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public ManagementApiClient(string token, string domain)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.String</span></td>
+                    <td><span class="parametername">token</span></td>
+                    <td><p>The token.</p>
+</td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">System.String</span></td>
+                    <td><span class="parametername">domain</span></td>
+                    <td><p>Your Auth0 domain, e.g. mydomain.auth0.com.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient__ctor_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor*"></a>
+              <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_System_String_Auth0_Core_Http_DiagnosticsHeader_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,System.String,Auth0.Core.Http.DiagnosticsHeader)">ManagementApiClient(String, String, DiagnosticsHeader)</h4>
+              <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public ManagementApiClient(string token, string domain, DiagnosticsHeader diagnostics)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.String</span></td>
+                    <td><span class="parametername">token</span></td>
+                    <td><p>The token.</p>
+</td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">System.String</span></td>
+                    <td><span class="parametername">domain</span></td>
+                    <td><p>Your Auth0 domain, e.g. mydomain.auth0.com.</p>
+</td>
+                  </tr>
+                  <tr>
+                    <td><a class="xref" href="Auth0.Core.Http.DiagnosticsHeader.html">DiagnosticsHeader</a></td>
+                    <td><span class="parametername">diagnostics</span></td>
+                    <td><p>The diagnostics.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient__ctor_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor*"></a>
+              <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_System_String_Auth0_Core_Http_DiagnosticsHeader_HttpMessageHandler_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,System.String,Auth0.Core.Http.DiagnosticsHeader,HttpMessageHandler)">ManagementApiClient(String, String, DiagnosticsHeader, HttpMessageHandler)</h4>
+              <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public ManagementApiClient(string token, string domain, DiagnosticsHeader diagnostics, HttpMessageHandler handler)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.String</span></td>
+                    <td><span class="parametername">token</span></td>
+                    <td><p>The token.</p>
+</td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">System.String</span></td>
+                    <td><span class="parametername">domain</span></td>
+                    <td><p>Your Auth0 domain, e.g. mydomain.auth0.com.</p>
+</td>
+                  </tr>
+                  <tr>
+                    <td><a class="xref" href="Auth0.Core.Http.DiagnosticsHeader.html">DiagnosticsHeader</a></td>
+                    <td><span class="parametername">diagnostics</span></td>
+                    <td><p>The diagnostics.</p>
+</td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">HttpMessageHandler</span></td>
+                    <td><span class="parametername">handler</span></td>
+                    <td><p>The <see cref="!:HttpMessageHandler"></see> which is used for HTTP requests</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient__ctor_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor*"></a>
+              <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_System_String_HttpMessageHandler_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,System.String,HttpMessageHandler)">ManagementApiClient(String, String, HttpMessageHandler)</h4>
+              <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public ManagementApiClient(string token, string domain, HttpMessageHandler handler)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.String</span></td>
+                    <td><span class="parametername">token</span></td>
+                    <td><p>The token.</p>
+</td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">System.String</span></td>
+                    <td><span class="parametername">domain</span></td>
+                    <td><p>Your Auth0 domain, e.g. mydomain.auth0.com.</p>
+</td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">HttpMessageHandler</span></td>
+                    <td><span class="parametername">handler</span></td>
+                    <td><p>The <see cref="!:HttpMessageHandler"></see> which is used for HTTP requests</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient__ctor_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor*"></a>
+              <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_Uri_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,Uri)">ManagementApiClient(String, Uri)</h4>
+              <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class.</p>
 </div>
               <div class="markdown level1 conceptual"></div>
               <h5 class="decalaration">Declaration</h5>
@@ -137,27 +299,23 @@
                 <tbody>
                   <tr>
                     <td><span class="xref">System.String</span></td>
-                    <td><em>token</em></td>
+                    <td><span class="parametername">token</span></td>
                     <td><p>The token.</p>
 </td>
                   </tr>
                   <tr>
-                    <td><span class="xref">System.Uri</span></td>
-                    <td><em>baseUri</em></td>
+                    <td><span class="xref">Uri</span></td>
+                    <td><span class="parametername">baseUri</span></td>
                     <td><p>The base URI.</p>
 </td>
                   </tr>
                 </tbody>
               </table>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_ManagementApi_ManagementApiClient__ctor_System_String_System_Uri_Auth0_Core_Http_DiagnosticsHeader_.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.ManagementApiClient.%23ctor(System.String%2CSystem.Uri%2CAuth0.Core.Http.DiagnosticsHeader)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/ManagementApiClient.cs/#L115">View Source</a>
-              </span>
-              <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_System_Uri_Auth0_Core_Http_DiagnosticsHeader_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,System.Uri,Auth0.Core.Http.DiagnosticsHeader)">ManagementApiClient(String, Uri, DiagnosticsHeader)</h4>
-              <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient">ManagementApiClient</a> class.</p>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient__ctor_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor*"></a>
+              <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_Uri_Auth0_Core_Http_DiagnosticsHeader_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,Uri,Auth0.Core.Http.DiagnosticsHeader)">ManagementApiClient(String, Uri, DiagnosticsHeader)</h4>
+              <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class.</p>
 </div>
               <div class="markdown level1 conceptual"></div>
               <h5 class="decalaration">Declaration</h5>
@@ -176,33 +334,117 @@
                 <tbody>
                   <tr>
                     <td><span class="xref">System.String</span></td>
-                    <td><em>token</em></td>
+                    <td><span class="parametername">token</span></td>
                     <td><p>The token.</p>
 </td>
                   </tr>
                   <tr>
-                    <td><span class="xref">System.Uri</span></td>
-                    <td><em>baseUri</em></td>
+                    <td><span class="xref">Uri</span></td>
+                    <td><span class="parametername">baseUri</span></td>
                     <td><p>The base URI.</p>
 </td>
                   </tr>
                   <tr>
-                    <td><a class="xref" href="Auth0.Core.Http.DiagnosticsHeader.html#Auth0_Core_Http_DiagnosticsHeader">DiagnosticsHeader</a></td>
-                    <td><em>diagnostics</em></td>
+                    <td><a class="xref" href="Auth0.Core.Http.DiagnosticsHeader.html">DiagnosticsHeader</a></td>
+                    <td><span class="parametername">diagnostics</span></td>
                     <td><p>The diagnostics.</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient__ctor_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor*"></a>
+              <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_Uri_Auth0_Core_Http_DiagnosticsHeader_HttpMessageHandler_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,Uri,Auth0.Core.Http.DiagnosticsHeader,HttpMessageHandler)">ManagementApiClient(String, Uri, DiagnosticsHeader, HttpMessageHandler)</h4>
+              <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public ManagementApiClient(string token, Uri baseUri, DiagnosticsHeader diagnostics, HttpMessageHandler handler)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.String</span></td>
+                    <td><span class="parametername">token</span></td>
+                    <td><p>The token.</p>
+</td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">Uri</span></td>
+                    <td><span class="parametername">baseUri</span></td>
+                    <td><p>The base URI.</p>
+</td>
+                  </tr>
+                  <tr>
+                    <td><a class="xref" href="Auth0.Core.Http.DiagnosticsHeader.html">DiagnosticsHeader</a></td>
+                    <td><span class="parametername">diagnostics</span></td>
+                    <td><p>The diagnostics.</p>
+</td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">HttpMessageHandler</span></td>
+                    <td><span class="parametername">handler</span></td>
+                    <td><p>The <see cref="!:HttpMessageHandler"></see> which is used for HTTP requests</p>
+</td>
+                  </tr>
+                </tbody>
+              </table>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient__ctor_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor*"></a>
+              <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_Uri_HttpMessageHandler_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,Uri,HttpMessageHandler)">ManagementApiClient(String, Uri, HttpMessageHandler)</h4>
+              <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class.</p>
+</div>
+              <div class="markdown level1 conceptual"></div>
+              <h5 class="decalaration">Declaration</h5>
+              <div class="codewrapper">
+                <pre><code class="lang-csharp hljs">public ManagementApiClient(string token, Uri baseUri, HttpMessageHandler handler)</code></pre>
+              </div>
+              <h5 class="parameters">Parameters</h5>
+              <table class="table table-bordered table-striped table-condensed">
+                <thead>
+                  <tr>
+                    <th>Type</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="xref">System.String</span></td>
+                    <td><span class="parametername">token</span></td>
+                    <td><p>The token.</p>
+</td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">Uri</span></td>
+                    <td><span class="parametername">baseUri</span></td>
+                    <td><p>The base URI.</p>
+</td>
+                  </tr>
+                  <tr>
+                    <td><span class="xref">HttpMessageHandler</span></td>
+                    <td><span class="parametername">handler</span></td>
+                    <td><p>The <see cref="!:HttpMessageHandler"></see> which is used for HTTP requests</p>
 </td>
                   </tr>
                 </tbody>
               </table>
               <h3 id="properties">Properties
               </h3>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_ManagementApi_ManagementApiClient_BlacklistedTokens.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.ManagementApiClient.BlacklistedTokens%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/ManagementApiClient.cs/#L18">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient_BlacklistedTokens_" data-uid="Auth0.ManagementApi.ManagementApiClient.BlacklistedTokens*"></a>
               <h4 id="Auth0_ManagementApi_ManagementApiClient_BlacklistedTokens" data-uid="Auth0.ManagementApi.ManagementApiClient.BlacklistedTokens">BlacklistedTokens</h4>
               <div class="markdown level1 summary"><p>Contains all the methods to call the /blacklists/tokens endpoints.</p>
 </div>
@@ -221,7 +463,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.ManagementApi.Clients.IBlacklistedTokensClient.html#Auth0_ManagementApi_Clients_IBlacklistedTokensClient">IBlacklistedTokensClient</a></td>
+                    <td><span class="xref">IBlacklistedTokensClient</span></td>
                     <td><p>The blacklisted tokens.</p>
 </td>
                   </tr>
@@ -229,13 +471,9 @@
               </table>
               <h5 class="implements">Implements</h5>
                   <div><a class="xref" href="Auth0.ManagementApi.IManagementApiClient.html#Auth0_ManagementApi_IManagementApiClient_BlacklistedTokens">IManagementApiClient.BlacklistedTokens</a></div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_ManagementApi_ManagementApiClient_ClientGrants.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.ManagementApiClient.ClientGrants%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/ManagementApiClient.cs/#L23">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient_ClientGrants_" data-uid="Auth0.ManagementApi.ManagementApiClient.ClientGrants*"></a>
               <h4 id="Auth0_ManagementApi_ManagementApiClient_ClientGrants" data-uid="Auth0.ManagementApi.ManagementApiClient.ClientGrants">ClientGrants</h4>
               <div class="markdown level1 summary"><p>Contains all the methods to call the /client-grants endpoints</p>
 </div>
@@ -254,20 +492,16 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.ManagementApi.Clients.IClientGrantsClient.html#Auth0_ManagementApi_Clients_IClientGrantsClient">IClientGrantsClient</a></td>
+                    <td><span class="xref">IClientGrantsClient</span></td>
                     <td></td>
                   </tr>
                 </tbody>
               </table>
               <h5 class="implements">Implements</h5>
                   <div><a class="xref" href="Auth0.ManagementApi.IManagementApiClient.html#Auth0_ManagementApi_IManagementApiClient_ClientGrants">IManagementApiClient.ClientGrants</a></div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_ManagementApi_ManagementApiClient_Clients.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.ManagementApiClient.Clients%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/ManagementApiClient.cs/#L29">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient_Clients_" data-uid="Auth0.ManagementApi.ManagementApiClient.Clients*"></a>
               <h4 id="Auth0_ManagementApi_ManagementApiClient_Clients" data-uid="Auth0.ManagementApi.ManagementApiClient.Clients">Clients</h4>
               <div class="markdown level1 summary"><p>Contains all the methods to call the /clients endpoints.</p>
 </div>
@@ -286,7 +520,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.ManagementApi.Clients.IClientsClient.html#Auth0_ManagementApi_Clients_IClientsClient">IClientsClient</a></td>
+                    <td><span class="xref">IClientsClient</span></td>
                     <td><p>The clients.</p>
 </td>
                   </tr>
@@ -294,13 +528,9 @@
               </table>
               <h5 class="implements">Implements</h5>
                   <div><a class="xref" href="Auth0.ManagementApi.IManagementApiClient.html#Auth0_ManagementApi_IManagementApiClient_Clients">IManagementApiClient.Clients</a></div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_ManagementApi_ManagementApiClient_Connections.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.ManagementApiClient.Connections%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/ManagementApiClient.cs/#L35">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient_Connections_" data-uid="Auth0.ManagementApi.ManagementApiClient.Connections*"></a>
               <h4 id="Auth0_ManagementApi_ManagementApiClient_Connections" data-uid="Auth0.ManagementApi.ManagementApiClient.Connections">Connections</h4>
               <div class="markdown level1 summary"><p>Contains all the methods to call the /connections endpoints.</p>
 </div>
@@ -319,7 +549,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.ManagementApi.Clients.IConnectionsClient.html#Auth0_ManagementApi_Clients_IConnectionsClient">IConnectionsClient</a></td>
+                    <td><span class="xref">IConnectionsClient</span></td>
                     <td><p>The connections.</p>
 </td>
                   </tr>
@@ -327,13 +557,9 @@
               </table>
               <h5 class="implements">Implements</h5>
                   <div><a class="xref" href="Auth0.ManagementApi.IManagementApiClient.html#Auth0_ManagementApi_IManagementApiClient_Connections">IManagementApiClient.Connections</a></div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_ManagementApi_ManagementApiClient_DeviceCredentials.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.ManagementApiClient.DeviceCredentials%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/ManagementApiClient.cs/#L41">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient_DeviceCredentials_" data-uid="Auth0.ManagementApi.ManagementApiClient.DeviceCredentials*"></a>
               <h4 id="Auth0_ManagementApi_ManagementApiClient_DeviceCredentials" data-uid="Auth0.ManagementApi.ManagementApiClient.DeviceCredentials">DeviceCredentials</h4>
               <div class="markdown level1 summary"><p>Contains all the methods to call the /device-credentials endpoints.</p>
 </div>
@@ -352,7 +578,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.ManagementApi.Clients.IDeviceCredentialsClient.html#Auth0_ManagementApi_Clients_IDeviceCredentialsClient">IDeviceCredentialsClient</a></td>
+                    <td><span class="xref">IDeviceCredentialsClient</span></td>
                     <td><p>The device credentials.</p>
 </td>
                   </tr>
@@ -360,13 +586,9 @@
               </table>
               <h5 class="implements">Implements</h5>
                   <div><a class="xref" href="Auth0.ManagementApi.IManagementApiClient.html#Auth0_ManagementApi_IManagementApiClient_DeviceCredentials">IManagementApiClient.DeviceCredentials</a></div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_ManagementApi_ManagementApiClient_EmailProvider.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.ManagementApiClient.EmailProvider%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/ManagementApiClient.cs/#L47">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient_EmailProvider_" data-uid="Auth0.ManagementApi.ManagementApiClient.EmailProvider*"></a>
               <h4 id="Auth0_ManagementApi_ManagementApiClient_EmailProvider" data-uid="Auth0.ManagementApi.ManagementApiClient.EmailProvider">EmailProvider</h4>
               <div class="markdown level1 summary"><p>Contains all the methods to call the /emails/provider endpoints.</p>
 </div>
@@ -385,7 +607,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.ManagementApi.Clients.IEmailProviderClient.html#Auth0_ManagementApi_Clients_IEmailProviderClient">IEmailProviderClient</a></td>
+                    <td><span class="xref">IEmailProviderClient</span></td>
                     <td><p>The email provider.</p>
 </td>
                   </tr>
@@ -393,13 +615,9 @@
               </table>
               <h5 class="implements">Implements</h5>
                   <div><a class="xref" href="Auth0.ManagementApi.IManagementApiClient.html#Auth0_ManagementApi_IManagementApiClient_EmailProvider">IManagementApiClient.EmailProvider</a></div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_ManagementApi_ManagementApiClient_Jobs.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.ManagementApiClient.Jobs%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/ManagementApiClient.cs/#L53">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient_Jobs_" data-uid="Auth0.ManagementApi.ManagementApiClient.Jobs*"></a>
               <h4 id="Auth0_ManagementApi_ManagementApiClient_Jobs" data-uid="Auth0.ManagementApi.ManagementApiClient.Jobs">Jobs</h4>
               <div class="markdown level1 summary"><p>Contains all the methods to call the /jobs endpoints.</p>
 </div>
@@ -418,7 +636,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.ManagementApi.Clients.IJobsClient.html#Auth0_ManagementApi_Clients_IJobsClient">IJobsClient</a></td>
+                    <td><span class="xref">IJobsClient</span></td>
                     <td><p>The jobs.</p>
 </td>
                   </tr>
@@ -426,13 +644,9 @@
               </table>
               <h5 class="implements">Implements</h5>
                   <div><a class="xref" href="Auth0.ManagementApi.IManagementApiClient.html#Auth0_ManagementApi_IManagementApiClient_Jobs">IManagementApiClient.Jobs</a></div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_ManagementApi_ManagementApiClient_Logs.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.ManagementApiClient.Logs%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/ManagementApiClient.cs/#L59">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient_Logs_" data-uid="Auth0.ManagementApi.ManagementApiClient.Logs*"></a>
               <h4 id="Auth0_ManagementApi_ManagementApiClient_Logs" data-uid="Auth0.ManagementApi.ManagementApiClient.Logs">Logs</h4>
               <div class="markdown level1 summary"><p>Contains all the methods to call the /logs endpoints.</p>
 </div>
@@ -451,7 +665,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.ManagementApi.Clients.ILogsClient.html#Auth0_ManagementApi_Clients_ILogsClient">ILogsClient</a></td>
+                    <td><span class="xref">ILogsClient</span></td>
                     <td><p>The rules.</p>
 </td>
                   </tr>
@@ -459,13 +673,9 @@
               </table>
               <h5 class="implements">Implements</h5>
                   <div><a class="xref" href="Auth0.ManagementApi.IManagementApiClient.html#Auth0_ManagementApi_IManagementApiClient_Logs">IManagementApiClient.Logs</a></div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_ManagementApi_ManagementApiClient_ResourceServers.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.ManagementApiClient.ResourceServers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/ManagementApiClient.cs/#L64">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient_ResourceServers_" data-uid="Auth0.ManagementApi.ManagementApiClient.ResourceServers*"></a>
               <h4 id="Auth0_ManagementApi_ManagementApiClient_ResourceServers" data-uid="Auth0.ManagementApi.ManagementApiClient.ResourceServers">ResourceServers</h4>
               <div class="markdown level1 summary"><p>Contains all the methods to call the /resource-servers endpoints.</p>
 </div>
@@ -484,20 +694,16 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.ManagementApi.Clients.IResourceServersClient.html#Auth0_ManagementApi_Clients_IResourceServersClient">IResourceServersClient</a></td>
+                    <td><span class="xref">IResourceServersClient</span></td>
                     <td></td>
                   </tr>
                 </tbody>
               </table>
               <h5 class="implements">Implements</h5>
                   <div><a class="xref" href="Auth0.ManagementApi.IManagementApiClient.html#Auth0_ManagementApi_IManagementApiClient_ResourceServers">IManagementApiClient.ResourceServers</a></div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_ManagementApi_ManagementApiClient_Rules.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.ManagementApiClient.Rules%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/ManagementApiClient.cs/#L70">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient_Rules_" data-uid="Auth0.ManagementApi.ManagementApiClient.Rules*"></a>
               <h4 id="Auth0_ManagementApi_ManagementApiClient_Rules" data-uid="Auth0.ManagementApi.ManagementApiClient.Rules">Rules</h4>
               <div class="markdown level1 summary"><p>Contains all the methods to call the /rules endpoints.</p>
 </div>
@@ -516,7 +722,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.ManagementApi.Clients.IRulesClient.html#Auth0_ManagementApi_Clients_IRulesClient">IRulesClient</a></td>
+                    <td><span class="xref">IRulesClient</span></td>
                     <td><p>The rules.</p>
 </td>
                   </tr>
@@ -524,13 +730,9 @@
               </table>
               <h5 class="implements">Implements</h5>
                   <div><a class="xref" href="Auth0.ManagementApi.IManagementApiClient.html#Auth0_ManagementApi_IManagementApiClient_Rules">IManagementApiClient.Rules</a></div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_ManagementApi_ManagementApiClient_Stats.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.ManagementApiClient.Stats%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/ManagementApiClient.cs/#L76">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient_Stats_" data-uid="Auth0.ManagementApi.ManagementApiClient.Stats*"></a>
               <h4 id="Auth0_ManagementApi_ManagementApiClient_Stats" data-uid="Auth0.ManagementApi.ManagementApiClient.Stats">Stats</h4>
               <div class="markdown level1 summary"><p>Contains all the methods to call the /stats endpoints.</p>
 </div>
@@ -549,7 +751,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.ManagementApi.Clients.IStatsClient.html#Auth0_ManagementApi_Clients_IStatsClient">IStatsClient</a></td>
+                    <td><span class="xref">IStatsClient</span></td>
                     <td><p>The stats.</p>
 </td>
                   </tr>
@@ -557,20 +759,16 @@
               </table>
               <h5 class="implements">Implements</h5>
                   <div><a class="xref" href="Auth0.ManagementApi.IManagementApiClient.html#Auth0_ManagementApi_IManagementApiClient_Stats">IManagementApiClient.Stats</a></div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_ManagementApi_ManagementApiClient_TenantSettings.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.ManagementApiClient.TenantSettings%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/ManagementApiClient.cs/#L82">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient_TenantSettings_" data-uid="Auth0.ManagementApi.ManagementApiClient.TenantSettings*"></a>
               <h4 id="Auth0_ManagementApi_ManagementApiClient_TenantSettings" data-uid="Auth0.ManagementApi.ManagementApiClient.TenantSettings">TenantSettings</h4>
               <div class="markdown level1 summary"><p>Contains all the methods to call the /tenants/settings endpoints.</p>
 </div>
               <div class="markdown level1 conceptual"></div>
               <h5 class="decalaration">Declaration</h5>
               <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public ITentantSettingsClient TenantSettings { get; set; }</code></pre>
+                <pre><code class="lang-csharp hljs">public ITenantSettingsClient TenantSettings { get; set; }</code></pre>
               </div>
               <h5 class="propertyValue">Property Value</h5>
               <table class="table table-bordered table-striped table-condensed">
@@ -582,7 +780,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.ManagementApi.Clients.ITentantSettingsClient.html#Auth0_ManagementApi_Clients_ITentantSettingsClient">ITentantSettingsClient</a></td>
+                    <td><span class="xref">ITenantSettingsClient</span></td>
                     <td><p>The tenant settings.</p>
 </td>
                   </tr>
@@ -590,13 +788,9 @@
               </table>
               <h5 class="implements">Implements</h5>
                   <div><a class="xref" href="Auth0.ManagementApi.IManagementApiClient.html#Auth0_ManagementApi_IManagementApiClient_TenantSettings">IManagementApiClient.TenantSettings</a></div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_ManagementApi_ManagementApiClient_Tickets.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.ManagementApiClient.Tickets%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/ManagementApiClient.cs/#L88">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient_Tickets_" data-uid="Auth0.ManagementApi.ManagementApiClient.Tickets*"></a>
               <h4 id="Auth0_ManagementApi_ManagementApiClient_Tickets" data-uid="Auth0.ManagementApi.ManagementApiClient.Tickets">Tickets</h4>
               <div class="markdown level1 summary"><p>Contains all the methods to call the /tickets endpoints.</p>
 </div>
@@ -615,7 +809,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.ManagementApi.Clients.ITicketsClient.html#Auth0_ManagementApi_Clients_ITicketsClient">ITicketsClient</a></td>
+                    <td><span class="xref">ITicketsClient</span></td>
                     <td><p>The tickets.</p>
 </td>
                   </tr>
@@ -623,13 +817,9 @@
               </table>
               <h5 class="implements">Implements</h5>
                   <div><a class="xref" href="Auth0.ManagementApi.IManagementApiClient.html#Auth0_ManagementApi_IManagementApiClient_Tickets">IManagementApiClient.Tickets</a></div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_ManagementApi_ManagementApiClient_UserBlocks.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.ManagementApiClient.UserBlocks%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/ManagementApiClient.cs/#L93">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient_UserBlocks_" data-uid="Auth0.ManagementApi.ManagementApiClient.UserBlocks*"></a>
               <h4 id="Auth0_ManagementApi_ManagementApiClient_UserBlocks" data-uid="Auth0.ManagementApi.ManagementApiClient.UserBlocks">UserBlocks</h4>
               <div class="markdown level1 summary"><p>Contains all the methods to call the /user-blocks endpoints.</p>
 </div>
@@ -648,20 +838,16 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.ManagementApi.Clients.IUserBlocksClient.html#Auth0_ManagementApi_Clients_IUserBlocksClient">IUserBlocksClient</a></td>
+                    <td><span class="xref">IUserBlocksClient</span></td>
                     <td></td>
                   </tr>
                 </tbody>
               </table>
               <h5 class="implements">Implements</h5>
                   <div><a class="xref" href="Auth0.ManagementApi.IManagementApiClient.html#Auth0_ManagementApi_IManagementApiClient_UserBlocks">IManagementApiClient.UserBlocks</a></div>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_ManagementApi_ManagementApiClient_Users.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.ManagementApiClient.Users%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/ManagementApiClient.cs/#L99">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient_Users_" data-uid="Auth0.ManagementApi.ManagementApiClient.Users*"></a>
               <h4 id="Auth0_ManagementApi_ManagementApiClient_Users" data-uid="Auth0.ManagementApi.ManagementApiClient.Users">Users</h4>
               <div class="markdown level1 summary"><p>Contains all the methods to call the /users endpoints.</p>
 </div>
@@ -680,7 +866,7 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.ManagementApi.Clients.IUsersClient.html#Auth0_ManagementApi_Clients_IUsersClient">IUsersClient</a></td>
+                    <td><span class="xref">IUsersClient</span></td>
                     <td><p>The users.</p>
 </td>
                   </tr>
@@ -690,13 +876,9 @@
                   <div><a class="xref" href="Auth0.ManagementApi.IManagementApiClient.html#Auth0_ManagementApi_IManagementApiClient_Users">IManagementApiClient.Users</a></div>
               <h3 id="methods">Methods
               </h3>
-              <span class="small pull-right mobile-hide">
-                <span class="divider">|</span>
-                <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_ManagementApi_ManagementApiClient_GetLastApiInfo.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.ManagementApiClient.GetLastApiInfo%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-              </span>
-              <span class="small pull-right mobile-hide">
-                <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/ManagementApiClient.cs/#L104">View Source</a>
-              </span>
+              
+              
+              <a id="Auth0_ManagementApi_ManagementApiClient_GetLastApiInfo_" data-uid="Auth0.ManagementApi.ManagementApiClient.GetLastApiInfo*"></a>
               <h4 id="Auth0_ManagementApi_ManagementApiClient_GetLastApiInfo" data-uid="Auth0.ManagementApi.ManagementApiClient.GetLastApiInfo">GetLastApiInfo()</h4>
               <div class="markdown level1 summary"><p>Gets information about the last API call;</p>
 </div>
@@ -715,26 +897,20 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><a class="xref" href="Auth0.Core.Http.ApiInfo.html#Auth0_Core_Http_ApiInfo">ApiInfo</a></td>
+                    <td><a class="xref" href="Auth0.Core.Http.ApiInfo.html">ApiInfo</a></td>
                     <td></td>
                   </tr>
                 </tbody>
               </table>
               <h5 class="implements">Implements</h5>
                   <div><a class="xref" href="Auth0.ManagementApi.IManagementApiClient.html#Auth0_ManagementApi_IManagementApiClient_GetLastApiInfo">IManagementApiClient.GetLastApiInfo()</a></div>
-            </article>
+                        </article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
-                  <li>
-                    <a href="https://github.com/auth0/auth0.net/new/v4/docs-source/apispec/new?filename=Auth0_ManagementApi_ManagementApiClient.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.ManagementApiClient%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/ManagementApiClient.cs/#L10" class="contribution-link">View Source</a>
-                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
