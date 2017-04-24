@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Auth0.ManagementApi</id>
-    <version>4.0.0-beta1</version>
+    <version>4.0.0</version>
     <authors>Auth0</authors>
     <owners>Auth0</owners>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
@@ -51,35 +51,14 @@
     <copyright>Copyright 2016</copyright>
     <tags>Auth0 OAuth</tags>
     <dependencies>
-      <group targetFramework="net45">
-        <dependency id="Newtonsoft.Json" version="9.0.1" />
-        <dependency id="Auth0.Core" version="4.0.0-beta1" />
-      </group>
-
-      <group targetFramework="portable-net45+win8+wpa81">
-        <dependency id="Newtonsoft.Json" version="9.0.1" />
-        <dependency id="Auth0.Core" version="4.0.0-beta1" />
-        <dependency id="Microsoft.Net.Http" version="2.2.29" />
-      </group>
-
       <group targetFramework="netstandard1.1">
-        <dependency id="Newtonsoft.Json" version="9.0.1" />
-        <dependency id="Auth0.Core" version="4.0.0-beta1" />
-        <dependency id="System.Net.Http" version="4.1.0" />
-        <dependency id="System.Net.Primitives" version="4.0.11" />
+        <dependency id="Auth0.Core" version="4.0.0" />
+        <dependency id="System.Net.Http" version="4.3.0" />
+        <dependency id="System.Net.Primitives" version="4.3.0" />
       </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="..\src\Auth0.ManagementApi\bin\Release\portable45-net45+win8+wpa81\Auth0.ManagementApi.dll"
-          target="lib\portable-net45+win8+wpa81" />
-    <file src="..\src\Auth0.ManagementApi\bin\Release\portable45-net45+win8+wpa81\Auth0.ManagementApi.pdb"
-          target="lib\portable-net45+win8+wpa81" />
-    <file src="..\src\Auth0.ManagementApi\bin\Release\portable45-net45+win8+wpa81\Auth0.ManagementApi.XML"
-          target="lib\portable-net45+win8+wpa81" />
-    <file src="..\src\Auth0.ManagementApi\bin\Release\net45\Auth0.ManagementApi.dll" target="lib\net45" />
-    <file src="..\src\Auth0.ManagementApi\bin\Release\net45\Auth0.ManagementApi.pdb" target="lib\net45" />
-    <file src="..\src\Auth0.ManagementApi\bin\Release\net45\Auth0.ManagementApi.XML" target="lib\net45" />
     <file src="..\src\Auth0.ManagementApi\bin\Release\netstandard1.1\Auth0.ManagementApi.dll"
           target="lib\netstandard1.1" />
     <file src="..\src\Auth0.ManagementApi\bin\Release\netstandard1.1\Auth0.ManagementApi.pdb"
