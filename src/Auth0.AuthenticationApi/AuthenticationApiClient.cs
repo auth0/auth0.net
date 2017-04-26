@@ -350,6 +350,10 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="request">The authentication request details containing information regarding the username, password etc.</param>
         /// <returns>An <see cref="AccessTokenResponse" /> with the response.</returns>
+        /// <remarks>
+        /// The grant_type parameter required by the /oauth/token endpoint will automatically be inferred from the <paramref name="request"/> parameter. If no Realm was specified,
+        /// then the grant_type will be set to "password". If a Realm was specified, then the grant_type will be set to "http://auth0.com/oauth/grant-type/password-realm"
+        /// </remarks>
         public Task<AccessTokenResponse> GetTokenAsync(ResourceOwnerTokenRequest request)
         {
             var parameters = new Dictionary<string, object>
@@ -363,6 +367,11 @@ namespace Auth0.AuthenticationApi
             if (!string.IsNullOrEmpty(request.ClientSecret))
             {
                 parameters.Add("client_secret", request.ClientSecret);
+            }
+
+            if (!string.IsNullOrEmpty(request.Audience))
+            {
+                parameters.Add("audience", request.Audience);
             }
 
             if (string.IsNullOrEmpty(request.Realm))

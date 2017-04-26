@@ -6,6 +6,11 @@
     public class ResourceOwnerTokenRequest
     {
         /// <summary>
+        /// The unique identifier of the target API you want to access.
+        /// </summary>
+        public string Audience { get; set; }
+
+        /// <summary>
         /// Gets or sets the client (app) identifier.
         /// </summary>
         public string ClientId { get; set; }
