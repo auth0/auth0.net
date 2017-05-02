@@ -265,7 +265,7 @@ namespace Auth0.AuthenticationApi
         /// <summary>
         /// Request an Access Token using the Authorization Code Grant flow.
         /// </summary>
-        /// <param name="request">The <see cref="ClientCredentialsTokenRequest"/> containing the information of the request.</param>
+        /// <param name="request">The <see cref="AuthorizationCodeTokenRequest"/> containing the information of the request.</param>
         /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
         public Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodeTokenRequest request)
         {
@@ -286,7 +286,7 @@ namespace Auth0.AuthenticationApi
         /// <summary>
         /// Request an Access Token using the Authorization Code (PKCE) flow.
         /// </summary>
-        /// <param name="request">The <see cref="ClientCredentialsTokenRequest"/> containing the information of the request.</param>
+        /// <param name="request">The <see cref="AuthorizationCodePkceTokenRequest"/> containing the information of the request.</param>
         /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
         public Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodePkceTokenRequest request)
         {
