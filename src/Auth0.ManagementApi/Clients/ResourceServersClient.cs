@@ -58,6 +58,16 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
+        /// Get all resource servers
+        /// </summary>
+        /// <returns>Task&lt;IList&lt;Core.ResourceServer&gt;&gt;.</returns>
+        public Task<IList<ResourceServer>> GetAllAsync()
+        {
+            return Connection.GetAsync<IList<ResourceServer>>("resource-servers",
+                null, null, null, null);
+        }
+
+        /// <summary>
         /// Updates a resource server
         /// </summary>
         /// <param name="id">The id of the resource server to update</param>
