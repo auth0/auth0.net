@@ -9,6 +9,8 @@ namespace Auth0.ManagementApi.Clients
     /// </summary>
     public interface IResourceServersClient
     {
+        Task<System.Collections.Generic.IList<ResourceServer>> GetAllAsync();
+
         /// <summary>
         /// Creates a new resource server
         /// </summary>

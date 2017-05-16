@@ -60,7 +60,7 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Get all resource servers
         /// </summary>
-        /// <returns>Task&lt;IList&lt;Core.ResourceServer&gt;&gt;.</returns>
+        /// <returns>A list of <see cref="ResourceServer"/></returns>
         public Task<IList<ResourceServer>> GetAllAsync()
         {
             return Connection.GetAsync<IList<ResourceServer>>("resource-servers",

@@ -19,6 +19,9 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             var apiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
+            // Get all the resource servers
+            var resourceServersBefore = await apiClient.ResourceServers.GetAllAsync();
+
             // Add a new resource server
             var identifier = Guid.NewGuid();
             var newResourceServerRequest = new ResourceServerCreateRequest()
@@ -39,6 +42,10 @@ namespace Auth0.ManagementApi.IntegrationTests
             };
             var newResourceServerResponse = await apiClient.ResourceServers.CreateAsync(newResourceServerRequest);
             newResourceServerResponse.ShouldBeEquivalentTo(newResourceServerRequest, options => options.Excluding(rs => rs.Id));
+
+            // Get all the resource servers again. Verify we now have one more
+            var resourceServersAfter = await apiClient.ResourceServers.GetAllAsync();
+            resourceServersAfter.Count.Should().Be(resourceServersBefore.Count + 1);
 
             // Update the resource server
             var resourceServerRequest = new ResourceServerUpdateRequest()
