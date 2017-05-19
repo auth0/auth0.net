@@ -119,9 +119,11 @@ namespace Auth0.ManagementApi.Models
         [JsonProperty("name")]
         public string Name { get; set; }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         [JsonProperty("resource_servers")]
-        public ResourceServer[] ResourceServers { get; set; }
+        public ClientResourceServerAssociation[] ResourceServers { get; set; }
 
         /// <summary>
         /// True to use Auth0 instead of the IdP to do Single Sign On, false otherwise.
