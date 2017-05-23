@@ -119,9 +119,14 @@ namespace Auth0.ManagementApi.Models
         [JsonProperty("name")]
         public string Name { get; set; }
 
-
+        /// <summary>
+        /// A list of resource servers (APIs) that the client is authorized to request access tokens for, using the Client Credentials exchange.
+        /// </summary>
+        /// <remarks>
+        /// This is a legacy structure. If you want to grant Resource Server (API) access to clients, please use <see cref="ManagementApiClient.ClientGrants"/> instead.
+        /// </remarks>
         [JsonProperty("resource_servers")]
-        public ResourceServer[] ResourceServers { get; set; }
+        public ClientResourceServerAssociation[] ResourceServers { get; set; }
 
         /// <summary>
         /// True to use Auth0 instead of the IdP to do Single Sign On, false otherwise.

@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Auth0.AuthenticationApi;
 using Auth0.ManagementApi;
+using Auth0.ManagementApi.Models;
 
 namespace ConsoleWorkbench
 {
@@ -13,7 +14,7 @@ namespace ConsoleWorkbench
     {
         public static void Main(string[] args)
         {
-            AuthenticationApiMainAsync(args).GetAwaiter().GetResult();
+            ManagementApiMainAsync(args).GetAwaiter().GetResult();
         }
 
 
@@ -45,15 +46,29 @@ namespace ConsoleWorkbench
             {
                 string token = "";
 
-                var handler = new HttpClientHandler
+                var api = new ManagementApiClient(token, "jerrie.auth0.com");
+
+                ClientCreateRequest clientCreateRequest = new ClientCreateRequest()
                 {
-                    Proxy = new WebProxy()
+                    Name = "Test name",
+                    ApplicationType = ClientApplicationType.NonInteractive,
+                    ResourceServers = new ClientResourceServerAssociation[]
+                    {
+                        new ClientResourceServerAssociation
+                        {
+                            Identifier = "urn:test-api",
+                            Scopes = new string[] { "read:appointments", "create:appointments" }
+                        }
+                    },
+                    JwtConfiguration = new JwtConfiguration
+                    {
+                        SigningAlgorithm = "RS256",
+                        LifetimeInSeconds = 3600
+                    }
                 };
-                var api = new ManagementApiClient(token, "jerrie.auth0.com", handler);
+                var createTask = await api.Clients.CreateAsync(clientCreateRequest);
 
-                var clients = await api.Clients.GetAllAsync();
-
-                Console.WriteLine($"The tenant has {clients.Count} clients");
+                //Console.WriteLine($"The tenant has {clients.Count} clients");
             }
             catch (Exception ex)
             {
