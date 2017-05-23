@@ -120,8 +120,11 @@ namespace Auth0.ManagementApi.Models
         public string Name { get; set; }
 
         /// <summary>
-        /// 
+        /// A list of resource servers (APIs) that the client is authorized to request access tokens for, using the Client Credentials exchange.
         /// </summary>
+        /// <remarks>
+        /// This is a legacy structure. If you want to grant Resource Server (API) access to clients, please use <see cref="ManagementApiClient.ClientGrants"/> instead.
+        /// </remarks>
         [JsonProperty("resource_servers")]
         public ClientResourceServerAssociation[] ResourceServers { get; set; }
 
