@@ -21,6 +21,15 @@ namespace Auth0.ManagementApi.Models
         public string AccessToken { get; set; }
 
         /// <summary>
+        /// The refresh token that can be used to call the <see cref="Provider"/>'s API to renew access tokens.
+        /// </summary>
+        /// <remarks>
+        /// The refresh token is only available for certain providers.
+        /// </remarks>
+        [JsonProperty("refresh_token")]
+        public string RefreshToken { get; set; }
+
+        /// <summary>
         /// The name of the connection for the identity.
         /// </summary>
         /// <remarks>
