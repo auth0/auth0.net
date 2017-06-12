@@ -55,8 +55,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             newUserResponse.Email.Should().Be(newUserRequest.Email);
 
             // Get all the users again. Verify we now have one more
-            var usersAfter = await apiClient.Users.GetAllAsync();
-            usersAfter.Count.Should().Be(usersBefore.Count + 1);
+            //var usersAfter = await apiClient.Users.GetAllAsync();
+            //usersAfter.Count.Should().Be(usersBefore.Count + 1);
 
             // Update the user
             var updateUserRequest = new UserUpdateRequest
@@ -72,11 +72,13 @@ namespace Auth0.ManagementApi.IntegrationTests
             updateUserRequest = new UserUpdateRequest
             {
                 EmailVerified = true, // We need to pass in at least one property, so we set this as the other properties below will not be serialized
+#pragma warning disable 618
                 FirstName = "firstname",
                 LastName = "lastname",
                 NickName = "nickname",
                 FullName = "fullname",
                 Picture = "picture url.."
+#pragma warning restore 618
             };
             await apiClient.Users.UpdateAsync(newUserResponse.UserId, updateUserRequest);
 
@@ -84,6 +86,11 @@ namespace Auth0.ManagementApi.IntegrationTests
             var user = await apiClient.Users.GetAsync(newUserResponse.UserId);
             user.Should().NotBeNull();
             user.Email.Should().Be(updateUserResponse.Email);
+
+            // Check to see whether we can search for the user by email
+            await Task.Delay(1000); // Not ideal, but unfortunately we need to give the indexing engine a moment to index the user. 1 sec seems to do it
+            var searchResults = await apiClient.Users.GetAllAsync(q: $"email.raw: \"{updateUserResponse.Email}\"", searchEngine: "v2");
+            searchResults.Count.Should().Be(1);
 
             // Delete the user and ensure we get an exception when trying to fetch them again
             await apiClient.Users.DeleteAsync(user.UserId);
