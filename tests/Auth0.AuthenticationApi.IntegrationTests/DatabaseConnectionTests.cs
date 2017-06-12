@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Auth0.AuthenticationApi.Models;
+using Auth0.Core.Exceptions;
 using Auth0.ManagementApi;
 using Auth0.ManagementApi.Models;
 using Auth0.Tests.Shared;
@@ -25,7 +26,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             {
                 Name = Guid.NewGuid().ToString("N"),
                 Strategy = "auth0",
-                EnabledClients = new[] { GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
+                EnabledClients = new[] {GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID")}
             });
         }
 
@@ -39,7 +40,8 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         public async Task Can_signup_user_and_change_password()
         {
             // Arrange
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient =
+                new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
 
             // Sign up the user
             var signupUserRequest = new SignupUserRequest
@@ -47,7 +49,12 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 Connection = connection.Name,
                 Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
-                Password = "password"
+                Password = "password",
+                UserMetadata = new
+                {
+                    a = "1",
+                    b = "two"
+                }
             };
             var signupUserResponse = await authenticationApiClient.SignupUserAsync(signupUserRequest);
             signupUserResponse.Should().NotBeNull();
@@ -63,8 +70,8 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 Email = signupUserRequest.Email,
                 Password = "password2"
             };
-            string changePasswordResponse = await authenticationApiClient.ChangePasswordAsync(changePasswordRequest);
-            changePasswordResponse.Should().Be("\"We've just sent you an email to reset your password.\"");
+            Func<Task> changePasswordFunc = async () => await authenticationApiClient.ChangePasswordAsync(changePasswordRequest);
+            changePasswordFunc.ShouldThrow<ApiException>().And.ApiError.Error.Should().Be("password is not allowed");
         }
     }
 }
