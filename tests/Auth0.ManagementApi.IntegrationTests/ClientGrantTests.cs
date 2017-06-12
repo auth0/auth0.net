@@ -12,10 +12,11 @@ namespace Auth0.ManagementApi.IntegrationTests
     {
         private ManagementApiClient apiClient;
         private Client client;
+        private ResourceServer resourceServer;
 
         public async Task InitializeAsync()
         {
-            string token = await GenerateManagementApiToken();
+            var token = await GenerateManagementApiToken();
 
             apiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
 
@@ -24,17 +25,48 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 Name = $"Integration testing {Guid.NewGuid().ToString("N")}"
             });
+
+            // We also need to create a resource server
+            var identifier = Guid.NewGuid();
+            resourceServer = await apiClient.ResourceServers.CreateAsync(new ResourceServerCreateRequest
+            {
+                Identifier = "urn:" + identifier,
+                Name = $"Integration testing {identifier:N}",
+                TokenLifetime = 1,
+                SigningAlgorithm = SigningAlgorithm.RS256,
+                Scopes = new List<ResourceServerScope>
+                {
+                    new ResourceServerScope
+                    {
+                        Value = "scope1",
+                        Description = "Scope number 1"
+                    },
+                    new ResourceServerScope
+                    {
+                        Value = "scope2",
+                        Description = "Scope number 2"
+                    },
+                    new ResourceServerScope
+                    {
+                        Value = "scope3",
+                        Description = "Scope number 3"
+                    }
+                }
+            });
         }
 
         public async Task DisposeAsync()
         {
-            await apiClient.Clients.DeleteAsync(client.ClientId);
+            if (client != null)
+                await apiClient.Clients.DeleteAsync(client.ClientId);
+
+            if (resourceServer != null)
+                await apiClient.ResourceServers.DeleteAsync(resourceServer.Id);
         }
 
         [Fact]
         public async Task Test_client_credentials_crud_sequence()
         {
-
             // Get all the current client grants
             var clientGrantsBefore = await apiClient.ClientGrants.GetAllAsync();
 
@@ -42,16 +74,17 @@ namespace Auth0.ManagementApi.IntegrationTests
             var newClientGrantRequest = new ClientGrantCreateRequest
             {
                 ClientId = client.ClientId,
-                Audience = Guid.NewGuid().ToString(),
-                Scope = new List<string>()
+                Audience = resourceServer.Identifier,
+                Scope = new List<string>
                 {
-                    "Scope 1",
-                    "Scope 2"
+                    "scope1",
+                    "scope2"
                 }
             };
             var newClientGrantResponse = await apiClient.ClientGrants.CreateAsync(newClientGrantRequest);
             newClientGrantResponse.Should().NotBeNull();
-            newClientGrantResponse.ShouldBeEquivalentTo(newClientGrantRequest, options => options.Excluding(cg => cg.Id));
+            newClientGrantResponse.ShouldBeEquivalentTo(newClientGrantRequest,
+                options => options.Excluding(cg => cg.Id));
 
             // Get all the client grants again, and verify we have one more
             var clientGrantsAfter = await apiClient.ClientGrants.GetAllAsync();
@@ -62,13 +95,14 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 Scope = new List<string>
                 {
-                    "Scope 3"
+                    "scope3"
                 }
             };
-            var updateClientGrantResponse = await apiClient.ClientGrants.UpdateAsync(newClientGrantResponse.Id, updateClientGrantRequest);
+            var updateClientGrantResponse =
+                await apiClient.ClientGrants.UpdateAsync(newClientGrantResponse.Id, updateClientGrantRequest);
             updateClientGrantResponse.Should().NotBeNull();
             updateClientGrantResponse.Scope.Count.Should().Be(1);
-            updateClientGrantResponse.Scope[0].Should().Be("Scope 3");
+            updateClientGrantResponse.Scope[0].Should().Be("scope3");
 
             // Delete the client grant
             await apiClient.ClientGrants.DeleteAsync(newClientGrantResponse.Id);
