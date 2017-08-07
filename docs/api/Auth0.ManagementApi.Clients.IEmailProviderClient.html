@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IEmailProviderClient
    ">
-    <meta name="generator" content="docfx 2.15.4.0">
+    <meta name="generator" content="docfx 2.20.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -67,194 +67,194 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content">
-              
-              
-              <h1 id="Auth0_ManagementApi_Clients_IEmailProviderClient" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient">Interface IEmailProviderClient
-              </h1>
-              <div class="markdown level0 summary"><p>Contains all the methods to call the /emails/provider endpoints.</p>
+            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient">
+  
+  
+  <h1 id="Auth0_ManagementApi_Clients_IEmailProviderClient" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient" class="text-break">Interface IEmailProviderClient
+  </h1>
+  <div class="markdown level0 summary"><p>Contains all the methods to call the /emails/provider endpoints.</p>
 </div>
-              <div class="markdown level0 conceptual"></div>
-              <h6><strong>Namespace</strong>:Auth0.ManagementApi.Clients</h6>
-              <h6><strong>Assembly</strong>:cs.temp.dll.dll</h6>
-              <h5 id="Auth0_ManagementApi_Clients_IEmailProviderClient_syntax">Syntax</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public interface IEmailProviderClient</code></pre>
-              </div>
-              <h3 id="methods">Methods
-              </h3>
-              
-              
-              <a id="Auth0_ManagementApi_Clients_IEmailProviderClient_ConfigureAsync_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.ConfigureAsync*"></a>
-              <h4 id="Auth0_ManagementApi_Clients_IEmailProviderClient_ConfigureAsync_EmailProviderConfigureRequest_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.ConfigureAsync(EmailProviderConfigureRequest)">ConfigureAsync(EmailProviderConfigureRequest)</h4>
-              <div class="markdown level1 summary"><p>Configures the email provider.</p>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Clients.html">Auth0.ManagementApi.Clients</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="Auth0_ManagementApi_Clients_IEmailProviderClient_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IEmailProviderClient</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_IEmailProviderClient_ConfigureAsync_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.ConfigureAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_IEmailProviderClient_ConfigureAsync_EmailProviderConfigureRequest_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.ConfigureAsync(EmailProviderConfigureRequest)">ConfigureAsync(EmailProviderConfigureRequest)</h4>
+  <div class="markdown level1 summary"><p>Configures the email provider.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;EmailProvider&gt; ConfigureAsync(EmailProviderConfigureRequest request)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">EmailProviderConfigureRequest</span></td>
-                    <td><span class="parametername">request</span></td>
-                    <td><p>The <see cref="!:EmailProviderConfigureRequest"></see> containing the configuration properties of the
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;EmailProvider&gt; ConfigureAsync(EmailProviderConfigureRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EmailProviderConfigureRequest</span></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>The <see cref="!:EmailProviderConfigureRequest"></see> containing the configuration properties of the
 provider.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">EmailProvider</span>&gt;</td>
-                    <td><p>A <see cref="!:EmailProvider"></see> instance containing the email provider details.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">EmailProvider</span>&gt;</td>
+        <td><p>A <see cref="!:EmailProvider"></see> instance containing the email provider details.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              
-              
-              <a id="Auth0_ManagementApi_Clients_IEmailProviderClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.DeleteAsync*"></a>
-              <h4 id="Auth0_ManagementApi_Clients_IEmailProviderClient_DeleteAsync" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.DeleteAsync">DeleteAsync()</h4>
-              <div class="markdown level1 summary"><p>Deletes the email provider.</p>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_IEmailProviderClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.DeleteAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_IEmailProviderClient_DeleteAsync" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.DeleteAsync">DeleteAsync()</h4>
+  <div class="markdown level1 summary"><p>Deletes the email provider.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task DeleteAsync()</code></pre>
-              </div>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              
-              
-              <a id="Auth0_ManagementApi_Clients_IEmailProviderClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.GetAsync*"></a>
-              <h4 id="Auth0_ManagementApi_Clients_IEmailProviderClient_GetAsync_System_String_System_Boolean_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.GetAsync(System.String,System.Boolean)">GetAsync(String, Boolean)</h4>
-              <div class="markdown level1 summary"><p>Gets the email provider.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task DeleteAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_IEmailProviderClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.GetAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_IEmailProviderClient_GetAsync_System_String_System_Boolean_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.GetAsync(System.String,System.Boolean)">GetAsync(String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Gets the email provider.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;EmailProvider&gt; GetAsync(string fields = null, bool includeFields = true)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.String</span></td>
-                    <td><span class="parametername">fields</span></td>
-                    <td><p>A comma separated list of fields to include or exclude (depending on
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;EmailProvider&gt; GetAsync(string fields = null, bool includeFields = true)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fields</span></td>
+        <td><p>A comma separated list of fields to include or exclude (depending on
 <span class="paramref">includeFields</span>) from the result, empty to retrieve: name, enabled, settings fields.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Boolean</span></td>
-                    <td><span class="parametername">includeFields</span></td>
-                    <td><p>True if the fields specified are to be excluded from the result, false otherwise (defaults
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">includeFields</span></td>
+        <td><p>True if the fields specified are to be excluded from the result, false otherwise (defaults
 to true).</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">EmailProvider</span>&gt;</td>
-                    <td><p>A <see cref="!:EmailProvider"></see> instance containing the email provider details.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">EmailProvider</span>&gt;</td>
+        <td><p>A <see cref="!:EmailProvider"></see> instance containing the email provider details.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              
-              
-              <a id="Auth0_ManagementApi_Clients_IEmailProviderClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.UpdateAsync*"></a>
-              <h4 id="Auth0_ManagementApi_Clients_IEmailProviderClient_UpdateAsync_EmailProviderUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.UpdateAsync(EmailProviderUpdateRequest)">UpdateAsync(EmailProviderUpdateRequest)</h4>
-              <div class="markdown level1 summary"><p>Updates the email provider.</p>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_IEmailProviderClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.UpdateAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_IEmailProviderClient_UpdateAsync_EmailProviderUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.UpdateAsync(EmailProviderUpdateRequest)">UpdateAsync(EmailProviderUpdateRequest)</h4>
+  <div class="markdown level1 summary"><p>Updates the email provider.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;EmailProvider&gt; UpdateAsync(EmailProviderUpdateRequest request)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">EmailProviderUpdateRequest</span></td>
-                    <td><span class="parametername">request</span></td>
-                    <td><p>The <see cref="!:EmailProviderUpdateRequest"></see> containing the configuration properties of the
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;EmailProvider&gt; UpdateAsync(EmailProviderUpdateRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EmailProviderUpdateRequest</span></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>The <see cref="!:EmailProviderUpdateRequest"></see> containing the configuration properties of the
 email provider.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">EmailProvider</span>&gt;</td>
-                    <td><p>A <see cref="!:EmailProvider"></see> instance containing the email provider details.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">EmailProvider</span>&gt;</td>
+        <td><p>A <see cref="!:EmailProvider"></see> instance containing the email provider details.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-                        </article>
+      </tr>
+    </tbody>
+  </table>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -279,7 +279,7 @@ email provider.</p>
               <a href="#top">Back to top</a>
             </span>
             
-            <span>Copyright © 2015-2016 Microsoft<br>Generated by <strong>DocFX</strong></span>
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>

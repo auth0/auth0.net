@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IClientGrantsClient
    ">
-    <meta name="generator" content="docfx 2.15.4.0">
+    <meta name="generator" content="docfx 2.20.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -67,207 +67,207 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content">
-              
-              
-              <h1 id="Auth0_ManagementApi_Clients_IClientGrantsClient" data-uid="Auth0.ManagementApi.Clients.IClientGrantsClient">Interface IClientGrantsClient
-              </h1>
-              <div class="markdown level0 summary"><p>Contains all methods to work with Client Grants.</p>
+            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Clients.IClientGrantsClient">
+  
+  
+  <h1 id="Auth0_ManagementApi_Clients_IClientGrantsClient" data-uid="Auth0.ManagementApi.Clients.IClientGrantsClient" class="text-break">Interface IClientGrantsClient
+  </h1>
+  <div class="markdown level0 summary"><p>Contains all methods to work with Client Grants.</p>
 </div>
-              <div class="markdown level0 conceptual"></div>
-              <h6><strong>Namespace</strong>:Auth0.ManagementApi.Clients</h6>
-              <h6><strong>Assembly</strong>:cs.temp.dll.dll</h6>
-              <h5 id="Auth0_ManagementApi_Clients_IClientGrantsClient_syntax">Syntax</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public interface IClientGrantsClient</code></pre>
-              </div>
-              <h3 id="methods">Methods
-              </h3>
-              
-              
-              <a id="Auth0_ManagementApi_Clients_IClientGrantsClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.IClientGrantsClient.CreateAsync*"></a>
-              <h4 id="Auth0_ManagementApi_Clients_IClientGrantsClient_CreateAsync_ClientGrantCreateRequest_" data-uid="Auth0.ManagementApi.Clients.IClientGrantsClient.CreateAsync(ClientGrantCreateRequest)">CreateAsync(ClientGrantCreateRequest)</h4>
-              <div class="markdown level1 summary"><p>Creates a new Client Grant</p>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Clients.html">Auth0.ManagementApi.Clients</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="Auth0_ManagementApi_Clients_IClientGrantsClient_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IClientGrantsClient</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_IClientGrantsClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.IClientGrantsClient.CreateAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_IClientGrantsClient_CreateAsync_ClientGrantCreateRequest_" data-uid="Auth0.ManagementApi.Clients.IClientGrantsClient.CreateAsync(ClientGrantCreateRequest)">CreateAsync(ClientGrantCreateRequest)</h4>
+  <div class="markdown level1 summary"><p>Creates a new Client Grant</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;ClientGrant&gt; CreateAsync(ClientGrantCreateRequest request)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">ClientGrantCreateRequest</span></td>
-                    <td><span class="parametername">request</span></td>
-                    <td><p>The request containing the properties of the Client Grant.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ClientGrant&gt; CreateAsync(ClientGrantCreateRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">ClientGrantCreateRequest</span></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>The request containing the properties of the Client Grant.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">ClientGrant</span>&gt;</td>
-                    <td><p>The new <see cref="!:ClientGrant"></see></p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">ClientGrant</span>&gt;</td>
+        <td><p>The new <see cref="!:ClientGrant"></see></p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              
-              
-              <a id="Auth0_ManagementApi_Clients_IClientGrantsClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.IClientGrantsClient.DeleteAsync*"></a>
-              <h4 id="Auth0_ManagementApi_Clients_IClientGrantsClient_DeleteAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.IClientGrantsClient.DeleteAsync(System.String)">DeleteAsync(String)</h4>
-              <div class="markdown level1 summary"><p>Deletes a client grant.</p>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_IClientGrantsClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.IClientGrantsClient.DeleteAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_IClientGrantsClient_DeleteAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.IClientGrantsClient.DeleteAsync(System.String)">DeleteAsync(String)</h4>
+  <div class="markdown level1 summary"><p>Deletes a client grant.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task DeleteAsync(string id)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.String</span></td>
-                    <td><span class="parametername">id</span></td>
-                    <td><p>The identifier of the Client Grant to delete.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task DeleteAsync(string id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The identifier of the Client Grant to delete.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              
-              
-              <a id="Auth0_ManagementApi_Clients_IClientGrantsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.IClientGrantsClient.GetAllAsync*"></a>
-              <h4 id="Auth0_ManagementApi_Clients_IClientGrantsClient_GetAllAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.IClientGrantsClient.GetAllAsync(System.String)">GetAllAsync(String)</h4>
-              <div class="markdown level1 summary"><p>Gets a list of all the client grants.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_IClientGrantsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.IClientGrantsClient.GetAllAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_IClientGrantsClient_GetAllAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.IClientGrantsClient.GetAllAsync(System.String)">GetAllAsync(String)</h4>
+  <div class="markdown level1 summary"><p>Gets a list of all the client grants.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;IList&lt;ClientGrant&gt;&gt; GetAllAsync(string audience = null)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.String</span></td>
-                    <td><span class="parametername">audience</span></td>
-                    <td><p>The audience according to which you want to filter the returned client grants.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IList&lt;ClientGrant&gt;&gt; GetAllAsync(string audience = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">audience</span></td>
+        <td><p>The audience according to which you want to filter the returned client grants.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">ClientGrant</span>&gt;&gt;</td>
-                    <td><p>A list of client grants</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">ClientGrant</span>&gt;&gt;</td>
+        <td><p>A list of client grants</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              
-              
-              <a id="Auth0_ManagementApi_Clients_IClientGrantsClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.IClientGrantsClient.UpdateAsync*"></a>
-              <h4 id="Auth0_ManagementApi_Clients_IClientGrantsClient_UpdateAsync_System_String_ClientGrantUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.IClientGrantsClient.UpdateAsync(System.String,ClientGrantUpdateRequest)">UpdateAsync(String, ClientGrantUpdateRequest)</h4>
-              <div class="markdown level1 summary"><p>Updates a client grant</p>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_IClientGrantsClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.IClientGrantsClient.UpdateAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_IClientGrantsClient_UpdateAsync_System_String_ClientGrantUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.IClientGrantsClient.UpdateAsync(System.String,ClientGrantUpdateRequest)">UpdateAsync(String, ClientGrantUpdateRequest)</h4>
+  <div class="markdown level1 summary"><p>Updates a client grant</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;ClientGrant&gt; UpdateAsync(string id, ClientGrantUpdateRequest request)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.String</span></td>
-                    <td><span class="parametername">id</span></td>
-                    <td><p>The identifier of the client grant to update.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ClientGrant&gt; UpdateAsync(string id, ClientGrantUpdateRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The identifier of the client grant to update.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">ClientGrantUpdateRequest</span></td>
-                    <td><span class="parametername">request</span></td>
-                    <td><p>The <see cref="!:ClientGrantUpdateRequest"></see> containing the properties to update.</p>
+      </tr>
+      <tr>
+        <td><span class="xref">ClientGrantUpdateRequest</span></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>The <see cref="!:ClientGrantUpdateRequest"></see> containing the properties to update.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">ClientGrant</span>&gt;</td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-                        </article>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">ClientGrant</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -292,7 +292,7 @@
               <a href="#top">Back to top</a>
             </span>
             
-            <span>Copyright © 2015-2016 Microsoft<br>Generated by <strong>DocFX</strong></span>
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>

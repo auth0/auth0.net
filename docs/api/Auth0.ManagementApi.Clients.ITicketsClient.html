@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface ITicketsClient
    ">
-    <meta name="generator" content="docfx 2.15.4.0">
+    <meta name="generator" content="docfx 2.20.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -67,113 +67,113 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content">
-              
-              
-              <h1 id="Auth0_ManagementApi_Clients_ITicketsClient" data-uid="Auth0.ManagementApi.Clients.ITicketsClient">Interface ITicketsClient
-              </h1>
-              <div class="markdown level0 summary"><p>Contains all the methods to call the /tickets endpoints.</p>
+            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Clients.ITicketsClient">
+  
+  
+  <h1 id="Auth0_ManagementApi_Clients_ITicketsClient" data-uid="Auth0.ManagementApi.Clients.ITicketsClient" class="text-break">Interface ITicketsClient
+  </h1>
+  <div class="markdown level0 summary"><p>Contains all the methods to call the /tickets endpoints.</p>
 </div>
-              <div class="markdown level0 conceptual"></div>
-              <h6><strong>Namespace</strong>:Auth0.ManagementApi.Clients</h6>
-              <h6><strong>Assembly</strong>:cs.temp.dll.dll</h6>
-              <h5 id="Auth0_ManagementApi_Clients_ITicketsClient_syntax">Syntax</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public interface ITicketsClient</code></pre>
-              </div>
-              <h3 id="methods">Methods
-              </h3>
-              
-              
-              <a id="Auth0_ManagementApi_Clients_ITicketsClient_CreateEmailVerificationTicketAsync_" data-uid="Auth0.ManagementApi.Clients.ITicketsClient.CreateEmailVerificationTicketAsync*"></a>
-              <h4 id="Auth0_ManagementApi_Clients_ITicketsClient_CreateEmailVerificationTicketAsync_EmailVerificationTicketRequest_" data-uid="Auth0.ManagementApi.Clients.ITicketsClient.CreateEmailVerificationTicketAsync(EmailVerificationTicketRequest)">CreateEmailVerificationTicketAsync(EmailVerificationTicketRequest)</h4>
-              <div class="markdown level1 summary"><p>Creates an email verification ticket.</p>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Clients.html">Auth0.ManagementApi.Clients</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="Auth0_ManagementApi_Clients_ITicketsClient_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface ITicketsClient</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_ITicketsClient_CreateEmailVerificationTicketAsync_" data-uid="Auth0.ManagementApi.Clients.ITicketsClient.CreateEmailVerificationTicketAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_ITicketsClient_CreateEmailVerificationTicketAsync_EmailVerificationTicketRequest_" data-uid="Auth0.ManagementApi.Clients.ITicketsClient.CreateEmailVerificationTicketAsync(EmailVerificationTicketRequest)">CreateEmailVerificationTicketAsync(EmailVerificationTicketRequest)</h4>
+  <div class="markdown level1 summary"><p>Creates an email verification ticket.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;Ticket&gt; CreateEmailVerificationTicketAsync(EmailVerificationTicketRequest request)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">EmailVerificationTicketRequest</span></td>
-                    <td><span class="parametername">request</span></td>
-                    <td><p>The <see cref="!:EmailVerificationTicketRequest"></see> containing the details of the ticket to create.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Ticket&gt; CreateEmailVerificationTicketAsync(EmailVerificationTicketRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EmailVerificationTicketRequest</span></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>The <see cref="!:EmailVerificationTicketRequest"></see> containing the details of the ticket to create.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">Ticket</span>&gt;</td>
-                    <td><p>The <see cref="!:Ticket"></see>.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">Ticket</span>&gt;</td>
+        <td><p>The <see cref="!:Ticket"></see>.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              
-              
-              <a id="Auth0_ManagementApi_Clients_ITicketsClient_CreatePasswordChangeTicketAsync_" data-uid="Auth0.ManagementApi.Clients.ITicketsClient.CreatePasswordChangeTicketAsync*"></a>
-              <h4 id="Auth0_ManagementApi_Clients_ITicketsClient_CreatePasswordChangeTicketAsync_PasswordChangeTicketRequest_" data-uid="Auth0.ManagementApi.Clients.ITicketsClient.CreatePasswordChangeTicketAsync(PasswordChangeTicketRequest)">CreatePasswordChangeTicketAsync(PasswordChangeTicketRequest)</h4>
-              <div class="markdown level1 summary"><p>Creates a password change ticket.</p>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_ITicketsClient_CreatePasswordChangeTicketAsync_" data-uid="Auth0.ManagementApi.Clients.ITicketsClient.CreatePasswordChangeTicketAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_ITicketsClient_CreatePasswordChangeTicketAsync_PasswordChangeTicketRequest_" data-uid="Auth0.ManagementApi.Clients.ITicketsClient.CreatePasswordChangeTicketAsync(PasswordChangeTicketRequest)">CreatePasswordChangeTicketAsync(PasswordChangeTicketRequest)</h4>
+  <div class="markdown level1 summary"><p>Creates a password change ticket.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;Ticket&gt; CreatePasswordChangeTicketAsync(PasswordChangeTicketRequest request)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">PasswordChangeTicketRequest</span></td>
-                    <td><span class="parametername">request</span></td>
-                    <td><p>The <see cref="!:PasswordChangeTicketRequest"></see> containing the details of the ticket to create.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Ticket&gt; CreatePasswordChangeTicketAsync(PasswordChangeTicketRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">PasswordChangeTicketRequest</span></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>The <see cref="!:PasswordChangeTicketRequest"></see> containing the details of the ticket to create.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">Ticket</span>&gt;</td>
-                    <td><p>The <see cref="!:Ticket"></see>.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">Ticket</span>&gt;</td>
+        <td><p>The <see cref="!:Ticket"></see>.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-                        </article>
+      </tr>
+    </tbody>
+  </table>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -198,7 +198,7 @@
               <a href="#top">Back to top</a>
             </span>
             
-            <span>Copyright © 2015-2016 Microsoft<br>Generated by <strong>DocFX</strong></span>
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>

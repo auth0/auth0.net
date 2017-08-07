@@ -3,18 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using Auth0.AuthenticationApi;
+using Auth0.AuthenticationApi.Models;
 using Auth0.ManagementApi;
 using Auth0.ManagementApi.Models;
 
 namespace ConsoleWorkbench
 {
+    public class CustomMessageHandler : HttpClientHandler
+    {
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            request.Headers.Add("my-custom-header", "my-custom-value");
+            
+            return base.SendAsync(request, cancellationToken);
+        }
+    }
+    
     public class Program
     {
         public static void Main(string[] args)
         {
-            ManagementApiMainAsync(args).GetAwaiter().GetResult();
+            AuthenticationApiMainAsync(args).GetAwaiter().GetResult();
         }
 
 
@@ -24,15 +36,29 @@ namespace ConsoleWorkbench
             {
                 string token = "";
 
-                var handler = new HttpClientHandler
+//                var handler = new HttpClientHandler
+//                {
+//                    Proxy = new WebProxy
+//                    {
+//                        Credentials = new NetworkCredential("username", "password")
+//                    }
+//                };
+//                var api = new AuthenticationApiClient("jerrie.auth0.com", new CustomMessageHandler());
+//
+//                var userInfo = await api.GetUserInfoAsync(token);
+
+                var authenticationApiClient = new AuthenticationApiClient("jerrie.auth0.com", new CustomMessageHandler());
+                var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
                 {
-                    Proxy = new WebProxy()
-                };
-                var api = new AuthenticationApiClient("jerrie.auth0.com");
+                    ClientId = "",
+                    ClientSecret = "",
+                    Realm = "Username-Password-Authentication",
+                    Scope = "openid offline_access",
+                    Username = "jerrie@jerriepelser.com",
+                    Password = "password"
+                });
 
-                var userInfo = await api.GetUserInfoAsync(token);
-
-                Console.WriteLine(userInfo.Email);
+                Console.WriteLine(authenticationResponse.IdToken);
             }
             catch (Exception ex)
             {

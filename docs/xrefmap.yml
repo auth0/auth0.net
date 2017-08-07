@@ -1863,6 +1863,18 @@ references:
   commentId: T:Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest
   fullName: Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest
   nameWithType: ResourceOwnerTokenRequest
+- uid: Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.Audience
+  name: Audience
+  href: api/Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.html#Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_Audience
+  commentId: P:Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.Audience
+  fullName: Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.Audience
+  nameWithType: ResourceOwnerTokenRequest.Audience
+- uid: Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.Audience*
+  name: Audience
+  href: api/Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.html#Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_Audience_
+  commentId: Overload:Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.Audience
+  fullName: Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.Audience
+  nameWithType: ResourceOwnerTokenRequest.Audience
 - uid: Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.ClientId
   name: ClientId
   href: api/Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.html#Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_ClientId
@@ -1941,6 +1953,18 @@ references:
   commentId: T:Auth0.AuthenticationApi.Models.SignupUserRequest
   fullName: Auth0.AuthenticationApi.Models.SignupUserRequest
   nameWithType: SignupUserRequest
+- uid: Auth0.AuthenticationApi.Models.SignupUserRequest.UserMetadata
+  name: UserMetadata
+  href: api/Auth0.AuthenticationApi.Models.SignupUserRequest.html#Auth0_AuthenticationApi_Models_SignupUserRequest_UserMetadata
+  commentId: P:Auth0.AuthenticationApi.Models.SignupUserRequest.UserMetadata
+  fullName: Auth0.AuthenticationApi.Models.SignupUserRequest.UserMetadata
+  nameWithType: SignupUserRequest.UserMetadata
+- uid: Auth0.AuthenticationApi.Models.SignupUserRequest.UserMetadata*
+  name: UserMetadata
+  href: api/Auth0.AuthenticationApi.Models.SignupUserRequest.html#Auth0_AuthenticationApi_Models_SignupUserRequest_UserMetadata_
+  commentId: Overload:Auth0.AuthenticationApi.Models.SignupUserRequest.UserMetadata
+  fullName: Auth0.AuthenticationApi.Models.SignupUserRequest.UserMetadata
+  nameWithType: SignupUserRequest.UserMetadata
 - uid: Auth0.AuthenticationApi.Models.SignupUserResponse
   name: SignupUserResponse
   href: api/Auth0.AuthenticationApi.Models.SignupUserResponse.html
@@ -1983,6 +2007,18 @@ references:
   commentId: Overload:Auth0.AuthenticationApi.Models.SignupUserResponse.Id
   fullName: Auth0.AuthenticationApi.Models.SignupUserResponse.Id
   nameWithType: SignupUserResponse.Id
+- uid: Auth0.AuthenticationApi.Models.SignupUserResponse.UserMetadata
+  name: UserMetadata
+  href: api/Auth0.AuthenticationApi.Models.SignupUserResponse.html#Auth0_AuthenticationApi_Models_SignupUserResponse_UserMetadata
+  commentId: P:Auth0.AuthenticationApi.Models.SignupUserResponse.UserMetadata
+  fullName: Auth0.AuthenticationApi.Models.SignupUserResponse.UserMetadata
+  nameWithType: SignupUserResponse.UserMetadata
+- uid: Auth0.AuthenticationApi.Models.SignupUserResponse.UserMetadata*
+  name: UserMetadata
+  href: api/Auth0.AuthenticationApi.Models.SignupUserResponse.html#Auth0_AuthenticationApi_Models_SignupUserResponse_UserMetadata_
+  commentId: Overload:Auth0.AuthenticationApi.Models.SignupUserResponse.UserMetadata
+  fullName: Auth0.AuthenticationApi.Models.SignupUserResponse.UserMetadata
+  nameWithType: SignupUserResponse.UserMetadata
 - uid: Auth0.AuthenticationApi.Models.SignupUserResponse.Username
   name: Username
   href: api/Auth0.AuthenticationApi.Models.SignupUserResponse.html#Auth0_AuthenticationApi_Models_SignupUserResponse_Username
@@ -4457,6 +4493,18 @@ references:
   commentId: Overload:Auth0.ManagementApi.Clients.IResourceServersClient.DeleteAsync
   fullName: Auth0.ManagementApi.Clients.IResourceServersClient.DeleteAsync
   nameWithType: IResourceServersClient.DeleteAsync
+- uid: Auth0.ManagementApi.Clients.IResourceServersClient.GetAllAsync
+  name: GetAllAsync()
+  href: api/Auth0.ManagementApi.Clients.IResourceServersClient.html#Auth0_ManagementApi_Clients_IResourceServersClient_GetAllAsync
+  commentId: M:Auth0.ManagementApi.Clients.IResourceServersClient.GetAllAsync
+  fullName: Auth0.ManagementApi.Clients.IResourceServersClient.GetAllAsync()
+  nameWithType: IResourceServersClient.GetAllAsync()
+- uid: Auth0.ManagementApi.Clients.IResourceServersClient.GetAllAsync*
+  name: GetAllAsync
+  href: api/Auth0.ManagementApi.Clients.IResourceServersClient.html#Auth0_ManagementApi_Clients_IResourceServersClient_GetAllAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.IResourceServersClient.GetAllAsync
+  fullName: Auth0.ManagementApi.Clients.IResourceServersClient.GetAllAsync
+  nameWithType: IResourceServersClient.GetAllAsync
 - uid: Auth0.ManagementApi.Clients.IResourceServersClient.GetAsync(System.String)
   name: GetAsync(String)
   href: api/Auth0.ManagementApi.Clients.IResourceServersClient.html#Auth0_ManagementApi_Clients_IResourceServersClient_GetAsync_System_String_
@@ -4976,6 +5024,18 @@ references:
   commentId: Overload:Auth0.ManagementApi.Clients.ResourceServersClient.DeleteAsync
   fullName: Auth0.ManagementApi.Clients.ResourceServersClient.DeleteAsync
   nameWithType: ResourceServersClient.DeleteAsync
+- uid: Auth0.ManagementApi.Clients.ResourceServersClient.GetAllAsync
+  name: GetAllAsync()
+  href: api/Auth0.ManagementApi.Clients.ResourceServersClient.html#Auth0_ManagementApi_Clients_ResourceServersClient_GetAllAsync
+  commentId: M:Auth0.ManagementApi.Clients.ResourceServersClient.GetAllAsync
+  fullName: Auth0.ManagementApi.Clients.ResourceServersClient.GetAllAsync()
+  nameWithType: ResourceServersClient.GetAllAsync()
+- uid: Auth0.ManagementApi.Clients.ResourceServersClient.GetAllAsync*
+  name: GetAllAsync
+  href: api/Auth0.ManagementApi.Clients.ResourceServersClient.html#Auth0_ManagementApi_Clients_ResourceServersClient_GetAllAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.ResourceServersClient.GetAllAsync
+  fullName: Auth0.ManagementApi.Clients.ResourceServersClient.GetAllAsync
+  nameWithType: ResourceServersClient.GetAllAsync
 - uid: Auth0.ManagementApi.Clients.ResourceServersClient.GetAsync(System.String)
   name: GetAsync(String)
   href: api/Auth0.ManagementApi.Clients.ResourceServersClient.html#Auth0_ManagementApi_Clients_ResourceServersClient_GetAsync_System_String_
@@ -6719,6 +6779,36 @@ references:
   commentId: Overload:Auth0.ManagementApi.Models.ClientGrantUpdateRequest.Scope
   fullName: Auth0.ManagementApi.Models.ClientGrantUpdateRequest.Scope
   nameWithType: ClientGrantUpdateRequest.Scope
+- uid: Auth0.ManagementApi.Models.ClientResourceServerAssociation
+  name: ClientResourceServerAssociation
+  href: api/Auth0.ManagementApi.Models.ClientResourceServerAssociation.html
+  commentId: T:Auth0.ManagementApi.Models.ClientResourceServerAssociation
+  fullName: Auth0.ManagementApi.Models.ClientResourceServerAssociation
+  nameWithType: ClientResourceServerAssociation
+- uid: Auth0.ManagementApi.Models.ClientResourceServerAssociation.Identifier
+  name: Identifier
+  href: api/Auth0.ManagementApi.Models.ClientResourceServerAssociation.html#Auth0_ManagementApi_Models_ClientResourceServerAssociation_Identifier
+  commentId: P:Auth0.ManagementApi.Models.ClientResourceServerAssociation.Identifier
+  fullName: Auth0.ManagementApi.Models.ClientResourceServerAssociation.Identifier
+  nameWithType: ClientResourceServerAssociation.Identifier
+- uid: Auth0.ManagementApi.Models.ClientResourceServerAssociation.Identifier*
+  name: Identifier
+  href: api/Auth0.ManagementApi.Models.ClientResourceServerAssociation.html#Auth0_ManagementApi_Models_ClientResourceServerAssociation_Identifier_
+  commentId: Overload:Auth0.ManagementApi.Models.ClientResourceServerAssociation.Identifier
+  fullName: Auth0.ManagementApi.Models.ClientResourceServerAssociation.Identifier
+  nameWithType: ClientResourceServerAssociation.Identifier
+- uid: Auth0.ManagementApi.Models.ClientResourceServerAssociation.Scopes
+  name: Scopes
+  href: api/Auth0.ManagementApi.Models.ClientResourceServerAssociation.html#Auth0_ManagementApi_Models_ClientResourceServerAssociation_Scopes
+  commentId: P:Auth0.ManagementApi.Models.ClientResourceServerAssociation.Scopes
+  fullName: Auth0.ManagementApi.Models.ClientResourceServerAssociation.Scopes
+  nameWithType: ClientResourceServerAssociation.Scopes
+- uid: Auth0.ManagementApi.Models.ClientResourceServerAssociation.Scopes*
+  name: Scopes
+  href: api/Auth0.ManagementApi.Models.ClientResourceServerAssociation.html#Auth0_ManagementApi_Models_ClientResourceServerAssociation_Scopes_
+  commentId: Overload:Auth0.ManagementApi.Models.ClientResourceServerAssociation.Scopes
+  fullName: Auth0.ManagementApi.Models.ClientResourceServerAssociation.Scopes
+  nameWithType: ClientResourceServerAssociation.Scopes
 - uid: Auth0.ManagementApi.Models.ClientUpdateRequest
   name: ClientUpdateRequest
   href: api/Auth0.ManagementApi.Models.ClientUpdateRequest.html
@@ -7655,6 +7745,18 @@ references:
   commentId: Overload:Auth0.ManagementApi.Models.Identity.Connection
   fullName: Auth0.ManagementApi.Models.Identity.Connection
   nameWithType: Identity.Connection
+- uid: Auth0.ManagementApi.Models.Identity.ExpiresIn
+  name: ExpiresIn
+  href: api/Auth0.ManagementApi.Models.Identity.html#Auth0_ManagementApi_Models_Identity_ExpiresIn
+  commentId: P:Auth0.ManagementApi.Models.Identity.ExpiresIn
+  fullName: Auth0.ManagementApi.Models.Identity.ExpiresIn
+  nameWithType: Identity.ExpiresIn
+- uid: Auth0.ManagementApi.Models.Identity.ExpiresIn*
+  name: ExpiresIn
+  href: api/Auth0.ManagementApi.Models.Identity.html#Auth0_ManagementApi_Models_Identity_ExpiresIn_
+  commentId: Overload:Auth0.ManagementApi.Models.Identity.ExpiresIn
+  fullName: Auth0.ManagementApi.Models.Identity.ExpiresIn
+  nameWithType: Identity.ExpiresIn
 - uid: Auth0.ManagementApi.Models.Identity.IsSocial
   name: IsSocial
   href: api/Auth0.ManagementApi.Models.Identity.html#Auth0_ManagementApi_Models_Identity_IsSocial
@@ -7691,6 +7793,18 @@ references:
   commentId: Overload:Auth0.ManagementApi.Models.Identity.Provider
   fullName: Auth0.ManagementApi.Models.Identity.Provider
   nameWithType: Identity.Provider
+- uid: Auth0.ManagementApi.Models.Identity.RefreshToken
+  name: RefreshToken
+  href: api/Auth0.ManagementApi.Models.Identity.html#Auth0_ManagementApi_Models_Identity_RefreshToken
+  commentId: P:Auth0.ManagementApi.Models.Identity.RefreshToken
+  fullName: Auth0.ManagementApi.Models.Identity.RefreshToken
+  nameWithType: Identity.RefreshToken
+- uid: Auth0.ManagementApi.Models.Identity.RefreshToken*
+  name: RefreshToken
+  href: api/Auth0.ManagementApi.Models.Identity.html#Auth0_ManagementApi_Models_Identity_RefreshToken_
+  commentId: Overload:Auth0.ManagementApi.Models.Identity.RefreshToken
+  fullName: Auth0.ManagementApi.Models.Identity.RefreshToken
+  nameWithType: Identity.RefreshToken
 - uid: Auth0.ManagementApi.Models.Identity.UserId
   name: UserId
   href: api/Auth0.ManagementApi.Models.Identity.html#Auth0_ManagementApi_Models_Identity_UserId
@@ -9827,6 +9941,18 @@ references:
   commentId: Overload:Auth0.ManagementApi.Models.UserCreateRequest.Picture
   fullName: Auth0.ManagementApi.Models.UserCreateRequest.Picture
   nameWithType: UserCreateRequest.Picture
+- uid: Auth0.ManagementApi.Models.UserCreateRequest.VerifyEmail
+  name: VerifyEmail
+  href: api/Auth0.ManagementApi.Models.UserCreateRequest.html#Auth0_ManagementApi_Models_UserCreateRequest_VerifyEmail
+  commentId: P:Auth0.ManagementApi.Models.UserCreateRequest.VerifyEmail
+  fullName: Auth0.ManagementApi.Models.UserCreateRequest.VerifyEmail
+  nameWithType: UserCreateRequest.VerifyEmail
+- uid: Auth0.ManagementApi.Models.UserCreateRequest.VerifyEmail*
+  name: VerifyEmail
+  href: api/Auth0.ManagementApi.Models.UserCreateRequest.html#Auth0_ManagementApi_Models_UserCreateRequest_VerifyEmail_
+  commentId: Overload:Auth0.ManagementApi.Models.UserCreateRequest.VerifyEmail
+  fullName: Auth0.ManagementApi.Models.UserCreateRequest.VerifyEmail
+  nameWithType: UserCreateRequest.VerifyEmail
 - uid: Auth0.ManagementApi.Models.UserUpdateRequest
   name: UserUpdateRequest
   href: api/Auth0.ManagementApi.Models.UserUpdateRequest.html

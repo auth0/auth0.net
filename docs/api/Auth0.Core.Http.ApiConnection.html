@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ApiConnection
    ">
-    <meta name="generator" content="docfx 2.15.4.0">
+    <meta name="generator" content="docfx 2.20.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -67,557 +67,557 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content">
-              
-              
-              <h1 id="Auth0_Core_Http_ApiConnection" data-uid="Auth0.Core.Http.ApiConnection">Class ApiConnection
-              </h1>
-              <div class="markdown level0 summary"><p>The communication layer between the various API clients and the actual API backend.</p>
+            <article class="content wrap" id="_content" data-uid="Auth0.Core.Http.ApiConnection">
+  
+  
+  <h1 id="Auth0_Core_Http_ApiConnection" data-uid="Auth0.Core.Http.ApiConnection" class="text-break">Class ApiConnection
+  </h1>
+  <div class="markdown level0 summary"><p>The communication layer between the various API clients and the actual API backend.</p>
 </div>
-              <div class="markdown level0 conceptual"></div>
-              <div class="inheritance">
-                <h5>Inheritance</h5>
-                  <div class="level0"><span class="xref">System.Object</span></div>
-                  <div class="level1"><span class="xref">ApiConnection</span></div>
-              </div>
-              <div class="inheritedMembers">
-                <h5>Inherited Members</h5>
-                <div>
-                  <span class="xref">System.Object.ToString()</span>
-                </div>
-                <div>
-                  <span class="xref">System.Object.Equals(System.Object)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Object.GetHashCode()</span>
-                </div>
-                <div>
-                  <span class="xref">System.Object.GetType()</span>
-                </div>
-                <div>
-                  <span class="xref">System.Object.MemberwiseClone()</span>
-                </div>
-              </div>
-              <h6><strong>Namespace</strong>:Auth0.Core.Http</h6>
-              <h6><strong>Assembly</strong>:cs.temp.dll.dll</h6>
-              <h5 id="Auth0_Core_Http_ApiConnection_syntax">Syntax</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public class ApiConnection : IApiConnection</code></pre>
-              </div>
-              <h3 id="constructors">Constructors
-              </h3>
-              
-              
-              <a id="Auth0_Core_Http_ApiConnection__ctor_" data-uid="Auth0.Core.Http.ApiConnection.#ctor*"></a>
-              <h4 id="Auth0_Core_Http_ApiConnection__ctor_System_String_System_String_Auth0_Core_Http_DiagnosticsHeader_HttpMessageHandler_" data-uid="Auth0.Core.Http.ApiConnection.#ctor(System.String,System.String,Auth0.Core.Http.DiagnosticsHeader,HttpMessageHandler)">ApiConnection(String, String, DiagnosticsHeader, HttpMessageHandler)</h4>
-              <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Http.ApiConnection.html">ApiConnection</a> class.</p>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">ApiConnection</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.Core.Http.html">Auth0.Core.Http</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="Auth0_Core_Http_ApiConnection_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ApiConnection : IApiConnection</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="Auth0_Core_Http_ApiConnection__ctor_" data-uid="Auth0.Core.Http.ApiConnection.#ctor*"></a>
+  <h4 id="Auth0_Core_Http_ApiConnection__ctor_System_String_System_String_Auth0_Core_Http_DiagnosticsHeader_HttpMessageHandler_" data-uid="Auth0.Core.Http.ApiConnection.#ctor(System.String,System.String,Auth0.Core.Http.DiagnosticsHeader,HttpMessageHandler)">ApiConnection(String, String, DiagnosticsHeader, HttpMessageHandler)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Http.ApiConnection.html">ApiConnection</a> class.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public ApiConnection(string token, string baseUrl, DiagnosticsHeader diagnostics, HttpMessageHandler handler = null)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.String</span></td>
-                    <td><span class="parametername">token</span></td>
-                    <td><p>The API token.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ApiConnection(string token, string baseUrl, DiagnosticsHeader diagnostics, HttpMessageHandler handler = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">token</span></td>
+        <td><p>The API token.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.String</span></td>
-                    <td><span class="parametername">baseUrl</span></td>
-                    <td><p>The base URL of the requests.</p>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">baseUrl</span></td>
+        <td><p>The base URL of the requests.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><a class="xref" href="Auth0.Core.Http.DiagnosticsHeader.html">DiagnosticsHeader</a></td>
-                    <td><span class="parametername">diagnostics</span></td>
-                    <td><p>The diagnostics. header</p>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Auth0.Core.Http.DiagnosticsHeader.html">DiagnosticsHeader</a></td>
+        <td><span class="parametername">diagnostics</span></td>
+        <td><p>The diagnostics. header</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">HttpMessageHandler</span></td>
-                    <td><span class="parametername">handler</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <h3 id="properties">Properties
-              </h3>
-              
-              
-              <a id="Auth0_Core_Http_ApiConnection_ApiInfo_" data-uid="Auth0.Core.Http.ApiConnection.ApiInfo*"></a>
-              <h4 id="Auth0_Core_Http_ApiConnection_ApiInfo" data-uid="Auth0.Core.Http.ApiConnection.ApiInfo">ApiInfo</h4>
-              <div class="markdown level1 summary"><p>Contains information about the last API call made by the connection.</p>
+      </tr>
+      <tr>
+        <td><span class="xref">HttpMessageHandler</span></td>
+        <td><span class="parametername">handler</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="Auth0_Core_Http_ApiConnection_ApiInfo_" data-uid="Auth0.Core.Http.ApiConnection.ApiInfo*"></a>
+  <h4 id="Auth0_Core_Http_ApiConnection_ApiInfo" data-uid="Auth0.Core.Http.ApiConnection.ApiInfo">ApiInfo</h4>
+  <div class="markdown level1 summary"><p>Contains information about the last API call made by the connection.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public ApiInfo ApiInfo { get; }</code></pre>
-              </div>
-              <h5 class="propertyValue">Property Value</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><a class="xref" href="Auth0.Core.Http.ApiInfo.html">ApiInfo</a></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <h3 id="methods">Methods
-              </h3>
-              
-              
-              <a id="Auth0_Core_Http_ApiConnection_DeleteAsync_" data-uid="Auth0.Core.Http.ApiConnection.DeleteAsync*"></a>
-              <h4 id="Auth0_Core_Http_ApiConnection_DeleteAsync__1_System_String_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.Core.Http.ApiConnection.DeleteAsync``1(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String})">DeleteAsync&lt;T&gt;(String, IDictionary&lt;String, String&gt;, IDictionary&lt;String, String&gt;)</h4>
-              <div class="markdown level1 summary"><p>Performs an HTTP DELETE.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ApiInfo ApiInfo { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.Core.Http.ApiInfo.html">ApiInfo</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Auth0_Core_Http_ApiConnection_DeleteAsync_" data-uid="Auth0.Core.Http.ApiConnection.DeleteAsync*"></a>
+  <h4 id="Auth0_Core_Http_ApiConnection_DeleteAsync__1_System_String_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.Core.Http.ApiConnection.DeleteAsync``1(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String})">DeleteAsync&lt;T&gt;(String, IDictionary&lt;String, String&gt;, IDictionary&lt;String, String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Performs an HTTP DELETE.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public Task&lt;T&gt; DeleteAsync&lt;T&gt;(string resource, IDictionary&lt;string, string&gt; urlSegments, IDictionary&lt;string, string&gt; queryStrings)where T : class</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.String</span></td>
-                    <td><span class="parametername">resource</span></td>
-                    <td><p>The resource.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;T&gt; DeleteAsync&lt;T&gt;(string resource, IDictionary&lt;string, string&gt; urlSegments, IDictionary&lt;string, string&gt; queryStrings)where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resource</span></td>
+        <td><p>The resource.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
-                    <td><span class="parametername">urlSegments</span></td>
-                    <td><p>The URL segments.</p>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">urlSegments</span></td>
+        <td><p>The URL segments.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
-                    <td><span class="parametername">queryStrings</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
-                    <td><p>Task&lt;T&gt;.</p>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">queryStrings</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td><p>Task&lt;T&gt;.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="typeParameters">Type Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="parametername">T</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="implements">Implements</h5>
-                  <div><a class="xref" href="Auth0.Core.Http.IApiConnection.html#Auth0_Core_Http_IApiConnection_DeleteAsync__1_System_String_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_String__">IApiConnection.DeleteAsync&lt;T&gt;(String, IDictionary&lt;String, String&gt;, IDictionary&lt;String, String&gt;)</a></div>
-              
-              
-              <a id="Auth0_Core_Http_ApiConnection_GetAsync_" data-uid="Auth0.Core.Http.ApiConnection.GetAsync*"></a>
-              <h4 id="Auth0_Core_Http_ApiConnection_GetAsync__1_System_String_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_Object__JsonConverter___" data-uid="Auth0.Core.Http.ApiConnection.GetAsync``1(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Object},JsonConverter[])">GetAsync&lt;T&gt;(String, IDictionary&lt;String, String&gt;, IDictionary&lt;String, String&gt;, IDictionary&lt;String, Object&gt;, JsonConverter[])</h4>
-              <div class="markdown level1 summary"><p>Performs an HTTP GET.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="implements">Implements</h5>
+      <div><a class="xref" href="Auth0.Core.Http.IApiConnection.html#Auth0_Core_Http_IApiConnection_DeleteAsync__1_System_String_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_String__">IApiConnection.DeleteAsync&lt;T&gt;(String, IDictionary&lt;String, String&gt;, IDictionary&lt;String, String&gt;)</a></div>
+  
+  
+  <a id="Auth0_Core_Http_ApiConnection_GetAsync_" data-uid="Auth0.Core.Http.ApiConnection.GetAsync*"></a>
+  <h4 id="Auth0_Core_Http_ApiConnection_GetAsync__1_System_String_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_Object__JsonConverter___" data-uid="Auth0.Core.Http.ApiConnection.GetAsync``1(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Object},JsonConverter[])">GetAsync&lt;T&gt;(String, IDictionary&lt;String, String&gt;, IDictionary&lt;String, String&gt;, IDictionary&lt;String, Object&gt;, JsonConverter[])</h4>
+  <div class="markdown level1 summary"><p>Performs an HTTP GET.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public Task&lt;T&gt; GetAsync&lt;T&gt;(string resource, IDictionary&lt;string, string&gt; urlSegments, IDictionary&lt;string, string&gt; queryStrings, IDictionary&lt;string, object&gt; headers, params JsonConverter[] converters)where T : class</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.String</span></td>
-                    <td><span class="parametername">resource</span></td>
-                    <td><p>The resource.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;T&gt; GetAsync&lt;T&gt;(string resource, IDictionary&lt;string, string&gt; urlSegments, IDictionary&lt;string, string&gt; queryStrings, IDictionary&lt;string, object&gt; headers, params JsonConverter[] converters)where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resource</span></td>
+        <td><p>The resource.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
-                    <td><span class="parametername">urlSegments</span></td>
-                    <td><p>The URL segments.</p>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">urlSegments</span></td>
+        <td><p>The URL segments.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
-                    <td><span class="parametername">queryStrings</span></td>
-                    <td><p>The query strings.</p>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">queryStrings</span></td>
+        <td><p>The query strings.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
-                    <td><span class="parametername">headers</span></td>
-                    <td><p>The headers.</p>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
+        <td><span class="parametername">headers</span></td>
+        <td><p>The headers.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">JsonConverter</span>[]</td>
-                    <td><span class="parametername">converters</span></td>
-                    <td><p>The list of <see cref="!:JsonConverter"></see> to use during deserialization.</p>
+      </tr>
+      <tr>
+        <td><span class="xref">JsonConverter</span>[]</td>
+        <td><span class="parametername">converters</span></td>
+        <td><p>The list of <see cref="!:JsonConverter"></see> to use during deserialization.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
-                    <td><p>Task&lt;T&gt;.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td><p>Task&lt;T&gt;.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="typeParameters">Type Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="parametername">T</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="implements">Implements</h5>
-                  <div><a class="xref" href="Auth0.Core.Http.IApiConnection.html#Auth0_Core_Http_IApiConnection_GetAsync__1_System_String_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_Object__JsonConverter___">IApiConnection.GetAsync&lt;T&gt;(String, IDictionary&lt;String, String&gt;, IDictionary&lt;String, String&gt;, IDictionary&lt;String, Object&gt;, JsonConverter[])</a></div>
-              
-              
-              <a id="Auth0_Core_Http_ApiConnection_PatchAsync_" data-uid="Auth0.Core.Http.ApiConnection.PatchAsync*"></a>
-              <h4 id="Auth0_Core_Http_ApiConnection_PatchAsync__1_System_String_System_Object_System_Collections_Generic_Dictionary_System_String_System_String__" data-uid="Auth0.Core.Http.ApiConnection.PatchAsync``1(System.String,System.Object,System.Collections.Generic.Dictionary{System.String,System.String})">PatchAsync&lt;T&gt;(String, Object, Dictionary&lt;String, String&gt;)</h4>
-              <div class="markdown level1 summary"><p>Performs an HTTP PATCH.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="implements">Implements</h5>
+      <div><a class="xref" href="Auth0.Core.Http.IApiConnection.html#Auth0_Core_Http_IApiConnection_GetAsync__1_System_String_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_Object__JsonConverter___">IApiConnection.GetAsync&lt;T&gt;(String, IDictionary&lt;String, String&gt;, IDictionary&lt;String, String&gt;, IDictionary&lt;String, Object&gt;, JsonConverter[])</a></div>
+  
+  
+  <a id="Auth0_Core_Http_ApiConnection_PatchAsync_" data-uid="Auth0.Core.Http.ApiConnection.PatchAsync*"></a>
+  <h4 id="Auth0_Core_Http_ApiConnection_PatchAsync__1_System_String_System_Object_System_Collections_Generic_Dictionary_System_String_System_String__" data-uid="Auth0.Core.Http.ApiConnection.PatchAsync``1(System.String,System.Object,System.Collections.Generic.Dictionary{System.String,System.String})">PatchAsync&lt;T&gt;(String, Object, Dictionary&lt;String, String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Performs an HTTP PATCH.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public Task&lt;T&gt; PatchAsync&lt;T&gt;(string resource, object body, Dictionary&lt;string, string&gt; urlSegments)where T : class</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.String</span></td>
-                    <td><span class="parametername">resource</span></td>
-                    <td><p>The resource.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;T&gt; PatchAsync&lt;T&gt;(string resource, object body, Dictionary&lt;string, string&gt; urlSegments)where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resource</span></td>
+        <td><p>The resource.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Object</span></td>
-                    <td><span class="parametername">body</span></td>
-                    <td><p>The body.</p>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">body</span></td>
+        <td><p>The body.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
-                    <td><span class="parametername">urlSegments</span></td>
-                    <td><p>The URL segments.</p>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">urlSegments</span></td>
+        <td><p>The URL segments.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
-                    <td><p>Task&lt;T&gt;.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td><p>Task&lt;T&gt;.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="typeParameters">Type Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="parametername">T</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="implements">Implements</h5>
-                  <div><a class="xref" href="Auth0.Core.Http.IApiConnection.html#Auth0_Core_Http_IApiConnection_PatchAsync__1_System_String_System_Object_System_Collections_Generic_Dictionary_System_String_System_String__">IApiConnection.PatchAsync&lt;T&gt;(String, Object, Dictionary&lt;String, String&gt;)</a></div>
-              
-              
-              <a id="Auth0_Core_Http_ApiConnection_PostAsync_" data-uid="Auth0.Core.Http.ApiConnection.PostAsync*"></a>
-              <h4 id="Auth0_Core_Http_ApiConnection_PostAsync__1_System_String_System_Object_System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IList_Auth0_Core_Http_FileUploadParameter__System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.Core.Http.ApiConnection.PostAsync``1(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IList{Auth0.Core.Http.FileUploadParameter},System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.String})">PostAsync&lt;T&gt;(String, Object, IDictionary&lt;String, Object&gt;, IList&lt;FileUploadParameter&gt;, IDictionary&lt;String, String&gt;, IDictionary&lt;String, Object&gt;, IDictionary&lt;String, String&gt;)</h4>
-              <div class="markdown level1 summary"><p>Performs an HTTP POST.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="implements">Implements</h5>
+      <div><a class="xref" href="Auth0.Core.Http.IApiConnection.html#Auth0_Core_Http_IApiConnection_PatchAsync__1_System_String_System_Object_System_Collections_Generic_Dictionary_System_String_System_String__">IApiConnection.PatchAsync&lt;T&gt;(String, Object, Dictionary&lt;String, String&gt;)</a></div>
+  
+  
+  <a id="Auth0_Core_Http_ApiConnection_PostAsync_" data-uid="Auth0.Core.Http.ApiConnection.PostAsync*"></a>
+  <h4 id="Auth0_Core_Http_ApiConnection_PostAsync__1_System_String_System_Object_System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IList_Auth0_Core_Http_FileUploadParameter__System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.Core.Http.ApiConnection.PostAsync``1(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IList{Auth0.Core.Http.FileUploadParameter},System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.String})">PostAsync&lt;T&gt;(String, Object, IDictionary&lt;String, Object&gt;, IList&lt;FileUploadParameter&gt;, IDictionary&lt;String, String&gt;, IDictionary&lt;String, Object&gt;, IDictionary&lt;String, String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Performs an HTTP POST.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public Task&lt;T&gt; PostAsync&lt;T&gt;(string resource, object body, IDictionary&lt;string, object&gt; parameters, IList&lt;FileUploadParameter&gt; fileParameters, IDictionary&lt;string, string&gt; urlSegments, IDictionary&lt;string, object&gt; headers, IDictionary&lt;string, string&gt; queryStrings)where T : class</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.String</span></td>
-                    <td><span class="parametername">resource</span></td>
-                    <td><p>The resource.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;T&gt; PostAsync&lt;T&gt;(string resource, object body, IDictionary&lt;string, object&gt; parameters, IList&lt;FileUploadParameter&gt; fileParameters, IDictionary&lt;string, string&gt; urlSegments, IDictionary&lt;string, object&gt; headers, IDictionary&lt;string, string&gt; queryStrings)where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resource</span></td>
+        <td><p>The resource.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Object</span></td>
-                    <td><span class="parametername">body</span></td>
-                    <td><p>The body.</p>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">body</span></td>
+        <td><p>The body.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
-                    <td><span class="parametername">parameters</span></td>
-                    <td><p>The parameters.</p>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
+        <td><span class="parametername">parameters</span></td>
+        <td><p>The parameters.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="Auth0.Core.Http.FileUploadParameter.html">FileUploadParameter</a>&gt;</td>
-                    <td><span class="parametername">fileParameters</span></td>
-                    <td><p>The file parameters.</p>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="Auth0.Core.Http.FileUploadParameter.html">FileUploadParameter</a>&gt;</td>
+        <td><span class="parametername">fileParameters</span></td>
+        <td><p>The file parameters.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
-                    <td><span class="parametername">urlSegments</span></td>
-                    <td><p>The URL segments.</p>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">urlSegments</span></td>
+        <td><p>The URL segments.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
-                    <td><span class="parametername">headers</span></td>
-                    <td><p>The headers.</p>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
+        <td><span class="parametername">headers</span></td>
+        <td><p>The headers.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
-                    <td><span class="parametername">queryStrings</span></td>
-                    <td><p>The query strings.</p>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">queryStrings</span></td>
+        <td><p>The query strings.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
-                    <td><p>Task&lt;T&gt;.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td><p>Task&lt;T&gt;.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="typeParameters">Type Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="parametername">T</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="implements">Implements</h5>
-                  <div><a class="xref" href="Auth0.Core.Http.IApiConnection.html#Auth0_Core_Http_IApiConnection_PostAsync__1_System_String_System_Object_System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IList_Auth0_Core_Http_FileUploadParameter__System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IDictionary_System_String_System_String__">IApiConnection.PostAsync&lt;T&gt;(String, Object, IDictionary&lt;String, Object&gt;, IList&lt;FileUploadParameter&gt;, IDictionary&lt;String, String&gt;, IDictionary&lt;String, Object&gt;, IDictionary&lt;String, String&gt;)</a></div>
-              
-              
-              <a id="Auth0_Core_Http_ApiConnection_PutAsync_" data-uid="Auth0.Core.Http.ApiConnection.PutAsync*"></a>
-              <h4 id="Auth0_Core_Http_ApiConnection_PutAsync__1_System_String_System_Object_System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IList_Auth0_Core_Http_FileUploadParameter__System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.Core.Http.ApiConnection.PutAsync``1(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IList{Auth0.Core.Http.FileUploadParameter},System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.String})">PutAsync&lt;T&gt;(String, Object, IDictionary&lt;String, Object&gt;, IList&lt;FileUploadParameter&gt;, IDictionary&lt;String, String&gt;, IDictionary&lt;String, Object&gt;, IDictionary&lt;String, String&gt;)</h4>
-              <div class="markdown level1 summary"><p>Performs an HTTP PUT.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="implements">Implements</h5>
+      <div><a class="xref" href="Auth0.Core.Http.IApiConnection.html#Auth0_Core_Http_IApiConnection_PostAsync__1_System_String_System_Object_System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IList_Auth0_Core_Http_FileUploadParameter__System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IDictionary_System_String_System_String__">IApiConnection.PostAsync&lt;T&gt;(String, Object, IDictionary&lt;String, Object&gt;, IList&lt;FileUploadParameter&gt;, IDictionary&lt;String, String&gt;, IDictionary&lt;String, Object&gt;, IDictionary&lt;String, String&gt;)</a></div>
+  
+  
+  <a id="Auth0_Core_Http_ApiConnection_PutAsync_" data-uid="Auth0.Core.Http.ApiConnection.PutAsync*"></a>
+  <h4 id="Auth0_Core_Http_ApiConnection_PutAsync__1_System_String_System_Object_System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IList_Auth0_Core_Http_FileUploadParameter__System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.Core.Http.ApiConnection.PutAsync``1(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IList{Auth0.Core.Http.FileUploadParameter},System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.String})">PutAsync&lt;T&gt;(String, Object, IDictionary&lt;String, Object&gt;, IList&lt;FileUploadParameter&gt;, IDictionary&lt;String, String&gt;, IDictionary&lt;String, Object&gt;, IDictionary&lt;String, String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Performs an HTTP PUT.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public Task&lt;T&gt; PutAsync&lt;T&gt;(string resource, object body, IDictionary&lt;string, object&gt; parameters, IList&lt;FileUploadParameter&gt; fileParameters, IDictionary&lt;string, string&gt; urlSegments, IDictionary&lt;string, object&gt; headers, IDictionary&lt;string, string&gt; queryStrings)where T : class</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.String</span></td>
-                    <td><span class="parametername">resource</span></td>
-                    <td><p>The resource.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;T&gt; PutAsync&lt;T&gt;(string resource, object body, IDictionary&lt;string, object&gt; parameters, IList&lt;FileUploadParameter&gt; fileParameters, IDictionary&lt;string, string&gt; urlSegments, IDictionary&lt;string, object&gt; headers, IDictionary&lt;string, string&gt; queryStrings)where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resource</span></td>
+        <td><p>The resource.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Object</span></td>
-                    <td><span class="parametername">body</span></td>
-                    <td><p>The body.</p>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">body</span></td>
+        <td><p>The body.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
-                    <td><span class="parametername">parameters</span></td>
-                    <td><p>The parameters.</p>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
+        <td><span class="parametername">parameters</span></td>
+        <td><p>The parameters.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="Auth0.Core.Http.FileUploadParameter.html">FileUploadParameter</a>&gt;</td>
-                    <td><span class="parametername">fileParameters</span></td>
-                    <td><p>The file parameters.</p>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="Auth0.Core.Http.FileUploadParameter.html">FileUploadParameter</a>&gt;</td>
+        <td><span class="parametername">fileParameters</span></td>
+        <td><p>The file parameters.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
-                    <td><span class="parametername">urlSegments</span></td>
-                    <td><p>The URL segments.</p>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">urlSegments</span></td>
+        <td><p>The URL segments.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
-                    <td><span class="parametername">headers</span></td>
-                    <td><p>The headers.</p>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
+        <td><span class="parametername">headers</span></td>
+        <td><p>The headers.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
-                    <td><span class="parametername">queryStrings</span></td>
-                    <td><p>The query strings.</p>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">queryStrings</span></td>
+        <td><p>The query strings.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
-                    <td><p>Task&lt;T&gt;.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td><p>Task&lt;T&gt;.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="typeParameters">Type Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="parametername">T</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="implements">Implements</h5>
-                  <div><a class="xref" href="Auth0.Core.Http.IApiConnection.html#Auth0_Core_Http_IApiConnection_PutAsync__1_System_String_System_Object_System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IList_Auth0_Core_Http_FileUploadParameter__System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IDictionary_System_String_System_String__">IApiConnection.PutAsync&lt;T&gt;(String, Object, IDictionary&lt;String, Object&gt;, IList&lt;FileUploadParameter&gt;, IDictionary&lt;String, String&gt;, IDictionary&lt;String, Object&gt;, IDictionary&lt;String, String&gt;)</a></div>
-                        </article>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="implements">Implements</h5>
+      <div><a class="xref" href="Auth0.Core.Http.IApiConnection.html#Auth0_Core_Http_IApiConnection_PutAsync__1_System_String_System_Object_System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IList_Auth0_Core_Http_FileUploadParameter__System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IDictionary_System_String_System_String__">IApiConnection.PutAsync&lt;T&gt;(String, Object, IDictionary&lt;String, Object&gt;, IList&lt;FileUploadParameter&gt;, IDictionary&lt;String, String&gt;, IDictionary&lt;String, Object&gt;, IDictionary&lt;String, String&gt;)</a></div>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -642,7 +642,7 @@
               <a href="#top">Back to top</a>
             </span>
             
-            <span>Copyright © 2015-2016 Microsoft<br>Generated by <strong>DocFX</strong></span>
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>

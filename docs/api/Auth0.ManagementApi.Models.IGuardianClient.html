@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IGuardianClient
    ">
-    <meta name="generator" content="docfx 2.15.4.0">
+    <meta name="generator" content="docfx 2.20.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -67,445 +67,445 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content">
-              
-              
-              <h1 id="Auth0_ManagementApi_Models_IGuardianClient" data-uid="Auth0.ManagementApi.Models.IGuardianClient">Interface IGuardianClient
-              </h1>
-              <div class="markdown level0 summary"></div>
-              <div class="markdown level0 conceptual"></div>
-              <h6><strong>Namespace</strong>:Auth0.ManagementApi.Models</h6>
-              <h6><strong>Assembly</strong>:cs.temp.dll.dll</h6>
-              <h5 id="Auth0_ManagementApi_Models_IGuardianClient_syntax">Syntax</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public interface IGuardianClient</code></pre>
-              </div>
-              <h3 id="methods">Methods
-              </h3>
-              
-              
-              <a id="Auth0_ManagementApi_Models_IGuardianClient_CreateEnrollmentTicketAsync_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.CreateEnrollmentTicketAsync*"></a>
-              <h4 id="Auth0_ManagementApi_Models_IGuardianClient_CreateEnrollmentTicketAsync_Auth0_ManagementApi_Models_CreateGuardianEnrollmentTicketRequest_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.CreateEnrollmentTicketAsync(Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketRequest)">CreateEnrollmentTicketAsync(CreateGuardianEnrollmentTicketRequest)</h4>
-              <div class="markdown level1 summary"><p>Generate an email with a link to start the Guardian enrollment process.</p>
+            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Models.IGuardianClient">
+  
+  
+  <h1 id="Auth0_ManagementApi_Models_IGuardianClient" data-uid="Auth0.ManagementApi.Models.IGuardianClient" class="text-break">Interface IGuardianClient
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Models.html">Auth0.ManagementApi.Models</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="Auth0_ManagementApi_Models_IGuardianClient_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IGuardianClient</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Auth0_ManagementApi_Models_IGuardianClient_CreateEnrollmentTicketAsync_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.CreateEnrollmentTicketAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Models_IGuardianClient_CreateEnrollmentTicketAsync_Auth0_ManagementApi_Models_CreateGuardianEnrollmentTicketRequest_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.CreateEnrollmentTicketAsync(Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketRequest)">CreateEnrollmentTicketAsync(CreateGuardianEnrollmentTicketRequest)</h4>
+  <div class="markdown level1 summary"><p>Generate an email with a link to start the Guardian enrollment process.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;CreateGuardianEnrollmentTicketResponse&gt; CreateEnrollmentTicketAsync(CreateGuardianEnrollmentTicketRequest request)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><a class="xref" href="Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketRequest.html">CreateGuardianEnrollmentTicketRequest</a></td>
-                    <td><span class="parametername">request</span></td>
-                    <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketRequest.html">CreateGuardianEnrollmentTicketRequest</a> containing the information about the
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;CreateGuardianEnrollmentTicketResponse&gt; CreateEnrollmentTicketAsync(CreateGuardianEnrollmentTicketRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketRequest.html">CreateGuardianEnrollmentTicketRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketRequest.html">CreateGuardianEnrollmentTicketRequest</a> containing the information about the
 user who should be enrolled.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketResponse.html">CreateGuardianEnrollmentTicketResponse</a>&gt;</td>
-                    <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketResponse.html">CreateGuardianEnrollmentTicketResponse</a> with the details of the ticket that was created.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketResponse.html">CreateGuardianEnrollmentTicketResponse</a>&gt;</td>
+        <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketResponse.html">CreateGuardianEnrollmentTicketResponse</a> with the details of the ticket that was created.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              
-              
-              <a id="Auth0_ManagementApi_Models_IGuardianClient_DeleteEnrollmentAsync_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.DeleteEnrollmentAsync*"></a>
-              <h4 id="Auth0_ManagementApi_Models_IGuardianClient_DeleteEnrollmentAsync_System_String_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.DeleteEnrollmentAsync(System.String)">DeleteEnrollmentAsync(String)</h4>
-              <div class="markdown level1 summary"><p>Deletes an enrollment.</p>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Models_IGuardianClient_DeleteEnrollmentAsync_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.DeleteEnrollmentAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Models_IGuardianClient_DeleteEnrollmentAsync_System_String_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.DeleteEnrollmentAsync(System.String)">DeleteEnrollmentAsync(String)</h4>
+  <div class="markdown level1 summary"><p>Deletes an enrollment.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task DeleteEnrollmentAsync(string id)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.String</span></td>
-                    <td><span class="parametername">id</span></td>
-                    <td><p>The ID of the enrollment.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task DeleteEnrollmentAsync(string id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The ID of the enrollment.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              
-              
-              <a id="Auth0_ManagementApi_Models_IGuardianClient_GetEnrollmentAsync_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.GetEnrollmentAsync*"></a>
-              <h4 id="Auth0_ManagementApi_Models_IGuardianClient_GetEnrollmentAsync_System_String_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.GetEnrollmentAsync(System.String)">GetEnrollmentAsync(String)</h4>
-              <div class="markdown level1 summary"><p>Retrieves an enrollment.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Models_IGuardianClient_GetEnrollmentAsync_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.GetEnrollmentAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Models_IGuardianClient_GetEnrollmentAsync_System_String_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.GetEnrollmentAsync(System.String)">GetEnrollmentAsync(String)</h4>
+  <div class="markdown level1 summary"><p>Retrieves an enrollment.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;GuardianEnrollment&gt; GetEnrollmentAsync(string id)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.String</span></td>
-                    <td><span class="parametername">id</span></td>
-                    <td><p>The ID of the enrollment.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;GuardianEnrollment&gt; GetEnrollmentAsync(string id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The ID of the enrollment.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianEnrollment.html">GuardianEnrollment</a>&gt;</td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              
-              
-              <a id="Auth0_ManagementApi_Models_IGuardianClient_GetFactorsAsync_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.GetFactorsAsync*"></a>
-              <h4 id="Auth0_ManagementApi_Models_IGuardianClient_GetFactorsAsync" data-uid="Auth0.ManagementApi.Models.IGuardianClient.GetFactorsAsync">GetFactorsAsync()</h4>
-              <div class="markdown level1 summary"><p>Retrieves all factors. Useful to check factor enablement and trial status.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianEnrollment.html">GuardianEnrollment</a>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Models_IGuardianClient_GetFactorsAsync_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.GetFactorsAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Models_IGuardianClient_GetFactorsAsync" data-uid="Auth0.ManagementApi.Models.IGuardianClient.GetFactorsAsync">GetFactorsAsync()</h4>
+  <div class="markdown level1 summary"><p>Retrieves all factors. Useful to check factor enablement and trial status.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;IList&lt;GuardianFactor&gt;&gt; GetFactorsAsync()</code></pre>
-              </div>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianFactor.html">GuardianFactor</a>&gt;&gt;</td>
-                    <td><p>List of <a class="xref" href="Auth0.ManagementApi.Models.GuardianFactor.html">GuardianFactor</a> with the available factors.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IList&lt;GuardianFactor&gt;&gt; GetFactorsAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianFactor.html">GuardianFactor</a>&gt;&gt;</td>
+        <td><p>List of <a class="xref" href="Auth0.ManagementApi.Models.GuardianFactor.html">GuardianFactor</a> with the available factors.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              
-              
-              <a id="Auth0_ManagementApi_Models_IGuardianClient_GetSmsTemplatesAsync_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.GetSmsTemplatesAsync*"></a>
-              <h4 id="Auth0_ManagementApi_Models_IGuardianClient_GetSmsTemplatesAsync" data-uid="Auth0.ManagementApi.Models.IGuardianClient.GetSmsTemplatesAsync">GetSmsTemplatesAsync()</h4>
-              <div class="markdown level1 summary"><p>Retrieves enrollment and verification templates. You can use it to check the current values for your templates.</p>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Models_IGuardianClient_GetSmsTemplatesAsync_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.GetSmsTemplatesAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Models_IGuardianClient_GetSmsTemplatesAsync" data-uid="Auth0.ManagementApi.Models.IGuardianClient.GetSmsTemplatesAsync">GetSmsTemplatesAsync()</h4>
+  <div class="markdown level1 summary"><p>Retrieves enrollment and verification templates. You can use it to check the current values for your templates.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;GuardianSmsEnrollmentTemplates&gt; GetSmsTemplatesAsync()</code></pre>
-              </div>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates.html">GuardianSmsEnrollmentTemplates</a>&gt;</td>
-                    <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates.html">GuardianSmsEnrollmentTemplates</a> containing the templates.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;GuardianSmsEnrollmentTemplates&gt; GetSmsTemplatesAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates.html">GuardianSmsEnrollmentTemplates</a>&gt;</td>
+        <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates.html">GuardianSmsEnrollmentTemplates</a> containing the templates.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              
-              
-              <a id="Auth0_ManagementApi_Models_IGuardianClient_GetSnsConfigurationAsync_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.GetSnsConfigurationAsync*"></a>
-              <h4 id="Auth0_ManagementApi_Models_IGuardianClient_GetSnsConfigurationAsync" data-uid="Auth0.ManagementApi.Models.IGuardianClient.GetSnsConfigurationAsync">GetSnsConfigurationAsync()</h4>
-              <div class="markdown level1 summary"><p>Returns provider configuration for AWS SNS</p>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Models_IGuardianClient_GetSnsConfigurationAsync_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.GetSnsConfigurationAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Models_IGuardianClient_GetSnsConfigurationAsync" data-uid="Auth0.ManagementApi.Models.IGuardianClient.GetSnsConfigurationAsync">GetSnsConfigurationAsync()</h4>
+  <div class="markdown level1 summary"><p>Returns provider configuration for AWS SNS</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;GuardianSnsConfiguration&gt; GetSnsConfigurationAsync()</code></pre>
-              </div>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianSnsConfiguration.html">GuardianSnsConfiguration</a>&gt;</td>
-                    <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.GuardianSnsConfiguration.html">GuardianSnsConfiguration</a> containing Amazon SNS configuration.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;GuardianSnsConfiguration&gt; GetSnsConfigurationAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianSnsConfiguration.html">GuardianSnsConfiguration</a>&gt;</td>
+        <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.GuardianSnsConfiguration.html">GuardianSnsConfiguration</a> containing Amazon SNS configuration.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              
-              
-              <a id="Auth0_ManagementApi_Models_IGuardianClient_GetTwilioConfigurationAsync_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.GetTwilioConfigurationAsync*"></a>
-              <h4 id="Auth0_ManagementApi_Models_IGuardianClient_GetTwilioConfigurationAsync" data-uid="Auth0.ManagementApi.Models.IGuardianClient.GetTwilioConfigurationAsync">GetTwilioConfigurationAsync()</h4>
-              <div class="markdown level1 summary"><p>Returns configuration for the Guardian Twilio provider.</p>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Models_IGuardianClient_GetTwilioConfigurationAsync_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.GetTwilioConfigurationAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Models_IGuardianClient_GetTwilioConfigurationAsync" data-uid="Auth0.ManagementApi.Models.IGuardianClient.GetTwilioConfigurationAsync">GetTwilioConfigurationAsync()</h4>
+  <div class="markdown level1 summary"><p>Returns configuration for the Guardian Twilio provider.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;GuardianTwilioConfiguration&gt; GetTwilioConfigurationAsync()</code></pre>
-              </div>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianTwilioConfiguration.html">GuardianTwilioConfiguration</a>&gt;</td>
-                    <td><p><a class="xref" href="Auth0.ManagementApi.Models.GuardianTwilioConfiguration.html">GuardianTwilioConfiguration</a> with the Twilio configuration.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;GuardianTwilioConfiguration&gt; GetTwilioConfigurationAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianTwilioConfiguration.html">GuardianTwilioConfiguration</a>&gt;</td>
+        <td><p><a class="xref" href="Auth0.ManagementApi.Models.GuardianTwilioConfiguration.html">GuardianTwilioConfiguration</a> with the Twilio configuration.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              
-              
-              <a id="Auth0_ManagementApi_Models_IGuardianClient_UpdateFactorAsync_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.UpdateFactorAsync*"></a>
-              <h4 id="Auth0_ManagementApi_Models_IGuardianClient_UpdateFactorAsync_Auth0_ManagementApi_Models_UpdateGuardianFactorRequest_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.UpdateFactorAsync(Auth0.ManagementApi.Models.UpdateGuardianFactorRequest)">UpdateFactorAsync(UpdateGuardianFactorRequest)</h4>
-              <div class="markdown level1 summary"><p>Enable or Disable a Guardian factor.</p>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Models_IGuardianClient_UpdateFactorAsync_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.UpdateFactorAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Models_IGuardianClient_UpdateFactorAsync_Auth0_ManagementApi_Models_UpdateGuardianFactorRequest_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.UpdateFactorAsync(Auth0.ManagementApi.Models.UpdateGuardianFactorRequest)">UpdateFactorAsync(UpdateGuardianFactorRequest)</h4>
+  <div class="markdown level1 summary"><p>Enable or Disable a Guardian factor.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;UpdateGuardianFactorResponse&gt; UpdateFactorAsync(UpdateGuardianFactorRequest request)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianFactorRequest.html">UpdateGuardianFactorRequest</a></td>
-                    <td><span class="parametername">request</span></td>
-                    <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianFactorRequest.html">UpdateGuardianFactorRequest</a> containing the details of the factor to update.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;UpdateGuardianFactorResponse&gt; UpdateFactorAsync(UpdateGuardianFactorRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianFactorRequest.html">UpdateGuardianFactorRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianFactorRequest.html">UpdateGuardianFactorRequest</a> containing the details of the factor to update.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianFactorResponse.html">UpdateGuardianFactorResponse</a>&gt;</td>
-                    <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianFactorResponse.html">UpdateGuardianFactorResponse</a> indicating the status of the factor.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianFactorResponse.html">UpdateGuardianFactorResponse</a>&gt;</td>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianFactorResponse.html">UpdateGuardianFactorResponse</a> indicating the status of the factor.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              
-              
-              <a id="Auth0_ManagementApi_Models_IGuardianClient_UpdateSmsTemplatesAsync_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.UpdateSmsTemplatesAsync*"></a>
-              <h4 id="Auth0_ManagementApi_Models_IGuardianClient_UpdateSmsTemplatesAsync_Auth0_ManagementApi_Models_GuardianSmsEnrollmentTemplates_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.UpdateSmsTemplatesAsync(Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates)">UpdateSmsTemplatesAsync(GuardianSmsEnrollmentTemplates)</h4>
-              <div class="markdown level1 summary"><p>Updates enrollment and verification templates. Useful to send custom messages on SMS enrollment and verification.</p>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Models_IGuardianClient_UpdateSmsTemplatesAsync_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.UpdateSmsTemplatesAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Models_IGuardianClient_UpdateSmsTemplatesAsync_Auth0_ManagementApi_Models_GuardianSmsEnrollmentTemplates_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.UpdateSmsTemplatesAsync(Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates)">UpdateSmsTemplatesAsync(GuardianSmsEnrollmentTemplates)</h4>
+  <div class="markdown level1 summary"><p>Updates enrollment and verification templates. Useful to send custom messages on SMS enrollment and verification.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;GuardianSmsEnrollmentTemplates&gt; UpdateSmsTemplatesAsync(GuardianSmsEnrollmentTemplates templates)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><a class="xref" href="Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates.html">GuardianSmsEnrollmentTemplates</a></td>
-                    <td><span class="parametername">templates</span></td>
-                    <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates.html">GuardianSmsEnrollmentTemplates</a> containing the updated templates.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;GuardianSmsEnrollmentTemplates&gt; UpdateSmsTemplatesAsync(GuardianSmsEnrollmentTemplates templates)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates.html">GuardianSmsEnrollmentTemplates</a></td>
+        <td><span class="parametername">templates</span></td>
+        <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates.html">GuardianSmsEnrollmentTemplates</a> containing the updated templates.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates.html">GuardianSmsEnrollmentTemplates</a>&gt;</td>
-                    <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates.html">GuardianSmsEnrollmentTemplates</a> containing the templates.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates.html">GuardianSmsEnrollmentTemplates</a>&gt;</td>
+        <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates.html">GuardianSmsEnrollmentTemplates</a> containing the templates.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              
-              
-              <a id="Auth0_ManagementApi_Models_IGuardianClient_UpdateSnsConfigurationAsync_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.UpdateSnsConfigurationAsync*"></a>
-              <h4 id="Auth0_ManagementApi_Models_IGuardianClient_UpdateSnsConfigurationAsync_Auth0_ManagementApi_Models_UpdateGuardianSnsConfigurationRequest_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.UpdateSnsConfigurationAsync(Auth0.ManagementApi.Models.UpdateGuardianSnsConfigurationRequest)">UpdateSnsConfigurationAsync(UpdateGuardianSnsConfigurationRequest)</h4>
-              <div class="markdown level1 summary"><p>Updates provider configuration for Amazon SNS.</p>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Models_IGuardianClient_UpdateSnsConfigurationAsync_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.UpdateSnsConfigurationAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Models_IGuardianClient_UpdateSnsConfigurationAsync_Auth0_ManagementApi_Models_UpdateGuardianSnsConfigurationRequest_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.UpdateSnsConfigurationAsync(Auth0.ManagementApi.Models.UpdateGuardianSnsConfigurationRequest)">UpdateSnsConfigurationAsync(UpdateGuardianSnsConfigurationRequest)</h4>
+  <div class="markdown level1 summary"><p>Updates provider configuration for Amazon SNS.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;GuardianSnsConfiguration&gt; UpdateSnsConfigurationAsync(UpdateGuardianSnsConfigurationRequest request)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianSnsConfigurationRequest.html">UpdateGuardianSnsConfigurationRequest</a></td>
-                    <td><span class="parametername">request</span></td>
-                    <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianSnsConfigurationRequest.html">UpdateGuardianSnsConfigurationRequest</a> containing Amazon SNS configuration.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;GuardianSnsConfiguration&gt; UpdateSnsConfigurationAsync(UpdateGuardianSnsConfigurationRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianSnsConfigurationRequest.html">UpdateGuardianSnsConfigurationRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianSnsConfigurationRequest.html">UpdateGuardianSnsConfigurationRequest</a> containing Amazon SNS configuration.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianSnsConfiguration.html">GuardianSnsConfiguration</a>&gt;</td>
-                    <td><p><a class="xref" href="Auth0.ManagementApi.Models.GuardianSnsConfiguration.html">GuardianSnsConfiguration</a> with updated Amazon SNS configuration.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianSnsConfiguration.html">GuardianSnsConfiguration</a>&gt;</td>
+        <td><p><a class="xref" href="Auth0.ManagementApi.Models.GuardianSnsConfiguration.html">GuardianSnsConfiguration</a> with updated Amazon SNS configuration.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              
-              
-              <a id="Auth0_ManagementApi_Models_IGuardianClient_UpdateTwilioConfigurationAsync_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.UpdateTwilioConfigurationAsync*"></a>
-              <h4 id="Auth0_ManagementApi_Models_IGuardianClient_UpdateTwilioConfigurationAsync_Auth0_ManagementApi_Models_UpdateGuardianTwilioConfigurationRequest_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.UpdateTwilioConfigurationAsync(Auth0.ManagementApi.Models.UpdateGuardianTwilioConfigurationRequest)">UpdateTwilioConfigurationAsync(UpdateGuardianTwilioConfigurationRequest)</h4>
-              <div class="markdown level1 summary"><p>Configure the Guardian Twilio provider.</p>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Models_IGuardianClient_UpdateTwilioConfigurationAsync_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.UpdateTwilioConfigurationAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Models_IGuardianClient_UpdateTwilioConfigurationAsync_Auth0_ManagementApi_Models_UpdateGuardianTwilioConfigurationRequest_" data-uid="Auth0.ManagementApi.Models.IGuardianClient.UpdateTwilioConfigurationAsync(Auth0.ManagementApi.Models.UpdateGuardianTwilioConfigurationRequest)">UpdateTwilioConfigurationAsync(UpdateGuardianTwilioConfigurationRequest)</h4>
+  <div class="markdown level1 summary"><p>Configure the Guardian Twilio provider.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">Task&lt;GuardianTwilioConfiguration&gt; UpdateTwilioConfigurationAsync(UpdateGuardianTwilioConfigurationRequest request)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianTwilioConfigurationRequest.html">UpdateGuardianTwilioConfigurationRequest</a></td>
-                    <td><span class="parametername">request</span></td>
-                    <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianTwilioConfigurationRequest.html">UpdateGuardianTwilioConfigurationRequest</a> containing the configuration
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;GuardianTwilioConfiguration&gt; UpdateTwilioConfigurationAsync(UpdateGuardianTwilioConfigurationRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianTwilioConfigurationRequest.html">UpdateGuardianTwilioConfigurationRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianTwilioConfigurationRequest.html">UpdateGuardianTwilioConfigurationRequest</a> containing the configuration
 settings.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="returns">Returns</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianTwilioConfiguration.html">GuardianTwilioConfiguration</a>&gt;</td>
-                    <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.GuardianTwilioConfiguration.html">GuardianTwilioConfiguration</a> containing the updated configuration settings.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianTwilioConfiguration.html">GuardianTwilioConfiguration</a>&gt;</td>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.GuardianTwilioConfiguration.html">GuardianTwilioConfiguration</a> containing the updated configuration settings.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-                        </article>
+      </tr>
+    </tbody>
+  </table>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -530,7 +530,7 @@ settings.</p>
               <a href="#top">Back to top</a>
             </span>
             
-            <span>Copyright © 2015-2016 Microsoft<br>Generated by <strong>DocFX</strong></span>
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>

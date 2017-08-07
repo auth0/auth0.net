@@ -37,9 +37,9 @@ h4:before {
     margin-top: -100px;
 }
 
-h1, h2, h3, h4, h5, h6, span.xref {
+h1, h2, h3, h4, h5, h6, .text-break {
     word-wrap: break-word;
-    word-break: break-all;
+    word-break: break-word;
 }
 
 h1 mark,
@@ -761,14 +761,21 @@ footer {
     padding-bottom: 0px;
     border: none;
   }
-  .toc .level2 > li {
+  .toc .nav > li, .toc .nav > li >a {
     display: inline-block;
   }
-  .toc .level2 > li:after {
+  .toc li:after {
     margin-left: -3px;
     margin-right: 5px;
     content: ", ";
     color: #666666;
+  }
+  .toc .level1 > li {
+    display: block;
+  }
+  
+  .toc .level1 > li:after {
+    display: none;
   }
   .article.grid-right {
     margin-left: 0;

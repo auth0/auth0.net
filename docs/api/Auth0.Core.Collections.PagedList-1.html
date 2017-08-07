@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class PagedList&lt;T&gt;
    ">
-    <meta name="generator" content="docfx 2.15.4.0">
+    <meta name="generator" content="docfx 2.20.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -67,445 +67,445 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content">
-              
-              
-              <h1 id="Auth0_Core_Collections_PagedList_1" data-uid="Auth0.Core.Collections.PagedList`1">Class PagedList&lt;T&gt;
-              </h1>
-              <div class="markdown level0 summary"><p>A list which contains paged data from the API.</p>
+            <article class="content wrap" id="_content" data-uid="Auth0.Core.Collections.PagedList`1">
+  
+  
+  <h1 id="Auth0_Core_Collections_PagedList_1" data-uid="Auth0.Core.Collections.PagedList`1" class="text-break">Class PagedList&lt;T&gt;
+  </h1>
+  <div class="markdown level0 summary"><p>A list which contains paged data from the API.</p>
 </div>
-              <div class="markdown level0 conceptual"></div>
-              <div class="inheritance">
-                <h5>Inheritance</h5>
-                  <div class="level0"><span class="xref">System.Object</span></div>
-                  <div class="level1"><span class="xref">System.Collections.Generic.List</span>&lt;T&gt;</div>
-                  <div class="level2"><span class="xref">PagedList&lt;T&gt;</span></div>
-              </div>
-              <div class="inheritedMembers">
-                <h5>Inherited Members</h5>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.IList.get_Item(System.Int32)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.IList.set_Item(System.Int32, System.Object)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.Add(T)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.IList.Add(System.Object)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.AddRange(System.Collections.Generic.IEnumerable&lt;T&gt;)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.AsReadOnly()</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.BinarySearch(System.Int32, System.Int32, T, System.Collections.Generic.IComparer&lt;T&gt;)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.BinarySearch(T)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.BinarySearch(T, System.Collections.Generic.IComparer&lt;T&gt;)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.Clear()</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.Contains(T)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.IList.Contains(System.Object)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.ConvertAll&lt;TOutput&gt;(System.Converter&lt;T, TOutput&gt;)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.CopyTo(T[])</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.ICollection.CopyTo(System.Array, System.Int32)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.CopyTo(System.Int32, T[], System.Int32, System.Int32)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.CopyTo(T[], System.Int32)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.Exists(System.Predicate&lt;T&gt;)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.Find(System.Predicate&lt;T&gt;)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.FindAll(System.Predicate&lt;T&gt;)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.FindIndex(System.Predicate&lt;T&gt;)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.FindIndex(System.Int32, System.Predicate&lt;T&gt;)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.FindIndex(System.Int32, System.Int32, System.Predicate&lt;T&gt;)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.FindLast(System.Predicate&lt;T&gt;)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.FindLastIndex(System.Predicate&lt;T&gt;)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.FindLastIndex(System.Int32, System.Predicate&lt;T&gt;)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.FindLastIndex(System.Int32, System.Int32, System.Predicate&lt;T&gt;)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.ForEach(System.Action&lt;T&gt;)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.GetEnumerator()</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.Generic.IEnumerable&lt;T&gt;.GetEnumerator()</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.IEnumerable.GetEnumerator()</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.GetRange(System.Int32, System.Int32)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.IndexOf(T)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.IList.IndexOf(System.Object)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.IndexOf(T, System.Int32)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.IndexOf(T, System.Int32, System.Int32)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.Insert(System.Int32, T)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.IList.Insert(System.Int32, System.Object)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.InsertRange(System.Int32, System.Collections.Generic.IEnumerable&lt;T&gt;)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.LastIndexOf(T)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.LastIndexOf(T, System.Int32)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.LastIndexOf(T, System.Int32, System.Int32)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.Remove(T)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.IList.Remove(System.Object)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.RemoveAll(System.Predicate&lt;T&gt;)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.RemoveAt(System.Int32)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.RemoveRange(System.Int32, System.Int32)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.Reverse()</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.Reverse(System.Int32, System.Int32)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.Sort()</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.Sort(System.Collections.Generic.IComparer&lt;T&gt;)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.Sort(System.Int32, System.Int32, System.Collections.Generic.IComparer&lt;T&gt;)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.Sort(System.Comparison&lt;T&gt;)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.ToArray()</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.TrimExcess()</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.TrueForAll(System.Predicate&lt;T&gt;)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.Capacity</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.Count</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.IList.IsFixedSize</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.Generic.ICollection&lt;T&gt;.IsReadOnly</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.IList.IsReadOnly</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.ICollection.IsSynchronized</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.ICollection.SyncRoot</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.Item[System.Int32]</span>
-                </div>
-                <div>
-                  <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.IList.Item[System.Int32]</span>
-                </div>
-                <div>
-                  <span class="xref">System.Object.ToString()</span>
-                </div>
-                <div>
-                  <span class="xref">System.Object.Equals(System.Object)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-                </div>
-                <div>
-                  <span class="xref">System.Object.GetHashCode()</span>
-                </div>
-                <div>
-                  <span class="xref">System.Object.GetType()</span>
-                </div>
-                <div>
-                  <span class="xref">System.Object.MemberwiseClone()</span>
-                </div>
-              </div>
-              <h6><strong>Namespace</strong>:Auth0.Core.Collections</h6>
-              <h6><strong>Assembly</strong>:cs.temp.dll.dll</h6>
-              <h5 id="Auth0_Core_Collections_PagedList_1_syntax">Syntax</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public class PagedList&lt;T&gt; : List&lt;T&gt;, IList, ICollection, IReadOnlyList&lt;T&gt;, IReadOnlyCollection&lt;T&gt;, IPagedList&lt;T&gt;, IList&lt;T&gt;, ICollection&lt;T&gt;, IEnumerable&lt;T&gt;, IEnumerable</code></pre>
-              </div>
-              <h5 class="typeParameters">Type Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="parametername">T</span></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <h3 id="constructors">Constructors
-              </h3>
-              
-              
-              <a id="Auth0_Core_Collections_PagedList_1__ctor_" data-uid="Auth0.Core.Collections.PagedList`1.#ctor*"></a>
-              <h4 id="Auth0_Core_Collections_PagedList_1__ctor" data-uid="Auth0.Core.Collections.PagedList`1.#ctor">PagedList()</h4>
-              <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Collections.PagedList-1.html">PagedList&lt;T&gt;</a> class that is empty and has the default initial capacity.</p>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">System.Collections.Generic.List</span>&lt;T&gt;</div>
+    <div class="level2"><span class="xref">PagedList&lt;T&gt;</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.IList.get_Item(System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.IList.set_Item(System.Int32, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.Add(T)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.IList.Add(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.AddRange(System.Collections.Generic.IEnumerable&lt;T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.AsReadOnly()</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.BinarySearch(System.Int32, System.Int32, T, System.Collections.Generic.IComparer&lt;T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.BinarySearch(T)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.BinarySearch(T, System.Collections.Generic.IComparer&lt;T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.Clear()</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.Contains(T)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.IList.Contains(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.ConvertAll&lt;TOutput&gt;(System.Converter&lt;T, TOutput&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.CopyTo(T[])</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.ICollection.CopyTo(System.Array, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.CopyTo(System.Int32, T[], System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.CopyTo(T[], System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.Exists(System.Predicate&lt;T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.Find(System.Predicate&lt;T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.FindAll(System.Predicate&lt;T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.FindIndex(System.Predicate&lt;T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.FindIndex(System.Int32, System.Predicate&lt;T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.FindIndex(System.Int32, System.Int32, System.Predicate&lt;T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.FindLast(System.Predicate&lt;T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.FindLastIndex(System.Predicate&lt;T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.FindLastIndex(System.Int32, System.Predicate&lt;T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.FindLastIndex(System.Int32, System.Int32, System.Predicate&lt;T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.ForEach(System.Action&lt;T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.GetEnumerator()</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.Generic.IEnumerable&lt;T&gt;.GetEnumerator()</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.IEnumerable.GetEnumerator()</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.GetRange(System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.IndexOf(T)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.IList.IndexOf(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.IndexOf(T, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.IndexOf(T, System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.Insert(System.Int32, T)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.IList.Insert(System.Int32, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.InsertRange(System.Int32, System.Collections.Generic.IEnumerable&lt;T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.LastIndexOf(T)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.LastIndexOf(T, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.LastIndexOf(T, System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.Remove(T)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.IList.Remove(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.RemoveAll(System.Predicate&lt;T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.RemoveAt(System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.RemoveRange(System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.Reverse()</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.Reverse(System.Int32, System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.Sort()</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.Sort(System.Collections.Generic.IComparer&lt;T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.Sort(System.Int32, System.Int32, System.Collections.Generic.IComparer&lt;T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.Sort(System.Comparison&lt;T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.ToArray()</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.TrimExcess()</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.TrueForAll(System.Predicate&lt;T&gt;)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.Capacity</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.Count</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.IList.IsFixedSize</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.Generic.ICollection&lt;T&gt;.IsReadOnly</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.IList.IsReadOnly</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.ICollection.IsSynchronized</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.ICollection.SyncRoot</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.Item[System.Int32]</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.List&lt;T&gt;.System.Collections.IList.Item[System.Int32]</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.Core.Collections.html">Auth0.Core.Collections</a></h6>
+  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h5 id="Auth0_Core_Collections_PagedList_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class PagedList&lt;T&gt; : List&lt;T&gt;, IList, ICollection, IReadOnlyList&lt;T&gt;, IReadOnlyCollection&lt;T&gt;, IPagedList&lt;T&gt;, IList&lt;T&gt;, ICollection&lt;T&gt;, IEnumerable&lt;T&gt;, IEnumerable</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="Auth0_Core_Collections_PagedList_1__ctor_" data-uid="Auth0.Core.Collections.PagedList`1.#ctor*"></a>
+  <h4 id="Auth0_Core_Collections_PagedList_1__ctor" data-uid="Auth0.Core.Collections.PagedList`1.#ctor">PagedList()</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Collections.PagedList-1.html">PagedList&lt;T&gt;</a> class that is empty and has the default initial capacity.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public PagedList()</code></pre>
-              </div>
-              
-              
-              <a id="Auth0_Core_Collections_PagedList_1__ctor_" data-uid="Auth0.Core.Collections.PagedList`1.#ctor*"></a>
-              <h4 id="Auth0_Core_Collections_PagedList_1__ctor_System_Collections_Generic_IEnumerable__0__" data-uid="Auth0.Core.Collections.PagedList`1.#ctor(System.Collections.Generic.IEnumerable{`0})">PagedList(IEnumerable&lt;T&gt;)</h4>
-              <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Collections.PagedList-1.html">PagedList&lt;T&gt;</a> class that contains elements copied from the specified collection and has sufficient capacity to accommodate the number of elements copied.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PagedList()</code></pre>
+  </div>
+  
+  
+  <a id="Auth0_Core_Collections_PagedList_1__ctor_" data-uid="Auth0.Core.Collections.PagedList`1.#ctor*"></a>
+  <h4 id="Auth0_Core_Collections_PagedList_1__ctor_System_Collections_Generic_IEnumerable__0__" data-uid="Auth0.Core.Collections.PagedList`1.#ctor(System.Collections.Generic.IEnumerable{`0})">PagedList(IEnumerable&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Collections.PagedList-1.html">PagedList&lt;T&gt;</a> class that contains elements copied from the specified collection and has sufficient capacity to accommodate the number of elements copied.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public PagedList(IEnumerable&lt;T&gt; collection)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;</td>
-                    <td><span class="parametername">collection</span></td>
-                    <td><p>The collection whose elements are copied to the new list.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PagedList(IEnumerable&lt;T&gt; collection)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;</td>
+        <td><span class="parametername">collection</span></td>
+        <td><p>The collection whose elements are copied to the new list.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="exceptions">Exceptions</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Condition</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.ArgumentNullException</span></td>
-                    <td><p><span class="paramref">collection</span> is null.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><span class="paramref">collection</span> is null.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              
-              
-              <a id="Auth0_Core_Collections_PagedList_1__ctor_" data-uid="Auth0.Core.Collections.PagedList`1.#ctor*"></a>
-              <h4 id="Auth0_Core_Collections_PagedList_1__ctor_System_Collections_Generic_IEnumerable__0__Auth0_Core_PagingInformation_" data-uid="Auth0.Core.Collections.PagedList`1.#ctor(System.Collections.Generic.IEnumerable{`0},Auth0.Core.PagingInformation)">PagedList(IEnumerable&lt;T&gt;, PagingInformation)</h4>
-              <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Collections.PagedList-1.html">PagedList&lt;T&gt;</a> class that contains elements copied from the specified collection and has sufficient capacity to accommodate the number of elements copied.</p>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_Core_Collections_PagedList_1__ctor_" data-uid="Auth0.Core.Collections.PagedList`1.#ctor*"></a>
+  <h4 id="Auth0_Core_Collections_PagedList_1__ctor_System_Collections_Generic_IEnumerable__0__Auth0_Core_PagingInformation_" data-uid="Auth0.Core.Collections.PagedList`1.#ctor(System.Collections.Generic.IEnumerable{`0},Auth0.Core.PagingInformation)">PagedList(IEnumerable&lt;T&gt;, PagingInformation)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Collections.PagedList-1.html">PagedList&lt;T&gt;</a> class that contains elements copied from the specified collection and has sufficient capacity to accommodate the number of elements copied.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public PagedList(IEnumerable&lt;T&gt; collection, PagingInformation paging)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;</td>
-                    <td><span class="parametername">collection</span></td>
-                    <td><p>The collection whose elements are copied to the new list.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PagedList(IEnumerable&lt;T&gt; collection, PagingInformation paging)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;T&gt;</td>
+        <td><span class="parametername">collection</span></td>
+        <td><p>The collection whose elements are copied to the new list.</p>
 </td>
-                  </tr>
-                  <tr>
-                    <td><a class="xref" href="Auth0.Core.PagingInformation.html">PagingInformation</a></td>
-                    <td><span class="parametername">paging</span></td>
-                    <td><p>Information about the current page of information contained in the list.</p>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Auth0.Core.PagingInformation.html">PagingInformation</a></td>
+        <td><span class="parametername">paging</span></td>
+        <td><p>Information about the current page of information contained in the list.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="exceptions">Exceptions</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Condition</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.ArgumentNullException</span></td>
-                    <td><p><span class="paramref">collection</span> is null.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><span class="paramref">collection</span> is null.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              
-              
-              <a id="Auth0_Core_Collections_PagedList_1__ctor_" data-uid="Auth0.Core.Collections.PagedList`1.#ctor*"></a>
-              <h4 id="Auth0_Core_Collections_PagedList_1__ctor_System_Int32_" data-uid="Auth0.Core.Collections.PagedList`1.#ctor(System.Int32)">PagedList(Int32)</h4>
-              <div class="markdown level1 summary"><p>Initializes a new instance of the <span class="xref">System.Collections.Generic.List&lt;T&gt;</span> class that is empty and has the specified initial capacity.</p>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_Core_Collections_PagedList_1__ctor_" data-uid="Auth0.Core.Collections.PagedList`1.#ctor*"></a>
+  <h4 id="Auth0_Core_Collections_PagedList_1__ctor_System_Int32_" data-uid="Auth0.Core.Collections.PagedList`1.#ctor(System.Int32)">PagedList(Int32)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <span class="xref">System.Collections.Generic.List&lt;T&gt;</span> class that is empty and has the specified initial capacity.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public PagedList(int capacity)</code></pre>
-              </div>
-              <h5 class="parameters">Parameters</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.Int32</span></td>
-                    <td><span class="parametername">capacity</span></td>
-                    <td><p>The number of elements that the new list can initially store.</p>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PagedList(int capacity)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">capacity</span></td>
+        <td><p>The number of elements that the new list can initially store.</p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="exceptions">Exceptions</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Condition</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
-                    <td><p><span class="paramref">capacity</span> is less than 0. </p>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentOutOfRangeException</span></td>
+        <td><p><span class="paramref">capacity</span> is less than 0. </p>
 </td>
-                  </tr>
-                </tbody>
-              </table>
-              <h3 id="properties">Properties
-              </h3>
-              
-              
-              <a id="Auth0_Core_Collections_PagedList_1_Paging_" data-uid="Auth0.Core.Collections.PagedList`1.Paging*"></a>
-              <h4 id="Auth0_Core_Collections_PagedList_1_Paging" data-uid="Auth0.Core.Collections.PagedList`1.Paging">Paging</h4>
-              <div class="markdown level1 summary"><p>Contains information about the current page of data which is contained in the list.</p>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="Auth0_Core_Collections_PagedList_1_Paging_" data-uid="Auth0.Core.Collections.PagedList`1.Paging*"></a>
+  <h4 id="Auth0_Core_Collections_PagedList_1_Paging" data-uid="Auth0.Core.Collections.PagedList`1.Paging">Paging</h4>
+  <div class="markdown level1 summary"><p>Contains information about the current page of data which is contained in the list.</p>
 </div>
-              <div class="markdown level1 conceptual"></div>
-              <h5 class="decalaration">Declaration</h5>
-              <div class="codewrapper">
-                <pre><code class="lang-csharp hljs">public PagingInformation Paging { get; set; }</code></pre>
-              </div>
-              <h5 class="propertyValue">Property Value</h5>
-              <table class="table table-bordered table-striped table-condensed">
-                <thead>
-                  <tr>
-                    <th>Type</th>
-                    <th>Description</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><a class="xref" href="Auth0.Core.PagingInformation.html">PagingInformation</a></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <h5 class="implements">Implements</h5>
-                  <div><a class="xref" href="Auth0.Core.Collections.IPagedList-1.html#Auth0_Core_Collections_IPagedList_1_Paging">IPagedList&lt;T&gt;.Paging</a></div>
-                        </article>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PagingInformation Paging { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.Core.PagingInformation.html">PagingInformation</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="implements">Implements</h5>
+      <div><a class="xref" href="Auth0.Core.Collections.IPagedList-1.html#Auth0_Core_Collections_IPagedList_1_Paging">IPagedList&lt;T&gt;.Paging</a></div>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -530,7 +530,7 @@
               <a href="#top">Back to top</a>
             </span>
             
-            <span>Copyright © 2015-2016 Microsoft<br>Generated by <strong>DocFX</strong></span>
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>

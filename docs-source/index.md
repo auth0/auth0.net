@@ -117,8 +117,9 @@ using Auth0.ManagementApi;
 
 To start using the API, you need to create an instance of the @Auth0.ManagementApi.ManagementApiClient class, passing a token and the URL to the Management API of your Auth0 instance:
 
-```
-var client = new ManagementApiClient("token", new Uri("https://YOUR_AUTH0_DOMAIN/api/v2"));
+```csharp
+// Replace YOUR_AUTH0_DOMAIN with the domain of your Auth0 tenant, e.g. mycompany.auth0.com
+var client = new ManagementApiClient("token", "YOUR_AUTH0_DOMAIN");
 ```
 
 > You can obtain your Auth0 Domain from the [Application section of the Auth0 Dashboard](https://manage.auth0.com/#/applications) by looking at the settings for your particular application. 
@@ -140,8 +141,9 @@ The .NET Client SDK for the Management API also groups the API methods according
 
 Below is an example of how you can get a list of all clients:
 
-```
-var apiClient = new ManagementApiClient("token", new Uri("https://YOUR_AUTH0_DOMAIN/api/v2"));
+```csharp
+// Replace YOUR_AUTH0_DOMAIN with the domain of your Auth0 tenant, e.g. mycompany.auth0.com
+var apiClient = new ManagementApiClient("token", "YOUR_AUTH0_DOMAIN");
 var allClients = await apiClient.Clients.GetAllAsync();
 ```
 
@@ -150,3 +152,41 @@ var allClients = await apiClient.Clients.GetAllAsync();
 Neither the `ManagementApiClient` or the `AuthenticationApiClient` are threadsafe, as they store the result of the last call to an API (obtainable by the `GetLastApiInfo` method). It's ok to reuse them in the same thread to do subsequent calls, but they shouldn't be created as a singleton instance used across multiple threads. 
 
 Both clients are really lightweight to instantiate, so creating a new instance every time they are needed shouldn't be a concern.
+
+## Advanced Scenarios
+
+### Using a Proxy Server
+
+If you need to specify a Proxy Server, you can do so by making use of the @Auth0.AuthenticationApi.AuthenticationApiClient or @Auth0.ManagementApi.ManagementApiClient constructors which takes an `Http​Message​Handler` instance, and pass along an instance of `HttpClientHandler`, specifying the Proxy settings:
+
+```csharp
+var handler = new HttpClientHandler
+{
+	Proxy = new WebProxy
+	{
+		Credentials = new NetworkCredential(username, password);
+	}
+};
+var authenticationApiClient = new AuthenticationApiClient("YOUR_AUTH0_DOMAIN", handler);
+```
+
+### Passing extra headers
+
+There are some instances where you may want to pass extra headers with the request, such as the [`auth0-forwarded-for` header](https://auth0.com/docs/api-auth/tutorials/using-resource-owner-password-from-server-side#sending-the-end-user-ip-from-your-server). You can do so by making use of the @Auth0.AuthenticationApi.AuthenticationApiClient or @Auth0.ManagementApi.ManagementApiClient constructors which takes an `Http​Message​Handler` instance, and then creating a class which inherits from `Http​Message​Handler` which adds the extra headers to all requests.
+
+```csharp
+// Create a new class which inherits from Http​Message​Handler (HttpClientHandler inherits from Http​Message​Handler)
+public class CustomMessageHandler : HttpClientHandler
+{
+    protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+    {
+		// Add extra header(s) to the request
+        request.Headers.Add("auth0-forwarded-for", "189.214.5.210");
+        
+        return base.SendAsync(request, cancellationToken);
+    }
+}
+
+// Somewhere else in your application, you can now pass an instance of this class to the constructor of AuthenticationApiClient or ManagementApiClient
+var authenticationApiClient = new AuthenticationApiClient("YOUR_AUTH0_DOMAIN", new CustomMessageHandler());
+```
