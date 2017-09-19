@@ -13,6 +13,12 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("connection")]
         public string Connection { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the (optional) id of the user
+        /// </summary>
+        [JsonProperty("user_id")]
+        public string UserId { get; set; }
 
         /// <summary>
         /// Gets or sets the user's password. This is mandatory on non-SMS connections.
