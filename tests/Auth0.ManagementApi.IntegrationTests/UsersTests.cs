@@ -282,5 +282,28 @@ namespace Auth0.ManagementApi.IntegrationTests
             secondaryIdentity.ProfileData["email"].Should().Be(secondaryUser.Email);
 
         }
+
+        [Fact]
+        public async Task Can_create_user_with_custom_id()
+        {
+            string userId = Guid.NewGuid().ToString("N");
+
+            var userCreateRequest = new UserCreateRequest
+            {
+                UserId = userId,
+                Connection = connection.Name,
+                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                EmailVerified = true,
+                Password = "password"
+            };
+            var user = await apiClient.Users.CreateAsync(userCreateRequest);
+
+            // Retrieve the new user
+            user = await apiClient.Users.GetAsync(user.UserId);
+
+            // Verify
+            user.Should().NotBeNull();
+            user.Identities[0].UserId.Should().Be(userId);
+        }
     }
 }
