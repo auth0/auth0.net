@@ -43,10 +43,6 @@ namespace Auth0.ManagementApi.IntegrationTests
             var newResourceServerResponse = await apiClient.ResourceServers.CreateAsync(newResourceServerRequest);
             newResourceServerResponse.ShouldBeEquivalentTo(newResourceServerRequest, options => options.Excluding(rs => rs.Id));
 
-            // Get all the resource servers again. Verify we now have one more
-            var resourceServersAfter = await apiClient.ResourceServers.GetAllAsync();
-            resourceServersAfter.Count.Should().Be(resourceServersBefore.Count + 1);
-
             // Update the resource server
             var resourceServerRequest = new ResourceServerUpdateRequest()
             {
@@ -71,7 +67,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var updateResourceServerResponse = await apiClient.ResourceServers.UpdateAsync(newResourceServerResponse.Id, resourceServerRequest);
             updateResourceServerResponse.ShouldBeEquivalentTo(resourceServerRequest, options => options.ExcludingMissingMembers());
 
-            // Get a single client
+            // Get a single resource server
             var resourceServer = await apiClient.ResourceServers.GetAsync(newResourceServerResponse.Id);
             resourceServer.ShouldBeEquivalentTo(resourceServerRequest, options => options.ExcludingMissingMembers());
 

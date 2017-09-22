@@ -43,10 +43,6 @@ namespace Auth0.ManagementApi.IntegrationTests
             string prop2 = newClientResponse.ClientMetaData.Prop2;
             prop2.Should().Be("2");
 
-            // Get all clients again, and ensure we have one client more
-            var clientsAfter = await apiClient.Clients.GetAllAsync();
-            clientsAfter.Count.Should().Be(clientsBefore.Count + 1);
-
             // Update the client
             var updateClientRequest = new ClientUpdateRequest
             {

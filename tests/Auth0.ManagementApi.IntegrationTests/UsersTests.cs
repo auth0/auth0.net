@@ -87,11 +87,6 @@ namespace Auth0.ManagementApi.IntegrationTests
             user.Should().NotBeNull();
             user.Email.Should().Be(updateUserResponse.Email);
 
-            // Check to see whether we can search for the user by email
-            await Task.Delay(1000); // Not ideal, but unfortunately we need to give the indexing engine a moment to index the user. 1 sec seems to do it
-            var searchResults = await apiClient.Users.GetAllAsync(q: $"email.raw: \"{updateUserResponse.Email}\"", searchEngine: "v2");
-            searchResults.Count.Should().Be(1);
-
             // Delete the user and ensure we get an exception when trying to fetch them again
             await apiClient.Users.DeleteAsync(user.UserId);
             Func<Task> getFunc = async () => await apiClient.Users.GetAsync(user.UserId);
@@ -105,7 +100,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public void Attempting_to_delete_users_with_null_or_empty_id_should_throw(string id)
         {
             Func<Task> deleteFunc = async () => await apiClient.Users.DeleteAsync(id);
-            deleteFunc.ShouldThrow<ArgumentException>().And.Message.Should().Be("Value cannot be null or whitespace.\r\nParameter name: id");
+            deleteFunc.ShouldThrow<ArgumentException>().And.Message.Should().Be("Value cannot be null or whitespace.\nParameter name: id");
         }
 
         [Fact]
