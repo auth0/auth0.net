@@ -93,6 +93,16 @@ namespace Auth0.ManagementApi.Clients
             bool? includeTotals = null);
 
         /// <summary>
+        /// Gets all users by email address.
+        /// </summary>
+        /// <param name="email">The email address to search for</param>
+        /// <param name="fields"> A comma separated list of fields to include or exclude (depending on <see cref="includeFields"/>) from the result, null to retrieve all fields</param>
+        /// <param name="includeFields">true if the fields specified are to be included in the result, false otherwise. Defaults to true</param>
+        /// <returns></returns>
+        Task<IList<User>> GetUsersByEmailAsync(string email, string fields = null,
+            bool? includeFields = null);
+
+        /// <summary>
         ///     Links a secondary account to a primary account.
         /// </summary>
         /// <param name="id">The ID of the primary account.</param>

@@ -57,13 +57,21 @@ namespace Auth0.Core.Http
                 var queryString = queryStrings
                     .Aggregate(new StringBuilder(), (sb, kvp) =>
                     {
-                        if (sb.Length > 0)
-                            sb = sb.Append("&");
-
                         if (kvp.Value != null)
-                            sb.Append(string.Format("{0}={1}", Uri.EscapeUriString(kvp.Key), Uri.EscapeDataString(kvp.Value)));
+                        {
+                            if (sb.Length > 0)
+                                sb = sb.Append("&");
+
+                            sb.Append(string.Format("{0}={1}", Uri.EscapeUriString(kvp.Key),
+                                Uri.EscapeDataString(kvp.Value)));
+                        }
                         else if (includeEmptyParameters)
+                        {
+                            if (sb.Length > 0)
+                                sb = sb.Append("&");
+
                             sb.Append(string.Format("{0}", Uri.EscapeUriString(kvp.Key)));
+                        }
 
                         return sb;
                     })
