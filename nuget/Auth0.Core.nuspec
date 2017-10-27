@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Auth0.Core</id>
-    <version>4.0.0</version>
+    <version>4.0.1</version>
     <authors>Auth0</authors>
     <owners>Auth0</owners>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
@@ -12,6 +12,9 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Core classes for the Auth0 API</description>
     <releaseNotes>
+      Version 4.0.1
+      - Fixed bug with "Additional Properties not allowed" error which occured under certain circumstances
+
       Version 4.0.0
       - Major version to split dependencies between Authentication and Management API SDKs
 
