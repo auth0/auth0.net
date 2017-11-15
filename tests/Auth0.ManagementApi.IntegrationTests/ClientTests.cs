@@ -42,19 +42,23 @@ namespace Auth0.ManagementApi.IntegrationTests
             prop1.Should().Be("1");
             string prop2 = newClientResponse.ClientMetaData.Prop2;
             prop2.Should().Be("2");
+            newClientResponse.GrantTypes.Should().HaveCount(i => i > 0);
+
 
             // Update the client
             var updateClientRequest = new ClientUpdateRequest
             {
                 Name = $"Integration testing {Guid.NewGuid().ToString("N")}",
                 TokenEndpointAuthMethod = TokenEndpointAuthMethod.ClientSecretPost,
-                ApplicationType = ClientApplicationType.Spa
+                ApplicationType = ClientApplicationType.Spa,
+                GrantTypes = new string[0]
             };
             var updateClientResponse = await apiClient.Clients.UpdateAsync(newClientResponse.ClientId, updateClientRequest);
             updateClientResponse.Should().NotBeNull();
             updateClientResponse.Name.Should().Be(updateClientRequest.Name);
             updateClientResponse.TokenEndpointAuthMethod.Should().Be(TokenEndpointAuthMethod.ClientSecretPost);
             updateClientResponse.ApplicationType.Should().Be(ClientApplicationType.Spa);
+            updateClientResponse.GrantTypes.Should().HaveCount(0);
 
             // Get a single client
             var client = await apiClient.Clients.GetAsync(newClientResponse.ClientId);

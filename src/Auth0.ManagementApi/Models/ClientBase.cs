@@ -103,6 +103,12 @@ namespace Auth0.ManagementApi.Models
         public string FormTemplate { get; set; }
 
         /// <summary>
+        /// A set of grant types that the client is authorized to use
+        /// </summary>
+        [JsonProperty("grant_types")]
+        public string[] GrantTypes { get; set; }
+
+        /// <summary>
         /// </summary>
         [JsonProperty("jwt_configuration")]
         public JwtConfiguration JwtConfiguration { get; set; }
