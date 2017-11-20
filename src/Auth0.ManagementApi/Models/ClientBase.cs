@@ -36,13 +36,6 @@ namespace Auth0.ManagementApi.Models
         public string[] AllowedOrigins { get; set; }
 
         /// <summary>
-        /// The type of application this client represents
-        /// </summary>
-        [JsonProperty("app_type")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public ClientApplicationType ApplicationType { get; set; }
-
-        /// <summary>
         /// A set of URLs that are valid to call back from Auth0 when authenticating users.
         /// </summary>
         [JsonProperty("callbacks")]
@@ -139,16 +132,6 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("sso")]
         public bool? Sso { get; set; }
-
-        /// <summary>
-        /// Defines the requested authentication method for the token endpoint.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        [JsonProperty("token_endpoint_auth_method")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public TokenEndpointAuthMethod TokenEndpointAuthMethod { get; set; }
     }
 }
 
