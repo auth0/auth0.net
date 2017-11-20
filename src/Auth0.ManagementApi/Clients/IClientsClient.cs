@@ -55,6 +55,13 @@ namespace Auth0.ManagementApi.Clients
         Task<Client> GetAsync(string id, string fields = null, bool includeFields = true);
 
         /// <summary>
+        /// Rotate a client secret. The generated secret is NOT base64 encoded.
+        /// </summary>
+        /// <param name="id">The id of the client which secret needs to be rotated</param>
+        /// <returns></returns>
+        Task<Client> RotateClientSecret(string id);
+
+        /// <summary>
         ///     Updates a client application.
         /// </summary>
         /// <param name="id">The id of the client you want to update.</param>

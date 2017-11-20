@@ -68,6 +68,19 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
+        /// Rotate a client secret. The generated secret is NOT base64 encoded.
+        /// </summary>
+        /// <param name="id">The id of the client which secret needs to be rotated</param>
+        /// <returns></returns>
+        public Task<Client> RotateClientSecret(string id)
+        {
+            return Connection.PostAsync<Client>("clients/{id}/rotate-secret", null, null, null, new Dictionary<string, string>
+            {
+                {"id", id}
+            }, null, null);
+        }
+
+        /// <summary>
         /// Retrieves a list of all client applications. Accepts a list of fields to include or exclude.
         /// </summary>
         /// <param name="fields">A comma separated list of fields to include or exclude (depending on includeFields) from the
