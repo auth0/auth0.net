@@ -44,7 +44,7 @@ namespace Auth0.ManagementApi.Models
         /// If not specified or if you send 0 the Auth0 default lifetime will be applied
         /// </summary>
         [JsonProperty("ttl_sec")]
-        public int ExpiresIn { get; set; }
+        public int Ttl { get; set; }
     }
 
 }
