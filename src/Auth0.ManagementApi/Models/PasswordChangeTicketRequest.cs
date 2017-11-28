@@ -38,6 +38,13 @@ namespace Auth0.ManagementApi.Models
         [JsonProperty("email")]
         public string Email { get; set; }
 
+        /// <summary>
+        /// The ticket's lifetime in seconds starting from the moment of creation. 
+        /// After expiration the ticket can not be used to change the users's password. 
+        /// If not specified or if you send 0 the Auth0 default lifetime will be applied
+        /// </summary>
+        [JsonProperty("ttl_sec")]
+        public int ExpiresIn { get; set; }
     }
 
 }
