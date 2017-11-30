@@ -42,7 +42,7 @@ namespace Auth0.ManagementApi
         /// <summary>
         /// Contains all the methods to call the /guardian endpoints.
         /// </summary>
-        //IGuardianClient Guardian { get; }
+        IGuardianClient Guardian { get; }
 
         /// <summary>
         /// Contains all the methods to call the /jobs endpoints.
