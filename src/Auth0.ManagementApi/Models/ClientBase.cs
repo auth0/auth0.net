@@ -119,6 +119,12 @@ namespace Auth0.ManagementApi.Models
         public string Name { get; set; }
 
         /// <summary>
+        /// Indicates whether this client will conform to strict OIDC specifications.
+        /// </summary>
+        [JsonProperty("oidc_conformant")]
+        public bool? OidcConformant { get; set; }
+
+        /// <summary>
         /// A list of resource servers (APIs) that the client is authorized to request access tokens for, using the Client Credentials exchange.
         /// </summary>
         /// <remarks>
