@@ -188,7 +188,7 @@ namespace Auth0.Core.Http
                 // Grab the content
                 if (response.Content != null)
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync();
+                    var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
                     if (!string.IsNullOrEmpty(responseContent))
                         try
@@ -322,13 +322,13 @@ namespace Auth0.Core.Http
             var response = await httpClient.SendAsync(requestMessage).ConfigureAwait(false);
 
             // Handle API errors
-            await HandleErrors(response);
+            await HandleErrors(response).ConfigureAwait(false);
 
             // Extract the relevate API headers
             ExtractApiInfo(response);
 
             // Deserialize the content
-            var content = await response.Content.ReadAsStringAsync();
+            var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             if (typeof(T) == typeof(string)) // Let string content pass throug
                 return (T) (object) content;
