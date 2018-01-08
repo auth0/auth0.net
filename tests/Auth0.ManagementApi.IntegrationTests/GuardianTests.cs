@@ -18,7 +18,7 @@ namespace Auth0.ManagementApi.IntegrationTests
     //    {
     //        string token = await GenerateManagementApiToken();
 
-    //        _managementApiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
+    //        _managementApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
     //    }
 
     //    public Task DisposeAsync()

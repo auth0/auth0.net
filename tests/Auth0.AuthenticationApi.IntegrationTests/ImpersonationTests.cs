@@ -14,7 +14,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact(Skip = "Run manually")]
         public async Task Can_impersonate_user()
         {
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             var uri = await authenticationApiClient.GetImpersonationUrlAsync(new ImpersonationRequest
             {

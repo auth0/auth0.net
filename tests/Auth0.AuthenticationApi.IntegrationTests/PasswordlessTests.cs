@@ -14,7 +14,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         public async Task Can_launch_email_link_flow()
         {
             // Arrange
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             // Act
             var request = new PasswordlessEmailRequest
@@ -32,7 +32,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         public async Task Can_launch_email_link_flow_with_auth_parameters()
         {
             // Arrange 
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             // Act
             var request = new PasswordlessEmailRequest
@@ -57,7 +57,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         public async Task Can_launch_email_code_flow()
         {
             // Arrange
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             // Act
             var request = new PasswordlessEmailRequest
@@ -75,7 +75,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         public async Task Can_launch_sms_flow()
         {
             // Arrange
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_PASSWORDLESSDEMO_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_PASSWORDLESSDEMO_AUTHENTICATION_API_URL"));
 
             // Act
             var request = new PasswordlessSmsRequest
@@ -92,7 +92,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         public async Task Can_authenticate_with_passwordless_email_code()
         {
             // Arrange
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             // Arrange
             var authenticationResponse = await authenticationApiClient.AuthenticateAsync(new AuthenticationRequest

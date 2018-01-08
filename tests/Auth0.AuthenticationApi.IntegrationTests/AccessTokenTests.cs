@@ -32,7 +32,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             };
             string token = await GenerateManagementApiToken();
 
-            managementApiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
+            managementApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
 
             // We will need a connection to add the users to...
             connection = await managementApiClient.Connections.CreateAsync(new ConnectionCreateRequest
@@ -63,7 +63,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         //[Test, Explicit]
         //public async Task Can_get_delegation_token()
         //{
-        //    var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+        //    var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
             
         //    // First get the access token
         //    var token = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
@@ -94,7 +94,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact]
         public async Task Can_obtain_user_info()
         {
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             // First get the access token
             var token = await authenticationApiClient.AuthenticateAsync(new AuthenticationRequest
@@ -116,7 +116,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact(Skip = "Run manually")]
         public async Task Can_exchange_authorization_code_for_access_token()
         {
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             // Exchange the authorization code
             var token = await authenticationApiClient.GetTokenAsync(new AuthorizationCodeTokenRequest

@@ -13,7 +13,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             string token = await GenerateManagementApiToken();
 
-            var apiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
+            var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
 
             // Get stats for the past 10 days
             var dailyStats = await apiClient.Stats.GetDailyStatsAsync(DateTime.Now.AddDays(-10), DateTime.Now);

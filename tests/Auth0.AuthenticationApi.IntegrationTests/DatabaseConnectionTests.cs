@@ -19,7 +19,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         {
             string token = await GenerateManagementApiToken();
 
-            managementApiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
+            managementApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
 
             // We will need a connection to add the users to...
             connection = await managementApiClient.Connections.CreateAsync(new ConnectionCreateRequest
@@ -41,7 +41,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         {
             // Arrange
             var authenticationApiClient =
-                new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+                new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             // Sign up the user
             var signupUserRequest = new SignupUserRequest

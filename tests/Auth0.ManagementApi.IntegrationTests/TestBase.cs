@@ -20,7 +20,7 @@ namespace Auth0.Tests.Shared
 
         protected async Task<string> GenerateManagementApiToken()
         {
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             // Get the access token
             var token = await authenticationApiClient.GetTokenAsync(new ClientCredentialsTokenRequest

@@ -10,7 +10,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         //public async Task Can_get_refreshed_access_token()
         //{
         //    // Arrange
-        //    var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+        //    var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
         //    // Act
         //    var authenticationResponse = await authenticationApiClient.GetRefreshedTokenAsync(new TokenRefreshRequest

@@ -13,7 +13,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact]
         public void Can_build_authorization_uri()
         {
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             var authorizationUrl = authenticationApiClient.BuildAuthorizationUrl()
                 .WithResponseType(AuthorizationResponseType.Code)
@@ -34,7 +34,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact]
         public void Can_provide_multiple_response_type()
         {
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             var authorizationUrl = authenticationApiClient.BuildAuthorizationUrl()
                 .WithResponseType(AuthorizationResponseType.Code)
@@ -52,7 +52,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact]
         public void Can_provide_response_mode()
         {
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             var authorizationUrl = authenticationApiClient.BuildAuthorizationUrl()
                 .WithResponseType(AuthorizationResponseType.Code)
@@ -70,7 +70,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact]
         public void Can_build_logout_url()
         {
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             var logoutUrl = authenticationApiClient.BuildLogoutUrl()
                 .Federated()
@@ -86,7 +86,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact]
         public void Can_build_logout_url_with_return_url()
         {
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             var logoutUrl = authenticationApiClient.BuildLogoutUrl()
                 .WithReturnUrl("http://www.jerriepelser.com/test")
@@ -100,7 +100,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact]
         public void Can_build_saml_url()
         {
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             var samlUrl = authenticationApiClient.BuildSamlUrl("myclientid")
                 .WithConnection("my-connection-name")
@@ -112,7 +112,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact]
         public void Can_build_wsfed_with_relaystate_dictionary()
         {
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             var samlUrl = authenticationApiClient.BuildSamlUrl("myclientid")
                 .WithRelayState(new Dictionary<string, string>
@@ -128,7 +128,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact]
         public void Can_build_wsfed_with_relaystate_string()
         {
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             var samlUrl = authenticationApiClient.BuildSamlUrl("myclientid")
                 .WithRelayState("xcrf=abc&ru=/foo")
@@ -140,7 +140,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact]
         public void Can_build_wsfed_with_client()
         {
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             var wsfedUrl = authenticationApiClient.BuildWsFedUrl()
                 .WithClient("my-client-id")
@@ -152,7 +152,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact]
         public void Can_build_wsfed_with_realm()
         {
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             var wsfedUrl = authenticationApiClient.BuildWsFedUrl()
                 .WithWtrealm("urn:my-client-id")
@@ -164,7 +164,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact]
         public void Can_build_wsfed_with_whr()
         {
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             var wsfedUrl = authenticationApiClient.BuildWsFedUrl()
                 .WithWhr("urn:my-connection-name")
@@ -176,7 +176,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact]
         public void Can_build_wsfed_with_wxtx_dictionary()
         {
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             var wsfedUrl = authenticationApiClient.BuildWsFedUrl()
                 .WithWctx(new Dictionary<string, string>
@@ -192,7 +192,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact]
         public void Can_build_wsfed_with_wxtx_string()
         {
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             var wsfedUrl = authenticationApiClient.BuildWsFedUrl()
                 .WithWctx("xcrf=abc&ru=/foo")

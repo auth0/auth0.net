@@ -14,7 +14,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact]
         public async Task Can_get_token_using_client_credentials()
         {
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             // Get the access token
             var token = await authenticationApiClient.GetTokenAsync(new ClientCredentialsTokenRequest

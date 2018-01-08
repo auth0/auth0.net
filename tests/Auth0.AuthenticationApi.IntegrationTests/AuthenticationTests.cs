@@ -24,7 +24,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         {
             string token = await GenerateManagementApiToken();
 
-            managementApiClient = new ManagementApiClient(token, new Uri(GetVariable("AUTH0_MANAGEMENT_API_URL")));
+            managementApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
 
             var tenantSettings = await managementApiClient.TenantSettings.GetAsync();
 
@@ -90,7 +90,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         public async Task Can_authenticate_against_Auth0()
         {
             // Arrange
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             // Act
             var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
@@ -116,7 +116,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         public async Task Can_authenticate_to_default_directory()
         {
             // Arrange
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             // Act
             var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
@@ -141,7 +141,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         public async Task Can_request_offline_access()
         {
             // Arrange
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             // Act
             var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
@@ -166,7 +166,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         public async Task Can_authenticate_user_with_plus_in_username()
         {
             // Arrange
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             // Act
             var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
@@ -190,7 +190,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         public async Task Returns_username_and_password_login_form()
         {
             // Arrange
-            var authenticationApiClient = new AuthenticationApiClient(new Uri(GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             // Act
             var authenticationResponse = await authenticationApiClient.UsernamePasswordLoginAsync(new UsernamePasswordLoginRequest
