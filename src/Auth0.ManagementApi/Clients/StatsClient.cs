@@ -28,7 +28,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The number of users.</returns>
         public async Task<long> GetActiveUsersAsync()
         {
-            var result = await Connection.GetAsync<object>("stats/active-users", null, null, null, null);
+            var result = await Connection.GetAsync<object>("stats/active-users", null, null, null, null).ConfigureAwait(false);
 
             return Convert.ToInt64(result);
         }

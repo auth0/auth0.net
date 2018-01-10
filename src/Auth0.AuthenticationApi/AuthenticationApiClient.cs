@@ -244,7 +244,7 @@ namespace Auth0.AuthenticationApi
                 new Dictionary<string, object>
                 {
                     {"Authorization", string.Format("Bearer {0}", request.Token)}
-                }, null);
+                }, null).ConfigureAwait(false);
 
             return new Uri(url);
         }
@@ -329,7 +329,7 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="request">The refresh token request details, containing a valid refresh token.</param>
         /// <returns>The new token issued by the server.</returns>
-        public async Task<AccessTokenResponse> GetTokenAsync(RefreshTokenRequest request)
+        public Task<AccessTokenResponse> GetTokenAsync(RefreshTokenRequest request)
         {
             var parameters = new Dictionary<string, object> {
                 { "grant_type", "refresh_token" },
@@ -342,7 +342,7 @@ namespace Auth0.AuthenticationApi
             {
                 parameters.Add("scope", request.Scope);
             }
-            return await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, null, null);
+            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, null, null);
         }
 
         /// <summary>
@@ -462,7 +462,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>Nothing</returns>
         public async Task UnlinkUserAsync(UnlinkUserRequest request)
         {
-            await Connection.PostAsync<object>("unlink", request, null, null, null, null, null);
+            await Connection.PostAsync<object>("unlink", request, null, null, null, null, null).ConfigureAwait(false);
         }
 
         /// <summary>
