@@ -1,0 +1,44 @@
+<Project>
+  <PropertyGroup>
+    <Product>Auth0.NET</Product>
+    <Description>Auth0 .NET SDK</Description>
+    <Copyright>Auth0</Copyright>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <Authors>Auth0</Authors>
+    <PackageTags>benchmark;benchmarking;performance</PackageTags>
+    <PackageIconUrl>http://secure.gravatar.com/avatar/805765c256ff8617fcad483b5476faf2</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/auth0/auth0.net</PackageProjectUrl>
+    <PackageLicenseUrl>http://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
+
+    <CLSCompliant>true</CLSCompliant>
+    <ComVisible>false</ComVisible>
+  </PropertyGroup>
+ 
+  <PropertyGroup Condition=" '$(IsVisualBasic)' != 'true' ">
+    <LangVersion>7.1</LangVersion>
+    
+    <Major>4</Major>
+    <Minor>11</Minor>
+    <Revision>0</Revision>
+
+    <BuildNumber Condition=" '$(APPVEYOR_BUILD_NUMBER)' != '' ">$(APPVEYOR_BUILD_NUMBER)</BuildNumber>
+    <BuildNumber Condition=" '$(BUILD_NUMBER)' != '' ">$(BUILD_NUMBER)</BuildNumber>
+    <BuildNumber Condition=" '$(BuildNumber)' == '' ">0</BuildNumber>
+
+    <PrereleaseLabel>-develop</PrereleaseLabel>
+    <PrereleaseLabel Condition=" '$(APPVEYOR_BUILD_NUMBER)' != '' "></PrereleaseLabel>
+    <!-- <PrereleaseLabel></PrereleaseLabel> --> <!-- For release versions only -->
+
+    <PrereleaseLabelConstants></PrereleaseLabelConstants>
+    <PrereleaseLabelConstants Condition=" '$(PrereleaseLabel)' == '-develop' ">PRERELEASE_DEVELOP</PrereleaseLabelConstants>
+    <PrereleaseLabelConstants Condition=" '$(APPVEYOR_BUILD_NUMBER)' != '' ">PRERELEASE_NIGHTLY</PrereleaseLabelConstants>
+    <DefineConstants>$(DefineConstants);$(PrereleaseLabelConstants)</DefineConstants>
+
+    <AssemblyVersion>$(Major).$(Minor).$(Revision).$(BuildNumber)</AssemblyVersion>
+    <AssemblyFileVersion>$(Major).$(Minor).$(Revision).$(BuildNumber)</AssemblyFileVersion>
+    <InformationalVersion>$(Major).$(Minor).$(Revision).$(BuildNumber)$(PrereleaseLabel)</InformationalVersion>
+    <PackageVersion>$(Major).$(Minor).$(Revision).$(BuildNumber)$(PrereleaseLabel)</PackageVersion>
+  </PropertyGroup>
+</Project>

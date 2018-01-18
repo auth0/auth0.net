@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+  <Import Project="..\..\build\common.props" />
   <PropertyGroup>
+    <AssemblyTitle>Auth0.Core</AssemblyTitle>
     <TargetFramework>netstandard1.1</TargetFramework>
-    <AssemblyVersion>4.0.2.0</AssemblyVersion>
-    <FileVersion>4.0.2.0</FileVersion>
-    <Version>4.0.2</Version>
+    <AssemblyName>Auth0.Core</AssemblyName>
+    <PackageId>Auth0.Core</PackageId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
