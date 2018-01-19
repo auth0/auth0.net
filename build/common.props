@@ -16,29 +16,24 @@
     <ComVisible>false</ComVisible>
   </PropertyGroup>
  
-  <PropertyGroup Condition=" '$(IsVisualBasic)' != 'true' ">
+  <PropertyGroup>
     <LangVersion>7.1</LangVersion>
     
     <Major>4</Major>
     <Minor>11</Minor>
     <Revision>0</Revision>
 
-    <BuildNumber Condition=" '$(APPVEYOR_BUILD_NUMBER)' != '' ">$(APPVEYOR_BUILD_NUMBER)</BuildNumber>
-    <BuildNumber Condition=" '$(BUILD_NUMBER)' != '' ">$(BUILD_NUMBER)</BuildNumber>
-    <BuildNumber Condition=" '$(BuildNumber)' == '' ">0</BuildNumber>
-
-    <PrereleaseLabel>-develop</PrereleaseLabel>
-    <PrereleaseLabel Condition=" '$(APPVEYOR_BUILD_NUMBER)' != '' "></PrereleaseLabel>
-    <!-- <PrereleaseLabel></PrereleaseLabel> --> <!-- For release versions only -->
-
-    <PrereleaseLabelConstants></PrereleaseLabelConstants>
-    <PrereleaseLabelConstants Condition=" '$(PrereleaseLabel)' == '-develop' ">PRERELEASE_DEVELOP</PrereleaseLabelConstants>
-    <PrereleaseLabelConstants Condition=" '$(APPVEYOR_BUILD_NUMBER)' != '' ">PRERELEASE_NIGHTLY</PrereleaseLabelConstants>
-    <DefineConstants>$(DefineConstants);$(PrereleaseLabelConstants)</DefineConstants>
-
-    <AssemblyVersion>$(Major).$(Minor).$(Revision).$(BuildNumber)</AssemblyVersion>
-    <AssemblyFileVersion>$(Major).$(Minor).$(Revision).$(BuildNumber)</AssemblyFileVersion>
-    <InformationalVersion>$(Major).$(Minor).$(Revision).$(BuildNumber)$(PrereleaseLabel)</InformationalVersion>
-    <PackageVersion>$(Major).$(Minor).$(Revision).$(BuildNumber)$(PrereleaseLabel)</PackageVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(APPVEYOR_BUILD_NUMBER)' == '' ">
+    <AssemblyVersion>$(Major).$(Minor).$(Revision)</AssemblyVersion>
+    <AssemblyFileVersion>$(Major).$(Minor).$(Revision)</AssemblyFileVersion>
+    <InformationalVersion>$(Major).$(Minor).$(Revision)</InformationalVersion>
+    <PackageVersion>$(Major).$(Minor).$(Revision)</PackageVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(APPVEYOR_BUILD_NUMBER)' != '' ">
+    <AssemblyVersion>$(Major).$(Minor).$(Revision).$(APPVEYOR_BUILD_NUMBER)</AssemblyVersion>
+    <AssemblyFileVersion>$(Major).$(Minor).$(Revision).$(APPVEYOR_BUILD_NUMBER)</AssemblyFileVersion>
+    <InformationalVersion>$(Major).$(Minor).$(Revision)-ci$(APPVEYOR_BUILD_NUMBER)</InformationalVersion>
+    <PackageVersion>$(Major).$(Minor).$(Revision).-ci$(APPVEYOR_BUILD_NUMBER)</PackageVersion>
   </PropertyGroup>
 </Project>
