@@ -34,6 +34,6 @@
     <AssemblyVersion>$(Major).$(Minor).$(Revision).$(APPVEYOR_BUILD_NUMBER)</AssemblyVersion>
     <AssemblyFileVersion>$(Major).$(Minor).$(Revision).$(APPVEYOR_BUILD_NUMBER)</AssemblyFileVersion>
     <InformationalVersion>$(Major).$(Minor).$(Revision)-ci$(APPVEYOR_BUILD_NUMBER)</InformationalVersion>
-    <PackageVersion>$(Major).$(Minor).$(Revision).-ci$(APPVEYOR_BUILD_NUMBER)</PackageVersion>
+    <PackageVersion>$(Major).$(Minor).$(Revision)-ci$(APPVEYOR_BUILD_NUMBER)</PackageVersion>
   </PropertyGroup>
 </Project>
