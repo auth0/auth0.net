@@ -1,0 +1,37 @@
+#---------------------------------#
+#      general configuration      #
+#---------------------------------#
+
+# version format
+version: 4.11.0.{build}
+
+# branches to build
+branches:
+  # blacklist
+  except:
+    - gh-pages
+
+pull_requests:
+  do_not_increment_build_number: true
+
+# Do not build on tags (GitHub only)
+skip_tags: true
+
+#---------------------------------#
+#    environment configuration    #
+#---------------------------------#
+
+os: Visual Studio 2017
+
+#---------------------------------#
+#       build configuration       #
+#---------------------------------#
+
+build_script:
+- ps: .\build.ps1
+
+test: off
+deploy: off
+
+artifacts:
+- path: '**\Auth0.*.nupkg' # find all NuGet packages recursively
