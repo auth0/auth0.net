@@ -55,11 +55,9 @@ Task("Test")
     .WithCriteria(!skipTests)
     .Does(() =>
     {
-        //var settings = $"-configuration Release -stoponfail -maxthreads unlimited -nobuild";
-        var projects = GetFiles("./tests/**/*.csproj");
+        var projects = GetFiles("./tests/**/*Tests.csproj");
         foreach(var project in projects)
         {
-            //DotNetCoreTool(project, "xunit");
             DotNetCoreTest(project.FullPath);
         }
 });
