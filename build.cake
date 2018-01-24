@@ -51,7 +51,7 @@ Task("Build")
 
 Task("Pack")
     .IsDependentOn("Build")
-    .WithCriteria((IsOnAppVeyorAndNotPR || string.Equals(target, "pack", StringComparison.OrdinalIgnoreCase)) && isRunningOnWindows)
+    .WithCriteria((IsOnAppVeyorAndNotPR || string.Equals(target, "pack", StringComparison.OrdinalIgnoreCase)) && IsRunningOnWindows())
     .Does(() =>
     {
         var settings = new DotNetCorePackSettings
