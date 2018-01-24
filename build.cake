@@ -1,5 +1,6 @@
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
+var skipTests = Argument("SkipTests", false);
 
 // GLOBAL VARIABLES
 var artifactsDirectory = Directory("./artifacts");
@@ -49,6 +50,20 @@ Task("Build")
         }
     });
 
+Task("Test")
+    .IsDependentOn("Build")
+    .WithCriteria(!skipTests)
+    .Does(() =>
+    {
+        //var settings = $"-configuration Release -stoponfail -maxthreads unlimited -nobuild";
+        var projects = GetFiles("./tests/**/*.csproj");
+        foreach(var project in projects)
+        {
+            //DotNetCoreTool(project, "xunit");
+            DotNetCoreTest(project.FullPath);
+        }
+});
+
 Task("Pack")
     .IsDependentOn("Build")
     .WithCriteria((IsOnAppVeyorAndNotPR || string.Equals(target, "pack", StringComparison.OrdinalIgnoreCase)) && IsRunningOnWindows())
@@ -67,15 +82,6 @@ Task("Pack")
         }
     });
 
-// Task("Run-Unit-Tests")
-//     .IsDependentOn("Build")
-//     .Does(() =>
-// {
-//     NUnit3("./src/**/bin/" + configuration + "/*.Tests.dll", new NUnit3Settings {
-//         NoResults = true
-//         });
-// });
-
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS
 //////////////////////////////////////////////////////////////////////
@@ -84,6 +90,7 @@ Task("Default")
     .IsDependentOn("Clean")
     .IsDependentOn("Restore")
     .IsDependentOn("Build")
+    .IsDependentOn("Test")
     .IsDependentOn("Pack");
 
 //////////////////////////////////////////////////////////////////////
