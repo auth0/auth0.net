@@ -14,7 +14,7 @@ namespace Auth0.Tests.Shared
         public TestBase()
         {
             _config = new ConfigurationBuilder()
-                .AddJsonFile("client-secrets.json")
+                .AddJsonFile("client-secrets.json", true)
                 .Build();
         }
 
