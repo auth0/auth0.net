@@ -15,6 +15,7 @@ namespace Auth0.Tests.Shared
         {
             _config = new ConfigurationBuilder()
                 .AddJsonFile("client-secrets.json", true)
+                .AddEnvironmentVariables()
                 .Build();
         }
 
@@ -35,20 +36,7 @@ namespace Auth0.Tests.Shared
 
         protected string GetVariable(string variableName)
         {
-            // Check to see whether we are running inside AopVeyor CI environment
-            if (IsRunningUnderAppVeyorCi())
-                return Environment.GetEnvironmentVariable(variableName);
-
-            // By default return variable from config file
             return _config[variableName];
-        }
-
-        protected bool IsRunningUnderAppVeyorCi()
-        {
-            bool isAppVeyor = Environment.GetEnvironmentVariable("APPVEYOR") == "True";
-            bool IsCi = Environment.GetEnvironmentVariable("CI") == "True";
-
-            return isAppVeyor && IsCi;
         }
     }
 }
