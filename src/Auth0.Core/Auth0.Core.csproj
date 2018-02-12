@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.1</TargetFramework>
+    <TargetFrameworks>net471;netstandard1.1</TargetFrameworks>
     <AssemblyVersion>4.0.2.0</AssemblyVersion>
     <FileVersion>4.0.2.0</FileVersion>
     <Version>4.0.2</Version>
@@ -10,6 +10,10 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>bin\Release\netstandard1.1\Auth0.Core.xml</DocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net471'">
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="10.0.2" />

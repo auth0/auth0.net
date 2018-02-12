@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard1.1</TargetFramework>
+    <TargetFrameworks>net471;netstandard1.1</TargetFrameworks>
     <AssemblyVersion>4.3.1.0</AssemblyVersion>
     <FileVersion>4.3.1.0</FileVersion>
     <Version>4.3.1</Version>
@@ -10,6 +10,10 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>bin\Release\netstandard1.1\Auth0.AuthenticationApi.xml</DocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net471'">
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Auth0.Core\Auth0.Core.csproj" />
