@@ -335,9 +335,13 @@ namespace Auth0.AuthenticationApi
                 { "grant_type", "refresh_token" },
                 { "refresh_token", request.RefreshToken },
                 { "client_id", request.ClientId },
-                { "client_secret", request.ClientSecret },
-                { "audience", request.Audience }
+                { "client_secret", request.ClientSecret }
             };
+
+            if (!string.IsNullOrEmpty(request.Audience))
+            {
+                parameters.Add("audience", request.Audience);
+            }
 
             if (!string.IsNullOrEmpty(request.Scope))
             {
