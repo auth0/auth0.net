@@ -279,6 +279,11 @@ namespace Auth0.AuthenticationApi
                 { "client_secret", request.ClientSecret }
             };
 
+            if (!string.IsNullOrEmpty(request.Audience))
+            {
+                parameters.Add("audience", request.Audience);
+            }
+
             if (!string.IsNullOrEmpty(request.Scope))
             {
                 parameters.Add("scope", request.Scope);
