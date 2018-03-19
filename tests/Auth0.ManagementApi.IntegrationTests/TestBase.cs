@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Auth0.AuthenticationApi;
 using Auth0.AuthenticationApi.Models;
 using Microsoft.Extensions.Configuration;
@@ -9,7 +7,7 @@ namespace Auth0.Tests.Shared
 {
     public class TestBase
     {
-        private IConfigurationRoot _config;
+        private readonly IConfigurationRoot _config;
 
         public TestBase()
         {

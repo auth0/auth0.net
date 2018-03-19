@@ -12,8 +12,8 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 {
     public class DatabaseConnectionTests : TestBase, IAsyncLifetime
     {
-        private ManagementApiClient managementApiClient;
-        private Connection connection;
+        private ManagementApiClient _managementApiClient;
+        private Connection _connection;
         private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
         private const string Password2 = "xuh8k},+}KNit&z.!HEE6R2N";
 
@@ -21,10 +21,10 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         {
             string token = await GenerateManagementApiToken();
 
-            managementApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+            _managementApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
 
             // We will need a connection to add the users to...
-            connection = await managementApiClient.Connections.CreateAsync(new ConnectionCreateRequest
+            _connection = await _managementApiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
                 Name = Guid.NewGuid().ToString("N"),
                 Strategy = "auth0",
@@ -34,8 +34,8 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
         public async Task DisposeAsync()
         {
-            if (connection != null)
-                await managementApiClient.Connections.DeleteAsync(connection.Id);
+            if (_connection != null)
+                await _managementApiClient.Connections.DeleteAsync(_connection.Id);
         }
 
         [Fact]
@@ -49,7 +49,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             var signupUserRequest = new SignupUserRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
-                Connection = connection.Name,
+                Connection = _connection.Name,
                 Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
                 Password = Password,
                 UserMetadata = new

@@ -12,10 +12,9 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 {
     public class AccessTokenTests : TestBase, IAsyncLifetime
     {
-        private string socialAccessToken = "your google access token";
-        private ManagementApiClient managementApiClient;
-        private Connection connection;
-        private User newUser;
+        private ManagementApiClient _managementApiClient;
+        private Connection _connection;
+        private User _newUser;
         private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
 
         public async Task InitializeAsync()
@@ -24,19 +23,19 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             {
                 users = new
                 {
-                    actions = new string[] { "create", "delete" }
+                    actions = new[] { "create", "delete" }
                 },
                 connections = new
                 {
-                    actions = new string[] { "create", "delete" }
+                    actions = new[] { "create", "delete" }
                 }
             };
             string token = await GenerateManagementApiToken();
 
-            managementApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+            _managementApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
 
             // We will need a connection to add the users to...
-            connection = await managementApiClient.Connections.CreateAsync(new ConnectionCreateRequest
+            _connection = await _managementApiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
                 Name = Guid.NewGuid().ToString("N"),
                 Strategy = "auth0",
@@ -46,19 +45,19 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             // Add a new user
             var newUserRequest = new UserCreateRequest
             {
-                Connection = connection.Name,
+                Connection = _connection.Name,
                 Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
                 EmailVerified = true,
                 Password = Password
             };
 
-            newUser = await managementApiClient.Users.CreateAsync(newUserRequest);
+            _newUser = await _managementApiClient.Users.CreateAsync(newUserRequest);
         }
 
         public async Task DisposeAsync()
         {
-            if (connection != null)
-                await managementApiClient.Connections.DeleteAsync(connection.Id);
+            if (_connection != null)
+                await _managementApiClient.Connections.DeleteAsync(_connection.Id);
         }
 
         //[Test, Explicit]
@@ -102,8 +101,8 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
-                Realm = connection.Name,
-                Username = newUser.Email,
+                Realm = _connection.Name,
+                Username = _newUser.Email,
                 Password = Password,
                 Scope = "openid profile"
             });

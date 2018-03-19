@@ -10,13 +10,13 @@ namespace Auth0.ManagementApi.IntegrationTests
 {
     public class LogsTests : TestBase, IAsyncLifetime
     {
-        private ManagementApiClient apiClient;
+        private ManagementApiClient _apiClient;
 
         public async Task InitializeAsync()
         {
             string token = await GenerateManagementApiToken();
 
-            apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+            _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
         }
 
         public Task DisposeAsync()
@@ -28,13 +28,13 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Can_fetch_single_entry()
         {
             // Get all log entries
-            var logEntries = await apiClient.Logs.GetAllAsync();
+            var logEntries = await _apiClient.Logs.GetAllAsync();
 
             // Grab the first one
             var firstLogEntry = logEntries[0];
 
             // Now fetch just that single entry
-            var singleLogEntry = await apiClient.Logs.GetAsync(firstLogEntry.Id);
+            var singleLogEntry = await _apiClient.Logs.GetAsync(firstLogEntry.Id);
 
             // Compare both log entries. They should be the same
             singleLogEntry.ShouldBeEquivalentTo(firstLogEntry);
@@ -44,7 +44,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Test_deserialization_without_totals()
         {
-            var logEntries = await apiClient.Logs.GetAllAsync();
+            var logEntries = await _apiClient.Logs.GetAllAsync();
 
             logEntries.Should().NotBeNull();
             logEntries.Paging.Should().BeNull();
@@ -53,7 +53,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Test_deserialization_with_totals()
         {
-            var logEntries = await apiClient.Logs.GetAllAsync(includeTotals: true);
+            var logEntries = await _apiClient.Logs.GetAllAsync(includeTotals: true);
 
             logEntries.Should().NotBeNull();
             logEntries.Paging.Should().NotBeNull();

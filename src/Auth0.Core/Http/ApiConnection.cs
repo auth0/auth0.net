@@ -16,10 +16,10 @@ namespace Auth0.Core.Http
     /// </summary>
     public class ApiConnection : IApiConnection
     {
-        private readonly string baseUrl;
-        private readonly DiagnosticsHeader diagnostics;
-        private readonly HttpClient httpClient;
-        private readonly string token;
+        private readonly string _baseUrl;
+        private readonly DiagnosticsHeader _diagnostics;
+        private readonly HttpClient _httpClient;
+        private readonly string _token;
 
         /// <summary>
         ///     Contains information about the last API call made by the connection.
@@ -36,24 +36,24 @@ namespace Auth0.Core.Http
         public ApiConnection(string token, string baseUrl, DiagnosticsHeader diagnostics,
             HttpMessageHandler handler = null)
         {
-            this.token = token;
-            this.diagnostics = diagnostics;
-            this.baseUrl = baseUrl;
+            _token = token;
+            _diagnostics = diagnostics;
+            _baseUrl = baseUrl;
 
-            httpClient = new HttpClient(handler ?? new HttpClientHandler());
+            _httpClient = new HttpClient(handler ?? new HttpClientHandler());
         }
 
         private void ApplyHeaders(HttpRequestMessage message, IDictionary<string, object> headers)
         {
             // Add the diagnostics header, unless user explicitly opted out of it
-            if (!ReferenceEquals(diagnostics, DiagnosticsHeader.Suppress))
-                message.Headers.Add("Auth0-Client", diagnostics.ToString());
+            if (!ReferenceEquals(_diagnostics, DiagnosticsHeader.Suppress))
+                message.Headers.Add("Auth0-Client", _diagnostics.ToString());
 
             // Set the authorization header
-            if (headers == null || headers != null && !headers.ContainsKey("Authorization"))
-                // Auth header can be overriden by passing custom value in headers dictionary
-                if (!string.IsNullOrEmpty(token))
-                    message.Headers.Add("Authorization", string.Format("Bearer {0}", token));
+            if (headers == null || !headers.ContainsKey("Authorization"))
+                // Auth header can be overridden by passing custom value in headers dictionary
+                if (!string.IsNullOrEmpty(_token))
+                    message.Headers.Add("Authorization", $"Bearer {_token}");
 
             // Add the user agent
             message.Headers.Add("User-Agent", ".NET/PCL");
@@ -117,7 +117,7 @@ namespace Auth0.Core.Http
         private Uri BuildRequestUri(string resource, IDictionary<string, string> urlSegments,
             IDictionary<string, string> queryStrings)
         {
-            return Utils.BuildUri(baseUrl, resource, urlSegments, queryStrings);
+            return Utils.BuildUri(_baseUrl, resource, urlSegments, queryStrings);
         }
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace Auth0.Core.Http
                             if (apiError.StatusCode == 0)
                                 apiError.StatusCode = (int) response.StatusCode;
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                             apiError = new ApiError
                             {
@@ -319,7 +319,7 @@ namespace Auth0.Core.Http
             ApplyHeaders(requestMessage, headers);
 
             // Send the request
-            var response = await httpClient.SendAsync(requestMessage).ConfigureAwait(false);
+            var response = await _httpClient.SendAsync(requestMessage).ConfigureAwait(false);
 
             // Handle API errors
             await HandleErrors(response).ConfigureAwait(false);

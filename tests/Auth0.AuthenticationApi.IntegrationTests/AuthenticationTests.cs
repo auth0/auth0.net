@@ -14,20 +14,20 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 {
     public class AuthenticationTests : TestBase, IAsyncLifetime
     {
-        private ManagementApiClient managementApiClient;
-        private Connection connection;
-        private User user;
-        private User plusUser;
-        private User userInDefaultDirectory;
+        private ManagementApiClient _managementApiClient;
+        private Connection _connection;
+        private User _user;
+        private User _plusUser;
+        private User _userInDefaultDirectory;
         private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
 
         public async Task InitializeAsync()
         {
             string token = await GenerateManagementApiToken();
 
-            managementApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+            _managementApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
 
-            var tenantSettings = await managementApiClient.TenantSettings.GetAsync();
+            var tenantSettings = await _managementApiClient.TenantSettings.GetAsync();
 
             if (string.IsNullOrEmpty(tenantSettings.DefaultDirectory))
             {
@@ -37,7 +37,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             }
             
             // We will need a connection to add the users to...
-            connection = await managementApiClient.Connections.CreateAsync(new ConnectionCreateRequest
+            _connection = await _managementApiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
                 Name = Guid.NewGuid().ToString("N"),
                 Strategy = "auth0",
@@ -45,25 +45,25 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             });
 
             // And add a dummy user to test against
-            user = await managementApiClient.Users.CreateAsync(new UserCreateRequest
+            _user = await _managementApiClient.Users.CreateAsync(new UserCreateRequest
             {
-                Connection = connection.Name,
+                Connection = _connection.Name,
                 Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
                 EmailVerified = true,
                 Password = Password
             });
 
             // Add a user with a + in the username
-            plusUser = await managementApiClient.Users.CreateAsync(new UserCreateRequest
+            _plusUser = await _managementApiClient.Users.CreateAsync(new UserCreateRequest
             {
-                Connection = connection.Name,
+                Connection = _connection.Name,
                 Email = $"{Guid.NewGuid().ToString("N")}+1@nonexistingdomain.aaa",
                 EmailVerified = true,
                 Password = Password
             });
 
             // Add a user with a + in the username
-            userInDefaultDirectory = await managementApiClient.Users.CreateAsync(new UserCreateRequest
+            _userInDefaultDirectory = await _managementApiClient.Users.CreateAsync(new UserCreateRequest
             {
                 Connection = tenantSettings.DefaultDirectory,
                 Email = $"{Guid.NewGuid().ToString("N")}+1@nonexistingdomain.aaa",
@@ -74,17 +74,17 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
         public async Task DisposeAsync()
         {
-            if (user != null)
-                await managementApiClient.Users.DeleteAsync(user.UserId);
+            if (_user != null)
+                await _managementApiClient.Users.DeleteAsync(_user.UserId);
 
-            if (userInDefaultDirectory != null)
-                await managementApiClient.Users.DeleteAsync(userInDefaultDirectory.UserId);
+            if (_userInDefaultDirectory != null)
+                await _managementApiClient.Users.DeleteAsync(_userInDefaultDirectory.UserId);
 
-            if (plusUser != null)
-                await managementApiClient.Users.DeleteAsync(plusUser.UserId);
+            if (_plusUser != null)
+                await _managementApiClient.Users.DeleteAsync(_plusUser.UserId);
 
-            if (connection != null)
-                await managementApiClient.Connections.DeleteAsync(connection.Id);
+            if (_connection != null)
+                await _managementApiClient.Connections.DeleteAsync(_connection.Id);
         }
 
         [Fact]
@@ -98,9 +98,9 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
-                Realm = connection.Name,
+                Realm = _connection.Name,
                 Scope = "openid",
-                Username = user.Email,
+                Username = _user.Email,
                 Password = Password
                 
             });
@@ -125,7 +125,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
                 Scope = "openid",
-                Username = userInDefaultDirectory.Email,
+                Username = _userInDefaultDirectory.Email,
                 Password = Password
 
             });
@@ -149,9 +149,9 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
-                Realm = connection.Name,
+                Realm = _connection.Name,
                 Scope = "openid offline_access",
-                Username = user.Email,
+                Username = _user.Email,
                 Password = Password
             });
 
@@ -174,9 +174,9 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
-                Realm = connection.Name,
+                Realm = _connection.Name,
                 Scope = "openid",
-                Username = plusUser.Email,
+                Username = _plusUser.Email,
                 Password = Password
             });
 

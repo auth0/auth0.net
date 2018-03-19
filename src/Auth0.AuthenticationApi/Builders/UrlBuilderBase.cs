@@ -9,10 +9,10 @@ namespace Auth0.AuthenticationApi.Builders
     /// <typeparam name="T"></typeparam>
     public class UrlBuilderBase<T> where T : UrlBuilderBase<T>
     {
-        private readonly string baseUrl;
-        private readonly string resource;
-        private readonly IDictionary<string, string> queryStrings = new Dictionary<string, string>();
-        private readonly IDictionary<string, string> urlSegments = new Dictionary<string, string>();
+        private readonly string _baseUrl;
+        private readonly string _resource;
+        private readonly IDictionary<string, string> _queryStrings = new Dictionary<string, string>();
+        private readonly IDictionary<string, string> _urlSegments = new Dictionary<string, string>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UrlBuilderBase{T}"/> class.
@@ -23,11 +23,8 @@ namespace Auth0.AuthenticationApi.Builders
         /// </exception>
         public UrlBuilderBase(string baseUrl, string resource)
         {
-            if (baseUrl == null) throw new ArgumentNullException(nameof(baseUrl));
-            if (resource == null) throw new ArgumentNullException(nameof(resource));
-
-            this.baseUrl = baseUrl;
-            this.resource = resource;
+            _baseUrl = baseUrl ?? throw new ArgumentNullException(nameof(baseUrl));
+            _resource = resource ?? throw new ArgumentNullException(nameof(resource));
         }
 
         /// <summary>
@@ -41,7 +38,7 @@ namespace Auth0.AuthenticationApi.Builders
         /// <param name="value">The value of the segment.</param>
         protected void AddUrlSegment(string name, string value)
         {
-            urlSegments[name] = value;
+            _urlSegments[name] = value;
         }
 
         /// <summary>
@@ -51,7 +48,7 @@ namespace Auth0.AuthenticationApi.Builders
         /// <param name="value">The value of the query string parameter.</param>
         protected void AddQueryString(string name, string value)
         {
-            queryStrings[name] = value;
+            _queryStrings[name] = value;
         }
 
         /// <summary>
@@ -73,7 +70,7 @@ namespace Auth0.AuthenticationApi.Builders
         /// <returns>A <see cref="Uri"/> with the URL.</returns>
         public Uri Build()
         {
-            return Utils.BuildUri(baseUrl, resource, urlSegments, queryStrings, true);
+            return Utils.BuildUri(_baseUrl, _resource, _urlSegments, _queryStrings, true);
         }
     }
 }

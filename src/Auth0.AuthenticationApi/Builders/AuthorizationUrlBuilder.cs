@@ -73,7 +73,7 @@ namespace Auth0.AuthenticationApi.Builders
         /// <returns>The <see cref="AuthorizationUrlBuilder"/>.</returns>
         public AuthorizationUrlBuilder WithResponseType(params AuthorizationResponseType[] responseType)
         {
-            AddQueryString("response_type", string.Join(" ",responseType.Select(x => AuthorizationResponseTypeHelper.ConvertToString(x))));
+            AddQueryString("response_type", string.Join(" ",responseType.Select(AuthorizationResponseTypeHelper.ConvertToString)));
 
             return this;
         }

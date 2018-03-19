@@ -122,6 +122,7 @@ namespace Auth0.ManagementApi.Models
         /// Settings for SpringCM Addon
         /// </summary>
         [JsonProperty("springcm")]
+        // ReSharper disable once InconsistentNaming
         public dynamic SpringCM { get; set; }
 
         /// <summary>

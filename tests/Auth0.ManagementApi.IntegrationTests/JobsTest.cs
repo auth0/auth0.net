@@ -11,19 +11,19 @@ namespace Auth0.ManagementApi.IntegrationTests
 {
     public class JobsTest : TestBase, IAsyncLifetime
     {
-        private ManagementApiClient apiClient;
-        private Connection connection;
-        private User user;
+        private ManagementApiClient _apiClient;
+        private Connection _connection;
+        private User _user;
         private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
 
         public async Task InitializeAsync()
         {
             string token = await GenerateManagementApiToken();
 
-            apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+            _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
 
             // Create a connection
-            connection = await apiClient.Connections.CreateAsync(new ConnectionCreateRequest
+            _connection = await _apiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
                 Name = Guid.NewGuid().ToString("N"),
                 Strategy = "auth0",
@@ -31,9 +31,9 @@ namespace Auth0.ManagementApi.IntegrationTests
             });
 
             // Create a user
-            user = await apiClient.Users.CreateAsync(new UserCreateRequest
+            _user = await _apiClient.Users.CreateAsync(new UserCreateRequest
             {
-                Connection = connection.Name,
+                Connection = _connection.Name,
                 Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
                 EmailVerified = true,
                 Password = Password
@@ -42,8 +42,8 @@ namespace Auth0.ManagementApi.IntegrationTests
 
         public async Task DisposeAsync()
         {
-            await apiClient.Users.DeleteAsync(user.UserId);
-            await apiClient.Connections.DeleteAsync(connection.Id);
+            await _apiClient.Users.DeleteAsync(_user.UserId);
+            await _apiClient.Connections.DeleteAsync(_connection.Id);
         }
 
         [Fact]
@@ -53,14 +53,14 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Send an email verification request
             var emailRequest = new VerifyEmailJobRequest
             {
-                UserId = user.UserId
+                UserId = _user.UserId
             };
-            var emailRequestResponse = await apiClient.Jobs.SendVerificationEmailAsync(emailRequest);
+            var emailRequestResponse = await _apiClient.Jobs.SendVerificationEmailAsync(emailRequest);
             emailRequestResponse.Should().NotBeNull();
             emailRequestResponse.Id.Should().NotBeNull();
 
             // Check to see whether we can get the exact same job again
-            var job = await apiClient.Jobs.GetAsync(emailRequestResponse.Id);
+            var job = await _apiClient.Jobs.GetAsync(emailRequestResponse.Id);
             job.Should().NotBeNull();
             job.Id.Should().Be(emailRequestResponse.Id);
 

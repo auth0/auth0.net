@@ -12,20 +12,14 @@ namespace Auth0.Core.Serialization
     /// </summary>
     public class FlexibleDateTimeConverter : IsoDateTimeConverter
     {
-        private static readonly DateTime _epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        private static readonly DateTime Epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             throw new NotImplementedException();
         }
 
-        public override bool CanWrite
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override bool CanWrite => false;
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
@@ -33,7 +27,7 @@ namespace Auth0.Core.Serialization
 
             if (reader.TokenType == JsonToken.Integer)
             {
-                return Add(_epoch, TimeSpan.FromSeconds((long)reader.Value));
+                return Add(Epoch, TimeSpan.FromSeconds((long)reader.Value));
             }
 
             return reader.Value;
@@ -47,12 +41,12 @@ namespace Auth0.Core.Serialization
                 dateTimeUtc = datetime.ToUniversalTime();
             }
 
-            if (dateTimeUtc.ToUniversalTime() <= _epoch)
+            if (dateTimeUtc.ToUniversalTime() <= Epoch)
             {
                 return 0;
             }
 
-            return (long)(dateTimeUtc - _epoch).TotalSeconds;
+            return (long)(dateTimeUtc - Epoch).TotalSeconds;
         }
 
         /// <summary>

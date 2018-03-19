@@ -12,12 +12,12 @@ namespace Auth0.Core.Exceptions
         /// <summary>
         ///     The exception payload from the response
         /// </summary>
-        public ApiError ApiError { get; private set; }
+        public ApiError ApiError { get; }
 
         /// <summary>
-        ///     The HTTP status code associated with the repsonse
+        ///     The HTTP status code associated with the response
         /// </summary>
-        public HttpStatusCode StatusCode { get; private set; }
+        public HttpStatusCode StatusCode { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiException"/> class.

@@ -51,7 +51,7 @@ namespace Auth0.AuthenticationApi.Builders
         /// <returns>The <see cref="SamlUrlBuilder"/>.</returns>
         public SamlUrlBuilder WithRelayState(System.Collections.Generic.IDictionary<string, string> values)
         {
-            AddQueryString("relayState", string.Join("&", values.Select(kvp => string.Format("{0}={1}", kvp.Key, kvp.Value))));
+            AddQueryString("relayState", string.Join("&", values.Select(kvp => $"{kvp.Key}={kvp.Value}")));
 
             return this;
         }

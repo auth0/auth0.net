@@ -47,15 +47,6 @@ namespace Auth0.AuthenticationApi
         /// <returns>A task object with a string containing the message returned from Auth0.</returns>
         Task<string> ChangePasswordAsync(ChangePasswordRequest request);
 
-        /*
-        /// <summary>
-        /// Given an existing token, this endpoint will generate a new token signed with the target client secret. This is used to flow the identity of the user from the application to an API or across different APIs that are protected with different secrets.
-        /// </summary>
-        /// <param name="request">The <see cref="DelegationRequestBase"/> containing details about the request.</param>
-        /// <returns>The <see cref="AccessTokenResponse"/>.</returns>
-        //Task<AccessTokenResponse> GetDelegationTokenAsync(DelegationRequestBase request);
-        */
-
         /// <summary>
         /// Generates a link that can be used once to log in as a specific user.
         /// </summary>
@@ -140,11 +131,10 @@ namespace Auth0.AuthenticationApi
         Task<AccessTokenResponse> GetTokenAsync(RefreshTokenRequest request);
 
         /// <summary>
-        /// Given an <see cref="ResourceOwnerTokenRequest" />, it will do the authentication on the provider and return an <see cref="AccessTokenResponse"./>
+        /// Given an <see cref="ResourceOwnerTokenRequest" />, it will do the authentication on the provider and return an <see cref="AccessTokenResponse"/>.
         /// </summary>
         /// <param name="request">The authentication request details containing information regarding the username, password etc.</param>
         /// <returns>An <see cref="AccessTokenResponse" /> with the response.</returns>
         Task<AccessTokenResponse> GetTokenAsync(ResourceOwnerTokenRequest request);
-
     }
 }

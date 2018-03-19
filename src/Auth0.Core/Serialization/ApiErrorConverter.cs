@@ -10,7 +10,7 @@ namespace Auth0.Core.Serialization
 {
     public class ApiErrorConverter : JsonConverter
     {
-        private readonly Dictionary<string, string> propertyMappings = new Dictionary<string, string>
+        private readonly Dictionary<string, string> _propertyMappings = new Dictionary<string, string>
         {
             {"code", "errorCode"},
             {"name", "error"},
@@ -18,10 +18,7 @@ namespace Auth0.Core.Serialization
             {"error_description", "message"}
         };
 
-        public override bool CanWrite
-        {
-            get { return false; }
-        }
+        public override bool CanWrite => false;
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
@@ -42,7 +39,7 @@ namespace Auth0.Core.Serialization
             foreach (JProperty jp in jo.Properties())
             {
                 string name;
-                if (!propertyMappings.TryGetValue(jp.Name, out name))
+                if (!_propertyMappings.TryGetValue(jp.Name, out name))
                     name = jp.Name;
 
                 PropertyInfo prop = props.FirstOrDefault(pi =>

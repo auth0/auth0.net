@@ -19,14 +19,9 @@ namespace Auth0.AuthenticationApi
     public class AuthenticationApiClient : IAuthenticationApiClient
     {
         /// <summary>
-        /// The API connection
-        /// </summary>
-        private readonly IApiConnection apiConnection;
-
-        /// <summary>
         /// The base URI
         /// </summary>
-        private readonly Uri baseUri;
+        private readonly Uri _baseUri;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
@@ -36,7 +31,7 @@ namespace Auth0.AuthenticationApi
         /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
         public AuthenticationApiClient(Uri baseUri, DiagnosticsHeader diagnostics, HttpMessageHandler handler)
         {
-            this.baseUri = baseUri;
+            _baseUri = baseUri;
 
             // If no diagnostics header structure was specified, then revert to the default one
             if (diagnostics == null)
@@ -44,7 +39,7 @@ namespace Auth0.AuthenticationApi
                 diagnostics = DiagnosticsHeader.Default;
             }
 
-            apiConnection = new ApiConnection(null, baseUri.AbsoluteUri, diagnostics, handler);
+            Connection = new ApiConnection(null, baseUri.AbsoluteUri, diagnostics, handler);
         }
 
         /// <summary>
@@ -120,10 +115,7 @@ namespace Auth0.AuthenticationApi
         /// The <see cref="IApiConnection" /> used to communicate between the client and the Auth0 API.
         /// </summary>
         /// <value>The connection.</value>
-        public IApiConnection Connection
-        {
-            get { return apiConnection; }
-        }
+        public IApiConnection Connection { get; }
 
         /// <summary>
         /// Creates a <see cref="AuthorizationUrlBuilder" /> which is used to build an authorization URL.
@@ -131,7 +123,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A new <see cref="AuthorizationUrlBuilder" /> instance.</returns>
         public AuthorizationUrlBuilder BuildAuthorizationUrl()
         {
-            return new AuthorizationUrlBuilder(baseUri.ToString());
+            return new AuthorizationUrlBuilder(_baseUri.ToString());
         }
 
         /// <summary>
@@ -140,7 +132,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A new <see cref="LogoutUrlBuilder" /> instance.</returns>
         public LogoutUrlBuilder BuildLogoutUrl()
         {
-            return new LogoutUrlBuilder(baseUri.ToString());
+            return new LogoutUrlBuilder(_baseUri.ToString());
         }
 
         /// <summary>
@@ -150,7 +142,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A new <see cref="SamlUrlBuilder" /> instance.</returns>
         public SamlUrlBuilder BuildSamlUrl(string client)
         {
-            return new SamlUrlBuilder(baseUri.ToString(), client);
+            return new SamlUrlBuilder(_baseUri.ToString(), client);
         }
 
         /// <summary>
@@ -159,7 +151,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A new <see cref="WsFedUrlBuilder" /> instance.</returns>
         public WsFedUrlBuilder BuildWsFedUrl()
         {
-            return new WsFedUrlBuilder(baseUri.ToString());
+            return new WsFedUrlBuilder(_baseUri.ToString());
         }
 
         /// <summary>
@@ -171,18 +163,6 @@ namespace Auth0.AuthenticationApi
         {
             return Connection.PostAsync<string>("dbconnections/change_password", request, null, null, null, null, null);
         }
-
-        /*
-        /// <summary>
-        /// Given an existing token, this endpoint will generate a new token signed with the target client secret. This is used to flow the identity of the user from the application to an API or across different APIs that are protected with different secrets.
-        /// </summary>
-        /// <param name="request">The <see cref="DelegationRequestBase" /> containing details about the request.</param>
-        /// <returns>The <see cref="AccessTokenResponse" />.</returns>
-        public Task<AccessTokenResponse> GetDelegationTokenAsync(DelegationRequestBase request)
-        {
-            return Connection.PostAsync<AccessTokenResponse>("delegation", request, null, null, null, null, null);
-        }
-        */
 
         /// <summary>
         /// Generates a link that can be used once to log in as a specific user.
@@ -206,7 +186,7 @@ namespace Auth0.AuthenticationApi
                 },
                 new Dictionary<string, object>
                 {
-                    {"Authorization", string.Format("Bearer {0}", request.Token)}
+                    {"Authorization", $"Bearer {request.Token}"}
                 }, null).ConfigureAwait(false);
 
             return new Uri(url);
@@ -309,7 +289,7 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <summary>
-        /// Given an <see cref="ResourceOwnerTokenRequest" />, it will do the authentication on the provider and return an <see cref="AccessTokenResponse"./>
+        /// Given an <see cref="ResourceOwnerTokenRequest" />, it will do the authentication on the provider and return an <see cref="AccessTokenResponse"/>.
         /// </summary>
         /// <param name="request">The authentication request details containing information regarding the username, password etc.</param>
         /// <returns>An <see cref="AccessTokenResponse" /> with the response.</returns>
@@ -359,7 +339,7 @@ namespace Auth0.AuthenticationApi
         {
             return Connection.GetAsync<UserInfo>("userinfo", null, null, new Dictionary<string, object>
             {
-                {"Authorization", string.Format("Bearer {0}", accessToken)}
+                {"Authorization", $"Bearer {accessToken}"}
             });
         }
 

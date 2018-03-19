@@ -8,10 +8,5 @@ namespace Auth0.ManagementApi.Models
     /// </summary>
     public class ResourceServerCreateRequest : ResourceServer
     {
-        /// <summary>
-        /// The identifier of the resource server
-        /// </summary>
-        [JsonProperty("identifier")]
-        public string Identifier { get; set; }
     }
 }

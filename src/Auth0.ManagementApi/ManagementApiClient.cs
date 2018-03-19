@@ -11,7 +11,7 @@ namespace Auth0.ManagementApi
     /// </summary>
     public class ManagementApiClient : IManagementApiClient
     {
-        private readonly ApiConnection apiConnection;
+        private readonly ApiConnection _apiConnection;
 
         /// <summary>
         /// Contains all the methods to call the /blacklists/tokens endpoints.
@@ -110,7 +110,7 @@ namespace Auth0.ManagementApi
         /// </summary>
         public ApiInfo GetLastApiInfo()
         {
-            return apiConnection.ApiInfo;
+            return _apiConnection.ApiInfo;
         }
 
         /// <summary>
@@ -128,24 +128,24 @@ namespace Auth0.ManagementApi
                 diagnostics = DiagnosticsHeader.Default;
             }
 
-            apiConnection = new ApiConnection(token, baseUri.AbsoluteUri, diagnostics, handler);
+            _apiConnection = new ApiConnection(token, baseUri.AbsoluteUri, diagnostics, handler);
 
-            BlacklistedTokens = new BlacklistedTokensClient(apiConnection);
-            ClientGrants = new ClientGrantsClient(apiConnection);
-            Clients = new ClientsClient(apiConnection);
-            Connections = new ConnectionsClient(apiConnection);
-            DeviceCredentials = new DeviceCredentialsClient(apiConnection);
-            EmailProvider = new EmailProviderClient(apiConnection);
-            Guardian = new GuardianClient(apiConnection);
-            Jobs = new JobsClient(apiConnection);
-            Logs = new LogsClient(apiConnection);
-            ResourceServers = new ResourceServersClient(apiConnection);
-            Rules = new RulesClient(apiConnection);
-            Stats = new StatsClient(apiConnection);
-            TenantSettings = new TenantSettingsClient(apiConnection);
-            Tickets = new TicketsClient(apiConnection);
-            UserBlocks = new UserBlocksClient(apiConnection);
-            Users = new UsersClient(apiConnection);
+            BlacklistedTokens = new BlacklistedTokensClient(_apiConnection);
+            ClientGrants = new ClientGrantsClient(_apiConnection);
+            Clients = new ClientsClient(_apiConnection);
+            Connections = new ConnectionsClient(_apiConnection);
+            DeviceCredentials = new DeviceCredentialsClient(_apiConnection);
+            EmailProvider = new EmailProviderClient(_apiConnection);
+            Guardian = new GuardianClient(_apiConnection);
+            Jobs = new JobsClient(_apiConnection);
+            Logs = new LogsClient(_apiConnection);
+            ResourceServers = new ResourceServersClient(_apiConnection);
+            Rules = new RulesClient(_apiConnection);
+            Stats = new StatsClient(_apiConnection);
+            TenantSettings = new TenantSettingsClient(_apiConnection);
+            Tickets = new TicketsClient(_apiConnection);
+            UserBlocks = new UserBlocksClient(_apiConnection);
+            Users = new UsersClient(_apiConnection);
 
         }
 

@@ -15,8 +15,8 @@ namespace Auth0.Core.Http
         /// </summary>
         public DiagnosticsComponent(string name, object version)
         {
-            this.Name = name;
-            this.Version = version.ToString();
+            Name = name;
+            Version = version.ToString();
         }
 
         /// <summary>
@@ -24,8 +24,8 @@ namespace Auth0.Core.Http
         /// </summary>
         public DiagnosticsComponent(AssemblyName assemblyName)
         {
-            this.Name = assemblyName.Name;
-            this.Version = assemblyName.Version.ToString();
+            Name = assemblyName.Name;
+            Version = assemblyName.Version.ToString();
         }
 
         /// <summary>

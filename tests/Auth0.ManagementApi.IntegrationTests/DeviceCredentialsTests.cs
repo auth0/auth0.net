@@ -9,9 +9,9 @@ namespace Auth0.ManagementApi.IntegrationTests
 {
     public class DeviceCredentialsTests : TestBase, IAsyncLifetime
     {
-        private Client client;
-        private Connection connection;
-        private User user;
+        private Client _client;
+        private Connection _connection;
+        private User _user;
         private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
 
         public async Task InitializeAsync()
@@ -19,18 +19,18 @@ namespace Auth0.ManagementApi.IntegrationTests
             var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_DEVICE_CREDENTIALS"), GetVariable("AUTH0_MANAGEMENT_API_URL"));
 
             // Set up the correct Client, Connection and User
-            client = await apiClient.Clients.CreateAsync(new ClientCreateRequest
+            _client = await apiClient.Clients.CreateAsync(new ClientCreateRequest
             {
                 Name = Guid.NewGuid().ToString("N")
             });
-            connection = await apiClient.Connections.CreateAsync(new ConnectionCreateRequest
+            _connection = await apiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
                 Name = Guid.NewGuid().ToString("N"),
                 Strategy = "auth0"
             });
-            user = await apiClient.Users.CreateAsync(new UserCreateRequest
+            _user = await apiClient.Users.CreateAsync(new UserCreateRequest
             {
-                Connection = connection.Name,
+                Connection = _connection.Name,
                 Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
                 EmailVerified = true,
                 Password = Password
@@ -41,9 +41,9 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_DEVICE_CREDENTIALS"), GetVariable("AUTH0_MANAGEMENT_API_URL"));
 
-            await apiClient.Clients.DeleteAsync(client.ClientId);
-            await apiClient.Connections.DeleteAsync(connection.Id);
-            await apiClient.Users.DeleteAsync(user.UserId);
+            await apiClient.Clients.DeleteAsync(_client.ClientId);
+            await apiClient.Connections.DeleteAsync(_connection.Id);
+            await apiClient.Users.DeleteAsync(_user.UserId);
         }
 
         [Fact(Skip = "Damn, how difficult is it to get the correct token combinations for this...?")]
@@ -59,7 +59,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 DeviceName = Guid.NewGuid().ToString("N"),
                 DeviceId = Guid.NewGuid().ToString("N"),
-                ClientId = client.ClientId,
+                ClientId = _client.ClientId,
                 Type = "public_key",
                 Value = "new-key-value"
             };

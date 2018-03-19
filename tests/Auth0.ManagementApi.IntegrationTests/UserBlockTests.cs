@@ -13,21 +13,21 @@ namespace Auth0.ManagementApi.IntegrationTests
 {
     public class UserBlockTests : TestBase, IAsyncLifetime
     {
-        private ManagementApiClient apiClient;
-        private AuthenticationApiClient authenticationApiClient;
-        private Connection connection;
-        private User user;
+        private ManagementApiClient _apiClient;
+        private AuthenticationApiClient _authenticationApiClient;
+        private Connection _connection;
+        private User _user;
         private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
 
         public async Task InitializeAsync()
         {
             string token = await GenerateManagementApiToken();
 
-            apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
-            authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
+            _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+            _authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             // We will need a connection to add the users to...
-            connection = await apiClient.Connections.CreateAsync(new ConnectionCreateRequest
+            _connection = await _apiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
                 Name = Guid.NewGuid().ToString("N"),
                 Strategy = "auth0",
@@ -37,12 +37,12 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Add a new user
             var newUserRequest = new UserCreateRequest
             {
-                Connection = connection.Name,
+                Connection = _connection.Name,
                 Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
                 EmailVerified = true,
                 Password = Password
             };
-            user = await apiClient.Users.CreateAsync(newUserRequest);
+            _user = await _apiClient.Users.CreateAsync(newUserRequest);
 
             // Now try and sign in with a wrong password until we get "too many attempts"
             bool userBlocked = false;
@@ -53,13 +53,13 @@ namespace Auth0.ManagementApi.IntegrationTests
                 {
                     attempts++;
 
-                    var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+                    var authenticationResponse = await _authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
                     {
                         ClientId = GetVariable("AUTH0_CLIENT_ID"),
                         ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
-                        Realm = connection.Name,
+                        Realm = _connection.Name,
                         Scope = "openid",
-                        Username = user.Email,
+                        Username = _user.Email,
                         Password = "wrong_password"
                     });
 
@@ -75,22 +75,22 @@ namespace Auth0.ManagementApi.IntegrationTests
 
         public async Task DisposeAsync()
         {
-            await apiClient.Users.DeleteAsync(user.UserId);
-            await apiClient.Connections.DeleteAsync(connection.Id);
+            await _apiClient.Users.DeleteAsync(_user.UserId);
+            await _apiClient.Connections.DeleteAsync(_connection.Id);
         }
 
         [Fact(Skip = "Need to fix user blocks tests")]
         public async Task Test_user_blocks_by_identifier()
         {
             // Check we should have 1 block for the user
-            var userBlocks = await apiClient.UserBlocks.GetByIdentifierAsync(user.Email);
+            var userBlocks = await _apiClient.UserBlocks.GetByIdentifierAsync(_user.Email);
             userBlocks.BlockedFor.Should().HaveCount(1);
 
             // Now unblock the user
-            await apiClient.UserBlocks.UnblockByIdentifierAsync(user.Email);
+            await _apiClient.UserBlocks.UnblockByIdentifierAsync(_user.Email);
 
             // Now ensure user is not blocked anymore
-            userBlocks = await apiClient.UserBlocks.GetByIdentifierAsync(user.Email);
+            userBlocks = await _apiClient.UserBlocks.GetByIdentifierAsync(_user.Email);
             userBlocks.BlockedFor.Should().BeEmpty();
         }
 
@@ -99,14 +99,14 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_user_blocks_by_userid()
         {
             // Check we should have 1 block for the user
-            var userBlocks = await apiClient.UserBlocks.GetByUserIdAsync(user.UserId);
+            var userBlocks = await _apiClient.UserBlocks.GetByUserIdAsync(_user.UserId);
             userBlocks.BlockedFor.Should().HaveCount(1);
 
             // Now unblock the user
-            await apiClient.UserBlocks.UnblockByUserIdAsync(user.UserId);
+            await _apiClient.UserBlocks.UnblockByUserIdAsync(_user.UserId);
 
             // Now ensure user is not blocked anymore
-            userBlocks = await apiClient.UserBlocks.GetByUserIdAsync(user.UserId);
+            userBlocks = await _apiClient.UserBlocks.GetByUserIdAsync(_user.UserId);
             userBlocks.BlockedFor.Should().BeEmpty();
         }
     }

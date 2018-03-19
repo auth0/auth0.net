@@ -13,11 +13,11 @@ namespace Auth0.Core.Http
     /// </summary>
     public class DiagnosticsHeader : DiagnosticsComponent
     {
-        private static readonly object syncRoot = new object();
+        private static readonly object SyncRoot = new object();
 
         private static volatile DiagnosticsHeader _default;
 
-        private static volatile DiagnosticsHeader suppress;
+        private static volatile DiagnosticsHeader _suppress;
 
         /// <summary>
         ///     Gets the <see cref="DiagnosticsHeader" /> instance that contains the default set of SDK information.
@@ -28,7 +28,7 @@ namespace Auth0.Core.Http
             {
                 if (_default == null)
                 {
-                    lock (syncRoot)
+                    lock (SyncRoot)
                     {
                         if (_default == null)
                         {
@@ -59,17 +59,17 @@ namespace Auth0.Core.Http
         {
             get
             {
-                if (suppress == null)
+                if (_suppress == null)
                 {
-                    lock (syncRoot)
+                    lock (SyncRoot)
                     {
-                        if (suppress == null)
+                        if (_suppress == null)
                         {
-                            suppress = new DiagnosticsHeader();
+                            _suppress = new DiagnosticsHeader();
                         }
                     }
                 }
-                return suppress;
+                return _suppress;
             }
         }
 
@@ -150,7 +150,7 @@ namespace Auth0.Core.Http
         public static void Reset()
         {
             _default = null;
-            suppress = null;
+            _suppress = null;
         }
 
         /// <summary>
