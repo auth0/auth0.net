@@ -182,8 +182,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var newUserResponse = await _apiClient.Users.CreateAsync(newUserRequest);
 
             // Do some updating
-            var updateUserRequest = new UserUpdateRequest();
-            updateUserRequest.AppMetadata = new ExpandoObject();
+            var updateUserRequest = new UserUpdateRequest {AppMetadata = new ExpandoObject()};
             updateUserRequest.AppMetadata.IsSubscribedTo = "1";
             var updateUserResponse = await _apiClient.Users.UpdateAsync(newUserResponse.UserId, updateUserRequest);
 

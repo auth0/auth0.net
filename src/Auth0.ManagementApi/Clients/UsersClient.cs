@@ -211,7 +211,7 @@ namespace Auth0.ManagementApi.Clients
                 {"id", id}
             }, new Dictionary<string, object>
             {
-                {"Authorization", string.Format("Bearer {0}", primaryJwtToken)}
+                {"Authorization", $"Bearer {primaryJwtToken}"}
             }, null);
         }
 

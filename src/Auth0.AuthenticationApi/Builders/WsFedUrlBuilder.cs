@@ -61,7 +61,7 @@ namespace Auth0.AuthenticationApi.Builders
         /// <returns>WsFedUrlBuilder.</returns>
         public WsFedUrlBuilder WithWctx(IDictionary<string, string> values)
         {
-            AddQueryString("wctx", string.Join("&", values.Select(kvp => string.Format("{0}={1}", kvp.Key, kvp.Value))));
+            AddQueryString("wctx", string.Join("&", values.Select(kvp => $"{kvp.Key}={kvp.Value}")));
 
             return this;
         }

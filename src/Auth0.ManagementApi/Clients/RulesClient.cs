@@ -60,7 +60,7 @@ namespace Auth0.ManagementApi.Clients
             return Connection.GetAsync<IList<Rule>>("rules", null,
                 new Dictionary<string, string>
                 {
-                    {"enabled", enabled.HasValue ? enabled.Value.ToString().ToLower() : null},
+                    {"enabled", enabled?.ToString().ToLower()},
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()},
                     {"stage", stage}

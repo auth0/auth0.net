@@ -33,8 +33,7 @@ namespace Auth0.Core.Http
         {
             long result = 0;
 
-            IEnumerable<string> values = null;
-            headers.TryGetValues(name, out values);
+            headers.TryGetValues(name, out var values);
             string value = values?.FirstOrDefault();
             if (value != null)
             {

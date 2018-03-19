@@ -44,7 +44,7 @@ namespace Auth0.Core.Http
             {
                 foreach (var urlSegment in urlSegments)
                 {
-                    resource = resource.Replace(string.Format("{{{0}}}", urlSegment.Key), Uri.EscapeUriString(urlSegment.Value ?? String.Empty));
+                    resource = resource.Replace($"{{{urlSegment.Key}}}", Uri.EscapeUriString(urlSegment.Value ?? String.Empty));
                 }
 
                 // Remove trailing slash
@@ -52,39 +52,31 @@ namespace Auth0.Core.Http
             }
 
             // Add the query strings
-            if (queryStrings != null)
-            {
-                var queryString = queryStrings
-                    .Aggregate(new StringBuilder(), (sb, kvp) =>
-                    {
-                        if (kvp.Value != null)
-                        {
-                            if (sb.Length > 0)
-                                sb = sb.Append("&");
-
-                            sb.Append(string.Format("{0}={1}", Uri.EscapeUriString(kvp.Key),
-                                Uri.EscapeDataString(kvp.Value)));
-                        }
-                        else if (includeEmptyParameters)
-                        {
-                            if (sb.Length > 0)
-                                sb = sb.Append("&");
-
-                            sb.Append(string.Format("{0}", Uri.EscapeUriString(kvp.Key)));
-                        }
-
-                        return sb;
-                    })
-                    .ToString();
-
-                // If we have a querystring, append it to the resource
-                if (!string.IsNullOrEmpty(queryString))
+            var queryString = queryStrings?.Aggregate(new StringBuilder(), (sb, kvp) =>
                 {
-                    if (resource.Contains("?"))
-                        resource = string.Format("{0}&{1}", resource, queryString);
-                    else
-                        resource = string.Format("{0}?{1}", resource, queryString);
-                }
+                    if (kvp.Value != null)
+                    {
+                        if (sb.Length > 0)
+                            sb = sb.Append("&");
+
+                        sb.Append($"{Uri.EscapeUriString(kvp.Key)}={Uri.EscapeDataString(kvp.Value)}");
+                    }
+                    else if (includeEmptyParameters)
+                    {
+                        if (sb.Length > 0)
+                            sb = sb.Append("&");
+
+                        sb.Append(Uri.EscapeUriString(kvp.Key));
+                    }
+
+                    return sb;
+                })
+                .ToString();
+
+            // If we have a querystring, append it to the resource
+            if (!string.IsNullOrEmpty(queryString))
+            {
+                resource = resource.Contains("?") ? $"{resource}&{queryString}" : $"{resource}?{queryString}";
             }
 
             resource = CombineUriParts(baseUrl, resource);
@@ -107,7 +99,7 @@ namespace Auth0.Core.Http
                 uri = (uriParts[0] ?? string.Empty).TrimEnd(trimChars);
                 for (var i = 1; i < uriParts.Count(); i++)
                 {
-                    uri = string.Format("{0}/{1}", uri.TrimEnd(trimChars), (uriParts[i] ?? string.Empty).TrimStart(trimChars));
+                    uri = $"{uri.TrimEnd(trimChars)}/{(uriParts[i] ?? string.Empty).TrimStart(trimChars)}";
                 }
             }
             return uri;

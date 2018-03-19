@@ -38,8 +38,7 @@ namespace Auth0.Core.Serialization
             JObject jo = JObject.Load(reader);
             foreach (JProperty jp in jo.Properties())
             {
-                string name;
-                if (!_propertyMappings.TryGetValue(jp.Name, out name))
+                if (!_propertyMappings.TryGetValue(jp.Name, out var name))
                     name = jp.Name;
 
                 PropertyInfo prop = props.FirstOrDefault(pi =>
