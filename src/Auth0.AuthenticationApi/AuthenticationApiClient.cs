@@ -126,25 +126,6 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <summary>
-        /// Given an <see cref="AuthenticationRequest" />, it will do the authentication on the provider and return an <see cref="AccessTokenResponse"./>
-        /// </summary>
-        /// <param name="request">The authentication request details containing information regarding the connection, username, password etc.</param>
-        /// <returns>An <see cref="AccessTokenResponse" /> with the response.</returns>
-        [Obsolete("Use GetTokenAsync(ResourceOwnerTokenRequest) instead")]
-        public Task<AccessTokenResponse> AuthenticateAsync(AuthenticationRequest request)
-        {
-            return GetTokenAsync(new ResourceOwnerTokenRequest
-            {
-                ClientId = request.ClientId,
-                ClientSecret = request.ClientSecret,
-                Username = request.Username,
-                Password = request.Password,
-                Realm = request.Realm,
-                Scope = request.Scope
-            });
-        }
-
-        /// <summary>
         /// Creates a <see cref="AuthorizationUrlBuilder" /> which is used to build an authorization URL.
         /// </summary>
         /// <returns>A new <see cref="AuthorizationUrlBuilder" /> instance.</returns>
@@ -189,24 +170,6 @@ namespace Auth0.AuthenticationApi
         public Task<string> ChangePasswordAsync(ChangePasswordRequest request)
         {
             return Connection.PostAsync<string>("dbconnections/change_password", request, null, null, null, null, null);
-        }
-
-        /// <summary>
-        /// Exhanges an OAuth authorization code for an access token. This needs to be called as part of the OAuth authentication process, after the user has
-        /// authenticated and the redirect URI is called with an authorization code. 
-        /// </summary>
-        /// <param name="request">The <see cref="ExchangeCodeRequest"/> containing the authorization code and other information needed to exchange the code for an access token.</param>
-        /// <returns></returns>
-        [Obsolete("Use GetTokenAsync(AuthorizationCodeTokenRequest) instead.")]
-        public Task<AccessTokenResponse> ExchangeCodeForAccessTokenAsync(ExchangeCodeRequest request)
-        {
-            return GetTokenAsync(new AuthorizationCodeTokenRequest
-            {
-                ClientId = request.ClientId,
-                ClientSecret = request.ClientSecret,
-                Code = request.AuthorizationCode,
-                RedirectUri = request.RedirectUri
-            });
         }
 
         /*
@@ -463,30 +426,6 @@ namespace Auth0.AuthenticationApi
         public async Task UnlinkUserAsync(UnlinkUserRequest request)
         {
             await Connection.PostAsync<object>("unlink", request, null, null, null, null, null).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Given an <see cref="UsernamePasswordLoginRequest"/>, it will do the authentication on the provider and return a <see cref="UsernamePasswordLoginResponse"/>
-        /// </summary>
-        /// <param name="request">The authentication request details containing information regarding the connection, username, password etc.</param>
-        /// <returns>A <see cref="UsernamePasswordLoginResponse"/> containing the WS-Federation Login Form, which can be posted by the user to trigger a server-side login.</returns>
-        [Obsolete("Use GetTokenAsync(ResourceOwnerTokenRequest) instead")]
-        public async Task<UsernamePasswordLoginResponse> UsernamePasswordLoginAsync(UsernamePasswordLoginRequest request)
-        {
-            if (request != null && string.IsNullOrEmpty(request.Tenant) && baseUri.Host.Contains("."))
-            {
-                request.Tenant = baseUri.Host.Split('.')[0];
-            }
-
-            if (request != null && string.IsNullOrEmpty(request.ResponseType))
-            {
-                request.ResponseType = "code";
-            }
-
-            return new UsernamePasswordLoginResponse()
-            {
-                HtmlForm = await Connection.PostAsync<string>("usernamepassword/login", request, null, null, null, null, null).ConfigureAwait(false)
-            };
         }
     }
 }

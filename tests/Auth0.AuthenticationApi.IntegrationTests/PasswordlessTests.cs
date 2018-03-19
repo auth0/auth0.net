@@ -87,24 +87,5 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             response.Should().NotBeNull();
             response.PhoneNumber.Should().Be(request.PhoneNumber);
         }
-
-        [Fact(Skip = "Run manually")]
-        public async Task Can_authenticate_with_passwordless_email_code()
-        {
-            // Arrange
-            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
-
-            // Arrange
-            var authenticationResponse = await authenticationApiClient.AuthenticateAsync(new AuthenticationRequest
-            {
-                ClientId = GetVariable("AUTH0_CLIENT_ID"),
-                Realm = "email",
-                GrantType = "password",
-                Scope = "openid",
-                Username = "your email or phone number",
-                Password = "your code"
-            });
-            authenticationResponse.Should().NotBeNull();
-        }
     }
 }

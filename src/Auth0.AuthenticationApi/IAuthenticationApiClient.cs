@@ -16,14 +16,6 @@ namespace Auth0.AuthenticationApi
     public interface IAuthenticationApiClient
     {
         /// <summary>
-        /// Given an <see cref="AuthenticationRequest"/>, it will do the authentication on the provider and return an <see cref="AccessTokenResponse"./>
-        /// </summary>
-        /// <param name="request">The authentication request details containing information regarding the connection, username, password etc.</param>
-        /// <returns>A Task object with <see cref="AccessTokenResponse"/> which contains the token response.</returns>
-        [Obsolete("Use GetTokenAsync(ResourceOwnerTokenRequest) instead")]
-        Task<AccessTokenResponse> AuthenticateAsync(AuthenticationRequest request);
-
-        /// <summary>
         /// Creates a <see cref="AuthorizationUrlBuilder"/> which is used to build an authorization URL.
         /// </summary>
         /// <returns>A new <see cref="AuthorizationUrlBuilder"/> instance.</returns>
@@ -54,14 +46,6 @@ namespace Auth0.AuthenticationApi
         /// <param name="request">The <see cref="ChangePasswordRequest"/> specifying the user and connection details.</param>
         /// <returns>A task object with a string containing the message returned from Auth0.</returns>
         Task<string> ChangePasswordAsync(ChangePasswordRequest request);
-
-        /// <summary>
-        /// Exhanges an OAuth authorization code for an access token. This needs to be called as part of the OAuth authentication process, after the user has
-        /// authenticated and the redirect URI is called with an authorization code. 
-        /// </summary>
-        /// <param name="request">The <see cref="ExchangeCodeRequest"/> containing the authorization code and other information needed to exchange the code for an access token.</param>
-        /// <returns></returns>
-        Task<AccessTokenResponse> ExchangeCodeForAccessTokenAsync(ExchangeCodeRequest request);
 
         /*
         /// <summary>
@@ -126,14 +110,6 @@ namespace Auth0.AuthenticationApi
         /// <param name="request">The <see cref="UnlinkUserRequest"/> containing the information of the accounts to unlink.</param>
         /// <returns>Nothing</returns>
         Task UnlinkUserAsync(UnlinkUserRequest request);
-
-        /// <summary>
-        /// Given an <see cref="UsernamePasswordLoginRequest"/>, it will do the authentication on the provider and return a <see cref="UsernamePasswordLoginResponse"/>
-        /// </summary>
-        /// <param name="request">The authentication request details containing information regarding the connection, username, password etc.</param>
-        /// <returns>A <see cref="UsernamePasswordLoginResponse"/> containing the WS-Federation Login Form, which can be posted by the user to trigger a server-side login.</returns>
-        [Obsolete("Use GetTokenAsync(ResourceOwnerTokenRequest) instead")]
-        Task<UsernamePasswordLoginResponse> UsernamePasswordLoginAsync(UsernamePasswordLoginRequest request);
 
         /// <summary>
         /// Request an Access Token using the Authorization Code Grant flow.

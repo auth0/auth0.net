@@ -72,14 +72,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Ensure firstname, lastname etc are ignored and not sent to Auth0. If not, the following will throw an exception
             updateUserRequest = new UserUpdateRequest
             {
-                EmailVerified = true, // We need to pass in at least one property, so we set this as the other properties below will not be serialized
-#pragma warning disable 618
-                FirstName = "firstname",
-                LastName = "lastname",
-                NickName = "nickname",
-                FullName = "fullname",
-                Picture = "picture url.."
-#pragma warning restore 618
+                EmailVerified = true // We need to pass in at least one property, so we set this as the other properties below will not be serialized
             };
             await apiClient.Users.UpdateAsync(newUserResponse.UserId, updateUserRequest);
 
