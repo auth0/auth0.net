@@ -14,7 +14,7 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("app_type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public ClientApplicationType? ApplicationType { get; set; } = null;
+        public ClientApplicationType? ApplicationType { get; set; }
 
         /// <summary>
         /// Defines the requested authentication method for the token endpoint.
@@ -24,7 +24,7 @@ namespace Auth0.ManagementApi.Models
         /// </remarks>
         [JsonProperty("token_endpoint_auth_method")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public TokenEndpointAuthMethod? TokenEndpointAuthMethod { get; set; } = null;
+        public TokenEndpointAuthMethod? TokenEndpointAuthMethod { get; set; }
     }
 
 }

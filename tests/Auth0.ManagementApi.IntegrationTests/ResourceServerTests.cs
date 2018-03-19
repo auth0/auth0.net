@@ -18,9 +18,6 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
 
-            // Get all the resource servers
-            var resourceServersBefore = await apiClient.ResourceServers.GetAllAsync();
-
             // Add a new resource server
             var identifier = Guid.NewGuid();
             var newResourceServerRequest = new ResourceServerCreateRequest()

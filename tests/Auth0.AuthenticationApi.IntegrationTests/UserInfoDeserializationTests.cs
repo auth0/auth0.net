@@ -103,8 +103,6 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             dynamic manager = userInfo.AdditionalClaims["http://acme.com/claims/manager"];
             string managerName = manager.name;
             managerName.Should().Be("John Doe");
-
-            var office = (string)userInfo.AdditionalClaims["http://acme.com/claims/office"];
         }
 
         private UserInfo GetUserInfoFromJsonPayload(string jsonPayload)

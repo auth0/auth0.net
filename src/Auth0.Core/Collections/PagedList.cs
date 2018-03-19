@@ -6,7 +6,7 @@ namespace Auth0.Core.Collections
     /// A list which contains paged data from the API.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class PagedList<T> : List<T>, IPagedList<T>, IList<T>
+    public class PagedList<T> : List<T>, IPagedList<T>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="PagedList{T}"/> class that is empty and has the default initial capacity.

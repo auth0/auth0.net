@@ -44,12 +44,12 @@ namespace Auth0.ManagementApi.IntegrationTests
                 }
             };
             var updateConnectionResponse = await apiClient.Connections.UpdateAsync(newConnectionResponse.Id, updateConnectionRequest);
-            //updateConnectionResponse.Name.Should().Be(updateConnectionRequest.Name);
+            string a = updateConnectionResponse.Options.a;
+            a.Should().Be("123");
 
             // Get a single connection
             var connection = await apiClient.Connections.GetAsync(newConnectionResponse.Id);
             connection.Should().NotBeNull();
-            //connection.Name.Should().Be(updateConnectionResponse.Name);
 
             // Delete the connection and ensure we get exception when trying to get connection again
             await apiClient.Connections.DeleteAsync(newConnectionResponse.Id);

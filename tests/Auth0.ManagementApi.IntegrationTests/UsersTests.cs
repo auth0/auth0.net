@@ -38,9 +38,6 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Test_users_crud_sequence()
         {
-            // Get all the users
-            var usersBefore = await _apiClient.Users.GetAllAsync();
-
             // Add a new user
             var newUserRequest = new UserCreateRequest
             {
@@ -182,10 +179,11 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Do some updating
             var updateUserRequest = new UserUpdateRequest {AppMetadata = new ExpandoObject()};
             updateUserRequest.AppMetadata.IsSubscribedTo = "1";
-            var updateUserResponse = await _apiClient.Users.UpdateAsync(newUserResponse.UserId, updateUserRequest);
+            await _apiClient.Users.UpdateAsync(newUserResponse.UserId, updateUserRequest);
 
             // Get the user to ensure the metadata was set
             var user = await _apiClient.Users.GetAsync(newUserResponse.UserId);
+            user.AppMetadata.IsSubscribedTo.Should().Be("1");
 
             // Delete the user
             await _apiClient.Users.DeleteAsync(user.UserId);
@@ -257,7 +255,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             var secondaryUser = await _apiClient.Users.CreateAsync(secondaryIdentityUserCreateRequest);
 
-            var linkUserResponse = await _apiClient.Users.LinkAccountAsync(mainUser.UserId, new UserAccountLinkRequest
+            await _apiClient.Users.LinkAccountAsync(mainUser.UserId, new UserAccountLinkRequest
             {
                 ConnectionId = _connection.Id,
                 Provider = "auth0",

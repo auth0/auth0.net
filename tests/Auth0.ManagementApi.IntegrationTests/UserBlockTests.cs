@@ -52,7 +52,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 {
                     attempts++;
 
-                    var authenticationResponse = await _authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+                    await _authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
                     {
                         ClientId = GetVariable("AUTH0_CLIENT_ID"),
                         ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
@@ -61,7 +61,6 @@ namespace Auth0.ManagementApi.IntegrationTests
                         Username = _user.Email,
                         Password = "wrong_password"
                     });
-
                 }
                 catch (ApiException ex)
                 {

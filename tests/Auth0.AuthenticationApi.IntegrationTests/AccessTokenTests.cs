@@ -18,17 +18,6 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
         public async Task InitializeAsync()
         {
-            var scopes = new
-            {
-                users = new
-                {
-                    actions = new[] { "create", "delete" }
-                },
-                connections = new
-                {
-                    actions = new[] { "create", "delete" }
-                }
-            };
             string token = await GenerateManagementApiToken();
 
             _managementApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));

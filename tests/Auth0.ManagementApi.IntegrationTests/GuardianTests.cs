@@ -1,5 +1,5 @@
-﻿namespace Auth0.ManagementApi.IntegrationTests
-{
+﻿//namespace Auth0.ManagementApi.IntegrationTests
+//{
     //public class GuardianTests : TestBase, IAsyncLifetime
     //{
     //    IManagementApiClient _managementApiClient;
@@ -155,4 +155,4 @@
     //        response.ShouldBeEquivalentTo(request);
     //    }
     //}
-}
+//}

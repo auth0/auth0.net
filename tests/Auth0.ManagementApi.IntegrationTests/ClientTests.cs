@@ -17,9 +17,6 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
 
-            // Get all clients
-            var clientsBefore = await apiClient.Clients.GetAllAsync();
-
             // Add a new client
             var newClientRequest = new ClientCreateRequest
             {

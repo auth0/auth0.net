@@ -80,8 +80,6 @@ namespace Auth0.ManagementApi.Models.Rules
         [JsonProperty("stats")]
         public RulesContextStats Stats { get; set; }
 
-
-
     }
 
 }

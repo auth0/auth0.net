@@ -30,22 +30,6 @@ namespace Auth0.Core.Serialization
             return reader.Value;
         }
 
-        private static long GetIntDate(DateTime datetime)
-        {
-            DateTime dateTimeUtc = datetime;
-            if (datetime.Kind != DateTimeKind.Utc)
-            {
-                dateTimeUtc = datetime.ToUniversalTime();
-            }
-
-            if (dateTimeUtc.ToUniversalTime() <= Epoch)
-            {
-                return 0;
-            }
-
-            return (long)(dateTimeUtc - Epoch).TotalSeconds;
-        }
-
         /// <summary>
         /// Add a DateTime and a TimeSpan.
         /// The maximum time is DateTime.MaxTime.  It is not an error if time + timespan > MaxTime.

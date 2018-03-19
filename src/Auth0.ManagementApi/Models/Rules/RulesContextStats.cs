@@ -7,7 +7,7 @@ namespace Auth0.ManagementApi.Models.Rules
     /// An object containing specific user stats.
     /// </summary>
     [JsonObject]
-    public partial class RulesContextStats
+    public class RulesContextStats
     {
 
         /// <summary>

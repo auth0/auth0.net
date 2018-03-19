@@ -7,8 +7,6 @@ namespace Auth0.AuthenticationApi.Builders
     /// </summary>
     public class SamlUrlBuilder : UrlBuilderBase<SamlUrlBuilder>
     {
-        private string ConnectionName { get; set; }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="SamlUrlBuilder"/> class.
         /// </summary>
