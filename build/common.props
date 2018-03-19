@@ -19,8 +19,8 @@
   <PropertyGroup>
     <LangVersion>7.1</LangVersion>
     
-    <Major>4</Major>
-    <Minor>11</Minor>
+    <Major>5</Major>
+    <Minor>0</Minor>
     <Revision>0</Revision>
 
   </PropertyGroup>
