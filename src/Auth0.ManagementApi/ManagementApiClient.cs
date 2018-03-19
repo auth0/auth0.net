@@ -178,7 +178,7 @@ namespace Auth0.ManagementApi
         /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
         /// </summary>
         /// <param name="token">The token.</param>
-        /// <param name="domain">Your Auth0 domain, e.g. mydomain.auth0.com.</param>
+        /// <param name="domain">Your Auth0 domain, e.g. tenant.auth0.com.</param>
         /// <param name="diagnostics">The diagnostics.</param>
         /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
         public ManagementApiClient(string token, string domain, DiagnosticsHeader diagnostics, HttpMessageHandler handler)
@@ -190,7 +190,7 @@ namespace Auth0.ManagementApi
         /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
         /// </summary>
         /// <param name="token">The token.</param>
-        /// <param name="domain">Your Auth0 domain, e.g. mydomain.auth0.com.</param>
+        /// <param name="domain">Your Auth0 domain, e.g. tenant.auth0.com.</param>
         /// <param name="diagnostics">The diagnostics.</param>
         public ManagementApiClient(string token, string domain, DiagnosticsHeader diagnostics)
             : this(token, new Uri($"https://{domain}/api/v2"), diagnostics, null)
@@ -201,7 +201,7 @@ namespace Auth0.ManagementApi
         /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
         /// </summary>
         /// <param name="token">The token.</param>
-        /// <param name="domain">Your Auth0 domain, e.g. mydomain.auth0.com.</param>
+        /// <param name="domain">Your Auth0 domain, e.g. tenant.auth0.com.</param>
         /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
         public ManagementApiClient(string token, string domain, HttpMessageHandler handler)
             : this(token, new Uri($"https://{domain}/api/v2"), null, handler)
@@ -212,7 +212,7 @@ namespace Auth0.ManagementApi
         /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
         /// </summary>
         /// <param name="token">The token.</param>
-        /// <param name="domain">Your Auth0 domain, e.g. mydomain.auth0.com.</param>
+        /// <param name="domain">Your Auth0 domain, e.g. tenant.auth0.com.</param>
         public ManagementApiClient(string token, string domain)
             : this(token, new Uri($"https://{domain}/api/v2"), null, null)
         {

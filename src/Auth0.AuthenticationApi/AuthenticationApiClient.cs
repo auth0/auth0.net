@@ -72,7 +72,7 @@ namespace Auth0.AuthenticationApi
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
         /// </summary>
-        /// <param name="domain">Your Auth0 domain, e.g. mydomain.auth0.com.</param>
+        /// <param name="domain">Your Auth0 domain, e.g. tenant.auth0.com.</param>
         /// <param name="diagnostics">The diagnostics.</param>
         /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
         public AuthenticationApiClient(string domain, DiagnosticsHeader diagnostics, HttpMessageHandler handler)
@@ -83,7 +83,7 @@ namespace Auth0.AuthenticationApi
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
         /// </summary>
-        /// <param name="domain">Your Auth0 domain, e.g. mydomain.auth0.com.</param>
+        /// <param name="domain">Your Auth0 domain, e.g. tenant.auth0.com.</param>
         /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
         public AuthenticationApiClient(string domain, HttpMessageHandler handler)
             : this(new Uri($"https://{domain}"), null, handler)
@@ -93,7 +93,7 @@ namespace Auth0.AuthenticationApi
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
         /// </summary>
-        /// <param name="domain">Your Auth0 domain, e.g. mydomain.auth0.com.</param>
+        /// <param name="domain">Your Auth0 domain, e.g. tenant.auth0.com.</param>
         /// <param name="diagnostics">The diagnostics.</param>
         public AuthenticationApiClient(string domain, DiagnosticsHeader diagnostics)
             : this(new Uri($"https://{domain}"), diagnostics, null)
@@ -103,7 +103,7 @@ namespace Auth0.AuthenticationApi
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
         /// </summary>
-        /// <param name="domain">Your Auth0 domain, e.g. mydomain.auth0.com.</param>
+        /// <param name="domain">Your Auth0 domain, e.g. tenant.auth0.com.</param>
         public AuthenticationApiClient(string domain)
             : this(new Uri($"https://{domain}"), null, null)
         {
