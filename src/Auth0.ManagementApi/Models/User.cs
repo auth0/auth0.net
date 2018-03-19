@@ -38,6 +38,12 @@ namespace Auth0.ManagementApi.Models
         public DateTime LastLogin { get; set; }
 
         /// <summary>
+        /// Gets or sets the date the user last reset their password.
+        /// </summary>
+        [JsonProperty("last_password_reset")]
+        public DateTime? LastPasswordReset { get; set; }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <remarks>
