@@ -2,7 +2,7 @@
   <Import Project="..\..\build\common.props" />
   <PropertyGroup>
     <AssemblyTitle>Auth0.ManagementApi</AssemblyTitle>
-    <TargetFramework>netstandard1.1</TargetFramework>
+    <TargetFrameworks>net471;netstandard1.1</TargetFrameworks>
     <AssemblyName>Auth0.ManagementApi</AssemblyName>
     <PackageId>Auth0.ManagementApi</PackageId>
   </PropertyGroup>
@@ -13,6 +13,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Auth0.Core\Auth0.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net471'">
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
 
 </Project>
