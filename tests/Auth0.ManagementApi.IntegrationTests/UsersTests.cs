@@ -15,6 +15,7 @@ namespace Auth0.ManagementApi.IntegrationTests
     {
         private ManagementApiClient apiClient;
         private Connection connection;
+        private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
 
         public async Task InitializeAsync()
         {
@@ -48,7 +49,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Connection = connection.Name,
                 Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
                 EmailVerified = true,
-                Password = "password"
+                Password = Password
             };
             var newUserResponse = await apiClient.Users.CreateAsync(newUserRequest);
             newUserResponse.Should().NotBeNull();
@@ -112,7 +113,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Connection = connection.Name,
                 Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
                 EmailVerified = true,
-                Password = "password"
+                Password = Password
             };
             var newUserResponse = await apiClient.Users.CreateAsync(newUserRequest);
             newUserResponse.Blocked.Should().BeFalse();
@@ -146,7 +147,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Connection = connection.Name,
                 Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
                 EmailVerified = true,
-                Password = "password"
+                Password = Password
             };
             var newUserResponse = await apiClient.Users.CreateAsync(newUserRequest);
             newUserResponse.Blocked.Should().BeFalse();
@@ -173,7 +174,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Connection = connection.Name,
                 Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
                 EmailVerified = true,
-                Password = "password",
+                Password = Password,
                 AppMetadata = new
                 {
                     a = 1,
@@ -208,7 +209,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Connection = connection.Name,
                 Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
                 EmailVerified = true,
-                Password = "password"
+                Password = Password
             };
             var user = await apiClient.Users.CreateAsync(newUserRequest);
 
@@ -228,7 +229,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Connection = connection.Name,
                 Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
                 EmailVerified = true,
-                Password = "password"
+                Password = Password
             };
             var user = await apiClient.Users.CreateAsync(newUserRequest);
 
@@ -251,7 +252,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Connection = connection.Name,
                 Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
                 EmailVerified = true,
-                Password = "password"
+                Password = Password
             };
 
             var mainUser = await apiClient.Users.CreateAsync(mainIdentityCreateRequest);
@@ -261,7 +262,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Connection = connection.Name,
                 Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
                 EmailVerified = true,
-                Password = "password"
+                Password = Password
             };
 
             var secondaryUser = await apiClient.Users.CreateAsync(secondaryIdentityUserCreateRequest);
@@ -294,7 +295,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Connection = connection.Name,
                 Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
                 EmailVerified = true,
-                Password = "password"
+                Password = Password
             };
             var user = await apiClient.Users.CreateAsync(userCreateRequest);
 

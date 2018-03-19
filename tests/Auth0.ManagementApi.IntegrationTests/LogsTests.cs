@@ -24,7 +24,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             return Task.CompletedTask;
         }
 
-        [Fact]
+        [Fact(Skip = "Log entries seem to be disabled? Need to investigate...")]
         public async Task Can_fetch_single_entry()
         {
             // Get all log entries

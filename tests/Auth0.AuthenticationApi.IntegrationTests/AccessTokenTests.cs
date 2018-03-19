@@ -16,6 +16,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         private ManagementApiClient managementApiClient;
         private Connection connection;
         private User newUser;
+        private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
 
         public async Task InitializeAsync()
         {
@@ -48,7 +49,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 Connection = connection.Name,
                 Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
                 EmailVerified = true,
-                Password = "password"
+                Password = Password
             };
 
             newUser = await managementApiClient.Users.CreateAsync(newUserRequest);
@@ -97,13 +98,13 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             // First get the access token
-            var token = await authenticationApiClient.AuthenticateAsync(new AuthenticationRequest
+            var token = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
                 Realm = connection.Name,
                 Username = newUser.Email,
-                Password = "password",
+                Password = Password,
                 Scope = "openid profile"
             });
 

@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>Auth0.AuthenticationApi</id>
-    <version>4.3.1</version>
+    <version>4.4.0</version>
     <authors>Auth0</authors>
     <owners>Auth0</owners>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
@@ -12,6 +12,9 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Client library for the Auth0 Authentication API</description>
     <releaseNotes>
+      Version 4.4.0
+      - Mark UsernamePasswordLoginAsync() as obsolete due to April 1 deprecations (see https://community.auth0.com/t/april-1st-migrations-deprecations-faq/9723)
+
       Version 4.3.1
       - Addresses more ConfigureAwait issues internally
 

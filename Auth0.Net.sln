@@ -18,6 +18,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0EBAD055
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4936DB52-593A-4670-9557-3A190EFDFE24}"
 	ProjectSection(SolutionItems) = preProject
+		build.cake = build.cake
+		build.ps1 = build.ps1
+		build\common.props = build\common.props
 		README.md = README.md
 		v4-changes.md = v4-changes.md
 	EndProjectSection
@@ -82,5 +85,8 @@ Global
 		{49CFAA66-C4A3-45DA-AD10-DBE9B5B35F2B} = {0EBAD055-E431-443B-8212-411D1AFE3796}
 		{72307777-1064-4E95-95FC-957FBDF117B2} = {0EBAD055-E431-443B-8212-411D1AFE3796}
 		{AE75D5CF-1AB0-4630-B53C-EA6C7347A114} = {0EBAD055-E431-443B-8212-411D1AFE3796}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B26058B-3755-4E47-AE0B-350E5B18A4CD}
 	EndGlobalSection
 EndGlobal

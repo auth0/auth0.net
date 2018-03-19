@@ -132,6 +132,7 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="request">The authentication request details containing information regarding the connection, username, password etc.</param>
         /// <returns>A <see cref="UsernamePasswordLoginResponse"/> containing the WS-Federation Login Form, which can be posted by the user to trigger a server-side login.</returns>
+        [Obsolete("Use GetTokenAsync(ResourceOwnerTokenRequest) instead")]
         Task<UsernamePasswordLoginResponse> UsernamePasswordLoginAsync(UsernamePasswordLoginRequest request);
 
         /// <summary>

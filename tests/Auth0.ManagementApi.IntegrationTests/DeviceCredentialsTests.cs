@@ -12,6 +12,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         private Client client;
         private Connection connection;
         private User user;
+        private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
 
         public async Task InitializeAsync()
         {
@@ -32,7 +33,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Connection = connection.Name,
                 Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
                 EmailVerified = true,
-                Password = "password"
+                Password = Password
             });
         }
 
