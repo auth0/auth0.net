@@ -23,7 +23,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Add a new rule
             var newRuleRequest = new RuleCreateRequest
             {
-                Name = $"integration-test-rule-{Guid.NewGuid().ToString("N")}",
+                Name = $"integration-test-rule-{Guid.NewGuid():N}",
                 Script = @"function (user, context, callback) {
                               // TODO: implement your rule
                               callback(null, user, context);
@@ -40,7 +40,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Update the Rule
             var updateRuleRequest = new RuleUpdateRequest
             {
-                Name = $"integration-test-rule-{Guid.NewGuid().ToString("N")}"
+                Name = $"integration-test-rule-{Guid.NewGuid():N}"
             };
             var updateRuleResponse = await apiClient.Rules.UpdateAsync(newRuleResponse.Id, updateRuleRequest);
             updateRuleResponse.Should().NotBeNull();

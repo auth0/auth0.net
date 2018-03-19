@@ -50,7 +50,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 Connection = _connection.Name,
-                Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
                 Password = Password,
                 UserMetadata = new
                 {

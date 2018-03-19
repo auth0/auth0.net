@@ -33,7 +33,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             _user = await _apiClient.Users.CreateAsync(new UserCreateRequest
             {
                 Connection = _connection.Name,
-                Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
                 EmailVerified = true,
                 Password = Password
             });

@@ -23,7 +23,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Add a new client
             var newClientRequest = new ClientCreateRequest
             {
-                Name = $"Integration testing {Guid.NewGuid().ToString("N")}",
+                Name = $"Integration testing {Guid.NewGuid():N}",
                 TokenEndpointAuthMethod = TokenEndpointAuthMethod.ClientSecretPost,
                 IsFirstParty = true,
                 ClientMetaData = new
@@ -48,7 +48,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Update the client
             var updateClientRequest = new ClientUpdateRequest
             {
-                Name = $"Integration testing {Guid.NewGuid().ToString("N")}",
+                Name = $"Integration testing {Guid.NewGuid():N}",
                 TokenEndpointAuthMethod = TokenEndpointAuthMethod.ClientSecretPost,
                 ApplicationType = ClientApplicationType.Spa,
                 GrantTypes = new string[0]
@@ -80,7 +80,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Add a new client
             var newClientRequest = new ClientCreateRequest
             {
-                Name = $"Integration testing {Guid.NewGuid().ToString("N")}",
+                Name = $"Integration testing {Guid.NewGuid():N}",
                 TokenEndpointAuthMethod = TokenEndpointAuthMethod.ClientSecretPost,
                 IsFirstParty = true,
                 ClientMetaData = new

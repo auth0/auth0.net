@@ -165,7 +165,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var newUserRequest = new UserCreateRequest
             {
                 Connection = _connection.Name,
-                Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
                 EmailVerified = true,
                 Password = Password,
                 AppMetadata = new
@@ -269,7 +269,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             var linkedUser = await _apiClient.Users.GetAsync(mainUser.UserId);
             linkedUser.Should().NotBeNull();
-            linkedUser.Identities.Count().Should().Be(2);
+            linkedUser.Identities.Should().HaveCount(2);
             var secondaryIdentity = linkedUser.Identities[1];
             secondaryIdentity.ProfileData.Should().NotBeNull();
             secondaryIdentity.ProfileData["email"].Should().Be(secondaryUser.Email);

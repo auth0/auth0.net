@@ -48,7 +48,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             _user = await _managementApiClient.Users.CreateAsync(new UserCreateRequest
             {
                 Connection = _connection.Name,
-                Email = $"{Guid.NewGuid().ToString("N")}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
                 EmailVerified = true,
                 Password = Password
             });
@@ -57,7 +57,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             _plusUser = await _managementApiClient.Users.CreateAsync(new UserCreateRequest
             {
                 Connection = _connection.Name,
-                Email = $"{Guid.NewGuid().ToString("N")}+1@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}+1@nonexistingdomain.aaa",
                 EmailVerified = true,
                 Password = Password
             });
@@ -66,7 +66,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             _userInDefaultDirectory = await _managementApiClient.Users.CreateAsync(new UserCreateRequest
             {
                 Connection = tenantSettings.DefaultDirectory,
-                Email = $"{Guid.NewGuid().ToString("N")}+1@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}+1@nonexistingdomain.aaa",
                 EmailVerified = true,
                 Password = Password
             });

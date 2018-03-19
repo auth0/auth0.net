@@ -97,7 +97,7 @@ namespace Auth0.Core.Http
                 uriParts = uriParts.Where(part => !string.IsNullOrWhiteSpace(part)).ToArray();
                 char[] trimChars = { '\\', '/' };
                 uri = (uriParts[0] ?? string.Empty).TrimEnd(trimChars);
-                for (var i = 1; i < uriParts.Count(); i++)
+                for (var i = 1; i < uriParts.Length; i++)
                 {
                     uri = $"{uri.TrimEnd(trimChars)}/{(uriParts[i] ?? string.Empty).TrimStart(trimChars)}";
                 }

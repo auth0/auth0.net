@@ -28,12 +28,12 @@ namespace Auth0.ManagementApi.IntegrationTests
                 {
                     Html = null,
                     ShowLogLink = false,
-                    Url = $"www.{Guid.NewGuid().ToString("N")}.aaa/error"
+                    Url = $"www.{Guid.NewGuid():N}.aaa/error"
                 },
                 FriendlyName = Guid.NewGuid().ToString("N"),
-                PictureUrl = $"www.{Guid.NewGuid().ToString("N")}.aaa/picture.png",
-                SupportEmail = $"support@{Guid.NewGuid().ToString("N")}.aaa",
-                SupportUrl = $"www.{Guid.NewGuid().ToString("N")}.aaa/support"
+                PictureUrl = $"www.{Guid.NewGuid():N}.aaa/picture.png",
+                SupportEmail = $"support@{Guid.NewGuid():N}.aaa",
+                SupportUrl = $"www.{Guid.NewGuid():N}.aaa/support"
             };
             var settingsUpdateResponse = await apiClient.TenantSettings.UpdateAsync(settingsUpdateRequest);
             settingsUpdateResponse.ShouldBeEquivalentTo(settingsUpdateRequest);
