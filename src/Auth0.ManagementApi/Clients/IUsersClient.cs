@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Auth0.Core;
 using Auth0.Core.Collections;
 using Auth0.ManagementApi.Models;
 

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using AngleSharp;
-using AngleSharp.Dom.Html;
-using AngleSharp.Extensions;
 using Auth0.AuthenticationApi.Models;
 using Auth0.ManagementApi;
 using Auth0.ManagementApi.Models;

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Net;
-using Auth0.Core;
 
 namespace Auth0.Core.Exceptions
 {

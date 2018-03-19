@@ -1,5 +1,3 @@
-using Auth0.Core;
-
 namespace Auth0.ManagementApi.Models
 {
 

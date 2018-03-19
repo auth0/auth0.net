@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Auth0.AuthenticationApi.Builders;
 using Auth0.AuthenticationApi.Models;
-using Auth0.Core;
 using Auth0.Core.Http;
 
 namespace Auth0.AuthenticationApi

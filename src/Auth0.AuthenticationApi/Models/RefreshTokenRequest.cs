@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Auth0.AuthenticationApi.Models
+﻿namespace Auth0.AuthenticationApi.Models
 {
     /// <summary>
     /// Represents a request to get a new token,

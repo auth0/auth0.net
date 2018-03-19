@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Auth0.AuthenticationApi;
 using Auth0.AuthenticationApi.Models;
-using Auth0.Core;
 using Auth0.Core.Exceptions;
 using Auth0.ManagementApi.Models;
 using Auth0.Tests.Shared;

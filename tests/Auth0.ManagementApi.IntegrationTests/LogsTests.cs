@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Auth0.Core;
-using Auth0.ManagementApi.Models;
+﻿using System.Threading.Tasks;
 using Auth0.Tests.Shared;
 using Xunit;
 using FluentAssertions;

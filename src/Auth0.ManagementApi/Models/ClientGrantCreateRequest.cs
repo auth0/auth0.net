@@ -1,6 +1,4 @@
-﻿using Auth0.Core;
-
-namespace Auth0.ManagementApi.Models
+﻿namespace Auth0.ManagementApi.Models
 {
     /// <summary>
     /// Request structure for creating a new Client Grant

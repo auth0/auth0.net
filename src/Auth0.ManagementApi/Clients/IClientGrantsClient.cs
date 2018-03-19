@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using Auth0.ManagementApi.Models;
+﻿using Auth0.ManagementApi.Models;
 using System.Threading.Tasks;
-using Auth0.Core;
 using System.Collections.Generic;
 
 namespace Auth0.ManagementApi.Clients

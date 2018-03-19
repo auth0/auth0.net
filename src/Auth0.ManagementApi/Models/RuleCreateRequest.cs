@@ -1,4 +1,3 @@
-using Auth0.Core;
 using Newtonsoft.Json;
 
 namespace Auth0.ManagementApi.Models

@@ -1,14 +1,4 @@
-﻿using Auth0.Tests.Shared;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Auth0.Core.Exceptions;
-using Auth0.ManagementApi.Models;
-using FluentAssertions;
-using Xunit;
-
-namespace Auth0.ManagementApi.IntegrationTests
+﻿namespace Auth0.ManagementApi.IntegrationTests
 {
     //public class GuardianTests : TestBase, IAsyncLifetime
     //{

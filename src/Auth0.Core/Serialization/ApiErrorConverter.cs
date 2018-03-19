@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -22,7 +21,7 @@ namespace Auth0.Core.Serialization
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            throw new System.NotImplementedException();
+            throw new NotImplementedException();
         }
 
         public override bool CanConvert(Type objectType)

@@ -54,12 +54,12 @@ namespace ConsoleWorkbench
             {
                 Name = "Test name",
                 ApplicationType = ClientApplicationType.NonInteractive,
-                ResourceServers = new ClientResourceServerAssociation[]
+                ResourceServers = new[]
                 {
                     new ClientResourceServerAssociation
                     {
                         Identifier = "urn:test-api",
-                        Scopes = new string[] { "read:appointments", "create:appointments" }
+                        Scopes = new[] { "read:appointments", "create:appointments" }
                     }
                 },
                 JwtConfiguration = new JwtConfiguration

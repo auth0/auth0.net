@@ -1,7 +1,5 @@
 ﻿using System;
-using System.IO;
 using System.Threading.Tasks;
-using Auth0.Core;
 using Auth0.ManagementApi.Models;
 using FluentAssertions;
 using Xunit;

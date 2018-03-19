@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Auth0.Core.Serialization;
 using FluentAssertions;
 using Newtonsoft.Json;

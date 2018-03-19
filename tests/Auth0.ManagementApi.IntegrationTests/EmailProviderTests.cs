@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Auth0.Core;
 using Auth0.Core.Exceptions;
 using Auth0.ManagementApi.Models;
 using FluentAssertions;

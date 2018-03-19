@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Threading.Tasks;
-using Auth0.Core;
 using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
 
@@ -45,7 +43,7 @@ namespace Auth0.ManagementApi.Clients
             return Connection.GetAsync<IList<DailyStatistics>>("stats/daily", null, 
                 new Dictionary<string, string>
                 {
-                    { "from", @from.ToString("yyyyMMdd") },
+                    { "from", from.ToString("yyyyMMdd") },
                     { "to", to.ToString("yyyyMMdd") }
                 }, null, null);
         }

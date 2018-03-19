@@ -4,7 +4,6 @@ using Auth0.AuthenticationApi.Models;
 using Auth0.Tests.Shared;
 using FluentAssertions;
 using Auth0.ManagementApi;
-using Auth0.Core;
 using Auth0.ManagementApi.Models;
 using Xunit;
 

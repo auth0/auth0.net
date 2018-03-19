@@ -1,9 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Auth0.AuthenticationApi.Builders;
 using Auth0.AuthenticationApi.Models;
-using Auth0.Core;
 using System;
-using System.ComponentModel;
 
 namespace Auth0.AuthenticationApi
 {

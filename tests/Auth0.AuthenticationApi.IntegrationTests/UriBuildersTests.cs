@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Auth0.AuthenticationApi.Models;
 using Auth0.Tests.Shared;
 using FluentAssertions;

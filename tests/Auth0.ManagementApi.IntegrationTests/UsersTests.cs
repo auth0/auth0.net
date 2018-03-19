@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Dynamic;
 using System.Threading.Tasks;
-using Auth0.Core;
 using Auth0.Core.Exceptions;
 using Auth0.ManagementApi.Models;
 using FluentAssertions;
 using Xunit;
 using Auth0.Tests.Shared;
-using System.Linq;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
