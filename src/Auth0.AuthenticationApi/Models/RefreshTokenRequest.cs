@@ -6,6 +6,9 @@
     /// </summary>
     public class RefreshTokenRequest
     {
+        /// <summary>
+        /// Optional audience used for refreshing the access token token.
+        /// </summary>
         public string Audience { get; set; }
 
         /// <summary>
@@ -18,7 +21,7 @@
         /// </summary>
         /// <remarks>
         /// The requested scope must not include any scope not originally granted
-        /// by the resource owner, and if omitted is trated as equal to the scope originally
+        /// by the resource owner, and if omitted is treated as equal to the scope originally
         /// granted by the resource owner.
         /// </remarks>
         public string Scope { get; set; }
