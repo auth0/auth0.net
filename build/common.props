@@ -29,6 +29,8 @@
     <AssemblyFileVersion>$(Major).$(Minor).$(Revision)</AssemblyFileVersion>
     <InformationalVersion>$(Major).$(Minor).$(Revision)</InformationalVersion>
     <PackageVersion>$(Major).$(Minor).$(Revision)</PackageVersion>
+    <!-- Uncomment for building pre-releases locally -->
+    <!-- <PackageVersion>$(Major).$(Minor).$(Revision)-beta1</PackageVersion> -->
   </PropertyGroup>
   <PropertyGroup Condition=" '$(APPVEYOR_BUILD_NUMBER)' != '' ">
     <AssemblyVersion>$(Major).$(Minor).$(Revision).$(APPVEYOR_BUILD_NUMBER)</AssemblyVersion>
