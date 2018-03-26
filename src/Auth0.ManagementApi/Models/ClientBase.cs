@@ -35,6 +35,12 @@ namespace Auth0.ManagementApi.Models
         public string[] AllowedOrigins { get; set; }
 
         /// <summary>
+        /// A set of allowed origins for use with Cross-Origin Authentication and web message response mode.
+        /// </summary>
+        [JsonProperty("web_origins")]
+        public string[] WebOrigins { get; set; }
+
+        /// <summary>
         /// A set of URLs that are valid to call back from Auth0 when authenticating users.
         /// </summary>
         [JsonProperty("callbacks")]
@@ -77,13 +83,13 @@ namespace Auth0.ManagementApi.Models
         public string CustomLoginPage { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [JsonProperty("custom_login_page_preview")]
         public string CustomLoginPagePreview { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [JsonProperty("encryption_key")]
         public EncryptionKey EncryptionKey { get; set; }
@@ -106,7 +112,7 @@ namespace Auth0.ManagementApi.Models
         public JwtConfiguration JwtConfiguration { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [JsonProperty("mobile")]
         public Mobile Mobile { get; set; }
