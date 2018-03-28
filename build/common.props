@@ -11,6 +11,11 @@
     <PackageLicenseUrl>http://opensource.org/licenses/MIT</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
+    <PackageReleaseNotes>
+    Version 5.0
+    - Update to remove methods for endpoints related to 1 April 2018 deprecations
+    - Various small additions to models for Management API
+    </PackageReleaseNotes>
 
     <CLSCompliant>true</CLSCompliant>
     <ComVisible>false</ComVisible>
