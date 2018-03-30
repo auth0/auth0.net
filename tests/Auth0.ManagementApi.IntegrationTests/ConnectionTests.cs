@@ -41,11 +41,17 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Options = new
                 {
                     a = "123"
+                },
+                Metadata = new
+                {
+                    b = "456"
                 }
             };
             var updateConnectionResponse = await apiClient.Connections.UpdateAsync(newConnectionResponse.Id, updateConnectionRequest);
             string a = updateConnectionResponse.Options.a;
             a.Should().Be("123");
+            string b = updateConnectionResponse.Metadata.b;
+            b.Should().Be("456");
 
             // Get a single connection
             var connection = await apiClient.Connections.GetAsync(newConnectionResponse.Id);

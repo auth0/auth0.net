@@ -17,6 +17,12 @@ namespace Auth0.ManagementApi.Models
         public string Name { get; set; }
 
         /// <summary>
+        /// Optional metadata for the connection.
+        /// </summary>
+        [JsonProperty("metadata")]
+        public dynamic Metadata { get; set; }
+
+        /// <summary>
         /// The options for the connection.
         /// </summary>
         [JsonProperty("options")]

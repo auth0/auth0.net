@@ -10,7 +10,7 @@ namespace Auth0.ManagementApi.Models
     {
 
         /// <summary>
-        /// The connection's identifier
+        /// The connection's identifier.
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -20,7 +20,6 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("strategy")]
         public string Strategy { get; set; }
-
     }
 
 }
