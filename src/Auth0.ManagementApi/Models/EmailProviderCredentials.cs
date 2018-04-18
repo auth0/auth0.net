@@ -65,7 +65,7 @@ namespace Auth0.ManagementApi.Models
         /// Common ports include 25, 465, and 587. Please avoid using port 25 if you can, since many providers have limitations on this port.
         /// </remarks>
         [JsonProperty("smtp_port")]
-        public string SmtpPort { get; set; }
+        public int? SmtpPort { get; set; }
 
         /// <summary>
         /// Gets or sets the username for the SMTP server
