@@ -12,12 +12,16 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
-    Version 5.1
-    - Allow specifying metadata for connections
+      Version 5.2
+      - Allow management of email templates
+      - [BREAKING CHANGE] Fixed bug when specifying SMTP provider port. Data type was changed from string to int?
 
-    Version 5.0
-    - Update to remove methods for endpoints related to 1 April 2018 deprecations
-    - Various small additions to models for Management API
+      Version 5.1
+      - Allow specifying metadata for connections
+
+      Version 5.0
+      - Update to remove methods for endpoints related to 1 April 2018 deprecations
+      - Various small additions to models for Management API
     </PackageReleaseNotes>
 
     <CLSCompliant>true</CLSCompliant>
@@ -28,7 +32,7 @@
     <LangVersion>7.1</LangVersion>
     
     <Major>5</Major>
-    <Minor>1</Minor>
+    <Minor>2</Minor>
     <Revision>0</Revision>
 
   </PropertyGroup>
