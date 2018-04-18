@@ -39,6 +39,11 @@ namespace Auth0.ManagementApi
         IEmailProviderClient EmailProvider { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /email-templates endpoints.
+        /// </summary>
+        IEmailTemplatesClient EmailTemplates { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /jobs endpoints.
         /// </summary>
         IJobsClient Jobs { get; }

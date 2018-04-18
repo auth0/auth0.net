@@ -48,6 +48,11 @@ namespace Auth0.ManagementApi
         public IEmailProviderClient EmailProvider { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /email-templates endpoints.
+        /// </summary>
+        public IEmailTemplatesClient EmailTemplates { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /jobs endpoints.
         /// </summary>
         /// <value>The jobs.</value>
@@ -130,6 +135,7 @@ namespace Auth0.ManagementApi
             Connections = new ConnectionsClient(_apiConnection);
             DeviceCredentials = new DeviceCredentialsClient(_apiConnection);
             EmailProvider = new EmailProviderClient(_apiConnection);
+            EmailTemplates = new EmailTemplatesClient(_apiConnection);
             Jobs = new JobsClient(_apiConnection);
             Logs = new LogsClient(_apiConnection);
             ResourceServers = new ResourceServersClient(_apiConnection);
