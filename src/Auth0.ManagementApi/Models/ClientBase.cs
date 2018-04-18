@@ -122,6 +122,20 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
+        
+        /// <summary>
+        /// The description of the client. Max character count is 140
+        /// </summary>
+        [JsonProperty("description")]
+        public string Description { get; set; }
+        
+        /// <summary>
+        /// The logo_uri of the client. The URL of the logo to display for the application, 
+        /// if none is set the default badge for this type of application will be shown. 
+        /// Recommended size is 150x150 pixels
+        /// </summary>
+        [JsonProperty("logo_uri")]
+        public string LogoUri { get; set; }
 
         /// <summary>
         /// Indicates whether this client will conform to strict OIDC specifications.
