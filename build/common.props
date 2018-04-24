@@ -12,6 +12,9 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 5.3
+      - Fix issue with deserialization of user log entries (#184)
+
       Version 5.2
       - Allow management of email templates
       - [BREAKING CHANGE] Fixed bug when specifying SMTP provider port. Data type was changed from string to int?
@@ -32,7 +35,7 @@
     <LangVersion>7.1</LangVersion>
     
     <Major>5</Major>
-    <Minor>2</Minor>
+    <Minor>3</Minor>
     <Revision>0</Revision>
 
   </PropertyGroup>
