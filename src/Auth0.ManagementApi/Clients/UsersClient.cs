@@ -155,7 +155,7 @@ namespace Auth0.ManagementApi.Clients
                     {"per_page", perPage?.ToString()},
                     {"sort", sort},
                     {"include_totals", includeTotals?.ToString().ToLower()}
-                }, null, new PagedListConverter<LogEntry>("logs"));
+                }, null, new PagedListConverter<LogEntry>("logs", true));
         }
 
         /// <summary>

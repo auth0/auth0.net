@@ -41,8 +41,9 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Test_deserialization_without_totals()
         {
+            //var logEntries = await _apiClient.Users.GetLogsAsync("auth0|920042612b924ddba6ede57663fedce7");
             var logEntries = await _apiClient.Logs.GetAllAsync();
-
+            
             logEntries.Should().NotBeNull();
             logEntries.Paging.Should().BeNull();
         }
@@ -50,6 +51,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Test_deserialization_with_totals()
         {
+            //var logEntries = await _apiClient.Users.GetLogsAsync("auth0|920042612b924ddba6ede57663fedce7", includeTotals: true);
             var logEntries = await _apiClient.Logs.GetAllAsync(includeTotals: true);
 
             logEntries.Should().NotBeNull();

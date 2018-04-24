@@ -11,10 +11,12 @@ namespace Auth0.ManagementApi.Serialization
     internal class PagedListConverter<T> : JsonConverter
     {
         private readonly string _collectionFieldName;
+        private readonly bool _collectionInDictionary;
 
-        public PagedListConverter(string collectionFieldName)
+        public PagedListConverter(string collectionFieldName, bool collectionInDictionary = false)
         {
             _collectionFieldName = collectionFieldName;
+            _collectionInDictionary = collectionInDictionary;
         }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
@@ -43,6 +45,26 @@ namespace Auth0.ManagementApi.Serialization
                     int total = item["total"].Value<int>();
 
                     return new PagedList<T>(collection, new PagingInformation(start, limit, length, total));
+                }
+                else if (_collectionInDictionary) // Special case to handle User Logs which is returned as a dictionary and not an array
+                {
+                    List<T> collection = new List<T>();
+                    foreach (var kvp in item)
+                    {
+                        if (kvp.Key != "length")
+                        {
+                            try
+                            {
+                                collection.Add(kvp.Value.ToObject<T>());
+                            }
+                            catch
+                            {
+                                // Fail silently (for now)
+                            }
+                        }
+                    }
+                    
+                    return new PagedList<T>(collection);
                 }
             }
             else
