@@ -12,6 +12,9 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 5.3.1
+      - Fix RelayState parameter casing (#186)
+
       Version 5.3
       - Fix issue with deserialization of user log entries (#184)
 
@@ -36,7 +39,7 @@
     
     <Major>5</Major>
     <Minor>3</Minor>
-    <Revision>0</Revision>
+    <Revision>1</Revision>
 
   </PropertyGroup>
   <PropertyGroup Condition=" '$(APPVEYOR_BUILD_NUMBER)' == '' ">
