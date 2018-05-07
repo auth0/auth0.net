@@ -121,7 +121,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 })
                 .Build();
 
-            samlUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/samlp/myclientid?relayState=xcrf%3Dabc%26ru%3D%2Ffoo");
+            samlUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/samlp/myclientid?RelayState=xcrf%3Dabc%26ru%3D%2Ffoo");
         }
 
         [Fact]
@@ -133,7 +133,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 .WithRelayState("xcrf=abc&ru=/foo")
                 .Build();
 
-            samlUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/samlp/myclientid?relayState=xcrf%3Dabc%26ru%3D%2Ffoo");
+            samlUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/samlp/myclientid?RelayState=xcrf%3Dabc%26ru%3D%2Ffoo");
         }
 
         [Fact]
