@@ -37,7 +37,10 @@ namespace Auth0.AuthenticationApi.Builders
         /// <returns>The <see cref="SamlUrlBuilder"/>.</returns>
         public SamlUrlBuilder WithRelayState(string value)
         {
-            AddQueryString("relayState", value);
+            // Note to future maintainers:
+            // It is important to use correct casing! This parameter must use PascalCase (i.e. RelayState),
+            // otherwise it will not be passed on correctly. See https://github.com/auth0/auth0.net/issues/186 
+            AddQueryString("RelayState", value);
 
             return this;
         }
@@ -49,7 +52,10 @@ namespace Auth0.AuthenticationApi.Builders
         /// <returns>The <see cref="SamlUrlBuilder"/>.</returns>
         public SamlUrlBuilder WithRelayState(System.Collections.Generic.IDictionary<string, string> values)
         {
-            AddQueryString("relayState", string.Join("&", values.Select(kvp => $"{kvp.Key}={kvp.Value}")));
+            // Note to future maintainers:
+            // It is important to use correct casing! This parameter must use PascalCase (i.e. RelayState),
+            // otherwise it will not be passed on correctly. See https://github.com/auth0/auth0.net/issues/186 
+            AddQueryString("RelayState", string.Join("&", values.Select(kvp => $"{kvp.Key}={kvp.Value}")));
 
             return this;
         }
