@@ -12,6 +12,9 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 5.4.0
+      - Change in Target Frameworks. Now targets .NET 4.5.2 (and higher), .NET Standard 1.1 and .NET Standard 2.0. Along with this made changes to how System.Net.Http is referenced.
+
       Version 5.3.1
       - Fix RelayState parameter casing (#186)
 
@@ -38,8 +41,8 @@
     <LangVersion>7.1</LangVersion>
     
     <Major>5</Major>
-    <Minor>3</Minor>
-    <Revision>1</Revision>
+    <Minor>4</Minor>
+    <Revision>0</Revision>
 
   </PropertyGroup>
   <PropertyGroup Condition=" '$(APPVEYOR_BUILD_NUMBER)' == '' ">
@@ -48,7 +51,7 @@
     <InformationalVersion>$(Major).$(Minor).$(Revision)</InformationalVersion>
     <PackageVersion>$(Major).$(Minor).$(Revision)</PackageVersion>
     <!-- Uncomment for building pre-releases locally -->
-    <!-- <PackageVersion>$(Major).$(Minor).$(Revision)-beta1</PackageVersion> -->
+     <!--<PackageVersion>$(Major).$(Minor).$(Revision)-beta1</PackageVersion>--> 
   </PropertyGroup>
   <PropertyGroup Condition=" '$(APPVEYOR_BUILD_NUMBER)' != '' ">
     <AssemblyVersion>$(Major).$(Minor).$(Revision).$(APPVEYOR_BUILD_NUMBER)</AssemblyVersion>
