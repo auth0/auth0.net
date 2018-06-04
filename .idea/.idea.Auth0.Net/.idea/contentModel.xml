@@ -51,10 +51,13 @@
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="net471" t="Include">
+              <e p="net452" t="Include">
                 <e p="Auth0.AuthenticationApi.AssemblyInfo.cs" t="Include" />
               </e>
               <e p="netstandard1.1" t="Include">
+                <e p="Auth0.AuthenticationApi.AssemblyInfo.cs" t="Include" />
+              </e>
+              <e p="netstandard2.0" t="Include">
                 <e p="Auth0.AuthenticationApi.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
@@ -87,10 +90,13 @@
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="net471" t="Include">
+              <e p="net452" t="Include">
                 <e p="Auth0.Core.AssemblyInfo.cs" t="Include" />
               </e>
               <e p="netstandard1.1" t="Include">
+                <e p="Auth0.Core.AssemblyInfo.cs" t="Include" />
+              </e>
+              <e p="netstandard2.0" t="Include">
                 <e p="Auth0.Core.AssemblyInfo.cs" t="Include" />
               </e>
             </e>
@@ -246,10 +252,13 @@
           </e>
           <e p="obj" t="ExcludeRecursive">
             <e p="Debug" t="Include">
-              <e p="net471" t="Include">
+              <e p="net452" t="Include">
                 <e p="Auth0.ManagementApi.AssemblyInfo.cs" t="Include" />
               </e>
               <e p="netstandard1.1" t="Include">
+                <e p="Auth0.ManagementApi.AssemblyInfo.cs" t="Include" />
+              </e>
+              <e p="netstandard2.0" t="Include">
                 <e p="Auth0.ManagementApi.AssemblyInfo.cs" t="Include" />
               </e>
             </e>

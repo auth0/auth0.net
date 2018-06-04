@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Auth0.Core.Collections;
 using Auth0.ManagementApi.Models;
 
 namespace Auth0.ManagementApi.Clients
@@ -36,11 +38,27 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Retrieves every connection matching the specified strategy. All connections are retrieved if no strategy is being specified. Accepts a list of fields to include or exclude in the resulting list of connection objects.
         /// </summary>
+        /// <param name="page">The page number. Zero based.</param>
+        /// <param name="perPage">The amount of entries per page. Default: no paging is used, all connections are returned.</param>
+        /// <param name="includeTotals">True if a query summary must be included in the result, false otherwise. Default false.</param>
+        /// <param name="fields">A comma separated list of fields to include or exclude (depending on include_fields) from the result, empty to retrieve all fields.</param>
+        /// <param name="includeFields">true if the fields specified are to be included in the result, false otherwise (defaults to true).</param>
+        /// <param name="name">The name of the connection to retrieve</param>
+        /// <param name="strategy">Only retrieve connections with these strategies.</param>
+        /// <returns></returns>
+        Task<IPagedList<Connection>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null, 
+            string fields = null, bool? includeFields = null, string name = null, string[] strategy = null);
+
+        /// <summary>
+        /// Retrieves every connection matching the specified strategy. All connections are retrieved if no strategy is being specified. Accepts a list of fields to include or exclude in the resulting list of connection objects.
+        /// </summary>
         /// <param name="strategy">Provide a type of strategy to only retrieve connections with that strategy.</param>
         /// <param name="fields">A comma separated list of fields to include or exclude (depending on include_fields) from the result, empty to retrieve all fields.</param>
         /// <param name="includeFields">True if the fields specified are to be included in the result, false otherwise (defaults to true).</param>
         /// <param name="name">Provide the name of the connection to retrieve</param>
         /// <returns>A list of <see cref="Connection"/> objects matching the strategy.</returns>
+        /// 
+        [Obsolete("Use the paged method overload instead")]
         Task<IList<Connection>> GetAllAsync(string strategy, string fields = null, bool includeFields = true, string name = null);
 
         /// <summary>
@@ -59,5 +77,6 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="request">The request containing the properties of the connection you wish to update.</param>
         /// <returns>A <see cref="Connection"/> containing the updated connection.</returns>
         Task<Connection> UpdateAsync(string id, ConnectionUpdateRequest request);
+
     }
 }

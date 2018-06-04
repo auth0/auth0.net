@@ -1,7 +1,10 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Auth0.Core.Collections;
 using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
+using Auth0.ManagementApi.Serialization;
 
 namespace Auth0.ManagementApi.Clients
 {
@@ -84,6 +87,32 @@ namespace Auth0.ManagementApi.Clients
                 }, null, null);
         }
 
+        /// <inheritdoc />
+        public Task<IPagedList<Connection>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null, 
+            string fields = null, bool? includeFields = null, string name = null, string[] strategy = null)
+        {
+            var queryStrings = new Dictionary<string, string>
+            {
+                {"page", page?.ToString()},
+                {"per_page", perPage?.ToString()},
+                {"include_totals", includeTotals?.ToString().ToLower()},
+                {"fields", fields},
+                {"include_fields", includeFields?.ToString().ToLower()},
+                {"name", name}
+            };
+            
+            // Add each strategy as a separate querystring
+            if (strategy != null)
+            {
+                foreach (var s in strategy)
+                {
+                    queryStrings.Add("strategy", s);
+                }
+            }
+            
+            return Connection.GetAsync<IPagedList<Connection>>("connections", null, queryStrings, null, new PagedListConverter<Connection>("connections"));
+        }
+
         /// <summary>
         /// Retrieves every connection matching the specified strategy. All connections are retrieved if no strategy is being specified. Accepts a list of fields to include or exclude in the resulting list of connection objects.
         /// </summary>
@@ -92,6 +121,7 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="includeFields">True if the fields specified are to be included in the result, false otherwise (defaults to true).</param>
         /// <param name="name">Provide the name of the connection to retrieve</param>
         /// <returns>A list of <see cref="Connection" /> objects matching the strategy.</returns>
+        [Obsolete("Use the paged method overload instead")]
         public Task<IList<Connection>> GetAllAsync(string strategy, string fields = null, bool includeFields = true,
             string name = null)
         {

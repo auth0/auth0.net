@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Auth0.Core.Collections;
 using Auth0.ManagementApi.Models;
 
 namespace Auth0.ManagementApi.Clients
@@ -24,6 +26,21 @@ namespace Auth0.ManagementApi.Clients
         Task DeleteAsync(string id);
 
         /// <summary>
+        /// Retrieves a list of all client applications.
+        /// </summary>
+        /// <param name="page">The page number. Zero based.</param>
+        /// <param name="perPage">The amount of entries per page. Default: no paging is used, all connections are returned.</param>
+        /// <param name="includeTotals">True if a query summary must be included in the result, false otherwise. Default false.</param>
+        /// <param name="fields">A comma separated list of fields to include or exclude (depending on include_fields) from the result, empty to retrieve all fields.</param>
+        /// <param name="includeFields">true if the fields specified are to be included in the result, false otherwise (defaults to true).</param>
+        /// <param name="isGlobal">Filter on the global client parameter.</param>
+        /// <param name="isFirstParty">Filter on whether or not a client is a first party client.</param>
+        /// <param name="appType">List of application types used to filter the returned clients</param>
+        /// <returns></returns>
+        Task<IPagedList<Client>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null, 
+            string fields = null, bool? includeFields = null, bool? isGlobal = null, bool? isFirstParty = null, ClientApplicationType[] appType = null);
+
+        /// <summary>
         ///     Retrieves a list of all client applications. Accepts a list of fields to include or exclude.
         /// </summary>
         /// <param name="fields">
@@ -35,6 +52,7 @@ namespace Auth0.ManagementApi.Clients
         ///     true)
         /// </param>
         /// <returns></returns>
+        [Obsolete("Use the paged method overload instead")]
         Task<IList<Client>> GetAllAsync(string fields = null, bool includeFields = true);
 
         /// <summary>

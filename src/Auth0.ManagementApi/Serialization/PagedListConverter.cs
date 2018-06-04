@@ -39,10 +39,18 @@ namespace Auth0.ManagementApi.Serialization
                 {
                     var collection = item[_collectionFieldName].ToObject<IList<T>>(serializer);
 
-                    int length = item["length"].Value<int>();
-                    int limit = item["limit"].Value<int>();
-                    int start = item["start"].Value<int>();
-                    int total = item["total"].Value<int>();
+                    int length = 0;
+                    int limit = 0;
+                    int start = 0;
+                    int total = 0;
+                    if (item["length"] != null)
+                        length = item["length"].Value<int>();
+                    if (item["limit"] != null)
+                        limit = item["limit"].Value<int>();
+                    if (item["start"] != null)
+                        start = item["start"].Value<int>();
+                    if (item["total"] != null)
+                        total = item["total"].Value<int>();
 
                     return new PagedList<T>(collection, new PagingInformation(start, limit, length, total));
                 }
