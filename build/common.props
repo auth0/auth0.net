@@ -12,6 +12,9 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 5.5.0
+      - Adds paging when returning a list Clients and connections
+      
       Version 5.4.0
       - Change in Target Frameworks. Now targets .NET 4.5.2 (and higher), .NET Standard 1.1 and .NET Standard 2.0. Along with this made changes to how System.Net.Http is referenced.
 
@@ -41,7 +44,7 @@
     <LangVersion>7.1</LangVersion>
     
     <Major>5</Major>
-    <Minor>4</Minor>
+    <Minor>5</Minor>
     <Revision>0</Revision>
 
   </PropertyGroup>
