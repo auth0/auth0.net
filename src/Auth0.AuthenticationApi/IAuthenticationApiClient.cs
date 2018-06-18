@@ -2,6 +2,7 @@
 using Auth0.AuthenticationApi.Builders;
 using Auth0.AuthenticationApi.Models;
 using System;
+using Auth0.Core.Http;
 
 namespace Auth0.AuthenticationApi
 {
@@ -134,5 +135,11 @@ namespace Auth0.AuthenticationApi
         /// <param name="request">The authentication request details containing information regarding the username, password etc.</param>
         /// <returns>An <see cref="AccessTokenResponse" /> with the response.</returns>
         Task<AccessTokenResponse> GetTokenAsync(ResourceOwnerTokenRequest request);
+        
+        /// <summary>
+        /// Gets information about the last API call;
+        /// </summary>
+        ApiInfo GetLastApiInfo();
+
     }
 }

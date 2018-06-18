@@ -13,6 +13,11 @@ namespace Auth0.Core.Http
     public interface IApiConnection
     {
         /// <summary>
+        ///     Contains information about the last API call made by the connection.
+        /// </summary>
+        ApiInfo ApiInfo { get; }
+
+        /// <summary>
         ///     Performs an HTTP DELETE.
         /// </summary>
         /// <typeparam name="T"></typeparam>

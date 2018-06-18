@@ -333,6 +333,12 @@ namespace Auth0.AuthenticationApi
             return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, null, null);
         }
 
+        /// <inheritdoc />
+        public ApiInfo GetLastApiInfo()
+        {
+            return Connection.ApiInfo;
+        }
+
         /// <summary>
         /// Returns the user information based on the Auth0 access token (obtained during login).
         /// </summary>
