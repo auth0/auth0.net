@@ -43,6 +43,16 @@ namespace Auth0.Core.Http
             _httpClient = new HttpClient(handler ?? new HttpClientHandler());
         }
 
+        public ApiConnection(string token, string baseUrl, DiagnosticsHeader diagnostics,
+            HttpClient httpClient)
+        {
+            _token = token;
+            _diagnostics = diagnostics;
+            _baseUrl = baseUrl;
+
+            _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+        }
+
         private void ApplyHeaders(HttpRequestMessage message, IDictionary<string, object> headers)
         {
             // Add the diagnostics header, unless user explicitly opted out of it
