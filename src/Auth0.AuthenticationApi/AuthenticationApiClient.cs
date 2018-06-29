@@ -21,13 +21,7 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         private readonly Uri _baseUri;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
-        /// </summary>
-        /// <param name="baseUri">The base URI.</param>
-        /// <param name="diagnostics">The diagnostics.</param>
-        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
-        public AuthenticationApiClient(Uri baseUri, DiagnosticsHeader diagnostics, HttpMessageHandler handler)
+        private AuthenticationApiClient(Uri baseUri, DiagnosticsHeader diagnostics, ApiConnection connection)
         {
             _baseUri = baseUri;
 
@@ -37,7 +31,18 @@ namespace Auth0.AuthenticationApi
                 diagnostics = DiagnosticsHeader.Default;
             }
 
-            Connection = new ApiConnection(null, baseUri.AbsoluteUri, diagnostics, handler);
+            Connection = connection ?? throw new ArgumentNullException(nameof(ApiConnection));
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
+        /// </summary>
+        /// <param name="baseUri">The base URI.</param>
+        /// <param name="diagnostics">The diagnostics.</param>
+        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
+        public AuthenticationApiClient(Uri baseUri, DiagnosticsHeader diagnostics, HttpMessageHandler handler)
+            : this(baseUri, diagnostics, new ApiConnection(null, baseUri.AbsoluteUri, diagnostics, handler))
+        {
         }
 
         /// <summary>
@@ -47,16 +52,8 @@ namespace Auth0.AuthenticationApi
         /// <param name="diagnostics"></param>
         /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests</param>
         public AuthenticationApiClient(Uri baseUri, DiagnosticsHeader diagnostics, HttpClient httpClient)
+            : this(baseUri, diagnostics, new ApiConnection(null, baseUri.AbsoluteUri, diagnostics, httpClient))
         {
-            _baseUri = baseUri;
-
-            // If no diagnostics header structure was specified, then revert to the default one
-            if (diagnostics == null)
-            {
-                diagnostics = DiagnosticsHeader.Default;
-            }
-
-            Connection = new ApiConnection(null, baseUri.AbsoluteUri, diagnostics, httpClient);
         }
 
         /// <summary>
