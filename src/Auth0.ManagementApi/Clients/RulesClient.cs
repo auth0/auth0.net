@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Auth0.Core.Collections;
 using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
+using Auth0.ManagementApi.Serialization;
 
 namespace Auth0.ManagementApi.Clients
 {
@@ -42,16 +44,7 @@ namespace Auth0.ManagementApi.Clients
             }, null);
         }
 
-        /// <summary>
-        /// Retrieves a list of all rules.
-        /// </summary>
-        /// <param name="enabled">If provided retrieves rules that match the value, otherwise all rules are retrieved.</param>
-        /// <param name="fields">A comma separated list of fields to include or exclude (depending on
-        /// <paramref name="includeFields" />) from the result, empty to retrieve all fields.</param>
-        /// <param name="includeFields">True if the fields specified are to be included in the result, false otherwise (defaults to
-        /// true).</param>
-        /// <param name="stage">Retrieves rules that match the execution stage (defaults to login_success).</param>
-        /// <returns>A list of <see cref="Rule" /> objects.</returns>
+        /// <inheritdoc />
         public Task<IList<Rule>> GetAllAsync(bool? enabled = null, string fields = null, bool includeFields = true, string stage = null)
         {
             return Connection.GetAsync<IList<Rule>>("rules", null,
@@ -62,6 +55,22 @@ namespace Auth0.ManagementApi.Clients
                     {"include_fields", includeFields.ToString().ToLower()},
                     {"stage", stage}
                 }, null, null);
+        }
+
+        /// <inheritdoc />
+        public Task<IPagedList<Rule>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null, bool? enabled = null, string fields = null, bool includeFields = true, string stage = null)
+        {
+            return Connection.GetAsync<IPagedList<Rule>>("rules", null,
+                new Dictionary<string, string>
+                {
+                    {"page", page?.ToString()},
+                    {"per_page", perPage?.ToString()},
+                    {"include_totals", includeTotals?.ToString().ToLower()},
+                    {"enabled", enabled?.ToString().ToLower()},
+                    {"fields", fields},
+                    {"include_fields", includeFields.ToString().ToLower()},
+                    {"stage", stage}
+                }, null, new PagedListConverter<Rule>("rules"));
         }
 
         /// <summary>

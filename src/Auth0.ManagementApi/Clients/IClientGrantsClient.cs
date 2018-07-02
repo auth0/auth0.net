@@ -1,6 +1,7 @@
 ﻿using Auth0.ManagementApi.Models;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Auth0.Core.Collections;
 
 namespace Auth0.ManagementApi.Clients
 {
@@ -27,8 +28,20 @@ namespace Auth0.ManagementApi.Clients
         /// Gets a list of all the client grants.
         /// </summary>
         /// <param name="audience">The audience according to which you want to filter the returned client grants.</param>
+        /// <param name="clientId">The Id of a client to filter</param>
         /// <returns>A list of client grants</returns>
-        Task<IList<ClientGrant>> GetAllAsync(string audience = null);
+        Task<IList<ClientGrant>> GetAllAsync(string audience = null, string clientId = null);
+
+        /// <summary>
+        /// Gets a list of all the client grants.
+        /// </summary>
+        /// <param name="page">The page number. Zero based.</param>
+        /// <param name="perPage">The amount of entries per page.</param>
+        /// <param name="includeTotals">True if a query summary must be included in the result.</param>
+        /// <param name="audience">The audience according to which you want to filter the returned client grants.</param>
+        /// <param name="clientId">The Id of a client to filter</param>
+        /// <returns>A list of client grants</returns>
+        Task<IPagedList<ClientGrant>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null, string audience = null, string clientId = null);
 
         /// <summary>
         /// Updates a client grant

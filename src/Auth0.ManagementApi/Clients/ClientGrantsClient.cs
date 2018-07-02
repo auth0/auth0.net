@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Auth0.Core.Collections;
 using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
+using Auth0.ManagementApi.Serialization;
 
 namespace Auth0.ManagementApi.Clients
 {
@@ -43,18 +45,29 @@ namespace Auth0.ManagementApi.Clients
             }, null);
         }
 
-        /// <summary>
-        /// Gets a list of all the client grants.
-        /// </summary>
-        /// <param name="audience">The audience according to which you want to filter the returned client grants.</param>
-        /// <returns>A list of client grants</returns>
-        public Task<IList<ClientGrant>> GetAllAsync(string audience = null)
+        /// <inheritdoc />
+        public Task<IList<ClientGrant>> GetAllAsync(string audience = null, string clientId = null)
         {
             return Connection.GetAsync<IList<ClientGrant>>("client-grants", null,
                 new Dictionary<string, string>
                 {
-                    {"audience", audience}
+                    {"audience", audience},
+                    {"client_id", clientId}
                 }, null, null);
+        }
+
+        /// <inheritdoc />
+        public Task<IPagedList<ClientGrant>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null, string audience = null, string clientId = null)
+        {
+            return Connection.GetAsync<IPagedList<ClientGrant>>("client-grants", null,
+                new Dictionary<string, string>
+                {
+                    {"page", page?.ToString()},
+                    {"per_page", perPage?.ToString()},
+                    {"include_totals", includeTotals?.ToString().ToLower()},
+                    {"audience", audience},
+                    {"client_id", clientId}
+                }, null, new PagedListConverter<ClientGrant>("client_grants"));
         }
 
         /// <summary>

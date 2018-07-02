@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Auth0.Core.Collections;
 using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
+using Auth0.ManagementApi.Serialization;
 
 namespace Auth0.ManagementApi.Clients
 {
@@ -56,14 +58,16 @@ namespace Auth0.ManagementApi.Clients
                 null, null, null);
         }
 
-        /// <summary>
-        /// Get all resource servers
-        /// </summary>
-        /// <returns>A list of <see cref="ResourceServer"/></returns>
-        public Task<IList<ResourceServer>> GetAllAsync()
+        /// <inheritdoc />
+        public Task<IPagedList<ResourceServer>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null)
         {
-            return Connection.GetAsync<IList<ResourceServer>>("resource-servers",
-                null, null, null, null);
+            return Connection.GetAsync<IPagedList<ResourceServer>>("resource-servers", null,
+                new Dictionary<string, string>
+                {
+                    {"page", page?.ToString()},
+                    {"per_page", perPage?.ToString()},
+                    {"include_totals", includeTotals?.ToString().ToLower()}
+                }, null, new PagedListConverter<ResourceServer>("resource_servers"));
         }
 
         /// <summary>
