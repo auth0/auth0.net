@@ -144,13 +144,34 @@ namespace Auth0.ManagementApi.IntegrationTests
             await _apiClient.Connections.DeleteUserAsync(_connection.Id, newUserRequest.Email);
         }
 
-        [Fact(Skip = "Search for this tenant is disabled, so this will fail :(")]
-        public async Task Test_pagination_totals_deserialize_correctly()
+        [Fact]
+        public async Task Test_when_paging_not_specified_does_not_include_totals()
         {
-            var users = await _apiClient.Users.GetAllAsync(includeTotals: true);
+            // Act
+            var users = await _apiClient.Users.GetAllAsync(new GetUsersRequest());
+            
+            // Assert
+            Assert.Null(users.Paging);
+        }
 
-            users.Should().NotBeNull();
-            users.Paging.Should().NotBeNull();
+        [Fact]
+        public async Task Test_paging_does_not_include_totals()
+        {
+            // Act
+            var users = await _apiClient.Users.GetAllAsync(new GetUsersRequest(), new PaginationInfo(0, 50, false));
+            
+            // Assert
+            Assert.Null(users.Paging);
+        }
+
+        [Fact]
+        public async Task Test_paging_includes_totals()
+        {
+            // Act
+            var users = await _apiClient.Users.GetAllAsync(new GetUsersRequest(), new PaginationInfo(0, 50, true));
+            
+            // Assert
+            Assert.NotNull(users.Paging);
         }
 
         [Fact(Skip = "Run manually")]
@@ -189,7 +210,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             await _apiClient.Users.DeleteAsync(user.UserId);
         }
 
-        [Fact(Skip = "Need to fix!!!")]
+        [Fact]
         public async Task Test_logs_deserialization_without_totals()
         {
             var newUserRequest = new UserCreateRequest
@@ -201,7 +222,10 @@ namespace Auth0.ManagementApi.IntegrationTests
             };
             var user = await _apiClient.Users.CreateAsync(newUserRequest);
 
-            var logEntries = await _apiClient.Users.GetLogsAsync(user.UserId);
+            var logEntries = await _apiClient.Users.GetLogsAsync(new GetUserLogsRequest
+            {
+                UserId = user.UserId
+            });
 
             await _apiClient.Users.DeleteAsync(user.UserId);
 
@@ -221,7 +245,10 @@ namespace Auth0.ManagementApi.IntegrationTests
             };
             var user = await _apiClient.Users.CreateAsync(newUserRequest);
 
-            var logEntries = await _apiClient.Logs.GetAllAsync(includeTotals: true);
+            var logEntries = await _apiClient.Users.GetLogsAsync(new GetUserLogsRequest
+            {
+                UserId = user.UserId
+            }, new PaginationInfo(0, 50, true));
 
             await _apiClient.Users.DeleteAsync(user.UserId);
 
@@ -269,7 +296,6 @@ namespace Auth0.ManagementApi.IntegrationTests
             var secondaryIdentity = linkedUser.Identities[1];
             secondaryIdentity.ProfileData.Should().NotBeNull();
             secondaryIdentity.ProfileData["email"].Should().Be(secondaryUser.Email);
-
         }
 
         [Fact]

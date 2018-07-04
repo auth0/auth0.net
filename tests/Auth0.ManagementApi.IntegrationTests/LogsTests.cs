@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Auth0.ManagementApi.Models;
 using Auth0.Tests.Shared;
 using Xunit;
 using FluentAssertions;
@@ -25,7 +26,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Can_fetch_single_entry()
         {
             // Get all log entries
-            var logEntries = await _apiClient.Logs.GetAllAsync();
+            var logEntries = await _apiClient.Logs.GetAllAsync(new GetLogsRequest());
 
             // Grab the first one
             var firstLogEntry = logEntries[0];
@@ -37,25 +38,34 @@ namespace Auth0.ManagementApi.IntegrationTests
             singleLogEntry.ShouldBeEquivalentTo(firstLogEntry);
         }
 
-
         [Fact]
-        public async Task Test_deserialization_without_totals()
+        public async Task Test_when_paging_not_specified_does_not_include_totals()
         {
-            //var logEntries = await _apiClient.Users.GetLogsAsync("auth0|920042612b924ddba6ede57663fedce7");
-            var logEntries = await _apiClient.Logs.GetAllAsync();
+            // Act
+            var logs = await _apiClient.Logs.GetAllAsync(new GetLogsRequest());
             
-            logEntries.Should().NotBeNull();
-            logEntries.Paging.Should().BeNull();
+            // Assert
+            Assert.Null(logs.Paging);
         }
 
         [Fact]
-        public async Task Test_deserialization_with_totals()
+        public async Task Test_paging_does_not_include_totals()
         {
-            //var logEntries = await _apiClient.Users.GetLogsAsync("auth0|920042612b924ddba6ede57663fedce7", includeTotals: true);
-            var logEntries = await _apiClient.Logs.GetAllAsync(includeTotals: true);
+            // Act
+            var logs = await _apiClient.Logs.GetAllAsync(new GetLogsRequest(), new PaginationInfo(0, 50, false));
+            
+            // Assert
+            Assert.Null(logs.Paging);
+        }
 
-            logEntries.Should().NotBeNull();
-            logEntries.Paging.Should().NotBeNull();
+        [Fact]
+        public async Task Test_paging_includes_totals()
+        {
+            // Act
+            var logs = await _apiClient.Logs.GetAllAsync(new GetLogsRequest(), new PaginationInfo(0, 50, true));
+            
+            // Assert
+            Assert.NotNull(logs.Paging);
         }
     }
 }

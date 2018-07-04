@@ -1,0 +1,41 @@
+﻿namespace Auth0.ManagementApi.Models
+{
+    /// <summary>
+    /// Specifies criteria to use when querying all users.
+    /// </summary>
+    public class GetUsersRequest
+    {
+        /// <summary>
+        /// The connection to filter on.
+        /// </summary>
+        public string Connection { get; set; } = null;
+
+        /// <summary>
+        /// A comma separated list of fields to include or exclude (depending on <see cref="IncludeFields"/>) from the result, empty to retrieve all fields.
+        /// </summary>
+        public string Fields { get; set; } = null;
+
+        /// <summary>
+        /// Specifies whether the fields specified in <see cref="Fields"/> should be included or excluded in the result.
+        /// </summary>
+        public bool? IncludeFields { get; set; } = null;
+
+        /// <summary>
+        /// Query in Lucene query string syntax.
+        /// </summary>
+        /// <remarks>
+        /// Not all metadata fields are searchable when using search engine v2. When using search engine v3, some query types cannot be used on metadata fields.
+        /// </remarks>
+        public string Query { get; set; } = null;
+
+        /// <summary>
+        /// The version of the search engine to use.
+        /// </summary>
+        public string SearchEngine { get; set; } = null;
+
+        /// <summary>
+        /// The field to use for sorting. 1 == ascending and -1 == descending.
+        /// </summary>
+        public string Sort { get; set; } = null;
+    }
+}

@@ -46,8 +46,24 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="name">The name of the connection to retrieve</param>
         /// <param name="strategy">Only retrieve connections with these strategies.</param>
         /// <returns></returns>
+        [Obsolete("Use GetAllAsync(GetConnectionsRequest) or GetAllAsync(GetConnectionsRequest, PaginationInfo) instead")]
         Task<IPagedList<Connection>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null, 
             string fields = null, bool? includeFields = null, string name = null, string[] strategy = null);
+
+        /// <summary>
+        /// Retrieves every connection matching the specified strategy. All connections are retrieved if no strategy is being specified. Accepts a list of fields to include or exclude in the resulting list of connection objects.
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying connections.</param>
+        /// <returns>An <see cref="IPagedList{Connection}"/> containing the list of connections.</returns>
+        Task<IPagedList<Connection>> GetAllAsync(GetConnectionsRequest request);
+
+        /// <summary>
+        /// Retrieves every connection matching the specified strategy. All connections are retrieved if no strategy is being specified. Accepts a list of fields to include or exclude in the resulting list of connection objects.
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying connections.</param>
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <returns>An <see cref="IPagedList{Connection}"/> containing the list of connections.</returns>
+        Task<IPagedList<Connection>> GetAllAsync(GetConnectionsRequest request, PaginationInfo pagination); 
 
         /// <summary>
         /// Retrieves every connection matching the specified strategy. All connections are retrieved if no strategy is being specified. Accepts a list of fields to include or exclude in the resulting list of connection objects.

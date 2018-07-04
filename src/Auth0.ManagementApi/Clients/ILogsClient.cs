@@ -1,4 +1,5 @@
-﻿using Auth0.Core.Collections;
+﻿using System;
+using Auth0.Core.Collections;
 using System.Threading.Tasks;
 using Auth0.ManagementApi.Models;
 
@@ -25,8 +26,24 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="take">The total amount of entries to retrieve when using the from parameter. Default: 50. Max value: 100</param>
         /// <param name="q">Query in Lucene query string syntax.</param>
         /// <returns></returns>
+        [Obsolete("Use GetAllAsync(GetLogsRequest) or GetAllAsync(GetLogsRequest,PaginationInfo) instead")]
         Task<IPagedList<LogEntry>> GetAllAsync(int? page = null, int? perPage = null, string sort = null, string fields = null, bool? includeFields = null, 
             bool? includeTotals = null, string from = null, int? take = null, string q = null);
+
+        /// <summary>
+        /// Retrieves log entries that match the specified search criteria
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying logs.</param>
+        /// <returns>An <see cref="IPagedList{LogEntry}"/> containing the list of log entries.</returns>
+        Task<IPagedList<LogEntry>> GetAllAsync(GetLogsRequest request);
+
+        /// <summary>
+        /// Retrieves log entries that match the specified search criteria
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying logs.</param>
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <returns>An <see cref="IPagedList{LogEntry}"/> containing the list of log entries.</returns>
+        Task<IPagedList<LogEntry>> GetAllAsync(GetLogsRequest request, PaginationInfo pagination);
 
         /// <summary>
         /// Retrieves the data related to the log entry identified by id. This returns a single log entry representation as specified in the schema.

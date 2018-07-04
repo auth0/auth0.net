@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Auth0.Core.Collections;
@@ -37,6 +38,7 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="take">The total amount of entries to retrieve when using the from parameter. Default: 50. Max value: 100</param>
         /// <param name="q">Query in Lucene query string syntax.</param>
         /// <returns></returns>
+        [Obsolete("Use GetAllAsync(GetLogsRequest) or GetAllAsync(GetLogsRequest,PaginationInfo) instead")]
         public Task<IPagedList<LogEntry>> GetAllAsync(int? page = null, int? perPage = null, string sort = null,
             string fields = null, bool? includeFields = null, bool? includeTotals = null,
             string from = null, int? take = null, string q = null)
@@ -53,6 +55,47 @@ namespace Auth0.ManagementApi.Clients
                     {"from", from},
                     {"take", take?.ToString().ToLower()},
                     {"q", q}
+                }, null, new PagedListConverter<LogEntry>("logs"));
+        }
+
+        /// <inheritdoc />
+        public Task<IPagedList<LogEntry>> GetAllAsync(GetLogsRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            return Connection.GetAsync<IPagedList<LogEntry>>("logs", null,
+                new Dictionary<string, string>
+                {
+                    {"sort", request.Sort},
+                    {"fields", request.Fields},
+                    {"include_fields", request.IncludeFields?.ToString().ToLower()},
+                    {"from", request.From},
+                    {"take", request.Take?.ToString().ToLower()},
+                    {"q", request.Query}
+                }, null, new PagedListConverter<LogEntry>("logs"));
+        }
+
+        /// <inheritdoc />
+        public Task<IPagedList<LogEntry>> GetAllAsync(GetLogsRequest request, PaginationInfo pagination)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+            if (pagination == null)
+                throw new ArgumentNullException(nameof(pagination));
+
+            return Connection.GetAsync<IPagedList<LogEntry>>("logs", null,
+                new Dictionary<string, string>
+                {
+                    {"sort", request.Sort},
+                    {"fields", request.Fields},
+                    {"include_fields", request.IncludeFields?.ToString().ToLower()},
+                    {"from", request.From},
+                    {"take", request.Take?.ToString().ToLower()},
+                    {"q", request.Query},
+                    {"page", pagination.PageNo.ToString()},
+                    {"per_page", pagination.PerPage.ToString()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
                 }, null, new PagedListConverter<LogEntry>("logs"));
         }
 

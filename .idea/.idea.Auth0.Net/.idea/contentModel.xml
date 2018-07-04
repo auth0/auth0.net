@@ -192,7 +192,11 @@
             <e p="EmailVerificationTicketRequest.cs" t="Include" />
             <e p="EncryptionKey.cs" t="Include" />
             <e p="GetClientGrantsRequest.cs" t="Include" />
+            <e p="GetClientsRequest.cs" t="Include" />
+            <e p="GetConnectionsRequest.cs" t="Include" />
+            <e p="GetLogsRequest.cs" t="Include" />
             <e p="GetRulesRequest.cs" t="Include" />
+            <e p="GetUsersRequest.cs" t="Include" />
             <e p="GuardianEnrollment.cs" t="Include" />
             <e p="GuardianEnrollmentStatus.cs" t="Include" />
             <e p="GuardianFactor.cs" t="Include" />

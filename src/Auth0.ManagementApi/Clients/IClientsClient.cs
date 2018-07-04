@@ -37,8 +37,24 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="isFirstParty">Filter on whether or not a client is a first party client.</param>
         /// <param name="appType">List of application types used to filter the returned clients</param>
         /// <returns></returns>
+        [Obsolete("Use GetAllAsync(GetClientsRequest) or GetAllAsync(GetClientsRequest, PaginationInfo) instead")]
         Task<IPagedList<Client>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null, 
             string fields = null, bool? includeFields = null, bool? isGlobal = null, bool? isFirstParty = null, ClientApplicationType[] appType = null);
+
+        /// <summary>
+        /// Retrieves a list of all client applications.
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying clients.</param>
+        /// <returns>An <see cref="IPagedList{Client}"/> containing the clients.</returns>
+        Task<IPagedList<Client>> GetAllAsync(GetClientsRequest request);
+
+        /// <summary>
+        /// Retrieves a list of all client applications.
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying clients.</param>
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <returns>An <see cref="IPagedList{Client}"/> containing the clients.</returns>
+        Task<IPagedList<Client>> GetAllAsync(GetClientsRequest request, PaginationInfo pagination);
 
         /// <summary>
         ///     Retrieves a list of all client applications. Accepts a list of fields to include or exclude.

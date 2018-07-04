@@ -76,12 +76,12 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <inheritdoc />
-        public Task<IPagedList<Rule>> GetAllAsync(GetRulesRequest request, PaginationInfo paginationInfo)
+        public Task<IPagedList<Rule>> GetAllAsync(GetRulesRequest request, PaginationInfo pagination)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
-            if (paginationInfo == null)
-                throw new ArgumentNullException(nameof(paginationInfo));
+            if (pagination == null)
+                throw new ArgumentNullException(nameof(pagination));
 
             return Connection.GetAsync<IPagedList<Rule>>("rules", null,
                 new Dictionary<string, string>
@@ -90,9 +90,9 @@ namespace Auth0.ManagementApi.Clients
                     {"fields", request.Fields},
                     {"include_fields", request.IncludeFields?.ToString().ToLower()},
                     {"stage", request.Stage},
-                    {"page", paginationInfo.PageNo.ToString()},
-                    {"per_page", paginationInfo.PerPage.ToString()},
-                    {"include_totals", paginationInfo.IncludeTotals.ToString().ToLower()}
+                    {"page", pagination.PageNo.ToString()},
+                    {"per_page", pagination.PerPage.ToString()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
                 }, null, new PagedListConverter<Rule>("rules"));
         }
 

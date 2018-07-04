@@ -52,9 +52,9 @@ namespace Auth0.ManagementApi.Clients
         /// Retrieves a list of all rules.
         /// </summary>
         /// <param name="request">Specifies criteria to use when querying rules.</param>
-        /// <param name="paginationInfo">Specifies pagination info to use when requesting paged results.</param>
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
         /// <returns>An <see cref="IPagedList{Rule}"/> containing the rules</returns>
-        Task<IPagedList<Rule>> GetAllAsync(GetRulesRequest request, PaginationInfo paginationInfo);
+        Task<IPagedList<Rule>> GetAllAsync(GetRulesRequest request, PaginationInfo pagination);
 
         /// <summary>
         ///     Retrieves a rule by its ID.
