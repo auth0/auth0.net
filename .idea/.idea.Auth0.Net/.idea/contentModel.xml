@@ -191,6 +191,8 @@
             <e p="EmailTemplateUpdateRequest.cs" t="Include" />
             <e p="EmailVerificationTicketRequest.cs" t="Include" />
             <e p="EncryptionKey.cs" t="Include" />
+            <e p="GetClientGrantsRequest.cs" t="Include" />
+            <e p="GetRulesRequest.cs" t="Include" />
             <e p="GuardianEnrollment.cs" t="Include" />
             <e p="GuardianEnrollmentStatus.cs" t="Include" />
             <e p="GuardianFactor.cs" t="Include" />
@@ -207,6 +209,7 @@
             <e p="JwtConfiguration.cs" t="Include" />
             <e p="LogEntry.cs" t="Include" />
             <e p="Mobile.cs" t="Include" />
+            <e p="PaginationInfo.cs" t="Include" />
             <e p="PasswordChangeTicketRequest.cs" t="Include" />
             <e p="ResourceServer.cs" t="Include" />
             <e p="ResourceServerBase.cs" t="Include" />

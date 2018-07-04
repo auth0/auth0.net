@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Auth0.Core.Collections;
 using Auth0.ManagementApi.Models;
@@ -37,26 +38,23 @@ namespace Auth0.ManagementApi.Clients
         /// </param>
         /// <param name="stage">Retrieves rules that match the execution stage (defaults to login_success).</param>
         /// <returns>A list of <see cref="Rule" /> objects.</returns>
+        [Obsolete("Use GetAllAsync(GetRulesRequest) or GetAllAsync(GetRulesRequest, PaginationInfo) instead")]
         Task<IList<Rule>> GetAllAsync(bool? enabled = null, string fields = null, bool includeFields = true, string stage = null);
 
         /// <summary>
-        ///     Retrieves a list of all rules.
+        /// Retrieves a list of all rules.
         /// </summary>
-        /// <param name="page">The page number. Zero based.</param>
-        /// <param name="perPage">The amount of entries per page.</param>
-        /// <param name="includeTotals">True if a query summary must be included in the result.</param>
-        /// <param name="enabled">If provided retrieves rules that match the value, otherwise all rules are retrieved.</param>
-        /// <param name="fields">
-        ///     A comma separated list of fields to include or exclude (depending on
-        ///     <paramref name="includeFields" />) from the result, empty to retrieve all fields.
-        /// </param>
-        /// <param name="includeFields">
-        ///     True if the fields specified are to be included in the result, false otherwise (defaults to
-        ///     true).
-        /// </param>
-        /// <param name="stage">Retrieves rules that match the execution stage (defaults to login_success).</param>
-        /// <returns>A list of <see cref="Rule" /> objects.</returns>
-        Task<IPagedList<Rule>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null, bool? enabled = null, string fields = null, bool includeFields = true, string stage = null);
+        /// <param name="request">Specifies criteria to use when querying rules.</param>
+        /// <returns>An <see cref="IPagedList{Rule}"/> containing the rules</returns>
+        Task<IPagedList<Rule>> GetAllAsync(GetRulesRequest request);
+        
+        /// <summary>
+        /// Retrieves a list of all rules.
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying rules.</param>
+        /// <param name="paginationInfo">Specifies pagination info to use when requesting paged results.</param>
+        /// <returns>An <see cref="IPagedList{Rule}"/> containing the rules</returns>
+        Task<IPagedList<Rule>> GetAllAsync(GetRulesRequest request, PaginationInfo paginationInfo);
 
         /// <summary>
         ///     Retrieves a rule by its ID.

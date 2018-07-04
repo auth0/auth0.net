@@ -28,7 +28,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_rules_crud_sequence()
         {
             // Get all rules
-            var rulesBefore = await _apiClient.Rules.GetAllAsync(null, null, null, null);
+            var rulesBefore = await _apiClient.Rules.GetAllAsync(new GetRulesRequest());
 
             // Add a new rule
             var newRuleRequest = new RuleCreateRequest
@@ -44,7 +44,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             newRuleResponse.Name.Should().Be(newRuleRequest.Name);
 
             // Get all the rules again, and check that we now have one more
-            var rulesAfter = await _apiClient.Rules.GetAllAsync(null, null, null, null);
+            var rulesAfter = await _apiClient.Rules.GetAllAsync(new GetRulesRequest());
             rulesAfter.Count.Should().Be(rulesBefore.Count + 1);
 
             // Update the Rule
@@ -68,23 +68,33 @@ namespace Auth0.ManagementApi.IntegrationTests
         }
         
         [Fact]
+        public async Task Test_when_paging_not_specified_does_not_include_totals()
+        {
+            // Act
+            var rules = await _apiClient.Rules.GetAllAsync(new GetRulesRequest());
+            
+            // Assert
+            Assert.Null(rules.Paging);
+        }
+
+        [Fact]
         public async Task Test_paging_does_not_include_totals()
         {
             // Act
-            var grants = await _apiClient.Rules.GetAllAsync(page: 0, perPage: 50, includeTotals: false);
+            var rules = await _apiClient.Rules.GetAllAsync(new GetRulesRequest(), new PaginationInfo(0, 50, false));
             
             // Assert
-            Assert.Null(grants.Paging);
+            Assert.Null(rules.Paging);
         }
 
         [Fact]
         public async Task Test_paging_includes_totals()
         {
             // Act
-            var grants = await _apiClient.Rules.GetAllAsync(page: 0, perPage: 50, includeTotals: true);
+            var rules = await _apiClient.Rules.GetAllAsync(new GetRulesRequest(), new PaginationInfo(0, 50, true));
             
             // Assert
-            Assert.NotNull(grants.Paging);
+            Assert.NotNull(rules.Paging);
         }
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Auth0.Core.Collections;
@@ -46,27 +47,46 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <inheritdoc />
-        public Task<IList<ClientGrant>> GetAllAsync(string audience = null, string clientId = null)
+        [Obsolete("Use GetAllAsync(GetClientGrantsRequest) or GetAllAsync(GetClientGrantsRequest, PaginationInfo) instead")]
+        public Task<IList<ClientGrant>> GetAllAsync(string audience = null)
         {
             return Connection.GetAsync<IList<ClientGrant>>("client-grants", null,
                 new Dictionary<string, string>
                 {
-                    {"audience", audience},
-                    {"client_id", clientId}
+                    {"audience", audience}
                 }, null, null);
         }
 
         /// <inheritdoc />
-        public Task<IPagedList<ClientGrant>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null, string audience = null, string clientId = null)
+        public Task<IPagedList<ClientGrant>> GetAllAsync(GetClientGrantsRequest request)
         {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
             return Connection.GetAsync<IPagedList<ClientGrant>>("client-grants", null,
                 new Dictionary<string, string>
                 {
-                    {"page", page?.ToString()},
-                    {"per_page", perPage?.ToString()},
-                    {"include_totals", includeTotals?.ToString().ToLower()},
-                    {"audience", audience},
-                    {"client_id", clientId}
+                    {"audience", request.Audience},
+                    {"client_id", request.ClientId}
+                }, null, new PagedListConverter<ClientGrant>("client_grants"));
+        }
+
+        /// <inheritdoc />
+        public Task<IPagedList<ClientGrant>> GetAllAsync(GetClientGrantsRequest request, PaginationInfo pagination)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+            if (pagination == null)
+                throw new ArgumentNullException(nameof(pagination));
+
+            return Connection.GetAsync<IPagedList<ClientGrant>>("client-grants", null,
+                new Dictionary<string, string>
+                {
+                    {"audience", request.Audience},
+                    {"client_id", request.ClientId},
+                    {"page", pagination.PageNo.ToString()},
+                    {"per_page", pagination.PerPage.ToString()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
                 }, null, new PagedListConverter<ClientGrant>("client_grants"));
         }
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Auth0.Core.Collections;
 using Auth0.Core.Http;
@@ -45,6 +46,7 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <inheritdoc />
+        [Obsolete("Use GetAllAsync(GetRulesRequest) or GetAllAsync(GetRulesRequest, PaginationInfo) instead")]
         public Task<IList<Rule>> GetAllAsync(bool? enabled = null, string fields = null, bool includeFields = true, string stage = null)
         {
             return Connection.GetAsync<IList<Rule>>("rules", null,
@@ -58,18 +60,39 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <inheritdoc />
-        public Task<IPagedList<Rule>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null, bool? enabled = null, string fields = null, bool includeFields = true, string stage = null)
+        public Task<IPagedList<Rule>> GetAllAsync(GetRulesRequest request)
         {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
             return Connection.GetAsync<IPagedList<Rule>>("rules", null,
                 new Dictionary<string, string>
                 {
-                    {"page", page?.ToString()},
-                    {"per_page", perPage?.ToString()},
-                    {"include_totals", includeTotals?.ToString().ToLower()},
-                    {"enabled", enabled?.ToString().ToLower()},
-                    {"fields", fields},
-                    {"include_fields", includeFields.ToString().ToLower()},
-                    {"stage", stage}
+                    {"enabled", request.Enabled?.ToString().ToLower()},
+                    {"fields", request.Fields},
+                    {"include_fields", request.IncludeFields?.ToString().ToLower()},
+                    {"stage", request.Stage}
+                }, null, new PagedListConverter<Rule>("rules"));
+        }
+
+        /// <inheritdoc />
+        public Task<IPagedList<Rule>> GetAllAsync(GetRulesRequest request, PaginationInfo paginationInfo)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+            if (paginationInfo == null)
+                throw new ArgumentNullException(nameof(paginationInfo));
+
+            return Connection.GetAsync<IPagedList<Rule>>("rules", null,
+                new Dictionary<string, string>
+                {
+                    {"enabled", request.Enabled?.ToString().ToLower()},
+                    {"fields", request.Fields},
+                    {"include_fields", request.IncludeFields?.ToString().ToLower()},
+                    {"stage", request.Stage},
+                    {"page", paginationInfo.PageNo.ToString()},
+                    {"per_page", paginationInfo.PerPage.ToString()},
+                    {"include_totals", paginationInfo.IncludeTotals.ToString().ToLower()}
                 }, null, new PagedListConverter<Rule>("rules"));
         }
 

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Auth0.Core.Collections;
 using Auth0.Core.Http;
@@ -58,15 +59,26 @@ namespace Auth0.ManagementApi.Clients
                 null, null, null);
         }
 
+        /// <summary>
+        /// Get all resource servers
+        /// </summary>
+        /// <returns>A list of <see cref="ResourceServer"/></returns>
+        [Obsolete("Use GetAllAsync(PaginationInfo) instead")]
+        public Task<IList<ResourceServer>> GetAllAsync()
+        {
+            return Connection.GetAsync<IList<ResourceServer>>("resource-servers",
+                null, null, null, null);
+        }
+
         /// <inheritdoc />
-        public Task<IPagedList<ResourceServer>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null)
+        public Task<IPagedList<ResourceServer>> GetAllAsync(PaginationInfo pagination)
         {
             return Connection.GetAsync<IPagedList<ResourceServer>>("resource-servers", null,
                 new Dictionary<string, string>
                 {
-                    {"page", page?.ToString()},
-                    {"per_page", perPage?.ToString()},
-                    {"include_totals", includeTotals?.ToString().ToLower()}
+                    {"page", pagination.PageNo.ToString()},
+                    {"per_page", pagination.PerPage.ToString()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
                 }, null, new PagedListConverter<ResourceServer>("resource_servers"));
         }
 

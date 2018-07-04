@@ -88,20 +88,20 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_paging_does_not_include_totals()
         {
             // Act
-            var grants = await _apiClient.ResourceServers.GetAllAsync(page: 0, perPage: 50, includeTotals: false);
+            var resourceServers = await _apiClient.ResourceServers.GetAllAsync(new PaginationInfo(0, 50, false));
             
             // Assert
-            Assert.Null(grants.Paging);
+            Assert.Null(resourceServers.Paging);
         }
 
         [Fact]
         public async Task Test_paging_includes_totals()
         {
             // Act
-            var grants = await _apiClient.ResourceServers.GetAllAsync(page: 0, perPage: 50, includeTotals: true);
+            var resourceServers = await _apiClient.ResourceServers.GetAllAsync(new PaginationInfo(0, 50, true));
             
             // Assert
-            Assert.NotNull(grants.Paging);
+            Assert.NotNull(resourceServers.Paging);
         }
     }
 }

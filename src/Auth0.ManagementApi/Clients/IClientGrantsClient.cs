@@ -1,4 +1,5 @@
-﻿using Auth0.ManagementApi.Models;
+﻿using System;
+using Auth0.ManagementApi.Models;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Auth0.Core.Collections;
@@ -28,20 +29,24 @@ namespace Auth0.ManagementApi.Clients
         /// Gets a list of all the client grants.
         /// </summary>
         /// <param name="audience">The audience according to which you want to filter the returned client grants.</param>
-        /// <param name="clientId">The Id of a client to filter</param>
         /// <returns>A list of client grants</returns>
-        Task<IList<ClientGrant>> GetAllAsync(string audience = null, string clientId = null);
+        [Obsolete("Use GetAllAsync(GetClientGrantsRequest) or GetAllAsync(GetClientGrantsRequest, PaginationInfo) instead")]
+        Task<IList<ClientGrant>> GetAllAsync(string audience = null);
 
         /// <summary>
         /// Gets a list of all the client grants.
         /// </summary>
-        /// <param name="page">The page number. Zero based.</param>
-        /// <param name="perPage">The amount of entries per page.</param>
-        /// <param name="includeTotals">True if a query summary must be included in the result.</param>
-        /// <param name="audience">The audience according to which you want to filter the returned client grants.</param>
-        /// <param name="clientId">The Id of a client to filter</param>
-        /// <returns>A list of client grants</returns>
-        Task<IPagedList<ClientGrant>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null, string audience = null, string clientId = null);
+        /// <param name="request">Specifies criteria to use when querying client grants</param>
+        /// <returns>A paged list of client grants</returns>
+        Task<IPagedList<ClientGrant>> GetAllAsync(GetClientGrantsRequest request);
+
+        /// <summary>
+        /// Gets a list of all the client grants.
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying client grants.</param>
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <returns>A paged list of client grants</returns>
+        Task<IPagedList<ClientGrant>> GetAllAsync(GetClientGrantsRequest request, PaginationInfo pagination);
 
         /// <summary>
         /// Updates a client grant

@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using Auth0.Core.Collections;
 using Auth0.ManagementApi.Models;
 
@@ -9,6 +11,9 @@ namespace Auth0.ManagementApi.Clients
     /// </summary>
     public interface IResourceServersClient
     {
+        [Obsolete("Use GetAllAsync(PaginationInfo) instead")]
+        Task<System.Collections.Generic.IList<ResourceServer>> GetAllAsync();
+
         /// <summary>
         /// Creates a new resource server
         /// </summary>
@@ -24,13 +29,11 @@ namespace Auth0.ManagementApi.Clients
         Task DeleteAsync(string id);
 
         /// <summary>
-        /// Gets a list of all the client grants.
+        /// Gets a list of all the resource servers.
         /// </summary>
-        /// <param name="page">The page number. Zero based.</param>
-        /// <param name="perPage">The amount of entries per page.</param>
-        /// <param name="includeTotals">True if a query summary must be included in the result.</param>
-        /// <returns>A list of client grants</returns>
-        Task<IPagedList<ResourceServer>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null);
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <returns>A <see cref="IPagedList{ResourceServer}"/> containing the list of resource servers.</returns>
+        Task<IPagedList<ResourceServer>> GetAllAsync(PaginationInfo pagination);
 
         /// <summary>
         /// Get a resource server by its id
