@@ -74,22 +74,7 @@ namespace Auth0.ManagementApi.Clients
                 }, null);
         }
 
-        /// <summary>
-        /// Lists or search for users based on criteria.
-        /// </summary>
-        /// <param name="page">The page number. Zero based.</param>
-        /// <param name="perPage">The amount of entries per page.</param>
-        /// <param name="includeTotals">True if a query summary must be included in the result.</param>
-        /// <param name="sort">The field to use for sorting. 1 == ascending and -1 == descending</param>
-        /// <param name="connection">Connection filter.</param>
-        /// <param name="fields">A comma separated list of fields to include or exclude (depending on
-        /// <paramref name="includeFields" />) from the result, empty to retrieve all fields.</param>
-        /// <param name="includeFields">True if the fields specified are to be included in the result, false otherwise. Defaults to
-        /// true.</param>
-        /// <param name="q">Query in Lucene query string syntax. Only fields in app_metadata, user_metadata or the normalized user
-        /// profile are searchable.</param>
-        /// <param name="searchEngine">Use 'v2' if you want to try the new search engine, or 'v1' for the old search engine.</param>
-        /// <returns>A <see cref="IPagedList{User}"/> with the paged list of users.</returns>
+        /// <inheritdoc />
         [Obsolete("Use GetAllAsync(GetUsersRequest) or GetAllAsync(GetUsersRequest, PaginationInfo) instead")]
         public Task<IPagedList<User>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null, string sort = null, string connection = null, string fields = null,
             bool? includeFields = null,

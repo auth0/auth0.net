@@ -31,6 +31,10 @@
         /// <summary>
         /// The version of the search engine to use.
         /// </summary>
+        /// <remarks>
+        /// Will default to v2 if no value is passed. Default will change to v3 on 2018/11/13.
+        /// For more info <a href="https://auth0.com/docs/users/search/v3#migrate-from-search-engine-v2-to-v3">see the online documentation</a>.
+        /// </remarks>
         public string SearchEngine { get; set; } = null;
 
         /// <summary>

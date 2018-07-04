@@ -57,7 +57,11 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="q">
         ///     Query in Lucene query string syntax.
         /// </param>
-        /// <param name="searchEngine">he version of the search engine to use.</param>
+        /// <param name="searchEngine">
+        /// The version of the search engine to use.
+        /// Will default to v2 if no value is passed. Default will change to v3 on 2018/11/13.
+        /// For more info <a href="https://auth0.com/docs/users/search/v3#migrate-from-search-engine-v2-to-v3">see the online documentation</a>.
+        /// </param>
         /// <returns></returns>
         [Obsolete("Use GetAllAsync(GetUsersRequest) or GetAllAsync(GetUsersRequest, PaginationInfo) instead")]
         Task<IPagedList<User>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null, string sort = null, string connection = null, string fields = null,
