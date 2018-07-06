@@ -25,12 +25,6 @@ namespace Auth0.AuthenticationApi
         {
             _baseUri = baseUri;
 
-            // If no diagnostics header structure was specified, then revert to the default one
-            if (diagnostics == null)
-            {
-                diagnostics = DiagnosticsHeader.Default;
-            }
-
             Connection = connection ?? throw new ArgumentNullException(nameof(ApiConnection));
         }
 
@@ -41,7 +35,7 @@ namespace Auth0.AuthenticationApi
         /// <param name="diagnostics">The diagnostics.</param>
         /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
         public AuthenticationApiClient(Uri baseUri, DiagnosticsHeader diagnostics, HttpMessageHandler handler)
-            : this(baseUri, diagnostics, new ApiConnection(null, baseUri.AbsoluteUri, diagnostics, handler))
+            : this(baseUri, diagnostics, new ApiConnection(null, baseUri.AbsoluteUri, diagnostics ?? DiagnosticsHeader.Default, handler))
         {
         }
 
@@ -52,7 +46,7 @@ namespace Auth0.AuthenticationApi
         /// <param name="diagnostics"></param>
         /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests</param>
         public AuthenticationApiClient(Uri baseUri, DiagnosticsHeader diagnostics, HttpClient httpClient)
-            : this(baseUri, diagnostics, new ApiConnection(null, baseUri.AbsoluteUri, diagnostics, httpClient))
+            : this(baseUri, diagnostics, new ApiConnection(null, baseUri.AbsoluteUri, diagnostics ?? DiagnosticsHeader.Default, httpClient))
         {
         }
 

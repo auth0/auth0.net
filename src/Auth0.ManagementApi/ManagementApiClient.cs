@@ -115,13 +115,6 @@ namespace Auth0.ManagementApi
         private ManagementApiClient(string token, Uri baseUri, DiagnosticsHeader diagnostics,
             ApiConnection apiConnection)
         {
-            // If no diagnostics header structure was specified, then revert to the default one
-            if (diagnostics == null)
-            {
-                diagnostics = DiagnosticsHeader.Default;
-            }
-
-
             _apiConnection = apiConnection;
 
             BlacklistedTokens = new BlacklistedTokensClient(_apiConnection);
@@ -150,7 +143,7 @@ namespace Auth0.ManagementApi
         /// <param name="diagnostics">The diagnostics.</param>
         /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
         public ManagementApiClient(string token, Uri baseUri, DiagnosticsHeader diagnostics, HttpMessageHandler handler)
-        : this(token, baseUri, diagnostics, new ApiConnection(token, baseUri.AbsoluteUri, diagnostics, handler))
+        : this(token, baseUri, diagnostics, new ApiConnection(token, baseUri.AbsoluteUri, diagnostics ?? DiagnosticsHeader.Default, handler))
         {
         }
 
@@ -162,7 +155,7 @@ namespace Auth0.ManagementApi
         /// <param name="diagnostics">The diagnostics.</param>
         /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests</param>
         public ManagementApiClient(string token, Uri baseUri, DiagnosticsHeader diagnostics, HttpClient httpClient)
-        : this(token, baseUri, diagnostics, new ApiConnection(token, baseUri.AbsoluteUri, diagnostics, httpClient))
+        : this(token, baseUri, diagnostics, new ApiConnection(token, baseUri.AbsoluteUri, diagnostics ?? DiagnosticsHeader.Default, httpClient))
         {
 
         }
