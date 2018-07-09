@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Auth0.Core.Collections;
 using Auth0.ManagementApi.Models;
 
 namespace Auth0.ManagementApi.Clients
@@ -36,7 +38,23 @@ namespace Auth0.ManagementApi.Clients
         /// </param>
         /// <param name="stage">Retrieves rules that match the execution stage (defaults to login_success).</param>
         /// <returns>A list of <see cref="Rule" /> objects.</returns>
+        [Obsolete("Use GetAllAsync(GetRulesRequest) or GetAllAsync(GetRulesRequest, PaginationInfo) instead")]
         Task<IList<Rule>> GetAllAsync(bool? enabled = null, string fields = null, bool includeFields = true, string stage = null);
+
+        /// <summary>
+        /// Retrieves a list of all rules.
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying rules.</param>
+        /// <returns>An <see cref="IPagedList{Rule}"/> containing the rules</returns>
+        Task<IPagedList<Rule>> GetAllAsync(GetRulesRequest request);
+        
+        /// <summary>
+        /// Retrieves a list of all rules.
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying rules.</param>
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <returns>An <see cref="IPagedList{Rule}"/> containing the rules</returns>
+        Task<IPagedList<Rule>> GetAllAsync(GetRulesRequest request, PaginationInfo pagination);
 
         /// <summary>
         ///     Retrieves a rule by its ID.

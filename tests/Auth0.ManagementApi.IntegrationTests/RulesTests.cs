@@ -8,17 +8,27 @@ using Auth0.Tests.Shared;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    public class RulesTests : TestBase
+    public class RulesTests : TestBase, IAsyncLifetime
     {
-        [Fact]
-        public async Task Test_rules_crud_sequence()
+        private ManagementApiClient _apiClient;
+
+        public async Task InitializeAsync()
         {
             string token = await GenerateManagementApiToken();
 
-            var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+            _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+        }
 
+        public Task DisposeAsync()
+        {
+            return Task.CompletedTask;
+        }
+
+        [Fact]
+        public async Task Test_rules_crud_sequence()
+        {
             // Get all rules
-            var rulesBefore = await apiClient.Rules.GetAllAsync();
+            var rulesBefore = await _apiClient.Rules.GetAllAsync(new GetRulesRequest());
 
             // Add a new rule
             var newRuleRequest = new RuleCreateRequest
@@ -29,12 +39,12 @@ namespace Auth0.ManagementApi.IntegrationTests
                               callback(null, user, context);
                             }"
             };
-            var newRuleResponse = await apiClient.Rules.CreateAsync(newRuleRequest);
+            var newRuleResponse = await _apiClient.Rules.CreateAsync(newRuleRequest);
             newRuleResponse.Should().NotBeNull();
             newRuleResponse.Name.Should().Be(newRuleRequest.Name);
 
             // Get all the rules again, and check that we now have one more
-            var rulesAfter = await apiClient.Rules.GetAllAsync();
+            var rulesAfter = await _apiClient.Rules.GetAllAsync(new GetRulesRequest());
             rulesAfter.Count.Should().Be(rulesBefore.Count + 1);
 
             // Update the Rule
@@ -42,19 +52,49 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 Name = $"integration-test-rule-{Guid.NewGuid():N}"
             };
-            var updateRuleResponse = await apiClient.Rules.UpdateAsync(newRuleResponse.Id, updateRuleRequest);
+            var updateRuleResponse = await _apiClient.Rules.UpdateAsync(newRuleResponse.Id, updateRuleRequest);
             updateRuleResponse.Should().NotBeNull();
             updateRuleResponse.Name.Should().Be(updateRuleRequest.Name);
 
             // Get a single rule
-            var rule = await apiClient.Rules.GetAsync(newRuleResponse.Id);
+            var rule = await _apiClient.Rules.GetAsync(newRuleResponse.Id);
             rule.Should().NotBeNull();
             rule.Name.Should().Be(updateRuleRequest.Name);
 
             // Delete the rule, and ensure we get exception when trying to fetch it again
-            await apiClient.Rules.DeleteAsync(rule.Id);
-            Func<Task> getFunc = async () => await apiClient.Rules.GetAsync(rule.Id);
+            await _apiClient.Rules.DeleteAsync(rule.Id);
+            Func<Task> getFunc = async () => await _apiClient.Rules.GetAsync(rule.Id);
             getFunc.ShouldThrow<ApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_rule");
+        }
+        
+        [Fact]
+        public async Task Test_when_paging_not_specified_does_not_include_totals()
+        {
+            // Act
+            var rules = await _apiClient.Rules.GetAllAsync(new GetRulesRequest());
+            
+            // Assert
+            Assert.Null(rules.Paging);
+        }
+
+        [Fact]
+        public async Task Test_paging_does_not_include_totals()
+        {
+            // Act
+            var rules = await _apiClient.Rules.GetAllAsync(new GetRulesRequest(), new PaginationInfo(0, 50, false));
+            
+            // Assert
+            Assert.Null(rules.Paging);
+        }
+
+        [Fact]
+        public async Task Test_paging_includes_totals()
+        {
+            // Act
+            var rules = await _apiClient.Rules.GetAllAsync(new GetRulesRequest(), new PaginationInfo(0, 50, true));
+            
+            // Assert
+            Assert.NotNull(rules.Paging);
         }
     }
 }

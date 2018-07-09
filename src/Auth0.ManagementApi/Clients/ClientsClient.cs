@@ -49,6 +49,8 @@ namespace Auth0.ManagementApi.Clients
             }, null);
         }
 
+        /// <inheritdoc />
+        [Obsolete("Use GetAllAsync(GetClientsRequest) or GetAllAsync(GetClientsRequest, PaginationInfo) instead")]
         public Task<IPagedList<Client>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null, string fields = null, bool? includeFields = null, 
             bool? isGlobal = null, bool? isFirstParty = null, ClientApplicationType[] appType = null)
         {
@@ -66,6 +68,55 @@ namespace Auth0.ManagementApi.Clients
             if (appType != null)
             {
                 queryStrings.Add("app_type", string.Join(",", appType.Select(ToEnumString)));
+            }
+            
+            return Connection.GetAsync<IPagedList<Client>>("clients", null, queryStrings, null, new PagedListConverter<Client>("clients"));
+        }
+
+        /// <inheritdoc />
+        public Task<IPagedList<Client>> GetAllAsync(GetClientsRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            var queryStrings = new Dictionary<string, string>
+            {
+                {"fields", request.Fields},
+                {"include_fields", request.IncludeFields?.ToString().ToLower()},
+                {"is_global", request.IsGlobal?.ToString().ToLower()},
+                { "is_first_party", request.IsFirstParty?.ToString().ToLower()}
+            };
+
+            if (request.AppType != null)
+            {
+                queryStrings.Add("app_type", string.Join(",", request.AppType.Select(ToEnumString)));
+            }
+            
+            return Connection.GetAsync<IPagedList<Client>>("clients", null, queryStrings, null, new PagedListConverter<Client>("clients"));
+        }
+
+        /// <inheritdoc />
+        public Task<IPagedList<Client>> GetAllAsync(GetClientsRequest request, PaginationInfo pagination)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+            if (pagination == null)
+                throw new ArgumentNullException(nameof(pagination));
+
+            var queryStrings = new Dictionary<string, string>
+            {
+                {"fields", request.Fields},
+                {"include_fields", request.IncludeFields?.ToString().ToLower()},
+                {"is_global", request.IsGlobal?.ToString().ToLower()},
+                {"is_first_party", request.IsFirstParty?.ToString().ToLower()},
+                {"page", pagination.PageNo.ToString()},
+                {"per_page", pagination.PerPage.ToString()},
+                {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
+            };
+
+            if (request.AppType != null)
+            {
+                queryStrings.Add("app_type", string.Join(",", request.AppType.Select(ToEnumString)));
             }
             
             return Connection.GetAsync<IPagedList<Client>>("clients", null, queryStrings, null, new PagedListConverter<Client>("clients"));

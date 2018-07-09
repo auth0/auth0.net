@@ -9,14 +9,25 @@ using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    public class ResourceServerTests : TestBase
+    public class ResourceServerTests : TestBase, IAsyncLifetime
     {
-        [Fact]
-        public async Task Test_resource_server_crud_sequence()
+        private ManagementApiClient _apiClient;
+
+        public async Task InitializeAsync()
         {
             string token = await GenerateManagementApiToken();
 
-            var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+            _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+        }
+
+        public Task DisposeAsync()
+        {
+            return Task.CompletedTask;
+        }
+
+        [Fact]
+        public async Task Test_resource_server_crud_sequence()
+        {
 
             // Add a new resource server
             var identifier = Guid.NewGuid();
@@ -36,7 +47,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                     }
                 }
             };
-            var newResourceServerResponse = await apiClient.ResourceServers.CreateAsync(newResourceServerRequest);
+            var newResourceServerResponse = await _apiClient.ResourceServers.CreateAsync(newResourceServerRequest);
             newResourceServerResponse.ShouldBeEquivalentTo(newResourceServerRequest, options => options.Excluding(rs => rs.Id));
 
             // Update the resource server
@@ -60,17 +71,37 @@ namespace Auth0.ManagementApi.IntegrationTests
                     }
                 }
             };
-            var updateResourceServerResponse = await apiClient.ResourceServers.UpdateAsync(newResourceServerResponse.Id, resourceServerRequest);
+            var updateResourceServerResponse = await _apiClient.ResourceServers.UpdateAsync(newResourceServerResponse.Id, resourceServerRequest);
             updateResourceServerResponse.ShouldBeEquivalentTo(resourceServerRequest, options => options.ExcludingMissingMembers());
 
             // Get a single resource server
-            var resourceServer = await apiClient.ResourceServers.GetAsync(newResourceServerResponse.Id);
+            var resourceServer = await _apiClient.ResourceServers.GetAsync(newResourceServerResponse.Id);
             resourceServer.ShouldBeEquivalentTo(resourceServerRequest, options => options.ExcludingMissingMembers());
 
             // Delete the client, and ensure we get exception when trying to fetch client again
-            await apiClient.ResourceServers.DeleteAsync(resourceServer.Id);
-            Func<Task> getFunc = async () => await apiClient.ResourceServers.GetAsync(resourceServer.Id);
+            await _apiClient.ResourceServers.DeleteAsync(resourceServer.Id);
+            Func<Task> getFunc = async () => await _apiClient.ResourceServers.GetAsync(resourceServer.Id);
             getFunc.ShouldThrow<ApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_resource_server");
+        }
+        
+        [Fact]
+        public async Task Test_paging_does_not_include_totals()
+        {
+            // Act
+            var resourceServers = await _apiClient.ResourceServers.GetAllAsync(new PaginationInfo(0, 50, false));
+            
+            // Assert
+            Assert.Null(resourceServers.Paging);
+        }
+
+        [Fact]
+        public async Task Test_paging_includes_totals()
+        {
+            // Act
+            var resourceServers = await _apiClient.ResourceServers.GetAllAsync(new PaginationInfo(0, 50, true));
+            
+            // Assert
+            Assert.NotNull(resourceServers.Paging);
         }
     }
 }

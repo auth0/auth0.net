@@ -74,22 +74,8 @@ namespace Auth0.ManagementApi.Clients
                 }, null);
         }
 
-        /// <summary>
-        /// Lists or search for users based on criteria.
-        /// </summary>
-        /// <param name="page">The page number. Zero based.</param>
-        /// <param name="perPage">The amount of entries per page.</param>
-        /// <param name="includeTotals">True if a query summary must be included in the result.</param>
-        /// <param name="sort">The field to use for sorting. 1 == ascending and -1 == descending</param>
-        /// <param name="connection">Connection filter.</param>
-        /// <param name="fields">A comma separated list of fields to include or exclude (depending on
-        /// <paramref name="includeFields" />) from the result, empty to retrieve all fields.</param>
-        /// <param name="includeFields">True if the fields specified are to be included in the result, false otherwise. Defaults to
-        /// true.</param>
-        /// <param name="q">Query in Lucene query string syntax. Only fields in app_metadata, user_metadata or the normalized user
-        /// profile are searchable.</param>
-        /// <param name="searchEngine">Use 'v2' if you want to try the new search engine, or 'v1' for the old search engine.</param>
-        /// <returns>A <see cref="IPagedList{User}"/> with the paged list of users.</returns>
+        /// <inheritdoc />
+        [Obsolete("Use GetAllAsync(GetUsersRequest) or GetAllAsync(GetUsersRequest, PaginationInfo) instead")]
         public Task<IPagedList<User>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null, string sort = null, string connection = null, string fields = null,
             bool? includeFields = null,
             string q = null, string searchEngine = null)
@@ -109,6 +95,46 @@ namespace Auth0.ManagementApi.Clients
                 }, null, new PagedListConverter<User>("users"));
         }
 
+        /// <inheritdoc />
+        public Task<IPagedList<User>> GetAllAsync(GetUsersRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            return Connection.GetAsync<IPagedList<User>>("users", null,
+                new Dictionary<string, string>
+                {
+                    {"sort", request.Sort},
+                    {"connection", request.Connection},
+                    {"fields", request.Fields},
+                    {"include_fields", request.IncludeFields?.ToString().ToLower()},
+                    {"q", request.Query},
+                    {"search_engine", request.SearchEngine}
+                }, null, new PagedListConverter<User>("users"));
+        }
+
+        /// <inheritdoc />
+        public Task<IPagedList<User>> GetAllAsync(GetUsersRequest request, PaginationInfo pagination)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+            if (pagination == null)
+                throw new ArgumentNullException(nameof(pagination));
+
+            return Connection.GetAsync<IPagedList<User>>("users", null,
+                new Dictionary<string, string>
+                {
+                    {"sort", request.Sort},
+                    {"connection", request.Connection},
+                    {"fields", request.Fields},
+                    {"include_fields", request.IncludeFields?.ToString().ToLower()},
+                    {"q", request.Query},
+                    {"search_engine", request.SearchEngine},
+                    {"page", pagination.PageNo.ToString()},
+                    {"per_page", pagination.PerPage.ToString()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
+                }, null, new PagedListConverter<User>("users"));
+        }
 
         /// <summary>
         /// Gets a user.
@@ -142,6 +168,7 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="sort">The field to use for sorting. Use field:order where order is 1 for ascending and -1 for descending. For example date:-1</param>
         /// <param name="includeTotals">True if a query summary must be included in the result, false otherwise. Default false.</param>
         /// <returns></returns>
+        [Obsolete("Use GetLogsAsync(GetUserLogsRequest) or GetLogsAsync(GetUserLogsRequest, PaginationInfo) instead")]
         public Task<IPagedList<LogEntry>> GetLogsAsync(string userId, int? page = null, int? perPage = null, string sort = null, bool? includeTotals = null)
         {
             return Connection.GetAsync<IPagedList<LogEntry>>("users/{id}/logs",
@@ -155,6 +182,45 @@ namespace Auth0.ManagementApi.Clients
                     {"per_page", perPage?.ToString()},
                     {"sort", sort},
                     {"include_totals", includeTotals?.ToString().ToLower()}
+                }, null, new PagedListConverter<LogEntry>("logs", true));
+        }
+
+        /// <inheritdoc />
+        public Task<IPagedList<LogEntry>> GetLogsAsync(GetUserLogsRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            return Connection.GetAsync<IPagedList<LogEntry>>("users/{id}/logs",
+                new Dictionary<string, string>
+                {
+                    {"id", request.UserId}
+                },
+                new Dictionary<string, string>
+                {
+                    {"sort", request.Sort}
+                }, null, new PagedListConverter<LogEntry>("logs", true));
+        }
+
+        /// <inheritdoc />
+        public Task<IPagedList<LogEntry>> GetLogsAsync(GetUserLogsRequest request, PaginationInfo pagination)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+            if (pagination == null)
+                throw new ArgumentNullException(nameof(pagination));
+
+            return Connection.GetAsync<IPagedList<LogEntry>>("users/{id}/logs",
+                new Dictionary<string, string>
+                {
+                    {"id", request.UserId}
+                },
+                new Dictionary<string, string>
+                {
+                    {"sort", request.Sort},
+                    {"page", pagination.PageNo.ToString()},
+                    {"per_page", pagination.PerPage.ToString()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
                 }, null, new PagedListConverter<LogEntry>("logs", true));
         }
 

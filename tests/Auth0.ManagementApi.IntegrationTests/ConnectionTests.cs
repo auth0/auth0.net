@@ -28,7 +28,10 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_connection_crud_sequence()
         {
             // Get all connections before
-            var connectionsBefore = await _apiClient.Connections.GetAllAsync(strategy: new[] {"github"});
+            var connectionsBefore = await _apiClient.Connections.GetAllAsync(new GetConnectionsRequest
+            {
+                Strategy = new[] {"github"}
+            });
 
             // Create a new connection
             var newConnectionRequest = new ConnectionCreateRequest
@@ -42,7 +45,10 @@ namespace Auth0.ManagementApi.IntegrationTests
             newConnectionResponse.Strategy.Should().Be(newConnectionRequest.Strategy);
 
             // Get all connections again
-            var connectionsAfter = await _apiClient.Connections.GetAllAsync(strategy: new[] {"github"});
+            var connectionsAfter = await _apiClient.Connections.GetAllAsync(new GetConnectionsRequest
+            {
+                Strategy = new[] {"github"}
+            });
             connectionsAfter.Count.Should().Be(connectionsBefore.Count + 1);
 
             // Update a connection
@@ -74,13 +80,33 @@ namespace Auth0.ManagementApi.IntegrationTests
         }
         
         [Fact]
-        public async Task Test_pagination_totals_deserialize_correctly()
+        public async Task Test_when_paging_not_specified_does_not_include_totals()
         {
-            var connections = await _apiClient.Connections.GetAllAsync(page: 0, perPage: 50, includeTotals: true);
-
-            connections.Should().NotBeNull();
-            connections.Paging.Should().NotBeNull();
+            // Act
+            var connections = await _apiClient.Connections.GetAllAsync(new GetConnectionsRequest());
+            
+            // Assert
+            Assert.Null(connections.Paging);
         }
 
+        [Fact]
+        public async Task Test_paging_does_not_include_totals()
+        {
+            // Act
+            var connections = await _apiClient.Connections.GetAllAsync(new GetConnectionsRequest(), new PaginationInfo(0, 50, false));
+            
+            // Assert
+            Assert.Null(connections.Paging);
+        }
+
+        [Fact]
+        public async Task Test_paging_includes_totals()
+        {
+            // Act
+            var connections = await _apiClient.Connections.GetAllAsync(new GetConnectionsRequest(), new PaginationInfo(0, 50, true));
+            
+            // Assert
+            Assert.NotNull(connections.Paging);
+        }
     }
 }

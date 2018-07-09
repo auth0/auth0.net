@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Auth0.Core.Collections;
 using Auth0.ManagementApi.Models;
@@ -54,13 +55,32 @@ namespace Auth0.ManagementApi.Clients
         ///     true.
         /// </param>
         /// <param name="q">
-        ///     Query in Lucene query string syntax. Only fields in app_metadata, user_metadata or the normalized user
-        ///     profile are searchable.
+        ///     Query in Lucene query string syntax.
         /// </param>
-        /// <param name="searchEngine">Use 'v2' if you want to try the new search engine, or 'v1' for the old search engine.</param>
+        /// <param name="searchEngine">
+        /// The version of the search engine to use.
+        /// Will default to v2 if no value is passed. Default will change to v3 on 2018/11/13.
+        /// For more info <a href="https://auth0.com/docs/users/search/v3#migrate-from-search-engine-v2-to-v3">see the online documentation</a>.
+        /// </param>
         /// <returns></returns>
+        [Obsolete("Use GetAllAsync(GetUsersRequest) or GetAllAsync(GetUsersRequest, PaginationInfo) instead")]
         Task<IPagedList<User>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null, string sort = null, string connection = null, string fields = null,
             bool? includeFields = null, string q = null, string searchEngine = null);
+
+        /// <summary>
+        /// Lists or search for users based on criteria.
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying users.</param>
+        /// <returns>An <see cref="IPagedList{GetUsersRequest}"/> containing the list of users.</returns>
+        Task<IPagedList<User>> GetAllAsync(GetUsersRequest request);
+
+        /// <summary>
+        /// Lists or search for users based on criteria.
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying users.</param>
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <returns>An <see cref="IPagedList{GetUsersRequest}"/> containing the list of users.</returns>
+        Task<IPagedList<User>> GetAllAsync(GetUsersRequest request, PaginationInfo pagination);
 
         /// <summary>
         ///     Gets a user.
@@ -86,8 +106,24 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="sort">The field to use for sorting. Use field:order where order is 1 for ascending and -1 for descending. For example date:-1</param>
         /// <param name="includeTotals">True if a query summary must be included in the result, false otherwise. Default false.</param>
         /// <returns></returns>
+        [Obsolete("Use GetLogsAsync(GetUserLogsRequest) or GetLogsAsync(GetUserLogsRequest, PaginationInfo) instead")]
         Task<IPagedList<LogEntry>> GetLogsAsync(string userId, int? page = null, int? perPage = null, string sort = null,
             bool? includeTotals = null);
+
+        /// <summary>
+        /// Retrieve every log event for a specific user.
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying logs for a user.</param>
+        /// <returns>An <see cref="IPagedList{LogEntry}"/> containing the log entries for the user.</returns>
+        Task<IPagedList<LogEntry>> GetLogsAsync(GetUserLogsRequest request); 
+
+        /// <summary>
+        /// Retrieve every log event for a specific user.
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying logs for a user.</param>
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <returns>An <see cref="IPagedList{LogEntry}"/> containing the log entries for the user.</returns>
+        Task<IPagedList<LogEntry>> GetLogsAsync(GetUserLogsRequest request, PaginationInfo pagination); 
 
         /// <summary>
         /// Gets all users by email address.

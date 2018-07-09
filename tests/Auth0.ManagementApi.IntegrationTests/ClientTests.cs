@@ -108,12 +108,33 @@ namespace Auth0.ManagementApi.IntegrationTests
         }
 
         [Fact]
-        public async Task Test_pagination_totals_deserialize_correctly()
+        public async Task Test_when_paging_not_specified_does_not_include_totals()
         {
-            var connections = await _apiClient.Clients.GetAllAsync(page: 0, perPage: 50, includeTotals: true);
+            // Act
+            var clients = await _apiClient.Clients.GetAllAsync(new GetClientsRequest());
+            
+            // Assert
+            Assert.Null(clients.Paging);
+        }
 
-            connections.Should().NotBeNull();
-            connections.Paging.Should().NotBeNull();
+        [Fact]
+        public async Task Test_paging_does_not_include_totals()
+        {
+            // Act
+            var clients = await _apiClient.Clients.GetAllAsync(new GetClientsRequest(), new PaginationInfo(0, 50, false));
+            
+            // Assert
+            Assert.Null(clients.Paging);
+        }
+
+        [Fact]
+        public async Task Test_paging_includes_totals()
+        {
+            // Act
+            var clients = await _apiClient.Clients.GetAllAsync(new GetClientsRequest(), new PaginationInfo(0, 50, true));
+            
+            // Assert
+            Assert.NotNull(clients.Paging);
         }
 
         [Fact]
@@ -135,7 +156,10 @@ namespace Auth0.ManagementApi.IntegrationTests
             var newClientResponse = await _apiClient.Clients.CreateAsync(newClientRequest);
           
             // Rotate the secret
-            var connections = await _apiClient.Clients.GetAllAsync(appType: new ClientApplicationType[] { ClientApplicationType.Native });
+            var connections = await _apiClient.Clients.GetAllAsync(new GetClientsRequest
+            {
+                AppType = new[] {ClientApplicationType.Native}
+            });
 
             // Assert
             connections.Count.Should().BeGreaterThan(0);

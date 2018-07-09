@@ -88,6 +88,7 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <inheritdoc />
+        [Obsolete("Use GetAllAsync(GetConnectionsRequest) or GetAllAsync(GetConnectionsRequest, PaginationInfo) instead")]
         public Task<IPagedList<Connection>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null, 
             string fields = null, bool? includeFields = null, string name = null, string[] strategy = null)
         {
@@ -105,6 +106,61 @@ namespace Auth0.ManagementApi.Clients
             if (strategy != null)
             {
                 foreach (var s in strategy)
+                {
+                    queryStrings.Add("strategy", s);
+                }
+            }
+            
+            return Connection.GetAsync<IPagedList<Connection>>("connections", null, queryStrings, null, new PagedListConverter<Connection>("connections"));
+        }
+
+        /// <inheritdoc />
+        public Task<IPagedList<Connection>> GetAllAsync(GetConnectionsRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            var queryStrings = new Dictionary<string, string>
+            {
+                {"fields", request.Fields},
+                {"include_fields", request.IncludeFields?.ToString().ToLower()},
+                {"name", request.Name}
+            };
+            
+            // Add each strategy as a separate querystring
+            if (request.Strategy != null)
+            {
+                foreach (var s in request.Strategy)
+                {
+                    queryStrings.Add("strategy", s);
+                }
+            }
+            
+            return Connection.GetAsync<IPagedList<Connection>>("connections", null, queryStrings, null, new PagedListConverter<Connection>("connections"));
+        }
+
+        /// <inheritdoc />
+        public Task<IPagedList<Connection>> GetAllAsync(GetConnectionsRequest request, PaginationInfo pagination)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+            if (pagination == null)
+                throw new ArgumentNullException(nameof(pagination));
+
+            var queryStrings = new Dictionary<string, string>
+            {
+                {"fields", request.Fields},
+                {"include_fields", request.IncludeFields?.ToString().ToLower()},
+                {"name", request.Name},
+                {"page", pagination.PageNo.ToString()},
+                {"per_page", pagination.PerPage.ToString()},
+                {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
+            };
+            
+            // Add each strategy as a separate querystring
+            if (request.Strategy != null)
+            {
+                foreach (var s in request.Strategy)
                 {
                     queryStrings.Add("strategy", s);
                 }
