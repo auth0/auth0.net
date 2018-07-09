@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ClientBase
    ">
-    <meta name="generator" content="docfx 2.20.0.0">
+    <meta name="generator" content="docfx 2.33.1.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="../styles/main.css">
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
+    
     
     
   </head>
@@ -79,10 +80,10 @@
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">ClientBase</span></div>
-  </div>
       <div class="level2"><a class="xref" href="Auth0.ManagementApi.Models.Client.html">Client</a></div>
       <div class="level2"><a class="xref" href="Auth0.ManagementApi.Models.ClientCreateRequest.html">ClientCreateRequest</a></div>
       <div class="level2"><a class="xref" href="Auth0.ManagementApi.Models.ClientUpdateRequest.html">ClientUpdateRequest</a></div>
+  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
@@ -218,32 +219,6 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_ManagementApi_Models_ClientBase_ApplicationType_" data-uid="Auth0.ManagementApi.Models.ClientBase.ApplicationType*"></a>
-  <h4 id="Auth0_ManagementApi_Models_ClientBase_ApplicationType" data-uid="Auth0.ManagementApi.Models.ClientBase.ApplicationType">ApplicationType</h4>
-  <div class="markdown level1 summary"><p>The type of application this client represents</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ClientApplicationType ApplicationType { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.ClientApplicationType.html">ClientApplicationType</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -405,6 +380,32 @@
   </table>
   
   
+  <a id="Auth0_ManagementApi_Models_ClientBase_Description_" data-uid="Auth0.ManagementApi.Models.ClientBase.Description*"></a>
+  <h4 id="Auth0_ManagementApi_Models_ClientBase_Description" data-uid="Auth0.ManagementApi.Models.ClientBase.Description">Description</h4>
+  <div class="markdown level1 summary"><p>The description of the client. Max character count is 140</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Description { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="Auth0_ManagementApi_Models_ClientBase_EncryptionKey_" data-uid="Auth0.ManagementApi.Models.ClientBase.EncryptionKey*"></a>
   <h4 id="Auth0_ManagementApi_Models_ClientBase_EncryptionKey" data-uid="Auth0.ManagementApi.Models.ClientBase.EncryptionKey">EncryptionKey</h4>
   <div class="markdown level1 summary"></div>
@@ -456,6 +457,32 @@
   </table>
   
   
+  <a id="Auth0_ManagementApi_Models_ClientBase_GrantTypes_" data-uid="Auth0.ManagementApi.Models.ClientBase.GrantTypes*"></a>
+  <h4 id="Auth0_ManagementApi_Models_ClientBase_GrantTypes" data-uid="Auth0.ManagementApi.Models.ClientBase.GrantTypes">GrantTypes</h4>
+  <div class="markdown level1 summary"><p>A set of grant types that the client is authorized to use</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string[] GrantTypes { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="Auth0_ManagementApi_Models_ClientBase_IsCustomLoginPageOn_" data-uid="Auth0.ManagementApi.Models.ClientBase.IsCustomLoginPageOn*"></a>
   <h4 id="Auth0_ManagementApi_Models_ClientBase_IsCustomLoginPageOn" data-uid="Auth0.ManagementApi.Models.ClientBase.IsCustomLoginPageOn">IsCustomLoginPageOn</h4>
   <div class="markdown level1 summary"><p>True if the custom login page is to be used, false otherwise. Defaults to true.</p>
@@ -463,7 +490,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool ? IsCustomLoginPageOn { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool? IsCustomLoginPageOn { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -489,7 +516,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool ? IsFirstParty { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool? IsFirstParty { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -527,6 +554,34 @@
     <tbody>
       <tr>
         <td><a class="xref" href="Auth0.ManagementApi.Models.JwtConfiguration.html">JwtConfiguration</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Models_ClientBase_LogoUri_" data-uid="Auth0.ManagementApi.Models.ClientBase.LogoUri*"></a>
+  <h4 id="Auth0_ManagementApi_Models_ClientBase_LogoUri" data-uid="Auth0.ManagementApi.Models.ClientBase.LogoUri">LogoUri</h4>
+  <div class="markdown level1 summary"><p>The logo_uri of the client. The URL of the logo to display for the application, 
+if none is set the default badge for this type of application will be shown. 
+Recommended size is 150x150 pixels</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string LogoUri { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -584,6 +639,32 @@
   </table>
   
   
+  <a id="Auth0_ManagementApi_Models_ClientBase_OidcConformant_" data-uid="Auth0.ManagementApi.Models.ClientBase.OidcConformant*"></a>
+  <h4 id="Auth0_ManagementApi_Models_ClientBase_OidcConformant" data-uid="Auth0.ManagementApi.Models.ClientBase.OidcConformant">OidcConformant</h4>
+  <div class="markdown level1 summary"><p>Indicates whether this client will conform to strict OIDC specifications.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool? OidcConformant { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="Auth0_ManagementApi_Models_ClientBase_ResourceServers_" data-uid="Auth0.ManagementApi.Models.ClientBase.ResourceServers*"></a>
   <h4 id="Auth0_ManagementApi_Models_ClientBase_ResourceServers" data-uid="Auth0.ManagementApi.Models.ClientBase.ResourceServers">ResourceServers</h4>
   <div class="markdown level1 summary"><p>A list of resource servers (APIs) that the client is authorized to request access tokens for, using the Client Credentials exchange.</p>
@@ -620,7 +701,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool ? Sso { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool? Sso { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -639,14 +720,14 @@
   </table>
   
   
-  <a id="Auth0_ManagementApi_Models_ClientBase_TokenEndpointAuthMethod_" data-uid="Auth0.ManagementApi.Models.ClientBase.TokenEndpointAuthMethod*"></a>
-  <h4 id="Auth0_ManagementApi_Models_ClientBase_TokenEndpointAuthMethod" data-uid="Auth0.ManagementApi.Models.ClientBase.TokenEndpointAuthMethod">TokenEndpointAuthMethod</h4>
-  <div class="markdown level1 summary"><p>Defines the requested authentication method for the token endpoint.</p>
+  <a id="Auth0_ManagementApi_Models_ClientBase_WebOrigins_" data-uid="Auth0.ManagementApi.Models.ClientBase.WebOrigins*"></a>
+  <h4 id="Auth0_ManagementApi_Models_ClientBase_WebOrigins" data-uid="Auth0.ManagementApi.Models.ClientBase.WebOrigins">WebOrigins</h4>
+  <div class="markdown level1 summary"><p>A set of allowed origins for use with Cross-Origin Authentication and web message response mode.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TokenEndpointAuthMethod TokenEndpointAuthMethod { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string[] WebOrigins { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -658,7 +739,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.TokenEndpointAuthMethod.html">TokenEndpointAuthMethod</a></td>
+        <td><span class="xref">System.String</span>[]</td>
         <td></td>
       </tr>
     </tbody>
@@ -688,7 +769,7 @@
               <a href="#top">Back to top</a>
             </span>
             
-            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+            <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>

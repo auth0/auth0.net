@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IAuthenticationApiClient
    ">
-    <meta name="generator" content="docfx 2.20.0.0">
+    <meta name="generator" content="docfx 2.33.1.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="../styles/main.css">
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
+    
     
     
   </head>
@@ -86,49 +87,6 @@
 </div>
   <h3 id="methods">Methods
   </h3>
-  
-  
-  <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_AuthenticateAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.AuthenticateAsync*"></a>
-  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_AuthenticateAsync_Auth0_AuthenticationApi_Models_AuthenticationRequest_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.AuthenticateAsync(Auth0.AuthenticationApi.Models.AuthenticationRequest)">AuthenticateAsync(AuthenticationRequest)</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use GetTokenAsync(ResourceOwnerTokenRequest) instead&quot;)]
-Task&lt;AccessTokenResponse&gt; AuthenticateAsync(AuthenticationRequest request)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.AuthenticationApi.Models.AuthenticationRequest.html">AuthenticationRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   
   
   <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_BuildAuthorizationUrl_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.BuildAuthorizationUrl*"></a>
@@ -302,51 +260,6 @@ Task&lt;AccessTokenResponse&gt; AuthenticateAsync(AuthenticationRequest request)
   </table>
   
   
-  <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_ExchangeCodeForAccessTokenAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.ExchangeCodeForAccessTokenAsync*"></a>
-  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_ExchangeCodeForAccessTokenAsync_Auth0_AuthenticationApi_Models_ExchangeCodeRequest_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.ExchangeCodeForAccessTokenAsync(Auth0.AuthenticationApi.Models.ExchangeCodeRequest)">ExchangeCodeForAccessTokenAsync(ExchangeCodeRequest)</h4>
-  <div class="markdown level1 summary"><p>Exhanges an OAuth authorization code for an access token. This needs to be called as part of the OAuth authentication process, after the user has
-authenticated and the redirect URI is called with an authorization code. </p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; ExchangeCodeForAccessTokenAsync(ExchangeCodeRequest request)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.AuthenticationApi.Models.ExchangeCodeRequest.html">ExchangeCodeRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.ExchangeCodeRequest.html">ExchangeCodeRequest</a> containing the authorization code and other information needed to exchange the code for an access token.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
   <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetImpersonationUrlAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetImpersonationUrlAsync*"></a>
   <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetImpersonationUrlAsync_Auth0_AuthenticationApi_Models_ImpersonationRequest_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetImpersonationUrlAsync(Auth0.AuthenticationApi.Models.ImpersonationRequest)">GetImpersonationUrlAsync(ImpersonationRequest)</h4>
   <div class="markdown level1 summary"><p>Generates a link that can be used once to log in as a specific user.</p>
@@ -387,6 +300,32 @@ authenticated and the redirect URI is called with an authorization code. </p>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">Uri</span>&gt;</td>
         <td><p>A <see cref="!:Uri"></see> which can be used to sign in as the specified user.</p>
 </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetLastApiInfo_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetLastApiInfo*"></a>
+  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetLastApiInfo" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetLastApiInfo">GetLastApiInfo()</h4>
+  <div class="markdown level1 summary"><p>Gets information about the last API call;</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">ApiInfo GetLastApiInfo()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.Core.Http.ApiInfo.html">ApiInfo</a></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -619,7 +558,8 @@ authenticated and the redirect URI is called with an authorization code. </p>
   
   <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync*"></a>
   <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest)">GetTokenAsync(ResourceOwnerTokenRequest)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Given an <a class="xref" href="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.html">ResourceOwnerTokenRequest</a>, it will do the authentication on the provider and return an <a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -638,7 +578,8 @@ authenticated and the redirect URI is called with an authorization code. </p>
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.html">ResourceOwnerTokenRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td></td>
+        <td><p>The authentication request details containing information regarding the username, password etc.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -653,7 +594,8 @@ authenticated and the redirect URI is called with an authorization code. </p>
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
-        <td></td>
+        <td><p>An <a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a> with the response.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -909,51 +851,6 @@ authenticated and the redirect URI is called with an authorization code. </p>
       </tr>
     </tbody>
   </table>
-  
-  
-  <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_UsernamePasswordLoginAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.UsernamePasswordLoginAsync*"></a>
-  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_UsernamePasswordLoginAsync_Auth0_AuthenticationApi_Models_UsernamePasswordLoginRequest_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.UsernamePasswordLoginAsync(Auth0.AuthenticationApi.Models.UsernamePasswordLoginRequest)">UsernamePasswordLoginAsync(UsernamePasswordLoginRequest)</h4>
-  <div class="markdown level1 summary"><p>Given an <a class="xref" href="Auth0.AuthenticationApi.Models.UsernamePasswordLoginRequest.html">UsernamePasswordLoginRequest</a>, it will do the authentication on the provider and return a <a class="xref" href="Auth0.AuthenticationApi.Models.UsernamePasswordLoginResponse.html">UsernamePasswordLoginResponse</a></p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;UsernamePasswordLoginResponse&gt; UsernamePasswordLoginAsync(UsernamePasswordLoginRequest request)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.AuthenticationApi.Models.UsernamePasswordLoginRequest.html">UsernamePasswordLoginRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>The authentication request details containing information regarding the connection, username, password etc.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.UsernamePasswordLoginResponse.html">UsernamePasswordLoginResponse</a>&gt;</td>
-        <td><p>A <a class="xref" href="Auth0.AuthenticationApi.Models.UsernamePasswordLoginResponse.html">UsernamePasswordLoginResponse</a> containing the WS-Federation Login Form, which can be posted by the user to trigger a server-side login.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
 </article>
           </div>
           
@@ -979,7 +876,7 @@ authenticated and the redirect URI is called with an authorization code. </p>
               <a href="#top">Back to top</a>
             </span>
             
-            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+            <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>

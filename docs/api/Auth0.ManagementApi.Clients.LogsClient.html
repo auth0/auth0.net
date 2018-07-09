@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class LogsClient
    ">
-    <meta name="generator" content="docfx 2.20.0.0">
+    <meta name="generator" content="docfx 2.33.1.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="../styles/main.css">
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
+    
     
     
   </head>
@@ -80,6 +81,10 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Auth0.ManagementApi.Clients.ClientBase.html">ClientBase</a></div>
     <div class="level2"><span class="xref">LogsClient</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Auth0.ManagementApi.Clients.ILogsClient.html">ILogsClient</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -147,13 +152,110 @@
   
   
   <a id="Auth0_ManagementApi_Clients_LogsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.LogsClient.GetAllAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_LogsClient_GetAllAsync_GetLogsRequest_" data-uid="Auth0.ManagementApi.Clients.LogsClient.GetAllAsync(GetLogsRequest)">GetAllAsync(GetLogsRequest)</h4>
+  <div class="markdown level1 summary"><p>Retrieves log entries that match the specified search criteria</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;LogEntry&gt;&gt; GetAllAsync(GetLogsRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GetLogsRequest</span></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Specifies criteria to use when querying logs.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">LogEntry</span>&gt;&gt;</td>
+        <td><p>An <see cref="!:IPagedList&lt;LogEntry>"></see> containing the list of log entries.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_LogsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.LogsClient.GetAllAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_LogsClient_GetAllAsync_GetLogsRequest_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.LogsClient.GetAllAsync(GetLogsRequest,PaginationInfo)">GetAllAsync(GetLogsRequest, PaginationInfo)</h4>
+  <div class="markdown level1 summary"><p>Retrieves log entries that match the specified search criteria</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;LogEntry&gt;&gt; GetAllAsync(GetLogsRequest request, PaginationInfo pagination)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GetLogsRequest</span></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Specifies criteria to use when querying logs.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">PaginationInfo</span></td>
+        <td><span class="parametername">pagination</span></td>
+        <td><p>Specifies pagination info to use when requesting paged results.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">LogEntry</span>&gt;&gt;</td>
+        <td><p>An <see cref="!:IPagedList&lt;LogEntry>"></see> containing the list of log entries.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_LogsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.LogsClient.GetAllAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_LogsClient_GetAllAsync_System_Nullable_System_Int32__System_Nullable_System_Int32__System_String_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_String_System_Nullable_System_Int32__System_String_" data-uid="Auth0.ManagementApi.Clients.LogsClient.GetAllAsync(System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.String,System.Nullable{System.Int32},System.String)">GetAllAsync(Nullable&lt;Int32&gt;, Nullable&lt;Int32&gt;, String, String, Nullable&lt;Boolean&gt;, Nullable&lt;Boolean&gt;, String, Nullable&lt;Int32&gt;, String)</h4>
   <div class="markdown level1 summary"><p>Retrieves log entries that match the specified search criteria</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;LogEntry&gt;&gt; GetAllAsync(int ? page = null, int ? perPage = null, string sort = null, string fields = null, bool ? includeFields = null, bool ? includeTotals = null, string from = null, int ? take = null, string q = null)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use GetAllAsync(GetLogsRequest) or GetAllAsync(GetLogsRequest,PaginationInfo) instead&quot;)]
+public Task&lt;IPagedList&lt;LogEntry&gt;&gt; GetAllAsync(int? page = default (int? ), int? perPage = default (int? ), string sort = null, string fields = null, bool? includeFields = default (bool? ), bool? includeTotals = default (bool? ), string from = null, int? take = default (int? ), string q = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -236,8 +338,6 @@
       </tr>
     </tbody>
   </table>
-  <h5 class="implements">Implements</h5>
-      <div><a class="xref" href="Auth0.ManagementApi.Clients.ILogsClient.html#Auth0_ManagementApi_Clients_ILogsClient_GetAllAsync_System_Nullable_System_Int32__System_Nullable_System_Int32__System_String_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_String_System_Nullable_System_Int32__System_String_">ILogsClient.GetAllAsync(Nullable&lt;Int32&gt;, Nullable&lt;Int32&gt;, String, String, Nullable&lt;Boolean&gt;, Nullable&lt;Boolean&gt;, String, Nullable&lt;Int32&gt;, String)</a></div>
   <h5 id="Auth0_ManagementApi_Clients_LogsClient_GetAllAsync_System_Nullable_System_Int32__System_Nullable_System_Int32__System_String_System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_String_System_Nullable_System_Int32__System_String__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Will list all entries if no criteria is used. You can search with a criteria using the q parameter or you can search by a specific log ID (search by checkpoint)</p>
 </div>
@@ -285,8 +385,10 @@
       </tr>
     </tbody>
   </table>
-  <h5 class="implements">Implements</h5>
-      <div><a class="xref" href="Auth0.ManagementApi.Clients.ILogsClient.html#Auth0_ManagementApi_Clients_ILogsClient_GetAsync_System_String_">ILogsClient.GetAsync(String)</a></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Auth0.ManagementApi.Clients.ILogsClient.html">ILogsClient</a>
+  </div>
 </article>
           </div>
           
@@ -312,7 +414,7 @@
               <a href="#top">Back to top</a>
             </span>
             
-            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+            <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ClientGrantsClient
    ">
-    <meta name="generator" content="docfx 2.20.0.0">
+    <meta name="generator" content="docfx 2.33.1.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="../styles/main.css">
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
+    
     
     
   </head>
@@ -80,6 +81,10 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Auth0.ManagementApi.Clients.ClientBase.html">ClientBase</a></div>
     <div class="level2"><span class="xref">ClientGrantsClient</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Auth0.ManagementApi.Clients.IClientGrantsClient.html">IClientGrantsClient</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -189,8 +194,6 @@
       </tr>
     </tbody>
   </table>
-  <h5 class="implements">Implements</h5>
-      <div><a class="xref" href="Auth0.ManagementApi.Clients.IClientGrantsClient.html#Auth0_ManagementApi_Clients_IClientGrantsClient_CreateAsync_ClientGrantCreateRequest_">IClientGrantsClient.CreateAsync(ClientGrantCreateRequest)</a></div>
   
   
   <a id="Auth0_ManagementApi_Clients_ClientGrantsClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.DeleteAsync*"></a>
@@ -235,8 +238,102 @@
       </tr>
     </tbody>
   </table>
-  <h5 class="implements">Implements</h5>
-      <div><a class="xref" href="Auth0.ManagementApi.Clients.IClientGrantsClient.html#Auth0_ManagementApi_Clients_IClientGrantsClient_DeleteAsync_System_String_">IClientGrantsClient.DeleteAsync(String)</a></div>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_ClientGrantsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.GetAllAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_ClientGrantsClient_GetAllAsync_GetClientGrantsRequest_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.GetAllAsync(GetClientGrantsRequest)">GetAllAsync(GetClientGrantsRequest)</h4>
+  <div class="markdown level1 summary"><p>Gets a list of all the client grants.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;ClientGrant&gt;&gt; GetAllAsync(GetClientGrantsRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GetClientGrantsRequest</span></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Specifies criteria to use when querying client grants</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">ClientGrant</span>&gt;&gt;</td>
+        <td><p>A paged list of client grants</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_ClientGrantsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.GetAllAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_ClientGrantsClient_GetAllAsync_GetClientGrantsRequest_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.GetAllAsync(GetClientGrantsRequest,PaginationInfo)">GetAllAsync(GetClientGrantsRequest, PaginationInfo)</h4>
+  <div class="markdown level1 summary"><p>Gets a list of all the client grants.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;ClientGrant&gt;&gt; GetAllAsync(GetClientGrantsRequest request, PaginationInfo pagination)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GetClientGrantsRequest</span></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Specifies criteria to use when querying client grants.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">PaginationInfo</span></td>
+        <td><span class="parametername">pagination</span></td>
+        <td><p>Specifies pagination info to use when requesting paged results.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">ClientGrant</span>&gt;&gt;</td>
+        <td><p>A paged list of client grants</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="Auth0_ManagementApi_Clients_ClientGrantsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.GetAllAsync*"></a>
@@ -246,7 +343,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;ClientGrant&gt;&gt; GetAllAsync(string audience = null)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use GetAllAsync(GetClientGrantsRequest) or GetAllAsync(GetClientGrantsRequest, PaginationInfo) instead&quot;)]
+public Task&lt;IList&lt;ClientGrant&gt;&gt; GetAllAsync(string audience = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -282,8 +380,6 @@
       </tr>
     </tbody>
   </table>
-  <h5 class="implements">Implements</h5>
-      <div><a class="xref" href="Auth0.ManagementApi.Clients.IClientGrantsClient.html#Auth0_ManagementApi_Clients_IClientGrantsClient_GetAllAsync_System_String_">IClientGrantsClient.GetAllAsync(String)</a></div>
   
   
   <a id="Auth0_ManagementApi_Clients_ClientGrantsClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.UpdateAsync*"></a>
@@ -334,8 +430,10 @@
       </tr>
     </tbody>
   </table>
-  <h5 class="implements">Implements</h5>
-      <div><a class="xref" href="Auth0.ManagementApi.Clients.IClientGrantsClient.html#Auth0_ManagementApi_Clients_IClientGrantsClient_UpdateAsync_System_String_ClientGrantUpdateRequest_">IClientGrantsClient.UpdateAsync(String, ClientGrantUpdateRequest)</a></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Auth0.ManagementApi.Clients.IClientGrantsClient.html">IClientGrantsClient</a>
+  </div>
 </article>
           </div>
           
@@ -361,7 +459,7 @@
               <a href="#top">Back to top</a>
             </span>
             
-            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+            <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>

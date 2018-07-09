@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IUsersClient
    ">
-    <meta name="generator" content="docfx 2.20.0.0">
+    <meta name="generator" content="docfx 2.33.1.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="../styles/main.css">
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
+    
     
     
   </head>
@@ -250,13 +251,110 @@
   
   
   <a id="Auth0_ManagementApi_Clients_IUsersClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.IUsersClient.GetAllAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_IUsersClient_GetAllAsync_GetUsersRequest_" data-uid="Auth0.ManagementApi.Clients.IUsersClient.GetAllAsync(GetUsersRequest)">GetAllAsync(GetUsersRequest)</h4>
+  <div class="markdown level1 summary"><p>Lists or search for users based on criteria.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;User&gt;&gt; GetAllAsync(GetUsersRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GetUsersRequest</span></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Specifies criteria to use when querying users.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">User</span>&gt;&gt;</td>
+        <td><p>An <see cref="!:IPagedList&lt;GetUsersRequest>"></see> containing the list of users.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_IUsersClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.IUsersClient.GetAllAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_IUsersClient_GetAllAsync_GetUsersRequest_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.IUsersClient.GetAllAsync(GetUsersRequest,PaginationInfo)">GetAllAsync(GetUsersRequest, PaginationInfo)</h4>
+  <div class="markdown level1 summary"><p>Lists or search for users based on criteria.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;User&gt;&gt; GetAllAsync(GetUsersRequest request, PaginationInfo pagination)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GetUsersRequest</span></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Specifies criteria to use when querying users.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">PaginationInfo</span></td>
+        <td><span class="parametername">pagination</span></td>
+        <td><p>Specifies pagination info to use when requesting paged results.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">User</span>&gt;&gt;</td>
+        <td><p>An <see cref="!:IPagedList&lt;GetUsersRequest>"></see> containing the list of users.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_IUsersClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.IUsersClient.GetAllAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_IUsersClient_GetAllAsync_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Boolean__System_String_System_String_System_String_System_Nullable_System_Boolean__System_String_System_String_" data-uid="Auth0.ManagementApi.Clients.IUsersClient.GetAllAsync(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.String,System.String,System.String,System.Nullable{System.Boolean},System.String,System.String)">GetAllAsync(Nullable&lt;Int32&gt;, Nullable&lt;Int32&gt;, Nullable&lt;Boolean&gt;, String, String, String, Nullable&lt;Boolean&gt;, String, String)</h4>
   <div class="markdown level1 summary"><p>Lists or search for users based on criteria.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;User&gt;&gt; GetAllAsync(int ? page = null, int ? perPage = null, bool ? includeTotals = null, string sort = null, string connection = null, string fields = null, bool ? includeFields = null, string q = null, string searchEngine = null)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use GetAllAsync(GetUsersRequest) or GetAllAsync(GetUsersRequest, PaginationInfo) instead&quot;)]
+Task&lt;IPagedList&lt;User&gt;&gt; GetAllAsync(int? page = default (int? ), int? perPage = default (int? ), bool? includeTotals = default (bool? ), string sort = null, string connection = null, string fields = null, bool? includeFields = default (bool? ), string q = null, string searchEngine = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -302,7 +400,7 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">fields</span></td>
         <td><p>A comma separated list of fields to include or exclude (depending on
-<span class="paramref">includeFields</span>) from the result, empty to retrieve all fields.</p>
+<code data-dev-comment-type="paramref" class="paramref">includeFields</code>) from the result, empty to retrieve all fields.</p>
 </td>
       </tr>
       <tr>
@@ -315,14 +413,15 @@ true.</p>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">q</span></td>
-        <td><p>Query in Lucene query string syntax. Only fields in app_metadata, user_metadata or the normalized user
-profile are searchable.</p>
+        <td><p>Query in Lucene query string syntax.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">searchEngine</span></td>
-        <td><p>Use &apos;v2&apos; if you want to try the new search engine, or &apos;v1&apos; for the old search engine.</p>
+        <td><p>The version of the search engine to use.
+Will default to v2 if no value is passed. Default will change to v3 on 2018/11/13.
+For more info <a href="https://auth0.com/docs/users/search/v3#migrate-from-search-engine-v2-to-v3">see the online documentation</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -404,13 +503,110 @@ true)</p>
   
   
   <a id="Auth0_ManagementApi_Clients_IUsersClient_GetLogsAsync_" data-uid="Auth0.ManagementApi.Clients.IUsersClient.GetLogsAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_IUsersClient_GetLogsAsync_GetUserLogsRequest_" data-uid="Auth0.ManagementApi.Clients.IUsersClient.GetLogsAsync(GetUserLogsRequest)">GetLogsAsync(GetUserLogsRequest)</h4>
+  <div class="markdown level1 summary"><p>Retrieve every log event for a specific user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;LogEntry&gt;&gt; GetLogsAsync(GetUserLogsRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GetUserLogsRequest</span></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Specifies criteria to use when querying logs for a user.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">LogEntry</span>&gt;&gt;</td>
+        <td><p>An <see cref="!:IPagedList&lt;LogEntry>"></see> containing the log entries for the user.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_IUsersClient_GetLogsAsync_" data-uid="Auth0.ManagementApi.Clients.IUsersClient.GetLogsAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_IUsersClient_GetLogsAsync_GetUserLogsRequest_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.IUsersClient.GetLogsAsync(GetUserLogsRequest,PaginationInfo)">GetLogsAsync(GetUserLogsRequest, PaginationInfo)</h4>
+  <div class="markdown level1 summary"><p>Retrieve every log event for a specific user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;LogEntry&gt;&gt; GetLogsAsync(GetUserLogsRequest request, PaginationInfo pagination)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GetUserLogsRequest</span></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Specifies criteria to use when querying logs for a user.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">PaginationInfo</span></td>
+        <td><span class="parametername">pagination</span></td>
+        <td><p>Specifies pagination info to use when requesting paged results.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">LogEntry</span>&gt;&gt;</td>
+        <td><p>An <see cref="!:IPagedList&lt;LogEntry>"></see> containing the log entries for the user.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_IUsersClient_GetLogsAsync_" data-uid="Auth0.ManagementApi.Clients.IUsersClient.GetLogsAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_IUsersClient_GetLogsAsync_System_String_System_Nullable_System_Int32__System_Nullable_System_Int32__System_String_System_Nullable_System_Boolean__" data-uid="Auth0.ManagementApi.Clients.IUsersClient.GetLogsAsync(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.Nullable{System.Boolean})">GetLogsAsync(String, Nullable&lt;Int32&gt;, Nullable&lt;Int32&gt;, String, Nullable&lt;Boolean&gt;)</h4>
   <div class="markdown level1 summary"><p>Retrieve every log event for a specific user id</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;LogEntry&gt;&gt; GetLogsAsync(string userId, int ? page = null, int ? perPage = null, string sort = null, bool ? includeTotals = null)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use GetLogsAsync(GetUserLogsRequest) or GetLogsAsync(GetUserLogsRequest, PaginationInfo) instead&quot;)]
+Task&lt;IPagedList&lt;LogEntry&gt;&gt; GetLogsAsync(string userId, int? page = default (int? ), int? perPage = default (int? ), string sort = null, bool? includeTotals = default (bool? ))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -465,6 +661,62 @@ true)</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">LogEntry</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_IUsersClient_GetUsersByEmailAsync_" data-uid="Auth0.ManagementApi.Clients.IUsersClient.GetUsersByEmailAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_IUsersClient_GetUsersByEmailAsync_System_String_System_String_System_Nullable_System_Boolean__" data-uid="Auth0.ManagementApi.Clients.IUsersClient.GetUsersByEmailAsync(System.String,System.String,System.Nullable{System.Boolean})">GetUsersByEmailAsync(String, String, Nullable&lt;Boolean&gt;)</h4>
+  <div class="markdown level1 summary"><p>Gets all users by email address.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IList&lt;User&gt;&gt; GetUsersByEmailAsync(string email, string fields = null, bool? includeFields = default (bool? ))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">email</span></td>
+        <td><p>The email address to search for</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fields</span></td>
+        <td><p>A comma separated list of fields to include or exclude (depending on <see cref="!:includeFields"></see>) from the result, null to retrieve all fields</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">includeFields</span></td>
+        <td><p>true if the fields specified are to be included in the result, false otherwise. Defaults to true</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">User</span>&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -706,7 +958,7 @@ true)</p>
               <a href="#top">Back to top</a>
             </span>
             
-            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+            <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IConnectionsClient
    ">
-    <meta name="generator" content="docfx 2.20.0.0">
+    <meta name="generator" content="docfx 2.33.1.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="../styles/main.css">
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
+    
     
     
   </head>
@@ -228,13 +229,191 @@
   
   
   <a id="Auth0_ManagementApi_Clients_IConnectionsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.IConnectionsClient.GetAllAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_IConnectionsClient_GetAllAsync_GetConnectionsRequest_" data-uid="Auth0.ManagementApi.Clients.IConnectionsClient.GetAllAsync(GetConnectionsRequest)">GetAllAsync(GetConnectionsRequest)</h4>
+  <div class="markdown level1 summary"><p>Retrieves every connection matching the specified strategy. All connections are retrieved if no strategy is being specified. Accepts a list of fields to include or exclude in the resulting list of connection objects.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;Connection&gt;&gt; GetAllAsync(GetConnectionsRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GetConnectionsRequest</span></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Specifies criteria to use when querying connections.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">Connection</span>&gt;&gt;</td>
+        <td><p>An <see cref="!:IPagedList&lt;Connection>"></see> containing the list of connections.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_IConnectionsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.IConnectionsClient.GetAllAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_IConnectionsClient_GetAllAsync_GetConnectionsRequest_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.IConnectionsClient.GetAllAsync(GetConnectionsRequest,PaginationInfo)">GetAllAsync(GetConnectionsRequest, PaginationInfo)</h4>
+  <div class="markdown level1 summary"><p>Retrieves every connection matching the specified strategy. All connections are retrieved if no strategy is being specified. Accepts a list of fields to include or exclude in the resulting list of connection objects.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;Connection&gt;&gt; GetAllAsync(GetConnectionsRequest request, PaginationInfo pagination)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GetConnectionsRequest</span></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Specifies criteria to use when querying connections.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">PaginationInfo</span></td>
+        <td><span class="parametername">pagination</span></td>
+        <td><p>Specifies pagination info to use when requesting paged results.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">Connection</span>&gt;&gt;</td>
+        <td><p>An <see cref="!:IPagedList&lt;Connection>"></see> containing the list of connections.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_IConnectionsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.IConnectionsClient.GetAllAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_IConnectionsClient_GetAllAsync_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Boolean__System_String_System_Nullable_System_Boolean__System_String_System_String___" data-uid="Auth0.ManagementApi.Clients.IConnectionsClient.GetAllAsync(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.String,System.Nullable{System.Boolean},System.String,System.String[])">GetAllAsync(Nullable&lt;Int32&gt;, Nullable&lt;Int32&gt;, Nullable&lt;Boolean&gt;, String, Nullable&lt;Boolean&gt;, String, String[])</h4>
+  <div class="markdown level1 summary"><p>Retrieves every connection matching the specified strategy. All connections are retrieved if no strategy is being specified. Accepts a list of fields to include or exclude in the resulting list of connection objects.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use GetAllAsync(GetConnectionsRequest) or GetAllAsync(GetConnectionsRequest, PaginationInfo) instead&quot;)]
+Task&lt;IPagedList&lt;Connection&gt;&gt; GetAllAsync(int? page = default (int? ), int? perPage = default (int? ), bool? includeTotals = default (bool? ), string fields = null, bool? includeFields = default (bool? ), string name = null, string[] strategy = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">page</span></td>
+        <td><p>The page number. Zero based.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">perPage</span></td>
+        <td><p>The amount of entries per page. Default: no paging is used, all connections are returned.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">includeTotals</span></td>
+        <td><p>True if a query summary must be included in the result, false otherwise. Default false.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fields</span></td>
+        <td><p>A comma separated list of fields to include or exclude (depending on include_fields) from the result, empty to retrieve all fields.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">includeFields</span></td>
+        <td><p>true if the fields specified are to be included in the result, false otherwise (defaults to true).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name of the connection to retrieve</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">strategy</span></td>
+        <td><p>Only retrieve connections with these strategies.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">Connection</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_IConnectionsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.IConnectionsClient.GetAllAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_IConnectionsClient_GetAllAsync_System_String_System_String_System_Boolean_System_String_" data-uid="Auth0.ManagementApi.Clients.IConnectionsClient.GetAllAsync(System.String,System.String,System.Boolean,System.String)">GetAllAsync(String, String, Boolean, String)</h4>
   <div class="markdown level1 summary"><p>Retrieves every connection matching the specified strategy. All connections are retrieved if no strategy is being specified. Accepts a list of fields to include or exclude in the resulting list of connection objects.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IList&lt;Connection&gt;&gt; GetAllAsync(string strategy, string fields = null, bool includeFields = true, string name = null)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use the paged method overload instead&quot;)]
+Task&lt;IList&lt;Connection&gt;&gt; GetAllAsync(string strategy, string fields = null, bool includeFields = true, string name = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -292,7 +471,7 @@
   
   <a id="Auth0_ManagementApi_Clients_IConnectionsClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.IConnectionsClient.GetAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_IConnectionsClient_GetAsync_System_String_System_String_System_Boolean_" data-uid="Auth0.ManagementApi.Clients.IConnectionsClient.GetAsync(System.String,System.String,System.Boolean)">GetAsync(String, String, Boolean)</h4>
-  <div class="markdown level1 summary"><p>Retrieves a connection by its <span class="paramref">id</span></p>
+  <div class="markdown level1 summary"><p>Retrieves a connection by its <code data-dev-comment-type="paramref" class="paramref">id</code></p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -421,7 +600,7 @@
               <a href="#top">Back to top</a>
             </span>
             
-            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+            <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>

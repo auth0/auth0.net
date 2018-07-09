@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IClientsClient
    ">
-    <meta name="generator" content="docfx 2.20.0.0">
+    <meta name="generator" content="docfx 2.33.1.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="../styles/main.css">
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
+    
     
     
   </head>
@@ -174,13 +175,197 @@
   
   
   <a id="Auth0_ManagementApi_Clients_IClientsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.IClientsClient.GetAllAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_IClientsClient_GetAllAsync_GetClientsRequest_" data-uid="Auth0.ManagementApi.Clients.IClientsClient.GetAllAsync(GetClientsRequest)">GetAllAsync(GetClientsRequest)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a list of all client applications.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;Client&gt;&gt; GetAllAsync(GetClientsRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GetClientsRequest</span></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Specifies criteria to use when querying clients.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">Client</span>&gt;&gt;</td>
+        <td><p>An <see cref="!:IPagedList&lt;Client>"></see> containing the clients.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_IClientsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.IClientsClient.GetAllAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_IClientsClient_GetAllAsync_GetClientsRequest_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.IClientsClient.GetAllAsync(GetClientsRequest,PaginationInfo)">GetAllAsync(GetClientsRequest, PaginationInfo)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a list of all client applications.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;Client&gt;&gt; GetAllAsync(GetClientsRequest request, PaginationInfo pagination)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GetClientsRequest</span></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>Specifies criteria to use when querying clients.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">PaginationInfo</span></td>
+        <td><span class="parametername">pagination</span></td>
+        <td><p>Specifies pagination info to use when requesting paged results.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">Client</span>&gt;&gt;</td>
+        <td><p>An <see cref="!:IPagedList&lt;Client>"></see> containing the clients.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_IClientsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.IClientsClient.GetAllAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_IClientsClient_GetAllAsync_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Boolean__System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Nullable_System_Boolean__ClientApplicationType___" data-uid="Auth0.ManagementApi.Clients.IClientsClient.GetAllAsync(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},ClientApplicationType[])">GetAllAsync(Nullable&lt;Int32&gt;, Nullable&lt;Int32&gt;, Nullable&lt;Boolean&gt;, String, Nullable&lt;Boolean&gt;, Nullable&lt;Boolean&gt;, Nullable&lt;Boolean&gt;, ClientApplicationType[])</h4>
+  <div class="markdown level1 summary"><p>Retrieves a list of all client applications.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use GetAllAsync(GetClientsRequest) or GetAllAsync(GetClientsRequest, PaginationInfo) instead&quot;)]
+Task&lt;IPagedList&lt;Client&gt;&gt; GetAllAsync(int? page = default (int? ), int? perPage = default (int? ), bool? includeTotals = default (bool? ), string fields = null, bool? includeFields = default (bool? ), bool? isGlobal = default (bool? ), bool? isFirstParty = default (bool? ), ClientApplicationType[] appType = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">page</span></td>
+        <td><p>The page number. Zero based.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="parametername">perPage</span></td>
+        <td><p>The amount of entries per page. Default: no paging is used, all connections are returned.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">includeTotals</span></td>
+        <td><p>True if a query summary must be included in the result, false otherwise. Default false.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">fields</span></td>
+        <td><p>A comma separated list of fields to include or exclude (depending on include_fields) from the result, empty to retrieve all fields.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">includeFields</span></td>
+        <td><p>true if the fields specified are to be included in the result, false otherwise (defaults to true).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">isGlobal</span></td>
+        <td><p>Filter on the global client parameter.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="parametername">isFirstParty</span></td>
+        <td><p>Filter on whether or not a client is a first party client.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">ClientApplicationType</span>[]</td>
+        <td><span class="parametername">appType</span></td>
+        <td><p>List of application types used to filter the returned clients</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">Client</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_IClientsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.IClientsClient.GetAllAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_IClientsClient_GetAllAsync_System_String_System_Boolean_" data-uid="Auth0.ManagementApi.Clients.IClientsClient.GetAllAsync(System.String,System.Boolean)">GetAllAsync(String, Boolean)</h4>
   <div class="markdown level1 summary"><p>Retrieves a list of all client applications. Accepts a list of fields to include or exclude.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IList&lt;Client&gt;&gt; GetAllAsync(string fields = null, bool includeFields = true)</code></pre>
+    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use the paged method overload instead&quot;)]
+Task&lt;IList&lt;Client&gt;&gt; GetAllAsync(string fields = null, bool includeFields = true)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -283,6 +468,50 @@ true)</p>
   </table>
   
   
+  <a id="Auth0_ManagementApi_Clients_IClientsClient_RotateClientSecret_" data-uid="Auth0.ManagementApi.Clients.IClientsClient.RotateClientSecret*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_IClientsClient_RotateClientSecret_System_String_" data-uid="Auth0.ManagementApi.Clients.IClientsClient.RotateClientSecret(System.String)">RotateClientSecret(String)</h4>
+  <div class="markdown level1 summary"><p>Rotate a client secret. The generated secret is NOT base64 encoded.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Client&gt; RotateClientSecret(string id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The id of the client which secret needs to be rotated</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">Client</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="Auth0_ManagementApi_Clients_IClientsClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.IClientsClient.UpdateAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_IClientsClient_UpdateAsync_System_String_ClientUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.IClientsClient.UpdateAsync(System.String,ClientUpdateRequest)">UpdateAsync(String, ClientUpdateRequest)</h4>
   <div class="markdown level1 summary"><p>Updates a client application.</p>
@@ -356,7 +585,7 @@ true)</p>
               <a href="#top">Back to top</a>
             </span>
             
-            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+            <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
