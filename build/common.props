@@ -12,6 +12,12 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 5.7.0
+      - Add pagination methods for Client Grants, Resource Servers and Rules
+      - Made all pagination methods consistent by introducing Get*Request and PaginationInfo classes
+      - Allow passing HttpClient to constuctor of AuthenticationApiClient and ManagementApiClient so you can manage lifetime outside of the Auth0 classes. Thank you @davidallyoung!
+      - Updated LoginRequestQuery with additional fields passed from rules
+
       Version 5.6.0
       - Add GetLastApiInfo() to IAuthenticationApiClient
 
@@ -47,7 +53,7 @@
     <LangVersion>7.1</LangVersion>
     
     <Major>5</Major>
-    <Minor>6</Minor>
+    <Minor>7</Minor>
     <Revision>0</Revision>
 
   </PropertyGroup>
