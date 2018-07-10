@@ -53,13 +53,9 @@ var client = new AuthenticationApiClient(new Uri("https://YOUR_AUTH0_DOMAIN"));
 
 ## Authentication
 
-This library is useful to consume the http api of Auth0, in order to authenticate users you can use our platform specific SDKs:
-* [ASP.NET OWIN](https://github.com/auth0/auth0-aspnet-owin)
-* [ASP.NET](https://github.com/auth0/auth0-aspnet)
-* [Windows 10 (UWP)](https://github.com/auth0/Auth0.Windows.UWP)
-* [Windows Phone](https://github.com/auth0/Auth0.WindowsPhone)
-* [Winforms or WPF](https://github.com/auth0/Auth0.WinformsWPF)
-* [WCF](https://docs.auth0.com/wcf-tutorial)
+This library is contains [URL Builders](http://auth0.github.io/auth0.net/#using-url-builders) which will assist you with constructing an authentication URL, but does not actually handle the authentication/authorization flow for you. It is suggested that you refer to the [Quickstart tutorials](https://auth0.com/docs/quickstarts) for guidance on how to implement authentication for your specific platform.
+
+**Important note on state validation**: If you choose to use the [AuthorizationUrlBuilder](http://auth0.github.io/auth0.net/api/Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html) to construct the authorization URL and implement a login flow callback yourself, it is important to generate and store a state value (using [WithState](http://auth0.github.io/auth0.net/api/Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html#Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithState_System_String_)) and validate it in your callback URL before calling exchanging the authorization code for the tokens.
 
 ## Documentation
 

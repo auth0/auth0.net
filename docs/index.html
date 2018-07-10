@@ -125,7 +125,9 @@ var authorizationUrl = client.BuildAuthorizationUrl()
 
     return Redirect(authorizationUrl);
 }
-</code></pre><h2 id="using-the-management-api">Using the Management API</h2>
+</code></pre><div class="IMPORTANT"><h5>Important</h5><p>If you choose to use the <a class="xref" href="api/Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a> to construct the authorization URL and implement a login flow callback yourself, it is important to generate and store a state value using <a class="xref" href="api/Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html#Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithState_System_String_">WithState(String)</a> and validate it in your callback URL before calling exchanging the authorization code for the tokens.</p>
+</div>
+<h2 id="using-the-management-api">Using the Management API</h2>
 <p>This section will take your through the basics of using the Management API. </p>
 <h3 id="basic-usage-1">Basic Usage</h3>
 <p>Ensure that you include the Management API namespace in your source code file:</p>

@@ -103,6 +103,9 @@ public ActionResult Login()
 }
 ```
 
+> [!IMPORTANT]
+> If you choose to use the @Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder to construct the authorization URL and implement a login flow callback yourself, it is important to generate and store a state value using @Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithState(System.String) and validate it in your callback URL before calling exchanging the authorization code for the tokens.
+
 ## Using the Management API
 
 This section will take your through the basics of using the Management API. 
