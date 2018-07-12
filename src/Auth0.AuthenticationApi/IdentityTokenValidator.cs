@@ -1,9 +1,7 @@
 ﻿using System;
 using System.IdentityModel.Tokens.Jwt;
-using System.Threading;
 using System.Threading.Tasks;
 using Auth0.AuthenticationApi.Exceptions;
-using Microsoft.IdentityModel.Protocols;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
 
@@ -13,6 +11,9 @@ namespace Auth0.AuthenticationApi
     {
         public async Task ValidateAsync(string identityToken, string domain, string audience)
         {
+            if (string.IsNullOrEmpty(identityToken))
+                return;
+
             JwtSecurityToken token;
             
             var handler = new JwtSecurityTokenHandler();
@@ -34,8 +35,7 @@ namespace Auth0.AuthenticationApi
             {
                 try
                 {
-                    IConfigurationManager<OpenIdConnectConfiguration> configurationManager = new ConfigurationManager<OpenIdConnectConfiguration>($"{domain}.well-known/openid-configuration", new OpenIdConnectConfigurationRetriever());
-                    OpenIdConnectConfiguration openIdConfig = await configurationManager.GetConfigurationAsync(CancellationToken.None);
+                    OpenIdConnectConfiguration openIdConfig = await OpenIdConfigurationCache.Instance.GetAsync(domain);
                 
                     TokenValidationParameters validationParameters =
                         new TokenValidationParameters

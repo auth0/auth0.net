@@ -302,9 +302,9 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="request">The <see cref="ClientCredentialsTokenRequest"/> containing the information of the request.</param>
         /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
-        public async Task<AccessTokenResponse> GetTokenAsync(ClientCredentialsTokenRequest request)
+        public Task<AccessTokenResponse> GetTokenAsync(ClientCredentialsTokenRequest request)
         {
-            var response = await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
+            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
                 {
                     {"grant_type", "client_credentials"},
                     {"client_id", request.ClientId},
@@ -315,11 +315,6 @@ namespace Auth0.AuthenticationApi
                 null,
                 null,
                 null);
-
-            IdentityTokenValidator validator = new IdentityTokenValidator();
-            await validator.ValidateAsync(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
-
-            return response;
         }
 
         /// <summary>
