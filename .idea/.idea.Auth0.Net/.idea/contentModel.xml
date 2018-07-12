@@ -24,7 +24,11 @@
             <e p="UrlBuilderBase.cs" t="Include" />
             <e p="WsFedUrlBuilder.cs" t="Include" />
           </e>
+          <e p="Exceptions" t="Include">
+            <e p="IdentityTokenValidationException.cs" t="Include" />
+          </e>
           <e p="IAuthenticationApiClient.cs" t="Include" />
+          <e p="IdentityTokenValidator.cs" t="Include" />
           <e p="Models" t="Include">
             <e p="AccessTokenResponse.cs" t="Include" />
             <e p="AuthorizationCodePkceTokenRequest.cs" t="Include" />

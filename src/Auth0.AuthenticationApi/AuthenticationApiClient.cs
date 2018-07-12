@@ -250,9 +250,9 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="request">The <see cref="AuthorizationCodeTokenRequest"/> containing the information of the request.</param>
         /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
-        public Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodeTokenRequest request)
+        public async Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodeTokenRequest request)
         {
-            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
+            var response = await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
             {
                 {"grant_type", "authorization_code"},
                 {"client_id", request.ClientId},
@@ -264,6 +264,11 @@ namespace Auth0.AuthenticationApi
                 null,
                 null,
                 null);
+
+            IdentityTokenValidator validator = new IdentityTokenValidator();
+            await validator.ValidateAsync(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
+
+            return response;
         }
 
         /// <summary>
@@ -271,9 +276,9 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="request">The <see cref="AuthorizationCodePkceTokenRequest"/> containing the information of the request.</param>
         /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
-        public Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodePkceTokenRequest request)
+        public async Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodePkceTokenRequest request)
         {
-            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
+            var response = await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
             {
                 {"grant_type", "authorization_code"},
                 {"client_id", request.ClientId},
@@ -285,6 +290,11 @@ namespace Auth0.AuthenticationApi
                 null,
                 null,
                 null);
+
+            IdentityTokenValidator validator = new IdentityTokenValidator();
+            await validator.ValidateAsync(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
+
+            return response;
         }
 
         /// <summary>
@@ -292,9 +302,9 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="request">The <see cref="ClientCredentialsTokenRequest"/> containing the information of the request.</param>
         /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
-        public Task<AccessTokenResponse> GetTokenAsync(ClientCredentialsTokenRequest request)
+        public async Task<AccessTokenResponse> GetTokenAsync(ClientCredentialsTokenRequest request)
         {
-            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
+            var response = await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
                 {
                     {"grant_type", "client_credentials"},
                     {"client_id", request.ClientId},
@@ -305,6 +315,11 @@ namespace Auth0.AuthenticationApi
                 null,
                 null,
                 null);
+
+            IdentityTokenValidator validator = new IdentityTokenValidator();
+            await validator.ValidateAsync(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
+
+            return response;
         }
 
         /// <summary>
@@ -312,7 +327,7 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="request">The refresh token request details, containing a valid refresh token.</param>
         /// <returns>The new token issued by the server.</returns>
-        public Task<AccessTokenResponse> GetTokenAsync(RefreshTokenRequest request)
+        public async Task<AccessTokenResponse> GetTokenAsync(RefreshTokenRequest request)
         {
             var parameters = new Dictionary<string, object> {
                 { "grant_type", "refresh_token" },
@@ -330,7 +345,12 @@ namespace Auth0.AuthenticationApi
             {
                 parameters.Add("scope", request.Scope);
             }
-            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, null, null);
+            var response = await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, null, null);
+            
+            IdentityTokenValidator validator = new IdentityTokenValidator();
+            await validator.ValidateAsync(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
+
+            return response;
         }
 
         /// <summary>
@@ -342,7 +362,7 @@ namespace Auth0.AuthenticationApi
         /// The grant_type parameter required by the /oauth/token endpoint will automatically be inferred from the <paramref name="request"/> parameter. If no Realm was specified,
         /// then the grant_type will be set to "password". If a Realm was specified, then the grant_type will be set to "http://auth0.com/oauth/grant-type/password-realm"
         /// </remarks>
-        public Task<AccessTokenResponse> GetTokenAsync(ResourceOwnerTokenRequest request)
+        public async Task<AccessTokenResponse> GetTokenAsync(ResourceOwnerTokenRequest request)
         {
             var parameters = new Dictionary<string, object>
             {
@@ -373,13 +393,17 @@ namespace Auth0.AuthenticationApi
             }
 
             var headers = new Dictionary<string, object>();
-
             if (!string.IsNullOrEmpty(request.ForwardedForIp))
             {
                 headers.Add("auth0-forwarded-for", request.ForwardedForIp);
             }
 
-            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, headers, null);
+            var response = await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, headers, null);
+            
+            IdentityTokenValidator validator = new IdentityTokenValidator();
+            await validator.ValidateAsync(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
+
+            return response;
         }
 
         /// <inheritdoc />
