@@ -2,17 +2,17 @@
   <Import Project="..\..\build\common.props" />
   <PropertyGroup>
     <AssemblyTitle>Auth0.ManagementApi</AssemblyTitle>
-    <TargetFrameworks>net452;netstandard1.1;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net452;netstandard1.4;netstandard2.0</TargetFrameworks>
     <AssemblyName>Auth0.ManagementApi</AssemblyName>
     <PackageId>Auth0.ManagementApi</PackageId>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard1.1\Auth0.ManagementApi.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\netstandard2.0\Auth0.ManagementApi.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Auth0.Core\Auth0.Core.csproj" />
   </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.1' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.4' ">
     <PackageReference Include="System.Net.Http" Version="4.3.3" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)'=='net452'">
