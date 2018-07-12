@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Protocols;
@@ -11,8 +13,7 @@ namespace Auth0.AuthenticationApi
         private static volatile OpenIdConfigurationCache _instance;
         private static readonly object SyncRoot = new object();
 
-        protected ReaderWriterLockSlim CacheLock = new ReaderWriterLockSlim(); // mutex 
-        protected Dictionary<string, OpenIdConnectConfiguration> InnerCache = new Dictionary<string, OpenIdConnectConfiguration>();
+        private readonly ConcurrentDictionary<string, OpenIdConnectConfiguration> _innerCache = new ConcurrentDictionary<string, OpenIdConnectConfiguration>();
 
         private OpenIdConfigurationCache() {}
 
@@ -35,25 +36,17 @@ namespace Auth0.AuthenticationApi
 
         public async Task<OpenIdConnectConfiguration> GetAsync(string domain)
         {
-            CacheLock.EnterReadLock();
-            try
+            _innerCache.TryGetValue(domain, out var configuration);
+
+            if (configuration == null)
             {
-                InnerCache.TryGetValue(domain, out var configuration);
+                IConfigurationManager<OpenIdConnectConfiguration> configurationManager = new ConfigurationManager<OpenIdConnectConfiguration>($"{domain}.well-known/openid-configuration", new OpenIdConnectConfigurationRetriever());
+                configuration = await configurationManager.GetConfigurationAsync(CancellationToken.None);
 
-                if (configuration == null)
-                {
-                    IConfigurationManager<OpenIdConnectConfiguration> configurationManager = new ConfigurationManager<OpenIdConnectConfiguration>($"{domain}.well-known/openid-configuration", new OpenIdConnectConfigurationRetriever());
-                    configuration = await configurationManager.GetConfigurationAsync(CancellationToken.None);
-
-                    InnerCache[domain] = configuration;
-                }
-
-                return configuration;
+                _innerCache[domain] = configuration;
             }
-            finally
-            {
-                CacheLock.ExitReadLock();
-            }
+
+            return configuration;
         }
     }
 }

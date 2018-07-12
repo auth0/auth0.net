@@ -66,6 +66,7 @@
               </e>
             </e>
           </e>
+          <e p="OpenIdConfigurationCache.cs" t="Include" />
         </e>
         <e p="Auth0.Core" t="IncludeRecursive">
           <e p="ApiError.cs" t="Include" />
