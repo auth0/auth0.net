@@ -372,7 +372,14 @@ namespace Auth0.AuthenticationApi
                 parameters.Add("realm", request.Realm);
             }
 
-            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, null, null);
+            var headers = new Dictionary<string, object>();
+
+            if (!string.IsNullOrEmpty(request.ForwardedForIp))
+            {
+                headers.Add("auth0-forwarded-for", request.ForwardedForIp);
+            }
+
+            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, headers, null);
         }
 
         /// <inheritdoc />

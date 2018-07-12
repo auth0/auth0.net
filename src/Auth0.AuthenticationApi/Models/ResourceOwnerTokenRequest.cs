@@ -39,5 +39,10 @@
         /// Gets or sets the username.
         /// </summary>
         public string Username { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ip of the end user this token is requested for
+        /// </summary>
+        public string ForwardedForIp { get; set; }
     }
 }
