@@ -40,7 +40,9 @@ namespace Auth0.AuthenticationApi
 
             if (configuration == null)
             {
-                IConfigurationManager<OpenIdConnectConfiguration> configurationManager = new ConfigurationManager<OpenIdConnectConfiguration>($"{domain}.well-known/openid-configuration", new OpenIdConnectConfigurationRetriever());
+                var uri = new Uri(domain);
+                
+                IConfigurationManager<OpenIdConnectConfiguration> configurationManager = new ConfigurationManager<OpenIdConnectConfiguration>($"{uri.AbsoluteUri}.well-known/openid-configuration", new OpenIdConnectConfigurationRetriever());
                 configuration = await configurationManager.GetConfigurationAsync(CancellationToken.None);
 
                 _innerCache[domain] = configuration;

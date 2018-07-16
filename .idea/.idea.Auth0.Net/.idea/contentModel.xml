@@ -289,6 +289,7 @@
           <e p="bin" t="ExcludeRecursive" />
           <e p="client-secrets.json" t="Include" />
           <e p="DatabaseConnectionTests.cs" t="Include" />
+          <e p="IdentityTokenValidatorTests.cs" t="Include" />
           <e p="ImpersonationTests.cs" t="Include" />
           <e p="MetadataTests.cs" t="Include" />
           <e p="obj" t="ExcludeRecursive">
@@ -299,6 +300,7 @@
               </e>
             </e>
           </e>
+          <e p="OpenIdConfigurationCacheTests.cs" t="Include" />
           <e p="PasswordlessTests.cs" t="Include" />
           <e p="TokenTests.cs" t="Include" />
           <e p="UriBuildersTests.cs" t="Include" />
