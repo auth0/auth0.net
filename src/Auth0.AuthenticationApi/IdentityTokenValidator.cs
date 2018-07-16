@@ -1,9 +1,12 @@
 ﻿using System;
 using System.IdentityModel.Tokens.Jwt;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Auth0.AuthenticationApi.Exceptions;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
+
+[assembly: InternalsVisibleTo("Auth0.AuthenticationApi.IntegrationTests")]
 
 namespace Auth0.AuthenticationApi
 {

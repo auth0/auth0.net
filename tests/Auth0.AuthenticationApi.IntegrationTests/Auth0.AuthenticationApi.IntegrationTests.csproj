@@ -1,13 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Include="..\Auth0.ManagementApi.IntegrationTests\TestBase.cs" Link="TestBase.cs" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0" />
@@ -18,21 +15,17 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.3.0-beta3-build3705" />
     <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.0-beta2-build3683" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\src\Auth0.Core\Auth0.Core.csproj" />
     <ProjectReference Include="..\..\src\Auth0.AuthenticationApi\Auth0.AuthenticationApi.csproj" />
     <ProjectReference Include="..\..\src\Auth0.ManagementApi\Auth0.ManagementApi.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <None Update="client-secrets.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
   <ItemGroup>
     <Service Include="{82a7f48d-3b50-4b1e-b82e-3ada8210c358}" />
   </ItemGroup>
-
 </Project>
