@@ -44,7 +44,7 @@ namespace Auth0.Core.Http
             {
                 foreach (var urlSegment in urlSegments)
                 {
-                    resource = resource.Replace($"{{{urlSegment.Key}}}", Uri.EscapeUriString(urlSegment.Value ?? String.Empty));
+                    resource = resource.Replace($"{{{urlSegment.Key}}}", Uri.EscapeDataString(urlSegment.Value ?? String.Empty));
                 }
 
                 // Remove trailing slash
@@ -59,14 +59,14 @@ namespace Auth0.Core.Http
                         if (sb.Length > 0)
                             sb = sb.Append("&");
 
-                        sb.Append($"{Uri.EscapeUriString(kvp.Key)}={Uri.EscapeDataString(kvp.Value)}");
+                        sb.Append($"{Uri.EscapeDataString(kvp.Key)}={Uri.EscapeDataString(kvp.Value)}");
                     }
                     else if (includeEmptyParameters)
                     {
                         if (sb.Length > 0)
                             sb = sb.Append("&");
 
-                        sb.Append(Uri.EscapeUriString(kvp.Key));
+                        sb.Append(Uri.EscapeDataString(kvp.Key));
                     }
 
                     return sb;
