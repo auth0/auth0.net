@@ -20,7 +20,7 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("app_type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public ClientApplicationType ApplicationType { get; set; }
+        public ClientApplicationType ApplicationType { get; set; } = ClientApplicationType.Native;
 
         /// <summary>
         /// Defines the requested authentication method for the token endpoint.
