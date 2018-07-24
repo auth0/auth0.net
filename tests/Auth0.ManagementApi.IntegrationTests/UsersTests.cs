@@ -174,7 +174,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             Assert.NotNull(users.Paging);
         }
 
-        [Fact(Skip = "Run manually")]
+        [Fact]
         public async Task Can_update_user_metadata()
         {
             // Add a new user with metadata
@@ -192,19 +192,27 @@ namespace Auth0.ManagementApi.IntegrationTests
                 UserMetadata = new
                 {
                     c = 3,
-                    d = 4
+                    d = 4,
+                    Color = "red"
                 }
             };
             var newUserResponse = await _apiClient.Users.CreateAsync(newUserRequest);
+            Assert.Equal(newUserResponse.UserMetadata.Color.ToString(), "red");
 
             // Do some updating
-            var updateUserRequest = new UserUpdateRequest {AppMetadata = new ExpandoObject()};
+            var updateUserRequest = new UserUpdateRequest
+            {
+                AppMetadata = new ExpandoObject(),
+                UserMetadata = new ExpandoObject()
+            };
             updateUserRequest.AppMetadata.IsSubscribedTo = "1";
+            updateUserRequest.UserMetadata.Color = null;
             await _apiClient.Users.UpdateAsync(newUserResponse.UserId, updateUserRequest);
 
             // Get the user to ensure the metadata was set
             var user = await _apiClient.Users.GetAsync(newUserResponse.UserId);
-            user.AppMetadata.IsSubscribedTo.Should().Be("1");
+            Assert.Equal(user.AppMetadata.IsSubscribedTo.ToString(), "1");
+            Assert.Null(user.UserMetadata.Color);
 
             // Delete the user
             await _apiClient.Users.DeleteAsync(user.UserId);
