@@ -10,7 +10,7 @@ namespace Auth0.Core.Http
         {
             RateLimit rateLimit = ParseRateLimit(headers);
 
-            return new ApiInfo(rateLimit);
+            return new ApiInfo(rateLimit, headers.Date);
         }
 
         private static RateLimit ParseRateLimit(HttpResponseHeaders headers)
