@@ -5,13 +5,18 @@
     <Copyright>Auth0</Copyright>
     <NeutralLanguage>en-US</NeutralLanguage>
     <Authors>Auth0</Authors>
-    <PackageTags>benchmark;benchmarking;performance</PackageTags>
+    <PackageTags>auth0;authentication;openid connect;oidc;oauth2</PackageTags>
     <PackageIconUrl>http://secure.gravatar.com/avatar/805765c256ff8617fcad483b5476faf2</PackageIconUrl>
     <PackageProjectUrl>https://github.com/auth0/auth0.net</PackageProjectUrl>
     <PackageLicenseUrl>http://opensource.org/licenses/MIT</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 5.9.0
+      - Validation of ID Tokens when calling any of the /oauth/token endpoints
+      - Expanded properties for the LogEntry class to include all properties returned in the payload
+      - Fix issue where Rate Limit headers were not extracted when an error was returned from the API
+
       Version 5.8.0
       - Add ability to send auth0-forwarded-for header with the Resource Owner Password grant
       - Fix issue with incorrect escaping of data strings in URLs
@@ -59,7 +64,7 @@
     <LangVersion>7.1</LangVersion>
     
     <Major>5</Major>
-    <Minor>8</Minor>
+    <Minor>9</Minor>
     <Revision>0</Revision>
 
   </PropertyGroup>
