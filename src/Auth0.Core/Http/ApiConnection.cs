@@ -331,11 +331,11 @@ namespace Auth0.Core.Http
             // Send the request
             var response = await _httpClient.SendAsync(requestMessage).ConfigureAwait(false);
 
-            // Handle API errors
-            await HandleErrors(response).ConfigureAwait(false);
-
             // Extract the relevate API headers
             ExtractApiInfo(response);
+
+            // Handle API errors
+            await HandleErrors(response).ConfigureAwait(false);
 
             // Deserialize the content
             var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
