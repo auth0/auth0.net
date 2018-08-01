@@ -61,6 +61,22 @@ This library is contains [URL Builders](http://auth0.github.io/auth0.net/#using-
 
 For more information about [auth0](http://auth0.com) visit our [documentation page](http://docs.auth0.com/).
 
+## Building
+
+This project can be built on Windows, Linux or macOS. Ensure you have the [.NET Core SDK](https://www.microsoft.com/net/download) installed. You can also use the code editor of your choice or a full-blown IDE such as Visual Studio or Jetbrains Rider.
+
+The full set of libraries can be built by running `build.ps1` (on Windows) or `build.sh` on macOS / Linux. This will do a full compilation as well as execute the unit tests. You can run the unit tests individually by using the `dotnet test` command ([see docs](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-test)).
+
+### Building for release
+
+Since this library also targets the full .NET Framework, you can currently only do a build for release on Windows.
+
+1. Ensure that you have updated the `Major`, `Minor` and `Revision` version numbers in `/build/common.props` for the new version.
+1. Also update the `PackageReleaseNotes` in the above-mentioned file with the release notes.
+1. Run `build.ps1` and ensure that all the tests pass
+1. Run the command `build.ps1 -Target Pack`. This will perform a full Release build and create NuGet packages (`*.nupkg`) in the `/artifacts` folder.
+1. Upload the NuGet packages to NuGet using the `nuget push` command.
+
 ## Issue Reporting
 
 If you have found a bug or if you have a feature request, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
