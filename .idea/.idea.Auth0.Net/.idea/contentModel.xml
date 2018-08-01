@@ -24,7 +24,11 @@
             <e p="UrlBuilderBase.cs" t="Include" />
             <e p="WsFedUrlBuilder.cs" t="Include" />
           </e>
+          <e p="Exceptions" t="Include">
+            <e p="IdentityTokenValidationException.cs" t="Include" />
+          </e>
           <e p="IAuthenticationApiClient.cs" t="Include" />
+          <e p="IdentityTokenValidator.cs" t="Include" />
           <e p="Models" t="Include">
             <e p="AccessTokenResponse.cs" t="Include" />
             <e p="AuthorizationCodePkceTokenRequest.cs" t="Include" />
@@ -54,7 +58,7 @@
               <e p="net452" t="Include">
                 <e p="Auth0.AuthenticationApi.AssemblyInfo.cs" t="Include" />
               </e>
-              <e p="netstandard1.1" t="Include">
+              <e p="netstandard1.4" t="Include">
                 <e p="Auth0.AuthenticationApi.AssemblyInfo.cs" t="Include" />
               </e>
               <e p="netstandard2.0" t="Include">
@@ -62,6 +66,7 @@
               </e>
             </e>
           </e>
+          <e p="OpenIdConfigurationCache.cs" t="Include" />
         </e>
         <e p="Auth0.Core" t="IncludeRecursive">
           <e p="ApiError.cs" t="Include" />
@@ -93,7 +98,7 @@
               <e p="net452" t="Include">
                 <e p="Auth0.Core.AssemblyInfo.cs" t="Include" />
               </e>
-              <e p="netstandard1.1" t="Include">
+              <e p="netstandard1.4" t="Include">
                 <e p="Auth0.Core.AssemblyInfo.cs" t="Include" />
               </e>
               <e p="netstandard2.0" t="Include">
@@ -263,7 +268,7 @@
               <e p="net452" t="Include">
                 <e p="Auth0.ManagementApi.AssemblyInfo.cs" t="Include" />
               </e>
-              <e p="netstandard1.1" t="Include">
+              <e p="netstandard1.4" t="Include">
                 <e p="Auth0.ManagementApi.AssemblyInfo.cs" t="Include" />
               </e>
               <e p="netstandard2.0" t="Include">
@@ -284,6 +289,7 @@
           <e p="bin" t="ExcludeRecursive" />
           <e p="client-secrets.json" t="Include" />
           <e p="DatabaseConnectionTests.cs" t="Include" />
+          <e p="IdentityTokenValidatorTests.cs" t="Include" />
           <e p="ImpersonationTests.cs" t="Include" />
           <e p="MetadataTests.cs" t="Include" />
           <e p="obj" t="ExcludeRecursive">
@@ -294,6 +300,7 @@
               </e>
             </e>
           </e>
+          <e p="OpenIdConfigurationCacheTests.cs" t="Include" />
           <e p="PasswordlessTests.cs" t="Include" />
           <e p="TokenTests.cs" t="Include" />
           <e p="UriBuildersTests.cs" t="Include" />
