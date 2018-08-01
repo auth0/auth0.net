@@ -39,6 +39,30 @@ namespace Auth0.ManagementApi.Models
         public string ClientName { get; set; }
 
         /// <summary>
+        /// The name of the connection
+        /// </summary>
+        [JsonProperty("connection")]
+        public string Connection { get; set; }
+
+        /// <summary>
+        /// The id of the connection
+        /// </summary>
+        [JsonProperty("connection_id")]
+        public string ConnectionId { get; set; }
+
+        /// <summary>
+        /// The strategy used
+        /// </summary>
+        [JsonProperty("strategy")]
+        public string Strategy { get; set; }
+
+        /// <summary>
+        /// The strategy type
+        /// </summary>
+        [JsonProperty("strategy_type")]
+        public string StrategyType { get; set; }
+
+        /// <summary>
         /// The IP address of the log event source
         /// </summary>
         [JsonProperty("ip")]
@@ -57,9 +81,21 @@ namespace Auth0.ManagementApi.Models
         public dynamic Details { get; set; }
 
         /// <summary>
+        /// The user's browser user-agent 
+        /// </summary>
+        [JsonProperty("user_agent")]
+        public string UserAgent { get; set; }
+
+        /// <summary>
         /// The user's unique identifier
         /// </summary>
         [JsonProperty("user_id")]
         public string UserId { get; set; }
+
+        /// <summary>
+        /// The user's name
+        /// </summary>
+        [JsonProperty("user_name")]
+        public string UserName { get; set; }
     }
 }
