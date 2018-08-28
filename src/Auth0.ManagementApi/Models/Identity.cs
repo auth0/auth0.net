@@ -20,6 +20,15 @@ namespace Auth0.ManagementApi.Models
         public string AccessToken { get; set; }
 
         /// <summary>
+        ///     The token secret that can be used to call the <see cref="Provider" />'s API to get more information about the user.
+        /// </summary>
+        /// <remarks>
+        /// This is available for Twitter connections.
+        /// </remarks>
+        [JsonProperty("access_token_secret")]
+        public string AccessTokenSecret { get; set; }
+
+        /// <summary>
         ///     The name of the connection for the identity.
         /// </summary>
         /// <remarks>
