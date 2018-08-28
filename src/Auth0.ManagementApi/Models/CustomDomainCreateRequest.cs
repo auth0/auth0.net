@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Auth0.ManagementApi.Models
 {
@@ -17,6 +18,7 @@ namespace Auth0.ManagementApi.Models
         /// The custom domain provisioning type.
         /// </summary>
         [JsonProperty("type")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public CustomDomainCertificateProvisioning Type { get; set; }
 
         /// <summary>
