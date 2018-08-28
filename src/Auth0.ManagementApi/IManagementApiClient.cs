@@ -29,6 +29,11 @@ namespace Auth0.ManagementApi
         IConnectionsClient Connections { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /custom-domains endpoints.
+        /// </summary>
+        ICustomDomainsClient CustomDomains { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /device-credentials endpoints.
         /// </summary>
         IDeviceCredentialsClient DeviceCredentials { get; }
