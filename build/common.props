@@ -12,6 +12,10 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 5.10
+      - Add support for managing custom domains
+      - Add AccessTokenSecret property for Twitter identities
+
       Version 5.9.0
       - Validation of ID Tokens when calling any of the /oauth/token endpoints
       - Expanded properties for the LogEntry class to include all properties returned in the payload
@@ -64,7 +68,7 @@
     <LangVersion>7.1</LangVersion>
     
     <Major>5</Major>
-    <Minor>9</Minor>
+    <Minor>10</Minor>
     <Revision>0</Revision>
 
   </PropertyGroup>
