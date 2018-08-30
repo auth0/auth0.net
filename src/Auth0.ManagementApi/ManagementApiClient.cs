@@ -36,6 +36,11 @@ namespace Auth0.ManagementApi
         public IConnectionsClient Connections { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /custom-domains endpoints.
+        /// </summary>
+        public ICustomDomainsClient CustomDomains { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /device-credentials endpoints.
         /// </summary>
         /// <value>The device credentials.</value>
@@ -121,6 +126,7 @@ namespace Auth0.ManagementApi
             ClientGrants = new ClientGrantsClient(_apiConnection);
             Clients = new ClientsClient(_apiConnection);
             Connections = new ConnectionsClient(_apiConnection);
+            CustomDomains = new CustomDomainsClient(_apiConnection);
             DeviceCredentials = new DeviceCredentialsClient(_apiConnection);
             EmailProvider = new EmailProviderClient(_apiConnection);
             EmailTemplates = new EmailTemplatesClient(_apiConnection);
