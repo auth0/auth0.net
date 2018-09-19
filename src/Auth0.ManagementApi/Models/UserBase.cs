@@ -38,6 +38,15 @@ namespace Auth0.ManagementApi.Models
         /// </remarks>
         [JsonProperty("phone_number")]
         public string PhoneNumber { get; set; }
+        
+        /// <summary>
+        /// Gets or sets whether the user's phone number is verified.
+        /// </summary>
+        /// <remarks>
+        /// True if the phone number is verified, otherwise false.
+        /// </remarks>
+        [JsonProperty("phone_verified")]
+        public bool? PhoneVerified {get; set;}
 
         /// <summary>
         /// Contains user meta data. The user has read/write access to this.
