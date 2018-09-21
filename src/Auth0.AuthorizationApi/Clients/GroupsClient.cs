@@ -20,7 +20,7 @@ namespace Auth0.AuthorizationApi.Clients
 
         public async Task<GroupList> GetGroupsAsync()
         {
-            return await Connection.GetAsync<GroupList>("/groups", null, null, null, null);
+            return await Connection.GetAsync<GroupList>("groups", null, null, null, null);
         }
     }
 

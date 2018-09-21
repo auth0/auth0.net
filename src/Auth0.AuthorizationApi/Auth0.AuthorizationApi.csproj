@@ -1,6 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <AssemblyTitle>Auth0.AuthorizationApi</AssemblyTitle>
+        <AssemblyName>Auth0.AuthorizationApi</AssemblyName>
+        <PackageId>Auth0.AuthorizationApi</PackageId>
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>7.1</LangVersion>
     </PropertyGroup>
@@ -8,5 +11,9 @@
     <ItemGroup>
       <ProjectReference Include="..\Auth0.Core\Auth0.Core.csproj" />
     </ItemGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+        <DocumentationFile>bin\Release\netstandard2.0\Auth0.AuthorizationApi.xml</DocumentationFile>
+    </PropertyGroup>
 
 </Project>
