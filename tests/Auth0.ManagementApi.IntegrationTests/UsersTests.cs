@@ -46,6 +46,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 EmailVerified = true,
                 Password = Password
             };
+            
             var newUserResponse = await _apiClient.Users.CreateAsync(newUserRequest);
             newUserResponse.Should().NotBeNull();
             newUserResponse.Email.Should().Be(newUserRequest.Email);

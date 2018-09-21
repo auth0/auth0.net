@@ -30,6 +30,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth0.AuthenticationApi.Int
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth0.ManagementApi.IntegrationTests", "tests\Auth0.ManagementApi.IntegrationTests\Auth0.ManagementApi.IntegrationTests.csproj", "{AE75D5CF-1AB0-4630-B53C-EA6C7347A114}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.AuthorizationApi", "src\Auth0.AuthorizationApi\Auth0.AuthorizationApi.csproj", "{22CD8236-5132-46E9-8D98-BE57B980ED16}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +66,10 @@ Global
 		{AE75D5CF-1AB0-4630-B53C-EA6C7347A114}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE75D5CF-1AB0-4630-B53C-EA6C7347A114}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE75D5CF-1AB0-4630-B53C-EA6C7347A114}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22CD8236-5132-46E9-8D98-BE57B980ED16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22CD8236-5132-46E9-8D98-BE57B980ED16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22CD8236-5132-46E9-8D98-BE57B980ED16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22CD8236-5132-46E9-8D98-BE57B980ED16}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +82,7 @@ Global
 		{49CFAA66-C4A3-45DA-AD10-DBE9B5B35F2B} = {0EBAD055-E431-443B-8212-411D1AFE3796}
 		{72307777-1064-4E95-95FC-957FBDF117B2} = {0EBAD055-E431-443B-8212-411D1AFE3796}
 		{AE75D5CF-1AB0-4630-B53C-EA6C7347A114} = {0EBAD055-E431-443B-8212-411D1AFE3796}
+		{22CD8236-5132-46E9-8D98-BE57B980ED16} = {C9550C3F-90EB-42C0-B530-E728566A13C2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8B26058B-3755-4E47-AE0B-350E5B18A4CD}

@@ -22,15 +22,6 @@ namespace Auth0.ManagementApi.Models
         public string Password { get; set; }
 
         /// <summary>
-        /// Gets or sets whether the user's phone is verified.
-        /// </summary>
-        /// <remarks>
-        /// True if the phone is verified, otherwise false.
-        /// </remarks>
-        [JsonProperty("phone_verified")]
-        public bool? PhoneVerified { get; set; }
-
-        /// <summary>
         /// Gets or sets whether the user's email change must be verified. True if it must be verified, otherwise false.
         /// </summary>
         [JsonProperty("verify_email")]

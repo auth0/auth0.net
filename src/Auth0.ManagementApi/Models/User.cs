@@ -59,17 +59,6 @@ namespace Auth0.ManagementApi.Models
         public string LoginsCount { get; set; }
 
         /// <summary>
-        /// Gets or sets whether the user's phone number is verified.
-        /// </summary>
-        /// <remarks>
-        /// True if the phone is verified, otherwise false.
-        /// 
-        /// This is only valid for users from SMS connections.
-        /// </remarks>
-        [JsonProperty("phone_verified")]
-        public bool PhoneVerified { get; set; }
-
-        /// <summary>
         /// Gets or sets the date the user was last updated (modified).
         /// </summary>
         [JsonProperty("updated_at")]
