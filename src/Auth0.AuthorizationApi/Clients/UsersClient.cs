@@ -28,7 +28,7 @@ namespace Auth0.AuthorizationApi.Clients
 
         public async Task<IList<GroupBase>> GetGroupsAsync(string userId)
         {
-            return await Connection.GetAsync<IList<GroupBase>>("users/{id}/groups", new Dictionary<string, string> {{"id", userId}}, null, null, null, null);
+            return await Connection.GetAsync<IList<GroupBase>>("users/{id}/groups", new Dictionary<string, string> {{"id", userId}}, null, null, null);
         }
     }
 
