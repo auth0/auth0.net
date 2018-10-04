@@ -33,7 +33,7 @@ namespace Auth0.AuthorizationApi.Clients
 
     public class DeleteGroupMembersRequest
     {
-        public Group Group { get; set; }
+        public GroupBase Group { get; set; }
         
         public IEnumerable<string> Users { get; set; }
     }
