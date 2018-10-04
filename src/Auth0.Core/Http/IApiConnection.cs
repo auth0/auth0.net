@@ -29,6 +29,17 @@ namespace Auth0.Core.Http
             IDictionary<string, string> queryStrings) where T : class;
 
         /// <summary>
+        ///     Performs an HTTP DELETE.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="resource">The resource.</param>
+        /// <param name="urlSegments">The URL segments.</param>
+        /// <param name="queryStrings"></param>
+        /// <returns>Task&lt;T&gt;.</returns>
+        Task<T> DeleteAsync<T>(string resource, object body, IDictionary<string, string> urlSegments,
+            IDictionary<string, string> queryStrings) where T : class;
+        
+        /// <summary>
         ///     Performs an HTTP GET.
         /// </summary>
         /// <typeparam name="T"></typeparam>

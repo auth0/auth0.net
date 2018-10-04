@@ -9,6 +9,8 @@ namespace Auth0.AuthorizationApi.Clients
     public interface IGroupsClient
     {
         Task<GroupList> GetGroupsAsync();
+
+        Task DeleteGroupMembersAsync(DeleteGroupMembersRequest request);
     }
     
     public class GroupsClient : ClientBase, IGroupsClient
@@ -22,6 +24,18 @@ namespace Auth0.AuthorizationApi.Clients
         {
             return await Connection.GetAsync<GroupList>("groups", null, null, null, null);
         }
+
+        public async Task DeleteGroupMembersAsync(DeleteGroupMembersRequest request)
+        {
+            await Connection.DeleteAsync<Task>("groups/{groupId}/members", request.Users, new Dictionary<string, string> {{"groupId", request.Group.Id}}, null);
+        }
+    }
+
+    public class DeleteGroupMembersRequest
+    {
+        public Group Group { get; set; }
+        
+        public IEnumerable<string> Users { get; set; }
     }
 
     public class GroupList

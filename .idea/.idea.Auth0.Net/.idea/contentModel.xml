@@ -325,7 +325,6 @@
             <e p="Debug" t="Include">
               <e p="netcoreapp2.1" t="Include">
                 <e p="Auth0.Core.UnitTests.AssemblyInfo.cs" t="Include" />
-                <e p="Auth0.Core.UnitTests.Program.cs" t="Include" />
               </e>
             </e>
           </e>
@@ -349,7 +348,6 @@
             <e p="Debug" t="Include">
               <e p="netcoreapp2.1" t="Include">
                 <e p="Auth0.ManagementApi.IntegrationTests.AssemblyInfo.cs" t="Include" />
-                <e p="Auth0.ManagementApi.IntegrationTests.Program.cs" t="Include" />
               </e>
             </e>
           </e>
