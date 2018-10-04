@@ -19,7 +19,9 @@ namespace Auth0.AuthorizationApi.Clients
 
         public async Task AddToGroupsAsync(AddUserToGroupsRequest request)
         {
-            await Connection.PatchAsync<Task>("users/{id}/groups", request.Groups.Select(group => group.Id), new Dictionary<string, string> { {"id", request.UserId} });
+            var groups = request.Groups.Select(group => group.Id).ToArray();
+            
+            await Connection.PatchAsync<Task>("users/{id}/groups", groups, new Dictionary<string, string> { {"id", request.UserId} });
         }
     }
 
