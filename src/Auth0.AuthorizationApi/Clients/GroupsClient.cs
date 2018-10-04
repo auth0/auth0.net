@@ -47,17 +47,8 @@ namespace Auth0.AuthorizationApi.Clients
         public int Total { get; set; }
     }
     
-    public class Group
+    public class Group : GroupBase
     {
-        [JsonProperty("_id")]
-        public string Id { get; set; }
-        
-        [JsonProperty("name")]
-        public string Name { get; set; }
-        
-        [JsonProperty("description")]
-        public string Description { get; set; }
-        
         [JsonProperty("members")]
         public IEnumerable<string> Members { get; set; }
         
@@ -81,5 +72,17 @@ namespace Auth0.AuthorizationApi.Clients
         
         [JsonProperty("connectionName")]
         public string ConnectionName { get; set; }
+    }
+
+    public class GroupBase
+    {
+        [JsonProperty("_id")]
+        public string Id { get; set; }
+        
+        [JsonProperty("name")]
+        public string Name { get; set; }
+        
+        [JsonProperty("description")]
+        public string Description { get; set; }
     }
 }
