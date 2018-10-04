@@ -36,6 +36,6 @@ namespace Auth0.AuthorizationApi.Clients
     {
         public string UserId { get; set; }
         
-        public IEnumerable<Group> Groups { get; set; }
+        public IEnumerable<GroupBase> Groups { get; set; }
     }
 }
