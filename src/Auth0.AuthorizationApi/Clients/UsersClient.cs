@@ -9,7 +9,7 @@ namespace Auth0.AuthorizationApi.Clients
     {
         Task AddToGroupsAsync(AddUserToGroupsRequest request);
 
-        Task<IEnumerable<GroupBase>> GetGroupsAsync(string userId);
+        Task<IList<GroupBase>> GetGroupsAsync(string userId);
     }
     
     public class UsersClient : ClientBase, IUsersClient
@@ -26,9 +26,9 @@ namespace Auth0.AuthorizationApi.Clients
             await Connection.PatchAsync<Task>("users/{id}/groups", groups, new Dictionary<string, string> { {"id", request.UserId} });
         }
 
-        public async Task<IEnumerable<GroupBase>> GetGroupsAsync(string userId)
+        public async Task<IList<GroupBase>> GetGroupsAsync(string userId)
         {
-            return await Connection.GetAsync<IEnumerable<GroupBase>>("users/{id}/groups", new Dictionary<string, string> {{"id", userId}}, null, null, null, null);
+            return await Connection.GetAsync<IList<GroupBase>>("users/{id}/groups", new Dictionary<string, string> {{"id", userId}}, null, null, null, null);
         }
     }
 
