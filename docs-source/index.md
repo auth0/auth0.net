@@ -193,3 +193,7 @@ public class CustomMessageHandler : HttpClientHandler
 // Somewhere else in your application, you can now pass an instance of this class to the constructor of AuthenticationApiClient or ManagementApiClient
 var authenticationApiClient = new AuthenticationApiClient("YOUR_AUTH0_DOMAIN", new CustomMessageHandler());
 ```
+
+## Further Readings
+
+[ASP.NET Core APIs in the fast lane with Swagger and Autorest](https://auth0.com/blog/aspnet-core-apis-with-swagger-and-autorest/)
