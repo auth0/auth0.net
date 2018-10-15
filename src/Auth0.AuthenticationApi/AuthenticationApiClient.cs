@@ -263,7 +263,7 @@ namespace Auth0.AuthenticationApi
                 null,
                 null,
                 null,
-                null);
+                null).ConfigureAwait(false);
 
             IdentityTokenValidator validator = new IdentityTokenValidator();
             await validator.ValidateAsync(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
@@ -289,7 +289,7 @@ namespace Auth0.AuthenticationApi
                 null,
                 null,
                 null,
-                null);
+                null).ConfigureAwait(false);
 
             IdentityTokenValidator validator = new IdentityTokenValidator();
             await validator.ValidateAsync(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
@@ -340,7 +340,7 @@ namespace Auth0.AuthenticationApi
             {
                 parameters.Add("scope", request.Scope);
             }
-            var response = await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, null, null);
+            var response = await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, null, null).ConfigureAwait(false);
             
             IdentityTokenValidator validator = new IdentityTokenValidator();
             await validator.ValidateAsync(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
@@ -393,7 +393,7 @@ namespace Auth0.AuthenticationApi
                 headers.Add("auth0-forwarded-for", request.ForwardedForIp);
             }
 
-            var response = await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, headers, null);
+            var response = await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, headers, null).ConfigureAwait(false);
             
             IdentityTokenValidator validator = new IdentityTokenValidator();
             await validator.ValidateAsync(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
