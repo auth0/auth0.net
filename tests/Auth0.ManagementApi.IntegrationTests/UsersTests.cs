@@ -197,7 +197,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 }
             };
             var newUserResponse = await _apiClient.Users.CreateAsync(newUserRequest);
-            Assert.Equal(newUserResponse.UserMetadata.Color.ToString(), "red");
+            Assert.Equal("red", newUserResponse.UserMetadata.Color.ToString());
 
             // Do some updating
             var updateUserRequest = new UserUpdateRequest
@@ -211,7 +211,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Get the user to ensure the metadata was set
             var user = await _apiClient.Users.GetAsync(newUserResponse.UserId);
-            Assert.Equal(user.AppMetadata.IsSubscribedTo.ToString(), "1");
+            Assert.Equal("1", user.AppMetadata.IsSubscribedTo.ToString());
             Assert.Null(user.UserMetadata.Color);
 
             // Delete the user
