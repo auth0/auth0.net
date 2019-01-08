@@ -36,6 +36,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Identifier = identifier.ToString("N"),
                 Name = $"Integration testing {identifier:N}",
                 TokenLifetime = 1,
+                TokenLifetimeForWeb = 15,
                 SigningAlgorithm = SigningAlgorithm.HS256,
                 SigningSecret = "thisismysecret0123456789",
                 Scopes = new List<ResourceServerScope>
@@ -55,6 +56,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 Name = $"Integration testing {Guid.NewGuid():N}",
                 TokenLifetime = 1,
+                TokenLifetimeForWeb = 10,
                 SigningAlgorithm = SigningAlgorithm.HS256,
                 SigningSecret = "thisismysecret0123456789",
                 Scopes = new List<ResourceServerScope>
@@ -83,13 +85,13 @@ namespace Auth0.ManagementApi.IntegrationTests
             Func<Task> getFunc = async () => await _apiClient.ResourceServers.GetAsync(resourceServer.Id);
             getFunc.ShouldThrow<ApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_resource_server");
         }
-        
+
         [Fact]
         public async Task Test_paging_does_not_include_totals()
         {
             // Act
             var resourceServers = await _apiClient.ResourceServers.GetAllAsync(new PaginationInfo(0, 50, false));
-            
+
             // Assert
             Assert.Null(resourceServers.Paging);
         }
@@ -99,7 +101,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             // Act
             var resourceServers = await _apiClient.ResourceServers.GetAllAsync(new PaginationInfo(0, 50, true));
-            
+
             // Assert
             Assert.NotNull(resourceServers.Paging);
         }

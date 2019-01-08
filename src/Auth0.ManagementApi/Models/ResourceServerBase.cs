@@ -44,6 +44,13 @@ namespace Auth0.ManagementApi.Models
         public int TokenLifetime { get; set; }
 
         /// <summary>
+        /// The amount of time (in seconds) that the token will be valid after being issued from browser based flows.
+        /// Value cannot be larger than <see cref="TokenLifetime" />
+        /// </summary>
+        [JsonProperty("token_lifetime_for_web")]
+        public int TokenLifetimeForWeb { get; set; }
+
+        /// <summary>
         /// Allows issuance of refresh tokens for this entity
         /// </summary>
         [JsonProperty("allow_offline_access")]
