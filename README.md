@@ -17,7 +17,7 @@ Full documentation on how to use this library can be found at [http://auth0.gith
 
 ### Installation
 
-```
+```powershell
 Install-Package Auth0.ManagementApi
 ```
 
@@ -25,13 +25,13 @@ Install-Package Auth0.ManagementApi
 
 Generate a token for the API calls you wish to make (see [https://auth0.com/docs/api/v2/tokens](https://auth0.com/docs/api/v2/tokens)). Create an instance of the `ManagementApiClient` class with the token and the API URL of your Auth0 instance:
 
-~~~csharp
- var client = new ManagementApiClient("your token", new Uri("https://YOUR_AUTH0_DOMAIN/api/v2"));
-~~~
+```csharp
+var client = new ManagementApiClient("your token", new Uri("https://YOUR_AUTH0_DOMAIN/api/v2"));
+```
 
 The API calls are divided into groups which correlate to the [Management API documentation](https://auth0.com/docs/api/v2). For example all Connection related methods can be found under the `ManagementApiClient.Connections` property. So to get a list of all database (Auth0) connections, you can make the following API call:
 
-```
+```csharp
 await client.Connections.GetAllAsync("auth0");
 ```
 
@@ -39,7 +39,7 @@ await client.Connections.GetAllAsync("auth0");
 
 ### Installation
 
-```
+```powershell
 Install-Package Auth0.AuthenticationApi
 ```
 
@@ -47,7 +47,7 @@ Install-Package Auth0.AuthenticationApi
 
 To use the Authentication API, create a new instance of the `AuthenticationApiClient` class, passing in the URL of your Auth0 instance, e.g.:
 
-```
+```csharp
 var client = new AuthenticationApiClient(new Uri("https://YOUR_AUTH0_DOMAIN"));
 ```
 
