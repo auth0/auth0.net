@@ -67,7 +67,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                     });
 
                 }
-                catch (ApiException e)
+                catch (ApiException)
                 {
                     emailTemplate = await apiClient.EmailTemplates.UpdateAsync(emailTemplateName, new EmailTemplateUpdateRequest
                     {
