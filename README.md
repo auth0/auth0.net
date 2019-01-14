@@ -53,9 +53,9 @@ var client = new AuthenticationApiClient(new Uri("https://YOUR_AUTH0_DOMAIN"));
 
 ## Authentication
 
-This library is contains [URL Builders](http://auth0.github.io/auth0.net/#using-url-builders) which will assist you with constructing an authentication URL, but does not actually handle the authentication/authorization flow for you. It is suggested that you refer to the [Quickstart tutorials](https://auth0.com/docs/quickstarts) for guidance on how to implement authentication for your specific platform.
+This library contains [URL Builders](http://auth0.github.io/auth0.net/#using-url-builders) which will assist you with constructing an authentication URL, but does not actually handle the authentication/authorization flow for you. It is suggested that you refer to the [Quickstart tutorials](https://auth0.com/docs/quickstarts) for guidance on how to implement authentication for your specific platform.
 
-**Important note on state validation**: If you choose to use the [AuthorizationUrlBuilder](http://auth0.github.io/auth0.net/api/Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html) to construct the authorization URL and implement a login flow callback yourself, it is important to generate and store a state value (using [WithState](http://auth0.github.io/auth0.net/api/Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html#Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithState_System_String_)) and validate it in your callback URL before calling exchanging the authorization code for the tokens.
+**Important note on state validation**: If you choose to use the [AuthorizationUrlBuilder](http://auth0.github.io/auth0.net/api/Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html) to construct the authorization URL and implement a login flow callback yourself, it is important to generate and store a state value (using [WithState](http://auth0.github.io/auth0.net/api/Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html#Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithState_System_String_)) and validate it in your callback URL before exchanging the authorization code for the tokens.
 
 ## Documentation
 
@@ -67,19 +67,19 @@ This project can be built on Windows, Linux or macOS. Ensure you have the [.NET 
 
 The full set of libraries can be built by running `build.ps1` (on Windows) or `build.sh` on macOS / Linux. This will do a full compilation as well as execute the unit tests. You can run the unit tests individually by using the `dotnet test` command ([see docs](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet-test)).
 
-### Building for release
+### Building for Release
 
 Since this library also targets the full .NET Framework, you can currently only do a build for release on Windows.
 
 1. Ensure that you have updated the `Major`, `Minor` and `Revision` version numbers in `/build/common.props` for the new version.
 1. Also update the `PackageReleaseNotes` in the above-mentioned file with the release notes.
-1. Run `build.ps1` and ensure that all the tests pass
+1. Run `build.ps1` and ensure that all the tests pass.
 1. Run the command `build.ps1 -Target Pack`. This will perform a full Release build and create NuGet packages (`*.nupkg`) in the `/artifacts` folder.
 1. Upload the NuGet packages to NuGet using the `nuget push` command.
 
 ## Issue Reporting
 
-If you have found a bug or if you have a feature request, please report them at this repository issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
+If you have found a bug or if you have a feature request, please report them at this repository's issues section. Please do not report security vulnerabilities on the public GitHub issue tracker. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
 
 ## Author
 
