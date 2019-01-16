@@ -194,6 +194,6 @@ public class CustomMessageHandler : HttpClientHandler
 var authenticationApiClient = new AuthenticationApiClient("YOUR_AUTH0_DOMAIN", new CustomMessageHandler());
 ```
 
-## Further Readings
+## Further Reading
 
 [ASP.NET Core APIs in the fast lane with Swagger and Autorest](https://auth0.com/blog/aspnet-core-apis-with-swagger-and-autorest/)
