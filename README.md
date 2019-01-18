@@ -1,13 +1,6 @@
 # .Net client library for the Auth0 platform.
 
-Version **4.x** is meant to be used for clients that are either flagged as **OIDC Conformant** (under the **OAuth** tab in the client **Advanced settings**) or if you are triggering the OIDC-conformant pipeline by using the `audience` parameter when starting an authorization flow. 
-
-If not, please continue using **v3.x**. Both version will be fully supported and maintained.
-
-## Changes
-
-* V4 contains some breaking changes (mostly to accommodate OIDC-conformant clients, 
-but also fix some inconsistencies) and some new functionality. Changes are listed [here](v4-changes.md).
+This is for clients that are either flagged as **OIDC Conformant** (under the **OAuth** tab in the client **Advanced settings**) or if you are triggering the OIDC-conformant pipeline by using the `audience` parameter when starting an authorization flow. 
 
 ## Management API
 
