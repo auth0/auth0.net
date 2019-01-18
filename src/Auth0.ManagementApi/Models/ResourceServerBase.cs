@@ -48,7 +48,7 @@ namespace Auth0.ManagementApi.Models
         /// Value cannot be larger than <see cref="TokenLifetime" />
         /// </summary>
         [JsonProperty("token_lifetime_for_web")]
-        public int TokenLifetimeForWeb { get; set; }
+        public int? TokenLifetimeForWeb { get; set; }
 
         /// <summary>
         /// Allows issuance of refresh tokens for this entity

@@ -36,7 +36,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Identifier = identifier.ToString("N"),
                 Name = $"Integration testing {identifier:N}",
                 TokenLifetime = 1,
-                TokenLifetimeForWeb = 15,
+                TokenLifetimeForWeb = 1,
                 SigningAlgorithm = SigningAlgorithm.HS256,
                 SigningSecret = "thisismysecret0123456789",
                 Scopes = new List<ResourceServerScope>
@@ -55,8 +55,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             var resourceServerRequest = new ResourceServerUpdateRequest()
             {
                 Name = $"Integration testing {Guid.NewGuid():N}",
-                TokenLifetime = 1,
-                TokenLifetimeForWeb = 10,
+                TokenLifetime = 2,
+                TokenLifetimeForWeb = 1,
                 SigningAlgorithm = SigningAlgorithm.HS256,
                 SigningSecret = "thisismysecret0123456789",
                 Scopes = new List<ResourceServerScope>
