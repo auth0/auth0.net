@@ -12,6 +12,12 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 5.11
+      - Add TokenLifetimeForWeb to ResourceServerBase
+      - Documenation fixes, improvements, sync with portal, remove old v4 breaking changes
+      - Changes to await behavior to stop locking in some scenarios
+      - Update XUnit dependencies
+
       Version 5.10
       - Add support for managing custom domains
       - Add AccessTokenSecret property for Twitter identities
@@ -68,7 +74,7 @@
     <LangVersion>7.1</LangVersion>
     
     <Major>5</Major>
-    <Minor>10</Minor>
+    <Minor>11</Minor>
     <Revision>0</Revision>
 
   </PropertyGroup>
