@@ -14,7 +14,7 @@
     <PackageReleaseNotes>
       Version 5.11
       - Add TokenLifetimeForWeb to ResourceServerBase
-      - Documenation fixes, improvements, sync with portal, remove old v4 breaking changes
+      - Documentation fixes, improvements, sync with portal, remove old v4 breaking changes
       - Changes to await behavior to stop locking in some scenarios
       - Update XUnit dependencies
 
