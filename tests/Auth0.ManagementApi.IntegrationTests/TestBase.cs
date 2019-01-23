@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Auth0.AuthenticationApi;
 using Auth0.AuthenticationApi.Models;
 using Microsoft.Extensions.Configuration;
@@ -34,7 +35,10 @@ namespace Auth0.Tests.Shared
 
         protected string GetVariable(string variableName)
         {
-            return _config[variableName];
+            var value = _config[variableName];
+            if (String.IsNullOrEmpty(value))
+                throw new ArgumentOutOfRangeException($"Configuration value '{variableName}' has not been set.");
+            return value;
         }
     }
 }
