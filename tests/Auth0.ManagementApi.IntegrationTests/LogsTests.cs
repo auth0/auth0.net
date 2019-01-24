@@ -35,7 +35,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var singleLogEntry = await _apiClient.Logs.GetAsync(firstLogEntry.Id);
 
             // Compare both log entries. They should be the same
-            singleLogEntry.ShouldBeEquivalentTo(firstLogEntry);
+            singleLogEntry.Should().BeEquivalentTo(firstLogEntry);
         }
 
         [Fact]

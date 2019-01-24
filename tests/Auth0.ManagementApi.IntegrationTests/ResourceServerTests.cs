@@ -49,7 +49,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 }
             };
             var newResourceServerResponse = await _apiClient.ResourceServers.CreateAsync(newResourceServerRequest);
-            newResourceServerResponse.ShouldBeEquivalentTo(newResourceServerRequest, options => options.Excluding(rs => rs.Id));
+            newResourceServerResponse.Should().BeEquivalentTo(newResourceServerRequest, options => options.Excluding(rs => rs.Id));
 
             // Update the resource server
             var resourceServerRequest = new ResourceServerUpdateRequest()
@@ -74,16 +74,16 @@ namespace Auth0.ManagementApi.IntegrationTests
                 }
             };
             var updateResourceServerResponse = await _apiClient.ResourceServers.UpdateAsync(newResourceServerResponse.Id, resourceServerRequest);
-            updateResourceServerResponse.ShouldBeEquivalentTo(resourceServerRequest, options => options.ExcludingMissingMembers());
+            updateResourceServerResponse.Should().BeEquivalentTo(resourceServerRequest, options => options.ExcludingMissingMembers());
 
             // Get a single resource server
             var resourceServer = await _apiClient.ResourceServers.GetAsync(newResourceServerResponse.Id);
-            resourceServer.ShouldBeEquivalentTo(resourceServerRequest, options => options.ExcludingMissingMembers());
+            resourceServer.Should().BeEquivalentTo(resourceServerRequest, options => options.ExcludingMissingMembers());
 
             // Delete the client, and ensure we get exception when trying to fetch client again
             await _apiClient.ResourceServers.DeleteAsync(resourceServer.Id);
             Func<Task> getFunc = async () => await _apiClient.ResourceServers.GetAsync(resourceServer.Id);
-            getFunc.ShouldThrow<ApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_resource_server");
+            getFunc.Should().Throw<ApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_resource_server");
         }
 
         [Fact]

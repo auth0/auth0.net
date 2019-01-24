@@ -79,7 +79,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Delete the user and ensure we get an exception when trying to fetch them again
             await _apiClient.Users.DeleteAsync(user.UserId);
             Func<Task> getFunc = async () => await _apiClient.Users.GetAsync(user.UserId);
-            getFunc.ShouldThrow<ApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_user");
+            getFunc.Should().Throw<ApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_user");
         }
 
         [Theory]
@@ -89,7 +89,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public void Attempting_to_delete_users_with_null_or_empty_id_should_throw(string id)
         {
             Func<Task> deleteFunc = async () => await _apiClient.Users.DeleteAsync(id);
-            deleteFunc.ShouldThrow<ArgumentException>().And.Message.Should().Be($"Value cannot be null or whitespace.{Environment.NewLine}Parameter name: id");
+            deleteFunc.Should().Throw<ArgumentException>().And.Message.Should().Be($"Value cannot be null or whitespace.{Environment.NewLine}Parameter name: id");
         }
 
         [Fact]

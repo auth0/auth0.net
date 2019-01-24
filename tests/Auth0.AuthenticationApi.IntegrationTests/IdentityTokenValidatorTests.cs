@@ -83,7 +83,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
             // Assert
             authenticationResponse.IdToken.Should().NotBeNull();
-            validationFunc.ShouldNotThrow<IdentityTokenValidationException>();
+            validationFunc.Should().NotThrow<IdentityTokenValidationException>();
         }
 
         [Fact]
@@ -110,7 +110,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
             // Assert
             authenticationResponse.IdToken.Should().NotBeNull();
-            validationFunc.ShouldNotThrow<IdentityTokenValidationException>();
+            validationFunc.Should().NotThrow<IdentityTokenValidationException>();
         }
         
         [Fact]
@@ -137,7 +137,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
             // Assert
             authenticationResponse.IdToken.Should().NotBeNull();
-            validationFunc.ShouldThrow<IdentityTokenValidationException>();
+            validationFunc.Should().Throw<IdentityTokenValidationException>();
         }
 
         [Fact]
@@ -164,7 +164,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
             // Assert
             authenticationResponse.IdToken.Should().NotBeNull();
-            validationFunc.ShouldThrow<IdentityTokenValidationException>();
+            validationFunc.Should().Throw<IdentityTokenValidationException>();
         }
     }
 }
