@@ -35,7 +35,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 SupportUrl = $"www.{Guid.NewGuid():N}.aaa/support"
             };
             var settingsUpdateResponse = await apiClient.TenantSettings.UpdateAsync(settingsUpdateRequest);
-            settingsUpdateResponse.ShouldBeEquivalentTo(settingsUpdateRequest);
+            settingsUpdateResponse.Should().BeEquivalentTo(settingsUpdateRequest);
         }
     }
 }

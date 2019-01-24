@@ -76,7 +76,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Delete the connection and ensure we get exception when trying to get connection again
             await _apiClient.Connections.DeleteAsync(newConnectionResponse.Id);
             Func<Task> getFunc = async () => await _apiClient.Connections.GetAsync(newConnectionResponse.Id);
-            getFunc.ShouldThrow<ApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_connection");
+            getFunc.Should().Throw<ApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_connection");
         }
         
         [Fact]

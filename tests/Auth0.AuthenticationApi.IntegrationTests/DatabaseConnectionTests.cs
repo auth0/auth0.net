@@ -73,7 +73,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 Password = Password2
             };
             Func<Task> changePasswordFunc = async () => await authenticationApiClient.ChangePasswordAsync(changePasswordRequest);
-            changePasswordFunc.ShouldThrow<ApiException>().And.ApiError.Error.Should().Be("password is not allowed");
+            changePasswordFunc.Should().Throw<ApiException>().And.ApiError.Error.Should().Be("password is not allowed");
         }
     }
 }

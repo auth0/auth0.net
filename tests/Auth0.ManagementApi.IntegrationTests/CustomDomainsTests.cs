@@ -39,7 +39,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Test verifying a non-existing id. This will give 404
             Func<Task<CustomDomainVerificationResponse>> verifyFunc = async () => await apiClient.CustomDomains.VerifyAsync(non_existent_id);
-            verifyFunc.ShouldThrow<ApiException>()
+            verifyFunc.Should().Throw<ApiException>()
                 .WithMessage($"The custom domain {non_existent_id} does not exist");
 
             // Test adding a new domain. The BRUCKE tenant only allows one, so this should throw
@@ -49,7 +49,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Type = CustomDomainCertificateProvisioning.Auth0ManagedCertificate,
                 VerificationMethod = "txt"
             });
-            createFunc.ShouldThrow<ApiException>()
+            createFunc.Should().Throw<ApiException>()
                 .WithMessage("You reached the maximum number of custom domains for your account (MAX ALLOWED: 1)");
         }
     }

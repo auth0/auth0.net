@@ -14,7 +14,7 @@ namespace Auth0.Core.UnitTests
         {
             var error = JsonConvert.DeserializeObject<ApiError>(content);
 
-            error.ShouldBeEquivalentTo(expected);
+            error.Should().BeEquivalentTo(expected);
         }
     }
 

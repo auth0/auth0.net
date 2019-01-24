@@ -83,8 +83,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             };
             var newClientGrantResponse = await _apiClient.ClientGrants.CreateAsync(newClientGrantRequest);
             newClientGrantResponse.Should().NotBeNull();
-            newClientGrantResponse.ShouldBeEquivalentTo(newClientGrantRequest,
-                options => options.Excluding(cg => cg.Id));
+            newClientGrantResponse.Should().BeEquivalentTo(newClientGrantRequest,
+                options => options.Excluding(cg => cg.ClientId));
 
             // Get all the client grants again, and verify we have one more
             var clientGrantsAfter = await _apiClient.ClientGrants.GetAllAsync(new GetClientGrantsRequest());
