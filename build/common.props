@@ -78,7 +78,7 @@
     <Revision>0</Revision>
 
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(APPVEYOR_BUILD_NUMBER)' == '' ">
+  <PropertyGroup Condition=" '$(BUILD_BUILDNUMBER)' == '' ">
     <AssemblyVersion>$(Major).$(Minor).$(Revision)</AssemblyVersion>
     <AssemblyFileVersion>$(Major).$(Minor).$(Revision)</AssemblyFileVersion>
     <InformationalVersion>$(Major).$(Minor).$(Revision)</InformationalVersion>
@@ -86,10 +86,10 @@
     <!-- Uncomment for building pre-releases locally -->
      <!--<PackageVersion>$(Major).$(Minor).$(Revision)-beta1</PackageVersion>--> 
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(APPVEYOR_BUILD_NUMBER)' != '' ">
-    <AssemblyVersion>$(Major).$(Minor).$(Revision).$(APPVEYOR_BUILD_NUMBER)</AssemblyVersion>
-    <AssemblyFileVersion>$(Major).$(Minor).$(Revision).$(APPVEYOR_BUILD_NUMBER)</AssemblyFileVersion>
-    <InformationalVersion>$(Major).$(Minor).$(Revision)-ci$(APPVEYOR_BUILD_NUMBER)</InformationalVersion>
-    <PackageVersion>$(Major).$(Minor).$(Revision)-ci$(APPVEYOR_BUILD_NUMBER)</PackageVersion>
+  <PropertyGroup Condition=" '$(BUILD_BUILDNUMBER)' != '' ">
+    <AssemblyVersion>$(Major).$(Minor).$(Revision).$(BUILD_BUILDNUMBER)</AssemblyVersion>
+    <AssemblyFileVersion>$(Major).$(Minor).$(Revision).$(BUILD_BUILDNUMBER)</AssemblyFileVersion>
+    <InformationalVersion>$(Major).$(Minor).$(Revision)-ci$(BUILD_BUILDNUMBER)</InformationalVersion>
+    <PackageVersion>$(Major).$(Minor).$(Revision)-ci$(BUILD_BUILDNUMBER)</PackageVersion>
   </PropertyGroup>
 </Project>

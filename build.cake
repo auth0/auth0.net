@@ -5,7 +5,6 @@ var skipTests = Argument("SkipTests", false);
 // GLOBAL VARIABLES
 var artifactsDirectory = Directory("./artifacts");
 var solutionFile = "./Auth0.Net.sln";
-var IsOnAppVeyorAndNotPR = AppVeyor.IsRunningOnAppVeyor && !AppVeyor.Environment.PullRequest.IsPullRequest;
 
 //////////////////////////////////////////////////////////////////////
 // TASKS
@@ -37,17 +36,7 @@ Task("Build")
             .SetPlatformTarget(PlatformTarget.MSIL) // Any CPU
             .SetNodeReuse(true);
 
-        if(IsRunningOnWindows())
-        {
-            // Use MSBuild
-            MSBuild(solutionFile, buildSettings);
-        }
-        else
-        {
-            // Use XBuild
-            // XBuild(solutionFile, settings =>
-            //     settings.SetConfiguration(configuration));
-        }
+        MSBuild(solutionFile, buildSettings);
     });
 
 Task("Test")
