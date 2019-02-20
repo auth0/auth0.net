@@ -8,7 +8,7 @@
     <PackageTags>auth0;authentication;openid connect;oidc;oauth2</PackageTags>
     <PackageIconUrl>https://secure.gravatar.com/avatar/805765c256ff8617fcad483b5476faf2</PackageIconUrl>
     <PackageProjectUrl>https://github.com/auth0/auth0.net</PackageProjectUrl>
-    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
