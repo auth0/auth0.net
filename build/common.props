@@ -6,9 +6,9 @@
     <NeutralLanguage>en-US</NeutralLanguage>
     <Authors>Auth0</Authors>
     <PackageTags>auth0;authentication;openid connect;oidc;oauth2</PackageTags>
-    <PackageIconUrl>http://secure.gravatar.com/avatar/805765c256ff8617fcad483b5476faf2</PackageIconUrl>
+    <PackageIconUrl>https://secure.gravatar.com/avatar/805765c256ff8617fcad483b5476faf2</PackageIconUrl>
     <PackageProjectUrl>https://github.com/auth0/auth0.net</PackageProjectUrl>
-    <PackageLicenseUrl>http://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
@@ -78,18 +78,10 @@
     <Revision>0</Revision>
 
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(BUILD_BUILDNUMBER)' == '' ">
+  <PropertyGroup>
     <AssemblyVersion>$(Major).$(Minor).$(Revision)</AssemblyVersion>
     <AssemblyFileVersion>$(Major).$(Minor).$(Revision)</AssemblyFileVersion>
     <InformationalVersion>$(Major).$(Minor).$(Revision)</InformationalVersion>
     <PackageVersion>$(Major).$(Minor).$(Revision)</PackageVersion>
-    <!-- Uncomment for building pre-releases locally -->
-     <!--<PackageVersion>$(Major).$(Minor).$(Revision)-beta1</PackageVersion>--> 
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(BUILD_BUILDNUMBER)' != '' ">
-    <AssemblyVersion>$(Major).$(Minor).$(Revision).$(BUILD_BUILDNUMBER)</AssemblyVersion>
-    <AssemblyFileVersion>$(Major).$(Minor).$(Revision).$(BUILD_BUILDNUMBER)</AssemblyFileVersion>
-    <InformationalVersion>$(Major).$(Minor).$(Revision)-ci$(BUILD_BUILDNUMBER)</InformationalVersion>
-    <PackageVersion>$(Major).$(Minor).$(Revision)-ci$(BUILD_BUILDNUMBER)</PackageVersion>
   </PropertyGroup>
 </Project>
