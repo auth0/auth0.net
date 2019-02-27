@@ -6,6 +6,7 @@ using System.Text;
 
 [assembly: InternalsVisibleTo("Auth0.AuthenticationApi")]
 [assembly: InternalsVisibleTo("Auth0.ManagementApi")]
+[assembly: InternalsVisibleTo("Auth0.Core.UnitTests")]
 namespace Auth0.Core.Http
 {
     internal static class Utils
