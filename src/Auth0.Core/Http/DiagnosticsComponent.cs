@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using Newtonsoft.Json;
 
@@ -6,6 +7,7 @@ namespace Auth0.Core.Http
     /// <summary>
     /// Represents information about a software component that's used for diagnostic purposes.
     /// </summary>
+    [Obsolete("Diagnostics are now automatic and not configurable. This class will be removed in a future update.")]
     public class DiagnosticsComponent
     {
         internal DiagnosticsComponent() { }

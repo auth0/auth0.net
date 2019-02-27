@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -10,6 +11,7 @@ namespace Auth0.Core.Http
     /// <summary>
     ///     Represents important information pertaining to the SDK that is sent to Auth0 for diagnostic purposes.
     /// </summary>
+    [Obsolete("Diagnostics are now automatic and not configurable. This class will be removed in a future update.")]
     public class DiagnosticsHeader : DiagnosticsComponent
     {
         private static readonly object SyncRoot = new object();

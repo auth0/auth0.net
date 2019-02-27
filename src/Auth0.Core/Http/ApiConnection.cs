@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Auth0.Core.Exceptions;
@@ -16,8 +17,8 @@ namespace Auth0.Core.Http
     /// </summary>
     public class ApiConnection : IApiConnection
     {
+        private readonly string _agent = CreateAgentString();
         private readonly string _baseUrl;
-        private readonly DiagnosticsHeader _diagnostics;
         private readonly HttpClient _httpClient;
         private readonly string _token;
 
@@ -26,47 +27,63 @@ namespace Auth0.Core.Http
         /// </summary>
         public ApiInfo ApiInfo { get; private set; }
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ApiConnection" /> class.
-        /// </summary>
-        /// <param name="token">The API token.</param>
-        /// <param name="baseUrl">The base URL of the requests.</param>
-        /// <param name="diagnostics">The diagnostics. header</param>
-        /// <param name="handler"></param>
-        public ApiConnection(string token, string baseUrl, DiagnosticsHeader diagnostics,
-            HttpMessageHandler handler = null)
+        public ApiConnection(string token, string baseUrl, HttpMessageHandler handler = null)
+            : this(token, baseUrl, new HttpClient(handler ?? new HttpClientHandler()))
         {
-            _token = token;
-            _diagnostics = diagnostics;
-            _baseUrl = baseUrl;
-
-            _httpClient = new HttpClient(handler ?? new HttpClientHandler());
         }
 
-        public ApiConnection(string token, string baseUrl, DiagnosticsHeader diagnostics,
-            HttpClient httpClient)
+        public ApiConnection(string token, string baseUrl, HttpClient httpClient)
         {
             _token = token;
-            _diagnostics = diagnostics;
             _baseUrl = baseUrl;
-
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+            _httpClient.DefaultRequestHeaders.Add("Auth0-Client", _agent);
+        }
+
+        [Obsolete("DiagnosticsHeader is no longer used, please use the constructor without it")]
+        public ApiConnection(string token, string baseUrl, DiagnosticsHeader diagnostics, HttpMessageHandler handler = null)
+            : this(token, baseUrl, handler)
+        {
+        }
+
+        [Obsolete("DiagnosticsHeader is no longer used, please use the constructor without it")]
+        public ApiConnection(string token, string baseUrl, DiagnosticsHeader diagnostics, HttpClient httpClient)
+            : this(token, baseUrl, httpClient)
+        {
+        }
+
+        private static string CreateAgentString()
+        {
+#if NET452
+            var target = "NET452";
+#endif
+#if NETSTANDARD1_4
+            var target = "NETSTANDARD1.4";
+#endif
+#if NETSTANDARD2_0
+            var target = "NETSTANDARD2.0";
+#endif
+
+            var sdkVersion = typeof(ApiConnection).GetTypeInfo().Assembly.GetName().Version;
+            var agentJson = JsonConvert.SerializeObject(new
+            {
+                name = "Auth0.Net",
+                version = sdkVersion.Major + "." + sdkVersion.Minor + "." + sdkVersion.Revision,
+                env = new
+                {
+                    target
+                }
+            }, Formatting.None);
+            return Utils.Base64UrlEncode(Encoding.UTF8.GetBytes(agentJson));
         }
 
         private void ApplyHeaders(HttpRequestMessage message, IDictionary<string, object> headers)
         {
-            // Add the diagnostics header, unless user explicitly opted out of it
-            if (!ReferenceEquals(_diagnostics, DiagnosticsHeader.Suppress))
-                message.Headers.Add("Auth0-Client", _diagnostics.ToString());
-
             // Set the authorization header
             if (headers == null || !headers.ContainsKey("Authorization"))
                 // Auth header can be overridden by passing custom value in headers dictionary
                 if (!string.IsNullOrEmpty(_token))
                     message.Headers.Add("Authorization", $"Bearer {_token}");
-
-            // Add the user agent
-            message.Headers.Add("User-Agent", ".NET/PCL");
 
             // Apply other headers
             if (headers != null)
@@ -205,7 +222,7 @@ namespace Auth0.Core.Http
                         {
                             apiError = JsonConvert.DeserializeObject<ApiError>(responseContent);
                             if (apiError.StatusCode == 0)
-                                apiError.StatusCode = (int) response.StatusCode;
+                                apiError.StatusCode = (int)response.StatusCode;
                         }
                         catch (Exception)
                         {
@@ -213,7 +230,7 @@ namespace Auth0.Core.Http
                             {
                                 Error = responseContent,
                                 Message = responseContent,
-                                StatusCode = (int) response.StatusCode
+                                StatusCode = (int)response.StatusCode
                             };
                         }
                 }
@@ -331,7 +348,7 @@ namespace Auth0.Core.Http
             // Send the request
             var response = await _httpClient.SendAsync(requestMessage).ConfigureAwait(false);
 
-            // Extract the relevate API headers
+            // Extract the relevant API headers
             ExtractApiInfo(response);
 
             // Handle API errors
@@ -340,8 +357,8 @@ namespace Auth0.Core.Http
             // Deserialize the content
             var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-            if (typeof(T) == typeof(string)) // Let string content pass throug
-                return (T) (object) content;
+            if (typeof(T) == typeof(string)) // Let string content pass through
+                return (T)(object)content;
 
             return JsonConvert.DeserializeObject<T>(content, converters);
         }
