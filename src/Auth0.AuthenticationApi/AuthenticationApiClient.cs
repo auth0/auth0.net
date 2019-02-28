@@ -21,10 +21,9 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         private readonly Uri _baseUri;
 
-        private AuthenticationApiClient(Uri baseUri, DiagnosticsHeader diagnostics, ApiConnection connection)
+        private AuthenticationApiClient(Uri baseUri, ApiConnection connection)
         {
             _baseUri = baseUri;
-
             Connection = connection ?? throw new ArgumentNullException(nameof(ApiConnection));
         }
 
@@ -34,8 +33,9 @@ namespace Auth0.AuthenticationApi
         /// <param name="baseUri">The base URI.</param>
         /// <param name="diagnostics">The diagnostics.</param>
         /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
+        [Obsolete("Diagnostics are now automatic and not configurable. Please use a constructor without the DiagnosticsHeader parameter. This constructor will be removed in a future update.")]
         public AuthenticationApiClient(Uri baseUri, DiagnosticsHeader diagnostics, HttpMessageHandler handler)
-            : this(baseUri, diagnostics, new ApiConnection(null, baseUri.AbsoluteUri, diagnostics ?? DiagnosticsHeader.Default, handler))
+            : this(baseUri, handler)
         {
         }
 
@@ -45,8 +45,9 @@ namespace Auth0.AuthenticationApi
         /// <param name="baseUri"></param>
         /// <param name="diagnostics"></param>
         /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests</param>
+        [Obsolete("Diagnostics are now automatic and not configurable. Please use a constructor without the DiagnosticsHeader parameter. This constructor will be removed in a future update.")]
         public AuthenticationApiClient(Uri baseUri, DiagnosticsHeader diagnostics, HttpClient httpClient)
-            : this(baseUri, diagnostics, new ApiConnection(null, baseUri.AbsoluteUri, diagnostics ?? DiagnosticsHeader.Default, httpClient))
+            : this(baseUri, httpClient)
         {
         }
 
@@ -56,7 +57,7 @@ namespace Auth0.AuthenticationApi
         /// <param name="baseUri">The base URI.</param>
         /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
         public AuthenticationApiClient(Uri baseUri, HttpMessageHandler handler)
-            : this(baseUri, null, handler)
+            : this(baseUri, new ApiConnection(null, baseUri.AbsoluteUri, handler))
         {
         }
 
@@ -67,7 +68,7 @@ namespace Auth0.AuthenticationApi
         /// <param name="baseUri"></param>
         /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests</param>
         public AuthenticationApiClient(Uri baseUri, HttpClient httpClient)
-            : this(baseUri, null, httpClient)
+            : this(baseUri, new ApiConnection(null, baseUri.AbsoluteUri, httpClient))
         {
         }
 
@@ -76,8 +77,9 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="baseUri">The base URI.</param>
         /// <param name="diagnostics">The diagnostics.</param>
+        [Obsolete("Diagnostics are now automatic and not configurable. Please use a constructor without the DiagnosticsHeader parameter. This constructor will be removed in a future update.")]
         public AuthenticationApiClient(Uri baseUri, DiagnosticsHeader diagnostics)
-            : this(baseUri, diagnostics, (HttpMessageHandler) null)
+            : this(baseUri, (HttpMessageHandler) null)
         {
         }
 
@@ -86,7 +88,7 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="baseUri">The base URI.</param>
         public AuthenticationApiClient(Uri baseUri)
-            : this(baseUri, null, (HttpMessageHandler) null)
+            : this(baseUri, (HttpMessageHandler) null)
         {
         }
 
@@ -96,8 +98,9 @@ namespace Auth0.AuthenticationApi
         /// <param name="domain">Your Auth0 domain, e.g. tenant.auth0.com.</param>
         /// <param name="diagnostics">The diagnostics.</param>
         /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
+        [Obsolete("Diagnostics are now automatic and not configurable. Please use a constructor without the DiagnosticsHeader parameter. This constructor will be removed in a future update.")]
         public AuthenticationApiClient(string domain, DiagnosticsHeader diagnostics, HttpMessageHandler handler)
-            : this(new Uri($"https://{domain}"), diagnostics, handler)
+            : this(new Uri($"https://{domain}"), handler)
         {
         }
 
@@ -107,8 +110,9 @@ namespace Auth0.AuthenticationApi
         /// <param name="domain"></param>
         /// <param name="diagnostics"></param>
         /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests</param>
+        [Obsolete("Diagnostics are now automatic and not configurable. Please use a constructor without the DiagnosticsHeader parameter. This constructor will be removed in a future update.")]
         public AuthenticationApiClient(string domain, DiagnosticsHeader diagnostics, HttpClient httpClient)
-            : this(new Uri($"https://{domain}"), diagnostics, httpClient)
+            : this(new Uri($"https://{domain}"), httpClient)
         {
         }
 
@@ -118,7 +122,7 @@ namespace Auth0.AuthenticationApi
         /// <param name="domain">Your Auth0 domain, e.g. tenant.auth0.com.</param>
         /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
         public AuthenticationApiClient(string domain, HttpMessageHandler handler)
-            : this(new Uri($"https://{domain}"), null, handler)
+            : this(new Uri($"https://{domain}"), handler)
         {
         }
 
@@ -128,7 +132,7 @@ namespace Auth0.AuthenticationApi
         /// <param name="domain"></param>
         /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests</param>
         public AuthenticationApiClient(string domain, HttpClient httpClient)
-            : this(new Uri($"https://{domain}"), null, httpClient)
+            : this(new Uri($"https://{domain}"), httpClient)
         {
         }
 
@@ -137,8 +141,9 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="domain">Your Auth0 domain, e.g. tenant.auth0.com.</param>
         /// <param name="diagnostics">The diagnostics.</param>
+        [Obsolete("Diagnostics are now automatic and not configurable. Please use a constructor without the DiagnosticsHeader parameter. This constructor will be removed in a future update.")]
         public AuthenticationApiClient(string domain, DiagnosticsHeader diagnostics)
-            : this(new Uri($"https://{domain}"), diagnostics, (HttpMessageHandler) null)
+            : this(new Uri($"https://{domain}"))
         {
         }
 
@@ -147,7 +152,7 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="domain">Your Auth0 domain, e.g. tenant.auth0.com.</param>
         public AuthenticationApiClient(string domain)
-            : this(new Uri($"https://{domain}"), null, (HttpMessageHandler) null)
+            : this(new Uri($"https://{domain}"))
         {
         }
 
