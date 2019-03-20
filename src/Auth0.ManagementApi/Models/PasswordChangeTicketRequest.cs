@@ -21,12 +21,6 @@ namespace Auth0.ManagementApi.Models
         public string UserId { get; set; }
 
         /// <summary>
-        /// The password to set for the user once the ticket is used.
-        /// </summary>
-        [JsonProperty("new_password")]
-        public string NewPassword { get; set; }
-
-        /// <summary>
         /// The connection that provides the identity for which the password is to be changed. If sending this parameter, the <see cref="Email"/> is also required and the <see cref="UserId"/> is invalid.
         /// </summary>
         [JsonProperty("connection_id")]

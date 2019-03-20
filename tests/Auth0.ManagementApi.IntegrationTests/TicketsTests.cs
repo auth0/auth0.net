@@ -61,8 +61,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var changeTicketRequest = new PasswordChangeTicketRequest
             {
                 UserId = _user.UserId,
-                ResultUrl = "http://www.nonexistingdomain.aaa/success",
-                NewPassword = Password
+                ResultUrl = "http://www.nonexistingdomain.aaa/success"
             };
             var changeTicketRsponse = await _apiClient.Tickets.CreatePasswordChangeTicketAsync(changeTicketRequest);
             changeTicketRsponse.Should().NotBeNull();
