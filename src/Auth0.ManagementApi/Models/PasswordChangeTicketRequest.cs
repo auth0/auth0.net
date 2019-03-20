@@ -45,5 +45,11 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("mark_email_as_verified")]
         public bool? MarkEmailAsVerified { get; set; }
+
+        /// <summary>
+        /// Whether the reset_email will include the email as part of the returnUrl.
+        /// </summary>
+        [JsonProperty("includeEmailInRedirect")]
+        public bool? IncludeEmailInRedirect { get; set; }
     }
 }
