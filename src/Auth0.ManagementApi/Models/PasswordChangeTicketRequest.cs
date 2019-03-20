@@ -39,6 +39,11 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("ttl_sec")]
         public int Ttl { get; set; }
-    }
 
+        /// <summary>
+        /// Whether the email_verified attribute will be set once the password is changed.
+        /// </summary>
+        [JsonProperty("mark_email_as_verified")]
+        public bool? MarkEmailAsVerified { get; set; }
+    }
 }
