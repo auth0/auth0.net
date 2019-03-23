@@ -74,7 +74,9 @@ Since this library also targets the full .NET Framework, you can currently only 
 
 To run the integration tests, create a file `client-secrets.json` in the `tests\Auth0.ManagementApi.IntegrationTests` directory.
 
-The content should take the following format.  Note that the first variable does not include `https://`
+Be aware that Auth0 [enforces rate limits](https://auth0.com/docs/policies/rate-limits), if you are running integration tests against a free-tier Auth0 account you may get `Global limit has been reached` errors.
+
+The content should take the following format.
 
 ```
 {

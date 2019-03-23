@@ -67,5 +67,36 @@ namespace Auth0.ManagementApi.IntegrationTests
             Func<Task> getFunc = async () => await _apiClient.Roles.GetAsync(role.Id);
             getFunc.Should().Throw<ApiException>().And.ApiError.Error.Should().Be("Not Found");
         }
+
+
+        [Fact]
+        public async Task Test_when_paging_not_specified_does_not_include_totals()
+        {
+            // Act
+            var roles = await _apiClient.Roles.GetAllAsync(new GetRolesRequest());
+
+            // Assert
+            Assert.Null(roles.Paging);
+        }
+
+        [Fact]
+        public async Task Test_paging_does_not_include_totals()
+        {
+            // Act
+            var roles = await _apiClient.Roles.GetAllAsync(new GetRolesRequest(), new PaginationInfo(0, 50, false));
+
+            // Assert
+            Assert.Null(roles.Paging);
+        }
+
+        [Fact]
+        public async Task Test_paging_includes_totals()
+        {
+            // Act
+            var roles = await _apiClient.Roles.GetAllAsync(new GetRolesRequest(), new PaginationInfo(0, 50, true));
+
+            // Assert
+            Assert.NotNull(roles.Paging);
+        }
     }
 }
