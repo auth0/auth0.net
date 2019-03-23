@@ -75,6 +75,12 @@ namespace Auth0.ManagementApi
         public IResourceServersClient ResourceServers { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /roles endpoints.
+        /// </summary>
+        /// <value>The roles.</value>
+        public IRolesClient Roles { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /rules endpoints.
         /// </summary>
         /// <value>The rules.</value>
@@ -132,6 +138,7 @@ namespace Auth0.ManagementApi
             Jobs = new JobsClient(_apiConnection);
             Logs = new LogsClient(_apiConnection);
             ResourceServers = new ResourceServersClient(_apiConnection);
+            Roles = new RolesClient(_apiConnection);
             Rules = new RulesClient(_apiConnection);
             Stats = new StatsClient(_apiConnection);
             TenantSettings = new TenantSettingsClient(_apiConnection);
