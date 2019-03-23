@@ -1,6 +1,6 @@
 # .Net client library for the Auth0 platform.
 
-This is for clients that are either flagged as **OIDC Conformant** (under the **OAuth** tab in the client **Advanced settings**) or if you are triggering the OIDC-conformant pipeline by using the `audience` parameter when starting an authorization flow. 
+This is for clients that are either flagged as **OIDC Conformant** (under the **OAuth** tab in the client **Advanced settings**) or if you are triggering the OIDC-conformant pipeline by using the `audience` parameter when starting an authorization flow.
 
 ## Management API
 
@@ -69,6 +69,22 @@ Since this library also targets the full .NET Framework, you can currently only 
 1. Run `build.ps1` and ensure that all the tests pass.
 1. Run the command `build.ps1 -Target Pack`. This will perform a full Release build and create NuGet packages (`*.nupkg`) in the `/artifacts` folder.
 1. Upload the NuGet packages to NuGet using the `nuget push` command.
+
+## Testing
+
+To run the integration tests, create a file `client-secrets.json` in the `tests\Auth0.ManagementApi.IntegrationTests` directory.
+
+The content should take the following format.  Note that the first variable does not include `https://`
+
+```
+{
+  "AUTH0_AUTHENTICATION_API_URL": "yourdomain.auth0.com",
+  "AUTH0_MANAGEMENT_API_CLIENT_ID": "your client id",
+  "AUTH0_MANAGEMENT_API_CLIENT_SECRET": "your client sercet",
+  "AUTH0_MANAGEMENT_API_AUDIENCE": "https://yourdomain.auth0.com/api/v2/"
+}
+
+```
 
 ## Issue Reporting
 
