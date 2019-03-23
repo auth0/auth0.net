@@ -79,6 +79,7 @@ The content should take the following format.  Note that the first variable does
 ```
 {
   "AUTH0_AUTHENTICATION_API_URL": "yourdomain.auth0.com",
+  "AUTH0_MANAGEMENT_API_URL": "yourdomain.auth0.com",
   "AUTH0_MANAGEMENT_API_CLIENT_ID": "your client id",
   "AUTH0_MANAGEMENT_API_CLIENT_SECRET": "your client sercet",
   "AUTH0_MANAGEMENT_API_AUDIENCE": "https://yourdomain.auth0.com/api/v2/"

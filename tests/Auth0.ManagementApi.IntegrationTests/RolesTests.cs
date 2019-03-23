@@ -64,8 +64,8 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Delete the user and ensure we get an exception when trying to fetch them again
             await _apiClient.Roles.DeleteAsync(role.Id);
-            Func<Task> getFunc = async () => await _apiClient.Users.GetAsync(role.Id);
-            getFunc.Should().Throw<ApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_user");
+            Func<Task> getFunc = async () => await _apiClient.Roles.GetAsync(role.Id);
+            getFunc.Should().Throw<ApiException>().And.ApiError.Error.Should().Be("Not Found");
         }
     }
 }
