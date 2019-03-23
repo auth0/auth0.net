@@ -64,6 +64,11 @@ namespace Auth0.ManagementApi
         IResourceServersClient ResourceServers { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /roles endpoints.
+        /// </summary>
+        IRolesClient Roles { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /rules endpoints.
         /// </summary>
         IRulesClient Rules { get; }
