@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace Auth0.ManagementApi.Models
+﻿namespace Auth0.ManagementApi.Models
 {
     /// <summary>
     ///

@@ -22,6 +22,16 @@ namespace Auth0.ManagementApi.Clients
         {
         }
 
+        /// <inheritdoc />
+        public Task AssignRolesAsync(string id, AssignRolesRequest request)
+        {
+            return Connection.PostAsync<AssignUsersRequest>("users/{id}/roles", request, null, null,
+                new Dictionary<string, string>
+                {
+                    {"id", id},
+                }, null, null);
+        }
+
         /// <summary>
         /// Creates a new user.
         /// </summary>
@@ -76,9 +86,15 @@ namespace Auth0.ManagementApi.Clients
 
         /// <inheritdoc />
         [Obsolete("Use GetAllAsync(GetUsersRequest) or GetAllAsync(GetUsersRequest, PaginationInfo) instead")]
-        public Task<IPagedList<User>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null, string sort = null, string connection = null, string fields = null,
+        public Task<IPagedList<User>> GetAllAsync(int? page = null,
+            int? perPage = null,
+            bool? includeTotals = null,
+            string sort = null,
+            string connection = null,
+            string fields = null,
             bool? includeFields = null,
-            string q = null, string searchEngine = null)
+            string q = null,
+            string searchEngine = null)
         {
             return Connection.GetAsync<IPagedList<User>>("users", null,
                 new Dictionary<string, string>
@@ -224,6 +240,36 @@ namespace Auth0.ManagementApi.Clients
                 }, null, new PagedListConverter<LogEntry>("logs", true));
         }
 
+        /// <inheritdoc />
+        public Task<IPagedList<Role>> GetRolesAsync(string userId)
+        {
+            return Connection.GetAsync<IPagedList<Role>>("users/{userId}/roles",
+                new Dictionary<string, string>
+                {
+                    {"userId", userId}
+                }, null, null, new PagedListConverter<Role>("roles"));
+        }
+
+        /// <inheritdoc />
+        public Task<IPagedList<Role>> GetRolesAsync(string userId, PaginationInfo pagination)
+        {
+            if (pagination == null)
+                throw new ArgumentNullException(nameof(pagination));
+
+            return Connection.GetAsync<IPagedList<Role>>("users/{userId}/roles",
+                new Dictionary<string, string>
+                {
+                    {"userId", userId}
+                },
+                new Dictionary<string, string>
+                {
+                    {"page", pagination.PageNo.ToString()},
+                    {"per_page", pagination.PerPage.ToString()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
+                }, null, new PagedListConverter<Role>("roles"));
+        }
+
+
         /// <summary>
         /// Gets all users by email address.
         /// </summary>
@@ -236,7 +282,7 @@ namespace Auth0.ManagementApi.Clients
             return Connection.GetAsync<IList<User>>("users-by-email", null,
                 new Dictionary<string, string>
                 {
-                    {"email", email },
+                    {"email", email},
                     {"fields", fields},
                     {"include_fields", includeFields?.ToString().ToLower()},
                 }, null, null);
@@ -277,6 +323,17 @@ namespace Auth0.ManagementApi.Clients
             {
                 {"Authorization", $"Bearer {primaryJwtToken}"}
             }, null);
+        }
+
+
+        /// <inheritdoc />
+        public Task RemoveRolesAsync(string id, AssignRolesRequest request)
+        {
+            return Connection.DeleteAsync<object>("users/{id}/roles", request, new Dictionary<string, string>
+                {
+                    {"id", id},
+                }, null
+            );
         }
 
         /// <summary>

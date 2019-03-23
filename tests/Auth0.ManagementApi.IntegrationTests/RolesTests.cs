@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Dynamic;
+using System.Linq;
 using System.Threading.Tasks;
 using Auth0.Core.Exceptions;
 using Auth0.ManagementApi.Models;
@@ -13,6 +14,7 @@ namespace Auth0.ManagementApi.IntegrationTests
     {
         private ManagementApiClient _apiClient;
         private Connection _connection;
+        private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
 
         public async Task InitializeAsync()
         {
@@ -25,7 +27,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 Name = Guid.NewGuid().ToString("N"),
                 Strategy = "auth0",
-                EnabledClients = new[] { GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
+                EnabledClients = new[] {GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID")}
             });
         }
 
@@ -62,12 +64,141 @@ namespace Auth0.ManagementApi.IntegrationTests
             role.Should().NotBeNull();
             role.Name.Should().Be(updateRoleResponse.Name);
 
-            // Delete the user and ensure we get an exception when trying to fetch them again
+            // Create a user
+            var newUserRequest = new UserCreateRequest
+            {
+                Connection = _connection.Name,
+                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                EmailVerified = true,
+                Password = Password
+            };
+            var user = await _apiClient.Users.CreateAsync(newUserRequest);
+
+            // Assign a user to the role
+            var assignUsersRequest = new AssignUsersRequest
+            {
+                Users = new[]
+                {
+                    user.UserId
+                }
+            };
+            await _apiClient.Roles.AssignUsersAsync(role.Id, assignUsersRequest);
+
+            // Ensure the user is assigned to the role
+            var assignedUsers = await _apiClient.Roles.GetUsersAsync(role.Id);
+            assignedUsers.Should().NotBeNull();
+            assignedUsers.First().UserId.Should().Be(user.UserId);
+
+            // Ensure the Role is assigned to user
+            var assignedRoles = await _apiClient.Users.GetRolesAsync(user.UserId);
+            assignedRoles.Should().NotBeNull();
+            assignedRoles.First().Id.Should().Be(role.Id);
+
+            // Delete the role and ensure we get an exception when trying to fetch them again
             await _apiClient.Roles.DeleteAsync(role.Id);
             Func<Task> getFunc = async () => await _apiClient.Roles.GetAsync(role.Id);
             getFunc.Should().Throw<ApiException>().And.ApiError.Error.Should().Be("Not Found");
+
+            // Delete the user
+            await _apiClient.Users.DeleteAsync(user.UserId);
         }
 
+        [Fact]
+        public async Task Test_roles_assign_user_to_role()
+        {
+            // Add a new role
+            var newRoleRequest = new RoleCreateRequest
+            {
+                Name = $"{Guid.NewGuid():N}role",
+                Description = $"{Guid.NewGuid():N}description",
+            };
+            var role = await _apiClient.Roles.CreateAsync(newRoleRequest);
+            role.Should().NotBeNull();
+            role.Name.Should().Be(newRoleRequest.Name);
+            role.Description.Should().Be(newRoleRequest.Description);
+
+            // Create a user
+            var newUserRequest = new UserCreateRequest
+            {
+                Connection = _connection.Name,
+                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                EmailVerified = true,
+                Password = Password
+            };
+            var user = await _apiClient.Users.CreateAsync(newUserRequest);
+
+            // Assign a user to the role
+            var assignUsersRequest = new AssignUsersRequest
+            {
+                Users = new[]
+                {
+                    user.UserId
+                }
+            };
+            await _apiClient.Roles.AssignUsersAsync(role.Id, assignUsersRequest);
+
+            // Ensure the user is assigned to the role
+            var assignedUsers = await _apiClient.Roles.GetUsersAsync(role.Id);
+            assignedUsers.Should().NotBeNull();
+            assignedUsers.First().UserId.Should().Be(user.UserId);
+
+            // Clean Up
+            await _apiClient.Roles.DeleteAsync(role.Id);
+            await _apiClient.Users.DeleteAsync(user.UserId);
+        }
+
+        [Fact]
+        public async Task Test_roles_assign_role_to_user()
+        {
+            // Add a new role
+            var newRoleRequest = new RoleCreateRequest
+            {
+                Name = $"{Guid.NewGuid():N}role",
+                Description = $"{Guid.NewGuid():N}description",
+            };
+            var role = await _apiClient.Roles.CreateAsync(newRoleRequest);
+            role.Should().NotBeNull();
+            role.Name.Should().Be(newRoleRequest.Name);
+            role.Description.Should().Be(newRoleRequest.Description);
+
+            // Create a user
+            var newUserRequest = new UserCreateRequest
+            {
+                Connection = _connection.Name,
+                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                EmailVerified = true,
+                Password = Password
+            };
+            var user = await _apiClient.Users.CreateAsync(newUserRequest);
+
+            // Assign a user to the role
+            var assignRolesRequest = new AssignRolesRequest()
+            {
+                Roles = new[]
+                {
+                    role.Id
+                }
+            };
+            await _apiClient.Users.AssignRolesAsync(user.UserId, assignRolesRequest);
+
+            // Ensure the Role is assigned to user
+            var assignedRoles = await _apiClient.Users.GetRolesAsync(user.UserId);
+            assignedRoles.Should().NotBeNull();
+            assignedRoles.Should().HaveCount(1);
+            assignedRoles.First().Id.Should().Be(role.Id);
+
+            // Remove role from user
+            await _apiClient.Users.RemoveRolesAsync(user.UserId, assignRolesRequest);
+
+            // Ensure the Role has been removed from user
+            var removedRoles = await _apiClient.Users.GetRolesAsync(user.UserId);
+            removedRoles.Should().NotBeNull();
+            removedRoles.Should().HaveCount(0);
+
+            // Clean Up
+            await _apiClient.Roles.DeleteAsync(role.Id);
+            await _apiClient.Users.DeleteAsync(user.UserId);
+        }
 
         [Fact]
         public async Task Test_when_paging_not_specified_does_not_include_totals()

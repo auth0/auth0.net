@@ -169,6 +169,28 @@ namespace Auth0.Core.Http
                 null).ConfigureAwait(false);
         }
 
+        /// <summary>
+        ///     Performs an HTTP DELETE.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="resource">The resource.</param>
+        /// <param name="body">The body.</param>
+        /// <param name="urlSegments">The URL segments.</param>
+        /// <param name="queryStrings"></param>
+        /// <returns>Task&lt;T&gt;.</returns>
+        public async Task<T> DeleteAsync<T>(string resource, object body, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings) where T : class
+        {
+            return await RunAsync<T>(resource,
+                HttpMethod.Delete,
+                body,
+                urlSegments,
+                queryStrings,
+                null,
+                null,
+                null,
+                null).ConfigureAwait(false);
+        }
+
         private void ExtractApiInfo(HttpResponseMessage response)
         {
             ApiInfo = ApiInfoParser.Parse(response.Headers);

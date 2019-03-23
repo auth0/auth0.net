@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Development\auth0\auth0.net" t="IncludeFlat">
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.1/build/netcoreapp1.0/xunit.runner.reporters.netcoreapp10.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.1/build/netcoreapp1.0/xunit.runner.utility.netcoreapp10.dll" t="Include" />
+    <e p="$USER_HOME$/.nuget/packages/xunit.runner.visualstudio/2.4.1/build/netcoreapp1.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
+    <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="Auth0.Net.sln" t="IncludeFlat" />
-      <e p="build\common.props" t="Include" />
+      <e p="build/common.props" t="Include" />
       <e p="build.cake" t="Include" />
       <e p="build.ps1" t="Include" />
       <e p="packages" t="ExcludeRecursive" />
@@ -123,6 +126,7 @@
             <e p="ClientGrantsClient.cs" t="Include" />
             <e p="ClientsClient.cs" t="Include" />
             <e p="ConnectionsClient.cs" t="Include" />
+            <e p="CustomDomainsClient.cs" t="Include" />
             <e p="DeviceCredentialsClient.cs" t="Include" />
             <e p="EmailProviderClient.cs" t="Include" />
             <e p="EmailTemplatesClient.cs" t="Include" />
@@ -131,12 +135,14 @@
             <e p="IClientGrantsClient.cs" t="Include" />
             <e p="IClientsClient.cs" t="Include" />
             <e p="IConnectionsClient.cs" t="Include" />
+            <e p="ICustomDomainsClient.cs" t="Include" />
             <e p="IDeviceCredentialsClient.cs" t="Include" />
             <e p="IEmailProviderClient.cs" t="Include" />
             <e p="IEmailTemplatesClient.cs" t="Include" />
             <e p="IJobsClient.cs" t="Include" />
             <e p="ILogsClient.cs" t="Include" />
             <e p="IResourceServersClient.cs" t="Include" />
+            <e p="IRolesClient.cs" t="Include" />
             <e p="IRulesClient.cs" t="Include" />
             <e p="IStatsClient.cs" t="Include" />
             <e p="ITenantSettingsClient.cs" t="Include" />
@@ -146,6 +152,7 @@
             <e p="JobsClient.cs" t="Include" />
             <e p="LogsClient.cs" t="Include" />
             <e p="ResourceServersClient.cs" t="Include" />
+            <e p="RolesClient.cs" t="Include" />
             <e p="RulesClient.cs" t="Include" />
             <e p="StatsClient.cs" t="Include" />
             <e p="TenantSettingsClient.cs" t="Include" />
@@ -159,6 +166,9 @@
             <e p="AccountLinkResponse.cs" t="Include" />
             <e p="AccountLinkResponseProfileData.cs" t="Include" />
             <e p="Addons.cs" t="Include" />
+            <e p="AssignedUser.cs" t="Include" />
+            <e p="AssignRolesRequest.cs" t="Include" />
+            <e p="AssignUsersRequest.cs" t="Include" />
             <e p="BlacklistedToken.cs" t="Include" />
             <e p="BlacklistedTokenBase.cs" t="Include" />
             <e p="BlacklistedTokenCreateRequest.cs" t="Include" />
@@ -178,6 +188,13 @@
             <e p="ConnectionUpdateRequest.cs" t="Include" />
             <e p="CreateGuardianEnrollmentTicketRequest.cs" t="Include" />
             <e p="CreateGuardianEnrollmentTicketResponse.cs" t="Include" />
+            <e p="CustomDomain.cs" t="Include" />
+            <e p="CustomDomainBase.cs" t="Include" />
+            <e p="CustomDomainCertificateProvisioning.cs" t="Include" />
+            <e p="CustomDomainCreateRequest.cs" t="Include" />
+            <e p="CustomDomainStatus.cs" t="Include" />
+            <e p="CustomDomainVerification.cs" t="Include" />
+            <e p="CustomDomainVerificationResponse.cs" t="Include" />
             <e p="DailyStatistics.cs" t="Include" />
             <e p="DeviceCredential.cs" t="Include" />
             <e p="DeviceCredentialBase.cs" t="Include" />
@@ -200,6 +217,7 @@
             <e p="GetClientsRequest.cs" t="Include" />
             <e p="GetConnectionsRequest.cs" t="Include" />
             <e p="GetLogsRequest.cs" t="Include" />
+            <e p="GetRolesRequest.cs" t="Include" />
             <e p="GetRulesRequest.cs" t="Include" />
             <e p="GetUserLogsRequest.cs" t="Include" />
             <e p="GetUsersRequest.cs" t="Include" />
@@ -226,6 +244,10 @@
             <e p="ResourceServerCreateRequest.cs" t="Include" />
             <e p="ResourceServerScope.cs" t="Include" />
             <e p="ResourceServerUpdateRequest.cs" t="Include" />
+            <e p="Role.cs" t="Include" />
+            <e p="RoleBase.cs" t="Include" />
+            <e p="RoleCreateRequest.cs" t="Include" />
+            <e p="RoleUpdateRequest.cs" t="Include" />
             <e p="Rule.cs" t="Include" />
             <e p="RuleBase.cs" t="Include" />
             <e p="RuleCreateRequest.cs" t="Include" />
@@ -287,7 +309,6 @@
           <e p="Auth0.AuthenticationApi.IntegrationTests.csproj" t="IncludeRecursive" />
           <e p="AuthenticationTests.cs" t="Include" />
           <e p="bin" t="ExcludeRecursive" />
-          <e p="client-secrets.json" t="Include" />
           <e p="DatabaseConnectionTests.cs" t="Include" />
           <e p="IdentityTokenValidatorTests.cs" t="Include" />
           <e p="ImpersonationTests.cs" t="Include" />
@@ -309,6 +330,7 @@
         <e p="Auth0.Core.UnitTests" t="IncludeRecursive">
           <e p="ApiErrorDeserializationTests.cs" t="Include" />
           <e p="Auth0.Core.UnitTests.csproj" t="IncludeRecursive" />
+          <e p="Auth0ClientTests.cs" t="Include" />
           <e p="bin" t="ExcludeRecursive" />
           <e p="FlexibleDateTimeConverterTests.cs" t="Include" />
           <e p="obj" t="ExcludeRecursive">
@@ -328,6 +350,7 @@
           <e p="ClientGrantTests.cs" t="Include" />
           <e p="ClientTests.cs" t="Include" />
           <e p="ConnectionTests.cs" t="Include" />
+          <e p="CustomDomainsTests.cs" t="Include" />
           <e p="DeviceCredentialsTests.cs" t="Include" />
           <e p="EmailProviderTests.cs" t="Include" />
           <e p="EmailTemplatesTests.cs" t="Include" />
@@ -345,6 +368,7 @@
           </e>
           <e p="Readme.md" t="Include" />
           <e p="ResourceServerTests.cs" t="Include" />
+          <e p="RolesTests.cs" t="Include" />
           <e p="RulesTests.cs" t="Include" />
           <e p="StatsTests.cs" t="Include" />
           <e p="TenantSettingsTests.cs" t="Include" />
@@ -367,12 +391,11 @@
           <e p="Program.cs" t="Include" />
         </e>
       </e>
-      <e p="v4-changes.md" t="Include" />
     </e>
-    <e p="C:\Users\jerri\.nuget\packages\xunit.runner.visualstudio\2.3.0-beta3-build3705\build\netcoreapp1.0\xunit.runner.reporters.netcoreapp10.dll" t="Include" />
-    <e p="C:\Users\jerri\.nuget\packages\xunit.runner.visualstudio\2.3.0-beta3-build3705\build\netcoreapp1.0\xunit.runner.utility.netcoreapp10.dll" t="Include" />
-    <e p="C:\Users\jerri\.nuget\packages\xunit.runner.visualstudio\2.3.0-beta3-build3705\build\netcoreapp1.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll" t="Include" />
-    <e p="C:\Users\jerri\.Rider2018.1\system\resharper-host\local\Transient\ReSharperHost\v12\SolutionCaches\_Auth0.Net.-2088866030.00" t="ExcludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.1/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2019.1/resharper-host/local/Transient/ReSharperHost/v191/SolutionCaches/_Auth0.Net.-2053807668.00" t="ExcludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/consoles/db" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
   </component>
   <component name="RiderRiderContentModelStore">
     <excludedPaths />

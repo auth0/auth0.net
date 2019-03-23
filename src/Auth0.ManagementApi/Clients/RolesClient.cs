@@ -76,11 +76,7 @@ namespace Auth0.ManagementApi.Clients
                 }, null, new PagedListConverter<Role>("roles"));
         }
 
-        /// <summary>
-        /// Retrieves a role by its ID.
-        /// </summary>
-        /// <param name="id">The ID of the role to retrieve.</param>
-        /// <returns>The <see cref="Role" />.</returns>
+        /// <inheritdoc />
         public Task<Role> GetAsync(string id)
         {
             return Connection.GetAsync<Role>("roles/{id}",
@@ -90,18 +86,46 @@ namespace Auth0.ManagementApi.Clients
                 }, null, null, null);
         }
 
-        /// <summary>
-        /// Updates a role.
-        /// </summary>
-        /// <param name="id">The ID of the role to update.</param>
-        /// <param name="request">A <see cref="RoleUpdateRequest" /> containing the information to update.</param>
-        /// <returns>Task&lt;Role&gt;.</returns>
+        /// <inheritdoc />
         public Task<Role> UpdateAsync(string id, RoleUpdateRequest request)
         {
             return Connection.PatchAsync<Role>("roles/{id}", request, new Dictionary<string, string>
             {
                 {"id", id}
             });
+        }
+
+        /// <inheritdoc />
+        public Task<IPagedList<AssignedUser>> GetUsersAsync(string id)
+        {
+            return Connection.GetAsync<IPagedList<AssignedUser>>("roles/{id}/users",
+                new Dictionary<string, string>
+                {
+                    {"id", id}
+                }, null, null, new PagedListConverter<AssignedUser>("users"));
+        }
+
+        /// <inheritdoc />
+        public Task<IPagedList<AssignedUser>> GetUsersAsync(string id, PaginationInfo pagination)
+        {
+            return Connection.GetAsync<IPagedList<AssignedUser>>("roles/{id}/users",
+                new Dictionary<string, string>
+                {
+                    {"id", id},
+                    {"page", pagination.PageNo.ToString()},
+                    {"per_page", pagination.PerPage.ToString()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
+                }, null, null, new PagedListConverter<AssignedUser>("users"));
+        }
+
+        /// <inheritdoc />
+        public Task AssignUsersAsync(string id, AssignUsersRequest request)
+        {
+            return Connection.PostAsync<AssignUsersRequest>("roles/{id}/users", request, null, null,
+                new Dictionary<string, string>
+                {
+                    {"id", id},
+                }, null, null);
         }
     }
 }
