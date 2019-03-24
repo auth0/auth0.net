@@ -25,7 +25,7 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc />
         public Task AssignRolesAsync(string id, AssignRolesRequest request)
         {
-            return Connection.PostAsync<AssignUsersRequest>("users/{id}/roles", request, null, null,
+            return Connection.PostAsync<AssignRolesRequest>("users/{id}/roles", request, null, null,
                 new Dictionary<string, string>
                 {
                     {"id", id},
