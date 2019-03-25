@@ -164,6 +164,7 @@ cmake-build-debug/
 # Rider auto-generates .iml files, and contentModel.xml
 .idea/**/*.iml
 .idea/**/contentModel.xml
+.idea/**/riderModel.xml
 .idea/**/modules.xml
 
 ## File-based project format:
