@@ -62,7 +62,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 UserId = _user.UserId,
                 ResultUrl = "http://www.nonexistingdomain.aaa/success",
-                NewPassword = Password
+                MarkEmailAsVerified = true,
+                IncludeEmailInRedirect = true
             };
             var changeTicketRsponse = await _apiClient.Tickets.CreatePasswordChangeTicketAsync(changeTicketRequest);
             changeTicketRsponse.Should().NotBeNull();

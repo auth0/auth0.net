@@ -49,6 +49,11 @@ namespace Auth0.ManagementApi
         IEmailTemplatesClient EmailTemplates { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /guardian endpoints.
+        /// </summary>
+        IGuardianClient Guardian { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /jobs endpoints.
         /// </summary>
         IJobsClient Jobs { get; }
