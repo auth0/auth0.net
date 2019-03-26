@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using Auth0.ManagementApi.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Auth0.ManagementApi.Models
+namespace Auth0.ManagementApi
 {
     public interface IGuardianClient
     {
@@ -13,8 +14,7 @@ namespace Auth0.ManagementApi.Models
         ///     user who should be enrolled.
         /// </param>
         /// <returns>A <see cref="CreateGuardianEnrollmentTicketResponse" /> with the details of the ticket that was created.</returns>
-        Task<CreateGuardianEnrollmentTicketResponse> CreateEnrollmentTicketAsync(
-            CreateGuardianEnrollmentTicketRequest request);
+        Task<CreateGuardianEnrollmentTicketResponse> CreateEnrollmentTicketAsync(CreateGuardianEnrollmentTicketRequest request);
 
         /// <summary>
         ///     Deletes an enrollment.
@@ -69,13 +69,6 @@ namespace Auth0.ManagementApi.Models
         Task<GuardianSmsEnrollmentTemplates> UpdateSmsTemplatesAsync(GuardianSmsEnrollmentTemplates templates);
 
         /// <summary>
-        ///     Updates provider configuration for Amazon SNS.
-        /// </summary>
-        /// <param name="request">The <see cref="UpdateGuardianSnsConfigurationRequest" /> containing Amazon SNS configuration.</param>
-        /// <returns><see cref="GuardianSnsConfiguration" /> with updated Amazon SNS configuration.</returns>
-        Task<GuardianSnsConfiguration> UpdateSnsConfigurationAsync(UpdateGuardianSnsConfigurationRequest request);
-
-        /// <summary>
         ///     Configure the Guardian Twilio provider.
         /// </summary>
         /// <param name="request">
@@ -83,7 +76,6 @@ namespace Auth0.ManagementApi.Models
         ///     settings.
         /// </param>
         /// <returns>The <see cref="GuardianTwilioConfiguration" /> containing the updated configuration settings.</returns>
-        Task<GuardianTwilioConfiguration> UpdateTwilioConfigurationAsync(
-            UpdateGuardianTwilioConfigurationRequest request);
+        Task<GuardianTwilioConfiguration> UpdateTwilioConfigurationAsync(UpdateGuardianTwilioConfigurationRequest request);
     }
 }

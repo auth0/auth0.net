@@ -15,7 +15,6 @@ namespace Auth0.ManagementApi
         /// <summary>
         /// Contains all the methods to call the /blacklists/tokens endpoints.
         /// </summary>
-        /// <value>The blacklisted tokens.</value>
         public IBlacklistedTokensClient BlacklistedTokens { get; }
 
         /// <summary>
@@ -26,13 +25,11 @@ namespace Auth0.ManagementApi
         /// <summary>
         /// Contains all the methods to call the /clients endpoints.
         /// </summary>
-        /// <value>The clients.</value>
         public IClientsClient Clients { get; }
 
         /// <summary>
         /// Contains all the methods to call the /connections endpoints.
         /// </summary>
-        /// <value>The connections.</value>
         public IConnectionsClient Connections { get; }
 
         /// <summary>
@@ -43,13 +40,11 @@ namespace Auth0.ManagementApi
         /// <summary>
         /// Contains all the methods to call the /device-credentials endpoints.
         /// </summary>
-        /// <value>The device credentials.</value>
         public IDeviceCredentialsClient DeviceCredentials { get; }
 
         /// <summary>
         /// Contains all the methods to call the /emails/provider endpoints.
         /// </summary>
-        /// <value>The email provider.</value>
         public IEmailProviderClient EmailProvider { get; }
 
         /// <summary>
@@ -58,15 +53,18 @@ namespace Auth0.ManagementApi
         public IEmailTemplatesClient EmailTemplates { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /guardian endpoints.
+        /// </summary>
+        public IGuardianClient Guardian { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /jobs endpoints.
         /// </summary>
-        /// <value>The jobs.</value>
         public IJobsClient Jobs { get; }
 
         /// <summary>
         /// Contains all the methods to call the /logs endpoints.
         /// </summary>
-        /// <value>The rules.</value>
         public ILogsClient Logs { get; }
 
         /// <summary>
@@ -83,25 +81,21 @@ namespace Auth0.ManagementApi
         /// <summary>
         /// Contains all the methods to call the /rules endpoints.
         /// </summary>
-        /// <value>The rules.</value>
         public IRulesClient Rules { get; }
 
         /// <summary>
         /// Contains all the methods to call the /stats endpoints.
         /// </summary>
-        /// <value>The stats.</value>
         public IStatsClient Stats { get; }
 
         /// <summary>
         /// Contains all the methods to call the /tenants/settings endpoints.
         /// </summary>
-        /// <value>The tenant settings.</value>
         public ITenantSettingsClient TenantSettings { get; set; }
 
         /// <summary>
         /// Contains all the methods to call the /tickets endpoints.
         /// </summary>
-        /// <value>The tickets.</value>
         public ITicketsClient Tickets { get; }
 
         /// <summary>
@@ -112,7 +106,6 @@ namespace Auth0.ManagementApi
         /// <summary>
         /// Contains all the methods to call the /users endpoints.
         /// </summary>
-        /// <value>The users.</value>
         public IUsersClient Users { get; }
 
         /// <summary>
@@ -135,6 +128,7 @@ namespace Auth0.ManagementApi
             DeviceCredentials = new DeviceCredentialsClient(_apiConnection);
             EmailProvider = new EmailProviderClient(_apiConnection);
             EmailTemplates = new EmailTemplatesClient(_apiConnection);
+            Guardian = new GuardianClient(_apiConnection);
             Jobs = new JobsClient(_apiConnection);
             Logs = new LogsClient(_apiConnection);
             ResourceServers = new ResourceServersClient(_apiConnection);

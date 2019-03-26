@@ -8,6 +8,15 @@ namespace Auth0.ManagementApi.Models
         Sms,
 
         [EnumMember(Value = "push-notification")]
-        PushNotifications
+        PushNotifications,
+
+        [EnumMember(Value = "email")]
+        Email,
+
+        [EnumMember(Value = "otp")]
+        Otp,
+
+        [EnumMember(Value = "duo")]
+        Duo
     }
 }

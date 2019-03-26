@@ -21,12 +21,6 @@ namespace Auth0.ManagementApi.Models
         public string UserId { get; set; }
 
         /// <summary>
-        /// The password to set for the user once the ticket is used.
-        /// </summary>
-        [JsonProperty("new_password")]
-        public string NewPassword { get; set; }
-
-        /// <summary>
         /// The connection that provides the identity for which the password is to be changed. If sending this parameter, the <see cref="Email"/> is also required and the <see cref="UserId"/> is invalid.
         /// </summary>
         [JsonProperty("connection_id")]
@@ -44,7 +38,18 @@ namespace Auth0.ManagementApi.Models
         /// If not specified or if you send 0 the Auth0 default lifetime will be applied
         /// </summary>
         [JsonProperty("ttl_sec")]
-        public int Ttl { get; set; }
-    }
+        public int? Ttl { get; set; }
 
+        /// <summary>
+        /// Whether the email_verified attribute will be set once the password is changed.
+        /// </summary>
+        [JsonProperty("mark_email_as_verified")]
+        public bool? MarkEmailAsVerified { get; set; }
+
+        /// <summary>
+        /// Whether the reset_email will include the email as part of the returnUrl.
+        /// </summary>
+        [JsonProperty("includeEmailInRedirect")]
+        public bool? IncludeEmailInRedirect { get; set; }
+    }
 }

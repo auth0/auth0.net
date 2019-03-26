@@ -11,82 +11,93 @@ namespace Auth0.ManagementApi.Clients
         {
         }
 
-        public Task<CreateGuardianEnrollmentTicketResponse> CreateEnrollmentTicketAsync(
-            CreateGuardianEnrollmentTicketRequest request)
+        public Task<CreateGuardianEnrollmentTicketResponse> CreateEnrollmentTicketAsync(CreateGuardianEnrollmentTicketRequest request)
         {
-            return Connection.PostAsync<CreateGuardianEnrollmentTicketResponse>("guardian/enrollments/ticket", request,
-                null,
-                null, null, null, null);
+            return Connection
+                .PostAsync<CreateGuardianEnrollmentTicketResponse>(
+                "guardian/enrollments/ticket",
+                request,
+                null, null, null, null, null);
         }
 
         public Task DeleteEnrollmentAsync(string id)
         {
-            return Connection.DeleteAsync<object>("guardian/enrollments/{id}",
-                new Dictionary<string, string> {{"id", id}}, null);
+            return Connection
+                .DeleteAsync<object>(
+                "guardian/enrollments/{id}",
+                new Dictionary<string, string> { { "id", id } },
+                null);
         }
 
         public Task<GuardianEnrollment> GetEnrollmentAsync(string id)
         {
-            return Connection.GetAsync<GuardianEnrollment>("guardian/enrollments/{id}",
-                new Dictionary<string, string> {{"id", id}}, null, null, null);
+            return Connection
+                .GetAsync<GuardianEnrollment>(
+                "guardian/enrollments/{id}",
+                new Dictionary<string, string> { { "id", id } },
+                null, null, null);
         }
 
         public Task<IList<GuardianFactor>> GetFactorsAsync()
         {
-            return Connection.GetAsync<IList<GuardianFactor>>("guardian/factors", null, null, null, null);
+            return Connection
+                .GetAsync<IList<GuardianFactor>>(
+                "guardian/factors",
+                null, null, null, null);
         }
 
         public Task<GuardianSmsEnrollmentTemplates> GetSmsTemplatesAsync()
         {
-            return Connection.GetAsync<GuardianSmsEnrollmentTemplates>("guardian/factors/sms/templates", null, null,
-                null, null);
+            return Connection
+                .GetAsync<GuardianSmsEnrollmentTemplates>(
+                "guardian/factors/sms/templates",
+                null, null, null, null);
         }
 
         public Task<GuardianSnsConfiguration> GetSnsConfigurationAsync()
         {
-            return Connection.GetAsync<GuardianSnsConfiguration>("guardian/factors/push-notification/providers/sns",
-                null, null,
-                null, null);
+            return Connection
+                .GetAsync<GuardianSnsConfiguration>(
+                "guardian/factors/push-notification/providers/sns",
+                null, null, null, null);
         }
 
         public Task<GuardianTwilioConfiguration> GetTwilioConfigurationAsync()
         {
-            return Connection.GetAsync<GuardianTwilioConfiguration>("guardian/factors/sms/providers/twilio", null, null,
-                null, null);
+            return Connection
+                .GetAsync<GuardianTwilioConfiguration>(
+                "guardian/factors/sms/providers/twilio",
+                null, null, null, null);
         }
 
         public Task<UpdateGuardianFactorResponse> UpdateFactorAsync(UpdateGuardianFactorRequest request)
         {
-            return Connection.PutAsync<UpdateGuardianFactorResponse>("guardian/factors/{name}",
-                new
-                {
-                    enabled = request.IsEnabled
-                }, null, null,
-                new Dictionary<string, string>
-                {
-                    {
-                        "name", request.Factor == GuardianFactorName.PushNotifications ? "push-notification" : "sms"
-                    }
-                }, null, null);
+            var name = request.Factor == GuardianFactorName.PushNotifications ? "push-notification" : "sms";
+            return Connection
+                .PutAsync<UpdateGuardianFactorResponse>(
+                "guardian/factors/{name}",
+                new { enabled = request.IsEnabled },
+                null, null,
+                new Dictionary<string, string> { { "name", name } },
+                null, null);
         }
 
         public Task<GuardianSmsEnrollmentTemplates> UpdateSmsTemplatesAsync(GuardianSmsEnrollmentTemplates templates)
         {
-            return Connection.PutAsync<GuardianSmsEnrollmentTemplates>("guardian/factors/sms/templates", templates, null,
-                null, null, null, null);
+            return Connection
+                .PutAsync<GuardianSmsEnrollmentTemplates>(
+                "guardian/factors/sms/templates",
+                templates,
+                null, null, null, null, null);
         }
 
-        public Task<GuardianSnsConfiguration> UpdateSnsConfigurationAsync(UpdateGuardianSnsConfigurationRequest request)
+        public Task<GuardianTwilioConfiguration> UpdateTwilioConfigurationAsync(UpdateGuardianTwilioConfigurationRequest request)
         {
-            return Connection.PutAsync<GuardianSnsConfiguration>("guardian/factors/push-notification/providers/sns",
-                request, null, null, null, null, null);
-        }
-
-        public Task<GuardianTwilioConfiguration> UpdateTwilioConfigurationAsync(
-            UpdateGuardianTwilioConfigurationRequest request)
-        {
-            return Connection.PutAsync<GuardianTwilioConfiguration>("guardian/factors/sms/providers/twilio",
-                request, null, null, null, null, null);
+            return Connection
+                .PutAsync<GuardianTwilioConfiguration>(
+                "guardian/factors/sms/providers/twilio",
+                request,
+                null, null, null, null, null);
         }
     }
 }
