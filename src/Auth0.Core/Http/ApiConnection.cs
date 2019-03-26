@@ -40,18 +40,6 @@ namespace Auth0.Core.Http
             _httpClient.DefaultRequestHeaders.Add("Auth0-Client", _agent);
         }
 
-        [Obsolete("DiagnosticsHeader is no longer used, please use the constructor without it")]
-        public ApiConnection(string token, string baseUrl, DiagnosticsHeader diagnostics, HttpMessageHandler handler = null)
-            : this(token, baseUrl, handler)
-        {
-        }
-
-        [Obsolete("DiagnosticsHeader is no longer used, please use the constructor without it")]
-        public ApiConnection(string token, string baseUrl, DiagnosticsHeader diagnostics, HttpClient httpClient)
-            : this(token, baseUrl, httpClient)
-        {
-        }
-
         private static string CreateAgentString()
         {
 #if NET452

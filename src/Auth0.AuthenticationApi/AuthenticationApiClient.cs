@@ -31,30 +31,6 @@ namespace Auth0.AuthenticationApi
         /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
         /// </summary>
         /// <param name="baseUri">The base URI.</param>
-        /// <param name="diagnostics">The diagnostics.</param>
-        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
-        [Obsolete("Diagnostics are now automatic and not configurable. Please use a constructor without the DiagnosticsHeader parameter. This constructor will be removed in a future update.")]
-        public AuthenticationApiClient(Uri baseUri, DiagnosticsHeader diagnostics, HttpMessageHandler handler)
-            : this(baseUri, handler)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
-        /// </summary>
-        /// <param name="baseUri"></param>
-        /// <param name="diagnostics"></param>
-        /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests</param>
-        [Obsolete("Diagnostics are now automatic and not configurable. Please use a constructor without the DiagnosticsHeader parameter. This constructor will be removed in a future update.")]
-        public AuthenticationApiClient(Uri baseUri, DiagnosticsHeader diagnostics, HttpClient httpClient)
-            : this(baseUri, httpClient)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
-        /// </summary>
-        /// <param name="baseUri">The base URI.</param>
         /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
         public AuthenticationApiClient(Uri baseUri, HttpMessageHandler handler)
             : this(baseUri, new ApiConnection(null, baseUri.AbsoluteUri, handler))
@@ -76,46 +52,11 @@ namespace Auth0.AuthenticationApi
         /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
         /// </summary>
         /// <param name="baseUri">The base URI.</param>
-        /// <param name="diagnostics">The diagnostics.</param>
-        [Obsolete("Diagnostics are now automatic and not configurable. Please use a constructor without the DiagnosticsHeader parameter. This constructor will be removed in a future update.")]
-        public AuthenticationApiClient(Uri baseUri, DiagnosticsHeader diagnostics)
-            : this(baseUri, (HttpMessageHandler) null)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
-        /// </summary>
-        /// <param name="baseUri">The base URI.</param>
         public AuthenticationApiClient(Uri baseUri)
             : this(baseUri, (HttpMessageHandler) null)
         {
         }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
-        /// </summary>
-        /// <param name="domain">Your Auth0 domain, e.g. tenant.auth0.com.</param>
-        /// <param name="diagnostics">The diagnostics.</param>
-        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
-        [Obsolete("Diagnostics are now automatic and not configurable. Please use a constructor without the DiagnosticsHeader parameter. This constructor will be removed in a future update.")]
-        public AuthenticationApiClient(string domain, DiagnosticsHeader diagnostics, HttpMessageHandler handler)
-            : this(new Uri($"https://{domain}"), handler)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
-        /// </summary>
-        /// <param name="domain"></param>
-        /// <param name="diagnostics"></param>
-        /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests</param>
-        [Obsolete("Diagnostics are now automatic and not configurable. Please use a constructor without the DiagnosticsHeader parameter. This constructor will be removed in a future update.")]
-        public AuthenticationApiClient(string domain, DiagnosticsHeader diagnostics, HttpClient httpClient)
-            : this(new Uri($"https://{domain}"), httpClient)
-        {
-        }
-
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
         /// </summary>
@@ -133,17 +74,6 @@ namespace Auth0.AuthenticationApi
         /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests</param>
         public AuthenticationApiClient(string domain, HttpClient httpClient)
             : this(new Uri($"https://{domain}"), httpClient)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
-        /// </summary>
-        /// <param name="domain">Your Auth0 domain, e.g. tenant.auth0.com.</param>
-        /// <param name="diagnostics">The diagnostics.</param>
-        [Obsolete("Diagnostics are now automatic and not configurable. Please use a constructor without the DiagnosticsHeader parameter. This constructor will be removed in a future update.")]
-        public AuthenticationApiClient(string domain, DiagnosticsHeader diagnostics)
-            : this(new Uri($"https://{domain}"))
         {
         }
 

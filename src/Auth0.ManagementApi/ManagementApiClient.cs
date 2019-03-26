@@ -146,45 +146,6 @@ namespace Auth0.ManagementApi
         /// </summary>
         /// <param name="token">The token.</param>
         /// <param name="baseUri">The base URI.</param>
-        /// <param name="diagnostics">The diagnostics.</param>
-        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
-        [Obsolete("Diagnostics are now automatic and not configurable. Please use a constructor without the DiagnosticsHeader parameter. This constructor will be removed in a future update.")]
-        public ManagementApiClient(string token, Uri baseUri, DiagnosticsHeader diagnostics, HttpMessageHandler handler)
-            : this(token, baseUri, handler)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
-        /// </summary>
-        /// <param name="token">The token.</param>
-        /// <param name="baseUri">The base URI.</param>
-        /// <param name="diagnostics">The diagnostics.</param>
-        /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests</param>
-        [Obsolete("Diagnostics are now automatic and not configurable. Please use a constructor without the DiagnosticsHeader parameter. This constructor will be removed in a future update.")]
-        public ManagementApiClient(string token, Uri baseUri, DiagnosticsHeader diagnostics, HttpClient httpClient)
-            : this(token, baseUri, httpClient)
-        {
-
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
-        /// </summary>
-        /// <param name="token">The token.</param>
-        /// <param name="baseUri">The base URI.</param>
-        /// <param name="diagnostics">The diagnostics.</param>
-        [Obsolete("Diagnostics are now automatic and not configurable. Please use a constructor without the DiagnosticsHeader parameter. This constructor will be removed in a future update.")]
-        public ManagementApiClient(string token, Uri baseUri, DiagnosticsHeader diagnostics)
-            : this(token, baseUri, (HttpMessageHandler)null)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
-        /// </summary>
-        /// <param name="token">The token.</param>
-        /// <param name="baseUri">The base URI.</param>
         /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
         public ManagementApiClient(string token, Uri baseUri, HttpMessageHandler handler)
             : this(token, baseUri, new ApiConnection(token, baseUri.AbsoluteUri, handler))
@@ -210,44 +171,6 @@ namespace Auth0.ManagementApi
         /// <param name="baseUri">The base URI.</param>
         public ManagementApiClient(string token, Uri baseUri)
             : this(token, baseUri, (HttpMessageHandler)null)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
-        /// </summary>
-        /// <param name="token">The token.</param>
-        /// <param name="domain">Your Auth0 domain, e.g. tenant.auth0.com.</param>
-        /// <param name="diagnostics">The diagnostics.</param>
-        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
-        [Obsolete("Diagnostics are now automatic and not configurable. Please use a constructor without the DiagnosticsHeader parameter. This constructor will be removed in a future update.")]
-        public ManagementApiClient(string token, string domain, DiagnosticsHeader diagnostics, HttpMessageHandler handler)
-            : this(token, new Uri($"https://{domain}/api/v2"), handler)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
-        /// </summary>
-        /// <param name="token">The token.</param>
-        /// <param name="domain">Your Auth0 domain, e.g. tenant.auth0.com.</param>
-        /// <param name="diagnostics">The diagnostics.</param>
-        /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests</param>
-        [Obsolete("Diagnostics are now automatic and not configurable. Please use a constructor without the DiagnosticsHeader parameter. This constructor will be removed in a future update.")]
-        public ManagementApiClient(string token, string domain, DiagnosticsHeader diagnostics, HttpClient httpClient)
-            : this(token, new Uri($"https://{domain}/api/v2"), httpClient)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
-        /// </summary>
-        /// <param name="token">The token.</param>
-        /// <param name="domain">Your Auth0 domain, e.g. tenant.auth0.com.</param>
-        /// <param name="diagnostics">The diagnostics.</param>
-        [Obsolete("Diagnostics are now automatic and not configurable. Please use a constructor without the DiagnosticsHeader parameter. This constructor will be removed in a future update.")]
-        public ManagementApiClient(string token, string domain, DiagnosticsHeader diagnostics)
-            : this(token, new Uri($"https://{domain}/api/v2"), (HttpMessageHandler)null)
         {
         }
 
