@@ -1,112 +1,112 @@
-﻿using System;
-using System.Net.Http;
-using Auth0.Core.Http;
+﻿using Auth0.Core.Http;
 using Auth0.ManagementApi.Clients;
+using System;
+using System.Net.Http;
 
 namespace Auth0.ManagementApi
 {
     /// <summary>
     /// Represents the Management API client.
     /// </summary>
-    public class ManagementApiClient : IManagementApiClient
+    public class ManagementApiClient
     {
         private readonly ApiConnection _apiConnection;
 
         /// <summary>
         /// Contains all the methods to call the /blacklists/tokens endpoints.
         /// </summary>
-        public IBlacklistedTokensClient BlacklistedTokens { get; }
+        public BlacklistedTokensClient BlacklistedTokens { get; }
 
         /// <summary>
         /// Contains all the methods to call the /client-grants endpoints
         /// </summary>
-        public IClientGrantsClient ClientGrants { get; }
+        public ClientGrantsClient ClientGrants { get; }
 
         /// <summary>
         /// Contains all the methods to call the /clients endpoints.
         /// </summary>
-        public IClientsClient Clients { get; }
+        public ClientsClient Clients { get; }
 
         /// <summary>
         /// Contains all the methods to call the /connections endpoints.
         /// </summary>
-        public IConnectionsClient Connections { get; }
+        public ConnectionsClient Connections { get; }
 
         /// <summary>
         /// Contains all the methods to call the /custom-domains endpoints.
         /// </summary>
-        public ICustomDomainsClient CustomDomains { get; }
+        public CustomDomainsClient CustomDomains { get; }
 
         /// <summary>
         /// Contains all the methods to call the /device-credentials endpoints.
         /// </summary>
-        public IDeviceCredentialsClient DeviceCredentials { get; }
+        public DeviceCredentialsClient DeviceCredentials { get; }
 
         /// <summary>
         /// Contains all the methods to call the /emails/provider endpoints.
         /// </summary>
-        public IEmailProviderClient EmailProvider { get; }
+        public EmailProviderClient EmailProvider { get; }
 
         /// <summary>
         /// Contains all the methods to call the /email-templates endpoints.
         /// </summary>
-        public IEmailTemplatesClient EmailTemplates { get; }
+        public EmailTemplatesClient EmailTemplates { get; }
 
         /// <summary>
         /// Contains all the methods to call the /guardian endpoints.
         /// </summary>
-        public IGuardianClient Guardian { get; }
+        public GuardianClient Guardian { get; }
 
         /// <summary>
         /// Contains all the methods to call the /jobs endpoints.
         /// </summary>
-        public IJobsClient Jobs { get; }
+        public JobsClient Jobs { get; }
 
         /// <summary>
         /// Contains all the methods to call the /logs endpoints.
         /// </summary>
-        public ILogsClient Logs { get; }
+        public LogsClient Logs { get; }
 
         /// <summary>
         /// Contains all the methods to call the /resource-servers endpoints.
         /// </summary>
-        public IResourceServersClient ResourceServers { get; }
+        public ResourceServersClient ResourceServers { get; }
 
         /// <summary>
         /// Contains all the methods to call the /roles endpoints.
         /// </summary>
         /// <value>The roles.</value>
-        public IRolesClient Roles { get; }
+        public RolesClient Roles { get; }
 
         /// <summary>
         /// Contains all the methods to call the /rules endpoints.
         /// </summary>
-        public IRulesClient Rules { get; }
+        public RulesClient Rules { get; }
 
         /// <summary>
         /// Contains all the methods to call the /stats endpoints.
         /// </summary>
-        public IStatsClient Stats { get; }
+        public StatsClient Stats { get; }
 
         /// <summary>
         /// Contains all the methods to call the /tenants/settings endpoints.
         /// </summary>
-        public ITenantSettingsClient TenantSettings { get; set; }
+        public TenantSettingsClient TenantSettings { get; set; }
 
         /// <summary>
         /// Contains all the methods to call the /tickets endpoints.
         /// </summary>
-        public ITicketsClient Tickets { get; }
+        public TicketsClient Tickets { get; }
 
         /// <summary>
         /// Contains all the methods to call the /user-blocks endpoints.
         /// </summary>
-        public IUserBlocksClient UserBlocks { get; }
+        public UserBlocksClient UserBlocks { get; }
 
         /// <summary>
         /// Contains all the methods to call the /users endpoints.
         /// </summary>
-        public IUsersClient Users { get; }
+        public UsersClient Users { get; }
 
         /// <summary>
         /// Gets information about the last API call;
@@ -151,7 +151,6 @@ namespace Auth0.ManagementApi
             : this(token, baseUri, new ApiConnection(token, baseUri.AbsoluteUri, handler))
         {
         }
-
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
@@ -205,6 +204,5 @@ namespace Auth0.ManagementApi
             : this(token, new Uri($"https://{domain}/api/v2"), (HttpMessageHandler)null)
         {
         }
-
     }
 }
