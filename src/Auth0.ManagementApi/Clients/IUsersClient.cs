@@ -12,6 +12,14 @@ namespace Auth0.ManagementApi.Clients
     public interface IUsersClient
     {
         /// <summary>
+        /// Assigns Roles to a user.
+        /// </summary>
+        /// <param name="id">The ID of the user to assign roles to.</param>
+        /// <param name="request">A <see cref="AssignRolesRequest" /> containing the role IDs to assign to the user.</param>
+        /// <returns></returns>
+        Task AssignRolesAsync(string id, AssignRolesRequest request);
+
+        /// <summary>
         ///     Creates a new user.
         /// </summary>
         /// <param name="request">The <see cref="UserCreateRequest" /> containing the properties of the user to create.</param>
@@ -64,8 +72,15 @@ namespace Auth0.ManagementApi.Clients
         /// </param>
         /// <returns></returns>
         [Obsolete("Use GetAllAsync(GetUsersRequest) or GetAllAsync(GetUsersRequest, PaginationInfo) instead")]
-        Task<IPagedList<User>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null, string sort = null, string connection = null, string fields = null,
-            bool? includeFields = null, string q = null, string searchEngine = null);
+        Task<IPagedList<User>> GetAllAsync(int? page = null,
+            int? perPage = null,
+            bool? includeTotals = null,
+            string sort = null,
+            string connection = null,
+            string fields = null,
+            bool? includeFields = null,
+            string q = null,
+            string searchEngine = null);
 
         /// <summary>
         /// Lists or search for users based on criteria.
@@ -107,7 +122,10 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="includeTotals">True if a query summary must be included in the result, false otherwise. Default false.</param>
         /// <returns></returns>
         [Obsolete("Use GetLogsAsync(GetUserLogsRequest) or GetLogsAsync(GetUserLogsRequest, PaginationInfo) instead")]
-        Task<IPagedList<LogEntry>> GetLogsAsync(string userId, int? page = null, int? perPage = null, string sort = null,
+        Task<IPagedList<LogEntry>> GetLogsAsync(string userId,
+            int? page = null,
+            int? perPage = null,
+            string sort = null,
             bool? includeTotals = null);
 
         /// <summary>
@@ -115,7 +133,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="request">Specifies criteria to use when querying logs for a user.</param>
         /// <returns>An <see cref="IPagedList{LogEntry}"/> containing the log entries for the user.</returns>
-        Task<IPagedList<LogEntry>> GetLogsAsync(GetUserLogsRequest request); 
+        Task<IPagedList<LogEntry>> GetLogsAsync(GetUserLogsRequest request);
 
         /// <summary>
         /// Retrieve every log event for a specific user.
@@ -123,7 +141,22 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="request">Specifies criteria to use when querying logs for a user.</param>
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
         /// <returns>An <see cref="IPagedList{LogEntry}"/> containing the log entries for the user.</returns>
-        Task<IPagedList<LogEntry>> GetLogsAsync(GetUserLogsRequest request, PaginationInfo pagination); 
+        Task<IPagedList<LogEntry>> GetLogsAsync(GetUserLogsRequest request, PaginationInfo pagination);
+
+        /// <summary>
+        /// Retrieve assigned roles for a specific user.
+        /// </summary>
+        /// <param name="userId">The user id of the roles to retrieve</param>
+        /// <returns>An <see cref="IPagedList{Role}"/> containing the roles for the user.</returns>
+        Task<IPagedList<Role>> GetRolesAsync(string userId);
+
+        /// <summary>
+        /// Retrieve assigned roles for a specific user.
+        /// </summary>
+        /// <param name="userId">The user id of the roles to retrieve</param>
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <returns>An <see cref="IPagedList{Role}"/> containing the roles for the user.</returns>
+        Task<IPagedList<Role>> GetRolesAsync(string userId, PaginationInfo pagination);
 
         /// <summary>
         /// Gets all users by email address.
@@ -132,7 +165,8 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="fields"> A comma separated list of fields to include or exclude (depending on <see cref="includeFields"/>) from the result, null to retrieve all fields</param>
         /// <param name="includeFields">true if the fields specified are to be included in the result, false otherwise. Defaults to true</param>
         /// <returns></returns>
-        Task<IList<User>> GetUsersByEmailAsync(string email, string fields = null,
+        Task<IList<User>> GetUsersByEmailAsync(string email,
+            string fields = null,
             bool? includeFields = null);
 
         /// <summary>
@@ -151,6 +185,14 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="secondaryJwtToken">The JWT for the secondary account you wish to link.</param>
         /// <returns></returns>
         Task<IList<AccountLinkResponse>> LinkAccountAsync(string id, string primaryJwtToken, string secondaryJwtToken);
+
+        /// <summary>
+        /// Removes Roles from a user.
+        /// </summary>
+        /// <param name="id">The ID of the user to remove roles from.</param>
+        /// <param name="request">A <see cref="AssignRolesRequest" /> containing the role IDs to remove to the user.</param>
+        /// <returns></returns>
+        Task RemoveRolesAsync(string id, AssignRolesRequest request);
 
         /// <summary>
         ///     Unlinks user accounts

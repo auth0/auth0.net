@@ -5,14 +5,12 @@ using Newtonsoft.Json.Linq;
 
 namespace Auth0.ManagementApi.Models
 {
-
     /// <summary>
-    /// 
+    ///
     /// </summary>
     //[JsonConverter(typeof(TestConverter))]
     public class User : UserBase
     {
-
         /// <summary>
         /// Gets or sets the date the user was created.
         /// </summary>
@@ -26,13 +24,13 @@ namespace Auth0.ManagementApi.Models
         public Identity[] Identities { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [JsonProperty("last_ip")]
         public string LastIpAddress { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [JsonProperty("last_login")]
         public DateTime LastLogin { get; set; }
@@ -44,7 +42,7 @@ namespace Auth0.ManagementApi.Models
         public DateTime? LastPasswordReset { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <remarks>
         /// Returned for the Facebook, Google, and Microsoft social providers.
@@ -53,7 +51,7 @@ namespace Auth0.ManagementApi.Models
         public string Locale { get; set; }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         [JsonProperty("logins_count")]
         public string LoginsCount { get; set; }
@@ -63,7 +61,7 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         /// <remarks>
         /// True if the phone is verified, otherwise false.
-        /// 
+        ///
         /// This is only valid for users from SMS connections.
         /// </remarks>
         [JsonProperty("phone_verified")]
@@ -138,5 +136,4 @@ namespace Auth0.ManagementApi.Models
         [JsonProperty("picture")]
         public string Picture { get; set; }
     }
-    
 }
