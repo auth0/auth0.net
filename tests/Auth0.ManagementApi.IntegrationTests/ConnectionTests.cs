@@ -31,7 +31,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var connectionsBefore = await _apiClient.Connections.GetAllAsync(new GetConnectionsRequest
             {
                 Strategy = new[] {"github"}
-            });
+            }, new PaginationInfo());
 
             // Create a new connection
             var newConnectionRequest = new ConnectionCreateRequest
@@ -48,7 +48,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var connectionsAfter = await _apiClient.Connections.GetAllAsync(new GetConnectionsRequest
             {
                 Strategy = new[] {"github"}
-            });
+            }, new PaginationInfo());
             connectionsAfter.Count.Should().Be(connectionsBefore.Count + 1);
 
             // Update a connection
@@ -83,7 +83,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_when_paging_not_specified_does_not_include_totals()
         {
             // Act
-            var connections = await _apiClient.Connections.GetAllAsync(new GetConnectionsRequest());
+            var connections = await _apiClient.Connections.GetAllAsync(new GetConnectionsRequest(), new PaginationInfo());
             
             // Assert
             Assert.Null(connections.Paging);

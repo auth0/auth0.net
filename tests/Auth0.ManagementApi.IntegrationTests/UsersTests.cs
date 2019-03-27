@@ -148,7 +148,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_when_paging_not_specified_does_not_include_totals()
         {
             // Act
-            var users = await _apiClient.Users.GetAllAsync(new GetUsersRequest());
+            var users = await _apiClient.Users.GetAllAsync(new GetUsersRequest(), new PaginationInfo());
             
             // Assert
             Assert.Null(users.Paging);
@@ -233,7 +233,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var logEntries = await _apiClient.Users.GetLogsAsync(new GetUserLogsRequest
             {
                 UserId = user.UserId
-            });
+            }, new PaginationInfo());
 
             await _apiClient.Users.DeleteAsync(user.UserId);
 

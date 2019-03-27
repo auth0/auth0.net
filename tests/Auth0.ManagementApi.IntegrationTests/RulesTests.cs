@@ -28,7 +28,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_rules_crud_sequence()
         {
             // Get all rules
-            var rulesBefore = await _apiClient.Rules.GetAllAsync(new GetRulesRequest());
+            var rulesBefore = await _apiClient.Rules.GetAllAsync(new GetRulesRequest(), new PaginationInfo());
 
             // Add a new rule
             var newRuleRequest = new RuleCreateRequest
@@ -44,7 +44,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             newRuleResponse.Name.Should().Be(newRuleRequest.Name);
 
             // Get all the rules again, and check that we now have one more
-            var rulesAfter = await _apiClient.Rules.GetAllAsync(new GetRulesRequest());
+            var rulesAfter = await _apiClient.Rules.GetAllAsync(new GetRulesRequest(), new PaginationInfo());
             rulesAfter.Count.Should().Be(rulesBefore.Count + 1);
 
             // Update the Rule
@@ -71,7 +71,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_when_paging_not_specified_does_not_include_totals()
         {
             // Act
-            var rules = await _apiClient.Rules.GetAllAsync(new GetRulesRequest());
+            var rules = await _apiClient.Rules.GetAllAsync(new GetRulesRequest(), new PaginationInfo());
             
             // Assert
             Assert.Null(rules.Paging);

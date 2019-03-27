@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Auth0.Core.Collections;
+﻿using Auth0.Core.Collections;
 using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Serialization;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
     /// Contains all the methods to call the /resource-server endpoints.
     /// </summary>
-    public class ResourceServersClient : ClientBase, IResourceServersClient
+    public class ResourceServersClient : ClientBase
     {
         /// <summary>
-        /// Creates a new instance of the resource servers client.
+        /// Creates a new instance of <see cref="ResourceServersClient"/>.
         /// </summary>
         /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
         public ResourceServersClient(IApiConnection connection) : base(connection)
@@ -60,17 +59,10 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Get all resource servers
+        /// Gets a list of all the resource servers.
         /// </summary>
-        /// <returns>A list of <see cref="ResourceServer"/></returns>
-        [Obsolete("Use GetAllAsync(PaginationInfo) instead")]
-        public Task<IList<ResourceServer>> GetAllAsync()
-        {
-            return Connection.GetAsync<IList<ResourceServer>>("resource-servers",
-                null, null, null, null);
-        }
-
-        /// <inheritdoc />
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <returns>A <see cref="IPagedList{ResourceServer}"/> containing the list of resource servers.</returns>
         public Task<IPagedList<ResourceServer>> GetAllAsync(PaginationInfo pagination)
         {
             return Connection.GetAsync<IPagedList<ResourceServer>>("resource-servers", null,

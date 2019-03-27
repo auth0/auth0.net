@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Auth0.ManagementApi.Models
+﻿namespace Auth0.ManagementApi.Models
 {
     /// <summary>
     /// Specifies pagination info to use when requesting paged results.

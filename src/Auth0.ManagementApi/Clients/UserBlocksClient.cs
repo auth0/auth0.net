@@ -1,21 +1,21 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Auth0.Core.Http;
+﻿using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
     /// Contains all the methods for the /user-blocks endpoints
     /// </summary>
-    public class UserBlocksClient : ClientBase, IUserBlocksClient
+    public class UserBlocksClient : ClientBase
     {
         /// <summary>
-        /// Creates a new instance of the user blocks client.
+        /// Creates a new instance of <see cref="UserBlocksClient"/>.
         /// </summary>
         /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
-        /// <returns></returns>
-        public UserBlocksClient(IApiConnection connection) : base(connection)
+        public UserBlocksClient(IApiConnection connection)
+            : base(connection)
         {
         }
 
@@ -71,10 +71,11 @@ namespace Auth0.ManagementApi.Clients
         /// <returns></returns>
         public Task UnblockByUserIdAsync(string id)
         {
-            return Connection.DeleteAsync<object>("user-blocks/{id}", new Dictionary<string, string>
-            {
-                {"id", id}
-            }, null);
+            return Connection.DeleteAsync<object>("user-blocks/{id}", 
+                new Dictionary<string, string>
+                {
+                    {"id", id}
+                }, null);
         }
     }
 }

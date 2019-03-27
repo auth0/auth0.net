@@ -111,7 +111,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_when_paging_not_specified_does_not_include_totals()
         {
             // Act
-            var clients = await _apiClient.Clients.GetAllAsync(new GetClientsRequest());
+            var clients = await _apiClient.Clients.GetAllAsync(new GetClientsRequest(), new PaginationInfo());
             
             // Assert
             Assert.Null(clients.Paging);
@@ -159,7 +159,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var connections = await _apiClient.Clients.GetAllAsync(new GetClientsRequest
             {
                 AppType = new[] {ClientApplicationType.Native}
-            });
+            }, new PaginationInfo());
 
             // Assert
             connections.Count.Should().BeGreaterThan(0);

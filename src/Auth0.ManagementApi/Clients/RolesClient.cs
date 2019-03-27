@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Auth0.Core.Collections;
+﻿using Auth0.Core.Collections;
 using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Serialization;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
     /// Contains all the methods to call the /roles endpoints.
     /// </summary>
-    public class RolesClient : ClientBase, IRolesClient
+    public class RolesClient : ClientBase
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="RolesClient"/> class.

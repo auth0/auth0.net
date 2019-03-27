@@ -2,9 +2,8 @@
 
 namespace Auth0.ManagementApi.Models
 {
-
     /// <summary>
-    ///vb
+    /// The number of signups and logins for a specific day.
     /// </summary>
     public class DailyStatistics
     {
@@ -22,7 +21,5 @@ namespace Auth0.ManagementApi.Models
         /// The amount of signups on the date.
         /// </summary>
         public int SignUps { get; set; }
-
     }
-
 }

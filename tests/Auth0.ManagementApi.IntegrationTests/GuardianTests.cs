@@ -10,7 +10,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 {
     public class GuardianTests : TestBase, IAsyncLifetime
     {
-        IManagementApiClient _managementApiClient;
+        ManagementApiClient _managementApiClient;
 
         public async Task InitializeAsync()
         {

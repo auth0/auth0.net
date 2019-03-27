@@ -26,7 +26,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Can_fetch_single_entry()
         {
             // Get all log entries
-            var logEntries = await _apiClient.Logs.GetAllAsync(new GetLogsRequest());
+            var logEntries = await _apiClient.Logs.GetAllAsync(new GetLogsRequest(), new PaginationInfo());
 
             // Grab the first one
             var firstLogEntry = logEntries[0];
@@ -42,7 +42,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_when_paging_not_specified_does_not_include_totals()
         {
             // Act
-            var logs = await _apiClient.Logs.GetAllAsync(new GetLogsRequest());
+            var logs = await _apiClient.Logs.GetAllAsync(new GetLogsRequest(), new PaginationInfo());
             
             // Assert
             Assert.Null(logs.Paging);

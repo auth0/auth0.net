@@ -1,22 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Auth0.Core.Collections;
+﻿using Auth0.Core.Collections;
 using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Serialization;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
     /// Contains all the methods to call the /rules endpoints.
     /// </summary>
-    public class RulesClient : ClientBase, IRulesClient
+    public class RulesClient : ClientBase
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RulesClient"/> class.
+        /// Creates a new instance of <see cref="RulesClient"/>.
         /// </summary>
-        /// <param name="connection">The connection.</param>
+        /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
         public RulesClient(ApiConnection connection)
             : base(connection)
         {
@@ -36,46 +36,21 @@ namespace Auth0.ManagementApi.Clients
         /// Deletes a rule.
         /// </summary>
         /// <param name="id">The ID of the rule to delete.</param>
-        /// <returns>Task.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.DeleteAsync<object>("rules/{id}", new Dictionary<string, string>
-            {
-                {"id", id}
-            }, null);
-        }
-
-        /// <inheritdoc />
-        [Obsolete("Use GetAllAsync(GetRulesRequest) or GetAllAsync(GetRulesRequest, PaginationInfo) instead")]
-        public Task<IList<Rule>> GetAllAsync(bool? enabled = null, string fields = null, bool includeFields = true, string stage = null)
-        {
-            return Connection.GetAsync<IList<Rule>>("rules", null,
+            return Connection.DeleteAsync<object>("rules/{id}",
                 new Dictionary<string, string>
                 {
-                    {"enabled", enabled?.ToString().ToLower()},
-                    {"fields", fields},
-                    {"include_fields", includeFields.ToString().ToLower()},
-                    {"stage", stage}
-                }, null, null);
+                    {"id", id}
+                }, null);
         }
 
-        /// <inheritdoc />
-        public Task<IPagedList<Rule>> GetAllAsync(GetRulesRequest request)
-        {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-
-            return Connection.GetAsync<IPagedList<Rule>>("rules", null,
-                new Dictionary<string, string>
-                {
-                    {"enabled", request.Enabled?.ToString().ToLower()},
-                    {"fields", request.Fields},
-                    {"include_fields", request.IncludeFields?.ToString().ToLower()},
-                    {"stage", request.Stage}
-                }, null, new PagedListConverter<Rule>("rules"));
-        }
-
-        /// <inheritdoc />
+        /// <summary>
+        /// Retrieves a list of all rules.
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying rules.</param>
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <returns>An <see cref="IPagedList{Rule}"/> containing the rules</returns>
         public Task<IPagedList<Rule>> GetAllAsync(GetRulesRequest request, PaginationInfo pagination)
         {
             if (request == null)
@@ -100,10 +75,14 @@ namespace Auth0.ManagementApi.Clients
         /// Retrieves a rule by its ID.
         /// </summary>
         /// <param name="id">The ID of the rule to retrieve.</param>
-        /// <param name="fields">A comma separated list of fields to include or exclude (depending on
-        /// <paramref name="includeFields" />) from the result, empty to retrieve all fields.</param>
-        /// <param name="includeFields">True if the fields specified are to be included in the result, false otherwise (defaults to
-        /// true).</param>
+        /// <param name="fields">
+        /// A comma separated list of fields to include or exclude (depending on
+        /// <paramref name="includeFields" />) from the result, empty to retrieve all fields.
+        /// </param>
+        /// <param name="includeFields">
+        /// True if the fields specified are to be included in the result, false otherwise (defaults to
+        /// true).
+        /// </param>
         /// <returns>The <see cref="Rule" />.</returns>
         public Task<Rule> GetAsync(string id, string fields = null, bool includeFields = true)
         {
@@ -124,7 +103,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="id">The ID of the rule to update.</param>
         /// <param name="request">A <see cref="RuleUpdateRequest" /> containing the information to update.</param>
-        /// <returns>Task&lt;Rule&gt;.</returns>
+        /// <returns></returns>
         public Task<Rule> UpdateAsync(string id, RuleUpdateRequest request)
         {
             return Connection.PatchAsync<Rule>("rules/{id}", request, new Dictionary<string, string>

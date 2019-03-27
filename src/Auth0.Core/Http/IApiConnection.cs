@@ -7,18 +7,18 @@ using Newtonsoft.Json;
 namespace Auth0.Core.Http
 {
     /// <summary>
-    ///     The communication layer between the various API clients and the actual API back-end. All API calls happen through
-    ///     this interface.
+    /// The communication layer between the various API clients and the actual API back-end. All API calls happen through
+    /// this interface.
     /// </summary>
     public interface IApiConnection
     {
         /// <summary>
-        ///     Contains information about the last API call made by the connection.
+        /// Contains information about the last API call made by the connection.
         /// </summary>
         ApiInfo ApiInfo { get; }
 
         /// <summary>
-        ///     Performs an HTTP DELETE.
+        /// Performs an HTTP DELETE.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="resource">The resource.</param>
@@ -43,7 +43,7 @@ namespace Auth0.Core.Http
             IDictionary<string, string> queryStrings) where T : class;
 
         /// <summary>
-        ///     Performs an HTTP GET.
+        /// Performs an HTTP GET.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="resource">The resource.</param>
@@ -57,7 +57,7 @@ namespace Auth0.Core.Http
             params JsonConverter[] converters) where T : class;
 
         /// <summary>
-        ///     Performs an HTTP PATCH.
+        /// Performs an HTTP PATCH.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="resource">The resource.</param>
@@ -67,7 +67,7 @@ namespace Auth0.Core.Http
         Task<T> PatchAsync<T>(string resource, object body, Dictionary<string, string> urlSegments) where T : class;
 
         /// <summary>
-        ///     Performs an HTTP POST.
+        /// Performs an HTTP POST.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="resource">The resource.</param>
@@ -83,7 +83,7 @@ namespace Auth0.Core.Http
             IDictionary<string, object> headers, IDictionary<string, string> queryStrings) where T : class;
 
         /// <summary>
-        ///     Performs an HTTP PUT.
+        /// Performs an HTTP PUT.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="resource">The resource.</param>

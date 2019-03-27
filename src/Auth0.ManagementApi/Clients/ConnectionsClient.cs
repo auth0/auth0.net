@@ -1,20 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Auth0.Core.Collections;
 using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Serialization;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
     /// Contains all the methods to call the /connections endpoints.
     /// </summary>
-    public class ConnectionsClient : ClientBase, IConnectionsClient
+    public class ConnectionsClient : ClientBase
     {
         /// <summary>
-        /// Creates a new instance of the ClientBase class.
+        /// Creates a new instance of the <see cref="ConnectionsClient"/>.
         /// </summary>
         /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
         public ConnectionsClient(IApiConnection connection)
@@ -26,7 +26,7 @@ namespace Auth0.ManagementApi.Clients
         /// Creates a new connection according to the request.
         /// </summary>
         /// <param name="request">The request containing the properties for the new connection.</param>
-        /// <returns>A <see cref="Connection" /> containing the newly created Connection.</returns>
+        /// <returns>A <see cref="Connection"/> containing the newly created Connection.</returns>
         public Task<Connection> CreateAsync(ConnectionCreateRequest request)
         {
             return Connection.PostAsync<Connection>("connections", request, null, null, null, null, null);
@@ -36,7 +36,6 @@ namespace Auth0.ManagementApi.Clients
         /// Deletes a connection and all its users.
         /// </summary>
         /// <param name="id">The id of the connection to delete.</param>
-        /// <returns>Task.</returns>
         public Task DeleteAsync(string id)
         {
             return Connection.DeleteAsync<object>("connections/{id}", new Dictionary<string, string>
@@ -46,20 +45,21 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Deletes a specified connection user by its email 
+        /// Deletes a specified connection user by its email.
         /// </summary>
         /// <remarks>
-        /// Currently only database connections are supported and you cannot delete all users from specific connection
+        /// Currently only database connections are supported and you cannot delete all users from specific connection.
         /// </remarks>
         /// <param name="id">The identifier of the connection</param>
         /// <param name="email">The email of the user to delete</param>
         /// <returns></returns>
         public Task DeleteUserAsync(string id, string email)
         {
-            return Connection.DeleteAsync<object>("connections/{id}/users", new Dictionary<string, string>
-            {
-                {"id", id}
-            },
+            return Connection.DeleteAsync<object>("connections/{id}/users",
+                new Dictionary<string, string>
+                {
+                    {"id", id}
+                },
                 new Dictionary<string, string>
                 {
                     {"email", email},
@@ -67,12 +67,12 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Retrieves a connection by its <paramref name="id" />
+        /// Retrieves a connection by its <paramref name="id"/>
         /// </summary>
         /// <param name="id">The id of the connection to retrieve.</param>
         /// <param name="fields">A comma separated list of fields to include or exclude (depending on include_fields) from the result, empty to retrieve all fields.</param>
         /// <param name="includeFields">True if the fields specified are to be included in the result, false otherwise (defaults to true).</param>
-        /// <returns>The <see cref="Connection" />.</returns>
+        /// <returns>The <see cref="Connection"/>.</returns>
         public Task<Connection> GetAsync(string id, string fields = null, bool includeFields = true)
         {
             return Connection.GetAsync<Connection>("connections/{id}",
@@ -87,59 +87,12 @@ namespace Auth0.ManagementApi.Clients
                 }, null, null);
         }
 
-        /// <inheritdoc />
-        [Obsolete("Use GetAllAsync(GetConnectionsRequest) or GetAllAsync(GetConnectionsRequest, PaginationInfo) instead")]
-        public Task<IPagedList<Connection>> GetAllAsync(int? page = null, int? perPage = null, bool? includeTotals = null, 
-            string fields = null, bool? includeFields = null, string name = null, string[] strategy = null)
-        {
-            var queryStrings = new Dictionary<string, string>
-            {
-                {"page", page?.ToString()},
-                {"per_page", perPage?.ToString()},
-                {"include_totals", includeTotals?.ToString().ToLower()},
-                {"fields", fields},
-                {"include_fields", includeFields?.ToString().ToLower()},
-                {"name", name}
-            };
-            
-            // Add each strategy as a separate querystring
-            if (strategy != null)
-            {
-                foreach (var s in strategy)
-                {
-                    queryStrings.Add("strategy", s);
-                }
-            }
-            
-            return Connection.GetAsync<IPagedList<Connection>>("connections", null, queryStrings, null, new PagedListConverter<Connection>("connections"));
-        }
-
-        /// <inheritdoc />
-        public Task<IPagedList<Connection>> GetAllAsync(GetConnectionsRequest request)
-        {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-
-            var queryStrings = new Dictionary<string, string>
-            {
-                {"fields", request.Fields},
-                {"include_fields", request.IncludeFields?.ToString().ToLower()},
-                {"name", request.Name}
-            };
-            
-            // Add each strategy as a separate querystring
-            if (request.Strategy != null)
-            {
-                foreach (var s in request.Strategy)
-                {
-                    queryStrings.Add("strategy", s);
-                }
-            }
-            
-            return Connection.GetAsync<IPagedList<Connection>>("connections", null, queryStrings, null, new PagedListConverter<Connection>("connections"));
-        }
-
-        /// <inheritdoc />
+        /// <summary>
+        /// Retrieves every connection matching the specified strategy. All connections are retrieved if no strategy is being specified. Accepts a list of fields to include or exclude in the resulting list of connection objects.
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying connections.</param>
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <returns>An <see cref="IPagedList{Connection}"/> containing the list of connections.</returns>
         public Task<IPagedList<Connection>> GetAllAsync(GetConnectionsRequest request, PaginationInfo pagination)
         {
             if (request == null)
@@ -156,7 +109,7 @@ namespace Auth0.ManagementApi.Clients
                 {"per_page", pagination.PerPage.ToString()},
                 {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
             };
-            
+
             // Add each strategy as a separate querystring
             if (request.Strategy != null)
             {
@@ -165,44 +118,23 @@ namespace Auth0.ManagementApi.Clients
                     queryStrings.Add("strategy", s);
                 }
             }
-            
-            return Connection.GetAsync<IPagedList<Connection>>("connections", null, queryStrings, null, new PagedListConverter<Connection>("connections"));
-        }
 
-        /// <summary>
-        /// Retrieves every connection matching the specified strategy. All connections are retrieved if no strategy is being specified. Accepts a list of fields to include or exclude in the resulting list of connection objects.
-        /// </summary>
-        /// <param name="strategy">Provide a type of strategy to only retrieve connections with that strategy.</param>
-        /// <param name="fields">A comma separated list of fields to include or exclude (depending on include_fields) from the result, empty to retrieve all fields.</param>
-        /// <param name="includeFields">True if the fields specified are to be included in the result, false otherwise (defaults to true).</param>
-        /// <param name="name">Provide the name of the connection to retrieve</param>
-        /// <returns>A list of <see cref="Connection" /> objects matching the strategy.</returns>
-        [Obsolete("Use the paged method overload instead")]
-        public Task<IList<Connection>> GetAllAsync(string strategy, string fields = null, bool includeFields = true,
-            string name = null)
-        {
-            return Connection.GetAsync<IList<Connection>>("connections", null,
-                new Dictionary<string, string>
-                {
-                    {"strategy", strategy},
-                    {"fields", fields},
-                    {"include_fields", includeFields.ToString().ToLower()},
-                    {"name", name}
-                }, null, null);
+            return Connection.GetAsync<IPagedList<Connection>>("connections", null, queryStrings, null, new PagedListConverter<Connection>("connections"));
         }
 
         /// <summary>
         /// Updates a connection.
         /// </summary>
         /// <param name="id">The id of the connection to update.</param>
-        /// <param name="request">The request containing the properties of the connection you wish to update.</param>
-        /// <returns>A <see cref="Connection" /> containing the updated connection.</returns>
+        /// <param name="request">The <see cref="ConnectionUpdateRequest"/> containing the properties of the connection you wish to update.</param>
+        /// <returns>The <see cref="Connection"/> that has been updated.</returns>
         public Task<Connection> UpdateAsync(string id, ConnectionUpdateRequest request)
         {
-            return Connection.PatchAsync<Connection>("connections/{id}", request, new Dictionary<string, string>
-            {
-                {"id", id}
-            });
+            return Connection.PatchAsync<Connection>("connections/{id}", request, 
+                new Dictionary<string, string>
+                {
+                    {"id", id}
+                });
         }
     }
 }
