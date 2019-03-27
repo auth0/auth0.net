@@ -3,6 +3,10 @@ using System.Threading.Tasks;
 using Auth0.AuthenticationApi;
 using Auth0.AuthenticationApi.Models;
 using Microsoft.Extensions.Configuration;
+using Xunit;
+
+// We do not want to hit the management API rate limit
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
 
 namespace Auth0.Tests.Shared
 {
