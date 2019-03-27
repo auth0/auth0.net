@@ -68,7 +68,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_client_credentials_crud_sequence()
         {
             // Get all the current client grants
-            var clientGrantsBefore = await _apiClient.ClientGrants.GetAllAsync(new GetClientGrantsRequest());
+            var clientGrantsBefore = await _apiClient.ClientGrants.GetAllAsync(new GetClientGrantsRequest(), new PaginationInfo());
 
             // Add a new client grant
             var newClientGrantRequest = new ClientGrantCreateRequest
@@ -87,7 +87,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 options => options.Excluding(cg => cg.ClientId));
 
             // Get all the client grants again, and verify we have one more
-            var clientGrantsAfter = await _apiClient.ClientGrants.GetAllAsync(new GetClientGrantsRequest());
+            var clientGrantsAfter = await _apiClient.ClientGrants.GetAllAsync(new GetClientGrantsRequest(), new PaginationInfo());
             clientGrantsAfter.Count.Should().Be(clientGrantsBefore.Count + 1);
 
             // Update the client grant
@@ -112,7 +112,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_when_paging_not_specified_does_not_include_totals()
         {
             // Act
-            var grants = await _apiClient.ClientGrants.GetAllAsync(new GetClientGrantsRequest());
+            var grants = await _apiClient.ClientGrants.GetAllAsync(new GetClientGrantsRequest(), new PaginationInfo());
             
             // Assert
             Assert.Null(grants.Paging);

@@ -4,7 +4,7 @@ using Auth0.ManagementApi.Models;
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
-    /// Contains all the methods for the /user-blocks endpoints
+    /// Contains all the methods for the /user-blocks endpoints.
     /// </summary>
     public interface IUserBlocksClient
     {

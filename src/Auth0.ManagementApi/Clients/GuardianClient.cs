@@ -5,12 +5,19 @@ using Auth0.ManagementApi.Models;
 
 namespace Auth0.ManagementApi.Clients
 {
+    /// <inheritdoc />
     public class GuardianClient : ClientBase, IGuardianClient
     {
-        public GuardianClient(IApiConnection connection) : base(connection)
+        /// <summary>
+        /// Creates a new instance of <see cref="GuardianClient"/>.
+        /// </summary>
+        /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
+        public GuardianClient(IApiConnection connection)
+            : base(connection)
         {
         }
 
+        /// <inheritdoc />
         public Task<CreateGuardianEnrollmentTicketResponse> CreateEnrollmentTicketAsync(CreateGuardianEnrollmentTicketRequest request)
         {
             return Connection
@@ -20,6 +27,7 @@ namespace Auth0.ManagementApi.Clients
                 null, null, null, null, null);
         }
 
+        /// <inheritdoc />
         public Task DeleteEnrollmentAsync(string id)
         {
             return Connection
@@ -29,6 +37,7 @@ namespace Auth0.ManagementApi.Clients
                 null);
         }
 
+        /// <inheritdoc />
         public Task<GuardianEnrollment> GetEnrollmentAsync(string id)
         {
             return Connection
@@ -38,6 +47,7 @@ namespace Auth0.ManagementApi.Clients
                 null, null, null);
         }
 
+        /// <inheritdoc />
         public Task<IList<GuardianFactor>> GetFactorsAsync()
         {
             return Connection
@@ -46,6 +56,7 @@ namespace Auth0.ManagementApi.Clients
                 null, null, null, null);
         }
 
+        /// <inheritdoc />
         public Task<GuardianSmsEnrollmentTemplates> GetSmsTemplatesAsync()
         {
             return Connection
@@ -54,6 +65,7 @@ namespace Auth0.ManagementApi.Clients
                 null, null, null, null);
         }
 
+        /// <inheritdoc />
         public Task<GuardianSnsConfiguration> GetSnsConfigurationAsync()
         {
             return Connection
@@ -62,6 +74,7 @@ namespace Auth0.ManagementApi.Clients
                 null, null, null, null);
         }
 
+        /// <inheritdoc />
         public Task<GuardianTwilioConfiguration> GetTwilioConfigurationAsync()
         {
             return Connection
@@ -70,6 +83,7 @@ namespace Auth0.ManagementApi.Clients
                 null, null, null, null);
         }
 
+        /// <inheritdoc />
         public Task<UpdateGuardianFactorResponse> UpdateFactorAsync(UpdateGuardianFactorRequest request)
         {
             var name = request.Factor == GuardianFactorName.PushNotifications ? "push-notification" : "sms";
@@ -82,6 +96,7 @@ namespace Auth0.ManagementApi.Clients
                 null, null);
         }
 
+        /// <inheritdoc />
         public Task<GuardianSmsEnrollmentTemplates> UpdateSmsTemplatesAsync(GuardianSmsEnrollmentTemplates templates)
         {
             return Connection
@@ -91,6 +106,7 @@ namespace Auth0.ManagementApi.Clients
                 null, null, null, null, null);
         }
 
+        /// <inheritdoc />
         public Task<GuardianTwilioConfiguration> UpdateTwilioConfigurationAsync(UpdateGuardianTwilioConfigurationRequest request)
         {
             return Connection

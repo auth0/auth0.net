@@ -11,19 +11,15 @@ namespace Auth0.ManagementApi.Clients
     public class UserBlocksClient : ClientBase, IUserBlocksClient
     {
         /// <summary>
-        /// Creates a new instance of the user blocks client.
+        /// Creates a new instance of <see cref="UserBlocksClient"/>.
         /// </summary>
         /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
-        /// <returns></returns>
-        public UserBlocksClient(IApiConnection connection) : base(connection)
+        public UserBlocksClient(IApiConnection connection)
+            : base(connection)
         {
         }
 
-        /// <summary>
-        /// Get a user's blocks by identifier.
-        /// </summary>
-        /// <param name="identifier">The identifier of the user. Can be a user's email address, username or phone number</param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public Task<UserBlocks> GetByIdentifierAsync(string identifier)
         {
             return Connection.GetAsync<UserBlocks>("user-blocks",
@@ -34,11 +30,7 @@ namespace Auth0.ManagementApi.Clients
                 }, null, null);
         }
 
-        /// <summary>
-        /// Get a user's blocks by user id.
-        /// </summary>
-        /// <param name="id">The id of the user</param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public Task<UserBlocks> GetByUserIdAsync(string id)
         {
             return Connection.GetAsync<UserBlocks>("user-blocks/{id}",
@@ -49,11 +41,7 @@ namespace Auth0.ManagementApi.Clients
                 null, null, null);
         }
 
-        /// <summary>
-        /// Unblock a user by their identifier.
-        /// </summary>
-        /// <param name="identifier">The identifier of the user. Can be a user's email address, username or phone number</param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public Task UnblockByIdentifierAsync(string identifier)
         {
             return Connection.DeleteAsync<object>("user-blocks",
@@ -64,17 +52,14 @@ namespace Auth0.ManagementApi.Clients
                 });
         }
 
-        /// <summary>
-        /// Unblock a user by their id.
-        /// </summary>
-        /// <param name="id">The id of the user</param>
-        /// <returns></returns>
+        /// <inheritdoc />
         public Task UnblockByUserIdAsync(string id)
         {
-            return Connection.DeleteAsync<object>("user-blocks/{id}", new Dictionary<string, string>
-            {
-                {"id", id}
-            }, null);
+            return Connection.DeleteAsync<object>("user-blocks/{id}", 
+                new Dictionary<string, string>
+                {
+                    {"id", id}
+                }, null);
         }
     }
 }

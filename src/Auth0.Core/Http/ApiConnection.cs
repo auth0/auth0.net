@@ -13,7 +13,7 @@ using Newtonsoft.Json;
 namespace Auth0.Core.Http
 {
     /// <summary>
-    ///     The communication layer between the various API clients and the actual API backend.
+    /// The communication layer between the various API clients and the actual API backend.
     /// </summary>
     public class ApiConnection : IApiConnection
     {
@@ -23,7 +23,7 @@ namespace Auth0.Core.Http
         private readonly string _token;
 
         /// <summary>
-        ///     Contains information about the last API call made by the connection.
+        /// Contains information about the last API call made by the connection.
         /// </summary>
         public ApiInfo ApiInfo { get; private set; }
 
@@ -81,8 +81,8 @@ namespace Auth0.Core.Http
         }
 
         /// <summary>
-        ///     Builds the content of the message. This will build the appropriate <see cref="HttpContent" /> for the request based
-        ///     on the type of the parameters passed in.
+        /// Builds the content of the message. This will build the appropriate <see cref="HttpContent" /> for the request based
+        /// on the type of the parameters passed in.
         /// </summary>
         /// <param name="body">The body.</param>
         /// <param name="parameters">The parameters.</param>
@@ -123,7 +123,7 @@ namespace Auth0.Core.Http
         }
 
         /// <summary>
-        ///     Builds up the URL for the request by substituting values for URL segments and adding query string parameters.
+        /// Builds up the URL for the request by substituting values for URL segments and adding query string parameters.
         /// </summary>
         /// <param name="resource">The resource.</param>
         /// <param name="urlSegments">The URL segments.</param>
@@ -136,7 +136,7 @@ namespace Auth0.Core.Http
         }
 
         /// <summary>
-        ///     Performs an HTTP DELETE.
+        /// Performs an HTTP DELETE.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="resource">The resource.</param>
@@ -185,7 +185,7 @@ namespace Auth0.Core.Http
         }
 
         /// <summary>
-        ///     Performs an HTTP GET.
+        /// Performs an HTTP GET.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="resource">The resource.</param>
@@ -210,8 +210,8 @@ namespace Auth0.Core.Http
         }
 
         /// <summary>
-        ///     Handles errors returned from the API. It will check the response code, deserialize any relevant JSON error payload
-        ///     and throw an appropriate exception.
+        /// Handles errors returned from the API. It will check the response code, deserialize any relevant JSON error payload
+        /// and throw an appropriate exception.
         /// </summary>
         /// <param name="response">The <see cref="HttpResponseMessage" /> returned from the API.</param>
         /// <returns>A <see cref="Task" />.</returns>
@@ -250,7 +250,7 @@ namespace Auth0.Core.Http
         }
 
         /// <summary>
-        ///     Performs an HTTP PATCH.
+        /// Performs an HTTP PATCH.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="resource">The resource.</param>
@@ -272,7 +272,7 @@ namespace Auth0.Core.Http
         }
 
         /// <summary>
-        ///     Performs an HTTP POST.
+        /// Performs an HTTP POST.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="resource">The resource.</param>
@@ -299,7 +299,7 @@ namespace Auth0.Core.Http
         }
 
         /// <summary>
-        ///     Performs an HTTP PUT.
+        /// Performs an HTTP PUT.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="resource">The resource.</param>
@@ -326,8 +326,8 @@ namespace Auth0.Core.Http
         }
 
         /// <summary>
-        ///     Executes the request. All requests will pass through this method as it will apply the headers, do the JSON
-        ///     formatting, check for errors on return, etc.
+        /// Executes the request. All requests will pass through this method as it will apply the headers, do the JSON
+        /// formatting, check for errors on return, etc.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="resource">The resource.</param>

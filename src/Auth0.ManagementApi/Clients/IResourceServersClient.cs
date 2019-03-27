@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Auth0.Core.Collections;
+using Auth0.ManagementApi.Models;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Auth0.Core.Collections;
-using Auth0.ManagementApi.Models;
 
 namespace Auth0.ManagementApi.Clients
 {
@@ -11,9 +11,6 @@ namespace Auth0.ManagementApi.Clients
     /// </summary>
     public interface IResourceServersClient
     {
-        [Obsolete("Use GetAllAsync(PaginationInfo) instead")]
-        Task<System.Collections.Generic.IList<ResourceServer>> GetAllAsync();
-
         /// <summary>
         /// Creates a new resource server
         /// </summary>

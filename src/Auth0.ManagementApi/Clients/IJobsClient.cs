@@ -30,7 +30,7 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="file">The file.</param>
         /// <param name="upsert">Update the user if already exists</param>
         /// <param name="externalId">Customer defined id</param>
-        /// <returns>Task&lt;Job&gt;.</returns>
+        /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
         Task<Job> ImportUsersAsync(string connectionId, string fileName, Stream file, bool? upsert = null, string externalId = null);
 
         /// <summary>

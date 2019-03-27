@@ -2,13 +2,11 @@
 
 namespace Auth0.ManagementApi.Models.Rules
 {
-
     /// <summary>
     /// Represents details of the Login request from the app to Auth0, including QueryString and User Location.
     /// </summary>
     public class LoginRequest
     {
-
         /// <summary>
         /// The body of the POST request on login transactions used on oauth2-resource-owner or wstrust-usernamemixed protocols.
         /// </summary>

@@ -10,7 +10,7 @@ namespace Auth0.ManagementApi.Clients
     public class TicketsClient : ClientBase, ITicketsClient
     {
         /// <summary>
-        /// Creates a new instance of the ClientBase class.
+        /// Creates a new instance of <see cref="TicketsClient"/>.
         /// </summary>
         /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
         public TicketsClient(IApiConnection connection)
@@ -18,21 +18,13 @@ namespace Auth0.ManagementApi.Clients
         {
         }
 
-        /// <summary>
-        /// Creates an email verification ticket.
-        /// </summary>
-        /// <param name="request">The <see cref="EmailVerificationTicketRequest" /> containing the details of the ticket to create.</param>
-        /// <returns>The <see cref="Ticket" />.</returns>
+        /// <inheritdoc />
         public Task<Ticket> CreateEmailVerificationTicketAsync(EmailVerificationTicketRequest request)
         {
             return Connection.PostAsync<Ticket>("tickets/email-verification", request, null, null, null, null, null);
         }
 
-        /// <summary>
-        /// Creates a password change ticket.
-        /// </summary>
-        /// <param name="request">The <see cref="PasswordChangeTicketRequest" /> containing the details of the ticket to create.</param>
-        /// <returns>The <see cref="Ticket" />.</returns>
+        /// <inheritdoc />
         public Task<Ticket> CreatePasswordChangeTicketAsync(PasswordChangeTicketRequest request)
         {
             return Connection.PostAsync<Ticket>("tickets/password-change", request, null, null, null, null, null);

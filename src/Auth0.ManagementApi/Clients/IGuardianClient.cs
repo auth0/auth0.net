@@ -4,76 +4,77 @@ using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi
 {
+    /// <summary>
+    /// Interface with all the methods available for /guardian endpoints.
+    /// </summary>
     public interface IGuardianClient
     {
         /// <summary>
-        ///     Generate an email with a link to start the Guardian enrollment process.
+        /// Generate an email with a link to start the Guardian enrollment process.
         /// </summary>
         /// <param name="request">
-        ///     The <see cref="CreateGuardianEnrollmentTicketRequest" /> containing the information about the
-        ///     user who should be enrolled.
+        /// The <see cref="CreateGuardianEnrollmentTicketRequest" /> containing the information about the user who should be enrolled.
         /// </param>
         /// <returns>A <see cref="CreateGuardianEnrollmentTicketResponse" /> with the details of the ticket that was created.</returns>
         Task<CreateGuardianEnrollmentTicketResponse> CreateEnrollmentTicketAsync(CreateGuardianEnrollmentTicketRequest request);
 
         /// <summary>
-        ///     Deletes an enrollment.
+        /// Deletes an enrollment.
         /// </summary>
-        /// <param name="id">The ID of the enrollment.</param>
-        /// <returns></returns>
+        /// <param name="id">The ID of the enrollment to delete.</param>
+        /// <returns>A <see cref="Task"/> that completes when the delete is completed.</returns>
         Task DeleteEnrollmentAsync(string id);
 
         /// <summary>
-        ///     Retrieves an enrollment.
+        /// Retrieves an enrollment.
         /// </summary>
-        /// <param name="id">The ID of the enrollment.</param>
-        /// <returns></returns>
+        /// <param name="id">The ID of the enrollment to retrieve.</param>
+        /// <returns>A <see cref="GuardianEnrollment"/> containing details of the enrollment.</returns>
         Task<GuardianEnrollment> GetEnrollmentAsync(string id);
 
         /// <summary>
-        ///     Retrieves all factors. Useful to check factor enablement and trial status.
+        /// Retrieves all factors. Useful to check factor enablement and trial status.
         /// </summary>
-        /// <returns>List of <see cref="GuardianFactor" /> with the available factors.</returns>
+        /// <returns>List of <see cref="GuardianFactor" /> instances with the available factors.</returns>
         Task<IList<GuardianFactor>> GetFactorsAsync();
 
         /// <summary>
-        ///     Retrieves enrollment and verification templates. You can use it to check the current values for your templates.
+        /// Retrieves enrollment and verification templates. You can use it to check the current values for your templates.
         /// </summary>
         /// <returns>A <see cref="GuardianSmsEnrollmentTemplates" /> containing the templates.</returns>
         Task<GuardianSmsEnrollmentTemplates> GetSmsTemplatesAsync();
 
         /// <summary>
-        ///     Returns provider configuration for AWS SNS
+        /// Returns provider configuration for AWS SNS.
         /// </summary>
         /// <returns>A <see cref="GuardianSnsConfiguration" /> containing Amazon SNS configuration.</returns>
         Task<GuardianSnsConfiguration> GetSnsConfigurationAsync();
 
         /// <summary>
-        ///     Returns configuration for the Guardian Twilio provider.
+        /// Returns configuration for the Guardian Twilio provider.
         /// </summary>
         /// <returns><see cref="GuardianTwilioConfiguration" /> with the Twilio configuration.</returns>
         Task<GuardianTwilioConfiguration> GetTwilioConfigurationAsync();
 
         /// <summary>
-        ///     Enable or Disable a Guardian factor.
+        /// Enable or Disable a Guardian factor.
         /// </summary>
         /// <param name="request">The <see cref="UpdateGuardianFactorRequest" /> containing the details of the factor to update.</param>
         /// <returns>The <see cref="UpdateGuardianFactorResponse" /> indicating the status of the factor.</returns>
         Task<UpdateGuardianFactorResponse> UpdateFactorAsync(UpdateGuardianFactorRequest request);
 
         /// <summary>
-        ///     Updates enrollment and verification templates. Useful to send custom messages on SMS enrollment and verification.
+        /// Updates enrollment and verification templates. Useful to send custom messages on SMS enrollment and verification.
         /// </summary>
         /// <param name="templates">A <see cref="GuardianSmsEnrollmentTemplates" /> containing the updated templates.</param>
         /// <returns>A <see cref="GuardianSmsEnrollmentTemplates" /> containing the templates.</returns>
         Task<GuardianSmsEnrollmentTemplates> UpdateSmsTemplatesAsync(GuardianSmsEnrollmentTemplates templates);
 
         /// <summary>
-        ///     Configure the Guardian Twilio provider.
+        /// Configure the Guardian Twilio provider.
         /// </summary>
         /// <param name="request">
-        ///     The <see cref="UpdateGuardianTwilioConfigurationRequest" /> containing the configuration
-        ///     settings.
+        /// The <see cref="UpdateGuardianTwilioConfigurationRequest" /> containing the configuration settings.
         /// </param>
         /// <returns>The <see cref="GuardianTwilioConfiguration" /> containing the updated configuration settings.</returns>
         Task<GuardianTwilioConfiguration> UpdateTwilioConfigurationAsync(UpdateGuardianTwilioConfigurationRequest request);

@@ -11,9 +11,9 @@ namespace Auth0.ManagementApi.Clients
     public interface IStatsClient
     {
         /// <summary>
-        ///     Gets the active users count (logged in during the last 30 days).
+        /// Gets the active users count (logged in during the last 30 days).
         /// </summary>
-        /// <returns>The number of users.</returns>
+        /// <returns>The number of users that have logged in during the last 30 days.</returns>
         Task<long> GetActiveUsersAsync();
 
         /// <summary>

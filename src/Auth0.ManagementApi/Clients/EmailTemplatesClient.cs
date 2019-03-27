@@ -9,16 +9,15 @@ using Auth0.ManagementApi.Models;
 
 namespace Auth0.ManagementApi.Clients
 {
-    /// <summary>
-    /// Contains all the methods to call the /email-templates endpoints.
-    /// </summary>
+    /// <inheritdoc />
     public class EmailTemplatesClient : ClientBase, IEmailTemplatesClient
     {
         /// <summary>
-        /// Creates a new instance of the <see cref="EmailTemplatesClient"/>
+        /// Creates a new instance of <see cref="EmailTemplatesClient"/>.
         /// </summary>
-        /// <param name="connection"></param>
-        public EmailTemplatesClient(IApiConnection connection) : base(connection)
+        /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
+        public EmailTemplatesClient(IApiConnection connection)
+            : base(connection)
         {
         }
 
@@ -63,6 +62,5 @@ namespace Auth0.ManagementApi.Clients
             var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetTypeInfo().GetDeclaredField(name).GetCustomAttributes(typeof(EnumMemberAttribute), true)).Single();
             return enumMemberAttribute.Value;
         }
-
     }
 }

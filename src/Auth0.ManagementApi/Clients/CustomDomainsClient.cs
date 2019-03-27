@@ -5,12 +5,15 @@ using Auth0.ManagementApi.Models;
 
 namespace Auth0.ManagementApi.Clients
 {
-    /// <summary>
-    /// Contains all the methods to call the /custom-domains endpoints.
-    /// </summary>
+    /// <inheritdoc />
     public class CustomDomainsClient : ClientBase, ICustomDomainsClient
     {
-        internal CustomDomainsClient(IApiConnection connection) : base(connection)
+        /// <summary>
+        /// Creates a new instance of <see cref="CustomDomainsClient"/>.
+        /// </summary>
+        /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
+        internal CustomDomainsClient(IApiConnection connection)
+            : base(connection)
         {
         }
 
@@ -23,10 +26,11 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc />
         public Task DeleteAsync(string id)
         {
-            return Connection.DeleteAsync<object>("custom-domains/{id}", new Dictionary<string, string>
-            {
-                {"id", id}
-            }, null);
+            return Connection.DeleteAsync<object>("custom-domains/{id}", 
+                new Dictionary<string, string>
+                {
+                    {"id", id}
+                }, null);
         }
 
         /// <inheritdoc />
@@ -49,10 +53,11 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc />
         public Task<CustomDomainVerificationResponse> VerifyAsync(string id)
         {
-            return Connection.PostAsync<CustomDomainVerificationResponse>("custom-domains/{id}/verify", null, null, null, new Dictionary<string, string>
-            {
-                {"id", id}
-            }, null, null);
+            return Connection.PostAsync<CustomDomainVerificationResponse>("custom-domains/{id}/verify", null, null, null, 
+                new Dictionary<string, string>
+                {
+                    {"id", id}
+                }, null, null);
         }
     }
 }

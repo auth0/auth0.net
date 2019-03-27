@@ -4,17 +4,16 @@ using Auth0.ManagementApi.Models;
 
 namespace Auth0.ManagementApi.Clients
 {
-
     /// <summary>
     /// Contains all the methods to call the /blacklists/tokens endpoints.
     /// </summary>
     public interface IBlacklistedTokensClient
     {
         /// <summary>
-        /// Blacklists a JWY token.
+        /// Blacklists a JWT token.
         /// </summary>
         /// <param name="request">The <see cref="BlacklistedTokenCreateRequest"/> containing the information of the token to blacklist.</param>
-        /// <returns></returns>
+        /// <returns>A <see cref="Task"/> indicating the request completion.</returns>
         Task CreateAsync(BlacklistedTokenCreateRequest request);
 
         /// <summary>
@@ -24,5 +23,4 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A list of <see cref="BlacklistedToken"/> objects.</returns>
         Task<IList<BlacklistedToken>> GetAllAsync(string aud);
     }
-
 }

@@ -11,9 +11,9 @@ namespace Auth0.ManagementApi.Models.Rules
     /// request.post({
     ///   url: 'http://YourWebApiEndpoint',
     ///   json: {
-    ///     user: user,
-    ///     context: context,
-    ///     secret_token: "SOMESECRETTOKEN",
+    /// user: user,
+    /// context: context,
+    /// secret_token: "SOMESECRETTOKEN",
     ///   },
     ///   timeout: 15000
     /// }, function(err, response, body){

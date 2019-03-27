@@ -5,13 +5,11 @@ using Auth0.ManagementApi.Models;
 
 namespace Auth0.ManagementApi.Clients
 {
-    /// <summary>
-    /// Contains all the methods to call the /blacklists/tokens endpoints.
-    /// </summary>
+    /// <inheritdoc />
     public class BlacklistedTokensClient : ClientBase, IBlacklistedTokensClient
     {
         /// <summary>
-        /// Creates a new instance of the ClientBase class.
+        /// Creates a new instance of <see cref="BlacklistedTokensClient"/>.
         /// </summary>
         /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
         public BlacklistedTokensClient(IApiConnection connection)
@@ -19,11 +17,7 @@ namespace Auth0.ManagementApi.Clients
         {
         }
 
-        /// <summary>
-        /// Gets all the blacklisted claims.
-        /// </summary>
-        /// <param name="aud">The aud claim for which you want to get blacklisted tokens. This is your API Key.</param>
-        /// <returns>A list of <see cref="BlacklistedToken" /> objects.</returns>
+        /// <inheritdoc />
         public Task<IList<BlacklistedToken>> GetAllAsync(string aud)
         {
             return Connection.GetAsync<IList<BlacklistedToken>>("blacklists/tokens", null,
@@ -33,11 +27,7 @@ namespace Auth0.ManagementApi.Clients
                 }, null, null);
         }
 
-        /// <summary>
-        /// Blacklists a JWT token.
-        /// </summary>
-        /// <param name="request">The <see cref="BlacklistedTokenCreateRequest" /> containing the information of the token to blacklist.</param>
-        /// <returns>Task.</returns>
+        /// <inheritdoc />
         public Task CreateAsync(BlacklistedTokenCreateRequest request)
         {
             return Connection.PostAsync<Client>("blacklists/tokens", request, null, null, null, null, null);
