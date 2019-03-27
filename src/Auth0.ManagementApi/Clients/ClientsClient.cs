@@ -11,8 +11,10 @@ using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
-    /// <inheritdoc />
-    public class ClientsClient : ClientBase, IClientsClient
+    /// <summary>
+    /// Contains all the methods to call the /clients endpoints.
+    /// </summary>
+    public class ClientsClient : ClientBase
     {
         /// <summary>
         /// Creates a new instance of <see cref="ClientsClient"/>.
@@ -23,13 +25,21 @@ namespace Auth0.ManagementApi.Clients
         {
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Creates a new client application.
+        /// </summary>
+        /// <param name="request">The <see cref="ClientCreateRequest"/> containing the properties of the new client.</param>
+        /// <returns>The new <see cref="Client"/> that has been created.</returns>
         public Task<Client> CreateAsync(ClientCreateRequest request)
         {
             return Connection.PostAsync<Client>("clients", request, null, null, null, null, null);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Deletes a client and all its related assets (like rules, connections, etc) given its id.
+        /// </summary>
+        /// <param name="id">The id of the client to delete.</param>
+        /// <returns>A <see cref="Task"/> indicating the request completion.</returns>
         public Task DeleteAsync(string id)
         {
             return Connection.DeleteAsync<object>("clients/{id}", 
@@ -39,7 +49,12 @@ namespace Auth0.ManagementApi.Clients
                 }, null);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Retrieves a list of all client applications.
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying clients.</param>
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <returns>An <see cref="IPagedList{Client}"/> containing the clients.</returns>
         public Task<IPagedList<Client>> GetAllAsync(GetClientsRequest request, PaginationInfo pagination)
         {
             if (request == null)
@@ -66,7 +81,19 @@ namespace Auth0.ManagementApi.Clients
             return Connection.GetAsync<IPagedList<Client>>("clients", null, queryStrings, null, new PagedListConverter<Client>("clients"));
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Retrieves a client by its id.
+        /// </summary>
+        /// <param name="id">The id of the client to retrieve.</param>
+        /// <param name="fields">
+        /// A comma separated list of fields to include or exclude (depending on includeFields) from the
+        /// result, empty to retrieve all fields.
+        /// </param>
+        /// <param name="includeFields">
+        /// true if the fields specified are to be included in the result, false otherwise (defaults to
+        /// true)
+        /// </param>
+        /// <returns>The <see cref="Client"/> retrieved.</returns>
         public Task<Client> GetAsync(string id, string fields = null, bool includeFields = true)
         {
             return Connection.GetAsync<Client>("clients/{id}",
@@ -81,7 +108,11 @@ namespace Auth0.ManagementApi.Clients
                 }, null, null);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Rotate a client secret. The generated secret is NOT base64 encoded.
+        /// </summary>
+        /// <param name="id">The id of the client which secret needs to be rotated</param>
+        /// <returns>The <see cref="Client"/> that has had its secret rotated.</returns>
         public Task<Client> RotateClientSecret(string id)
         {
             return Connection.PostAsync<Client>("clients/{id}/rotate-secret", null, null, null, 
@@ -91,7 +122,12 @@ namespace Auth0.ManagementApi.Clients
                 }, null, null);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Updates a client application.
+        /// </summary>
+        /// <param name="id">The id of the client you want to update.</param>
+        /// <param name="request">The <see cref="ClientUpdateRequest"/> containing the properties of the client you want to update.</param>
+        /// <returns>The <see cref="Client"/> that was updated.</returns>
         public Task<Client> UpdateAsync(string id, ClientUpdateRequest request)
         {
             return Connection.PatchAsync<Client>("clients/{id}", request, 

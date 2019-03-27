@@ -90,7 +90,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             assignedUsers.First().UserId.Should().Be(user.UserId);
 
             // Ensure the Role is assigned to user
-            var assignedRoles = await _apiClient.Users.GetRolesAsync(user.UserId);
+            var assignedRoles = await _apiClient.Users.GetRolesAsync(user.UserId, new PaginationInfo());
             assignedRoles.Should().NotBeNull();
             assignedRoles.First().Id.Should().Be(role.Id);
 
@@ -182,7 +182,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             await _apiClient.Users.AssignRolesAsync(user.UserId, assignRolesRequest);
 
             // Ensure the Role is assigned to user
-            var assignedRoles = await _apiClient.Users.GetRolesAsync(user.UserId);
+            var assignedRoles = await _apiClient.Users.GetRolesAsync(user.UserId, new PaginationInfo());
             assignedRoles.Should().NotBeNull();
             assignedRoles.Should().HaveCount(1);
             assignedRoles.First().Id.Should().Be(role.Id);
@@ -191,7 +191,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             await _apiClient.Users.RemoveRolesAsync(user.UserId, assignRolesRequest);
 
             // Ensure the Role has been removed from user
-            var removedRoles = await _apiClient.Users.GetRolesAsync(user.UserId);
+            var removedRoles = await _apiClient.Users.GetRolesAsync(user.UserId, new PaginationInfo());
             removedRoles.Should().NotBeNull();
             removedRoles.Should().HaveCount(0);
 

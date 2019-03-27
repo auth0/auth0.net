@@ -1,15 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Auth0.Core.Collections;
 using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Serialization;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
-    /// <inheritdoc />
-    public class ClientGrantsClient : ClientBase, IClientGrantsClient
+    /// <summary>
+    /// Contains all methods to call the /client-grants endpoints.
+    /// </summary>
+    public class ClientGrantsClient : ClientBase
     {
         /// <summary>
         /// Creates a new instance of <see cref="ClientGrantsClient"/>.
@@ -20,13 +22,21 @@ namespace Auth0.ManagementApi.Clients
         {
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Creates a new client grant.
+        /// </summary>
+        /// <param name="request">The <see cref="ClientGrantCreateRequest"/> containing the properties of the Client Grant.</param>
+        /// <returns>The new <see cref="ClientGrant"/> that has been created.</returns>
         public Task<ClientGrant> CreateAsync(ClientGrantCreateRequest request)
         {
             return Connection.PostAsync<ClientGrant>("client-grants", request, null, null, null, null, null);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Deletes a client grant.
+        /// </summary>
+        /// <param name="id">The identifier of the Client Grant to delete.</param>
+        /// <returns>A <see cref="Task"/> indicating the request completion.</returns>
         public Task DeleteAsync(string id)
         {
             return Connection.DeleteAsync<object>("client-grants/{id}", 
@@ -36,7 +46,12 @@ namespace Auth0.ManagementApi.Clients
                 }, null);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Gets a list of all the client grants.
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying client grants.</param>
+        /// <param name="pagination">Specifies <see cref="PaginationInfo"/> to use in requesting paged results.</param>
+        /// <returns>A <see cref="IPagedList"/> containing the matching <see cref="ClientGrant"/> instances.</returns>
         public Task<IPagedList<ClientGrant>> GetAllAsync(GetClientGrantsRequest request, PaginationInfo pagination)
         {
             if (request == null)
@@ -55,7 +70,12 @@ namespace Auth0.ManagementApi.Clients
                 }, null, new PagedListConverter<ClientGrant>("client_grants"));
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Updates a client grant.
+        /// </summary>
+        /// <param name="id">The identifier of the client grant to update.</param>
+        /// <param name="request">The <see cref="ClientGrantUpdateRequest"/> containing the properties to update.</param>
+        /// <returns>The <see cref="ClientGrant"/> that has been updated.</returns>
         public Task<ClientGrant> UpdateAsync(string id, ClientGrantUpdateRequest request)
         {
             return Connection.PatchAsync<ClientGrant>("client-grants/{id}", request, 

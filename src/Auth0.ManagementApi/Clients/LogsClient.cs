@@ -1,15 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Auth0.Core.Collections;
 using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Serialization;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
-    /// <inheritdoc />
-    public class LogsClient : ClientBase, ILogsClient
+    /// <summary>
+    /// Contains all the methods to call the /logs endpoints.
+    /// </summary>
+    public class LogsClient : ClientBase
     {
         /// <summary>
         /// Creates a new instance on <see cref="LogsClient"/>
@@ -20,7 +22,12 @@ namespace Auth0.ManagementApi.Clients
         {
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Retrieves log entries that match the specified search criteria.
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying logs.</param>
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <returns>An <see cref="IPagedList{LogEntry}"/> containing the list of log entries.</returns>
         public Task<IPagedList<LogEntry>> GetAllAsync(GetLogsRequest request, PaginationInfo pagination)
         {
             if (request == null)
@@ -43,7 +50,11 @@ namespace Auth0.ManagementApi.Clients
                 }, null, new PagedListConverter<LogEntry>("logs"));
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Retrieves the data related to the log entry identified by id. This returns a single log entry representation as specified in the schema.
+        /// </summary>
+        /// <param name="id">The identifier of the log entry to retrieve.</param>
+        /// <returns>A <see cref="LogEntry"/> instance containing the information about the log entry.</returns>
         public Task<LogEntry> GetAsync(string id)
         {
             return Connection.GetAsync<LogEntry>("logs/{id}",

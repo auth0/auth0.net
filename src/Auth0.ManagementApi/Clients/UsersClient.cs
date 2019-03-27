@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Auth0.Core.Collections;
+﻿using Auth0.Core.Collections;
 using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Serialization;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
-    /// <inheritdoc />
-    public class UsersClient : ClientBase, IUsersClient
+    /// <summary>
+    /// Contains all the methods to call the /users endpoints.
+    /// </summary>
+    public class UsersClient : ClientBase
     {
         /// <summary>
         /// Creates a new instance of <see cref="UsersClient"/>.
@@ -20,7 +22,12 @@ namespace Auth0.ManagementApi.Clients
         {
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Assigns Roles to a user.
+        /// </summary>
+        /// <param name="id">The ID of the user to assign roles to.</param>
+        /// <param name="request">A <see cref="AssignRolesRequest" /> containing the role IDs to assign to the user.</param>
+        /// <returns></returns>
         public Task AssignRolesAsync(string id, AssignRolesRequest request)
         {
             return Connection.PostAsync<AssignRolesRequest>("users/{id}/roles", request, null, null,
@@ -30,13 +37,20 @@ namespace Auth0.ManagementApi.Clients
                 }, null, null);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Creates a new user.
+        /// </summary>
+        /// <param name="request">The <see cref="UserCreateRequest" /> containing the properties of the user to create.</param>
+        /// <returns></returns>
         public Task<User> CreateAsync(UserCreateRequest request)
         {
             return Connection.PostAsync<User>("users", request, null, null, null, null, null);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Deletes a user.
+        /// </summary>
+        /// <param name="id">The id of the user to delete.</param>
         public Task DeleteAsync(string id)
         {
             if (string.IsNullOrWhiteSpace(id))
@@ -49,7 +63,12 @@ namespace Auth0.ManagementApi.Clients
                 }, null);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Deletes a user's multifactor provider.
+        /// </summary>
+        /// <param name="id">The id of the user who multi factor provider to delete.</param>
+        /// <param name="provider">The type of the multifactor provider. Supported values 'duo' or 'google-authenticator'</param>
+        /// <returns></returns>
         public Task DeleteMultifactorProviderAsync(string id, string provider)
         {
             return Connection.DeleteAsync<object>("users/{id}/multifactor/{provider}",
@@ -60,25 +79,12 @@ namespace Auth0.ManagementApi.Clients
                 }, null);
         }
 
-        /// <inheritdoc />
-        public Task<IPagedList<User>> GetAllAsync(GetUsersRequest request)
-        {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-
-            return Connection.GetAsync<IPagedList<User>>("users", null,
-                new Dictionary<string, string>
-                {
-                    {"sort", request.Sort},
-                    {"connection", request.Connection},
-                    {"fields", request.Fields},
-                    {"include_fields", request.IncludeFields?.ToString().ToLower()},
-                    {"q", request.Query},
-                    {"search_engine", request.SearchEngine}
-                }, null, new PagedListConverter<User>("users"));
-        }
-
-        /// <inheritdoc />
+        /// <summary>
+        /// Lists or search for users based on criteria.
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying users.</param>
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <returns>An <see cref="IPagedList{GetUsersRequest}"/> containing the list of users.</returns>
         public Task<IPagedList<User>> GetAllAsync(GetUsersRequest request, PaginationInfo pagination)
         {
             if (request == null)
@@ -101,7 +107,19 @@ namespace Auth0.ManagementApi.Clients
                 }, null, new PagedListConverter<User>("users"));
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Gets a user.
+        /// </summary>
+        /// <param name="id">The id of the user to retrieve.</param>
+        /// <param name="fields">
+        /// A comma separated list of fields to include or exclude (depending on includeFields) from the
+        /// result, empty to retrieve all fields
+        /// </param>
+        /// <param name="includeFields">
+        /// true if the fields specified are to be included in the result, false otherwise (defaults to
+        /// true)
+        /// </param>
+        /// <returns>The <see cref="User" />.</returns>
         public Task<User> GetAsync(string id, string fields = null, bool includeFields = true)
         {
             return Connection.GetAsync<User>("users/{id}",
@@ -116,24 +134,12 @@ namespace Auth0.ManagementApi.Clients
                 }, null, null);
         }
 
-        /// <inheritdoc />
-        public Task<IPagedList<LogEntry>> GetLogsAsync(GetUserLogsRequest request)
-        {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-
-            return Connection.GetAsync<IPagedList<LogEntry>>("users/{id}/logs",
-                new Dictionary<string, string>
-                {
-                    {"id", request.UserId}
-                },
-                new Dictionary<string, string>
-                {
-                    {"sort", request.Sort}
-                }, null, new PagedListConverter<LogEntry>("logs", true));
-        }
-
-        /// <inheritdoc />
+        /// <summary>
+        /// Retrieve every log event for a specific user.
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying logs for a user.</param>
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <returns>An <see cref="IPagedList{LogEntry}"/> containing the log entries for the user.</returns>
         public Task<IPagedList<LogEntry>> GetLogsAsync(GetUserLogsRequest request, PaginationInfo pagination)
         {
             if (request == null)
@@ -155,17 +161,12 @@ namespace Auth0.ManagementApi.Clients
                 }, null, new PagedListConverter<LogEntry>("logs", true));
         }
 
-        /// <inheritdoc />
-        public Task<IPagedList<Role>> GetRolesAsync(string userId)
-        {
-            return Connection.GetAsync<IPagedList<Role>>("users/{userId}/roles",
-                new Dictionary<string, string>
-                {
-                    {"userId", userId}
-                }, null, null, new PagedListConverter<Role>("roles"));
-        }
-
-        /// <inheritdoc />
+        /// <summary>
+        /// Retrieve assigned roles for a specific user.
+        /// </summary>
+        /// <param name="userId">The user id of the roles to retrieve</param>
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <returns>An <see cref="IPagedList{Role}"/> containing the roles for the user.</returns>
         public Task<IPagedList<Role>> GetRolesAsync(string userId, PaginationInfo pagination)
         {
             if (pagination == null)
@@ -184,7 +185,13 @@ namespace Auth0.ManagementApi.Clients
                 }, null, new PagedListConverter<Role>("roles"));
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Gets all users by email address.
+        /// </summary>
+        /// <param name="email">The email address to search for</param>
+        /// <param name="fields"> A comma separated list of fields to include or exclude (depending on <see cref="includeFields"/>) from the result, null to retrieve all fields</param>
+        /// <param name="includeFields">true if the fields specified are to be included in the result, false otherwise. Defaults to true</param>
+        /// <returns></returns>
         public Task<IList<User>> GetUsersByEmailAsync(string email, string fields = null, bool? includeFields = null)
         {
             return Connection.GetAsync<IList<User>>("users-by-email", null,
@@ -196,7 +203,12 @@ namespace Auth0.ManagementApi.Clients
                 }, null, null);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Links a secondary account to a primary account.
+        /// </summary>
+        /// <param name="id">The ID of the primary account.</param>
+        /// <param name="request">The <see cref="UserAccountLinkRequest" /> containing details of the secondary account to link.</param>
+        /// <returns></returns>
         public Task<IList<AccountLinkResponse>> LinkAccountAsync(string id, UserAccountLinkRequest request)
         {
             return Connection.PostAsync<IList<AccountLinkResponse>>("users/{id}/identities", request, null, null, new Dictionary<string, string>
@@ -205,7 +217,13 @@ namespace Auth0.ManagementApi.Clients
             }, null, null);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Links a secondary account to a primary account.
+        /// </summary>
+        /// <param name="id">The ID of the primary account.</param>
+        /// <param name="primaryJwtToken">The JWT of the primary account.</param>
+        /// <param name="secondaryJwtToken">The JWT for the secondary account you wish to link.</param>
+        /// <returns></returns>
         public Task<IList<AccountLinkResponse>> LinkAccountAsync(string id, string primaryJwtToken, string secondaryJwtToken)
         {
             var request = new UserAccountJwtLinkRequest
@@ -222,7 +240,12 @@ namespace Auth0.ManagementApi.Clients
             }, null);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Removes Roles from a user.
+        /// </summary>
+        /// <param name="id">The ID of the user to remove roles from.</param>
+        /// <param name="request">A <see cref="AssignRolesRequest" /> containing the role IDs to remove to the user.</param>
+        /// <returns></returns>
         public Task RemoveRolesAsync(string id, AssignRolesRequest request)
         {
             return Connection.DeleteAsync<object>("users/{id}/roles", request, new Dictionary<string, string>
@@ -232,7 +255,13 @@ namespace Auth0.ManagementApi.Clients
             );
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Unlinks user accounts
+        /// </summary>
+        /// <param name="primaryUserId">The ID of the primary account.</param>
+        /// <param name="provider">The type of the identity provider.</param>
+        /// <param name="secondaryUserId">The ID for the secondary account</param>
+        /// <returns></returns>
         public Task<IList<AccountLinkResponse>> UnlinkAccountAsync(string primaryUserId, string provider, string secondaryUserId)
         {
             return Connection.DeleteAsync<IList<AccountLinkResponse>>("users/{id}/identities/{provider}/{secondaryid}", new Dictionary<string, string>
@@ -243,7 +272,12 @@ namespace Auth0.ManagementApi.Clients
             }, null);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Updates a user.
+        /// </summary>
+        /// <param name="id">The id of the user to update.</param>
+        /// <param name="request">The <see cref="UserUpdateRequest" /> containing the information you wish to update.</param>
+        /// <returns></returns>
         public Task<User> UpdateAsync(string id, UserUpdateRequest request)
         {
             return Connection.PatchAsync<User>("users/{id}", request, new Dictionary<string, string>

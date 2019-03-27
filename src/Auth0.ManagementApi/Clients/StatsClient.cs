@@ -1,15 +1,15 @@
+using Auth0.Core.Http;
+using Auth0.ManagementApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Auth0.Core.Http;
-using Auth0.ManagementApi.Models;
 
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
     /// Contains all the methods to call the /stats endpoints.
     /// </summary>
-    public class StatsClient : ClientBase, IStatsClient
+    public class StatsClient : ClientBase
     {
         /// <summary>
         /// Creates a new instance of <see cref="StatsClient"/>.
@@ -20,7 +20,10 @@ namespace Auth0.ManagementApi.Clients
         {
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Gets the active users count (logged in during the last 30 days).
+        /// </summary>
+        /// <returns>The number of users that have logged in during the last 30 days.</returns>
         public async Task<long> GetActiveUsersAsync()
         {
             var result = await Connection.GetAsync<object>("stats/active-users", null, null, null, null).ConfigureAwait(false);
@@ -28,7 +31,12 @@ namespace Auth0.ManagementApi.Clients
             return Convert.ToInt64(result);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Gets the daily stats for a particular period.
+        /// </summary>
+        /// <param name="from">The first day of the period (inclusive).</param>
+        /// <param name="to">The last day of the period (inclusive).</param>
+        /// <returns>A list of <see cref="DailyStatistics"/> containing the statistics for each day in the period.</returns>
         public Task<IList<DailyStatistics>> GetDailyStatsAsync(DateTime from, DateTime to)
         {
             return Connection.GetAsync<IList<DailyStatistics>>("stats/daily", null,

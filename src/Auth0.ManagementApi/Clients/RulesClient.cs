@@ -1,15 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Auth0.Core.Collections;
+﻿using Auth0.Core.Collections;
 using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Serialization;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
-    /// <inheritdoc />
-    public class RulesClient : ClientBase, IRulesClient
+    /// <summary>
+    /// Contains all the methods to call the /rules endpoints.
+    /// </summary>
+    public class RulesClient : ClientBase
     {
         /// <summary>
         /// Creates a new instance of <see cref="RulesClient"/>.
@@ -20,13 +22,20 @@ namespace Auth0.ManagementApi.Clients
         {
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Creates a new rule according to the request.
+        /// </summary>
+        /// <param name="request">The <see cref="RuleCreateRequest" /> containing the details of the rule to create.</param>
+        /// <returns>The newly created <see cref="Rule" />.</returns>
         public Task<Rule> CreateAsync(RuleCreateRequest request)
         {
             return Connection.PostAsync<Rule>("rules", request, null, null, null, null, null);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Deletes a rule.
+        /// </summary>
+        /// <param name="id">The ID of the rule to delete.</param>
         public Task DeleteAsync(string id)
         {
             return Connection.DeleteAsync<object>("rules/{id}",
@@ -36,7 +45,12 @@ namespace Auth0.ManagementApi.Clients
                 }, null);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Retrieves a list of all rules.
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying rules.</param>
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <returns>An <see cref="IPagedList{Rule}"/> containing the rules</returns>
         public Task<IPagedList<Rule>> GetAllAsync(GetRulesRequest request, PaginationInfo pagination)
         {
             if (request == null)
@@ -57,7 +71,19 @@ namespace Auth0.ManagementApi.Clients
                 }, null, new PagedListConverter<Rule>("rules"));
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Retrieves a rule by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the rule to retrieve.</param>
+        /// <param name="fields">
+        /// A comma separated list of fields to include or exclude (depending on
+        /// <paramref name="includeFields" />) from the result, empty to retrieve all fields.
+        /// </param>
+        /// <param name="includeFields">
+        /// True if the fields specified are to be included in the result, false otherwise (defaults to
+        /// true).
+        /// </param>
+        /// <returns>The <see cref="Rule" />.</returns>
         public Task<Rule> GetAsync(string id, string fields = null, bool includeFields = true)
         {
             return Connection.GetAsync<Rule>("rules/{id}",
@@ -72,7 +98,12 @@ namespace Auth0.ManagementApi.Clients
                 }, null, null);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Updates a rule.
+        /// </summary>
+        /// <param name="id">The ID of the rule to update.</param>
+        /// <param name="request">A <see cref="RuleUpdateRequest" /> containing the information to update.</param>
+        /// <returns></returns>
         public Task<Rule> UpdateAsync(string id, RuleUpdateRequest request)
         {
             return Connection.PatchAsync<Rule>("rules/{id}", request, new Dictionary<string, string>

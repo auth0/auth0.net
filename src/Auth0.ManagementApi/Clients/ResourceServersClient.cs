@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
-    /// <inheritdoc />
-    public class ResourceServersClient : ClientBase, IResourceServersClient
+    /// <summary>
+    /// Contains all the methods to call the /resource-server endpoints.
+    /// </summary>
+    public class ResourceServersClient : ClientBase
     {
         /// <summary>
         /// Creates a new instance of <see cref="ResourceServersClient"/>.
@@ -18,13 +20,21 @@ namespace Auth0.ManagementApi.Clients
         {
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Creates a new resource server
+        /// </summary>
+        /// <param name="request">Contains the information for the resource server to create</param>
+        /// <returns></returns>
         public Task<ResourceServer> CreateAsync(ResourceServerCreateRequest request)
         {
             return Connection.PostAsync<ResourceServer>("resource-servers", request, null, null, null, null, null);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Deletes a resource server
+        /// </summary>
+        /// <param name="id">The id of the resource server to delete</param>
+        /// <returns></returns>
         public Task DeleteAsync(string id)
         {
             return Connection.DeleteAsync<object>("resource-servers/{id}", new Dictionary<string, string>
@@ -33,7 +43,11 @@ namespace Auth0.ManagementApi.Clients
             }, null);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Get a resource server by its id
+        /// </summary>
+        /// <param name="id">The id of the resource server</param>
+        /// <returns>A <see cref="ResourceServer"/></returns>
         public Task<ResourceServer> GetAsync(string id)
         {
             return Connection.GetAsync<ResourceServer>("resource-servers/{id}",
@@ -44,7 +58,11 @@ namespace Auth0.ManagementApi.Clients
                 null, null, null);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Gets a list of all the resource servers.
+        /// </summary>
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <returns>A <see cref="IPagedList{ResourceServer}"/> containing the list of resource servers.</returns>
         public Task<IPagedList<ResourceServer>> GetAllAsync(PaginationInfo pagination)
         {
             return Connection.GetAsync<IPagedList<ResourceServer>>("resource-servers", null,
@@ -56,7 +74,12 @@ namespace Auth0.ManagementApi.Clients
                 }, null, new PagedListConverter<ResourceServer>("resource_servers"));
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Updates a resource server
+        /// </summary>
+        /// <param name="id">The id of the resource server to update</param>
+        /// <param name="request">Contains the information for the resource server to update</param>
+        /// <returns></returns>
         public Task<ResourceServer> UpdateAsync(string id, ResourceServerUpdateRequest request)
         {
             return Connection.PatchAsync<ResourceServer>("resource-servers/{id}", request, new Dictionary<string, string>
