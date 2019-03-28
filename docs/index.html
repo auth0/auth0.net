@@ -8,9 +8,9 @@
     <title>Auth0 .NET SDK </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Auth0 .NET SDK ">
-    <meta name="generator" content="docfx 2.33.1.0">
+    <meta name="generator" content="docfx 2.40.12.0">
     
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="images/logo.png">
     <link rel="stylesheet" href="styles/docfx.vendor.css">
     <link rel="stylesheet" href="styles/docfx.css">
     <link rel="stylesheet" href="styles/main.css">
@@ -20,7 +20,7 @@
     
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -35,7 +35,7 @@
               </button>
               
               <a class="navbar-brand" href="index.html">
-                <img id="logo" class="svg" src="logo.svg" alt="">
+                <img id="logo" class="svg" src="images/logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -74,19 +74,19 @@
 <p>You can install the Auth0 .NET SDK trough <a href="https://www.nuget.org">Nuget</a>. Two different Nuget packages are available, one for the Authentication API, and one for the Management API.</p>
 <h3 id="installing-the-sdk-for-the-authentication-api">Installing the SDK for the Authentication API</h3>
 <p>You can install the SDK for the Authentication API throug the <a href="http://docs.nuget.org/consume/Package-Manager-Console">Package Manager Console</a> inside Visual Studio:</p>
-<pre><code>Install-Package Auth0.AuthenticationApi
+<pre><code class="lang-powershell">Install-Package Auth0.AuthenticationApi
 </code></pre><p>Alternatively you can install it through the <a href="http://docs.nuget.org/consume/package-manager-dialog">Package Manager Dialog</a> by searching for the <code>Auth0.AuthenticationApi</code> package.</p>
 <h3 id="installing-the-sdk-for-the-management-api">Installing the SDK for the Management API</h3>
 <p>You can install the SDK for the Management API throug the <a href="http://docs.nuget.org/consume/Package-Manager-Console">Package Manager Console</a> inside Visual Studio:</p>
-<pre><code>Install-Package Auth0.ManagementApi
+<pre><code class="lang-powershell">Install-Package Auth0.ManagementApi
 </code></pre><p>Alternatively you can install it through the <a href="http://docs.nuget.org/consume/package-manager-dialog">Package Manager Dialog</a> by searching for the <code>Auth0.ManagementApi</code> package.</p>
 <h2 id="using-the-authentication-api">Using the Authentication API</h2>
 <p>This section will take your through the basics of using the Authentication API.</p>
 <h3 id="basic-usage">Basic Usage</h3>
 <p>Ensure that you include the Authentication API namespace in your source code file:</p>
-<pre><code>using Auth0.AuthenticationApi;
+<pre><code class="lang-csharp">using Auth0.AuthenticationApi;
 </code></pre><p>To start using the API, you need to create an instance of the <a class="xref" href="api/Auth0.AuthenticationApi.AuthenticationApiClient.html">AuthenticationApiClient</a> class, passing the URL of your Auth0 instance:</p>
-<pre><code>var client = new AuthenticationApiClient(new Uri(&quot;https://YOUR_AUTH0_DOMAIN/&quot;));
+<pre><code class="lang-csharp">var client = new AuthenticationApiClient(new Uri(&quot;https://YOUR_AUTH0_DOMAIN/&quot;));
 </code></pre><blockquote><p>You can obtain your Auth0 Domain from the <a href="https://manage.auth0.com/#/applications">Application section of the Auth0 Dashboard</a> by looking at the settings for your particular application. </p>
 </blockquote>
 <p>For more details on the various methods that are available, please refer to the documentation of the <a class="xref" href="api/Auth0.AuthenticationApi.AuthenticationApiClient.html">AuthenticationApiClient</a> class.</p>
@@ -131,7 +131,7 @@ var authorizationUrl = client.BuildAuthorizationUrl()
 <p>This section will take your through the basics of using the Management API. </p>
 <h3 id="basic-usage-1">Basic Usage</h3>
 <p>Ensure that you include the Management API namespace in your source code file:</p>
-<pre><code>using Auth0.ManagementApi;
+<pre><code class="lang-csharp">using Auth0.ManagementApi;
 </code></pre><p>To start using the API, you need to create an instance of the <a class="xref" href="api/Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class, passing a token and the URL to the Management API of your Auth0 instance:</p>
 <pre><code class="lang-csharp">// Replace YOUR_AUTH0_DOMAIN with the domain of your Auth0 tenant, e.g. mycompany.auth0.com
 var client = new ManagementApiClient(&quot;token&quot;, &quot;YOUR_AUTH0_DOMAIN&quot;);
@@ -155,10 +155,8 @@ var allClients = await apiClient.Clients.GetAllAsync();
 <h2 id="advanced-scenarios">Advanced Scenarios</h2>
 <h3 id="using-a-proxy-server">Using a Proxy Server</h3>
 <p>If you need to specify a Proxy Server, you can do so by making use of the <a class="xref" href="api/Auth0.AuthenticationApi.AuthenticationApiClient.html">AuthenticationApiClient</a> or <a class="xref" href="api/Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> constructors which takes an <code>Http​Message​Handler</code> instance, and pass along an instance of <code>HttpClientHandler</code>, specifying the Proxy settings:</p>
-<pre><code class="lang-csharp">var handler = new HttpClientHandler
-{
-    Proxy = new WebProxy
-    {
+<pre><code class="lang-csharp">var handler = new HttpClientHandler {
+    Proxy = new WebProxy {
         Credentials = new NetworkCredential(username, password);
     }
 };
@@ -171,8 +169,7 @@ public class CustomMessageHandler : HttpClientHandler
     protected override Task&lt;HttpResponseMessage&gt; SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
         // Add extra header(s) to the request
-        request.Headers.Add(&quot;auth0-forwarded-for&quot;, &quot;189.214.5.210&quot;);
-
+        request.Headers.Add(&quot;auth0-forwarded-for&quot;, &quot;189.214.5.210&quot;);        
         return base.SendAsync(request, cancellationToken);
     }
 }
@@ -187,7 +184,7 @@ var authenticationApiClient = new AuthenticationApiClient(&quot;YOUR_AUTH0_DOMAI
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/auth0/auth0.net/blob/master/docs-source/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com//auth0/auth0.net/blob/prepare-6.0.0/docs-source/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

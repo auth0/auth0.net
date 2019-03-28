@@ -10,9 +10,9 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class EmailProviderClient
    ">
-    <meta name="generator" content="docfx 2.33.1.0">
+    <meta name="generator" content="docfx 2.40.12.0">
     
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
     <link rel="stylesheet" href="../styles/main.css">
@@ -22,7 +22,7 @@
     
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -37,7 +37,7 @@
               </button>
               
               <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -73,7 +73,7 @@
   
   <h1 id="Auth0_ManagementApi_Clients_EmailProviderClient" data-uid="Auth0.ManagementApi.Clients.EmailProviderClient" class="text-break">Class EmailProviderClient
   </h1>
-  <div class="markdown level0 summary"><p>Contains all the methods to call the /emails/provider endpoints.</p>
+  <div class="markdown level0 summary"><p>The base class from which all clients inherit. Give clients access to the underlying <a class="xref" href="Auth0.Core.Http.IApiConnection.html">IApiConnection</a>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -81,10 +81,6 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><a class="xref" href="Auth0.ManagementApi.Clients.ClientBase.html">ClientBase</a></div>
     <div class="level2"><span class="xref">EmailProviderClient</span></div>
-  </div>
-  <div classs="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="Auth0.ManagementApi.Clients.IEmailProviderClient.html">IEmailProviderClient</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -114,7 +110,7 @@
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
   <h5 id="Auth0_ManagementApi_Clients_EmailProviderClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class EmailProviderClient : ClientBase, IEmailProviderClient</code></pre>
+    <pre><code class="lang-csharp hljs">public class EmailProviderClient : ClientBase</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
@@ -186,8 +182,7 @@ provider.</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span></td>
-        <td><p>Task.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -290,10 +285,6 @@ email provider.</p>
       </tr>
     </tbody>
   </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="Auth0.ManagementApi.Clients.IEmailProviderClient.html">IEmailProviderClient</a>
-  </div>
 </article>
           </div>
           

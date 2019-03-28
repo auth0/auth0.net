@@ -10,9 +10,9 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ConnectionsClient
    ">
-    <meta name="generator" content="docfx 2.33.1.0">
+    <meta name="generator" content="docfx 2.40.12.0">
     
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
     <link rel="stylesheet" href="../styles/main.css">
@@ -22,7 +22,7 @@
     
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -37,7 +37,7 @@
               </button>
               
               <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -82,10 +82,6 @@
     <div class="level1"><a class="xref" href="Auth0.ManagementApi.Clients.ClientBase.html">ClientBase</a></div>
     <div class="level2"><span class="xref">ConnectionsClient</span></div>
   </div>
-  <div classs="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="Auth0.ManagementApi.Clients.IConnectionsClient.html">IConnectionsClient</a></div>
-  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
@@ -114,7 +110,7 @@
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
   <h5 id="Auth0_ManagementApi_Clients_ConnectionsClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ConnectionsClient : ClientBase, IConnectionsClient</code></pre>
+    <pre><code class="lang-csharp hljs">public class ConnectionsClient : ClientBase</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -122,7 +118,7 @@
   
   <a id="Auth0_ManagementApi_Clients_ConnectionsClient__ctor_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.#ctor*"></a>
   <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient__ctor_Auth0_Core_Http_IApiConnection_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.#ctor(Auth0.Core.Http.IApiConnection)">ConnectionsClient(IApiConnection)</h4>
-  <div class="markdown level1 summary"><p>Creates a new instance of the ClientBase class.</p>
+  <div class="markdown level1 summary"><p>Creates a new instance of the <a class="xref" href="Auth0.ManagementApi.Clients.ConnectionsClient.html">ConnectionsClient</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -234,8 +230,7 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span></td>
-        <td><p>Task.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -243,7 +238,7 @@
   
   <a id="Auth0_ManagementApi_Clients_ConnectionsClient_DeleteUserAsync_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.DeleteUserAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_DeleteUserAsync_System_String_System_String_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.DeleteUserAsync(System.String,System.String)">DeleteUserAsync(String, String)</h4>
-  <div class="markdown level1 summary"><p>Deletes a specified connection user by its email </p>
+  <div class="markdown level1 summary"><p>Deletes a specified connection user by its email.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -290,53 +285,8 @@
     </tbody>
   </table>
   <h5 id="Auth0_ManagementApi_Clients_ConnectionsClient_DeleteUserAsync_System_String_System_String__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Currently only database connections are supported and you cannot delete all users from specific connection</p>
+  <div class="markdown level1 remarks"><p>Currently only database connections are supported and you cannot delete all users from specific connection.</p>
 </div>
-  
-  
-  <a id="Auth0_ManagementApi_Clients_ConnectionsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_GetAllAsync_GetConnectionsRequest_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.GetAllAsync(GetConnectionsRequest)">GetAllAsync(GetConnectionsRequest)</h4>
-  <div class="markdown level1 summary"><p>Retrieves every connection matching the specified strategy. All connections are retrieved if no strategy is being specified. Accepts a list of fields to include or exclude in the resulting list of connection objects.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;Connection&gt;&gt; GetAllAsync(GetConnectionsRequest request)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">GetConnectionsRequest</span></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>Specifies criteria to use when querying connections.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">Connection</span>&gt;&gt;</td>
-        <td><p>An <see cref="!:IPagedList&lt;Connection>"></see> containing the list of connections.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   
   
   <a id="Auth0_ManagementApi_Clients_ConnectionsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.GetAllAsync*"></a>
@@ -384,151 +334,6 @@
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">Connection</span>&gt;&gt;</td>
         <td><p>An <see cref="!:IPagedList&lt;Connection>"></see> containing the list of connections.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_ManagementApi_Clients_ConnectionsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_GetAllAsync_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Boolean__System_String_System_Nullable_System_Boolean__System_String_System_String___" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.GetAllAsync(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.String,System.Nullable{System.Boolean},System.String,System.String[])">GetAllAsync(Nullable&lt;Int32&gt;, Nullable&lt;Int32&gt;, Nullable&lt;Boolean&gt;, String, Nullable&lt;Boolean&gt;, String, String[])</h4>
-  <div class="markdown level1 summary"><p>Retrieves every connection matching the specified strategy. All connections are retrieved if no strategy is being specified. Accepts a list of fields to include or exclude in the resulting list of connection objects.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use GetAllAsync(GetConnectionsRequest) or GetAllAsync(GetConnectionsRequest, PaginationInfo) instead&quot;)]
-public Task&lt;IPagedList&lt;Connection&gt;&gt; GetAllAsync(int? page = default (int? ), int? perPage = default (int? ), bool? includeTotals = default (bool? ), string fields = null, bool? includeFields = default (bool? ), string name = null, string[] strategy = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
-        <td><span class="parametername">page</span></td>
-        <td><p>The page number. Zero based.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
-        <td><span class="parametername">perPage</span></td>
-        <td><p>The amount of entries per page. Default: no paging is used, all connections are returned.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td><span class="parametername">includeTotals</span></td>
-        <td><p>True if a query summary must be included in the result, false otherwise. Default false.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">fields</span></td>
-        <td><p>A comma separated list of fields to include or exclude (depending on include_fields) from the result, empty to retrieve all fields.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td><span class="parametername">includeFields</span></td>
-        <td><p>true if the fields specified are to be included in the result, false otherwise (defaults to true).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
-        <td><p>The name of the connection to retrieve</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span>[]</td>
-        <td><span class="parametername">strategy</span></td>
-        <td><p>Only retrieve connections with these strategies.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">Connection</span>&gt;&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_ManagementApi_Clients_ConnectionsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_GetAllAsync_System_String_System_String_System_Boolean_System_String_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.GetAllAsync(System.String,System.String,System.Boolean,System.String)">GetAllAsync(String, String, Boolean, String)</h4>
-  <div class="markdown level1 summary"><p>Retrieves every connection matching the specified strategy. All connections are retrieved if no strategy is being specified. Accepts a list of fields to include or exclude in the resulting list of connection objects.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use the paged method overload instead&quot;)]
-public Task&lt;IList&lt;Connection&gt;&gt; GetAllAsync(string strategy, string fields = null, bool includeFields = true, string name = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">strategy</span></td>
-        <td><p>Provide a type of strategy to only retrieve connections with that strategy.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">fields</span></td>
-        <td><p>A comma separated list of fields to include or exclude (depending on include_fields) from the result, empty to retrieve all fields.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">includeFields</span></td>
-        <td><p>True if the fields specified are to be included in the result, false otherwise (defaults to true).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
-        <td><p>Provide the name of the connection to retrieve</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">Connection</span>&gt;&gt;</td>
-        <td><p>A list of <see cref="!:Connection"></see> objects matching the strategy.</p>
 </td>
       </tr>
     </tbody>
@@ -620,7 +425,7 @@ public Task&lt;IList&lt;Connection&gt;&gt; GetAllAsync(string strategy, string f
       <tr>
         <td><span class="xref">ConnectionUpdateRequest</span></td>
         <td><span class="parametername">request</span></td>
-        <td><p>The request containing the properties of the connection you wish to update.</p>
+        <td><p>The <see cref="!:ConnectionUpdateRequest"></see> containing the properties of the connection you wish to update.</p>
 </td>
       </tr>
     </tbody>
@@ -636,15 +441,11 @@ public Task&lt;IList&lt;Connection&gt;&gt; GetAllAsync(string strategy, string f
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">Connection</span>&gt;</td>
-        <td><p>A <see cref="!:Connection"></see> containing the updated connection.</p>
+        <td><p>The <see cref="!:Connection"></see> that has been updated.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="Auth0.ManagementApi.Clients.IConnectionsClient.html">IConnectionsClient</a>
-  </div>
 </article>
           </div>
           
