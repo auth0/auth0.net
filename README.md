@@ -1,4 +1,6 @@
-# .Net client library for the Auth0 platform.
+# .NET client library for the Auth0
+
+[![Build Status](https://dev.azure.com/Auth0SDK/Auth0.Net/_apis/build/status/Auth0.Net%20Desktop%20-%20master?branchName=master)](https://dev.azure.com/Auth0SDK/Auth0.Net/_build/latest?definitionId=1&branchName=master)
 
 This is for clients that are either flagged as **OIDC Conformant** (under the **OAuth** tab in the client **Advanced settings**) or if you are triggering the OIDC-conformant pipeline by using the `audience` parameter when starting an authorization flow.
 
