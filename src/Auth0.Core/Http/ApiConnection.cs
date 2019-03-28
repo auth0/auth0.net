@@ -8,19 +8,18 @@ using System.Threading.Tasks;
 using Auth0.Core.Exceptions;
 using Newtonsoft.Json;
 
-// ReSharper disable once CheckNamespace
-
 namespace Auth0.Core.Http
 {
     /// <summary>
     /// The communication layer between the various API clients and the actual API backend.
     /// </summary>
-    public class ApiConnection : IApiConnection
+    public class ApiConnection : IApiConnection, IDisposable
     {
         private readonly string _agent = CreateAgentString();
         private readonly string _baseUrl;
         private readonly HttpClient _httpClient;
         private readonly string _token;
+        private bool _disposeHttpClient;
 
         /// <summary>
         /// Contains information about the last API call made by the connection.
@@ -30,12 +29,14 @@ namespace Auth0.Core.Http
         public ApiConnection(string token, string baseUrl, HttpMessageHandler handler = null)
             : this(token, baseUrl, new HttpClient(handler ?? new HttpClientHandler()))
         {
+            _disposeHttpClient = true;
         }
 
         public ApiConnection(string token, string baseUrl, HttpClient httpClient)
         {
             _token = token;
             _baseUrl = baseUrl;
+            _disposeHttpClient = false;
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
             _httpClient.DefaultRequestHeaders.Add("Auth0-Client", _agent);
         }
@@ -371,6 +372,15 @@ namespace Auth0.Core.Http
                 return (T)(object)content;
 
             return JsonConvert.DeserializeObject<T>(content, converters);
+        }
+
+        public void Dispose()
+        {
+            if (_disposeHttpClient)
+            {
+                _httpClient.Dispose();
+                _disposeHttpClient = false;
+            }
         }
     }
 }
