@@ -10,9 +10,9 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class UsersClient
    ">
-    <meta name="generator" content="docfx 2.33.1.0">
+    <meta name="generator" content="docfx 2.40.12.0">
     
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
     <link rel="stylesheet" href="../styles/main.css">
@@ -22,7 +22,7 @@
     
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -37,7 +37,7 @@
               </button>
               
               <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -82,10 +82,6 @@
     <div class="level1"><a class="xref" href="Auth0.ManagementApi.Clients.ClientBase.html">ClientBase</a></div>
     <div class="level2"><span class="xref">UsersClient</span></div>
   </div>
-  <div classs="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="Auth0.ManagementApi.Clients.IUsersClient.html">IUsersClient</a></div>
-  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
@@ -114,7 +110,7 @@
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
   <h5 id="Auth0_ManagementApi_Clients_UsersClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class UsersClient : ClientBase, IUsersClient</code></pre>
+    <pre><code class="lang-csharp hljs">public class UsersClient : ClientBase</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -122,7 +118,7 @@
   
   <a id="Auth0_ManagementApi_Clients_UsersClient__ctor_" data-uid="Auth0.ManagementApi.Clients.UsersClient.#ctor*"></a>
   <h4 id="Auth0_ManagementApi_Clients_UsersClient__ctor_Auth0_Core_Http_ApiConnection_" data-uid="Auth0.ManagementApi.Clients.UsersClient.#ctor(Auth0.Core.Http.ApiConnection)">UsersClient(ApiConnection)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.Clients.UsersClient.html">UsersClient</a> class.</p>
+  <div class="markdown level1 summary"><p>Creates a new instance of <a class="xref" href="Auth0.ManagementApi.Clients.UsersClient.html">UsersClient</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -142,13 +138,63 @@
       <tr>
         <td><a class="xref" href="Auth0.Core.Http.ApiConnection.html">ApiConnection</a></td>
         <td><span class="parametername">connection</span></td>
-        <td><p>The connection.</p>
+        <td><p>The <a class="xref" href="Auth0.Core.Http.IApiConnection.html">IApiConnection</a> which is used to communicate with the API.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
   </h3>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_UsersClient_AssignRolesAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.AssignRolesAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_AssignRolesAsync_System_String_AssignRolesRequest_" data-uid="Auth0.ManagementApi.Clients.UsersClient.AssignRolesAsync(System.String,AssignRolesRequest)">AssignRolesAsync(String, AssignRolesRequest)</h4>
+  <div class="markdown level1 summary"><p>Assigns Roles to a user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task AssignRolesAsync(string id, AssignRolesRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The ID of the user to assign roles to.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">AssignRolesRequest</span></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>A <see cref="!:AssignRolesRequest"></see> containing the role IDs to assign to the user.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   
   
   <a id="Auth0_ManagementApi_Clients_UsersClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.CreateAsync*"></a>
@@ -189,35 +235,7 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">User</span>&gt;</td>
-        <td><p>Task&lt;User&gt;.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_ManagementApi_Clients_UsersClient_DeleteAllAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.DeleteAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_DeleteAllAsync" data-uid="Auth0.ManagementApi.Clients.UsersClient.DeleteAllAsync">DeleteAllAsync()</h4>
-  <div class="markdown level1 summary"><p>Deletes all users. Use with caution!</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task DeleteAllAsync()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span></td>
-        <td><p>Task.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -261,8 +279,7 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span></td>
-        <td><p>Task.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -319,51 +336,6 @@
   
   
   <a id="Auth0_ManagementApi_Clients_UsersClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetAllAsync_GetUsersRequest_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAllAsync(GetUsersRequest)">GetAllAsync(GetUsersRequest)</h4>
-  <div class="markdown level1 summary"><p>Lists or search for users based on criteria.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;User&gt;&gt; GetAllAsync(GetUsersRequest request)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">GetUsersRequest</span></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>Specifies criteria to use when querying users.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">User</span>&gt;&gt;</td>
-        <td><p>An <see cref="!:IPagedList&lt;GetUsersRequest>"></see> containing the list of users.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_ManagementApi_Clients_UsersClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAllAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetAllAsync_GetUsersRequest_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAllAsync(GetUsersRequest,PaginationInfo)">GetAllAsync(GetUsersRequest, PaginationInfo)</h4>
   <div class="markdown level1 summary"><p>Lists or search for users based on criteria.</p>
 </div>
@@ -409,103 +381,6 @@
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">User</span>&gt;&gt;</td>
         <td><p>An <see cref="!:IPagedList&lt;GetUsersRequest>"></see> containing the list of users.</p>
 </td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_ManagementApi_Clients_UsersClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetAllAsync_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Boolean__System_String_System_String_System_String_System_Nullable_System_Boolean__System_String_System_String_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAllAsync(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.String,System.String,System.String,System.Nullable{System.Boolean},System.String,System.String)">GetAllAsync(Nullable&lt;Int32&gt;, Nullable&lt;Int32&gt;, Nullable&lt;Boolean&gt;, String, String, String, Nullable&lt;Boolean&gt;, String, String)</h4>
-  <div class="markdown level1 summary"><p>Lists or search for users based on criteria.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use GetAllAsync(GetUsersRequest) or GetAllAsync(GetUsersRequest, PaginationInfo) instead&quot;)]
-public Task&lt;IPagedList&lt;User&gt;&gt; GetAllAsync(int? page = default (int? ), int? perPage = default (int? ), bool? includeTotals = default (bool? ), string sort = null, string connection = null, string fields = null, bool? includeFields = default (bool? ), string q = null, string searchEngine = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
-        <td><span class="parametername">page</span></td>
-        <td><p>The page number. Zero based.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
-        <td><span class="parametername">perPage</span></td>
-        <td><p>The amount of entries per page.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td><span class="parametername">includeTotals</span></td>
-        <td><p>True if a query summary must be included in the result.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">sort</span></td>
-        <td><p>The field to use for sorting. 1 == ascending and -1 == descending</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">connection</span></td>
-        <td><p>Connection filter.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">fields</span></td>
-        <td><p>A comma separated list of fields to include or exclude (depending on
-<code data-dev-comment-type="paramref" class="paramref">includeFields</code>) from the result, empty to retrieve all fields.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td><span class="parametername">includeFields</span></td>
-        <td><p>True if the fields specified are to be included in the result, false otherwise. Defaults to
-true.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">q</span></td>
-        <td><p>Query in Lucene query string syntax.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">searchEngine</span></td>
-        <td><p>The version of the search engine to use.
-Will default to v2 if no value is passed. Default will change to v3 on 2018/11/13.
-For more info <a href="https://auth0.com/docs/users/search/v3#migrate-from-search-engine-v2-to-v3">see the online documentation</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">User</span>&gt;&gt;</td>
-        <td></td>
       </tr>
     </tbody>
   </table>
@@ -571,51 +446,6 @@ true)</p>
   
   
   <a id="Auth0_ManagementApi_Clients_UsersClient_GetLogsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetLogsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetLogsAsync_GetUserLogsRequest_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetLogsAsync(GetUserLogsRequest)">GetLogsAsync(GetUserLogsRequest)</h4>
-  <div class="markdown level1 summary"><p>Retrieve every log event for a specific user.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;LogEntry&gt;&gt; GetLogsAsync(GetUserLogsRequest request)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">GetUserLogsRequest</span></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>Specifies criteria to use when querying logs for a user.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">LogEntry</span>&gt;&gt;</td>
-        <td><p>An <see cref="!:IPagedList&lt;LogEntry>"></see> containing the log entries for the user.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_ManagementApi_Clients_UsersClient_GetLogsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetLogsAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetLogsAsync_GetUserLogsRequest_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetLogsAsync(GetUserLogsRequest,PaginationInfo)">GetLogsAsync(GetUserLogsRequest, PaginationInfo)</h4>
   <div class="markdown level1 summary"><p>Retrieve every log event for a specific user.</p>
 </div>
@@ -666,15 +496,14 @@ true)</p>
   </table>
   
   
-  <a id="Auth0_ManagementApi_Clients_UsersClient_GetLogsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetLogsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetLogsAsync_System_String_System_Nullable_System_Int32__System_Nullable_System_Int32__System_String_System_Nullable_System_Boolean__" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetLogsAsync(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,System.Nullable{System.Boolean})">GetLogsAsync(String, Nullable&lt;Int32&gt;, Nullable&lt;Int32&gt;, String, Nullable&lt;Boolean&gt;)</h4>
-  <div class="markdown level1 summary"><p>Retrieve every log event for a specific user id</p>
+  <a id="Auth0_ManagementApi_Clients_UsersClient_GetRolesAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetRolesAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetRolesAsync_System_String_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetRolesAsync(System.String,PaginationInfo)">GetRolesAsync(String, PaginationInfo)</h4>
+  <div class="markdown level1 summary"><p>Retrieve assigned roles for a specific user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use GetLogsAsync(GetUserLogsRequest) or GetLogsAsync(GetUserLogsRequest, PaginationInfo) instead&quot;)]
-public Task&lt;IPagedList&lt;LogEntry&gt;&gt; GetLogsAsync(string userId, int? page = default (int? ), int? perPage = default (int? ), string sort = null, bool? includeTotals = default (bool? ))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;Role&gt;&gt; GetRolesAsync(string userId, PaginationInfo pagination)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -689,31 +518,13 @@ public Task&lt;IPagedList&lt;LogEntry&gt;&gt; GetLogsAsync(string userId, int? p
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">userId</span></td>
-        <td><p>The user id of the logs to retrieve</p>
+        <td><p>The user id of the roles to retrieve</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
-        <td><span class="parametername">page</span></td>
-        <td><p>The zero-based page number</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
-        <td><span class="parametername">perPage</span></td>
-        <td><p>The amount of entries per page. Default: 50. Max value: 100</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">sort</span></td>
-        <td><p>The field to use for sorting. Use field:order where order is 1 for ascending and -1 for descending. For example date:-1</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td><span class="parametername">includeTotals</span></td>
-        <td><p>True if a query summary must be included in the result, false otherwise. Default false.</p>
+        <td><span class="xref">PaginationInfo</span></td>
+        <td><span class="parametername">pagination</span></td>
+        <td><p>Specifies pagination info to use when requesting paged results.</p>
 </td>
       </tr>
     </tbody>
@@ -728,8 +539,9 @@ public Task&lt;IPagedList&lt;LogEntry&gt;&gt; GetLogsAsync(string userId, int? p
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">LogEntry</span>&gt;&gt;</td>
-        <td></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">Role</span>&gt;&gt;</td>
+        <td><p>An <see cref="!:IPagedList&lt;Role>"></see> containing the roles for the user.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -742,7 +554,7 @@ public Task&lt;IPagedList&lt;LogEntry&gt;&gt; GetLogsAsync(string userId, int? p
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;User&gt;&gt; GetUsersByEmailAsync(string email, string fields = null, bool? includeFields = default (bool? ))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;User&gt;&gt; GetUsersByEmailAsync(string email, string fields = null, bool? includeFields = default(bool? ))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -841,8 +653,7 @@ public Task&lt;IPagedList&lt;LogEntry&gt;&gt; GetLogsAsync(string userId, int? p
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">AccountLinkResponse</span>&gt;&gt;</td>
-        <td><p>Task&lt;IList&lt;AccountLinkResponse&gt;&gt;.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -892,8 +703,57 @@ public Task&lt;IPagedList&lt;LogEntry&gt;&gt; GetLogsAsync(string userId, int? p
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">AccountLinkResponse</span>&gt;&gt;</td>
-        <td><p>Task&lt;IList&lt;AccountLinkResponse&gt;&gt;.</p>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_UsersClient_RemoveRolesAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.RemoveRolesAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_RemoveRolesAsync_System_String_AssignRolesRequest_" data-uid="Auth0.ManagementApi.Clients.UsersClient.RemoveRolesAsync(System.String,AssignRolesRequest)">RemoveRolesAsync(String, AssignRolesRequest)</h4>
+  <div class="markdown level1 summary"><p>Removes Roles from a user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task RemoveRolesAsync(string id, AssignRolesRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The ID of the user to remove roles from.</p>
 </td>
+      </tr>
+      <tr>
+        <td><span class="xref">AssignRolesRequest</span></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>A <see cref="!:AssignRolesRequest"></see> containing the role IDs to remove to the user.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -949,8 +809,7 @@ public Task&lt;IPagedList&lt;LogEntry&gt;&gt; GetLogsAsync(string userId, int? p
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">AccountLinkResponse</span>&gt;&gt;</td>
-        <td><p>Task&lt;IList&lt;AccountLinkResponse&gt;&gt;.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -1000,15 +859,10 @@ public Task&lt;IPagedList&lt;LogEntry&gt;&gt; GetLogsAsync(string userId, int? p
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">User</span>&gt;</td>
-        <td><p>Task&lt;User&gt;.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="Auth0.ManagementApi.Clients.IUsersClient.html">IUsersClient</a>
-  </div>
 </article>
           </div>
           

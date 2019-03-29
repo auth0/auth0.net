@@ -10,9 +10,9 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ClientsClient
    ">
-    <meta name="generator" content="docfx 2.33.1.0">
+    <meta name="generator" content="docfx 2.40.12.0">
     
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
     <link rel="stylesheet" href="../styles/main.css">
@@ -22,7 +22,7 @@
     
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -37,7 +37,7 @@
               </button>
               
               <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -82,10 +82,6 @@
     <div class="level1"><a class="xref" href="Auth0.ManagementApi.Clients.ClientBase.html">ClientBase</a></div>
     <div class="level2"><span class="xref">ClientsClient</span></div>
   </div>
-  <div classs="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="Auth0.ManagementApi.Clients.IClientsClient.html">IClientsClient</a></div>
-  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
@@ -114,7 +110,7 @@
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
   <h5 id="Auth0_ManagementApi_Clients_ClientsClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ClientsClient : ClientBase, IClientsClient</code></pre>
+    <pre><code class="lang-csharp hljs">public class ClientsClient : ClientBase</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -122,7 +118,7 @@
   
   <a id="Auth0_ManagementApi_Clients_ClientsClient__ctor_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.#ctor*"></a>
   <h4 id="Auth0_ManagementApi_Clients_ClientsClient__ctor_Auth0_Core_Http_IApiConnection_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.#ctor(Auth0.Core.Http.IApiConnection)">ClientsClient(IApiConnection)</h4>
-  <div class="markdown level1 summary"><p>Creates a new instance of the ClientBase class.</p>
+  <div class="markdown level1 summary"><p>Creates a new instance of <a class="xref" href="Auth0.ManagementApi.Clients.ClientsClient.html">ClientsClient</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -173,7 +169,7 @@
       <tr>
         <td><span class="xref">ClientCreateRequest</span></td>
         <td><span class="parametername">request</span></td>
-        <td><p>The request containing the properties of the new client.</p>
+        <td><p>The <see cref="!:ClientCreateRequest"></see> containing the properties of the new client.</p>
 </td>
       </tr>
     </tbody>
@@ -189,7 +185,7 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">Client</span>&gt;</td>
-        <td><p>Task&lt;Core.Client&gt;.</p>
+        <td><p>The new <see cref="!:Client"></see> that has been created.</p>
 </td>
       </tr>
     </tbody>
@@ -234,52 +230,7 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span></td>
-        <td><p>Task.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_ManagementApi_Clients_ClientsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ClientsClient_GetAllAsync_GetClientsRequest_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.GetAllAsync(GetClientsRequest)">GetAllAsync(GetClientsRequest)</h4>
-  <div class="markdown level1 summary"><p>Retrieves a list of all client applications.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;Client&gt;&gt; GetAllAsync(GetClientsRequest request)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">GetClientsRequest</span></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>Specifies criteria to use when querying clients.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">Client</span>&gt;&gt;</td>
-        <td><p>An <see cref="!:IPagedList&lt;Client>"></see> containing the clients.</p>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> indicating the request completion.</p>
 </td>
       </tr>
     </tbody>
@@ -337,147 +288,6 @@
   </table>
   
   
-  <a id="Auth0_ManagementApi_Clients_ClientsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ClientsClient_GetAllAsync_System_Nullable_System_Int32__System_Nullable_System_Int32__System_Nullable_System_Boolean__System_String_System_Nullable_System_Boolean__System_Nullable_System_Boolean__System_Nullable_System_Boolean__ClientApplicationType___" data-uid="Auth0.ManagementApi.Clients.ClientsClient.GetAllAsync(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.String,System.Nullable{System.Boolean},System.Nullable{System.Boolean},System.Nullable{System.Boolean},ClientApplicationType[])">GetAllAsync(Nullable&lt;Int32&gt;, Nullable&lt;Int32&gt;, Nullable&lt;Boolean&gt;, String, Nullable&lt;Boolean&gt;, Nullable&lt;Boolean&gt;, Nullable&lt;Boolean&gt;, ClientApplicationType[])</h4>
-  <div class="markdown level1 summary"><p>Retrieves a list of all client applications.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use GetAllAsync(GetClientsRequest) or GetAllAsync(GetClientsRequest, PaginationInfo) instead&quot;)]
-public Task&lt;IPagedList&lt;Client&gt;&gt; GetAllAsync(int? page = default (int? ), int? perPage = default (int? ), bool? includeTotals = default (bool? ), string fields = null, bool? includeFields = default (bool? ), bool? isGlobal = default (bool? ), bool? isFirstParty = default (bool? ), ClientApplicationType[] appType = null)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
-        <td><span class="parametername">page</span></td>
-        <td><p>The page number. Zero based.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
-        <td><span class="parametername">perPage</span></td>
-        <td><p>The amount of entries per page. Default: no paging is used, all connections are returned.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td><span class="parametername">includeTotals</span></td>
-        <td><p>True if a query summary must be included in the result, false otherwise. Default false.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">fields</span></td>
-        <td><p>A comma separated list of fields to include or exclude (depending on include_fields) from the result, empty to retrieve all fields.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td><span class="parametername">includeFields</span></td>
-        <td><p>true if the fields specified are to be included in the result, false otherwise (defaults to true).</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td><span class="parametername">isGlobal</span></td>
-        <td><p>Filter on the global client parameter.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
-        <td><span class="parametername">isFirstParty</span></td>
-        <td><p>Filter on whether or not a client is a first party client.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">ClientApplicationType</span>[]</td>
-        <td><span class="parametername">appType</span></td>
-        <td><p>List of application types used to filter the returned clients</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">Client</span>&gt;&gt;</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_ManagementApi_Clients_ClientsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ClientsClient_GetAllAsync_System_String_System_Boolean_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.GetAllAsync(System.String,System.Boolean)">GetAllAsync(String, Boolean)</h4>
-  <div class="markdown level1 summary"><p>Retrieves a list of all client applications. Accepts a list of fields to include or exclude.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[Obsolete(&quot;Use the paged method overload instead&quot;)]
-public Task&lt;IList&lt;Client&gt;&gt; GetAllAsync(string fields = null, bool includeFields = true)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">fields</span></td>
-        <td><p>A comma separated list of fields to include or exclude (depending on includeFields) from the
-result, empty to retrieve all fields</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">includeFields</span></td>
-        <td><p>true if the fields specified are to be included in the result, false otherwise (defaults to
-true)</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">Client</span>&gt;&gt;</td>
-        <td><p>Task&lt;IList&lt;Core.Client&gt;&gt;.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_ClientsClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.GetAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_ClientsClient_GetAsync_System_String_System_String_System_Boolean_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.GetAsync(System.String,System.String,System.Boolean)">GetAsync(String, String, Boolean)</h4>
   <div class="markdown level1 summary"><p>Retrieves a client by its id.</p>
@@ -500,14 +310,14 @@ true)</p>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
-        <td><p>The id of the client to retrieve</p>
+        <td><p>The id of the client to retrieve.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">fields</span></td>
         <td><p>A comma separated list of fields to include or exclude (depending on includeFields) from the
-result, empty to retrieve all fields</p>
+result, empty to retrieve all fields.</p>
 </td>
       </tr>
       <tr>
@@ -530,7 +340,7 @@ true)</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">Client</span>&gt;</td>
-        <td><p>Task&lt;Core.Client&gt;.</p>
+        <td><p>The <see cref="!:Client"></see> retrieved.</p>
 </td>
       </tr>
     </tbody>
@@ -575,7 +385,8 @@ true)</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">Client</span>&gt;</td>
-        <td></td>
+        <td><p>The <see cref="!:Client"></see> that has had its secret rotated.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -609,7 +420,7 @@ true)</p>
       <tr>
         <td><span class="xref">ClientUpdateRequest</span></td>
         <td><span class="parametername">request</span></td>
-        <td><p>The request containing the properties of the client you want to update.</p>
+        <td><p>The <see cref="!:ClientUpdateRequest"></see> containing the properties of the client you want to update.</p>
 </td>
       </tr>
     </tbody>
@@ -625,15 +436,11 @@ true)</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">Client</span>&gt;</td>
-        <td><p>Task&lt;Core.Client&gt;.</p>
+        <td><p>The <see cref="!:Client"></see> that was updated.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="Auth0.ManagementApi.Clients.IClientsClient.html">IClientsClient</a>
-  </div>
 </article>
           </div>
           

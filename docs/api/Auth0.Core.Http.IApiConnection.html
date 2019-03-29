@@ -10,9 +10,9 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IApiConnection
    ">
-    <meta name="generator" content="docfx 2.33.1.0">
+    <meta name="generator" content="docfx 2.40.12.0">
     
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
     <link rel="stylesheet" href="../styles/main.css">
@@ -22,7 +22,7 @@
     
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -37,7 +37,7 @@
               </button>
               
               <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -122,7 +122,8 @@ this interface.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;T&gt; DeleteAsync&lt;T&gt;(string resource, IDictionary&lt;string, string&gt; urlSegments, IDictionary&lt;string, string&gt; queryStrings)where T : class</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; DeleteAsync&lt;T&gt;(string resource, IDictionary&lt;string, string&gt; urlSegments, IDictionary&lt;string, string&gt; queryStrings)
+    where T : class</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -186,6 +187,84 @@ this interface.</p>
   </table>
   
   
+  <a id="Auth0_Core_Http_IApiConnection_DeleteAsync_" data-uid="Auth0.Core.Http.IApiConnection.DeleteAsync*"></a>
+  <h4 id="Auth0_Core_Http_IApiConnection_DeleteAsync__1_System_String_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.Core.Http.IApiConnection.DeleteAsync``1(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String})">DeleteAsync&lt;T&gt;(String, Object, IDictionary&lt;String, String&gt;, IDictionary&lt;String, String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Performs an HTTP DELETE.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; DeleteAsync&lt;T&gt;(string resource, object body, IDictionary&lt;string, string&gt; urlSegments, IDictionary&lt;string, string&gt; queryStrings)
+    where T : class</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">resource</span></td>
+        <td><p>The resource.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">body</span></td>
+        <td><p>The body.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">urlSegments</span></td>
+        <td><p>The URL segments.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">queryStrings</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td><p>Task&lt;T&gt;.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="Auth0_Core_Http_IApiConnection_GetAsync_" data-uid="Auth0.Core.Http.IApiConnection.GetAsync*"></a>
   <h4 id="Auth0_Core_Http_IApiConnection_GetAsync__1_System_String_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_Object__JsonConverter___" data-uid="Auth0.Core.Http.IApiConnection.GetAsync``1(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Object},JsonConverter[])">GetAsync&lt;T&gt;(String, IDictionary&lt;String, String&gt;, IDictionary&lt;String, String&gt;, IDictionary&lt;String, Object&gt;, JsonConverter[])</h4>
   <div class="markdown level1 summary"><p>Performs an HTTP GET.</p>
@@ -193,7 +272,8 @@ this interface.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;T&gt; GetAsync&lt;T&gt;(string resource, IDictionary&lt;string, string&gt; urlSegments, IDictionary&lt;string, string&gt; queryStrings, IDictionary&lt;string, object&gt; headers, params JsonConverter[] converters)where T : class</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; GetAsync&lt;T&gt;(string resource, IDictionary&lt;string, string&gt; urlSegments, IDictionary&lt;string, string&gt; queryStrings, IDictionary&lt;string, object&gt; headers, params JsonConverter[] converters)
+    where T : class</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -277,7 +357,8 @@ this interface.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;T&gt; PatchAsync&lt;T&gt;(string resource, object body, Dictionary&lt;string, string&gt; urlSegments)where T : class</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; PatchAsync&lt;T&gt;(string resource, object body, Dictionary&lt;string, string&gt; urlSegments)
+    where T : class</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -349,7 +430,8 @@ this interface.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;T&gt; PostAsync&lt;T&gt;(string resource, object body, IDictionary&lt;string, object&gt; parameters, IList&lt;FileUploadParameter&gt; fileParameters, IDictionary&lt;string, string&gt; urlSegments, IDictionary&lt;string, object&gt; headers, IDictionary&lt;string, string&gt; queryStrings)where T : class</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; PostAsync&lt;T&gt;(string resource, object body, IDictionary&lt;string, object&gt; parameters, IList&lt;FileUploadParameter&gt; fileParameters, IDictionary&lt;string, string&gt; urlSegments, IDictionary&lt;string, object&gt; headers, IDictionary&lt;string, string&gt; queryStrings)
+    where T : class</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -445,7 +527,8 @@ this interface.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;T&gt; PutAsync&lt;T&gt;(string resource, object body, IDictionary&lt;string, object&gt; parameters, IList&lt;FileUploadParameter&gt; fileParameters, IDictionary&lt;string, string&gt; urlSegments, IDictionary&lt;string, object&gt; headers, IDictionary&lt;string, string&gt; queryStrings)where T : class</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; PutAsync&lt;T&gt;(string resource, object body, IDictionary&lt;string, object&gt; parameters, IList&lt;FileUploadParameter&gt; fileParameters, IDictionary&lt;string, string&gt; urlSegments, IDictionary&lt;string, object&gt; headers, IDictionary&lt;string, string&gt; queryStrings)
+    where T : class</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">

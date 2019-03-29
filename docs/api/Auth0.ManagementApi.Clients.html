@@ -10,9 +10,9 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Namespace Auth0.ManagementApi.Clients
    ">
-    <meta name="generator" content="docfx 2.33.1.0">
+    <meta name="generator" content="docfx 2.40.12.0">
     
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
     <link rel="stylesheet" href="../styles/main.css">
@@ -22,7 +22,7 @@
     
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -37,7 +37,7 @@
               </button>
               
               <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -84,7 +84,7 @@
       <section><p>The base class from which all clients inherit. Give clients access to the underlying <a class="xref" href="Auth0.Core.Http.IApiConnection.html">IApiConnection</a>.</p>
 </section>
       <h4><a class="xref" href="Auth0.ManagementApi.Clients.ClientGrantsClient.html">ClientGrantsClient</a></h4>
-      <section><p>Contains all methods to work with Client Grants.</p>
+      <section><p>Contains all methods to call the /client-grants endpoints.</p>
 </section>
       <h4><a class="xref" href="Auth0.ManagementApi.Clients.ClientsClient.html">ClientsClient</a></h4>
       <section><p>Contains all the methods to call the /clients endpoints.</p>
@@ -92,25 +92,32 @@
       <h4><a class="xref" href="Auth0.ManagementApi.Clients.ConnectionsClient.html">ConnectionsClient</a></h4>
       <section><p>Contains all the methods to call the /connections endpoints.</p>
 </section>
+      <h4><a class="xref" href="Auth0.ManagementApi.Clients.CustomDomainsClient.html">CustomDomainsClient</a></h4>
+      <section><p>Contains all the methods to call the /custom-domains endpoints.</p>
+</section>
       <h4><a class="xref" href="Auth0.ManagementApi.Clients.DeviceCredentialsClient.html">DeviceCredentialsClient</a></h4>
       <section><p>Contains all the methods to call the /device-credentials endpoints.</p>
 </section>
       <h4><a class="xref" href="Auth0.ManagementApi.Clients.EmailProviderClient.html">EmailProviderClient</a></h4>
-      <section><p>Contains all the methods to call the /emails/provider endpoints.</p>
+      <section><p>The base class from which all clients inherit. Give clients access to the underlying <a class="xref" href="Auth0.Core.Http.IApiConnection.html">IApiConnection</a>.</p>
 </section>
       <h4><a class="xref" href="Auth0.ManagementApi.Clients.EmailTemplatesClient.html">EmailTemplatesClient</a></h4>
       <section><p>Contains all the methods to call the /email-templates endpoints.</p>
 </section>
       <h4><a class="xref" href="Auth0.ManagementApi.Clients.GuardianClient.html">GuardianClient</a></h4>
-      <section></section>
+      <section><p>Interface with all the methods available for /guardian endpoints.</p>
+</section>
       <h4><a class="xref" href="Auth0.ManagementApi.Clients.JobsClient.html">JobsClient</a></h4>
-      <section><p>Contains all the methods to call the /jobs endpoints.</p>
+      <section><p>The base class from which all clients inherit. Give clients access to the underlying <a class="xref" href="Auth0.Core.Http.IApiConnection.html">IApiConnection</a>.</p>
 </section>
       <h4><a class="xref" href="Auth0.ManagementApi.Clients.LogsClient.html">LogsClient</a></h4>
-      <section><p>Contains all the methods to call the /logs endpoints</p>
+      <section><p>Contains all the methods to call the /logs endpoints.</p>
 </section>
       <h4><a class="xref" href="Auth0.ManagementApi.Clients.ResourceServersClient.html">ResourceServersClient</a></h4>
       <section><p>Contains all the methods to call the /resource-server endpoints.</p>
+</section>
+      <h4><a class="xref" href="Auth0.ManagementApi.Clients.RolesClient.html">RolesClient</a></h4>
+      <section><p>Contains all the methods to call the /roles endpoints.</p>
 </section>
       <h4><a class="xref" href="Auth0.ManagementApi.Clients.RulesClient.html">RulesClient</a></h4>
       <section><p>Contains all the methods to call the /rules endpoints.</p>
@@ -128,56 +135,6 @@
       <section><p>Contains all the methods for the /user-blocks endpoints</p>
 </section>
       <h4><a class="xref" href="Auth0.ManagementApi.Clients.UsersClient.html">UsersClient</a></h4>
-      <section><p>Contains all the methods to call the /users endpoints.</p>
-</section>
-    <h3 id="interfaces">Interfaces
-  </h3>
-      <h4><a class="xref" href="Auth0.ManagementApi.Clients.IBlacklistedTokensClient.html">IBlacklistedTokensClient</a></h4>
-      <section><p>Contains all the methods to call the /blacklists/tokens endpoints.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Clients.IClientGrantsClient.html">IClientGrantsClient</a></h4>
-      <section><p>Contains all methods to work with Client Grants.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Clients.IClientsClient.html">IClientsClient</a></h4>
-      <section><p>Contains all the methods to call the /clients endpoints.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Clients.IConnectionsClient.html">IConnectionsClient</a></h4>
-      <section><p>Contains all the methods to call the /connections endpoints.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Clients.IDeviceCredentialsClient.html">IDeviceCredentialsClient</a></h4>
-      <section><p>Contains all the methods to call the /device-credentials endpoints.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Clients.IEmailProviderClient.html">IEmailProviderClient</a></h4>
-      <section><p>Contains all the methods to call the /emails/provider endpoints.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Clients.IEmailTemplatesClient.html">IEmailTemplatesClient</a></h4>
-      <section><p>Contains all the methods to call the /email-templates endpoints.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Clients.IJobsClient.html">IJobsClient</a></h4>
-      <section><p>Contains all the methods to call the /jobs endpoints.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Clients.ILogsClient.html">ILogsClient</a></h4>
-      <section><p>Contains all the methods to call the /logs endpoints</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Clients.IResourceServersClient.html">IResourceServersClient</a></h4>
-      <section><p>Contains all the methods to call the /resource-server endpoints.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Clients.IRulesClient.html">IRulesClient</a></h4>
-      <section><p>Contains all the methods to call the /rules endpoints.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Clients.IStatsClient.html">IStatsClient</a></h4>
-      <section><p>Contains all the methods to call the /stats endpoints.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Clients.ITenantSettingsClient.html">ITenantSettingsClient</a></h4>
-      <section><p>Contains all the methods to call the /tenants/settings endpoints.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Clients.ITicketsClient.html">ITicketsClient</a></h4>
-      <section><p>Contains all the methods to call the /tickets endpoints.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Clients.IUserBlocksClient.html">IUserBlocksClient</a></h4>
-      <section><p>Contains all the methods for the /user-blocks endpoints</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Clients.IUsersClient.html">IUsersClient</a></h4>
       <section><p>Contains all the methods to call the /users endpoints.</p>
 </section>
 </article>

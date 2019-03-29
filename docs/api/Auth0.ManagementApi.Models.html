@@ -10,9 +10,9 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Namespace Auth0.ManagementApi.Models
    ">
-    <meta name="generator" content="docfx 2.33.1.0">
+    <meta name="generator" content="docfx 2.40.12.0">
     
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
     <link rel="stylesheet" href="../styles/main.css">
@@ -22,7 +22,7 @@
     
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -37,7 +37,7 @@
               </button>
               
               <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -85,6 +85,12 @@
       <section><p>Addons are extensions associated with an Application in Auth0. Usually, they are 3rd party APIs used by the app that Auth0 generates access tokens for 
 (e.g. Salesforce, Azure Service Bus, Azure Mobile Services, SAP, etc).</p>
 </section>
+      <h4><a class="xref" href="Auth0.ManagementApi.Models.AssignedUser.html">AssignedUser</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Auth0.ManagementApi.Models.AssignRolesRequest.html">AssignRolesRequest</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Auth0.ManagementApi.Models.AssignUsersRequest.html">AssignUsersRequest</a></h4>
+      <section></section>
       <h4><a class="xref" href="Auth0.ManagementApi.Models.BlacklistedToken.html">BlacklistedToken</a></h4>
       <section><p>Represents a blacklisted token.</p>
 </section>
@@ -132,8 +138,23 @@
       <section></section>
       <h4><a class="xref" href="Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketResponse.html">CreateGuardianEnrollmentTicketResponse</a></h4>
       <section></section>
+      <h4><a class="xref" href="Auth0.ManagementApi.Models.CustomDomain.html">CustomDomain</a></h4>
+      <section><p>Represents a Custom Domain</p>
+</section>
+      <h4><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainBase.html">CustomDomainBase</a></h4>
+      <section><p>Base class for custom domain responses.</p>
+</section>
+      <h4><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainCreateRequest.html">CustomDomainCreateRequest</a></h4>
+      <section><p>Represents a request to create a new custom domain.</p>
+</section>
+      <h4><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainVerification.html">CustomDomainVerification</a></h4>
+      <section><p>The custom domain verification methods.</p>
+</section>
+      <h4><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainVerificationResponse.html">CustomDomainVerificationResponse</a></h4>
+      <section><p>Response when requesting a custom domain verification</p>
+</section>
       <h4><a class="xref" href="Auth0.ManagementApi.Models.DailyStatistics.html">DailyStatistics</a></h4>
-      <section><p>vb</p>
+      <section><p>The number of signups and logins for a specific day.</p>
 </section>
       <h4><a class="xref" href="Auth0.ManagementApi.Models.DeviceCredential.html">DeviceCredential</a></h4>
       <section><p>Represents credentials for a device.</p>
@@ -186,6 +207,9 @@
 </section>
       <h4><a class="xref" href="Auth0.ManagementApi.Models.GetLogsRequest.html">GetLogsRequest</a></h4>
       <section><p>Specifies criteria to use when querying all logs.</p>
+</section>
+      <h4><a class="xref" href="Auth0.ManagementApi.Models.GetRolesRequest.html">GetRolesRequest</a></h4>
+      <section><p>Specifies criteria to use when querying all roles.</p>
 </section>
       <h4><a class="xref" href="Auth0.ManagementApi.Models.GetRulesRequest.html">GetRulesRequest</a></h4>
       <section><p>Specifies criteria to use when querying all rules.</p>
@@ -250,6 +274,16 @@
       <h4><a class="xref" href="Auth0.ManagementApi.Models.ResourceServerUpdateRequest.html">ResourceServerUpdateRequest</a></h4>
       <section><p>Request structure for updating a resource server</p>
 </section>
+      <h4><a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a></h4>
+      <section><p>Class for roles.</p>
+</section>
+      <h4><a class="xref" href="Auth0.ManagementApi.Models.RoleBase.html">RoleBase</a></h4>
+      <section><p>Base class for roles.</p>
+</section>
+      <h4><a class="xref" href="Auth0.ManagementApi.Models.RoleCreateRequest.html">RoleCreateRequest</a></h4>
+      <section></section>
+      <h4><a class="xref" href="Auth0.ManagementApi.Models.RoleUpdateRequest.html">RoleUpdateRequest</a></h4>
+      <section></section>
       <h4><a class="xref" href="Auth0.ManagementApi.Models.Rule.html">Rule</a></h4>
       <section><p>Represents a rule. A rule is arbitrary JavaScript code that can be used to extend Auth0&apos;s default behavior when authenticating a user.</p>
 </section>
@@ -308,14 +342,16 @@
       <section></section>
       <h4><a class="xref" href="Auth0.ManagementApi.Models.VerifyEmailJobRequest.html">VerifyEmailJobRequest</a></h4>
       <section></section>
-    <h3 id="interfaces">Interfaces
-  </h3>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.IGuardianClient.html">IGuardianClient</a></h4>
-      <section></section>
     <h3 id="enums">Enums
   </h3>
       <h4><a class="xref" href="Auth0.ManagementApi.Models.ClientApplicationType.html">ClientApplicationType</a></h4>
       <section><p>The type of application for a <a class="xref" href="Auth0.ManagementApi.Models.Client.html">Client</a></p>
+</section>
+      <h4><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainCertificateProvisioning.html">CustomDomainCertificateProvisioning</a></h4>
+      <section><p>The custom domain provisioning type.</p>
+</section>
+      <h4><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainStatus.html">CustomDomainStatus</a></h4>
+      <section><p>The custom domain configuration status.</p>
 </section>
       <h4><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateName.html">EmailTemplateName</a></h4>
       <section><p>The names of the different email templates which you can manage.</p>

@@ -19,7 +19,7 @@ You can install the Auth0 .NET SDK trough [Nuget](https://www.nuget.org). Two di
 
 You can install the SDK for the Authentication API throug the [Package Manager Console](http://docs.nuget.org/consume/Package-Manager-Console) inside Visual Studio:
 
-```
+```powershell
 Install-Package Auth0.AuthenticationApi
 ```
 
@@ -29,7 +29,7 @@ Alternatively you can install it through the [Package Manager Dialog](http://doc
 		  
 You can install the SDK for the Management API throug the [Package Manager Console](http://docs.nuget.org/consume/Package-Manager-Console) inside Visual Studio:
 
-```
+```powershell
 Install-Package Auth0.ManagementApi
 ```
 		  
@@ -41,15 +41,15 @@ This section will take your through the basics of using the Authentication API.
 
 ### Basic Usage
 		
-Ensure that you include the Authentication API namespace in your source code file:</para>
+Ensure that you include the Authentication API namespace in your source code file:
 
-```
+```csharp
 using Auth0.AuthenticationApi;
 ```
 
 To start using the API, you need to create an instance of the @Auth0.AuthenticationApi.AuthenticationApiClient class, passing the URL of your Auth0 instance:
 
-```
+```csharp
 var client = new AuthenticationApiClient(new Uri("https://YOUR_AUTH0_DOMAIN/"));
 ```
 
@@ -112,9 +112,9 @@ This section will take your through the basics of using the Management API.
 
 ### Basic Usage
 
-Ensure that you include the Management API namespace in your source code file:</para>
+Ensure that you include the Management API namespace in your source code file:
 
-```
+```csharp
 using Auth0.ManagementApi;
 ```
 
@@ -163,10 +163,8 @@ Both clients are really lightweight to instantiate, so creating a new instance e
 If you need to specify a Proxy Server, you can do so by making use of the @Auth0.AuthenticationApi.AuthenticationApiClient or @Auth0.ManagementApi.ManagementApiClient constructors which takes an `Http​Message​Handler` instance, and pass along an instance of `HttpClientHandler`, specifying the Proxy settings:
 
 ```csharp
-var handler = new HttpClientHandler
-{
-	Proxy = new WebProxy
-	{
+var handler = new HttpClientHandler {
+	Proxy = new WebProxy {
 		Credentials = new NetworkCredential(username, password);
 	}
 };
@@ -184,8 +182,7 @@ public class CustomMessageHandler : HttpClientHandler
     protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
     {
 		// Add extra header(s) to the request
-        request.Headers.Add("auth0-forwarded-for", "189.214.5.210");
-        
+        request.Headers.Add("auth0-forwarded-for", "189.214.5.210");        
         return base.SendAsync(request, cancellationToken);
     }
 }
@@ -193,7 +190,3 @@ public class CustomMessageHandler : HttpClientHandler
 // Somewhere else in your application, you can now pass an instance of this class to the constructor of AuthenticationApiClient or ManagementApiClient
 var authenticationApiClient = new AuthenticationApiClient("YOUR_AUTH0_DOMAIN", new CustomMessageHandler());
 ```
-
-## Further Reading
-
-[ASP.NET Core APIs in the fast lane with Swagger and Autorest](https://auth0.com/blog/aspnet-core-apis-with-swagger-and-autorest/)

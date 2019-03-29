@@ -10,9 +10,9 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ManagementApiClient
    ">
-    <meta name="generator" content="docfx 2.33.1.0">
+    <meta name="generator" content="docfx 2.40.12.0">
     
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
     <link rel="stylesheet" href="../styles/main.css">
@@ -22,7 +22,7 @@
     
     
   </head>
-  <body data-spy="scroll" data-target="#affix">
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
         
@@ -37,7 +37,7 @@
               </button>
               
               <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
+                <img id="logo" class="svg" src="../images/logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -81,10 +81,6 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">ManagementApiClient</span></div>
   </div>
-  <div classs="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="Auth0.ManagementApi.IManagementApiClient.html">IManagementApiClient</a></div>
-  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
@@ -113,7 +109,7 @@
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
   <h5 id="Auth0_ManagementApi_ManagementApiClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ManagementApiClient : IManagementApiClient</code></pre>
+    <pre><code class="lang-csharp hljs">public class ManagementApiClient</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -148,141 +144,6 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">domain</span></td>
         <td><p>Your Auth0 domain, e.g. tenant.auth0.com.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_ManagementApi_ManagementApiClient__ctor_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_System_String_Auth0_Core_Http_DiagnosticsHeader_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,System.String,Auth0.Core.Http.DiagnosticsHeader)">ManagementApiClient(String, String, DiagnosticsHeader)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ManagementApiClient(string token, string domain, DiagnosticsHeader diagnostics)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">token</span></td>
-        <td><p>The token.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">domain</span></td>
-        <td><p>Your Auth0 domain, e.g. tenant.auth0.com.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.Core.Http.DiagnosticsHeader.html">DiagnosticsHeader</a></td>
-        <td><span class="parametername">diagnostics</span></td>
-        <td><p>The diagnostics.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_ManagementApi_ManagementApiClient__ctor_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_System_String_Auth0_Core_Http_DiagnosticsHeader_HttpClient_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,System.String,Auth0.Core.Http.DiagnosticsHeader,HttpClient)">ManagementApiClient(String, String, DiagnosticsHeader, HttpClient)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ManagementApiClient(string token, string domain, DiagnosticsHeader diagnostics, HttpClient httpClient)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">token</span></td>
-        <td><p>The token.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">domain</span></td>
-        <td><p>Your Auth0 domain, e.g. tenant.auth0.com.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.Core.Http.DiagnosticsHeader.html">DiagnosticsHeader</a></td>
-        <td><span class="parametername">diagnostics</span></td>
-        <td><p>The diagnostics.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">HttpClient</span></td>
-        <td><span class="parametername">httpClient</span></td>
-        <td><p>The <see cref="!:HttpClient"></see> which is used for HTTP requests</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_ManagementApi_ManagementApiClient__ctor_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_System_String_Auth0_Core_Http_DiagnosticsHeader_HttpMessageHandler_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,System.String,Auth0.Core.Http.DiagnosticsHeader,HttpMessageHandler)">ManagementApiClient(String, String, DiagnosticsHeader, HttpMessageHandler)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ManagementApiClient(string token, string domain, DiagnosticsHeader diagnostics, HttpMessageHandler handler)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">token</span></td>
-        <td><p>The token.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">domain</span></td>
-        <td><p>Your Auth0 domain, e.g. tenant.auth0.com.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.Core.Http.DiagnosticsHeader.html">DiagnosticsHeader</a></td>
-        <td><span class="parametername">diagnostics</span></td>
-        <td><p>The diagnostics.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">HttpMessageHandler</span></td>
-        <td><span class="parametername">handler</span></td>
-        <td><p>The <see cref="!:HttpMessageHandler"></see> which is used for HTTP requests</p>
 </td>
       </tr>
     </tbody>
@@ -407,141 +268,6 @@
   
   
   <a id="Auth0_ManagementApi_ManagementApiClient__ctor_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_Uri_Auth0_Core_Http_DiagnosticsHeader_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,Uri,Auth0.Core.Http.DiagnosticsHeader)">ManagementApiClient(String, Uri, DiagnosticsHeader)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ManagementApiClient(string token, Uri baseUri, DiagnosticsHeader diagnostics)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">token</span></td>
-        <td><p>The token.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">Uri</span></td>
-        <td><span class="parametername">baseUri</span></td>
-        <td><p>The base URI.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.Core.Http.DiagnosticsHeader.html">DiagnosticsHeader</a></td>
-        <td><span class="parametername">diagnostics</span></td>
-        <td><p>The diagnostics.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_ManagementApi_ManagementApiClient__ctor_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_Uri_Auth0_Core_Http_DiagnosticsHeader_HttpClient_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,Uri,Auth0.Core.Http.DiagnosticsHeader,HttpClient)">ManagementApiClient(String, Uri, DiagnosticsHeader, HttpClient)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ManagementApiClient(string token, Uri baseUri, DiagnosticsHeader diagnostics, HttpClient httpClient)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">token</span></td>
-        <td><p>The token.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">Uri</span></td>
-        <td><span class="parametername">baseUri</span></td>
-        <td><p>The base URI.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.Core.Http.DiagnosticsHeader.html">DiagnosticsHeader</a></td>
-        <td><span class="parametername">diagnostics</span></td>
-        <td><p>The diagnostics.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">HttpClient</span></td>
-        <td><span class="parametername">httpClient</span></td>
-        <td><p>The <see cref="!:HttpClient"></see> which is used for HTTP requests</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_ManagementApi_ManagementApiClient__ctor_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_Uri_Auth0_Core_Http_DiagnosticsHeader_HttpMessageHandler_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,Uri,Auth0.Core.Http.DiagnosticsHeader,HttpMessageHandler)">ManagementApiClient(String, Uri, DiagnosticsHeader, HttpMessageHandler)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ManagementApiClient(string token, Uri baseUri, DiagnosticsHeader diagnostics, HttpMessageHandler handler)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">token</span></td>
-        <td><p>The token.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">Uri</span></td>
-        <td><span class="parametername">baseUri</span></td>
-        <td><p>The base URI.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.Core.Http.DiagnosticsHeader.html">DiagnosticsHeader</a></td>
-        <td><span class="parametername">diagnostics</span></td>
-        <td><p>The diagnostics.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">HttpMessageHandler</span></td>
-        <td><span class="parametername">handler</span></td>
-        <td><p>The <see cref="!:HttpMessageHandler"></see> which is used for HTTP requests</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_ManagementApi_ManagementApiClient__ctor_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor*"></a>
   <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_Uri_HttpClient_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,Uri,HttpClient)">ManagementApiClient(String, Uri, HttpClient)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class.</p>
 </div>
@@ -632,7 +358,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IBlacklistedTokensClient BlacklistedTokens { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public BlacklistedTokensClient BlacklistedTokens { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -644,9 +370,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IBlacklistedTokensClient</span></td>
-        <td><p>The blacklisted tokens.</p>
-</td>
+        <td><span class="xref">BlacklistedTokensClient</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -659,7 +384,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IClientGrantsClient ClientGrants { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ClientGrantsClient ClientGrants { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -671,7 +396,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IClientGrantsClient</span></td>
+        <td><span class="xref">ClientGrantsClient</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -685,7 +410,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IClientsClient Clients { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ClientsClient Clients { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -697,9 +422,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IClientsClient</span></td>
-        <td><p>The clients.</p>
-</td>
+        <td><span class="xref">ClientsClient</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -712,7 +436,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IConnectionsClient Connections { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ConnectionsClient Connections { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -724,9 +448,34 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IConnectionsClient</span></td>
-        <td><p>The connections.</p>
-</td>
+        <td><span class="xref">ConnectionsClient</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_ManagementApiClient_CustomDomains_" data-uid="Auth0.ManagementApi.ManagementApiClient.CustomDomains*"></a>
+  <h4 id="Auth0_ManagementApi_ManagementApiClient_CustomDomains" data-uid="Auth0.ManagementApi.ManagementApiClient.CustomDomains">CustomDomains</h4>
+  <div class="markdown level1 summary"><p>Contains all the methods to call the /custom-domains endpoints.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CustomDomainsClient CustomDomains { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">CustomDomainsClient</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -739,7 +488,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IDeviceCredentialsClient DeviceCredentials { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public DeviceCredentialsClient DeviceCredentials { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -751,9 +500,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IDeviceCredentialsClient</span></td>
-        <td><p>The device credentials.</p>
-</td>
+        <td><span class="xref">DeviceCredentialsClient</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -766,7 +514,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEmailProviderClient EmailProvider { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public EmailProviderClient EmailProvider { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -778,9 +526,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEmailProviderClient</span></td>
-        <td><p>The email provider.</p>
-</td>
+        <td><span class="xref">EmailProviderClient</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -793,7 +540,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEmailTemplatesClient EmailTemplates { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public EmailTemplatesClient EmailTemplates { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -805,7 +552,33 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IEmailTemplatesClient</span></td>
+        <td><span class="xref">EmailTemplatesClient</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_ManagementApiClient_Guardian_" data-uid="Auth0.ManagementApi.ManagementApiClient.Guardian*"></a>
+  <h4 id="Auth0_ManagementApi_ManagementApiClient_Guardian" data-uid="Auth0.ManagementApi.ManagementApiClient.Guardian">Guardian</h4>
+  <div class="markdown level1 summary"><p>Contains all the methods to call the /guardian endpoints.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GuardianClient Guardian { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GuardianClient</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -819,7 +592,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IJobsClient Jobs { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public JobsClient Jobs { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -831,9 +604,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IJobsClient</span></td>
-        <td><p>The jobs.</p>
-</td>
+        <td><span class="xref">JobsClient</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -846,7 +618,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ILogsClient Logs { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public LogsClient Logs { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -858,9 +630,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ILogsClient</span></td>
-        <td><p>The rules.</p>
-</td>
+        <td><span class="xref">LogsClient</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -873,7 +644,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IResourceServersClient ResourceServers { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public ResourceServersClient ResourceServers { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -885,8 +656,35 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IResourceServersClient</span></td>
+        <td><span class="xref">ResourceServersClient</span></td>
         <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_ManagementApiClient_Roles_" data-uid="Auth0.ManagementApi.ManagementApiClient.Roles*"></a>
+  <h4 id="Auth0_ManagementApi_ManagementApiClient_Roles" data-uid="Auth0.ManagementApi.ManagementApiClient.Roles">Roles</h4>
+  <div class="markdown level1 summary"><p>Contains all the methods to call the /roles endpoints.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RolesClient Roles { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">RolesClient</span></td>
+        <td><p>The roles.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -899,7 +697,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IRulesClient Rules { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public RulesClient Rules { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -911,9 +709,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IRulesClient</span></td>
-        <td><p>The rules.</p>
-</td>
+        <td><span class="xref">RulesClient</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -926,7 +723,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IStatsClient Stats { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public StatsClient Stats { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -938,9 +735,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IStatsClient</span></td>
-        <td><p>The stats.</p>
-</td>
+        <td><span class="xref">StatsClient</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -953,7 +749,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ITenantSettingsClient TenantSettings { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public TenantSettingsClient TenantSettings { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -965,9 +761,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ITenantSettingsClient</span></td>
-        <td><p>The tenant settings.</p>
-</td>
+        <td><span class="xref">TenantSettingsClient</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -980,7 +775,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ITicketsClient Tickets { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public TicketsClient Tickets { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -992,9 +787,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ITicketsClient</span></td>
-        <td><p>The tickets.</p>
-</td>
+        <td><span class="xref">TicketsClient</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -1007,7 +801,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IUserBlocksClient UserBlocks { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public UserBlocksClient UserBlocks { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1019,7 +813,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IUserBlocksClient</span></td>
+        <td><span class="xref">UserBlocksClient</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1033,7 +827,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IUsersClient Users { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public UsersClient Users { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1045,9 +839,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IUsersClient</span></td>
-        <td><p>The users.</p>
-</td>
+        <td><span class="xref">UsersClient</span></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -1079,10 +872,6 @@
       </tr>
     </tbody>
   </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="Auth0.ManagementApi.IManagementApiClient.html">IManagementApiClient</a>
-  </div>
 </article>
           </div>
           
