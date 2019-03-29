@@ -24,7 +24,7 @@ Again, having this interface means that as Auth0 add server endpoints we break t
 
 This is again, unacceptable given the purpose of this SDK and so these interfaces have been removed.
 
-## Migrating from Version 3 to Version 4
+## Migrating from v3 to v4
 
 Version 4 of both the Authentication API SDK as well as the Management API SDK are major breaking changes. This document will discuss the reason for these changes, as well as instructions on how to migrate to the new version.
 
