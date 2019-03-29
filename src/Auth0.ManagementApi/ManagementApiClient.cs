@@ -8,7 +8,7 @@ namespace Auth0.ManagementApi
     /// <summary>
     /// Represents the Management API client.
     /// </summary>
-    public class ManagementApiClient
+    public class ManagementApiClient : IDisposable
     {
         private readonly ApiConnection _apiConnection;
 
@@ -203,6 +203,11 @@ namespace Auth0.ManagementApi
         public ManagementApiClient(string token, string domain)
             : this(token, new Uri($"https://{domain}/api/v2"), (HttpMessageHandler)null)
         {
+        }
+
+        public void Dispose()
+        {
+            _apiConnection.Dispose();
         }
     }
 }
