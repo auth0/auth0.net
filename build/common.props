@@ -15,11 +15,15 @@
       Version 6.0.0
       - New GuardianClient for managing /guardian endpoints
       - New RolesClient for managing /roles endpoints
-      - Some XML documentation has been cleaned up
-      - Updated dependencies
-      - Add IncludeEmailInRedirect and MailEmailAsVerified to PasswordChangeTicket 
+      - PasswordChangeTicket now has IncludeEmailInRedirect and MailEmailAsVerified       
+      - ApiConnection now has Dispose to dispose the HttpClient it creates
+      - ManagementApiClient now has Dispose to dispose the ApiConnection it creates
+      - XML documentation tweaks
+      - Dependencies updated
       
-      BREAKING
+      BREAKING CHANGES
+      See our migration guide at https://github.com/auth0/auth0.net/blob/prepare-6.0.0/docs-source/migrating.md
+      
       - All I*Client interfaces have been removed so adding endpoints is no longer breaking
       - IManagementApi interface was removed so adding new clients is no longer breaking
       - All non-paging GetAll methods have been removed
