@@ -21,20 +21,20 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Creates a new resource server
+        /// Creates a new resource server.
         /// </summary>
-        /// <param name="request">Contains the information for the resource server to create</param>
-        /// <returns></returns>
+        /// <param name="request">Contains the information for the resource server to create.</param>
+        /// <returns>The newly created <see cref="ResourceServer"/>.</returns>
         public Task<ResourceServer> CreateAsync(ResourceServerCreateRequest request)
         {
             return Connection.PostAsync<ResourceServer>("resource-servers", request, null, null, null, null, null);
         }
 
         /// <summary>
-        /// Deletes a resource server
+        /// Deletes a resource server.
         /// </summary>
-        /// <param name="id">The id of the resource server to delete</param>
-        /// <returns></returns>
+        /// <param name="id">The id of the resource server to delete.</param>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
             return Connection.DeleteAsync<object>("resource-servers/{id}", new Dictionary<string, string>
@@ -44,10 +44,10 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Get a resource server by its id
+        /// Get a resource server by its id.
         /// </summary>
-        /// <param name="id">The id of the resource server</param>
-        /// <returns>A <see cref="ResourceServer"/></returns>
+        /// <param name="id">The id of the resource server.</param>
+        /// <returns>The <see cref="ResourceServer"/> that was requested.</returns>
         public Task<ResourceServer> GetAsync(string id)
         {
             return Connection.GetAsync<ResourceServer>("resource-servers/{id}",
@@ -75,11 +75,11 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Updates a resource server
+        /// Updates a resource server,
         /// </summary>
-        /// <param name="id">The id of the resource server to update</param>
-        /// <param name="request">Contains the information for the resource server to update</param>
-        /// <returns></returns>
+        /// <param name="id">The id of the resource server to update.</param>
+        /// <param name="request">Contains the information for the resource server to update.</param>
+        /// <returns>The newly updated <see cref="ResourceServer"/>.</returns>
         public Task<ResourceServer> UpdateAsync(string id, ResourceServerUpdateRequest request)
         {
             return Connection.PatchAsync<ResourceServer>("resource-servers/{id}", request, new Dictionary<string, string>

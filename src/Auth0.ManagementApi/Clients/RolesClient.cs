@@ -16,7 +16,7 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Initializes a new instance of the <see cref="RolesClient"/> class.
         /// </summary>
-        /// <param name="connection">The connection.</param>
+        /// <param name="connection">The <see cref="ApiConnection"/> to use.</param>
         public RolesClient(ApiConnection connection)
             : base(connection)
         {
@@ -25,7 +25,7 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Creates a new role according to the request.
         /// </summary>
-        /// <param name="request">The <see cref="RoleCreateRequest" /> containing the details of the role to create.</param>
+        /// <param name="request">The <see cref="RoleCreateRequest"/> containing the details of the role to create.</param>
         /// <returns>The newly created <see cref="Role" />.</returns>
         public Task<Role> CreateAsync(RoleCreateRequest request)
         {
@@ -36,7 +36,7 @@ namespace Auth0.ManagementApi.Clients
         /// Deletes a role.
         /// </summary>
         /// <param name="id">The ID of the role to delete.</param>
-        /// <returns>Task.</returns>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
             return Connection.DeleteAsync<object>("roles/{id}", new Dictionary<string, string>
@@ -45,7 +45,11 @@ namespace Auth0.ManagementApi.Clients
             }, null);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Retrieves a list of all roles.
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying roles.</param>
+        /// <returns>An <see cref="IPagedList{Role}"/> containing the roles</returns>
         public Task<IPagedList<Role>> GetAllAsync(GetRolesRequest request)
         {
             if (request == null)
@@ -58,7 +62,12 @@ namespace Auth0.ManagementApi.Clients
                 }, null, new PagedListConverter<Role>("roles"));
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Retrieves a list of all roles.
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying roles.</param>
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <returns>An <see cref="IPagedList{Role}"/> containing the roles requested.</returns>
         public Task<IPagedList<Role>> GetAllAsync(GetRolesRequest request, PaginationInfo pagination)
         {
             if (request == null)
@@ -76,7 +85,11 @@ namespace Auth0.ManagementApi.Clients
                 }, null, new PagedListConverter<Role>("roles"));
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Retrieves a role by its ID.
+        /// </summary>
+        /// <param name="id">The ID of the role to retrieve.</param>
+        /// <returns>The <see cref="Role"/> that was requested.</returns>
         public Task<Role> GetAsync(string id)
         {
             return Connection.GetAsync<Role>("roles/{id}",
@@ -86,7 +99,12 @@ namespace Auth0.ManagementApi.Clients
                 }, null, null, null);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Updates a role.
+        /// </summary>
+        /// <param name="id">The ID of the role to update.</param>
+        /// <param name="request">A <see cref="RoleUpdateRequest" /> containing the information to update.</param>
+        /// <returns>The newly updated <see cref="Role"/>.</returns>
         public Task<Role> UpdateAsync(string id, RoleUpdateRequest request)
         {
             return Connection.PatchAsync<Role>("roles/{id}", request, new Dictionary<string, string>
@@ -95,7 +113,11 @@ namespace Auth0.ManagementApi.Clients
             });
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Retrieves a list of users associated with a role.
+        /// </summary>
+        /// <param name="id">The ID of the role to query.</param>
+        /// <returns>An <see cref="IPagedList{AssignedUser}"/> containing the assigned users.</returns>
         public Task<IPagedList<AssignedUser>> GetUsersAsync(string id)
         {
             return Connection.GetAsync<IPagedList<AssignedUser>>("roles/{id}/users",
@@ -105,7 +127,12 @@ namespace Auth0.ManagementApi.Clients
                 }, null, null, new PagedListConverter<AssignedUser>("users"));
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Retrieves a list of users associated with a role.
+        /// </summary>
+        /// <param name="id">The ID of the role to query.</param>
+        /// <param name="pagination">Specifies <see cref="PaginationInfo"/> to use in requesting paged results.</param>
+        /// <returns>An <see cref="IPagedList{AssignedUser}"/> containing the assigned user.</returns>
         public Task<IPagedList<AssignedUser>> GetUsersAsync(string id, PaginationInfo pagination)
         {
             return Connection.GetAsync<IPagedList<AssignedUser>>("roles/{id}/users",
@@ -118,7 +145,12 @@ namespace Auth0.ManagementApi.Clients
                 }, null, null, new PagedListConverter<AssignedUser>("users"));
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Assigns Users to a role.
+        /// </summary>
+        /// <param name="id">The ID of the role to assign users to.</param>
+        /// <param name="request">A <see cref="AssignUsersRequest" /> containing the user IDs to assign to the role.</param>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous assign operation.</returns>
         public Task AssignUsersAsync(string id, AssignUsersRequest request)
         {
             return Connection.PostAsync<AssignUsersRequest>("roles/{id}/users", request, null, null,

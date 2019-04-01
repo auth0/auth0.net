@@ -36,7 +36,7 @@ namespace Auth0.ManagementApi.Clients
         /// Deletes a client grant.
         /// </summary>
         /// <param name="id">The identifier of the Client Grant to delete.</param>
-        /// <returns>A <see cref="Task"/> indicating the request completion.</returns>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
             return Connection.DeleteAsync<object>("client-grants/{id}", 
@@ -51,7 +51,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="request">Specifies criteria to use when querying client grants.</param>
         /// <param name="pagination">Specifies <see cref="PaginationInfo"/> to use in requesting paged results.</param>
-        /// <returns>A <see cref="IPagedList"/> containing the matching <see cref="ClientGrant"/> instances.</returns>
+        /// <returns>A <see cref="IPagedList{ClientGrant}"/> containing the client grants requested.</returns>
         public Task<IPagedList<ClientGrant>> GetAllAsync(GetClientGrantsRequest request, PaginationInfo pagination)
         {
             if (request == null)

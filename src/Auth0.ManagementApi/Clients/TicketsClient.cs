@@ -22,7 +22,7 @@ namespace Auth0.ManagementApi.Clients
         /// Creates an email verification ticket.
         /// </summary>
         /// <param name="request">The <see cref="EmailVerificationTicketRequest"/> containing the details of the ticket to create.</param>
-        /// <returns>The <see cref="Ticket"/>.</returns>
+        /// <returns>The newly created <see cref="Ticket"/>.</returns>
         public Task<Ticket> CreateEmailVerificationTicketAsync(EmailVerificationTicketRequest request)
         {
             return Connection.PostAsync<Ticket>("tickets/email-verification", request, null, null, null, null, null);
@@ -32,7 +32,7 @@ namespace Auth0.ManagementApi.Clients
         /// Creates a password change ticket.
         /// </summary>
         /// <param name="request">The <see cref="PasswordChangeTicketRequest"/> containing the details of the ticket to create.</param>
-        /// <returns>The <see cref="Ticket"/>.</returns>
+        /// <returns>The newly created <see cref="Ticket"/>.</returns>
         public Task<Ticket> CreatePasswordChangeTicketAsync(PasswordChangeTicketRequest request)
         {
             return Connection.PostAsync<Ticket>("tickets/password-change", request, null, null, null, null, null);

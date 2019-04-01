@@ -1,3 +1,5 @@
+using Auth0.Core.Exceptions;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,13 +7,11 @@ using System.Net.Http;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using Auth0.Core.Exceptions;
-using Newtonsoft.Json;
 
 namespace Auth0.Core.Http
 {
     /// <summary>
-    /// The communication layer between the various API clients and the actual API backend.
+    /// The communication layer between the API clients and the HTTP REST backend.
     /// </summary>
     public class ApiConnection : IApiConnection, IDisposable
     {
@@ -26,12 +26,24 @@ namespace Auth0.Core.Http
         /// </summary>
         public ApiInfo ApiInfo { get; private set; }
 
+        /// <summary>
+        /// Creates a new instance of ApiConnection using an optional <see cref="HttpMessageHandler"/>.
+        /// </summary>
+        /// <param name="token">A valid Auth0 Management API v2 token.</param>
+        /// <param name="baseUrl">The URL of the tenant to manage.</param>
+        /// <param name="handler">An optional <see cref="HttpMessageHandler"/> to modify outgoing requests.</param>
         public ApiConnection(string token, string baseUrl, HttpMessageHandler handler = null)
             : this(token, baseUrl, new HttpClient(handler ?? new HttpClientHandler()))
         {
             _disposeHttpClient = true;
         }
 
+        /// <summary>
+        /// Creates a new instance of ApiConnection using a provided <see cref="HttpClient"/>.
+        /// </summary>
+        /// <param name="token">A valid Auth0 Management API v2 token.</param>
+        /// <param name="baseUrl">The URL of the tenant to manage.</param>
+        /// <param name="httpClient">A <see cref="HttpClient"/> used to send outgoing requests.</param>
         public ApiConnection(string token, string baseUrl, HttpClient httpClient)
         {
             _token = token;
@@ -81,14 +93,6 @@ namespace Auth0.Core.Http
                         message.Headers.Add(pair.Key, pair.Value.ToString());
         }
 
-        /// <summary>
-        /// Builds the content of the message. This will build the appropriate <see cref="HttpContent" /> for the request based
-        /// on the type of the parameters passed in.
-        /// </summary>
-        /// <param name="body">The body.</param>
-        /// <param name="parameters">The parameters.</param>
-        /// <param name="fileParameters">The file parameters.</param>
-        /// <returns>HttpContent.</returns>
         private HttpContent BuildMessageContent(object body, IDictionary<string, object> parameters,
             IList<FileUploadParameter> fileParameters)
         {
@@ -123,13 +127,6 @@ namespace Auth0.Core.Http
             }), Encoding.UTF8, "application/json");
         }
 
-        /// <summary>
-        /// Builds up the URL for the request by substituting values for URL segments and adding query string parameters.
-        /// </summary>
-        /// <param name="resource">The resource.</param>
-        /// <param name="urlSegments">The URL segments.</param>
-        /// <param name="queryStrings">The query strings.</param>
-        /// <returns>Uri.</returns>
         private Uri BuildRequestUri(string resource, IDictionary<string, string> urlSegments,
             IDictionary<string, string> queryStrings)
         {
@@ -143,7 +140,7 @@ namespace Auth0.Core.Http
         /// <param name="resource">The resource.</param>
         /// <param name="urlSegments">The URL segments.</param>
         /// <param name="queryStrings"></param>
-        /// <returns>Task&lt;T&gt;.</returns>
+        /// <returns>A <see cref="Task{T}"/> that represents the asynchronous Delete operation.</returns>
         public async Task<T> DeleteAsync<T>(string resource, IDictionary<string, string> urlSegments,
             IDictionary<string, string> queryStrings) where T : class
         {
@@ -166,7 +163,7 @@ namespace Auth0.Core.Http
         /// <param name="body">The body.</param>
         /// <param name="urlSegments">The URL segments.</param>
         /// <param name="queryStrings"></param>
-        /// <returns>Task&lt;T&gt;.</returns>
+        /// <returns>A <see cref="Task{T}"/> that represents the asynchronous Delete operation.</returns>
         public async Task<T> DeleteAsync<T>(string resource, object body, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings) where T : class
         {
             return await RunAsync<T>(resource,
@@ -210,13 +207,6 @@ namespace Auth0.Core.Http
                 converters).ConfigureAwait(false);
         }
 
-        /// <summary>
-        /// Handles errors returned from the API. It will check the response code, deserialize any relevant JSON error payload
-        /// and throw an appropriate exception.
-        /// </summary>
-        /// <param name="response">The <see cref="HttpResponseMessage" /> returned from the API.</param>
-        /// <returns>A <see cref="Task" />.</returns>
-        /// <exception cref="ApiException"></exception>
         private async Task HandleErrors(HttpResponseMessage response)
         {
             if (!response.IsSuccessStatusCode)
@@ -251,13 +241,13 @@ namespace Auth0.Core.Http
         }
 
         /// <summary>
-        /// Performs an HTTP PATCH.
+        /// Performs an HTTP PATCH operation.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="resource">The resource.</param>
         /// <param name="body">The body.</param>
         /// <param name="urlSegments">The URL segments.</param>
-        /// <returns>Task&lt;T&gt;.</returns>
+        /// <returns>A <see cref="Task{T}"/> that represents the asynchronous Patch operation.</returns>
         public async Task<T> PatchAsync<T>(string resource, object body, Dictionary<string, string> urlSegments)
             where T : class
         {
@@ -283,7 +273,7 @@ namespace Auth0.Core.Http
         /// <param name="urlSegments">The URL segments.</param>
         /// <param name="headers">The headers.</param>
         /// <param name="queryStrings">The query strings.</param>
-        /// <returns>Task&lt;T&gt;.</returns>
+        /// <returns>A <see cref="Task{T}"/> that represents the asynchronous Post operation.</returns>
         public async Task<T> PostAsync<T>(string resource, object body, IDictionary<string, object> parameters,
             IList<FileUploadParameter> fileParameters, IDictionary<string, string> urlSegments,
             IDictionary<string, object> headers, IDictionary<string, string> queryStrings) where T : class
@@ -310,7 +300,7 @@ namespace Auth0.Core.Http
         /// <param name="urlSegments">The URL segments.</param>
         /// <param name="headers">The headers.</param>
         /// <param name="queryStrings">The query strings.</param>
-        /// <returns>Task&lt;T&gt;.</returns>
+        /// <returns>A <see cref="Task{T}"/> that represents the asynchronous Put operation.</returns>
         public async Task<T> PutAsync<T>(string resource, object body, IDictionary<string, object> parameters,
             IList<FileUploadParameter> fileParameters, IDictionary<string, string> urlSegments,
             IDictionary<string, object> headers, IDictionary<string, string> queryStrings) where T : class
@@ -340,7 +330,7 @@ namespace Auth0.Core.Http
         /// <param name="headers">The headers.</param>
         /// <param name="fileParameters">The file parameters.</param>
         /// <param name="converters">The list of <see cref="JsonConverter" /> to use during deserialization.</param>
-        /// <returns>Task&lt;T&gt;.</returns>
+        /// <returns>A <see cref="Task{T}"/> that represents the asynchronous Run operation.</returns>
         private async Task<T> RunAsync<T>(string resource, HttpMethod httpMethod, object body,
             IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings,
             IDictionary<string, object> parameters, IDictionary<string, object> headers,

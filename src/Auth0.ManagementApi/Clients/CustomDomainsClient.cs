@@ -23,7 +23,7 @@ namespace Auth0.ManagementApi.Clients
         /// Creates a new custom domain and returns it.
         /// </summary>
         /// <param name="request">A <see cref="CustomDomainCreateRequest"/> representing the new domain.</param>
-        /// <returns>The new domain.</returns>
+        /// <returns>The <see cref="CustomDomain"/> containing the newly created custom domain.</returns>
         /// <remarks>The custom domain will need to be verified before it starts accepting requests.</remarks>
         public Task<CustomDomain> CreateAsync(CustomDomainCreateRequest request)
         {
@@ -34,7 +34,7 @@ namespace Auth0.ManagementApi.Clients
         /// Deletes a custom domain by its ID.
         /// </summary>
         /// <param name="id">The ID of the domain to delete.</param>
-        /// <returns></returns>
+        /// <returns>A <see cref="Task"/> that represents the asyncronous delete operation.</returns>
         /// <remarks>When deleted, Auth0 will stop serving requests for this domain.</remarks>
         public Task DeleteAsync(string id)
         {
@@ -48,7 +48,7 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Retrieves the status of every custom domain.
         /// </summary>
-        /// <returns>The list of custom domains</returns>
+        /// <returns>A <see cref="IList{CustomDomain}"/> containing the details of every custom domain.
         public Task<IList<CustomDomain>> GetAllAsync()
         {
             return Connection.GetAsync<IList<CustomDomain>>("custom-domains", null, null, null, null);
@@ -58,7 +58,7 @@ namespace Auth0.ManagementApi.Clients
         /// Retrieves a custom domain status by its ID
         /// </summary>
         /// <param name="id">The ID of the domain to retrieve.</param>
-        /// <returns>The domain.</returns>
+        /// <returns>The <see cref="CustomDomain"/> that was requested.</returns>
         public Task<CustomDomain> GetAsync(string id)
         {
             return Connection.GetAsync<CustomDomain>("custom-domains/{id}",
@@ -73,7 +73,7 @@ namespace Auth0.ManagementApi.Clients
         /// Run the verification process for the custom domain. 
         /// </summary>
         /// <param name="id">The ID of the domain to verify.</param>
-        /// <returns></returns>
+        /// <returns>The <see cref="CustomDomainVerification"/> that was requested.</returns>
         public Task<CustomDomainVerificationResponse> VerifyAsync(string id)
         {
             return Connection.PostAsync<CustomDomainVerificationResponse>("custom-domains/{id}/verify", null, null, null, 

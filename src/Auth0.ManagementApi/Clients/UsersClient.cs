@@ -27,7 +27,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="id">The ID of the user to assign roles to.</param>
         /// <param name="request">A <see cref="AssignRolesRequest" /> containing the role IDs to assign to the user.</param>
-        /// <returns></returns>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous assign operation.</returns>
         public Task AssignRolesAsync(string id, AssignRolesRequest request)
         {
             return Connection.PostAsync<AssignRolesRequest>("users/{id}/roles", request, null, null,
@@ -41,7 +41,7 @@ namespace Auth0.ManagementApi.Clients
         /// Creates a new user.
         /// </summary>
         /// <param name="request">The <see cref="UserCreateRequest" /> containing the properties of the user to create.</param>
-        /// <returns></returns>
+        /// <returns>The newly created <see cref="User"/>.</returns>
         public Task<User> CreateAsync(UserCreateRequest request)
         {
             return Connection.PostAsync<User>("users", request, null, null, null, null, null);
@@ -51,6 +51,7 @@ namespace Auth0.ManagementApi.Clients
         /// Deletes a user.
         /// </summary>
         /// <param name="id">The id of the user to delete.</param>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
             if (string.IsNullOrWhiteSpace(id))
@@ -67,8 +68,8 @@ namespace Auth0.ManagementApi.Clients
         /// Deletes a user's multifactor provider.
         /// </summary>
         /// <param name="id">The id of the user who multi factor provider to delete.</param>
-        /// <param name="provider">The type of the multifactor provider. Supported values 'duo' or 'google-authenticator'</param>
-        /// <returns></returns>
+        /// <param name="provider">The type of the multifactor provider. Supported values 'duo' or 'google-authenticator'.</param>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteMultifactorProviderAsync(string id, string provider)
         {
             return Connection.DeleteAsync<object>("users/{id}/multifactor/{provider}",
@@ -119,7 +120,7 @@ namespace Auth0.ManagementApi.Clients
         /// true if the fields specified are to be included in the result, false otherwise (defaults to
         /// true)
         /// </param>
-        /// <returns>The <see cref="User" />.</returns>
+        /// <returns>The <see cref="User"/> that was requested.</returns>
         public Task<User> GetAsync(string id, string fields = null, bool includeFields = true)
         {
             return Connection.GetAsync<User>("users/{id}",
@@ -164,7 +165,7 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Retrieve assigned roles for a specific user.
         /// </summary>
-        /// <param name="userId">The user id of the roles to retrieve</param>
+        /// <param name="userId">The user id of the roles to retrieve.</param>
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
         /// <returns>An <see cref="IPagedList{Role}"/> containing the roles for the user.</returns>
         public Task<IPagedList<Role>> GetRolesAsync(string userId, PaginationInfo pagination)
@@ -188,10 +189,10 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Gets all users by email address.
         /// </summary>
-        /// <param name="email">The email address to search for</param>
-        /// <param name="fields"> A comma separated list of fields to include or exclude (depending on <see cref="includeFields"/>) from the result, null to retrieve all fields</param>
-        /// <param name="includeFields">true if the fields specified are to be included in the result, false otherwise. Defaults to true</param>
-        /// <returns></returns>
+        /// <param name="email">The email address to search for.</param>
+        /// <param name="fields"> A comma separated list of fields to include or exclude (depending on <see cref="includeFields"/>) from the result, null to retrieve all fields.</param>
+        /// <param name="includeFields">true if the fields specified are to be included in the result, false otherwise. Defaults to true.</param>
+        /// <returns>A <see cref="IList{User}"/> containing all users for this email address.</returns>
         public Task<IList<User>> GetUsersByEmailAsync(string email, string fields = null, bool? includeFields = null)
         {
             return Connection.GetAsync<IList<User>>("users-by-email", null,
@@ -208,7 +209,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="id">The ID of the primary account.</param>
         /// <param name="request">The <see cref="UserAccountLinkRequest" /> containing details of the secondary account to link.</param>
-        /// <returns></returns>
+        /// <returns>A <see cref="IList{AccountLinkResponse}"/> containing details about this account link.</returns>
         public Task<IList<AccountLinkResponse>> LinkAccountAsync(string id, UserAccountLinkRequest request)
         {
             return Connection.PostAsync<IList<AccountLinkResponse>>("users/{id}/identities", request, null, null, new Dictionary<string, string>
@@ -223,7 +224,7 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="id">The ID of the primary account.</param>
         /// <param name="primaryJwtToken">The JWT of the primary account.</param>
         /// <param name="secondaryJwtToken">The JWT for the secondary account you wish to link.</param>
-        /// <returns></returns>
+        /// <returns>A <see cref="IList{AccountLinkResponse}"/> containing details about this account link.</returns>
         public Task<IList<AccountLinkResponse>> LinkAccountAsync(string id, string primaryJwtToken, string secondaryJwtToken)
         {
             var request = new UserAccountJwtLinkRequest
@@ -245,7 +246,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="id">The ID of the user to remove roles from.</param>
         /// <param name="request">A <see cref="AssignRolesRequest" /> containing the role IDs to remove to the user.</param>
-        /// <returns></returns>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous remove operation.</returns>
         public Task RemoveRolesAsync(string id, AssignRolesRequest request)
         {
             return Connection.DeleteAsync<object>("users/{id}/roles", request, new Dictionary<string, string>
@@ -260,8 +261,8 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="primaryUserId">The ID of the primary account.</param>
         /// <param name="provider">The type of the identity provider.</param>
-        /// <param name="secondaryUserId">The ID for the secondary account</param>
-        /// <returns></returns>
+        /// <param name="secondaryUserId">The ID for the secondary account.</param>
+        /// <returns>A <see cref="IList{AccountLinkResponse}"/> containing details about this account link.</returns>
         public Task<IList<AccountLinkResponse>> UnlinkAccountAsync(string primaryUserId, string provider, string secondaryUserId)
         {
             return Connection.DeleteAsync<IList<AccountLinkResponse>>("users/{id}/identities/{provider}/{secondaryid}", new Dictionary<string, string>
@@ -277,7 +278,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="id">The id of the user to update.</param>
         /// <param name="request">The <see cref="UserUpdateRequest" /> containing the information you wish to update.</param>
-        /// <returns></returns>
+        /// <returns>The newly updated <see cref="User"/>.</returns>
         public Task<User> UpdateAsync(string id, UserUpdateRequest request)
         {
             return Connection.PatchAsync<User>("users/{id}", request, new Dictionary<string, string>

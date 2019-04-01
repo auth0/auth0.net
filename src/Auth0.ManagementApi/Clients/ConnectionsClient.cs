@@ -36,6 +36,7 @@ namespace Auth0.ManagementApi.Clients
         /// Deletes a connection and all its users.
         /// </summary>
         /// <param name="id">The id of the connection to delete.</param>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
             return Connection.DeleteAsync<object>("connections/{id}", new Dictionary<string, string>
@@ -45,14 +46,14 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Deletes a specified connection user by its email.
+        /// Deletes a specified connection user by its <paramref name="email"/>.
         /// </summary>
         /// <remarks>
         /// Currently only database connections are supported and you cannot delete all users from specific connection.
         /// </remarks>
-        /// <param name="id">The identifier of the connection</param>
-        /// <param name="email">The email of the user to delete</param>
-        /// <returns></returns>
+        /// <param name="id">The identifier of the connection.</param>
+        /// <param name="email">The email of the user to delete.</param>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteUserAsync(string id, string email)
         {
             return Connection.DeleteAsync<object>("connections/{id}/users",
@@ -67,7 +68,7 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Retrieves a connection by its <paramref name="id"/>
+        /// Retrieves a connection by its <paramref name="id"/>.
         /// </summary>
         /// <param name="id">The id of the connection to retrieve.</param>
         /// <param name="fields">A comma separated list of fields to include or exclude (depending on include_fields) from the result, empty to retrieve all fields.</param>

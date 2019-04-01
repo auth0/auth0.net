@@ -24,10 +24,10 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Creates a new email template
+        /// Creates a new email template.
         /// </summary>
-        /// <param name="request">The <see cref="EmailTemplateCreateRequest"/> containing details of the template to create</param>
-        /// <returns></returns>
+        /// <param name="request">The <see cref="EmailTemplateCreateRequest"/> containing details of the template to create.</param>
+        /// <returns>The newly created <see cref="EmailTemplate"/>.</returns>
         public Task<EmailTemplate> CreateAsync(EmailTemplateCreateRequest request)
         {
             return Connection.PostAsync<EmailTemplate>("email-templates", request, null, null, null, null, null);
@@ -36,8 +36,8 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Gets an email template.
         /// </summary>
-        /// <param name="templateName">The name of template you wish to retrieve</param>
-        /// <returns></returns>
+        /// <param name="templateName">The name of email template you wish to retrieve.</param>
+        /// <returns>The <see cref="EmailTemplate"/> that was requested.</returns>
         public Task<EmailTemplate> GetAsync(EmailTemplateName templateName)
         {
             return Connection.GetAsync<EmailTemplate>("email-templates/{templateName}",
@@ -48,11 +48,11 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Updates an email template
+        /// Updates an email template.
         /// </summary>
-        /// <param name="templateName">The name of the template to update</param>
-        /// <param name="request">The <see cref="EmailTemplatePatchRequest"/> containing details of the template to patch</param>
-        /// <returns></returns>
+        /// <param name="templateName">The name of the email template to update.</param>
+        /// <param name="request">The <see cref="EmailTemplatePatchRequest"/> containing details of the template to patch.</param>
+        /// <returns>The newly updated <see cref="EmailTemplate"/>.</returns>
         public Task<EmailTemplate> PatchAsync(EmailTemplateName templateName, EmailTemplatePatchRequest request)
         {
             return Connection.PatchAsync<EmailTemplate>("email-templates/{templateName}", request, new Dictionary<string, string>
@@ -62,11 +62,11 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Updates an email template
+        /// Updates an email template.
         /// </summary>
-        /// <param name="templateName">The name of the template to patch</param>
-        /// <param name="request">The <see cref="EmailTemplateUpdateRequest"/> containing details of the template to update</param>
-        /// <returns></returns>
+        /// <param name="templateName">The name of the email template to patch.</param>
+        /// <param name="request">The <see cref="EmailTemplateUpdateRequest"/> containing details of the template to update.</param>
+        /// <returns>The newly updated <see cref="EmailTemplate"/>.</returns>
         public Task<EmailTemplate> UpdateAsync(EmailTemplateName templateName, EmailTemplateUpdateRequest request)
         {
             return Connection.PutAsync<EmailTemplate>("email-templates/{templateName}", request, null, null, new Dictionary<string, string>

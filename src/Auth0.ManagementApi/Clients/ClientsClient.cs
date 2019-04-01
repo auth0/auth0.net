@@ -39,7 +39,7 @@ namespace Auth0.ManagementApi.Clients
         /// Deletes a client and all its related assets (like rules, connections, etc) given its id.
         /// </summary>
         /// <param name="id">The id of the client to delete.</param>
-        /// <returns>A <see cref="Task"/> indicating the request completion.</returns>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
             return Connection.DeleteAsync<object>("clients/{id}", 
@@ -111,7 +111,7 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Rotate a client secret. The generated secret is NOT base64 encoded.
         /// </summary>
-        /// <param name="id">The id of the client which secret needs to be rotated</param>
+        /// <param name="id">The id of the client which secret needs to be rotated.</param>
         /// <returns>The <see cref="Client"/> that has had its secret rotated.</returns>
         public Task<Client> RotateClientSecret(string id)
         {
