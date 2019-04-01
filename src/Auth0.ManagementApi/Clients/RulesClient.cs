@@ -36,6 +36,7 @@ namespace Auth0.ManagementApi.Clients
         /// Deletes a rule.
         /// </summary>
         /// <param name="id">The ID of the rule to delete.</param>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
             return Connection.DeleteAsync<object>("rules/{id}",
@@ -50,7 +51,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="request">Specifies criteria to use when querying rules.</param>
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
-        /// <returns>An <see cref="IPagedList{Rule}"/> containing the rules</returns>
+        /// <returns>An <see cref="IPagedList{Rule}"/> containing the rules requested.</returns>
         public Task<IPagedList<Rule>> GetAllAsync(GetRulesRequest request, PaginationInfo pagination)
         {
             if (request == null)
@@ -83,7 +84,7 @@ namespace Auth0.ManagementApi.Clients
         /// True if the fields specified are to be included in the result, false otherwise (defaults to
         /// true).
         /// </param>
-        /// <returns>The <see cref="Rule" />.</returns>
+        /// <returns>The <see cref="Rule" /> that was requested.</returns>
         public Task<Rule> GetAsync(string id, string fields = null, bool includeFields = true)
         {
             return Connection.GetAsync<Rule>("rules/{id}",
@@ -103,7 +104,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="id">The ID of the rule to update.</param>
         /// <param name="request">A <see cref="RuleUpdateRequest" /> containing the information to update.</param>
-        /// <returns></returns>
+        /// <returns>The newly updated <see cref="Rule"/>.</returns>
         public Task<Rule> UpdateAsync(string id, RuleUpdateRequest request)
         {
             return Connection.PatchAsync<Rule>("rules/{id}", request, new Dictionary<string, string>

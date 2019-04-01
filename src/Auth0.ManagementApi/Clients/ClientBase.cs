@@ -8,7 +8,7 @@ namespace Auth0.ManagementApi.Clients
     public class ClientBase
     {
         /// <summary>
-        /// The <see cref="IApiConnection"/> which is used to make all HTTPS REST calls.
+        /// The <see cref="IApiConnection"/> which is used to make all REST calls.
         /// </summary>
         internal IApiConnection Connection { get; }
 

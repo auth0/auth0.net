@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
-    /// <inheritdoc />
+    /// <summary>
+    /// Contains all the methods to call the /emails/provider endpoints.
+    /// </summary
     public class EmailProviderClient : ClientBase
     {
         /// <summary>
@@ -33,7 +35,7 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Deletes the email provider.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync()
         {
             return Connection.DeleteAsync<object>("emails/provider", null, null);

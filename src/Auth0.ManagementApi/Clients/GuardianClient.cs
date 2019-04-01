@@ -39,7 +39,7 @@ namespace Auth0.ManagementApi.Clients
         /// Deletes an enrollment.
         /// </summary>
         /// <param name="id">The ID of the enrollment to delete.</param>
-        /// <returns>A <see cref="Task"/> that completes when the delete is completed.</returns>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteEnrollmentAsync(string id)
         {
             return Connection

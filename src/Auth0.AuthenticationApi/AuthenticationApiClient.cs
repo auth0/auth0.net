@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Auth0.AuthenticationApi.Builders;
+using Auth0.AuthenticationApi.Models;
+using Auth0.Core.Http;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Auth0.AuthenticationApi.Builders;
-using Auth0.AuthenticationApi.Models;
-using Auth0.Core.Http;
 
 namespace Auth0.AuthenticationApi
 {
@@ -16,9 +16,6 @@ namespace Auth0.AuthenticationApi
     /// </remarks>
     public class AuthenticationApiClient : IAuthenticationApiClient
     {
-        /// <summary>
-        /// The base URI
-        /// </summary>
         private readonly Uri _baseUri;
 
         private AuthenticationApiClient(Uri baseUri, ApiConnection connection)
@@ -336,7 +333,13 @@ namespace Auth0.AuthenticationApi
             return response;
         }
 
-        /// <inheritdoc />
+
+        /// <summary>
+        /// Gets information about the last API call made using this client.
+        /// </summary>
+        /// <returns>
+        /// A <see cref="ApiInfo"/> containing information about the last API call made.
+        /// </returns>
         public ApiInfo GetLastApiInfo()
         {
             return Connection.ApiInfo;
@@ -414,7 +417,7 @@ namespace Auth0.AuthenticationApi
         /// Unlinks a secondary account from a primary account.
         /// </summary>
         /// <param name="request">The <see cref="UnlinkUserRequest"/> containing the information of the accounts to unlink.</param>
-        /// <returns>Nothing</returns>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous unlink operation.</returns>
         public async Task UnlinkUserAsync(UnlinkUserRequest request)
         {
             await Connection.PostAsync<object>("unlink", request, null, null, null, null, null).ConfigureAwait(false);

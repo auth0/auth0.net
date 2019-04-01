@@ -144,9 +144,9 @@ namespace Auth0.ManagementApi
         /// <summary>
         /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
         /// </summary>
-        /// <param name="token">The token.</param>
-        /// <param name="baseUri">The base URI.</param>
-        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
+        /// <param name="token">A valid Auth0 Management API v2 token.</param>
+        /// <param name="baseUrl">The URL of the tenant to manage.</param>
+        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests.</param>
         public ManagementApiClient(string token, Uri baseUri, HttpMessageHandler handler)
             : this(token, baseUri, new ApiConnection(token, baseUri.AbsoluteUri, handler))
         {
@@ -155,9 +155,9 @@ namespace Auth0.ManagementApi
         /// <summary>
         /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
         /// </summary>
-        /// <param name="token">The token.</param>
-        /// <param name="baseUri">The base URI.</param>
-        /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests</param>
+        /// <param name="token">A valid Auth0 Management API v2 token.</param>
+        /// <param name="baseUrl">The URL of the tenant to manage.</param>
+        /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests.</param>
         public ManagementApiClient(string token, Uri baseUri, HttpClient httpClient)
             : this(token, baseUri, new ApiConnection(token, baseUri.AbsoluteUri, httpClient))
         {
@@ -166,8 +166,8 @@ namespace Auth0.ManagementApi
         /// <summary>
         /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
         /// </summary>
-        /// <param name="token">The token.</param>
-        /// <param name="baseUri">The base URI.</param>
+        /// <param name="token">A valid Auth0 Management API v2 token.</param>
+        /// <param name="baseUrl">The URL of the tenant to manage.</param>
         public ManagementApiClient(string token, Uri baseUri)
             : this(token, baseUri, (HttpMessageHandler)null)
         {
@@ -176,9 +176,9 @@ namespace Auth0.ManagementApi
         /// <summary>
         /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
         /// </summary>
-        /// <param name="token">The token.</param>
-        /// <param name="domain">Your Auth0 domain, e.g. tenant.auth0.com.</param>
-        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
+        /// <param name="token">A valid Auth0 Management API v2 token.</param>
+        /// <param name="domain">Your Auth0 domain. <example>tenant.auth0.com</example></param>
+        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests.</param>
         public ManagementApiClient(string token, string domain, HttpMessageHandler handler)
             : this(token, new Uri($"https://{domain}/api/v2"), handler)
         {
@@ -187,9 +187,9 @@ namespace Auth0.ManagementApi
         /// <summary>
         /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
         /// </summary>
-        /// <param name="token">The token.</param>
-        /// <param name="domain">Your Auth0 domain, e.g. tenant.auth0.com.</param>
-        /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests</param>
+        /// <param name="token">A valid Auth0 Management API v2 token.</param>
+        /// <param name="domain">Your Auth0 domain. <example>tenant.auth0.com</example></param>
+        /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests.</param>
         public ManagementApiClient(string token, string domain, HttpClient httpClient)
             : this(token, new Uri($"https://{domain}/api/v2"), httpClient)
         {

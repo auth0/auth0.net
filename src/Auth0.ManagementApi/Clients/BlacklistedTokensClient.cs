@@ -22,7 +22,7 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Gets all the blacklisted claims.
         /// </summary>
-        /// <param name="aud">The aud claim for which you want to get blacklisted tokens. This is your API Key.</param>
+        /// <param name="aud">The JWT's aud claim. The client_id of the client for which it was issued.</param>
         /// <returns>A list of <see cref="BlacklistedToken"/> objects.</returns>
         public Task<IList<BlacklistedToken>> GetAllAsync(string aud)
         {
@@ -37,7 +37,7 @@ namespace Auth0.ManagementApi.Clients
         /// Blacklists a JWT token.
         /// </summary>
         /// <param name="request">The <see cref="BlacklistedTokenCreateRequest"/> containing the information of the token to blacklist.</param>
-        /// <returns>A <see cref="Task"/> indicating the request completion.</returns>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous create operation.</returns>
         public Task CreateAsync(BlacklistedTokenCreateRequest request)
         {
             return Connection.PostAsync<Client>("blacklists/tokens", request, null, null, null, null, null);

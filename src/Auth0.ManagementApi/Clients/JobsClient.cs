@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
-    /// <inheritdoc />
+    /// <summary>
+    /// Contains all the methods to call the /jobs endpoints.
+    /// </summary>
     public class JobsClient : ClientBase
     {
         /// <summary>
@@ -45,8 +47,8 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="connectionId">The connection identifier.</param>
         /// <param name="fileName">Name of the file.</param>
         /// <param name="file">The file.</param>
-        /// <param name="upsert">Update the user if already exists</param>
-        /// <param name="externalId">Customer defined id</param>
+        /// <param name="upsert">Whether to update the user if already exists.</param>
+        /// <param name="externalId">Customer defined id.</param>
         /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
         public Task<Job> ImportUsersAsync(string connectionId, string fileName, Stream file, bool? upsert = null, string externalId = null)
         {

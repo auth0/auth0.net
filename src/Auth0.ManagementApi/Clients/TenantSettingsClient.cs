@@ -23,12 +23,12 @@ namespace Auth0.ManagementApi.Clients
         /// Gets the settings for the tenant.
         /// </summary>
         /// <param name="fields">
-        /// A comma separated list of fields to include or exclude (depending on includeFields) from the
-        /// result, empty to retrieve all fields
+        /// A comma-separated list of fields to include or exclude (depending on includeFields) from the
+        /// result, empty to retrieve all fields.
         /// </param>
         /// <param name="includeFields">
         /// <see cref="true"/> if the fields specified are to be included in the result, <see cref="false"/> otherwise (defaults to
-        /// <see cref="true"/>)
+        /// <see cref="true"/>).
         /// </param>
         /// <returns>A <see cref="TenantSettings" /> containing the settings for the tenant.</returns>
         public Task<TenantSettings> GetAsync(string fields = null, bool includeFields = true)
