@@ -201,6 +201,65 @@ namespace Auth0.ManagementApi.IntegrationTests
         }
 
         [Fact]
+        public async Task Test_roles_assign_unassign_permission_to_role()
+        {
+            // Add a new role
+            var newRoleRequest = new RoleCreateRequest
+            {
+                Name = $"{Guid.NewGuid():N}role",
+                Description = $"{Guid.NewGuid():N}description",
+            };
+            var role = await _apiClient.Roles.CreateAsync(newRoleRequest);
+            role.Should().NotBeNull();
+            role.Name.Should().Be(newRoleRequest.Name);
+            role.Description.Should().Be(newRoleRequest.Description);
+
+            // Get a resource server
+            var resourceServer = await _apiClient.ResourceServers.GetAsync("5ca26ccd95daa4089c4eba35");
+            var originalScopes = resourceServer.Scopes.ToList();
+
+            // Create a permission/scope
+            var newScope = new ResourceServerScope { Value = $"{Guid.NewGuid():N}scope", Description = "Integration test" };
+
+            // Update resource server with new scope
+            resourceServer = await _apiClient.ResourceServers.UpdateAsync(resourceServer.Id, new ResourceServerUpdateRequest
+            {
+                Scopes = originalScopes.Concat(new[] { newScope }).ToList(),
+            });
+
+            // Associate a permission with the role
+            var assignPermissionsRequest = new AssociatePermissionsRequest()
+            {
+                Permissions = new[] { new PermissionIdentity { Identifier = resourceServer.Identifier, Name = newScope.Value } } 
+            };
+            await _apiClient.Roles.AssociatePermissionsAsync(role.Id, assignPermissionsRequest);
+
+            // Ensure the permission is associated with the role
+            var associatedPermissions = await _apiClient.Roles.GetPermissionsAsync(role.Id, new PaginationInfo());
+            associatedPermissions.Should().NotBeNull();
+            associatedPermissions.Should().HaveCount(1);
+            associatedPermissions.First().Identifier.Should().Be(resourceServer.Identifier);
+            associatedPermissions.First().Name.Should().Be(newScope.Value);
+
+            // Unassociate a permission with the role
+            await _apiClient.Roles.UnassociatePermissionsAsync(role.Id, assignPermissionsRequest);
+
+            // Ensure the permission is unassociated with the role
+            associatedPermissions = await _apiClient.Roles.GetPermissionsAsync(role.Id, new PaginationInfo());
+            associatedPermissions.Should().NotBeNull();
+            associatedPermissions.Should().HaveCount(0);
+
+            // Clean Up - Remove the permission from the resource server
+            resourceServer = await _apiClient.ResourceServers.UpdateAsync(resourceServer.Id, new ResourceServerUpdateRequest
+            {
+                Scopes = originalScopes
+            });
+
+            // Clean Up - Remove the role
+            await _apiClient.Roles.DeleteAsync(role.Id);
+        }
+
+        [Fact]
         public async Task Test_when_paging_not_specified_does_not_include_totals()
         {
             // Act

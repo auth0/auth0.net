@@ -132,7 +132,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="id">The ID of the role to query.</param>
         /// <param name="pagination">Specifies <see cref="PaginationInfo"/> to use in requesting paged results.</param>
-        /// <returns>An <see cref="IPagedList{AssignedUser}"/> containing the assigned user.</returns>
+        /// <returns>An <see cref="IPagedList{AssignedUser}"/> containing the assigned users.</returns>
         public Task<IPagedList<AssignedUser>> GetUsersAsync(string id, PaginationInfo pagination)
         {
             return Connection.GetAsync<IPagedList<AssignedUser>>("roles/{id}/users",
@@ -158,6 +158,48 @@ namespace Auth0.ManagementApi.Clients
                 {
                     {"id", id},
                 }, null, null);
+        }
+
+        /// <summary>
+        /// Gets the permissions for a role.
+        /// </summary>
+        /// <param name="id">The id of the role to obtain the permissions for.</param>
+        /// <param name="pagination">Specifies <see cref="PaginationInfo"/> to use in requesting paged results.</param>
+        /// <returns>An <see cref="IPagedList{Permission}"/> containing the assigned permissions.</returns>
+        public Task<IPagedList<Permission>> GetPermissionsAsync(string id, PaginationInfo pagination)
+        {
+            return Connection.GetAsync<IPagedList<Permission>>("roles/{id}/permissions",
+                new Dictionary<string, string>
+                {
+                        {"id", id},
+                        {"page", pagination.PageNo.ToString()},
+                        {"per_page", pagination.PerPage.ToString()},
+                        {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
+                }, null, null, new PagedListConverter<Permission>("users"));
+        }
+
+        /// <summary>
+        /// Add permissions to a role.
+        /// </summary>
+        /// <param name="id">The ID of the role to add permissions to.</param>
+        /// <param name="request">A <see cref="AssociatePermissionsRequest" /> containing the permission identifiers to remove from the role.</param>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous remove operation.</returns>
+        public Task AssociatePermissionsAsync(string id, AssociatePermissionsRequest request)
+        {
+            return Connection.PostAsync<object>("roles/{id}/permissions", request, null, null,
+                new Dictionary<string, string> { { "id", id}, }, null, null);
+        }
+
+        /// <summary>
+        /// Remove permissions associated with a role.
+        /// </summary>
+        /// <param name="id">The ID of the role to remove permissions from.</param>
+        /// <param name="request">A <see cref="AssociatePermissionsRequest" /> containing the role IDs to remove to the user.</param>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous remove operation.</returns>
+        public Task UnassociatePermissionsAsync(string id, AssociatePermissionsRequest request)
+        {
+            return Connection.DeleteAsync<object>("roles/{id}/permissions", request, 
+                new Dictionary<string, string> { {"id", id}, }, null);
         }
     }
 }

@@ -41,7 +41,7 @@ namespace Auth0.ManagementApi.Models
         /// The amount of time (in seconds) that the token will be valid after being issued
         /// </summary>
         [JsonProperty("token_lifetime")]
-        public int TokenLifetime { get; set; }
+        public int? TokenLifetime { get; set; }
 
         /// <summary>
         /// The amount of time (in seconds) that the token will be valid after being issued from browser based flows.
