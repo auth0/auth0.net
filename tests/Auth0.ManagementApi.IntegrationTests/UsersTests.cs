@@ -6,6 +6,7 @@ using Auth0.ManagementApi.Models;
 using FluentAssertions;
 using Xunit;
 using Auth0.Tests.Shared;
+using System.Linq;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
@@ -327,6 +328,64 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Verify
             user.Should().NotBeNull();
             user.Identities[0].UserId.Should().Be(userId);
+        }
+
+        [Fact]
+        public async Task Test_roles_assign_unassign_permission_to_user()
+        {
+            var userCreateRequest = new UserCreateRequest
+            {
+                Connection = _connection.Name,
+                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                EmailVerified = true,
+                Password = Password
+            };
+
+            var user = await _apiClient.Users.CreateAsync(userCreateRequest);
+
+            // Get a resource server
+            var resourceServer = await _apiClient.ResourceServers.GetAsync("5cccc711773967081270a036");
+            var originalScopes = resourceServer.Scopes.ToList();
+
+            // Create a permission/scope
+            var newScope = new ResourceServerScope { Value = $"{Guid.NewGuid():N}scope", Description = "Integration test" };
+
+            // Update resource server with new scope
+            resourceServer = await _apiClient.ResourceServers.UpdateAsync(resourceServer.Id, new ResourceServerUpdateRequest
+            {
+                Scopes = originalScopes.Concat(new[] { newScope }).ToList(),
+            });
+
+            // Associate a permission with the user
+            var assignPermissionsRequest = new AssignPermissionsRequest()
+            {
+                Permissions = new[] { new PermissionIdentity { Identifier = resourceServer.Identifier, Name = newScope.Value } }
+            };
+            await _apiClient.Users.AssignPermissionsAsync(user.UserId, assignPermissionsRequest);
+
+            // Ensure the permission is associated with the user
+            var associatedPermissions = await _apiClient.Users.GetPermissionsAsync(user.UserId, new PaginationInfo());
+            associatedPermissions.Should().NotBeNull();
+            associatedPermissions.Should().HaveCount(1);
+            associatedPermissions.First().Identifier.Should().Be(resourceServer.Identifier);
+            associatedPermissions.First().Name.Should().Be(newScope.Value);
+
+            // Unassociate a permission with the user
+            await _apiClient.Users.RemovePermissionsAsync(user.UserId, assignPermissionsRequest);
+
+            // Ensure the permission is unassociated with the user
+            associatedPermissions = await _apiClient.Users.GetPermissionsAsync(user.UserId, new PaginationInfo());
+            associatedPermissions.Should().NotBeNull();
+            associatedPermissions.Should().HaveCount(0);
+
+            // Clean Up - Remove the permission from the resource server
+            resourceServer = await _apiClient.ResourceServers.UpdateAsync(resourceServer.Id, new ResourceServerUpdateRequest
+            {
+                Scopes = originalScopes
+            });
+
+            // Clean Up - Remove the user
+            await _apiClient.Users.DeleteAsync(user.UserId);
         }
     }
 }

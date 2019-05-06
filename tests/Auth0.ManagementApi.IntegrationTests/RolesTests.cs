@@ -228,11 +228,11 @@ namespace Auth0.ManagementApi.IntegrationTests
             });
 
             // Associate a permission with the role
-            var assignPermissionsRequest = new AssociatePermissionsRequest()
+            var assignPermissionsRequest = new AssignPermissionsRequest()
             {
                 Permissions = new[] { new PermissionIdentity { Identifier = resourceServer.Identifier, Name = newScope.Value } } 
             };
-            await _apiClient.Roles.AssociatePermissionsAsync(role.Id, assignPermissionsRequest);
+            await _apiClient.Roles.AssignPermissionsAsync(role.Id, assignPermissionsRequest);
 
             // Ensure the permission is associated with the role
             var associatedPermissions = await _apiClient.Roles.GetPermissionsAsync(role.Id, new PaginationInfo());
@@ -242,7 +242,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             associatedPermissions.First().Name.Should().Be(newScope.Value);
 
             // Unassociate a permission with the role
-            await _apiClient.Roles.UnassociatePermissionsAsync(role.Id, assignPermissionsRequest);
+            await _apiClient.Roles.RemovePermissionsAsync(role.Id, assignPermissionsRequest);
 
             // Ensure the permission is unassociated with the role
             associatedPermissions = await _apiClient.Roles.GetPermissionsAsync(role.Id, new PaginationInfo());
