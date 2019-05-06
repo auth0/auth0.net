@@ -215,7 +215,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             role.Description.Should().Be(newRoleRequest.Description);
 
             // Get a resource server
-            var resourceServer = await _apiClient.ResourceServers.GetAsync("5ca26ccd95daa4089c4eba35");
+            var resourceServer = await _apiClient.ResourceServers.GetAsync("5cccc711773967081270a036");
             var originalScopes = resourceServer.Scopes.ToList();
 
             // Create a permission/scope
