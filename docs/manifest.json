@@ -45,7 +45,7 @@
           "hash": "y6DlkUEIx3b3Ba4Fs9SnQw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -54,10 +54,10 @@
       "output": {
         ".html": {
           "relative_path": "migrating.html",
-          "hash": "Mr85EcP7uXrlSHqr4P5joA=="
+          "hash": "dRmZjlroMmfgdQl8oLM3lg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -66,10 +66,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.AuthenticationApi.AuthenticationApiClient.html",
-          "hash": "ZI36C5TKVJGjHGvcGs40/A=="
+          "hash": "RLeJUNBlWtktWOu0sQMDeg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -81,7 +81,7 @@
           "hash": "lRrR3odIqtp0TmOuaNHMjw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -93,7 +93,7 @@
           "hash": "CmTNs/n0Tdi+bdMu7oOpuw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -105,7 +105,7 @@
           "hash": "xn/ZngIgNf31sznfh0ip7g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -117,7 +117,7 @@
           "hash": "KTqSXrAVFXccpuSjz/a5pg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -129,7 +129,7 @@
           "hash": "EBnnGSSEHTyhM4YxjqEleg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -141,7 +141,7 @@
           "hash": "ZvCZ+wf202y3kqTHdnp0tg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -153,7 +153,7 @@
           "hash": "22uS1jp8FrIGZCDD+2PhZA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -165,7 +165,7 @@
           "hash": "CC7Vaf3xQ/RV/STNKynlgQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -177,7 +177,7 @@
           "hash": "20NKu45NXMWhcjMyRJbBCw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -189,7 +189,7 @@
           "hash": "g5vc7Z01P/t9UBxyatwilQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -201,7 +201,7 @@
           "hash": "DCCC9gOhO7EjI4BmWmTLtw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -213,7 +213,7 @@
           "hash": "J4mpn/oyqcvHOpPFUnkIzA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -225,7 +225,7 @@
           "hash": "Bk1bSvErR5SUG4Gp+7bkfg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -237,7 +237,7 @@
           "hash": "ZPNt+EzfLR1b4uHMIPjjPg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -249,7 +249,7 @@
           "hash": "zkEE2mF9AMwUqF5HI0xNyg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -261,7 +261,7 @@
           "hash": "fFGMoKkFyvjFZ0I76zemVg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -273,7 +273,7 @@
           "hash": "ypWJuDZW0qe3SsCmNHbY9w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -285,7 +285,7 @@
           "hash": "K0Uo2fMQAJEzyNcVAqYJXw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -297,7 +297,7 @@
           "hash": "0CvNqR9mCp5j1FdsWwcRtA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -309,7 +309,7 @@
           "hash": "IB+4sJtYFdjxZmzFfZ6nQQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -321,7 +321,7 @@
           "hash": "Icz3Sc+xS/+h2xuHvvuYMA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -333,7 +333,7 @@
           "hash": "RTIYchW4M6yQabmKoIizgA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -345,7 +345,7 @@
           "hash": "sfNL+tiC66ymBxfgWXeKWw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -357,7 +357,7 @@
           "hash": "+u4uWeeRF8xDfVUqNtVj2Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -369,7 +369,7 @@
           "hash": "StB9otb9pNyIaOhAJZy4Iw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -381,7 +381,7 @@
           "hash": "j6sMwroIb8Aovk8XNQSJVg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -393,7 +393,7 @@
           "hash": "Fgvj94JEtBybxuiKULFw9Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -405,7 +405,7 @@
           "hash": "GXRsRG3+MvAK2sJ3kTLeNA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -417,7 +417,7 @@
           "hash": "t4vp6MpgxxQtoujBUU2Elw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -429,7 +429,7 @@
           "hash": "mPQ2ALSa7f2YDrcfSYXVLg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -441,7 +441,7 @@
           "hash": "MgfbND1u1pc8ay8YU1Yhgw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -453,7 +453,7 @@
           "hash": "pK9Q5KC71Z5F77tXp4KAXA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -465,7 +465,7 @@
           "hash": "MycB0q8fO/g/e1lZvNshXg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -477,7 +477,7 @@
           "hash": "yZ7Wyr2FpLObTbWDpQo0oA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -489,7 +489,7 @@
           "hash": "ZKX3IbW7yKB7Fg9fZHnU0g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -501,7 +501,7 @@
           "hash": "2YRUg6wH3Fp0yujLb9W7WQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -513,7 +513,7 @@
           "hash": "B9GRF6NrOuGOYubdgholrA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -525,7 +525,7 @@
           "hash": "UWMKpQvdI62L4wSqXrS2nQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -537,7 +537,7 @@
           "hash": "AjVOe9NQNOyshOy15N8WLw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -549,7 +549,7 @@
           "hash": "uFz7vI5ku8Ftbi0GcCzjTA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -561,7 +561,7 @@
           "hash": "QWmlvbuHXkii8zCjzuAPjA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -573,7 +573,7 @@
           "hash": "wWPsbqBx+Y8Dcp89mTbWnA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -585,7 +585,7 @@
           "hash": "vqby1DFUSXHCQi+7p18ghA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -597,7 +597,7 @@
           "hash": "J14fPcjwV+db2KaXoQ4IaA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -609,7 +609,7 @@
           "hash": "/BcRnqkGl2FnBGG1e/+f0A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -618,10 +618,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.Core.Http.ApiConnection.html",
-          "hash": "VgJqAzcKvjroHOOg8iIkDA=="
+          "hash": "vNZXi7zvScknztRhHaw3cA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -633,7 +633,7 @@
           "hash": "rp4ok2Zi509+IYjBLKoTlQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -645,7 +645,7 @@
           "hash": "ixNN5+zPSKXpo5wqYstfnA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -657,7 +657,7 @@
           "hash": "e/yoDnrPDt0oh7klvj7vhg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -669,7 +669,7 @@
           "hash": "lrSgLCITSYeFOy3r81cxQw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -678,10 +678,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.Core.Http.html",
-          "hash": "HgNz8XUJ1avQOI+Fg9ROZw=="
+          "hash": "SychG4Uor72pTTOIYtv18g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -693,7 +693,7 @@
           "hash": "v02odUYerjq1lpgRJfuLag=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -705,7 +705,7 @@
           "hash": "8kAh4xgitWc4BFLOoTX+gg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -717,7 +717,7 @@
           "hash": "jXQAC6YNa8IcIbvFxo4Bkw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -729,7 +729,7 @@
           "hash": "7Ep3biPb2xf3OsjwqZBNGA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -741,7 +741,7 @@
           "hash": "HCj8IaYZVoNCKzwK2wezHw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -750,10 +750,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.BlacklistedTokensClient.html",
-          "hash": "LcwuBjMuDn3zLMxA6ipVJg=="
+          "hash": "VhvWsl+Qk6JyXmKQeFLYJg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -765,7 +765,7 @@
           "hash": "+sPoFk5nENatcBYDhOZIxw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -774,10 +774,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.ClientGrantsClient.html",
-          "hash": "dHdmp8myz1AY/X/xW0SaNA=="
+          "hash": "6g//YD4hCSkP3RsYnuGMww=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -786,10 +786,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.ClientsClient.html",
-          "hash": "qjJoSqoR02ZU6Ll1szi8aQ=="
+          "hash": "cywLNX9bu/pr8ocXkKUzaQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -798,10 +798,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.ConnectionsClient.html",
-          "hash": "8gjO3rGFyV68p0OmCK5M5w=="
+          "hash": "K7A3JkofBCRpzj0p3pErHg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -810,10 +810,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.CustomDomainsClient.html",
-          "hash": "dlxgMWFSyuqgmnC9+1R05Q=="
+          "hash": "KFW9qTue6IgquzSOBf+lwA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -822,10 +822,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.DeviceCredentialsClient.html",
-          "hash": "3UUfqnbt86bMtDo/RGlbhA=="
+          "hash": "ufCJYyNT2JP+CC0iDUTPeg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -834,10 +834,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.EmailProviderClient.html",
-          "hash": "KBuS/DRRM/ZC2tqii4Zcjw=="
+          "hash": "DtMzIYXsP9ihSGJRh6nOqA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -846,10 +846,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.EmailTemplatesClient.html",
-          "hash": "Uc0G3qolWcyU4Dooiv44bQ=="
+          "hash": "+zh41bon0aWXScOPAkfjBw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -858,10 +858,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.GuardianClient.html",
-          "hash": "BWVi97MpAvMxl9OcKqUuRw=="
+          "hash": "BciaveNc41Ybxqvy9Tldtw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -870,10 +870,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.JobsClient.html",
-          "hash": "KGA5Du7Nv64x3B5clxTJrQ=="
+          "hash": "ttpQa9wIPLl/dAvpbFnibw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -885,7 +885,7 @@
           "hash": "Ca16xgpKGoJMJV4HnsU9IQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -894,10 +894,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.ResourceServersClient.html",
-          "hash": "XZoQPSQEp9oQmqMKD8PujA=="
+          "hash": "JLptp641V5t20UFnpX7dRQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -906,10 +906,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.RolesClient.html",
-          "hash": "DesQFoEAY68xpxiChrX+2g=="
+          "hash": "rOV3aS4676VGL0cI6QPmhg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -918,10 +918,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.RulesClient.html",
-          "hash": "lbsJwboP4YiW5Sc5z4HCww=="
+          "hash": "xfIG6rgYPf1PUwPe5SkXlQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -933,7 +933,7 @@
           "hash": "cwqsAOXFX2yv4VDi7KfXMw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -942,10 +942,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.TenantSettingsClient.html",
-          "hash": "ASqkinonNX16nIXwsezWmQ=="
+          "hash": "uu4d8N5bUrSIVeFePGYLSQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -954,10 +954,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.TicketsClient.html",
-          "hash": "FDp3Cg3rp1G3aUE+Z1riMg=="
+          "hash": "LCUNrhl4i8uEm7cuVsrl+w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -966,10 +966,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.UserBlocksClient.html",
-          "hash": "kP8vJkpWRwN5NFT1Qlqy5A=="
+          "hash": "3UfOoeNaNsJxfOQjNEKReQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -978,10 +978,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.UsersClient.html",
-          "hash": "JhX9b0PdQjO7OM0RdOqIwA=="
+          "hash": "qK+h04js8CkCk3dBd5naqg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -990,10 +990,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.html",
-          "hash": "o2hPSjMrB5upyk+JjcKmkw=="
+          "hash": "9dUCCABrzeXyzewzNLuc6Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1002,10 +1002,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.ManagementApiClient.html",
-          "hash": "qaXHM0s6SrWZK6xaZ9hBtQ=="
+          "hash": "vodREE/oKqK3Y9e0Tl2tPw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1017,7 +1017,7 @@
           "hash": "2izpjGRrybn/TahPWzzDLA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1029,7 +1029,7 @@
           "hash": "Q0bz5VyrMlD6rWHfjE9cDg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1041,7 +1041,19 @@
           "hash": "CbFe8x4HRnmkfJVAokMzBw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.AssignPermissionsRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.AssignPermissionsRequest.html",
+          "hash": "3+GYqM6nwHjl0bwe8z8g9A=="
+        }
+      },
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1050,10 +1062,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.AssignRolesRequest.html",
-          "hash": "Ilo4z5HfBHYBToMnmhxVeg=="
+          "hash": "MRc4AAk5sG4lEL9VfrnDgQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1062,10 +1074,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.AssignUsersRequest.html",
-          "hash": "4tKZNtFOHauWq6Kh45B6Ww=="
+          "hash": "iZL6ZwCMluhaikUZhSOaEw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1077,7 +1089,19 @@
           "hash": "j5h6WYGM0Mbz0d7VEZQTRA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.AssociatePermissionsRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.AssociatePermissionsRequest.html",
+          "hash": "ING90KLKyLF5hTsi/bS4fA=="
+        }
+      },
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1089,7 +1113,7 @@
           "hash": "CjJFfmEbM62vzovCrKXU3A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1101,7 +1125,7 @@
           "hash": "NrXEvJSwVE7W2WL0qj+6wQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1113,7 +1137,7 @@
           "hash": "x0P+YHAifNaQ5RUp6WGZ7g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1125,7 +1149,7 @@
           "hash": "GRB+L15t0jCiPJqI3b1dBg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1137,7 +1161,7 @@
           "hash": "4+PrUcRQZWQGVRvp84LYZA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1149,7 +1173,7 @@
           "hash": "MO0qNdpfl3k/eMQndOHNyQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1161,7 +1185,7 @@
           "hash": "g5nexPVPqSiQLnFFIb+4Ig=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1173,7 +1197,7 @@
           "hash": "0YlAxHWihMdXu4tv9xwwpA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1185,7 +1209,7 @@
           "hash": "PZ6cnQ/U5a1tBQj6CIPK7w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1197,7 +1221,7 @@
           "hash": "Ukn+8SdS2xfc7ixsfQENIA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1209,7 +1233,7 @@
           "hash": "0ilPiB/quvvXfsiiHNJVLg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1221,7 +1245,7 @@
           "hash": "gM2ZnBJJjrhvu8heoYpTUw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1233,7 +1257,7 @@
           "hash": "Wlr/TeZyNtvFtP2IWvxvyQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1245,7 +1269,7 @@
           "hash": "E2EGmm7nwHjfy+o3BA84cQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1257,7 +1281,7 @@
           "hash": "Vy8vzXUeKqJFkFgWZaU8/g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1269,7 +1293,7 @@
           "hash": "/Qq06pAdPbgxijw6sN+wKQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1281,7 +1305,7 @@
           "hash": "0t85966EXVLQouj8Em6FAg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1293,7 +1317,7 @@
           "hash": "ITrAzGi4eOSEG7/ObORGBg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1305,7 +1329,7 @@
           "hash": "djs5egneMlRPpXHCdtIV+w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1317,7 +1341,7 @@
           "hash": "odrK33mkOkBCTWyaWB3mug=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1329,7 +1353,7 @@
           "hash": "w219IZDHPMkdBZlwxnTqgA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1341,7 +1365,7 @@
           "hash": "tkqvbgcK4AlDUk6EqNqvXg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1353,7 +1377,7 @@
           "hash": "dV9epRgDmmC5IoXmGxUsng=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1365,7 +1389,7 @@
           "hash": "7+XJIIEbbukrYJTmjZGKHg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1377,7 +1401,7 @@
           "hash": "8aqZYSkPn2qcYud65EMbAQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1389,7 +1413,7 @@
           "hash": "rPJR5z5VQqJ/SOCE9LYjrQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1401,7 +1425,7 @@
           "hash": "+4H+RSmOWBocEQHuduyoVQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1413,7 +1437,7 @@
           "hash": "kJpmKA7w1YwMWSLBCWG2kw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1425,7 +1449,7 @@
           "hash": "N+Hem8ICanzWhiIfTLC6og=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1437,7 +1461,7 @@
           "hash": "7goaDbwmDu0yzhvKKggftw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1449,7 +1473,7 @@
           "hash": "uxI0KaHcqukRoEEQvo2ZaQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1461,7 +1485,7 @@
           "hash": "A9bBKUaK29GFdBwwr/43Dw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1473,7 +1497,7 @@
           "hash": "sdY1CG/PgA6cQQID47IaNA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1485,7 +1509,7 @@
           "hash": "k68iIY+ave9i5+Bs7Sq5hA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1497,7 +1521,7 @@
           "hash": "yQknUlNa5Fc/7Du4Yv4i2A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1509,7 +1533,7 @@
           "hash": "iUft7hUWHJZrsoJWLED+HQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1521,7 +1545,7 @@
           "hash": "K2TUjGcrl4r7WZOATCcNsw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1533,7 +1557,7 @@
           "hash": "AxPj4D/e0t8Qs7KCQGShqA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1545,7 +1569,7 @@
           "hash": "AN6XuGHzAlKILNdfD34ECQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1557,7 +1581,7 @@
           "hash": "y58c+lm7/89fAWJfkxypBQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1569,7 +1593,7 @@
           "hash": "BmStRytx4hlkEosvwabqhg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1581,7 +1605,7 @@
           "hash": "+xZQTXrEewQtlDlxONDQzg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1593,7 +1617,7 @@
           "hash": "XV/s5AimVDocgrvgDnXU6g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1605,7 +1629,7 @@
           "hash": "dF0dZ/+6enh/Joxw4eywAg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1617,7 +1641,7 @@
           "hash": "y8k3z7RW1NCC/7n8UYKT6g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1629,7 +1653,7 @@
           "hash": "DIO5hTmj7NCx4Oo/daqNAg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1641,7 +1665,7 @@
           "hash": "Wx+zxRfXiNiNsyifEHvkIg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1653,7 +1677,7 @@
           "hash": "DPaoeexMka8oodt0FOhoHg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1665,7 +1689,7 @@
           "hash": "odELnSywbtd04+WeiAzo7g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1677,7 +1701,7 @@
           "hash": "N7r/ryIGbcC9yQraZo/dag=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1689,7 +1713,7 @@
           "hash": "m78Nbsd44QzKHEWY2GvtQA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1701,7 +1725,7 @@
           "hash": "qbrZlXU6wkg0DKi/q/bo0A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1713,7 +1737,7 @@
           "hash": "k0Rg5rJIgTY5Z+9GycqPIg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1725,7 +1749,7 @@
           "hash": "PQKM7iqwB66lnCN/UaI5pw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1737,7 +1761,7 @@
           "hash": "6dzVy8RBojcRLRcoaFe7cA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1749,7 +1773,7 @@
           "hash": "ikbNwrZ/XIWn8ymP885tyA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1761,7 +1785,7 @@
           "hash": "nhftH5KAKFfFvZJI1wNdCw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1773,7 +1797,7 @@
           "hash": "h2m+lKaV7Do0sXZLkOgg2Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1785,7 +1809,7 @@
           "hash": "UrQVxEmOpx+4Dro+caYNfA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1797,7 +1821,7 @@
           "hash": "jPpoOWlbjm3NwSMhupkM9w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1809,7 +1833,7 @@
           "hash": "t0Sg8knfiX7oPhybOaS+1g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1821,7 +1845,7 @@
           "hash": "rdopV6fzWqj+q6NscsAD7A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1833,7 +1857,7 @@
           "hash": "uWMi1qMuSjn0szS4+oRjfw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1845,7 +1869,7 @@
           "hash": "hcwmIWcET8i0nxS9udK/FQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1857,7 +1881,7 @@
           "hash": "cuGlnoQo1pbxDhSXSNREZg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1869,7 +1893,7 @@
           "hash": "QUzY5za8IKw8Y1qdK7A/FA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1881,7 +1905,7 @@
           "hash": "dLyMmMiaEs1XreiT0NhWRg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1893,7 +1917,7 @@
           "hash": "RxFldr06eSS30TgUQfIHhA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1905,7 +1929,7 @@
           "hash": "SbohP835x2kvThVqQoL4mg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1917,7 +1941,31 @@
           "hash": "00ghoICMIFXaXBKzfqKW2A=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Permission.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Permission.html",
+          "hash": "Tz4qB2jTIJ61U6FMDPO8Sw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.PermissionIdentity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.PermissionIdentity.html",
+          "hash": "ydA2LC3Urr2BniOIp00PuA=="
+        }
+      },
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1929,7 +1977,7 @@
           "hash": "XqTvtHc3gxv1XSKNHFrqRg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1938,10 +1986,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.ResourceServerBase.html",
-          "hash": "HtbwVXAsGbuQoEmU8f9JIQ=="
+          "hash": "aUF9TcKKLpzFAwHeuoqj2w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1953,7 +2001,7 @@
           "hash": "Emp1wmTbt45gJ+5vcUrgNQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1965,7 +2013,7 @@
           "hash": "iQvtVboqNREzMN4wru75Fg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1977,7 +2025,7 @@
           "hash": "/cRCKKF1L/aAJqM1fXw9iQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -1989,7 +2037,7 @@
           "hash": "5mU4DQBHSy5lpEs1+m6RoQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2001,7 +2049,7 @@
           "hash": "UUaXMOYlrHUvTFF1hEfM9g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2013,7 +2061,7 @@
           "hash": "JLXD1SnCtFGg61nTL3JdKw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2025,7 +2073,7 @@
           "hash": "gVv4kk/v9u45V32hXkldaQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2037,7 +2085,7 @@
           "hash": "NRgCaumTj0Q2kiGaWpnR5g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2049,7 +2097,7 @@
           "hash": "Ohb3sbFeO4drYrFbLhKCaQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2061,7 +2109,7 @@
           "hash": "JcEMrcMcXKZ87N6CaHLjxQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2073,7 +2121,7 @@
           "hash": "p1cromF2jjzuKzQEqWRZVQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2085,7 +2133,7 @@
           "hash": "4EkNQ19w9MyWXRJZ7wSb3w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2097,7 +2145,7 @@
           "hash": "xbhlgJ/rR819qAdqNcldrQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2109,7 +2157,7 @@
           "hash": "0f8O4YxVgSkd7vzrn1zTaQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2121,7 +2169,7 @@
           "hash": "DhHhK2uKJ+m04b5ID4bF2g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2133,7 +2181,7 @@
           "hash": "FXnRHArFkjeE05hkgrgOaA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2145,7 +2193,7 @@
           "hash": "qLY7HhvYva0oPGNExo9DDA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2157,7 +2205,7 @@
           "hash": "atBuTLv8UYqqcFSeIfI9yw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2169,7 +2217,7 @@
           "hash": "6kIRyUsc1sePlLohERi+jg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2181,7 +2229,7 @@
           "hash": "Vx0ZtCrv5/cLH6/wTXO1Pg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2193,7 +2241,7 @@
           "hash": "GdniFA1KywTIy4Gp9Ry7Cw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2205,7 +2253,7 @@
           "hash": "MJsSZmKmVGUPqqZvkRny5w=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2217,7 +2265,7 @@
           "hash": "JfSZpkuTzQ8opag/8mR/HA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2229,7 +2277,7 @@
           "hash": "A6tEwPHjCKae0kIRyCtF1g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2241,7 +2289,7 @@
           "hash": "o16+f79nhS8/nU/H2IzkRQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2253,7 +2301,7 @@
           "hash": "auk/hcAuoZqMtRO7lHpt5g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2265,7 +2313,7 @@
           "hash": "kgPM+nAulht+eioBM/516g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2277,7 +2325,7 @@
           "hash": "xtzYp5tYWNPtyk+zaygWUw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2289,7 +2337,7 @@
           "hash": "Z+QN2QFVT9V4VB2d8rHxdg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2301,7 +2349,7 @@
           "hash": "Lp/K5TnHy7tVhVb6qHvHSg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2313,7 +2361,7 @@
           "hash": "E19A6utPZj7OK3zY1Sm95Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2325,7 +2373,7 @@
           "hash": "LkearM2+5YyiYgPheUEQBw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2337,7 +2385,7 @@
           "hash": "OGKRvLH1sk/zUlFqru91KA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2349,7 +2397,7 @@
           "hash": "2V/Eci9b28iU8CG8MRl9/Q=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2361,7 +2409,7 @@
           "hash": "xYfsThIlgcu62H4J4T4IiA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2373,7 +2421,7 @@
           "hash": "eeTfcyVDhpw1QOtmf9qhTg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2385,7 +2433,7 @@
           "hash": "W0A5iLdvw0U4T+229ijUXg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2397,7 +2445,7 @@
           "hash": "fQJwaMTzYUTX39Honx2bKQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2409,7 +2457,7 @@
           "hash": "VwkhCgD4e3NTr5XcFkCmTA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2421,7 +2469,7 @@
           "hash": "5yGeUXsHao6tF7ELlOmYvg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2433,7 +2481,7 @@
           "hash": "bN+EImGq1mMwEUn+rexO9g=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2445,7 +2493,7 @@
           "hash": "c1x44dscOzN1IDhPVtCxQQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2457,7 +2505,7 @@
           "hash": "+abxB1MO2GGgFHTq9QRbbQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2466,10 +2514,10 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.html",
-          "hash": "Us2cOoY8qgyNRtXLAR9+Ng=="
+          "hash": "amcqVTDIr+4LCCHn85hCKQ=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2481,7 +2529,7 @@
           "hash": "U+2SIgs6XxDHtd27FZORtA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2490,7 +2538,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "saI6PDqzrztZ+cpGuu1nvw=="
+          "hash": "4K3Sxc2pFhigyQ9+fnK7Hg=="
         }
       },
       "is_incremental": false,
@@ -2512,12 +2560,10 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot build incrementally because last build info is missing.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "NoAvailableBuildCache"
+        "skipped_file_count": 0
       },
       "processors": {
         "ResourceDocumentProcessor": {
@@ -2535,23 +2581,23 @@
           "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 202,
-          "skipped_file_count": 0
+          "total_file_count": 206,
+          "skipped_file_count": 206
         },
         "ConceptualDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 2,
-          "skipped_file_count": 0
+          "skipped_file_count": 2
         }
       }
     },
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0

@@ -81,6 +81,10 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">ManagementApiClient</span></div>
   </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
@@ -109,7 +113,7 @@
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
   <h5 id="Auth0_ManagementApi_ManagementApiClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ManagementApiClient</code></pre>
+    <pre><code class="lang-csharp hljs">public class ManagementApiClient : IDisposable</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -172,19 +176,19 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">token</span></td>
-        <td><p>The token.</p>
+        <td><p>A valid Auth0 Management API v2 token.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">domain</span></td>
-        <td><p>Your Auth0 domain, e.g. tenant.auth0.com.</p>
+        <td><p>Your Auth0 domain. <example>tenant.auth0.com</example></p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">HttpClient</span></td>
         <td><span class="parametername">httpClient</span></td>
-        <td><p>The <see cref="!:HttpClient"></see> which is used for HTTP requests</p>
+        <td><p>The <see cref="!:HttpClient"></see> which is used for HTTP requests.</p>
 </td>
       </tr>
     </tbody>
@@ -213,19 +217,19 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">token</span></td>
-        <td><p>The token.</p>
+        <td><p>A valid Auth0 Management API v2 token.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">domain</span></td>
-        <td><p>Your Auth0 domain, e.g. tenant.auth0.com.</p>
+        <td><p>Your Auth0 domain. <example>tenant.auth0.com</example></p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">HttpMessageHandler</span></td>
         <td><span class="parametername">handler</span></td>
-        <td><p>The <see cref="!:HttpMessageHandler"></see> which is used for HTTP requests</p>
+        <td><p>The <see cref="!:HttpMessageHandler"></see> which is used for HTTP requests.</p>
 </td>
       </tr>
     </tbody>
@@ -254,14 +258,13 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">token</span></td>
-        <td><p>The token.</p>
+        <td><p>A valid Auth0 Management API v2 token.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">Uri</span></td>
         <td><span class="parametername">baseUri</span></td>
-        <td><p>The base URI.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -289,19 +292,18 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">token</span></td>
-        <td><p>The token.</p>
+        <td><p>A valid Auth0 Management API v2 token.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">Uri</span></td>
         <td><span class="parametername">baseUri</span></td>
-        <td><p>The base URI.</p>
-</td>
+        <td></td>
       </tr>
       <tr>
         <td><span class="xref">HttpClient</span></td>
         <td><span class="parametername">httpClient</span></td>
-        <td><p>The <see cref="!:HttpClient"></see> which is used for HTTP requests</p>
+        <td><p>The <see cref="!:HttpClient"></see> which is used for HTTP requests.</p>
 </td>
       </tr>
     </tbody>
@@ -330,19 +332,18 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">token</span></td>
-        <td><p>The token.</p>
+        <td><p>A valid Auth0 Management API v2 token.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">Uri</span></td>
         <td><span class="parametername">baseUri</span></td>
-        <td><p>The base URI.</p>
-</td>
+        <td></td>
       </tr>
       <tr>
         <td><span class="xref">HttpMessageHandler</span></td>
         <td><span class="parametername">handler</span></td>
-        <td><p>The <see cref="!:HttpMessageHandler"></see> which is used for HTTP requests</p>
+        <td><p>The <see cref="!:HttpMessageHandler"></see> which is used for HTTP requests.</p>
 </td>
       </tr>
     </tbody>
@@ -848,6 +849,16 @@
   </h3>
   
   
+  <a id="Auth0_ManagementApi_ManagementApiClient_Dispose_" data-uid="Auth0.ManagementApi.ManagementApiClient.Dispose*"></a>
+  <h4 id="Auth0_ManagementApi_ManagementApiClient_Dispose" data-uid="Auth0.ManagementApi.ManagementApiClient.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  
+  
   <a id="Auth0_ManagementApi_ManagementApiClient_GetLastApiInfo_" data-uid="Auth0.ManagementApi.ManagementApiClient.GetLastApiInfo*"></a>
   <h4 id="Auth0_ManagementApi_ManagementApiClient_GetLastApiInfo" data-uid="Auth0.ManagementApi.ManagementApiClient.GetLastApiInfo">GetLastApiInfo()</h4>
   <div class="markdown level1 summary"><p>Gets information about the last API call;</p>
@@ -872,6 +883,10 @@
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
 </article>
           </div>
           
