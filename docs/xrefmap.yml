@@ -4138,19 +4138,6 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.RolesClient.AssignUsersAsync
   nameWithType: RolesClient.AssignUsersAsync
-- uid: Auth0.ManagementApi.Clients.RolesClient.AssociatePermissionsAsync(System.String,AssociatePermissionsRequest)
-  name: AssociatePermissionsAsync(String, AssociatePermissionsRequest)
-  href: api/Auth0.ManagementApi.Clients.RolesClient.html#Auth0_ManagementApi_Clients_RolesClient_AssociatePermissionsAsync_System_String_AssociatePermissionsRequest_
-  commentId: M:Auth0.ManagementApi.Clients.RolesClient.AssociatePermissionsAsync(System.String,AssociatePermissionsRequest)
-  fullName: Auth0.ManagementApi.Clients.RolesClient.AssociatePermissionsAsync(System.String, AssociatePermissionsRequest)
-  nameWithType: RolesClient.AssociatePermissionsAsync(String, AssociatePermissionsRequest)
-- uid: Auth0.ManagementApi.Clients.RolesClient.AssociatePermissionsAsync*
-  name: AssociatePermissionsAsync
-  href: api/Auth0.ManagementApi.Clients.RolesClient.html#Auth0_ManagementApi_Clients_RolesClient_AssociatePermissionsAsync_
-  commentId: Overload:Auth0.ManagementApi.Clients.RolesClient.AssociatePermissionsAsync
-  isSpec: "True"
-  fullName: Auth0.ManagementApi.Clients.RolesClient.AssociatePermissionsAsync
-  nameWithType: RolesClient.AssociatePermissionsAsync
 - uid: Auth0.ManagementApi.Clients.RolesClient.CreateAsync(RoleCreateRequest)
   name: CreateAsync(RoleCreateRequest)
   href: api/Auth0.ManagementApi.Clients.RolesClient.html#Auth0_ManagementApi_Clients_RolesClient_CreateAsync_RoleCreateRequest_
@@ -4254,19 +4241,6 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.RolesClient.RemovePermissionsAsync
   nameWithType: RolesClient.RemovePermissionsAsync
-- uid: Auth0.ManagementApi.Clients.RolesClient.UnassociatePermissionsAsync(System.String,AssociatePermissionsRequest)
-  name: UnassociatePermissionsAsync(String, AssociatePermissionsRequest)
-  href: api/Auth0.ManagementApi.Clients.RolesClient.html#Auth0_ManagementApi_Clients_RolesClient_UnassociatePermissionsAsync_System_String_AssociatePermissionsRequest_
-  commentId: M:Auth0.ManagementApi.Clients.RolesClient.UnassociatePermissionsAsync(System.String,AssociatePermissionsRequest)
-  fullName: Auth0.ManagementApi.Clients.RolesClient.UnassociatePermissionsAsync(System.String, AssociatePermissionsRequest)
-  nameWithType: RolesClient.UnassociatePermissionsAsync(String, AssociatePermissionsRequest)
-- uid: Auth0.ManagementApi.Clients.RolesClient.UnassociatePermissionsAsync*
-  name: UnassociatePermissionsAsync
-  href: api/Auth0.ManagementApi.Clients.RolesClient.html#Auth0_ManagementApi_Clients_RolesClient_UnassociatePermissionsAsync_
-  commentId: Overload:Auth0.ManagementApi.Clients.RolesClient.UnassociatePermissionsAsync
-  isSpec: "True"
-  fullName: Auth0.ManagementApi.Clients.RolesClient.UnassociatePermissionsAsync
-  nameWithType: RolesClient.UnassociatePermissionsAsync
 - uid: Auth0.ManagementApi.Clients.RolesClient.UpdateAsync(System.String,RoleUpdateRequest)
   name: UpdateAsync(String, RoleUpdateRequest)
   href: api/Auth0.ManagementApi.Clients.RolesClient.html#Auth0_ManagementApi_Clients_RolesClient_UpdateAsync_System_String_RoleUpdateRequest_
@@ -5657,12 +5631,6 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.AssignUsersRequest.Users
   nameWithType: AssignUsersRequest.Users
-- uid: Auth0.ManagementApi.Models.AssociatePermissionsRequest
-  name: AssociatePermissionsRequest
-  href: api/Auth0.ManagementApi.Models.AssociatePermissionsRequest.html
-  commentId: T:Auth0.ManagementApi.Models.AssociatePermissionsRequest
-  fullName: Auth0.ManagementApi.Models.AssociatePermissionsRequest
-  nameWithType: AssociatePermissionsRequest
 - uid: Auth0.ManagementApi.Models.BlacklistedToken
   name: BlacklistedToken
   href: api/Auth0.ManagementApi.Models.BlacklistedToken.html
