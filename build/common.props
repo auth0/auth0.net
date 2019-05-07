@@ -13,8 +13,8 @@
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
       Version 6.1.0
-      - New permission endpoints added to UsersClient
-      - Renamed permission endpoints on RolesClient for consistency
+      - New user permission endpoints added to UsersClient
+      - New role permission endpoints added to RolesClient
 
       Version 6.0.0
       - New GuardianClient for managing /guardian endpoints
