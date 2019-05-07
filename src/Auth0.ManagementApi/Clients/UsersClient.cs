@@ -318,7 +318,7 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Removes permissions assign to a user.
+        /// Removes permissions assigned to a user.
         /// </summary>
         /// <param name="id">The ID of the user to remove permissions from.</param>
         /// <param name="request">A <see cref="AssignPermissionsRequest" /> containing the permission identifiers to remove from the user.</param>
