@@ -12,23 +12,27 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 6.1.0
+      - New permission endpoints added to UsersClient
+      - Renamed permission endpoints on RolesClient for consistency
+
       Version 6.0.0
       - New GuardianClient for managing /guardian endpoints
       - New RolesClient for managing /roles endpoints
-      - PasswordChangeTicket now has IncludeEmailInRedirect and MailEmailAsVerified       
+      - PasswordChangeTicket now has IncludeEmailInRedirect and MailEmailAsVerified
       - ApiConnection now has Dispose to dispose the HttpClient it creates
       - ManagementApiClient now has Dispose to dispose the ApiConnection it creates
       - XML documentation tweaks
       - Dependencies updated
-      
+
       BREAKING CHANGES
       See our migration guide at https://github.com/auth0/auth0.net/blob/prepare-6.0.0/docs-source/migrating.md
-      
+
       - All I*Client interfaces have been removed so adding endpoints is no longer breaking
       - IManagementApi interface was removed so adding new clients is no longer breaking
       - All non-paging GetAll methods have been removed
       - DiagnosticsHeader/DiagnosticsComponent are no longer available
-      
+
       Version 5.11
       - Add TokenLifetimeForWeb to ResourceServerBase
       - Documentation fixes, improvements, sync with portal, remove old v4 breaking changes
@@ -61,7 +65,7 @@
 
       Version 5.5.0
       - Adds paging when returning a list Clients and connections
-      
+
       Version 5.4.0
       - Change in Target Frameworks. Now targets .NET 4.5.2 (and higher), .NET Standard 1.1 and .NET Standard 2.0. Along with this made changes to how System.Net.Http is referenced.
 
@@ -91,7 +95,7 @@
     <LangVersion>7.1</LangVersion>
     
     <Major>6</Major>
-    <Minor>0</Minor>
+    <Minor>1</Minor>
     <Revision>0</Revision>
 
   </PropertyGroup>
