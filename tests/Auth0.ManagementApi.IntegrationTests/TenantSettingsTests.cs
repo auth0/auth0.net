@@ -9,7 +9,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 {
     public class TenantSettingsTests : TestBase
     {
-        [Fact(Skip ="Need to add support for default directory")]
+        [Fact]
         public async Task Test_tenant_settings_sequence()
         {
             string token = await GenerateManagementApiToken();
@@ -35,7 +35,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 SupportUrl = $"www.{Guid.NewGuid():N}.aaa/support"
             };
             var settingsUpdateResponse = await apiClient.TenantSettings.UpdateAsync(settingsUpdateRequest);
-            settingsUpdateResponse.Should().BeEquivalentTo(settingsUpdateRequest);
+            settingsUpdateResponse.Should().BeEquivalentTo(settingsUpdateRequest, options => options.Excluding(p => p.DefaultDirectory));
         }
     }
 }
