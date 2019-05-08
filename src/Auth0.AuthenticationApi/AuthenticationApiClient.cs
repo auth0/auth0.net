@@ -14,52 +14,43 @@ namespace Auth0.AuthenticationApi
     /// <remarks>
     /// Full documentation for the Authentication API is available at https://auth0.com/docs/auth-api
     /// </remarks>
-    public class AuthenticationApiClient : IAuthenticationApiClient
+    public class AuthenticationApiClient : IAuthenticationApiClient, IDisposable
     {
         private readonly Uri _baseUri;
+        private readonly ApiConnection _apiConnection;
 
         private AuthenticationApiClient(Uri baseUri, ApiConnection connection)
         {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
+        /// </summary>
+        /// <param name="baseUri">Your Auth0 domain URI, e.g. https://tenant.auth0.com</param>
+        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests.</param>
+        public AuthenticationApiClient(Uri baseUri, HttpMessageHandler handler = null)
+        {
             _baseUri = baseUri;
-            Connection = connection ?? throw new ArgumentNullException(nameof(ApiConnection));
+            _apiConnection = new ApiConnection(null, baseUri.AbsoluteUri, handler);
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
         /// </summary>
-        /// <param name="baseUri">The base URI.</param>
-        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
-        public AuthenticationApiClient(Uri baseUri, HttpMessageHandler handler)
-            : this(baseUri, new ApiConnection(null, baseUri.AbsoluteUri, handler))
-        {
-        }
-
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
-        /// </summary>
-        /// <param name="baseUri"></param>
-        /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests</param>
+        /// <param name="baseUri">Your Auth0 domain URI, e.g. https://tenant.auth0.com</param>
+        /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests.</param>
         public AuthenticationApiClient(Uri baseUri, HttpClient httpClient)
-            : this(baseUri, new ApiConnection(null, baseUri.AbsoluteUri, httpClient))
         {
+            _baseUri = baseUri;
+            _apiConnection = new ApiConnection(null, baseUri.AbsoluteUri, httpClient);
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
-        /// </summary>
-        /// <param name="baseUri">The base URI.</param>
-        public AuthenticationApiClient(Uri baseUri)
-            : this(baseUri, (HttpMessageHandler) null)
-        {
-        }
-        
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
         /// </summary>
         /// <param name="domain">Your Auth0 domain, e.g. tenant.auth0.com.</param>
         /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
-        public AuthenticationApiClient(string domain, HttpMessageHandler handler)
+        public AuthenticationApiClient(string domain, HttpMessageHandler handler = null)
             : this(new Uri($"https://{domain}"), handler)
         {
         }
@@ -75,19 +66,10 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
-        /// </summary>
-        /// <param name="domain">Your Auth0 domain, e.g. tenant.auth0.com.</param>
-        public AuthenticationApiClient(string domain)
-            : this(new Uri($"https://{domain}"))
-        {
-        }
-
-        /// <summary>
         /// The <see cref="IApiConnection" /> used to communicate between the client and the Auth0 API.
         /// </summary>
         /// <value>The connection.</value>
-        public IApiConnection Connection { get; }
+        public IApiConnection Connection { get { return _apiConnection; } }
 
         /// <summary>
         /// Creates a <see cref="AuthorizationUrlBuilder" /> which is used to build an authorization URL.
@@ -421,6 +403,14 @@ namespace Auth0.AuthenticationApi
         public async Task UnlinkUserAsync(UnlinkUserRequest request)
         {
             await Connection.PostAsync<object>("unlink", request, null, null, null, null, null).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Disposes of any owned disposable resources such as the ApiConnection.
+        /// </summary>
+        public void Dispose()
+        {
+            _apiConnection.Dispose();
         }
     }
 }
