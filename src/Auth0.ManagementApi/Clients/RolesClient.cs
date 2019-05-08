@@ -178,13 +178,6 @@ namespace Auth0.ManagementApi.Clients
                 }, null, null, new PagedListConverter<Permission>("users"));
         }
 
-        // TODO: Remove in 7.0.0
-        [Obsolete("Use AssignPermissionsAsync instead")]
-        public Task AssociatePermissionsAsync(string id, AssociatePermissionsRequest request)
-        {
-            return AssignPermissionsAsync(id, request);
-        }
-
         /// <summary>
         /// Assign permissions to a role.
         /// </summary>
@@ -207,13 +200,6 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection.DeleteAsync<object>("roles/{id}/permissions", request, 
                 new Dictionary<string, string> { {"id", id}, }, null);
-        }
-
-        // TODO: Remove in 7.0.0
-        [Obsolete("Use RemovePermissionsAsync instead")]
-        public Task UnassociatePermissionsAsync(string id, AssociatePermissionsRequest request)
-        {
-            return RemovePermissionsAsync(id, request);
         }
     }
 }

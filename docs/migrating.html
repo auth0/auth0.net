@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Migrating from Version 5 to Version 6 </title>
+    <title>Migration Guide </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Migrating from Version 5 to Version 6 ">
+    <meta name="title" content="Migration Guide ">
     <meta name="generator" content="docfx 2.40.12.0">
     
     <link rel="shortcut icon" href="images/logo.png">
@@ -60,25 +60,26 @@
         <div class="article row grid">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="migrating-from-version-5-to-version-6">Migrating from Version 5 to Version 6</h1>
+<h1 id="migration-guide">Migration Guide</h1>
 
+<h2 id="migrating-from-v5-to-v6">Migrating from v5 to v6</h2>
 <p>Various breaking changes to the management API exist in version 6. They are as follows:</p>
-<h2 id="removal-of-non-paging-getall-methods">Removal of non-paging GetAll methods</h2>
+<h3 id="removal-of-non-paging-getall-methods">Removal of non-paging GetAll methods</h3>
 <p>Previously various Auth0 management endpoints were exposed with GetAll methods that did not take a PagingInfo parameter.  These have been deprecated server-side and most were marked as <code>[Obsolete]</code> in v5.</p>
 <p>Now, in V6 those methods have been removed entirely.  If you were previously calling a Client class&#39;s GetAll method without thinking about paging you should now consider how you want to handle pages of results in your application and use the equivalent overload with a PagingInfo parameter.</p>
-<h2 id="removal-of-imanagementapi-interface">Removal of IManagementApi interface</h2>
+<h3 id="removal-of-imanagementapi-interface">Removal of IManagementApi interface</h3>
 <p>This interface was removed as adding new endpoints such as Roles and Guardian - now in v6 - are a breaking change because we need to add them both to our concrete ManagementApi class <em>and</em> the IManagementApi interface.  As this library is a concrete implementation of calling the Auth0 management APIs and not a general abstraction layer over management this interface served no purpose.  </p>
 <p>It has therefore been removed.</p>
-<h2 id="removal-of-iclient-interfaces">Removal of I*Client interfaces</h2>
+<h3 id="removal-of-iclient-interfaces">Removal of I*Client interfaces</h3>
 <p>Each management client - e.g. UsersClient - had an equivalent IUserClient interface that replicated the API signature and in a lot of cases the XML documentation.</p>
 <p>Again, having this interface means that as Auth0 add server endpoints we break the interface contract every single time.</p>
 <p>This is again, unacceptable given the purpose of this SDK and so these interfaces have been removed.</p>
-<h1 id="migrating-from-version-3-to-version-4">Migrating from Version 3 to Version 4</h1>
+<h2 id="migrating-from-v3-to-v4">Migrating from v3 to v4</h2>
 <p>Version 4 of both the Authentication API SDK as well as the Management API SDK are major breaking changes. This document will discuss the reason for these changes, as well as instructions on how to migrate to the new version.</p>
-<h2 id="oidc-conformance">OIDC Conformance</h2>
+<h3 id="oidc-conformance">OIDC Conformance</h3>
 <p>The main reason for the breaking changes is related to the OIDC-conformance which was added to the Authentication API. Because of this, the behaviour of some of the existing Authentication API endpoints have changed, and other endpoints are being deprecated.</p>
 <p>For a full background and other details please refer to the official <a href="https://auth0-docs-content-pr-3100.herokuapp.com/docs/api-auth/tutorials/migration">OIDC-conformant authentication migration guide</a>.</p>
-<h2 id="better-separation-of-the-authentication-and-management-api">Better separation of the Authentication and Management API</h2>
+<h3 id="better-separation-of-the-authentication-and-management-api">Better separation of the Authentication and Management API</h3>
 <p>Because of the changes to the Authentication pipeline for OIDC conformance, some breaking changes were introduced and we are therefore required to increase the version number of the Authentication API SDK. One problem however was that some classes were shared in between the Authentication API SDK and the Management API SDK, in particular the information returned from the <code>/userinfo</code> endpoint. </p>
 <p>In the new OIDC conformant pipeline this is not the case anymore, as the endpoint return claims which conform to the <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">OIDC standard</a>.</p>
 <p>Because of this single instance of shared data between the Authentication and Management API SDKs, a lot of the <em>Models</em> returned by the various methods has been stored in the <a href="https://www.nuget.org/packages/Auth0.Core">Auth0.Core NuGet package</a>. With version 4 this is not the case anymore. </p>
@@ -388,7 +389,7 @@
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com//auth0/auth0.net/blob/prepare-6.0.0/docs-source/migrating.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com//auth0/auth0.net/blob/prepare-6.1.0/docs-source/migrating.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
