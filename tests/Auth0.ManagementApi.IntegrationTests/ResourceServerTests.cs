@@ -31,7 +31,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Add a new resource server
             var identifier = Guid.NewGuid();
-            var newResourceServerRequest = new ResourceServerCreateRequest()
+            var createResourceServerRequest = new ResourceServerCreateRequest()
             {
                 Identifier = identifier.ToString("N"),
                 Name = $"Integration testing {identifier:N}",
@@ -46,13 +46,18 @@ namespace Auth0.ManagementApi.IntegrationTests
                         Value = "scope1",
                         Description = "Scope number 1"
                     }
-                }
+                },
+                AllowOfflineAccess = true,
+                //EnforcePolicies = true,
+                //TokenDialect = TokenDialect.AccessTokenAuthZ,
+                VerificationLocation = "https://abc.auth0.com/def",
+                SkipConsentForVerifiableFirstPartyClients = true,
             };
-            var newResourceServerResponse = await _apiClient.ResourceServers.CreateAsync(newResourceServerRequest);
-            newResourceServerResponse.Should().BeEquivalentTo(newResourceServerRequest, options => options.Excluding(rs => rs.Id));
+            var newResourceServerResponse = await _apiClient.ResourceServers.CreateAsync(createResourceServerRequest);
+            newResourceServerResponse.Should().BeEquivalentTo(createResourceServerRequest, options => options.Excluding(rs => rs.Id));
 
             // Update the resource server
-            var resourceServerRequest = new ResourceServerUpdateRequest()
+            var updateResourceServerRequest = new ResourceServerUpdateRequest()
             {
                 Name = $"Integration testing {Guid.NewGuid():N}",
                 TokenLifetime = 2,
@@ -71,14 +76,19 @@ namespace Auth0.ManagementApi.IntegrationTests
                         Value = "scope2",
                         Description = "Scope number 2"
                     }
-                }
+                },
+                AllowOfflineAccess = false,
+                EnforcePolicies = false,
+                TokenDialect = TokenDialect.AccessToken,
+                VerificationLocation = "",
+                SkipConsentForVerifiableFirstPartyClients = false,
             };
-            var updateResourceServerResponse = await _apiClient.ResourceServers.UpdateAsync(newResourceServerResponse.Id, resourceServerRequest);
-            updateResourceServerResponse.Should().BeEquivalentTo(resourceServerRequest, options => options.ExcludingMissingMembers());
+            var updateResourceServerResponse = await _apiClient.ResourceServers.UpdateAsync(newResourceServerResponse.Id, updateResourceServerRequest);
+            updateResourceServerResponse.Should().BeEquivalentTo(updateResourceServerRequest, options => options.ExcludingMissingMembers());
 
             // Get a single resource server
             var resourceServer = await _apiClient.ResourceServers.GetAsync(newResourceServerResponse.Id);
-            resourceServer.Should().BeEquivalentTo(resourceServerRequest, options => options.ExcludingMissingMembers());
+            resourceServer.Should().BeEquivalentTo(updateResourceServerRequest, options => options.ExcludingMissingMembers());
 
             // Delete the client, and ensure we get exception when trying to fetch client again
             await _apiClient.ResourceServers.DeleteAsync(resourceServer.Id);

@@ -29,7 +29,7 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
         [JsonProperty("signing_alg")]
-        public SigningAlgorithm SigningAlgorithm { get; set; }
+        public SigningAlgorithm? SigningAlgorithm { get; set; }
 
         /// <summary>
         /// The secret used to sign tokens when using symmetric algorithms
@@ -54,12 +54,31 @@ namespace Auth0.ManagementApi.Models
         /// Allows issuance of refresh tokens for this entity
         /// </summary>
         [JsonProperty("allow_offline_access")]
-        public bool AllowOfflineAccess { get; set; }
+        public bool? AllowOfflineAccess { get; set; }
 
         /// <summary>
         /// Flag this entity as capable of skipping consent
         /// </summary>
         [JsonProperty("skip_consent_for_verifiable_first_party_clients")]
-        public bool SkipConsentForVerifiableFirstPartyClients { get; set; }
+        public bool? SkipConsentForVerifiableFirstPartyClients { get; set; }
+
+        /// <summary>
+        /// A uri from which to retrieve JWKs for this resource server used for verifying the JWT sent to Auth0 for token introspection.
+        /// </summary>
+        [JsonProperty("verificationLocation")]
+        public string VerificationLocation { get; set; }
+
+        /// <summary>
+        /// The dialect for the access token.
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonProperty("token_dialect")]
+        public TokenDialect? TokenDialect { get; set; }
+
+        /// <summary>
+        /// Enables the enforcement of the authorization policies.
+        /// </summary>
+        [JsonProperty("enforce_policies")]
+        public bool? EnforcePolicies { get; set; }
     }
 }
