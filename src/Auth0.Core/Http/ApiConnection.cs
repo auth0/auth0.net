@@ -364,6 +364,9 @@ namespace Auth0.Core.Http
             return JsonConvert.DeserializeObject<T>(content, converters);
         }
 
+        /// <summary>
+        /// Disposes of any owned disposable resources such as a HttpClient if it was not supplied.
+        /// </summary>
         public void Dispose()
         {
             if (_disposeHttpClient)

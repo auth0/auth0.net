@@ -205,6 +205,9 @@ namespace Auth0.ManagementApi
         {
         }
 
+        /// <summary>
+        /// Disposes of any owned disposable resources such as the ApiConnection.
+        /// </summary>
         public void Dispose()
         {
             _apiConnection.Dispose();
