@@ -2698,6 +2698,19 @@ references:
   fullName.vb: Auth0.Core.Http.ApiConnection.DeleteAsync(Of T)(System.String, System.Object, System.Collections.Generic.IDictionary(Of System.String, System.String), System.Collections.Generic.IDictionary(Of System.String, System.String))
   nameWithType: ApiConnection.DeleteAsync<T>(String, Object, IDictionary<String, String>, IDictionary<String, String>)
   nameWithType.vb: ApiConnection.DeleteAsync(Of T)(String, Object, IDictionary(Of String, String), IDictionary(Of String, String))
+- uid: Auth0.Core.Http.ApiConnection.Dispose
+  name: Dispose()
+  href: api/Auth0.Core.Http.ApiConnection.html#Auth0_Core_Http_ApiConnection_Dispose
+  commentId: M:Auth0.Core.Http.ApiConnection.Dispose
+  fullName: Auth0.Core.Http.ApiConnection.Dispose()
+  nameWithType: ApiConnection.Dispose()
+- uid: Auth0.Core.Http.ApiConnection.Dispose*
+  name: Dispose
+  href: api/Auth0.Core.Http.ApiConnection.html#Auth0_Core_Http_ApiConnection_Dispose_
+  commentId: Overload:Auth0.Core.Http.ApiConnection.Dispose
+  isSpec: "True"
+  fullName: Auth0.Core.Http.ApiConnection.Dispose
+  nameWithType: ApiConnection.Dispose
 - uid: Auth0.Core.Http.ApiConnection.GetAsync*
   name: GetAsync
   href: api/Auth0.Core.Http.ApiConnection.html#Auth0_Core_Http_ApiConnection_GetAsync_
@@ -4099,6 +4112,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.RolesClient.RolesClient
   nameWithType: RolesClient.RolesClient
+- uid: Auth0.ManagementApi.Clients.RolesClient.AssignPermissionsAsync(System.String,AssignPermissionsRequest)
+  name: AssignPermissionsAsync(String, AssignPermissionsRequest)
+  href: api/Auth0.ManagementApi.Clients.RolesClient.html#Auth0_ManagementApi_Clients_RolesClient_AssignPermissionsAsync_System_String_AssignPermissionsRequest_
+  commentId: M:Auth0.ManagementApi.Clients.RolesClient.AssignPermissionsAsync(System.String,AssignPermissionsRequest)
+  fullName: Auth0.ManagementApi.Clients.RolesClient.AssignPermissionsAsync(System.String, AssignPermissionsRequest)
+  nameWithType: RolesClient.AssignPermissionsAsync(String, AssignPermissionsRequest)
+- uid: Auth0.ManagementApi.Clients.RolesClient.AssignPermissionsAsync*
+  name: AssignPermissionsAsync
+  href: api/Auth0.ManagementApi.Clients.RolesClient.html#Auth0_ManagementApi_Clients_RolesClient_AssignPermissionsAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.RolesClient.AssignPermissionsAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.RolesClient.AssignPermissionsAsync
+  nameWithType: RolesClient.AssignPermissionsAsync
 - uid: Auth0.ManagementApi.Clients.RolesClient.AssignUsersAsync(System.String,AssignUsersRequest)
   name: AssignUsersAsync(String, AssignUsersRequest)
   href: api/Auth0.ManagementApi.Clients.RolesClient.html#Auth0_ManagementApi_Clients_RolesClient_AssignUsersAsync_System_String_AssignUsersRequest_
@@ -4170,6 +4196,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.RolesClient.GetAsync
   nameWithType: RolesClient.GetAsync
+- uid: Auth0.ManagementApi.Clients.RolesClient.GetPermissionsAsync(System.String,PaginationInfo)
+  name: GetPermissionsAsync(String, PaginationInfo)
+  href: api/Auth0.ManagementApi.Clients.RolesClient.html#Auth0_ManagementApi_Clients_RolesClient_GetPermissionsAsync_System_String_PaginationInfo_
+  commentId: M:Auth0.ManagementApi.Clients.RolesClient.GetPermissionsAsync(System.String,PaginationInfo)
+  fullName: Auth0.ManagementApi.Clients.RolesClient.GetPermissionsAsync(System.String, PaginationInfo)
+  nameWithType: RolesClient.GetPermissionsAsync(String, PaginationInfo)
+- uid: Auth0.ManagementApi.Clients.RolesClient.GetPermissionsAsync*
+  name: GetPermissionsAsync
+  href: api/Auth0.ManagementApi.Clients.RolesClient.html#Auth0_ManagementApi_Clients_RolesClient_GetPermissionsAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.RolesClient.GetPermissionsAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.RolesClient.GetPermissionsAsync
+  nameWithType: RolesClient.GetPermissionsAsync
 - uid: Auth0.ManagementApi.Clients.RolesClient.GetUsersAsync(System.String)
   name: GetUsersAsync(String)
   href: api/Auth0.ManagementApi.Clients.RolesClient.html#Auth0_ManagementApi_Clients_RolesClient_GetUsersAsync_System_String_
@@ -4189,6 +4228,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.RolesClient.GetUsersAsync
   nameWithType: RolesClient.GetUsersAsync
+- uid: Auth0.ManagementApi.Clients.RolesClient.RemovePermissionsAsync(System.String,AssignPermissionsRequest)
+  name: RemovePermissionsAsync(String, AssignPermissionsRequest)
+  href: api/Auth0.ManagementApi.Clients.RolesClient.html#Auth0_ManagementApi_Clients_RolesClient_RemovePermissionsAsync_System_String_AssignPermissionsRequest_
+  commentId: M:Auth0.ManagementApi.Clients.RolesClient.RemovePermissionsAsync(System.String,AssignPermissionsRequest)
+  fullName: Auth0.ManagementApi.Clients.RolesClient.RemovePermissionsAsync(System.String, AssignPermissionsRequest)
+  nameWithType: RolesClient.RemovePermissionsAsync(String, AssignPermissionsRequest)
+- uid: Auth0.ManagementApi.Clients.RolesClient.RemovePermissionsAsync*
+  name: RemovePermissionsAsync
+  href: api/Auth0.ManagementApi.Clients.RolesClient.html#Auth0_ManagementApi_Clients_RolesClient_RemovePermissionsAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.RolesClient.RemovePermissionsAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.RolesClient.RemovePermissionsAsync
+  nameWithType: RolesClient.RemovePermissionsAsync
 - uid: Auth0.ManagementApi.Clients.RolesClient.UpdateAsync(System.String,RoleUpdateRequest)
   name: UpdateAsync(String, RoleUpdateRequest)
   href: api/Auth0.ManagementApi.Clients.RolesClient.html#Auth0_ManagementApi_Clients_RolesClient_UpdateAsync_System_String_RoleUpdateRequest_
@@ -4511,6 +4563,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.UsersClient.UsersClient
   nameWithType: UsersClient.UsersClient
+- uid: Auth0.ManagementApi.Clients.UsersClient.AssignPermissionsAsync(System.String,AssignPermissionsRequest)
+  name: AssignPermissionsAsync(String, AssignPermissionsRequest)
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_AssignPermissionsAsync_System_String_AssignPermissionsRequest_
+  commentId: M:Auth0.ManagementApi.Clients.UsersClient.AssignPermissionsAsync(System.String,AssignPermissionsRequest)
+  fullName: Auth0.ManagementApi.Clients.UsersClient.AssignPermissionsAsync(System.String, AssignPermissionsRequest)
+  nameWithType: UsersClient.AssignPermissionsAsync(String, AssignPermissionsRequest)
+- uid: Auth0.ManagementApi.Clients.UsersClient.AssignPermissionsAsync*
+  name: AssignPermissionsAsync
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_AssignPermissionsAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.UsersClient.AssignPermissionsAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.UsersClient.AssignPermissionsAsync
+  nameWithType: UsersClient.AssignPermissionsAsync
 - uid: Auth0.ManagementApi.Clients.UsersClient.AssignRolesAsync(System.String,AssignRolesRequest)
   name: AssignRolesAsync(String, AssignRolesRequest)
   href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_AssignRolesAsync_System_String_AssignRolesRequest_
@@ -4602,6 +4667,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.UsersClient.GetLogsAsync
   nameWithType: UsersClient.GetLogsAsync
+- uid: Auth0.ManagementApi.Clients.UsersClient.GetPermissionsAsync(System.String,PaginationInfo)
+  name: GetPermissionsAsync(String, PaginationInfo)
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_GetPermissionsAsync_System_String_PaginationInfo_
+  commentId: M:Auth0.ManagementApi.Clients.UsersClient.GetPermissionsAsync(System.String,PaginationInfo)
+  fullName: Auth0.ManagementApi.Clients.UsersClient.GetPermissionsAsync(System.String, PaginationInfo)
+  nameWithType: UsersClient.GetPermissionsAsync(String, PaginationInfo)
+- uid: Auth0.ManagementApi.Clients.UsersClient.GetPermissionsAsync*
+  name: GetPermissionsAsync
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_GetPermissionsAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.UsersClient.GetPermissionsAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.UsersClient.GetPermissionsAsync
+  nameWithType: UsersClient.GetPermissionsAsync
 - uid: Auth0.ManagementApi.Clients.UsersClient.GetRolesAsync(System.String,PaginationInfo)
   name: GetRolesAsync(String, PaginationInfo)
   href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_GetRolesAsync_System_String_PaginationInfo_
@@ -4650,6 +4728,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.UsersClient.LinkAccountAsync
   nameWithType: UsersClient.LinkAccountAsync
+- uid: Auth0.ManagementApi.Clients.UsersClient.RemovePermissionsAsync(System.String,AssignPermissionsRequest)
+  name: RemovePermissionsAsync(String, AssignPermissionsRequest)
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_RemovePermissionsAsync_System_String_AssignPermissionsRequest_
+  commentId: M:Auth0.ManagementApi.Clients.UsersClient.RemovePermissionsAsync(System.String,AssignPermissionsRequest)
+  fullName: Auth0.ManagementApi.Clients.UsersClient.RemovePermissionsAsync(System.String, AssignPermissionsRequest)
+  nameWithType: UsersClient.RemovePermissionsAsync(String, AssignPermissionsRequest)
+- uid: Auth0.ManagementApi.Clients.UsersClient.RemovePermissionsAsync*
+  name: RemovePermissionsAsync
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_RemovePermissionsAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.UsersClient.RemovePermissionsAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.UsersClient.RemovePermissionsAsync
+  nameWithType: UsersClient.RemovePermissionsAsync
 - uid: Auth0.ManagementApi.Clients.UsersClient.RemoveRolesAsync(System.String,AssignRolesRequest)
   name: RemoveRolesAsync(String, AssignRolesRequest)
   href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_RemoveRolesAsync_System_String_AssignRolesRequest_
@@ -4816,6 +4907,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.ManagementApiClient.DeviceCredentials
   nameWithType: ManagementApiClient.DeviceCredentials
+- uid: Auth0.ManagementApi.ManagementApiClient.Dispose
+  name: Dispose()
+  href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_Dispose
+  commentId: M:Auth0.ManagementApi.ManagementApiClient.Dispose
+  fullName: Auth0.ManagementApi.ManagementApiClient.Dispose()
+  nameWithType: ManagementApiClient.Dispose()
+- uid: Auth0.ManagementApi.ManagementApiClient.Dispose*
+  name: Dispose
+  href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_Dispose_
+  commentId: Overload:Auth0.ManagementApi.ManagementApiClient.Dispose
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.ManagementApiClient.Dispose
+  nameWithType: ManagementApiClient.Dispose
 - uid: Auth0.ManagementApi.ManagementApiClient.EmailProvider
   name: EmailProvider
   href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_EmailProvider
@@ -5470,6 +5574,25 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.AssignedUser.UserId
   nameWithType: AssignedUser.UserId
+- uid: Auth0.ManagementApi.Models.AssignPermissionsRequest
+  name: AssignPermissionsRequest
+  href: api/Auth0.ManagementApi.Models.AssignPermissionsRequest.html
+  commentId: T:Auth0.ManagementApi.Models.AssignPermissionsRequest
+  fullName: Auth0.ManagementApi.Models.AssignPermissionsRequest
+  nameWithType: AssignPermissionsRequest
+- uid: Auth0.ManagementApi.Models.AssignPermissionsRequest.Permissions
+  name: Permissions
+  href: api/Auth0.ManagementApi.Models.AssignPermissionsRequest.html#Auth0_ManagementApi_Models_AssignPermissionsRequest_Permissions
+  commentId: P:Auth0.ManagementApi.Models.AssignPermissionsRequest.Permissions
+  fullName: Auth0.ManagementApi.Models.AssignPermissionsRequest.Permissions
+  nameWithType: AssignPermissionsRequest.Permissions
+- uid: Auth0.ManagementApi.Models.AssignPermissionsRequest.Permissions*
+  name: Permissions
+  href: api/Auth0.ManagementApi.Models.AssignPermissionsRequest.html#Auth0_ManagementApi_Models_AssignPermissionsRequest_Permissions_
+  commentId: Overload:Auth0.ManagementApi.Models.AssignPermissionsRequest.Permissions
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.AssignPermissionsRequest.Permissions
+  nameWithType: AssignPermissionsRequest.Permissions
 - uid: Auth0.ManagementApi.Models.AssignRolesRequest
   name: AssignRolesRequest
   href: api/Auth0.ManagementApi.Models.AssignRolesRequest.html
@@ -9006,6 +9129,70 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.PasswordChangeTicketRequest.UserId
   nameWithType: PasswordChangeTicketRequest.UserId
+- uid: Auth0.ManagementApi.Models.Permission
+  name: Permission
+  href: api/Auth0.ManagementApi.Models.Permission.html
+  commentId: T:Auth0.ManagementApi.Models.Permission
+  fullName: Auth0.ManagementApi.Models.Permission
+  nameWithType: Permission
+- uid: Auth0.ManagementApi.Models.Permission.Description
+  name: Description
+  href: api/Auth0.ManagementApi.Models.Permission.html#Auth0_ManagementApi_Models_Permission_Description
+  commentId: P:Auth0.ManagementApi.Models.Permission.Description
+  fullName: Auth0.ManagementApi.Models.Permission.Description
+  nameWithType: Permission.Description
+- uid: Auth0.ManagementApi.Models.Permission.Description*
+  name: Description
+  href: api/Auth0.ManagementApi.Models.Permission.html#Auth0_ManagementApi_Models_Permission_Description_
+  commentId: Overload:Auth0.ManagementApi.Models.Permission.Description
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Permission.Description
+  nameWithType: Permission.Description
+- uid: Auth0.ManagementApi.Models.Permission.ResourceServerName
+  name: ResourceServerName
+  href: api/Auth0.ManagementApi.Models.Permission.html#Auth0_ManagementApi_Models_Permission_ResourceServerName
+  commentId: P:Auth0.ManagementApi.Models.Permission.ResourceServerName
+  fullName: Auth0.ManagementApi.Models.Permission.ResourceServerName
+  nameWithType: Permission.ResourceServerName
+- uid: Auth0.ManagementApi.Models.Permission.ResourceServerName*
+  name: ResourceServerName
+  href: api/Auth0.ManagementApi.Models.Permission.html#Auth0_ManagementApi_Models_Permission_ResourceServerName_
+  commentId: Overload:Auth0.ManagementApi.Models.Permission.ResourceServerName
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Permission.ResourceServerName
+  nameWithType: Permission.ResourceServerName
+- uid: Auth0.ManagementApi.Models.PermissionIdentity
+  name: PermissionIdentity
+  href: api/Auth0.ManagementApi.Models.PermissionIdentity.html
+  commentId: T:Auth0.ManagementApi.Models.PermissionIdentity
+  fullName: Auth0.ManagementApi.Models.PermissionIdentity
+  nameWithType: PermissionIdentity
+- uid: Auth0.ManagementApi.Models.PermissionIdentity.Identifier
+  name: Identifier
+  href: api/Auth0.ManagementApi.Models.PermissionIdentity.html#Auth0_ManagementApi_Models_PermissionIdentity_Identifier
+  commentId: P:Auth0.ManagementApi.Models.PermissionIdentity.Identifier
+  fullName: Auth0.ManagementApi.Models.PermissionIdentity.Identifier
+  nameWithType: PermissionIdentity.Identifier
+- uid: Auth0.ManagementApi.Models.PermissionIdentity.Identifier*
+  name: Identifier
+  href: api/Auth0.ManagementApi.Models.PermissionIdentity.html#Auth0_ManagementApi_Models_PermissionIdentity_Identifier_
+  commentId: Overload:Auth0.ManagementApi.Models.PermissionIdentity.Identifier
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.PermissionIdentity.Identifier
+  nameWithType: PermissionIdentity.Identifier
+- uid: Auth0.ManagementApi.Models.PermissionIdentity.Name
+  name: Name
+  href: api/Auth0.ManagementApi.Models.PermissionIdentity.html#Auth0_ManagementApi_Models_PermissionIdentity_Name
+  commentId: P:Auth0.ManagementApi.Models.PermissionIdentity.Name
+  fullName: Auth0.ManagementApi.Models.PermissionIdentity.Name
+  nameWithType: PermissionIdentity.Name
+- uid: Auth0.ManagementApi.Models.PermissionIdentity.Name*
+  name: Name
+  href: api/Auth0.ManagementApi.Models.PermissionIdentity.html#Auth0_ManagementApi_Models_PermissionIdentity_Name_
+  commentId: Overload:Auth0.ManagementApi.Models.PermissionIdentity.Name
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.PermissionIdentity.Name
+  nameWithType: PermissionIdentity.Name
 - uid: Auth0.ManagementApi.Models.ResourceServer
   name: ResourceServer
   href: api/Auth0.ManagementApi.Models.ResourceServer.html
