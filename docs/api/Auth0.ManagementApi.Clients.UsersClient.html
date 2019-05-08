@@ -147,6 +147,57 @@
   </h3>
   
   
+  <a id="Auth0_ManagementApi_Clients_UsersClient_AssignPermissionsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.AssignPermissionsAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_AssignPermissionsAsync_System_String_AssignPermissionsRequest_" data-uid="Auth0.ManagementApi.Clients.UsersClient.AssignPermissionsAsync(System.String,AssignPermissionsRequest)">AssignPermissionsAsync(String, AssignPermissionsRequest)</h4>
+  <div class="markdown level1 summary"><p>Assign permissions to a user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task AssignPermissionsAsync(string id, AssignPermissionsRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The ID of the user to assign permissions to.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">AssignPermissionsRequest</span></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>A <see cref="!:AssignPermissionsRequest"></see> containing the permission identifiers to assign to the user.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous assignment operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="Auth0_ManagementApi_Clients_UsersClient_AssignRolesAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.AssignRolesAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_UsersClient_AssignRolesAsync_System_String_AssignRolesRequest_" data-uid="Auth0.ManagementApi.Clients.UsersClient.AssignRolesAsync(System.String,AssignRolesRequest)">AssignRolesAsync(String, AssignRolesRequest)</h4>
   <div class="markdown level1 summary"><p>Assigns Roles to a user.</p>
@@ -191,7 +242,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span></td>
-        <td></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous assign operation.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -235,7 +287,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">User</span>&gt;</td>
-        <td></td>
+        <td><p>The newly created <see cref="!:User"></see>.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -279,7 +332,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span></td>
-        <td></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous delete operation.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -313,7 +367,7 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">provider</span></td>
-        <td><p>The type of the multifactor provider. Supported values &apos;duo&apos; or &apos;google-authenticator&apos;</p>
+        <td><p>The type of the multifactor provider. Supported values &apos;duo&apos; or &apos;google-authenticator&apos;.</p>
 </td>
       </tr>
     </tbody>
@@ -329,7 +383,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span></td>
-        <td></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous delete operation.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -438,7 +493,7 @@ true)</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">User</span>&gt;</td>
-        <td><p>The <see cref="!:User"></see>.</p>
+        <td><p>The <see cref="!:User"></see> that was requested.</p>
 </td>
       </tr>
     </tbody>
@@ -496,6 +551,57 @@ true)</p>
   </table>
   
   
+  <a id="Auth0_ManagementApi_Clients_UsersClient_GetPermissionsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetPermissionsAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetPermissionsAsync_System_String_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetPermissionsAsync(System.String,PaginationInfo)">GetPermissionsAsync(String, PaginationInfo)</h4>
+  <div class="markdown level1 summary"><p>Get the permissions assigned to the user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;Permission&gt;&gt; GetPermissionsAsync(string id, PaginationInfo pagination)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The id of the user to obtain the permissions for.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">PaginationInfo</span></td>
+        <td><span class="parametername">pagination</span></td>
+        <td><p>Specifies <see cref="!:PaginationInfo"></see> to use in requesting paged results.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">Permission</span>&gt;&gt;</td>
+        <td><p>An <see cref="!:IPagedList&lt;Permission>"></see> containing the assigned permissions for this user.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="Auth0_ManagementApi_Clients_UsersClient_GetRolesAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetRolesAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetRolesAsync_System_String_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetRolesAsync(System.String,PaginationInfo)">GetRolesAsync(String, PaginationInfo)</h4>
   <div class="markdown level1 summary"><p>Retrieve assigned roles for a specific user.</p>
@@ -518,7 +624,7 @@ true)</p>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">userId</span></td>
-        <td><p>The user id of the roles to retrieve</p>
+        <td><p>The user id of the roles to retrieve.</p>
 </td>
       </tr>
       <tr>
@@ -569,19 +675,19 @@ true)</p>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">email</span></td>
-        <td><p>The email address to search for</p>
+        <td><p>The email address to search for.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">fields</span></td>
-        <td><p>A comma separated list of fields to include or exclude (depending on <see cref="!:includeFields"></see>) from the result, null to retrieve all fields</p>
+        <td><p>A comma separated list of fields to include or exclude (depending on <see cref="!:includeFields"></see>) from the result, null to retrieve all fields.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
         <td><span class="parametername">includeFields</span></td>
-        <td><p>true if the fields specified are to be included in the result, false otherwise. Defaults to true</p>
+        <td><p>true if the fields specified are to be included in the result, false otherwise. Defaults to true.</p>
 </td>
       </tr>
     </tbody>
@@ -597,7 +703,8 @@ true)</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">User</span>&gt;&gt;</td>
-        <td></td>
+        <td><p>A <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span> containing all users for this email address.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -653,7 +760,8 @@ true)</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">AccountLinkResponse</span>&gt;&gt;</td>
-        <td></td>
+        <td><p>A <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span> containing details about this account link.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -703,7 +811,59 @@ true)</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">AccountLinkResponse</span>&gt;&gt;</td>
-        <td></td>
+        <td><p>A <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span> containing details about this account link.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_UsersClient_RemovePermissionsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.RemovePermissionsAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_RemovePermissionsAsync_System_String_AssignPermissionsRequest_" data-uid="Auth0.ManagementApi.Clients.UsersClient.RemovePermissionsAsync(System.String,AssignPermissionsRequest)">RemovePermissionsAsync(String, AssignPermissionsRequest)</h4>
+  <div class="markdown level1 summary"><p>Removes permissions assigned to a user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task RemovePermissionsAsync(string id, AssignPermissionsRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The ID of the user to remove permissions from.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">AssignPermissionsRequest</span></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>A <see cref="!:AssignPermissionsRequest"></see> containing the permission identifiers to remove from the user.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous remove operation.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -753,7 +913,8 @@ true)</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span></td>
-        <td></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous remove operation.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -793,7 +954,7 @@ true)</p>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">secondaryUserId</span></td>
-        <td><p>The ID for the secondary account</p>
+        <td><p>The ID for the secondary account.</p>
 </td>
       </tr>
     </tbody>
@@ -809,7 +970,8 @@ true)</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">AccountLinkResponse</span>&gt;&gt;</td>
-        <td></td>
+        <td><p>A <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span> containing details about this account link.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -859,7 +1021,8 @@ true)</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">User</span>&gt;</td>
-        <td></td>
+        <td><p>The newly updated <see cref="!:User"></see>.</p>
+</td>
       </tr>
     </tbody>
   </table>

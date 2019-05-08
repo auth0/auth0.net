@@ -15,10 +15,4 @@ namespace Auth0.ManagementApi.Models
         [JsonProperty("permissions")]
         public IList<PermissionIdentity> Permissions { get; set; }
     }
-
-    // TODO: Remove in 7.0.0
-    [Obsolete("Use AssignPermissionsRequest class instead")]
-    public class AssociatePermissionsRequest : AssignPermissionsRequest
-    {
-    }
 }
