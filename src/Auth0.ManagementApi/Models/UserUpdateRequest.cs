@@ -2,13 +2,11 @@
 
 namespace Auth0.ManagementApi.Models
 {
-
     /// <summary>
-    /// 
+    /// Represents the request to update a <see cref="User"/>.
     /// </summary>
     public class UserUpdateRequest : UserBase
     {
-
         /// <summary>
         /// Gets or sets the connection the user belongs to.
         /// </summary>
@@ -20,15 +18,6 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("password")]
         public string Password { get; set; }
-
-        /// <summary>
-        /// Gets or sets whether the user's phone is verified.
-        /// </summary>
-        /// <remarks>
-        /// True if the phone is verified, otherwise false.
-        /// </remarks>
-        [JsonProperty("phone_verified")]
-        public bool? PhoneVerified { get; set; }
 
         /// <summary>
         /// Gets or sets whether the user's email change must be verified. True if it must be verified, otherwise false.
@@ -53,12 +42,5 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("client_id")]
         public string ClientId { get; set; }
-
-        /// <summary>
-        /// Gets or sets whether the user is blocked. True if the user is blocked, otherwise false.
-        /// </summary>
-        [JsonProperty("blocked")]
-        public bool? Blocked { get; set; }
     }
-
 }
