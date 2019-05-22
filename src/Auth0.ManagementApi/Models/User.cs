@@ -6,9 +6,8 @@ using Newtonsoft.Json.Linq;
 namespace Auth0.ManagementApi.Models
 {
     /// <summary>
-    ///
+    /// Represents a user as returned from various APIs.
     /// </summary>
-    //[JsonConverter(typeof(TestConverter))]
     public class User : UserBase
     {
         /// <summary>
@@ -24,13 +23,13 @@ namespace Auth0.ManagementApi.Models
         public Identity[] Identities { get; set; }
 
         /// <summary>
-        ///
+        /// The last login IP address.
         /// </summary>
         [JsonProperty("last_ip")]
         public string LastIpAddress { get; set; }
 
         /// <summary>
-        ///
+        /// The last login date for this user.
         /// </summary>
         [JsonProperty("last_login")]
         public DateTime LastLogin { get; set; }
@@ -51,7 +50,7 @@ namespace Auth0.ManagementApi.Models
         public string Locale { get; set; }
 
         /// <summary>
-        ///
+        /// The number of logins for this user.
         /// </summary>
         [JsonProperty("logins_count")]
         public string LoginsCount { get; set; }
@@ -60,8 +59,6 @@ namespace Auth0.ManagementApi.Models
         /// Gets or sets whether the user's phone number is verified.
         /// </summary>
         /// <remarks>
-        /// True if the phone is verified, otherwise false.
-        ///
         /// This is only valid for users from SMS connections.
         /// </remarks>
         [JsonProperty("phone_verified")]
@@ -96,44 +93,5 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("multifactor")]
         public string[] Multifactor { get; set; }
-
-        /// <summary>
-        /// The Nickname of the user.
-        /// </summary>
-        [JsonProperty("nickname")]
-        public string NickName { get; set; }
-
-        /// <summary>
-        /// The first name of the user (if available).
-        /// </summary>
-        /// <remarks>
-        /// This is the given_name attribute supplied by the underlying API.
-        /// </remarks>
-        [JsonProperty("given_name")]
-        public string FirstName { get; set; }
-
-        /// <summary>
-        /// The full name of the user (e.g.: John Foo). ALWAYS GENERATED.
-        /// </summary>
-        /// <remarks>
-        /// This is the name attribute supplied by the underlying API.
-        /// </remarks>
-        [JsonProperty("name")]
-        public string FullName { get; set; }
-
-        /// <summary>
-        /// The last name of the user (if available).
-        /// </summary>
-        /// <remarks>
-        /// This is the family_name attribute supplied by the underlying API.
-        /// </remarks>
-        [JsonProperty("family_name")]
-        public string LastName { get; set; }
-
-        /// <summary>
-        /// URL pointing to the user picture (if not available, will use gravatar.com with the email). ALWAYS GENERATED
-        /// </summary>
-        [JsonProperty("picture")]
-        public string Picture { get; set; }
     }
 }
