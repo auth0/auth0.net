@@ -12,6 +12,10 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 6.2.0
+      - Added client_id to GetDeviceCredentials response
+      - Added various user properties to UserUpdateRequest
+
       Version 6.1.0
       - New user permission endpoints added to UsersClient
       - New role permission endpoints added to RolesClient
@@ -97,7 +101,7 @@
     <LangVersion>7.1</LangVersion>
     
     <Major>6</Major>
-    <Minor>1</Minor>
+    <Minor>2</Minor>
     <Revision>0</Revision>
 
   </PropertyGroup>
