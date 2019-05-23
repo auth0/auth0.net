@@ -26,7 +26,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             _connection = await apiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
                 Name = Guid.NewGuid().ToString("N"),
-                Strategy = "auth0"
+                Strategy = "auth0",
+                EnabledClients = new[] { _client.ClientId }
             });
             _user = await apiClient.Users.CreateAsync(new UserCreateRequest
             {
@@ -46,7 +47,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             await apiClient.Users.DeleteAsync(_user.UserId);
         }
 
-        [Fact(Skip = "Damn, how difficult is it to get the correct token combinations for this...?")]
+        [Fact(Skip = "Can't create device credentials using management API v2 token")]
         public async Task Test_device_credentials_crud_sequence()
         {
             var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_DEVICE_CREDENTIALS"), GetVariable("AUTH0_MANAGEMENT_API_URL"));
@@ -67,6 +68,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             newCredentialResponse.Should().NotBeNull();
             newCredentialResponse.DeviceId.Should().Be(newCredentialRequest.DeviceId);
             newCredentialResponse.DeviceName.Should().Be(newCredentialRequest.DeviceName);
+            newCredentialResponse.ClientId.Should().Be(newCredentialRequest.ClientId);
 
             // Check that we now have one more device credential
             var credentialsAfterCreate = await apiClient.DeviceCredentials.GetAllAsync();

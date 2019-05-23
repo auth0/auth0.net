@@ -10,13 +10,10 @@ namespace Auth0.ManagementApi.Models
     /// </remarks>
     public class ConnectionCreateRequest : ConnectionBase
     {
-
         /// <summary>
         /// The identity provider identifier for the connection.
         /// </summary>
         [JsonProperty("strategy")]
         public string Strategy { get; set; }
-
     }
-
 }
