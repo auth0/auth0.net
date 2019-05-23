@@ -3,7 +3,7 @@
 namespace Auth0.ManagementApi.Models
 {
     /// <summary>
-    /// Represents credentials for a device.
+    /// Represents device credentials returned from the API.
     /// </summary>
     public class DeviceCredential : DeviceCredentialBase
     {
