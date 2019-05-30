@@ -105,7 +105,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Password = Password
             };
             var newUserResponse = await _apiClient.Users.CreateAsync(newUserRequest);
-            newUserResponse.Blocked.Should().BeFalse();
+            Assert.NotEqual(true, newUserResponse.Blocked);
 
             // Ensure the user is not blocked when we select the user individually
             var user = await _apiClient.Users.GetAsync(newUserResponse.UserId);
@@ -139,7 +139,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Password = Password
             };
             var newUserResponse = await _apiClient.Users.CreateAsync(newUserRequest);
-            newUserResponse.Blocked.Should().BeFalse();
+            Assert.NotEqual(true, newUserResponse.Blocked);
 
             // Delete the user from the connection
             await _apiClient.Connections.DeleteUserAsync(_connection.Id, newUserRequest.Email);
