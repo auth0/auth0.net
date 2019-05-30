@@ -2,7 +2,7 @@
   <Import Project="..\..\build\common.props" />
   <PropertyGroup>
     <AssemblyTitle>Auth0.Core</AssemblyTitle>
-    <TargetFrameworks>net452;netstandard1.4;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net452;netstandard1.4</TargetFrameworks>
     <AssemblyName>Auth0.Core</AssemblyName>
     <PackageId>Auth0.Core</PackageId>
   </PropertyGroup>
