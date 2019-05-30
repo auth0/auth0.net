@@ -56,15 +56,6 @@ namespace Auth0.ManagementApi.Models
         public string LoginsCount { get; set; }
 
         /// <summary>
-        /// Gets or sets whether the user's phone number is verified.
-        /// </summary>
-        /// <remarks>
-        /// This is only valid for users from SMS connections.
-        /// </remarks>
-        [JsonProperty("phone_verified")]
-        public bool PhoneVerified { get; set; }
-
-        /// <summary>
         /// Gets or sets the date the user was last updated (modified).
         /// </summary>
         [JsonProperty("updated_at")]
@@ -75,12 +66,6 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("user_id")]
         public string UserId { get; set; }
-
-        /// <summary>
-        /// Gets or sets whether the user is blocked. True if the user is blocked, otherwise false.
-        /// </summary>
-        [JsonProperty("blocked")]
-        public bool Blocked { get; set; }
 
         /// <summary>
         /// Contains a lists of all the extra provider specific user attributes over and above those contained in the <a href="https://auth0.com/docs/user-profile/normalized">normalized user profile</a>.
