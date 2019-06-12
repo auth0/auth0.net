@@ -2,9 +2,8 @@ using Newtonsoft.Json;
 
 namespace Auth0.ManagementApi.Models
 {
-
     /// <summary>
-    /// 
+    /// Tenant error page customization.
     /// </summary>
     public class TenantErrorPage
     {
