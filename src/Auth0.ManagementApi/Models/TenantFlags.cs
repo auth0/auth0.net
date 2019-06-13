@@ -20,12 +20,6 @@ namespace Auth0.ManagementApi.Models
         public bool EnableAPIsSection { get; set; }
 
         /// <summary>
-        /// If set to true all Impersonation functionality is disabled for the Tenant. This is a read-only attribute.
-        /// </summary>
-        [JsonProperty("disable_impersonation")]
-        public bool DisableInterpretation { get; set; }
-
-        /// <summary>
         /// This flag determines whether all current connections shall be enabled when a new client is created. Default value is true.
         /// </summary>
         [JsonProperty("enable_client_connections")]
