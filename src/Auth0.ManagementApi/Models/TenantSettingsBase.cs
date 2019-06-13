@@ -17,7 +17,7 @@ namespace Auth0.ManagementApi.Models
         /// Guardian page customization.
         /// </summary>
         [JsonProperty("guardian_mfa_page")]
-        public TenantGuardianMfa GuardianMfaPage { get; set; }
+        public TenantGuardianMfaPage GuardianMfaPage { get; set; }
 
         /// <summary>
         /// Default audience for API Authorization.

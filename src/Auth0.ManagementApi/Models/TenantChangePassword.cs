@@ -14,7 +14,7 @@ namespace Auth0.ManagementApi.Models
         public bool Enabled { get; set; }
 
         /// <summary>
-        /// Replace default change password page with a custom HTML (Liquid syntax is supported).
+        /// Replace default change password page with custom HTML (Liquid syntax is supported).
         /// </summary>
         [JsonProperty("html")]
         public string Html { get; set; }

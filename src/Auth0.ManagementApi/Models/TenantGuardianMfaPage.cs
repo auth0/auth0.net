@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi.Models
     /// <summary>
     /// Guardian page customization.
     /// </summary>
-    public class TenantGuardianMfa
+    public class TenantGuardianMfaPage
     {
         /// <summary>
         /// true to use the custom html for Guardian page, false otherwise (default: false).
@@ -14,7 +14,7 @@ namespace Auth0.ManagementApi.Models
         public bool Enabled { get; set; }
 
         /// <summary>
-        /// Replace default Guardian page with a custom HTML (Liquid syntax is supported).
+        /// Replace default Guardian page with custom HTML (Liquid syntax is supported).
         /// </summary>
         [JsonProperty("html")]
         public string Html { get; set; }

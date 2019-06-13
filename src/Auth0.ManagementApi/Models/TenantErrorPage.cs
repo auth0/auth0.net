@@ -8,7 +8,7 @@ namespace Auth0.ManagementApi.Models
     public class TenantErrorPage
     {
         /// <summary>
-        /// Replace default error page with a custom HTML (Liquid syntax is supported).
+        /// Replace default error page with custom HTML (Liquid syntax is supported).
         /// </summary>
         [JsonProperty("html")]
         public string Html { get; set; }
