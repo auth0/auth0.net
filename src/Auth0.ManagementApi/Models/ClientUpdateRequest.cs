@@ -3,7 +3,6 @@ using Newtonsoft.Json.Converters;
 
 namespace Auth0.ManagementApi.Models
 {
-
     /// <summary>
     /// 
     /// </summary>
@@ -19,12 +18,8 @@ namespace Auth0.ManagementApi.Models
         /// <summary>
         /// Defines the requested authentication method for the token endpoint.
         /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
         [JsonProperty("token_endpoint_auth_method")]
         [JsonConverter(typeof(StringEnumConverter))]
         public TokenEndpointAuthMethod? TokenEndpointAuthMethod { get; set; }
     }
-
 }
