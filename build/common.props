@@ -12,6 +12,9 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 6.3.0
+      - Missing Tenant settings now available (device flow, Guardian MFA, Change Password, flags etc.
+      
       Version 6.2.0
       - Added client_id to GetDeviceCredentials response
       - Added various user properties to UserUpdateRequest
@@ -101,7 +104,7 @@
     <LangVersion>7.1</LangVersion>
     
     <Major>6</Major>
-    <Minor>2</Minor>
+    <Minor>3</Minor>
     <Revision>0</Revision>
 
   </PropertyGroup>
