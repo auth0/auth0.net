@@ -109,7 +109,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Ensure the user is not blocked when we select the user individually
             var user = await _apiClient.Users.GetAsync(newUserResponse.UserId);
-            user.Blocked.Should().BeFalse();
+            user.Blocked.Should().NotBeTrue();
 
             // Block the user, and ensure returned user is blocked
             var updateUserRequest = new UserUpdateRequest
