@@ -1,0 +1,18 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.5
+# ignores vulnerabilities until expiry date; change duration by modifying expiry date
+ignore:
+  SNYK-DOTNET-SYSTEMTEXTREGULAREXPRESSIONS-174708:
+    - '*':
+        reason: We are not a server.
+        expires: 2019-10-03T00:00:00.000Z
+  SNYK-DOTNET-SYSTEMNETHTTP-60047:
+    - '*':
+        reason: We are not a server.
+        expires: 2019-10-03T00:00:00.000Z
+  SNYK-DOTNET-SYSTEMNETHTTP-60045:
+    - '*':
+        reason: We are not a server.
+        expires: 2019-10-03T00:00:00.000Z
+patch: {}
+
