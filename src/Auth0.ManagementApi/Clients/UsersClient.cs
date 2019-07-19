@@ -195,12 +195,54 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="IList{User}"/> containing all users for this email address.</returns>
         public Task<IList<User>> GetUsersByEmailAsync(string email, string fields = null, bool? includeFields = null)
         {
-            return Connection.GetAsync<IList<User>>("users-by-email", null,
+            return Connection.GetAsync<IList<User>>("users/users-by-email", null,
                 new Dictionary<string, string>
                 {
                     {"email", email},
                     {"fields", fields},
-                    {"include_fields", includeFields?.ToString().ToLower()},
+                    {"include_fields", includeFields?.ToString().ToLower()}
+                }, null, null);
+        }
+
+        /// <summary>
+        /// Get a list of Guardian enrollments.
+        /// </summary>
+        /// <param name="id">The user_id of the user to retrieve.</param>
+        /// <returns>A Task representing the operation and potential return value.</returns>
+        public Task<IList<EnrollmentsResponse>> GetEnrollmentsAsync(string id)
+        {
+            return Connection.GetAsync<IList<EnrollmentsResponse>>("users/{id}/enrollments", null,
+                new Dictionary<string, string>
+                {
+                    {"id", id}
+                }, null, null);
+        }
+
+        /// <summary>
+        /// Invalidate all remembered browsers for MFA.
+        /// </summary>
+        /// <param name="id">The user_id of the user which will have its remembered browsers for MFA invalidated.</param>
+        /// <returns>A Task representing the operation and potential return value.</returns>
+        public Task InvalidateRememberBrowserAsync(string id)
+        {
+            return Connection.PostAsync<object>("users/{id}/multifactor/actions/invalidate-remember-browser", null, null, null,
+                new Dictionary<string, string>
+                {
+                    {"id", id}
+                }, null, null);
+        }
+
+        /// <summary>
+        /// Generate new Guardian recovery code.
+        /// </summary>
+        /// <param name="id">The user_id of the user which guardian code will be regenerated.</param>
+        /// <returns>A Task representing the operation and potential return value.</returns>
+        public Task<GenerateRecoveryCodeResponse> GenerateRecoveryCodeAsync(string id)
+        {
+            return Connection.PostAsync<GenerateRecoveryCodeResponse>("users/{id}/recovery-code-regeneration", null, null, null,
+                new Dictionary<string, string>
+                {
+                    {"id", id}
                 }, null, null);
         }
 
@@ -212,10 +254,11 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="IList{AccountLinkResponse}"/> containing details about this account link.</returns>
         public Task<IList<AccountLinkResponse>> LinkAccountAsync(string id, UserAccountLinkRequest request)
         {
-            return Connection.PostAsync<IList<AccountLinkResponse>>("users/{id}/identities", request, null, null, new Dictionary<string, string>
-            {
-                {"id", id}
-            }, null, null);
+            return Connection.PostAsync<IList<AccountLinkResponse>>("users/{id}/identities", request, null, null, 
+                new Dictionary<string, string>
+                {
+                    {"id", id}
+                }, null, null);
         }
 
         /// <summary>
