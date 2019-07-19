@@ -83,13 +83,13 @@ namespace Auth0.ManagementApi.Models
         /// Login session lifetime, how long the session will stay valid (unit: hours).
         /// </summary>
         [JsonProperty("session_lifetime")]
-        public int? SessionLifetime { get; set; }
+        public float? SessionLifetime { get; set; }
 
         /// <summary>
         /// Force a user to login after they have been inactive for the specified number (unit: hours).
         /// </summary>
         [JsonProperty("idle_session_lifetime")]
-        public int? IdleSessionLifetime { get; set; }
+        public float? IdleSessionLifetime { get; set; }
 
         /// <summary>
         /// The selected sandbox version to be used for the extensibility environment.
