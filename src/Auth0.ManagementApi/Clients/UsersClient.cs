@@ -195,7 +195,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="IList{User}"/> containing all users for this email address.</returns>
         public Task<IList<User>> GetUsersByEmailAsync(string email, string fields = null, bool? includeFields = null)
         {
-            return Connection.GetAsync<IList<User>>("users/users-by-email", null,
+            return Connection.GetAsync<IList<User>>("users-by-email", null,
                 new Dictionary<string, string>
                 {
                     {"email", email},

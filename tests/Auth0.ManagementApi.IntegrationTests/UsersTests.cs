@@ -113,7 +113,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             Assert.Single(users);
 
             // Make sure they are one and the same
-            Assert.Same(newUserResponse.UserId, users[0].UserId);
+            Assert.Equal(newUserResponse.UserId, users[0].UserId);
         }
 
         [Fact]
