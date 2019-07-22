@@ -94,6 +94,29 @@ namespace Auth0.ManagementApi.IntegrationTests
         }
 
         [Fact]
+        public async Task Test_user_by_email()
+        {
+            var email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa";
+
+            var newUserRequest = new UserCreateRequest
+            {
+                Connection = _connection.Name,
+                Email = email,
+                EmailVerified = true,
+                Password = Password
+            };
+
+            var newUserResponse = await _apiClient.Users.CreateAsync(newUserRequest);
+
+            // Ensure we can find the user by email address
+            var users = await _apiClient.Users.GetUsersByEmailAsync(email);
+            Assert.Single(users);
+
+            // Make sure they are one and the same
+            Assert.Equal(newUserResponse.UserId, users[0].UserId);
+        }
+
+        [Fact]
         public async Task Test_user_blocking()
         {
             // Add a new user, and ensure user is not blocked
