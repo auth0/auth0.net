@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class TenantErrorPage
+    <title>Class TenantFlags
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class TenantErrorPage
+    <meta name="title" content="Class TenantFlags
    ">
     <meta name="generator" content="docfx 2.40.12.0">
     
@@ -68,18 +68,18 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Models.TenantErrorPage">
+            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Models.TenantFlags">
   
   
-  <h1 id="Auth0_ManagementApi_Models_TenantErrorPage" data-uid="Auth0.ManagementApi.Models.TenantErrorPage" class="text-break">Class TenantErrorPage
+  <h1 id="Auth0_ManagementApi_Models_TenantFlags" data-uid="Auth0.ManagementApi.Models.TenantFlags" class="text-break">Class TenantFlags
   </h1>
-  <div class="markdown level0 summary"><p>Tenant error page customization.</p>
+  <div class="markdown level0 summary"><p>Tenant flags.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">TenantErrorPage</span></div>
+    <div class="level1"><span class="xref">TenantFlags</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -107,48 +107,22 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Models.html">Auth0.ManagementApi.Models</a></h6>
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
-  <h5 id="Auth0_ManagementApi_Models_TenantErrorPage_syntax">Syntax</h5>
+  <h5 id="Auth0_ManagementApi_Models_TenantFlags_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class TenantErrorPage</code></pre>
+    <pre><code class="lang-csharp hljs">public class TenantFlags</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
   
   
-  <a id="Auth0_ManagementApi_Models_TenantErrorPage_Html_" data-uid="Auth0.ManagementApi.Models.TenantErrorPage.Html*"></a>
-  <h4 id="Auth0_ManagementApi_Models_TenantErrorPage_Html" data-uid="Auth0.ManagementApi.Models.TenantErrorPage.Html">Html</h4>
-  <div class="markdown level1 summary"><p>Replace default error page with custom HTML (Liquid syntax is supported).</p>
+  <a id="Auth0_ManagementApi_Models_TenantFlags_ChangePwdFlowV1_" data-uid="Auth0.ManagementApi.Models.TenantFlags.ChangePwdFlowV1*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantFlags_ChangePwdFlowV1" data-uid="Auth0.ManagementApi.Models.TenantFlags.ChangePwdFlowV1">ChangePwdFlowV1</h4>
+  <div class="markdown level1 summary"><p>Enables the first version of the Change Password flow. We&apos;ve deprecated this option and recommending a safer flow. This flag is only for backwards compatibility.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Html { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_ManagementApi_Models_TenantErrorPage_ShowLogLink_" data-uid="Auth0.ManagementApi.Models.TenantErrorPage.ShowLogLink*"></a>
-  <h4 id="Auth0_ManagementApi_Models_TenantErrorPage_ShowLogLink" data-uid="Auth0.ManagementApi.Models.TenantErrorPage.ShowLogLink">ShowLogLink</h4>
-  <div class="markdown level1 summary"><p>True to show link to log as part of the default error page, false otherwise (default: true).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool ShowLogLink { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool ChangePwdFlowV1 { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -167,14 +141,14 @@
   </table>
   
   
-  <a id="Auth0_ManagementApi_Models_TenantErrorPage_Url_" data-uid="Auth0.ManagementApi.Models.TenantErrorPage.Url*"></a>
-  <h4 id="Auth0_ManagementApi_Models_TenantErrorPage_Url" data-uid="Auth0.ManagementApi.Models.TenantErrorPage.Url">Url</h4>
-  <div class="markdown level1 summary"><p>Redirect to specified url instead of show the default error page.</p>
+  <a id="Auth0_ManagementApi_Models_TenantFlags_DisableClickjackProtectionHeaders_" data-uid="Auth0.ManagementApi.Models.TenantFlags.DisableClickjackProtectionHeaders*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantFlags_DisableClickjackProtectionHeaders" data-uid="Auth0.ManagementApi.Models.TenantFlags.DisableClickjackProtectionHeaders">DisableClickjackProtectionHeaders</h4>
+  <div class="markdown level1 summary"><p>If true, the classic Universal Login prompts will not include additional security headers to prevent click-jacking.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Url { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public bool DisableClickjackProtectionHeaders { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -186,7 +160,85 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Models_TenantFlags_EnableAPIsSection_" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnableAPIsSection*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantFlags_EnableAPIsSection" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnableAPIsSection">EnableAPIsSection</h4>
+  <div class="markdown level1 summary"><p>This flag enables the APIs section.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool EnableAPIsSection { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Models_TenantFlags_EnableClientConnections_" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnableClientConnections*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantFlags_EnableClientConnections" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnableClientConnections">EnableClientConnections</h4>
+  <div class="markdown level1 summary"><p>This flag determines whether all current connections shall be enabled when a new client is created. Default value is true.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool EnableClientConnections { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Models_TenantFlags_EnablePipeline2_" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnablePipeline2*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantFlags_EnablePipeline2" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnablePipeline2">EnablePipeline2</h4>
+  <div class="markdown level1 summary"><p>This flag enables advanced API Authorization scenarios.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool EnablePipeline2 { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
         <td></td>
       </tr>
     </tbody>

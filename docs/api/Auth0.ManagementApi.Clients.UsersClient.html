@@ -390,6 +390,51 @@
   </table>
   
   
+  <a id="Auth0_ManagementApi_Clients_UsersClient_GenerateRecoveryCodeAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GenerateRecoveryCodeAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GenerateRecoveryCodeAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GenerateRecoveryCodeAsync(System.String)">GenerateRecoveryCodeAsync(String)</h4>
+  <div class="markdown level1 summary"><p>Generate new Guardian recovery code.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;GenerateRecoveryCodeResponse&gt; GenerateRecoveryCodeAsync(string id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The user_id of the user which guardian code will be regenerated.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">GenerateRecoveryCodeResponse</span>&gt;</td>
+        <td><p>A Task representing the operation and potential return value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="Auth0_ManagementApi_Clients_UsersClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAllAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetAllAsync_GetUsersRequest_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAllAsync(GetUsersRequest,PaginationInfo)">GetAllAsync(GetUsersRequest, PaginationInfo)</h4>
   <div class="markdown level1 summary"><p>Lists or search for users based on criteria.</p>
@@ -494,6 +539,51 @@ true)</p>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">User</span>&gt;</td>
         <td><p>The <see cref="!:User"></see> that was requested.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_UsersClient_GetEnrollmentsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetEnrollmentsAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetEnrollmentsAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetEnrollmentsAsync(System.String)">GetEnrollmentsAsync(String)</h4>
+  <div class="markdown level1 summary"><p>Get a list of Guardian enrollments.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;EnrollmentsResponse&gt;&gt; GetEnrollmentsAsync(string id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The user_id of the user to retrieve.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">EnrollmentsResponse</span>&gt;&gt;</td>
+        <td><p>A Task representing the operation and potential return value.</p>
 </td>
       </tr>
     </tbody>
@@ -704,6 +794,51 @@ true)</p>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">User</span>&gt;&gt;</td>
         <td><p>A <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span> containing all users for this email address.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Clients_UsersClient_InvalidateRememberBrowserAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.InvalidateRememberBrowserAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_InvalidateRememberBrowserAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.UsersClient.InvalidateRememberBrowserAsync(System.String)">InvalidateRememberBrowserAsync(String)</h4>
+  <div class="markdown level1 summary"><p>Invalidate all remembered browsers for MFA.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task InvalidateRememberBrowserAsync(string id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>The user_id of the user which will have its remembered browsers for MFA invalidated.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A Task representing the operation and potential return value.</p>
 </td>
       </tr>
     </tbody>

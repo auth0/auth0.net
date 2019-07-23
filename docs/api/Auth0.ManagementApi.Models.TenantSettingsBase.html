@@ -73,7 +73,8 @@
   
   <h1 id="Auth0_ManagementApi_Models_TenantSettingsBase" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase" class="text-break">Class TenantSettingsBase
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Settings for a given tenant.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -116,9 +117,87 @@
   </h3>
   
   
+  <a id="Auth0_ManagementApi_Models_TenantSettingsBase_AllowedLogoutUrls_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.AllowedLogoutUrls*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_AllowedLogoutUrls" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.AllowedLogoutUrls">AllowedLogoutUrls</h4>
+  <div class="markdown level1 summary"><p>A set of URLs that are valid to redirect to after logout from Auth0.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string[] AllowedLogoutUrls { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Models_TenantSettingsBase_ChangePassword_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.ChangePassword*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_ChangePassword" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.ChangePassword">ChangePassword</h4>
+  <div class="markdown level1 summary"><p>Change Password page customization.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TenantChangePassword ChangePassword { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.TenantChangePassword.html">TenantChangePassword</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Models_TenantSettingsBase_DefaultAudience_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.DefaultAudience*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_DefaultAudience" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.DefaultAudience">DefaultAudience</h4>
+  <div class="markdown level1 summary"><p>Default audience for API Authorization.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string DefaultAudience { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_DefaultDirectory_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.DefaultDirectory*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_DefaultDirectory" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.DefaultDirectory">DefaultDirectory</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the default connection for &quot;password&quot; grant types.</p>
+  <div class="markdown level1 summary"><p>Name of the connection that will be used for password grants at the token endpoint. Only the following connection types are supported: LDAP, AD, Database Connections, Passwordless, Windows Azure Active Directory, ADFS.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -142,9 +221,61 @@
   </table>
   
   
+  <a id="Auth0_ManagementApi_Models_TenantSettingsBase_DeviceFlow_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.DeviceFlow*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_DeviceFlow" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.DeviceFlow">DeviceFlow</h4>
+  <div class="markdown level1 summary"><p>Tenant Device Flow configuration.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TenantDeviceFlow DeviceFlow { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.TenantDeviceFlow.html">TenantDeviceFlow</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Models_TenantSettingsBase_EnabledLocales_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.EnabledLocales*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_EnabledLocales" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.EnabledLocales">EnabledLocales</h4>
+  <div class="markdown level1 summary"><p>Supported locales for the UI.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string[] EnabledLocales { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_ErrorPage_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.ErrorPage*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_ErrorPage" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.ErrorPage">ErrorPage</h4>
-  <div class="markdown level1 summary"><p>An <a class="xref" href="Auth0.ManagementApi.Models.TenantErrorPage.html">TenantErrorPage</a> object containing the settings for the error page.</p>
+  <div class="markdown level1 summary"><p>Tenant error page customization.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -162,6 +293,32 @@
     <tbody>
       <tr>
         <td><a class="xref" href="Auth0.ManagementApi.Models.TenantErrorPage.html">TenantErrorPage</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Models_TenantSettingsBase_Flags_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.Flags*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_Flags" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.Flags">Flags</h4>
+  <div class="markdown level1 summary"><p>Tenant flags.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TenantFlags Flags { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.TenantFlags.html">TenantFlags</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -194,6 +351,58 @@
   </table>
   
   
+  <a id="Auth0_ManagementApi_Models_TenantSettingsBase_GuardianMfaPage_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.GuardianMfaPage*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_GuardianMfaPage" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.GuardianMfaPage">GuardianMfaPage</h4>
+  <div class="markdown level1 summary"><p>Guardian page customization.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TenantGuardianMfaPage GuardianMfaPage { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.TenantGuardianMfaPage.html">TenantGuardianMfaPage</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Models_TenantSettingsBase_IdleSessionLifetime_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.IdleSessionLifetime*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_IdleSessionLifetime" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.IdleSessionLifetime">IdleSessionLifetime</h4>
+  <div class="markdown level1 summary"><p>Force a user to login after they have been inactive for the specified number (unit: hours).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? IdleSessionLifetime { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_PictureUrl_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.PictureUrl*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_PictureUrl" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.PictureUrl">PictureUrl</h4>
   <div class="markdown level1 summary"><p>The URL of the tenant logo (recommended size: 150x150).</p>
@@ -214,6 +423,84 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Models_TenantSettingsBase_SandboxVersion_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersion*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_SandboxVersion" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersion">SandboxVersion</h4>
+  <div class="markdown level1 summary"><p>The selected sandbox version to be used for the extensibility environment.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string SandboxVersion { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Models_TenantSettingsBase_SandboxVersionsAvailable_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersionsAvailable*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_SandboxVersionsAvailable" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersionsAvailable">SandboxVersionsAvailable</h4>
+  <div class="markdown level1 summary"><p>A set of available sandbox versions for the extensibility environment.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string[] SandboxVersionsAvailable { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_ManagementApi_Models_TenantSettingsBase_SessionLifetime_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SessionLifetime*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_SessionLifetime" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SessionLifetime">SessionLifetime</h4>
+  <div class="markdown level1 summary"><p>Login session lifetime, how long the session will stay valid (unit: hours).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public float? SessionLifetime { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Single</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>

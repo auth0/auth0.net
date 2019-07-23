@@ -13,12 +13,6 @@ references:
   commentId: T:Auth0.AuthenticationApi.AuthenticationApiClient
   fullName: Auth0.AuthenticationApi.AuthenticationApiClient
   nameWithType: AuthenticationApiClient
-- uid: Auth0.AuthenticationApi.AuthenticationApiClient.#ctor(System.String)
-  name: AuthenticationApiClient(String)
-  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient__ctor_System_String_
-  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.#ctor(System.String)
-  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.AuthenticationApiClient(System.String)
-  nameWithType: AuthenticationApiClient.AuthenticationApiClient(String)
 - uid: Auth0.AuthenticationApi.AuthenticationApiClient.#ctor(System.String,HttpClient)
   name: AuthenticationApiClient(String, HttpClient)
   href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient__ctor_System_String_HttpClient_
@@ -31,12 +25,6 @@ references:
   commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.#ctor(System.String,HttpMessageHandler)
   fullName: Auth0.AuthenticationApi.AuthenticationApiClient.AuthenticationApiClient(System.String, HttpMessageHandler)
   nameWithType: AuthenticationApiClient.AuthenticationApiClient(String, HttpMessageHandler)
-- uid: Auth0.AuthenticationApi.AuthenticationApiClient.#ctor(Uri)
-  name: AuthenticationApiClient(Uri)
-  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient__ctor_Uri_
-  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.#ctor(Uri)
-  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.AuthenticationApiClient(Uri)
-  nameWithType: AuthenticationApiClient.AuthenticationApiClient(Uri)
 - uid: Auth0.AuthenticationApi.AuthenticationApiClient.#ctor(Uri,HttpClient)
   name: AuthenticationApiClient(Uri, HttpClient)
   href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient__ctor_Uri_HttpClient_
@@ -134,6 +122,19 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.AuthenticationApiClient.Connection
   nameWithType: AuthenticationApiClient.Connection
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.Dispose
+  name: Dispose()
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_Dispose
+  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.Dispose
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.Dispose()
+  nameWithType: AuthenticationApiClient.Dispose()
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.Dispose*
+  name: Dispose
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_Dispose_
+  commentId: Overload:Auth0.AuthenticationApi.AuthenticationApiClient.Dispose
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.Dispose
+  nameWithType: AuthenticationApiClient.Dispose
 - uid: Auth0.AuthenticationApi.AuthenticationApiClient.GetImpersonationUrlAsync(Auth0.AuthenticationApi.Models.ImpersonationRequest)
   name: GetImpersonationUrlAsync(ImpersonationRequest)
   href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_GetImpersonationUrlAsync_Auth0_AuthenticationApi_Models_ImpersonationRequest_
@@ -4628,6 +4629,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.UsersClient.DeleteMultifactorProviderAsync
   nameWithType: UsersClient.DeleteMultifactorProviderAsync
+- uid: Auth0.ManagementApi.Clients.UsersClient.GenerateRecoveryCodeAsync(System.String)
+  name: GenerateRecoveryCodeAsync(String)
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_GenerateRecoveryCodeAsync_System_String_
+  commentId: M:Auth0.ManagementApi.Clients.UsersClient.GenerateRecoveryCodeAsync(System.String)
+  fullName: Auth0.ManagementApi.Clients.UsersClient.GenerateRecoveryCodeAsync(System.String)
+  nameWithType: UsersClient.GenerateRecoveryCodeAsync(String)
+- uid: Auth0.ManagementApi.Clients.UsersClient.GenerateRecoveryCodeAsync*
+  name: GenerateRecoveryCodeAsync
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_GenerateRecoveryCodeAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.UsersClient.GenerateRecoveryCodeAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.UsersClient.GenerateRecoveryCodeAsync
+  nameWithType: UsersClient.GenerateRecoveryCodeAsync
 - uid: Auth0.ManagementApi.Clients.UsersClient.GetAllAsync(GetUsersRequest,PaginationInfo)
   name: GetAllAsync(GetUsersRequest, PaginationInfo)
   href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_GetAllAsync_GetUsersRequest_PaginationInfo_
@@ -4654,6 +4668,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.UsersClient.GetAsync
   nameWithType: UsersClient.GetAsync
+- uid: Auth0.ManagementApi.Clients.UsersClient.GetEnrollmentsAsync(System.String)
+  name: GetEnrollmentsAsync(String)
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_GetEnrollmentsAsync_System_String_
+  commentId: M:Auth0.ManagementApi.Clients.UsersClient.GetEnrollmentsAsync(System.String)
+  fullName: Auth0.ManagementApi.Clients.UsersClient.GetEnrollmentsAsync(System.String)
+  nameWithType: UsersClient.GetEnrollmentsAsync(String)
+- uid: Auth0.ManagementApi.Clients.UsersClient.GetEnrollmentsAsync*
+  name: GetEnrollmentsAsync
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_GetEnrollmentsAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.UsersClient.GetEnrollmentsAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.UsersClient.GetEnrollmentsAsync
+  nameWithType: UsersClient.GetEnrollmentsAsync
 - uid: Auth0.ManagementApi.Clients.UsersClient.GetLogsAsync(GetUserLogsRequest,PaginationInfo)
   name: GetLogsAsync(GetUserLogsRequest, PaginationInfo)
   href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_GetLogsAsync_GetUserLogsRequest_PaginationInfo_
@@ -4709,6 +4736,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.UsersClient.GetUsersByEmailAsync
   nameWithType: UsersClient.GetUsersByEmailAsync
+- uid: Auth0.ManagementApi.Clients.UsersClient.InvalidateRememberBrowserAsync(System.String)
+  name: InvalidateRememberBrowserAsync(String)
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_InvalidateRememberBrowserAsync_System_String_
+  commentId: M:Auth0.ManagementApi.Clients.UsersClient.InvalidateRememberBrowserAsync(System.String)
+  fullName: Auth0.ManagementApi.Clients.UsersClient.InvalidateRememberBrowserAsync(System.String)
+  nameWithType: UsersClient.InvalidateRememberBrowserAsync(String)
+- uid: Auth0.ManagementApi.Clients.UsersClient.InvalidateRememberBrowserAsync*
+  name: InvalidateRememberBrowserAsync
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_InvalidateRememberBrowserAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.UsersClient.InvalidateRememberBrowserAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.UsersClient.InvalidateRememberBrowserAsync
+  nameWithType: UsersClient.InvalidateRememberBrowserAsync
 - uid: Auth0.ManagementApi.Clients.UsersClient.LinkAccountAsync(System.String,System.String,System.String)
   name: LinkAccountAsync(String, String, String)
   href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_LinkAccountAsync_System_String_System_String_System_String_
@@ -6864,6 +6904,19 @@ references:
   commentId: T:Auth0.ManagementApi.Models.DeviceCredentialBase
   fullName: Auth0.ManagementApi.Models.DeviceCredentialBase
   nameWithType: DeviceCredentialBase
+- uid: Auth0.ManagementApi.Models.DeviceCredentialBase.ClientId
+  name: ClientId
+  href: api/Auth0.ManagementApi.Models.DeviceCredentialBase.html#Auth0_ManagementApi_Models_DeviceCredentialBase_ClientId
+  commentId: P:Auth0.ManagementApi.Models.DeviceCredentialBase.ClientId
+  fullName: Auth0.ManagementApi.Models.DeviceCredentialBase.ClientId
+  nameWithType: DeviceCredentialBase.ClientId
+- uid: Auth0.ManagementApi.Models.DeviceCredentialBase.ClientId*
+  name: ClientId
+  href: api/Auth0.ManagementApi.Models.DeviceCredentialBase.html#Auth0_ManagementApi_Models_DeviceCredentialBase_ClientId_
+  commentId: Overload:Auth0.ManagementApi.Models.DeviceCredentialBase.ClientId
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.DeviceCredentialBase.ClientId
+  nameWithType: DeviceCredentialBase.ClientId
 - uid: Auth0.ManagementApi.Models.DeviceCredentialBase.DeviceId
   name: DeviceId
   href: api/Auth0.ManagementApi.Models.DeviceCredentialBase.html#Auth0_ManagementApi_Models_DeviceCredentialBase_DeviceId
@@ -6909,19 +6962,6 @@ references:
   commentId: T:Auth0.ManagementApi.Models.DeviceCredentialCreateRequest
   fullName: Auth0.ManagementApi.Models.DeviceCredentialCreateRequest
   nameWithType: DeviceCredentialCreateRequest
-- uid: Auth0.ManagementApi.Models.DeviceCredentialCreateRequest.ClientId
-  name: ClientId
-  href: api/Auth0.ManagementApi.Models.DeviceCredentialCreateRequest.html#Auth0_ManagementApi_Models_DeviceCredentialCreateRequest_ClientId
-  commentId: P:Auth0.ManagementApi.Models.DeviceCredentialCreateRequest.ClientId
-  fullName: Auth0.ManagementApi.Models.DeviceCredentialCreateRequest.ClientId
-  nameWithType: DeviceCredentialCreateRequest.ClientId
-- uid: Auth0.ManagementApi.Models.DeviceCredentialCreateRequest.ClientId*
-  name: ClientId
-  href: api/Auth0.ManagementApi.Models.DeviceCredentialCreateRequest.html#Auth0_ManagementApi_Models_DeviceCredentialCreateRequest_ClientId_
-  commentId: Overload:Auth0.ManagementApi.Models.DeviceCredentialCreateRequest.ClientId
-  isSpec: "True"
-  fullName: Auth0.ManagementApi.Models.DeviceCredentialCreateRequest.ClientId
-  nameWithType: DeviceCredentialCreateRequest.ClientId
 - uid: Auth0.ManagementApi.Models.DeviceCredentialCreateRequest.Value
   name: Value
   href: api/Auth0.ManagementApi.Models.DeviceCredentialCreateRequest.html#Auth0_ManagementApi_Models_DeviceCredentialCreateRequest_Value
@@ -7560,6 +7600,190 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.EncryptionKey.Subject
   nameWithType: EncryptionKey.Subject
+- uid: Auth0.ManagementApi.Models.EnrollmentAuthMethod
+  name: EnrollmentAuthMethod
+  href: api/Auth0.ManagementApi.Models.EnrollmentAuthMethod.html
+  commentId: T:Auth0.ManagementApi.Models.EnrollmentAuthMethod
+  fullName: Auth0.ManagementApi.Models.EnrollmentAuthMethod
+  nameWithType: EnrollmentAuthMethod
+- uid: Auth0.ManagementApi.Models.EnrollmentAuthMethod.Authentication
+  name: Authentication
+  href: api/Auth0.ManagementApi.Models.EnrollmentAuthMethod.html#Auth0_ManagementApi_Models_EnrollmentAuthMethod_Authentication
+  commentId: F:Auth0.ManagementApi.Models.EnrollmentAuthMethod.Authentication
+  fullName: Auth0.ManagementApi.Models.EnrollmentAuthMethod.Authentication
+  nameWithType: EnrollmentAuthMethod.Authentication
+- uid: Auth0.ManagementApi.Models.EnrollmentAuthMethod.Guardian
+  name: Guardian
+  href: api/Auth0.ManagementApi.Models.EnrollmentAuthMethod.html#Auth0_ManagementApi_Models_EnrollmentAuthMethod_Guardian
+  commentId: F:Auth0.ManagementApi.Models.EnrollmentAuthMethod.Guardian
+  fullName: Auth0.ManagementApi.Models.EnrollmentAuthMethod.Guardian
+  nameWithType: EnrollmentAuthMethod.Guardian
+- uid: Auth0.ManagementApi.Models.EnrollmentAuthMethod.SMS
+  name: SMS
+  href: api/Auth0.ManagementApi.Models.EnrollmentAuthMethod.html#Auth0_ManagementApi_Models_EnrollmentAuthMethod_SMS
+  commentId: F:Auth0.ManagementApi.Models.EnrollmentAuthMethod.SMS
+  fullName: Auth0.ManagementApi.Models.EnrollmentAuthMethod.SMS
+  nameWithType: EnrollmentAuthMethod.SMS
+- uid: Auth0.ManagementApi.Models.EnrollmentsResponse
+  name: EnrollmentsResponse
+  href: api/Auth0.ManagementApi.Models.EnrollmentsResponse.html
+  commentId: T:Auth0.ManagementApi.Models.EnrollmentsResponse
+  fullName: Auth0.ManagementApi.Models.EnrollmentsResponse
+  nameWithType: EnrollmentsResponse
+- uid: Auth0.ManagementApi.Models.EnrollmentsResponse.AuthMethod
+  name: AuthMethod
+  href: api/Auth0.ManagementApi.Models.EnrollmentsResponse.html#Auth0_ManagementApi_Models_EnrollmentsResponse_AuthMethod
+  commentId: P:Auth0.ManagementApi.Models.EnrollmentsResponse.AuthMethod
+  fullName: Auth0.ManagementApi.Models.EnrollmentsResponse.AuthMethod
+  nameWithType: EnrollmentsResponse.AuthMethod
+- uid: Auth0.ManagementApi.Models.EnrollmentsResponse.AuthMethod*
+  name: AuthMethod
+  href: api/Auth0.ManagementApi.Models.EnrollmentsResponse.html#Auth0_ManagementApi_Models_EnrollmentsResponse_AuthMethod_
+  commentId: Overload:Auth0.ManagementApi.Models.EnrollmentsResponse.AuthMethod
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.EnrollmentsResponse.AuthMethod
+  nameWithType: EnrollmentsResponse.AuthMethod
+- uid: Auth0.ManagementApi.Models.EnrollmentsResponse.EnrolledAt
+  name: EnrolledAt
+  href: api/Auth0.ManagementApi.Models.EnrollmentsResponse.html#Auth0_ManagementApi_Models_EnrollmentsResponse_EnrolledAt
+  commentId: P:Auth0.ManagementApi.Models.EnrollmentsResponse.EnrolledAt
+  fullName: Auth0.ManagementApi.Models.EnrollmentsResponse.EnrolledAt
+  nameWithType: EnrollmentsResponse.EnrolledAt
+- uid: Auth0.ManagementApi.Models.EnrollmentsResponse.EnrolledAt*
+  name: EnrolledAt
+  href: api/Auth0.ManagementApi.Models.EnrollmentsResponse.html#Auth0_ManagementApi_Models_EnrollmentsResponse_EnrolledAt_
+  commentId: Overload:Auth0.ManagementApi.Models.EnrollmentsResponse.EnrolledAt
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.EnrollmentsResponse.EnrolledAt
+  nameWithType: EnrollmentsResponse.EnrolledAt
+- uid: Auth0.ManagementApi.Models.EnrollmentsResponse.Id
+  name: Id
+  href: api/Auth0.ManagementApi.Models.EnrollmentsResponse.html#Auth0_ManagementApi_Models_EnrollmentsResponse_Id
+  commentId: P:Auth0.ManagementApi.Models.EnrollmentsResponse.Id
+  fullName: Auth0.ManagementApi.Models.EnrollmentsResponse.Id
+  nameWithType: EnrollmentsResponse.Id
+- uid: Auth0.ManagementApi.Models.EnrollmentsResponse.Id*
+  name: Id
+  href: api/Auth0.ManagementApi.Models.EnrollmentsResponse.html#Auth0_ManagementApi_Models_EnrollmentsResponse_Id_
+  commentId: Overload:Auth0.ManagementApi.Models.EnrollmentsResponse.Id
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.EnrollmentsResponse.Id
+  nameWithType: EnrollmentsResponse.Id
+- uid: Auth0.ManagementApi.Models.EnrollmentsResponse.Identifier
+  name: Identifier
+  href: api/Auth0.ManagementApi.Models.EnrollmentsResponse.html#Auth0_ManagementApi_Models_EnrollmentsResponse_Identifier
+  commentId: P:Auth0.ManagementApi.Models.EnrollmentsResponse.Identifier
+  fullName: Auth0.ManagementApi.Models.EnrollmentsResponse.Identifier
+  nameWithType: EnrollmentsResponse.Identifier
+- uid: Auth0.ManagementApi.Models.EnrollmentsResponse.Identifier*
+  name: Identifier
+  href: api/Auth0.ManagementApi.Models.EnrollmentsResponse.html#Auth0_ManagementApi_Models_EnrollmentsResponse_Identifier_
+  commentId: Overload:Auth0.ManagementApi.Models.EnrollmentsResponse.Identifier
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.EnrollmentsResponse.Identifier
+  nameWithType: EnrollmentsResponse.Identifier
+- uid: Auth0.ManagementApi.Models.EnrollmentsResponse.LastAuth
+  name: LastAuth
+  href: api/Auth0.ManagementApi.Models.EnrollmentsResponse.html#Auth0_ManagementApi_Models_EnrollmentsResponse_LastAuth
+  commentId: P:Auth0.ManagementApi.Models.EnrollmentsResponse.LastAuth
+  fullName: Auth0.ManagementApi.Models.EnrollmentsResponse.LastAuth
+  nameWithType: EnrollmentsResponse.LastAuth
+- uid: Auth0.ManagementApi.Models.EnrollmentsResponse.LastAuth*
+  name: LastAuth
+  href: api/Auth0.ManagementApi.Models.EnrollmentsResponse.html#Auth0_ManagementApi_Models_EnrollmentsResponse_LastAuth_
+  commentId: Overload:Auth0.ManagementApi.Models.EnrollmentsResponse.LastAuth
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.EnrollmentsResponse.LastAuth
+  nameWithType: EnrollmentsResponse.LastAuth
+- uid: Auth0.ManagementApi.Models.EnrollmentsResponse.Name
+  name: Name
+  href: api/Auth0.ManagementApi.Models.EnrollmentsResponse.html#Auth0_ManagementApi_Models_EnrollmentsResponse_Name
+  commentId: P:Auth0.ManagementApi.Models.EnrollmentsResponse.Name
+  fullName: Auth0.ManagementApi.Models.EnrollmentsResponse.Name
+  nameWithType: EnrollmentsResponse.Name
+- uid: Auth0.ManagementApi.Models.EnrollmentsResponse.Name*
+  name: Name
+  href: api/Auth0.ManagementApi.Models.EnrollmentsResponse.html#Auth0_ManagementApi_Models_EnrollmentsResponse_Name_
+  commentId: Overload:Auth0.ManagementApi.Models.EnrollmentsResponse.Name
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.EnrollmentsResponse.Name
+  nameWithType: EnrollmentsResponse.Name
+- uid: Auth0.ManagementApi.Models.EnrollmentsResponse.PhoneNumber
+  name: PhoneNumber
+  href: api/Auth0.ManagementApi.Models.EnrollmentsResponse.html#Auth0_ManagementApi_Models_EnrollmentsResponse_PhoneNumber
+  commentId: P:Auth0.ManagementApi.Models.EnrollmentsResponse.PhoneNumber
+  fullName: Auth0.ManagementApi.Models.EnrollmentsResponse.PhoneNumber
+  nameWithType: EnrollmentsResponse.PhoneNumber
+- uid: Auth0.ManagementApi.Models.EnrollmentsResponse.PhoneNumber*
+  name: PhoneNumber
+  href: api/Auth0.ManagementApi.Models.EnrollmentsResponse.html#Auth0_ManagementApi_Models_EnrollmentsResponse_PhoneNumber_
+  commentId: Overload:Auth0.ManagementApi.Models.EnrollmentsResponse.PhoneNumber
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.EnrollmentsResponse.PhoneNumber
+  nameWithType: EnrollmentsResponse.PhoneNumber
+- uid: Auth0.ManagementApi.Models.EnrollmentsResponse.Status
+  name: Status
+  href: api/Auth0.ManagementApi.Models.EnrollmentsResponse.html#Auth0_ManagementApi_Models_EnrollmentsResponse_Status
+  commentId: P:Auth0.ManagementApi.Models.EnrollmentsResponse.Status
+  fullName: Auth0.ManagementApi.Models.EnrollmentsResponse.Status
+  nameWithType: EnrollmentsResponse.Status
+- uid: Auth0.ManagementApi.Models.EnrollmentsResponse.Status*
+  name: Status
+  href: api/Auth0.ManagementApi.Models.EnrollmentsResponse.html#Auth0_ManagementApi_Models_EnrollmentsResponse_Status_
+  commentId: Overload:Auth0.ManagementApi.Models.EnrollmentsResponse.Status
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.EnrollmentsResponse.Status
+  nameWithType: EnrollmentsResponse.Status
+- uid: Auth0.ManagementApi.Models.EnrollmentsResponse.Type
+  name: Type
+  href: api/Auth0.ManagementApi.Models.EnrollmentsResponse.html#Auth0_ManagementApi_Models_EnrollmentsResponse_Type
+  commentId: P:Auth0.ManagementApi.Models.EnrollmentsResponse.Type
+  fullName: Auth0.ManagementApi.Models.EnrollmentsResponse.Type
+  nameWithType: EnrollmentsResponse.Type
+- uid: Auth0.ManagementApi.Models.EnrollmentsResponse.Type*
+  name: Type
+  href: api/Auth0.ManagementApi.Models.EnrollmentsResponse.html#Auth0_ManagementApi_Models_EnrollmentsResponse_Type_
+  commentId: Overload:Auth0.ManagementApi.Models.EnrollmentsResponse.Type
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.EnrollmentsResponse.Type
+  nameWithType: EnrollmentsResponse.Type
+- uid: Auth0.ManagementApi.Models.EnrollmentStatus
+  name: EnrollmentStatus
+  href: api/Auth0.ManagementApi.Models.EnrollmentStatus.html
+  commentId: T:Auth0.ManagementApi.Models.EnrollmentStatus
+  fullName: Auth0.ManagementApi.Models.EnrollmentStatus
+  nameWithType: EnrollmentStatus
+- uid: Auth0.ManagementApi.Models.EnrollmentStatus.Confirmed
+  name: Confirmed
+  href: api/Auth0.ManagementApi.Models.EnrollmentStatus.html#Auth0_ManagementApi_Models_EnrollmentStatus_Confirmed
+  commentId: F:Auth0.ManagementApi.Models.EnrollmentStatus.Confirmed
+  fullName: Auth0.ManagementApi.Models.EnrollmentStatus.Confirmed
+  nameWithType: EnrollmentStatus.Confirmed
+- uid: Auth0.ManagementApi.Models.EnrollmentStatus.Pending
+  name: Pending
+  href: api/Auth0.ManagementApi.Models.EnrollmentStatus.html#Auth0_ManagementApi_Models_EnrollmentStatus_Pending
+  commentId: F:Auth0.ManagementApi.Models.EnrollmentStatus.Pending
+  fullName: Auth0.ManagementApi.Models.EnrollmentStatus.Pending
+  nameWithType: EnrollmentStatus.Pending
+- uid: Auth0.ManagementApi.Models.GenerateRecoveryCodeResponse
+  name: GenerateRecoveryCodeResponse
+  href: api/Auth0.ManagementApi.Models.GenerateRecoveryCodeResponse.html
+  commentId: T:Auth0.ManagementApi.Models.GenerateRecoveryCodeResponse
+  fullName: Auth0.ManagementApi.Models.GenerateRecoveryCodeResponse
+  nameWithType: GenerateRecoveryCodeResponse
+- uid: Auth0.ManagementApi.Models.GenerateRecoveryCodeResponse.RecoveryCode
+  name: RecoveryCode
+  href: api/Auth0.ManagementApi.Models.GenerateRecoveryCodeResponse.html#Auth0_ManagementApi_Models_GenerateRecoveryCodeResponse_RecoveryCode
+  commentId: P:Auth0.ManagementApi.Models.GenerateRecoveryCodeResponse.RecoveryCode
+  fullName: Auth0.ManagementApi.Models.GenerateRecoveryCodeResponse.RecoveryCode
+  nameWithType: GenerateRecoveryCodeResponse.RecoveryCode
+- uid: Auth0.ManagementApi.Models.GenerateRecoveryCodeResponse.RecoveryCode*
+  name: RecoveryCode
+  href: api/Auth0.ManagementApi.Models.GenerateRecoveryCodeResponse.html#Auth0_ManagementApi_Models_GenerateRecoveryCodeResponse_RecoveryCode_
+  commentId: Overload:Auth0.ManagementApi.Models.GenerateRecoveryCodeResponse.RecoveryCode
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.GenerateRecoveryCodeResponse.RecoveryCode
+  nameWithType: GenerateRecoveryCodeResponse.RecoveryCode
 - uid: Auth0.ManagementApi.Models.GetClientGrantsRequest
   name: GetClientGrantsRequest
   href: api/Auth0.ManagementApi.Models.GetClientGrantsRequest.html
@@ -9244,6 +9468,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.ResourceServerBase.AllowOfflineAccess
   nameWithType: ResourceServerBase.AllowOfflineAccess
+- uid: Auth0.ManagementApi.Models.ResourceServerBase.EnforcePolicies
+  name: EnforcePolicies
+  href: api/Auth0.ManagementApi.Models.ResourceServerBase.html#Auth0_ManagementApi_Models_ResourceServerBase_EnforcePolicies
+  commentId: P:Auth0.ManagementApi.Models.ResourceServerBase.EnforcePolicies
+  fullName: Auth0.ManagementApi.Models.ResourceServerBase.EnforcePolicies
+  nameWithType: ResourceServerBase.EnforcePolicies
+- uid: Auth0.ManagementApi.Models.ResourceServerBase.EnforcePolicies*
+  name: EnforcePolicies
+  href: api/Auth0.ManagementApi.Models.ResourceServerBase.html#Auth0_ManagementApi_Models_ResourceServerBase_EnforcePolicies_
+  commentId: Overload:Auth0.ManagementApi.Models.ResourceServerBase.EnforcePolicies
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.ResourceServerBase.EnforcePolicies
+  nameWithType: ResourceServerBase.EnforcePolicies
 - uid: Auth0.ManagementApi.Models.ResourceServerBase.Name
   name: Name
   href: api/Auth0.ManagementApi.Models.ResourceServerBase.html#Auth0_ManagementApi_Models_ResourceServerBase_Name
@@ -9309,6 +9546,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.ResourceServerBase.SkipConsentForVerifiableFirstPartyClients
   nameWithType: ResourceServerBase.SkipConsentForVerifiableFirstPartyClients
+- uid: Auth0.ManagementApi.Models.ResourceServerBase.TokenDialect
+  name: TokenDialect
+  href: api/Auth0.ManagementApi.Models.ResourceServerBase.html#Auth0_ManagementApi_Models_ResourceServerBase_TokenDialect
+  commentId: P:Auth0.ManagementApi.Models.ResourceServerBase.TokenDialect
+  fullName: Auth0.ManagementApi.Models.ResourceServerBase.TokenDialect
+  nameWithType: ResourceServerBase.TokenDialect
+- uid: Auth0.ManagementApi.Models.ResourceServerBase.TokenDialect*
+  name: TokenDialect
+  href: api/Auth0.ManagementApi.Models.ResourceServerBase.html#Auth0_ManagementApi_Models_ResourceServerBase_TokenDialect_
+  commentId: Overload:Auth0.ManagementApi.Models.ResourceServerBase.TokenDialect
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.ResourceServerBase.TokenDialect
+  nameWithType: ResourceServerBase.TokenDialect
 - uid: Auth0.ManagementApi.Models.ResourceServerBase.TokenLifetime
   name: TokenLifetime
   href: api/Auth0.ManagementApi.Models.ResourceServerBase.html#Auth0_ManagementApi_Models_ResourceServerBase_TokenLifetime
@@ -9335,6 +9585,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.ResourceServerBase.TokenLifetimeForWeb
   nameWithType: ResourceServerBase.TokenLifetimeForWeb
+- uid: Auth0.ManagementApi.Models.ResourceServerBase.VerificationLocation
+  name: VerificationLocation
+  href: api/Auth0.ManagementApi.Models.ResourceServerBase.html#Auth0_ManagementApi_Models_ResourceServerBase_VerificationLocation
+  commentId: P:Auth0.ManagementApi.Models.ResourceServerBase.VerificationLocation
+  fullName: Auth0.ManagementApi.Models.ResourceServerBase.VerificationLocation
+  nameWithType: ResourceServerBase.VerificationLocation
+- uid: Auth0.ManagementApi.Models.ResourceServerBase.VerificationLocation*
+  name: VerificationLocation
+  href: api/Auth0.ManagementApi.Models.ResourceServerBase.html#Auth0_ManagementApi_Models_ResourceServerBase_VerificationLocation_
+  commentId: Overload:Auth0.ManagementApi.Models.ResourceServerBase.VerificationLocation
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.ResourceServerBase.VerificationLocation
+  nameWithType: ResourceServerBase.VerificationLocation
 - uid: Auth0.ManagementApi.Models.ResourceServerCreateRequest
   name: ResourceServerCreateRequest
   href: api/Auth0.ManagementApi.Models.ResourceServerCreateRequest.html
@@ -10291,6 +10554,88 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.SigningKey.Pkcs7
   nameWithType: SigningKey.Pkcs7
+- uid: Auth0.ManagementApi.Models.TenantChangePassword
+  name: TenantChangePassword
+  href: api/Auth0.ManagementApi.Models.TenantChangePassword.html
+  commentId: T:Auth0.ManagementApi.Models.TenantChangePassword
+  fullName: Auth0.ManagementApi.Models.TenantChangePassword
+  nameWithType: TenantChangePassword
+- uid: Auth0.ManagementApi.Models.TenantChangePassword.Enabled
+  name: Enabled
+  href: api/Auth0.ManagementApi.Models.TenantChangePassword.html#Auth0_ManagementApi_Models_TenantChangePassword_Enabled
+  commentId: P:Auth0.ManagementApi.Models.TenantChangePassword.Enabled
+  fullName: Auth0.ManagementApi.Models.TenantChangePassword.Enabled
+  nameWithType: TenantChangePassword.Enabled
+- uid: Auth0.ManagementApi.Models.TenantChangePassword.Enabled*
+  name: Enabled
+  href: api/Auth0.ManagementApi.Models.TenantChangePassword.html#Auth0_ManagementApi_Models_TenantChangePassword_Enabled_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantChangePassword.Enabled
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantChangePassword.Enabled
+  nameWithType: TenantChangePassword.Enabled
+- uid: Auth0.ManagementApi.Models.TenantChangePassword.Html
+  name: Html
+  href: api/Auth0.ManagementApi.Models.TenantChangePassword.html#Auth0_ManagementApi_Models_TenantChangePassword_Html
+  commentId: P:Auth0.ManagementApi.Models.TenantChangePassword.Html
+  fullName: Auth0.ManagementApi.Models.TenantChangePassword.Html
+  nameWithType: TenantChangePassword.Html
+- uid: Auth0.ManagementApi.Models.TenantChangePassword.Html*
+  name: Html
+  href: api/Auth0.ManagementApi.Models.TenantChangePassword.html#Auth0_ManagementApi_Models_TenantChangePassword_Html_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantChangePassword.Html
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantChangePassword.Html
+  nameWithType: TenantChangePassword.Html
+- uid: Auth0.ManagementApi.Models.TenantDeviceFlow
+  name: TenantDeviceFlow
+  href: api/Auth0.ManagementApi.Models.TenantDeviceFlow.html
+  commentId: T:Auth0.ManagementApi.Models.TenantDeviceFlow
+  fullName: Auth0.ManagementApi.Models.TenantDeviceFlow
+  nameWithType: TenantDeviceFlow
+- uid: Auth0.ManagementApi.Models.TenantDeviceFlow.Charset
+  name: Charset
+  href: api/Auth0.ManagementApi.Models.TenantDeviceFlow.html#Auth0_ManagementApi_Models_TenantDeviceFlow_Charset
+  commentId: P:Auth0.ManagementApi.Models.TenantDeviceFlow.Charset
+  fullName: Auth0.ManagementApi.Models.TenantDeviceFlow.Charset
+  nameWithType: TenantDeviceFlow.Charset
+- uid: Auth0.ManagementApi.Models.TenantDeviceFlow.Charset*
+  name: Charset
+  href: api/Auth0.ManagementApi.Models.TenantDeviceFlow.html#Auth0_ManagementApi_Models_TenantDeviceFlow_Charset_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantDeviceFlow.Charset
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantDeviceFlow.Charset
+  nameWithType: TenantDeviceFlow.Charset
+- uid: Auth0.ManagementApi.Models.TenantDeviceFlow.Mask
+  name: Mask
+  href: api/Auth0.ManagementApi.Models.TenantDeviceFlow.html#Auth0_ManagementApi_Models_TenantDeviceFlow_Mask
+  commentId: P:Auth0.ManagementApi.Models.TenantDeviceFlow.Mask
+  fullName: Auth0.ManagementApi.Models.TenantDeviceFlow.Mask
+  nameWithType: TenantDeviceFlow.Mask
+- uid: Auth0.ManagementApi.Models.TenantDeviceFlow.Mask*
+  name: Mask
+  href: api/Auth0.ManagementApi.Models.TenantDeviceFlow.html#Auth0_ManagementApi_Models_TenantDeviceFlow_Mask_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantDeviceFlow.Mask
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantDeviceFlow.Mask
+  nameWithType: TenantDeviceFlow.Mask
+- uid: Auth0.ManagementApi.Models.TenantDeviceFlowCharset
+  name: TenantDeviceFlowCharset
+  href: api/Auth0.ManagementApi.Models.TenantDeviceFlowCharset.html
+  commentId: T:Auth0.ManagementApi.Models.TenantDeviceFlowCharset
+  fullName: Auth0.ManagementApi.Models.TenantDeviceFlowCharset
+  nameWithType: TenantDeviceFlowCharset
+- uid: Auth0.ManagementApi.Models.TenantDeviceFlowCharset.Base20
+  name: Base20
+  href: api/Auth0.ManagementApi.Models.TenantDeviceFlowCharset.html#Auth0_ManagementApi_Models_TenantDeviceFlowCharset_Base20
+  commentId: F:Auth0.ManagementApi.Models.TenantDeviceFlowCharset.Base20
+  fullName: Auth0.ManagementApi.Models.TenantDeviceFlowCharset.Base20
+  nameWithType: TenantDeviceFlowCharset.Base20
+- uid: Auth0.ManagementApi.Models.TenantDeviceFlowCharset.Digits
+  name: Digits
+  href: api/Auth0.ManagementApi.Models.TenantDeviceFlowCharset.html#Auth0_ManagementApi_Models_TenantDeviceFlowCharset_Digits
+  commentId: F:Auth0.ManagementApi.Models.TenantDeviceFlowCharset.Digits
+  fullName: Auth0.ManagementApi.Models.TenantDeviceFlowCharset.Digits
+  nameWithType: TenantDeviceFlowCharset.Digits
 - uid: Auth0.ManagementApi.Models.TenantErrorPage
   name: TenantErrorPage
   href: api/Auth0.ManagementApi.Models.TenantErrorPage.html
@@ -10336,6 +10681,109 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.TenantErrorPage.Url
   nameWithType: TenantErrorPage.Url
+- uid: Auth0.ManagementApi.Models.TenantFlags
+  name: TenantFlags
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html
+  commentId: T:Auth0.ManagementApi.Models.TenantFlags
+  fullName: Auth0.ManagementApi.Models.TenantFlags
+  nameWithType: TenantFlags
+- uid: Auth0.ManagementApi.Models.TenantFlags.ChangePwdFlowV1
+  name: ChangePwdFlowV1
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_ChangePwdFlowV1
+  commentId: P:Auth0.ManagementApi.Models.TenantFlags.ChangePwdFlowV1
+  fullName: Auth0.ManagementApi.Models.TenantFlags.ChangePwdFlowV1
+  nameWithType: TenantFlags.ChangePwdFlowV1
+- uid: Auth0.ManagementApi.Models.TenantFlags.ChangePwdFlowV1*
+  name: ChangePwdFlowV1
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_ChangePwdFlowV1_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantFlags.ChangePwdFlowV1
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantFlags.ChangePwdFlowV1
+  nameWithType: TenantFlags.ChangePwdFlowV1
+- uid: Auth0.ManagementApi.Models.TenantFlags.DisableClickjackProtectionHeaders
+  name: DisableClickjackProtectionHeaders
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_DisableClickjackProtectionHeaders
+  commentId: P:Auth0.ManagementApi.Models.TenantFlags.DisableClickjackProtectionHeaders
+  fullName: Auth0.ManagementApi.Models.TenantFlags.DisableClickjackProtectionHeaders
+  nameWithType: TenantFlags.DisableClickjackProtectionHeaders
+- uid: Auth0.ManagementApi.Models.TenantFlags.DisableClickjackProtectionHeaders*
+  name: DisableClickjackProtectionHeaders
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_DisableClickjackProtectionHeaders_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantFlags.DisableClickjackProtectionHeaders
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantFlags.DisableClickjackProtectionHeaders
+  nameWithType: TenantFlags.DisableClickjackProtectionHeaders
+- uid: Auth0.ManagementApi.Models.TenantFlags.EnableAPIsSection
+  name: EnableAPIsSection
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnableAPIsSection
+  commentId: P:Auth0.ManagementApi.Models.TenantFlags.EnableAPIsSection
+  fullName: Auth0.ManagementApi.Models.TenantFlags.EnableAPIsSection
+  nameWithType: TenantFlags.EnableAPIsSection
+- uid: Auth0.ManagementApi.Models.TenantFlags.EnableAPIsSection*
+  name: EnableAPIsSection
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnableAPIsSection_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantFlags.EnableAPIsSection
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantFlags.EnableAPIsSection
+  nameWithType: TenantFlags.EnableAPIsSection
+- uid: Auth0.ManagementApi.Models.TenantFlags.EnableClientConnections
+  name: EnableClientConnections
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnableClientConnections
+  commentId: P:Auth0.ManagementApi.Models.TenantFlags.EnableClientConnections
+  fullName: Auth0.ManagementApi.Models.TenantFlags.EnableClientConnections
+  nameWithType: TenantFlags.EnableClientConnections
+- uid: Auth0.ManagementApi.Models.TenantFlags.EnableClientConnections*
+  name: EnableClientConnections
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnableClientConnections_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantFlags.EnableClientConnections
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantFlags.EnableClientConnections
+  nameWithType: TenantFlags.EnableClientConnections
+- uid: Auth0.ManagementApi.Models.TenantFlags.EnablePipeline2
+  name: EnablePipeline2
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnablePipeline2
+  commentId: P:Auth0.ManagementApi.Models.TenantFlags.EnablePipeline2
+  fullName: Auth0.ManagementApi.Models.TenantFlags.EnablePipeline2
+  nameWithType: TenantFlags.EnablePipeline2
+- uid: Auth0.ManagementApi.Models.TenantFlags.EnablePipeline2*
+  name: EnablePipeline2
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnablePipeline2_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantFlags.EnablePipeline2
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantFlags.EnablePipeline2
+  nameWithType: TenantFlags.EnablePipeline2
+- uid: Auth0.ManagementApi.Models.TenantGuardianMfaPage
+  name: TenantGuardianMfaPage
+  href: api/Auth0.ManagementApi.Models.TenantGuardianMfaPage.html
+  commentId: T:Auth0.ManagementApi.Models.TenantGuardianMfaPage
+  fullName: Auth0.ManagementApi.Models.TenantGuardianMfaPage
+  nameWithType: TenantGuardianMfaPage
+- uid: Auth0.ManagementApi.Models.TenantGuardianMfaPage.Enabled
+  name: Enabled
+  href: api/Auth0.ManagementApi.Models.TenantGuardianMfaPage.html#Auth0_ManagementApi_Models_TenantGuardianMfaPage_Enabled
+  commentId: P:Auth0.ManagementApi.Models.TenantGuardianMfaPage.Enabled
+  fullName: Auth0.ManagementApi.Models.TenantGuardianMfaPage.Enabled
+  nameWithType: TenantGuardianMfaPage.Enabled
+- uid: Auth0.ManagementApi.Models.TenantGuardianMfaPage.Enabled*
+  name: Enabled
+  href: api/Auth0.ManagementApi.Models.TenantGuardianMfaPage.html#Auth0_ManagementApi_Models_TenantGuardianMfaPage_Enabled_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantGuardianMfaPage.Enabled
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantGuardianMfaPage.Enabled
+  nameWithType: TenantGuardianMfaPage.Enabled
+- uid: Auth0.ManagementApi.Models.TenantGuardianMfaPage.Html
+  name: Html
+  href: api/Auth0.ManagementApi.Models.TenantGuardianMfaPage.html#Auth0_ManagementApi_Models_TenantGuardianMfaPage_Html
+  commentId: P:Auth0.ManagementApi.Models.TenantGuardianMfaPage.Html
+  fullName: Auth0.ManagementApi.Models.TenantGuardianMfaPage.Html
+  nameWithType: TenantGuardianMfaPage.Html
+- uid: Auth0.ManagementApi.Models.TenantGuardianMfaPage.Html*
+  name: Html
+  href: api/Auth0.ManagementApi.Models.TenantGuardianMfaPage.html#Auth0_ManagementApi_Models_TenantGuardianMfaPage_Html_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantGuardianMfaPage.Html
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantGuardianMfaPage.Html
+  nameWithType: TenantGuardianMfaPage.Html
 - uid: Auth0.ManagementApi.Models.TenantSettings
   name: TenantSettings
   href: api/Auth0.ManagementApi.Models.TenantSettings.html
@@ -10348,6 +10796,45 @@ references:
   commentId: T:Auth0.ManagementApi.Models.TenantSettingsBase
   fullName: Auth0.ManagementApi.Models.TenantSettingsBase
   nameWithType: TenantSettingsBase
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.AllowedLogoutUrls
+  name: AllowedLogoutUrls
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_AllowedLogoutUrls
+  commentId: P:Auth0.ManagementApi.Models.TenantSettingsBase.AllowedLogoutUrls
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.AllowedLogoutUrls
+  nameWithType: TenantSettingsBase.AllowedLogoutUrls
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.AllowedLogoutUrls*
+  name: AllowedLogoutUrls
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_AllowedLogoutUrls_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantSettingsBase.AllowedLogoutUrls
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.AllowedLogoutUrls
+  nameWithType: TenantSettingsBase.AllowedLogoutUrls
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.ChangePassword
+  name: ChangePassword
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_ChangePassword
+  commentId: P:Auth0.ManagementApi.Models.TenantSettingsBase.ChangePassword
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.ChangePassword
+  nameWithType: TenantSettingsBase.ChangePassword
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.ChangePassword*
+  name: ChangePassword
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_ChangePassword_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantSettingsBase.ChangePassword
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.ChangePassword
+  nameWithType: TenantSettingsBase.ChangePassword
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.DefaultAudience
+  name: DefaultAudience
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_DefaultAudience
+  commentId: P:Auth0.ManagementApi.Models.TenantSettingsBase.DefaultAudience
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.DefaultAudience
+  nameWithType: TenantSettingsBase.DefaultAudience
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.DefaultAudience*
+  name: DefaultAudience
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_DefaultAudience_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantSettingsBase.DefaultAudience
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.DefaultAudience
+  nameWithType: TenantSettingsBase.DefaultAudience
 - uid: Auth0.ManagementApi.Models.TenantSettingsBase.DefaultDirectory
   name: DefaultDirectory
   href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_DefaultDirectory
@@ -10361,6 +10848,32 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.TenantSettingsBase.DefaultDirectory
   nameWithType: TenantSettingsBase.DefaultDirectory
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.DeviceFlow
+  name: DeviceFlow
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_DeviceFlow
+  commentId: P:Auth0.ManagementApi.Models.TenantSettingsBase.DeviceFlow
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.DeviceFlow
+  nameWithType: TenantSettingsBase.DeviceFlow
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.DeviceFlow*
+  name: DeviceFlow
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_DeviceFlow_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantSettingsBase.DeviceFlow
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.DeviceFlow
+  nameWithType: TenantSettingsBase.DeviceFlow
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.EnabledLocales
+  name: EnabledLocales
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_EnabledLocales
+  commentId: P:Auth0.ManagementApi.Models.TenantSettingsBase.EnabledLocales
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.EnabledLocales
+  nameWithType: TenantSettingsBase.EnabledLocales
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.EnabledLocales*
+  name: EnabledLocales
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_EnabledLocales_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantSettingsBase.EnabledLocales
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.EnabledLocales
+  nameWithType: TenantSettingsBase.EnabledLocales
 - uid: Auth0.ManagementApi.Models.TenantSettingsBase.ErrorPage
   name: ErrorPage
   href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_ErrorPage
@@ -10374,6 +10887,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.TenantSettingsBase.ErrorPage
   nameWithType: TenantSettingsBase.ErrorPage
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.Flags
+  name: Flags
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_Flags
+  commentId: P:Auth0.ManagementApi.Models.TenantSettingsBase.Flags
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.Flags
+  nameWithType: TenantSettingsBase.Flags
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.Flags*
+  name: Flags
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_Flags_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantSettingsBase.Flags
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.Flags
+  nameWithType: TenantSettingsBase.Flags
 - uid: Auth0.ManagementApi.Models.TenantSettingsBase.FriendlyName
   name: FriendlyName
   href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_FriendlyName
@@ -10387,6 +10913,32 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.TenantSettingsBase.FriendlyName
   nameWithType: TenantSettingsBase.FriendlyName
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.GuardianMfaPage
+  name: GuardianMfaPage
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_GuardianMfaPage
+  commentId: P:Auth0.ManagementApi.Models.TenantSettingsBase.GuardianMfaPage
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.GuardianMfaPage
+  nameWithType: TenantSettingsBase.GuardianMfaPage
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.GuardianMfaPage*
+  name: GuardianMfaPage
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_GuardianMfaPage_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantSettingsBase.GuardianMfaPage
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.GuardianMfaPage
+  nameWithType: TenantSettingsBase.GuardianMfaPage
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.IdleSessionLifetime
+  name: IdleSessionLifetime
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_IdleSessionLifetime
+  commentId: P:Auth0.ManagementApi.Models.TenantSettingsBase.IdleSessionLifetime
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.IdleSessionLifetime
+  nameWithType: TenantSettingsBase.IdleSessionLifetime
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.IdleSessionLifetime*
+  name: IdleSessionLifetime
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_IdleSessionLifetime_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantSettingsBase.IdleSessionLifetime
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.IdleSessionLifetime
+  nameWithType: TenantSettingsBase.IdleSessionLifetime
 - uid: Auth0.ManagementApi.Models.TenantSettingsBase.PictureUrl
   name: PictureUrl
   href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_PictureUrl
@@ -10400,6 +10952,45 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.TenantSettingsBase.PictureUrl
   nameWithType: TenantSettingsBase.PictureUrl
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersion
+  name: SandboxVersion
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_SandboxVersion
+  commentId: P:Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersion
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersion
+  nameWithType: TenantSettingsBase.SandboxVersion
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersion*
+  name: SandboxVersion
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_SandboxVersion_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersion
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersion
+  nameWithType: TenantSettingsBase.SandboxVersion
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersionsAvailable
+  name: SandboxVersionsAvailable
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_SandboxVersionsAvailable
+  commentId: P:Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersionsAvailable
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersionsAvailable
+  nameWithType: TenantSettingsBase.SandboxVersionsAvailable
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersionsAvailable*
+  name: SandboxVersionsAvailable
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_SandboxVersionsAvailable_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersionsAvailable
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersionsAvailable
+  nameWithType: TenantSettingsBase.SandboxVersionsAvailable
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.SessionLifetime
+  name: SessionLifetime
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_SessionLifetime
+  commentId: P:Auth0.ManagementApi.Models.TenantSettingsBase.SessionLifetime
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.SessionLifetime
+  nameWithType: TenantSettingsBase.SessionLifetime
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.SessionLifetime*
+  name: SessionLifetime
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_SessionLifetime_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantSettingsBase.SessionLifetime
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.SessionLifetime
+  nameWithType: TenantSettingsBase.SessionLifetime
 - uid: Auth0.ManagementApi.Models.TenantSettingsBase.SupportEmail
   name: SupportEmail
   href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_SupportEmail
@@ -10451,6 +11042,24 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.Ticket.Value
   nameWithType: Ticket.Value
+- uid: Auth0.ManagementApi.Models.TokenDialect
+  name: TokenDialect
+  href: api/Auth0.ManagementApi.Models.TokenDialect.html
+  commentId: T:Auth0.ManagementApi.Models.TokenDialect
+  fullName: Auth0.ManagementApi.Models.TokenDialect
+  nameWithType: TokenDialect
+- uid: Auth0.ManagementApi.Models.TokenDialect.AccessToken
+  name: AccessToken
+  href: api/Auth0.ManagementApi.Models.TokenDialect.html#Auth0_ManagementApi_Models_TokenDialect_AccessToken
+  commentId: F:Auth0.ManagementApi.Models.TokenDialect.AccessToken
+  fullName: Auth0.ManagementApi.Models.TokenDialect.AccessToken
+  nameWithType: TokenDialect.AccessToken
+- uid: Auth0.ManagementApi.Models.TokenDialect.AccessTokenAuthZ
+  name: AccessTokenAuthZ
+  href: api/Auth0.ManagementApi.Models.TokenDialect.html#Auth0_ManagementApi_Models_TokenDialect_AccessTokenAuthZ
+  commentId: F:Auth0.ManagementApi.Models.TokenDialect.AccessTokenAuthZ
+  fullName: Auth0.ManagementApi.Models.TokenDialect.AccessTokenAuthZ
+  nameWithType: TokenDialect.AccessTokenAuthZ
 - uid: Auth0.ManagementApi.Models.TokenEndpointAuthMethod
   name: TokenEndpointAuthMethod
   href: api/Auth0.ManagementApi.Models.TokenEndpointAuthMethod.html
@@ -10537,19 +11146,6 @@ references:
   commentId: T:Auth0.ManagementApi.Models.User
   fullName: Auth0.ManagementApi.Models.User
   nameWithType: User
-- uid: Auth0.ManagementApi.Models.User.Blocked
-  name: Blocked
-  href: api/Auth0.ManagementApi.Models.User.html#Auth0_ManagementApi_Models_User_Blocked
-  commentId: P:Auth0.ManagementApi.Models.User.Blocked
-  fullName: Auth0.ManagementApi.Models.User.Blocked
-  nameWithType: User.Blocked
-- uid: Auth0.ManagementApi.Models.User.Blocked*
-  name: Blocked
-  href: api/Auth0.ManagementApi.Models.User.html#Auth0_ManagementApi_Models_User_Blocked_
-  commentId: Overload:Auth0.ManagementApi.Models.User.Blocked
-  isSpec: "True"
-  fullName: Auth0.ManagementApi.Models.User.Blocked
-  nameWithType: User.Blocked
 - uid: Auth0.ManagementApi.Models.User.CreatedAt
   name: CreatedAt
   href: api/Auth0.ManagementApi.Models.User.html#Auth0_ManagementApi_Models_User_CreatedAt
@@ -10563,32 +11159,6 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.User.CreatedAt
   nameWithType: User.CreatedAt
-- uid: Auth0.ManagementApi.Models.User.FirstName
-  name: FirstName
-  href: api/Auth0.ManagementApi.Models.User.html#Auth0_ManagementApi_Models_User_FirstName
-  commentId: P:Auth0.ManagementApi.Models.User.FirstName
-  fullName: Auth0.ManagementApi.Models.User.FirstName
-  nameWithType: User.FirstName
-- uid: Auth0.ManagementApi.Models.User.FirstName*
-  name: FirstName
-  href: api/Auth0.ManagementApi.Models.User.html#Auth0_ManagementApi_Models_User_FirstName_
-  commentId: Overload:Auth0.ManagementApi.Models.User.FirstName
-  isSpec: "True"
-  fullName: Auth0.ManagementApi.Models.User.FirstName
-  nameWithType: User.FirstName
-- uid: Auth0.ManagementApi.Models.User.FullName
-  name: FullName
-  href: api/Auth0.ManagementApi.Models.User.html#Auth0_ManagementApi_Models_User_FullName
-  commentId: P:Auth0.ManagementApi.Models.User.FullName
-  fullName: Auth0.ManagementApi.Models.User.FullName
-  nameWithType: User.FullName
-- uid: Auth0.ManagementApi.Models.User.FullName*
-  name: FullName
-  href: api/Auth0.ManagementApi.Models.User.html#Auth0_ManagementApi_Models_User_FullName_
-  commentId: Overload:Auth0.ManagementApi.Models.User.FullName
-  isSpec: "True"
-  fullName: Auth0.ManagementApi.Models.User.FullName
-  nameWithType: User.FullName
 - uid: Auth0.ManagementApi.Models.User.Identities
   name: Identities
   href: api/Auth0.ManagementApi.Models.User.html#Auth0_ManagementApi_Models_User_Identities
@@ -10628,19 +11198,6 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.User.LastLogin
   nameWithType: User.LastLogin
-- uid: Auth0.ManagementApi.Models.User.LastName
-  name: LastName
-  href: api/Auth0.ManagementApi.Models.User.html#Auth0_ManagementApi_Models_User_LastName
-  commentId: P:Auth0.ManagementApi.Models.User.LastName
-  fullName: Auth0.ManagementApi.Models.User.LastName
-  nameWithType: User.LastName
-- uid: Auth0.ManagementApi.Models.User.LastName*
-  name: LastName
-  href: api/Auth0.ManagementApi.Models.User.html#Auth0_ManagementApi_Models_User_LastName_
-  commentId: Overload:Auth0.ManagementApi.Models.User.LastName
-  isSpec: "True"
-  fullName: Auth0.ManagementApi.Models.User.LastName
-  nameWithType: User.LastName
 - uid: Auth0.ManagementApi.Models.User.LastPasswordReset
   name: LastPasswordReset
   href: api/Auth0.ManagementApi.Models.User.html#Auth0_ManagementApi_Models_User_LastPasswordReset
@@ -10693,45 +11250,6 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.User.Multifactor
   nameWithType: User.Multifactor
-- uid: Auth0.ManagementApi.Models.User.NickName
-  name: NickName
-  href: api/Auth0.ManagementApi.Models.User.html#Auth0_ManagementApi_Models_User_NickName
-  commentId: P:Auth0.ManagementApi.Models.User.NickName
-  fullName: Auth0.ManagementApi.Models.User.NickName
-  nameWithType: User.NickName
-- uid: Auth0.ManagementApi.Models.User.NickName*
-  name: NickName
-  href: api/Auth0.ManagementApi.Models.User.html#Auth0_ManagementApi_Models_User_NickName_
-  commentId: Overload:Auth0.ManagementApi.Models.User.NickName
-  isSpec: "True"
-  fullName: Auth0.ManagementApi.Models.User.NickName
-  nameWithType: User.NickName
-- uid: Auth0.ManagementApi.Models.User.PhoneVerified
-  name: PhoneVerified
-  href: api/Auth0.ManagementApi.Models.User.html#Auth0_ManagementApi_Models_User_PhoneVerified
-  commentId: P:Auth0.ManagementApi.Models.User.PhoneVerified
-  fullName: Auth0.ManagementApi.Models.User.PhoneVerified
-  nameWithType: User.PhoneVerified
-- uid: Auth0.ManagementApi.Models.User.PhoneVerified*
-  name: PhoneVerified
-  href: api/Auth0.ManagementApi.Models.User.html#Auth0_ManagementApi_Models_User_PhoneVerified_
-  commentId: Overload:Auth0.ManagementApi.Models.User.PhoneVerified
-  isSpec: "True"
-  fullName: Auth0.ManagementApi.Models.User.PhoneVerified
-  nameWithType: User.PhoneVerified
-- uid: Auth0.ManagementApi.Models.User.Picture
-  name: Picture
-  href: api/Auth0.ManagementApi.Models.User.html#Auth0_ManagementApi_Models_User_Picture
-  commentId: P:Auth0.ManagementApi.Models.User.Picture
-  fullName: Auth0.ManagementApi.Models.User.Picture
-  nameWithType: User.Picture
-- uid: Auth0.ManagementApi.Models.User.Picture*
-  name: Picture
-  href: api/Auth0.ManagementApi.Models.User.html#Auth0_ManagementApi_Models_User_Picture_
-  commentId: Overload:Auth0.ManagementApi.Models.User.Picture
-  isSpec: "True"
-  fullName: Auth0.ManagementApi.Models.User.Picture
-  nameWithType: User.Picture
 - uid: Auth0.ManagementApi.Models.User.ProviderAttributes
   name: ProviderAttributes
   href: api/Auth0.ManagementApi.Models.User.html#Auth0_ManagementApi_Models_User_ProviderAttributes
@@ -10854,6 +11372,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.UserBase.AppMetadata
   nameWithType: UserBase.AppMetadata
+- uid: Auth0.ManagementApi.Models.UserBase.Blocked
+  name: Blocked
+  href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_Blocked
+  commentId: P:Auth0.ManagementApi.Models.UserBase.Blocked
+  fullName: Auth0.ManagementApi.Models.UserBase.Blocked
+  nameWithType: UserBase.Blocked
+- uid: Auth0.ManagementApi.Models.UserBase.Blocked*
+  name: Blocked
+  href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_Blocked_
+  commentId: Overload:Auth0.ManagementApi.Models.UserBase.Blocked
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.UserBase.Blocked
+  nameWithType: UserBase.Blocked
 - uid: Auth0.ManagementApi.Models.UserBase.Email
   name: Email
   href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_Email
@@ -10880,6 +11411,58 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.UserBase.EmailVerified
   nameWithType: UserBase.EmailVerified
+- uid: Auth0.ManagementApi.Models.UserBase.FirstName
+  name: FirstName
+  href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_FirstName
+  commentId: P:Auth0.ManagementApi.Models.UserBase.FirstName
+  fullName: Auth0.ManagementApi.Models.UserBase.FirstName
+  nameWithType: UserBase.FirstName
+- uid: Auth0.ManagementApi.Models.UserBase.FirstName*
+  name: FirstName
+  href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_FirstName_
+  commentId: Overload:Auth0.ManagementApi.Models.UserBase.FirstName
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.UserBase.FirstName
+  nameWithType: UserBase.FirstName
+- uid: Auth0.ManagementApi.Models.UserBase.FullName
+  name: FullName
+  href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_FullName
+  commentId: P:Auth0.ManagementApi.Models.UserBase.FullName
+  fullName: Auth0.ManagementApi.Models.UserBase.FullName
+  nameWithType: UserBase.FullName
+- uid: Auth0.ManagementApi.Models.UserBase.FullName*
+  name: FullName
+  href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_FullName_
+  commentId: Overload:Auth0.ManagementApi.Models.UserBase.FullName
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.UserBase.FullName
+  nameWithType: UserBase.FullName
+- uid: Auth0.ManagementApi.Models.UserBase.LastName
+  name: LastName
+  href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_LastName
+  commentId: P:Auth0.ManagementApi.Models.UserBase.LastName
+  fullName: Auth0.ManagementApi.Models.UserBase.LastName
+  nameWithType: UserBase.LastName
+- uid: Auth0.ManagementApi.Models.UserBase.LastName*
+  name: LastName
+  href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_LastName_
+  commentId: Overload:Auth0.ManagementApi.Models.UserBase.LastName
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.UserBase.LastName
+  nameWithType: UserBase.LastName
+- uid: Auth0.ManagementApi.Models.UserBase.NickName
+  name: NickName
+  href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_NickName
+  commentId: P:Auth0.ManagementApi.Models.UserBase.NickName
+  fullName: Auth0.ManagementApi.Models.UserBase.NickName
+  nameWithType: UserBase.NickName
+- uid: Auth0.ManagementApi.Models.UserBase.NickName*
+  name: NickName
+  href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_NickName_
+  commentId: Overload:Auth0.ManagementApi.Models.UserBase.NickName
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.UserBase.NickName
+  nameWithType: UserBase.NickName
 - uid: Auth0.ManagementApi.Models.UserBase.PhoneNumber
   name: PhoneNumber
   href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_PhoneNumber
@@ -10893,6 +11476,32 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.UserBase.PhoneNumber
   nameWithType: UserBase.PhoneNumber
+- uid: Auth0.ManagementApi.Models.UserBase.PhoneVerified
+  name: PhoneVerified
+  href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_PhoneVerified
+  commentId: P:Auth0.ManagementApi.Models.UserBase.PhoneVerified
+  fullName: Auth0.ManagementApi.Models.UserBase.PhoneVerified
+  nameWithType: UserBase.PhoneVerified
+- uid: Auth0.ManagementApi.Models.UserBase.PhoneVerified*
+  name: PhoneVerified
+  href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_PhoneVerified_
+  commentId: Overload:Auth0.ManagementApi.Models.UserBase.PhoneVerified
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.UserBase.PhoneVerified
+  nameWithType: UserBase.PhoneVerified
+- uid: Auth0.ManagementApi.Models.UserBase.Picture
+  name: Picture
+  href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_Picture
+  commentId: P:Auth0.ManagementApi.Models.UserBase.Picture
+  fullName: Auth0.ManagementApi.Models.UserBase.Picture
+  nameWithType: UserBase.Picture
+- uid: Auth0.ManagementApi.Models.UserBase.Picture*
+  name: Picture
+  href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_Picture_
+  commentId: Overload:Auth0.ManagementApi.Models.UserBase.Picture
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.UserBase.Picture
+  nameWithType: UserBase.Picture
 - uid: Auth0.ManagementApi.Models.UserBase.UserMetadata
   name: UserMetadata
   href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_UserMetadata
@@ -10989,58 +11598,6 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.UserCreateRequest.Connection
   nameWithType: UserCreateRequest.Connection
-- uid: Auth0.ManagementApi.Models.UserCreateRequest.FirstName
-  name: FirstName
-  href: api/Auth0.ManagementApi.Models.UserCreateRequest.html#Auth0_ManagementApi_Models_UserCreateRequest_FirstName
-  commentId: P:Auth0.ManagementApi.Models.UserCreateRequest.FirstName
-  fullName: Auth0.ManagementApi.Models.UserCreateRequest.FirstName
-  nameWithType: UserCreateRequest.FirstName
-- uid: Auth0.ManagementApi.Models.UserCreateRequest.FirstName*
-  name: FirstName
-  href: api/Auth0.ManagementApi.Models.UserCreateRequest.html#Auth0_ManagementApi_Models_UserCreateRequest_FirstName_
-  commentId: Overload:Auth0.ManagementApi.Models.UserCreateRequest.FirstName
-  isSpec: "True"
-  fullName: Auth0.ManagementApi.Models.UserCreateRequest.FirstName
-  nameWithType: UserCreateRequest.FirstName
-- uid: Auth0.ManagementApi.Models.UserCreateRequest.FullName
-  name: FullName
-  href: api/Auth0.ManagementApi.Models.UserCreateRequest.html#Auth0_ManagementApi_Models_UserCreateRequest_FullName
-  commentId: P:Auth0.ManagementApi.Models.UserCreateRequest.FullName
-  fullName: Auth0.ManagementApi.Models.UserCreateRequest.FullName
-  nameWithType: UserCreateRequest.FullName
-- uid: Auth0.ManagementApi.Models.UserCreateRequest.FullName*
-  name: FullName
-  href: api/Auth0.ManagementApi.Models.UserCreateRequest.html#Auth0_ManagementApi_Models_UserCreateRequest_FullName_
-  commentId: Overload:Auth0.ManagementApi.Models.UserCreateRequest.FullName
-  isSpec: "True"
-  fullName: Auth0.ManagementApi.Models.UserCreateRequest.FullName
-  nameWithType: UserCreateRequest.FullName
-- uid: Auth0.ManagementApi.Models.UserCreateRequest.LastName
-  name: LastName
-  href: api/Auth0.ManagementApi.Models.UserCreateRequest.html#Auth0_ManagementApi_Models_UserCreateRequest_LastName
-  commentId: P:Auth0.ManagementApi.Models.UserCreateRequest.LastName
-  fullName: Auth0.ManagementApi.Models.UserCreateRequest.LastName
-  nameWithType: UserCreateRequest.LastName
-- uid: Auth0.ManagementApi.Models.UserCreateRequest.LastName*
-  name: LastName
-  href: api/Auth0.ManagementApi.Models.UserCreateRequest.html#Auth0_ManagementApi_Models_UserCreateRequest_LastName_
-  commentId: Overload:Auth0.ManagementApi.Models.UserCreateRequest.LastName
-  isSpec: "True"
-  fullName: Auth0.ManagementApi.Models.UserCreateRequest.LastName
-  nameWithType: UserCreateRequest.LastName
-- uid: Auth0.ManagementApi.Models.UserCreateRequest.NickName
-  name: NickName
-  href: api/Auth0.ManagementApi.Models.UserCreateRequest.html#Auth0_ManagementApi_Models_UserCreateRequest_NickName
-  commentId: P:Auth0.ManagementApi.Models.UserCreateRequest.NickName
-  fullName: Auth0.ManagementApi.Models.UserCreateRequest.NickName
-  nameWithType: UserCreateRequest.NickName
-- uid: Auth0.ManagementApi.Models.UserCreateRequest.NickName*
-  name: NickName
-  href: api/Auth0.ManagementApi.Models.UserCreateRequest.html#Auth0_ManagementApi_Models_UserCreateRequest_NickName_
-  commentId: Overload:Auth0.ManagementApi.Models.UserCreateRequest.NickName
-  isSpec: "True"
-  fullName: Auth0.ManagementApi.Models.UserCreateRequest.NickName
-  nameWithType: UserCreateRequest.NickName
 - uid: Auth0.ManagementApi.Models.UserCreateRequest.Password
   name: Password
   href: api/Auth0.ManagementApi.Models.UserCreateRequest.html#Auth0_ManagementApi_Models_UserCreateRequest_Password
@@ -11054,19 +11611,6 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.UserCreateRequest.Password
   nameWithType: UserCreateRequest.Password
-- uid: Auth0.ManagementApi.Models.UserCreateRequest.Picture
-  name: Picture
-  href: api/Auth0.ManagementApi.Models.UserCreateRequest.html#Auth0_ManagementApi_Models_UserCreateRequest_Picture
-  commentId: P:Auth0.ManagementApi.Models.UserCreateRequest.Picture
-  fullName: Auth0.ManagementApi.Models.UserCreateRequest.Picture
-  nameWithType: UserCreateRequest.Picture
-- uid: Auth0.ManagementApi.Models.UserCreateRequest.Picture*
-  name: Picture
-  href: api/Auth0.ManagementApi.Models.UserCreateRequest.html#Auth0_ManagementApi_Models_UserCreateRequest_Picture_
-  commentId: Overload:Auth0.ManagementApi.Models.UserCreateRequest.Picture
-  isSpec: "True"
-  fullName: Auth0.ManagementApi.Models.UserCreateRequest.Picture
-  nameWithType: UserCreateRequest.Picture
 - uid: Auth0.ManagementApi.Models.UserCreateRequest.UserId
   name: UserId
   href: api/Auth0.ManagementApi.Models.UserCreateRequest.html#Auth0_ManagementApi_Models_UserCreateRequest_UserId
@@ -11099,19 +11643,6 @@ references:
   commentId: T:Auth0.ManagementApi.Models.UserUpdateRequest
   fullName: Auth0.ManagementApi.Models.UserUpdateRequest
   nameWithType: UserUpdateRequest
-- uid: Auth0.ManagementApi.Models.UserUpdateRequest.Blocked
-  name: Blocked
-  href: api/Auth0.ManagementApi.Models.UserUpdateRequest.html#Auth0_ManagementApi_Models_UserUpdateRequest_Blocked
-  commentId: P:Auth0.ManagementApi.Models.UserUpdateRequest.Blocked
-  fullName: Auth0.ManagementApi.Models.UserUpdateRequest.Blocked
-  nameWithType: UserUpdateRequest.Blocked
-- uid: Auth0.ManagementApi.Models.UserUpdateRequest.Blocked*
-  name: Blocked
-  href: api/Auth0.ManagementApi.Models.UserUpdateRequest.html#Auth0_ManagementApi_Models_UserUpdateRequest_Blocked_
-  commentId: Overload:Auth0.ManagementApi.Models.UserUpdateRequest.Blocked
-  isSpec: "True"
-  fullName: Auth0.ManagementApi.Models.UserUpdateRequest.Blocked
-  nameWithType: UserUpdateRequest.Blocked
 - uid: Auth0.ManagementApi.Models.UserUpdateRequest.ClientId
   name: ClientId
   href: api/Auth0.ManagementApi.Models.UserUpdateRequest.html#Auth0_ManagementApi_Models_UserUpdateRequest_ClientId
@@ -11151,19 +11682,6 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.UserUpdateRequest.Password
   nameWithType: UserUpdateRequest.Password
-- uid: Auth0.ManagementApi.Models.UserUpdateRequest.PhoneVerified
-  name: PhoneVerified
-  href: api/Auth0.ManagementApi.Models.UserUpdateRequest.html#Auth0_ManagementApi_Models_UserUpdateRequest_PhoneVerified
-  commentId: P:Auth0.ManagementApi.Models.UserUpdateRequest.PhoneVerified
-  fullName: Auth0.ManagementApi.Models.UserUpdateRequest.PhoneVerified
-  nameWithType: UserUpdateRequest.PhoneVerified
-- uid: Auth0.ManagementApi.Models.UserUpdateRequest.PhoneVerified*
-  name: PhoneVerified
-  href: api/Auth0.ManagementApi.Models.UserUpdateRequest.html#Auth0_ManagementApi_Models_UserUpdateRequest_PhoneVerified_
-  commentId: Overload:Auth0.ManagementApi.Models.UserUpdateRequest.PhoneVerified
-  isSpec: "True"
-  fullName: Auth0.ManagementApi.Models.UserUpdateRequest.PhoneVerified
-  nameWithType: UserUpdateRequest.PhoneVerified
 - uid: Auth0.ManagementApi.Models.UserUpdateRequest.VerifyEmail
   name: VerifyEmail
   href: api/Auth0.ManagementApi.Models.UserUpdateRequest.html#Auth0_ManagementApi_Models_UserUpdateRequest_VerifyEmail

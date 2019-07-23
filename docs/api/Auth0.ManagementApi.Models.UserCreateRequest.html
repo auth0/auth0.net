@@ -73,7 +73,8 @@
   
   <h1 id="Auth0_ManagementApi_Models_UserCreateRequest" data-uid="Auth0.ManagementApi.Models.UserCreateRequest" class="text-break">Class UserCreateRequest
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Represents the request to create a <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -96,10 +97,31 @@
       <a class="xref" href="Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_PhoneNumber">UserBase.PhoneNumber</a>
     </div>
     <div>
+      <a class="xref" href="Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_PhoneVerified">UserBase.PhoneVerified</a>
+    </div>
+    <div>
       <a class="xref" href="Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_UserMetadata">UserBase.UserMetadata</a>
     </div>
     <div>
       <a class="xref" href="Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_UserName">UserBase.UserName</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_NickName">UserBase.NickName</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_FirstName">UserBase.FirstName</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_FullName">UserBase.FullName</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_LastName">UserBase.LastName</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_Picture">UserBase.Picture</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_Blocked">UserBase.Blocked</a>
     </div>
     <div>
       <span class="xref">System.Object.ToString()</span>
@@ -159,119 +181,6 @@
   </table>
   
   
-  <a id="Auth0_ManagementApi_Models_UserCreateRequest_FirstName_" data-uid="Auth0.ManagementApi.Models.UserCreateRequest.FirstName*"></a>
-  <h4 id="Auth0_ManagementApi_Models_UserCreateRequest_FirstName" data-uid="Auth0.ManagementApi.Models.UserCreateRequest.FirstName">FirstName</h4>
-  <div class="markdown level1 summary"><p>The first name of the user (if available).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string FirstName { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Auth0_ManagementApi_Models_UserCreateRequest_FirstName_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>This is the given_name attribute supplied by the underlying API.</p>
-</div>
-  
-  
-  <a id="Auth0_ManagementApi_Models_UserCreateRequest_FullName_" data-uid="Auth0.ManagementApi.Models.UserCreateRequest.FullName*"></a>
-  <h4 id="Auth0_ManagementApi_Models_UserCreateRequest_FullName" data-uid="Auth0.ManagementApi.Models.UserCreateRequest.FullName">FullName</h4>
-  <div class="markdown level1 summary"><p>The full name of the user (e.g.: John Foo). ALWAYS GENERATED.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string FullName { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Auth0_ManagementApi_Models_UserCreateRequest_FullName_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>This is the name attribute supplied by the underlying API.</p>
-</div>
-  
-  
-  <a id="Auth0_ManagementApi_Models_UserCreateRequest_LastName_" data-uid="Auth0.ManagementApi.Models.UserCreateRequest.LastName*"></a>
-  <h4 id="Auth0_ManagementApi_Models_UserCreateRequest_LastName" data-uid="Auth0.ManagementApi.Models.UserCreateRequest.LastName">LastName</h4>
-  <div class="markdown level1 summary"><p>The last name of the user (if available).</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string LastName { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Auth0_ManagementApi_Models_UserCreateRequest_LastName_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>This is the family_name attribute supplied by the underlying API.</p>
-</div>
-  
-  
-  <a id="Auth0_ManagementApi_Models_UserCreateRequest_NickName_" data-uid="Auth0.ManagementApi.Models.UserCreateRequest.NickName*"></a>
-  <h4 id="Auth0_ManagementApi_Models_UserCreateRequest_NickName" data-uid="Auth0.ManagementApi.Models.UserCreateRequest.NickName">NickName</h4>
-  <div class="markdown level1 summary"><p>The Nickname of the user.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string NickName { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_UserCreateRequest_Password_" data-uid="Auth0.ManagementApi.Models.UserCreateRequest.Password*"></a>
   <h4 id="Auth0_ManagementApi_Models_UserCreateRequest_Password" data-uid="Auth0.ManagementApi.Models.UserCreateRequest.Password">Password</h4>
   <div class="markdown level1 summary"><p>Gets or sets the user&apos;s password. This is mandatory on non-SMS connections.</p>
@@ -280,32 +189,6 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public string Password { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_ManagementApi_Models_UserCreateRequest_Picture_" data-uid="Auth0.ManagementApi.Models.UserCreateRequest.Picture*"></a>
-  <h4 id="Auth0_ManagementApi_Models_UserCreateRequest_Picture" data-uid="Auth0.ManagementApi.Models.UserCreateRequest.Picture">Picture</h4>
-  <div class="markdown level1 summary"><p>URL pointing to the user picture (if not available, will use gravatar.com with the email). ALWAYS GENERATED</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Picture { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">

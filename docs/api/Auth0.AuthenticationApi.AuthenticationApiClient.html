@@ -84,6 +84,7 @@
   <div classs="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="Auth0.AuthenticationApi.IAuthenticationApiClient.html">IAuthenticationApiClient</a></div>
+    <div><span class="xref">System.IDisposable</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -113,42 +114,13 @@
   <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
   <h5 id="Auth0_AuthenticationApi_AuthenticationApiClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class AuthenticationApiClient : IAuthenticationApiClient</code></pre>
+    <pre><code class="lang-csharp hljs">public class AuthenticationApiClient : IAuthenticationApiClient, IDisposable</code></pre>
   </div>
   <h5 id="Auth0_AuthenticationApi_AuthenticationApiClient_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>Full documentation for the Authentication API is available at <a href="https://auth0.com/docs/auth-api">https://auth0.com/docs/auth-api</a></p>
 </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
-  <a id="Auth0_AuthenticationApi_AuthenticationApiClient__ctor_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.#ctor*"></a>
-  <h4 id="Auth0_AuthenticationApi_AuthenticationApiClient__ctor_System_String_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.#ctor(System.String)">AuthenticationApiClient(String)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.AuthenticationApi.AuthenticationApiClient.html">AuthenticationApiClient</a> class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AuthenticationApiClient(string domain)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">domain</span></td>
-        <td><p>Your Auth0 domain, e.g. tenant.auth0.com.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   
   
   <a id="Auth0_AuthenticationApi_AuthenticationApiClient__ctor_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.#ctor*"></a>
@@ -192,7 +164,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AuthenticationApiClient(string domain, HttpMessageHandler handler)</code></pre>
+    <pre><code class="lang-csharp hljs">public AuthenticationApiClient(string domain, HttpMessageHandler handler = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -221,35 +193,6 @@
   
   
   <a id="Auth0_AuthenticationApi_AuthenticationApiClient__ctor_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.#ctor*"></a>
-  <h4 id="Auth0_AuthenticationApi_AuthenticationApiClient__ctor_Uri_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.#ctor(Uri)">AuthenticationApiClient(Uri)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.AuthenticationApi.AuthenticationApiClient.html">AuthenticationApiClient</a> class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AuthenticationApiClient(Uri baseUri)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Uri</span></td>
-        <td><span class="parametername">baseUri</span></td>
-        <td><p>The base URI.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_AuthenticationApi_AuthenticationApiClient__ctor_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.#ctor*"></a>
   <h4 id="Auth0_AuthenticationApi_AuthenticationApiClient__ctor_Uri_HttpClient_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.#ctor(Uri,HttpClient)">AuthenticationApiClient(Uri, HttpClient)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.AuthenticationApi.AuthenticationApiClient.html">AuthenticationApiClient</a> class.</p>
 </div>
@@ -271,12 +214,13 @@
       <tr>
         <td><span class="xref">Uri</span></td>
         <td><span class="parametername">baseUri</span></td>
-        <td></td>
+        <td><p>Your Auth0 domain URI, e.g. <a href="https://tenant.auth0.com">https://tenant.auth0.com</a></p>
+</td>
       </tr>
       <tr>
         <td><span class="xref">HttpClient</span></td>
         <td><span class="parametername">httpClient</span></td>
-        <td><p>The <see cref="!:HttpClient"></see> which is used for HTTP requests</p>
+        <td><p>The <see cref="!:HttpClient"></see> which is used for HTTP requests.</p>
 </td>
       </tr>
     </tbody>
@@ -290,7 +234,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AuthenticationApiClient(Uri baseUri, HttpMessageHandler handler)</code></pre>
+    <pre><code class="lang-csharp hljs">public AuthenticationApiClient(Uri baseUri, HttpMessageHandler handler = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -305,13 +249,13 @@
       <tr>
         <td><span class="xref">Uri</span></td>
         <td><span class="parametername">baseUri</span></td>
-        <td><p>The base URI.</p>
+        <td><p>Your Auth0 domain URI, e.g. <a href="https://tenant.auth0.com">https://tenant.auth0.com</a></p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">HttpMessageHandler</span></td>
         <td><span class="parametername">handler</span></td>
-        <td><p>The <see cref="!:HttpMessageHandler"></see> which is used for HTTP requests</p>
+        <td><p>The <see cref="!:HttpMessageHandler"></see> which is used for HTTP requests.</p>
 </td>
       </tr>
     </tbody>
@@ -518,6 +462,17 @@
       </tr>
     </tbody>
   </table>
+  
+  
+  <a id="Auth0_AuthenticationApi_AuthenticationApiClient_Dispose_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.Dispose*"></a>
+  <h4 id="Auth0_AuthenticationApi_AuthenticationApiClient_Dispose" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Disposes of any owned disposable resources such as the ApiConnection.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
   
   
   <a id="Auth0_AuthenticationApi_AuthenticationApiClient_GetImpersonationUrlAsync_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.GetImpersonationUrlAsync*"></a>
@@ -1119,6 +1074,9 @@ then the grant_type will be set to &quot;password&quot;. If a Realm was specifie
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Auth0.AuthenticationApi.IAuthenticationApiClient.html">IAuthenticationApiClient</a>
+  </div>
+  <div>
+      <span class="xref">System.IDisposable</span>
   </div>
 </article>
           </div>
