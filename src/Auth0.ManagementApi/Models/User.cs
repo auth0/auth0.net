@@ -14,7 +14,7 @@ namespace Auth0.ManagementApi.Models
         /// Gets or sets the date the user was created.
         /// </summary>
         [JsonProperty("created_at")]
-        public DateTime CreatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
 
         /// <summary>
         /// An array of objects with information about the user's identities. More than one will exists in case accounts are linked
@@ -32,7 +32,7 @@ namespace Auth0.ManagementApi.Models
         /// The last login date for this user.
         /// </summary>
         [JsonProperty("last_login")]
-        public DateTime LastLogin { get; set; }
+        public DateTime? LastLogin { get; set; }
 
         /// <summary>
         /// Gets or sets the date the user last reset their password.
@@ -59,7 +59,7 @@ namespace Auth0.ManagementApi.Models
         /// Gets or sets the date the user was last updated (modified).
         /// </summary>
         [JsonProperty("updated_at")]
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
 
         /// <summary>
         /// A unique identifier of the user per identity provider, same for all apps (e.g.: google-oauth2|103547991597142817347). ALWAYS GENERATED
