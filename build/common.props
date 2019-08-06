@@ -118,4 +118,7 @@
     <InformationalVersion>$(Major).$(Minor).$(Revision)</InformationalVersion>
     <PackageVersion>$(Major).$(Minor).$(Revision)</PackageVersion>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
 </Project>
