@@ -6,9 +6,6 @@
     <AssemblyName>Auth0.ManagementApi</AssemblyName>
     <PackageId>Auth0.ManagementApi</PackageId>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\Auth0.ManagementApi.xml</DocumentationFile>
-  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Auth0.Core\Auth0.Core.csproj" />
   </ItemGroup>
