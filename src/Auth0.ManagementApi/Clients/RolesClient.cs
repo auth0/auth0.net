@@ -138,11 +138,14 @@ namespace Auth0.ManagementApi.Clients
             return Connection.GetAsync<IPagedList<AssignedUser>>("roles/{id}/users",
                 new Dictionary<string, string>
                 {
-                    {"id", id},
+                    {"id", id}
+                },
+                new Dictionary<string, string>
+                {
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }, null, null, new PagedListConverter<AssignedUser>("users"));
+                }, null, new PagedListConverter<AssignedUser>("users"));
         }
 
         /// <summary>
@@ -171,11 +174,14 @@ namespace Auth0.ManagementApi.Clients
             return Connection.GetAsync<IPagedList<Permission>>("roles/{id}/permissions",
                 new Dictionary<string, string>
                 {
-                        {"id", id},
-                        {"page", pagination.PageNo.ToString()},
-                        {"per_page", pagination.PerPage.ToString()},
-                        {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }, null, null, new PagedListConverter<Permission>("users"));
+                    {"id", id}
+                },
+                new Dictionary<string, string>
+                {
+                    {"page", pagination.PageNo.ToString()},
+                    {"per_page", pagination.PerPage.ToString()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
+                }, null, new PagedListConverter<Permission>("users"));
         }
 
         /// <summary>
@@ -198,7 +204,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous remove operation.</returns>
         public Task RemovePermissionsAsync(string id, AssignPermissionsRequest request)
         {
-            return Connection.DeleteAsync<object>("roles/{id}/permissions", request, 
+            return Connection.DeleteAsync<object>("roles/{id}/permissions", request,
                 new Dictionary<string, string> { {"id", id}, }, null);
         }
     }
