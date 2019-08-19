@@ -12,10 +12,16 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 6.5.0
+      - Assembly is now strong-name-signed so it can be used by other strong-name-signed packages.
+      - NOTE: This is code signing only using a non-secret key. It is not authenticode or tamper protection.
+      - User and role permissions endpoints in UsersClient and RolesClient now correctly honoring paging.
+      - User model optional fields (CreatedAt, UpdatedAt, LastLogin) are now nullable.
+
       Version 6.4.0
       - TenantSettings lifetimes are now double not integer.
       - Added various Guardian-related endpoints on UserClient.
-      
+
       Version 6.3.0
       - Missing Tenant settings now available (device flow, Guardian MFA, Change Password, flags etc.
 
@@ -108,7 +114,7 @@
     <LangVersion>7.1</LangVersion>
     
     <Major>6</Major>
-    <Minor>4</Minor>
+    <Minor>5</Minor>
     <Revision>0</Revision>
 
   </PropertyGroup>
