@@ -341,11 +341,14 @@ namespace Auth0.ManagementApi.Clients
             return Connection.GetAsync<IPagedList<Permission>>("users/{id}/permissions",
                 new Dictionary<string, string>
                 {
-                        {"id", id},
-                        {"page", pagination.PageNo.ToString()},
-                        {"per_page", pagination.PerPage.ToString()},
-                        {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }, null, null, new PagedListConverter<Permission>("users"));
+                     {"id", id}
+                },
+                new Dictionary<string, string>
+                {
+                    {"page", pagination.PageNo.ToString()},
+                    {"per_page", pagination.PerPage.ToString()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
+                }, null, new PagedListConverter<Permission>("users"));
         }
 
         /// <summary>
