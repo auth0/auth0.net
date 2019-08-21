@@ -12,6 +12,9 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 6.5.1
+      - User and role permissions endpoints in UsersClient and RolesClient paging fix.
+
       Version 6.5.0
       - Assembly is now strong-name-signed so it can be used by other strong-name-signed packages.
       - NOTE: This is code signing only using a non-secret key. It is not authenticode or tamper protection.
@@ -115,7 +118,7 @@
     
     <Major>6</Major>
     <Minor>5</Minor>
-    <Revision>0</Revision>
+    <Revision>1</Revision>
 
   </PropertyGroup>
   <PropertyGroup>
