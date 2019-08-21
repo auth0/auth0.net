@@ -354,6 +354,14 @@ namespace Auth0.ManagementApi.IntegrationTests
         }
 
         [Fact]
+        public async Task Test_permissions_can_be_retrieved()
+        {
+            var userPermissions = await _apiClient.Users.GetPermissionsAsync("auth0|5d4344cd2c016b0e7a14313a", new PaginationInfo(0, 50, true));
+            
+            Assert.Equal(2, userPermissions.Count);
+        }
+
+        [Fact]
         public async Task Test_roles_assign_unassign_permission_to_user()
         {
             var userCreateRequest = new UserCreateRequest
