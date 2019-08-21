@@ -348,7 +348,7 @@ namespace Auth0.ManagementApi.Clients
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }, null, new PagedListConverter<Permission>("users"));
+                }, null, new PagedListConverter<Permission>("permissions"));
         }
 
         /// <summary>

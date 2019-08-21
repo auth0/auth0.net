@@ -288,5 +288,13 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Assert
             Assert.NotNull(roles.Paging);
         }
+
+        [Fact]
+        public async Task Test_permissions_can_be_retrieved()
+        {
+            var userPermissions = await _apiClient.Roles.GetPermissionsAsync("rol_XzVrldh70ox7yjl2", new PaginationInfo(0, 50, true));
+
+            Assert.Equal(2, userPermissions.Count);
+        }
     }
 }
