@@ -211,11 +211,11 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A Task representing the operation and potential return value.</returns>
         public Task<IList<EnrollmentsResponse>> GetEnrollmentsAsync(string id)
         {
-            return Connection.GetAsync<IList<EnrollmentsResponse>>("users/{id}/enrollments", null,
+            return Connection.GetAsync<IList<EnrollmentsResponse>>("users/{id}/enrollments",
                 new Dictionary<string, string>
                 {
                     {"id", id}
-                }, null, null);
+                }, null, null, null);
         }
 
         /// <summary>
