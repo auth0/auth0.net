@@ -12,6 +12,9 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 6.5.2
+      - UserClient.GetEnrollments now correctly passes user id.
+
       Version 6.5.1
       - User and role permissions endpoints in UsersClient and RolesClient paging fix.
 
@@ -118,7 +121,7 @@
     
     <Major>6</Major>
     <Minor>5</Minor>
-    <Revision>1</Revision>
+    <Revision>2</Revision>
 
   </PropertyGroup>
   <PropertyGroup>
