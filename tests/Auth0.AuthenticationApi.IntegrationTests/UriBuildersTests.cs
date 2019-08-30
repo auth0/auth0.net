@@ -93,7 +93,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
             logoutUrl.Should()
                 .Be(
-                    @"https://auth0-dotnet-integration-tests.auth0.com/v2/logout?returnTo=http:%2F%2Fwww.jerriepelser.com%2Ftest");
+                    @"https://auth0-dotnet-integration-tests.auth0.com/v2/logout?returnTo=http%3A%2F%2Fwww.jerriepelser.com%2Ftest");
         }
 
         [Fact]
@@ -157,7 +157,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 .WithWtrealm("urn:my-client-id")
                 .Build();
 
-            wsfedUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/wsfed?wtrealm=urn:my-client-id");
+            wsfedUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/wsfed?wtrealm=urn%3Amy-client-id");
         }
 
         [Fact]
@@ -169,7 +169,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 .WithWhr("urn:my-connection-name")
                 .Build();
 
-            wsfedUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/wsfed?whr=urn:my-connection-name");
+            wsfedUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/wsfed?whr=urn%3Amy-connection-name");
         }
 
         [Fact]
