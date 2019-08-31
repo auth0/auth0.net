@@ -51,7 +51,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Send an email verification request
             var emailRequest = new VerifyEmailJobRequest
             {
-                UserId = _user.UserId
+                UserId = _user.UserId,
+                ClientId = GetVariable("AUTH0_CLIENT_ID")
             };
             var emailRequestResponse = await _apiClient.Jobs.SendVerificationEmailAsync(emailRequest);
             emailRequestResponse.Should().NotBeNull();
