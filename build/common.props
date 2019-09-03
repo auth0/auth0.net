@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Product>Auth0.NET</Product>
     <Description>Auth0 .NET SDK</Description>
-    <Copyright>Auth0</Copyright>
+    <Copyright>Auth0® Inc.</Copyright>
     <NeutralLanguage>en-US</NeutralLanguage>
     <Authors>Auth0</Authors>
     <PackageTags>auth0;authentication;openid connect;oidc;oauth2</PackageTags>
@@ -12,6 +12,16 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 6.5.3
+      WARNING: If you generate tokens in your project via System.IdentityModel.Tokens.Jwt
+      please read the important notice at https://github.com/auth0/auth0.net/issues/300
+
+      - Upgraded System.IdentityModel.Tokens.Jwt to 5.5 to fix incompatible kid
+      - Upgraded Microsoft.IdentityModel.Protocols.OpenIdConnect to 5.5
+      - Add ClientId to VerifyEmailJobRequest
+      - Updated all test dependencies (xunit, FluentAssertions, .NET Test SDK)
+      - Removed unused Console Workbench project
+
       Version 6.5.2
       - UserClient.GetEnrollments now correctly passes user id.
 
@@ -115,14 +125,11 @@
     <CLSCompliant>true</CLSCompliant>
     <ComVisible>false</ComVisible>
   </PropertyGroup>
- 
   <PropertyGroup>
-    <LangVersion>7.1</LangVersion>
-    
+    <LangVersion>7.1</LangVersion>    
     <Major>6</Major>
     <Minor>5</Minor>
-    <Revision>2</Revision>
-
+    <Revision>3</Revision>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyVersion>$(Major).$(Minor).$(Revision)</AssemblyVersion>
