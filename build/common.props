@@ -13,7 +13,7 @@
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
       Version 6.5.3
-      WARNING: If you generate tokens yourself via System.IdentityModel.Tokens.Jwt
+      WARNING: If you generate tokens in your project via System.IdentityModel.Tokens.Jwt
       please read the important notice at https://github.com/auth0/auth0.net/issues/300
 
       - Upgraded System.IdentityModel.Tokens.Jwt to 5.5 to fix incompatible kid
