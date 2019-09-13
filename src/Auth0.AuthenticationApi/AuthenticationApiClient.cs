@@ -218,17 +218,20 @@ namespace Auth0.AuthenticationApi
         /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
         public Task<AccessTokenResponse> GetTokenAsync(ClientCredentialsTokenRequest request)
         {
-            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
-                {
-                    {"grant_type", "client_credentials"},
-                    {"client_id", request.ClientId},
-                    {"client_secret", request.ClientSecret},
-                    {"audience", request.Audience}
-                },
-                null,
-                null,
-                null,
-                null);
+            var parameters = new Dictionary<string, object>
+            {
+                {"grant_type", "client_credentials"},
+                {"client_id", request.ClientId},
+                {"client_secret", request.ClientSecret},
+                {"audience", request.Audience}
+            };
+
+            if (!string.IsNullOrEmpty(request.Scope))
+            {
+                parameters.Add("scope", request.Scope);
+            }
+
+            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, null, null);
         }
 
         /// <summary>
