@@ -37,13 +37,13 @@ namespace Auth0.ManagementApi.IntegrationTests
             var configureResponse = await apiClient.EmailProvider.ConfigureAsync(configureRequest);
             configureResponse.Name.Should().Be(configureRequest.Name);
             configureResponse.IsEnabled.Should().Be(configureRequest.IsEnabled);
-            configureResponse.Credentials.ApiKey.Should().Be(configureRequest.Credentials.ApiKey);
+            configureResponse.Credentials.ApiKey.Should().BeNull(); // API no longer returns creds
 
             // Check that we can get the email provider details 
             var provider = await apiClient.EmailProvider.GetAsync("name,enabled,credentials,settings");
             provider.Name.Should().Be(configureRequest.Name);
             provider.IsEnabled.Should().Be(configureRequest.IsEnabled);
-            provider.Credentials.ApiKey.Should().Be(configureRequest.Credentials.ApiKey);
+            provider.Credentials.ApiKey.Should().BeNull(); // API no longer returns creds
 
             // Update the email provider
             var updateRequest = new EmailProviderUpdateRequest
@@ -58,7 +58,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var updateResponse = await apiClient.EmailProvider.UpdateAsync(updateRequest);
             updateResponse.Name.Should().Be(updateRequest.Name);
             updateResponse.IsEnabled.Should().Be(updateRequest.IsEnabled);
-            updateResponse.Credentials.ApiKey.Should().Be(updateRequest.Credentials.ApiKey);
+            updateResponse.Credentials.ApiKey.Should().BeNull(); // API no longer returns creds
 
             // Delete the email provider again
             await apiClient.EmailProvider.DeleteAsync();
@@ -102,13 +102,13 @@ namespace Auth0.ManagementApi.IntegrationTests
             configureResponse.Credentials.SmtpHost.Should().Be(configureRequest.Credentials.SmtpHost);
             configureResponse.Credentials.SmtpPort.Should().Be(configureRequest.Credentials.SmtpPort);
             configureResponse.Credentials.SmtpUsername.Should().Be(configureRequest.Credentials.SmtpUsername);
-            configureResponse.Credentials.SmtpPassword.Should().Be(configureRequest.Credentials.SmtpPassword);
+            configureResponse.Credentials.SmtpPassword.Should().BeNull(); // API no longer returns creds
 
             // Check that we can get the email provider details 
             var provider = await apiClient.EmailProvider.GetAsync("name,enabled,credentials,settings");
             provider.Name.Should().Be(configureRequest.Name);
             provider.IsEnabled.Should().Be(configureRequest.IsEnabled);
-            provider.Credentials.ApiKey.Should().Be(configureRequest.Credentials.ApiKey);
+            provider.Credentials.ApiKey.Should().BeNull(); // API no longer returns creds
 
             // Update the email provider
             var updateRequest = new EmailProviderUpdateRequest
@@ -129,7 +129,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             updateResponse.Credentials.SmtpHost.Should().Be(updateRequest.Credentials.SmtpHost);
             updateResponse.Credentials.SmtpPort.Should().Be(updateRequest.Credentials.SmtpPort);
             updateResponse.Credentials.SmtpUsername.Should().Be(updateRequest.Credentials.SmtpUsername);
-            updateResponse.Credentials.SmtpPassword.Should().Be(updateRequest.Credentials.SmtpPassword);
+            updateResponse.Credentials.SmtpPassword.Should().BeNull(); // API no longer returns creds
 
             // Delete the email provider again
             await apiClient.EmailProvider.DeleteAsync();
