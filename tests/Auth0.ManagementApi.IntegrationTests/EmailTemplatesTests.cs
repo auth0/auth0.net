@@ -17,16 +17,23 @@ namespace Auth0.ManagementApi.IntegrationTests
             string token = await GenerateManagementApiToken();
             _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
 
-            // We need to set an email provider when configuring templates
-            await _apiClient.EmailProvider.ConfigureAsync(new EmailProviderConfigureRequest
+            try
             {
-                Name = "mandrill",
-                IsEnabled = true,
-                Credentials = new EmailProviderCredentials
+                // We need to set an email provider when configuring templates
+                await _apiClient.EmailProvider.ConfigureAsync(new EmailProviderConfigureRequest
                 {
-                    ApiKey = "ABC"
-                }
-            });
+                    Name = "mandrill",
+                    IsEnabled = true,
+                    Credentials = new EmailProviderCredentials
+                    {
+                        ApiKey = "ABC"
+                    }
+                });
+            }
+            catch (ApiException)
+            {
+                // Was likely not cleaned-up in a previously failed test run
+            }
         }
 
         public async Task DisposeAsync()
