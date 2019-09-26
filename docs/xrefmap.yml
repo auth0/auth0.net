@@ -96,11 +96,11 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.AuthenticationApiClient.BuildWsFedUrl
   nameWithType: AuthenticationApiClient.BuildWsFedUrl
-- uid: Auth0.AuthenticationApi.AuthenticationApiClient.ChangePasswordAsync(Auth0.AuthenticationApi.Models.ChangePasswordRequest)
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.ChangePasswordAsync(ChangePasswordRequest)
   name: ChangePasswordAsync(ChangePasswordRequest)
-  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_ChangePasswordAsync_Auth0_AuthenticationApi_Models_ChangePasswordRequest_
-  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.ChangePasswordAsync(Auth0.AuthenticationApi.Models.ChangePasswordRequest)
-  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.ChangePasswordAsync(Auth0.AuthenticationApi.Models.ChangePasswordRequest)
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_ChangePasswordAsync_ChangePasswordRequest_
+  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.ChangePasswordAsync(ChangePasswordRequest)
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.ChangePasswordAsync(ChangePasswordRequest)
   nameWithType: AuthenticationApiClient.ChangePasswordAsync(ChangePasswordRequest)
 - uid: Auth0.AuthenticationApi.AuthenticationApiClient.ChangePasswordAsync*
   name: ChangePasswordAsync
@@ -135,11 +135,11 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.AuthenticationApiClient.Dispose
   nameWithType: AuthenticationApiClient.Dispose
-- uid: Auth0.AuthenticationApi.AuthenticationApiClient.GetImpersonationUrlAsync(Auth0.AuthenticationApi.Models.ImpersonationRequest)
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.GetImpersonationUrlAsync(ImpersonationRequest)
   name: GetImpersonationUrlAsync(ImpersonationRequest)
-  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_GetImpersonationUrlAsync_Auth0_AuthenticationApi_Models_ImpersonationRequest_
-  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.GetImpersonationUrlAsync(Auth0.AuthenticationApi.Models.ImpersonationRequest)
-  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.GetImpersonationUrlAsync(Auth0.AuthenticationApi.Models.ImpersonationRequest)
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_GetImpersonationUrlAsync_ImpersonationRequest_
+  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.GetImpersonationUrlAsync(ImpersonationRequest)
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.GetImpersonationUrlAsync(ImpersonationRequest)
   nameWithType: AuthenticationApiClient.GetImpersonationUrlAsync(ImpersonationRequest)
 - uid: Auth0.AuthenticationApi.AuthenticationApiClient.GetImpersonationUrlAsync*
   name: GetImpersonationUrlAsync
@@ -174,35 +174,35 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.AuthenticationApiClient.GetSamlMetadataAsync
   nameWithType: AuthenticationApiClient.GetSamlMetadataAsync
-- uid: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.AuthorizationCodePkceTokenRequest)
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(AuthorizationCodePkceTokenRequest)
   name: GetTokenAsync(AuthorizationCodePkceTokenRequest)
-  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_AuthorizationCodePkceTokenRequest_
-  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.AuthorizationCodePkceTokenRequest)
-  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.AuthorizationCodePkceTokenRequest)
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_AuthorizationCodePkceTokenRequest_
+  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(AuthorizationCodePkceTokenRequest)
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(AuthorizationCodePkceTokenRequest)
   nameWithType: AuthenticationApiClient.GetTokenAsync(AuthorizationCodePkceTokenRequest)
-- uid: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest)
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(AuthorizationCodeTokenRequest)
   name: GetTokenAsync(AuthorizationCodeTokenRequest)
-  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_AuthorizationCodeTokenRequest_
-  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest)
-  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest)
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_AuthorizationCodeTokenRequest_
+  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(AuthorizationCodeTokenRequest)
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(AuthorizationCodeTokenRequest)
   nameWithType: AuthenticationApiClient.GetTokenAsync(AuthorizationCodeTokenRequest)
-- uid: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest)
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(ClientCredentialsTokenRequest)
   name: GetTokenAsync(ClientCredentialsTokenRequest)
-  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_ClientCredentialsTokenRequest_
-  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest)
-  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest)
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_ClientCredentialsTokenRequest_
+  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(ClientCredentialsTokenRequest)
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(ClientCredentialsTokenRequest)
   nameWithType: AuthenticationApiClient.GetTokenAsync(ClientCredentialsTokenRequest)
-- uid: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.RefreshTokenRequest)
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(RefreshTokenRequest)
   name: GetTokenAsync(RefreshTokenRequest)
-  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_RefreshTokenRequest_
-  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.RefreshTokenRequest)
-  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.RefreshTokenRequest)
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_RefreshTokenRequest_
+  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(RefreshTokenRequest)
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(RefreshTokenRequest)
   nameWithType: AuthenticationApiClient.GetTokenAsync(RefreshTokenRequest)
-- uid: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest)
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(ResourceOwnerTokenRequest)
   name: GetTokenAsync(ResourceOwnerTokenRequest)
-  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_
-  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest)
-  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest)
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_ResourceOwnerTokenRequest_
+  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(ResourceOwnerTokenRequest)
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(ResourceOwnerTokenRequest)
   nameWithType: AuthenticationApiClient.GetTokenAsync(ResourceOwnerTokenRequest)
 - uid: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync*
   name: GetTokenAsync
@@ -237,11 +237,11 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.AuthenticationApiClient.GetWsFedMetadataAsync
   nameWithType: AuthenticationApiClient.GetWsFedMetadataAsync
-- uid: Auth0.AuthenticationApi.AuthenticationApiClient.SignupUserAsync(Auth0.AuthenticationApi.Models.SignupUserRequest)
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.SignupUserAsync(SignupUserRequest)
   name: SignupUserAsync(SignupUserRequest)
-  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_SignupUserAsync_Auth0_AuthenticationApi_Models_SignupUserRequest_
-  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.SignupUserAsync(Auth0.AuthenticationApi.Models.SignupUserRequest)
-  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.SignupUserAsync(Auth0.AuthenticationApi.Models.SignupUserRequest)
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_SignupUserAsync_SignupUserRequest_
+  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.SignupUserAsync(SignupUserRequest)
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.SignupUserAsync(SignupUserRequest)
   nameWithType: AuthenticationApiClient.SignupUserAsync(SignupUserRequest)
 - uid: Auth0.AuthenticationApi.AuthenticationApiClient.SignupUserAsync*
   name: SignupUserAsync
@@ -250,11 +250,11 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.AuthenticationApiClient.SignupUserAsync
   nameWithType: AuthenticationApiClient.SignupUserAsync
-- uid: Auth0.AuthenticationApi.AuthenticationApiClient.StartPasswordlessEmailFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailRequest)
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest)
   name: StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest)
-  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_StartPasswordlessEmailFlowAsync_Auth0_AuthenticationApi_Models_PasswordlessEmailRequest_
-  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.StartPasswordlessEmailFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailRequest)
-  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.StartPasswordlessEmailFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailRequest)
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_StartPasswordlessEmailFlowAsync_PasswordlessEmailRequest_
+  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest)
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest)
   nameWithType: AuthenticationApiClient.StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest)
 - uid: Auth0.AuthenticationApi.AuthenticationApiClient.StartPasswordlessEmailFlowAsync*
   name: StartPasswordlessEmailFlowAsync
@@ -263,11 +263,11 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.AuthenticationApiClient.StartPasswordlessEmailFlowAsync
   nameWithType: AuthenticationApiClient.StartPasswordlessEmailFlowAsync
-- uid: Auth0.AuthenticationApi.AuthenticationApiClient.StartPasswordlessSmsFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessSmsRequest)
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest)
   name: StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest)
-  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_StartPasswordlessSmsFlowAsync_Auth0_AuthenticationApi_Models_PasswordlessSmsRequest_
-  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.StartPasswordlessSmsFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessSmsRequest)
-  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.StartPasswordlessSmsFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessSmsRequest)
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_StartPasswordlessSmsFlowAsync_PasswordlessSmsRequest_
+  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest)
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest)
   nameWithType: AuthenticationApiClient.StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest)
 - uid: Auth0.AuthenticationApi.AuthenticationApiClient.StartPasswordlessSmsFlowAsync*
   name: StartPasswordlessSmsFlowAsync
@@ -276,11 +276,11 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.AuthenticationApiClient.StartPasswordlessSmsFlowAsync
   nameWithType: AuthenticationApiClient.StartPasswordlessSmsFlowAsync
-- uid: Auth0.AuthenticationApi.AuthenticationApiClient.UnlinkUserAsync(Auth0.AuthenticationApi.Models.UnlinkUserRequest)
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.UnlinkUserAsync(UnlinkUserRequest)
   name: UnlinkUserAsync(UnlinkUserRequest)
-  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_UnlinkUserAsync_Auth0_AuthenticationApi_Models_UnlinkUserRequest_
-  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.UnlinkUserAsync(Auth0.AuthenticationApi.Models.UnlinkUserRequest)
-  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.UnlinkUserAsync(Auth0.AuthenticationApi.Models.UnlinkUserRequest)
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_UnlinkUserAsync_UnlinkUserRequest_
+  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.UnlinkUserAsync(UnlinkUserRequest)
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.UnlinkUserAsync(UnlinkUserRequest)
   nameWithType: AuthenticationApiClient.UnlinkUserAsync(UnlinkUserRequest)
 - uid: Auth0.AuthenticationApi.AuthenticationApiClient.UnlinkUserAsync*
   name: UnlinkUserAsync
@@ -301,11 +301,11 @@ references:
   commentId: T:Auth0.AuthenticationApi.Builders.AuthorizationResponseModeHelper
   fullName: Auth0.AuthenticationApi.Builders.AuthorizationResponseModeHelper
   nameWithType: AuthorizationResponseModeHelper
-- uid: Auth0.AuthenticationApi.Builders.AuthorizationResponseModeHelper.ConvertToString(Auth0.AuthenticationApi.Models.AuthorizationResponseMode)
+- uid: Auth0.AuthenticationApi.Builders.AuthorizationResponseModeHelper.ConvertToString(AuthorizationResponseMode)
   name: ConvertToString(AuthorizationResponseMode)
-  href: api/Auth0.AuthenticationApi.Builders.AuthorizationResponseModeHelper.html#Auth0_AuthenticationApi_Builders_AuthorizationResponseModeHelper_ConvertToString_Auth0_AuthenticationApi_Models_AuthorizationResponseMode_
-  commentId: M:Auth0.AuthenticationApi.Builders.AuthorizationResponseModeHelper.ConvertToString(Auth0.AuthenticationApi.Models.AuthorizationResponseMode)
-  fullName: Auth0.AuthenticationApi.Builders.AuthorizationResponseModeHelper.ConvertToString(Auth0.AuthenticationApi.Models.AuthorizationResponseMode)
+  href: api/Auth0.AuthenticationApi.Builders.AuthorizationResponseModeHelper.html#Auth0_AuthenticationApi_Builders_AuthorizationResponseModeHelper_ConvertToString_AuthorizationResponseMode_
+  commentId: M:Auth0.AuthenticationApi.Builders.AuthorizationResponseModeHelper.ConvertToString(AuthorizationResponseMode)
+  fullName: Auth0.AuthenticationApi.Builders.AuthorizationResponseModeHelper.ConvertToString(AuthorizationResponseMode)
   nameWithType: AuthorizationResponseModeHelper.ConvertToString(AuthorizationResponseMode)
 - uid: Auth0.AuthenticationApi.Builders.AuthorizationResponseModeHelper.ConvertToString*
   name: ConvertToString
@@ -320,11 +320,11 @@ references:
   commentId: T:Auth0.AuthenticationApi.Builders.AuthorizationResponseTypeHelper
   fullName: Auth0.AuthenticationApi.Builders.AuthorizationResponseTypeHelper
   nameWithType: AuthorizationResponseTypeHelper
-- uid: Auth0.AuthenticationApi.Builders.AuthorizationResponseTypeHelper.ConvertToString(Auth0.AuthenticationApi.Models.AuthorizationResponseType)
+- uid: Auth0.AuthenticationApi.Builders.AuthorizationResponseTypeHelper.ConvertToString(AuthorizationResponseType)
   name: ConvertToString(AuthorizationResponseType)
-  href: api/Auth0.AuthenticationApi.Builders.AuthorizationResponseTypeHelper.html#Auth0_AuthenticationApi_Builders_AuthorizationResponseTypeHelper_ConvertToString_Auth0_AuthenticationApi_Models_AuthorizationResponseType_
-  commentId: M:Auth0.AuthenticationApi.Builders.AuthorizationResponseTypeHelper.ConvertToString(Auth0.AuthenticationApi.Models.AuthorizationResponseType)
-  fullName: Auth0.AuthenticationApi.Builders.AuthorizationResponseTypeHelper.ConvertToString(Auth0.AuthenticationApi.Models.AuthorizationResponseType)
+  href: api/Auth0.AuthenticationApi.Builders.AuthorizationResponseTypeHelper.html#Auth0_AuthenticationApi_Builders_AuthorizationResponseTypeHelper_ConvertToString_AuthorizationResponseType_
+  commentId: M:Auth0.AuthenticationApi.Builders.AuthorizationResponseTypeHelper.ConvertToString(AuthorizationResponseType)
+  fullName: Auth0.AuthenticationApi.Builders.AuthorizationResponseTypeHelper.ConvertToString(AuthorizationResponseType)
   nameWithType: AuthorizationResponseTypeHelper.ConvertToString(AuthorizationResponseType)
 - uid: Auth0.AuthenticationApi.Builders.AuthorizationResponseTypeHelper.ConvertToString*
   name: ConvertToString
@@ -430,11 +430,11 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithRedirectUrl
   nameWithType: AuthorizationUrlBuilder.WithRedirectUrl
-- uid: Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithResponseMode(Auth0.AuthenticationApi.Models.AuthorizationResponseMode)
+- uid: Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithResponseMode(AuthorizationResponseMode)
   name: WithResponseMode(AuthorizationResponseMode)
-  href: api/Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html#Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithResponseMode_Auth0_AuthenticationApi_Models_AuthorizationResponseMode_
-  commentId: M:Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithResponseMode(Auth0.AuthenticationApi.Models.AuthorizationResponseMode)
-  fullName: Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithResponseMode(Auth0.AuthenticationApi.Models.AuthorizationResponseMode)
+  href: api/Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html#Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithResponseMode_AuthorizationResponseMode_
+  commentId: M:Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithResponseMode(AuthorizationResponseMode)
+  fullName: Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithResponseMode(AuthorizationResponseMode)
   nameWithType: AuthorizationUrlBuilder.WithResponseMode(AuthorizationResponseMode)
 - uid: Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithResponseMode*
   name: WithResponseMode
@@ -443,13 +443,13 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithResponseMode
   nameWithType: AuthorizationUrlBuilder.WithResponseMode
-- uid: Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithResponseType(Auth0.AuthenticationApi.Models.AuthorizationResponseType[])
+- uid: Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithResponseType(AuthorizationResponseType[])
   name: WithResponseType(AuthorizationResponseType[])
-  href: api/Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html#Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithResponseType_Auth0_AuthenticationApi_Models_AuthorizationResponseType___
-  commentId: M:Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithResponseType(Auth0.AuthenticationApi.Models.AuthorizationResponseType[])
+  href: api/Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html#Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithResponseType_AuthorizationResponseType___
+  commentId: M:Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithResponseType(AuthorizationResponseType[])
   name.vb: WithResponseType(AuthorizationResponseType())
-  fullName: Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithResponseType(Auth0.AuthenticationApi.Models.AuthorizationResponseType[])
-  fullName.vb: Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithResponseType(Auth0.AuthenticationApi.Models.AuthorizationResponseType())
+  fullName: Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithResponseType(AuthorizationResponseType[])
+  fullName.vb: Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithResponseType(AuthorizationResponseType())
   nameWithType: AuthorizationUrlBuilder.WithResponseType(AuthorizationResponseType[])
   nameWithType.vb: AuthorizationUrlBuilder.WithResponseType(AuthorizationResponseType())
 - uid: Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithResponseType*
@@ -723,13 +723,13 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.Builders.WsFedUrlBuilder.WithClient
   nameWithType: WsFedUrlBuilder.WithClient
-- uid: Auth0.AuthenticationApi.Builders.WsFedUrlBuilder.WithWctx(System.Collections.Generic.IDictionary{System.String,System.String})
+- uid: Auth0.AuthenticationApi.Builders.WsFedUrlBuilder.WithWctx(IDictionary{System.String,System.String})
   name: WithWctx(IDictionary<String, String>)
-  href: api/Auth0.AuthenticationApi.Builders.WsFedUrlBuilder.html#Auth0_AuthenticationApi_Builders_WsFedUrlBuilder_WithWctx_System_Collections_Generic_IDictionary_System_String_System_String__
-  commentId: M:Auth0.AuthenticationApi.Builders.WsFedUrlBuilder.WithWctx(System.Collections.Generic.IDictionary{System.String,System.String})
+  href: api/Auth0.AuthenticationApi.Builders.WsFedUrlBuilder.html#Auth0_AuthenticationApi_Builders_WsFedUrlBuilder_WithWctx_IDictionary_System_String_System_String__
+  commentId: M:Auth0.AuthenticationApi.Builders.WsFedUrlBuilder.WithWctx(IDictionary{System.String,System.String})
   name.vb: WithWctx(IDictionary(Of String, String))
-  fullName: Auth0.AuthenticationApi.Builders.WsFedUrlBuilder.WithWctx(System.Collections.Generic.IDictionary<System.String, System.String>)
-  fullName.vb: Auth0.AuthenticationApi.Builders.WsFedUrlBuilder.WithWctx(System.Collections.Generic.IDictionary(Of System.String, System.String))
+  fullName: Auth0.AuthenticationApi.Builders.WsFedUrlBuilder.WithWctx(IDictionary<System.String, System.String>)
+  fullName.vb: Auth0.AuthenticationApi.Builders.WsFedUrlBuilder.WithWctx(IDictionary(Of System.String, System.String))
   nameWithType: WsFedUrlBuilder.WithWctx(IDictionary<String, String>)
   nameWithType.vb: WsFedUrlBuilder.WithWctx(IDictionary(Of String, String))
 - uid: Auth0.AuthenticationApi.Builders.WsFedUrlBuilder.WithWctx(System.String)
@@ -854,11 +854,11 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.BuildWsFedUrl
   nameWithType: IAuthenticationApiClient.BuildWsFedUrl
-- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.ChangePasswordAsync(Auth0.AuthenticationApi.Models.ChangePasswordRequest)
+- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.ChangePasswordAsync(ChangePasswordRequest)
   name: ChangePasswordAsync(ChangePasswordRequest)
-  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_ChangePasswordAsync_Auth0_AuthenticationApi_Models_ChangePasswordRequest_
-  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.ChangePasswordAsync(Auth0.AuthenticationApi.Models.ChangePasswordRequest)
-  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.ChangePasswordAsync(Auth0.AuthenticationApi.Models.ChangePasswordRequest)
+  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_ChangePasswordAsync_ChangePasswordRequest_
+  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.ChangePasswordAsync(ChangePasswordRequest)
+  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.ChangePasswordAsync(ChangePasswordRequest)
   nameWithType: IAuthenticationApiClient.ChangePasswordAsync(ChangePasswordRequest)
 - uid: Auth0.AuthenticationApi.IAuthenticationApiClient.ChangePasswordAsync*
   name: ChangePasswordAsync
@@ -867,11 +867,11 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.ChangePasswordAsync
   nameWithType: IAuthenticationApiClient.ChangePasswordAsync
-- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.GetImpersonationUrlAsync(Auth0.AuthenticationApi.Models.ImpersonationRequest)
+- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.GetImpersonationUrlAsync(ImpersonationRequest)
   name: GetImpersonationUrlAsync(ImpersonationRequest)
-  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_GetImpersonationUrlAsync_Auth0_AuthenticationApi_Models_ImpersonationRequest_
-  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.GetImpersonationUrlAsync(Auth0.AuthenticationApi.Models.ImpersonationRequest)
-  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.GetImpersonationUrlAsync(Auth0.AuthenticationApi.Models.ImpersonationRequest)
+  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_GetImpersonationUrlAsync_ImpersonationRequest_
+  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.GetImpersonationUrlAsync(ImpersonationRequest)
+  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.GetImpersonationUrlAsync(ImpersonationRequest)
   nameWithType: IAuthenticationApiClient.GetImpersonationUrlAsync(ImpersonationRequest)
 - uid: Auth0.AuthenticationApi.IAuthenticationApiClient.GetImpersonationUrlAsync*
   name: GetImpersonationUrlAsync
@@ -906,35 +906,35 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.GetSamlMetadataAsync
   nameWithType: IAuthenticationApiClient.GetSamlMetadataAsync
-- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.AuthorizationCodePkceTokenRequest)
+- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(AuthorizationCodePkceTokenRequest)
   name: GetTokenAsync(AuthorizationCodePkceTokenRequest)
-  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_AuthorizationCodePkceTokenRequest_
-  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.AuthorizationCodePkceTokenRequest)
-  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.AuthorizationCodePkceTokenRequest)
+  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_AuthorizationCodePkceTokenRequest_
+  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(AuthorizationCodePkceTokenRequest)
+  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(AuthorizationCodePkceTokenRequest)
   nameWithType: IAuthenticationApiClient.GetTokenAsync(AuthorizationCodePkceTokenRequest)
-- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest)
+- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(AuthorizationCodeTokenRequest)
   name: GetTokenAsync(AuthorizationCodeTokenRequest)
-  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_AuthorizationCodeTokenRequest_
-  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest)
-  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest)
+  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_AuthorizationCodeTokenRequest_
+  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(AuthorizationCodeTokenRequest)
+  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(AuthorizationCodeTokenRequest)
   nameWithType: IAuthenticationApiClient.GetTokenAsync(AuthorizationCodeTokenRequest)
-- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest)
+- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(ClientCredentialsTokenRequest)
   name: GetTokenAsync(ClientCredentialsTokenRequest)
-  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_ClientCredentialsTokenRequest_
-  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest)
-  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest)
+  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_ClientCredentialsTokenRequest_
+  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(ClientCredentialsTokenRequest)
+  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(ClientCredentialsTokenRequest)
   nameWithType: IAuthenticationApiClient.GetTokenAsync(ClientCredentialsTokenRequest)
-- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.RefreshTokenRequest)
+- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(RefreshTokenRequest)
   name: GetTokenAsync(RefreshTokenRequest)
-  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_RefreshTokenRequest_
-  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.RefreshTokenRequest)
-  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.RefreshTokenRequest)
+  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_RefreshTokenRequest_
+  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(RefreshTokenRequest)
+  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(RefreshTokenRequest)
   nameWithType: IAuthenticationApiClient.GetTokenAsync(RefreshTokenRequest)
-- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest)
+- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(ResourceOwnerTokenRequest)
   name: GetTokenAsync(ResourceOwnerTokenRequest)
-  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_
-  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest)
-  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest)
+  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_ResourceOwnerTokenRequest_
+  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(ResourceOwnerTokenRequest)
+  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(ResourceOwnerTokenRequest)
   nameWithType: IAuthenticationApiClient.GetTokenAsync(ResourceOwnerTokenRequest)
 - uid: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync*
   name: GetTokenAsync
@@ -969,11 +969,11 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.GetWsFedMetadataAsync
   nameWithType: IAuthenticationApiClient.GetWsFedMetadataAsync
-- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.SignupUserAsync(Auth0.AuthenticationApi.Models.SignupUserRequest)
+- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.SignupUserAsync(SignupUserRequest)
   name: SignupUserAsync(SignupUserRequest)
-  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_SignupUserAsync_Auth0_AuthenticationApi_Models_SignupUserRequest_
-  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.SignupUserAsync(Auth0.AuthenticationApi.Models.SignupUserRequest)
-  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.SignupUserAsync(Auth0.AuthenticationApi.Models.SignupUserRequest)
+  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_SignupUserAsync_SignupUserRequest_
+  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.SignupUserAsync(SignupUserRequest)
+  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.SignupUserAsync(SignupUserRequest)
   nameWithType: IAuthenticationApiClient.SignupUserAsync(SignupUserRequest)
 - uid: Auth0.AuthenticationApi.IAuthenticationApiClient.SignupUserAsync*
   name: SignupUserAsync
@@ -982,11 +982,11 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.SignupUserAsync
   nameWithType: IAuthenticationApiClient.SignupUserAsync
-- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessEmailFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailRequest)
+- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest)
   name: StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest)
-  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_StartPasswordlessEmailFlowAsync_Auth0_AuthenticationApi_Models_PasswordlessEmailRequest_
-  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessEmailFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailRequest)
-  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessEmailFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailRequest)
+  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_StartPasswordlessEmailFlowAsync_PasswordlessEmailRequest_
+  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest)
+  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest)
   nameWithType: IAuthenticationApiClient.StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest)
 - uid: Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessEmailFlowAsync*
   name: StartPasswordlessEmailFlowAsync
@@ -995,11 +995,11 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessEmailFlowAsync
   nameWithType: IAuthenticationApiClient.StartPasswordlessEmailFlowAsync
-- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessSmsFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessSmsRequest)
+- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest)
   name: StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest)
-  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_StartPasswordlessSmsFlowAsync_Auth0_AuthenticationApi_Models_PasswordlessSmsRequest_
-  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessSmsFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessSmsRequest)
-  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessSmsFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessSmsRequest)
+  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_StartPasswordlessSmsFlowAsync_PasswordlessSmsRequest_
+  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest)
+  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest)
   nameWithType: IAuthenticationApiClient.StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest)
 - uid: Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessSmsFlowAsync*
   name: StartPasswordlessSmsFlowAsync
@@ -1008,11 +1008,11 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessSmsFlowAsync
   nameWithType: IAuthenticationApiClient.StartPasswordlessSmsFlowAsync
-- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.UnlinkUserAsync(Auth0.AuthenticationApi.Models.UnlinkUserRequest)
+- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.UnlinkUserAsync(UnlinkUserRequest)
   name: UnlinkUserAsync(UnlinkUserRequest)
-  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_UnlinkUserAsync_Auth0_AuthenticationApi_Models_UnlinkUserRequest_
-  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.UnlinkUserAsync(Auth0.AuthenticationApi.Models.UnlinkUserRequest)
-  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.UnlinkUserAsync(Auth0.AuthenticationApi.Models.UnlinkUserRequest)
+  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_UnlinkUserAsync_UnlinkUserRequest_
+  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.UnlinkUserAsync(UnlinkUserRequest)
+  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.UnlinkUserAsync(UnlinkUserRequest)
   nameWithType: IAuthenticationApiClient.UnlinkUserAsync(UnlinkUserRequest)
 - uid: Auth0.AuthenticationApi.IAuthenticationApiClient.UnlinkUserAsync*
   name: UnlinkUserAsync
@@ -2445,22 +2445,22 @@ references:
   fullName.vb: Auth0.Core.Collections.PagedList(Of T).PagedList()
   nameWithType: PagedList<T>.PagedList()
   nameWithType.vb: PagedList(Of T).PagedList()
-- uid: Auth0.Core.Collections.PagedList`1.#ctor(System.Collections.Generic.IEnumerable{`0})
+- uid: Auth0.Core.Collections.PagedList`1.#ctor(IEnumerable{`0})
   name: PagedList(IEnumerable<T>)
-  href: api/Auth0.Core.Collections.PagedList-1.html#Auth0_Core_Collections_PagedList_1__ctor_System_Collections_Generic_IEnumerable__0__
-  commentId: M:Auth0.Core.Collections.PagedList`1.#ctor(System.Collections.Generic.IEnumerable{`0})
+  href: api/Auth0.Core.Collections.PagedList-1.html#Auth0_Core_Collections_PagedList_1__ctor_IEnumerable__0__
+  commentId: M:Auth0.Core.Collections.PagedList`1.#ctor(IEnumerable{`0})
   name.vb: PagedList(IEnumerable(Of T))
-  fullName: Auth0.Core.Collections.PagedList<T>.PagedList(System.Collections.Generic.IEnumerable<T>)
-  fullName.vb: Auth0.Core.Collections.PagedList(Of T).PagedList(System.Collections.Generic.IEnumerable(Of T))
+  fullName: Auth0.Core.Collections.PagedList<T>.PagedList(IEnumerable<T>)
+  fullName.vb: Auth0.Core.Collections.PagedList(Of T).PagedList(IEnumerable(Of T))
   nameWithType: PagedList<T>.PagedList(IEnumerable<T>)
   nameWithType.vb: PagedList(Of T).PagedList(IEnumerable(Of T))
-- uid: Auth0.Core.Collections.PagedList`1.#ctor(System.Collections.Generic.IEnumerable{`0},Auth0.Core.PagingInformation)
+- uid: Auth0.Core.Collections.PagedList`1.#ctor(IEnumerable{`0},Auth0.Core.PagingInformation)
   name: PagedList(IEnumerable<T>, PagingInformation)
-  href: api/Auth0.Core.Collections.PagedList-1.html#Auth0_Core_Collections_PagedList_1__ctor_System_Collections_Generic_IEnumerable__0__Auth0_Core_PagingInformation_
-  commentId: M:Auth0.Core.Collections.PagedList`1.#ctor(System.Collections.Generic.IEnumerable{`0},Auth0.Core.PagingInformation)
+  href: api/Auth0.Core.Collections.PagedList-1.html#Auth0_Core_Collections_PagedList_1__ctor_IEnumerable__0__Auth0_Core_PagingInformation_
+  commentId: M:Auth0.Core.Collections.PagedList`1.#ctor(IEnumerable{`0},Auth0.Core.PagingInformation)
   name.vb: PagedList(IEnumerable(Of T), PagingInformation)
-  fullName: Auth0.Core.Collections.PagedList<T>.PagedList(System.Collections.Generic.IEnumerable<T>, Auth0.Core.PagingInformation)
-  fullName.vb: Auth0.Core.Collections.PagedList(Of T).PagedList(System.Collections.Generic.IEnumerable(Of T), Auth0.Core.PagingInformation)
+  fullName: Auth0.Core.Collections.PagedList<T>.PagedList(IEnumerable<T>, Auth0.Core.PagingInformation)
+  fullName.vb: Auth0.Core.Collections.PagedList(Of T).PagedList(IEnumerable(Of T), Auth0.Core.PagingInformation)
   nameWithType: PagedList<T>.PagedList(IEnumerable<T>, PagingInformation)
   nameWithType.vb: PagedList(Of T).PagedList(IEnumerable(Of T), PagingInformation)
 - uid: Auth0.Core.Collections.PagedList`1.#ctor(System.Int32)
@@ -2591,11 +2591,11 @@ references:
   commentId: M:Auth0.Core.Exceptions.ApiException.#ctor(HttpStatusCode,Auth0.Core.ApiError)
   fullName: Auth0.Core.Exceptions.ApiException.ApiException(HttpStatusCode, Auth0.Core.ApiError)
   nameWithType: ApiException.ApiException(HttpStatusCode, ApiError)
-- uid: Auth0.Core.Exceptions.ApiException.#ctor(System.String,System.Exception)
+- uid: Auth0.Core.Exceptions.ApiException.#ctor(System.String,Exception)
   name: ApiException(String, Exception)
-  href: api/Auth0.Core.Exceptions.ApiException.html#Auth0_Core_Exceptions_ApiException__ctor_System_String_System_Exception_
-  commentId: M:Auth0.Core.Exceptions.ApiException.#ctor(System.String,System.Exception)
-  fullName: Auth0.Core.Exceptions.ApiException.ApiException(System.String, System.Exception)
+  href: api/Auth0.Core.Exceptions.ApiException.html#Auth0_Core_Exceptions_ApiException__ctor_System_String_Exception_
+  commentId: M:Auth0.Core.Exceptions.ApiException.#ctor(System.String,Exception)
+  fullName: Auth0.Core.Exceptions.ApiException.ApiException(System.String, Exception)
   nameWithType: ApiException.ApiException(String, Exception)
 - uid: Auth0.Core.Exceptions.ApiException.#ctor*
   name: ApiException
@@ -2681,22 +2681,22 @@ references:
   isSpec: "True"
   fullName: Auth0.Core.Http.ApiConnection.DeleteAsync
   nameWithType: ApiConnection.DeleteAsync
-- uid: Auth0.Core.Http.ApiConnection.DeleteAsync``1(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String})
+- uid: Auth0.Core.Http.ApiConnection.DeleteAsync``1(System.String,IDictionary{System.String,System.String},IDictionary{System.String,System.String})
   name: DeleteAsync<T>(String, IDictionary<String, String>, IDictionary<String, String>)
-  href: api/Auth0.Core.Http.ApiConnection.html#Auth0_Core_Http_ApiConnection_DeleteAsync__1_System_String_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_String__
-  commentId: M:Auth0.Core.Http.ApiConnection.DeleteAsync``1(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String})
+  href: api/Auth0.Core.Http.ApiConnection.html#Auth0_Core_Http_ApiConnection_DeleteAsync__1_System_String_IDictionary_System_String_System_String__IDictionary_System_String_System_String__
+  commentId: M:Auth0.Core.Http.ApiConnection.DeleteAsync``1(System.String,IDictionary{System.String,System.String},IDictionary{System.String,System.String})
   name.vb: DeleteAsync(Of T)(String, IDictionary(Of String, String), IDictionary(Of String, String))
-  fullName: Auth0.Core.Http.ApiConnection.DeleteAsync<T>(System.String, System.Collections.Generic.IDictionary<System.String, System.String>, System.Collections.Generic.IDictionary<System.String, System.String>)
-  fullName.vb: Auth0.Core.Http.ApiConnection.DeleteAsync(Of T)(System.String, System.Collections.Generic.IDictionary(Of System.String, System.String), System.Collections.Generic.IDictionary(Of System.String, System.String))
+  fullName: Auth0.Core.Http.ApiConnection.DeleteAsync<T>(System.String, IDictionary<System.String, System.String>, IDictionary<System.String, System.String>)
+  fullName.vb: Auth0.Core.Http.ApiConnection.DeleteAsync(Of T)(System.String, IDictionary(Of System.String, System.String), IDictionary(Of System.String, System.String))
   nameWithType: ApiConnection.DeleteAsync<T>(String, IDictionary<String, String>, IDictionary<String, String>)
   nameWithType.vb: ApiConnection.DeleteAsync(Of T)(String, IDictionary(Of String, String), IDictionary(Of String, String))
-- uid: Auth0.Core.Http.ApiConnection.DeleteAsync``1(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String})
+- uid: Auth0.Core.Http.ApiConnection.DeleteAsync``1(System.String,System.Object,IDictionary{System.String,System.String},IDictionary{System.String,System.String})
   name: DeleteAsync<T>(String, Object, IDictionary<String, String>, IDictionary<String, String>)
-  href: api/Auth0.Core.Http.ApiConnection.html#Auth0_Core_Http_ApiConnection_DeleteAsync__1_System_String_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_String__
-  commentId: M:Auth0.Core.Http.ApiConnection.DeleteAsync``1(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String})
+  href: api/Auth0.Core.Http.ApiConnection.html#Auth0_Core_Http_ApiConnection_DeleteAsync__1_System_String_System_Object_IDictionary_System_String_System_String__IDictionary_System_String_System_String__
+  commentId: M:Auth0.Core.Http.ApiConnection.DeleteAsync``1(System.String,System.Object,IDictionary{System.String,System.String},IDictionary{System.String,System.String})
   name.vb: DeleteAsync(Of T)(String, Object, IDictionary(Of String, String), IDictionary(Of String, String))
-  fullName: Auth0.Core.Http.ApiConnection.DeleteAsync<T>(System.String, System.Object, System.Collections.Generic.IDictionary<System.String, System.String>, System.Collections.Generic.IDictionary<System.String, System.String>)
-  fullName.vb: Auth0.Core.Http.ApiConnection.DeleteAsync(Of T)(System.String, System.Object, System.Collections.Generic.IDictionary(Of System.String, System.String), System.Collections.Generic.IDictionary(Of System.String, System.String))
+  fullName: Auth0.Core.Http.ApiConnection.DeleteAsync<T>(System.String, System.Object, IDictionary<System.String, System.String>, IDictionary<System.String, System.String>)
+  fullName.vb: Auth0.Core.Http.ApiConnection.DeleteAsync(Of T)(System.String, System.Object, IDictionary(Of System.String, System.String), IDictionary(Of System.String, System.String))
   nameWithType: ApiConnection.DeleteAsync<T>(String, Object, IDictionary<String, String>, IDictionary<String, String>)
   nameWithType.vb: ApiConnection.DeleteAsync(Of T)(String, Object, IDictionary(Of String, String), IDictionary(Of String, String))
 - uid: Auth0.Core.Http.ApiConnection.Dispose
@@ -2719,13 +2719,13 @@ references:
   isSpec: "True"
   fullName: Auth0.Core.Http.ApiConnection.GetAsync
   nameWithType: ApiConnection.GetAsync
-- uid: Auth0.Core.Http.ApiConnection.GetAsync``1(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Object},JsonConverter[])
+- uid: Auth0.Core.Http.ApiConnection.GetAsync``1(System.String,IDictionary{System.String,System.String},IDictionary{System.String,System.String},IDictionary{System.String,System.Object},JsonConverter[])
   name: GetAsync<T>(String, IDictionary<String, String>, IDictionary<String, String>, IDictionary<String, Object>, JsonConverter[])
-  href: api/Auth0.Core.Http.ApiConnection.html#Auth0_Core_Http_ApiConnection_GetAsync__1_System_String_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_Object__JsonConverter___
-  commentId: M:Auth0.Core.Http.ApiConnection.GetAsync``1(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Object},JsonConverter[])
+  href: api/Auth0.Core.Http.ApiConnection.html#Auth0_Core_Http_ApiConnection_GetAsync__1_System_String_IDictionary_System_String_System_String__IDictionary_System_String_System_String__IDictionary_System_String_System_Object__JsonConverter___
+  commentId: M:Auth0.Core.Http.ApiConnection.GetAsync``1(System.String,IDictionary{System.String,System.String},IDictionary{System.String,System.String},IDictionary{System.String,System.Object},JsonConverter[])
   name.vb: GetAsync(Of T)(String, IDictionary(Of String, String), IDictionary(Of String, String), IDictionary(Of String, Object), JsonConverter())
-  fullName: Auth0.Core.Http.ApiConnection.GetAsync<T>(System.String, System.Collections.Generic.IDictionary<System.String, System.String>, System.Collections.Generic.IDictionary<System.String, System.String>, System.Collections.Generic.IDictionary<System.String, System.Object>, JsonConverter[])
-  fullName.vb: Auth0.Core.Http.ApiConnection.GetAsync(Of T)(System.String, System.Collections.Generic.IDictionary(Of System.String, System.String), System.Collections.Generic.IDictionary(Of System.String, System.String), System.Collections.Generic.IDictionary(Of System.String, System.Object), JsonConverter())
+  fullName: Auth0.Core.Http.ApiConnection.GetAsync<T>(System.String, IDictionary<System.String, System.String>, IDictionary<System.String, System.String>, IDictionary<System.String, System.Object>, JsonConverter[])
+  fullName.vb: Auth0.Core.Http.ApiConnection.GetAsync(Of T)(System.String, IDictionary(Of System.String, System.String), IDictionary(Of System.String, System.String), IDictionary(Of System.String, System.Object), JsonConverter())
   nameWithType: ApiConnection.GetAsync<T>(String, IDictionary<String, String>, IDictionary<String, String>, IDictionary<String, Object>, JsonConverter[])
   nameWithType.vb: ApiConnection.GetAsync(Of T)(String, IDictionary(Of String, String), IDictionary(Of String, String), IDictionary(Of String, Object), JsonConverter())
 - uid: Auth0.Core.Http.ApiConnection.PatchAsync*
@@ -2735,13 +2735,13 @@ references:
   isSpec: "True"
   fullName: Auth0.Core.Http.ApiConnection.PatchAsync
   nameWithType: ApiConnection.PatchAsync
-- uid: Auth0.Core.Http.ApiConnection.PatchAsync``1(System.String,System.Object,System.Collections.Generic.Dictionary{System.String,System.String})
+- uid: Auth0.Core.Http.ApiConnection.PatchAsync``1(System.String,System.Object,Dictionary{System.String,System.String})
   name: PatchAsync<T>(String, Object, Dictionary<String, String>)
-  href: api/Auth0.Core.Http.ApiConnection.html#Auth0_Core_Http_ApiConnection_PatchAsync__1_System_String_System_Object_System_Collections_Generic_Dictionary_System_String_System_String__
-  commentId: M:Auth0.Core.Http.ApiConnection.PatchAsync``1(System.String,System.Object,System.Collections.Generic.Dictionary{System.String,System.String})
+  href: api/Auth0.Core.Http.ApiConnection.html#Auth0_Core_Http_ApiConnection_PatchAsync__1_System_String_System_Object_Dictionary_System_String_System_String__
+  commentId: M:Auth0.Core.Http.ApiConnection.PatchAsync``1(System.String,System.Object,Dictionary{System.String,System.String})
   name.vb: PatchAsync(Of T)(String, Object, Dictionary(Of String, String))
-  fullName: Auth0.Core.Http.ApiConnection.PatchAsync<T>(System.String, System.Object, System.Collections.Generic.Dictionary<System.String, System.String>)
-  fullName.vb: Auth0.Core.Http.ApiConnection.PatchAsync(Of T)(System.String, System.Object, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  fullName: Auth0.Core.Http.ApiConnection.PatchAsync<T>(System.String, System.Object, Dictionary<System.String, System.String>)
+  fullName.vb: Auth0.Core.Http.ApiConnection.PatchAsync(Of T)(System.String, System.Object, Dictionary(Of System.String, System.String))
   nameWithType: ApiConnection.PatchAsync<T>(String, Object, Dictionary<String, String>)
   nameWithType.vb: ApiConnection.PatchAsync(Of T)(String, Object, Dictionary(Of String, String))
 - uid: Auth0.Core.Http.ApiConnection.PostAsync*
@@ -2751,13 +2751,13 @@ references:
   isSpec: "True"
   fullName: Auth0.Core.Http.ApiConnection.PostAsync
   nameWithType: ApiConnection.PostAsync
-- uid: Auth0.Core.Http.ApiConnection.PostAsync``1(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IList{Auth0.Core.Http.FileUploadParameter},System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.String})
+- uid: Auth0.Core.Http.ApiConnection.PostAsync``1(System.String,System.Object,IDictionary{System.String,System.Object},IList{Auth0.Core.Http.FileUploadParameter},IDictionary{System.String,System.String},IDictionary{System.String,System.Object},IDictionary{System.String,System.String})
   name: PostAsync<T>(String, Object, IDictionary<String, Object>, IList<FileUploadParameter>, IDictionary<String, String>, IDictionary<String, Object>, IDictionary<String, String>)
-  href: api/Auth0.Core.Http.ApiConnection.html#Auth0_Core_Http_ApiConnection_PostAsync__1_System_String_System_Object_System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IList_Auth0_Core_Http_FileUploadParameter__System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IDictionary_System_String_System_String__
-  commentId: M:Auth0.Core.Http.ApiConnection.PostAsync``1(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IList{Auth0.Core.Http.FileUploadParameter},System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.String})
+  href: api/Auth0.Core.Http.ApiConnection.html#Auth0_Core_Http_ApiConnection_PostAsync__1_System_String_System_Object_IDictionary_System_String_System_Object__IList_Auth0_Core_Http_FileUploadParameter__IDictionary_System_String_System_String__IDictionary_System_String_System_Object__IDictionary_System_String_System_String__
+  commentId: M:Auth0.Core.Http.ApiConnection.PostAsync``1(System.String,System.Object,IDictionary{System.String,System.Object},IList{Auth0.Core.Http.FileUploadParameter},IDictionary{System.String,System.String},IDictionary{System.String,System.Object},IDictionary{System.String,System.String})
   name.vb: PostAsync(Of T)(String, Object, IDictionary(Of String, Object), IList(Of FileUploadParameter), IDictionary(Of String, String), IDictionary(Of String, Object), IDictionary(Of String, String))
-  fullName: Auth0.Core.Http.ApiConnection.PostAsync<T>(System.String, System.Object, System.Collections.Generic.IDictionary<System.String, System.Object>, System.Collections.Generic.IList<Auth0.Core.Http.FileUploadParameter>, System.Collections.Generic.IDictionary<System.String, System.String>, System.Collections.Generic.IDictionary<System.String, System.Object>, System.Collections.Generic.IDictionary<System.String, System.String>)
-  fullName.vb: Auth0.Core.Http.ApiConnection.PostAsync(Of T)(System.String, System.Object, System.Collections.Generic.IDictionary(Of System.String, System.Object), System.Collections.Generic.IList(Of Auth0.Core.Http.FileUploadParameter), System.Collections.Generic.IDictionary(Of System.String, System.String), System.Collections.Generic.IDictionary(Of System.String, System.Object), System.Collections.Generic.IDictionary(Of System.String, System.String))
+  fullName: Auth0.Core.Http.ApiConnection.PostAsync<T>(System.String, System.Object, IDictionary<System.String, System.Object>, IList<Auth0.Core.Http.FileUploadParameter>, IDictionary<System.String, System.String>, IDictionary<System.String, System.Object>, IDictionary<System.String, System.String>)
+  fullName.vb: Auth0.Core.Http.ApiConnection.PostAsync(Of T)(System.String, System.Object, IDictionary(Of System.String, System.Object), IList(Of Auth0.Core.Http.FileUploadParameter), IDictionary(Of System.String, System.String), IDictionary(Of System.String, System.Object), IDictionary(Of System.String, System.String))
   nameWithType: ApiConnection.PostAsync<T>(String, Object, IDictionary<String, Object>, IList<FileUploadParameter>, IDictionary<String, String>, IDictionary<String, Object>, IDictionary<String, String>)
   nameWithType.vb: ApiConnection.PostAsync(Of T)(String, Object, IDictionary(Of String, Object), IList(Of FileUploadParameter), IDictionary(Of String, String), IDictionary(Of String, Object), IDictionary(Of String, String))
 - uid: Auth0.Core.Http.ApiConnection.PutAsync*
@@ -2767,13 +2767,13 @@ references:
   isSpec: "True"
   fullName: Auth0.Core.Http.ApiConnection.PutAsync
   nameWithType: ApiConnection.PutAsync
-- uid: Auth0.Core.Http.ApiConnection.PutAsync``1(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IList{Auth0.Core.Http.FileUploadParameter},System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.String})
+- uid: Auth0.Core.Http.ApiConnection.PutAsync``1(System.String,System.Object,IDictionary{System.String,System.Object},IList{Auth0.Core.Http.FileUploadParameter},IDictionary{System.String,System.String},IDictionary{System.String,System.Object},IDictionary{System.String,System.String})
   name: PutAsync<T>(String, Object, IDictionary<String, Object>, IList<FileUploadParameter>, IDictionary<String, String>, IDictionary<String, Object>, IDictionary<String, String>)
-  href: api/Auth0.Core.Http.ApiConnection.html#Auth0_Core_Http_ApiConnection_PutAsync__1_System_String_System_Object_System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IList_Auth0_Core_Http_FileUploadParameter__System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IDictionary_System_String_System_String__
-  commentId: M:Auth0.Core.Http.ApiConnection.PutAsync``1(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IList{Auth0.Core.Http.FileUploadParameter},System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.String})
+  href: api/Auth0.Core.Http.ApiConnection.html#Auth0_Core_Http_ApiConnection_PutAsync__1_System_String_System_Object_IDictionary_System_String_System_Object__IList_Auth0_Core_Http_FileUploadParameter__IDictionary_System_String_System_String__IDictionary_System_String_System_Object__IDictionary_System_String_System_String__
+  commentId: M:Auth0.Core.Http.ApiConnection.PutAsync``1(System.String,System.Object,IDictionary{System.String,System.Object},IList{Auth0.Core.Http.FileUploadParameter},IDictionary{System.String,System.String},IDictionary{System.String,System.Object},IDictionary{System.String,System.String})
   name.vb: PutAsync(Of T)(String, Object, IDictionary(Of String, Object), IList(Of FileUploadParameter), IDictionary(Of String, String), IDictionary(Of String, Object), IDictionary(Of String, String))
-  fullName: Auth0.Core.Http.ApiConnection.PutAsync<T>(System.String, System.Object, System.Collections.Generic.IDictionary<System.String, System.Object>, System.Collections.Generic.IList<Auth0.Core.Http.FileUploadParameter>, System.Collections.Generic.IDictionary<System.String, System.String>, System.Collections.Generic.IDictionary<System.String, System.Object>, System.Collections.Generic.IDictionary<System.String, System.String>)
-  fullName.vb: Auth0.Core.Http.ApiConnection.PutAsync(Of T)(System.String, System.Object, System.Collections.Generic.IDictionary(Of System.String, System.Object), System.Collections.Generic.IList(Of Auth0.Core.Http.FileUploadParameter), System.Collections.Generic.IDictionary(Of System.String, System.String), System.Collections.Generic.IDictionary(Of System.String, System.Object), System.Collections.Generic.IDictionary(Of System.String, System.String))
+  fullName: Auth0.Core.Http.ApiConnection.PutAsync<T>(System.String, System.Object, IDictionary<System.String, System.Object>, IList<Auth0.Core.Http.FileUploadParameter>, IDictionary<System.String, System.String>, IDictionary<System.String, System.Object>, IDictionary<System.String, System.String>)
+  fullName.vb: Auth0.Core.Http.ApiConnection.PutAsync(Of T)(System.String, System.Object, IDictionary(Of System.String, System.Object), IList(Of Auth0.Core.Http.FileUploadParameter), IDictionary(Of System.String, System.String), IDictionary(Of System.String, System.Object), IDictionary(Of System.String, System.String))
   nameWithType: ApiConnection.PutAsync<T>(String, Object, IDictionary<String, Object>, IList<FileUploadParameter>, IDictionary<String, String>, IDictionary<String, Object>, IDictionary<String, String>)
   nameWithType.vb: ApiConnection.PutAsync(Of T)(String, Object, IDictionary(Of String, Object), IList(Of FileUploadParameter), IDictionary(Of String, String), IDictionary(Of String, Object), IDictionary(Of String, String))
 - uid: Auth0.Core.Http.ApiInfo
@@ -2788,13 +2788,13 @@ references:
   commentId: M:Auth0.Core.Http.ApiInfo.#ctor(Auth0.Core.Http.RateLimit)
   fullName: Auth0.Core.Http.ApiInfo.ApiInfo(Auth0.Core.Http.RateLimit)
   nameWithType: ApiInfo.ApiInfo(RateLimit)
-- uid: Auth0.Core.Http.ApiInfo.#ctor(Auth0.Core.Http.RateLimit,System.Nullable{System.DateTimeOffset})
+- uid: Auth0.Core.Http.ApiInfo.#ctor(Auth0.Core.Http.RateLimit,System.Nullable{DateTimeOffset})
   name: ApiInfo(RateLimit, Nullable<DateTimeOffset>)
-  href: api/Auth0.Core.Http.ApiInfo.html#Auth0_Core_Http_ApiInfo__ctor_Auth0_Core_Http_RateLimit_System_Nullable_System_DateTimeOffset__
-  commentId: M:Auth0.Core.Http.ApiInfo.#ctor(Auth0.Core.Http.RateLimit,System.Nullable{System.DateTimeOffset})
+  href: api/Auth0.Core.Http.ApiInfo.html#Auth0_Core_Http_ApiInfo__ctor_Auth0_Core_Http_RateLimit_System_Nullable_DateTimeOffset__
+  commentId: M:Auth0.Core.Http.ApiInfo.#ctor(Auth0.Core.Http.RateLimit,System.Nullable{DateTimeOffset})
   name.vb: ApiInfo(RateLimit, Nullable(Of DateTimeOffset))
-  fullName: Auth0.Core.Http.ApiInfo.ApiInfo(Auth0.Core.Http.RateLimit, System.Nullable<System.DateTimeOffset>)
-  fullName.vb: Auth0.Core.Http.ApiInfo.ApiInfo(Auth0.Core.Http.RateLimit, System.Nullable(Of System.DateTimeOffset))
+  fullName: Auth0.Core.Http.ApiInfo.ApiInfo(Auth0.Core.Http.RateLimit, System.Nullable<DateTimeOffset>)
+  fullName.vb: Auth0.Core.Http.ApiInfo.ApiInfo(Auth0.Core.Http.RateLimit, System.Nullable(Of DateTimeOffset))
   nameWithType: ApiInfo.ApiInfo(RateLimit, Nullable<DateTimeOffset>)
   nameWithType.vb: ApiInfo.ApiInfo(RateLimit, Nullable(Of DateTimeOffset))
 - uid: Auth0.Core.Http.ApiInfo.#ctor*
@@ -2862,22 +2862,22 @@ references:
   isSpec: "True"
   fullName: Auth0.Core.Http.IApiConnection.DeleteAsync
   nameWithType: IApiConnection.DeleteAsync
-- uid: Auth0.Core.Http.IApiConnection.DeleteAsync``1(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String})
+- uid: Auth0.Core.Http.IApiConnection.DeleteAsync``1(System.String,IDictionary{System.String,System.String},IDictionary{System.String,System.String})
   name: DeleteAsync<T>(String, IDictionary<String, String>, IDictionary<String, String>)
-  href: api/Auth0.Core.Http.IApiConnection.html#Auth0_Core_Http_IApiConnection_DeleteAsync__1_System_String_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_String__
-  commentId: M:Auth0.Core.Http.IApiConnection.DeleteAsync``1(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String})
+  href: api/Auth0.Core.Http.IApiConnection.html#Auth0_Core_Http_IApiConnection_DeleteAsync__1_System_String_IDictionary_System_String_System_String__IDictionary_System_String_System_String__
+  commentId: M:Auth0.Core.Http.IApiConnection.DeleteAsync``1(System.String,IDictionary{System.String,System.String},IDictionary{System.String,System.String})
   name.vb: DeleteAsync(Of T)(String, IDictionary(Of String, String), IDictionary(Of String, String))
-  fullName: Auth0.Core.Http.IApiConnection.DeleteAsync<T>(System.String, System.Collections.Generic.IDictionary<System.String, System.String>, System.Collections.Generic.IDictionary<System.String, System.String>)
-  fullName.vb: Auth0.Core.Http.IApiConnection.DeleteAsync(Of T)(System.String, System.Collections.Generic.IDictionary(Of System.String, System.String), System.Collections.Generic.IDictionary(Of System.String, System.String))
+  fullName: Auth0.Core.Http.IApiConnection.DeleteAsync<T>(System.String, IDictionary<System.String, System.String>, IDictionary<System.String, System.String>)
+  fullName.vb: Auth0.Core.Http.IApiConnection.DeleteAsync(Of T)(System.String, IDictionary(Of System.String, System.String), IDictionary(Of System.String, System.String))
   nameWithType: IApiConnection.DeleteAsync<T>(String, IDictionary<String, String>, IDictionary<String, String>)
   nameWithType.vb: IApiConnection.DeleteAsync(Of T)(String, IDictionary(Of String, String), IDictionary(Of String, String))
-- uid: Auth0.Core.Http.IApiConnection.DeleteAsync``1(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String})
+- uid: Auth0.Core.Http.IApiConnection.DeleteAsync``1(System.String,System.Object,IDictionary{System.String,System.String},IDictionary{System.String,System.String})
   name: DeleteAsync<T>(String, Object, IDictionary<String, String>, IDictionary<String, String>)
-  href: api/Auth0.Core.Http.IApiConnection.html#Auth0_Core_Http_IApiConnection_DeleteAsync__1_System_String_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_String__
-  commentId: M:Auth0.Core.Http.IApiConnection.DeleteAsync``1(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String})
+  href: api/Auth0.Core.Http.IApiConnection.html#Auth0_Core_Http_IApiConnection_DeleteAsync__1_System_String_System_Object_IDictionary_System_String_System_String__IDictionary_System_String_System_String__
+  commentId: M:Auth0.Core.Http.IApiConnection.DeleteAsync``1(System.String,System.Object,IDictionary{System.String,System.String},IDictionary{System.String,System.String})
   name.vb: DeleteAsync(Of T)(String, Object, IDictionary(Of String, String), IDictionary(Of String, String))
-  fullName: Auth0.Core.Http.IApiConnection.DeleteAsync<T>(System.String, System.Object, System.Collections.Generic.IDictionary<System.String, System.String>, System.Collections.Generic.IDictionary<System.String, System.String>)
-  fullName.vb: Auth0.Core.Http.IApiConnection.DeleteAsync(Of T)(System.String, System.Object, System.Collections.Generic.IDictionary(Of System.String, System.String), System.Collections.Generic.IDictionary(Of System.String, System.String))
+  fullName: Auth0.Core.Http.IApiConnection.DeleteAsync<T>(System.String, System.Object, IDictionary<System.String, System.String>, IDictionary<System.String, System.String>)
+  fullName.vb: Auth0.Core.Http.IApiConnection.DeleteAsync(Of T)(System.String, System.Object, IDictionary(Of System.String, System.String), IDictionary(Of System.String, System.String))
   nameWithType: IApiConnection.DeleteAsync<T>(String, Object, IDictionary<String, String>, IDictionary<String, String>)
   nameWithType.vb: IApiConnection.DeleteAsync(Of T)(String, Object, IDictionary(Of String, String), IDictionary(Of String, String))
 - uid: Auth0.Core.Http.IApiConnection.GetAsync*
@@ -2887,13 +2887,13 @@ references:
   isSpec: "True"
   fullName: Auth0.Core.Http.IApiConnection.GetAsync
   nameWithType: IApiConnection.GetAsync
-- uid: Auth0.Core.Http.IApiConnection.GetAsync``1(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Object},JsonConverter[])
+- uid: Auth0.Core.Http.IApiConnection.GetAsync``1(System.String,IDictionary{System.String,System.String},IDictionary{System.String,System.String},IDictionary{System.String,System.Object},JsonConverter[])
   name: GetAsync<T>(String, IDictionary<String, String>, IDictionary<String, String>, IDictionary<String, Object>, JsonConverter[])
-  href: api/Auth0.Core.Http.IApiConnection.html#Auth0_Core_Http_IApiConnection_GetAsync__1_System_String_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_Object__JsonConverter___
-  commentId: M:Auth0.Core.Http.IApiConnection.GetAsync``1(System.String,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Object},JsonConverter[])
+  href: api/Auth0.Core.Http.IApiConnection.html#Auth0_Core_Http_IApiConnection_GetAsync__1_System_String_IDictionary_System_String_System_String__IDictionary_System_String_System_String__IDictionary_System_String_System_Object__JsonConverter___
+  commentId: M:Auth0.Core.Http.IApiConnection.GetAsync``1(System.String,IDictionary{System.String,System.String},IDictionary{System.String,System.String},IDictionary{System.String,System.Object},JsonConverter[])
   name.vb: GetAsync(Of T)(String, IDictionary(Of String, String), IDictionary(Of String, String), IDictionary(Of String, Object), JsonConverter())
-  fullName: Auth0.Core.Http.IApiConnection.GetAsync<T>(System.String, System.Collections.Generic.IDictionary<System.String, System.String>, System.Collections.Generic.IDictionary<System.String, System.String>, System.Collections.Generic.IDictionary<System.String, System.Object>, JsonConverter[])
-  fullName.vb: Auth0.Core.Http.IApiConnection.GetAsync(Of T)(System.String, System.Collections.Generic.IDictionary(Of System.String, System.String), System.Collections.Generic.IDictionary(Of System.String, System.String), System.Collections.Generic.IDictionary(Of System.String, System.Object), JsonConverter())
+  fullName: Auth0.Core.Http.IApiConnection.GetAsync<T>(System.String, IDictionary<System.String, System.String>, IDictionary<System.String, System.String>, IDictionary<System.String, System.Object>, JsonConverter[])
+  fullName.vb: Auth0.Core.Http.IApiConnection.GetAsync(Of T)(System.String, IDictionary(Of System.String, System.String), IDictionary(Of System.String, System.String), IDictionary(Of System.String, System.Object), JsonConverter())
   nameWithType: IApiConnection.GetAsync<T>(String, IDictionary<String, String>, IDictionary<String, String>, IDictionary<String, Object>, JsonConverter[])
   nameWithType.vb: IApiConnection.GetAsync(Of T)(String, IDictionary(Of String, String), IDictionary(Of String, String), IDictionary(Of String, Object), JsonConverter())
 - uid: Auth0.Core.Http.IApiConnection.PatchAsync*
@@ -2903,13 +2903,13 @@ references:
   isSpec: "True"
   fullName: Auth0.Core.Http.IApiConnection.PatchAsync
   nameWithType: IApiConnection.PatchAsync
-- uid: Auth0.Core.Http.IApiConnection.PatchAsync``1(System.String,System.Object,System.Collections.Generic.Dictionary{System.String,System.String})
+- uid: Auth0.Core.Http.IApiConnection.PatchAsync``1(System.String,System.Object,Dictionary{System.String,System.String})
   name: PatchAsync<T>(String, Object, Dictionary<String, String>)
-  href: api/Auth0.Core.Http.IApiConnection.html#Auth0_Core_Http_IApiConnection_PatchAsync__1_System_String_System_Object_System_Collections_Generic_Dictionary_System_String_System_String__
-  commentId: M:Auth0.Core.Http.IApiConnection.PatchAsync``1(System.String,System.Object,System.Collections.Generic.Dictionary{System.String,System.String})
+  href: api/Auth0.Core.Http.IApiConnection.html#Auth0_Core_Http_IApiConnection_PatchAsync__1_System_String_System_Object_Dictionary_System_String_System_String__
+  commentId: M:Auth0.Core.Http.IApiConnection.PatchAsync``1(System.String,System.Object,Dictionary{System.String,System.String})
   name.vb: PatchAsync(Of T)(String, Object, Dictionary(Of String, String))
-  fullName: Auth0.Core.Http.IApiConnection.PatchAsync<T>(System.String, System.Object, System.Collections.Generic.Dictionary<System.String, System.String>)
-  fullName.vb: Auth0.Core.Http.IApiConnection.PatchAsync(Of T)(System.String, System.Object, System.Collections.Generic.Dictionary(Of System.String, System.String))
+  fullName: Auth0.Core.Http.IApiConnection.PatchAsync<T>(System.String, System.Object, Dictionary<System.String, System.String>)
+  fullName.vb: Auth0.Core.Http.IApiConnection.PatchAsync(Of T)(System.String, System.Object, Dictionary(Of System.String, System.String))
   nameWithType: IApiConnection.PatchAsync<T>(String, Object, Dictionary<String, String>)
   nameWithType.vb: IApiConnection.PatchAsync(Of T)(String, Object, Dictionary(Of String, String))
 - uid: Auth0.Core.Http.IApiConnection.PostAsync*
@@ -2919,13 +2919,13 @@ references:
   isSpec: "True"
   fullName: Auth0.Core.Http.IApiConnection.PostAsync
   nameWithType: IApiConnection.PostAsync
-- uid: Auth0.Core.Http.IApiConnection.PostAsync``1(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IList{Auth0.Core.Http.FileUploadParameter},System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.String})
+- uid: Auth0.Core.Http.IApiConnection.PostAsync``1(System.String,System.Object,IDictionary{System.String,System.Object},IList{Auth0.Core.Http.FileUploadParameter},IDictionary{System.String,System.String},IDictionary{System.String,System.Object},IDictionary{System.String,System.String})
   name: PostAsync<T>(String, Object, IDictionary<String, Object>, IList<FileUploadParameter>, IDictionary<String, String>, IDictionary<String, Object>, IDictionary<String, String>)
-  href: api/Auth0.Core.Http.IApiConnection.html#Auth0_Core_Http_IApiConnection_PostAsync__1_System_String_System_Object_System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IList_Auth0_Core_Http_FileUploadParameter__System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IDictionary_System_String_System_String__
-  commentId: M:Auth0.Core.Http.IApiConnection.PostAsync``1(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IList{Auth0.Core.Http.FileUploadParameter},System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.String})
+  href: api/Auth0.Core.Http.IApiConnection.html#Auth0_Core_Http_IApiConnection_PostAsync__1_System_String_System_Object_IDictionary_System_String_System_Object__IList_Auth0_Core_Http_FileUploadParameter__IDictionary_System_String_System_String__IDictionary_System_String_System_Object__IDictionary_System_String_System_String__
+  commentId: M:Auth0.Core.Http.IApiConnection.PostAsync``1(System.String,System.Object,IDictionary{System.String,System.Object},IList{Auth0.Core.Http.FileUploadParameter},IDictionary{System.String,System.String},IDictionary{System.String,System.Object},IDictionary{System.String,System.String})
   name.vb: PostAsync(Of T)(String, Object, IDictionary(Of String, Object), IList(Of FileUploadParameter), IDictionary(Of String, String), IDictionary(Of String, Object), IDictionary(Of String, String))
-  fullName: Auth0.Core.Http.IApiConnection.PostAsync<T>(System.String, System.Object, System.Collections.Generic.IDictionary<System.String, System.Object>, System.Collections.Generic.IList<Auth0.Core.Http.FileUploadParameter>, System.Collections.Generic.IDictionary<System.String, System.String>, System.Collections.Generic.IDictionary<System.String, System.Object>, System.Collections.Generic.IDictionary<System.String, System.String>)
-  fullName.vb: Auth0.Core.Http.IApiConnection.PostAsync(Of T)(System.String, System.Object, System.Collections.Generic.IDictionary(Of System.String, System.Object), System.Collections.Generic.IList(Of Auth0.Core.Http.FileUploadParameter), System.Collections.Generic.IDictionary(Of System.String, System.String), System.Collections.Generic.IDictionary(Of System.String, System.Object), System.Collections.Generic.IDictionary(Of System.String, System.String))
+  fullName: Auth0.Core.Http.IApiConnection.PostAsync<T>(System.String, System.Object, IDictionary<System.String, System.Object>, IList<Auth0.Core.Http.FileUploadParameter>, IDictionary<System.String, System.String>, IDictionary<System.String, System.Object>, IDictionary<System.String, System.String>)
+  fullName.vb: Auth0.Core.Http.IApiConnection.PostAsync(Of T)(System.String, System.Object, IDictionary(Of System.String, System.Object), IList(Of Auth0.Core.Http.FileUploadParameter), IDictionary(Of System.String, System.String), IDictionary(Of System.String, System.Object), IDictionary(Of System.String, System.String))
   nameWithType: IApiConnection.PostAsync<T>(String, Object, IDictionary<String, Object>, IList<FileUploadParameter>, IDictionary<String, String>, IDictionary<String, Object>, IDictionary<String, String>)
   nameWithType.vb: IApiConnection.PostAsync(Of T)(String, Object, IDictionary(Of String, Object), IList(Of FileUploadParameter), IDictionary(Of String, String), IDictionary(Of String, Object), IDictionary(Of String, String))
 - uid: Auth0.Core.Http.IApiConnection.PutAsync*
@@ -2935,13 +2935,13 @@ references:
   isSpec: "True"
   fullName: Auth0.Core.Http.IApiConnection.PutAsync
   nameWithType: IApiConnection.PutAsync
-- uid: Auth0.Core.Http.IApiConnection.PutAsync``1(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IList{Auth0.Core.Http.FileUploadParameter},System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.String})
+- uid: Auth0.Core.Http.IApiConnection.PutAsync``1(System.String,System.Object,IDictionary{System.String,System.Object},IList{Auth0.Core.Http.FileUploadParameter},IDictionary{System.String,System.String},IDictionary{System.String,System.Object},IDictionary{System.String,System.String})
   name: PutAsync<T>(String, Object, IDictionary<String, Object>, IList<FileUploadParameter>, IDictionary<String, String>, IDictionary<String, Object>, IDictionary<String, String>)
-  href: api/Auth0.Core.Http.IApiConnection.html#Auth0_Core_Http_IApiConnection_PutAsync__1_System_String_System_Object_System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IList_Auth0_Core_Http_FileUploadParameter__System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IDictionary_System_String_System_Object__System_Collections_Generic_IDictionary_System_String_System_String__
-  commentId: M:Auth0.Core.Http.IApiConnection.PutAsync``1(System.String,System.Object,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IList{Auth0.Core.Http.FileUploadParameter},System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IDictionary{System.String,System.String})
+  href: api/Auth0.Core.Http.IApiConnection.html#Auth0_Core_Http_IApiConnection_PutAsync__1_System_String_System_Object_IDictionary_System_String_System_Object__IList_Auth0_Core_Http_FileUploadParameter__IDictionary_System_String_System_String__IDictionary_System_String_System_Object__IDictionary_System_String_System_String__
+  commentId: M:Auth0.Core.Http.IApiConnection.PutAsync``1(System.String,System.Object,IDictionary{System.String,System.Object},IList{Auth0.Core.Http.FileUploadParameter},IDictionary{System.String,System.String},IDictionary{System.String,System.Object},IDictionary{System.String,System.String})
   name.vb: PutAsync(Of T)(String, Object, IDictionary(Of String, Object), IList(Of FileUploadParameter), IDictionary(Of String, String), IDictionary(Of String, Object), IDictionary(Of String, String))
-  fullName: Auth0.Core.Http.IApiConnection.PutAsync<T>(System.String, System.Object, System.Collections.Generic.IDictionary<System.String, System.Object>, System.Collections.Generic.IList<Auth0.Core.Http.FileUploadParameter>, System.Collections.Generic.IDictionary<System.String, System.String>, System.Collections.Generic.IDictionary<System.String, System.Object>, System.Collections.Generic.IDictionary<System.String, System.String>)
-  fullName.vb: Auth0.Core.Http.IApiConnection.PutAsync(Of T)(System.String, System.Object, System.Collections.Generic.IDictionary(Of System.String, System.Object), System.Collections.Generic.IList(Of Auth0.Core.Http.FileUploadParameter), System.Collections.Generic.IDictionary(Of System.String, System.String), System.Collections.Generic.IDictionary(Of System.String, System.Object), System.Collections.Generic.IDictionary(Of System.String, System.String))
+  fullName: Auth0.Core.Http.IApiConnection.PutAsync<T>(System.String, System.Object, IDictionary<System.String, System.Object>, IList<Auth0.Core.Http.FileUploadParameter>, IDictionary<System.String, System.String>, IDictionary<System.String, System.Object>, IDictionary<System.String, System.String>)
+  fullName.vb: Auth0.Core.Http.IApiConnection.PutAsync(Of T)(System.String, System.Object, IDictionary(Of System.String, System.Object), IList(Of Auth0.Core.Http.FileUploadParameter), IDictionary(Of System.String, System.String), IDictionary(Of System.String, System.Object), IDictionary(Of System.String, System.String))
   nameWithType: IApiConnection.PutAsync<T>(String, Object, IDictionary<String, Object>, IList<FileUploadParameter>, IDictionary<String, String>, IDictionary<String, Object>, IDictionary<String, String>)
   nameWithType.vb: IApiConnection.PutAsync(Of T)(String, Object, IDictionary(Of String, Object), IList(Of FileUploadParameter), IDictionary(Of String, String), IDictionary(Of String, Object), IDictionary(Of String, String))
 - uid: Auth0.Core.Http.RateLimit
@@ -3072,11 +3072,11 @@ references:
   commentId: T:Auth0.Core.Serialization.ApiErrorConverter
   fullName: Auth0.Core.Serialization.ApiErrorConverter
   nameWithType: ApiErrorConverter
-- uid: Auth0.Core.Serialization.ApiErrorConverter.CanConvert(System.Type)
+- uid: Auth0.Core.Serialization.ApiErrorConverter.CanConvert(Type)
   name: CanConvert(Type)
-  href: api/Auth0.Core.Serialization.ApiErrorConverter.html#Auth0_Core_Serialization_ApiErrorConverter_CanConvert_System_Type_
-  commentId: M:Auth0.Core.Serialization.ApiErrorConverter.CanConvert(System.Type)
-  fullName: Auth0.Core.Serialization.ApiErrorConverter.CanConvert(System.Type)
+  href: api/Auth0.Core.Serialization.ApiErrorConverter.html#Auth0_Core_Serialization_ApiErrorConverter_CanConvert_Type_
+  commentId: M:Auth0.Core.Serialization.ApiErrorConverter.CanConvert(Type)
+  fullName: Auth0.Core.Serialization.ApiErrorConverter.CanConvert(Type)
   nameWithType: ApiErrorConverter.CanConvert(Type)
 - uid: Auth0.Core.Serialization.ApiErrorConverter.CanConvert*
   name: CanConvert
@@ -3098,11 +3098,11 @@ references:
   isSpec: "True"
   fullName: Auth0.Core.Serialization.ApiErrorConverter.CanWrite
   nameWithType: ApiErrorConverter.CanWrite
-- uid: Auth0.Core.Serialization.ApiErrorConverter.ReadJson(JsonReader,System.Type,System.Object,JsonSerializer)
+- uid: Auth0.Core.Serialization.ApiErrorConverter.ReadJson(JsonReader,Type,System.Object,JsonSerializer)
   name: ReadJson(JsonReader, Type, Object, JsonSerializer)
-  href: api/Auth0.Core.Serialization.ApiErrorConverter.html#Auth0_Core_Serialization_ApiErrorConverter_ReadJson_JsonReader_System_Type_System_Object_JsonSerializer_
-  commentId: M:Auth0.Core.Serialization.ApiErrorConverter.ReadJson(JsonReader,System.Type,System.Object,JsonSerializer)
-  fullName: Auth0.Core.Serialization.ApiErrorConverter.ReadJson(JsonReader, System.Type, System.Object, JsonSerializer)
+  href: api/Auth0.Core.Serialization.ApiErrorConverter.html#Auth0_Core_Serialization_ApiErrorConverter_ReadJson_JsonReader_Type_System_Object_JsonSerializer_
+  commentId: M:Auth0.Core.Serialization.ApiErrorConverter.ReadJson(JsonReader,Type,System.Object,JsonSerializer)
+  fullName: Auth0.Core.Serialization.ApiErrorConverter.ReadJson(JsonReader, Type, System.Object, JsonSerializer)
   nameWithType: ApiErrorConverter.ReadJson(JsonReader, Type, Object, JsonSerializer)
 - uid: Auth0.Core.Serialization.ApiErrorConverter.ReadJson*
   name: ReadJson
@@ -3143,11 +3143,11 @@ references:
   isSpec: "True"
   fullName: Auth0.Core.Serialization.FlexibleDateTimeConverter.CanWrite
   nameWithType: FlexibleDateTimeConverter.CanWrite
-- uid: Auth0.Core.Serialization.FlexibleDateTimeConverter.ReadJson(JsonReader,System.Type,System.Object,JsonSerializer)
+- uid: Auth0.Core.Serialization.FlexibleDateTimeConverter.ReadJson(JsonReader,Type,System.Object,JsonSerializer)
   name: ReadJson(JsonReader, Type, Object, JsonSerializer)
-  href: api/Auth0.Core.Serialization.FlexibleDateTimeConverter.html#Auth0_Core_Serialization_FlexibleDateTimeConverter_ReadJson_JsonReader_System_Type_System_Object_JsonSerializer_
-  commentId: M:Auth0.Core.Serialization.FlexibleDateTimeConverter.ReadJson(JsonReader,System.Type,System.Object,JsonSerializer)
-  fullName: Auth0.Core.Serialization.FlexibleDateTimeConverter.ReadJson(JsonReader, System.Type, System.Object, JsonSerializer)
+  href: api/Auth0.Core.Serialization.FlexibleDateTimeConverter.html#Auth0_Core_Serialization_FlexibleDateTimeConverter_ReadJson_JsonReader_Type_System_Object_JsonSerializer_
+  commentId: M:Auth0.Core.Serialization.FlexibleDateTimeConverter.ReadJson(JsonReader,Type,System.Object,JsonSerializer)
+  fullName: Auth0.Core.Serialization.FlexibleDateTimeConverter.ReadJson(JsonReader, Type, System.Object, JsonSerializer)
   nameWithType: FlexibleDateTimeConverter.ReadJson(JsonReader, Type, Object, JsonSerializer)
 - uid: Auth0.Core.Serialization.FlexibleDateTimeConverter.ReadJson*
   name: ReadJson
@@ -3187,11 +3187,11 @@ references:
   commentId: T:Auth0.ManagementApi.Clients.BlacklistedTokensClient
   fullName: Auth0.ManagementApi.Clients.BlacklistedTokensClient
   nameWithType: BlacklistedTokensClient
-- uid: Auth0.ManagementApi.Clients.BlacklistedTokensClient.#ctor(Auth0.Core.Http.IApiConnection)
+- uid: Auth0.ManagementApi.Clients.BlacklistedTokensClient.#ctor(IApiConnection)
   name: BlacklistedTokensClient(IApiConnection)
-  href: api/Auth0.ManagementApi.Clients.BlacklistedTokensClient.html#Auth0_ManagementApi_Clients_BlacklistedTokensClient__ctor_Auth0_Core_Http_IApiConnection_
-  commentId: M:Auth0.ManagementApi.Clients.BlacklistedTokensClient.#ctor(Auth0.Core.Http.IApiConnection)
-  fullName: Auth0.ManagementApi.Clients.BlacklistedTokensClient.BlacklistedTokensClient(Auth0.Core.Http.IApiConnection)
+  href: api/Auth0.ManagementApi.Clients.BlacklistedTokensClient.html#Auth0_ManagementApi_Clients_BlacklistedTokensClient__ctor_IApiConnection_
+  commentId: M:Auth0.ManagementApi.Clients.BlacklistedTokensClient.#ctor(IApiConnection)
+  fullName: Auth0.ManagementApi.Clients.BlacklistedTokensClient.BlacklistedTokensClient(IApiConnection)
   nameWithType: BlacklistedTokensClient.BlacklistedTokensClient(IApiConnection)
 - uid: Auth0.ManagementApi.Clients.BlacklistedTokensClient.#ctor*
   name: BlacklistedTokensClient
@@ -3238,11 +3238,11 @@ references:
   commentId: T:Auth0.ManagementApi.Clients.ClientGrantsClient
   fullName: Auth0.ManagementApi.Clients.ClientGrantsClient
   nameWithType: ClientGrantsClient
-- uid: Auth0.ManagementApi.Clients.ClientGrantsClient.#ctor(Auth0.Core.Http.ApiConnection)
+- uid: Auth0.ManagementApi.Clients.ClientGrantsClient.#ctor(ApiConnection)
   name: ClientGrantsClient(ApiConnection)
-  href: api/Auth0.ManagementApi.Clients.ClientGrantsClient.html#Auth0_ManagementApi_Clients_ClientGrantsClient__ctor_Auth0_Core_Http_ApiConnection_
-  commentId: M:Auth0.ManagementApi.Clients.ClientGrantsClient.#ctor(Auth0.Core.Http.ApiConnection)
-  fullName: Auth0.ManagementApi.Clients.ClientGrantsClient.ClientGrantsClient(Auth0.Core.Http.ApiConnection)
+  href: api/Auth0.ManagementApi.Clients.ClientGrantsClient.html#Auth0_ManagementApi_Clients_ClientGrantsClient__ctor_ApiConnection_
+  commentId: M:Auth0.ManagementApi.Clients.ClientGrantsClient.#ctor(ApiConnection)
+  fullName: Auth0.ManagementApi.Clients.ClientGrantsClient.ClientGrantsClient(ApiConnection)
   nameWithType: ClientGrantsClient.ClientGrantsClient(ApiConnection)
 - uid: Auth0.ManagementApi.Clients.ClientGrantsClient.#ctor*
   name: ClientGrantsClient
@@ -3309,11 +3309,11 @@ references:
   commentId: T:Auth0.ManagementApi.Clients.ClientsClient
   fullName: Auth0.ManagementApi.Clients.ClientsClient
   nameWithType: ClientsClient
-- uid: Auth0.ManagementApi.Clients.ClientsClient.#ctor(Auth0.Core.Http.IApiConnection)
+- uid: Auth0.ManagementApi.Clients.ClientsClient.#ctor(IApiConnection)
   name: ClientsClient(IApiConnection)
-  href: api/Auth0.ManagementApi.Clients.ClientsClient.html#Auth0_ManagementApi_Clients_ClientsClient__ctor_Auth0_Core_Http_IApiConnection_
-  commentId: M:Auth0.ManagementApi.Clients.ClientsClient.#ctor(Auth0.Core.Http.IApiConnection)
-  fullName: Auth0.ManagementApi.Clients.ClientsClient.ClientsClient(Auth0.Core.Http.IApiConnection)
+  href: api/Auth0.ManagementApi.Clients.ClientsClient.html#Auth0_ManagementApi_Clients_ClientsClient__ctor_IApiConnection_
+  commentId: M:Auth0.ManagementApi.Clients.ClientsClient.#ctor(IApiConnection)
+  fullName: Auth0.ManagementApi.Clients.ClientsClient.ClientsClient(IApiConnection)
   nameWithType: ClientsClient.ClientsClient(IApiConnection)
 - uid: Auth0.ManagementApi.Clients.ClientsClient.#ctor*
   name: ClientsClient
@@ -3406,11 +3406,11 @@ references:
   commentId: T:Auth0.ManagementApi.Clients.ConnectionsClient
   fullName: Auth0.ManagementApi.Clients.ConnectionsClient
   nameWithType: ConnectionsClient
-- uid: Auth0.ManagementApi.Clients.ConnectionsClient.#ctor(Auth0.Core.Http.IApiConnection)
+- uid: Auth0.ManagementApi.Clients.ConnectionsClient.#ctor(IApiConnection)
   name: ConnectionsClient(IApiConnection)
-  href: api/Auth0.ManagementApi.Clients.ConnectionsClient.html#Auth0_ManagementApi_Clients_ConnectionsClient__ctor_Auth0_Core_Http_IApiConnection_
-  commentId: M:Auth0.ManagementApi.Clients.ConnectionsClient.#ctor(Auth0.Core.Http.IApiConnection)
-  fullName: Auth0.ManagementApi.Clients.ConnectionsClient.ConnectionsClient(Auth0.Core.Http.IApiConnection)
+  href: api/Auth0.ManagementApi.Clients.ConnectionsClient.html#Auth0_ManagementApi_Clients_ConnectionsClient__ctor_IApiConnection_
+  commentId: M:Auth0.ManagementApi.Clients.ConnectionsClient.#ctor(IApiConnection)
+  fullName: Auth0.ManagementApi.Clients.ConnectionsClient.ConnectionsClient(IApiConnection)
   nameWithType: ConnectionsClient.ConnectionsClient(IApiConnection)
 - uid: Auth0.ManagementApi.Clients.ConnectionsClient.#ctor*
   name: ConnectionsClient
@@ -3574,11 +3574,11 @@ references:
   commentId: T:Auth0.ManagementApi.Clients.DeviceCredentialsClient
   fullName: Auth0.ManagementApi.Clients.DeviceCredentialsClient
   nameWithType: DeviceCredentialsClient
-- uid: Auth0.ManagementApi.Clients.DeviceCredentialsClient.#ctor(Auth0.Core.Http.ApiConnection)
+- uid: Auth0.ManagementApi.Clients.DeviceCredentialsClient.#ctor(ApiConnection)
   name: DeviceCredentialsClient(ApiConnection)
-  href: api/Auth0.ManagementApi.Clients.DeviceCredentialsClient.html#Auth0_ManagementApi_Clients_DeviceCredentialsClient__ctor_Auth0_Core_Http_ApiConnection_
-  commentId: M:Auth0.ManagementApi.Clients.DeviceCredentialsClient.#ctor(Auth0.Core.Http.ApiConnection)
-  fullName: Auth0.ManagementApi.Clients.DeviceCredentialsClient.DeviceCredentialsClient(Auth0.Core.Http.ApiConnection)
+  href: api/Auth0.ManagementApi.Clients.DeviceCredentialsClient.html#Auth0_ManagementApi_Clients_DeviceCredentialsClient__ctor_ApiConnection_
+  commentId: M:Auth0.ManagementApi.Clients.DeviceCredentialsClient.#ctor(ApiConnection)
+  fullName: Auth0.ManagementApi.Clients.DeviceCredentialsClient.DeviceCredentialsClient(ApiConnection)
   nameWithType: DeviceCredentialsClient.DeviceCredentialsClient(ApiConnection)
 - uid: Auth0.ManagementApi.Clients.DeviceCredentialsClient.#ctor*
   name: DeviceCredentialsClient
@@ -3690,11 +3690,11 @@ references:
   commentId: T:Auth0.ManagementApi.Clients.EmailTemplatesClient
   fullName: Auth0.ManagementApi.Clients.EmailTemplatesClient
   nameWithType: EmailTemplatesClient
-- uid: Auth0.ManagementApi.Clients.EmailTemplatesClient.#ctor(Auth0.Core.Http.IApiConnection)
+- uid: Auth0.ManagementApi.Clients.EmailTemplatesClient.#ctor(IApiConnection)
   name: EmailTemplatesClient(IApiConnection)
-  href: api/Auth0.ManagementApi.Clients.EmailTemplatesClient.html#Auth0_ManagementApi_Clients_EmailTemplatesClient__ctor_Auth0_Core_Http_IApiConnection_
-  commentId: M:Auth0.ManagementApi.Clients.EmailTemplatesClient.#ctor(Auth0.Core.Http.IApiConnection)
-  fullName: Auth0.ManagementApi.Clients.EmailTemplatesClient.EmailTemplatesClient(Auth0.Core.Http.IApiConnection)
+  href: api/Auth0.ManagementApi.Clients.EmailTemplatesClient.html#Auth0_ManagementApi_Clients_EmailTemplatesClient__ctor_IApiConnection_
+  commentId: M:Auth0.ManagementApi.Clients.EmailTemplatesClient.#ctor(IApiConnection)
+  fullName: Auth0.ManagementApi.Clients.EmailTemplatesClient.EmailTemplatesClient(IApiConnection)
   nameWithType: EmailTemplatesClient.EmailTemplatesClient(IApiConnection)
 - uid: Auth0.ManagementApi.Clients.EmailTemplatesClient.#ctor*
   name: EmailTemplatesClient
@@ -3761,11 +3761,11 @@ references:
   commentId: T:Auth0.ManagementApi.Clients.GuardianClient
   fullName: Auth0.ManagementApi.Clients.GuardianClient
   nameWithType: GuardianClient
-- uid: Auth0.ManagementApi.Clients.GuardianClient.#ctor(Auth0.Core.Http.IApiConnection)
+- uid: Auth0.ManagementApi.Clients.GuardianClient.#ctor(IApiConnection)
   name: GuardianClient(IApiConnection)
-  href: api/Auth0.ManagementApi.Clients.GuardianClient.html#Auth0_ManagementApi_Clients_GuardianClient__ctor_Auth0_Core_Http_IApiConnection_
-  commentId: M:Auth0.ManagementApi.Clients.GuardianClient.#ctor(Auth0.Core.Http.IApiConnection)
-  fullName: Auth0.ManagementApi.Clients.GuardianClient.GuardianClient(Auth0.Core.Http.IApiConnection)
+  href: api/Auth0.ManagementApi.Clients.GuardianClient.html#Auth0_ManagementApi_Clients_GuardianClient__ctor_IApiConnection_
+  commentId: M:Auth0.ManagementApi.Clients.GuardianClient.#ctor(IApiConnection)
+  fullName: Auth0.ManagementApi.Clients.GuardianClient.GuardianClient(IApiConnection)
   nameWithType: GuardianClient.GuardianClient(IApiConnection)
 - uid: Auth0.ManagementApi.Clients.GuardianClient.#ctor*
   name: GuardianClient
@@ -3910,11 +3910,11 @@ references:
   commentId: T:Auth0.ManagementApi.Clients.JobsClient
   fullName: Auth0.ManagementApi.Clients.JobsClient
   nameWithType: JobsClient
-- uid: Auth0.ManagementApi.Clients.JobsClient.#ctor(Auth0.Core.Http.IApiConnection)
+- uid: Auth0.ManagementApi.Clients.JobsClient.#ctor(IApiConnection)
   name: JobsClient(IApiConnection)
-  href: api/Auth0.ManagementApi.Clients.JobsClient.html#Auth0_ManagementApi_Clients_JobsClient__ctor_Auth0_Core_Http_IApiConnection_
-  commentId: M:Auth0.ManagementApi.Clients.JobsClient.#ctor(Auth0.Core.Http.IApiConnection)
-  fullName: Auth0.ManagementApi.Clients.JobsClient.JobsClient(Auth0.Core.Http.IApiConnection)
+  href: api/Auth0.ManagementApi.Clients.JobsClient.html#Auth0_ManagementApi_Clients_JobsClient__ctor_IApiConnection_
+  commentId: M:Auth0.ManagementApi.Clients.JobsClient.#ctor(IApiConnection)
+  fullName: Auth0.ManagementApi.Clients.JobsClient.JobsClient(IApiConnection)
   nameWithType: JobsClient.JobsClient(IApiConnection)
 - uid: Auth0.ManagementApi.Clients.JobsClient.#ctor*
   name: JobsClient
@@ -3971,11 +3971,11 @@ references:
   commentId: T:Auth0.ManagementApi.Clients.LogsClient
   fullName: Auth0.ManagementApi.Clients.LogsClient
   nameWithType: LogsClient
-- uid: Auth0.ManagementApi.Clients.LogsClient.#ctor(Auth0.Core.Http.IApiConnection)
+- uid: Auth0.ManagementApi.Clients.LogsClient.#ctor(IApiConnection)
   name: LogsClient(IApiConnection)
-  href: api/Auth0.ManagementApi.Clients.LogsClient.html#Auth0_ManagementApi_Clients_LogsClient__ctor_Auth0_Core_Http_IApiConnection_
-  commentId: M:Auth0.ManagementApi.Clients.LogsClient.#ctor(Auth0.Core.Http.IApiConnection)
-  fullName: Auth0.ManagementApi.Clients.LogsClient.LogsClient(Auth0.Core.Http.IApiConnection)
+  href: api/Auth0.ManagementApi.Clients.LogsClient.html#Auth0_ManagementApi_Clients_LogsClient__ctor_IApiConnection_
+  commentId: M:Auth0.ManagementApi.Clients.LogsClient.#ctor(IApiConnection)
+  fullName: Auth0.ManagementApi.Clients.LogsClient.LogsClient(IApiConnection)
   nameWithType: LogsClient.LogsClient(IApiConnection)
 - uid: Auth0.ManagementApi.Clients.LogsClient.#ctor*
   name: LogsClient
@@ -4016,11 +4016,11 @@ references:
   commentId: T:Auth0.ManagementApi.Clients.ResourceServersClient
   fullName: Auth0.ManagementApi.Clients.ResourceServersClient
   nameWithType: ResourceServersClient
-- uid: Auth0.ManagementApi.Clients.ResourceServersClient.#ctor(Auth0.Core.Http.IApiConnection)
+- uid: Auth0.ManagementApi.Clients.ResourceServersClient.#ctor(IApiConnection)
   name: ResourceServersClient(IApiConnection)
-  href: api/Auth0.ManagementApi.Clients.ResourceServersClient.html#Auth0_ManagementApi_Clients_ResourceServersClient__ctor_Auth0_Core_Http_IApiConnection_
-  commentId: M:Auth0.ManagementApi.Clients.ResourceServersClient.#ctor(Auth0.Core.Http.IApiConnection)
-  fullName: Auth0.ManagementApi.Clients.ResourceServersClient.ResourceServersClient(Auth0.Core.Http.IApiConnection)
+  href: api/Auth0.ManagementApi.Clients.ResourceServersClient.html#Auth0_ManagementApi_Clients_ResourceServersClient__ctor_IApiConnection_
+  commentId: M:Auth0.ManagementApi.Clients.ResourceServersClient.#ctor(IApiConnection)
+  fullName: Auth0.ManagementApi.Clients.ResourceServersClient.ResourceServersClient(IApiConnection)
   nameWithType: ResourceServersClient.ResourceServersClient(IApiConnection)
 - uid: Auth0.ManagementApi.Clients.ResourceServersClient.#ctor*
   name: ResourceServersClient
@@ -4100,11 +4100,11 @@ references:
   commentId: T:Auth0.ManagementApi.Clients.RolesClient
   fullName: Auth0.ManagementApi.Clients.RolesClient
   nameWithType: RolesClient
-- uid: Auth0.ManagementApi.Clients.RolesClient.#ctor(Auth0.Core.Http.ApiConnection)
+- uid: Auth0.ManagementApi.Clients.RolesClient.#ctor(ApiConnection)
   name: RolesClient(ApiConnection)
-  href: api/Auth0.ManagementApi.Clients.RolesClient.html#Auth0_ManagementApi_Clients_RolesClient__ctor_Auth0_Core_Http_ApiConnection_
-  commentId: M:Auth0.ManagementApi.Clients.RolesClient.#ctor(Auth0.Core.Http.ApiConnection)
-  fullName: Auth0.ManagementApi.Clients.RolesClient.RolesClient(Auth0.Core.Http.ApiConnection)
+  href: api/Auth0.ManagementApi.Clients.RolesClient.html#Auth0_ManagementApi_Clients_RolesClient__ctor_ApiConnection_
+  commentId: M:Auth0.ManagementApi.Clients.RolesClient.#ctor(ApiConnection)
+  fullName: Auth0.ManagementApi.Clients.RolesClient.RolesClient(ApiConnection)
   nameWithType: RolesClient.RolesClient(ApiConnection)
 - uid: Auth0.ManagementApi.Clients.RolesClient.#ctor*
   name: RolesClient
@@ -4261,11 +4261,11 @@ references:
   commentId: T:Auth0.ManagementApi.Clients.RulesClient
   fullName: Auth0.ManagementApi.Clients.RulesClient
   nameWithType: RulesClient
-- uid: Auth0.ManagementApi.Clients.RulesClient.#ctor(Auth0.Core.Http.ApiConnection)
+- uid: Auth0.ManagementApi.Clients.RulesClient.#ctor(ApiConnection)
   name: RulesClient(ApiConnection)
-  href: api/Auth0.ManagementApi.Clients.RulesClient.html#Auth0_ManagementApi_Clients_RulesClient__ctor_Auth0_Core_Http_ApiConnection_
-  commentId: M:Auth0.ManagementApi.Clients.RulesClient.#ctor(Auth0.Core.Http.ApiConnection)
-  fullName: Auth0.ManagementApi.Clients.RulesClient.RulesClient(Auth0.Core.Http.ApiConnection)
+  href: api/Auth0.ManagementApi.Clients.RulesClient.html#Auth0_ManagementApi_Clients_RulesClient__ctor_ApiConnection_
+  commentId: M:Auth0.ManagementApi.Clients.RulesClient.#ctor(ApiConnection)
+  fullName: Auth0.ManagementApi.Clients.RulesClient.RulesClient(ApiConnection)
   nameWithType: RulesClient.RulesClient(ApiConnection)
 - uid: Auth0.ManagementApi.Clients.RulesClient.#ctor*
   name: RulesClient
@@ -4345,11 +4345,11 @@ references:
   commentId: T:Auth0.ManagementApi.Clients.StatsClient
   fullName: Auth0.ManagementApi.Clients.StatsClient
   nameWithType: StatsClient
-- uid: Auth0.ManagementApi.Clients.StatsClient.#ctor(Auth0.Core.Http.IApiConnection)
+- uid: Auth0.ManagementApi.Clients.StatsClient.#ctor(IApiConnection)
   name: StatsClient(IApiConnection)
-  href: api/Auth0.ManagementApi.Clients.StatsClient.html#Auth0_ManagementApi_Clients_StatsClient__ctor_Auth0_Core_Http_IApiConnection_
-  commentId: M:Auth0.ManagementApi.Clients.StatsClient.#ctor(Auth0.Core.Http.IApiConnection)
-  fullName: Auth0.ManagementApi.Clients.StatsClient.StatsClient(Auth0.Core.Http.IApiConnection)
+  href: api/Auth0.ManagementApi.Clients.StatsClient.html#Auth0_ManagementApi_Clients_StatsClient__ctor_IApiConnection_
+  commentId: M:Auth0.ManagementApi.Clients.StatsClient.#ctor(IApiConnection)
+  fullName: Auth0.ManagementApi.Clients.StatsClient.StatsClient(IApiConnection)
   nameWithType: StatsClient.StatsClient(IApiConnection)
 - uid: Auth0.ManagementApi.Clients.StatsClient.#ctor*
   name: StatsClient
@@ -4371,11 +4371,11 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.StatsClient.GetActiveUsersAsync
   nameWithType: StatsClient.GetActiveUsersAsync
-- uid: Auth0.ManagementApi.Clients.StatsClient.GetDailyStatsAsync(System.DateTime,System.DateTime)
+- uid: Auth0.ManagementApi.Clients.StatsClient.GetDailyStatsAsync(DateTime,DateTime)
   name: GetDailyStatsAsync(DateTime, DateTime)
-  href: api/Auth0.ManagementApi.Clients.StatsClient.html#Auth0_ManagementApi_Clients_StatsClient_GetDailyStatsAsync_System_DateTime_System_DateTime_
-  commentId: M:Auth0.ManagementApi.Clients.StatsClient.GetDailyStatsAsync(System.DateTime,System.DateTime)
-  fullName: Auth0.ManagementApi.Clients.StatsClient.GetDailyStatsAsync(System.DateTime, System.DateTime)
+  href: api/Auth0.ManagementApi.Clients.StatsClient.html#Auth0_ManagementApi_Clients_StatsClient_GetDailyStatsAsync_DateTime_DateTime_
+  commentId: M:Auth0.ManagementApi.Clients.StatsClient.GetDailyStatsAsync(DateTime,DateTime)
+  fullName: Auth0.ManagementApi.Clients.StatsClient.GetDailyStatsAsync(DateTime, DateTime)
   nameWithType: StatsClient.GetDailyStatsAsync(DateTime, DateTime)
 - uid: Auth0.ManagementApi.Clients.StatsClient.GetDailyStatsAsync*
   name: GetDailyStatsAsync
@@ -4390,11 +4390,11 @@ references:
   commentId: T:Auth0.ManagementApi.Clients.TenantSettingsClient
   fullName: Auth0.ManagementApi.Clients.TenantSettingsClient
   nameWithType: TenantSettingsClient
-- uid: Auth0.ManagementApi.Clients.TenantSettingsClient.#ctor(Auth0.Core.Http.IApiConnection)
+- uid: Auth0.ManagementApi.Clients.TenantSettingsClient.#ctor(IApiConnection)
   name: TenantSettingsClient(IApiConnection)
-  href: api/Auth0.ManagementApi.Clients.TenantSettingsClient.html#Auth0_ManagementApi_Clients_TenantSettingsClient__ctor_Auth0_Core_Http_IApiConnection_
-  commentId: M:Auth0.ManagementApi.Clients.TenantSettingsClient.#ctor(Auth0.Core.Http.IApiConnection)
-  fullName: Auth0.ManagementApi.Clients.TenantSettingsClient.TenantSettingsClient(Auth0.Core.Http.IApiConnection)
+  href: api/Auth0.ManagementApi.Clients.TenantSettingsClient.html#Auth0_ManagementApi_Clients_TenantSettingsClient__ctor_IApiConnection_
+  commentId: M:Auth0.ManagementApi.Clients.TenantSettingsClient.#ctor(IApiConnection)
+  fullName: Auth0.ManagementApi.Clients.TenantSettingsClient.TenantSettingsClient(IApiConnection)
   nameWithType: TenantSettingsClient.TenantSettingsClient(IApiConnection)
 - uid: Auth0.ManagementApi.Clients.TenantSettingsClient.#ctor*
   name: TenantSettingsClient
@@ -4435,11 +4435,11 @@ references:
   commentId: T:Auth0.ManagementApi.Clients.TicketsClient
   fullName: Auth0.ManagementApi.Clients.TicketsClient
   nameWithType: TicketsClient
-- uid: Auth0.ManagementApi.Clients.TicketsClient.#ctor(Auth0.Core.Http.IApiConnection)
+- uid: Auth0.ManagementApi.Clients.TicketsClient.#ctor(IApiConnection)
   name: TicketsClient(IApiConnection)
-  href: api/Auth0.ManagementApi.Clients.TicketsClient.html#Auth0_ManagementApi_Clients_TicketsClient__ctor_Auth0_Core_Http_IApiConnection_
-  commentId: M:Auth0.ManagementApi.Clients.TicketsClient.#ctor(Auth0.Core.Http.IApiConnection)
-  fullName: Auth0.ManagementApi.Clients.TicketsClient.TicketsClient(Auth0.Core.Http.IApiConnection)
+  href: api/Auth0.ManagementApi.Clients.TicketsClient.html#Auth0_ManagementApi_Clients_TicketsClient__ctor_IApiConnection_
+  commentId: M:Auth0.ManagementApi.Clients.TicketsClient.#ctor(IApiConnection)
+  fullName: Auth0.ManagementApi.Clients.TicketsClient.TicketsClient(IApiConnection)
   nameWithType: TicketsClient.TicketsClient(IApiConnection)
 - uid: Auth0.ManagementApi.Clients.TicketsClient.#ctor*
   name: TicketsClient
@@ -4480,11 +4480,11 @@ references:
   commentId: T:Auth0.ManagementApi.Clients.UserBlocksClient
   fullName: Auth0.ManagementApi.Clients.UserBlocksClient
   nameWithType: UserBlocksClient
-- uid: Auth0.ManagementApi.Clients.UserBlocksClient.#ctor(Auth0.Core.Http.IApiConnection)
+- uid: Auth0.ManagementApi.Clients.UserBlocksClient.#ctor(IApiConnection)
   name: UserBlocksClient(IApiConnection)
-  href: api/Auth0.ManagementApi.Clients.UserBlocksClient.html#Auth0_ManagementApi_Clients_UserBlocksClient__ctor_Auth0_Core_Http_IApiConnection_
-  commentId: M:Auth0.ManagementApi.Clients.UserBlocksClient.#ctor(Auth0.Core.Http.IApiConnection)
-  fullName: Auth0.ManagementApi.Clients.UserBlocksClient.UserBlocksClient(Auth0.Core.Http.IApiConnection)
+  href: api/Auth0.ManagementApi.Clients.UserBlocksClient.html#Auth0_ManagementApi_Clients_UserBlocksClient__ctor_IApiConnection_
+  commentId: M:Auth0.ManagementApi.Clients.UserBlocksClient.#ctor(IApiConnection)
+  fullName: Auth0.ManagementApi.Clients.UserBlocksClient.UserBlocksClient(IApiConnection)
   nameWithType: UserBlocksClient.UserBlocksClient(IApiConnection)
 - uid: Auth0.ManagementApi.Clients.UserBlocksClient.#ctor*
   name: UserBlocksClient
@@ -4551,11 +4551,11 @@ references:
   commentId: T:Auth0.ManagementApi.Clients.UsersClient
   fullName: Auth0.ManagementApi.Clients.UsersClient
   nameWithType: UsersClient
-- uid: Auth0.ManagementApi.Clients.UsersClient.#ctor(Auth0.Core.Http.ApiConnection)
+- uid: Auth0.ManagementApi.Clients.UsersClient.#ctor(ApiConnection)
   name: UsersClient(ApiConnection)
-  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient__ctor_Auth0_Core_Http_ApiConnection_
-  commentId: M:Auth0.ManagementApi.Clients.UsersClient.#ctor(Auth0.Core.Http.ApiConnection)
-  fullName: Auth0.ManagementApi.Clients.UsersClient.UsersClient(Auth0.Core.Http.ApiConnection)
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient__ctor_ApiConnection_
+  commentId: M:Auth0.ManagementApi.Clients.UsersClient.#ctor(ApiConnection)
+  fullName: Auth0.ManagementApi.Clients.UsersClient.UsersClient(ApiConnection)
   nameWithType: UsersClient.UsersClient(ApiConnection)
 - uid: Auth0.ManagementApi.Clients.UsersClient.#ctor*
   name: UsersClient
@@ -11727,6 +11727,19 @@ references:
   commentId: T:Auth0.ManagementApi.Models.VerifyEmailJobRequest
   fullName: Auth0.ManagementApi.Models.VerifyEmailJobRequest
   nameWithType: VerifyEmailJobRequest
+- uid: Auth0.ManagementApi.Models.VerifyEmailJobRequest.ClientId
+  name: ClientId
+  href: api/Auth0.ManagementApi.Models.VerifyEmailJobRequest.html#Auth0_ManagementApi_Models_VerifyEmailJobRequest_ClientId
+  commentId: P:Auth0.ManagementApi.Models.VerifyEmailJobRequest.ClientId
+  fullName: Auth0.ManagementApi.Models.VerifyEmailJobRequest.ClientId
+  nameWithType: VerifyEmailJobRequest.ClientId
+- uid: Auth0.ManagementApi.Models.VerifyEmailJobRequest.ClientId*
+  name: ClientId
+  href: api/Auth0.ManagementApi.Models.VerifyEmailJobRequest.html#Auth0_ManagementApi_Models_VerifyEmailJobRequest_ClientId_
+  commentId: Overload:Auth0.ManagementApi.Models.VerifyEmailJobRequest.ClientId
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.VerifyEmailJobRequest.ClientId
+  nameWithType: VerifyEmailJobRequest.ClientId
 - uid: Auth0.ManagementApi.Models.VerifyEmailJobRequest.UserId
   name: UserId
   href: api/Auth0.ManagementApi.Models.VerifyEmailJobRequest.html#Auth0_ManagementApi_Models_VerifyEmailJobRequest_UserId
