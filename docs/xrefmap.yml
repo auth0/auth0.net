@@ -1021,25 +1021,6 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.UnlinkUserAsync
   nameWithType: IAuthenticationApiClient.UnlinkUserAsync
-- uid: Auth0.AuthenticationApi.IdentityTokenValidator
-  name: IdentityTokenValidator
-  href: api/Auth0.AuthenticationApi.IdentityTokenValidator.html
-  commentId: T:Auth0.AuthenticationApi.IdentityTokenValidator
-  fullName: Auth0.AuthenticationApi.IdentityTokenValidator
-  nameWithType: IdentityTokenValidator
-- uid: Auth0.AuthenticationApi.IdentityTokenValidator.ValidateAsync(System.String,System.String,System.String)
-  name: ValidateAsync(String, String, String)
-  href: api/Auth0.AuthenticationApi.IdentityTokenValidator.html#Auth0_AuthenticationApi_IdentityTokenValidator_ValidateAsync_System_String_System_String_System_String_
-  commentId: M:Auth0.AuthenticationApi.IdentityTokenValidator.ValidateAsync(System.String,System.String,System.String)
-  fullName: Auth0.AuthenticationApi.IdentityTokenValidator.ValidateAsync(System.String, System.String, System.String)
-  nameWithType: IdentityTokenValidator.ValidateAsync(String, String, String)
-- uid: Auth0.AuthenticationApi.IdentityTokenValidator.ValidateAsync*
-  name: ValidateAsync
-  href: api/Auth0.AuthenticationApi.IdentityTokenValidator.html#Auth0_AuthenticationApi_IdentityTokenValidator_ValidateAsync_
-  commentId: Overload:Auth0.AuthenticationApi.IdentityTokenValidator.ValidateAsync
-  isSpec: "True"
-  fullName: Auth0.AuthenticationApi.IdentityTokenValidator.ValidateAsync
-  nameWithType: IdentityTokenValidator.ValidateAsync
 - uid: Auth0.AuthenticationApi.Models
   name: Auth0.AuthenticationApi.Models
   href: api/Auth0.AuthenticationApi.Models.html
