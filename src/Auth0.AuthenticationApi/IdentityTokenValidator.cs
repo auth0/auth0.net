@@ -9,7 +9,13 @@ namespace Auth0.AuthenticationApi
 {
     public class IdentityTokenValidator
     {
-        public async Task ValidateAsync(string identityToken, string domain, string audience)
+        [Obsolete("This method not intended for direct use. Please see SECURITY-NOTICE.md")]
+        public Task ValidateAsync(string identityToken, string domain, string audience)
+        {
+            throw new NotSupportedException("Developer-facing id token validation is not provided by this library.");
+        }
+
+        internal async Task ValidateInternal(string identityToken, string domain, string audience)
         {
             if (string.IsNullOrEmpty(identityToken))
                 return;

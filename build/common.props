@@ -12,6 +12,10 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 6.5.4
+      - SECURITY FIX for CVE-2019-16929. See
+        https://github.com/auth0/auth0.net/blob/master/SECURITY-NOTICE.md#idtokenvalidator-public for more details.
+
       Version 6.5.3
       WARNING: If you generate tokens in your project via System.IdentityModel.Tokens.Jwt
       please read the important notice at https://github.com/auth0/auth0.net/issues/300
@@ -129,7 +133,7 @@
     <LangVersion>7.1</LangVersion>    
     <Major>6</Major>
     <Minor>5</Minor>
-    <Revision>3</Revision>
+    <Revision>4</Revision>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyVersion>$(Major).$(Minor).$(Revision)</AssemblyVersion>

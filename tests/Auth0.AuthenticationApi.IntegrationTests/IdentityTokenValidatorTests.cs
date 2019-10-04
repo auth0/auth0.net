@@ -79,7 +79,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
             var validator = new IdentityTokenValidator();
             Func<Task> validationFunc = async () =>
-                await validator.ValidateAsync(authenticationResponse.IdToken, $"https://{GetVariable("AUTH0_AUTHENTICATION_API_URL")}/", GetVariable("AUTH0_CLIENT_ID"));
+                await validator.ValidateInternal(authenticationResponse.IdToken, $"https://{GetVariable("AUTH0_AUTHENTICATION_API_URL")}/", GetVariable("AUTH0_CLIENT_ID"));
 
             // Assert
             authenticationResponse.IdToken.Should().NotBeNull();
@@ -106,7 +106,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
             var validator = new IdentityTokenValidator();
             Func<Task> validationFunc = async () =>
-                await validator.ValidateAsync(authenticationResponse.IdToken, $"https://{GetVariable("BRUCKE_AUTHENTICATION_API_URL")}/", GetVariable("BRUCKE_CLIENT_ID"));
+                await validator.ValidateInternal(authenticationResponse.IdToken, $"https://{GetVariable("BRUCKE_AUTHENTICATION_API_URL")}/", GetVariable("BRUCKE_CLIENT_ID"));
 
             // Assert
             authenticationResponse.IdToken.Should().NotBeNull();
@@ -133,7 +133,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
             var validator = new IdentityTokenValidator();
             Func<Task> validationFunc = async () =>
-                await validator.ValidateAsync(authenticationResponse.IdToken, $"https://auth0.auth0.com/", GetVariable("AUTH0_CLIENT_ID"));
+                await validator.ValidateInternal(authenticationResponse.IdToken, $"https://auth0.auth0.com/", GetVariable("AUTH0_CLIENT_ID"));
 
             // Assert
             authenticationResponse.IdToken.Should().NotBeNull();
@@ -160,7 +160,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
             var validator = new IdentityTokenValidator();
             Func<Task> validationFunc = async () =>
-                await validator.ValidateAsync(authenticationResponse.IdToken, $"https://{GetVariable("AUTH0_AUTHENTICATION_API_URL")}/", "invalid_audience");
+                await validator.ValidateInternal(authenticationResponse.IdToken, $"https://{GetVariable("AUTH0_AUTHENTICATION_API_URL")}/", "invalid_audience");
 
             // Assert
             authenticationResponse.IdToken.Should().NotBeNull();

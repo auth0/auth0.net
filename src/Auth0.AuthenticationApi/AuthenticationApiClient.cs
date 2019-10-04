@@ -180,7 +180,7 @@ namespace Auth0.AuthenticationApi
                 null).ConfigureAwait(false);
 
             IdentityTokenValidator validator = new IdentityTokenValidator();
-            await validator.ValidateAsync(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
+            await validator.ValidateInternal(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
 
             return response;
         }
@@ -206,7 +206,7 @@ namespace Auth0.AuthenticationApi
                 null).ConfigureAwait(false);
 
             IdentityTokenValidator validator = new IdentityTokenValidator();
-            await validator.ValidateAsync(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
+            await validator.ValidateInternal(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
 
             return response;
         }
@@ -257,7 +257,7 @@ namespace Auth0.AuthenticationApi
             var response = await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, null, null).ConfigureAwait(false);
             
             IdentityTokenValidator validator = new IdentityTokenValidator();
-            await validator.ValidateAsync(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
+            await validator.ValidateInternal(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
 
             return response;
         }
@@ -310,7 +310,7 @@ namespace Auth0.AuthenticationApi
             var response = await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, headers, null).ConfigureAwait(false);
             
             IdentityTokenValidator validator = new IdentityTokenValidator();
-            await validator.ValidateAsync(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
+            await validator.ValidateInternal(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
 
             return response;
         }
