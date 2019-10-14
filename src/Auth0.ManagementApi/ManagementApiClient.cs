@@ -10,7 +10,7 @@ namespace Auth0.ManagementApi
     /// </summary>
     public class ManagementApiClient : IDisposable
     {
-        private readonly ApiConnection _apiConnection;
+        private IApiConnection _apiConnection;
 
         /// <summary>
         /// Contains all the methods to call the /blacklists/tokens endpoints.
@@ -116,7 +116,11 @@ namespace Auth0.ManagementApi
             return _apiConnection.ApiInfo;
         }
 
-        private ManagementApiClient(string token, Uri baseUri, ApiConnection apiConnection)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
+        /// </summary>
+        /// <param name="apiConnection"><see cref="IApiConnection" /> used to communicate between the client and Auth0.</param>
+        public ManagementApiClient(IApiConnection apiConnection)
         {
             _apiConnection = apiConnection;
 
@@ -148,7 +152,7 @@ namespace Auth0.ManagementApi
         /// <param name="baseUrl">The URL of the tenant to manage.</param>
         /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests.</param>
         public ManagementApiClient(string token, Uri baseUri, HttpMessageHandler handler)
-            : this(token, baseUri, new ApiConnection(token, baseUri.AbsoluteUri, handler))
+            : this(new ApiConnection(token, baseUri.AbsoluteUri, handler))
         {
         }
 
@@ -159,7 +163,7 @@ namespace Auth0.ManagementApi
         /// <param name="baseUrl">The URL of the tenant to manage.</param>
         /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests.</param>
         public ManagementApiClient(string token, Uri baseUri, HttpClient httpClient)
-            : this(token, baseUri, new ApiConnection(token, baseUri.AbsoluteUri, httpClient))
+            : this(new ApiConnection(token, baseUri.AbsoluteUri, httpClient))
         {
         }
 
@@ -206,11 +210,24 @@ namespace Auth0.ManagementApi
         }
 
         /// <summary>
-        /// Disposes of any owned disposable resources such as the ApiConnection.
+        /// Dispose of any managed resources such as the <see cref="IApiConnection"/>.
+        /// </summary>
+        /// <param name="disposing">Whether to dispose of managed resources right now.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (_apiConnection is IDisposable)
+                    ((IDisposable)_apiConnection).Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Dispose of any managed resources such as the <see cref="IApiConnection"/>.
         /// </summary>
         public void Dispose()
         {
-            _apiConnection.Dispose();
+            Dispose(true);
         }
     }
 }

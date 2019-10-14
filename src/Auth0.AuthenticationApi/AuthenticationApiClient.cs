@@ -17,10 +17,17 @@ namespace Auth0.AuthenticationApi
     public class AuthenticationApiClient : IAuthenticationApiClient, IDisposable
     {
         private readonly Uri _baseUri;
-        private readonly ApiConnection _apiConnection;
+        private IApiConnection _apiConnection;
 
-        private AuthenticationApiClient(Uri baseUri, ApiConnection connection)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
+        /// </summary>
+        /// <param name="baseUri">Your Auth0 domain URI, e.g. https://tenant.auth0.com</param>
+        /// <param name="apiConnection"><see cref="IApiConnection" /> used to communicate between the client and Auth0.</param>
+        public AuthenticationApiClient(Uri baseUri, IApiConnection apiConnection)
         {
+            _baseUri = baseUri;
+            _apiConnection = apiConnection;
         }
 
         /// <summary>
@@ -29,9 +36,8 @@ namespace Auth0.AuthenticationApi
         /// <param name="baseUri">Your Auth0 domain URI, e.g. https://tenant.auth0.com</param>
         /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests.</param>
         public AuthenticationApiClient(Uri baseUri, HttpMessageHandler handler = null)
+            : this(baseUri, new ApiConnection(null, baseUri.AbsoluteUri, handler))
         {
-            _baseUri = baseUri;
-            _apiConnection = new ApiConnection(null, baseUri.AbsoluteUri, handler);
         }
 
         /// <summary>
@@ -40,9 +46,8 @@ namespace Auth0.AuthenticationApi
         /// <param name="baseUri">Your Auth0 domain URI, e.g. https://tenant.auth0.com</param>
         /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests.</param>
         public AuthenticationApiClient(Uri baseUri, HttpClient httpClient)
+            : this(baseUri, new ApiConnection(null, baseUri.AbsoluteUri, httpClient))
         {
-            _baseUri = baseUri;
-            _apiConnection = new ApiConnection(null, baseUri.AbsoluteUri, httpClient);
         }
 
         /// <summary>
@@ -66,7 +71,7 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <summary>
-        /// The <see cref="IApiConnection" /> used to communicate between the client and the Auth0 API.
+        /// <see cref="IApiConnection" /> used to communicate between the client and Auth0.
         /// </summary>
         /// <value>The connection.</value>
         public IApiConnection Connection { get { return _apiConnection; } }
@@ -406,11 +411,24 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <summary>
-        /// Disposes of any owned disposable resources such as the ApiConnection.
+        /// Dispose of any managed resources such as the <see cref="IApiConnection"/>.
+        /// </summary>
+        /// <param name="disposing">Whether to dispose of managed resources right now.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (_apiConnection is IDisposable)
+                    ((IDisposable)_apiConnection).Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Dispose of any managed resources such as the <see cref="IApiConnection"/>.
         /// </summary>
         public void Dispose()
         {
-            _apiConnection.Dispose();
+            Dispose(true);
         }
     }
 }
