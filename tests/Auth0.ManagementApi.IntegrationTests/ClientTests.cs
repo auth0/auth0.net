@@ -38,7 +38,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                 {
                     Prop1 = "1",
                     Prop2 = "2"
-                }
+                },
+                InitiateLoginUri = "https://create.com/login"
             };
             var newClientResponse = await _apiClient.Clients.CreateAsync(newClientRequest);
             newClientResponse.Should().NotBeNull();
@@ -51,7 +52,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             string prop2 = newClientResponse.ClientMetaData.Prop2;
             prop2.Should().Be("2");
             newClientResponse.GrantTypes.Should().HaveCount(i => i > 0);
-
+            newClientResponse.InitiateLoginUri.Should().Be("https://create.com/login");
 
             // Update the client
             var updateClientRequest = new ClientUpdateRequest
@@ -59,7 +60,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Name = $"Integration testing {Guid.NewGuid():N}",
                 TokenEndpointAuthMethod = TokenEndpointAuthMethod.ClientSecretPost,
                 ApplicationType = ClientApplicationType.Spa,
-                GrantTypes = new string[0]
+                GrantTypes = new string[0],
+                InitiateLoginUri = "https://update.com/login"
             };
             var updateClientResponse = await _apiClient.Clients.UpdateAsync(newClientResponse.ClientId, updateClientRequest);
             updateClientResponse.Should().NotBeNull();
@@ -67,6 +69,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             updateClientResponse.TokenEndpointAuthMethod.Should().Be(TokenEndpointAuthMethod.ClientSecretPost);
             updateClientResponse.ApplicationType.Should().Be(ClientApplicationType.Spa);
             updateClientResponse.GrantTypes.Should().HaveCount(0);
+            updateClientResponse.InitiateLoginUri.Should().Be("https://update.com/login");
 
             // Get a single client
             var client = await _apiClient.Clients.GetAsync(newClientResponse.ClientId);
@@ -78,7 +81,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             Func<Task> getFunc = async () => await _apiClient.Clients.GetAsync(client.ClientId);
             getFunc.Should().Throw<ApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_client");
         }
-        
+
         [Fact]
         public async Task Test_client_rotate_secret()
         {
@@ -96,7 +99,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 ApplicationType = ClientApplicationType.Native
             };
             var newClientResponse = await _apiClient.Clients.CreateAsync(newClientRequest);
-          
+
             // Rotate the secret
             var updateClientResponse = await _apiClient.Clients.RotateClientSecret(newClientResponse.ClientId);
 
@@ -112,7 +115,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             // Act
             var clients = await _apiClient.Clients.GetAllAsync(new GetClientsRequest(), new PaginationInfo());
-            
+
             // Assert
             Assert.Null(clients.Paging);
         }
@@ -122,7 +125,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             // Act
             var clients = await _apiClient.Clients.GetAllAsync(new GetClientsRequest(), new PaginationInfo(0, 50, false));
-            
+
             // Assert
             Assert.Null(clients.Paging);
         }
@@ -132,7 +135,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             // Act
             var clients = await _apiClient.Clients.GetAllAsync(new GetClientsRequest(), new PaginationInfo(0, 50, true));
-            
+
             // Assert
             Assert.NotNull(clients.Paging);
         }
@@ -154,7 +157,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 ApplicationType = ClientApplicationType.Native
             };
             var newClientResponse = await _apiClient.Clients.CreateAsync(newClientRequest);
-          
+
             // Rotate the secret
             var connections = await _apiClient.Clients.GetAllAsync(new GetClientsRequest
             {
