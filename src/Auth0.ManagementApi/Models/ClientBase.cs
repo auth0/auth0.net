@@ -41,6 +41,12 @@ namespace Auth0.ManagementApi.Models
         public string[] WebOrigins { get; set; }
 
         /// <summary>
+        /// The default login initiation endpoint.
+        /// </summary>
+        [JsonProperty("initiate_login_uri")]
+        public string InitiateLoginUri { get; set; }
+
+        /// <summary>
         /// A set of URLs that are valid to call back from Auth0 when authenticating users.
         /// </summary>
         [JsonProperty("callbacks")]
@@ -122,16 +128,16 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
-        
+
         /// <summary>
         /// The description of the client. Max character count is 140
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
-        
+
         /// <summary>
-        /// The logo_uri of the client. The URL of the logo to display for the application, 
-        /// if none is set the default badge for this type of application will be shown. 
+        /// The logo_uri of the client. The URL of the logo to display for the application,
+        /// if none is set the default badge for this type of application will be shown.
         /// Recommended size is 150x150 pixels
         /// </summary>
         [JsonProperty("logo_uri")]
