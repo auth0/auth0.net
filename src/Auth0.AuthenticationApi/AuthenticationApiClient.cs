@@ -19,10 +19,6 @@ namespace Auth0.AuthenticationApi
         private readonly Uri _baseUri;
         private readonly ApiConnection _apiConnection;
 
-        private AuthenticationApiClient(Uri baseUri, ApiConnection connection)
-        {
-        }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
         /// </summary>
