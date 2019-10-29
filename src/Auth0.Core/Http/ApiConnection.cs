@@ -365,15 +365,24 @@ namespace Auth0.Core.Http
         }
 
         /// <summary>
-        /// Disposes of any owned disposable resources such as a HttpClient if it was not supplied.
+        /// Disposes of any owned disposable resources such as the ApiConnection.
         /// </summary>
-        public void Dispose()
+        /// <param name="disposing">Whether we are actually disposing (<see langword="true"/>) or not (<see langword="false")/>.</param>
+        protected virtual void Dispose(bool disposing)
         {
-            if (_disposeHttpClient)
+            if (_disposeHttpClient && disposing)
             {
                 _httpClient.Dispose();
                 _disposeHttpClient = false;
             }
+        }
+
+        /// <summary>
+        /// Disposes of any owned disposable resources such as the ApiConnection.
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
         }
     }
 }

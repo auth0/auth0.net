@@ -11,6 +11,7 @@ namespace Auth0.ManagementApi
     public class ManagementApiClient : IDisposable
     {
         private readonly ApiConnection _apiConnection;
+        private bool disposed;
 
         /// <summary>
         /// Contains all the methods to call the /blacklists/tokens endpoints.
@@ -208,9 +209,22 @@ namespace Auth0.ManagementApi
         /// <summary>
         /// Disposes of any owned disposable resources such as the ApiConnection.
         /// </summary>
+        /// <param name="disposing">Whether we are actually disposing (<see langword="true"/>) or not (<see langword="false")/>.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed && disposing)
+            {
+                _apiConnection.Dispose();
+                disposed = true;
+            }
+        }
+
+        /// <summary>
+        /// Disposes of any owned disposable resources such as the ApiConnection.
+        /// </summary>
         public void Dispose()
         {
-            _apiConnection.Dispose();
+            Dispose(true);
         }
     }
 }
