@@ -21,7 +21,7 @@ namespace Auth0.AuthenticationApi
                 return;
 
             JwtSecurityToken token;
-            
+
             var handler = new JwtSecurityTokenHandler();
 
             try
@@ -42,17 +42,16 @@ namespace Auth0.AuthenticationApi
                 try
                 {
                     OpenIdConnectConfiguration openIdConfig = await OpenIdConfigurationCache.Instance.GetAsync(domain);
-                
+
                     TokenValidationParameters validationParameters =
                         new TokenValidationParameters
                         {
                             ValidIssuer = domain,
-                            ValidAudiences = new[] {audience},
+                            ValidAudiences = new[] { audience },
                             IssuerSigningKeys = openIdConfig.SigningKeys
                         };
 
-                    SecurityToken validatedToken;
-                    handler.ValidateToken(identityToken, validationParameters, out validatedToken);
+                    handler.ValidateToken(identityToken, validationParameters, out SecurityToken validatedToken);
                 }
                 catch (Exception e)
                 {

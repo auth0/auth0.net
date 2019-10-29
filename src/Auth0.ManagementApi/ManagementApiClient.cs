@@ -11,6 +11,7 @@ namespace Auth0.ManagementApi
     public class ManagementApiClient : IDisposable
     {
         private readonly ApiConnection _apiConnection;
+        private bool disposed;
 
         /// <summary>
         /// Contains all the methods to call the /blacklists/tokens endpoints.
@@ -116,7 +117,7 @@ namespace Auth0.ManagementApi
             return _apiConnection.ApiInfo;
         }
 
-        private ManagementApiClient(string token, Uri baseUri, ApiConnection apiConnection)
+        private ManagementApiClient(ApiConnection apiConnection)
         {
             _apiConnection = apiConnection;
 
@@ -148,7 +149,7 @@ namespace Auth0.ManagementApi
         /// <param name="baseUrl">The URL of the tenant to manage.</param>
         /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests.</param>
         public ManagementApiClient(string token, Uri baseUri, HttpMessageHandler handler)
-            : this(token, baseUri, new ApiConnection(token, baseUri.AbsoluteUri, handler))
+            : this(new ApiConnection(token, baseUri.AbsoluteUri, handler))
         {
         }
 
@@ -159,7 +160,7 @@ namespace Auth0.ManagementApi
         /// <param name="baseUrl">The URL of the tenant to manage.</param>
         /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests.</param>
         public ManagementApiClient(string token, Uri baseUri, HttpClient httpClient)
-            : this(token, baseUri, new ApiConnection(token, baseUri.AbsoluteUri, httpClient))
+            : this(new ApiConnection(token, baseUri.AbsoluteUri, httpClient))
         {
         }
 
@@ -208,9 +209,22 @@ namespace Auth0.ManagementApi
         /// <summary>
         /// Disposes of any owned disposable resources such as the ApiConnection.
         /// </summary>
+        /// <param name="disposing">Whether we are actually disposing (<see langword="true"/>) or not (<see langword="false")/>.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed && disposing)
+            {
+                _apiConnection.Dispose();
+                disposed = true;
+            }
+        }
+
+        /// <summary>
+        /// Disposes of any owned disposable resources such as the ApiConnection.
+        /// </summary>
         public void Dispose()
         {
-            _apiConnection.Dispose();
+            Dispose(true);
         }
     }
 }
