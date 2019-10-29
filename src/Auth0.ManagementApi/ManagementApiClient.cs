@@ -117,7 +117,7 @@ namespace Auth0.ManagementApi
             return _apiConnection.ApiInfo;
         }
 
-        private ManagementApiClient(string token, Uri baseUri, ApiConnection apiConnection)
+        private ManagementApiClient(ApiConnection apiConnection)
         {
             _apiConnection = apiConnection;
 
@@ -149,7 +149,7 @@ namespace Auth0.ManagementApi
         /// <param name="baseUrl">The URL of the tenant to manage.</param>
         /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests.</param>
         public ManagementApiClient(string token, Uri baseUri, HttpMessageHandler handler)
-            : this(token, baseUri, new ApiConnection(token, baseUri.AbsoluteUri, handler))
+            : this(new ApiConnection(token, baseUri.AbsoluteUri, handler))
         {
         }
 
@@ -160,7 +160,7 @@ namespace Auth0.ManagementApi
         /// <param name="baseUrl">The URL of the tenant to manage.</param>
         /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests.</param>
         public ManagementApiClient(string token, Uri baseUri, HttpClient httpClient)
-            : this(token, baseUri, new ApiConnection(token, baseUri.AbsoluteUri, httpClient))
+            : this(new ApiConnection(token, baseUri.AbsoluteUri, httpClient))
         {
         }
 
