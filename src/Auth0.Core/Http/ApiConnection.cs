@@ -364,13 +364,12 @@ namespace Auth0.Core.Http
             return JsonConvert.DeserializeObject<T>(content, converters);
         }
 
-        /// <summary>
-        /// Dispose of any managed resources such as the <see cref="HttpClient"/>.
+        /// Disposes of any owned disposable resources such as the ApiConnection.
         /// </summary>
-        /// <param name="disposing">Whether to dispose of managed resources right now.</param>
+        /// <param name="disposing">Whether we are actually disposing (<see langword="true"/>) or not (<see langword="false")/>.</param>
         protected virtual void Dispose(bool disposing)
         {
-            if (disposing && _disposeHttpClient)
+            if (_disposeHttpClient && disposing)
             {
                 _httpClient.Dispose();
                 _disposeHttpClient = false;

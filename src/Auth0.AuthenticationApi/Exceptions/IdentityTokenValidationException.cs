@@ -1,11 +1,21 @@
 ﻿using System;
-using System.Runtime.Serialization;
 
 namespace Auth0.AuthenticationApi.Exceptions
 {
-    public class IdentityTokenValidationException: Exception
+    [Serializable]
+    public class IdentityTokenValidationException : Exception
     {
-        public IdentityTokenValidationException(string message) : base(message)
+        public IdentityTokenValidationException()
+        {
+        }
+
+        public IdentityTokenValidationException(string message)
+            : base(message)
+        {
+        }
+
+        public IdentityTokenValidationException(string message, Exception innerException)
+            : base(message, innerException)
         {
         }
     }

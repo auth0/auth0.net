@@ -17,7 +17,8 @@ namespace Auth0.AuthenticationApi
     public class AuthenticationApiClient : IAuthenticationApiClient, IDisposable
     {
         private readonly Uri _baseUri;
-        private IApiConnection _apiConnection;
+        private readonly IApiConnection _apiConnection;
+        private bool disposed = false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
@@ -425,6 +426,19 @@ namespace Auth0.AuthenticationApi
 
         /// <summary>
         /// Dispose of any managed resources such as the <see cref="IApiConnection"/>.
+        /// </summary>
+        /// <param name="disposing">Whether we are actually disposing (<see langword="true"/>) or not (<see langword="false")/>.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed && disposing)
+            {
+                _apiConnection.Dispose();
+                disposed = true;
+            }
+        }
+
+        /// <summary>
+        /// Disposes of any owned disposable resources such as the ApiConnection.
         /// </summary>
         public void Dispose()
         {
