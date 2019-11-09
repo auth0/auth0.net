@@ -4,7 +4,7 @@ using Auth0.AuthenticationApi.Models;
 
 namespace Auth0.AuthenticationApi.Builders
 {
-    public class AuthorizationResponseTypeHelper
+    public static class AuthorizationResponseTypeHelper
     {
         private static readonly Dictionary<AuthorizationResponseType, string> Map = new Dictionary<AuthorizationResponseType, string>
         {
