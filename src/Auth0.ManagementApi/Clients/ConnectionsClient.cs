@@ -30,7 +30,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Connection"/> containing the newly created Connection.</returns>
         public Task<Connection> CreateAsync(ConnectionCreateRequest request)
         {
-            return Connection.RunAsync<Connection>(HttpMethod.Post, "connections", request);
+            return Connection.RequestAsync<Connection>(HttpMethod.Post, "connections", request);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.RunAsync<object>(HttpMethod.Delete, $"connections/{id}");
+            return Connection.RequestAsync<object>(HttpMethod.Delete, $"connections/{id}");
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteUserAsync(string id, string email)
         {
-            return Connection.RunAsync<object>(HttpMethod.Delete, $"connections/{id}/users", queryStrings:
+            return Connection.RequestAsync<object>(HttpMethod.Delete, $"connections/{id}/users", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"email", email},
@@ -70,7 +70,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Connection"/>.</returns>
         public Task<Connection> GetAsync(string id, string fields = null, bool includeFields = true)
         {
-            return Connection.RunAsync<Connection>(HttpMethod.Get, $"connections/{id}", queryStrings:
+            return Connection.RequestAsync<Connection>(HttpMethod.Get, $"connections/{id}", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
@@ -110,7 +110,7 @@ namespace Auth0.ManagementApi.Clients
                 }
             }
 
-            return Connection.RunAsync<IPagedList<Connection>>(HttpMethod.Get, "connections", queryStrings, converters: new PagedListConverter<Connection>("connections"));
+            return Connection.RequestAsync<IPagedList<Connection>>(HttpMethod.Get, "connections", queryStrings, converters: new PagedListConverter<Connection>("connections"));
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Connection"/> that has been updated.</returns>
         public Task<Connection> UpdateAsync(string id, ConnectionUpdateRequest request)
         {
-            return Connection.RunAsync<Connection>(new HttpMethod("PATCH"), $"connections/{id}", request);
+            return Connection.RequestAsync<Connection>(new HttpMethod("PATCH"), $"connections/{id}", request);
         }
     }
 }

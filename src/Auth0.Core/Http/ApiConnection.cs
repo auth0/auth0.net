@@ -93,43 +93,51 @@ namespace Auth0.Core.Http
                         message.Headers.Add(pair.Key, pair.Value.ToString());
         }
 
-        private HttpContent BuildMessageContent(object body, IDictionary<string, object> parameters,
-            IList<FileUploadParameter> fileParameters)
+        private HttpContent BuildMessageContent(object body, IDictionary<string, object> parameters, IList<FileUploadParameter> fileParameters)
         {
             // If user sent in file parameters, then we handle this as a multipart content
             if (fileParameters != null && fileParameters.Count > 0)
-            {
-                var multipartContent = new MultipartFormDataContent();
+                return BuildMultipartFormDataContent(parameters, fileParameters);
 
-                // Add the file parameters
-                foreach (var fileParameter in fileParameters)
-                    if (string.IsNullOrEmpty(fileParameter.Filename))
-                        multipartContent.Add(new StreamContent(fileParameter.FileStream), fileParameter.Key);
-                    else
-                        multipartContent.Add(new StreamContent(fileParameter.FileStream), fileParameter.Key,
-                            fileParameter.Filename);
-
-                // Add the other parameters
-                foreach (var parameter in parameters)
-                    multipartContent.Add(new StringContent(Uri.EscapeDataString(parameter.Value?.ToString() ?? "")),
-                        parameter.Key);
-
-                return multipartContent;
-            }
             if (parameters != null)
-                return
-                    new FormUrlEncodedContent(
-                        parameters.Select(
-                            kvp => new KeyValuePair<string, string>(kvp.Key, kvp.Value?.ToString() ?? string.Empty)));
+                return BuildFormUrlEncodedContent(parameters);
+
+            return BuildJsonStringContent(body);
+        }
+
+        private static StringContent BuildJsonStringContent(object body)
+        {
             return new StringContent(JsonConvert.SerializeObject(body, new JsonSerializerSettings
             {
                 NullValueHandling = NullValueHandling.Ignore
             }), Encoding.UTF8, "application/json");
         }
 
-        private Uri BuildRequestUri(string resource, IDictionary<string, string> queryStrings)
+        private static HttpContent BuildFormUrlEncodedContent(IDictionary<string, object> parameters)
         {
-            return Utils.BuildUri(_baseUrl, resource, null, queryStrings);
+            return
+                new FormUrlEncodedContent(
+                    parameters.Select(kvp => new KeyValuePair<string, string>(kvp.Key, kvp.Value?.ToString() ?? string.Empty)));
+        }
+
+        private static HttpContent BuildMultipartFormDataContent(IDictionary<string, object> parameters, IList<FileUploadParameter> fileParameters)
+        {
+            var multipartContent = new MultipartFormDataContent();
+
+            // Add the file parameters
+            foreach (var fileParameter in fileParameters)
+                if (string.IsNullOrEmpty(fileParameter.Filename))
+                    multipartContent.Add(new StreamContent(fileParameter.FileStream), fileParameter.Key);
+                else
+                    multipartContent.Add(new StreamContent(fileParameter.FileStream), fileParameter.Key,
+                        fileParameter.Filename);
+
+            // Add the other parameters
+            foreach (var parameter in parameters)
+                multipartContent.Add(new StringContent(Uri.EscapeDataString(parameter.Value?.ToString() ?? "")),
+                    parameter.Key);
+
+            return multipartContent;
         }
 
         private void ExtractApiInfo(HttpResponseMessage response)
@@ -170,28 +178,13 @@ namespace Auth0.Core.Http
             }
         }
 
-        /// <summary>
-        /// Executes the request. All requests will pass through this method as it will apply the headers, do the JSON
-        /// formatting, check for errors on return, etc.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="httpMethod">The HTTP method.</param>
-        /// <param name="resource">The resource.</param>
-        /// <param name="body">The body.</param>
-        /// <param name="parameters">The parameters.</param>
-        /// <param name="fileParameters">The file parameters.</param>
-        /// <param name="headers">The headers.</param>
-        /// <param name="queryStrings">The query strings.</param>
-        /// <param name="converters">The list of <see cref="JsonConverter" /> to use during deserialization.</param>
-        /// 
-        /// <returns>A <see cref="Task{T}"/> that represents the asynchronous Run operation.</returns>
-        public async Task<T> RunAsync<T>(HttpMethod httpMethod, string resource, object body = null,
+        public async Task<T> RequestAsync<T>(HttpMethod httpMethod, string path, object body = null,
             IDictionary<string, object> parameters = null, IList<FileUploadParameter> fileParameters = null,
             IDictionary<string, object> headers = null, IDictionary<string, string> queryStrings = null,
             params JsonConverter[] converters) where T : class
         {
             // Build the request URL
-            var requestMessage = new HttpRequestMessage(httpMethod, BuildRequestUri(resource, queryStrings));
+            var requestMessage = new HttpRequestMessage(httpMethod, Utils.BuildUri(_baseUrl, path, null, queryStrings));
 
             // Get the message content
             if (httpMethod != HttpMethod.Get)

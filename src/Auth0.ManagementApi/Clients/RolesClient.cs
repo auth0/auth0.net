@@ -30,7 +30,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="Role" />.</returns>
         public Task<Role> CreateAsync(RoleCreateRequest request)
         {
-            return Connection.RunAsync<Role>(HttpMethod.Post, "roles", request);
+            return Connection.RequestAsync<Role>(HttpMethod.Post, "roles", request);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.RunAsync<object>(HttpMethod.Delete, $"roles/{id}");
+            return Connection.RequestAsync<object>(HttpMethod.Delete, $"roles/{id}");
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Auth0.ManagementApi.Clients
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
 
-            return Connection.RunAsync<IPagedList<Role>>(HttpMethod.Get, "roles", queryStrings:
+            return Connection.RequestAsync<IPagedList<Role>>(HttpMethod.Get, "roles", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"name_filter", request.NameFilter},
@@ -73,7 +73,7 @@ namespace Auth0.ManagementApi.Clients
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.RunAsync<IPagedList<Role>>(HttpMethod.Get, "roles", queryStrings:
+            return Connection.RequestAsync<IPagedList<Role>>(HttpMethod.Get, "roles", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"name_filter", request.NameFilter},
@@ -90,7 +90,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Role"/> that was requested.</returns>
         public Task<Role> GetAsync(string id)
         {
-            return Connection.RunAsync<Role>(HttpMethod.Get, $"roles/{id}");
+            return Connection.RequestAsync<Role>(HttpMethod.Get, $"roles/{id}");
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="Role"/>.</returns>
         public Task<Role> UpdateAsync(string id, RoleUpdateRequest request)
         {
-            return Connection.RunAsync<Role>(new HttpMethod("PATCH"), $"roles/{id}", request);
+            return Connection.RequestAsync<Role>(new HttpMethod("PATCH"), $"roles/{id}", request);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{AssignedUser}"/> containing the assigned users.</returns>
         public Task<IPagedList<AssignedUser>> GetUsersAsync(string id)
         {
-            return Connection.RunAsync<IPagedList<AssignedUser>>(HttpMethod.Get, $"roles/{id}/users", converters: new PagedListConverter<AssignedUser>("users"));
+            return Connection.RequestAsync<IPagedList<AssignedUser>>(HttpMethod.Get, $"roles/{id}/users", converters: new PagedListConverter<AssignedUser>("users"));
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{AssignedUser}"/> containing the assigned users.</returns>
         public Task<IPagedList<AssignedUser>> GetUsersAsync(string id, PaginationInfo pagination)
         {
-            return Connection.RunAsync<IPagedList<AssignedUser>>(HttpMethod.Get, $"roles/{id}/users", queryStrings:
+            return Connection.RequestAsync<IPagedList<AssignedUser>>(HttpMethod.Get, $"roles/{id}/users", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"page", pagination.PageNo.ToString()},
@@ -139,7 +139,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous assign operation.</returns>
         public Task AssignUsersAsync(string id, AssignUsersRequest request)
         {
-            return Connection.RunAsync<AssignUsersRequest>(HttpMethod.Post, $"roles/{id}/users", request);
+            return Connection.RequestAsync<AssignUsersRequest>(HttpMethod.Post, $"roles/{id}/users", request);
         }
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{Permission}"/> containing the assigned permissions for this role.</returns>
         public Task<IPagedList<Permission>> GetPermissionsAsync(string id, PaginationInfo pagination)
         {
-            return Connection.RunAsync<IPagedList<Permission>>(HttpMethod.Get, $"roles/{id}/permissions", queryStrings:
+            return Connection.RequestAsync<IPagedList<Permission>>(HttpMethod.Get, $"roles/{id}/permissions", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"page", pagination.PageNo.ToString()},
@@ -167,7 +167,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous assignment operation.</returns>
         public Task AssignPermissionsAsync(string id, AssignPermissionsRequest request)
         {
-            return Connection.RunAsync<object>(HttpMethod.Post, $"roles/{id}/permissions", request);
+            return Connection.RequestAsync<object>(HttpMethod.Post, $"roles/{id}/permissions", request);
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous remove operation.</returns>
         public Task RemovePermissionsAsync(string id, AssignPermissionsRequest request)
         {
-            return Connection.RunAsync<object>(HttpMethod.Delete, $"roles/{id}/permissions", request);
+            return Connection.RequestAsync<object>(HttpMethod.Delete, $"roles/{id}/permissions", request);
         }
     }
 }

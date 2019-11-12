@@ -27,7 +27,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="UserBlocks"/> relating to the user requested.</returns>
         public Task<UserBlocks> GetByIdentifierAsync(string identifier)
         {
-            return Connection.RunAsync<UserBlocks>(HttpMethod.Get, "user-blocks", queryStrings:
+            return Connection.RequestAsync<UserBlocks>(HttpMethod.Get, "user-blocks", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"identifier", identifier}
@@ -41,7 +41,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="UserBlocks"/> relating to the user requested.</returns>
         public Task<UserBlocks> GetByUserIdAsync(string id)
         {
-            return Connection.RunAsync<UserBlocks>(HttpMethod.Get, $"user-blocks/{id}");
+            return Connection.RequestAsync<UserBlocks>(HttpMethod.Get, $"user-blocks/{id}");
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous unblock operation.</returns>
         public Task UnblockByIdentifierAsync(string identifier)
         {
-            return Connection.RunAsync<object>(HttpMethod.Delete, "user-blocks", queryStrings:
+            return Connection.RequestAsync<object>(HttpMethod.Delete, "user-blocks", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"identifier", identifier}
@@ -65,7 +65,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous unblock operation.</returns>
         public Task UnblockByUserIdAsync(string id)
         {
-            return Connection.RunAsync<object>(HttpMethod.Delete, $"user-blocks/{id}");
+            return Connection.RequestAsync<object>(HttpMethod.Delete, $"user-blocks/{id}");
         }
     }
 }

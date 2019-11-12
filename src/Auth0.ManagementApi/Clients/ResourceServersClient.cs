@@ -28,7 +28,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="ResourceServer"/>.</returns>
         public Task<ResourceServer> CreateAsync(ResourceServerCreateRequest request)
         {
-            return Connection.RunAsync<ResourceServer>(HttpMethod.Post, "resource-servers", request);
+            return Connection.RequestAsync<ResourceServer>(HttpMethod.Post, "resource-servers", request);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.RunAsync<object>(HttpMethod.Delete, $"resource-servers/{id}");
+            return Connection.RequestAsync<object>(HttpMethod.Delete, $"resource-servers/{id}");
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="ResourceServer"/> that was requested.</returns>
         public Task<ResourceServer> GetAsync(string id)
         {
-            return Connection.RunAsync<ResourceServer>(HttpMethod.Get, $"resource-servers/{id}");
+            return Connection.RequestAsync<ResourceServer>(HttpMethod.Get, $"resource-servers/{id}");
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="IPagedList{ResourceServer}"/> containing the list of resource servers.</returns>
         public Task<IPagedList<ResourceServer>> GetAllAsync(PaginationInfo pagination)
         {
-            return Connection.RunAsync<IPagedList<ResourceServer>>(HttpMethod.Get, "resource-servers", queryStrings:
+            return Connection.RequestAsync<IPagedList<ResourceServer>>(HttpMethod.Get, "resource-servers", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"page", pagination.PageNo.ToString()},
@@ -75,7 +75,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="ResourceServer"/>.</returns>
         public Task<ResourceServer> UpdateAsync(string id, ResourceServerUpdateRequest request)
         {
-            return Connection.RunAsync<ResourceServer>(new HttpMethod("PATCH"), $"resource-servers/{id}", request);
+            return Connection.RequestAsync<ResourceServer>(new HttpMethod("PATCH"), $"resource-servers/{id}", request);
         }
     }
 }

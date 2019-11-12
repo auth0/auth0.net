@@ -31,7 +31,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="EmailTemplate"/>.</returns>
         public Task<EmailTemplate> CreateAsync(EmailTemplateCreateRequest request)
         {
-            return Connection.RunAsync<EmailTemplate>(HttpMethod.Post, "email-templates", request);
+            return Connection.RequestAsync<EmailTemplate>(HttpMethod.Post, "email-templates", request);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="EmailTemplate"/> that was requested.</returns>
         public Task<EmailTemplate> GetAsync(EmailTemplateName templateName)
         {
-            return Connection.RunAsync<EmailTemplate>(HttpMethod.Get, "email-templates/{templateName}", queryStrings:
+            return Connection.RequestAsync<EmailTemplate>(HttpMethod.Get, "email-templates/{templateName}", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"templateName", ToEnumString(templateName)}
@@ -56,7 +56,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="EmailTemplate"/>.</returns>
         public Task<EmailTemplate> PatchAsync(EmailTemplateName templateName, EmailTemplatePatchRequest request)
         {
-            return Connection.RunAsync<EmailTemplate>(new HttpMethod("PATCH"), $"email-templates/{ToEnumString(templateName)}", request);
+            return Connection.RequestAsync<EmailTemplate>(new HttpMethod("PATCH"), $"email-templates/{ToEnumString(templateName)}", request);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="EmailTemplate"/>.</returns>
         public Task<EmailTemplate> UpdateAsync(EmailTemplateName templateName, EmailTemplateUpdateRequest request)
         {
-            return Connection.RunAsync<EmailTemplate>(HttpMethod.Put,
+            return Connection.RequestAsync<EmailTemplate>(HttpMethod.Put,
                 $"email-templates/{ToEnumString(templateName)}",
                 request);
         }

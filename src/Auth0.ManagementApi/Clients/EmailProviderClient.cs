@@ -30,7 +30,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="EmailProvider" /> instance containing the email provider details.</returns>
         public Task<EmailProvider> ConfigureAsync(EmailProviderConfigureRequest request)
         {
-            return Connection.RunAsync<EmailProvider>(HttpMethod.Post, "emails/provider", request);
+            return Connection.RequestAsync<EmailProvider>(HttpMethod.Post, "emails/provider", request);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync()
         {
-            return Connection.RunAsync<object>(HttpMethod.Delete, "emails/provider");
+            return Connection.RequestAsync<object>(HttpMethod.Delete, "emails/provider");
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="EmailProvider" /> instance containing the email provider details.</returns>
         public Task<EmailProvider> GetAsync(string fields = null, bool includeFields = true)
         {
-            return Connection.RunAsync<EmailProvider>(HttpMethod.Get, "emails/provider", queryStrings:
+            return Connection.RequestAsync<EmailProvider>(HttpMethod.Get, "emails/provider", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
@@ -74,7 +74,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="EmailProvider" /> instance containing the email provider details.</returns>
         public Task<EmailProvider> UpdateAsync(EmailProviderUpdateRequest request)
         {
-            return Connection.RunAsync<EmailProvider>(new HttpMethod("PATCH"), "emails/provider", request, null);
+            return Connection.RequestAsync<EmailProvider>(new HttpMethod("PATCH"), "emails/provider", request, null);
         }
     }
 }

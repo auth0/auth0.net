@@ -27,7 +27,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A list of <see cref="BlacklistedToken"/> objects.</returns>
         public Task<IList<BlacklistedToken>> GetAllAsync(string aud)
         {
-            return Connection.RunAsync<IList<BlacklistedToken>>(HttpMethod.Get, "blacklists/tokens", queryStrings:
+            return Connection.RequestAsync<IList<BlacklistedToken>>(HttpMethod.Get, "blacklists/tokens", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"aud", aud}
@@ -41,7 +41,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous create operation.</returns>
         public Task CreateAsync(BlacklistedTokenCreateRequest request)
         {
-            return Connection.RunAsync<Client>(HttpMethod.Post, "blacklists/tokens", request);
+            return Connection.RequestAsync<Client>(HttpMethod.Post, "blacklists/tokens", request);
         }
     }
 }

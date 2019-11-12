@@ -30,7 +30,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The new <see cref="ClientGrant"/> that has been created.</returns>
         public Task<ClientGrant> CreateAsync(ClientGrantCreateRequest request)
         {
-            return Connection.RunAsync<ClientGrant>(HttpMethod.Post, "client-grants", request);
+            return Connection.RequestAsync<ClientGrant>(HttpMethod.Post, "client-grants", request);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.RunAsync<object>(HttpMethod.Delete, $"client-grants/{id}");
+            return Connection.RequestAsync<object>(HttpMethod.Delete, $"client-grants/{id}");
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Auth0.ManagementApi.Clients
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.RunAsync<IPagedList<ClientGrant>>(HttpMethod.Get, "client-grants", queryStrings:
+            return Connection.RequestAsync<IPagedList<ClientGrant>>(HttpMethod.Get, "client-grants", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"audience", request.Audience},
@@ -75,7 +75,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="ClientGrant"/> that has been updated.</returns>
         public Task<ClientGrant> UpdateAsync(string id, ClientGrantUpdateRequest request)
         {
-            return Connection.RunAsync<ClientGrant>(new HttpMethod("PATCH"), $"client-grants/{id}", request);
+            return Connection.RequestAsync<ClientGrant>(new HttpMethod("PATCH"), $"client-grants/{id}", request);
         }
     }
 }

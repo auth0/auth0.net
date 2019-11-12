@@ -16,8 +16,8 @@ namespace Auth0.Core.Http
         /// </summary>
         ApiInfo ApiInfo { get; }
 
-        Task<T> RunAsync<T>(HttpMethod httpMethod,
-            string resource,
+        Task<T> RequestAsync<T>(HttpMethod httpMethod,
+            string path,
             object body = null,
             IDictionary<string, object> parameters = null,
             IList<FileUploadParameter> fileParameters = null,

@@ -26,7 +26,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="Ticket"/>.</returns>
         public Task<Ticket> CreateEmailVerificationTicketAsync(EmailVerificationTicketRequest request)
         {
-            return Connection.RunAsync<Ticket>(HttpMethod.Post, "tickets/email-verification", request);
+            return Connection.RequestAsync<Ticket>(HttpMethod.Post, "tickets/email-verification", request);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="Ticket"/>.</returns>
         public Task<Ticket> CreatePasswordChangeTicketAsync(PasswordChangeTicketRequest request)
         {
-            return Connection.RunAsync<Ticket>(HttpMethod.Post, "tickets/password-change", request);
+            return Connection.RequestAsync<Ticket>(HttpMethod.Post, "tickets/password-change", request);
         }
     }
 }

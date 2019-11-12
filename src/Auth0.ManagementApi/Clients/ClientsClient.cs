@@ -33,7 +33,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The new <see cref="Client"/> that has been created.</returns>
         public Task<Client> CreateAsync(ClientCreateRequest request)
         {
-            return Connection.RunAsync<Client>(HttpMethod.Post, "clients", request);
+            return Connection.RequestAsync<Client>(HttpMethod.Post, "clients", request);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.RunAsync<object>(HttpMethod.Delete, $"clients/{id}");
+            return Connection.RequestAsync<object>(HttpMethod.Delete, $"clients/{id}");
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Auth0.ManagementApi.Clients
                 queryStrings.Add("app_type", string.Join(",", request.AppType.Select(ToEnumString)));
             }
 
-            return Connection.RunAsync<IPagedList<Client>>(HttpMethod.Get, "clients", queryStrings, converters: new PagedListConverter<Client>("clients"));
+            return Connection.RequestAsync<IPagedList<Client>>(HttpMethod.Get, "clients", queryStrings, converters: new PagedListConverter<Client>("clients"));
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Client"/> retrieved.</returns>
         public Task<Client> GetAsync(string id, string fields = null, bool includeFields = true)
         {
-            return Connection.RunAsync<Client>(HttpMethod.Get, $"clients/{id}",
+            return Connection.RequestAsync<Client>(HttpMethod.Get, $"clients/{id}",
                 queryStrings: new Dictionary<string, string>
                 {
                     {"fields", fields},
@@ -108,7 +108,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Client"/> that has had its secret rotated.</returns>
         public Task<Client> RotateClientSecret(string id)
         {
-            return Connection.RunAsync<Client>(HttpMethod.Post, $"clients/{id}/rotate-secret", null);
+            return Connection.RequestAsync<Client>(HttpMethod.Post, $"clients/{id}/rotate-secret", null);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Client"/> that was updated.</returns>
         public Task<Client> UpdateAsync(string id, ClientUpdateRequest request)
         {
-            return Connection.RunAsync<Client>(new HttpMethod("PATCH"), $"clients/{id}", request);
+            return Connection.RequestAsync<Client>(new HttpMethod("PATCH"), $"clients/{id}", request);
         }
 
         private string ToEnumString<T>(T type)

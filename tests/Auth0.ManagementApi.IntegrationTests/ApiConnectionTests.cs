@@ -13,7 +13,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             var apiConnection = new ApiConnection("token", "https://auth0.com");
             apiConnection.Dispose();
-            await Assert.ThrowsAsync<ObjectDisposedException >(() => apiConnection.RunAsync<string>(HttpMethod.Get, ""));
+            await Assert.ThrowsAsync<ObjectDisposedException >(() => apiConnection.RequestAsync<string>(HttpMethod.Get, ""));
         }
 
         [Fact]
@@ -22,7 +22,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var httpClient = new HttpClient();
             var apiConnection = new ApiConnection("token", "https://auth0.com", httpClient);
             apiConnection.Dispose();
-            await apiConnection.RunAsync<string>(HttpMethod.Get, "");
+            await apiConnection.RequestAsync<string>(HttpMethod.Get, "");
         }
     }
 }

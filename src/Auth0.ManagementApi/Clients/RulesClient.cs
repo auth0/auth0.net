@@ -30,7 +30,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="Rule" />.</returns>
         public Task<Rule> CreateAsync(RuleCreateRequest request)
         {
-            return Connection.RunAsync<Rule>(HttpMethod.Post, "rules", request);
+            return Connection.RequestAsync<Rule>(HttpMethod.Post, "rules", request);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.RunAsync<object>(HttpMethod.Delete, $"rules/{id}");
+            return Connection.RequestAsync<object>(HttpMethod.Delete, $"rules/{id}");
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Auth0.ManagementApi.Clients
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.RunAsync<IPagedList<Rule>>(HttpMethod.Get, "rules", queryStrings:
+            return Connection.RequestAsync<IPagedList<Rule>>(HttpMethod.Get, "rules", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"enabled", request.Enabled?.ToString().ToLower()},
@@ -84,7 +84,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Rule" /> that was requested.</returns>
         public Task<Rule> GetAsync(string id, string fields = null, bool includeFields = true)
         {
-            return Connection.RunAsync<Rule>(HttpMethod.Get, $"rules/{id}", queryStrings:
+            return Connection.RequestAsync<Rule>(HttpMethod.Get, $"rules/{id}", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
@@ -100,7 +100,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="Rule"/>.</returns>
         public Task<Rule> UpdateAsync(string id, RuleUpdateRequest request)
         {
-            return Connection.RunAsync<Rule>(new HttpMethod("PATCH"), $"rules/{id}", request);
+            return Connection.RequestAsync<Rule>(new HttpMethod("PATCH"), $"rules/{id}", request);
         }
     }
 }

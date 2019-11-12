@@ -28,7 +28,7 @@ namespace Auth0.ManagementApi.Clients
         /// <remarks>The custom domain will need to be verified before it starts accepting requests.</remarks>
         public Task<CustomDomain> CreateAsync(CustomDomainCreateRequest request)
         {
-            return Connection.RunAsync<CustomDomain>(HttpMethod.Post, "custom-domains", request);
+            return Connection.RequestAsync<CustomDomain>(HttpMethod.Post, "custom-domains", request);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Auth0.ManagementApi.Clients
         /// <remarks>When deleted, Auth0 will stop serving requests for this domain.</remarks>
         public Task DeleteAsync(string id)
         {
-            return Connection.RunAsync<object>(HttpMethod.Delete, $"custom-domains/{id}");
+            return Connection.RequestAsync<object>(HttpMethod.Delete, $"custom-domains/{id}");
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="IList{CustomDomain}"/> containing the details of every custom domain.
         public Task<IList<CustomDomain>> GetAllAsync()
         {
-            return Connection.RunAsync<IList<CustomDomain>>(HttpMethod.Get, "custom-domains");
+            return Connection.RequestAsync<IList<CustomDomain>>(HttpMethod.Get, "custom-domains");
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="CustomDomain"/> that was requested.</returns>
         public Task<CustomDomain> GetAsync(string id)
         {
-            return Connection.RunAsync<CustomDomain>(HttpMethod.Get, $"custom-domains/{id}");
+            return Connection.RequestAsync<CustomDomain>(HttpMethod.Get, $"custom-domains/{id}");
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="CustomDomainVerification"/> that was requested.</returns>
         public Task<CustomDomainVerificationResponse> VerifyAsync(string id)
         {
-            return Connection.RunAsync<CustomDomainVerificationResponse>(HttpMethod.Post, $"custom-domains/{id}/verify", null);
+            return Connection.RequestAsync<CustomDomainVerificationResponse>(HttpMethod.Post, $"custom-domains/{id}/verify", null);
         }
     }
 }

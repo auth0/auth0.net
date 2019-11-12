@@ -31,7 +31,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
         public Task<Job> GetAsync(string id)
         {
-            return Connection.RunAsync<Job>(HttpMethod.Get, $"jobs/{id}");
+            return Connection.RequestAsync<Job>(HttpMethod.Get, $"jobs/{id}");
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Auth0.ManagementApi.Clients
                 }
             };
 
-            return Connection.RunAsync<Job>(HttpMethod.Post, "jobs/users-imports", null, parameters, fileParameters);
+            return Connection.RequestAsync<Job>(HttpMethod.Post, "jobs/users-imports", null, parameters, fileParameters);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
         public Task<Job> SendVerificationEmailAsync(VerifyEmailJobRequest request)
         {
-            return Connection.RunAsync<Job>(HttpMethod.Post, "jobs/verification-email", request);
+            return Connection.RequestAsync<Job>(HttpMethod.Post, "jobs/verification-email", request);
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous assign operation.</returns>
         public Task AssignRolesAsync(string id, AssignRolesRequest request)
         {
-            return Connection.RunAsync<AssignRolesRequest>(HttpMethod.Post, $"users/{id}/roles", request);
+            return Connection.RequestAsync<AssignRolesRequest>(HttpMethod.Post, $"users/{id}/roles", request);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="User"/>.</returns>
         public Task<User> CreateAsync(UserCreateRequest request)
         {
-            return Connection.RunAsync<User>(HttpMethod.Post, "users", request);
+            return Connection.RequestAsync<User>(HttpMethod.Post, "users", request);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Auth0.ManagementApi.Clients
             if (string.IsNullOrWhiteSpace(id))
                 throw new ArgumentException("Value cannot be null or whitespace.", nameof(id));
 
-            return Connection.RunAsync<object>(HttpMethod.Delete, $"users/{id}");
+            return Connection.RequestAsync<object>(HttpMethod.Delete, $"users/{id}");
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteMultifactorProviderAsync(string id, string provider)
         {
-            return Connection.RunAsync<object>(HttpMethod.Delete, $"users/{id}/multifactor/{provider}");
+            return Connection.RequestAsync<object>(HttpMethod.Delete, $"users/{id}/multifactor/{provider}");
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Auth0.ManagementApi.Clients
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.RunAsync<IPagedList<User>>(HttpMethod.Get, "users", queryStrings:
+            return Connection.RequestAsync<IPagedList<User>>(HttpMethod.Get, "users", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"sort", request.Sort},
@@ -111,7 +111,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="User"/> that was requested.</returns>
         public Task<User> GetAsync(string id, string fields = null, bool includeFields = true)
         {
-            return Connection.RunAsync<User>(HttpMethod.Get, $"users/{id}", queryStrings:
+            return Connection.RequestAsync<User>(HttpMethod.Get, $"users/{id}", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
@@ -132,7 +132,7 @@ namespace Auth0.ManagementApi.Clients
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.RunAsync<IPagedList<LogEntry>>(HttpMethod.Get, $"users/{request.UserId}/logs", queryStrings:
+            return Connection.RequestAsync<IPagedList<LogEntry>>(HttpMethod.Get, $"users/{request.UserId}/logs", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"sort", request.Sort},
@@ -153,7 +153,7 @@ namespace Auth0.ManagementApi.Clients
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.RunAsync<IPagedList<Role>>(HttpMethod.Get, $"users/{userId}/roles", queryStrings:
+            return Connection.RequestAsync<IPagedList<Role>>(HttpMethod.Get, $"users/{userId}/roles", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"page", pagination.PageNo.ToString()},
@@ -171,7 +171,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="IList{User}"/> containing all users for this email address.</returns>
         public Task<IList<User>> GetUsersByEmailAsync(string email, string fields = null, bool? includeFields = null)
         {
-            return Connection.RunAsync<IList<User>>(HttpMethod.Get, "users-by-email", queryStrings:
+            return Connection.RequestAsync<IList<User>>(HttpMethod.Get, "users-by-email", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"email", email},
@@ -187,7 +187,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A Task representing the operation and potential return value.</returns>
         public Task<IList<EnrollmentsResponse>> GetEnrollmentsAsync(string id)
         {
-            return Connection.RunAsync<IList<EnrollmentsResponse>>(HttpMethod.Get, $"users/{id}/enrollments");
+            return Connection.RequestAsync<IList<EnrollmentsResponse>>(HttpMethod.Get, $"users/{id}/enrollments");
         }
 
         /// <summary>
@@ -197,7 +197,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A Task representing the operation and potential return value.</returns>
         public Task InvalidateRememberBrowserAsync(string id)
         {
-            return Connection.RunAsync<object>(HttpMethod.Post, $"users/{id}/multifactor/actions/invalidate-remember-browser");
+            return Connection.RequestAsync<object>(HttpMethod.Post, $"users/{id}/multifactor/actions/invalidate-remember-browser");
         }
 
         /// <summary>
@@ -207,7 +207,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A Task representing the operation and potential return value.</returns>
         public Task<GenerateRecoveryCodeResponse> GenerateRecoveryCodeAsync(string id)
         {
-            return Connection.RunAsync<GenerateRecoveryCodeResponse>(HttpMethod.Post, $"users/{id}/recovery-code-regeneration");
+            return Connection.RequestAsync<GenerateRecoveryCodeResponse>(HttpMethod.Post, $"users/{id}/recovery-code-regeneration");
         }
 
         /// <summary>
@@ -218,7 +218,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="IList{AccountLinkResponse}"/> containing details about this account link.</returns>
         public Task<IList<AccountLinkResponse>> LinkAccountAsync(string id, UserAccountLinkRequest request)
         {
-            return Connection.RunAsync<IList<AccountLinkResponse>>(HttpMethod.Post, $"users/{id}/identities", request);
+            return Connection.RequestAsync<IList<AccountLinkResponse>>(HttpMethod.Post, $"users/{id}/identities", request);
         }
 
         /// <summary>
@@ -235,7 +235,7 @@ namespace Auth0.ManagementApi.Clients
                 LinkWith = secondaryJwtToken
             };
 
-            return Connection.RunAsync<IList<AccountLinkResponse>>(HttpMethod.Post, $"users/{id}/identities", request, headers: new Dictionary<string, object>
+            return Connection.RequestAsync<IList<AccountLinkResponse>>(HttpMethod.Post, $"users/{id}/identities", request, headers: new Dictionary<string, object>
             {
                 {"Authorization", $"Bearer {primaryJwtToken}"}
             });
@@ -249,7 +249,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous remove operation.</returns>
         public Task RemoveRolesAsync(string id, AssignRolesRequest request)
         {
-            return Connection.RunAsync<object>(HttpMethod.Delete, $"users/{id}/roles", request);
+            return Connection.RequestAsync<object>(HttpMethod.Delete, $"users/{id}/roles", request);
         }
 
         /// <summary>
@@ -261,7 +261,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="IList{AccountLinkResponse}"/> containing details about this account link.</returns>
         public Task<IList<AccountLinkResponse>> UnlinkAccountAsync(string primaryUserId, string provider, string secondaryUserId)
         {
-            return Connection.RunAsync<IList<AccountLinkResponse>>(HttpMethod.Delete, $"users/{primaryUserId}/identities/{provider}/{secondaryUserId}");
+            return Connection.RequestAsync<IList<AccountLinkResponse>>(HttpMethod.Delete, $"users/{primaryUserId}/identities/{provider}/{secondaryUserId}");
         }
 
         /// <summary>
@@ -272,7 +272,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="User"/>.</returns>
         public Task<User> UpdateAsync(string id, UserUpdateRequest request)
         {
-            return Connection.RunAsync<User>(new HttpMethod("PATCH"), $"users/{id}", request);
+            return Connection.RequestAsync<User>(new HttpMethod("PATCH"), $"users/{id}", request);
         }
 
         /// <summary>
@@ -283,7 +283,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{Permission}"/> containing the assigned permissions for this user.</returns>
         public Task<IPagedList<Permission>> GetPermissionsAsync(string id, PaginationInfo pagination)
         {
-            return Connection.RunAsync<IPagedList<Permission>>(HttpMethod.Get, $"users/{id}/permissions", queryStrings:
+            return Connection.RequestAsync<IPagedList<Permission>>(HttpMethod.Get, $"users/{id}/permissions", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"page", pagination.PageNo.ToString()},
@@ -300,7 +300,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous assignment operation.</returns>
         public Task AssignPermissionsAsync(string id, AssignPermissionsRequest request)
         {
-            return Connection.RunAsync<object>(HttpMethod.Post, $"users/{id}/permissions", request);
+            return Connection.RequestAsync<object>(HttpMethod.Post, $"users/{id}/permissions", request);
         }
 
         /// <summary>
@@ -311,7 +311,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous remove operation.</returns>
         public Task RemovePermissionsAsync(string id, AssignPermissionsRequest request)
         {
-            return Connection.RunAsync<object>(HttpMethod.Delete, $"users/{id}/permissions", request);
+            return Connection.RequestAsync<object>(HttpMethod.Delete, $"users/{id}/permissions", request);
         }
     }
 }

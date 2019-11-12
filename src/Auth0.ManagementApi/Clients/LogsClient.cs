@@ -36,7 +36,7 @@ namespace Auth0.ManagementApi.Clients
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.RunAsync<IPagedList<LogEntry>>(HttpMethod.Get, "logs", queryStrings:
+            return Connection.RequestAsync<IPagedList<LogEntry>>(HttpMethod.Get, "logs", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"sort", request.Sort},
@@ -58,7 +58,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="LogEntry"/> instance containing the information about the log entry.</returns>
         public Task<LogEntry> GetAsync(string id)
         {
-            return Connection.RunAsync<LogEntry>(HttpMethod.Get, $"logs/{id}");
+            return Connection.RequestAsync<LogEntry>(HttpMethod.Get, $"logs/{id}");
         }
     }
 }

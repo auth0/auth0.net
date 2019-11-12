@@ -30,7 +30,7 @@ namespace Auth0.ManagementApi.Clients
         public Task<CreateGuardianEnrollmentTicketResponse> CreateEnrollmentTicketAsync(CreateGuardianEnrollmentTicketRequest request)
         {
             return Connection
-                .RunAsync<CreateGuardianEnrollmentTicketResponse>(HttpMethod.Post,
+                .RequestAsync<CreateGuardianEnrollmentTicketResponse>(HttpMethod.Post,
                 "guardian/enrollments/ticket",
                 request);
         }
@@ -43,7 +43,7 @@ namespace Auth0.ManagementApi.Clients
         public Task DeleteEnrollmentAsync(string id)
         {
             return Connection
-                .RunAsync<object>(HttpMethod.Delete,
+                .RequestAsync<object>(HttpMethod.Delete,
                 $"guardian/enrollments/{id}");
         }
 
@@ -55,7 +55,7 @@ namespace Auth0.ManagementApi.Clients
         public Task<GuardianEnrollment> GetEnrollmentAsync(string id)
         {
             return Connection
-                .RunAsync<GuardianEnrollment>(HttpMethod.Get,
+                .RequestAsync<GuardianEnrollment>(HttpMethod.Get,
                 $"guardian/enrollments/{id}");
         }
 
@@ -66,7 +66,7 @@ namespace Auth0.ManagementApi.Clients
         public Task<IList<GuardianFactor>> GetFactorsAsync()
         {
             return Connection
-                .RunAsync<IList<GuardianFactor>>(HttpMethod.Get,
+                .RequestAsync<IList<GuardianFactor>>(HttpMethod.Get,
                 "guardian/factors");
         }
 
@@ -77,7 +77,7 @@ namespace Auth0.ManagementApi.Clients
         public Task<GuardianSmsEnrollmentTemplates> GetSmsTemplatesAsync()
         {
             return Connection
-                .RunAsync<GuardianSmsEnrollmentTemplates>(HttpMethod.Get,
+                .RequestAsync<GuardianSmsEnrollmentTemplates>(HttpMethod.Get,
                 "guardian/factors/sms/templates");
         }
 
@@ -88,7 +88,7 @@ namespace Auth0.ManagementApi.Clients
         public Task<GuardianSnsConfiguration> GetSnsConfigurationAsync()
         {
             return Connection
-                .RunAsync<GuardianSnsConfiguration>(HttpMethod.Get,
+                .RequestAsync<GuardianSnsConfiguration>(HttpMethod.Get,
                 "guardian/factors/push-notification/providers/sns");
         }
 
@@ -99,7 +99,7 @@ namespace Auth0.ManagementApi.Clients
         public Task<GuardianTwilioConfiguration> GetTwilioConfigurationAsync()
         {
             return Connection
-                .RunAsync<GuardianTwilioConfiguration>(HttpMethod.Get,
+                .RequestAsync<GuardianTwilioConfiguration>(HttpMethod.Get,
                 "guardian/factors/sms/providers/twilio");
         }
 
@@ -113,7 +113,7 @@ namespace Auth0.ManagementApi.Clients
             var name = request.Factor == GuardianFactorName.PushNotifications ? "push-notification" : "sms";
 
             return Connection
-                .RunAsync<UpdateGuardianFactorResponse>(HttpMethod.Put,
+                .RequestAsync<UpdateGuardianFactorResponse>(HttpMethod.Put,
                 $"guardian/factors/{name}",
                 new { enabled = request.IsEnabled });
         }
@@ -126,7 +126,7 @@ namespace Auth0.ManagementApi.Clients
         public Task<GuardianSmsEnrollmentTemplates> UpdateSmsTemplatesAsync(GuardianSmsEnrollmentTemplates templates)
         {
             return Connection
-                .RunAsync<GuardianSmsEnrollmentTemplates>(HttpMethod.Put,
+                .RequestAsync<GuardianSmsEnrollmentTemplates>(HttpMethod.Put,
                 "guardian/factors/sms/templates",
                 templates);
         }
@@ -141,7 +141,7 @@ namespace Auth0.ManagementApi.Clients
         public Task<GuardianTwilioConfiguration> UpdateTwilioConfigurationAsync(UpdateGuardianTwilioConfigurationRequest request)
         {
             return Connection
-                .RunAsync<GuardianTwilioConfiguration>(HttpMethod.Put,
+                .RequestAsync<GuardianTwilioConfiguration>(HttpMethod.Put,
                 "guardian/factors/sms/providers/twilio",
                 request);
         }

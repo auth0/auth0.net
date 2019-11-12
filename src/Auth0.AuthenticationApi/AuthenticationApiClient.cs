@@ -120,7 +120,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A string containing the message returned from Auth0.</returns>
         public Task<string> ChangePasswordAsync(ChangePasswordRequest request)
         {
-            return Connection.RunAsync<string>(HttpMethod.Post, "dbconnections/change_password", request);
+            return Connection.RequestAsync<string>(HttpMethod.Post, "dbconnections/change_password", request);
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A <see cref="Uri"/> which can be used to sign in as the specified user.</returns>
         public async Task<Uri> GetImpersonationUrlAsync(ImpersonationRequest request)
         {
-            string url = await Connection.RunAsync<string>(HttpMethod.Post, $"users/{request.ImpersonateId}/impersonate",
+            string url = await Connection.RequestAsync<string>(HttpMethod.Post, $"users/{request.ImpersonateId}/impersonate",
                 new
                 {
                     protocol = request.Protocol,
@@ -153,7 +153,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>The meta data XML .</returns>
         public Task<string> GetSamlMetadataAsync(string clientId)
         {
-            return Connection.RunAsync<string>(HttpMethod.Get, $"wsfed/{clientId}");
+            return Connection.RequestAsync<string>(HttpMethod.Get, $"wsfed/{clientId}");
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
         public async Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodeTokenRequest request)
         {
-            var response = await Connection.RunAsync<AccessTokenResponse>(HttpMethod.Post, "oauth/token", null, new Dictionary<string, object>
+            var response = await Connection.RequestAsync<AccessTokenResponse>(HttpMethod.Post, "oauth/token", null, new Dictionary<string, object>
             {
                 {"grant_type", "authorization_code"},
                 {"client_id", request.ClientId},
@@ -185,7 +185,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
         public async Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodePkceTokenRequest request)
         {
-            var response = await Connection.RunAsync<AccessTokenResponse>(HttpMethod.Post, "oauth/token", null, new Dictionary<string, object>
+            var response = await Connection.RequestAsync<AccessTokenResponse>(HttpMethod.Post, "oauth/token", null, new Dictionary<string, object>
             {
                 {"grant_type", "authorization_code"},
                 {"client_id", request.ClientId},
@@ -207,7 +207,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
         public Task<AccessTokenResponse> GetTokenAsync(ClientCredentialsTokenRequest request)
         {
-            return Connection.RunAsync<AccessTokenResponse>(HttpMethod.Post, "oauth/token", null, new Dictionary<string, object>
+            return Connection.RequestAsync<AccessTokenResponse>(HttpMethod.Post, "oauth/token", null, new Dictionary<string, object>
                 {
                     {"grant_type", "client_credentials"},
                     {"client_id", request.ClientId},
@@ -239,7 +239,7 @@ namespace Auth0.AuthenticationApi
             {
                 parameters.Add("scope", request.Scope);
             }
-            var response = await Connection.RunAsync<AccessTokenResponse>(HttpMethod.Post, "oauth/token", null, parameters).ConfigureAwait(false);
+            var response = await Connection.RequestAsync<AccessTokenResponse>(HttpMethod.Post, "oauth/token", null, parameters).ConfigureAwait(false);
             
             IdentityTokenValidator validator = new IdentityTokenValidator();
             await validator.ValidateInternal(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
@@ -292,7 +292,7 @@ namespace Auth0.AuthenticationApi
                 headers.Add("auth0-forwarded-for", request.ForwardedForIp);
             }
 
-            var response = await Connection.RunAsync<AccessTokenResponse>(HttpMethod.Post, "oauth/token", null, parameters, null, headers).ConfigureAwait(false);
+            var response = await Connection.RequestAsync<AccessTokenResponse>(HttpMethod.Post, "oauth/token", null, parameters, null, headers).ConfigureAwait(false);
             
             IdentityTokenValidator validator = new IdentityTokenValidator();
             await validator.ValidateInternal(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
@@ -319,7 +319,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>The <see cref="UserInfo"/> associated with the token.</returns>
         public Task<UserInfo> GetUserInfoAsync(string accessToken)
         {
-            return Connection.RunAsync<UserInfo>(HttpMethod.Get, "userinfo", headers: new Dictionary<string, object>
+            return Connection.RequestAsync<UserInfo>(HttpMethod.Get, "userinfo", headers: new Dictionary<string, object>
             {
                 {"Authorization", $"Bearer {accessToken}"}
             });
@@ -331,7 +331,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>The meta data XML</returns>
         public Task<string> GetWsFedMetadataAsync()
         {
-            return Connection.RunAsync<string>(HttpMethod.Get, "wsfed/FederationMetadata/2007-06/FederationMetadata.xml");
+            return Connection.RequestAsync<string>(HttpMethod.Get, "wsfed/FederationMetadata/2007-06/FederationMetadata.xml");
         }
 
         /// <summary>
@@ -341,7 +341,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A <see cref="SignupUserResponse" /> with the information of the signed up user.</returns>
         public Task<SignupUserResponse> SignupUserAsync(SignupUserRequest request)
         {
-            return Connection.RunAsync<SignupUserResponse>(HttpMethod.Post, "dbconnections/signup", request);
+            return Connection.RequestAsync<SignupUserResponse>(HttpMethod.Post, "dbconnections/signup", request);
         }
 
         /// <summary>
@@ -351,7 +351,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A <see cref="PasswordlessEmailResponse" /> containing the response.</returns>
         public Task<PasswordlessEmailResponse> StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest request)
         {
-            return Connection.RunAsync<PasswordlessEmailResponse>(HttpMethod.Post, "passwordless/start",
+            return Connection.RequestAsync<PasswordlessEmailResponse>(HttpMethod.Post, "passwordless/start",
                 new
                 {
                     client_id = request.ClientId,
@@ -369,7 +369,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A <see cref="PasswordlessSmsResponse" /> containing the response.</returns>
         public Task<PasswordlessSmsResponse> StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest request)
         {
-            return Connection.RunAsync<PasswordlessSmsResponse>(HttpMethod.Post, "passwordless/start",
+            return Connection.RequestAsync<PasswordlessSmsResponse>(HttpMethod.Post, "passwordless/start",
                 new
                 {
                     client_id = request.ClientId,
@@ -385,7 +385,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A <see cref="Task"/> that represents the asynchronous unlink operation.</returns>
         public async Task UnlinkUserAsync(UnlinkUserRequest request)
         {
-            await Connection.RunAsync<object>(HttpMethod.Post, "unlink", request).ConfigureAwait(false);
+            await Connection.RequestAsync<object>(HttpMethod.Post, "unlink", request).ConfigureAwait(false);
         }
 
         /// <summary>

@@ -31,7 +31,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A list of <see cref="DeviceCredential"/> which conforms to the criteria specified.</returns>
         public Task<IList<DeviceCredential>> GetAllAsync(string fields = null, bool includeFields = true, string userId = null, string clientId = null, string type = null)
         {
-            return Connection.RunAsync<IList<DeviceCredential>>(HttpMethod.Get, "device-credentials", queryStrings:
+            return Connection.RequestAsync<IList<DeviceCredential>>(HttpMethod.Get, "device-credentials", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
@@ -49,7 +49,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="DeviceCredential"/>.</returns>
         public Task<DeviceCredential> CreateAsync(DeviceCredentialCreateRequest request)
         {
-            return Connection.RunAsync<DeviceCredential>(HttpMethod.Post, "device-credentials", request);
+            return Connection.RequestAsync<DeviceCredential>(HttpMethod.Post, "device-credentials", request);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.RunAsync<object>(HttpMethod.Delete, $"device-credentials/{id}");
+            return Connection.RequestAsync<object>(HttpMethod.Delete, $"device-credentials/{id}");
         }
     }
 }
