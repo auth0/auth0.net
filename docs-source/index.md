@@ -61,7 +61,7 @@ For more details on the various methods that are available, please refer to the 
 
 Several helper methods are available to allow you to build URLs that you can redirect your user to for example to build up an authorization URL.	
 These methods follow a fluent syntax, meaning that you can keep chaining method calls together to build up the URL.
-Finally, to build the actual URL, you will need to call the @Auth0.AuthenticationApi.Builders.UrlBuilderBase`1.Build method.
+Finally, to build the actual URL, you will need to call the @Auth0.AuthenticationApi.Builders.UrlBuilderBase.Build method.
 
 The following are the list of URL builder helper methods:
 
@@ -87,19 +87,18 @@ var authorizationUrl = client.BuildAuthorizationUrl()
 The sample code above will generate a URL for you to which you can redirect a user. For example, in an ASP.NET MVC Controller Action, you may do the following:
 
 ```csharp
-public ActionResult Login()
-{
-	var client = new AuthenticationApiClient(new Uri("https://YOUR_AUTH0_DOMAIN/"));
+public ActionResult Login() {
+  var client = new AuthenticationApiClient(new Uri("https://YOUR_AUTH0_DOMAIN/"));
 
-	var authorizationUrl = client.BuildAuthorizationUrl()
-		.WithResponseType(AuthorizationResponseType.Code)
-		.WithClient("abcdef")
-		.WithConnection("google-oauth2")
-		.WithRedirectUrl("http://www.myapp.com/redirect")
-		.WithScope("openid offline_access")
-		.Build();
+  var authorizationUrl = client.BuildAuthorizationUrl()
+    .WithResponseType(AuthorizationResponseType.Code)
+    .WithClient("abcdef")
+    .WithConnection("google-oauth2")
+    .WithRedirectUrl("http://www.myapp.com/redirect")
+    .WithScope("openid offline_access")
+    .Build();
 
-	return Redirect(authorizationUrl);
+  return Redirect(authorizationUrl);
 }
 ```
 
@@ -156,7 +155,7 @@ var allClients = await apiClient.Clients.GetAllAsync();
 
 While the client opjects are lightweight to instantiate by default they create their own ApiConnection object which creates it's own HttpClient.  In order to best utilize HTTP connections the HttpClient should be shared as much as possible so it can perform the necessary thread-pooling.
 
-If for some reason you can not share `ManagementApiClient` or `AuthenticationApi` you should at least create a shared `HttpClient` (perhaps through `ServiceContainer`) and pass that through to them via a non-shared `ApiConnection`. 
+If for some reason you can not share `ManagementApiClient` or `AuthenticationApi` you should at least create a shared `HttpClient` (perhaps through `ServiceContainer`) and pass that through to their constructors. 
 
 e.g.
 
@@ -176,7 +175,7 @@ In your controller:
 public async Task<IActionResult> Get() {
   ...
   var httpClient = services.Get<HttpClient>();
-  var management = new ManagementApiClient(new ApiConnection(token, baseUrl, httpClient));
+  var management = new ManagementApiClient(token, baseUrl, httpClient);
   ...
 }
 ```
