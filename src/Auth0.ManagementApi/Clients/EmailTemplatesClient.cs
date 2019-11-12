@@ -31,7 +31,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="EmailTemplate"/>.</returns>
         public Task<EmailTemplate> CreateAsync(EmailTemplateCreateRequest request)
         {
-            return Connection.RunAsync<EmailTemplate>(HttpMethod.Post, "email-templates", request, null, null, null, null, null);
+            return Connection.RunAsync<EmailTemplate>(HttpMethod.Post, "email-templates", request);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Auth0.ManagementApi.Clients
                 new Dictionary<string, string>
                 {
                     {"templateName", ToEnumString(templateName)}
-                }, null, null, null);
+                });
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Auth0.ManagementApi.Clients
                 request,
                 null, null, new Dictionary<string, string> {
                 { "templateName", ToEnumString(templateName) }
-            }, null, null);
+            });
         }
 
         private string ToEnumString<T>(T type)

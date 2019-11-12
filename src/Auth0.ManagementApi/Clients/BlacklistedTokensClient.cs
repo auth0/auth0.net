@@ -31,7 +31,7 @@ namespace Auth0.ManagementApi.Clients
                 new Dictionary<string, string>
                 {
                     {"aud", aud}
-                }, null, null);
+                });
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous create operation.</returns>
         public Task CreateAsync(BlacklistedTokenCreateRequest request)
         {
-            return Connection.RunAsync<Client>(HttpMethod.Post, "blacklists/tokens", request, null, null, null, null, null);
+            return Connection.RunAsync<Client>(HttpMethod.Post, "blacklists/tokens", request);
         }
     }
 }

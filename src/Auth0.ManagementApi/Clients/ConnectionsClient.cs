@@ -30,7 +30,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Connection"/> containing the newly created Connection.</returns>
         public Task<Connection> CreateAsync(ConnectionCreateRequest request)
         {
-            return Connection.RunAsync<Connection>(HttpMethod.Post, "connections", request, null, null, null, null, null);
+            return Connection.RunAsync<Connection>(HttpMethod.Post, "connections", request);
         }
 
         /// <summary>
@@ -40,10 +40,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.DeleteAsync<object>("connections/{id}", new Dictionary<string, string>
-            {
-                {"id", id}
-            }, null);
+            return Connection.DeleteAsync<object>($"connections/{id}");
         }
 
         /// <summary>
@@ -57,11 +54,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteUserAsync(string id, string email)
         {
-            return Connection.DeleteAsync<object>("connections/{id}/users",
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                },
+            return Connection.DeleteAsync<object>($"connections/{id}/users", null,
                 new Dictionary<string, string>
                 {
                     {"email", email},
@@ -77,16 +70,12 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Connection"/>.</returns>
         public Task<Connection> GetAsync(string id, string fields = null, bool includeFields = true)
         {
-            return Connection.GetAsync<Connection>("connections/{id}",
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                },
+            return Connection.GetAsync<Connection>($"connections/{id}", null,
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                }, null, null);
+                });
         }
 
         /// <summary>
@@ -132,11 +121,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Connection"/> that has been updated.</returns>
         public Task<Connection> UpdateAsync(string id, ConnectionUpdateRequest request)
         {
-            return Connection.PatchAsync<Connection>("connections/{id}", request, 
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                });
+            return Connection.PatchAsync<Connection>($"connections/{id}", request);
         }
     }
 }

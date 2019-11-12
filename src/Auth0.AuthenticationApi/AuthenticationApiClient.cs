@@ -120,7 +120,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A string containing the message returned from Auth0.</returns>
         public Task<string> ChangePasswordAsync(ChangePasswordRequest request)
         {
-            return Connection.RunAsync<string>(HttpMethod.Post, "dbconnections/change_password", request, null, null, null, null, null);
+            return Connection.RunAsync<string>(HttpMethod.Post, "dbconnections/change_password", request);
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A <see cref="Uri"/> which can be used to sign in as the specified user.</returns>
         public async Task<Uri> GetImpersonationUrlAsync(ImpersonationRequest request)
         {
-            string url = await Connection.RunAsync<string>(HttpMethod.Post, "users/{impersonate_id}/impersonate",
+            string url = await Connection.RunAsync<string>(HttpMethod.Post, $"users/{request.ImpersonateId}/impersonate",
                 new
                 {
                     protocol = request.Protocol,
@@ -138,11 +138,7 @@ namespace Auth0.AuthenticationApi
                     client_id = request.ClientId,
                     response_type = request.ResponseType,
                     state = request.State
-                }, null, null,
-                new Dictionary<string, string>
-                {
-                    {"impersonate_id", request.ImpersonateId}
-                },
+                }, null, null, null,
                 new Dictionary<string, object>
                 {
                     {"Authorization", $"Bearer {request.Token}"}
@@ -158,10 +154,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>The meta data XML .</returns>
         public Task<string> GetSamlMetadataAsync(string clientId)
         {
-            return Connection.GetAsync<string>("wsfed/{clientid}", new Dictionary<string, string>
-            {
-                {"clientid", clientId}
-            }, null, null);
+            return Connection.GetAsync<string>($"wsfed/{clientId}");
         }
 
         /// <summary>

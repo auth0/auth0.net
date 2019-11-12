@@ -30,7 +30,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="EmailProvider" /> instance containing the email provider details.</returns>
         public Task<EmailProvider> ConfigureAsync(EmailProviderConfigureRequest request)
         {
-            return Connection.RunAsync<EmailProvider>(HttpMethod.Post, "emails/provider", request, null, null, null, null, null);
+            return Connection.RunAsync<EmailProvider>(HttpMethod.Post, "emails/provider", request);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync()
         {
-            return Connection.DeleteAsync<object>("emails/provider", null, null);
+            return Connection.DeleteAsync<object>("emails/provider");
         }
 
         /// <summary>

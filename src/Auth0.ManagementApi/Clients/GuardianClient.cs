@@ -32,8 +32,7 @@ namespace Auth0.ManagementApi.Clients
             return Connection
                 .RunAsync<CreateGuardianEnrollmentTicketResponse>(HttpMethod.Post, 
                 "guardian/enrollments/ticket",
-                request,
-                null, null, null, null, null);
+                request);
         }
 
         /// <summary>
@@ -45,9 +44,7 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection
                 .DeleteAsync<object>(
-                "guardian/enrollments/{id}",
-                new Dictionary<string, string> { { "id", id } },
-                null);
+                $"guardian/enrollments/{id}");
         }
 
         /// <summary>
@@ -59,9 +56,7 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection
                 .GetAsync<GuardianEnrollment>(
-                "guardian/enrollments/{id}",
-                new Dictionary<string, string> { { "id", id } },
-                null, null, null);
+                $"guardian/enrollments/{id}");
         }
 
         /// <summary>
@@ -72,8 +67,7 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection
                 .GetAsync<IList<GuardianFactor>>(
-                "guardian/factors",
-                null, null, null, null);
+                "guardian/factors");
         }
 
         /// <summary>
@@ -84,8 +78,7 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection
                 .GetAsync<GuardianSmsEnrollmentTemplates>(
-                "guardian/factors/sms/templates",
-                null, null, null, null);
+                "guardian/factors/sms/templates");
         }
 
         /// <summary>
@@ -96,8 +89,7 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection
                 .GetAsync<GuardianSnsConfiguration>(
-                "guardian/factors/push-notification/providers/sns",
-                null, null, null, null);
+                "guardian/factors/push-notification/providers/sns");
         }
 
         /// <summary>
@@ -108,8 +100,7 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection
                 .GetAsync<GuardianTwilioConfiguration>(
-                "guardian/factors/sms/providers/twilio",
-                null, null, null, null);
+                "guardian/factors/sms/providers/twilio");
         }
 
         /// <summary>
@@ -123,11 +114,8 @@ namespace Auth0.ManagementApi.Clients
 
             return Connection
                 .RunAsync<UpdateGuardianFactorResponse>(HttpMethod.Put,
-                "guardian/factors/{name}",
-                new { enabled = request.IsEnabled },
-                null, null,
-                new Dictionary<string, string> { { "name", name } },
-                null, null);
+                $"guardian/factors/{name}",
+                new { enabled = request.IsEnabled });
         }
 
         /// <summary>
@@ -140,8 +128,7 @@ namespace Auth0.ManagementApi.Clients
             return Connection
                 .RunAsync<GuardianSmsEnrollmentTemplates>(HttpMethod.Put,
                 "guardian/factors/sms/templates",
-                templates,
-                null, null, null, null, null);
+                templates);
         }
 
         /// <summary>
@@ -156,8 +143,7 @@ namespace Auth0.ManagementApi.Clients
             return Connection
                 .RunAsync<GuardianTwilioConfiguration>(HttpMethod.Put,
                 "guardian/factors/sms/providers/twilio",
-                request,
-                null, null, null, null, null);
+                request);
         }
     }
 }

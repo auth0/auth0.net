@@ -31,11 +31,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous assign operation.</returns>
         public Task AssignRolesAsync(string id, AssignRolesRequest request)
         {
-            return Connection.RunAsync<AssignRolesRequest>(HttpMethod.Post, "users/{id}/roles", request, null, null,
-                new Dictionary<string, string>
-                {
-                    {"id", id},
-                }, null, null);
+            return Connection.RunAsync<AssignRolesRequest>(HttpMethod.Post, $"users/{id}/roles", request);
         }
 
         /// <summary>
@@ -45,7 +41,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="User"/>.</returns>
         public Task<User> CreateAsync(UserCreateRequest request)
         {
-            return Connection.RunAsync<User>(HttpMethod.Post, "users", request, null, null, null, null, null);
+            return Connection.RunAsync<User>(HttpMethod.Post, "users", request);
         }
 
         /// <summary>
@@ -58,11 +54,7 @@ namespace Auth0.ManagementApi.Clients
             if (string.IsNullOrWhiteSpace(id))
                 throw new ArgumentException("Value cannot be null or whitespace.", nameof(id));
 
-            return Connection.DeleteAsync<object>("users/{id}",
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                }, null);
+            return Connection.DeleteAsync<object>($"users/{id}");
         }
 
         /// <summary>
@@ -73,12 +65,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteMultifactorProviderAsync(string id, string provider)
         {
-            return Connection.DeleteAsync<object>("users/{id}/multifactor/{provider}",
-                new Dictionary<string, string>
-                {
-                    {"id", id},
-                    {"provider", provider}
-                }, null);
+            return Connection.DeleteAsync<object>($"users/{id}/multifactor/{provider}");
         }
 
         /// <summary>
@@ -86,7 +73,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="request">Specifies criteria to use when querying users.</param>
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
-        /// <returns>An <see cref="IPagedList{GetUsersRequest}"/> containing the list of users.</returns>
+        /// <returns>An <see cref="IPagedList{User}"/> containing the list of users.</returns>
         public Task<IPagedList<User>> GetAllAsync(GetUsersRequest request, PaginationInfo pagination)
         {
             if (request == null)
@@ -124,11 +111,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="User"/> that was requested.</returns>
         public Task<User> GetAsync(string id, string fields = null, bool includeFields = true)
         {
-            return Connection.GetAsync<User>("users/{id}",
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                },
+            return Connection.GetAsync<User>($"users/{id}", null,
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
@@ -149,11 +132,7 @@ namespace Auth0.ManagementApi.Clients
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.GetAsync<IPagedList<LogEntry>>("users/{id}/logs",
-                new Dictionary<string, string>
-                {
-                    {"id", request.UserId}
-                },
+            return Connection.GetAsync<IPagedList<LogEntry>>($"users/{request.UserId}/logs", null,
                 new Dictionary<string, string>
                 {
                     {"sort", request.Sort},
@@ -174,11 +153,7 @@ namespace Auth0.ManagementApi.Clients
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.GetAsync<IPagedList<Role>>("users/{userId}/roles",
-                new Dictionary<string, string>
-                {
-                    {"userId", userId}
-                },
+            return Connection.GetAsync<IPagedList<Role>>($"users/{userId}/roles", null,
                 new Dictionary<string, string>
                 {
                     {"page", pagination.PageNo.ToString()},
@@ -212,11 +187,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A Task representing the operation and potential return value.</returns>
         public Task<IList<EnrollmentsResponse>> GetEnrollmentsAsync(string id)
         {
-            return Connection.GetAsync<IList<EnrollmentsResponse>>("users/{id}/enrollments",
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                }, null, null, null);
+            return Connection.GetAsync<IList<EnrollmentsResponse>>($"users/{id}/enrollments");
         }
 
         /// <summary>
@@ -226,11 +197,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A Task representing the operation and potential return value.</returns>
         public Task InvalidateRememberBrowserAsync(string id)
         {
-            return Connection.RunAsync<object>(HttpMethod.Post, "users/{id}/multifactor/actions/invalidate-remember-browser", null, null, null,
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                }, null, null);
+            return Connection.RunAsync<object>(HttpMethod.Post, $"users/{id}/multifactor/actions/invalidate-remember-browser");
         }
 
         /// <summary>
@@ -240,11 +207,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A Task representing the operation and potential return value.</returns>
         public Task<GenerateRecoveryCodeResponse> GenerateRecoveryCodeAsync(string id)
         {
-            return Connection.RunAsync<GenerateRecoveryCodeResponse>(HttpMethod.Post, "users/{id}/recovery-code-regeneration", null, null, null,
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                }, null, null);
+            return Connection.RunAsync<GenerateRecoveryCodeResponse>(HttpMethod.Post, $"users/{id}/recovery-code-regeneration");
         }
 
         /// <summary>
@@ -255,11 +218,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="IList{AccountLinkResponse}"/> containing details about this account link.</returns>
         public Task<IList<AccountLinkResponse>> LinkAccountAsync(string id, UserAccountLinkRequest request)
         {
-            return Connection.RunAsync<IList<AccountLinkResponse>>(HttpMethod.Post, "users/{id}/identities", request, null, null, 
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                }, null, null);
+            return Connection.RunAsync<IList<AccountLinkResponse>>(HttpMethod.Post, $"users/{id}/identities", request);
         }
 
         /// <summary>
@@ -276,13 +235,10 @@ namespace Auth0.ManagementApi.Clients
                 LinkWith = secondaryJwtToken
             };
 
-            return Connection.RunAsync<IList<AccountLinkResponse>>(HttpMethod.Post, "users/{id}/identities", request, null, null, new Dictionary<string, string>
-            {
-                {"id", id}
-            }, new Dictionary<string, object>
+            return Connection.RunAsync<IList<AccountLinkResponse>>(HttpMethod.Post, $"users/{id}/identities", request, null, null, null, new Dictionary<string, object>
             {
                 {"Authorization", $"Bearer {primaryJwtToken}"}
-            }, null);
+            });
         }
 
         /// <summary>
@@ -293,11 +249,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous remove operation.</returns>
         public Task RemoveRolesAsync(string id, AssignRolesRequest request)
         {
-            return Connection.DeleteAsync<object>("users/{id}/roles", request, new Dictionary<string, string>
-                {
-                    {"id", id},
-                }, null
-            );
+            return Connection.DeleteAsync<object>($"users/{id}/roles", request);
         }
 
         /// <summary>
@@ -309,12 +261,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="IList{AccountLinkResponse}"/> containing details about this account link.</returns>
         public Task<IList<AccountLinkResponse>> UnlinkAccountAsync(string primaryUserId, string provider, string secondaryUserId)
         {
-            return Connection.DeleteAsync<IList<AccountLinkResponse>>("users/{id}/identities/{provider}/{secondaryid}", new Dictionary<string, string>
-            {
-                {"id", primaryUserId},
-                {"provider", provider},
-                {"secondaryid", secondaryUserId}
-            }, null);
+            return Connection.DeleteAsync<IList<AccountLinkResponse>>($"users/{primaryUserId}/identities/{provider}/{secondaryUserId}");
         }
 
         /// <summary>
@@ -325,10 +272,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="User"/>.</returns>
         public Task<User> UpdateAsync(string id, UserUpdateRequest request)
         {
-            return Connection.PatchAsync<User>("users/{id}", request, new Dictionary<string, string>
-            {
-                {"id", id}
-            });
+            return Connection.PatchAsync<User>($"users/{id}", request);
         }
 
         /// <summary>
@@ -339,11 +283,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{Permission}"/> containing the assigned permissions for this user.</returns>
         public Task<IPagedList<Permission>> GetPermissionsAsync(string id, PaginationInfo pagination)
         {
-            return Connection.GetAsync<IPagedList<Permission>>("users/{id}/permissions",
-                new Dictionary<string, string>
-                {
-                     {"id", id}
-                },
+            return Connection.GetAsync<IPagedList<Permission>>($"users/{id}/permissions", null,
                 new Dictionary<string, string>
                 {
                     {"page", pagination.PageNo.ToString()},
@@ -360,8 +300,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous assignment operation.</returns>
         public Task AssignPermissionsAsync(string id, AssignPermissionsRequest request)
         {
-            return Connection.RunAsync<object>(HttpMethod.Post, "users/{id}/permissions", request, null, null,
-                new Dictionary<string, string> { { "id", id }, }, null, null);
+            return Connection.RunAsync<object>(HttpMethod.Post, $"users/{id}/permissions", request);
         }
 
         /// <summary>
@@ -372,8 +311,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous remove operation.</returns>
         public Task RemovePermissionsAsync(string id, AssignPermissionsRequest request)
         {
-            return Connection.DeleteAsync<object>("users/{id}/permissions", request,
-                new Dictionary<string, string> { { "id", id }, }, null);
+            return Connection.DeleteAsync<object>($"users/{id}/permissions", request);
         }
     }
 }

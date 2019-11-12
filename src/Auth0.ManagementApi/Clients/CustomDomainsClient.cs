@@ -28,7 +28,7 @@ namespace Auth0.ManagementApi.Clients
         /// <remarks>The custom domain will need to be verified before it starts accepting requests.</remarks>
         public Task<CustomDomain> CreateAsync(CustomDomainCreateRequest request)
         {
-            return Connection.RunAsync<CustomDomain>(HttpMethod.Post, "custom-domains", request, null, null, null, null, null);
+            return Connection.RunAsync<CustomDomain>(HttpMethod.Post, "custom-domains", request);
         }
 
         /// <summary>
@@ -39,11 +39,7 @@ namespace Auth0.ManagementApi.Clients
         /// <remarks>When deleted, Auth0 will stop serving requests for this domain.</remarks>
         public Task DeleteAsync(string id)
         {
-            return Connection.DeleteAsync<object>("custom-domains/{id}", 
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                }, null);
+            return Connection.DeleteAsync<object>($"custom-domains/{id}");
         }
 
         /// <summary>
@@ -52,7 +48,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="IList{CustomDomain}"/> containing the details of every custom domain.
         public Task<IList<CustomDomain>> GetAllAsync()
         {
-            return Connection.GetAsync<IList<CustomDomain>>("custom-domains", null, null, null, null);
+            return Connection.GetAsync<IList<CustomDomain>>("custom-domains");
         }
 
         /// <summary>
@@ -62,12 +58,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="CustomDomain"/> that was requested.</returns>
         public Task<CustomDomain> GetAsync(string id)
         {
-            return Connection.GetAsync<CustomDomain>("custom-domains/{id}",
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                },
-                null, null, null);
+            return Connection.GetAsync<CustomDomain>($"custom-domains/{id}");
         }
 
         /// <summary>
@@ -77,11 +68,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="CustomDomainVerification"/> that was requested.</returns>
         public Task<CustomDomainVerificationResponse> VerifyAsync(string id)
         {
-            return Connection.RunAsync<CustomDomainVerificationResponse>(HttpMethod.Post, "custom-domains/{id}/verify", null, null, null, 
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                }, null, null);
+            return Connection.RunAsync<CustomDomainVerificationResponse>(HttpMethod.Post, $"custom-domains/{id}/verify", null);
         }
     }
 }

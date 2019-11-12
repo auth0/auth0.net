@@ -28,7 +28,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="ResourceServer"/>.</returns>
         public Task<ResourceServer> CreateAsync(ResourceServerCreateRequest request)
         {
-            return Connection.RunAsync<ResourceServer>(HttpMethod.Post, "resource-servers", request, null, null, null, null, null);
+            return Connection.RunAsync<ResourceServer>(HttpMethod.Post, "resource-servers", request);
         }
 
         /// <summary>
@@ -38,10 +38,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.DeleteAsync<object>("resource-servers/{id}", new Dictionary<string, string>
-            {
-                {"id", id}
-            }, null);
+            return Connection.DeleteAsync<object>($"resource-servers/{id}");
         }
 
         /// <summary>
@@ -51,12 +48,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="ResourceServer"/> that was requested.</returns>
         public Task<ResourceServer> GetAsync(string id)
         {
-            return Connection.GetAsync<ResourceServer>("resource-servers/{id}",
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                },
-                null, null, null);
+            return Connection.GetAsync<ResourceServer>($"resource-servers/{id}");
         }
 
         /// <summary>
@@ -83,10 +75,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="ResourceServer"/>.</returns>
         public Task<ResourceServer> UpdateAsync(string id, ResourceServerUpdateRequest request)
         {
-            return Connection.PatchAsync<ResourceServer>("resource-servers/{id}", request, new Dictionary<string, string>
-            {
-                {"id", id}
-            });
+            return Connection.PatchAsync<ResourceServer>($"resource-servers/{id}", request);
         }
     }
 }

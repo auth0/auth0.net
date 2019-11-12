@@ -30,7 +30,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="Rule" />.</returns>
         public Task<Rule> CreateAsync(RuleCreateRequest request)
         {
-            return Connection.RunAsync<Rule>(HttpMethod.Post, "rules", request, null, null, null, null, null);
+            return Connection.RunAsync<Rule>(HttpMethod.Post, "rules", request);
         }
 
         /// <summary>
@@ -40,11 +40,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.DeleteAsync<object>("rules/{id}",
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                }, null);
+            return Connection.DeleteAsync<object>($"rules/{id}");
         }
 
         /// <summary>
@@ -88,11 +84,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Rule" /> that was requested.</returns>
         public Task<Rule> GetAsync(string id, string fields = null, bool includeFields = true)
         {
-            return Connection.GetAsync<Rule>("rules/{id}",
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                },
+            return Connection.GetAsync<Rule>($"rules/{id}", null,
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
@@ -108,10 +100,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="Rule"/>.</returns>
         public Task<Rule> UpdateAsync(string id, RuleUpdateRequest request)
         {
-            return Connection.PatchAsync<Rule>("rules/{id}", request, new Dictionary<string, string>
-            {
-                {"id", id}
-            });
+            return Connection.PatchAsync<Rule>($"rules/{id}", request);
         }
     }
 }

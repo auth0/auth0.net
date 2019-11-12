@@ -39,7 +39,7 @@ namespace Auth0.ManagementApi.Clients
                     {"user_id", userId},
                     {"client_id", clientId},
                     {"type", type}
-                }, null, null);
+                });
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="DeviceCredential"/>.</returns>
         public Task<DeviceCredential> CreateAsync(DeviceCredentialCreateRequest request)
         {
-            return Connection.RunAsync<DeviceCredential>(HttpMethod.Post, "device-credentials", request, null, null, null, null, null);
+            return Connection.RunAsync<DeviceCredential>(HttpMethod.Post, "device-credentials", request);
         }
 
         /// <summary>
@@ -59,11 +59,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.DeleteAsync<object>("device-credentials/{id}", 
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                }, null);
+            return Connection.DeleteAsync<object>($"device-credentials/{id}");
         }
     }
 }

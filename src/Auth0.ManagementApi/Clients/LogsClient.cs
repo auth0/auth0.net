@@ -57,12 +57,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="LogEntry"/> instance containing the information about the log entry.</returns>
         public Task<LogEntry> GetAsync(string id)
         {
-            return Connection.GetAsync<LogEntry>("logs/{id}",
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                },
-                null, null, null);
+            return Connection.GetAsync<LogEntry>($"logs/{id}");
         }
     }
 }

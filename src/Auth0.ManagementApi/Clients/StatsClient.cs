@@ -26,7 +26,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The number of users that have logged in during the last 30 days.</returns>
         public async Task<long> GetActiveUsersAsync()
         {
-            var result = await Connection.GetAsync<object>("stats/active-users", null, null, null, null).ConfigureAwait(false);
+            var result = await Connection.GetAsync<object>("stats/active-users").ConfigureAwait(false);
 
             return Convert.ToInt64(result);
         }
