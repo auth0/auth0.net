@@ -312,18 +312,6 @@ namespace Auth0.AuthenticationApi
             return response;
         }
 
-
-        /// <summary>
-        /// Gets information about the last API call made using this client.
-        /// </summary>
-        /// <returns>
-        /// A <see cref="ApiInfo"/> containing information about the last API call made.
-        /// </returns>
-        public ApiInfo GetLastApiInfo()
-        {
-            return Connection.ApiInfo;
-        }
-
         /// <summary>
         /// Returns the user information based on the Auth0 access token (obtained during login).
         /// </summary>

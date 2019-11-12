@@ -1,27 +1,17 @@
 ﻿using System;
-using System.Net;
 
 namespace Auth0.Core.Exceptions
 {
     /// <summary>
-    /// Represents errors that occur when making API calls.
+    /// Represents an exception that occurs when making API calls.
     /// </summary>
-    public class ApiException : Exception
+    public abstract class ApiException : Exception
     {
         /// <summary>
-        /// The <see cref="Core.ApiError"/> from the response.
-        /// </summary>
-        public ApiError ApiError { get; }
-
-        /// <summary>
-        /// The <see cref="HttpStatusCode"/> code associated with the response.
-        /// </summary>
-        public HttpStatusCode StatusCode { get; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ApiException"/> class.
+        /// Initializes a new instance of the <see cref="ErrorApiException"/> class.
         /// </summary>
         public ApiException()
+            : base()
         {
         }
 
@@ -44,30 +34,6 @@ namespace Auth0.Core.Exceptions
         public ApiException(string message, Exception innerException)
             : base(message, innerException)
         {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ApiException"/> class with a specified
-        /// <see cref="HttpStatusCode"/>.
-        /// </summary>
-        /// The <see cref="HttpStatusCode"/> code associated with the response.
-        public ApiException(HttpStatusCode statusCode)
-            : this(statusCode.ToString())
-        {
-            StatusCode = statusCode;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ApiException"/> class with a specified
-        /// <see cref="HttpStatusCode"/> and <see cref="Core.ApiError"/>.
-        /// </summary>
-        /// <param name="statusCode">The status code.</param>
-        /// <param name="apiError">The API error.</param>
-        public ApiException(HttpStatusCode statusCode, ApiError apiError)
-            : this(apiError == null ? statusCode.ToString() : apiError.Message)
-        {
-            StatusCode = statusCode;
-            ApiError = apiError;
         }
     }
 }

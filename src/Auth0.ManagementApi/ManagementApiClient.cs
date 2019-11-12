@@ -109,14 +109,6 @@ namespace Auth0.ManagementApi
         /// </summary>
         public UsersClient Users { get; }
 
-        /// <summary>
-        /// Gets information about the last API call;
-        /// </summary>
-        public ApiInfo GetLastApiInfo()
-        {
-            return _apiConnection.ApiInfo;
-        }
-
         private ManagementApiClient(ApiConnection apiConnection)
         {
             _apiConnection = apiConnection;

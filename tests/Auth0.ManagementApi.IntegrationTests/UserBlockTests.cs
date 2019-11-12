@@ -62,7 +62,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                         Password = "wrong_password"
                     });
                 }
-                catch (ApiException ex)
+                catch (ErrorApiException ex)
                 {
                     if (ex.ApiError.Error == "too_many_attempts")
                         userBlocked = true;

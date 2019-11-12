@@ -22,11 +22,6 @@ namespace Auth0.Core.Http
         private bool _disposeHttpClient;
 
         /// <summary>
-        /// Contains information about the last API call made by the connection.
-        /// </summary>
-        public ApiInfo ApiInfo { get; private set; }
-
-        /// <summary>
         /// Creates a new instance of ApiConnection using an optional <see cref="HttpMessageHandler"/>.
         /// </summary>
         /// <param name="token">A valid Auth0 Management API v2 token.</param>
@@ -177,11 +172,6 @@ namespace Auth0.Core.Http
                 null).ConfigureAwait(false);
         }
 
-        private void ExtractApiInfo(HttpResponseMessage response)
-        {
-            ApiInfo = ApiInfoParser.Parse(response.Headers);
-        }
-
         /// <summary>
         /// Performs an HTTP GET.
         /// </summary>
@@ -207,37 +197,20 @@ namespace Auth0.Core.Http
                 converters).ConfigureAwait(false);
         }
 
+        private const int HttpStatusCodeTooManyRequests = 429;
+
         private async Task HandleErrors(HttpResponseMessage response)
         {
-            if (!response.IsSuccessStatusCode)
-            {
-                ApiError apiError = null;
+            var content = response.Content == null
+                ? null
+                : await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-                // Grab the content
-                if (response.Content != null)
-                {
-                    var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            var apiError = ApiError.ParseOrDefault(content);
 
-                    if (!string.IsNullOrEmpty(responseContent))
-                        try
-                        {
-                            apiError = JsonConvert.DeserializeObject<ApiError>(responseContent);
-                            if (apiError.StatusCode == 0)
-                                apiError.StatusCode = (int)response.StatusCode;
-                        }
-                        catch (Exception)
-                        {
-                            apiError = new ApiError
-                            {
-                                Error = responseContent,
-                                Message = responseContent,
-                                StatusCode = (int)response.StatusCode
-                            };
-                        }
-                }
+            if ((int)response.StatusCode == HttpStatusCodeTooManyRequests)
+                throw new RateLimitApiException(RateLimit.Parse(response.Headers));
 
-                throw new ApiException(response.StatusCode, apiError);
-            }
+            throw new ErrorApiException(response.StatusCode, apiError);
         }
 
         /// <summary>
@@ -349,11 +322,9 @@ namespace Auth0.Core.Http
             // Send the request
             var response = await _httpClient.SendAsync(requestMessage).ConfigureAwait(false);
 
-            // Extract the relevant API headers
-            ExtractApiInfo(response);
-
             // Handle API errors
-            await HandleErrors(response).ConfigureAwait(false);
+            if (!response.IsSuccessStatusCode)
+                await HandleErrors(response).ConfigureAwait(false);
 
             // Deserialize the content
             var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
