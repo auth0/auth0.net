@@ -249,7 +249,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous remove operation.</returns>
         public Task RemoveRolesAsync(string id, AssignRolesRequest request)
         {
-            return Connection.DeleteAsync<object>($"users/{id}/roles", request);
+            return Connection.RunAsync<object>(HttpMethod.Delete, $"users/{id}/roles", request);
         }
 
         /// <summary>
@@ -261,7 +261,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="IList{AccountLinkResponse}"/> containing details about this account link.</returns>
         public Task<IList<AccountLinkResponse>> UnlinkAccountAsync(string primaryUserId, string provider, string secondaryUserId)
         {
-            return Connection.DeleteAsync<IList<AccountLinkResponse>>($"users/{primaryUserId}/identities/{provider}/{secondaryUserId}");
+            return Connection.RunAsync<IList<AccountLinkResponse>>(HttpMethod.Delete, $"users/{primaryUserId}/identities/{provider}/{secondaryUserId}");
         }
 
         /// <summary>
@@ -311,7 +311,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous remove operation.</returns>
         public Task RemovePermissionsAsync(string id, AssignPermissionsRequest request)
         {
-            return Connection.DeleteAsync<object>($"users/{id}/permissions", request);
+            return Connection.RunAsync<object>(HttpMethod.Delete, $"users/{id}/permissions", request);
         }
     }
 }

@@ -230,10 +230,10 @@ namespace Auth0.Core.Http
         /// <param name="queryStrings">The query strings.</param>
         /// <param name="converters">The list of <see cref="JsonConverter" /> to use during deserialization.</param>
         /// <returns>A <see cref="Task{T}"/> that represents the asynchronous Run operation.</returns>
-        public async Task<T> RunAsync<T>(HttpMethod httpMethod, string resource, object body,
-            IDictionary<string, object> parameters, IList<FileUploadParameter> fileParameters,
-            IDictionary<string, string> urlSegments, IDictionary<string, object> headers,
-            IDictionary<string, string> queryStrings, params JsonConverter[] converters) where T : class
+        public async Task<T> RunAsync<T>(HttpMethod httpMethod, string resource, object body = null,
+            IDictionary<string, object> parameters = null, IList<FileUploadParameter> fileParameters = null,
+            IDictionary<string, string> urlSegments = null, IDictionary<string, object> headers = null,
+            IDictionary<string, string> queryStrings = null, params JsonConverter[] converters) where T : class
         {
             // Build the request URL
             var requestMessage = new HttpRequestMessage(httpMethod, BuildRequestUri(resource, urlSegments, queryStrings));

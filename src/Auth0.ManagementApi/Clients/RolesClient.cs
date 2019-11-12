@@ -178,7 +178,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous remove operation.</returns>
         public Task RemovePermissionsAsync(string id, AssignPermissionsRequest request)
         {
-            return Connection.DeleteAsync<object>($"roles/{id}/permissions", request);
+            return Connection.RunAsync<object>(HttpMethod.Delete, $"roles/{id}/permissions", request);
         }
     }
 }
