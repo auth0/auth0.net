@@ -27,7 +27,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A list of <see cref="BlacklistedToken"/> objects.</returns>
         public Task<IList<BlacklistedToken>> GetAllAsync(string aud)
         {
-            return Connection.GetAsync<IList<BlacklistedToken>>("blacklists/tokens", null,
+            return Connection.RunAsync<IList<BlacklistedToken>>(HttpMethod.Get, "blacklists/tokens", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"aud", aud}

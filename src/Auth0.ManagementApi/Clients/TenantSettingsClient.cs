@@ -34,8 +34,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="TenantSettings" /> containing the settings for the tenant.</returns>
         public Task<TenantSettings> GetAsync(string fields = null, bool includeFields = true)
         {
-            return Connection.GetAsync<TenantSettings>("tenants/settings",
-                null,
+            return Connection.RunAsync<TenantSettings>(HttpMethod.Get, "tenants/settings", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"fields", fields},

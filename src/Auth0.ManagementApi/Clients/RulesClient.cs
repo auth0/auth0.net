@@ -56,7 +56,7 @@ namespace Auth0.ManagementApi.Clients
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.GetAsync<IPagedList<Rule>>("rules", null,
+            return Connection.RunAsync<IPagedList<Rule>>(HttpMethod.Get, "rules", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"enabled", request.Enabled?.ToString().ToLower()},
@@ -66,7 +66,7 @@ namespace Auth0.ManagementApi.Clients
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }, null, new PagedListConverter<Rule>("rules"));
+                }, converters: new PagedListConverter<Rule>("rules"));
         }
 
         /// <summary>
@@ -84,12 +84,12 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Rule" /> that was requested.</returns>
         public Task<Rule> GetAsync(string id, string fields = null, bool includeFields = true)
         {
-            return Connection.GetAsync<Rule>($"rules/{id}", null,
+            return Connection.RunAsync<Rule>(HttpMethod.Get, $"rules/{id}", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                }, null, null);
+                });
         }
 
         /// <summary>

@@ -48,7 +48,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="ResourceServer"/> that was requested.</returns>
         public Task<ResourceServer> GetAsync(string id)
         {
-            return Connection.GetAsync<ResourceServer>($"resource-servers/{id}");
+            return Connection.RunAsync<ResourceServer>(HttpMethod.Get, $"resource-servers/{id}");
         }
 
         /// <summary>
@@ -58,13 +58,13 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="IPagedList{ResourceServer}"/> containing the list of resource servers.</returns>
         public Task<IPagedList<ResourceServer>> GetAllAsync(PaginationInfo pagination)
         {
-            return Connection.GetAsync<IPagedList<ResourceServer>>("resource-servers", null,
+            return Connection.RunAsync<IPagedList<ResourceServer>>(HttpMethod.Get, "resource-servers", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }, null, new PagedListConverter<ResourceServer>("resource_servers"));
+                }, converters: new PagedListConverter<ResourceServer>("resource_servers"));
         }
 
         /// <summary>

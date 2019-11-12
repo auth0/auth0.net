@@ -70,7 +70,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Connection"/>.</returns>
         public Task<Connection> GetAsync(string id, string fields = null, bool includeFields = true)
         {
-            return Connection.GetAsync<Connection>($"connections/{id}", null,
+            return Connection.RunAsync<Connection>(HttpMethod.Get, $"connections/{id}", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
@@ -110,7 +110,7 @@ namespace Auth0.ManagementApi.Clients
                 }
             }
 
-            return Connection.GetAsync<IPagedList<Connection>>("connections", null, queryStrings, null, new PagedListConverter<Connection>("connections"));
+            return Connection.RunAsync<IPagedList<Connection>>(HttpMethod.Get, "connections", queryStrings, converters:new PagedListConverter<Connection>("connections"));
         }
 
         /// <summary>

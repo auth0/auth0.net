@@ -56,13 +56,12 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="EmailProvider" /> instance containing the email provider details.</returns>
         public Task<EmailProvider> GetAsync(string fields = null, bool includeFields = true)
         {
-            return Connection.GetAsync<EmailProvider>("emails/provider",
-                null,
+            return Connection.RunAsync<EmailProvider>(HttpMethod.Get, "emails/provider", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                }, null, null);
+                });
         }
 
         /// <summary>

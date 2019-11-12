@@ -81,7 +81,7 @@ namespace Auth0.ManagementApi.Clients
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.GetAsync<IPagedList<User>>("users", null,
+            return Connection.RunAsync<IPagedList<User>>(HttpMethod.Get, "users", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"sort", request.Sort},
@@ -93,7 +93,7 @@ namespace Auth0.ManagementApi.Clients
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
-                }, null, new PagedListConverter<User>("users"));
+                }, converters: new PagedListConverter<User>("users"));
         }
 
         /// <summary>
@@ -111,12 +111,12 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="User"/> that was requested.</returns>
         public Task<User> GetAsync(string id, string fields = null, bool includeFields = true)
         {
-            return Connection.GetAsync<User>($"users/{id}", null,
+            return Connection.RunAsync<User>(HttpMethod.Get, $"users/{id}", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                }, null, null);
+                });
         }
 
         /// <summary>
@@ -132,14 +132,14 @@ namespace Auth0.ManagementApi.Clients
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.GetAsync<IPagedList<LogEntry>>($"users/{request.UserId}/logs", null,
+            return Connection.RunAsync<IPagedList<LogEntry>>(HttpMethod.Get, $"users/{request.UserId}/logs", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"sort", request.Sort},
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }, null, new PagedListConverter<LogEntry>("logs", true));
+                }, converters: new PagedListConverter<LogEntry>("logs", true));
         }
 
         /// <summary>
@@ -153,13 +153,13 @@ namespace Auth0.ManagementApi.Clients
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.GetAsync<IPagedList<Role>>($"users/{userId}/roles", null,
+            return Connection.RunAsync<IPagedList<Role>>(HttpMethod.Get, $"users/{userId}/roles", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }, null, new PagedListConverter<Role>("roles"));
+                }, converters: new PagedListConverter<Role>("roles"));
         }
 
         /// <summary>
@@ -171,13 +171,13 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="IList{User}"/> containing all users for this email address.</returns>
         public Task<IList<User>> GetUsersByEmailAsync(string email, string fields = null, bool? includeFields = null)
         {
-            return Connection.GetAsync<IList<User>>("users-by-email", null,
+            return Connection.RunAsync<IList<User>>(HttpMethod.Get, "users-by-email", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"email", email},
                     {"fields", fields},
                     {"include_fields", includeFields?.ToString().ToLower()}
-                }, null, null);
+                });
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A Task representing the operation and potential return value.</returns>
         public Task<IList<EnrollmentsResponse>> GetEnrollmentsAsync(string id)
         {
-            return Connection.GetAsync<IList<EnrollmentsResponse>>($"users/{id}/enrollments");
+            return Connection.RunAsync<IList<EnrollmentsResponse>>(HttpMethod.Get, $"users/{id}/enrollments");
         }
 
         /// <summary>
@@ -283,13 +283,13 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{Permission}"/> containing the assigned permissions for this user.</returns>
         public Task<IPagedList<Permission>> GetPermissionsAsync(string id, PaginationInfo pagination)
         {
-            return Connection.GetAsync<IPagedList<Permission>>($"users/{id}/permissions", null,
+            return Connection.RunAsync<IPagedList<Permission>>(HttpMethod.Get, $"users/{id}/permissions", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }, null, new PagedListConverter<Permission>("permissions"));
+                }, converters: new PagedListConverter<Permission>("permissions"));
         }
 
         /// <summary>

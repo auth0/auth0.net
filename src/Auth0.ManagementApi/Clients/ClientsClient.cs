@@ -75,7 +75,7 @@ namespace Auth0.ManagementApi.Clients
                 queryStrings.Add("app_type", string.Join(",", request.AppType.Select(ToEnumString)));
             }
 
-            return Connection.GetAsync<IPagedList<Client>>("clients", null, queryStrings, null, new PagedListConverter<Client>("clients"));
+            return Connection.RunAsync<IPagedList<Client>>(HttpMethod.Get, "clients", queryStrings, converters: new PagedListConverter<Client>("clients"));
         }
 
         /// <summary>
@@ -93,8 +93,8 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Client"/> retrieved.</returns>
         public Task<Client> GetAsync(string id, string fields = null, bool includeFields = true)
         {
-            return Connection.GetAsync<Client>($"clients/{id}", null,
-                new Dictionary<string, string>
+            return Connection.RunAsync<Client>(HttpMethod.Get, $"clients/{id}",
+                queryStrings: new Dictionary<string, string>
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}

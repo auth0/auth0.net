@@ -41,20 +41,6 @@ namespace Auth0.Core.Http
             IDictionary<string, string> urlSegments = null,
             IDictionary<string, string> queryStrings = null) where T : class;
 
-        /// <summary>
-        /// Performs an HTTP GET.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="resource">The resource.</param>
-        /// <param name="urlSegments">The URL segments.</param>
-        /// <param name="queryStrings">The query strings.</param>
-        /// <param name="headers">The headers.</param>
-        /// <param name="converters">The list of <see cref="JsonConverter" /> to use during deserialization.</param>
-        /// <returns>Task&lt;T&gt;.</returns>
-        Task<T> GetAsync<T>(string resource, IDictionary<string, string> urlSegments = null,
-            IDictionary<string, string> queryStrings = null, IDictionary<string, object> headers = null,
-            params JsonConverter[] converters) where T : class;
-
         Task<T> RunAsync<T>(HttpMethod httpMethod,
             string resource,
             object body = null,

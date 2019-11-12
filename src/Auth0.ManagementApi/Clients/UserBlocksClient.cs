@@ -1,6 +1,7 @@
 ﻿using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -26,12 +27,11 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="UserBlocks"/> relating to the user requested.</returns>
         public Task<UserBlocks> GetByIdentifierAsync(string identifier)
         {
-            return Connection.GetAsync<UserBlocks>("user-blocks",
-                null,
+            return Connection.RunAsync<UserBlocks>(HttpMethod.Get, "user-blocks", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"identifier", identifier}
-                }, null, null);
+                });
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="UserBlocks"/> relating to the user requested.</returns>
         public Task<UserBlocks> GetByUserIdAsync(string id)
         {
-            return Connection.GetAsync<UserBlocks>($"user-blocks/{id}");
+            return Connection.RunAsync<UserBlocks>(HttpMethod.Get, $"user-blocks/{id}");
         }
 
         /// <summary>

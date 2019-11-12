@@ -53,11 +53,11 @@ namespace Auth0.ManagementApi.Clients
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
 
-            return Connection.GetAsync<IPagedList<Role>>("roles", null,
+            return Connection.RunAsync<IPagedList<Role>>(HttpMethod.Get, "roles", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"name_filter", request.NameFilter},
-                }, null, new PagedListConverter<Role>("roles"));
+                }, converters: new PagedListConverter<Role>("roles"));
         }
 
         /// <summary>
@@ -73,14 +73,14 @@ namespace Auth0.ManagementApi.Clients
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.GetAsync<IPagedList<Role>>("roles", null,
+            return Connection.RunAsync<IPagedList<Role>>(HttpMethod.Get, "roles", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"name_filter", request.NameFilter},
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }, null, new PagedListConverter<Role>("roles"));
+                }, converters: new PagedListConverter<Role>("roles"));
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Role"/> that was requested.</returns>
         public Task<Role> GetAsync(string id)
         {
-            return Connection.GetAsync<Role>($"roles/{id}");
+            return Connection.RunAsync<Role>(HttpMethod.Get, $"roles/{id}");
         }
 
         /// <summary>
@@ -111,8 +111,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{AssignedUser}"/> containing the assigned users.</returns>
         public Task<IPagedList<AssignedUser>> GetUsersAsync(string id)
         {
-            return Connection.GetAsync<IPagedList<AssignedUser>>($"roles/{id}/users", null,
-                null, null, new PagedListConverter<AssignedUser>("users"));
+            return Connection.RunAsync<IPagedList<AssignedUser>>(HttpMethod.Get, $"roles/{id}/users", converters: new PagedListConverter<AssignedUser>("users"));
         }
 
         /// <summary>
@@ -123,13 +122,13 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{AssignedUser}"/> containing the assigned users.</returns>
         public Task<IPagedList<AssignedUser>> GetUsersAsync(string id, PaginationInfo pagination)
         {
-            return Connection.GetAsync<IPagedList<AssignedUser>>($"roles/{id}/users", null,
+            return Connection.RunAsync<IPagedList<AssignedUser>>(HttpMethod.Get, $"roles/{id}/users", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }, null, new PagedListConverter<AssignedUser>("users"));
+                }, converters: new PagedListConverter<AssignedUser>("users"));
         }
 
         /// <summary>
@@ -151,13 +150,13 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{Permission}"/> containing the assigned permissions for this role.</returns>
         public Task<IPagedList<Permission>> GetPermissionsAsync(string id, PaginationInfo pagination)
         {
-            return Connection.GetAsync<IPagedList<Permission>>($"roles/{id}/permissions", null,
+            return Connection.RunAsync<IPagedList<Permission>>(HttpMethod.Get, $"roles/{id}/permissions", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }, null, new PagedListConverter<Permission>("permissions"));
+                }, converters: new PagedListConverter<Permission>("permissions"));
         }
 
         /// <summary>

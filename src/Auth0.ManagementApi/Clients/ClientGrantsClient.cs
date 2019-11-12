@@ -56,7 +56,7 @@ namespace Auth0.ManagementApi.Clients
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.GetAsync<IPagedList<ClientGrant>>("client-grants", null,
+            return Connection.RunAsync<IPagedList<ClientGrant>>(HttpMethod.Get, "client-grants", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"audience", request.Audience},
@@ -64,7 +64,7 @@ namespace Auth0.ManagementApi.Clients
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }, null, new PagedListConverter<ClientGrant>("client_grants"));
+                }, converters: new PagedListConverter<ClientGrant>("client_grants"));
         }
 
         /// <summary>

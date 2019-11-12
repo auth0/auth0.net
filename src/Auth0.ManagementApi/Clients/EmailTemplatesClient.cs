@@ -41,7 +41,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="EmailTemplate"/> that was requested.</returns>
         public Task<EmailTemplate> GetAsync(EmailTemplateName templateName)
         {
-            return Connection.GetAsync<EmailTemplate>("email-templates/{templateName}",
+            return Connection.RunAsync<EmailTemplate>(HttpMethod.Get, "email-templates/{templateName}", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"templateName", ToEnumString(templateName)}

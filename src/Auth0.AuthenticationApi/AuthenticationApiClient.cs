@@ -154,7 +154,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>The meta data XML .</returns>
         public Task<string> GetSamlMetadataAsync(string clientId)
         {
-            return Connection.GetAsync<string>($"wsfed/{clientId}");
+            return Connection.RunAsync<string>(HttpMethod.Get, $"wsfed/{clientId}");
         }
 
         /// <summary>
@@ -305,7 +305,7 @@ namespace Auth0.AuthenticationApi
                 headers.Add("auth0-forwarded-for", request.ForwardedForIp);
             }
 
-            var response = await Connection.RunAsync<AccessTokenResponse>(HttpMethod.Post, "oauth/token", null, parameters, null, null, headers, null).ConfigureAwait(false);
+            var response = await Connection.RunAsync<AccessTokenResponse>(HttpMethod.Post, "oauth/token", null, parameters, null, null, headers).ConfigureAwait(false);
             
             IdentityTokenValidator validator = new IdentityTokenValidator();
             await validator.ValidateInternal(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
@@ -332,7 +332,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>The <see cref="UserInfo"/> associated with the token.</returns>
         public Task<UserInfo> GetUserInfoAsync(string accessToken)
         {
-            return Connection.GetAsync<UserInfo>("userinfo", null, null, new Dictionary<string, object>
+            return Connection.RunAsync<UserInfo>(HttpMethod.Get, "userinfo", headers: new Dictionary<string, object>
             {
                 {"Authorization", $"Bearer {accessToken}"}
             });
@@ -344,7 +344,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>The meta data XML</returns>
         public Task<string> GetWsFedMetadataAsync()
         {
-            return Connection.GetAsync<string>("wsfed/FederationMetadata/2007-06/FederationMetadata.xml", null, null, null);
+            return Connection.RunAsync<string>(HttpMethod.Get, "wsfed/FederationMetadata/2007-06/FederationMetadata.xml");
         }
 
         /// <summary>
@@ -354,7 +354,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A <see cref="SignupUserResponse" /> with the information of the signed up user.</returns>
         public Task<SignupUserResponse> SignupUserAsync(SignupUserRequest request)
         {
-            return Connection.RunAsync<SignupUserResponse>(HttpMethod.Post, "dbconnections/signup", request, null, null, null, null, null);
+            return Connection.RunAsync<SignupUserResponse>(HttpMethod.Post, "dbconnections/signup", request);
         }
 
         /// <summary>
@@ -400,7 +400,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A <see cref="Task"/> that represents the asynchronous unlink operation.</returns>
         public async Task UnlinkUserAsync(UnlinkUserRequest request)
         {
-            await Connection.RunAsync<object>(HttpMethod.Post, "unlink", request, null, null, null, null, null).ConfigureAwait(false);
+            await Connection.RunAsync<object>(HttpMethod.Post, "unlink", request).ConfigureAwait(false);
         }
 
         /// <summary>

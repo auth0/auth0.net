@@ -182,31 +182,6 @@ namespace Auth0.Core.Http
             ApiInfo = ApiInfoParser.Parse(response.Headers);
         }
 
-        /// <summary>
-        /// Performs an HTTP GET.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="resource">The resource.</param>
-        /// <param name="urlSegments">The URL segments.</param>
-        /// <param name="queryStrings">The query strings.</param>
-        /// <param name="headers">The headers.</param>
-        /// <param name="converters">The list of <see cref="JsonConverter" /> to use during deserialization.</param>
-        /// <returns>Task&lt;T&gt;.</returns>
-        public async Task<T> GetAsync<T>(string resource, IDictionary<string, string> urlSegments,
-            IDictionary<string, string> queryStrings, IDictionary<string, object> headers,
-            params JsonConverter[] converters) where T : class
-        {
-            return await RunAsync<T>(HttpMethod.Get,
-                resource,
-                null,
-                null,
-                null,
-                urlSegments,
-                headers,
-                queryStrings,
-                converters).ConfigureAwait(false);
-        }
-
         private async Task HandleErrors(HttpResponseMessage response)
         {
             if (!response.IsSuccessStatusCode)

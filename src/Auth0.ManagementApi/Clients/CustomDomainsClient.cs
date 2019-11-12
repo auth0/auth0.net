@@ -48,7 +48,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="IList{CustomDomain}"/> containing the details of every custom domain.
         public Task<IList<CustomDomain>> GetAllAsync()
         {
-            return Connection.GetAsync<IList<CustomDomain>>("custom-domains");
+            return Connection.RunAsync<IList<CustomDomain>>(HttpMethod.Get, "custom-domains");
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="CustomDomain"/> that was requested.</returns>
         public Task<CustomDomain> GetAsync(string id)
         {
-            return Connection.GetAsync<CustomDomain>($"custom-domains/{id}");
+            return Connection.RunAsync<CustomDomain>(HttpMethod.Get, $"custom-domains/{id}");
         }
 
         /// <summary>

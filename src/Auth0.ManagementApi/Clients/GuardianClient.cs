@@ -55,7 +55,7 @@ namespace Auth0.ManagementApi.Clients
         public Task<GuardianEnrollment> GetEnrollmentAsync(string id)
         {
             return Connection
-                .GetAsync<GuardianEnrollment>(
+                .RunAsync<GuardianEnrollment>(HttpMethod.Get,
                 $"guardian/enrollments/{id}");
         }
 
@@ -66,7 +66,7 @@ namespace Auth0.ManagementApi.Clients
         public Task<IList<GuardianFactor>> GetFactorsAsync()
         {
             return Connection
-                .GetAsync<IList<GuardianFactor>>(
+                .RunAsync<IList<GuardianFactor>>(HttpMethod.Get,
                 "guardian/factors");
         }
 
@@ -77,7 +77,7 @@ namespace Auth0.ManagementApi.Clients
         public Task<GuardianSmsEnrollmentTemplates> GetSmsTemplatesAsync()
         {
             return Connection
-                .GetAsync<GuardianSmsEnrollmentTemplates>(
+                .RunAsync<GuardianSmsEnrollmentTemplates>(HttpMethod.Get,
                 "guardian/factors/sms/templates");
         }
 
@@ -88,7 +88,7 @@ namespace Auth0.ManagementApi.Clients
         public Task<GuardianSnsConfiguration> GetSnsConfigurationAsync()
         {
             return Connection
-                .GetAsync<GuardianSnsConfiguration>(
+                .RunAsync<GuardianSnsConfiguration>(HttpMethod.Get,
                 "guardian/factors/push-notification/providers/sns");
         }
 
@@ -99,7 +99,7 @@ namespace Auth0.ManagementApi.Clients
         public Task<GuardianTwilioConfiguration> GetTwilioConfigurationAsync()
         {
             return Connection
-                .GetAsync<GuardianTwilioConfiguration>(
+                .RunAsync<GuardianTwilioConfiguration>(HttpMethod.Get,
                 "guardian/factors/sms/providers/twilio");
         }
 

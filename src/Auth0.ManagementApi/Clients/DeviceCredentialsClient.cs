@@ -31,7 +31,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A list of <see cref="DeviceCredential"/> which conforms to the criteria specified.</returns>
         public Task<IList<DeviceCredential>> GetAllAsync(string fields = null, bool includeFields = true, string userId = null, string clientId = null, string type = null)
         {
-            return Connection.GetAsync<IList<DeviceCredential>>("device-credentials", null,
+            return Connection.RunAsync<IList<DeviceCredential>>(HttpMethod.Get, "device-credentials", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
