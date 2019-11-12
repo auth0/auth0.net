@@ -138,11 +138,10 @@ namespace Auth0.AuthenticationApi
                     client_id = request.ClientId,
                     response_type = request.ResponseType,
                     state = request.State
-                }, null, null, null,
-                new Dictionary<string, object>
+                }, headers: new Dictionary<string, object>
                 {
                     {"Authorization", $"Bearer {request.Token}"}
-                }, null).ConfigureAwait(false);
+                }).ConfigureAwait(false);
 
             return new Uri(url);
         }
@@ -171,11 +170,7 @@ namespace Auth0.AuthenticationApi
                 {"client_secret", request.ClientSecret},
                 {"code", request.Code},
                 {"redirect_uri", request.RedirectUri},
-            },
-                null,
-                null,
-                null,
-                null).ConfigureAwait(false);
+            }).ConfigureAwait(false);
 
             IdentityTokenValidator validator = new IdentityTokenValidator();
             await validator.ValidateInternal(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
@@ -197,11 +192,7 @@ namespace Auth0.AuthenticationApi
                 {"code", request.Code},
                 {"code_verifier", request.CodeVerifier},
                 {"redirect_uri", request.RedirectUri}
-            },
-                null,
-                null,
-                null,
-                null).ConfigureAwait(false);
+            }).ConfigureAwait(false);
 
             IdentityTokenValidator validator = new IdentityTokenValidator();
             await validator.ValidateInternal(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
@@ -222,11 +213,7 @@ namespace Auth0.AuthenticationApi
                     {"client_id", request.ClientId},
                     {"client_secret", request.ClientSecret},
                     {"audience", request.Audience}
-                },
-                null,
-                null,
-                null,
-                null);
+                });
         }
 
         /// <summary>
@@ -252,7 +239,7 @@ namespace Auth0.AuthenticationApi
             {
                 parameters.Add("scope", request.Scope);
             }
-            var response = await Connection.RunAsync<AccessTokenResponse>(HttpMethod.Post, "oauth/token", null, parameters, null, null, null, null).ConfigureAwait(false);
+            var response = await Connection.RunAsync<AccessTokenResponse>(HttpMethod.Post, "oauth/token", null, parameters).ConfigureAwait(false);
             
             IdentityTokenValidator validator = new IdentityTokenValidator();
             await validator.ValidateInternal(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
@@ -305,7 +292,7 @@ namespace Auth0.AuthenticationApi
                 headers.Add("auth0-forwarded-for", request.ForwardedForIp);
             }
 
-            var response = await Connection.RunAsync<AccessTokenResponse>(HttpMethod.Post, "oauth/token", null, parameters, null, null, headers).ConfigureAwait(false);
+            var response = await Connection.RunAsync<AccessTokenResponse>(HttpMethod.Post, "oauth/token", null, parameters, null, headers).ConfigureAwait(false);
             
             IdentityTokenValidator validator = new IdentityTokenValidator();
             await validator.ValidateInternal(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
@@ -372,8 +359,7 @@ namespace Auth0.AuthenticationApi
                     email = request.Email,
                     send = request.Type.ToString().ToLower(),
                     authParams = request.AuthenticationParameters
-                },
-                null, null, null, null, null);
+                });
         }
 
         /// <summary>
@@ -389,8 +375,7 @@ namespace Auth0.AuthenticationApi
                     client_id = request.ClientId,
                     connection = "sms",
                     phone_number = request.PhoneNumber
-                },
-                null, null, null, null, null);
+                });
         }
 
         /// <summary>

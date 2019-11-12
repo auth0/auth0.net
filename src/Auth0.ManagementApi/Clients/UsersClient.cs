@@ -235,7 +235,7 @@ namespace Auth0.ManagementApi.Clients
                 LinkWith = secondaryJwtToken
             };
 
-            return Connection.RunAsync<IList<AccountLinkResponse>>(HttpMethod.Post, $"users/{id}/identities", request, null, null, null, new Dictionary<string, object>
+            return Connection.RunAsync<IList<AccountLinkResponse>>(HttpMethod.Post, $"users/{id}/identities", request, headers: new Dictionary<string, object>
             {
                 {"Authorization", $"Bearer {primaryJwtToken}"}
             });

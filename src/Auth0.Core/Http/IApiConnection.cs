@@ -21,7 +21,6 @@ namespace Auth0.Core.Http
             object body = null,
             IDictionary<string, object> parameters = null,
             IList<FileUploadParameter> fileParameters = null,
-            IDictionary<string, string> urlSegments = null,
             IDictionary<string, object> headers = null,
             IDictionary<string, string> queryStrings = null,
             params JsonConverter[] converters) where T : class;

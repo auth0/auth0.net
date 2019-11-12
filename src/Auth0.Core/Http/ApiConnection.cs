@@ -127,10 +127,9 @@ namespace Auth0.Core.Http
             }), Encoding.UTF8, "application/json");
         }
 
-        private Uri BuildRequestUri(string resource, IDictionary<string, string> urlSegments,
-            IDictionary<string, string> queryStrings)
+        private Uri BuildRequestUri(string resource, IDictionary<string, string> queryStrings)
         {
-            return Utils.BuildUri(_baseUrl, resource, urlSegments, queryStrings);
+            return Utils.BuildUri(_baseUrl, resource, null, queryStrings);
         }
 
         private void ExtractApiInfo(HttpResponseMessage response)
@@ -181,18 +180,18 @@ namespace Auth0.Core.Http
         /// <param name="body">The body.</param>
         /// <param name="parameters">The parameters.</param>
         /// <param name="fileParameters">The file parameters.</param>
-        /// <param name="urlSegments">The URL segments.</param>
         /// <param name="headers">The headers.</param>
         /// <param name="queryStrings">The query strings.</param>
         /// <param name="converters">The list of <see cref="JsonConverter" /> to use during deserialization.</param>
+        /// 
         /// <returns>A <see cref="Task{T}"/> that represents the asynchronous Run operation.</returns>
         public async Task<T> RunAsync<T>(HttpMethod httpMethod, string resource, object body = null,
             IDictionary<string, object> parameters = null, IList<FileUploadParameter> fileParameters = null,
-            IDictionary<string, string> urlSegments = null, IDictionary<string, object> headers = null,
-            IDictionary<string, string> queryStrings = null, params JsonConverter[] converters) where T : class
+            IDictionary<string, object> headers = null, IDictionary<string, string> queryStrings = null,
+            params JsonConverter[] converters) where T : class
         {
             // Build the request URL
-            var requestMessage = new HttpRequestMessage(httpMethod, BuildRequestUri(resource, urlSegments, queryStrings));
+            var requestMessage = new HttpRequestMessage(httpMethod, BuildRequestUri(resource, queryStrings));
 
             // Get the message content
             if (httpMethod != HttpMethod.Get)

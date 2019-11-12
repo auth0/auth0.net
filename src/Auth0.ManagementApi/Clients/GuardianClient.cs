@@ -30,7 +30,7 @@ namespace Auth0.ManagementApi.Clients
         public Task<CreateGuardianEnrollmentTicketResponse> CreateEnrollmentTicketAsync(CreateGuardianEnrollmentTicketRequest request)
         {
             return Connection
-                .RunAsync<CreateGuardianEnrollmentTicketResponse>(HttpMethod.Post, 
+                .RunAsync<CreateGuardianEnrollmentTicketResponse>(HttpMethod.Post,
                 "guardian/enrollments/ticket",
                 request);
         }

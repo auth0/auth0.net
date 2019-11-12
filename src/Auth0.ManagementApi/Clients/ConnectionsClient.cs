@@ -110,7 +110,7 @@ namespace Auth0.ManagementApi.Clients
                 }
             }
 
-            return Connection.RunAsync<IPagedList<Connection>>(HttpMethod.Get, "connections", queryStrings, converters:new PagedListConverter<Connection>("connections"));
+            return Connection.RunAsync<IPagedList<Connection>>(HttpMethod.Get, "connections", queryStrings, converters: new PagedListConverter<Connection>("connections"));
         }
 
         /// <summary>
