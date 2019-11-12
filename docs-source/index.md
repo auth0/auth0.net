@@ -152,9 +152,37 @@ var allClients = await apiClient.Clients.GetAllAsync();
 
 ### Client reuse and thread safety
 
-Neither the `ManagementApiClient` or the `AuthenticationApiClient` are threadsafe, as they store the result of the last call to an API (obtainable by the `GetLastApiInfo` method). It's ok to reuse them in the same thread to do subsequent calls, but they shouldn't be created as a singleton instance used across multiple threads. 
+`ManagementApiClient` and `AuthenticationApiClient` are thread-safe with the exception of the `GetLastApiInfo` method.
 
-Both clients are really lightweight to instantiate, so creating a new instance every time they are needed shouldn't be a concern.
+While the client opjects are lightweight to instantiate by default they create their own ApiConnection object which creates it's own HttpClient.  In order to best utilize HTTP connections the HttpClient should be shared as much as possible so it can perform the necessary thread-pooling.
+
+If for some reason you can not share `ManagementApiClient` or `AuthenticationApi` you should at least create a shared `HttpClient` (perhaps through `ServiceContainer`) and pass that through to them via a non-shared `ApiConnection`. 
+
+e.g.
+
+In your app start-up:
+
+```csharp
+public void ConfigureServices(IServiceCollection services) {
+    ...
+    services.AddSingleton<HttpClient, HttpClient>();
+}
+```
+
+In your controller:
+
+```
+[HttpGet]
+public async Task<IActionResult> Get() {
+  ...
+  var httpClient = services.Get<HttpClient>();
+  var management = new ManagementApiClient(new ApiConnection(token, baseUrl, httpClient));
+  ...
+}
+```
+
+ManagementApiClient and AuthenticationApiClient can still be disposed using this pattern and will dispose of the ApiConnection. 
+The ApiConnection is smart enough to know not to dispose `HttpClient` instances it did not create and thus will share the HttpClient succesfully.
 
 ## Advanced Scenarios
 
@@ -164,29 +192,28 @@ If you need to specify a Proxy Server, you can do so by making use of the @Auth0
 
 ```csharp
 var handler = new HttpClientHandler {
-	Proxy = new WebProxy {
-		Credentials = new NetworkCredential(username, password);
-	}
+  Proxy = new WebProxy {
+    Credentials = new NetworkCredential(username, password);
+  }
 };
 var authenticationApiClient = new AuthenticationApiClient("YOUR_AUTH0_DOMAIN", handler);
 ```
 
 ### Passing extra headers
 
-There are some instances where you may want to pass extra headers with the request, such as the [`auth0-forwarded-for` header](https://auth0.com/docs/api-auth/tutorials/using-resource-owner-password-from-server-side#sending-the-end-user-ip-from-your-server). You can do so by making use of the @Auth0.AuthenticationApi.AuthenticationApiClient or @Auth0.ManagementApi.ManagementApiClient constructors which takes an `Http​Message​Handler` instance, and then creating a class which inherits from `Http​Message​Handler` which adds the extra headers to all requests.
+There are some instances where you may want to pass extra headers with the request, such as the [`auth0-forwarded-for` header](https://auth0.com/docs/api-auth/tutorials/using-resource-owner-password-from-server-side#sending-the-end-user-ip-from-your-server). You can do so by making use of the @Auth0.AuthenticationApi.AuthenticationApiClient or @Auth0.ManagementApi.ManagementApiClient constructors which takes an `HttpMessageHandler` instance, and then creating a class which inherits from `HttpMessageHandler` which adds the extra headers to all requests.
 
 ```csharp
-// Create a new class which inherits from Http​Message​Handler (HttpClientHandler inherits from Http​Message​Handler)
-public class CustomMessageHandler : HttpClientHandler
-{
-    protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-    {
-		// Add extra header(s) to the request
-        request.Headers.Add("auth0-forwarded-for", "189.214.5.210");        
-        return base.SendAsync(request, cancellationToken);
-    }
+// Create a new class which inherits from HttpMessageHandler (HttpClientHandler inherits from HttpMessageHandler)
+public class CustomMessageHandler : HttpClientHandler {
+  protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken token) {
+    // Add extra header(s) to the request
+    request.Headers.Add("auth0-forwarded-for", "189.214.5.210");        
+    return base.SendAsync(request, cancellationToken);
+  }
 }
 
-// Somewhere else in your application, you can now pass an instance of this class to the constructor of AuthenticationApiClient or ManagementApiClient
+// Somewhere else in your application, you can now pass an instance of this class to
+// the constructor of AuthenticationApiClient or ManagementApiClient
 var authenticationApiClient = new AuthenticationApiClient("YOUR_AUTH0_DOMAIN", new CustomMessageHandler());
 ```
