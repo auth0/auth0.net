@@ -75,7 +75,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="ClientGrant"/> that has been updated.</returns>
         public Task<ClientGrant> UpdateAsync(string id, ClientGrantUpdateRequest request)
         {
-            return Connection.PatchAsync<ClientGrant>($"client-grants/{id}", request);
+            return Connection.RunAsync<ClientGrant>(new HttpMethod("PATCH"), $"client-grants/{id}", request);
         }
     }
 }

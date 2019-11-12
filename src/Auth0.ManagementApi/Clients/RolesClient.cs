@@ -101,7 +101,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="Role"/>.</returns>
         public Task<Role> UpdateAsync(string id, RoleUpdateRequest request)
         {
-            return Connection.PatchAsync<Role>($"roles/{id}", request);
+            return Connection.RunAsync<Role>(new HttpMethod("PATCH"), $"roles/{id}", request);
         }
 
         /// <summary>

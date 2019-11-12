@@ -44,7 +44,7 @@ namespace Auth0.ManagementApi.Clients
                 {
                     { "from", from.ToString("yyyyMMdd") },
                     { "to", to.ToString("yyyyMMdd") }
-                }, null, null);
+                });
         }
     }
 }

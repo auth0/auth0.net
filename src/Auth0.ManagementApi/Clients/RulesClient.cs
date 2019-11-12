@@ -100,7 +100,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="Rule"/>.</returns>
         public Task<Rule> UpdateAsync(string id, RuleUpdateRequest request)
         {
-            return Connection.PatchAsync<Rule>($"rules/{id}", request);
+            return Connection.RunAsync<Rule>(new HttpMethod("PATCH"), $"rules/{id}", request);
         }
     }
 }

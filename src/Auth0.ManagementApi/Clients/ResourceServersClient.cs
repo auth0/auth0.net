@@ -75,7 +75,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="ResourceServer"/>.</returns>
         public Task<ResourceServer> UpdateAsync(string id, ResourceServerUpdateRequest request)
         {
-            return Connection.PatchAsync<ResourceServer>($"resource-servers/{id}", request);
+            return Connection.RunAsync<ResourceServer>(new HttpMethod("PATCH"), $"resource-servers/{id}", request);
         }
     }
 }

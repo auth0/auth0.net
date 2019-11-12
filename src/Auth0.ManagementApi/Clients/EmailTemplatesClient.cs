@@ -56,10 +56,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="EmailTemplate"/>.</returns>
         public Task<EmailTemplate> PatchAsync(EmailTemplateName templateName, EmailTemplatePatchRequest request)
         {
-            return Connection.PatchAsync<EmailTemplate>("email-templates/{templateName}", request, new Dictionary<string, string>
-            {
-                {"templateName", ToEnumString(templateName)}
-            });
+            return Connection.RunAsync<EmailTemplate>(new HttpMethod("PATCH"), $"email-templates/{ToEnumString(templateName)}", request);
         }
 
         /// <summary>
@@ -71,11 +68,8 @@ namespace Auth0.ManagementApi.Clients
         public Task<EmailTemplate> UpdateAsync(EmailTemplateName templateName, EmailTemplateUpdateRequest request)
         {
             return Connection.RunAsync<EmailTemplate>(HttpMethod.Put,
-                "email-templates/{templateName}",
-                request,
-                null, null, new Dictionary<string, string> {
-                { "templateName", ToEnumString(templateName) }
-            });
+                $"email-templates/{ToEnumString(templateName)}",
+                request);
         }
 
         private string ToEnumString<T>(T type)

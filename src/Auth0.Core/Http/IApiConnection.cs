@@ -55,16 +55,6 @@ namespace Auth0.Core.Http
             IDictionary<string, string> queryStrings = null, IDictionary<string, object> headers = null,
             params JsonConverter[] converters) where T : class;
 
-        /// <summary>
-        /// Performs an HTTP PATCH.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="resource">The resource.</param>
-        /// <param name="body">The body.</param>
-        /// <param name="urlSegments">The URL segments.</param>
-        /// <returns>Task&lt;T&gt;.</returns>
-        Task<T> PatchAsync<T>(string resource, object body, Dictionary<string, string> urlSegments = null) where T : class;
-
         Task<T> RunAsync<T>(HttpMethod httpMethod,
             string resource,
             object body = null,

@@ -75,7 +75,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="EmailProvider" /> instance containing the email provider details.</returns>
         public Task<EmailProvider> UpdateAsync(EmailProviderUpdateRequest request)
         {
-            return Connection.PatchAsync<EmailProvider>("emails/provider", request, null);
+            return Connection.RunAsync<EmailProvider>(new HttpMethod("PATCH"), "emails/provider", request, null);
         }
     }
 }

@@ -119,7 +119,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Client"/> that was updated.</returns>
         public Task<Client> UpdateAsync(string id, ClientUpdateRequest request)
         {
-            return Connection.PatchAsync<Client>($"clients/{id}", request);
+            return Connection.RunAsync<Client>(new HttpMethod("PATCH"), $"clients/{id}", request);
         }
 
         private string ToEnumString<T>(T type)

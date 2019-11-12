@@ -241,28 +241,6 @@ namespace Auth0.Core.Http
         }
 
         /// <summary>
-        /// Performs an HTTP PATCH operation.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="resource">The resource.</param>
-        /// <param name="body">The body.</param>
-        /// <param name="urlSegments">The URL segments.</param>
-        /// <returns>A <see cref="Task{T}"/> that represents the asynchronous Patch operation.</returns>
-        public async Task<T> PatchAsync<T>(string resource, object body, Dictionary<string, string> urlSegments)
-            where T : class
-        {
-            return await RunAsync<T>(new HttpMethod("PATCH"),
-                resource,
-                body,
-                null,
-                null,
-                urlSegments,
-                null,
-                null,
-                null).ConfigureAwait(false);
-        }
-
-        /// <summary>
         /// Executes the request. All requests will pass through this method as it will apply the headers, do the JSON
         /// formatting, check for errors on return, etc.
         /// </summary>

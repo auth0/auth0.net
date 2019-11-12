@@ -1,6 +1,7 @@
 ﻿using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -39,7 +40,7 @@ namespace Auth0.ManagementApi.Clients
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                }, null, null);
+                });
         }
 
         /// <summary>
@@ -51,7 +52,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="TenantSettings" /> containing the updated settings for the tenant.</returns>
         public Task<TenantSettings> UpdateAsync(TenantSettingsUpdateRequest request)
         {
-            return Connection.PatchAsync<TenantSettings>("tenants/settings", request, null);
+            return Connection.RunAsync<TenantSettings>(new HttpMethod("PATCH"), "tenants/settings", request);
         }
     }
 }

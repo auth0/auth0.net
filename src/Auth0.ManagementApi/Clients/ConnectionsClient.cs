@@ -121,7 +121,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Connection"/> that has been updated.</returns>
         public Task<Connection> UpdateAsync(string id, ConnectionUpdateRequest request)
         {
-            return Connection.PatchAsync<Connection>($"connections/{id}", request);
+            return Connection.RunAsync<Connection>(new HttpMethod("PATCH"), $"connections/{id}", request);
         }
     }
 }

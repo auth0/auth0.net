@@ -272,7 +272,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="User"/>.</returns>
         public Task<User> UpdateAsync(string id, UserUpdateRequest request)
         {
-            return Connection.PatchAsync<User>($"users/{id}", request);
+            return Connection.RunAsync<User>(new HttpMethod("PATCH"), $"users/{id}", request);
         }
 
         /// <summary>
