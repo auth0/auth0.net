@@ -1,6 +1,7 @@
 ﻿using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -119,8 +120,9 @@ namespace Auth0.ManagementApi.Clients
         public Task<UpdateGuardianFactorResponse> UpdateFactorAsync(UpdateGuardianFactorRequest request)
         {
             var name = request.Factor == GuardianFactorName.PushNotifications ? "push-notification" : "sms";
+
             return Connection
-                .PutAsync<UpdateGuardianFactorResponse>(
+                .RunAsync<UpdateGuardianFactorResponse>(HttpMethod.Put,
                 "guardian/factors/{name}",
                 new { enabled = request.IsEnabled },
                 null, null,
@@ -136,7 +138,7 @@ namespace Auth0.ManagementApi.Clients
         public Task<GuardianSmsEnrollmentTemplates> UpdateSmsTemplatesAsync(GuardianSmsEnrollmentTemplates templates)
         {
             return Connection
-                .PutAsync<GuardianSmsEnrollmentTemplates>(
+                .RunAsync<GuardianSmsEnrollmentTemplates>(HttpMethod.Put,
                 "guardian/factors/sms/templates",
                 templates,
                 null, null, null, null, null);
@@ -152,7 +154,7 @@ namespace Auth0.ManagementApi.Clients
         public Task<GuardianTwilioConfiguration> UpdateTwilioConfigurationAsync(UpdateGuardianTwilioConfigurationRequest request)
         {
             return Connection
-                .PutAsync<GuardianTwilioConfiguration>(
+                .RunAsync<GuardianTwilioConfiguration>(HttpMethod.Put,
                 "guardian/factors/sms/providers/twilio",
                 request,
                 null, null, null, null, null);

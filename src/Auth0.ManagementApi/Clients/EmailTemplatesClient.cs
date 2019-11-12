@@ -3,6 +3,7 @@ using Auth0.ManagementApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
@@ -69,9 +70,11 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="EmailTemplate"/>.</returns>
         public Task<EmailTemplate> UpdateAsync(EmailTemplateName templateName, EmailTemplateUpdateRequest request)
         {
-            return Connection.PutAsync<EmailTemplate>("email-templates/{templateName}", request, null, null, new Dictionary<string, string>
-            {
-                {"templateName", ToEnumString(templateName)}
+            return Connection.RunAsync<EmailTemplate>(HttpMethod.Put,
+                "email-templates/{templateName}",
+                request,
+                null, null, new Dictionary<string, string> {
+                { "templateName", ToEnumString(templateName) }
             }, null, null);
         }
 

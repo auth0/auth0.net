@@ -144,14 +144,14 @@ namespace Auth0.Core.Http
         public async Task<T> DeleteAsync<T>(string resource, IDictionary<string, string> urlSegments,
             IDictionary<string, string> queryStrings) where T : class
         {
-            return await RunAsync<T>(resource,
-                HttpMethod.Delete,
+            return await RunAsync<T>(HttpMethod.Delete,
+                resource,
+                null,
+                null,
                 null,
                 urlSegments,
+                null,
                 queryStrings,
-                null,
-                null,
-                null,
                 null).ConfigureAwait(false);
         }
 
@@ -166,14 +166,14 @@ namespace Auth0.Core.Http
         /// <returns>A <see cref="Task{T}"/> that represents the asynchronous Delete operation.</returns>
         public async Task<T> DeleteAsync<T>(string resource, object body, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings) where T : class
         {
-            return await RunAsync<T>(resource,
-                HttpMethod.Delete,
+            return await RunAsync<T>(HttpMethod.Delete,
+                resource,
                 body,
+                null,
+                null,
                 urlSegments,
+                null,
                 queryStrings,
-                null,
-                null,
-                null,
                 null).ConfigureAwait(false);
         }
 
@@ -196,14 +196,14 @@ namespace Auth0.Core.Http
             IDictionary<string, string> queryStrings, IDictionary<string, object> headers,
             params JsonConverter[] converters) where T : class
         {
-            return await RunAsync<T>(resource,
-                HttpMethod.Get,
+            return await RunAsync<T>(HttpMethod.Get,
+                resource,
+                null,
+                null,
                 null,
                 urlSegments,
-                queryStrings,
-                null,
                 headers,
-                null,
+                queryStrings,
                 converters).ConfigureAwait(false);
         }
 
@@ -251,12 +251,12 @@ namespace Auth0.Core.Http
         public async Task<T> PatchAsync<T>(string resource, object body, Dictionary<string, string> urlSegments)
             where T : class
         {
-            return await RunAsync<T>(resource,
-                new HttpMethod("PATCH"),
+            return await RunAsync<T>(new HttpMethod("PATCH"),
+                resource,
                 body,
+                null,
+                null,
                 urlSegments,
-                null,
-                null,
                 null,
                 null,
                 null).ConfigureAwait(false);
@@ -278,14 +278,14 @@ namespace Auth0.Core.Http
             IList<FileUploadParameter> fileParameters, IDictionary<string, string> urlSegments,
             IDictionary<string, object> headers, IDictionary<string, string> queryStrings) where T : class
         {
-            return await RunAsync<T>(resource,
-                HttpMethod.Post,
+            return await RunAsync<T>(HttpMethod.Post,
+                resource,
                 body,
-                urlSegments,
-                queryStrings,
                 parameters,
-                headers,
                 fileParameters,
+                urlSegments,
+                headers,
+                queryStrings,
                 null).ConfigureAwait(false);
         }
 
@@ -305,14 +305,14 @@ namespace Auth0.Core.Http
             IList<FileUploadParameter> fileParameters, IDictionary<string, string> urlSegments,
             IDictionary<string, object> headers, IDictionary<string, string> queryStrings) where T : class
         {
-            return await RunAsync<T>(resource,
-                HttpMethod.Put,
+            return await RunAsync<T>(HttpMethod.Put,
+                resource,
                 body,
-                urlSegments,
-                queryStrings,
                 parameters,
-                headers,
                 fileParameters,
+                urlSegments,
+                headers,
+                queryStrings,
                 null).ConfigureAwait(false);
         }
 
@@ -321,20 +321,20 @@ namespace Auth0.Core.Http
         /// formatting, check for errors on return, etc.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="resource">The resource.</param>
         /// <param name="httpMethod">The HTTP method.</param>
+        /// <param name="resource">The resource.</param>
         /// <param name="body">The body.</param>
-        /// <param name="urlSegments">The URL segments.</param>
-        /// <param name="queryStrings">The query strings.</param>
         /// <param name="parameters">The parameters.</param>
-        /// <param name="headers">The headers.</param>
         /// <param name="fileParameters">The file parameters.</param>
+        /// <param name="urlSegments">The URL segments.</param>
+        /// <param name="headers">The headers.</param>
+        /// <param name="queryStrings">The query strings.</param>
         /// <param name="converters">The list of <see cref="JsonConverter" /> to use during deserialization.</param>
         /// <returns>A <see cref="Task{T}"/> that represents the asynchronous Run operation.</returns>
-        private async Task<T> RunAsync<T>(string resource, HttpMethod httpMethod, object body,
-            IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings,
-            IDictionary<string, object> parameters, IDictionary<string, object> headers,
-            IList<FileUploadParameter> fileParameters, params JsonConverter[] converters) where T : class
+        public async Task<T> RunAsync<T>(HttpMethod httpMethod, string resource, object body,
+            IDictionary<string, object> parameters, IList<FileUploadParameter> fileParameters,
+            IDictionary<string, string> urlSegments, IDictionary<string, object> headers,
+            IDictionary<string, string> queryStrings, params JsonConverter[] converters) where T : class
         {
             // Build the request URL
             var requestMessage = new HttpRequestMessage(httpMethod, BuildRequestUri(resource, urlSegments, queryStrings));
