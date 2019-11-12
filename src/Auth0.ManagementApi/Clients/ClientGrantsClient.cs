@@ -40,7 +40,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.DeleteAsync<object>($"client-grants/{id}");
+            return Connection.RunAsync<object>(HttpMethod.Delete, $"client-grants/{id}");
         }
 
         /// <summary>

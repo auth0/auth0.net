@@ -16,17 +16,6 @@ namespace Auth0.Core.Http
         /// </summary>
         ApiInfo ApiInfo { get; }
 
-        /// <summary>
-        /// Performs an HTTP DELETE.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="resource">The resource.</param>
-        /// <param name="urlSegments">The URL segments.</param>
-        /// <param name="queryStrings"></param>
-        /// <returns>Task&lt;T&gt;.</returns>
-        Task<T> DeleteAsync<T>(string resource, IDictionary<string, string> urlSegments = null,
-            IDictionary<string, string> queryStrings = null) where T : class;
-
         Task<T> RunAsync<T>(HttpMethod httpMethod,
             string resource,
             object body = null,

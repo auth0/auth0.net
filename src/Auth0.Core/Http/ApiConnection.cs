@@ -133,50 +133,6 @@ namespace Auth0.Core.Http
             return Utils.BuildUri(_baseUrl, resource, urlSegments, queryStrings);
         }
 
-        /// <summary>
-        /// Performs an HTTP DELETE.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="resource">The resource.</param>
-        /// <param name="urlSegments">The URL segments.</param>
-        /// <param name="queryStrings"></param>
-        /// <returns>A <see cref="Task{T}"/> that represents the asynchronous Delete operation.</returns>
-        public async Task<T> DeleteAsync<T>(string resource, IDictionary<string, string> urlSegments,
-            IDictionary<string, string> queryStrings) where T : class
-        {
-            return await RunAsync<T>(HttpMethod.Delete,
-                resource,
-                null,
-                null,
-                null,
-                urlSegments,
-                null,
-                queryStrings,
-                null).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        ///     Performs an HTTP DELETE.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="resource">The resource.</param>
-        /// <param name="body">The body.</param>
-        /// <param name="urlSegments">The URL segments.</param>
-        /// <param name="queryStrings"></param>
-        /// <returns>A <see cref="Task{T}"/> that represents the asynchronous Delete operation.</returns>
-        public async Task<T> DeleteAsync<T>(string resource, object body, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings) where T : class
-        {
-            return await RunAsync<T>(HttpMethod.Delete,
-                resource,
-                body,
-                null,
-                null,
-                urlSegments,
-                null,
-                queryStrings,
-                null).ConfigureAwait(false);
-        }
-
         private void ExtractApiInfo(HttpResponseMessage response)
         {
             ApiInfo = ApiInfoParser.Parse(response.Headers);

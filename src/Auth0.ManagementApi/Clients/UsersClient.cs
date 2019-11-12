@@ -54,7 +54,7 @@ namespace Auth0.ManagementApi.Clients
             if (string.IsNullOrWhiteSpace(id))
                 throw new ArgumentException("Value cannot be null or whitespace.", nameof(id));
 
-            return Connection.DeleteAsync<object>($"users/{id}");
+            return Connection.RunAsync<object>(HttpMethod.Delete, $"users/{id}");
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteMultifactorProviderAsync(string id, string provider)
         {
-            return Connection.DeleteAsync<object>($"users/{id}/multifactor/{provider}");
+            return Connection.RunAsync<object>(HttpMethod.Delete, $"users/{id}/multifactor/{provider}");
         }
 
         /// <summary>

@@ -39,7 +39,7 @@ namespace Auth0.ManagementApi.Clients
         /// <remarks>When deleted, Auth0 will stop serving requests for this domain.</remarks>
         public Task DeleteAsync(string id)
         {
-            return Connection.DeleteAsync<object>($"custom-domains/{id}");
+            return Connection.RunAsync<object>(HttpMethod.Delete, $"custom-domains/{id}");
         }
 
         /// <summary>

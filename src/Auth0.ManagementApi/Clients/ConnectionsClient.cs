@@ -40,7 +40,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.DeleteAsync<object>($"connections/{id}");
+            return Connection.RunAsync<object>(HttpMethod.Delete, $"connections/{id}");
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteUserAsync(string id, string email)
         {
-            return Connection.DeleteAsync<object>($"connections/{id}/users", null,
+            return Connection.RunAsync<object>(HttpMethod.Delete, $"connections/{id}/users", queryStrings:
                 new Dictionary<string, string>
                 {
                     {"email", email},

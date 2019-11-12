@@ -43,7 +43,7 @@ namespace Auth0.ManagementApi.Clients
         public Task DeleteEnrollmentAsync(string id)
         {
             return Connection
-                .DeleteAsync<object>(
+                .RunAsync<object>(HttpMethod.Delete,
                 $"guardian/enrollments/{id}");
         }
 
