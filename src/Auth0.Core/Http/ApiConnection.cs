@@ -263,60 +263,6 @@ namespace Auth0.Core.Http
         }
 
         /// <summary>
-        /// Performs an HTTP POST.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="resource">The resource.</param>
-        /// <param name="body">The body.</param>
-        /// <param name="parameters">The parameters.</param>
-        /// <param name="fileParameters">The file parameters.</param>
-        /// <param name="urlSegments">The URL segments.</param>
-        /// <param name="headers">The headers.</param>
-        /// <param name="queryStrings">The query strings.</param>
-        /// <returns>A <see cref="Task{T}"/> that represents the asynchronous Post operation.</returns>
-        public async Task<T> PostAsync<T>(string resource, object body, IDictionary<string, object> parameters,
-            IList<FileUploadParameter> fileParameters, IDictionary<string, string> urlSegments,
-            IDictionary<string, object> headers, IDictionary<string, string> queryStrings) where T : class
-        {
-            return await RunAsync<T>(HttpMethod.Post,
-                resource,
-                body,
-                parameters,
-                fileParameters,
-                urlSegments,
-                headers,
-                queryStrings,
-                null).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Performs an HTTP PUT.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="resource">The resource.</param>
-        /// <param name="body">The body.</param>
-        /// <param name="parameters">The parameters.</param>
-        /// <param name="fileParameters">The file parameters.</param>
-        /// <param name="urlSegments">The URL segments.</param>
-        /// <param name="headers">The headers.</param>
-        /// <param name="queryStrings">The query strings.</param>
-        /// <returns>A <see cref="Task{T}"/> that represents the asynchronous Put operation.</returns>
-        public async Task<T> PutAsync<T>(string resource, object body, IDictionary<string, object> parameters,
-            IList<FileUploadParameter> fileParameters, IDictionary<string, string> urlSegments,
-            IDictionary<string, object> headers, IDictionary<string, string> queryStrings) where T : class
-        {
-            return await RunAsync<T>(HttpMethod.Put,
-                resource,
-                body,
-                parameters,
-                fileParameters,
-                urlSegments,
-                headers,
-                queryStrings,
-                null).ConfigureAwait(false);
-        }
-
-        /// <summary>
         /// Executes the request. All requests will pass through this method as it will apply the headers, do the JSON
         /// formatting, check for errors on return, etc.
         /// </summary>
