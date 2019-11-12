@@ -120,7 +120,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A string containing the message returned from Auth0.</returns>
         public Task<string> ChangePasswordAsync(ChangePasswordRequest request)
         {
-            return Connection.PostAsync<string>("dbconnections/change_password", request, null, null, null, null, null);
+            return Connection.RunAsync<string>(HttpMethod.Post, "dbconnections/change_password", request, null, null, null, null, null);
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A <see cref="Uri"/> which can be used to sign in as the specified user.</returns>
         public async Task<Uri> GetImpersonationUrlAsync(ImpersonationRequest request)
         {
-            string url = await Connection.PostAsync<string>("users/{impersonate_id}/impersonate",
+            string url = await Connection.RunAsync<string>(HttpMethod.Post, "users/{impersonate_id}/impersonate",
                 new
                 {
                     protocol = request.Protocol,
@@ -171,7 +171,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
         public async Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodeTokenRequest request)
         {
-            var response = await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
+            var response = await Connection.RunAsync<AccessTokenResponse>(HttpMethod.Post, "oauth/token", null, new Dictionary<string, object>
             {
                 {"grant_type", "authorization_code"},
                 {"client_id", request.ClientId},
@@ -197,7 +197,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
         public async Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodePkceTokenRequest request)
         {
-            var response = await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
+            var response = await Connection.RunAsync<AccessTokenResponse>(HttpMethod.Post, "oauth/token", null, new Dictionary<string, object>
             {
                 {"grant_type", "authorization_code"},
                 {"client_id", request.ClientId},
@@ -223,7 +223,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
         public Task<AccessTokenResponse> GetTokenAsync(ClientCredentialsTokenRequest request)
         {
-            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
+            return Connection.RunAsync<AccessTokenResponse>(HttpMethod.Post, "oauth/token", null, new Dictionary<string, object>
                 {
                     {"grant_type", "client_credentials"},
                     {"client_id", request.ClientId},
@@ -259,7 +259,7 @@ namespace Auth0.AuthenticationApi
             {
                 parameters.Add("scope", request.Scope);
             }
-            var response = await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, null, null).ConfigureAwait(false);
+            var response = await Connection.RunAsync<AccessTokenResponse>(HttpMethod.Post, "oauth/token", null, parameters, null, null, null, null).ConfigureAwait(false);
             
             IdentityTokenValidator validator = new IdentityTokenValidator();
             await validator.ValidateInternal(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
@@ -312,7 +312,7 @@ namespace Auth0.AuthenticationApi
                 headers.Add("auth0-forwarded-for", request.ForwardedForIp);
             }
 
-            var response = await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, headers, null).ConfigureAwait(false);
+            var response = await Connection.RunAsync<AccessTokenResponse>(HttpMethod.Post, "oauth/token", null, parameters, null, null, headers, null).ConfigureAwait(false);
             
             IdentityTokenValidator validator = new IdentityTokenValidator();
             await validator.ValidateInternal(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
@@ -361,7 +361,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A <see cref="SignupUserResponse" /> with the information of the signed up user.</returns>
         public Task<SignupUserResponse> SignupUserAsync(SignupUserRequest request)
         {
-            return Connection.PostAsync<SignupUserResponse>("dbconnections/signup", request, null, null, null, null, null);
+            return Connection.RunAsync<SignupUserResponse>(HttpMethod.Post, "dbconnections/signup", request, null, null, null, null, null);
         }
 
         /// <summary>
@@ -371,7 +371,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A <see cref="PasswordlessEmailResponse" /> containing the response.</returns>
         public Task<PasswordlessEmailResponse> StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest request)
         {
-            return Connection.PostAsync<PasswordlessEmailResponse>("passwordless/start",
+            return Connection.RunAsync<PasswordlessEmailResponse>(HttpMethod.Post, "passwordless/start",
                 new
                 {
                     client_id = request.ClientId,
@@ -390,7 +390,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A <see cref="PasswordlessSmsResponse" /> containing the response.</returns>
         public Task<PasswordlessSmsResponse> StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest request)
         {
-            return Connection.PostAsync<PasswordlessSmsResponse>("passwordless/start",
+            return Connection.RunAsync<PasswordlessSmsResponse>(HttpMethod.Post, "passwordless/start",
                 new
                 {
                     client_id = request.ClientId,
@@ -407,7 +407,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A <see cref="Task"/> that represents the asynchronous unlink operation.</returns>
         public async Task UnlinkUserAsync(UnlinkUserRequest request)
         {
-            await Connection.PostAsync<object>("unlink", request, null, null, null, null, null).ConfigureAwait(false);
+            await Connection.RunAsync<object>(HttpMethod.Post, "unlink", request, null, null, null, null, null).ConfigureAwait(false);
         }
 
         /// <summary>

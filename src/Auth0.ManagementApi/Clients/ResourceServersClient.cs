@@ -3,6 +3,7 @@ using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Serialization;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -27,7 +28,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="ResourceServer"/>.</returns>
         public Task<ResourceServer> CreateAsync(ResourceServerCreateRequest request)
         {
-            return Connection.PostAsync<ResourceServer>("resource-servers", request, null, null, null, null, null);
+            return Connection.RunAsync<ResourceServer>(HttpMethod.Post, "resource-servers", request, null, null, null, null, null);
         }
 
         /// <summary>

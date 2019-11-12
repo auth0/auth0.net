@@ -4,6 +4,7 @@ using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Serialization;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -29,7 +30,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The new <see cref="ClientGrant"/> that has been created.</returns>
         public Task<ClientGrant> CreateAsync(ClientGrantCreateRequest request)
         {
-            return Connection.PostAsync<ClientGrant>("client-grants", request, null, null, null, null, null);
+            return Connection.RunAsync<ClientGrant>(HttpMethod.Post, "client-grants", request, null, null, null, null, null);
         }
 
         /// <summary>

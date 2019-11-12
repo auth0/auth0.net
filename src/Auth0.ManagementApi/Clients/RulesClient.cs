@@ -4,6 +4,7 @@ using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Serialization;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -29,7 +30,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="Rule" />.</returns>
         public Task<Rule> CreateAsync(RuleCreateRequest request)
         {
-            return Connection.PostAsync<Rule>("rules", request, null, null, null, null, null);
+            return Connection.RunAsync<Rule>(HttpMethod.Post, "rules", request, null, null, null, null, null);
         }
 
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -25,7 +26,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="Ticket"/>.</returns>
         public Task<Ticket> CreateEmailVerificationTicketAsync(EmailVerificationTicketRequest request)
         {
-            return Connection.PostAsync<Ticket>("tickets/email-verification", request, null, null, null, null, null);
+            return Connection.RunAsync<Ticket>(HttpMethod.Post, "tickets/email-verification", request, null, null, null, null, null);
         }
 
         /// <summary>
@@ -35,7 +36,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="Ticket"/>.</returns>
         public Task<Ticket> CreatePasswordChangeTicketAsync(PasswordChangeTicketRequest request)
         {
-            return Connection.PostAsync<Ticket>("tickets/password-change", request, null, null, null, null, null);
+            return Connection.RunAsync<Ticket>(HttpMethod.Post, "tickets/password-change", request, null, null, null, null, null);
         }
     }
 }

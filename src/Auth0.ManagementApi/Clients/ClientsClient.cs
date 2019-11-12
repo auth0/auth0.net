@@ -5,6 +5,7 @@ using Auth0.ManagementApi.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
@@ -32,7 +33,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The new <see cref="Client"/> that has been created.</returns>
         public Task<Client> CreateAsync(ClientCreateRequest request)
         {
-            return Connection.PostAsync<Client>("clients", request, null, null, null, null, null);
+            return Connection.RunAsync<Client>(HttpMethod.Post, "clients", request, null, null, null, null, null);
         }
 
         /// <summary>
@@ -115,7 +116,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Client"/> that has had its secret rotated.</returns>
         public Task<Client> RotateClientSecret(string id)
         {
-            return Connection.PostAsync<Client>("clients/{id}/rotate-secret", null, null, null, 
+            return Connection.RunAsync<Client>(HttpMethod.Post, "clients/{id}/rotate-secret", null, null, null, 
                 new Dictionary<string, string>
                 {
                     {"id", id}

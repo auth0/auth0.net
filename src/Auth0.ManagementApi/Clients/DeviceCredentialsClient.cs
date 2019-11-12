@@ -1,6 +1,7 @@
 ﻿using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -48,7 +49,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="DeviceCredential"/>.</returns>
         public Task<DeviceCredential> CreateAsync(DeviceCredentialCreateRequest request)
         {
-            return Connection.PostAsync<DeviceCredential>("device-credentials", request, null, null, null, null, null);
+            return Connection.RunAsync<DeviceCredential>(HttpMethod.Post, "device-credentials", request, null, null, null, null, null);
         }
 
         /// <summary>

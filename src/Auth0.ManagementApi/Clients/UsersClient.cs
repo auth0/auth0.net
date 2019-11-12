@@ -4,6 +4,7 @@ using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Serialization;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -30,7 +31,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous assign operation.</returns>
         public Task AssignRolesAsync(string id, AssignRolesRequest request)
         {
-            return Connection.PostAsync<AssignRolesRequest>("users/{id}/roles", request, null, null,
+            return Connection.RunAsync<AssignRolesRequest>(HttpMethod.Post, "users/{id}/roles", request, null, null,
                 new Dictionary<string, string>
                 {
                     {"id", id},
@@ -44,7 +45,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="User"/>.</returns>
         public Task<User> CreateAsync(UserCreateRequest request)
         {
-            return Connection.PostAsync<User>("users", request, null, null, null, null, null);
+            return Connection.RunAsync<User>(HttpMethod.Post, "users", request, null, null, null, null, null);
         }
 
         /// <summary>
@@ -225,7 +226,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A Task representing the operation and potential return value.</returns>
         public Task InvalidateRememberBrowserAsync(string id)
         {
-            return Connection.PostAsync<object>("users/{id}/multifactor/actions/invalidate-remember-browser", null, null, null,
+            return Connection.RunAsync<object>(HttpMethod.Post, "users/{id}/multifactor/actions/invalidate-remember-browser", null, null, null,
                 new Dictionary<string, string>
                 {
                     {"id", id}
@@ -239,7 +240,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A Task representing the operation and potential return value.</returns>
         public Task<GenerateRecoveryCodeResponse> GenerateRecoveryCodeAsync(string id)
         {
-            return Connection.PostAsync<GenerateRecoveryCodeResponse>("users/{id}/recovery-code-regeneration", null, null, null,
+            return Connection.RunAsync<GenerateRecoveryCodeResponse>(HttpMethod.Post, "users/{id}/recovery-code-regeneration", null, null, null,
                 new Dictionary<string, string>
                 {
                     {"id", id}
@@ -254,7 +255,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="IList{AccountLinkResponse}"/> containing details about this account link.</returns>
         public Task<IList<AccountLinkResponse>> LinkAccountAsync(string id, UserAccountLinkRequest request)
         {
-            return Connection.PostAsync<IList<AccountLinkResponse>>("users/{id}/identities", request, null, null, 
+            return Connection.RunAsync<IList<AccountLinkResponse>>(HttpMethod.Post, "users/{id}/identities", request, null, null, 
                 new Dictionary<string, string>
                 {
                     {"id", id}
@@ -275,7 +276,7 @@ namespace Auth0.ManagementApi.Clients
                 LinkWith = secondaryJwtToken
             };
 
-            return Connection.PostAsync<IList<AccountLinkResponse>>("users/{id}/identities", request, null, null, new Dictionary<string, string>
+            return Connection.RunAsync<IList<AccountLinkResponse>>(HttpMethod.Post, "users/{id}/identities", request, null, null, new Dictionary<string, string>
             {
                 {"id", id}
             }, new Dictionary<string, object>
@@ -359,7 +360,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous assignment operation.</returns>
         public Task AssignPermissionsAsync(string id, AssignPermissionsRequest request)
         {
-            return Connection.PostAsync<object>("users/{id}/permissions", request, null, null,
+            return Connection.RunAsync<object>(HttpMethod.Post, "users/{id}/permissions", request, null, null,
                 new Dictionary<string, string> { { "id", id }, }, null, null);
         }
 

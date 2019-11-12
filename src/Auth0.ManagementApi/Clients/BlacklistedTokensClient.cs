@@ -1,6 +1,7 @@
 ﻿using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -40,7 +41,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous create operation.</returns>
         public Task CreateAsync(BlacklistedTokenCreateRequest request)
         {
-            return Connection.PostAsync<Client>("blacklists/tokens", request, null, null, null, null, null);
+            return Connection.RunAsync<Client>(HttpMethod.Post, "blacklists/tokens", request, null, null, null, null, null);
         }
     }
 }

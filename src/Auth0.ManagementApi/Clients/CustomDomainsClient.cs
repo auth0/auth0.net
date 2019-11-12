@@ -1,6 +1,7 @@
 ﻿using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -27,7 +28,7 @@ namespace Auth0.ManagementApi.Clients
         /// <remarks>The custom domain will need to be verified before it starts accepting requests.</remarks>
         public Task<CustomDomain> CreateAsync(CustomDomainCreateRequest request)
         {
-            return Connection.PostAsync<CustomDomain>("custom-domains", request, null, null, null, null, null);
+            return Connection.RunAsync<CustomDomain>(HttpMethod.Post, "custom-domains", request, null, null, null, null, null);
         }
 
         /// <summary>
@@ -76,7 +77,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="CustomDomainVerification"/> that was requested.</returns>
         public Task<CustomDomainVerificationResponse> VerifyAsync(string id)
         {
-            return Connection.PostAsync<CustomDomainVerificationResponse>("custom-domains/{id}/verify", null, null, null, 
+            return Connection.RunAsync<CustomDomainVerificationResponse>(HttpMethod.Post, "custom-domains/{id}/verify", null, null, null, 
                 new Dictionary<string, string>
                 {
                     {"id", id}

@@ -2,6 +2,7 @@
 using Auth0.ManagementApi.Models;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -69,7 +70,7 @@ namespace Auth0.ManagementApi.Clients
                 }
             };
 
-            return Connection.PostAsync<Job>("jobs/users-imports", null, parameters, fileParameters, null, null, null);
+            return Connection.RunAsync<Job>(HttpMethod.Post, "jobs/users-imports", null, parameters, fileParameters, null, null, null);
         }
 
         /// <summary>
@@ -79,7 +80,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
         public Task<Job> SendVerificationEmailAsync(VerifyEmailJobRequest request)
         {
-            return Connection.PostAsync<Job>("jobs/verification-email", request, null, null, null, null, null);
+            return Connection.RunAsync<Job>(HttpMethod.Post, "jobs/verification-email", request, null, null, null, null, null);
         }
     }
 }

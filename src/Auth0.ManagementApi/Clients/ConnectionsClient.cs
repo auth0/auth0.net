@@ -4,6 +4,7 @@ using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Serialization;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -29,7 +30,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Connection"/> containing the newly created Connection.</returns>
         public Task<Connection> CreateAsync(ConnectionCreateRequest request)
         {
-            return Connection.PostAsync<Connection>("connections", request, null, null, null, null, null);
+            return Connection.RunAsync<Connection>(HttpMethod.Post, "connections", request, null, null, null, null, null);
         }
 
         /// <summary>

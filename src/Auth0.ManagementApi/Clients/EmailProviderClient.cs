@@ -1,6 +1,7 @@
 ﻿using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -29,7 +30,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="EmailProvider" /> instance containing the email provider details.</returns>
         public Task<EmailProvider> ConfigureAsync(EmailProviderConfigureRequest request)
         {
-            return Connection.PostAsync<EmailProvider>("emails/provider", request, null, null, null, null, null);
+            return Connection.RunAsync<EmailProvider>(HttpMethod.Post, "emails/provider", request, null, null, null, null, null);
         }
 
         /// <summary>

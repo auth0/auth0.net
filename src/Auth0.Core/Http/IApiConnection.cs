@@ -65,22 +65,6 @@ namespace Auth0.Core.Http
         /// <returns>Task&lt;T&gt;.</returns>
         Task<T> PatchAsync<T>(string resource, object body, Dictionary<string, string> urlSegments) where T : class;
 
-        /// <summary>
-        /// Performs an HTTP POST.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="resource">The resource.</param>
-        /// <param name="body">The body.</param>
-        /// <param name="parameters">The parameters.</param>
-        /// <param name="fileParameters">The file parameters.</param>
-        /// <param name="urlSegments">The URL segments.</param>
-        /// <param name="headers">The headers.</param>
-        /// <param name="queryStrings">The query strings.</param>
-        /// <returns>Task&lt;T&gt;.</returns>
-        Task<T> PostAsync<T>(string resource, object body, IDictionary<string, object> parameters,
-            IList<FileUploadParameter> fileParameters, IDictionary<string, string> urlSegments,
-            IDictionary<string, object> headers, IDictionary<string, string> queryStrings) where T : class;
-
         Task<T> RunAsync<T>(HttpMethod httpMethod,
             string resource,
             object body,

@@ -4,6 +4,7 @@ using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Serialization;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -29,7 +30,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="Role" />.</returns>
         public Task<Role> CreateAsync(RoleCreateRequest request)
         {
-            return Connection.PostAsync<Role>("roles", request, null, null, null, null, null);
+            return Connection.RunAsync<Role>(HttpMethod.Post, "roles", request, null, null, null, null, null);
         }
 
         /// <summary>
@@ -156,7 +157,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous assign operation.</returns>
         public Task AssignUsersAsync(string id, AssignUsersRequest request)
         {
-            return Connection.PostAsync<AssignUsersRequest>("roles/{id}/users", request, null, null,
+            return Connection.RunAsync<AssignUsersRequest>(HttpMethod.Post, "roles/{id}/users", request, null, null,
                 new Dictionary<string, string>
                 {
                     {"id", id},
@@ -192,7 +193,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous assignment operation.</returns>
         public Task AssignPermissionsAsync(string id, AssignPermissionsRequest request)
         {
-            return Connection.PostAsync<object>("roles/{id}/permissions", request, null, null,
+            return Connection.RunAsync<object>(HttpMethod.Post, "roles/{id}/permissions", request, null, null,
                 new Dictionary<string, string> { { "id", id}, }, null, null);
         }
 
