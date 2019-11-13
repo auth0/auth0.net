@@ -180,7 +180,7 @@ public async Task<IActionResult> Get() {
 }
 ```
 
-ManagementApiClient and AuthenticationApiClient can still be disposed using this pattern and will dispose of the ApiConnection. 
+`ManagementApiClient` and `AuthenticationApiClient` can still be disposed using this pattern and will dispose of the `ApiConnection`. 
 The ApiConnection is smart enough to know not to dispose `HttpClient` instances it did not create and thus will share the HttpClient succesfully.
 
 ## Advanced Scenarios
