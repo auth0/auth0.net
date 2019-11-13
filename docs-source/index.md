@@ -155,7 +155,7 @@ var allClients = await apiClient.Clients.GetAllAsync();
 
 While the client opjects are lightweight to instantiate by default they create their own ApiConnection object which creates it's own HttpClient.  In order to best utilize HTTP connections the HttpClient should be shared as much as possible so it can perform the necessary thread-pooling.
 
-If for some reason you can not share `ManagementApiClient` or `AuthenticationApi` you should at least create a shared `HttpClient` (perhaps through `ServiceContainer`) and pass that through to their constructors. 
+If for some reason you cannot share `ManagementApiClient` or `AuthenticationApi`, you should create a shared `HttpClient` (perhaps through `ServiceContainer`) and pass that through to their constructors. 
 
 e.g.
 
