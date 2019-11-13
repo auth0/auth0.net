@@ -153,7 +153,7 @@ var allClients = await apiClient.Clients.GetAllAsync();
 
 `ManagementApiClient` and `AuthenticationApiClient` are thread-safe with the exception of the `GetLastApiInfo` method.
 
-While the client opjects are lightweight to instantiate by default they create their own ApiConnection object which creates it's own HttpClient.  In order to best utilize HTTP connections the HttpClient should be shared as much as possible so it can perform the necessary thread-pooling.
+While the client objects are lightweight to instantiate by default they create their own `ApiConnection` object which creates its own `HttpClient`. In order to best utilize HTTP connections, the `HttpClient` should be shared as much as possible so it can perform the necessary thread-pooling.
 
 If for some reason you cannot share `ManagementApiClient` or `AuthenticationApi`, you should create a shared `HttpClient` (perhaps through `ServiceContainer`) and pass that through to their constructors. 
 
