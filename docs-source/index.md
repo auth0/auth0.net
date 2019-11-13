@@ -170,7 +170,7 @@ public void ConfigureServices(IServiceCollection services) {
 
 In your controller:
 
-```
+```csharp
 [HttpGet]
 public async Task<IActionResult> Get() {
   ...
