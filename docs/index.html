@@ -92,7 +92,7 @@
 <p>For more details on the various methods that are available, please refer to the documentation of the <a class="xref" href="api/Auth0.AuthenticationApi.AuthenticationApiClient.html">AuthenticationApiClient</a> class.</p>
 <h3 id="using-url-builders">Using URL Builders</h3>
 <p>Several helper methods are available to allow you to build URLs that you can redirect your user to for example to build up an authorization URL.<br>These methods follow a fluent syntax, meaning that you can keep chaining method calls together to build up the URL.
-Finally, to build the actual URL, you will need to call the <a class="xref" href="api/Auth0.AuthenticationApi.Builders.UrlBuilderBase-1.html#Auth0_AuthenticationApi_Builders_UrlBuilderBase_1_Build">Build()</a> method.</p>
+Finally, to build the actual URL, you will need to call the @Auth0.AuthenticationApi.Builders.UrlBuilderBase.Build method.</p>
 <p>The following are the list of URL builder helper methods:</p>
 <ul>
 <li><a class="xref" href="api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_BuildAuthorizationUrl">BuildAuthorizationUrl()</a></li>
@@ -111,19 +111,18 @@ var authorizationUrl = client.BuildAuthorizationUrl()
     .WithScope(&quot;openid offline_access&quot;)
     .Build();
 </code></pre><p>The sample code above will generate a URL for you to which you can redirect a user. For example, in an ASP.NET MVC Controller Action, you may do the following:</p>
-<pre><code class="lang-csharp">public ActionResult Login()
-{
-    var client = new AuthenticationApiClient(new Uri(&quot;https://YOUR_AUTH0_DOMAIN/&quot;));
+<pre><code class="lang-csharp">public ActionResult Login() {
+  var client = new AuthenticationApiClient(new Uri(&quot;https://YOUR_AUTH0_DOMAIN/&quot;));
 
-    var authorizationUrl = client.BuildAuthorizationUrl()
-        .WithResponseType(AuthorizationResponseType.Code)
-        .WithClient(&quot;abcdef&quot;)
-        .WithConnection(&quot;google-oauth2&quot;)
-        .WithRedirectUrl(&quot;http://www.myapp.com/redirect&quot;)
-        .WithScope(&quot;openid offline_access&quot;)
-        .Build();
+  var authorizationUrl = client.BuildAuthorizationUrl()
+    .WithResponseType(AuthorizationResponseType.Code)
+    .WithClient(&quot;abcdef&quot;)
+    .WithConnection(&quot;google-oauth2&quot;)
+    .WithRedirectUrl(&quot;http://www.myapp.com/redirect&quot;)
+    .WithScope(&quot;openid offline_access&quot;)
+    .Build();
 
-    return Redirect(authorizationUrl);
+  return Redirect(authorizationUrl);
 }
 </code></pre><div class="IMPORTANT"><h5>Important</h5><p>If you choose to use the <a class="xref" href="api/Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a> to construct the authorization URL and implement a login flow callback yourself, it is important to generate and store a state value using <a class="xref" href="api/Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html#Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithState_System_String_">WithState(String)</a> and validate it in your callback URL before calling exchanging the authorization code for the tokens.</p>
 </div>
@@ -150,31 +149,47 @@ var client = new ManagementApiClient(&quot;token&quot;, &quot;YOUR_AUTH0_DOMAIN&
 var apiClient = new ManagementApiClient(&quot;token&quot;, &quot;YOUR_AUTH0_DOMAIN&quot;);
 var allClients = await apiClient.Clients.GetAllAsync();
 </code></pre><h3 id="client-reuse-and-thread-safety">Client reuse and thread safety</h3>
-<p>Neither the <code>ManagementApiClient</code> or the <code>AuthenticationApiClient</code> are threadsafe, as they store the result of the last call to an API (obtainable by the <code>GetLastApiInfo</code> method). It&#39;s ok to reuse them in the same thread to do subsequent calls, but they shouldn&#39;t be created as a singleton instance used across multiple threads. </p>
-<p>Both clients are really lightweight to instantiate, so creating a new instance every time they are needed shouldn&#39;t be a concern.</p>
+<p><code>ManagementApiClient</code> and <code>AuthenticationApiClient</code> are thread-safe with the exception of the <code>GetLastApiInfo</code> method.</p>
+<p>While the client objects are lightweight to instantiate by default they create their own <code>ApiConnection</code> object which creates its own <code>HttpClient</code>. In order to best utilize HTTP connections, the <code>HttpClient</code> should be shared as much as possible so it can perform the necessary thread-pooling.</p>
+<p>If for some reason you cannot share <code>ManagementApiClient</code> or <code>AuthenticationApi</code>, you should create a shared <code>HttpClient</code> (perhaps through <code>ServiceContainer</code>) and pass that through to their constructors. </p>
+<p>e.g.</p>
+<p>In your app start-up:</p>
+<pre><code class="lang-csharp">public void ConfigureServices(IServiceCollection services) {
+    ...
+    services.AddSingleton&lt;HttpClient, HttpClient&gt;();
+}
+</code></pre><p>In your controller:</p>
+<pre><code class="lang-csharp">[HttpGet]
+public async Task&lt;IActionResult&gt; Get() {
+  ...
+  var httpClient = services.Get&lt;HttpClient&gt;();
+  var management = new ManagementApiClient(token, baseUrl, httpClient);
+  ...
+}
+</code></pre><p><code>ManagementApiClient</code> and <code>AuthenticationApiClient</code> can still be disposed using this pattern and will dispose of the <code>ApiConnection</code>. 
+The <code>ApiConnection</code> is smart enough to know not to dispose <code>HttpClient</code> instances it did not create and thus will share the <code>HttpClient</code> successfully.</p>
 <h2 id="advanced-scenarios">Advanced Scenarios</h2>
 <h3 id="using-a-proxy-server">Using a Proxy Server</h3>
 <p>If you need to specify a Proxy Server, you can do so by making use of the <a class="xref" href="api/Auth0.AuthenticationApi.AuthenticationApiClient.html">AuthenticationApiClient</a> or <a class="xref" href="api/Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> constructors which takes an <code>Http​Message​Handler</code> instance, and pass along an instance of <code>HttpClientHandler</code>, specifying the Proxy settings:</p>
 <pre><code class="lang-csharp">var handler = new HttpClientHandler {
-    Proxy = new WebProxy {
-        Credentials = new NetworkCredential(username, password);
-    }
+  Proxy = new WebProxy {
+    Credentials = new NetworkCredential(username, password);
+  }
 };
 var authenticationApiClient = new AuthenticationApiClient(&quot;YOUR_AUTH0_DOMAIN&quot;, handler);
 </code></pre><h3 id="passing-extra-headers">Passing extra headers</h3>
-<p>There are some instances where you may want to pass extra headers with the request, such as the <a href="https://auth0.com/docs/api-auth/tutorials/using-resource-owner-password-from-server-side#sending-the-end-user-ip-from-your-server"><code>auth0-forwarded-for</code> header</a>. You can do so by making use of the <a class="xref" href="api/Auth0.AuthenticationApi.AuthenticationApiClient.html">AuthenticationApiClient</a> or <a class="xref" href="api/Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> constructors which takes an <code>Http​Message​Handler</code> instance, and then creating a class which inherits from <code>Http​Message​Handler</code> which adds the extra headers to all requests.</p>
-<pre><code class="lang-csharp">// Create a new class which inherits from Http​Message​Handler (HttpClientHandler inherits from Http​Message​Handler)
-public class CustomMessageHandler : HttpClientHandler
-{
-    protected override Task&lt;HttpResponseMessage&gt; SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-    {
-        // Add extra header(s) to the request
-        request.Headers.Add(&quot;auth0-forwarded-for&quot;, &quot;189.214.5.210&quot;);        
-        return base.SendAsync(request, cancellationToken);
-    }
+<p>There are some instances where you may want to pass extra headers with the request, such as the <a href="https://auth0.com/docs/api-auth/tutorials/using-resource-owner-password-from-server-side#sending-the-end-user-ip-from-your-server"><code>auth0-forwarded-for</code> header</a>. You can do so by making use of the <a class="xref" href="api/Auth0.AuthenticationApi.AuthenticationApiClient.html">AuthenticationApiClient</a> or <a class="xref" href="api/Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> constructors which takes an <code>HttpMessageHandler</code> instance, and then creating a class which inherits from <code>HttpMessageHandler</code> which adds the extra headers to all requests.</p>
+<pre><code class="lang-csharp">// Create a new class which inherits from HttpMessageHandler (HttpClientHandler inherits from HttpMessageHandler)
+public class CustomMessageHandler : HttpClientHandler {
+  protected override Task&lt;HttpResponseMessage&gt; SendAsync(HttpRequestMessage request, CancellationToken token) {
+    // Add extra header(s) to the request
+    request.Headers.Add(&quot;auth0-forwarded-for&quot;, &quot;189.214.5.210&quot;);        
+    return base.SendAsync(request, cancellationToken);
+  }
 }
 
-// Somewhere else in your application, you can now pass an instance of this class to the constructor of AuthenticationApiClient or ManagementApiClient
+// Somewhere else in your application, you can now pass an instance of this class to
+// the constructor of AuthenticationApiClient or ManagementApiClient
 var authenticationApiClient = new AuthenticationApiClient(&quot;YOUR_AUTH0_DOMAIN&quot;, new CustomMessageHandler());
 </code></pre></article>
           </div>
