@@ -1,7 +1,6 @@
 ﻿using Auth0.AuthenticationApi.Builders;
 using Auth0.AuthenticationApi.Models;
 using Auth0.AuthenticationApi.Tokens;
-using Auth0.Core.Http;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -17,57 +16,31 @@ namespace Auth0.AuthenticationApi
     /// </remarks>
     public class AuthenticationApiClient : IAuthenticationApiClient, IDisposable
     {
-        private readonly Uri _baseUri;
-        private readonly ApiConnection _apiConnection;
-        private bool disposed = false;
+        private readonly Uri baseUri;
+        private readonly IAuthenticationConnection connection;
+        private bool shouldDisposeConnection = false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
         /// </summary>
         /// <param name="baseUri">Your Auth0 domain URI, e.g. https://tenant.auth0.com</param>
-        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests.</param>
-        public AuthenticationApiClient(Uri baseUri, HttpMessageHandler handler = null)
+        /// <param name="connection">Optional <see cref="IAuthenticationConnection"/> used to make API requests.</param>
+        public AuthenticationApiClient(Uri baseUri, IAuthenticationConnection connection = null)
         {
-            _baseUri = baseUri;
-            _apiConnection = new ApiConnection(null, baseUri.AbsoluteUri, handler);
+            this.baseUri = baseUri;
+            this.connection = connection ?? new HttpClientAuthenticationConnection();
+            shouldDisposeConnection = connection == null;
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
         /// </summary>
-        /// <param name="baseUri">Your Auth0 domain URI, e.g. https://tenant.auth0.com</param>
-        /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests.</param>
-        public AuthenticationApiClient(Uri baseUri, HttpClient httpClient)
-        {
-            _baseUri = baseUri;
-            _apiConnection = new ApiConnection(null, baseUri.AbsoluteUri, httpClient);
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
-        /// </summary>
-        /// <param name="domain">Your Auth0 domain, e.g. tenant.auth0.com.</param>
-        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests</param>
-        public AuthenticationApiClient(string domain, HttpMessageHandler handler = null)
-            : this(new Uri($"https://{domain}"), handler)
+        /// <param name="baseUri">Your Auth0 domain name, e.g. tenant.auth0.com</param>
+        /// <param name="connection">Optional <see cref="IAuthenticationConnection"/> used to make API requests.</param>
+        public AuthenticationApiClient(string domain, IAuthenticationConnection connection = null)
+            : this(new Uri($"https://{domain}"), connection)
         {
         }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
-        /// </summary>
-        /// <param name="domain"></param>
-        /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests</param>
-        public AuthenticationApiClient(string domain, HttpClient httpClient)
-            : this(new Uri($"https://{domain}"), httpClient)
-        {
-        }
-
-        /// <summary>
-        /// The <see cref="IApiConnection" /> used to communicate between the client and the Auth0 API.
-        /// </summary>
-        /// <value>The connection.</value>
-        public IApiConnection Connection { get { return _apiConnection; } }
 
         /// <summary>
         /// Creates a <see cref="AuthorizationUrlBuilder" /> which is used to build an authorization URL.
@@ -75,7 +48,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A new <see cref="AuthorizationUrlBuilder" /> instance.</returns>
         public AuthorizationUrlBuilder BuildAuthorizationUrl()
         {
-            return new AuthorizationUrlBuilder(_baseUri.ToString());
+            return new AuthorizationUrlBuilder(baseUri.ToString());
         }
 
         /// <summary>
@@ -84,7 +57,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A new <see cref="LogoutUrlBuilder" /> instance.</returns>
         public LogoutUrlBuilder BuildLogoutUrl()
         {
-            return new LogoutUrlBuilder(_baseUri.ToString());
+            return new LogoutUrlBuilder(baseUri.ToString());
         }
 
         /// <summary>
@@ -94,7 +67,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A new <see cref="SamlUrlBuilder" /> instance.</returns>
         public SamlUrlBuilder BuildSamlUrl(string client)
         {
-            return new SamlUrlBuilder(_baseUri.ToString(), client);
+            return new SamlUrlBuilder(baseUri.ToString(), client);
         }
 
         /// <summary>
@@ -103,7 +76,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>A new <see cref="WsFedUrlBuilder" /> instance.</returns>
         public WsFedUrlBuilder BuildWsFedUrl()
         {
-            return new WsFedUrlBuilder(_baseUri.ToString());
+            return new WsFedUrlBuilder(baseUri.ToString());
         }
 
         /// <summary>
@@ -113,7 +86,10 @@ namespace Auth0.AuthenticationApi
         /// <returns>A string containing the message returned from Auth0.</returns>
         public Task<string> ChangePasswordAsync(ChangePasswordRequest request)
         {
-            return Connection.PostAsync<string>("dbconnections/change_password", request, null, null, null, null, null);
+            return connection.SendAsync<string>(
+                HttpMethod.Post,
+                BuildUri("dbconnections/change_password"),
+                request);
         }
 
         /// <summary>
@@ -123,25 +99,23 @@ namespace Auth0.AuthenticationApi
         /// <returns>A <see cref="Uri"/> which can be used to sign in as the specified user.</returns>
         public async Task<Uri> GetImpersonationUrlAsync(ImpersonationRequest request)
         {
-            string url = await Connection.PostAsync<string>("users/{impersonate_id}/impersonate",
-                new
-                {
-                    protocol = request.Protocol,
-                    impersonator_id = request.ImpersonatorId,
-                    client_id = request.ClientId,
-                    response_type = request.ResponseType,
-                    state = request.State
-                }, null, null,
-                new Dictionary<string, string>
-                {
-                    {"impersonate_id", request.ImpersonateId}
-                },
-                new Dictionary<string, object>
-                {
-                    {"Authorization", $"Bearer {request.Token}"}
-                }, null).ConfigureAwait(false);
+            var body = new
+            {
+                protocol = request.Protocol,
+                impersonator_id = request.ImpersonatorId,
+                client_id = request.ClientId,
+                response_type = request.ResponseType,
+                state = request.State
+            };
 
-            return new Uri(url);
+            var response = await connection.SendAsync<string>(
+                HttpMethod.Post,
+                BuildUri($"users/{request.ImpersonateId}/impersonate"),
+                body,
+                BuildHeaders(request.Token)
+            ).ConfigureAwait(false);
+
+            return new Uri(response);
         }
 
         /// <summary>
@@ -151,10 +125,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>The meta data XML .</returns>
         public Task<string> GetSamlMetadataAsync(string clientId)
         {
-            return Connection.GetAsync<string>("wsfed/{clientid}", new Dictionary<string, string>
-            {
-                {"clientid", clientId}
-            }, null, null);
+            return connection.GetAsync<string>(BuildUri($"wsfed/{clientId}"));
         }
 
         /// <summary>
@@ -164,18 +135,18 @@ namespace Auth0.AuthenticationApi
         /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
         public async Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodeTokenRequest request)
         {
-            var response = await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
-            {
-                {"grant_type", "authorization_code"},
-                {"client_id", request.ClientId},
-                {"client_secret", request.ClientSecret},
-                {"code", request.Code},
-                {"redirect_uri", request.RedirectUri},
-            },
-                null,
-                null,
-                null,
-                null).ConfigureAwait(false);
+            var body = new Dictionary<string, object> {
+                { "grant_type", "authorization_code" },
+                { "client_id", request.ClientId },
+                { "client_secret", request.ClientSecret },
+                { "code", request.Code },
+                { "redirect_uri", request.RedirectUri } };
+
+            var response = await connection.SendAsync<AccessTokenResponse>(
+                HttpMethod.Post,
+                BuildUri("oauth/token"),
+                body
+            ).ConfigureAwait(false);
 
             await AssertIdTokenValid(response.IdToken, request.ClientId);
 
@@ -189,18 +160,18 @@ namespace Auth0.AuthenticationApi
         /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
         public async Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodePkceTokenRequest request)
         {
-            var response = await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
-            {
-                {"grant_type", "authorization_code"},
-                {"client_id", request.ClientId},
-                {"code", request.Code},
-                {"code_verifier", request.CodeVerifier},
-                {"redirect_uri", request.RedirectUri}
-            },
-                null,
-                null,
-                null,
-                null).ConfigureAwait(false);
+            var body = new Dictionary<string, string> {
+                { "grant_type", "authorization_code" },
+                { "client_id", request.ClientId },
+                { "code", request.Code },
+                { "code_verifier", request.CodeVerifier },
+                { "redirect_uri", request.RedirectUri } };
+
+            var response = await connection.SendAsync<AccessTokenResponse>(
+                HttpMethod.Post,
+                BuildUri("oauth/token"),
+                body
+            ).ConfigureAwait(false);
 
             await AssertIdTokenValid(response.IdToken, request.ClientId);
 
@@ -214,17 +185,16 @@ namespace Auth0.AuthenticationApi
         /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
         public Task<AccessTokenResponse> GetTokenAsync(ClientCredentialsTokenRequest request)
         {
-            return Connection.PostAsync<AccessTokenResponse>("oauth/token", null, new Dictionary<string, object>
-                {
-                    {"grant_type", "client_credentials"},
-                    {"client_id", request.ClientId},
-                    {"client_secret", request.ClientSecret},
-                    {"audience", request.Audience}
-                },
-                null,
-                null,
-                null,
-                null);
+            var body = new Dictionary<string, string> {
+                { "grant_type", "client_credentials" },
+                { "client_id", request.ClientId },
+                { "client_secret", request.ClientSecret },
+                { "audience", request.Audience } };
+
+            return connection.SendAsync<AccessTokenResponse>(
+                HttpMethod.Post,
+                BuildUri("oauth/token"),
+                body);
         }
 
         /// <summary>
@@ -234,23 +204,24 @@ namespace Auth0.AuthenticationApi
         /// <returns>The new token issued by the server.</returns>
         public async Task<AccessTokenResponse> GetTokenAsync(RefreshTokenRequest request)
         {
-            var parameters = new Dictionary<string, object> {
+            var body = new Dictionary<string, string> {
                 { "grant_type", "refresh_token" },
-                { "refresh_token", request.RefreshToken },
                 { "client_id", request.ClientId },
-                { "client_secret", request.ClientSecret }
+                { "client_secret", request.ClientSecret },
+                { "refresh_token", request.RefreshToken }
             };
 
             if (!string.IsNullOrEmpty(request.Audience))
-            {
-                parameters.Add("audience", request.Audience);
-            }
+                body.Add("audience", request.Audience);
 
             if (!string.IsNullOrEmpty(request.Scope))
-            {
-                parameters.Add("scope", request.Scope);
-            }
-            var response = await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, null, null).ConfigureAwait(false);
+                body.Add("scope", request.Scope);
+
+            var response = await connection.SendAsync<AccessTokenResponse>(
+                HttpMethod.Post,
+                BuildUri("oauth/token"),
+                body
+            ).ConfigureAwait(false);
 
             await AssertIdTokenValid(response.IdToken, request.ClientId);
 
@@ -268,8 +239,7 @@ namespace Auth0.AuthenticationApi
         /// </remarks>
         public async Task<AccessTokenResponse> GetTokenAsync(ResourceOwnerTokenRequest request)
         {
-            var parameters = new Dictionary<string, object>
-            {
+            var body = new Dictionary<string, string> {
                 { "client_id", request.ClientId },
                 { "username", request.Username },
                 { "password", request.Password },
@@ -277,32 +247,30 @@ namespace Auth0.AuthenticationApi
             };
 
             if (!string.IsNullOrEmpty(request.ClientSecret))
-            {
-                parameters.Add("client_secret", request.ClientSecret);
-            }
+                body.Add("client_secret", request.ClientSecret);
 
             if (!string.IsNullOrEmpty(request.Audience))
-            {
-                parameters.Add("audience", request.Audience);
-            }
+                body.Add("audience", request.Audience);
 
             if (string.IsNullOrEmpty(request.Realm))
             {
-                parameters.Add("grant_type", "password");
+                body.Add("grant_type", "password");
             }
             else
             {
-                parameters.Add("grant_type", "http://auth0.com/oauth/grant-type/password-realm");
-                parameters.Add("realm", request.Realm);
+                body.Add("grant_type", "http://auth0.com/oauth/grant-type/password-realm");
+                body.Add("realm", request.Realm);
             }
 
-            var headers = new Dictionary<string, object>();
-            if (!string.IsNullOrEmpty(request.ForwardedForIp))
-            {
-                headers.Add("auth0-forwarded-for", request.ForwardedForIp);
-            }
+            var headers = string.IsNullOrEmpty(request.ForwardedForIp) ? null
+                : new Dictionary<string, string> { { "auth0-forwarded-for", request.ForwardedForIp } };
 
-            var response = await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, headers, null).ConfigureAwait(false);
+            var response = await connection.SendAsync<AccessTokenResponse>(
+                HttpMethod.Post,
+                BuildUri("oauth/token"),
+                body,
+                headers
+            ).ConfigureAwait(false);
 
             await AssertIdTokenValid(response.IdToken, request.ClientId);
 
@@ -316,10 +284,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>The <see cref="UserInfo"/> associated with the token.</returns>
         public Task<UserInfo> GetUserInfoAsync(string accessToken)
         {
-            return Connection.GetAsync<UserInfo>("userinfo", null, null, new Dictionary<string, object>
-            {
-                {"Authorization", $"Bearer {accessToken}"}
-            });
+            return connection.GetAsync<UserInfo>(BuildUri("userinfo"), BuildHeaders(accessToken));
         }
 
         /// <summary>
@@ -328,7 +293,7 @@ namespace Auth0.AuthenticationApi
         /// <returns>The meta data XML</returns>
         public Task<string> GetWsFedMetadataAsync()
         {
-            return Connection.GetAsync<string>("wsfed/FederationMetadata/2007-06/FederationMetadata.xml", null, null, null);
+            return connection.GetAsync<string>(BuildUri("wsfed/FederationMetadata/2007-06/FederationMetadata.xml"));
         }
 
         /// <summary>
@@ -338,7 +303,10 @@ namespace Auth0.AuthenticationApi
         /// <returns>A <see cref="SignupUserResponse" /> with the information of the signed up user.</returns>
         public Task<SignupUserResponse> SignupUserAsync(SignupUserRequest request)
         {
-            return Connection.PostAsync<SignupUserResponse>("dbconnections/signup", request, null, null, null, null, null);
+            return connection.SendAsync<SignupUserResponse>(
+                HttpMethod.Post,
+                BuildUri("dbconnections/signup"),
+                request);
         }
 
         /// <summary>
@@ -348,16 +316,19 @@ namespace Auth0.AuthenticationApi
         /// <returns>A <see cref="PasswordlessEmailResponse" /> containing the response.</returns>
         public Task<PasswordlessEmailResponse> StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest request)
         {
-            return Connection.PostAsync<PasswordlessEmailResponse>("passwordless/start",
-                new
-                {
-                    client_id = request.ClientId,
-                    connection = "email",
-                    email = request.Email,
-                    send = request.Type.ToString().ToLower(),
-                    authParams = request.AuthenticationParameters
-                },
-                null, null, null, null, null);
+            var body = new
+            {
+                client_id = request.ClientId,
+                connection = "email",
+                email = request.Email,
+                send = request.Type.ToString().ToLower(),
+                authParams = request.AuthenticationParameters
+            };
+
+            return connection.SendAsync<PasswordlessEmailResponse>(
+                HttpMethod.Post,
+                BuildUri("passwordless/start"),
+                body);
         }
 
         /// <summary>
@@ -367,14 +338,17 @@ namespace Auth0.AuthenticationApi
         /// <returns>A <see cref="PasswordlessSmsResponse" /> containing the response.</returns>
         public Task<PasswordlessSmsResponse> StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest request)
         {
-            return Connection.PostAsync<PasswordlessSmsResponse>("passwordless/start",
-                new
-                {
-                    client_id = request.ClientId,
-                    connection = "sms",
-                    phone_number = request.PhoneNumber
-                },
-                null, null, null, null, null);
+            var body = new
+            {
+                client_id = request.ClientId,
+                connection = "sms",
+                phone_number = request.PhoneNumber
+            };
+
+            return connection.SendAsync<PasswordlessSmsResponse>(
+                HttpMethod.Post,
+                BuildUri("passwordless/start"),
+                body);
         }
 
         /// <summary>
@@ -382,26 +356,26 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <param name="request">The <see cref="UnlinkUserRequest"/> containing the information of the accounts to unlink.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous unlink operation.</returns>
-        public async Task UnlinkUserAsync(UnlinkUserRequest request)
+        public Task UnlinkUserAsync(UnlinkUserRequest request)
         {
-            await Connection.PostAsync<object>("unlink", request, null, null, null, null, null).ConfigureAwait(false);
+            return connection.SendAsync<object>(HttpMethod.Post, BuildUri("unlink"), request);
         }
 
         /// <summary>
-        /// Disposes of any owned disposable resources such as the ApiConnection.
+        /// Disposes of any owned disposable resources.
         /// </summary>
         /// <param name="disposing">Whether we are actually disposing (<see langword="true"/>) or not (<see langword="false")/>.</param>
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposed && disposing)
+            if (disposing && shouldDisposeConnection)
             {
-                _apiConnection.Dispose();
-                disposed = true;
+                ((IDisposable)connection).Dispose();
+                shouldDisposeConnection = false;
             }
         }
 
         /// <summary>
-        /// Disposes of any owned disposable resources such as the ApiConnection.
+        /// Disposes of any owned disposable resources.
         /// </summary>
         public void Dispose()
         {
@@ -410,8 +384,18 @@ namespace Auth0.AuthenticationApi
 
         private async Task AssertIdTokenValid(string idToken, string issuer)
         {
-            var requirements = new IdTokenRequirements(_baseUri.AbsoluteUri, issuer, TimeSpan.FromMinutes(1));
+            var requirements = new IdTokenRequirements(baseUri.AbsoluteUri, issuer, TimeSpan.FromMinutes(1));
             await requirements.AssertTokenMeetsRequirements(idToken);
+        }
+        
+        private Uri BuildUri(string path)
+        {
+            return new UriBuilder(baseUri) { Path = path }.Uri;
+        }
+
+        private IDictionary<string, string> BuildHeaders(string accessToken)
+        {
+            return new Dictionary<string, string> { { "Authorization", "Bearer " + accessToken } };
         }
     }
 }

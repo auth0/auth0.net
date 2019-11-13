@@ -101,6 +101,5 @@ namespace Auth0.Core.Http
             }
             return uri;
         }
-
     }
 }

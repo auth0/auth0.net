@@ -16,8 +16,8 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Initializes a new instance of the <see cref="RolesClient"/> class.
         /// </summary>
-        /// <param name="connection">The <see cref="ApiConnection"/> to use.</param>
-        public RolesClient(ApiConnection connection)
+        /// <param name="connection">The <see cref="IApiConnection"/> to use.</param>
+        public RolesClient(IApiConnection connection)
             : base(connection)
         {
         }

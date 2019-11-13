@@ -1,6 +1,8 @@
 ﻿using Auth0.Core.Serialization;
 using Newtonsoft.Json;
 using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Auth0.Core
 {
@@ -28,21 +30,25 @@ namespace Auth0.Core
         [JsonProperty("message")]
         public string Message { get; set; }
 
-        public static ApiError ParseOrDefault(string responseContent)
+        public static async Task<ApiError> Parse(HttpResponseMessage response)
         {
-            if (String.IsNullOrEmpty(responseContent))
-                return default;
+            if (response.Content == null)
+                return null;
+
+            var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            if (string.IsNullOrEmpty(content))
+                return null;
 
             try
             {
-                return JsonConvert.DeserializeObject<ApiError>(responseContent);
+                return JsonConvert.DeserializeObject<ApiError>(content);
             }
             catch (Exception)
             {
                 return new ApiError
                 {
-                    Error = responseContent,
-                    Message = responseContent
+                    Error = content,
+                    Message = content
                 };
             }
         }

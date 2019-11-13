@@ -1,5 +1,4 @@
-﻿using Auth0.Core.Http;
-using Auth0.ManagementApi.Clients;
+﻿using Auth0.ManagementApi.Clients;
 using System;
 using System.Net.Http;
 
@@ -10,8 +9,7 @@ namespace Auth0.ManagementApi
     /// </summary>
     public class ManagementApiClient : IDisposable
     {
-        private readonly ApiConnection _apiConnection;
-        private bool disposed;
+        private readonly IDisposable connectionToDispose;
 
         /// <summary>
         /// Contains all the methods to call the /blacklists/tokens endpoints.
@@ -109,61 +107,43 @@ namespace Auth0.ManagementApi
         /// </summary>
         public UsersClient Users { get; }
 
-        private ManagementApiClient(ApiConnection apiConnection)
-        {
-            _apiConnection = apiConnection;
-
-            BlacklistedTokens = new BlacklistedTokensClient(_apiConnection);
-            ClientGrants = new ClientGrantsClient(_apiConnection);
-            Clients = new ClientsClient(_apiConnection);
-            Connections = new ConnectionsClient(_apiConnection);
-            CustomDomains = new CustomDomainsClient(_apiConnection);
-            DeviceCredentials = new DeviceCredentialsClient(_apiConnection);
-            EmailProvider = new EmailProviderClient(_apiConnection);
-            EmailTemplates = new EmailTemplatesClient(_apiConnection);
-            Guardian = new GuardianClient(_apiConnection);
-            Jobs = new JobsClient(_apiConnection);
-            Logs = new LogsClient(_apiConnection);
-            ResourceServers = new ResourceServersClient(_apiConnection);
-            Roles = new RolesClient(_apiConnection);
-            Rules = new RulesClient(_apiConnection);
-            Stats = new StatsClient(_apiConnection);
-            TenantSettings = new TenantSettingsClient(_apiConnection);
-            Tickets = new TicketsClient(_apiConnection);
-            UserBlocks = new UserBlocksClient(_apiConnection);
-            Users = new UsersClient(_apiConnection);
-        }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
         /// </summary>
         /// <param name="token">A valid Auth0 Management API v2 token.</param>
         /// <param name="baseUrl">The URL of the tenant to manage.</param>
         /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests.</param>
-        public ManagementApiClient(string token, Uri baseUri, HttpMessageHandler handler)
-            : this(new ApiConnection(token, baseUri.AbsoluteUri, handler))
+        public ManagementApiClient(string token, Uri baseUri, IManagementConnection managementConnection = null)
         {
-        }
+            if (managementConnection == null)
+            {
+                var ownedManagementConnection = new HttpClientManagementConnection();
+                managementConnection = ownedManagementConnection;
+                connectionToDispose = ownedManagementConnection;
+            }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
-        /// </summary>
-        /// <param name="token">A valid Auth0 Management API v2 token.</param>
-        /// <param name="baseUrl">The URL of the tenant to manage.</param>
-        /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests.</param>
-        public ManagementApiClient(string token, Uri baseUri, HttpClient httpClient)
-            : this(new ApiConnection(token, baseUri.AbsoluteUri, httpClient))
-        {
-        }
+            // Ideally this wouldn't exist but it's a lot of internal code to change that is fragile
+            var bridge = new ApiConnectionBridge(token, baseUri.OriginalString, managementConnection);
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
-        /// </summary>
-        /// <param name="token">A valid Auth0 Management API v2 token.</param>
-        /// <param name="baseUrl">The URL of the tenant to manage.</param>
-        public ManagementApiClient(string token, Uri baseUri)
-            : this(token, baseUri, (HttpMessageHandler)null)
-        {
+            BlacklistedTokens = new BlacklistedTokensClient(bridge);
+            ClientGrants = new ClientGrantsClient(bridge);
+            Clients = new ClientsClient(bridge);
+            Connections = new ConnectionsClient(bridge);
+            CustomDomains = new CustomDomainsClient(bridge);
+            DeviceCredentials = new DeviceCredentialsClient(bridge);
+            EmailProvider = new EmailProviderClient(bridge);
+            EmailTemplates = new EmailTemplatesClient(bridge);
+            Guardian = new GuardianClient(bridge);
+            Jobs = new JobsClient(bridge);
+            Logs = new LogsClient(bridge);
+            ResourceServers = new ResourceServersClient(bridge);
+            Roles = new RolesClient(bridge);
+            Rules = new RulesClient(bridge);
+            Stats = new StatsClient(bridge);
+            TenantSettings = new TenantSettingsClient(bridge);
+            Tickets = new TicketsClient(bridge);
+            UserBlocks = new UserBlocksClient(bridge);
+            Users = new UsersClient(bridge);
         }
 
         /// <summary>
@@ -171,48 +151,26 @@ namespace Auth0.ManagementApi
         /// </summary>
         /// <param name="token">A valid Auth0 Management API v2 token.</param>
         /// <param name="domain">Your Auth0 domain. <example>tenant.auth0.com</example></param>
-        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests.</param>
-        public ManagementApiClient(string token, string domain, HttpMessageHandler handler)
-            : this(token, new Uri($"https://{domain}/api/v2"), handler)
+        /// <param name="connection"></param>
+        public ManagementApiClient(string token, string domain, IManagementConnection connection = null)
+            : this(token, new Uri($"https://{domain}/api/v2"), connection)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
-        /// </summary>
-        /// <param name="token">A valid Auth0 Management API v2 token.</param>
-        /// <param name="domain">Your Auth0 domain. <example>tenant.auth0.com</example></param>
-        /// <param name="httpClient">The <see cref="HttpClient"/> which is used for HTTP requests.</param>
-        public ManagementApiClient(string token, string domain, HttpClient httpClient)
-            : this(token, new Uri($"https://{domain}/api/v2"), httpClient)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
-        /// </summary>
-        /// <param name="token">The token.</param>
-        /// <param name="domain">Your Auth0 domain, e.g. tenant.auth0.com.</param>
-        public ManagementApiClient(string token, string domain)
-            : this(token, new Uri($"https://{domain}/api/v2"), (HttpMessageHandler)null)
-        {
-        }
-
-        /// <summary>
-        /// Disposes of any owned disposable resources such as the ApiConnection.
+        /// Disposes of any owned disposable resources.
         /// </summary>
         /// <param name="disposing">Whether we are actually disposing (<see langword="true"/>) or not (<see langword="false")/>.</param>
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposed && disposing)
+            if (disposing && connectionToDispose != null)
             {
-                _apiConnection.Dispose();
-                disposed = true;
+                connectionToDispose.Dispose();
             }
         }
 
         /// <summary>
-        /// Disposes of any owned disposable resources such as the ApiConnection.
+        /// Disposes of any owned disposable resources.
         /// </summary>
         public void Dispose()
         {
