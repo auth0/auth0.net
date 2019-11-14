@@ -128,6 +128,12 @@ references:
   commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.Dispose
   fullName: Auth0.AuthenticationApi.AuthenticationApiClient.Dispose()
   nameWithType: AuthenticationApiClient.Dispose()
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.Dispose(System.Boolean)
+  name: Dispose(Boolean)
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_Dispose_System_Boolean_
+  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.Dispose(System.Boolean)
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.Dispose(System.Boolean)
+  nameWithType: AuthenticationApiClient.Dispose(Boolean)
 - uid: Auth0.AuthenticationApi.AuthenticationApiClient.Dispose*
   name: Dispose
   href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_Dispose_
@@ -783,12 +789,24 @@ references:
   commentId: T:Auth0.AuthenticationApi.Exceptions.IdentityTokenValidationException
   fullName: Auth0.AuthenticationApi.Exceptions.IdentityTokenValidationException
   nameWithType: IdentityTokenValidationException
+- uid: Auth0.AuthenticationApi.Exceptions.IdentityTokenValidationException.#ctor
+  name: IdentityTokenValidationException()
+  href: api/Auth0.AuthenticationApi.Exceptions.IdentityTokenValidationException.html#Auth0_AuthenticationApi_Exceptions_IdentityTokenValidationException__ctor
+  commentId: M:Auth0.AuthenticationApi.Exceptions.IdentityTokenValidationException.#ctor
+  fullName: Auth0.AuthenticationApi.Exceptions.IdentityTokenValidationException.IdentityTokenValidationException()
+  nameWithType: IdentityTokenValidationException.IdentityTokenValidationException()
 - uid: Auth0.AuthenticationApi.Exceptions.IdentityTokenValidationException.#ctor(System.String)
   name: IdentityTokenValidationException(String)
   href: api/Auth0.AuthenticationApi.Exceptions.IdentityTokenValidationException.html#Auth0_AuthenticationApi_Exceptions_IdentityTokenValidationException__ctor_System_String_
   commentId: M:Auth0.AuthenticationApi.Exceptions.IdentityTokenValidationException.#ctor(System.String)
   fullName: Auth0.AuthenticationApi.Exceptions.IdentityTokenValidationException.IdentityTokenValidationException(System.String)
   nameWithType: IdentityTokenValidationException.IdentityTokenValidationException(String)
+- uid: Auth0.AuthenticationApi.Exceptions.IdentityTokenValidationException.#ctor(System.String,Exception)
+  name: IdentityTokenValidationException(String, Exception)
+  href: api/Auth0.AuthenticationApi.Exceptions.IdentityTokenValidationException.html#Auth0_AuthenticationApi_Exceptions_IdentityTokenValidationException__ctor_System_String_Exception_
+  commentId: M:Auth0.AuthenticationApi.Exceptions.IdentityTokenValidationException.#ctor(System.String,Exception)
+  fullName: Auth0.AuthenticationApi.Exceptions.IdentityTokenValidationException.IdentityTokenValidationException(System.String, Exception)
+  nameWithType: IdentityTokenValidationException.IdentityTokenValidationException(String, Exception)
 - uid: Auth0.AuthenticationApi.Exceptions.IdentityTokenValidationException.#ctor*
   name: IdentityTokenValidationException
   href: api/Auth0.AuthenticationApi.Exceptions.IdentityTokenValidationException.html#Auth0_AuthenticationApi_Exceptions_IdentityTokenValidationException__ctor_
@@ -2478,76 +2496,6 @@ references:
   fullName.vb: Auth0.Core.Collections.PagedList(Of T).Paging
   nameWithType: PagedList<T>.Paging
   nameWithType.vb: PagedList(Of T).Paging
-- uid: Auth0.Core.DelegatedIdToken
-  name: DelegatedIdToken
-  href: api/Auth0.Core.DelegatedIdToken.html
-  commentId: T:Auth0.Core.DelegatedIdToken
-  fullName: Auth0.Core.DelegatedIdToken
-  nameWithType: DelegatedIdToken
-- uid: Auth0.Core.DelegatedIdToken.IdToken
-  name: IdToken
-  href: api/Auth0.Core.DelegatedIdToken.html#Auth0_Core_DelegatedIdToken_IdToken
-  commentId: P:Auth0.Core.DelegatedIdToken.IdToken
-  fullName: Auth0.Core.DelegatedIdToken.IdToken
-  nameWithType: DelegatedIdToken.IdToken
-- uid: Auth0.Core.DelegatedIdToken.IdToken*
-  name: IdToken
-  href: api/Auth0.Core.DelegatedIdToken.html#Auth0_Core_DelegatedIdToken_IdToken_
-  commentId: Overload:Auth0.Core.DelegatedIdToken.IdToken
-  isSpec: "True"
-  fullName: Auth0.Core.DelegatedIdToken.IdToken
-  nameWithType: DelegatedIdToken.IdToken
-- uid: Auth0.Core.DelegatedRefreshToken
-  name: DelegatedRefreshToken
-  href: api/Auth0.Core.DelegatedRefreshToken.html
-  commentId: T:Auth0.Core.DelegatedRefreshToken
-  fullName: Auth0.Core.DelegatedRefreshToken
-  nameWithType: DelegatedRefreshToken
-- uid: Auth0.Core.DelegatedRefreshToken.RefreshToken
-  name: RefreshToken
-  href: api/Auth0.Core.DelegatedRefreshToken.html#Auth0_Core_DelegatedRefreshToken_RefreshToken
-  commentId: P:Auth0.Core.DelegatedRefreshToken.RefreshToken
-  fullName: Auth0.Core.DelegatedRefreshToken.RefreshToken
-  nameWithType: DelegatedRefreshToken.RefreshToken
-- uid: Auth0.Core.DelegatedRefreshToken.RefreshToken*
-  name: RefreshToken
-  href: api/Auth0.Core.DelegatedRefreshToken.html#Auth0_Core_DelegatedRefreshToken_RefreshToken_
-  commentId: Overload:Auth0.Core.DelegatedRefreshToken.RefreshToken
-  isSpec: "True"
-  fullName: Auth0.Core.DelegatedRefreshToken.RefreshToken
-  nameWithType: DelegatedRefreshToken.RefreshToken
-- uid: Auth0.Core.DelegatedTokenBase
-  name: DelegatedTokenBase
-  href: api/Auth0.Core.DelegatedTokenBase.html
-  commentId: T:Auth0.Core.DelegatedTokenBase
-  fullName: Auth0.Core.DelegatedTokenBase
-  nameWithType: DelegatedTokenBase
-- uid: Auth0.Core.DelegatedTokenBase.ExpiresIn
-  name: ExpiresIn
-  href: api/Auth0.Core.DelegatedTokenBase.html#Auth0_Core_DelegatedTokenBase_ExpiresIn
-  commentId: P:Auth0.Core.DelegatedTokenBase.ExpiresIn
-  fullName: Auth0.Core.DelegatedTokenBase.ExpiresIn
-  nameWithType: DelegatedTokenBase.ExpiresIn
-- uid: Auth0.Core.DelegatedTokenBase.ExpiresIn*
-  name: ExpiresIn
-  href: api/Auth0.Core.DelegatedTokenBase.html#Auth0_Core_DelegatedTokenBase_ExpiresIn_
-  commentId: Overload:Auth0.Core.DelegatedTokenBase.ExpiresIn
-  isSpec: "True"
-  fullName: Auth0.Core.DelegatedTokenBase.ExpiresIn
-  nameWithType: DelegatedTokenBase.ExpiresIn
-- uid: Auth0.Core.DelegatedTokenBase.TokenType
-  name: TokenType
-  href: api/Auth0.Core.DelegatedTokenBase.html#Auth0_Core_DelegatedTokenBase_TokenType
-  commentId: P:Auth0.Core.DelegatedTokenBase.TokenType
-  fullName: Auth0.Core.DelegatedTokenBase.TokenType
-  nameWithType: DelegatedTokenBase.TokenType
-- uid: Auth0.Core.DelegatedTokenBase.TokenType*
-  name: TokenType
-  href: api/Auth0.Core.DelegatedTokenBase.html#Auth0_Core_DelegatedTokenBase_TokenType_
-  commentId: Overload:Auth0.Core.DelegatedTokenBase.TokenType
-  isSpec: "True"
-  fullName: Auth0.Core.DelegatedTokenBase.TokenType
-  nameWithType: DelegatedTokenBase.TokenType
 - uid: Auth0.Core.Exceptions
   name: Auth0.Core.Exceptions
   href: api/Auth0.Core.Exceptions.html
@@ -2560,6 +2508,12 @@ references:
   commentId: T:Auth0.Core.Exceptions.ApiException
   fullName: Auth0.Core.Exceptions.ApiException
   nameWithType: ApiException
+- uid: Auth0.Core.Exceptions.ApiException.#ctor
+  name: ApiException()
+  href: api/Auth0.Core.Exceptions.ApiException.html#Auth0_Core_Exceptions_ApiException__ctor
+  commentId: M:Auth0.Core.Exceptions.ApiException.#ctor
+  fullName: Auth0.Core.Exceptions.ApiException.ApiException()
+  nameWithType: ApiException.ApiException()
 - uid: Auth0.Core.Exceptions.ApiException.#ctor(HttpStatusCode)
   name: ApiException(HttpStatusCode)
   href: api/Auth0.Core.Exceptions.ApiException.html#Auth0_Core_Exceptions_ApiException__ctor_HttpStatusCode_
@@ -2572,6 +2526,12 @@ references:
   commentId: M:Auth0.Core.Exceptions.ApiException.#ctor(HttpStatusCode,Auth0.Core.ApiError)
   fullName: Auth0.Core.Exceptions.ApiException.ApiException(HttpStatusCode, Auth0.Core.ApiError)
   nameWithType: ApiException.ApiException(HttpStatusCode, ApiError)
+- uid: Auth0.Core.Exceptions.ApiException.#ctor(System.String)
+  name: ApiException(String)
+  href: api/Auth0.Core.Exceptions.ApiException.html#Auth0_Core_Exceptions_ApiException__ctor_System_String_
+  commentId: M:Auth0.Core.Exceptions.ApiException.#ctor(System.String)
+  fullName: Auth0.Core.Exceptions.ApiException.ApiException(System.String)
+  nameWithType: ApiException.ApiException(String)
 - uid: Auth0.Core.Exceptions.ApiException.#ctor(System.String,Exception)
   name: ApiException(String, Exception)
   href: api/Auth0.Core.Exceptions.ApiException.html#Auth0_Core_Exceptions_ApiException__ctor_System_String_Exception_
@@ -2686,6 +2646,12 @@ references:
   commentId: M:Auth0.Core.Http.ApiConnection.Dispose
   fullName: Auth0.Core.Http.ApiConnection.Dispose()
   nameWithType: ApiConnection.Dispose()
+- uid: Auth0.Core.Http.ApiConnection.Dispose(System.Boolean)
+  name: Dispose(Boolean)
+  href: api/Auth0.Core.Http.ApiConnection.html#Auth0_Core_Http_ApiConnection_Dispose_System_Boolean_
+  commentId: M:Auth0.Core.Http.ApiConnection.Dispose(System.Boolean)
+  fullName: Auth0.Core.Http.ApiConnection.Dispose(System.Boolean)
+  nameWithType: ApiConnection.Dispose(Boolean)
 - uid: Auth0.Core.Http.ApiConnection.Dispose*
   name: Dispose
   href: api/Auth0.Core.Http.ApiConnection.html#Auth0_Core_Http_ApiConnection_Dispose_
@@ -4934,6 +4900,12 @@ references:
   commentId: M:Auth0.ManagementApi.ManagementApiClient.Dispose
   fullName: Auth0.ManagementApi.ManagementApiClient.Dispose()
   nameWithType: ManagementApiClient.Dispose()
+- uid: Auth0.ManagementApi.ManagementApiClient.Dispose(System.Boolean)
+  name: Dispose(Boolean)
+  href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_Dispose_System_Boolean_
+  commentId: M:Auth0.ManagementApi.ManagementApiClient.Dispose(System.Boolean)
+  fullName: Auth0.ManagementApi.ManagementApiClient.Dispose(System.Boolean)
+  nameWithType: ManagementApiClient.Dispose(Boolean)
 - uid: Auth0.ManagementApi.ManagementApiClient.Dispose*
   name: Dispose
   href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_Dispose_
@@ -6074,6 +6046,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.ClientBase.GrantTypes
   nameWithType: ClientBase.GrantTypes
+- uid: Auth0.ManagementApi.Models.ClientBase.InitiateLoginUri
+  name: InitiateLoginUri
+  href: api/Auth0.ManagementApi.Models.ClientBase.html#Auth0_ManagementApi_Models_ClientBase_InitiateLoginUri
+  commentId: P:Auth0.ManagementApi.Models.ClientBase.InitiateLoginUri
+  fullName: Auth0.ManagementApi.Models.ClientBase.InitiateLoginUri
+  nameWithType: ClientBase.InitiateLoginUri
+- uid: Auth0.ManagementApi.Models.ClientBase.InitiateLoginUri*
+  name: InitiateLoginUri
+  href: api/Auth0.ManagementApi.Models.ClientBase.html#Auth0_ManagementApi_Models_ClientBase_InitiateLoginUri_
+  commentId: Overload:Auth0.ManagementApi.Models.ClientBase.InitiateLoginUri
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.ClientBase.InitiateLoginUri
+  nameWithType: ClientBase.InitiateLoginUri
 - uid: Auth0.ManagementApi.Models.ClientBase.IsCustomLoginPageOn
   name: IsCustomLoginPageOn
   href: api/Auth0.ManagementApi.Models.ClientBase.html#Auth0_ManagementApi_Models_ClientBase_IsCustomLoginPageOn

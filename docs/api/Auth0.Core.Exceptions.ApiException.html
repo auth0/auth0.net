@@ -92,8 +92,20 @@
   
   
   <a id="Auth0_Core_Exceptions_ApiException__ctor_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor*"></a>
-  <h4 id="Auth0_Core_Exceptions_ApiException__ctor_HttpStatusCode_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor(HttpStatusCode)">ApiException(HttpStatusCode)</h4>
+  <h4 id="Auth0_Core_Exceptions_ApiException__ctor" data-uid="Auth0.Core.Exceptions.ApiException.#ctor">ApiException()</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Exceptions.ApiException.html">ApiException</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ApiException()</code></pre>
+  </div>
+  
+  
+  <a id="Auth0_Core_Exceptions_ApiException__ctor_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor*"></a>
+  <h4 id="Auth0_Core_Exceptions_ApiException__ctor_HttpStatusCode_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor(HttpStatusCode)">ApiException(HttpStatusCode)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Exceptions.ApiException.html">ApiException</a> class with a specified
+<see cref="!:HttpStatusCode"></see>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -113,8 +125,7 @@
       <tr>
         <td><span class="xref">HttpStatusCode</span></td>
         <td><span class="parametername">statusCode</span></td>
-        <td><p>The HTTP status code.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -122,7 +133,8 @@
   
   <a id="Auth0_Core_Exceptions_ApiException__ctor_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor*"></a>
   <h4 id="Auth0_Core_Exceptions_ApiException__ctor_HttpStatusCode_Auth0_Core_ApiError_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor(HttpStatusCode,Auth0.Core.ApiError)">ApiException(HttpStatusCode, ApiError)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Exceptions.ApiException.html">ApiException</a> class.</p>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Exceptions.ApiException.html">ApiException</a> class with a specified
+<see cref="!:HttpStatusCode"></see> and <a class="xref" href="Auth0.Core.ApiError.html">ApiError</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -156,8 +168,38 @@
   
   
   <a id="Auth0_Core_Exceptions_ApiException__ctor_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor*"></a>
+  <h4 id="Auth0_Core_Exceptions_ApiException__ctor_System_String_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor(System.String)">ApiException(String)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Exceptions.ApiException.html">ApiException</a> class with a specified error message.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ApiException(string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>The error message that explains the reason for the exception.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Auth0_Core_Exceptions_ApiException__ctor_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor*"></a>
   <h4 id="Auth0_Core_Exceptions_ApiException__ctor_System_String_Exception_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor(System.String,Exception)">ApiException(String, Exception)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Exceptions.ApiException.html">ApiException</a> class.</p>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Exceptions.ApiException.html">ApiException</a> class with a specified error message
+and a reference to the inner exception that is the cause of this exception.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -177,13 +219,14 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">message</span></td>
-        <td><p>The message.</p>
+        <td><p>The error message that explains the reason for the exception.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">Exception</span></td>
         <td><span class="parametername">innerException</span></td>
-        <td><p>The inner exception.</p>
+        <td><p>The exception that is the cause of the current exception, or a null 
+reference if no inner exception is specified.</p>
 </td>
       </tr>
     </tbody>
@@ -194,7 +237,7 @@
   
   <a id="Auth0_Core_Exceptions_ApiException_ApiError_" data-uid="Auth0.Core.Exceptions.ApiException.ApiError*"></a>
   <h4 id="Auth0_Core_Exceptions_ApiException_ApiError" data-uid="Auth0.Core.Exceptions.ApiException.ApiError">ApiError</h4>
-  <div class="markdown level1 summary"><p>The exception payload from the response</p>
+  <div class="markdown level1 summary"><p>The <a class="xref" href="Auth0.Core.ApiError.html">ApiError</a> from the response.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -220,7 +263,7 @@
   
   <a id="Auth0_Core_Exceptions_ApiException_StatusCode_" data-uid="Auth0.Core.Exceptions.ApiException.StatusCode*"></a>
   <h4 id="Auth0_Core_Exceptions_ApiException_StatusCode" data-uid="Auth0.Core.Exceptions.ApiException.StatusCode">StatusCode</h4>
-  <div class="markdown level1 summary"><p>The HTTP status code associated with the response</p>
+  <div class="markdown level1 summary"><p>The <see cref="!:HttpStatusCode"></see> code associated with the response.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
