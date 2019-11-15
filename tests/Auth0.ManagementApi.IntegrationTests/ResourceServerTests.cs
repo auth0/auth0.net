@@ -93,7 +93,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Delete the client, and ensure we get exception when trying to fetch client again
             await _apiClient.ResourceServers.DeleteAsync(resourceServer.Id);
             Func<Task> getFunc = async () => await _apiClient.ResourceServers.GetAsync(resourceServer.Id);
-            getFunc.Should().Throw<ApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_resource_server");
+            getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_resource_server");
         }
 
         [Fact]

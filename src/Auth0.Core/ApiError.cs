@@ -1,5 +1,6 @@
 ﻿using Auth0.Core.Serialization;
 using Newtonsoft.Json;
+using System;
 
 namespace Auth0.Core
 {
@@ -27,10 +28,23 @@ namespace Auth0.Core
         [JsonProperty("message")]
         public string Message { get; set; }
 
-        /// <summary>
-        /// The HTTP Status code.
-        /// </summary>
-        [JsonProperty("statusCode")]
-        public int StatusCode { get; set; }
+        public static ApiError ParseOrDefault(string responseContent)
+        {
+            if (String.IsNullOrEmpty(responseContent))
+                return default;
+
+            try
+            {
+                return JsonConvert.DeserializeObject<ApiError>(responseContent);
+            }
+            catch (Exception)
+            {
+                return new ApiError
+                {
+                    Error = responseContent,
+                    Message = responseContent
+                };
+            }
+        }
     }
 }

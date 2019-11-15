@@ -22,7 +22,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Getting the email provider now should throw, since none is configured
             Func<Task> getFunc = async () => await apiClient.EmailProvider.GetAsync("name,enabled,credentials,settings");
-            getFunc.Should().Throw<ApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_email_provider");
+            getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_email_provider");
 
             // Configure the email provider
             var configureRequest = new EmailProviderConfigureRequest
@@ -65,7 +65,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Check than once again the email provider should throw, since none is configured
             getFunc = async () => await apiClient.EmailProvider.GetAsync("name,enabled,credentials,settings");
-            getFunc.Should().Throw<ApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_email_provider");
+            getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_email_provider");
 
         }
 
@@ -81,7 +81,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Getting the email provider now should throw, since none is configured
             Func<Task> getFunc = async () => await apiClient.EmailProvider.GetAsync("name,enabled,credentials,settings");
-            getFunc.Should().Throw<ApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_email_provider");
+            getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_email_provider");
 
             // Configure the email provider
             var configureRequest = new EmailProviderConfigureRequest
@@ -136,7 +136,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Check than once again the email provider should throw, since none is configured
             getFunc = async () => await apiClient.EmailProvider.GetAsync("name,enabled,credentials,settings");
-            getFunc.Should().Throw<ApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_email_provider");
+            getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_email_provider");
 
         }
 

@@ -80,7 +80,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Delete the user and ensure we get an exception when trying to fetch them again
             await _apiClient.Users.DeleteAsync(user.UserId);
             Func<Task> getFunc = async () => await _apiClient.Users.GetAsync(user.UserId);
-            getFunc.Should().Throw<ApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_user");
+            getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_user");
         }
 
         [Theory]

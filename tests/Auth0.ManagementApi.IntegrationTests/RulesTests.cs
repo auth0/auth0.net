@@ -64,7 +64,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Delete the rule, and ensure we get exception when trying to fetch it again
             await _apiClient.Rules.DeleteAsync(rule.Id);
             Func<Task> getFunc = async () => await _apiClient.Rules.GetAsync(rule.Id);
-            getFunc.Should().Throw<ApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_rule");
+            getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_rule");
         }
         
         [Fact]

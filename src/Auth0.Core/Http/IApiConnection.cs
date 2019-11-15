@@ -2,8 +2,6 @@
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-// ReSharper disable once CheckNamespace
-
 namespace Auth0.Core.Http
 {
     /// <summary>
@@ -12,11 +10,6 @@ namespace Auth0.Core.Http
     /// </summary>
     public interface IApiConnection
     {
-        /// <summary>
-        /// Contains information about the last API call made by the connection.
-        /// </summary>
-        ApiInfo ApiInfo { get; }
-
         /// <summary>
         /// Performs an HTTP DELETE.
         /// </summary>

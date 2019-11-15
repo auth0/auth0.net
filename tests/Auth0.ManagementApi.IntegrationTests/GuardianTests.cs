@@ -37,7 +37,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             Func<Task> getFunc = async () => await _managementApiClient.Guardian.GetEnrollmentAsync("dev_123456");
 
-            (await getFunc.Should().ThrowAsync<ApiException>())
+            (await getFunc.Should().ThrowAsync<ErrorApiException>())
                 .And.ApiError.ErrorCode.Should().Be("enrollment_not_found");
         }
 
@@ -46,7 +46,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             Func<Task> deleteFunc = async () => await _managementApiClient.Guardian.DeleteEnrollmentAsync("dev_123456");
 
-            (await deleteFunc.Should().ThrowAsync<ApiException>())
+            (await deleteFunc.Should().ThrowAsync<ErrorApiException>())
                 .And.ApiError.ErrorCode.Should().Be("enrollment_not_found");
         }
 
