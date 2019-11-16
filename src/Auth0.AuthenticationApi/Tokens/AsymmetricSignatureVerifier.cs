@@ -1,8 +1,7 @@
-﻿using Microsoft.IdentityModel.Tokens;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Auth0.AuthenticationApi.Tokens
@@ -39,12 +38,10 @@ namespace Auth0.AuthenticationApi.Tokens
             if (decoded.SignatureAlgorithm != "RS256")
                 throw new IdTokenValidationException($"Signature algorithm of \"{decoded.Header.Alg }\" is not supported. Expected the ID token to be signed with \"RS256\".");
 
-            var publicKey = FindPublicKeyByKid(decoded.Header.Kid);
-
-            return (JwtSecurityToken) ValidateTokenSignatureWithKey(token, securityTokenHandler, publicKey);
+            return (JwtSecurityToken)ValidateTokenSignature(token, securityTokenHandler, decoded.Header.Kid);
         }
 
-        internal static SecurityToken ValidateTokenSignatureWithKey(string token, JwtSecurityTokenHandler securityTokenHandler, JsonWebKey key)
+        internal SecurityToken ValidateTokenSignature(string token, JwtSecurityTokenHandler securityTokenHandler, string kid)
         {
             try
             {
@@ -58,25 +55,20 @@ namespace Auth0.AuthenticationApi.Tokens
 
                     RequireSignedTokens = true,
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = key,
+                    IssuerSigningKeys = keys,
                 };
 
                 securityTokenHandler.ValidateToken(token, validationParameters, out var verifiedToken);
                 return verifiedToken;
             }
+            catch (SecurityTokenSignatureKeyNotFoundException)
+            {
+                throw new IdTokenValidationException($"Could not find a public key for Key ID (kid) \"{kid}\".");
+            }
             catch (SecurityTokenException e)
             {
                 throw new IdTokenValidationException("Invalid ID token signature.", e);
             }
-        }
-
-        private JsonWebKey FindPublicKeyByKid(string kid)
-        {
-            var key = keys.FirstOrDefault(k => k.Kid == kid);
-            if (key == null)
-                throw new IdTokenValidationException($"Could not find a public key for Key ID (kid) \"{kid}\".");
-
-            return key;
         }
     }
 }
