@@ -74,7 +74,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
 
             var signatureVerifier = new AsymmetricSignatureVerifier(signingKeys.Keys);
 
-            await ValidateToken(token, signedReqs, when: new DateTime(2019, 11, 1, 11, 00, 00), signatureVerifier: signatureVerifier);
+            await ValidateToken(token, signedReqs, when: new DateTime(2019, 11, 1, 11, 00, 00, DateTimeKind.Utc), signatureVerifier: signatureVerifier);
         }
 
         [Fact]
@@ -84,7 +84,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
 
             var signatureVerifier = new AsymmetricSignatureVerifier(signingKeys.Keys);
 
-            var ex = await Assert.ThrowsAsync<IdTokenValidationException>(() => ValidateToken(token, signedReqs, new DateTime(2019, 11, 1, 11, 00, 00), signatureVerifier));
+            var ex = await Assert.ThrowsAsync<IdTokenValidationException>(() => ValidateToken(token, signedReqs, new DateTime(2019, 11, 1, 11, 00, 00, DateTimeKind.Utc), signatureVerifier));
             Assert.Equal("Invalid ID token signature.", ex.Message);
         }
 
