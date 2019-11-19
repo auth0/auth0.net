@@ -1,10 +1,11 @@
-﻿using Auth0.AuthenticationApi.Tokens;
+﻿using Auth0.AuthenticationApi.IntegrationTests.Tokens;
+using Auth0.AuthenticationApi.Tokens;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
+namespace Auth0.OidcClient.Core.UnitTests.Tokens
 {
     public class IdTokenValidatorUnitTests
     {
@@ -74,7 +75,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
 
             var signatureVerifier = new AsymmetricSignatureVerifier(signingKeys.Keys);
 
-            await ValidateToken(token, signedReqs, when: new DateTime(2019, 11, 1, 11, 00, 00, DateTimeKind.Utc), signatureVerifier: signatureVerifier);
+            await ValidateToken(token, signedReqs, when: new DateTime(2019, 11, 1, 20, 00, 00, DateTimeKind.Utc), signatureVerifier: signatureVerifier);
         }
 
         [Fact]
@@ -166,7 +167,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
             var token = "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Rva2Vucy10ZXN0LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHwxMjM0NTY3ODkiLCJhdWQiOlsidG9rZW5zLXRlc3QtMTIzIiwiZXh0ZXJuYWwtdGVzdC05OTkiXSwiZXhwIjoxNTY4MDA4MDk0LjIyNCwiaWF0IjoxNTY4MDA4MDk0LjIyNCwibm9uY2UiOiJhMWIyYzNkNGU1IiwiYXpwIjoidG9rZW5zLXRlc3QtMTIzIiwiYXV0aF90aW1lIjoxNTY4MDk0NDk0LjIyNH0.ioTJE8JzqUud9sFdk96M-lbMtbYeGV2eN30sGNMDHpNGxPYjHGWCyaEJbP8alybGM4P-YZ9HG58_IbAkaRY72gZRfn4Kb6-VWwfmub4h3diy4CQo8aY5onRlPOB700C_DMFe28W0KgK7GmUksjVrpdIQfBSYUb4dkIIoWKO81IVKdSRM21h5dFa16uVoPRNerQ7_x_Oni8oBxE0KhrG6EIPlCF0jBI_6wL8heBrUGqnjMAYRh1u_wN2Vm8c5upmHRM3orV-pWdLKyg44irp-EljTdLiMEz8lgjYK-BHw0UUJQdZOJAoZ36qQ5QtO3mR_61rAluhS7NGs60XliBUC6A";
 
             var ex = await Assert.ThrowsAsync<IdTokenValidationException>(() => ValidateToken(token));
-            Assert.Equal("Expiration Time (exp) claim error in the ID token; current time (1568023200) is after expiration time (1568008154).", ex.Message);
+            Assert.Equal("Expiration Time (exp) claim error in the ID token; current time (1568023200) is after expiration time (1568008094).", ex.Message);
         }
 
         [Fact]
@@ -184,7 +185,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
             var token = "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Rva2Vucy10ZXN0LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHwxMjM0NTY3ODkiLCJhdWQiOlsidG9rZW5zLXRlc3QtMTIzIiwiZXh0ZXJuYWwtdGVzdC05OTkiXSwiZXhwIjoxNTY4MTgwODk0LjIyNCwiaWF0IjoxNTY4MTgwODk0LjIyNCwibm9uY2UiOiJhMWIyYzNkNGU1IiwiYXpwIjoidG9rZW5zLXRlc3QtMTIzIiwiYXV0aF90aW1lIjoxNTY4MDk0NDk0LjIyNH0.TK73zh_jQ8mUGZvQqs7PlIKmHSuXlVDrHSVrKzj0fQwcAxGEEC_IvXZ_p3KPTy4J0bL3IQ2uZe6I7f1i00N4WLwGKlMP-SbcFuPlAK-OnwgnHDafbsIU4eVd-a-cqoUrlMY46au4p8sdlkS8V5k8SExU_7lyunevvqZYPcsehl67Xp0QlkBOZaG90WGQ3qm0MVAZranl6LkQIET9UidhF4ArsMWi6dtEeMypiGIJp7tytDRD2j7QzY7UIB1zOEde2cClcpqnMM0cY2iySkFk22aJch1ERwZlCe1Y7VPWkx0R5rXxDJptpxIz95gGTW3AxyPUL00mahIzjLrOvkQp_g";
 
             var ex = await Assert.ThrowsAsync<IdTokenValidationException>(() => ValidateToken(token));
-            Assert.Equal("Issued At (iat) claim error in the ID token; current time (1568023200) is before issued at time (1568180954).", ex.Message);
+            Assert.Equal("Issued At (iat) claim error in the ID token; current time (1568023200) is before issued at time (1568180894).", ex.Message);
         }
 
         [Fact]

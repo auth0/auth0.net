@@ -86,21 +86,25 @@ namespace Auth0.AuthenticationApi.Tokens
             if (!token.Audiences.Contains(required.Audience))
                 throw new IdTokenValidationException($"Audience (aud) claim mismatch in the ID token; expected \"{required.Audience}\" but was not one of \"{String.Join(", ", token.Audiences)}\".");
 
-            // Expires at
-            var exp = GetEpoch(token.Claims, JwtRegisteredClaimNames.Exp);
-            if (exp == null)
-                throw new IdTokenValidationException("Expiration Time (exp) claim must be an integer present in the ID token.");
-            var expiration = exp + required.Leeway.TotalSeconds;
-            if (epochNow >= expiration)
-                throw new IdTokenValidationException($"Expiration Time (exp) claim error in the ID token; current time ({epochNow}) is after expiration time ({expiration}).");
+            {
+                // Expires at
+                var exp = GetEpoch(token.Claims, JwtRegisteredClaimNames.Exp);
+                if (exp == null)
+                    throw new IdTokenValidationException("Expiration Time (exp) claim must be an integer present in the ID token.");
+                var expiration = exp + required.Leeway.TotalSeconds;
+                if (epochNow >= expiration)
+                    throw new IdTokenValidationException($"Expiration Time (exp) claim error in the ID token; current time ({epochNow}) is after expiration time ({exp}).");
+            }
 
-            // Issued at
-            var iat = GetEpoch(token.Claims, JwtRegisteredClaimNames.Iat);
-            if (iat == null)
-                throw new IdTokenValidationException("Issued At (iat) claim must be an integer present in the ID token.");
-            var issued = iat - required.Leeway.TotalSeconds;
-            if (epochNow < issued)
-                throw new IdTokenValidationException($"Issued At (iat) claim error in the ID token; current time ({epochNow}) is before issued at time ({expiration}).");
+            {
+                // Issued at
+                var iat = GetEpoch(token.Claims, JwtRegisteredClaimNames.Iat);
+                if (iat == null)
+                    throw new IdTokenValidationException("Issued At (iat) claim must be an integer present in the ID token.");
+                var issued = iat - required.Leeway.TotalSeconds;
+                if (epochNow < issued)
+                    throw new IdTokenValidationException($"Issued At (iat) claim error in the ID token; current time ({epochNow}) is before issued at time ({iat}).");
+            }
 
             // Nonce
             if (required.Nonce != null)
