@@ -30,7 +30,7 @@ namespace Auth0.ManagementApi
             this.httpClient.DefaultRequestHeaders.Add("Auth0-Client", CreateAgentString());
         }
 
-        public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null)
+        public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, JsonConverter[] converters = null)
         {
             var request = new HttpRequestMessage(HttpMethod.Get, uri);
             ApplyHeaders(request, headers);
@@ -44,7 +44,7 @@ namespace Auth0.ManagementApi
             return SendRequest<T>(request);
         }
 
-        private async Task<T> SendRequest<T>(HttpRequestMessage request)
+        private async Task<T> SendRequest<T>(HttpRequestMessage request, JsonConverter[] converters = null)
         {
             var response = await httpClient.SendAsync(request).ConfigureAwait(false);
 
@@ -55,7 +55,7 @@ namespace Auth0.ManagementApi
 
             return typeof(T) == typeof(string)
                 ? (T)(object)content
-                : JsonConvert.DeserializeObject<T>(content);
+                : JsonConvert.DeserializeObject<T>(content, converters);
         }
 
         private void ApplyHeaders(HttpRequestMessage message, IDictionary<string, string> headers)

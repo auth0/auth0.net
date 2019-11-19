@@ -13,8 +13,8 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Creates a new instance of <see cref="CustomDomainsClient"/>.
         /// </summary>
-        /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
-        internal CustomDomainsClient(IApiConnection connection)
+        /// <param name="connection">The <see cref="ILegacyApiConnection" /> which is used to communicate with the API.</param>
+        internal CustomDomainsClient(ILegacyApiConnection connection)
             : base(connection)
         {
         }

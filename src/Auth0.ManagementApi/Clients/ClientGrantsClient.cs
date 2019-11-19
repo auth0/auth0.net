@@ -1,6 +1,5 @@
-using Auth0.Core.Collections;
-using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
+using Auth0.ManagementApi.Paging;
 using Auth0.ManagementApi.Serialization;
 using System;
 using System.Collections.Generic;
@@ -16,8 +15,8 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Creates a new instance of <see cref="ClientGrantsClient"/>.
         /// </summary>
-        /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
-        public ClientGrantsClient(IApiConnection connection) 
+        /// <param name="connection">The <see cref="ILegacyApiConnection" /> which is used to communicate with the API.</param>
+        public ClientGrantsClient(ILegacyApiConnection connection) 
             : base(connection)
         {
         }

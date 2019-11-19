@@ -1,6 +1,5 @@
-﻿using Auth0.Core.Collections;
-using Auth0.Core.Http;
-using Auth0.ManagementApi.Models;
+﻿using Auth0.ManagementApi.Models;
+using Auth0.ManagementApi.Paging;
 using Auth0.ManagementApi.Serialization;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -15,8 +14,8 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Creates a new instance of <see cref="ResourceServersClient"/>.
         /// </summary>
-        /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
-        public ResourceServersClient(IApiConnection connection) : base(connection)
+        /// <param name="connection">The <see cref="ILegacyApiConnection" /> which is used to communicate with the API.</param>
+        public ResourceServersClient(ILegacyApiConnection connection) : base(connection)
         {
         }
 

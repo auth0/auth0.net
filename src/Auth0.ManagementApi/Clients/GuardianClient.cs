@@ -13,8 +13,8 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Creates a new instance of <see cref="GuardianClient"/>.
         /// </summary>
-        /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
-        public GuardianClient(IApiConnection connection)
+        /// <param name="connection">The <see cref="ILegacyApiConnection" /> which is used to communicate with the API.</param>
+        public GuardianClient(ILegacyApiConnection connection)
             : base(connection)
         {
         }

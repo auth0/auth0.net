@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Auth0.Core.Collections
+namespace Auth0.ManagementApi.Paging
 {
     /// <summary>
     /// A list which contains paged data from the API.

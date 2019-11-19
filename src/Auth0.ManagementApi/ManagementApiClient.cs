@@ -123,7 +123,7 @@ namespace Auth0.ManagementApi
             }
 
             // Ideally this wouldn't exist but it's a lot of internal code to change that is fragile
-            var bridge = new ApiConnectionBridge(token, baseUri.OriginalString, managementConnection);
+            var bridge = new LegacyApiConnectionBridge(token, baseUri.OriginalString, managementConnection);
 
             BlacklistedTokens = new BlacklistedTokensClient(bridge);
             ClientGrants = new ClientGrantsClient(bridge);

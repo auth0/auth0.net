@@ -1,10 +1,9 @@
+using Auth0.ManagementApi.Paging;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Auth0.Core;
-using Auth0.Core.Collections;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace Auth0.ManagementApi.Serialization
 {

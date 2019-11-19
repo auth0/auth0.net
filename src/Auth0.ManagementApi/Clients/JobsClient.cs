@@ -14,8 +14,8 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Creates a new instance on <see cref="JobsClient"/>
         /// </summary>
-        /// <param name="connection">The <see cref="IApiConnection"/> which is used to communicate with the API.</param>
-        public JobsClient(IApiConnection connection)
+        /// <param name="connection">The <see cref="ILegacyApiConnection"/> which is used to communicate with the API.</param>
+        public JobsClient(ILegacyApiConnection connection)
             : base(connection)
         {
         }
