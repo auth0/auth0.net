@@ -1,16 +1,16 @@
-﻿using System;
-using System.Threading.Tasks;
-using Auth0.AuthenticationApi.Exceptions;
-using Auth0.AuthenticationApi.Models;
+﻿using Auth0.AuthenticationApi.Models;
+using Auth0.AuthenticationApi.Tokens;
 using Auth0.ManagementApi;
 using Auth0.ManagementApi.Models;
 using Auth0.Tests.Shared;
 using FluentAssertions;
+using System;
+using System.Threading.Tasks;
 using Xunit;
 
-namespace Auth0.AuthenticationApi.IntegrationTests
+namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
 {
-    public class IdentityTokenValidatorTests: TestBase, IAsyncLifetime
+    public class IdTokenValidatorIntegrationTests : TestBase, IAsyncLifetime
     {
         private ManagementApiClient _managementApiClient;
         private Connection _connection;
@@ -28,16 +28,16 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             if (string.IsNullOrEmpty(tenantSettings.DefaultDirectory))
             {
                 throw new Exception("Tests require a tenant with a Default Directory selected.\r\n" +
-                    "Enable OAuth 2.0 API Authorization under Account Settings | General and "+
+                    "Enable OAuth 2.0 API Authorization under Account Settings | General and " +
                     "select a Default Directory under Account Settings | General");
             }
-            
+
             // We will need a connection to add the users to...
             _connection = await _managementApiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
                 Name = Guid.NewGuid().ToString("N"),
                 Strategy = "auth0",
-                EnabledClients = new []{ GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
+                EnabledClients = new[] { GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
             });
 
             // And add a dummy user to test against
@@ -58,7 +58,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             if (_connection != null)
                 await _managementApiClient.Connections.DeleteAsync(_connection.Id);
         }
-        
+
         [Fact]
         public async Task Passes_Token_Validation()
         {
@@ -74,21 +74,16 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 Scope = "openid",
                 Username = _user.Email,
                 Password = Password
-                
+
             });
 
-            var validator = new IdentityTokenValidator();
-            Func<Task> validationFunc = async () =>
-                await validator.ValidateInternal(authenticationResponse.IdToken, $"https://{GetVariable("AUTH0_AUTHENTICATION_API_URL")}/", GetVariable("AUTH0_CLIENT_ID"));
-
-            // Assert
-            authenticationResponse.IdToken.Should().NotBeNull();
-            validationFunc.Should().NotThrow<IdentityTokenValidationException>();
+            var idTokenValidation = new IdTokenRequirements($"https://{GetVariable("AUTH0_AUTHENTICATION_API_URL")}/", GetVariable("AUTH0_CLIENT_ID"), TimeSpan.FromMinutes(1));
+            await idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken);
         }
 
         [Fact]
         public async Task Passes_Token_Validation_With_CNAME()
-        {            
+        {
             // Arrange
             var authenticationApiClient = new AuthenticationApiClient(GetVariable("BRUCKE_AUTHENTICATION_API_URL"));
 
@@ -101,18 +96,13 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 Scope = "openid",
                 Username = GetVariable("BRUCKE_USERNAME"),
                 Password = GetVariable("BRUCKE_PASSWORD")
-                
+
             });
 
-            var validator = new IdentityTokenValidator();
-            Func<Task> validationFunc = async () =>
-                await validator.ValidateInternal(authenticationResponse.IdToken, $"https://{GetVariable("BRUCKE_AUTHENTICATION_API_URL")}/", GetVariable("BRUCKE_CLIENT_ID"));
-
-            // Assert
-            authenticationResponse.IdToken.Should().NotBeNull();
-            validationFunc.Should().NotThrow<IdentityTokenValidationException>();
+            var idTokenValidation = new IdTokenRequirements($"https://{GetVariable("BRUCKE_AUTHENTICATION_API_URL")}/", GetVariable("BRUCKE_CLIENT_ID"), TimeSpan.FromMinutes(1));
+            await idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken);
         }
-        
+
         [Fact]
         public async Task Fails_Token_Validation_With_Incorrect_Domain()
         {
@@ -128,16 +118,14 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 Scope = "openid",
                 Username = _user.Email,
                 Password = Password
-                
+
             });
 
-            var validator = new IdentityTokenValidator();
-            Func<Task> validationFunc = async () =>
-                await validator.ValidateInternal(authenticationResponse.IdToken, $"https://auth0.auth0.com/", GetVariable("AUTH0_CLIENT_ID"));
+            var idTokenValidation = new IdTokenRequirements("https://auth0.auth0.com/", GetVariable("AUTH0_CLIENT_ID"), TimeSpan.FromMinutes(1));
 
             // Assert
             authenticationResponse.IdToken.Should().NotBeNull();
-            validationFunc.Should().Throw<IdentityTokenValidationException>();
+            await Assert.ThrowsAsync<IdTokenValidationException>(() => idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken));
         }
 
         [Fact]
@@ -155,16 +143,14 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 Scope = "openid",
                 Username = _user.Email,
                 Password = Password
-                
+
             });
 
-            var validator = new IdentityTokenValidator();
-            Func<Task> validationFunc = async () =>
-                await validator.ValidateInternal(authenticationResponse.IdToken, $"https://{GetVariable("AUTH0_AUTHENTICATION_API_URL")}/", "invalid_audience");
+            var idTokenValidation = new IdTokenRequirements($"https://{GetVariable("AUTH0_AUTHENTICATION_API_URL")}/", "invalid_audience", TimeSpan.FromMinutes(1));
 
             // Assert
             authenticationResponse.IdToken.Should().NotBeNull();
-            validationFunc.Should().Throw<IdentityTokenValidationException>();
+            await Assert.ThrowsAsync<IdTokenValidationException>(() => idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken));
         }
     }
 }

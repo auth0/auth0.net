@@ -1,5 +1,6 @@
 ﻿using Auth0.AuthenticationApi.Builders;
 using Auth0.AuthenticationApi.Models;
+using Auth0.AuthenticationApi.Tokens;
 using Auth0.Core.Http;
 using System;
 using System.Collections.Generic;
@@ -176,8 +177,7 @@ namespace Auth0.AuthenticationApi
                 null,
                 null).ConfigureAwait(false);
 
-            IdentityTokenValidator validator = new IdentityTokenValidator();
-            await validator.ValidateInternal(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
+            await AssertIdTokenValid(response.IdToken, request.ClientId);
 
             return response;
         }
@@ -202,8 +202,7 @@ namespace Auth0.AuthenticationApi
                 null,
                 null).ConfigureAwait(false);
 
-            IdentityTokenValidator validator = new IdentityTokenValidator();
-            await validator.ValidateInternal(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
+            await AssertIdTokenValid(response.IdToken, request.ClientId);
 
             return response;
         }
@@ -252,9 +251,8 @@ namespace Auth0.AuthenticationApi
                 parameters.Add("scope", request.Scope);
             }
             var response = await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, null, null).ConfigureAwait(false);
-            
-            IdentityTokenValidator validator = new IdentityTokenValidator();
-            await validator.ValidateInternal(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
+
+            await AssertIdTokenValid(response.IdToken, request.ClientId);
 
             return response;
         }
@@ -305,9 +303,8 @@ namespace Auth0.AuthenticationApi
             }
 
             var response = await Connection.PostAsync<AccessTokenResponse>("oauth/token", null, parameters, null, null, headers, null).ConfigureAwait(false);
-            
-            IdentityTokenValidator validator = new IdentityTokenValidator();
-            await validator.ValidateInternal(response.IdToken, _baseUri.AbsoluteUri, request.ClientId);
+
+            await AssertIdTokenValid(response.IdToken, request.ClientId);
 
             return response;
         }
@@ -409,6 +406,12 @@ namespace Auth0.AuthenticationApi
         public void Dispose()
         {
             Dispose(true);
+        }
+
+        private async Task AssertIdTokenValid(string idToken, string issuer)
+        {
+            var requirements = new IdTokenRequirements(_baseUri.AbsoluteUri, issuer, TimeSpan.FromMinutes(1));
+            await requirements.AssertTokenMeetsRequirements(idToken);
         }
     }
 }
