@@ -201,11 +201,7 @@ namespace Auth0.Core.Http
 
         private async Task HandleErrors(HttpResponseMessage response)
         {
-            var content = response.Content == null
-                ? null
-                : await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-
-            var apiError = ApiError.ParseOrDefault(content);
+            var apiError = await ApiError.Parse(response).ConfigureAwait(false);
 
             if ((int)response.StatusCode == HttpStatusCodeTooManyRequests)
                 throw new RateLimitApiException(RateLimit.Parse(response.Headers));
