@@ -26,7 +26,7 @@ namespace Auth0.AuthenticationApi
         public HttpClientAuthenticationConnection(HttpClient httpClient = null)
         {
             shouldDisposeHttpClient = false;
-            this.httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+            this.httpClient = httpClient ?? new HttpClient();
             this.httpClient.DefaultRequestHeaders.Add("Auth0-Client", CreateAgentString());
         }
 
