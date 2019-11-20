@@ -137,5 +137,17 @@ namespace Auth0.AuthenticationApi.Builders
 
             return this;
         }
+
+        /// <summary>
+        /// Adds a new connection_scope query string parameter.
+        /// </summary>
+        /// <param name="connectionScope">The connection scope to be passed to the corresponding connection. Multiple scopes must be separated by a space character.</param>
+        /// <returns>The <see cref="AuthorizationUrlBuilder"/>.</returns>
+        public AuthorizationUrlBuilder WithConnectionScope(string connectionScope)
+        {
+            AddQueryString("connection_scope", connectionScope);
+
+            return this;
+        }
     }
 }

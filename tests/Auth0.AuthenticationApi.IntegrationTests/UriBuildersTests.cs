@@ -23,11 +23,12 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 .WithAudience("https://myapi.com/v2")
                 .WithNonce("MyNonce")
                 .WithState("MyState")
+                .WithConnectionScope("ConnectionScope")
                 .Build();
 
             authorizationUrl.Should()
                 .Be(
-                    new Uri("https://auth0-dotnet-integration-tests.auth0.com/authorize?response_type=code&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&connection=google-oauth2&redirect_uri=http%3A%2F%2Fwww.jerriepelser.com%2Ftest&scope=openid%20offline_access&audience=https%3A%2F%2Fmyapi.com%2Fv2&nonce=MyNonce&state=MyState"));
+                    new Uri("https://auth0-dotnet-integration-tests.auth0.com/authorize?response_type=code&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&connection=google-oauth2&redirect_uri=http%3A%2F%2Fwww.jerriepelser.com%2Ftest&scope=openid%20offline_access&audience=https%3A%2F%2Fmyapi.com%2Fv2&nonce=MyNonce&state=MyState&connection_scope=ConnectionScope"));
         }
 
         [Fact]
