@@ -24,11 +24,5 @@ namespace Auth0.AuthenticationApi.Models
         /// </summary>
         [JsonProperty("email")]
         public string Email { get; set; }
-
-        /// <summary>
-        /// Gets or sets the user's password.
-        /// </summary>
-        [JsonProperty("password")]
-        public string Password { get; set; }
     }
 }

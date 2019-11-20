@@ -1,11 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using Auth0.AuthenticationApi.Models;
-using Auth0.Core.Exceptions;
+﻿using Auth0.AuthenticationApi.Models;
 using Auth0.ManagementApi;
 using Auth0.ManagementApi.Models;
 using Auth0.Tests.Shared;
 using FluentAssertions;
+using System;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Auth0.AuthenticationApi.IntegrationTests
@@ -52,6 +51,12 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 Connection = _connection.Name,
                 Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
                 Password = Password,
+                FamilyName = "Surname",
+                GivenName = "Forename",
+                Name = "Full Name",
+                Nickname = "Nick",
+                Picture = new Uri("https://cdn.auth0.com/styleguide/components/1.0.8/media/logos/img/badge.png"),
+                Username = "A User",
                 UserMetadata = new
                 {
                     a = "1",
@@ -63,17 +68,11 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             signupUserResponse.Id.Should().NotBeNull();
             signupUserResponse.EmailVerified.Should().BeFalse();
             signupUserResponse.Email.Should().Be(signupUserRequest.Email);
-
-            // Change the user's Email address
-            var changePasswordRequest = new ChangePasswordRequest
-            {
-                ClientId = signupUserRequest.ClientId,
-                Connection = signupUserRequest.Connection,
-                Email = signupUserRequest.Email,
-                Password = Password2
-            };
-            Func<Task> changePasswordFunc = async () => await authenticationApiClient.ChangePasswordAsync(changePasswordRequest);
-            changePasswordFunc.Should().Throw<ErrorApiException>().And.ApiError.Error.Should().Be("password is not allowed");
+            signupUserResponse.FamilyName.Should().Be(signupUserRequest.FamilyName);
+            signupUserResponse.GivenName.Should().Be(signupUserRequest.GivenName);
+            signupUserResponse.Name.Should().Be(signupUserRequest.Name);
+            signupUserResponse.Nickname.Should().Be(signupUserRequest.Nickname);
+            signupUserResponse.Picture.Should().Be(signupUserRequest.Picture);
         }
     }
 }
