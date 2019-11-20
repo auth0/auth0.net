@@ -85,7 +85,6 @@ The content should take the following format.
   "AUTH0_MANAGEMENT_API_CLIENT_SECRET": "your client sercet",
   "AUTH0_MANAGEMENT_API_AUDIENCE": "https://yourdomain.auth0.com/api/v2/"
 }
-
 ```
 
 ## Issue Reporting
