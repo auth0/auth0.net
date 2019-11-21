@@ -33,7 +33,7 @@ namespace Auth0.AuthenticationApi
         /// </remarks>
         public HttpClientAuthenticationConnection(HttpClient httpClient = null)
         {
-            shouldDisposeHttpClient = false;
+            shouldDisposeHttpClient = httpClient == null;
             this.httpClient = httpClient ?? new HttpClient();
             this.httpClient.DefaultRequestHeaders.Add("Auth0-Client", CreateAgentString());
         }
