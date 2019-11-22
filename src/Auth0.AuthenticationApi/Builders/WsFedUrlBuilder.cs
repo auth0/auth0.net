@@ -1,81 +1,85 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Auth0.AuthenticationApi.Builders
 {
     /// <summary>
-    /// Used to build a WS Federation authorization URL.
+    /// Builder class used to fluently construct a WS Federation authorization URL.
     /// </summary>
     public class WsFedUrlBuilder : UrlBuilderBase<WsFedUrlBuilder>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="WsFedUrlBuilder"/> class.
         /// </summary>
-        /// <param name="baseUrl">The base URL.</param>
-        public WsFedUrlBuilder(string baseUrl) 
+        /// <param name="baseUrl">Base URL of the Authentication API represented as a <see cref="String"/>.</param>
+        /// <param name="clientId">Optional Client ID of the application.</param>
+        public WsFedUrlBuilder(string baseUrl, string clientId = null)
             : base(baseUrl, "wsfed/{client}")
         {
-            AddUrlSegment("client", null); // Default to not using the client
+            AddUrlSegment("client", clientId);
         }
 
         /// <summary>
-        /// Specifies the client ID for the URL.
+        /// Initializes a new instance of the <see cref="WsFedUrlBuilder"/> class.
         /// </summary>
-        /// <param name="clientId">The client ID.</param>
-        /// <returns>WsFedUrlBuilder.</returns>
+        /// <param name="baseUrl">Base URL of the Authentication API represented as a <see cref="Uri"/>.</param>
+        /// <param name="clientId">Optional Client ID of the application.</param>
+        public WsFedUrlBuilder(Uri baseUrl, string clientId = null)
+            : base(baseUrl, "wsfed/{client}")
+        {
+            AddUrlSegment("client", clientId);
+        }
+
+        /// <summary>
+        /// Adds the `client` URL segment specifying the Client ID of the application.
+        /// </summary>
+        /// <param name="clientId">Client ID of the application.</param>
+        /// <returns>Current <see cref="WsFedUrlBuilder"/> to allow fluent configuration.</returns>
         public WsFedUrlBuilder WithClient(string clientId)
         {
             AddUrlSegment("client", clientId);
-
             return this;
         }
 
         /// <summary>
-        /// Adds a qhr query string parameter.
+        /// Adds the `whr` query string parameter.
         /// </summary>
-        /// <param name="value">The value of the whr parameter.</param>
-        /// <returns>WsFedUrlBuilder.</returns>
+        /// <param name="value">Value of the `whr` parameter.</param>
+        /// <returns>Current <see cref="WsFedUrlBuilder"/> to allow fluent configuration.</returns>
         public WsFedUrlBuilder WithWhr(string value)
         {
-            AddQueryString("whr", value);
-
-            return this;
+            return WithValue("whr", value);
         }
 
         /// <summary>
-        /// Adds a wctx query string parameter.
+        /// Adds the `wctx` query string parameter.
         /// </summary>
-        /// <param name="value">A string with the value of the wctx parameter. Must be in a name-value pair format, e.g. xcrf=abc&amp;ru=/foo</param>
-        /// <returns>WsFedUrlBuilder.</returns>
+        /// <param name="value">Value of the `wctx` parameter in key-value pair format, e.g. <code>xcrf=abc&amp;ru=/foo</code>.</param>
+        /// <returns>Current <see cref="WsFedUrlBuilder"/> to allow fluent configuration.</returns>
         public WsFedUrlBuilder WithWctx(string value)
         {
-            AddQueryString("wctx", value);
-
-            return this;
+            return WithValue("wctx", value);
         }
 
         /// <summary>
-        /// Adds a wctx query string parameter.
+        /// Adds the `wctx` query string parameter.
         /// </summary>
-        /// <param name="values">A dictionary containing the name-value pairs of the wctx parameter.</param>
-        /// <returns>WsFedUrlBuilder.</returns>
+        /// <param name="values"><see cref="Dictionary{String, String}"/> containing the key-value pairs of the `wctx` parameter.</param>
+        /// <returns>Current <see cref="WsFedUrlBuilder"/> to allow fluent configuration.</returns>
         public WsFedUrlBuilder WithWctx(IDictionary<string, string> values)
         {
-            AddQueryString("wctx", string.Join("&", values.Select(kvp => $"{kvp.Key}={kvp.Value}")));
-
-            return this;
+            return WithWctx(String.Join("&", values.Select(kvp => $"{kvp.Key}={kvp.Value}")));
         }
 
         /// <summary>
-        /// Adds a wtrealm query string parameter.
+        /// Adds the `wtrealm` query string parameter.
         /// </summary>
-        /// <param name="value">The value of the wtrealm query string parameter.</param>
-        /// <returns>WsFedUrlBuilder.</returns>
+        /// <param name="value">Value of the `wtrealm` query string parameter.</param>
+        /// <returns>Current <see cref="WsFedUrlBuilder"/> to allow fluent configuration.</returns>
         public WsFedUrlBuilder WithWtrealm(string value)
         {
-            AddQueryString("wtrealm", value);
-
-            return this;
+            return WithValue("wtrealm", value);
         }
     }
 }

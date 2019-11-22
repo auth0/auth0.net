@@ -32,6 +32,23 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         }
 
         [Fact]
+        public void Can_build_authorization_uri_with_params_overloads()
+        {
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
+
+            var authorizationUrl = authenticationApiClient.BuildAuthorizationUrl()
+                .WithResponseType(AuthorizationResponseType.Code)
+                .WithScopes("openid", "offline_access")
+                .WithState("MyState")
+                .WithConnectionScopes("ConnectionScope", "More")
+                .Build();
+
+            authorizationUrl.Should()
+                .Be(
+                    new Uri("https://auth0-dotnet-integration-tests.auth0.com/authorize?response_type=code&scope=openid%20offline_access&state=MyState&connection_scope=ConnectionScope%20More"));
+        }
+
+        [Fact]
         public void Can_provide_multiple_response_type()
         {
             var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
@@ -84,7 +101,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         }
 
         [Fact]
-        public void Can_build_logout_url_with_return_url()
+        public void Can_build_logout_url_with_return_url_as_string()
         {
             var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
@@ -95,6 +112,35 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             logoutUrl.Should()
                 .Be(
                     @"https://auth0-dotnet-integration-tests.auth0.com/v2/logout?returnTo=http%3A%2F%2Fwww.jerriepelser.com%2Ftest");
+        }
+
+        [Fact]
+        public void Can_build_logout_url_with_return_url_as_uri()
+        {
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
+
+            var logoutUrl = authenticationApiClient.BuildLogoutUrl()
+                .WithReturnUrl(new Uri("http://www.jerriepelser.com/test"))
+                .Build();
+
+            logoutUrl.Should()
+                .Be(
+                    @"https://auth0-dotnet-integration-tests.auth0.com/v2/logout?returnTo=http%3A%2F%2Fwww.jerriepelser.com%2Ftest");
+        }
+
+        [Fact]
+        public void Can_build_logout_url_with_federated()
+        {
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
+
+            var logoutUrl = authenticationApiClient.BuildLogoutUrl()
+                .Federated()
+                .WithReturnUrl(new Uri("http://www.jerriepelser.com/test"))
+                .Build();
+
+            logoutUrl.Should()
+                .Be(
+                    @"https://auth0-dotnet-integration-tests.auth0.com/v2/logout?federated&returnTo=http%3A%2F%2Fwww.jerriepelser.com%2Ftest");
         }
 
         [Fact]
@@ -150,7 +196,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         }
 
         [Fact]
-        public void Can_build_wsfed_with_realm()
+        public void Can_build_wsfed_with_wtrealm()
         {
             var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
@@ -174,7 +220,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         }
 
         [Fact]
-        public void Can_build_wsfed_with_wxtx_dictionary()
+        public void Can_build_wsfed_with_wctx_dictionary()
         {
             var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
@@ -190,7 +236,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         }
 
         [Fact]
-        public void Can_build_wsfed_with_wxtx_string()
+        public void Can_build_wsfed_with_wctx_string()
         {
             var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
