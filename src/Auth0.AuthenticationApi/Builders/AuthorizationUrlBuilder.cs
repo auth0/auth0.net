@@ -1,153 +1,165 @@
 using Auth0.AuthenticationApi.Models;
+using System;
 using System.Linq;
 
 namespace Auth0.AuthenticationApi.Builders
 {
     /// <summary>
-    /// Used to build am authorization URL.
+    /// Builder class used to fluently construct an authorization URL.
     /// </summary>
+    /// <remarks>
+    /// See https://auth0.com/docs/api/authentication#login for more details.
+    /// </remarks>
     public class AuthorizationUrlBuilder : UrlBuilderBase<AuthorizationUrlBuilder>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthorizationUrlBuilder"/> class.
         /// </summary>
-        /// <param name="baseUrl">The base URL of the Authentication API.</param>
-        public AuthorizationUrlBuilder(string baseUrl) 
+        /// <param name="baseUrl">Base URL of the Authentication API represented as a <see cref="String"/>.</param>
+        public AuthorizationUrlBuilder(string baseUrl)
             : base(baseUrl, "authorize")
         {
         }
 
         /// <summary>
-        /// Adds an access_token query string parameter.
+        /// Initializes a new instance of the <see cref="AuthorizationUrlBuilder"/> class.
         /// </summary>
-        /// <param name="accessToken"></param>
-        /// <returns></returns>
-        public AuthorizationUrlBuilder WithAccessToken(string accessToken)
+        /// <param name="baseUrl">Base URL of the Authentication API represented as a <see cref="Uri"/>.</param>
+        public AuthorizationUrlBuilder(Uri baseUrl)
+            : base(baseUrl, "authorize")
         {
-            AddQueryString("access_token", accessToken);
-
-            return this;
         }
 
         /// <summary>
-        /// Adds a new client_id query string parameter.
+        /// Adds the `client_id` query string parameter specifying the Client ID of the application.
         /// </summary>
-        /// <param name="clientId">The client identifier.</param>
-        /// <returns>The <see cref="AuthorizationUrlBuilder"/>.</returns>
+        /// <param name="clientId">Client ID of the application.</param>
+        /// <returns>Current <see cref="AuthorizationUrlBuilder"/> to allow fluent configuration.</returns>
         public AuthorizationUrlBuilder WithClient(string clientId)
         {
-            AddQueryString("client_id", clientId);
-
-            return this;
+            return WithValue("client_id", clientId);
         }
 
         /// <summary>
-        /// Add a new connection query string parameter.
+        /// Adds the `connection` query string parameter specifying the connection name.
         /// </summary>
         /// <param name="connectionName">Name of the connection.</param>
-        /// <returns>The <see cref="AuthorizationUrlBuilder"/>.</returns>
+        /// <returns>Current <see cref="AuthorizationUrlBuilder"/> to allow fluent configuration.</returns>
         public AuthorizationUrlBuilder WithConnection(string connectionName)
         {
-            AddQueryString("connection", connectionName);
-
-            return this;
+            return WithValue("connection", connectionName);
         }
 
         /// <summary>
-        /// Adds a new redirect_uri query string parameter
+        /// Adds the `redirect_uri` query string parameter specifying the redirect URI.
         /// </summary>
-        /// <param name="url">The URL of the redirect URI</param>
-        /// <returns>The <see cref="AuthorizationUrlBuilder"/>.</returns>
-        public AuthorizationUrlBuilder WithRedirectUrl(string url)
+        /// <param name="uri">URI to redirect to.</param>
+        /// <returns>Current <see cref="AuthorizationUrlBuilder"/> to allow fluent configuration.</returns>
+        public AuthorizationUrlBuilder WithRedirectUrl(string uri)
         {
-            AddQueryString("redirect_uri", url);
-
-            return this;
+            return WithValue("redirect_uri", uri);
+        }
+        /// <summary>
+        /// Adds the `redirect_uri` query string parameter specifying the redirect URI.
+        /// </summary>
+        /// <param name="uri"><see cref="Uri"/> to redirect to.</param>
+        /// <returns>Current <see cref="AuthorizationUrlBuilder"/> to allow fluent configuration.</returns>
+        public AuthorizationUrlBuilder WithRedirectUrl(Uri uri)
+        {
+            return WithRedirectUrl(uri.OriginalString);
         }
 
         /// <summary>
-        /// Adds a new response_type query string parameter indicating 
-        /// the type of response that the client expects.
+        /// Adds the `response_type` query string parameter specifying the types of responses 
+        /// that the client expects.
         /// </summary>
-        /// <param name="responseType">Type of the response.</param>
-        /// <returns>The <see cref="AuthorizationUrlBuilder"/>.</returns>
+        /// <param name="responseType"><see cref="AuthorizationResponseType"/> the client expects.</param>
+        /// <returns>Current <see cref="AuthorizationUrlBuilder"/> to allow fluent configuration.</returns>
         public AuthorizationUrlBuilder WithResponseType(params AuthorizationResponseType[] responseType)
         {
-            AddQueryString("response_type", string.Join(" ",responseType.Select(AuthorizationResponseTypeHelper.ConvertToString)));
-
-            return this;
+            return WithValue("response_type", string.Join(" ", responseType.Select(AuthorizationResponseTypeHelper.ConvertToString)));
         }
 
         /// <summary>
-        /// Adds a new scope query string parameter.
+        /// Adds the `scope` query string parameter indicating the scopes the client wants to request.
         /// </summary>
-        /// <param name="scope">The scope. Multiple scopes must be separated by a space character.</param>
-        /// <returns>The <see cref="AuthorizationUrlBuilder"/>.</returns>
+        /// <param name="scope">Scopes to request. Multiple scopes must be separated by a space character.</param>
+        /// <returns>Current <see cref="AuthorizationUrlBuilder"/> to allow fluent configuration.</returns>
         public AuthorizationUrlBuilder WithScope(string scope)
         {
-            AddQueryString("scope", scope);
-
-            return this;
+            return WithValue("scope", scope);
         }
 
         /// <summary>
-        /// Adds a new state query string parameter.
+        /// Adds the `scope` query string parameter indicating the scopes the client wants to request.
         /// </summary>
-        /// <param name="state">The state.</param>
-        /// <returns>The <see cref="AuthorizationUrlBuilder"/>.</returns>
+        /// <param name="scopes">Scopes the client wants to request.</param>
+        /// <returns>Current <see cref="AuthorizationUrlBuilder"/> to allow fluent configuration.</returns>
+        public AuthorizationUrlBuilder WithScopes(params string[] scopes)
+        {
+            return WithScope(String.Join(" ", scopes));
+        }
+
+        /// <summary>
+        /// Adds the `state` query string parameter specifying a value to be returned on completion in 
+        /// order to prevent CSRF attacks.
+        /// </summary>
+        /// <param name="state">State value to be passed back on successful authorization.</param>
+        /// <returns>Current <see cref="AuthorizationUrlBuilder"/> to allow fluent configuration.</returns>
         public AuthorizationUrlBuilder WithState(string state)
         {
-            AddQueryString("state", state);
-
-            return this;
+            return WithValue("state", state);
         }
 
         /// <summary>
-        /// Adds a new audience query string parameter.
+        /// Adds the `audience` query string parameter to request API access.
         /// </summary>
-        /// <param name="audience">The audience.</param>
-        /// <returns>The <see cref="AuthorizationUrlBuilder"/>.</returns>
+        /// <param name="audience">Audience to request API access for.</param>
+        /// <returns>Current <see cref="AuthorizationUrlBuilder"/> to allow fluent configuration.</returns>
         public AuthorizationUrlBuilder WithAudience(string audience)
         {
-            AddQueryString("audience", audience);
-
-            return this;
+            return WithValue("audience", audience);
         }
 
         /// <summary>
-        /// Adds a new nonce query string parameter.
+        /// Adds the `nonce` query string parameter specifying a cryptographically random nonce.
         /// </summary>
         /// <param name="nonce">The nonce.</param>
-        /// <returns>The <see cref="AuthorizationUrlBuilder"/>.</returns>
+        /// <returns>Current <see cref="AuthorizationUrlBuilder"/> to allow fluent configuration.</returns>
+        /// <remarks>See https://auth0.com/docs/api-auth/tutorials/nonce for more details</remarks>
         public AuthorizationUrlBuilder WithNonce(string nonce)
         {
-            AddQueryString("nonce", nonce);
-
-            return this;
+            return WithValue("nonce", nonce);
         }
 
         /// <summary>
-        /// Adds a new response_mode query string parameter.
+        /// Adds the `response_mode` query string parameter.
         /// </summary>
         /// <param name="responseMode">The response mode.</param>
         /// <returns>The <see cref="AuthorizationUrlBuilder"/>.</returns>
         public AuthorizationUrlBuilder WithResponseMode(AuthorizationResponseMode responseMode)
         {
-            AddQueryString("response_mode", AuthorizationResponseModeHelper.ConvertToString(responseMode));
-
-            return this;
+            return WithValue("response_mode", AuthorizationResponseModeHelper.ConvertToString(responseMode));
         }
 
         /// <summary>
-        /// Adds a new connection_scope query string parameter.
+        /// Adds the `connection_scope` query string parameter.
         /// </summary>
-        /// <param name="connectionScope">The connection scope to be passed to the corresponding connection. Multiple scopes must be separated by a space character.</param>
-        /// <returns>The <see cref="AuthorizationUrlBuilder"/>.</returns>
+        /// <param name="connectionScope">Connection scope to be passed to the corresponding connection. Multiple scopes must be separated by a space character.</param>
+        /// <returns>Current <see cref="AuthorizationUrlBuilder"/> to allow fluent configuration.</returns>
         public AuthorizationUrlBuilder WithConnectionScope(string connectionScope)
         {
-            AddQueryString("connection_scope", connectionScope);
+            return WithValue("connection_scope", connectionScope);
+        }
 
-            return this;
+        /// <summary>
+        /// Adds the `connection_scope` query string parameter.
+        /// </summary>
+        /// <param name="connectionScope">Connection scopes to be passed to the corresponding connection.</param>
+        /// <returns>Current <see cref="AuthorizationUrlBuilder"/> to allow fluent configuration.</returns>
+        public AuthorizationUrlBuilder WithConnectionScopes(params string[] connectionScope)
+        {
+            return WithConnectionScope(String.Join(" ", connectionScope));
         }
     }
 }

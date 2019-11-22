@@ -1,64 +1,74 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Auth0.AuthenticationApi.Builders
 {
     /// <summary>
-    /// Used to build a SAML authorization URL.
+    /// Builder class used to fluently construct a SAML authorization URL.
     /// </summary>
+    /// <remarks>
+    /// See https://auth0.com/docs/api/authentication#accept-request for more details.
+    /// </remarks>
     public class SamlUrlBuilder : UrlBuilderBase<SamlUrlBuilder>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SamlUrlBuilder"/> class.
         /// </summary>
-        /// <param name="baseUrl">The base URL.</param>
-        /// <param name="client">The client id.</param>
-        public SamlUrlBuilder(string baseUrl, string client)
-            :base(baseUrl, "samlp/{client}")
+        /// <param name="baseUrl">Base URL of the Authentication API represented as a <see cref="String"/>.</param>
+        /// <param name="clientId">Client ID of the application.</param>
+        public SamlUrlBuilder(string baseUrl, string clientId)
+            : base(baseUrl, "samlp/{client}")
         {
-            AddUrlSegment("client", client);
+            AddUrlSegment("client", clientId);
         }
 
         /// <summary>
-        /// Adds a connection query string parameter.
+        /// Initializes a new instance of the <see cref="SamlUrlBuilder"/> class.
+        /// </summary>
+        /// <param name="baseUrl">Base URL of the Authentication API represented as a <see cref="Uri"/>.</param>
+        /// <param name="clientId">Client ID of the application.</param>
+        public SamlUrlBuilder(Uri baseUrl, string clientId)
+            : base(baseUrl, "samlp/{client}")
+        {
+            AddUrlSegment("client", clientId);
+        }
+
+        /// <summary>
+        /// Adds the `connection` query string parameter specifying the connection name.
         /// </summary>
         /// <param name="connectionName">Name of the connection.</param>
-        /// <returns>The <see cref="SamlUrlBuilder"/>.</returns>
+        /// <returns>Current <see cref="SamlUrlBuilder"/> to allow fluent configuration.</returns>
         public SamlUrlBuilder WithConnection(string connectionName)
         {
-            AddQueryString("connection", connectionName);
-
-            return this;
+            return WithValue("connection", connectionName);
         }
 
         /// <summary>
-        /// Adds a relayState query string parameter.
+        /// Adds the `RelayState` query string parameter.
         /// </summary>
-        /// <param name="value">A string with the value of relayState parameter. Must be in a name-value pair format, e.g. xcrf=abc&amp;ru=/foo</param>
-        /// <returns>The <see cref="SamlUrlBuilder"/>.</returns>
+        /// <param name="value">Value of `RelayState` parameter in key-value format, e.g. <code>xcrf=abc&amp;ru=/foo</code>.</param>
+        /// <returns>Current <see cref="SamlUrlBuilder"/> to allow fluent configuration.</returns>
+        /// <remarks>
+        /// See https://auth0.com/docs/protocols/saml/saml-configuration/special-configuration-scenarios/idp-initiated-sso#auth0-as-identity-provider-where-idp-initiates-sso for more details on RelayState.
+        /// </remarks>
         public SamlUrlBuilder WithRelayState(string value)
         {
-            // Note to future maintainers:
-            // It is important to use correct casing! This parameter must use PascalCase (i.e. RelayState),
-            // otherwise it will not be passed on correctly. See https://github.com/auth0/auth0.net/issues/186 
-            AddQueryString("RelayState", value);
-
-            return this;
+            // This parameter must use PascalCase (i.e. RelayState) see https://github.com/auth0/auth0.net/issues/186 
+            return WithValue("RelayState", value);
         }
 
         /// <summary>
-        /// Adds a relayState query string parameter.
+        /// Adds the `RelayState` query string parameter.
         /// </summary>
-        /// <param name="values">A dictionary containing the name-value pairs of the relayState parameter.</param>
-        /// <returns>The <see cref="SamlUrlBuilder"/>.</returns>
-        public SamlUrlBuilder WithRelayState(System.Collections.Generic.IDictionary<string, string> values)
+        /// <param name="values"><see cref="Dictionary{String, String}"/>containing key-value pairs for the `RelayState` parameter.</param>
+        /// <returns>Current <see cref="SamlUrlBuilder"/> to allow fluent configuration.</returns>
+        /// <remarks>
+        /// See https://auth0.com/docs/protocols/saml/saml-configuration/special-configuration-scenarios/idp-initiated-sso#auth0-as-identity-provider-where-idp-initiates-sso for more details on RelayState.
+        /// </remarks>
+        public SamlUrlBuilder WithRelayState(IDictionary<string, string> values)
         {
-            // Note to future maintainers:
-            // It is important to use correct casing! This parameter must use PascalCase (i.e. RelayState),
-            // otherwise it will not be passed on correctly. See https://github.com/auth0/auth0.net/issues/186 
-            AddQueryString("RelayState", string.Join("&", values.Select(kvp => $"{kvp.Key}={kvp.Value}")));
-
-            return this;
+            return WithRelayState(String.Join("&", values.Select(kvp => $"{kvp.Key}={kvp.Value}")));
         }
-
     }
 }

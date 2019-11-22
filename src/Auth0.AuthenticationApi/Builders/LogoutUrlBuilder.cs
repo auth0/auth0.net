@@ -1,54 +1,70 @@
+using System;
+
 namespace Auth0.AuthenticationApi.Builders
 {
     /// <summary>
-    /// Used to build a logout URL.
+    /// Builder class used to fluently construct a logout URL.
     /// </summary>
+    /// <remarks>
+    /// See https://auth0.com/docs/api/authentication#logout
+    /// </remarks>
     public class LogoutUrlBuilder : UrlBuilderBase<LogoutUrlBuilder>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="LogoutUrlBuilder"/> class.
         /// </summary>
-        /// <param name="baseUrl">The base URL.</param>
-        public LogoutUrlBuilder(string baseUrl) 
+        /// <param name="baseUrl">Base URL of the Authentication API represented as a <see cref="String"/>.</param>
+        public LogoutUrlBuilder(string baseUrl)
             : base(baseUrl, "v2/logout")
         {
         }
 
         /// <summary>
-        /// Adds a returnTo query string parameter.
+        /// Initializes a new instance of the <see cref="LogoutUrlBuilder"/> class.
         /// </summary>
-        /// <param name="url">The URL.</param>
-        /// <returns>The <see cref="LogoutUrlBuilder"/>.</returns>
-        public LogoutUrlBuilder WithReturnUrl(string url)
+        /// <param name="baseUrl">Base URL of the Authentication API represented as a <see cref="Uri"/>.</param>
+        public LogoutUrlBuilder(Uri baseUrl)
+            : base(baseUrl, "v2/logout")
         {
-            AddQueryString("returnTo", url);
-
-            return this;
         }
 
         /// <summary>
-        /// Adds a client_id query string parameter.
+        /// Adds the `redirect_uri` query string parameter specifying the redirect URI.
         /// </summary>
-        /// <param name="clientId">The URL.</param>
-        /// <returns>The <see cref="LogoutUrlBuilder"/>.</returns>
+        /// <param name="uri">URI to redirect to.</param>
+        /// <returns>Current <see cref="LogoutUrlBuilder"/> to allow fluent configuration.</returns>
+        public LogoutUrlBuilder WithReturnUrl(string uri)
+        {
+            return WithValue("returnTo", uri);
+        }
+
+        /// <summary>
+        /// Adds the `redirect_uri` query string parameter specifying the redirect URI.
+        /// </summary>
+        /// <param name="uri"><see cref="Uri"/> to redirect to.</param>
+        /// <returns>Current <see cref="LogoutUrlBuilder"/> to allow fluent configuration.</returns>
+        public LogoutUrlBuilder WithReturnUrl(Uri uri)
+        {
+            return WithReturnUrl(uri.OriginalString);
+        }
+
+        /// <summary>
+        /// Adds the `client_id` query string parameter specifying the Client ID of the application.
+        /// </summary>
+        /// <param name="clientId">Client ID of the application.</param>
+        /// <returns>Current <see cref="LogoutUrlBuilder"/> to allow fluent configuration.</returns>
         public LogoutUrlBuilder WithClientId(string clientId)
         {
-            AddQueryString("client_id", clientId);
-
-            return this;
+            return WithValue("client_id", clientId);
         }
 
         /// <summary>
-        /// Adds a federated query string parameter.
+        /// Adds the `federated` flag query string parameter (no value).
         /// </summary>
-        /// <returns>The <see cref="LogoutUrlBuilder"/>.</returns>
+        /// <returns>Current <see cref="LogoutUrlBuilder"/> to allow fluent configuration.</returns>
         public LogoutUrlBuilder Federated()
         {
-            AddQueryString("federated", null);
-
-            return this;
+            return WithValue("federated", null);
         }
-
-
     }
 }
