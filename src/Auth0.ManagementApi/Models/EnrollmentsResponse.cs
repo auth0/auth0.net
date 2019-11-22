@@ -47,7 +47,7 @@ namespace Auth0.ManagementApi.Models
         public string PhoneNumber { get; set; }
 
         /// <summary>
-        /// Authentication method for this enrollment. Can be `authentication`, `guardian`, or `sms`.
+        /// Authentication method for this enrollment. Can be `authenticator`, `guardian`, or `sms`.
         /// </summary>
         [JsonProperty("auth_method")]
         [JsonConverter(typeof(StringEnumConverter))]
