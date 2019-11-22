@@ -67,7 +67,7 @@ namespace Auth0.OidcClient.Core.UnitTests.Tokens
 
             var rs256Verifier = new AsymmetricSignatureVerifier(signingKeys.Keys);
 
-            await ValidateToken(token, signedReqs, when: new DateTime(2019, 11, 1, 11, 00, 00), signatureVerifier: rs256Verifier);
+            await ValidateToken(token, signedReqs, when: new DateTime(2019, 11, 2, 0, 0, 00, DateTimeKind.Utc), signatureVerifier: rs256Verifier);
         }
 
         [Fact]
@@ -77,7 +77,7 @@ namespace Auth0.OidcClient.Core.UnitTests.Tokens
 
             var hs256Verifier = SymmetricSignatureVerifier.FromClientSecret("777d050475b92aecef27ba02c753bd279fbb2bef0ae3a38e0da63eb5bc63466d");
 
-            await ValidateToken(token, signedReqs, when: new DateTime(2019, 11, 1, 20, 00, 00, DateTimeKind.Utc), signatureVerifier: hs256Verifier);
+            await ValidateToken(token, signedReqs, when: new DateTime(2019, 11, 2, 0, 0, 00, DateTimeKind.Utc), signatureVerifier: hs256Verifier);
         }
 
         [Fact]
@@ -87,7 +87,7 @@ namespace Auth0.OidcClient.Core.UnitTests.Tokens
 
             var rs256Verifier = new AsymmetricSignatureVerifier(signingKeys.Keys);
 
-            var ex = await Assert.ThrowsAsync<IdTokenValidationException>(() => ValidateToken(token, signedReqs, new DateTime(2019, 11, 1, 11, 00, 00), rs256Verifier));
+            var ex = await Assert.ThrowsAsync<IdTokenValidationException>(() => ValidateToken(token, signedReqs, signatureVerifier: rs256Verifier));
             Assert.Equal("Invalid ID token signature.", ex.Message);
         }
 
@@ -98,7 +98,7 @@ namespace Auth0.OidcClient.Core.UnitTests.Tokens
 
             var hs256Verifier = SymmetricSignatureVerifier.FromClientSecret("fee96dfce7ebfba9f9e489ae07ff2aaa3b06efe1710e34d92762c61182124e5b");
 
-            var ex = await Assert.ThrowsAsync<IdTokenValidationException>(() => ValidateToken(token, signedReqs, new DateTime(2019, 11, 1, 11, 00, 00, DateTimeKind.Utc), hs256Verifier));
+            var ex = await Assert.ThrowsAsync<IdTokenValidationException>(() => ValidateToken(token, signedReqs, signatureVerifier: hs256Verifier));
 
             Assert.Equal("Invalid ID token signature.", ex.Message);
         }
