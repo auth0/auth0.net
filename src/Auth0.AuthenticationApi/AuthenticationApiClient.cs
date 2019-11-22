@@ -21,6 +21,9 @@ namespace Auth0.AuthenticationApi
         readonly IAuthenticationConnection connection;
         bool disposed = false;
 
+        /// <inheritdoc />
+        public Uri BaseUri { get { return baseUri; } }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
         /// </summary>
@@ -53,43 +56,6 @@ namespace Auth0.AuthenticationApi
         public AuthenticationApiClient(string domain, IAuthenticationConnection connection = null)
             : this(new Uri($"https://{domain}"), connection)
         {
-        }
-
-        /// <summary>
-        /// Creates a <see cref="AuthorizationUrlBuilder" /> for building an authorization URL.
-        /// </summary>
-        /// <returns>A new <see cref="AuthorizationUrlBuilder" /> configured for this baseUrl.</returns>
-        public AuthorizationUrlBuilder BuildAuthorizationUrl()
-        {
-            return new AuthorizationUrlBuilder(baseUri.ToString());
-        }
-
-        /// <summary>
-        /// Creates a <see cref="LogoutUrlBuilder" /> for building a logout URL.
-        /// </summary>
-        /// <returns>A new <see cref="LogoutUrlBuilder" /> configured for this baseUrl.</returns>
-        public LogoutUrlBuilder BuildLogoutUrl()
-        {
-            return new LogoutUrlBuilder(baseUri.ToString());
-        }
-
-        /// <summary>
-        /// Creates a <see cref="SamlUrlBuilder" /> for building a SAML authentication URL.
-        /// </summary>
-        /// <param name="client">Name of the client.</param>
-        /// <returns>A new <see cref="SamlUrlBuilder" /> configured for this baseUrl and <paramref name="client"/>.</returns>
-        public SamlUrlBuilder BuildSamlUrl(string client)
-        {
-            return new SamlUrlBuilder(baseUri.ToString(), client);
-        }
-
-        /// <summary>
-        /// Creates a <see cref="WsFedUrlBuilder" /> for building a WS-Federation authentication URL.
-        /// </summary>
-        /// <returns>A new <see cref="WsFedUrlBuilder" /> configured for this baseUrl.</returns>
-        public WsFedUrlBuilder BuildWsFedUrl()
-        {
-            return new WsFedUrlBuilder(baseUri.ToString());
         }
 
         /// <summary>

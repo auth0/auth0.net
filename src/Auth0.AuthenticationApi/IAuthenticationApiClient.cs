@@ -1,5 +1,4 @@
-﻿using Auth0.AuthenticationApi.Builders;
-using Auth0.AuthenticationApi.Models;
+﻿using Auth0.AuthenticationApi.Models;
 using System;
 using System.Threading.Tasks;
 
@@ -14,29 +13,9 @@ namespace Auth0.AuthenticationApi
     public interface IAuthenticationApiClient
     {
         /// <summary>
-        /// Creates a <see cref="AuthorizationUrlBuilder"/> which is used to build an authorization URL.
+        /// Base URI that will be used for all the requests.
         /// </summary>
-        /// <returns>A new <see cref="AuthorizationUrlBuilder"/> instance.</returns>
-        AuthorizationUrlBuilder BuildAuthorizationUrl();
-
-        /// <summary>
-        /// Creates a <see cref="LogoutUrlBuilder"/> which is used to build a logout URL.
-        /// </summary>
-        /// <returns>A new <see cref="LogoutUrlBuilder"/> instance.</returns>
-        LogoutUrlBuilder BuildLogoutUrl();
-
-        /// <summary>
-        /// Creates a <see cref="SamlUrlBuilder" /> which is used to build a SAML authentication URL.
-        /// </summary>
-        /// <param name="client">The name of the client.</param>
-        /// <returns>A new <see cref="SamlUrlBuilder" /> instance.</returns>
-        SamlUrlBuilder BuildSamlUrl(string client);
-
-        /// <summary>
-        /// Creates a <see cref="WsFedUrlBuilder"/> which is used to build a WS-FED authentication URL.
-        /// </summary>
-        /// <returns>A new <see cref="WsFedUrlBuilder"/> instance.</returns>
-        WsFedUrlBuilder BuildWsFedUrl();
+        Uri BaseUri { get; }
 
         /// <summary>
         /// Given the user's details, Auth0 will send a forgot password email.

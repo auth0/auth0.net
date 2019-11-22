@@ -7,8 +7,8 @@ namespace Auth0.ManagementApi.Models
     /// </summary>
     public enum EnrollmentAuthMethod
     {
-        [EnumMember(Value = "authentication")]
-        Authentication,
+        [EnumMember(Value = "authenticator")]
+        Authenticator,
 
         [EnumMember(Value = "guardian")]
         Guardian,
