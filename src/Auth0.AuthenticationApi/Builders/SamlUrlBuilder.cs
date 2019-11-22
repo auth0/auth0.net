@@ -18,9 +18,9 @@ namespace Auth0.AuthenticationApi.Builders
         /// <param name="baseUrl">Base URL of the Authentication API represented as a <see cref="String"/>.</param>
         /// <param name="clientId">Client ID of the application.</param>
         public SamlUrlBuilder(string baseUrl, string clientId)
-            : base(baseUrl, "samlp/{client}")
+            : base(baseUrl, "samlp/{clientId}")
         {
-            AddUrlSegment("client", clientId);
+            AddUrlSegment("clientId", clientId);
         }
 
         /// <summary>
@@ -29,9 +29,9 @@ namespace Auth0.AuthenticationApi.Builders
         /// <param name="baseUrl">Base URL of the Authentication API represented as a <see cref="Uri"/>.</param>
         /// <param name="clientId">Client ID of the application.</param>
         public SamlUrlBuilder(Uri baseUrl, string clientId)
-            : base(baseUrl, "samlp/{client}")
+            : base(baseUrl, "samlp/{clientId}")
         {
-            AddUrlSegment("client", clientId);
+            AddUrlSegment("clientId", clientId);
         }
 
         /// <summary>
