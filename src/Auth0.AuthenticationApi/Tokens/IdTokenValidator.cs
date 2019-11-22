@@ -33,9 +33,8 @@ namespace Auth0.AuthenticationApi.Tokens
 
             var token = DecodeToken(rawIDToken);
 
-            // For now we want to support HS256 + ClientSecret as we just had a major release.
-            // TODO: In the next major (v4.0) we should remove this condition as well as Auth0ClientOptions.ClientSecret
-            if (token.SignatureAlgorithm != "HS256")
+            // TODO: Make signatureVerifier non-optional and not skipped for 'HS256' in 7.0.0
+            if (token.SignatureAlgorithm != "HS256" || signatureVerifier != null)
                (signatureVerifier ?? await AsymmetricSignatureVerifier.ForJwks(required.Issuer)).VerifySignature(rawIDToken);
 
             AssertTokenClaimsMeetRequirements(required, token, pointInTime ?? DateTime.Now);
