@@ -8,22 +8,21 @@ namespace Auth0.AuthenticationApi.Models
     public class AccessTokenResponse : TokenBase
     {
         /// <summary>
-        /// Gets or sets the identifier token.
+        /// Identifier token.
         /// </summary>
         [JsonProperty("id_token")]
         public string IdToken { get; set; }
 
         /// <summary>
-        /// Gets or sets the expiry time in seconds.
+        /// Expiration time in seconds.
         /// </summary>
         [JsonProperty("expires_in")]
         public int ExpiresIn { get; set; }
 
         /// <summary>
-        /// Gets or sets the refresh token
+        /// Refresh token.
         /// </summary>
         [JsonProperty("refresh_token")]
         public string RefreshToken { get; set; }
-
     }
 }

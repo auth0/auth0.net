@@ -8,19 +8,19 @@ namespace Auth0.AuthenticationApi.Models
     public class PasswordlessSmsResponse
     {
         /// <summary>
-        /// Gets or sets the identifier of the request.
+        /// Unique identifier of the request.
         /// </summary>
         [JsonProperty("_id")]
         public string Id { get; set; }
 
         /// <summary>
-        /// The phone number to which the code was sent.
+        /// Phone number to which the code was sent.
         /// </summary>
         [JsonProperty("phone_number")]
         public string PhoneNumber { get; set; }
 
         /// <summary>
-        /// The language is which the message was sent.
+        /// Language the message sent was written in.
         /// </summary>
         [JsonProperty("request_language")]
         public object RequestLanguage { get; set; }
