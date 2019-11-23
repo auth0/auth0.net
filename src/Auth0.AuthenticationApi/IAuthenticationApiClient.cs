@@ -18,100 +18,120 @@ namespace Auth0.AuthenticationApi
         Uri BaseUri { get; }
 
         /// <summary>
-        /// Given the user's details, Auth0 will send a forgot password email.
+        /// Requests a password change email for a given email address and connection.
         /// </summary>
-        /// <param name="request">The <see cref="ChangePasswordRequest"/> specifying the user and connection details.</param>
-        /// <returns>A task object with a string containing the message returned from Auth0.</returns>
+        /// <param name="request"><see cref="ChangePasswordRequest" /> specifying the user, connection and optional client details.</param>
+        /// <returns><see cref="Task{string}"/> representing the async operation containing either the JSON error response or the plain text success message response.</returns>
         Task<string> ChangePasswordAsync(ChangePasswordRequest request);
 
         /// <summary>
-        /// Generates a link that can be used once to log in as a specific user.
+        /// Obtains a one-time link that can be used to log in as a specific user.
         /// </summary>
         /// <param name="request">The <see cref="ImpersonationRequest"/> containing the details of the user to impersonate.</param>
-        /// <returns>A <see cref="Uri"/> which can be used to sign in as the specified user.</returns>
+        /// <returns><see cref="Task{Uri}"/> representing the async operation containing a <see cref="{Url}"/> which can be used to sign in as the specified user.</returns>
+        /// <remarks>This feature has been deprecated and will be removed from Auth0 and this library in a future release.</remarks>
         Task<Uri> GetImpersonationUrlAsync(ImpersonationRequest request);
 
         /// <summary>
-        /// Returns the SAML 2.0 meta data for a client.
+        /// Returns user information based on the access token that was obtained during login.
         /// </summary>
-        /// <param name="clientId">The client (App) ID for which meta data must be returned.</param>
-        /// <returns>The meta data XML .</returns>
-        Task<string> GetSamlMetadataAsync(string clientId);
-
-        /// <summary>
-        /// Returns the user information based on the Auth0 access token (obtained during login).
-        /// </summary>
-        /// <param name="accessToken">The access token.</param>
-        /// <returns>The <see cref="UserInfo"/> associated with the token.</returns>
+        /// <param name="accessToken">Access token used to obtain the user information.</param>
+        /// <returns><see cref="Task{UserInfo}"/> representing the async operation containing the
+        /// <see cref="UserInfo"/> requested..</returns>
+        /// <remarks>Information included in the response depends on the scopes initially granted.</remarks>
         Task<UserInfo> GetUserInfoAsync(string accessToken);
 
         /// <summary>
-        /// Returns the WS Federation meta data.
+        /// Exchanges an Authorization Code for an Access Token.
         /// </summary>
-        /// <returns>The meta data XML</returns>
-        Task<string> GetWsFedMetadataAsync();
+        /// <param name="request"><see cref="AuthorizationCodeTokenRequest"/> containing Authorization Code details.</param>
+        /// <returns><see cref="Task{AccessTokenResponse}"/> representing the async operation containing 
+        /// a <see cref="AccessTokenResponse"> with the requested tokens.</returns>
+        Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodeTokenRequest request);
 
         /// <summary>
-        /// Given the user credentials, the connection specified and the Auth0 account information, it will create a new user. 
+        /// Exchanges an Authorization Code using PKCE for an Access Token.
         /// </summary>
-        /// <param name="request">The <see cref="SignupUserRequest"/> containing information of the user to sign up.</param>
-        /// <returns>A <see cref="SignupUserResponse"/> with the information of the signed up user.</returns>
+        /// <param name="request"><see cref="AuthorizationCodePkceTokenRequest"/> containing Authorization Code and PKCE details.</param>
+        /// <returns><see cref="Task{AccessTokenResponse}"/> representing the async operation containing 
+        /// a <see cref="AccessTokenResponse"> with the requested tokens.</returns>
+        Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodePkceTokenRequest request);
+
+        /// <summary>
+        /// Requests an Access Token using the Client Credentials Grant flow.
+        /// </summary>
+        /// <param name="request"><see cref="ClientCredentialsTokenRequest"/> containing
+        /// client and audience details of the request.</param>
+        /// <returns><see cref="Task{AccessTokenResponse}"/> representing the async operation containing 
+        /// a <see cref="AccessTokenResponse"> with the requested tokens.</returns>
+        Task<AccessTokenResponse> GetTokenAsync(ClientCredentialsTokenRequest request);
+
+        /// <summary>
+        /// Refreshes all tokens by way of the the Refresh Token obtained during authorization.
+        /// </summary>
+        /// <param name="request"><see cref="RefreshTokenRequest"/> containing Refresh Token and associated parameters.</param>
+        /// <returns><see cref="Task{AccessTokenResponse}"/> representing the async operation containing 
+        /// a <see cref="AccessTokenResponse"> with the requested tokens.</returns>
+        Task<AccessTokenResponse> GetTokenAsync(RefreshTokenRequest request);
+
+        /// <summary>
+        /// Performs authentication by providing user-supplied information in a <see cref="ResourceOwnerTokenRequest"/>.
+        /// </summary>
+        /// <param name="request"><see cref="ResourceOwnerTokenRequest"/> containing information regarding the username, password etc.</param>
+        /// <returns><see cref="Task{AccessTokenResponse}"/> representing the async operation containing 
+        /// a <see cref="AccessTokenResponse"> with the requested tokens.</returns>
+        /// <remarks>
+        /// The grant_type parameter required by the /oauth/token endpoint will automatically be inferred from the <paramref name="request"/> parameter. If no Realm was specified,
+        /// then the grant_type will be set to "password". If a Realm was specified, then the grant_type will be set to "http://auth0.com/oauth/grant-type/password-realm"
+        /// </remarks>
+        Task<AccessTokenResponse> GetTokenAsync(ResourceOwnerTokenRequest request);
+
+        /// <summary>
+        /// Creates a new user given the user details specified.
+        /// </summary>
+        /// <param name="request"><see cref="SignupUserRequest" /> containing information of the user to sign up.</param>
+        /// <returns><see cref="Task{SignupUserResponse}"/> representing the async operation containing 
+        /// a <see cref="SignupUserResponse" /> with the information of the signed up user.</returns>
         Task<SignupUserResponse> SignupUserAsync(SignupUserRequest request);
 
         /// <summary>
         /// Starts a new Passwordless email flow.
         /// </summary>
-        /// <param name="request">The <see cref="PasswordlessEmailRequest"/> containing the information about the new Passwordless flow to start.</param>
-        /// <returns>A <see cref="PasswordlessEmailResponse"/> containing the response.</returns>
+        /// <param name="request"><see cref="PasswordlessEmailRequest" /> containing details about the Passwordless email flow to start.</param>
+        /// <returns><see cref="Task{PasswordlessEmailResponse}"/> representing the async operation containing 
+        /// a <see cref="PasswordlessEmailResponse" /> with the information of the signed up user.</returns>
+        /// <returns><see cref="Task{PasswordlessEmailResponse}"/> representing the async operation containing 
+        /// a <see cref="PasswordlessEmailResponse" /> with the details of the request.</returns>
         Task<PasswordlessEmailResponse> StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest request);
 
         /// <summary>
         /// Starts a new Passwordless SMS flow.
         /// </summary>
-        /// <param name="request">The <see cref="PasswordlessSmsRequest"/> containing the information about the new Passwordless flow to start.</param>
-        /// <returns>A <see cref="PasswordlessSmsResponse"/> containing the response.</returns>
+        /// <param name="request"><see cref="PasswordlessSmsRequest" /> containing details about the Passwordless SMS flow to start.</param>
+        /// <returns><see cref="Task{PasswordlessSmsResponse}"/> representing the async operation containing 
+        /// a <see cref="PasswordlessSmsResponse" /> with the details of the request.</returns>
         Task<PasswordlessSmsResponse> StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest request);
 
         /// <summary>
         /// Unlinks a secondary account from a primary account.
         /// </summary>
-        /// <param name="request">The <see cref="UnlinkUserRequest"/> containing the information of the accounts to unlink.</param>
-        /// <returns>Nothing</returns>
+        /// <param name="request"><see cref="UnlinkUserRequest"/> containing details of the accounts to unlink.</param>
+        /// <returns><see cref="Task"/> representing the async unlink operation.</returns>
         Task UnlinkUserAsync(UnlinkUserRequest request);
 
         /// <summary>
-        /// Request an Access Token using the Authorization Code Grant flow.
+        /// Returns the SAML 2.0 metadata for a given client in XML.
         /// </summary>
-        /// <param name="request">The <see cref="ClientCredentialsTokenRequest"/> containing the information of the request.</param>
-        /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
-        Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodeTokenRequest request);
+        /// <param name="clientId">Client ID of the application for which metadata must be returned.</param>
+        /// <returns><see cref="Task{string}"/> representing the async operation containing the
+        /// SAML 2.0 metadata XML as a <see cref="string"/>.</returns>
+        Task<string> GetSamlMetadataAsync(string clientId);
 
         /// <summary>
-        /// Request an Access Token using the Authorization Code (PKCE) flow.
+        /// Returns the WS-Federation metadata in XML.
         /// </summary>
-        /// <param name="request">The <see cref="ClientCredentialsTokenRequest"/> containing the information of the request.</param>
-        /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
-        Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodePkceTokenRequest request);
-
-        /// <summary>
-        /// Request an Access Token using the Client Credentials Grant flow.
-        /// </summary>
-        /// <param name="request">The <see cref="ClientCredentialsTokenRequest"/> containing the information of the request.</param>
-        /// <returns>An <see cref="AccessTokenResponse"/> containing the token information</returns>
-        Task<AccessTokenResponse> GetTokenAsync(ClientCredentialsTokenRequest request);
-
-        /// <summary>
-        /// Given a <see cref="RefreshTokenRequest"/>, it will retrieve a refreshed access token from the authorization server.
-        /// </summary>
-        /// <param name="request">The refresh token request details, containing a valid refresh token.</param>
-        /// <returns>The new token issued by the server.</returns>
-        Task<AccessTokenResponse> GetTokenAsync(RefreshTokenRequest request);
-
-        /// <summary>
-        /// Given an <see cref="ResourceOwnerTokenRequest" />, it will do the authentication on the provider and return an <see cref="AccessTokenResponse"/>.
-        /// </summary>
-        /// <param name="request">The authentication request details containing information regarding the username, password etc.</param>
-        /// <returns>An <see cref="AccessTokenResponse" /> with the response.</returns>
-        Task<AccessTokenResponse> GetTokenAsync(ResourceOwnerTokenRequest request);
+        /// <returns><see cref="Task{string}"/> representing the async operation containing the
+        /// WS-Federation metadata XML as a <see cref="string"/>.</returns>
+        Task<string> GetWsFedMetadataAsync();
     }
 }
