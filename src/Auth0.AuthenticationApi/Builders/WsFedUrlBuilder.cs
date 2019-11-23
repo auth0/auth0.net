@@ -5,7 +5,7 @@ using System.Linq;
 namespace Auth0.AuthenticationApi.Builders
 {
     /// <summary>
-    /// Builder class used to fluently construct a WS Federation authorization URL.
+    /// Builder class used to fluently construct a WS-Federation authorization URL.
     /// </summary>
     public class WsFedUrlBuilder : UrlBuilderBase<WsFedUrlBuilder>
     {
