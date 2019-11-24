@@ -8,19 +8,19 @@ namespace Auth0.AuthenticationApi.Models
     public class UserMaintenanceRequestBase
     {
         /// <summary>
-        /// Gets or sets the client (app) identifier.
+        /// Client ID of the application.
         /// </summary>
         [JsonProperty("client_id")]
         public string ClientId { get; set; }
 
         /// <summary>
-        /// Gets or sets the connection.
+        /// Name of the connection.
         /// </summary>
         [JsonProperty("connection")]
         public string Connection { get; set; }
 
         /// <summary>
-        /// Gets or sets the user's email address.
+        /// Email address of the user.
         /// </summary>
         [JsonProperty("email")]
         public string Email { get; set; }

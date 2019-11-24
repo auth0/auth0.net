@@ -8,13 +8,13 @@ namespace Auth0.AuthenticationApi.Models
     public abstract class TokenBase
     {
         /// <summary>
-        /// Gets or sets the access token.
+        /// Access token.
         /// </summary>
         [JsonProperty("access_token")]
         public string AccessToken { get; set; }
 
         /// <summary>
-        /// Gets or sets the type of the token.
+        /// Type of token.
         /// </summary>
         [JsonProperty("token_type")]
         public string TokenType { get; set; }

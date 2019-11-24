@@ -1,86 +1,89 @@
-﻿using System;
-using System.Collections.Generic;
-using Auth0.Core.Serialization;
+﻿using Auth0.Core.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
+using System.Collections.Generic;
 
 namespace Auth0.AuthenticationApi.Models
 {
     /// <summary>
-    /// Represents the information of a user as available from
-    /// a standard OIDC /userinfo endpoint.
-    /// http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims
+    /// Represents user information returned from a standard OpenID Connect `/userinfo` endpoint.
     /// </summary>
+    /// <remarks>
+    /// See http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims for more details.
+    /// </remarks>
     public class UserInfo
     {
         /// <summary>
-        /// The Subject-Identifier for the user at the issuer. It's a unique value to identify
-        /// the user.
+        /// Subject-Identifier for the user at the issuer. A unique value to identify the user.
         /// </summary>
         [JsonProperty("sub")]
         public string UserId { get; set; }
 
         /// <summary>
-        /// Gets or sets the user's full name in displayable form including all name parts, 
+        /// Full name of the user in displayable form including all name parts, 
         /// possibly including titles and suffixes, ordered according to the user's locale and preferences.
         /// </summary>
-        [JsonProperty("name")] 
+        [JsonProperty("name")]
         public string FullName { get; set; }
 
         /// <summary>
-        /// Gets or sets the given name(s) or first name(s) of the user. 
+        /// Given name(s) or first name(s) of the user. 
         /// </summary>
         /// <remarks>
-        /// Note that in some cultures, 
-        /// people can have multiple given names; all can be present, with the names being separated by space characters.
+        /// May contain multiple given names separated by space characters.
         /// </remarks>
         [JsonProperty("given_name")]
         public string FirstName { get; set; }
 
         /// <summary>
-        /// Gets or sets the surname(s) or last name(s) of the user. 
+        /// Surname(s) or last name(s) of the user. 
         /// </summary>
         /// <remarks>
-        /// Note that in some cultures, people can have multiple family names or no family name; 
-        /// all can be present, with the names being separated by space characters.
+        /// May contain multiple given names separated by space characters or no family name at all.
         /// </remarks>
         [JsonProperty("family_name")]
         public string LastName { get; set; }
 
         /// <summary>
-        /// Gets or sets the middle name(s) of the user. 
+        /// Middle name(s) of the user. 
         /// </summary>
         /// <remarks>
-        /// Note that in some cultures, people can have multiple middle names; all can be present, with the names 
-        /// being separated by space characters. Also note that in some cultures, middle names are not used.
+        /// May contain multiple middle names separated by space characters.
         /// </remarks>
         [JsonProperty("middle_name")]
         public string MiddleName { get; set; }
 
         /// <summary>
-        /// Gets or sets a casual name of the user that may or may not be the same as the given_name. 
-        /// For instance, a nickname value of 'Mike' might be returned alongside a given_name value of 'Michael'.
+        /// Casual name of the user that may or may not be the same as <see cref="FirstName"/>. 
         /// </summary>
+        /// <example>
+        /// Nickname of 'Mike' might be returned for a <see cref="GivenName"/> of `Michael`.
+        /// </example>
         [JsonProperty("nickname")]
         public string NickName { get; set; }
 
         /// <summary>
-        /// Gets or sets the shorthand name by which the user wishes to be referred to at the RP, such as janedoe or j.doe. 
-        /// This value MAY be any valid JSON string including special characters such as @, /, or whitespace. 
-        /// The RP MUST NOT rely upon this value being unique.
+        /// Shorthand name by which the user wishes to be referred to at the RP, such as janedoe or j.doe. 
         /// </summary>
+        /// <remarks>
+        /// MAY be any valid JSON string including special characters such as @, /, or whitespace. 
+        /// You MUST NOT rely upon this value being unique.
+        /// </remarks>
         [JsonProperty("preferred_username")]
         public string PreferredUsername { get; set; }
 
         /// <summary>
-        /// Gets or sets the URL of the user's profile page. The contents of this Web page SHOULD be about the End-User.
+        /// URL of the user's profile page.
         /// </summary>
+        /// <remarks>
+        /// The contents of this Web page SHOULD be about the End-User.
+        /// </remarks>
         [JsonProperty("profile")]
         public string Profile { get; set; }
 
         /// <summary>
-        /// Gets or sets the 	URL of the user's profile picture. This URL MUST refer to an image file 
-        /// (for example, a PNG, JPEG, or GIF image file), rather than to a Web page containing an image. 
+        /// URL of the user's profile picture.
         /// </summary>
         /// <remarks>
         /// Note that this URL SHOULD specifically reference a profile photo of the End-User suitable for 
@@ -90,23 +93,26 @@ namespace Auth0.AuthenticationApi.Models
         public string Picture { get; set; }
 
         /// <summary>
-        /// Gets or sets the URL of the user's Web page or blog. This Web page SHOULD contain information
-        /// published by the End-User or an organization that the End-User is affiliated with.
+        /// URL of the user's Web page or blog.
         /// </summary>
+        /// <remarks>
+        /// This Web page SHOULD contain information published by the End-User or an organization that
+        /// the End-User is affiliated with.
+        /// </remarks>
         [JsonProperty("website")]
         public string Website { get; set; }
 
         /// <summary>
-        /// Gets or sets the user's preferred e-mail address. 
+        /// User's preferred e-mail address. 
         /// </summary>
         /// <remarks>
-        /// The RP MUST NOT rely upon this value being unique.
+        /// You MUST NOT rely upon this value being unique.
         /// </remarks>
         [JsonProperty("email")]
         public string Email { get; set; }
 
         /// <summary>
-        /// True if the user's e-mail address has been verified; otherwise false. 
+        /// Whether the user's email address has been verified or not.
         /// </summary>
         /// <remarks>
         /// When this Claim Value is true, this means that the OP took affirmative steps to ensure that this e-mail 
@@ -118,9 +124,12 @@ namespace Auth0.AuthenticationApi.Models
         public bool? EmailVerified { get; set; }
 
         /// <summary>
-        /// Gets or sets the user's gender. Values defined by this specification are female and male. Other values 
-        /// MAY be used when neither of the defined values are applicable.
+        /// User's gender.
         /// </summary>
+        /// <remarks>
+        /// Values defined by the specification include `female` and `male`.
+        /// Other values MAY be used when neither of the defined values are applicable.
+        /// </remarks>
         [JsonProperty("gender")]
         public string Gender { get; set; }
 
@@ -132,60 +141,64 @@ namespace Auth0.AuthenticationApi.Models
         public string Birthdate { get; set; }
 
         /// <summary>
-        /// Gets or sets a string from zoneinfo [http://openid.net/specs/openid-connect-core-1_0.html#zoneinfo] time zone
-        /// database representing the End-User's time zone. For example, Europe/Paris or America/Los_Angeles.
+        /// User's time zone as a "tz database name".
         /// </summary>
+        /// <example><code>Europe/Paris</code> or <code>America/Los_Angeles</code>.</example>
+        /// <remarks>
+        /// See https://en.wikipedia.org/wiki/List_of_tz_database_time_zones for more details.
+        /// </remarks>
         [JsonProperty("zoneinfo")]
         public string ZoneInformation { get; set; }
 
         /// <summary>
-        /// Gets or sets the user's locale, represented as a BCP47 [RFC5646] language tag. This is typically an ISO 639-1 Alpha-2 [ISO639‑1] 
-        /// language code in lowercase and an ISO 3166-1 Alpha-2 [ISO3166‑1] country code in uppercase, separated by a dash. 
-        /// For example, en-US or fr-CA. 
+        /// User's locale, represented as a BCP47 language tag.
         /// </summary>
+        /// <example><code>en-US</code> or <code>fr-CA</code></example>
         /// <remarks>
-        /// As a compatibility note, some implementations have used an underscore as the separator rather than a dash, 
-        /// for example, en_US; Relying Parties MAY choose to accept this locale syntax as well.
+        /// Typically an ISO 639-1 Alpha-2 language code in lowercase and an 
+        /// ISO 3166-1 Alpha-2 country code in uppercase, separated by a dash. 
         /// </remarks>
         [JsonProperty("locale")]
         public string Locale { get; set; }
 
         /// <summary>
-        /// Gets or sets the user's preferred telephone number. E.164 [E.164] is RECOMMENDED as the format of this Claim, for example, 
-        /// +1 (425) 555-1212 or +56 (2) 687 2400. If the phone number contains an extension, it is RECOMMENDED that the 
-        /// extension be represented using the RFC 3966 [RFC3966] extension syntax, for example, +1 (604) 555-1234;ext=5678.
+        /// User's preferred telephone number.
         /// </summary>
+        /// <example><code>+1 (425) 555-1212</code> or <code>+1 (604) 555-1234;ext=5678.</code></example>
+        /// <remarks>
+        /// E.164 is the RECOMMENDED format.
+        /// If the phone number contains an extension, it is RECOMMENDED that the 
+        /// extension be represented using the RFC 3966 extension syntax. 
+        /// </remarks>
         [JsonProperty("phone_number")]
         public string PhoneNumber { get; set; }
 
         /// <summary>
-        /// True if the End-User's phone number has been verified; otherwise false. When this Claim Value is true, 
-        /// this means that the OP took affirmative steps to ensure that this phone number was controlled by the user at 
-        /// the time the verification was performed. The means by which a phone number is verified is context-specific, and 
-        /// dependent upon the trust framework or contractual agreements within which the parties are operating. 
-        /// When true, the phone_number Claim MUST be in E.164 format and any extensions MUST be represented in RFC 3966 format.
+        /// Whether the user's phone number has been verified or not.
         /// </summary>
+        /// <remarks>
+        /// When this Claim Value is true, this means that the OP took affirmative steps to ensure that this 
+        /// phone number was controlled by the user at the time the verification was performed. 
+        /// When true, the phone_number Claim MUST be in E.164 format and any extensions MUST be represented in RFC 3966 format.
+        /// </remarks>
         [JsonProperty("phone_number_verified")]
         public bool? PhoneNumberVerified { get; set; }
 
         /// <summary>
-        /// Gets or sets the user's preferred postal address.
+        /// User's preferred postal/mailing address.
         /// </summary>
         [JsonProperty("address")]
         public UserInfoAddress Address { get; set; }
 
         /// <summary>
-        /// Gets or sets the time the user's information was last updated. 
-        /// Its value is a JSON number representing the number of seconds from 1970-01-01T0:0:0Z as measured in UTC until the date/time.
+        /// Time and date the user's information was last updated. 
         /// </summary>
         [JsonProperty("updated_at")]
         [JsonConverter(typeof(FlexibleDateTimeConverter))]
         public DateTime? UpdatedAt { get; set; }
 
         /// <summary>
-        /// Gets or sets additional claims about the user that are not represented by 
-        /// properties of the <see cref="UserInfo">UserInfo</see> class.
-        /// </summary>
+        /// Additional claims about the user.
         [JsonExtensionData]
         public IDictionary<string, JToken> AdditionalClaims { get; set; }
     }
