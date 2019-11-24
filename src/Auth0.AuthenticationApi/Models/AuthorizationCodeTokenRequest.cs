@@ -3,26 +3,11 @@
     /// <summary>
     /// Represents a request to exchange an authorization code for an access token during the OAuth authentication flow.
     /// </summary>
-    public class AuthorizationCodeTokenRequest
+    public class AuthorizationCodeTokenRequest : AuthorizationCodeRequestBase
     {
         /// <summary>
-        /// The authorization code which will be exchanged
-        /// </summary>
-        public string Code { get; set; }
-
-        /// <summary>
-        /// The client ID of the Application
-        /// </summary>
-        public string ClientId { get; set; }
-
-        /// <summary>
-        /// The client secret of the application.
+        /// Client secret of the application.
         /// </summary>
         public string ClientSecret { get; set; }
-
-        /// <summary>
-        /// The redirect URI which was passed during the login process
-        /// </summary>
-        public string RedirectUri { get; set; }
     }
 }

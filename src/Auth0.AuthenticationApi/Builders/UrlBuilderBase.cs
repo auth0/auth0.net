@@ -7,7 +7,7 @@ namespace Auth0.AuthenticationApi.Builders
     /// <summary>
     /// Base class for all strongly-typed fluent URL builders.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">Type of inherited class to faciliate fluent chaining.</typeparam>
     public class UrlBuilderBase<T> where T : UrlBuilderBase<T>
     {
         readonly Uri _baseUrl;
@@ -72,7 +72,7 @@ namespace Auth0.AuthenticationApi.Builders
         public T WithValue(string name, string value)
         {
             AddQueryString(name, value);
-            return (T) this;
+            return (T)this;
         }
 
         /// <summary>

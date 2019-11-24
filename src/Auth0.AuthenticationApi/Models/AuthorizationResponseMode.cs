@@ -6,7 +6,7 @@ namespace Auth0.AuthenticationApi.Models
     public enum AuthorizationResponseMode
     {
         /// <summary>
-        /// The response will be a form POST.
+        /// Response will be a form POST.
         /// </summary>
         FormPost
     }
