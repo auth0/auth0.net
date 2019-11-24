@@ -1,5 +1,4 @@
-﻿using Auth0.AuthenticationApi.Builders;
-using Auth0.AuthenticationApi.Models;
+﻿using Auth0.AuthenticationApi.Models;
 using Auth0.AuthenticationApi.Tokens;
 using System;
 using System.Collections.Generic;
@@ -16,13 +15,12 @@ namespace Auth0.AuthenticationApi
     /// </remarks>
     public class AuthenticationApiClient : IAuthenticationApiClient, IDisposable
     {
-        readonly Uri baseUri;
         readonly Uri tokenUri;
         readonly IAuthenticationConnection connection;
         bool disposed = false;
 
         /// <inheritdoc />
-        public Uri BaseUri { get { return baseUri; } }
+        public Uri BaseUri { get; private set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
@@ -37,7 +35,7 @@ namespace Auth0.AuthenticationApi
         /// </remarks>
         public AuthenticationApiClient(Uri baseUri, IAuthenticationConnection connection = null)
         {
-            this.baseUri = baseUri;
+            BaseUri = baseUri;
             this.connection = connection ?? new HttpClientAuthenticationConnection();
             tokenUri = BuildUri("oauth/token");
         }
@@ -58,11 +56,7 @@ namespace Auth0.AuthenticationApi
         {
         }
 
-        /// <summary>
-        /// Requests a password change email for a given email address and connection.
-        /// </summary>
-        /// <param name="request"><see cref="ChangePasswordRequest" /> specifying the user, connection and optional client details.</param>
-        /// <returns>A string that may contain either the JSON error response or the plain text success message from Auth0.</returns>
+        /// <inheritdoc />
         public Task<string> ChangePasswordAsync(ChangePasswordRequest request)
         {
             return connection.SendAsync<string>(
@@ -71,12 +65,7 @@ namespace Auth0.AuthenticationApi
                 request);
         }
 
-        /// <summary>
-        /// Obtains a one-time link that can be used to log in as a specific user.
-        /// </summary>
-        /// <param name="request">The <see cref="ImpersonationRequest"/> containing the details of the user to impersonate.</param>
-        /// <returns>A <see cref="Uri"/> which can be used to sign in as the specified user.</returns>
-        /// <remarks>This feature has been deprecated and will be removed from Auth0 and this library in a future release.</remarks>
+        /// <inheritdoc />
         public async Task<Uri> GetImpersonationUrlAsync(ImpersonationRequest request)
         {
             var body = new
@@ -98,21 +87,13 @@ namespace Auth0.AuthenticationApi
             return new Uri(response);
         }
 
-        /// <summary>
-        /// Returns the SAML 2.0 metadata for a client.
-        /// </summary>
-        /// <param name="clientId">The client (application) ID for which metadata must be returned.</param>
-        /// <returns>SAML 2.0 metadata XML as a string.</returns>
-        public Task<string> GetSamlMetadataAsync(string clientId)
+        /// <inheritdoc />
+        public Task<UserInfo> GetUserInfoAsync(string accessToken)
         {
-            return connection.GetAsync<string>(BuildUri($"wsfed/{clientId}"));
+            return connection.GetAsync<UserInfo>(BuildUri("userinfo"), BuildHeaders(accessToken));
         }
 
-        /// <summary>
-        /// Exchange an Authorization Code for an Access Token.
-        /// </summary>
-        /// <param name="request"><see cref="AuthorizationCodeTokenRequest"/> containing Authorization Code details.</param>
-        /// <returns><see cref="AccessTokenResponse"/> containing requested tokens.</returns>
+        /// <inheritdoc />
         public async Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodeTokenRequest request)
         {
             var body = new Dictionary<string, object> {
@@ -133,11 +114,7 @@ namespace Auth0.AuthenticationApi
             return response;
         }
 
-        /// <summary>
-        /// Exchange an Authorization Code using PKCE for an Access Token.
-        /// </summary>
-        /// <param name="request"><see cref="AuthorizationCodePkceTokenRequest"/> containing Authorization Code and PKCE details.</param>
-        /// <returns><see cref="AccessTokenResponse"/> containing the desired token information.</returns>
+        /// <inheritdoc/>
         public async Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodePkceTokenRequest request)
         {
             var body = new Dictionary<string, string> {
@@ -158,11 +135,7 @@ namespace Auth0.AuthenticationApi
             return response;
         }
 
-        /// <summary>
-        /// Request an Access Token using the Client Credentials Grant flow.
-        /// </summary>
-        /// <param name="request">The <see cref="ClientCredentialsTokenRequest"/> containing the information of the request.</param>
-        /// <returns><see cref="AccessTokenResponse"/> containing the desired token information.</returns>
+        /// <inheritdoc/>
         public Task<AccessTokenResponse> GetTokenAsync(ClientCredentialsTokenRequest request)
         {
             var body = new Dictionary<string, string> {
@@ -177,11 +150,7 @@ namespace Auth0.AuthenticationApi
                 body);
         }
 
-        /// <summary>
-        /// Refresh all tokens using the Refresh Token obtained during authorization.
-        /// </summary>
-        /// <param name="request"><see cref="RefreshTokenRequest"/> containing Refresh Token and associated parameters.</param>
-        /// <returns><see cref="AccessTokenResponse"/> containing the desired token information.</returns>
+        /// <inheritdoc/>
         public async Task<AccessTokenResponse> GetTokenAsync(RefreshTokenRequest request)
         {
             var body = new Dictionary<string, string> {
@@ -205,15 +174,7 @@ namespace Auth0.AuthenticationApi
             return response;
         }
 
-        /// <summary>
-        /// Perform authentication by providing user-supplied information in a <see cref="ResourceOwnerTokenRequest"/>.
-        /// </summary>
-        /// <param name="request"><see cref="ResourceOwnerTokenRequest"/> containing information regarding the username, password etc.</param>
-        /// <returns><see cref="AccessTokenResponse"/> containing the desired token information.</returns>
-        /// <remarks>
-        /// The grant_type parameter required by the /oauth/token endpoint will automatically be inferred from the <paramref name="request"/> parameter. If no Realm was specified,
-        /// then the grant_type will be set to "password". If a Realm was specified, then the grant_type will be set to "http://auth0.com/oauth/grant-type/password-realm"
-        /// </remarks>
+        /// <inheritdoc/>
         public async Task<AccessTokenResponse> GetTokenAsync(ResourceOwnerTokenRequest request)
         {
             var body = new Dictionary<string, string> {
@@ -243,31 +204,7 @@ namespace Auth0.AuthenticationApi
             return response;
         }
 
-        /// <summary>
-        /// Returns user information based on the access token that was obtained during login.
-        /// </summary>
-        /// <param name="accessToken">Access token used to obtain the user information.</param>
-        /// <returns><see cref="UserInfo"/> associated with the token.</returns>
-        /// <remarks>Information included in the response depends on the scopes requested.</remarks>
-        public Task<UserInfo> GetUserInfoAsync(string accessToken)
-        {
-            return connection.GetAsync<UserInfo>(BuildUri("userinfo"), BuildHeaders(accessToken));
-        }
-
-        /// <summary>
-        /// Returns the WS-Federation metadata.
-        /// </summary>
-        /// <returns>WS-Federation metadata in XML as a string.</returns>
-        public Task<string> GetWsFedMetadataAsync()
-        {
-            return connection.GetAsync<string>(BuildUri("wsfed/FederationMetadata/2007-06/FederationMetadata.xml"));
-        }
-
-        /// <summary>
-        /// Create a new user given the user details specified.
-        /// </summary>
-        /// <param name="request"><see cref="SignupUserRequest" /> containing information of the user to sign up.</param>
-        /// <returns><see cref="SignupUserResponse" /> with the information of the signed up user.</returns>
+        /// <inheritdoc/>
         public Task<SignupUserResponse> SignupUserAsync(SignupUserRequest request)
         {
             return connection.SendAsync<SignupUserResponse>(
@@ -276,11 +213,7 @@ namespace Auth0.AuthenticationApi
                 request);
         }
 
-        /// <summary>
-        /// Starts a new Passwordless email flow.
-        /// </summary>
-        /// <param name="request">The <see cref="PasswordlessEmailRequest" /> containing the information about the new Passwordless flow to start.</param>
-        /// <returns>A <see cref="PasswordlessEmailResponse" /> containing the response.</returns>
+        /// <inheritdoc/>
         public Task<PasswordlessEmailResponse> StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest request)
         {
             var body = new
@@ -298,11 +231,7 @@ namespace Auth0.AuthenticationApi
                 body);
         }
 
-        /// <summary>
-        /// Starts a new Passwordless SMS flow.
-        /// </summary>
-        /// <param name="request">The <see cref="PasswordlessSmsRequest" /> containing the information about the new Passwordless flow to start.</param>
-        /// <returns>A <see cref="PasswordlessSmsResponse" /> containing the response.</returns>
+        /// <inheritdoc/>
         public Task<PasswordlessSmsResponse> StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest request)
         {
             var body = new
@@ -318,14 +247,22 @@ namespace Auth0.AuthenticationApi
                 body);
         }
 
-        /// <summary>
-        /// Unlinks a secondary account from a primary account.
-        /// </summary>
-        /// <param name="request">The <see cref="UnlinkUserRequest"/> containing the information of the accounts to unlink.</param>
-        /// <returns>A <see cref="Task"/> that represents the asynchronous unlink operation.</returns>
+        /// <inheritdoc/>
         public Task UnlinkUserAsync(UnlinkUserRequest request)
         {
             return connection.SendAsync<object>(HttpMethod.Post, BuildUri("unlink"), request);
+        }
+
+        /// <inheritdoc />
+        public Task<string> GetSamlMetadataAsync(string clientId)
+        {
+            return connection.GetAsync<string>(BuildUri($"wsfed/{clientId}"));
+        }
+
+        /// <inheritdoc />
+        public Task<string> GetWsFedMetadataAsync()
+        {
+            return connection.GetAsync<string>(BuildUri("wsfed/FederationMetadata/2007-06/FederationMetadata.xml"));
         }
 
         /// <summary>
@@ -352,13 +289,13 @@ namespace Auth0.AuthenticationApi
 
         private async Task AssertIdTokenValid(string idToken, string issuer)
         {
-            var requirements = new IdTokenRequirements(baseUri.AbsoluteUri, issuer, TimeSpan.FromMinutes(1));
+            var requirements = new IdTokenRequirements(BaseUri.AbsoluteUri, issuer, TimeSpan.FromMinutes(1));
             await requirements.AssertTokenMeetsRequirements(idToken);
         }
 
         private Uri BuildUri(string path)
         {
-            return new UriBuilder(baseUri) { Path = path }.Uri;
+            return new UriBuilder(BaseUri) { Path = path }.Uri;
         }
 
         private IDictionary<string, string> BuildHeaders(string accessToken)

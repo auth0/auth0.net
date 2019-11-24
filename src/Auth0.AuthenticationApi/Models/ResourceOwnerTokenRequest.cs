@@ -1,48 +1,55 @@
 ﻿namespace Auth0.AuthenticationApi.Models
 {
     /// <summary>
-    /// Represents a request get a token using the Resource Owner Grant flow
+    /// Represents a request get a token using the Resource Owner Grant flow.
     /// </summary>
     public class ResourceOwnerTokenRequest
     {
         /// <summary>
-        /// The unique identifier of the target API you want to access.
+        /// Optional unique identifier of the target API to access.
         /// </summary>
         public string Audience { get; set; }
 
         /// <summary>
-        /// Gets or sets the client (app) identifier.
+        /// Client ID of the application.
         /// </summary>
         public string ClientId { get; set; }
 
         /// <summary>
-        /// Gets or sets the client (app) secret.
+        /// Optional client secret of the application.
         /// </summary>
         public string ClientSecret { get; set; }
 
         /// <summary>
-        /// Gets or sets the realm where to do the authentication.
+        /// Optional realm the user belongs to.
         /// </summary>
+        /// <remarks>
+        /// See https://auth0.com/docs/api-auth/grant/password#realm-support for more details.
+        /// </remarks>
         public string Realm { get; set; }
 
         /// <summary>
-        /// Gets or sets the password.
+        /// Resource Owner's secret.
         /// </summary>
         public string Password { get; set; }
 
         /// <summary>
-        /// Gets or sets the requested scope.
+        /// Optional scopes to be requested. Separate multiple values with a space.
         /// </summary>
         public string Scope { get; set; }
 
         /// <summary>
-        /// Gets or sets the username.
+        /// Resource Owner's identifier.
         /// </summary>
         public string Username { get; set; }
 
         /// <summary>
-        /// Gets or sets the ip of the end user this token is requested for
+        /// IP address of the end user this token is requested for.
         /// </summary>
+        /// <remarks>
+        /// It is important to set this if using this API server-side.
+        /// See https://auth0.com/docs/api-auth/tutorials/using-resource-owner-password-from-server-side for more details.
+        /// </remarks>
         public string ForwardedForIp { get; set; }
     }
 }

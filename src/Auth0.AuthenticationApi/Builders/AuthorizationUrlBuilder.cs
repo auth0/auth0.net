@@ -135,7 +135,7 @@ namespace Auth0.AuthenticationApi.Builders
         /// <summary>
         /// Adds the `response_mode` query string parameter.
         /// </summary>
-        /// <param name="responseMode">The response mode.</param>
+        /// <param name="responseMode">Response mode to use.</param>
         /// <returns>The <see cref="AuthorizationUrlBuilder"/>.</returns>
         public AuthorizationUrlBuilder WithResponseMode(AuthorizationResponseMode responseMode)
         {
