@@ -62,7 +62,7 @@ namespace Auth0.AuthenticationApi.Tokens
             }
             catch (SecurityTokenException e)
             {
-                throw new IdTokenValidationException("Invalid ID token signature.", e);
+                throw new IdTokenValidationException("Invalid token signature.", e);
             }
         }
     }
