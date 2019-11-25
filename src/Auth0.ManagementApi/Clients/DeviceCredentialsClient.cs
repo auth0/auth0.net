@@ -14,7 +14,7 @@ namespace Auth0.ManagementApi.Clients
         /// Creates a new instance of <see cref="DeviceCredentialsClient"/>.
         /// </summary>
         /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
-        public DeviceCredentialsClient(ApiConnection connection)
+        public DeviceCredentialsClient(IApiConnection connection)
             : base(connection)
         {
         }
