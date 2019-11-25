@@ -4,16 +4,13 @@
     <AssemblyTitle>Auth0.AuthenticationApi</AssemblyTitle>
     <AssemblyName>Auth0.AuthenticationApi</AssemblyName>
     <PackageId>Auth0.AuthenticationApi</PackageId>
-    <TargetFrameworks>netstandard2.0;net452;netstandard1.4;</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
     <NetStandardImplicitPackageVersion>2.0.3</NetStandardImplicitPackageVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\build\Auth0NetStrongName.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Auth0.Core\Auth0.Core.csproj" />
-  </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.4' ">
-    <PackageReference Include="System.Net.Http" Version="4.3.4" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)'=='net452'">
     <Reference Include="System.Net.Http" />
