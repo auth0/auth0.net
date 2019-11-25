@@ -5,7 +5,6 @@
     <AssemblyName>Auth0.AuthenticationApi</AssemblyName>
     <PackageId>Auth0.AuthenticationApi</PackageId>
     <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
-    <NetStandardImplicitPackageVersion>2.0.3</NetStandardImplicitPackageVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\build\Auth0NetStrongName.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
