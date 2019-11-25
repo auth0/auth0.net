@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace Auth0.Core.Http
+namespace Auth0.ManagementApi
 {
     /// <summary>
     /// The communication layer between the various API clients and the actual API back-end. All API calls happen through

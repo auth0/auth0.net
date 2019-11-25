@@ -1,5 +1,4 @@
-﻿using Auth0.Core.Http;
-using Auth0.ManagementApi.Clients;
+﻿using Auth0.ManagementApi.Clients;
 using System;
 using System.Net.Http;
 
