@@ -14,10 +14,9 @@ namespace Auth0.AuthenticationApi.Tokens
             this.signingKey = signingKey;
         }
 
-        public static SymmetricSignatureVerifier FromClientSecret(string clientSecret, bool isBase64Encoded = false)
+        public static SymmetricSignatureVerifier FromClientSecret(string clientSecret)
         {
-            var keyBytes = isBase64Encoded ? Convert.FromBase64String(clientSecret) : Encoding.ASCII.GetBytes(clientSecret);
-            return new SymmetricSignatureVerifier(new SymmetricSecurityKey(keyBytes));
+            return new SymmetricSignatureVerifier(new SymmetricSecurityKey(Encoding.ASCII.GetBytes(clientSecret)));
         }
 
         public JwtSecurityToken VerifySignature(string token)
