@@ -88,7 +88,7 @@ namespace Auth0.OidcClient.Core.UnitTests.Tokens
             var rs256Verifier = new AsymmetricSignatureVerifier(signingKeys.Keys);
 
             var ex = await Assert.ThrowsAsync<IdTokenValidationException>(() => ValidateToken(token, signedReqs, signatureVerifier: rs256Verifier));
-            Assert.Equal("Invalid ID token signature.", ex.Message);
+            Assert.Equal("Invalid token signature.", ex.Message);
         }
 
         [Fact]
@@ -100,7 +100,7 @@ namespace Auth0.OidcClient.Core.UnitTests.Tokens
 
             var ex = await Assert.ThrowsAsync<IdTokenValidationException>(() => ValidateToken(token, signedReqs, signatureVerifier: hs256Verifier));
 
-            Assert.Equal("Invalid ID token signature.", ex.Message);
+            Assert.Equal("Invalid token signature.", ex.Message);
         }
 
         [Fact]
