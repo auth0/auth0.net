@@ -10,8 +10,8 @@ namespace Auth0.ManagementApi
     /// </summary>
     public class ManagementApiClient : IDisposable
     {
-        private readonly ApiConnection _apiConnection;
-        private bool disposed;
+        readonly IApiConnection connection;
+        bool disposed;
 
         /// <summary>
         /// Contains all the methods to call the /blacklists/tokens endpoints.
@@ -109,29 +109,29 @@ namespace Auth0.ManagementApi
         /// </summary>
         public UsersClient Users { get; }
 
-        private ManagementApiClient(ApiConnection apiConnection)
+        private ManagementApiClient(IApiConnection apiConnection)
         {
-            _apiConnection = apiConnection;
+            connection = apiConnection;
 
-            BlacklistedTokens = new BlacklistedTokensClient(_apiConnection);
-            ClientGrants = new ClientGrantsClient(_apiConnection);
-            Clients = new ClientsClient(_apiConnection);
-            Connections = new ConnectionsClient(_apiConnection);
-            CustomDomains = new CustomDomainsClient(_apiConnection);
-            DeviceCredentials = new DeviceCredentialsClient(_apiConnection);
-            EmailProvider = new EmailProviderClient(_apiConnection);
-            EmailTemplates = new EmailTemplatesClient(_apiConnection);
-            Guardian = new GuardianClient(_apiConnection);
-            Jobs = new JobsClient(_apiConnection);
-            Logs = new LogsClient(_apiConnection);
-            ResourceServers = new ResourceServersClient(_apiConnection);
-            Roles = new RolesClient(_apiConnection);
-            Rules = new RulesClient(_apiConnection);
-            Stats = new StatsClient(_apiConnection);
-            TenantSettings = new TenantSettingsClient(_apiConnection);
-            Tickets = new TicketsClient(_apiConnection);
-            UserBlocks = new UserBlocksClient(_apiConnection);
-            Users = new UsersClient(_apiConnection);
+            BlacklistedTokens = new BlacklistedTokensClient(connection);
+            ClientGrants = new ClientGrantsClient(connection);
+            Clients = new ClientsClient(connection);
+            Connections = new ConnectionsClient(connection);
+            CustomDomains = new CustomDomainsClient(connection);
+            DeviceCredentials = new DeviceCredentialsClient(connection);
+            EmailProvider = new EmailProviderClient(connection);
+            EmailTemplates = new EmailTemplatesClient(connection);
+            Guardian = new GuardianClient(connection);
+            Jobs = new JobsClient(connection);
+            Logs = new LogsClient(connection);
+            ResourceServers = new ResourceServersClient(connection);
+            Roles = new RolesClient(connection);
+            Rules = new RulesClient(connection);
+            Stats = new StatsClient(connection);
+            TenantSettings = new TenantSettingsClient(connection);
+            Tickets = new TicketsClient(connection);
+            UserBlocks = new UserBlocksClient(connection);
+            Users = new UsersClient(connection);
         }
 
         /// <summary>
@@ -206,7 +206,8 @@ namespace Auth0.ManagementApi
         {
             if (!disposed && disposing)
             {
-                _apiConnection.Dispose();
+                if (connection is IDisposable disposableConnection)
+                    disposableConnection.Dispose();
                 disposed = true;
             }
         }

@@ -17,7 +17,7 @@ namespace Auth0.ManagementApi.Clients
         /// Creates a new instance of <see cref="ClientGrantsClient"/>.
         /// </summary>
         /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
-        public ClientGrantsClient(ApiConnection connection) 
+        public ClientGrantsClient(IApiConnection connection) 
             : base(connection)
         {
         }
