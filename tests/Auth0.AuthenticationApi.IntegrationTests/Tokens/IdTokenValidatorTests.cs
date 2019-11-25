@@ -61,32 +61,46 @@ namespace Auth0.OidcClient.Core.UnitTests.Tokens
         }
 
         [Fact]
-        public async void DoesNotValidateSignatureWhenSignedWithHS256()
-        {
-            var token = "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Rva2Vucy10ZXN0LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHwxMjM0NTY3ODkiLCJhdWQiOlsidG9rZW5zLXRlc3QtMTIzIiwiZXh0ZXJuYWwtdGVzdC05OTkiXSwiZXhwIjoxNTY4MTgwODk0LjIyNCwiaWF0IjoxNTY4MDA4MDk0LjIyNCwibm9uY2UiOiJhMWIyYzNkNGU1IiwiYXpwIjoidG9rZW5zLXRlc3QtMTIzIiwiYXV0aF90aW1lIjoxNTY4MDk0NDk0LjIyNH0.D5ZbbKddQMnJMLkuV76ALdvuvAShPxLVuKNvjBPn618";
-
-            await ValidateToken(token);
-        }
-
-        [Fact]
-        public async void SucceedsWhenSignatureIsValid()
+        public async void SucceedsWhenRS256SignatureIsValid()
         {
             var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1qQXlNamczTWpFMVF6WXhNamhGUkVKR09FRkVSRGMzTlRoRU9EWTNRak13UVRSR056UkdRUSJ9.eyJuaWNrbmFtZSI6ImRhbWllbmcrdGVzdDQyIiwibmFtZSI6ImRhbWllbmcrdGVzdDQyQGdtYWlsLmNvbSIsInBpY3R1cmUiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci81MzFiMDJkYTllOWVjNzg3ZDBlMWE1NzA1YzQ0YzU2Nj9zPTQ4MCZyPXBnJmQ9aHR0cHMlM0ElMkYlMkZjZG4uYXV0aDAuY29tJTJGYXZhdGFycyUyRmRhLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDE5LTExLTAxVDE3OjQ0OjE2LjY5NVoiLCJlbWFpbCI6ImRhbWllbmcrdGVzdDQyQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiaXNzIjoiaHR0cHM6Ly9hdXRoMC1kb3RuZXQtaW50ZWdyYXRpb24tdGVzdHMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVkYTY0NTNjMTIyZmI2MGE5MjRlOTI2MSIsImF1ZCI6InFtc3M5QTY2c3RQV1RPWGpSNlgxT2VBMERMYWRvTlAyIiwiaWF0IjoxNTcyNjMwMjU2LCJleHAiOjE1NzI2NjYyNTYsIm5vbmNlIjoiU09ySE9hdTlxMGl0eDRpVEZfaVgydyJ9.NomT02whkH42ISpcd_JvG4ZvQQhzPKfoWCwcgrhyLeWmnmHTo704WtsnfCqR72uw26D-ZGA5n2Yu4Jdcv2A8_leGEQm3p45-ramIDwWUu2J30m_op_5I4wFvgpbRrWSrD1_3qK1GrDnrdv8psGL8VgCf3pLLDbqbkzDmtE6OtEfDp2hEFwXs9YntREXu5Z-ufFFLz9VU5uyRg7JA95YGQNIRhzMFoUNKZAO19nrBq3HKc_iR_W9g9Y3iLPLgVVazq6zHjn3cXNKpr7JN6MUKqIB-YYJ1KDEvmaMO60xs2DAhhnkUN1OhXBLTgQ9xbCJeaxE7N48YMxPAu3HHT-rhZg";
 
-            var signatureVerifier = new AsymmetricSignatureVerifier(signingKeys.Keys);
+            var rs256Verifier = new AsymmetricSignatureVerifier(signingKeys.Keys);
 
-            await ValidateToken(token, signedReqs, when: new DateTime(2019, 11, 1, 20, 00, 00, DateTimeKind.Utc), signatureVerifier: signatureVerifier);
+            await ValidateToken(token, signedReqs, when: new DateTime(2019, 11, 2, 0, 0, 00, DateTimeKind.Utc), signatureVerifier: rs256Verifier);
         }
 
         [Fact]
-        public async void ThrowsWhenSignatureIsInvalid()
+        public async void SucceedsWhenHS256SignatureIsValid()
+        {
+            var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6Ik1qQXlNamczTWpFMVF6WXhNamhGUkVKR09FRkVSRGMzTlRoRU9EWTNRak13UVRSR056UkdRUSJ9.eyJuaWNrbmFtZSI6ImRhbWllbmcrdGVzdDQyIiwibmFtZSI6ImRhbWllbmcrdGVzdDQyQGdtYWlsLmNvbSIsInBpY3R1cmUiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci81MzFiMDJkYTllOWVjNzg3ZDBlMWE1NzA1YzQ0YzU2Nj9zPTQ4MCZyPXBnJmQ9aHR0cHMlM0ElMkYlMkZjZG4uYXV0aDAuY29tJTJGYXZhdGFycyUyRmRhLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDE5LTExLTAxVDE3OjQ0OjE2LjY5NVoiLCJlbWFpbCI6ImRhbWllbmcrdGVzdDQyQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiaXNzIjoiaHR0cHM6Ly9hdXRoMC1kb3RuZXQtaW50ZWdyYXRpb24tdGVzdHMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVkYTY0NTNjMTIyZmI2MGE5MjRlOTI2MSIsImF1ZCI6InFtc3M5QTY2c3RQV1RPWGpSNlgxT2VBMERMYWRvTlAyIiwiaWF0IjoxNTcyNjMwMjU2LCJleHAiOjE1NzI2NjYyNTYsIm5vbmNlIjoiU09ySE9hdTlxMGl0eDRpVEZfaVgydyJ9.ek1FlyRofSAeAFe9McmwVwEwXGY48KcYRNPtmTyvjqQ";
+
+            var hs256Verifier = SymmetricSignatureVerifier.FromClientSecret("777d050475b92aecef27ba02c753bd279fbb2bef0ae3a38e0da63eb5bc63466d");
+
+            await ValidateToken(token, signedReqs, when: new DateTime(2019, 11, 2, 0, 0, 00, DateTimeKind.Utc), signatureVerifier: hs256Verifier);
+        }
+
+        [Fact]
+        public async void ThrowsWhenRS256SignatureIsInvalid()
         {
             var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1qQXlNamczTWpFMVF6WXhNamhGUkVKR09FRkVSRGMzTlRoRU9EWTNRak13UVRSR056UkdRUSJ9.eyJuaWNrbmFtZSI6ImRhbWllbmcrdGVzdDQyIiwibmFtZSI6ImRhbWllbmcrZmFrZUBnbWFpbC5jb20iLCJwaWN0dXJlIjoiaHR0cHM6Ly9zLmdyYXZhdGFyLmNvbS9hdmF0YXIvNTMxYjAyZGE5ZTllYzc4N2QwZTFhNTcwNWM0NGM1NjY_cz00ODAmcj1wZyZkPWh0dHBzJTNBJTJGJTJGY2RuLmF1dGgwLmNvbSUyRmF2YXRhcnMlMkZkYS5wbmciLCJ1cGRhdGVkX2F0IjoiMjAxOS0xMS0wMVQxNzo0NDoxNi42OTVaIiwiZW1haWwiOiJkYW1pZW5nK3Rlc3Q0MkBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImlzcyI6Imh0dHBzOi8vYXV0aDAtZG90bmV0LWludGVncmF0aW9uLXRlc3RzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZGE2NDUzYzEyMmZiNjBhOTI0ZTkyNjEiLCJhdWQiOiJxbXNzOUE2NnN0UFdUT1hqUjZYMU9lQTBETGFkb05QMiIsImlhdCI6MTU3MjYzMDI1NiwiZXhwIjoxNTcyNjY2MjU2LCJub25jZSI6IlNPckhPYXU5cTBpdHg0aVRGX2lYMncifQ.oAXS_JCoVboZ0oheyQYyHbbaFQSS5wP4U2RYMnevEJNQxRWKi9wVjwUD5GpYMnhpQ_IfGaV5yld1kWgjWfg0R9bseZHPAgIRAz9dXZ-ZK2uadY4JDOLkFB5VNoTaKNTKG0gd5Rw9T2j_AABSyX0d9KP0id987OCI6GUCOAArqIZXklk2UM9-dmFH3H2IKBMRUxk2GtCw3jvrYzrSbm806JSzAihFeHYrmG0wTP243suznm21ZKhBU5a7Us1CLbGMJZ56ZUJY4IcB9zeDr87Y5b-DpG8L_5KAolNhha4GoV2G4kczEJNjwIgHADvsGUZAFNAmn-sTMygDpHIu4ZpEEQ";
 
-            var signatureVerifier = new AsymmetricSignatureVerifier(signingKeys.Keys);
+            var rs256Verifier = new AsymmetricSignatureVerifier(signingKeys.Keys);
 
-            var ex = await Assert.ThrowsAsync<IdTokenValidationException>(() => ValidateToken(token, signedReqs, new DateTime(2019, 11, 1, 11, 00, 00, DateTimeKind.Utc), signatureVerifier));
-            Assert.Equal("Invalid ID token signature.", ex.Message);
+            var ex = await Assert.ThrowsAsync<IdTokenValidationException>(() => ValidateToken(token, signedReqs, signatureVerifier: rs256Verifier));
+            Assert.Equal("Invalid token signature.", ex.Message);
+        }
+
+        [Fact]
+        public async void ThrowsWhenHS256SignatureIsInvalid()
+        {
+            var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6Ik1qQXlNamczTWpFMVF6WXhNamhGUkVKR09FRkVSRGMzTlRoRU9EWTNRak13UVRSR056UkdRUSJ9.eyJuaWNrbmFtZSI6ImRhbWllbmcrdGVzdDQyIiwibmFtZSI6ImRhbWllbmcrdGVzdDQyQGdtYWlsLmNvbSIsInBpY3R1cmUiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci81MzFiMDJkYTllOWVjNzg3ZDBlMWE1NzA1YzQ0YzU2Nj9zPTQ4MCZyPXBnJmQ9aHR0cHMlM0ElMkYlMkZjZG4uYXV0aDAuY29tJTJGYXZhdGFycyUyRmRhLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDE5LTExLTAxVDE3OjQ0OjE2LjY5NVoiLCJlbWFpbCI6ImRhbWllbmcrdGVzdDQyQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiaXNzIjoiaHR0cHM6Ly9hdXRoMC1kb3RuZXQtaW50ZWdyYXRpb24tdGVzdHMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVkYTY0NTNjMTIyZmI2MGE5MjRlOTI2MSIsImF1ZCI6InFtc3M5QTY2c3RQV1RPWGpSNlgxT2VBMERMYWRvTlAyIiwiaWF0IjoxNTcyNjMwMjU2LCJleHAiOjE1NzI2NjYyNTYsIm5vbmNlIjoiU09ySE9hdTlxMGl0eDRpVEZfaVgydyJ9.ek1FlyRofSAeAFe9McmwVwEwXGY48KcYRNPtmTyvjqQ";
+
+            var hs256Verifier = SymmetricSignatureVerifier.FromClientSecret("fee96dfce7ebfba9f9e489ae07ff2aaa3b06efe1710e34d92762c61182124e5b");
+
+            var ex = await Assert.ThrowsAsync<IdTokenValidationException>(() => ValidateToken(token, signedReqs, signatureVerifier: hs256Verifier));
+
+            Assert.Equal("Invalid token signature.", ex.Message);
         }
 
         [Fact]
@@ -105,6 +119,28 @@ namespace Auth0.OidcClient.Core.UnitTests.Tokens
 
             var ex = await Assert.ThrowsAsync<IdTokenValidationException>(() => ValidateToken(token));
             Assert.Equal("Signature algorithm of \"RS384\" is not supported. Expected the ID token to be signed with \"RS256\".", ex.Message);
+        }
+
+        [Fact]
+        public async void ThrowsWhenHS256OnAsymmetric()
+        {
+            var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6Ik1qQXlNamczTWpFMVF6WXhNamhGUkVKR09FRkVSRGMzTlRoRU9EWTNRak13UVRSR056UkdRUSJ9.eyJuaWNrbmFtZSI6ImRhbWllbmcrdGVzdDQyIiwibmFtZSI6ImRhbWllbmcrdGVzdDQyQGdtYWlsLmNvbSIsInBpY3R1cmUiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci81MzFiMDJkYTllOWVjNzg3ZDBlMWE1NzA1YzQ0YzU2Nj9zPTQ4MCZyPXBnJmQ9aHR0cHMlM0ElMkYlMkZjZG4uYXV0aDAuY29tJTJGYXZhdGFycyUyRmRhLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDE5LTExLTAxVDE3OjQ0OjE2LjY5NVoiLCJlbWFpbCI6ImRhbWllbmcrdGVzdDQyQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiaXNzIjoiaHR0cHM6Ly9hdXRoMC1kb3RuZXQtaW50ZWdyYXRpb24tdGVzdHMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVkYTY0NTNjMTIyZmI2MGE5MjRlOTI2MSIsImF1ZCI6InFtc3M5QTY2c3RQV1RPWGpSNlgxT2VBMERMYWRvTlAyIiwiaWF0IjoxNTcyNjMwMjU2LCJleHAiOjE1NzI2NjYyNTYsIm5vbmNlIjoiU09ySE9hdTlxMGl0eDRpVEZfaVgydyJ9.ek1FlyRofSAeAFe9McmwVwEwXGY48KcYRNPtmTyvjqQ";
+
+            var rs256Verifier = new AsymmetricSignatureVerifier(signingKeys.Keys);
+
+            var ex = await Assert.ThrowsAsync<IdTokenValidationException>(() => ValidateToken(token, signatureVerifier: rs256Verifier));
+            Assert.Equal("Signature algorithm of \"HS256\" is not supported. Expected the ID token to be signed with \"RS256\".", ex.Message);
+        }
+
+        [Fact]
+        public async void ThrowsWhenRS256OnSymmetric()
+        {
+            var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1qQXlNamczTWpFMVF6WXhNamhGUkVKR09FRkVSRGMzTlRoRU9EWTNRak13UVRSR056UkdRUSJ9.eyJuaWNrbmFtZSI6ImRhbWllbmcrdGVzdDQyIiwibmFtZSI6ImRhbWllbmcrdGVzdDQyQGdtYWlsLmNvbSIsInBpY3R1cmUiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci81MzFiMDJkYTllOWVjNzg3ZDBlMWE1NzA1YzQ0YzU2Nj9zPTQ4MCZyPXBnJmQ9aHR0cHMlM0ElMkYlMkZjZG4uYXV0aDAuY29tJTJGYXZhdGFycyUyRmRhLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDE5LTExLTAxVDE3OjQ0OjE2LjY5NVoiLCJlbWFpbCI6ImRhbWllbmcrdGVzdDQyQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiaXNzIjoiaHR0cHM6Ly9hdXRoMC1kb3RuZXQtaW50ZWdyYXRpb24tdGVzdHMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVkYTY0NTNjMTIyZmI2MGE5MjRlOTI2MSIsImF1ZCI6InFtc3M5QTY2c3RQV1RPWGpSNlgxT2VBMERMYWRvTlAyIiwiaWF0IjoxNTcyNjMwMjU2LCJleHAiOjE1NzI2NjYyNTYsIm5vbmNlIjoiU09ySE9hdTlxMGl0eDRpVEZfaVgydyJ9.NomT02whkH42ISpcd_JvG4ZvQQhzPKfoWCwcgrhyLeWmnmHTo704WtsnfCqR72uw26D-ZGA5n2Yu4Jdcv2A8_leGEQm3p45-ramIDwWUu2J30m_op_5I4wFvgpbRrWSrD1_3qK1GrDnrdv8psGL8VgCf3pLLDbqbkzDmtE6OtEfDp2hEFwXs9YntREXu5Z-ufFFLz9VU5uyRg7JA95YGQNIRhzMFoUNKZAO19nrBq3HKc_iR_W9g9Y3iLPLgVVazq6zHjn3cXNKpr7JN6MUKqIB-YYJ1KDEvmaMO60xs2DAhhnkUN1OhXBLTgQ9xbCJeaxE7N48YMxPAu3HHT-rhZg";
+
+            var hs256Verifier = SymmetricSignatureVerifier.FromClientSecret("fee96dfce7ebfba9f9e489ae07ff2aaa3b06efe1710e34d92762c61182124e5b");
+
+            var ex = await Assert.ThrowsAsync<IdTokenValidationException>(() => ValidateToken(token, signatureVerifier: hs256Verifier));
+            Assert.Equal("Signature algorithm of \"RS256\" is not supported. Expected the ID token to be signed with \"HS256\".", ex.Message);
         }
 
         [Fact]
