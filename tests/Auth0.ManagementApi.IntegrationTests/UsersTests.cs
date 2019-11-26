@@ -7,6 +7,7 @@ using FluentAssertions;
 using Xunit;
 using Auth0.Tests.Shared;
 using System.Linq;
+using Auth0.ManagementApi.Paging;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {

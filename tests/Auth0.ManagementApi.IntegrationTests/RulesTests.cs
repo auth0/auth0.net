@@ -5,6 +5,7 @@ using Auth0.ManagementApi.Models;
 using FluentAssertions;
 using Xunit;
 using Auth0.Tests.Shared;
+using Auth0.ManagementApi.Paging;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {

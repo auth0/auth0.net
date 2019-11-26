@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using Auth0.Core;
-using Auth0.Core.Collections;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Auth0.ManagementApi.Serialization
+namespace Auth0.ManagementApi.Paging
 {
     internal class PagedListConverter<T> : JsonConverter
     {
@@ -26,7 +24,7 @@ namespace Auth0.ManagementApi.Serialization
 
         public override bool CanConvert(Type objectType)
         {
-            return typeof (IPagedList<T>).GetTypeInfo().IsAssignableFrom(objectType.GetTypeInfo());
+            return typeof(IPagedList<T>).GetTypeInfo().IsAssignableFrom(objectType.GetTypeInfo());
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
@@ -71,7 +69,7 @@ namespace Auth0.ManagementApi.Serialization
                             }
                         }
                     }
-                    
+
                     return new PagedList<T>(collection);
                 }
             }

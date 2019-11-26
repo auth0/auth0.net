@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Auth0.ManagementApi.Models;
+using Auth0.ManagementApi.Paging;
 using Auth0.Tests.Shared;
 using FluentAssertions;
 using Xunit;
