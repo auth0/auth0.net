@@ -50,33 +50,38 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <inheritdoc/>
-        public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null)
+        public async Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, uri);
-            ApplyHeaders(request, headers);
-            return SendRequest<T>(request);
+            using (var request = new HttpRequestMessage(HttpMethod.Get, uri))
+            {
+                ApplyHeaders(request, headers);
+                return await SendRequest<T>(request).ConfigureAwait(false);
+            }
         }
 
         /// <inheritdoc/>
-        public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null)
+        public async Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null)
         {
-            var request = new HttpRequestMessage(method, uri) { Content = BuildMessageContent(body) };
-            ApplyHeaders(request, headers);
-            return SendRequest<T>(request);
+            using (var request = new HttpRequestMessage(method, uri) { Content = BuildMessageContent(body) })
+            {
+                ApplyHeaders(request, headers);
+                return await SendRequest<T>(request).ConfigureAwait(false);
+            }
         }
 
         private async Task<T> SendRequest<T>(HttpRequestMessage request)
         {
-            var response = await httpClient.SendAsync(request).ConfigureAwait(false);
+            using (var response = await httpClient.SendAsync(request).ConfigureAwait(false))
+            {
+                if (!response.IsSuccessStatusCode)
+                    throw new ErrorApiException(response.StatusCode, await ApiError.Parse(response).ConfigureAwait(false));
 
-            if (!response.IsSuccessStatusCode)
-                throw new ErrorApiException(response.StatusCode, await ApiError.Parse(response).ConfigureAwait(false));
+                var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-            var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-
-            return typeof(T) == typeof(string)
-                ? (T)(object)content
-                : JsonConvert.DeserializeObject<T>(content);
+                return typeof(T) == typeof(string)
+                    ? (T)(object)content
+                    : JsonConvert.DeserializeObject<T>(content);
+            }
         }
 
         private void ApplyHeaders(HttpRequestMessage request, IDictionary<string, string> headers)
@@ -126,10 +131,7 @@ namespace Auth0.AuthenticationApi
             {
                 name = "Auth0.Net",
                 version = sdkVersion.Major + "." + sdkVersion.Minor + "." + sdkVersion.Revision,
-                env = new
-                {
-                    target
-                }
+                env = new { target }
             }, Formatting.None);
             return Utils.Base64UrlEncode(Encoding.UTF8.GetBytes(agentJson));
         }
