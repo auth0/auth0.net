@@ -410,7 +410,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             associatedPermissions.Should().HaveCount(0);
 
             // Clean Up - Remove the permission from the resource server
-            resourceServer = await _apiClient.ResourceServers.UpdateAsync(resourceServer.Id, new ResourceServerUpdateRequest
+            await _apiClient.ResourceServers.UpdateAsync(resourceServer.Id, new ResourceServerUpdateRequest
             {
                 Scopes = originalScopes
             });

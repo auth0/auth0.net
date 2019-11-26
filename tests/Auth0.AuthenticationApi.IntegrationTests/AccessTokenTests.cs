@@ -52,7 +52,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         //public async Task Can_get_delegation_token()
         //{
         //    var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
-            
+
         //    // First get the access token
         //    var token = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
         //    {
@@ -82,42 +82,43 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact]
         public async Task Can_obtain_user_info()
         {
-            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
-
-            // First get the access token
-            var token = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+            using (var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
             {
-                ClientId = GetVariable("AUTH0_CLIENT_ID"),
-                ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
-                Realm = _connection.Name,
-                Username = _newUser.Email,
-                Password = Password,
-                Scope = "openid profile"
-            });
+                // First get the access token
+                var token = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+                {
+                    ClientId = GetVariable("AUTH0_CLIENT_ID"),
+                    ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
+                    Realm = _connection.Name,
+                    Username = _newUser.Email,
+                    Password = Password,
+                    Scope = "openid profile"
+                });
 
-            // Get the user info
-            var user = await authenticationApiClient.GetUserInfoAsync(token.AccessToken);
-            user.Should().NotBeNull();
-            user.UserId.Should().NotBeNull();
+                // Get the user info
+                var user = await authenticationApiClient.GetUserInfoAsync(token.AccessToken);
+                user.Should().NotBeNull();
+                user.UserId.Should().NotBeNull();
+            }
         }
 
         [Fact(Skip = "Run manually")]
         public async Task Can_exchange_authorization_code_for_access_token()
         {
-            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
-
-            // Exchange the authorization code
-            var token = await authenticationApiClient.GetTokenAsync(new AuthorizationCodeTokenRequest
+            using (var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
             {
-                ClientId = GetVariable("AUTH0_CLIENT_ID"),
-                ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
-                RedirectUri = "http://www.blah.com/test",
-                Code= "AaBhdAOl4OKvjX2I"
-            });
+                // Exchange the authorization code
+                var token = await authenticationApiClient.GetTokenAsync(new AuthorizationCodeTokenRequest
+                {
+                    ClientId = GetVariable("AUTH0_CLIENT_ID"),
+                    ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
+                    RedirectUri = "http://www.blah.com/test",
+                    Code = "AaBhdAOl4OKvjX2I"
+                });
 
-            // Assert
-            token.Should().NotBeNull();
+                // Assert
+                token.Should().NotBeNull();
+            }
         }
-
     }
 }
