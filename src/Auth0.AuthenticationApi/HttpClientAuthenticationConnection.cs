@@ -117,9 +117,6 @@ namespace Auth0.AuthenticationApi
 #if NET452
             var target = "NET452";
 #endif
-#if NETSTANDARD1_4
-            var target = "NETSTANDARD1.4";
-#endif
 #if NETSTANDARD2_0
             var target = "NETSTANDARD2.0";
 #endif
