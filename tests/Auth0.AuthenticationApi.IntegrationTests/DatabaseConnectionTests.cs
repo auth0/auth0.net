@@ -12,6 +12,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
     public class DatabaseConnectionTests : TestBase, IAsyncLifetime
     {
         private ManagementApiClient _managementApiClient;
+        private AuthenticationApiClient _authenticationApiClient;
         private Connection _connection;
         private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
         private const string Password2 = "xuh8k},+}KNit&z.!HEE6R2N";
@@ -29,21 +30,22 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 Strategy = "auth0",
                 EnabledClients = new[] {GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID")}
             });
+
+            _authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
+
         }
 
         public async Task DisposeAsync()
         {
             if (_connection != null)
                 await _managementApiClient.Connections.DeleteAsync(_connection.Id);
+            _managementApiClient.Dispose();
+            _authenticationApiClient.Dispose();
         }
 
         [Fact]
         public async Task Can_signup_user_and_change_password()
         {
-            // Arrange
-            var authenticationApiClient =
-                new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
-
             // Sign up the user
             var signupUserRequest = new SignupUserRequest
             {
@@ -63,7 +65,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                     b = "two"
                 }
             };
-            var signupUserResponse = await authenticationApiClient.SignupUserAsync(signupUserRequest);
+            var signupUserResponse = await _authenticationApiClient.SignupUserAsync(signupUserRequest);
             signupUserResponse.Should().NotBeNull();
             signupUserResponse.Id.Should().NotBeNull();
             signupUserResponse.EmailVerified.Should().BeFalse();

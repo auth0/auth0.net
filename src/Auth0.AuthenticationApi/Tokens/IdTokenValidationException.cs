@@ -6,6 +6,7 @@ namespace Auth0.AuthenticationApi.Tokens
     /// <summary>
     /// Exception used to convey ways in which an identity token has failed to be validated.
     /// </summary>
+    [Serializable]
     public class IdTokenValidationException : Exception
     {
         /// Create a new <see cref="IdTokenValidationException"/> with no error message.
@@ -33,12 +34,10 @@ namespace Auth0.AuthenticationApi.Tokens
         {
         }
 
-#if !NETSTANDARD1_4
         /// <inheritdoc />
         protected IdTokenValidationException(SerializationInfo info, StreamingContext context)
             : base(info, context)
         {
         }
-#endif
     }
 }

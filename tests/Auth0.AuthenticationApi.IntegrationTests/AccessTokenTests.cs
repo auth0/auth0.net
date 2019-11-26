@@ -1,10 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using Auth0.AuthenticationApi.Models;
-using Auth0.Tests.Shared;
-using FluentAssertions;
+﻿using Auth0.AuthenticationApi.Models;
 using Auth0.ManagementApi;
 using Auth0.ManagementApi.Models;
+using Auth0.Tests.Shared;
+using FluentAssertions;
+using System;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Auth0.AuthenticationApi.IntegrationTests
@@ -12,6 +12,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
     public class AccessTokenTests : TestBase, IAsyncLifetime
     {
         private ManagementApiClient _managementApiClient;
+        private AuthenticationApiClient _authenticationApiClient;
         private Connection _connection;
         private User _newUser;
         private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
@@ -40,12 +41,16 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             };
 
             _newUser = await _managementApiClient.Users.CreateAsync(newUserRequest);
+
+            _authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
         }
 
         public async Task DisposeAsync()
         {
             if (_connection != null)
                 await _managementApiClient.Connections.DeleteAsync(_connection.Id);
+            _managementApiClient.Dispose();
+            _authenticationApiClient.Dispose();
         }
 
         //[Test, Explicit]
@@ -82,10 +87,8 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact]
         public async Task Can_obtain_user_info()
         {
-            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
-
             // First get the access token
-            var token = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+            var token = await _authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
@@ -96,7 +99,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             });
 
             // Get the user info
-            var user = await authenticationApiClient.GetUserInfoAsync(token.AccessToken);
+            var user = await _authenticationApiClient.GetUserInfoAsync(token.AccessToken);
             user.Should().NotBeNull();
             user.UserId.Should().NotBeNull();
         }

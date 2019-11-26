@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using Auth0.AuthenticationApi.Models;
+﻿using Auth0.AuthenticationApi.Models;
 using Auth0.Tests.Shared;
 using FluentAssertions;
+using System;
+using System.Collections.Generic;
 using Xunit;
 
-namespace Auth0.AuthenticationApi.IntegrationTests
+namespace Auth0.AuthenticationApi.IntegrationTests.Builders
 {
     public class UriBuildersTests : TestBase
     {

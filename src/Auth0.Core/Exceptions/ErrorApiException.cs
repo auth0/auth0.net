@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Net;
+using System.Runtime.Serialization;
 
 namespace Auth0.Core.Exceptions
 {
     /// <summary>
     /// Represents errors that occur when making API calls.
     /// </summary>
+    [Serializable]
     public class ErrorApiException : ApiException
     {
         /// <summary>
@@ -57,6 +59,12 @@ namespace Auth0.Core.Exceptions
         {
             StatusCode = statusCode;
             ApiError = apiError;
+        }
+
+        /// <inheritdoc />
+        protected ErrorApiException(SerializationInfo serializationInfo, StreamingContext streamingContext)
+            : base(serializationInfo, streamingContext)
+        {
         }
     }
 }

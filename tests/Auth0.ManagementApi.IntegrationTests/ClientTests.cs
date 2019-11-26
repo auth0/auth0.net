@@ -60,7 +60,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Name = $"Integration testing {Guid.NewGuid():N}",
                 TokenEndpointAuthMethod = TokenEndpointAuthMethod.ClientSecretPost,
                 ApplicationType = ClientApplicationType.Spa,
-                GrantTypes = new string[0],
+                GrantTypes = Array.Empty<string>(),
                 InitiateLoginUri = "https://update.com/login"
             };
             var updateClientResponse = await _apiClient.Clients.UpdateAsync(newClientResponse.ClientId, updateClientRequest);

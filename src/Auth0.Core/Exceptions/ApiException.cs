@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace Auth0.Core.Exceptions
 {
     /// <summary>
     /// Represents an exception that occurs when making API calls.
     /// </summary>
+    [Serializable]
     public abstract class ApiException : Exception
     {
         /// <summary>
@@ -33,6 +35,12 @@ namespace Auth0.Core.Exceptions
         /// reference if no inner exception is specified.</param>
         protected ApiException(string message, Exception innerException)
             : base(message, innerException)
+        {
+        }
+
+        /// <inheritdoc />
+        protected ApiException(SerializationInfo serializationInfo, StreamingContext streamingContext)
+            : base(serializationInfo, streamingContext)
         {
         }
     }

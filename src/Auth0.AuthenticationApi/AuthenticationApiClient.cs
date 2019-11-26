@@ -59,6 +59,9 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc />
         public Task<string> ChangePasswordAsync(ChangePasswordRequest request)
         {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
             return connection.SendAsync<string>(
                 HttpMethod.Post,
                 BuildUri("dbconnections/change_password"),
@@ -68,6 +71,9 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc />
         public async Task<Uri> GetImpersonationUrlAsync(ImpersonationRequest request)
         {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
             var body = new
             {
                 protocol = request.Protocol,
@@ -90,12 +96,18 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc />
         public Task<UserInfo> GetUserInfoAsync(string accessToken)
         {
+            if (accessToken == null)
+                throw new ArgumentNullException(nameof(accessToken));
+
             return connection.GetAsync<UserInfo>(BuildUri("userinfo"), BuildHeaders(accessToken));
         }
 
         /// <inheritdoc />
         public async Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodeTokenRequest request)
         {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
             var body = new Dictionary<string, object> {
                 { "grant_type", "authorization_code" },
                 { "client_id", request.ClientId },
@@ -117,6 +129,9 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public async Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodePkceTokenRequest request)
         {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
             var body = new Dictionary<string, string> {
                 { "grant_type", "authorization_code" },
                 { "client_id", request.ClientId },
@@ -138,6 +153,9 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public Task<AccessTokenResponse> GetTokenAsync(ClientCredentialsTokenRequest request)
         {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
             var body = new Dictionary<string, string> {
                 { "grant_type", "client_credentials" },
                 { "client_id", request.ClientId },
@@ -153,6 +171,9 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public async Task<AccessTokenResponse> GetTokenAsync(RefreshTokenRequest request)
         {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
             var body = new Dictionary<string, string> {
                 { "grant_type", "refresh_token" },
                 { "client_id", request.ClientId },
@@ -177,6 +198,9 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public async Task<AccessTokenResponse> GetTokenAsync(ResourceOwnerTokenRequest request)
         {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
             var body = new Dictionary<string, string> {
                 { "client_id", request.ClientId },
                 { "username", request.Username },
@@ -207,6 +231,9 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public Task<SignupUserResponse> SignupUserAsync(SignupUserRequest request)
         {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
             return connection.SendAsync<SignupUserResponse>(
                 HttpMethod.Post,
                 BuildUri("dbconnections/signup"),
@@ -216,6 +243,9 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public Task<PasswordlessEmailResponse> StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest request)
         {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
             var body = new
             {
                 client_id = request.ClientId,
@@ -234,6 +264,9 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public Task<PasswordlessSmsResponse> StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest request)
         {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
             var body = new
             {
                 client_id = request.ClientId,
@@ -250,12 +283,18 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public Task UnlinkUserAsync(UnlinkUserRequest request)
         {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
             return connection.SendAsync<object>(HttpMethod.Post, BuildUri("unlink"), request);
         }
 
         /// <inheritdoc />
         public Task<string> GetSamlMetadataAsync(string clientId)
         {
+            if (clientId == null)
+                throw new ArgumentNullException(nameof(clientId));
+
             return connection.GetAsync<string>(BuildUri($"wsfed/{clientId}"));
         }
 
@@ -285,12 +324,13 @@ namespace Auth0.AuthenticationApi
         public void Dispose()
         {
             Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         private async Task AssertIdTokenValid(string idToken, string issuer)
         {
             var requirements = new IdTokenRequirements(BaseUri.AbsoluteUri, issuer, TimeSpan.FromMinutes(1));
-            await requirements.AssertTokenMeetsRequirements(idToken);
+            await requirements.AssertTokenMeetsRequirements(idToken).ConfigureAwait(false);
         }
 
         private Uri BuildUri(string path)

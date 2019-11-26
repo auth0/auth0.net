@@ -1,11 +1,13 @@
 ﻿using Auth0.Core.Http;
 using System;
+using System.Runtime.Serialization;
 
 namespace Auth0.Core.Exceptions
 {
     /// <summary>
     /// Represents errors caused by rate limits being exceeded when making API calls.
     /// </summary>
+    [Serializable]
     public class RateLimitApiException : ApiException
     {
         public RateLimit RateLimit { get; }
@@ -45,6 +47,12 @@ namespace Auth0.Core.Exceptions
             : this("Rate limits exceeded")
         {
             RateLimit = rateLimit;
+        }
+
+        /// <inheritdoc />
+        protected RateLimitApiException(SerializationInfo serializationInfo, StreamingContext streamingContext)
+            : base(serializationInfo, streamingContext)
+        {
         }
     }
 }
