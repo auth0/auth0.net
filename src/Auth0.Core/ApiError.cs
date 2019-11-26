@@ -49,7 +49,7 @@ namespace Auth0.Core
             {
                 return JsonConvert.DeserializeObject<ApiError>(content);
             }
-            catch (JsonSerializationException)
+            catch (JsonException)
             {
                 return new ApiError
                 {
