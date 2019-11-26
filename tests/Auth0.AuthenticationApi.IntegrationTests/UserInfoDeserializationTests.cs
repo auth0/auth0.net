@@ -1,8 +1,8 @@
-﻿using System;
-using Auth0.AuthenticationApi.Models;
+﻿using Auth0.AuthenticationApi.Models;
 using FluentAssertions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 using Xunit;
 
 namespace Auth0.AuthenticationApi.IntegrationTests

@@ -24,17 +24,18 @@ namespace Auth0.Tests.Shared
 
         protected async Task<string> GenerateManagementApiToken()
         {
-            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
-
-            // Get the access token
-            var token = await authenticationApiClient.GetTokenAsync(new ClientCredentialsTokenRequest
+            using (var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
             {
-                ClientId = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
-                ClientSecret = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET"),
-                Audience = GetVariable("AUTH0_MANAGEMENT_API_AUDIENCE")
-            });
+                // Get the access token
+                var token = await authenticationApiClient.GetTokenAsync(new ClientCredentialsTokenRequest
+                {
+                    ClientId = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
+                    ClientSecret = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET"),
+                    Audience = GetVariable("AUTH0_MANAGEMENT_API_AUDIENCE")
+                });
 
-            return token.AccessToken;
+                return token.AccessToken;
+            }
         }
 
         protected string GetVariable(string variableName)

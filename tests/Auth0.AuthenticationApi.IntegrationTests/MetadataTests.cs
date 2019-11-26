@@ -24,13 +24,14 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         public async Task Can_retrieve_wsfed_metadata()
         {
             // Arrange
-            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
+            using (var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
+            {
+                // Act
+                var response = await authenticationApiClient.GetWsFedMetadataAsync();
 
-            // Act
-            var response = await authenticationApiClient.GetWsFedMetadataAsync();
-
-            // Assert
-            response.Should().NotBeNull();
+                // Assert
+                response.Should().NotBeNull();
+            }
         }
     }
 }

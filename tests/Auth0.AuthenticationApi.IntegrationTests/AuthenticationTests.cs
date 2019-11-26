@@ -1,10 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using Auth0.AuthenticationApi.Models;
+﻿using Auth0.AuthenticationApi.Models;
 using Auth0.ManagementApi;
 using Auth0.ManagementApi.Models;
 using Auth0.Tests.Shared;
 using FluentAssertions;
+using System;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Auth0.AuthenticationApi.IntegrationTests
@@ -12,6 +12,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
     public class AuthenticationTests : TestBase, IAsyncLifetime
     {
         private ManagementApiClient _managementApiClient;
+        private AuthenticationApiClient _authenticationApiClient;
         private Connection _connection;
         private User _user;
         private User _plusUser;
@@ -67,6 +68,8 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 EmailVerified = true,
                 Password = Password
             });
+
+            _authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
         }
 
         public async Task DisposeAsync()
@@ -82,16 +85,16 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
             if (_connection != null)
                 await _managementApiClient.Connections.DeleteAsync(_connection.Id);
+
+            _managementApiClient.Dispose();
+            _authenticationApiClient.Dispose();
         }
 
         [Fact]
         public async Task Can_authenticate_against_Auth0()
         {
-            // Arrange
-            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
-
             // Act
-            var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+            var authenticationResponse = await _authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
@@ -113,11 +116,8 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact]
         public async Task Can_authenticate_to_default_directory()
         {
-            // Arrange
-            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
-
             // Act
-            var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+            var authenticationResponse = await _authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
@@ -138,11 +138,8 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact(Skip = "Need to look into offline_access")]
         public async Task Can_request_offline_access()
         {
-            // Arrange
-            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
-
             // Act
-            var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+            var authenticationResponse = await _authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
@@ -163,11 +160,8 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact]
         public async Task Can_authenticate_user_with_plus_in_username()
         {
-            // Arrange
-            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
-
             // Act
-            var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+            var authenticationResponse = await _authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
