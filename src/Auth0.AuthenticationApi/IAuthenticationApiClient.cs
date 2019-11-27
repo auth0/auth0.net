@@ -111,12 +111,5 @@ namespace Auth0.AuthenticationApi
         /// <returns><see cref="Task{PasswordlessSmsResponse}"/> representing the async operation containing 
         /// a <see cref="PasswordlessSmsResponse" /> with the details of the request.</returns>
         Task<PasswordlessSmsResponse> StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest request);
-
-        /// <summary>
-        /// Unlinks a secondary account from a primary account.
-        /// </summary>
-        /// <param name="request"><see cref="UnlinkUserRequest"/> containing details of the accounts to unlink.</param>
-        /// <returns><see cref="Task"/> representing the async unlink operation.</returns>
-        Task UnlinkUserAsync(UnlinkUserRequest request);
     }
 }
