@@ -111,27 +111,5 @@ namespace Auth0.AuthenticationApi
         /// <returns><see cref="Task{PasswordlessSmsResponse}"/> representing the async operation containing 
         /// a <see cref="PasswordlessSmsResponse" /> with the details of the request.</returns>
         Task<PasswordlessSmsResponse> StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest request);
-
-        /// <summary>
-        /// Unlinks a secondary account from a primary account.
-        /// </summary>
-        /// <param name="request"><see cref="UnlinkUserRequest"/> containing details of the accounts to unlink.</param>
-        /// <returns><see cref="Task"/> representing the async unlink operation.</returns>
-        Task UnlinkUserAsync(UnlinkUserRequest request);
-
-        /// <summary>
-        /// Returns the SAML 2.0 metadata for a given client in XML.
-        /// </summary>
-        /// <param name="clientId">Client ID of the application for which metadata must be returned.</param>
-        /// <returns><see cref="Task{string}"/> representing the async operation containing the
-        /// SAML 2.0 metadata XML as a <see cref="string"/>.</returns>
-        Task<string> GetSamlMetadataAsync(string clientId);
-
-        /// <summary>
-        /// Returns the WS-Federation metadata in XML.
-        /// </summary>
-        /// <returns><see cref="Task{string}"/> representing the async operation containing the
-        /// WS-Federation metadata XML as a <see cref="string"/>.</returns>
-        Task<string> GetWsFedMetadataAsync();
     }
 }
