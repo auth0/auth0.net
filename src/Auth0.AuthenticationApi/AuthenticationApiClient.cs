@@ -121,7 +121,7 @@ namespace Auth0.AuthenticationApi
                 body
             ).ConfigureAwait(false);
 
-            await AssertIdTokenValid(response.IdToken, request.ClientId).ConfigureAwait(false);
+            await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret).ConfigureAwait(false);
 
             return response;
         }
@@ -145,7 +145,7 @@ namespace Auth0.AuthenticationApi
                 body
             ).ConfigureAwait(false);
 
-            await AssertIdTokenValid(response.IdToken, request.ClientId).ConfigureAwait(false);
+            await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret).ConfigureAwait(false);
 
             return response;
         }
@@ -190,7 +190,7 @@ namespace Auth0.AuthenticationApi
                 body
             ).ConfigureAwait(false);
 
-            await AssertIdTokenValid(response.IdToken, request.ClientId).ConfigureAwait(false);
+            await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret).ConfigureAwait(false);
 
             return response;
         }
@@ -223,7 +223,7 @@ namespace Auth0.AuthenticationApi
                 headers
             ).ConfigureAwait(false);
 
-            await AssertIdTokenValid(response.IdToken, request.ClientId).ConfigureAwait(false);
+            await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret).ConfigureAwait(false);
 
             return response;
         }
@@ -303,10 +303,32 @@ namespace Auth0.AuthenticationApi
             GC.SuppressFinalize(this);
         }
 
-        private async Task AssertIdTokenValid(string idToken, string issuer)
+        private async Task AssertIdTokenValid(string idToken, string audience, JwtSignatureAlgorithm algorithm, string clientSecret)
         {
-            var requirements = new IdTokenRequirements(BaseUri.AbsoluteUri, issuer, TimeSpan.FromMinutes(1));
-            await requirements.AssertTokenMeetsRequirements(idToken).ConfigureAwait(false);
+            var issuer = BaseUri.AbsoluteUri;
+            var requirements = new IdTokenRequirements(issuer, audience, TimeSpan.FromMinutes(1));
+            var signatureVerifier = await CreateSignatureVerifier(algorithm, issuer, clientSecret).ConfigureAwait(false);
+
+            await requirements.AssertTokenMeetsRequirements(idToken, signatureVerifier: signatureVerifier).ConfigureAwait(false);
+        }
+
+        private static async Task<ISignatureVerifier> CreateSignatureVerifier(JwtSignatureAlgorithm algorithm, string issuer, string clientSecret)
+        {
+            switch (algorithm)
+            {
+                case JwtSignatureAlgorithm.RS256:
+                    if (String.IsNullOrWhiteSpace(issuer))
+                        throw new ArgumentException("Issuer must contain a value when using RS256", nameof(issuer));
+                    return await AsymmetricSignatureVerifier.ForJwks(issuer).ConfigureAwait(false);
+
+                case JwtSignatureAlgorithm.HS256:
+                    if (String.IsNullOrWhiteSpace(clientSecret))
+                        throw new ArgumentException("ClientSecret must contain a value when using HS256", nameof(issuer));
+                    return SymmetricSignatureVerifier.FromClientSecret(clientSecret);
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(algorithm));
+            }
         }
 
         private Uri BuildUri(string path)

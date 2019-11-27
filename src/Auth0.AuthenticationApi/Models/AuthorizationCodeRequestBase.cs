@@ -12,10 +12,20 @@
         /// </summary>
         public string ClientId { get; set; }
 
+        /// <summary>
+        /// What <see cref="JwtSignatureAlgorithm"/> is used to verify the signature
+        /// of Id Tokens.
+        /// </summary>
+        public JwtSignatureAlgorithm SigningAlgorithm {  get; set; }
 
         /// <summary>
         /// Rredirect URI passed during the login process.
         /// </summary>
         public string RedirectUri { get; set; }
+
+        /// <summary>
+        /// Optional client secret of the application for Id Token verification.
+        /// </summary>
+        public virtual string ClientSecret { get; set; }
     }
 }

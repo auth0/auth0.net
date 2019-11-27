@@ -74,11 +74,12 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
                     Scope = "openid",
                     Username = _user.Email,
                     Password = Password
-
                 });
 
-                var idTokenValidation = new IdTokenRequirements($"https://{GetVariable("AUTH0_AUTHENTICATION_API_URL")}/", GetVariable("AUTH0_CLIENT_ID"), TimeSpan.FromMinutes(1));
-                await idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken);
+                var issuer = $"https://{GetVariable("AUTH0_AUTHENTICATION_API_URL")}/";
+                var idTokenValidation = new IdTokenRequirements(issuer, GetVariable("AUTH0_CLIENT_ID"), TimeSpan.FromMinutes(1));
+                var verifier = await AsymmetricSignatureVerifier.ForJwks(issuer);
+                await idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken, verifier);
             }
         }
 
@@ -97,11 +98,12 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
                     Scope = "openid",
                     Username = GetVariable("BRUCKE_USERNAME"),
                     Password = GetVariable("BRUCKE_PASSWORD")
-
                 });
 
-                var idTokenValidation = new IdTokenRequirements($"https://{GetVariable("BRUCKE_AUTHENTICATION_API_URL")}/", GetVariable("BRUCKE_CLIENT_ID"), TimeSpan.FromMinutes(1));
-                await idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken);
+                var issuer = $"https://{GetVariable("BRUCKE_AUTHENTICATION_API_URL")}/";
+                var idTokenValidation = new IdTokenRequirements(issuer, GetVariable("BRUCKE_CLIENT_ID"), TimeSpan.FromMinutes(1));
+                var verifier = await AsymmetricSignatureVerifier.ForJwks(issuer);
+                await idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken, verifier);
             }
         }
 
@@ -124,10 +126,11 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
                 });
 
                 var idTokenValidation = new IdTokenRequirements("https://auth0.auth0.com/", GetVariable("AUTH0_CLIENT_ID"), TimeSpan.FromMinutes(1));
+                var verifier = await AsymmetricSignatureVerifier.ForJwks("https://auth0.auth0.com/");
 
                 // Assert
                 authenticationResponse.IdToken.Should().NotBeNull();
-                await Assert.ThrowsAsync<IdTokenValidationException>(() => idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken));
+                await Assert.ThrowsAsync<IdTokenValidationException>(() => idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken, verifier));
             }
         }
 
@@ -149,11 +152,13 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
 
                 });
 
-                var idTokenValidation = new IdTokenRequirements($"https://{GetVariable("AUTH0_AUTHENTICATION_API_URL")}/", "invalid_audience", TimeSpan.FromMinutes(1));
+                var issuer = $"https://{GetVariable("AUTH0_AUTHENTICATION_API_URL")}/";
+                var idTokenValidation = new IdTokenRequirements(issuer, "invalid_audience", TimeSpan.FromMinutes(1));
+                var verifier = await AsymmetricSignatureVerifier.ForJwks(issuer);
 
                 // Assert
                 authenticationResponse.IdToken.Should().NotBeNull();
-                await Assert.ThrowsAsync<IdTokenValidationException>(() => idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken));
+                await Assert.ThrowsAsync<IdTokenValidationException>(() => idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken, verifier));
             }
         }
     }

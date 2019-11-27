@@ -8,6 +8,6 @@
         /// <summary>
         /// Client secret of the application.
         /// </summary>
-        public string ClientSecret { get; set; }
+        public override string ClientSecret { get; set; }
     }
 }
