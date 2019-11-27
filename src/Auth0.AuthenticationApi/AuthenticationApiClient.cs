@@ -280,15 +280,6 @@ namespace Auth0.AuthenticationApi
                 body);
         }
 
-        /// <inheritdoc/>
-        public Task UnlinkUserAsync(UnlinkUserRequest request)
-        {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-
-            return connection.SendAsync<object>(HttpMethod.Post, BuildUri("unlink"), request);
-        }
-
         /// <summary>
         /// Disposes of any owned disposable resources such as a <see cref="IAuthenticationConnection"/>.
         /// </summary>
