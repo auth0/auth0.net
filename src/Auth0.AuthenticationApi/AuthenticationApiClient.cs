@@ -289,21 +289,6 @@ namespace Auth0.AuthenticationApi
             return connection.SendAsync<object>(HttpMethod.Post, BuildUri("unlink"), request);
         }
 
-        /// <inheritdoc />
-        public Task<string> GetSamlMetadataAsync(string clientId)
-        {
-            if (clientId == null)
-                throw new ArgumentNullException(nameof(clientId));
-
-            return connection.GetAsync<string>(BuildUri($"wsfed/{clientId}"));
-        }
-
-        /// <inheritdoc />
-        public Task<string> GetWsFedMetadataAsync()
-        {
-            return connection.GetAsync<string>(BuildUri("wsfed/FederationMetadata/2007-06/FederationMetadata.xml"));
-        }
-
         /// <summary>
         /// Disposes of any owned disposable resources such as a <see cref="IAuthenticationConnection"/>.
         /// </summary>
