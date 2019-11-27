@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace Auth0.Core.Http
+namespace Auth0.ManagementApi
 {
     public class FileUploadParameter
     {
