@@ -1,21 +1,23 @@
-﻿using Auth0.Core.Http;
-using Auth0.ManagementApi.Models;
+﻿using Auth0.ManagementApi.Models;
+using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
-    /// Contains all the methods for the /user-blocks endpoints.
+    /// Contains methods for accessing the /user-blocks endpoints.
     /// </summary>
-    public class UserBlocksClient : ClientBase
+    public class UserBlocksClient : BaseClient
     {
         /// <summary>
-        /// Creates a new instance of <see cref="UserBlocksClient"/>.
+        /// Initializes a new instance of <see cref="UserBlocksClient"/>.
         /// </summary>
-        /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
-        public UserBlocksClient(IApiConnection connection)
-            : base(connection)
+        /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
+        /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
+        public UserBlocksClient(IManagementConnection connection, Uri baseUri)
+            : base(connection, baseUri)
         {
         }
 
@@ -26,12 +28,11 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="UserBlocks"/> relating to the user requested.</returns>
         public Task<UserBlocks> GetByIdentifierAsync(string identifier)
         {
-            return Connection.GetAsync<UserBlocks>("user-blocks",
-                null,
+            return Connection.GetAsync<UserBlocks>(BuildUri("user-blocks",
                 new Dictionary<string, string>
                 {
                     {"identifier", identifier}
-                }, null, null);
+                }));
         }
 
         /// <summary>
@@ -41,12 +42,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="UserBlocks"/> relating to the user requested.</returns>
         public Task<UserBlocks> GetByUserIdAsync(string id)
         {
-            return Connection.GetAsync<UserBlocks>("user-blocks/{id}",
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                },
-                null, null, null);
+            return Connection.GetAsync<UserBlocks>(BuildUri($"user-blocks/{id}"));
         }
 
         /// <summary>
@@ -56,12 +52,8 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous unblock operation.</returns>
         public Task UnblockByIdentifierAsync(string identifier)
         {
-            return Connection.DeleteAsync<object>("user-blocks",
-                null,
-                new Dictionary<string, string>
-                {
-                    {"identifier", identifier}
-                });
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri("user-blocks",
+                new Dictionary<string, string> { { "identifier", identifier } }), null);
         }
 
         /// <summary>
@@ -71,11 +63,8 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous unblock operation.</returns>
         public Task UnblockByUserIdAsync(string id)
         {
-            return Connection.DeleteAsync<object>("user-blocks/{id}", 
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                }, null);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"user-blocks/{id}", 
+                new Dictionary<string, string> { { "id", id } }), null);
         }
     }
 }

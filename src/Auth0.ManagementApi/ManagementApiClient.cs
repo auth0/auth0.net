@@ -148,7 +148,7 @@ namespace Auth0.ManagementApi
             Stats = new StatsClient(managementConnection, baseUri);
             TenantSettings = new TenantSettingsClient(managementConnection, baseUri);
             Tickets = new TicketsClient(managementConnection, baseUri);
-            UserBlocks = new UserBlocksClient(bridge);
+            UserBlocks = new UserBlocksClient(managementConnection, baseUri);
             Users = new UsersClient(bridge);
         }
 
