@@ -25,7 +25,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 });
                 _connection = await apiClient.Connections.CreateAsync(new ConnectionCreateRequest
                 {
-                    Name = Guid.NewGuid().ToString("N"),
+                    Name = "Temp-Int-Test-" + MakeRandomName(),
                     Strategy = "auth0",
                     EnabledClients = new[] { _client.ClientId }
                 });

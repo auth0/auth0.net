@@ -74,7 +74,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Create a connection for creating a user
             var connection = await _managementApiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
-                Name = Guid.NewGuid().ToString("N"),
+                Name = "Temp-Int-Test-" + MakeRandomName(),
                 Strategy = "auth0",
                 EnabledClients = new[] {
                     GetVariable("AUTH0_CLIENT_ID"),

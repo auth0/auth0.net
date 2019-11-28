@@ -26,7 +26,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // We will need a connection to add the roles to...
             _connection = await _apiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
-                Name = Guid.NewGuid().ToString("N"),
+                Name = "Temp-Int-Test-" + MakeRandomName(),
                 Strategy = "auth0",
                 EnabledClients = new[] {GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID")}
             });
