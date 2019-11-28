@@ -146,7 +146,7 @@ namespace Auth0.ManagementApi
             Roles = new RolesClient(managementConnection, baseUri);
             Rules = new RulesClient(managementConnection, baseUri);
             Stats = new StatsClient(managementConnection, baseUri);
-            TenantSettings = new TenantSettingsClient(bridge);
+            TenantSettings = new TenantSettingsClient(managementConnection, baseUri);
             Tickets = new TicketsClient(bridge);
             UserBlocks = new UserBlocksClient(bridge);
             Users = new UsersClient(bridge);
