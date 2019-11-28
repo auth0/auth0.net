@@ -143,7 +143,7 @@ namespace Auth0.ManagementApi
             Jobs = new JobsClient(managementConnection, baseUri);
             Logs = new LogsClient(managementConnection, baseUri);
             ResourceServers = new ResourceServersClient(managementConnection, baseUri);
-            Roles = new RolesClient(bridge);
+            Roles = new RolesClient(managementConnection, baseUri);
             Rules = new RulesClient(bridge);
             Stats = new StatsClient(bridge);
             TenantSettings = new TenantSettingsClient(bridge);
