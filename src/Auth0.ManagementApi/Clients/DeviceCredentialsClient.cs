@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
-    /// Contains methods to call /device-credentials endpoints.
+    /// Contains methods to access the /device-credentials endpoints.
     /// </summary>
     public class DeviceCredentialsClient : BaseClient
     {
         /// <summary>
-        /// Creates a new instance of <see cref="DeviceCredentialsClient"/>.
+        /// Initializes a new instance of <see cref="DeviceCredentialsClient"/>.
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
         /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>

@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Auth0.ManagementApi.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;

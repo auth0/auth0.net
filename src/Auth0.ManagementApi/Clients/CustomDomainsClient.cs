@@ -16,7 +16,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
         /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
-        internal CustomDomainsClient(IManagementConnection connection, Uri baseUri)
+        public CustomDomainsClient(IManagementConnection connection, Uri baseUri)
             : base(connection, baseUri)
         {
         }
