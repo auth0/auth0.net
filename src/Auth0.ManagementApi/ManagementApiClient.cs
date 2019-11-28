@@ -140,7 +140,7 @@ namespace Auth0.ManagementApi
             EmailProvider = new EmailProviderClient(managementConnection, baseUri);
             EmailTemplates = new EmailTemplatesClient(managementConnection, baseUri);
             Guardian = new GuardianClient(managementConnection, baseUri);
-            Jobs = new JobsClient(bridge);
+            Jobs = new JobsClient(managementConnection, baseUri);
             Logs = new LogsClient(bridge);
             ResourceServers = new ResourceServersClient(bridge);
             Roles = new RolesClient(bridge);
