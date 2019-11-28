@@ -75,7 +75,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 ErrorPage = new TenantErrorPage
                 {
                     Html = null,
-                    Url = null,
+                    Url = "",
                 },
                 GuardianMfaPage = new TenantGuardianMfaPage
                 {
@@ -83,9 +83,9 @@ namespace Auth0.ManagementApi.IntegrationTests
                     Enabled = false,
                 },
                 FriendlyName = "Auth0.NET SDK integration test",
-                PictureUrl = null,
+                PictureUrl = "",
                 SupportEmail = "sdks@auth0.com",
-                SupportUrl = null,
+                SupportUrl = "",
             };
 
             await apiClient.TenantSettings.UpdateAsync(resetUpdateRequest);
