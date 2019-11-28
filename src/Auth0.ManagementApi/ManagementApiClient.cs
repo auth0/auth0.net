@@ -132,7 +132,7 @@ namespace Auth0.ManagementApi
             var bridge = new LegacyApiConnectionBridge(baseUri.OriginalString, managementConnection);
 
             BlacklistedTokens = new BlacklistedTokensClient(bridge);
-            ClientGrants = new ClientGrantsClient(bridge);
+            ClientGrants = new ClientGrantsClient(managementConnection, baseUri);
             Clients = new ClientsClient(bridge);
             Connections = new ConnectionsClient(bridge);
             CustomDomains = new CustomDomainsClient(bridge);
