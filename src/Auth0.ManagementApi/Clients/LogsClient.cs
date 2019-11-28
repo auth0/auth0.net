@@ -1,6 +1,6 @@
-using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Paging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -8,16 +8,19 @@ using System.Threading.Tasks;
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
-    /// Contains all the methods to call the /logs endpoints.
+    /// Contains methods to access the /logs endpoints.
     /// </summary>
-    public class LogsClient : ClientBase
+    public class LogsClient : BaseClient
     {
+        readonly JsonConverter[] converters = new JsonConverter[] { new PagedListConverter<LogEntry>("logs") };
+
         /// <summary>
-        /// Creates a new instance on <see cref="LogsClient"/>
+        /// Initializes a new instance on <see cref="LogsClient"/>
         /// </summary>
-        /// <param name="connection">The <see cref="IApiConnection"/> which is used to communicate with the API.</param>
-        public LogsClient(IApiConnection connection)
-            : base(connection)
+        /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
+        /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
+        public LogsClient(IManagementConnection connection, Uri baseUri)
+            : base(connection, baseUri)
         {
         }
 
@@ -34,7 +37,7 @@ namespace Auth0.ManagementApi.Clients
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.GetAsync<IPagedList<LogEntry>>("logs", null,
+            return Connection.GetAsync<IPagedList<LogEntry>>(BuildUri("logs",
                 new Dictionary<string, string>
                 {
                     {"sort", request.Sort},
@@ -46,7 +49,7 @@ namespace Auth0.ManagementApi.Clients
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }, null, new PagedListConverter<LogEntry>("logs"));
+                }), converters: converters);
         }
 
         /// <summary>
@@ -56,12 +59,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="LogEntry"/> instance containing the information about the log entry.</returns>
         public Task<LogEntry> GetAsync(string id)
         {
-            return Connection.GetAsync<LogEntry>("logs/{id}",
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                },
-                null, null, null);
+            return Connection.GetAsync<LogEntry>(BuildUri($"logs/{id}"));
         }
     }
 }
