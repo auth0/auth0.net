@@ -135,7 +135,7 @@ namespace Auth0.ManagementApi
             ClientGrants = new ClientGrantsClient(managementConnection, baseUri);
             Clients = new ClientsClient(managementConnection, baseUri);
             Connections = new ConnectionsClient(managementConnection, baseUri);
-            CustomDomains = new CustomDomainsClient(bridge);
+            CustomDomains = new CustomDomainsClient(managementConnection, baseUri);
             DeviceCredentials = new DeviceCredentialsClient(bridge);
             EmailProvider = new EmailProviderClient(bridge);
             EmailTemplates = new EmailTemplatesClient(bridge);
