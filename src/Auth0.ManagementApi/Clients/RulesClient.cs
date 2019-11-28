@@ -1,23 +1,27 @@
-﻿using Auth0.Core.Http;
-using Auth0.ManagementApi.Models;
+﻿using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Paging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
-    /// Contains all the methods to call the /rules endpoints.
+    /// Contains methods to access the /rules endpoints.
     /// </summary>
-    public class RulesClient : ClientBase
+    public class RulesClient : BaseClient
     {
+        readonly JsonConverter[] rulesConverters = new JsonConverter[] { new PagedListConverter<Rule>("rules") };
+
         /// <summary>
-        /// Creates a new instance of <see cref="RulesClient"/>.
+        /// Initializes a new instance of <see cref="RulesClient"/>.
         /// </summary>
-        /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
-        public RulesClient(IApiConnection connection)
-            : base(connection)
+        /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
+        /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
+        public RulesClient(IManagementConnection connection, Uri baseUri)
+            : base(connection, baseUri)
         {
         }
 
@@ -28,7 +32,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="Rule" />.</returns>
         public Task<Rule> CreateAsync(RuleCreateRequest request)
         {
-            return Connection.PostAsync<Rule>("rules", request, null, null, null, null, null);
+            return Connection.SendAsync<Rule>(HttpMethod.Post, BuildUri("rules"), request, null);
         }
 
         /// <summary>
@@ -38,11 +42,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.DeleteAsync<object>("rules/{id}",
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                }, null);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"rules/{id}"), null);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Auth0.ManagementApi.Clients
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.GetAsync<IPagedList<Rule>>("rules", null,
+            return Connection.GetAsync<IPagedList<Rule>>(BuildUri("rules",
                 new Dictionary<string, string>
                 {
                     {"enabled", request.Enabled?.ToString().ToLower()},
@@ -68,7 +68,7 @@ namespace Auth0.ManagementApi.Clients
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }, null, new PagedListConverter<Rule>("rules"));
+                }), converters: rulesConverters);
         }
 
         /// <summary>
@@ -86,16 +86,12 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Rule" /> that was requested.</returns>
         public Task<Rule> GetAsync(string id, string fields = null, bool includeFields = true)
         {
-            return Connection.GetAsync<Rule>("rules/{id}",
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                },
+            return Connection.GetAsync<Rule>(BuildUri($"rules/{id}",
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                }, null, null);
+                }));
         }
 
         /// <summary>
@@ -106,10 +102,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="Rule"/>.</returns>
         public Task<Rule> UpdateAsync(string id, RuleUpdateRequest request)
         {
-            return Connection.PatchAsync<Rule>("rules/{id}", request, new Dictionary<string, string>
-            {
-                {"id", id}
-            });
+            return Connection.SendAsync<Rule>(new HttpMethod("PATCH"), BuildUri($"rules/{id}"), request);
         }
     }
 }
