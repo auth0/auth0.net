@@ -23,6 +23,7 @@ namespace Auth0.ManagementApi.Clients
         /// Initializes a new instance of <see cref="BaseClient"/>.
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
+        /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
         protected BaseClient(IManagementConnection connection, Uri baseUri)
         {
             Connection = connection;

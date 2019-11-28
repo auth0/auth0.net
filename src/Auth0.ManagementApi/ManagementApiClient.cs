@@ -133,7 +133,7 @@ namespace Auth0.ManagementApi
 
             BlacklistedTokens = new BlacklistedTokensClient(bridge);
             ClientGrants = new ClientGrantsClient(managementConnection, baseUri);
-            Clients = new ClientsClient(bridge);
+            Clients = new ClientsClient(managementConnection, baseUri);
             Connections = new ConnectionsClient(bridge);
             CustomDomains = new CustomDomainsClient(bridge);
             DeviceCredentials = new DeviceCredentialsClient(bridge);

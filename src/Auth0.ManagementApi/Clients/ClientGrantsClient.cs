@@ -19,6 +19,7 @@ namespace Auth0.ManagementApi.Clients
         /// Initializes a new instance of <see cref="ClientGrantsClient"/>.
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
+        /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
         public ClientGrantsClient(IManagementConnection connection, Uri baseUri) 
             : base(connection, baseUri)
         {
