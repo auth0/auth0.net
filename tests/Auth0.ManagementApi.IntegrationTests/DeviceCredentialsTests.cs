@@ -21,7 +21,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 // Set up the correct Client, Connection and User
                 _client = await apiClient.Clients.CreateAsync(new ClientCreateRequest
                 {
-                    Name = Guid.NewGuid().ToString("N")
+                    Name = $"Integration testing {MakeRandomName()}",
                 });
                 _connection = await apiClient.Connections.CreateAsync(new ConnectionCreateRequest
                 {
