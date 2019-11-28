@@ -32,7 +32,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Add a new client
             var newClientRequest = new ClientCreateRequest
             {
-                Name = $"Integration testing {Guid.NewGuid():N}",
+                Name = $"Integration testing {MakeRandomName()}",
                 TokenEndpointAuthMethod = TokenEndpointAuthMethod.ClientSecretPost,
                 IsFirstParty = true,
                 ClientMetaData = new
@@ -89,7 +89,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Add a new client
             var newClientRequest = new ClientCreateRequest
             {
-                Name = $"Integration testing {Guid.NewGuid():N}",
+                Name = $"Integration testing {MakeRandomName()}",
                 TokenEndpointAuthMethod = TokenEndpointAuthMethod.ClientSecretPost,
                 IsFirstParty = true,
                 ClientMetaData = new
@@ -147,7 +147,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Add a new client
             var newClientRequest = new ClientCreateRequest
             {
-                Name = $"Integration testing {Guid.NewGuid():N}",
+                Name = $"Integration testing {MakeRandomName()}",
                 TokenEndpointAuthMethod = TokenEndpointAuthMethod.ClientSecretPost,
                 IsFirstParty = true,
                 ClientMetaData = new

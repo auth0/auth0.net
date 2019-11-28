@@ -25,6 +25,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             var client = SetupClient();
             Assert.Contains(client.DefaultRequestHeaders, k => k.Key == "Auth0-Client");
+            client.Dispose();
         }
 
         [Fact]
@@ -33,6 +34,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var client = SetupClient();
             var payload = GetPayload(client);
             Assert.NotNull(payload);
+            client.Dispose();
         }
 
         [Fact]
@@ -42,6 +44,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var payload = GetPayload(client);
 
             Assert.Equal("Auth0.Net", payload["name"].ToString());
+            client.Dispose();
         }
 
         [Fact]
@@ -52,6 +55,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             var v = typeof(ManagementApiClient).Assembly.GetName().Version;
             Assert.Equal($"{v.Major}.{v.Minor}.{v.Revision}", payload["version"].ToString());
+            client.Dispose();
         }
 
         [Fact]
@@ -67,7 +71,8 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             var httpClient = new HttpClient();
             var connection = new HttpClientManagementConnection(httpClient);
-            new ManagementApiClient("fake", GetVariable("AUTH0_MANAGEMENT_API_URL"), connection);
+            var client = new ManagementApiClient("fake", GetVariable("AUTH0_MANAGEMENT_API_URL"), connection);
+            client.Dispose();
             return httpClient;
         }
 
@@ -81,6 +86,5 @@ namespace Auth0.ManagementApi.IntegrationTests
             var decoded = Encoding.ASCII.GetString(Utils.Base64UrlDecode(payload));
             return JObject.Parse(decoded);
         }
-
     }
 }

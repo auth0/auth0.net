@@ -23,7 +23,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Create a connection
             _connection = await _apiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
-                Name = Guid.NewGuid().ToString("N"),
+                Name = "Temp-Int-Test-" + MakeRandomName(),
                 Strategy = "auth0",
                 EnabledClients = new[] { GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
             });
@@ -42,6 +42,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             await _apiClient.Users.DeleteAsync(_user.UserId);
             await _apiClient.Connections.DeleteAsync(_connection.Id);
+            _apiClient.Dispose();
         }
 
         [Fact]

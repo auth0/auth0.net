@@ -24,7 +24,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // We need a client in order to create client grants
             _client = await _apiClient.Clients.CreateAsync(new ClientCreateRequest
             {
-                Name = $"Integration testing {Guid.NewGuid():N}"
+                Name = $"Integration testing {MakeRandomName()}",
             });
 
             // We also need to create a resource server
@@ -63,6 +63,8 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             if (_resourceServer != null)
                 await _apiClient.ResourceServers.DeleteAsync(_resourceServer.Id);
+
+            _apiClient.Dispose();
         }
 
         [Fact]

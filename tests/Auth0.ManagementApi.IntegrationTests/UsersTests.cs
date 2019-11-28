@@ -8,6 +8,7 @@ using Xunit;
 using Auth0.Tests.Shared;
 using System.Linq;
 using Auth0.ManagementApi.Paging;
+using System.Collections.Generic;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
@@ -26,7 +27,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // We will need a connection to add the users to...
             _connection = await _apiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
-                Name = Guid.NewGuid().ToString("N"),
+                Name = "Temp-Int-Test-" + MakeRandomName(),
                 Strategy = "auth0",
                 EnabledClients = new[] { GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
             });
@@ -355,14 +356,6 @@ namespace Auth0.ManagementApi.IntegrationTests
         }
 
         [Fact]
-        public async Task Test_permissions_can_be_retrieved()
-        {
-            var userPermissions = await _apiClient.Users.GetPermissionsAsync("auth0|5d4344cd2c016b0e7a14313a", new PaginationInfo(0, 50, true));
-            
-            Assert.Equal(2, userPermissions.Count);
-        }
-
-        [Fact]
         public async Task Test_roles_assign_unassign_permission_to_user()
         {
             var userCreateRequest = new UserCreateRequest
@@ -411,7 +404,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             associatedPermissions.Should().HaveCount(0);
 
             // Clean Up - Remove the permission from the resource server
-            resourceServer = await _apiClient.ResourceServers.UpdateAsync(resourceServer.Id, new ResourceServerUpdateRequest
+            await _apiClient.ResourceServers.UpdateAsync(resourceServer.Id, new ResourceServerUpdateRequest
             {
                 Scopes = originalScopes
             });

@@ -26,7 +26,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // We will need a connection to add the roles to...
             _connection = await _apiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
-                Name = Guid.NewGuid().ToString("N"),
+                Name = "Temp-Int-Test-" + MakeRandomName(),
                 Strategy = "auth0",
                 EnabledClients = new[] {GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID")}
             });
@@ -35,6 +35,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task DisposeAsync()
         {
             await _apiClient.Connections.DeleteAsync(_connection.Id);
+            _apiClient.Dispose();
         }
 
         [Fact]
@@ -251,7 +252,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             associatedPermissions.Should().HaveCount(0);
 
             // Clean Up - Remove the permission from the resource server
-            resourceServer = await _apiClient.ResourceServers.UpdateAsync(resourceServer.Id, new ResourceServerUpdateRequest
+            await _apiClient.ResourceServers.UpdateAsync(resourceServer.Id, new ResourceServerUpdateRequest
             {
                 Scopes = originalScopes
             });

@@ -35,7 +35,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
             // We will need a connection to add the users to...
             _connection = await _managementApiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
-                Name = Guid.NewGuid().ToString("N"),
+                Name = "Temp-IntTest-" + MakeRandomName(),
                 Strategy = "auth0",
                 EnabledClients = new[] { GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
             });
@@ -44,7 +44,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
             _user = await _managementApiClient.Users.CreateAsync(new UserCreateRequest
             {
                 Connection = _connection.Name,
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                Email = $"{MakeRandomName()}@nonexistingdomain.aaa",
                 EmailVerified = true,
                 Password = Password
             });
@@ -63,94 +63,98 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
         public async Task Passes_Token_Validation()
         {
             // Arrange
-            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
-
-            // Act
-            var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+            using (var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
             {
-                ClientId = GetVariable("AUTH0_CLIENT_ID"),
-                ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
-                Realm = _connection.Name,
-                Scope = "openid",
-                Username = _user.Email,
-                Password = Password
+                // Act
+                var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+                {
+                    ClientId = GetVariable("AUTH0_CLIENT_ID"),
+                    ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
+                    Realm = _connection.Name,
+                    Scope = "openid",
+                    Username = _user.Email,
+                    Password = Password
 
-            });
+                });
 
-            var idTokenValidation = new IdTokenRequirements($"https://{GetVariable("AUTH0_AUTHENTICATION_API_URL")}/", GetVariable("AUTH0_CLIENT_ID"), TimeSpan.FromMinutes(1));
-            await idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken);
+                var idTokenValidation = new IdTokenRequirements($"https://{GetVariable("AUTH0_AUTHENTICATION_API_URL")}/", GetVariable("AUTH0_CLIENT_ID"), TimeSpan.FromMinutes(1));
+                await idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken);
+            }
         }
 
         [Fact]
         public async Task Passes_Token_Validation_With_CNAME()
         {
             // Arrange
-            var authenticationApiClient = new AuthenticationApiClient(GetVariable("BRUCKE_AUTHENTICATION_API_URL"));
-
-            // Act
-            var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+            using (var authenticationApiClient = new AuthenticationApiClient(GetVariable("BRUCKE_AUTHENTICATION_API_URL")))
             {
-                ClientId = GetVariable("BRUCKE_CLIENT_ID"),
-                ClientSecret = GetVariable("BRUCKE_CLIENT_SECRET"),
-                Realm = GetVariable("BRUCKE_CONNECTION_NAME"),
-                Scope = "openid",
-                Username = GetVariable("BRUCKE_USERNAME"),
-                Password = GetVariable("BRUCKE_PASSWORD")
+                // Act
+                var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+                {
+                    ClientId = GetVariable("BRUCKE_CLIENT_ID"),
+                    ClientSecret = GetVariable("BRUCKE_CLIENT_SECRET"),
+                    Realm = GetVariable("BRUCKE_CONNECTION_NAME"),
+                    Scope = "openid",
+                    Username = GetVariable("BRUCKE_USERNAME"),
+                    Password = GetVariable("BRUCKE_PASSWORD")
 
-            });
+                });
 
-            var idTokenValidation = new IdTokenRequirements($"https://{GetVariable("BRUCKE_AUTHENTICATION_API_URL")}/", GetVariable("BRUCKE_CLIENT_ID"), TimeSpan.FromMinutes(1));
-            await idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken);
+                var idTokenValidation = new IdTokenRequirements($"https://{GetVariable("BRUCKE_AUTHENTICATION_API_URL")}/", GetVariable("BRUCKE_CLIENT_ID"), TimeSpan.FromMinutes(1));
+                await idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken);
+            }
         }
 
         [Fact]
         public async Task Fails_Token_Validation_With_Incorrect_Domain()
         {
             // Arrange
-            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
-
-            // Act
-            var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+            using (var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
             {
-                ClientId = GetVariable("AUTH0_CLIENT_ID"),
-                ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
-                Realm = _connection.Name,
-                Scope = "openid",
-                Username = _user.Email,
-                Password = Password
+                // Act
+                var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+                {
+                    ClientId = GetVariable("AUTH0_CLIENT_ID"),
+                    ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
+                    Realm = _connection.Name,
+                    Scope = "openid",
+                    Username = _user.Email,
+                    Password = Password
 
-            });
+                });
 
-            var idTokenValidation = new IdTokenRequirements("https://auth0.auth0.com/", GetVariable("AUTH0_CLIENT_ID"), TimeSpan.FromMinutes(1));
+                var idTokenValidation = new IdTokenRequirements("https://auth0.auth0.com/", GetVariable("AUTH0_CLIENT_ID"), TimeSpan.FromMinutes(1));
 
-            // Assert
-            authenticationResponse.IdToken.Should().NotBeNull();
-            await Assert.ThrowsAsync<IdTokenValidationException>(() => idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken));
+                // Assert
+                authenticationResponse.IdToken.Should().NotBeNull();
+                await Assert.ThrowsAsync<IdTokenValidationException>(() => idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken));
+            }
         }
 
         [Fact]
         public async Task Fails_Token_Validation_With_Incorrect_Audience()
         {
             // Arrange
-            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
-
-            // Act
-            var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+            using (var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
             {
-                ClientId = GetVariable("AUTH0_CLIENT_ID"),
-                ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
-                Realm = _connection.Name,
-                Scope = "openid",
-                Username = _user.Email,
-                Password = Password
+                // Act
+                var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+                {
+                    ClientId = GetVariable("AUTH0_CLIENT_ID"),
+                    ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
+                    Realm = _connection.Name,
+                    Scope = "openid",
+                    Username = _user.Email,
+                    Password = Password
 
-            });
+                });
 
-            var idTokenValidation = new IdTokenRequirements($"https://{GetVariable("AUTH0_AUTHENTICATION_API_URL")}/", "invalid_audience", TimeSpan.FromMinutes(1));
+                var idTokenValidation = new IdTokenRequirements($"https://{GetVariable("AUTH0_AUTHENTICATION_API_URL")}/", "invalid_audience", TimeSpan.FromMinutes(1));
 
-            // Assert
-            authenticationResponse.IdToken.Should().NotBeNull();
-            await Assert.ThrowsAsync<IdTokenValidationException>(() => idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken));
+                // Assert
+                authenticationResponse.IdToken.Should().NotBeNull();
+                await Assert.ThrowsAsync<IdTokenValidationException>(() => idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken));
+            }
         }
     }
 }

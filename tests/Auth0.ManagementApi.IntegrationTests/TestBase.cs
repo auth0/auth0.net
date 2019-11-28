@@ -1,8 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
-using Auth0.AuthenticationApi;
+﻿using Auth0.AuthenticationApi;
 using Auth0.AuthenticationApi.Models;
 using Microsoft.Extensions.Configuration;
+using System;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using Xunit;
 
 // We do not want to hit the management API rate limit
@@ -12,14 +13,15 @@ namespace Auth0.Tests.Shared
 {
     public class TestBase
     {
-        private readonly IConfigurationRoot _config;
-
-        public TestBase()
-        {
-            _config = new ConfigurationBuilder()
+        private static readonly IConfigurationRoot _config = new ConfigurationBuilder()
                 .AddJsonFile("client-secrets.json", true)
                 .AddEnvironmentVariables()
                 .Build();
+        private readonly Regex _alphaNumeric = new Regex("[^a-zA-Z0-9]");
+
+        protected string MakeRandomName()
+        {
+            return _alphaNumeric.Replace(Convert.ToBase64String(Guid.NewGuid().ToByteArray()), "");
         }
 
         protected async Task<string> GenerateManagementApiToken()
@@ -38,7 +40,7 @@ namespace Auth0.Tests.Shared
             }
         }
 
-        protected string GetVariable(string variableName)
+        protected static string GetVariable(string variableName)
         {
             var value = _config[variableName];
             if (String.IsNullOrEmpty(value))
