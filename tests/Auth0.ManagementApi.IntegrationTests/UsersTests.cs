@@ -8,6 +8,7 @@ using Xunit;
 using Auth0.Tests.Shared;
 using System.Linq;
 using Auth0.ManagementApi.Paging;
+using System.Collections.Generic;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
@@ -352,14 +353,6 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Verify
             user.Should().NotBeNull();
             user.Identities[0].UserId.Should().Be(userId);
-        }
-
-        [Fact]
-        public async Task Test_permissions_can_be_retrieved()
-        {
-            var userPermissions = await _apiClient.Users.GetPermissionsAsync("auth0|5d4344cd2c016b0e7a14313a", new PaginationInfo(0, 50, true));
-            
-            Assert.Equal(2, userPermissions.Count);
         }
 
         [Fact]
