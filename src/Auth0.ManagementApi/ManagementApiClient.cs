@@ -139,7 +139,7 @@ namespace Auth0.ManagementApi
             DeviceCredentials = new DeviceCredentialsClient(managementConnection, baseUri);
             EmailProvider = new EmailProviderClient(managementConnection, baseUri);
             EmailTemplates = new EmailTemplatesClient(managementConnection, baseUri);
-            Guardian = new GuardianClient(bridge);
+            Guardian = new GuardianClient(managementConnection, baseUri);
             Jobs = new JobsClient(bridge);
             Logs = new LogsClient(bridge);
             ResourceServers = new ResourceServersClient(bridge);

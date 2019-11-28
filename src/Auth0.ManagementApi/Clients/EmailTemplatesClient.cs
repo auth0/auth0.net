@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
-    /// Contains allmethods to access the /email-templates endpoints.
+    /// Contains methods to access the /email-templates endpoints.
     /// </summary>
     public class EmailTemplatesClient : BaseClient
     {
