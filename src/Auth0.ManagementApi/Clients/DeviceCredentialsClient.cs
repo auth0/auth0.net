@@ -1,21 +1,23 @@
-﻿using Auth0.Core.Http;
-using Auth0.ManagementApi.Models;
+﻿using Auth0.ManagementApi.Models;
+using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
-    /// Contains all the methods to call the /device-credentials endpoints.
+    /// Contains methods to call /device-credentials endpoints.
     /// </summary>
-    public class DeviceCredentialsClient : ClientBase
+    public class DeviceCredentialsClient : BaseClient
     {
         /// <summary>
         /// Creates a new instance of <see cref="DeviceCredentialsClient"/>.
         /// </summary>
-        /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
-        public DeviceCredentialsClient(IApiConnection connection)
-            : base(connection)
+        /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
+        /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
+        public DeviceCredentialsClient(IManagementConnection connection, Uri baseUri)
+            : base(connection, baseUri)
         {
         }
 
@@ -30,7 +32,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A list of <see cref="DeviceCredential"/> which conforms to the criteria specified.</returns>
         public Task<IList<DeviceCredential>> GetAllAsync(string fields = null, bool includeFields = true, string userId = null, string clientId = null, string type = null)
         {
-            return Connection.GetAsync<IList<DeviceCredential>>("device-credentials", null,
+            return Connection.GetAsync<IList<DeviceCredential>>(BuildUri("device-credentials",
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
@@ -38,7 +40,7 @@ namespace Auth0.ManagementApi.Clients
                     {"user_id", userId},
                     {"client_id", clientId},
                     {"type", type}
-                }, null, null);
+                }));
         }
 
         /// <summary>
@@ -48,7 +50,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="DeviceCredential"/>.</returns>
         public Task<DeviceCredential> CreateAsync(DeviceCredentialCreateRequest request)
         {
-            return Connection.PostAsync<DeviceCredential>("device-credentials", request, null, null, null, null, null);
+            return Connection.SendAsync<DeviceCredential>(HttpMethod.Post, BuildUri("device-credentials"), request);
         }
 
         /// <summary>
@@ -58,11 +60,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.DeleteAsync<object>("device-credentials/{id}", 
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                }, null);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"device-credentials/{id}"), null);
         }
     }
 }
