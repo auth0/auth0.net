@@ -1,20 +1,22 @@
-﻿using Auth0.Core.Http;
-using Auth0.ManagementApi.Models;
+﻿using Auth0.ManagementApi.Models;
+using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
-    /// Contains all the methods to call the /tickets endpoints.
+    /// Contains methods to access the /tickets endpoints.
     /// </summary>
-    public class TicketsClient : ClientBase
+    public class TicketsClient : BaseClient
     {
         /// <summary>
-        /// Creates a new instance of <see cref="TicketsClient"/>.
+        /// Initializes a new instance of <see cref="TicketsClient"/>.
         /// </summary>
-        /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
-        public TicketsClient(IApiConnection connection)
-            : base(connection)
+        /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
+        /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
+        public TicketsClient(IManagementConnection connection, Uri baseUri)
+            : base(connection, baseUri)
         {
         }
 
@@ -25,7 +27,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="Ticket"/>.</returns>
         public Task<Ticket> CreateEmailVerificationTicketAsync(EmailVerificationTicketRequest request)
         {
-            return Connection.PostAsync<Ticket>("tickets/email-verification", request, null, null, null, null, null);
+            return Connection.SendAsync<Ticket>(HttpMethod.Post, BuildUri("tickets/email-verification"), request);
         }
 
         /// <summary>
@@ -35,7 +37,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="Ticket"/>.</returns>
         public Task<Ticket> CreatePasswordChangeTicketAsync(PasswordChangeTicketRequest request)
         {
-            return Connection.PostAsync<Ticket>("tickets/password-change", request, null, null, null, null, null);
+            return Connection.SendAsync<Ticket>(HttpMethod.Post, BuildUri("tickets/password-change"), request);
         }
     }
 }
