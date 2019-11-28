@@ -13,20 +13,15 @@ namespace Auth0.Tests.Shared
 {
     public class TestBase
     {
-        private readonly IConfigurationRoot _config;
+        private static readonly IConfigurationRoot _config = new ConfigurationBuilder()
+                .AddJsonFile("client-secrets.json", true)
+                .AddEnvironmentVariables()
+                .Build();
         private readonly Regex _alphaNumeric = new Regex("[^a-zA-Z0-9]");
 
         protected string MakeRandomName()
         {
             return _alphaNumeric.Replace(Convert.ToBase64String(Guid.NewGuid().ToByteArray()), "");
-        }
-
-        public TestBase()
-        {
-            _config = new ConfigurationBuilder()
-                .AddJsonFile("client-secrets.json", true)
-                .AddEnvironmentVariables()
-                .Build();
         }
 
         protected async Task<string> GenerateManagementApiToken()
@@ -45,7 +40,7 @@ namespace Auth0.Tests.Shared
             }
         }
 
-        protected string GetVariable(string variableName)
+        protected static string GetVariable(string variableName)
         {
             var value = _config[variableName];
             if (String.IsNullOrEmpty(value))
