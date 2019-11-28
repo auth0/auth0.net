@@ -37,7 +37,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Create a new connection
             var newConnectionRequest = new ConnectionCreateRequest
             {
-                Name = Guid.NewGuid().ToString("N"),
+                Name = "Temp-IntTest-" + MakeRandomName(),
                 Strategy = "github"
             };
             var newConnectionResponse = await _apiClient.Connections.CreateAsync(newConnectionRequest);

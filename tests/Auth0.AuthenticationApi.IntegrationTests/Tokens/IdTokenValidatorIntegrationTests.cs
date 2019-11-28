@@ -35,7 +35,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
             // We will need a connection to add the users to...
             _connection = await _managementApiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
-                Name = Guid.NewGuid().ToString("N"),
+                Name = "Temp-IntTest-" + MakeRandomName(),
                 Strategy = "auth0",
                 EnabledClients = new[] { GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
             });
@@ -44,7 +44,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
             _user = await _managementApiClient.Users.CreateAsync(new UserCreateRequest
             {
                 Connection = _connection.Name,
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                Email = $"{MakeRandomName()}@nonexistingdomain.aaa",
                 EmailVerified = true,
                 Password = Password
             });
