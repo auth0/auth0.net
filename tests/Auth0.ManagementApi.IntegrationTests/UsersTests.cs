@@ -1,12 +1,12 @@
-﻿using System;
-using System.Dynamic;
-using System.Threading.Tasks;
-using Auth0.Core.Exceptions;
+﻿using Auth0.Core.Exceptions;
 using Auth0.ManagementApi.Models;
-using FluentAssertions;
-using Xunit;
 using Auth0.Tests.Shared;
+using FluentAssertions;
+using System;
+using System.Dynamic;
 using System.Linq;
+using System.Threading.Tasks;
+using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
@@ -351,14 +351,6 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Verify
             user.Should().NotBeNull();
             user.Identities[0].UserId.Should().Be(userId);
-        }
-
-        [Fact]
-        public async Task Test_permissions_can_be_retrieved()
-        {
-            var userPermissions = await _apiClient.Users.GetPermissionsAsync("auth0|5d4344cd2c016b0e7a14313a", new PaginationInfo(0, 50, true));
-            
-            Assert.Equal(2, userPermissions.Count);
         }
 
         [Fact]
