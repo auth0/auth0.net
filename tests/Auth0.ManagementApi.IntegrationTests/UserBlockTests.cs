@@ -75,6 +75,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             await _apiClient.Users.DeleteAsync(_user.UserId);
             await _apiClient.Connections.DeleteAsync(_connection.Id);
+            _apiClient.Dispose();
         }
 
         [Fact(Skip = "Need to fix user blocks tests")]

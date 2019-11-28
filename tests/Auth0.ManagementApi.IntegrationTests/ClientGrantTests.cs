@@ -63,6 +63,8 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             if (_resourceServer != null)
                 await _apiClient.ResourceServers.DeleteAsync(_resourceServer.Id);
+
+            _apiClient.Dispose();
         }
 
         [Fact]

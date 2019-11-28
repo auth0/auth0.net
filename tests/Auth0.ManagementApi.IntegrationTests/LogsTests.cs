@@ -20,6 +20,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
         public Task DisposeAsync()
         {
+            _apiClient.Dispose();
             return Task.CompletedTask;
         }
 

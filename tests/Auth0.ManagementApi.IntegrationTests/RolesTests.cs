@@ -35,6 +35,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task DisposeAsync()
         {
             await _apiClient.Connections.DeleteAsync(_connection.Id);
+            _apiClient.Dispose();
         }
 
         [Fact]
@@ -251,7 +252,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             associatedPermissions.Should().HaveCount(0);
 
             // Clean Up - Remove the permission from the resource server
-            resourceServer = await _apiClient.ResourceServers.UpdateAsync(resourceServer.Id, new ResourceServerUpdateRequest
+            await _apiClient.ResourceServers.UpdateAsync(resourceServer.Id, new ResourceServerUpdateRequest
             {
                 Scopes = originalScopes
             });

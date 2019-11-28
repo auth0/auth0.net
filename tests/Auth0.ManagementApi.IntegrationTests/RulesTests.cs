@@ -16,12 +16,12 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task InitializeAsync()
         {
             string token = await GenerateManagementApiToken();
-
             _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
         }
 
         public Task DisposeAsync()
         {
+            _apiClient.Dispose();
             return Task.CompletedTask;
         }
 
