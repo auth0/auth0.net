@@ -134,7 +134,7 @@ namespace Auth0.ManagementApi
             BlacklistedTokens = new BlacklistedTokensClient(bridge);
             ClientGrants = new ClientGrantsClient(managementConnection, baseUri);
             Clients = new ClientsClient(managementConnection, baseUri);
-            Connections = new ConnectionsClient(bridge);
+            Connections = new ConnectionsClient(managementConnection, baseUri);
             CustomDomains = new CustomDomainsClient(bridge);
             DeviceCredentials = new DeviceCredentialsClient(bridge);
             EmailProvider = new EmailProviderClient(bridge);
