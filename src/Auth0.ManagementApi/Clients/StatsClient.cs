@@ -1,4 +1,3 @@
-using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
 using System;
 using System.Collections.Generic;
@@ -7,16 +6,17 @@ using System.Threading.Tasks;
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
-    /// Contains all the methods to call the /stats endpoints.
+    /// Contains methods to access the /stats endpoints.
     /// </summary>
-    public class StatsClient : ClientBase
+    public class StatsClient : BaseClient
     {
         /// <summary>
-        /// Creates a new instance of <see cref="StatsClient"/>.
+        /// Initializes a new instance of <see cref="StatsClient"/>.
         /// </summary>
-        /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
-        public StatsClient(IApiConnection connection)
-            : base(connection)
+        /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
+        /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
+        public StatsClient(IManagementConnection connection, Uri baseUri)
+            : base(connection, baseUri)
         {
         }
 
@@ -24,11 +24,9 @@ namespace Auth0.ManagementApi.Clients
         /// Gets the active users count (logged in during the last 30 days).
         /// </summary>
         /// <returns>The number of users that have logged in during the last 30 days.</returns>
-        public async Task<long> GetActiveUsersAsync()
+        public Task<long> GetActiveUsersAsync()
         {
-            var result = await Connection.GetAsync<object>("stats/active-users", null, null, null, null).ConfigureAwait(false);
-
-            return Convert.ToInt64(result);
+            return Connection.GetAsync<long>(BuildUri("stats/active-users"));
         }
 
         /// <summary>
@@ -39,12 +37,12 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A list of <see cref="DailyStatistics"/> containing the statistics for each day in the period.</returns>
         public Task<IList<DailyStatistics>> GetDailyStatsAsync(DateTime from, DateTime to)
         {
-            return Connection.GetAsync<IList<DailyStatistics>>("stats/daily", null,
+            return Connection.GetAsync<IList<DailyStatistics>>(BuildUri("stats/daily",
                 new Dictionary<string, string>
                 {
                     { "from", from.ToString("yyyyMMdd") },
                     { "to", to.ToString("yyyyMMdd") }
-                }, null, null);
+                }));
         }
     }
 }
