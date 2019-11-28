@@ -51,5 +51,11 @@
         /// See https://auth0.com/docs/api-auth/tutorials/using-resource-owner-password-from-server-side for more details.
         /// </remarks>
         public string ForwardedForIp { get; set; }
+
+        /// <summary>
+        /// What <see cref="JwtSignatureAlgorithm"/> is used to verify the signature
+        /// of Id Tokens.
+        /// </summary>
+        public JwtSignatureAlgorithm SigningAlgorithm { get; set; }
     }
 }

@@ -19,5 +19,11 @@
         /// Client Secret of the application.
         /// </summary>
         public string ClientSecret { get; set; }
+
+        /// <summary>
+        /// What <see cref="JwtSignatureAlgorithm"/> is used to verify the signature
+        /// of Id Tokens.
+        /// </summary>
+        public JwtSignatureAlgorithm SigningAlgorithm { get; set; }
     }
 }

@@ -5,9 +5,5 @@
     /// </summary>
     public class AuthorizationCodeTokenRequest : AuthorizationCodeRequestBase
     {
-        /// <summary>
-        /// Client secret of the application.
-        /// </summary>
-        public string ClientSecret { get; set; }
     }
 }

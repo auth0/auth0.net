@@ -19,25 +19,27 @@ namespace Auth0.AuthenticationApi.Tokens
         /// </summary>
         /// <param name="required"><see cref="IdTokenRequirements"/> that should be asserted.</param>
         /// <param name="rawIDToken">Raw ID token to assert requirements against.</param>
-        /// <param name="pointInTime">Optional <see cref="DateTime"/> to act as "Now" in order to facilitate unit testing with static tokens.</param>
         /// <param name="signatureVerifier">Optional <see cref="ISignatureVerifier"/> to perform signature verification and token extraction. If unspecified
         /// <see cref="AsymmetricSignatureVerifier"/> is used against the <paramref name="required"/> Issuer.</param>
+        /// <param name="pointInTime">Optional <see cref="DateTime"/> to act as "Now" in order to facilitate unit testing with static tokens.</param>
         /// <exception cref="IdTokenValidationException">Exception thrown if <paramref name="rawIDToken"/> fails to
         /// meet the requirements specified by <paramref name="required"/>.
         /// </exception>
         /// <returns><see cref="Task"/> that will complete when the token is validated.</returns>
-        internal static async Task AssertTokenMeetsRequirements(this IdTokenRequirements required, string rawIDToken, DateTime? pointInTime = null, ISignatureVerifier signatureVerifier = null)
+        internal static Task AssertTokenMeetsRequirements(this IdTokenRequirements required, string rawIDToken, ISignatureVerifier signatureVerifier, DateTime? pointInTime = null)
         {
             if (string.IsNullOrWhiteSpace(rawIDToken))
                 throw new IdTokenValidationException("ID token is required but missing.");
 
+            if (signatureVerifier == null)
+                throw new ArgumentNullException("Signature Verifier is required for asserting requirements.", nameof(signatureVerifier));
+
+            signatureVerifier.VerifySignature(rawIDToken);
+
             var token = DecodeToken(rawIDToken);
-
-            // TODO: Make signatureVerifier non-optional and not skipped for 'HS256' in 7.0.0
-            if (token.SignatureAlgorithm != "HS256" || signatureVerifier != null)
-               (signatureVerifier ?? await AsymmetricSignatureVerifier.ForJwks(required.Issuer)).VerifySignature(rawIDToken);
-
             AssertTokenClaimsMeetRequirements(required, token, pointInTime ?? DateTime.Now);
+
+            return Task.FromResult(true);
         }
 
         private static JwtSecurityToken DecodeToken(string rawIDToken)

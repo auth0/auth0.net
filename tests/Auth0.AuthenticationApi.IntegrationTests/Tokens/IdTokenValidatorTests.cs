@@ -29,7 +29,7 @@ namespace Auth0.OidcClient.Core.UnitTests.Tokens
 
         private Task ValidateToken(string token, IdTokenRequirements reqs = null, DateTime? when = null, ISignatureVerifier signatureVerifier = null)
         {
-            return IdTokenValidator.AssertTokenMeetsRequirements(reqs ?? defaultReqs, token, when ?? tokensWereValid, signatureVerifier ?? rs256NoSignature);
+            return IdTokenValidator.AssertTokenMeetsRequirements(reqs ?? defaultReqs, token, signatureVerifier ?? rs256NoSignature, when ?? tokensWereValid);
         }
 
         [Fact]
