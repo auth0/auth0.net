@@ -1,21 +1,27 @@
-﻿using Auth0.Core.Http;
-using Auth0.ManagementApi.Models;
+﻿using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Paging;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
-    /// Contains all the methods to call the /resource-server endpoints.
+    /// Contains methods to access the /resource-server endpoints.
     /// </summary>
-    public class ResourceServersClient : ClientBase
+    public class ResourceServersClient : BaseClient
     {
+        readonly JsonConverter[] converters = new JsonConverter[] { new PagedListConverter<ResourceServer>("resource_servers") };
+
         /// <summary>
         /// Creates a new instance of <see cref="ResourceServersClient"/>.
         /// </summary>
-        /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
-        public ResourceServersClient(IApiConnection connection) : base(connection)
+        /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
+        /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
+        public ResourceServersClient(IManagementConnection connection, Uri baseUri)
+            : base(connection, baseUri)
         {
         }
 
@@ -26,7 +32,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="ResourceServer"/>.</returns>
         public Task<ResourceServer> CreateAsync(ResourceServerCreateRequest request)
         {
-            return Connection.PostAsync<ResourceServer>("resource-servers", request, null, null, null, null, null);
+            return Connection.SendAsync<ResourceServer>(HttpMethod.Post, BuildUri("resource-servers"), request);
         }
 
         /// <summary>
@@ -36,10 +42,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.DeleteAsync<object>("resource-servers/{id}", new Dictionary<string, string>
-            {
-                {"id", id}
-            }, null);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"resource-servers/{id}"), null);
         }
 
         /// <summary>
@@ -49,12 +52,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="ResourceServer"/> that was requested.</returns>
         public Task<ResourceServer> GetAsync(string id)
         {
-            return Connection.GetAsync<ResourceServer>("resource-servers/{id}",
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                },
-                null, null, null);
+            return Connection.GetAsync<ResourceServer>(BuildUri($"resource-servers/{id}"));
         }
 
         /// <summary>
@@ -64,13 +62,13 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="IPagedList{ResourceServer}"/> containing the list of resource servers.</returns>
         public Task<IPagedList<ResourceServer>> GetAllAsync(PaginationInfo pagination)
         {
-            return Connection.GetAsync<IPagedList<ResourceServer>>("resource-servers", null,
+            return Connection.GetAsync<IPagedList<ResourceServer>>(BuildUri("resource-servers",
                 new Dictionary<string, string>
                 {
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }, null, new PagedListConverter<ResourceServer>("resource_servers"));
+                }), converters: converters);
         }
 
         /// <summary>
@@ -81,10 +79,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="ResourceServer"/>.</returns>
         public Task<ResourceServer> UpdateAsync(string id, ResourceServerUpdateRequest request)
         {
-            return Connection.PatchAsync<ResourceServer>("resource-servers/{id}", request, new Dictionary<string, string>
-            {
-                {"id", id}
-            });
+            return Connection.SendAsync<ResourceServer>(new HttpMethod("PATCH"), BuildUri($"resource-servers/{id}"), request);
         }
     }
 }
