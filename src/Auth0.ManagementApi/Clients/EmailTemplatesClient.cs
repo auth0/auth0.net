@@ -1,25 +1,22 @@
-﻿using Auth0.Core.Http;
-using Auth0.ManagementApi.Models;
+﻿using Auth0.ManagementApi.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.Serialization;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
-    /// Contains all the methods to call the /email-templates endpoints.
+    /// Contains allmethods to access the /email-templates endpoints.
     /// </summary>
-    public class EmailTemplatesClient : ClientBase
+    public class EmailTemplatesClient : BaseClient
     {
         /// <summary>
         /// Creates a new instance of <see cref="EmailTemplatesClient"/>.
         /// </summary>
-        /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
-        public EmailTemplatesClient(IApiConnection connection)
-            : base(connection)
+        /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
+        /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
+        public EmailTemplatesClient(IManagementConnection connection, Uri baseUri)
+            : base(connection, baseUri)
         {
         }
 
@@ -30,7 +27,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="EmailTemplate"/>.</returns>
         public Task<EmailTemplate> CreateAsync(EmailTemplateCreateRequest request)
         {
-            return Connection.PostAsync<EmailTemplate>("email-templates", request, null, null, null, null, null);
+            return Connection.SendAsync<EmailTemplate>(HttpMethod.Post, BuildUri("email-templates"), request, null);
         }
 
         /// <summary>
@@ -40,11 +37,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="EmailTemplate"/> that was requested.</returns>
         public Task<EmailTemplate> GetAsync(EmailTemplateName templateName)
         {
-            return Connection.GetAsync<EmailTemplate>("email-templates/{templateName}",
-                new Dictionary<string, string>
-                {
-                    {"templateName", ToEnumString(templateName)}
-                }, null, null, null);
+            return Connection.GetAsync<EmailTemplate>(BuildUri($"email-templates/{templateName.ToEnumString()}"));
         }
 
         /// <summary>
@@ -55,10 +48,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="EmailTemplate"/>.</returns>
         public Task<EmailTemplate> PatchAsync(EmailTemplateName templateName, EmailTemplatePatchRequest request)
         {
-            return Connection.PatchAsync<EmailTemplate>("email-templates/{templateName}", request, new Dictionary<string, string>
-            {
-                {"templateName", ToEnumString(templateName)}
-            });
+            return Connection.SendAsync<EmailTemplate>(new HttpMethod("PATCH"), BuildUri($"email-templates/{templateName.ToEnumString()}"), request);
         }
 
         /// <summary>
@@ -69,18 +59,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="EmailTemplate"/>.</returns>
         public Task<EmailTemplate> UpdateAsync(EmailTemplateName templateName, EmailTemplateUpdateRequest request)
         {
-            return Connection.PutAsync<EmailTemplate>("email-templates/{templateName}", request, null, null, new Dictionary<string, string>
-            {
-                {"templateName", ToEnumString(templateName)}
-            }, null, null);
-        }
-
-        private string ToEnumString<T>(T type)
-        {
-            var enumType = typeof(T);
-            var name = Enum.GetName(enumType, type);
-            var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetTypeInfo().GetDeclaredField(name).GetCustomAttributes(typeof(EnumMemberAttribute), true)).Single();
-            return enumMemberAttribute.Value;
+            return Connection.SendAsync<EmailTemplate>(HttpMethod.Put, BuildUri($"email-templates/{templateName.ToEnumString()}"), request);
         }
     }
 }
