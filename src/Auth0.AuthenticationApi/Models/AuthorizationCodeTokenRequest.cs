@@ -5,9 +5,5 @@
     /// </summary>
     public class AuthorizationCodeTokenRequest : AuthorizationCodeRequestBase
     {
-        /// <summary>
-        /// Client secret of the application.
-        /// </summary>
-        public override string ClientSecret { get; set; }
     }
 }

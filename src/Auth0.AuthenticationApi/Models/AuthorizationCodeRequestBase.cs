@@ -24,8 +24,11 @@
         public string RedirectUri { get; set; }
 
         /// <summary>
-        /// Optional client secret of the application for Id Token verification.
+        /// Client secret of the application for Id Token verification.
         /// </summary>
-        public virtual string ClientSecret { get; set; }
+        /// <remarks>
+        /// Optional except when using <see cref="AuthorizationCodeRequestBase"/>.
+        /// </remarks>
+        public string ClientSecret { get; set; }
     }
 }

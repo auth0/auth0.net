@@ -323,7 +323,7 @@ namespace Auth0.AuthenticationApi
 
                 case JwtSignatureAlgorithm.HS256:
                     if (String.IsNullOrWhiteSpace(clientSecret))
-                        throw new ArgumentException("ClientSecret must contain a value when using HS256", nameof(issuer));
+                        throw new ArgumentException("ClientSecret must contain a value when using HS256", nameof(clientSecret));
                     return SymmetricSignatureVerifier.FromClientSecret(clientSecret);
 
                 default:

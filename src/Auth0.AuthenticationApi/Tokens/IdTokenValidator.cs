@@ -26,7 +26,7 @@ namespace Auth0.AuthenticationApi.Tokens
         /// meet the requirements specified by <paramref name="required"/>.
         /// </exception>
         /// <returns><see cref="Task"/> that will complete when the token is validated.</returns>
-        internal static async Task AssertTokenMeetsRequirements(this IdTokenRequirements required, string rawIDToken, ISignatureVerifier signatureVerifier, DateTime? pointInTime = null)
+        internal static Task AssertTokenMeetsRequirements(this IdTokenRequirements required, string rawIDToken, ISignatureVerifier signatureVerifier, DateTime? pointInTime = null)
         {
             if (string.IsNullOrWhiteSpace(rawIDToken))
                 throw new IdTokenValidationException("ID token is required but missing.");
@@ -38,6 +38,8 @@ namespace Auth0.AuthenticationApi.Tokens
 
             var token = DecodeToken(rawIDToken);
             AssertTokenClaimsMeetRequirements(required, token, pointInTime ?? DateTime.Now);
+
+            return Task.FromResult(true);
         }
 
         private static JwtSecurityToken DecodeToken(string rawIDToken)
