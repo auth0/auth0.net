@@ -131,7 +131,7 @@ namespace Auth0.ManagementApi
             // Ideally this wouldn't exist but it's a lot of internal code to change that is fragile
             var bridge = new LegacyApiConnectionBridge(baseUri.OriginalString, managementConnection);
 
-            BlacklistedTokens = new BlacklistedTokensClient(bridge);
+            BlacklistedTokens = new BlacklistedTokensClient(managementConnection, baseUri);
             ClientGrants = new ClientGrantsClient(managementConnection, baseUri);
             Clients = new ClientsClient(managementConnection, baseUri);
             Connections = new ConnectionsClient(managementConnection, baseUri);
