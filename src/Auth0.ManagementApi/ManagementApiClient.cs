@@ -128,9 +128,6 @@ namespace Auth0.ManagementApi
 
             managementConnection.SetDefaultHeaders(CreateDefaultHeaders(token));
 
-            // Ideally this wouldn't exist but it's a lot of internal code to change that is fragile
-            var bridge = new LegacyApiConnectionBridge(baseUri.OriginalString, managementConnection);
-
             BlacklistedTokens = new BlacklistedTokensClient(managementConnection, baseUri);
             ClientGrants = new ClientGrantsClient(managementConnection, baseUri);
             Clients = new ClientsClient(managementConnection, baseUri);
