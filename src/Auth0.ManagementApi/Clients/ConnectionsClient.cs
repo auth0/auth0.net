@@ -56,8 +56,8 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteUserAsync(string id, string email)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"connections/{id}/users"),
-                new Dictionary<string, string> { {"email", email} });
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"connections/{id}/users",
+                new Dictionary<string, string> { {"email", email} }), null);
         }
 
         /// <summary>

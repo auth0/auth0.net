@@ -149,7 +149,7 @@ namespace Auth0.ManagementApi
             TenantSettings = new TenantSettingsClient(managementConnection, baseUri);
             Tickets = new TicketsClient(managementConnection, baseUri);
             UserBlocks = new UserBlocksClient(managementConnection, baseUri);
-            Users = new UsersClient(bridge);
+            Users = new UsersClient(managementConnection, baseUri);
         }
 
         private static Dictionary<string, string> CreateDefaultHeaders(string token)
