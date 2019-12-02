@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
-    /// Contains methods for accessing the /user-blocks endpoints.
+    /// Contains methods to access the /user-blocks endpoints.
     /// </summary>
     public class UserBlocksClient : BaseClient
     {
