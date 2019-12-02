@@ -1,21 +1,23 @@
-﻿using Auth0.Core.Http;
-using Auth0.ManagementApi.Models;
+﻿using Auth0.ManagementApi.Models;
+using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
-    /// Contains all the methods to call the /emails/provider endpoints.
+    /// Contains methods to access the /emails/provider endpoints.
     /// </summary
-    public class EmailProviderClient : ClientBase
+    public class EmailProviderClient : BaseClient
     {
         /// <summary>
-        /// Creates a new instance of <see cref="EmailProviderClient"/>.
+        /// Initializes a new instance of <see cref="EmailProviderClient"/>.
         /// </summary>
-        /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
-        internal EmailProviderClient(IApiConnection connection)
-            : base(connection)
+        /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
+        /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
+        public EmailProviderClient(IManagementConnection connection, Uri baseUri)
+            : base(connection, baseUri)
         {
         }
 
@@ -29,7 +31,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="EmailProvider" /> instance containing the email provider details.</returns>
         public Task<EmailProvider> ConfigureAsync(EmailProviderConfigureRequest request)
         {
-            return Connection.PostAsync<EmailProvider>("emails/provider", request, null, null, null, null, null);
+            return Connection.SendAsync<EmailProvider>(HttpMethod.Post, BuildUri("emails/provider"), request, null);
         }
 
         /// <summary>
@@ -38,7 +40,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync()
         {
-            return Connection.DeleteAsync<object>("emails/provider", null, null);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri("emails/provider"), null);
         }
 
         /// <summary>
@@ -55,13 +57,12 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="EmailProvider" /> instance containing the email provider details.</returns>
         public Task<EmailProvider> GetAsync(string fields = null, bool includeFields = true)
         {
-            return Connection.GetAsync<EmailProvider>("emails/provider",
-                null,
+            return Connection.GetAsync<EmailProvider>(BuildUri("emails/provider",
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                }, null, null);
+                }));
         }
 
         /// <summary>
@@ -74,7 +75,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="EmailProvider" /> instance containing the email provider details.</returns>
         public Task<EmailProvider> UpdateAsync(EmailProviderUpdateRequest request)
         {
-            return Connection.PatchAsync<EmailProvider>("emails/provider", request, null);
+            return Connection.SendAsync<EmailProvider>(new HttpMethod("PATCH"), BuildUri("emails/provider"), request);
         }
     }
 }

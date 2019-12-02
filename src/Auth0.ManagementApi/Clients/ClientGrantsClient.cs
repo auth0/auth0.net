@@ -1,23 +1,27 @@
-using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Paging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
-    /// Contains all methods to call the /client-grants endpoints.
+    /// Contains methods to access the /client-grants endpoints.
     /// </summary>
-    public class ClientGrantsClient : ClientBase
+    public class ClientGrantsClient : BaseClient
     {
+        readonly JsonConverter[] converters = new JsonConverter[] { new PagedListConverter<ClientGrant>("client_grants") };
+
         /// <summary>
-        /// Creates a new instance of <see cref="ClientGrantsClient"/>.
+        /// Initializes a new instance of <see cref="ClientGrantsClient"/>.
         /// </summary>
-        /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
-        public ClientGrantsClient(IApiConnection connection) 
-            : base(connection)
+        /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
+        /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
+        public ClientGrantsClient(IManagementConnection connection, Uri baseUri) 
+            : base(connection, baseUri)
         {
         }
 
@@ -28,7 +32,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The new <see cref="ClientGrant"/> that has been created.</returns>
         public Task<ClientGrant> CreateAsync(ClientGrantCreateRequest request)
         {
-            return Connection.PostAsync<ClientGrant>("client-grants", request, null, null, null, null, null);
+            return Connection.SendAsync<ClientGrant>(HttpMethod.Post, BuildUri("client-grants"), request);
         }
 
         /// <summary>
@@ -38,11 +42,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.DeleteAsync<object>("client-grants/{id}", 
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                }, null);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"client-grants/{id}"), null); 
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Auth0.ManagementApi.Clients
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.GetAsync<IPagedList<ClientGrant>>("client-grants", null,
+            return Connection.GetAsync<IPagedList<ClientGrant>>(BuildUri("client-grants",
                 new Dictionary<string, string>
                 {
                     {"audience", request.Audience},
@@ -66,7 +66,7 @@ namespace Auth0.ManagementApi.Clients
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }, null, new PagedListConverter<ClientGrant>("client_grants"));
+                }), converters: converters);
         }
 
         /// <summary>
@@ -77,11 +77,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="ClientGrant"/> that has been updated.</returns>
         public Task<ClientGrant> UpdateAsync(string id, ClientGrantUpdateRequest request)
         {
-            return Connection.PatchAsync<ClientGrant>("client-grants/{id}", request, 
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                });
+            return Connection.SendAsync<ClientGrant>(new HttpMethod("PATCH"), BuildUri($"client-grants/{id}"), request);
         }
     }
 }

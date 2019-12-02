@@ -1,22 +1,24 @@
-﻿using Auth0.Core.Http;
-using Auth0.ManagementApi.Models;
+﻿using Auth0.ManagementApi.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
-    /// Contains all the methods to call the /jobs endpoints.
+    /// Contains methods to access the /jobs endpoints.
     /// </summary>
-    public class JobsClient : ClientBase
+    public class JobsClient : BaseClient
     {
         /// <summary>
-        /// Creates a new instance on <see cref="JobsClient"/>
+        /// Initializes a new instance on <see cref="JobsClient"/>
         /// </summary>
-        /// <param name="connection">The <see cref="IApiConnection"/> which is used to communicate with the API.</param>
-        public JobsClient(IApiConnection connection)
-            : base(connection)
+        /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
+        /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
+        public JobsClient(IManagementConnection connection, Uri baseUri)
+            : base(connection, baseUri)
         {
         }
 
@@ -30,12 +32,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
         public Task<Job> GetAsync(string id)
         {
-            return Connection.GetAsync<Job>("jobs/{id}",
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                },
-                null, null, null);
+            return Connection.GetAsync<Job>(BuildUri($"jobs/{id}"));
         }
 
         /// <summary>
@@ -69,7 +66,7 @@ namespace Auth0.ManagementApi.Clients
                 }
             };
 
-            return Connection.PostAsync<Job>("jobs/users-imports", null, parameters, fileParameters, null, null, null);
+            return Connection.SendAsync<Job>(HttpMethod.Post, BuildUri("jobs/users-imports"), parameters, files: fileParameters);
         }
 
         /// <summary>
@@ -79,7 +76,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
         public Task<Job> SendVerificationEmailAsync(VerifyEmailJobRequest request)
         {
-            return Connection.PostAsync<Job>("jobs/verification-email", request, null, null, null, null, null);
+            return Connection.SendAsync<Job>(HttpMethod.Post, BuildUri("jobs/verification-email"), request);
         }
     }
 }

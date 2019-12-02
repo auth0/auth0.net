@@ -1,21 +1,23 @@
-﻿using Auth0.Core.Http;
-using Auth0.ManagementApi.Models;
+﻿using Auth0.ManagementApi.Models;
+using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
-    /// Interface with all the methods available for /guardian endpoints.
+    /// Contains methods to access the /guardian endpoints.
     /// </summary>
-    public class GuardianClient : ClientBase
+    public class GuardianClient : BaseClient
     {
         /// <summary>
-        /// Creates a new instance of <see cref="GuardianClient"/>.
+        /// Initializes a new instance of <see cref="GuardianClient"/>.
         /// </summary>
-        /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
-        public GuardianClient(IApiConnection connection)
-            : base(connection)
+        /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
+        /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
+        public GuardianClient(IManagementConnection connection, Uri baseUri)
+            : base(connection, baseUri)
         {
         }
 
@@ -29,10 +31,10 @@ namespace Auth0.ManagementApi.Clients
         public Task<CreateGuardianEnrollmentTicketResponse> CreateEnrollmentTicketAsync(CreateGuardianEnrollmentTicketRequest request)
         {
             return Connection
-                .PostAsync<CreateGuardianEnrollmentTicketResponse>(
-                "guardian/enrollments/ticket",
-                request,
-                null, null, null, null, null);
+                .SendAsync<CreateGuardianEnrollmentTicketResponse>(
+                HttpMethod.Post,
+                BuildUri("guardian/enrollments/ticket"),
+                request);
         }
 
         /// <summary>
@@ -43,9 +45,9 @@ namespace Auth0.ManagementApi.Clients
         public Task DeleteEnrollmentAsync(string id)
         {
             return Connection
-                .DeleteAsync<object>(
-                "guardian/enrollments/{id}",
-                new Dictionary<string, string> { { "id", id } },
+                .SendAsync<object>(
+                HttpMethod.Delete,
+                BuildUri($"guardian/enrollments/{id}"),
                 null);
         }
 
@@ -58,9 +60,7 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection
                 .GetAsync<GuardianEnrollment>(
-                "guardian/enrollments/{id}",
-                new Dictionary<string, string> { { "id", id } },
-                null, null, null);
+                BuildUri($"guardian/enrollments/{id}"));
         }
 
         /// <summary>
@@ -71,8 +71,7 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection
                 .GetAsync<IList<GuardianFactor>>(
-                "guardian/factors",
-                null, null, null, null);
+                BuildUri("guardian/factors"));
         }
 
         /// <summary>
@@ -83,8 +82,7 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection
                 .GetAsync<GuardianSmsEnrollmentTemplates>(
-                "guardian/factors/sms/templates",
-                null, null, null, null);
+                BuildUri("guardian/factors/sms/templates"));
         }
 
         /// <summary>
@@ -95,8 +93,7 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection
                 .GetAsync<GuardianSnsConfiguration>(
-                "guardian/factors/push-notification/providers/sns",
-                null, null, null, null);
+                BuildUri("guardian/factors/push-notification/providers/sns"));
         }
 
         /// <summary>
@@ -107,8 +104,7 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection
                 .GetAsync<GuardianTwilioConfiguration>(
-                "guardian/factors/sms/providers/twilio",
-                null, null, null, null);
+                BuildUri("guardian/factors/sms/providers/twilio"));
         }
 
         /// <summary>
@@ -119,13 +115,12 @@ namespace Auth0.ManagementApi.Clients
         public Task<UpdateGuardianFactorResponse> UpdateFactorAsync(UpdateGuardianFactorRequest request)
         {
             var name = request.Factor == GuardianFactorName.PushNotifications ? "push-notification" : "sms";
+
             return Connection
-                .PutAsync<UpdateGuardianFactorResponse>(
-                "guardian/factors/{name}",
-                new { enabled = request.IsEnabled },
-                null, null,
-                new Dictionary<string, string> { { "name", name } },
-                null, null);
+                .SendAsync<UpdateGuardianFactorResponse>(
+                HttpMethod.Put,
+                BuildUri($"guardian/factors/{name}"),
+                new { enabled = request.IsEnabled });
         }
 
         /// <summary>
@@ -136,10 +131,10 @@ namespace Auth0.ManagementApi.Clients
         public Task<GuardianSmsEnrollmentTemplates> UpdateSmsTemplatesAsync(GuardianSmsEnrollmentTemplates templates)
         {
             return Connection
-                .PutAsync<GuardianSmsEnrollmentTemplates>(
-                "guardian/factors/sms/templates",
-                templates,
-                null, null, null, null, null);
+                .SendAsync<GuardianSmsEnrollmentTemplates>(
+                HttpMethod.Put,
+                BuildUri("guardian/factors/sms/templates"),
+                templates);
         }
 
         /// <summary>
@@ -152,10 +147,10 @@ namespace Auth0.ManagementApi.Clients
         public Task<GuardianTwilioConfiguration> UpdateTwilioConfigurationAsync(UpdateGuardianTwilioConfigurationRequest request)
         {
             return Connection
-                .PutAsync<GuardianTwilioConfiguration>(
-                "guardian/factors/sms/providers/twilio",
-                request,
-                null, null, null, null, null);
+                .SendAsync<GuardianTwilioConfiguration>(
+                HttpMethod.Put,
+                BuildUri("guardian/factors/sms/providers/twilio"),
+                request);
         }
     }
 }

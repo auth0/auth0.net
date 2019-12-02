@@ -1,21 +1,23 @@
-﻿using Auth0.Core.Http;
-using Auth0.ManagementApi.Models;
+﻿using Auth0.ManagementApi.Models;
+using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
-    /// Contains all the methods to call the /tenants/settings endpoints.
+    /// Contains methods to access the /tenants/settings endpoints.
     /// </summary>
-    public class TenantSettingsClient : ClientBase
+    public class TenantSettingsClient : BaseClient
     {
         /// <summary>
-        /// Creates a new instance of <see cref="TenantSettingsClient"/>.
+        /// Initializes a new instance of <see cref="TenantSettingsClient"/>.
         /// </summary>
-        /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
-        public TenantSettingsClient(IApiConnection connection)
-            : base(connection)
+        /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
+        /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
+        public TenantSettingsClient(IManagementConnection connection, Uri baseUri)
+            : base(connection, baseUri)
         {
         }
 
@@ -27,31 +29,30 @@ namespace Auth0.ManagementApi.Clients
         /// result, empty to retrieve all fields.
         /// </param>
         /// <param name="includeFields">
-        /// <see cref="true"/> if the fields specified are to be included in the result, <see cref="false"/> otherwise (defaults to
-        /// <see cref="true"/>).
+        /// <see langword="true"/> if the fields specified are to be included in the result, <see langword="false"/> otherwise (defaults to
+        /// <see langword="true"/>).
         /// </param>
         /// <returns>A <see cref="TenantSettings" /> containing the settings for the tenant.</returns>
         public Task<TenantSettings> GetAsync(string fields = null, bool includeFields = true)
         {
-            return Connection.GetAsync<TenantSettings>("tenants/settings",
-                null,
+            return Connection.GetAsync<TenantSettings>(BuildUri("tenants/settings",
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                }, null, null);
+                }));
         }
 
         /// <summary>
         /// Updates the settings for the tenant.
         /// </summary>
         /// <param name="request">
-        /// A <see cref="TenantSettingsUpdateRequest" /> containing the settings for the tenant which are to be updated.
+        /// <see cref="TenantSettingsUpdateRequest" /> containing the settings for the tenant which are to be updated.
         /// </param>
         /// <returns>A <see cref="TenantSettings" /> containing the updated settings for the tenant.</returns>
         public Task<TenantSettings> UpdateAsync(TenantSettingsUpdateRequest request)
         {
-            return Connection.PatchAsync<TenantSettings>("tenants/settings", request, null);
+            return Connection.SendAsync<TenantSettings>(new HttpMethod("PATCH"), BuildUri("tenants/settings"), request);
         }
     }
 }

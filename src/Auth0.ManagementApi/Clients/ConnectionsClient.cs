@@ -1,23 +1,27 @@
-using Auth0.Core.Http;
 using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Paging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
-    /// Contains all the methods to call the /connections endpoints.
+    /// Contains methods to access the /connections endpoints.
     /// </summary>
-    public class ConnectionsClient : ClientBase
+    public class ConnectionsClient : BaseClient
     {
+        readonly JsonConverter[] converters = new JsonConverter[] { new PagedListConverter<Connection>("connections") };
+
         /// <summary>
-        /// Creates a new instance of the <see cref="ConnectionsClient"/>.
+        /// Initializes a new instance of the <see cref="ConnectionsClient"/>.
         /// </summary>
-        /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
-        public ConnectionsClient(IApiConnection connection)
-            : base(connection)
+        /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
+        /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
+        public ConnectionsClient(IManagementConnection connection, Uri baseUri)
+            : base(connection, baseUri)
         {
         }
 
@@ -28,7 +32,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Connection"/> containing the newly created Connection.</returns>
         public Task<Connection> CreateAsync(ConnectionCreateRequest request)
         {
-            return Connection.PostAsync<Connection>("connections", request, null, null, null, null, null);
+            return Connection.SendAsync<Connection>(HttpMethod.Post, BuildUri("connections"), request, null);
         }
 
         /// <summary>
@@ -38,10 +42,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.DeleteAsync<object>("connections/{id}", new Dictionary<string, string>
-            {
-                {"id", id}
-            }, null);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"connections/{id}"), null);
         }
 
         /// <summary>
@@ -55,15 +56,8 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteUserAsync(string id, string email)
         {
-            return Connection.DeleteAsync<object>("connections/{id}/users",
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                },
-                new Dictionary<string, string>
-                {
-                    {"email", email},
-                });
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"connections/{id}/users",
+                new Dictionary<string, string> { {"email", email} }), null);
         }
 
         /// <summary>
@@ -75,16 +69,12 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Connection"/>.</returns>
         public Task<Connection> GetAsync(string id, string fields = null, bool includeFields = true)
         {
-            return Connection.GetAsync<Connection>("connections/{id}",
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                },
+            return Connection.GetAsync<Connection>(BuildUri($"connections/{id}",
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                }, null, null);
+                }));
         }
 
         /// <summary>
@@ -112,14 +102,10 @@ namespace Auth0.ManagementApi.Clients
 
             // Add each strategy as a separate querystring
             if (request.Strategy != null)
-            {
                 foreach (var s in request.Strategy)
-                {
                     queryStrings.Add("strategy", s);
-                }
-            }
 
-            return Connection.GetAsync<IPagedList<Connection>>("connections", null, queryStrings, null, new PagedListConverter<Connection>("connections"));
+            return Connection.GetAsync<IPagedList<Connection>>(BuildUri("connections", queryStrings), converters: converters);
         }
 
         /// <summary>
@@ -130,11 +116,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Connection"/> that has been updated.</returns>
         public Task<Connection> UpdateAsync(string id, ConnectionUpdateRequest request)
         {
-            return Connection.PatchAsync<Connection>("connections/{id}", request, 
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                });
+            return Connection.SendAsync<Connection>(new HttpMethod("PATCH"), BuildUri($"connections/{id}"), request);
         }
     }
 }

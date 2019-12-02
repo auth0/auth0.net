@@ -78,7 +78,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             _apiClient.Dispose();
         }
 
-        [Fact(Skip = "Need to fix user blocks tests")]
+        [Fact]
         public async Task Test_user_blocks_by_identifier()
         {
             // Check we should have 1 block for the user
@@ -94,7 +94,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         }
 
 
-        [Fact(Skip = "Need to fix user blocks tests")]
+        [Fact]
         public async Task Test_user_blocks_by_userid()
         {
             // Check we should have 1 block for the user

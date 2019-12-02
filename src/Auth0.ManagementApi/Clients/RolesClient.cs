@@ -1,23 +1,29 @@
-﻿using Auth0.Core.Http;
-using Auth0.ManagementApi.Models;
+﻿using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Paging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
-    /// Contains all the methods to call the /roles endpoints.
+    /// Contains methods to access the /roles endpoints.
     /// </summary>
-    public class RolesClient : ClientBase
+    public class RolesClient : BaseClient
     {
+        readonly JsonConverter[] rolesConverters = new JsonConverter[] { new PagedListConverter<Role>("roles") };
+        readonly JsonConverter[] assignedUsersConverters = new JsonConverter[] { new PagedListConverter<AssignedUser>("users") };
+        readonly JsonConverter[] permissionsConverters = new JsonConverter[] { new PagedListConverter<Permission>("permissions") };
+
         /// <summary>
         /// Initializes a new instance of the <see cref="RolesClient"/> class.
         /// </summary>
-        /// <param name="connection">The <see cref="ApiConnection"/> to use.</param>
-        public RolesClient(IApiConnection connection)
-            : base(connection)
+        /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
+        /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
+        public RolesClient(IManagementConnection connection, Uri baseUri)
+            : base(connection, baseUri)
         {
         }
 
@@ -28,7 +34,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="Role" />.</returns>
         public Task<Role> CreateAsync(RoleCreateRequest request)
         {
-            return Connection.PostAsync<Role>("roles", request, null, null, null, null, null);
+            return Connection.SendAsync<Role>(HttpMethod.Post, BuildUri("roles"), request);
         }
 
         /// <summary>
@@ -38,10 +44,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.DeleteAsync<object>("roles/{id}", new Dictionary<string, string>
-            {
-                {"id", id}
-            }, null);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"roles/{id}"), null);
         }
 
         /// <summary>
@@ -54,11 +57,9 @@ namespace Auth0.ManagementApi.Clients
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
 
-            return Connection.GetAsync<IPagedList<Role>>("roles", null,
-                new Dictionary<string, string>
-                {
-                    {"name_filter", request.NameFilter},
-                }, null, new PagedListConverter<Role>("roles"));
+            return Connection.GetAsync<IPagedList<Role>>(BuildUri("roles",
+                new Dictionary<string, string> { { "name_filter", request.NameFilter } }),
+                converters: rolesConverters);
         }
 
         /// <summary>
@@ -74,14 +75,14 @@ namespace Auth0.ManagementApi.Clients
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.GetAsync<IPagedList<Role>>("roles", null,
+            return Connection.GetAsync<IPagedList<Role>>(BuildUri($"roles",
                 new Dictionary<string, string>
                 {
                     {"name_filter", request.NameFilter},
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }, null, new PagedListConverter<Role>("roles"));
+                }), converters: rolesConverters);
         }
 
         /// <summary>
@@ -91,11 +92,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Role"/> that was requested.</returns>
         public Task<Role> GetAsync(string id)
         {
-            return Connection.GetAsync<Role>("roles/{id}",
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                }, null, null, null);
+            return Connection.GetAsync<Role>(BuildUri($"roles/{id}"));
         }
 
         /// <summary>
@@ -106,10 +103,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="Role"/>.</returns>
         public Task<Role> UpdateAsync(string id, RoleUpdateRequest request)
         {
-            return Connection.PatchAsync<Role>("roles/{id}", request, new Dictionary<string, string>
-            {
-                {"id", id}
-            });
+            return Connection.SendAsync<Role>(new HttpMethod("PATCH"), BuildUri($"roles/{id}"), request);
         }
 
         /// <summary>
@@ -119,11 +113,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{AssignedUser}"/> containing the assigned users.</returns>
         public Task<IPagedList<AssignedUser>> GetUsersAsync(string id)
         {
-            return Connection.GetAsync<IPagedList<AssignedUser>>("roles/{id}/users",
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                }, null, null, new PagedListConverter<AssignedUser>("users"));
+            return Connection.GetAsync<IPagedList<AssignedUser>>(BuildUri($"roles/{id}/users"), converters: assignedUsersConverters);
         }
 
         /// <summary>
@@ -134,17 +124,13 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{AssignedUser}"/> containing the assigned users.</returns>
         public Task<IPagedList<AssignedUser>> GetUsersAsync(string id, PaginationInfo pagination)
         {
-            return Connection.GetAsync<IPagedList<AssignedUser>>("roles/{id}/users",
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                },
+            return Connection.GetAsync<IPagedList<AssignedUser>>(BuildUri($"roles/{id}/users",
                 new Dictionary<string, string>
                 {
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }, null, new PagedListConverter<AssignedUser>("users"));
+                }), converters: assignedUsersConverters);
         }
 
         /// <summary>
@@ -155,11 +141,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous assign operation.</returns>
         public Task AssignUsersAsync(string id, AssignUsersRequest request)
         {
-            return Connection.PostAsync<AssignUsersRequest>("roles/{id}/users", request, null, null,
-                new Dictionary<string, string>
-                {
-                    {"id", id},
-                }, null, null);
+            return Connection.SendAsync<AssignUsersRequest>(HttpMethod.Post, BuildUri($"roles/{id}/users"), request);
         }
 
         /// <summary>
@@ -170,17 +152,13 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{Permission}"/> containing the assigned permissions for this role.</returns>
         public Task<IPagedList<Permission>> GetPermissionsAsync(string id, PaginationInfo pagination)
         {
-            return Connection.GetAsync<IPagedList<Permission>>("roles/{id}/permissions",
-                new Dictionary<string, string>
-                {
-                    {"id", id}
-                },
+            return Connection.GetAsync<IPagedList<Permission>>(BuildUri($"roles/{id}/permissions",
                 new Dictionary<string, string>
                 {
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }, null, new PagedListConverter<Permission>("permissions"));
+                }), converters: permissionsConverters);
         }
 
         /// <summary>
@@ -191,8 +169,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous assignment operation.</returns>
         public Task AssignPermissionsAsync(string id, AssignPermissionsRequest request)
         {
-            return Connection.PostAsync<object>("roles/{id}/permissions", request, null, null,
-                new Dictionary<string, string> { { "id", id}, }, null, null);
+            return Connection.SendAsync<object>(HttpMethod.Post, BuildUri($"roles/{id}/permissions"), request);
         }
 
         /// <summary>
@@ -203,8 +180,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous remove operation.</returns>
         public Task RemovePermissionsAsync(string id, AssignPermissionsRequest request)
         {
-            return Connection.DeleteAsync<object>("roles/{id}/permissions", request,
-                new Dictionary<string, string> { {"id", id}, }, null);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"roles/{id}/permissions"), request);
         }
     }
 }

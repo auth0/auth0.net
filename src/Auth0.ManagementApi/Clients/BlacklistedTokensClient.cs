@@ -1,21 +1,23 @@
-﻿using Auth0.Core.Http;
-using Auth0.ManagementApi.Models;
+﻿using Auth0.ManagementApi.Models;
+using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
-    /// Contains all the methods to call the /blacklists/tokens endpoints.
+    /// Contains methods to access the /blacklists/tokens endpoints.
     /// </summary>
-    public class BlacklistedTokensClient : ClientBase
+    public class BlacklistedTokensClient : BaseClient
     {
         /// <summary>
-        /// Creates a new instance of <see cref="BlacklistedTokensClient"/>.
+        /// Initializes a new instance of <see cref="BlacklistedTokensClient"/>.
         /// </summary>
-        /// <param name="connection">The <see cref="IApiConnection" /> which is used to communicate with the API.</param>
-        public BlacklistedTokensClient(IApiConnection connection)
-            : base(connection)
+        /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
+        /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
+        public BlacklistedTokensClient(IManagementConnection connection, Uri baseUri)
+            : base(connection, baseUri)
         {
         }
 
@@ -26,11 +28,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A list of <see cref="BlacklistedToken"/> objects.</returns>
         public Task<IList<BlacklistedToken>> GetAllAsync(string aud)
         {
-            return Connection.GetAsync<IList<BlacklistedToken>>("blacklists/tokens", null,
-                new Dictionary<string, string>
-                {
-                    {"aud", aud}
-                }, null, null);
+            return Connection.GetAsync<IList<BlacklistedToken>>(BuildUri("blacklists/tokens"));
         }
 
         /// <summary>
@@ -40,7 +38,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous create operation.</returns>
         public Task CreateAsync(BlacklistedTokenCreateRequest request)
         {
-            return Connection.PostAsync<Client>("blacklists/tokens", request, null, null, null, null, null);
+            return Connection.SendAsync<Client>(HttpMethod.Post, BuildUri("blacklists/tokens"), request);
         }
     }
 }
