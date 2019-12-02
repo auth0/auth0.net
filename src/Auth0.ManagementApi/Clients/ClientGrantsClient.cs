@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
-    /// Contains methods to acess the /client-grants endpoints.
+    /// Contains methods to access the /client-grants endpoints.
     /// </summary>
     public class ClientGrantsClient : BaseClient
     {
