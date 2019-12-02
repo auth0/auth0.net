@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
-    /// Contains methods to acess the /tenants/settings endpoints.
+    /// Contains methods to access the /tenants/settings endpoints.
     /// </summary>
     public class TenantSettingsClient : BaseClient
     {
