@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
-    /// Contains methods to acess the /connections endpoints.
+    /// Contains methods to access the /connections endpoints.
     /// </summary>
     public class ConnectionsClient : BaseClient
     {
