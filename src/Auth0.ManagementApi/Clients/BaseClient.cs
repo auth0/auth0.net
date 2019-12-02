@@ -36,7 +36,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="resource">Name of the resource to be appended to the path.</param>
         /// <param name="queryStrings">Query strings that should be combined with the URL.</param>
-        /// <returns>Completed absolute URi for the request.</returns>
+        /// <returns>Completed absolute URI for the request.</returns>
         protected Uri BuildUri(string resource, IDictionary<string, string> queryStrings = null)
         {
             return  Utils.BuildUri(BaseUri.AbsoluteUri, resource, null, queryStrings);
