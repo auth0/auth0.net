@@ -5,9 +5,9 @@ using System.Reflection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Auth0.Core.Serialization
+namespace Auth0.Core
 {
-    public class ApiErrorConverter : JsonConverter
+    internal class ApiErrorConverter : JsonConverter
     {
         private readonly Dictionary<string, string> _propertyMappings = new Dictionary<string, string>
         {
@@ -34,13 +34,13 @@ namespace Auth0.Core.Serialization
             object instance = Activator.CreateInstance(objectType);
             var props = objectType.GetTypeInfo().DeclaredProperties.ToList();
 
-            JObject jo = JObject.Load(reader);
+            var jo = JObject.Load(reader);
             foreach (JProperty jp in jo.Properties())
             {
                 if (!_propertyMappings.TryGetValue(jp.Name, out var name))
                     name = jp.Name;
 
-                PropertyInfo prop = props.FirstOrDefault(pi =>
+                var prop = props.FirstOrDefault(pi =>
                     pi.CanWrite && string.Equals(pi.Name, name, StringComparison.OrdinalIgnoreCase));
 
                 prop?.SetValue(instance, jp.Value.ToObject(prop.PropertyType, serializer));

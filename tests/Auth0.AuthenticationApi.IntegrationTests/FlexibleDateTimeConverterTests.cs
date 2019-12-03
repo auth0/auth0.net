@@ -33,7 +33,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             result.DateValue.Should().Be(null);
         }
 
-        public class TestClass
+        class TestClass
         {
             [JsonConverter(typeof(FlexibleDateTimeConverter))]
             public DateTime? DateValue { get; set; }
