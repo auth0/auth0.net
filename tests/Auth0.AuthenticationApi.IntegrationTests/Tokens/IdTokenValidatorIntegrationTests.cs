@@ -37,7 +37,11 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
             {
                 Name = "Temp-IntTest-" + MakeRandomName(),
                 Strategy = "auth0",
-                EnabledClients = new[] { GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
+                EnabledClients = new[] {
+                    GetVariable("AUTH0_CLIENT_ID"),
+                    GetVariable("AUTH0_HS256_CLIENT_ID"),
+                    GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID")
+                }
             });
 
             // And add a dummy user to test against
@@ -60,25 +64,58 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
         }
 
         [Fact]
-        public async Task Passes_Token_Validation()
+        public async Task Passes_Token_Validation_RS256()
         {
+            var authUrl = GetVariable("AUTH0_AUTHENTICATION_API_URL");
+            var clientId = GetVariable("AUTH0_CLIENT_ID");
+            var clientSecret = GetVariable("AUTH0_CLIENT_SECRET");
+
             // Arrange
-            using (var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
+            using (var authenticationApiClient = new AuthenticationApiClient(authUrl))
             {
                 // Act
                 var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
                 {
-                    ClientId = GetVariable("AUTH0_CLIENT_ID"),
-                    ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
+                    ClientId = clientId,
+                    ClientSecret = clientSecret,
                     Realm = _connection.Name,
                     Scope = "openid",
                     Username = _user.Email,
                     Password = Password
                 });
 
-                var issuer = $"https://{GetVariable("AUTH0_AUTHENTICATION_API_URL")}/";
-                var idTokenValidation = new IdTokenRequirements(issuer, GetVariable("AUTH0_CLIENT_ID"), TimeSpan.FromMinutes(1));
+                var issuer = $"https://{authUrl}/";
+                var idTokenValidation = new IdTokenRequirements(issuer, clientId, TimeSpan.FromMinutes(1));
                 var verifier = await AsymmetricSignatureVerifier.ForJwks(issuer);
+                await idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken, verifier);
+            }
+        }
+
+        [Fact]
+        public async Task Passes_Token_Validation_HS256()
+        {
+            var authUrl = GetVariable("AUTH0_AUTHENTICATION_API_URL");
+            var clientId = GetVariable("AUTH0_HS256_CLIENT_ID");
+            var clientSecret = GetVariable("AUTH0_HS256_CLIENT_SECRET");
+
+            // Arrange
+            using (var authenticationApiClient = new AuthenticationApiClient(authUrl))
+            {
+                // Act
+                var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+                {
+                    ClientId = clientId,
+                    ClientSecret = clientSecret,
+                    Realm = _connection.Name,
+                    SigningAlgorithm = JwtSignatureAlgorithm.HS256,
+                    Scope = "openid",
+                    Username = _user.Email,
+                    Password = Password
+                });
+
+                var issuer = $"https://{authUrl}/";
+                var idTokenValidation = new IdTokenRequirements(issuer, clientId, TimeSpan.FromMinutes(1));
+                var verifier = SymmetricSignatureVerifier.FromClientSecret(clientSecret);
                 await idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken, verifier);
             }
         }
