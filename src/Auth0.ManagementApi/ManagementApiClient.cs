@@ -1,4 +1,4 @@
-﻿using Auth0.Core.Http;
+﻿using Auth0.Core;
 using Auth0.ManagementApi.Clients;
 using Newtonsoft.Json;
 using System;
@@ -210,7 +210,7 @@ namespace Auth0.ManagementApi
                     target
                 }
             }, Formatting.None);
-            return Utils.Base64UrlEncode(Encoding.UTF8.GetBytes(agentJson));
+            return Base64UrlEncoding.Encode(Encoding.UTF8.GetBytes(agentJson));
         }
     }
 }

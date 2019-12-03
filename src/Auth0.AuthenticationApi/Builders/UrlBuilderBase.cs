@@ -81,7 +81,7 @@ namespace Auth0.AuthenticationApi.Builders
         /// <returns><see cref="Uri"/> containing the complete URL.</returns>
         public Uri Build()
         {
-            return Utils.BuildUri(_baseUrl.OriginalString, _resource, _urlSegments, _queryStrings, true);
+            return UrlBuilder.BuildUri(_baseUrl.OriginalString, _resource, _urlSegments, _queryStrings, true);
         }
     }
 }

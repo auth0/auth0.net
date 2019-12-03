@@ -39,7 +39,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>Completed absolute URI for the request.</returns>
         protected Uri BuildUri(string resource, IDictionary<string, string> queryStrings = null)
         {
-            return Utils.BuildUri(BaseUri.AbsoluteUri, resource, null, queryStrings);
+            return UrlBuilder.BuildUri(BaseUri.AbsoluteUri, resource, null, queryStrings);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Auth0.Core.Http;
+﻿using Auth0.Core;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Linq;
@@ -76,7 +76,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
         private static JObject DecodePayload(string payload)
         {
-            var decoded = Encoding.ASCII.GetString(Utils.Base64UrlDecode(payload));
+            var decoded = Encoding.ASCII.GetString(Base64UrlEncoding.Decode(payload));
             return JObject.Parse(decoded);
         }
     }

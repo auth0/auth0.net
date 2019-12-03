@@ -1,6 +1,5 @@
 ﻿using Auth0.Core;
 using Auth0.Core.Exceptions;
-using Auth0.Core.Http;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -133,7 +132,7 @@ namespace Auth0.AuthenticationApi
                 version = sdkVersion.Major + "." + sdkVersion.Minor + "." + sdkVersion.Revision,
                 env = new { target }
             }, Formatting.None);
-            return Utils.Base64UrlEncode(Encoding.UTF8.GetBytes(agentJson));
+            return Base64UrlEncoding.Encode(Encoding.UTF8.GetBytes(agentJson));
         }
 
         /// <summary>
