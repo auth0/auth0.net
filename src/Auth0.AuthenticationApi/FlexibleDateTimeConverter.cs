@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Converters;
 using System;
 
-namespace Auth0.Core.Serialization
+namespace Auth0.AuthenticationApi
 {
     /// <summary>
     /// A JSON date converter that reads both ISO 8601 and epoch dates.
