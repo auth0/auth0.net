@@ -1,5 +1,6 @@
 ﻿using Auth0.AuthenticationApi.Models;
 using Auth0.AuthenticationApi.Tokens;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -15,6 +16,7 @@ namespace Auth0.AuthenticationApi
     /// </remarks>
     public class AuthenticationApiClient : IAuthenticationApiClient, IDisposable
     {
+        readonly TimeSpan idTokenValidationLeeway = TimeSpan.FromMinutes(1);
         readonly Uri tokenUri;
         readonly IAuthenticationConnection connection;
         bool disposed = false;
@@ -303,33 +305,56 @@ namespace Auth0.AuthenticationApi
             GC.SuppressFinalize(this);
         }
 
-        private async Task AssertIdTokenValid(string idToken, string audience, JwtSignatureAlgorithm algorithm, string clientSecret)
+        private Task AssertIdTokenValid(string idToken, string audience, JwtSignatureAlgorithm algorithm, string clientSecret)
         {
-            var issuer = BaseUri.AbsoluteUri;
-            var requirements = new IdTokenRequirements(issuer, audience, TimeSpan.FromMinutes(1));
-            var signatureVerifier = await CreateSignatureVerifier(algorithm, issuer, clientSecret).ConfigureAwait(false);
+            var requirements = new IdTokenRequirements(BaseUri.AbsoluteUri, audience, idTokenValidationLeeway);
 
-            await requirements.AssertTokenMeetsRequirements(idToken, signatureVerifier: signatureVerifier).ConfigureAwait(false);
-        }
-
-        private static async Task<ISignatureVerifier> CreateSignatureVerifier(JwtSignatureAlgorithm algorithm, string issuer, string clientSecret)
-        {
             switch (algorithm)
             {
-                case JwtSignatureAlgorithm.RS256:
-                    if (String.IsNullOrWhiteSpace(issuer))
-                        throw new ArgumentException("Issuer must contain a value when using RS256", nameof(issuer));
-                    return await AsymmetricSignatureVerifier.ForJwks(issuer).ConfigureAwait(false);
+                case JwtSignatureAlgorithm.HS256: 
+                    return AssertHS256IdTokenValid(idToken, clientSecret, requirements);
 
-                case JwtSignatureAlgorithm.HS256:
-                    if (String.IsNullOrWhiteSpace(clientSecret))
-                        throw new ArgumentException("ClientSecret must contain a value when using HS256", nameof(clientSecret));
-                    return SymmetricSignatureVerifier.FromClientSecret(clientSecret);
+                case JwtSignatureAlgorithm.RS256:
+                    return AssertRS256IdTokenValidWithRefresh(idToken, audience, clientSecret, requirements);
 
                 default:
                     throw new ArgumentOutOfRangeException(nameof(algorithm));
             }
         }
+
+        private Task AssertHS256IdTokenValid(string idToken, string clientSecret, IdTokenRequirements requirements)
+        {
+            if (string.IsNullOrWhiteSpace(clientSecret))
+                throw new ArgumentException("ClientSecret must contain a value when using HS256", nameof(clientSecret));
+
+            var signatureVerifier = SymmetricSignatureVerifier.FromClientSecret(clientSecret);
+            return requirements.AssertTokenMeetsRequirements(idToken, signatureVerifier);
+        }
+
+        private Task AssertRS256IdTokenValidWithRefresh(string idToken, string audience, string clientSecret, IdTokenRequirements requirements)
+        {
+            try
+            {
+                return AssertRS256IdTokenValid(idToken, clientSecret, requirements, maxJwksKeySetValidFor);
+            }
+            catch (SecurityTokenSignatureKeyNotFoundException)
+            {
+                return AssertRS256IdTokenValid(idToken, audience, requirements, minJwksRefreshInterval);
+            }
+        }
+
+        private async Task AssertRS256IdTokenValid(string idToken, string issuer, IdTokenRequirements requirements, TimeSpan maxAge)
+        {
+            if (string.IsNullOrWhiteSpace(issuer))
+                throw new ArgumentException("Issuer must contain a value when using RS256", nameof(issuer));
+
+            var keys = await cache.GetOrAddAsync(issuer, maxAge, () => JsonWebKeys.GetForIssuer(issuer)).ConfigureAwait(false);
+            await requirements.AssertTokenMeetsRequirements(idToken, new AsymmetricSignatureVerifier(keys.Keys));
+        }
+
+        readonly static TimeSpan maxJwksKeySetValidFor = TimeSpan.FromMinutes(10);
+        readonly static TimeSpan minJwksRefreshInterval = TimeSpan.FromSeconds(15);
+        readonly static KeyedCache<JsonWebKeySet> cache = new KeyedCache<JsonWebKeySet>();
 
         private Uri BuildUri(string path)
         {

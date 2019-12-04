@@ -1,9 +1,10 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
+using System.Threading.Tasks;
 
 namespace Auth0.AuthenticationApi.Tokens
 {
     internal interface ISignatureVerifier
     {
-        JwtSecurityToken VerifySignature(string token);
+        Task<JwtSecurityToken> VerifySignatureAsync(string token);
     }
 }

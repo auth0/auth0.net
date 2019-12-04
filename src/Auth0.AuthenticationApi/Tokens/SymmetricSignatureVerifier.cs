@@ -2,12 +2,13 @@
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Auth0.AuthenticationApi.Tokens
 {
     internal class SymmetricSignatureVerifier : ISignatureVerifier
     {
-        private readonly SecurityKey signingKey;
+        readonly SecurityKey signingKey;
 
         public SymmetricSignatureVerifier(SecurityKey signingKey)
         {
@@ -19,27 +20,25 @@ namespace Auth0.AuthenticationApi.Tokens
             return new SymmetricSignatureVerifier(new SymmetricSecurityKey(Encoding.ASCII.GetBytes(clientSecret)));
         }
 
-        public JwtSecurityToken VerifySignature(string token)
+        public Task<JwtSecurityToken> VerifySignatureAsync(string token)
         {
             var securityTokenHandler = new JwtSecurityTokenHandler();
 
-            JwtSecurityToken decoded;
             try
             {
-                decoded = securityTokenHandler.ReadJwtToken(token);
+                var decoded = securityTokenHandler.ReadJwtToken(token);
+                if (decoded.SignatureAlgorithm != "HS256")
+                    throw new IdTokenValidationException($"Signature algorithm of \"{decoded.Header.Alg }\" is not supported. Expected the ID token to be signed with \"HS256\".");
             }
             catch (ArgumentException e)
             {
                 throw new IdTokenValidationException("ID token could not be decoded.", e);
             }
 
-            if (decoded.SignatureAlgorithm != "HS256")
-                throw new IdTokenValidationException($"Signature algorithm of \"{decoded.Header.Alg }\" is not supported. Expected the ID token to be signed with \"HS256\".");
-
-            return (JwtSecurityToken)ValidateTokenSignatureWithKey(token, securityTokenHandler);
+            return Task.FromResult(ValidateTokenSignatureWithKey(token, securityTokenHandler));
         }
 
-        internal SecurityToken ValidateTokenSignatureWithKey(string token, JwtSecurityTokenHandler securityTokenHandler)
+        internal JwtSecurityToken ValidateTokenSignatureWithKey(string token, JwtSecurityTokenHandler securityTokenHandler)
         {
             try
             {
@@ -57,7 +56,7 @@ namespace Auth0.AuthenticationApi.Tokens
                 };
 
                 securityTokenHandler.ValidateToken(token, validationParameters, out var verifiedToken);
-                return verifiedToken;
+                return (JwtSecurityToken)verifiedToken;
             }
             catch (SecurityTokenException e)
             {

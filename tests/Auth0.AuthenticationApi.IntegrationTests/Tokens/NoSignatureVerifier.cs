@@ -2,6 +2,7 @@
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
 {
@@ -14,28 +15,28 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
             this.allowedAlgorithms = allowedAlgorithms;
         }
 
-        public JwtSecurityToken VerifySignature(string token)
+        public Task<JwtSecurityToken> VerifySignatureAsync(string token)
         {
             var securityTokenHandler = new JwtSecurityTokenHandler();
-            JwtSecurityToken decoded;
+
             try
             {
-                decoded = securityTokenHandler.ReadJwtToken(token);
+                JwtSecurityToken decoded = securityTokenHandler.ReadJwtToken(token);
+
+                if (allowedAlgorithms.Any() && !allowedAlgorithms.Contains(decoded.Header.Alg))
+                {
+                    var allowedList = string.Join(", ", allowedAlgorithms.Select(a => "\"" + a + "\""));
+                    throw new IdTokenValidationException(
+                        $"Signature algorithm of \"{decoded.Header.Alg}\" is not supported. " +
+                        $"Expected the ID token to be signed with {allowedList}.");
+                }
+
+                return Task.FromResult(decoded);
             }
             catch (ArgumentException e)
             {
                 throw new IdTokenValidationException("ID token could not be decoded.", e);
             }
-
-            if (allowedAlgorithms.Any() && !allowedAlgorithms.Contains(decoded.Header.Alg))
-            {
-                var allowedList = String.Join(", ", allowedAlgorithms.Select(a => "\"" + a + "\""));
-                throw new IdTokenValidationException(
-                    $"Signature algorithm of \"{decoded.Header.Alg}\" is not supported. " +
-                    $"Expected the ID token to be signed with {allowedList}.");
-            }
-
-            return decoded;
         }
     }
 }

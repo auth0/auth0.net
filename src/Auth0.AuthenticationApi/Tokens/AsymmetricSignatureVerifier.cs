@@ -8,7 +8,7 @@ namespace Auth0.AuthenticationApi.Tokens
 {
     internal class AsymmetricSignatureVerifier : ISignatureVerifier
     {
-        private readonly IList<JsonWebKey> keys;
+        readonly IList<JsonWebKey> keys;
 
         public static async Task<AsymmetricSignatureVerifier> ForJwks(string issuer)
         {
@@ -21,27 +21,29 @@ namespace Auth0.AuthenticationApi.Tokens
             this.keys = keys;
         }
 
-        public JwtSecurityToken VerifySignature(string token)
+        public Task<JwtSecurityToken> VerifySignatureAsync(string token)
         {
             var securityTokenHandler = new JwtSecurityTokenHandler();
+            var kid = GetTokenKid(token, securityTokenHandler);
+            return Task.FromResult(ValidateTokenSignature(token, securityTokenHandler, kid, keys));
+        }
 
-            JwtSecurityToken decoded;
+        internal static string GetTokenKid(string token, JwtSecurityTokenHandler securityTokenHandler)
+        {
             try
             {
-                decoded = securityTokenHandler.ReadJwtToken(token);
+                var decoded = securityTokenHandler.ReadJwtToken(token);
+                if (decoded.SignatureAlgorithm != "RS256")
+                    throw new IdTokenValidationException($"Signature algorithm of \"{decoded.Header.Alg }\" is not supported. Expected the ID token to be signed with \"RS256\".");
+                return decoded.Header.Kid;
             }
             catch (ArgumentException e)
             {
                 throw new IdTokenValidationException("ID token could not be decoded.", e);
             }
-
-            if (decoded.SignatureAlgorithm != "RS256")
-                throw new IdTokenValidationException($"Signature algorithm of \"{decoded.Header.Alg }\" is not supported. Expected the ID token to be signed with \"RS256\".");
-
-            return (JwtSecurityToken)ValidateTokenSignature(token, securityTokenHandler, decoded.Header.Kid);
         }
 
-        internal SecurityToken ValidateTokenSignature(string token, JwtSecurityTokenHandler securityTokenHandler, string kid)
+        internal static JwtSecurityToken ValidateTokenSignature(string token, JwtSecurityTokenHandler securityTokenHandler, string kid, IList<JsonWebKey> keys)
         {
             try
             {
@@ -59,7 +61,7 @@ namespace Auth0.AuthenticationApi.Tokens
                 };
 
                 securityTokenHandler.ValidateToken(token, validationParameters, out var verifiedToken);
-                return verifiedToken;
+                return (JwtSecurityToken)verifiedToken;
             }
             catch (SecurityTokenSignatureKeyNotFoundException)
             {
