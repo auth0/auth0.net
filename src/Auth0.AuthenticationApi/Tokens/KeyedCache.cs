@@ -8,61 +8,21 @@ namespace Auth0.AuthenticationApi.Tokens
     {
         struct Entry
         {
-            public T Value;
+            public Task<T> Task;
             public DateTime CachedAt;
-            public DateTime LastAccess;
-            public DateTime ExpireAt;
         }
 
         readonly ConcurrentDictionary<string, Entry> cache = new ConcurrentDictionary<string, Entry>();
 
-        public DateTime? GetCachedAt(string key)
-        {
-            if (cache.TryGetValue(key, out Entry entry))
-                return entry.CachedAt;
-
-            return null;
-        }
-
-        public void Add(string key, TimeSpan maxAge, T newValue)
-        {
-            var now = DateTime.UtcNow;
-            cache.TryAdd(key, new Entry { CachedAt = now, LastAccess = now, Value = newValue, ExpireAt = now.Add(maxAge) });
-            PruneExpiredEntries();
-        }
-
-        public async Task<T> AddAsync(string key, TimeSpan maxAge, Func<Task<T>> valueFactory) {
-            var newValue = await valueFactory();
-            Add(key, maxAge, newValue);
-            return newValue;
-        }
-
         public Task<T> GetOrAddAsync(string key, TimeSpan maxAge, Func<Task<T>> valueFactory)
         {
             var now = DateTime.UtcNow;
-            if (cache.TryGetValue(key, out Entry entry))
-            {
-                var cutOff = now.Subtract(maxAge);
-                if (entry.CachedAt > cutOff)
-                {
-                    entry.LastAccess = now;
-                    return Task.FromResult(entry.Value);
-                }
-                else
-                {
-                    cache.TryRemove(key, out Entry _);
-                }
-            }
+            if (cache.TryGetValue(key, out Entry entry) && (entry.CachedAt.Add(maxAge) < now))
+                return entry.Task;
 
-            return AddAsync(key, maxAge, valueFactory);
-        }
-
-        private void PruneExpiredEntries()
-        {
-            var now = DateTime.UtcNow;
-            foreach (var item in cache)
-                if (item.Value.ExpireAt < now)
-                    cache.TryRemove(item.Key, out _);
+            var task = valueFactory();
+            cache.TryAdd(key, new Entry { Task = task, CachedAt = now });
+            return task;
         }
     }
 }
