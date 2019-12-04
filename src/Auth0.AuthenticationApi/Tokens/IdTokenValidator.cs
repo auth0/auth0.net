@@ -1,5 +1,4 @@
 ﻿using Auth0.AuthenticationApi.Tokens;
-using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Threading.Tasks;
@@ -10,7 +9,7 @@ namespace Auth0.AuthenticationApi
     {
         readonly TimeSpan maxJwksKeySetValidFor = TimeSpan.FromMinutes(10);
         readonly TimeSpan minJwksRefreshInterval = TimeSpan.FromSeconds(15);
-        readonly KeyedCache<JsonWebKeySet> cache = new KeyedCache<JsonWebKeySet>();
+        readonly JsonWebKeyCache jsonWebKeyCache = new JsonWebKeyCache();
 
         public async Task Assert(IdTokenRequirements requirements, string idToken, string clientSecret, DateTime? pointInTime = null)
         {
@@ -45,7 +44,7 @@ namespace Auth0.AuthenticationApi
 
         private async Task<JwtSecurityToken> AssertRS256IdTokenValid(string idToken, string issuer, TimeSpan maxAge)
         {
-            var keys = await cache.GetOrAddAsync(issuer, maxAge, () => JsonWebKeys.GetForIssuer(issuer)).ConfigureAwait(false);
+            var keys = await jsonWebKeyCache.Get(issuer, maxAge).ConfigureAwait(false);
             return new AsymmetricSignedDecoder(keys.Keys).DecodeSignedToken(idToken);
         }
     }
