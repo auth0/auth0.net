@@ -85,9 +85,8 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
                 });
 
                 var issuer = $"https://{authUrl}/";
-                var idTokenValidation = new IdTokenRequirements(issuer, clientId, TimeSpan.FromMinutes(1));
-                var verifier = await AsymmetricSignatureVerifier.ForJwks(issuer);
-                await idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken, verifier);
+                var requirements = new IdTokenRequirements(JwtSignatureAlgorithm.RS256, issuer, clientId, TimeSpan.FromMinutes(1));
+                await new IdTokenValidator().Assert(requirements, authenticationResponse.IdToken, clientSecret);
             }
         }
 
@@ -114,9 +113,8 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
                 });
 
                 var issuer = $"https://{authUrl}/";
-                var idTokenValidation = new IdTokenRequirements(issuer, clientId, TimeSpan.FromMinutes(1));
-                var verifier = SymmetricSignatureVerifier.FromClientSecret(clientSecret);
-                await idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken, verifier);
+                var requirements = new IdTokenRequirements(JwtSignatureAlgorithm.HS256, issuer, clientId, TimeSpan.FromMinutes(1));
+                await new IdTokenValidator().Assert(requirements, authenticationResponse.IdToken, clientSecret);
             }
         }
 
@@ -138,9 +136,8 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
                 });
 
                 var issuer = $"https://{GetVariable("BRUCKE_AUTHENTICATION_API_URL")}/";
-                var idTokenValidation = new IdTokenRequirements(issuer, GetVariable("BRUCKE_CLIENT_ID"), TimeSpan.FromMinutes(1));
-                var verifier = await AsymmetricSignatureVerifier.ForJwks(issuer);
-                await idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken, verifier);
+                var requirements = new IdTokenRequirements(JwtSignatureAlgorithm.RS256, issuer, GetVariable("BRUCKE_CLIENT_ID"), TimeSpan.FromMinutes(1));
+                await new IdTokenValidator().Assert(requirements, authenticationResponse.IdToken, GetVariable("BRUCKE_CLIENT_SECRET"));
             }
         }
 
@@ -162,12 +159,11 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
 
                 });
 
-                var idTokenValidation = new IdTokenRequirements("https://auth0.auth0.com/", GetVariable("AUTH0_CLIENT_ID"), TimeSpan.FromMinutes(1));
-                var verifier = await AsymmetricSignatureVerifier.ForJwks("https://auth0.auth0.com/");
+                var requirements = new IdTokenRequirements(JwtSignatureAlgorithm.RS256, "https://auth0.auth0.com/", GetVariable("AUTH0_CLIENT_ID"), TimeSpan.FromMinutes(1));
 
                 // Assert
                 authenticationResponse.IdToken.Should().NotBeNull();
-                await Assert.ThrowsAsync<IdTokenValidationException>(() => idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken, verifier));
+                await Assert.ThrowsAsync<IdTokenValidationKeyMissingException>(() => new IdTokenValidator().Assert(requirements, authenticationResponse.IdToken, GetVariable("AUTH0_CLIENT_SECRET")));
             }
         }
 
@@ -190,12 +186,11 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
                 });
 
                 var issuer = $"https://{GetVariable("AUTH0_AUTHENTICATION_API_URL")}/";
-                var idTokenValidation = new IdTokenRequirements(issuer, "invalid_audience", TimeSpan.FromMinutes(1));
-                var verifier = await AsymmetricSignatureVerifier.ForJwks(issuer);
+                var requirements = new IdTokenRequirements(JwtSignatureAlgorithm.RS256, issuer, "invalid_audience", TimeSpan.FromMinutes(1));
 
                 // Assert
                 authenticationResponse.IdToken.Should().NotBeNull();
-                await Assert.ThrowsAsync<IdTokenValidationException>(() => idTokenValidation.AssertTokenMeetsRequirements(authenticationResponse.IdToken, verifier));
+                await Assert.ThrowsAsync<IdTokenValidationException>(() => new IdTokenValidator().Assert(requirements, authenticationResponse.IdToken, GetVariable("AUTH0_CLIENT_SECRET")));
             }
         }
     }

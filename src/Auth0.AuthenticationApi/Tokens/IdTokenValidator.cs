@@ -1,154 +1,52 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Auth0.AuthenticationApi.Tokens;
+using Microsoft.IdentityModel.Tokens;
 using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace Auth0.AuthenticationApi.Tokens
+namespace Auth0.AuthenticationApi
 {
-    /// <summary>
-    /// Perform validation of a JWT ID token in compliance with specified <see cref="IdTokenRequirements"/>.
-    /// </summary>
-    internal static class IdTokenValidator
+    internal class IdTokenValidator
     {
-        /// <summary>
-        /// Assert that all the <see cref="IdTokenRequirements"/> are met by a JWT ID token for a given point in time.
-        /// </summary>
-        /// <param name="required"><see cref="IdTokenRequirements"/> that should be asserted.</param>
-        /// <param name="rawIDToken">Raw ID token to assert requirements against.</param>
-        /// <param name="signatureVerifier">Optional <see cref="ISignatureVerifier"/> to perform signature verification and token extraction. If unspecified
-        /// <see cref="AsymmetricSignatureVerifier"/> is used against the <paramref name="required"/> Issuer.</param>
-        /// <param name="pointInTime">Optional <see cref="DateTime"/> to act as "Now" in order to facilitate unit testing with static tokens.</param>
-        /// <exception cref="IdTokenValidationException">Exception thrown if <paramref name="rawIDToken"/> fails to
-        /// meet the requirements specified by <paramref name="required"/>.
-        /// </exception>
-        /// <returns><see cref="Task"/> that will complete when the token is validated.</returns>
-        internal static async Task AssertTokenMeetsRequirements(this IdTokenRequirements required, string rawIDToken, ISignatureVerifier signatureVerifier, DateTime? pointInTime = null)
+        readonly TimeSpan maxJwksKeySetValidFor = TimeSpan.FromMinutes(10);
+        readonly TimeSpan minJwksRefreshInterval = TimeSpan.FromSeconds(15);
+        readonly KeyedCache<JsonWebKeySet> cache = new KeyedCache<JsonWebKeySet>();
+
+        public async Task Assert(IdTokenRequirements requirements, string idToken, string clientSecret, DateTime? pointInTime = null)
         {
-            if (string.IsNullOrWhiteSpace(rawIDToken))
+            if (string.IsNullOrWhiteSpace(idToken))
                 throw new IdTokenValidationException("ID token is required but missing.");
 
-            if (signatureVerifier == null)
-                throw new ArgumentNullException("Signature Verifier is required for asserting requirements.", nameof(signatureVerifier));
-
-            await signatureVerifier.VerifySignatureAsync(rawIDToken);
-
-            var token = DecodeToken(rawIDToken);
-            AssertTokenClaimsMeetRequirements(required, token, pointInTime ?? DateTime.Now);
+            var verifiedToken = await DecodeSignedToken(requirements, idToken, clientSecret);
+            IdTokenClaimValidator.AssertClaimsMeetRequirements(requirements, verifiedToken, pointInTime ?? DateTime.Now);
         }
 
-        private static JwtSecurityToken DecodeToken(string rawIDToken)
+        private Task<JwtSecurityToken> DecodeSignedToken(IdTokenRequirements requirements, string idToken, string clientSecret)
         {
-            JwtSecurityToken decoded;
-            try
+            switch (requirements.SignatureAlgorithm)
             {
-                decoded = new JwtSecurityTokenHandler().ReadJwtToken(rawIDToken);
-            }
-            catch (ArgumentException e)
-            {
-                throw new IdTokenValidationException("ID token could not be decoded.", e);
-            }
+                case JwtSignatureAlgorithm.HS256:
+                    return Task.FromResult(new SymmetricSignedDecoder(clientSecret).DecodeSignedToken(idToken));
 
-            return decoded;
-        }
+                case JwtSignatureAlgorithm.RS256:
+                    try
+                    {
+                        return AssertRS256IdTokenValid(idToken, requirements.Issuer, maxJwksKeySetValidFor);
+                    }
+                    catch (IdTokenValidationException)
+                    {
+                        return AssertRS256IdTokenValid(idToken, requirements.Issuer, minJwksRefreshInterval);
+                    }
 
-        /// <summary>
-        /// Assert that all the claims within a <see cref="JwtSecurityToken"/> meet the specified <see cref="IdTokenRequirements"/> for a given point in time.
-        /// </summary>
-        /// <param name="required"><see cref="IdTokenRequirements"/> that should be asserted.</param>
-        /// <param name="token"><see cref="JwtSecurityToken"/> to assert requirements against.</param>
-        /// <param name="pointInTime"><see cref="DateTime"/> to act as "Now" when asserting time-based claims.</param>
-        /// <exception cref="IdTokenValidationException">Exception thrown if <paramref name="rawIDToken"/> fails to
-        /// meet the requirements specified by <paramref name="required"/>.
-        /// </exception>
-        private static void AssertTokenClaimsMeetRequirements(IdTokenRequirements required, JwtSecurityToken token, DateTime pointInTime)
-        {
-            var epochNow = EpochTime.GetIntDate(pointInTime);
-
-            // Issuer
-            if (string.IsNullOrWhiteSpace(token.Issuer))
-                throw new IdTokenValidationException("Issuer (iss) claim must be a string present in the ID token.");
-            if (token.Issuer != required.Issuer)
-                throw new IdTokenValidationException($"Issuer (iss) claim mismatch in the ID token; expected \"{required.Issuer}\", found \"{token.Issuer}\".");
-
-            // Subject
-            if (string.IsNullOrWhiteSpace(token.Subject))
-                throw new IdTokenValidationException("Subject (sub) claim must be a string present in the ID token.");
-
-            // Audience
-            var audienceCount = token.Audiences.Count();
-            if (audienceCount == 0)
-                throw new IdTokenValidationException("Audience (aud) claim must be a string or array of strings present in the ID token.");
-            if (!token.Audiences.Contains(required.Audience))
-                throw new IdTokenValidationException($"Audience (aud) claim mismatch in the ID token; expected \"{required.Audience}\" but was not one of \"{String.Join(", ", token.Audiences)}\".");
-
-            {
-                // Expires at
-                var exp = GetEpoch(token.Claims, JwtRegisteredClaimNames.Exp);
-                if (exp == null)
-                    throw new IdTokenValidationException("Expiration Time (exp) claim must be an integer present in the ID token.");
-                var expiration = exp + required.Leeway.TotalSeconds;
-                if (epochNow >= expiration)
-                    throw new IdTokenValidationException($"Expiration Time (exp) claim error in the ID token; current time ({epochNow}) is after expiration time ({exp}).");
-            }
-
-            {
-                // Issued at
-                var iat = GetEpoch(token.Claims, JwtRegisteredClaimNames.Iat);
-                if (iat == null)
-                    throw new IdTokenValidationException("Issued At (iat) claim must be an integer present in the ID token.");
-                var issued = iat - required.Leeway.TotalSeconds;
-                if (epochNow < issued)
-                    throw new IdTokenValidationException($"Issued At (iat) claim error in the ID token; current time ({epochNow}) is before issued at time ({iat}).");
-            }
-
-            // Nonce
-            if (required.Nonce != null)
-            {
-                if (string.IsNullOrWhiteSpace(token.Payload.Nonce))
-                    throw new IdTokenValidationException("Nonce (nonce) claim must be a string present in the ID token.");
-                if (token.Payload.Nonce != required.Nonce)
-                    throw new IdTokenValidationException($"Nonce (nonce) claim mismatch in the ID token; expected \"{required.Nonce}\", found \"{token.Payload.Nonce}\".");
-            }
-
-            // Authorized Party
-            if (audienceCount > 1)
-            {
-                if (string.IsNullOrWhiteSpace(token.Payload.Azp))
-                    throw new IdTokenValidationException("Authorized Party (azp) claim must be a string present in the ID token when Audiences (aud) claim has multiple values.");
-                if (token.Payload.Azp != required.Audience)
-                    throw new IdTokenValidationException($"Authorized Party (azp) claim mismatch in the ID token; expected \"{required.Audience}\", found \"{token.Payload.Azp}\".");
-            }
-
-            // Authentication time
-            if (required.MaxAge.HasValue)
-            {
-                var authTime = GetEpoch(token.Claims, JwtRegisteredClaimNames.AuthTime);
-                if (!authTime.HasValue)
-                    throw new IdTokenValidationException("Authentication Time (auth_time) claim must be an integer present in the ID token when MaxAge specified.");
-
-                var authValidUntil = (long)(authTime + required.MaxAge.Value.TotalSeconds + required.Leeway.TotalSeconds);
-
-                if (epochNow > authValidUntil)
-                    throw new IdTokenValidationException($"Authentication Time (auth_time) claim in the ID token indicates that too much time has passed since the last end-user authentication. Current time ({epochNow}) is after last auth at {authValidUntil}.");
+                default:
+                    throw new ArgumentOutOfRangeException($"SignatureAlgorithm '{requirements.SignatureAlgorithm}' not supported.", nameof(requirements));
             }
         }
 
-        /// <summary>
-        /// Get a epoch (Unix time) value for a given claim.
-        /// </summary>
-        /// <param name="claims"><see cref="IEnumerable{Claim}"/>Claims to search the <paramref name="claimType"/> for.</param>
-        /// <param name="claimType">Type of claim to search the <paramref name="claims"/> for.  See <see cref="JwtRegisteredClaimNames"/> for possible names.</param>
-        /// <returns>A <see cref="long?"/>Containing the <see cref="long"/> value containing the epoch value or <see langword="null"/> if no matching value was found.</returns>
-        private static long? GetEpoch(IEnumerable<Claim> claims, string claimType)
+        private async Task<JwtSecurityToken> AssertRS256IdTokenValid(string idToken, string issuer, TimeSpan maxAge)
         {
-            var claim = claims.FirstOrDefault(t => t.Type == claimType);
-            if (claim == null) return null;
-
-            return (long)Convert.ToDouble(claim.Value, CultureInfo.InvariantCulture);
+            var keys = await cache.GetOrAddAsync(issuer, maxAge, () => JsonWebKeys.GetForIssuer(issuer)).ConfigureAwait(false);
+            return new AsymmetricSignedDecoder(keys.Keys).DecodeSignedToken(idToken);
         }
     }
 }
