@@ -33,7 +33,7 @@ namespace Auth0.AuthenticationApi
                     {
                         return AssertRS256IdTokenValid(idToken, requirements.Issuer, maxJwksKeySetValidFor);
                     }
-                    catch (IdTokenValidationException)
+                    catch (IdTokenValidationKeyMissingException)
                     {
                         return AssertRS256IdTokenValid(idToken, requirements.Issuer, minJwksRefreshInterval);
                     }
