@@ -1,6 +1,5 @@
 ﻿using Auth0.AuthenticationApi.Models;
 using Auth0.AuthenticationApi.Tokens;
-using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -16,6 +15,7 @@ namespace Auth0.AuthenticationApi
     /// </remarks>
     public class AuthenticationApiClient : IAuthenticationApiClient, IDisposable
     {
+        static readonly IdTokenValidator idTokenValidator = new IdTokenValidator();
         readonly TimeSpan idTokenValidationLeeway = TimeSpan.FromMinutes(1);
         readonly Uri tokenUri;
         readonly IAuthenticationConnection connection;
@@ -308,7 +308,7 @@ namespace Auth0.AuthenticationApi
         private Task AssertIdTokenValid(string idToken, string audience, JwtSignatureAlgorithm algorithm, string clientSecret)
         {
             var requirements = new IdTokenRequirements(algorithm, BaseUri.AbsoluteUri, audience, idTokenValidationLeeway);
-            return new IdTokenValidator().Assert(requirements, idToken, clientSecret);
+            return idTokenValidator.Assert(requirements, idToken, clientSecret);
         }
 
         private Uri BuildUri(string path)
