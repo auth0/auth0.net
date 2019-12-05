@@ -8,7 +8,7 @@ Various breaking changes to the management API exist in version 6. They are as f
 
 Previously various Auth0 management endpoints were exposed with GetAll methods that did not take a PagingInfo parameter.  These have been deprecated server-side and most were marked as `[Obsolete]` in v5.
 
-Now, in V6 those methods have been removed entirely.  If you were previously calling a Client class's GetAll method without thinking about paging you should now consider how you want to handle pages of results in your application and use the equivalent overload with a PagingInfo parameter.
+Now, in v6 those methods have been removed entirely.  If you were previously calling a Client class's GetAll method without thinking about paging you should now consider how you want to handle pages of results in your application and use the equivalent overload with a PagingInfo parameter.
 
 ### Removal of IManagementApi interface
 
