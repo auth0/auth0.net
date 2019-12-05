@@ -9,7 +9,7 @@ using System.Security.Claims;
 namespace Auth0.AuthenticationApi.Tokens
 {
     /// <summary>
-    /// Perform validation of a JWT ID token in compliance with specified <see cref="IdTokenRequirements"/>.
+    /// Perform validation of an ID token in compliance with specified <see cref="IdTokenRequirements"/>.
     /// </summary>
     internal static class IdTokenClaimValidator
     {
