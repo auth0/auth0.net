@@ -18,7 +18,7 @@ In the new OIDC conformant pipeline this is not the case anymore, as the endpoin
 
 Because of this single instance of shared data between the Authentication and Management API SDKs, a lot of the _Models_ returned by the various methods has been stored in the [Auth0.Core NuGet package](https://www.nuget.org/packages/Auth0.Core). With version 4 this is not the case anymore. 
 
-All model classes are now stored in the Nuget package which they relate to. So all Authentication API SDK model classes are stored in the [Auth0.AuthenticationAPI NuGet package](https://www.nuget.org/packages/Auth0.AuthenticationApi). Likewise, all Management API SDK model classes are stored in the [Auth0.ManagementAPI NuGet package](https://www.nuget.org/packages/Auth0.ManagementApi).
+All model classes are now stored in the NuGet package which they relate to. So all Authentication API SDK model classes are stored in the [Auth0.AuthenticationAPI NuGet package](https://www.nuget.org/packages/Auth0.AuthenticationApi). Likewise, all Management API SDK model classes are stored in the [Auth0.ManagementAPI NuGet package](https://www.nuget.org/packages/Auth0.ManagementApi).
 
 The [Auth0.Core NuGet package](https://www.nuget.org/packages/Auth0.Core) only contains some shared classes used for communicating with the actual APIs, Exception classes etc.
 
