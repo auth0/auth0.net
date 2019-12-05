@@ -2,7 +2,7 @@
 
 ## Migrating from v3 to v4
 
-Version 4 of both the Authentication API SDK as well as the Management API SDK are major breaking changes. This document will discuss the reason for these changes, as well as instructions on how to migrate to the new version.
+Version 4 of both the Authentication API SDK as well as the Management API SDK include breaking changes. This document will discuss the reason for these changes, as well as instructions on how to migrate to the new version.
 
 ### OIDC Conformance
 
