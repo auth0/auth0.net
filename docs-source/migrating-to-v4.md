@@ -50,7 +50,7 @@ Here follows the list of changes made from Version 3 to Version 4 of the Auth0.N
 
 * **Changed** the response of `AuthenticateAsync()` to now return an `AccessTokenResponse` instead of `AuthorizationResponse`. 
 
-* **Renamed** the `Connection` property in `AuthenticationRequest` class to `Realm`. It is also now optional. If the Connection is not provided in the `Realm` property, the Authentication API will use the connection specified as the Default Directory in the [Account Settings](https://manage.auth0.com/#/account). **As noted above however**, you should rather use `GetTokenAsync(ResourceOwnerTokenRequest)` instead.
+* **Renamed** the `Connection` property in `AuthenticationRequest` class to `Realm`. It is also now optional. If the Connection is not provided in the `Realm` property, the Authentication API will use the connection specified as the Default Directory in the [Account Settings](https://manage.auth0.com/#/account). **As noted above however**, you should use `GetTokenAsync(ResourceOwnerTokenRequest)` instead.
 
 * **Deprecated** the `GetDelegationTokenAsync(RefreshTokenDelegationRequest)` method. The token refresh exchange must be done using the `GetTokenAsync(RefreshTokenRequest)` method.
 
