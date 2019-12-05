@@ -6,7 +6,7 @@ Welcome to the documentation for the Auth0 .NET SDK. This reference will give yo
 
 This documentation is supplemental to the official [Auth0 API documentation](https://auth0.com/docs). For more information on the Authentication and Management APIs, you can visit their official documentation by following one of the links below:
 
-* [Authentication API](https://auth0.com/docs/auth-api)
+* [Authentication API](https://auth0.com/docs/api/authentication)
 * [Management API](https://auth0.com/docs/api/v2)
 
 The rest of this documentation will guide your through the process of installing the various NuGet Packages, as well as some basic examples. You will also find the full references for all the classes and types in the Auth0 .NET SDK.
