@@ -33,7 +33,7 @@ You can install the Management API SDK through the [Package Manager Console](htt
 Install-Package Auth0.ManagementApi
 ```
 		  
-Alternatively you can install it through the [Package Manager Dialog](httsp://docs.nuget.org/consume/package-manager-dialog) by searching for the `Auth0.ManagementApi` package.
+Alternatively you can install it through the [Package Manager Dialog](https://docs.nuget.org/consume/package-manager-dialog) by searching for the `Auth0.ManagementApi` package.
 
 ## Using the Authentication API
 
