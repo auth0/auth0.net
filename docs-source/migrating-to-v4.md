@@ -8,7 +8,7 @@ Version 4 of both the Authentication API SDK as well as the Management API SDK i
 
 The main reason for the breaking changes is related to improved OIDC compliance which was added to the Authentication API. Because of this, the behaviour of some of the existing Authentication API endpoints have changed, and other endpoints are being deprecated.
 
-For a full background and other details please refer to the official [OIDC-conformant authentication migration guide](https://auth0-docs-content-pr-3100.herokuapp.com/docs/api-auth/tutorials/migration).
+For a full background and other details please refer to the official [OIDC-conformant authentication migration guide](https://auth0.com/docs/api-auth/tutorials/adoption).
 
 ### Better separation of the Authentication and Management API
 
