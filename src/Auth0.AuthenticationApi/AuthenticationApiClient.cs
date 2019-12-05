@@ -16,8 +16,8 @@ namespace Auth0.AuthenticationApi
     public class AuthenticationApiClient : IAuthenticationApiClient, IDisposable
     {
         readonly Uri tokenUri;
-        readonly IAuthenticationConnection connection;
-        bool disposed = false;
+        readonly IAuthenticationConnection connection;        
+        IDisposable connectionToDispose;
 
         /// <inheritdoc />
         public Uri BaseUri { get; private set; }
@@ -36,7 +36,17 @@ namespace Auth0.AuthenticationApi
         public AuthenticationApiClient(Uri baseUri, IAuthenticationConnection connection = null)
         {
             BaseUri = baseUri;
-            this.connection = connection ?? new HttpClientAuthenticationConnection();
+            if (connection == null)
+            {
+                var ownConnection = new HttpClientAuthenticationConnection();
+                this.connection = ownConnection;
+                connectionToDispose = ownConnection;
+            }
+            else
+            {
+                this.connection = connection;
+            }
+
             tokenUri = BuildUri("oauth/token");
         }
 
@@ -286,11 +296,10 @@ namespace Auth0.AuthenticationApi
         /// <param name="disposing">Whether we are actually disposing (<see langword="true"/>) or not (<see langword="false")/>.</param>
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposed && disposing)
+            if (disposing && connectionToDispose != null)
             {
-                if (connection is IDisposable disposableConnection)
-                    disposableConnection.Dispose();
-                disposed = true;
+                connectionToDispose.Dispose();
+                connectionToDispose = null;
             }
         }
 

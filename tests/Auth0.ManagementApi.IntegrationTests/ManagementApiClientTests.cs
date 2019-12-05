@@ -1,7 +1,9 @@
 ﻿using Auth0.Core.Http;
 using Auth0.Tests.Shared;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -21,70 +23,121 @@ namespace Auth0.ManagementApi.IntegrationTests
         }
 
         [Fact]
-        public void Auth0Client_is_added_to_http_client_default_headers()
+        public void Does_not_dispose_connection_it_does_not_create()
         {
-            var client = SetupClient();
-            Assert.Contains(client.DefaultRequestHeaders, k => k.Key == "Auth0-Client");
-            client.Dispose();
+            var connection = new FakeConnection();
+            var management = new ManagementApiClient("token", "test", connection);
+            management.Dispose();
+            Assert.False(connection.IsDisposed);
+        }
+
+        class FakeConnection : IManagementConnection, IDisposable
+        {
+            public bool IsDisposed { get; private set; }
+
+            public void Dispose()
+            {
+                IsDisposed = true;
+            }
+
+            public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, JsonConverter[] converters = null)
+            {
+                return default;
+            }
+
+            public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, IList<FileUploadParameter> files = null)
+            {
+                return default;
+            }
+
+            public void SetDefaultHeaders(IDictionary<string, string> headers)
+            {
+            }
+        }
+
+        [Fact]
+        public void Auth0Client_headers_added()
+        {
+            var grabber = SetupHeaderGrab();
+            Assert.Contains(grabber.LastHeaders, k => k.Key == "Auth0-Client");
         }
 
         [Fact]
         public void Auth0Client_payload_is_valid_base64_url_json()
         {
-            var client = SetupClient();
-            var payload = GetPayload(client);
+            var grabber = SetupHeaderGrab();
+            var payload = GetPayload(grabber);
             Assert.NotNull(payload);
-            client.Dispose();
         }
 
         [Fact]
         public void Auth0Client_has_name_auth0_dot_net()
         {
-            var client = SetupClient();
-            var payload = GetPayload(client);
+            var grabber = SetupHeaderGrab();
+            var payload = GetPayload(grabber);
 
             Assert.Equal("Auth0.Net", payload["name"].ToString());
-            client.Dispose();
         }
 
         [Fact]
         public void Auth0Client_has_version_from_auth_assembly()
         {
-            var client = SetupClient();
-            var payload = GetPayload(client);
+            var grabber = SetupHeaderGrab();
+            var payload = GetPayload(grabber);
 
             var v = typeof(ManagementApiClient).Assembly.GetName().Version;
             Assert.Equal($"{v.Major}.{v.Minor}.{v.Revision}", payload["version"].ToString());
-            client.Dispose();
         }
 
         [Fact]
         public void Auth0Client_has_a_target_inside_env()
         {
-            var client = SetupClient();
-            var payload = GetPayload(client);
+            var grabber = SetupHeaderGrab();
+            var payload = GetPayload(grabber);
 
             Assert.NotNull(payload["env"]["target"].ToString());
         }
 
-        private HttpClient SetupClient()
+        private HeaderGrabberConnection SetupHeaderGrab()
         {
-            var httpClient = new HttpClient();
-            var connection = new HttpClientManagementConnection(httpClient);
-            var client = new ManagementApiClient("fake", GetVariable("AUTH0_MANAGEMENT_API_URL"), connection);
-            client.Dispose();
-            return httpClient;
+            var grabber = new HeaderGrabberConnection();
+            using (new ManagementApiClient("fake", GetVariable("AUTH0_MANAGEMENT_API_URL"), grabber))
+                return grabber;
         }
 
-        private static JObject GetPayload(HttpClient client)
+        private static JObject GetPayload(HeaderGrabberConnection grabber)
         {
-            return DecodePayload(client.DefaultRequestHeaders.GetValues("Auth0-Client").First());
+            return DecodePayload(grabber.LastHeaders["Auth0-Client"]);
         }
 
         private static JObject DecodePayload(string payload)
         {
             var decoded = Encoding.ASCII.GetString(Utils.Base64UrlDecode(payload));
             return JObject.Parse(decoded);
+        }
+
+        class HeaderGrabberConnection : IManagementConnection
+        {
+            IDictionary<string, string> defaultHeaders = new Dictionary<string, string>();
+
+            public IDictionary<string, string> LastHeaders { get; private set; } = new Dictionary<string, string>();
+
+            public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, JsonConverter[] converters = null)
+            {
+                LastHeaders = new Dictionary<string, string>(defaultHeaders.Concat(headers));
+                return default;
+            }
+
+            public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, IList<FileUploadParameter> files = null)
+            {
+                LastHeaders = new Dictionary<string, string>(defaultHeaders.Concat(headers));
+                return default;
+            }
+
+            public void SetDefaultHeaders(IDictionary<string, string> headers)
+            {
+                LastHeaders = defaultHeaders = headers;
+            }
         }
     }
 }
