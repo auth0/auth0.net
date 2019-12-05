@@ -46,7 +46,7 @@ Here follows the list of changes made from Version 3 to Version 4 of the Auth0.N
 
 * **Removed** all members previously marked as obsolete. This relates mostly to the methods which did not conform to the *Async naming convention for .NET `async` methods.
 
-* **Deprecated** the `AuthenticateAsync()` method as the legacy `oauth/ro` endpoint has been disabled. You should use `GetTokenAsync(ResourceOwnerTokenRequest)` instead, and the `AuthenticateAsync()` has been changed to simply call the new `GetTokenAsync(ResourceOwnerTokenRequest)` method. Note that confidential clients will need to provide a `ClientSecret` in addition to the `ClientId`. For more information see the [Resource Owner Password grant type](https://auth0.com/docs/api/authentication#resource-owner-password). 
+* **Deprecated** the `AuthenticateAsync()` method as the legacy `oauth/ro` endpoint has been disabled. You should use `GetTokenAsync(ResourceOwnerTokenRequest)` instead. `AuthenticateAsync()` has been changed to simply call the new `GetTokenAsync(ResourceOwnerTokenRequest)` method. Note that confidential clients will need to provide a `ClientSecret` in addition to the `ClientId`. For more information see the [Resource Owner Password grant type](https://auth0.com/docs/api/authentication#resource-owner-password). 
 
 * **Changed** the response of `AuthenticateAsync()` to now return an `AccessTokenResponse` instead of `AuthorizationResponse`. 
 
