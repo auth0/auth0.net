@@ -350,3 +350,5 @@ MigrationBackup/
 
 # Intell-J Rider etc.
 .idea/*
+
+.vscode/*
