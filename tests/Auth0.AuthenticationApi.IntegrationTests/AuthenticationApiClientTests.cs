@@ -37,12 +37,12 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
             public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null)
             {
-                return default;
+                return Task.FromResult(default(T));
             }
 
             public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null)
             {
-                return default;
+                return Task.FromResult(default(T));
             }
         }
     }

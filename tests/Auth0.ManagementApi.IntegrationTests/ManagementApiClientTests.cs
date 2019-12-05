@@ -42,12 +42,12 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, JsonConverter[] converters = null)
             {
-                return default;
+                return Task.FromResult(default(T));
             }
 
             public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, IList<FileUploadParameter> files = null)
             {
-                return default;
+                return Task.FromResult(default(T));
             }
 
             public void SetDefaultHeaders(IDictionary<string, string> headers)
@@ -125,13 +125,13 @@ namespace Auth0.ManagementApi.IntegrationTests
             public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, JsonConverter[] converters = null)
             {
                 LastHeaders = new Dictionary<string, string>(defaultHeaders.Concat(headers));
-                return default;
+                return Task.FromResult(default(T));
             }
 
             public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, IList<FileUploadParameter> files = null)
             {
                 LastHeaders = new Dictionary<string, string>(defaultHeaders.Concat(headers));
-                return default;
+                return Task.FromResult(default(T));
             }
 
             public void SetDefaultHeaders(IDictionary<string, string> headers)
