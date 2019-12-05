@@ -15,6 +15,8 @@ namespace Auth0.AuthenticationApi
     /// </remarks>
     public class AuthenticationApiClient : IAuthenticationApiClient, IDisposable
     {
+        static readonly IdTokenValidator idTokenValidator = new IdTokenValidator();
+        readonly TimeSpan idTokenValidationLeeway = TimeSpan.FromMinutes(1);
         readonly Uri tokenUri;
         readonly IAuthenticationConnection connection;
         bool disposed = false;
@@ -303,32 +305,10 @@ namespace Auth0.AuthenticationApi
             GC.SuppressFinalize(this);
         }
 
-        private async Task AssertIdTokenValid(string idToken, string audience, JwtSignatureAlgorithm algorithm, string clientSecret)
+        private Task AssertIdTokenValid(string idToken, string audience, JwtSignatureAlgorithm algorithm, string clientSecret)
         {
-            var issuer = BaseUri.AbsoluteUri;
-            var requirements = new IdTokenRequirements(issuer, audience, TimeSpan.FromMinutes(1));
-            var signatureVerifier = await CreateSignatureVerifier(algorithm, issuer, clientSecret).ConfigureAwait(false);
-
-            await requirements.AssertTokenMeetsRequirements(idToken, signatureVerifier: signatureVerifier).ConfigureAwait(false);
-        }
-
-        private static async Task<ISignatureVerifier> CreateSignatureVerifier(JwtSignatureAlgorithm algorithm, string issuer, string clientSecret)
-        {
-            switch (algorithm)
-            {
-                case JwtSignatureAlgorithm.RS256:
-                    if (String.IsNullOrWhiteSpace(issuer))
-                        throw new ArgumentException("Issuer must contain a value when using RS256", nameof(issuer));
-                    return await AsymmetricSignatureVerifier.ForJwks(issuer).ConfigureAwait(false);
-
-                case JwtSignatureAlgorithm.HS256:
-                    if (String.IsNullOrWhiteSpace(clientSecret))
-                        throw new ArgumentException("ClientSecret must contain a value when using HS256", nameof(clientSecret));
-                    return SymmetricSignatureVerifier.FromClientSecret(clientSecret);
-
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(algorithm));
-            }
+            var requirements = new IdTokenRequirements(algorithm, BaseUri.AbsoluteUri, audience, idTokenValidationLeeway);
+            return idTokenValidator.Assert(requirements, idToken, clientSecret);
         }
 
         private Uri BuildUri(string path)

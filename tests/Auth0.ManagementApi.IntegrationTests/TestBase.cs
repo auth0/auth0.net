@@ -1,6 +1,7 @@
 ﻿using Auth0.AuthenticationApi;
 using Auth0.AuthenticationApi.Models;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Logging;
 using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -13,6 +14,13 @@ namespace Auth0.Tests.Shared
 {
     public class TestBase
     {
+        static TestBase()
+        {
+            // Microsoft hide lots of exception detail by default. Fine in production
+            // but for tests we want to see it.
+            IdentityModelEventSource.ShowPII = true;
+        }
+
         private static readonly IConfigurationRoot _config = new ConfigurationBuilder()
                 .AddJsonFile("client-secrets.json", true)
                 .AddEnvironmentVariables()
