@@ -26,7 +26,7 @@ The separation allows us to evolve these 2 packages in the future more easily in
 
 ## Difference between Version 3 and Version 4
 
-Version 3 of the Auth0.NET SDK can still be used for applications which does not use the new OIDC-conformant pipeline. For these applications you must install the following NuGet packages:
+Version 3 of the Auth0.NET SDK can still be used for applications which do not use the OIDC-conformant pipeline. For these applications you must install the following NuGet packages:
 
 * [Auth0.AuthenticationAPI](https://www.nuget.org/packages/Auth0.AuthenticationApi) Version 3.x
 * [Auth0.ManagementAPI](https://www.nuget.org/packages/Auth0.ManagementApi) Version 3.x
