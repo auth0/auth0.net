@@ -1,0 +1,55 @@
+﻿using Auth0.AuthenticationApi.Tokens;
+using Auth0.Tests.Shared;
+using Microsoft.IdentityModel.Tokens;
+using Xunit;
+
+namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
+{
+    public class AsymmetricSignedDecoderTests : TestBase
+    {
+        private static readonly JsonWebKeySet signingKeys = new JsonWebKeySet("{\"keys\":[{\"alg\":\"RS256\",\"kty\":\"RSA\",\"use\":\"sig\",\"x5c\":[\"MIIDGDCCAgCgAwIBAgIJ5HpMuw46gydLMA0GCSqGSIb3DQEBBQUAMDMxMTAvBgNVBAMTKGF1dGgwLWRvdG5ldC1pbnRlZ3JhdGlvbi10ZXN0cy5hdXRoMC5jb20wHhcNMTUxMTI0MTUyNDQ1WhcNMjkwODAyMTUyNDQ1WjAzMTEwLwYDVQQDEyhhdXRoMC1kb3RuZXQtaW50ZWdyYXRpb24tdGVzdHMuYXV0aDAuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA40mvPtnD1JaKsQWG9eT+1USq31Cl5GHyv2L/TYd7Kjena0v0qHIJ2/bU7jGBRwsbnQ/mL9UJ8Uzqb9VtSU1nG1py4bBS0M6CV9zYCjHROxg5qwyHOH0AbA/LOI/83IM9jK0KFboQmmHc0roLylR6QZ8EKrFEQgHTNMpKYJh7SVnrMrXfVndpNcxnkzI4dJfLUrGtPxsKURtApi1O/5WKytCeCg1lE3EZu0QkGSsvfW7xEYI/1mXVlX9V12/SAQjrF1+u910mfKkcc/PgMnArFCILLAwKm1GqnUnWO8JpKg9N5A8c3u+54JEJMbMFHWrZyNT2qouBWfz7rm+f5Z2KvwIDAQABoy8wLTAMBgNVHRMEBTADAQH/MB0GA1UdDgQWBBSNKc1MtlkujOOp295lpZ5slrHcaDANBgkqhkiG9w0BAQUFAAOCAQEAo9Be/Qe6w4oop19KsFThlOfhLuDEPKTBqL2KlEzwKs35a42o9dalQATRx/zMeIi4stm94YNBovCNi02zpddJKso09zEkPkRoHgZ3p8K+AoWek/4pmys0Yp0WgnHfvdhstqfjFo9bHzG0noNtHFErqdt/UfiRCcRL+tWqwi8TAkgbyv+ZsddH2Xomn8HbHOAaZfiUwRhLQe6yetcDHLx9emsPENLjZRVBAz2hHDfJK7urKprMHY4Q0Jm0nlXz6/gMiJRnyD5nuZjv7DyeFPixOxptCU90zq8UbS/3fj1a1RdbBBNe5KhJjHtLrBqYAuSgwpok99qzUiLjm4fK7sZPHQ==\"],\"n\":\"40mvPtnD1JaKsQWG9eT-1USq31Cl5GHyv2L_TYd7Kjena0v0qHIJ2_bU7jGBRwsbnQ_mL9UJ8Uzqb9VtSU1nG1py4bBS0M6CV9zYCjHROxg5qwyHOH0AbA_LOI_83IM9jK0KFboQmmHc0roLylR6QZ8EKrFEQgHTNMpKYJh7SVnrMrXfVndpNcxnkzI4dJfLUrGtPxsKURtApi1O_5WKytCeCg1lE3EZu0QkGSsvfW7xEYI_1mXVlX9V12_SAQjrF1-u910mfKkcc_PgMnArFCILLAwKm1GqnUnWO8JpKg9N5A8c3u-54JEJMbMFHWrZyNT2qouBWfz7rm-f5Z2Kvw\",\"e\":\"AQAB\",\"kid\":\"MjAyMjg3MjE1QzYxMjhFREJGOEFERDc3NThEODY3QjMwQTRGNzRGQQ\",\"x5t\":\"MjAyMjg3MjE1QzYxMjhFREJGOEFERDc3NThEODY3QjMwQTRGNzRGQQ\"}]}");
+
+        [Fact]
+        public void SucceedsWhenSignatureIsValid()
+        {
+            var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1qQXlNamczTWpFMVF6WXhNamhGUkVKR09FRkVSRGMzTlRoRU9EWTNRak13UVRSR056UkdRUSJ9.eyJuaWNrbmFtZSI6ImRhbWllbmcrdGVzdDQyIiwibmFtZSI6ImRhbWllbmcrdGVzdDQyQGdtYWlsLmNvbSIsInBpY3R1cmUiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci81MzFiMDJkYTllOWVjNzg3ZDBlMWE1NzA1YzQ0YzU2Nj9zPTQ4MCZyPXBnJmQ9aHR0cHMlM0ElMkYlMkZjZG4uYXV0aDAuY29tJTJGYXZhdGFycyUyRmRhLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDE5LTExLTAxVDE3OjQ0OjE2LjY5NVoiLCJlbWFpbCI6ImRhbWllbmcrdGVzdDQyQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiaXNzIjoiaHR0cHM6Ly9hdXRoMC1kb3RuZXQtaW50ZWdyYXRpb24tdGVzdHMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVkYTY0NTNjMTIyZmI2MGE5MjRlOTI2MSIsImF1ZCI6InFtc3M5QTY2c3RQV1RPWGpSNlgxT2VBMERMYWRvTlAyIiwiaWF0IjoxNTcyNjMwMjU2LCJleHAiOjE1NzI2NjYyNTYsIm5vbmNlIjoiU09ySE9hdTlxMGl0eDRpVEZfaVgydyJ9.NomT02whkH42ISpcd_JvG4ZvQQhzPKfoWCwcgrhyLeWmnmHTo704WtsnfCqR72uw26D-ZGA5n2Yu4Jdcv2A8_leGEQm3p45-ramIDwWUu2J30m_op_5I4wFvgpbRrWSrD1_3qK1GrDnrdv8psGL8VgCf3pLLDbqbkzDmtE6OtEfDp2hEFwXs9YntREXu5Z-ufFFLz9VU5uyRg7JA95YGQNIRhzMFoUNKZAO19nrBq3HKc_iR_W9g9Y3iLPLgVVazq6zHjn3cXNKpr7JN6MUKqIB-YYJ1KDEvmaMO60xs2DAhhnkUN1OhXBLTgQ9xbCJeaxE7N48YMxPAu3HHT-rhZg";
+
+            var rs256Verifier = new AsymmetricSignedDecoder(signingKeys.Keys);
+            rs256Verifier.DecodeSignedToken(token);
+        }
+
+        [Fact]
+        public void ThrowsWhenSignatureIsInvalid()
+        {
+            var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1qQXlNamczTWpFMVF6WXhNamhGUkVKR09FRkVSRGMzTlRoRU9EWTNRak13UVRSR056UkdRUSJ9.eyJuaWNrbmFtZSI6ImRhbWllbmcrdGVzdDQyIiwibmFtZSI6ImRhbWllbmcrZmFrZUBnbWFpbC5jb20iLCJwaWN0dXJlIjoiaHR0cHM6Ly9zLmdyYXZhdGFyLmNvbS9hdmF0YXIvNTMxYjAyZGE5ZTllYzc4N2QwZTFhNTcwNWM0NGM1NjY_cz00ODAmcj1wZyZkPWh0dHBzJTNBJTJGJTJGY2RuLmF1dGgwLmNvbSUyRmF2YXRhcnMlMkZkYS5wbmciLCJ1cGRhdGVkX2F0IjoiMjAxOS0xMS0wMVQxNzo0NDoxNi42OTVaIiwiZW1haWwiOiJkYW1pZW5nK3Rlc3Q0MkBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImlzcyI6Imh0dHBzOi8vYXV0aDAtZG90bmV0LWludGVncmF0aW9uLXRlc3RzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZGE2NDUzYzEyMmZiNjBhOTI0ZTkyNjEiLCJhdWQiOiJxbXNzOUE2NnN0UFdUT1hqUjZYMU9lQTBETGFkb05QMiIsImlhdCI6MTU3MjYzMDI1NiwiZXhwIjoxNTcyNjY2MjU2LCJub25jZSI6IlNPckhPYXU5cTBpdHg0aVRGX2lYMncifQ.oAXS_JCoVboZ0oheyQYyHbbaFQSS5wP4U2RYMnevEJNQxRWKi9wVjwUD5GpYMnhpQ_IfGaV5yld1kWgjWfg0R9bseZHPAgIRAz9dXZ-ZK2uadY4JDOLkFB5VNoTaKNTKG0gd5Rw9T2j_AABSyX0d9KP0id987OCI6GUCOAArqIZXklk2UM9-dmFH3H2IKBMRUxk2GtCw3jvrYzrSbm806JSzAihFeHYrmG0wTP243suznm21ZKhBU5a7Us1CLbGMJZ56ZUJY4IcB9zeDr87Y5b-DpG8L_5KAolNhha4GoV2G4kczEJNjwIgHADvsGUZAFNAmn-sTMygDpHIu4ZpEEQ";
+
+            var rs256Verifier = new AsymmetricSignedDecoder(signingKeys.Keys);
+
+            var ex = Assert.Throws<IdTokenValidationException>(() => rs256Verifier.DecodeSignedToken(token));
+            Assert.Equal("Invalid token signature.", ex.Message);
+        }
+
+        [Fact]
+        public void ThrowsWhenKeyIsMissing()
+        {
+            var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1qQXlNamczTWpFMVF6WXhNamhGUkVKR09FRkVSRGMzTlRoRU9EWTNRak13UVRSR056UkdRUSJ9.eyJuaWNrbmFtZSI6ImRhbWllbmcrdGVzdDQyIiwibmFtZSI6ImRhbWllbmcrdGVzdDQyQGdtYWlsLmNvbSIsInBpY3R1cmUiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci81MzFiMDJkYTllOWVjNzg3ZDBlMWE1NzA1YzQ0YzU2Nj9zPTQ4MCZyPXBnJmQ9aHR0cHMlM0ElMkYlMkZjZG4uYXV0aDAuY29tJTJGYXZhdGFycyUyRmRhLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDE5LTExLTAxVDE3OjQ0OjE2LjY5NVoiLCJlbWFpbCI6ImRhbWllbmcrdGVzdDQyQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiaXNzIjoiaHR0cHM6Ly9hdXRoMC1kb3RuZXQtaW50ZWdyYXRpb24tdGVzdHMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVkYTY0NTNjMTIyZmI2MGE5MjRlOTI2MSIsImF1ZCI6InFtc3M5QTY2c3RQV1RPWGpSNlgxT2VBMERMYWRvTlAyIiwiaWF0IjoxNTcyNjMwMjU2LCJleHAiOjE1NzI2NjYyNTYsIm5vbmNlIjoiU09ySE9hdTlxMGl0eDRpVEZfaVgydyJ9.NomT02whkH42ISpcd_JvG4ZvQQhzPKfoWCwcgrhyLeWmnmHTo704WtsnfCqR72uw26D-ZGA5n2Yu4Jdcv2A8_leGEQm3p45-ramIDwWUu2J30m_op_5I4wFvgpbRrWSrD1_3qK1GrDnrdv8psGL8VgCf3pLLDbqbkzDmtE6OtEfDp2hEFwXs9YntREXu5Z-ufFFLz9VU5uyRg7JA95YGQNIRhzMFoUNKZAO19nrBq3HKc_iR_W9g9Y3iLPLgVVazq6zHjn3cXNKpr7JN6MUKqIB-YYJ1KDEvmaMO60xs2DAhhnkUN1OhXBLTgQ9xbCJeaxE7N48YMxPAu3HHT-rhZg";
+
+            var wrongKeys = new JsonWebKeySet("{\"keys\":[{\"alg\":\"RS256\",\"kty\":\"RSA\",\"use\":\"sig\",\"n\":\"wwIKESS8bkhCPJpzkgAUEQjZWLrTa7UVLFEPGFwKEmpp6J7ZFu7rVJQcIjWKepQ4lqsSnqJf--mQP68Y9hPWCK5H4FMaFwCpnIsXv6rxJLbTWa0HrvUpyWkQHBQ6u8hyRwtSizKSXL3hhGBke-A7GiH9pgcTXCPWl5F0tDDRRXel_X5kNKxaVeEcYyMPB0HbU_tj016SsNDlESH7-Zr8gHwQ_v_1KnZIlvI4qoJw-oCGSSwIzMDYlqZcWyv_QPLN8oJQ0Ld9ofRpjL1_cfWi7AZDdxI84Sj6CexNKv8XyVd_XtXREy4PtxFjPjDWsXQe5P_RQiDxf41yvVVqUuYaOw\",\"e\":\"AQAB\",\"kid\":\"RjU4RTVCQUNBMzhCNzdFMTY2MzNDMUVBOTE4NzI4RjkyNTBGN0QxOA\",\"x5t\":\"RjU4RTVCQUNBMzhCNzdFMTY2MzNDMUVBOTE4NzI4RjkyNTBGN0QxOA\",\"x5c\":[\"MIIDBTCCAe2gAwIBAgIJLrZsC5oHWoc9MA0GCSqGSIb3DQEBCwUAMCAxHjAcBgNVBAMTFWRhbWllbmd3b3JrLmF1dGgwLmNvbTAeFw0xOTAyMDExNjIwMzdaFw0zMjEwMTAxNjIwMzdaMCAxHjAcBgNVBAMTFWRhbWllbmd3b3JrLmF1dGgwLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMMCChEkvG5IQjyac5IAFBEI2Vi602u1FSxRDxhcChJqaeie2Rbu61SUHCI1inqUOJarEp6iX/vpkD+vGPYT1giuR+BTGhcAqZyLF7+q8SS201mtB671KclpEBwUOrvIckcLUosykly94YRgZHvgOxoh/aYHE1wj1peRdLQw0UV3pf1+ZDSsWlXhHGMjDwdB21P7Y9NekrDQ5REh+/ma/IB8EP7/9Sp2SJbyOKqCcPqAhkksCMzA2JamXFsr/0DyzfKCUNC3faH0aYy9f3H1ouwGQ3cSPOEo+gnsTSr/F8lXf17V0RMuD7cRYz4w1rF0HuT/0UIg8X+Ncr1ValLmGjsCAwEAAaNCMEAwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQUWQmntp2SSqoN1RHB6fLG3ywhZpQwDgYDVR0PAQH/BAQDAgKEMA0GCSqGSIb3DQEBCwUAA4IBAQCVJ7KkxSNwuRGie7TRtU3msaVGCnVOgtdYkH4ZZmSBAdPK/gLb9lajdysEIbhwzRf3eixUkDxZ2MlFl/t1zJYdufpPlv3Uv96sERcPv3awLCQH6WYMRzkIJ6P05KxCgadF7xjumgo+syYZdtsC5/VWL4Q5iDzQuI0aXAK2aWhkzD4uUIb0xnaHYZ2G8tL7Ihtgg3X5pXhLx+7gBxAWF8GRXHVoWKOpEMbte+p9dvEt7SI0Jq9c1JiEY0mkdLNrzt1WdPn43AUYs/TcUOKqj2l2sJaTIiaRc64eq+Cn+ARs1T1TzVPh6sVkeY/fTof6k1kEwzWL2FMv+GCu+aNbjUqN\"]}]}");
+
+            var rs256Verifier = new AsymmetricSignedDecoder(wrongKeys.Keys);
+
+            var ex = Assert.Throws<IdTokenValidationKeyMissingException>(() => rs256Verifier.DecodeSignedToken(token));
+        }
+
+        [Fact]
+        public void ThrowsWhenWrongAlgorithm()
+        {
+            var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6Ik1qQXlNamczTWpFMVF6WXhNamhGUkVKR09FRkVSRGMzTlRoRU9EWTNRak13UVRSR056UkdRUSJ9.eyJuaWNrbmFtZSI6ImRhbWllbmcrdGVzdDQyIiwibmFtZSI6ImRhbWllbmcrdGVzdDQyQGdtYWlsLmNvbSIsInBpY3R1cmUiOiJodHRwczovL3MuZ3JhdmF0YXIuY29tL2F2YXRhci81MzFiMDJkYTllOWVjNzg3ZDBlMWE1NzA1YzQ0YzU2Nj9zPTQ4MCZyPXBnJmQ9aHR0cHMlM0ElMkYlMkZjZG4uYXV0aDAuY29tJTJGYXZhdGFycyUyRmRhLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDE5LTExLTAxVDE3OjQ0OjE2LjY5NVoiLCJlbWFpbCI6ImRhbWllbmcrdGVzdDQyQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiaXNzIjoiaHR0cHM6Ly9hdXRoMC1kb3RuZXQtaW50ZWdyYXRpb24tdGVzdHMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDVkYTY0NTNjMTIyZmI2MGE5MjRlOTI2MSIsImF1ZCI6InFtc3M5QTY2c3RQV1RPWGpSNlgxT2VBMERMYWRvTlAyIiwiaWF0IjoxNTcyNjMwMjU2LCJleHAiOjE1NzI2NjYyNTYsIm5vbmNlIjoiU09ySE9hdTlxMGl0eDRpVEZfaVgydyJ9.ek1FlyRofSAeAFe9McmwVwEwXGY48KcYRNPtmTyvjqQ";
+
+            var rs256Verifier = new AsymmetricSignedDecoder(signingKeys.Keys);
+
+            var ex = Assert.Throws<IdTokenValidationException>(() => rs256Verifier.DecodeSignedToken(token));
+            Assert.Equal("Signature algorithm of \"HS256\" is not supported. Expected the ID token to be signed with \"RS256\".", ex.Message);
+        }
+    }
+}

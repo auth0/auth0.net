@@ -3,10 +3,15 @@
 namespace Auth0.AuthenticationApi.Tokens
 {
     /// <summary>
-    /// Identity token validation requirements for use with <see cref="IdTokenValidator"/>.
+    /// Identity token validation requirements for use with <see cref="IdTokenClaimValidator"/>.
     /// </summary>
     internal class IdTokenRequirements
     {
+        /// <summary>
+        /// Required algorithm the token must be signed using.
+        /// </summary>
+        public JwtSignatureAlgorithm SignatureAlgorithm;
+
         /// <summary>
         /// Required issuer (iss) the token must be from.
         /// </summary>
@@ -41,8 +46,9 @@ namespace Auth0.AuthenticationApi.Tokens
         /// <param name="leeway">Amount of leeway in validating date and time claims to allow some clock variance
         /// between the issuer and the application.</param>
         /// <param name="maxAge">Optional maximum time since the user last authenticated.</param>
-        public IdTokenRequirements(string issuer, string audience, TimeSpan leeway, TimeSpan ? maxAge = null)
+        public IdTokenRequirements(JwtSignatureAlgorithm signatureAlgorithm, string issuer, string audience, TimeSpan leeway, TimeSpan? maxAge = null)
         {
+            SignatureAlgorithm = signatureAlgorithm;
             Issuer = issuer;
             Audience = audience;
             Leeway = leeway;
