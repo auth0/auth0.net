@@ -24,8 +24,24 @@ namespace Auth0.AuthenticationApi.Models
         /// <summary>
         /// Unique identifier of the user.
         /// </summary>
+        /// <remarks>
+        /// The server can return `_id`, `id` or `user_id` depending on various factors.
+        /// For convenience we expose it here as just one.
+        /// </remarks>
+        public string Id
+        {
+            get { return _id ?? id ?? user_id; }
+            set { _id = value; }
+        }
+
         [JsonProperty("_id")]
-        public string Id { get; set; }
+        private string _id;        // Standard connection
+
+        [JsonProperty("id")]
+        private string id;         // Custom connection
+
+        [JsonProperty("user_id")]
+        private string user_id;    // Custom connection external
 
         /// <summary>
         /// Username of this user.
