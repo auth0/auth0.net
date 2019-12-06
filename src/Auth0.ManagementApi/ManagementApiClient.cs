@@ -13,7 +13,7 @@ namespace Auth0.ManagementApi
     /// </summary>
     public class ManagementApiClient : IDisposable
     {
-        readonly IDisposable connectionToDispose;
+        IDisposable connectionToDispose;
 
         /// <summary>
         /// Contains all the methods to call the /blacklists/tokens endpoints.
@@ -180,6 +180,7 @@ namespace Auth0.ManagementApi
             if (disposing && connectionToDispose != null)
             {
                 connectionToDispose.Dispose();
+                connectionToDispose = null;
             }
         }
 
