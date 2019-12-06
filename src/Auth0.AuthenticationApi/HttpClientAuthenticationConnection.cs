@@ -18,8 +18,11 @@ namespace Auth0.AuthenticationApi
     /// </summary>
     public class HttpClientAuthenticationConnection : IAuthenticationConnection, IDisposable
     {
+        static readonly JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
+
         readonly HttpClient httpClient;
-        bool shouldDisposeHttpClient;
+        readonly string agentString;
+        bool ownHttpClient;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HttpClientAuthenticationConnection"/> class.
@@ -33,9 +36,12 @@ namespace Auth0.AuthenticationApi
         /// </remarks>
         public HttpClientAuthenticationConnection(HttpClient httpClient = null)
         {
-            shouldDisposeHttpClient = httpClient == null;
+            ownHttpClient = httpClient == null;
             this.httpClient = httpClient ?? new HttpClient();
-            this.httpClient.DefaultRequestHeaders.Add("Auth0-Client", CreateAgentString());
+            if (ownHttpClient)
+                this.httpClient.DefaultRequestHeaders.Add("Auth0-Client", CreateAgentString());
+            else
+                agentString = CreateAgentString();
         }
 
         /// <summary>
@@ -46,16 +52,16 @@ namespace Auth0.AuthenticationApi
         public HttpClientAuthenticationConnection(HttpMessageHandler handler)
             : this(new HttpClient(handler ?? new HttpClientHandler()))
         {
-            shouldDisposeHttpClient = true;
+            ownHttpClient = true;
         }
 
         /// <inheritdoc/>
-        public async Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null)
+        public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null)
         {
             using (var request = new HttpRequestMessage(HttpMethod.Get, uri))
             {
                 ApplyHeaders(request, headers);
-                return await SendRequest<T>(request).ConfigureAwait(false);
+                return SendRequest<T>(request);
             }
         }
 
@@ -71,6 +77,9 @@ namespace Auth0.AuthenticationApi
 
         private async Task<T> SendRequest<T>(HttpRequestMessage request)
         {
+            if (!ownHttpClient)
+                request.Headers.Add("Auth0-Client", agentString);
+
             using (var response = await httpClient.SendAsync(request).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
@@ -103,8 +112,6 @@ namespace Auth0.AuthenticationApi
 
             return CreateJsonStringContent(body);
         }
-
-        private static readonly JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
 
         private static HttpContent CreateJsonStringContent(object body)
         {
@@ -142,10 +149,10 @@ namespace Auth0.AuthenticationApi
         /// <param name="disposing">Whether we are actually disposing (<see langword="true"/>) or not (<see langword="false")/>.</param>
         protected virtual void Dispose(bool disposing)
         {
-            if (disposing && shouldDisposeHttpClient)
+            if (disposing && ownHttpClient)
             {
                 httpClient.Dispose();
-                shouldDisposeHttpClient = false;
+                ownHttpClient = false;
             }
         }
 
