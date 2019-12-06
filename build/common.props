@@ -12,6 +12,11 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 6.5.5
+      - Signup API result now handles custom databases returning variations of "id" name
+      - Fix EnrollmentAuthMethod.Authenticator enum name
+      - ClientBase now has property for `initiate_login_uri`
+
       Version 6.5.4
       - SECURITY FIX for CVE-2019-16929. See
         https://github.com/auth0/auth0.net/blob/master/SECURITY-NOTICE.md#idtokenvalidator-public for more details.
@@ -133,7 +138,7 @@
     <LangVersion>7.1</LangVersion>    
     <Major>6</Major>
     <Minor>5</Minor>
-    <Revision>4</Revision>
+    <Revision>5</Revision>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyVersion>$(Major).$(Minor).$(Revision)</AssemblyVersion>
