@@ -13,8 +13,11 @@ namespace Auth0.AuthenticationApi.IntegrationTests
     public class DatabaseConnectionTests : TestBase, IAsyncLifetime
     {
         private ManagementApiClient _managementApiClient;
+        private AuthenticationApiClient _authenticationApiClient;
+
         private Connection _connection;
         private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
+        private const string Password2 = "xuh8k},+}KNit&z.!HEE6R2N";
 
         public async Task InitializeAsync()
         {
