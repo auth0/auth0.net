@@ -18,7 +18,9 @@ namespace Auth0.ManagementApi
     {
         static readonly JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
         readonly HttpClient httpClient;
-        bool shouldDisposeHttpClient;
+
+        IDictionary<string, string> defaultHeaders = new Dictionary<string, string>();
+        bool ownHttpClient;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HttpClientManagementConnection"/> class.
@@ -27,7 +29,7 @@ namespace Auth0.ManagementApi
         /// be created and be used for all requests made by this instance.</param>
         public HttpClientManagementConnection(HttpClient httpClient = null)
         {
-            shouldDisposeHttpClient = httpClient == null;
+            ownHttpClient = httpClient == null;
             this.httpClient = httpClient ?? new HttpClient();
         }
 
@@ -40,46 +42,59 @@ namespace Auth0.ManagementApi
         public HttpClientManagementConnection(HttpMessageHandler handler)
             : this(new HttpClient(handler ?? new HttpClientHandler()))
         {
-            shouldDisposeHttpClient = true;
+            ownHttpClient = true;
         }
 
         /// <inheritdoc />
         public void SetDefaultHeaders(IDictionary<string, string> headers)
         {
-            ApplyDictionaryHeaders(httpClient.DefaultRequestHeaders, headers);
+            if (ownHttpClient)
+            {
+                ApplyHeaders(httpClient.DefaultRequestHeaders, headers);
+            }
+            else
+            {
+                defaultHeaders = headers;
+            }
         }
 
         /// <inheritdoc />
         public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, JsonConverter[] converters = null)
         {
-            var request = new HttpRequestMessage(HttpMethod.Get, uri);
-            ApplyDictionaryHeaders(request.Headers, headers);
-            return SendRequest<T>(request, converters);
+            using (var request = new HttpRequestMessage(HttpMethod.Get, uri))
+            {
+                ApplyHeaders(request.Headers, headers);
+                return SendRequest<T>(request, converters);
+            }
         }
 
         /// <inheritdoc />
-        public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, IList<FileUploadParameter> files = null)
+        public async Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, IList<FileUploadParameter> files = null)
         {
-            var request = new HttpRequestMessage(method, uri) { Content = BuildMessageContent(body, files) };
-            ApplyDictionaryHeaders(request.Headers, headers);
-            return SendRequest<T>(request);
-        }
-
-        /// <summary>
-        /// Disposes of any owned disposable resources such as the underlying <see cref="HttpClient"/>.
-        /// </summary>
-        /// <param name="disposing">Whether we are actually disposing (<see langword="true"/>) or not (<see langword="false")/>.</param>
-        protected virtual void Dispose(bool disposing)
-        {
-            if (disposing && shouldDisposeHttpClient)
+            using (var request = new HttpRequestMessage(method, uri) { Content = BuildMessageContent(body, files) })
             {
-                httpClient.Dispose();
-                shouldDisposeHttpClient = false;
+                ApplyHeaders(request.Headers, headers);
+                return await SendRequest<T>(request);
             }
         }
 
         /// <summary>
-        /// Disposes of any owned disposable resources such as the ApiConnection.
+        /// Disposes of any owned disposable resources such as the underlying <see cref="HttpClient"/> if owned.
+        /// </summary>
+        /// <param name="disposing">Whether we are actually disposing (<see langword="true"/>) or not (<see langword="false")/>.</param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing && ownHttpClient)
+            {
+                httpClient.Dispose();
+                ownHttpClient = false;
+            }
+
+            defaultHeaders = null;
+        }
+
+        /// <summary>
+        /// Disposes of any owned disposable resources such as the underlying <see cref="HttpClient"/> if owned.
         /// </summary>
         public void Dispose()
         {
@@ -88,19 +103,23 @@ namespace Auth0.ManagementApi
 
         private async Task<T> SendRequest<T>(HttpRequestMessage request, JsonConverter[] converters = null)
         {
+            if (!ownHttpClient)
+                ApplyHeaders(request.Headers, defaultHeaders);
+
             var response = await httpClient.SendAsync(request).ConfigureAwait(false);
+            {
+                if (!response.IsSuccessStatusCode)
+                    throw new ErrorApiException(response.StatusCode, await ApiError.Parse(response).ConfigureAwait(false));
 
-            if (!response.IsSuccessStatusCode)
-                throw new ErrorApiException(response.StatusCode, await ApiError.Parse(response).ConfigureAwait(false));
+                var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-            var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-
-            return typeof(T) == typeof(string)
-                ? (T)(object)content
-                : JsonConvert.DeserializeObject<T>(content, converters);
+                return typeof(T) == typeof(string)
+                    ? (T)(object)content
+                    : JsonConvert.DeserializeObject<T>(content, converters);
+            }
         }
 
-        private void ApplyDictionaryHeaders(HttpHeaders current, IDictionary<string, string> input)
+        private void ApplyHeaders(HttpHeaders current, IDictionary<string, string> input)
         {
             if (input == null) return;
 

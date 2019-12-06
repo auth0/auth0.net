@@ -2,7 +2,7 @@
 
 ## Migrating from v5 to v6
 
-Various breaking changes to the management API exist in version 6. They are as follows:
+Various breaking changes to the management API exist in v6. They are as follows:
 
 ### Removal of non-paging GetAll methods
 

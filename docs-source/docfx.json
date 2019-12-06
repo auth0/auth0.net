@@ -8,8 +8,7 @@
           "cwd": "../src"
         }
       ],
-      "dest": "obj/api",
-      "filter": "filterConfig.yml"
+      "dest": "obj/api"
     }
   ],
   "build": {

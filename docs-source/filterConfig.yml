@@ -1,5 +1,0 @@
-apiRules:
-- exclude:
-    uidRegex: ^Auth0\.AuthenticationApi\.IdentityTokenValidator$
-    type: Type 
-    
