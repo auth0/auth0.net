@@ -8,5 +8,5 @@ This version is currently in beta. A migration guide will follow.
 
 ## Migrating from earlier versions
 
-- [Migrating from v5 to v6](migrating-v5.md)
-- [Migrating from v4 to v5](migrating-v4.md)
+- [Migrating from v5 to v6](migrating-to-v6.md)
+- [Migrating from v3 to v4](migrating-to-v4.md)
