@@ -25,7 +25,7 @@ namespace Auth0.ManagementApi
         /// <param name="uri"><see cref="Uri"/> to perform the GET request against.</param>
         /// <param name="headers">Optional <see cref="Dictionary{string, string}"/> containing additional headers that may override the defaults.</param>
         /// <param name="converters">Optional <see cref="JsonConverter[]"/> used to deserialize the resulting <typeparamref name="T"/>.</param>
-        /// <returns><see cref="Task{T}"/> representing the async operation containing response body as <typeparamref name="T"/>.</returns>
+        /// <returns><see cref="Task"/> representing the async operation containing response body as <typeparamref name="T"/>.</returns>
         Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers, JsonConverter[] converters = null);
 
         /// <summary>
@@ -39,9 +39,9 @@ namespace Auth0.ManagementApi
         /// otherwise <see cref="StringContent"/> containing the JSON representation of the object is expected.</param>
         /// <param name="headers">Optional <see cref="Dictionary{string, string}"/> containing additional headers that may override the defaults.</param>
         /// <param name="files">Optional <see cref="IList{FileUploadParameter>"/> containing file contents to upload as a <see cref="MultipartFormDataContent"/> post.</param>
-        /// <returns><see cref="Task{T}"/> representing the async operation containing response body as <typeparamref name="T"/>.</returns>
+        /// <returns><see cref="Task"/> representing the async operation containing response body as <typeparamref name="T"/>.</returns>
         /// <remarks>
-        /// <paramref name="files"/> can only be specified if <paramref name="body"/> is <see cref="IDictionary{string, object}"/>.
+        /// <paramref name="files"/> can only be specified if <paramref name="body"/> is a Dictionary%lt;string, object%gt;"/>.
         /// </remarks>
         Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers, IList<FileUploadParameter> files = null);
     }

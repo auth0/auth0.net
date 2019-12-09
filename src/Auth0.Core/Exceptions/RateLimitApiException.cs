@@ -10,6 +10,9 @@ namespace Auth0.Core.Exceptions
     [Serializable]
     public class RateLimitApiException : ApiException
     {
+        /// <summary>
+        /// <see cref="RateLimit"/> as determined by the server.
+        /// </summary>
         public RateLimit RateLimit { get; }
 
         /// <summary>
