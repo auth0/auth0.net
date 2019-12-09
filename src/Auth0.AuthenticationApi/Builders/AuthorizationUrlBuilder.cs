@@ -1,5 +1,6 @@
 using Auth0.AuthenticationApi.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Auth0.AuthenticationApi.Builders
@@ -12,6 +13,13 @@ namespace Auth0.AuthenticationApi.Builders
     /// </remarks>
     public class AuthorizationUrlBuilder : UrlBuilderBase<AuthorizationUrlBuilder>
     {
+        private static readonly Dictionary<AuthorizationResponseType, string> Map = new Dictionary<AuthorizationResponseType, string>
+        {
+            { AuthorizationResponseType.Code, "code" },
+            { AuthorizationResponseType.IdToken, "id_token" },
+            { AuthorizationResponseType.Token, "token" }
+        };
+
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthorizationUrlBuilder"/> class.
         /// </summary>
@@ -77,7 +85,11 @@ namespace Auth0.AuthenticationApi.Builders
         /// <returns>Current <see cref="AuthorizationUrlBuilder"/> to allow fluent configuration.</returns>
         public AuthorizationUrlBuilder WithResponseType(params AuthorizationResponseType[] responseType)
         {
-            return WithValue("response_type", string.Join(" ", responseType.Select(AuthorizationResponseTypeHelper.ConvertToString)));
+            return WithValue("response_type",
+                string.Join(" ", responseType
+                    .Select(r => Map.TryGetValue(r, out var value)
+                        ? value
+                        : throw new ArgumentException("Unknown AuthorizationResponseType.", nameof(responseType)))));
         }
 
         /// <summary>
@@ -139,7 +151,10 @@ namespace Auth0.AuthenticationApi.Builders
         /// <returns>The <see cref="AuthorizationUrlBuilder"/>.</returns>
         public AuthorizationUrlBuilder WithResponseMode(AuthorizationResponseMode responseMode)
         {
-            return WithValue("response_mode", AuthorizationResponseModeHelper.ConvertToString(responseMode));
+            if (responseMode != AuthorizationResponseMode.FormPost)
+                throw new ArgumentOutOfRangeException("Unknown AuthorizationResponseMode.", nameof(responseMode));
+
+            return WithValue("response_mode", "form_post");
         }
 
         /// <summary>
