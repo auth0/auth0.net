@@ -65,7 +65,7 @@ namespace Auth0.AuthenticationApi.Builders
         /// <summary>
         /// Adds the `wctx` query string parameter.
         /// </summary>
-        /// <param name="values"><see cref="Dictionary{String, String}"/> containing the key-value pairs of the `wctx` parameter.</param>
+        /// <param name="values">Dictionary containing the key-value pairs of the `wctx` parameter.</param>
         /// <returns>Current <see cref="WsFedUrlBuilder"/> to allow fluent configuration.</returns>
         public WsFedUrlBuilder WithWctx(IDictionary<string, string> values)
         {

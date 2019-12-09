@@ -66,7 +66,7 @@ namespace Auth0.ManagementApi
         /// <summary>
         /// Disposes of any owned disposable resources such as the underlying <see cref="HttpClient"/> if owned.
         /// </summary>
-        /// <param name="disposing">Whether we are actually disposing (<see langword="true"/>) or not (<see langword="false")/>.</param>
+        /// <param name="disposing">Whether we are actually disposing (<see langword="true"/>) or not (<see langword="false"/>).</param>
         protected virtual void Dispose(bool disposing)
         {
             if (disposing && ownHttpClient)

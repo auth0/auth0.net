@@ -17,7 +17,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
         /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
-        /// <param name="defaultHeaders"><see cref="IDictionary{string, string}"/> containing default headers included with every request this client makes.</param>
+        /// <param name="defaultHeaders">Dictionary containing default headers included with every request this client makes.</param>
         public JobsClient(IManagementConnection connection, Uri baseUri, IDictionary<string, string> defaultHeaders)
             : base(connection, baseUri, defaultHeaders)
         {

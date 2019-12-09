@@ -23,8 +23,8 @@ namespace Auth0.ManagementApi
         /// </summary>
         /// <typeparam name="T">Type of object to deserialize the result content as.</typeparam>
         /// <param name="uri"><see cref="Uri"/> to perform the GET request against.</param>
-        /// <param name="headers">Optional <see cref="Dictionary{string, string}"/> containing additional headers that may override the defaults.</param>
-        /// <param name="converters">Optional <see cref="JsonConverter[]"/> used to deserialize the resulting <typeparamref name="T"/>.</param>
+        /// <param name="headers">Dictionary containing additional headers that may override the defaults.</param>
+        /// <param name="converters">Optional array of <see cref="JsonConverter"/>s used to deserialize the resulting <typeparamref name="T"/>.</param>
         /// <returns><see cref="Task"/> representing the async operation containing response body as <typeparamref name="T"/>.</returns>
         Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers, JsonConverter[] converters = null);
 
@@ -35,9 +35,9 @@ namespace Auth0.ManagementApi
         /// <param name="method"><see cref="HttpMethod"/> to use in performing the request.</param>
         /// <param name="uri"><see cref="Uri"/> to perform the request against.</param>
         /// <param name="body">Payload to send to the server.
-        /// If specified as a <see cref="Dictionary{string, string}"/> then <see cref="FormUrlEncodedContent"/> is expected,
+        /// If specified as a Dictionary&lt;string, string&gt; then <see cref="FormUrlEncodedContent"/> is expected,
         /// otherwise <see cref="StringContent"/> containing the JSON representation of the object is expected.</param>
-        /// <param name="headers">Optional <see cref="Dictionary{string, string}"/> containing additional headers that may override the defaults.</param>
+        /// <param name="headers">Dictionary containing additional headers that may override the defaults.</param>
         /// <param name="files">Optional <see cref="IList{FileUploadParameter>"/> containing file contents to upload as a <see cref="MultipartFormDataContent"/> post.</param>
         /// <returns><see cref="Task"/> representing the async operation containing response body as <typeparamref name="T"/>.</returns>
         /// <remarks>

@@ -115,8 +115,8 @@ namespace Auth0.ManagementApi
         /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
         /// </summary>
         /// <param name="token">A valid Auth0 Management API v2 token.</param>
-        /// <param name="baseUrl">The URL of the tenant to manage.</param>
-        /// <param name="handler">The <see cref="HttpMessageHandler"/> which is used for HTTP requests.</param>
+        /// <param name="baseUri"><see cref="Uri"/> of the tenant to manage.</param>
+        /// <param name="managementConnection"><see cref="IManagementConnection"/> to facilitate communication with server.</param>
         public ManagementApiClient(string token, Uri baseUri, IManagementConnection managementConnection = null)
         {
             if (managementConnection == null)
@@ -174,7 +174,7 @@ namespace Auth0.ManagementApi
         /// <summary>
         /// Disposes of any owned disposable resources.
         /// </summary>
-        /// <param name="disposing">Whether we are actually disposing (<see langword="true"/>) or not (<see langword="false")/>.</param>
+        /// <param name="disposing">Whether we are actually disposing (<see langword="true"/>) or not (<see langword="false"/>).</param>
         protected virtual void Dispose(bool disposing)
         {
             if (disposing && connectionToDispose != null)
