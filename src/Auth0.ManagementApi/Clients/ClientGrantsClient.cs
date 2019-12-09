@@ -20,8 +20,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
         /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
-        public ClientGrantsClient(IManagementConnection connection, Uri baseUri) 
-            : base(connection, baseUri)
+        /// <param name="defaultHeaders"><see cref="IDictionary{string, string}"/> containing default headers included with every request this client makes.</param>
+        public ClientGrantsClient(IManagementConnection connection, Uri baseUri, IDictionary<string, string> defaultHeaders) 
+            : base(connection, baseUri, defaultHeaders)
         {
         }
 
@@ -32,7 +33,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The new <see cref="ClientGrant"/> that has been created.</returns>
         public Task<ClientGrant> CreateAsync(ClientGrantCreateRequest request)
         {
-            return Connection.SendAsync<ClientGrant>(HttpMethod.Post, BuildUri("client-grants"), request);
+            return Connection.SendAsync<ClientGrant>(HttpMethod.Post, BuildUri("client-grants"), request, DefaultHeaders);
         }
 
         /// <summary>
@@ -42,7 +43,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"client-grants/{id}"), null); 
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"client-grants/{id}"), null, DefaultHeaders); 
         }
 
         /// <summary>
@@ -66,7 +67,7 @@ namespace Auth0.ManagementApi.Clients
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }), converters: converters);
+                }), DefaultHeaders, converters);
         }
 
         /// <summary>
@@ -77,7 +78,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="ClientGrant"/> that has been updated.</returns>
         public Task<ClientGrant> UpdateAsync(string id, ClientGrantUpdateRequest request)
         {
-            return Connection.SendAsync<ClientGrant>(new HttpMethod("PATCH"), BuildUri($"client-grants/{id}"), request);
+            return Connection.SendAsync<ClientGrant>(new HttpMethod("PATCH"), BuildUri($"client-grants/{id}"), request, DefaultHeaders);
         }
     }
 }

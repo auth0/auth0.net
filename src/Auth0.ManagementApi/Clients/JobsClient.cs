@@ -17,8 +17,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
         /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
-        public JobsClient(IManagementConnection connection, Uri baseUri)
-            : base(connection, baseUri)
+        /// <param name="defaultHeaders"><see cref="IDictionary{string, string}"/> containing default headers included with every request this client makes.</param>
+        public JobsClient(IManagementConnection connection, Uri baseUri, IDictionary<string, string> defaultHeaders)
+            : base(connection, baseUri, defaultHeaders)
         {
         }
 
@@ -32,7 +33,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
         public Task<Job> GetAsync(string id)
         {
-            return Connection.GetAsync<Job>(BuildUri($"jobs/{id}"));
+            return Connection.GetAsync<Job>(BuildUri($"jobs/{id}"), DefaultHeaders);
         }
 
         /// <summary>
@@ -66,7 +67,7 @@ namespace Auth0.ManagementApi.Clients
                 }
             };
 
-            return Connection.SendAsync<Job>(HttpMethod.Post, BuildUri("jobs/users-imports"), parameters, files: fileParameters);
+            return Connection.SendAsync<Job>(HttpMethod.Post, BuildUri("jobs/users-imports"), parameters, DefaultHeaders, files: fileParameters);
         }
 
         /// <summary>
@@ -76,7 +77,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
         public Task<Job> SendVerificationEmailAsync(VerifyEmailJobRequest request)
         {
-            return Connection.SendAsync<Job>(HttpMethod.Post, BuildUri("jobs/verification-email"), request);
+            return Connection.SendAsync<Job>(HttpMethod.Post, BuildUri("jobs/verification-email"), request, DefaultHeaders);
         }
     }
 }

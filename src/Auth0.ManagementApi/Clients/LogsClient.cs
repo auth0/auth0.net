@@ -19,8 +19,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
         /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
-        public LogsClient(IManagementConnection connection, Uri baseUri)
-            : base(connection, baseUri)
+        /// <param name="defaultHeaders"><see cref="IDictionary{string, string}"/> containing default headers included with every request this client makes.</param>
+        public LogsClient(IManagementConnection connection, Uri baseUri, IDictionary<string, string> defaultHeaders)
+            : base(connection, baseUri, defaultHeaders)
         {
         }
 
@@ -49,7 +50,7 @@ namespace Auth0.ManagementApi.Clients
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }), converters: converters);
+                }), DefaultHeaders, converters);
         }
 
         /// <summary>
@@ -59,7 +60,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="LogEntry"/> instance containing the information about the log entry.</returns>
         public Task<LogEntry> GetAsync(string id)
         {
-            return Connection.GetAsync<LogEntry>(BuildUri($"logs/{id}"));
+            return Connection.GetAsync<LogEntry>(BuildUri($"logs/{id}"), DefaultHeaders);
         }
     }
 }

@@ -18,8 +18,6 @@ namespace Auth0.ManagementApi
     {
         static readonly JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
         readonly HttpClient httpClient;
-
-        IDictionary<string, string> defaultHeaders = new Dictionary<string, string>();
         bool ownHttpClient;
 
         /// <summary>
@@ -46,20 +44,7 @@ namespace Auth0.ManagementApi
         }
 
         /// <inheritdoc />
-        public void SetDefaultHeaders(IDictionary<string, string> headers)
-        {
-            if (ownHttpClient)
-            {
-                ApplyHeaders(httpClient.DefaultRequestHeaders, headers);
-            }
-            else
-            {
-                defaultHeaders = headers;
-            }
-        }
-
-        /// <inheritdoc />
-        public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, JsonConverter[] converters = null)
+        public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers, JsonConverter[] converters = null)
         {
             using (var request = new HttpRequestMessage(HttpMethod.Get, uri))
             {
@@ -69,7 +54,7 @@ namespace Auth0.ManagementApi
         }
 
         /// <inheritdoc />
-        public async Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, IList<FileUploadParameter> files = null)
+        public async Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers, IList<FileUploadParameter> files = null)
         {
             using (var request = new HttpRequestMessage(method, uri) { Content = BuildMessageContent(body, files) })
             {
@@ -89,8 +74,6 @@ namespace Auth0.ManagementApi
                 httpClient.Dispose();
                 ownHttpClient = false;
             }
-
-            defaultHeaders = null;
         }
 
         /// <summary>
@@ -103,9 +86,6 @@ namespace Auth0.ManagementApi
 
         private async Task<T> SendRequest<T>(HttpRequestMessage request, JsonConverter[] converters = null)
         {
-            if (!ownHttpClient)
-                ApplyHeaders(request.Headers, defaultHeaders);
-
             var response = await httpClient.SendAsync(request).ConfigureAwait(false);
             {
                 if (!response.IsSuccessStatusCode)

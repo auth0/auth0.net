@@ -16,8 +16,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
         /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
-        public BlacklistedTokensClient(IManagementConnection connection, Uri baseUri)
-            : base(connection, baseUri)
+        /// <param name="defaultHeaders"><see cref="IDictionary{string, string}"/> containing default headers included with every request this client makes.</param>
+        public BlacklistedTokensClient(IManagementConnection connection, Uri baseUri, IDictionary<string, string> defaultHeaders)
+            : base(connection, baseUri, defaultHeaders)
         {
         }
 
@@ -28,7 +29,9 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A list of <see cref="BlacklistedToken"/> objects.</returns>
         public Task<IList<BlacklistedToken>> GetAllAsync(string aud)
         {
-            return Connection.GetAsync<IList<BlacklistedToken>>(BuildUri("blacklists/tokens"));
+            return Connection.GetAsync<IList<BlacklistedToken>>(BuildUri("blacklists/tokens", new Dictionary<string, string> {
+                {  "aud", aud }
+            }), DefaultHeaders);
         }
 
         /// <summary>
@@ -38,7 +41,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous create operation.</returns>
         public Task CreateAsync(BlacklistedTokenCreateRequest request)
         {
-            return Connection.SendAsync<Client>(HttpMethod.Post, BuildUri("blacklists/tokens"), request);
+            return Connection.SendAsync<Client>(HttpMethod.Post, BuildUri("blacklists/tokens"), request, DefaultHeaders);
         }
     }
 }

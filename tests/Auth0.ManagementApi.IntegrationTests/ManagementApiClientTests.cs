@@ -14,21 +14,33 @@ namespace Auth0.ManagementApi.IntegrationTests
 {
     public class ManagementApiClientTests : TestBase
     {
+        readonly HeaderGrabberConnection grabber = new HeaderGrabberConnection();
+        readonly ManagementApiClient management;
+        readonly JObject payload;
+
+        public ManagementApiClientTests()
+        {
+            management = new ManagementApiClient("fake", GetVariable("AUTH0_MANAGEMENT_API_URL"), grabber);
+
+            management.TenantSettings.GetAsync(); // Cause headers to be "sent" to the grabber for testing
+            payload = JObject.Parse(Encoding.ASCII.GetString(Utils.Base64UrlDecode(grabber.LastHeaders["Auth0-Client"])));
+        }
+
         [Fact]
         public async Task Disposes_Connection_it_creates_on_dispose()
         {
-            var management = new ManagementApiClient("token", "test");
-            management.Dispose();
-            await Assert.ThrowsAsync<ObjectDisposedException>(() => management.Clients.GetAsync("1"));
+            var diposeManagement = new ManagementApiClient("token", "test");
+            diposeManagement.Dispose();
+            await Assert.ThrowsAsync<ObjectDisposedException>(() => diposeManagement.Clients.GetAsync("1"));
         }
 
         [Fact]
         public void Does_not_dispose_connection_it_does_not_create()
         {
-            var connection = new FakeConnection();
-            var management = new ManagementApiClient("token", "test", connection);
-            management.Dispose();
-            Assert.False(connection.IsDisposed);
+            var doNotDisposeConnection = new FakeConnection();
+            var disposeManagement = new ManagementApiClient("token", "test", doNotDisposeConnection);
+            disposeManagement.Dispose();
+            Assert.False(doNotDisposeConnection.IsDisposed);
         }
 
         class FakeConnection : IManagementConnection, IDisposable
@@ -58,33 +70,24 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public void Auth0Client_headers_added()
         {
-            var grabber = SetupHeaderGrab();
             Assert.Contains(grabber.LastHeaders, k => k.Key == "Auth0-Client");
         }
 
         [Fact]
         public void Auth0Client_payload_is_valid_base64_url_json()
         {
-            var grabber = SetupHeaderGrab();
-            var payload = GetPayload(grabber);
             Assert.NotNull(payload);
         }
 
         [Fact]
         public void Auth0Client_has_name_auth0_dot_net()
         {
-            var grabber = SetupHeaderGrab();
-            var payload = GetPayload(grabber);
-
             Assert.Equal("Auth0.Net", payload["name"].ToString());
         }
 
         [Fact]
         public void Auth0Client_has_version_from_auth_assembly()
         {
-            var grabber = SetupHeaderGrab();
-            var payload = GetPayload(grabber);
-
             var v = typeof(ManagementApiClient).Assembly.GetName().Version;
             Assert.Equal($"{v.Major}.{v.Minor}.{v.Revision}", payload["version"].ToString());
         }
@@ -92,28 +95,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public void Auth0Client_has_a_target_inside_env()
         {
-            var grabber = SetupHeaderGrab();
-            var payload = GetPayload(grabber);
-
             Assert.NotNull(payload["env"]["target"].ToString());
-        }
-
-        private HeaderGrabberConnection SetupHeaderGrab()
-        {
-            var grabber = new HeaderGrabberConnection();
-            using (new ManagementApiClient("fake", GetVariable("AUTH0_MANAGEMENT_API_URL"), grabber))
-                return grabber;
-        }
-
-        private static JObject GetPayload(HeaderGrabberConnection grabber)
-        {
-            return DecodePayload(grabber.LastHeaders["Auth0-Client"]);
-        }
-
-        private static JObject DecodePayload(string payload)
-        {
-            var decoded = Encoding.ASCII.GetString(Utils.Base64UrlDecode(payload));
-            return JObject.Parse(decoded);
         }
 
         class HeaderGrabberConnection : IManagementConnection
