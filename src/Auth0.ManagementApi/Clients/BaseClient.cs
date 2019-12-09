@@ -32,9 +32,9 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="defaultHeaders"><see cref="IDictionary{string, string}"/> containing default headers included with every request this client makes.</param>
         protected BaseClient(IManagementConnection connection, Uri baseUri, IDictionary<string, string> defaultHeaders)
         {
-            Connection = connection;
-            BaseUri = baseUri;
-            DefaultHeaders = defaultHeaders;
+            Connection = connection ?? throw new ArgumentNullException(nameof(connection));
+            BaseUri = baseUri ?? throw new ArgumentNullException(nameof(baseUri));
+            DefaultHeaders = defaultHeaders ?? throw new ArgumentNullException(nameof(defaultHeaders));
         }
 
         /// <summary>
