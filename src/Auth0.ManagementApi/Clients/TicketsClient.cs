@@ -1,5 +1,6 @@
 ﻿using Auth0.ManagementApi.Models;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -15,8 +16,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
         /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
-        public TicketsClient(IManagementConnection connection, Uri baseUri)
-            : base(connection, baseUri)
+        /// <param name="defaultHeaders"><see cref="IDictionary{string, string}"/> containing default headers included with every request this client makes.</param>
+        public TicketsClient(IManagementConnection connection, Uri baseUri, IDictionary<string, string> defaultHeaders)
+            : base(connection, baseUri, defaultHeaders)
         {
         }
 
@@ -27,7 +29,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="Ticket"/>.</returns>
         public Task<Ticket> CreateEmailVerificationTicketAsync(EmailVerificationTicketRequest request)
         {
-            return Connection.SendAsync<Ticket>(HttpMethod.Post, BuildUri("tickets/email-verification"), request);
+            return Connection.SendAsync<Ticket>(HttpMethod.Post, BuildUri("tickets/email-verification"), request, DefaultHeaders);
         }
 
         /// <summary>
@@ -37,7 +39,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="Ticket"/>.</returns>
         public Task<Ticket> CreatePasswordChangeTicketAsync(PasswordChangeTicketRequest request)
         {
-            return Connection.SendAsync<Ticket>(HttpMethod.Post, BuildUri("tickets/password-change"), request);
+            return Connection.SendAsync<Ticket>(HttpMethod.Post, BuildUri("tickets/password-change"), request, DefaultHeaders);
         }
     }
 }

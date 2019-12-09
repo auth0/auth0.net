@@ -20,8 +20,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
         /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
-        public RulesClient(IManagementConnection connection, Uri baseUri)
-            : base(connection, baseUri)
+        /// <param name="defaultHeaders"><see cref="IDictionary{string, string}"/> containing default headers included with every request this client makes.</param>
+        public RulesClient(IManagementConnection connection, Uri baseUri, IDictionary<string, string> defaultHeaders)
+            : base(connection, baseUri, defaultHeaders)
         {
         }
 
@@ -32,7 +33,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="Rule" />.</returns>
         public Task<Rule> CreateAsync(RuleCreateRequest request)
         {
-            return Connection.SendAsync<Rule>(HttpMethod.Post, BuildUri("rules"), request, null);
+            return Connection.SendAsync<Rule>(HttpMethod.Post, BuildUri("rules"), request, DefaultHeaders);
         }
 
         /// <summary>
@@ -42,7 +43,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"rules/{id}"), null);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"rules/{id}"), null, DefaultHeaders);
         }
 
         /// <summary>
@@ -68,7 +69,7 @@ namespace Auth0.ManagementApi.Clients
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }), converters: rulesConverters);
+                }), DefaultHeaders, rulesConverters);
         }
 
         /// <summary>
@@ -91,7 +92,7 @@ namespace Auth0.ManagementApi.Clients
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                }));
+                }), DefaultHeaders);
         }
 
         /// <summary>
@@ -102,7 +103,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="Rule"/>.</returns>
         public Task<Rule> UpdateAsync(string id, RuleUpdateRequest request)
         {
-            return Connection.SendAsync<Rule>(new HttpMethod("PATCH"), BuildUri($"rules/{id}"), request);
+            return Connection.SendAsync<Rule>(new HttpMethod("PATCH"), BuildUri($"rules/{id}"), request, DefaultHeaders);
         }
     }
 }

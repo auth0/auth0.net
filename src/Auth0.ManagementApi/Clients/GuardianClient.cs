@@ -16,8 +16,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
         /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
-        public GuardianClient(IManagementConnection connection, Uri baseUri)
-            : base(connection, baseUri)
+        /// <param name="defaultHeaders"><see cref="IDictionary{string, string}"/> containing default headers included with every request this client makes.</param>
+        public GuardianClient(IManagementConnection connection, Uri baseUri, IDictionary<string, string> defaultHeaders)
+            : base(connection, baseUri, defaultHeaders)
         {
         }
 
@@ -34,7 +35,8 @@ namespace Auth0.ManagementApi.Clients
                 .SendAsync<CreateGuardianEnrollmentTicketResponse>(
                 HttpMethod.Post,
                 BuildUri("guardian/enrollments/ticket"),
-                request);
+                request,
+                DefaultHeaders);
         }
 
         /// <summary>
@@ -48,7 +50,8 @@ namespace Auth0.ManagementApi.Clients
                 .SendAsync<object>(
                 HttpMethod.Delete,
                 BuildUri($"guardian/enrollments/{id}"),
-                null);
+                null,
+                DefaultHeaders);
         }
 
         /// <summary>
@@ -60,7 +63,8 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection
                 .GetAsync<GuardianEnrollment>(
-                BuildUri($"guardian/enrollments/{id}"));
+                BuildUri($"guardian/enrollments/{id}"),
+                DefaultHeaders);
         }
 
         /// <summary>
@@ -71,7 +75,8 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection
                 .GetAsync<IList<GuardianFactor>>(
-                BuildUri("guardian/factors"));
+                BuildUri("guardian/factors"),
+                DefaultHeaders);
         }
 
         /// <summary>
@@ -82,7 +87,8 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection
                 .GetAsync<GuardianSmsEnrollmentTemplates>(
-                BuildUri("guardian/factors/sms/templates"));
+                BuildUri("guardian/factors/sms/templates"),
+                DefaultHeaders);
         }
 
         /// <summary>
@@ -93,7 +99,8 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection
                 .GetAsync<GuardianSnsConfiguration>(
-                BuildUri("guardian/factors/push-notification/providers/sns"));
+                BuildUri("guardian/factors/push-notification/providers/sns"),
+                DefaultHeaders);
         }
 
         /// <summary>
@@ -104,7 +111,8 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection
                 .GetAsync<GuardianTwilioConfiguration>(
-                BuildUri("guardian/factors/sms/providers/twilio"));
+                BuildUri("guardian/factors/sms/providers/twilio"),
+                DefaultHeaders);
         }
 
         /// <summary>
@@ -120,7 +128,8 @@ namespace Auth0.ManagementApi.Clients
                 .SendAsync<UpdateGuardianFactorResponse>(
                 HttpMethod.Put,
                 BuildUri($"guardian/factors/{name}"),
-                new { enabled = request.IsEnabled });
+                new { enabled = request.IsEnabled },
+                DefaultHeaders);
         }
 
         /// <summary>
@@ -134,7 +143,8 @@ namespace Auth0.ManagementApi.Clients
                 .SendAsync<GuardianSmsEnrollmentTemplates>(
                 HttpMethod.Put,
                 BuildUri("guardian/factors/sms/templates"),
-                templates);
+                templates,
+                DefaultHeaders);
         }
 
         /// <summary>
@@ -150,7 +160,8 @@ namespace Auth0.ManagementApi.Clients
                 .SendAsync<GuardianTwilioConfiguration>(
                 HttpMethod.Put,
                 BuildUri("guardian/factors/sms/providers/twilio"),
-                request);
+                request,
+                DefaultHeaders);
         }
     }
 }

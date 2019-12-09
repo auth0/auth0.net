@@ -20,8 +20,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
         /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
-        public ConnectionsClient(IManagementConnection connection, Uri baseUri)
-            : base(connection, baseUri)
+        /// <param name="defaultHeaders"><see cref="IDictionary{string, string}"/> containing default headers included with every request this client makes.</param>
+        public ConnectionsClient(IManagementConnection connection, Uri baseUri, IDictionary<string, string> defaultHeaders)
+            : base(connection, baseUri, defaultHeaders)
         {
         }
 
@@ -32,7 +33,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Connection"/> containing the newly created Connection.</returns>
         public Task<Connection> CreateAsync(ConnectionCreateRequest request)
         {
-            return Connection.SendAsync<Connection>(HttpMethod.Post, BuildUri("connections"), request, null);
+            return Connection.SendAsync<Connection>(HttpMethod.Post, BuildUri("connections"), request, DefaultHeaders);
         }
 
         /// <summary>
@@ -42,7 +43,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"connections/{id}"), null);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"connections/{id}"), null, DefaultHeaders);
         }
 
         /// <summary>
@@ -57,7 +58,7 @@ namespace Auth0.ManagementApi.Clients
         public Task DeleteUserAsync(string id, string email)
         {
             return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"connections/{id}/users",
-                new Dictionary<string, string> { {"email", email} }), null);
+                new Dictionary<string, string> { {"email", email} }), null, DefaultHeaders);
         }
 
         /// <summary>
@@ -74,7 +75,7 @@ namespace Auth0.ManagementApi.Clients
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                }));
+                }), DefaultHeaders);
         }
 
         /// <summary>
@@ -105,7 +106,7 @@ namespace Auth0.ManagementApi.Clients
                 foreach (var s in request.Strategy)
                     queryStrings.Add("strategy", s);
 
-            return Connection.GetAsync<IPagedList<Connection>>(BuildUri("connections", queryStrings), converters: converters);
+            return Connection.GetAsync<IPagedList<Connection>>(BuildUri("connections", queryStrings), DefaultHeaders, converters);
         }
 
         /// <summary>
@@ -116,7 +117,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Connection"/> that has been updated.</returns>
         public Task<Connection> UpdateAsync(string id, ConnectionUpdateRequest request)
         {
-            return Connection.SendAsync<Connection>(new HttpMethod("PATCH"), BuildUri($"connections/{id}"), request);
+            return Connection.SendAsync<Connection>(new HttpMethod("PATCH"), BuildUri($"connections/{id}"), request, DefaultHeaders);
         }
     }
 }

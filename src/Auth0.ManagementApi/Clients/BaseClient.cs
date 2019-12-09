@@ -20,14 +20,21 @@ namespace Auth0.ManagementApi.Clients
         protected Uri BaseUri { get; }
 
         /// <summary>
+        /// Default headers included with every request this client makes.
+        /// </summary>
+        protected IDictionary<string, string> DefaultHeaders { get; }
+
+        /// <summary>
         /// Initializes a new instance of <see cref="BaseClient"/>.
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
         /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
-        protected BaseClient(IManagementConnection connection, Uri baseUri)
+        /// <param name="defaultHeaders"><see cref="IDictionary{string, string}"/> containing default headers included with every request this client makes.</param>
+        protected BaseClient(IManagementConnection connection, Uri baseUri, IDictionary<string, string> defaultHeaders)
         {
-            Connection = connection;
-            BaseUri = baseUri;
+            Connection = connection ?? throw new ArgumentNullException(nameof(connection));
+            BaseUri = baseUri ?? throw new ArgumentNullException(nameof(baseUri));
+            DefaultHeaders = defaultHeaders ?? throw new ArgumentNullException(nameof(defaultHeaders));
         }
 
         /// <summary>

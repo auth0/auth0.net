@@ -1,5 +1,4 @@
-﻿using Auth0.ManagementApi.Models;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -20,13 +19,6 @@ namespace Auth0.ManagementApi
     public interface IManagementConnection
     {
         /// <summary>
-        /// Sets the default headers that will be used by requests. This includes
-        /// Authorization and the Auth0 User-Agent.
-        /// </summary>
-        /// <param name="headers"><see cref="Dictionary{string, string}"/> of header key/values to send with each request unless overrided on a per-request basis.</param>
-        void SetDefaultHeaders(IDictionary<string, string> headers);
-
-        /// <summary>
         /// Perform a HTTP GET operation against a given <see cref="Uri"/> and return the materialized response body as <typeparamref name="T"/>.
         /// </summary>
         /// <typeparam name="T">Type of object to deserialize the result content as.</typeparam>
@@ -34,7 +26,7 @@ namespace Auth0.ManagementApi
         /// <param name="headers">Optional <see cref="Dictionary{string, string}"/> containing additional headers that may override the defaults.</param>
         /// <param name="converters">Optional <see cref="JsonConverter[]"/> used to deserialize the resulting <typeparamref name="T"/>.</param>
         /// <returns><see cref="Task{T}"/> representing the async operation containing response body as <typeparamref name="T"/>.</returns>
-        Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, JsonConverter[] converters = null);
+        Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers, JsonConverter[] converters = null);
 
         /// <summary>
         /// Perform a HTTP operation against a given <see cref="Uri"/> and return any materialized response body as <typeparamref name="T"/>.
@@ -51,6 +43,6 @@ namespace Auth0.ManagementApi
         /// <remarks>
         /// <paramref name="files"/> can only be specified if <paramref name="body"/> is <see cref="IDictionary{string, object}"/>.
         /// </remarks>
-        Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, IList<FileUploadParameter> files = null);
+        Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers, IList<FileUploadParameter> files = null);
     }
 }

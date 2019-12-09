@@ -16,8 +16,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
         /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
-        public EmailProviderClient(IManagementConnection connection, Uri baseUri)
-            : base(connection, baseUri)
+        /// <param name="defaultHeaders"><see cref="IDictionary{string, string}"/> containing default headers included with every request this client makes.</param>
+        public EmailProviderClient(IManagementConnection connection, Uri baseUri, IDictionary<string, string> defaultHeaders)
+            : base(connection, baseUri, defaultHeaders)
         {
         }
 
@@ -31,7 +32,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="EmailProvider" /> instance containing the email provider details.</returns>
         public Task<EmailProvider> ConfigureAsync(EmailProviderConfigureRequest request)
         {
-            return Connection.SendAsync<EmailProvider>(HttpMethod.Post, BuildUri("emails/provider"), request, null);
+            return Connection.SendAsync<EmailProvider>(HttpMethod.Post, BuildUri("emails/provider"), request, DefaultHeaders);
         }
 
         /// <summary>
@@ -40,7 +41,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync()
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri("emails/provider"), null);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri("emails/provider"), null, DefaultHeaders);
         }
 
         /// <summary>
@@ -62,7 +63,7 @@ namespace Auth0.ManagementApi.Clients
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                }));
+                }), DefaultHeaders);
         }
 
         /// <summary>
@@ -75,7 +76,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="EmailProvider" /> instance containing the email provider details.</returns>
         public Task<EmailProvider> UpdateAsync(EmailProviderUpdateRequest request)
         {
-            return Connection.SendAsync<EmailProvider>(new HttpMethod("PATCH"), BuildUri("emails/provider"), request);
+            return Connection.SendAsync<EmailProvider>(new HttpMethod("PATCH"), BuildUri("emails/provider"), request, DefaultHeaders);
         }
     }
 }

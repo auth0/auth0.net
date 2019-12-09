@@ -3,6 +3,7 @@ using Auth0.ManagementApi.Paging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -23,8 +24,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
         /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
-        public UsersClient(IManagementConnection connection, Uri baseUri)
-            : base(connection, baseUri)
+        /// <param name="defaultHeaders"><see cref="IDictionary{string, string}"/> containing default headers included with every request this client makes.</param>
+        public UsersClient(IManagementConnection connection, Uri baseUri, IDictionary<string, string> defaultHeaders)
+            : base(connection, baseUri, defaultHeaders)
         {
         }
 
@@ -36,7 +38,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous assign operation.</returns>
         public Task AssignRolesAsync(string id, AssignRolesRequest request)
         {
-            return Connection.SendAsync<AssignRolesRequest>(HttpMethod.Post, BuildUri($"users/{id}/roles"), request);
+            return Connection.SendAsync<AssignRolesRequest>(HttpMethod.Post, BuildUri($"users/{id}/roles"), request, DefaultHeaders);
         }
 
         /// <summary>
@@ -46,7 +48,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="User"/>.</returns>
         public Task<User> CreateAsync(UserCreateRequest request)
         {
-            return Connection.SendAsync<User>(HttpMethod.Post, BuildUri("users"), request, null);
+            return Connection.SendAsync<User>(HttpMethod.Post, BuildUri("users"), request, DefaultHeaders);
         }
 
         /// <summary>
@@ -59,7 +61,7 @@ namespace Auth0.ManagementApi.Clients
             if (string.IsNullOrWhiteSpace(id))
                 throw new ArgumentException("Value cannot be null or whitespace.", nameof(id));
 
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"users/{id}"), null);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"users/{id}"), null, DefaultHeaders);
         }
 
         /// <summary>
@@ -70,7 +72,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteMultifactorProviderAsync(string id, string provider)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"users/{id}/multifactor/{provider}"), null);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"users/{id}/multifactor/{provider}"), null, DefaultHeaders);
         }
 
         /// <summary>
@@ -98,7 +100,7 @@ namespace Auth0.ManagementApi.Clients
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
-                }), converters: usersConverters);
+                }), DefaultHeaders, usersConverters);
         }
 
         /// <summary>
@@ -121,7 +123,7 @@ namespace Auth0.ManagementApi.Clients
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                }));
+                }), DefaultHeaders);
         }
 
         /// <summary>
@@ -144,7 +146,7 @@ namespace Auth0.ManagementApi.Clients
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }), converters: logsConverters);
+                }), DefaultHeaders, logsConverters);
         }
 
         /// <summary>
@@ -164,7 +166,7 @@ namespace Auth0.ManagementApi.Clients
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }), converters: rolesConverters);
+                }), DefaultHeaders, rolesConverters);
         }
 
         /// <summary>
@@ -182,7 +184,7 @@ namespace Auth0.ManagementApi.Clients
                     {"email", email},
                     {"fields", fields},
                     {"include_fields", includeFields?.ToString().ToLower()}
-                }));
+                }), DefaultHeaders);
         }
 
         /// <summary>
@@ -192,7 +194,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A Task representing the operation and potential return value.</returns>
         public Task<IList<EnrollmentsResponse>> GetEnrollmentsAsync(string id)
         {
-            return Connection.GetAsync<IList<EnrollmentsResponse>>(BuildUri($"users/{id}/enrollments"));
+            return Connection.GetAsync<IList<EnrollmentsResponse>>(BuildUri($"users/{id}/enrollments"), DefaultHeaders);
         }
 
         /// <summary>
@@ -202,7 +204,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A Task representing the operation and potential return value.</returns>
         public Task InvalidateRememberBrowserAsync(string id)
         {
-            return Connection.SendAsync<object>(HttpMethod.Post, BuildUri($"users/{id}/multifactor/actions/invalidate-remember-browser"), null);
+            return Connection.SendAsync<object>(HttpMethod.Post, BuildUri($"users/{id}/multifactor/actions/invalidate-remember-browser"), null, DefaultHeaders);
         }
 
         /// <summary>
@@ -212,7 +214,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A Task representing the operation and potential return value.</returns>
         public Task<GenerateRecoveryCodeResponse> GenerateRecoveryCodeAsync(string id)
         {
-            return Connection.SendAsync<GenerateRecoveryCodeResponse>(HttpMethod.Post, BuildUri($"users/{id}/recovery-code-regeneration"), null);
+            return Connection.SendAsync<GenerateRecoveryCodeResponse>(HttpMethod.Post, BuildUri($"users/{id}/recovery-code-regeneration"), null, DefaultHeaders);
         }
 
         /// <summary>
@@ -223,7 +225,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="IList{AccountLinkResponse}"/> containing details about this account link.</returns>
         public Task<IList<AccountLinkResponse>> LinkAccountAsync(string id, UserAccountLinkRequest request)
         {
-            return Connection.SendAsync<IList<AccountLinkResponse>>(HttpMethod.Post, BuildUri($"users/{id}/identities"), request);
+            return Connection.SendAsync<IList<AccountLinkResponse>>(HttpMethod.Post, BuildUri($"users/{id}/identities"), request, DefaultHeaders);
         }
 
         /// <summary>
@@ -240,8 +242,12 @@ namespace Auth0.ManagementApi.Clients
                 LinkWith = secondaryJwtToken
             };
 
-            return Connection.SendAsync<IList<AccountLinkResponse>>(HttpMethod.Post, BuildUri($"users/{id}/identities"), request,
-                new Dictionary<string, string> { { "Authorization", $"Bearer {primaryJwtToken}" } }, null);
+            return Connection.SendAsync<IList<AccountLinkResponse>>(HttpMethod.Post,
+                BuildUri($"users/{id}/identities"), request,
+                new Dictionary<string, string>(DefaultHeaders)
+                {
+                    ["Authorization"] = $"Bearer {primaryJwtToken}"
+                });
         }
 
         /// <summary>
@@ -252,7 +258,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous remove operation.</returns>
         public Task RemoveRolesAsync(string id, AssignRolesRequest request)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"users/{id}/roles"), request);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"users/{id}/roles"), request, DefaultHeaders);
         }
 
         /// <summary>
@@ -264,7 +270,8 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="IList{AccountLinkResponse}"/> containing details about this account link.</returns>
         public Task<IList<AccountLinkResponse>> UnlinkAccountAsync(string primaryUserId, string provider, string secondaryUserId)
         {
-            return Connection.SendAsync<IList<AccountLinkResponse>>(HttpMethod.Delete, BuildUri($"users/{primaryUserId}/identities/{provider}/{secondaryUserId}"), null);
+            return Connection.SendAsync<IList<AccountLinkResponse>>(HttpMethod.Delete,
+                BuildUri($"users/{primaryUserId}/identities/{provider}/{secondaryUserId}"), null, DefaultHeaders);
         }
 
         /// <summary>
@@ -275,7 +282,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="User"/>.</returns>
         public Task<User> UpdateAsync(string id, UserUpdateRequest request)
         {
-            return Connection.SendAsync<User>(new HttpMethod("PATCH"), BuildUri($"users/{id}"), request);
+            return Connection.SendAsync<User>(new HttpMethod("PATCH"), BuildUri($"users/{id}"), request, DefaultHeaders);
         }
 
         /// <summary>
@@ -292,7 +299,7 @@ namespace Auth0.ManagementApi.Clients
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }), converters: permissionsConverters);
+                }), DefaultHeaders, permissionsConverters);
         }
 
         /// <summary>
@@ -303,7 +310,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous assignment operation.</returns>
         public Task AssignPermissionsAsync(string id, AssignPermissionsRequest request)
         {
-            return Connection.SendAsync<object>(HttpMethod.Post, BuildUri($"users/{id}/permissions"), request);
+            return Connection.SendAsync<object>(HttpMethod.Post, BuildUri($"users/{id}/permissions"), request, DefaultHeaders);
         }
 
         /// <summary>
@@ -314,7 +321,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous remove operation.</returns>
         public Task RemovePermissionsAsync(string id, AssignPermissionsRequest request)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"users/{id}/permissions"), request);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"users/{id}/permissions"), request, DefaultHeaders);
         }
     }
 }

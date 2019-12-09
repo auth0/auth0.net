@@ -1,5 +1,6 @@
 ﻿using Auth0.ManagementApi.Models;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -15,8 +16,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
         /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
-        public EmailTemplatesClient(IManagementConnection connection, Uri baseUri)
-            : base(connection, baseUri)
+        /// <param name="defaultHeaders"><see cref="IDictionary{string, string}"/> containing default headers included with every request this client makes.</param>
+        public EmailTemplatesClient(IManagementConnection connection, Uri baseUri, IDictionary<string, string> defaultHeaders)
+            : base(connection, baseUri, defaultHeaders)
         {
         }
 
@@ -27,7 +29,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="EmailTemplate"/>.</returns>
         public Task<EmailTemplate> CreateAsync(EmailTemplateCreateRequest request)
         {
-            return Connection.SendAsync<EmailTemplate>(HttpMethod.Post, BuildUri("email-templates"), request, null);
+            return Connection.SendAsync<EmailTemplate>(HttpMethod.Post, BuildUri("email-templates"), request, DefaultHeaders);
         }
 
         /// <summary>
@@ -37,7 +39,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="EmailTemplate"/> that was requested.</returns>
         public Task<EmailTemplate> GetAsync(EmailTemplateName templateName)
         {
-            return Connection.GetAsync<EmailTemplate>(BuildUri($"email-templates/{templateName.ToEnumString()}"));
+            return Connection.GetAsync<EmailTemplate>(BuildUri($"email-templates/{templateName.ToEnumString()}"), DefaultHeaders);
         }
 
         /// <summary>
@@ -48,7 +50,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="EmailTemplate"/>.</returns>
         public Task<EmailTemplate> PatchAsync(EmailTemplateName templateName, EmailTemplatePatchRequest request)
         {
-            return Connection.SendAsync<EmailTemplate>(new HttpMethod("PATCH"), BuildUri($"email-templates/{templateName.ToEnumString()}"), request);
+            return Connection.SendAsync<EmailTemplate>(new HttpMethod("PATCH"), BuildUri($"email-templates/{templateName.ToEnumString()}"), request, DefaultHeaders);
         }
 
         /// <summary>
@@ -59,7 +61,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="EmailTemplate"/>.</returns>
         public Task<EmailTemplate> UpdateAsync(EmailTemplateName templateName, EmailTemplateUpdateRequest request)
         {
-            return Connection.SendAsync<EmailTemplate>(HttpMethod.Put, BuildUri($"email-templates/{templateName.ToEnumString()}"), request);
+            return Connection.SendAsync<EmailTemplate>(HttpMethod.Put, BuildUri($"email-templates/{templateName.ToEnumString()}"), request, DefaultHeaders);
         }
     }
 }

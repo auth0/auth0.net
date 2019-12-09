@@ -126,27 +126,27 @@ namespace Auth0.ManagementApi
                 connectionToDispose = ownedManagementConnection;
             }
 
-            managementConnection.SetDefaultHeaders(CreateDefaultHeaders(token));
+            var defaultHeaders = CreateDefaultHeaders(token);
 
-            BlacklistedTokens = new BlacklistedTokensClient(managementConnection, baseUri);
-            ClientGrants = new ClientGrantsClient(managementConnection, baseUri);
-            Clients = new ClientsClient(managementConnection, baseUri);
-            Connections = new ConnectionsClient(managementConnection, baseUri);
-            CustomDomains = new CustomDomainsClient(managementConnection, baseUri);
-            DeviceCredentials = new DeviceCredentialsClient(managementConnection, baseUri);
-            EmailProvider = new EmailProviderClient(managementConnection, baseUri);
-            EmailTemplates = new EmailTemplatesClient(managementConnection, baseUri);
-            Guardian = new GuardianClient(managementConnection, baseUri);
-            Jobs = new JobsClient(managementConnection, baseUri);
-            Logs = new LogsClient(managementConnection, baseUri);
-            ResourceServers = new ResourceServersClient(managementConnection, baseUri);
-            Roles = new RolesClient(managementConnection, baseUri);
-            Rules = new RulesClient(managementConnection, baseUri);
-            Stats = new StatsClient(managementConnection, baseUri);
-            TenantSettings = new TenantSettingsClient(managementConnection, baseUri);
-            Tickets = new TicketsClient(managementConnection, baseUri);
-            UserBlocks = new UserBlocksClient(managementConnection, baseUri);
-            Users = new UsersClient(managementConnection, baseUri);
+            BlacklistedTokens = new BlacklistedTokensClient(managementConnection, baseUri, defaultHeaders);
+            ClientGrants = new ClientGrantsClient(managementConnection, baseUri, defaultHeaders);
+            Clients = new ClientsClient(managementConnection, baseUri, defaultHeaders);
+            Connections = new ConnectionsClient(managementConnection, baseUri, defaultHeaders);
+            CustomDomains = new CustomDomainsClient(managementConnection, baseUri, defaultHeaders);
+            DeviceCredentials = new DeviceCredentialsClient(managementConnection, baseUri, defaultHeaders);
+            EmailProvider = new EmailProviderClient(managementConnection, baseUri, defaultHeaders);
+            EmailTemplates = new EmailTemplatesClient(managementConnection, baseUri, defaultHeaders);
+            Guardian = new GuardianClient(managementConnection, baseUri, defaultHeaders);
+            Jobs = new JobsClient(managementConnection, baseUri, defaultHeaders);
+            Logs = new LogsClient(managementConnection, baseUri, defaultHeaders);
+            ResourceServers = new ResourceServersClient(managementConnection, baseUri, defaultHeaders);
+            Roles = new RolesClient(managementConnection, baseUri, defaultHeaders);
+            Rules = new RulesClient(managementConnection, baseUri, defaultHeaders);
+            Stats = new StatsClient(managementConnection, baseUri, defaultHeaders);
+            TenantSettings = new TenantSettingsClient(managementConnection, baseUri, defaultHeaders);
+            Tickets = new TicketsClient(managementConnection, baseUri, defaultHeaders);
+            UserBlocks = new UserBlocksClient(managementConnection, baseUri, defaultHeaders);
+            Users = new UsersClient(managementConnection, baseUri, defaultHeaders);
         }
 
         private static Dictionary<string, string> CreateDefaultHeaders(string token)

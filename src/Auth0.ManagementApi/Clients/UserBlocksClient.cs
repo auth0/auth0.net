@@ -16,8 +16,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
         /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
-        public UserBlocksClient(IManagementConnection connection, Uri baseUri)
-            : base(connection, baseUri)
+        /// <param name="defaultHeaders"><see cref="IDictionary{string, string}"/> containing default headers included with every request this client makes.</param>
+        public UserBlocksClient(IManagementConnection connection, Uri baseUri, IDictionary<string, string> defaultHeaders)
+            : base(connection, baseUri, defaultHeaders)
         {
         }
 
@@ -32,7 +33,7 @@ namespace Auth0.ManagementApi.Clients
                 new Dictionary<string, string>
                 {
                     {"identifier", identifier}
-                }));
+                }), DefaultHeaders);
         }
 
         /// <summary>
@@ -42,7 +43,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="UserBlocks"/> relating to the user requested.</returns>
         public Task<UserBlocks> GetByUserIdAsync(string id)
         {
-            return Connection.GetAsync<UserBlocks>(BuildUri($"user-blocks/{id}"));
+            return Connection.GetAsync<UserBlocks>(BuildUri($"user-blocks/{id}"), DefaultHeaders);
         }
 
         /// <summary>
@@ -53,7 +54,7 @@ namespace Auth0.ManagementApi.Clients
         public Task UnblockByIdentifierAsync(string identifier)
         {
             return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri("user-blocks",
-                new Dictionary<string, string> { { "identifier", identifier } }), null);
+                new Dictionary<string, string> { { "identifier", identifier } }), null, DefaultHeaders);
         }
 
         /// <summary>
@@ -64,7 +65,7 @@ namespace Auth0.ManagementApi.Clients
         public Task UnblockByUserIdAsync(string id)
         {
             return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"user-blocks/{id}", 
-                new Dictionary<string, string> { { "id", id } }), null);
+                new Dictionary<string, string> { { "id", id } }), null, DefaultHeaders);
         }
     }
 }

@@ -15,8 +15,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
         /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
-        public StatsClient(IManagementConnection connection, Uri baseUri)
-            : base(connection, baseUri)
+        /// <param name="defaultHeaders"><see cref="IDictionary{string, string}"/> containing default headers included with every request this client makes.</param>
+        public StatsClient(IManagementConnection connection, Uri baseUri, IDictionary<string, string> defaultHeaders)
+            : base(connection, baseUri, defaultHeaders)
         {
         }
 
@@ -26,7 +27,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The number of users that have logged in during the last 30 days.</returns>
         public Task<long> GetActiveUsersAsync()
         {
-            return Connection.GetAsync<long>(BuildUri("stats/active-users"));
+            return Connection.GetAsync<long>(BuildUri("stats/active-users"), DefaultHeaders);
         }
 
         /// <summary>
@@ -42,7 +43,7 @@ namespace Auth0.ManagementApi.Clients
                 {
                     { "from", from.ToString("yyyyMMdd") },
                     { "to", to.ToString("yyyyMMdd") }
-                }));
+                }), DefaultHeaders);
         }
     }
 }
