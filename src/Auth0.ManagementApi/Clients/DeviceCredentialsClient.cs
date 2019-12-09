@@ -16,8 +16,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
         /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
-        public DeviceCredentialsClient(IManagementConnection connection, Uri baseUri)
-            : base(connection, baseUri)
+        /// <param name="defaultHeaders"><see cref="IDictionary{string, string}"/> containing default headers included with every request this client makes.</param>
+        public DeviceCredentialsClient(IManagementConnection connection, Uri baseUri, IDictionary<string, string> defaultHeaders)
+            : base(connection, baseUri, defaultHeaders)
         {
         }
 
@@ -40,7 +41,7 @@ namespace Auth0.ManagementApi.Clients
                     {"user_id", userId},
                     {"client_id", clientId},
                     {"type", type}
-                }));
+                }), DefaultHeaders);
         }
 
         /// <summary>
@@ -50,7 +51,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly created <see cref="DeviceCredential"/>.</returns>
         public Task<DeviceCredential> CreateAsync(DeviceCredentialCreateRequest request)
         {
-            return Connection.SendAsync<DeviceCredential>(HttpMethod.Post, BuildUri("device-credentials"), request);
+            return Connection.SendAsync<DeviceCredential>(HttpMethod.Post, BuildUri("device-credentials"), request, DefaultHeaders);
         }
 
         /// <summary>
@@ -60,7 +61,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"device-credentials/{id}"), null);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"device-credentials/{id}"), null, DefaultHeaders);
         }
     }
 }

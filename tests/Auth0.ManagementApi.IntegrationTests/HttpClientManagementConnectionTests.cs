@@ -1,5 +1,6 @@
 ﻿using Auth0.Tests.Shared;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Xunit;
@@ -13,7 +14,8 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             var connection = new HttpClientManagementConnection();
             connection.Dispose();
-            await Assert.ThrowsAsync<ObjectDisposedException >(() => connection.GetAsync<string>(new Uri("https://" + GetVariable("AUTH0_MANAGEMENT_API_URL"))));
+            await Assert.ThrowsAsync<ObjectDisposedException >(() =>
+                connection.GetAsync<string>(new Uri("https://" + GetVariable("AUTH0_MANAGEMENT_API_URL")), new Dictionary<string, string>()));
         }
 
         [Fact]

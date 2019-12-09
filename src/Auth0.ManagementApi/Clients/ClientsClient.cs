@@ -21,8 +21,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
         /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
-        public ClientsClient(IManagementConnection connection, Uri baseUri)
-            : base(connection, baseUri)
+        /// <param name="defaultHeaders"><see cref="IDictionary{string, string}"/> containing default headers included with every request this client makes.</param>
+        public ClientsClient(IManagementConnection connection, Uri baseUri, IDictionary<string, string> defaultHeaders)
+            : base(connection, baseUri, defaultHeaders)
         {
         }
 
@@ -33,7 +34,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The new <see cref="Client"/> that has been created.</returns>
         public Task<Client> CreateAsync(ClientCreateRequest request)
         {
-            return Connection.SendAsync<Client>(HttpMethod.Post, BuildUri("clients"), request);
+            return Connection.SendAsync<Client>(HttpMethod.Post, BuildUri("clients"), request, DefaultHeaders);
         }
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"clients/{id}"), null);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"clients/{id}"), null, DefaultHeaders);
         }
 
         /// <summary>
@@ -73,7 +74,7 @@ namespace Auth0.ManagementApi.Clients
             if (request.AppType != null)
                 queryStrings.Add("app_type", string.Join(",", request.AppType.Select(ExtensionMethods.ToEnumString)));
 
-            return Connection.GetAsync<IPagedList<Client>>(BuildUri("clients", queryStrings), converters: converters);
+            return Connection.GetAsync<IPagedList<Client>>(BuildUri("clients", queryStrings), DefaultHeaders, converters);
         }
 
         /// <summary>
@@ -96,7 +97,7 @@ namespace Auth0.ManagementApi.Clients
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                }));
+                }), DefaultHeaders);
         }
 
         /// <summary>
@@ -106,7 +107,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Client"/> that has had its secret rotated.</returns>
         public Task<Client> RotateClientSecret(string id)
         {
-            return Connection.SendAsync<Client>(HttpMethod.Post, BuildUri($"clients/{id}/rotate-secret"), null);
+            return Connection.SendAsync<Client>(HttpMethod.Post, BuildUri($"clients/{id}/rotate-secret"), null, DefaultHeaders);
         }
 
         /// <summary>
@@ -117,7 +118,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Client"/> that was updated.</returns>
         public Task<Client> UpdateAsync(string id, ClientUpdateRequest request)
         {
-            return Connection.SendAsync<Client>(new HttpMethod("PATCH"), BuildUri($"clients/{id}"), request);
+            return Connection.SendAsync<Client>(new HttpMethod("PATCH"), BuildUri($"clients/{id}"), request, DefaultHeaders);
         }
     }
 }
