@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class EmailProviderClient
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,27 +73,34 @@
   
   <h1 id="Auth0_ManagementApi_Clients_EmailProviderClient" data-uid="Auth0.ManagementApi.Clients.EmailProviderClient" class="text-break">Class EmailProviderClient
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Contains methods to access the /emails/provider endpoints.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Auth0.ManagementApi.Clients.ClientBase.html">ClientBase</a></div>
+    <div class="level1"><a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html">BaseClient</a></div>
     <div class="level2"><span class="xref">EmailProviderClient</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_Connection">BaseClient.Connection</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BaseUri">BaseClient.BaseUri</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_DefaultHeaders">BaseClient.DefaultHeaders</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BuildUri_System_String_System_Collections_Generic_IDictionary_System_String_System_String__">BaseClient.BuildUri(String, IDictionary&lt;String, String&gt;)</a>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -104,19 +111,64 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Clients.html">Auth0.ManagementApi.Clients</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Clients_EmailProviderClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class EmailProviderClient : ClientBase</code></pre>
+    <pre><code class="lang-csharp hljs">public class EmailProviderClient : BaseClient</code></pre>
   </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <a id="Auth0_ManagementApi_Clients_EmailProviderClient__ctor_" data-uid="Auth0.ManagementApi.Clients.EmailProviderClient.#ctor*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_EmailProviderClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.EmailProviderClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})">EmailProviderClient(IManagementConnection, Uri, IDictionary&lt;String, String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of <a class="xref" href="Auth0.ManagementApi.Clients.EmailProviderClient.html">EmailProviderClient</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EmailProviderClient(IManagementConnection connection, Uri baseUri, IDictionary&lt;string, string&gt; defaultHeaders)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a></td>
+        <td><span class="parametername">connection</span></td>
+        <td><p><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a> used to make all API calls.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Uri</span></td>
+        <td><span class="parametername">baseUri</span></td>
+        <td><p><span class="xref">System.Uri</span> of the endpoint to use in making API calls.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">defaultHeaders</span></td>
+        <td><p>Dictionary containing default headers included with every request this client makes.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Clients_EmailProviderClient_ConfigureAsync_" data-uid="Auth0.ManagementApi.Clients.EmailProviderClient.ConfigureAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_EmailProviderClient_ConfigureAsync_EmailProviderConfigureRequest_" data-uid="Auth0.ManagementApi.Clients.EmailProviderClient.ConfigureAsync(EmailProviderConfigureRequest)">ConfigureAsync(EmailProviderConfigureRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_EmailProviderClient_ConfigureAsync_Auth0_ManagementApi_Models_EmailProviderConfigureRequest_" data-uid="Auth0.ManagementApi.Clients.EmailProviderClient.ConfigureAsync(Auth0.ManagementApi.Models.EmailProviderConfigureRequest)">ConfigureAsync(EmailProviderConfigureRequest)</h4>
   <div class="markdown level1 summary"><p>Configures the email provider.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -135,9 +187,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">EmailProviderConfigureRequest</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.EmailProviderConfigureRequest.html">EmailProviderConfigureRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td><p>The <see cref="!:EmailProviderConfigureRequest"></see> containing the configuration properties of the
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.EmailProviderConfigureRequest.html">EmailProviderConfigureRequest</a> containing the configuration properties of the
 provider.</p>
 </td>
       </tr>
@@ -153,14 +205,12 @@ provider.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">EmailProvider</span>&gt;</td>
-        <td><p>A <see cref="!:EmailProvider"></see> instance containing the email provider details.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.EmailProvider.html">EmailProvider</a>&gt;</td>
+        <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.EmailProvider.html">EmailProvider</a> instance containing the email provider details.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_EmailProviderClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.EmailProviderClient.DeleteAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_EmailProviderClient_DeleteAsync" data-uid="Auth0.ManagementApi.Clients.EmailProviderClient.DeleteAsync">DeleteAsync()</h4>
   <div class="markdown level1 summary"><p>Deletes the email provider.</p>
@@ -180,14 +230,12 @@ provider.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
-        <td><p>A <see cref="!:Task"></see> that represents the asynchronous delete operation.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous delete operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_EmailProviderClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.EmailProviderClient.GetAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_EmailProviderClient_GetAsync_System_String_System_Boolean_" data-uid="Auth0.ManagementApi.Clients.EmailProviderClient.GetAsync(System.String,System.Boolean)">GetAsync(String, Boolean)</h4>
   <div class="markdown level1 summary"><p>Gets the email provider.</p>
@@ -233,16 +281,14 @@ to true).</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">EmailProvider</span>&gt;</td>
-        <td><p>A <see cref="!:EmailProvider"></see> instance containing the email provider details.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.EmailProvider.html">EmailProvider</a>&gt;</td>
+        <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.EmailProvider.html">EmailProvider</a> instance containing the email provider details.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_EmailProviderClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.EmailProviderClient.UpdateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_EmailProviderClient_UpdateAsync_EmailProviderUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.EmailProviderClient.UpdateAsync(EmailProviderUpdateRequest)">UpdateAsync(EmailProviderUpdateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_EmailProviderClient_UpdateAsync_Auth0_ManagementApi_Models_EmailProviderUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.EmailProviderClient.UpdateAsync(Auth0.ManagementApi.Models.EmailProviderUpdateRequest)">UpdateAsync(EmailProviderUpdateRequest)</h4>
   <div class="markdown level1 summary"><p>Updates the email provider.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -261,9 +307,9 @@ to true).</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">EmailProviderUpdateRequest</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.EmailProviderUpdateRequest.html">EmailProviderUpdateRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td><p>The <see cref="!:EmailProviderUpdateRequest"></see> containing the configuration properties of the
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.EmailProviderUpdateRequest.html">EmailProviderUpdateRequest</a> containing the configuration properties of the
 email provider.</p>
 </td>
       </tr>
@@ -279,8 +325,8 @@ email provider.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">EmailProvider</span>&gt;</td>
-        <td><p>A <see cref="!:EmailProvider"></see> instance containing the email provider details.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.EmailProvider.html">EmailProvider</a>&gt;</td>
+        <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.EmailProvider.html">EmailProvider</a> instance containing the email provider details.</p>
 </td>
       </tr>
     </tbody>
@@ -290,10 +336,6 @@ email provider.</p>
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

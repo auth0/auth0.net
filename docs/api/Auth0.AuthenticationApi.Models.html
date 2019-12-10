@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Namespace Auth0.AuthenticationApi.Models
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -83,17 +83,20 @@
       <h4><a class="xref" href="Auth0.AuthenticationApi.Models.AuthorizationCodePkceTokenRequest.html">AuthorizationCodePkceTokenRequest</a></h4>
       <section><p>Represents a request to exchange an authorization code (PKCE) for an access token during the OAuth authentication flow.</p>
 </section>
+      <h4><a class="xref" href="Auth0.AuthenticationApi.Models.AuthorizationCodeRequestBase.html">AuthorizationCodeRequestBase</a></h4>
+      <section><p>Base class for all types of Authorization Code requests.</p>
+</section>
       <h4><a class="xref" href="Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest.html">AuthorizationCodeTokenRequest</a></h4>
       <section><p>Represents a request to exchange an authorization code for an access token during the OAuth authentication flow.</p>
 </section>
       <h4><a class="xref" href="Auth0.AuthenticationApi.Models.ChangePasswordRequest.html">ChangePasswordRequest</a></h4>
-      <section><p>Represents a request to change a user&apos;s password.</p>
+      <section><p>Represents a request to change a password via an email.</p>
 </section>
       <h4><a class="xref" href="Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest.html">ClientCredentialsTokenRequest</a></h4>
-      <section><p>Represents a request get a token using the Client Credentials Grant flow</p>
+      <section><p>Represents a request get a token using the Client Credentials Grant flow.</p>
 </section>
       <h4><a class="xref" href="Auth0.AuthenticationApi.Models.ImpersonationRequest.html">ImpersonationRequest</a></h4>
-      <section><p>Represents a request to impersonate a user.</p>
+      <section><p>Represents a request to obtain a one-time link for impersonating a user.</p>
 </section>
       <h4><a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessEmailRequest.html">PasswordlessEmailRequest</a></h4>
       <section><p>Represents a request to start a Passwordless email flow.</p>
@@ -102,17 +105,16 @@
       <section><p>Represents a Passwordless email response.</p>
 </section>
       <h4><a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.html">PasswordlessSmsRequest</a></h4>
-      <section><p>Represents a Passwordless SMS flow.</p>
+      <section><p>Represents a Passwordless SMS flow request.</p>
 </section>
       <h4><a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessSmsResponse.html">PasswordlessSmsResponse</a></h4>
       <section><p>Represents the response from a Passwordless SMS request.</p>
 </section>
       <h4><a class="xref" href="Auth0.AuthenticationApi.Models.RefreshTokenRequest.html">RefreshTokenRequest</a></h4>
-      <section><p>Represents a request to get a new token,
-based on a previously issued refresh token.</p>
+      <section><p>Represents a request to get new tokens based on a previously obtained refresh token.</p>
 </section>
       <h4><a class="xref" href="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.html">ResourceOwnerTokenRequest</a></h4>
-      <section><p>Represents a request get a token using the Resource Owner Grant flow</p>
+      <section><p>Represents a request get a token using the Resource Owner Grant flow.</p>
 </section>
       <h4><a class="xref" href="Auth0.AuthenticationApi.Models.SignupUserRequest.html">SignupUserRequest</a></h4>
       <section><p>Represents a request to sign up a new user.</p>
@@ -123,13 +125,8 @@ based on a previously issued refresh token.</p>
       <h4><a class="xref" href="Auth0.AuthenticationApi.Models.TokenBase.html">TokenBase</a></h4>
       <section><p>Base class for all authentication tokens.</p>
 </section>
-      <h4><a class="xref" href="Auth0.AuthenticationApi.Models.UnlinkUserRequest.html">UnlinkUserRequest</a></h4>
-      <section><p>Represents a request to unlink a secondary user account from a primary user account.</p>
-</section>
       <h4><a class="xref" href="Auth0.AuthenticationApi.Models.UserInfo.html">UserInfo</a></h4>
-      <section><p>Represents the information of a user as available from
-a standard OIDC /userinfo endpoint.
-<a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims</a></p>
+      <section><p>Represents user information returned from a standard OpenID Connect <code>/userinfo</code> endpoint.</p>
 </section>
       <h4><a class="xref" href="Auth0.AuthenticationApi.Models.UserInfoAddress.html">UserInfoAddress</a></h4>
       <section><p>Represents a physical mailing address of an user.</p>
@@ -146,17 +143,13 @@ a standard OIDC /userinfo endpoint.
       <section><p>Represents an authentication reponse type.</p>
 </section>
       <h4><a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessEmailRequestType.html">PasswordlessEmailRequestType</a></h4>
-      <section><p>The type of Passwordless email request.</p>
+      <section><p>Type of passwordless email request.</p>
 </section>
 </article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

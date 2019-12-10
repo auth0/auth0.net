@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ApiException
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,44 +73,103 @@
   
   <h1 id="Auth0_Core_Exceptions_ApiException" data-uid="Auth0.Core.Exceptions.ApiException" class="text-break">Class ApiException
   </h1>
-  <div class="markdown level0 summary"><p>Represents errors that occur when making API calls.</p>
+  <div class="markdown level0 summary"><p>Represents an exception that occurs when making API calls.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">ApiException</span></div>
+    <div class="level1"><span class="xref">System.Exception</span></div>
+    <div class="level2"><span class="xref">ApiException</span></div>
+      <div class="level3"><a class="xref" href="Auth0.Core.Exceptions.ErrorApiException.html">ErrorApiException</a></div>
+      <div class="level3"><a class="xref" href="Auth0.Core.Exceptions.RateLimitApiException.html">RateLimitApiException</a></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.Runtime.Serialization.ISerializable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Exception.GetBaseException()</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.Data</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.HelpLink</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.HResult</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.InnerException</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.Message</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.Source</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.StackTrace</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.TargetSite</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.SerializeObjectState</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.Core.Exceptions.html">Auth0.Core.Exceptions</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.Core.dll</h6>
   <h5 id="Auth0_Core_Exceptions_ApiException_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ApiException : Exception</code></pre>
+    <pre><code class="lang-csharp hljs">[Serializable]
+public abstract class ApiException : Exception, ISerializable</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
   <a id="Auth0_Core_Exceptions_ApiException__ctor_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor*"></a>
   <h4 id="Auth0_Core_Exceptions_ApiException__ctor" data-uid="Auth0.Core.Exceptions.ApiException.#ctor">ApiException()</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Exceptions.ApiException.html">ApiException</a> class.</p>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Exceptions.ErrorApiException.html">ErrorApiException</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ApiException()</code></pre>
+    <pre><code class="lang-csharp hljs">protected ApiException()</code></pre>
   </div>
-  
-  
   <a id="Auth0_Core_Exceptions_ApiException__ctor_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor*"></a>
-  <h4 id="Auth0_Core_Exceptions_ApiException__ctor_HttpStatusCode_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor(HttpStatusCode)">ApiException(HttpStatusCode)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Exceptions.ApiException.html">ApiException</a> class with a specified
-<see cref="!:HttpStatusCode"></see>.</p>
-</div>
+  <h4 id="Auth0_Core_Exceptions_ApiException__ctor_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">ApiException(SerializationInfo, StreamingContext)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ApiException(HttpStatusCode statusCode)</code></pre>
+    <pre><code class="lang-csharp hljs">protected ApiException(SerializationInfo serializationInfo, StreamingContext streamingContext)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -123,50 +182,17 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">HttpStatusCode</span></td>
-        <td><span class="parametername">statusCode</span></td>
+        <td><span class="xref">System.Runtime.Serialization.SerializationInfo</span></td>
+        <td><span class="parametername">serializationInfo</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Runtime.Serialization.StreamingContext</span></td>
+        <td><span class="parametername">streamingContext</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
-  <a id="Auth0_Core_Exceptions_ApiException__ctor_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor*"></a>
-  <h4 id="Auth0_Core_Exceptions_ApiException__ctor_HttpStatusCode_Auth0_Core_ApiError_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor(HttpStatusCode,Auth0.Core.ApiError)">ApiException(HttpStatusCode, ApiError)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Exceptions.ApiException.html">ApiException</a> class with a specified
-<see cref="!:HttpStatusCode"></see> and <a class="xref" href="Auth0.Core.ApiError.html">ApiError</a>.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ApiException(HttpStatusCode statusCode, ApiError apiError)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">HttpStatusCode</span></td>
-        <td><span class="parametername">statusCode</span></td>
-        <td><p>The status code.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.Core.ApiError.html">ApiError</a></td>
-        <td><span class="parametername">apiError</span></td>
-        <td><p>The API error.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
   <a id="Auth0_Core_Exceptions_ApiException__ctor_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor*"></a>
   <h4 id="Auth0_Core_Exceptions_ApiException__ctor_System_String_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor(System.String)">ApiException(String)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Exceptions.ApiException.html">ApiException</a> class with a specified error message.</p>
@@ -174,7 +200,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ApiException(string message)</code></pre>
+    <pre><code class="lang-csharp hljs">protected ApiException(string message)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -194,17 +220,15 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_Core_Exceptions_ApiException__ctor_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor*"></a>
-  <h4 id="Auth0_Core_Exceptions_ApiException__ctor_System_String_Exception_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor(System.String,Exception)">ApiException(String, Exception)</h4>
+  <h4 id="Auth0_Core_Exceptions_ApiException__ctor_System_String_System_Exception_" data-uid="Auth0.Core.Exceptions.ApiException.#ctor(System.String,System.Exception)">ApiException(String, Exception)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Exceptions.ApiException.html">ApiException</a> class with a specified error message
 and a reference to the inner exception that is the cause of this exception.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ApiException(string message, Exception innerException)</code></pre>
+    <pre><code class="lang-csharp hljs">protected ApiException(string message, Exception innerException)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -223,7 +247,7 @@ and a reference to the inner exception that is the cause of this exception.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Exception</span></td>
+        <td><span class="xref">System.Exception</span></td>
         <td><span class="parametername">innerException</span></td>
         <td><p>The exception that is the cause of the current exception, or a null 
 reference if no inner exception is specified.</p>
@@ -231,69 +255,15 @@ reference if no inner exception is specified.</p>
       </tr>
     </tbody>
   </table>
-  <h3 id="properties">Properties
-  </h3>
-  
-  
-  <a id="Auth0_Core_Exceptions_ApiException_ApiError_" data-uid="Auth0.Core.Exceptions.ApiException.ApiError*"></a>
-  <h4 id="Auth0_Core_Exceptions_ApiException_ApiError" data-uid="Auth0.Core.Exceptions.ApiException.ApiError">ApiError</h4>
-  <div class="markdown level1 summary"><p>The <a class="xref" href="Auth0.Core.ApiError.html">ApiError</a> from the response.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ApiError ApiError { get; }</code></pre>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.Runtime.Serialization.ISerializable</span>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.Core.ApiError.html">ApiError</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_Core_Exceptions_ApiException_StatusCode_" data-uid="Auth0.Core.Exceptions.ApiException.StatusCode*"></a>
-  <h4 id="Auth0_Core_Exceptions_ApiException_StatusCode" data-uid="Auth0.Core.Exceptions.ApiException.StatusCode">StatusCode</h4>
-  <div class="markdown level1 summary"><p>The <see cref="!:HttpStatusCode"></see> code associated with the response.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public HttpStatusCode StatusCode { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">HttpStatusCode</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
 </article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

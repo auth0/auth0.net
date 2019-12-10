@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Enum SigningAlgorithm
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,10 +73,11 @@
   
   <h1 id="Auth0_ManagementApi_Models_SigningAlgorithm" data-uid="Auth0.ManagementApi.Models.SigningAlgorithm" class="text-break">Enum SigningAlgorithm
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Alogithm a token can be signed with.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Models.html">Auth0.ManagementApi.Models</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Models_SigningAlgorithm_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public enum SigningAlgorithm</code></pre>
@@ -93,11 +94,13 @@
     <tbody>
       <tr>
         <td id="Auth0_ManagementApi_Models_SigningAlgorithm_HS256">HS256</td>
-        <td></td>
+        <td><p>HS256 symmetrical (requires client secret)</p>
+</td>
       </tr>
       <tr>
         <td id="Auth0_ManagementApi_Models_SigningAlgorithm_RS256">RS256</td>
-        <td></td>
+        <td><p>RS256 asymmetrical (requires access to JWKS public keys)</p>
+</td>
       </tr>
     </tbody>
   </thead></thead></table>
@@ -106,10 +109,6 @@
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class AccessTokenResponse
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -91,16 +91,10 @@
       <a class="xref" href="Auth0.AuthenticationApi.Models.TokenBase.html#Auth0_AuthenticationApi_Models_TokenBase_TokenType">TokenBase.TokenType</a>
     </div>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -111,25 +105,30 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.AuthenticationApi.Models.html">Auth0.AuthenticationApi.Models</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.AuthenticationApi.dll</h6>
   <h5 id="Auth0_AuthenticationApi_Models_AccessTokenResponse_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class AccessTokenResponse : TokenBase</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_AccessTokenResponse_ExpiresIn_" data-uid="Auth0.AuthenticationApi.Models.AccessTokenResponse.ExpiresIn*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_AccessTokenResponse_ExpiresIn" data-uid="Auth0.AuthenticationApi.Models.AccessTokenResponse.ExpiresIn">ExpiresIn</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the expiry time in seconds.</p>
+  <div class="markdown level1 summary"><p>Expiration time in seconds.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int ExpiresIn { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;expires_in&quot;)]
+public int ExpiresIn { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -146,16 +145,15 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_AccessTokenResponse_IdToken_" data-uid="Auth0.AuthenticationApi.Models.AccessTokenResponse.IdToken*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_AccessTokenResponse_IdToken" data-uid="Auth0.AuthenticationApi.Models.AccessTokenResponse.IdToken">IdToken</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the identifier token.</p>
+  <div class="markdown level1 summary"><p>Identifier token.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string IdToken { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;id_token&quot;)]
+public string IdToken { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -172,16 +170,15 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_AccessTokenResponse_RefreshToken_" data-uid="Auth0.AuthenticationApi.Models.AccessTokenResponse.RefreshToken*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_AccessTokenResponse_RefreshToken" data-uid="Auth0.AuthenticationApi.Models.AccessTokenResponse.RefreshToken">RefreshToken</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the refresh token</p>
+  <div class="markdown level1 summary"><p>Refresh token.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string RefreshToken { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;refresh_token&quot;)]
+public string RefreshToken { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -203,10 +200,6 @@
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

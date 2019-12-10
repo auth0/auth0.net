@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ConnectionsClient
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,28 +73,34 @@
   
   <h1 id="Auth0_ManagementApi_Clients_ConnectionsClient" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient" class="text-break">Class ConnectionsClient
   </h1>
-  <div class="markdown level0 summary"><p>Contains all the methods to call the /connections endpoints.</p>
+  <div class="markdown level0 summary"><p>Contains methods to access the /connections endpoints.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Auth0.ManagementApi.Clients.ClientBase.html">ClientBase</a></div>
+    <div class="level1"><a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html">BaseClient</a></div>
     <div class="level2"><span class="xref">ConnectionsClient</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_Connection">BaseClient.Connection</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BaseUri">BaseClient.BaseUri</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_DefaultHeaders">BaseClient.DefaultHeaders</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BuildUri_System_String_System_Collections_Generic_IDictionary_System_String_System_String__">BaseClient.BuildUri(String, IDictionary&lt;String, String&gt;)</a>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -105,25 +111,29 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Clients.html">Auth0.ManagementApi.Clients</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Clients_ConnectionsClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ConnectionsClient : ClientBase</code></pre>
+    <pre><code class="lang-csharp hljs">public class ConnectionsClient : BaseClient</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Clients_ConnectionsClient__ctor_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient__ctor_IApiConnection_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.#ctor(IApiConnection)">ConnectionsClient(IApiConnection)</h4>
-  <div class="markdown level1 summary"><p>Creates a new instance of the <a class="xref" href="Auth0.ManagementApi.Clients.ConnectionsClient.html">ConnectionsClient</a>.</p>
+  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})">ConnectionsClient(IManagementConnection, Uri, IDictionary&lt;String, String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.Clients.ConnectionsClient.html">ConnectionsClient</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ConnectionsClient(IApiConnection connection)</code></pre>
+    <pre><code class="lang-csharp hljs">public ConnectionsClient(IManagementConnection connection, Uri baseUri, IDictionary&lt;string, string&gt; defaultHeaders)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -136,19 +146,29 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IApiConnection</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a></td>
         <td><span class="parametername">connection</span></td>
-        <td><p>The <see cref="!:IApiConnection"></see> which is used to communicate with the API.</p>
+        <td><p><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a> used to make all API calls.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Uri</span></td>
+        <td><span class="parametername">baseUri</span></td>
+        <td><p><span class="xref">System.Uri</span> of the endpoint to use in making API calls.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">defaultHeaders</span></td>
+        <td><p>Dictionary containing default headers included with every request this client makes.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Clients_ConnectionsClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.CreateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_CreateAsync_ConnectionCreateRequest_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.CreateAsync(ConnectionCreateRequest)">CreateAsync(ConnectionCreateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_CreateAsync_Auth0_ManagementApi_Models_ConnectionCreateRequest_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.CreateAsync(Auth0.ManagementApi.Models.ConnectionCreateRequest)">CreateAsync(ConnectionCreateRequest)</h4>
   <div class="markdown level1 summary"><p>Creates a new connection according to the request.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -167,7 +187,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ConnectionCreateRequest</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.ConnectionCreateRequest.html">ConnectionCreateRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>The request containing the properties for the new connection.</p>
 </td>
@@ -184,14 +204,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">Connection</span>&gt;</td>
-        <td><p>A <see cref="!:Connection"></see> containing the newly created Connection.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Connection.html">Connection</a>&gt;</td>
+        <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.Connection.html">Connection</a> containing the newly created Connection.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_ConnectionsClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.DeleteAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_DeleteAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.DeleteAsync(System.String)">DeleteAsync(String)</h4>
   <div class="markdown level1 summary"><p>Deletes a connection and all its users.</p>
@@ -229,14 +247,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
-        <td><p>A <see cref="!:Task"></see> that represents the asynchronous delete operation.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous delete operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_ConnectionsClient_DeleteUserAsync_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.DeleteUserAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_DeleteUserAsync_System_String_System_String_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.DeleteUserAsync(System.String,System.String)">DeleteUserAsync(String, String)</h4>
   <div class="markdown level1 summary"><p>Deletes a specified connection user by its <code data-dev-comment-type="paramref" class="paramref">email</code>.</p>
@@ -280,8 +296,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
-        <td><p>A <see cref="!:Task"></see> that represents the asynchronous delete operation.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous delete operation.</p>
 </td>
       </tr>
     </tbody>
@@ -289,10 +305,8 @@
   <h5 id="Auth0_ManagementApi_Clients_ConnectionsClient_DeleteUserAsync_System_String_System_String__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Currently only database connections are supported and you cannot delete all users from specific connection.</p>
 </div>
-  
-  
   <a id="Auth0_ManagementApi_Clients_ConnectionsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_GetAllAsync_GetConnectionsRequest_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.GetAllAsync(GetConnectionsRequest,PaginationInfo)">GetAllAsync(GetConnectionsRequest, PaginationInfo)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_GetAllAsync_Auth0_ManagementApi_Models_GetConnectionsRequest_Auth0_ManagementApi_Paging_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.GetAllAsync(Auth0.ManagementApi.Models.GetConnectionsRequest,Auth0.ManagementApi.Paging.PaginationInfo)">GetAllAsync(GetConnectionsRequest, PaginationInfo)</h4>
   <div class="markdown level1 summary"><p>Retrieves every connection matching the specified strategy. All connections are retrieved if no strategy is being specified. Accepts a list of fields to include or exclude in the resulting list of connection objects.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -311,13 +325,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">GetConnectionsRequest</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.GetConnectionsRequest.html">GetConnectionsRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>Specifies criteria to use when querying connections.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">PaginationInfo</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></td>
         <td><span class="parametername">pagination</span></td>
         <td><p>Specifies pagination info to use when requesting paged results.</p>
 </td>
@@ -334,14 +348,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">Connection</span>&gt;&gt;</td>
-        <td><p>An <see cref="!:IPagedList&lt;Connection>"></see> containing the list of connections.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Connection.html">Connection</a>&gt;&gt;</td>
+        <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the list of connections.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_ConnectionsClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.GetAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_GetAsync_System_String_System_String_System_Boolean_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.GetAsync(System.String,System.String,System.Boolean)">GetAsync(String, String, Boolean)</h4>
   <div class="markdown level1 summary"><p>Retrieves a connection by its <code data-dev-comment-type="paramref" class="paramref">id</code>.</p>
@@ -391,16 +403,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">Connection</span>&gt;</td>
-        <td><p>The <see cref="!:Connection"></see>.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Connection.html">Connection</a>&gt;</td>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.Connection.html">Connection</a>.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_ConnectionsClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.UpdateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_UpdateAsync_System_String_ConnectionUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.UpdateAsync(System.String,ConnectionUpdateRequest)">UpdateAsync(String, ConnectionUpdateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_ConnectionUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.ConnectionUpdateRequest)">UpdateAsync(String, ConnectionUpdateRequest)</h4>
   <div class="markdown level1 summary"><p>Updates a connection.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -425,9 +435,9 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">ConnectionUpdateRequest</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.ConnectionUpdateRequest.html">ConnectionUpdateRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td><p>The <see cref="!:ConnectionUpdateRequest"></see> containing the properties of the connection you wish to update.</p>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.ConnectionUpdateRequest.html">ConnectionUpdateRequest</a> containing the properties of the connection you wish to update.</p>
 </td>
       </tr>
     </tbody>
@@ -442,8 +452,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">Connection</span>&gt;</td>
-        <td><p>The <see cref="!:Connection"></see> that has been updated.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Connection.html">Connection</a>&gt;</td>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.Connection.html">Connection</a> that has been updated.</p>
 </td>
       </tr>
     </tbody>
@@ -453,10 +463,6 @@
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

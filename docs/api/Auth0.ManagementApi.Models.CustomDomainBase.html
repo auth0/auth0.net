@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class CustomDomainBase
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -86,16 +86,10 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -106,17 +100,21 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Models.html">Auth0.ManagementApi.Models</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Models_CustomDomainBase_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public abstract class CustomDomainBase</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Models_CustomDomainBase_CustomDomainId_" data-uid="Auth0.ManagementApi.Models.CustomDomainBase.CustomDomainId*"></a>
   <h4 id="Auth0_ManagementApi_Models_CustomDomainBase_CustomDomainId" data-uid="Auth0.ManagementApi.Models.CustomDomainBase.CustomDomainId">CustomDomainId</h4>
   <div class="markdown level1 summary"><p>The id of the custom domain.</p>
@@ -124,7 +122,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string CustomDomainId { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;custom_domain_id&quot;)]
+public string CustomDomainId { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -141,8 +140,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_CustomDomainBase_Domain_" data-uid="Auth0.ManagementApi.Models.CustomDomainBase.Domain*"></a>
   <h4 id="Auth0_ManagementApi_Models_CustomDomainBase_Domain" data-uid="Auth0.ManagementApi.Models.CustomDomainBase.Domain">Domain</h4>
   <div class="markdown level1 summary"><p>The custom domain.</p>
@@ -150,7 +147,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Domain { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;domain&quot;)]
+public string Domain { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -167,8 +165,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_CustomDomainBase_OriginDomainName_" data-uid="Auth0.ManagementApi.Models.CustomDomainBase.OriginDomainName*"></a>
   <h4 id="Auth0_ManagementApi_Models_CustomDomainBase_OriginDomainName" data-uid="Auth0.ManagementApi.Models.CustomDomainBase.OriginDomainName">OriginDomainName</h4>
   <div class="markdown level1 summary"><p>The intermediate address.</p>
@@ -176,7 +172,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string OriginDomainName { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;origin_domain_name&quot;)]
+public string OriginDomainName { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -193,8 +190,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_CustomDomainBase_Primary_" data-uid="Auth0.ManagementApi.Models.CustomDomainBase.Primary*"></a>
   <h4 id="Auth0_ManagementApi_Models_CustomDomainBase_Primary" data-uid="Auth0.ManagementApi.Models.CustomDomainBase.Primary">Primary</h4>
   <div class="markdown level1 summary"><p>true if the domain was marked as &quot;primary&quot;, false otherwise.</p>
@@ -202,7 +197,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Primary { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;primary&quot;)]
+public bool Primary { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -219,8 +215,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_CustomDomainBase_Status_" data-uid="Auth0.ManagementApi.Models.CustomDomainBase.Status*"></a>
   <h4 id="Auth0_ManagementApi_Models_CustomDomainBase_Status" data-uid="Auth0.ManagementApi.Models.CustomDomainBase.Status">Status</h4>
   <div class="markdown level1 summary"><p>The custom domain configuration status.</p>
@@ -228,7 +222,9 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CustomDomainStatus Status { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;status&quot;)]
+[JsonConverter(typeof(StringEnumConverter))]
+public CustomDomainStatus Status { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -245,8 +241,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_CustomDomainBase_Type_" data-uid="Auth0.ManagementApi.Models.CustomDomainBase.Type*"></a>
   <h4 id="Auth0_ManagementApi_Models_CustomDomainBase_Type" data-uid="Auth0.ManagementApi.Models.CustomDomainBase.Type">Type</h4>
   <div class="markdown level1 summary"><p>The custom domain provisioning type.</p>
@@ -254,7 +248,9 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CustomDomainCertificateProvisioning Type { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;type&quot;)]
+[JsonConverter(typeof(StringEnumConverter))]
+public CustomDomainCertificateProvisioning Type { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -271,8 +267,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_CustomDomainBase_Verification_" data-uid="Auth0.ManagementApi.Models.CustomDomainBase.Verification*"></a>
   <h4 id="Auth0_ManagementApi_Models_CustomDomainBase_Verification" data-uid="Auth0.ManagementApi.Models.CustomDomainBase.Verification">Verification</h4>
   <div class="markdown level1 summary"><p>The custom domain verification methods.</p>
@@ -280,7 +274,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public CustomDomainVerification Verification { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;verification&quot;)]
+public CustomDomainVerification Verification { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -302,10 +297,6 @@
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

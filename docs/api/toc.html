@@ -4,6 +4,7 @@
     <div class="sidefilter">
       <form class="toc-filter">
         <span class="glyphicon glyphicon-filter filter-icon"></span>
+        <span class="glyphicon glyphicon-remove clear-icon" id="toc_filter_clear"></span>
         <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
       </form>
     </div>
@@ -20,7 +21,19 @@
                               <a href="Auth0.AuthenticationApi.AuthenticationApiClient.html" name="" title="AuthenticationApiClient">AuthenticationApiClient</a>
                           </li>
                           <li>
+                              <a href="Auth0.AuthenticationApi.AuthenticationApiClientExtensions.html" name="" title="AuthenticationApiClientExtensions">AuthenticationApiClientExtensions</a>
+                          </li>
+                          <li>
+                              <a href="Auth0.AuthenticationApi.HttpClientAuthenticationConnection.html" name="" title="HttpClientAuthenticationConnection">HttpClientAuthenticationConnection</a>
+                          </li>
+                          <li>
                               <a href="Auth0.AuthenticationApi.IAuthenticationApiClient.html" name="" title="IAuthenticationApiClient">IAuthenticationApiClient</a>
+                          </li>
+                          <li>
+                              <a href="Auth0.AuthenticationApi.IAuthenticationConnection.html" name="" title="IAuthenticationConnection">IAuthenticationConnection</a>
+                          </li>
+                          <li>
+                              <a href="Auth0.AuthenticationApi.JwtSignatureAlgorithm.html" name="" title="JwtSignatureAlgorithm">JwtSignatureAlgorithm</a>
                           </li>
                     </ul>
                 </li>
@@ -29,12 +42,6 @@
                     <a href="Auth0.AuthenticationApi.Builders.html" name="" title="Auth0.AuthenticationApi.Builders">Auth0.AuthenticationApi.Builders</a>
                     
                     <ul class="nav level2">
-                          <li>
-                              <a href="Auth0.AuthenticationApi.Builders.AuthorizationResponseModeHelper.html" name="" title="AuthorizationResponseModeHelper">AuthorizationResponseModeHelper</a>
-                          </li>
-                          <li>
-                              <a href="Auth0.AuthenticationApi.Builders.AuthorizationResponseTypeHelper.html" name="" title="AuthorizationResponseTypeHelper">AuthorizationResponseTypeHelper</a>
-                          </li>
                           <li>
                               <a href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html" name="" title="AuthorizationUrlBuilder">AuthorizationUrlBuilder</a>
                           </li>
@@ -54,16 +61,6 @@
                 </li>
                 <li>
                     <span class="expand-stub"></span>
-                    <a href="Auth0.AuthenticationApi.Exceptions.html" name="" title="Auth0.AuthenticationApi.Exceptions">Auth0.AuthenticationApi.Exceptions</a>
-                    
-                    <ul class="nav level2">
-                          <li>
-                              <a href="Auth0.AuthenticationApi.Exceptions.IdentityTokenValidationException.html" name="" title="IdentityTokenValidationException">IdentityTokenValidationException</a>
-                          </li>
-                    </ul>
-                </li>
-                <li>
-                    <span class="expand-stub"></span>
                     <a href="Auth0.AuthenticationApi.Models.html" name="" title="Auth0.AuthenticationApi.Models">Auth0.AuthenticationApi.Models</a>
                     
                     <ul class="nav level2">
@@ -72,6 +69,9 @@
                           </li>
                           <li>
                               <a href="Auth0.AuthenticationApi.Models.AuthorizationCodePkceTokenRequest.html" name="" title="AuthorizationCodePkceTokenRequest">AuthorizationCodePkceTokenRequest</a>
+                          </li>
+                          <li>
+                              <a href="Auth0.AuthenticationApi.Models.AuthorizationCodeRequestBase.html" name="" title="AuthorizationCodeRequestBase">AuthorizationCodeRequestBase</a>
                           </li>
                           <li>
                               <a href="Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest.html" name="" title="AuthorizationCodeTokenRequest">AuthorizationCodeTokenRequest</a>
@@ -122,9 +122,6 @@
                               <a href="Auth0.AuthenticationApi.Models.TokenBase.html" name="" title="TokenBase">TokenBase</a>
                           </li>
                           <li>
-                              <a href="Auth0.AuthenticationApi.Models.UnlinkUserRequest.html" name="" title="UnlinkUserRequest">UnlinkUserRequest</a>
-                          </li>
-                          <li>
                               <a href="Auth0.AuthenticationApi.Models.UserInfo.html" name="" title="UserInfo">UserInfo</a>
                           </li>
                           <li>
@@ -137,27 +134,24 @@
                 </li>
                 <li>
                     <span class="expand-stub"></span>
-                    <a href="Auth0.Core.html" name="" title="Auth0.Core">Auth0.Core</a>
+                    <a href="Auth0.AuthenticationApi.Tokens.html" name="" title="Auth0.AuthenticationApi.Tokens">Auth0.AuthenticationApi.Tokens</a>
                     
                     <ul class="nav level2">
                           <li>
-                              <a href="Auth0.Core.ApiError.html" name="" title="ApiError">ApiError</a>
+                              <a href="Auth0.AuthenticationApi.Tokens.IdTokenValidationException.html" name="" title="IdTokenValidationException">IdTokenValidationException</a>
                           </li>
                           <li>
-                              <a href="Auth0.Core.PagingInformation.html" name="" title="PagingInformation">PagingInformation</a>
+                              <a href="Auth0.AuthenticationApi.Tokens.IdTokenValidationKeyMissingException.html" name="" title="IdTokenValidationKeyMissingException">IdTokenValidationKeyMissingException</a>
                           </li>
                     </ul>
                 </li>
                 <li>
                     <span class="expand-stub"></span>
-                    <a href="Auth0.Core.Collections.html" name="" title="Auth0.Core.Collections">Auth0.Core.Collections</a>
+                    <a href="Auth0.Core.html" name="" title="Auth0.Core">Auth0.Core</a>
                     
                     <ul class="nav level2">
                           <li>
-                              <a href="Auth0.Core.Collections.IPagedList-1.html" name="" title="IPagedList&lt;T&gt;">IPagedList&lt;T&gt;</a>
-                          </li>
-                          <li>
-                              <a href="Auth0.Core.Collections.PagedList-1.html" name="" title="PagedList&lt;T&gt;">PagedList&lt;T&gt;</a>
+                              <a href="Auth0.Core.ApiError.html" name="" title="ApiError">ApiError</a>
                           </li>
                     </ul>
                 </li>
@@ -169,6 +163,12 @@
                           <li>
                               <a href="Auth0.Core.Exceptions.ApiException.html" name="" title="ApiException">ApiException</a>
                           </li>
+                          <li>
+                              <a href="Auth0.Core.Exceptions.ErrorApiException.html" name="" title="ErrorApiException">ErrorApiException</a>
+                          </li>
+                          <li>
+                              <a href="Auth0.Core.Exceptions.RateLimitApiException.html" name="" title="RateLimitApiException">RateLimitApiException</a>
+                          </li>
                     </ul>
                 </li>
                 <li>
@@ -176,18 +176,6 @@
                     <a href="Auth0.Core.Http.html" name="" title="Auth0.Core.Http">Auth0.Core.Http</a>
                     
                     <ul class="nav level2">
-                          <li>
-                              <a href="Auth0.Core.Http.ApiConnection.html" name="" title="ApiConnection">ApiConnection</a>
-                          </li>
-                          <li>
-                              <a href="Auth0.Core.Http.ApiInfo.html" name="" title="ApiInfo">ApiInfo</a>
-                          </li>
-                          <li>
-                              <a href="Auth0.Core.Http.FileUploadParameter.html" name="" title="FileUploadParameter">FileUploadParameter</a>
-                          </li>
-                          <li>
-                              <a href="Auth0.Core.Http.IApiConnection.html" name="" title="IApiConnection">IApiConnection</a>
-                          </li>
                           <li>
                               <a href="Auth0.Core.Http.RateLimit.html" name="" title="RateLimit">RateLimit</a>
                           </li>
@@ -212,6 +200,15 @@
                     
                     <ul class="nav level2">
                           <li>
+                              <a href="Auth0.ManagementApi.FileUploadParameter.html" name="" title="FileUploadParameter">FileUploadParameter</a>
+                          </li>
+                          <li>
+                              <a href="Auth0.ManagementApi.HttpClientManagementConnection.html" name="" title="HttpClientManagementConnection">HttpClientManagementConnection</a>
+                          </li>
+                          <li>
+                              <a href="Auth0.ManagementApi.IManagementConnection.html" name="" title="IManagementConnection">IManagementConnection</a>
+                          </li>
+                          <li>
                               <a href="Auth0.ManagementApi.ManagementApiClient.html" name="" title="ManagementApiClient">ManagementApiClient</a>
                           </li>
                     </ul>
@@ -222,10 +219,10 @@
                     
                     <ul class="nav level2">
                           <li>
-                              <a href="Auth0.ManagementApi.Clients.BlacklistedTokensClient.html" name="" title="BlacklistedTokensClient">BlacklistedTokensClient</a>
+                              <a href="Auth0.ManagementApi.Clients.BaseClient.html" name="" title="BaseClient">BaseClient</a>
                           </li>
                           <li>
-                              <a href="Auth0.ManagementApi.Clients.ClientBase.html" name="" title="ClientBase">ClientBase</a>
+                              <a href="Auth0.ManagementApi.Clients.BlacklistedTokensClient.html" name="" title="BlacklistedTokensClient">BlacklistedTokensClient</a>
                           </li>
                           <li>
                               <a href="Auth0.ManagementApi.Clients.ClientGrantsClient.html" name="" title="ClientGrantsClient">ClientGrantsClient</a>
@@ -526,9 +523,6 @@
                               <a href="Auth0.ManagementApi.Models.Mobile.MobileIos.html" name="" title="Mobile.MobileIos">Mobile.MobileIos</a>
                           </li>
                           <li>
-                              <a href="Auth0.ManagementApi.Models.PaginationInfo.html" name="" title="PaginationInfo">PaginationInfo</a>
-                          </li>
-                          <li>
                               <a href="Auth0.ManagementApi.Models.PasswordChangeTicketRequest.html" name="" title="PasswordChangeTicketRequest">PasswordChangeTicketRequest</a>
                           </li>
                           <li>
@@ -693,6 +687,25 @@
                           </li>
                           <li>
                               <a href="Auth0.ManagementApi.Models.Rules.RulesRequest.html" name="" title="RulesRequest">RulesRequest</a>
+                          </li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="expand-stub"></span>
+                    <a href="Auth0.ManagementApi.Paging.html" name="" title="Auth0.ManagementApi.Paging">Auth0.ManagementApi.Paging</a>
+                    
+                    <ul class="nav level2">
+                          <li>
+                              <a href="Auth0.ManagementApi.Paging.IPagedList-1.html" name="" title="IPagedList&lt;T&gt;">IPagedList&lt;T&gt;</a>
+                          </li>
+                          <li>
+                              <a href="Auth0.ManagementApi.Paging.PagedList-1.html" name="" title="PagedList&lt;T&gt;">PagedList&lt;T&gt;</a>
+                          </li>
+                          <li>
+                              <a href="Auth0.ManagementApi.Paging.PaginationInfo.html" name="" title="PaginationInfo">PaginationInfo</a>
+                          </li>
+                          <li>
+                              <a href="Auth0.ManagementApi.Paging.PagingInformation.html" name="" title="PagingInformation">PagingInformation</a>
                           </li>
                     </ul>
                 </li>

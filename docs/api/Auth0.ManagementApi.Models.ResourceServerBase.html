@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ResourceServerBase
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -86,16 +86,10 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -106,17 +100,21 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Models.html">Auth0.ManagementApi.Models</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Models_ResourceServerBase_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ResourceServerBase</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Models_ResourceServerBase_AllowOfflineAccess_" data-uid="Auth0.ManagementApi.Models.ResourceServerBase.AllowOfflineAccess*"></a>
   <h4 id="Auth0_ManagementApi_Models_ResourceServerBase_AllowOfflineAccess" data-uid="Auth0.ManagementApi.Models.ResourceServerBase.AllowOfflineAccess">AllowOfflineAccess</h4>
   <div class="markdown level1 summary"><p>Allows issuance of refresh tokens for this entity</p>
@@ -124,7 +122,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool? AllowOfflineAccess { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;allow_offline_access&quot;)]
+public bool? AllowOfflineAccess { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -141,8 +140,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_ResourceServerBase_EnforcePolicies_" data-uid="Auth0.ManagementApi.Models.ResourceServerBase.EnforcePolicies*"></a>
   <h4 id="Auth0_ManagementApi_Models_ResourceServerBase_EnforcePolicies" data-uid="Auth0.ManagementApi.Models.ResourceServerBase.EnforcePolicies">EnforcePolicies</h4>
   <div class="markdown level1 summary"><p>Enables the enforcement of the authorization policies.</p>
@@ -150,7 +147,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool? EnforcePolicies { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;enforce_policies&quot;)]
+public bool? EnforcePolicies { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -167,8 +165,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_ResourceServerBase_Name_" data-uid="Auth0.ManagementApi.Models.ResourceServerBase.Name*"></a>
   <h4 id="Auth0_ManagementApi_Models_ResourceServerBase_Name" data-uid="Auth0.ManagementApi.Models.ResourceServerBase.Name">Name</h4>
   <div class="markdown level1 summary"><p>The name of the resource server</p>
@@ -176,7 +172,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Name { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;name&quot;)]
+public string Name { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -196,8 +193,6 @@
   <h5 id="Auth0_ManagementApi_Models_ResourceServerBase_Name_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Must contain at least one character. Does not allow &apos;&lt;&apos; or &apos;&gt;&apos;&quot;</p>
 </div>
-  
-  
   <a id="Auth0_ManagementApi_Models_ResourceServerBase_Scopes_" data-uid="Auth0.ManagementApi.Models.ResourceServerBase.Scopes*"></a>
   <h4 id="Auth0_ManagementApi_Models_ResourceServerBase_Scopes" data-uid="Auth0.ManagementApi.Models.ResourceServerBase.Scopes">Scopes</h4>
   <div class="markdown level1 summary"><p>The available scopes for the resource server</p>
@@ -205,7 +200,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;ResourceServerScope&gt; Scopes { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;scopes&quot;)]
+public List&lt;ResourceServerScope&gt; Scopes { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -217,13 +213,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.ResourceServerScope.html">ResourceServerScope</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.ResourceServerScope.html">ResourceServerScope</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_ResourceServerBase_SigningAlgorithm_" data-uid="Auth0.ManagementApi.Models.ResourceServerBase.SigningAlgorithm*"></a>
   <h4 id="Auth0_ManagementApi_Models_ResourceServerBase_SigningAlgorithm" data-uid="Auth0.ManagementApi.Models.ResourceServerBase.SigningAlgorithm">SigningAlgorithm</h4>
   <div class="markdown level1 summary"><p>The algorithm used to sign tokens</p>
@@ -231,7 +225,9 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SigningAlgorithm? SigningAlgorithm { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonConverter(typeof(StringEnumConverter))]
+[JsonProperty(&quot;signing_alg&quot;)]
+public SigningAlgorithm? SigningAlgorithm { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -248,8 +244,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_ResourceServerBase_SigningSecret_" data-uid="Auth0.ManagementApi.Models.ResourceServerBase.SigningSecret*"></a>
   <h4 id="Auth0_ManagementApi_Models_ResourceServerBase_SigningSecret" data-uid="Auth0.ManagementApi.Models.ResourceServerBase.SigningSecret">SigningSecret</h4>
   <div class="markdown level1 summary"><p>The secret used to sign tokens when using symmetric algorithms</p>
@@ -257,7 +251,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string SigningSecret { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;signing_secret&quot;)]
+public string SigningSecret { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -274,8 +269,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_ResourceServerBase_SkipConsentForVerifiableFirstPartyClients_" data-uid="Auth0.ManagementApi.Models.ResourceServerBase.SkipConsentForVerifiableFirstPartyClients*"></a>
   <h4 id="Auth0_ManagementApi_Models_ResourceServerBase_SkipConsentForVerifiableFirstPartyClients" data-uid="Auth0.ManagementApi.Models.ResourceServerBase.SkipConsentForVerifiableFirstPartyClients">SkipConsentForVerifiableFirstPartyClients</h4>
   <div class="markdown level1 summary"><p>Flag this entity as capable of skipping consent</p>
@@ -283,7 +276,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool? SkipConsentForVerifiableFirstPartyClients { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;skip_consent_for_verifiable_first_party_clients&quot;)]
+public bool? SkipConsentForVerifiableFirstPartyClients { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -300,8 +294,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_ResourceServerBase_TokenDialect_" data-uid="Auth0.ManagementApi.Models.ResourceServerBase.TokenDialect*"></a>
   <h4 id="Auth0_ManagementApi_Models_ResourceServerBase_TokenDialect" data-uid="Auth0.ManagementApi.Models.ResourceServerBase.TokenDialect">TokenDialect</h4>
   <div class="markdown level1 summary"><p>The dialect for the access token.</p>
@@ -309,7 +301,9 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TokenDialect? TokenDialect { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonConverter(typeof(StringEnumConverter))]
+[JsonProperty(&quot;token_dialect&quot;)]
+public TokenDialect? TokenDialect { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -326,8 +320,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_ResourceServerBase_TokenLifetime_" data-uid="Auth0.ManagementApi.Models.ResourceServerBase.TokenLifetime*"></a>
   <h4 id="Auth0_ManagementApi_Models_ResourceServerBase_TokenLifetime" data-uid="Auth0.ManagementApi.Models.ResourceServerBase.TokenLifetime">TokenLifetime</h4>
   <div class="markdown level1 summary"><p>The amount of time (in seconds) that the token will be valid after being issued</p>
@@ -335,7 +327,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int? TokenLifetime { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;token_lifetime&quot;)]
+public int? TokenLifetime { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -352,8 +345,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_ResourceServerBase_TokenLifetimeForWeb_" data-uid="Auth0.ManagementApi.Models.ResourceServerBase.TokenLifetimeForWeb*"></a>
   <h4 id="Auth0_ManagementApi_Models_ResourceServerBase_TokenLifetimeForWeb" data-uid="Auth0.ManagementApi.Models.ResourceServerBase.TokenLifetimeForWeb">TokenLifetimeForWeb</h4>
   <div class="markdown level1 summary"><p>The amount of time (in seconds) that the token will be valid after being issued from browser based flows.
@@ -362,7 +353,8 @@ Value cannot be larger than <a class="xref" href="Auth0.ManagementApi.Models.Res
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int? TokenLifetimeForWeb { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;token_lifetime_for_web&quot;)]
+public int? TokenLifetimeForWeb { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -379,8 +371,6 @@ Value cannot be larger than <a class="xref" href="Auth0.ManagementApi.Models.Res
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_ResourceServerBase_VerificationLocation_" data-uid="Auth0.ManagementApi.Models.ResourceServerBase.VerificationLocation*"></a>
   <h4 id="Auth0_ManagementApi_Models_ResourceServerBase_VerificationLocation" data-uid="Auth0.ManagementApi.Models.ResourceServerBase.VerificationLocation">VerificationLocation</h4>
   <div class="markdown level1 summary"><p>A uri from which to retrieve JWKs for this resource server used for verifying the JWT sent to Auth0 for token introspection.</p>
@@ -388,7 +378,8 @@ Value cannot be larger than <a class="xref" href="Auth0.ManagementApi.Models.Res
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string VerificationLocation { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;verificationLocation&quot;)]
+public string VerificationLocation { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -410,10 +401,6 @@ Value cannot be larger than <a class="xref" href="Auth0.ManagementApi.Models.Res
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

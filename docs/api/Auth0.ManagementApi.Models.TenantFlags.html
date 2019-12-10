@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class TenantFlags
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -84,16 +84,10 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -104,17 +98,21 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Models.html">Auth0.ManagementApi.Models</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Models_TenantFlags_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class TenantFlags</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantFlags_ChangePwdFlowV1_" data-uid="Auth0.ManagementApi.Models.TenantFlags.ChangePwdFlowV1*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantFlags_ChangePwdFlowV1" data-uid="Auth0.ManagementApi.Models.TenantFlags.ChangePwdFlowV1">ChangePwdFlowV1</h4>
   <div class="markdown level1 summary"><p>Enables the first version of the Change Password flow. We&apos;ve deprecated this option and recommending a safer flow. This flag is only for backwards compatibility.</p>
@@ -122,7 +120,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool ChangePwdFlowV1 { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;change_pwd_flow_v1&quot;)]
+public bool ChangePwdFlowV1 { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -139,8 +138,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantFlags_DisableClickjackProtectionHeaders_" data-uid="Auth0.ManagementApi.Models.TenantFlags.DisableClickjackProtectionHeaders*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantFlags_DisableClickjackProtectionHeaders" data-uid="Auth0.ManagementApi.Models.TenantFlags.DisableClickjackProtectionHeaders">DisableClickjackProtectionHeaders</h4>
   <div class="markdown level1 summary"><p>If true, the classic Universal Login prompts will not include additional security headers to prevent click-jacking.</p>
@@ -148,7 +145,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool DisableClickjackProtectionHeaders { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;disable_clickjack_protection_headers&quot;)]
+public bool DisableClickjackProtectionHeaders { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -165,8 +163,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantFlags_EnableAPIsSection_" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnableAPIsSection*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantFlags_EnableAPIsSection" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnableAPIsSection">EnableAPIsSection</h4>
   <div class="markdown level1 summary"><p>This flag enables the APIs section.</p>
@@ -174,7 +170,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool EnableAPIsSection { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;enable_apis_section&quot;)]
+public bool EnableAPIsSection { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -191,8 +188,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantFlags_EnableClientConnections_" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnableClientConnections*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantFlags_EnableClientConnections" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnableClientConnections">EnableClientConnections</h4>
   <div class="markdown level1 summary"><p>This flag determines whether all current connections shall be enabled when a new client is created. Default value is true.</p>
@@ -200,7 +195,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool EnableClientConnections { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;enable_client_connections&quot;)]
+public bool EnableClientConnections { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -217,8 +213,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantFlags_EnablePipeline2_" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnablePipeline2*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantFlags_EnablePipeline2" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnablePipeline2">EnablePipeline2</h4>
   <div class="markdown level1 summary"><p>This flag enables advanced API Authorization scenarios.</p>
@@ -226,7 +220,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool EnablePipeline2 { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;enable_pipeline2&quot;)]
+public bool EnablePipeline2 { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -248,10 +243,6 @@
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

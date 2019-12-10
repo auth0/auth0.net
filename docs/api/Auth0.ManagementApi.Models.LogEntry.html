@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class LogEntry
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -84,16 +84,10 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -104,17 +98,21 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Models.html">Auth0.ManagementApi.Models</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Models_LogEntry_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class LogEntry</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Models_LogEntry_ClientId_" data-uid="Auth0.ManagementApi.Models.LogEntry.ClientId*"></a>
   <h4 id="Auth0_ManagementApi_Models_LogEntry_ClientId" data-uid="Auth0.ManagementApi.Models.LogEntry.ClientId">ClientId</h4>
   <div class="markdown level1 summary"><p>The identifier of the client</p>
@@ -122,7 +120,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ClientId { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;client_id&quot;)]
+public string ClientId { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -139,8 +138,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_LogEntry_ClientName_" data-uid="Auth0.ManagementApi.Models.LogEntry.ClientName*"></a>
   <h4 id="Auth0_ManagementApi_Models_LogEntry_ClientName" data-uid="Auth0.ManagementApi.Models.LogEntry.ClientName">ClientName</h4>
   <div class="markdown level1 summary"><p>The name of the client</p>
@@ -148,7 +145,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ClientName { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;client_name&quot;)]
+public string ClientName { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -165,8 +163,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_LogEntry_Connection_" data-uid="Auth0.ManagementApi.Models.LogEntry.Connection*"></a>
   <h4 id="Auth0_ManagementApi_Models_LogEntry_Connection" data-uid="Auth0.ManagementApi.Models.LogEntry.Connection">Connection</h4>
   <div class="markdown level1 summary"><p>The name of the connection</p>
@@ -174,7 +170,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Connection { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;connection&quot;)]
+public string Connection { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -191,8 +188,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_LogEntry_ConnectionId_" data-uid="Auth0.ManagementApi.Models.LogEntry.ConnectionId*"></a>
   <h4 id="Auth0_ManagementApi_Models_LogEntry_ConnectionId" data-uid="Auth0.ManagementApi.Models.LogEntry.ConnectionId">ConnectionId</h4>
   <div class="markdown level1 summary"><p>The id of the connection</p>
@@ -200,7 +195,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ConnectionId { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;connection_id&quot;)]
+public string ConnectionId { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -217,8 +213,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_LogEntry_Date_" data-uid="Auth0.ManagementApi.Models.LogEntry.Date*"></a>
   <h4 id="Auth0_ManagementApi_Models_LogEntry_Date" data-uid="Auth0.ManagementApi.Models.LogEntry.Date">Date</h4>
   <div class="markdown level1 summary"><p>The date when the event was created</p>
@@ -226,7 +220,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DateTime Date { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;date&quot;)]
+public DateTime Date { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -238,13 +233,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DateTime</span></td>
+        <td><span class="xref">System.DateTime</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_LogEntry_Description_" data-uid="Auth0.ManagementApi.Models.LogEntry.Description*"></a>
   <h4 id="Auth0_ManagementApi_Models_LogEntry_Description" data-uid="Auth0.ManagementApi.Models.LogEntry.Description">Description</h4>
   <div class="markdown level1 summary"><p>A description for the event</p>
@@ -252,7 +245,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Description { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;description&quot;)]
+public string Description { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -269,8 +263,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_LogEntry_Details_" data-uid="Auth0.ManagementApi.Models.LogEntry.Details*"></a>
   <h4 id="Auth0_ManagementApi_Models_LogEntry_Details" data-uid="Auth0.ManagementApi.Models.LogEntry.Details">Details</h4>
   <div class="markdown level1 summary"><p>Additional (and very useful) details about the event.</p>
@@ -278,7 +270,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public dynamic Details { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;details&quot;)]
+public dynamic Details { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -295,8 +288,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_LogEntry_HostName_" data-uid="Auth0.ManagementApi.Models.LogEntry.HostName*"></a>
   <h4 id="Auth0_ManagementApi_Models_LogEntry_HostName" data-uid="Auth0.ManagementApi.Models.LogEntry.HostName">HostName</h4>
   <div class="markdown level1 summary"><p>The hostname for the request.</p>
@@ -304,7 +295,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string HostName { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;hostname&quot;)]
+public string HostName { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -321,8 +313,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_LogEntry_Id_" data-uid="Auth0.ManagementApi.Models.LogEntry.Id*"></a>
   <h4 id="Auth0_ManagementApi_Models_LogEntry_Id" data-uid="Auth0.ManagementApi.Models.LogEntry.Id">Id</h4>
   <div class="markdown level1 summary"><p>The unique identifier for the log entry</p>
@@ -330,7 +320,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Id { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;_id&quot;)]
+public string Id { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -347,8 +338,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_LogEntry_ImpersonatorUserId_" data-uid="Auth0.ManagementApi.Models.LogEntry.ImpersonatorUserId*"></a>
   <h4 id="Auth0_ManagementApi_Models_LogEntry_ImpersonatorUserId" data-uid="Auth0.ManagementApi.Models.LogEntry.ImpersonatorUserId">ImpersonatorUserId</h4>
   <div class="markdown level1 summary"><p>The User ID of the user for an impersonation request.</p>
@@ -356,7 +345,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ImpersonatorUserId { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;impersonator_user_id&quot;)]
+public string ImpersonatorUserId { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -373,8 +363,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_LogEntry_ImpersonatorUserName_" data-uid="Auth0.ManagementApi.Models.LogEntry.ImpersonatorUserName*"></a>
   <h4 id="Auth0_ManagementApi_Models_LogEntry_ImpersonatorUserName" data-uid="Auth0.ManagementApi.Models.LogEntry.ImpersonatorUserName">ImpersonatorUserName</h4>
   <div class="markdown level1 summary"><p>The Username of the user for an impersonation request.</p>
@@ -382,7 +370,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ImpersonatorUserName { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;impersonator_user_name&quot;)]
+public string ImpersonatorUserName { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -399,8 +388,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_LogEntry_IpAddress_" data-uid="Auth0.ManagementApi.Models.LogEntry.IpAddress*"></a>
   <h4 id="Auth0_ManagementApi_Models_LogEntry_IpAddress" data-uid="Auth0.ManagementApi.Models.LogEntry.IpAddress">IpAddress</h4>
   <div class="markdown level1 summary"><p>The IP address of the log event source</p>
@@ -408,7 +395,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string IpAddress { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;ip&quot;)]
+public string IpAddress { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -425,8 +413,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_LogEntry_IsMobile_" data-uid="Auth0.ManagementApi.Models.LogEntry.IsMobile*"></a>
   <h4 id="Auth0_ManagementApi_Models_LogEntry_IsMobile" data-uid="Auth0.ManagementApi.Models.LogEntry.IsMobile">IsMobile</h4>
   <div class="markdown level1 summary"><p>Whether the event was from a mobile device.</p>
@@ -434,7 +420,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool? IsMobile { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;isMobile&quot;)]
+public bool? IsMobile { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -451,8 +438,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_LogEntry_LocationInfo_" data-uid="Auth0.ManagementApi.Models.LogEntry.LocationInfo*"></a>
   <h4 id="Auth0_ManagementApi_Models_LogEntry_LocationInfo" data-uid="Auth0.ManagementApi.Models.LogEntry.LocationInfo">LocationInfo</h4>
   <div class="markdown level1 summary"><p>Additional details about the event&apos;s ip trace location. If the ip matches either as private or localhost it returns
@@ -461,7 +446,8 @@ an empty object</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public dynamic LocationInfo { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;location_info&quot;)]
+public dynamic LocationInfo { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -478,8 +464,6 @@ an empty object</p>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_LogEntry_Strategy_" data-uid="Auth0.ManagementApi.Models.LogEntry.Strategy*"></a>
   <h4 id="Auth0_ManagementApi_Models_LogEntry_Strategy" data-uid="Auth0.ManagementApi.Models.LogEntry.Strategy">Strategy</h4>
   <div class="markdown level1 summary"><p>The strategy used</p>
@@ -487,7 +471,8 @@ an empty object</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Strategy { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;strategy&quot;)]
+public string Strategy { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -504,8 +489,6 @@ an empty object</p>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_LogEntry_StrategyType_" data-uid="Auth0.ManagementApi.Models.LogEntry.StrategyType*"></a>
   <h4 id="Auth0_ManagementApi_Models_LogEntry_StrategyType" data-uid="Auth0.ManagementApi.Models.LogEntry.StrategyType">StrategyType</h4>
   <div class="markdown level1 summary"><p>The strategy type</p>
@@ -513,7 +496,8 @@ an empty object</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string StrategyType { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;strategy_type&quot;)]
+public string StrategyType { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -530,8 +514,6 @@ an empty object</p>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_LogEntry_Type_" data-uid="Auth0.ManagementApi.Models.LogEntry.Type*"></a>
   <h4 id="Auth0_ManagementApi_Models_LogEntry_Type" data-uid="Auth0.ManagementApi.Models.LogEntry.Type">Type</h4>
   <div class="markdown level1 summary"><p>The log event type</p>
@@ -539,7 +521,8 @@ an empty object</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Type { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;type&quot;)]
+public string Type { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -556,8 +539,6 @@ an empty object</p>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_LogEntry_UserAgent_" data-uid="Auth0.ManagementApi.Models.LogEntry.UserAgent*"></a>
   <h4 id="Auth0_ManagementApi_Models_LogEntry_UserAgent" data-uid="Auth0.ManagementApi.Models.LogEntry.UserAgent">UserAgent</h4>
   <div class="markdown level1 summary"><p>The user&apos;s browser user-agent</p>
@@ -565,7 +546,8 @@ an empty object</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string UserAgent { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;user_agent&quot;)]
+public string UserAgent { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -582,8 +564,6 @@ an empty object</p>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_LogEntry_UserId_" data-uid="Auth0.ManagementApi.Models.LogEntry.UserId*"></a>
   <h4 id="Auth0_ManagementApi_Models_LogEntry_UserId" data-uid="Auth0.ManagementApi.Models.LogEntry.UserId">UserId</h4>
   <div class="markdown level1 summary"><p>The user&apos;s unique identifier</p>
@@ -591,7 +571,8 @@ an empty object</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string UserId { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;user_id&quot;)]
+public string UserId { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -608,8 +589,6 @@ an empty object</p>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_LogEntry_UserName_" data-uid="Auth0.ManagementApi.Models.LogEntry.UserName*"></a>
   <h4 id="Auth0_ManagementApi_Models_LogEntry_UserName" data-uid="Auth0.ManagementApi.Models.LogEntry.UserName">UserName</h4>
   <div class="markdown level1 summary"><p>The user&apos;s name</p>
@@ -617,7 +596,8 @@ an empty object</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string UserName { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;user_name&quot;)]
+public string UserName { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -639,10 +619,6 @@ an empty object</p>
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

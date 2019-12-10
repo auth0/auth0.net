@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class AuthorizationUrlBuilder
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,7 @@
   
   <h1 id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder" class="text-break">Class AuthorizationUrlBuilder
   </h1>
-  <div class="markdown level0 summary"><p>Used to build am authorization URL.</p>
+  <div class="markdown level0 summary"><p>Builder class used to fluently construct an authorization URL.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -97,16 +97,10 @@
       <a class="xref" href="Auth0.AuthenticationApi.Builders.UrlBuilderBase-1.html#Auth0_AuthenticationApi_Builders_UrlBuilderBase_1_Build">UrlBuilderBase&lt;AuthorizationUrlBuilder&gt;.Build()</a>
     </div>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -117,17 +111,24 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.AuthenticationApi.Builders.html">Auth0.AuthenticationApi.Builders</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.AuthenticationApi.dll</h6>
   <h5 id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class AuthorizationUrlBuilder : UrlBuilderBase&lt;AuthorizationUrlBuilder&gt;</code></pre>
   </div>
+  <h5 id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>See <a href="https://auth0.com/docs/api/authentication#login">https://auth0.com/docs/api/authentication#login</a> for more details.</p>
+</div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
   <a id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder__ctor_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.#ctor*"></a>
   <h4 id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder__ctor_System_String_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.#ctor(System.String)">AuthorizationUrlBuilder(String)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a> class.</p>
@@ -150,23 +151,19 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">baseUrl</span></td>
-        <td><p>The base URL of the Authentication API.</p>
+        <td><p>Base URL of the Authentication API represented as a <span class="xref">System.String</span>.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h3 id="methods">Methods
-  </h3>
-  
-  
-  <a id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithAccessToken_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithAccessToken*"></a>
-  <h4 id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithAccessToken_System_String_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithAccessToken(System.String)">WithAccessToken(String)</h4>
-  <div class="markdown level1 summary"><p>Adds an access_token query string parameter.</p>
+  <a id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder__ctor_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.#ctor*"></a>
+  <h4 id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder__ctor_System_Uri_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.#ctor(System.Uri)">AuthorizationUrlBuilder(Uri)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AuthorizationUrlBuilder WithAccessToken(string accessToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public AuthorizationUrlBuilder(Uri baseUrl)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -179,32 +176,18 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">accessToken</span></td>
-        <td></td>
+        <td><span class="xref">System.Uri</span></td>
+        <td><span class="parametername">baseUrl</span></td>
+        <td><p>Base URL of the Authentication API represented as a <span class="xref">System.Uri</span>.</p>
+</td>
       </tr>
     </tbody>
   </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
+  <h3 id="methods">Methods
+  </h3>
   <a id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithAudience_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithAudience*"></a>
   <h4 id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithAudience_System_String_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithAudience(System.String)">WithAudience(String)</h4>
-  <div class="markdown level1 summary"><p>Adds a new audience query string parameter.</p>
+  <div class="markdown level1 summary"><p>Adds the <code>audience</code> query string parameter to request API access.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -224,7 +207,7 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">audience</span></td>
-        <td><p>The audience.</p>
+        <td><p>Audience to request API access for.</p>
 </td>
       </tr>
     </tbody>
@@ -240,16 +223,14 @@
     <tbody>
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a></td>
-        <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a>.</p>
+        <td><p>Current <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a> to allow fluent configuration.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithClient_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithClient*"></a>
   <h4 id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithClient_System_String_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithClient(System.String)">WithClient(String)</h4>
-  <div class="markdown level1 summary"><p>Adds a new client_id query string parameter.</p>
+  <div class="markdown level1 summary"><p>Adds the <code>client_id</code> query string parameter specifying the Client ID of the application.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -269,7 +250,7 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">clientId</span></td>
-        <td><p>The client identifier.</p>
+        <td><p>Client ID of the application.</p>
 </td>
       </tr>
     </tbody>
@@ -285,16 +266,14 @@
     <tbody>
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a></td>
-        <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a>.</p>
+        <td><p>Current <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a> to allow fluent configuration.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithConnection_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithConnection*"></a>
   <h4 id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithConnection_System_String_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithConnection(System.String)">WithConnection(String)</h4>
-  <div class="markdown level1 summary"><p>Add a new connection query string parameter.</p>
+  <div class="markdown level1 summary"><p>Adds the <code>connection</code> query string parameter specifying the connection name.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -330,16 +309,100 @@
     <tbody>
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a></td>
-        <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a>.</p>
+        <td><p>Current <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a> to allow fluent configuration.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <a id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithConnectionScope_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithConnectionScope*"></a>
+  <h4 id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithConnectionScope_System_String_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithConnectionScope(System.String)">WithConnectionScope(String)</h4>
+  <div class="markdown level1 summary"><p>Adds the <code>connection_scope</code> query string parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AuthorizationUrlBuilder WithConnectionScope(string connectionScope)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">connectionScope</span></td>
+        <td><p>Connection scope to be passed to the corresponding connection. Multiple scopes must be separated by a space character.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a></td>
+        <td><p>Current <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a> to allow fluent configuration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithConnectionScopes_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithConnectionScopes*"></a>
+  <h4 id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithConnectionScopes_System_String___" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithConnectionScopes(System.String[])">WithConnectionScopes(String[])</h4>
+  <div class="markdown level1 summary"><p>Adds the <code>connection_scope</code> query string parameter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AuthorizationUrlBuilder WithConnectionScopes(params string[] connectionScope)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">connectionScope</span></td>
+        <td><p>Connection scopes to be passed to the corresponding connection.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a></td>
+        <td><p>Current <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a> to allow fluent configuration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <a id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithNonce_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithNonce*"></a>
   <h4 id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithNonce_System_String_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithNonce(System.String)">WithNonce(String)</h4>
-  <div class="markdown level1 summary"><p>Adds a new nonce query string parameter.</p>
+  <div class="markdown level1 summary"><p>Adds the <code>nonce</code> query string parameter specifying a cryptographically random nonce.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -375,21 +438,22 @@
     <tbody>
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a></td>
-        <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a>.</p>
+        <td><p>Current <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a> to allow fluent configuration.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <h5 id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithNonce_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>See <a href="https://auth0.com/docs/api-auth/tutorials/nonce">https://auth0.com/docs/api-auth/tutorials/nonce</a> for more details</p>
+</div>
   <a id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithRedirectUrl_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithRedirectUrl*"></a>
   <h4 id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithRedirectUrl_System_String_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithRedirectUrl(System.String)">WithRedirectUrl(String)</h4>
-  <div class="markdown level1 summary"><p>Adds a new redirect_uri query string parameter</p>
+  <div class="markdown level1 summary"><p>Adds the <code>redirect_uri</code> query string parameter specifying the redirect URI.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AuthorizationUrlBuilder WithRedirectUrl(string url)</code></pre>
+    <pre><code class="lang-csharp hljs">public AuthorizationUrlBuilder WithRedirectUrl(string uri)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -403,8 +467,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">url</span></td>
-        <td><p>The URL of the redirect URI</p>
+        <td><span class="parametername">uri</span></td>
+        <td><p>URI to redirect to.</p>
 </td>
       </tr>
     </tbody>
@@ -420,16 +484,57 @@
     <tbody>
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a></td>
-        <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a>.</p>
+        <td><p>Current <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a> to allow fluent configuration.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <a id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithRedirectUrl_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithRedirectUrl*"></a>
+  <h4 id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithRedirectUrl_System_Uri_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithRedirectUrl(System.Uri)">WithRedirectUrl(Uri)</h4>
+  <div class="markdown level1 summary"><p>Adds the <code>redirect_uri</code> query string parameter specifying the redirect URI.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AuthorizationUrlBuilder WithRedirectUrl(Uri uri)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Uri</span></td>
+        <td><span class="parametername">uri</span></td>
+        <td><p><span class="xref">System.Uri</span> to redirect to.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a></td>
+        <td><p>Current <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a> to allow fluent configuration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <a id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithResponseMode_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithResponseMode*"></a>
-  <h4 id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithResponseMode_AuthorizationResponseMode_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithResponseMode(AuthorizationResponseMode)">WithResponseMode(AuthorizationResponseMode)</h4>
-  <div class="markdown level1 summary"><p>Adds a new response_mode query string parameter.</p>
+  <h4 id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithResponseMode_Auth0_AuthenticationApi_Models_AuthorizationResponseMode_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithResponseMode(Auth0.AuthenticationApi.Models.AuthorizationResponseMode)">WithResponseMode(AuthorizationResponseMode)</h4>
+  <div class="markdown level1 summary"><p>Adds the <code>response_mode</code> query string parameter.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -447,9 +552,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">AuthorizationResponseMode</span></td>
+        <td><a class="xref" href="Auth0.AuthenticationApi.Models.AuthorizationResponseMode.html">AuthorizationResponseMode</a></td>
         <td><span class="parametername">responseMode</span></td>
-        <td><p>The response mode.</p>
+        <td><p>Response mode to use.</p>
 </td>
       </tr>
     </tbody>
@@ -470,12 +575,10 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithResponseType_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithResponseType*"></a>
-  <h4 id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithResponseType_AuthorizationResponseType___" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithResponseType(AuthorizationResponseType[])">WithResponseType(AuthorizationResponseType[])</h4>
-  <div class="markdown level1 summary"><p>Adds a new response_type query string parameter indicating 
-the type of response that the client expects.</p>
+  <h4 id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithResponseType_Auth0_AuthenticationApi_Models_AuthorizationResponseType___" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithResponseType(Auth0.AuthenticationApi.Models.AuthorizationResponseType[])">WithResponseType(AuthorizationResponseType[])</h4>
+  <div class="markdown level1 summary"><p>Adds the <code>response_type</code> query string parameter specifying the types of responses 
+that the client expects.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -493,9 +596,9 @@ the type of response that the client expects.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">AuthorizationResponseType</span>[]</td>
+        <td><a class="xref" href="Auth0.AuthenticationApi.Models.AuthorizationResponseType.html">AuthorizationResponseType</a>[]</td>
         <td><span class="parametername">responseType</span></td>
-        <td><p>Type of the response.</p>
+        <td><p><a class="xref" href="Auth0.AuthenticationApi.Models.AuthorizationResponseType.html">AuthorizationResponseType</a> the client expects.</p>
 </td>
       </tr>
     </tbody>
@@ -511,16 +614,14 @@ the type of response that the client expects.</p>
     <tbody>
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a></td>
-        <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a>.</p>
+        <td><p>Current <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a> to allow fluent configuration.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithScope_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithScope*"></a>
   <h4 id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithScope_System_String_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithScope(System.String)">WithScope(String)</h4>
-  <div class="markdown level1 summary"><p>Adds a new scope query string parameter.</p>
+  <div class="markdown level1 summary"><p>Adds the <code>scope</code> query string parameter indicating the scopes the client wants to request.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -540,7 +641,7 @@ the type of response that the client expects.</p>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">scope</span></td>
-        <td><p>The scope. Multiple scopes must be separated by a space character.</p>
+        <td><p>Scopes to request. Multiple scopes must be separated by a space character.</p>
 </td>
       </tr>
     </tbody>
@@ -556,16 +657,58 @@ the type of response that the client expects.</p>
     <tbody>
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a></td>
-        <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a>.</p>
+        <td><p>Current <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a> to allow fluent configuration.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <a id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithScopes_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithScopes*"></a>
+  <h4 id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithScopes_System_String___" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithScopes(System.String[])">WithScopes(String[])</h4>
+  <div class="markdown level1 summary"><p>Adds the <code>scope</code> query string parameter indicating the scopes the client wants to request.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AuthorizationUrlBuilder WithScopes(params string[] scopes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">scopes</span></td>
+        <td><p>Scopes the client wants to request.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a></td>
+        <td><p>Current <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a> to allow fluent configuration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <a id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithState_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithState*"></a>
   <h4 id="Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithState_System_String_" data-uid="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithState(System.String)">WithState(String)</h4>
-  <div class="markdown level1 summary"><p>Adds a new state query string parameter.</p>
+  <div class="markdown level1 summary"><p>Adds the <code>state</code> query string parameter specifying a value to be returned on completion in 
+order to prevent CSRF attacks.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -585,7 +728,7 @@ the type of response that the client expects.</p>
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">state</span></td>
-        <td><p>The state.</p>
+        <td><p>State value to be passed back on successful authorization.</p>
 </td>
       </tr>
     </tbody>
@@ -601,7 +744,7 @@ the type of response that the client expects.</p>
     <tbody>
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a></td>
-        <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a>.</p>
+        <td><p>Current <a class="xref" href="Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a> to allow fluent configuration.</p>
 </td>
       </tr>
     </tbody>
@@ -611,10 +754,6 @@ the type of response that the client expects.</p>
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class EmailTemplatesClient
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,28 +73,34 @@
   
   <h1 id="Auth0_ManagementApi_Clients_EmailTemplatesClient" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient" class="text-break">Class EmailTemplatesClient
   </h1>
-  <div class="markdown level0 summary"><p>Contains all the methods to call the /email-templates endpoints.</p>
+  <div class="markdown level0 summary"><p>Contains methods to access the /email-templates endpoints.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Auth0.ManagementApi.Clients.ClientBase.html">ClientBase</a></div>
+    <div class="level1"><a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html">BaseClient</a></div>
     <div class="level2"><span class="xref">EmailTemplatesClient</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_Connection">BaseClient.Connection</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BaseUri">BaseClient.BaseUri</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_DefaultHeaders">BaseClient.DefaultHeaders</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BuildUri_System_String_System_Collections_Generic_IDictionary_System_String_System_String__">BaseClient.BuildUri(String, IDictionary&lt;String, String&gt;)</a>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -105,25 +111,29 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Clients.html">Auth0.ManagementApi.Clients</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Clients_EmailTemplatesClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class EmailTemplatesClient : ClientBase</code></pre>
+    <pre><code class="lang-csharp hljs">public class EmailTemplatesClient : BaseClient</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Clients_EmailTemplatesClient__ctor_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_EmailTemplatesClient__ctor_IApiConnection_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.#ctor(IApiConnection)">EmailTemplatesClient(IApiConnection)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_EmailTemplatesClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})">EmailTemplatesClient(IManagementConnection, Uri, IDictionary&lt;String, String&gt;)</h4>
   <div class="markdown level1 summary"><p>Creates a new instance of <a class="xref" href="Auth0.ManagementApi.Clients.EmailTemplatesClient.html">EmailTemplatesClient</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EmailTemplatesClient(IApiConnection connection)</code></pre>
+    <pre><code class="lang-csharp hljs">public EmailTemplatesClient(IManagementConnection connection, Uri baseUri, IDictionary&lt;string, string&gt; defaultHeaders)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -136,19 +146,29 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IApiConnection</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a></td>
         <td><span class="parametername">connection</span></td>
-        <td><p>The <see cref="!:IApiConnection"></see> which is used to communicate with the API.</p>
+        <td><p><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a> used to make all API calls.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Uri</span></td>
+        <td><span class="parametername">baseUri</span></td>
+        <td><p><span class="xref">System.Uri</span> of the endpoint to use in making API calls.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">defaultHeaders</span></td>
+        <td><p>Dictionary containing default headers included with every request this client makes.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Clients_EmailTemplatesClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.CreateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_EmailTemplatesClient_CreateAsync_EmailTemplateCreateRequest_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.CreateAsync(EmailTemplateCreateRequest)">CreateAsync(EmailTemplateCreateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_EmailTemplatesClient_CreateAsync_Auth0_ManagementApi_Models_EmailTemplateCreateRequest_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.CreateAsync(Auth0.ManagementApi.Models.EmailTemplateCreateRequest)">CreateAsync(EmailTemplateCreateRequest)</h4>
   <div class="markdown level1 summary"><p>Creates a new email template.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -167,9 +187,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">EmailTemplateCreateRequest</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateCreateRequest.html">EmailTemplateCreateRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td><p>The <see cref="!:EmailTemplateCreateRequest"></see> containing details of the template to create.</p>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateCreateRequest.html">EmailTemplateCreateRequest</a> containing details of the template to create.</p>
 </td>
       </tr>
     </tbody>
@@ -184,16 +204,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">EmailTemplate</span>&gt;</td>
-        <td><p>The newly created <see cref="!:EmailTemplate"></see>.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a>&gt;</td>
+        <td><p>The newly created <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a>.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_EmailTemplatesClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_EmailTemplatesClient_GetAsync_EmailTemplateName_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.GetAsync(EmailTemplateName)">GetAsync(EmailTemplateName)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_EmailTemplatesClient_GetAsync_Auth0_ManagementApi_Models_EmailTemplateName_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.GetAsync(Auth0.ManagementApi.Models.EmailTemplateName)">GetAsync(EmailTemplateName)</h4>
   <div class="markdown level1 summary"><p>Gets an email template.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -212,7 +230,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">EmailTemplateName</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateName.html">EmailTemplateName</a></td>
         <td><span class="parametername">templateName</span></td>
         <td><p>The name of email template you wish to retrieve.</p>
 </td>
@@ -229,16 +247,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">EmailTemplate</span>&gt;</td>
-        <td><p>The <see cref="!:EmailTemplate"></see> that was requested.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a>&gt;</td>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a> that was requested.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_EmailTemplatesClient_PatchAsync_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.PatchAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_EmailTemplatesClient_PatchAsync_EmailTemplateName_EmailTemplatePatchRequest_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.PatchAsync(EmailTemplateName,EmailTemplatePatchRequest)">PatchAsync(EmailTemplateName, EmailTemplatePatchRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_EmailTemplatesClient_PatchAsync_Auth0_ManagementApi_Models_EmailTemplateName_Auth0_ManagementApi_Models_EmailTemplatePatchRequest_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.PatchAsync(Auth0.ManagementApi.Models.EmailTemplateName,Auth0.ManagementApi.Models.EmailTemplatePatchRequest)">PatchAsync(EmailTemplateName, EmailTemplatePatchRequest)</h4>
   <div class="markdown level1 summary"><p>Updates an email template.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -257,15 +273,15 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">EmailTemplateName</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateName.html">EmailTemplateName</a></td>
         <td><span class="parametername">templateName</span></td>
         <td><p>The name of the email template to update.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">EmailTemplatePatchRequest</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplatePatchRequest.html">EmailTemplatePatchRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td><p>The <see cref="!:EmailTemplatePatchRequest"></see> containing details of the template to patch.</p>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplatePatchRequest.html">EmailTemplatePatchRequest</a> containing details of the template to patch.</p>
 </td>
       </tr>
     </tbody>
@@ -280,16 +296,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">EmailTemplate</span>&gt;</td>
-        <td><p>The newly updated <see cref="!:EmailTemplate"></see>.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a>&gt;</td>
+        <td><p>The newly updated <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a>.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_EmailTemplatesClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.UpdateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_EmailTemplatesClient_UpdateAsync_EmailTemplateName_EmailTemplateUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.UpdateAsync(EmailTemplateName,EmailTemplateUpdateRequest)">UpdateAsync(EmailTemplateName, EmailTemplateUpdateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_EmailTemplatesClient_UpdateAsync_Auth0_ManagementApi_Models_EmailTemplateName_Auth0_ManagementApi_Models_EmailTemplateUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.UpdateAsync(Auth0.ManagementApi.Models.EmailTemplateName,Auth0.ManagementApi.Models.EmailTemplateUpdateRequest)">UpdateAsync(EmailTemplateName, EmailTemplateUpdateRequest)</h4>
   <div class="markdown level1 summary"><p>Updates an email template.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -308,15 +322,15 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">EmailTemplateName</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateName.html">EmailTemplateName</a></td>
         <td><span class="parametername">templateName</span></td>
         <td><p>The name of the email template to patch.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">EmailTemplateUpdateRequest</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateUpdateRequest.html">EmailTemplateUpdateRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td><p>The <see cref="!:EmailTemplateUpdateRequest"></see> containing details of the template to update.</p>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateUpdateRequest.html">EmailTemplateUpdateRequest</a> containing details of the template to update.</p>
 </td>
       </tr>
     </tbody>
@@ -331,8 +345,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">EmailTemplate</span>&gt;</td>
-        <td><p>The newly updated <see cref="!:EmailTemplate"></see>.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a>&gt;</td>
+        <td><p>The newly updated <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -342,10 +356,6 @@
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class SignupUserRequest
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -94,19 +94,10 @@
       <a class="xref" href="Auth0.AuthenticationApi.Models.UserMaintenanceRequestBase.html#Auth0_AuthenticationApi_Models_UserMaintenanceRequestBase_Email">UserMaintenanceRequestBase.Email</a>
     </div>
     <div>
-      <a class="xref" href="Auth0.AuthenticationApi.Models.UserMaintenanceRequestBase.html#Auth0_AuthenticationApi_Models_UserMaintenanceRequestBase_Password">UserMaintenanceRequestBase.Password</a>
-    </div>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -117,25 +108,180 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.AuthenticationApi.Models.html">Auth0.AuthenticationApi.Models</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.AuthenticationApi.dll</h6>
   <h5 id="Auth0_AuthenticationApi_Models_SignupUserRequest_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class SignupUserRequest : UserMaintenanceRequestBase</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
-  <a id="Auth0_AuthenticationApi_Models_SignupUserRequest_UserMetadata_" data-uid="Auth0.AuthenticationApi.Models.SignupUserRequest.UserMetadata*"></a>
-  <h4 id="Auth0_AuthenticationApi_Models_SignupUserRequest_UserMetadata" data-uid="Auth0.AuthenticationApi.Models.SignupUserRequest.UserMetadata">UserMetadata</h4>
-  <div class="markdown level1 summary"><p>Contains user meta data. The user has read/write access to this.</p>
+  <a id="Auth0_AuthenticationApi_Models_SignupUserRequest_FamilyName_" data-uid="Auth0.AuthenticationApi.Models.SignupUserRequest.FamilyName*"></a>
+  <h4 id="Auth0_AuthenticationApi_Models_SignupUserRequest_FamilyName" data-uid="Auth0.AuthenticationApi.Models.SignupUserRequest.FamilyName">FamilyName</h4>
+  <div class="markdown level1 summary"><p>Family name for this user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public dynamic UserMetadata { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;family_name&quot;)]
+public string FamilyName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_AuthenticationApi_Models_SignupUserRequest_GivenName_" data-uid="Auth0.AuthenticationApi.Models.SignupUserRequest.GivenName*"></a>
+  <h4 id="Auth0_AuthenticationApi_Models_SignupUserRequest_GivenName" data-uid="Auth0.AuthenticationApi.Models.SignupUserRequest.GivenName">GivenName</h4>
+  <div class="markdown level1 summary"><p>Given name for this user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;given_name&quot;)]
+public string GivenName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_AuthenticationApi_Models_SignupUserRequest_Name_" data-uid="Auth0.AuthenticationApi.Models.SignupUserRequest.Name*"></a>
+  <h4 id="Auth0_AuthenticationApi_Models_SignupUserRequest_Name" data-uid="Auth0.AuthenticationApi.Models.SignupUserRequest.Name">Name</h4>
+  <div class="markdown level1 summary"><p>Name of this user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;name&quot;)]
+public string Name { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_AuthenticationApi_Models_SignupUserRequest_Nickname_" data-uid="Auth0.AuthenticationApi.Models.SignupUserRequest.Nickname*"></a>
+  <h4 id="Auth0_AuthenticationApi_Models_SignupUserRequest_Nickname" data-uid="Auth0.AuthenticationApi.Models.SignupUserRequest.Nickname">Nickname</h4>
+  <div class="markdown level1 summary"><p>Nickname of this user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;nickname&quot;)]
+public string Nickname { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_AuthenticationApi_Models_SignupUserRequest_Password_" data-uid="Auth0.AuthenticationApi.Models.SignupUserRequest.Password*"></a>
+  <h4 id="Auth0_AuthenticationApi_Models_SignupUserRequest_Password" data-uid="Auth0.AuthenticationApi.Models.SignupUserRequest.Password">Password</h4>
+  <div class="markdown level1 summary"><p>Initial password for this user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;password&quot;)]
+public string Password { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_AuthenticationApi_Models_SignupUserRequest_Picture_" data-uid="Auth0.AuthenticationApi.Models.SignupUserRequest.Picture*"></a>
+  <h4 id="Auth0_AuthenticationApi_Models_SignupUserRequest_Picture" data-uid="Auth0.AuthenticationApi.Models.SignupUserRequest.Picture">Picture</h4>
+  <div class="markdown level1 summary"><p>URL to a picture of this user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;picture&quot;)]
+public Uri Picture { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Uri</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_AuthenticationApi_Models_SignupUserRequest_UserMetadata_" data-uid="Auth0.AuthenticationApi.Models.SignupUserRequest.UserMetadata*"></a>
+  <h4 id="Auth0_AuthenticationApi_Models_SignupUserRequest_UserMetadata" data-uid="Auth0.AuthenticationApi.Models.SignupUserRequest.UserMetadata">UserMetadata</h4>
+  <div class="markdown level1 summary"><p>Metadata the user has read/write access to. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;user_metadata&quot;)]
+public dynamic UserMetadata { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -152,15 +298,36 @@
       </tr>
     </tbody>
   </table>
+  <a id="Auth0_AuthenticationApi_Models_SignupUserRequest_Username_" data-uid="Auth0.AuthenticationApi.Models.SignupUserRequest.Username*"></a>
+  <h4 id="Auth0_AuthenticationApi_Models_SignupUserRequest_Username" data-uid="Auth0.AuthenticationApi.Models.SignupUserRequest.Username">Username</h4>
+  <div class="markdown level1 summary"><p>Username of this user. Only valid if the connection requires a username.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;username&quot;)]
+public string Username { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

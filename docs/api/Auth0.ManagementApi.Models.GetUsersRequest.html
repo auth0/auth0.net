@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class GetUsersRequest
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -84,16 +84,10 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -104,17 +98,21 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Models.html">Auth0.ManagementApi.Models</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Models_GetUsersRequest_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class GetUsersRequest</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Models_GetUsersRequest_Connection_" data-uid="Auth0.ManagementApi.Models.GetUsersRequest.Connection*"></a>
   <h4 id="Auth0_ManagementApi_Models_GetUsersRequest_Connection" data-uid="Auth0.ManagementApi.Models.GetUsersRequest.Connection">Connection</h4>
   <div class="markdown level1 summary"><p>The connection to filter on.</p>
@@ -139,8 +137,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_GetUsersRequest_Fields_" data-uid="Auth0.ManagementApi.Models.GetUsersRequest.Fields*"></a>
   <h4 id="Auth0_ManagementApi_Models_GetUsersRequest_Fields" data-uid="Auth0.ManagementApi.Models.GetUsersRequest.Fields">Fields</h4>
   <div class="markdown level1 summary"><p>A comma separated list of fields to include or exclude (depending on <a class="xref" href="Auth0.ManagementApi.Models.GetUsersRequest.html#Auth0_ManagementApi_Models_GetUsersRequest_IncludeFields">IncludeFields</a>) from the result, empty to retrieve all fields.</p>
@@ -165,8 +161,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_GetUsersRequest_IncludeFields_" data-uid="Auth0.ManagementApi.Models.GetUsersRequest.IncludeFields*"></a>
   <h4 id="Auth0_ManagementApi_Models_GetUsersRequest_IncludeFields" data-uid="Auth0.ManagementApi.Models.GetUsersRequest.IncludeFields">IncludeFields</h4>
   <div class="markdown level1 summary"><p>Specifies whether the fields specified in <a class="xref" href="Auth0.ManagementApi.Models.GetUsersRequest.html#Auth0_ManagementApi_Models_GetUsersRequest_Fields">Fields</a> should be included or excluded in the result.</p>
@@ -191,8 +185,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_GetUsersRequest_Query_" data-uid="Auth0.ManagementApi.Models.GetUsersRequest.Query*"></a>
   <h4 id="Auth0_ManagementApi_Models_GetUsersRequest_Query" data-uid="Auth0.ManagementApi.Models.GetUsersRequest.Query">Query</h4>
   <div class="markdown level1 summary"><p>Query in Lucene query string syntax.</p>
@@ -220,8 +212,6 @@
   <h5 id="Auth0_ManagementApi_Models_GetUsersRequest_Query_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Not all metadata fields are searchable when using search engine v2. When using search engine v3, some query types cannot be used on metadata fields.</p>
 </div>
-  
-  
   <a id="Auth0_ManagementApi_Models_GetUsersRequest_SearchEngine_" data-uid="Auth0.ManagementApi.Models.GetUsersRequest.SearchEngine*"></a>
   <h4 id="Auth0_ManagementApi_Models_GetUsersRequest_SearchEngine" data-uid="Auth0.ManagementApi.Models.GetUsersRequest.SearchEngine">SearchEngine</h4>
   <div class="markdown level1 summary"><p>The version of the search engine to use.</p>
@@ -250,8 +240,6 @@
   <div class="markdown level1 remarks"><p>Will default to v2 if no value is passed. Default will change to v3 on 2018/11/13.
 For more info <a href="https://auth0.com/docs/users/search/v3#migrate-from-search-engine-v2-to-v3">see the online documentation</a>.</p>
 </div>
-  
-  
   <a id="Auth0_ManagementApi_Models_GetUsersRequest_Sort_" data-uid="Auth0.ManagementApi.Models.GetUsersRequest.Sort*"></a>
   <h4 id="Auth0_ManagementApi_Models_GetUsersRequest_Sort" data-uid="Auth0.ManagementApi.Models.GetUsersRequest.Sort">Sort</h4>
   <div class="markdown level1 summary"><p>The field to use for sorting. 1 == ascending and -1 == descending.</p>
@@ -281,10 +269,6 @@ For more info <a href="https://auth0.com/docs/users/search/v3#migrate-from-searc
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

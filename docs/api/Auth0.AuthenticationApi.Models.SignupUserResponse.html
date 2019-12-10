@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class SignupUserResponse
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -84,16 +84,10 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -104,25 +98,30 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.AuthenticationApi.Models.html">Auth0.AuthenticationApi.Models</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.AuthenticationApi.dll</h6>
   <h5 id="Auth0_AuthenticationApi_Models_SignupUserResponse_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class SignupUserResponse</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_SignupUserResponse_Email_" data-uid="Auth0.AuthenticationApi.Models.SignupUserResponse.Email*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_SignupUserResponse_Email" data-uid="Auth0.AuthenticationApi.Models.SignupUserResponse.Email">Email</h4>
-  <div class="markdown level1 summary"><p>The email address of the new user.</p>
+  <div class="markdown level1 summary"><p>Email address of the new user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Email { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;email&quot;)]
+public string Email { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -139,16 +138,15 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_SignupUserResponse_EmailVerified_" data-uid="Auth0.AuthenticationApi.Models.SignupUserResponse.EmailVerified*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_SignupUserResponse_EmailVerified" data-uid="Auth0.AuthenticationApi.Models.SignupUserResponse.EmailVerified">EmailVerified</h4>
-  <div class="markdown level1 summary"><p>Indicates whether the email has been verified..</p>
+  <div class="markdown level1 summary"><p>Indicates whether the email has been verified or not.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool EmailVerified { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;email_verified&quot;)]
+public bool EmailVerified { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -166,11 +164,59 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <a id="Auth0_AuthenticationApi_Models_SignupUserResponse_FamilyName_" data-uid="Auth0.AuthenticationApi.Models.SignupUserResponse.FamilyName*"></a>
+  <h4 id="Auth0_AuthenticationApi_Models_SignupUserResponse_FamilyName" data-uid="Auth0.AuthenticationApi.Models.SignupUserResponse.FamilyName">FamilyName</h4>
+  <div class="markdown level1 summary"><p>Family name of this user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;family_name&quot;)]
+public string FamilyName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_AuthenticationApi_Models_SignupUserResponse_GivenName_" data-uid="Auth0.AuthenticationApi.Models.SignupUserResponse.GivenName*"></a>
+  <h4 id="Auth0_AuthenticationApi_Models_SignupUserResponse_GivenName" data-uid="Auth0.AuthenticationApi.Models.SignupUserResponse.GivenName">GivenName</h4>
+  <div class="markdown level1 summary"><p>Given name of this user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;given_name&quot;)]
+public string GivenName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="Auth0_AuthenticationApi_Models_SignupUserResponse_Id_" data-uid="Auth0.AuthenticationApi.Models.SignupUserResponse.Id*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_SignupUserResponse_Id" data-uid="Auth0.AuthenticationApi.Models.SignupUserResponse.Id">Id</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the identifier of the response..</p>
+  <div class="markdown level1 summary"><p>Unique identifier of the user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -192,16 +238,94 @@
       </tr>
     </tbody>
   </table>
-  
-  
-  <a id="Auth0_AuthenticationApi_Models_SignupUserResponse_UserMetadata_" data-uid="Auth0.AuthenticationApi.Models.SignupUserResponse.UserMetadata*"></a>
-  <h4 id="Auth0_AuthenticationApi_Models_SignupUserResponse_UserMetadata" data-uid="Auth0.AuthenticationApi.Models.SignupUserResponse.UserMetadata">UserMetadata</h4>
-  <div class="markdown level1 summary"><p>Contains user meta data.</p>
+  <h5 id="Auth0_AuthenticationApi_Models_SignupUserResponse_Id_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The server can return <code>_id</code>, <code>id</code> or <code>user_id</code> depending on various factors.
+For convenience we expose it here as just one.</p>
+</div>
+  <a id="Auth0_AuthenticationApi_Models_SignupUserResponse_Name_" data-uid="Auth0.AuthenticationApi.Models.SignupUserResponse.Name*"></a>
+  <h4 id="Auth0_AuthenticationApi_Models_SignupUserResponse_Name" data-uid="Auth0.AuthenticationApi.Models.SignupUserResponse.Name">Name</h4>
+  <div class="markdown level1 summary"><p>Name of this user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public dynamic UserMetadata { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;name&quot;)]
+public string Name { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_AuthenticationApi_Models_SignupUserResponse_Nickname_" data-uid="Auth0.AuthenticationApi.Models.SignupUserResponse.Nickname*"></a>
+  <h4 id="Auth0_AuthenticationApi_Models_SignupUserResponse_Nickname" data-uid="Auth0.AuthenticationApi.Models.SignupUserResponse.Nickname">Nickname</h4>
+  <div class="markdown level1 summary"><p>Nickname of this user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;nickname&quot;)]
+public string Nickname { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_AuthenticationApi_Models_SignupUserResponse_Picture_" data-uid="Auth0.AuthenticationApi.Models.SignupUserResponse.Picture*"></a>
+  <h4 id="Auth0_AuthenticationApi_Models_SignupUserResponse_Picture" data-uid="Auth0.AuthenticationApi.Models.SignupUserResponse.Picture">Picture</h4>
+  <div class="markdown level1 summary"><p>Url to a picture of this user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;picture&quot;)]
+public Uri Picture { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Uri</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_AuthenticationApi_Models_SignupUserResponse_UserMetadata_" data-uid="Auth0.AuthenticationApi.Models.SignupUserResponse.UserMetadata*"></a>
+  <h4 id="Auth0_AuthenticationApi_Models_SignupUserResponse_UserMetadata" data-uid="Auth0.AuthenticationApi.Models.SignupUserResponse.UserMetadata">UserMetadata</h4>
+  <div class="markdown level1 summary"><p>Metadata the user has read/write access to. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;user_metadata&quot;)]
+public dynamic UserMetadata { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -218,16 +342,15 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_SignupUserResponse_Username_" data-uid="Auth0.AuthenticationApi.Models.SignupUserResponse.Username*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_SignupUserResponse_Username" data-uid="Auth0.AuthenticationApi.Models.SignupUserResponse.Username">Username</h4>
-  <div class="markdown level1 summary"><p>The username of the user.</p>
+  <div class="markdown level1 summary"><p>Username of this user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public object Username { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;username&quot;)]
+public string Username { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -239,7 +362,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Object</span></td>
+        <td><span class="xref">System.String</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -249,10 +372,6 @@
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

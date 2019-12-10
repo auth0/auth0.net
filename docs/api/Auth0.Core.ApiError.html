@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ApiError
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,7 @@
   
   <h1 id="Auth0_Core_ApiError" data-uid="Auth0.Core.ApiError" class="text-break">Class ApiError
   </h1>
-  <div class="markdown level0 summary"><p>Contains information about an error returned from the API.</p>
+  <div class="markdown level0 summary"><p>Error information captured from a failed API request.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -84,16 +84,10 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -104,25 +98,31 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.Core.html">Auth0.Core</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.Core.dll</h6>
   <h5 id="Auth0_Core_ApiError_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ApiError</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonConverter(typeof(ApiErrorConverter))]
+public class ApiError</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
   <a id="Auth0_Core_ApiError_Error_" data-uid="Auth0.Core.ApiError.Error*"></a>
   <h4 id="Auth0_Core_ApiError_Error" data-uid="Auth0.Core.ApiError.Error">Error</h4>
-  <div class="markdown level1 summary"><p>The error description for the HTTP Status Code</p>
+  <div class="markdown level1 summary"><p>Description of the failing HTTP Status Code.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Error { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;error&quot;)]
+public string Error { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -139,16 +139,15 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_Core_ApiError_ErrorCode_" data-uid="Auth0.Core.ApiError.ErrorCode*"></a>
   <h4 id="Auth0_Core_ApiError_ErrorCode" data-uid="Auth0.Core.ApiError.ErrorCode">ErrorCode</h4>
-  <div class="markdown level1 summary"><p>The error code returned by the API</p>
+  <div class="markdown level1 summary"><p>Error code returned by the API.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ErrorCode { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;errorCode&quot;)]
+public string ErrorCode { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -165,16 +164,15 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_Core_ApiError_Message_" data-uid="Auth0.Core.ApiError.Message*"></a>
   <h4 id="Auth0_Core_ApiError_Message" data-uid="Auth0.Core.ApiError.Message">Message</h4>
-  <div class="markdown level1 summary"><p>The desription for the error.</p>
+  <div class="markdown level1 summary"><p>Description of the error.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Message { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;message&quot;)]
+public string Message { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -191,18 +189,36 @@
       </tr>
     </tbody>
   </table>
-  
-  
-  <a id="Auth0_Core_ApiError_StatusCode_" data-uid="Auth0.Core.ApiError.StatusCode*"></a>
-  <h4 id="Auth0_Core_ApiError_StatusCode" data-uid="Auth0.Core.ApiError.StatusCode">StatusCode</h4>
-  <div class="markdown level1 summary"><p>The HTTP Status code.</p>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Auth0_Core_ApiError_Parse_" data-uid="Auth0.Core.ApiError.Parse*"></a>
+  <h4 id="Auth0_Core_ApiError_Parse_System_Net_Http_HttpResponseMessage_" data-uid="Auth0.Core.ApiError.Parse(System.Net.Http.HttpResponseMessage)">Parse(HttpResponseMessage)</h4>
+  <div class="markdown level1 summary"><p>Parse a <span class="xref">System.Net.Http.HttpResponseMessage</span> into an <a class="xref" href="Auth0.Core.ApiError.html">ApiError</a> asynchronously.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int StatusCode { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public static Task&lt;ApiError&gt; Parse(HttpResponseMessage response)</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Net.Http.HttpResponseMessage</span></td>
+        <td><span class="parametername">response</span></td>
+        <td><p><span class="xref">System.Net.Http.HttpResponseMessage</span> to parse.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -212,8 +228,10 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Int32</span></td>
-        <td></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.Core.ApiError.html">ApiError</a>&gt;</td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the operation and associated <a class="xref" href="Auth0.Core.ApiError.html">ApiError</a> on
+    successful completion.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -222,10 +240,6 @@
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

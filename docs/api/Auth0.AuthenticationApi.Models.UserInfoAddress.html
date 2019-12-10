@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class UserInfoAddress
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -84,16 +84,10 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -104,25 +98,30 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.AuthenticationApi.Models.html">Auth0.AuthenticationApi.Models</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.AuthenticationApi.dll</h6>
   <h5 id="Auth0_AuthenticationApi_Models_UserInfoAddress_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class UserInfoAddress</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_UserInfoAddress_Country_" data-uid="Auth0.AuthenticationApi.Models.UserInfoAddress.Country*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_UserInfoAddress_Country" data-uid="Auth0.AuthenticationApi.Models.UserInfoAddress.Country">Country</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the country component of the address.</p>
+  <div class="markdown level1 summary"><p>Country component of the address.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Country { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;country&quot;)]
+public string Country { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -139,16 +138,15 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_UserInfoAddress_Formatted_" data-uid="Auth0.AuthenticationApi.Models.UserInfoAddress.Formatted*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_UserInfoAddress_Formatted" data-uid="Auth0.AuthenticationApi.Models.UserInfoAddress.Formatted">Formatted</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the full mailing address, formatted for display or use on a mailing label.</p>
+  <div class="markdown level1 summary"><p>Full mailing address, formatted for display or use on a mailing label.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Formatted { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;formatted&quot;)]
+public string Formatted { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -166,19 +164,17 @@
     </tbody>
   </table>
   <h5 id="Auth0_AuthenticationApi_Models_UserInfoAddress_Formatted_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>This field MAY contain multiple lines, separated by newlines.
-Newlines can be represented either as a carriage return/line feed pair (&quot;\r\n&quot;) or as a single line feed character (&quot;\n&quot;).</p>
+  <div class="markdown level1 remarks"><p>MAY contain multiple lines, separated by newlines as either CRLF (Windows) <code>\r\n</code> or LF (Unix) <code>\n</code>.</p>
 </div>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_UserInfoAddress_Locality_" data-uid="Auth0.AuthenticationApi.Models.UserInfoAddress.Locality*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_UserInfoAddress_Locality" data-uid="Auth0.AuthenticationApi.Models.UserInfoAddress.Locality">Locality</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the city or locality component of the address.</p>
+  <div class="markdown level1 summary"><p>City or locality component of the address.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Locality { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;locality&quot;)]
+public string Locality { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -195,16 +191,15 @@ Newlines can be represented either as a carriage return/line feed pair (&quot;\r
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_UserInfoAddress_PostalCode_" data-uid="Auth0.AuthenticationApi.Models.UserInfoAddress.PostalCode*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_UserInfoAddress_PostalCode" data-uid="Auth0.AuthenticationApi.Models.UserInfoAddress.PostalCode">PostalCode</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the zip code or postal code component of the address.</p>
+  <div class="markdown level1 summary"><p>Zip or postal code component of the address.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string PostalCode { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;postal_code&quot;)]
+public string PostalCode { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -221,16 +216,15 @@ Newlines can be represented either as a carriage return/line feed pair (&quot;\r
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_UserInfoAddress_Region_" data-uid="Auth0.AuthenticationApi.Models.UserInfoAddress.Region*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_UserInfoAddress_Region" data-uid="Auth0.AuthenticationApi.Models.UserInfoAddress.Region">Region</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the state, province, prefecture, or region component of the address.</p>
+  <div class="markdown level1 summary"><p>State, province, prefecture, or region component of the address.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Region { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;region&quot;)]
+public string Region { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -247,17 +241,16 @@ Newlines can be represented either as a carriage return/line feed pair (&quot;\r
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_UserInfoAddress_StreetAddress_" data-uid="Auth0.AuthenticationApi.Models.UserInfoAddress.StreetAddress*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_UserInfoAddress_StreetAddress" data-uid="Auth0.AuthenticationApi.Models.UserInfoAddress.StreetAddress">StreetAddress</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the full street address component, which MAY include house number, 
+  <div class="markdown level1 summary"><p>Full street address component, which MAY include house number, 
 street name, Post Office Box, and multi-line extended street address information.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string StreetAddress { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;street_address&quot;)]
+public string StreetAddress { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -275,18 +268,13 @@ street name, Post Office Box, and multi-line extended street address information
     </tbody>
   </table>
   <h5 id="Auth0_AuthenticationApi_Models_UserInfoAddress_StreetAddress_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>This field MAY contain multiple lines, separated by newlines. Newlines can be represented 
-either as a carriage return/line feed pair (&quot;\r\n&quot;) or as a single line feed character (&quot;\n&quot;).</p>
+  <div class="markdown level1 remarks"><p>MAY contain multiple lines, separated by newlines as either CRLF (Windows) <code>\r\n</code> or LF (Unix) <code>\n</code>.</p>
 </div>
 </article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

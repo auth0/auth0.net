@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class EmailTemplateBase
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -88,16 +88,10 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -108,17 +102,21 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Models.html">Auth0.ManagementApi.Models</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Models_EmailTemplateBase_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public abstract class EmailTemplateBase</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Models_EmailTemplateBase_Body_" data-uid="Auth0.ManagementApi.Models.EmailTemplateBase.Body*"></a>
   <h4 id="Auth0_ManagementApi_Models_EmailTemplateBase_Body" data-uid="Auth0.ManagementApi.Models.EmailTemplateBase.Body">Body</h4>
   <div class="markdown level1 summary"><p>The body of the template.</p>
@@ -126,7 +124,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Body { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;body&quot;)]
+public string Body { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -143,8 +142,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_EmailTemplateBase_From_" data-uid="Auth0.ManagementApi.Models.EmailTemplateBase.From*"></a>
   <h4 id="Auth0_ManagementApi_Models_EmailTemplateBase_From" data-uid="Auth0.ManagementApi.Models.EmailTemplateBase.From">From</h4>
   <div class="markdown level1 summary"><p>The sender of the email.</p>
@@ -152,7 +149,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string From { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;from&quot;)]
+public string From { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -169,8 +167,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_EmailTemplateBase_ResultUrl_" data-uid="Auth0.ManagementApi.Models.EmailTemplateBase.ResultUrl*"></a>
   <h4 id="Auth0_ManagementApi_Models_EmailTemplateBase_ResultUrl" data-uid="Auth0.ManagementApi.Models.EmailTemplateBase.ResultUrl">ResultUrl</h4>
   <div class="markdown level1 summary"><p>The URL to redirect the user to after a successful action.</p>
@@ -178,7 +174,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ResultUrl { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;resultUrl&quot;)]
+public string ResultUrl { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -195,8 +192,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_EmailTemplateBase_Subject_" data-uid="Auth0.ManagementApi.Models.EmailTemplateBase.Subject*"></a>
   <h4 id="Auth0_ManagementApi_Models_EmailTemplateBase_Subject" data-uid="Auth0.ManagementApi.Models.EmailTemplateBase.Subject">Subject</h4>
   <div class="markdown level1 summary"><p>The subject of the email.</p>
@@ -204,7 +199,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Subject { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;subject&quot;)]
+public string Subject { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -221,8 +217,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_EmailTemplateBase_UrlLifetimeInSeconds_" data-uid="Auth0.ManagementApi.Models.EmailTemplateBase.UrlLifetimeInSeconds*"></a>
   <h4 id="Auth0_ManagementApi_Models_EmailTemplateBase_UrlLifetimeInSeconds" data-uid="Auth0.ManagementApi.Models.EmailTemplateBase.UrlLifetimeInSeconds">UrlLifetimeInSeconds</h4>
   <div class="markdown level1 summary"><p>The lifetime in seconds that the link within the email will be valid for.</p>
@@ -230,7 +224,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int? UrlLifetimeInSeconds { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;urlLifetimeInSeconds&quot;)]
+public int? UrlLifetimeInSeconds { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -252,10 +247,6 @@
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

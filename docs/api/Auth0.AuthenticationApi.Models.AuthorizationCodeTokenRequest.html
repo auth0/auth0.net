@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class AuthorizationCodeTokenRequest
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -79,21 +79,31 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">AuthorizationCodeTokenRequest</span></div>
+    <div class="level1"><a class="xref" href="Auth0.AuthenticationApi.Models.AuthorizationCodeRequestBase.html">AuthorizationCodeRequestBase</a></div>
+    <div class="level2"><span class="xref">AuthorizationCodeTokenRequest</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
+      <a class="xref" href="Auth0.AuthenticationApi.Models.AuthorizationCodeRequestBase.html#Auth0_AuthenticationApi_Models_AuthorizationCodeRequestBase_Code">AuthorizationCodeRequestBase.Code</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.AuthenticationApi.Models.AuthorizationCodeRequestBase.html#Auth0_AuthenticationApi_Models_AuthorizationCodeRequestBase_ClientId">AuthorizationCodeRequestBase.ClientId</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.AuthenticationApi.Models.AuthorizationCodeRequestBase.html#Auth0_AuthenticationApi_Models_AuthorizationCodeRequestBase_SigningAlgorithm">AuthorizationCodeRequestBase.SigningAlgorithm</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.AuthenticationApi.Models.AuthorizationCodeRequestBase.html#Auth0_AuthenticationApi_Models_AuthorizationCodeRequestBase_RedirectUri">AuthorizationCodeRequestBase.RedirectUri</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.AuthenticationApi.Models.AuthorizationCodeRequestBase.html#Auth0_AuthenticationApi_Models_AuthorizationCodeRequestBase_ClientSecret">AuthorizationCodeRequestBase.ClientSecret</a>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -104,128 +114,24 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.AuthenticationApi.Models.html">Auth0.AuthenticationApi.Models</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.AuthenticationApi.dll</h6>
   <h5 id="Auth0_AuthenticationApi_Models_AuthorizationCodeTokenRequest_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class AuthorizationCodeTokenRequest</code></pre>
+    <pre><code class="lang-csharp hljs">public class AuthorizationCodeTokenRequest : AuthorizationCodeRequestBase</code></pre>
   </div>
-  <h3 id="properties">Properties
-  </h3>
-  
-  
-  <a id="Auth0_AuthenticationApi_Models_AuthorizationCodeTokenRequest_ClientId_" data-uid="Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest.ClientId*"></a>
-  <h4 id="Auth0_AuthenticationApi_Models_AuthorizationCodeTokenRequest_ClientId" data-uid="Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest.ClientId">ClientId</h4>
-  <div class="markdown level1 summary"><p>The client ID of the Application</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ClientId { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_AuthenticationApi_Models_AuthorizationCodeTokenRequest_ClientSecret_" data-uid="Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest.ClientSecret*"></a>
-  <h4 id="Auth0_AuthenticationApi_Models_AuthorizationCodeTokenRequest_ClientSecret" data-uid="Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest.ClientSecret">ClientSecret</h4>
-  <div class="markdown level1 summary"><p>The client secret of the application.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ClientSecret { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_AuthenticationApi_Models_AuthorizationCodeTokenRequest_Code_" data-uid="Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest.Code*"></a>
-  <h4 id="Auth0_AuthenticationApi_Models_AuthorizationCodeTokenRequest_Code" data-uid="Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest.Code">Code</h4>
-  <div class="markdown level1 summary"><p>The authorization code which will be exchanged</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Code { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_AuthenticationApi_Models_AuthorizationCodeTokenRequest_RedirectUri_" data-uid="Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest.RedirectUri*"></a>
-  <h4 id="Auth0_AuthenticationApi_Models_AuthorizationCodeTokenRequest_RedirectUri" data-uid="Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest.RedirectUri">RedirectUri</h4>
-  <div class="markdown level1 summary"><p>The redirect URI which was passed during the login process</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string RedirectUri { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
 </article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

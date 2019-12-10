@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class TenantSettingsBase
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -86,16 +86,10 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -106,17 +100,21 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Models.html">Auth0.ManagementApi.Models</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Models_TenantSettingsBase_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class TenantSettingsBase</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_AllowedLogoutUrls_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.AllowedLogoutUrls*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_AllowedLogoutUrls" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.AllowedLogoutUrls">AllowedLogoutUrls</h4>
   <div class="markdown level1 summary"><p>A set of URLs that are valid to redirect to after logout from Auth0.</p>
@@ -124,7 +122,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string[] AllowedLogoutUrls { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;allowed_logout_urls&quot;)]
+public string[] AllowedLogoutUrls { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -141,8 +140,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_ChangePassword_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.ChangePassword*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_ChangePassword" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.ChangePassword">ChangePassword</h4>
   <div class="markdown level1 summary"><p>Change Password page customization.</p>
@@ -150,7 +147,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TenantChangePassword ChangePassword { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;change_password&quot;)]
+public TenantChangePassword ChangePassword { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -167,8 +165,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_DefaultAudience_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.DefaultAudience*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_DefaultAudience" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.DefaultAudience">DefaultAudience</h4>
   <div class="markdown level1 summary"><p>Default audience for API Authorization.</p>
@@ -176,7 +172,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string DefaultAudience { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;default_audience&quot;)]
+public string DefaultAudience { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -193,8 +190,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_DefaultDirectory_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.DefaultDirectory*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_DefaultDirectory" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.DefaultDirectory">DefaultDirectory</h4>
   <div class="markdown level1 summary"><p>Name of the connection that will be used for password grants at the token endpoint. Only the following connection types are supported: LDAP, AD, Database Connections, Passwordless, Windows Azure Active Directory, ADFS.</p>
@@ -202,7 +197,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string DefaultDirectory { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;default_directory&quot;)]
+public string DefaultDirectory { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -219,8 +215,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_DeviceFlow_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.DeviceFlow*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_DeviceFlow" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.DeviceFlow">DeviceFlow</h4>
   <div class="markdown level1 summary"><p>Tenant Device Flow configuration.</p>
@@ -228,7 +222,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TenantDeviceFlow DeviceFlow { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;device_flow&quot;)]
+public TenantDeviceFlow DeviceFlow { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -245,8 +240,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_EnabledLocales_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.EnabledLocales*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_EnabledLocales" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.EnabledLocales">EnabledLocales</h4>
   <div class="markdown level1 summary"><p>Supported locales for the UI.</p>
@@ -254,7 +247,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string[] EnabledLocales { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;enabled_locales&quot;)]
+public string[] EnabledLocales { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -271,8 +265,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_ErrorPage_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.ErrorPage*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_ErrorPage" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.ErrorPage">ErrorPage</h4>
   <div class="markdown level1 summary"><p>Tenant error page customization.</p>
@@ -280,7 +272,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TenantErrorPage ErrorPage { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;error_page&quot;)]
+public TenantErrorPage ErrorPage { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -297,8 +290,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_Flags_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.Flags*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_Flags" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.Flags">Flags</h4>
   <div class="markdown level1 summary"><p>Tenant flags.</p>
@@ -306,7 +297,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TenantFlags Flags { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;flags&quot;)]
+public TenantFlags Flags { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -323,8 +315,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_FriendlyName_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.FriendlyName*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_FriendlyName" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.FriendlyName">FriendlyName</h4>
   <div class="markdown level1 summary"><p>The friendly name of the tenant.</p>
@@ -332,7 +322,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string FriendlyName { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;friendly_name&quot;)]
+public string FriendlyName { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -349,8 +340,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_GuardianMfaPage_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.GuardianMfaPage*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_GuardianMfaPage" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.GuardianMfaPage">GuardianMfaPage</h4>
   <div class="markdown level1 summary"><p>Guardian page customization.</p>
@@ -358,7 +347,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TenantGuardianMfaPage GuardianMfaPage { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;guardian_mfa_page&quot;)]
+public TenantGuardianMfaPage GuardianMfaPage { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -375,8 +365,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_IdleSessionLifetime_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.IdleSessionLifetime*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_IdleSessionLifetime" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.IdleSessionLifetime">IdleSessionLifetime</h4>
   <div class="markdown level1 summary"><p>Force a user to login after they have been inactive for the specified number (unit: hours).</p>
@@ -384,7 +372,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float? IdleSessionLifetime { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;idle_session_lifetime&quot;)]
+public float? IdleSessionLifetime { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -401,8 +390,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_PictureUrl_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.PictureUrl*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_PictureUrl" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.PictureUrl">PictureUrl</h4>
   <div class="markdown level1 summary"><p>The URL of the tenant logo (recommended size: 150x150).</p>
@@ -410,7 +397,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string PictureUrl { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;picture_url&quot;)]
+public string PictureUrl { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -427,8 +415,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_SandboxVersion_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersion*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_SandboxVersion" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersion">SandboxVersion</h4>
   <div class="markdown level1 summary"><p>The selected sandbox version to be used for the extensibility environment.</p>
@@ -436,7 +422,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string SandboxVersion { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;sandbox_version&quot;)]
+public string SandboxVersion { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -453,8 +440,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_SandboxVersionsAvailable_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersionsAvailable*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_SandboxVersionsAvailable" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersionsAvailable">SandboxVersionsAvailable</h4>
   <div class="markdown level1 summary"><p>A set of available sandbox versions for the extensibility environment.</p>
@@ -462,7 +447,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string[] SandboxVersionsAvailable { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;sandbox_versions_available&quot;)]
+public string[] SandboxVersionsAvailable { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -479,8 +465,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_SessionLifetime_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SessionLifetime*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_SessionLifetime" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SessionLifetime">SessionLifetime</h4>
   <div class="markdown level1 summary"><p>Login session lifetime, how long the session will stay valid (unit: hours).</p>
@@ -488,7 +472,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public float? SessionLifetime { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;session_lifetime&quot;)]
+public float? SessionLifetime { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -505,8 +490,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_SupportEmail_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SupportEmail*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_SupportEmail" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SupportEmail">SupportEmail</h4>
   <div class="markdown level1 summary"><p>User support email.</p>
@@ -514,7 +497,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string SupportEmail { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;support_email&quot;)]
+public string SupportEmail { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -531,8 +515,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_SupportUrl_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SupportUrl*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_SupportUrl" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SupportUrl">SupportUrl</h4>
   <div class="markdown level1 summary"><p>User support URL.</p>
@@ -540,7 +522,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string SupportUrl { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;support_url&quot;)]
+public string SupportUrl { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -562,10 +545,6 @@
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

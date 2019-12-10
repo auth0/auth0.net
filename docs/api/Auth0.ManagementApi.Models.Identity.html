@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class Identity
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -84,16 +84,10 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -104,12 +98,19 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Models.html">Auth0.ManagementApi.Models</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Models_Identity_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Identity</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonObject]
+public class Identity</code></pre>
   </div>
   <h5 id="Auth0_ManagementApi_Models_Identity_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>A single <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a> may be linked to multiple 3rd party accounts. This object defines the details of one
@@ -117,8 +118,6 @@ of those accounts.</p>
 </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Models_Identity_AccessToken_" data-uid="Auth0.ManagementApi.Models.Identity.AccessToken*"></a>
   <h4 id="Auth0_ManagementApi_Models_Identity_AccessToken" data-uid="Auth0.ManagementApi.Models.Identity.AccessToken">AccessToken</h4>
   <div class="markdown level1 summary"><p>The token that can be used to call the <a class="xref" href="Auth0.ManagementApi.Models.Identity.html#Auth0_ManagementApi_Models_Identity_Provider">Provider</a>&apos;s API to get more information about the user.</p>
@@ -126,7 +125,8 @@ of those accounts.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string AccessToken { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;access_token&quot;)]
+public string AccessToken { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -143,8 +143,6 @@ of those accounts.</p>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_Identity_AccessTokenSecret_" data-uid="Auth0.ManagementApi.Models.Identity.AccessTokenSecret*"></a>
   <h4 id="Auth0_ManagementApi_Models_Identity_AccessTokenSecret" data-uid="Auth0.ManagementApi.Models.Identity.AccessTokenSecret">AccessTokenSecret</h4>
   <div class="markdown level1 summary"><p>The token secret that can be used to call the <a class="xref" href="Auth0.ManagementApi.Models.Identity.html#Auth0_ManagementApi_Models_Identity_Provider">Provider</a>&apos;s API to get more information about the user.</p>
@@ -152,7 +150,8 @@ of those accounts.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string AccessTokenSecret { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;access_token_secret&quot;)]
+public string AccessTokenSecret { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -172,8 +171,6 @@ of those accounts.</p>
   <h5 id="Auth0_ManagementApi_Models_Identity_AccessTokenSecret_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This is available for Twitter connections.</p>
 </div>
-  
-  
   <a id="Auth0_ManagementApi_Models_Identity_Connection_" data-uid="Auth0.ManagementApi.Models.Identity.Connection*"></a>
   <h4 id="Auth0_ManagementApi_Models_Identity_Connection" data-uid="Auth0.ManagementApi.Models.Identity.Connection">Connection</h4>
   <div class="markdown level1 summary"><p>The name of the connection for the identity.</p>
@@ -181,7 +178,8 @@ of those accounts.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Connection { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;connection&quot;)]
+public string Connection { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -201,8 +199,6 @@ of those accounts.</p>
   <h5 id="Auth0_ManagementApi_Models_Identity_Connection_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Sometimes, this is the same as the connection, but not always.</p>
 </div>
-  
-  
   <a id="Auth0_ManagementApi_Models_Identity_ExpiresIn_" data-uid="Auth0.ManagementApi.Models.Identity.ExpiresIn*"></a>
   <h4 id="Auth0_ManagementApi_Models_Identity_ExpiresIn" data-uid="Auth0.ManagementApi.Models.Identity.ExpiresIn">ExpiresIn</h4>
   <div class="markdown level1 summary"><p>Gets or sets the expiry time in seconds.</p>
@@ -210,7 +206,8 @@ of those accounts.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int ExpiresIn { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;expires_in&quot;)]
+public int ExpiresIn { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -227,8 +224,6 @@ of those accounts.</p>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_Identity_IsSocial_" data-uid="Auth0.ManagementApi.Models.Identity.IsSocial*"></a>
   <h4 id="Auth0_ManagementApi_Models_Identity_IsSocial" data-uid="Auth0.ManagementApi.Models.Identity.IsSocial">IsSocial</h4>
   <div class="markdown level1 summary"><p>Indicates whether this is a social identity.</p>
@@ -236,7 +231,8 @@ of those accounts.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool? IsSocial { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;isSocial&quot;)]
+public bool? IsSocial { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -253,8 +249,6 @@ of those accounts.</p>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_Identity_ProfileData_" data-uid="Auth0.ManagementApi.Models.Identity.ProfileData*"></a>
   <h4 id="Auth0_ManagementApi_Models_Identity_ProfileData" data-uid="Auth0.ManagementApi.Models.Identity.ProfileData">ProfileData</h4>
   <div class="markdown level1 summary"><p>Contains additional profile information for linked identities.</p>
@@ -262,7 +256,8 @@ of those accounts.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IDictionary&lt;string, object&gt; ProfileData { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;profileData&quot;)]
+public IDictionary&lt;string, object&gt; ProfileData { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -274,13 +269,11 @@ of those accounts.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_Identity_Provider_" data-uid="Auth0.ManagementApi.Models.Identity.Provider*"></a>
   <h4 id="Auth0_ManagementApi_Models_Identity_Provider" data-uid="Auth0.ManagementApi.Models.Identity.Provider">Provider</h4>
   <div class="markdown level1 summary"><p>The type of identity provider.</p>
@@ -288,7 +281,8 @@ of those accounts.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Provider { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;provider&quot;)]
+public string Provider { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -305,8 +299,6 @@ of those accounts.</p>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_Identity_RefreshToken_" data-uid="Auth0.ManagementApi.Models.Identity.RefreshToken*"></a>
   <h4 id="Auth0_ManagementApi_Models_Identity_RefreshToken" data-uid="Auth0.ManagementApi.Models.Identity.RefreshToken">RefreshToken</h4>
   <div class="markdown level1 summary"><p>The refresh token that can be used to call the <a class="xref" href="Auth0.ManagementApi.Models.Identity.html#Auth0_ManagementApi_Models_Identity_Provider">Provider</a>&apos;s API to renew access tokens.</p>
@@ -314,7 +306,8 @@ of those accounts.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string RefreshToken { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;refresh_token&quot;)]
+public string RefreshToken { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -334,8 +327,6 @@ of those accounts.</p>
   <h5 id="Auth0_ManagementApi_Models_Identity_RefreshToken_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>The refresh token is only available for certain providers.</p>
 </div>
-  
-  
   <a id="Auth0_ManagementApi_Models_Identity_UserId_" data-uid="Auth0.ManagementApi.Models.Identity.UserId*"></a>
   <h4 id="Auth0_ManagementApi_Models_Identity_UserId" data-uid="Auth0.ManagementApi.Models.Identity.UserId">UserId</h4>
   <div class="markdown level1 summary"><p>The user&apos;s identifier.</p>
@@ -343,7 +334,8 @@ of those accounts.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string UserId { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;user_id&quot;)]
+public string UserId { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -365,10 +357,6 @@ of those accounts.</p>
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

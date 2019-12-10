@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class EmailTemplateUpdateRequest
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -100,16 +100,10 @@
       <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateBase.html#Auth0_ManagementApi_Models_EmailTemplateBase_UrlLifetimeInSeconds">EmailTemplateBase.UrlLifetimeInSeconds</a>
     </div>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -120,17 +114,21 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Models.html">Auth0.ManagementApi.Models</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Models_EmailTemplateUpdateRequest_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class EmailTemplateUpdateRequest : EmailTemplateBase</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Models_EmailTemplateUpdateRequest_Enabled_" data-uid="Auth0.ManagementApi.Models.EmailTemplateUpdateRequest.Enabled*"></a>
   <h4 id="Auth0_ManagementApi_Models_EmailTemplateUpdateRequest_Enabled" data-uid="Auth0.ManagementApi.Models.EmailTemplateUpdateRequest.Enabled">Enabled</h4>
   <div class="markdown level1 summary"><p>Whether or not the template is enabled.</p>
@@ -138,7 +136,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool Enabled { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;enabled&quot;)]
+public bool Enabled { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -155,8 +154,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_EmailTemplateUpdateRequest_Syntax_" data-uid="Auth0.ManagementApi.Models.EmailTemplateUpdateRequest.Syntax*"></a>
   <h4 id="Auth0_ManagementApi_Models_EmailTemplateUpdateRequest_Syntax" data-uid="Auth0.ManagementApi.Models.EmailTemplateUpdateRequest.Syntax">Syntax</h4>
   <div class="markdown level1 summary"><p>The syntax of the template body.</p>
@@ -164,7 +161,9 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EmailTemplateSyntax Syntax { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;syntax&quot;)]
+[JsonConverter(typeof(StringEnumConverter))]
+public EmailTemplateSyntax Syntax { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -181,8 +180,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_EmailTemplateUpdateRequest_Template_" data-uid="Auth0.ManagementApi.Models.EmailTemplateUpdateRequest.Template*"></a>
   <h4 id="Auth0_ManagementApi_Models_EmailTemplateUpdateRequest_Template" data-uid="Auth0.ManagementApi.Models.EmailTemplateUpdateRequest.Template">Template</h4>
   <div class="markdown level1 summary"><p>The template name.</p>
@@ -190,7 +187,9 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public EmailTemplateName Template { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;template&quot;)]
+[JsonConverter(typeof(StringEnumConverter))]
+public EmailTemplateName Template { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -212,10 +211,6 @@
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

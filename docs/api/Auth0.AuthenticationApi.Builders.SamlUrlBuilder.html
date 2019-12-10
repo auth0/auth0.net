@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class SamlUrlBuilder
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,7 @@
   
   <h1 id="Auth0_AuthenticationApi_Builders_SamlUrlBuilder" data-uid="Auth0.AuthenticationApi.Builders.SamlUrlBuilder" class="text-break">Class SamlUrlBuilder
   </h1>
-  <div class="markdown level0 summary"><p>Used to build a SAML authorization URL.</p>
+  <div class="markdown level0 summary"><p>Builder class used to fluently construct a SAML authorization URL.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -97,16 +97,10 @@
       <a class="xref" href="Auth0.AuthenticationApi.Builders.UrlBuilderBase-1.html#Auth0_AuthenticationApi_Builders_UrlBuilderBase_1_Build">UrlBuilderBase&lt;SamlUrlBuilder&gt;.Build()</a>
     </div>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -117,17 +111,24 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.AuthenticationApi.Builders.html">Auth0.AuthenticationApi.Builders</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.AuthenticationApi.dll</h6>
   <h5 id="Auth0_AuthenticationApi_Builders_SamlUrlBuilder_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class SamlUrlBuilder : UrlBuilderBase&lt;SamlUrlBuilder&gt;</code></pre>
   </div>
+  <h5 id="Auth0_AuthenticationApi_Builders_SamlUrlBuilder_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>See <a href="https://auth0.com/docs/api/authentication#accept-request">https://auth0.com/docs/api/authentication#accept-request</a> for more details.</p>
+</div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
   <a id="Auth0_AuthenticationApi_Builders_SamlUrlBuilder__ctor_" data-uid="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.#ctor*"></a>
   <h4 id="Auth0_AuthenticationApi_Builders_SamlUrlBuilder__ctor_System_String_System_String_" data-uid="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.#ctor(System.String,System.String)">SamlUrlBuilder(String, String)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.html">SamlUrlBuilder</a> class.</p>
@@ -135,7 +136,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public SamlUrlBuilder(string baseUrl, string client)</code></pre>
+    <pre><code class="lang-csharp hljs">public SamlUrlBuilder(string baseUrl, string clientId)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -150,24 +151,55 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">baseUrl</span></td>
-        <td><p>The base URL.</p>
+        <td><p>Base URL of the Authentication API represented as a <span class="xref">System.String</span>.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">client</span></td>
-        <td><p>The client id.</p>
+        <td><span class="parametername">clientId</span></td>
+        <td><p>Client ID of the application.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_AuthenticationApi_Builders_SamlUrlBuilder__ctor_" data-uid="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.#ctor*"></a>
+  <h4 id="Auth0_AuthenticationApi_Builders_SamlUrlBuilder__ctor_System_Uri_System_String_" data-uid="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.#ctor(System.Uri,System.String)">SamlUrlBuilder(Uri, String)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.html">SamlUrlBuilder</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SamlUrlBuilder(Uri baseUrl, string clientId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Uri</span></td>
+        <td><span class="parametername">baseUrl</span></td>
+        <td><p>Base URL of the Authentication API represented as a <span class="xref">System.Uri</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">clientId</span></td>
+        <td><p>Client ID of the application.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
   <a id="Auth0_AuthenticationApi_Builders_SamlUrlBuilder_WithConnection_" data-uid="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.WithConnection*"></a>
   <h4 id="Auth0_AuthenticationApi_Builders_SamlUrlBuilder_WithConnection_System_String_" data-uid="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.WithConnection(System.String)">WithConnection(String)</h4>
-  <div class="markdown level1 summary"><p>Adds a connection query string parameter.</p>
+  <div class="markdown level1 summary"><p>Adds the <code>connection</code> query string parameter specifying the connection name.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -203,16 +235,14 @@
     <tbody>
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.html">SamlUrlBuilder</a></td>
-        <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.html">SamlUrlBuilder</a>.</p>
+        <td><p>Current <a class="xref" href="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.html">SamlUrlBuilder</a> to allow fluent configuration.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Builders_SamlUrlBuilder_WithRelayState_" data-uid="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.WithRelayState*"></a>
   <h4 id="Auth0_AuthenticationApi_Builders_SamlUrlBuilder_WithRelayState_System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.WithRelayState(System.Collections.Generic.IDictionary{System.String,System.String})">WithRelayState(IDictionary&lt;String, String&gt;)</h4>
-  <div class="markdown level1 summary"><p>Adds a relayState query string parameter.</p>
+  <div class="markdown level1 summary"><p>Adds the <code>RelayState</code> query string parameter.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -232,7 +262,7 @@
       <tr>
         <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">values</span></td>
-        <td><p>A dictionary containing the name-value pairs of the relayState parameter.</p>
+        <td><p>Dictionary containing key-value pairs for the <code>RelayState</code> parameter.</p>
 </td>
       </tr>
     </tbody>
@@ -248,16 +278,17 @@
     <tbody>
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.html">SamlUrlBuilder</a></td>
-        <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.html">SamlUrlBuilder</a>.</p>
+        <td><p>Current <a class="xref" href="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.html">SamlUrlBuilder</a> to allow fluent configuration.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <h5 id="Auth0_AuthenticationApi_Builders_SamlUrlBuilder_WithRelayState_System_Collections_Generic_IDictionary_System_String_System_String___remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>See <a href="https://auth0.com/docs/protocols/saml/saml-configuration/special-configuration-scenarios/idp-initiated-sso#auth0-as-identity-provider-where-idp-initiates-sso">https://auth0.com/docs/protocols/saml/saml-configuration/special-configuration-scenarios/idp-initiated-sso#auth0-as-identity-provider-where-idp-initiates-sso</a> for more details on RelayState.</p>
+</div>
   <a id="Auth0_AuthenticationApi_Builders_SamlUrlBuilder_WithRelayState_" data-uid="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.WithRelayState*"></a>
   <h4 id="Auth0_AuthenticationApi_Builders_SamlUrlBuilder_WithRelayState_System_String_" data-uid="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.WithRelayState(System.String)">WithRelayState(String)</h4>
-  <div class="markdown level1 summary"><p>Adds a relayState query string parameter.</p>
+  <div class="markdown level1 summary"><p>Adds the <code>RelayState</code> query string parameter.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -277,7 +308,7 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">value</span></td>
-        <td><p>A string with the value of relayState parameter. Must be in a name-value pair format, e.g. xcrf=abc&amp;ru=/foo</p>
+        <td><p>Value of <code>RelayState</code> parameter in key-value format, e.g. <pre><code>xcrf=abc&amp;ru=/foo</code></pre>.</p>
 </td>
       </tr>
     </tbody>
@@ -293,20 +324,19 @@
     <tbody>
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.html">SamlUrlBuilder</a></td>
-        <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.html">SamlUrlBuilder</a>.</p>
+        <td><p>Current <a class="xref" href="Auth0.AuthenticationApi.Builders.SamlUrlBuilder.html">SamlUrlBuilder</a> to allow fluent configuration.</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <h5 id="Auth0_AuthenticationApi_Builders_SamlUrlBuilder_WithRelayState_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>See <a href="https://auth0.com/docs/protocols/saml/saml-configuration/special-configuration-scenarios/idp-initiated-sso#auth0-as-identity-provider-where-idp-initiates-sso">https://auth0.com/docs/protocols/saml/saml-configuration/special-configuration-scenarios/idp-initiated-sso#auth0-as-identity-provider-where-idp-initiates-sso</a> for more details on RelayState.</p>
+</div>
 </article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

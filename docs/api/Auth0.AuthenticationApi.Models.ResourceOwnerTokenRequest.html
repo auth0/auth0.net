@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ResourceOwnerTokenRequest
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,7 @@
   
   <h1 id="Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest" data-uid="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest" class="text-break">Class ResourceOwnerTokenRequest
   </h1>
-  <div class="markdown level0 summary"><p>Represents a request get a token using the Resource Owner Grant flow</p>
+  <div class="markdown level0 summary"><p>Represents a request get a token using the Resource Owner Grant flow.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -84,16 +84,10 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -104,20 +98,24 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.AuthenticationApi.Models.html">Auth0.AuthenticationApi.Models</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.AuthenticationApi.dll</h6>
   <h5 id="Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ResourceOwnerTokenRequest</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_Audience_" data-uid="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.Audience*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_Audience" data-uid="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.Audience">Audience</h4>
-  <div class="markdown level1 summary"><p>The unique identifier of the target API you want to access.</p>
+  <div class="markdown level1 summary"><p>Optional unique identifier of the target API to access.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -139,11 +137,9 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_ClientId_" data-uid="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.ClientId*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_ClientId" data-uid="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.ClientId">ClientId</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the client (app) identifier.</p>
+  <div class="markdown level1 summary"><p>Client ID of the application.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -165,11 +161,9 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_ClientSecret_" data-uid="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.ClientSecret*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_ClientSecret" data-uid="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.ClientSecret">ClientSecret</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the client (app) secret.</p>
+  <div class="markdown level1 summary"><p>Optional client secret of the application.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -191,11 +185,9 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_ForwardedForIp_" data-uid="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.ForwardedForIp*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_ForwardedForIp" data-uid="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.ForwardedForIp">ForwardedForIp</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the ip of the end user this token is requested for</p>
+  <div class="markdown level1 summary"><p>IP address of the end user this token is requested for.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -217,11 +209,13 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <h5 id="Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_ForwardedForIp_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>It is important to set this if using this API server-side.
+See <a href="https://auth0.com/docs/api-auth/tutorials/using-resource-owner-password-from-server-side">https://auth0.com/docs/api-auth/tutorials/using-resource-owner-password-from-server-side</a> for more details.</p>
+</div>
   <a id="Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_Password_" data-uid="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.Password*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_Password" data-uid="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.Password">Password</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the password.</p>
+  <div class="markdown level1 summary"><p>Resource Owner&apos;s secret.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -243,11 +237,9 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_Realm_" data-uid="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.Realm*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_Realm" data-uid="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.Realm">Realm</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the realm where to do the authentication.</p>
+  <div class="markdown level1 summary"><p>Optional realm the user belongs to.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -269,11 +261,12 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <h5 id="Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_Realm_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>See <a href="https://auth0.com/docs/api-auth/grant/password#realm-support">https://auth0.com/docs/api-auth/grant/password#realm-support</a> for more details.</p>
+</div>
   <a id="Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_Scope_" data-uid="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.Scope*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_Scope" data-uid="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.Scope">Scope</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the requested scope.</p>
+  <div class="markdown level1 summary"><p>Optional scopes to be requested. Separate multiple values with a space.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -295,11 +288,34 @@
       </tr>
     </tbody>
   </table>
-  
-  
+  <a id="Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_SigningAlgorithm_" data-uid="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.SigningAlgorithm*"></a>
+  <h4 id="Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_SigningAlgorithm" data-uid="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.SigningAlgorithm">SigningAlgorithm</h4>
+  <div class="markdown level1 summary"><p>What <a class="xref" href="Auth0.AuthenticationApi.JwtSignatureAlgorithm.html">JwtSignatureAlgorithm</a> is used to verify the signature
+of Id Tokens.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public JwtSignatureAlgorithm SigningAlgorithm { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.AuthenticationApi.JwtSignatureAlgorithm.html">JwtSignatureAlgorithm</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_Username_" data-uid="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.Username*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_Username" data-uid="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.Username">Username</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the username.</p>
+  <div class="markdown level1 summary"><p>Resource Owner&apos;s identifier.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -326,10 +342,6 @@
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

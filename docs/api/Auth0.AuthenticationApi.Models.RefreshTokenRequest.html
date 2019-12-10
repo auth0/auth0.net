@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class RefreshTokenRequest
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,8 +73,7 @@
   
   <h1 id="Auth0_AuthenticationApi_Models_RefreshTokenRequest" data-uid="Auth0.AuthenticationApi.Models.RefreshTokenRequest" class="text-break">Class RefreshTokenRequest
   </h1>
-  <div class="markdown level0 summary"><p>Represents a request to get a new token,
-based on a previously issued refresh token.</p>
+  <div class="markdown level0 summary"><p>Represents a request to get new tokens based on a previously obtained refresh token.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -85,16 +84,10 @@ based on a previously issued refresh token.</p>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -105,17 +98,21 @@ based on a previously issued refresh token.</p>
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.AuthenticationApi.Models.html">Auth0.AuthenticationApi.Models</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.AuthenticationApi.dll</h6>
   <h5 id="Auth0_AuthenticationApi_Models_RefreshTokenRequest_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class RefreshTokenRequest</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_RefreshTokenRequest_Audience_" data-uid="Auth0.AuthenticationApi.Models.RefreshTokenRequest.Audience*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_RefreshTokenRequest_Audience" data-uid="Auth0.AuthenticationApi.Models.RefreshTokenRequest.Audience">Audience</h4>
   <div class="markdown level1 summary"><p>Optional audience used for refreshing the access token token.</p>
@@ -140,11 +137,9 @@ based on a previously issued refresh token.</p>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_RefreshTokenRequest_ClientId_" data-uid="Auth0.AuthenticationApi.Models.RefreshTokenRequest.ClientId*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_RefreshTokenRequest_ClientId" data-uid="Auth0.AuthenticationApi.Models.RefreshTokenRequest.ClientId">ClientId</h4>
-  <div class="markdown level1 summary"><p>The client id for which the refresh token was issued.</p>
+  <div class="markdown level1 summary"><p>Client ID for which the refresh token was issued.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -166,11 +161,9 @@ based on a previously issued refresh token.</p>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_RefreshTokenRequest_ClientSecret_" data-uid="Auth0.AuthenticationApi.Models.RefreshTokenRequest.ClientSecret*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_RefreshTokenRequest_ClientSecret" data-uid="Auth0.AuthenticationApi.Models.RefreshTokenRequest.ClientSecret">ClientSecret</h4>
-  <div class="markdown level1 summary"><p>The secret of the client for which the refresh token was issued.</p>
+  <div class="markdown level1 summary"><p>Client secret for which the refresh token was issued.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -192,8 +185,6 @@ based on a previously issued refresh token.</p>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_RefreshTokenRequest_RefreshToken_" data-uid="Auth0.AuthenticationApi.Models.RefreshTokenRequest.RefreshToken*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_RefreshTokenRequest_RefreshToken" data-uid="Auth0.AuthenticationApi.Models.RefreshTokenRequest.RefreshToken">RefreshToken</h4>
   <div class="markdown level1 summary"><p>A valid refresh token previously issued to the client.</p>
@@ -218,11 +209,9 @@ based on a previously issued refresh token.</p>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_RefreshTokenRequest_Scope_" data-uid="Auth0.AuthenticationApi.Models.RefreshTokenRequest.Scope*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_RefreshTokenRequest_Scope" data-uid="Auth0.AuthenticationApi.Models.RefreshTokenRequest.Scope">Scope</h4>
-  <div class="markdown level1 summary"><p>Gets or sets an optional scope for the access request.</p>
+  <div class="markdown level1 summary"><p>Optional scope for the access request.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -246,18 +235,39 @@ based on a previously issued refresh token.</p>
   </table>
   <h5 id="Auth0_AuthenticationApi_Models_RefreshTokenRequest_Scope_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>The requested scope must not include any scope not originally granted
-by the resource owner, and if omitted is treated as equal to the scope originally
-granted by the resource owner.</p>
+by the resource owner, and if omitted is treated as equal to the scope
+originally granted by the resource owner.</p>
 </div>
+  <a id="Auth0_AuthenticationApi_Models_RefreshTokenRequest_SigningAlgorithm_" data-uid="Auth0.AuthenticationApi.Models.RefreshTokenRequest.SigningAlgorithm*"></a>
+  <h4 id="Auth0_AuthenticationApi_Models_RefreshTokenRequest_SigningAlgorithm" data-uid="Auth0.AuthenticationApi.Models.RefreshTokenRequest.SigningAlgorithm">SigningAlgorithm</h4>
+  <div class="markdown level1 summary"><p>What <a class="xref" href="Auth0.AuthenticationApi.JwtSignatureAlgorithm.html">JwtSignatureAlgorithm</a> is used to verify the signature
+of Id Tokens.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public JwtSignatureAlgorithm SigningAlgorithm { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.AuthenticationApi.JwtSignatureAlgorithm.html">JwtSignatureAlgorithm</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

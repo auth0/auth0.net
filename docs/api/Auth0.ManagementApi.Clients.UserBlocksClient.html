@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class UserBlocksClient
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,28 +73,34 @@
   
   <h1 id="Auth0_ManagementApi_Clients_UserBlocksClient" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient" class="text-break">Class UserBlocksClient
   </h1>
-  <div class="markdown level0 summary"><p>Contains all the methods for the /user-blocks endpoints.</p>
+  <div class="markdown level0 summary"><p>Contains methods to access the /user-blocks endpoints.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Auth0.ManagementApi.Clients.ClientBase.html">ClientBase</a></div>
+    <div class="level1"><a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html">BaseClient</a></div>
     <div class="level2"><span class="xref">UserBlocksClient</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_Connection">BaseClient.Connection</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BaseUri">BaseClient.BaseUri</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_DefaultHeaders">BaseClient.DefaultHeaders</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BuildUri_System_String_System_Collections_Generic_IDictionary_System_String_System_String__">BaseClient.BuildUri(String, IDictionary&lt;String, String&gt;)</a>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -105,25 +111,29 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Clients.html">Auth0.ManagementApi.Clients</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Clients_UserBlocksClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class UserBlocksClient : ClientBase</code></pre>
+    <pre><code class="lang-csharp hljs">public class UserBlocksClient : BaseClient</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Clients_UserBlocksClient__ctor_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient__ctor_IApiConnection_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.#ctor(IApiConnection)">UserBlocksClient(IApiConnection)</h4>
-  <div class="markdown level1 summary"><p>Creates a new instance of <a class="xref" href="Auth0.ManagementApi.Clients.UserBlocksClient.html">UserBlocksClient</a>.</p>
+  <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})">UserBlocksClient(IManagementConnection, Uri, IDictionary&lt;String, String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of <a class="xref" href="Auth0.ManagementApi.Clients.UserBlocksClient.html">UserBlocksClient</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public UserBlocksClient(IApiConnection connection)</code></pre>
+    <pre><code class="lang-csharp hljs">public UserBlocksClient(IManagementConnection connection, Uri baseUri, IDictionary&lt;string, string&gt; defaultHeaders)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -136,17 +146,27 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IApiConnection</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a></td>
         <td><span class="parametername">connection</span></td>
-        <td><p>The <see cref="!:IApiConnection"></see> which is used to communicate with the API.</p>
+        <td><p><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a> used to make all API calls.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Uri</span></td>
+        <td><span class="parametername">baseUri</span></td>
+        <td><p><span class="xref">System.Uri</span> of the endpoint to use in making API calls.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">defaultHeaders</span></td>
+        <td><p>Dictionary containing default headers included with every request this client makes.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Clients_UserBlocksClient_GetByIdentifierAsync_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.GetByIdentifierAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient_GetByIdentifierAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.GetByIdentifierAsync(System.String)">GetByIdentifierAsync(String)</h4>
   <div class="markdown level1 summary"><p>Get a user&apos;s blocks by identifier.</p>
@@ -184,14 +204,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">UserBlocks</span>&gt;</td>
-        <td><p>The <see cref="!:UserBlocks"></see> relating to the user requested.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.UserBlocks.html">UserBlocks</a>&gt;</td>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.UserBlocks.html">UserBlocks</a> relating to the user requested.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_UserBlocksClient_GetByUserIdAsync_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.GetByUserIdAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient_GetByUserIdAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.GetByUserIdAsync(System.String)">GetByUserIdAsync(String)</h4>
   <div class="markdown level1 summary"><p>Get a user&apos;s blocks by user id.</p>
@@ -229,14 +247,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">UserBlocks</span>&gt;</td>
-        <td><p>The <see cref="!:UserBlocks"></see> relating to the user requested.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.UserBlocks.html">UserBlocks</a>&gt;</td>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.UserBlocks.html">UserBlocks</a> relating to the user requested.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_UserBlocksClient_UnblockByIdentifierAsync_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.UnblockByIdentifierAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient_UnblockByIdentifierAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.UnblockByIdentifierAsync(System.String)">UnblockByIdentifierAsync(String)</h4>
   <div class="markdown level1 summary"><p>Unblock a user by their identifier.</p>
@@ -274,14 +290,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
-        <td><p>A <see cref="!:Task"></see> that represents the asynchronous unblock operation.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous unblock operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_UserBlocksClient_UnblockByUserIdAsync_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.UnblockByUserIdAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient_UnblockByUserIdAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.UnblockByUserIdAsync(System.String)">UnblockByUserIdAsync(String)</h4>
   <div class="markdown level1 summary"><p>Unblock a user by their id.</p>
@@ -319,8 +333,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
-        <td><p>A <see cref="!:Task"></see> that represents the asynchronous unblock operation.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous unblock operation.</p>
 </td>
       </tr>
     </tbody>
@@ -330,10 +344,6 @@
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

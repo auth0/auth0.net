@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ManagementApiClient
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -81,59 +81,50 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">ManagementApiClient</span></div>
   </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.html">Auth0.ManagementApi</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_ManagementApiClient_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ManagementApiClient : IDisposable</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_ManagementApiClient__ctor_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_System_String_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,System.String)">ManagementApiClient(String, String)</h4>
+  <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_System_String_Auth0_ManagementApi_IManagementConnection_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,System.String,Auth0.ManagementApi.IManagementConnection)">ManagementApiClient(String, String, IManagementConnection)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ManagementApiClient(string token, string domain)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">token</span></td>
-        <td><p>The token.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">domain</span></td>
-        <td><p>Your Auth0 domain, e.g. tenant.auth0.com.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_ManagementApi_ManagementApiClient__ctor_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_System_String_HttpClient_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,System.String,HttpClient)">ManagementApiClient(String, String, HttpClient)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ManagementApiClient(string token, string domain, HttpClient httpClient)</code></pre>
+    <pre><code class="lang-csharp hljs">public ManagementApiClient(string token, string domain, IManagementConnection connection = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -158,98 +149,20 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">HttpClient</span></td>
-        <td><span class="parametername">httpClient</span></td>
-        <td><p>The <see cref="!:HttpClient"></see> which is used for HTTP requests.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_ManagementApi_ManagementApiClient__ctor_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_System_String_HttpMessageHandler_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,System.String,HttpMessageHandler)">ManagementApiClient(String, String, HttpMessageHandler)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ManagementApiClient(string token, string domain, HttpMessageHandler handler)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">token</span></td>
-        <td><p>A valid Auth0 Management API v2 token.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">domain</span></td>
-        <td><p>Your Auth0 domain. <example>tenant.auth0.com</example></p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">HttpMessageHandler</span></td>
-        <td><span class="parametername">handler</span></td>
-        <td><p>The <see cref="!:HttpMessageHandler"></see> which is used for HTTP requests.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_ManagementApi_ManagementApiClient__ctor_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_Uri_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,Uri)">ManagementApiClient(String, Uri)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ManagementApiClient(string token, Uri baseUri)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">token</span></td>
-        <td><p>A valid Auth0 Management API v2 token.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">Uri</span></td>
-        <td><span class="parametername">baseUri</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a></td>
+        <td><span class="parametername">connection</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_ManagementApiClient__ctor_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_Uri_HttpClient_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,Uri,HttpClient)">ManagementApiClient(String, Uri, HttpClient)</h4>
+  <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_System_Uri_Auth0_ManagementApi_IManagementConnection_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,System.Uri,Auth0.ManagementApi.IManagementConnection)">ManagementApiClient(String, Uri, IManagementConnection)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ManagementApiClient(string token, Uri baseUri, HttpClient httpClient)</code></pre>
+    <pre><code class="lang-csharp hljs">public ManagementApiClient(string token, Uri baseUri, IManagementConnection managementConnection = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -268,62 +181,21 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Uri</span></td>
+        <td><span class="xref">System.Uri</span></td>
         <td><span class="parametername">baseUri</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">HttpClient</span></td>
-        <td><span class="parametername">httpClient</span></td>
-        <td><p>The <see cref="!:HttpClient"></see> which is used for HTTP requests.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="Auth0_ManagementApi_ManagementApiClient__ctor_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_Uri_HttpMessageHandler_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,Uri,HttpMessageHandler)">ManagementApiClient(String, Uri, HttpMessageHandler)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ManagementApiClient(string token, Uri baseUri, HttpMessageHandler handler)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">token</span></td>
-        <td><p>A valid Auth0 Management API v2 token.</p>
+        <td><p><span class="xref">System.Uri</span> of the tenant to manage.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Uri</span></td>
-        <td><span class="parametername">baseUri</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">HttpMessageHandler</span></td>
-        <td><span class="parametername">handler</span></td>
-        <td><p>The <see cref="!:HttpMessageHandler"></see> which is used for HTTP requests.</p>
+        <td><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a></td>
+        <td><span class="parametername">managementConnection</span></td>
+        <td><p><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a> to facilitate communication with server.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h3 id="properties">Properties
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_ManagementApiClient_BlacklistedTokens_" data-uid="Auth0.ManagementApi.ManagementApiClient.BlacklistedTokens*"></a>
   <h4 id="Auth0_ManagementApi_ManagementApiClient_BlacklistedTokens" data-uid="Auth0.ManagementApi.ManagementApiClient.BlacklistedTokens">BlacklistedTokens</h4>
   <div class="markdown level1 summary"><p>Contains all the methods to call the /blacklists/tokens endpoints.</p>
@@ -343,13 +215,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">BlacklistedTokensClient</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Clients.BlacklistedTokensClient.html">BlacklistedTokensClient</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_ManagementApiClient_ClientGrants_" data-uid="Auth0.ManagementApi.ManagementApiClient.ClientGrants*"></a>
   <h4 id="Auth0_ManagementApi_ManagementApiClient_ClientGrants" data-uid="Auth0.ManagementApi.ManagementApiClient.ClientGrants">ClientGrants</h4>
   <div class="markdown level1 summary"><p>Contains all the methods to call the /client-grants endpoints</p>
@@ -369,13 +239,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ClientGrantsClient</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Clients.ClientGrantsClient.html">ClientGrantsClient</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_ManagementApiClient_Clients_" data-uid="Auth0.ManagementApi.ManagementApiClient.Clients*"></a>
   <h4 id="Auth0_ManagementApi_ManagementApiClient_Clients" data-uid="Auth0.ManagementApi.ManagementApiClient.Clients">Clients</h4>
   <div class="markdown level1 summary"><p>Contains all the methods to call the /clients endpoints.</p>
@@ -395,13 +263,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ClientsClient</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Clients.ClientsClient.html">ClientsClient</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_ManagementApiClient_Connections_" data-uid="Auth0.ManagementApi.ManagementApiClient.Connections*"></a>
   <h4 id="Auth0_ManagementApi_ManagementApiClient_Connections" data-uid="Auth0.ManagementApi.ManagementApiClient.Connections">Connections</h4>
   <div class="markdown level1 summary"><p>Contains all the methods to call the /connections endpoints.</p>
@@ -421,13 +287,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ConnectionsClient</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Clients.ConnectionsClient.html">ConnectionsClient</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_ManagementApiClient_CustomDomains_" data-uid="Auth0.ManagementApi.ManagementApiClient.CustomDomains*"></a>
   <h4 id="Auth0_ManagementApi_ManagementApiClient_CustomDomains" data-uid="Auth0.ManagementApi.ManagementApiClient.CustomDomains">CustomDomains</h4>
   <div class="markdown level1 summary"><p>Contains all the methods to call the /custom-domains endpoints.</p>
@@ -447,13 +311,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">CustomDomainsClient</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Clients.CustomDomainsClient.html">CustomDomainsClient</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_ManagementApiClient_DeviceCredentials_" data-uid="Auth0.ManagementApi.ManagementApiClient.DeviceCredentials*"></a>
   <h4 id="Auth0_ManagementApi_ManagementApiClient_DeviceCredentials" data-uid="Auth0.ManagementApi.ManagementApiClient.DeviceCredentials">DeviceCredentials</h4>
   <div class="markdown level1 summary"><p>Contains all the methods to call the /device-credentials endpoints.</p>
@@ -473,13 +335,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DeviceCredentialsClient</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Clients.DeviceCredentialsClient.html">DeviceCredentialsClient</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_ManagementApiClient_EmailProvider_" data-uid="Auth0.ManagementApi.ManagementApiClient.EmailProvider*"></a>
   <h4 id="Auth0_ManagementApi_ManagementApiClient_EmailProvider" data-uid="Auth0.ManagementApi.ManagementApiClient.EmailProvider">EmailProvider</h4>
   <div class="markdown level1 summary"><p>Contains all the methods to call the /emails/provider endpoints.</p>
@@ -499,13 +359,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">EmailProviderClient</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Clients.EmailProviderClient.html">EmailProviderClient</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_ManagementApiClient_EmailTemplates_" data-uid="Auth0.ManagementApi.ManagementApiClient.EmailTemplates*"></a>
   <h4 id="Auth0_ManagementApi_ManagementApiClient_EmailTemplates" data-uid="Auth0.ManagementApi.ManagementApiClient.EmailTemplates">EmailTemplates</h4>
   <div class="markdown level1 summary"><p>Contains all the methods to call the /email-templates endpoints.</p>
@@ -525,13 +383,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">EmailTemplatesClient</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Clients.EmailTemplatesClient.html">EmailTemplatesClient</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_ManagementApiClient_Guardian_" data-uid="Auth0.ManagementApi.ManagementApiClient.Guardian*"></a>
   <h4 id="Auth0_ManagementApi_ManagementApiClient_Guardian" data-uid="Auth0.ManagementApi.ManagementApiClient.Guardian">Guardian</h4>
   <div class="markdown level1 summary"><p>Contains all the methods to call the /guardian endpoints.</p>
@@ -551,13 +407,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">GuardianClient</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Clients.GuardianClient.html">GuardianClient</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_ManagementApiClient_Jobs_" data-uid="Auth0.ManagementApi.ManagementApiClient.Jobs*"></a>
   <h4 id="Auth0_ManagementApi_ManagementApiClient_Jobs" data-uid="Auth0.ManagementApi.ManagementApiClient.Jobs">Jobs</h4>
   <div class="markdown level1 summary"><p>Contains all the methods to call the /jobs endpoints.</p>
@@ -577,13 +431,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">JobsClient</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Clients.JobsClient.html">JobsClient</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_ManagementApiClient_Logs_" data-uid="Auth0.ManagementApi.ManagementApiClient.Logs*"></a>
   <h4 id="Auth0_ManagementApi_ManagementApiClient_Logs" data-uid="Auth0.ManagementApi.ManagementApiClient.Logs">Logs</h4>
   <div class="markdown level1 summary"><p>Contains all the methods to call the /logs endpoints.</p>
@@ -603,13 +455,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">LogsClient</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Clients.LogsClient.html">LogsClient</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_ManagementApiClient_ResourceServers_" data-uid="Auth0.ManagementApi.ManagementApiClient.ResourceServers*"></a>
   <h4 id="Auth0_ManagementApi_ManagementApiClient_ResourceServers" data-uid="Auth0.ManagementApi.ManagementApiClient.ResourceServers">ResourceServers</h4>
   <div class="markdown level1 summary"><p>Contains all the methods to call the /resource-servers endpoints.</p>
@@ -629,13 +479,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ResourceServersClient</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Clients.ResourceServersClient.html">ResourceServersClient</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_ManagementApiClient_Roles_" data-uid="Auth0.ManagementApi.ManagementApiClient.Roles*"></a>
   <h4 id="Auth0_ManagementApi_ManagementApiClient_Roles" data-uid="Auth0.ManagementApi.ManagementApiClient.Roles">Roles</h4>
   <div class="markdown level1 summary"><p>Contains all the methods to call the /roles endpoints.</p>
@@ -655,14 +503,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RolesClient</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Clients.RolesClient.html">RolesClient</a></td>
         <td><p>The roles.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_ManagementApiClient_Rules_" data-uid="Auth0.ManagementApi.ManagementApiClient.Rules*"></a>
   <h4 id="Auth0_ManagementApi_ManagementApiClient_Rules" data-uid="Auth0.ManagementApi.ManagementApiClient.Rules">Rules</h4>
   <div class="markdown level1 summary"><p>Contains all the methods to call the /rules endpoints.</p>
@@ -682,13 +528,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RulesClient</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Clients.RulesClient.html">RulesClient</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_ManagementApiClient_Stats_" data-uid="Auth0.ManagementApi.ManagementApiClient.Stats*"></a>
   <h4 id="Auth0_ManagementApi_ManagementApiClient_Stats" data-uid="Auth0.ManagementApi.ManagementApiClient.Stats">Stats</h4>
   <div class="markdown level1 summary"><p>Contains all the methods to call the /stats endpoints.</p>
@@ -708,13 +552,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">StatsClient</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Clients.StatsClient.html">StatsClient</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_ManagementApiClient_TenantSettings_" data-uid="Auth0.ManagementApi.ManagementApiClient.TenantSettings*"></a>
   <h4 id="Auth0_ManagementApi_ManagementApiClient_TenantSettings" data-uid="Auth0.ManagementApi.ManagementApiClient.TenantSettings">TenantSettings</h4>
   <div class="markdown level1 summary"><p>Contains all the methods to call the /tenants/settings endpoints.</p>
@@ -734,13 +576,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TenantSettingsClient</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Clients.TenantSettingsClient.html">TenantSettingsClient</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_ManagementApiClient_Tickets_" data-uid="Auth0.ManagementApi.ManagementApiClient.Tickets*"></a>
   <h4 id="Auth0_ManagementApi_ManagementApiClient_Tickets" data-uid="Auth0.ManagementApi.ManagementApiClient.Tickets">Tickets</h4>
   <div class="markdown level1 summary"><p>Contains all the methods to call the /tickets endpoints.</p>
@@ -760,13 +600,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TicketsClient</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Clients.TicketsClient.html">TicketsClient</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_ManagementApiClient_UserBlocks_" data-uid="Auth0.ManagementApi.ManagementApiClient.UserBlocks*"></a>
   <h4 id="Auth0_ManagementApi_ManagementApiClient_UserBlocks" data-uid="Auth0.ManagementApi.ManagementApiClient.UserBlocks">UserBlocks</h4>
   <div class="markdown level1 summary"><p>Contains all the methods to call the /user-blocks endpoints.</p>
@@ -786,13 +624,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">UserBlocksClient</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Clients.UserBlocksClient.html">UserBlocksClient</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_ManagementApiClient_Users_" data-uid="Auth0.ManagementApi.ManagementApiClient.Users*"></a>
   <h4 id="Auth0_ManagementApi_ManagementApiClient_Users" data-uid="Auth0.ManagementApi.ManagementApiClient.Users">Users</h4>
   <div class="markdown level1 summary"><p>Contains all the methods to call the /users endpoints.</p>
@@ -812,29 +648,26 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">UsersClient</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Clients.UsersClient.html">UsersClient</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_ManagementApiClient_Dispose_" data-uid="Auth0.ManagementApi.ManagementApiClient.Dispose*"></a>
   <h4 id="Auth0_ManagementApi_ManagementApiClient_Dispose" data-uid="Auth0.ManagementApi.ManagementApiClient.Dispose">Dispose()</h4>
-  <div class="markdown level1 summary"><p>Disposes of any owned disposable resources such as the ApiConnection.</p>
+  <div class="markdown level1 summary"><p>Disposes of any owned disposable resources.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
   </div>
-  
-  
   <a id="Auth0_ManagementApi_ManagementApiClient_Dispose_" data-uid="Auth0.ManagementApi.ManagementApiClient.Dispose*"></a>
   <h4 id="Auth0_ManagementApi_ManagementApiClient_Dispose_System_Boolean_" data-uid="Auth0.ManagementApi.ManagementApiClient.Dispose(System.Boolean)">Dispose(Boolean)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Disposes of any owned disposable resources.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -853,45 +686,20 @@
       <tr>
         <td><span class="xref">System.Boolean</span></td>
         <td><span class="parametername">disposing</span></td>
-        <td></td>
+        <td><p>Whether we are actually disposing (<span class="xref">true</span>) or not (<span class="xref">false</span>).</p>
+</td>
       </tr>
     </tbody>
   </table>
-  
-  
-  <a id="Auth0_ManagementApi_ManagementApiClient_GetLastApiInfo_" data-uid="Auth0.ManagementApi.ManagementApiClient.GetLastApiInfo*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_GetLastApiInfo" data-uid="Auth0.ManagementApi.ManagementApiClient.GetLastApiInfo">GetLastApiInfo()</h4>
-  <div class="markdown level1 summary"><p>Gets information about the last API call;</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ApiInfo GetLastApiInfo()</code></pre>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.IDisposable</span>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">ApiInfo</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
 </article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ImpersonationRequest
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,7 @@
   
   <h1 id="Auth0_AuthenticationApi_Models_ImpersonationRequest" data-uid="Auth0.AuthenticationApi.Models.ImpersonationRequest" class="text-break">Class ImpersonationRequest
   </h1>
-  <div class="markdown level0 summary"><p>Represents a request to impersonate a user.</p>
+  <div class="markdown level0 summary"><p>Represents a request to obtain a one-time link for impersonating a user.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -84,16 +84,10 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -104,20 +98,27 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.AuthenticationApi.Models.html">Auth0.AuthenticationApi.Models</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.AuthenticationApi.dll</h6>
   <h5 id="Auth0_AuthenticationApi_Models_ImpersonationRequest_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class ImpersonationRequest</code></pre>
   </div>
+  <h5 id="Auth0_AuthenticationApi_Models_ImpersonationRequest_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>This feature has been deprecated and will be removed from Auth0 and this SDK in a future release.</p>
+</div>
   <h3 id="properties">Properties
   </h3>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_ImpersonationRequest_ClientId_" data-uid="Auth0.AuthenticationApi.Models.ImpersonationRequest.ClientId*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_ImpersonationRequest_ClientId" data-uid="Auth0.AuthenticationApi.Models.ImpersonationRequest.ClientId">ClientId</h4>
-  <div class="markdown level1 summary"><p>The client ID of the application</p>
+  <div class="markdown level1 summary"><p>Client ID of the application.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -139,11 +140,9 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_ImpersonationRequest_ImpersonateId_" data-uid="Auth0.AuthenticationApi.Models.ImpersonationRequest.ImpersonateId*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_ImpersonationRequest_ImpersonateId" data-uid="Auth0.AuthenticationApi.Models.ImpersonationRequest.ImpersonateId">ImpersonateId</h4>
-  <div class="markdown level1 summary"><p>The ID of the user who is impersonated.</p>
+  <div class="markdown level1 summary"><p>ID of the user to be impersonated.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -165,11 +164,9 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_ImpersonationRequest_ImpersonatorId_" data-uid="Auth0.AuthenticationApi.Models.ImpersonationRequest.ImpersonatorId*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_ImpersonationRequest_ImpersonatorId" data-uid="Auth0.AuthenticationApi.Models.ImpersonationRequest.ImpersonatorId">ImpersonatorId</h4>
-  <div class="markdown level1 summary"><p>The ID of the user doing the impersonation.</p>
+  <div class="markdown level1 summary"><p>user_id of the impersonator.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -191,11 +188,9 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_ImpersonationRequest_Protocol_" data-uid="Auth0.AuthenticationApi.Models.ImpersonationRequest.Protocol*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_ImpersonationRequest_Protocol" data-uid="Auth0.AuthenticationApi.Models.ImpersonationRequest.Protocol">Protocol</h4>
-  <div class="markdown level1 summary"><p>The protocol to use. Can be one of oauth2, wsfed, wsfed-rms, samlp</p>
+  <div class="markdown level1 summary"><p>Protocol to use against the identity provider. Can be one of <code>oauth2</code>, <code>wsfed</code>, <code>wsfed-rms</code>, or <code>samlp</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -217,11 +212,9 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_ImpersonationRequest_ResponseType_" data-uid="Auth0.AuthenticationApi.Models.ImpersonationRequest.ResponseType*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_ImpersonationRequest_ResponseType" data-uid="Auth0.AuthenticationApi.Models.ImpersonationRequest.ResponseType">ResponseType</h4>
-  <div class="markdown level1 summary"><p>The response type</p>
+  <div class="markdown level1 summary"><p>Response type - should be <code>code</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -243,11 +236,9 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_ImpersonationRequest_State_" data-uid="Auth0.AuthenticationApi.Models.ImpersonationRequest.State*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_ImpersonationRequest_State" data-uid="Auth0.AuthenticationApi.Models.ImpersonationRequest.State">State</h4>
-  <div class="markdown level1 summary"><p>The state parameter to pass</p>
+  <div class="markdown level1 summary"><p>State parameter to pass in the request.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -269,11 +260,9 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Models_ImpersonationRequest_Token_" data-uid="Auth0.AuthenticationApi.Models.ImpersonationRequest.Token*"></a>
   <h4 id="Auth0_AuthenticationApi_Models_ImpersonationRequest_Token" data-uid="Auth0.AuthenticationApi.Models.ImpersonationRequest.Token">Token</h4>
-  <div class="markdown level1 summary"><p>The bearer token to pass along with the request in the Authorization header.</p>
+  <div class="markdown level1 summary"><p>Bearer token to include with the request in the Authorization header.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -300,10 +289,6 @@
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

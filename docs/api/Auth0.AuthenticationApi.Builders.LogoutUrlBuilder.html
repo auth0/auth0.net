@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class LogoutUrlBuilder
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,7 @@
   
   <h1 id="Auth0_AuthenticationApi_Builders_LogoutUrlBuilder" data-uid="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder" class="text-break">Class LogoutUrlBuilder
   </h1>
-  <div class="markdown level0 summary"><p>Used to build a logout URL.</p>
+  <div class="markdown level0 summary"><p>Builder class used to fluently construct a logout URL.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -97,16 +97,10 @@
       <a class="xref" href="Auth0.AuthenticationApi.Builders.UrlBuilderBase-1.html#Auth0_AuthenticationApi_Builders_UrlBuilderBase_1_Build">UrlBuilderBase&lt;LogoutUrlBuilder&gt;.Build()</a>
     </div>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -117,17 +111,24 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.AuthenticationApi.Builders.html">Auth0.AuthenticationApi.Builders</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.AuthenticationApi.dll</h6>
   <h5 id="Auth0_AuthenticationApi_Builders_LogoutUrlBuilder_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class LogoutUrlBuilder : UrlBuilderBase&lt;LogoutUrlBuilder&gt;</code></pre>
   </div>
+  <h5 id="Auth0_AuthenticationApi_Builders_LogoutUrlBuilder_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>See <a href="https://auth0.com/docs/api/authentication#logout">https://auth0.com/docs/api/authentication#logout</a></p>
+</div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
   <a id="Auth0_AuthenticationApi_Builders_LogoutUrlBuilder__ctor_" data-uid="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.#ctor*"></a>
   <h4 id="Auth0_AuthenticationApi_Builders_LogoutUrlBuilder__ctor_System_String_" data-uid="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.#ctor(System.String)">LogoutUrlBuilder(String)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.html">LogoutUrlBuilder</a> class.</p>
@@ -150,18 +151,43 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">baseUrl</span></td>
-        <td><p>The base URL.</p>
+        <td><p>Base URL of the Authentication API represented as a <span class="xref">System.String</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_AuthenticationApi_Builders_LogoutUrlBuilder__ctor_" data-uid="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.#ctor*"></a>
+  <h4 id="Auth0_AuthenticationApi_Builders_LogoutUrlBuilder__ctor_System_Uri_" data-uid="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.#ctor(System.Uri)">LogoutUrlBuilder(Uri)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.html">LogoutUrlBuilder</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LogoutUrlBuilder(Uri baseUrl)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Uri</span></td>
+        <td><span class="parametername">baseUrl</span></td>
+        <td><p>Base URL of the Authentication API represented as a <span class="xref">System.Uri</span>.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
   <a id="Auth0_AuthenticationApi_Builders_LogoutUrlBuilder_Federated_" data-uid="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.Federated*"></a>
   <h4 id="Auth0_AuthenticationApi_Builders_LogoutUrlBuilder_Federated" data-uid="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.Federated">Federated()</h4>
-  <div class="markdown level1 summary"><p>Adds a federated query string parameter.</p>
+  <div class="markdown level1 summary"><p>Adds the <code>federated</code> flag query string parameter (no value).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -179,16 +205,14 @@
     <tbody>
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.html">LogoutUrlBuilder</a></td>
-        <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.html">LogoutUrlBuilder</a>.</p>
+        <td><p>Current <a class="xref" href="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.html">LogoutUrlBuilder</a> to allow fluent configuration.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Builders_LogoutUrlBuilder_WithClientId_" data-uid="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.WithClientId*"></a>
   <h4 id="Auth0_AuthenticationApi_Builders_LogoutUrlBuilder_WithClientId_System_String_" data-uid="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.WithClientId(System.String)">WithClientId(String)</h4>
-  <div class="markdown level1 summary"><p>Adds a client_id query string parameter.</p>
+  <div class="markdown level1 summary"><p>Adds the <code>client_id</code> query string parameter specifying the Client ID of the application.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -208,7 +232,7 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">clientId</span></td>
-        <td><p>The URL.</p>
+        <td><p>Client ID of the application.</p>
 </td>
       </tr>
     </tbody>
@@ -224,21 +248,19 @@
     <tbody>
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.html">LogoutUrlBuilder</a></td>
-        <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.html">LogoutUrlBuilder</a>.</p>
+        <td><p>Current <a class="xref" href="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.html">LogoutUrlBuilder</a> to allow fluent configuration.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_AuthenticationApi_Builders_LogoutUrlBuilder_WithReturnUrl_" data-uid="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.WithReturnUrl*"></a>
   <h4 id="Auth0_AuthenticationApi_Builders_LogoutUrlBuilder_WithReturnUrl_System_String_" data-uid="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.WithReturnUrl(System.String)">WithReturnUrl(String)</h4>
-  <div class="markdown level1 summary"><p>Adds a returnTo query string parameter.</p>
+  <div class="markdown level1 summary"><p>Adds the <code>redirect_uri</code> query string parameter specifying the redirect URI.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public LogoutUrlBuilder WithReturnUrl(string url)</code></pre>
+    <pre><code class="lang-csharp hljs">public LogoutUrlBuilder WithReturnUrl(string uri)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -252,8 +274,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">url</span></td>
-        <td><p>The URL.</p>
+        <td><span class="parametername">uri</span></td>
+        <td><p>URI to redirect to.</p>
 </td>
       </tr>
     </tbody>
@@ -269,7 +291,50 @@
     <tbody>
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.html">LogoutUrlBuilder</a></td>
-        <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.html">LogoutUrlBuilder</a>.</p>
+        <td><p>Current <a class="xref" href="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.html">LogoutUrlBuilder</a> to allow fluent configuration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_AuthenticationApi_Builders_LogoutUrlBuilder_WithReturnUrl_" data-uid="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.WithReturnUrl*"></a>
+  <h4 id="Auth0_AuthenticationApi_Builders_LogoutUrlBuilder_WithReturnUrl_System_Uri_" data-uid="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.WithReturnUrl(System.Uri)">WithReturnUrl(Uri)</h4>
+  <div class="markdown level1 summary"><p>Adds the <code>redirect_uri</code> query string parameter specifying the redirect URI.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LogoutUrlBuilder WithReturnUrl(Uri uri)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Uri</span></td>
+        <td><span class="parametername">uri</span></td>
+        <td><p><span class="xref">System.Uri</span> to redirect to.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.html">LogoutUrlBuilder</a></td>
+        <td><p>Current <a class="xref" href="Auth0.AuthenticationApi.Builders.LogoutUrlBuilder.html">LogoutUrlBuilder</a> to allow fluent configuration.</p>
 </td>
       </tr>
     </tbody>
@@ -279,10 +344,6 @@
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

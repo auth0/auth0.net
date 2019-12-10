@@ -1,0 +1,403 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Migration Guide </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Migration Guide ">
+    <meta name="generator" content="docfx 2.48.0.0">
+    
+    <link rel="shortcut icon" href="images/logo.png">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="migration-guide">Migration Guide</h1>
+
+<h2 id="migrating-from-v3-to-v4">Migrating from v3 to v4</h2>
+<p>Version 4 of both the Authentication API SDK as well as the Management API SDK include breaking changes. This document will discuss the reason for these changes, as well as instructions on how to migrate to the new version.</p>
+<h3 id="oidc-conformance">OIDC Conformance</h3>
+<p>The main reason for the breaking changes is related to improved OIDC compliance which was added to the Authentication API. Because of this, the behaviour of some of the existing Authentication API endpoints have changed, and other endpoints are being deprecated.</p>
+<p>For a full background and other details please refer to the official <a href="https://auth0.com/docs/api-auth/tutorials/adoption">OIDC-conformant authentication migration guide</a>.</p>
+<h3 id="better-separation-of-the-authentication-and-management-api">Better separation of the Authentication and Management API</h3>
+<p>Because of the changes to the Authentication pipeline for OIDC conformance, some breaking changes were introduced and we are therefore required to increase the version number of the Authentication API SDK. One problem however was that some classes were shared in between the Authentication API SDK and the Management API SDK, in particular the information returned from the <code>/userinfo</code> endpoint. </p>
+<p>In the new OIDC conformant pipeline this is not the case anymore, as the endpoint return claims which conform to the <a href="http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims">OIDC standard</a>.</p>
+<p>Because of this single instance of shared data between the Authentication and Management API SDKs, a lot of the <em>Models</em> returned by the various methods has been stored in the <a href="https://www.nuget.org/packages/Auth0.Core">Auth0.Core NuGet package</a>. With version 4 this is not the case anymore. </p>
+<p>All model classes are now stored in the NuGet package which they relate to. So all Authentication API SDK model classes are stored in the <a href="https://www.nuget.org/packages/Auth0.AuthenticationApi">Auth0.AuthenticationAPI NuGet package</a>. Likewise, all Management API SDK model classes are stored in the <a href="https://www.nuget.org/packages/Auth0.ManagementApi">Auth0.ManagementAPI NuGet package</a>.</p>
+<p>The <a href="https://www.nuget.org/packages/Auth0.Core">Auth0.Core NuGet package</a> only contains some shared classes used for communicating with the actual APIs, Exception classes etc.</p>
+<p>The separation allows us to evolve these 2 packages in the future more easily in a separate directions.</p>
+<h2 id="difference-between-version-3-and-version-4">Difference between Version 3 and Version 4</h2>
+<p>Version 3 of the Auth0.NET SDK can still be used for applications which do not use the OIDC-conformant pipeline. For these applications you must install the following NuGet packages:</p>
+<ul>
+<li><a href="https://www.nuget.org/packages/Auth0.AuthenticationApi">Auth0.AuthenticationAPI</a> Version 3.x</li>
+<li><a href="https://www.nuget.org/packages/Auth0.ManagementApi">Auth0.ManagementAPI</a> Version 3.x</li>
+<li><a href="https://www.nuget.org/packages/Auth0.Core">Auth0.Core</a> Version 3.x</li>
+</ul>
+<p>Version 4 of the Auth0.NET SDK <strong>must be used</strong> for applications which use the OIDC-conformant pipeline. For these applications you must install the following NuGet packages:</p>
+<ul>
+<li><a href="https://www.nuget.org/packages/Auth0.AuthenticationApi">Auth0.AuthenticationAPI</a> Version 4.x</li>
+<li><a href="https://www.nuget.org/packages/Auth0.ManagementApi">Auth0.ManagementAPI</a> Version 4.x</li>
+<li><a href="https://www.nuget.org/packages/Auth0.Core">Auth0.Core</a> Version 4.x</li>
+</ul>
+<h2 id="list-of-changes">List of changes</h2>
+<p>Here follows the list of changes made from Version 3 to Version 4 of the Auth0.NET SDK, with guidance on how to change your applications.</p>
+<h3 id="authentication-api">Authentication API</h3>
+<ul>
+<li><p><strong>Removed</strong> all members previously marked as obsolete. This relates mostly to the methods which did not conform to the *Async naming convention for .NET <code>async</code> methods.</p>
+</li>
+<li><p><strong>Deprecated</strong> the <code>AuthenticateAsync()</code> method as the legacy <code>oauth/ro</code> endpoint has been disabled. You should use <code>GetTokenAsync(ResourceOwnerTokenRequest)</code> instead. <code>AuthenticateAsync()</code> has been changed to simply call the new <code>GetTokenAsync(ResourceOwnerTokenRequest)</code> method. Note that confidential clients will need to provide a <code>ClientSecret</code> in addition to the <code>ClientId</code>. For more information see the <a href="https://auth0.com/docs/api/authentication#resource-owner-password">Resource Owner Password grant type</a>. </p>
+</li>
+<li><p><strong>Changed</strong> the response of <code>AuthenticateAsync()</code> to now return an <code>AccessTokenResponse</code> instead of <code>AuthorizationResponse</code>. </p>
+</li>
+<li><p><strong>Renamed</strong> the <code>Connection</code> property in <code>AuthenticationRequest</code> class to <code>Realm</code>. It is also now optional. If the Connection is not provided in the <code>Realm</code> property, the Authentication API will use the connection specified as the Default Directory in the <a href="https://manage.auth0.com/#/account">Account Settings</a>. <strong>As noted above however</strong>, you should use <code>GetTokenAsync(ResourceOwnerTokenRequest)</code> instead.</p>
+</li>
+<li><p><strong>Deprecated</strong> the <code>GetDelegationTokenAsync(RefreshTokenDelegationRequest)</code> method. The token refresh exchange must be done using the <code>GetTokenAsync(RefreshTokenRequest)</code> method.</p>
+</li>
+<li><p><strong>Renamed</strong> the <code>AccessToken</code> class returned by authentication and token methods to <code>AccessTokenResponse</code>. </p>
+</li>
+<li><p><strong>Changed</strong> the response of the <code>GetUserInfoAsync()</code> method to return a <code>UserInfo</code> class instead of <code>User</code>. This is in order to conform to the <a href="https://openid.net/specs/openid-connect-core-1_0.html#UserInfoResponse">OIDC Specification</a>.</p>
+</li>
+<li><p><strong>Removed</strong> the <code>GetTokenInfoAsync()</code> method, based on the deprecated <code>/tokeninfo</code> endpoint.</p>
+</li>
+<li><p><strong>Removed</strong> the <code>GetAccessTokenAsync</code> method, based on the deprecated <code>/oauth/access_token</code> endpoint.</p>
+</li>
+<li><p><strong>Removed</strong> the <code>WithDevice()</code> method from <code>AuthorizationUrlBuilder</code>, because of obsoleted <code>device</code> parameter.</p>
+</li>
+<li><p><strong>Added</strong> support for adding <code>nonce</code>, <code>audience</code>, <code>response_mode</code> and multiple <code>response_type</code> parameters to the <code>/authorize</code> URL when using the <code>AuthorizationUrlBuilder</code> class. This was done by adding the <code>WithNonce()</code>, <code>WithAudience()</code>, <code>WithResponseMode()</code> and <code>WithResponseType()</code> methods.</p>
+</li>
+<li><p><strong>Changed</strong> <code>LogoutUrlBuilder</code> to now use the <code>v2/logout</code> endpoint. </p>
+</li>
+<li><p><strong>Added</strong> support for adding <code>federated</code> and <code>clientId</code> parameters to the <code>v2/logout</code> endpoint when using the <code>LogoutUrlBuilder</code> class. This was done by adding the <code>Federated()</code> and <code>WithClientId()</code> methods.</p>
+</li>
+<li><p><strong>Removed</strong> the unused <code>OAuthToken</code> class. </p>
+</li>
+<li><p><strong>Moved</strong> all model classes from the <code>Auth0.Core</code> NuGet package to the <code>Auth0.AuthenticationApi</code> NuGet package. For more information see the list of Core Classes which has been affected below.</p>
+</li>
+</ul>
+<h3 id="management-api">Management API</h3>
+<ul>
+<li><strong>Moved</strong> all model classes from the <code>Auth0.Core</code> NuGet package to the <code>Auth0.ManagementApi</code> NuGet package. For more information see the list of Core Classes which has been affected below.</li>
+</ul>
+<h3 id="core-classes">Core Classes</h3>
+<p>The following types have been moved from the <code>Auth0.Core</code> NuGet package. Below you can see the list of classes with their old and new namespaces. Please update your code accordingly.</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Old Namespace</th>
+<th>New Namespace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Addons</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>BlacklistedTokenBase</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>Client</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>ClientApplicationType</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>ClientBase</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>ClientGrant</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>ClientGrantBase</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>Connection</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>ConnectionBase</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>DailyStatistics</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>DeviceCredential</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>DeviceCredentialBase</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>EmailProvider</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>EmailProviderBase</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>EmailProviderCredentials</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>EncryptionKey</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>Identity</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>Job</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>JwtConfiguration</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>LogEntry</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>Mobile</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>ResourceServer</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>ResourceServerBase</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>ResourceServerScope</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>Rule</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>RuleBase</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>LoginRequest</td>
+<td>Auth0.Core.Rules</td>
+<td>Auth0.ManagementApi.Models.Rules</td>
+</tr>
+<tr>
+<td>LoginRequestGeography</td>
+<td>Auth0.Core.Rules</td>
+<td>Auth0.ManagementApi.Models.Rules</td>
+</tr>
+<tr>
+<td>LoginRequestQuery</td>
+<td>Auth0.Core.Rules</td>
+<td>Auth0.ManagementApi.Models.Rules</td>
+</tr>
+<tr>
+<td>RulesContext</td>
+<td>Auth0.Core.Rules</td>
+<td>Auth0.ManagementApi.Models.Rules</td>
+</tr>
+<tr>
+<td>RulesContextSsoConfiguration</td>
+<td>Auth0.Core.Rules</td>
+<td>Auth0.ManagementApi.Models.Rules</td>
+</tr>
+<tr>
+<td>RulesContextStats</td>
+<td>Auth0.Core.Rules</td>
+<td>Auth0.ManagementApi.Models.Rules</td>
+</tr>
+<tr>
+<td>RulesRequest</td>
+<td>Auth0.Core.Rules</td>
+<td>Auth0.ManagementApi.Models.Rules</td>
+</tr>
+<tr>
+<td>ScopeEntry</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>Scopes</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>SigningAlgorithm</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>SigningKey</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>TenantErrorPage</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>TenantSettings</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>TenantSettingsBase</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>Ticket</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>TokenEndpointAuthMethod</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>User</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>UserBase</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>UserBlock</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+<tr>
+<td>UserBlocks</td>
+<td>Auth0.Core</td>
+<td>Auth0.ManagementApi.Models</td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>

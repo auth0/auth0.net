@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class RateLimit
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -84,16 +84,10 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -104,17 +98,21 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.Core.Http.html">Auth0.Core.Http</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.Core.dll</h6>
   <h5 id="Auth0_Core_Http_RateLimit_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class RateLimit</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
   <a id="Auth0_Core_Http_RateLimit_Limit_" data-uid="Auth0.Core.Http.RateLimit.Limit*"></a>
   <h4 id="Auth0_Core_Http_RateLimit_Limit" data-uid="Auth0.Core.Http.RateLimit.Limit">Limit</h4>
   <div class="markdown level1 summary"><p>The maximum number of requests the consumer is allowed to make.</p>
@@ -139,8 +137,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_Core_Http_RateLimit_Remaining_" data-uid="Auth0.Core.Http.RateLimit.Remaining*"></a>
   <h4 id="Auth0_Core_Http_RateLimit_Remaining" data-uid="Auth0.Core.Http.RateLimit.Remaining">Remaining</h4>
   <div class="markdown level1 summary"><p>The number of requests remaining in the current rate limit window.</p>
@@ -165,8 +161,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_Core_Http_RateLimit_Reset_" data-uid="Auth0.Core.Http.RateLimit.Reset*"></a>
   <h4 id="Auth0_Core_Http_RateLimit_Reset" data-uid="Auth0.Core.Http.RateLimit.Reset">Reset</h4>
   <div class="markdown level1 summary"><p>The date and time offset at which the current rate limit window is reset.</p>
@@ -186,7 +180,49 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DateTimeOffset</span></td>
+        <td><span class="xref">System.DateTimeOffset</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Auth0_Core_Http_RateLimit_Parse_" data-uid="Auth0.Core.Http.RateLimit.Parse*"></a>
+  <h4 id="Auth0_Core_Http_RateLimit_Parse_System_Net_Http_Headers_HttpResponseHeaders_" data-uid="Auth0.Core.Http.RateLimit.Parse(System.Net.Http.Headers.HttpResponseHeaders)">Parse(HttpResponseHeaders)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static RateLimit Parse(HttpResponseHeaders headers)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Net.Http.Headers.HttpResponseHeaders</span></td>
+        <td><span class="parametername">headers</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.Core.Http.RateLimit.html">RateLimit</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -196,10 +232,6 @@
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

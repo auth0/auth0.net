@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ClientGrantsClient
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,28 +73,34 @@
   
   <h1 id="Auth0_ManagementApi_Clients_ClientGrantsClient" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient" class="text-break">Class ClientGrantsClient
   </h1>
-  <div class="markdown level0 summary"><p>Contains all methods to call the /client-grants endpoints.</p>
+  <div class="markdown level0 summary"><p>Contains methods to access the /client-grants endpoints.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Auth0.ManagementApi.Clients.ClientBase.html">ClientBase</a></div>
+    <div class="level1"><a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html">BaseClient</a></div>
     <div class="level2"><span class="xref">ClientGrantsClient</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_Connection">BaseClient.Connection</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BaseUri">BaseClient.BaseUri</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_DefaultHeaders">BaseClient.DefaultHeaders</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BuildUri_System_String_System_Collections_Generic_IDictionary_System_String_System_String__">BaseClient.BuildUri(String, IDictionary&lt;String, String&gt;)</a>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -105,25 +111,29 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Clients.html">Auth0.ManagementApi.Clients</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Clients_ClientGrantsClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ClientGrantsClient : ClientBase</code></pre>
+    <pre><code class="lang-csharp hljs">public class ClientGrantsClient : BaseClient</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Clients_ClientGrantsClient__ctor_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ClientGrantsClient__ctor_ApiConnection_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.#ctor(ApiConnection)">ClientGrantsClient(ApiConnection)</h4>
-  <div class="markdown level1 summary"><p>Creates a new instance of <a class="xref" href="Auth0.ManagementApi.Clients.ClientGrantsClient.html">ClientGrantsClient</a>.</p>
+  <h4 id="Auth0_ManagementApi_Clients_ClientGrantsClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})">ClientGrantsClient(IManagementConnection, Uri, IDictionary&lt;String, String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of <a class="xref" href="Auth0.ManagementApi.Clients.ClientGrantsClient.html">ClientGrantsClient</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ClientGrantsClient(ApiConnection connection)</code></pre>
+    <pre><code class="lang-csharp hljs">public ClientGrantsClient(IManagementConnection connection, Uri baseUri, IDictionary&lt;string, string&gt; defaultHeaders)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -136,19 +146,29 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ApiConnection</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a></td>
         <td><span class="parametername">connection</span></td>
-        <td><p>The <see cref="!:IApiConnection"></see> which is used to communicate with the API.</p>
+        <td><p><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a> used to make all API calls.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Uri</span></td>
+        <td><span class="parametername">baseUri</span></td>
+        <td><p><span class="xref">System.Uri</span> of the endpoint to use in making API calls.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">defaultHeaders</span></td>
+        <td><p>Dictionary containing default headers included with every request this client makes.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Clients_ClientGrantsClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.CreateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ClientGrantsClient_CreateAsync_ClientGrantCreateRequest_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.CreateAsync(ClientGrantCreateRequest)">CreateAsync(ClientGrantCreateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ClientGrantsClient_CreateAsync_Auth0_ManagementApi_Models_ClientGrantCreateRequest_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.CreateAsync(Auth0.ManagementApi.Models.ClientGrantCreateRequest)">CreateAsync(ClientGrantCreateRequest)</h4>
   <div class="markdown level1 summary"><p>Creates a new client grant.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -167,9 +187,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ClientGrantCreateRequest</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.ClientGrantCreateRequest.html">ClientGrantCreateRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td><p>The <see cref="!:ClientGrantCreateRequest"></see> containing the properties of the Client Grant.</p>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.ClientGrantCreateRequest.html">ClientGrantCreateRequest</a> containing the properties of the Client Grant.</p>
 </td>
       </tr>
     </tbody>
@@ -184,14 +204,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">ClientGrant</span>&gt;</td>
-        <td><p>The new <see cref="!:ClientGrant"></see> that has been created.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.ClientGrant.html">ClientGrant</a>&gt;</td>
+        <td><p>The new <a class="xref" href="Auth0.ManagementApi.Models.ClientGrant.html">ClientGrant</a> that has been created.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_ClientGrantsClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.DeleteAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_ClientGrantsClient_DeleteAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.DeleteAsync(System.String)">DeleteAsync(String)</h4>
   <div class="markdown level1 summary"><p>Deletes a client grant.</p>
@@ -229,16 +247,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
-        <td><p>A <see cref="!:Task"></see> that represents the asynchronous delete operation.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous delete operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_ClientGrantsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ClientGrantsClient_GetAllAsync_GetClientGrantsRequest_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.GetAllAsync(GetClientGrantsRequest,PaginationInfo)">GetAllAsync(GetClientGrantsRequest, PaginationInfo)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ClientGrantsClient_GetAllAsync_Auth0_ManagementApi_Models_GetClientGrantsRequest_Auth0_ManagementApi_Paging_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.GetAllAsync(Auth0.ManagementApi.Models.GetClientGrantsRequest,Auth0.ManagementApi.Paging.PaginationInfo)">GetAllAsync(GetClientGrantsRequest, PaginationInfo)</h4>
   <div class="markdown level1 summary"><p>Gets a list of all the client grants.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -257,15 +273,15 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">GetClientGrantsRequest</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.GetClientGrantsRequest.html">GetClientGrantsRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>Specifies criteria to use when querying client grants.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">PaginationInfo</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></td>
         <td><span class="parametername">pagination</span></td>
-        <td><p>Specifies <see cref="!:PaginationInfo"></see> to use in requesting paged results.</p>
+        <td><p>Specifies <a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a> to use in requesting paged results.</p>
 </td>
       </tr>
     </tbody>
@@ -280,16 +296,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">ClientGrant</span>&gt;&gt;</td>
-        <td><p>A <see cref="!:IPagedList&lt;ClientGrant>"></see> containing the client grants requested.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.ClientGrant.html">ClientGrant</a>&gt;&gt;</td>
+        <td><p>A <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the client grants requested.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_ClientGrantsClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.UpdateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ClientGrantsClient_UpdateAsync_System_String_ClientGrantUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.UpdateAsync(System.String,ClientGrantUpdateRequest)">UpdateAsync(String, ClientGrantUpdateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ClientGrantsClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_ClientGrantUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.ClientGrantUpdateRequest)">UpdateAsync(String, ClientGrantUpdateRequest)</h4>
   <div class="markdown level1 summary"><p>Updates a client grant.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -314,9 +328,9 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">ClientGrantUpdateRequest</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.ClientGrantUpdateRequest.html">ClientGrantUpdateRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td><p>The <see cref="!:ClientGrantUpdateRequest"></see> containing the properties to update.</p>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.ClientGrantUpdateRequest.html">ClientGrantUpdateRequest</a> containing the properties to update.</p>
 </td>
       </tr>
     </tbody>
@@ -331,8 +345,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">ClientGrant</span>&gt;</td>
-        <td><p>The <see cref="!:ClientGrant"></see> that has been updated.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.ClientGrant.html">ClientGrant</a>&gt;</td>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.ClientGrant.html">ClientGrant</a> that has been updated.</p>
 </td>
       </tr>
     </tbody>
@@ -342,10 +356,6 @@
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

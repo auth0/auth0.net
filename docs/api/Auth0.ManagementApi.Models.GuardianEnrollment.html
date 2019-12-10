@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class GuardianEnrollment
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -83,16 +83,10 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -103,17 +97,21 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Models.html">Auth0.ManagementApi.Models</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Models_GuardianEnrollment_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class GuardianEnrollment</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Models_GuardianEnrollment_EnrolledAt_" data-uid="Auth0.ManagementApi.Models.GuardianEnrollment.EnrolledAt*"></a>
   <h4 id="Auth0_ManagementApi_Models_GuardianEnrollment_EnrolledAt" data-uid="Auth0.ManagementApi.Models.GuardianEnrollment.EnrolledAt">EnrolledAt</h4>
   <div class="markdown level1 summary"><p>Date and time enrollment occurred.</p>
@@ -121,7 +119,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DateTime? EnrolledAt { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;enrolled_at&quot;)]
+public DateTime? EnrolledAt { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -133,13 +132,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">DateTime</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_GuardianEnrollment_Id_" data-uid="Auth0.ManagementApi.Models.GuardianEnrollment.Id*"></a>
   <h4 id="Auth0_ManagementApi_Models_GuardianEnrollment_Id" data-uid="Auth0.ManagementApi.Models.GuardianEnrollment.Id">Id</h4>
   <div class="markdown level1 summary"><p>Enrollment generated ID.</p>
@@ -147,7 +144,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Id { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;id&quot;)]
+public string Id { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -164,8 +162,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_GuardianEnrollment_Identifier_" data-uid="Auth0.ManagementApi.Models.GuardianEnrollment.Identifier*"></a>
   <h4 id="Auth0_ManagementApi_Models_GuardianEnrollment_Identifier" data-uid="Auth0.ManagementApi.Models.GuardianEnrollment.Identifier">Identifier</h4>
   <div class="markdown level1 summary"><p>Device identifier (usually phone identifier).</p>
@@ -173,7 +169,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Identifier { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;identifier&quot;)]
+public string Identifier { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -190,8 +187,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_GuardianEnrollment_LastAuth_" data-uid="Auth0.ManagementApi.Models.GuardianEnrollment.LastAuth*"></a>
   <h4 id="Auth0_ManagementApi_Models_GuardianEnrollment_LastAuth" data-uid="Auth0.ManagementApi.Models.GuardianEnrollment.LastAuth">LastAuth</h4>
   <div class="markdown level1 summary"><p>Date and time when device was last used for authentication.</p>
@@ -199,7 +194,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DateTime? LastAuth { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;last_auth&quot;)]
+public DateTime? LastAuth { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -211,13 +207,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">DateTime</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_GuardianEnrollment_Name_" data-uid="Auth0.ManagementApi.Models.GuardianEnrollment.Name*"></a>
   <h4 id="Auth0_ManagementApi_Models_GuardianEnrollment_Name" data-uid="Auth0.ManagementApi.Models.GuardianEnrollment.Name">Name</h4>
   <div class="markdown level1 summary"><p>Name of the device which was enrolled.</p>
@@ -225,7 +219,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Name { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;name&quot;)]
+public string Name { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -242,8 +237,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_GuardianEnrollment_PhoneNumber_" data-uid="Auth0.ManagementApi.Models.GuardianEnrollment.PhoneNumber*"></a>
   <h4 id="Auth0_ManagementApi_Models_GuardianEnrollment_PhoneNumber" data-uid="Auth0.ManagementApi.Models.GuardianEnrollment.PhoneNumber">PhoneNumber</h4>
   <div class="markdown level1 summary"><p>Phone number.</p>
@@ -251,7 +244,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string PhoneNumber { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;phone_number&quot;)]
+public string PhoneNumber { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -268,8 +262,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_GuardianEnrollment_Status_" data-uid="Auth0.ManagementApi.Models.GuardianEnrollment.Status*"></a>
   <h4 id="Auth0_ManagementApi_Models_GuardianEnrollment_Status" data-uid="Auth0.ManagementApi.Models.GuardianEnrollment.Status">Status</h4>
   <div class="markdown level1 summary"><p>Status of the enrollment.</p>
@@ -277,7 +269,9 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public GuardianEnrollmentStatus? Status { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;status&quot;)]
+[JsonConverter(typeof(StringEnumConverter))]
+public GuardianEnrollmentStatus? Status { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -299,10 +293,6 @@
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

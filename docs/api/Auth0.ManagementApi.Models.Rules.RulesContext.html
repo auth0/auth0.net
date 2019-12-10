@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class RulesContext
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -83,16 +83,10 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -103,17 +97,22 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Models.Rules.html">Auth0.ManagementApi.Models.Rules</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Models_Rules_RulesContext_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class RulesContext</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonObject]
+public class RulesContext</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Models_Rules_RulesContext_ClientId_" data-uid="Auth0.ManagementApi.Models.Rules.RulesContext.ClientId*"></a>
   <h4 id="Auth0_ManagementApi_Models_Rules_RulesContext_ClientId" data-uid="Auth0.ManagementApi.Models.Rules.RulesContext.ClientId">ClientId</h4>
   <div class="markdown level1 summary"><p>The client id of the application the user is logging in to.</p>
@@ -121,7 +120,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ClientId { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;clientID&quot;)]
+public string ClientId { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -138,15 +138,14 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_Rules_RulesContext_ClientName_" data-uid="Auth0.ManagementApi.Models.Rules.RulesContext.ClientName*"></a>
   <h4 id="Auth0_ManagementApi_Models_Rules_RulesContext_ClientName" data-uid="Auth0.ManagementApi.Models.Rules.RulesContext.ClientName">ClientName</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ClientName { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;clientName&quot;)]
+public string ClientName { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -163,8 +162,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_Rules_RulesContext_Connection_" data-uid="Auth0.ManagementApi.Models.Rules.RulesContext.Connection*"></a>
   <h4 id="Auth0_ManagementApi_Models_Rules_RulesContext_Connection" data-uid="Auth0.ManagementApi.Models.Rules.RulesContext.Connection">Connection</h4>
   <div class="markdown level1 summary"><p>The name of the connection used to authenticate the user (e.g.: twitter or some-google-apps-domain)</p>
@@ -172,7 +169,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Connection { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;connection&quot;)]
+public string Connection { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -189,8 +187,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_Rules_RulesContext_ConnectionStrategy_" data-uid="Auth0.ManagementApi.Models.Rules.RulesContext.ConnectionStrategy*"></a>
   <h4 id="Auth0_ManagementApi_Models_Rules_RulesContext_ConnectionStrategy" data-uid="Auth0.ManagementApi.Models.Rules.RulesContext.ConnectionStrategy">ConnectionStrategy</h4>
   <div class="markdown level1 summary"><p>The type of connection. </p>
@@ -198,7 +194,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string ConnectionStrategy { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;connectionStrategy&quot;)]
+public string ConnectionStrategy { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -219,15 +216,14 @@
   <div class="markdown level1 remarks"><p>For social connection connectionStrategy === connection. For enterprise connections, the strategy will be waad (Windows Azure AD), 
 ad (Active Directory/LDAP), auth0 (database connections), etc.</p>
 </div>
-  
-  
   <a id="Auth0_ManagementApi_Models_Rules_RulesContext_JwtConfiguration_" data-uid="Auth0.ManagementApi.Models.Rules.RulesContext.JwtConfiguration*"></a>
   <h4 id="Auth0_ManagementApi_Models_Rules_RulesContext_JwtConfiguration" data-uid="Auth0.ManagementApi.Models.Rules.RulesContext.JwtConfiguration">JwtConfiguration</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public dynamic JwtConfiguration { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;jwtConfiguration&quot;)]
+public dynamic JwtConfiguration { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -244,8 +240,6 @@ ad (Active Directory/LDAP), auth0 (database connections), etc.</p>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_Rules_RulesContext_LoginRequest_" data-uid="Auth0.ManagementApi.Models.Rules.RulesContext.LoginRequest*"></a>
   <h4 id="Auth0_ManagementApi_Models_Rules_RulesContext_LoginRequest" data-uid="Auth0.ManagementApi.Models.Rules.RulesContext.LoginRequest">LoginRequest</h4>
   <div class="markdown level1 summary"><p>An object containing useful information of the request.</p>
@@ -253,7 +247,8 @@ ad (Active Directory/LDAP), auth0 (database connections), etc.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public LoginRequest LoginRequest { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;request&quot;)]
+public LoginRequest LoginRequest { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -270,8 +265,6 @@ ad (Active Directory/LDAP), auth0 (database connections), etc.</p>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_Rules_RulesContext_Protocol_" data-uid="Auth0.ManagementApi.Models.Rules.RulesContext.Protocol*"></a>
   <h4 id="Auth0_ManagementApi_Models_Rules_RulesContext_Protocol" data-uid="Auth0.ManagementApi.Models.Rules.RulesContext.Protocol">Protocol</h4>
   <div class="markdown level1 summary"><p>The authentication protocol. </p>
@@ -279,7 +272,8 @@ ad (Active Directory/LDAP), auth0 (database connections), etc.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Protocol { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;protocol&quot;)]
+public string Protocol { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -302,8 +296,6 @@ oauth2-resource-owner (user/password login typically used on database connection
 wsfed (WS-Federation used on Microsoft products like Office365), wstrust-usernamemixed (WS-trust user/password login used on CRM and Office365), 
 and delegation (when calling the Delegation endpoint).</p>
 </div>
-  
-  
   <a id="Auth0_ManagementApi_Models_Rules_RulesContext_SamlConfiguration_" data-uid="Auth0.ManagementApi.Models.Rules.RulesContext.SamlConfiguration*"></a>
   <h4 id="Auth0_ManagementApi_Models_Rules_RulesContext_SamlConfiguration" data-uid="Auth0.ManagementApi.Models.Rules.RulesContext.SamlConfiguration">SamlConfiguration</h4>
   <div class="markdown level1 summary"><p>An object that controls the behavior of the SAML and WS-Fed endpoints. Useful for advanced claims mapping and token enrichment (only available for samlp and wsfed protocol).</p>
@@ -311,7 +303,8 @@ and delegation (when calling the Delegation endpoint).</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public dynamic SamlConfiguration { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;samlConfiguration&quot;)]
+public dynamic SamlConfiguration { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -328,15 +321,14 @@ and delegation (when calling the Delegation endpoint).</p>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_Rules_RulesContext_SingleSignOn_" data-uid="Auth0.ManagementApi.Models.Rules.RulesContext.SingleSignOn*"></a>
   <h4 id="Auth0_ManagementApi_Models_Rules_RulesContext_SingleSignOn" data-uid="Auth0.ManagementApi.Models.Rules.RulesContext.SingleSignOn">SingleSignOn</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RulesContextSsoConfiguration SingleSignOn { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;sso&quot;)]
+public RulesContextSsoConfiguration SingleSignOn { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -353,8 +345,6 @@ and delegation (when calling the Delegation endpoint).</p>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_Rules_RulesContext_Stats_" data-uid="Auth0.ManagementApi.Models.Rules.RulesContext.Stats*"></a>
   <h4 id="Auth0_ManagementApi_Models_Rules_RulesContext_Stats" data-uid="Auth0.ManagementApi.Models.Rules.RulesContext.Stats">Stats</h4>
   <div class="markdown level1 summary"><p>An object containing specific user stats, like stats.loginsCount.</p>
@@ -362,7 +352,8 @@ and delegation (when calling the Delegation endpoint).</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RulesContextStats Stats { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;stats&quot;)]
+public RulesContextStats Stats { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -384,10 +375,6 @@ and delegation (when calling the Delegation endpoint).</p>
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

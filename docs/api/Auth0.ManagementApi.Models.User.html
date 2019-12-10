@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class User
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -124,16 +124,10 @@
       <a class="xref" href="Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_Blocked">UserBase.Blocked</a>
     </div>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -144,17 +138,21 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Models.html">Auth0.ManagementApi.Models</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Models_User_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class User : UserBase</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Models_User_CreatedAt_" data-uid="Auth0.ManagementApi.Models.User.CreatedAt*"></a>
   <h4 id="Auth0_ManagementApi_Models_User_CreatedAt" data-uid="Auth0.ManagementApi.Models.User.CreatedAt">CreatedAt</h4>
   <div class="markdown level1 summary"><p>Gets or sets the date the user was created.</p>
@@ -162,7 +160,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DateTime? CreatedAt { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;created_at&quot;)]
+public DateTime? CreatedAt { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -174,13 +173,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">DateTime</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_User_Identities_" data-uid="Auth0.ManagementApi.Models.User.Identities*"></a>
   <h4 id="Auth0_ManagementApi_Models_User_Identities" data-uid="Auth0.ManagementApi.Models.User.Identities">Identities</h4>
   <div class="markdown level1 summary"><p>An array of objects with information about the user&apos;s identities. More than one will exists in case accounts are linked</p>
@@ -188,7 +185,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Identity[] Identities { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;identities&quot;)]
+public Identity[] Identities { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -205,8 +203,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_User_LastIpAddress_" data-uid="Auth0.ManagementApi.Models.User.LastIpAddress*"></a>
   <h4 id="Auth0_ManagementApi_Models_User_LastIpAddress" data-uid="Auth0.ManagementApi.Models.User.LastIpAddress">LastIpAddress</h4>
   <div class="markdown level1 summary"><p>The last login IP address.</p>
@@ -214,7 +210,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string LastIpAddress { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;last_ip&quot;)]
+public string LastIpAddress { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -231,8 +228,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_User_LastLogin_" data-uid="Auth0.ManagementApi.Models.User.LastLogin*"></a>
   <h4 id="Auth0_ManagementApi_Models_User_LastLogin" data-uid="Auth0.ManagementApi.Models.User.LastLogin">LastLogin</h4>
   <div class="markdown level1 summary"><p>The last login date for this user.</p>
@@ -240,7 +235,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DateTime? LastLogin { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;last_login&quot;)]
+public DateTime? LastLogin { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -252,13 +248,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">DateTime</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_User_LastPasswordReset_" data-uid="Auth0.ManagementApi.Models.User.LastPasswordReset*"></a>
   <h4 id="Auth0_ManagementApi_Models_User_LastPasswordReset" data-uid="Auth0.ManagementApi.Models.User.LastPasswordReset">LastPasswordReset</h4>
   <div class="markdown level1 summary"><p>Gets or sets the date the user last reset their password.</p>
@@ -266,7 +260,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DateTime? LastPasswordReset { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;last_password_reset&quot;)]
+public DateTime? LastPasswordReset { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -278,20 +273,19 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">DateTime</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_User_Locale_" data-uid="Auth0.ManagementApi.Models.User.Locale*"></a>
   <h4 id="Auth0_ManagementApi_Models_User_Locale" data-uid="Auth0.ManagementApi.Models.User.Locale">Locale</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Locale { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;locale&quot;)]
+public string Locale { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -311,8 +305,6 @@
   <h5 id="Auth0_ManagementApi_Models_User_Locale_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Returned for the Facebook, Google, and Microsoft social providers.</p>
 </div>
-  
-  
   <a id="Auth0_ManagementApi_Models_User_LoginsCount_" data-uid="Auth0.ManagementApi.Models.User.LoginsCount*"></a>
   <h4 id="Auth0_ManagementApi_Models_User_LoginsCount" data-uid="Auth0.ManagementApi.Models.User.LoginsCount">LoginsCount</h4>
   <div class="markdown level1 summary"><p>The number of logins for this user.</p>
@@ -320,7 +312,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string LoginsCount { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;logins_count&quot;)]
+public string LoginsCount { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -337,8 +330,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_User_Multifactor_" data-uid="Auth0.ManagementApi.Models.User.Multifactor*"></a>
   <h4 id="Auth0_ManagementApi_Models_User_Multifactor" data-uid="Auth0.ManagementApi.Models.User.Multifactor">Multifactor</h4>
   <div class="markdown level1 summary"><p>Multifactor settings.</p>
@@ -346,7 +337,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string[] Multifactor { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;multifactor&quot;)]
+public string[] Multifactor { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -363,8 +355,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_User_ProviderAttributes_" data-uid="Auth0.ManagementApi.Models.User.ProviderAttributes*"></a>
   <h4 id="Auth0_ManagementApi_Models_User_ProviderAttributes" data-uid="Auth0.ManagementApi.Models.User.ProviderAttributes">ProviderAttributes</h4>
   <div class="markdown level1 summary"><p>Contains a lists of all the extra provider specific user attributes over and above those contained in the <a href="https://auth0.com/docs/user-profile/normalized">normalized user profile</a>.</p>
@@ -372,7 +362,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IDictionary&lt;string, JToken&gt; ProviderAttributes { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonExtensionData]
+public IDictionary&lt;string, JToken&gt; ProviderAttributes { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -384,13 +375,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">JToken</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">Newtonsoft.Json.Linq.JToken</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_User_UpdatedAt_" data-uid="Auth0.ManagementApi.Models.User.UpdatedAt*"></a>
   <h4 id="Auth0_ManagementApi_Models_User_UpdatedAt" data-uid="Auth0.ManagementApi.Models.User.UpdatedAt">UpdatedAt</h4>
   <div class="markdown level1 summary"><p>Gets or sets the date the user was last updated (modified).</p>
@@ -398,7 +387,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DateTime? UpdatedAt { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;updated_at&quot;)]
+public DateTime? UpdatedAt { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -410,13 +400,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">DateTime</span>&gt;</td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_User_UserId_" data-uid="Auth0.ManagementApi.Models.User.UserId*"></a>
   <h4 id="Auth0_ManagementApi_Models_User_UserId" data-uid="Auth0.ManagementApi.Models.User.UserId">UserId</h4>
   <div class="markdown level1 summary"><p>A unique identifier of the user per identity provider, same for all apps (e.g.: google-oauth2|103547991597142817347). ALWAYS GENERATED</p>
@@ -424,7 +412,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string UserId { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;user_id&quot;)]
+public string UserId { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -446,10 +435,6 @@
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

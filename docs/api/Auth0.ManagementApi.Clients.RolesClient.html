@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class RolesClient
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,28 +73,34 @@
   
   <h1 id="Auth0_ManagementApi_Clients_RolesClient" data-uid="Auth0.ManagementApi.Clients.RolesClient" class="text-break">Class RolesClient
   </h1>
-  <div class="markdown level0 summary"><p>Contains all the methods to call the /roles endpoints.</p>
+  <div class="markdown level0 summary"><p>Contains methods to access the /roles endpoints.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Auth0.ManagementApi.Clients.ClientBase.html">ClientBase</a></div>
+    <div class="level1"><a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html">BaseClient</a></div>
     <div class="level2"><span class="xref">RolesClient</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_Connection">BaseClient.Connection</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BaseUri">BaseClient.BaseUri</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_DefaultHeaders">BaseClient.DefaultHeaders</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BuildUri_System_String_System_Collections_Generic_IDictionary_System_String_System_String__">BaseClient.BuildUri(String, IDictionary&lt;String, String&gt;)</a>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -105,25 +111,29 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Clients.html">Auth0.ManagementApi.Clients</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Clients_RolesClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class RolesClient : ClientBase</code></pre>
+    <pre><code class="lang-csharp hljs">public class RolesClient : BaseClient</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Clients_RolesClient__ctor_" data-uid="Auth0.ManagementApi.Clients.RolesClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_RolesClient__ctor_ApiConnection_" data-uid="Auth0.ManagementApi.Clients.RolesClient.#ctor(ApiConnection)">RolesClient(ApiConnection)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_RolesClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.RolesClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})">RolesClient(IManagementConnection, Uri, IDictionary&lt;String, String&gt;)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.Clients.RolesClient.html">RolesClient</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RolesClient(ApiConnection connection)</code></pre>
+    <pre><code class="lang-csharp hljs">public RolesClient(IManagementConnection connection, Uri baseUri, IDictionary&lt;string, string&gt; defaultHeaders)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -136,19 +146,29 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ApiConnection</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a></td>
         <td><span class="parametername">connection</span></td>
-        <td><p>The <see cref="!:ApiConnection"></see> to use.</p>
+        <td><p><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a> used to make all API calls.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Uri</span></td>
+        <td><span class="parametername">baseUri</span></td>
+        <td><p><span class="xref">System.Uri</span> of the endpoint to use in making API calls.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">defaultHeaders</span></td>
+        <td><p>Dictionary containing default headers included with every request this client makes.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Clients_RolesClient_AssignPermissionsAsync_" data-uid="Auth0.ManagementApi.Clients.RolesClient.AssignPermissionsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_RolesClient_AssignPermissionsAsync_System_String_AssignPermissionsRequest_" data-uid="Auth0.ManagementApi.Clients.RolesClient.AssignPermissionsAsync(System.String,AssignPermissionsRequest)">AssignPermissionsAsync(String, AssignPermissionsRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_RolesClient_AssignPermissionsAsync_System_String_Auth0_ManagementApi_Models_AssignPermissionsRequest_" data-uid="Auth0.ManagementApi.Clients.RolesClient.AssignPermissionsAsync(System.String,Auth0.ManagementApi.Models.AssignPermissionsRequest)">AssignPermissionsAsync(String, AssignPermissionsRequest)</h4>
   <div class="markdown level1 summary"><p>Assign permissions to a role.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -173,9 +193,9 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">AssignPermissionsRequest</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td><p>A <see cref="!:AssignPermissionsRequest"></see> containing the permission identifiers to assign to the role.</p>
+        <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a> containing the permission identifiers to assign to the role.</p>
 </td>
       </tr>
     </tbody>
@@ -190,16 +210,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
-        <td><p>A <see cref="!:Task"></see> that represents the asynchronous assignment operation.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous assignment operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_RolesClient_AssignUsersAsync_" data-uid="Auth0.ManagementApi.Clients.RolesClient.AssignUsersAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_RolesClient_AssignUsersAsync_System_String_AssignUsersRequest_" data-uid="Auth0.ManagementApi.Clients.RolesClient.AssignUsersAsync(System.String,AssignUsersRequest)">AssignUsersAsync(String, AssignUsersRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_RolesClient_AssignUsersAsync_System_String_Auth0_ManagementApi_Models_AssignUsersRequest_" data-uid="Auth0.ManagementApi.Clients.RolesClient.AssignUsersAsync(System.String,Auth0.ManagementApi.Models.AssignUsersRequest)">AssignUsersAsync(String, AssignUsersRequest)</h4>
   <div class="markdown level1 summary"><p>Assigns Users to a role.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -224,9 +242,9 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">AssignUsersRequest</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.AssignUsersRequest.html">AssignUsersRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td><p>A <see cref="!:AssignUsersRequest"></see> containing the user IDs to assign to the role.</p>
+        <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.AssignUsersRequest.html">AssignUsersRequest</a> containing the user IDs to assign to the role.</p>
 </td>
       </tr>
     </tbody>
@@ -241,16 +259,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
-        <td><p>A <see cref="!:Task"></see> that represents the asynchronous assign operation.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous assign operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_RolesClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.RolesClient.CreateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_RolesClient_CreateAsync_RoleCreateRequest_" data-uid="Auth0.ManagementApi.Clients.RolesClient.CreateAsync(RoleCreateRequest)">CreateAsync(RoleCreateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_RolesClient_CreateAsync_Auth0_ManagementApi_Models_RoleCreateRequest_" data-uid="Auth0.ManagementApi.Clients.RolesClient.CreateAsync(Auth0.ManagementApi.Models.RoleCreateRequest)">CreateAsync(RoleCreateRequest)</h4>
   <div class="markdown level1 summary"><p>Creates a new role according to the request.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -269,9 +285,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">RoleCreateRequest</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.RoleCreateRequest.html">RoleCreateRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td><p>The <see cref="!:RoleCreateRequest"></see> containing the details of the role to create.</p>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.RoleCreateRequest.html">RoleCreateRequest</a> containing the details of the role to create.</p>
 </td>
       </tr>
     </tbody>
@@ -286,14 +302,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">Role</span>&gt;</td>
-        <td><p>The newly created <see cref="!:Role"></see>.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>&gt;</td>
+        <td><p>The newly created <a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_RolesClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.RolesClient.DeleteAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_RolesClient_DeleteAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.RolesClient.DeleteAsync(System.String)">DeleteAsync(String)</h4>
   <div class="markdown level1 summary"><p>Deletes a role.</p>
@@ -331,16 +345,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
-        <td><p>A <see cref="!:Task"></see> that represents the asynchronous delete operation.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous delete operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_RolesClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.RolesClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_RolesClient_GetAllAsync_GetRolesRequest_" data-uid="Auth0.ManagementApi.Clients.RolesClient.GetAllAsync(GetRolesRequest)">GetAllAsync(GetRolesRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_RolesClient_GetAllAsync_Auth0_ManagementApi_Models_GetRolesRequest_" data-uid="Auth0.ManagementApi.Clients.RolesClient.GetAllAsync(Auth0.ManagementApi.Models.GetRolesRequest)">GetAllAsync(GetRolesRequest)</h4>
   <div class="markdown level1 summary"><p>Retrieves a list of all roles.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -359,7 +371,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">GetRolesRequest</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.GetRolesRequest.html">GetRolesRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>Specifies criteria to use when querying roles.</p>
 </td>
@@ -376,16 +388,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">Role</span>&gt;&gt;</td>
-        <td><p>An <see cref="!:IPagedList&lt;Role>"></see> containing the roles</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>&gt;&gt;</td>
+        <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the roles</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_RolesClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.RolesClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_RolesClient_GetAllAsync_GetRolesRequest_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.RolesClient.GetAllAsync(GetRolesRequest,PaginationInfo)">GetAllAsync(GetRolesRequest, PaginationInfo)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_RolesClient_GetAllAsync_Auth0_ManagementApi_Models_GetRolesRequest_Auth0_ManagementApi_Paging_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.RolesClient.GetAllAsync(Auth0.ManagementApi.Models.GetRolesRequest,Auth0.ManagementApi.Paging.PaginationInfo)">GetAllAsync(GetRolesRequest, PaginationInfo)</h4>
   <div class="markdown level1 summary"><p>Retrieves a list of all roles.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -404,13 +414,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">GetRolesRequest</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.GetRolesRequest.html">GetRolesRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>Specifies criteria to use when querying roles.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">PaginationInfo</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></td>
         <td><span class="parametername">pagination</span></td>
         <td><p>Specifies pagination info to use when requesting paged results.</p>
 </td>
@@ -427,14 +437,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">Role</span>&gt;&gt;</td>
-        <td><p>An <see cref="!:IPagedList&lt;Role>"></see> containing the roles requested.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>&gt;&gt;</td>
+        <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the roles requested.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_RolesClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.RolesClient.GetAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_RolesClient_GetAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.RolesClient.GetAsync(System.String)">GetAsync(String)</h4>
   <div class="markdown level1 summary"><p>Retrieves a role by its ID.</p>
@@ -472,16 +480,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">Role</span>&gt;</td>
-        <td><p>The <see cref="!:Role"></see> that was requested.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>&gt;</td>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a> that was requested.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_RolesClient_GetPermissionsAsync_" data-uid="Auth0.ManagementApi.Clients.RolesClient.GetPermissionsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_RolesClient_GetPermissionsAsync_System_String_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.RolesClient.GetPermissionsAsync(System.String,PaginationInfo)">GetPermissionsAsync(String, PaginationInfo)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_RolesClient_GetPermissionsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.RolesClient.GetPermissionsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo)">GetPermissionsAsync(String, PaginationInfo)</h4>
   <div class="markdown level1 summary"><p>Gets the permissions assigned to a role.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -506,9 +512,9 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">PaginationInfo</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></td>
         <td><span class="parametername">pagination</span></td>
-        <td><p>Specifies <see cref="!:PaginationInfo"></see> to use in requesting paged results.</p>
+        <td><p>Specifies <a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a> to use in requesting paged results.</p>
 </td>
       </tr>
     </tbody>
@@ -523,14 +529,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">Permission</span>&gt;&gt;</td>
-        <td><p>An <see cref="!:IPagedList&lt;Permission>"></see> containing the assigned permissions for this role.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Permission.html">Permission</a>&gt;&gt;</td>
+        <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the assigned permissions for this role.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_RolesClient_GetUsersAsync_" data-uid="Auth0.ManagementApi.Clients.RolesClient.GetUsersAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_RolesClient_GetUsersAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.RolesClient.GetUsersAsync(System.String)">GetUsersAsync(String)</h4>
   <div class="markdown level1 summary"><p>Retrieves a list of users associated with a role.</p>
@@ -568,16 +572,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">AssignedUser</span>&gt;&gt;</td>
-        <td><p>An <see cref="!:IPagedList&lt;AssignedUser>"></see> containing the assigned users.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AssignedUser.html">AssignedUser</a>&gt;&gt;</td>
+        <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the assigned users.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_RolesClient_GetUsersAsync_" data-uid="Auth0.ManagementApi.Clients.RolesClient.GetUsersAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_RolesClient_GetUsersAsync_System_String_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.RolesClient.GetUsersAsync(System.String,PaginationInfo)">GetUsersAsync(String, PaginationInfo)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_RolesClient_GetUsersAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.RolesClient.GetUsersAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo)">GetUsersAsync(String, PaginationInfo)</h4>
   <div class="markdown level1 summary"><p>Retrieves a list of users associated with a role.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -602,9 +604,9 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">PaginationInfo</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></td>
         <td><span class="parametername">pagination</span></td>
-        <td><p>Specifies <see cref="!:PaginationInfo"></see> to use in requesting paged results.</p>
+        <td><p>Specifies <a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a> to use in requesting paged results.</p>
 </td>
       </tr>
     </tbody>
@@ -619,16 +621,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">IPagedList</span>&lt;<span class="xref">AssignedUser</span>&gt;&gt;</td>
-        <td><p>An <see cref="!:IPagedList&lt;AssignedUser>"></see> containing the assigned users.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AssignedUser.html">AssignedUser</a>&gt;&gt;</td>
+        <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the assigned users.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_RolesClient_RemovePermissionsAsync_" data-uid="Auth0.ManagementApi.Clients.RolesClient.RemovePermissionsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_RolesClient_RemovePermissionsAsync_System_String_AssignPermissionsRequest_" data-uid="Auth0.ManagementApi.Clients.RolesClient.RemovePermissionsAsync(System.String,AssignPermissionsRequest)">RemovePermissionsAsync(String, AssignPermissionsRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_RolesClient_RemovePermissionsAsync_System_String_Auth0_ManagementApi_Models_AssignPermissionsRequest_" data-uid="Auth0.ManagementApi.Clients.RolesClient.RemovePermissionsAsync(System.String,Auth0.ManagementApi.Models.AssignPermissionsRequest)">RemovePermissionsAsync(String, AssignPermissionsRequest)</h4>
   <div class="markdown level1 summary"><p>Remove permissions assigned to a role.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -653,9 +653,9 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">AssignPermissionsRequest</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td><p>A <see cref="!:AssignPermissionsRequest"></see> containing the permission identifiers to remove from the role.</p>
+        <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a> containing the permission identifiers to remove from the role.</p>
 </td>
       </tr>
     </tbody>
@@ -670,16 +670,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
-        <td><p>A <see cref="!:Task"></see> that represents the asynchronous remove operation.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous remove operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Clients_RolesClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.RolesClient.UpdateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_RolesClient_UpdateAsync_System_String_RoleUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.RolesClient.UpdateAsync(System.String,RoleUpdateRequest)">UpdateAsync(String, RoleUpdateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_RolesClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_RoleUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.RolesClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.RoleUpdateRequest)">UpdateAsync(String, RoleUpdateRequest)</h4>
   <div class="markdown level1 summary"><p>Updates a role.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -704,9 +702,9 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">RoleUpdateRequest</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.RoleUpdateRequest.html">RoleUpdateRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td><p>A <see cref="!:RoleUpdateRequest"></see> containing the information to update.</p>
+        <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.RoleUpdateRequest.html">RoleUpdateRequest</a> containing the information to update.</p>
 </td>
       </tr>
     </tbody>
@@ -721,8 +719,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">Role</span>&gt;</td>
-        <td><p>The newly updated <see cref="!:Role"></see>.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>&gt;</td>
+        <td><p>The newly updated <a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -732,10 +730,6 @@
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>

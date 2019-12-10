@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class TenantDeviceFlow
    ">
-    <meta name="generator" content="docfx 2.45.1.0">
+    <meta name="generator" content="docfx 2.48.0.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -84,16 +84,10 @@
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
     </div>
     <div>
       <span class="xref">System.Object.GetHashCode()</span>
@@ -104,17 +98,21 @@
     <div>
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Models.html">Auth0.ManagementApi.Models</a></h6>
-  <h6><strong>Assembly</strong>: cs.temp.dll.dll</h6>
+  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Models_TenantDeviceFlow_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public class TenantDeviceFlow</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantDeviceFlow_Charset_" data-uid="Auth0.ManagementApi.Models.TenantDeviceFlow.Charset*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantDeviceFlow_Charset" data-uid="Auth0.ManagementApi.Models.TenantDeviceFlow.Charset">Charset</h4>
   <div class="markdown level1 summary"><p>The character set for generating a User Code.</p>
@@ -122,7 +120,9 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public TenantDeviceFlowCharset Charset { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;charset&quot;)]
+[JsonConverter(typeof(StringEnumConverter))]
+public TenantDeviceFlowCharset Charset { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -139,8 +139,6 @@
       </tr>
     </tbody>
   </table>
-  
-  
   <a id="Auth0_ManagementApi_Models_TenantDeviceFlow_Mask_" data-uid="Auth0.ManagementApi.Models.TenantDeviceFlow.Mask*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantDeviceFlow_Mask" data-uid="Auth0.ManagementApi.Models.TenantDeviceFlow.Mask">Mask</h4>
   <div class="markdown level1 summary"><p>The mask used to format the generated User Code to a friendly, readable format with possible spaces or hyphens.</p>
@@ -148,7 +146,8 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Mask { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;mask&quot;)]
+public string Mask { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -173,10 +172,6 @@
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
-              <div class="contribution">
-                <ul class="nav">
-                </ul>
-              </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
               <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
               </nav>
