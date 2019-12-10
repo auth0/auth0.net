@@ -58,7 +58,7 @@ namespace Auth0.AuthenticationApi.Models
         /// Casual name of the user that may or may not be the same as <see cref="FirstName"/>. 
         /// </summary>
         /// <example>
-        /// Nickname of 'Mike' might be returned for a <see cref="GivenName"/> of `Michael`.
+        /// Nickname of 'Mike' might be returned for a <see cref="FirstName"/> of `Michael`.
         /// </example>
         [JsonProperty("nickname")]
         public string NickName { get; set; }
@@ -199,6 +199,7 @@ namespace Auth0.AuthenticationApi.Models
 
         /// <summary>
         /// Additional claims about the user.
+        /// </summary>
         [JsonExtensionData]
         public IDictionary<string, JToken> AdditionalClaims { get; set; }
     }

@@ -24,7 +24,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
         /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
-        /// <param name="defaultHeaders"><see cref="IDictionary{string, string}"/> containing default headers included with every request this client makes.</param>
+        /// <param name="defaultHeaders">Dictionary containing default headers included with every request this client makes.</param>
         public UsersClient(IManagementConnection connection, Uri baseUri, IDictionary<string, string> defaultHeaders)
             : base(connection, baseUri, defaultHeaders)
         {
@@ -173,7 +173,7 @@ namespace Auth0.ManagementApi.Clients
         /// Gets all users by email address.
         /// </summary>
         /// <param name="email">The email address to search for.</param>
-        /// <param name="fields"> A comma separated list of fields to include or exclude (depending on <see cref="includeFields"/>) from the result, null to retrieve all fields.</param>
+        /// <param name="fields"> A comma separated list of fields to include or exclude (depending on <paramref name="includeFields"/>) from the result, null to retrieve all fields.</param>
         /// <param name="includeFields">true if the fields specified are to be included in the result, false otherwise. Defaults to true.</param>
         /// <returns>A <see cref="IList{User}"/> containing all users for this email address.</returns>
         public Task<IList<User>> GetUsersByEmailAsync(string email, string fields = null, bool? includeFields = null)

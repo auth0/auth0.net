@@ -1,5 +1,8 @@
 ﻿namespace Auth0.AuthenticationApi.Models
 {
+    /// <summary>
+    /// Base class for all types of Authorization Code requests.
+    /// </summary>
     public abstract class AuthorizationCodeRequestBase
     {
         /// <summary>

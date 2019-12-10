@@ -16,7 +16,7 @@ namespace Auth0.AuthenticationApi
         /// </summary>
         /// <typeparam name="T">Type of object to deserialize the result into.</typeparam>
         /// <param name="uri">Absolute <see cref="Uri"/> to send the request to.</param>
-        /// <param name="headers">Optional <see cref="Dictionary{String, String}"/> containing additional headers to be sent.</param>
+        /// <param name="headers">Optional dictionary containing additional headers to be sent.</param>
         /// <returns>The task object representing the asynchronous operation.</returns>
         Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null);
 
@@ -27,7 +27,7 @@ namespace Auth0.AuthenticationApi
         /// <param name="method"><see cref="HttpMethod"/> to use.</param>
         /// <param name="uri">Absolute <see cref="Uri"/> to send the request to.</param>
         /// <param name="body">Body of the HTTP request that will be sent.</param>
-        /// <param name="headers">Optional <see cref="Dictionary{String, String}"/> containing additional headers to be sent.</param>
+        /// <param name="headers">Optional dictionary containing additional headers to be sent.</param>
         /// <returns>The task object representing the asynchronous operation.</returns>
         Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null);
     }

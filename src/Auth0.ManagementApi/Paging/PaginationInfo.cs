@@ -6,7 +6,7 @@
     public class PaginationInfo
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PaginationInfo{T}"/> class.
+        /// Initializes a new instance of the <see cref="PaginationInfo"/> class.
         /// </summary>
         /// <param name="pageNo">Page index of the results to return. First page is 0.</param>
         /// <param name="perPage">Number of results per page.</param>

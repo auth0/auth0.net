@@ -61,7 +61,7 @@ namespace Auth0.AuthenticationApi.Builders
         /// <summary>
         /// Adds the `RelayState` query string parameter.
         /// </summary>
-        /// <param name="values"><see cref="Dictionary{String, String}"/>containing key-value pairs for the `RelayState` parameter.</param>
+        /// <param name="values">Dictionary containing key-value pairs for the `RelayState` parameter.</param>
         /// <returns>Current <see cref="SamlUrlBuilder"/> to allow fluent configuration.</returns>
         /// <remarks>
         /// See https://auth0.com/docs/protocols/saml/saml-configuration/special-configuration-scenarios/idp-initiated-sso#auth0-as-identity-provider-where-idp-initiates-sso for more details on RelayState.

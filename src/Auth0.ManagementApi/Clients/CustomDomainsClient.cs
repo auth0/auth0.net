@@ -16,7 +16,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
         /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
-        /// <param name="defaultHeaders"><see cref="IDictionary{string, string}"/> containing default headers included with every request this client makes.</param>
+        /// <param name="defaultHeaders">Dictionary containing default headers included with every request this client makes.</param>
         public CustomDomainsClient(IManagementConnection connection, Uri baseUri, IDictionary<string, string> defaultHeaders)
             : base(connection, baseUri, defaultHeaders)
         {
@@ -47,7 +47,7 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Retrieves the status of every custom domain.
         /// </summary>
-        /// <returns>A <see cref="IList{CustomDomain}"/> containing the details of every custom domain.
+        /// <returns>A <see cref="IList{CustomDomain}"/> containing the details of every custom domain.</returns>
         public Task<IList<CustomDomain>> GetAllAsync()
         {
             return Connection.GetAsync<IList<CustomDomain>>(BuildUri("custom-domains"), DefaultHeaders);

@@ -41,6 +41,7 @@ namespace Auth0.AuthenticationApi.Tokens
         /// <summary>
         /// Create a new instance of <see cref="IdTokenRequirements"/> with specified parameters.
         /// </summary>
+        /// <param name="signatureAlgorithm"><see cref="JwtSignatureAlgorithm"/> the id token must be signed with.</param>
         /// <param name="issuer">Required issuer (iss) the token must be from.</param>
         /// <param name="audience">Required audience (aud) the token must be for.</param>
         /// <param name="leeway">Amount of leeway in validating date and time claims to allow some clock variance

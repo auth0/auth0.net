@@ -68,7 +68,7 @@ namespace Auth0.AuthenticationApi.Builders
         /// </summary>
         /// <param name="name">Name of the query string parameter.</param>
         /// <param name="value">Value of the query string parameter.</param>
-        /// <returns>Current <see cref="{T}"/> to allow fluent configuration.</returns>
+        /// <returns>Current object to allow fluent configuration.</returns>
         public T WithValue(string name, string value)
         {
             AddQueryString(name, value);

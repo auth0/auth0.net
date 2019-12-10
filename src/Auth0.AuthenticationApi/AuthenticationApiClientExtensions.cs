@@ -2,6 +2,9 @@
 
 namespace Auth0.AuthenticationApi
 {
+    /// <summary>
+    /// Additional operations that can be performed against a <see cref="IAuthenticationApiClient"/>.
+    /// </summary>
     public static class AuthenticationApiClientExtensions
     {
         /// <summary>

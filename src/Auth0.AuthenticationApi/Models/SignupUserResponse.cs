@@ -37,11 +37,13 @@ namespace Auth0.AuthenticationApi.Models
         [JsonProperty("_id")]
         private string _id;        // Standard connection
 
+#pragma warning disable 0649
         [JsonProperty("id")]
         private string id;         // Custom connection
 
         [JsonProperty("user_id")]
-        private string user_id;    // Custom connection external
+        private readonly string user_id;    // Custom connection external
+#pragma warning restore 0649
 
         /// <summary>
         /// Username of this user.

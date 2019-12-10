@@ -28,7 +28,7 @@ namespace Auth0.AuthenticationApi
         /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
         /// </summary>
         /// <param name="baseUri">Your Auth0 domain URI, e.g. https://tenant.auth0.com</param>
-        /// <param name="handler">Optional <see cref="IAuthenticationConnection"/> used to influence connection behavior.
+        /// <param name="connection">Optional <see cref="IAuthenticationConnection"/> used to influence connection behavior.
         /// Defaults to a freshly created <see cref="HttpClientAuthenticationConnection"/> that uses a single <see cref="HttpClient"/>.</param>
         /// <remarks>To use a custom <see cref="HttpClient"/> or <see cref="HttpMessageHandler"/> create a 
         /// <see cref="HttpClientAuthenticationConnection"/> passing that into the constructor. e.g.
@@ -56,7 +56,7 @@ namespace Auth0.AuthenticationApi
         /// Initializes a new instance of the <see cref="AuthenticationApiClient" /> class.
         /// </summary>
         /// <param name="domain">Your Auth0 domain name, e.g. tenant.auth0.com.</param>
-        /// <param name="handler">Optional <see cref="IAuthenticationConnection"/> used to influence connection behavior.
+        /// <param name="connection">Optional <see cref="IAuthenticationConnection"/> used to influence connection behavior.
         /// Defaults to a freshly created <see cref="HttpClientAuthenticationConnection"/> that uses a single <see cref="HttpClient"/>.</param>
         /// <remarks>To use a custom <see cref="HttpClient"/> or <see cref="HttpMessageHandler"/> create a 
         /// <see cref="HttpClientAuthenticationConnection"/> passing that into the constructor. e.g.
@@ -295,7 +295,7 @@ namespace Auth0.AuthenticationApi
         /// <summary>
         /// Disposes of any owned disposable resources such as a <see cref="IAuthenticationConnection"/>.
         /// </summary>
-        /// <param name="disposing">Whether we are actually disposing (<see langword="true"/>) or not (<see langword="false")/>.</param>
+        /// <param name="disposing">Whether we are actually disposing (<see langword="true"/>) or not (<see langword="false"/>).</param>
         protected virtual void Dispose(bool disposing)
         {
             if (disposing && connectionToDispose != null)
