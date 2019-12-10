@@ -3,7 +3,7 @@
     {
       "src": [
         {
-          "files": [ "Auth0.Core/**/*.cs", "Auth0.AuthenticationApi/**/*.cs", "Auth0.ManagementApi/**/*.cs" ],
+          "files": [ "**/*.csproj" ],
           "exclude": [ "**/bin/**", "**/obj/**" ],
           "cwd": "../src"
         }
@@ -12,7 +12,6 @@
     }
   ],
   "build": {
-    "force": false,
     "content": [
       {
         "files": [ "**/*.yml" ],
@@ -27,24 +26,17 @@
       {
         "files": [
           "images/**"
-        ],
-        "case": false,
-        "noNegate": false,
-        "noExpand": false,
-        "noEscape": false,
-        "noGlobStar": false,
-        "dot": false
+        ]
       }
     ],
-    "externalReference": [],
     "dest": "../docs",
     "template": [
       "default"
     ],
     "globalMetadata": {
       "_appLogoPath": "images/logo.svg",
-      "_appFaviconPath": "images/logo.png"
-    },
-    "serve": false
+      "_appFaviconPath": "images/logo.png",
+      "_disableContribution": true
+    }
   }
 }
