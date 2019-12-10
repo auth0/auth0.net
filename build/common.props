@@ -7,6 +7,7 @@
     <Authors>Auth0</Authors>
     <PackageTags>auth0;authentication;openid connect;oidc;oauth2</PackageTags>
     <PackageIconUrl>https://secure.gravatar.com/avatar/805765c256ff8617fcad483b5476faf2</PackageIconUrl>
+    <PackageIcon>Auth0Icon.png</PackageIcon>
     <PackageProjectUrl>https://github.com/auth0/auth0.net</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
@@ -191,4 +192,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="../../build/Auth0Icon.png" Pack="true" Visible="false" PackagePath="" />
+  </ItemGroup>
 </Project>
