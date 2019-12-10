@@ -172,7 +172,6 @@
       - Update to remove methods for endpoints related to 1 April 2018 deprecations
       - Various small additions to models for Management API
     </PackageReleaseNotes>
-
     <CLSCompliant>true</CLSCompliant>
     <ComVisible>false</ComVisible>
   </PropertyGroup>
@@ -181,13 +180,13 @@
     <Major>7</Major>
     <Minor>0</Minor>
     <Revision>0</Revision>
-    <PackageVersion>7.0.0-beta.1</PackageVersion>
+    <Suffix>-beta1</Suffix>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyVersion>$(Major).$(Minor).$(Revision)</AssemblyVersion>
     <AssemblyFileVersion>$(Major).$(Minor).$(Revision)</AssemblyFileVersion>
     <InformationalVersion>$(Major).$(Minor).$(Revision)</InformationalVersion>
-    <PackageVersion>$(Major).$(Minor).$(Revision)</PackageVersion>
+    <PackageVersion>$(Major).$(Minor).$(Revision)$(Suffix)</PackageVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
