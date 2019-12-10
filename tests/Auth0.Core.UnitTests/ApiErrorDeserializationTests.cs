@@ -3,6 +3,7 @@ using FluentAssertions;
 using Newtonsoft.Json;
 using Xunit;
 using System.Collections.Generic;
+using Auth0.Core.Exceptions;
 
 namespace Auth0.Core.UnitTests
 {

@@ -1,10 +1,9 @@
-﻿using System;
-using Auth0.Core.Serialization;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Newtonsoft.Json;
+using System;
 using Xunit;
 
-namespace Auth0.Core.UnitTests
+namespace Auth0.AuthenticationApi.IntegrationTests
 {
     public class FlexibleDateTimeConverterTests
     {
@@ -34,7 +33,7 @@ namespace Auth0.Core.UnitTests
             result.DateValue.Should().Be(null);
         }
 
-        public class TestClass
+        internal class TestClass
         {
             [JsonConverter(typeof(FlexibleDateTimeConverter))]
             public DateTime? DateValue { get; set; }

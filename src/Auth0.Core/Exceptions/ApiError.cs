@@ -1,10 +1,9 @@
 ﻿using Auth0.Core.Serialization;
 using Newtonsoft.Json;
-using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace Auth0.Core
+namespace Auth0.Core.Exceptions
 {
     /// <summary>
     /// Error information captured from a failed API request.
@@ -42,7 +41,7 @@ namespace Auth0.Core
                 return null;
 
             var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-            if (String.IsNullOrEmpty(content))
+            if (string.IsNullOrEmpty(content))
                 return null;
 
             try

@@ -11,7 +11,7 @@ namespace Auth0.Core.Exceptions
     public class ErrorApiException : ApiException
     {
         /// <summary>
-        /// Optional <see cref="Core.ApiError"/> from the failing API call.
+        /// Optional <see cref="Exceptions.ApiError"/> from the failing API call.
         /// </summary>
         public ApiError ApiError { get; }
 

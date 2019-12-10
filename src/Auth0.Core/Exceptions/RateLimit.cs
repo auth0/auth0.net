@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Net.Http.Headers;
 
-namespace Auth0.Core.Http
+namespace Auth0.Core.Exceptions
 {
     /// <summary>
     /// Represents information about the rate limit for API calls.

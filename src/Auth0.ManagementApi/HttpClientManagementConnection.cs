@@ -1,5 +1,4 @@
-﻿using Auth0.Core;
-using Auth0.Core.Exceptions;
+﻿using Auth0.Core.Exceptions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

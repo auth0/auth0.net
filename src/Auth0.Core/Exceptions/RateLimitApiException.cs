@@ -1,5 +1,4 @@
-﻿using Auth0.Core.Http;
-using System;
+﻿using System;
 using System.Runtime.Serialization;
 
 namespace Auth0.Core.Exceptions
@@ -45,7 +44,7 @@ namespace Auth0.Core.Exceptions
         /// <summary>
         /// Initializes a new instance of the <see cref="RateLimitApiException"/> class with a specified <paramref name="rateLimit"/>.
         /// </summary>
-        /// <param name="rateLimit"><see cref="Http.RateLimit"/> received on the API call that failed.</param>
+        /// <param name="rateLimit"><see cref="Exceptions.RateLimit"/> received on the API call that failed.</param>
         public RateLimitApiException(RateLimit rateLimit)
             : this("Rate limits exceeded")
         {

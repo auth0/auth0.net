@@ -7,7 +7,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Auth0.Core.Serialization
 {
-    public class ApiErrorConverter : JsonConverter
+    internal class ApiErrorConverter : JsonConverter
     {
         private readonly Dictionary<string, string> _propertyMappings = new Dictionary<string, string>
         {

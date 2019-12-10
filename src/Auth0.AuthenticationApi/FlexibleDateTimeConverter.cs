@@ -2,12 +2,12 @@
 using Newtonsoft.Json.Converters;
 using System;
 
-namespace Auth0.Core.Serialization
+namespace Auth0.AuthenticationApi
 {
     /// <summary>
     /// A JSON date converter that reads both ISO 8601 and epoch dates.
     /// </summary>
-    public class FlexibleDateTimeConverter : IsoDateTimeConverter
+    internal class FlexibleDateTimeConverter : IsoDateTimeConverter
     {
         private static readonly DateTime Epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
@@ -20,14 +20,11 @@ namespace Auth0.Core.Serialization
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if (reader.Value == null) { return null; }
+            if (reader.Value == null) return null;
 
-            if (reader.TokenType == JsonToken.Integer)
-            {
-                return Add(Epoch, TimeSpan.FromSeconds((long)reader.Value));
-            }
-
-            return reader.Value;
+            return reader.TokenType == JsonToken.Integer
+                ? Add(Epoch, TimeSpan.FromSeconds((long)reader.Value))
+                : reader.Value;
         }
 
         /// <summary>
@@ -41,19 +38,13 @@ namespace Auth0.Core.Serialization
         private static DateTime Add(DateTime time, TimeSpan timespan)
         {
             if (timespan == TimeSpan.Zero)
-            {
                 return time;
-            }
 
             if (timespan > TimeSpan.Zero && DateTime.MaxValue - time <= timespan)
-            {
                 return GetMaxValue(time.Kind);
-            }
 
             if (timespan < TimeSpan.Zero && DateTime.MinValue - time >= timespan)
-            {
                 return GetMinValue(time.Kind);
-            }
 
             return time + timespan;
         }
@@ -65,9 +56,8 @@ namespace Auth0.Core.Serialization
         /// <returns>DateTime of specified kind.</returns>
         private static DateTime GetMaxValue(DateTimeKind kind)
         {
-            if (kind == DateTimeKind.Unspecified) return new DateTime(DateTime.MaxValue.Ticks, DateTimeKind.Utc);
-
-            return new DateTime(DateTime.MaxValue.Ticks, kind);
+            return new DateTime(DateTime.MaxValue.Ticks,
+                kind == DateTimeKind.Unspecified ? DateTimeKind.Utc : kind);
         }
 
         /// <summary>
@@ -77,9 +67,8 @@ namespace Auth0.Core.Serialization
         /// <returns>DateTime of specified kind.</returns>
         private static DateTime GetMinValue(DateTimeKind kind)
         {
-            if (kind == DateTimeKind.Unspecified) return new DateTime(DateTime.MinValue.Ticks, DateTimeKind.Utc);
-
-            return new DateTime(DateTime.MinValue.Ticks, kind);
+            return new DateTime(DateTime.MinValue.Ticks,
+                kind == DateTimeKind.Unspecified ? DateTimeKind.Utc : kind);
         }
     }
 }
