@@ -13,45 +13,48 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
-      Version 7.0.0-beta.1
-      Many breaking changes. A migration guide will be produced while the beta runs and
-      made available before GA.  The summary is:
+    Version 7.0.0 beta 1
+    **Many breaking changes**
 
-      - Authentication SDK includes all-new ID Token Validation which will now validate H256.
-        - If your app is configured for HS256 and is confidential such as a web server then you will
-          need to set SigningAlgorithm to SigningAlgorithm.HS256 on your AuthenticationApiClient requests.
-        - If your app is configured for HS256 and is NOT confidential such as a native client you should
-          reconfigure your app for RS256 as soon as possible.
-        - If your app is configured for RS256 no changes are required.  JWKS caches are now only valid for
-          10 minutes and will not cache the JWKS keys indefinitely.
+    A migration guide will be produced while the beta runs and made available before GA.  The summary is:
 
-      - Improved testing and mocking support. You can now mock IAuthenticationConnection and/or
-        IManagementConnection classes to provide local unit-testing functionality against 
-        AuthenticationApiClient and ManagementApiClient respectively.  Each has just two methods that can be
-        mocked - one for GET and one for other HTTP verbs.
+    - Authentication SDK includes all-new ID Token Validation which will now validate H256.
+      - If your app is configured for HS256 and is confidential such as a web server then you will need to 
+        set SigningAlgorithm to `SigningAlgorithm.HS256` on your `AuthenticationApiClient` requests.
+      - If your app is configured for HS256 and is NOT confidential such as a native client you should
+        reconfigure your app for RS256 as soon as possible.
+      - If your app is configured for RS256 no changes are required.  JWKS caches are now only valid for
+        10 minutes and will not cache the JWKS keys indefinitely.
 
-      - Many classes moved namespace especially ones that were in "Core" as part of the long-term plan to
-        only have AuthenticationApi and ManagementApi packages.  Visual Studio should be able to suggest where
-        classed you were using now reside.
+    - Improved testing and mocking support. You can now mock `IAuthenticationConnection` / 
+      `IManagementConnection` classes to provide local unit-testing functionality for
+      `AuthenticationApiClient` and `ManagementApiClient` respectively.  Each has just two methods that
+      can be mocked - one for `GET` and one for other HTTP verbs.
 
-      - Disposal is now more consistent. If an AuthenticationApiClient or ManagementApiClient create a
-        connection for you they will manage its lifecycle. If you pass in a connection then it will be your
-        responsibility to manage it. This also applies to how HttpClientAuthenticationConnection and 
-        HttpClientManagementConnection will only dispose of HttpClients they create and not ones they are given.
+    - Many classes moved namespace especially ones that were in `Core` as part of the long-term plan to
+      only have AuthenticationApi and ManagementApi packages.  Visual Studio should be able to suggest
+      where classes you were using now reside.
 
-      - Rate Limiting information is now only available on the RateLimitApiException which is raised when
-        the rate limit is exceeded.
-        
-      - ApiException is now ErrorApiException. If you relied on the status code or error message of this exception
-        you will need to switch to catching the later. The former is now a base class without this information
-        that ensures any old catch ApiException will continue to catch rate limit exceptions which also now
-        inherit from this class.
+    - Disposal is now more consistent. If `AuthenticationApiClient` or `ManagementApiClient` create a 
+      connection for you they will manage its lifecycle. If you pass in a connection then it will be your
+      responsibility to manage it. This also applies to how `HttpClientAuthenticationConnection` and
+      `HttpClientManagementConnection` will only dispose of a `HttpClient` they create and not ones they
+      are given.
 
-      - Microsoft recommend HttpClient is reused as much as possible.  Therefore you should use dependency
-        injection or inversion of control to ensure that either a single instance of AuthenticationApiClient /
-        ManagementApiClient or it's connections HttpClient*Connection are create to ensure sharing.  These
-        classes are now thread-safe. You can additionally share HttpClient objects between them if you wish
-        by injecting it into the HttpClient*Connection constructor.      
+    - Rate Limiting information is now only available on the `RateLimitApiException` which is raised when
+      the rate limit is exceeded.
+
+    - `ApiException` is now `ErrorApiException`. If you use the status code or error message on exception
+      you will need to switch to catching the later. The former is now a base class that does not have
+      this information but ensures any old catch `ApiException` will continue to catch rate limit
+      exceptions which also now inherit from this class.
+
+    - Microsoft recommends `HttpClient` is reused as much as possible.  Therefore you should use
+      dependency injection or inversion of control to ensure that either a single instance of
+      `AuthenticationApiClient` / `ManagementApiClient` or its connections `HttpClientXConnection` are
+      created to ensure sharing.  These classes are now thread-safe. You can additionally share
+      `HttpClient` objects between them if you wish by injecting it into the `HttpClientXConnection`
+      constructor.      
 
       Version 6.5.5
       - Signup API result now handles custom databases returning variations of "id" name
