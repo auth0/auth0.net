@@ -53,7 +53,6 @@
         classes are now thread-safe. You can additionally share HttpClient objects between them if you wish
         by injecting it into the HttpClient*Connection constructor.      
 
-      -
       Version 6.5.5
       - Signup API result now handles custom databases returning variations of "id" name
       - Fix EnrollmentAuthMethod.Authenticator enum name
