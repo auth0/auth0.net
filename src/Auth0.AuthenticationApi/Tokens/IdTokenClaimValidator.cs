@@ -41,7 +41,8 @@ namespace Auth0.AuthenticationApi.Tokens
             if (audienceCount == 0)
                 throw new IdTokenValidationException("Audience (aud) claim must be a string or array of strings present in the ID token.");
             if (!token.Audiences.Contains(required.Audience))
-                throw new IdTokenValidationException($"Audience (aud) claim mismatch in the ID token; expected \"{required.Audience}\" but was not one of \"{String.Join(", ", token.Audiences)}\".");
+                throw new IdTokenValidationException($"Audience (aud) claim mismatch in the ID token; expected \"{required.Audience}\" but was not one of \"" +
+                    $"{String.Join(", ", token.Audiences)}\".");
 
             {
                 // Expires at
@@ -53,15 +54,10 @@ namespace Auth0.AuthenticationApi.Tokens
                     throw new IdTokenValidationException($"Expiration Time (exp) claim error in the ID token; current time ({epochNow}) is after expiration time ({exp}).");
             }
 
-            {
-                // Issued at
-                var iat = GetEpoch(token.Claims, JwtRegisteredClaimNames.Iat);
-                if (iat == null)
-                    throw new IdTokenValidationException("Issued At (iat) claim must be an integer present in the ID token.");
-                var issued = iat - required.Leeway.TotalSeconds;
-                if (epochNow < issued)
-                    throw new IdTokenValidationException($"Issued At (iat) claim error in the ID token; current time ({epochNow}) is before issued at time ({iat}).");
-            }
+            // Issued at
+            var iat = GetEpoch(token.Claims, JwtRegisteredClaimNames.Iat);
+            if (iat == null)
+                throw new IdTokenValidationException("Issued At (iat) claim must be an integer present in the ID token.");
 
             // Nonce
             if (required.Nonce != null)
