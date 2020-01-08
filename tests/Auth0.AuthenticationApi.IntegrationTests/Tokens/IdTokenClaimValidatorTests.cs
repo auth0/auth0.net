@@ -97,15 +97,6 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
         }
 
         [Fact]
-        public void ThrowsWhenIatIndicatesNotYetValid()
-        {
-            var token = "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Rva2Vucy10ZXN0LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHwxMjM0NTY3ODkiLCJhdWQiOlsidG9rZW5zLXRlc3QtMTIzIiwiZXh0ZXJuYWwtdGVzdC05OTkiXSwiZXhwIjoxNTY4MTgwODk0LjIyNCwiaWF0IjoxNTY4MTgwODk0LjIyNCwibm9uY2UiOiJhMWIyYzNkNGU1IiwiYXpwIjoidG9rZW5zLXRlc3QtMTIzIiwiYXV0aF90aW1lIjoxNTY4MDk0NDk0LjIyNH0.TK73zh_jQ8mUGZvQqs7PlIKmHSuXlVDrHSVrKzj0fQwcAxGEEC_IvXZ_p3KPTy4J0bL3IQ2uZe6I7f1i00N4WLwGKlMP-SbcFuPlAK-OnwgnHDafbsIU4eVd-a-cqoUrlMY46au4p8sdlkS8V5k8SExU_7lyunevvqZYPcsehl67Xp0QlkBOZaG90WGQ3qm0MVAZranl6LkQIET9UidhF4ArsMWi6dtEeMypiGIJp7tytDRD2j7QzY7UIB1zOEde2cClcpqnMM0cY2iySkFk22aJch1ERwZlCe1Y7VPWkx0R5rXxDJptpxIz95gGTW3AxyPUL00mahIzjLrOvkQp_g";
-
-            var ex = Assert.Throws<IdTokenValidationException>(() => ValidateToken(token));
-            Assert.Equal("Issued At (iat) claim error in the ID token; current time (1568023200) is before issued at time (1568180894).", ex.Message);
-        }
-
-        [Fact]
         public void ThrowsWhenNonceIsMissing()
         {
             var token = "eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJodHRwczovL3Rva2Vucy10ZXN0LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHwxMjM0NTY3ODkiLCJhdWQiOlsidG9rZW5zLXRlc3QtMTIzIiwiZXh0ZXJuYWwtdGVzdC05OTkiXSwiZXhwIjoxNTY4MTgwODk0LjIyNCwiaWF0IjoxNTY4MDA4MDk0LjIyNCwiYXpwIjoidG9rZW5zLXRlc3QtMTIzIiwiYXV0aF90aW1lIjoxNTY4MDk0NDk0LjIyNH0.f1ljNRgJTXS8L9z3G7ILphOqm3y9pW_MjxmcMdo-W8jc5WeCau6vxXoBJnc3D73SSXTKBURoQRXB-Db3BPxt7xE-JcUYcVeJCDuq7bcCkL4AcCjfRjQLaXyQR18lJyqXmsf3fh_RiG67vxPBTrTBFzCpefmKvma0brpT4iIUsHdTRk9TYyII42PvYqKFqCN3hX32nfsprzazYBJNCvskx49O0Cd5_e-AMBpst9X3Q5azOxQ4KIGEEDxjdRRCG_SavW1WCBHLdtQk4NFICycGdFH73QPLoTUYYce5wdp2AAFWwQGaustoLryQXcan_NMzQP8uXfCwv0G4cC0oy1Xz2w";
