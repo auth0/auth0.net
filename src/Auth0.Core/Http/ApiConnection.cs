@@ -50,6 +50,7 @@ namespace Auth0.Core.Http
             _baseUrl = baseUrl;
             _disposeHttpClient = false;
             _httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+            _httpClient.DefaultRequestHeaders.Remove("Auth0-Client");
             _httpClient.DefaultRequestHeaders.Add("Auth0-Client", _agent);
         }
 
