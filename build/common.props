@@ -13,6 +13,10 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+    Version 7.0.0 beta 2
+    - No longer ensures that IAT (issued at) claims in ID Tokens are in the future to better deal with
+      the local clock being slow.
+      
     Version 7.0.0 beta 1
     **Many breaking changes**
 
@@ -129,7 +133,7 @@
     <Major>7</Major>
     <Minor>0</Minor>
     <Revision>0</Revision>
-    <Suffix>-beta1</Suffix>
+    <Suffix>-beta2</Suffix>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyVersion>$(Major).$(Minor).$(Revision)</AssemblyVersion>
