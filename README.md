@@ -2,7 +2,7 @@
 
 [![Build status](https://dev.azure.com/Auth0SDK/Auth0.Net/_apis/build/status/Auth0.Net)](https://dev.azure.com/Auth0SDK/Auth0.Net/_build/latest?definitionId=6) ![NuGet version](https://img.shields.io/nuget/v/auth0.authenticationapi.svg?style=flat)
 
-This library support .NET Standard 2.0 and .NET Framework 4.5.2 and later versions of both.
+This library supports .NET Standard 2.0 and .NET Framework 4.5.2 and later versions of both.
 
 This is for clients that are either flagged as **OIDC Conformant** (under the **OAuth** tab in the client **Advanced settings**) or if you are triggering the OIDC-conformant pipeline by using the `audience` parameter when starting an authorization flow.
 
