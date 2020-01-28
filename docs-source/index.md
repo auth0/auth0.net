@@ -194,7 +194,7 @@ This also applies to whether a `HttpClientManagementConnection` or `HttpClientAu
 
 While the `AuthenticationApiClient` has an associated `IAuthenticationApiClient` interface you will find that `ManagementApiClient` does not. The reason for this is that the such an interface would encompass the entire management API surface and that any change to the Management API would break existing users of that interface.
 
-Instead, given that the Management API SDK is just a strongly-typed wrapper around the REST API, you can instead mock the @Auth0.ManagementApi.IManagementConnection interface which has just two methods:
+Instead, given that the Management API SDK is just a strongly-typed wrapper around the REST API, you can mock the @Auth0.ManagementApi.IManagementConnection interface which has just two methods:
 
 1. `Task<T> GetAsync<T>(Uri uri, ...)` - To handle GET requests
 2. `Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, ...)` - To handle POST/PUT/PATCH/DELETE
