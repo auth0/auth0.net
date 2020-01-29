@@ -2,9 +2,7 @@
 
 ## Migrating from v6 to v7
 
-This version is currently in beta. A migration guide will follow.
-
-> TODO: Write a migration guide.
+Please follow the information in our [v7 migration guide](migrating-to-v7.md).
 
 ## Migrating from earlier versions
 

@@ -4,7 +4,7 @@
 
 Welcome to the documentation for the Auth0 .NET SDK. This reference will give you basic guidance on how to use the .NET SDK to access the Auth0 Management API and Authentication API.
 
-This documentation is supplemental to the official [Auth0 API documentation](https://auth0.com/docs). For more information on the Authentication and Management APIs, you can visit their official documentation by following one of the links below:
+This documentation is supplemental to the official [Auth0 API documentation](https://auth0.com/docs). For more information on the Authentication and Management APIs, you should also refer to the official documentation:
 
 * [Authentication API](https://auth0.com/docs/api/authentication)
 * [Management API](https://auth0.com/docs/api/management/v2)
@@ -13,7 +13,7 @@ The rest of this documentation will guide your through the process of installing
 
 ## Installation
 
-You can install the Auth0 .NET SDK through [NuGet](https://www.nuget.org). Two different NuGet packages are available, one for the Authentication API, and one for the Management API.
+You can install the Auth0 .NET SDK through [NuGet](https://www.nuget.org). Two different NuGet packages are available, one for the Authentication API, and one for the Management API (a third NuGet package named Auth0.Core is a dependency of both but provides no useful end-user features of its own).
 
 ### Installing Authentication API SDK
 
@@ -26,13 +26,13 @@ Install-Package Auth0.AuthenticationApi
 Alternatively you can install it through the [Package Manager Dialog](https://docs.nuget.org/consume/package-manager-dialog) by searching for the `Auth0.AuthenticationApi` package.
 
 ### Installing Management API SDK
-		  
+
 You can install the Management API SDK through the [Package Manager Console](https://docs.nuget.org/consume/Package-Manager-Console) inside Visual Studio:
 
 ```powershell
 Install-Package Auth0.ManagementApi
 ```
-		  
+
 Alternatively you can install it through the [Package Manager Dialog](https://docs.nuget.org/consume/package-manager-dialog) by searching for the `Auth0.ManagementApi` package.
 
 ## Using the Authentication API
@@ -40,7 +40,7 @@ Alternatively you can install it through the [Package Manager Dialog](https://do
 This section will take your through the basics of using the Authentication API.
 
 ### Basic Usage
-		
+
 Ensure that you include the Authentication API namespace in your source code file:
 
 ```csharp
@@ -50,10 +50,10 @@ using Auth0.AuthenticationApi;
 To start using the API, you need to create an instance of the @Auth0.AuthenticationApi.AuthenticationApiClient class, passing the URL of your Auth0 instance:
 
 ```csharp
-var client = new AuthenticationApiClient(new Uri("https://YOUR_AUTH0_DOMAIN/"));
+var client = new AuthenticationApiClient("YOUR_AUTH0_DOMAIN");
 ```
 
-> You can obtain your Auth0 Domain from the [Application section of the Auth0 Dashboard](https://manage.auth0.com/#/applications) in the settings for your particular application. 
+> You can obtain your Auth0 Domain from the [Application section of the Auth0 Dashboard](https://manage.auth0.com/#/applications) in the settings for your particular application.
 
 For more details on the various methods that are available, please refer to the documentation of the @Auth0.AuthenticationApi.AuthenticationApiClient class.
 
@@ -75,7 +75,7 @@ The following are the list of URL builder helper methods:
 For example, to build up an authorization URL, you can write the following code:
 
 ```csharp
-var client = new AuthenticationApiClient(new Uri("https://YOUR_AUTH0_DOMAIN/"));
+var client = new AuthenticationApiClient("YOUR_AUTH0_DOMAIN");
 
 var authorizationUrl = client.BuildAuthorizationUrl()
 	.WithResponseType(AuthorizationResponseType.Code)
@@ -90,7 +90,7 @@ The sample code above will generate a URL for you to which you can redirect a us
 
 ```csharp
 public ActionResult Login() {
-  var client = new AuthenticationApiClient(new Uri("https://YOUR_AUTH0_DOMAIN/"));
+  var client = new AuthenticationApiClient("YOUR_AUTH0_DOMAIN");
 
   var authorizationUrl = client.BuildAuthorizationUrl()
     .WithResponseType(AuthorizationResponseType.Code)
@@ -109,7 +109,7 @@ public ActionResult Login() {
 
 ## Using the Management API
 
-This section will take your through the basics of using the Management API. 
+This section will take your through the basics of using the Management API.
 
 ### Basic Usage
 
@@ -123,10 +123,10 @@ To start using the API, you need to create an instance of the @Auth0.ManagementA
 
 ```csharp
 // Replace YOUR_AUTH0_DOMAIN with the domain of your Auth0 tenant, e.g. mycompany.auth0.com
-var client = new ManagementApiClient("token", "YOUR_AUTH0_DOMAIN");
+var client = new ManagementApiClient("YOUR_MANAGEMENT_TOKEN", "YOUR_AUTH0_DOMAIN");
 ```
 
-> You can obtain your Auth0 Domain from the [Application section of the Auth0 Dashboard](https://manage.auth0.com/#/applications) in the settings for your particular application. 
+> You can obtain your Auth0 Domain from the [Application section of the Auth0 Dashboard](https://manage.auth0.com/#/applications) in the settings for your particular application.
 
 > [!NOTE]
 > For details on how to generate the token, please see the [Access Token for the Management API](https://auth0.com/docs/api/management/v2/tokens)
@@ -135,19 +135,17 @@ For more details on the various methods that are available, please refer to the 
 
 ### Organization of the ManagementApiClient
 
-All methods for the Management API are grouped together in a similar fashion as what you will find when browsing the [Management API documentation](https://auth0.com/docs/api/v2). 	
-
 In the screenshot of the API documentation below you can see that the API methods are organized by functional group, e.g Clients, Connections, Device Credentials, etc.
 
 ![](images/api-docs-structure.png)
 
-The .NET Management API SDK also groups the API methods according to these functional groups. The functional groups are available as properties on the `ManagementApiClient` class, so you will for example find all Clients related API calls under the @Auth0.ManagementApi.ManagementApiClient.Clients property. 
+The .NET Management API SDK also groups the API methods according to these functional groups. The functional groups are available as properties on the `ManagementApiClient` class, so you will for example find all Clients related API calls under the @Auth0.ManagementApi.ManagementApiClient.Clients property.
 
 Below is an example of how you can get a list of all clients:
 
 ```csharp
 // Replace YOUR_AUTH0_DOMAIN with the domain of your Auth0 tenant, e.g. mycompany.auth0.com
-var apiClient = new ManagementApiClient("token", "YOUR_AUTH0_DOMAIN");
+var apiClient = new ManagementApiClient("YOUR_MANAGEMENT_TOKEN", "YOUR_AUTH0_DOMAIN");
 var allClients = await apiClient.Clients.GetAllAsync();
 ```
 
@@ -159,6 +157,7 @@ Your choices are either to:
 
 1. Share `ManagementApiClient` and `AuthenticationApiClient` across requests
 2. Share `HttpClientManagementConnection` and `HttpClientAuthenticationConnection` across `ManagementApiClient` and `AuthenticationApiClient` instances
+3. Share `HttpClient` between both `ManagementApiClient`, `AuthenticationApiClient` and optionally other libraries/your own usage. Make sure that no usage interferes with operation by reconfiguring default behavior.
 
 e.g.
 
@@ -178,14 +177,16 @@ In your controller:
 public async Task<IActionResult> Get() {
   ...
   var managementConnection = services.Get<IManagementConnection>();
-  var management = new ManagementApiClient("token", "YOUR_AUTH0_DOMAIN", managementConnection);
+  var management = new ManagementApiClient("YOUR_MANAGEMENT_TOKEN", "YOUR_AUTH0_DOMAIN", managementConnection);
   ...
 }
 ```
 
-`ManagementApiClient` and `AuthenticationApiClient` also implement `IDisposable` and it is good practice to dispose of them when you are done.  
+`ManagementApiClient` and `AuthenticationApiClient` also implement `IDisposable` and it is good practice to dispose of them when you are done **if you are not sharing them** between requests.
 
-When they have created their own `HttpClient` they will then dispose of it.  Any externally passed `HttpClient` will not be disposed as it is assumed to be shared with other instances.
+When they have created their own `HttpClientManagementConnection` or `HttpClientAuthenticationConnection` they will dispose of them.  Any externally passed `IManagementConnection` or `IAuthenticationConnection` will not be disposed as it is assumed to be shared with other instances.
+
+This also applies to whether a `HttpClientManagementConnection` or `HttpClientAuthenticationConnection` will dispose of a `HttpClient` or not - if they create it then will dispose it. If they are passed it they will not.
 
 ## Less-common scenarios
 
@@ -193,13 +194,10 @@ When they have created their own `HttpClient` they will then dispose of it.  Any
 
 While the `AuthenticationApiClient` has an associated `IAuthenticationApiClient` interface you will find that `ManagementApiClient` does not. The reason for this is that the such an interface would encompass the entire management API surface and that any change to the Management API would break existing users of that interface.
 
-Instead, given that the Management API SDK is just a strongly-typed wrapper around the REST API, you can instead mock the @Auth0.ManagementApi.IManagementConnection interface which has just three methods:
+Instead, given that the Management API SDK is just a strongly-typed wrapper around the REST API, you can mock the @Auth0.ManagementApi.IManagementConnection interface which has just two methods:
 
-1. `void SetDefaultHeaders(IDictionary<string, string> headers)` - You can likely ignore this in your mocks
-2. `Task<T> GetAsync<T>(Uri uri, ...)` - To handle GET requests
-3. `Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, ...)` - To handle POST/PUT/PATCH/DELETE 
-
-> TODO: Provide some examples here.
+1. `Task<T> GetAsync<T>(Uri uri, ...)` - To handle GET requests
+2. `Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, ...)` - To handle POST/PUT/PATCH/DELETE
 
 ### Using a proxy server
 
@@ -223,7 +221,7 @@ There are some instances where you may want to pass extra headers with the reque
 class CustomMessageHandler : HttpClientHandler {
   protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken token) {
     // Add extra header(s) to the request
-    request.Headers.Add("auth0-forwarded-for", "189.214.5.210");        
+    request.Headers.Add("auth0-forwarded-for", "189.214.5.210");
     return base.SendAsync(request, cancellationToken);
   }
 }
