@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Migration Guide </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Migration Guide ">
+    <meta name="generator" content="docfx 2.48.0.0">
+    
+    <link rel="shortcut icon" href="images/logo.png">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="migration-guide">Migration Guide</h1>
+
+<h2 id="migrating-from-v6-to-v7">Migrating From v6 to v7</h2>
+<p>There are a number of important changes in v7 including some that may be breaking depending on your scenarios. They are as follows:</p>
+<h3 id="id-token-validation">ID Token Validation</h3>
+<p>The authentication SDK now includes all-new ID Token validation capable of validating both RS256 and HS256 signed tokens.</p>
+<p>If your app is configured for:</p>
+<h4 id="rs256">RS256</h4>
+<p>No changes are required to your application.</p>
+<p>JWKS caching has changed. Previously it would cache the document once and it would be indefinitely until the app is restarted.</p>
+<p>The JWKS document will now only cache for 10 minutes and will retry more frequently when presented with new signing keys. This provides support for rotation of signing keys in the future.</p>
+<h4 id="hs256">HS256</h4>
+<p>The situation here depends on whether your application <a href="https://auth0.com/docs/applications/concepts/app-types-confidential-public">is confidential or public</a>.</p>
+<ul>
+<li><p>If using HS256 and your app is confidential (e.g. a web server) then you must set <code>SigningAlgorithm</code> to <code>SigningAlgorithm.HS256</code> on all <code>AuthenticationApiClient</code> requests.</p>
+</li>
+<li><p>If using HS256 and your app is <strong>NOT</strong> confidential (e.g. a desktop or mobile app) you should plan to move to RS256 as soon as possible. Client secrets can not be kept secure in these types of applications.</p>
+</li>
+</ul>
+<h3 id="class-reorganization">Class Reorganization</h3>
+<ul>
+<li>A number of classes previously found in the <code>Auth0.Core</code> assembly and namespace such as <code>PagedList</code>, <code>IPagedList</code>, <code>PagingInfo</code> and <code>PagingInformation</code> can now be found in the <code>Auth0.ManagementApi</code> assembly in the <code>Auth0.ManagementApi.Paging</code> namespace.</li>
+</ul>
+<p>Visual Studio should be able to help locate and update <code>using</code> statements as appropriate.</p>
+<h3 id="connections">Connections</h3>
+<p>Previously there was a single connection type known as <code>ApiConnection</code> and its associated <code>IApiConnection</code> interface.</p>
+<p>These have been replaced by <code>HttpClientAuthenticationConnection</code> and <code>IAuthenticationConnection</code> for authentication and <code>HttpClientManagementConnection</code> and <code>IManagementConnection</code> for management APIs.</p>
+<p>These provide the following improvements:</p>
+<h4 id="mocking">Mocking</h4>
+<p>Either of these interfaces can now be easily mocked to provide full coverage of either authentication or management surface areas. There are just two methods per interface - one for GET operations and one for all other operations - that cover the entire Authentication and Management API surfaces.</p>
+<h4 id="thread-safety--pooling">Thread Safety &amp; Pooling</h4>
+<p>These provide much better thread-safety as well as a clear entry-point for mocking and testing. Each has just two methods that can be mocked - one for GET and one for non-GET HTTP operations - that cover the entire Authentication and Management API surface.</p>
+<p>Microsoft recommends <code>HttpClient</code> is reused as much as possible and these new classes provide many opportunities for re-use.</p>
+<p>You can use dependency injection/inversion of control to ensure that either a single instance of <code>AuthenticationApiClient</code> / <code>ManagementApiClient</code> is created.</p>
+<p>Alternatively you can use the same technique to inject a single instance of <code>HttpClientAuthenticationConnection</code> or <code>HttpClientManagementConnection</code> is created.</p>
+<p>Finally you could take full control and share a single <code>HttpClient</code> between both <code>AuthenticationApiClient</code> and <code>ManagementApiClient</code> as well as potentially sharing the <code>HttpClient</code> with your own connections or libraries (if doing this take care to ensure none of the usage changes the default behavior such as the default HTTP headers).</p>
+<h3 id="apiinfo--rate-limiting">ApiInfo &amp; Rate Limiting</h3>
+<p>Previously information about the last call made including rate limiting was exposed on both the <code>ApiConnection</code>, <code>AuthenticationApiClient</code>, and <code>ManagementApiClient</code>.</p>
+<p>This anti-pattern discouraged sharing of the clients and connections as they are not thread-safe being the last call made and in doing so prevented re-use of the underlying <code>HttpClient</code>.</p>
+<p>RateLimit information is now available on <code>RateLimitApiException</code>.</p>
+<h3 id="exception-handling">Exception Handling</h3>
+<p>The introduction of the new <code>RateLimitApiException</code> meant we needed to re-organize the exceptions.</p>
+<p>If you were catching <code>ApiException</code> previously but not using any of the custom properties on it such as <code>ApiError</code> or <code>ErrorCode</code> then you do not need to make any additional changes.</p>
+<p>If however you use <code>ApiError</code> and <code>ErrorCode</code> then you will need to:</p>
+<ol>
+<li>Catch the <code>ErrorApiException</code> sub-class instead which now contains these properties</li>
+<li>Decide how to handle <code>RateLimitApiException</code> sub-class exceptions that may occur during rate limiting</li>
+</ol>
+<h3 id="authenticationclient-url-builders">AuthenticationClient URL builders</h3>
+<p>The URL builder helper methods have been moved into extension methods in order to make the IAuthenticationClient interface simpler.</p>
+<p>For most users this change will not be breaking and using them will compile as-before.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+  </body>
+</html>
