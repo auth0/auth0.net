@@ -20,9 +20,11 @@ The JWKS document will now only cache for 10 minutes and will retry more frequen
 
 #### HS256
 
+The situation here depends on whether your application [is confidential or public](https://auth0.com/docs/applications/concepts/app-types-confidential-public).
+
 - If using HS256 and your app is confidential (e.g. a web server) then you must set `SigningAlgorithm` to `SigningAlgorithm.HS256` on all `AuthenticationApiClient` requests.
 
-- If using HS256 and your app is NOT confidential (e.g. a desktop or mobile app) you should plan to move to RS256 as soon as possible. Client secrets can not be kept secure in these types of applications.
+- If using HS256 and your app is **NOT** confidential (e.g. a desktop or mobile app) you should plan to move to RS256 as soon as possible. Client secrets can not be kept secure in these types of applications.
 
 ### Class Reorganization
 
