@@ -205,7 +205,8 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
   </h3>
   <a id="Auth0_AuthenticationApi_AuthenticationApiClient_BaseUri_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.BaseUri*"></a>
   <h4 id="Auth0_AuthenticationApi_AuthenticationApiClient_BaseUri" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.BaseUri">BaseUri</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Base URI that will be used for all the requests.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -230,7 +231,8 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
   </h3>
   <a id="Auth0_AuthenticationApi_AuthenticationApiClient_ChangePasswordAsync_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.ChangePasswordAsync*"></a>
   <h4 id="Auth0_AuthenticationApi_AuthenticationApiClient_ChangePasswordAsync_Auth0_AuthenticationApi_Models_ChangePasswordRequest_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.ChangePasswordAsync(Auth0.AuthenticationApi.Models.ChangePasswordRequest)">ChangePasswordAsync(ChangePasswordRequest)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Requests a password change email for a given email address and connection.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -249,7 +251,8 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Models.ChangePasswordRequest.html">ChangePasswordRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td></td>
+        <td><p><a class="xref" href="Auth0.AuthenticationApi.Models.ChangePasswordRequest.html">ChangePasswordRequest</a> specifying the user, connection and optional client details.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -264,7 +267,8 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.String</span>&gt;</td>
-        <td></td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing either the JSON error response or the plain text success message response.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -306,7 +310,8 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
   </table>
   <a id="Auth0_AuthenticationApi_AuthenticationApiClient_GetImpersonationUrlAsync_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.GetImpersonationUrlAsync*"></a>
   <h4 id="Auth0_AuthenticationApi_AuthenticationApiClient_GetImpersonationUrlAsync_Auth0_AuthenticationApi_Models_ImpersonationRequest_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.GetImpersonationUrlAsync(Auth0.AuthenticationApi.Models.ImpersonationRequest)">GetImpersonationUrlAsync(ImpersonationRequest)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Obtains a one-time link that can be used to log in as a specific user.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -325,7 +330,8 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Models.ImpersonationRequest.html">ImpersonationRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td></td>
+        <td><p>The <a class="xref" href="Auth0.AuthenticationApi.Models.ImpersonationRequest.html">ImpersonationRequest</a> containing the details of the user to impersonate.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -340,13 +346,18 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Uri</span>&gt;</td>
-        <td></td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> which can be used to sign in as the specified user.</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="Auth0_AuthenticationApi_AuthenticationApiClient_GetImpersonationUrlAsync_Auth0_AuthenticationApi_Models_ImpersonationRequest__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This feature has been deprecated and will be removed from Auth0 and this library in a future release.</p>
+</div>
   <a id="Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync*"></a>
   <h4 id="Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_AuthorizationCodePkceTokenRequest_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.AuthorizationCodePkceTokenRequest)">GetTokenAsync(AuthorizationCodePkceTokenRequest)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Exchanges an Authorization Code using PKCE for an Access Token.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -365,7 +376,8 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Models.AuthorizationCodePkceTokenRequest.html">AuthorizationCodePkceTokenRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td></td>
+        <td><p><a class="xref" href="Auth0.AuthenticationApi.Models.AuthorizationCodePkceTokenRequest.html">AuthorizationCodePkceTokenRequest</a> containing Authorization Code and PKCE details.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -380,13 +392,16 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
-        <td></td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing 
+    a <a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a> with the requested tokens.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync*"></a>
   <h4 id="Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_AuthorizationCodeTokenRequest_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest)">GetTokenAsync(AuthorizationCodeTokenRequest)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Exchanges an Authorization Code for an Access Token.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -405,7 +420,8 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest.html">AuthorizationCodeTokenRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td></td>
+        <td><p><a class="xref" href="Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest.html">AuthorizationCodeTokenRequest</a> containing Authorization Code details.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -420,13 +436,16 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
-        <td></td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing 
+    a <a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a> with the requested tokens.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync*"></a>
   <h4 id="Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_ClientCredentialsTokenRequest_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest)">GetTokenAsync(ClientCredentialsTokenRequest)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Requests an Access Token using the Client Credentials Grant flow.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -445,7 +464,9 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest.html">ClientCredentialsTokenRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td></td>
+        <td><p><a class="xref" href="Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest.html">ClientCredentialsTokenRequest</a> containing
+    client and audience details of the request.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -460,13 +481,16 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
-        <td></td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing 
+    a <a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a> with the requested tokens.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync*"></a>
   <h4 id="Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_RefreshTokenRequest_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.RefreshTokenRequest)">GetTokenAsync(RefreshTokenRequest)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Refreshes all tokens by way of the the Refresh Token obtained during authorization.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -485,7 +509,8 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Models.RefreshTokenRequest.html">RefreshTokenRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td></td>
+        <td><p><a class="xref" href="Auth0.AuthenticationApi.Models.RefreshTokenRequest.html">RefreshTokenRequest</a> containing Refresh Token and associated parameters.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -500,13 +525,16 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
-        <td></td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing 
+    a <a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a> with the requested tokens.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync*"></a>
   <h4 id="Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest)">GetTokenAsync(ResourceOwnerTokenRequest)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Performs authentication by providing user-supplied information in a <a class="xref" href="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.html">ResourceOwnerTokenRequest</a>.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -525,7 +553,8 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.html">ResourceOwnerTokenRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td></td>
+        <td><p><a class="xref" href="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.html">ResourceOwnerTokenRequest</a> containing information regarding the username, password etc.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -540,13 +569,20 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
-        <td></td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing 
+    a <a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a> with the requested tokens.</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The grant_type parameter required by the /oauth/token endpoint will automatically be inferred from the <code data-dev-comment-type="paramref" class="paramref">request</code> parameter. If no Realm was specified,
+then the grant_type will be set to &quot;password&quot;. If a Realm was specified, then the grant_type will be set to &quot;<a href="http://auth0.com/oauth/grant-type/password-realm&amp;quot">http://auth0.com/oauth/grant-type/password-realm&quot</a>;</p>
+</div>
   <a id="Auth0_AuthenticationApi_AuthenticationApiClient_GetUserInfoAsync_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.GetUserInfoAsync*"></a>
   <h4 id="Auth0_AuthenticationApi_AuthenticationApiClient_GetUserInfoAsync_System_String_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.GetUserInfoAsync(System.String)">GetUserInfoAsync(String)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Returns user information based on the access token that was obtained during login.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -565,7 +601,8 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">accessToken</span></td>
-        <td></td>
+        <td><p>Access token used to obtain the user information.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -580,13 +617,19 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.UserInfo.html">UserInfo</a>&gt;</td>
-        <td></td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing the
+<a class="xref" href="Auth0.AuthenticationApi.Models.UserInfo.html">UserInfo</a> requested..</p>
+</td>
       </tr>
     </tbody>
   </table>
+  <h5 id="Auth0_AuthenticationApi_AuthenticationApiClient_GetUserInfoAsync_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Information included in the response depends on the scopes initially granted.</p>
+</div>
   <a id="Auth0_AuthenticationApi_AuthenticationApiClient_SignupUserAsync_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.SignupUserAsync*"></a>
   <h4 id="Auth0_AuthenticationApi_AuthenticationApiClient_SignupUserAsync_Auth0_AuthenticationApi_Models_SignupUserRequest_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.SignupUserAsync(Auth0.AuthenticationApi.Models.SignupUserRequest)">SignupUserAsync(SignupUserRequest)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Creates a new user given the user details specified.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -605,7 +648,8 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Models.SignupUserRequest.html">SignupUserRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td></td>
+        <td><p><a class="xref" href="Auth0.AuthenticationApi.Models.SignupUserRequest.html">SignupUserRequest</a> containing information of the user to sign up.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -620,13 +664,16 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.SignupUserResponse.html">SignupUserResponse</a>&gt;</td>
-        <td></td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing 
+    a <a class="xref" href="Auth0.AuthenticationApi.Models.SignupUserResponse.html">SignupUserResponse</a> with the information of the signed up user.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_AuthenticationApi_AuthenticationApiClient_StartPasswordlessEmailFlowAsync_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.StartPasswordlessEmailFlowAsync*"></a>
   <h4 id="Auth0_AuthenticationApi_AuthenticationApiClient_StartPasswordlessEmailFlowAsync_Auth0_AuthenticationApi_Models_PasswordlessEmailRequest_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.StartPasswordlessEmailFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailRequest)">StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Starts a new Passwordless email flow.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -645,7 +692,8 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessEmailRequest.html">PasswordlessEmailRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td></td>
+        <td><p><a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessEmailRequest.html">PasswordlessEmailRequest</a> containing details about the Passwordless email flow to start.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -660,13 +708,16 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessEmailResponse.html">PasswordlessEmailResponse</a>&gt;</td>
-        <td></td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing 
+    a <a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessEmailResponse.html">PasswordlessEmailResponse</a> with the information of the signed up user.</p>
+</td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_AuthenticationApi_AuthenticationApiClient_StartPasswordlessSmsFlowAsync_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.StartPasswordlessSmsFlowAsync*"></a>
   <h4 id="Auth0_AuthenticationApi_AuthenticationApiClient_StartPasswordlessSmsFlowAsync_Auth0_AuthenticationApi_Models_PasswordlessSmsRequest_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.StartPasswordlessSmsFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessSmsRequest)">StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest)</h4>
-  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 summary"><p>Starts a new Passwordless SMS flow.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -685,7 +736,8 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
       <tr>
         <td><a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.html">PasswordlessSmsRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td></td>
+        <td><p><a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.html">PasswordlessSmsRequest</a> containing details about the Passwordless SMS flow to start.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -700,7 +752,9 @@ Defaults to a freshly created <a class="xref" href="Auth0.AuthenticationApi.Http
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessSmsResponse.html">PasswordlessSmsResponse</a>&gt;</td>
-        <td></td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing 
+    a <a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessSmsResponse.html">PasswordlessSmsResponse</a> with the details of the request.</p>
+</td>
       </tr>
     </tbody>
   </table>
