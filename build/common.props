@@ -50,7 +50,9 @@
         `AuthenticationApiClient` / `ManagementApiClient` or its connections `HttpClientXConnection` are
         created to ensure sharing.  These classes are now thread-safe. You can additionally share
         `HttpClient` objects between them if you wish by injecting it into the `HttpClientXConnection`
-        constructor.      
+        constructor.
+        
+      - Connections now have DisplayName, Realms and IsDomainConnection properties. 
 
       Version 6.5.5
       - Signup API result now handles custom databases returning variations of "id" name

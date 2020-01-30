@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -61,10 +60,6 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 return Task.FromResult(default(T));
             }
-
-            public void SetDefaultHeaders(IDictionary<string, string> headers)
-            {
-            }
         }
 
         [Fact]
@@ -100,25 +95,18 @@ namespace Auth0.ManagementApi.IntegrationTests
 
         class HeaderGrabberConnection : IManagementConnection
         {
-            IDictionary<string, string> defaultHeaders = new Dictionary<string, string>();
-
             public IDictionary<string, string> LastHeaders { get; private set; } = new Dictionary<string, string>();
 
             public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, JsonConverter[] converters = null)
             {
-                LastHeaders = new Dictionary<string, string>(defaultHeaders.Concat(headers));
+                LastHeaders = headers;
                 return Task.FromResult(default(T));
             }
 
             public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, IList<FileUploadParameter> files = null)
             {
-                LastHeaders = new Dictionary<string, string>(defaultHeaders.Concat(headers));
+                LastHeaders = headers;
                 return Task.FromResult(default(T));
-            }
-
-            public void SetDefaultHeaders(IDictionary<string, string> headers)
-            {
-                LastHeaders = defaultHeaders = headers;
             }
         }
     }
