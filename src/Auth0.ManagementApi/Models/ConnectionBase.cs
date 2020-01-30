@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 namespace Auth0.ManagementApi.Models
 {
     /// <summary>
-    /// Base class for connections.
+    /// Base class for connections which includes both request and responses.
     /// </summary>
     public abstract class ConnectionBase
     {
@@ -27,6 +27,12 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("options")]
         public dynamic Options { get; set; }
+
+        /// <summary>
+        /// Defines the realms for which the connection will be used (ie: email domains). If the array is empty or the property is not specified, the connection name will be added as realm. Maximum of 10 items.
+        /// </summary>
+        [JsonProperty("realms")]
+        public string[] Realms { get; set; }
 
         /// <summary>
         /// The identifiers of the clients for which the connection is to be enabled. If the array is empty or the property is not specified, no clients are enabled.
