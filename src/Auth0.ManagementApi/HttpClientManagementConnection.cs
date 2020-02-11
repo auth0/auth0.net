@@ -43,12 +43,12 @@ namespace Auth0.ManagementApi
         }
 
         /// <inheritdoc />
-        public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers, JsonConverter[] converters = null)
+        public async Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers, JsonConverter[] converters = null)
         {
             using (var request = new HttpRequestMessage(HttpMethod.Get, uri))
             {
                 ApplyHeaders(request.Headers, headers);
-                return SendRequest<T>(request, converters);
+                return await SendRequest<T>(request, converters);
             }
         }
 
