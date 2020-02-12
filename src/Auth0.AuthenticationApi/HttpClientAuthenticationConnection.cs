@@ -55,12 +55,12 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <inheritdoc/>
-        public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null)
+        public async Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null)
         {
             using (var request = new HttpRequestMessage(HttpMethod.Get, uri))
             {
                 ApplyHeaders(request, headers);
-                return SendRequest<T>(request);
+                return await SendRequest<T>(request);
             }
         }
 
