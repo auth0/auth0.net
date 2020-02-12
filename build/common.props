@@ -13,6 +13,9 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 7.0.1
+      - Fixes request message disposal issue in HttpClient*Connection.GetAsync on .NET Framework 4.x
+      
       Version 7.0.0
       
       There are many breaking changes in this release. Please see our Migration Guide for v7 at
@@ -126,7 +129,7 @@
     <LangVersion>7.1</LangVersion>    
     <Major>7</Major>
     <Minor>0</Minor>
-    <Revision>0</Revision>
+    <Revision>1</Revision>
     <Suffix></Suffix>
   </PropertyGroup>
   <PropertyGroup>
