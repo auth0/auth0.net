@@ -60,7 +60,7 @@ namespace Auth0.AuthenticationApi
             using (var request = new HttpRequestMessage(HttpMethod.Get, uri))
             {
                 ApplyHeaders(request, headers);
-                return await SendRequest<T>(request);
+                return await SendRequest<T>(request).ConfigureAwait(false);
             }
         }
 

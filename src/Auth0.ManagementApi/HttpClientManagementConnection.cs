@@ -48,7 +48,7 @@ namespace Auth0.ManagementApi
             using (var request = new HttpRequestMessage(HttpMethod.Get, uri))
             {
                 ApplyHeaders(request.Headers, headers);
-                return await SendRequest<T>(request, converters);
+                return await SendRequest<T>(request, converters).ConfigureAwait(false);
             }
         }
 
@@ -58,7 +58,7 @@ namespace Auth0.ManagementApi
             using (var request = new HttpRequestMessage(method, uri) { Content = BuildMessageContent(body, files) })
             {
                 ApplyHeaders(request.Headers, headers);
-                return await SendRequest<T>(request);
+                return await SendRequest<T>(request).ConfigureAwait(false);
             }
         }
 
