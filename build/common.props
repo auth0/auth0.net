@@ -13,6 +13,9 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 7.0.2
+      - Fixed a concurrency issue - missing ConfigureAwait(false) in HttpClient*Connections/
+
       Version 7.0.1
       - Fixes request message disposal issue in HttpClient*Connection.GetAsync on .NET Framework 4.x
       
@@ -129,7 +132,7 @@
     <LangVersion>7.1</LangVersion>    
     <Major>7</Major>
     <Minor>0</Minor>
-    <Revision>1</Revision>
+    <Revision>2</Revision>
     <Suffix></Suffix>
   </PropertyGroup>
   <PropertyGroup>
