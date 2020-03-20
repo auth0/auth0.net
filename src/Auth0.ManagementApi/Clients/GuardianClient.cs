@@ -49,7 +49,7 @@ namespace Auth0.ManagementApi.Clients
             return Connection
                 .SendAsync<object>(
                 HttpMethod.Delete,
-                BuildUri($"guardian/enrollments/{id}"),
+                BuildUri($"guardian/enrollments/{EncodePath(id)}"),
                 null,
                 DefaultHeaders);
         }
@@ -63,7 +63,7 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection
                 .GetAsync<GuardianEnrollment>(
-                BuildUri($"guardian/enrollments/{id}"),
+                BuildUri($"guardian/enrollments/{EncodePath(id)}"),
                 DefaultHeaders);
         }
 

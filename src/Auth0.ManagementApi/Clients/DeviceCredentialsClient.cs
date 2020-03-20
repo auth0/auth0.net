@@ -61,7 +61,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"device-credentials/{id}"), null, DefaultHeaders);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"device-credentials/{EncodePath(id)}"), null, DefaultHeaders);
         }
     }
 }

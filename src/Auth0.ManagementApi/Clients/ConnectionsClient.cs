@@ -43,7 +43,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"connections/{id}"), null, DefaultHeaders);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"connections/{EncodePath(id)}"), null, DefaultHeaders);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteUserAsync(string id, string email)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"connections/{id}/users",
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"connections/{EncodePath(id)}/users",
                 new Dictionary<string, string> { {"email", email} }), null, DefaultHeaders);
         }
 
@@ -70,7 +70,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Connection"/>.</returns>
         public Task<Connection> GetAsync(string id, string fields = null, bool includeFields = true)
         {
-            return Connection.GetAsync<Connection>(BuildUri($"connections/{id}",
+            return Connection.GetAsync<Connection>(BuildUri($"connections/{EncodePath(id)}",
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
@@ -117,7 +117,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Connection"/> that has been updated.</returns>
         public Task<Connection> UpdateAsync(string id, ConnectionUpdateRequest request)
         {
-            return Connection.SendAsync<Connection>(new HttpMethod("PATCH"), BuildUri($"connections/{id}"), request, DefaultHeaders);
+            return Connection.SendAsync<Connection>(new HttpMethod("PATCH"), BuildUri($"connections/{EncodePath(id)}"), request, DefaultHeaders);
         }
     }
 }

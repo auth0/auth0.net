@@ -48,5 +48,15 @@ namespace Auth0.ManagementApi.Clients
         {
             return Utils.BuildUri(BaseUri.AbsoluteUri, resource, null, queryStrings);
         }
+
+        /// <summary>
+        /// Encode a value so it can be successfully used in the path.
+        /// </summary>
+        /// <param name="value">Value to encode for the path.</param>
+        /// <returns>URI encoded/escaped value that can be used in the path.</returns>
+        protected string EncodePath(string value)
+        {
+            return Uri.EscapeUriString(value);
+        }
     }
 }
