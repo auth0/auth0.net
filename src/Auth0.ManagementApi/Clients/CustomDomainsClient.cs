@@ -41,7 +41,7 @@ namespace Auth0.ManagementApi.Clients
         /// <remarks>When deleted, Auth0 will stop serving requests for this domain.</remarks>
         public Task DeleteAsync(string id)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"custom-domains/{id}"), null, DefaultHeaders);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"custom-domains/{EncodePath(id)}"), null, DefaultHeaders);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="CustomDomain"/> that was requested.</returns>
         public Task<CustomDomain> GetAsync(string id)
         {
-            return Connection.GetAsync<CustomDomain>(BuildUri($"custom-domains/{id}"), DefaultHeaders);
+            return Connection.GetAsync<CustomDomain>(BuildUri($"custom-domains/{EncodePath(id)}"), DefaultHeaders);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="CustomDomainVerification"/> that was requested.</returns>
         public Task<CustomDomainVerificationResponse> VerifyAsync(string id)
         {
-            return Connection.SendAsync<CustomDomainVerificationResponse>(HttpMethod.Post, BuildUri($"custom-domains/{id}/verify"), null, DefaultHeaders);
+            return Connection.SendAsync<CustomDomainVerificationResponse>(HttpMethod.Post, BuildUri($"custom-domains/{EncodePath(id)}/verify"), null, DefaultHeaders);
         }
     }
 }

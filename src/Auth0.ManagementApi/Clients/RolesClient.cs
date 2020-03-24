@@ -45,7 +45,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"roles/{id}"), null, DefaultHeaders);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"roles/{EncodePath(id)}"), null, DefaultHeaders);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Role"/> that was requested.</returns>
         public Task<Role> GetAsync(string id)
         {
-            return Connection.GetAsync<Role>(BuildUri($"roles/{id}"), DefaultHeaders);
+            return Connection.GetAsync<Role>(BuildUri($"roles/{EncodePath(id)}"), DefaultHeaders);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="Role"/>.</returns>
         public Task<Role> UpdateAsync(string id, RoleUpdateRequest request)
         {
-            return Connection.SendAsync<Role>(new HttpMethod("PATCH"), BuildUri($"roles/{id}"), request, DefaultHeaders);
+            return Connection.SendAsync<Role>(new HttpMethod("PATCH"), BuildUri($"roles/{EncodePath(id)}"), request, DefaultHeaders);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{AssignedUser}"/> containing the assigned users.</returns>
         public Task<IPagedList<AssignedUser>> GetUsersAsync(string id)
         {
-            return Connection.GetAsync<IPagedList<AssignedUser>>(BuildUri($"roles/{id}/users"), DefaultHeaders, assignedUsersConverters);
+            return Connection.GetAsync<IPagedList<AssignedUser>>(BuildUri($"roles/{EncodePath(id)}/users"), DefaultHeaders, assignedUsersConverters);
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{AssignedUser}"/> containing the assigned users.</returns>
         public Task<IPagedList<AssignedUser>> GetUsersAsync(string id, PaginationInfo pagination)
         {
-            return Connection.GetAsync<IPagedList<AssignedUser>>(BuildUri($"roles/{id}/users",
+            return Connection.GetAsync<IPagedList<AssignedUser>>(BuildUri($"roles/{EncodePath(id)}/users",
                 new Dictionary<string, string>
                 {
                     {"page", pagination.PageNo.ToString()},
@@ -143,7 +143,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous assign operation.</returns>
         public Task AssignUsersAsync(string id, AssignUsersRequest request)
         {
-            return Connection.SendAsync<AssignUsersRequest>(HttpMethod.Post, BuildUri($"roles/{id}/users"), request, DefaultHeaders);
+            return Connection.SendAsync<AssignUsersRequest>(HttpMethod.Post, BuildUri($"roles/{EncodePath(id)}/users"), request, DefaultHeaders);
         }
 
         /// <summary>
@@ -154,7 +154,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{Permission}"/> containing the assigned permissions for this role.</returns>
         public Task<IPagedList<Permission>> GetPermissionsAsync(string id, PaginationInfo pagination)
         {
-            return Connection.GetAsync<IPagedList<Permission>>(BuildUri($"roles/{id}/permissions",
+            return Connection.GetAsync<IPagedList<Permission>>(BuildUri($"roles/{EncodePath(id)}/permissions",
                 new Dictionary<string, string>
                 {
                     {"page", pagination.PageNo.ToString()},
@@ -171,7 +171,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous assignment operation.</returns>
         public Task AssignPermissionsAsync(string id, AssignPermissionsRequest request)
         {
-            return Connection.SendAsync<object>(HttpMethod.Post, BuildUri($"roles/{id}/permissions"), request, DefaultHeaders);
+            return Connection.SendAsync<object>(HttpMethod.Post, BuildUri($"roles/{EncodePath(id)}/permissions"), request, DefaultHeaders);
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous remove operation.</returns>
         public Task RemovePermissionsAsync(string id, AssignPermissionsRequest request)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"roles/{id}/permissions"), request, DefaultHeaders);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"roles/{EncodePath(id)}/permissions"), request, DefaultHeaders);
         }
     }
 }

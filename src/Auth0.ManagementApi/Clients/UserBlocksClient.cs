@@ -43,7 +43,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="UserBlocks"/> relating to the user requested.</returns>
         public Task<UserBlocks> GetByUserIdAsync(string id)
         {
-            return Connection.GetAsync<UserBlocks>(BuildUri($"user-blocks/{id}"), DefaultHeaders);
+            return Connection.GetAsync<UserBlocks>(BuildUri($"user-blocks/{EncodePath(id)}"), DefaultHeaders);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous unblock operation.</returns>
         public Task UnblockByUserIdAsync(string id)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"user-blocks/{id}", 
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"user-blocks/{EncodePath(id)}", 
                 new Dictionary<string, string> { { "id", id } }), null, DefaultHeaders);
         }
     }

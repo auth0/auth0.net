@@ -43,7 +43,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"rules/{id}"), null, DefaultHeaders);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"rules/{EncodePath(id)}"), null, DefaultHeaders);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Rule" /> that was requested.</returns>
         public Task<Rule> GetAsync(string id, string fields = null, bool includeFields = true)
         {
-            return Connection.GetAsync<Rule>(BuildUri($"rules/{id}",
+            return Connection.GetAsync<Rule>(BuildUri($"rules/{EncodePath(id)}",
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
@@ -103,7 +103,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="Rule"/>.</returns>
         public Task<Rule> UpdateAsync(string id, RuleUpdateRequest request)
         {
-            return Connection.SendAsync<Rule>(new HttpMethod("PATCH"), BuildUri($"rules/{id}"), request, DefaultHeaders);
+            return Connection.SendAsync<Rule>(new HttpMethod("PATCH"), BuildUri($"rules/{EncodePath(id)}"), request, DefaultHeaders);
         }
     }
 }

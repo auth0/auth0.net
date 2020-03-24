@@ -43,7 +43,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"resource-servers/{id}"), null, DefaultHeaders);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"resource-servers/{EncodePath(id)}"), null, DefaultHeaders);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="ResourceServer"/> that was requested.</returns>
         public Task<ResourceServer> GetAsync(string id)
         {
-            return Connection.GetAsync<ResourceServer>(BuildUri($"resource-servers/{id}"), DefaultHeaders);
+            return Connection.GetAsync<ResourceServer>(BuildUri($"resource-servers/{EncodePath(id)}"), DefaultHeaders);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The newly updated <see cref="ResourceServer"/>.</returns>
         public Task<ResourceServer> UpdateAsync(string id, ResourceServerUpdateRequest request)
         {
-            return Connection.SendAsync<ResourceServer>(new HttpMethod("PATCH"), BuildUri($"resource-servers/{id}"), request, DefaultHeaders);
+            return Connection.SendAsync<ResourceServer>(new HttpMethod("PATCH"), BuildUri($"resource-servers/{EncodePath(id)}"), request, DefaultHeaders);
         }
     }
 }

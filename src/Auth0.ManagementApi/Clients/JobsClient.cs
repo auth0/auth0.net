@@ -33,7 +33,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
         public Task<Job> GetAsync(string id)
         {
-            return Connection.GetAsync<Job>(BuildUri($"jobs/{id}"), DefaultHeaders);
+            return Connection.GetAsync<Job>(BuildUri($"jobs/{EncodePath(id)}"), DefaultHeaders);
         }
 
         /// <summary>

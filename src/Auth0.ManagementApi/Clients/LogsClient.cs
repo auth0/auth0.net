@@ -60,7 +60,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="LogEntry"/> instance containing the information about the log entry.</returns>
         public Task<LogEntry> GetAsync(string id)
         {
-            return Connection.GetAsync<LogEntry>(BuildUri($"logs/{id}"), DefaultHeaders);
+            return Connection.GetAsync<LogEntry>(BuildUri($"logs/{EncodePath(id)}"), DefaultHeaders);
         }
     }
 }

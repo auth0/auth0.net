@@ -44,7 +44,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string id)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"clients/{id}"), null, DefaultHeaders);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"clients/{EncodePath(id)}"), null, DefaultHeaders);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Client"/> retrieved.</returns>
         public Task<Client> GetAsync(string id, string fields = null, bool includeFields = true)
         {
-            return Connection.GetAsync<Client>(BuildUri($"clients/{id}",
+            return Connection.GetAsync<Client>(BuildUri($"clients/{EncodePath(id)}",
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
@@ -107,7 +107,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Client"/> that has had its secret rotated.</returns>
         public Task<Client> RotateClientSecret(string id)
         {
-            return Connection.SendAsync<Client>(HttpMethod.Post, BuildUri($"clients/{id}/rotate-secret"), null, DefaultHeaders);
+            return Connection.SendAsync<Client>(HttpMethod.Post, BuildUri($"clients/{EncodePath(id)}/rotate-secret"), null, DefaultHeaders);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="Client"/> that was updated.</returns>
         public Task<Client> UpdateAsync(string id, ClientUpdateRequest request)
         {
-            return Connection.SendAsync<Client>(new HttpMethod("PATCH"), BuildUri($"clients/{id}"), request, DefaultHeaders);
+            return Connection.SendAsync<Client>(new HttpMethod("PATCH"), BuildUri($"clients/{EncodePath(id)}"), request, DefaultHeaders);
         }
     }
 }
