@@ -30,7 +30,6 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Test_resource_server_crud_sequence()
         {
-
             // Add a new resource server
             var identifier = Guid.NewGuid();
             var createResourceServerRequest = new ResourceServerCreateRequest()
@@ -50,11 +49,10 @@ namespace Auth0.ManagementApi.IntegrationTests
                     }
                 },
                 AllowOfflineAccess = true,
-                //EnforcePolicies = true,
-                //TokenDialect = TokenDialect.AccessTokenAuthZ,
                 VerificationLocation = "https://abc.auth0.com/def",
                 SkipConsentForVerifiableFirstPartyClients = true,
             };
+
             var newResourceServerResponse = await _apiClient.ResourceServers.CreateAsync(createResourceServerRequest);
             newResourceServerResponse.Should().BeEquivalentTo(createResourceServerRequest, options => options.Excluding(rs => rs.Id));
 
@@ -96,6 +94,15 @@ namespace Auth0.ManagementApi.IntegrationTests
             await _apiClient.ResourceServers.DeleteAsync(resourceServer.Id);
             Func<Task> getFunc = async () => await _apiClient.ResourceServers.GetAsync(resourceServer.Id);
             getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_resource_server");
+        }
+
+        [Fact]
+        public async Task Test_get_resource_server_by_identifier()
+        {
+            const string identifier = "https://test.integration.net";
+            var resourceServers = await _apiClient.ResourceServers.GetAsync(identifier);
+
+            Assert.Equal(resourceServers.Identifier, identifier);
         }
 
         [Fact]
