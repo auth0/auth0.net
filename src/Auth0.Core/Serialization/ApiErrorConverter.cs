@@ -31,19 +31,25 @@ namespace Auth0.Core.Serialization
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            object instance = Activator.CreateInstance(objectType);
-            var props = objectType.GetTypeInfo().DeclaredProperties.ToList();
+            var instance = Activator.CreateInstance(objectType);
+            var props = objectType.GetTypeInfo().DeclaredProperties.Where(p => p.CanWrite).ToList();
+            var extraDataProp = props.FirstOrDefault(p => p.PropertyType == typeof(Dictionary<string, string>));
 
-            JObject jo = JObject.Load(reader);
-            foreach (JProperty jp in jo.Properties())
+            foreach (var jp in JObject.Load(reader).Properties())
             {
                 if (!_propertyMappings.TryGetValue(jp.Name, out var name))
                     name = jp.Name;
 
-                PropertyInfo prop = props.FirstOrDefault(pi =>
-                    pi.CanWrite && string.Equals(pi.Name, name, StringComparison.OrdinalIgnoreCase));
+                var prop = props.FirstOrDefault(pi => string.Equals(pi.Name, name, StringComparison.OrdinalIgnoreCase));
 
-                prop?.SetValue(instance, jp.Value.ToObject(prop.PropertyType, serializer));
+                if (prop != null)
+                {
+                    prop.SetValue(instance, jp.Value.ToObject<string>(serializer));
+                }
+                else if (extraDataProp != null)
+                {
+                    ((IDictionary<string, string>)extraDataProp.GetValue(instance))[name] = jp.Value.ToObject<string>(serializer);
+                }
             }
 
             return instance;

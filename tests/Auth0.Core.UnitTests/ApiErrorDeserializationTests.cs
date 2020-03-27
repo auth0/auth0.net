@@ -9,6 +9,18 @@ namespace Auth0.Core.UnitTests
 {
     public class ApiErrorDeserializationTests
     {
+        [Fact]
+        public void Should_deserialize_extra_properties_like_mfa_response()
+        {
+            var content = "{\"error\": \"mfa_required\", \"error_description\": \"Multifactor authentication required\", \"mfa_token\": \"2x4b-r2d2-c3po-bb8-ig88\"}";
+
+            var parsed = ApiError.Parse(content);
+
+            Assert.Equal("mfa_required", parsed.Error);
+            Assert.Equal("Multifactor authentication required", parsed.Message);
+            Assert.Contains(parsed.ExtraData, (d) => d.Key == "mfa_token" && string.Equals(d.Value, "2x4b-r2d2-c3po-bb8-ig88"));
+        }
+
         [Theory]
         [ClassData(typeof(ApiErrorDeserializationData))]
         public void Should_deserialize_all_error_strucutures_correctly(string content, ApiError expected)
@@ -23,7 +35,7 @@ namespace Auth0.Core.UnitTests
     {
         public IEnumerator<object[]> GetEnumerator()
         {
-            yield return new object[] { "{\"name\":\"Error\",\"code\":\"error_code\",\"description\":\"The Message\",\"statusCode\":400}", new ApiError
+            yield return new object[] { "{\"name\":\"Error\",\"code\":\"error_code\",\"description\":\"The Message\"}", new ApiError
                 {
                     Error = "Error",
                     ErrorCode = "error_code",
@@ -35,7 +47,7 @@ namespace Auth0.Core.UnitTests
                      ErrorCode = null,
                      Message = "The Message"
                  } };
-            yield return new object[] { "{\"statusCode\": 400, \"error\": \"Error\", \"message\": \"The Message\", \"errorCode\": \"error_code\"}", new ApiError
+            yield return new object[] { "{\"error\": \"Error\", \"message\": \"The Message\", \"errorCode\": \"error_code\"}", new ApiError
                  {
                      Error = "Error",
                      ErrorCode = "error_code",
