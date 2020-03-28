@@ -49,7 +49,7 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Get a resource server by its id.
         /// </summary>
-        /// <param name="id">The id of the resource server.</param>
+        /// <param name="id">The identifier of the resource server.</param>
         /// <returns>The <see cref="ResourceServer"/> that was requested.</returns>
         public Task<ResourceServer> GetAsync(string id)
         {

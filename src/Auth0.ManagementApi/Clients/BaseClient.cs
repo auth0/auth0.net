@@ -56,7 +56,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>URI encoded/escaped value that can be used in the path.</returns>
         protected string EncodePath(string value)
         {
-            return Uri.EscapeUriString(value);
+            return Uri.EscapeDataString(value);
         }
     }
 }
