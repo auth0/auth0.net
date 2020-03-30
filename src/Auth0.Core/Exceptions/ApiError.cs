@@ -1,5 +1,6 @@
 ﻿using Auth0.Core.Serialization;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -30,6 +31,12 @@ namespace Auth0.Core.Exceptions
         public string Message { get; set; }
 
         /// <summary>
+        /// Additional key/values that might be returned by the error such as `mfa_required`.
+        /// </summary>
+        [JsonProperty("extraData")]
+        public Dictionary<string, string> ExtraData { get; set; } = new Dictionary<string, string>();
+
+        /// <summary>
         /// Parse a <see cref="HttpResponseMessage"/> into an <see cref="ApiError"/> asynchronously.
         /// </summary>
         /// <param name="response"><see cref="HttpResponseMessage"/> to parse.</param>
@@ -44,6 +51,11 @@ namespace Auth0.Core.Exceptions
             if (string.IsNullOrEmpty(content))
                 return null;
 
+            return Parse(content);
+        }
+
+        internal static ApiError Parse(string content)
+        {
             try
             {
                 return JsonConvert.DeserializeObject<ApiError>(content);
