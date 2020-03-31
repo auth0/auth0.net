@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Text;
@@ -82,7 +83,7 @@ namespace Auth0.AuthenticationApi
             using (var response = await httpClient.SendAsync(request).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
-                    throw new ErrorApiException(response.StatusCode, await ApiError.Parse(response).ConfigureAwait(false));
+                    throw await ApiException.CreateSpecificExceptionAsync(response).ConfigureAwait(false);
 
                 var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 

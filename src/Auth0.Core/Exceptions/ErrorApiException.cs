@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Net;
+using System.Net.Http;
 using System.Runtime.Serialization;
+using System.Threading.Tasks;
 
 namespace Auth0.Core.Exceptions
 {
@@ -65,6 +67,11 @@ namespace Auth0.Core.Exceptions
         protected ErrorApiException(SerializationInfo serializationInfo, StreamingContext streamingContext)
             : base(serializationInfo, streamingContext)
         {
+        }
+
+        internal static async Task<ErrorApiException> CreateAsync(HttpResponseMessage response)
+        {
+            return new ErrorApiException(response.StatusCode, await ApiError.Parse(response).ConfigureAwait(false));
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Http;
 using System.Runtime.Serialization;
 
 namespace Auth0.Core.Exceptions
@@ -49,6 +50,11 @@ namespace Auth0.Core.Exceptions
             : this("Rate limits exceeded")
         {
             RateLimit = rateLimit;
+        }
+
+        internal static RateLimitApiException Create(HttpResponseMessage response)
+        {
+            return new RateLimitApiException(RateLimit.Parse(response.Headers));
         }
 
         /// <inheritdoc />
