@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net;
 using System.Net.Http;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
@@ -51,7 +50,7 @@ namespace Auth0.Core.Exceptions
         /// Create an instance of the specific exception required for this unsuccessful <see cref="HttpResponseMessage"/>.
         /// </summary>
         /// <param name="response"><see cref="HttpResponseMessage"/> to parse for the correct exception.</param>
-        /// <returns>A </returns>
+        /// <returns>An instance of a <see cref="ApiException"/> subclass containing the appropriate exception for this response.</returns>
         public static async Task<ApiException> CreateSpecificExceptionAsync(HttpResponseMessage response)
         {
             switch ((int)response.StatusCode)
