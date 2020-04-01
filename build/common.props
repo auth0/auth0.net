@@ -13,6 +13,10 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 7.0.4
+      - Ensure JWKS keys are cached for the correct period.
+      - Raise RateLimitApiException on 429/TooManyRequests status code response.
+
       Version 7.0.3
       - Fixed path encoding allowing ResourceServers.GetAsync to work with HTTP URLs #377
       - Add support for extra error properties to faciliate mfa_required etc. #376
@@ -136,7 +140,7 @@
     <LangVersion>7.1</LangVersion>
     <Major>7</Major>
     <Minor>0</Minor>
-    <Revision>3</Revision>
+    <Revision>4</Revision>
     <Suffix></Suffix>
   </PropertyGroup>
   <PropertyGroup>
