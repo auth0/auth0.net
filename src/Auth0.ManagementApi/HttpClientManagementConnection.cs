@@ -88,7 +88,7 @@ namespace Auth0.ManagementApi
             var response = await httpClient.SendAsync(request).ConfigureAwait(false);
             {
                 if (!response.IsSuccessStatusCode)
-                    throw new ErrorApiException(response.StatusCode, await ApiError.Parse(response).ConfigureAwait(false));
+                    throw await ApiException.CreateSpecificExceptionAsync(response).ConfigureAwait(false);
 
                 var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 

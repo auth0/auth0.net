@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Net.Http;
 using System.Runtime.Serialization;
+using System.Threading.Tasks;
 
 namespace Auth0.Core.Exceptions
 {
@@ -42,6 +44,22 @@ namespace Auth0.Core.Exceptions
         protected ApiException(SerializationInfo serializationInfo, StreamingContext streamingContext)
             : base(serializationInfo, streamingContext)
         {
+        }
+
+        /// <summary>
+        /// Create an instance of the specific exception required for this unsuccessful <see cref="HttpResponseMessage"/>.
+        /// </summary>
+        /// <param name="response"><see cref="HttpResponseMessage"/> to parse for the correct exception.</param>
+        /// <returns>An instance of a <see cref="ApiException"/> subclass containing the appropriate exception for this response.</returns>
+        public static async Task<ApiException> CreateSpecificExceptionAsync(HttpResponseMessage response)
+        {
+            switch ((int)response.StatusCode)
+            {
+                case 429:
+                    return RateLimitApiException.Create(response);
+                default:
+                    return await ErrorApiException.CreateAsync(response);
+            }
         }
     }
 }

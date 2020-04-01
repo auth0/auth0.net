@@ -62,6 +62,10 @@ namespace Auth0.ManagementApi.IntegrationTests
                         Password = "wrong_password"
                     });
                 }
+                catch (RateLimitApiException ex )
+                {
+                    await Task.Delay(1000);
+                }
                 catch (ErrorApiException ex)
                 {
                     if (ex.ApiError.Error == "too_many_attempts")
