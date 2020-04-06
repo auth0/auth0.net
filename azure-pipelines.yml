@@ -3,45 +3,27 @@ trigger:
 
 pool:
   name: Hosted VS2017
-  demands:
-  - msbuild
-  - visualstudio
-  - vstest
-
-variables:
-  solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
 
 steps:
 - task: UseDotNet@2
-  displayName: 'Use .NET Core SDK'
+  displayName: 'Use .Net Core SDK'
   inputs:
-    packageType: sdk
     version: 3.1.201
-    installationPath: $(Agent.ToolsDirectory)/dotnet
 
 - task: DotNetCoreCLI@2
   displayName: Restore
   inputs:
     command: restore
 
-- task: VSBuild@1
+- task: DotNetCoreCLI@2
   displayName: Build
   inputs:
-    msbuildArgs: '/p:nowarn=1591'
-    configuration: RELEASE
-    clean: true
-    maximumCpuCount: true
-    msbuildArchitecture: x64
+    arguments: '-nowarn:CS1591 --configuration Release'
 
-- task: VSTest@2
+- task: DotNetCoreCLI@2
   displayName: Test
   inputs:
-    testAssemblyVer2: |
-     **\*tests*.dll
-     !**\*TestAdapter.dll
-     !**\obj\**
+    command: test
 
 - task: DotNetCoreCLI@2
   displayName: Pack
