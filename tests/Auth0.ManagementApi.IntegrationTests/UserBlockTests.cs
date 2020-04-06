@@ -62,7 +62,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                         Password = "wrong_password"
                     });
                 }
-                catch (RateLimitApiException ex )
+                catch (RateLimitApiException)
                 {
                     await Task.Delay(1000);
                 }

@@ -92,7 +92,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public void Attempting_to_delete_users_with_null_or_empty_id_should_throw(string id)
         {
             Func<Task> deleteFunc = async () => await _apiClient.Users.DeleteAsync(id);
-            deleteFunc.Should().Throw<ArgumentException>().And.Message.Should().Be($"Value cannot be null or whitespace.{Environment.NewLine}Parameter name: id");
+            deleteFunc.Should().Throw<ArgumentException>().And.Message.Should().StartWith("Value cannot be null or whitespace.");
         }
 
         [Fact]
