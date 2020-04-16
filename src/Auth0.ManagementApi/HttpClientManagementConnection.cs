@@ -153,9 +153,10 @@ namespace Auth0.ManagementApi
                     content.Add(stream, file.Key, file.Filename);
             }
 
-            if (body is Dictionary<string, string> parameters)
+            if (body is Dictionary<string, object> parameters)
                 foreach (var parameter in parameters)
-                    content.Add(new StringContent(Uri.EscapeDataString(parameter.Value?.ToString() ?? "")), parameter.Key);
+                    if (parameter.Value != null)
+                        content.Add(new StringContent(Uri.EscapeDataString(parameter.Value.ToString())), parameter.Key);
 
             return content;
         }

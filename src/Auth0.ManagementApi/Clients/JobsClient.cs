@@ -50,6 +50,9 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
         public Task<Job> ImportUsersAsync(string connectionId, string fileName, Stream file, bool? upsert = null, string externalId = null)
         {
+            if (file == null)
+                throw new ArgumentNullException(nameof(file));
+
             var parameters = new Dictionary<string, object>
             {
                 { "connection_id", connectionId },
