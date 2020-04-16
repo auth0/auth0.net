@@ -48,21 +48,18 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Can_send_verification_email()
         {
-            // Send an email verification request
-            var emailRequest = new VerifyEmailJobRequest
+            var sendVerification = await _apiClient.Jobs.SendVerificationEmailAsync(new VerifyEmailJobRequest
             {
                 UserId = _user.UserId,
                 ClientId = GetVariable("AUTH0_CLIENT_ID")
-            };
-
-            var emailRequestResponse = await _apiClient.Jobs.SendVerificationEmailAsync(emailRequest);
-            emailRequestResponse.Should().NotBeNull();
-            emailRequestResponse.Id.Should().NotBeNull();
+            });
+            sendVerification.Should().NotBeNull();
+            sendVerification.Id.Should().NotBeNull();
 
             // Check to see whether we can get the same job again
-            var job = await _apiClient.Jobs.GetAsync(emailRequestResponse.Id);
+            var job = await _apiClient.Jobs.GetAsync(sendVerification.Id);
             job.Should().NotBeNull();
-            job.Id.Should().Be(emailRequestResponse.Id);
+            job.Id.Should().Be(sendVerification.Id);
             job.Type.Should().Be("verification_email");
             job.Status.Should().Be("pending");
             job.CreatedAt.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromMinutes(5));
@@ -74,14 +71,14 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Send a user import request
             using (var stream = GetType().Assembly.GetManifestResourceStream("Auth0.ManagementApi.IntegrationTests.user-import-test.json"))
             {
-                var importUsersResponse = await _apiClient.Jobs.ImportUsersAsync(_connection.Id, "user-import-test.json", stream);
-                importUsersResponse.Should().NotBeNull();
-                importUsersResponse.Id.Should().NotBeNull();
-                importUsersResponse.Type.Should().Be("users_import");
-                importUsersResponse.Status.Should().Be("pending");
-                importUsersResponse.CreatedAt.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromMinutes(5));
-                importUsersResponse.ConnectionId.Should().Be(_connection.Id);
-                importUsersResponse.Connection.Should().Be(_connection.Name);
+                var importUsers = await _apiClient.Jobs.ImportUsersAsync(_connection.Id, "user-import-test.json", stream, sendCompletionEmail: false);
+                importUsers.Should().NotBeNull();
+                importUsers.Id.Should().NotBeNull();
+                importUsers.Type.Should().Be("users_import");
+                importUsers.Status.Should().Be("pending");
+                importUsers.CreatedAt.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromMinutes(5));
+                importUsers.ConnectionId.Should().Be(_connection.Id);
+                importUsers.Connection.Should().Be(_connection.Name);
             }
         }
     }
