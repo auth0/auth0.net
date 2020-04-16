@@ -16,6 +16,7 @@ namespace Auth0.ManagementApi
     public class HttpClientManagementConnection : IManagementConnection, IDisposable
     {
         static readonly JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
+
         readonly HttpClient httpClient;
         bool ownHttpClient;
 
@@ -94,7 +95,8 @@ namespace Auth0.ManagementApi
 
                 return typeof(T) == typeof(string)
                     ? (T)(object)content
-                    : JsonConvert.DeserializeObject<T>(content, converters);
+                    : JsonConvert.DeserializeObject<T>(content,
+                        converters == null ? jsonSerializerSettings : new JsonSerializerSettings() { Converters = converters });
             }
         }
 

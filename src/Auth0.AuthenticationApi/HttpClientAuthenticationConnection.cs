@@ -89,7 +89,7 @@ namespace Auth0.AuthenticationApi
 
                 return typeof(T) == typeof(string)
                     ? (T)(object)content
-                    : JsonConvert.DeserializeObject<T>(content);
+                    : JsonConvert.DeserializeObject<T>(content, jsonSerializerSettings);
             }
         }
 
