@@ -10,7 +10,7 @@ namespace Auth0.AuthenticationApi.Models
         /// <summary>
         /// Identifier of this request.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("_id")]
         public string Id { get; set; }
 
         /// <summary>
@@ -18,5 +18,11 @@ namespace Auth0.AuthenticationApi.Models
         /// </summary>
         [JsonProperty("email")]
         public string Email { get; set; }
+
+        /// <summary>
+        /// Whether the email address has been verified (true) or has not been verified (false).
+        /// </summary>
+        [JsonProperty("email_verified")]
+        public bool? EmailVerified { get; set; }
     }
 }
