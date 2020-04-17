@@ -46,15 +46,20 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="fileName">Name of the file.</param>
         /// <param name="file">The file.</param>
         /// <param name="upsert">Whether to update the user if already exists.</param>
-        /// <param name="externalId">Customer defined id.</param>
+        /// <param name="externalId">Customer-defined id.</param>
+        /// <param name="sendCompletionEmail">Whether to send the user an email on import completion (true) or not (false).</param>
         /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
-        public Task<Job> ImportUsersAsync(string connectionId, string fileName, Stream file, bool? upsert = null, string externalId = null)
+        public Task<Job> ImportUsersAsync(string connectionId, string fileName, Stream file, bool? upsert = null, string externalId = null, bool? sendCompletionEmail = null)
         {
+            if (file == null)
+                throw new ArgumentNullException(nameof(file));
+
             var parameters = new Dictionary<string, object>
             {
                 { "connection_id", connectionId },
                 { "upsert", upsert },
-                { "external_id", externalId }
+                { "external_id", externalId },
+                { "send_completion_email", sendCompletionEmail }
             };
 
             var fileParameters = new List<FileUploadParameter>

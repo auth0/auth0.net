@@ -2,13 +2,11 @@
 
 namespace Auth0.ManagementApi.Models
 {
-
     /// <summary>
-    /// 
+    /// Specifies the user and client required in sending an email address verification link.
     /// </summary>
     public class VerifyEmailJobRequest
     {
-
         /// <summary>
         /// The identifier of the user to whom the email will be sent.
         /// </summary>
@@ -21,5 +19,4 @@ namespace Auth0.ManagementApi.Models
         [JsonProperty("client_id")]
         public string ClientId { get; set; }
     }
-
 }
