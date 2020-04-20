@@ -48,10 +48,10 @@ namespace Auth0.Tests.Shared
             }
         }
 
-        protected static string GetVariable(string variableName)
+        protected static string GetVariable(string variableName, bool throwIfMissing = true)
         {
             var value = _config[variableName];
-            if (String.IsNullOrEmpty(value))
+            if (String.IsNullOrEmpty(value) && throwIfMissing)
                 throw new ArgumentOutOfRangeException($"Configuration value '{variableName}' has not been set.");
             return value;
         }

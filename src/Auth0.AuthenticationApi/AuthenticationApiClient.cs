@@ -261,6 +261,7 @@ namespace Auth0.AuthenticationApi
             var body = new
             {
                 client_id = request.ClientId,
+                client_secret = request.ClientSecret,
                 connection = "email",
                 email = request.Email,
                 send = request.Type.ToString().ToLower(),
@@ -282,6 +283,7 @@ namespace Auth0.AuthenticationApi
             var body = new
             {
                 client_id = request.ClientId,
+                client_secret = request.ClientSecret,
                 connection = "sms",
                 phone_number = request.PhoneNumber
             };
