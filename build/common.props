@@ -13,6 +13,12 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 7.0.5
+      - Use own JSON.NET serialization settings (avoids conflicts with changes to global)
+      - Fix Jobs ImportUsersAsync function, add new SendVerificationEmail setting.
+      - Add missing properties to Jobs class.
+      - Add client_secret support to passwordless authentication.
+
       Version 7.0.4
       - Ensure JWKS keys are cached for the correct period.
       - Raise RateLimitApiException on 429/TooManyRequests status code response.
@@ -140,7 +146,7 @@
     <LangVersion>7.1</LangVersion>
     <Major>7</Major>
     <Minor>0</Minor>
-    <Revision>4</Revision>
+    <Revision>5</Revision>
     <Suffix></Suffix>
   </PropertyGroup>
   <PropertyGroup>
