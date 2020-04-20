@@ -15,6 +15,12 @@ namespace Auth0.AuthenticationApi.Models
         public string ClientId { get; set; }
 
         /// <summary>
+        /// Client Secret of the application.
+        /// </summary>
+        [JsonProperty("client_secret")]
+        public string ClientSecret { get; set; }
+
+        /// <summary>
         /// Email to which the link or code must be sent.
         /// </summary>
         [JsonProperty("email")]
