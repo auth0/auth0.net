@@ -72,21 +72,9 @@ Since this library also targets the full .NET Framework, you can currently only 
 
 ## Testing
 
-To run the integration tests, create a file `client-secrets.json` in the `tests\Auth0.ManagementApi.IntegrationTests` and `tests\Auth0.AuthenticationApi.IntegrationTests` directories.
+This project features extensive integration tests which unfortunately require specific server-side configuration and paid plan features in order to test the full functionality. As the management API side of things specifically provides functionality that could break the configuration we do not provide keys or testing against our integration tenants.
 
-Be aware that Auth0 [enforces rate limits](https://auth0.com/docs/policies/rate-limits), if you are running integration tests against a free-tier Auth0 account you may get `Global limit has been reached` errors.
-
-The content should take the following format.
-
-```
-{
-  "AUTH0_AUTHENTICATION_API_URL": "yourdomain.auth0.com",
-  "AUTH0_MANAGEMENT_API_URL": "yourdomain.auth0.com",
-  "AUTH0_MANAGEMENT_API_CLIENT_ID": "your client id",
-  "AUTH0_MANAGEMENT_API_CLIENT_SECRET": "your client sercet",
-  "AUTH0_MANAGEMENT_API_AUDIENCE": "https://yourdomain.auth0.com/api/v2/"
-}
-```
+When reviewing external pull requests we manually run the integration tests against your PR to ensure they pass and the CI server will run them once merged.
 
 ## Issue Reporting
 
