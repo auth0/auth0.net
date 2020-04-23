@@ -4,7 +4,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Reflection;
 using System.Text;
@@ -18,7 +17,7 @@ namespace Auth0.AuthenticationApi
     /// </summary>
     public class HttpClientAuthenticationConnection : IAuthenticationConnection, IDisposable
     {
-        static readonly JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
+        static readonly JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore, DateParseHandling = DateParseHandling.DateTime };
 
         readonly HttpClient httpClient;
         readonly string agentString;

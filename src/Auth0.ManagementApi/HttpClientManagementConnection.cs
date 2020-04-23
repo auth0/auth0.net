@@ -15,7 +15,7 @@ namespace Auth0.ManagementApi
     /// </summary>
     public class HttpClientManagementConnection : IManagementConnection, IDisposable
     {
-        static readonly JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore };
+        static readonly JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore, DateParseHandling = DateParseHandling.DateTime };
 
         readonly HttpClient httpClient;
         bool ownHttpClient;
