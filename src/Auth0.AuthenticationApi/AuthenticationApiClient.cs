@@ -1,5 +1,6 @@
 ﻿using Auth0.AuthenticationApi.Models;
 using Auth0.AuthenticationApi.Tokens;
+using Auth0.Core.Http;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -324,7 +325,7 @@ namespace Auth0.AuthenticationApi
 
         private Uri BuildUri(string path)
         {
-            return new UriBuilder(BaseUri) { Path = path }.Uri;
+            return Utils.BuildUri(BaseUri.AbsoluteUri, path, null, null);
         }
 
         private IDictionary<string, string> BuildHeaders(string accessToken)
