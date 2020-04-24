@@ -10,6 +10,22 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Builders
     public class UriBuildersTests : TestBase
     {
         [Fact]
+        public void Preserves_Uri_Path()
+        {
+            var authenticationApiClient = new AuthenticationApiClient(new Uri("https://localhost:2000/something/here"));
+
+            var authorizationUrl = authenticationApiClient.BuildAuthorizationUrl()
+                .WithResponseType(AuthorizationResponseType.Code)
+                .WithClient("rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW")
+                .WithConnection("google-oauth2")
+                .Build();
+
+            authorizationUrl.Should()
+                .Be(
+                    new Uri("https://localhost:2000/something/here/authorize?response_type=code&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&connection=google-oauth2"));
+        }
+
+        [Fact]
         public void Can_build_authorization_uri()
         {
             var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
