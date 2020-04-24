@@ -13,6 +13,9 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 7.0.7
+      - AuthenticationApiClient now respects path portions of the URI passed to the constructor.
+
       Version 7.0.6
       - Force DateParseHandling of DateTime in JSON.NET serialization to avoid global setting.
 
@@ -149,7 +152,7 @@
     <LangVersion>7.1</LangVersion>
     <Major>7</Major>
     <Minor>0</Minor>
-    <Revision>6</Revision>
+    <Revision>7</Revision>
     <Suffix></Suffix>
   </PropertyGroup>
   <PropertyGroup>
