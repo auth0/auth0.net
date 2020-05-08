@@ -15,6 +15,12 @@ namespace Auth0.ManagementApi.Models
         /// </remarks>
         [JsonProperty("identifier")]
         public string Identifier { get; set; }
+        
+        /// <summary>
+        /// The the connection for which the user is blocked
+        /// </summary>
+        [JsonProperty("connection")]
+        public string Connection { get; set; }
 
         /// <summary>
         /// The blocked IP address
