@@ -13,6 +13,9 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 7.0.8
+      - Add missing "connections" property on UserBlock class
+
       Version 7.0.7
       - AuthenticationApiClient now respects path portions of the URI passed to the constructor.
 
@@ -152,7 +155,7 @@
     <LangVersion>7.1</LangVersion>
     <Major>7</Major>
     <Minor>0</Minor>
-    <Revision>7</Revision>
+    <Revision>8</Revision>
     <Suffix></Suffix>
   </PropertyGroup>
   <PropertyGroup>
