@@ -3,26 +3,35 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using Xunit;
 using Auth0.Tests.Shared;
+using System.Linq;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
     public class StatsTests : TestBase
     {
-        [Fact(Skip = "Inactivity causes these to fail")]
-        public async Task Test_stats_sequence()
+        [Fact]
+        public async Task Daily_Stats_Returns_Values()
         {
             string token = await GenerateManagementApiToken();
 
             using (var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL")))
             {
-                // Get stats for the past 10 days
                 var dailyStats = await apiClient.Stats.GetDailyStatsAsync(DateTime.Now.AddDays(-100), DateTime.Now);
                 dailyStats.Should().NotBeNull();
                 dailyStats.Count.Should().BeGreaterOrEqualTo(1);
+                dailyStats.Max(d => d.Logins).Should().BeGreaterThan(0);
+            }
+        }
 
-                // Get the active users
+        [Fact(Skip = "Inactivity causes these to fail")]
+        public async Task Active_Users_Returns_Values()
+        {
+            string token = await GenerateManagementApiToken();
+
+            using (var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL")))
+            {
                 var activeUsers = await apiClient.Stats.GetActiveUsersAsync();
-                activeUsers.Should().BeGreaterOrEqualTo(1); // These integration tests themselves trigger non-zero values
+                activeUsers.Should().BeGreaterThan(0);
             }
         }
     }
