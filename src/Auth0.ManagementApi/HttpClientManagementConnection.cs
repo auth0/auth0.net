@@ -156,9 +156,15 @@ namespace Auth0.ManagementApi
             if (body is Dictionary<string, object> parameters)
                 foreach (var parameter in parameters)
                     if (parameter.Value != null)
-                        content.Add(new StringContent(Uri.EscapeDataString(parameter.Value.ToString())), parameter.Key);
+                        content.Add(new StringContent(SerializeFormBodyValue(parameter.Value)), parameter.Key);
 
             return content;
+        }
+
+        private static string SerializeFormBodyValue(object value)
+        {
+            if (value is bool boolean) return boolean ? "true" : "false";
+            return Uri.EscapeDataString(value.ToString());
         }
     }
 }
