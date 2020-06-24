@@ -1,6 +1,6 @@
 # .NET client library for the Auth0
 
-[![Build status](https://dev.azure.com/Auth0SDK/Auth0.Net/_apis/build/status/Auth0.Net)](https://dev.azure.com/Auth0SDK/Auth0.Net/_build/latest?definitionId=6) ![NuGet version](https://img.shields.io/nuget/v/auth0.authenticationapi.svg?style=flat)
+[![Build status](https://dev.azure.com/Auth0SDK/Auth0.Net/_apis/build/status/Auth0.Net)](https://dev.azure.com/Auth0SDK/Auth0.Net/_build/latest?definitionId=6) [![NuGet version](https://img.shields.io/nuget/v/auth0.core.svg?style=flat)](https://www.nuget.org/packages/Auth0.Core/)
 
 This library supports .NET Standard 2.0 and .NET Framework 4.5.2 as well as later versions of both.
 
