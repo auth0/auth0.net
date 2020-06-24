@@ -13,6 +13,10 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+	  Version 7.0.9
+	  - Fix boolean casing on form post operations such as ImportUsersAsync so that
+	    upsert and sendCompletionEmail work.
+	  
       Version 7.0.8
       - Add missing "connections" property on UserBlock class
 
@@ -155,7 +159,7 @@
     <LangVersion>7.1</LangVersion>
     <Major>7</Major>
     <Minor>0</Minor>
-    <Revision>8</Revision>
+    <Revision>9</Revision>
     <Suffix></Suffix>
   </PropertyGroup>
   <PropertyGroup>
