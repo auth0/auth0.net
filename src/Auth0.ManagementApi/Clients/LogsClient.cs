@@ -15,7 +15,7 @@ namespace Auth0.ManagementApi.Clients
         readonly JsonConverter[] converters = new JsonConverter[] { new PagedListConverter<LogEntry>("logs") };
 
         /// <summary>
-        /// Initializes a new instance on <see cref="LogsClient"/>
+        /// Initializes a new instance of <see cref="LogsClient"/>
         /// </summary>
         /// <param name="connection"><see cref="IManagementConnection"/> used to make all API calls.</param>
         /// <param name="baseUri"><see cref="Uri"/> of the endpoint to use in making API calls.</param>
