@@ -38,13 +38,14 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 Name = name,
                 Type = LogStreamType.Http,
-                Sink = new ExpandoObject()
+                Sink = new
+                {
+                    httpEndpoint = "https://my-stream.com",
+                    httpContentType = "application/json",
+                    httpContentFormat = "JSONOBJECT",
+                    httpAuthorization = "http-auth"
+                }
             };
-
-            request.Sink.httpEndpoint = "https://my-stream.com";
-            request.Sink.httpContentType = "application/json";
-            request.Sink.httpContentFormat = "JSONOBJECT";
-            request.Sink.httpAuthorization = "http-auth";
 
             var json = JsonConvert.SerializeObject(request);
 
