@@ -4,6 +4,7 @@ using Auth0.Tests.Shared;
 using FluentAssertions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -12,6 +13,7 @@ namespace Auth0.ManagementApi.IntegrationTests
     public class LogStreamsTests : TestBase, IAsyncLifetime
     {
         private ManagementApiClient _apiClient;
+        private List<LogStream> createdStreams = new List<LogStream>();
 
         public async Task InitializeAsync()
         {
@@ -21,8 +23,13 @@ namespace Auth0.ManagementApi.IntegrationTests
 
         public Task DisposeAsync()
         {
-            _apiClient.Dispose();
-            return Task.CompletedTask;
+            // Clean up any log stream entities on the tenant after every test executes
+            var deleteTasks = createdStreams.Select(stream => _apiClient.LogStreams.DeleteAsync(stream.Id));
+
+            return Task.WhenAll(deleteTasks.ToArray()).ContinueWith(_ =>
+            {
+                _apiClient.Dispose();
+            });
         }
 
         [Fact]
@@ -45,6 +52,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             };
 
             var createdLogStream = await _apiClient.LogStreams.CreateAsync(request);
+            createdStreams.Add(createdLogStream);
+
             createdLogStream.Should().NotBeNull();
             createdLogStream.Name.Should().Be(name);
 
@@ -79,49 +88,48 @@ namespace Auth0.ManagementApi.IntegrationTests
             Func<Task> getFunc = async () => await _apiClient.LogStreams.GetAsync(createdLogStream.Id);
             getFunc.Should().Throw<ErrorApiException>().And.ApiError.Error.Should().Be("Not Found");
         }
-        
+
         [Fact]
         public async Task Test_log_stream_get_all()
         {
             // Arrange
-            var request1 = new LogStreamCreateRequest
-            {
-                Name = "Auth0.net Stream 1",
-                Type = LogStreamType.Http,
-                Sink = new
+            var requests = new LogStreamCreateRequest[] {
+                new LogStreamCreateRequest
                 {
-                    httpEndpoint = "https://my-stream.com",
-                    httpContentType = "application/json",
-                    httpContentFormat = "JSONOBJECT",
-                    httpAuthorization = "http-auth"
+                    Name = "Auth0.net Stream 1",
+                    Type = LogStreamType.Http,
+                    Sink = new
+                    {
+                        httpEndpoint = "https://my-stream.com",
+                        httpContentType = "application/json",
+                        httpContentFormat = "JSONOBJECT",
+                        httpAuthorization = "http-auth"
+                    }
+                },
+                new LogStreamCreateRequest
+                {
+                    Name = "Auth0.net Stream 2",
+                    Type = LogStreamType.Http,
+                    Sink = new
+                    {
+                        httpEndpoint = "https://my-stream.com",
+                        httpContentType = "application/json",
+                        httpContentFormat = "JSONOBJECT",
+                        httpAuthorization = "http-auth"
+                    }
                 }
             };
 
-            var request2 = new LogStreamCreateRequest
+            foreach(var request in requests)
             {
-                Name = "Auth0.net Stream 2",
-                Type = LogStreamType.Http,
-                Sink = new
-                {
-                    httpEndpoint = "https://my-stream.com",
-                    httpContentType = "application/json",
-                    httpContentFormat = "JSONOBJECT",
-                    httpAuthorization = "http-auth"
-                }
-            };
-
-            var stream1 = await _apiClient.LogStreams.CreateAsync(request1);
-            var stream2 = await _apiClient.LogStreams.CreateAsync(request2);
+                createdStreams.Add(await _apiClient.LogStreams.CreateAsync(request));
+            }
 
             // Act
             var streams = await _apiClient.LogStreams.GetAllAsync();
 
             // Assert
             streams.Count.Should().Be(2);
-
-            // Cleanup
-            await _apiClient.LogStreams.DeleteAsync(stream1.Id);
-            await _apiClient.LogStreams.DeleteAsync(stream2.Id);
         }
     }
 }
