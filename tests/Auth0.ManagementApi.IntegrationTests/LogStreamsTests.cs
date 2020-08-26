@@ -58,6 +58,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var updateRequest = new LogStreamUpdateRequest
             {
                 Name = "Auth0.net Test Updated Stream",
+                Status = LogStreamUpdateStatus.Paused,
                 Sink = new
                 {
                     httpEndpoint = "https://new-stream.com"
@@ -66,7 +67,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             var updatedLogStream = await _apiClient.LogStreams.UpdateAsync(fetchedLogStream.Id, updateRequest);
             updatedLogStream.Name.Should().Be(updateRequest.Name);
-            updatedLogStream.Status.Should().Be(LogStreamStatus.Active);
+            updatedLogStream.Status.Should().Be(LogStreamStatus.Paused);
             updatedLogStream.Id.Should().Be(fetchedLogStream.Id);
             
             // show that sink properties are merged
