@@ -2,6 +2,7 @@
 using Auth0.ManagementApi.Models;
 using Auth0.Tests.Shared;
 using FluentAssertions;
+using FluentAssertions.Common;
 using Newtonsoft.Json;
 using System;
 using System.Threading.Tasks;
@@ -77,6 +78,50 @@ namespace Auth0.ManagementApi.IntegrationTests
             await _apiClient.LogStreams.DeleteAsync(createdLogStream.Id);
             Func<Task> getFunc = async () => await _apiClient.LogStreams.GetAsync(createdLogStream.Id);
             getFunc.Should().Throw<ErrorApiException>().And.ApiError.Error.Should().Be("Not Found");
+        }
+        
+        [Fact]
+        public async Task Test_log_stream_get_all()
+        {
+            // Arrange
+            var request1 = new LogStreamCreateRequest
+            {
+                Name = "Auth0.net Stream 1",
+                Type = LogStreamType.Http,
+                Sink = new
+                {
+                    httpEndpoint = "https://my-stream.com",
+                    httpContentType = "application/json",
+                    httpContentFormat = "JSONOBJECT",
+                    httpAuthorization = "http-auth"
+                }
+            };
+
+            var request2 = new LogStreamCreateRequest
+            {
+                Name = "Auth0.net Stream 2",
+                Type = LogStreamType.Http,
+                Sink = new
+                {
+                    httpEndpoint = "https://my-stream.com",
+                    httpContentType = "application/json",
+                    httpContentFormat = "JSONOBJECT",
+                    httpAuthorization = "http-auth"
+                }
+            };
+
+            var stream1 = await _apiClient.LogStreams.CreateAsync(request1);
+            var stream2 = await _apiClient.LogStreams.CreateAsync(request2);
+
+            // Act
+            var streams = await _apiClient.LogStreams.GetAllAsync();
+
+            // Assert
+            streams.Count.Should().Be(2);
+
+            // Cleanup
+            await _apiClient.LogStreams.DeleteAsync(stream1.Id);
+            await _apiClient.LogStreams.DeleteAsync(stream2.Id);
         }
     }
 }
