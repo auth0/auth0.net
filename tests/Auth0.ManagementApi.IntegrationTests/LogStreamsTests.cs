@@ -4,9 +4,6 @@ using Auth0.Tests.Shared;
 using FluentAssertions;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -47,8 +44,6 @@ namespace Auth0.ManagementApi.IntegrationTests
                 }
             };
 
-            var json = JsonConvert.SerializeObject(request);
-
             var createdLogStream = await _apiClient.LogStreams.CreateAsync(request);
             createdLogStream.Should().NotBeNull();
             createdLogStream.Name.Should().Be(name);
@@ -58,6 +53,25 @@ namespace Auth0.ManagementApi.IntegrationTests
             fetchedLogStream.Should().NotBeNull();
             fetchedLogStream.Name.Should().Be(name);
             fetchedLogStream.Id.Should().Be(createdLogStream.Id);
+
+            // Update the entity
+            var updateRequest = new LogStreamUpdateRequest
+            {
+                Name = "Auth0.net Test Updated Stream",
+                Sink = new
+                {
+                    httpEndpoint = "https://new-stream.com"
+                }
+            };
+
+            var updatedLogStream = await _apiClient.LogStreams.UpdateAsync(fetchedLogStream.Id, updateRequest);
+            updatedLogStream.Name.Should().Be(updateRequest.Name);
+            updatedLogStream.Status.Should().Be(LogStreamStatus.Active);
+            updatedLogStream.Id.Should().Be(fetchedLogStream.Id);
+            
+            // show that sink properties are merged
+            ((string)updatedLogStream.Sink.httpContentType).Should().Be("application/json");             
+            ((string)updatedLogStream.Sink.httpEndpoint).Should().Be(updateRequest.Sink.httpEndpoint);
 
             // Delete the entity
             await _apiClient.LogStreams.DeleteAsync(createdLogStream.Id);
