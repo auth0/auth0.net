@@ -1,6 +1,7 @@
 ﻿using Auth0.ManagementApi.Models;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -28,6 +29,16 @@ namespace Auth0.ManagementApi.Clients
         public Task<IList<LogStream>> GetAllAsync()
         {
             return Connection.GetAsync<IList<LogStream>>(BuildUri("log-streams"), DefaultHeaders);
+        }
+
+        /// <summary>
+        /// Creates a new log stream
+        /// </summary>
+        /// <param name="request">The <see cref="LogStreamCreateRequest"/> containing the information needed to create the log stream</param>
+        /// <returns>A <see cref="Task"/> that represents the  asynchronous create operation.</returns>
+        public Task CreateAsync(LogStreamCreateRequest request)
+        {
+            return Connection.SendAsync<Client>(HttpMethod.Post, BuildUri("log-streams"), request, DefaultHeaders);
         }
     }
 }
