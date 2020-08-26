@@ -32,6 +32,22 @@ namespace Auth0.Tests.Shared
             return _alphaNumeric.Replace(Convert.ToBase64String(Guid.NewGuid().ToByteArray()), "");
         }
 
+        protected async Task<string> GenerateBruckeManagementApiToken()
+        {
+            using (var authenticationApiClient = new AuthenticationApiClient(GetVariable("BRUCKE_AUTHENTICATION_API_URL")))
+            {
+                // Get the access token
+                var token = await authenticationApiClient.GetTokenAsync(new ClientCredentialsTokenRequest
+                {
+                    ClientId = GetVariable("BRUCKE_MANAGEMENT_API_CLIENT_ID"),
+                    ClientSecret = GetVariable("BRUCKE_MANAGEMENT_API_CLIENT_SECRET"),
+                    Audience = GetVariable("BRUCKE_MANAGEMENT_API_AUDIENCE")
+                });
+
+                return token.AccessToken;
+            }
+        }
+
         protected async Task<string> GenerateManagementApiToken()
         {
             using (var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))

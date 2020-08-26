@@ -32,13 +32,39 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
+        /// Gets a log stream
+        /// </summary>
+        /// <param name="id">The id of the log stream to get</param>
+        /// <returns>A <see cref="LogStream"/> object</returns>
+        public Task<LogStream> GetAsync(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id))
+                throw new ArgumentException("Value cannot be null or whitespace.", nameof(id));
+
+            return Connection.GetAsync<LogStream>(BuildUri($"log-streams/{EncodePath(id)}"), DefaultHeaders);
+        }
+
+        /// <summary>
         /// Creates a new log stream
         /// </summary>
         /// <param name="request">The <see cref="LogStreamCreateRequest"/> containing the information needed to create the log stream</param>
         /// <returns>A <see cref="Task"/> that represents the  asynchronous create operation.</returns>
-        public Task CreateAsync(LogStreamCreateRequest request)
+        public Task<LogStream> CreateAsync(LogStreamCreateRequest request)
         {
-            return Connection.SendAsync<Client>(HttpMethod.Post, BuildUri("log-streams"), request, DefaultHeaders);
+            return Connection.SendAsync<LogStream>(HttpMethod.Post, BuildUri("log-streams"), request, DefaultHeaders);
+        }
+
+        /// <summary>
+        /// Deletes a log stream
+        /// </summary>
+        /// <param name="id">The id of the log stream to delete</param>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
+        public Task DeleteAsync(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id))
+                throw new ArgumentException("Value cannot be null or whitespace.", nameof(id));
+
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"log-streams/{EncodePath(id)}"), null, DefaultHeaders);
         }
     }
 }
