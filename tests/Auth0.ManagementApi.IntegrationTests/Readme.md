@@ -75,3 +75,10 @@ delete:connections
 
 read:tenant_settings
 update:tenant_settings
+
+## AUTH0_TOKEN_LOG_STREAMS
+
+read:log_streams
+create:log_streams
+delete:log_streams
+update:log_streams
