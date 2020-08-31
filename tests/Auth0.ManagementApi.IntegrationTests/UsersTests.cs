@@ -395,6 +395,12 @@ namespace Auth0.ManagementApi.IntegrationTests
             associatedPermissions.First().Identifier.Should().Be(resourceServer.Identifier);
             associatedPermissions.First().Name.Should().Be(newScope.Value);
 
+            // check permission sources
+            associatedPermissions.First().Sources.Should().HaveCount(1);
+            associatedPermissions.First().Sources.First().ID.Should().Be(string.Empty);
+            associatedPermissions.First().Sources.First().Name.Should().Be(string.Empty);
+            associatedPermissions.First().Sources.First().Type.Should().Be(PermissionSourceType.Direct);
+
             // Unassociate a permission with the user
             await _apiClient.Users.RemovePermissionsAsync(user.UserId, assignPermissionsRequest);
 
