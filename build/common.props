@@ -16,9 +16,8 @@
       Version 7.1.0
       - Add support for Log Streams API in Auth0.ManagementApi
       
-	    Version 7.0.9
-	     - Fix boolean casing on form post operations such as ImportUsersAsync so that
-	       upsert and sendCompletionEmail work.
+      Version 7.0.9
+      - Fix boolean casing on form post operations such as ImportUsersAsync so that upsert and sendCompletionEmail work.
 	  
       Version 7.0.8
       - Add missing "connections" property on UserBlock class
