@@ -12,6 +12,7 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("provider")]
         public string Provider { get; set; }
+
         /// <summary>
         /// UserId of the identity to be verified.
         /// </summary>
