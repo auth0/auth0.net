@@ -27,6 +27,13 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("user_id")]
         public string UserId { get; set; }
+
+        /// <summary>
+        /// Sets the identity. Needed to verify primary identities when using social, enterprise, or passwordless connections.
+        /// It is also required to verify secondary identities.
+        /// </summary>
+        [JsonProperty("identity")]
+        public EmailVerificationIdentity Identity { get; set; }
     }
 
 }
