@@ -65,7 +65,7 @@
 <h2 id="migrating-from-v6-to-v7">Migrating From v6 to v7</h2>
 <p>There are a number of important changes in v7 including some that may be breaking depending on your scenarios. They are as follows:</p>
 <h3 id="id-token">ID Token</h3>
-<p>As part of our on-going efforts to be OpenID Compliant, the authentication SDK expects an ID Token to always be present. Therefor <code>openid</code> should always be passed as a <code>Scope</code> when calling <code>GetTokenAsync</code> for the <code>Refresh Token</code> or <code>Resource Owner Password</code> grants as well as when using <code>AuthenticationApiClient.BuildAuthorizationUrl</code>. Only the <code>Client Credentials</code> grant doesn&#39;t require the existence of an ID Token as there is no user involved in the process of getting a token in that case.</p>
+<p>As part of our on-going efforts to be OpenID Compliant, the authentication SDK expects an ID Token to always be present. Therefore, <code>openid</code> should always be passed as a <code>Scope</code> when calling <code>GetTokenAsync</code> for the <code>Refresh Token</code> or <code>Resource Owner Password</code> grants, as well as when using <code>AuthenticationApiClient.BuildAuthorizationUrl</code>. Only the <a href="https://auth0.com/docs/flows/client-credentials-flow">Client Credentials</a> grant doesn&#39;t require the existence of an ID Token, as there is no user involved in the process of getting a token in that case.</p>
 <h3 id="id-token-validation">ID Token Validation</h3>
 <p>The authentication SDK now includes all-new ID Token validation capable of validating both RS256 and HS256 signed tokens.</p>
 <p>If your app is configured for:</p>
