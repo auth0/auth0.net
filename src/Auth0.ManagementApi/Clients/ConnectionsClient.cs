@@ -103,8 +103,12 @@ namespace Auth0.ManagementApi.Clients
 
             // Add each strategy as a separate querystring
             if (request.Strategy != null)
-                foreach (var s in request.Strategy)
-                    queryStrings.Add("strategy", s);
+            {
+                for (var i = 0; i < request.Strategy.Length; i++)
+                {
+                    queryStrings.Add($"strategy[{i}]", request.Strategy[i]);
+                }
+            }
 
             return Connection.GetAsync<IPagedList<Connection>>(BuildUri("connections", queryStrings), DefaultHeaders, converters);
         }
