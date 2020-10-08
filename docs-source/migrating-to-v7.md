@@ -4,6 +4,10 @@
 
 There are a number of important changes in v7 including some that may be breaking depending on your scenarios. They are as follows:
 
+### ID Token
+
+As part of our on-going efforts to be OpenID Compliant, the authentication SDK expects an ID Token to always be present. Therefore, `openid` should always be passed as a `Scope` when calling `GetTokenAsync` for the `Refresh Token` or `Resource Owner Password` grants, as well as when using `AuthenticationApiClient.BuildAuthorizationUrl`. Only the [Client Credentials](https://auth0.com/docs/flows/client-credentials-flow) grant doesn't require the existence of an ID Token, as there is no user involved in the process of getting a token in that case.
+
 ### ID Token Validation
 
 The authentication SDK now includes all-new ID Token validation capable of validating both RS256 and HS256 signed tokens.
