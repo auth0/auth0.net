@@ -13,6 +13,16 @@
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/auth0/auth0.net</RepositoryUrl>
     <PackageReleaseNotes>
+      Version 7.2.0
+      - Support passing the Identity property to the payload sent to JobsClient.SendVerificationEmailAsync 
+        and TicketClient.CreateEmailVerificationTicketAsync in Auth0.ManagementApi
+      - Fix ConnectionsClient.GetAllAsync when trying to use multiple strategies in Auth0.ManagementApi
+      - Add Sources to the User's Permissions when using UserClient.GetPermissionsAsync in Auth0.ManagementApi.
+        The return type of the UserClient.GetPermissionsAsync method has been changed, 
+        so there might be use-cases where this is breaking your existing code base.
+        In case you are inheriting the UserClient and overriding the GetPermissionsAsync method, you will need to update your code
+        to ensure the return type matches the return type of the updated UserClient.GetPermissionsAsync method.
+
       Version 7.1.0
       - Add support for Log Streams API in Auth0.ManagementApi
       
@@ -160,7 +170,7 @@
   <PropertyGroup>
     <LangVersion>7.1</LangVersion>
     <Major>7</Major>
-    <Minor>1</Minor>
+    <Minor>2</Minor>
     <Revision>0</Revision>
     <Suffix></Suffix>
   </PropertyGroup>
