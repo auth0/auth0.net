@@ -142,13 +142,13 @@ namespace Auth0.ManagementApi.IntegrationTests
             Func<Task> getFunc = async () => await _apiClient.Connections.GetAsync(newConnectionResponse.Id);
             getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_connection");
         }
-        
+
         [Fact]
         public async Task Test_when_paging_not_specified_does_not_include_totals()
         {
             // Act
             var connections = await _apiClient.Connections.GetAllAsync(new GetConnectionsRequest(), new PaginationInfo());
-            
+
             // Assert
             Assert.Null(connections.Paging);
         }
@@ -158,7 +158,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             // Act
             var connections = await _apiClient.Connections.GetAllAsync(new GetConnectionsRequest(), new PaginationInfo(0, 50, false));
-            
+
             // Assert
             Assert.Null(connections.Paging);
         }
@@ -168,9 +168,22 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             // Act
             var connections = await _apiClient.Connections.GetAllAsync(new GetConnectionsRequest(), new PaginationInfo(0, 50, true));
-            
+
             // Assert
             Assert.NotNull(connections.Paging);
+        }
+
+        [Fact]
+        public async Task Test_multiple_strategies()
+        {
+            // Act
+            var connections = await _apiClient.Connections.GetAllAsync(new GetConnectionsRequest
+            {
+                Strategy = new[] { "google-oauth2", "auth0" }
+            }, new PaginationInfo());
+
+            // Assert
+            Assert.NotNull(connections);
         }
     }
 }

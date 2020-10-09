@@ -16,7 +16,7 @@ namespace Auth0.ManagementApi.Clients
         readonly JsonConverter[] usersConverters = new JsonConverter[] { new PagedListConverter<User>("users") };
         readonly JsonConverter[] logsConverters = new JsonConverter[] { new PagedListConverter<LogEntry>("logs", true) };
         readonly JsonConverter[] rolesConverters = new JsonConverter[] { new PagedListConverter<Role>("roles") };
-        readonly JsonConverter[] permissionsConverters = new JsonConverter[] { new PagedListConverter<Permission>("permissions") };
+        readonly JsonConverter[] permissionsConverters = new JsonConverter[] { new PagedListConverter<UserPermission>("permissions") };
 
         /// <summary>
         /// Initializes a new instance of <see cref="UsersClient"/>.
@@ -290,9 +290,9 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="id">The id of the user to obtain the permissions for.</param>
         /// <param name="pagination">Specifies <see cref="PaginationInfo"/> to use in requesting paged results.</param>
         /// <returns>An <see cref="IPagedList{Permission}"/> containing the assigned permissions for this user.</returns>
-        public Task<IPagedList<Permission>> GetPermissionsAsync(string id, PaginationInfo pagination)
+        public Task<IPagedList<UserPermission>> GetPermissionsAsync(string id, PaginationInfo pagination)
         {
-            return Connection.GetAsync<IPagedList<Permission>>(BuildUri($"users/{EncodePath(id)}/permissions",
+            return Connection.GetAsync<IPagedList<UserPermission>>(BuildUri($"users/{EncodePath(id)}/permissions",
                 new Dictionary<string, string>
                 {
                     {"page", pagination.PageNo.ToString()},
