@@ -132,7 +132,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var request = new UsersExportsJobRequest
             {
                 ConnectionId = _auth0Connection.Id,
-                Format = UsersExportsJobFormat.Json,
+                Format = UsersExportsJobFormat.JSON,
                 Limit = 1,
                 Fields = new System.Collections.Generic.List<UsersExportsJobField> { new UsersExportsJobField { Name = "email" } }
             };

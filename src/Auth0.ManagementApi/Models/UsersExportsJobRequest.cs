@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace Auth0.ManagementApi.Models
 {
+    /// <summary>
+    /// Contains details for creating a users exports job.
+    /// </summary>
     public class UsersExportsJobRequest
     {
         /// <summary>
