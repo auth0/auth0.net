@@ -8,13 +8,13 @@ namespace Auth0.ManagementApi.Models
     public enum UsersExportsJobFormat
     {
         /// <summary>
-        /// Export the users using the CSV format
+        /// Export the users using the CSV format.
         /// </summary>
         [EnumMember(Value = "csv")]
         CSV,
         
         /// <summary>
-        /// Export the users using the JSON format
+        /// Export the users using the JSON format.
         /// </summary>
         [EnumMember(Value = "json")]
         JSON

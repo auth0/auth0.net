@@ -16,14 +16,14 @@ namespace Auth0.ManagementApi.Models
         public string ConnectionId { get; set; }
 
         /// <summary>
-        /// Format of the file. Must be jsob or csv.
+        /// Format of the exported file.
         /// </summary>
         [JsonProperty("format")]
         [JsonConverter(typeof(StringEnumConverter))]
         public UsersExportsJobFormat Format { get; set; }
 
         /// <summary>
-        /// Limit the number of records
+        /// Limit the number of records.
         /// </summary>
         [JsonProperty("limit")]
         public int? Limit { get; set; }
