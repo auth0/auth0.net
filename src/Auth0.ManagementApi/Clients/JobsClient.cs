@@ -79,7 +79,7 @@ namespace Auth0.ManagementApi.Clients
         /// Exports users from a connection to a file using a long running job. 
         /// </summary>
         /// <remarks>
-        /// The documentation for the file format is <a href="https://auth0.com/docs/users/bulk-user-exports">here</a>.
+        /// The documentation for user exports can be found <a href="https://auth0.com/docs/users/bulk-user-exports">here</a>.
         /// </remarks>
         /// <param name="request">The <see cref="UsersExportsJobRequest"/> containing the information for the job to export users.</param>
         /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
