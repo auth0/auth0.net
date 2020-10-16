@@ -242,6 +242,50 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <inheritdoc/>
+        public Task<AccessTokenResponse> GetTokenAsync(PasswordlessEmailTokenRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            var body = new Dictionary<string, string> {
+                { "grant_type", "http://auth0.com/oauth/grant-type/passwordless/otp" },
+                { "client_id", request.ClientId },
+                { "client_secret", request.ClientSecret },
+                { "username", request.Email },
+                { "realm", "email" },
+                { "otp", request.Code },
+                { "audience", request.Audience },
+                { "scope", request.Scope } };
+
+            return connection.SendAsync<AccessTokenResponse>(
+                HttpMethod.Post,
+                tokenUri,
+                body);
+        }
+
+        /// <inheritdoc/>
+        public Task<AccessTokenResponse> GetTokenAsync(PasswordlessSmsTokenRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            var body = new Dictionary<string, string> {
+                { "grant_type", "http://auth0.com/oauth/grant-type/passwordless/otp" },
+                { "client_id", request.ClientId },
+                { "client_secret", request.ClientSecret },
+                { "username", request.PhoneNumber },
+                { "realm", "sms" },
+                { "otp", request.Code },
+                { "audience", request.Audience },
+                { "scope", request.Scope } };
+
+            return connection.SendAsync<AccessTokenResponse>(
+                HttpMethod.Post,
+                tokenUri,
+                body);
+        }
+
+        /// <inheritdoc/>
         public Task<SignupUserResponse> SignupUserAsync(SignupUserRequest request)
         {
             if (request == null)
