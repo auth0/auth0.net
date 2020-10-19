@@ -22,7 +22,7 @@
         public JwtSignatureAlgorithm SigningAlgorithm {  get; set; }
 
         /// <summary>
-        /// Rredirect URI passed during the login process.
+        /// Redirect URI passed during the login process.
         /// </summary>
         public string RedirectUri { get; set; }
 
