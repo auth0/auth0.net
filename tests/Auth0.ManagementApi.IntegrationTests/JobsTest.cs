@@ -125,5 +125,26 @@ namespace Auth0.ManagementApi.IntegrationTests
                 importUsers.Connection.Should().Be(_auth0Connection.Name);
             }
         }
+
+        [Fact]
+        public async Task Can_export_users()
+        {
+            var request = new UsersExportsJobRequest
+            {
+                ConnectionId = _auth0Connection.Id,
+                Format = UsersExportsJobFormat.JSON,
+                Limit = 1,
+                Fields = new System.Collections.Generic.List<UsersExportsJobField> { new UsersExportsJobField { Name = "email" } }
+            };
+
+            var exportUsers = await _apiClient.Jobs.ExportUsersAsync(request);
+            exportUsers.Should().NotBeNull();
+            exportUsers.Id.Should().NotBeNull();
+            exportUsers.Type.Should().Be("users_export");
+            exportUsers.Status.Should().Be("pending");
+            exportUsers.CreatedAt.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromMinutes(5));
+            exportUsers.ConnectionId.Should().Be(_auth0Connection.Id);
+            exportUsers.Connection.Should().Be(_auth0Connection.Name);
+        }
     }
 }

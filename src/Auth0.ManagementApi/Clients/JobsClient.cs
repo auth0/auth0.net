@@ -76,6 +76,19 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
+        /// Exports users from a connection to a file using a long running job. 
+        /// </summary>
+        /// <remarks>
+        /// The documentation for user exports can be found <a href="https://auth0.com/docs/users/bulk-user-exports">here</a>.
+        /// </remarks>
+        /// <param name="request">The <see cref="UsersExportsJobRequest"/> containing the information for the job to export users.</param>
+        /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
+        public Task<Job> ExportUsersAsync(UsersExportsJobRequest request)
+        {
+            return Connection.SendAsync<Job>(HttpMethod.Post, BuildUri("jobs/users-exports"), request, DefaultHeaders);
+        }
+
+        /// <summary>
         /// Send an email to the specified user that asks them to click a link to verify their email address.
         /// </summary>
         /// <param name="request">The <see cref="VerifyEmailJobRequest"/> containing the information of the user whose email you want verified.</param>
