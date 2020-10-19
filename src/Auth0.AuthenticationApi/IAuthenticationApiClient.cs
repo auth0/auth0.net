@@ -87,7 +87,7 @@ namespace Auth0.AuthenticationApi
         Task<AccessTokenResponse> GetTokenAsync(ResourceOwnerTokenRequest request);
 
         /// <summary>
-        /// Requests an Access Token using the Passwordless flow.
+        /// Requests an Access Token using the Passwordless flow through email.
         /// </summary>
         /// <param name="request"><see cref="PasswordlessEmailTokenRequest"/> containing request details to exchange a one time password received through email.</param>
         /// <returns><see cref="Task"/> representing the async operation containing 
@@ -95,7 +95,7 @@ namespace Auth0.AuthenticationApi
         Task<AccessTokenResponse> GetTokenAsync(PasswordlessEmailTokenRequest request);
 
         /// <summary>
-        /// Requests an Access Token using the Passwordless flow.
+        /// Requests an Access Token using the Passwordless flow through SMS.
         /// </summary>
         /// <param name="request"><see cref="PasswordlessSmsTokenRequest"/> containing request details to exchange a one time password received through SMS.</param>
         /// <returns><see cref="Task"/> representing the async operation containing 
