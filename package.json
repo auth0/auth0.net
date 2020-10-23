@@ -1,0 +1,23 @@
+{
+  "name": "auth0.net",
+  "version": "0.0.1",
+  "description": ".NET client library for Auth0",
+  "scripts": {
+    "release": "node ./scripts/release",
+    "release:clean": "node ./scripts/cleanup"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/auth0/auth0.net.git"
+  },
+  "author": "Auth0",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/auth0/auth0.net/issues"
+  },
+  "homepage": "https://github.com/auth0/auth0.net#readme",
+  "devDependencies": {
+    "moment": "^2.29.1",
+    "xml2js": "^0.4.23"
+  }
+}
