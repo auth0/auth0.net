@@ -1,0 +1,23 @@
+{
+  "name": "auth0.net",
+  "version": "0.0.1",
+  "description": "[![Build status](https://dev.azure.com/Auth0SDK/Auth0.Net/_apis/build/status/Auth0.Net)](https://dev.azure.com/Auth0SDK/Auth0.Net/_build/latest?definitionId=6) [![NuGet version](https://img.shields.io/nuget/v/auth0.core.svg?style=flat)](https://www.nuget.org/packages/Auth0.Core/) [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fauth0%2Fauth0.net.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fauth0%2Fauth0.net?ref=badge_shield)",
+  "scripts": {
+    "release": "node ./scripts/release",
+    "release:clean": "node ./scripts/cleanup"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/auth0/auth0.net.git"
+  },
+  "author": "Auth0",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/auth0/auth0.net/issues"
+  },
+  "homepage": "https://github.com/auth0/auth0.net#readme",
+  "devDependencies": {
+    "moment": "^2.29.1",
+    "xml2js": "^0.4.23"
+  }
+}
