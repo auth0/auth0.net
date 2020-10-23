@@ -21,7 +21,7 @@
   <PropertyGroup>
     <LangVersion>7.1</LangVersion>
     <Major>7</Major>
-    <Minor>2</Minor>
+    <Minor>3</Minor>
     <Revision>0</Revision>
     <Suffix/>
   </PropertyGroup>

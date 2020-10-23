@@ -1,5 +1,12 @@
 # Change Log
 
+## [release-7.3.0](https://github.com/auth0/auth0.net/tree/release-7.3.0) (2020-10-23)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.2.0...release-7.3.0)
+
+**Added**
+- Complete passwordless API [\#438](https://github.com/auth0/auth0.net/pull/438) ([frederikprijck](https://github.com/frederikprijck))
+- Implement the POST Job Users Export endpoint [\#436](https://github.com/auth0/auth0.net/pull/436) ([frederikprijck](https://github.com/frederikprijck))
+
 ## [release-7.2.0](https://github.com/auth0/auth0.net/tree/release-7.2.0)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.1.0...release-7.2.0)
 
