@@ -6,7 +6,7 @@ labels: bug report
 assignees: ''
 ---
 
-**Please do not report security vulnerabilities here**. The [Responsible Disclosure Program](https://auth0.com/whitehat) details the procedure for disclosing security issues.
+**Please do not report security vulnerabilities here**. The [Responsible Disclosure Program](https://auth0.com/responsible-disclosure-policy) details the procedure for disclosing security issues.
 
 **Thank you in advance for helping us to improve this library!** Please read through the template below and answer all relevant questions. Your additional work here is greatly appreciated and will help us respond as quickly as possible. For general support or usage questions, use the [Auth0 Community](https://community.auth0.com/) or [Auth0 Support](https://support.auth0.com/). Finally, to avoid duplicates, please search existing Issues before submitting one here.
 
