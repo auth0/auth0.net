@@ -40,7 +40,7 @@ By submitting an Issue to this repository, you agree to the terms within the [Au
 
 > Please provide the following:
 
-- **Version of `Auth0.NET` used:**
-- **Version of `.NET` used:**
-- **Which `Operating System` have you tested in?**
+- **Version of this library used:**
+- **Which framework are you using, if applicable:**
 - **Other modules/plugins/libraries that might be involved:**
+- **Any other relevant information you think would be useful:**
