@@ -17,12 +17,12 @@ namespace Auth0.ManagementApi.Models
         Otp,
 
         [EnumMember(Value = "duo")]
-        Duo
+        Duo,
         
         [EnumMember(Value="webauthn-roaming")]
         WebAuthnRoaming,
         
         [EnumMember(Value="webauthn-platform")]
-        WebAuthnPlatform,
+        WebAuthnPlatform
     }
 }
