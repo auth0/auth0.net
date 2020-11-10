@@ -18,5 +18,11 @@ namespace Auth0.ManagementApi.Models
 
         [EnumMember(Value = "duo")]
         Duo
+        
+        [EnumMember(Value="webauthn-roaming")]
+        WebAuthnRoaming,
+        
+        [EnumMember(Value="webauthn-platform")]
+        WebAuthnPlatform,
     }
 }
