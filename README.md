@@ -65,8 +65,7 @@ The full set of libraries can be built by running `dotnet restore` followed by `
 
 Since this library also targets the full .NET Framework, you can currently only do a build for release on Windows.
 
-1. Ensure that you have updated the `Major`, `Minor` and `Revision` version numbers in `/build/common.props` for the new version.
-1. Also update the `PackageReleaseNotes` in the above-mentioned file with the release notes.
+1. Run `npm run release [version]` (e.g. `npm run release 7.3.0`)
 1. Push these changes to a prepare-x.y.z branch for approval then merge
 1. Wait for CI to complete, download and extract the `Auth0.Net.Packages.zip`
 1. Upload the NuGet packages to NuGet using the `nuget push` command.
