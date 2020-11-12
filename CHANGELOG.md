@@ -1,5 +1,11 @@
 # Change Log
 
+## [release-7.3.1](https://github.com/auth0/auth0.net/tree/release-7.3.1) (2020-11-12)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.3.0...release-7.3.1)
+
+**Fixed**
+- Include WebAuthn Guardian Factory names [\#446](https://github.com/auth0/auth0.net/pull/446) ([frederikprijck](https://github.com/frederikprijck))
+
 ## [release-7.3.0](https://github.com/auth0/auth0.net/tree/release-7.3.0) (2020-10-23)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.2.0...release-7.3.0)
 
