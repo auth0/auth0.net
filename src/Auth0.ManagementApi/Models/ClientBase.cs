@@ -163,6 +163,11 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("sso")]
         public bool? Sso { get; set; }
+        
+        /// <summary>
+        /// </summary>
+        [JsonProperty("refresh_token")]
+        public RefreshToken RefreshToken { get; set; }
     }
 }
 
