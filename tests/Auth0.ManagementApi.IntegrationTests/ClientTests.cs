@@ -28,7 +28,6 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Test_client_crud_sequence()
         {
-
             // Add a new client
             var newClientRequest = new ClientCreateRequest
             {
@@ -40,7 +39,14 @@ namespace Auth0.ManagementApi.IntegrationTests
                     Prop1 = "1",
                     Prop2 = "2"
                 },
-                InitiateLoginUri = "https://create.com/login"
+                InitiateLoginUri = "https://create.com/login",
+                RefreshToken = new RefreshToken
+                {
+                    ExpirationType = RefreshTokenExpirationType.NonExpiring,
+                    RotationType = RefreshTokenRotationType.NonRotating
+                },
+                OidcConformant = true,
+                GrantTypes = new[] { "refresh_token" }
             };
             var newClientResponse = await _apiClient.Clients.CreateAsync(newClientRequest);
             newClientResponse.Should().NotBeNull();
@@ -48,11 +54,15 @@ namespace Auth0.ManagementApi.IntegrationTests
             newClientResponse.TokenEndpointAuthMethod.Should().Be(TokenEndpointAuthMethod.ClientSecretPost);
             newClientResponse.ApplicationType.Should().Be(ClientApplicationType.Native);
             newClientResponse.IsFirstParty.Should().BeTrue();
+            newClientResponse.RefreshToken.Should().NotBeNull();
+            newClientResponse.RefreshToken.ExpirationType.Should().Be(newClientRequest.RefreshToken.ExpirationType);
+            newClientResponse.RefreshToken.RotationType.Should().Be(newClientRequest.RefreshToken.RotationType);
+
             string prop1 = newClientResponse.ClientMetaData.Prop1;
             prop1.Should().Be("1");
             string prop2 = newClientResponse.ClientMetaData.Prop2;
             prop2.Should().Be("2");
-            newClientResponse.GrantTypes.Should().HaveCount(i => i > 0);
+            newClientResponse.GrantTypes.Should().HaveCount(1);
             newClientResponse.InitiateLoginUri.Should().Be("https://create.com/login");
 
             // Update the client
@@ -61,16 +71,28 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Name = $"Integration testing {Guid.NewGuid():N}",
                 TokenEndpointAuthMethod = TokenEndpointAuthMethod.ClientSecretPost,
                 ApplicationType = ClientApplicationType.Spa,
-                GrantTypes = Array.Empty<string>(),
-                InitiateLoginUri = "https://update.com/login"
+                GrantTypes = new[] { "refresh_token", "authorization_code" },
+                InitiateLoginUri = "https://update.com/login",
+                RefreshToken = new RefreshToken
+                {
+                    ExpirationType = RefreshTokenExpirationType.Expiring,
+                    RotationType = RefreshTokenRotationType.Rotating,
+                    TokenLifetime = 3600,
+                    Leeway = 1800
+                }
             };
             var updateClientResponse = await _apiClient.Clients.UpdateAsync(newClientResponse.ClientId, updateClientRequest);
             updateClientResponse.Should().NotBeNull();
             updateClientResponse.Name.Should().Be(updateClientRequest.Name);
             updateClientResponse.TokenEndpointAuthMethod.Should().Be(TokenEndpointAuthMethod.ClientSecretPost);
             updateClientResponse.ApplicationType.Should().Be(ClientApplicationType.Spa);
-            updateClientResponse.GrantTypes.Should().HaveCount(0);
+            updateClientResponse.GrantTypes.Should().HaveCount(2);
             updateClientResponse.InitiateLoginUri.Should().Be("https://update.com/login");
+            updateClientResponse.RefreshToken.Should().NotBeNull();
+            updateClientResponse.RefreshToken.RotationType.Should().Be(updateClientRequest.RefreshToken.RotationType);
+            updateClientResponse.RefreshToken.ExpirationType.Should().Be(updateClientRequest.RefreshToken.ExpirationType);
+            updateClientResponse.RefreshToken.TokenLifetime.Should().Be(updateClientRequest.RefreshToken.TokenLifetime);
+            updateClientResponse.RefreshToken.Leeway.Should().Be(updateClientRequest.RefreshToken.Leeway);
 
             // Get a single client
             var client = await _apiClient.Clients.GetAsync(newClientResponse.ClientId);
@@ -171,6 +193,5 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Delete the client, and ensure we get exception when trying to fetch client again
             await _apiClient.Clients.DeleteAsync(newClientResponse.ClientId);
         }
-
     }
 }
