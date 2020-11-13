@@ -1,5 +1,11 @@
 # Change Log
 
+## [release-7.3.2](https://github.com/auth0/auth0.net/tree/release-7.3.2) (2020-11-13)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.3.1...release-7.3.2)
+
+**Added**
+- Allow creating and updating RefreshToken settings for Clients [\#451](https://github.com/auth0/auth0.net/pull/451) ([SamTheWizard](https://github.com/SamTheWizard))
+
 ## [release-7.3.1](https://github.com/auth0/auth0.net/tree/release-7.3.1) (2020-11-12)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.3.0...release-7.3.1)
 
