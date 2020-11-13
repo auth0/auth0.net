@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class RateLimit
    ">
-    <meta name="generator" content="docfx 2.48.0.0">
+    <meta name="generator" content="docfx 2.56.4.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -168,7 +168,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DateTimeOffset Reset { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public DateTimeOffset? Reset { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -180,7 +180,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.DateTimeOffset</span></td>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.DateTimeOffset</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -188,12 +188,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_Core_Exceptions_RateLimit_Parse_" data-uid="Auth0.Core.Exceptions.RateLimit.Parse*"></a>
-  <h4 id="Auth0_Core_Exceptions_RateLimit_Parse_System_Net_Http_Headers_HttpResponseHeaders_" data-uid="Auth0.Core.Exceptions.RateLimit.Parse(System.Net.Http.Headers.HttpResponseHeaders)">Parse(HttpResponseHeaders)</h4>
-  <div class="markdown level1 summary"></div>
+  <h4 id="Auth0_Core_Exceptions_RateLimit_Parse_System_Net_Http_Headers_HttpHeaders_" data-uid="Auth0.Core.Exceptions.RateLimit.Parse(System.Net.Http.Headers.HttpHeaders)">Parse(HttpHeaders)</h4>
+  <div class="markdown level1 summary"><p>Parse the rate limit headers into a <a class="xref" href="Auth0.Core.Exceptions.RateLimit.html">RateLimit</a> object.</p>
+</div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static RateLimit Parse(HttpResponseHeaders headers)</code></pre>
+    <pre><code class="lang-csharp hljs">public static RateLimit Parse(HttpHeaders headers)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -206,9 +207,10 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Net.Http.Headers.HttpResponseHeaders</span></td>
+        <td><span class="xref">System.Net.Http.Headers.HttpHeaders</span></td>
         <td><span class="parametername">headers</span></td>
-        <td></td>
+        <td><p><span class="xref">System.Net.Http.Headers.HttpHeaders</span> to parse.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -223,7 +225,8 @@
     <tbody>
       <tr>
         <td><a class="xref" href="Auth0.Core.Exceptions.RateLimit.html">RateLimit</a></td>
-        <td></td>
+        <td><p>Instance of <a class="xref" href="Auth0.Core.Exceptions.RateLimit.html">RateLimit</a> containing parsed rate limit headers.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -233,7 +236,8 @@
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>

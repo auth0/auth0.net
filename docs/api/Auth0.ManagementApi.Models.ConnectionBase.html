@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class ConnectionBase
    ">
-    <meta name="generator" content="docfx 2.48.0.0">
+    <meta name="generator" content="docfx 2.56.4.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,7 @@
   
   <h1 id="Auth0_ManagementApi_Models_ConnectionBase" data-uid="Auth0.ManagementApi.Models.ConnectionBase" class="text-break">Class ConnectionBase
   </h1>
-  <div class="markdown level0 summary"><p>Base class for connections.</p>
+  <div class="markdown level0 summary"><p>Base class for connections which includes both request and responses.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -219,13 +219,39 @@ public dynamic Options { get; set; }</code></pre>
       </tr>
     </tbody>
   </table>
+  <a id="Auth0_ManagementApi_Models_ConnectionBase_Realms_" data-uid="Auth0.ManagementApi.Models.ConnectionBase.Realms*"></a>
+  <h4 id="Auth0_ManagementApi_Models_ConnectionBase_Realms" data-uid="Auth0.ManagementApi.Models.ConnectionBase.Realms">Realms</h4>
+  <div class="markdown level1 summary"><p>Defines the realms for which the connection will be used (ie: email domains). If the array is empty or the property is not specified, the connection name will be added as realm. Maximum of 10 items.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;realms&quot;)]
+public string[] Realms { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class VerifyEmailJobRequest
    ">
-    <meta name="generator" content="docfx 2.48.0.0">
+    <meta name="generator" content="docfx 2.56.4.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,8 @@
   
   <h1 id="Auth0_ManagementApi_Models_VerifyEmailJobRequest" data-uid="Auth0.ManagementApi.Models.VerifyEmailJobRequest" class="text-break">Class VerifyEmailJobRequest
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Contains details for sending an email address verification link.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -137,6 +138,32 @@ public string ClientId { get; set; }</code></pre>
       </tr>
     </tbody>
   </table>
+  <a id="Auth0_ManagementApi_Models_VerifyEmailJobRequest_Identity_" data-uid="Auth0.ManagementApi.Models.VerifyEmailJobRequest.Identity*"></a>
+  <h4 id="Auth0_ManagementApi_Models_VerifyEmailJobRequest_Identity" data-uid="Auth0.ManagementApi.Models.VerifyEmailJobRequest.Identity">Identity</h4>
+  <div class="markdown level1 summary"><p>The primary identity to verify when using social, enterprise, or passwordless connections.
+It is also required to verify secondary identities.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;identity&quot;)]
+public EmailVerificationIdentity Identity { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.EmailVerificationIdentity.html">EmailVerificationIdentity</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="Auth0_ManagementApi_Models_VerifyEmailJobRequest_UserId_" data-uid="Auth0.ManagementApi.Models.VerifyEmailJobRequest.UserId*"></a>
   <h4 id="Auth0_ManagementApi_Models_VerifyEmailJobRequest_UserId" data-uid="Auth0.ManagementApi.Models.VerifyEmailJobRequest.UserId">UserId</h4>
   <div class="markdown level1 summary"><p>The identifier of the user to whom the email will be sent.</p>
@@ -168,7 +195,8 @@ public string UserId { get; set; }</code></pre>
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
