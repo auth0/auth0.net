@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class Job
    ">
-    <meta name="generator" content="docfx 2.48.0.0">
+    <meta name="generator" content="docfx 2.56.4.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -115,7 +115,7 @@
   </h3>
   <a id="Auth0_ManagementApi_Models_Job_Connection_" data-uid="Auth0.ManagementApi.Models.Job.Connection*"></a>
   <h4 id="Auth0_ManagementApi_Models_Job_Connection" data-uid="Auth0.ManagementApi.Models.Job.Connection">Connection</h4>
-  <div class="markdown level1 summary"><p>The connection identifier of the connection to which users will be inserted.</p>
+  <div class="markdown level1 summary"><p>Connection name to which users will be inserted.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -138,9 +138,84 @@ public string Connection { get; set; }</code></pre>
       </tr>
     </tbody>
   </table>
+  <a id="Auth0_ManagementApi_Models_Job_ConnectionId_" data-uid="Auth0.ManagementApi.Models.Job.ConnectionId*"></a>
+  <h4 id="Auth0_ManagementApi_Models_Job_ConnectionId" data-uid="Auth0.ManagementApi.Models.Job.ConnectionId">ConnectionId</h4>
+  <div class="markdown level1 summary"><p>Connection identifier of the connection to which users will be inserted.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;connection_id&quot;)]
+public string ConnectionId { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Models_Job_CreatedAt_" data-uid="Auth0.ManagementApi.Models.Job.CreatedAt*"></a>
+  <h4 id="Auth0_ManagementApi_Models_Job_CreatedAt" data-uid="Auth0.ManagementApi.Models.Job.CreatedAt">CreatedAt</h4>
+  <div class="markdown level1 summary"><p>Date and time the job was created.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;created_at&quot;)]
+public DateTime CreatedAt { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.DateTime</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Models_Job_Format_" data-uid="Auth0.ManagementApi.Models.Job.Format*"></a>
+  <h4 id="Auth0_ManagementApi_Models_Job_Format" data-uid="Auth0.ManagementApi.Models.Job.Format">Format</h4>
+  <div class="markdown level1 summary"><p>File format for this job.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;format&quot;)]
+public string Format { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="Auth0_ManagementApi_Models_Job_Id_" data-uid="Auth0.ManagementApi.Models.Job.Id*"></a>
   <h4 id="Auth0_ManagementApi_Models_Job_Id" data-uid="Auth0.ManagementApi.Models.Job.Id">Id</h4>
-  <div class="markdown level1 summary"><p>The job&apos;s identifier. Useful to retrieve its status later on.</p>
+  <div class="markdown level1 summary"><p>Unique identifier of this job that can be used to retrieve status later.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -163,9 +238,62 @@ public string Id { get; set; }</code></pre>
       </tr>
     </tbody>
   </table>
+  <a id="Auth0_ManagementApi_Models_Job_Location_" data-uid="Auth0.ManagementApi.Models.Job.Location*"></a>
+  <h4 id="Auth0_ManagementApi_Models_Job_Location" data-uid="Auth0.ManagementApi.Models.Job.Location">Location</h4>
+  <div class="markdown level1 summary"><p>Uri location of downloadable results for this job.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;location&quot;)]
+public Uri Location { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Uri</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Auth0_ManagementApi_Models_Job_Location_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Used by user export jobs.</p>
+</div>
+  <a id="Auth0_ManagementApi_Models_Job_PercentageDone_" data-uid="Auth0.ManagementApi.Models.Job.PercentageDone*"></a>
+  <h4 id="Auth0_ManagementApi_Models_Job_PercentageDone" data-uid="Auth0.ManagementApi.Models.Job.PercentageDone">PercentageDone</h4>
+  <div class="markdown level1 summary"><p>How much of this job has been completed as a percentage.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;percentage_done&quot;)]
+public int PercentageDone { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="Auth0_ManagementApi_Models_Job_Status_" data-uid="Auth0.ManagementApi.Models.Job.Status*"></a>
   <h4 id="Auth0_ManagementApi_Models_Job_Status" data-uid="Auth0.ManagementApi.Models.Job.Status">Status</h4>
-  <div class="markdown level1 summary"><p>The job&apos;s status.</p>
+  <div class="markdown level1 summary"><p>Run status of this job.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -188,9 +316,84 @@ public string Status { get; set; }</code></pre>
       </tr>
     </tbody>
   </table>
+  <a id="Auth0_ManagementApi_Models_Job_Summary_" data-uid="Auth0.ManagementApi.Models.Job.Summary*"></a>
+  <h4 id="Auth0_ManagementApi_Models_Job_Summary" data-uid="Auth0.ManagementApi.Models.Job.Summary">Summary</h4>
+  <div class="markdown level1 summary"><p>Summary of how entries were processed by this job.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;summary&quot;)]
+public JobSummary Summary { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.JobSummary.html">JobSummary</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Models_Job_TimeLeft_" data-uid="Auth0.ManagementApi.Models.Job.TimeLeft*"></a>
+  <h4 id="Auth0_ManagementApi_Models_Job_TimeLeft" data-uid="Auth0.ManagementApi.Models.Job.TimeLeft">TimeLeft</h4>
+  <div class="markdown level1 summary"><p>Amount of expected time left to complete this job.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonIgnore]
+public TimeSpan TimeLeft { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Models_Job_TimeLeftSeconds_" data-uid="Auth0.ManagementApi.Models.Job.TimeLeftSeconds*"></a>
+  <h4 id="Auth0_ManagementApi_Models_Job_TimeLeftSeconds" data-uid="Auth0.ManagementApi.Models.Job.TimeLeftSeconds">TimeLeftSeconds</h4>
+  <div class="markdown level1 summary"><p>Amount of expected time left to complete this job in seconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;time_left_seconds&quot;)]
+public int TimeLeftSeconds { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="Auth0_ManagementApi_Models_Job_Type_" data-uid="Auth0.ManagementApi.Models.Job.Type*"></a>
   <h4 id="Auth0_ManagementApi_Models_Job_Type" data-uid="Auth0.ManagementApi.Models.Job.Type">Type</h4>
-  <div class="markdown level1 summary"><p>The type of job.</p>
+  <div class="markdown level1 summary"><p>Type of job this is.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -219,7 +422,8 @@ public string Type { get; set; }</code></pre>
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>

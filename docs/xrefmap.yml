@@ -108,6 +108,18 @@ references:
   commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest)
   fullName: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest)
   nameWithType: AuthenticationApiClient.GetTokenAsync(ClientCredentialsTokenRequest)
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest)
+  name: GetTokenAsync(PasswordlessEmailTokenRequest)
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_PasswordlessEmailTokenRequest_
+  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest)
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest)
+  nameWithType: AuthenticationApiClient.GetTokenAsync(PasswordlessEmailTokenRequest)
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest)
+  name: GetTokenAsync(PasswordlessSmsTokenRequest)
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_PasswordlessSmsTokenRequest_
+  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest)
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest)
+  nameWithType: AuthenticationApiClient.GetTokenAsync(PasswordlessSmsTokenRequest)
 - uid: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.RefreshTokenRequest)
   name: GetTokenAsync(RefreshTokenRequest)
   href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_RefreshTokenRequest_
@@ -896,6 +908,18 @@ references:
   commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest)
   fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest)
   nameWithType: IAuthenticationApiClient.GetTokenAsync(ClientCredentialsTokenRequest)
+- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest)
+  name: GetTokenAsync(PasswordlessEmailTokenRequest)
+  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_PasswordlessEmailTokenRequest_
+  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest)
+  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest)
+  nameWithType: IAuthenticationApiClient.GetTokenAsync(PasswordlessEmailTokenRequest)
+- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest)
+  name: GetTokenAsync(PasswordlessSmsTokenRequest)
+  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_PasswordlessSmsTokenRequest_
+  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest)
+  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest)
+  nameWithType: IAuthenticationApiClient.GetTokenAsync(PasswordlessSmsTokenRequest)
 - uid: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.RefreshTokenRequest)
   name: GetTokenAsync(RefreshTokenRequest)
   href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_RefreshTokenRequest_
@@ -1399,6 +1423,19 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.Models.PasswordlessEmailRequest.ClientId
   nameWithType: PasswordlessEmailRequest.ClientId
+- uid: Auth0.AuthenticationApi.Models.PasswordlessEmailRequest.ClientSecret
+  name: ClientSecret
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessEmailRequest.html#Auth0_AuthenticationApi_Models_PasswordlessEmailRequest_ClientSecret
+  commentId: P:Auth0.AuthenticationApi.Models.PasswordlessEmailRequest.ClientSecret
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessEmailRequest.ClientSecret
+  nameWithType: PasswordlessEmailRequest.ClientSecret
+- uid: Auth0.AuthenticationApi.Models.PasswordlessEmailRequest.ClientSecret*
+  name: ClientSecret
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessEmailRequest.html#Auth0_AuthenticationApi_Models_PasswordlessEmailRequest_ClientSecret_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PasswordlessEmailRequest.ClientSecret
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessEmailRequest.ClientSecret
+  nameWithType: PasswordlessEmailRequest.ClientSecret
 - uid: Auth0.AuthenticationApi.Models.PasswordlessEmailRequest.Email
   name: Email
   href: api/Auth0.AuthenticationApi.Models.PasswordlessEmailRequest.html#Auth0_AuthenticationApi_Models_PasswordlessEmailRequest_Email
@@ -1462,6 +1499,19 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.Models.PasswordlessEmailResponse.Email
   nameWithType: PasswordlessEmailResponse.Email
+- uid: Auth0.AuthenticationApi.Models.PasswordlessEmailResponse.EmailVerified
+  name: EmailVerified
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessEmailResponse.html#Auth0_AuthenticationApi_Models_PasswordlessEmailResponse_EmailVerified
+  commentId: P:Auth0.AuthenticationApi.Models.PasswordlessEmailResponse.EmailVerified
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessEmailResponse.EmailVerified
+  nameWithType: PasswordlessEmailResponse.EmailVerified
+- uid: Auth0.AuthenticationApi.Models.PasswordlessEmailResponse.EmailVerified*
+  name: EmailVerified
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessEmailResponse.html#Auth0_AuthenticationApi_Models_PasswordlessEmailResponse_EmailVerified_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PasswordlessEmailResponse.EmailVerified
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessEmailResponse.EmailVerified
+  nameWithType: PasswordlessEmailResponse.EmailVerified
 - uid: Auth0.AuthenticationApi.Models.PasswordlessEmailResponse.Id
   name: Id
   href: api/Auth0.AuthenticationApi.Models.PasswordlessEmailResponse.html#Auth0_AuthenticationApi_Models_PasswordlessEmailResponse_Id
@@ -1475,6 +1525,25 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.Models.PasswordlessEmailResponse.Id
   nameWithType: PasswordlessEmailResponse.Id
+- uid: Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest
+  name: PasswordlessEmailTokenRequest
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest.html
+  commentId: T:Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest
+  nameWithType: PasswordlessEmailTokenRequest
+- uid: Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest.Email
+  name: Email
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest.html#Auth0_AuthenticationApi_Models_PasswordlessEmailTokenRequest_Email
+  commentId: P:Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest.Email
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest.Email
+  nameWithType: PasswordlessEmailTokenRequest.Email
+- uid: Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest.Email*
+  name: Email
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest.html#Auth0_AuthenticationApi_Models_PasswordlessEmailTokenRequest_Email_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest.Email
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest.Email
+  nameWithType: PasswordlessEmailTokenRequest.Email
 - uid: Auth0.AuthenticationApi.Models.PasswordlessSmsRequest
   name: PasswordlessSmsRequest
   href: api/Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.html
@@ -1494,6 +1563,19 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.ClientId
   nameWithType: PasswordlessSmsRequest.ClientId
+- uid: Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.ClientSecret
+  name: ClientSecret
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.html#Auth0_AuthenticationApi_Models_PasswordlessSmsRequest_ClientSecret
+  commentId: P:Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.ClientSecret
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.ClientSecret
+  nameWithType: PasswordlessSmsRequest.ClientSecret
+- uid: Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.ClientSecret*
+  name: ClientSecret
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.html#Auth0_AuthenticationApi_Models_PasswordlessSmsRequest_ClientSecret_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.ClientSecret
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.ClientSecret
+  nameWithType: PasswordlessSmsRequest.ClientSecret
 - uid: Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.PhoneNumber
   name: PhoneNumber
   href: api/Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.html#Auth0_AuthenticationApi_Models_PasswordlessSmsRequest_PhoneNumber
@@ -1552,6 +1634,96 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.Models.PasswordlessSmsResponse.RequestLanguage
   nameWithType: PasswordlessSmsResponse.RequestLanguage
+- uid: Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest
+  name: PasswordlessSmsTokenRequest
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest.html
+  commentId: T:Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest
+  nameWithType: PasswordlessSmsTokenRequest
+- uid: Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest.PhoneNumber
+  name: PhoneNumber
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest.html#Auth0_AuthenticationApi_Models_PasswordlessSmsTokenRequest_PhoneNumber
+  commentId: P:Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest.PhoneNumber
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest.PhoneNumber
+  nameWithType: PasswordlessSmsTokenRequest.PhoneNumber
+- uid: Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest.PhoneNumber*
+  name: PhoneNumber
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest.html#Auth0_AuthenticationApi_Models_PasswordlessSmsTokenRequest_PhoneNumber_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest.PhoneNumber
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest.PhoneNumber
+  nameWithType: PasswordlessSmsTokenRequest.PhoneNumber
+- uid: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase
+  name: PasswordlessTokenRequestBase
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.html
+  commentId: T:Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase
+  nameWithType: PasswordlessTokenRequestBase
+- uid: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.Audience
+  name: Audience
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.html#Auth0_AuthenticationApi_Models_PasswordlessTokenRequestBase_Audience
+  commentId: P:Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.Audience
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.Audience
+  nameWithType: PasswordlessTokenRequestBase.Audience
+- uid: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.Audience*
+  name: Audience
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.html#Auth0_AuthenticationApi_Models_PasswordlessTokenRequestBase_Audience_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.Audience
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.Audience
+  nameWithType: PasswordlessTokenRequestBase.Audience
+- uid: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.ClientId
+  name: ClientId
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.html#Auth0_AuthenticationApi_Models_PasswordlessTokenRequestBase_ClientId
+  commentId: P:Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.ClientId
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.ClientId
+  nameWithType: PasswordlessTokenRequestBase.ClientId
+- uid: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.ClientId*
+  name: ClientId
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.html#Auth0_AuthenticationApi_Models_PasswordlessTokenRequestBase_ClientId_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.ClientId
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.ClientId
+  nameWithType: PasswordlessTokenRequestBase.ClientId
+- uid: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.ClientSecret
+  name: ClientSecret
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.html#Auth0_AuthenticationApi_Models_PasswordlessTokenRequestBase_ClientSecret
+  commentId: P:Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.ClientSecret
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.ClientSecret
+  nameWithType: PasswordlessTokenRequestBase.ClientSecret
+- uid: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.ClientSecret*
+  name: ClientSecret
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.html#Auth0_AuthenticationApi_Models_PasswordlessTokenRequestBase_ClientSecret_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.ClientSecret
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.ClientSecret
+  nameWithType: PasswordlessTokenRequestBase.ClientSecret
+- uid: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.Code
+  name: Code
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.html#Auth0_AuthenticationApi_Models_PasswordlessTokenRequestBase_Code
+  commentId: P:Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.Code
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.Code
+  nameWithType: PasswordlessTokenRequestBase.Code
+- uid: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.Code*
+  name: Code
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.html#Auth0_AuthenticationApi_Models_PasswordlessTokenRequestBase_Code_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.Code
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.Code
+  nameWithType: PasswordlessTokenRequestBase.Code
+- uid: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.Scope
+  name: Scope
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.html#Auth0_AuthenticationApi_Models_PasswordlessTokenRequestBase_Scope
+  commentId: P:Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.Scope
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.Scope
+  nameWithType: PasswordlessTokenRequestBase.Scope
+- uid: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.Scope*
+  name: Scope
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.html#Auth0_AuthenticationApi_Models_PasswordlessTokenRequestBase_Scope_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.Scope
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.Scope
+  nameWithType: PasswordlessTokenRequestBase.Scope
 - uid: Auth0.AuthenticationApi.Models.RefreshTokenRequest
   name: RefreshTokenRequest
   href: api/Auth0.AuthenticationApi.Models.RefreshTokenRequest.html
@@ -2563,6 +2735,19 @@ references:
   isSpec: "True"
   fullName: Auth0.Core.Exceptions.ApiError.ErrorCode
   nameWithType: ApiError.ErrorCode
+- uid: Auth0.Core.Exceptions.ApiError.ExtraData
+  name: ExtraData
+  href: api/Auth0.Core.Exceptions.ApiError.html#Auth0_Core_Exceptions_ApiError_ExtraData
+  commentId: P:Auth0.Core.Exceptions.ApiError.ExtraData
+  fullName: Auth0.Core.Exceptions.ApiError.ExtraData
+  nameWithType: ApiError.ExtraData
+- uid: Auth0.Core.Exceptions.ApiError.ExtraData*
+  name: ExtraData
+  href: api/Auth0.Core.Exceptions.ApiError.html#Auth0_Core_Exceptions_ApiError_ExtraData_
+  commentId: Overload:Auth0.Core.Exceptions.ApiError.ExtraData
+  isSpec: "True"
+  fullName: Auth0.Core.Exceptions.ApiError.ExtraData
+  nameWithType: ApiError.ExtraData
 - uid: Auth0.Core.Exceptions.ApiError.Message
   name: Message
   href: api/Auth0.Core.Exceptions.ApiError.html#Auth0_Core_Exceptions_ApiError_Message
@@ -2626,6 +2811,19 @@ references:
   isSpec: "True"
   fullName: Auth0.Core.Exceptions.ApiException.ApiException
   nameWithType: ApiException.ApiException
+- uid: Auth0.Core.Exceptions.ApiException.CreateSpecificExceptionAsync(System.Net.Http.HttpResponseMessage)
+  name: CreateSpecificExceptionAsync(HttpResponseMessage)
+  href: api/Auth0.Core.Exceptions.ApiException.html#Auth0_Core_Exceptions_ApiException_CreateSpecificExceptionAsync_System_Net_Http_HttpResponseMessage_
+  commentId: M:Auth0.Core.Exceptions.ApiException.CreateSpecificExceptionAsync(System.Net.Http.HttpResponseMessage)
+  fullName: Auth0.Core.Exceptions.ApiException.CreateSpecificExceptionAsync(System.Net.Http.HttpResponseMessage)
+  nameWithType: ApiException.CreateSpecificExceptionAsync(HttpResponseMessage)
+- uid: Auth0.Core.Exceptions.ApiException.CreateSpecificExceptionAsync*
+  name: CreateSpecificExceptionAsync
+  href: api/Auth0.Core.Exceptions.ApiException.html#Auth0_Core_Exceptions_ApiException_CreateSpecificExceptionAsync_
+  commentId: Overload:Auth0.Core.Exceptions.ApiException.CreateSpecificExceptionAsync
+  isSpec: "True"
+  fullName: Auth0.Core.Exceptions.ApiException.CreateSpecificExceptionAsync
+  nameWithType: ApiException.CreateSpecificExceptionAsync
 - uid: Auth0.Core.Exceptions.ErrorApiException
   name: ErrorApiException
   href: api/Auth0.Core.Exceptions.ErrorApiException.html
@@ -2714,12 +2912,12 @@ references:
   isSpec: "True"
   fullName: Auth0.Core.Exceptions.RateLimit.Limit
   nameWithType: RateLimit.Limit
-- uid: Auth0.Core.Exceptions.RateLimit.Parse(System.Net.Http.Headers.HttpResponseHeaders)
-  name: Parse(HttpResponseHeaders)
-  href: api/Auth0.Core.Exceptions.RateLimit.html#Auth0_Core_Exceptions_RateLimit_Parse_System_Net_Http_Headers_HttpResponseHeaders_
-  commentId: M:Auth0.Core.Exceptions.RateLimit.Parse(System.Net.Http.Headers.HttpResponseHeaders)
-  fullName: Auth0.Core.Exceptions.RateLimit.Parse(System.Net.Http.Headers.HttpResponseHeaders)
-  nameWithType: RateLimit.Parse(HttpResponseHeaders)
+- uid: Auth0.Core.Exceptions.RateLimit.Parse(System.Net.Http.Headers.HttpHeaders)
+  name: Parse(HttpHeaders)
+  href: api/Auth0.Core.Exceptions.RateLimit.html#Auth0_Core_Exceptions_RateLimit_Parse_System_Net_Http_Headers_HttpHeaders_
+  commentId: M:Auth0.Core.Exceptions.RateLimit.Parse(System.Net.Http.Headers.HttpHeaders)
+  fullName: Auth0.Core.Exceptions.RateLimit.Parse(System.Net.Http.Headers.HttpHeaders)
+  nameWithType: RateLimit.Parse(HttpHeaders)
 - uid: Auth0.Core.Exceptions.RateLimit.Parse*
   name: Parse
   href: api/Auth0.Core.Exceptions.RateLimit.html#Auth0_Core_Exceptions_RateLimit_Parse_
@@ -2898,6 +3096,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.BaseClient.DefaultHeaders
   nameWithType: BaseClient.DefaultHeaders
+- uid: Auth0.ManagementApi.Clients.BaseClient.EncodePath(System.String)
+  name: EncodePath(String)
+  href: api/Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_EncodePath_System_String_
+  commentId: M:Auth0.ManagementApi.Clients.BaseClient.EncodePath(System.String)
+  fullName: Auth0.ManagementApi.Clients.BaseClient.EncodePath(System.String)
+  nameWithType: BaseClient.EncodePath(String)
+- uid: Auth0.ManagementApi.Clients.BaseClient.EncodePath*
+  name: EncodePath
+  href: api/Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_EncodePath_
+  commentId: Overload:Auth0.ManagementApi.Clients.BaseClient.EncodePath
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.BaseClient.EncodePath
+  nameWithType: BaseClient.EncodePath
 - uid: Auth0.ManagementApi.Clients.BlacklistedTokensClient
   name: BlacklistedTokensClient
   href: api/Auth0.ManagementApi.Clients.BlacklistedTokensClient.html
@@ -3690,6 +3901,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.JobsClient.JobsClient
   nameWithType: JobsClient.JobsClient
+- uid: Auth0.ManagementApi.Clients.JobsClient.ExportUsersAsync(Auth0.ManagementApi.Models.UsersExportsJobRequest)
+  name: ExportUsersAsync(UsersExportsJobRequest)
+  href: api/Auth0.ManagementApi.Clients.JobsClient.html#Auth0_ManagementApi_Clients_JobsClient_ExportUsersAsync_Auth0_ManagementApi_Models_UsersExportsJobRequest_
+  commentId: M:Auth0.ManagementApi.Clients.JobsClient.ExportUsersAsync(Auth0.ManagementApi.Models.UsersExportsJobRequest)
+  fullName: Auth0.ManagementApi.Clients.JobsClient.ExportUsersAsync(Auth0.ManagementApi.Models.UsersExportsJobRequest)
+  nameWithType: JobsClient.ExportUsersAsync(UsersExportsJobRequest)
+- uid: Auth0.ManagementApi.Clients.JobsClient.ExportUsersAsync*
+  name: ExportUsersAsync
+  href: api/Auth0.ManagementApi.Clients.JobsClient.html#Auth0_ManagementApi_Clients_JobsClient_ExportUsersAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.JobsClient.ExportUsersAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.JobsClient.ExportUsersAsync
+  nameWithType: JobsClient.ExportUsersAsync
 - uid: Auth0.ManagementApi.Clients.JobsClient.GetAsync(System.String)
   name: GetAsync(String)
   href: api/Auth0.ManagementApi.Clients.JobsClient.html#Auth0_ManagementApi_Clients_JobsClient_GetAsync_System_String_
@@ -3703,15 +3927,15 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.JobsClient.GetAsync
   nameWithType: JobsClient.GetAsync
-- uid: Auth0.ManagementApi.Clients.JobsClient.ImportUsersAsync(System.String,System.String,System.IO.Stream,System.Nullable{System.Boolean},System.String)
-  name: ImportUsersAsync(String, String, Stream, Nullable<Boolean>, String)
-  href: api/Auth0.ManagementApi.Clients.JobsClient.html#Auth0_ManagementApi_Clients_JobsClient_ImportUsersAsync_System_String_System_String_System_IO_Stream_System_Nullable_System_Boolean__System_String_
-  commentId: M:Auth0.ManagementApi.Clients.JobsClient.ImportUsersAsync(System.String,System.String,System.IO.Stream,System.Nullable{System.Boolean},System.String)
-  name.vb: ImportUsersAsync(String, String, Stream, Nullable(Of Boolean), String)
-  fullName: Auth0.ManagementApi.Clients.JobsClient.ImportUsersAsync(System.String, System.String, System.IO.Stream, System.Nullable<System.Boolean>, System.String)
-  fullName.vb: Auth0.ManagementApi.Clients.JobsClient.ImportUsersAsync(System.String, System.String, System.IO.Stream, System.Nullable(Of System.Boolean), System.String)
-  nameWithType: JobsClient.ImportUsersAsync(String, String, Stream, Nullable<Boolean>, String)
-  nameWithType.vb: JobsClient.ImportUsersAsync(String, String, Stream, Nullable(Of Boolean), String)
+- uid: Auth0.ManagementApi.Clients.JobsClient.ImportUsersAsync(System.String,System.String,System.IO.Stream,System.Nullable{System.Boolean},System.String,System.Nullable{System.Boolean})
+  name: ImportUsersAsync(String, String, Stream, Nullable<Boolean>, String, Nullable<Boolean>)
+  href: api/Auth0.ManagementApi.Clients.JobsClient.html#Auth0_ManagementApi_Clients_JobsClient_ImportUsersAsync_System_String_System_String_System_IO_Stream_System_Nullable_System_Boolean__System_String_System_Nullable_System_Boolean__
+  commentId: M:Auth0.ManagementApi.Clients.JobsClient.ImportUsersAsync(System.String,System.String,System.IO.Stream,System.Nullable{System.Boolean},System.String,System.Nullable{System.Boolean})
+  name.vb: ImportUsersAsync(String, String, Stream, Nullable(Of Boolean), String, Nullable(Of Boolean))
+  fullName: Auth0.ManagementApi.Clients.JobsClient.ImportUsersAsync(System.String, System.String, System.IO.Stream, System.Nullable<System.Boolean>, System.String, System.Nullable<System.Boolean>)
+  fullName.vb: Auth0.ManagementApi.Clients.JobsClient.ImportUsersAsync(System.String, System.String, System.IO.Stream, System.Nullable(Of System.Boolean), System.String, System.Nullable(Of System.Boolean))
+  nameWithType: JobsClient.ImportUsersAsync(String, String, Stream, Nullable<Boolean>, String, Nullable<Boolean>)
+  nameWithType.vb: JobsClient.ImportUsersAsync(String, String, Stream, Nullable(Of Boolean), String, Nullable(Of Boolean))
 - uid: Auth0.ManagementApi.Clients.JobsClient.ImportUsersAsync*
   name: ImportUsersAsync
   href: api/Auth0.ManagementApi.Clients.JobsClient.html#Auth0_ManagementApi_Clients_JobsClient_ImportUsersAsync_
@@ -3780,6 +4004,93 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.LogsClient.GetAsync
   nameWithType: LogsClient.GetAsync
+- uid: Auth0.ManagementApi.Clients.LogStreamsClient
+  name: LogStreamsClient
+  href: api/Auth0.ManagementApi.Clients.LogStreamsClient.html
+  commentId: T:Auth0.ManagementApi.Clients.LogStreamsClient
+  fullName: Auth0.ManagementApi.Clients.LogStreamsClient
+  nameWithType: LogStreamsClient
+- uid: Auth0.ManagementApi.Clients.LogStreamsClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})
+  name: LogStreamsClient(IManagementConnection, Uri, IDictionary<String, String>)
+  href: api/Auth0.ManagementApi.Clients.LogStreamsClient.html#Auth0_ManagementApi_Clients_LogStreamsClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__
+  commentId: M:Auth0.ManagementApi.Clients.LogStreamsClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})
+  name.vb: LogStreamsClient(IManagementConnection, Uri, IDictionary(Of String, String))
+  fullName: Auth0.ManagementApi.Clients.LogStreamsClient.LogStreamsClient(Auth0.ManagementApi.IManagementConnection, System.Uri, System.Collections.Generic.IDictionary<System.String, System.String>)
+  fullName.vb: Auth0.ManagementApi.Clients.LogStreamsClient.LogStreamsClient(Auth0.ManagementApi.IManagementConnection, System.Uri, System.Collections.Generic.IDictionary(Of System.String, System.String))
+  nameWithType: LogStreamsClient.LogStreamsClient(IManagementConnection, Uri, IDictionary<String, String>)
+  nameWithType.vb: LogStreamsClient.LogStreamsClient(IManagementConnection, Uri, IDictionary(Of String, String))
+- uid: Auth0.ManagementApi.Clients.LogStreamsClient.#ctor*
+  name: LogStreamsClient
+  href: api/Auth0.ManagementApi.Clients.LogStreamsClient.html#Auth0_ManagementApi_Clients_LogStreamsClient__ctor_
+  commentId: Overload:Auth0.ManagementApi.Clients.LogStreamsClient.#ctor
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.LogStreamsClient.LogStreamsClient
+  nameWithType: LogStreamsClient.LogStreamsClient
+- uid: Auth0.ManagementApi.Clients.LogStreamsClient.CreateAsync(Auth0.ManagementApi.Models.LogStreamCreateRequest)
+  name: CreateAsync(LogStreamCreateRequest)
+  href: api/Auth0.ManagementApi.Clients.LogStreamsClient.html#Auth0_ManagementApi_Clients_LogStreamsClient_CreateAsync_Auth0_ManagementApi_Models_LogStreamCreateRequest_
+  commentId: M:Auth0.ManagementApi.Clients.LogStreamsClient.CreateAsync(Auth0.ManagementApi.Models.LogStreamCreateRequest)
+  fullName: Auth0.ManagementApi.Clients.LogStreamsClient.CreateAsync(Auth0.ManagementApi.Models.LogStreamCreateRequest)
+  nameWithType: LogStreamsClient.CreateAsync(LogStreamCreateRequest)
+- uid: Auth0.ManagementApi.Clients.LogStreamsClient.CreateAsync*
+  name: CreateAsync
+  href: api/Auth0.ManagementApi.Clients.LogStreamsClient.html#Auth0_ManagementApi_Clients_LogStreamsClient_CreateAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.LogStreamsClient.CreateAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.LogStreamsClient.CreateAsync
+  nameWithType: LogStreamsClient.CreateAsync
+- uid: Auth0.ManagementApi.Clients.LogStreamsClient.DeleteAsync(System.String)
+  name: DeleteAsync(String)
+  href: api/Auth0.ManagementApi.Clients.LogStreamsClient.html#Auth0_ManagementApi_Clients_LogStreamsClient_DeleteAsync_System_String_
+  commentId: M:Auth0.ManagementApi.Clients.LogStreamsClient.DeleteAsync(System.String)
+  fullName: Auth0.ManagementApi.Clients.LogStreamsClient.DeleteAsync(System.String)
+  nameWithType: LogStreamsClient.DeleteAsync(String)
+- uid: Auth0.ManagementApi.Clients.LogStreamsClient.DeleteAsync*
+  name: DeleteAsync
+  href: api/Auth0.ManagementApi.Clients.LogStreamsClient.html#Auth0_ManagementApi_Clients_LogStreamsClient_DeleteAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.LogStreamsClient.DeleteAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.LogStreamsClient.DeleteAsync
+  nameWithType: LogStreamsClient.DeleteAsync
+- uid: Auth0.ManagementApi.Clients.LogStreamsClient.GetAllAsync
+  name: GetAllAsync()
+  href: api/Auth0.ManagementApi.Clients.LogStreamsClient.html#Auth0_ManagementApi_Clients_LogStreamsClient_GetAllAsync
+  commentId: M:Auth0.ManagementApi.Clients.LogStreamsClient.GetAllAsync
+  fullName: Auth0.ManagementApi.Clients.LogStreamsClient.GetAllAsync()
+  nameWithType: LogStreamsClient.GetAllAsync()
+- uid: Auth0.ManagementApi.Clients.LogStreamsClient.GetAllAsync*
+  name: GetAllAsync
+  href: api/Auth0.ManagementApi.Clients.LogStreamsClient.html#Auth0_ManagementApi_Clients_LogStreamsClient_GetAllAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.LogStreamsClient.GetAllAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.LogStreamsClient.GetAllAsync
+  nameWithType: LogStreamsClient.GetAllAsync
+- uid: Auth0.ManagementApi.Clients.LogStreamsClient.GetAsync(System.String)
+  name: GetAsync(String)
+  href: api/Auth0.ManagementApi.Clients.LogStreamsClient.html#Auth0_ManagementApi_Clients_LogStreamsClient_GetAsync_System_String_
+  commentId: M:Auth0.ManagementApi.Clients.LogStreamsClient.GetAsync(System.String)
+  fullName: Auth0.ManagementApi.Clients.LogStreamsClient.GetAsync(System.String)
+  nameWithType: LogStreamsClient.GetAsync(String)
+- uid: Auth0.ManagementApi.Clients.LogStreamsClient.GetAsync*
+  name: GetAsync
+  href: api/Auth0.ManagementApi.Clients.LogStreamsClient.html#Auth0_ManagementApi_Clients_LogStreamsClient_GetAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.LogStreamsClient.GetAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.LogStreamsClient.GetAsync
+  nameWithType: LogStreamsClient.GetAsync
+- uid: Auth0.ManagementApi.Clients.LogStreamsClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.LogStreamUpdateRequest)
+  name: UpdateAsync(String, LogStreamUpdateRequest)
+  href: api/Auth0.ManagementApi.Clients.LogStreamsClient.html#Auth0_ManagementApi_Clients_LogStreamsClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_LogStreamUpdateRequest_
+  commentId: M:Auth0.ManagementApi.Clients.LogStreamsClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.LogStreamUpdateRequest)
+  fullName: Auth0.ManagementApi.Clients.LogStreamsClient.UpdateAsync(System.String, Auth0.ManagementApi.Models.LogStreamUpdateRequest)
+  nameWithType: LogStreamsClient.UpdateAsync(String, LogStreamUpdateRequest)
+- uid: Auth0.ManagementApi.Clients.LogStreamsClient.UpdateAsync*
+  name: UpdateAsync
+  href: api/Auth0.ManagementApi.Clients.LogStreamsClient.html#Auth0_ManagementApi_Clients_LogStreamsClient_UpdateAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.LogStreamsClient.UpdateAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.LogStreamsClient.UpdateAsync
+  nameWithType: LogStreamsClient.UpdateAsync
 - uid: Auth0.ManagementApi.Clients.ResourceServersClient
   name: ResourceServersClient
   href: api/Auth0.ManagementApi.Clients.ResourceServersClient.html
@@ -4921,6 +5232,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.ManagementApiClient.Logs
   nameWithType: ManagementApiClient.Logs
+- uid: Auth0.ManagementApi.ManagementApiClient.LogStreams
+  name: LogStreams
+  href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_LogStreams
+  commentId: P:Auth0.ManagementApi.ManagementApiClient.LogStreams
+  fullName: Auth0.ManagementApi.ManagementApiClient.LogStreams
+  nameWithType: ManagementApiClient.LogStreams
+- uid: Auth0.ManagementApi.ManagementApiClient.LogStreams*
+  name: LogStreams
+  href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_LogStreams_
+  commentId: Overload:Auth0.ManagementApi.ManagementApiClient.LogStreams
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.ManagementApiClient.LogStreams
+  nameWithType: ManagementApiClient.LogStreams
 - uid: Auth0.ManagementApi.ManagementApiClient.ResourceServers
   name: ResourceServers
   href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_ResourceServers
@@ -6080,6 +6404,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.ClientBase.OidcConformant
   nameWithType: ClientBase.OidcConformant
+- uid: Auth0.ManagementApi.Models.ClientBase.RefreshToken
+  name: RefreshToken
+  href: api/Auth0.ManagementApi.Models.ClientBase.html#Auth0_ManagementApi_Models_ClientBase_RefreshToken
+  commentId: P:Auth0.ManagementApi.Models.ClientBase.RefreshToken
+  fullName: Auth0.ManagementApi.Models.ClientBase.RefreshToken
+  nameWithType: ClientBase.RefreshToken
+- uid: Auth0.ManagementApi.Models.ClientBase.RefreshToken*
+  name: RefreshToken
+  href: api/Auth0.ManagementApi.Models.ClientBase.html#Auth0_ManagementApi_Models_ClientBase_RefreshToken_
+  commentId: Overload:Auth0.ManagementApi.Models.ClientBase.RefreshToken
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.ClientBase.RefreshToken
+  nameWithType: ClientBase.RefreshToken
 - uid: Auth0.ManagementApi.Models.ClientBase.ResourceServers
   name: ResourceServers
   href: api/Auth0.ManagementApi.Models.ClientBase.html#Auth0_ManagementApi_Models_ClientBase_ResourceServers
@@ -6323,6 +6660,19 @@ references:
   commentId: T:Auth0.ManagementApi.Models.Connection
   fullName: Auth0.ManagementApi.Models.Connection
   nameWithType: Connection
+- uid: Auth0.ManagementApi.Models.Connection.DisplayName
+  name: DisplayName
+  href: api/Auth0.ManagementApi.Models.Connection.html#Auth0_ManagementApi_Models_Connection_DisplayName
+  commentId: P:Auth0.ManagementApi.Models.Connection.DisplayName
+  fullName: Auth0.ManagementApi.Models.Connection.DisplayName
+  nameWithType: Connection.DisplayName
+- uid: Auth0.ManagementApi.Models.Connection.DisplayName*
+  name: DisplayName
+  href: api/Auth0.ManagementApi.Models.Connection.html#Auth0_ManagementApi_Models_Connection_DisplayName_
+  commentId: Overload:Auth0.ManagementApi.Models.Connection.DisplayName
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Connection.DisplayName
+  nameWithType: Connection.DisplayName
 - uid: Auth0.ManagementApi.Models.Connection.Id
   name: Id
   href: api/Auth0.ManagementApi.Models.Connection.html#Auth0_ManagementApi_Models_Connection_Id
@@ -6336,6 +6686,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.Connection.Id
   nameWithType: Connection.Id
+- uid: Auth0.ManagementApi.Models.Connection.IsDomainConnection
+  name: IsDomainConnection
+  href: api/Auth0.ManagementApi.Models.Connection.html#Auth0_ManagementApi_Models_Connection_IsDomainConnection
+  commentId: P:Auth0.ManagementApi.Models.Connection.IsDomainConnection
+  fullName: Auth0.ManagementApi.Models.Connection.IsDomainConnection
+  nameWithType: Connection.IsDomainConnection
+- uid: Auth0.ManagementApi.Models.Connection.IsDomainConnection*
+  name: IsDomainConnection
+  href: api/Auth0.ManagementApi.Models.Connection.html#Auth0_ManagementApi_Models_Connection_IsDomainConnection_
+  commentId: Overload:Auth0.ManagementApi.Models.Connection.IsDomainConnection
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Connection.IsDomainConnection
+  nameWithType: Connection.IsDomainConnection
 - uid: Auth0.ManagementApi.Models.Connection.Strategy
   name: Strategy
   href: api/Auth0.ManagementApi.Models.Connection.html#Auth0_ManagementApi_Models_Connection_Strategy
@@ -6407,6 +6770,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.ConnectionBase.Options
   nameWithType: ConnectionBase.Options
+- uid: Auth0.ManagementApi.Models.ConnectionBase.Realms
+  name: Realms
+  href: api/Auth0.ManagementApi.Models.ConnectionBase.html#Auth0_ManagementApi_Models_ConnectionBase_Realms
+  commentId: P:Auth0.ManagementApi.Models.ConnectionBase.Realms
+  fullName: Auth0.ManagementApi.Models.ConnectionBase.Realms
+  nameWithType: ConnectionBase.Realms
+- uid: Auth0.ManagementApi.Models.ConnectionBase.Realms*
+  name: Realms
+  href: api/Auth0.ManagementApi.Models.ConnectionBase.html#Auth0_ManagementApi_Models_ConnectionBase_Realms_
+  commentId: Overload:Auth0.ManagementApi.Models.ConnectionBase.Realms
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.ConnectionBase.Realms
+  nameWithType: ConnectionBase.Realms
 - uid: Auth0.ManagementApi.Models.ConnectionCreateRequest
   name: ConnectionCreateRequest
   href: api/Auth0.ManagementApi.Models.ConnectionCreateRequest.html
@@ -7406,12 +7782,57 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.EmailTemplateUpdateRequest.Template
   nameWithType: EmailTemplateUpdateRequest.Template
+- uid: Auth0.ManagementApi.Models.EmailVerificationIdentity
+  name: EmailVerificationIdentity
+  href: api/Auth0.ManagementApi.Models.EmailVerificationIdentity.html
+  commentId: T:Auth0.ManagementApi.Models.EmailVerificationIdentity
+  fullName: Auth0.ManagementApi.Models.EmailVerificationIdentity
+  nameWithType: EmailVerificationIdentity
+- uid: Auth0.ManagementApi.Models.EmailVerificationIdentity.Provider
+  name: Provider
+  href: api/Auth0.ManagementApi.Models.EmailVerificationIdentity.html#Auth0_ManagementApi_Models_EmailVerificationIdentity_Provider
+  commentId: P:Auth0.ManagementApi.Models.EmailVerificationIdentity.Provider
+  fullName: Auth0.ManagementApi.Models.EmailVerificationIdentity.Provider
+  nameWithType: EmailVerificationIdentity.Provider
+- uid: Auth0.ManagementApi.Models.EmailVerificationIdentity.Provider*
+  name: Provider
+  href: api/Auth0.ManagementApi.Models.EmailVerificationIdentity.html#Auth0_ManagementApi_Models_EmailVerificationIdentity_Provider_
+  commentId: Overload:Auth0.ManagementApi.Models.EmailVerificationIdentity.Provider
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.EmailVerificationIdentity.Provider
+  nameWithType: EmailVerificationIdentity.Provider
+- uid: Auth0.ManagementApi.Models.EmailVerificationIdentity.UserId
+  name: UserId
+  href: api/Auth0.ManagementApi.Models.EmailVerificationIdentity.html#Auth0_ManagementApi_Models_EmailVerificationIdentity_UserId
+  commentId: P:Auth0.ManagementApi.Models.EmailVerificationIdentity.UserId
+  fullName: Auth0.ManagementApi.Models.EmailVerificationIdentity.UserId
+  nameWithType: EmailVerificationIdentity.UserId
+- uid: Auth0.ManagementApi.Models.EmailVerificationIdentity.UserId*
+  name: UserId
+  href: api/Auth0.ManagementApi.Models.EmailVerificationIdentity.html#Auth0_ManagementApi_Models_EmailVerificationIdentity_UserId_
+  commentId: Overload:Auth0.ManagementApi.Models.EmailVerificationIdentity.UserId
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.EmailVerificationIdentity.UserId
+  nameWithType: EmailVerificationIdentity.UserId
 - uid: Auth0.ManagementApi.Models.EmailVerificationTicketRequest
   name: EmailVerificationTicketRequest
   href: api/Auth0.ManagementApi.Models.EmailVerificationTicketRequest.html
   commentId: T:Auth0.ManagementApi.Models.EmailVerificationTicketRequest
   fullName: Auth0.ManagementApi.Models.EmailVerificationTicketRequest
   nameWithType: EmailVerificationTicketRequest
+- uid: Auth0.ManagementApi.Models.EmailVerificationTicketRequest.Identity
+  name: Identity
+  href: api/Auth0.ManagementApi.Models.EmailVerificationTicketRequest.html#Auth0_ManagementApi_Models_EmailVerificationTicketRequest_Identity
+  commentId: P:Auth0.ManagementApi.Models.EmailVerificationTicketRequest.Identity
+  fullName: Auth0.ManagementApi.Models.EmailVerificationTicketRequest.Identity
+  nameWithType: EmailVerificationTicketRequest.Identity
+- uid: Auth0.ManagementApi.Models.EmailVerificationTicketRequest.Identity*
+  name: Identity
+  href: api/Auth0.ManagementApi.Models.EmailVerificationTicketRequest.html#Auth0_ManagementApi_Models_EmailVerificationTicketRequest_Identity_
+  commentId: Overload:Auth0.ManagementApi.Models.EmailVerificationTicketRequest.Identity
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.EmailVerificationTicketRequest.Identity
+  nameWithType: EmailVerificationTicketRequest.Identity
 - uid: Auth0.ManagementApi.Models.EmailVerificationTicketRequest.ResultUrl
   name: ResultUrl
   href: api/Auth0.ManagementApi.Models.EmailVerificationTicketRequest.html#Auth0_ManagementApi_Models_EmailVerificationTicketRequest_ResultUrl
@@ -8314,6 +8735,18 @@ references:
   commentId: F:Auth0.ManagementApi.Models.GuardianFactorName.Sms
   fullName: Auth0.ManagementApi.Models.GuardianFactorName.Sms
   nameWithType: GuardianFactorName.Sms
+- uid: Auth0.ManagementApi.Models.GuardianFactorName.WebAuthnPlatform
+  name: WebAuthnPlatform
+  href: api/Auth0.ManagementApi.Models.GuardianFactorName.html#Auth0_ManagementApi_Models_GuardianFactorName_WebAuthnPlatform
+  commentId: F:Auth0.ManagementApi.Models.GuardianFactorName.WebAuthnPlatform
+  fullName: Auth0.ManagementApi.Models.GuardianFactorName.WebAuthnPlatform
+  nameWithType: GuardianFactorName.WebAuthnPlatform
+- uid: Auth0.ManagementApi.Models.GuardianFactorName.WebAuthnRoaming
+  name: WebAuthnRoaming
+  href: api/Auth0.ManagementApi.Models.GuardianFactorName.html#Auth0_ManagementApi_Models_GuardianFactorName_WebAuthnRoaming
+  commentId: F:Auth0.ManagementApi.Models.GuardianFactorName.WebAuthnRoaming
+  fullName: Auth0.ManagementApi.Models.GuardianFactorName.WebAuthnRoaming
+  nameWithType: GuardianFactorName.WebAuthnRoaming
 - uid: Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates
   name: GuardianSmsEnrollmentTemplates
   href: api/Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates.html
@@ -8629,6 +9062,45 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.Job.Connection
   nameWithType: Job.Connection
+- uid: Auth0.ManagementApi.Models.Job.ConnectionId
+  name: ConnectionId
+  href: api/Auth0.ManagementApi.Models.Job.html#Auth0_ManagementApi_Models_Job_ConnectionId
+  commentId: P:Auth0.ManagementApi.Models.Job.ConnectionId
+  fullName: Auth0.ManagementApi.Models.Job.ConnectionId
+  nameWithType: Job.ConnectionId
+- uid: Auth0.ManagementApi.Models.Job.ConnectionId*
+  name: ConnectionId
+  href: api/Auth0.ManagementApi.Models.Job.html#Auth0_ManagementApi_Models_Job_ConnectionId_
+  commentId: Overload:Auth0.ManagementApi.Models.Job.ConnectionId
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Job.ConnectionId
+  nameWithType: Job.ConnectionId
+- uid: Auth0.ManagementApi.Models.Job.CreatedAt
+  name: CreatedAt
+  href: api/Auth0.ManagementApi.Models.Job.html#Auth0_ManagementApi_Models_Job_CreatedAt
+  commentId: P:Auth0.ManagementApi.Models.Job.CreatedAt
+  fullName: Auth0.ManagementApi.Models.Job.CreatedAt
+  nameWithType: Job.CreatedAt
+- uid: Auth0.ManagementApi.Models.Job.CreatedAt*
+  name: CreatedAt
+  href: api/Auth0.ManagementApi.Models.Job.html#Auth0_ManagementApi_Models_Job_CreatedAt_
+  commentId: Overload:Auth0.ManagementApi.Models.Job.CreatedAt
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Job.CreatedAt
+  nameWithType: Job.CreatedAt
+- uid: Auth0.ManagementApi.Models.Job.Format
+  name: Format
+  href: api/Auth0.ManagementApi.Models.Job.html#Auth0_ManagementApi_Models_Job_Format
+  commentId: P:Auth0.ManagementApi.Models.Job.Format
+  fullName: Auth0.ManagementApi.Models.Job.Format
+  nameWithType: Job.Format
+- uid: Auth0.ManagementApi.Models.Job.Format*
+  name: Format
+  href: api/Auth0.ManagementApi.Models.Job.html#Auth0_ManagementApi_Models_Job_Format_
+  commentId: Overload:Auth0.ManagementApi.Models.Job.Format
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Job.Format
+  nameWithType: Job.Format
 - uid: Auth0.ManagementApi.Models.Job.Id
   name: Id
   href: api/Auth0.ManagementApi.Models.Job.html#Auth0_ManagementApi_Models_Job_Id
@@ -8642,6 +9114,32 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.Job.Id
   nameWithType: Job.Id
+- uid: Auth0.ManagementApi.Models.Job.Location
+  name: Location
+  href: api/Auth0.ManagementApi.Models.Job.html#Auth0_ManagementApi_Models_Job_Location
+  commentId: P:Auth0.ManagementApi.Models.Job.Location
+  fullName: Auth0.ManagementApi.Models.Job.Location
+  nameWithType: Job.Location
+- uid: Auth0.ManagementApi.Models.Job.Location*
+  name: Location
+  href: api/Auth0.ManagementApi.Models.Job.html#Auth0_ManagementApi_Models_Job_Location_
+  commentId: Overload:Auth0.ManagementApi.Models.Job.Location
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Job.Location
+  nameWithType: Job.Location
+- uid: Auth0.ManagementApi.Models.Job.PercentageDone
+  name: PercentageDone
+  href: api/Auth0.ManagementApi.Models.Job.html#Auth0_ManagementApi_Models_Job_PercentageDone
+  commentId: P:Auth0.ManagementApi.Models.Job.PercentageDone
+  fullName: Auth0.ManagementApi.Models.Job.PercentageDone
+  nameWithType: Job.PercentageDone
+- uid: Auth0.ManagementApi.Models.Job.PercentageDone*
+  name: PercentageDone
+  href: api/Auth0.ManagementApi.Models.Job.html#Auth0_ManagementApi_Models_Job_PercentageDone_
+  commentId: Overload:Auth0.ManagementApi.Models.Job.PercentageDone
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Job.PercentageDone
+  nameWithType: Job.PercentageDone
 - uid: Auth0.ManagementApi.Models.Job.Status
   name: Status
   href: api/Auth0.ManagementApi.Models.Job.html#Auth0_ManagementApi_Models_Job_Status
@@ -8655,6 +9153,45 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.Job.Status
   nameWithType: Job.Status
+- uid: Auth0.ManagementApi.Models.Job.Summary
+  name: Summary
+  href: api/Auth0.ManagementApi.Models.Job.html#Auth0_ManagementApi_Models_Job_Summary
+  commentId: P:Auth0.ManagementApi.Models.Job.Summary
+  fullName: Auth0.ManagementApi.Models.Job.Summary
+  nameWithType: Job.Summary
+- uid: Auth0.ManagementApi.Models.Job.Summary*
+  name: Summary
+  href: api/Auth0.ManagementApi.Models.Job.html#Auth0_ManagementApi_Models_Job_Summary_
+  commentId: Overload:Auth0.ManagementApi.Models.Job.Summary
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Job.Summary
+  nameWithType: Job.Summary
+- uid: Auth0.ManagementApi.Models.Job.TimeLeft
+  name: TimeLeft
+  href: api/Auth0.ManagementApi.Models.Job.html#Auth0_ManagementApi_Models_Job_TimeLeft
+  commentId: P:Auth0.ManagementApi.Models.Job.TimeLeft
+  fullName: Auth0.ManagementApi.Models.Job.TimeLeft
+  nameWithType: Job.TimeLeft
+- uid: Auth0.ManagementApi.Models.Job.TimeLeft*
+  name: TimeLeft
+  href: api/Auth0.ManagementApi.Models.Job.html#Auth0_ManagementApi_Models_Job_TimeLeft_
+  commentId: Overload:Auth0.ManagementApi.Models.Job.TimeLeft
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Job.TimeLeft
+  nameWithType: Job.TimeLeft
+- uid: Auth0.ManagementApi.Models.Job.TimeLeftSeconds
+  name: TimeLeftSeconds
+  href: api/Auth0.ManagementApi.Models.Job.html#Auth0_ManagementApi_Models_Job_TimeLeftSeconds
+  commentId: P:Auth0.ManagementApi.Models.Job.TimeLeftSeconds
+  fullName: Auth0.ManagementApi.Models.Job.TimeLeftSeconds
+  nameWithType: Job.TimeLeftSeconds
+- uid: Auth0.ManagementApi.Models.Job.TimeLeftSeconds*
+  name: TimeLeftSeconds
+  href: api/Auth0.ManagementApi.Models.Job.html#Auth0_ManagementApi_Models_Job_TimeLeftSeconds_
+  commentId: Overload:Auth0.ManagementApi.Models.Job.TimeLeftSeconds
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Job.TimeLeftSeconds
+  nameWithType: Job.TimeLeftSeconds
 - uid: Auth0.ManagementApi.Models.Job.Type
   name: Type
   href: api/Auth0.ManagementApi.Models.Job.html#Auth0_ManagementApi_Models_Job_Type
@@ -8668,6 +9205,64 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.Job.Type
   nameWithType: Job.Type
+- uid: Auth0.ManagementApi.Models.JobSummary
+  name: JobSummary
+  href: api/Auth0.ManagementApi.Models.JobSummary.html
+  commentId: T:Auth0.ManagementApi.Models.JobSummary
+  fullName: Auth0.ManagementApi.Models.JobSummary
+  nameWithType: JobSummary
+- uid: Auth0.ManagementApi.Models.JobSummary.Failed
+  name: Failed
+  href: api/Auth0.ManagementApi.Models.JobSummary.html#Auth0_ManagementApi_Models_JobSummary_Failed
+  commentId: P:Auth0.ManagementApi.Models.JobSummary.Failed
+  fullName: Auth0.ManagementApi.Models.JobSummary.Failed
+  nameWithType: JobSummary.Failed
+- uid: Auth0.ManagementApi.Models.JobSummary.Failed*
+  name: Failed
+  href: api/Auth0.ManagementApi.Models.JobSummary.html#Auth0_ManagementApi_Models_JobSummary_Failed_
+  commentId: Overload:Auth0.ManagementApi.Models.JobSummary.Failed
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.JobSummary.Failed
+  nameWithType: JobSummary.Failed
+- uid: Auth0.ManagementApi.Models.JobSummary.Inserted
+  name: Inserted
+  href: api/Auth0.ManagementApi.Models.JobSummary.html#Auth0_ManagementApi_Models_JobSummary_Inserted
+  commentId: P:Auth0.ManagementApi.Models.JobSummary.Inserted
+  fullName: Auth0.ManagementApi.Models.JobSummary.Inserted
+  nameWithType: JobSummary.Inserted
+- uid: Auth0.ManagementApi.Models.JobSummary.Inserted*
+  name: Inserted
+  href: api/Auth0.ManagementApi.Models.JobSummary.html#Auth0_ManagementApi_Models_JobSummary_Inserted_
+  commentId: Overload:Auth0.ManagementApi.Models.JobSummary.Inserted
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.JobSummary.Inserted
+  nameWithType: JobSummary.Inserted
+- uid: Auth0.ManagementApi.Models.JobSummary.Total
+  name: Total
+  href: api/Auth0.ManagementApi.Models.JobSummary.html#Auth0_ManagementApi_Models_JobSummary_Total
+  commentId: P:Auth0.ManagementApi.Models.JobSummary.Total
+  fullName: Auth0.ManagementApi.Models.JobSummary.Total
+  nameWithType: JobSummary.Total
+- uid: Auth0.ManagementApi.Models.JobSummary.Total*
+  name: Total
+  href: api/Auth0.ManagementApi.Models.JobSummary.html#Auth0_ManagementApi_Models_JobSummary_Total_
+  commentId: Overload:Auth0.ManagementApi.Models.JobSummary.Total
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.JobSummary.Total
+  nameWithType: JobSummary.Total
+- uid: Auth0.ManagementApi.Models.JobSummary.Updated
+  name: Updated
+  href: api/Auth0.ManagementApi.Models.JobSummary.html#Auth0_ManagementApi_Models_JobSummary_Updated
+  commentId: P:Auth0.ManagementApi.Models.JobSummary.Updated
+  fullName: Auth0.ManagementApi.Models.JobSummary.Updated
+  nameWithType: JobSummary.Updated
+- uid: Auth0.ManagementApi.Models.JobSummary.Updated*
+  name: Updated
+  href: api/Auth0.ManagementApi.Models.JobSummary.html#Auth0_ManagementApi_Models_JobSummary_Updated_
+  commentId: Overload:Auth0.ManagementApi.Models.JobSummary.Updated
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.JobSummary.Updated
+  nameWithType: JobSummary.Updated
 - uid: Auth0.ManagementApi.Models.JwtConfiguration
   name: JwtConfiguration
   href: api/Auth0.ManagementApi.Models.JwtConfiguration.html
@@ -8992,6 +9587,194 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.LogEntry.UserName
   nameWithType: LogEntry.UserName
+- uid: Auth0.ManagementApi.Models.LogStream
+  name: LogStream
+  href: api/Auth0.ManagementApi.Models.LogStream.html
+  commentId: T:Auth0.ManagementApi.Models.LogStream
+  fullName: Auth0.ManagementApi.Models.LogStream
+  nameWithType: LogStream
+- uid: Auth0.ManagementApi.Models.LogStream.Id
+  name: Id
+  href: api/Auth0.ManagementApi.Models.LogStream.html#Auth0_ManagementApi_Models_LogStream_Id
+  commentId: P:Auth0.ManagementApi.Models.LogStream.Id
+  fullName: Auth0.ManagementApi.Models.LogStream.Id
+  nameWithType: LogStream.Id
+- uid: Auth0.ManagementApi.Models.LogStream.Id*
+  name: Id
+  href: api/Auth0.ManagementApi.Models.LogStream.html#Auth0_ManagementApi_Models_LogStream_Id_
+  commentId: Overload:Auth0.ManagementApi.Models.LogStream.Id
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.LogStream.Id
+  nameWithType: LogStream.Id
+- uid: Auth0.ManagementApi.Models.LogStream.Status
+  name: Status
+  href: api/Auth0.ManagementApi.Models.LogStream.html#Auth0_ManagementApi_Models_LogStream_Status
+  commentId: P:Auth0.ManagementApi.Models.LogStream.Status
+  fullName: Auth0.ManagementApi.Models.LogStream.Status
+  nameWithType: LogStream.Status
+- uid: Auth0.ManagementApi.Models.LogStream.Status*
+  name: Status
+  href: api/Auth0.ManagementApi.Models.LogStream.html#Auth0_ManagementApi_Models_LogStream_Status_
+  commentId: Overload:Auth0.ManagementApi.Models.LogStream.Status
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.LogStream.Status
+  nameWithType: LogStream.Status
+- uid: Auth0.ManagementApi.Models.LogStreamBase
+  name: LogStreamBase
+  href: api/Auth0.ManagementApi.Models.LogStreamBase.html
+  commentId: T:Auth0.ManagementApi.Models.LogStreamBase
+  fullName: Auth0.ManagementApi.Models.LogStreamBase
+  nameWithType: LogStreamBase
+- uid: Auth0.ManagementApi.Models.LogStreamBase.Name
+  name: Name
+  href: api/Auth0.ManagementApi.Models.LogStreamBase.html#Auth0_ManagementApi_Models_LogStreamBase_Name
+  commentId: P:Auth0.ManagementApi.Models.LogStreamBase.Name
+  fullName: Auth0.ManagementApi.Models.LogStreamBase.Name
+  nameWithType: LogStreamBase.Name
+- uid: Auth0.ManagementApi.Models.LogStreamBase.Name*
+  name: Name
+  href: api/Auth0.ManagementApi.Models.LogStreamBase.html#Auth0_ManagementApi_Models_LogStreamBase_Name_
+  commentId: Overload:Auth0.ManagementApi.Models.LogStreamBase.Name
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.LogStreamBase.Name
+  nameWithType: LogStreamBase.Name
+- uid: Auth0.ManagementApi.Models.LogStreamBase.Sink
+  name: Sink
+  href: api/Auth0.ManagementApi.Models.LogStreamBase.html#Auth0_ManagementApi_Models_LogStreamBase_Sink
+  commentId: P:Auth0.ManagementApi.Models.LogStreamBase.Sink
+  fullName: Auth0.ManagementApi.Models.LogStreamBase.Sink
+  nameWithType: LogStreamBase.Sink
+- uid: Auth0.ManagementApi.Models.LogStreamBase.Sink*
+  name: Sink
+  href: api/Auth0.ManagementApi.Models.LogStreamBase.html#Auth0_ManagementApi_Models_LogStreamBase_Sink_
+  commentId: Overload:Auth0.ManagementApi.Models.LogStreamBase.Sink
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.LogStreamBase.Sink
+  nameWithType: LogStreamBase.Sink
+- uid: Auth0.ManagementApi.Models.LogStreamBase.Type
+  name: Type
+  href: api/Auth0.ManagementApi.Models.LogStreamBase.html#Auth0_ManagementApi_Models_LogStreamBase_Type
+  commentId: P:Auth0.ManagementApi.Models.LogStreamBase.Type
+  fullName: Auth0.ManagementApi.Models.LogStreamBase.Type
+  nameWithType: LogStreamBase.Type
+- uid: Auth0.ManagementApi.Models.LogStreamBase.Type*
+  name: Type
+  href: api/Auth0.ManagementApi.Models.LogStreamBase.html#Auth0_ManagementApi_Models_LogStreamBase_Type_
+  commentId: Overload:Auth0.ManagementApi.Models.LogStreamBase.Type
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.LogStreamBase.Type
+  nameWithType: LogStreamBase.Type
+- uid: Auth0.ManagementApi.Models.LogStreamCreateRequest
+  name: LogStreamCreateRequest
+  href: api/Auth0.ManagementApi.Models.LogStreamCreateRequest.html
+  commentId: T:Auth0.ManagementApi.Models.LogStreamCreateRequest
+  fullName: Auth0.ManagementApi.Models.LogStreamCreateRequest
+  nameWithType: LogStreamCreateRequest
+- uid: Auth0.ManagementApi.Models.LogStreamStatus
+  name: LogStreamStatus
+  href: api/Auth0.ManagementApi.Models.LogStreamStatus.html
+  commentId: T:Auth0.ManagementApi.Models.LogStreamStatus
+  fullName: Auth0.ManagementApi.Models.LogStreamStatus
+  nameWithType: LogStreamStatus
+- uid: Auth0.ManagementApi.Models.LogStreamStatus.Active
+  name: Active
+  href: api/Auth0.ManagementApi.Models.LogStreamStatus.html#Auth0_ManagementApi_Models_LogStreamStatus_Active
+  commentId: F:Auth0.ManagementApi.Models.LogStreamStatus.Active
+  fullName: Auth0.ManagementApi.Models.LogStreamStatus.Active
+  nameWithType: LogStreamStatus.Active
+- uid: Auth0.ManagementApi.Models.LogStreamStatus.Paused
+  name: Paused
+  href: api/Auth0.ManagementApi.Models.LogStreamStatus.html#Auth0_ManagementApi_Models_LogStreamStatus_Paused
+  commentId: F:Auth0.ManagementApi.Models.LogStreamStatus.Paused
+  fullName: Auth0.ManagementApi.Models.LogStreamStatus.Paused
+  nameWithType: LogStreamStatus.Paused
+- uid: Auth0.ManagementApi.Models.LogStreamStatus.Suspended
+  name: Suspended
+  href: api/Auth0.ManagementApi.Models.LogStreamStatus.html#Auth0_ManagementApi_Models_LogStreamStatus_Suspended
+  commentId: F:Auth0.ManagementApi.Models.LogStreamStatus.Suspended
+  fullName: Auth0.ManagementApi.Models.LogStreamStatus.Suspended
+  nameWithType: LogStreamStatus.Suspended
+- uid: Auth0.ManagementApi.Models.LogStreamType
+  name: LogStreamType
+  href: api/Auth0.ManagementApi.Models.LogStreamType.html
+  commentId: T:Auth0.ManagementApi.Models.LogStreamType
+  fullName: Auth0.ManagementApi.Models.LogStreamType
+  nameWithType: LogStreamType
+- uid: Auth0.ManagementApi.Models.LogStreamType.EventBridge
+  name: EventBridge
+  href: api/Auth0.ManagementApi.Models.LogStreamType.html#Auth0_ManagementApi_Models_LogStreamType_EventBridge
+  commentId: F:Auth0.ManagementApi.Models.LogStreamType.EventBridge
+  fullName: Auth0.ManagementApi.Models.LogStreamType.EventBridge
+  nameWithType: LogStreamType.EventBridge
+- uid: Auth0.ManagementApi.Models.LogStreamType.Http
+  name: Http
+  href: api/Auth0.ManagementApi.Models.LogStreamType.html#Auth0_ManagementApi_Models_LogStreamType_Http
+  commentId: F:Auth0.ManagementApi.Models.LogStreamType.Http
+  fullName: Auth0.ManagementApi.Models.LogStreamType.Http
+  nameWithType: LogStreamType.Http
+- uid: Auth0.ManagementApi.Models.LogStreamUpdateRequest
+  name: LogStreamUpdateRequest
+  href: api/Auth0.ManagementApi.Models.LogStreamUpdateRequest.html
+  commentId: T:Auth0.ManagementApi.Models.LogStreamUpdateRequest
+  fullName: Auth0.ManagementApi.Models.LogStreamUpdateRequest
+  nameWithType: LogStreamUpdateRequest
+- uid: Auth0.ManagementApi.Models.LogStreamUpdateRequest.Name
+  name: Name
+  href: api/Auth0.ManagementApi.Models.LogStreamUpdateRequest.html#Auth0_ManagementApi_Models_LogStreamUpdateRequest_Name
+  commentId: P:Auth0.ManagementApi.Models.LogStreamUpdateRequest.Name
+  fullName: Auth0.ManagementApi.Models.LogStreamUpdateRequest.Name
+  nameWithType: LogStreamUpdateRequest.Name
+- uid: Auth0.ManagementApi.Models.LogStreamUpdateRequest.Name*
+  name: Name
+  href: api/Auth0.ManagementApi.Models.LogStreamUpdateRequest.html#Auth0_ManagementApi_Models_LogStreamUpdateRequest_Name_
+  commentId: Overload:Auth0.ManagementApi.Models.LogStreamUpdateRequest.Name
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.LogStreamUpdateRequest.Name
+  nameWithType: LogStreamUpdateRequest.Name
+- uid: Auth0.ManagementApi.Models.LogStreamUpdateRequest.Sink
+  name: Sink
+  href: api/Auth0.ManagementApi.Models.LogStreamUpdateRequest.html#Auth0_ManagementApi_Models_LogStreamUpdateRequest_Sink
+  commentId: P:Auth0.ManagementApi.Models.LogStreamUpdateRequest.Sink
+  fullName: Auth0.ManagementApi.Models.LogStreamUpdateRequest.Sink
+  nameWithType: LogStreamUpdateRequest.Sink
+- uid: Auth0.ManagementApi.Models.LogStreamUpdateRequest.Sink*
+  name: Sink
+  href: api/Auth0.ManagementApi.Models.LogStreamUpdateRequest.html#Auth0_ManagementApi_Models_LogStreamUpdateRequest_Sink_
+  commentId: Overload:Auth0.ManagementApi.Models.LogStreamUpdateRequest.Sink
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.LogStreamUpdateRequest.Sink
+  nameWithType: LogStreamUpdateRequest.Sink
+- uid: Auth0.ManagementApi.Models.LogStreamUpdateRequest.Status
+  name: Status
+  href: api/Auth0.ManagementApi.Models.LogStreamUpdateRequest.html#Auth0_ManagementApi_Models_LogStreamUpdateRequest_Status
+  commentId: P:Auth0.ManagementApi.Models.LogStreamUpdateRequest.Status
+  fullName: Auth0.ManagementApi.Models.LogStreamUpdateRequest.Status
+  nameWithType: LogStreamUpdateRequest.Status
+- uid: Auth0.ManagementApi.Models.LogStreamUpdateRequest.Status*
+  name: Status
+  href: api/Auth0.ManagementApi.Models.LogStreamUpdateRequest.html#Auth0_ManagementApi_Models_LogStreamUpdateRequest_Status_
+  commentId: Overload:Auth0.ManagementApi.Models.LogStreamUpdateRequest.Status
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.LogStreamUpdateRequest.Status
+  nameWithType: LogStreamUpdateRequest.Status
+- uid: Auth0.ManagementApi.Models.LogStreamUpdateStatus
+  name: LogStreamUpdateStatus
+  href: api/Auth0.ManagementApi.Models.LogStreamUpdateStatus.html
+  commentId: T:Auth0.ManagementApi.Models.LogStreamUpdateStatus
+  fullName: Auth0.ManagementApi.Models.LogStreamUpdateStatus
+  nameWithType: LogStreamUpdateStatus
+- uid: Auth0.ManagementApi.Models.LogStreamUpdateStatus.Active
+  name: Active
+  href: api/Auth0.ManagementApi.Models.LogStreamUpdateStatus.html#Auth0_ManagementApi_Models_LogStreamUpdateStatus_Active
+  commentId: F:Auth0.ManagementApi.Models.LogStreamUpdateStatus.Active
+  fullName: Auth0.ManagementApi.Models.LogStreamUpdateStatus.Active
+  nameWithType: LogStreamUpdateStatus.Active
+- uid: Auth0.ManagementApi.Models.LogStreamUpdateStatus.Paused
+  name: Paused
+  href: api/Auth0.ManagementApi.Models.LogStreamUpdateStatus.html#Auth0_ManagementApi_Models_LogStreamUpdateStatus_Paused
+  commentId: F:Auth0.ManagementApi.Models.LogStreamUpdateStatus.Paused
+  fullName: Auth0.ManagementApi.Models.LogStreamUpdateStatus.Paused
+  nameWithType: LogStreamUpdateStatus.Paused
 - uid: Auth0.ManagementApi.Models.Mobile
   name: Mobile
   href: api/Auth0.ManagementApi.Models.Mobile.html
@@ -9249,6 +10032,202 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.PermissionIdentity.Name
   nameWithType: PermissionIdentity.Name
+- uid: Auth0.ManagementApi.Models.PermissionSource
+  name: PermissionSource
+  href: api/Auth0.ManagementApi.Models.PermissionSource.html
+  commentId: T:Auth0.ManagementApi.Models.PermissionSource
+  fullName: Auth0.ManagementApi.Models.PermissionSource
+  nameWithType: PermissionSource
+- uid: Auth0.ManagementApi.Models.PermissionSource.ID
+  name: ID
+  href: api/Auth0.ManagementApi.Models.PermissionSource.html#Auth0_ManagementApi_Models_PermissionSource_ID
+  commentId: P:Auth0.ManagementApi.Models.PermissionSource.ID
+  fullName: Auth0.ManagementApi.Models.PermissionSource.ID
+  nameWithType: PermissionSource.ID
+- uid: Auth0.ManagementApi.Models.PermissionSource.ID*
+  name: ID
+  href: api/Auth0.ManagementApi.Models.PermissionSource.html#Auth0_ManagementApi_Models_PermissionSource_ID_
+  commentId: Overload:Auth0.ManagementApi.Models.PermissionSource.ID
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.PermissionSource.ID
+  nameWithType: PermissionSource.ID
+- uid: Auth0.ManagementApi.Models.PermissionSource.Name
+  name: Name
+  href: api/Auth0.ManagementApi.Models.PermissionSource.html#Auth0_ManagementApi_Models_PermissionSource_Name
+  commentId: P:Auth0.ManagementApi.Models.PermissionSource.Name
+  fullName: Auth0.ManagementApi.Models.PermissionSource.Name
+  nameWithType: PermissionSource.Name
+- uid: Auth0.ManagementApi.Models.PermissionSource.Name*
+  name: Name
+  href: api/Auth0.ManagementApi.Models.PermissionSource.html#Auth0_ManagementApi_Models_PermissionSource_Name_
+  commentId: Overload:Auth0.ManagementApi.Models.PermissionSource.Name
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.PermissionSource.Name
+  nameWithType: PermissionSource.Name
+- uid: Auth0.ManagementApi.Models.PermissionSource.Type
+  name: Type
+  href: api/Auth0.ManagementApi.Models.PermissionSource.html#Auth0_ManagementApi_Models_PermissionSource_Type
+  commentId: P:Auth0.ManagementApi.Models.PermissionSource.Type
+  fullName: Auth0.ManagementApi.Models.PermissionSource.Type
+  nameWithType: PermissionSource.Type
+- uid: Auth0.ManagementApi.Models.PermissionSource.Type*
+  name: Type
+  href: api/Auth0.ManagementApi.Models.PermissionSource.html#Auth0_ManagementApi_Models_PermissionSource_Type_
+  commentId: Overload:Auth0.ManagementApi.Models.PermissionSource.Type
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.PermissionSource.Type
+  nameWithType: PermissionSource.Type
+- uid: Auth0.ManagementApi.Models.PermissionSourceType
+  name: PermissionSourceType
+  href: api/Auth0.ManagementApi.Models.PermissionSourceType.html
+  commentId: T:Auth0.ManagementApi.Models.PermissionSourceType
+  fullName: Auth0.ManagementApi.Models.PermissionSourceType
+  nameWithType: PermissionSourceType
+- uid: Auth0.ManagementApi.Models.PermissionSourceType.Direct
+  name: Direct
+  href: api/Auth0.ManagementApi.Models.PermissionSourceType.html#Auth0_ManagementApi_Models_PermissionSourceType_Direct
+  commentId: F:Auth0.ManagementApi.Models.PermissionSourceType.Direct
+  fullName: Auth0.ManagementApi.Models.PermissionSourceType.Direct
+  nameWithType: PermissionSourceType.Direct
+- uid: Auth0.ManagementApi.Models.PermissionSourceType.Role
+  name: Role
+  href: api/Auth0.ManagementApi.Models.PermissionSourceType.html#Auth0_ManagementApi_Models_PermissionSourceType_Role
+  commentId: F:Auth0.ManagementApi.Models.PermissionSourceType.Role
+  fullName: Auth0.ManagementApi.Models.PermissionSourceType.Role
+  nameWithType: PermissionSourceType.Role
+- uid: Auth0.ManagementApi.Models.RefreshToken
+  name: RefreshToken
+  href: api/Auth0.ManagementApi.Models.RefreshToken.html
+  commentId: T:Auth0.ManagementApi.Models.RefreshToken
+  fullName: Auth0.ManagementApi.Models.RefreshToken
+  nameWithType: RefreshToken
+- uid: Auth0.ManagementApi.Models.RefreshToken.ExpirationType
+  name: ExpirationType
+  href: api/Auth0.ManagementApi.Models.RefreshToken.html#Auth0_ManagementApi_Models_RefreshToken_ExpirationType
+  commentId: P:Auth0.ManagementApi.Models.RefreshToken.ExpirationType
+  fullName: Auth0.ManagementApi.Models.RefreshToken.ExpirationType
+  nameWithType: RefreshToken.ExpirationType
+- uid: Auth0.ManagementApi.Models.RefreshToken.ExpirationType*
+  name: ExpirationType
+  href: api/Auth0.ManagementApi.Models.RefreshToken.html#Auth0_ManagementApi_Models_RefreshToken_ExpirationType_
+  commentId: Overload:Auth0.ManagementApi.Models.RefreshToken.ExpirationType
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.RefreshToken.ExpirationType
+  nameWithType: RefreshToken.ExpirationType
+- uid: Auth0.ManagementApi.Models.RefreshToken.IdleTokenLifetime
+  name: IdleTokenLifetime
+  href: api/Auth0.ManagementApi.Models.RefreshToken.html#Auth0_ManagementApi_Models_RefreshToken_IdleTokenLifetime
+  commentId: P:Auth0.ManagementApi.Models.RefreshToken.IdleTokenLifetime
+  fullName: Auth0.ManagementApi.Models.RefreshToken.IdleTokenLifetime
+  nameWithType: RefreshToken.IdleTokenLifetime
+- uid: Auth0.ManagementApi.Models.RefreshToken.IdleTokenLifetime*
+  name: IdleTokenLifetime
+  href: api/Auth0.ManagementApi.Models.RefreshToken.html#Auth0_ManagementApi_Models_RefreshToken_IdleTokenLifetime_
+  commentId: Overload:Auth0.ManagementApi.Models.RefreshToken.IdleTokenLifetime
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.RefreshToken.IdleTokenLifetime
+  nameWithType: RefreshToken.IdleTokenLifetime
+- uid: Auth0.ManagementApi.Models.RefreshToken.InfiniteIdleTokenLifetime
+  name: InfiniteIdleTokenLifetime
+  href: api/Auth0.ManagementApi.Models.RefreshToken.html#Auth0_ManagementApi_Models_RefreshToken_InfiniteIdleTokenLifetime
+  commentId: P:Auth0.ManagementApi.Models.RefreshToken.InfiniteIdleTokenLifetime
+  fullName: Auth0.ManagementApi.Models.RefreshToken.InfiniteIdleTokenLifetime
+  nameWithType: RefreshToken.InfiniteIdleTokenLifetime
+- uid: Auth0.ManagementApi.Models.RefreshToken.InfiniteIdleTokenLifetime*
+  name: InfiniteIdleTokenLifetime
+  href: api/Auth0.ManagementApi.Models.RefreshToken.html#Auth0_ManagementApi_Models_RefreshToken_InfiniteIdleTokenLifetime_
+  commentId: Overload:Auth0.ManagementApi.Models.RefreshToken.InfiniteIdleTokenLifetime
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.RefreshToken.InfiniteIdleTokenLifetime
+  nameWithType: RefreshToken.InfiniteIdleTokenLifetime
+- uid: Auth0.ManagementApi.Models.RefreshToken.InfiniteTokenLifetime
+  name: InfiniteTokenLifetime
+  href: api/Auth0.ManagementApi.Models.RefreshToken.html#Auth0_ManagementApi_Models_RefreshToken_InfiniteTokenLifetime
+  commentId: P:Auth0.ManagementApi.Models.RefreshToken.InfiniteTokenLifetime
+  fullName: Auth0.ManagementApi.Models.RefreshToken.InfiniteTokenLifetime
+  nameWithType: RefreshToken.InfiniteTokenLifetime
+- uid: Auth0.ManagementApi.Models.RefreshToken.InfiniteTokenLifetime*
+  name: InfiniteTokenLifetime
+  href: api/Auth0.ManagementApi.Models.RefreshToken.html#Auth0_ManagementApi_Models_RefreshToken_InfiniteTokenLifetime_
+  commentId: Overload:Auth0.ManagementApi.Models.RefreshToken.InfiniteTokenLifetime
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.RefreshToken.InfiniteTokenLifetime
+  nameWithType: RefreshToken.InfiniteTokenLifetime
+- uid: Auth0.ManagementApi.Models.RefreshToken.Leeway
+  name: Leeway
+  href: api/Auth0.ManagementApi.Models.RefreshToken.html#Auth0_ManagementApi_Models_RefreshToken_Leeway
+  commentId: P:Auth0.ManagementApi.Models.RefreshToken.Leeway
+  fullName: Auth0.ManagementApi.Models.RefreshToken.Leeway
+  nameWithType: RefreshToken.Leeway
+- uid: Auth0.ManagementApi.Models.RefreshToken.Leeway*
+  name: Leeway
+  href: api/Auth0.ManagementApi.Models.RefreshToken.html#Auth0_ManagementApi_Models_RefreshToken_Leeway_
+  commentId: Overload:Auth0.ManagementApi.Models.RefreshToken.Leeway
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.RefreshToken.Leeway
+  nameWithType: RefreshToken.Leeway
+- uid: Auth0.ManagementApi.Models.RefreshToken.RotationType
+  name: RotationType
+  href: api/Auth0.ManagementApi.Models.RefreshToken.html#Auth0_ManagementApi_Models_RefreshToken_RotationType
+  commentId: P:Auth0.ManagementApi.Models.RefreshToken.RotationType
+  fullName: Auth0.ManagementApi.Models.RefreshToken.RotationType
+  nameWithType: RefreshToken.RotationType
+- uid: Auth0.ManagementApi.Models.RefreshToken.RotationType*
+  name: RotationType
+  href: api/Auth0.ManagementApi.Models.RefreshToken.html#Auth0_ManagementApi_Models_RefreshToken_RotationType_
+  commentId: Overload:Auth0.ManagementApi.Models.RefreshToken.RotationType
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.RefreshToken.RotationType
+  nameWithType: RefreshToken.RotationType
+- uid: Auth0.ManagementApi.Models.RefreshToken.TokenLifetime
+  name: TokenLifetime
+  href: api/Auth0.ManagementApi.Models.RefreshToken.html#Auth0_ManagementApi_Models_RefreshToken_TokenLifetime
+  commentId: P:Auth0.ManagementApi.Models.RefreshToken.TokenLifetime
+  fullName: Auth0.ManagementApi.Models.RefreshToken.TokenLifetime
+  nameWithType: RefreshToken.TokenLifetime
+- uid: Auth0.ManagementApi.Models.RefreshToken.TokenLifetime*
+  name: TokenLifetime
+  href: api/Auth0.ManagementApi.Models.RefreshToken.html#Auth0_ManagementApi_Models_RefreshToken_TokenLifetime_
+  commentId: Overload:Auth0.ManagementApi.Models.RefreshToken.TokenLifetime
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.RefreshToken.TokenLifetime
+  nameWithType: RefreshToken.TokenLifetime
+- uid: Auth0.ManagementApi.Models.RefreshTokenExpirationType
+  name: RefreshTokenExpirationType
+  href: api/Auth0.ManagementApi.Models.RefreshTokenExpirationType.html
+  commentId: T:Auth0.ManagementApi.Models.RefreshTokenExpirationType
+  fullName: Auth0.ManagementApi.Models.RefreshTokenExpirationType
+  nameWithType: RefreshTokenExpirationType
+- uid: Auth0.ManagementApi.Models.RefreshTokenExpirationType.Expiring
+  name: Expiring
+  href: api/Auth0.ManagementApi.Models.RefreshTokenExpirationType.html#Auth0_ManagementApi_Models_RefreshTokenExpirationType_Expiring
+  commentId: F:Auth0.ManagementApi.Models.RefreshTokenExpirationType.Expiring
+  fullName: Auth0.ManagementApi.Models.RefreshTokenExpirationType.Expiring
+  nameWithType: RefreshTokenExpirationType.Expiring
+- uid: Auth0.ManagementApi.Models.RefreshTokenExpirationType.NonExpiring
+  name: NonExpiring
+  href: api/Auth0.ManagementApi.Models.RefreshTokenExpirationType.html#Auth0_ManagementApi_Models_RefreshTokenExpirationType_NonExpiring
+  commentId: F:Auth0.ManagementApi.Models.RefreshTokenExpirationType.NonExpiring
+  fullName: Auth0.ManagementApi.Models.RefreshTokenExpirationType.NonExpiring
+  nameWithType: RefreshTokenExpirationType.NonExpiring
+- uid: Auth0.ManagementApi.Models.RefreshTokenRotationType
+  name: RefreshTokenRotationType
+  href: api/Auth0.ManagementApi.Models.RefreshTokenRotationType.html
+  commentId: T:Auth0.ManagementApi.Models.RefreshTokenRotationType
+  fullName: Auth0.ManagementApi.Models.RefreshTokenRotationType
+  nameWithType: RefreshTokenRotationType
+- uid: Auth0.ManagementApi.Models.RefreshTokenRotationType.NonRotating
+  name: NonRotating
+  href: api/Auth0.ManagementApi.Models.RefreshTokenRotationType.html#Auth0_ManagementApi_Models_RefreshTokenRotationType_NonRotating
+  commentId: F:Auth0.ManagementApi.Models.RefreshTokenRotationType.NonRotating
+  fullName: Auth0.ManagementApi.Models.RefreshTokenRotationType.NonRotating
+  nameWithType: RefreshTokenRotationType.NonRotating
+- uid: Auth0.ManagementApi.Models.RefreshTokenRotationType.Rotating
+  name: Rotating
+  href: api/Auth0.ManagementApi.Models.RefreshTokenRotationType.html#Auth0_ManagementApi_Models_RefreshTokenRotationType_Rotating
+  commentId: F:Auth0.ManagementApi.Models.RefreshTokenRotationType.Rotating
+  fullName: Auth0.ManagementApi.Models.RefreshTokenRotationType.Rotating
+  nameWithType: RefreshTokenRotationType.Rotating
 - uid: Auth0.ManagementApi.Models.ResourceServer
   name: ResourceServer
   href: api/Auth0.ManagementApi.Models.ResourceServer.html
@@ -11366,6 +12345,19 @@ references:
   commentId: T:Auth0.ManagementApi.Models.UserBlock
   fullName: Auth0.ManagementApi.Models.UserBlock
   nameWithType: UserBlock
+- uid: Auth0.ManagementApi.Models.UserBlock.Connection
+  name: Connection
+  href: api/Auth0.ManagementApi.Models.UserBlock.html#Auth0_ManagementApi_Models_UserBlock_Connection
+  commentId: P:Auth0.ManagementApi.Models.UserBlock.Connection
+  fullName: Auth0.ManagementApi.Models.UserBlock.Connection
+  nameWithType: UserBlock.Connection
+- uid: Auth0.ManagementApi.Models.UserBlock.Connection*
+  name: Connection
+  href: api/Auth0.ManagementApi.Models.UserBlock.html#Auth0_ManagementApi_Models_UserBlock_Connection_
+  commentId: Overload:Auth0.ManagementApi.Models.UserBlock.Connection
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.UserBlock.Connection
+  nameWithType: UserBlock.Connection
 - uid: Auth0.ManagementApi.Models.UserBlock.Identifier
   name: Identifier
   href: api/Auth0.ManagementApi.Models.UserBlock.html#Auth0_ManagementApi_Models_UserBlock_Identifier
@@ -11469,6 +12461,133 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.UserCreateRequest.VerifyEmail
   nameWithType: UserCreateRequest.VerifyEmail
+- uid: Auth0.ManagementApi.Models.UserPermission
+  name: UserPermission
+  href: api/Auth0.ManagementApi.Models.UserPermission.html
+  commentId: T:Auth0.ManagementApi.Models.UserPermission
+  fullName: Auth0.ManagementApi.Models.UserPermission
+  nameWithType: UserPermission
+- uid: Auth0.ManagementApi.Models.UserPermission.Sources
+  name: Sources
+  href: api/Auth0.ManagementApi.Models.UserPermission.html#Auth0_ManagementApi_Models_UserPermission_Sources
+  commentId: P:Auth0.ManagementApi.Models.UserPermission.Sources
+  fullName: Auth0.ManagementApi.Models.UserPermission.Sources
+  nameWithType: UserPermission.Sources
+- uid: Auth0.ManagementApi.Models.UserPermission.Sources*
+  name: Sources
+  href: api/Auth0.ManagementApi.Models.UserPermission.html#Auth0_ManagementApi_Models_UserPermission_Sources_
+  commentId: Overload:Auth0.ManagementApi.Models.UserPermission.Sources
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.UserPermission.Sources
+  nameWithType: UserPermission.Sources
+- uid: Auth0.ManagementApi.Models.UsersExportsJobField
+  name: UsersExportsJobField
+  href: api/Auth0.ManagementApi.Models.UsersExportsJobField.html
+  commentId: T:Auth0.ManagementApi.Models.UsersExportsJobField
+  fullName: Auth0.ManagementApi.Models.UsersExportsJobField
+  nameWithType: UsersExportsJobField
+- uid: Auth0.ManagementApi.Models.UsersExportsJobField.ExportAs
+  name: ExportAs
+  href: api/Auth0.ManagementApi.Models.UsersExportsJobField.html#Auth0_ManagementApi_Models_UsersExportsJobField_ExportAs
+  commentId: P:Auth0.ManagementApi.Models.UsersExportsJobField.ExportAs
+  fullName: Auth0.ManagementApi.Models.UsersExportsJobField.ExportAs
+  nameWithType: UsersExportsJobField.ExportAs
+- uid: Auth0.ManagementApi.Models.UsersExportsJobField.ExportAs*
+  name: ExportAs
+  href: api/Auth0.ManagementApi.Models.UsersExportsJobField.html#Auth0_ManagementApi_Models_UsersExportsJobField_ExportAs_
+  commentId: Overload:Auth0.ManagementApi.Models.UsersExportsJobField.ExportAs
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.UsersExportsJobField.ExportAs
+  nameWithType: UsersExportsJobField.ExportAs
+- uid: Auth0.ManagementApi.Models.UsersExportsJobField.Name
+  name: Name
+  href: api/Auth0.ManagementApi.Models.UsersExportsJobField.html#Auth0_ManagementApi_Models_UsersExportsJobField_Name
+  commentId: P:Auth0.ManagementApi.Models.UsersExportsJobField.Name
+  fullName: Auth0.ManagementApi.Models.UsersExportsJobField.Name
+  nameWithType: UsersExportsJobField.Name
+- uid: Auth0.ManagementApi.Models.UsersExportsJobField.Name*
+  name: Name
+  href: api/Auth0.ManagementApi.Models.UsersExportsJobField.html#Auth0_ManagementApi_Models_UsersExportsJobField_Name_
+  commentId: Overload:Auth0.ManagementApi.Models.UsersExportsJobField.Name
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.UsersExportsJobField.Name
+  nameWithType: UsersExportsJobField.Name
+- uid: Auth0.ManagementApi.Models.UsersExportsJobFormat
+  name: UsersExportsJobFormat
+  href: api/Auth0.ManagementApi.Models.UsersExportsJobFormat.html
+  commentId: T:Auth0.ManagementApi.Models.UsersExportsJobFormat
+  fullName: Auth0.ManagementApi.Models.UsersExportsJobFormat
+  nameWithType: UsersExportsJobFormat
+- uid: Auth0.ManagementApi.Models.UsersExportsJobFormat.CSV
+  name: CSV
+  href: api/Auth0.ManagementApi.Models.UsersExportsJobFormat.html#Auth0_ManagementApi_Models_UsersExportsJobFormat_CSV
+  commentId: F:Auth0.ManagementApi.Models.UsersExportsJobFormat.CSV
+  fullName: Auth0.ManagementApi.Models.UsersExportsJobFormat.CSV
+  nameWithType: UsersExportsJobFormat.CSV
+- uid: Auth0.ManagementApi.Models.UsersExportsJobFormat.JSON
+  name: JSON
+  href: api/Auth0.ManagementApi.Models.UsersExportsJobFormat.html#Auth0_ManagementApi_Models_UsersExportsJobFormat_JSON
+  commentId: F:Auth0.ManagementApi.Models.UsersExportsJobFormat.JSON
+  fullName: Auth0.ManagementApi.Models.UsersExportsJobFormat.JSON
+  nameWithType: UsersExportsJobFormat.JSON
+- uid: Auth0.ManagementApi.Models.UsersExportsJobRequest
+  name: UsersExportsJobRequest
+  href: api/Auth0.ManagementApi.Models.UsersExportsJobRequest.html
+  commentId: T:Auth0.ManagementApi.Models.UsersExportsJobRequest
+  fullName: Auth0.ManagementApi.Models.UsersExportsJobRequest
+  nameWithType: UsersExportsJobRequest
+- uid: Auth0.ManagementApi.Models.UsersExportsJobRequest.ConnectionId
+  name: ConnectionId
+  href: api/Auth0.ManagementApi.Models.UsersExportsJobRequest.html#Auth0_ManagementApi_Models_UsersExportsJobRequest_ConnectionId
+  commentId: P:Auth0.ManagementApi.Models.UsersExportsJobRequest.ConnectionId
+  fullName: Auth0.ManagementApi.Models.UsersExportsJobRequest.ConnectionId
+  nameWithType: UsersExportsJobRequest.ConnectionId
+- uid: Auth0.ManagementApi.Models.UsersExportsJobRequest.ConnectionId*
+  name: ConnectionId
+  href: api/Auth0.ManagementApi.Models.UsersExportsJobRequest.html#Auth0_ManagementApi_Models_UsersExportsJobRequest_ConnectionId_
+  commentId: Overload:Auth0.ManagementApi.Models.UsersExportsJobRequest.ConnectionId
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.UsersExportsJobRequest.ConnectionId
+  nameWithType: UsersExportsJobRequest.ConnectionId
+- uid: Auth0.ManagementApi.Models.UsersExportsJobRequest.Fields
+  name: Fields
+  href: api/Auth0.ManagementApi.Models.UsersExportsJobRequest.html#Auth0_ManagementApi_Models_UsersExportsJobRequest_Fields
+  commentId: P:Auth0.ManagementApi.Models.UsersExportsJobRequest.Fields
+  fullName: Auth0.ManagementApi.Models.UsersExportsJobRequest.Fields
+  nameWithType: UsersExportsJobRequest.Fields
+- uid: Auth0.ManagementApi.Models.UsersExportsJobRequest.Fields*
+  name: Fields
+  href: api/Auth0.ManagementApi.Models.UsersExportsJobRequest.html#Auth0_ManagementApi_Models_UsersExportsJobRequest_Fields_
+  commentId: Overload:Auth0.ManagementApi.Models.UsersExportsJobRequest.Fields
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.UsersExportsJobRequest.Fields
+  nameWithType: UsersExportsJobRequest.Fields
+- uid: Auth0.ManagementApi.Models.UsersExportsJobRequest.Format
+  name: Format
+  href: api/Auth0.ManagementApi.Models.UsersExportsJobRequest.html#Auth0_ManagementApi_Models_UsersExportsJobRequest_Format
+  commentId: P:Auth0.ManagementApi.Models.UsersExportsJobRequest.Format
+  fullName: Auth0.ManagementApi.Models.UsersExportsJobRequest.Format
+  nameWithType: UsersExportsJobRequest.Format
+- uid: Auth0.ManagementApi.Models.UsersExportsJobRequest.Format*
+  name: Format
+  href: api/Auth0.ManagementApi.Models.UsersExportsJobRequest.html#Auth0_ManagementApi_Models_UsersExportsJobRequest_Format_
+  commentId: Overload:Auth0.ManagementApi.Models.UsersExportsJobRequest.Format
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.UsersExportsJobRequest.Format
+  nameWithType: UsersExportsJobRequest.Format
+- uid: Auth0.ManagementApi.Models.UsersExportsJobRequest.Limit
+  name: Limit
+  href: api/Auth0.ManagementApi.Models.UsersExportsJobRequest.html#Auth0_ManagementApi_Models_UsersExportsJobRequest_Limit
+  commentId: P:Auth0.ManagementApi.Models.UsersExportsJobRequest.Limit
+  fullName: Auth0.ManagementApi.Models.UsersExportsJobRequest.Limit
+  nameWithType: UsersExportsJobRequest.Limit
+- uid: Auth0.ManagementApi.Models.UsersExportsJobRequest.Limit*
+  name: Limit
+  href: api/Auth0.ManagementApi.Models.UsersExportsJobRequest.html#Auth0_ManagementApi_Models_UsersExportsJobRequest_Limit_
+  commentId: Overload:Auth0.ManagementApi.Models.UsersExportsJobRequest.Limit
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.UsersExportsJobRequest.Limit
+  nameWithType: UsersExportsJobRequest.Limit
 - uid: Auth0.ManagementApi.Models.UserUpdateRequest
   name: UserUpdateRequest
   href: api/Auth0.ManagementApi.Models.UserUpdateRequest.html
@@ -11572,6 +12691,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.VerifyEmailJobRequest.ClientId
   nameWithType: VerifyEmailJobRequest.ClientId
+- uid: Auth0.ManagementApi.Models.VerifyEmailJobRequest.Identity
+  name: Identity
+  href: api/Auth0.ManagementApi.Models.VerifyEmailJobRequest.html#Auth0_ManagementApi_Models_VerifyEmailJobRequest_Identity
+  commentId: P:Auth0.ManagementApi.Models.VerifyEmailJobRequest.Identity
+  fullName: Auth0.ManagementApi.Models.VerifyEmailJobRequest.Identity
+  nameWithType: VerifyEmailJobRequest.Identity
+- uid: Auth0.ManagementApi.Models.VerifyEmailJobRequest.Identity*
+  name: Identity
+  href: api/Auth0.ManagementApi.Models.VerifyEmailJobRequest.html#Auth0_ManagementApi_Models_VerifyEmailJobRequest_Identity_
+  commentId: Overload:Auth0.ManagementApi.Models.VerifyEmailJobRequest.Identity
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.VerifyEmailJobRequest.Identity
+  nameWithType: VerifyEmailJobRequest.Identity
 - uid: Auth0.ManagementApi.Models.VerifyEmailJobRequest.UserId
   name: UserId
   href: api/Auth0.ManagementApi.Models.VerifyEmailJobRequest.html#Auth0_ManagementApi_Models_VerifyEmailJobRequest_UserId

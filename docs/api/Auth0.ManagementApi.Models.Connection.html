@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class Connection
    ">
-    <meta name="generator" content="docfx 2.48.0.0">
+    <meta name="generator" content="docfx 2.56.4.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -73,7 +73,8 @@
   
   <h1 id="Auth0_ManagementApi_Models_Connection" data-uid="Auth0.ManagementApi.Models.Connection" class="text-break">Class Connection
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Connection object as returned from API calls.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
@@ -91,6 +92,9 @@
     </div>
     <div>
       <a class="xref" href="Auth0.ManagementApi.Models.ConnectionBase.html#Auth0_ManagementApi_Models_ConnectionBase_Options">ConnectionBase.Options</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.ManagementApi.Models.ConnectionBase.html#Auth0_ManagementApi_Models_ConnectionBase_Realms">ConnectionBase.Realms</a>
     </div>
     <div>
       <a class="xref" href="Auth0.ManagementApi.Models.ConnectionBase.html#Auth0_ManagementApi_Models_ConnectionBase_EnabledClients">ConnectionBase.EnabledClients</a>
@@ -125,6 +129,31 @@
   </div>
   <h3 id="properties">Properties
   </h3>
+  <a id="Auth0_ManagementApi_Models_Connection_DisplayName_" data-uid="Auth0.ManagementApi.Models.Connection.DisplayName*"></a>
+  <h4 id="Auth0_ManagementApi_Models_Connection_DisplayName" data-uid="Auth0.ManagementApi.Models.Connection.DisplayName">DisplayName</h4>
+  <div class="markdown level1 summary"><p>Connection name used in login screen for Enterprise Connections.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;display_name&quot;)]
+public string DisplayName { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="Auth0_ManagementApi_Models_Connection_Id_" data-uid="Auth0.ManagementApi.Models.Connection.Id*"></a>
   <h4 id="Auth0_ManagementApi_Models_Connection_Id" data-uid="Auth0.ManagementApi.Models.Connection.Id">Id</h4>
   <div class="markdown level1 summary"><p>The connection&apos;s identifier.</p>
@@ -150,9 +179,34 @@ public string Id { get; set; }</code></pre>
       </tr>
     </tbody>
   </table>
+  <a id="Auth0_ManagementApi_Models_Connection_IsDomainConnection_" data-uid="Auth0.ManagementApi.Models.Connection.IsDomainConnection*"></a>
+  <h4 id="Auth0_ManagementApi_Models_Connection_IsDomainConnection" data-uid="Auth0.ManagementApi.Models.Connection.IsDomainConnection">IsDomainConnection</h4>
+  <div class="markdown level1 summary"><p>Whether the connection is domain level (true), or not (false).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;is_domain_connection&quot;)]
+public bool IsDomainConnection { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="Auth0_ManagementApi_Models_Connection_Strategy_" data-uid="Auth0.ManagementApi.Models.Connection.Strategy*"></a>
   <h4 id="Auth0_ManagementApi_Models_Connection_Strategy" data-uid="Auth0.ManagementApi.Models.Connection.Strategy">Strategy</h4>
-  <div class="markdown level1 summary"><p>The type of the connection, related to the identity provider.</p>
+  <div class="markdown level1 summary"><p>The identity provider identifier for the connection.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -181,7 +235,8 @@ public string Strategy { get; set; }</code></pre>
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
