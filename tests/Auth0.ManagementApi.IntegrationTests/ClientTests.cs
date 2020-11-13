@@ -172,5 +172,62 @@ namespace Auth0.ManagementApi.IntegrationTests
             await _apiClient.Clients.DeleteAsync(newClientResponse.ClientId);
         }
 
+        [Fact]
+        public async Task Test_client_crud_sequence_with_refresh_token()
+        {
+
+            // Add a new client
+            var newClientRequest = new ClientCreateRequest
+            {
+                Name = $"Integration testing {MakeRandomName()}",
+                RefreshToken = new RefreshToken
+                {
+                    ExpirationType = RefreshTokenExpirationType.NonExpiring,
+                    RotationType = RefreshTokenRotationType.NonRotating
+                },
+                OidcConformant = true,
+                GrantTypes = new []{"refresh_token"}
+            };
+            var newClientResponse = await _apiClient.Clients.CreateAsync(newClientRequest);
+            newClientResponse.Should().NotBeNull();
+            newClientResponse.Name.Should().Be(newClientRequest.Name);
+            newClientResponse.RefreshToken.Should().NotBeNull();
+            newClientResponse.RefreshToken.ExpirationType.Should().Be(newClientRequest.RefreshToken.ExpirationType);
+            newClientResponse.RefreshToken.RotationType.Should().Be(newClientRequest.RefreshToken.RotationType);
+
+            // Update the client
+            var updateClientRequest = new ClientUpdateRequest
+            {
+                Name = $"Integration testing {Guid.NewGuid():N}",
+                RefreshToken = new RefreshToken
+                {
+                    ExpirationType = RefreshTokenExpirationType.Expiring,
+                    RotationType = RefreshTokenRotationType.Rotating,
+                    TokenLifetime = 3600,
+                    Leeway = 1800
+                }
+            };
+            var updateClientResponse = await _apiClient.Clients.UpdateAsync(newClientResponse.ClientId, updateClientRequest);
+            updateClientResponse.Should().NotBeNull();
+            updateClientResponse.Name.Should().Be(updateClientRequest.Name);
+            updateClientResponse.RefreshToken.Should().NotBeNull();
+            updateClientResponse.RefreshToken.RotationType.Should().Be(updateClientRequest.RefreshToken.RotationType);
+            updateClientResponse.RefreshToken.ExpirationType.Should().Be(updateClientRequest.RefreshToken.ExpirationType);
+            updateClientResponse.RefreshToken.TokenLifetime.Should().Be(updateClientRequest.RefreshToken.TokenLifetime);
+            updateClientResponse.RefreshToken.Leeway.Should().Be(updateClientRequest.RefreshToken.Leeway);
+
+            // Get a single client
+            var client = await _apiClient.Clients.GetAsync(newClientResponse.ClientId);
+            client.Should().NotBeNull();
+            client.Name.Should().Be(updateClientResponse.Name);
+            client.RefreshToken.Should().NotBeNull();
+            client.RefreshToken.ExpirationType.Should().Be(updateClientResponse.RefreshToken.ExpirationType);
+            client.RefreshToken.RotationType.Should().Be(updateClientResponse.RefreshToken.RotationType);
+
+            // Delete the client, and ensure we get exception when trying to fetch client again
+            await _apiClient.Clients.DeleteAsync(client.ClientId);
+            Func<Task> getFunc = async () => await _apiClient.Clients.GetAsync(client.ClientId);
+            getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_client");
+        }
     }
 }

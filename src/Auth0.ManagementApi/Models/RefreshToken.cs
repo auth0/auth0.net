@@ -13,14 +13,14 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("rotation_type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public RefreshTokenRotationType RotationType { get; set; } = RefreshTokenRotationType.NonRotating;
+        public RefreshTokenRotationType RotationType { get; set; }
 
         /// <summary>
         /// Refresh token expiration type
         /// </summary>
         [JsonProperty("expiration_type")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public RefreshTokenExpirationType ExpirationType { get; set; } = RefreshTokenExpirationType.NonExpiring;
+        public RefreshTokenExpirationType ExpirationType { get; set; }
 
         /// <summary>
         /// Period in seconds where the previous refresh token can be exchanged without triggering breach detection
