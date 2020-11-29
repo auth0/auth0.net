@@ -286,6 +286,32 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <inheritdoc/>
+        public async Task<AccessTokenResponse> GetTokenAsync(DeviceCodeTokenRequest request)
+        {
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
+            var body = new Dictionary<string, string>
+            {
+                {"grant_type", "urn:ietf:params:oauth:grant-type:device_code"},
+                {"device_code", request.DeviceCode},
+                {"client_id", request.ClientId}
+            };
+
+            // TODO: This will throw an exception while the user is completing their part of the flow. From what
+            // I remember the "error" is recoverable via ErrorApiException.ApiError.Error but not "error_description"
+            var response = await connection.SendAsync<AccessTokenResponse>(
+                HttpMethod.Post,
+                tokenUri,
+                body
+            ).ConfigureAwait(false);
+
+            // TODO: Validate tokens - this is recommended but I haven't implemented it in my spike
+            // await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret).ConfigureAwait(false);
+
+            return response;
+        }
+
+        /// <inheritdoc/>
         public Task<SignupUserResponse> SignupUserAsync(SignupUserRequest request)
         {
             if (request == null)
@@ -337,6 +363,27 @@ namespace Auth0.AuthenticationApi
                 HttpMethod.Post,
                 BuildUri("passwordless/start"),
                 body);
+        }
+
+        /// <inheritdoc/>
+        public async Task<DeviceCodeResponse> StartDeviceFlowAsync(DeviceFlowRequest request)
+        {
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
+            var body = new Dictionary<string, string>
+            {
+                {"client_id", request.ClientId},
+                {"scope", request.Scope},
+                {"audience", request.Audience}
+            };
+
+            var response = await connection.SendAsync<DeviceCodeResponse>(
+                HttpMethod.Post,
+                BuildUri("oauth/device/code"),
+                body
+            ).ConfigureAwait(false);
+
+            return response;
         }
 
         /// <summary>
