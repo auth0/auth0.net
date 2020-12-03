@@ -142,9 +142,9 @@ namespace Auth0.AuthenticationApi
         /// <summary>
         /// Starts a new Device Authorization flow
         /// </summary>
-        /// <param name="request"><see cref="DeviceFlowRequest"/> containing client, scope and audience</param>
+        /// <param name="request"><see cref="DeviceCodeRequest"/> containing client, scope and audience</param>
         /// <returns><see cref="Task"/> representing the async operation containing 
         /// a <see cref="DeviceCodeResponse" /> with the details of the request.</returns>
-        Task<DeviceCodeResponse> StartDeviceFlowAsync(DeviceFlowRequest request);
+        Task<DeviceCodeResponse> StartDeviceFlowAsync(DeviceCodeRequest request);
     }
 }
