@@ -103,9 +103,9 @@ namespace Auth0.AuthenticationApi
         Task<AccessTokenResponse> GetTokenAsync(PasswordlessSmsTokenRequest request);
 
         /// <summary>
-        /// Requests and Access Token using the Device Authorization flow
+        /// Requests an Access Token using the Device Authorization flow
         /// </summary>
-        /// <param name="request"><see cref="DeviceCodeTokenRequest"/> containing client and device code</param>
+        /// <param name="request"><see cref="DeviceCodeTokenRequest"/> containing request details to exchange a device code.</param>
         /// <returns><see cref="Task"/> representing the async operation containing 
         /// a <see cref="AccessTokenResponse" /> with the requested tokens.</returns>
         /// <remarks>
