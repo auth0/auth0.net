@@ -286,7 +286,7 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <inheritdoc/>
-        public async Task<AccessTokenResponse> GetTokenAsync(DeviceCodeTokenRequest request)
+        public Task<AccessTokenResponse> GetTokenAsync(DeviceCodeTokenRequest request)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -298,15 +298,11 @@ namespace Auth0.AuthenticationApi
                 {"client_id", request.ClientId}
             };
 
-            var response = await connection.SendAsync<AccessTokenResponse>(
+            return connection.SendAsync<AccessTokenResponse>(
                 HttpMethod.Post,
                 tokenUri,
                 body
-            ).ConfigureAwait(false);
-
-            await AssertIdTokenValid(response.IdToken, request.ClientId, JwtSignatureAlgorithm.RS256, null).ConfigureAwait(false);
-
-            return response;
+            );
         }
 
         /// <inheritdoc/>
