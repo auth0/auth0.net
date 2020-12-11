@@ -336,6 +336,53 @@
     </tbody>
   </table>
   <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync*"></a>
+  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_DeviceCodeTokenRequest_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest)">GetTokenAsync(DeviceCodeTokenRequest)</h4>
+  <div class="markdown level1 summary"><p>Requests an Access Token using the Device Authorization flow</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; GetTokenAsync(DeviceCodeTokenRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.html">DeviceCodeTokenRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p><a class="xref" href="Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.html">DeviceCodeTokenRequest</a> containing request details to exchange a device code.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing 
+    a <a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a> with the requested tokens.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_DeviceCodeTokenRequest__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This must be polled while the user is completing their part of the flow at an interval no more frequent than that returned by <a class="xref" href="Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_StartDeviceFlowAsync_Auth0_AuthenticationApi_Models_DeviceCodeRequest_">StartDeviceFlowAsync(DeviceCodeRequest)</a>.</p>
+</div>
+  <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync*"></a>
   <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_PasswordlessEmailTokenRequest_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest)">GetTokenAsync(PasswordlessEmailTokenRequest)</h4>
   <div class="markdown level1 summary"><p>Requests an Access Token using the Passwordless flow through email.</p>
 </div>
@@ -602,6 +649,50 @@ then the grant_type will be set to &quot;password&quot;. If a Realm was specifie
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.SignupUserResponse.html">SignupUserResponse</a>&gt;</td>
         <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing 
     a <a class="xref" href="Auth0.AuthenticationApi.Models.SignupUserResponse.html">SignupUserResponse</a> with the information of the signed up user.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_StartDeviceFlowAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.StartDeviceFlowAsync*"></a>
+  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_StartDeviceFlowAsync_Auth0_AuthenticationApi_Models_DeviceCodeRequest_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.StartDeviceFlowAsync(Auth0.AuthenticationApi.Models.DeviceCodeRequest)">StartDeviceFlowAsync(DeviceCodeRequest)</h4>
+  <div class="markdown level1 summary"><p>Starts a new Device Authorization flow</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;DeviceCodeResponse&gt; StartDeviceFlowAsync(DeviceCodeRequest request)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.AuthenticationApi.Models.DeviceCodeRequest.html">DeviceCodeRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p><a class="xref" href="Auth0.AuthenticationApi.Models.DeviceCodeRequest.html">DeviceCodeRequest</a> containing client, scope and audience</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.DeviceCodeResponse.html">DeviceCodeResponse</a>&gt;</td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing 
+    a <a class="xref" href="Auth0.AuthenticationApi.Models.DeviceCodeResponse.html">DeviceCodeResponse</a> with the details of the request.</p>
 </td>
       </tr>
     </tbody>

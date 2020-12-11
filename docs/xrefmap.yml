@@ -108,6 +108,12 @@ references:
   commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest)
   fullName: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest)
   nameWithType: AuthenticationApiClient.GetTokenAsync(ClientCredentialsTokenRequest)
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest)
+  name: GetTokenAsync(DeviceCodeTokenRequest)
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_DeviceCodeTokenRequest_
+  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest)
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest)
+  nameWithType: AuthenticationApiClient.GetTokenAsync(DeviceCodeTokenRequest)
 - uid: Auth0.AuthenticationApi.AuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest)
   name: GetTokenAsync(PasswordlessEmailTokenRequest)
   href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_PasswordlessEmailTokenRequest_
@@ -165,6 +171,19 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.AuthenticationApiClient.SignupUserAsync
   nameWithType: AuthenticationApiClient.SignupUserAsync
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.StartDeviceFlowAsync(Auth0.AuthenticationApi.Models.DeviceCodeRequest)
+  name: StartDeviceFlowAsync(DeviceCodeRequest)
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_StartDeviceFlowAsync_Auth0_AuthenticationApi_Models_DeviceCodeRequest_
+  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.StartDeviceFlowAsync(Auth0.AuthenticationApi.Models.DeviceCodeRequest)
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.StartDeviceFlowAsync(Auth0.AuthenticationApi.Models.DeviceCodeRequest)
+  nameWithType: AuthenticationApiClient.StartDeviceFlowAsync(DeviceCodeRequest)
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.StartDeviceFlowAsync*
+  name: StartDeviceFlowAsync
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_StartDeviceFlowAsync_
+  commentId: Overload:Auth0.AuthenticationApi.AuthenticationApiClient.StartDeviceFlowAsync
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.StartDeviceFlowAsync
+  nameWithType: AuthenticationApiClient.StartDeviceFlowAsync
 - uid: Auth0.AuthenticationApi.AuthenticationApiClient.StartPasswordlessEmailFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailRequest)
   name: StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest)
   href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_StartPasswordlessEmailFlowAsync_Auth0_AuthenticationApi_Models_PasswordlessEmailRequest_
@@ -908,6 +927,12 @@ references:
   commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest)
   fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest)
   nameWithType: IAuthenticationApiClient.GetTokenAsync(ClientCredentialsTokenRequest)
+- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest)
+  name: GetTokenAsync(DeviceCodeTokenRequest)
+  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_DeviceCodeTokenRequest_
+  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest)
+  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest)
+  nameWithType: IAuthenticationApiClient.GetTokenAsync(DeviceCodeTokenRequest)
 - uid: Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest)
   name: GetTokenAsync(PasswordlessEmailTokenRequest)
   href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_PasswordlessEmailTokenRequest_
@@ -965,6 +990,19 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.SignupUserAsync
   nameWithType: IAuthenticationApiClient.SignupUserAsync
+- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.StartDeviceFlowAsync(Auth0.AuthenticationApi.Models.DeviceCodeRequest)
+  name: StartDeviceFlowAsync(DeviceCodeRequest)
+  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_StartDeviceFlowAsync_Auth0_AuthenticationApi_Models_DeviceCodeRequest_
+  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.StartDeviceFlowAsync(Auth0.AuthenticationApi.Models.DeviceCodeRequest)
+  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.StartDeviceFlowAsync(Auth0.AuthenticationApi.Models.DeviceCodeRequest)
+  nameWithType: IAuthenticationApiClient.StartDeviceFlowAsync(DeviceCodeRequest)
+- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.StartDeviceFlowAsync*
+  name: StartDeviceFlowAsync
+  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_StartDeviceFlowAsync_
+  commentId: Overload:Auth0.AuthenticationApi.IAuthenticationApiClient.StartDeviceFlowAsync
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.StartDeviceFlowAsync
+  nameWithType: IAuthenticationApiClient.StartDeviceFlowAsync
 - uid: Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessEmailFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailRequest)
   name: StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest)
   href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_StartPasswordlessEmailFlowAsync_Auth0_AuthenticationApi_Models_PasswordlessEmailRequest_
@@ -1294,6 +1332,167 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest.SigningAlgorithm
   nameWithType: ClientCredentialsTokenRequest.SigningAlgorithm
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeRequest
+  name: DeviceCodeRequest
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeRequest.html
+  commentId: T:Auth0.AuthenticationApi.Models.DeviceCodeRequest
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeRequest
+  nameWithType: DeviceCodeRequest
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeRequest.Audience
+  name: Audience
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeRequest.html#Auth0_AuthenticationApi_Models_DeviceCodeRequest_Audience
+  commentId: P:Auth0.AuthenticationApi.Models.DeviceCodeRequest.Audience
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeRequest.Audience
+  nameWithType: DeviceCodeRequest.Audience
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeRequest.Audience*
+  name: Audience
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeRequest.html#Auth0_AuthenticationApi_Models_DeviceCodeRequest_Audience_
+  commentId: Overload:Auth0.AuthenticationApi.Models.DeviceCodeRequest.Audience
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeRequest.Audience
+  nameWithType: DeviceCodeRequest.Audience
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeRequest.ClientId
+  name: ClientId
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeRequest.html#Auth0_AuthenticationApi_Models_DeviceCodeRequest_ClientId
+  commentId: P:Auth0.AuthenticationApi.Models.DeviceCodeRequest.ClientId
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeRequest.ClientId
+  nameWithType: DeviceCodeRequest.ClientId
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeRequest.ClientId*
+  name: ClientId
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeRequest.html#Auth0_AuthenticationApi_Models_DeviceCodeRequest_ClientId_
+  commentId: Overload:Auth0.AuthenticationApi.Models.DeviceCodeRequest.ClientId
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeRequest.ClientId
+  nameWithType: DeviceCodeRequest.ClientId
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeRequest.Scope
+  name: Scope
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeRequest.html#Auth0_AuthenticationApi_Models_DeviceCodeRequest_Scope
+  commentId: P:Auth0.AuthenticationApi.Models.DeviceCodeRequest.Scope
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeRequest.Scope
+  nameWithType: DeviceCodeRequest.Scope
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeRequest.Scope*
+  name: Scope
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeRequest.html#Auth0_AuthenticationApi_Models_DeviceCodeRequest_Scope_
+  commentId: Overload:Auth0.AuthenticationApi.Models.DeviceCodeRequest.Scope
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeRequest.Scope
+  nameWithType: DeviceCodeRequest.Scope
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeResponse
+  name: DeviceCodeResponse
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeResponse.html
+  commentId: T:Auth0.AuthenticationApi.Models.DeviceCodeResponse
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeResponse
+  nameWithType: DeviceCodeResponse
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeResponse.DeviceCode
+  name: DeviceCode
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeResponse.html#Auth0_AuthenticationApi_Models_DeviceCodeResponse_DeviceCode
+  commentId: P:Auth0.AuthenticationApi.Models.DeviceCodeResponse.DeviceCode
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeResponse.DeviceCode
+  nameWithType: DeviceCodeResponse.DeviceCode
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeResponse.DeviceCode*
+  name: DeviceCode
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeResponse.html#Auth0_AuthenticationApi_Models_DeviceCodeResponse_DeviceCode_
+  commentId: Overload:Auth0.AuthenticationApi.Models.DeviceCodeResponse.DeviceCode
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeResponse.DeviceCode
+  nameWithType: DeviceCodeResponse.DeviceCode
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeResponse.ExpiresIn
+  name: ExpiresIn
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeResponse.html#Auth0_AuthenticationApi_Models_DeviceCodeResponse_ExpiresIn
+  commentId: P:Auth0.AuthenticationApi.Models.DeviceCodeResponse.ExpiresIn
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeResponse.ExpiresIn
+  nameWithType: DeviceCodeResponse.ExpiresIn
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeResponse.ExpiresIn*
+  name: ExpiresIn
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeResponse.html#Auth0_AuthenticationApi_Models_DeviceCodeResponse_ExpiresIn_
+  commentId: Overload:Auth0.AuthenticationApi.Models.DeviceCodeResponse.ExpiresIn
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeResponse.ExpiresIn
+  nameWithType: DeviceCodeResponse.ExpiresIn
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeResponse.Interval
+  name: Interval
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeResponse.html#Auth0_AuthenticationApi_Models_DeviceCodeResponse_Interval
+  commentId: P:Auth0.AuthenticationApi.Models.DeviceCodeResponse.Interval
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeResponse.Interval
+  nameWithType: DeviceCodeResponse.Interval
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeResponse.Interval*
+  name: Interval
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeResponse.html#Auth0_AuthenticationApi_Models_DeviceCodeResponse_Interval_
+  commentId: Overload:Auth0.AuthenticationApi.Models.DeviceCodeResponse.Interval
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeResponse.Interval
+  nameWithType: DeviceCodeResponse.Interval
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeResponse.UserCode
+  name: UserCode
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeResponse.html#Auth0_AuthenticationApi_Models_DeviceCodeResponse_UserCode
+  commentId: P:Auth0.AuthenticationApi.Models.DeviceCodeResponse.UserCode
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeResponse.UserCode
+  nameWithType: DeviceCodeResponse.UserCode
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeResponse.UserCode*
+  name: UserCode
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeResponse.html#Auth0_AuthenticationApi_Models_DeviceCodeResponse_UserCode_
+  commentId: Overload:Auth0.AuthenticationApi.Models.DeviceCodeResponse.UserCode
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeResponse.UserCode
+  nameWithType: DeviceCodeResponse.UserCode
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeResponse.VerificationUri
+  name: VerificationUri
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeResponse.html#Auth0_AuthenticationApi_Models_DeviceCodeResponse_VerificationUri
+  commentId: P:Auth0.AuthenticationApi.Models.DeviceCodeResponse.VerificationUri
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeResponse.VerificationUri
+  nameWithType: DeviceCodeResponse.VerificationUri
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeResponse.VerificationUri*
+  name: VerificationUri
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeResponse.html#Auth0_AuthenticationApi_Models_DeviceCodeResponse_VerificationUri_
+  commentId: Overload:Auth0.AuthenticationApi.Models.DeviceCodeResponse.VerificationUri
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeResponse.VerificationUri
+  nameWithType: DeviceCodeResponse.VerificationUri
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeResponse.VerificationUriComplete
+  name: VerificationUriComplete
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeResponse.html#Auth0_AuthenticationApi_Models_DeviceCodeResponse_VerificationUriComplete
+  commentId: P:Auth0.AuthenticationApi.Models.DeviceCodeResponse.VerificationUriComplete
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeResponse.VerificationUriComplete
+  nameWithType: DeviceCodeResponse.VerificationUriComplete
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeResponse.VerificationUriComplete*
+  name: VerificationUriComplete
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeResponse.html#Auth0_AuthenticationApi_Models_DeviceCodeResponse_VerificationUriComplete_
+  commentId: Overload:Auth0.AuthenticationApi.Models.DeviceCodeResponse.VerificationUriComplete
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeResponse.VerificationUriComplete
+  nameWithType: DeviceCodeResponse.VerificationUriComplete
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest
+  name: DeviceCodeTokenRequest
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.html
+  commentId: T:Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest
+  nameWithType: DeviceCodeTokenRequest
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.ClientId
+  name: ClientId
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.html#Auth0_AuthenticationApi_Models_DeviceCodeTokenRequest_ClientId
+  commentId: P:Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.ClientId
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.ClientId
+  nameWithType: DeviceCodeTokenRequest.ClientId
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.ClientId*
+  name: ClientId
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.html#Auth0_AuthenticationApi_Models_DeviceCodeTokenRequest_ClientId_
+  commentId: Overload:Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.ClientId
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.ClientId
+  nameWithType: DeviceCodeTokenRequest.ClientId
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.DeviceCode
+  name: DeviceCode
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.html#Auth0_AuthenticationApi_Models_DeviceCodeTokenRequest_DeviceCode
+  commentId: P:Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.DeviceCode
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.DeviceCode
+  nameWithType: DeviceCodeTokenRequest.DeviceCode
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.DeviceCode*
+  name: DeviceCode
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.html#Auth0_AuthenticationApi_Models_DeviceCodeTokenRequest_DeviceCode_
+  commentId: Overload:Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.DeviceCode
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.DeviceCode
+  nameWithType: DeviceCodeTokenRequest.DeviceCode
 - uid: Auth0.AuthenticationApi.Models.ImpersonationRequest
   name: ImpersonationRequest
   href: api/Auth0.AuthenticationApi.Models.ImpersonationRequest.html

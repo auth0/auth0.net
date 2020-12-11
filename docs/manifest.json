@@ -57,7 +57,7 @@
           "hash": "ELLb3SrLLm2XXFIVjCrlgg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -69,7 +69,7 @@
           "hash": "Anu+xp+sTnc3lAeAjFhZoA=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -81,7 +81,7 @@
           "hash": "4YYMT86JLTCfwGQBa+OPdg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -93,7 +93,7 @@
           "hash": "MU9N1IcbBOi1zCBCcjcECg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -102,7 +102,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.AuthenticationApi.AuthenticationApiClient.html",
-          "hash": "LTOREG60VjgLoOLpqqf7iQ=="
+          "hash": "pzxjjo7gYOZDvNz+cV/cig=="
         }
       },
       "is_incremental": false,
@@ -210,7 +210,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.AuthenticationApi.IAuthenticationApiClient.html",
-          "hash": "DXskGFQFtJH0LIrD9QW8Ww=="
+          "hash": "/RgS1gfWdihowOqL4kOiTA=="
         }
       },
       "is_incremental": false,
@@ -331,6 +331,42 @@
         ".html": {
           "relative_path": "api/Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest.html",
           "hash": "bLHVrY+h3dM126e4vns1fg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.AuthenticationApi.Models.DeviceCodeRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.AuthenticationApi.Models.DeviceCodeRequest.html",
+          "hash": "kbPNjX4vg+AT5r12So0WUw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.AuthenticationApi.Models.DeviceCodeResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.AuthenticationApi.Models.DeviceCodeResponse.html",
+          "hash": "Aw3GuB/Qcnqe45P/Bhz2mQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.html",
+          "hash": "lotEaA1VDgO88WOiGRq1Vw=="
         }
       },
       "is_incremental": false,
@@ -546,7 +582,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.AuthenticationApi.Models.html",
-          "hash": "vwWpArjYX/FjIG2igHnITA=="
+          "hash": "wdNaAEfDwApLC25ZpfngYw=="
         }
       },
       "is_incremental": false,
@@ -2886,7 +2922,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "nZVj083yM+JiGB89JcuZtA=="
+          "hash": "Qc4e3g32p6ZWMtTfY1Do+Q=="
         }
       },
       "is_incremental": false,
@@ -2908,23 +2944,25 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": true,
+        "can_incremental": false,
+        "details": "Cannot build incrementally because docfx version changed from 2.56.2.0 to 2.56.4.0.",
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0
+        "skipped_file_count": 0,
+        "full_build_reason_code": "DocfxVersionChanged"
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 5,
-          "skipped_file_count": 5
+          "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
+          "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 232,
-          "skipped_file_count": 10
+          "total_file_count": 235,
+          "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
