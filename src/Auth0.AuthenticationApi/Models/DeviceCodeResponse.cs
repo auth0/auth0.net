@@ -2,6 +2,9 @@ using Newtonsoft.Json;
 
 namespace Auth0.AuthenticationApi.Models
 {
+    /// <summary>
+    /// Represents the response from a Device Authorization request.
+    /// </summary>
     public class DeviceCodeResponse
     {
         /// <summary>

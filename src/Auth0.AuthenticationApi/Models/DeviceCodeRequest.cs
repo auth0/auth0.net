@@ -1,5 +1,8 @@
 namespace Auth0.AuthenticationApi.Models
 {
+    /// <summary>
+    /// Represents a request to start a Device Authorization flow.
+    /// </summary>
     public class DeviceCodeRequest
     {
         /// <summary>

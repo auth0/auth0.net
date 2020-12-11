@@ -1,5 +1,8 @@
 namespace Auth0.AuthenticationApi.Models
 {
+    /// <summary>
+    /// Represents a request to exchange a Device Code for an access token during the OAuth authentication flow.
+    /// </summary>
     public class DeviceCodeTokenRequest
     {
         /// <summary>
