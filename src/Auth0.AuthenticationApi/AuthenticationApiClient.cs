@@ -286,6 +286,26 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <inheritdoc/>
+        public Task<AccessTokenResponse> GetTokenAsync(DeviceCodeTokenRequest request)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            var body = new Dictionary<string, string>
+            {
+                {"grant_type", "urn:ietf:params:oauth:grant-type:device_code"},
+                {"device_code", request.DeviceCode},
+                {"client_id", request.ClientId}
+            };
+
+            return connection.SendAsync<AccessTokenResponse>(
+                HttpMethod.Post,
+                tokenUri,
+                body
+            );
+        }
+
+        /// <inheritdoc/>
         public Task<SignupUserResponse> SignupUserAsync(SignupUserRequest request)
         {
             if (request == null)
@@ -337,6 +357,25 @@ namespace Auth0.AuthenticationApi
                 HttpMethod.Post,
                 BuildUri("passwordless/start"),
                 body);
+        }
+
+        /// <inheritdoc/>
+        public Task<DeviceCodeResponse> StartDeviceFlowAsync(DeviceCodeRequest request)
+        {
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
+            var body = new Dictionary<string, string>
+            {
+                {"client_id", request.ClientId},
+                {"scope", request.Scope},
+                {"audience", request.Audience}
+            };
+
+            return connection.SendAsync<DeviceCodeResponse>(
+                HttpMethod.Post,
+                BuildUri("oauth/device/code"),
+                body
+            );
         }
 
         /// <summary>

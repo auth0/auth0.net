@@ -103,6 +103,17 @@ namespace Auth0.AuthenticationApi
         Task<AccessTokenResponse> GetTokenAsync(PasswordlessSmsTokenRequest request);
 
         /// <summary>
+        /// Requests an Access Token using the Device Authorization flow
+        /// </summary>
+        /// <param name="request"><see cref="DeviceCodeTokenRequest"/> containing request details to exchange a device code.</param>
+        /// <returns><see cref="Task"/> representing the async operation containing 
+        /// a <see cref="AccessTokenResponse" /> with the requested tokens.</returns>
+        /// <remarks>
+        /// This must be polled while the user is completing their part of the flow at an interval no more frequent than that returned by <see cref="StartDeviceFlowAsync" />.
+        /// </remarks>
+        Task<AccessTokenResponse> GetTokenAsync(DeviceCodeTokenRequest request);
+
+        /// <summary>
         /// Creates a new user given the user details specified.
         /// </summary>
         /// <param name="request"><see cref="SignupUserRequest" /> containing information of the user to sign up.</param>
@@ -127,5 +138,13 @@ namespace Auth0.AuthenticationApi
         /// <returns><see cref="Task"/> representing the async operation containing 
         /// a <see cref="PasswordlessSmsResponse" /> with the details of the request.</returns>
         Task<PasswordlessSmsResponse> StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest request);
+        
+        /// <summary>
+        /// Starts a new Device Authorization flow
+        /// </summary>
+        /// <param name="request"><see cref="DeviceCodeRequest"/> containing client, scope and audience</param>
+        /// <returns><see cref="Task"/> representing the async operation containing 
+        /// a <see cref="DeviceCodeResponse" /> with the details of the request.</returns>
+        Task<DeviceCodeResponse> StartDeviceFlowAsync(DeviceCodeRequest request);
     }
 }
