@@ -39,14 +39,14 @@ namespace Auth0.ManagementApi.Clients
         public Task<IList<DeviceCredential>> GetAllAsync(string fields = null, bool includeFields = true, string userId = null, string clientId = null, string type = null)
         {
             return Connection.GetAsync<IList<DeviceCredential>>(BuildUri("device-credentials",
-                new Dictionary<string, string>
-                {
+               new Dictionary<string, string>
+               {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()},
                     {"user_id", userId},
                     {"client_id", clientId},
                     {"type", type}
-                }), DefaultHeaders);
+               }), DefaultHeaders);
         }
 
         /// <summary>
