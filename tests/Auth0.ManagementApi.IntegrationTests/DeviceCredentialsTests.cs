@@ -18,14 +18,14 @@ using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    public class DeviceCredentialsTests : TestBase, IAsyncLifetime
+    public class DeviceCredentialsTests : TestBase
     {
-        private Client _client;
+        /*private Client _client;
         private Connection _connection;
         private User _user;
-        private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
+        private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";*/
 
-        public async Task InitializeAsync()
+        /*public async Task InitializeAsync()
         {
             using (var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_DEVICE_CREDENTIALS"), GetVariable("AUTH0_MANAGEMENT_API_URL")))
             {
@@ -94,7 +94,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 var credentialsAfterDelete = await apiClient.DeviceCredentials.GetAllAsync();
                 credentialsAfterDelete.Count.Should().Be(credentialsAfterCreate.Count - 1);
             }
-        }
+        }*/
 
         [Fact]
         public async Task Can_request_device_credentials_using_pagination()
