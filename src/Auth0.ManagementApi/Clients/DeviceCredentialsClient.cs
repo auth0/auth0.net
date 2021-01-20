@@ -1,4 +1,6 @@
 ﻿using Auth0.ManagementApi.Models;
+using Auth0.ManagementApi.Paging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -11,6 +13,9 @@ namespace Auth0.ManagementApi.Clients
     /// </summary>
     public class DeviceCredentialsClient : BaseClient
     {
+
+        readonly JsonConverter[] converters = new JsonConverter[] { new PagedListConverter<DeviceCredential>("device_credentials") };
+
         /// <summary>
         /// Initializes a new instance of <see cref="DeviceCredentialsClient"/>.
         /// </summary>
@@ -31,18 +36,49 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="clientId">The client id of the devices to retrieve.</param>
         /// <param name="type">The type of credentials.</param>
         /// <returns>A list of <see cref="DeviceCredential"/> which conforms to the criteria specified.</returns>
+        [Obsolete("Getting a list of device credentials without pagination is not recommended. Please use the overload that accepts pagination information.")]
         public Task<IList<DeviceCredential>> GetAllAsync(string fields = null, bool includeFields = true, string userId = null, string clientId = null, string type = null)
         {
             return Connection.GetAsync<IList<DeviceCredential>>(BuildUri("device-credentials",
-                new Dictionary<string, string>
-                {
+               new Dictionary<string, string>
+               {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()},
                     {"user_id", userId},
                     {"client_id", clientId},
                     {"type", type}
-                }), DefaultHeaders);
+               }), DefaultHeaders);
         }
+
+        /// <summary>
+        /// Gets a list of all the device credentials.
+        /// </summary>
+        /// <param name="request">Specifies criteria to use when querying device credentials.</param>
+        /// <param name="pagination">Specifies <see cref="PaginationInfo"/> to use in requesting paged results.</param>
+        /// <returns>A list of <see cref="DeviceCredential"/> which conforms to the criteria specified.</returns>
+        public Task<IPagedList<DeviceCredential>> GetAllAsync(GetDeviceCredentialsRequest request, PaginationInfo pagination)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            if (pagination == null)
+                throw new ArgumentNullException(nameof(pagination));
+
+            var queryStrings = new Dictionary<string, string>
+                {
+                    {"fields", request.Fields},
+                    {"include_fields", request.IncludeFields.ToString().ToLower()},
+                    {"user_id", request.UserId},
+                    {"client_id", request.ClientId},
+                    {"type", request.Type},
+                    {"page", pagination.PageNo.ToString()},
+                    {"per_page", pagination.PerPage.ToString()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
+                };
+
+            return Connection.GetAsync<IPagedList<DeviceCredential>>(BuildUri("device-credentials", queryStrings), DefaultHeaders, converters);
+        }
+
 
         /// <summary>
         /// Creates a new device credential.
