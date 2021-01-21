@@ -3765,6 +3765,12 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.DeviceCredentialsClient.DeleteAsync
   nameWithType: DeviceCredentialsClient.DeleteAsync
+- uid: Auth0.ManagementApi.Clients.DeviceCredentialsClient.GetAllAsync(Auth0.ManagementApi.Models.GetDeviceCredentialsRequest,Auth0.ManagementApi.Paging.PaginationInfo)
+  name: GetAllAsync(GetDeviceCredentialsRequest, PaginationInfo)
+  href: api/Auth0.ManagementApi.Clients.DeviceCredentialsClient.html#Auth0_ManagementApi_Clients_DeviceCredentialsClient_GetAllAsync_Auth0_ManagementApi_Models_GetDeviceCredentialsRequest_Auth0_ManagementApi_Paging_PaginationInfo_
+  commentId: M:Auth0.ManagementApi.Clients.DeviceCredentialsClient.GetAllAsync(Auth0.ManagementApi.Models.GetDeviceCredentialsRequest,Auth0.ManagementApi.Paging.PaginationInfo)
+  fullName: Auth0.ManagementApi.Clients.DeviceCredentialsClient.GetAllAsync(Auth0.ManagementApi.Models.GetDeviceCredentialsRequest, Auth0.ManagementApi.Paging.PaginationInfo)
+  nameWithType: DeviceCredentialsClient.GetAllAsync(GetDeviceCredentialsRequest, PaginationInfo)
 - uid: Auth0.ManagementApi.Clients.DeviceCredentialsClient.GetAllAsync(System.String,System.Boolean,System.String,System.String,System.String)
   name: GetAllAsync(String, Boolean, String, String, String)
   href: api/Auth0.ManagementApi.Clients.DeviceCredentialsClient.html#Auth0_ManagementApi_Clients_DeviceCredentialsClient_GetAllAsync_System_String_System_Boolean_System_String_System_String_System_String_
@@ -5181,13 +5187,13 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.HttpClientManagementConnection.GetAsync
   nameWithType: HttpClientManagementConnection.GetAsync
-- uid: Auth0.ManagementApi.HttpClientManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},Newtonsoft.Json.JsonConverter[])
+- uid: Auth0.ManagementApi.HttpClientManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},JsonConverter[])
   name: GetAsync<T>(Uri, IDictionary<String, String>, JsonConverter[])
-  href: api/Auth0.ManagementApi.HttpClientManagementConnection.html#Auth0_ManagementApi_HttpClientManagementConnection_GetAsync__1_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__Newtonsoft_Json_JsonConverter___
-  commentId: M:Auth0.ManagementApi.HttpClientManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},Newtonsoft.Json.JsonConverter[])
+  href: api/Auth0.ManagementApi.HttpClientManagementConnection.html#Auth0_ManagementApi_HttpClientManagementConnection_GetAsync__1_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__JsonConverter___
+  commentId: M:Auth0.ManagementApi.HttpClientManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},JsonConverter[])
   name.vb: GetAsync(Of T)(Uri, IDictionary(Of String, String), JsonConverter())
-  fullName: Auth0.ManagementApi.HttpClientManagementConnection.GetAsync<T>(System.Uri, System.Collections.Generic.IDictionary<System.String, System.String>, Newtonsoft.Json.JsonConverter[])
-  fullName.vb: Auth0.ManagementApi.HttpClientManagementConnection.GetAsync(Of T)(System.Uri, System.Collections.Generic.IDictionary(Of System.String, System.String), Newtonsoft.Json.JsonConverter())
+  fullName: Auth0.ManagementApi.HttpClientManagementConnection.GetAsync<T>(System.Uri, System.Collections.Generic.IDictionary<System.String, System.String>, JsonConverter[])
+  fullName.vb: Auth0.ManagementApi.HttpClientManagementConnection.GetAsync(Of T)(System.Uri, System.Collections.Generic.IDictionary(Of System.String, System.String), JsonConverter())
   nameWithType: HttpClientManagementConnection.GetAsync<T>(Uri, IDictionary<String, String>, JsonConverter[])
   nameWithType.vb: HttpClientManagementConnection.GetAsync(Of T)(Uri, IDictionary(Of String, String), JsonConverter())
 - uid: Auth0.ManagementApi.HttpClientManagementConnection.SendAsync*
@@ -5219,13 +5225,13 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.IManagementConnection.GetAsync
   nameWithType: IManagementConnection.GetAsync
-- uid: Auth0.ManagementApi.IManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},Newtonsoft.Json.JsonConverter[])
+- uid: Auth0.ManagementApi.IManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},JsonConverter[])
   name: GetAsync<T>(Uri, IDictionary<String, String>, JsonConverter[])
-  href: api/Auth0.ManagementApi.IManagementConnection.html#Auth0_ManagementApi_IManagementConnection_GetAsync__1_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__Newtonsoft_Json_JsonConverter___
-  commentId: M:Auth0.ManagementApi.IManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},Newtonsoft.Json.JsonConverter[])
+  href: api/Auth0.ManagementApi.IManagementConnection.html#Auth0_ManagementApi_IManagementConnection_GetAsync__1_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__JsonConverter___
+  commentId: M:Auth0.ManagementApi.IManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},JsonConverter[])
   name.vb: GetAsync(Of T)(Uri, IDictionary(Of String, String), JsonConverter())
-  fullName: Auth0.ManagementApi.IManagementConnection.GetAsync<T>(System.Uri, System.Collections.Generic.IDictionary<System.String, System.String>, Newtonsoft.Json.JsonConverter[])
-  fullName.vb: Auth0.ManagementApi.IManagementConnection.GetAsync(Of T)(System.Uri, System.Collections.Generic.IDictionary(Of System.String, System.String), Newtonsoft.Json.JsonConverter())
+  fullName: Auth0.ManagementApi.IManagementConnection.GetAsync<T>(System.Uri, System.Collections.Generic.IDictionary<System.String, System.String>, JsonConverter[])
+  fullName.vb: Auth0.ManagementApi.IManagementConnection.GetAsync(Of T)(System.Uri, System.Collections.Generic.IDictionary(Of System.String, System.String), JsonConverter())
   nameWithType: IManagementConnection.GetAsync<T>(Uri, IDictionary<String, String>, JsonConverter[])
   nameWithType.vb: IManagementConnection.GetAsync(Of T)(Uri, IDictionary(Of String, String), JsonConverter())
 - uid: Auth0.ManagementApi.IManagementConnection.SendAsync*
@@ -8461,6 +8467,77 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.GetConnectionsRequest.Strategy
   nameWithType: GetConnectionsRequest.Strategy
+- uid: Auth0.ManagementApi.Models.GetDeviceCredentialsRequest
+  name: GetDeviceCredentialsRequest
+  href: api/Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.html
+  commentId: T:Auth0.ManagementApi.Models.GetDeviceCredentialsRequest
+  fullName: Auth0.ManagementApi.Models.GetDeviceCredentialsRequest
+  nameWithType: GetDeviceCredentialsRequest
+- uid: Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.ClientId
+  name: ClientId
+  href: api/Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.html#Auth0_ManagementApi_Models_GetDeviceCredentialsRequest_ClientId
+  commentId: P:Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.ClientId
+  fullName: Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.ClientId
+  nameWithType: GetDeviceCredentialsRequest.ClientId
+- uid: Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.ClientId*
+  name: ClientId
+  href: api/Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.html#Auth0_ManagementApi_Models_GetDeviceCredentialsRequest_ClientId_
+  commentId: Overload:Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.ClientId
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.ClientId
+  nameWithType: GetDeviceCredentialsRequest.ClientId
+- uid: Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.Fields
+  name: Fields
+  href: api/Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.html#Auth0_ManagementApi_Models_GetDeviceCredentialsRequest_Fields
+  commentId: P:Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.Fields
+  fullName: Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.Fields
+  nameWithType: GetDeviceCredentialsRequest.Fields
+- uid: Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.Fields*
+  name: Fields
+  href: api/Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.html#Auth0_ManagementApi_Models_GetDeviceCredentialsRequest_Fields_
+  commentId: Overload:Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.Fields
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.Fields
+  nameWithType: GetDeviceCredentialsRequest.Fields
+- uid: Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.IncludeFields
+  name: IncludeFields
+  href: api/Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.html#Auth0_ManagementApi_Models_GetDeviceCredentialsRequest_IncludeFields
+  commentId: P:Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.IncludeFields
+  fullName: Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.IncludeFields
+  nameWithType: GetDeviceCredentialsRequest.IncludeFields
+- uid: Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.IncludeFields*
+  name: IncludeFields
+  href: api/Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.html#Auth0_ManagementApi_Models_GetDeviceCredentialsRequest_IncludeFields_
+  commentId: Overload:Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.IncludeFields
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.IncludeFields
+  nameWithType: GetDeviceCredentialsRequest.IncludeFields
+- uid: Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.Type
+  name: Type
+  href: api/Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.html#Auth0_ManagementApi_Models_GetDeviceCredentialsRequest_Type
+  commentId: P:Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.Type
+  fullName: Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.Type
+  nameWithType: GetDeviceCredentialsRequest.Type
+- uid: Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.Type*
+  name: Type
+  href: api/Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.html#Auth0_ManagementApi_Models_GetDeviceCredentialsRequest_Type_
+  commentId: Overload:Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.Type
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.Type
+  nameWithType: GetDeviceCredentialsRequest.Type
+- uid: Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.UserId
+  name: UserId
+  href: api/Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.html#Auth0_ManagementApi_Models_GetDeviceCredentialsRequest_UserId
+  commentId: P:Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.UserId
+  fullName: Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.UserId
+  nameWithType: GetDeviceCredentialsRequest.UserId
+- uid: Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.UserId*
+  name: UserId
+  href: api/Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.html#Auth0_ManagementApi_Models_GetDeviceCredentialsRequest_UserId_
+  commentId: Overload:Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.UserId
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.UserId
+  nameWithType: GetDeviceCredentialsRequest.UserId
 - uid: Auth0.ManagementApi.Models.GetLogsRequest
   name: GetLogsRequest
   href: api/Auth0.ManagementApi.Models.GetLogsRequest.html

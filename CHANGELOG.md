@@ -1,5 +1,11 @@
 # Change Log
 
+## [release-7.5.0](https://github.com/auth0/auth0.net/tree/release-7.5.0) (2021-01-21)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.4.0...release-7.5.0)
+
+**Added**
+- Add pagination to retrieving Device Credentials [\#460](https://github.com/auth0/auth0.net/pull/460) ([frederikprijck](https://github.com/frederikprijck))
+
 ## [release-7.4.0](https://github.com/auth0/auth0.net/tree/release-7.4.0) (2020-12-11)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.3.2...release-7.4.0)
 
