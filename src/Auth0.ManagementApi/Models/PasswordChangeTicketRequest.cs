@@ -54,9 +54,9 @@ namespace Auth0.ManagementApi.Models
 
         /// <summary>
         /// ID of the client.
-        /// If provided for tenants using New Universal Login experience, 
+        /// If provided for tenants using the New Universal Login experience, 
         /// the user will be prompted to redirect to the default login route of the corresponding application once the ticket is used.
-        /// See Configuring Default Login Routes for more details.
+        /// See <see href="https://auth0.com/docs/universal-login/configure-default-login-routes">Configuring Default Login Routes</see> for more details.
         /// </summary>
         [JsonProperty("client_id")]
         public string ClientId { get; set; }
