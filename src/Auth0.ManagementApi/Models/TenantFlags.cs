@@ -36,5 +36,80 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("disable_clickjack_protection_headers")]
         public bool DisableClickjackProtectionHeaders { get; set; }
+        
+        /// <summary>
+        /// </summary>
+        [JsonProperty("enable_dynamic_client_registration")]
+        public bool EnableDynamicClientRegistration { get; set; }
+        
+        /// <summary>
+        /// </summary>
+        [JsonProperty("enable_custom_domain_in_emails")]
+        public bool EnableCustomDomainInEmails { get; set; }
+        
+        /// <summary>
+        /// </summary>
+        [JsonProperty("allow_legacy_tokeninfo_endpoint")]
+        public bool AllowLegacyTokeninfoEndpoint { get; set; }
+        
+        /// <summary>
+        /// </summary>
+        [JsonProperty("enable_legacy_profile")]
+        public bool EnableLegacyProfile { get; set; }
+        
+        /// <summary>
+        /// </summary>
+        [JsonProperty("enable_idtoken_api2")]
+        public bool EnableIdTokenApi2 { get; set; }
+        
+        /// <summary>
+        /// </summary>
+        [JsonProperty("enable_public_signup_user_exists_error")]
+        public bool EnablePublicSignupUserExistsError { get; set; }
+        
+        /// <summary>
+        /// </summary>
+        [JsonProperty("allow_legacy_delegation_grant_types")]
+        public bool AllowLegacyDelegationGrantTypes { get; set; }
+        
+        /// <summary>
+        /// </summary>
+        [JsonProperty("allow_legacy_ro_grant_types")]
+        public bool AllowLegacyRoGrantTypes { get; set; }
+        
+        /// <summary>
+        /// </summary>
+        [JsonProperty("enable_sso")]
+        public bool EnableSSO { get; set; }
+        
+        /// <summary>
+        /// </summary>
+        [JsonProperty("no_disclose_enterprise_connections")]
+        public bool NoDiscloseEnterpriseConnections { get; set; }
+        
+        /// <summary>
+        /// </summary>
+        [JsonProperty("disable_management_api_sms_obfuscation")]
+        public bool DisableManagementApiSmsObfuscation { get; set; }
+        
+        /// <summary>
+        /// </summary>
+        [JsonProperty("enforce_client_authentication_on_passwordless_start")]
+        public bool EnforceClientAuthenticationOnPasswordlessStart { get; set; }
+        
+        /// <summary>
+        /// </summary>
+        [JsonProperty("trust_azure_adfs_email_verified_connection_property")]
+        public bool TrustAzureAdfsEmailVerifiedConnectionProperty { get; set; }
+        
+        /// <summary>
+        /// </summary>
+        [JsonProperty("enable_adfs_waad_email_verification")]
+        public bool EnabdleAdfsWaadEmailVerification { get; set; }
+        
+        /// <summary>
+        /// </summary>
+        [JsonProperty("revoke_refresh_token_grant")]
+        public bool RovokeRefreshTokenGrant { get; set; }
     }
 }
