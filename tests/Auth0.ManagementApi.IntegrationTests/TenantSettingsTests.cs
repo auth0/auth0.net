@@ -63,7 +63,18 @@ namespace Auth0.ManagementApi.IntegrationTests
                 };
 
                 var settingsUpdateResponse = await apiClient.TenantSettings.UpdateAsync(settingsUpdateRequest);
-                settingsUpdateResponse.Should().BeEquivalentTo(settingsUpdateRequest, options => options.Excluding(p => p.SandboxVersion).Excluding(p => p.SandboxVersionsAvailable));
+
+                settingsUpdateResponse.Should().BeEquivalentTo(settingsUpdateRequest, options => options
+                    .Excluding(p => p.Flags)
+                    .Excluding(p => p.SandboxVersion)
+                    .Excluding(p => p.SandboxVersionsAvailable)
+                );
+
+                settingsUpdateResponse.Flags.ChangePwdFlowV1.Should().BeFalse();
+                settingsUpdateResponse.Flags.DisableClickjackProtectionHeaders.Should().BeTrue();
+                settingsUpdateResponse.Flags.EnableAPIsSection.Should().BeTrue();
+                settingsUpdateResponse.Flags.EnableClientConnections.Should().BeFalse();
+                settingsUpdateResponse.Flags.EnablePipeline2.Should().BeTrue();
 
                 var resetUpdateRequest = new TenantSettingsUpdateRequest
                 {
