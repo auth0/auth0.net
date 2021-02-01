@@ -119,7 +119,7 @@ namespace Auth0.ManagementApi.Models
         /// Enables the email verification flow during login for Azure AD and ADFS connections
         /// </summary>
         [JsonProperty("enable_adfs_waad_email_verification")]
-        public bool? EnabdleAdfsWaadEmailVerification { get; set; } = null;
+        public bool? EnableAdfsWaadEmailVerification { get; set; } = null;
 
         /// <summary>
         /// Delete underlying grant when a Refresh Token is revoked via the Authentication API.
