@@ -6,7 +6,8 @@
     public class GetUsersRequest
     {
         /// <summary>
-        /// The connection to filter on.
+        /// Connection filter. Only applies when <see cref="SearchEngine"/> is set to v1. 
+        /// To filter by connection with <see cref="SearchEngine"/> set to v2 or v3, set <see cref="Query"/> to identities.connection:"connection_name" instead.
         /// </summary>
         public string Connection { get; set; } = null;
 
