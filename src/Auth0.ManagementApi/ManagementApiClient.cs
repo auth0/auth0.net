@@ -92,6 +92,11 @@ namespace Auth0.ManagementApi
         public RulesClient Rules { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /hooks endpoints.
+        /// </summary>
+        public HooksClient Hooks { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /stats endpoints.
         /// </summary>
         public StatsClient Stats { get; }
