@@ -96,7 +96,7 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Updates a rule.
+        /// Updates a hook.
         /// </summary>
         /// <param name="id">The ID of the hook to update.</param>
         /// <param name="request">A <see cref="HookUpdateRequest" /> containing the information to update.</param>

@@ -3,7 +3,7 @@
     public class GetHooksRequest
     {
         /// <summary>
-        /// If provided retrieves hooks that match the value, otherwise all rules are retrieved.
+        /// If provided retrieves hooks that match the value, otherwise all hooks are retrieved.
         /// </summary>
         public bool? Enabled { get; set; }
 
@@ -20,12 +20,5 @@
         /// </remarks>
         public bool? IncludeFields { get; set; }
 
-        /// <summary>
-        /// Retrieves rules that match the execution stage.
-        /// </summary>
-        /// <remarks>
-        /// Defaults to login_success.
-        /// </remarks>
-        public string Stage { get; set; }
     }
 }

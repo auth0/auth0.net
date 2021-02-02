@@ -3,7 +3,7 @@
 namespace Auth0.ManagementApi.Models
 {
     /// <summary>
-    /// Represents a rule. A hook is arbitrary JavaScript code that can be used to extend Auth0's default behavior when executed in selected extension points.
+    /// Represents a hook. A hook is arbitrary JavaScript code that can be used to extend Auth0's default behavior when executed in selected extension points.
     /// </summary>
     public class Hook : HookBase
     {
