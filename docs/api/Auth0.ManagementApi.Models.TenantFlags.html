@@ -113,6 +113,81 @@
   </div>
   <h3 id="properties">Properties
   </h3>
+  <a id="Auth0_ManagementApi_Models_TenantFlags_AllowLegacyDelegationGrantTypes_" data-uid="Auth0.ManagementApi.Models.TenantFlags.AllowLegacyDelegationGrantTypes*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantFlags_AllowLegacyDelegationGrantTypes" data-uid="Auth0.ManagementApi.Models.TenantFlags.AllowLegacyDelegationGrantTypes">AllowLegacyDelegationGrantTypes</h4>
+  <div class="markdown level1 summary"><p>Whether the legacy delegation endpoint will be enabled for your account (true) or not available (false).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;allow_legacy_delegation_grant_types&quot;)]
+public bool? AllowLegacyDelegationGrantTypes { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Models_TenantFlags_AllowLegacyRoGrantTypes_" data-uid="Auth0.ManagementApi.Models.TenantFlags.AllowLegacyRoGrantTypes*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantFlags_AllowLegacyRoGrantTypes" data-uid="Auth0.ManagementApi.Models.TenantFlags.AllowLegacyRoGrantTypes">AllowLegacyRoGrantTypes</h4>
+  <div class="markdown level1 summary"><p>Whether the legacy auth/ro endpoint (used with resource owner password and passwordless features) will be enabled for your account (true) or not available (false).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;allow_legacy_ro_grant_types&quot;)]
+public bool? AllowLegacyRoGrantTypes { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Models_TenantFlags_AllowLegacyTokeninfoEndpoint_" data-uid="Auth0.ManagementApi.Models.TenantFlags.AllowLegacyTokeninfoEndpoint*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantFlags_AllowLegacyTokeninfoEndpoint" data-uid="Auth0.ManagementApi.Models.TenantFlags.AllowLegacyTokeninfoEndpoint">AllowLegacyTokeninfoEndpoint</h4>
+  <div class="markdown level1 summary"><p>Whether the legacy /tokeninfo endpoint is enabled for your account (true) or unavailable (false).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;allow_legacy_tokeninfo_endpoint&quot;)]
+public bool? AllowLegacyTokeninfoEndpoint { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="Auth0_ManagementApi_Models_TenantFlags_ChangePwdFlowV1_" data-uid="Auth0.ManagementApi.Models.TenantFlags.ChangePwdFlowV1*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantFlags_ChangePwdFlowV1" data-uid="Auth0.ManagementApi.Models.TenantFlags.ChangePwdFlowV1">ChangePwdFlowV1</h4>
   <div class="markdown level1 summary"><p>Enables the first version of the Change Password flow. We&apos;ve deprecated this option and recommending a safer flow. This flag is only for backwards compatibility.</p>
@@ -159,6 +234,56 @@ public bool DisableClickjackProtectionHeaders { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Models_TenantFlags_DisableManagementApiSmsObfuscation_" data-uid="Auth0.ManagementApi.Models.TenantFlags.DisableManagementApiSmsObfuscation*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantFlags_DisableManagementApiSmsObfuscation" data-uid="Auth0.ManagementApi.Models.TenantFlags.DisableManagementApiSmsObfuscation">DisableManagementApiSmsObfuscation</h4>
+  <div class="markdown level1 summary"><p>If true, SMS phone numbers will not be obfuscated in Management API GET calls.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;disable_management_api_sms_obfuscation&quot;)]
+public bool? DisableManagementApiSmsObfuscation { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Models_TenantFlags_EnableAdfsWaadEmailVerification_" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnableAdfsWaadEmailVerification*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantFlags_EnableAdfsWaadEmailVerification" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnableAdfsWaadEmailVerification">EnableAdfsWaadEmailVerification</h4>
+  <div class="markdown level1 summary"><p>Enables the email verification flow during login for Azure AD and ADFS connections</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;enable_adfs_waad_email_verification&quot;)]
+public bool? EnableAdfsWaadEmailVerification { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -213,6 +338,106 @@ public bool EnableClientConnections { get; set; }</code></pre>
       </tr>
     </tbody>
   </table>
+  <a id="Auth0_ManagementApi_Models_TenantFlags_EnableCustomDomainInEmails_" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnableCustomDomainInEmails*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantFlags_EnableCustomDomainInEmails" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnableCustomDomainInEmails">EnableCustomDomainInEmails</h4>
+  <div class="markdown level1 summary"><p>Whether emails sent by Auth0 for change password, verification etc. should use your verified custom domain (true) or your auth0.com sub-domain (false). Affects all emails, links, and URLs. Email will fail if the custom domain is not verified.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;enable_custom_domain_in_emails&quot;)]
+public bool? EnableCustomDomainInEmails { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Models_TenantFlags_EnableDynamicClientRegistration_" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnableDynamicClientRegistration*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantFlags_EnableDynamicClientRegistration" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnableDynamicClientRegistration">EnableDynamicClientRegistration</h4>
+  <div class="markdown level1 summary"><p>Whether third-party developers can dynamically register applications for your APIs (true) or not (false). This flag enables dynamic client registration.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;enable_dynamic_client_registration&quot;)]
+public bool? EnableDynamicClientRegistration { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Models_TenantFlags_EnableIdTokenApi2_" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnableIdTokenApi2*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantFlags_EnableIdTokenApi2" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnableIdTokenApi2">EnableIdTokenApi2</h4>
+  <div class="markdown level1 summary"><p>Whether ID tokens can be used to authorize some types of requests to API v2 (true) not not (false).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;enable_idtoken_api2&quot;)]
+public bool? EnableIdTokenApi2 { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Models_TenantFlags_EnableLegacyProfile_" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnableLegacyProfile*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantFlags_EnableLegacyProfile" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnableLegacyProfile">EnableLegacyProfile</h4>
+  <div class="markdown level1 summary"><p>Whether ID tokens and the userinfo endpoint includes a complete user profile (true) or only OpenID Connect claims (false).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;enable_legacy_profile&quot;)]
+public bool? EnableLegacyProfile { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="Auth0_ManagementApi_Models_TenantFlags_EnablePipeline2_" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnablePipeline2*"></a>
   <h4 id="Auth0_ManagementApi_Models_TenantFlags_EnablePipeline2" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnablePipeline2">EnablePipeline2</h4>
   <div class="markdown level1 summary"><p>This flag enables advanced API Authorization scenarios.</p>
@@ -234,6 +459,156 @@ public bool EnablePipeline2 { get; set; }</code></pre>
     <tbody>
       <tr>
         <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Models_TenantFlags_EnablePublicSignupUserExistsError_" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnablePublicSignupUserExistsError*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantFlags_EnablePublicSignupUserExistsError" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnablePublicSignupUserExistsError">EnablePublicSignupUserExistsError</h4>
+  <div class="markdown level1 summary"><p>Whether the public sign up process shows a user_exists error (true) or a generic error (false) if the user already exists.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;enable_public_signup_user_exists_error&quot;)]
+public bool? EnablePublicSignupUserExistsError { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Models_TenantFlags_EnableSSO_" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnableSSO*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantFlags_EnableSSO" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnableSSO">EnableSSO</h4>
+  <div class="markdown level1 summary"><p>Whether users are prompted to confirm log in before SSO redirection (false) or are not prompted (true).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;enable_sso&quot;)]
+public bool? EnableSSO { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Models_TenantFlags_EnforceClientAuthenticationOnPasswordlessStart_" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnforceClientAuthenticationOnPasswordlessStart*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantFlags_EnforceClientAuthenticationOnPasswordlessStart" data-uid="Auth0.ManagementApi.Models.TenantFlags.EnforceClientAuthenticationOnPasswordlessStart">EnforceClientAuthenticationOnPasswordlessStart</h4>
+  <div class="markdown level1 summary"><p>Enforce client authentication for passwordless start</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;enforce_client_authentication_on_passwordless_start&quot;)]
+public bool? EnforceClientAuthenticationOnPasswordlessStart { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Models_TenantFlags_NoDiscloseEnterpriseConnections_" data-uid="Auth0.ManagementApi.Models.TenantFlags.NoDiscloseEnterpriseConnections*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantFlags_NoDiscloseEnterpriseConnections" data-uid="Auth0.ManagementApi.Models.TenantFlags.NoDiscloseEnterpriseConnections">NoDiscloseEnterpriseConnections</h4>
+  <div class="markdown level1 summary"><p>Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;no_disclose_enterprise_connections&quot;)]
+public bool? NoDiscloseEnterpriseConnections { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Models_TenantFlags_RevokeRefreshTokenGrant_" data-uid="Auth0.ManagementApi.Models.TenantFlags.RevokeRefreshTokenGrant*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantFlags_RevokeRefreshTokenGrant" data-uid="Auth0.ManagementApi.Models.TenantFlags.RevokeRefreshTokenGrant">RevokeRefreshTokenGrant</h4>
+  <div class="markdown level1 summary"><p>Delete underlying grant when a Refresh Token is revoked via the Authentication API.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;revoke_refresh_token_grant&quot;)]
+public bool? RevokeRefreshTokenGrant { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Models_TenantFlags_TrustAzureAdfsEmailVerifiedConnectionProperty_" data-uid="Auth0.ManagementApi.Models.TenantFlags.TrustAzureAdfsEmailVerifiedConnectionProperty*"></a>
+  <h4 id="Auth0_ManagementApi_Models_TenantFlags_TrustAzureAdfsEmailVerifiedConnectionProperty" data-uid="Auth0.ManagementApi.Models.TenantFlags.TrustAzureAdfsEmailVerifiedConnectionProperty">TrustAzureAdfsEmailVerifiedConnectionProperty</h4>
+  <div class="markdown level1 summary"><p>Changes email_verified behavior for Azure AD/ADFS connections when enabled. Sets email_verified to false otherwise.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;trust_azure_adfs_email_verified_connection_property&quot;)]
+public bool? TrustAzureAdfsEmailVerifiedConnectionProperty { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
