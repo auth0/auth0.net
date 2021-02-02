@@ -13,7 +13,7 @@ namespace Auth0.ManagementApi.Clients
     /// </summary>
     public class HooksClient : BaseClient
     {
-        readonly JsonConverter[] hooksConverters = new JsonConverter[] { new PagedListConverter<Rule>("hooks") };
+        readonly JsonConverter[] hooksConverters = new JsonConverter[] { new PagedListConverter<Hook>("hooks") };
 
         /// <summary>
         /// Initializes a new instance of <see cref="HooksClient"/>.
@@ -65,7 +65,6 @@ namespace Auth0.ManagementApi.Clients
                     {"enabled", request.Enabled?.ToString().ToLower()},
                     {"fields", request.Fields},
                     {"include_fields", request.IncludeFields?.ToString().ToLower()},
-                    {"stage", request.Stage},
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
