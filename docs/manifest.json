@@ -786,7 +786,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.DeviceCredentialsClient.html",
-          "hash": "FkF7UJLoieBbAISyfYGffA=="
+          "hash": "shDVk+cG1wg1vrCGpYxd4Q=="
         }
       },
       "is_incremental": false,
@@ -1730,6 +1730,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.html",
+          "hash": "o0YIH5s4u21B4pSaAXcl2g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Auth0.ManagementApi.Models.GetLogsRequest.yml",
       "output": {
         ".html": {
@@ -1782,7 +1794,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.GetUsersRequest.html",
-          "hash": "yX3Cra02KEpDYltyJtm5Tg=="
+          "hash": "8B3zdfWClRGlXcNgPOgM2w=="
         }
       },
       "is_incremental": false,
@@ -2082,7 +2094,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.PasswordChangeTicketRequest.html",
-          "hash": "OxnNI0JAl5C5wjoEHjlxUw=="
+          "hash": "f6J6hh6Jwe/1c4EO9q5d8A=="
         }
       },
       "is_incremental": false,
@@ -2526,7 +2538,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.TenantFlags.html",
-          "hash": "pWom+mGGbO8zz5k0oSc+Cg=="
+          "hash": "UrgnEXaWLiU1BvgE+nHjZA=="
         }
       },
       "is_incremental": false,
@@ -2838,7 +2850,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.html",
-          "hash": "hgAgxYlwvDoR0nWtJzL4cg=="
+          "hash": "qC78Derg2cxD0hzVrbOZ9g=="
         }
       },
       "is_incremental": false,
@@ -2922,7 +2934,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "Qc4e3g32p6ZWMtTfY1Do+Q=="
+          "hash": "ynI282EM/CBWFAZygY/L6g=="
         }
       },
       "is_incremental": false,
@@ -2945,7 +2957,7 @@
     {
       "status": {
         "can_incremental": false,
-        "details": "Cannot build incrementally because docfx version changed from 2.56.2.0 to 2.56.4.0.",
+        "details": "Cannot build incrementally because docfx version changed from 2.45.1.0 to 2.56.4.0.",
         "incrementalPhase": "build",
         "total_file_count": 0,
         "skipped_file_count": 0,
@@ -2961,7 +2973,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 235,
+          "total_file_count": 236,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

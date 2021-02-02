@@ -5187,13 +5187,13 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.HttpClientManagementConnection.GetAsync
   nameWithType: HttpClientManagementConnection.GetAsync
-- uid: Auth0.ManagementApi.HttpClientManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},JsonConverter[])
+- uid: Auth0.ManagementApi.HttpClientManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},Newtonsoft.Json.JsonConverter[])
   name: GetAsync<T>(Uri, IDictionary<String, String>, JsonConverter[])
-  href: api/Auth0.ManagementApi.HttpClientManagementConnection.html#Auth0_ManagementApi_HttpClientManagementConnection_GetAsync__1_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__JsonConverter___
-  commentId: M:Auth0.ManagementApi.HttpClientManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},JsonConverter[])
+  href: api/Auth0.ManagementApi.HttpClientManagementConnection.html#Auth0_ManagementApi_HttpClientManagementConnection_GetAsync__1_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__Newtonsoft_Json_JsonConverter___
+  commentId: M:Auth0.ManagementApi.HttpClientManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},Newtonsoft.Json.JsonConverter[])
   name.vb: GetAsync(Of T)(Uri, IDictionary(Of String, String), JsonConverter())
-  fullName: Auth0.ManagementApi.HttpClientManagementConnection.GetAsync<T>(System.Uri, System.Collections.Generic.IDictionary<System.String, System.String>, JsonConverter[])
-  fullName.vb: Auth0.ManagementApi.HttpClientManagementConnection.GetAsync(Of T)(System.Uri, System.Collections.Generic.IDictionary(Of System.String, System.String), JsonConverter())
+  fullName: Auth0.ManagementApi.HttpClientManagementConnection.GetAsync<T>(System.Uri, System.Collections.Generic.IDictionary<System.String, System.String>, Newtonsoft.Json.JsonConverter[])
+  fullName.vb: Auth0.ManagementApi.HttpClientManagementConnection.GetAsync(Of T)(System.Uri, System.Collections.Generic.IDictionary(Of System.String, System.String), Newtonsoft.Json.JsonConverter())
   nameWithType: HttpClientManagementConnection.GetAsync<T>(Uri, IDictionary<String, String>, JsonConverter[])
   nameWithType.vb: HttpClientManagementConnection.GetAsync(Of T)(Uri, IDictionary(Of String, String), JsonConverter())
 - uid: Auth0.ManagementApi.HttpClientManagementConnection.SendAsync*
@@ -5225,13 +5225,13 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.IManagementConnection.GetAsync
   nameWithType: IManagementConnection.GetAsync
-- uid: Auth0.ManagementApi.IManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},JsonConverter[])
+- uid: Auth0.ManagementApi.IManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},Newtonsoft.Json.JsonConverter[])
   name: GetAsync<T>(Uri, IDictionary<String, String>, JsonConverter[])
-  href: api/Auth0.ManagementApi.IManagementConnection.html#Auth0_ManagementApi_IManagementConnection_GetAsync__1_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__JsonConverter___
-  commentId: M:Auth0.ManagementApi.IManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},JsonConverter[])
+  href: api/Auth0.ManagementApi.IManagementConnection.html#Auth0_ManagementApi_IManagementConnection_GetAsync__1_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__Newtonsoft_Json_JsonConverter___
+  commentId: M:Auth0.ManagementApi.IManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},Newtonsoft.Json.JsonConverter[])
   name.vb: GetAsync(Of T)(Uri, IDictionary(Of String, String), JsonConverter())
-  fullName: Auth0.ManagementApi.IManagementConnection.GetAsync<T>(System.Uri, System.Collections.Generic.IDictionary<System.String, System.String>, JsonConverter[])
-  fullName.vb: Auth0.ManagementApi.IManagementConnection.GetAsync(Of T)(System.Uri, System.Collections.Generic.IDictionary(Of System.String, System.String), JsonConverter())
+  fullName: Auth0.ManagementApi.IManagementConnection.GetAsync<T>(System.Uri, System.Collections.Generic.IDictionary<System.String, System.String>, Newtonsoft.Json.JsonConverter[])
+  fullName.vb: Auth0.ManagementApi.IManagementConnection.GetAsync(Of T)(System.Uri, System.Collections.Generic.IDictionary(Of System.String, System.String), Newtonsoft.Json.JsonConverter())
   nameWithType: IManagementConnection.GetAsync<T>(Uri, IDictionary<String, String>, JsonConverter[])
   nameWithType.vb: IManagementConnection.GetAsync(Of T)(Uri, IDictionary(Of String, String), JsonConverter())
 - uid: Auth0.ManagementApi.IManagementConnection.SendAsync*
@@ -10153,6 +10153,19 @@ references:
   commentId: T:Auth0.ManagementApi.Models.PasswordChangeTicketRequest
   fullName: Auth0.ManagementApi.Models.PasswordChangeTicketRequest
   nameWithType: PasswordChangeTicketRequest
+- uid: Auth0.ManagementApi.Models.PasswordChangeTicketRequest.ClientId
+  name: ClientId
+  href: api/Auth0.ManagementApi.Models.PasswordChangeTicketRequest.html#Auth0_ManagementApi_Models_PasswordChangeTicketRequest_ClientId
+  commentId: P:Auth0.ManagementApi.Models.PasswordChangeTicketRequest.ClientId
+  fullName: Auth0.ManagementApi.Models.PasswordChangeTicketRequest.ClientId
+  nameWithType: PasswordChangeTicketRequest.ClientId
+- uid: Auth0.ManagementApi.Models.PasswordChangeTicketRequest.ClientId*
+  name: ClientId
+  href: api/Auth0.ManagementApi.Models.PasswordChangeTicketRequest.html#Auth0_ManagementApi_Models_PasswordChangeTicketRequest_ClientId_
+  commentId: Overload:Auth0.ManagementApi.Models.PasswordChangeTicketRequest.ClientId
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.PasswordChangeTicketRequest.ClientId
+  nameWithType: PasswordChangeTicketRequest.ClientId
 - uid: Auth0.ManagementApi.Models.PasswordChangeTicketRequest.ConnectionId
   name: ConnectionId
   href: api/Auth0.ManagementApi.Models.PasswordChangeTicketRequest.html#Auth0_ManagementApi_Models_PasswordChangeTicketRequest_ConnectionId
@@ -11774,6 +11787,45 @@ references:
   commentId: T:Auth0.ManagementApi.Models.TenantFlags
   fullName: Auth0.ManagementApi.Models.TenantFlags
   nameWithType: TenantFlags
+- uid: Auth0.ManagementApi.Models.TenantFlags.AllowLegacyDelegationGrantTypes
+  name: AllowLegacyDelegationGrantTypes
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_AllowLegacyDelegationGrantTypes
+  commentId: P:Auth0.ManagementApi.Models.TenantFlags.AllowLegacyDelegationGrantTypes
+  fullName: Auth0.ManagementApi.Models.TenantFlags.AllowLegacyDelegationGrantTypes
+  nameWithType: TenantFlags.AllowLegacyDelegationGrantTypes
+- uid: Auth0.ManagementApi.Models.TenantFlags.AllowLegacyDelegationGrantTypes*
+  name: AllowLegacyDelegationGrantTypes
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_AllowLegacyDelegationGrantTypes_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantFlags.AllowLegacyDelegationGrantTypes
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantFlags.AllowLegacyDelegationGrantTypes
+  nameWithType: TenantFlags.AllowLegacyDelegationGrantTypes
+- uid: Auth0.ManagementApi.Models.TenantFlags.AllowLegacyRoGrantTypes
+  name: AllowLegacyRoGrantTypes
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_AllowLegacyRoGrantTypes
+  commentId: P:Auth0.ManagementApi.Models.TenantFlags.AllowLegacyRoGrantTypes
+  fullName: Auth0.ManagementApi.Models.TenantFlags.AllowLegacyRoGrantTypes
+  nameWithType: TenantFlags.AllowLegacyRoGrantTypes
+- uid: Auth0.ManagementApi.Models.TenantFlags.AllowLegacyRoGrantTypes*
+  name: AllowLegacyRoGrantTypes
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_AllowLegacyRoGrantTypes_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantFlags.AllowLegacyRoGrantTypes
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantFlags.AllowLegacyRoGrantTypes
+  nameWithType: TenantFlags.AllowLegacyRoGrantTypes
+- uid: Auth0.ManagementApi.Models.TenantFlags.AllowLegacyTokeninfoEndpoint
+  name: AllowLegacyTokeninfoEndpoint
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_AllowLegacyTokeninfoEndpoint
+  commentId: P:Auth0.ManagementApi.Models.TenantFlags.AllowLegacyTokeninfoEndpoint
+  fullName: Auth0.ManagementApi.Models.TenantFlags.AllowLegacyTokeninfoEndpoint
+  nameWithType: TenantFlags.AllowLegacyTokeninfoEndpoint
+- uid: Auth0.ManagementApi.Models.TenantFlags.AllowLegacyTokeninfoEndpoint*
+  name: AllowLegacyTokeninfoEndpoint
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_AllowLegacyTokeninfoEndpoint_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantFlags.AllowLegacyTokeninfoEndpoint
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantFlags.AllowLegacyTokeninfoEndpoint
+  nameWithType: TenantFlags.AllowLegacyTokeninfoEndpoint
 - uid: Auth0.ManagementApi.Models.TenantFlags.ChangePwdFlowV1
   name: ChangePwdFlowV1
   href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_ChangePwdFlowV1
@@ -11800,6 +11852,32 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.TenantFlags.DisableClickjackProtectionHeaders
   nameWithType: TenantFlags.DisableClickjackProtectionHeaders
+- uid: Auth0.ManagementApi.Models.TenantFlags.DisableManagementApiSmsObfuscation
+  name: DisableManagementApiSmsObfuscation
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_DisableManagementApiSmsObfuscation
+  commentId: P:Auth0.ManagementApi.Models.TenantFlags.DisableManagementApiSmsObfuscation
+  fullName: Auth0.ManagementApi.Models.TenantFlags.DisableManagementApiSmsObfuscation
+  nameWithType: TenantFlags.DisableManagementApiSmsObfuscation
+- uid: Auth0.ManagementApi.Models.TenantFlags.DisableManagementApiSmsObfuscation*
+  name: DisableManagementApiSmsObfuscation
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_DisableManagementApiSmsObfuscation_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantFlags.DisableManagementApiSmsObfuscation
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantFlags.DisableManagementApiSmsObfuscation
+  nameWithType: TenantFlags.DisableManagementApiSmsObfuscation
+- uid: Auth0.ManagementApi.Models.TenantFlags.EnableAdfsWaadEmailVerification
+  name: EnableAdfsWaadEmailVerification
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnableAdfsWaadEmailVerification
+  commentId: P:Auth0.ManagementApi.Models.TenantFlags.EnableAdfsWaadEmailVerification
+  fullName: Auth0.ManagementApi.Models.TenantFlags.EnableAdfsWaadEmailVerification
+  nameWithType: TenantFlags.EnableAdfsWaadEmailVerification
+- uid: Auth0.ManagementApi.Models.TenantFlags.EnableAdfsWaadEmailVerification*
+  name: EnableAdfsWaadEmailVerification
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnableAdfsWaadEmailVerification_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantFlags.EnableAdfsWaadEmailVerification
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantFlags.EnableAdfsWaadEmailVerification
+  nameWithType: TenantFlags.EnableAdfsWaadEmailVerification
 - uid: Auth0.ManagementApi.Models.TenantFlags.EnableAPIsSection
   name: EnableAPIsSection
   href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnableAPIsSection
@@ -11826,6 +11904,58 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.TenantFlags.EnableClientConnections
   nameWithType: TenantFlags.EnableClientConnections
+- uid: Auth0.ManagementApi.Models.TenantFlags.EnableCustomDomainInEmails
+  name: EnableCustomDomainInEmails
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnableCustomDomainInEmails
+  commentId: P:Auth0.ManagementApi.Models.TenantFlags.EnableCustomDomainInEmails
+  fullName: Auth0.ManagementApi.Models.TenantFlags.EnableCustomDomainInEmails
+  nameWithType: TenantFlags.EnableCustomDomainInEmails
+- uid: Auth0.ManagementApi.Models.TenantFlags.EnableCustomDomainInEmails*
+  name: EnableCustomDomainInEmails
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnableCustomDomainInEmails_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantFlags.EnableCustomDomainInEmails
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantFlags.EnableCustomDomainInEmails
+  nameWithType: TenantFlags.EnableCustomDomainInEmails
+- uid: Auth0.ManagementApi.Models.TenantFlags.EnableDynamicClientRegistration
+  name: EnableDynamicClientRegistration
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnableDynamicClientRegistration
+  commentId: P:Auth0.ManagementApi.Models.TenantFlags.EnableDynamicClientRegistration
+  fullName: Auth0.ManagementApi.Models.TenantFlags.EnableDynamicClientRegistration
+  nameWithType: TenantFlags.EnableDynamicClientRegistration
+- uid: Auth0.ManagementApi.Models.TenantFlags.EnableDynamicClientRegistration*
+  name: EnableDynamicClientRegistration
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnableDynamicClientRegistration_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantFlags.EnableDynamicClientRegistration
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantFlags.EnableDynamicClientRegistration
+  nameWithType: TenantFlags.EnableDynamicClientRegistration
+- uid: Auth0.ManagementApi.Models.TenantFlags.EnableIdTokenApi2
+  name: EnableIdTokenApi2
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnableIdTokenApi2
+  commentId: P:Auth0.ManagementApi.Models.TenantFlags.EnableIdTokenApi2
+  fullName: Auth0.ManagementApi.Models.TenantFlags.EnableIdTokenApi2
+  nameWithType: TenantFlags.EnableIdTokenApi2
+- uid: Auth0.ManagementApi.Models.TenantFlags.EnableIdTokenApi2*
+  name: EnableIdTokenApi2
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnableIdTokenApi2_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantFlags.EnableIdTokenApi2
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantFlags.EnableIdTokenApi2
+  nameWithType: TenantFlags.EnableIdTokenApi2
+- uid: Auth0.ManagementApi.Models.TenantFlags.EnableLegacyProfile
+  name: EnableLegacyProfile
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnableLegacyProfile
+  commentId: P:Auth0.ManagementApi.Models.TenantFlags.EnableLegacyProfile
+  fullName: Auth0.ManagementApi.Models.TenantFlags.EnableLegacyProfile
+  nameWithType: TenantFlags.EnableLegacyProfile
+- uid: Auth0.ManagementApi.Models.TenantFlags.EnableLegacyProfile*
+  name: EnableLegacyProfile
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnableLegacyProfile_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantFlags.EnableLegacyProfile
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantFlags.EnableLegacyProfile
+  nameWithType: TenantFlags.EnableLegacyProfile
 - uid: Auth0.ManagementApi.Models.TenantFlags.EnablePipeline2
   name: EnablePipeline2
   href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnablePipeline2
@@ -11839,6 +11969,84 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.TenantFlags.EnablePipeline2
   nameWithType: TenantFlags.EnablePipeline2
+- uid: Auth0.ManagementApi.Models.TenantFlags.EnablePublicSignupUserExistsError
+  name: EnablePublicSignupUserExistsError
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnablePublicSignupUserExistsError
+  commentId: P:Auth0.ManagementApi.Models.TenantFlags.EnablePublicSignupUserExistsError
+  fullName: Auth0.ManagementApi.Models.TenantFlags.EnablePublicSignupUserExistsError
+  nameWithType: TenantFlags.EnablePublicSignupUserExistsError
+- uid: Auth0.ManagementApi.Models.TenantFlags.EnablePublicSignupUserExistsError*
+  name: EnablePublicSignupUserExistsError
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnablePublicSignupUserExistsError_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantFlags.EnablePublicSignupUserExistsError
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantFlags.EnablePublicSignupUserExistsError
+  nameWithType: TenantFlags.EnablePublicSignupUserExistsError
+- uid: Auth0.ManagementApi.Models.TenantFlags.EnableSSO
+  name: EnableSSO
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnableSSO
+  commentId: P:Auth0.ManagementApi.Models.TenantFlags.EnableSSO
+  fullName: Auth0.ManagementApi.Models.TenantFlags.EnableSSO
+  nameWithType: TenantFlags.EnableSSO
+- uid: Auth0.ManagementApi.Models.TenantFlags.EnableSSO*
+  name: EnableSSO
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnableSSO_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantFlags.EnableSSO
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantFlags.EnableSSO
+  nameWithType: TenantFlags.EnableSSO
+- uid: Auth0.ManagementApi.Models.TenantFlags.EnforceClientAuthenticationOnPasswordlessStart
+  name: EnforceClientAuthenticationOnPasswordlessStart
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnforceClientAuthenticationOnPasswordlessStart
+  commentId: P:Auth0.ManagementApi.Models.TenantFlags.EnforceClientAuthenticationOnPasswordlessStart
+  fullName: Auth0.ManagementApi.Models.TenantFlags.EnforceClientAuthenticationOnPasswordlessStart
+  nameWithType: TenantFlags.EnforceClientAuthenticationOnPasswordlessStart
+- uid: Auth0.ManagementApi.Models.TenantFlags.EnforceClientAuthenticationOnPasswordlessStart*
+  name: EnforceClientAuthenticationOnPasswordlessStart
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_EnforceClientAuthenticationOnPasswordlessStart_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantFlags.EnforceClientAuthenticationOnPasswordlessStart
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantFlags.EnforceClientAuthenticationOnPasswordlessStart
+  nameWithType: TenantFlags.EnforceClientAuthenticationOnPasswordlessStart
+- uid: Auth0.ManagementApi.Models.TenantFlags.NoDiscloseEnterpriseConnections
+  name: NoDiscloseEnterpriseConnections
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_NoDiscloseEnterpriseConnections
+  commentId: P:Auth0.ManagementApi.Models.TenantFlags.NoDiscloseEnterpriseConnections
+  fullName: Auth0.ManagementApi.Models.TenantFlags.NoDiscloseEnterpriseConnections
+  nameWithType: TenantFlags.NoDiscloseEnterpriseConnections
+- uid: Auth0.ManagementApi.Models.TenantFlags.NoDiscloseEnterpriseConnections*
+  name: NoDiscloseEnterpriseConnections
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_NoDiscloseEnterpriseConnections_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantFlags.NoDiscloseEnterpriseConnections
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantFlags.NoDiscloseEnterpriseConnections
+  nameWithType: TenantFlags.NoDiscloseEnterpriseConnections
+- uid: Auth0.ManagementApi.Models.TenantFlags.RevokeRefreshTokenGrant
+  name: RevokeRefreshTokenGrant
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_RevokeRefreshTokenGrant
+  commentId: P:Auth0.ManagementApi.Models.TenantFlags.RevokeRefreshTokenGrant
+  fullName: Auth0.ManagementApi.Models.TenantFlags.RevokeRefreshTokenGrant
+  nameWithType: TenantFlags.RevokeRefreshTokenGrant
+- uid: Auth0.ManagementApi.Models.TenantFlags.RevokeRefreshTokenGrant*
+  name: RevokeRefreshTokenGrant
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_RevokeRefreshTokenGrant_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantFlags.RevokeRefreshTokenGrant
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantFlags.RevokeRefreshTokenGrant
+  nameWithType: TenantFlags.RevokeRefreshTokenGrant
+- uid: Auth0.ManagementApi.Models.TenantFlags.TrustAzureAdfsEmailVerifiedConnectionProperty
+  name: TrustAzureAdfsEmailVerifiedConnectionProperty
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_TrustAzureAdfsEmailVerifiedConnectionProperty
+  commentId: P:Auth0.ManagementApi.Models.TenantFlags.TrustAzureAdfsEmailVerifiedConnectionProperty
+  fullName: Auth0.ManagementApi.Models.TenantFlags.TrustAzureAdfsEmailVerifiedConnectionProperty
+  nameWithType: TenantFlags.TrustAzureAdfsEmailVerifiedConnectionProperty
+- uid: Auth0.ManagementApi.Models.TenantFlags.TrustAzureAdfsEmailVerifiedConnectionProperty*
+  name: TrustAzureAdfsEmailVerifiedConnectionProperty
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_TrustAzureAdfsEmailVerifiedConnectionProperty_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantFlags.TrustAzureAdfsEmailVerifiedConnectionProperty
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantFlags.TrustAzureAdfsEmailVerifiedConnectionProperty
+  nameWithType: TenantFlags.TrustAzureAdfsEmailVerifiedConnectionProperty
 - uid: Auth0.ManagementApi.Models.TenantGuardianMfaPage
   name: TenantGuardianMfaPage
   href: api/Auth0.ManagementApi.Models.TenantGuardianMfaPage.html
