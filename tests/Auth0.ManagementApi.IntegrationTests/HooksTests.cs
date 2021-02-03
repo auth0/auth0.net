@@ -35,7 +35,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var newHookRequest = new HookCreateRequest()
             {
                 Name = $"integration-test-hook-{Guid.NewGuid():N}",
-                Script = @"function(client, scope, audience, context, callback) { {
+                Script = @"module.exports = function(client, scope, audience, context, callback) { {
                               // TODO: implement your hook
                               callback(null, context);
                             }",
@@ -50,7 +50,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             hooksAfter.Count.Should().Be(hooksBefore.Count + 1);
 
             // Update the Hook
-            var updateHookRequest = new HookUpdateRequest()
+            var updateHookRequest = new HookUpdateRequest
             {
                 Name = $"integration-test-hook-{Guid.NewGuid():N}"
             };
