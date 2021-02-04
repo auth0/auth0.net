@@ -8,17 +8,14 @@
         public bool? Enabled { get; set; }
 
         /// <summary>
-        /// A comma separated list of fields to include or exclude (depending on <see cref="IncludeFields"/>) from the result, empty to retrieve all fields.
+        /// A Comma-separated list of fields to include in the result. Leave empty to retrieve all fields.
         /// </summary>
         public string Fields { get; set; }
 
         /// <summary>
-        /// True if the fields specified are to be included in the result, false otherwise.
+        /// Gets or sets the triggerId of the hook. 
         /// </summary>
-        /// <remarks>
-        /// Defaults to true.
-        /// </remarks>
-        public bool? IncludeFields { get; set; }
+        public string TriggerId { get; set; }
 
     }
 }

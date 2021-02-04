@@ -64,7 +64,7 @@ namespace Auth0.ManagementApi.Clients
                 {
                     {"enabled", request.Enabled?.ToString().ToLower()},
                     {"fields", request.Fields},
-                    {"include_fields", request.IncludeFields?.ToString().ToLower()},
+                    {"triggerId", request.TriggerId },
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
@@ -76,21 +76,15 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="id">The ID of the hook to retrieve.</param>
         /// <param name="fields">
-        /// A comma separated list of fields to include or exclude (depending on
-        /// <paramref name="includeFields" />) from the result, empty to retrieve all fields.
-        /// </param>
-        /// <param name="includeFields">
-        /// True if the fields specified are to be included in the result, false otherwise (defaults to
-        /// true).
+        /// A comma separated list of fields to include, empty to retrieve all fields.
         /// </param>
         /// <returns>The <see cref="Hook" /> that was requested.</returns>
-        public Task<Hook> GetAsync(string id, string fields = null, bool includeFields = true)
+        public Task<Hook> GetAsync(string id, string fields = null)
         {
             return Connection.GetAsync<Hook>(BuildUri($"hooks/{EncodePath(id)}",
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
-                    {"include_fields", includeFields.ToString().ToLower()}
                 }), DefaultHeaders);
         }
 

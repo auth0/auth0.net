@@ -29,9 +29,9 @@ namespace Auth0.ManagementApi.Models
         public string Script { get; set; }
 
         /// <summary>
-        /// Gets or sets the triggerId of the hook. 
+        /// Gets or sets the dependencies of this hook used by webtask server.
         /// </summary>
-        [JsonProperty("triggerId")]
-        public string TriggerId { get; set; }
+        [JsonProperty("dependencies")]
+        public dynamic Dependencies { get; set; }
     }
 }
