@@ -15,8 +15,8 @@ namespace Auth0.ManagementApi.IntegrationTests
 
         public async Task InitializeAsync()
         {
-            string token = await GenerateManagementApiToken();
-            _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+            string token = await GenerateBruckeManagementApiToken();
+            _apiClient = new ManagementApiClient(token, GetVariable("BRUCKE_MANAGEMENT_API_URL"));
         }
 
         public Task DisposeAsync()
@@ -43,7 +43,6 @@ namespace Auth0.ManagementApi.IntegrationTests
             };
             var newHookResponse = await _apiClient.Hooks.CreateAsync(newHookRequest);
             newHookResponse.Should().NotBeNull();
-            newHookResponse.Name.Should().Be(newHookRequest.Name);
 
             // Get all the hooks again, and check that we now have one more
             var hooksAfter = await _apiClient.Hooks.GetAllAsync(new GetHooksRequest(), new PaginationInfo());
@@ -52,21 +51,23 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Update the Hook
             var updateHookRequest = new HookUpdateRequest
             {
-                Name = $"integration-test-hook-{Guid.NewGuid():N}"
+                Name = $"integration-test-hook-2-{Guid.NewGuid():N}"
             };
             var updateHookResponse = await _apiClient.Hooks.UpdateAsync(newHookResponse.Id, updateHookRequest);
             updateHookResponse.Should().NotBeNull();
-            updateHookResponse.Name.Should().Be(updateHookRequest.Name);
+            // Because the Hooks endpoint changes the name of a Hook when using a Guid in the name, 
+            // we can only verify the name starts with the part without the Guid.
+            updateHookResponse.Name.StartsWith("integration-test-hook-2-").Should().BeTrue();
 
             // Get a single hook
             var hook = await _apiClient.Hooks.GetAsync(newHookResponse.Id);
             hook.Should().NotBeNull();
-            hook.Name.Should().Be(updateHookRequest.Name);
+            hook.Name.StartsWith("integration-test-hook-2").Should().BeTrue();
 
             // Delete the hook, and ensure we get exception when trying to fetch it again
             await _apiClient.Hooks.DeleteAsync(hook.Id);
             Func<Task> getFunc = async () => await _apiClient.Hooks.GetAsync(hook.Id);
-            getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_hook");
+            getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("HookDoesNotExist");
         }
 
         [Fact]
