@@ -12,5 +12,11 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the triggerId of the hook. 
+        /// </summary>
+        [JsonProperty("triggerId")]
+        public string TriggerId { get; set; }
     }
 }
