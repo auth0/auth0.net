@@ -92,6 +92,11 @@ namespace Auth0.ManagementApi
         public RulesClient Rules { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /hooks endpoints.
+        /// </summary>
+        public HooksClient Hooks { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /stats endpoints.
         /// </summary>
         public StatsClient Stats { get; }
@@ -142,6 +147,7 @@ namespace Auth0.ManagementApi
             EmailProvider = new EmailProviderClient(managementConnection, baseUri, defaultHeaders);
             EmailTemplates = new EmailTemplatesClient(managementConnection, baseUri, defaultHeaders);
             Guardian = new GuardianClient(managementConnection, baseUri, defaultHeaders);
+            Hooks = new HooksClient(managementConnection, baseUri, defaultHeaders);
             Jobs = new JobsClient(managementConnection, baseUri, defaultHeaders);
             Logs = new LogsClient(managementConnection, baseUri, defaultHeaders);
             LogStreams = new LogStreamsClient(managementConnection, baseUri, defaultHeaders);
