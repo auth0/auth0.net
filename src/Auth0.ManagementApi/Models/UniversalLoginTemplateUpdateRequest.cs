@@ -3,9 +3,9 @@
 namespace Auth0.ManagementApi.Models
 {
     /// <summary>
-    /// Request for updating a branding template
+    /// Request for updating a universal login template
     /// </summary>
-    public class BrandingTemplateUpdateRequest
+    public class UniversalLoginTemplateUpdateRequest
     {
         /// <summary>
         /// Gets or sets the custom page template for the New Universal Login Experience

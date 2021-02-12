@@ -45,17 +45,17 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Retrives the template for the new universal login experience.
         /// </summary>
-        /// <returns>The <see cref="BrandingTemplate"/> for the new universal login experience.</returns>
-        public Task<BrandingTemplate> GetTemplateAsync()
+        /// <returns>The <see cref="UniversalLoginTemplate"/> for the new universal login experience.</returns>
+        public Task<UniversalLoginTemplate> GetUniversalLoginTemplateAsync()
         {
-            return Connection.GetAsync<BrandingTemplate>(BuildUri("branding/templates/universal-login", new Dictionary<string, string>()), DefaultHeaders);
+            return Connection.GetAsync<UniversalLoginTemplate>(BuildUri("branding/templates/universal-login", new Dictionary<string, string>()), DefaultHeaders);
         }
 
         /// <summary>
         /// Deletes a template.
         /// </summary>
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-        public Task DeleteTemplateAsync()
+        public Task DeleteUniversalLoginTemplateAsync()
         {
             return Connection
                     .SendAsync<object>(
@@ -68,11 +68,11 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Sets the template for the new universal login experience.
         /// </summary>
-        /// <param name="request">The <see cref="BrandingTemplateUpdateRequest"/> containing details of the template to set.</param>
-        /// <returns>The newly updated <see cref="BrandingTemplate"/>.</returns>
-        public Task<BrandingTemplate> SetTemplateAsync(BrandingTemplateUpdateRequest request)
+        /// <param name="request">The <see cref="UniversalLoginTemplateUpdateRequest"/> containing details of the template to set.</param>
+        /// <returns>The newly updated <see cref="UniversalLoginTemplate"/>.</returns>
+        public Task<UniversalLoginTemplate> SetUniversalLoginTemplateAsync(UniversalLoginTemplateUpdateRequest request)
         {
-            return Connection.SendAsync<BrandingTemplate>(HttpMethod.Put, BuildUri("branding/templates/universal-login"), request, DefaultHeaders);
+            return Connection.SendAsync<UniversalLoginTemplate>(HttpMethod.Put, BuildUri("branding/templates/universal-login"), request, DefaultHeaders);
         }
     }
 }

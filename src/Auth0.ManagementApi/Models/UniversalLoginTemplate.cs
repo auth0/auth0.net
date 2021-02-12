@@ -2,7 +2,7 @@
 
 namespace Auth0.ManagementApi.Models
 {
-    public class BrandingTemplate
+    public class UniversalLoginTemplate
     {
         /// <summary>
         /// The custom page template for the new universal login experience.
