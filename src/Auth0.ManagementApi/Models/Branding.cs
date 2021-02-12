@@ -3,7 +3,7 @@ namespace Auth0.ManagementApi.Models
     /// <summary>
     /// 
     /// </summary>
-    public class TenantSettings : TenantSettingsBase
+    public class Branding : BrandingBase
     {
     }
 }
