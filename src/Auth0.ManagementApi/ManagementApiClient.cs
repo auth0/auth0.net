@@ -21,6 +21,11 @@ namespace Auth0.ManagementApi
         public BlacklistedTokensClient BlacklistedTokens { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /branding endpoints.
+        /// </summary>
+        public BrandingClient Branding { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /client-grants endpoints
         /// </summary>
         public ClientGrantsClient ClientGrants { get; }
@@ -139,6 +144,7 @@ namespace Auth0.ManagementApi
             var defaultHeaders = CreateDefaultHeaders(token);
 
             BlacklistedTokens = new BlacklistedTokensClient(managementConnection, baseUri, defaultHeaders);
+            Branding = new BrandingClient(managementConnection, baseUri, defaultHeaders);
             ClientGrants = new ClientGrantsClient(managementConnection, baseUri, defaultHeaders);
             Clients = new ClientsClient(managementConnection, baseUri, defaultHeaders);
             Connections = new ConnectionsClient(managementConnection, baseUri, defaultHeaders);
