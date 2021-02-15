@@ -11,7 +11,7 @@ namespace Auth0.AuthenticationApi.Tokens
         public static async Task<JsonWebKeySet> GetForIssuer(string issuer)
         {
             var metadataAddress = new UriBuilder(issuer) { Path = "/.well-known/openid-configuration" }.Uri.OriginalString;
-            var openIdConfiguration = await GetOpenIdConfiguration(metadataAddress);
+            var openIdConfiguration = await GetOpenIdConfiguration(metadataAddress).ConfigureAwait(false);
             return openIdConfiguration.JsonWebKeySet;
         }
 
