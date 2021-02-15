@@ -28,8 +28,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Branding"/> containing the branding for the tenant.</returns>
         public Task<Branding> GetAsync()
         {
-            return Connection.GetAsync<Branding>(BuildUri("branding",
-                new Dictionary<string, string>()), DefaultHeaders);
+            return Connection.GetAsync<Branding>(BuildUri("branding"), DefaultHeaders);
         }
 
         /// <summary>s
@@ -43,16 +42,16 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Retrives the template for the new universal login experience.
+        /// Retrieves the template for the New Universal Login Experience.
         /// </summary>
         /// <returns>The <see cref="UniversalLoginTemplate"/> for the new universal login experience.</returns>
         public Task<UniversalLoginTemplate> GetUniversalLoginTemplateAsync()
         {
-            return Connection.GetAsync<UniversalLoginTemplate>(BuildUri("branding/templates/universal-login", new Dictionary<string, string>()), DefaultHeaders);
+            return Connection.GetAsync<UniversalLoginTemplate>(BuildUri("branding/templates/universal-login"), DefaultHeaders);
         }
 
         /// <summary>
-        /// Deletes a template.
+        /// Delete the template for the New Universal Login Experience
         /// </summary>
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteUniversalLoginTemplateAsync()
@@ -66,7 +65,7 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Sets the template for the new universal login experience.
+        /// Sets the template for the New Universal Login Experience.
         /// </summary>
         /// <param name="request">The <see cref="UniversalLoginTemplateUpdateRequest"/> containing details of the template to set.</param>
         /// <returns>The newly updated <see cref="UniversalLoginTemplate"/>.</returns>
