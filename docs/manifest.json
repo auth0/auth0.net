@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "/Users/frederikprijck/Development/auth0.net/docs-source",
+  "source_base_path": "C:/Dev/Auth0/auth0.net/docs-source",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -57,7 +57,7 @@
           "hash": "ELLb3SrLLm2XXFIVjCrlgg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -69,7 +69,7 @@
           "hash": "Anu+xp+sTnc3lAeAjFhZoA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -81,7 +81,7 @@
           "hash": "4YYMT86JLTCfwGQBa+OPdg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -93,7 +93,7 @@
           "hash": "MU9N1IcbBOi1zCBCcjcECg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -714,7 +714,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.BaseClient.html",
-          "hash": "koNJ2jV6lsdGTS2xSyDFFw=="
+          "hash": "vS1s3bJOo7WdMwUEufK0zg=="
         }
       },
       "is_incremental": false,
@@ -727,6 +727,18 @@
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.BlacklistedTokensClient.html",
           "hash": "8XsDcV5MAro51KTgtoAUcA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.BrandingClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.BrandingClient.html",
+          "hash": "RcET0nCv4LoRZrcTlDR+rg=="
         }
       },
       "is_incremental": false,
@@ -823,6 +835,18 @@
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.GuardianClient.html",
           "hash": "IE/YJr7For6TxqOQ0aKzNA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.HooksClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.HooksClient.html",
+          "hash": "j/ER4FZZFUf3f5mvi98APw=="
         }
       },
       "is_incremental": false,
@@ -966,7 +990,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.html",
-          "hash": "URt06r7/IhY9Q0lbF3tTyA=="
+          "hash": "cBf10jgRqq91z8TTdvPvkQ=="
         }
       },
       "is_incremental": false,
@@ -1014,7 +1038,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.ManagementApiClient.html",
-          "hash": "l8alpMLr1CO/EsjTnwR3hw=="
+          "hash": "Nc8T/Kc7cT974EVO9zrgUQ=="
         }
       },
       "is_incremental": false,
@@ -1135,6 +1159,66 @@
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.BlacklistedTokenCreateRequest.html",
           "hash": "drvI7WPlqhdq9wSDrIP7xQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Branding.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Branding.html",
+          "hash": "GtUZjnTF6KXPl5lvD3xE9A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.BrandingBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.BrandingBase.html",
+          "hash": "D2JHpuMP4eqiIWgn8lTr0A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.BrandingColors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.BrandingColors.html",
+          "hash": "g074KvcuNlNFUN54cubupg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.BrandingFont.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.BrandingFont.html",
+          "hash": "89fkHyZQSxPoYGkbeJ57Jg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.BrandingUpdateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.BrandingUpdateRequest.html",
+          "hash": "BuHMXpbGfrddB6sxOav4XA=="
         }
       },
       "is_incremental": false,
@@ -1742,6 +1826,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.GetHooksRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.GetHooksRequest.html",
+          "hash": "xqj65kqm/XQg24GmoZXrgA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Auth0.ManagementApi.Models.GetLogsRequest.yml",
       "output": {
         ".html": {
@@ -1903,6 +1999,54 @@
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.GuardianTwilioConfigurationBase.html",
           "hash": "qqihvmKMZyuykBChQ0qaOw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Hook.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Hook.html",
+          "hash": "ymc8feQ7+s4HcZTYOAT3Yw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.HookBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.HookBase.html",
+          "hash": "T6lsa95pfx85GUy9Zst/gg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.HookCreateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.HookCreateRequest.html",
+          "hash": "ioeHbF007UY2CyNCdwVV7g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.HookUpdateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.HookUpdateRequest.html",
+          "hash": "WH5LtELaSPBp24ck91vQDQ=="
         }
       },
       "is_incremental": false,
@@ -2630,6 +2774,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.UniversalLoginTemplate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.UniversalLoginTemplate.html",
+          "hash": "DbSIin/56ePknvDx9Qx+cQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.UniversalLoginTemplateUpdateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.UniversalLoginTemplateUpdateRequest.html",
+          "hash": "hQApEJ9PzetnyMZWttBfvQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Auth0.ManagementApi.Models.UpdateGuardianFactorBase.yml",
       "output": {
         ".html": {
@@ -2850,7 +3018,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.html",
-          "hash": "qC78Derg2cxD0hzVrbOZ9g=="
+          "hash": "4MKsvE2ZKh+0WeiIKhOmBw=="
         }
       },
       "is_incremental": false,
@@ -2934,7 +3102,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "ynI282EM/CBWFAZygY/L6g=="
+          "hash": "HtTgNNvVT3qw/7HajMBI8w=="
         }
       },
       "is_incremental": false,
@@ -2956,25 +3124,23 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot build incrementally because docfx version changed from 2.45.1.0 to 2.56.4.0.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "DocfxVersionChanged"
+        "skipped_file_count": 0
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 5,
-          "skipped_file_count": 0
+          "skipped_file_count": 5
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 236,
-          "skipped_file_count": 0
+          "total_file_count": 250,
+          "skipped_file_count": 8
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,

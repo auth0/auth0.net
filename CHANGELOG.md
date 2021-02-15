@@ -1,5 +1,15 @@
 # Change Log
 
+## [release-7.6.0](https://github.com/auth0/auth0.net/tree/release-7.6.0) (2021-02-15)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.5.1...release-7.6.0)
+
+**Added**
+- Adds support for /branding endpoints [\#475](https://github.com/auth0/auth0.net/pull/475) ([connorconway](https://github.com/connorconway))
+- Adds support for /hooks endpoints [\#471](https://github.com/auth0/auth0.net/pull/471) ([connorconway](https://github.com/connorconway))
+
+**Changed**
+- Ensure await is using ConfigureAwait [\#474](https://github.com/auth0/auth0.net/pull/474) ([frederikprijck](https://github.com/frederikprijck))
+
 ## [release-7.5.1](https://github.com/auth0/auth0.net/tree/release-7.5.1) (2021-02-02)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.5.0...release-7.5.1)
 
