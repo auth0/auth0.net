@@ -16,7 +16,7 @@ namespace Auth0.AuthenticationApi
             if (string.IsNullOrWhiteSpace(idToken))
                 throw new IdTokenValidationException("ID token is required but missing.");
 
-            var verifiedToken = await DecodeSignedToken(requirements, idToken, clientSecret);
+            var verifiedToken = await DecodeSignedToken(requirements, idToken, clientSecret).ConfigureAwait(false);
             IdTokenClaimValidator.AssertClaimsMeetRequirements(requirements, verifiedToken, pointInTime ?? DateTime.Now);
         }
 
