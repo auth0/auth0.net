@@ -27,9 +27,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth0.ManagementApi.Integra
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "playground", "playground", "{E0399446-B2A6-44F6-B179-4D97676B479F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.NET5", "playground\Auth0.NET5\Auth0.NET5.csproj", "{AEDB01F2-B535-45D0-9ED5-3FEB90179786}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth0.NET5", "playground\Auth0.NET5\Auth0.NET5.csproj", "{AEDB01F2-B535-45D0-9ED5-3FEB90179786}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.NETCore3", "playground\Auth0.NETCore3\Auth0.NETCore3.csproj", "{F4721D05-77E6-41D7-BFCD-FEEF06F083F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth0.NETCore3", "playground\Auth0.NETCore3\Auth0.NETCore3.csproj", "{F4721D05-77E6-41D7-BFCD-FEEF06F083F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.NETFramework", "playground\Auth0.NETFramework\Auth0.NETFramework.csproj", "{FD7D56C3-C152-4C0A-B843-AE54A27077FA}"
 EndProject
@@ -64,17 +64,11 @@ Global
 		{AE75D5CF-1AB0-4630-B53C-EA6C7347A114}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE75D5CF-1AB0-4630-B53C-EA6C7347A114}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AEDB01F2-B535-45D0-9ED5-3FEB90179786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AEDB01F2-B535-45D0-9ED5-3FEB90179786}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AEDB01F2-B535-45D0-9ED5-3FEB90179786}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AEDB01F2-B535-45D0-9ED5-3FEB90179786}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F4721D05-77E6-41D7-BFCD-FEEF06F083F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F4721D05-77E6-41D7-BFCD-FEEF06F083F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4721D05-77E6-41D7-BFCD-FEEF06F083F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F4721D05-77E6-41D7-BFCD-FEEF06F083F3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FD7D56C3-C152-4C0A-B843-AE54A27077FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FD7D56C3-C152-4C0A-B843-AE54A27077FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD7D56C3-C152-4C0A-B843-AE54A27077FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FD7D56C3-C152-4C0A-B843-AE54A27077FA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
