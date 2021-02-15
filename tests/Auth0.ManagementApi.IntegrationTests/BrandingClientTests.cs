@@ -25,9 +25,6 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Test_Branding_Reand_And_Update()
         {
-            // Get initial branding
-            var branding = await _apiClient.Branding.GetAsync();
-
             try
             {
                 // Update branding
@@ -60,10 +57,16 @@ namespace Auth0.ManagementApi.IntegrationTests
                 // Rollback
                 await _apiClient.Branding.UpdateAsync(new Models.BrandingUpdateRequest
                 {
-                    Colors = branding.Colors,
-                    LogoUrl = branding.LogoUrl,
-                    FaviconUrl = branding.FaviconUrl,
-                    Font = branding.Font,
+                    Colors = new Models.BrandingColors { 
+                        Primary = "#0059d6",
+                        PageBackground = "#000000"
+                    },
+                    LogoUrl = "https://cdn.auth0.com/website/press/resources/auth0-logo-monotone-black.svg",
+                    FaviconUrl = "https://cdn2.auth0.com/styleguide/latest/lib/logos/img/favicon.png",
+                    Font = new Models.BrandingFont
+                    {
+                        Url = "https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+                    },
                 });
             }
         }
