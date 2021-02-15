@@ -3356,6 +3356,93 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.BlacklistedTokensClient.GetAllAsync
   nameWithType: BlacklistedTokensClient.GetAllAsync
+- uid: Auth0.ManagementApi.Clients.BrandingClient
+  name: BrandingClient
+  href: api/Auth0.ManagementApi.Clients.BrandingClient.html
+  commentId: T:Auth0.ManagementApi.Clients.BrandingClient
+  fullName: Auth0.ManagementApi.Clients.BrandingClient
+  nameWithType: BrandingClient
+- uid: Auth0.ManagementApi.Clients.BrandingClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})
+  name: BrandingClient(IManagementConnection, Uri, IDictionary<String, String>)
+  href: api/Auth0.ManagementApi.Clients.BrandingClient.html#Auth0_ManagementApi_Clients_BrandingClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__
+  commentId: M:Auth0.ManagementApi.Clients.BrandingClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})
+  name.vb: BrandingClient(IManagementConnection, Uri, IDictionary(Of String, String))
+  fullName: Auth0.ManagementApi.Clients.BrandingClient.BrandingClient(Auth0.ManagementApi.IManagementConnection, System.Uri, System.Collections.Generic.IDictionary<System.String, System.String>)
+  fullName.vb: Auth0.ManagementApi.Clients.BrandingClient.BrandingClient(Auth0.ManagementApi.IManagementConnection, System.Uri, System.Collections.Generic.IDictionary(Of System.String, System.String))
+  nameWithType: BrandingClient.BrandingClient(IManagementConnection, Uri, IDictionary<String, String>)
+  nameWithType.vb: BrandingClient.BrandingClient(IManagementConnection, Uri, IDictionary(Of String, String))
+- uid: Auth0.ManagementApi.Clients.BrandingClient.#ctor*
+  name: BrandingClient
+  href: api/Auth0.ManagementApi.Clients.BrandingClient.html#Auth0_ManagementApi_Clients_BrandingClient__ctor_
+  commentId: Overload:Auth0.ManagementApi.Clients.BrandingClient.#ctor
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.BrandingClient.BrandingClient
+  nameWithType: BrandingClient.BrandingClient
+- uid: Auth0.ManagementApi.Clients.BrandingClient.DeleteUniversalLoginTemplateAsync
+  name: DeleteUniversalLoginTemplateAsync()
+  href: api/Auth0.ManagementApi.Clients.BrandingClient.html#Auth0_ManagementApi_Clients_BrandingClient_DeleteUniversalLoginTemplateAsync
+  commentId: M:Auth0.ManagementApi.Clients.BrandingClient.DeleteUniversalLoginTemplateAsync
+  fullName: Auth0.ManagementApi.Clients.BrandingClient.DeleteUniversalLoginTemplateAsync()
+  nameWithType: BrandingClient.DeleteUniversalLoginTemplateAsync()
+- uid: Auth0.ManagementApi.Clients.BrandingClient.DeleteUniversalLoginTemplateAsync*
+  name: DeleteUniversalLoginTemplateAsync
+  href: api/Auth0.ManagementApi.Clients.BrandingClient.html#Auth0_ManagementApi_Clients_BrandingClient_DeleteUniversalLoginTemplateAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.BrandingClient.DeleteUniversalLoginTemplateAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.BrandingClient.DeleteUniversalLoginTemplateAsync
+  nameWithType: BrandingClient.DeleteUniversalLoginTemplateAsync
+- uid: Auth0.ManagementApi.Clients.BrandingClient.GetAsync
+  name: GetAsync()
+  href: api/Auth0.ManagementApi.Clients.BrandingClient.html#Auth0_ManagementApi_Clients_BrandingClient_GetAsync
+  commentId: M:Auth0.ManagementApi.Clients.BrandingClient.GetAsync
+  fullName: Auth0.ManagementApi.Clients.BrandingClient.GetAsync()
+  nameWithType: BrandingClient.GetAsync()
+- uid: Auth0.ManagementApi.Clients.BrandingClient.GetAsync*
+  name: GetAsync
+  href: api/Auth0.ManagementApi.Clients.BrandingClient.html#Auth0_ManagementApi_Clients_BrandingClient_GetAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.BrandingClient.GetAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.BrandingClient.GetAsync
+  nameWithType: BrandingClient.GetAsync
+- uid: Auth0.ManagementApi.Clients.BrandingClient.GetUniversalLoginTemplateAsync
+  name: GetUniversalLoginTemplateAsync()
+  href: api/Auth0.ManagementApi.Clients.BrandingClient.html#Auth0_ManagementApi_Clients_BrandingClient_GetUniversalLoginTemplateAsync
+  commentId: M:Auth0.ManagementApi.Clients.BrandingClient.GetUniversalLoginTemplateAsync
+  fullName: Auth0.ManagementApi.Clients.BrandingClient.GetUniversalLoginTemplateAsync()
+  nameWithType: BrandingClient.GetUniversalLoginTemplateAsync()
+- uid: Auth0.ManagementApi.Clients.BrandingClient.GetUniversalLoginTemplateAsync*
+  name: GetUniversalLoginTemplateAsync
+  href: api/Auth0.ManagementApi.Clients.BrandingClient.html#Auth0_ManagementApi_Clients_BrandingClient_GetUniversalLoginTemplateAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.BrandingClient.GetUniversalLoginTemplateAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.BrandingClient.GetUniversalLoginTemplateAsync
+  nameWithType: BrandingClient.GetUniversalLoginTemplateAsync
+- uid: Auth0.ManagementApi.Clients.BrandingClient.SetUniversalLoginTemplateAsync(Auth0.ManagementApi.Models.UniversalLoginTemplateUpdateRequest)
+  name: SetUniversalLoginTemplateAsync(UniversalLoginTemplateUpdateRequest)
+  href: api/Auth0.ManagementApi.Clients.BrandingClient.html#Auth0_ManagementApi_Clients_BrandingClient_SetUniversalLoginTemplateAsync_Auth0_ManagementApi_Models_UniversalLoginTemplateUpdateRequest_
+  commentId: M:Auth0.ManagementApi.Clients.BrandingClient.SetUniversalLoginTemplateAsync(Auth0.ManagementApi.Models.UniversalLoginTemplateUpdateRequest)
+  fullName: Auth0.ManagementApi.Clients.BrandingClient.SetUniversalLoginTemplateAsync(Auth0.ManagementApi.Models.UniversalLoginTemplateUpdateRequest)
+  nameWithType: BrandingClient.SetUniversalLoginTemplateAsync(UniversalLoginTemplateUpdateRequest)
+- uid: Auth0.ManagementApi.Clients.BrandingClient.SetUniversalLoginTemplateAsync*
+  name: SetUniversalLoginTemplateAsync
+  href: api/Auth0.ManagementApi.Clients.BrandingClient.html#Auth0_ManagementApi_Clients_BrandingClient_SetUniversalLoginTemplateAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.BrandingClient.SetUniversalLoginTemplateAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.BrandingClient.SetUniversalLoginTemplateAsync
+  nameWithType: BrandingClient.SetUniversalLoginTemplateAsync
+- uid: Auth0.ManagementApi.Clients.BrandingClient.UpdateAsync(Auth0.ManagementApi.Models.BrandingUpdateRequest)
+  name: UpdateAsync(BrandingUpdateRequest)
+  href: api/Auth0.ManagementApi.Clients.BrandingClient.html#Auth0_ManagementApi_Clients_BrandingClient_UpdateAsync_Auth0_ManagementApi_Models_BrandingUpdateRequest_
+  commentId: M:Auth0.ManagementApi.Clients.BrandingClient.UpdateAsync(Auth0.ManagementApi.Models.BrandingUpdateRequest)
+  fullName: Auth0.ManagementApi.Clients.BrandingClient.UpdateAsync(Auth0.ManagementApi.Models.BrandingUpdateRequest)
+  nameWithType: BrandingClient.UpdateAsync(BrandingUpdateRequest)
+- uid: Auth0.ManagementApi.Clients.BrandingClient.UpdateAsync*
+  name: UpdateAsync
+  href: api/Auth0.ManagementApi.Clients.BrandingClient.html#Auth0_ManagementApi_Clients_BrandingClient_UpdateAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.BrandingClient.UpdateAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.BrandingClient.UpdateAsync
+  nameWithType: BrandingClient.UpdateAsync
 - uid: Auth0.ManagementApi.Clients.ClientGrantsClient
   name: ClientGrantsClient
   href: api/Auth0.ManagementApi.Clients.ClientGrantsClient.html
@@ -4084,6 +4171,93 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.GuardianClient.UpdateTwilioConfigurationAsync
   nameWithType: GuardianClient.UpdateTwilioConfigurationAsync
+- uid: Auth0.ManagementApi.Clients.HooksClient
+  name: HooksClient
+  href: api/Auth0.ManagementApi.Clients.HooksClient.html
+  commentId: T:Auth0.ManagementApi.Clients.HooksClient
+  fullName: Auth0.ManagementApi.Clients.HooksClient
+  nameWithType: HooksClient
+- uid: Auth0.ManagementApi.Clients.HooksClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})
+  name: HooksClient(IManagementConnection, Uri, IDictionary<String, String>)
+  href: api/Auth0.ManagementApi.Clients.HooksClient.html#Auth0_ManagementApi_Clients_HooksClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__
+  commentId: M:Auth0.ManagementApi.Clients.HooksClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})
+  name.vb: HooksClient(IManagementConnection, Uri, IDictionary(Of String, String))
+  fullName: Auth0.ManagementApi.Clients.HooksClient.HooksClient(Auth0.ManagementApi.IManagementConnection, System.Uri, System.Collections.Generic.IDictionary<System.String, System.String>)
+  fullName.vb: Auth0.ManagementApi.Clients.HooksClient.HooksClient(Auth0.ManagementApi.IManagementConnection, System.Uri, System.Collections.Generic.IDictionary(Of System.String, System.String))
+  nameWithType: HooksClient.HooksClient(IManagementConnection, Uri, IDictionary<String, String>)
+  nameWithType.vb: HooksClient.HooksClient(IManagementConnection, Uri, IDictionary(Of String, String))
+- uid: Auth0.ManagementApi.Clients.HooksClient.#ctor*
+  name: HooksClient
+  href: api/Auth0.ManagementApi.Clients.HooksClient.html#Auth0_ManagementApi_Clients_HooksClient__ctor_
+  commentId: Overload:Auth0.ManagementApi.Clients.HooksClient.#ctor
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.HooksClient.HooksClient
+  nameWithType: HooksClient.HooksClient
+- uid: Auth0.ManagementApi.Clients.HooksClient.CreateAsync(Auth0.ManagementApi.Models.HookCreateRequest)
+  name: CreateAsync(HookCreateRequest)
+  href: api/Auth0.ManagementApi.Clients.HooksClient.html#Auth0_ManagementApi_Clients_HooksClient_CreateAsync_Auth0_ManagementApi_Models_HookCreateRequest_
+  commentId: M:Auth0.ManagementApi.Clients.HooksClient.CreateAsync(Auth0.ManagementApi.Models.HookCreateRequest)
+  fullName: Auth0.ManagementApi.Clients.HooksClient.CreateAsync(Auth0.ManagementApi.Models.HookCreateRequest)
+  nameWithType: HooksClient.CreateAsync(HookCreateRequest)
+- uid: Auth0.ManagementApi.Clients.HooksClient.CreateAsync*
+  name: CreateAsync
+  href: api/Auth0.ManagementApi.Clients.HooksClient.html#Auth0_ManagementApi_Clients_HooksClient_CreateAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.HooksClient.CreateAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.HooksClient.CreateAsync
+  nameWithType: HooksClient.CreateAsync
+- uid: Auth0.ManagementApi.Clients.HooksClient.DeleteAsync(System.String)
+  name: DeleteAsync(String)
+  href: api/Auth0.ManagementApi.Clients.HooksClient.html#Auth0_ManagementApi_Clients_HooksClient_DeleteAsync_System_String_
+  commentId: M:Auth0.ManagementApi.Clients.HooksClient.DeleteAsync(System.String)
+  fullName: Auth0.ManagementApi.Clients.HooksClient.DeleteAsync(System.String)
+  nameWithType: HooksClient.DeleteAsync(String)
+- uid: Auth0.ManagementApi.Clients.HooksClient.DeleteAsync*
+  name: DeleteAsync
+  href: api/Auth0.ManagementApi.Clients.HooksClient.html#Auth0_ManagementApi_Clients_HooksClient_DeleteAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.HooksClient.DeleteAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.HooksClient.DeleteAsync
+  nameWithType: HooksClient.DeleteAsync
+- uid: Auth0.ManagementApi.Clients.HooksClient.GetAllAsync(Auth0.ManagementApi.Models.GetHooksRequest,Auth0.ManagementApi.Paging.PaginationInfo)
+  name: GetAllAsync(GetHooksRequest, PaginationInfo)
+  href: api/Auth0.ManagementApi.Clients.HooksClient.html#Auth0_ManagementApi_Clients_HooksClient_GetAllAsync_Auth0_ManagementApi_Models_GetHooksRequest_Auth0_ManagementApi_Paging_PaginationInfo_
+  commentId: M:Auth0.ManagementApi.Clients.HooksClient.GetAllAsync(Auth0.ManagementApi.Models.GetHooksRequest,Auth0.ManagementApi.Paging.PaginationInfo)
+  fullName: Auth0.ManagementApi.Clients.HooksClient.GetAllAsync(Auth0.ManagementApi.Models.GetHooksRequest, Auth0.ManagementApi.Paging.PaginationInfo)
+  nameWithType: HooksClient.GetAllAsync(GetHooksRequest, PaginationInfo)
+- uid: Auth0.ManagementApi.Clients.HooksClient.GetAllAsync*
+  name: GetAllAsync
+  href: api/Auth0.ManagementApi.Clients.HooksClient.html#Auth0_ManagementApi_Clients_HooksClient_GetAllAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.HooksClient.GetAllAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.HooksClient.GetAllAsync
+  nameWithType: HooksClient.GetAllAsync
+- uid: Auth0.ManagementApi.Clients.HooksClient.GetAsync(System.String,System.String)
+  name: GetAsync(String, String)
+  href: api/Auth0.ManagementApi.Clients.HooksClient.html#Auth0_ManagementApi_Clients_HooksClient_GetAsync_System_String_System_String_
+  commentId: M:Auth0.ManagementApi.Clients.HooksClient.GetAsync(System.String,System.String)
+  fullName: Auth0.ManagementApi.Clients.HooksClient.GetAsync(System.String, System.String)
+  nameWithType: HooksClient.GetAsync(String, String)
+- uid: Auth0.ManagementApi.Clients.HooksClient.GetAsync*
+  name: GetAsync
+  href: api/Auth0.ManagementApi.Clients.HooksClient.html#Auth0_ManagementApi_Clients_HooksClient_GetAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.HooksClient.GetAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.HooksClient.GetAsync
+  nameWithType: HooksClient.GetAsync
+- uid: Auth0.ManagementApi.Clients.HooksClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.HookUpdateRequest)
+  name: UpdateAsync(String, HookUpdateRequest)
+  href: api/Auth0.ManagementApi.Clients.HooksClient.html#Auth0_ManagementApi_Clients_HooksClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_HookUpdateRequest_
+  commentId: M:Auth0.ManagementApi.Clients.HooksClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.HookUpdateRequest)
+  fullName: Auth0.ManagementApi.Clients.HooksClient.UpdateAsync(System.String, Auth0.ManagementApi.Models.HookUpdateRequest)
+  nameWithType: HooksClient.UpdateAsync(String, HookUpdateRequest)
+- uid: Auth0.ManagementApi.Clients.HooksClient.UpdateAsync*
+  name: UpdateAsync
+  href: api/Auth0.ManagementApi.Clients.HooksClient.html#Auth0_ManagementApi_Clients_HooksClient_UpdateAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.HooksClient.UpdateAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.HooksClient.UpdateAsync
+  nameWithType: HooksClient.UpdateAsync
 - uid: Auth0.ManagementApi.Clients.JobsClient
   name: JobsClient
   href: api/Auth0.ManagementApi.Clients.JobsClient.html
@@ -5288,6 +5462,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.ManagementApiClient.BlacklistedTokens
   nameWithType: ManagementApiClient.BlacklistedTokens
+- uid: Auth0.ManagementApi.ManagementApiClient.Branding
+  name: Branding
+  href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_Branding
+  commentId: P:Auth0.ManagementApi.ManagementApiClient.Branding
+  fullName: Auth0.ManagementApi.ManagementApiClient.Branding
+  nameWithType: ManagementApiClient.Branding
+- uid: Auth0.ManagementApi.ManagementApiClient.Branding*
+  name: Branding
+  href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_Branding_
+  commentId: Overload:Auth0.ManagementApi.ManagementApiClient.Branding
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.ManagementApiClient.Branding
+  nameWithType: ManagementApiClient.Branding
 - uid: Auth0.ManagementApi.ManagementApiClient.ClientGrants
   name: ClientGrants
   href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_ClientGrants
@@ -5411,6 +5598,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.ManagementApiClient.Guardian
   nameWithType: ManagementApiClient.Guardian
+- uid: Auth0.ManagementApi.ManagementApiClient.Hooks
+  name: Hooks
+  href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_Hooks
+  commentId: P:Auth0.ManagementApi.ManagementApiClient.Hooks
+  fullName: Auth0.ManagementApi.ManagementApiClient.Hooks
+  nameWithType: ManagementApiClient.Hooks
+- uid: Auth0.ManagementApi.ManagementApiClient.Hooks*
+  name: Hooks
+  href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_Hooks_
+  commentId: Overload:Auth0.ManagementApi.ManagementApiClient.Hooks
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.ManagementApiClient.Hooks
+  nameWithType: ManagementApiClient.Hooks
 - uid: Auth0.ManagementApi.ManagementApiClient.Jobs
   name: Jobs
   href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_Jobs
@@ -6127,6 +6327,127 @@ references:
   commentId: T:Auth0.ManagementApi.Models.BlacklistedTokenCreateRequest
   fullName: Auth0.ManagementApi.Models.BlacklistedTokenCreateRequest
   nameWithType: BlacklistedTokenCreateRequest
+- uid: Auth0.ManagementApi.Models.Branding
+  name: Branding
+  href: api/Auth0.ManagementApi.Models.Branding.html
+  commentId: T:Auth0.ManagementApi.Models.Branding
+  fullName: Auth0.ManagementApi.Models.Branding
+  nameWithType: Branding
+- uid: Auth0.ManagementApi.Models.BrandingBase
+  name: BrandingBase
+  href: api/Auth0.ManagementApi.Models.BrandingBase.html
+  commentId: T:Auth0.ManagementApi.Models.BrandingBase
+  fullName: Auth0.ManagementApi.Models.BrandingBase
+  nameWithType: BrandingBase
+- uid: Auth0.ManagementApi.Models.BrandingBase.Colors
+  name: Colors
+  href: api/Auth0.ManagementApi.Models.BrandingBase.html#Auth0_ManagementApi_Models_BrandingBase_Colors
+  commentId: P:Auth0.ManagementApi.Models.BrandingBase.Colors
+  fullName: Auth0.ManagementApi.Models.BrandingBase.Colors
+  nameWithType: BrandingBase.Colors
+- uid: Auth0.ManagementApi.Models.BrandingBase.Colors*
+  name: Colors
+  href: api/Auth0.ManagementApi.Models.BrandingBase.html#Auth0_ManagementApi_Models_BrandingBase_Colors_
+  commentId: Overload:Auth0.ManagementApi.Models.BrandingBase.Colors
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.BrandingBase.Colors
+  nameWithType: BrandingBase.Colors
+- uid: Auth0.ManagementApi.Models.BrandingBase.FaviconUrl
+  name: FaviconUrl
+  href: api/Auth0.ManagementApi.Models.BrandingBase.html#Auth0_ManagementApi_Models_BrandingBase_FaviconUrl
+  commentId: P:Auth0.ManagementApi.Models.BrandingBase.FaviconUrl
+  fullName: Auth0.ManagementApi.Models.BrandingBase.FaviconUrl
+  nameWithType: BrandingBase.FaviconUrl
+- uid: Auth0.ManagementApi.Models.BrandingBase.FaviconUrl*
+  name: FaviconUrl
+  href: api/Auth0.ManagementApi.Models.BrandingBase.html#Auth0_ManagementApi_Models_BrandingBase_FaviconUrl_
+  commentId: Overload:Auth0.ManagementApi.Models.BrandingBase.FaviconUrl
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.BrandingBase.FaviconUrl
+  nameWithType: BrandingBase.FaviconUrl
+- uid: Auth0.ManagementApi.Models.BrandingBase.Font
+  name: Font
+  href: api/Auth0.ManagementApi.Models.BrandingBase.html#Auth0_ManagementApi_Models_BrandingBase_Font
+  commentId: P:Auth0.ManagementApi.Models.BrandingBase.Font
+  fullName: Auth0.ManagementApi.Models.BrandingBase.Font
+  nameWithType: BrandingBase.Font
+- uid: Auth0.ManagementApi.Models.BrandingBase.Font*
+  name: Font
+  href: api/Auth0.ManagementApi.Models.BrandingBase.html#Auth0_ManagementApi_Models_BrandingBase_Font_
+  commentId: Overload:Auth0.ManagementApi.Models.BrandingBase.Font
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.BrandingBase.Font
+  nameWithType: BrandingBase.Font
+- uid: Auth0.ManagementApi.Models.BrandingBase.LogoUrl
+  name: LogoUrl
+  href: api/Auth0.ManagementApi.Models.BrandingBase.html#Auth0_ManagementApi_Models_BrandingBase_LogoUrl
+  commentId: P:Auth0.ManagementApi.Models.BrandingBase.LogoUrl
+  fullName: Auth0.ManagementApi.Models.BrandingBase.LogoUrl
+  nameWithType: BrandingBase.LogoUrl
+- uid: Auth0.ManagementApi.Models.BrandingBase.LogoUrl*
+  name: LogoUrl
+  href: api/Auth0.ManagementApi.Models.BrandingBase.html#Auth0_ManagementApi_Models_BrandingBase_LogoUrl_
+  commentId: Overload:Auth0.ManagementApi.Models.BrandingBase.LogoUrl
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.BrandingBase.LogoUrl
+  nameWithType: BrandingBase.LogoUrl
+- uid: Auth0.ManagementApi.Models.BrandingColors
+  name: BrandingColors
+  href: api/Auth0.ManagementApi.Models.BrandingColors.html
+  commentId: T:Auth0.ManagementApi.Models.BrandingColors
+  fullName: Auth0.ManagementApi.Models.BrandingColors
+  nameWithType: BrandingColors
+- uid: Auth0.ManagementApi.Models.BrandingColors.PageBackground
+  name: PageBackground
+  href: api/Auth0.ManagementApi.Models.BrandingColors.html#Auth0_ManagementApi_Models_BrandingColors_PageBackground
+  commentId: P:Auth0.ManagementApi.Models.BrandingColors.PageBackground
+  fullName: Auth0.ManagementApi.Models.BrandingColors.PageBackground
+  nameWithType: BrandingColors.PageBackground
+- uid: Auth0.ManagementApi.Models.BrandingColors.PageBackground*
+  name: PageBackground
+  href: api/Auth0.ManagementApi.Models.BrandingColors.html#Auth0_ManagementApi_Models_BrandingColors_PageBackground_
+  commentId: Overload:Auth0.ManagementApi.Models.BrandingColors.PageBackground
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.BrandingColors.PageBackground
+  nameWithType: BrandingColors.PageBackground
+- uid: Auth0.ManagementApi.Models.BrandingColors.Primary
+  name: Primary
+  href: api/Auth0.ManagementApi.Models.BrandingColors.html#Auth0_ManagementApi_Models_BrandingColors_Primary
+  commentId: P:Auth0.ManagementApi.Models.BrandingColors.Primary
+  fullName: Auth0.ManagementApi.Models.BrandingColors.Primary
+  nameWithType: BrandingColors.Primary
+- uid: Auth0.ManagementApi.Models.BrandingColors.Primary*
+  name: Primary
+  href: api/Auth0.ManagementApi.Models.BrandingColors.html#Auth0_ManagementApi_Models_BrandingColors_Primary_
+  commentId: Overload:Auth0.ManagementApi.Models.BrandingColors.Primary
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.BrandingColors.Primary
+  nameWithType: BrandingColors.Primary
+- uid: Auth0.ManagementApi.Models.BrandingFont
+  name: BrandingFont
+  href: api/Auth0.ManagementApi.Models.BrandingFont.html
+  commentId: T:Auth0.ManagementApi.Models.BrandingFont
+  fullName: Auth0.ManagementApi.Models.BrandingFont
+  nameWithType: BrandingFont
+- uid: Auth0.ManagementApi.Models.BrandingFont.Url
+  name: Url
+  href: api/Auth0.ManagementApi.Models.BrandingFont.html#Auth0_ManagementApi_Models_BrandingFont_Url
+  commentId: P:Auth0.ManagementApi.Models.BrandingFont.Url
+  fullName: Auth0.ManagementApi.Models.BrandingFont.Url
+  nameWithType: BrandingFont.Url
+- uid: Auth0.ManagementApi.Models.BrandingFont.Url*
+  name: Url
+  href: api/Auth0.ManagementApi.Models.BrandingFont.html#Auth0_ManagementApi_Models_BrandingFont_Url_
+  commentId: Overload:Auth0.ManagementApi.Models.BrandingFont.Url
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.BrandingFont.Url
+  nameWithType: BrandingFont.Url
+- uid: Auth0.ManagementApi.Models.BrandingUpdateRequest
+  name: BrandingUpdateRequest
+  href: api/Auth0.ManagementApi.Models.BrandingUpdateRequest.html
+  commentId: T:Auth0.ManagementApi.Models.BrandingUpdateRequest
+  fullName: Auth0.ManagementApi.Models.BrandingUpdateRequest
+  nameWithType: BrandingUpdateRequest
 - uid: Auth0.ManagementApi.Models.Client
   name: Client
   href: api/Auth0.ManagementApi.Models.Client.html
@@ -8538,6 +8859,51 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.UserId
   nameWithType: GetDeviceCredentialsRequest.UserId
+- uid: Auth0.ManagementApi.Models.GetHooksRequest
+  name: GetHooksRequest
+  href: api/Auth0.ManagementApi.Models.GetHooksRequest.html
+  commentId: T:Auth0.ManagementApi.Models.GetHooksRequest
+  fullName: Auth0.ManagementApi.Models.GetHooksRequest
+  nameWithType: GetHooksRequest
+- uid: Auth0.ManagementApi.Models.GetHooksRequest.Enabled
+  name: Enabled
+  href: api/Auth0.ManagementApi.Models.GetHooksRequest.html#Auth0_ManagementApi_Models_GetHooksRequest_Enabled
+  commentId: P:Auth0.ManagementApi.Models.GetHooksRequest.Enabled
+  fullName: Auth0.ManagementApi.Models.GetHooksRequest.Enabled
+  nameWithType: GetHooksRequest.Enabled
+- uid: Auth0.ManagementApi.Models.GetHooksRequest.Enabled*
+  name: Enabled
+  href: api/Auth0.ManagementApi.Models.GetHooksRequest.html#Auth0_ManagementApi_Models_GetHooksRequest_Enabled_
+  commentId: Overload:Auth0.ManagementApi.Models.GetHooksRequest.Enabled
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.GetHooksRequest.Enabled
+  nameWithType: GetHooksRequest.Enabled
+- uid: Auth0.ManagementApi.Models.GetHooksRequest.Fields
+  name: Fields
+  href: api/Auth0.ManagementApi.Models.GetHooksRequest.html#Auth0_ManagementApi_Models_GetHooksRequest_Fields
+  commentId: P:Auth0.ManagementApi.Models.GetHooksRequest.Fields
+  fullName: Auth0.ManagementApi.Models.GetHooksRequest.Fields
+  nameWithType: GetHooksRequest.Fields
+- uid: Auth0.ManagementApi.Models.GetHooksRequest.Fields*
+  name: Fields
+  href: api/Auth0.ManagementApi.Models.GetHooksRequest.html#Auth0_ManagementApi_Models_GetHooksRequest_Fields_
+  commentId: Overload:Auth0.ManagementApi.Models.GetHooksRequest.Fields
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.GetHooksRequest.Fields
+  nameWithType: GetHooksRequest.Fields
+- uid: Auth0.ManagementApi.Models.GetHooksRequest.TriggerId
+  name: TriggerId
+  href: api/Auth0.ManagementApi.Models.GetHooksRequest.html#Auth0_ManagementApi_Models_GetHooksRequest_TriggerId
+  commentId: P:Auth0.ManagementApi.Models.GetHooksRequest.TriggerId
+  fullName: Auth0.ManagementApi.Models.GetHooksRequest.TriggerId
+  nameWithType: GetHooksRequest.TriggerId
+- uid: Auth0.ManagementApi.Models.GetHooksRequest.TriggerId*
+  name: TriggerId
+  href: api/Auth0.ManagementApi.Models.GetHooksRequest.html#Auth0_ManagementApi_Models_GetHooksRequest_TriggerId_
+  commentId: Overload:Auth0.ManagementApi.Models.GetHooksRequest.TriggerId
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.GetHooksRequest.TriggerId
+  nameWithType: GetHooksRequest.TriggerId
 - uid: Auth0.ManagementApi.Models.GetLogsRequest
   name: GetLogsRequest
   href: api/Auth0.ManagementApi.Models.GetLogsRequest.html
@@ -9196,6 +9562,121 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.GuardianTwilioConfigurationBase.Sid
   nameWithType: GuardianTwilioConfigurationBase.Sid
+- uid: Auth0.ManagementApi.Models.Hook
+  name: Hook
+  href: api/Auth0.ManagementApi.Models.Hook.html
+  commentId: T:Auth0.ManagementApi.Models.Hook
+  fullName: Auth0.ManagementApi.Models.Hook
+  nameWithType: Hook
+- uid: Auth0.ManagementApi.Models.Hook.Id
+  name: Id
+  href: api/Auth0.ManagementApi.Models.Hook.html#Auth0_ManagementApi_Models_Hook_Id
+  commentId: P:Auth0.ManagementApi.Models.Hook.Id
+  fullName: Auth0.ManagementApi.Models.Hook.Id
+  nameWithType: Hook.Id
+- uid: Auth0.ManagementApi.Models.Hook.Id*
+  name: Id
+  href: api/Auth0.ManagementApi.Models.Hook.html#Auth0_ManagementApi_Models_Hook_Id_
+  commentId: Overload:Auth0.ManagementApi.Models.Hook.Id
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Hook.Id
+  nameWithType: Hook.Id
+- uid: Auth0.ManagementApi.Models.Hook.TriggerId
+  name: TriggerId
+  href: api/Auth0.ManagementApi.Models.Hook.html#Auth0_ManagementApi_Models_Hook_TriggerId
+  commentId: P:Auth0.ManagementApi.Models.Hook.TriggerId
+  fullName: Auth0.ManagementApi.Models.Hook.TriggerId
+  nameWithType: Hook.TriggerId
+- uid: Auth0.ManagementApi.Models.Hook.TriggerId*
+  name: TriggerId
+  href: api/Auth0.ManagementApi.Models.Hook.html#Auth0_ManagementApi_Models_Hook_TriggerId_
+  commentId: Overload:Auth0.ManagementApi.Models.Hook.TriggerId
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Hook.TriggerId
+  nameWithType: Hook.TriggerId
+- uid: Auth0.ManagementApi.Models.HookBase
+  name: HookBase
+  href: api/Auth0.ManagementApi.Models.HookBase.html
+  commentId: T:Auth0.ManagementApi.Models.HookBase
+  fullName: Auth0.ManagementApi.Models.HookBase
+  nameWithType: HookBase
+- uid: Auth0.ManagementApi.Models.HookBase.Dependencies
+  name: Dependencies
+  href: api/Auth0.ManagementApi.Models.HookBase.html#Auth0_ManagementApi_Models_HookBase_Dependencies
+  commentId: P:Auth0.ManagementApi.Models.HookBase.Dependencies
+  fullName: Auth0.ManagementApi.Models.HookBase.Dependencies
+  nameWithType: HookBase.Dependencies
+- uid: Auth0.ManagementApi.Models.HookBase.Dependencies*
+  name: Dependencies
+  href: api/Auth0.ManagementApi.Models.HookBase.html#Auth0_ManagementApi_Models_HookBase_Dependencies_
+  commentId: Overload:Auth0.ManagementApi.Models.HookBase.Dependencies
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.HookBase.Dependencies
+  nameWithType: HookBase.Dependencies
+- uid: Auth0.ManagementApi.Models.HookBase.Enabled
+  name: Enabled
+  href: api/Auth0.ManagementApi.Models.HookBase.html#Auth0_ManagementApi_Models_HookBase_Enabled
+  commentId: P:Auth0.ManagementApi.Models.HookBase.Enabled
+  fullName: Auth0.ManagementApi.Models.HookBase.Enabled
+  nameWithType: HookBase.Enabled
+- uid: Auth0.ManagementApi.Models.HookBase.Enabled*
+  name: Enabled
+  href: api/Auth0.ManagementApi.Models.HookBase.html#Auth0_ManagementApi_Models_HookBase_Enabled_
+  commentId: Overload:Auth0.ManagementApi.Models.HookBase.Enabled
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.HookBase.Enabled
+  nameWithType: HookBase.Enabled
+- uid: Auth0.ManagementApi.Models.HookBase.Name
+  name: Name
+  href: api/Auth0.ManagementApi.Models.HookBase.html#Auth0_ManagementApi_Models_HookBase_Name
+  commentId: P:Auth0.ManagementApi.Models.HookBase.Name
+  fullName: Auth0.ManagementApi.Models.HookBase.Name
+  nameWithType: HookBase.Name
+- uid: Auth0.ManagementApi.Models.HookBase.Name*
+  name: Name
+  href: api/Auth0.ManagementApi.Models.HookBase.html#Auth0_ManagementApi_Models_HookBase_Name_
+  commentId: Overload:Auth0.ManagementApi.Models.HookBase.Name
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.HookBase.Name
+  nameWithType: HookBase.Name
+- uid: Auth0.ManagementApi.Models.HookBase.Script
+  name: Script
+  href: api/Auth0.ManagementApi.Models.HookBase.html#Auth0_ManagementApi_Models_HookBase_Script
+  commentId: P:Auth0.ManagementApi.Models.HookBase.Script
+  fullName: Auth0.ManagementApi.Models.HookBase.Script
+  nameWithType: HookBase.Script
+- uid: Auth0.ManagementApi.Models.HookBase.Script*
+  name: Script
+  href: api/Auth0.ManagementApi.Models.HookBase.html#Auth0_ManagementApi_Models_HookBase_Script_
+  commentId: Overload:Auth0.ManagementApi.Models.HookBase.Script
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.HookBase.Script
+  nameWithType: HookBase.Script
+- uid: Auth0.ManagementApi.Models.HookCreateRequest
+  name: HookCreateRequest
+  href: api/Auth0.ManagementApi.Models.HookCreateRequest.html
+  commentId: T:Auth0.ManagementApi.Models.HookCreateRequest
+  fullName: Auth0.ManagementApi.Models.HookCreateRequest
+  nameWithType: HookCreateRequest
+- uid: Auth0.ManagementApi.Models.HookCreateRequest.TriggerId
+  name: TriggerId
+  href: api/Auth0.ManagementApi.Models.HookCreateRequest.html#Auth0_ManagementApi_Models_HookCreateRequest_TriggerId
+  commentId: P:Auth0.ManagementApi.Models.HookCreateRequest.TriggerId
+  fullName: Auth0.ManagementApi.Models.HookCreateRequest.TriggerId
+  nameWithType: HookCreateRequest.TriggerId
+- uid: Auth0.ManagementApi.Models.HookCreateRequest.TriggerId*
+  name: TriggerId
+  href: api/Auth0.ManagementApi.Models.HookCreateRequest.html#Auth0_ManagementApi_Models_HookCreateRequest_TriggerId_
+  commentId: Overload:Auth0.ManagementApi.Models.HookCreateRequest.TriggerId
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.HookCreateRequest.TriggerId
+  nameWithType: HookCreateRequest.TriggerId
+- uid: Auth0.ManagementApi.Models.HookUpdateRequest
+  name: HookUpdateRequest
+  href: api/Auth0.ManagementApi.Models.HookUpdateRequest.html
+  commentId: T:Auth0.ManagementApi.Models.HookUpdateRequest
+  fullName: Auth0.ManagementApi.Models.HookUpdateRequest
+  nameWithType: HookUpdateRequest
 - uid: Auth0.ManagementApi.Models.Identity
   name: Identity
   href: api/Auth0.ManagementApi.Models.Identity.html
@@ -12379,6 +12860,44 @@ references:
   commentId: F:Auth0.ManagementApi.Models.TokenEndpointAuthMethod.None
   fullName: Auth0.ManagementApi.Models.TokenEndpointAuthMethod.None
   nameWithType: TokenEndpointAuthMethod.None
+- uid: Auth0.ManagementApi.Models.UniversalLoginTemplate
+  name: UniversalLoginTemplate
+  href: api/Auth0.ManagementApi.Models.UniversalLoginTemplate.html
+  commentId: T:Auth0.ManagementApi.Models.UniversalLoginTemplate
+  fullName: Auth0.ManagementApi.Models.UniversalLoginTemplate
+  nameWithType: UniversalLoginTemplate
+- uid: Auth0.ManagementApi.Models.UniversalLoginTemplate.Body
+  name: Body
+  href: api/Auth0.ManagementApi.Models.UniversalLoginTemplate.html#Auth0_ManagementApi_Models_UniversalLoginTemplate_Body
+  commentId: P:Auth0.ManagementApi.Models.UniversalLoginTemplate.Body
+  fullName: Auth0.ManagementApi.Models.UniversalLoginTemplate.Body
+  nameWithType: UniversalLoginTemplate.Body
+- uid: Auth0.ManagementApi.Models.UniversalLoginTemplate.Body*
+  name: Body
+  href: api/Auth0.ManagementApi.Models.UniversalLoginTemplate.html#Auth0_ManagementApi_Models_UniversalLoginTemplate_Body_
+  commentId: Overload:Auth0.ManagementApi.Models.UniversalLoginTemplate.Body
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.UniversalLoginTemplate.Body
+  nameWithType: UniversalLoginTemplate.Body
+- uid: Auth0.ManagementApi.Models.UniversalLoginTemplateUpdateRequest
+  name: UniversalLoginTemplateUpdateRequest
+  href: api/Auth0.ManagementApi.Models.UniversalLoginTemplateUpdateRequest.html
+  commentId: T:Auth0.ManagementApi.Models.UniversalLoginTemplateUpdateRequest
+  fullName: Auth0.ManagementApi.Models.UniversalLoginTemplateUpdateRequest
+  nameWithType: UniversalLoginTemplateUpdateRequest
+- uid: Auth0.ManagementApi.Models.UniversalLoginTemplateUpdateRequest.Template
+  name: Template
+  href: api/Auth0.ManagementApi.Models.UniversalLoginTemplateUpdateRequest.html#Auth0_ManagementApi_Models_UniversalLoginTemplateUpdateRequest_Template
+  commentId: P:Auth0.ManagementApi.Models.UniversalLoginTemplateUpdateRequest.Template
+  fullName: Auth0.ManagementApi.Models.UniversalLoginTemplateUpdateRequest.Template
+  nameWithType: UniversalLoginTemplateUpdateRequest.Template
+- uid: Auth0.ManagementApi.Models.UniversalLoginTemplateUpdateRequest.Template*
+  name: Template
+  href: api/Auth0.ManagementApi.Models.UniversalLoginTemplateUpdateRequest.html#Auth0_ManagementApi_Models_UniversalLoginTemplateUpdateRequest_Template_
+  commentId: Overload:Auth0.ManagementApi.Models.UniversalLoginTemplateUpdateRequest.Template
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.UniversalLoginTemplateUpdateRequest.Template
+  nameWithType: UniversalLoginTemplateUpdateRequest.Template
 - uid: Auth0.ManagementApi.Models.UpdateGuardianFactorBase
   name: UpdateGuardianFactorBase
   href: api/Auth0.ManagementApi.Models.UpdateGuardianFactorBase.html
