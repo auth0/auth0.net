@@ -21,7 +21,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
         {
             string token = await GenerateManagementApiToken();
 
-            _managementApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+            _managementApiClient = new TestManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
 
             var tenantSettings = await _managementApiClient.TenantSettings.GetAsync();
 
@@ -122,22 +122,22 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
         public async Task Passes_Token_Validation_With_CNAME()
         {
             // Arrange
-            using (var authenticationApiClient = new AuthenticationApiClient(GetVariable("BRUCKE_AUTHENTICATION_API_URL")))
+            using (var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
             {
                 // Act
                 var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
                 {
-                    ClientId = GetVariable("BRUCKE_CLIENT_ID"),
-                    ClientSecret = GetVariable("BRUCKE_CLIENT_SECRET"),
-                    Realm = GetVariable("BRUCKE_CONNECTION_NAME"),
+                    ClientId = GetVariable("AUTH0_CLIENT_ID"),
+                    ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
+                    Realm = _connection.Name,
                     Scope = "openid",
-                    Username = GetVariable("BRUCKE_USERNAME"),
-                    Password = GetVariable("BRUCKE_PASSWORD")
+                    Username = _user.Email,
+                    Password = Password
                 });
 
-                var issuer = $"https://{GetVariable("BRUCKE_AUTHENTICATION_API_URL")}/";
-                var requirements = new IdTokenRequirements(JwtSignatureAlgorithm.RS256, issuer, GetVariable("BRUCKE_CLIENT_ID"), TimeSpan.FromMinutes(1));
-                await new IdTokenValidator().Assert(requirements, authenticationResponse.IdToken, GetVariable("BRUCKE_CLIENT_SECRET"));
+                var issuer = $"https://{GetVariable("AUTH0_AUTHENTICATION_API_URL")}/";
+                var requirements = new IdTokenRequirements(JwtSignatureAlgorithm.RS256, issuer, GetVariable("AUTH0_CLIENT_ID"), TimeSpan.FromMinutes(1));
+                await new IdTokenValidator().Assert(requirements, authenticationResponse.IdToken, GetVariable("AUTH0_CLIENT_SECRET"));
             }
         }
 

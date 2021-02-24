@@ -14,7 +14,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             string token = await GenerateManagementApiToken();
 
-            using (var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL")))
+            using (var apiClient = new TestManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL")))
             {
                 var dailyStats = await apiClient.Stats.GetDailyStatsAsync(DateTime.Now.AddDays(-100), DateTime.Now);
                 dailyStats.Should().NotBeNull();
@@ -28,7 +28,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             string token = await GenerateManagementApiToken();
 
-            using (var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL")))
+            using (var apiClient = new TestManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL")))
             {
                 var activeUsers = await apiClient.Stats.GetActiveUsersAsync();
                 activeUsers.Should().BeGreaterThan(0);

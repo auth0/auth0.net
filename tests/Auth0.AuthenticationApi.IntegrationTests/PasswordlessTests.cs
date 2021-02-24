@@ -127,7 +127,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 ClientId = GetVariable("AUTH0_PASSWORDLESSDEMO_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_PASSWORDLESSDEMO_CLIENT_SECRET"),
                 Code = "...",
-                Audience = GetVariable("BRUCKE_MANAGEMENT_API_AUDIENCE"),
+                Audience = GetVariable("AUTH0_MANAGEMENT_API_AUDIENCE"),
                 Scope = "openid email",
                 PhoneNumber = phone
 
@@ -148,7 +148,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 ClientId = GetVariable("AUTH0_PASSWORDLESSDEMO_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_PASSWORDLESSDEMO_CLIENT_SECRET"),
                 Code = "...",
-                Audience = GetVariable("BRUCKE_MANAGEMENT_API_AUDIENCE"),
+                Audience = GetVariable("AUTH0_MANAGEMENT_API_AUDIENCE"),
                 Scope = "openid email",
                 Email = email
 
@@ -172,7 +172,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 { "otp", code },
                 { "client_id", GetVariable("AUTH0_CLIENT_ID") },
                 { "client_secret", GetVariable("AUTH0_CLIENT_SECRET") },
-                { "audience", GetVariable("BRUCKE_MANAGEMENT_API_AUDIENCE") },
+                { "audience", GetVariable("AUTH0_MANAGEMENT_API_AUDIENCE") },
                 { "username", "0123456789" },
                 { "scope", "openid email" }
             };
@@ -198,7 +198,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
                 Code = code,
-                Audience = GetVariable("BRUCKE_MANAGEMENT_API_AUDIENCE"),
+                Audience = GetVariable("AUTH0_MANAGEMENT_API_AUDIENCE"),
                 Scope = "openid email",
                 PhoneNumber = "0123456789"
 
@@ -228,7 +228,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 { "otp", code },
                 { "client_id", GetVariable("AUTH0_CLIENT_ID") },
                 { "client_secret", GetVariable("AUTH0_CLIENT_SECRET") },
-                { "audience", GetVariable("BRUCKE_MANAGEMENT_API_AUDIENCE") },
+                { "audience", GetVariable("AUTH0_MANAGEMENT_API_AUDIENCE") },
                 { "username", "test@fake.com" },
                 { "scope", "openid email" }
             };
@@ -254,7 +254,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
                 Code = code,
-                Audience = GetVariable("BRUCKE_MANAGEMENT_API_AUDIENCE"),
+                Audience = GetVariable("AUTH0_MANAGEMENT_API_AUDIENCE"),
                 Scope = "openid email",
                 Email = "test@fake.com"
 

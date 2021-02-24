@@ -22,7 +22,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             string token = await GenerateManagementApiToken();
 
-            _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+            _apiClient = new TestManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
 
             // We will need a connection to add the users to...
             _connection = await _apiClient.Connections.CreateAsync(new ConnectionCreateRequest
@@ -369,8 +369,9 @@ namespace Auth0.ManagementApi.IntegrationTests
             var user = await _apiClient.Users.CreateAsync(userCreateRequest);
 
             // Get a resource server
-            var resourceServer = await _apiClient.ResourceServers.GetAsync("5cccc711773967081270a036");
-            var originalScopes = resourceServer.Scopes.ToList();
+            var resourceServer = await _apiClient.ResourceServers.GetAsync("dotnet-testing");
+            var originalScopes = resourceServer.Scopes != null ? resourceServer.Scopes.ToList() : new List<ResourceServerScope>();
+
 
             // Create a permission/scope
             var newScope = new ResourceServerScope { Value = $"{Guid.NewGuid():N}scope", Description = "Integration test" };

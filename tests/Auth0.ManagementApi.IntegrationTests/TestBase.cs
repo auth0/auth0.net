@@ -1,5 +1,4 @@
-﻿using Auth0.AuthenticationApi;
-using Auth0.AuthenticationApi.Models;
+﻿using Auth0.AuthenticationApi.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Logging;
 using System;
@@ -34,7 +33,7 @@ namespace Auth0.Tests.Shared
 
         protected async Task<string> GenerateBruckeManagementApiToken()
         {
-            using (var authenticationApiClient = new AuthenticationApiClient(GetVariable("BRUCKE_AUTHENTICATION_API_URL")))
+            using (var authenticationApiClient = new TestAuthenticationApiClient(GetVariable("BRUCKE_AUTHENTICATION_API_URL")))
             {
                 // Get the access token
                 var token = await authenticationApiClient.GetTokenAsync(new ClientCredentialsTokenRequest
@@ -50,7 +49,7 @@ namespace Auth0.Tests.Shared
 
         protected async Task<string> GenerateManagementApiToken()
         {
-            using (var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
+            using (var authenticationApiClient = new TestAuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
             {
                 // Get the access token
                 var token = await authenticationApiClient.GetTokenAsync(new ClientCredentialsTokenRequest

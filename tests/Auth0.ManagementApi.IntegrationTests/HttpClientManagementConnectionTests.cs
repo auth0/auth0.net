@@ -14,8 +14,8 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             var connection = new HttpClientManagementConnection();
             connection.Dispose();
-            await Assert.ThrowsAsync<ObjectDisposedException >(() =>
-                connection.GetAsync<string>(new Uri("https://" + GetVariable("AUTH0_MANAGEMENT_API_URL")), new Dictionary<string, string>()));
+            await Assert.ThrowsAsync<ObjectDisposedException>(() =>
+               connection.GetAsync<string>(new Uri("https://www.auth0.com"), new Dictionary<string, string>()));
         }
 
         [Fact]
@@ -24,7 +24,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var httpClient = new HttpClient();
             var connection = new HttpClientManagementConnection(httpClient);
             connection.Dispose();
-            await httpClient.GetAsync(new Uri("https://" + GetVariable("AUTH0_MANAGEMENT_API_URL")));
+            await httpClient.GetAsync(new Uri("https://www.auth0.com"));
         }
     }
 }
