@@ -295,7 +295,6 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Test_permissions_can_be_retrieved()
         {
-            // Add a new role
             var newRoleRequest = new RoleCreateRequest
             {
                 Name = $"{Guid.NewGuid():N}role",
@@ -312,13 +311,10 @@ namespace Auth0.ManagementApi.IntegrationTests
             };
             await _apiClient.Roles.AssignPermissionsAsync(role.Id, assignPermissionsRequest);
 
-            // Ensure the Role is assigned to user
             var userPermissions = await _apiClient.Roles.GetPermissionsAsync(role.Id, new PaginationInfo(0, 50, true));
 
             Assert.Equal(1, userPermissions.Count);
 
-
-            // Clean Up
             await _apiClient.Roles.RemovePermissionsAsync(role.Id, assignPermissionsRequest);
             await _apiClient.Roles.DeleteAsync(role.Id);
         }
