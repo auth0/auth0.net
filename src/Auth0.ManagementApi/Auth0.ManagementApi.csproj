@@ -10,6 +10,7 @@
     <AssemblyOriginatorKeyFile>..\..\build\Auth0NetStrongName.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Auth0.AuthenticationApi\Auth0.AuthenticationApi.csproj" />
     <ProjectReference Include="..\Auth0.Core\Auth0.Core.csproj" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)'=='net452'">

@@ -7,8 +7,12 @@
 
   <ItemGroup>
     <PackageReference Include="Auth0.AuthenticationApi" Version="7.5.1" />
-    <PackageReference Include="Auth0.ManagementApi" Version="7.5.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Auth0.AuthenticationApi\Auth0.AuthenticationApi.csproj" />
+    <ProjectReference Include="..\..\src\Auth0.ManagementApi\Auth0.ManagementApi.csproj" />
   </ItemGroup>
 
 </Project>
