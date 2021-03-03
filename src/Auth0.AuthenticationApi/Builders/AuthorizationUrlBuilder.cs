@@ -176,5 +176,15 @@ namespace Auth0.AuthenticationApi.Builders
         {
             return WithConnectionScope(String.Join(" ", connectionScope));
         }
+
+        /// <summary>
+        /// Adds the `organization` query string parameter.
+        /// </summary>
+        /// <param name="organization">The ID of the organization to which the user wants to authenticate.</param>
+        /// <returns>Current <see cref="AuthorizationUrlBuilder"/> to allow fluent configuration.</returns>
+        public AuthorizationUrlBuilder WithOrganization(string organization)
+        {
+            return WithValue("organization", organization);
+        }
     }
 }
