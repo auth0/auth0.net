@@ -40,5 +40,10 @@
         /// of Id Tokens.
         /// </summary>
         public JwtSignatureAlgorithm SigningAlgorithm { get; set; }
+
+        /// <summary>
+        /// Organization for Id Token verification.
+        /// </summary>
+        public string Organization { get; set; }
     }
 }

@@ -134,7 +134,7 @@ namespace Auth0.AuthenticationApi
                 body
             ).ConfigureAwait(false);
 
-            await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret).ConfigureAwait(false);
+            await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret, request.Organization).ConfigureAwait(false);
 
             return response;
         }
@@ -158,7 +158,7 @@ namespace Auth0.AuthenticationApi
                 body
             ).ConfigureAwait(false);
 
-            await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret).ConfigureAwait(false);
+            await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret, request.Organization).ConfigureAwait(false);
 
             return response;
         }
@@ -203,7 +203,7 @@ namespace Auth0.AuthenticationApi
                 body
             ).ConfigureAwait(false);
 
-            await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret).ConfigureAwait(false);
+            await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret, request.Organization).ConfigureAwait(false);
 
             return response;
         }
@@ -400,9 +400,9 @@ namespace Auth0.AuthenticationApi
             GC.SuppressFinalize(this);
         }
 
-        private Task AssertIdTokenValid(string idToken, string audience, JwtSignatureAlgorithm algorithm, string clientSecret)
+        private Task AssertIdTokenValid(string idToken, string audience, JwtSignatureAlgorithm algorithm, string clientSecret, string organization = null)
         {
-            var requirements = new IdTokenRequirements(algorithm, BaseUri.AbsoluteUri, audience, idTokenValidationLeeway);
+            var requirements = new IdTokenRequirements(algorithm, BaseUri.AbsoluteUri, audience, idTokenValidationLeeway, null, organization);
             return idTokenValidator.Assert(requirements, idToken, clientSecret);
         }
 

@@ -89,6 +89,17 @@ namespace Auth0.AuthenticationApi.Tokens
                 if (epochNow > authValidUntil)
                     throw new IdTokenValidationException($"Authentication Time (auth_time) claim in the ID token indicates that too much time has passed since the last end-user authentication. Current time ({epochNow}) is after last auth at {authValidUntil}.");
             }
+
+            // Organization
+            if (required.Organization != null)
+            {
+                var organizationClaimValue = token.Claims.SingleOrDefault(c => c.Type == "org_id")?.Value;
+                if (string.IsNullOrWhiteSpace(organizationClaimValue))
+                    throw new IdTokenValidationException("Organization claim must be a string present in the ID token.");
+                if (organizationClaimValue != required.Organization)
+                    throw new IdTokenValidationException($"Organization claim mismatch in the ID token; expected \"{required.Organization}\", found \"{organizationClaimValue}\".");
+            }
+
         }
 
         /// <summary>
