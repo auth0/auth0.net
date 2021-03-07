@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 using System.Runtime.Serialization;
+using System.Threading.Tasks;
 
 namespace Auth0.Core.Exceptions
 {
@@ -14,6 +15,11 @@ namespace Auth0.Core.Exceptions
         /// <see cref="RateLimit"/> as determined by the server.
         /// </summary>
         public RateLimit RateLimit { get; }
+
+        /// <summary>
+        /// Optional <see cref="Exceptions.ApiError"/> from the failing API call.
+        /// </summary>
+        public ApiError ApiError { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RateLimitApiException"/> class.
@@ -46,15 +52,17 @@ namespace Auth0.Core.Exceptions
         /// Initializes a new instance of the <see cref="RateLimitApiException"/> class with a specified <paramref name="rateLimit"/>.
         /// </summary>
         /// <param name="rateLimit"><see cref="Exceptions.RateLimit"/> received on the API call that failed.</param>
-        public RateLimitApiException(RateLimit rateLimit)
+        /// <param name="apiError"><see cref="Exceptions.ApiError"/> received on the API call that failed.</param>
+        public RateLimitApiException(RateLimit rateLimit, ApiError apiError)
             : this("Rate limits exceeded")
         {
             RateLimit = rateLimit;
+            ApiError = apiError;
         }
 
-        internal static RateLimitApiException Create(HttpResponseMessage response)
+        internal static async Task<RateLimitApiException> CreateAsync(HttpResponseMessage response)
         {
-            return new RateLimitApiException(RateLimit.Parse(response.Headers));
+	        return new RateLimitApiException(RateLimit.Parse(response.Headers), await ApiError.Parse(response).ConfigureAwait(false));
         }
 
         /// <inheritdoc />
