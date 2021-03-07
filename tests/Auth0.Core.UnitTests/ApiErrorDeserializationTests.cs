@@ -23,7 +23,7 @@ namespace Auth0.Core.UnitTests
 
         [Theory]
         [ClassData(typeof(ApiErrorDeserializationData))]
-        public void Should_deserialize_all_error_strucutures_correctly(string content, ApiError expected)
+        public void Should_deserialize_all_error_structures_correctly(string content, ApiError expected)
         {
             var error = JsonConvert.DeserializeObject<ApiError>(content);
 
