@@ -53,7 +53,7 @@ namespace Auth0.Core.Exceptions
         /// </summary>
         /// <param name="rateLimit"><see cref="Exceptions.RateLimit"/> received on the API call that failed.</param>
         /// <param name="apiError"><see cref="Exceptions.ApiError"/> received on the API call that failed.</param>
-        public RateLimitApiException(RateLimit rateLimit, ApiError apiError)
+        public RateLimitApiException(RateLimit rateLimit, ApiError apiError = null)
             : this("Rate limits exceeded")
         {
             RateLimit = rateLimit;
