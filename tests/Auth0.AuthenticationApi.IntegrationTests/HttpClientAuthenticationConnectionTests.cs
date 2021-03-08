@@ -13,7 +13,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         {
             var connection = new HttpClientAuthenticationConnection();
             connection.Dispose();
-            await Assert.ThrowsAsync<ObjectDisposedException >(() => connection.GetAsync<string>(new Uri("https://" + GetVariable("AUTH0_AUTHENTICATION_API_URL"))));
+            await Assert.ThrowsAsync<ObjectDisposedException >(() => connection.GetAsync<string>(new Uri("https://www.auth0.com")));
         }
 
         [Fact]
@@ -22,7 +22,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             var httpClient = new HttpClient();
             var apiConnection = new HttpClientAuthenticationConnection(httpClient);
             apiConnection.Dispose();
-            await httpClient.GetAsync(new Uri("https://" + GetVariable("AUTH0_AUTHENTICATION_API_URL")));
+            await httpClient.GetAsync(new Uri("https://www.auth0.com"));
         }
     }
 }

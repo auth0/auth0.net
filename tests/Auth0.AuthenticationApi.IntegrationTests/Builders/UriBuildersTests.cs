@@ -44,7 +44,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Builders
 
             authorizationUrl.Should()
                 .Be(
-                    new Uri("https://auth0-dotnet-integration-tests.auth0.com/authorize?response_type=code&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&connection=google-oauth2&redirect_uri=http%3A%2F%2Fwww.jerriepelser.com%2Ftest&scope=openid%20offline_access&audience=https%3A%2F%2Fmyapi.com%2Fv2&nonce=MyNonce&state=MyState&connection_scope=ConnectionScope"));
+                    new Uri("https://dx-sdks-testing.us.auth0.com/authorize?response_type=code&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&connection=google-oauth2&redirect_uri=http%3A%2F%2Fwww.jerriepelser.com%2Ftest&scope=openid%20offline_access&audience=https%3A%2F%2Fmyapi.com%2Fv2&nonce=MyNonce&state=MyState&connection_scope=ConnectionScope"));
         }
 
         [Fact]
@@ -61,7 +61,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Builders
 
             authorizationUrl.Should()
                 .Be(
-                    new Uri("https://auth0-dotnet-integration-tests.auth0.com/authorize?response_type=code&scope=openid%20offline_access&state=MyState&connection_scope=ConnectionScope%20More"));
+                    new Uri("https://dx-sdks-testing.us.auth0.com/authorize?response_type=code&scope=openid%20offline_access&state=MyState&connection_scope=ConnectionScope%20More"));
         }
 
         [Fact]
@@ -79,7 +79,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Builders
 
             authorizationUrl.Should()
                 .Be(
-                    @"https://auth0-dotnet-integration-tests.auth0.com/authorize?response_type=code&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&connection=google-oauth2&redirect_uri=http%3A%2F%2Fwww.jerriepelser.com%2Ftest&scope=openid%20offline_access");
+                    @"https://dx-sdks-testing.us.auth0.com/authorize?response_type=code&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&connection=google-oauth2&redirect_uri=http%3A%2F%2Fwww.jerriepelser.com%2Ftest&scope=openid%20offline_access");
         }
 
         [Fact]
@@ -97,7 +97,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Builders
 
             authorizationUrl.Should()
                 .Be(
-                    @"https://auth0-dotnet-integration-tests.auth0.com/authorize?response_type=code&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&redirect_uri=http%3A%2F%2Fwww.jerriepelser.com%2Ftest&scope=openid&response_mode=form_post");
+                    @"https://dx-sdks-testing.us.auth0.com/authorize?response_type=code&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&redirect_uri=http%3A%2F%2Fwww.jerriepelser.com%2Ftest&scope=openid&response_mode=form_post");
         }
 
         [Fact]
@@ -113,7 +113,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Builders
 
             logoutUrl.Should()
                 .Be(
-                    @"https://auth0-dotnet-integration-tests.auth0.com/v2/logout?federated&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&returnTo=https%3A%2F%2Fmyapp%2Flogged_out");
+                    @"https://dx-sdks-testing.us.auth0.com/v2/logout?federated&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&returnTo=https%3A%2F%2Fmyapp%2Flogged_out");
         }
 
         [Fact]
@@ -127,7 +127,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Builders
 
             logoutUrl.Should()
                 .Be(
-                    @"https://auth0-dotnet-integration-tests.auth0.com/v2/logout?returnTo=http%3A%2F%2Fwww.jerriepelser.com%2Ftest");
+                    @"https://dx-sdks-testing.us.auth0.com/v2/logout?returnTo=http%3A%2F%2Fwww.jerriepelser.com%2Ftest");
         }
 
         [Fact]
@@ -141,7 +141,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Builders
 
             logoutUrl.Should()
                 .Be(
-                    @"https://auth0-dotnet-integration-tests.auth0.com/v2/logout?returnTo=http%3A%2F%2Fwww.jerriepelser.com%2Ftest");
+                    @"https://dx-sdks-testing.us.auth0.com/v2/logout?returnTo=http%3A%2F%2Fwww.jerriepelser.com%2Ftest");
         }
 
         [Fact]
@@ -156,7 +156,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Builders
 
             logoutUrl.Should()
                 .Be(
-                    @"https://auth0-dotnet-integration-tests.auth0.com/v2/logout?federated&returnTo=http%3A%2F%2Fwww.jerriepelser.com%2Ftest");
+                    @"https://dx-sdks-testing.us.auth0.com/v2/logout?federated&returnTo=http%3A%2F%2Fwww.jerriepelser.com%2Ftest");
         }
 
         [Fact]
@@ -168,7 +168,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Builders
                 .WithConnection("my-connection-name")
                 .Build();
 
-            samlUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/samlp/myclientid?connection=my-connection-name");
+            samlUrl.Should().Be(@"https://dx-sdks-testing.us.auth0.com/samlp/myclientid?connection=my-connection-name");
         }
 
         [Fact]
@@ -184,7 +184,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Builders
                 })
                 .Build();
 
-            samlUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/samlp/myclientid?RelayState=xcrf%3Dabc%26ru%3D%2Ffoo");
+            samlUrl.Should().Be(@"https://dx-sdks-testing.us.auth0.com/samlp/myclientid?RelayState=xcrf%3Dabc%26ru%3D%2Ffoo");
         }
 
         [Fact]
@@ -196,7 +196,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Builders
                 .WithRelayState("xcrf=abc&ru=/foo")
                 .Build();
 
-            samlUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/samlp/myclientid?RelayState=xcrf%3Dabc%26ru%3D%2Ffoo");
+            samlUrl.Should().Be(@"https://dx-sdks-testing.us.auth0.com/samlp/myclientid?RelayState=xcrf%3Dabc%26ru%3D%2Ffoo");
         }
 
         [Fact]
@@ -208,7 +208,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Builders
                 .WithClient("my-client-id")
                 .Build();
 
-            wsfedUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/wsfed/my-client-id");
+            wsfedUrl.Should().Be(@"https://dx-sdks-testing.us.auth0.com/wsfed/my-client-id");
         }
 
         [Fact]
@@ -220,7 +220,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Builders
                 .WithWtrealm("urn:my-client-id")
                 .Build();
 
-            wsfedUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/wsfed?wtrealm=urn%3Amy-client-id");
+            wsfedUrl.Should().Be(@"https://dx-sdks-testing.us.auth0.com/wsfed?wtrealm=urn%3Amy-client-id");
         }
 
         [Fact]
@@ -232,7 +232,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Builders
                 .WithWhr("urn:my-connection-name")
                 .Build();
 
-            wsfedUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/wsfed?whr=urn%3Amy-connection-name");
+            wsfedUrl.Should().Be(@"https://dx-sdks-testing.us.auth0.com/wsfed?whr=urn%3Amy-connection-name");
         }
 
         [Fact]
@@ -248,7 +248,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Builders
                 })
                 .Build();
 
-            wsfedUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/wsfed?wctx=xcrf%3Dabc%26ru%3D%2Ffoo");
+            wsfedUrl.Should().Be(@"https://dx-sdks-testing.us.auth0.com/wsfed?wctx=xcrf%3Dabc%26ru%3D%2Ffoo");
         }
 
         [Fact]
@@ -260,7 +260,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Builders
                 .WithWctx("xcrf=abc&ru=/foo")
                 .Build();
 
-            wsfedUrl.Should().Be(@"https://auth0-dotnet-integration-tests.auth0.com/wsfed?wctx=xcrf%3Dabc%26ru%3D%2Ffoo");
+            wsfedUrl.Should().Be(@"https://dx-sdks-testing.us.auth0.com/wsfed?wctx=xcrf%3Dabc%26ru%3D%2Ffoo");
         }
     }
 }

@@ -13,6 +13,7 @@ namespace Auth0.ManagementApi
     /// </summary>
     public class ManagementApiClient : IDisposable
     {
+        protected readonly IManagementConnection connection;
         IDisposable connectionToDispose;
 
         /// <summary>
@@ -140,6 +141,8 @@ namespace Auth0.ManagementApi
                 managementConnection = ownedManagementConnection;
                 connectionToDispose = ownedManagementConnection;
             }
+
+            connection = managementConnection;
 
             var defaultHeaders = CreateDefaultHeaders(token);
 

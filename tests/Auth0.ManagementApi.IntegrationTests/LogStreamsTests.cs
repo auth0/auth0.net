@@ -17,8 +17,8 @@ namespace Auth0.ManagementApi.IntegrationTests
 
         public async Task InitializeAsync()
         {
-            string token = await GenerateBruckeManagementApiToken();
-            _apiClient = new ManagementApiClient(token, GetVariable("BRUCKE_MANAGEMENT_API_URL"));
+            string token = await GenerateManagementApiToken();
+            _apiClient = new TestManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
         }
 
         public Task DisposeAsync()

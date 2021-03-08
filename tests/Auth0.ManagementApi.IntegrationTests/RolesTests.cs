@@ -8,6 +8,7 @@ using FluentAssertions;
 using Xunit;
 using Auth0.Tests.Shared;
 using Auth0.ManagementApi.Paging;
+using System.Collections.Generic;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
@@ -21,7 +22,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             string token = await GenerateManagementApiToken();
 
-            _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+            _apiClient = new TestManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
 
             // We will need a connection to add the roles to...
             _connection = await _apiClient.Connections.CreateAsync(new ConnectionCreateRequest
@@ -217,8 +218,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             role.Description.Should().Be(newRoleRequest.Description);
 
             // Get a resource server
-            var resourceServer = await _apiClient.ResourceServers.GetAsync("5cccc711773967081270a036");
-            var originalScopes = resourceServer.Scopes.ToList();
+            var resourceServer = await _apiClient.ResourceServers.GetAsync("dotnet-testing");
+            var originalScopes = resourceServer.Scopes != null ? resourceServer.Scopes.ToList() : new List<ResourceServerScope>();
 
             // Create a permission/scope
             var newScope = new ResourceServerScope { Value = $"{Guid.NewGuid():N}scope", Description = "Integration test" };
@@ -294,9 +295,28 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Test_permissions_can_be_retrieved()
         {
-            var userPermissions = await _apiClient.Roles.GetPermissionsAsync("rol_XzVrldh70ox7yjl2", new PaginationInfo(0, 50, true));
+            var newRoleRequest = new RoleCreateRequest
+            {
+                Name = $"{Guid.NewGuid():N}role",
+                Description = $"{Guid.NewGuid():N}description",
+            };
+            var role = await _apiClient.Roles.CreateAsync(newRoleRequest);
 
-            Assert.Equal(2, userPermissions.Count);
+            var assignPermissionsRequest = new AssignPermissionsRequest
+            {
+                Permissions = new List<PermissionIdentity>
+                {
+                    new PermissionIdentity { Name = "dotnet:testing", Identifier = "dotnet-testing",  }
+                }
+            };
+            await _apiClient.Roles.AssignPermissionsAsync(role.Id, assignPermissionsRequest);
+
+            var userPermissions = await _apiClient.Roles.GetPermissionsAsync(role.Id, new PaginationInfo(0, 50, true));
+
+            Assert.Equal(1, userPermissions.Count);
+
+            await _apiClient.Roles.RemovePermissionsAsync(role.Id, assignPermissionsRequest);
+            await _apiClient.Roles.DeleteAsync(role.Id);
         }
     }
 }

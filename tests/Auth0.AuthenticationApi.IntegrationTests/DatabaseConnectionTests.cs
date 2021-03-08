@@ -20,7 +20,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         {
             string token = await GenerateManagementApiToken();
 
-            _managementApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+            _managementApiClient = new TestManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
 
             // We will need a connection to add the users to...
             _connection = await _managementApiClient.Connections.CreateAsync(new ConnectionCreateRequest
@@ -76,64 +76,13 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         }
 
         [Fact]
-        public async Task Signup_Response_Normalizes_Id_For_ImportDb()
-        {
-            // Sign up the user
-            var signupUserRequest = new SignupUserRequest
-            {
-                ClientId = GetVariable("AUTH0_CLIENT_ID"),
-                Connection = "integration-importdb",
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
-                Password = Password
-            };
-            var signupUserResponse = await _authenticationApiClient.SignupUserAsync(signupUserRequest);
-            signupUserResponse.Should().NotBeNull();
-            signupUserResponse.Id.Should().NotBeNull();
-            signupUserResponse.Email.Should().Be(signupUserRequest.Email);
-        }
-
-        [Fact]
         public async Task Signup_Response_Normalizes_Id_For_RegularDb()
         {
             // Sign up the user
             var signupUserRequest = new SignupUserRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
-                Connection = "integration-regulardb",
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
-                Password = Password
-            };
-            var signupUserResponse = await _authenticationApiClient.SignupUserAsync(signupUserRequest);
-            signupUserResponse.Should().NotBeNull();
-            signupUserResponse.Id.Should().NotBeNull();
-            signupUserResponse.Email.Should().Be(signupUserRequest.Email);
-        }
-
-        [Fact]
-        public async Task Signup_Response_Normalizes_Id_For_ExternalDb_Id()
-        {
-            // Sign up the user
-            var signupUserRequest = new SignupUserRequest
-            {
-                ClientId = GetVariable("AUTH0_CLIENT_ID"),
-                Connection = "intergration-externaldb-id",
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
-                Password = Password
-            };
-            var signupUserResponse = await _authenticationApiClient.SignupUserAsync(signupUserRequest);
-            signupUserResponse.Should().NotBeNull();
-            signupUserResponse.Id.Should().NotBeNull();
-            signupUserResponse.Email.Should().Be(signupUserRequest.Email);
-        }
-
-        [Fact]
-        public async Task Signup_Response_Normalizes_Id_For_ExternalDb_User_Id()
-        {
-            // Sign up the user
-            var signupUserRequest = new SignupUserRequest
-            {
-                ClientId = GetVariable("AUTH0_CLIENT_ID"),
-                Connection = "intergration-externaldb-user-id",
+                Connection = "Username-Password-Authentication",
                 Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
                 Password = Password
             };
