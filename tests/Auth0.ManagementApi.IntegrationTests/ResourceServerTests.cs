@@ -18,7 +18,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             string token = await GenerateManagementApiToken();
 
-            _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+            _apiClient = new TestManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
         }
 
         public Task DisposeAsync()
@@ -99,7 +99,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Test_get_resource_server_by_identifier()
         {
-            const string identifier = "https://test.integration.net";
+            string identifier = GetVariable("AUTH0_MANAGEMENT_API_AUDIENCE");
             var resourceServers = await _apiClient.ResourceServers.GetAsync(identifier);
 
             Assert.Equal(resourceServers.Identifier, identifier);

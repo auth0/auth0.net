@@ -19,7 +19,7 @@ namespace Auth0.AuthenticationApi
         static readonly IdTokenValidator idTokenValidator = new IdTokenValidator();
         readonly TimeSpan idTokenValidationLeeway = TimeSpan.FromMinutes(1);
         readonly Uri tokenUri;
-        readonly IAuthenticationConnection connection;        
+        protected readonly IAuthenticationConnection connection;        
         IDisposable connectionToDispose;
 
         /// <inheritdoc />

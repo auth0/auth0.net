@@ -16,9 +16,9 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact(Skip = "Run manually")]
         public async Task Test_custom_domains()
         {
-            string token = "";
+            string token = await GenerateBruckeManagementApiToken();
 
-            using (var apiClient = new ManagementApiClient(token, GetVariable("BRUCKE_MANAGEMENT_API_URL")))
+            using (var apiClient = new TestManagementApiClient(token, GetVariable("BRUCKE_MANAGEMENT_API_URL")))
             {
                 // Test getting all custom domains
                 var domains = await apiClient.CustomDomains.GetAllAsync();
