@@ -56,7 +56,7 @@ namespace Auth0.Core.Exceptions
             switch ((int)response.StatusCode)
             {
                 case 429:
-                    return RateLimitApiException.Create(response);
+                    return await RateLimitApiException.CreateAsync(response).ConfigureAwait(false);
                 default:
                     return await ErrorApiException.CreateAsync(response).ConfigureAwait(false);
             }
