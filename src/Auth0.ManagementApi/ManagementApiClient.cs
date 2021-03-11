@@ -227,6 +227,32 @@ namespace Auth0.ManagementApi
         {
         }
 
+        public void SetAccessToken(String token)
+        {
+            BlacklistedTokens.SetAccessToken(token);
+            Branding.SetAccessToken(token);
+            ClientGrants.SetAccessToken(token);
+            Clients.SetAccessToken(token);
+            Connections.SetAccessToken(token);
+            CustomDomains.SetAccessToken(token);
+            DeviceCredentials.SetAccessToken(token);
+            EmailProvider.SetAccessToken(token);
+            EmailTemplates.SetAccessToken(token);
+            Guardian.SetAccessToken(token);
+            Hooks.SetAccessToken(token);
+            Jobs.SetAccessToken(token);
+            Logs.SetAccessToken(token);
+            LogStreams.SetAccessToken(token);
+            ResourceServers.SetAccessToken(token);
+            Roles.SetAccessToken(token);
+            Rules.SetAccessToken(token);
+            Stats.SetAccessToken(token);
+            TenantSettings.SetAccessToken(token);
+            Tickets.SetAccessToken(token);
+            UserBlocks.SetAccessToken(token);
+            Users.SetAccessToken(token);
+        }
+
 
         /// <summary>
         /// Disposes of any owned disposable resources.

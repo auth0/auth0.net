@@ -58,5 +58,21 @@ namespace Auth0.ManagementApi.Clients
         {
             return Uri.EscapeDataString(value);
         }
+
+        public void SetAccessToken(String token)
+        {
+            if (!string.IsNullOrEmpty(token))
+            {
+                if (DefaultHeaders.ContainsKey("Authorization"))
+                {
+                    DefaultHeaders["Authorization"] = $"Bearer {token}";
+
+                } else
+                {
+                    DefaultHeaders.Add("Authorization", $"Bearer {token}");
+                }
+            }
+                
+        }
     }
 }
