@@ -3,9 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Auth0.ManagementApi.Models;
 
 namespace Auth0.ManagementApi
 {
+
     /// <summary>
     /// Interface for connectivity between <see cref="ManagementApiClient"/> and
     /// the remote server.
@@ -18,6 +20,17 @@ namespace Auth0.ManagementApi
     /// </remarks>
     public interface IManagementConnection
     {
+        /// <summary>
+        /// Delegate where RateLimitStatus can be communicated.
+        /// </summary>
+        RateLimitEventHandler RateLimitListener { get; set; }
+
+        /// <summary>
+        /// Invokes ReportRateLimit Delegate with given rateLimitStatus.
+        /// </summary>
+        /// <param name="rateLimitStatus">Current RateLimit reported by response header</param>
+        void OnRateLimitChange(RateLimitStatus rateLimitStatus);
+
         /// <summary>
         /// Perform a HTTP GET operation against a given <see cref="Uri"/> and return the materialized response body as <typeparamref name="T"/>.
         /// </summary>

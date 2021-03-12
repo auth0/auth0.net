@@ -96,6 +96,24 @@ namespace Auth0.ManagementApi.IntegrationTests
         }
 
         [Fact]
+        public async Task Test_add_rate_limit_listener()
+        {
+            var rateLimitStatusReported = false;
+            // Add rate limit listener
+            _apiClient.AddRateLimitListener((sender, rateLimitStatus) =>
+            {
+                Assert.True(rateLimitStatus.RateLimitStatus.RateLimit.Remaining >= 0);
+                rateLimitStatusReported = true;
+            });
+
+            // Call any managementApiClient method
+            var users = await _apiClient.Users.GetAllAsync(new GetUsersRequest(), new PaginationInfo());
+
+            // Callback must have occurred
+            Assert.True(rateLimitStatusReported);
+        }
+
+        [Fact]
         public async Task Test_user_by_email()
         {
             var email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa";
@@ -175,7 +193,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             // Act
             var users = await _apiClient.Users.GetAllAsync(new GetUsersRequest(), new PaginationInfo());
-            
+
             // Assert
             Assert.Null(users.Paging);
         }
@@ -185,7 +203,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             // Act
             var users = await _apiClient.Users.GetAllAsync(new GetUsersRequest(), new PaginationInfo(0, 50, false));
-            
+
             // Assert
             Assert.Null(users.Paging);
         }
@@ -195,7 +213,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             // Act
             var users = await _apiClient.Users.GetAllAsync(new GetUsersRequest(), new PaginationInfo(0, 50, true));
-            
+
             // Assert
             Assert.NotNull(users.Paging);
         }

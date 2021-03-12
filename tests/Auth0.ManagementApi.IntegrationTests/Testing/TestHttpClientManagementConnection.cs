@@ -3,11 +3,10 @@ using Auth0.ManagementApi;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Auth0.ManagementApi.Models;
 
 namespace Auth0.Tests.Shared
 {
@@ -55,6 +54,18 @@ namespace Auth0.Tests.Shared
             _connection = new HttpClientManagementConnection(handler);
         }
 
+        public RateLimitEventHandler RateLimitListener
+        {
+            get => ((IManagementConnection)_connection).RateLimitListener;
+            set => ((IManagementConnection) _connection).RateLimitListener = value;
+        }
+
+        void IManagementConnection.OnRateLimitChange(RateLimitStatus rateLimitStatus)
+        {
+            var eventArgs = new RateLimitEventArgs { RateLimitStatus = rateLimitStatus };
+            RateLimitListener?.Invoke(this, eventArgs);
+        }
+
         public async Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers, JsonConverter[] converters = null)
         {
             var maxNrOfTries = 3;
@@ -68,7 +79,8 @@ namespace Auth0.Tests.Shared
                     nrOfTries++;
 
                     return await _connection.GetAsync<T>(uri, headers, converters);
-                } catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
                     if (!(ex is RateLimitApiException) || nrOfTries >= maxNrOfTries)
                     {

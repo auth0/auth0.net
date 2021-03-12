@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Auth0.ManagementApi.Models;
 
 namespace Auth0.ManagementApi
 {
@@ -41,6 +42,16 @@ namespace Auth0.ManagementApi
             : this(new HttpClient(handler ?? new HttpClientHandler()))
         {
             ownHttpClient = true;
+        }
+
+        /// <inheritdoc />
+        RateLimitEventHandler IManagementConnection.RateLimitListener { get; set; }
+
+        /// <inheritdoc />
+        void IManagementConnection.OnRateLimitChange(RateLimitStatus rateLimitStatus)
+        {
+            var eventArgs = new RateLimitEventArgs { RateLimitStatus = rateLimitStatus };
+            ((IManagementConnection)this).RateLimitListener?.Invoke(this, eventArgs);
         }
 
         /// <inheritdoc />
@@ -90,6 +101,14 @@ namespace Auth0.ManagementApi
             {
                 if (!response.IsSuccessStatusCode)
                     throw await ApiException.CreateSpecificExceptionAsync(response).ConfigureAwait(false);
+
+                var rateLimit = RateLimit.Parse(response.Headers);
+
+                ((IManagementConnection)this).OnRateLimitChange(new RateLimitStatus
+                {
+                    RateLimit = rateLimit,
+                    Source = request.RequestUri.AbsolutePath
+                });
 
                 var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 

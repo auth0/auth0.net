@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Auth0.ManagementApi.Models;
 using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
@@ -51,6 +52,14 @@ namespace Auth0.ManagementApi.IntegrationTests
                 IsDisposed = true;
             }
 
+            public RateLimitEventHandler RateLimitListener { get; set; }
+
+            void IManagementConnection.OnRateLimitChange(RateLimitStatus rateLimitStatus)
+            {
+            var eventArgs = new RateLimitEventArgs { RateLimitStatus = rateLimitStatus };
+                RateLimitListener?.Invoke(this, eventArgs);
+            }
+
             public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, JsonConverter[] converters = null)
             {
                 return Task.FromResult(default(T));
@@ -93,9 +102,17 @@ namespace Auth0.ManagementApi.IntegrationTests
             Assert.NotNull(payload["env"]["target"].ToString());
         }
 
-        class HeaderGrabberConnection : IManagementConnection
+        class HeaderGrabberConnection :  IManagementConnection
         {
             public IDictionary<string, string> LastHeaders { get; private set; } = new Dictionary<string, string>();
+
+            public RateLimitEventHandler RateLimitListener { get; set; }
+
+            void IManagementConnection.OnRateLimitChange(RateLimitStatus rateLimitStatus)
+            {
+                var eventArgs = new RateLimitEventArgs { RateLimitStatus = rateLimitStatus };
+                RateLimitListener?.Invoke(this, eventArgs);
+            }
 
             public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, JsonConverter[] converters = null)
             {

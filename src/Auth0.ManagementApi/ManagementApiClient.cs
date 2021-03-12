@@ -3,8 +3,8 @@ using Auth0.ManagementApi.Clients;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Net.Http;
 using System.Text;
+using Auth0.ManagementApi.Models;
 
 namespace Auth0.ManagementApi
 {
@@ -126,6 +126,15 @@ namespace Auth0.ManagementApi
         /// Contains all the methods to call the /users endpoints.
         /// </summary>
         public UsersClient Users { get; }
+
+        /// <summary>
+        /// Adds rate limit event handler, reporting rate limit status 
+        /// </summary>
+        /// <param name="rateLimitEventHandler"></param>
+        public void AddRateLimitListener(RateLimitEventHandler rateLimitEventHandler)
+        {
+            connection.RateLimitListener += rateLimitEventHandler;
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.

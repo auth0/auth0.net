@@ -3,11 +3,10 @@ using Auth0.ManagementApi;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Auth0.ManagementApi.Models;
 
 namespace Auth0.Tests.Shared
 {
@@ -53,6 +52,14 @@ namespace Auth0.Tests.Shared
         public TestHttpClientManagementConnection(HttpMessageHandler handler)
         {
             _connection = new HttpClientManagementConnection(handler);
+        }
+
+        public RateLimitEventHandler RateLimitListener { get; set; }
+
+        void IManagementConnection.OnRateLimitChange(RateLimitStatus rateLimitStatus)
+        {
+            var eventArgs = new RateLimitEventArgs { RateLimitStatus = rateLimitStatus };
+            RateLimitListener?.Invoke(this, eventArgs);
         }
 
         public async Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers, JsonConverter[] converters = null)
