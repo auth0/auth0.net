@@ -166,13 +166,13 @@ public class RateLimitApiException : ApiException, ISerializable</code></pre>
     <pre><code class="lang-csharp hljs">public RateLimitApiException()</code></pre>
   </div>
   <a id="Auth0_Core_Exceptions_RateLimitApiException__ctor_" data-uid="Auth0.Core.Exceptions.RateLimitApiException.#ctor*"></a>
-  <h4 id="Auth0_Core_Exceptions_RateLimitApiException__ctor_Auth0_Core_Exceptions_RateLimit_" data-uid="Auth0.Core.Exceptions.RateLimitApiException.#ctor(Auth0.Core.Exceptions.RateLimit)">RateLimitApiException(RateLimit)</h4>
+  <h4 id="Auth0_Core_Exceptions_RateLimitApiException__ctor_Auth0_Core_Exceptions_RateLimit_Auth0_Core_Exceptions_ApiError_" data-uid="Auth0.Core.Exceptions.RateLimitApiException.#ctor(Auth0.Core.Exceptions.RateLimit,Auth0.Core.Exceptions.ApiError)">RateLimitApiException(RateLimit, ApiError)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.Core.Exceptions.RateLimitApiException.html">RateLimitApiException</a> class with a specified <code data-dev-comment-type="paramref" class="paramref">rateLimit</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public RateLimitApiException(RateLimit rateLimit)</code></pre>
+    <pre><code class="lang-csharp hljs">public RateLimitApiException(RateLimit rateLimit, ApiError apiError = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -188,6 +188,12 @@ public class RateLimitApiException : ApiException, ISerializable</code></pre>
         <td><a class="xref" href="Auth0.Core.Exceptions.RateLimit.html">RateLimit</a></td>
         <td><span class="parametername">rateLimit</span></td>
         <td><p><a class="xref" href="Auth0.Core.Exceptions.RateLimit.html">RateLimit</a> received on the API call that failed.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Auth0.Core.Exceptions.ApiError.html">ApiError</a></td>
+        <td><span class="parametername">apiError</span></td>
+        <td><p><a class="xref" href="Auth0.Core.Exceptions.ApiError.html">ApiError</a> received on the API call that failed.</p>
 </td>
       </tr>
     </tbody>
@@ -286,6 +292,30 @@ reference if no inner exception is specified.</p>
   </table>
   <h3 id="properties">Properties
   </h3>
+  <a id="Auth0_Core_Exceptions_RateLimitApiException_ApiError_" data-uid="Auth0.Core.Exceptions.RateLimitApiException.ApiError*"></a>
+  <h4 id="Auth0_Core_Exceptions_RateLimitApiException_ApiError" data-uid="Auth0.Core.Exceptions.RateLimitApiException.ApiError">ApiError</h4>
+  <div class="markdown level1 summary"><p>Optional <a class="xref" href="Auth0.Core.Exceptions.ApiError.html">ApiError</a> from the failing API call.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ApiError ApiError { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.Core.Exceptions.ApiError.html">ApiError</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <a id="Auth0_Core_Exceptions_RateLimitApiException_RateLimit_" data-uid="Auth0.Core.Exceptions.RateLimitApiException.RateLimit*"></a>
   <h4 id="Auth0_Core_Exceptions_RateLimitApiException_RateLimit" data-uid="Auth0.Core.Exceptions.RateLimitApiException.RateLimit">RateLimit</h4>
   <div class="markdown level1 summary"><p><a class="xref" href="Auth0.Core.Exceptions.RateLimitApiException.html#Auth0_Core_Exceptions_RateLimitApiException_RateLimit">RateLimit</a> as determined by the server.</p>

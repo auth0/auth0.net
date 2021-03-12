@@ -1,5 +1,11 @@
 # Change Log
 
+## [release-7.6.1](https://github.com/auth0/auth0.net/tree/release-7.6.1) (2021-03-12)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.6.0...release-7.6.1)
+
+**Changed**
+- Add ApiError to RateLimitException to access the response body [\#480](https://github.com/auth0/auth0.net/pull/480) ([fernandozpiccin](https://github.com/fernandozpiccin))
+
 ## [release-7.6.0](https://github.com/auth0/auth0.net/tree/release-7.6.0) (2021-02-15)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.5.1...release-7.6.0)
 

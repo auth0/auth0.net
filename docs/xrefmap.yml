@@ -58,6 +58,12 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.AuthenticationApiClient.ChangePasswordAsync
   nameWithType: AuthenticationApiClient.ChangePasswordAsync
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.connection
+  name: connection
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_connection
+  commentId: F:Auth0.AuthenticationApi.AuthenticationApiClient.connection
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.connection
+  nameWithType: AuthenticationApiClient.connection
 - uid: Auth0.AuthenticationApi.AuthenticationApiClient.Dispose
   name: Dispose()
   href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_Dispose
@@ -3162,12 +3168,12 @@ references:
   commentId: M:Auth0.Core.Exceptions.RateLimitApiException.#ctor
   fullName: Auth0.Core.Exceptions.RateLimitApiException.RateLimitApiException()
   nameWithType: RateLimitApiException.RateLimitApiException()
-- uid: Auth0.Core.Exceptions.RateLimitApiException.#ctor(Auth0.Core.Exceptions.RateLimit)
-  name: RateLimitApiException(RateLimit)
-  href: api/Auth0.Core.Exceptions.RateLimitApiException.html#Auth0_Core_Exceptions_RateLimitApiException__ctor_Auth0_Core_Exceptions_RateLimit_
-  commentId: M:Auth0.Core.Exceptions.RateLimitApiException.#ctor(Auth0.Core.Exceptions.RateLimit)
-  fullName: Auth0.Core.Exceptions.RateLimitApiException.RateLimitApiException(Auth0.Core.Exceptions.RateLimit)
-  nameWithType: RateLimitApiException.RateLimitApiException(RateLimit)
+- uid: Auth0.Core.Exceptions.RateLimitApiException.#ctor(Auth0.Core.Exceptions.RateLimit,Auth0.Core.Exceptions.ApiError)
+  name: RateLimitApiException(RateLimit, ApiError)
+  href: api/Auth0.Core.Exceptions.RateLimitApiException.html#Auth0_Core_Exceptions_RateLimitApiException__ctor_Auth0_Core_Exceptions_RateLimit_Auth0_Core_Exceptions_ApiError_
+  commentId: M:Auth0.Core.Exceptions.RateLimitApiException.#ctor(Auth0.Core.Exceptions.RateLimit,Auth0.Core.Exceptions.ApiError)
+  fullName: Auth0.Core.Exceptions.RateLimitApiException.RateLimitApiException(Auth0.Core.Exceptions.RateLimit, Auth0.Core.Exceptions.ApiError)
+  nameWithType: RateLimitApiException.RateLimitApiException(RateLimit, ApiError)
 - uid: Auth0.Core.Exceptions.RateLimitApiException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
   name: RateLimitApiException(SerializationInfo, StreamingContext)
   href: api/Auth0.Core.Exceptions.RateLimitApiException.html#Auth0_Core_Exceptions_RateLimitApiException__ctor_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_
@@ -3193,6 +3199,19 @@ references:
   isSpec: "True"
   fullName: Auth0.Core.Exceptions.RateLimitApiException.RateLimitApiException
   nameWithType: RateLimitApiException.RateLimitApiException
+- uid: Auth0.Core.Exceptions.RateLimitApiException.ApiError
+  name: ApiError
+  href: api/Auth0.Core.Exceptions.RateLimitApiException.html#Auth0_Core_Exceptions_RateLimitApiException_ApiError
+  commentId: P:Auth0.Core.Exceptions.RateLimitApiException.ApiError
+  fullName: Auth0.Core.Exceptions.RateLimitApiException.ApiError
+  nameWithType: RateLimitApiException.ApiError
+- uid: Auth0.Core.Exceptions.RateLimitApiException.ApiError*
+  name: ApiError
+  href: api/Auth0.Core.Exceptions.RateLimitApiException.html#Auth0_Core_Exceptions_RateLimitApiException_ApiError_
+  commentId: Overload:Auth0.Core.Exceptions.RateLimitApiException.ApiError
+  isSpec: "True"
+  fullName: Auth0.Core.Exceptions.RateLimitApiException.ApiError
+  nameWithType: RateLimitApiException.ApiError
 - uid: Auth0.Core.Exceptions.RateLimitApiException.RateLimit
   name: RateLimit
   href: api/Auth0.Core.Exceptions.RateLimitApiException.html#Auth0_Core_Exceptions_RateLimitApiException_RateLimit
@@ -5501,6 +5520,12 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.ManagementApiClient.Clients
   nameWithType: ManagementApiClient.Clients
+- uid: Auth0.ManagementApi.ManagementApiClient.connection
+  name: connection
+  href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_connection
+  commentId: F:Auth0.ManagementApi.ManagementApiClient.connection
+  fullName: Auth0.ManagementApi.ManagementApiClient.connection
+  nameWithType: ManagementApiClient.connection
 - uid: Auth0.ManagementApi.ManagementApiClient.Connections
   name: Connections
   href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_Connections
