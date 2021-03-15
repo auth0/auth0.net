@@ -48,9 +48,9 @@ namespace Auth0.ManagementApi
         RateLimitEventHandler IManagementConnection.RateLimitListener { get; set; }
 
         /// <inheritdoc />
-        void IManagementConnection.OnRateLimitChange(RateLimitStatus rateLimitStatus)
+        void IManagementConnection.OnRateLimitChange(string source, RateLimit rateLimit)
         {
-            var eventArgs = new RateLimitEventArgs { RateLimitStatus = rateLimitStatus };
+            var eventArgs = new RateLimitEventArgs { RateLimit = rateLimit,Source = source};
             ((IManagementConnection)this).RateLimitListener?.Invoke(this, eventArgs);
         }
 
@@ -104,11 +104,7 @@ namespace Auth0.ManagementApi
 
                 var rateLimit = RateLimit.Parse(response.Headers);
 
-                ((IManagementConnection)this).OnRateLimitChange(new RateLimitStatus
-                {
-                    RateLimit = rateLimit,
-                    Source = request.RequestUri.AbsolutePath
-                });
+                ((IManagementConnection)this).OnRateLimitChange(request.RequestUri.AbsolutePath, rateLimit);
 
                 var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 

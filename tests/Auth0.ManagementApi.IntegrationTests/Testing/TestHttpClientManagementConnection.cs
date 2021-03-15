@@ -60,9 +60,9 @@ namespace Auth0.Tests.Shared
             set => ((IManagementConnection) _connection).RateLimitListener = value;
         }
 
-        void IManagementConnection.OnRateLimitChange(RateLimitStatus rateLimitStatus)
+        void IManagementConnection.OnRateLimitChange(string source, RateLimit rateLimit)
         {
-            var eventArgs = new RateLimitEventArgs { RateLimitStatus = rateLimitStatus };
+            var eventArgs = new RateLimitEventArgs { RateLimit = rateLimit, Source = source};
             RateLimitListener?.Invoke(this, eventArgs);
         }
 

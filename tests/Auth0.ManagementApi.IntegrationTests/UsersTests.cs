@@ -100,9 +100,9 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             var rateLimitStatusReported = false;
             // Add rate limit listener
-            _apiClient.AddRateLimitListener((sender, rateLimitStatus) =>
+            _apiClient.AddRateLimitListener((sender, eventArgs) =>
             {
-                Assert.True(rateLimitStatus.RateLimitStatus.RateLimit.Remaining >= 0);
+                Assert.True(eventArgs.RateLimit.Remaining >= 0);
                 rateLimitStatusReported = true;
             });
 

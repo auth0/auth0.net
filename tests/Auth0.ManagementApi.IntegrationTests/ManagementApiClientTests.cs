@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Auth0.Core.Exceptions;
 using Auth0.ManagementApi.Models;
 using Xunit;
 
@@ -54,9 +55,9 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             public RateLimitEventHandler RateLimitListener { get; set; }
 
-            void IManagementConnection.OnRateLimitChange(RateLimitStatus rateLimitStatus)
+            void IManagementConnection.OnRateLimitChange(string source, RateLimit rateLimit)
             {
-            var eventArgs = new RateLimitEventArgs { RateLimitStatus = rateLimitStatus };
+            var eventArgs = new RateLimitEventArgs { RateLimit = rateLimit, Source = source};
                 RateLimitListener?.Invoke(this, eventArgs);
             }
 
@@ -108,9 +109,9 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             public RateLimitEventHandler RateLimitListener { get; set; }
 
-            void IManagementConnection.OnRateLimitChange(RateLimitStatus rateLimitStatus)
+            void IManagementConnection.OnRateLimitChange(string source, RateLimit rateLimit)
             {
-                var eventArgs = new RateLimitEventArgs { RateLimitStatus = rateLimitStatus };
+                var eventArgs = new RateLimitEventArgs { RateLimit = rateLimit, Source = source};
                 RateLimitListener?.Invoke(this, eventArgs);
             }
 

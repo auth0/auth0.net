@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Auth0.Core.Exceptions;
 using Auth0.ManagementApi.Models;
 
 namespace Auth0.ManagementApi
@@ -28,8 +29,9 @@ namespace Auth0.ManagementApi
         /// <summary>
         /// Invokes ReportRateLimit Delegate with given rateLimitStatus.
         /// </summary>
-        /// <param name="rateLimitStatus">Current RateLimit reported by response header</param>
-        void OnRateLimitChange(RateLimitStatus rateLimitStatus);
+        /// <param name="rateLimit">Current RateLimit reported by response header</param>
+        /// <param name="source">client Path</param>
+        void OnRateLimitChange(string source, RateLimit rateLimit);
 
         /// <summary>
         /// Perform a HTTP GET operation against a given <see cref="Uri"/> and return the materialized response body as <typeparamref name="T"/>.

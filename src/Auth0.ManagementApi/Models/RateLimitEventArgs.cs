@@ -1,4 +1,5 @@
 using System;
+using Auth0.Core.Exceptions;
 
 namespace Auth0.ManagementApi.Models
 {
@@ -8,6 +9,7 @@ namespace Auth0.ManagementApi.Models
     /// <inheritdoc />
     public class RateLimitEventArgs : EventArgs
     {
-        public RateLimitStatus RateLimitStatus;
+        public RateLimit RateLimit { get; set; }
+        public string Source { get; set; }
     }
 }
