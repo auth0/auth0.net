@@ -180,7 +180,7 @@ namespace Auth0.AuthenticationApi.Builders
         /// <summary>
         /// Adds the `organization` query string parameter.
         /// </summary>
-        /// <param name="organization">The ID of the organization to which the user wants to authenticate.</param>
+        /// <param name="organization">The ID of the organization to log the user in to</param>
         /// <returns>Current <see cref="AuthorizationUrlBuilder"/> to allow fluent configuration.</returns>
         public AuthorizationUrlBuilder WithOrganization(string organization)
         {
