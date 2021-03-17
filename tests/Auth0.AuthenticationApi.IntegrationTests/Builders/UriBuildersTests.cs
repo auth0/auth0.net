@@ -72,19 +72,37 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Builders
             var authorizationUrl = authenticationApiClient.BuildAuthorizationUrl()
                 .WithResponseType(AuthorizationResponseType.Code)
                 .WithClient("rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW")
-                .WithConnection("google-oauth2")
                 .WithRedirectUrl("http://www.jerriepelser.com/test")
                 .WithScope("openid offline_access")
-                .WithAudience("https://myapi.com/v2")
                 .WithNonce("MyNonce")
                 .WithState("MyState")
-                .WithConnectionScope("ConnectionScope")
                 .WithOrganization("123")
                 .Build();
 
             authorizationUrl.Should()
                 .Be(
-                    new Uri("https://dx-sdks-testing.us.auth0.com/authorize?response_type=code&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&connection=google-oauth2&redirect_uri=http%3A%2F%2Fwww.jerriepelser.com%2Ftest&scope=openid%20offline_access&audience=https%3A%2F%2Fmyapi.com%2Fv2&nonce=MyNonce&state=MyState&connection_scope=ConnectionScope&organization=123"));
+                    new Uri("https://dx-sdks-testing.us.auth0.com/authorize?response_type=code&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&redirect_uri=http%3A%2F%2Fwww.jerriepelser.com%2Ftest&scope=openid%20offline_access&nonce=MyNonce&state=MyState&organization=123"));
+        }
+
+        [Fact]
+        public void Can_build_authorization_uri_with_invitation()
+        {
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
+
+            var authorizationUrl = authenticationApiClient.BuildAuthorizationUrl()
+                .WithResponseType(AuthorizationResponseType.Code)
+                .WithClient("rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW")
+                .WithRedirectUrl("http://www.jerriepelser.com/test")
+                .WithScope("openid offline_access")
+                .WithNonce("MyNonce")
+                .WithState("MyState")
+                .WithOrganization("123")
+                .WithInvitation("456")
+                .Build();
+
+            authorizationUrl.Should()
+                .Be(
+                    new Uri("https://dx-sdks-testing.us.auth0.com/authorize?response_type=code&client_id=rLNKKMORlaDzrMTqGtSL9ZSXiBBksCQW&redirect_uri=http%3A%2F%2Fwww.jerriepelser.com%2Ftest&scope=openid%20offline_access&nonce=MyNonce&state=MyState&organization=123&invitation=456"));
         }
 
         [Fact]

@@ -186,5 +186,15 @@ namespace Auth0.AuthenticationApi.Builders
         {
             return WithValue("organization", organization);
         }
+
+        /// <summary>
+        /// Adds the `invitation` query string parameter.
+        /// </summary>
+        /// <param name="invitation">The Id of an invitation to accept. This is available from the URL that is given when participating in a user invitation flow.</param>
+        /// <returns>Current <see cref="AuthorizationUrlBuilder"/> to allow fluent configuration.</returns>
+        public AuthorizationUrlBuilder WithInvitation(string invitation)
+        {
+            return WithValue("invitation", invitation);
+        }
     }
 }
