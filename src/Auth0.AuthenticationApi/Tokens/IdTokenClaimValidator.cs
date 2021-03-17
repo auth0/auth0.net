@@ -91,13 +91,13 @@ namespace Auth0.AuthenticationApi.Tokens
             }
 
             // Organization
-            if (required.Organization != null)
+            if (!string.IsNullOrWhiteSpace(required.Organization))
             {
-                var organizationClaimValue = token.Claims.SingleOrDefault(c => c.Type == "org_id")?.Value;
-                if (string.IsNullOrWhiteSpace(organizationClaimValue))
+                var organization = GetClaimValue(token.Claims, Auth0ClaimNames.Organization);
+                if (string.IsNullOrWhiteSpace(organization))
                     throw new IdTokenValidationException("Organization claim must be a string present in the ID token.");
-                if (organizationClaimValue != required.Organization)
-                    throw new IdTokenValidationException($"Organization claim mismatch in the ID token; expected \"{required.Organization}\", found \"{organizationClaimValue}\".");
+                if (organization != required.Organization)
+                    throw new IdTokenValidationException($"Organization claim mismatch in the ID token; expected \"{required.Organization}\", found \"{organization}\".");
             }
 
         }
@@ -114,6 +114,20 @@ namespace Auth0.AuthenticationApi.Tokens
             if (claim == null) return null;
 
             return (long)Convert.ToDouble(claim.Value, CultureInfo.InvariantCulture);
+        }
+
+        /// <summary>
+        /// Get the value for a given claim.
+        /// </summary>
+        /// <param name="claims"><see cref="IEnumerable{Claim}"/>Claims to search the <paramref name="claimType"/> for.</param>
+        /// <param name="claimType">Type of claim to search the <paramref name="claims"/> for. See <see cref="JwtRegisteredClaimNames"/> or <see cref="Auth0ClaimNames"/> for possible names.</param>
+        /// <returns><see cref="string"/> containing the value or <see langword="null"/> if no matching value was found.</returns>
+        private static string GetClaimValue(IEnumerable<Claim> claims, string claimType)
+        {
+            var claim = claims.SingleOrDefault(t => t.Type == claimType);
+            if (claim == null) return null;
+
+            return claim.Value;
         }
     }
 }
