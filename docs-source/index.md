@@ -155,7 +155,7 @@ var authorizationUrl = client.BuildAuthorizationUrl()
     .WithClient("abcdef")
     .WithRedirectUrl("https://www.myapp.com/redirect")
     .WithOrganization("YOUR_ORGANIZATION_ID")
-    .WithOrganization("YOUR_INVITATION_ID")
+    .WithInvitation("YOUR_INVITATION_ID")
     .Build();
 ```
 
