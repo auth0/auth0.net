@@ -37,9 +37,6 @@
         /// <summary>
         /// Organization for Id Token verification.
         /// </summary>
-        /// <remarks>
-        /// Optional except when using <see cref="AuthorizationCodeRequestBase"/>.
-        /// </remarks>
         public string Organization { get; set; }
     }
 }
