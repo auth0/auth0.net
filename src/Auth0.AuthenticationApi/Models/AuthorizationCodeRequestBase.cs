@@ -33,5 +33,10 @@
         /// Optional except when using <see cref="AuthorizationCodeRequestBase"/>.
         /// </remarks>
         public string ClientSecret { get; set; }
+
+        /// <summary>
+        /// Organization for Id Token verification.
+        /// </summary>
+        public string Organization { get; set; }
     }
 }

@@ -107,6 +107,58 @@ public ActionResult Login() {
 > [!IMPORTANT]
 > If you choose to use the @Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder to construct the authorization URL and implement a login flow callback yourself, it is important to generate and store a state value using @Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithState(System.String) and validate it in your callback URL before calling exchanging the authorization code for the tokens.
 
+### Organizations (Closed Beta)
+
+Organizations is a set of features that provide better support for developers who build and maintain SaaS and Business-to-Business (B2B) applications.
+
+Using Organizations, you can:
+
+- Represent teams, business customers, partner companies, or any logical grouping of users that should have different ways of accessing your applications, as organizations.
+
+- Manage their membership in a variety of ways, including user invitation.
+
+- Configure branded, federated login flows for each organization.
+
+- Implement role-based access control, such that users can have different roles when authenticating in the context of different organizations.
+
+- Build administration capabilities into your products, using Organizations APIs, so that those businesses can manage their own organizations.
+
+Note that Organizations is currently only available to customers on our Enterprise and Startup subscription plans.
+
+#### Log in to an organization
+
+Log in to an organization by using `WithOrganization()` when building the Authorization URL:
+
+```
+var client = new AuthenticationApiClient("YOUR_AUTH0_DOMAIN");
+
+var authorizationUrl = client.BuildAuthorizationUrl()
+    .WithResponseType(AuthorizationResponseType.Code)
+    .WithClient("abcdef")
+    .WithRedirectUrl("https://www.myapp.com/redirect")
+    .WithOrganization("YOUR_ORGANIZATION_ID")
+    .Build();
+```
+
+> [!NOTE]
+> When logging in to an Organization it is important to ensure the `org_id` claim in the ID Token is validated by providing **the exact same** `organization` value when retrieving a token using @Auth0.AuthenticationApi.Models.AuthorizationCodePkceTokenRequest, @Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest or @Auth0.AuthenticationApi.Models.RefreshTokenRequest.
+
+### Accept user invitations
+
+Accept a user invitation by using `WithInvitation()` when building the Authorization URL:
+
+```
+var client = new AuthenticationApiClient("YOUR_AUTH0_DOMAIN");
+
+var authorizationUrl = client.BuildAuthorizationUrl()
+    .WithResponseType(AuthorizationResponseType.Code)
+    .WithClient("abcdef")
+    .WithRedirectUrl("https://www.myapp.com/redirect")
+    .WithOrganization("YOUR_ORGANIZATION_ID")
+    .WithInvitation("YOUR_INVITATION_ID")
+    .Build();
+```
+
 ## Using the Management API
 
 This section will take your through the basics of using the Management API.
