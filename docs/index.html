@@ -127,7 +127,46 @@ var authorizationUrl = client.BuildAuthorizationUrl()
 }
 </code></pre><div class="IMPORTANT"><h5>Important</h5><p>If you choose to use the <a class="xref" href="api/Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a> to construct the authorization URL and implement a login flow callback yourself, it is important to generate and store a state value using <a class="xref" href="api/Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html#Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithState_System_String_">WithState(String)</a> and validate it in your callback URL before calling exchanging the authorization code for the tokens.</p>
 </div>
-<h2 id="using-the-management-api">Using the Management API</h2>
+<h3 id="organizations-closed-beta">Organizations (Closed Beta)</h3>
+<p>Organizations is a set of features that provide better support for developers who build and maintain SaaS and Business-to-Business (B2B) applications.</p>
+<p>Using Organizations, you can:</p>
+<ul>
+<li><p>Represent teams, business customers, partner companies, or any logical grouping of users that should have different ways of accessing your applications, as organizations.</p>
+</li>
+<li><p>Manage their membership in a variety of ways, including user invitation.</p>
+</li>
+<li><p>Configure branded, federated login flows for each organization.</p>
+</li>
+<li><p>Implement role-based access control, such that users can have different roles when authenticating in the context of different organizations.</p>
+</li>
+<li><p>Build administration capabilities into your products, using Organizations APIs, so that those businesses can manage their own organizations.</p>
+</li>
+</ul>
+<p>Note that Organizations is currently only available to customers on our Enterprise and Startup subscription plans.</p>
+<h4 id="log-in-to-an-organization">Log in to an organization</h4>
+<p>Log in to an organization by using <code>WithOrganization()</code> when building the Authorization URL:</p>
+<pre><code>var client = new AuthenticationApiClient(&quot;YOUR_AUTH0_DOMAIN&quot;);
+
+var authorizationUrl = client.BuildAuthorizationUrl()
+    .WithResponseType(AuthorizationResponseType.Code)
+    .WithClient(&quot;abcdef&quot;)
+    .WithRedirectUrl(&quot;https://www.myapp.com/redirect&quot;)
+    .WithOrganization(&quot;YOUR_ORGANIZATION_ID&quot;)
+    .Build();
+</code></pre><div class="NOTE"><h5>Note</h5><p>When logging in to an Organization it is important to ensure the <code>org_id</code> claim in the ID Token is validated by providing <strong>the exact same</strong> <code>organization</code> value when retrieving a token using <a class="xref" href="api/Auth0.AuthenticationApi.Models.AuthorizationCodePkceTokenRequest.html">AuthorizationCodePkceTokenRequest</a>, <a class="xref" href="api/Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest.html">AuthorizationCodeTokenRequest</a> or <a class="xref" href="api/Auth0.AuthenticationApi.Models.RefreshTokenRequest.html">RefreshTokenRequest</a>.</p>
+</div>
+<h3 id="accept-user-invitations">Accept user invitations</h3>
+<p>Accept a user invitation by using <code>WithInvitation()</code> when building the Authorization URL:</p>
+<pre><code>var client = new AuthenticationApiClient(&quot;YOUR_AUTH0_DOMAIN&quot;);
+
+var authorizationUrl = client.BuildAuthorizationUrl()
+    .WithResponseType(AuthorizationResponseType.Code)
+    .WithClient(&quot;abcdef&quot;)
+    .WithRedirectUrl(&quot;https://www.myapp.com/redirect&quot;)
+    .WithOrganization(&quot;YOUR_ORGANIZATION_ID&quot;)
+    .WithInvitation(&quot;YOUR_INVITATION_ID&quot;)
+    .Build();
+</code></pre><h2 id="using-the-management-api">Using the Management API</h2>
 <p>This section will take your through the basics of using the Management API.</p>
 <h3 id="basic-usage-1">Basic Usage</h3>
 <p>Ensure that you include the Management API namespace in your source code file:</p>
