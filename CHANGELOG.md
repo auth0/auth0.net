@@ -1,5 +1,11 @@
 # Change Log
 
+## [release-7.7.0](https://github.com/auth0/auth0.net/tree/release-7.7.0) (2021-03-23)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.6.1...release-7.7.0)
+
+**Added**
+- [SDK-2400] Add support for Organizations [\#486](https://github.com/auth0/auth0.net/pull/486) ([frederikprijck](https://github.com/frederikprijck))
+
 ## [release-7.6.1](https://github.com/auth0/auth0.net/tree/release-7.6.1) (2021-03-12)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.6.0...release-7.6.1)
 
