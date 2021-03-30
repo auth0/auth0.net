@@ -17,6 +17,7 @@ namespace Auth0.ManagementApi.Clients
         readonly JsonConverter[] logsConverters = new JsonConverter[] { new PagedListConverter<LogEntry>("logs", true) };
         readonly JsonConverter[] rolesConverters = new JsonConverter[] { new PagedListConverter<Role>("roles") };
         readonly JsonConverter[] permissionsConverters = new JsonConverter[] { new PagedListConverter<UserPermission>("permissions") };
+        readonly JsonConverter[] organizationsConverters = new JsonConverter[] { new PagedListConverter<Organization>("organizations") };
 
         /// <summary>
         /// Initializes a new instance of <see cref="UsersClient"/>.
@@ -321,6 +322,26 @@ namespace Auth0.ManagementApi.Clients
         public Task RemovePermissionsAsync(string id, AssignPermissionsRequest request)
         {
             return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"users/{EncodePath(id)}/permissions"), request, DefaultHeaders);
+        }
+
+        /// <summary>
+        /// Lists organizations for a user.
+        /// </summary>
+        /// <param name="userId">The ID of the user for which you want to retrieve the organizations.</param>
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <returns>An <see cref="IPagedList{GetUsersRequest}"/> containing the list of users.</returns>
+        public Task<IPagedList<Organization>> GetAllOrganizationsAsync(string userId, PaginationInfo pagination)
+        {
+            if (pagination == null)
+                throw new ArgumentNullException(nameof(pagination));
+
+            return Connection.GetAsync<IPagedList<Organization>>(BuildUri($"users/{EncodePath(userId)}/organizations",
+                new Dictionary<string, string>
+                {
+                    {"page", pagination.PageNo.ToString()},
+                    {"per_page", pagination.PerPage.ToString()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
+                }), DefaultHeaders, organizationsConverters);
         }
     }
 }
