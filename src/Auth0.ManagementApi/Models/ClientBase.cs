@@ -182,6 +182,7 @@ namespace Auth0.ManagementApi.Models
         /// Configuration of refresh tokens for a client
         /// </summary>
         [JsonProperty("organization_require_behavior")]
+        [JsonConverter(typeof(StringEnumConverter))]
         public OrganizationRequireBehavior? OrganizationRequireBehavior { get; set; }
     }
 
