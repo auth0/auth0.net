@@ -2,6 +2,7 @@
 using Auth0.Tests.Shared;
 using FluentAssertions;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -67,10 +68,18 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Can_send_verification_email()
         {
+            var existingOrganizationId = "org_Jif6mLeWXT5ec0nu";
+
+            await _apiClient.Organizations.AddMembersAsync(existingOrganizationId, new OrganizationAddMembersRequest
+            {
+                Members = new List<string> { _auth0User.UserId }
+            });
+
             var sendVerification = await _apiClient.Jobs.SendVerificationEmailAsync(new VerifyEmailJobRequest
             {
                 UserId = _auth0User.UserId,
-                ClientId = GetVariable("AUTH0_CLIENT_ID")
+                ClientId = GetVariable("AUTH0_CLIENT_ID"),
+                OrganizationId = existingOrganizationId
             });
             sendVerification.Should().NotBeNull();
             sendVerification.Id.Should().NotBeNull();
@@ -82,6 +91,11 @@ namespace Auth0.ManagementApi.IntegrationTests
             job.Type.Should().Be("verification_email");
             job.Status.Should().Be("pending");
             job.CreatedAt.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromMinutes(5));
+
+            await _apiClient.Organizations.DeleteMemberAsync(existingOrganizationId, new OrganizationDeleteMembersRequest
+            {
+                Members = new List<string> { _auth0User.UserId }
+            });
         }
 
         [Fact]
