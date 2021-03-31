@@ -46,7 +46,9 @@ namespace Auth0.ManagementApi.IntegrationTests
                     RotationType = RefreshTokenRotationType.NonRotating
                 },
                 OidcConformant = true,
-                GrantTypes = new[] { "refresh_token" }
+                GrantTypes = new[] { "refresh_token" },
+                OrganizationUsage = OrganizationUsage.Require,
+                OrganizationRequireBehavior = OrganizationRequireBehavior.PreLoginPrompt
             };
             var newClientResponse = await _apiClient.Clients.CreateAsync(newClientRequest);
             newClientResponse.Should().NotBeNull();
@@ -57,6 +59,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             newClientResponse.RefreshToken.Should().NotBeNull();
             newClientResponse.RefreshToken.ExpirationType.Should().Be(newClientRequest.RefreshToken.ExpirationType);
             newClientResponse.RefreshToken.RotationType.Should().Be(newClientRequest.RefreshToken.RotationType);
+            newClientResponse.OrganizationUsage.Should().Be(OrganizationUsage.Require);
+            newClientResponse.OrganizationRequireBehavior.Should().Be(OrganizationRequireBehavior.PreLoginPrompt);
 
             string prop1 = newClientResponse.ClientMetaData.Prop1;
             prop1.Should().Be("1");
@@ -79,7 +83,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                     RotationType = RefreshTokenRotationType.Rotating,
                     TokenLifetime = 3600,
                     Leeway = 1800
-                }
+                },
+                OrganizationRequireBehavior = OrganizationRequireBehavior.NoPrompt
             };
             var updateClientResponse = await _apiClient.Clients.UpdateAsync(newClientResponse.ClientId, updateClientRequest);
             updateClientResponse.Should().NotBeNull();
@@ -93,6 +98,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             updateClientResponse.RefreshToken.ExpirationType.Should().Be(updateClientRequest.RefreshToken.ExpirationType);
             updateClientResponse.RefreshToken.TokenLifetime.Should().Be(updateClientRequest.RefreshToken.TokenLifetime);
             updateClientResponse.RefreshToken.Leeway.Should().Be(updateClientRequest.RefreshToken.Leeway);
+            updateClientResponse.OrganizationRequireBehavior.Should().Be(OrganizationRequireBehavior.NoPrompt);
 
             // Get a single client
             var client = await _apiClient.Clients.GetAsync(newClientResponse.ClientId);
