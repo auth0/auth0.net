@@ -106,6 +106,9 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             Func<Task> getFunc = async () => await _apiClient.Organizations.GetConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
             getFunc.Should().Throw<ErrorApiException>().And.Message.Should().Be("No connection found by that id");
+
+            // Unlink Connection
+            await _apiClient.Organizations.DeleteConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
         }
 
         [Fact]
