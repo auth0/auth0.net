@@ -52,6 +52,7 @@ namespace Auth0.AuthenticationApi.Tokens
         /// <param name="leeway">Amount of leeway in validating date and time claims to allow some clock variance
         /// between the issuer and the application.</param>
         /// <param name="maxAge">Optional maximum time since the user last authenticated.</param>
+        /// <param name="organization">Optional organization (org_id) the token must be for.</param>
         public IdTokenRequirements(JwtSignatureAlgorithm signatureAlgorithm, string issuer, string audience, TimeSpan leeway, TimeSpan? maxAge = null, string organization = null)
         {
             SignatureAlgorithm = signatureAlgorithm;
