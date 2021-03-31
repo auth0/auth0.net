@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Auth0.ManagementApi.Models
 {
@@ -169,6 +170,20 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("refresh_token")]
         public RefreshToken RefreshToken { get; set; }
+
+        /// <summary>
+        /// Configuration of refresh tokens for a client
+        /// </summary>
+        [JsonProperty("organization_usage")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public OrganizationUsage? OrganizationUsage { get; set; }
+
+        /// <summary>
+        /// Configuration of refresh tokens for a client
+        /// </summary>
+        [JsonProperty("organization_require_behavior")]
+        public OrganizationRequireBehavior? OrganizationRequireBehavior { get; set; }
     }
+
 }
 
