@@ -6,7 +6,6 @@ namespace Auth0.ManagementApi.Models
 {
     public class OrganizationInvitation
     {
-
         [JsonProperty("id")]
         public string Id { get; set; }
         [JsonProperty("organization_id")]
@@ -20,10 +19,8 @@ namespace Auth0.ManagementApi.Models
         [JsonProperty("invitation_url")]
         public string InvitationUrl { get; set; }
 
-
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; }
-
 
         [JsonProperty("expires_at")]
         public DateTime ExpiresAt { get; set; }

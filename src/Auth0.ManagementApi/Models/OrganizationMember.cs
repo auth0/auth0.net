@@ -2,7 +2,6 @@
 
 namespace Auth0.ManagementApi.Models
 {
-
     public class OrganizationMember
     {
         [JsonProperty("user_id")]
