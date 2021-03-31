@@ -57,6 +57,16 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
+        /// Retrieves an organization by its name.
+        /// </summary>
+        /// <param name="id">The name of the organization to retrieve.</param>
+        /// <returns>The <see cref="Organization"/> retrieved.</returns>
+        public Task<Organization> GetByNameAsync(string name)
+        {
+            return Connection.GetAsync<Organization>(BuildUri($"organizations/name/{EncodePath(name)}"), DefaultHeaders);
+        }
+
+        /// <summary>
         /// Creates a new organization.
         /// </summary>
         /// <param name="request">The <see cref="OrganizationCreateRequest"/> containing the properties of the new organization.</param>
@@ -287,7 +297,7 @@ namespace Auth0.ManagementApi.Clients
                 {"include_fields", request.IncludeFields?.ToString().ToLower()}
             };
 
-            return Connection.GetAsync<OrganizationInvitation>(BuildUri($"organizations/{EncodePath(organizationId)}/invitation/{EncodePath(invitationId)}", queryStrings), DefaultHeaders);
+            return Connection.GetAsync<OrganizationInvitation>(BuildUri($"organizations/{EncodePath(organizationId)}/invitations/{EncodePath(invitationId)}", queryStrings), DefaultHeaders);
         }
 
         /// <summary>
