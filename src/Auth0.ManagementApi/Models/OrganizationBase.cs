@@ -12,6 +12,6 @@ namespace Auth0.ManagementApi.Models
         [JsonProperty("branding")]
         public OrganizationBranding Branding { get; set; }
         [JsonProperty("metadata")]
-        public IDictionary<string, string> Metadata { get; set; }
+        public dynamic Metadata { get; set; }
     }
 }
