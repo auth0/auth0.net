@@ -329,7 +329,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="userId">The ID of the user for which you want to retrieve the organizations.</param>
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
-        /// <returns>An <see cref="IPagedList{GetUsersRequest}"/> containing the list of users.</returns>
+        /// <returns>An <see cref="IPagedList{Organization}"/> containing the list of organizations.</returns>
         public Task<IPagedList<Organization>> GetAllOrganizationsAsync(string userId, PaginationInfo pagination)
         {
             if (pagination == null)

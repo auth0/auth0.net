@@ -59,7 +59,7 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Retrieves an organization by its name.
         /// </summary>
-        /// <param name="id">The name of the organization to retrieve.</param>
+        /// <param name="name">The name of the organization to retrieve.</param>
         /// <returns>The <see cref="Organization"/> retrieved.</returns>
         public Task<Organization> GetByNameAsync(string name)
         {
@@ -122,7 +122,7 @@ namespace Auth0.ManagementApi.Clients
         /// Retrieves an organization connection by its id.
         /// </summary>
         /// <param name="organizationId">The id of the organization for which you want to retrieve the connection.</param>
-        /// <param name="connectionId">The id of the organization connection to retrieve.</param>
+        /// <param name="connectionId">The id of the connection to retrieve.</param>
         /// <returns>The <see cref="OrganizationConnection"/> retrieved.</returns>
         public Task<OrganizationConnection> GetConnectionAsync(string organizationId, string connectionId)
         {
@@ -132,6 +132,7 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Creates a new organization connection.
         /// </summary>
+        /// <param name="organizationId">The id of the organization for which you want to add the connection.</param>
         /// <param name="request">The <see cref="OrganizationConnectionCreateRequest"/> containing the properties of the new organization connection.</param>
         /// <returns>The new <see cref="OrganizationConnection"/> that has been created.</returns>
         public Task<OrganizationConnection> CreateConnectionAsync(string organizationId, OrganizationConnectionCreateRequest request)
@@ -142,6 +143,8 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Updates an organization connection.
         /// </summary>
+        /// <param name="organizationId">The id of the organization for which you want to update the connection.</param>
+        /// <param name="connectionId">The id of the connection you want to update for the organization.</param>
         /// <param name="request">The <see cref="OrganizationConnectionUpdateRequest"/> containing the properties of the organization connection you want to update.</param>
         /// <returns>The <see cref="OrganizationConnection"/> that was updated.</returns>
         public Task<OrganizationConnection> UpdateConnectionAsync(string organizationId, string connectionId, OrganizationConnectionUpdateRequest request)
@@ -153,7 +156,7 @@ namespace Auth0.ManagementApi.Clients
         /// Deletes an organization connection.
         /// </summary>
         /// <param name="organizationId">The id of the organization for which you want to delete the connection.</param>
-        /// <param name="connectionId">The id of the organization connection to delete.</param>
+        /// <param name="connectionId">The id of the connection to delete from the organization.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteConnectionAsync(string organizationId, string connectionId)
         {
@@ -216,7 +219,7 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Retrieves a list of all organization members.
+        /// Retrieves a list of all roles for an organization members.
         /// </summary>
         /// <param name="organizationId">The id of the organization for which you want to retrieve the roles for a given user.</param>
         /// <param name="userId">The id of the user for which you want to retrieve the roles.</param>

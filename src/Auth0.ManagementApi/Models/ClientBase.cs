@@ -172,14 +172,14 @@ namespace Auth0.ManagementApi.Models
         public RefreshToken RefreshToken { get; set; }
 
         /// <summary>
-        /// Configuration of refresh tokens for a client
+        /// Organization usage for a client
         /// </summary>
         [JsonProperty("organization_usage")]
         [JsonConverter(typeof(StringEnumConverter))]
         public OrganizationUsage? OrganizationUsage { get; set; }
 
         /// <summary>
-        /// Configuration of refresh tokens for a client
+        /// Defines how to proceed during an authentication transaction when organization usage is required.
         /// </summary>
         [JsonProperty("organization_require_behavior")]
         [JsonConverter(typeof(StringEnumConverter))]
