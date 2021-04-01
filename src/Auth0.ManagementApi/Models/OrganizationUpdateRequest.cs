@@ -8,11 +8,20 @@ namespace Auth0.ManagementApi.Models
     /// </summary>
     public class OrganizationUpdateRequest
     {
+        /// <summary>
+        /// The display name of the organization
+        /// </summary>
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }
+        /// <summary>
+        /// Organization specific branding settings
+        /// </summary>
         [JsonProperty("branding")]
         public OrganizationBranding Branding { get; set; }
+        /// <summary>
+        /// Organization specific metadata
+        /// </summary>
         [JsonProperty("metadata")]
-        public IDictionary<string, string> Metadata { get; set; }
+        public dynamic Metadata { get; set; }
     }
 }

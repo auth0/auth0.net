@@ -3,8 +3,11 @@
     public class OrganizationGetAllRequest : OrganizationGetRequest
     {
         /// <summary>
-        /// Field to sort by. Use field:order where order is 1 for ascending and -1 for descending Defaults to created_at:-1.
+        /// Field to sort by.
         /// </summary>
+        /// <remarks>
+        /// Use field:order where order is 1 for ascending and -1 for descending Defaults to created_at:-1.
+        /// </remarks>
         public string Sort { get; set; } = null;
 
     }
