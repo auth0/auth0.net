@@ -40,13 +40,20 @@ namespace Auth0.ManagementApi.IntegrationTests
                 DisplayName = "Integration testing",
                 Branding = new OrganizationBranding
                 {
-                    LogoUrl = "https://cdn.auth0.com/manhattan/versions/1.2800.0/assets/./badge.png"
+                    LogoUrl = "https://cdn.auth0.com/manhattan/versions/1.2800.0/assets/./badge.png",
+                    Colors = new BrandingColors
+                    {
+                        Primary = "#ff0000",
+                        PageBackground = "#00ff00"
+                    }
                 }
             };
             var createResponse = await _apiClient.Organizations.CreateAsync(createRequest);
             createResponse.Should().NotBeNull();
             createResponse.Name.Should().Be(createRequest.Name);
             createResponse.Branding.LogoUrl.Should().Be(createRequest.Branding.LogoUrl);
+            createResponse.Branding.Colors.Primary.Should().Be("#ff0000");
+            createResponse.Branding.Colors.PageBackground.Should().Be("#00ff00");
 
             var updateRequest = new OrganizationUpdateRequest
             {
