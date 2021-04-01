@@ -25,5 +25,14 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("identity")]
         public EmailVerificationIdentity Identity { get; set; }
+
+        /// <summary>
+        /// ID of the organization.
+        /// </summary>
+        /// <remarks>
+        /// If provided, the organization_id and organization_name will be included as query arguments in the link back to the application.
+        /// </remarks>
+        [JsonProperty("organization_id")]
+        public string OrganizationId { get; set; }
     }
 }

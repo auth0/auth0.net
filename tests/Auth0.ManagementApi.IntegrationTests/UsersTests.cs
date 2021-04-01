@@ -419,5 +419,43 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Clean Up - Remove the user
             await _apiClient.Users.DeleteAsync(user.UserId);
         }
+
+        [Fact]
+        public async void Test_user_organizations()
+        {
+            var existingOrganizationId = "org_Jif6mLeWXT5ec0nu";
+            var userCreateRequest = new UserCreateRequest
+            {
+                Connection = _connection.Name,
+                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                EmailVerified = true,
+                Password = Password
+            };
+
+            var user = await _apiClient.Users.CreateAsync(userCreateRequest);
+
+            await _apiClient.Organizations.AddMembersAsync(existingOrganizationId, new OrganizationAddMembersRequest
+            {
+                Members = new List<string> { user.UserId }
+            });
+
+            var organizations = await _apiClient.Users.GetAllOrganizationsAsync(user.UserId, new PaginationInfo());
+
+            organizations.Should().NotBeNull();
+            organizations.Count.Should().Be(1);
+
+            await _apiClient.Organizations.DeleteMemberAsync(existingOrganizationId, new OrganizationDeleteMembersRequest
+            {
+                Members = new List<string> { user.UserId }
+            });
+
+            organizations = await _apiClient.Users.GetAllOrganizationsAsync(user.UserId, new PaginationInfo());
+
+            organizations.Should().NotBeNull();
+            organizations.Count.Should().Be(0);
+
+            // Clean Up - Remove the user
+            await _apiClient.Users.DeleteAsync(user.UserId);
+        }
     }
 }

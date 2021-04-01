@@ -34,6 +34,15 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("identity")]
         public EmailVerificationIdentity Identity { get; set; }
+
+        /// <summary>
+        /// The organization ID.
+        /// </summary>
+        /// <summary>
+        /// If provided the organization_id and organization_name will be included in the redirection URL querystring
+        /// </summary>
+        [JsonProperty("organization_id")]
+        public string OrganizationId { get; set; }
     }
 
 }
