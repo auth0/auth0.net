@@ -255,6 +255,7 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Creates a new organization invitation.
         /// </summary>
+        /// <param name="organizationId">The id of the organization to which you want to invite a user.</param>
         /// <param name="request">The <see cref="OrganizationCreateInvitationRequest"/> containing the properties of the new organization invitation.</param>
         /// <returns>The new <see cref="OrganizationInvitation"/> that has been created.</returns>
         public Task<OrganizationInvitation> CreateInvitationAsync(string organizationId, OrganizationCreateInvitationRequest request)
@@ -266,9 +267,10 @@ namespace Auth0.ManagementApi.Clients
         /// Retrieves a list of all organization invitations.
         /// </summary>
         /// <param name="organizationId">The id of the organization for which you want to retrieve the invitations.</param>
+        /// <param name="request">The <see cref="OrganizationGetAllInvitationsRequest"/> containing the properties to retrieve the organization invitations.</param>
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
         /// <returns>An <see cref="IPagedList{OrganizationInvitation}"/> containing the organization members.</returns>
-        public Task<IPagedList<OrganizationInvitation>> GetAllInvitationsAsync(string organizationId, OrganizationGetAllRequest request, PaginationInfo pagination)
+        public Task<IPagedList<OrganizationInvitation>> GetAllInvitationsAsync(string organizationId, OrganizationGetAllInvitationsRequest request, PaginationInfo pagination)
         {
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
@@ -291,8 +293,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="organizationId">The id of the organization for which you want to retrieve the invitation.</param>
         /// <param name="invitationId">The id of the organization invitation to retrieve.</param>
+        /// <param name="request">The <see cref="OrganizationGetInvitationRequest"/> containing the properties to retrieve the organization invitation.</param>
         /// <returns>The <see cref="OrganizationInvitation"/> retrieved.</returns>
-        public Task<OrganizationInvitation> GetInvitationAsync(string organizationId, string invitationId, OrganizationGetRequest request)
+        public Task<OrganizationInvitation> GetInvitationAsync(string organizationId, string invitationId, OrganizationGetInvitationRequest request)
         {
             var queryStrings = new Dictionary<string, string>
             {

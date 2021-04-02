@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class OrganizationGetAllRequest
+    <title>Class OrganizationGetInvitationRequest
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class OrganizationGetAllRequest
+    <meta name="title" content="Class OrganizationGetInvitationRequest
    ">
     <meta name="generator" content="docfx 2.56.4.0">
     
@@ -68,27 +68,21 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Models.OrganizationGetAllRequest">
+            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Models.OrganizationGetInvitationRequest">
   
   
-  <h1 id="Auth0_ManagementApi_Models_OrganizationGetAllRequest" data-uid="Auth0.ManagementApi.Models.OrganizationGetAllRequest" class="text-break">Class OrganizationGetAllRequest
+  <h1 id="Auth0_ManagementApi_Models_OrganizationGetInvitationRequest" data-uid="Auth0.ManagementApi.Models.OrganizationGetInvitationRequest" class="text-break">Class OrganizationGetInvitationRequest
   </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Auth0.ManagementApi.Models.OrganizationGetRequest.html">OrganizationGetRequest</a></div>
-    <div class="level2"><span class="xref">OrganizationGetAllRequest</span></div>
+    <div class="level1"><span class="xref">OrganizationGetInvitationRequest</span></div>
+      <div class="level2"><a class="xref" href="Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest.html">OrganizationGetAllInvitationsRequest</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="Auth0.ManagementApi.Models.OrganizationGetRequest.html#Auth0_ManagementApi_Models_OrganizationGetRequest_Fields">OrganizationGetRequest.Fields</a>
-    </div>
-    <div>
-      <a class="xref" href="Auth0.ManagementApi.Models.OrganizationGetRequest.html#Auth0_ManagementApi_Models_OrganizationGetRequest_IncludeFields">OrganizationGetRequest.IncludeFields</a>
-    </div>
     <div>
       <span class="xref">System.Object.Equals(System.Object)</span>
     </div>
@@ -113,20 +107,20 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Models.html">Auth0.ManagementApi.Models</a></h6>
   <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
-  <h5 id="Auth0_ManagementApi_Models_OrganizationGetAllRequest_syntax">Syntax</h5>
+  <h5 id="Auth0_ManagementApi_Models_OrganizationGetInvitationRequest_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class OrganizationGetAllRequest : OrganizationGetRequest</code></pre>
+    <pre><code class="lang-csharp hljs">public class OrganizationGetInvitationRequest</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  <a id="Auth0_ManagementApi_Models_OrganizationGetAllRequest_Sort_" data-uid="Auth0.ManagementApi.Models.OrganizationGetAllRequest.Sort*"></a>
-  <h4 id="Auth0_ManagementApi_Models_OrganizationGetAllRequest_Sort" data-uid="Auth0.ManagementApi.Models.OrganizationGetAllRequest.Sort">Sort</h4>
-  <div class="markdown level1 summary"><p>Field to sort by.</p>
+  <a id="Auth0_ManagementApi_Models_OrganizationGetInvitationRequest_Fields_" data-uid="Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.Fields*"></a>
+  <h4 id="Auth0_ManagementApi_Models_OrganizationGetInvitationRequest_Fields" data-uid="Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.Fields">Fields</h4>
+  <div class="markdown level1 summary"><p>A comma separated list of fields to include or exclude (depending on <a class="xref" href="Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.html#Auth0_ManagementApi_Models_OrganizationGetInvitationRequest_IncludeFields">IncludeFields</a>) from the result, empty to retrieve all fields.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Sort { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string Fields { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -143,9 +137,30 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_Models_OrganizationGetAllRequest_Sort_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>Use field:order where order is 1 for ascending and -1 for descending Defaults to created_at:-1.</p>
+  <a id="Auth0_ManagementApi_Models_OrganizationGetInvitationRequest_IncludeFields_" data-uid="Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.IncludeFields*"></a>
+  <h4 id="Auth0_ManagementApi_Models_OrganizationGetInvitationRequest_IncludeFields" data-uid="Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.IncludeFields">IncludeFields</h4>
+  <div class="markdown level1 summary"><p>Specifies whether the fields specified in <a class="xref" href="Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.html#Auth0_ManagementApi_Models_OrganizationGetInvitationRequest_Fields">Fields</a> should be included or excluded in the result.</p>
 </div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool? IncludeFields { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 </article>
           </div>
           

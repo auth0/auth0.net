@@ -1,6 +1,6 @@
 ﻿namespace Auth0.ManagementApi.Models
 {
-    public class OrganizationGetRequest
+    public class OrganizationGetInvitationRequest
     {
         /// <summary>
         /// A comma separated list of fields to include or exclude (depending on <see cref="IncludeFields"/>) from the result, empty to retrieve all fields.
