@@ -1,5 +1,11 @@
 # Change Log
 
+## [release-7.8.0](https://github.com/auth0/auth0.net/tree/release-7.8.0) (2021-04-02)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.7.0...release-7.8.0)
+
+**Added**
+- [SDK-2438] Add support for Organizations in Management API [\#489](https://github.com/auth0/auth0.net/pull/489) ([frederikprijck](https://github.com/frederikprijck))
+
 ## [release-7.7.0](https://github.com/auth0/auth0.net/tree/release-7.7.0) (2021-03-23)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.6.1...release-7.7.0)
 
