@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class VerifyEmailJobRequest
+    <title>Class OrganizationUpdateRequest
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class VerifyEmailJobRequest
+    <meta name="title" content="Class OrganizationUpdateRequest
    ">
     <meta name="generator" content="docfx 2.56.4.0">
     
@@ -68,18 +68,18 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Models.VerifyEmailJobRequest">
+            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Models.OrganizationUpdateRequest">
   
   
-  <h1 id="Auth0_ManagementApi_Models_VerifyEmailJobRequest" data-uid="Auth0.ManagementApi.Models.VerifyEmailJobRequest" class="text-break">Class VerifyEmailJobRequest
+  <h1 id="Auth0_ManagementApi_Models_OrganizationUpdateRequest" data-uid="Auth0.ManagementApi.Models.OrganizationUpdateRequest" class="text-break">Class OrganizationUpdateRequest
   </h1>
-  <div class="markdown level0 summary"><p>Contains details for sending an email address verification link.</p>
+  <div class="markdown level0 summary"><p>Requests structure for updating an organization.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">VerifyEmailJobRequest</span></div>
+    <div class="level1"><span class="xref">OrganizationUpdateRequest</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -107,21 +107,46 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Models.html">Auth0.ManagementApi.Models</a></h6>
   <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
-  <h5 id="Auth0_ManagementApi_Models_VerifyEmailJobRequest_syntax">Syntax</h5>
+  <h5 id="Auth0_ManagementApi_Models_OrganizationUpdateRequest_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class VerifyEmailJobRequest</code></pre>
+    <pre><code class="lang-csharp hljs">public class OrganizationUpdateRequest</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  <a id="Auth0_ManagementApi_Models_VerifyEmailJobRequest_ClientId_" data-uid="Auth0.ManagementApi.Models.VerifyEmailJobRequest.ClientId*"></a>
-  <h4 id="Auth0_ManagementApi_Models_VerifyEmailJobRequest_ClientId" data-uid="Auth0.ManagementApi.Models.VerifyEmailJobRequest.ClientId">ClientId</h4>
-  <div class="markdown level1 summary"><p>The id of the client, if not provided the global one will be used</p>
+  <a id="Auth0_ManagementApi_Models_OrganizationUpdateRequest_Branding_" data-uid="Auth0.ManagementApi.Models.OrganizationUpdateRequest.Branding*"></a>
+  <h4 id="Auth0_ManagementApi_Models_OrganizationUpdateRequest_Branding" data-uid="Auth0.ManagementApi.Models.OrganizationUpdateRequest.Branding">Branding</h4>
+  <div class="markdown level1 summary"><p>Organization specific branding settings</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;client_id&quot;)]
-public string ClientId { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;branding&quot;)]
+public OrganizationBranding Branding { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.OrganizationBranding.html">OrganizationBranding</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Models_OrganizationUpdateRequest_DisplayName_" data-uid="Auth0.ManagementApi.Models.OrganizationUpdateRequest.DisplayName*"></a>
+  <h4 id="Auth0_ManagementApi_Models_OrganizationUpdateRequest_DisplayName" data-uid="Auth0.ManagementApi.Models.OrganizationUpdateRequest.DisplayName">DisplayName</h4>
+  <div class="markdown level1 summary"><p>The display name of the organization</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;display_name&quot;)]
+public string DisplayName { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -138,16 +163,15 @@ public string ClientId { get; set; }</code></pre>
       </tr>
     </tbody>
   </table>
-  <a id="Auth0_ManagementApi_Models_VerifyEmailJobRequest_Identity_" data-uid="Auth0.ManagementApi.Models.VerifyEmailJobRequest.Identity*"></a>
-  <h4 id="Auth0_ManagementApi_Models_VerifyEmailJobRequest_Identity" data-uid="Auth0.ManagementApi.Models.VerifyEmailJobRequest.Identity">Identity</h4>
-  <div class="markdown level1 summary"><p>The primary identity to verify when using social, enterprise, or passwordless connections.
-It is also required to verify secondary identities.</p>
+  <a id="Auth0_ManagementApi_Models_OrganizationUpdateRequest_Metadata_" data-uid="Auth0.ManagementApi.Models.OrganizationUpdateRequest.Metadata*"></a>
+  <h4 id="Auth0_ManagementApi_Models_OrganizationUpdateRequest_Metadata" data-uid="Auth0.ManagementApi.Models.OrganizationUpdateRequest.Metadata">Metadata</h4>
+  <div class="markdown level1 summary"><p>Organization specific metadata</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;identity&quot;)]
-public EmailVerificationIdentity Identity { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;metadata&quot;)]
+public dynamic Metadata { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -159,60 +183,7 @@ public EmailVerificationIdentity Identity { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.EmailVerificationIdentity.html">EmailVerificationIdentity</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Auth0_ManagementApi_Models_VerifyEmailJobRequest_OrganizationId_" data-uid="Auth0.ManagementApi.Models.VerifyEmailJobRequest.OrganizationId*"></a>
-  <h4 id="Auth0_ManagementApi_Models_VerifyEmailJobRequest_OrganizationId" data-uid="Auth0.ManagementApi.Models.VerifyEmailJobRequest.OrganizationId">OrganizationId</h4>
-  <div class="markdown level1 summary"><p>ID of the organization.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;organization_id&quot;)]
-public string OrganizationId { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Auth0_ManagementApi_Models_VerifyEmailJobRequest_OrganizationId_remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>If provided, the organization_id and organization_name will be included as query arguments in the link back to the application.</p>
-</div>
-  <a id="Auth0_ManagementApi_Models_VerifyEmailJobRequest_UserId_" data-uid="Auth0.ManagementApi.Models.VerifyEmailJobRequest.UserId*"></a>
-  <h4 id="Auth0_ManagementApi_Models_VerifyEmailJobRequest_UserId" data-uid="Auth0.ManagementApi.Models.VerifyEmailJobRequest.UserId">UserId</h4>
-  <div class="markdown level1 summary"><p>The identifier of the user to whom the email will be sent.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;user_id&quot;)]
-public string UserId { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">System.Object</span></td>
         <td></td>
       </tr>
     </tbody>

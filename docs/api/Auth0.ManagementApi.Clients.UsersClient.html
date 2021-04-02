@@ -495,6 +495,55 @@
       </tr>
     </tbody>
   </table>
+  <a id="Auth0_ManagementApi_Clients_UsersClient_GetAllOrganizationsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAllOrganizationsAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetAllOrganizationsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAllOrganizationsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo)">GetAllOrganizationsAsync(String, PaginationInfo)</h4>
+  <div class="markdown level1 summary"><p>Lists organizations for a user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;Organization&gt;&gt; GetAllOrganizationsAsync(string userId, PaginationInfo pagination)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">userId</span></td>
+        <td><p>The ID of the user for which you want to retrieve the organizations.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></td>
+        <td><span class="parametername">pagination</span></td>
+        <td><p>Specifies pagination info to use when requesting paged results.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Organization.html">Organization</a>&gt;&gt;</td>
+        <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the list of organizations.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <a id="Auth0_ManagementApi_Clients_UsersClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetAsync_System_String_System_String_System_Boolean_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAsync(System.String,System.String,System.Boolean)">GetAsync(String, String, Boolean)</h4>
   <div class="markdown level1 summary"><p>Gets a user.</p>

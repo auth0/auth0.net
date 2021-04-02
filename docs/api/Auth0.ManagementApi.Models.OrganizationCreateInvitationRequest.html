@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class PasswordChangeTicketRequest
+    <title>Class OrganizationCreateInvitationRequest
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class PasswordChangeTicketRequest
+    <meta name="title" content="Class OrganizationCreateInvitationRequest
    ">
     <meta name="generator" content="docfx 2.56.4.0">
     
@@ -68,17 +68,18 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Models.PasswordChangeTicketRequest">
+            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest">
   
   
-  <h1 id="Auth0_ManagementApi_Models_PasswordChangeTicketRequest" data-uid="Auth0.ManagementApi.Models.PasswordChangeTicketRequest" class="text-break">Class PasswordChangeTicketRequest
+  <h1 id="Auth0_ManagementApi_Models_OrganizationCreateInvitationRequest" data-uid="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest" class="text-break">Class OrganizationCreateInvitationRequest
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Requests structure for creating a new organization invitation.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">PasswordChangeTicketRequest</span></div>
+    <div class="level1"><span class="xref">OrganizationCreateInvitationRequest</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -106,18 +107,40 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Models.html">Auth0.ManagementApi.Models</a></h6>
   <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
-  <h5 id="Auth0_ManagementApi_Models_PasswordChangeTicketRequest_syntax">Syntax</h5>
+  <h5 id="Auth0_ManagementApi_Models_OrganizationCreateInvitationRequest_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class PasswordChangeTicketRequest</code></pre>
+    <pre><code class="lang-csharp hljs">public class OrganizationCreateInvitationRequest</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  <a id="Auth0_ManagementApi_Models_PasswordChangeTicketRequest_ClientId_" data-uid="Auth0.ManagementApi.Models.PasswordChangeTicketRequest.ClientId*"></a>
-  <h4 id="Auth0_ManagementApi_Models_PasswordChangeTicketRequest_ClientId" data-uid="Auth0.ManagementApi.Models.PasswordChangeTicketRequest.ClientId">ClientId</h4>
-  <div class="markdown level1 summary"><p>ID of the client.
-If provided for tenants using the New Universal Login experience, 
-the user will be prompted to redirect to the default login route of the corresponding application once the ticket is used.
-See <a href="https://auth0.com/docs/universal-login/configure-default-login-routes">Configuring Default Login Routes</a> for more details.</p>
+  <a id="Auth0_ManagementApi_Models_OrganizationCreateInvitationRequest_AppMetadata_" data-uid="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest.AppMetadata*"></a>
+  <h4 id="Auth0_ManagementApi_Models_OrganizationCreateInvitationRequest_AppMetadata" data-uid="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest.AppMetadata">AppMetadata</h4>
+  <div class="markdown level1 summary"><p>Contains app meta data. The user has read/write access to this.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;app_metadata&quot;)]
+public dynamic AppMetadata { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Models_OrganizationCreateInvitationRequest_ClientId_" data-uid="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest.ClientId*"></a>
+  <h4 id="Auth0_ManagementApi_Models_OrganizationCreateInvitationRequest_ClientId" data-uid="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest.ClientId">ClientId</h4>
+  <div class="markdown level1 summary"><p>Auth0 client ID. Used to resolve the application&apos;s login initiation endpoint.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -140,9 +163,9 @@ public string ClientId { get; set; }</code></pre>
       </tr>
     </tbody>
   </table>
-  <a id="Auth0_ManagementApi_Models_PasswordChangeTicketRequest_ConnectionId_" data-uid="Auth0.ManagementApi.Models.PasswordChangeTicketRequest.ConnectionId*"></a>
-  <h4 id="Auth0_ManagementApi_Models_PasswordChangeTicketRequest_ConnectionId" data-uid="Auth0.ManagementApi.Models.PasswordChangeTicketRequest.ConnectionId">ConnectionId</h4>
-  <div class="markdown level1 summary"><p>The connection that provides the identity for which the password is to be changed. If sending this parameter, the <a class="xref" href="Auth0.ManagementApi.Models.PasswordChangeTicketRequest.html#Auth0_ManagementApi_Models_PasswordChangeTicketRequest_Email">Email</a> is also required and the <a class="xref" href="Auth0.ManagementApi.Models.PasswordChangeTicketRequest.html#Auth0_ManagementApi_Models_PasswordChangeTicketRequest_UserId">UserId</a> is invalid.</p>
+  <a id="Auth0_ManagementApi_Models_OrganizationCreateInvitationRequest_ConnectionId_" data-uid="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest.ConnectionId*"></a>
+  <h4 id="Auth0_ManagementApi_Models_OrganizationCreateInvitationRequest_ConnectionId" data-uid="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest.ConnectionId">ConnectionId</h4>
+  <div class="markdown level1 summary"><p>The id of the connection to force invitee to authenticate with.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -165,15 +188,15 @@ public string ConnectionId { get; set; }</code></pre>
       </tr>
     </tbody>
   </table>
-  <a id="Auth0_ManagementApi_Models_PasswordChangeTicketRequest_Email_" data-uid="Auth0.ManagementApi.Models.PasswordChangeTicketRequest.Email*"></a>
-  <h4 id="Auth0_ManagementApi_Models_PasswordChangeTicketRequest_Email" data-uid="Auth0.ManagementApi.Models.PasswordChangeTicketRequest.Email">Email</h4>
-  <div class="markdown level1 summary"><p>The user&apos;s email.</p>
+  <a id="Auth0_ManagementApi_Models_OrganizationCreateInvitationRequest_Invitee_" data-uid="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest.Invitee*"></a>
+  <h4 id="Auth0_ManagementApi_Models_OrganizationCreateInvitationRequest_Invitee" data-uid="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest.Invitee">Invitee</h4>
+  <div class="markdown level1 summary"><p>Information about the person being invited</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;email&quot;)]
-public string Email { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;invitee&quot;)]
+public OrganizationInvitationInvitee Invitee { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -185,20 +208,20 @@ public string Email { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.OrganizationInvitationInvitee.html">OrganizationInvitationInvitee</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="Auth0_ManagementApi_Models_PasswordChangeTicketRequest_IncludeEmailInRedirect_" data-uid="Auth0.ManagementApi.Models.PasswordChangeTicketRequest.IncludeEmailInRedirect*"></a>
-  <h4 id="Auth0_ManagementApi_Models_PasswordChangeTicketRequest_IncludeEmailInRedirect" data-uid="Auth0.ManagementApi.Models.PasswordChangeTicketRequest.IncludeEmailInRedirect">IncludeEmailInRedirect</h4>
-  <div class="markdown level1 summary"><p>Whether the reset_email will include the email as part of the returnUrl.</p>
+  <a id="Auth0_ManagementApi_Models_OrganizationCreateInvitationRequest_Inviter_" data-uid="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest.Inviter*"></a>
+  <h4 id="Auth0_ManagementApi_Models_OrganizationCreateInvitationRequest_Inviter" data-uid="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest.Inviter">Inviter</h4>
+  <div class="markdown level1 summary"><p>Information about the person that is creating the invitation</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;includeEmailInRedirect&quot;)]
-public bool? IncludeEmailInRedirect { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;inviter&quot;)]
+public OrganizationInvitationInviter Inviter { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -210,20 +233,20 @@ public bool? IncludeEmailInRedirect { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.OrganizationInvitationInviter.html">OrganizationInvitationInviter</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="Auth0_ManagementApi_Models_PasswordChangeTicketRequest_MarkEmailAsVerified_" data-uid="Auth0.ManagementApi.Models.PasswordChangeTicketRequest.MarkEmailAsVerified*"></a>
-  <h4 id="Auth0_ManagementApi_Models_PasswordChangeTicketRequest_MarkEmailAsVerified" data-uid="Auth0.ManagementApi.Models.PasswordChangeTicketRequest.MarkEmailAsVerified">MarkEmailAsVerified</h4>
-  <div class="markdown level1 summary"><p>Whether the email_verified attribute will be set once the password is changed.</p>
+  <a id="Auth0_ManagementApi_Models_OrganizationCreateInvitationRequest_Roles_" data-uid="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest.Roles*"></a>
+  <h4 id="Auth0_ManagementApi_Models_OrganizationCreateInvitationRequest_Roles" data-uid="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest.Roles">Roles</h4>
+  <div class="markdown level1 summary"><p>List of role IDs to associated with the user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;mark_email_as_verified&quot;)]
-public bool? MarkEmailAsVerified { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;roles&quot;)]
+public IList&lt;string&gt; Roles { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -235,20 +258,20 @@ public bool? MarkEmailAsVerified { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="Auth0_ManagementApi_Models_PasswordChangeTicketRequest_OrganizationId_" data-uid="Auth0.ManagementApi.Models.PasswordChangeTicketRequest.OrganizationId*"></a>
-  <h4 id="Auth0_ManagementApi_Models_PasswordChangeTicketRequest_OrganizationId" data-uid="Auth0.ManagementApi.Models.PasswordChangeTicketRequest.OrganizationId">OrganizationId</h4>
-  <div class="markdown level1 summary"><p>The organization ID.</p>
+  <a id="Auth0_ManagementApi_Models_OrganizationCreateInvitationRequest_SendInvitationEmail_" data-uid="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest.SendInvitationEmail*"></a>
+  <h4 id="Auth0_ManagementApi_Models_OrganizationCreateInvitationRequest_SendInvitationEmail" data-uid="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest.SendInvitationEmail">SendInvitationEmail</h4>
+  <div class="markdown level1 summary"><p>Whether the user will receive an invitation email (true) or no email (false), true by default</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;organization_id&quot;)]
-public string OrganizationId { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;send_invitation_email&quot;)]
+public bool SendInvitationEmail { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -260,47 +283,20 @@ public string OrganizationId { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">System.Boolean</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="Auth0_ManagementApi_Models_PasswordChangeTicketRequest_ResultUrl_" data-uid="Auth0.ManagementApi.Models.PasswordChangeTicketRequest.ResultUrl*"></a>
-  <h4 id="Auth0_ManagementApi_Models_PasswordChangeTicketRequest_ResultUrl" data-uid="Auth0.ManagementApi.Models.PasswordChangeTicketRequest.ResultUrl">ResultUrl</h4>
-  <div class="markdown level1 summary"><p>The user will be redirected to this endpoint once the ticket is used.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;result_url&quot;)]
-public string ResultUrl { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Auth0_ManagementApi_Models_PasswordChangeTicketRequest_Ttl_" data-uid="Auth0.ManagementApi.Models.PasswordChangeTicketRequest.Ttl*"></a>
-  <h4 id="Auth0_ManagementApi_Models_PasswordChangeTicketRequest_Ttl" data-uid="Auth0.ManagementApi.Models.PasswordChangeTicketRequest.Ttl">Ttl</h4>
-  <div class="markdown level1 summary"><p>The ticket&apos;s lifetime in seconds starting from the moment of creation. 
-After expiration the ticket can not be used to change the users&apos;s password. 
-If not specified or if you send 0 the Auth0 default lifetime will be applied</p>
+  <a id="Auth0_ManagementApi_Models_OrganizationCreateInvitationRequest_TimeToLive_" data-uid="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest.TimeToLive*"></a>
+  <h4 id="Auth0_ManagementApi_Models_OrganizationCreateInvitationRequest_TimeToLive" data-uid="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest.TimeToLive">TimeToLive</h4>
+  <div class="markdown level1 summary"><p>Number of seconds for which the invitation is valid before expiration.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;ttl_sec&quot;)]
-public int? Ttl { get; set; }</code></pre>
+public int TimeToLive { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -312,20 +308,23 @@ public int? Ttl { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><span class="xref">System.Int32</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  <a id="Auth0_ManagementApi_Models_PasswordChangeTicketRequest_UserId_" data-uid="Auth0.ManagementApi.Models.PasswordChangeTicketRequest.UserId*"></a>
-  <h4 id="Auth0_ManagementApi_Models_PasswordChangeTicketRequest_UserId" data-uid="Auth0.ManagementApi.Models.PasswordChangeTicketRequest.UserId">UserId</h4>
-  <div class="markdown level1 summary"><p>The user ID for which the ticket is to be created.</p>
+  <h5 id="Auth0_ManagementApi_Models_OrganizationCreateInvitationRequest_TimeToLive_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If unspecified or set to 0, this value defaults to 604800 seconds (7 days). Max value: 2592000 seconds (30 days).</p>
+</div>
+  <a id="Auth0_ManagementApi_Models_OrganizationCreateInvitationRequest_UserMetadata_" data-uid="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest.UserMetadata*"></a>
+  <h4 id="Auth0_ManagementApi_Models_OrganizationCreateInvitationRequest_UserMetadata" data-uid="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest.UserMetadata">UserMetadata</h4>
+  <div class="markdown level1 summary"><p>Contains user meta data. The user has read/write access to this.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;user_id&quot;)]
-public string UserId { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;user_metadata&quot;)]
+public dynamic UserMetadata { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -337,7 +336,7 @@ public string UserId { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><span class="xref">System.Object</span></td>
         <td></td>
       </tr>
     </tbody>
