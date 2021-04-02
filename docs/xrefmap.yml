@@ -4719,12 +4719,12 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.OrganizationsClient.GetAllConnectionsAsync
   nameWithType: OrganizationsClient.GetAllConnectionsAsync
-- uid: Auth0.ManagementApi.Clients.OrganizationsClient.GetAllInvitationsAsync(System.String,Auth0.ManagementApi.Models.OrganizationGetAllRequest,Auth0.ManagementApi.Paging.PaginationInfo)
-  name: GetAllInvitationsAsync(String, OrganizationGetAllRequest, PaginationInfo)
-  href: api/Auth0.ManagementApi.Clients.OrganizationsClient.html#Auth0_ManagementApi_Clients_OrganizationsClient_GetAllInvitationsAsync_System_String_Auth0_ManagementApi_Models_OrganizationGetAllRequest_Auth0_ManagementApi_Paging_PaginationInfo_
-  commentId: M:Auth0.ManagementApi.Clients.OrganizationsClient.GetAllInvitationsAsync(System.String,Auth0.ManagementApi.Models.OrganizationGetAllRequest,Auth0.ManagementApi.Paging.PaginationInfo)
-  fullName: Auth0.ManagementApi.Clients.OrganizationsClient.GetAllInvitationsAsync(System.String, Auth0.ManagementApi.Models.OrganizationGetAllRequest, Auth0.ManagementApi.Paging.PaginationInfo)
-  nameWithType: OrganizationsClient.GetAllInvitationsAsync(String, OrganizationGetAllRequest, PaginationInfo)
+- uid: Auth0.ManagementApi.Clients.OrganizationsClient.GetAllInvitationsAsync(System.String,Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest,Auth0.ManagementApi.Paging.PaginationInfo)
+  name: GetAllInvitationsAsync(String, OrganizationGetAllInvitationsRequest, PaginationInfo)
+  href: api/Auth0.ManagementApi.Clients.OrganizationsClient.html#Auth0_ManagementApi_Clients_OrganizationsClient_GetAllInvitationsAsync_System_String_Auth0_ManagementApi_Models_OrganizationGetAllInvitationsRequest_Auth0_ManagementApi_Paging_PaginationInfo_
+  commentId: M:Auth0.ManagementApi.Clients.OrganizationsClient.GetAllInvitationsAsync(System.String,Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest,Auth0.ManagementApi.Paging.PaginationInfo)
+  fullName: Auth0.ManagementApi.Clients.OrganizationsClient.GetAllInvitationsAsync(System.String, Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest, Auth0.ManagementApi.Paging.PaginationInfo)
+  nameWithType: OrganizationsClient.GetAllInvitationsAsync(String, OrganizationGetAllInvitationsRequest, PaginationInfo)
 - uid: Auth0.ManagementApi.Clients.OrganizationsClient.GetAllInvitationsAsync*
   name: GetAllInvitationsAsync
   href: api/Auth0.ManagementApi.Clients.OrganizationsClient.html#Auth0_ManagementApi_Clients_OrganizationsClient_GetAllInvitationsAsync_
@@ -4797,12 +4797,12 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.OrganizationsClient.GetConnectionAsync
   nameWithType: OrganizationsClient.GetConnectionAsync
-- uid: Auth0.ManagementApi.Clients.OrganizationsClient.GetInvitationAsync(System.String,System.String,Auth0.ManagementApi.Models.OrganizationGetRequest)
-  name: GetInvitationAsync(String, String, OrganizationGetRequest)
-  href: api/Auth0.ManagementApi.Clients.OrganizationsClient.html#Auth0_ManagementApi_Clients_OrganizationsClient_GetInvitationAsync_System_String_System_String_Auth0_ManagementApi_Models_OrganizationGetRequest_
-  commentId: M:Auth0.ManagementApi.Clients.OrganizationsClient.GetInvitationAsync(System.String,System.String,Auth0.ManagementApi.Models.OrganizationGetRequest)
-  fullName: Auth0.ManagementApi.Clients.OrganizationsClient.GetInvitationAsync(System.String, System.String, Auth0.ManagementApi.Models.OrganizationGetRequest)
-  nameWithType: OrganizationsClient.GetInvitationAsync(String, String, OrganizationGetRequest)
+- uid: Auth0.ManagementApi.Clients.OrganizationsClient.GetInvitationAsync(System.String,System.String,Auth0.ManagementApi.Models.OrganizationGetInvitationRequest)
+  name: GetInvitationAsync(String, String, OrganizationGetInvitationRequest)
+  href: api/Auth0.ManagementApi.Clients.OrganizationsClient.html#Auth0_ManagementApi_Clients_OrganizationsClient_GetInvitationAsync_System_String_System_String_Auth0_ManagementApi_Models_OrganizationGetInvitationRequest_
+  commentId: M:Auth0.ManagementApi.Clients.OrganizationsClient.GetInvitationAsync(System.String,System.String,Auth0.ManagementApi.Models.OrganizationGetInvitationRequest)
+  fullName: Auth0.ManagementApi.Clients.OrganizationsClient.GetInvitationAsync(System.String, System.String, Auth0.ManagementApi.Models.OrganizationGetInvitationRequest)
+  nameWithType: OrganizationsClient.GetInvitationAsync(String, String, OrganizationGetInvitationRequest)
 - uid: Auth0.ManagementApi.Clients.OrganizationsClient.GetInvitationAsync*
   name: GetInvitationAsync
   href: api/Auth0.ManagementApi.Clients.OrganizationsClient.html#Auth0_ManagementApi_Clients_OrganizationsClient_GetInvitationAsync_
@@ -11462,57 +11462,57 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.OrganizationDeleteMembersRequest.Members
   nameWithType: OrganizationDeleteMembersRequest.Members
-- uid: Auth0.ManagementApi.Models.OrganizationGetAllRequest
-  name: OrganizationGetAllRequest
-  href: api/Auth0.ManagementApi.Models.OrganizationGetAllRequest.html
-  commentId: T:Auth0.ManagementApi.Models.OrganizationGetAllRequest
-  fullName: Auth0.ManagementApi.Models.OrganizationGetAllRequest
-  nameWithType: OrganizationGetAllRequest
-- uid: Auth0.ManagementApi.Models.OrganizationGetAllRequest.Sort
+- uid: Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest
+  name: OrganizationGetAllInvitationsRequest
+  href: api/Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest.html
+  commentId: T:Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest
+  fullName: Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest
+  nameWithType: OrganizationGetAllInvitationsRequest
+- uid: Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest.Sort
   name: Sort
-  href: api/Auth0.ManagementApi.Models.OrganizationGetAllRequest.html#Auth0_ManagementApi_Models_OrganizationGetAllRequest_Sort
-  commentId: P:Auth0.ManagementApi.Models.OrganizationGetAllRequest.Sort
-  fullName: Auth0.ManagementApi.Models.OrganizationGetAllRequest.Sort
-  nameWithType: OrganizationGetAllRequest.Sort
-- uid: Auth0.ManagementApi.Models.OrganizationGetAllRequest.Sort*
+  href: api/Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest.html#Auth0_ManagementApi_Models_OrganizationGetAllInvitationsRequest_Sort
+  commentId: P:Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest.Sort
+  fullName: Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest.Sort
+  nameWithType: OrganizationGetAllInvitationsRequest.Sort
+- uid: Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest.Sort*
   name: Sort
-  href: api/Auth0.ManagementApi.Models.OrganizationGetAllRequest.html#Auth0_ManagementApi_Models_OrganizationGetAllRequest_Sort_
-  commentId: Overload:Auth0.ManagementApi.Models.OrganizationGetAllRequest.Sort
+  href: api/Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest.html#Auth0_ManagementApi_Models_OrganizationGetAllInvitationsRequest_Sort_
+  commentId: Overload:Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest.Sort
   isSpec: "True"
-  fullName: Auth0.ManagementApi.Models.OrganizationGetAllRequest.Sort
-  nameWithType: OrganizationGetAllRequest.Sort
-- uid: Auth0.ManagementApi.Models.OrganizationGetRequest
-  name: OrganizationGetRequest
-  href: api/Auth0.ManagementApi.Models.OrganizationGetRequest.html
-  commentId: T:Auth0.ManagementApi.Models.OrganizationGetRequest
-  fullName: Auth0.ManagementApi.Models.OrganizationGetRequest
-  nameWithType: OrganizationGetRequest
-- uid: Auth0.ManagementApi.Models.OrganizationGetRequest.Fields
+  fullName: Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest.Sort
+  nameWithType: OrganizationGetAllInvitationsRequest.Sort
+- uid: Auth0.ManagementApi.Models.OrganizationGetInvitationRequest
+  name: OrganizationGetInvitationRequest
+  href: api/Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.html
+  commentId: T:Auth0.ManagementApi.Models.OrganizationGetInvitationRequest
+  fullName: Auth0.ManagementApi.Models.OrganizationGetInvitationRequest
+  nameWithType: OrganizationGetInvitationRequest
+- uid: Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.Fields
   name: Fields
-  href: api/Auth0.ManagementApi.Models.OrganizationGetRequest.html#Auth0_ManagementApi_Models_OrganizationGetRequest_Fields
-  commentId: P:Auth0.ManagementApi.Models.OrganizationGetRequest.Fields
-  fullName: Auth0.ManagementApi.Models.OrganizationGetRequest.Fields
-  nameWithType: OrganizationGetRequest.Fields
-- uid: Auth0.ManagementApi.Models.OrganizationGetRequest.Fields*
+  href: api/Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.html#Auth0_ManagementApi_Models_OrganizationGetInvitationRequest_Fields
+  commentId: P:Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.Fields
+  fullName: Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.Fields
+  nameWithType: OrganizationGetInvitationRequest.Fields
+- uid: Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.Fields*
   name: Fields
-  href: api/Auth0.ManagementApi.Models.OrganizationGetRequest.html#Auth0_ManagementApi_Models_OrganizationGetRequest_Fields_
-  commentId: Overload:Auth0.ManagementApi.Models.OrganizationGetRequest.Fields
+  href: api/Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.html#Auth0_ManagementApi_Models_OrganizationGetInvitationRequest_Fields_
+  commentId: Overload:Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.Fields
   isSpec: "True"
-  fullName: Auth0.ManagementApi.Models.OrganizationGetRequest.Fields
-  nameWithType: OrganizationGetRequest.Fields
-- uid: Auth0.ManagementApi.Models.OrganizationGetRequest.IncludeFields
+  fullName: Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.Fields
+  nameWithType: OrganizationGetInvitationRequest.Fields
+- uid: Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.IncludeFields
   name: IncludeFields
-  href: api/Auth0.ManagementApi.Models.OrganizationGetRequest.html#Auth0_ManagementApi_Models_OrganizationGetRequest_IncludeFields
-  commentId: P:Auth0.ManagementApi.Models.OrganizationGetRequest.IncludeFields
-  fullName: Auth0.ManagementApi.Models.OrganizationGetRequest.IncludeFields
-  nameWithType: OrganizationGetRequest.IncludeFields
-- uid: Auth0.ManagementApi.Models.OrganizationGetRequest.IncludeFields*
+  href: api/Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.html#Auth0_ManagementApi_Models_OrganizationGetInvitationRequest_IncludeFields
+  commentId: P:Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.IncludeFields
+  fullName: Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.IncludeFields
+  nameWithType: OrganizationGetInvitationRequest.IncludeFields
+- uid: Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.IncludeFields*
   name: IncludeFields
-  href: api/Auth0.ManagementApi.Models.OrganizationGetRequest.html#Auth0_ManagementApi_Models_OrganizationGetRequest_IncludeFields_
-  commentId: Overload:Auth0.ManagementApi.Models.OrganizationGetRequest.IncludeFields
+  href: api/Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.html#Auth0_ManagementApi_Models_OrganizationGetInvitationRequest_IncludeFields_
+  commentId: Overload:Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.IncludeFields
   isSpec: "True"
-  fullName: Auth0.ManagementApi.Models.OrganizationGetRequest.IncludeFields
-  nameWithType: OrganizationGetRequest.IncludeFields
+  fullName: Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.IncludeFields
+  nameWithType: OrganizationGetInvitationRequest.IncludeFields
 - uid: Auth0.ManagementApi.Models.OrganizationInvitation
   name: OrganizationInvitation
   href: api/Auth0.ManagementApi.Models.OrganizationInvitation.html

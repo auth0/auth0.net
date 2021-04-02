@@ -387,7 +387,8 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">organizationId</span></td>
-        <td></td>
+        <td><p>The id of the organization to which you want to invite a user.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest.html">OrganizationCreateInvitationRequest</a></td>
@@ -751,13 +752,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAllInvitationsAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAllInvitationsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAllInvitationsAsync_System_String_Auth0_ManagementApi_Models_OrganizationGetAllRequest_Auth0_ManagementApi_Paging_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAllInvitationsAsync(System.String,Auth0.ManagementApi.Models.OrganizationGetAllRequest,Auth0.ManagementApi.Paging.PaginationInfo)">GetAllInvitationsAsync(String, OrganizationGetAllRequest, PaginationInfo)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAllInvitationsAsync_System_String_Auth0_ManagementApi_Models_OrganizationGetAllInvitationsRequest_Auth0_ManagementApi_Paging_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAllInvitationsAsync(System.String,Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest,Auth0.ManagementApi.Paging.PaginationInfo)">GetAllInvitationsAsync(String, OrganizationGetAllInvitationsRequest, PaginationInfo)</h4>
   <div class="markdown level1 summary"><p>Retrieves a list of all organization invitations.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;OrganizationInvitation&gt;&gt; GetAllInvitationsAsync(string organizationId, OrganizationGetAllRequest request, PaginationInfo pagination)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;OrganizationInvitation&gt;&gt; GetAllInvitationsAsync(string organizationId, OrganizationGetAllInvitationsRequest request, PaginationInfo pagination)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -776,9 +777,10 @@
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.OrganizationGetAllRequest.html">OrganizationGetAllRequest</a></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest.html">OrganizationGetAllInvitationsRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td></td>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest.html">OrganizationGetAllInvitationsRequest</a> containing the properties to retrieve the organization invitations.</p>
+</td>
       </tr>
       <tr>
         <td><a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></td>
@@ -1044,13 +1046,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_OrganizationsClient_GetInvitationAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetInvitationAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetInvitationAsync_System_String_System_String_Auth0_ManagementApi_Models_OrganizationGetRequest_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetInvitationAsync(System.String,System.String,Auth0.ManagementApi.Models.OrganizationGetRequest)">GetInvitationAsync(String, String, OrganizationGetRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetInvitationAsync_System_String_System_String_Auth0_ManagementApi_Models_OrganizationGetInvitationRequest_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetInvitationAsync(System.String,System.String,Auth0.ManagementApi.Models.OrganizationGetInvitationRequest)">GetInvitationAsync(String, String, OrganizationGetInvitationRequest)</h4>
   <div class="markdown level1 summary"><p>Retrieves an organization invitation by its id.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;OrganizationInvitation&gt; GetInvitationAsync(string organizationId, string invitationId, OrganizationGetRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;OrganizationInvitation&gt; GetInvitationAsync(string organizationId, string invitationId, OrganizationGetInvitationRequest request)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1075,9 +1077,10 @@
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.OrganizationGetRequest.html">OrganizationGetRequest</a></td>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.html">OrganizationGetInvitationRequest</a></td>
         <td><span class="parametername">request</span></td>
-        <td></td>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.html">OrganizationGetInvitationRequest</a> containing the properties to retrieve the organization invitation.</p>
+</td>
       </tr>
     </tbody>
   </table>

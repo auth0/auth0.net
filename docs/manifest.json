@@ -894,7 +894,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.OrganizationsClient.html",
-          "hash": "P1nNwHXgJT7SXBJhq5ePlA=="
+          "hash": "FiWN/TONDB8uuyFujBifFw=="
         }
       },
       "is_incremental": false,
@@ -2390,11 +2390,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.OrganizationGetAllRequest.yml",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Auth0.ManagementApi.Models.OrganizationGetAllRequest.html",
-          "hash": "r8kRuxR4QD9efUStzRZQag=="
+          "relative_path": "api/Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest.html",
+          "hash": "gMVaC6u4payE1za9lReuZA=="
         }
       },
       "is_incremental": false,
@@ -2402,11 +2402,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.OrganizationGetRequest.yml",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Auth0.ManagementApi.Models.OrganizationGetRequest.html",
-          "hash": "mCg1u5ci2x/5dJ3RUomc1A=="
+          "relative_path": "api/Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.html",
+          "hash": "NqP3mDsZ8fJ1jyUxgCemKw=="
         }
       },
       "is_incremental": false,
@@ -3282,7 +3282,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.html",
-          "hash": "eiLP3+G4G+jPChO07bTHoA=="
+          "hash": "QGHZN3ltc4NW9icz1LVaRA=="
         }
       },
       "is_incremental": false,
@@ -3366,7 +3366,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "UhiwcFO4uPh22pu8JMWlGw=="
+          "hash": "BLVanti+DlYO8iQEoY8w+Q=="
         }
       },
       "is_incremental": false,
@@ -3398,7 +3398,7 @@
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 5,
-          "skipped_file_count": 5
+          "skipped_file_count": 4
         },
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
