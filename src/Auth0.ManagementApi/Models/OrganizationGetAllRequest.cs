@@ -1,6 +1,6 @@
 ﻿namespace Auth0.ManagementApi.Models
 {
-    public class OrganizationGetAllRequest : OrganizationGetRequest
+    public class OrganizationGetAllInvitationsRequest : OrganizationGetInvitationRequest
     {
         /// <summary>
         /// Field to sort by.

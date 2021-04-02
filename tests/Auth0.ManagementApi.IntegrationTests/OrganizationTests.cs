@@ -228,12 +228,12 @@ namespace Auth0.ManagementApi.IntegrationTests
             createdInvitation.Should().NotBeNull();
             createdInvitation.InvitationUrl.Should().NotBeNull();
 
-            var invitations = await _apiClient.Organizations.GetAllInvitationsAsync(ExistingOrganizationId, new OrganizationGetAllRequest(), new Paging.PaginationInfo());
+            var invitations = await _apiClient.Organizations.GetAllInvitationsAsync(ExistingOrganizationId, new OrganizationGetAllInvitationsRequest(), new Paging.PaginationInfo());
 
             invitations.Should().NotBeNull();
             invitations.Count.Should().Be(1);
 
-            var invitation = await _apiClient.Organizations.GetInvitationAsync(ExistingOrganizationId, createdInvitation.Id, new OrganizationGetRequest());
+            var invitation = await _apiClient.Organizations.GetInvitationAsync(ExistingOrganizationId, createdInvitation.Id, new OrganizationGetInvitationRequest());
 
             invitation.Should().NotBeNull();
             invitation.Id.Should().Be(createdInvitation.Id);
@@ -241,7 +241,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             await _apiClient.Organizations.DeleteInvitationAsync(ExistingOrganizationId, createdInvitation.Id);
 
-            invitations = await _apiClient.Organizations.GetAllInvitationsAsync(ExistingOrganizationId, new OrganizationGetAllRequest(), new Paging.PaginationInfo());
+            invitations = await _apiClient.Organizations.GetAllInvitationsAsync(ExistingOrganizationId, new OrganizationGetAllInvitationsRequest(), new Paging.PaginationInfo());
 
             invitations.Should().NotBeNull();
             invitations.Count.Should().Be(0);
