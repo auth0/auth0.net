@@ -107,9 +107,9 @@ public ActionResult Login() {
 > [!IMPORTANT]
 > If you choose to use the @Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder to construct the authorization URL and implement a login flow callback yourself, it is important to generate and store a state value using @Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.WithState(System.String) and validate it in your callback URL before calling exchanging the authorization code for the tokens.
 
-### Organizations (Closed Beta)
+### Organizations
 
-Organizations is a set of features that provide better support for developers who build and maintain SaaS and Business-to-Business (B2B) applications.
+[Organizations](https://auth0.com/docs/organizations) is a set of features that provide better support for developers who build and maintain SaaS and Business-to-Business (B2B) applications.
 
 Using Organizations, you can:
 
