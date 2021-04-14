@@ -1,4 +1,4 @@
-# .NET client library for the Auth0
+# .NET client library for the Auth0 -
 
 [![Build status](https://dev.azure.com/Auth0SDK/Auth0.Net/_apis/build/status/Auth0.Net)](https://dev.azure.com/Auth0SDK/Auth0.Net/_build/latest?definitionId=6) [![NuGet version](https://img.shields.io/nuget/v/auth0.core.svg?style=flat)](https://www.nuget.org/packages/Auth0.Core/)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fauth0%2Fauth0.net.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fauth0%2Fauth0.net?ref=badge_shield)
