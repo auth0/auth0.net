@@ -20,7 +20,7 @@ namespace Auth0.ManagementApi.Models
         public string UserId { get; set; }
 
         /// <summary>
-        /// Gets or sets the user's password. This is mandatory on non-SMS connections.
+        /// Gets or sets the user's password. This is mandatory on non SMS or email connections.
         /// </summary>
         [JsonProperty("password")]
         public string Password { get; set; }
