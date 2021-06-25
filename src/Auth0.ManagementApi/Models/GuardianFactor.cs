@@ -1,5 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using System.Runtime.Serialization;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
 
 namespace Auth0.ManagementApi.Models
 {
@@ -23,5 +25,16 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("trial_expired")]
         public bool? IsTrialExpired { get; set; }
+
+        [OnError]
+        internal void OnError(StreamingContext context, ErrorContext errorContext)
+        {
+            // When the GuardianFactorName enum can not be serialized, set the value to null (as name is a nullable property)
+            // This ensures the code does not break when new factor names are added in Auth0 Server that are not part of the enum yet.
+            if (errorContext.Member != null && errorContext.Member.ToString() == "name")
+            {
+                errorContext.Handled = true;
+            }
+        }
     }
 }

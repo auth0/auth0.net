@@ -30,7 +30,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             var response = await _managementApiClient.Guardian.GetFactorsAsync();
 
-            response.Should().HaveCount(7);
+            response.Should().HaveCount(8);
         }
 
         [Fact]
