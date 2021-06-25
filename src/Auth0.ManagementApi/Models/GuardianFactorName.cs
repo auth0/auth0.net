@@ -23,6 +23,9 @@ namespace Auth0.ManagementApi.Models
         WebAuthnRoaming,
         
         [EnumMember(Value="webauthn-platform")]
-        WebAuthnPlatform
+        WebAuthnPlatform,
+
+        [EnumMember(Value= "recovery-code")]
+        RecoveryCode
     }
 }
