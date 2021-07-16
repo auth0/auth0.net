@@ -48,7 +48,7 @@ namespace Auth0.ManagementApi.Paging
         /// When using checkpoint pagination, the Id to use for supplemental paged requests.
         /// </summary>
         [JsonProperty("next")]
-        public string? Next { get; set; } = null;
+        public string Next { get; set; } = null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PagingInformation"/> class
@@ -59,7 +59,7 @@ namespace Auth0.ManagementApi.Paging
         /// <param name="length">Number of items actually returned.</param>
         /// <param name="total">Total number of items available on the server.</param>
         /// <param name="next">When using checkpoint pagination, the Id one should use for supplemental requests to receive more results.</param>
-        public PagingInformation(int? start = null, int? limit = null, int? length = null, int? total = null, string? next = null)
+        public PagingInformation(int? start = null, int? limit = null, int? length = null, int? total = null, string next = null)
         {
             Start = start;
             Limit = limit;

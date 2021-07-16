@@ -41,7 +41,7 @@ namespace Auth0.ManagementApi.Paging
                     int? limit = null;
                     int? start = null;
                     int? total = null;
-                    string? next = null;
+                    string next = null;
 
                     if (item["length"] != null)
                         length = item["length"].Value<int>();
