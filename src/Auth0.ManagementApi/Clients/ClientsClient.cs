@@ -66,9 +66,9 @@ namespace Auth0.ManagementApi.Clients
                 {"include_fields", request.IncludeFields?.ToString().ToLower()},
                 {"is_global", request.IsGlobal?.ToString().ToLower()},
                 {"is_first_party", request.IsFirstParty?.ToString().ToLower()},
-                {"page", pagination.PageNo.ToString()},
-                {"per_page", pagination.PerPage.ToString()},
-                {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
+                {"page", pagination.PageNo?.ToString()},
+                {"per_page", pagination.PerPage?.ToString()},
+                {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
             };
 
             if (request.AppType != null)

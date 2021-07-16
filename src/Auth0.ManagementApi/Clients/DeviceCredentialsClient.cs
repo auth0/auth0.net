@@ -71,9 +71,9 @@ namespace Auth0.ManagementApi.Clients
                     {"user_id", request.UserId},
                     {"client_id", request.ClientId},
                     {"type", request.Type},
-                    {"page", pagination.PageNo.ToString()},
-                    {"per_page", pagination.PerPage.ToString()},
-                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
+                    {"page", pagination.PageNo?.ToString()},
+                    {"per_page", pagination.PerPage?.ToString()},
+                    {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
                 };
 
             return Connection.GetAsync<IPagedList<DeviceCredential>>(BuildUri("device-credentials", queryStrings), DefaultHeaders, converters);

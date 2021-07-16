@@ -81,9 +81,9 @@ namespace Auth0.ManagementApi.Clients
                 new Dictionary<string, string>
                 {
                     {"name_filter", request.NameFilter},
-                    {"page", pagination.PageNo.ToString()},
-                    {"per_page", pagination.PerPage.ToString()},
-                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
+                    {"page", pagination.PageNo?.ToString()},
+                    {"per_page", pagination.PerPage?.ToString()},
+                    {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
                 }), DefaultHeaders, rolesConverters);
         }
 
@@ -129,9 +129,11 @@ namespace Auth0.ManagementApi.Clients
             return Connection.GetAsync<IPagedList<AssignedUser>>(BuildUri($"roles/{EncodePath(id)}/users",
                 new Dictionary<string, string>
                 {
-                    {"page", pagination.PageNo.ToString()},
-                    {"per_page", pagination.PerPage.ToString()},
-                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
+                    {"page", pagination.PageNo?.ToString()},
+                    {"per_page", pagination.PerPage?.ToString()},
+                    {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
+                    {"from", pagination.From?.ToString()},
+                    {"take", pagination.Take?.ToString()},
                 }), DefaultHeaders, assignedUsersConverters);
         }
 
@@ -157,9 +159,9 @@ namespace Auth0.ManagementApi.Clients
             return Connection.GetAsync<IPagedList<Permission>>(BuildUri($"roles/{EncodePath(id)}/permissions",
                 new Dictionary<string, string>
                 {
-                    {"page", pagination.PageNo.ToString()},
-                    {"per_page", pagination.PerPage.ToString()},
-                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
+                    {"page", pagination.PageNo?.ToString()},
+                    {"per_page", pagination.PerPage?.ToString()},
+                    {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
                 }), DefaultHeaders, permissionsConverters);
         }
 

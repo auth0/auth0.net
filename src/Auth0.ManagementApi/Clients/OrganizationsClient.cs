@@ -38,9 +38,11 @@ namespace Auth0.ManagementApi.Clients
 
             var queryStrings = new Dictionary<string, string>
             {
-                {"page", pagination.PageNo.ToString()},
-                {"per_page", pagination.PerPage.ToString()},
-                {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
+                {"page", pagination.PageNo?.ToString()},
+                {"per_page", pagination.PerPage?.ToString()},
+                {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
+                {"from", pagination.From?.ToString()},
+                {"take", pagination.Take?.ToString()},
             };
 
             return Connection.GetAsync<IPagedList<Organization>>(BuildUri("organizations", queryStrings), DefaultHeaders, converters);
@@ -110,9 +112,9 @@ namespace Auth0.ManagementApi.Clients
 
             var queryStrings = new Dictionary<string, string>
             {
-                {"page", pagination.PageNo.ToString()},
-                {"per_page", pagination.PerPage.ToString()},
-                {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
+                {"page", pagination.PageNo?.ToString()},
+                {"per_page", pagination.PerPage?.ToString()},
+                {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
             };
 
             return Connection.GetAsync<IPagedList<OrganizationConnection>>(BuildUri($"organizations/{EncodePath(organizationId)}/enabled_connections", queryStrings), DefaultHeaders, connectionsConverters);
@@ -187,9 +189,11 @@ namespace Auth0.ManagementApi.Clients
 
             var queryStrings = new Dictionary<string, string>
             {
-                {"page", pagination.PageNo.ToString()},
-                {"per_page", pagination.PerPage.ToString()},
-                {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
+                {"page", pagination.PageNo?.ToString()},
+                {"per_page", pagination.PerPage?.ToString()},
+                {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
+                {"from", pagination.From?.ToString()},
+                {"take", pagination.Take?.ToString()},
             };
 
             return Connection.GetAsync<IPagedList<OrganizationMember>>(BuildUri($"organizations/{EncodePath(organizationId)}/members", queryStrings), DefaultHeaders, membersConverters);
@@ -232,9 +236,9 @@ namespace Auth0.ManagementApi.Clients
 
             var queryStrings = new Dictionary<string, string>
             {
-                {"page", pagination.PageNo.ToString()},
-                {"per_page", pagination.PerPage.ToString()},
-                {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
+                {"page", pagination.PageNo?.ToString()},
+                {"per_page", pagination.PerPage?.ToString()},
+                {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
             };
 
             return Connection.GetAsync<IPagedList<OrganizationMember>>(BuildUri($"organizations/{EncodePath(organizationId)}/members/{EncodePath(userId)}/roles", queryStrings), DefaultHeaders, membersConverters);
@@ -277,9 +281,9 @@ namespace Auth0.ManagementApi.Clients
 
             var queryStrings = new Dictionary<string, string>
             {
-                {"page", pagination.PageNo.ToString()},
-                {"per_page", pagination.PerPage.ToString()},
-                {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
+                {"page", pagination.PageNo?.ToString()},
+                {"per_page", pagination.PerPage?.ToString()},
+                {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
                 {"fields", request.Fields},
                 {"include_fields", request.IncludeFields?.ToString().ToLower()},
                 {"sort", request.Sort},
