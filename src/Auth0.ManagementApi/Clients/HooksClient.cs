@@ -65,9 +65,9 @@ namespace Auth0.ManagementApi.Clients
                     {"enabled", request.Enabled?.ToString().ToLower()},
                     {"fields", request.Fields},
                     {"triggerId", request.TriggerId },
-                    {"page", pagination.PageNo.ToString()},
-                    {"per_page", pagination.PerPage.ToString()},
-                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
+                    {"page", pagination.PageNo?.ToString()},
+                    {"per_page", pagination.PerPage?.ToString()},
+                    {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
                 }), DefaultHeaders, hooksConverters);
         }
 

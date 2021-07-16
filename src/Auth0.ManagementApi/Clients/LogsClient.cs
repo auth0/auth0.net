@@ -44,12 +44,12 @@ namespace Auth0.ManagementApi.Clients
                     {"sort", request.Sort},
                     {"fields", request.Fields},
                     {"include_fields", request.IncludeFields?.ToString().ToLower()},
-                    {"from", request.From},
-                    {"take", request.Take?.ToString().ToLower()},
+                    {"from", pagination.From?.ToString() ?? request.From.ToString()},
+                    {"take", pagination.Take?.ToString() ?? request.Take?.ToString()},
                     {"q", request.Query},
-                    {"page", pagination.PageNo.ToString()},
-                    {"per_page", pagination.PerPage.ToString()},
-                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
+                    {"page", pagination.PageNo?.ToString()},
+                    {"per_page", pagination.PerPage?.ToString()},
+                    {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
                 }), DefaultHeaders, converters);
         }
 
