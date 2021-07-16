@@ -37,10 +37,12 @@ namespace Auth0.ManagementApi.Paging
                 {
                     var collection = item[_collectionFieldName].ToObject<IList<T>>(serializer);
 
-                    int length = 0;
-                    int limit = 0;
-                    int start = 0;
-                    int total = 0;
+                    int? length = null;
+                    int? limit = null;
+                    int? start = null;
+                    int? total = null;
+                    string? next = null;
+
                     if (item["length"] != null)
                         length = item["length"].Value<int>();
                     if (item["limit"] != null)
@@ -49,8 +51,10 @@ namespace Auth0.ManagementApi.Paging
                         start = item["start"].Value<int>();
                     if (item["total"] != null)
                         total = item["total"].Value<int>();
+                    if (item["next"] != null)
+                        next = item["next"].Value<string>();
 
-                    return new PagedList<T>(collection, new PagingInformation(start, limit, length, total));
+                    return new PagedList<T>(collection, new PagingInformation(start, limit, length, total, next));
                 }
                 else if (_collectionInDictionary) // Special case to handle User Logs which is returned as a dictionary and not an array
                 {
