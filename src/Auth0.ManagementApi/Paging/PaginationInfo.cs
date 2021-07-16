@@ -13,7 +13,7 @@
         /// <param name="includeTotals">Whether to return the complete total result count (true) or not (false).</param>
         /// <param name="from">When using checkpoint pagination, an Id from which to begin the next page of results.</param>
         /// <param name="take">When using checkpoint pagination, the number of results per page.</param>
-        public PaginationInfo(int? pageNo = 0, int? perPage = 50, bool? includeTotals = false, string? from = null, int take? = null)
+        public PaginationInfo(int? pageNo = 0, int? perPage = 50, bool? includeTotals = false, string? from = null, int? take = null)
         {
             IncludeTotals = includeTotals;
             PerPage = perPage;
