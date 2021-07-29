@@ -1,5 +1,12 @@
 # Change Log
 
+## [release-7.8.1](https://github.com/auth0/auth0.net/tree/release-7.8.1) (2021-07-07)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.8.0...release-7.8.1)
+
+**Fixed**
+- Make GuardianFactor serialization a bit more resilient to new factor names [\#504](https://github.com/auth0/auth0.net/pull/504) ([frederikprijck](https://github.com/frederikprijck))
+- Set ClientSecret if defined when using PKCE [\#503](https://github.com/auth0/auth0.net/pull/503) ([frederikprijck](https://github.com/frederikprijck))
+
 ## [release-7.8.0](https://github.com/auth0/auth0.net/tree/release-7.8.0) (2021-04-02)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.7.0...release-7.8.0)
 
