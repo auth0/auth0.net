@@ -37,11 +37,14 @@ namespace Auth0.ManagementApi.Paging
                 {
                     var collection = item[_collectionFieldName].ToObject<IList<T>>(serializer);
 
+                    if (item["next"] != null) {
+                        return new CheckpointPagedList<T>(collection, new CheckpointPagingInformation(item["next"].Value<string>()));
+                    }
+
                     int length = 0;
                     int limit = 0;
                     int start = 0;
                     int total = 0;
-                    string next = null;
 
                     if (item["length"] != null)
                         length = item["length"].Value<int>();
@@ -51,12 +54,6 @@ namespace Auth0.ManagementApi.Paging
                         start = item["start"].Value<int>();
                     if (item["total"] != null)
                         total = item["total"].Value<int>();
-                    if (item["next"] != null)
-                        next = item["next"].Value<string>();
-
-                    if (next != null) {
-                        return new CheckpointPagedList<T>(collection, new CheckpointPagingInformation(next));
-                    }
 
                     return new PagedList<T>(collection, new PagingInformation(start, limit, length, total));
                 }

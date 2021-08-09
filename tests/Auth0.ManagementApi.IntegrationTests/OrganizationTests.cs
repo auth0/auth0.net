@@ -33,7 +33,6 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_organizations_crud_sequence()
         {
             var initialOrganizations = await _apiClient.Organizations.GetAllAsync(new Paging.PaginationInfo());
-            var initialOrganizationsCheckpoint = await _apiClient.Organizations.GetAllAsync(new Paging.CheckpointPaginationInfo());
 
             var createRequest = new OrganizationCreateRequest
             {
@@ -74,9 +73,6 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             var organizations = await _apiClient.Organizations.GetAllAsync(new Paging.PaginationInfo());
             organizations.Count.Should().Be(initialOrganizations.Count + 1);
-
-            var organizationsCheckpoint = await _apiClient.Organizations.GetAllAsync(new Paging.CheckpointPaginationInfo());
-            organizationsCheckpoint.Count.Should().Be(initialOrganizationsCheckpoint.Count + 1);
 
             await _apiClient.Organizations.DeleteAsync(updateResponse.Id);
             Func<Task> getFunc = async () => await _apiClient.Organizations.GetAsync(organization.Id);
