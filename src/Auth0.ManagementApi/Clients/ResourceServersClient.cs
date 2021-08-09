@@ -66,9 +66,9 @@ namespace Auth0.ManagementApi.Clients
             return Connection.GetAsync<IPagedList<ResourceServer>>(BuildUri("resource-servers",
                 new Dictionary<string, string>
                 {
-                    {"page", pagination.PageNo?.ToString()},
-                    {"per_page", pagination.PerPage?.ToString()},
-                    {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
+                    {"page", pagination.PageNo.ToString()},
+                    {"per_page", pagination.PerPage.ToString()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
                 }), DefaultHeaders, converters);
         }
 

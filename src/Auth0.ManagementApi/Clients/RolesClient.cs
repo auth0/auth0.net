@@ -81,9 +81,9 @@ namespace Auth0.ManagementApi.Clients
                 new Dictionary<string, string>
                 {
                     {"name_filter", request.NameFilter},
-                    {"page", pagination.PageNo?.ToString()},
-                    {"per_page", pagination.PerPage?.ToString()},
-                    {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
+                    {"page", pagination.PageNo.ToString()},
+                    {"per_page", pagination.PerPage.ToString()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
                 }), DefaultHeaders, rolesConverters);
         }
 
@@ -129,11 +129,25 @@ namespace Auth0.ManagementApi.Clients
             return Connection.GetAsync<IPagedList<AssignedUser>>(BuildUri($"roles/{EncodePath(id)}/users",
                 new Dictionary<string, string>
                 {
-                    {"page", pagination.PageNo?.ToString()},
-                    {"per_page", pagination.PerPage?.ToString()},
-                    {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
+                    {"page", pagination.PageNo.ToString()},
+                    {"per_page", pagination.PerPage.ToString()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
+                }), DefaultHeaders, assignedUsersConverters);
+        }
+
+        /// <summary>
+        /// Retrieves a list of users associated with a role.
+        /// </summary>
+        /// <param name="id">The ID of the role to query.</param>
+        /// <param name="pagination">Specifies <see cref="CheckpointPaginationInfo"/> to use in requesting checkpoint-paginated results.</param>
+        /// <returns>An <see cref="IPagedList{AssignedUser}"/> containing the assigned users.</returns>
+        public Task<IPagedList<AssignedUser>> GetUsersAsync(string id, CheckpointPaginationInfo pagination)
+        {
+            return Connection.GetAsync<IPagedList<AssignedUser>>(BuildUri($"roles/{EncodePath(id)}/users",
+                new Dictionary<string, string>
+                {
                     {"from", pagination.From?.ToString()},
-                    {"take", pagination.Take?.ToString()},
+                    {"take", pagination.Take.ToString()},
                 }), DefaultHeaders, assignedUsersConverters);
         }
 
@@ -159,9 +173,9 @@ namespace Auth0.ManagementApi.Clients
             return Connection.GetAsync<IPagedList<Permission>>(BuildUri($"roles/{EncodePath(id)}/permissions",
                 new Dictionary<string, string>
                 {
-                    {"page", pagination.PageNo?.ToString()},
-                    {"per_page", pagination.PerPage?.ToString()},
-                    {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
+                    {"page", pagination.PageNo.ToString()},
+                    {"per_page", pagination.PerPage.ToString()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
                 }), DefaultHeaders, permissionsConverters);
         }
 

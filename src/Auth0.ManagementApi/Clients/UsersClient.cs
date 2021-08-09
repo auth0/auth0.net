@@ -97,9 +97,9 @@ namespace Auth0.ManagementApi.Clients
                     {"include_fields", request.IncludeFields?.ToString().ToLower()},
                     {"q", request.Query},
                     {"search_engine", request.SearchEngine},
-                    {"page", pagination.PageNo?.ToString()},
-                    {"per_page", pagination.PerPage?.ToString()},
-                    {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
+                    {"page", pagination.PageNo.ToString()},
+                    {"per_page", pagination.PerPage.ToString()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
                 }), DefaultHeaders, usersConverters);
         }
 
@@ -143,9 +143,9 @@ namespace Auth0.ManagementApi.Clients
                 new Dictionary<string, string>
                 {
                     {"sort", request.Sort},
-                    {"page", pagination.PageNo?.ToString()},
-                    {"per_page", pagination.PerPage?.ToString()},
-                    {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
+                    {"page", pagination.PageNo.ToString()},
+                    {"per_page", pagination.PerPage.ToString()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
                 }), DefaultHeaders, logsConverters);
         }
 
@@ -163,9 +163,9 @@ namespace Auth0.ManagementApi.Clients
             return Connection.GetAsync<IPagedList<Role>>(BuildUri($"users/{EncodePath(userId)}/roles",
                 new Dictionary<string, string>
                 {
-                    {"page", pagination.PageNo?.ToString()},
-                    {"per_page", pagination.PerPage?.ToString()},
-                    {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
+                    {"page", pagination.PageNo.ToString()},
+                    {"per_page", pagination.PerPage.ToString()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
                 }), DefaultHeaders, rolesConverters);
         }
 
@@ -296,9 +296,9 @@ namespace Auth0.ManagementApi.Clients
             return Connection.GetAsync<IPagedList<UserPermission>>(BuildUri($"users/{EncodePath(id)}/permissions",
                 new Dictionary<string, string>
                 {
-                    {"page", pagination.PageNo?.ToString()},
-                    {"per_page", pagination.PerPage?.ToString()},
-                    {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
+                    {"page", pagination.PageNo.ToString()},
+                    {"per_page", pagination.PerPage.ToString()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
                 }), DefaultHeaders, permissionsConverters);
         }
 
@@ -338,9 +338,9 @@ namespace Auth0.ManagementApi.Clients
             return Connection.GetAsync<IPagedList<Organization>>(BuildUri($"users/{EncodePath(userId)}/organizations",
                 new Dictionary<string, string>
                 {
-                    {"page", pagination.PageNo?.ToString()},
-                    {"per_page", pagination.PerPage?.ToString()},
-                    {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
+                    {"page", pagination.PageNo.ToString()},
+                    {"per_page", pagination.PerPage.ToString()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
                 }), DefaultHeaders, organizationsConverters);
         }
     }

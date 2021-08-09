@@ -38,11 +38,28 @@ namespace Auth0.ManagementApi.Clients
 
             var queryStrings = new Dictionary<string, string>
             {
-                {"page", pagination.PageNo?.ToString()},
-                {"per_page", pagination.PerPage?.ToString()},
-                {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
+                {"page", pagination.PageNo.ToString()},
+                {"per_page", pagination.PerPage.ToString()},
+                {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
+            };
+
+            return Connection.GetAsync<IPagedList<Organization>>(BuildUri("organizations", queryStrings), DefaultHeaders, converters);
+        }
+
+        /// <summary>
+        /// Retrieves a list of all organizations using checkpoint <paramref name="pagination"/>.
+        /// </summary>
+        /// <param name="pagination">Specifies <see cref="CheckpointPaginationInfo"/> to use in requesting checkpoint-paginated results.</param>
+        /// <returns>An <see cref="IPagedList{Organization}"/> containing the organizations.</returns>
+        public Task<IPagedList<Organization>> GetAllAsync(CheckpointPaginationInfo pagination)
+        {
+            if (pagination == null)
+                throw new ArgumentNullException(nameof(pagination));
+
+            var queryStrings = new Dictionary<string, string>
+            {
                 {"from", pagination.From?.ToString()},
-                {"take", pagination.Take?.ToString()},
+                {"take", pagination.Take.ToString()},
             };
 
             return Connection.GetAsync<IPagedList<Organization>>(BuildUri("organizations", queryStrings), DefaultHeaders, converters);
@@ -112,9 +129,9 @@ namespace Auth0.ManagementApi.Clients
 
             var queryStrings = new Dictionary<string, string>
             {
-                {"page", pagination.PageNo?.ToString()},
-                {"per_page", pagination.PerPage?.ToString()},
-                {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
+                {"page", pagination.PageNo.ToString()},
+                {"per_page", pagination.PerPage.ToString()},
+                {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
             };
 
             return Connection.GetAsync<IPagedList<OrganizationConnection>>(BuildUri($"organizations/{EncodePath(organizationId)}/enabled_connections", queryStrings), DefaultHeaders, connectionsConverters);
@@ -177,7 +194,7 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Retrieves a list of all organization members.
+        /// Retrieves a list of all organization members using <paramref name="pagination"/>.
         /// </summary>
         /// <param name="organizationId">The ID of the organization for which you want to retrieve the members.</param>
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
@@ -189,11 +206,29 @@ namespace Auth0.ManagementApi.Clients
 
             var queryStrings = new Dictionary<string, string>
             {
-                {"page", pagination.PageNo?.ToString()},
-                {"per_page", pagination.PerPage?.ToString()},
-                {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
+                {"page", pagination.PageNo.ToString()},
+                {"per_page", pagination.PerPage.ToString()},
+                {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
+            };
+
+            return Connection.GetAsync<IPagedList<OrganizationMember>>(BuildUri($"organizations/{EncodePath(organizationId)}/members", queryStrings), DefaultHeaders, membersConverters);
+        }
+
+        /// <summary>
+        /// Retrieves a list of all organization members using checkpoint <paramref name="pagination"/>.
+        /// </summary>
+        /// <param name="organizationId">The ID of the organization for which you want to retrieve the members.</param>
+        /// <param name="pagination">Specifies <see cref="CheckpointPaginationInfo"/> to use in requesting checkpoint-paginated results.</param>
+        /// <returns>An <see cref="IPagedList{OrganizationMember}"/> containing the organization members.</returns>
+        public Task<IPagedList<OrganizationMember>> GetAllMembersAsync(string organizationId, CheckpointPaginationInfo pagination)
+        {
+            if (pagination == null)
+                throw new ArgumentNullException(nameof(pagination));
+
+            var queryStrings = new Dictionary<string, string>
+            {
                 {"from", pagination.From?.ToString()},
-                {"take", pagination.Take?.ToString()},
+                {"take", pagination.Take.ToString()},
             };
 
             return Connection.GetAsync<IPagedList<OrganizationMember>>(BuildUri($"organizations/{EncodePath(organizationId)}/members", queryStrings), DefaultHeaders, membersConverters);
@@ -236,9 +271,9 @@ namespace Auth0.ManagementApi.Clients
 
             var queryStrings = new Dictionary<string, string>
             {
-                {"page", pagination.PageNo?.ToString()},
-                {"per_page", pagination.PerPage?.ToString()},
-                {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
+                {"page", pagination.PageNo.ToString()},
+                {"per_page", pagination.PerPage.ToString()},
+                {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
             };
 
             return Connection.GetAsync<IPagedList<OrganizationMember>>(BuildUri($"organizations/{EncodePath(organizationId)}/members/{EncodePath(userId)}/roles", queryStrings), DefaultHeaders, membersConverters);
@@ -281,9 +316,9 @@ namespace Auth0.ManagementApi.Clients
 
             var queryStrings = new Dictionary<string, string>
             {
-                {"page", pagination.PageNo?.ToString()},
-                {"per_page", pagination.PerPage?.ToString()},
-                {"include_totals", pagination.IncludeTotals?.ToString().ToLower()},
+                {"page", pagination.PageNo.ToString()},
+                {"per_page", pagination.PerPage.ToString()},
+                {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
                 {"fields", request.Fields},
                 {"include_fields", request.IncludeFields?.ToString().ToLower()},
                 {"sort", request.Sort},
