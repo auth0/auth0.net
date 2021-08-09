@@ -145,7 +145,7 @@ namespace Auth0.ManagementApi.Clients
                     {"sort", request.Sort},
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
-                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
                 }), DefaultHeaders, logsConverters);
         }
 
@@ -165,7 +165,7 @@ namespace Auth0.ManagementApi.Clients
                 {
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
-                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
                 }), DefaultHeaders, rolesConverters);
         }
 
@@ -298,7 +298,7 @@ namespace Auth0.ManagementApi.Clients
                 {
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
-                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
                 }), DefaultHeaders, permissionsConverters);
         }
 

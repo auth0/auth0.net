@@ -40,7 +40,7 @@ namespace Auth0.ManagementApi.Clients
             {
                 {"page", pagination.PageNo.ToString()},
                 {"per_page", pagination.PerPage.ToString()},
-                {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
+                {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
             };
 
             return Connection.GetAsync<IPagedList<Organization>>(BuildUri("organizations", queryStrings), DefaultHeaders, converters);
@@ -194,7 +194,7 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Retrieves a list of all organization members using <paramref name="pagination"/>.
+        /// Retrieves a list of all organization members.
         /// </summary>
         /// <param name="organizationId">The ID of the organization for which you want to retrieve the members.</param>
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
