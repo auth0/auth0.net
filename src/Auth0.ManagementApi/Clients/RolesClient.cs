@@ -141,9 +141,9 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="id">The ID of the role to query.</param>
         /// <param name="pagination">Specifies <see cref="CheckpointPaginationInfo"/> to use in requesting checkpoint-paginated results.</param>
         /// <returns>An <see cref="IPagedList{AssignedUser}"/> containing the assigned users.</returns>
-        public Task<IPagedList<AssignedUser>> GetUsersAsync(string id, CheckpointPaginationInfo pagination)
+        public Task<ICheckpointPagedList<AssignedUser>> GetUsersAsync(string id, CheckpointPaginationInfo pagination)
         {
-            return Connection.GetAsync<IPagedList<AssignedUser>>(BuildUri($"roles/{EncodePath(id)}/users",
+            return Connection.GetAsync<ICheckpointPagedList<AssignedUser>>(BuildUri($"roles/{EncodePath(id)}/users",
                 new Dictionary<string, string>
                 {
                     {"from", pagination.From?.ToString()},
