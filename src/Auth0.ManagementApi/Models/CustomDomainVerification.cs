@@ -11,6 +11,6 @@ namespace Auth0.ManagementApi.Models
         /// The custom domain verification methods.
         /// </summary>
         [JsonProperty("methods")]
-        public string[] Methods { get; set; }
+        public CustomDomainVerificationMethod[] Methods { get; set; }
     }
 }
