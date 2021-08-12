@@ -4,6 +4,7 @@ using Auth0.Tests.Shared;
 using FluentAssertions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -77,6 +78,51 @@ namespace Auth0.ManagementApi.IntegrationTests
             await _apiClient.Organizations.DeleteAsync(updateResponse.Id);
             Func<Task> getFunc = async () => await _apiClient.Organizations.GetAsync(organization.Id);
             getFunc.Should().Throw<ErrorApiException>().And.Message.Should().Be("No organization found by that id or name");
+        }
+
+        [Fact]
+        public async Task Test_organizations_checkpoint_pagination()
+        {
+            var organization1 = new OrganizationCreateRequest
+            {
+                Name = ($"integration-testing-" + MakeRandomName()).ToLower(),
+                DisplayName = "Integration testing",
+                Branding = new OrganizationBranding
+                {
+                    LogoUrl = "https://cdn.auth0.com/manhattan/versions/1.2800.0/assets/./badge.png",
+                    Colors = new BrandingColors
+                    {
+                        Primary = "#ff0000",
+                        PageBackground = "#00ff00"
+                    }
+                }
+            };
+            var createResponse1 = await _apiClient.Organizations.CreateAsync(organization1);
+
+            var organization2 = new OrganizationCreateRequest
+            {
+                Name = ($"integration-testing-" + MakeRandomName()).ToLower(),
+                DisplayName = "Integration testing",
+                Branding = new OrganizationBranding
+                {
+                    LogoUrl = "https://cdn.auth0.com/manhattan/versions/1.2800.0/assets/./badge.png",
+                    Colors = new BrandingColors
+                    {
+                        Primary = "#ff0000",
+                        PageBackground = "#00ff00"
+                    }
+                }
+            };
+            var createResponse2 = await _apiClient.Organizations.CreateAsync(organization2);
+
+            var firstCheckPointPaginationRequest = await _apiClient.Organizations.GetAllAsync(new Paging.CheckpointPaginationInfo(1));
+            var secondCheckPointPaginationRequest = await _apiClient.Organizations.GetAllAsync(new Paging.CheckpointPaginationInfo(1, firstCheckPointPaginationRequest.Paging.Next));
+
+            secondCheckPointPaginationRequest.Count.Should().Be(1);
+            secondCheckPointPaginationRequest.Paging.Next.Should().NotBeNullOrEmpty();
+
+            await _apiClient.Organizations.DeleteAsync(createResponse1.Id);
+            await _apiClient.Organizations.DeleteAsync(createResponse2.Id);
         }
 
         [Fact]
@@ -155,6 +201,41 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             updatedMembers.Count.Should().Be(1);
 
+            await _apiClient.Users.DeleteAsync(user.UserId);
+            await _apiClient.Users.DeleteAsync(user2.UserId);
+        }
+
+        [Fact]
+        public async Task Test_organization_members_checkpoint_pagination()
+        {
+            var user = await _apiClient.Users.CreateAsync(new UserCreateRequest
+            {
+                Connection = "Username-Password-Authentication",
+                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                EmailVerified = true,
+                Password = Password
+            });
+
+            var user2 = await _apiClient.Users.CreateAsync(new UserCreateRequest
+            {
+                Connection = "Username-Password-Authentication",
+                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                EmailVerified = true,
+                Password = Password
+            });
+
+            await _apiClient.Organizations.AddMembersAsync(ExistingOrganizationId, new OrganizationAddMembersRequest
+            {
+                Members = new List<string> { user.UserId, user2.UserId }
+            });
+
+
+            var firstCheckPointPaginationRequest = await _apiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new Paging.CheckpointPaginationInfo(1));
+            var secondCheckPointPaginationRequest = await _apiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new Paging.CheckpointPaginationInfo(1, firstCheckPointPaginationRequest.Paging.Next));
+
+            secondCheckPointPaginationRequest.Count.Should().Be(1);
+            secondCheckPointPaginationRequest.Paging.Next.Should().NotBeNullOrEmpty();
+            
             await _apiClient.Users.DeleteAsync(user.UserId);
             await _apiClient.Users.DeleteAsync(user2.UserId);
         }
