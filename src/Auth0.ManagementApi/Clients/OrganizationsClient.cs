@@ -11,8 +11,10 @@ namespace Auth0.ManagementApi.Clients
     public class OrganizationsClient : BaseClient
     {
         readonly JsonConverter[] converters = new JsonConverter[] { new PagedListConverter<Organization>("organizations") };
+        readonly JsonConverter[] checkpointConverters = new JsonConverter[] { new CheckpointPagedListConverter<Organization>("organizations") };
         readonly JsonConverter[] connectionsConverters = new JsonConverter[] { new PagedListConverter<OrganizationConnection>("enabled_connections") };
         readonly JsonConverter[] membersConverters = new JsonConverter[] { new PagedListConverter<OrganizationMember>("members") };
+        readonly JsonConverter[] membersCheckpointConverters = new JsonConverter[] { new CheckpointPagedListConverter<OrganizationMember>("members") };
         readonly JsonConverter[] invitationsConverters = new JsonConverter[] { new PagedListConverter<OrganizationInvitation>("invitations") };
 
         /// <summary>
@@ -62,7 +64,7 @@ namespace Auth0.ManagementApi.Clients
                 {"take", pagination.Take.ToString()},
             };
 
-            return Connection.GetAsync<ICheckpointPagedList<Organization>>(BuildUri("organizations", queryStrings), DefaultHeaders, converters);
+            return Connection.GetAsync<ICheckpointPagedList<Organization>>(BuildUri("organizations", queryStrings), DefaultHeaders, checkpointConverters);
         }
 
         /// <summary>
@@ -231,7 +233,7 @@ namespace Auth0.ManagementApi.Clients
                 {"take", pagination.Take.ToString()},
             };
 
-            return Connection.GetAsync<ICheckpointPagedList<OrganizationMember>>(BuildUri($"organizations/{EncodePath(organizationId)}/members", queryStrings), DefaultHeaders, membersConverters);
+            return Connection.GetAsync<ICheckpointPagedList<OrganizationMember>>(BuildUri($"organizations/{EncodePath(organizationId)}/members", queryStrings), DefaultHeaders, membersCheckpointConverters);
         }
 
         /// <summary>

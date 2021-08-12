@@ -15,6 +15,7 @@ namespace Auth0.ManagementApi.Clients
     {
         readonly JsonConverter[] rolesConverters = new JsonConverter[] { new PagedListConverter<Role>("roles") };
         readonly JsonConverter[] assignedUsersConverters = new JsonConverter[] { new PagedListConverter<AssignedUser>("users") };
+        readonly JsonConverter[] assignedUsersCheckpointConverters = new JsonConverter[] { new CheckpointPagedListConverter<AssignedUser>("users") };
         readonly JsonConverter[] permissionsConverters = new JsonConverter[] { new PagedListConverter<Permission>("permissions") };
 
         /// <summary>
@@ -148,7 +149,7 @@ namespace Auth0.ManagementApi.Clients
                 {
                     {"from", pagination.From?.ToString()},
                     {"take", pagination.Take.ToString()},
-                }), DefaultHeaders, assignedUsersConverters);
+                }), DefaultHeaders, assignedUsersCheckpointConverters);
         }
 
         /// <summary>
