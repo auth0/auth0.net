@@ -15,6 +15,7 @@ namespace Auth0.ManagementApi.Clients
     {
         readonly JsonConverter[] rolesConverters = new JsonConverter[] { new PagedListConverter<Role>("roles") };
         readonly JsonConverter[] assignedUsersConverters = new JsonConverter[] { new PagedListConverter<AssignedUser>("users") };
+        readonly JsonConverter[] assignedUsersCheckpointConverters = new JsonConverter[] { new CheckpointPagedListConverter<AssignedUser>("users") };
         readonly JsonConverter[] permissionsConverters = new JsonConverter[] { new PagedListConverter<Permission>("permissions") };
 
         /// <summary>
@@ -133,6 +134,22 @@ namespace Auth0.ManagementApi.Clients
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
                 }), DefaultHeaders, assignedUsersConverters);
+        }
+
+        /// <summary>
+        /// Retrieves a list of users associated with a role.
+        /// </summary>
+        /// <param name="id">The ID of the role to query.</param>
+        /// <param name="pagination">Specifies <see cref="CheckpointPaginationInfo"/> to use in requesting checkpoint-paginated results.</param>
+        /// <returns>An <see cref="IPagedList{AssignedUser}"/> containing the assigned users.</returns>
+        public Task<ICheckpointPagedList<AssignedUser>> GetUsersAsync(string id, CheckpointPaginationInfo pagination)
+        {
+            return Connection.GetAsync<ICheckpointPagedList<AssignedUser>>(BuildUri($"roles/{EncodePath(id)}/users",
+                new Dictionary<string, string>
+                {
+                    {"from", pagination.From?.ToString()},
+                    {"take", pagination.Take.ToString()},
+                }), DefaultHeaders, assignedUsersCheckpointConverters);
         }
 
         /// <summary>

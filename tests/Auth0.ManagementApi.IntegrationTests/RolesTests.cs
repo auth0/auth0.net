@@ -293,6 +293,51 @@ namespace Auth0.ManagementApi.IntegrationTests
         }
 
         [Fact]
+        public async Task Test_checkpoint_pagination()
+        {
+            var role = await _apiClient.Roles.CreateAsync(new RoleCreateRequest
+            {
+                Name = $"{Guid.NewGuid():N}role",
+                Description = $"{Guid.NewGuid():N}description",
+            });
+
+            // Create a user
+            var user1 = await _apiClient.Users.CreateAsync(new UserCreateRequest
+            {
+                Connection = _connection.Name,
+                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                EmailVerified = true,
+                Password = Password
+            });
+            var user2 = await _apiClient.Users.CreateAsync(new UserCreateRequest
+            {
+                Connection = _connection.Name,
+                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                EmailVerified = true,
+                Password = Password
+            });
+            
+            await _apiClient.Roles.AssignUsersAsync(role.Id, new AssignUsersRequest
+            {
+                Users = new[]
+                {
+                    user1.UserId,
+                    user2.UserId
+                }
+            });
+
+
+            var firstCheckPointPaginationRequest = await _apiClient.Roles.GetUsersAsync(role.Id, new Paging.CheckpointPaginationInfo(1));
+            var secondCheckPointPaginationRequest = await _apiClient.Roles.GetUsersAsync(role.Id, new Paging.CheckpointPaginationInfo(1, firstCheckPointPaginationRequest.Paging.Next));
+
+            secondCheckPointPaginationRequest.Count.Should().Be(1);
+            secondCheckPointPaginationRequest.Paging.Next.Should().NotBeNullOrEmpty();
+
+            await _apiClient.Users.DeleteAsync(user1.UserId);
+            await _apiClient.Users.DeleteAsync(user2.UserId);
+        }
+
+        [Fact]
         public async Task Test_permissions_can_be_retrieved()
         {
             var newRoleRequest = new RoleCreateRequest
