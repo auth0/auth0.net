@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -26,51 +27,55 @@ namespace Auth0.ManagementApi.Clients
         /// Creates a new custom domain and returns it.
         /// </summary>
         /// <param name="request">A <see cref="CustomDomainCreateRequest"/> representing the new domain.</param>
+        /// <param name="token"></param>
         /// <returns>The <see cref="CustomDomain"/> containing the newly created custom domain.</returns>
         /// <remarks>The custom domain will need to be verified before it starts accepting requests.</remarks>
-        public Task<CustomDomain> CreateAsync(CustomDomainCreateRequest request)
+        public Task<CustomDomain> CreateAsync(CustomDomainCreateRequest request, CancellationToken token = default)
         {
-            return Connection.SendAsync<CustomDomain>(HttpMethod.Post, BuildUri("custom-domains"), request, DefaultHeaders);
+            return Connection.SendAsync<CustomDomain>(HttpMethod.Post, BuildUri("custom-domains"), request, DefaultHeaders, token: token);
         }
 
         /// <summary>
         /// Deletes a custom domain by its ID.
         /// </summary>
         /// <param name="id">The ID of the domain to delete.</param>
+        /// <param name="token"></param>
         /// <returns>A <see cref="Task"/> that represents the asyncronous delete operation.</returns>
         /// <remarks>When deleted, Auth0 will stop serving requests for this domain.</remarks>
-        public Task DeleteAsync(string id)
+        public Task DeleteAsync(string id, CancellationToken token = default)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"custom-domains/{EncodePath(id)}"), null, DefaultHeaders);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"custom-domains/{EncodePath(id)}"), null, DefaultHeaders, token: token);
         }
 
         /// <summary>
         /// Retrieves the status of every custom domain.
         /// </summary>
         /// <returns>A <see cref="IList{CustomDomain}"/> containing the details of every custom domain.</returns>
-        public Task<IList<CustomDomain>> GetAllAsync()
+        public Task<IList<CustomDomain>> GetAllAsync(CancellationToken token = default)
         {
-            return Connection.GetAsync<IList<CustomDomain>>(BuildUri("custom-domains"), DefaultHeaders);
+            return Connection.GetAsync<IList<CustomDomain>>(BuildUri("custom-domains"), DefaultHeaders, token: token);
         }
 
         /// <summary>
         /// Retrieves a custom domain status by its ID
         /// </summary>
         /// <param name="id">The ID of the domain to retrieve.</param>
+        /// <param name="token"></param>
         /// <returns>The <see cref="CustomDomain"/> that was requested.</returns>
-        public Task<CustomDomain> GetAsync(string id)
+        public Task<CustomDomain> GetAsync(string id, CancellationToken token = default)
         {
-            return Connection.GetAsync<CustomDomain>(BuildUri($"custom-domains/{EncodePath(id)}"), DefaultHeaders);
+            return Connection.GetAsync<CustomDomain>(BuildUri($"custom-domains/{EncodePath(id)}"), DefaultHeaders, token: token);
         }
 
         /// <summary>
         /// Run the verification process for the custom domain. 
         /// </summary>
         /// <param name="id">The ID of the domain to verify.</param>
+        /// <param name="token"></param>
         /// <returns>The <see cref="CustomDomainVerification"/> that was requested.</returns>
-        public Task<CustomDomainVerificationResponse> VerifyAsync(string id)
+        public Task<CustomDomainVerificationResponse> VerifyAsync(string id, CancellationToken token = default)
         {
-            return Connection.SendAsync<CustomDomainVerificationResponse>(HttpMethod.Post, BuildUri($"custom-domains/{EncodePath(id)}/verify"), null, DefaultHeaders);
+            return Connection.SendAsync<CustomDomainVerificationResponse>(HttpMethod.Post, BuildUri($"custom-domains/{EncodePath(id)}/verify"), null, DefaultHeaders, token: token);
         }
     }
 }

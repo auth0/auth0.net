@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -30,20 +31,22 @@ namespace Auth0.ManagementApi.Clients
         /// Creates a new connection according to the request.
         /// </summary>
         /// <param name="request">The request containing the properties for the new connection.</param>
+        /// <param name="token"></param>
         /// <returns>A <see cref="Connection"/> containing the newly created Connection.</returns>
-        public Task<Connection> CreateAsync(ConnectionCreateRequest request)
+        public Task<Connection> CreateAsync(ConnectionCreateRequest request, CancellationToken token = default)
         {
-            return Connection.SendAsync<Connection>(HttpMethod.Post, BuildUri("connections"), request, DefaultHeaders);
+            return Connection.SendAsync<Connection>(HttpMethod.Post, BuildUri("connections"), request, DefaultHeaders, token: token);
         }
 
         /// <summary>
         /// Deletes a connection and all its users.
         /// </summary>
         /// <param name="id">The id of the connection to delete.</param>
+        /// <param name="token"></param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-        public Task DeleteAsync(string id)
+        public Task DeleteAsync(string id, CancellationToken token = default)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"connections/{EncodePath(id)}"), null, DefaultHeaders);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"connections/{EncodePath(id)}"), null, DefaultHeaders, token: token);
         }
 
         /// <summary>
@@ -54,11 +57,12 @@ namespace Auth0.ManagementApi.Clients
         /// </remarks>
         /// <param name="id">The identifier of the connection.</param>
         /// <param name="email">The email of the user to delete.</param>
+        /// <param name="token"></param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-        public Task DeleteUserAsync(string id, string email)
+        public Task DeleteUserAsync(string id, string email, CancellationToken token = default)
         {
             return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"connections/{EncodePath(id)}/users",
-                new Dictionary<string, string> { {"email", email} }), null, DefaultHeaders);
+                new Dictionary<string, string> { {"email", email} }), null, DefaultHeaders, token: token);
         }
 
         /// <summary>
@@ -67,15 +71,16 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="id">The id of the connection to retrieve.</param>
         /// <param name="fields">A comma separated list of fields to include or exclude (depending on include_fields) from the result, empty to retrieve all fields.</param>
         /// <param name="includeFields">True if the fields specified are to be included in the result, false otherwise (defaults to true).</param>
+        /// <param name="token"></param>
         /// <returns>The <see cref="Connection"/>.</returns>
-        public Task<Connection> GetAsync(string id, string fields = null, bool includeFields = true)
+        public Task<Connection> GetAsync(string id, string fields = null, bool includeFields = true, CancellationToken token = default)
         {
             return Connection.GetAsync<Connection>(BuildUri($"connections/{EncodePath(id)}",
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                }), DefaultHeaders);
+                }), DefaultHeaders, token: token);
         }
 
         /// <summary>
@@ -83,8 +88,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="request">Specifies criteria to use when querying connections.</param>
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <param name="token"></param>
         /// <returns>An <see cref="IPagedList{Connection}"/> containing the list of connections.</returns>
-        public Task<IPagedList<Connection>> GetAllAsync(GetConnectionsRequest request, PaginationInfo pagination)
+        public Task<IPagedList<Connection>> GetAllAsync(GetConnectionsRequest request, PaginationInfo pagination, CancellationToken token = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -110,7 +116,7 @@ namespace Auth0.ManagementApi.Clients
                 }
             }
 
-            return Connection.GetAsync<IPagedList<Connection>>(BuildUri("connections", queryStrings), DefaultHeaders, converters);
+            return Connection.GetAsync<IPagedList<Connection>>(BuildUri("connections", queryStrings), DefaultHeaders, converters, token);
         }
 
         /// <summary>
@@ -118,10 +124,11 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="id">The id of the connection to update.</param>
         /// <param name="request">The <see cref="ConnectionUpdateRequest"/> containing the properties of the connection you wish to update.</param>
+        /// <param name="token"></param>
         /// <returns>The <see cref="Connection"/> that has been updated.</returns>
-        public Task<Connection> UpdateAsync(string id, ConnectionUpdateRequest request)
+        public Task<Connection> UpdateAsync(string id, ConnectionUpdateRequest request, CancellationToken token = default)
         {
-            return Connection.SendAsync<Connection>(new HttpMethod("PATCH"), BuildUri($"connections/{EncodePath(id)}"), request, DefaultHeaders);
+            return Connection.SendAsync<Connection>(new HttpMethod("PATCH"), BuildUri($"connections/{EncodePath(id)}"), request, DefaultHeaders, token: token);
         }
     }
 }

@@ -55,7 +55,7 @@ namespace Auth0.Tests.Shared
             _connection = new HttpClientManagementConnection(handler);
         }
 
-        public async Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers, JsonConverter[] converters = null)
+        public async Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers, JsonConverter[] converters = null, CancellationToken token = default)
         {
             var maxNrOfTries = 3;
             var nrOfTries = 0;
@@ -67,7 +67,7 @@ namespace Auth0.Tests.Shared
                 {
                     nrOfTries++;
 
-                    return await _connection.GetAsync<T>(uri, headers, converters);
+                    return await _connection.GetAsync<T>(uri, headers, converters, token);
                 } catch(Exception ex)
                 {
                     if (!(ex is RateLimitApiException) || nrOfTries >= maxNrOfTries)
@@ -80,7 +80,7 @@ namespace Auth0.Tests.Shared
             }
         }
 
-        public async Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers, IList<FileUploadParameter> files = null)
+        public async Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers, IList<FileUploadParameter> files = null, CancellationToken token = default)
         {
             var maxNrOfTries = 3;
             var nrOfTries = 0;
@@ -92,7 +92,7 @@ namespace Auth0.Tests.Shared
                 {
                     nrOfTries++;
 
-                    return await _connection.SendAsync<T>(method, uri, body, headers, files);
+                    return await _connection.SendAsync<T>(method, uri, body, headers, files, token);
                 }
                 catch (Exception ex)
                 {

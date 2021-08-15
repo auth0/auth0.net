@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -26,45 +27,48 @@ namespace Auth0.ManagementApi.Clients
         /// Gets all of the log streams
         /// </summary>
         /// <returns>A list of <see cref="LogStream"/> objects</returns>
-        public Task<IList<LogStream>> GetAllAsync()
+        public Task<IList<LogStream>> GetAllAsync(CancellationToken token = default)
         {
-            return Connection.GetAsync<IList<LogStream>>(BuildUri("log-streams"), DefaultHeaders);
+            return Connection.GetAsync<IList<LogStream>>(BuildUri("log-streams"), DefaultHeaders, token: token);
         }
 
         /// <summary>
         /// Gets a log stream
         /// </summary>
         /// <param name="id">The id of the log stream to get</param>
+        /// <param name="token"></param>
         /// <returns>A <see cref="LogStream"/> object</returns>
-        public Task<LogStream> GetAsync(string id)
+        public Task<LogStream> GetAsync(string id, CancellationToken token = default)
         {
             if (string.IsNullOrWhiteSpace(id))
                 throw new ArgumentException("Value cannot be null or whitespace.", nameof(id));
 
-            return Connection.GetAsync<LogStream>(BuildUri($"log-streams/{EncodePath(id)}"), DefaultHeaders);
+            return Connection.GetAsync<LogStream>(BuildUri($"log-streams/{EncodePath(id)}"), DefaultHeaders, token: token);
         }
 
         /// <summary>
         /// Creates a new log stream
         /// </summary>
         /// <param name="request">The <see cref="LogStreamCreateRequest"/> containing the information needed to create the log stream</param>
+        /// <param name="token"></param>
         /// <returns>A <see cref="Task"/> that represents the  asynchronous create operation.</returns>
-        public Task<LogStream> CreateAsync(LogStreamCreateRequest request)
+        public Task<LogStream> CreateAsync(LogStreamCreateRequest request, CancellationToken token = default)
         {
-            return Connection.SendAsync<LogStream>(HttpMethod.Post, BuildUri("log-streams"), request, DefaultHeaders);
+            return Connection.SendAsync<LogStream>(HttpMethod.Post, BuildUri("log-streams"), request, DefaultHeaders, token: token);
         }
 
         /// <summary>
         /// Deletes a log stream
         /// </summary>
         /// <param name="id">The id of the log stream to delete</param>
+        /// <param name="token"></param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-        public Task DeleteAsync(string id)
+        public Task DeleteAsync(string id, CancellationToken token = default)
         {
             if (string.IsNullOrWhiteSpace(id))
                 throw new ArgumentException("Value cannot be null or whitespace.", nameof(id));
 
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"log-streams/{EncodePath(id)}"), null, DefaultHeaders);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"log-streams/{EncodePath(id)}"), null, DefaultHeaders, token: token);
         }
 
         /// <summary>
@@ -72,13 +76,14 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="id">The id of the log stream to update</param>
         /// <param name="request">The information required to update the log stream</param>
+        /// <param name="token"></param>
         /// <returns>The updated <see cref="LogStream"/> object</returns>
-        public Task<LogStream> UpdateAsync(string id, LogStreamUpdateRequest request)
+        public Task<LogStream> UpdateAsync(string id, LogStreamUpdateRequest request, CancellationToken token = default)
         {
             if (string.IsNullOrWhiteSpace(id))
                 throw new ArgumentException("Value cannot be null or whitespace.", nameof(id));
 
-            return Connection.SendAsync<LogStream>(new HttpMethod("PATCH"), BuildUri($"log-streams/{EncodePath(id)}"), request, DefaultHeaders);
+            return Connection.SendAsync<LogStream>(new HttpMethod("PATCH"), BuildUri($"log-streams/{EncodePath(id)}"), request, DefaultHeaders, token: token);
         }
     }
 }

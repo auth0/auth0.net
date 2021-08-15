@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -27,11 +28,11 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="aud">The JWT's aud claim. The client_id of the client for which it was issued.</param>
         /// <returns>A list of <see cref="BlacklistedToken"/> objects.</returns>
-        public Task<IList<BlacklistedToken>> GetAllAsync(string aud)
+        public Task<IList<BlacklistedToken>> GetAllAsync(string aud, CancellationToken token = default)
         {
             return Connection.GetAsync<IList<BlacklistedToken>>(BuildUri("blacklists/tokens", new Dictionary<string, string> {
                 {  "aud", aud }
-            }), DefaultHeaders);
+            }), DefaultHeaders, token: token);
         }
 
         /// <summary>
@@ -39,9 +40,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="request">The <see cref="BlacklistedTokenCreateRequest"/> containing the information of the token to blacklist.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous create operation.</returns>
-        public Task CreateAsync(BlacklistedTokenCreateRequest request)
+        public Task CreateAsync(BlacklistedTokenCreateRequest request, CancellationToken token = default)
         {
-            return Connection.SendAsync<Client>(HttpMethod.Post, BuildUri("blacklists/tokens"), request, DefaultHeaders);
+            return Connection.SendAsync<Client>(HttpMethod.Post, BuildUri("blacklists/tokens"), request, DefaultHeaders, token: token);
         }
     }
 }

@@ -1,6 +1,7 @@
 using Auth0.ManagementApi.Models;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -25,9 +26,9 @@ namespace Auth0.ManagementApi.Clients
         /// Gets the active users count (logged in during the last 30 days).
         /// </summary>
         /// <returns>The number of users that have logged in during the last 30 days.</returns>
-        public Task<long> GetActiveUsersAsync()
+        public Task<long> GetActiveUsersAsync(CancellationToken token = default)
         {
-            return Connection.GetAsync<long>(BuildUri("stats/active-users"), DefaultHeaders);
+            return Connection.GetAsync<long>(BuildUri("stats/active-users"), DefaultHeaders, token: token);
         }
 
         /// <summary>
@@ -35,15 +36,16 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="from">The first day of the period (inclusive).</param>
         /// <param name="to">The last day of the period (inclusive).</param>
+        /// <param name="token"></param>
         /// <returns>A list of <see cref="DailyStatistics"/> containing the statistics for each day in the period.</returns>
-        public Task<IList<DailyStatistics>> GetDailyStatsAsync(DateTime from, DateTime to)
+        public Task<IList<DailyStatistics>> GetDailyStatsAsync(DateTime from, DateTime to, CancellationToken token = default)
         {
             return Connection.GetAsync<IList<DailyStatistics>>(BuildUri("stats/daily",
                 new Dictionary<string, string>
                 {
                     { "from", from.ToString("yyyyMMdd") },
                     { "to", to.ToString("yyyyMMdd") }
-                }), DefaultHeaders);
+                }), DefaultHeaders, token: token);
         }
     }
 }

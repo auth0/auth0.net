@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -33,15 +34,16 @@ namespace Auth0.ManagementApi.Clients
         /// <see langword="true"/> if the fields specified are to be included in the result, <see langword="false"/> otherwise (defaults to
         /// <see langword="true"/>).
         /// </param>
+        /// <param name="token"></param>
         /// <returns>A <see cref="TenantSettings" /> containing the settings for the tenant.</returns>
-        public Task<TenantSettings> GetAsync(string fields = null, bool includeFields = true)
+        public Task<TenantSettings> GetAsync(string fields = null, bool includeFields = true, CancellationToken token = default)
         {
             return Connection.GetAsync<TenantSettings>(BuildUri("tenants/settings",
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                }), DefaultHeaders);
+                }), DefaultHeaders, token: token);
         }
 
         /// <summary>
@@ -50,10 +52,11 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="request">
         /// <see cref="TenantSettingsUpdateRequest" /> containing the settings for the tenant which are to be updated.
         /// </param>
+        /// <param name="token"></param>
         /// <returns>A <see cref="TenantSettings" /> containing the updated settings for the tenant.</returns>
-        public Task<TenantSettings> UpdateAsync(TenantSettingsUpdateRequest request)
+        public Task<TenantSettings> UpdateAsync(TenantSettingsUpdateRequest request, CancellationToken token = default)
         {
-            return Connection.SendAsync<TenantSettings>(new HttpMethod("PATCH"), BuildUri("tenants/settings"), request, DefaultHeaders);
+            return Connection.SendAsync<TenantSettings>(new HttpMethod("PATCH"), BuildUri("tenants/settings"), request, DefaultHeaders, token: token);
         }
     }
 }

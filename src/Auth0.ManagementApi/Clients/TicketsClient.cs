@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -26,20 +27,22 @@ namespace Auth0.ManagementApi.Clients
         /// Creates an email verification ticket.
         /// </summary>
         /// <param name="request">The <see cref="EmailVerificationTicketRequest"/> containing the details of the ticket to create.</param>
+        /// <param name="token"></param>
         /// <returns>The newly created <see cref="Ticket"/>.</returns>
-        public Task<Ticket> CreateEmailVerificationTicketAsync(EmailVerificationTicketRequest request)
+        public Task<Ticket> CreateEmailVerificationTicketAsync(EmailVerificationTicketRequest request, CancellationToken token = default)
         {
-            return Connection.SendAsync<Ticket>(HttpMethod.Post, BuildUri("tickets/email-verification"), request, DefaultHeaders);
+            return Connection.SendAsync<Ticket>(HttpMethod.Post, BuildUri("tickets/email-verification"), request, DefaultHeaders, token: token);
         }
 
         /// <summary>
         /// Creates a password change ticket.
         /// </summary>
         /// <param name="request">The <see cref="PasswordChangeTicketRequest"/> containing the details of the ticket to create.</param>
+        /// <param name="token"></param>
         /// <returns>The newly created <see cref="Ticket"/>.</returns>
-        public Task<Ticket> CreatePasswordChangeTicketAsync(PasswordChangeTicketRequest request)
+        public Task<Ticket> CreatePasswordChangeTicketAsync(PasswordChangeTicketRequest request, CancellationToken token = default)
         {
-            return Connection.SendAsync<Ticket>(HttpMethod.Post, BuildUri("tickets/password-change"), request, DefaultHeaders);
+            return Connection.SendAsync<Ticket>(HttpMethod.Post, BuildUri("tickets/password-change"), request, DefaultHeaders, token: token);
         }
     }
 }
