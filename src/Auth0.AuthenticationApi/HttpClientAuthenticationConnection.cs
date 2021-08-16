@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Auth0.AuthenticationApi
@@ -55,31 +56,31 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <inheritdoc/>
-        public async Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null)
+        public async Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, CancellationToken cancellationToken = default)
         {
             using (var request = new HttpRequestMessage(HttpMethod.Get, uri))
             {
                 ApplyHeaders(request, headers);
-                return await SendRequest<T>(request).ConfigureAwait(false);
+                return await SendRequest<T>(request, cancellationToken).ConfigureAwait(false);
             }
         }
 
         /// <inheritdoc/>
-        public async Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null)
+        public async Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, CancellationToken cancellationToken = default)
         {
             using (var request = new HttpRequestMessage(method, uri) { Content = BuildMessageContent(body) })
             {
                 ApplyHeaders(request, headers);
-                return await SendRequest<T>(request).ConfigureAwait(false);
+                return await SendRequest<T>(request, cancellationToken).ConfigureAwait(false);
             }
         }
 
-        private async Task<T> SendRequest<T>(HttpRequestMessage request)
+        private async Task<T> SendRequest<T>(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             if (!ownHttpClient)
                 request.Headers.Add("Auth0-Client", agentString);
 
-            using (var response = await httpClient.SendAsync(request).ConfigureAwait(false))
+            using (var response = await httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false))
             {
                 if (!response.IsSuccessStatusCode)
                     throw await ApiException.CreateSpecificExceptionAsync(response).ConfigureAwait(false);

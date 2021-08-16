@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Auth0.AuthenticationApi
@@ -29,6 +30,6 @@ namespace Auth0.AuthenticationApi
         /// <param name="body">Body of the HTTP request that will be sent.</param>
         /// <param name="headers">Optional dictionary containing additional headers to be sent.</param>
         /// <returns>The task object representing the asynchronous operation.</returns>
-        Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null);
+        Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, CancellationToken cancellationToken = default);
     }
 }
