@@ -4,6 +4,7 @@ using Auth0.Core.Http;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Auth0.AuthenticationApi
@@ -70,7 +71,7 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <inheritdoc />
-        public Task<string> ChangePasswordAsync(ChangePasswordRequest request)
+        public Task<string> ChangePasswordAsync(ChangePasswordRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -78,11 +79,13 @@ namespace Auth0.AuthenticationApi
             return connection.SendAsync<string>(
                 HttpMethod.Post,
                 BuildUri("dbconnections/change_password"),
-                request);
+                request,
+                null,
+                cancellationToken);
         }
 
         /// <inheritdoc />
-        public async Task<Uri> GetImpersonationUrlAsync(ImpersonationRequest request)
+        public async Task<Uri> GetImpersonationUrlAsync(ImpersonationRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -100,23 +103,24 @@ namespace Auth0.AuthenticationApi
                 HttpMethod.Post,
                 BuildUri($"users/{request.ImpersonateId}/impersonate"),
                 body,
-                BuildHeaders(request.Token)
+                BuildHeaders(request.Token),
+                cancellationToken
             ).ConfigureAwait(false);
 
             return new Uri(response);
         }
 
         /// <inheritdoc />
-        public Task<UserInfo> GetUserInfoAsync(string accessToken)
+        public Task<UserInfo> GetUserInfoAsync(string accessToken, CancellationToken cancellationToken = default)
         {
             if (accessToken == null)
                 throw new ArgumentNullException(nameof(accessToken));
 
-            return connection.GetAsync<UserInfo>(BuildUri("userinfo"), BuildHeaders(accessToken));
+            return connection.GetAsync<UserInfo>(BuildUri("userinfo"), BuildHeaders(accessToken), cancellationToken);
         }
 
         /// <inheritdoc />
-        public async Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodeTokenRequest request)
+        public async Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodeTokenRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -131,7 +135,9 @@ namespace Auth0.AuthenticationApi
             var response = await connection.SendAsync<AccessTokenResponse>(
                 HttpMethod.Post,
                 tokenUri,
-                body
+                body,
+                null,
+                cancellationToken
             ).ConfigureAwait(false);
 
             await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret, request.Organization).ConfigureAwait(false);
@@ -140,7 +146,7 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <inheritdoc/>
-        public async Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodePkceTokenRequest request)
+        public async Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodePkceTokenRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -160,7 +166,9 @@ namespace Auth0.AuthenticationApi
             var response = await connection.SendAsync<AccessTokenResponse>(
                 HttpMethod.Post,
                 tokenUri,
-                body
+                body,
+                null,
+                cancellationToken
             ).ConfigureAwait(false);
 
             await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret, request.Organization).ConfigureAwait(false);
@@ -169,7 +177,7 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <inheritdoc/>
-        public Task<AccessTokenResponse> GetTokenAsync(ClientCredentialsTokenRequest request)
+        public Task<AccessTokenResponse> GetTokenAsync(ClientCredentialsTokenRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -183,11 +191,13 @@ namespace Auth0.AuthenticationApi
             return connection.SendAsync<AccessTokenResponse>(
                 HttpMethod.Post,
                 tokenUri,
-                body);
+                body,
+                null,
+                cancellationToken);
         }
 
         /// <inheritdoc/>
-        public async Task<AccessTokenResponse> GetTokenAsync(RefreshTokenRequest request)
+        public async Task<AccessTokenResponse> GetTokenAsync(RefreshTokenRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -205,7 +215,9 @@ namespace Auth0.AuthenticationApi
             var response = await connection.SendAsync<AccessTokenResponse>(
                 HttpMethod.Post,
                 tokenUri,
-                body
+                body,
+                null,
+                cancellationToken
             ).ConfigureAwait(false);
 
             await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret, request.Organization).ConfigureAwait(false);
@@ -214,7 +226,7 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <inheritdoc/>
-        public async Task<AccessTokenResponse> GetTokenAsync(ResourceOwnerTokenRequest request)
+        public async Task<AccessTokenResponse> GetTokenAsync(ResourceOwnerTokenRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -238,7 +250,8 @@ namespace Auth0.AuthenticationApi
                 HttpMethod.Post,
                 tokenUri,
                 body,
-                headers
+                headers,
+                cancellationToken
             ).ConfigureAwait(false);
 
             await AssertIdTokenValid(response.IdToken, request.ClientId, request.SigningAlgorithm, request.ClientSecret).ConfigureAwait(false);
@@ -247,7 +260,7 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <inheritdoc/>
-        public Task<AccessTokenResponse> GetTokenAsync(PasswordlessEmailTokenRequest request)
+        public Task<AccessTokenResponse> GetTokenAsync(PasswordlessEmailTokenRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -265,11 +278,13 @@ namespace Auth0.AuthenticationApi
             return connection.SendAsync<AccessTokenResponse>(
                 HttpMethod.Post,
                 tokenUri,
-                body);
+                body,
+                null,
+                cancellationToken);
         }
 
         /// <inheritdoc/>
-        public Task<AccessTokenResponse> GetTokenAsync(PasswordlessSmsTokenRequest request)
+        public Task<AccessTokenResponse> GetTokenAsync(PasswordlessSmsTokenRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -287,11 +302,13 @@ namespace Auth0.AuthenticationApi
             return connection.SendAsync<AccessTokenResponse>(
                 HttpMethod.Post,
                 tokenUri,
-                body);
+                body,
+                null,
+                cancellationToken);
         }
 
         /// <inheritdoc/>
-        public Task<AccessTokenResponse> GetTokenAsync(DeviceCodeTokenRequest request)
+        public Task<AccessTokenResponse> GetTokenAsync(DeviceCodeTokenRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -306,12 +323,14 @@ namespace Auth0.AuthenticationApi
             return connection.SendAsync<AccessTokenResponse>(
                 HttpMethod.Post,
                 tokenUri,
-                body
+                body,
+                null,
+                cancellationToken
             );
         }
 
         /// <inheritdoc/>
-        public Task<SignupUserResponse> SignupUserAsync(SignupUserRequest request)
+        public Task<SignupUserResponse> SignupUserAsync(SignupUserRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -319,11 +338,13 @@ namespace Auth0.AuthenticationApi
             return connection.SendAsync<SignupUserResponse>(
                 HttpMethod.Post,
                 BuildUri("dbconnections/signup"),
-                request);
+                request,
+                null,
+                cancellationToken);
         }
 
         /// <inheritdoc/>
-        public Task<PasswordlessEmailResponse> StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest request)
+        public Task<PasswordlessEmailResponse> StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -341,11 +362,13 @@ namespace Auth0.AuthenticationApi
             return connection.SendAsync<PasswordlessEmailResponse>(
                 HttpMethod.Post,
                 BuildUri("passwordless/start"),
-                body);
+                body,
+                null,
+                cancellationToken);
         }
 
         /// <inheritdoc/>
-        public Task<PasswordlessSmsResponse> StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest request)
+        public Task<PasswordlessSmsResponse> StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -361,11 +384,13 @@ namespace Auth0.AuthenticationApi
             return connection.SendAsync<PasswordlessSmsResponse>(
                 HttpMethod.Post,
                 BuildUri("passwordless/start"),
-                body);
+                body,
+                null,
+                cancellationToken);
         }
 
         /// <inheritdoc/>
-        public Task<DeviceCodeResponse> StartDeviceFlowAsync(DeviceCodeRequest request)
+        public Task<DeviceCodeResponse> StartDeviceFlowAsync(DeviceCodeRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -379,7 +404,9 @@ namespace Auth0.AuthenticationApi
             return connection.SendAsync<DeviceCodeResponse>(
                 HttpMethod.Post,
                 BuildUri("oauth/device/code"),
-                body
+                body,
+                null,
+                cancellationToken
             );
         }
 

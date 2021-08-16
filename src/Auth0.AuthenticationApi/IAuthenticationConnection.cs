@@ -19,7 +19,7 @@ namespace Auth0.AuthenticationApi
         /// <param name="uri">Absolute <see cref="Uri"/> to send the request to.</param>
         /// <param name="headers">Optional dictionary containing additional headers to be sent.</param>
         /// <returns>The task object representing the asynchronous operation.</returns>
-        Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null);
+        Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Send an HTTP request to <paramref name="uri"/> using the HTTP <paramref name="method"/> as an asynchronous operation.
