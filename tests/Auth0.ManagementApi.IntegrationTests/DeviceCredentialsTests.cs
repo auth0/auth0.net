@@ -27,7 +27,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
         /*public async Task InitializeAsync()
         {
-            using (var apiClient = new TestManagementApiClient(GetVariable("AUTH0_TOKEN_DEVICE_CREDENTIALS"), GetVariable("AUTH0_MANAGEMENT_API_URL")))
+            using (var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_DEVICE_CREDENTIALS"), GetVariable("AUTH0_MANAGEMENT_API_URL")))
             {
                 // Set up the correct Client, Connection and User
                 _client = await apiClient.Clients.CreateAsync(new ClientCreateRequest
@@ -52,7 +52,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
         public async Task DisposeAsync()
         {
-            using (var apiClient = new TestManagementApiClient(GetVariable("AUTH0_TOKEN_DEVICE_CREDENTIALS"), GetVariable("AUTH0_MANAGEMENT_API_URL")))
+            using (var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_DEVICE_CREDENTIALS"), GetVariable("AUTH0_MANAGEMENT_API_URL")))
             {
                 await apiClient.Clients.DeleteAsync(_client.ClientId);
                 await apiClient.Connections.DeleteAsync(_connection.Id);
@@ -63,7 +63,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact(Skip = "Can't create device credentials using management API v2 token")]
         public async Task Test_device_credentials_crud_sequence()
         {
-            using (var apiClient = new TestManagementApiClient(GetVariable("AUTH0_TOKEN_DEVICE_CREDENTIALS"), GetVariable("AUTH0_MANAGEMENT_API_URL")))
+            using (var apiClient = new ManagementApiClient(GetVariable("AUTH0_TOKEN_DEVICE_CREDENTIALS"), GetVariable("AUTH0_MANAGEMENT_API_URL")))
             {
                 //Get all the device credentials
                 var credentialsBefore = await apiClient.DeviceCredentials.GetAllAsync();
@@ -138,7 +138,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 });
 
             var httpClient = new HttpClient(mockHandler.Object);
-            var managementApiClient = new TestManagementApiClient(token, new Uri($"https://{domain}/api/v2"), new TestHttpClientManagementConnection(httpClient));
+            var managementApiClient = new ManagementApiClient(token, new Uri($"https://{domain}/api/v2"), new HttpClientManagementConnection(httpClient));
 
             var deviceCredentials = await managementApiClient.DeviceCredentials.GetAllAsync(request, paginationInfo);
 

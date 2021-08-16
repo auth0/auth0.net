@@ -23,7 +23,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         {
             string token = await GenerateManagementApiToken();
 
-            _managementApiClient = new TestManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+            _managementApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
 
             var tenantSettings = await _managementApiClient.TenantSettings.GetAsync();
 
@@ -69,7 +69,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 Password = Password
             });
 
-            _authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
+            _authenticationApiClient = new TestAuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
         }
 
         public async Task DisposeAsync()

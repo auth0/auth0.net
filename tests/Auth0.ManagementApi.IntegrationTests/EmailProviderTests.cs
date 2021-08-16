@@ -15,7 +15,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             string token = await GenerateManagementApiToken();
 
-            using (var apiClient = new TestManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL")))
+            using (var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL")))
             {
                 // Delete the email provider to ensure we start on a clean slate
                 await apiClient.EmailProvider.DeleteAsync();
@@ -74,7 +74,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             string token = await GenerateManagementApiToken();
 
-            using (var apiClient = new TestManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL")))
+            using (var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL")))
             {
                 // Delete the email provider to ensure we start on a clean slate
                 await apiClient.EmailProvider.DeleteAsync();
