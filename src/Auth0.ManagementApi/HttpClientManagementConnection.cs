@@ -8,6 +8,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Auth0.Core;
 
 namespace Auth0.ManagementApi
 {
@@ -20,8 +21,15 @@ namespace Auth0.ManagementApi
 
         readonly HttpClient httpClient;
         readonly HttpClientManagementConnectionOptions options;
-        readonly Random random = new Random();
         bool ownHttpClient;
+
+        readonly ConcurrentRandom random = new ConcurrentRandom();
+        readonly int MAX_REQUEST_RETRY_JITTER = 250;
+        readonly int MAX_REQUEST_RETRY_DELAY = 500;
+        readonly int MIN_REQUEST_RETRY_DELAY = 100;
+        readonly int DEFAULT_NUMBER_RETRIES = 3;
+        readonly int MAX_NUMBER_RETRIES = 10;
+        readonly int BASE_DELAY = 100;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HttpClientManagementConnection"/> class.
@@ -184,11 +192,7 @@ namespace Auth0.ManagementApi
         private async Task<TResult> Retry<TResult>(Func<Task<TResult>> retryable)
         {
             int? configuredNrOfTries = options.NumberOfHttpRetries;
-            var DEFAULT_NUMBER_RETRIES = 3;
-            var MAX_NUMBER_RETRIES = 10;
-            var BASE_DELAY = 100;
             var nrOfTries = 0;
-
             var nrOfTriesToAttempt = Math.Min(MAX_NUMBER_RETRIES, configuredNrOfTries ?? DEFAULT_NUMBER_RETRIES);
 
             while (true)
@@ -214,10 +218,6 @@ namespace Auth0.ManagementApi
                 // ✔ Randomizes jitter, adding up to MAX_REQUEST_RETRY_JITTER (250ms)
                 // ✔ Never less than MIN_REQUEST_RETRY_DELAY (100ms)
                 // ✔ Never more than MAX_REQUEST_RETRY_DELAY (500ms)
-                //
-                var MAX_REQUEST_RETRY_JITTER = 250;
-                var MAX_REQUEST_RETRY_DELAY = 500;
-                var MIN_REQUEST_RETRY_DELAY = 100;
 
                 var wait = Convert.ToInt32(BASE_DELAY * Math.Pow(2, nrOfTries - 1));
                 wait = random.Next(wait + 1, wait + MAX_REQUEST_RETRY_JITTER);
