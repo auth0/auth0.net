@@ -20,6 +20,7 @@ namespace Auth0.ManagementApi
 
         readonly HttpClient httpClient;
         readonly HttpClientManagementConnectionOptions options;
+        readonly Random random = new Random();
         bool ownHttpClient;
 
         /// <summary>
@@ -219,7 +220,7 @@ namespace Auth0.ManagementApi
                 var MIN_REQUEST_RETRY_DELAY = 100;
 
                 var wait = Convert.ToInt32(BASE_DELAY * Math.Pow(2, nrOfTries - 1));
-                wait = new Random().Next(wait + 1, wait + MAX_REQUEST_RETRY_JITTER);
+                wait = random.Next(wait + 1, wait + MAX_REQUEST_RETRY_JITTER);
                 wait = Math.Min(wait, MAX_REQUEST_RETRY_DELAY);
                 wait = Math.Max(wait, MIN_REQUEST_RETRY_DELAY);
 
