@@ -152,6 +152,11 @@ namespace Auth0.AuthenticationApi
                 { "code_verifier", request.CodeVerifier },
                 { "redirect_uri", request.RedirectUri } };
 
+            if (!string.IsNullOrEmpty(request.ClientSecret))
+            {
+                body.Add("client_secret", request.ClientSecret);
+            }
+
             var response = await connection.SendAsync<AccessTokenResponse>(
                 HttpMethod.Post,
                 tokenUri,
