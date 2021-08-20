@@ -58,13 +58,13 @@ namespace Auth0.ManagementApi
         /// <inheritdoc />
         public async Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers, JsonConverter[] converters = null)
         {
-            return await Retry(() => GetAsyncInternal<T>(uri, headers, converters)).ConfigureAwait(false);
+            return await Retry(async () => await GetAsyncInternal<T>(uri, headers, converters)).ConfigureAwait(false);
         }
 
         /// <inheritdoc />
         public async Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers, IList<FileUploadParameter> files = null)
         {
-            return await Retry(() => SendAsyncInternal<T>(method, uri, body, headers, files)).ConfigureAwait(false);
+            return await Retry(async () => await SendAsyncInternal<T>(method, uri, body, headers, files)).ConfigureAwait(false);
         }
 
         private async Task<T> GetAsyncInternal<T>(Uri uri, IDictionary<string, string> headers, JsonConverter[] converters = null)
