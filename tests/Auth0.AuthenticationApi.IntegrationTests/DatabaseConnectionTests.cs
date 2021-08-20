@@ -20,7 +20,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         {
             string token = await GenerateManagementApiToken();
 
-            _managementApiClient = new TestManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+            _managementApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
 
             // We will need a connection to add the users to...
             _connection = await _managementApiClient.Connections.CreateAsync(new ConnectionCreateRequest

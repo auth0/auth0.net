@@ -19,7 +19,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             var token = await GenerateManagementApiToken();
 
-            _apiClient = new TestManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+            _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
 
             // We need a client in order to create client grants
             _client = await _apiClient.Clients.CreateAsync(new ClientCreateRequest

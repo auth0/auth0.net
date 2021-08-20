@@ -21,7 +21,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
         {
             string token = await GenerateManagementApiToken();
 
-            _managementApiClient = new TestManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+            _managementApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
 
             var tenantSettings = await _managementApiClient.TenantSettings.GetAsync();
 
@@ -71,7 +71,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
             var clientSecret = GetVariable("AUTH0_CLIENT_SECRET");
 
             // Arrange
-            using (var authenticationApiClient = new AuthenticationApiClient(authUrl))
+            using (var authenticationApiClient = new TestAuthenticationApiClient(authUrl))
             {
                 // Act
                 var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
@@ -98,7 +98,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
             var clientSecret = GetVariable("AUTH0_HS256_CLIENT_SECRET");
 
             // Arrange
-            using (var authenticationApiClient = new AuthenticationApiClient(authUrl))
+            using (var authenticationApiClient = new TestAuthenticationApiClient(authUrl))
             {
                 // Act
                 var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
@@ -122,7 +122,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
         public async Task Passes_Token_Validation_With_CNAME()
         {
             // Arrange
-            using (var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
+            using (var authenticationApiClient = new TestAuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
             {
                 // Act
                 var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
@@ -145,7 +145,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
         public async Task Fails_Token_Validation_With_Incorrect_Domain()
         {
             // Arrange
-            using (var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
+            using (var authenticationApiClient = new TestAuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
             {
                 // Act
                 var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
@@ -171,7 +171,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
         public async Task Fails_Token_Validation_With_Incorrect_Audience()
         {
             // Arrange
-            using (var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
+            using (var authenticationApiClient = new TestAuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
             {
                 // Act
                 var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
