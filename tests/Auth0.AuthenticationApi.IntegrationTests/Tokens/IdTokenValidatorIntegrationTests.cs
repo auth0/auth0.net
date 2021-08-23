@@ -21,7 +21,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
         {
             string token = await GenerateManagementApiToken();
 
-            _managementApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 6 }));
+            _managementApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
 
             var tenantSettings = await _managementApiClient.TenantSettings.GetAsync();
 
