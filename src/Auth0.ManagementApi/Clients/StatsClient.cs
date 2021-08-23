@@ -25,6 +25,7 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Gets the active users count (logged in during the last 30 days).
         /// </summary>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The number of users that have logged in during the last 30 days.</returns>
         public Task<long> GetActiveUsersAsync(CancellationToken cancellationToken = default)
         {
