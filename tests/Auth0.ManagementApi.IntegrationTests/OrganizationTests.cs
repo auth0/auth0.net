@@ -266,6 +266,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             roles.Should().NotBeNull();
             roles.Count.Should().Be(1);
+            roles[0].Name.Should().Be("Admin");
 
             await _apiClient.Organizations.DeleteMemberRolesAsync(ExistingOrganizationId, user.UserId, new OrganizationDeleteMemberRolesRequest
             {

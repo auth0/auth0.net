@@ -14,6 +14,7 @@ namespace Auth0.ManagementApi.Clients
         readonly JsonConverter[] checkpointConverters = new JsonConverter[] { new CheckpointPagedListConverter<Organization>("organizations") };
         readonly JsonConverter[] connectionsConverters = new JsonConverter[] { new PagedListConverter<OrganizationConnection>("enabled_connections") };
         readonly JsonConverter[] membersConverters = new JsonConverter[] { new PagedListConverter<OrganizationMember>("members") };
+        readonly JsonConverter[] memberRolesConverters = new JsonConverter[] { new PagedListConverter<Role>("roles") };
         readonly JsonConverter[] membersCheckpointConverters = new JsonConverter[] { new CheckpointPagedListConverter<OrganizationMember>("members") };
         readonly JsonConverter[] invitationsConverters = new JsonConverter[] { new PagedListConverter<OrganizationInvitation>("invitations") };
 
@@ -265,8 +266,8 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="organizationId">The id of the organization for which you want to retrieve the roles for a given user.</param>
         /// <param name="userId">The id of the user for which you want to retrieve the roles.</param>
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
-        /// <returns>An <see cref="IPagedList{OrganizationMember}"/> containing the organization members.</returns>
-        public Task<IPagedList<OrganizationMember>> GetAllMemberRolesAsync(string organizationId, string userId, PaginationInfo pagination)
+        /// <returns>An <see cref="IPagedList{Role}"/> containing the organization member's roles.</returns>
+        public Task<IPagedList<Role>> GetAllMemberRolesAsync(string organizationId, string userId, PaginationInfo pagination)
         {
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
@@ -278,7 +279,7 @@ namespace Auth0.ManagementApi.Clients
                 {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
             };
 
-            return Connection.GetAsync<IPagedList<OrganizationMember>>(BuildUri($"organizations/{EncodePath(organizationId)}/members/{EncodePath(userId)}/roles", queryStrings), DefaultHeaders, membersConverters);
+            return Connection.GetAsync<IPagedList<Role>>(BuildUri($"organizations/{EncodePath(organizationId)}/members/{EncodePath(userId)}/roles", queryStrings), DefaultHeaders, memberRolesConverters);
         }
 
         /// <summary>
