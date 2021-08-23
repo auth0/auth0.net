@@ -32,22 +32,22 @@ namespace Auth0.ManagementApi.Clients
         /// Creates a new client application.
         /// </summary>
         /// <param name="request">The <see cref="ClientCreateRequest"/> containing the properties of the new client.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The new <see cref="Client"/> that has been created.</returns>
-        public Task<Client> CreateAsync(ClientCreateRequest request, CancellationToken token = default)
+        public Task<Client> CreateAsync(ClientCreateRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<Client>(HttpMethod.Post, BuildUri("clients"), request, DefaultHeaders, token: token);
+            return Connection.SendAsync<Client>(HttpMethod.Post, BuildUri("clients"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
         /// Deletes a client and all its related assets (like rules, connections, etc) given its id.
         /// </summary>
         /// <param name="id">The id of the client to delete.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-        public Task DeleteAsync(string id, CancellationToken token = default)
+        public Task DeleteAsync(string id, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"clients/{EncodePath(id)}"), null, DefaultHeaders, token: token);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"clients/{EncodePath(id)}"), null, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -55,9 +55,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="request">Specifies criteria to use when querying clients.</param>
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>An <see cref="IPagedList{Client}"/> containing the clients.</returns>
-        public Task<IPagedList<Client>> GetAllAsync(GetClientsRequest request, PaginationInfo pagination, CancellationToken token = default)
+        public Task<IPagedList<Client>> GetAllAsync(GetClientsRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -78,7 +78,7 @@ namespace Auth0.ManagementApi.Clients
             if (request.AppType != null)
                 queryStrings.Add("app_type", string.Join(",", request.AppType.Select(ExtensionMethods.ToEnumString)));
 
-            return Connection.GetAsync<IPagedList<Client>>(BuildUri("clients", queryStrings), DefaultHeaders, converters, token);
+            return Connection.GetAsync<IPagedList<Client>>(BuildUri("clients", queryStrings), DefaultHeaders, converters, cancellationToken);
         }
 
         /// <summary>
@@ -93,27 +93,27 @@ namespace Auth0.ManagementApi.Clients
         /// true if the fields specified are to be included in the result, false otherwise (defaults to
         /// true)
         /// </param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The <see cref="Client"/> retrieved.</returns>
-        public Task<Client> GetAsync(string id, string fields = null, bool includeFields = true, CancellationToken token = default)
+        public Task<Client> GetAsync(string id, string fields = null, bool includeFields = true, CancellationToken cancellationToken = default)
         {
             return Connection.GetAsync<Client>(BuildUri($"clients/{EncodePath(id)}",
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                }), DefaultHeaders, token: token);
+                }), DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
         /// Rotate a client secret. The generated secret is NOT base64 encoded.
         /// </summary>
         /// <param name="id">The id of the client which secret needs to be rotated.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The <see cref="Client"/> that has had its secret rotated.</returns>
-        public Task<Client> RotateClientSecret(string id, CancellationToken token = default)
+        public Task<Client> RotateClientSecret(string id, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<Client>(HttpMethod.Post, BuildUri($"clients/{EncodePath(id)}/rotate-secret"), null, DefaultHeaders, token: token);
+            return Connection.SendAsync<Client>(HttpMethod.Post, BuildUri($"clients/{EncodePath(id)}/rotate-secret"), null, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -121,11 +121,11 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="id">The id of the client you want to update.</param>
         /// <param name="request">The <see cref="ClientUpdateRequest"/> containing the properties of the client you want to update.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The <see cref="Client"/> that was updated.</returns>
-        public Task<Client> UpdateAsync(string id, ClientUpdateRequest request, CancellationToken token = default)
+        public Task<Client> UpdateAsync(string id, ClientUpdateRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<Client>(new HttpMethod("PATCH"), BuildUri($"clients/{EncodePath(id)}"), request, DefaultHeaders, token: token);
+            return Connection.SendAsync<Client>(new HttpMethod("PATCH"), BuildUri($"clients/{EncodePath(id)}"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
     }
 }

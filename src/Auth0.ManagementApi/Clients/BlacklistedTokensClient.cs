@@ -27,22 +27,24 @@ namespace Auth0.ManagementApi.Clients
         /// Gets all the blacklisted claims.
         /// </summary>
         /// <param name="aud">The JWT's aud claim. The client_id of the client for which it was issued.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A list of <see cref="BlacklistedToken"/> objects.</returns>
-        public Task<IList<BlacklistedToken>> GetAllAsync(string aud, CancellationToken token = default)
+        public Task<IList<BlacklistedToken>> GetAllAsync(string aud, CancellationToken cancellationToken = default)
         {
             return Connection.GetAsync<IList<BlacklistedToken>>(BuildUri("blacklists/tokens", new Dictionary<string, string> {
                 {  "aud", aud }
-            }), DefaultHeaders, token: token);
+            }), DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
         /// Blacklists a JWT token.
         /// </summary>
         /// <param name="request">The <see cref="BlacklistedTokenCreateRequest"/> containing the information of the token to blacklist.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous create operation.</returns>
-        public Task CreateAsync(BlacklistedTokenCreateRequest request, CancellationToken token = default)
+        public Task CreateAsync(BlacklistedTokenCreateRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<Client>(HttpMethod.Post, BuildUri("blacklists/tokens"), request, DefaultHeaders, token: token);
+            return Connection.SendAsync<Client>(HttpMethod.Post, BuildUri("blacklists/tokens"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
     }
 }

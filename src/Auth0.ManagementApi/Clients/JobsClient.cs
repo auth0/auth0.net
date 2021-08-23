@@ -31,11 +31,11 @@ namespace Auth0.ManagementApi.Clients
         /// This is useful to check the status of a job.
         /// </remarks>
         /// <param name="id">The ID of the job to retrieve.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
-        public Task<Job> GetAsync(string id, CancellationToken token = default)
+        public Task<Job> GetAsync(string id, CancellationToken cancellationToken = default)
         {
-            return Connection.GetAsync<Job>(BuildUri($"jobs/{EncodePath(id)}"), DefaultHeaders, token: token);
+            return Connection.GetAsync<Job>(BuildUri($"jobs/{EncodePath(id)}"), DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -50,9 +50,9 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="upsert">Whether to update the user if already exists.</param>
         /// <param name="externalId">Customer-defined id.</param>
         /// <param name="sendCompletionEmail">Whether to send the user an email on import completion (true) or not (false).</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
-        public Task<Job> ImportUsersAsync(string connectionId, string fileName, Stream file, bool? upsert = null, string externalId = null, bool? sendCompletionEmail = null, CancellationToken token = default)
+        public Task<Job> ImportUsersAsync(string connectionId, string fileName, Stream file, bool? upsert = null, string externalId = null, bool? sendCompletionEmail = null, CancellationToken cancellationToken = default)
         {
             if (file == null)
                 throw new ArgumentNullException(nameof(file));
@@ -75,7 +75,7 @@ namespace Auth0.ManagementApi.Clients
                 }
             };
 
-            return Connection.SendAsync<Job>(HttpMethod.Post, BuildUri("jobs/users-imports"), parameters, DefaultHeaders, files: fileParameters, token: token);
+            return Connection.SendAsync<Job>(HttpMethod.Post, BuildUri("jobs/users-imports"), parameters, DefaultHeaders, files: fileParameters, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -85,22 +85,22 @@ namespace Auth0.ManagementApi.Clients
         /// The documentation for user exports can be found <a href="https://auth0.com/docs/users/bulk-user-exports">here</a>.
         /// </remarks>
         /// <param name="request">The <see cref="UsersExportsJobRequest"/> containing the information for the job to export users.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
-        public Task<Job> ExportUsersAsync(UsersExportsJobRequest request, CancellationToken token = default)
+        public Task<Job> ExportUsersAsync(UsersExportsJobRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<Job>(HttpMethod.Post, BuildUri("jobs/users-exports"), request, DefaultHeaders, token: token);
+            return Connection.SendAsync<Job>(HttpMethod.Post, BuildUri("jobs/users-exports"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
         /// Send an email to the specified user that asks them to click a link to verify their email address.
         /// </summary>
         /// <param name="request">The <see cref="VerifyEmailJobRequest"/> containing the information of the user whose email you want verified.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
-        public Task<Job> SendVerificationEmailAsync(VerifyEmailJobRequest request, CancellationToken token = default)
+        public Task<Job> SendVerificationEmailAsync(VerifyEmailJobRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<Job>(HttpMethod.Post, BuildUri("jobs/verification-email"), request, DefaultHeaders, token: token);
+            return Connection.SendAsync<Job>(HttpMethod.Post, BuildUri("jobs/verification-email"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
     }
 }

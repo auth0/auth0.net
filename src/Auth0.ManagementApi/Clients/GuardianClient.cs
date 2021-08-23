@@ -29,103 +29,103 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="request">
         /// The <see cref="CreateGuardianEnrollmentTicketRequest" /> containing the information about the user who should be enrolled.
         /// </param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="CreateGuardianEnrollmentTicketResponse" /> with the details of the ticket that was created.</returns>
-        public Task<CreateGuardianEnrollmentTicketResponse> CreateEnrollmentTicketAsync(CreateGuardianEnrollmentTicketRequest request, CancellationToken token = default)
+        public Task<CreateGuardianEnrollmentTicketResponse> CreateEnrollmentTicketAsync(CreateGuardianEnrollmentTicketRequest request, CancellationToken cancellationToken = default)
         {
             return Connection
                 .SendAsync<CreateGuardianEnrollmentTicketResponse>(
                 HttpMethod.Post,
                 BuildUri("guardian/enrollments/ticket"),
                 request,
-                DefaultHeaders, token: token);
+                DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
         /// Deletes an enrollment.
         /// </summary>
         /// <param name="id">The ID of the enrollment to delete.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-        public Task DeleteEnrollmentAsync(string id, CancellationToken token = default)
+        public Task DeleteEnrollmentAsync(string id, CancellationToken cancellationToken = default)
         {
             return Connection
                 .SendAsync<object>(
                 HttpMethod.Delete,
                 BuildUri($"guardian/enrollments/{EncodePath(id)}"),
                 null,
-                DefaultHeaders, token: token);
+                DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
         /// Retrieves an enrollment.
         /// </summary>
         /// <param name="id">The ID of the enrollment to retrieve.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="GuardianEnrollment"/> containing details of the enrollment.</returns>
-        public Task<GuardianEnrollment> GetEnrollmentAsync(string id, CancellationToken token = default)
+        public Task<GuardianEnrollment> GetEnrollmentAsync(string id, CancellationToken cancellationToken = default)
         {
             return Connection
                 .GetAsync<GuardianEnrollment>(
                 BuildUri($"guardian/enrollments/{EncodePath(id)}"),
-                DefaultHeaders, token: token);
+                DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
         /// Retrieves all factors. Useful to check factor enablement and trial status.
         /// </summary>
         /// <returns>List of <see cref="GuardianFactor" /> instances with the available factors.</returns>
-        public Task<IList<GuardianFactor>> GetFactorsAsync(CancellationToken token = default)
+        public Task<IList<GuardianFactor>> GetFactorsAsync(CancellationToken cancellationToken = default)
         {
             return Connection
                 .GetAsync<IList<GuardianFactor>>(
                 BuildUri("guardian/factors"),
-                DefaultHeaders, token: token);
+                DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
         /// Retrieves enrollment and verification templates. You can use it to check the current values for your templates.
         /// </summary>
         /// <returns>A <see cref="GuardianSmsEnrollmentTemplates" /> containing the templates.</returns>
-        public Task<GuardianSmsEnrollmentTemplates> GetSmsTemplatesAsync(CancellationToken token = default)
+        public Task<GuardianSmsEnrollmentTemplates> GetSmsTemplatesAsync(CancellationToken cancellationToken = default)
         {
             return Connection
                 .GetAsync<GuardianSmsEnrollmentTemplates>(
                 BuildUri("guardian/factors/sms/templates"),
-                DefaultHeaders, token: token);
+                DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
         /// Returns provider configuration for AWS SNS.
         /// </summary>
         /// <returns>A <see cref="GuardianSnsConfiguration" /> containing Amazon SNS configuration.</returns>
-        public Task<GuardianSnsConfiguration> GetSnsConfigurationAsync(CancellationToken token = default)
+        public Task<GuardianSnsConfiguration> GetSnsConfigurationAsync(CancellationToken cancellationToken = default)
         {
             return Connection
                 .GetAsync<GuardianSnsConfiguration>(
                 BuildUri("guardian/factors/push-notification/providers/sns"),
-                DefaultHeaders, token: token);
+                DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
         /// Returns configuration for the Guardian Twilio provider.
         /// </summary>
         /// <returns><see cref="GuardianTwilioConfiguration" /> with the Twilio configuration.</returns>
-        public Task<GuardianTwilioConfiguration> GetTwilioConfigurationAsync(CancellationToken token = default)
+        public Task<GuardianTwilioConfiguration> GetTwilioConfigurationAsync(CancellationToken cancellationToken = default)
         {
             return Connection
                 .GetAsync<GuardianTwilioConfiguration>(
                 BuildUri("guardian/factors/sms/providers/twilio"),
-                DefaultHeaders, token: token);
+                DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
         /// Enable or Disable a Guardian factor.
         /// </summary>
         /// <param name="request">The <see cref="UpdateGuardianFactorRequest" /> containing the details of the factor to update.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The <see cref="UpdateGuardianFactorResponse" /> indicating the status of the factor.</returns>
-        public Task<UpdateGuardianFactorResponse> UpdateFactorAsync(UpdateGuardianFactorRequest request, CancellationToken token = default)
+        public Task<UpdateGuardianFactorResponse> UpdateFactorAsync(UpdateGuardianFactorRequest request, CancellationToken cancellationToken = default)
         {
             var name = request.Factor == GuardianFactorName.PushNotifications ? "push-notification" : "sms";
 
@@ -134,23 +134,23 @@ namespace Auth0.ManagementApi.Clients
                 HttpMethod.Put,
                 BuildUri($"guardian/factors/{name}"),
                 new { enabled = request.IsEnabled },
-                DefaultHeaders, token: token);
+                DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
         /// Updates enrollment and verification templates. Useful to send custom messages on SMS enrollment and verification.
         /// </summary>
         /// <param name="templates">A <see cref="GuardianSmsEnrollmentTemplates" /> containing the updated templates.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="GuardianSmsEnrollmentTemplates" /> containing the templates.</returns>
-        public Task<GuardianSmsEnrollmentTemplates> UpdateSmsTemplatesAsync(GuardianSmsEnrollmentTemplates templates, CancellationToken token = default)
+        public Task<GuardianSmsEnrollmentTemplates> UpdateSmsTemplatesAsync(GuardianSmsEnrollmentTemplates templates, CancellationToken cancellationToken = default)
         {
             return Connection
                 .SendAsync<GuardianSmsEnrollmentTemplates>(
                 HttpMethod.Put,
                 BuildUri("guardian/factors/sms/templates"),
                 templates,
-                DefaultHeaders, token: token);
+                DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -159,16 +159,16 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="request">
         /// The <see cref="UpdateGuardianTwilioConfigurationRequest" /> containing the configuration settings.
         /// </param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The <see cref="GuardianTwilioConfiguration" /> containing the updated configuration settings.</returns>
-        public Task<GuardianTwilioConfiguration> UpdateTwilioConfigurationAsync(UpdateGuardianTwilioConfigurationRequest request, CancellationToken token = default)
+        public Task<GuardianTwilioConfiguration> UpdateTwilioConfigurationAsync(UpdateGuardianTwilioConfigurationRequest request, CancellationToken cancellationToken = default)
         {
             return Connection
                 .SendAsync<GuardianTwilioConfiguration>(
                 HttpMethod.Put,
                 BuildUri("guardian/factors/sms/providers/twilio"),
                 request,
-                DefaultHeaders, token: token);
+                DefaultHeaders, cancellationToken: cancellationToken);
         }
     }
 }

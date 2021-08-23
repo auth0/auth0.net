@@ -33,9 +33,9 @@ namespace Auth0.ManagementApi.Clients
         /// Retrieves a list of all organizations.
         /// </summary>
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>An <see cref="IPagedList{Organization}"/> containing the organizations.</returns>
-        public Task<IPagedList<Organization>> GetAllAsync(PaginationInfo pagination, CancellationToken token = default)
+        public Task<IPagedList<Organization>> GetAllAsync(PaginationInfo pagination, CancellationToken cancellationToken = default)
         {
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
@@ -47,16 +47,16 @@ namespace Auth0.ManagementApi.Clients
                 {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
             };
 
-            return Connection.GetAsync<IPagedList<Organization>>(BuildUri("organizations", queryStrings), DefaultHeaders, converters, token);
+            return Connection.GetAsync<IPagedList<Organization>>(BuildUri("organizations", queryStrings), DefaultHeaders, converters, cancellationToken);
         }
 
         /// <summary>
         /// Retrieves a list of all organizations using checkpoint <paramref name="pagination"/>.
         /// </summary>
         /// <param name="pagination">Specifies <see cref="CheckpointPaginationInfo"/> to use in requesting checkpoint-paginated results.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>An <see cref="ICheckpointPagedList{Organization}"/> containing the organizations.</returns>
-        public Task<ICheckpointPagedList<Organization>> GetAllAsync(CheckpointPaginationInfo pagination, CancellationToken token = default)
+        public Task<ICheckpointPagedList<Organization>> GetAllAsync(CheckpointPaginationInfo pagination, CancellationToken cancellationToken = default)
         {
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
@@ -67,40 +67,40 @@ namespace Auth0.ManagementApi.Clients
                 {"take", pagination.Take.ToString()},
             };
 
-            return Connection.GetAsync<ICheckpointPagedList<Organization>>(BuildUri("organizations", queryStrings), DefaultHeaders, checkpointConverters, token);
+            return Connection.GetAsync<ICheckpointPagedList<Organization>>(BuildUri("organizations", queryStrings), DefaultHeaders, checkpointConverters, cancellationToken);
         }
 
         /// <summary>
         /// Retrieves an organization by its id.
         /// </summary>
         /// <param name="id">The id of the organization to retrieve.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The <see cref="Organization"/> retrieved.</returns>
-        public Task<Organization> GetAsync(string id, CancellationToken token = default)
+        public Task<Organization> GetAsync(string id, CancellationToken cancellationToken = default)
         {
-            return Connection.GetAsync<Organization>(BuildUri($"organizations/{EncodePath(id)}"), DefaultHeaders, token: token);
+            return Connection.GetAsync<Organization>(BuildUri($"organizations/{EncodePath(id)}"), DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
         /// Retrieves an organization by its name.
         /// </summary>
         /// <param name="name">The name of the organization to retrieve.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The <see cref="Organization"/> retrieved.</returns>
-        public Task<Organization> GetByNameAsync(string name, CancellationToken token = default)
+        public Task<Organization> GetByNameAsync(string name, CancellationToken cancellationToken = default)
         {
-            return Connection.GetAsync<Organization>(BuildUri($"organizations/name/{EncodePath(name)}"), DefaultHeaders, token: token);
+            return Connection.GetAsync<Organization>(BuildUri($"organizations/name/{EncodePath(name)}"), DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
         /// Creates a new organization.
         /// </summary>
         /// <param name="request">The <see cref="OrganizationCreateRequest"/> containing the properties of the new organization.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The new <see cref="Organization"/> that has been created.</returns>
-        public Task<Organization> CreateAsync(OrganizationCreateRequest request, CancellationToken token = default)
+        public Task<Organization> CreateAsync(OrganizationCreateRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<Organization>(HttpMethod.Post, BuildUri("organizations"), request, DefaultHeaders, token: token);
+            return Connection.SendAsync<Organization>(HttpMethod.Post, BuildUri("organizations"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -108,22 +108,22 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="id">The id of the organization you want to update.</param>
         /// <param name="request">The <see cref="OrganizationUpdateRequest"/> containing the properties of the organization you want to update.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The <see cref="Organization"/> that was updated.</returns>
-        public Task<Organization> UpdateAsync(string id, OrganizationUpdateRequest request, CancellationToken token = default)
+        public Task<Organization> UpdateAsync(string id, OrganizationUpdateRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<Organization>(new HttpMethod("PATCH"), BuildUri($"organizations/{EncodePath(id)}"), request, DefaultHeaders, token: token);
+            return Connection.SendAsync<Organization>(new HttpMethod("PATCH"), BuildUri($"organizations/{EncodePath(id)}"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
         /// Deletes an organization.
         /// </summary>
         /// <param name="id">The id of the organization to delete.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-        public Task DeleteAsync(string id, CancellationToken token = default)
+        public Task DeleteAsync(string id, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"organizations/{EncodePath(id)}"), null, DefaultHeaders, token: token);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"organizations/{EncodePath(id)}"), null, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -131,9 +131,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="organizationId">The ID of the organization for which you want to retrieve the connections.</param>
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>An <see cref="IPagedList{OrganizationConnection}"/> containing the organization connections.</returns>
-        public Task<IPagedList<OrganizationConnection>> GetAllConnectionsAsync(string organizationId, PaginationInfo pagination, CancellationToken token = default)
+        public Task<IPagedList<OrganizationConnection>> GetAllConnectionsAsync(string organizationId, PaginationInfo pagination, CancellationToken cancellationToken = default)
         {
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
@@ -145,7 +145,7 @@ namespace Auth0.ManagementApi.Clients
                 {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
             };
 
-            return Connection.GetAsync<IPagedList<OrganizationConnection>>(BuildUri($"organizations/{EncodePath(organizationId)}/enabled_connections", queryStrings), DefaultHeaders, connectionsConverters, token);
+            return Connection.GetAsync<IPagedList<OrganizationConnection>>(BuildUri($"organizations/{EncodePath(organizationId)}/enabled_connections", queryStrings), DefaultHeaders, connectionsConverters, cancellationToken);
         }
 
         /// <summary>
@@ -153,11 +153,11 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="organizationId">The id of the organization for which you want to retrieve the connection.</param>
         /// <param name="connectionId">The id of the connection to retrieve.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The <see cref="OrganizationConnection"/> retrieved.</returns>
-        public Task<OrganizationConnection> GetConnectionAsync(string organizationId, string connectionId, CancellationToken token = default)
+        public Task<OrganizationConnection> GetConnectionAsync(string organizationId, string connectionId, CancellationToken cancellationToken = default)
         {
-            return Connection.GetAsync<OrganizationConnection>(BuildUri($"organizations/{EncodePath(organizationId)}/enabled_connections/{EncodePath(connectionId)}"), DefaultHeaders, token: token);
+            return Connection.GetAsync<OrganizationConnection>(BuildUri($"organizations/{EncodePath(organizationId)}/enabled_connections/{EncodePath(connectionId)}"), DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -165,11 +165,11 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="organizationId">The id of the organization for which you want to add the connection.</param>
         /// <param name="request">The <see cref="OrganizationConnectionCreateRequest"/> containing the properties of the new organization connection.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The new <see cref="OrganizationConnection"/> that has been created.</returns>
-        public Task<OrganizationConnection> CreateConnectionAsync(string organizationId, OrganizationConnectionCreateRequest request, CancellationToken token = default)
+        public Task<OrganizationConnection> CreateConnectionAsync(string organizationId, OrganizationConnectionCreateRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<OrganizationConnection>(HttpMethod.Post, BuildUri($"organizations/{EncodePath(organizationId)}/enabled_connections"), request, DefaultHeaders, token: token);
+            return Connection.SendAsync<OrganizationConnection>(HttpMethod.Post, BuildUri($"organizations/{EncodePath(organizationId)}/enabled_connections"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -178,11 +178,11 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="organizationId">The id of the organization for which you want to update the connection.</param>
         /// <param name="connectionId">The id of the connection you want to update for the organization.</param>
         /// <param name="request">The <see cref="OrganizationConnectionUpdateRequest"/> containing the properties of the organization connection you want to update.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The <see cref="OrganizationConnection"/> that was updated.</returns>
-        public Task<OrganizationConnection> UpdateConnectionAsync(string organizationId, string connectionId, OrganizationConnectionUpdateRequest request, CancellationToken token = default)
+        public Task<OrganizationConnection> UpdateConnectionAsync(string organizationId, string connectionId, OrganizationConnectionUpdateRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<OrganizationConnection>(new HttpMethod("PATCH"), BuildUri($"organizations/{EncodePath(organizationId)}/enabled_connections/{EncodePath(connectionId)}"), request, DefaultHeaders, token: token);
+            return Connection.SendAsync<OrganizationConnection>(new HttpMethod("PATCH"), BuildUri($"organizations/{EncodePath(organizationId)}/enabled_connections/{EncodePath(connectionId)}"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -190,11 +190,11 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="organizationId">The id of the organization for which you want to delete the connection.</param>
         /// <param name="connectionId">The id of the connection to delete from the organization.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-        public Task DeleteConnectionAsync(string organizationId, string connectionId, CancellationToken token = default)
+        public Task DeleteConnectionAsync(string organizationId, string connectionId, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"organizations/{EncodePath(organizationId)}/enabled_connections/{EncodePath(connectionId)}"), null, DefaultHeaders, token: token);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"organizations/{EncodePath(organizationId)}/enabled_connections/{EncodePath(connectionId)}"), null, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -202,11 +202,11 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="organizationId">The id of the organization for which you want to add members.</param>
         /// <param name="request">The <see cref="OrganizationAddMembersRequest"/> containing the members.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
-        public Task AddMembersAsync(string organizationId, OrganizationAddMembersRequest request, CancellationToken token = default)
+        public Task AddMembersAsync(string organizationId, OrganizationAddMembersRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<object>(HttpMethod.Post, BuildUri($"organizations/{EncodePath(organizationId)}/members"), request, DefaultHeaders, token: token);
+            return Connection.SendAsync<object>(HttpMethod.Post, BuildUri($"organizations/{EncodePath(organizationId)}/members"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -214,9 +214,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="organizationId">The ID of the organization for which you want to retrieve the members.</param>
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>An <see cref="IPagedList{OrganizationMember}"/> containing the organization members.</returns>
-        public Task<IPagedList<OrganizationMember>> GetAllMembersAsync(string organizationId, PaginationInfo pagination, CancellationToken token = default)
+        public Task<IPagedList<OrganizationMember>> GetAllMembersAsync(string organizationId, PaginationInfo pagination, CancellationToken cancellationToken = default)
         {
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
@@ -228,7 +228,7 @@ namespace Auth0.ManagementApi.Clients
                 {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
             };
 
-            return Connection.GetAsync<IPagedList<OrganizationMember>>(BuildUri($"organizations/{EncodePath(organizationId)}/members", queryStrings), DefaultHeaders, membersConverters, token);
+            return Connection.GetAsync<IPagedList<OrganizationMember>>(BuildUri($"organizations/{EncodePath(organizationId)}/members", queryStrings), DefaultHeaders, membersConverters, cancellationToken);
         }
 
         /// <summary>
@@ -236,9 +236,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="organizationId">The ID of the organization for which you want to retrieve the members.</param>
         /// <param name="pagination">Specifies <see cref="CheckpointPaginationInfo"/> to use in requesting checkpoint-paginated results.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>An <see cref="ICheckpointPagedList{OrganizationMember}"/> containing the organization members.</returns>
-        public Task<ICheckpointPagedList<OrganizationMember>> GetAllMembersAsync(string organizationId, CheckpointPaginationInfo pagination, CancellationToken token = default)
+        public Task<ICheckpointPagedList<OrganizationMember>> GetAllMembersAsync(string organizationId, CheckpointPaginationInfo pagination, CancellationToken cancellationToken = default)
         {
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
@@ -249,7 +249,7 @@ namespace Auth0.ManagementApi.Clients
                 {"take", pagination.Take.ToString()},
             };
 
-            return Connection.GetAsync<ICheckpointPagedList<OrganizationMember>>(BuildUri($"organizations/{EncodePath(organizationId)}/members", queryStrings), DefaultHeaders, membersCheckpointConverters, token);
+            return Connection.GetAsync<ICheckpointPagedList<OrganizationMember>>(BuildUri($"organizations/{EncodePath(organizationId)}/members", queryStrings), DefaultHeaders, membersCheckpointConverters, cancellationToken);
         }
 
         /// <summary>
@@ -257,11 +257,11 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="organizationId">The id of the organization for which you want to delete the members.</param>
         /// <param name="request">The <see cref="OrganizationDeleteMembersRequest"/> containing the members.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-        public Task DeleteMemberAsync(string organizationId, OrganizationDeleteMembersRequest request, CancellationToken token = default)
+        public Task DeleteMemberAsync(string organizationId, OrganizationDeleteMembersRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"organizations/{EncodePath(organizationId)}/members"), request, DefaultHeaders, token: token);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"organizations/{EncodePath(organizationId)}/members"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -270,11 +270,11 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="organizationId">The id of the organization for which you want to add roles to the given user.</param>
         /// <param name="userId">The id of the user for which you want to add roles.</param>
         /// <param name="request">The <see cref="OrganizationAddMemberRolesRequest"/> containing the roles.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous operation.</returns>
-        public Task AddMemberRolesAsync(string organizationId, string userId, OrganizationAddMemberRolesRequest request, CancellationToken token = default)
+        public Task AddMemberRolesAsync(string organizationId, string userId, OrganizationAddMemberRolesRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<object>(HttpMethod.Post, BuildUri($"organizations/{EncodePath(organizationId)}/members/{EncodePath(userId)}/roles"), request, DefaultHeaders, token: token);
+            return Connection.SendAsync<object>(HttpMethod.Post, BuildUri($"organizations/{EncodePath(organizationId)}/members/{EncodePath(userId)}/roles"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -283,9 +283,9 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="organizationId">The id of the organization for which you want to retrieve the roles for a given user.</param>
         /// <param name="userId">The id of the user for which you want to retrieve the roles.</param>
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>An <see cref="IPagedList{OrganizationMember}"/> containing the organization members.</returns>
-        public Task<IPagedList<OrganizationMember>> GetAllMemberRolesAsync(string organizationId, string userId, PaginationInfo pagination, CancellationToken token = default)
+        public Task<IPagedList<OrganizationMember>> GetAllMemberRolesAsync(string organizationId, string userId, PaginationInfo pagination, CancellationToken cancellationToken = default)
         {
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
@@ -297,7 +297,7 @@ namespace Auth0.ManagementApi.Clients
                 {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
             };
 
-            return Connection.GetAsync<IPagedList<OrganizationMember>>(BuildUri($"organizations/{EncodePath(organizationId)}/members/{EncodePath(userId)}/roles", queryStrings), DefaultHeaders, membersConverters, token);
+            return Connection.GetAsync<IPagedList<OrganizationMember>>(BuildUri($"organizations/{EncodePath(organizationId)}/members/{EncodePath(userId)}/roles", queryStrings), DefaultHeaders, membersConverters, cancellationToken);
         }
 
         /// <summary>
@@ -306,11 +306,11 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="organizationId">The id of the organization for which you want to delete roles for a given user.</param>
         /// <param name="userId">The id of the user for which you want to remove roles.</param>
         /// <param name="request">The <see cref="OrganizationDeleteMemberRolesRequest"/> containing the roles.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-        public Task DeleteMemberRolesAsync(string organizationId, string userId, OrganizationDeleteMemberRolesRequest request, CancellationToken token = default)
+        public Task DeleteMemberRolesAsync(string organizationId, string userId, OrganizationDeleteMemberRolesRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"organizations/{EncodePath(organizationId)}/members/{EncodePath(userId)}/roles"), request, DefaultHeaders, token: token);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"organizations/{EncodePath(organizationId)}/members/{EncodePath(userId)}/roles"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -318,11 +318,11 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="organizationId">The id of the organization to which you want to invite a user.</param>
         /// <param name="request">The <see cref="OrganizationCreateInvitationRequest"/> containing the properties of the new organization invitation.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The new <see cref="OrganizationInvitation"/> that has been created.</returns>
-        public Task<OrganizationInvitation> CreateInvitationAsync(string organizationId, OrganizationCreateInvitationRequest request, CancellationToken token = default)
+        public Task<OrganizationInvitation> CreateInvitationAsync(string organizationId, OrganizationCreateInvitationRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<OrganizationInvitation>(HttpMethod.Post, BuildUri($"organizations/{EncodePath(organizationId)}/invitations"), request, DefaultHeaders, token: token);
+            return Connection.SendAsync<OrganizationInvitation>(HttpMethod.Post, BuildUri($"organizations/{EncodePath(organizationId)}/invitations"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -331,9 +331,9 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="organizationId">The id of the organization for which you want to retrieve the invitations.</param>
         /// <param name="request">The <see cref="OrganizationGetAllInvitationsRequest"/> containing the properties to retrieve the organization invitations.</param>
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>An <see cref="IPagedList{OrganizationInvitation}"/> containing the organization members.</returns>
-        public Task<IPagedList<OrganizationInvitation>> GetAllInvitationsAsync(string organizationId, OrganizationGetAllInvitationsRequest request, PaginationInfo pagination, CancellationToken token = default)
+        public Task<IPagedList<OrganizationInvitation>> GetAllInvitationsAsync(string organizationId, OrganizationGetAllInvitationsRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default)
         {
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
@@ -348,7 +348,7 @@ namespace Auth0.ManagementApi.Clients
                 {"sort", request.Sort},
             };
 
-            return Connection.GetAsync<IPagedList<OrganizationInvitation>>(BuildUri($"organizations/{EncodePath(organizationId)}/invitations", queryStrings), DefaultHeaders, invitationsConverters, token);
+            return Connection.GetAsync<IPagedList<OrganizationInvitation>>(BuildUri($"organizations/{EncodePath(organizationId)}/invitations", queryStrings), DefaultHeaders, invitationsConverters, cancellationToken);
         }
 
         /// <summary>
@@ -357,9 +357,9 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="organizationId">The id of the organization for which you want to retrieve the invitation.</param>
         /// <param name="invitationId">The id of the organization invitation to retrieve.</param>
         /// <param name="request">The <see cref="OrganizationGetInvitationRequest"/> containing the properties to retrieve the organization invitation.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The <see cref="OrganizationInvitation"/> retrieved.</returns>
-        public Task<OrganizationInvitation> GetInvitationAsync(string organizationId, string invitationId, OrganizationGetInvitationRequest request, CancellationToken token = default)
+        public Task<OrganizationInvitation> GetInvitationAsync(string organizationId, string invitationId, OrganizationGetInvitationRequest request, CancellationToken cancellationToken = default)
         {
             var queryStrings = new Dictionary<string, string>
             {
@@ -367,7 +367,7 @@ namespace Auth0.ManagementApi.Clients
                 {"include_fields", request.IncludeFields?.ToString().ToLower()}
             };
 
-            return Connection.GetAsync<OrganizationInvitation>(BuildUri($"organizations/{EncodePath(organizationId)}/invitations/{EncodePath(invitationId)}", queryStrings), DefaultHeaders, token: token);
+            return Connection.GetAsync<OrganizationInvitation>(BuildUri($"organizations/{EncodePath(organizationId)}/invitations/{EncodePath(invitationId)}", queryStrings), DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -375,11 +375,11 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="organizationId">The id of the organization for which you want to delete the invitation.</param>
         /// <param name="invitationId">The id of the invitation you want to remove.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-        public Task DeleteInvitationAsync(string organizationId, string invitationId, CancellationToken token = default)
+        public Task DeleteInvitationAsync(string organizationId, string invitationId, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"organizations/{EncodePath(organizationId)}/invitations/{EncodePath(invitationId)}"), null, DefaultHeaders, token: token);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"organizations/{EncodePath(organizationId)}/invitations/{EncodePath(invitationId)}"), null, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
     }

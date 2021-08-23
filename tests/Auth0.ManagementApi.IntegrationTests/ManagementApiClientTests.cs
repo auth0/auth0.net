@@ -52,12 +52,12 @@ namespace Auth0.ManagementApi.IntegrationTests
                 IsDisposed = true;
             }
 
-            public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, JsonConverter[] converters = null, CancellationToken token = default)
+            public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, JsonConverter[] converters = null, CancellationToken cancellationToken = default)
             {
                 return Task.FromResult(default(T));
             }
 
-            public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, IList<FileUploadParameter> files = null, CancellationToken token = default)
+            public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, IList<FileUploadParameter> files = null, CancellationToken cancellationToken = default)
             {
                 return Task.FromResult(default(T));
             }
@@ -98,13 +98,13 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             public IDictionary<string, string> LastHeaders { get; private set; } = new Dictionary<string, string>();
 
-            public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, JsonConverter[] converters = null, CancellationToken token = default)
+            public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, JsonConverter[] converters = null, CancellationToken cancellationToken = default)
             {
                 LastHeaders = headers;
                 return Task.FromResult(default(T));
             }
 
-            public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, IList<FileUploadParameter> files = null, CancellationToken token = default)
+            public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, IList<FileUploadParameter> files = null, CancellationToken cancellationToken = default)
             {
                 LastHeaders = headers;
                 return Task.FromResult(default(T));

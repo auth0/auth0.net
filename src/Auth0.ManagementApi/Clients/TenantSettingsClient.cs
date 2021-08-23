@@ -34,16 +34,16 @@ namespace Auth0.ManagementApi.Clients
         /// <see langword="true"/> if the fields specified are to be included in the result, <see langword="false"/> otherwise (defaults to
         /// <see langword="true"/>).
         /// </param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="TenantSettings" /> containing the settings for the tenant.</returns>
-        public Task<TenantSettings> GetAsync(string fields = null, bool includeFields = true, CancellationToken token = default)
+        public Task<TenantSettings> GetAsync(string fields = null, bool includeFields = true, CancellationToken cancellationToken = default)
         {
             return Connection.GetAsync<TenantSettings>(BuildUri("tenants/settings",
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                }), DefaultHeaders, token: token);
+                }), DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -52,11 +52,11 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="request">
         /// <see cref="TenantSettingsUpdateRequest" /> containing the settings for the tenant which are to be updated.
         /// </param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="TenantSettings" /> containing the updated settings for the tenant.</returns>
-        public Task<TenantSettings> UpdateAsync(TenantSettingsUpdateRequest request, CancellationToken token = default)
+        public Task<TenantSettings> UpdateAsync(TenantSettingsUpdateRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<TenantSettings>(new HttpMethod("PATCH"), BuildUri("tenants/settings"), request, DefaultHeaders, token: token);
+            return Connection.SendAsync<TenantSettings>(new HttpMethod("PATCH"), BuildUri("tenants/settings"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
     }
 }

@@ -27,22 +27,22 @@ namespace Auth0.ManagementApi.Clients
         /// Creates an email verification ticket.
         /// </summary>
         /// <param name="request">The <see cref="EmailVerificationTicketRequest"/> containing the details of the ticket to create.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The newly created <see cref="Ticket"/>.</returns>
-        public Task<Ticket> CreateEmailVerificationTicketAsync(EmailVerificationTicketRequest request, CancellationToken token = default)
+        public Task<Ticket> CreateEmailVerificationTicketAsync(EmailVerificationTicketRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<Ticket>(HttpMethod.Post, BuildUri("tickets/email-verification"), request, DefaultHeaders, token: token);
+            return Connection.SendAsync<Ticket>(HttpMethod.Post, BuildUri("tickets/email-verification"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
         /// Creates a password change ticket.
         /// </summary>
         /// <param name="request">The <see cref="PasswordChangeTicketRequest"/> containing the details of the ticket to create.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The newly created <see cref="Ticket"/>.</returns>
-        public Task<Ticket> CreatePasswordChangeTicketAsync(PasswordChangeTicketRequest request, CancellationToken token = default)
+        public Task<Ticket> CreatePasswordChangeTicketAsync(PasswordChangeTicketRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<Ticket>(HttpMethod.Post, BuildUri("tickets/password-change"), request, DefaultHeaders, token: token);
+            return Connection.SendAsync<Ticket>(HttpMethod.Post, BuildUri("tickets/password-change"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
     }
 }

@@ -31,22 +31,22 @@ namespace Auth0.ManagementApi.Clients
         /// Creates a new rule according to the request.
         /// </summary>
         /// <param name="request">The <see cref="RuleCreateRequest" /> containing the details of the rule to create.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The newly created <see cref="Rule" />.</returns>
-        public Task<Rule> CreateAsync(RuleCreateRequest request, CancellationToken token = default)
+        public Task<Rule> CreateAsync(RuleCreateRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<Rule>(HttpMethod.Post, BuildUri("rules"), request, DefaultHeaders, token: token);
+            return Connection.SendAsync<Rule>(HttpMethod.Post, BuildUri("rules"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
         /// Deletes a rule.
         /// </summary>
         /// <param name="id">The ID of the rule to delete.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-        public Task DeleteAsync(string id, CancellationToken token = default)
+        public Task DeleteAsync(string id, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"rules/{EncodePath(id)}"), null, DefaultHeaders, token: token);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"rules/{EncodePath(id)}"), null, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -54,9 +54,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="request">Specifies criteria to use when querying rules.</param>
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>An <see cref="IPagedList{Rule}"/> containing the rules requested.</returns>
-        public Task<IPagedList<Rule>> GetAllAsync(GetRulesRequest request, PaginationInfo pagination, CancellationToken token = default)
+        public Task<IPagedList<Rule>> GetAllAsync(GetRulesRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -73,7 +73,7 @@ namespace Auth0.ManagementApi.Clients
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }), DefaultHeaders, rulesConverters, token);
+                }), DefaultHeaders, rulesConverters, cancellationToken);
         }
 
         /// <summary>
@@ -88,16 +88,16 @@ namespace Auth0.ManagementApi.Clients
         /// True if the fields specified are to be included in the result, false otherwise (defaults to
         /// true).
         /// </param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The <see cref="Rule" /> that was requested.</returns>
-        public Task<Rule> GetAsync(string id, string fields = null, bool includeFields = true, CancellationToken token = default)
+        public Task<Rule> GetAsync(string id, string fields = null, bool includeFields = true, CancellationToken cancellationToken = default)
         {
             return Connection.GetAsync<Rule>(BuildUri($"rules/{EncodePath(id)}",
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                }), DefaultHeaders, token: token);
+                }), DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -105,11 +105,11 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="id">The ID of the rule to update.</param>
         /// <param name="request">A <see cref="RuleUpdateRequest" /> containing the information to update.</param>
-        /// <param name="token"></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The newly updated <see cref="Rule"/>.</returns>
-        public Task<Rule> UpdateAsync(string id, RuleUpdateRequest request, CancellationToken token = default)
+        public Task<Rule> UpdateAsync(string id, RuleUpdateRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<Rule>(new HttpMethod("PATCH"), BuildUri($"rules/{EncodePath(id)}"), request, DefaultHeaders, token: token);
+            return Connection.SendAsync<Rule>(new HttpMethod("PATCH"), BuildUri($"rules/{EncodePath(id)}"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
     }
 }
