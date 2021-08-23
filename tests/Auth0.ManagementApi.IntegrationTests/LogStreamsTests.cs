@@ -18,7 +18,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task InitializeAsync()
         {
             string token = await GenerateManagementApiToken();
-            _apiClient = new TestManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+            _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
         }
 
         public Task DisposeAsync()

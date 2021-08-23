@@ -15,7 +15,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task InitializeAsync()
         {
             string token = await GenerateManagementApiToken();
-            _apiClient = new TestManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+            _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
 
             try
             {
@@ -55,7 +55,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var emailTemplateNames = Enum.GetValues(typeof(EmailTemplateName)).Cast<EmailTemplateName>();
 
             string token = await GenerateManagementApiToken();
-            using (var apiClient = new TestManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL")))
+            using (var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL")))
             {
                 // Create each template
                 foreach (var emailTemplateName in emailTemplateNames)

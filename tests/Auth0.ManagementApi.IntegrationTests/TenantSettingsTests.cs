@@ -14,7 +14,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             string token = await GenerateManagementApiToken();
 
-            using (var apiClient = new TestManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL")))
+            using (var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL")))
             {
                 // Get the current settings
                 var settings = apiClient.TenantSettings.GetAsync();
