@@ -14,7 +14,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             string token = await GenerateManagementApiToken();
 
-            using (var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL")))
+            using (var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 })))
             {
                 var dailyStats = await apiClient.Stats.GetDailyStatsAsync(DateTime.Now.AddDays(-100), DateTime.Now);
                 dailyStats.Should().NotBeNull();
