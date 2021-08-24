@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -25,53 +26,59 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Retrieves branding settings for a tenant.
         /// </summary>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Branding"/> containing the branding for the tenant.</returns>
-        public Task<Branding> GetAsync()
+        public Task<Branding> GetAsync(CancellationToken cancellationToken = default)
         {
-            return Connection.GetAsync<Branding>(BuildUri("branding"), DefaultHeaders);
+            return Connection.GetAsync<Branding>(BuildUri("branding"), DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>s
         /// Updates the branding for a tenant.
         /// </summary>
         /// <param name="request">A <see cref="BrandingUpdateRequest" /> containing the branding information to update.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The newly updated <see cref="Branding"/>.</returns>
-        public Task<Branding> UpdateAsync(BrandingUpdateRequest request)
+        public Task<Branding> UpdateAsync(BrandingUpdateRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<Branding>(new HttpMethod("PATCH"), BuildUri("branding"), request, DefaultHeaders);
+            return Connection.SendAsync<Branding>(new HttpMethod("PATCH"), BuildUri("branding"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
         /// Retrieves the template for the New Universal Login Experience.
         /// </summary>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The <see cref="UniversalLoginTemplate"/> for the new universal login experience.</returns>
-        public Task<UniversalLoginTemplate> GetUniversalLoginTemplateAsync()
+        public Task<UniversalLoginTemplate> GetUniversalLoginTemplateAsync(CancellationToken cancellationToken = default)
         {
-            return Connection.GetAsync<UniversalLoginTemplate>(BuildUri("branding/templates/universal-login"), DefaultHeaders);
+            return Connection.GetAsync<UniversalLoginTemplate>(BuildUri("branding/templates/universal-login"), DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
         /// Delete the template for the New Universal Login Experience
         /// </summary>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-        public Task DeleteUniversalLoginTemplateAsync()
+        public Task DeleteUniversalLoginTemplateAsync(CancellationToken cancellationToken = default)
         {
             return Connection
                     .SendAsync<object>(
                             HttpMethod.Delete,
                             BuildUri("branding/templates/universal-login"),
                             null,
-                            DefaultHeaders);
+                            DefaultHeaders,
+                            cancellationToken: cancellationToken);
         }
 
         /// <summary>
         /// Sets the template for the New Universal Login Experience.
         /// </summary>
         /// <param name="request">The <see cref="UniversalLoginTemplateUpdateRequest"/> containing details of the template to set.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The newly updated <see cref="UniversalLoginTemplate"/>.</returns>
-        public Task<UniversalLoginTemplate> SetUniversalLoginTemplateAsync(UniversalLoginTemplateUpdateRequest request)
+        public Task<UniversalLoginTemplate> SetUniversalLoginTemplateAsync(UniversalLoginTemplateUpdateRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<UniversalLoginTemplate>(HttpMethod.Put, BuildUri("branding/templates/universal-login"), request, DefaultHeaders);
+            return Connection.SendAsync<UniversalLoginTemplate>(HttpMethod.Put, BuildUri("branding/templates/universal-login"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi
@@ -25,8 +26,9 @@ namespace Auth0.ManagementApi
         /// <param name="uri"><see cref="Uri"/> to perform the GET request against.</param>
         /// <param name="headers">Dictionary containing additional headers that may override the defaults.</param>
         /// <param name="converters">Optional array of <see cref="JsonConverter"/>s used to deserialize the resulting <typeparamref name="T"/>.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns><see cref="Task"/> representing the async operation containing response body as <typeparamref name="T"/>.</returns>
-        Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers, JsonConverter[] converters = null);
+        Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers, JsonConverter[] converters = null, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Perform a HTTP operation against a given <see cref="Uri"/> and return any materialized response body as <typeparamref name="T"/>.
@@ -39,10 +41,11 @@ namespace Auth0.ManagementApi
         /// otherwise <see cref="StringContent"/> containing the JSON representation of the object is expected.</param>
         /// <param name="headers">Dictionary containing additional headers that may override the defaults.</param>
         /// <param name="files">Optional <see cref="IList{FileUploadParameter>"/> containing file contents to upload as a <see cref="MultipartFormDataContent"/> post.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns><see cref="Task"/> representing the async operation containing response body as <typeparamref name="T"/>.</returns>
         /// <remarks>
         /// <paramref name="files"/> can only be specified if <paramref name="body"/> is a Dictionary%lt;string, object%gt;"/>.
         /// </remarks>
-        Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers, IList<FileUploadParameter> files = null);
+        Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers, IList<FileUploadParameter> files = null, CancellationToken cancellationToken = default);
     }
 }
