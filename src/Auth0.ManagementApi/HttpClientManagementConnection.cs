@@ -56,32 +56,32 @@ namespace Auth0.ManagementApi
         }
 
         /// <inheritdoc />
-        public async Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers, JsonConverter[] converters = null)
+        public async Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers, JsonConverter[] converters = null, CancellationToken cancellationToken = default)
         {
-            return await Retry(async () => await GetAsyncInternal<T>(uri, headers, converters)).ConfigureAwait(false);
+            return await Retry(async () => await GetAsyncInternal<T>(uri, headers, converters, cancellationToken)).ConfigureAwait(false);
         }
 
         /// <inheritdoc />
-        public async Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers, IList<FileUploadParameter> files = null)
+        public async Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers, IList<FileUploadParameter> files = null, CancellationToken cancellationToken = default)
         {
-            return await Retry(async () => await SendAsyncInternal<T>(method, uri, body, headers, files)).ConfigureAwait(false);
+            return await Retry(async () => await SendAsyncInternal<T>(method, uri, body, headers, files, cancellationToken)).ConfigureAwait(false);
         }
 
-        private async Task<T> GetAsyncInternal<T>(Uri uri, IDictionary<string, string> headers, JsonConverter[] converters = null)
+        private async Task<T> GetAsyncInternal<T>(Uri uri, IDictionary<string, string> headers, JsonConverter[] converters = null, CancellationToken cancellationToken = default)
         {
             using (var request = new HttpRequestMessage(HttpMethod.Get, uri))
             {
                 ApplyHeaders(request.Headers, headers);
-                return await SendRequest<T>(request, converters).ConfigureAwait(false);
+                return await SendRequest<T>(request, converters, cancellationToken).ConfigureAwait(false);
             }
         }
 
-        private async Task<T> SendAsyncInternal<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers, IList<FileUploadParameter> files = null)
+        private async Task<T> SendAsyncInternal<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers, IList<FileUploadParameter> files = null, CancellationToken cancellationToken = default)
         {
             using (var request = new HttpRequestMessage(method, uri) { Content = BuildMessageContent(body, files) })
             {
                 ApplyHeaders(request.Headers, headers);
-                return await SendRequest<T>(request).ConfigureAwait(false);
+                return await SendRequest<T>(request, cancellationToken: cancellationToken).ConfigureAwait(false);
             }
         }
 
@@ -106,9 +106,9 @@ namespace Auth0.ManagementApi
             Dispose(true);
         }
 
-        private async Task<T> SendRequest<T>(HttpRequestMessage request, JsonConverter[] converters = null)
+        private async Task<T> SendRequest<T>(HttpRequestMessage request, JsonConverter[] converters = null, CancellationToken cancellationToken = default)
         {
-            var response = await httpClient.SendAsync(request).ConfigureAwait(false);
+            var response = await httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
             {
                 if (!response.IsSuccessStatusCode)
                     throw await ApiException.CreateSpecificExceptionAsync(response).ConfigureAwait(false);

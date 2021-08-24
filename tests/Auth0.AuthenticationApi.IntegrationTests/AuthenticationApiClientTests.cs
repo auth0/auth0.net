@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -35,12 +36,12 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 IsDisposed = true;
             }
 
-            public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null)
+            public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, CancellationToken cancellationToken = default)
             {
                 return Task.FromResult(default(T));
             }
 
-            public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null)
+            public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, CancellationToken cancellationToken = default)
             {
                 return Task.FromResult(default(T));
             }

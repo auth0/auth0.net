@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -55,8 +56,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="request">Specifies criteria to use when querying device credentials.</param>
         /// <param name="pagination">Specifies <see cref="PaginationInfo"/> to use in requesting paged results.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A list of <see cref="DeviceCredential"/> which conforms to the criteria specified.</returns>
-        public Task<IPagedList<DeviceCredential>> GetAllAsync(GetDeviceCredentialsRequest request, PaginationInfo pagination)
+        public Task<IPagedList<DeviceCredential>> GetAllAsync(GetDeviceCredentialsRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -76,7 +78,7 @@ namespace Auth0.ManagementApi.Clients
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
                 };
 
-            return Connection.GetAsync<IPagedList<DeviceCredential>>(BuildUri("device-credentials", queryStrings), DefaultHeaders, converters);
+            return Connection.GetAsync<IPagedList<DeviceCredential>>(BuildUri("device-credentials", queryStrings), DefaultHeaders, converters, cancellationToken);
         }
 
 
@@ -84,20 +86,22 @@ namespace Auth0.ManagementApi.Clients
         /// Creates a new device credential.
         /// </summary>
         /// <param name="request">The request containing the details of the device credential to create.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The newly created <see cref="DeviceCredential"/>.</returns>
-        public Task<DeviceCredential> CreateAsync(DeviceCredentialCreateRequest request)
+        public Task<DeviceCredential> CreateAsync(DeviceCredentialCreateRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<DeviceCredential>(HttpMethod.Post, BuildUri("device-credentials"), request, DefaultHeaders);
+            return Connection.SendAsync<DeviceCredential>(HttpMethod.Post, BuildUri("device-credentials"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
         /// Deletes a device credential.
         /// </summary>
         /// <param name="id">The id of the device credential to delete.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-        public Task DeleteAsync(string id)
+        public Task DeleteAsync(string id, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"device-credentials/{EncodePath(id)}"), null, DefaultHeaders);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"device-credentials/{EncodePath(id)}"), null, DefaultHeaders, cancellationToken: cancellationToken);
         }
     }
 }

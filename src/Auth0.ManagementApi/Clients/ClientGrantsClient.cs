@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -30,20 +31,22 @@ namespace Auth0.ManagementApi.Clients
         /// Creates a new client grant.
         /// </summary>
         /// <param name="request">The <see cref="ClientGrantCreateRequest"/> containing the properties of the Client Grant.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The new <see cref="ClientGrant"/> that has been created.</returns>
-        public Task<ClientGrant> CreateAsync(ClientGrantCreateRequest request)
+        public Task<ClientGrant> CreateAsync(ClientGrantCreateRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<ClientGrant>(HttpMethod.Post, BuildUri("client-grants"), request, DefaultHeaders);
+            return Connection.SendAsync<ClientGrant>(HttpMethod.Post, BuildUri("client-grants"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
         /// Deletes a client grant.
         /// </summary>
         /// <param name="id">The identifier of the Client Grant to delete.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-        public Task DeleteAsync(string id)
+        public Task DeleteAsync(string id, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"client-grants/{EncodePath(id)}"), null, DefaultHeaders); 
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"client-grants/{EncodePath(id)}"), null, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -51,8 +54,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="request">Specifies criteria to use when querying client grants.</param>
         /// <param name="pagination">Specifies <see cref="PaginationInfo"/> to use in requesting paged results.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="IPagedList{ClientGrant}"/> containing the client grants requested.</returns>
-        public Task<IPagedList<ClientGrant>> GetAllAsync(GetClientGrantsRequest request, PaginationInfo pagination)
+        public Task<IPagedList<ClientGrant>> GetAllAsync(GetClientGrantsRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -67,7 +71,7 @@ namespace Auth0.ManagementApi.Clients
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }), DefaultHeaders, converters);
+                }), DefaultHeaders, converters, cancellationToken);
         }
 
         /// <summary>
@@ -75,10 +79,11 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="id">The identifier of the client grant to update.</param>
         /// <param name="request">The <see cref="ClientGrantUpdateRequest"/> containing the properties to update.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The <see cref="ClientGrant"/> that has been updated.</returns>
-        public Task<ClientGrant> UpdateAsync(string id, ClientGrantUpdateRequest request)
+        public Task<ClientGrant> UpdateAsync(string id, ClientGrantUpdateRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<ClientGrant>(new HttpMethod("PATCH"), BuildUri($"client-grants/{EncodePath(id)}"), request, DefaultHeaders);
+            return Connection.SendAsync<ClientGrant>(new HttpMethod("PATCH"), BuildUri($"client-grants/{EncodePath(id)}"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
     }
 }

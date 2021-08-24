@@ -3,6 +3,7 @@ using Auth0.ManagementApi.Paging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -30,8 +31,9 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="request">Specifies criteria to use when querying logs.</param>
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>An <see cref="IPagedList{LogEntry}"/> containing the list of log entries.</returns>
-        public Task<IPagedList<LogEntry>> GetAllAsync(GetLogsRequest request, PaginationInfo pagination)
+        public Task<IPagedList<LogEntry>> GetAllAsync(GetLogsRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -50,17 +52,18 @@ namespace Auth0.ManagementApi.Clients
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }), DefaultHeaders, converters);
+                }), DefaultHeaders, converters, cancellationToken);
         }
 
         /// <summary>
         /// Retrieves the data related to the log entry identified by id. This returns a single log entry representation as specified in the schema.
         /// </summary>
         /// <param name="id">The identifier of the log entry to retrieve.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="LogEntry"/> instance containing the information about the log entry.</returns>
-        public Task<LogEntry> GetAsync(string id)
+        public Task<LogEntry> GetAsync(string id, CancellationToken cancellationToken = default)
         {
-            return Connection.GetAsync<LogEntry>(BuildUri($"logs/{EncodePath(id)}"), DefaultHeaders);
+            return Connection.GetAsync<LogEntry>(BuildUri($"logs/{EncodePath(id)}"), DefaultHeaders, cancellationToken: cancellationToken);
         }
     }
 }
