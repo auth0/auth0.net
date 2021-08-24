@@ -123,7 +123,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             job.CreatedAt.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromMinutes(5));
         }
 
-        [Fact]
+        [Fact(Skip = "Run Manually")]
         public async Task Can_import_users()
         {
             // Send a user import request
@@ -140,7 +140,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Run Manually")]
         public async Task Can_export_users()
         {
             var request = new UsersExportsJobRequest
