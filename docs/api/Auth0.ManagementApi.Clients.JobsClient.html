@@ -171,13 +171,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_JobsClient_ExportUsersAsync_" data-uid="Auth0.ManagementApi.Clients.JobsClient.ExportUsersAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_JobsClient_ExportUsersAsync_Auth0_ManagementApi_Models_UsersExportsJobRequest_" data-uid="Auth0.ManagementApi.Clients.JobsClient.ExportUsersAsync(Auth0.ManagementApi.Models.UsersExportsJobRequest)">ExportUsersAsync(UsersExportsJobRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_JobsClient_ExportUsersAsync_Auth0_ManagementApi_Models_UsersExportsJobRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.JobsClient.ExportUsersAsync(Auth0.ManagementApi.Models.UsersExportsJobRequest,System.Threading.CancellationToken)">ExportUsersAsync(UsersExportsJobRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Exports users from a connection to a file using a long running job. </p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;Job&gt; ExportUsersAsync(UsersExportsJobRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;Job&gt; ExportUsersAsync(UsersExportsJobRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -195,6 +195,12 @@
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.UsersExportsJobRequest.html">UsersExportsJobRequest</a> containing the information for the job to export users.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -213,17 +219,17 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_Clients_JobsClient_ExportUsersAsync_Auth0_ManagementApi_Models_UsersExportsJobRequest__remarks">Remarks</h5>
+  <h5 id="Auth0_ManagementApi_Clients_JobsClient_ExportUsersAsync_Auth0_ManagementApi_Models_UsersExportsJobRequest_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>The documentation for user exports can be found <a href="https://auth0.com/docs/users/bulk-user-exports">here</a>.</p>
 </div>
   <a id="Auth0_ManagementApi_Clients_JobsClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.JobsClient.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_JobsClient_GetAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.JobsClient.GetAsync(System.String)">GetAsync(String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_JobsClient_GetAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.JobsClient.GetAsync(System.String,System.Threading.CancellationToken)">GetAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Gets a job.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;Job&gt; GetAsync(string id)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;Job&gt; GetAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -241,6 +247,12 @@
         <td><p>The ID of the job to retrieve.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -259,17 +271,17 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_Clients_JobsClient_GetAsync_System_String__remarks">Remarks</h5>
+  <h5 id="Auth0_ManagementApi_Clients_JobsClient_GetAsync_System_String_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This is useful to check the status of a job.</p>
 </div>
   <a id="Auth0_ManagementApi_Clients_JobsClient_ImportUsersAsync_" data-uid="Auth0.ManagementApi.Clients.JobsClient.ImportUsersAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_JobsClient_ImportUsersAsync_System_String_System_String_System_IO_Stream_System_Nullable_System_Boolean__System_String_System_Nullable_System_Boolean__" data-uid="Auth0.ManagementApi.Clients.JobsClient.ImportUsersAsync(System.String,System.String,System.IO.Stream,System.Nullable{System.Boolean},System.String,System.Nullable{System.Boolean})">ImportUsersAsync(String, String, Stream, Nullable&lt;Boolean&gt;, String, Nullable&lt;Boolean&gt;)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_JobsClient_ImportUsersAsync_System_String_System_String_System_IO_Stream_System_Nullable_System_Boolean__System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.JobsClient.ImportUsersAsync(System.String,System.String,System.IO.Stream,System.Nullable{System.Boolean},System.String,System.Nullable{System.Boolean},System.Threading.CancellationToken)">ImportUsersAsync(String, String, Stream, Nullable&lt;Boolean&gt;, String, Nullable&lt;Boolean&gt;, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Imports users to a connection from a file using a long running job. </p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;Job&gt; ImportUsersAsync(string connectionId, string fileName, Stream file, bool? upsert = default(bool? ), string externalId = null, bool? sendCompletionEmail = default(bool? ))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;Job&gt; ImportUsersAsync(string connectionId, string fileName, Stream file, bool? upsert = default(bool? ), string externalId = null, bool? sendCompletionEmail = default(bool? ), CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -317,6 +329,12 @@
         <td><p>Whether to send the user an email on import completion (true) or not (false).</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -335,17 +353,17 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_Clients_JobsClient_ImportUsersAsync_System_String_System_String_System_IO_Stream_System_Nullable_System_Boolean__System_String_System_Nullable_System_Boolean___remarks">Remarks</h5>
+  <h5 id="Auth0_ManagementApi_Clients_JobsClient_ImportUsersAsync_System_String_System_String_System_IO_Stream_System_Nullable_System_Boolean__System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>The documentation for the file format is <a href="https://auth0.com/docs/bulk-import">here</a>.</p>
 </div>
   <a id="Auth0_ManagementApi_Clients_JobsClient_SendVerificationEmailAsync_" data-uid="Auth0.ManagementApi.Clients.JobsClient.SendVerificationEmailAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_JobsClient_SendVerificationEmailAsync_Auth0_ManagementApi_Models_VerifyEmailJobRequest_" data-uid="Auth0.ManagementApi.Clients.JobsClient.SendVerificationEmailAsync(Auth0.ManagementApi.Models.VerifyEmailJobRequest)">SendVerificationEmailAsync(VerifyEmailJobRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_JobsClient_SendVerificationEmailAsync_Auth0_ManagementApi_Models_VerifyEmailJobRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.JobsClient.SendVerificationEmailAsync(Auth0.ManagementApi.Models.VerifyEmailJobRequest,System.Threading.CancellationToken)">SendVerificationEmailAsync(VerifyEmailJobRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Send an email to the specified user that asks them to click a link to verify their email address.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;Job&gt; SendVerificationEmailAsync(VerifyEmailJobRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;Job&gt; SendVerificationEmailAsync(VerifyEmailJobRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -361,6 +379,12 @@
         <td><a class="xref" href="Auth0.ManagementApi.Models.VerifyEmailJobRequest.html">VerifyEmailJobRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.VerifyEmailJobRequest.html">VerifyEmailJobRequest</a> containing the information of the user whose email you want verified.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>

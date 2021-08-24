@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class CustomDomainVerification
+    <title>Class CustomDomainVerificationMethod
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class CustomDomainVerification
+    <meta name="title" content="Class CustomDomainVerificationMethod
    ">
     <meta name="generator" content="docfx 2.56.4.0">
     
@@ -68,18 +68,18 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Models.CustomDomainVerification">
+            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Models.CustomDomainVerificationMethod">
   
   
-  <h1 id="Auth0_ManagementApi_Models_CustomDomainVerification" data-uid="Auth0.ManagementApi.Models.CustomDomainVerification" class="text-break">Class CustomDomainVerification
+  <h1 id="Auth0_ManagementApi_Models_CustomDomainVerificationMethod" data-uid="Auth0.ManagementApi.Models.CustomDomainVerificationMethod" class="text-break">Class CustomDomainVerificationMethod
   </h1>
-  <div class="markdown level0 summary"><p>The custom domain verification methods.</p>
+  <div class="markdown level0 summary"><p>The custom domain verification method.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">CustomDomainVerification</span></div>
+    <div class="level1"><span class="xref">CustomDomainVerificationMethod</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -107,21 +107,21 @@
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Models.html">Auth0.ManagementApi.Models</a></h6>
   <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
-  <h5 id="Auth0_ManagementApi_Models_CustomDomainVerification_syntax">Syntax</h5>
+  <h5 id="Auth0_ManagementApi_Models_CustomDomainVerificationMethod_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class CustomDomainVerification</code></pre>
+    <pre><code class="lang-csharp hljs">public class CustomDomainVerificationMethod</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
-  <a id="Auth0_ManagementApi_Models_CustomDomainVerification_Methods_" data-uid="Auth0.ManagementApi.Models.CustomDomainVerification.Methods*"></a>
-  <h4 id="Auth0_ManagementApi_Models_CustomDomainVerification_Methods" data-uid="Auth0.ManagementApi.Models.CustomDomainVerification.Methods">Methods</h4>
-  <div class="markdown level1 summary"><p>The custom domain verification methods.</p>
+  <a id="Auth0_ManagementApi_Models_CustomDomainVerificationMethod_Domain_" data-uid="Auth0.ManagementApi.Models.CustomDomainVerificationMethod.Domain*"></a>
+  <h4 id="Auth0_ManagementApi_Models_CustomDomainVerificationMethod_Domain" data-uid="Auth0.ManagementApi.Models.CustomDomainVerificationMethod.Domain">Domain</h4>
+  <div class="markdown level1 summary"><p>The name of the txt record for verification.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;methods&quot;)]
-public CustomDomainVerificationMethod[] Methods { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;domain&quot;)]
+public string Domain { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -133,7 +133,57 @@ public CustomDomainVerificationMethod[] Methods { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainVerificationMethod.html">CustomDomainVerificationMethod</a>[]</td>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Models_CustomDomainVerificationMethod_Name_" data-uid="Auth0.ManagementApi.Models.CustomDomainVerificationMethod.Name*"></a>
+  <h4 id="Auth0_ManagementApi_Models_CustomDomainVerificationMethod_Name" data-uid="Auth0.ManagementApi.Models.CustomDomainVerificationMethod.Name">Name</h4>
+  <div class="markdown level1 summary"><p>Domain verification method. (&quot;cname&quot; or &quot;txt&quot;)</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;name&quot;)]
+public string Name { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Models_CustomDomainVerificationMethod_Record_" data-uid="Auth0.ManagementApi.Models.CustomDomainVerificationMethod.Record*"></a>
+  <h4 id="Auth0_ManagementApi_Models_CustomDomainVerificationMethod_Record" data-uid="Auth0.ManagementApi.Models.CustomDomainVerificationMethod.Record">Record</h4>
+  <div class="markdown level1 summary"><p>Value used to verify the domain.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;record&quot;)]
+public string Record { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
         <td></td>
       </tr>
     </tbody>

@@ -171,14 +171,32 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_StatsClient_GetActiveUsersAsync_" data-uid="Auth0.ManagementApi.Clients.StatsClient.GetActiveUsersAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_StatsClient_GetActiveUsersAsync" data-uid="Auth0.ManagementApi.Clients.StatsClient.GetActiveUsersAsync">GetActiveUsersAsync()</h4>
+  <h4 id="Auth0_ManagementApi_Clients_StatsClient_GetActiveUsersAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.StatsClient.GetActiveUsersAsync(System.Threading.CancellationToken)">GetActiveUsersAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Gets the active users count (logged in during the last 30 days).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;long&gt; GetActiveUsersAsync()</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;long&gt; GetActiveUsersAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -196,13 +214,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_StatsClient_GetDailyStatsAsync_" data-uid="Auth0.ManagementApi.Clients.StatsClient.GetDailyStatsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_StatsClient_GetDailyStatsAsync_System_DateTime_System_DateTime_" data-uid="Auth0.ManagementApi.Clients.StatsClient.GetDailyStatsAsync(System.DateTime,System.DateTime)">GetDailyStatsAsync(DateTime, DateTime)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_StatsClient_GetDailyStatsAsync_System_DateTime_System_DateTime_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.StatsClient.GetDailyStatsAsync(System.DateTime,System.DateTime,System.Threading.CancellationToken)">GetDailyStatsAsync(DateTime, DateTime, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Gets the daily stats for a particular period.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;DailyStatistics&gt;&gt; GetDailyStatsAsync(DateTime from, DateTime to)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;DailyStatistics&gt;&gt; GetDailyStatsAsync(DateTime from, DateTime to, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -224,6 +242,12 @@
         <td><span class="xref">System.DateTime</span></td>
         <td><span class="parametername">to</span></td>
         <td><p>The last day of the period (inclusive).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>

@@ -171,13 +171,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_HooksClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.HooksClient.CreateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_HooksClient_CreateAsync_Auth0_ManagementApi_Models_HookCreateRequest_" data-uid="Auth0.ManagementApi.Clients.HooksClient.CreateAsync(Auth0.ManagementApi.Models.HookCreateRequest)">CreateAsync(HookCreateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_HooksClient_CreateAsync_Auth0_ManagementApi_Models_HookCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.HooksClient.CreateAsync(Auth0.ManagementApi.Models.HookCreateRequest,System.Threading.CancellationToken)">CreateAsync(HookCreateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Creates a new hook according to the request.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;Hook&gt; CreateAsync(HookCreateRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;Hook&gt; CreateAsync(HookCreateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -193,6 +193,12 @@
         <td><a class="xref" href="Auth0.ManagementApi.Models.HookCreateRequest.html">HookCreateRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.HookCreateRequest.html">HookCreateRequest</a> containing the details of the hook to create.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -214,13 +220,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_HooksClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.HooksClient.DeleteAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_HooksClient_DeleteAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.HooksClient.DeleteAsync(System.String)">DeleteAsync(String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_HooksClient_DeleteAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.HooksClient.DeleteAsync(System.String,System.Threading.CancellationToken)">DeleteAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Deletes a hook.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task DeleteAsync(string id)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task DeleteAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -236,6 +242,12 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The ID of the hook to delete.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -257,13 +269,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_HooksClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.HooksClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_HooksClient_GetAllAsync_Auth0_ManagementApi_Models_GetHooksRequest_Auth0_ManagementApi_Paging_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.HooksClient.GetAllAsync(Auth0.ManagementApi.Models.GetHooksRequest,Auth0.ManagementApi.Paging.PaginationInfo)">GetAllAsync(GetHooksRequest, PaginationInfo)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_HooksClient_GetAllAsync_Auth0_ManagementApi_Models_GetHooksRequest_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.HooksClient.GetAllAsync(Auth0.ManagementApi.Models.GetHooksRequest,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetAllAsync(GetHooksRequest, PaginationInfo, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves a list of all hooks.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;Hook&gt;&gt; GetAllAsync(GetHooksRequest request, PaginationInfo pagination)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;Hook&gt;&gt; GetAllAsync(GetHooksRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -287,6 +299,12 @@
         <td><p>Specifies pagination info to use when requesting paged results.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -306,13 +324,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_HooksClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.HooksClient.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_HooksClient_GetAsync_System_String_System_String_" data-uid="Auth0.ManagementApi.Clients.HooksClient.GetAsync(System.String,System.String)">GetAsync(String, String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_HooksClient_GetAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.HooksClient.GetAsync(System.String,System.String,System.Threading.CancellationToken)">GetAsync(String, String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves a hook by its ID.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;Hook&gt; GetAsync(string id, string fields = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;Hook&gt; GetAsync(string id, string fields = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -336,6 +354,12 @@
         <td><p>A comma separated list of fields to include, empty to retrieve all fields.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -355,13 +379,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_HooksClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.HooksClient.UpdateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_HooksClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_HookUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.HooksClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.HookUpdateRequest)">UpdateAsync(String, HookUpdateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_HooksClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_HookUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.HooksClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.HookUpdateRequest,System.Threading.CancellationToken)">UpdateAsync(String, HookUpdateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Updates a hook.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;Hook&gt; UpdateAsync(string id, HookUpdateRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;Hook&gt; UpdateAsync(string id, HookUpdateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -383,6 +407,12 @@
         <td><a class="xref" href="Auth0.ManagementApi.Models.HookUpdateRequest.html">HookUpdateRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.HookUpdateRequest.html">HookUpdateRequest</a> containing the information to update.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>

@@ -171,13 +171,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_BlacklistedTokensClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.BlacklistedTokensClient.CreateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_BlacklistedTokensClient_CreateAsync_Auth0_ManagementApi_Models_BlacklistedTokenCreateRequest_" data-uid="Auth0.ManagementApi.Clients.BlacklistedTokensClient.CreateAsync(Auth0.ManagementApi.Models.BlacklistedTokenCreateRequest)">CreateAsync(BlacklistedTokenCreateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_BlacklistedTokensClient_CreateAsync_Auth0_ManagementApi_Models_BlacklistedTokenCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.BlacklistedTokensClient.CreateAsync(Auth0.ManagementApi.Models.BlacklistedTokenCreateRequest,System.Threading.CancellationToken)">CreateAsync(BlacklistedTokenCreateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Blacklists a JWT token.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task CreateAsync(BlacklistedTokenCreateRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task CreateAsync(BlacklistedTokenCreateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -193,6 +193,12 @@
         <td><a class="xref" href="Auth0.ManagementApi.Models.BlacklistedTokenCreateRequest.html">BlacklistedTokenCreateRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.BlacklistedTokenCreateRequest.html">BlacklistedTokenCreateRequest</a> containing the information of the token to blacklist.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -214,13 +220,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_BlacklistedTokensClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.BlacklistedTokensClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_BlacklistedTokensClient_GetAllAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.BlacklistedTokensClient.GetAllAsync(System.String)">GetAllAsync(String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_BlacklistedTokensClient_GetAllAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.BlacklistedTokensClient.GetAllAsync(System.String,System.Threading.CancellationToken)">GetAllAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Gets all the blacklisted claims.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;BlacklistedToken&gt;&gt; GetAllAsync(string aud)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;BlacklistedToken&gt;&gt; GetAllAsync(string aud, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -236,6 +242,12 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">aud</span></td>
         <td><p>The JWT&apos;s aud claim. The client_id of the client for which it was issued.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>

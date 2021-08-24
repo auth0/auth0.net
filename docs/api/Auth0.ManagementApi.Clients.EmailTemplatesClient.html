@@ -171,13 +171,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_EmailTemplatesClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.CreateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_EmailTemplatesClient_CreateAsync_Auth0_ManagementApi_Models_EmailTemplateCreateRequest_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.CreateAsync(Auth0.ManagementApi.Models.EmailTemplateCreateRequest)">CreateAsync(EmailTemplateCreateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_EmailTemplatesClient_CreateAsync_Auth0_ManagementApi_Models_EmailTemplateCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.CreateAsync(Auth0.ManagementApi.Models.EmailTemplateCreateRequest,System.Threading.CancellationToken)">CreateAsync(EmailTemplateCreateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Creates a new email template.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;EmailTemplate&gt; CreateAsync(EmailTemplateCreateRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;EmailTemplate&gt; CreateAsync(EmailTemplateCreateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -193,6 +193,12 @@
         <td><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateCreateRequest.html">EmailTemplateCreateRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateCreateRequest.html">EmailTemplateCreateRequest</a> containing details of the template to create.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -214,13 +220,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_EmailTemplatesClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_EmailTemplatesClient_GetAsync_Auth0_ManagementApi_Models_EmailTemplateName_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.GetAsync(Auth0.ManagementApi.Models.EmailTemplateName)">GetAsync(EmailTemplateName)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_EmailTemplatesClient_GetAsync_Auth0_ManagementApi_Models_EmailTemplateName_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.GetAsync(Auth0.ManagementApi.Models.EmailTemplateName,System.Threading.CancellationToken)">GetAsync(EmailTemplateName, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Gets an email template.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;EmailTemplate&gt; GetAsync(EmailTemplateName templateName)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;EmailTemplate&gt; GetAsync(EmailTemplateName templateName, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -236,6 +242,12 @@
         <td><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateName.html">EmailTemplateName</a></td>
         <td><span class="parametername">templateName</span></td>
         <td><p>The name of email template you wish to retrieve.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -257,13 +269,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_EmailTemplatesClient_PatchAsync_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.PatchAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_EmailTemplatesClient_PatchAsync_Auth0_ManagementApi_Models_EmailTemplateName_Auth0_ManagementApi_Models_EmailTemplatePatchRequest_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.PatchAsync(Auth0.ManagementApi.Models.EmailTemplateName,Auth0.ManagementApi.Models.EmailTemplatePatchRequest)">PatchAsync(EmailTemplateName, EmailTemplatePatchRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_EmailTemplatesClient_PatchAsync_Auth0_ManagementApi_Models_EmailTemplateName_Auth0_ManagementApi_Models_EmailTemplatePatchRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.PatchAsync(Auth0.ManagementApi.Models.EmailTemplateName,Auth0.ManagementApi.Models.EmailTemplatePatchRequest,System.Threading.CancellationToken)">PatchAsync(EmailTemplateName, EmailTemplatePatchRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Updates an email template.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;EmailTemplate&gt; PatchAsync(EmailTemplateName templateName, EmailTemplatePatchRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;EmailTemplate&gt; PatchAsync(EmailTemplateName templateName, EmailTemplatePatchRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -287,6 +299,12 @@
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplatePatchRequest.html">EmailTemplatePatchRequest</a> containing details of the template to patch.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -306,13 +324,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_EmailTemplatesClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.UpdateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_EmailTemplatesClient_UpdateAsync_Auth0_ManagementApi_Models_EmailTemplateName_Auth0_ManagementApi_Models_EmailTemplateUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.UpdateAsync(Auth0.ManagementApi.Models.EmailTemplateName,Auth0.ManagementApi.Models.EmailTemplateUpdateRequest)">UpdateAsync(EmailTemplateName, EmailTemplateUpdateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_EmailTemplatesClient_UpdateAsync_Auth0_ManagementApi_Models_EmailTemplateName_Auth0_ManagementApi_Models_EmailTemplateUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.EmailTemplatesClient.UpdateAsync(Auth0.ManagementApi.Models.EmailTemplateName,Auth0.ManagementApi.Models.EmailTemplateUpdateRequest,System.Threading.CancellationToken)">UpdateAsync(EmailTemplateName, EmailTemplateUpdateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Updates an email template.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;EmailTemplate&gt; UpdateAsync(EmailTemplateName templateName, EmailTemplateUpdateRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;EmailTemplate&gt; UpdateAsync(EmailTemplateName templateName, EmailTemplateUpdateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -334,6 +352,12 @@
         <td><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateUpdateRequest.html">EmailTemplateUpdateRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateUpdateRequest.html">EmailTemplateUpdateRequest</a> containing details of the template to update.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>

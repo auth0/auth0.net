@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class CustomDomainVerification
+    <title>Interface ICheckpointPagedList&lt;T&gt;
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class CustomDomainVerification
+    <meta name="title" content="Interface ICheckpointPagedList&lt;T&gt;
    ">
     <meta name="generator" content="docfx 2.56.4.0">
     
@@ -68,60 +68,87 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Models.CustomDomainVerification">
+            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Paging.ICheckpointPagedList`1">
   
   
-  <h1 id="Auth0_ManagementApi_Models_CustomDomainVerification" data-uid="Auth0.ManagementApi.Models.CustomDomainVerification" class="text-break">Class CustomDomainVerification
+  <h1 id="Auth0_ManagementApi_Paging_ICheckpointPagedList_1" data-uid="Auth0.ManagementApi.Paging.ICheckpointPagedList`1" class="text-break">Interface ICheckpointPagedList&lt;T&gt;
   </h1>
-  <div class="markdown level0 summary"><p>The custom domain verification methods.</p>
+  <div class="markdown level0 summary"><p>Interface for a list that contains items of <code data-dev-comment-type="typeparamref" class="typeparamref">T</code> as well as metadata
+about which page of items this is and how many exist.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">CustomDomainVerification</span></div>
-  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
+      <span class="xref">System.Collections.Generic.IList&lt;T&gt;.IndexOf(T)</span>
     </div>
     <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+      <span class="xref">System.Collections.Generic.IList&lt;T&gt;.Insert(System.Int32, T)</span>
     </div>
     <div>
-      <span class="xref">System.Object.GetHashCode()</span>
+      <span class="xref">System.Collections.Generic.IList&lt;T&gt;.RemoveAt(System.Int32)</span>
     </div>
     <div>
-      <span class="xref">System.Object.GetType()</span>
+      <span class="xref">System.Collections.Generic.IList&lt;T&gt;.Item[System.Int32]</span>
     </div>
     <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
+      <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;.Add(T)</span>
     </div>
     <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+      <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;.Clear()</span>
     </div>
     <div>
-      <span class="xref">System.Object.ToString()</span>
+      <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;.Contains(T)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;.CopyTo(T[], System.Int32)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;.Remove(T)</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;.Count</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.ICollection&lt;T&gt;.IsReadOnly</span>
+    </div>
+    <div>
+      <span class="xref">System.Collections.Generic.IEnumerable&lt;T&gt;.GetEnumerator()</span>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Models.html">Auth0.ManagementApi.Models</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Paging.html">Auth0.ManagementApi.Paging</a></h6>
   <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
-  <h5 id="Auth0_ManagementApi_Models_CustomDomainVerification_syntax">Syntax</h5>
+  <h5 id="Auth0_ManagementApi_Paging_ICheckpointPagedList_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class CustomDomainVerification</code></pre>
+    <pre><code class="lang-csharp hljs">public interface ICheckpointPagedList&lt;T&gt; : IList&lt;T&gt;, ICollection&lt;T&gt;, IEnumerable&lt;T&gt;, IEnumerable</code></pre>
   </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>Type of item to list.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="properties">Properties
   </h3>
-  <a id="Auth0_ManagementApi_Models_CustomDomainVerification_Methods_" data-uid="Auth0.ManagementApi.Models.CustomDomainVerification.Methods*"></a>
-  <h4 id="Auth0_ManagementApi_Models_CustomDomainVerification_Methods" data-uid="Auth0.ManagementApi.Models.CustomDomainVerification.Methods">Methods</h4>
-  <div class="markdown level1 summary"><p>The custom domain verification methods.</p>
+  <a id="Auth0_ManagementApi_Paging_ICheckpointPagedList_1_Paging_" data-uid="Auth0.ManagementApi.Paging.ICheckpointPagedList`1.Paging*"></a>
+  <h4 id="Auth0_ManagementApi_Paging_ICheckpointPagedList_1_Paging" data-uid="Auth0.ManagementApi.Paging.ICheckpointPagedList`1.Paging">Paging</h4>
+  <div class="markdown level1 summary"><p>Information about how many items exist, which page this is
+etc.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;methods&quot;)]
-public CustomDomainVerificationMethod[] Methods { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">CheckpointPagingInformation Paging { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -133,7 +160,7 @@ public CustomDomainVerificationMethod[] Methods { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainVerificationMethod.html">CustomDomainVerificationMethod</a>[]</td>
+        <td><a class="xref" href="Auth0.ManagementApi.Paging.CheckpointPagingInformation.html">CheckpointPagingInformation</a></td>
         <td></td>
       </tr>
     </tbody>
