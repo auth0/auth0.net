@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class CustomDomainVerification
+    <title>Class CheckpointPagingInformation
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class CustomDomainVerification
+    <meta name="title" content="Class CheckpointPagingInformation
    ">
     <meta name="generator" content="docfx 2.56.4.0">
     
@@ -68,18 +68,19 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Models.CustomDomainVerification">
+            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Paging.CheckpointPagingInformation">
   
   
-  <h1 id="Auth0_ManagementApi_Models_CustomDomainVerification" data-uid="Auth0.ManagementApi.Models.CustomDomainVerification" class="text-break">Class CustomDomainVerification
+  <h1 id="Auth0_ManagementApi_Paging_CheckpointPagingInformation" data-uid="Auth0.ManagementApi.Paging.CheckpointPagingInformation" class="text-break">Class CheckpointPagingInformation
   </h1>
-  <div class="markdown level0 summary"><p>The custom domain verification methods.</p>
+  <div class="markdown level0 summary"><p>Contains paging information that details what page a list of items
+relates to, how many more there are etc.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">CustomDomainVerification</span></div>
+    <div class="level1"><span class="xref">CheckpointPagingInformation</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -105,23 +106,53 @@
       <span class="xref">System.Object.ToString()</span>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Models.html">Auth0.ManagementApi.Models</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Paging.html">Auth0.ManagementApi.Paging</a></h6>
   <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
-  <h5 id="Auth0_ManagementApi_Models_CustomDomainVerification_syntax">Syntax</h5>
+  <h5 id="Auth0_ManagementApi_Paging_CheckpointPagingInformation_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class CustomDomainVerification</code></pre>
+    <pre><code class="lang-csharp hljs">public class CheckpointPagingInformation</code></pre>
   </div>
-  <h3 id="properties">Properties
+  <h3 id="constructors">Constructors
   </h3>
-  <a id="Auth0_ManagementApi_Models_CustomDomainVerification_Methods_" data-uid="Auth0.ManagementApi.Models.CustomDomainVerification.Methods*"></a>
-  <h4 id="Auth0_ManagementApi_Models_CustomDomainVerification_Methods" data-uid="Auth0.ManagementApi.Models.CustomDomainVerification.Methods">Methods</h4>
-  <div class="markdown level1 summary"><p>The custom domain verification methods.</p>
+  <a id="Auth0_ManagementApi_Paging_CheckpointPagingInformation__ctor_" data-uid="Auth0.ManagementApi.Paging.CheckpointPagingInformation.#ctor*"></a>
+  <h4 id="Auth0_ManagementApi_Paging_CheckpointPagingInformation__ctor_System_String_" data-uid="Auth0.ManagementApi.Paging.CheckpointPagingInformation.#ctor(System.String)">CheckpointPagingInformation(String)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.Paging.CheckpointPagingInformation.html">CheckpointPagingInformation</a> class
+with the desired arguments.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;methods&quot;)]
-public CustomDomainVerificationMethod[] Methods { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public CheckpointPagingInformation(string next = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">next</span></td>
+        <td><p>When using checkpoint pagination, the Id one should use for supplemental requests to receive more results.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="Auth0_ManagementApi_Paging_CheckpointPagingInformation_Next_" data-uid="Auth0.ManagementApi.Paging.CheckpointPagingInformation.Next*"></a>
+  <h4 id="Auth0_ManagementApi_Paging_CheckpointPagingInformation_Next" data-uid="Auth0.ManagementApi.Paging.CheckpointPagingInformation.Next">Next</h4>
+  <div class="markdown level1 summary"><p>When using checkpoint pagination, the Id to use for supplemental paged requests.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[JsonProperty(&quot;next&quot;)]
+public string Next { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -133,7 +164,7 @@ public CustomDomainVerificationMethod[] Methods { get; set; }</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainVerificationMethod.html">CustomDomainVerificationMethod</a>[]</td>
+        <td><span class="xref">System.String</span></td>
         <td></td>
       </tr>
     </tbody>

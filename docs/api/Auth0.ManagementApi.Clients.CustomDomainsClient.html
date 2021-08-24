@@ -171,13 +171,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_CustomDomainsClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.CustomDomainsClient.CreateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_CustomDomainsClient_CreateAsync_Auth0_ManagementApi_Models_CustomDomainCreateRequest_" data-uid="Auth0.ManagementApi.Clients.CustomDomainsClient.CreateAsync(Auth0.ManagementApi.Models.CustomDomainCreateRequest)">CreateAsync(CustomDomainCreateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_CustomDomainsClient_CreateAsync_Auth0_ManagementApi_Models_CustomDomainCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.CustomDomainsClient.CreateAsync(Auth0.ManagementApi.Models.CustomDomainCreateRequest,System.Threading.CancellationToken)">CreateAsync(CustomDomainCreateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Creates a new custom domain and returns it.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;CustomDomain&gt; CreateAsync(CustomDomainCreateRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;CustomDomain&gt; CreateAsync(CustomDomainCreateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -193,6 +193,12 @@
         <td><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainCreateRequest.html">CustomDomainCreateRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.CustomDomainCreateRequest.html">CustomDomainCreateRequest</a> representing the new domain.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -213,17 +219,17 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_Clients_CustomDomainsClient_CreateAsync_Auth0_ManagementApi_Models_CustomDomainCreateRequest__remarks">Remarks</h5>
+  <h5 id="Auth0_ManagementApi_Clients_CustomDomainsClient_CreateAsync_Auth0_ManagementApi_Models_CustomDomainCreateRequest_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>The custom domain will need to be verified before it starts accepting requests.</p>
 </div>
   <a id="Auth0_ManagementApi_Clients_CustomDomainsClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.CustomDomainsClient.DeleteAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_CustomDomainsClient_DeleteAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.CustomDomainsClient.DeleteAsync(System.String)">DeleteAsync(String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_CustomDomainsClient_DeleteAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.CustomDomainsClient.DeleteAsync(System.String,System.Threading.CancellationToken)">DeleteAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Deletes a custom domain by its ID.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task DeleteAsync(string id)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task DeleteAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -239,6 +245,12 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The ID of the domain to delete.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -259,18 +271,35 @@
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_Clients_CustomDomainsClient_DeleteAsync_System_String__remarks">Remarks</h5>
+  <h5 id="Auth0_ManagementApi_Clients_CustomDomainsClient_DeleteAsync_System_String_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>When deleted, Auth0 will stop serving requests for this domain.</p>
 </div>
   <a id="Auth0_ManagementApi_Clients_CustomDomainsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.CustomDomainsClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_CustomDomainsClient_GetAllAsync" data-uid="Auth0.ManagementApi.Clients.CustomDomainsClient.GetAllAsync">GetAllAsync()</h4>
+  <h4 id="Auth0_ManagementApi_Clients_CustomDomainsClient_GetAllAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.CustomDomainsClient.GetAllAsync(System.Threading.CancellationToken)">GetAllAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves the status of every custom domain.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;CustomDomain&gt;&gt; GetAllAsync()</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;CustomDomain&gt;&gt; GetAllAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -288,13 +317,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_CustomDomainsClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.CustomDomainsClient.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_CustomDomainsClient_GetAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.CustomDomainsClient.GetAsync(System.String)">GetAsync(String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_CustomDomainsClient_GetAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.CustomDomainsClient.GetAsync(System.String,System.Threading.CancellationToken)">GetAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves a custom domain status by its ID</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;CustomDomain&gt; GetAsync(string id)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;CustomDomain&gt; GetAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -310,6 +339,12 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The ID of the domain to retrieve.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -331,13 +366,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_CustomDomainsClient_VerifyAsync_" data-uid="Auth0.ManagementApi.Clients.CustomDomainsClient.VerifyAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_CustomDomainsClient_VerifyAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.CustomDomainsClient.VerifyAsync(System.String)">VerifyAsync(String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_CustomDomainsClient_VerifyAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.CustomDomainsClient.VerifyAsync(System.String,System.Threading.CancellationToken)">VerifyAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Run the verification process for the custom domain. </p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;CustomDomainVerificationResponse&gt; VerifyAsync(string id)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;CustomDomainVerificationResponse&gt; VerifyAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -353,6 +388,12 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The ID of the domain to verify.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>

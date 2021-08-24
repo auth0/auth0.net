@@ -171,13 +171,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_ResourceServersClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.ResourceServersClient.CreateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ResourceServersClient_CreateAsync_Auth0_ManagementApi_Models_ResourceServerCreateRequest_" data-uid="Auth0.ManagementApi.Clients.ResourceServersClient.CreateAsync(Auth0.ManagementApi.Models.ResourceServerCreateRequest)">CreateAsync(ResourceServerCreateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ResourceServersClient_CreateAsync_Auth0_ManagementApi_Models_ResourceServerCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ResourceServersClient.CreateAsync(Auth0.ManagementApi.Models.ResourceServerCreateRequest,System.Threading.CancellationToken)">CreateAsync(ResourceServerCreateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Creates a new resource server.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;ResourceServer&gt; CreateAsync(ResourceServerCreateRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;ResourceServer&gt; CreateAsync(ResourceServerCreateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -193,6 +193,12 @@
         <td><a class="xref" href="Auth0.ManagementApi.Models.ResourceServerCreateRequest.html">ResourceServerCreateRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>Contains the information for the resource server to create.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -214,13 +220,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_ResourceServersClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.ResourceServersClient.DeleteAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ResourceServersClient_DeleteAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.ResourceServersClient.DeleteAsync(System.String)">DeleteAsync(String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ResourceServersClient_DeleteAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ResourceServersClient.DeleteAsync(System.String,System.Threading.CancellationToken)">DeleteAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Deletes a resource server.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task DeleteAsync(string id)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task DeleteAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -236,6 +242,12 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The id of the resource server to delete.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -257,13 +269,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_ResourceServersClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.ResourceServersClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ResourceServersClient_GetAllAsync_Auth0_ManagementApi_Paging_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.ResourceServersClient.GetAllAsync(Auth0.ManagementApi.Paging.PaginationInfo)">GetAllAsync(PaginationInfo)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ResourceServersClient_GetAllAsync_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ResourceServersClient.GetAllAsync(Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetAllAsync(PaginationInfo, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Gets a list of all the resource servers.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;ResourceServer&gt;&gt; GetAllAsync(PaginationInfo pagination)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;ResourceServer&gt;&gt; GetAllAsync(PaginationInfo pagination, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -279,6 +291,12 @@
         <td><a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></td>
         <td><span class="parametername">pagination</span></td>
         <td><p>Specifies pagination info to use when requesting paged results.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -300,13 +318,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_ResourceServersClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.ResourceServersClient.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ResourceServersClient_GetAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.ResourceServersClient.GetAsync(System.String)">GetAsync(String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ResourceServersClient_GetAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ResourceServersClient.GetAsync(System.String,System.Threading.CancellationToken)">GetAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Get a resource server by its id.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;ResourceServer&gt; GetAsync(string id)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;ResourceServer&gt; GetAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -322,6 +340,12 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The identifier of the resource server.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -343,13 +367,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_ResourceServersClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.ResourceServersClient.UpdateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ResourceServersClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_ResourceServerUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.ResourceServersClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.ResourceServerUpdateRequest)">UpdateAsync(String, ResourceServerUpdateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ResourceServersClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_ResourceServerUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ResourceServersClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.ResourceServerUpdateRequest,System.Threading.CancellationToken)">UpdateAsync(String, ResourceServerUpdateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Updates a resource server,</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;ResourceServer&gt; UpdateAsync(string id, ResourceServerUpdateRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;ResourceServer&gt; UpdateAsync(string id, ResourceServerUpdateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -371,6 +395,12 @@
         <td><a class="xref" href="Auth0.ManagementApi.Models.ResourceServerUpdateRequest.html">ResourceServerUpdateRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>Contains the information for the resource server to update.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>

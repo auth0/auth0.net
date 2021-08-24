@@ -171,13 +171,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_UserBlocksClient_GetByIdentifierAsync_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.GetByIdentifierAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient_GetByIdentifierAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.GetByIdentifierAsync(System.String)">GetByIdentifierAsync(String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient_GetByIdentifierAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.GetByIdentifierAsync(System.String,System.Threading.CancellationToken)">GetByIdentifierAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Get a user&apos;s blocks by identifier.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;UserBlocks&gt; GetByIdentifierAsync(string identifier)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;UserBlocks&gt; GetByIdentifierAsync(string identifier, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -193,6 +193,12 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">identifier</span></td>
         <td><p>The identifier of the user. Can be a user&apos;s email address, username or phone number.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -214,13 +220,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UserBlocksClient_GetByUserIdAsync_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.GetByUserIdAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient_GetByUserIdAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.GetByUserIdAsync(System.String)">GetByUserIdAsync(String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient_GetByUserIdAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.GetByUserIdAsync(System.String,System.Threading.CancellationToken)">GetByUserIdAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Get a user&apos;s blocks by user id.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;UserBlocks&gt; GetByUserIdAsync(string id)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;UserBlocks&gt; GetByUserIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -236,6 +242,12 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The id of the user.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -257,13 +269,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UserBlocksClient_UnblockByIdentifierAsync_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.UnblockByIdentifierAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient_UnblockByIdentifierAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.UnblockByIdentifierAsync(System.String)">UnblockByIdentifierAsync(String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient_UnblockByIdentifierAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.UnblockByIdentifierAsync(System.String,System.Threading.CancellationToken)">UnblockByIdentifierAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Unblock a user by their identifier.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task UnblockByIdentifierAsync(string identifier)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task UnblockByIdentifierAsync(string identifier, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -279,6 +291,12 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">identifier</span></td>
         <td><p>The identifier of the user to unblock. Can be a user&apos;s email address, username or phone number.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -300,13 +318,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UserBlocksClient_UnblockByUserIdAsync_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.UnblockByUserIdAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient_UnblockByUserIdAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.UnblockByUserIdAsync(System.String)">UnblockByUserIdAsync(String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient_UnblockByUserIdAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.UnblockByUserIdAsync(System.String,System.Threading.CancellationToken)">UnblockByUserIdAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Unblock a user by their id.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task UnblockByUserIdAsync(string id)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task UnblockByUserIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -322,6 +340,12 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The id of the user to unblock.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
