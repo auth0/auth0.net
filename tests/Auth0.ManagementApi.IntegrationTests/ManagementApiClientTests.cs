@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -51,12 +52,12 @@ namespace Auth0.ManagementApi.IntegrationTests
                 IsDisposed = true;
             }
 
-            public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, JsonConverter[] converters = null)
+            public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, JsonConverter[] converters = null, CancellationToken cancellationToken = default)
             {
                 return Task.FromResult(default(T));
             }
 
-            public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, IList<FileUploadParameter> files = null)
+            public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, IList<FileUploadParameter> files = null, CancellationToken cancellationToken = default)
             {
                 return Task.FromResult(default(T));
             }
@@ -97,13 +98,13 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             public IDictionary<string, string> LastHeaders { get; private set; } = new Dictionary<string, string>();
 
-            public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, JsonConverter[] converters = null)
+            public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, JsonConverter[] converters = null, CancellationToken cancellationToken = default)
             {
                 LastHeaders = headers;
                 return Task.FromResult(default(T));
             }
 
-            public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, IList<FileUploadParameter> files = null)
+            public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, IList<FileUploadParameter> files = null, CancellationToken cancellationToken = default)
             {
                 LastHeaders = headers;
                 return Task.FromResult(default(T));

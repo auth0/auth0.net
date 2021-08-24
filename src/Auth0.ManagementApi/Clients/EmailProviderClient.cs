@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
@@ -29,19 +30,20 @@ namespace Auth0.ManagementApi.Clients
         /// The <see cref="EmailProviderConfigureRequest" /> containing the configuration properties of the
         /// provider.
         /// </param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="EmailProvider" /> instance containing the email provider details.</returns>
-        public Task<EmailProvider> ConfigureAsync(EmailProviderConfigureRequest request)
+        public Task<EmailProvider> ConfigureAsync(EmailProviderConfigureRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<EmailProvider>(HttpMethod.Post, BuildUri("emails/provider"), request, DefaultHeaders);
+            return Connection.SendAsync<EmailProvider>(HttpMethod.Post, BuildUri("emails/provider"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
         /// Deletes the email provider.
         /// </summary>
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-        public Task DeleteAsync()
+        public Task DeleteAsync(CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri("emails/provider"), null, DefaultHeaders);
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri("emails/provider"), null, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -55,15 +57,16 @@ namespace Auth0.ManagementApi.Clients
         /// True if the fields specified are to be excluded from the result, false otherwise (defaults
         /// to true).
         /// </param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="EmailProvider" /> instance containing the email provider details.</returns>
-        public Task<EmailProvider> GetAsync(string fields = null, bool includeFields = true)
+        public Task<EmailProvider> GetAsync(string fields = null, bool includeFields = true, CancellationToken cancellationToken = default)
         {
             return Connection.GetAsync<EmailProvider>(BuildUri("emails/provider",
                 new Dictionary<string, string>
                 {
                     {"fields", fields},
                     {"include_fields", includeFields.ToString().ToLower()}
-                }), DefaultHeaders);
+                }), DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -73,10 +76,11 @@ namespace Auth0.ManagementApi.Clients
         /// The <see cref="EmailProviderUpdateRequest" /> containing the configuration properties of the
         /// email provider.
         /// </param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="EmailProvider" /> instance containing the email provider details.</returns>
-        public Task<EmailProvider> UpdateAsync(EmailProviderUpdateRequest request)
+        public Task<EmailProvider> UpdateAsync(EmailProviderUpdateRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<EmailProvider>(new HttpMethod("PATCH"), BuildUri("emails/provider"), request, DefaultHeaders);
+            return Connection.SendAsync<EmailProvider>(new HttpMethod("PATCH"), BuildUri("emails/provider"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
     }
 }

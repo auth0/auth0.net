@@ -57,7 +57,7 @@ namespace Auth0.Tests.Shared
             _connection = new HttpClientAuthenticationConnection(handler);
         }
 
-        public async Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null)
+        public async Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, CancellationToken cancellationToken = default)
         {
             var maxNrOfTries = 3;
             var nrOfTries = 0;
@@ -69,7 +69,7 @@ namespace Auth0.Tests.Shared
                 {
                     nrOfTries++;
 
-                    return await _connection.GetAsync<T>(uri, headers);
+                    return await _connection.GetAsync<T>(uri, headers, cancellationToken);
                 } catch(Exception ex)
                 {
                     if (!(ex is RateLimitApiException) || nrOfTries >= maxNrOfTries)
@@ -82,7 +82,7 @@ namespace Auth0.Tests.Shared
             }
         }
 
-        public async Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null)
+        public async Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, CancellationToken cancellationToken = default)
         {
             var maxNrOfTries = 3;
             var nrOfTries = 0;
@@ -94,7 +94,7 @@ namespace Auth0.Tests.Shared
                 {
                     nrOfTries++;
 
-                    return await _connection.SendAsync<T>(method, uri, body, headers);
+                    return await _connection.SendAsync<T>(method, uri, body, headers, cancellationToken);
                 }
                 catch (Exception ex)
                 {

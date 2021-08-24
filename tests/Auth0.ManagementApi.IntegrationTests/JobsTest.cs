@@ -21,7 +21,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             string token = await GenerateManagementApiToken();
 
-            _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+            _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
 
             // Create a connection
             _auth0Connection = await _apiClient.Connections.CreateAsync(new ConnectionCreateRequest
@@ -123,7 +123,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             job.CreatedAt.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromMinutes(5));
         }
 
-        [Fact]
+        [Fact(Skip = "Run Manually")]
         public async Task Can_import_users()
         {
             // Send a user import request
@@ -140,7 +140,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Run Manually")]
         public async Task Can_export_users()
         {
             var request = new UsersExportsJobRequest
