@@ -109,6 +109,11 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             triggerBindingsAfterCreate.Count.Should().Be(triggerBindingsBeforeCreate.Count + 1);
 
+            await _apiClient.Actions.UpdateTriggerBindingsAsync("post-login", new UpdateTriggerBindingsRequest
+            {
+                Bindings = new List<UpdateTriggerBindingEntry>()
+            });
+
             await _apiClient.Actions.DeleteAsync(createdAction.Id);
         }
 
