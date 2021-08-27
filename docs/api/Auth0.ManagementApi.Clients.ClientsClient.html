@@ -171,13 +171,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_ClientsClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.CreateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ClientsClient_CreateAsync_Auth0_ManagementApi_Models_ClientCreateRequest_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.CreateAsync(Auth0.ManagementApi.Models.ClientCreateRequest)">CreateAsync(ClientCreateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ClientsClient_CreateAsync_Auth0_ManagementApi_Models_ClientCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.CreateAsync(Auth0.ManagementApi.Models.ClientCreateRequest,System.Threading.CancellationToken)">CreateAsync(ClientCreateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Creates a new client application.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;Client&gt; CreateAsync(ClientCreateRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;Client&gt; CreateAsync(ClientCreateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -193,6 +193,12 @@
         <td><a class="xref" href="Auth0.ManagementApi.Models.ClientCreateRequest.html">ClientCreateRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.ClientCreateRequest.html">ClientCreateRequest</a> containing the properties of the new client.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -214,13 +220,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_ClientsClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.DeleteAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ClientsClient_DeleteAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.DeleteAsync(System.String)">DeleteAsync(String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ClientsClient_DeleteAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.DeleteAsync(System.String,System.Threading.CancellationToken)">DeleteAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Deletes a client and all its related assets (like rules, connections, etc) given its id.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task DeleteAsync(string id)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task DeleteAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -236,6 +242,12 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The id of the client to delete.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -257,13 +269,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_ClientsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ClientsClient_GetAllAsync_Auth0_ManagementApi_Models_GetClientsRequest_Auth0_ManagementApi_Paging_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.GetAllAsync(Auth0.ManagementApi.Models.GetClientsRequest,Auth0.ManagementApi.Paging.PaginationInfo)">GetAllAsync(GetClientsRequest, PaginationInfo)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ClientsClient_GetAllAsync_Auth0_ManagementApi_Models_GetClientsRequest_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.GetAllAsync(Auth0.ManagementApi.Models.GetClientsRequest,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetAllAsync(GetClientsRequest, PaginationInfo, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves a list of all client applications.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;Client&gt;&gt; GetAllAsync(GetClientsRequest request, PaginationInfo pagination)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;Client&gt;&gt; GetAllAsync(GetClientsRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -287,6 +299,12 @@
         <td><p>Specifies pagination info to use when requesting paged results.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -306,13 +324,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_ClientsClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ClientsClient_GetAsync_System_String_System_String_System_Boolean_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.GetAsync(System.String,System.String,System.Boolean)">GetAsync(String, String, Boolean)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ClientsClient_GetAsync_System_String_System_String_System_Boolean_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.GetAsync(System.String,System.String,System.Boolean,System.Threading.CancellationToken)">GetAsync(String, String, Boolean, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves a client by its id.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;Client&gt; GetAsync(string id, string fields = null, bool includeFields = true)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;Client&gt; GetAsync(string id, string fields = null, bool includeFields = true, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -344,6 +362,12 @@ result, empty to retrieve all fields.</p>
 true)</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -363,13 +387,13 @@ true)</p>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_ClientsClient_RotateClientSecret_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.RotateClientSecret*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ClientsClient_RotateClientSecret_System_String_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.RotateClientSecret(System.String)">RotateClientSecret(String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ClientsClient_RotateClientSecret_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.RotateClientSecret(System.String,System.Threading.CancellationToken)">RotateClientSecret(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Rotate a client secret. The generated secret is NOT base64 encoded.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;Client&gt; RotateClientSecret(string id)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;Client&gt; RotateClientSecret(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -385,6 +409,12 @@ true)</p>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The id of the client which secret needs to be rotated.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -406,13 +436,13 @@ true)</p>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_ClientsClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.UpdateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ClientsClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_ClientUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.ClientUpdateRequest)">UpdateAsync(String, ClientUpdateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ClientsClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_ClientUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.ClientUpdateRequest,System.Threading.CancellationToken)">UpdateAsync(String, ClientUpdateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Updates a client application.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;Client&gt; UpdateAsync(string id, ClientUpdateRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;Client&gt; UpdateAsync(string id, ClientUpdateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -434,6 +464,12 @@ true)</p>
         <td><a class="xref" href="Auth0.ManagementApi.Models.ClientUpdateRequest.html">ClientUpdateRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.ClientUpdateRequest.html">ClientUpdateRequest</a> containing the properties of the client you want to update.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>

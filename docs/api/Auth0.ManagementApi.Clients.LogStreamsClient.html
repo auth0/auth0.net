@@ -171,13 +171,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_LogStreamsClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.LogStreamsClient.CreateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_LogStreamsClient_CreateAsync_Auth0_ManagementApi_Models_LogStreamCreateRequest_" data-uid="Auth0.ManagementApi.Clients.LogStreamsClient.CreateAsync(Auth0.ManagementApi.Models.LogStreamCreateRequest)">CreateAsync(LogStreamCreateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_LogStreamsClient_CreateAsync_Auth0_ManagementApi_Models_LogStreamCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.LogStreamsClient.CreateAsync(Auth0.ManagementApi.Models.LogStreamCreateRequest,System.Threading.CancellationToken)">CreateAsync(LogStreamCreateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Creates a new log stream</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;LogStream&gt; CreateAsync(LogStreamCreateRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;LogStream&gt; CreateAsync(LogStreamCreateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -193,6 +193,12 @@
         <td><a class="xref" href="Auth0.ManagementApi.Models.LogStreamCreateRequest.html">LogStreamCreateRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.LogStreamCreateRequest.html">LogStreamCreateRequest</a> containing the information needed to create the log stream</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -214,13 +220,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_LogStreamsClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.LogStreamsClient.DeleteAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_LogStreamsClient_DeleteAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.LogStreamsClient.DeleteAsync(System.String)">DeleteAsync(String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_LogStreamsClient_DeleteAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.LogStreamsClient.DeleteAsync(System.String,System.Threading.CancellationToken)">DeleteAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Deletes a log stream</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task DeleteAsync(string id)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task DeleteAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -236,6 +242,12 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The id of the log stream to delete</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -257,14 +269,31 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_LogStreamsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.LogStreamsClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_LogStreamsClient_GetAllAsync" data-uid="Auth0.ManagementApi.Clients.LogStreamsClient.GetAllAsync">GetAllAsync()</h4>
+  <h4 id="Auth0_ManagementApi_Clients_LogStreamsClient_GetAllAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.LogStreamsClient.GetAllAsync(System.Threading.CancellationToken)">GetAllAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Gets all of the log streams</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;LogStream&gt;&gt; GetAllAsync()</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;LogStream&gt;&gt; GetAllAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -282,13 +311,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_LogStreamsClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.LogStreamsClient.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_LogStreamsClient_GetAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.LogStreamsClient.GetAsync(System.String)">GetAsync(String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_LogStreamsClient_GetAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.LogStreamsClient.GetAsync(System.String,System.Threading.CancellationToken)">GetAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Gets a log stream</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;LogStream&gt; GetAsync(string id)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;LogStream&gt; GetAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -304,6 +333,12 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The id of the log stream to get</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -325,13 +360,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_LogStreamsClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.LogStreamsClient.UpdateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_LogStreamsClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_LogStreamUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.LogStreamsClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.LogStreamUpdateRequest)">UpdateAsync(String, LogStreamUpdateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_LogStreamsClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_LogStreamUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.LogStreamsClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.LogStreamUpdateRequest,System.Threading.CancellationToken)">UpdateAsync(String, LogStreamUpdateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Updates a log stream</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;LogStream&gt; UpdateAsync(string id, LogStreamUpdateRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;LogStream&gt; UpdateAsync(string id, LogStreamUpdateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -353,6 +388,12 @@
         <td><a class="xref" href="Auth0.ManagementApi.Models.LogStreamUpdateRequest.html">LogStreamUpdateRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>The information required to update the log stream</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>

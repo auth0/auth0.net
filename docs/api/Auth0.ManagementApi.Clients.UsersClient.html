@@ -171,13 +171,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_UsersClient_AssignPermissionsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.AssignPermissionsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_AssignPermissionsAsync_System_String_Auth0_ManagementApi_Models_AssignPermissionsRequest_" data-uid="Auth0.ManagementApi.Clients.UsersClient.AssignPermissionsAsync(System.String,Auth0.ManagementApi.Models.AssignPermissionsRequest)">AssignPermissionsAsync(String, AssignPermissionsRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_AssignPermissionsAsync_System_String_Auth0_ManagementApi_Models_AssignPermissionsRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.AssignPermissionsAsync(System.String,Auth0.ManagementApi.Models.AssignPermissionsRequest,System.Threading.CancellationToken)">AssignPermissionsAsync(String, AssignPermissionsRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Assign permissions to a user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task AssignPermissionsAsync(string id, AssignPermissionsRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task AssignPermissionsAsync(string id, AssignPermissionsRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -201,6 +201,12 @@
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a> containing the permission identifiers to assign to the user.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -220,13 +226,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UsersClient_AssignRolesAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.AssignRolesAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_AssignRolesAsync_System_String_Auth0_ManagementApi_Models_AssignRolesRequest_" data-uid="Auth0.ManagementApi.Clients.UsersClient.AssignRolesAsync(System.String,Auth0.ManagementApi.Models.AssignRolesRequest)">AssignRolesAsync(String, AssignRolesRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_AssignRolesAsync_System_String_Auth0_ManagementApi_Models_AssignRolesRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.AssignRolesAsync(System.String,Auth0.ManagementApi.Models.AssignRolesRequest,System.Threading.CancellationToken)">AssignRolesAsync(String, AssignRolesRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Assigns Roles to a user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task AssignRolesAsync(string id, AssignRolesRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task AssignRolesAsync(string id, AssignRolesRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -250,6 +256,12 @@
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.AssignRolesRequest.html">AssignRolesRequest</a> containing the role IDs to assign to the user.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -269,13 +281,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UsersClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.CreateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_CreateAsync_Auth0_ManagementApi_Models_UserCreateRequest_" data-uid="Auth0.ManagementApi.Clients.UsersClient.CreateAsync(Auth0.ManagementApi.Models.UserCreateRequest)">CreateAsync(UserCreateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_CreateAsync_Auth0_ManagementApi_Models_UserCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.CreateAsync(Auth0.ManagementApi.Models.UserCreateRequest,System.Threading.CancellationToken)">CreateAsync(UserCreateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Creates a new user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;User&gt; CreateAsync(UserCreateRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;User&gt; CreateAsync(UserCreateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -291,6 +303,12 @@
         <td><a class="xref" href="Auth0.ManagementApi.Models.UserCreateRequest.html">UserCreateRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.UserCreateRequest.html">UserCreateRequest</a> containing the properties of the user to create.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -355,13 +373,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UsersClient_DeleteMultifactorProviderAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.DeleteMultifactorProviderAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_DeleteMultifactorProviderAsync_System_String_System_String_" data-uid="Auth0.ManagementApi.Clients.UsersClient.DeleteMultifactorProviderAsync(System.String,System.String)">DeleteMultifactorProviderAsync(String, String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_DeleteMultifactorProviderAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.DeleteMultifactorProviderAsync(System.String,System.String,System.Threading.CancellationToken)">DeleteMultifactorProviderAsync(String, String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Deletes a user&apos;s multifactor provider.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task DeleteMultifactorProviderAsync(string id, string provider)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task DeleteMultifactorProviderAsync(string id, string provider, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -385,6 +403,12 @@
         <td><p>The type of the multifactor provider. Supported values &apos;duo&apos; or &apos;google-authenticator&apos;.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -404,13 +428,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UsersClient_GenerateRecoveryCodeAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GenerateRecoveryCodeAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GenerateRecoveryCodeAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GenerateRecoveryCodeAsync(System.String)">GenerateRecoveryCodeAsync(String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GenerateRecoveryCodeAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GenerateRecoveryCodeAsync(System.String,System.Threading.CancellationToken)">GenerateRecoveryCodeAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Generate new Guardian recovery code.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;GenerateRecoveryCodeResponse&gt; GenerateRecoveryCodeAsync(string id)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;GenerateRecoveryCodeResponse&gt; GenerateRecoveryCodeAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -426,6 +450,12 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The user_id of the user which guardian code will be regenerated.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -447,13 +477,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UsersClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetAllAsync_Auth0_ManagementApi_Models_GetUsersRequest_Auth0_ManagementApi_Paging_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAllAsync(Auth0.ManagementApi.Models.GetUsersRequest,Auth0.ManagementApi.Paging.PaginationInfo)">GetAllAsync(GetUsersRequest, PaginationInfo)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetAllAsync_Auth0_ManagementApi_Models_GetUsersRequest_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAllAsync(Auth0.ManagementApi.Models.GetUsersRequest,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetAllAsync(GetUsersRequest, PaginationInfo, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Lists or search for users based on criteria.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;User&gt;&gt; GetAllAsync(GetUsersRequest request, PaginationInfo pagination)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;User&gt;&gt; GetAllAsync(GetUsersRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -477,6 +507,12 @@
         <td><p>Specifies pagination info to use when requesting paged results.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -496,13 +532,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UsersClient_GetAllOrganizationsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAllOrganizationsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetAllOrganizationsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAllOrganizationsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo)">GetAllOrganizationsAsync(String, PaginationInfo)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetAllOrganizationsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAllOrganizationsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetAllOrganizationsAsync(String, PaginationInfo, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Lists organizations for a user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;Organization&gt;&gt; GetAllOrganizationsAsync(string userId, PaginationInfo pagination)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;Organization&gt;&gt; GetAllOrganizationsAsync(string userId, PaginationInfo pagination, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -526,6 +562,12 @@
         <td><p>Specifies pagination info to use when requesting paged results.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -545,13 +587,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UsersClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetAsync_System_String_System_String_System_Boolean_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAsync(System.String,System.String,System.Boolean)">GetAsync(String, String, Boolean)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetAsync_System_String_System_String_System_Boolean_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAsync(System.String,System.String,System.Boolean,System.Threading.CancellationToken)">GetAsync(String, String, Boolean, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Gets a user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;User&gt; GetAsync(string id, string fields = null, bool includeFields = true)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;User&gt; GetAsync(string id, string fields = null, bool includeFields = true, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -583,6 +625,12 @@ result, empty to retrieve all fields</p>
 true)</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -602,13 +650,13 @@ true)</p>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UsersClient_GetEnrollmentsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetEnrollmentsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetEnrollmentsAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetEnrollmentsAsync(System.String)">GetEnrollmentsAsync(String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetEnrollmentsAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetEnrollmentsAsync(System.String,System.Threading.CancellationToken)">GetEnrollmentsAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Get a list of Guardian enrollments.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;EnrollmentsResponse&gt;&gt; GetEnrollmentsAsync(string id)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;EnrollmentsResponse&gt;&gt; GetEnrollmentsAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -624,6 +672,12 @@ true)</p>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The user_id of the user to retrieve.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -645,13 +699,13 @@ true)</p>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UsersClient_GetLogsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetLogsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetLogsAsync_Auth0_ManagementApi_Models_GetUserLogsRequest_Auth0_ManagementApi_Paging_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetLogsAsync(Auth0.ManagementApi.Models.GetUserLogsRequest,Auth0.ManagementApi.Paging.PaginationInfo)">GetLogsAsync(GetUserLogsRequest, PaginationInfo)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetLogsAsync_Auth0_ManagementApi_Models_GetUserLogsRequest_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetLogsAsync(Auth0.ManagementApi.Models.GetUserLogsRequest,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetLogsAsync(GetUserLogsRequest, PaginationInfo, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieve every log event for a specific user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;LogEntry&gt;&gt; GetLogsAsync(GetUserLogsRequest request, PaginationInfo pagination)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;LogEntry&gt;&gt; GetLogsAsync(GetUserLogsRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -675,6 +729,12 @@ true)</p>
         <td><p>Specifies pagination info to use when requesting paged results.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -694,13 +754,13 @@ true)</p>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UsersClient_GetPermissionsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetPermissionsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetPermissionsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetPermissionsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo)">GetPermissionsAsync(String, PaginationInfo)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetPermissionsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetPermissionsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetPermissionsAsync(String, PaginationInfo, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Get the permissions assigned to the user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;UserPermission&gt;&gt; GetPermissionsAsync(string id, PaginationInfo pagination)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;UserPermission&gt;&gt; GetPermissionsAsync(string id, PaginationInfo pagination, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -724,6 +784,12 @@ true)</p>
         <td><p>Specifies <a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a> to use in requesting paged results.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -743,13 +809,13 @@ true)</p>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UsersClient_GetRolesAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetRolesAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetRolesAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetRolesAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo)">GetRolesAsync(String, PaginationInfo)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetRolesAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetRolesAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetRolesAsync(String, PaginationInfo, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieve assigned roles for a specific user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;Role&gt;&gt; GetRolesAsync(string userId, PaginationInfo pagination)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;Role&gt;&gt; GetRolesAsync(string userId, PaginationInfo pagination, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -773,6 +839,12 @@ true)</p>
         <td><p>Specifies pagination info to use when requesting paged results.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -792,13 +864,13 @@ true)</p>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UsersClient_GetUsersByEmailAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetUsersByEmailAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetUsersByEmailAsync_System_String_System_String_System_Nullable_System_Boolean__" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetUsersByEmailAsync(System.String,System.String,System.Nullable{System.Boolean})">GetUsersByEmailAsync(String, String, Nullable&lt;Boolean&gt;)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetUsersByEmailAsync_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetUsersByEmailAsync(System.String,System.String,System.Nullable{System.Boolean},System.Threading.CancellationToken)">GetUsersByEmailAsync(String, String, Nullable&lt;Boolean&gt;, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Gets all users by email address.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;User&gt;&gt; GetUsersByEmailAsync(string email, string fields = null, bool? includeFields = default(bool? ))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;User&gt;&gt; GetUsersByEmailAsync(string email, string fields = null, bool? includeFields = default(bool? ), CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -828,6 +900,12 @@ true)</p>
         <td><p>true if the fields specified are to be included in the result, false otherwise. Defaults to true.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -847,13 +925,13 @@ true)</p>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UsersClient_InvalidateRememberBrowserAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.InvalidateRememberBrowserAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_InvalidateRememberBrowserAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.UsersClient.InvalidateRememberBrowserAsync(System.String)">InvalidateRememberBrowserAsync(String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_InvalidateRememberBrowserAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.InvalidateRememberBrowserAsync(System.String,System.Threading.CancellationToken)">InvalidateRememberBrowserAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Invalidate all remembered browsers for MFA.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task InvalidateRememberBrowserAsync(string id)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task InvalidateRememberBrowserAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -869,6 +947,12 @@ true)</p>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The user_id of the user which will have its remembered browsers for MFA invalidated.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -890,13 +974,13 @@ true)</p>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UsersClient_LinkAccountAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.LinkAccountAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_LinkAccountAsync_System_String_Auth0_ManagementApi_Models_UserAccountLinkRequest_" data-uid="Auth0.ManagementApi.Clients.UsersClient.LinkAccountAsync(System.String,Auth0.ManagementApi.Models.UserAccountLinkRequest)">LinkAccountAsync(String, UserAccountLinkRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_LinkAccountAsync_System_String_Auth0_ManagementApi_Models_UserAccountLinkRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.LinkAccountAsync(System.String,Auth0.ManagementApi.Models.UserAccountLinkRequest,System.Threading.CancellationToken)">LinkAccountAsync(String, UserAccountLinkRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Links a secondary account to a primary account.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;AccountLinkResponse&gt;&gt; LinkAccountAsync(string id, UserAccountLinkRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;AccountLinkResponse&gt;&gt; LinkAccountAsync(string id, UserAccountLinkRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -920,6 +1004,12 @@ true)</p>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.UserAccountLinkRequest.html">UserAccountLinkRequest</a> containing details of the secondary account to link.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -939,13 +1029,13 @@ true)</p>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UsersClient_LinkAccountAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.LinkAccountAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_LinkAccountAsync_System_String_System_String_System_String_" data-uid="Auth0.ManagementApi.Clients.UsersClient.LinkAccountAsync(System.String,System.String,System.String)">LinkAccountAsync(String, String, String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_LinkAccountAsync_System_String_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.LinkAccountAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">LinkAccountAsync(String, String, String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Links a secondary account to a primary account.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;AccountLinkResponse&gt;&gt; LinkAccountAsync(string id, string primaryJwtToken, string secondaryJwtToken)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;AccountLinkResponse&gt;&gt; LinkAccountAsync(string id, string primaryJwtToken, string secondaryJwtToken, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -975,6 +1065,12 @@ true)</p>
         <td><p>The JWT for the secondary account you wish to link.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -994,13 +1090,13 @@ true)</p>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UsersClient_RemovePermissionsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.RemovePermissionsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_RemovePermissionsAsync_System_String_Auth0_ManagementApi_Models_AssignPermissionsRequest_" data-uid="Auth0.ManagementApi.Clients.UsersClient.RemovePermissionsAsync(System.String,Auth0.ManagementApi.Models.AssignPermissionsRequest)">RemovePermissionsAsync(String, AssignPermissionsRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_RemovePermissionsAsync_System_String_Auth0_ManagementApi_Models_AssignPermissionsRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.RemovePermissionsAsync(System.String,Auth0.ManagementApi.Models.AssignPermissionsRequest,System.Threading.CancellationToken)">RemovePermissionsAsync(String, AssignPermissionsRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Removes permissions assigned to a user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task RemovePermissionsAsync(string id, AssignPermissionsRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task RemovePermissionsAsync(string id, AssignPermissionsRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1024,6 +1120,12 @@ true)</p>
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a> containing the permission identifiers to remove from the user.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -1043,13 +1145,13 @@ true)</p>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UsersClient_RemoveRolesAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.RemoveRolesAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_RemoveRolesAsync_System_String_Auth0_ManagementApi_Models_AssignRolesRequest_" data-uid="Auth0.ManagementApi.Clients.UsersClient.RemoveRolesAsync(System.String,Auth0.ManagementApi.Models.AssignRolesRequest)">RemoveRolesAsync(String, AssignRolesRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_RemoveRolesAsync_System_String_Auth0_ManagementApi_Models_AssignRolesRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.RemoveRolesAsync(System.String,Auth0.ManagementApi.Models.AssignRolesRequest,System.Threading.CancellationToken)">RemoveRolesAsync(String, AssignRolesRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Removes Roles from a user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task RemoveRolesAsync(string id, AssignRolesRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task RemoveRolesAsync(string id, AssignRolesRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1073,6 +1175,12 @@ true)</p>
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.AssignRolesRequest.html">AssignRolesRequest</a> containing the role IDs to remove to the user.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -1092,13 +1200,13 @@ true)</p>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UsersClient_UnlinkAccountAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.UnlinkAccountAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_UnlinkAccountAsync_System_String_System_String_System_String_" data-uid="Auth0.ManagementApi.Clients.UsersClient.UnlinkAccountAsync(System.String,System.String,System.String)">UnlinkAccountAsync(String, String, String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_UnlinkAccountAsync_System_String_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.UnlinkAccountAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">UnlinkAccountAsync(String, String, String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Unlinks user accounts</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;AccountLinkResponse&gt;&gt; UnlinkAccountAsync(string primaryUserId, string provider, string secondaryUserId)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;AccountLinkResponse&gt;&gt; UnlinkAccountAsync(string primaryUserId, string provider, string secondaryUserId, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1128,6 +1236,12 @@ true)</p>
         <td><p>The ID for the secondary account.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -1147,13 +1261,13 @@ true)</p>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UsersClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.UpdateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_UserUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.UsersClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.UserUpdateRequest)">UpdateAsync(String, UserUpdateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_UserUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.UserUpdateRequest,System.Threading.CancellationToken)">UpdateAsync(String, UserUpdateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Updates a user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;User&gt; UpdateAsync(string id, UserUpdateRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;User&gt; UpdateAsync(string id, UserUpdateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1175,6 +1289,12 @@ true)</p>
         <td><a class="xref" href="Auth0.ManagementApi.Models.UserUpdateRequest.html">UserUpdateRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.UserUpdateRequest.html">UserUpdateRequest</a> containing the information you wish to update.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>

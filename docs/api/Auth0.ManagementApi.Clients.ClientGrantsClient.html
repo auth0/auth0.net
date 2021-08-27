@@ -171,13 +171,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_ClientGrantsClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.CreateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ClientGrantsClient_CreateAsync_Auth0_ManagementApi_Models_ClientGrantCreateRequest_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.CreateAsync(Auth0.ManagementApi.Models.ClientGrantCreateRequest)">CreateAsync(ClientGrantCreateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ClientGrantsClient_CreateAsync_Auth0_ManagementApi_Models_ClientGrantCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.CreateAsync(Auth0.ManagementApi.Models.ClientGrantCreateRequest,System.Threading.CancellationToken)">CreateAsync(ClientGrantCreateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Creates a new client grant.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;ClientGrant&gt; CreateAsync(ClientGrantCreateRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;ClientGrant&gt; CreateAsync(ClientGrantCreateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -193,6 +193,12 @@
         <td><a class="xref" href="Auth0.ManagementApi.Models.ClientGrantCreateRequest.html">ClientGrantCreateRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.ClientGrantCreateRequest.html">ClientGrantCreateRequest</a> containing the properties of the Client Grant.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -214,13 +220,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_ClientGrantsClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.DeleteAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ClientGrantsClient_DeleteAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.DeleteAsync(System.String)">DeleteAsync(String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ClientGrantsClient_DeleteAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.DeleteAsync(System.String,System.Threading.CancellationToken)">DeleteAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Deletes a client grant.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task DeleteAsync(string id)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task DeleteAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -236,6 +242,12 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The identifier of the Client Grant to delete.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -257,13 +269,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_ClientGrantsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ClientGrantsClient_GetAllAsync_Auth0_ManagementApi_Models_GetClientGrantsRequest_Auth0_ManagementApi_Paging_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.GetAllAsync(Auth0.ManagementApi.Models.GetClientGrantsRequest,Auth0.ManagementApi.Paging.PaginationInfo)">GetAllAsync(GetClientGrantsRequest, PaginationInfo)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ClientGrantsClient_GetAllAsync_Auth0_ManagementApi_Models_GetClientGrantsRequest_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.GetAllAsync(Auth0.ManagementApi.Models.GetClientGrantsRequest,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetAllAsync(GetClientGrantsRequest, PaginationInfo, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Gets a list of all the client grants.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;ClientGrant&gt;&gt; GetAllAsync(GetClientGrantsRequest request, PaginationInfo pagination)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;ClientGrant&gt;&gt; GetAllAsync(GetClientGrantsRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -287,6 +299,12 @@
         <td><p>Specifies <a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a> to use in requesting paged results.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -306,13 +324,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_ClientGrantsClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.UpdateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ClientGrantsClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_ClientGrantUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.ClientGrantUpdateRequest)">UpdateAsync(String, ClientGrantUpdateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ClientGrantsClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_ClientGrantUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ClientGrantsClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.ClientGrantUpdateRequest,System.Threading.CancellationToken)">UpdateAsync(String, ClientGrantUpdateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Updates a client grant.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;ClientGrant&gt; UpdateAsync(string id, ClientGrantUpdateRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;ClientGrant&gt; UpdateAsync(string id, ClientGrantUpdateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -334,6 +352,12 @@
         <td><a class="xref" href="Auth0.ManagementApi.Models.ClientGrantUpdateRequest.html">ClientGrantUpdateRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.ClientGrantUpdateRequest.html">ClientGrantUpdateRequest</a> containing the properties to update.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>

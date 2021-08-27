@@ -170,13 +170,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_OrganizationsClient_AddMemberRolesAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.AddMemberRolesAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_AddMemberRolesAsync_System_String_System_String_Auth0_ManagementApi_Models_OrganizationAddMemberRolesRequest_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.AddMemberRolesAsync(System.String,System.String,Auth0.ManagementApi.Models.OrganizationAddMemberRolesRequest)">AddMemberRolesAsync(String, String, OrganizationAddMemberRolesRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_AddMemberRolesAsync_System_String_System_String_Auth0_ManagementApi_Models_OrganizationAddMemberRolesRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.AddMemberRolesAsync(System.String,System.String,Auth0.ManagementApi.Models.OrganizationAddMemberRolesRequest,System.Threading.CancellationToken)">AddMemberRolesAsync(String, String, OrganizationAddMemberRolesRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Add members to an organization.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task AddMemberRolesAsync(string organizationId, string userId, OrganizationAddMemberRolesRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task AddMemberRolesAsync(string organizationId, string userId, OrganizationAddMemberRolesRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -206,6 +206,12 @@
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.OrganizationAddMemberRolesRequest.html">OrganizationAddMemberRolesRequest</a> containing the roles.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -225,13 +231,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_OrganizationsClient_AddMembersAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.AddMembersAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_AddMembersAsync_System_String_Auth0_ManagementApi_Models_OrganizationAddMembersRequest_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.AddMembersAsync(System.String,Auth0.ManagementApi.Models.OrganizationAddMembersRequest)">AddMembersAsync(String, OrganizationAddMembersRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_AddMembersAsync_System_String_Auth0_ManagementApi_Models_OrganizationAddMembersRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.AddMembersAsync(System.String,Auth0.ManagementApi.Models.OrganizationAddMembersRequest,System.Threading.CancellationToken)">AddMembersAsync(String, OrganizationAddMembersRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Add members to an organization.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task AddMembersAsync(string organizationId, OrganizationAddMembersRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task AddMembersAsync(string organizationId, OrganizationAddMembersRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -255,6 +261,12 @@
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.OrganizationAddMembersRequest.html">OrganizationAddMembersRequest</a> containing the members.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -274,13 +286,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_OrganizationsClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.CreateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_CreateAsync_Auth0_ManagementApi_Models_OrganizationCreateRequest_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.CreateAsync(Auth0.ManagementApi.Models.OrganizationCreateRequest)">CreateAsync(OrganizationCreateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_CreateAsync_Auth0_ManagementApi_Models_OrganizationCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.CreateAsync(Auth0.ManagementApi.Models.OrganizationCreateRequest,System.Threading.CancellationToken)">CreateAsync(OrganizationCreateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Creates a new organization.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;Organization&gt; CreateAsync(OrganizationCreateRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;Organization&gt; CreateAsync(OrganizationCreateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -296,6 +308,12 @@
         <td><a class="xref" href="Auth0.ManagementApi.Models.OrganizationCreateRequest.html">OrganizationCreateRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.OrganizationCreateRequest.html">OrganizationCreateRequest</a> containing the properties of the new organization.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -317,13 +335,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_OrganizationsClient_CreateConnectionAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.CreateConnectionAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_CreateConnectionAsync_System_String_Auth0_ManagementApi_Models_OrganizationConnectionCreateRequest_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.CreateConnectionAsync(System.String,Auth0.ManagementApi.Models.OrganizationConnectionCreateRequest)">CreateConnectionAsync(String, OrganizationConnectionCreateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_CreateConnectionAsync_System_String_Auth0_ManagementApi_Models_OrganizationConnectionCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.CreateConnectionAsync(System.String,Auth0.ManagementApi.Models.OrganizationConnectionCreateRequest,System.Threading.CancellationToken)">CreateConnectionAsync(String, OrganizationConnectionCreateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Creates a new organization connection.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;OrganizationConnection&gt; CreateConnectionAsync(string organizationId, OrganizationConnectionCreateRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;OrganizationConnection&gt; CreateConnectionAsync(string organizationId, OrganizationConnectionCreateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -347,6 +365,12 @@
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.OrganizationConnectionCreateRequest.html">OrganizationConnectionCreateRequest</a> containing the properties of the new organization connection.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -366,13 +390,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_OrganizationsClient_CreateInvitationAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.CreateInvitationAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_CreateInvitationAsync_System_String_Auth0_ManagementApi_Models_OrganizationCreateInvitationRequest_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.CreateInvitationAsync(System.String,Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest)">CreateInvitationAsync(String, OrganizationCreateInvitationRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_CreateInvitationAsync_System_String_Auth0_ManagementApi_Models_OrganizationCreateInvitationRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.CreateInvitationAsync(System.String,Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest,System.Threading.CancellationToken)">CreateInvitationAsync(String, OrganizationCreateInvitationRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Creates a new organization invitation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;OrganizationInvitation&gt; CreateInvitationAsync(string organizationId, OrganizationCreateInvitationRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;OrganizationInvitation&gt; CreateInvitationAsync(string organizationId, OrganizationCreateInvitationRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -396,6 +420,12 @@
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest.html">OrganizationCreateInvitationRequest</a> containing the properties of the new organization invitation.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -415,13 +445,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_OrganizationsClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.DeleteAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_DeleteAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.DeleteAsync(System.String)">DeleteAsync(String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_DeleteAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.DeleteAsync(System.String,System.Threading.CancellationToken)">DeleteAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Deletes an organization.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task DeleteAsync(string id)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task DeleteAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -437,6 +467,12 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The id of the organization to delete.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -458,13 +494,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_OrganizationsClient_DeleteConnectionAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.DeleteConnectionAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_DeleteConnectionAsync_System_String_System_String_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.DeleteConnectionAsync(System.String,System.String)">DeleteConnectionAsync(String, String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_DeleteConnectionAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.DeleteConnectionAsync(System.String,System.String,System.Threading.CancellationToken)">DeleteConnectionAsync(String, String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Deletes an organization connection.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task DeleteConnectionAsync(string organizationId, string connectionId)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task DeleteConnectionAsync(string organizationId, string connectionId, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -488,6 +524,12 @@
         <td><p>The id of the connection to delete from the organization.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -507,13 +549,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_OrganizationsClient_DeleteInvitationAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.DeleteInvitationAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_DeleteInvitationAsync_System_String_System_String_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.DeleteInvitationAsync(System.String,System.String)">DeleteInvitationAsync(String, String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_DeleteInvitationAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.DeleteInvitationAsync(System.String,System.String,System.Threading.CancellationToken)">DeleteInvitationAsync(String, String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Deletes an organization invitation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task DeleteInvitationAsync(string organizationId, string invitationId)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task DeleteInvitationAsync(string organizationId, string invitationId, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -537,6 +579,12 @@
         <td><p>The id of the invitation you want to remove.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -556,13 +604,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_OrganizationsClient_DeleteMemberAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.DeleteMemberAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_DeleteMemberAsync_System_String_Auth0_ManagementApi_Models_OrganizationDeleteMembersRequest_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.DeleteMemberAsync(System.String,Auth0.ManagementApi.Models.OrganizationDeleteMembersRequest)">DeleteMemberAsync(String, OrganizationDeleteMembersRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_DeleteMemberAsync_System_String_Auth0_ManagementApi_Models_OrganizationDeleteMembersRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.DeleteMemberAsync(System.String,Auth0.ManagementApi.Models.OrganizationDeleteMembersRequest,System.Threading.CancellationToken)">DeleteMemberAsync(String, OrganizationDeleteMembersRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Deletes members from an organization.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task DeleteMemberAsync(string organizationId, OrganizationDeleteMembersRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task DeleteMemberAsync(string organizationId, OrganizationDeleteMembersRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -586,6 +634,12 @@
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.OrganizationDeleteMembersRequest.html">OrganizationDeleteMembersRequest</a> containing the members.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -605,13 +659,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_OrganizationsClient_DeleteMemberRolesAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.DeleteMemberRolesAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_DeleteMemberRolesAsync_System_String_System_String_Auth0_ManagementApi_Models_OrganizationDeleteMemberRolesRequest_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.DeleteMemberRolesAsync(System.String,System.String,Auth0.ManagementApi.Models.OrganizationDeleteMemberRolesRequest)">DeleteMemberRolesAsync(String, String, OrganizationDeleteMemberRolesRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_DeleteMemberRolesAsync_System_String_System_String_Auth0_ManagementApi_Models_OrganizationDeleteMemberRolesRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.DeleteMemberRolesAsync(System.String,System.String,Auth0.ManagementApi.Models.OrganizationDeleteMemberRolesRequest,System.Threading.CancellationToken)">DeleteMemberRolesAsync(String, String, OrganizationDeleteMemberRolesRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Deletes roles from an organization member.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task DeleteMemberRolesAsync(string organizationId, string userId, OrganizationDeleteMemberRolesRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task DeleteMemberRolesAsync(string organizationId, string userId, OrganizationDeleteMemberRolesRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -641,6 +695,12 @@
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.OrganizationDeleteMemberRolesRequest.html">OrganizationDeleteMemberRolesRequest</a> containing the roles.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -660,13 +720,62 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAllAsync_Auth0_ManagementApi_Paging_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAllAsync(Auth0.ManagementApi.Paging.PaginationInfo)">GetAllAsync(PaginationInfo)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAllAsync_Auth0_ManagementApi_Paging_CheckpointPaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAllAsync(Auth0.ManagementApi.Paging.CheckpointPaginationInfo,System.Threading.CancellationToken)">GetAllAsync(CheckpointPaginationInfo, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a list of all organizations using checkpoint <code data-dev-comment-type="paramref" class="paramref">pagination</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ICheckpointPagedList&lt;Organization&gt;&gt; GetAllAsync(CheckpointPaginationInfo pagination, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.ManagementApi.Paging.CheckpointPaginationInfo.html">CheckpointPaginationInfo</a></td>
+        <td><span class="parametername">pagination</span></td>
+        <td><p>Specifies <a class="xref" href="Auth0.ManagementApi.Paging.CheckpointPaginationInfo.html">CheckpointPaginationInfo</a> to use in requesting checkpoint-paginated results.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.ICheckpointPagedList-1.html">ICheckpointPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Organization.html">Organization</a>&gt;&gt;</td>
+        <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.ICheckpointPagedList-1.html">ICheckpointPagedList&lt;T&gt;</a> containing the organizations.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAllAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAllAsync_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAllAsync(Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetAllAsync(PaginationInfo, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves a list of all organizations.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;Organization&gt;&gt; GetAllAsync(PaginationInfo pagination)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;Organization&gt;&gt; GetAllAsync(PaginationInfo pagination, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -682,6 +791,12 @@
         <td><a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></td>
         <td><span class="parametername">pagination</span></td>
         <td><p>Specifies pagination info to use when requesting paged results.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -703,13 +818,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAllConnectionsAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAllConnectionsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAllConnectionsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAllConnectionsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo)">GetAllConnectionsAsync(String, PaginationInfo)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAllConnectionsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAllConnectionsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetAllConnectionsAsync(String, PaginationInfo, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves a list of all organization connections.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;OrganizationConnection&gt;&gt; GetAllConnectionsAsync(string organizationId, PaginationInfo pagination)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;OrganizationConnection&gt;&gt; GetAllConnectionsAsync(string organizationId, PaginationInfo pagination, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -733,6 +848,12 @@
         <td><p>Specifies pagination info to use when requesting paged results.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -752,13 +873,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAllInvitationsAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAllInvitationsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAllInvitationsAsync_System_String_Auth0_ManagementApi_Models_OrganizationGetAllInvitationsRequest_Auth0_ManagementApi_Paging_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAllInvitationsAsync(System.String,Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest,Auth0.ManagementApi.Paging.PaginationInfo)">GetAllInvitationsAsync(String, OrganizationGetAllInvitationsRequest, PaginationInfo)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAllInvitationsAsync_System_String_Auth0_ManagementApi_Models_OrganizationGetAllInvitationsRequest_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAllInvitationsAsync(System.String,Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetAllInvitationsAsync(String, OrganizationGetAllInvitationsRequest, PaginationInfo, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves a list of all organization invitations.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;OrganizationInvitation&gt;&gt; GetAllInvitationsAsync(string organizationId, OrganizationGetAllInvitationsRequest request, PaginationInfo pagination)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;OrganizationInvitation&gt;&gt; GetAllInvitationsAsync(string organizationId, OrganizationGetAllInvitationsRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -788,6 +909,12 @@
         <td><p>Specifies pagination info to use when requesting paged results.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -807,13 +934,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAllMemberRolesAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAllMemberRolesAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAllMemberRolesAsync_System_String_System_String_Auth0_ManagementApi_Paging_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAllMemberRolesAsync(System.String,System.String,Auth0.ManagementApi.Paging.PaginationInfo)">GetAllMemberRolesAsync(String, String, PaginationInfo)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAllMemberRolesAsync_System_String_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAllMemberRolesAsync(System.String,System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetAllMemberRolesAsync(String, String, PaginationInfo, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves a list of all roles for an organization members.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;OrganizationMember&gt;&gt; GetAllMemberRolesAsync(string organizationId, string userId, PaginationInfo pagination)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;Role&gt;&gt; GetAllMemberRolesAsync(string organizationId, string userId, PaginationInfo pagination, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -843,6 +970,12 @@
         <td><p>Specifies pagination info to use when requesting paged results.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -855,20 +988,75 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.OrganizationMember.html">OrganizationMember</a>&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>&gt;&gt;</td>
         <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the organization members.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAllMembersAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAllMembersAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAllMembersAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAllMembersAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo)">GetAllMembersAsync(String, PaginationInfo)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAllMembersAsync_System_String_Auth0_ManagementApi_Paging_CheckpointPaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAllMembersAsync(System.String,Auth0.ManagementApi.Paging.CheckpointPaginationInfo,System.Threading.CancellationToken)">GetAllMembersAsync(String, CheckpointPaginationInfo, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a list of all organization members using checkpoint <code data-dev-comment-type="paramref" class="paramref">pagination</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;ICheckpointPagedList&lt;OrganizationMember&gt;&gt; GetAllMembersAsync(string organizationId, CheckpointPaginationInfo pagination, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">organizationId</span></td>
+        <td><p>The ID of the organization for which you want to retrieve the members.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Auth0.ManagementApi.Paging.CheckpointPaginationInfo.html">CheckpointPaginationInfo</a></td>
+        <td><span class="parametername">pagination</span></td>
+        <td><p>Specifies <a class="xref" href="Auth0.ManagementApi.Paging.CheckpointPaginationInfo.html">CheckpointPaginationInfo</a> to use in requesting checkpoint-paginated results.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.ICheckpointPagedList-1.html">ICheckpointPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.OrganizationMember.html">OrganizationMember</a>&gt;&gt;</td>
+        <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.ICheckpointPagedList-1.html">ICheckpointPagedList&lt;T&gt;</a> containing the organization members.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAllMembersAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAllMembersAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAllMembersAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAllMembersAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetAllMembersAsync(String, PaginationInfo, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves a list of all organization members.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;OrganizationMember&gt;&gt; GetAllMembersAsync(string organizationId, PaginationInfo pagination)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;OrganizationMember&gt;&gt; GetAllMembersAsync(string organizationId, PaginationInfo pagination, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -892,6 +1080,12 @@
         <td><p>Specifies pagination info to use when requesting paged results.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -911,13 +1105,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAsync(System.String)">GetAsync(String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetAsync(System.String,System.Threading.CancellationToken)">GetAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves an organization by its id.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;Organization&gt; GetAsync(string id)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;Organization&gt; GetAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -933,6 +1127,12 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The id of the organization to retrieve.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -954,13 +1154,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_OrganizationsClient_GetByNameAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetByNameAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetByNameAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetByNameAsync(System.String)">GetByNameAsync(String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetByNameAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetByNameAsync(System.String,System.Threading.CancellationToken)">GetByNameAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves an organization by its name.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;Organization&gt; GetByNameAsync(string name)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;Organization&gt; GetByNameAsync(string name, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -976,6 +1176,12 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">name</span></td>
         <td><p>The name of the organization to retrieve.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -997,13 +1203,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_OrganizationsClient_GetConnectionAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetConnectionAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetConnectionAsync_System_String_System_String_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetConnectionAsync(System.String,System.String)">GetConnectionAsync(String, String)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetConnectionAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetConnectionAsync(System.String,System.String,System.Threading.CancellationToken)">GetConnectionAsync(String, String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves an organization connection by its id.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;OrganizationConnection&gt; GetConnectionAsync(string organizationId, string connectionId)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;OrganizationConnection&gt; GetConnectionAsync(string organizationId, string connectionId, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1027,6 +1233,12 @@
         <td><p>The id of the connection to retrieve.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -1046,13 +1258,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_OrganizationsClient_GetInvitationAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetInvitationAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetInvitationAsync_System_String_System_String_Auth0_ManagementApi_Models_OrganizationGetInvitationRequest_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetInvitationAsync(System.String,System.String,Auth0.ManagementApi.Models.OrganizationGetInvitationRequest)">GetInvitationAsync(String, String, OrganizationGetInvitationRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_GetInvitationAsync_System_String_System_String_Auth0_ManagementApi_Models_OrganizationGetInvitationRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.GetInvitationAsync(System.String,System.String,Auth0.ManagementApi.Models.OrganizationGetInvitationRequest,System.Threading.CancellationToken)">GetInvitationAsync(String, String, OrganizationGetInvitationRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves an organization invitation by its id.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;OrganizationInvitation&gt; GetInvitationAsync(string organizationId, string invitationId, OrganizationGetInvitationRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;OrganizationInvitation&gt; GetInvitationAsync(string organizationId, string invitationId, OrganizationGetInvitationRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1082,6 +1294,12 @@
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.html">OrganizationGetInvitationRequest</a> containing the properties to retrieve the organization invitation.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -1101,13 +1319,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_OrganizationsClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.UpdateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_OrganizationUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.OrganizationUpdateRequest)">UpdateAsync(String, OrganizationUpdateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_OrganizationUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.OrganizationUpdateRequest,System.Threading.CancellationToken)">UpdateAsync(String, OrganizationUpdateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Updates an organization.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;Organization&gt; UpdateAsync(string id, OrganizationUpdateRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;Organization&gt; UpdateAsync(string id, OrganizationUpdateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1131,6 +1349,12 @@
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.OrganizationUpdateRequest.html">OrganizationUpdateRequest</a> containing the properties of the organization you want to update.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
@@ -1150,13 +1374,13 @@
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_OrganizationsClient_UpdateConnectionAsync_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.UpdateConnectionAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_UpdateConnectionAsync_System_String_System_String_Auth0_ManagementApi_Models_OrganizationConnectionUpdateRequest_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.UpdateConnectionAsync(System.String,System.String,Auth0.ManagementApi.Models.OrganizationConnectionUpdateRequest)">UpdateConnectionAsync(String, String, OrganizationConnectionUpdateRequest)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_OrganizationsClient_UpdateConnectionAsync_System_String_System_String_Auth0_ManagementApi_Models_OrganizationConnectionUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.OrganizationsClient.UpdateConnectionAsync(System.String,System.String,Auth0.ManagementApi.Models.OrganizationConnectionUpdateRequest,System.Threading.CancellationToken)">UpdateConnectionAsync(String, String, OrganizationConnectionUpdateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Updates an organization connection.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;OrganizationConnection&gt; UpdateConnectionAsync(string organizationId, string connectionId, OrganizationConnectionUpdateRequest request)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;OrganizationConnection&gt; UpdateConnectionAsync(string organizationId, string connectionId, OrganizationConnectionUpdateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1184,6 +1408,12 @@
         <td><a class="xref" href="Auth0.ManagementApi.Models.OrganizationConnectionUpdateRequest.html">OrganizationConnectionUpdateRequest</a></td>
         <td><span class="parametername">request</span></td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.OrganizationConnectionUpdateRequest.html">OrganizationConnectionUpdateRequest</a> containing the properties of the organization connection you want to update.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>

@@ -1,5 +1,20 @@
 # Change Log
 
+## [release-7.9.0](https://github.com/auth0/auth0.net/tree/release-7.9.0) (2021-08-24)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.8.1...release-7.9.0)
+
+**Added**
+- Add cancellation token support [\#513](https://github.com/auth0/auth0.net/pull/513) ([hawxy](https://github.com/hawxy))
+- Implement automatic rate-limit handling [\#512](https://github.com/auth0/auth0.net/pull/512) ([frederikprijck](https://github.com/frederikprijck))
+- Add connection property to OrganizationConnection [\#511](https://github.com/auth0/auth0.net/pull/511) ([frederikprijck](https://github.com/frederikprijck))
+- Update pagination interface to support 'from' and 'take' checkpoint pagination parameters [\#507](https://github.com/auth0/auth0.net/pull/514) ([evansims](https://github.com/evansims))
+
+**Fixed**
+- GetAllMemberRolesAsync should return a list of Role instances [\#514](https://github.com/auth0/auth0.net/pull/514) ([frederikprijck](https://github.com/frederikprijck))
+- Ensure CustomDomainVerification.Methods can be serialized [\#509](https://github.com/auth0/auth0.net/pull/509) ([frederikprijck](https://github.com/frederikprijck))
+
+**Note**: In the situation where you are providing your own implementation for `IManagementConnection` or `IAuthenticationConnection`, upgrading to `7.9.0` will require changing your implementations to also include the optional `CancellationToken` parameters.
+
 ## [release-7.8.1](https://github.com/auth0/auth0.net/tree/release-7.8.1) (2021-07-07)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.8.0...release-7.8.1)
 
