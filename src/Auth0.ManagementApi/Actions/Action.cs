@@ -4,7 +4,10 @@ using Newtonsoft.Json;
 
 namespace Auth0.ManagementApi.Actions
 {
-    public class Action: ActionBase
+    /// <summary>
+    /// Represents an action in Auth0
+    /// </summary>
+    public class Action : ActionBase
     {
         [JsonProperty("id")]
         public string Id { get; set; }
