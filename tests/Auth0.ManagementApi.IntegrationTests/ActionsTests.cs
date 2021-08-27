@@ -158,6 +158,9 @@ namespace Auth0.ManagementApi.IntegrationTests
             versionsAfterSecondDeploy.Single(v => v.Id == deployedVersion.Id).Deployed.Should().BeTrue();
             versionsAfterSecondDeploy.Single(v => v.Id != deployedVersion.Id).Deployed.Should().BeFalse();
 
+            var action = await _apiClient.Actions.GetAsync(createdAction.Id);
+            action.DeployedVersion.Id.Should().Be(deployedVersion.Id);
+
             // 9. Rollback
             var rollbackedVersion = await _apiClient.Actions.RollbackToVersionAsync(createdAction.Id, versionsAfterDeploy.Single().Id);
 

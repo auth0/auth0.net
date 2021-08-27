@@ -22,6 +22,12 @@ namespace Auth0.ManagementApi.Models.Actions
         public string Status { get; set; }
 
         /// <summary>
+        /// The version of the action that is currently deployed.
+        /// </summary>
+        [JsonProperty("deployed_version")]
+        public ActionVersion DeployedVersion { get; set; }
+
+        /// <summary>
         /// True if all of an Action's contents have been deployed.
         /// </summary>
         [JsonProperty("all_changes_deployed")]
