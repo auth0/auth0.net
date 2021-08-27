@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Auth0.ManagementApi.Clients;
 using Auth0.ManagementApi.Models;
+using Auth0.ManagementApi.Models.Actions;
 using Auth0.ManagementApi.Paging;
 using Newtonsoft.Json;
+using Action = Auth0.ManagementApi.Models.Actions.Action;
 
-namespace Auth0.ManagementApi.Actions
+namespace Auth0.ManagementApi.Clients
 {
     /// <summary>
     /// Contains methods to access the /actions endpoints.

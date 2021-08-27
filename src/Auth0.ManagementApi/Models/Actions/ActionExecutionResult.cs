@@ -1,7 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Auth0.ManagementApi.Actions
+namespace Auth0.ManagementApi.Models.Actions
 {
     /// <summary>
     /// Captures the results of a single action being executed.

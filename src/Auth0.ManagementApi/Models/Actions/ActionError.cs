@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Auth0.ManagementApi.Actions
+namespace Auth0.ManagementApi.Models.Actions
 {
     public class ActionError
     {

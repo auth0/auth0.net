@@ -1,13 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Auth0.ManagementApi.Actions
+namespace Auth0.ManagementApi.Models.Actions
 {
-    public class ActionExecution
+    /// <summary>
+    /// Represents a Trigger Binding in Auth0
+    /// </summary>
+    public class TriggerBinding
     {
         /// <summary>
-        /// Identifies a specific execution.
+        /// The unique ID of this binding.
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -19,27 +21,27 @@ namespace Auth0.ManagementApi.Actions
         public string TriggerId { get; set; }
 
         /// <summary>
-        /// The overall status of an execution.
+        /// The connected action.
         /// </summary>
-        [JsonProperty("status")]
-        public string Status { get; set; }
+        [JsonProperty("action")]
+        public Action Action { get; set; }
 
         /// <summary>
-        /// Captures the results of a single action being executed.
-        /// </summary>
-        [JsonProperty("results")]
-        public IList<ActionExecutionResult> Results { get; set; }
-
-        /// <summary>
-        /// The time that the execution was started.
+        /// The time when the binding was created.
         /// </summary>
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// The time that the execution finished executing.
+        /// The time when the binding was updated.
         /// </summary>
         [JsonProperty("updated_at")]
         public DateTime UpdatedAt { get; set; }
+
+        /// <summary>
+        /// The name of the binding.
+        /// </summary>
+        [JsonProperty("display_name")]
+        public string DisplayName { get; set; }
     }
 }

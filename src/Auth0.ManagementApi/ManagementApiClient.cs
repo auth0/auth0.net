@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
-using Auth0.ManagementApi.Actions;
 
 namespace Auth0.ManagementApi
 {

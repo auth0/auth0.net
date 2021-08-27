@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Auth0.ManagementApi.Actions
+namespace Auth0.ManagementApi.Models.Actions
 {
     /// <summary>
     /// Request configuration for deleting an action.

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Auth0.ManagementApi.Actions;
+using Auth0.ManagementApi.Models.Actions;
 using Auth0.ManagementApi.Paging;
 using Auth0.Tests.Shared;
 using FluentAssertions;

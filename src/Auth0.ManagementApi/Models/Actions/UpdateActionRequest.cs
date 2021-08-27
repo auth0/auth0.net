@@ -1,4 +1,4 @@
-﻿namespace Auth0.ManagementApi.Actions
+﻿namespace Auth0.ManagementApi.Models.Actions
 {
     /// <summary>
     /// Request configuration for updating an action.
