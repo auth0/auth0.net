@@ -57,7 +57,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 return Task.FromResult(default(T));
             }
 
-            public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, IList<FileUploadParameter> files = null, CancellationToken cancellationToken = default)
+            public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, IList<FileUploadParameter> files = null, JsonConverter[] converters = null, CancellationToken cancellationToken = default)
             {
                 return Task.FromResult(default(T));
             }
@@ -104,7 +104,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 return Task.FromResult(default(T));
             }
 
-            public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, IList<FileUploadParameter> files = null, CancellationToken cancellationToken = default)
+            public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, IList<FileUploadParameter> files = null, JsonConverter[] converters = null, CancellationToken cancellationToken = default)
             {
                 LastHeaders = headers;
                 return Task.FromResult(default(T));

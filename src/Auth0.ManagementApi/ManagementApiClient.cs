@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
+using Auth0.ManagementApi.Actions;
 
 namespace Auth0.ManagementApi
 {
@@ -15,6 +16,11 @@ namespace Auth0.ManagementApi
     {
         protected readonly IManagementConnection connection;
         IDisposable connectionToDispose;
+
+        /// <summary>
+        /// Contains all the methods to call the /actions endpoints.
+        /// </summary>
+        public ActionsClient Actions { get; }
 
         /// <summary>
         /// Contains all the methods to call the /blacklists/tokens endpoints.
@@ -151,6 +157,7 @@ namespace Auth0.ManagementApi
 
             var defaultHeaders = CreateDefaultHeaders(token);
 
+            Actions = new ActionsClient(managementConnection, baseUri, defaultHeaders);
             BlacklistedTokens = new BlacklistedTokensClient(managementConnection, baseUri, defaultHeaders);
             Branding = new BrandingClient(managementConnection, baseUri, defaultHeaders);
             ClientGrants = new ClientGrantsClient(managementConnection, baseUri, defaultHeaders);
