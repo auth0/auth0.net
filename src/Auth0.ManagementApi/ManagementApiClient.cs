@@ -17,6 +17,11 @@ namespace Auth0.ManagementApi
         IDisposable connectionToDispose;
 
         /// <summary>
+        /// Contains all the methods to call the /actions endpoints.
+        /// </summary>
+        public ActionsClient Actions { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /blacklists/tokens endpoints.
         /// </summary>
         public BlacklistedTokensClient BlacklistedTokens { get; }
@@ -151,6 +156,7 @@ namespace Auth0.ManagementApi
 
             var defaultHeaders = CreateDefaultHeaders(token);
 
+            Actions = new ActionsClient(managementConnection, baseUri, defaultHeaders);
             BlacklistedTokens = new BlacklistedTokensClient(managementConnection, baseUri, defaultHeaders);
             Branding = new BrandingClient(managementConnection, baseUri, defaultHeaders);
             ClientGrants = new ClientGrantsClient(managementConnection, baseUri, defaultHeaders);

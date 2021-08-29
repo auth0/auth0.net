@@ -62,9 +62,9 @@ namespace Auth0.ManagementApi
         }
 
         /// <inheritdoc />
-        public async Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers, IList<FileUploadParameter> files = null, CancellationToken cancellationToken = default)
+        public async Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers, IList<FileUploadParameter> files = null, JsonConverter[] converters = null, CancellationToken cancellationToken = default)
         {
-            return await Retry(async () => await SendAsyncInternal<T>(method, uri, body, headers, files, cancellationToken)).ConfigureAwait(false);
+            return await Retry(async () => await SendAsyncInternal<T>(method, uri, body, headers, files, converters, cancellationToken)).ConfigureAwait(false);
         }
 
         private async Task<T> GetAsyncInternal<T>(Uri uri, IDictionary<string, string> headers, JsonConverter[] converters = null, CancellationToken cancellationToken = default)
@@ -76,12 +76,12 @@ namespace Auth0.ManagementApi
             }
         }
 
-        private async Task<T> SendAsyncInternal<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers, IList<FileUploadParameter> files = null, CancellationToken cancellationToken = default)
+        private async Task<T> SendAsyncInternal<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers, IList<FileUploadParameter> files = null, JsonConverter[] converters = null, CancellationToken cancellationToken = default)
         {
             using (var request = new HttpRequestMessage(method, uri) { Content = BuildMessageContent(body, files) })
             {
                 ApplyHeaders(request.Headers, headers);
-                return await SendRequest<T>(request, cancellationToken: cancellationToken).ConfigureAwait(false);
+                return await SendRequest<T>(request, converters, cancellationToken).ConfigureAwait(false);
             }
         }
 

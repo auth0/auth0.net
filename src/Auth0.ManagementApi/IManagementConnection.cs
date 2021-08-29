@@ -41,11 +41,12 @@ namespace Auth0.ManagementApi
         /// otherwise <see cref="StringContent"/> containing the JSON representation of the object is expected.</param>
         /// <param name="headers">Dictionary containing additional headers that may override the defaults.</param>
         /// <param name="files">Optional <see cref="IList{FileUploadParameter>"/> containing file contents to upload as a <see cref="MultipartFormDataContent"/> post.</param>
+        /// <param name="converters">Optional array of <see cref="JsonConverter"/>s used to deserialize the resulting <typeparamref name="T"/>.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns><see cref="Task"/> representing the async operation containing response body as <typeparamref name="T"/>.</returns>
         /// <remarks>
         /// <paramref name="files"/> can only be specified if <paramref name="body"/> is a Dictionary%lt;string, object%gt;"/>.
         /// </remarks>
-        Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers, IList<FileUploadParameter> files = null, CancellationToken cancellationToken = default);
+        Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers, IList<FileUploadParameter> files = null, JsonConverter[] converters = null, CancellationToken cancellationToken = default);
     }
 }
