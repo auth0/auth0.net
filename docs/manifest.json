@@ -57,7 +57,7 @@
           "hash": "ELLb3SrLLm2XXFIVjCrlgg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -69,7 +69,7 @@
           "hash": "Anu+xp+sTnc3lAeAjFhZoA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -81,7 +81,7 @@
           "hash": "4YYMT86JLTCfwGQBa+OPdg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -93,7 +93,7 @@
           "hash": "MU9N1IcbBOi1zCBCcjcECg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -710,11 +710,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.ActionsClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.ActionsClient.html",
+          "hash": "V3P5LnkcFNyJTq7T+jOHZg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.BaseClient.yml",
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.BaseClient.html",
-          "hash": "v4KFmYHX84rKy9ZVUX18Fw=="
+          "hash": "E7MbgBho1J3tY37Rh/m8wA=="
         }
       },
       "is_incremental": false,
@@ -1002,7 +1014,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.html",
-          "hash": "EGh6KcgvXyxO2abGH7Tkhw=="
+          "hash": "G1der8TZgY27MPeuKdrWnA=="
         }
       },
       "is_incremental": false,
@@ -1026,7 +1038,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.HttpClientManagementConnection.html",
-          "hash": "0IY/qYTI1GSjMore6sZjPA=="
+          "hash": "zrtzIM8tdFUIEhkQbnskYA=="
         }
       },
       "is_incremental": false,
@@ -1050,7 +1062,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.IManagementConnection.html",
-          "hash": "mncLmzgCrH1s7bmEVowVoA=="
+          "hash": "2DpIMHQ8BxcnWsFtBQOvyA=="
         }
       },
       "is_incremental": false,
@@ -1062,7 +1074,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.ManagementApiClient.html",
-          "hash": "FLEamzRxjHVMVuiI5dQBZg=="
+          "hash": "UagvP64dC4Y6hIdq3NMSYg=="
         }
       },
       "is_incremental": false,
@@ -1087,6 +1099,234 @@
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.AccountLinkResponseProfileData.html",
           "hash": "aIRMr58CeF3f9GBC+21shw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Actions.Action.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Actions.Action.html",
+          "hash": "VQlZnNnYdNN1DfP854ZUWA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Actions.ActionBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Actions.ActionBase.html",
+          "hash": "39mtsZYVUYZsP1qPVpCmsQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Actions.ActionDependency.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Actions.ActionDependency.html",
+          "hash": "MaljK2yCLHP7KAtb+D99Gw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Actions.ActionError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Actions.ActionError.html",
+          "hash": "0dKFnpwVLY0tDsN7krCmXA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Actions.ActionExecution.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Actions.ActionExecution.html",
+          "hash": "JQUN72dwtXB+dBlZ69S6bg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Actions.ActionExecutionResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Actions.ActionExecutionResult.html",
+          "hash": "PT9PJk0gKKRbmbZ21WywiA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Actions.ActionSecret.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Actions.ActionSecret.html",
+          "hash": "mcSwH6v36oYUOd/PXQ4cCA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Actions.ActionSupportedTrigger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Actions.ActionSupportedTrigger.html",
+          "hash": "58y19/wmXf54+dAs1/hk9Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Actions.ActionVersion.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Actions.ActionVersion.html",
+          "hash": "nw+fC/M8x8ee9DKla1slpg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Actions.CreateActionRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Actions.CreateActionRequest.html",
+          "hash": "YN447cDdPeqoyWf+ft7lZg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Actions.DeleteActionRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Actions.DeleteActionRequest.html",
+          "hash": "Niguds/Ei56Kp9vt3mcR1g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Actions.GetActionsRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Actions.GetActionsRequest.html",
+          "hash": "GukvrXjR/uwVm2JFmPlvUA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Actions.Trigger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Actions.Trigger.html",
+          "hash": "bTFg1pvzqfQbVrY7sEjkDQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Actions.TriggerBinding.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Actions.TriggerBinding.html",
+          "hash": "J4F7hTBLC6KYNtgwZFVCLA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Actions.UpdateActionRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Actions.UpdateActionRequest.html",
+          "hash": "FBIYHBVP4FdY+Ic31UvFaw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Actions.UpdateTriggerBindingEntry.BindingRef.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Actions.UpdateTriggerBindingEntry.BindingRef.html",
+          "hash": "cx0+2wedGkpund0phrAfnQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Actions.UpdateTriggerBindingEntry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Actions.UpdateTriggerBindingEntry.html",
+          "hash": "tjBJsCXBrJY+aYNWJ5AFug=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Actions.UpdateTriggerBindingsRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Actions.UpdateTriggerBindingsRequest.html",
+          "hash": "DBNUmTRSNtiYg+I1AAz2Jw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Actions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Actions.html",
+          "hash": "oyJGHRA51dQaSxpllzNH1g=="
         }
       },
       "is_incremental": false,
@@ -3450,7 +3690,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "i1KepoYv1KrPxBhWw5icqw=="
+          "hash": "jcgQgzXsmss7/a/fhvFoHg=="
         }
       },
       "is_incremental": false,
@@ -3472,25 +3712,23 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot build incrementally because docfx version changed from 2.57.2.0 to 2.56.4.0.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "DocfxVersionChanged"
+        "skipped_file_count": 0
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 5,
-          "skipped_file_count": 0
+          "skipped_file_count": 5
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 279,
-          "skipped_file_count": 0
+          "total_file_count": 299,
+          "skipped_file_count": 9
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
