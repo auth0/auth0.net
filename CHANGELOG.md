@@ -4,7 +4,10 @@
 [Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.9.0...release-7.10.0)
 
 **Added**
-- Add support for Actions Management APIs [\#513](https://github.com/auth0/auth0.net/pull/517) ([frederikprijck](https://github.com/frederikprijck))
+- Add support for Actions Management APIs [\#517](https://github.com/auth0/auth0.net/pull/517) ([frederikprijck](https://github.com/frederikprijck))
+
+**Fixed**
+- Ensure Checkpoint Pagination works when no next is returned [\#520](https://github.com/auth0/auth0.net/pull/520) ([frederikprijck](https://github.com/frederikprijck))
 
 ## [release-7.9.0](https://github.com/auth0/auth0.net/tree/release-7.9.0) (2021-08-24)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.8.1...release-7.9.0)
