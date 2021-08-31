@@ -326,15 +326,19 @@ namespace Auth0.ManagementApi.IntegrationTests
                 }
             });
 
-
             var firstCheckPointPaginationRequest = await _apiClient.Roles.GetUsersAsync(role.Id, new Paging.CheckpointPaginationInfo(1));
             var secondCheckPointPaginationRequest = await _apiClient.Roles.GetUsersAsync(role.Id, new Paging.CheckpointPaginationInfo(1, firstCheckPointPaginationRequest.Paging.Next));
 
             secondCheckPointPaginationRequest.Count.Should().Be(1);
             secondCheckPointPaginationRequest.Paging.Next.Should().NotBeNullOrEmpty();
 
+            var checkpointPagingationRequestWithoutNext = await _apiClient.Roles.GetUsersAsync(role.Id, new Paging.CheckpointPaginationInfo(50));
+            checkpointPagingationRequestWithoutNext.Count.Should().Be(2);
+            checkpointPagingationRequestWithoutNext.Paging.Next.Should().BeNullOrEmpty();
+
             await _apiClient.Users.DeleteAsync(user1.UserId);
             await _apiClient.Users.DeleteAsync(user2.UserId);
+            await _apiClient.Roles.DeleteAsync(role.Id);
         }
 
         [Fact]
