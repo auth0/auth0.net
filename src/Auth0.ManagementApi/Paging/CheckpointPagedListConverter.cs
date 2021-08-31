@@ -37,10 +37,7 @@ namespace Auth0.ManagementApi.Paging
                 {
                     var collection = item[_collectionFieldName].ToObject<IList<T>>(serializer);
 
-                    if (item["next"] != null)
-                    {
-                        return new CheckpointPagedList<T>(collection, new CheckpointPagingInformation(item["next"].Value<string>()));
-                    }
+                    return new CheckpointPagedList<T>(collection, new CheckpointPagingInformation(item["next"]?.Value<string>()));
                 }
                 else if (_collectionInDictionary) // Special case to handle User Logs which is returned as a dictionary and not an array
                 {
