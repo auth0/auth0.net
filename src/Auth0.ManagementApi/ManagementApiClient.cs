@@ -92,6 +92,11 @@ namespace Auth0.ManagementApi
         public OrganizationsClient Organizations { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /prompts endpoints.
+        /// </summary>
+        public PromptsClient Prompts { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /resource-servers endpoints.
         /// </summary>
         public ResourceServersClient ResourceServers { get; }
@@ -171,6 +176,7 @@ namespace Auth0.ManagementApi
             Jobs = new JobsClient(managementConnection, baseUri, defaultHeaders);
             Logs = new LogsClient(managementConnection, baseUri, defaultHeaders);
             LogStreams = new LogStreamsClient(managementConnection, baseUri, defaultHeaders);
+            Prompts = new PromptsClient(managementConnection, baseUri, defaultHeaders);
             Organizations = new OrganizationsClient(managementConnection, baseUri, defaultHeaders);
             ResourceServers = new ResourceServersClient(managementConnection, baseUri, defaultHeaders);
             Roles = new RolesClient(managementConnection, baseUri, defaultHeaders);
