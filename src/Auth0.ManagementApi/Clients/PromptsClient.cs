@@ -1,12 +1,9 @@
-﻿using Auth0.ManagementApi.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Auth0.ManagementApi.Models.Prompts;
-
 
 namespace Auth0.ManagementApi.Clients
 {
@@ -39,7 +36,6 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection.GetAsync<Prompt>(BuildUri($"{PromptsBasePath}"), DefaultHeaders, cancellationToken: cancellationToken);
         }
-
 
         /// <summary>
         /// Update prompts settings.

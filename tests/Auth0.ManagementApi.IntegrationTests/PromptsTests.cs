@@ -3,13 +3,11 @@ using FluentAssertions;
 using System.Threading.Tasks;
 using Xunit;
 
-
 namespace Auth0.ManagementApi.IntegrationTests
 {
     public class PromptsTests : TestBase, IAsyncLifetime
     {
         private ManagementApiClient _apiClient;
-
         public async Task InitializeAsync()
         {
             string token = await GenerateManagementApiToken();
@@ -29,6 +27,5 @@ namespace Auth0.ManagementApi.IntegrationTests
             var prompts = await _apiClient.Prompts.GetAsync();
             prompts.Should().NotBeNull();
         }
-
     }
 }
