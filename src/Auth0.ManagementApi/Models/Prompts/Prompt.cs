@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
-using System;
 
-namespace Auth0.ManagementApi.Models
+namespace Auth0.ManagementApi.Models.Prompts
 {
     /// <summary>
     /// Represents Prompt Settings.
