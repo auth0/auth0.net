@@ -1,8 +1,5 @@
-﻿using Auth0.ManagementApi.Models;
-using Auth0.Tests.Shared;
+﻿using Auth0.Tests.Shared;
 using FluentAssertions;
-using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -20,7 +17,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
         }
 
-        public async Task DisposeAsync()
+        public Task DisposeAsync()
         {
             _apiClient.Dispose();
             return Task.CompletedTask;
