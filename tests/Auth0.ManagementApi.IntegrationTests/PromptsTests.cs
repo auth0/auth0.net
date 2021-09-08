@@ -1,6 +1,7 @@
 ﻿using Auth0.Tests.Shared;
 using FluentAssertions;
 using System.Threading.Tasks;
+using Auth0.ManagementApi.Models.Prompts;
 using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
@@ -22,10 +23,25 @@ namespace Auth0.ManagementApi.IntegrationTests
         }
 
         [Fact]
-        public async Task Test_get_prompts()
+        public async Task Test_get_and_update_prompts()
         {
             var prompts = await _apiClient.Prompts.GetAsync();
             prompts.Should().NotBeNull();
+
+            var originalExperience = prompts.UniversalLoginExperience;
+            var newExperience = originalExperience == "classic" ? "new" : "classic";
+
+            await _apiClient.Prompts.UpdateAsync(new PromptUpdateRequest {UniversalLoginExperience = newExperience });
+
+            prompts = await _apiClient.Prompts.GetAsync();
+            prompts.Should().NotBeNull();
+            prompts.UniversalLoginExperience.Should().Be(newExperience);
+
+            await _apiClient.Prompts.UpdateAsync(new PromptUpdateRequest { UniversalLoginExperience = originalExperience });
+
+            prompts = await _apiClient.Prompts.GetAsync();
+            prompts.Should().NotBeNull();
+            prompts.UniversalLoginExperience.Should().Be(originalExperience);
         }
     }
 }
