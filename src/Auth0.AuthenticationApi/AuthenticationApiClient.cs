@@ -34,8 +34,8 @@ namespace Auth0.AuthenticationApi
         /// Defaults to a freshly created <see cref="HttpClientAuthenticationConnection"/> that uses a single <see cref="HttpClient"/>.</param>
         /// <remarks>To use a custom <see cref="HttpClient"/> or <see cref="HttpMessageHandler"/> create a 
         /// <see cref="HttpClientAuthenticationConnection"/> passing that into the constructor. e.g.
-        /// <code>var client = new AuthenticationApiClient(new HttpClientAuthenticationConnection(myHttpClient));</code> or
-        /// <code>var client = new AuthenticationApiClient(new HttpClientAuthenticationConnection(myHttpMessageHandler));</code> or
+        /// <code>var client = new AuthenticationApiClient(baseUri, new HttpClientAuthenticationConnection(myHttpClient));</code> or
+        /// <code>var client = new AuthenticationApiClient(baseUri, new HttpClientAuthenticationConnection(myHttpMessageHandler));</code> or
         /// </remarks>
         public AuthenticationApiClient(Uri baseUri, IAuthenticationConnection connection = null)
         {
@@ -62,8 +62,8 @@ namespace Auth0.AuthenticationApi
         /// Defaults to a freshly created <see cref="HttpClientAuthenticationConnection"/> that uses a single <see cref="HttpClient"/>.</param>
         /// <remarks>To use a custom <see cref="HttpClient"/> or <see cref="HttpMessageHandler"/> create a 
         /// <see cref="HttpClientAuthenticationConnection"/> passing that into the constructor. e.g.
-        /// <code>var client = new AuthenticationApiClient(new HttpClientAuthenticationConnection(myHttpClient));</code> or
-        /// <code>var client = new AuthenticationApiClient(new HttpClientAuthenticationConnection(myHttpMessageHandler));</code> or
+        /// <code>var client = new AuthenticationApiClient(domain, new HttpClientAuthenticationConnection(myHttpClient));</code> or
+        /// <code>var client = new AuthenticationApiClient(domain, new HttpClientAuthenticationConnection(myHttpMessageHandler));</code> or
         /// </remarks>
         public AuthenticationApiClient(string domain, IAuthenticationConnection connection = null)
             : this(new Uri($"https://{domain}"), connection)
