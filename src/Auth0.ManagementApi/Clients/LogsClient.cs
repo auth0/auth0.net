@@ -33,26 +33,29 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>An <see cref="IPagedList{LogEntry}"/> containing the list of log entries.</returns>
-        public Task<IPagedList<LogEntry>> GetAllAsync(GetLogsRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default)
+        public Task<IPagedList<LogEntry>> GetAllAsync(GetLogsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
-            if (pagination == null)
-                throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.GetAsync<IPagedList<LogEntry>>(BuildUri("logs",
-                new Dictionary<string, string>
-                {
-                    {"sort", request.Sort},
-                    {"fields", request.Fields},
-                    {"include_fields", request.IncludeFields?.ToString().ToLower()},
-                    {"from", request.From},
-                    {"take", request.Take?.ToString().ToLower()},
-                    {"q", request.Query},
-                    {"page", pagination.PageNo.ToString()},
-                    {"per_page", pagination.PerPage.ToString()},
-                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }), DefaultHeaders, converters, cancellationToken);
+            var queryStrings = new Dictionary<string, string>
+            {
+                {"sort", request.Sort},
+                {"fields", request.Fields},
+                {"include_fields", request.IncludeFields?.ToString().ToLower()},
+                {"from", request.From},
+                {"take", request.Take?.ToString().ToLower()},
+                {"q", request.Query},
+            };
+
+            if (pagination != null)
+            {
+                queryStrings["page"] = pagination.PageNo.ToString();
+                queryStrings["per_page"] = pagination.PerPage.ToString();
+                queryStrings["include_totals"] = pagination.IncludeTotals.ToString().ToLower();
+            }
+
+            return Connection.GetAsync<IPagedList<LogEntry>>(BuildUri("logs", queryStrings), DefaultHeaders, converters, cancellationToken);
         }
 
         /// <summary>

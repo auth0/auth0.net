@@ -105,5 +105,31 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Assert
             Assert.NotNull(hooks.Paging);
         }
+
+        [Fact]
+        public async Task Test_without_paging()
+        {
+            // Add a new hook
+            var newHook = await _apiClient.Hooks.CreateAsync(new HookCreateRequest()
+            {
+                Name = $"integration-test-hook-{Guid.NewGuid():N}",
+                Script = @"module.exports = function(client, scope, audience, context, callback) { {
+                              // TODO: implement your hook
+                              callback(null, context);
+                            }",
+                Dependencies = JObject.Parse("{ \"auth0\": \"2.32.0\"}"),
+                TriggerId = "credentials-exchange"
+            });
+
+            newHook.Should().NotBeNull();
+            
+            // Act
+            var hooks = await _apiClient.Hooks.GetAllAsync(new GetHooksRequest());
+
+            hooks.Paging.Should().BeNull();
+            hooks.Count.Should().BeGreaterThan(0);
+
+            await _apiClient.Hooks.DeleteAsync(newHook.Id);
+        }
     }
 }

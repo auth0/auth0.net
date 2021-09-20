@@ -86,26 +86,29 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>An <see cref="IPagedList{GetUsersRequest}"/> containing the list of users.</returns>
-        public Task<IPagedList<User>> GetAllAsync(GetUsersRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default)
+        public Task<IPagedList<User>> GetAllAsync(GetUsersRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
-            if (pagination == null)
-                throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.GetAsync<IPagedList<User>>(BuildUri($"users",
-                new Dictionary<string, string>
-                {
-                    {"sort", request.Sort},
-                    {"connection", request.Connection},
-                    {"fields", request.Fields},
-                    {"include_fields", request.IncludeFields?.ToString().ToLower()},
-                    {"q", request.Query},
-                    {"search_engine", request.SearchEngine},
-                    {"page", pagination.PageNo.ToString()},
-                    {"per_page", pagination.PerPage.ToString()},
-                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
-                }), DefaultHeaders, usersConverters, cancellationToken);
+            var queryStrings = new Dictionary<string, string>
+            {
+                {"sort", request.Sort},
+                {"connection", request.Connection},
+                {"fields", request.Fields},
+                {"include_fields", request.IncludeFields?.ToString().ToLower()},
+                {"q", request.Query},
+                {"search_engine", request.SearchEngine},
+            };
+
+            if (pagination != null)
+            {
+                queryStrings["page"] = pagination.PageNo.ToString();
+                queryStrings["per_page"] = pagination.PerPage.ToString();
+                queryStrings["include_totals"] = pagination.IncludeTotals.ToString().ToLower();
+            }
+
+            return Connection.GetAsync<IPagedList<User>>(BuildUri($"users", queryStrings), DefaultHeaders, usersConverters, cancellationToken);
         }
 
         /// <summary>
@@ -139,21 +142,24 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>An <see cref="IPagedList{LogEntry}"/> containing the log entries for the user.</returns>
-        public Task<IPagedList<LogEntry>> GetLogsAsync(GetUserLogsRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default)
+        public Task<IPagedList<LogEntry>> GetLogsAsync(GetUserLogsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
-            if (pagination == null)
-                throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.GetAsync<IPagedList<LogEntry>>(BuildUri($"users/{EncodePath(request.UserId)}/logs",
-                new Dictionary<string, string>
-                {
-                    {"sort", request.Sort},
-                    {"page", pagination.PageNo.ToString()},
-                    {"per_page", pagination.PerPage.ToString()},
-                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }), DefaultHeaders, logsConverters, cancellationToken);
+            var queryStrings = new Dictionary<string, string>
+            {
+                {"sort", request.Sort}
+            };
+
+            if (pagination != null)
+            {
+                queryStrings["page"] = pagination.PageNo.ToString();
+                queryStrings["per_page"] = pagination.PerPage.ToString();
+                queryStrings["include_totals"] = pagination.IncludeTotals.ToString().ToLower();
+            }
+
+            return Connection.GetAsync<IPagedList<LogEntry>>(BuildUri($"users/{EncodePath(request.UserId)}/logs", queryStrings), DefaultHeaders, logsConverters, cancellationToken);
         }
 
         /// <summary>
@@ -163,18 +169,18 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>An <see cref="IPagedList{Role}"/> containing the roles for the user.</returns>
-        public Task<IPagedList<Role>> GetRolesAsync(string userId, PaginationInfo pagination, CancellationToken cancellationToken = default)
+        public Task<IPagedList<Role>> GetRolesAsync(string userId, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
-            if (pagination == null)
-                throw new ArgumentNullException(nameof(pagination));
+            var queryStrings = new Dictionary<string, string>();
 
-            return Connection.GetAsync<IPagedList<Role>>(BuildUri($"users/{EncodePath(userId)}/roles",
-                new Dictionary<string, string>
-                {
-                    {"page", pagination.PageNo.ToString()},
-                    {"per_page", pagination.PerPage.ToString()},
-                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }), DefaultHeaders, rolesConverters, cancellationToken);
+            if (pagination != null)
+            {
+                queryStrings["page"] = pagination.PageNo.ToString();
+                queryStrings["per_page"] = pagination.PerPage.ToString();
+                queryStrings["include_totals"] = pagination.IncludeTotals.ToString().ToLower();
+            }
+
+            return Connection.GetAsync<IPagedList<Role>>(BuildUri($"users/{EncodePath(userId)}/roles", queryStrings), DefaultHeaders, rolesConverters, cancellationToken);
         }
 
         /// <summary>
@@ -309,15 +315,18 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="pagination">Specifies <see cref="PaginationInfo"/> to use in requesting paged results.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>An <see cref="IPagedList{Permission}"/> containing the assigned permissions for this user.</returns>
-        public Task<IPagedList<UserPermission>> GetPermissionsAsync(string id, PaginationInfo pagination, CancellationToken cancellationToken = default)
+        public Task<IPagedList<UserPermission>> GetPermissionsAsync(string id, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
-            return Connection.GetAsync<IPagedList<UserPermission>>(BuildUri($"users/{EncodePath(id)}/permissions",
-                new Dictionary<string, string>
-                {
-                    {"page", pagination.PageNo.ToString()},
-                    {"per_page", pagination.PerPage.ToString()},
-                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }), DefaultHeaders, permissionsConverters, cancellationToken);
+            var queryStrings = new Dictionary<string, string>();
+
+            if (pagination != null)
+            {
+                queryStrings["page"] = pagination.PageNo.ToString();
+                queryStrings["per_page"] = pagination.PerPage.ToString();
+                queryStrings["include_totals"] = pagination.IncludeTotals.ToString().ToLower();
+            }
+
+            return Connection.GetAsync<IPagedList<UserPermission>>(BuildUri($"users/{EncodePath(id)}/permissions", queryStrings), DefaultHeaders, permissionsConverters, cancellationToken);
         }
 
         /// <summary>

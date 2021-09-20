@@ -56,24 +56,27 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>An <see cref="IPagedList{Rule}"/> containing the rules requested.</returns>
-        public Task<IPagedList<Rule>> GetAllAsync(GetRulesRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default)
+        public Task<IPagedList<Rule>> GetAllAsync(GetRulesRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
-            if (pagination == null)
-                throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.GetAsync<IPagedList<Rule>>(BuildUri("rules",
-                new Dictionary<string, string>
-                {
-                    {"enabled", request.Enabled?.ToString().ToLower()},
-                    {"fields", request.Fields},
-                    {"include_fields", request.IncludeFields?.ToString().ToLower()},
-                    {"stage", request.Stage},
-                    {"page", pagination.PageNo.ToString()},
-                    {"per_page", pagination.PerPage.ToString()},
-                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }), DefaultHeaders, rulesConverters, cancellationToken);
+            var queryStrings = new Dictionary<string, string>
+            {
+                {"enabled", request.Enabled?.ToString().ToLower()},
+                {"fields", request.Fields},
+                {"include_fields", request.IncludeFields?.ToString().ToLower()},
+                {"stage", request.Stage}
+            };
+
+            if (pagination != null)
+            {
+                queryStrings["page"] = pagination.PageNo.ToString();
+                queryStrings["per_page"] = pagination.PerPage.ToString();
+                queryStrings["include_totals"] = pagination.IncludeTotals.ToString().ToLower();
+            }
+
+            return Connection.GetAsync<IPagedList<Rule>>(BuildUri("rules", queryStrings), DefaultHeaders, rulesConverters, cancellationToken);
         }
 
         /// <summary>

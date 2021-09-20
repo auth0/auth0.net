@@ -57,23 +57,25 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>An <see cref="IPagedList{Client}"/> containing the clients.</returns>
-        public Task<IPagedList<Client>> GetAllAsync(GetClientsRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default)
+        public Task<IPagedList<Client>> GetAllAsync(GetClientsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
-            if (pagination == null)
-                throw new ArgumentNullException(nameof(pagination));
 
             var queryStrings = new Dictionary<string, string>
             {
                 {"fields", request.Fields},
                 {"include_fields", request.IncludeFields?.ToString().ToLower()},
                 {"is_global", request.IsGlobal?.ToString().ToLower()},
-                {"is_first_party", request.IsFirstParty?.ToString().ToLower()},
-                {"page", pagination.PageNo.ToString()},
-                {"per_page", pagination.PerPage.ToString()},
-                {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
+                {"is_first_party", request.IsFirstParty?.ToString().ToLower()}
             };
+
+            if (pagination != null)
+            {
+                queryStrings["page"] = pagination.PageNo.ToString();
+                queryStrings["per_page"] = pagination.PerPage.ToString();
+                queryStrings["include_totals"] = pagination.IncludeTotals.ToString().ToLower();
+            }
 
             if (request.AppType != null)
                 queryStrings.Add("app_type", string.Join(",", request.AppType.Select(ExtensionMethods.ToEnumString)));

@@ -201,6 +201,18 @@ namespace Auth0.ManagementApi.IntegrationTests
         }
 
         [Fact]
+        public async Task Test_without_paging()
+        {
+            // Act
+            var users = await _apiClient.Users.GetAllAsync(new GetUsersRequest());
+
+            // Assert
+            users.Paging.Should().BeNull();
+            users.Count.Should().BeGreaterThan(0);
+        }
+
+
+        [Fact]
         public async Task Can_update_user_metadata()
         {
             // Add a new user with metadata
