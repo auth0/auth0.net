@@ -56,22 +56,25 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="pagination">Specifies <see cref="PaginationInfo"/> to use in requesting paged results.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="IPagedList{ClientGrant}"/> containing the client grants requested.</returns>
-        public Task<IPagedList<ClientGrant>> GetAllAsync(GetClientGrantsRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default)
+        public Task<IPagedList<ClientGrant>> GetAllAsync(GetClientGrantsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
-            if (pagination == null)
-                throw new ArgumentNullException(nameof(pagination));
 
-            return Connection.GetAsync<IPagedList<ClientGrant>>(BuildUri("client-grants",
-                new Dictionary<string, string>
-                {
-                    {"audience", request.Audience},
-                    {"client_id", request.ClientId},
-                    {"page", pagination.PageNo.ToString()},
-                    {"per_page", pagination.PerPage.ToString()},
-                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }), DefaultHeaders, converters, cancellationToken);
+            var queryStrings = new Dictionary<string, string>
+            {
+                {"audience", request.Audience},
+                {"client_id", request.ClientId},
+            };
+
+            if (pagination != null)
+            {
+                queryStrings["page"] = pagination.PageNo.ToString();
+                queryStrings["per_page"] = pagination.PerPage.ToString();
+                queryStrings["include_totals"] = pagination.IncludeTotals.ToString().ToLower();
+            }
+
+            return Connection.GetAsync<IPagedList<ClientGrant>>(BuildUri("client-grants", queryStrings), DefaultHeaders, converters, cancellationToken);
         }
 
         /// <summary>

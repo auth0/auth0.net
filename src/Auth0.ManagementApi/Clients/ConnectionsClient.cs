@@ -90,22 +90,24 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>An <see cref="IPagedList{Connection}"/> containing the list of connections.</returns>
-        public Task<IPagedList<Connection>> GetAllAsync(GetConnectionsRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default)
+        public Task<IPagedList<Connection>> GetAllAsync(GetConnectionsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
-            if (pagination == null)
-                throw new ArgumentNullException(nameof(pagination));
 
             var queryStrings = new Dictionary<string, string>
             {
                 {"fields", request.Fields},
                 {"include_fields", request.IncludeFields?.ToString().ToLower()},
                 {"name", request.Name},
-                {"page", pagination.PageNo.ToString()},
-                {"per_page", pagination.PerPage.ToString()},
-                {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
             };
+
+            if (pagination != null)
+            {
+                queryStrings["page"] = pagination.PageNo.ToString();
+                queryStrings["per_page"] = pagination.PerPage.ToString();
+                queryStrings["include_totals"] = pagination.IncludeTotals.ToString().ToLower();
+            }
 
             // Add each strategy as a separate querystring
             if (request.Strategy != null)

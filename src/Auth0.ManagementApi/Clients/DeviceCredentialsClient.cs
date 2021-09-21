@@ -58,13 +58,10 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="pagination">Specifies <see cref="PaginationInfo"/> to use in requesting paged results.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A list of <see cref="DeviceCredential"/> which conforms to the criteria specified.</returns>
-        public Task<IPagedList<DeviceCredential>> GetAllAsync(GetDeviceCredentialsRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default)
+        public Task<IPagedList<DeviceCredential>> GetAllAsync(GetDeviceCredentialsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
-
-            if (pagination == null)
-                throw new ArgumentNullException(nameof(pagination));
 
             var queryStrings = new Dictionary<string, string>
                 {
@@ -73,10 +70,14 @@ namespace Auth0.ManagementApi.Clients
                     {"user_id", request.UserId},
                     {"client_id", request.ClientId},
                     {"type", request.Type},
-                    {"page", pagination.PageNo.ToString()},
-                    {"per_page", pagination.PerPage.ToString()},
-                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
                 };
+
+            if (pagination != null)
+            {
+                queryStrings["page"] = pagination.PageNo.ToString();
+                queryStrings["per_page"] = pagination.PerPage.ToString();
+                queryStrings["include_totals"] = pagination.IncludeTotals.ToString().ToLower();
+            }
 
             return Connection.GetAsync<IPagedList<DeviceCredential>>(BuildUri("device-credentials", queryStrings), DefaultHeaders, converters, cancellationToken);
         }

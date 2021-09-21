@@ -97,5 +97,30 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Assert
             Assert.NotNull(rules.Paging);
         }
+
+        [Fact]
+        public async Task Test_without_paging()
+        {
+            // Add a new rule
+            var newRule = await _apiClient.Rules.CreateAsync(new RuleCreateRequest
+            {
+                Name = $"integration-test-rule-{Guid.NewGuid():N}",
+                Script = @"function (user, context, callback) {
+                              // TODO: implement your rule
+                              callback(null, user, context);
+                            }"
+            });
+
+            newRule.Should().NotBeNull();
+
+            // Act
+            var rules = await _apiClient.Rules.GetAllAsync(new GetRulesRequest());
+
+            // Assert
+            rules.Paging.Should().BeNull();
+            rules.Count.Should().BeGreaterThan(0);
+
+            await _apiClient.Rules.DeleteAsync(newRule.Id);
+        }
     }
 }

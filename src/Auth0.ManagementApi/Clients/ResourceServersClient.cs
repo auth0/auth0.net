@@ -66,15 +66,15 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="IPagedList{ResourceServer}"/> containing the list of resource servers.</returns>
-        public Task<IPagedList<ResourceServer>> GetAllAsync(PaginationInfo pagination, CancellationToken cancellationToken = default)
+        public Task<IPagedList<ResourceServer>> GetAllAsync(PaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
             return Connection.GetAsync<IPagedList<ResourceServer>>(BuildUri("resource-servers",
-                new Dictionary<string, string>
+                pagination != null ? new Dictionary<string, string>
                 {
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
-                }), DefaultHeaders, converters, cancellationToken);
+                } : null), DefaultHeaders, converters, cancellationToken);
         }
 
         /// <summary>

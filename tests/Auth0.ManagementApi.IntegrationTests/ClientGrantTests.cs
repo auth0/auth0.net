@@ -140,5 +140,17 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Assert
             Assert.NotNull(grants.Paging);
         }
+
+        [Fact]
+        public async Task Test_without_paging()
+        {
+            // Act
+            var grants = await _apiClient.ClientGrants.GetAllAsync(new GetClientGrantsRequest());
+
+            // Assert
+            Assert.True(grants.Count > 0);
+            Assert.Null(grants.Paging);
+        }
+
     }
 }

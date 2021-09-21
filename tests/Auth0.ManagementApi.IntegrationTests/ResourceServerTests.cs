@@ -124,5 +124,16 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Assert
             Assert.NotNull(resourceServers.Paging);
         }
+
+        [Fact]
+        public async Task Test_without_paging()
+        {
+            // Act
+            var resourceServers = await _apiClient.ResourceServers.GetAllAsync();
+
+            // Assert
+            resourceServers.Paging.Should().BeNull();
+            resourceServers.Count.Should().BeGreaterThan(0);
+        }
     }
 }

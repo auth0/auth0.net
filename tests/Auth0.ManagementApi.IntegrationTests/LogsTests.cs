@@ -69,5 +69,16 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Assert
             Assert.NotNull(logs.Paging);
         }
+
+        [Fact]
+        public async Task Test_without_paging()
+        {
+            // Act
+            var logs = await _apiClient.Logs.GetAllAsync(new GetLogsRequest());
+
+            // Assert
+            logs.Paging.Should().BeNull();
+            logs.Count.Should().BeGreaterThan(0);
+        }
     }
 }

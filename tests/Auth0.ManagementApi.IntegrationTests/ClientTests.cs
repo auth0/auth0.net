@@ -170,6 +170,17 @@ namespace Auth0.ManagementApi.IntegrationTests
         }
 
         [Fact]
+        public async Task Test_without_paging()
+        {
+            // Act
+            var clients = await _apiClient.Clients.GetAllAsync(new GetClientsRequest());
+
+            // Assert
+            Assert.Null(clients.Paging);
+            Assert.True(clients.Count > 0);
+        }
+
+        [Fact]
         public async Task Test_app_type_works_correctly()
         {
             // Add a new client
