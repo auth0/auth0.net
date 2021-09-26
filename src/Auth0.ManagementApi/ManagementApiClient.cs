@@ -77,6 +77,11 @@ namespace Auth0.ManagementApi
         public JobsClient Jobs { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /keys endpoints.
+        /// </summary>
+        public KeysClient Keys { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /logs endpoints.
         /// </summary>
         public LogsClient Logs { get; }
