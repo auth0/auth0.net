@@ -1,14 +1,9 @@
-using System;
-using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
-using Auth0.Core.Exceptions;
 using Auth0.ManagementApi.Models;
 using FluentAssertions;
 using Xunit;
 using Auth0.Tests.Shared;
-using Auth0.ManagementApi.Paging;
-using System.Collections.Generic;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
@@ -44,7 +39,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             var signingKeys = await _apiClient.Keys.GetAllAsync();
 
-            Assert.True(signingKeys.Count() > 0);
+            signingKeys.Any().Should().BeTrue();
         }
 
         [Fact]
@@ -58,23 +53,23 @@ namespace Auth0.ManagementApi.IntegrationTests
             // retrieve the key by id
             var currentKey = await _apiClient.Keys.GetAsync(currentKeyId);
 
-            Assert.Equal(currentKey.Kid, currentKeyId);
+            currentKey.Kid.Should().Be(currentKeyId);
         }
 
         [Fact]
         public async Task Test_keys_rotate_signing_key()
         {
+            // Rotate the signing key
+            var rotateKeyResponse = await _apiClient.Keys.RotateSigningKeyAsync();
+
             // Get all signing key
             var signingKeys = await _apiClient.Keys.GetAllAsync();
 
             // Select the next key
             var nextKey = signingKeys.First(key => key.Next.HasValue && key.Next.Value);
 
-            // Rotate the signing key
-            var rotateKeyResponse = await _apiClient.Keys.RotateSigningKeyAsync();
-
             // Assert
-            Assert.Equal(nextKey.Kid, rotateKeyResponse.Kid);
+            nextKey.Kid.Should().Be(rotateKeyResponse.Kid);
         }
 
         
@@ -84,13 +79,14 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Get all signing keys
             var signingKeys = await _apiClient.Keys.GetAllAsync();
 
-            // Select the current key id
-            var currentKeyId = signingKeys.First(key => key.Current.HasValue && key.Current.Value).Kid;
+            // Select the previous key id
+            var previousKeyId = signingKeys.First(key => key.Previous.HasValue && key.Previous.Value).Kid;
 
             // Revoke the key by id
-            var revoked = await _apiClient.Keys.RevokeSigningKeyAsync(currentKeyId);
+            var revoked = await _apiClient.Keys.RevokeSigningKeyAsync(previousKeyId);
 
-            Assert.Equal(revoked.Kid, currentKeyId);
+            // Assert
+            revoked.Kid.Should().Be(previousKeyId);
         }
     }
 }
