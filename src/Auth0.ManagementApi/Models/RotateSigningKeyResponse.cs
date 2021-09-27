@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi.Models
     public class RotateSigningKeyResponse
     {
         /// <summary>
-        /// The key id of the next signing key
+        /// The id of the next signing key
         /// </summary>
         [JsonProperty("kid")]
         public string Kid { get; set; }
