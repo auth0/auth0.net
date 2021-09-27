@@ -1,6 +1,4 @@
 using Auth0.ManagementApi.Models;
-using Auth0.ManagementApi.Paging;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -14,11 +12,6 @@ namespace Auth0.ManagementApi.Clients
     /// </summary>
     public class KeysClient : BaseClient
     {
-        readonly JsonConverter[] keysConverters = new JsonConverter[] { new PagedListConverter<SigningKey>("keys") };
-        //readonly JsonConverter[] assignedUsersConverters = new JsonConverter[] { new PagedListConverter<AssignedUser>("users") };
-        //readonly JsonConverter[] assignedUsersCheckpointConverters = new JsonConverter[] { new CheckpointPagedListConverter<AssignedUser>("users") };
-        //readonly JsonConverter[] permissionsConverters = new JsonConverter[] { new PagedListConverter<Permission>("permissions") };
-
         /// <summary>
         /// Initializes a new instance of the <see cref="KeysClient"/> class.
         /// </summary>
