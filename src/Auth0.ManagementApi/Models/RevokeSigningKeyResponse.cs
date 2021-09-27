@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace Auth0.ManagementApi.Models
 {
-    public abstract class RevokeSigningKeyResponse
+    public class RevokeSigningKeyResponse
     {
         /// <summary>
         /// The key id of the revoked signing key

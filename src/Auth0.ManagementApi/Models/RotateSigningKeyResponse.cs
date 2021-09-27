@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace Auth0.ManagementApi.Models
 {
-    public abstract class RotateSigningKeyResponse
+    public class RotateSigningKeyResponse
     {
         /// <summary>
         /// The key id of the next signing key
