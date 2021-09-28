@@ -8,7 +8,6 @@ namespace Auth0.ManagementApi.Models
     /// </summary>
     public class SigningKey
     {
-
         /// <summary>
         /// 
         /// </summary>
