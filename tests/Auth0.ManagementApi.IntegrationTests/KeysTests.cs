@@ -15,9 +15,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
         public async Task InitializeAsync()
         {
-            string token = await GenerateManagementApiToken();
-
-            _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+            await GetTokenAndInitializeAsync();
 
             // We will need a connection to add the roles to...
             _connection = await _apiClient.Connections.CreateAsync(new ConnectionCreateRequest
@@ -26,6 +24,13 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Strategy = "auth0",
                 EnabledClients = new[] {GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID")}
             });
+        }
+
+        private async Task GetTokenAndInitializeAsync()
+        {
+            string token = await GenerateManagementApiToken();
+
+            _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
         }
 
         public async Task DisposeAsync()
@@ -56,11 +61,13 @@ namespace Auth0.ManagementApi.IntegrationTests
             currentKey.Kid.Should().Be(currentKeyId);
         }
 
-        [Fact]
+        [Fact(Skip = "Run Manual")]
         public async Task Test_keys_rotate_signing_key()
         {
             // Rotate the signing key
             var rotateKeyResponse = await _apiClient.Keys.RotateSigningKeyAsync();
+            
+            await GetTokenAndInitializeAsync();
 
             // Get all signing key
             var signingKeys = await _apiClient.Keys.GetAllAsync();
@@ -73,9 +80,14 @@ namespace Auth0.ManagementApi.IntegrationTests
         }
 
         
-        [Fact]
+        [Fact(Skip = "Run Manual")]
         public async Task Test_keys_can_be_revoked_by_kid()
         {
+            // Rotate the signing key before we revoke
+            var rotateKeyResponse = await _apiClient.Keys.RotateSigningKeyAsync();
+
+            await GetTokenAndInitializeAsync();
+
             // Get all signing keys
             var signingKeys = await _apiClient.Keys.GetAllAsync();
 
