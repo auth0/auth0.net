@@ -1,8 +1,7 @@
 ﻿using System;
-
 using Newtonsoft.Json;
 
-namespace Auth0.ManagementApi.Models
+namespace Auth0.ManagementApi.Models.Keys
 {
 
     /// <summary>
