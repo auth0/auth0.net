@@ -27,10 +27,10 @@ namespace Auth0.ManagementApi.Clients
         /// Get all Application Signing Keys
         /// </summary>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>All available signing keys <see cref="SigningKey" />.</returns>
-        public Task<IList<SigningKey>> GetAllAsync(CancellationToken cancellationToken = default)
+        /// <returns>All available signing keys <see cref="Key" />.</returns>
+        public Task<IList<Key>> GetAllAsync(CancellationToken cancellationToken = default)
         {
-            return Connection.GetAsync<IList<SigningKey>>(BuildUri("keys/signing"), DefaultHeaders, cancellationToken: cancellationToken);
+            return Connection.GetAsync<IList<Key>>(BuildUri("keys/signing"), DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -38,17 +38,17 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="kid">The ID of the key to retrieve.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>The <see cref="SigningKey"/> that was requested.</returns>
-        public Task<SigningKey> GetAsync(string kid, CancellationToken cancellationToken = default)
+        /// <returns>The <see cref="Key"/> that was requested.</returns>
+        public Task<Key> GetAsync(string kid, CancellationToken cancellationToken = default)
         {
-            return Connection.GetAsync<SigningKey>(BuildUri($"keys/signing/{EncodePath(kid)}"), DefaultHeaders, cancellationToken: cancellationToken);
+            return Connection.GetAsync<Key>(BuildUri($"keys/signing/{EncodePath(kid)}"), DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <summary>
-        /// Rotate the Application Signing Key
+        /// Rotate the Application Signing Key.
         /// </summary>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>The next <see cref="SigningKey" /> cert and kid.</returns>
+        /// <returns>The next rotated key's cert and kid.</returns>
         public Task<RotateSigningKeyResponse> RotateSigningKeyAsync( CancellationToken cancellationToken = default)
         {
             return Connection.SendAsync<RotateSigningKeyResponse>(HttpMethod.Post, BuildUri("keys/signing/rotate"), null, DefaultHeaders, cancellationToken: cancellationToken);
@@ -59,7 +59,7 @@ namespace Auth0.ManagementApi.Clients
         /// </summary>
         /// <param name="kid">The ID of the key to revoke.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>The <see cref="SigningKey"/> that was requested.</returns>
+        /// <returns>The revoked key's cert and kid.</returns>
         public Task<RevokeSigningKeyResponse> RevokeSigningKeyAsync(string kid, CancellationToken cancellationToken = default)
         {
             return Connection.SendAsync<RevokeSigningKeyResponse>(HttpMethod.Put, BuildUri($"keys/signing/{EncodePath(kid)}/revoke"), null, DefaultHeaders, cancellationToken: cancellationToken);
