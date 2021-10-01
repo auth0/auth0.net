@@ -4597,6 +4597,80 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.JobsClient.SendVerificationEmailAsync
   nameWithType: JobsClient.SendVerificationEmailAsync
+- uid: Auth0.ManagementApi.Clients.KeysClient
+  name: KeysClient
+  href: api/Auth0.ManagementApi.Clients.KeysClient.html
+  commentId: T:Auth0.ManagementApi.Clients.KeysClient
+  fullName: Auth0.ManagementApi.Clients.KeysClient
+  nameWithType: KeysClient
+- uid: Auth0.ManagementApi.Clients.KeysClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})
+  name: KeysClient(IManagementConnection, Uri, IDictionary<String, String>)
+  href: api/Auth0.ManagementApi.Clients.KeysClient.html#Auth0_ManagementApi_Clients_KeysClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__
+  commentId: M:Auth0.ManagementApi.Clients.KeysClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})
+  name.vb: KeysClient(IManagementConnection, Uri, IDictionary(Of String, String))
+  fullName: Auth0.ManagementApi.Clients.KeysClient.KeysClient(Auth0.ManagementApi.IManagementConnection, System.Uri, System.Collections.Generic.IDictionary<System.String, System.String>)
+  fullName.vb: Auth0.ManagementApi.Clients.KeysClient.KeysClient(Auth0.ManagementApi.IManagementConnection, System.Uri, System.Collections.Generic.IDictionary(Of System.String, System.String))
+  nameWithType: KeysClient.KeysClient(IManagementConnection, Uri, IDictionary<String, String>)
+  nameWithType.vb: KeysClient.KeysClient(IManagementConnection, Uri, IDictionary(Of String, String))
+- uid: Auth0.ManagementApi.Clients.KeysClient.#ctor*
+  name: KeysClient
+  href: api/Auth0.ManagementApi.Clients.KeysClient.html#Auth0_ManagementApi_Clients_KeysClient__ctor_
+  commentId: Overload:Auth0.ManagementApi.Clients.KeysClient.#ctor
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.KeysClient.KeysClient
+  nameWithType: KeysClient.KeysClient
+- uid: Auth0.ManagementApi.Clients.KeysClient.GetAllAsync(System.Threading.CancellationToken)
+  name: GetAllAsync(CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.KeysClient.html#Auth0_ManagementApi_Clients_KeysClient_GetAllAsync_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.KeysClient.GetAllAsync(System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.KeysClient.GetAllAsync(System.Threading.CancellationToken)
+  nameWithType: KeysClient.GetAllAsync(CancellationToken)
+- uid: Auth0.ManagementApi.Clients.KeysClient.GetAllAsync*
+  name: GetAllAsync
+  href: api/Auth0.ManagementApi.Clients.KeysClient.html#Auth0_ManagementApi_Clients_KeysClient_GetAllAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.KeysClient.GetAllAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.KeysClient.GetAllAsync
+  nameWithType: KeysClient.GetAllAsync
+- uid: Auth0.ManagementApi.Clients.KeysClient.GetAsync(System.String,System.Threading.CancellationToken)
+  name: GetAsync(String, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.KeysClient.html#Auth0_ManagementApi_Clients_KeysClient_GetAsync_System_String_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.KeysClient.GetAsync(System.String,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.KeysClient.GetAsync(System.String, System.Threading.CancellationToken)
+  nameWithType: KeysClient.GetAsync(String, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.KeysClient.GetAsync*
+  name: GetAsync
+  href: api/Auth0.ManagementApi.Clients.KeysClient.html#Auth0_ManagementApi_Clients_KeysClient_GetAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.KeysClient.GetAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.KeysClient.GetAsync
+  nameWithType: KeysClient.GetAsync
+- uid: Auth0.ManagementApi.Clients.KeysClient.RevokeSigningKeyAsync(System.String,System.Threading.CancellationToken)
+  name: RevokeSigningKeyAsync(String, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.KeysClient.html#Auth0_ManagementApi_Clients_KeysClient_RevokeSigningKeyAsync_System_String_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.KeysClient.RevokeSigningKeyAsync(System.String,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.KeysClient.RevokeSigningKeyAsync(System.String, System.Threading.CancellationToken)
+  nameWithType: KeysClient.RevokeSigningKeyAsync(String, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.KeysClient.RevokeSigningKeyAsync*
+  name: RevokeSigningKeyAsync
+  href: api/Auth0.ManagementApi.Clients.KeysClient.html#Auth0_ManagementApi_Clients_KeysClient_RevokeSigningKeyAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.KeysClient.RevokeSigningKeyAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.KeysClient.RevokeSigningKeyAsync
+  nameWithType: KeysClient.RevokeSigningKeyAsync
+- uid: Auth0.ManagementApi.Clients.KeysClient.RotateSigningKeyAsync(System.Threading.CancellationToken)
+  name: RotateSigningKeyAsync(CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.KeysClient.html#Auth0_ManagementApi_Clients_KeysClient_RotateSigningKeyAsync_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.KeysClient.RotateSigningKeyAsync(System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.KeysClient.RotateSigningKeyAsync(System.Threading.CancellationToken)
+  nameWithType: KeysClient.RotateSigningKeyAsync(CancellationToken)
+- uid: Auth0.ManagementApi.Clients.KeysClient.RotateSigningKeyAsync*
+  name: RotateSigningKeyAsync
+  href: api/Auth0.ManagementApi.Clients.KeysClient.html#Auth0_ManagementApi_Clients_KeysClient_RotateSigningKeyAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.KeysClient.RotateSigningKeyAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.KeysClient.RotateSigningKeyAsync
+  nameWithType: KeysClient.RotateSigningKeyAsync
 - uid: Auth0.ManagementApi.Clients.LogsClient
   name: LogsClient
   href: api/Auth0.ManagementApi.Clients.LogsClient.html
@@ -5039,6 +5113,54 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.OrganizationsClient.UpdateConnectionAsync
   nameWithType: OrganizationsClient.UpdateConnectionAsync
+- uid: Auth0.ManagementApi.Clients.PromptsClient
+  name: PromptsClient
+  href: api/Auth0.ManagementApi.Clients.PromptsClient.html
+  commentId: T:Auth0.ManagementApi.Clients.PromptsClient
+  fullName: Auth0.ManagementApi.Clients.PromptsClient
+  nameWithType: PromptsClient
+- uid: Auth0.ManagementApi.Clients.PromptsClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})
+  name: PromptsClient(IManagementConnection, Uri, IDictionary<String, String>)
+  href: api/Auth0.ManagementApi.Clients.PromptsClient.html#Auth0_ManagementApi_Clients_PromptsClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__
+  commentId: M:Auth0.ManagementApi.Clients.PromptsClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})
+  name.vb: PromptsClient(IManagementConnection, Uri, IDictionary(Of String, String))
+  fullName: Auth0.ManagementApi.Clients.PromptsClient.PromptsClient(Auth0.ManagementApi.IManagementConnection, System.Uri, System.Collections.Generic.IDictionary<System.String, System.String>)
+  fullName.vb: Auth0.ManagementApi.Clients.PromptsClient.PromptsClient(Auth0.ManagementApi.IManagementConnection, System.Uri, System.Collections.Generic.IDictionary(Of System.String, System.String))
+  nameWithType: PromptsClient.PromptsClient(IManagementConnection, Uri, IDictionary<String, String>)
+  nameWithType.vb: PromptsClient.PromptsClient(IManagementConnection, Uri, IDictionary(Of String, String))
+- uid: Auth0.ManagementApi.Clients.PromptsClient.#ctor*
+  name: PromptsClient
+  href: api/Auth0.ManagementApi.Clients.PromptsClient.html#Auth0_ManagementApi_Clients_PromptsClient__ctor_
+  commentId: Overload:Auth0.ManagementApi.Clients.PromptsClient.#ctor
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.PromptsClient.PromptsClient
+  nameWithType: PromptsClient.PromptsClient
+- uid: Auth0.ManagementApi.Clients.PromptsClient.GetAsync(System.Threading.CancellationToken)
+  name: GetAsync(CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.PromptsClient.html#Auth0_ManagementApi_Clients_PromptsClient_GetAsync_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.PromptsClient.GetAsync(System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.PromptsClient.GetAsync(System.Threading.CancellationToken)
+  nameWithType: PromptsClient.GetAsync(CancellationToken)
+- uid: Auth0.ManagementApi.Clients.PromptsClient.GetAsync*
+  name: GetAsync
+  href: api/Auth0.ManagementApi.Clients.PromptsClient.html#Auth0_ManagementApi_Clients_PromptsClient_GetAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.PromptsClient.GetAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.PromptsClient.GetAsync
+  nameWithType: PromptsClient.GetAsync
+- uid: Auth0.ManagementApi.Clients.PromptsClient.UpdateAsync(Auth0.ManagementApi.Models.Prompts.PromptUpdateRequest,System.Threading.CancellationToken)
+  name: UpdateAsync(PromptUpdateRequest, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.PromptsClient.html#Auth0_ManagementApi_Clients_PromptsClient_UpdateAsync_Auth0_ManagementApi_Models_Prompts_PromptUpdateRequest_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.PromptsClient.UpdateAsync(Auth0.ManagementApi.Models.Prompts.PromptUpdateRequest,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.PromptsClient.UpdateAsync(Auth0.ManagementApi.Models.Prompts.PromptUpdateRequest, System.Threading.CancellationToken)
+  nameWithType: PromptsClient.UpdateAsync(PromptUpdateRequest, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.PromptsClient.UpdateAsync*
+  name: UpdateAsync
+  href: api/Auth0.ManagementApi.Clients.PromptsClient.html#Auth0_ManagementApi_Clients_PromptsClient_UpdateAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.PromptsClient.UpdateAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.PromptsClient.UpdateAsync
+  nameWithType: PromptsClient.UpdateAsync
 - uid: Auth0.ManagementApi.Clients.ResourceServersClient
   name: ResourceServersClient
   href: api/Auth0.ManagementApi.Clients.ResourceServersClient.html
@@ -6250,6 +6372,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.ManagementApiClient.Jobs
   nameWithType: ManagementApiClient.Jobs
+- uid: Auth0.ManagementApi.ManagementApiClient.Keys
+  name: Keys
+  href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_Keys
+  commentId: P:Auth0.ManagementApi.ManagementApiClient.Keys
+  fullName: Auth0.ManagementApi.ManagementApiClient.Keys
+  nameWithType: ManagementApiClient.Keys
+- uid: Auth0.ManagementApi.ManagementApiClient.Keys*
+  name: Keys
+  href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_Keys_
+  commentId: Overload:Auth0.ManagementApi.ManagementApiClient.Keys
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.ManagementApiClient.Keys
+  nameWithType: ManagementApiClient.Keys
 - uid: Auth0.ManagementApi.ManagementApiClient.Logs
   name: Logs
   href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_Logs
@@ -6289,6 +6424,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.ManagementApiClient.Organizations
   nameWithType: ManagementApiClient.Organizations
+- uid: Auth0.ManagementApi.ManagementApiClient.Prompts
+  name: Prompts
+  href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_Prompts
+  commentId: P:Auth0.ManagementApi.ManagementApiClient.Prompts
+  fullName: Auth0.ManagementApi.ManagementApiClient.Prompts
+  nameWithType: ManagementApiClient.Prompts
+- uid: Auth0.ManagementApi.ManagementApiClient.Prompts*
+  name: Prompts
+  href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_Prompts_
+  commentId: Overload:Auth0.ManagementApi.ManagementApiClient.Prompts
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.ManagementApiClient.Prompts
+  nameWithType: ManagementApiClient.Prompts
 - uid: Auth0.ManagementApi.ManagementApiClient.ResourceServers
   name: ResourceServers
   href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_ResourceServers
@@ -11766,6 +11914,238 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.JwtConfiguration.SigningAlgorithm
   nameWithType: JwtConfiguration.SigningAlgorithm
+- uid: Auth0.ManagementApi.Models.Keys
+  name: Auth0.ManagementApi.Models.Keys
+  href: api/Auth0.ManagementApi.Models.Keys.html
+  commentId: N:Auth0.ManagementApi.Models.Keys
+  fullName: Auth0.ManagementApi.Models.Keys
+  nameWithType: Auth0.ManagementApi.Models.Keys
+- uid: Auth0.ManagementApi.Models.Keys.Key
+  name: Key
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html
+  commentId: T:Auth0.ManagementApi.Models.Keys.Key
+  fullName: Auth0.ManagementApi.Models.Keys.Key
+  nameWithType: Key
+- uid: Auth0.ManagementApi.Models.Keys.Key.Cert
+  name: Cert
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_Cert
+  commentId: P:Auth0.ManagementApi.Models.Keys.Key.Cert
+  fullName: Auth0.ManagementApi.Models.Keys.Key.Cert
+  nameWithType: Key.Cert
+- uid: Auth0.ManagementApi.Models.Keys.Key.Cert*
+  name: Cert
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_Cert_
+  commentId: Overload:Auth0.ManagementApi.Models.Keys.Key.Cert
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Keys.Key.Cert
+  nameWithType: Key.Cert
+- uid: Auth0.ManagementApi.Models.Keys.Key.Current
+  name: Current
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_Current
+  commentId: P:Auth0.ManagementApi.Models.Keys.Key.Current
+  fullName: Auth0.ManagementApi.Models.Keys.Key.Current
+  nameWithType: Key.Current
+- uid: Auth0.ManagementApi.Models.Keys.Key.Current*
+  name: Current
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_Current_
+  commentId: Overload:Auth0.ManagementApi.Models.Keys.Key.Current
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Keys.Key.Current
+  nameWithType: Key.Current
+- uid: Auth0.ManagementApi.Models.Keys.Key.CurrentSince
+  name: CurrentSince
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_CurrentSince
+  commentId: P:Auth0.ManagementApi.Models.Keys.Key.CurrentSince
+  fullName: Auth0.ManagementApi.Models.Keys.Key.CurrentSince
+  nameWithType: Key.CurrentSince
+- uid: Auth0.ManagementApi.Models.Keys.Key.CurrentSince*
+  name: CurrentSince
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_CurrentSince_
+  commentId: Overload:Auth0.ManagementApi.Models.Keys.Key.CurrentSince
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Keys.Key.CurrentSince
+  nameWithType: Key.CurrentSince
+- uid: Auth0.ManagementApi.Models.Keys.Key.CurrentUntil
+  name: CurrentUntil
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_CurrentUntil
+  commentId: P:Auth0.ManagementApi.Models.Keys.Key.CurrentUntil
+  fullName: Auth0.ManagementApi.Models.Keys.Key.CurrentUntil
+  nameWithType: Key.CurrentUntil
+- uid: Auth0.ManagementApi.Models.Keys.Key.CurrentUntil*
+  name: CurrentUntil
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_CurrentUntil_
+  commentId: Overload:Auth0.ManagementApi.Models.Keys.Key.CurrentUntil
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Keys.Key.CurrentUntil
+  nameWithType: Key.CurrentUntil
+- uid: Auth0.ManagementApi.Models.Keys.Key.Fingerprint
+  name: Fingerprint
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_Fingerprint
+  commentId: P:Auth0.ManagementApi.Models.Keys.Key.Fingerprint
+  fullName: Auth0.ManagementApi.Models.Keys.Key.Fingerprint
+  nameWithType: Key.Fingerprint
+- uid: Auth0.ManagementApi.Models.Keys.Key.Fingerprint*
+  name: Fingerprint
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_Fingerprint_
+  commentId: Overload:Auth0.ManagementApi.Models.Keys.Key.Fingerprint
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Keys.Key.Fingerprint
+  nameWithType: Key.Fingerprint
+- uid: Auth0.ManagementApi.Models.Keys.Key.Kid
+  name: Kid
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_Kid
+  commentId: P:Auth0.ManagementApi.Models.Keys.Key.Kid
+  fullName: Auth0.ManagementApi.Models.Keys.Key.Kid
+  nameWithType: Key.Kid
+- uid: Auth0.ManagementApi.Models.Keys.Key.Kid*
+  name: Kid
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_Kid_
+  commentId: Overload:Auth0.ManagementApi.Models.Keys.Key.Kid
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Keys.Key.Kid
+  nameWithType: Key.Kid
+- uid: Auth0.ManagementApi.Models.Keys.Key.Next
+  name: Next
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_Next
+  commentId: P:Auth0.ManagementApi.Models.Keys.Key.Next
+  fullName: Auth0.ManagementApi.Models.Keys.Key.Next
+  nameWithType: Key.Next
+- uid: Auth0.ManagementApi.Models.Keys.Key.Next*
+  name: Next
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_Next_
+  commentId: Overload:Auth0.ManagementApi.Models.Keys.Key.Next
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Keys.Key.Next
+  nameWithType: Key.Next
+- uid: Auth0.ManagementApi.Models.Keys.Key.Pkcs7
+  name: Pkcs7
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_Pkcs7
+  commentId: P:Auth0.ManagementApi.Models.Keys.Key.Pkcs7
+  fullName: Auth0.ManagementApi.Models.Keys.Key.Pkcs7
+  nameWithType: Key.Pkcs7
+- uid: Auth0.ManagementApi.Models.Keys.Key.Pkcs7*
+  name: Pkcs7
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_Pkcs7_
+  commentId: Overload:Auth0.ManagementApi.Models.Keys.Key.Pkcs7
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Keys.Key.Pkcs7
+  nameWithType: Key.Pkcs7
+- uid: Auth0.ManagementApi.Models.Keys.Key.Previous
+  name: Previous
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_Previous
+  commentId: P:Auth0.ManagementApi.Models.Keys.Key.Previous
+  fullName: Auth0.ManagementApi.Models.Keys.Key.Previous
+  nameWithType: Key.Previous
+- uid: Auth0.ManagementApi.Models.Keys.Key.Previous*
+  name: Previous
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_Previous_
+  commentId: Overload:Auth0.ManagementApi.Models.Keys.Key.Previous
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Keys.Key.Previous
+  nameWithType: Key.Previous
+- uid: Auth0.ManagementApi.Models.Keys.Key.Revoked
+  name: Revoked
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_Revoked
+  commentId: P:Auth0.ManagementApi.Models.Keys.Key.Revoked
+  fullName: Auth0.ManagementApi.Models.Keys.Key.Revoked
+  nameWithType: Key.Revoked
+- uid: Auth0.ManagementApi.Models.Keys.Key.Revoked*
+  name: Revoked
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_Revoked_
+  commentId: Overload:Auth0.ManagementApi.Models.Keys.Key.Revoked
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Keys.Key.Revoked
+  nameWithType: Key.Revoked
+- uid: Auth0.ManagementApi.Models.Keys.Key.RevokedAt
+  name: RevokedAt
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_RevokedAt
+  commentId: P:Auth0.ManagementApi.Models.Keys.Key.RevokedAt
+  fullName: Auth0.ManagementApi.Models.Keys.Key.RevokedAt
+  nameWithType: Key.RevokedAt
+- uid: Auth0.ManagementApi.Models.Keys.Key.RevokedAt*
+  name: RevokedAt
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_RevokedAt_
+  commentId: Overload:Auth0.ManagementApi.Models.Keys.Key.RevokedAt
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Keys.Key.RevokedAt
+  nameWithType: Key.RevokedAt
+- uid: Auth0.ManagementApi.Models.Keys.Key.Thumbprint
+  name: Thumbprint
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_Thumbprint
+  commentId: P:Auth0.ManagementApi.Models.Keys.Key.Thumbprint
+  fullName: Auth0.ManagementApi.Models.Keys.Key.Thumbprint
+  nameWithType: Key.Thumbprint
+- uid: Auth0.ManagementApi.Models.Keys.Key.Thumbprint*
+  name: Thumbprint
+  href: api/Auth0.ManagementApi.Models.Keys.Key.html#Auth0_ManagementApi_Models_Keys_Key_Thumbprint_
+  commentId: Overload:Auth0.ManagementApi.Models.Keys.Key.Thumbprint
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Keys.Key.Thumbprint
+  nameWithType: Key.Thumbprint
+- uid: Auth0.ManagementApi.Models.Keys.RevokeSigningKeyResponse
+  name: RevokeSigningKeyResponse
+  href: api/Auth0.ManagementApi.Models.Keys.RevokeSigningKeyResponse.html
+  commentId: T:Auth0.ManagementApi.Models.Keys.RevokeSigningKeyResponse
+  fullName: Auth0.ManagementApi.Models.Keys.RevokeSigningKeyResponse
+  nameWithType: RevokeSigningKeyResponse
+- uid: Auth0.ManagementApi.Models.Keys.RevokeSigningKeyResponse.Cert
+  name: Cert
+  href: api/Auth0.ManagementApi.Models.Keys.RevokeSigningKeyResponse.html#Auth0_ManagementApi_Models_Keys_RevokeSigningKeyResponse_Cert
+  commentId: P:Auth0.ManagementApi.Models.Keys.RevokeSigningKeyResponse.Cert
+  fullName: Auth0.ManagementApi.Models.Keys.RevokeSigningKeyResponse.Cert
+  nameWithType: RevokeSigningKeyResponse.Cert
+- uid: Auth0.ManagementApi.Models.Keys.RevokeSigningKeyResponse.Cert*
+  name: Cert
+  href: api/Auth0.ManagementApi.Models.Keys.RevokeSigningKeyResponse.html#Auth0_ManagementApi_Models_Keys_RevokeSigningKeyResponse_Cert_
+  commentId: Overload:Auth0.ManagementApi.Models.Keys.RevokeSigningKeyResponse.Cert
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Keys.RevokeSigningKeyResponse.Cert
+  nameWithType: RevokeSigningKeyResponse.Cert
+- uid: Auth0.ManagementApi.Models.Keys.RevokeSigningKeyResponse.Kid
+  name: Kid
+  href: api/Auth0.ManagementApi.Models.Keys.RevokeSigningKeyResponse.html#Auth0_ManagementApi_Models_Keys_RevokeSigningKeyResponse_Kid
+  commentId: P:Auth0.ManagementApi.Models.Keys.RevokeSigningKeyResponse.Kid
+  fullName: Auth0.ManagementApi.Models.Keys.RevokeSigningKeyResponse.Kid
+  nameWithType: RevokeSigningKeyResponse.Kid
+- uid: Auth0.ManagementApi.Models.Keys.RevokeSigningKeyResponse.Kid*
+  name: Kid
+  href: api/Auth0.ManagementApi.Models.Keys.RevokeSigningKeyResponse.html#Auth0_ManagementApi_Models_Keys_RevokeSigningKeyResponse_Kid_
+  commentId: Overload:Auth0.ManagementApi.Models.Keys.RevokeSigningKeyResponse.Kid
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Keys.RevokeSigningKeyResponse.Kid
+  nameWithType: RevokeSigningKeyResponse.Kid
+- uid: Auth0.ManagementApi.Models.Keys.RotateSigningKeyResponse
+  name: RotateSigningKeyResponse
+  href: api/Auth0.ManagementApi.Models.Keys.RotateSigningKeyResponse.html
+  commentId: T:Auth0.ManagementApi.Models.Keys.RotateSigningKeyResponse
+  fullName: Auth0.ManagementApi.Models.Keys.RotateSigningKeyResponse
+  nameWithType: RotateSigningKeyResponse
+- uid: Auth0.ManagementApi.Models.Keys.RotateSigningKeyResponse.Cert
+  name: Cert
+  href: api/Auth0.ManagementApi.Models.Keys.RotateSigningKeyResponse.html#Auth0_ManagementApi_Models_Keys_RotateSigningKeyResponse_Cert
+  commentId: P:Auth0.ManagementApi.Models.Keys.RotateSigningKeyResponse.Cert
+  fullName: Auth0.ManagementApi.Models.Keys.RotateSigningKeyResponse.Cert
+  nameWithType: RotateSigningKeyResponse.Cert
+- uid: Auth0.ManagementApi.Models.Keys.RotateSigningKeyResponse.Cert*
+  name: Cert
+  href: api/Auth0.ManagementApi.Models.Keys.RotateSigningKeyResponse.html#Auth0_ManagementApi_Models_Keys_RotateSigningKeyResponse_Cert_
+  commentId: Overload:Auth0.ManagementApi.Models.Keys.RotateSigningKeyResponse.Cert
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Keys.RotateSigningKeyResponse.Cert
+  nameWithType: RotateSigningKeyResponse.Cert
+- uid: Auth0.ManagementApi.Models.Keys.RotateSigningKeyResponse.Kid
+  name: Kid
+  href: api/Auth0.ManagementApi.Models.Keys.RotateSigningKeyResponse.html#Auth0_ManagementApi_Models_Keys_RotateSigningKeyResponse_Kid
+  commentId: P:Auth0.ManagementApi.Models.Keys.RotateSigningKeyResponse.Kid
+  fullName: Auth0.ManagementApi.Models.Keys.RotateSigningKeyResponse.Kid
+  nameWithType: RotateSigningKeyResponse.Kid
+- uid: Auth0.ManagementApi.Models.Keys.RotateSigningKeyResponse.Kid*
+  name: Kid
+  href: api/Auth0.ManagementApi.Models.Keys.RotateSigningKeyResponse.html#Auth0_ManagementApi_Models_Keys_RotateSigningKeyResponse_Kid_
+  commentId: Overload:Auth0.ManagementApi.Models.Keys.RotateSigningKeyResponse.Kid
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Keys.RotateSigningKeyResponse.Kid
+  nameWithType: RotateSigningKeyResponse.Kid
 - uid: Auth0.ManagementApi.Models.LogEntry
   name: LogEntry
   href: api/Auth0.ManagementApi.Models.LogEntry.html
@@ -13417,6 +13797,63 @@ references:
   commentId: F:Auth0.ManagementApi.Models.PermissionSourceType.Role
   fullName: Auth0.ManagementApi.Models.PermissionSourceType.Role
   nameWithType: PermissionSourceType.Role
+- uid: Auth0.ManagementApi.Models.Prompts
+  name: Auth0.ManagementApi.Models.Prompts
+  href: api/Auth0.ManagementApi.Models.Prompts.html
+  commentId: N:Auth0.ManagementApi.Models.Prompts
+  fullName: Auth0.ManagementApi.Models.Prompts
+  nameWithType: Auth0.ManagementApi.Models.Prompts
+- uid: Auth0.ManagementApi.Models.Prompts.Prompt
+  name: Prompt
+  href: api/Auth0.ManagementApi.Models.Prompts.Prompt.html
+  commentId: T:Auth0.ManagementApi.Models.Prompts.Prompt
+  fullName: Auth0.ManagementApi.Models.Prompts.Prompt
+  nameWithType: Prompt
+- uid: Auth0.ManagementApi.Models.Prompts.Prompt.IdentifierFirst
+  name: IdentifierFirst
+  href: api/Auth0.ManagementApi.Models.Prompts.Prompt.html#Auth0_ManagementApi_Models_Prompts_Prompt_IdentifierFirst
+  commentId: P:Auth0.ManagementApi.Models.Prompts.Prompt.IdentifierFirst
+  fullName: Auth0.ManagementApi.Models.Prompts.Prompt.IdentifierFirst
+  nameWithType: Prompt.IdentifierFirst
+- uid: Auth0.ManagementApi.Models.Prompts.Prompt.IdentifierFirst*
+  name: IdentifierFirst
+  href: api/Auth0.ManagementApi.Models.Prompts.Prompt.html#Auth0_ManagementApi_Models_Prompts_Prompt_IdentifierFirst_
+  commentId: Overload:Auth0.ManagementApi.Models.Prompts.Prompt.IdentifierFirst
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Prompts.Prompt.IdentifierFirst
+  nameWithType: Prompt.IdentifierFirst
+- uid: Auth0.ManagementApi.Models.Prompts.Prompt.UniversalLoginExperience
+  name: UniversalLoginExperience
+  href: api/Auth0.ManagementApi.Models.Prompts.Prompt.html#Auth0_ManagementApi_Models_Prompts_Prompt_UniversalLoginExperience
+  commentId: P:Auth0.ManagementApi.Models.Prompts.Prompt.UniversalLoginExperience
+  fullName: Auth0.ManagementApi.Models.Prompts.Prompt.UniversalLoginExperience
+  nameWithType: Prompt.UniversalLoginExperience
+- uid: Auth0.ManagementApi.Models.Prompts.Prompt.UniversalLoginExperience*
+  name: UniversalLoginExperience
+  href: api/Auth0.ManagementApi.Models.Prompts.Prompt.html#Auth0_ManagementApi_Models_Prompts_Prompt_UniversalLoginExperience_
+  commentId: Overload:Auth0.ManagementApi.Models.Prompts.Prompt.UniversalLoginExperience
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Prompts.Prompt.UniversalLoginExperience
+  nameWithType: Prompt.UniversalLoginExperience
+- uid: Auth0.ManagementApi.Models.Prompts.Prompt.WebAuthnPlatformFirstFactor
+  name: WebAuthnPlatformFirstFactor
+  href: api/Auth0.ManagementApi.Models.Prompts.Prompt.html#Auth0_ManagementApi_Models_Prompts_Prompt_WebAuthnPlatformFirstFactor
+  commentId: P:Auth0.ManagementApi.Models.Prompts.Prompt.WebAuthnPlatformFirstFactor
+  fullName: Auth0.ManagementApi.Models.Prompts.Prompt.WebAuthnPlatformFirstFactor
+  nameWithType: Prompt.WebAuthnPlatformFirstFactor
+- uid: Auth0.ManagementApi.Models.Prompts.Prompt.WebAuthnPlatformFirstFactor*
+  name: WebAuthnPlatformFirstFactor
+  href: api/Auth0.ManagementApi.Models.Prompts.Prompt.html#Auth0_ManagementApi_Models_Prompts_Prompt_WebAuthnPlatformFirstFactor_
+  commentId: Overload:Auth0.ManagementApi.Models.Prompts.Prompt.WebAuthnPlatformFirstFactor
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Prompts.Prompt.WebAuthnPlatformFirstFactor
+  nameWithType: Prompt.WebAuthnPlatformFirstFactor
+- uid: Auth0.ManagementApi.Models.Prompts.PromptUpdateRequest
+  name: PromptUpdateRequest
+  href: api/Auth0.ManagementApi.Models.Prompts.PromptUpdateRequest.html
+  commentId: T:Auth0.ManagementApi.Models.Prompts.PromptUpdateRequest
+  fullName: Auth0.ManagementApi.Models.Prompts.PromptUpdateRequest
+  nameWithType: PromptUpdateRequest
 - uid: Auth0.ManagementApi.Models.RefreshToken
   name: RefreshToken
   href: api/Auth0.ManagementApi.Models.RefreshToken.html
