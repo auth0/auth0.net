@@ -1,5 +1,15 @@
 # Change Log
 
+## [release-7.11.0](https://github.com/auth0/auth0.net/tree/release-7.11.0) (2021-10-01)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.10.0...release-7.11.0)
+
+**Added**
+- Add Keys Endpoints [\#527](https://github.com/auth0/auth0.net/pull/527) ([colinbobolin](https://github.com/colinbobolin))
+- Added Prompt Client to Management API SDK [\#522](https://github.com/auth0/auth0.net/pull/522) ([hakuna-matata-in](https://github.com/hakuna-matata-in))
+
+**Changed**
+- [SDK-2548] Support unpaginated requests for some endpoints [\#525](https://github.com/auth0/auth0.net/pull/525) ([frederikprijck](https://github.com/frederikprijck))
+
 ## [release-7.10.0](https://github.com/auth0/auth0.net/tree/release-7.10.0) (2021-08-30)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.9.0...release-7.10.0)
 
