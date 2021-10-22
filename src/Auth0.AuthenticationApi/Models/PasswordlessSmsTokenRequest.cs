@@ -11,6 +11,14 @@ namespace Auth0.AuthenticationApi.Models
         /// Phonenumber used for the Passwordless flow
         /// </summary>
         public string PhoneNumber { get; set; }
-        
+
+        /// <summary>
+        /// IP address of the end user this token is requested for for rate limit purposes.
+        /// </summary>
+        /// <remarks>
+        /// See https://auth0.com/docs/connections/passwordless/best-practices#link-accounts for more details.
+        /// </remarks>
+        public string ForwardedForIp { get; set; }
+
     }
 }
