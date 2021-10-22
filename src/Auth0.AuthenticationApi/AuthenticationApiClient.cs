@@ -293,10 +293,14 @@ namespace Auth0.AuthenticationApi
                 { "audience", request.Audience },
                 { "scope", request.Scope } };
 
+            var headers = String.IsNullOrEmpty(request.ForwardedForIp) ? null
+                : new Dictionary<string, string> { { "auth0-forwarded-for", request.ForwardedForIp } };
+
             return connection.SendAsync<AccessTokenResponse>(
                 HttpMethod.Post,
                 tokenUri,
                 body,
+                headers,
                 cancellationToken: cancellationToken);
         }
 
@@ -371,10 +375,14 @@ namespace Auth0.AuthenticationApi
                 phone_number = request.PhoneNumber
             };
 
+            var headers = String.IsNullOrEmpty(request.ForwardedForIp) ? null
+                : new Dictionary<string, string> { { "auth0-forwarded-for", request.ForwardedForIp } };
+
             return connection.SendAsync<PasswordlessSmsResponse>(
                 HttpMethod.Post,
                 BuildUri("passwordless/start"),
                 body,
+                headers,
                 cancellationToken: cancellationToken);
         }
 
