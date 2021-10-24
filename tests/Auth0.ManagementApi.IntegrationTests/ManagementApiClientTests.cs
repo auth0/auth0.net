@@ -14,7 +14,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 {
     public class ManagementApiClientTests : TestBase
     {
-        readonly HeaderGrabberConnection grabber = new HeaderGrabberConnection();
+        readonly HeaderGrabberConnection grabber = new();
         readonly ManagementApiClient management;
         readonly JObject payload;
 
@@ -67,6 +67,21 @@ namespace Auth0.ManagementApi.IntegrationTests
         public void Auth0Client_headers_added()
         {
             Assert.Contains(grabber.LastHeaders, k => k.Key == "Auth0-Client");
+        }
+
+        [Fact]
+        public async Task Auth0Client_headers_updated()
+        {
+            //Arrange
+            string newToken = "new_token";
+
+            //Act
+            management.UpdateDefaultHeaders(newToken);
+
+            Models.Client result = await management.Clients.GetAsync("test_id");
+
+            //Assert
+            Assert.Contains(grabber.LastHeaders, v => v.Value == $"Bearer {newToken}");
         }
 
         [Fact]
