@@ -70,13 +70,13 @@ namespace Auth0.ManagementApi.IntegrationTests
         }
 
         [Fact]
-        public async Task Auth0Client_headers_updated()
+        public async Task Auth0Client_authorization_header_updated()
         {
             //Arrange
             string newToken = "new_token";
 
             //Act
-            management.UpdateDefaultHeaders(newToken);
+            management.UpdateAccessToken(newToken);
 
             Models.Client result = await management.Clients.GetAsync("test_id");
 

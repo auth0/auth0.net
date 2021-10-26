@@ -3,7 +3,6 @@ using Auth0.ManagementApi.Clients;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Net.Http;
 using System.Text;
 
 namespace Auth0.ManagementApi
@@ -221,7 +220,7 @@ namespace Auth0.ManagementApi
             return headers;
         }
 
-        public void UpdateDefaultHeaders(string token)
+        public void UpdateAccessToken(string token)
         {
             DefaultHeaders[AuthorizationHeaderKey] = FormatAuthorizationHeaderValue(token);
         }
