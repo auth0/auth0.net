@@ -3,7 +3,6 @@ using Auth0.ManagementApi.Clients;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Net.Http;
 using System.Text;
 
 namespace Auth0.ManagementApi
@@ -13,6 +12,8 @@ namespace Auth0.ManagementApi
     /// </summary>
     public class ManagementApiClient : IDisposable
     {
+        private const string AuthorizationHeaderKey = "Authorization";
+
         protected readonly IManagementConnection connection;
         IDisposable connectionToDispose;
 
@@ -147,6 +148,8 @@ namespace Auth0.ManagementApi
         /// </summary>
         public UsersClient Users { get; }
 
+        private Dictionary<string, string> DefaultHeaders { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
         /// </summary>
@@ -164,45 +167,34 @@ namespace Auth0.ManagementApi
 
             connection = managementConnection;
 
-            var defaultHeaders = CreateDefaultHeaders(token);
+            DefaultHeaders = CreateDefaultHeaders(token);
 
-            Actions = new ActionsClient(managementConnection, baseUri, defaultHeaders);
-            BlacklistedTokens = new BlacklistedTokensClient(managementConnection, baseUri, defaultHeaders);
-            Branding = new BrandingClient(managementConnection, baseUri, defaultHeaders);
-            ClientGrants = new ClientGrantsClient(managementConnection, baseUri, defaultHeaders);
-            Clients = new ClientsClient(managementConnection, baseUri, defaultHeaders);
-            Connections = new ConnectionsClient(managementConnection, baseUri, defaultHeaders);
-            CustomDomains = new CustomDomainsClient(managementConnection, baseUri, defaultHeaders);
-            DeviceCredentials = new DeviceCredentialsClient(managementConnection, baseUri, defaultHeaders);
-            EmailProvider = new EmailProviderClient(managementConnection, baseUri, defaultHeaders);
-            EmailTemplates = new EmailTemplatesClient(managementConnection, baseUri, defaultHeaders);
-            Guardian = new GuardianClient(managementConnection, baseUri, defaultHeaders);
-            Hooks = new HooksClient(managementConnection, baseUri, defaultHeaders);
-            Jobs = new JobsClient(managementConnection, baseUri, defaultHeaders);
-            Keys = new KeysClient(managementConnection, baseUri, defaultHeaders);
-            Logs = new LogsClient(managementConnection, baseUri, defaultHeaders);
-            LogStreams = new LogStreamsClient(managementConnection, baseUri, defaultHeaders);
-            Prompts = new PromptsClient(managementConnection, baseUri, defaultHeaders);
-            Organizations = new OrganizationsClient(managementConnection, baseUri, defaultHeaders);
-            ResourceServers = new ResourceServersClient(managementConnection, baseUri, defaultHeaders);
-            Roles = new RolesClient(managementConnection, baseUri, defaultHeaders);
-            Rules = new RulesClient(managementConnection, baseUri, defaultHeaders);
-            Stats = new StatsClient(managementConnection, baseUri, defaultHeaders);
-            TenantSettings = new TenantSettingsClient(managementConnection, baseUri, defaultHeaders);
-            Tickets = new TicketsClient(managementConnection, baseUri, defaultHeaders);
-            UserBlocks = new UserBlocksClient(managementConnection, baseUri, defaultHeaders);
-            Users = new UsersClient(managementConnection, baseUri, defaultHeaders);
-        }
-
-        private static Dictionary<string, string> CreateDefaultHeaders(string token)
-        {
-            var headers = new Dictionary<string, string> {
-                { "Auth0-Client", CreateAgentString() } };
-
-            if (!string.IsNullOrEmpty(token))
-                headers.Add("Authorization", $"Bearer {token}");
-
-            return headers;
+            Actions = new ActionsClient(managementConnection, baseUri, DefaultHeaders);
+            BlacklistedTokens = new BlacklistedTokensClient(managementConnection, baseUri, DefaultHeaders);
+            Branding = new BrandingClient(managementConnection, baseUri, DefaultHeaders);
+            ClientGrants = new ClientGrantsClient(managementConnection, baseUri, DefaultHeaders);
+            Clients = new ClientsClient(managementConnection, baseUri, DefaultHeaders);
+            Connections = new ConnectionsClient(managementConnection, baseUri, DefaultHeaders);
+            CustomDomains = new CustomDomainsClient(managementConnection, baseUri, DefaultHeaders);
+            DeviceCredentials = new DeviceCredentialsClient(managementConnection, baseUri, DefaultHeaders);
+            EmailProvider = new EmailProviderClient(managementConnection, baseUri, DefaultHeaders);
+            EmailTemplates = new EmailTemplatesClient(managementConnection, baseUri, DefaultHeaders);
+            Guardian = new GuardianClient(managementConnection, baseUri, DefaultHeaders);
+            Hooks = new HooksClient(managementConnection, baseUri, DefaultHeaders);
+            Jobs = new JobsClient(managementConnection, baseUri, DefaultHeaders);
+            Keys = new KeysClient(managementConnection, baseUri, DefaultHeaders);
+            Logs = new LogsClient(managementConnection, baseUri, DefaultHeaders);
+            LogStreams = new LogStreamsClient(managementConnection, baseUri, DefaultHeaders);
+            Prompts = new PromptsClient(managementConnection, baseUri, DefaultHeaders);
+            Organizations = new OrganizationsClient(managementConnection, baseUri, DefaultHeaders);
+            ResourceServers = new ResourceServersClient(managementConnection, baseUri, DefaultHeaders);
+            Roles = new RolesClient(managementConnection, baseUri, DefaultHeaders);
+            Rules = new RulesClient(managementConnection, baseUri, DefaultHeaders);
+            Stats = new StatsClient(managementConnection, baseUri, DefaultHeaders);
+            TenantSettings = new TenantSettingsClient(managementConnection, baseUri, DefaultHeaders);
+            Tickets = new TicketsClient(managementConnection, baseUri, DefaultHeaders);
+            UserBlocks = new UserBlocksClient(managementConnection, baseUri, DefaultHeaders);
+            Users = new UsersClient(managementConnection, baseUri, DefaultHeaders);
         }
 
         /// <summary>
@@ -214,6 +206,32 @@ namespace Auth0.ManagementApi
         public ManagementApiClient(string token, string domain, IManagementConnection connection = null)
             : this(token, new Uri($"https://{domain}/api/v2"), connection)
         {
+        }
+
+
+        private static Dictionary<string, string> CreateDefaultHeaders(string token)
+        {
+            var headers = new Dictionary<string, string> {
+                { "Auth0-Client", CreateAgentString() } };
+
+            if (!string.IsNullOrEmpty(token))
+                headers.Add(AuthorizationHeaderKey, FormatAuthorizationHeaderValue(token));
+
+            return headers;
+        }
+
+        /// <summary>
+        /// Update the Access Token used with every request.
+        /// </summary>
+        /// <param name="token">The new and valid Auth0 Management API v2 token.</param>
+        public void UpdateAccessToken(string token)
+        {
+            DefaultHeaders[AuthorizationHeaderKey] = FormatAuthorizationHeaderValue(token);
+        }
+
+        private static string FormatAuthorizationHeaderValue(string token)
+        {
+            return $"Bearer {token}";
         }
 
         /// <summary>
