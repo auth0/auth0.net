@@ -220,6 +220,10 @@ namespace Auth0.ManagementApi
             return headers;
         }
 
+        /// <summary>
+        /// Update the Access Token used with every request.
+        /// </summary>
+        /// <param name="token">The new and valid Auth0 Management API v2 token.</param>
         public void UpdateAccessToken(string token)
         {
             DefaultHeaders[AuthorizationHeaderKey] = FormatAuthorizationHeaderValue(token);
