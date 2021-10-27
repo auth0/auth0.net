@@ -1,5 +1,12 @@
 # Change Log
 
+## [release-7.12.0](https://github.com/auth0/auth0.net/tree/release-7.12.0) (2021-10-27)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.11.0...release-7.12.0)
+
+**Added**
+- Support setting access token after instantiation of ManagementApiClient [\#532](https://github.com/auth0/auth0.net/pull/532) ([mfolker](https://github.com/mfolker))
+- Add auth0-forwarded-for header to passwordless sms authentication for… [\#530](https://github.com/auth0/auth0.net/pull/530) ([rhyswilliamszip](https://github.com/rhyswilliamszip))
+
 ## [release-7.11.0](https://github.com/auth0/auth0.net/tree/release-7.11.0) (2021-10-01)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.10.0...release-7.11.0)
 

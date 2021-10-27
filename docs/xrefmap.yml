@@ -1820,6 +1820,19 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.ClientSecret
   nameWithType: PasswordlessSmsRequest.ClientSecret
+- uid: Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.ForwardedForIp
+  name: ForwardedForIp
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.html#Auth0_AuthenticationApi_Models_PasswordlessSmsRequest_ForwardedForIp
+  commentId: P:Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.ForwardedForIp
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.ForwardedForIp
+  nameWithType: PasswordlessSmsRequest.ForwardedForIp
+- uid: Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.ForwardedForIp*
+  name: ForwardedForIp
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.html#Auth0_AuthenticationApi_Models_PasswordlessSmsRequest_ForwardedForIp_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.ForwardedForIp
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.ForwardedForIp
+  nameWithType: PasswordlessSmsRequest.ForwardedForIp
 - uid: Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.PhoneNumber
   name: PhoneNumber
   href: api/Auth0.AuthenticationApi.Models.PasswordlessSmsRequest.html#Auth0_AuthenticationApi_Models_PasswordlessSmsRequest_PhoneNumber
@@ -1884,6 +1897,19 @@ references:
   commentId: T:Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest
   fullName: Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest
   nameWithType: PasswordlessSmsTokenRequest
+- uid: Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest.ForwardedForIp
+  name: ForwardedForIp
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest.html#Auth0_AuthenticationApi_Models_PasswordlessSmsTokenRequest_ForwardedForIp
+  commentId: P:Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest.ForwardedForIp
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest.ForwardedForIp
+  nameWithType: PasswordlessSmsTokenRequest.ForwardedForIp
+- uid: Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest.ForwardedForIp*
+  name: ForwardedForIp
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest.html#Auth0_AuthenticationApi_Models_PasswordlessSmsTokenRequest_ForwardedForIp_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest.ForwardedForIp
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest.ForwardedForIp
+  nameWithType: PasswordlessSmsTokenRequest.ForwardedForIp
 - uid: Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest.PhoneNumber
   name: PhoneNumber
   href: api/Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest.html#Auth0_AuthenticationApi_Models_PasswordlessSmsTokenRequest_PhoneNumber
@@ -6515,6 +6541,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.ManagementApiClient.Tickets
   nameWithType: ManagementApiClient.Tickets
+- uid: Auth0.ManagementApi.ManagementApiClient.UpdateAccessToken(System.String)
+  name: UpdateAccessToken(String)
+  href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_UpdateAccessToken_System_String_
+  commentId: M:Auth0.ManagementApi.ManagementApiClient.UpdateAccessToken(System.String)
+  fullName: Auth0.ManagementApi.ManagementApiClient.UpdateAccessToken(System.String)
+  nameWithType: ManagementApiClient.UpdateAccessToken(String)
+- uid: Auth0.ManagementApi.ManagementApiClient.UpdateAccessToken*
+  name: UpdateAccessToken
+  href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_UpdateAccessToken_
+  commentId: Overload:Auth0.ManagementApi.ManagementApiClient.UpdateAccessToken
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.ManagementApiClient.UpdateAccessToken
+  nameWithType: ManagementApiClient.UpdateAccessToken
 - uid: Auth0.ManagementApi.ManagementApiClient.UserBlocks
   name: UserBlocks
   href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_UserBlocks
