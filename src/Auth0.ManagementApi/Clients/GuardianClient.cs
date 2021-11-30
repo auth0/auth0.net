@@ -128,7 +128,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="UpdateGuardianFactorResponse" /> indicating the status of the factor.</returns>
         public Task<UpdateGuardianFactorResponse> UpdateFactorAsync(UpdateGuardianFactorRequest request, CancellationToken cancellationToken = default)
         {
-            var name = Utils.GetEnumMemberValue(request.Factor);
+            var name = request.Factor.ToEnumString();
 
             return Connection
                 .SendAsync<UpdateGuardianFactorResponse>(
