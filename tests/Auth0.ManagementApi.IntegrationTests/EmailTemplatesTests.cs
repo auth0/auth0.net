@@ -55,45 +55,44 @@ namespace Auth0.ManagementApi.IntegrationTests
             var emailTemplateNames = Enum.GetValues(typeof(EmailTemplateName)).Cast<EmailTemplateName>();
 
             string token = await GenerateManagementApiToken();
-            using (var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL")))
+            
+            // Create each template
+            foreach (var emailTemplateName in emailTemplateNames)
             {
-                // Create each template
-                foreach (var emailTemplateName in emailTemplateNames)
-                {
-                    EmailTemplate emailTemplate;
-                    try
-                    {
-                        // Try and create the template. If it already exisits, we'll just update it
-                        emailTemplate = await apiClient.EmailTemplates.CreateAsync(new EmailTemplateCreateRequest
-                        {
-                            Template = emailTemplateName,
-                            Body = "<html>",
-                            Enabled = true,
-                            Subject = emailTemplateName.ToString(),
-                            From = "test@test.com",
-                            Syntax = EmailTemplateSyntax.Liquid
-                        });
-
-                    }
-                    catch (ApiException)
-                    {
-                        emailTemplate = await apiClient.EmailTemplates.UpdateAsync(emailTemplateName, new EmailTemplateUpdateRequest
-                        {
-                            Template = emailTemplateName,
-                            Body = "<html>",
-                            Enabled = true,
-                            Subject = emailTemplateName.ToString(),
-                            From = "test@test.com",
-                            Syntax = EmailTemplateSyntax.Liquid
-                        });
-                    }
-                }
-
-                // Patch each template
-                foreach (var emailTemplateName in emailTemplateNames)
+                EmailTemplate emailTemplate;
+                try
                 {
                     // Try and create the template. If it already exisits, we'll just update it
-                    var emailTemplate = await apiClient.EmailTemplates.PatchAsync(emailTemplateName, new EmailTemplatePatchRequest
+                    emailTemplate = await _apiClient.EmailTemplates.CreateAsync(new EmailTemplateCreateRequest
+                    {
+                        Template = emailTemplateName,
+                        Body = "<html>",
+                        Enabled = true,
+                        Subject = emailTemplateName.ToString(),
+                        From = "test@test.com",
+                        Syntax = EmailTemplateSyntax.Liquid
+                    });
+
+                }
+                catch (ApiException)
+                {
+                    emailTemplate = await _apiClient.EmailTemplates.UpdateAsync(emailTemplateName, new EmailTemplateUpdateRequest
+                    {
+                        Template = emailTemplateName,
+                        Body = "<html>",
+                        Enabled = true,
+                        Subject = emailTemplateName.ToString(),
+                        From = "test@test.com",
+                        Syntax = EmailTemplateSyntax.Liquid
+                    });
+                }
+                
+
+                // Patch each template
+                foreach (var _emailTemplateName in emailTemplateNames)
+                {
+                    // Try and create the template. If it already exisits, we'll just update it
+                    var _emailTemplate = await _apiClient.EmailTemplates.PatchAsync(_emailTemplateName, new EmailTemplatePatchRequest
                     {
                         Enabled = false,
                         From = "test2@test.com"
