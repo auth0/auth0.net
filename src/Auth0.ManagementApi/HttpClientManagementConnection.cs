@@ -25,11 +25,11 @@ namespace Auth0.ManagementApi
 
         readonly ConcurrentRandom random = new ConcurrentRandom();
         readonly int MAX_REQUEST_RETRY_JITTER = 250;
-        readonly int MAX_REQUEST_RETRY_DELAY = 500;
-        readonly int MIN_REQUEST_RETRY_DELAY = 100;
+        readonly int MAX_REQUEST_RETRY_DELAY = 1000;
+        readonly int MIN_REQUEST_RETRY_DELAY = 250;
         readonly int DEFAULT_NUMBER_RETRIES = 3;
         readonly int MAX_NUMBER_RETRIES = 10;
-        readonly int BASE_DELAY = 100;
+        readonly int BASE_DELAY = 250;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="HttpClientManagementConnection"/> class.
