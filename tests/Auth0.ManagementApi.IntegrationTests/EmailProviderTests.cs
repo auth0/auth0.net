@@ -10,7 +10,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 {
     public class EmailProviderTests : TestBase
     {
-        [Fact]
+        [Fact(Skip = "Temporary")]
         public async Task Test_mandrill_email_provider_crud_sequence()
         {
             string token = await GenerateManagementApiToken();
@@ -69,7 +69,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Temporary")]
         public async Task Test_smtp_email_provider_crud_sequence()
         {
             string token = await GenerateManagementApiToken();
