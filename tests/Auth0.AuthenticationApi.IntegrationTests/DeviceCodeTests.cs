@@ -77,7 +77,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 });
 
             var httpClient = new HttpClient(mockHandler.Object);
-            var authenticationApiClient = new AuthenticationApiClient(domain, new HttpClientAuthenticationConnection(httpClient));
+            var authenticationApiClient = new TestAuthenticationApiClient(domain, new TestHttpClientAuthenticationConnection(httpClient));
 
             var tokenReponse = await authenticationApiClient.StartDeviceFlowAsync(new DeviceCodeRequest
             {
@@ -118,7 +118,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 });
 
             var httpClient = new HttpClient(mockHandler.Object);
-            var authenticationApiClient = new AuthenticationApiClient(domain, new HttpClientAuthenticationConnection(httpClient));
+            var authenticationApiClient = new TestAuthenticationApiClient(domain, new TestHttpClientAuthenticationConnection(httpClient));
 
             var tokenReponse = await authenticationApiClient.GetTokenAsync(new DeviceCodeTokenRequest
             {
