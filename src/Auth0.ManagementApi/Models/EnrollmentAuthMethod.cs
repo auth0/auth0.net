@@ -14,6 +14,13 @@ namespace Auth0.ManagementApi.Models
         Guardian,
 
         [EnumMember(Value = "sms")]
-        SMS
+        SMS,
+
+        [EnumMember(Value = "webauthn-roaming")]
+        WebAuthNRoaming,
+
+        [EnumMember(Value = "webauthn-platform")]
+        WebAuthNPlatform,
+        
     }
 }
