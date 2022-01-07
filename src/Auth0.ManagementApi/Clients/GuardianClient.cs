@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Auth0.Core.Http;
 
 namespace Auth0.ManagementApi.Clients
 {
@@ -127,7 +128,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>The <see cref="UpdateGuardianFactorResponse" /> indicating the status of the factor.</returns>
         public Task<UpdateGuardianFactorResponse> UpdateFactorAsync(UpdateGuardianFactorRequest request, CancellationToken cancellationToken = default)
         {
-            var name = request.Factor == GuardianFactorName.PushNotifications ? "push-notification" : "sms";
+            var name = request.Factor.ToEnumString();
 
             return Connection
                 .SendAsync<UpdateGuardianFactorResponse>(
