@@ -10336,6 +10336,18 @@ references:
   commentId: F:Auth0.ManagementApi.Models.EnrollmentAuthMethod.SMS
   fullName: Auth0.ManagementApi.Models.EnrollmentAuthMethod.SMS
   nameWithType: EnrollmentAuthMethod.SMS
+- uid: Auth0.ManagementApi.Models.EnrollmentAuthMethod.WebAuthNPlatform
+  name: WebAuthNPlatform
+  href: api/Auth0.ManagementApi.Models.EnrollmentAuthMethod.html#Auth0_ManagementApi_Models_EnrollmentAuthMethod_WebAuthNPlatform
+  commentId: F:Auth0.ManagementApi.Models.EnrollmentAuthMethod.WebAuthNPlatform
+  fullName: Auth0.ManagementApi.Models.EnrollmentAuthMethod.WebAuthNPlatform
+  nameWithType: EnrollmentAuthMethod.WebAuthNPlatform
+- uid: Auth0.ManagementApi.Models.EnrollmentAuthMethod.WebAuthNRoaming
+  name: WebAuthNRoaming
+  href: api/Auth0.ManagementApi.Models.EnrollmentAuthMethod.html#Auth0_ManagementApi_Models_EnrollmentAuthMethod_WebAuthNRoaming
+  commentId: F:Auth0.ManagementApi.Models.EnrollmentAuthMethod.WebAuthNRoaming
+  fullName: Auth0.ManagementApi.Models.EnrollmentAuthMethod.WebAuthNRoaming
+  nameWithType: EnrollmentAuthMethod.WebAuthNRoaming
 - uid: Auth0.ManagementApi.Models.EnrollmentsResponse
   name: EnrollmentsResponse
   href: api/Auth0.ManagementApi.Models.EnrollmentsResponse.html
