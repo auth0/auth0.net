@@ -57,7 +57,7 @@
           "hash": "ELLb3SrLLm2XXFIVjCrlgg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -69,7 +69,7 @@
           "hash": "Anu+xp+sTnc3lAeAjFhZoA=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -81,7 +81,7 @@
           "hash": "4YYMT86JLTCfwGQBa+OPdg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -93,7 +93,7 @@
           "hash": "MU9N1IcbBOi1zCBCcjcECg=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -2034,7 +2034,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.EnrollmentAuthMethod.html",
-          "hash": "kfNYOEWYOH0BOfBlOcVczA=="
+          "hash": "944E2PNdMRkVDGLmhX8Rww=="
         }
       },
       "is_incremental": false,
@@ -2058,7 +2058,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.EnrollmentsResponse.html",
-          "hash": "4OfJDzcCD0nLoz1swGRXMg=="
+          "hash": "QN17wRw2KJy2aucm/ecoxA=="
         }
       },
       "is_incremental": false,
@@ -3820,25 +3820,23 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot build incrementally because docfx version changed from 2.57.2.0 to 2.56.4.0.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "DocfxVersionChanged"
+        "skipped_file_count": 0
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 5,
-          "skipped_file_count": 0
+          "skipped_file_count": 5
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 308,
-          "skipped_file_count": 0
+          "skipped_file_count": 13
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,

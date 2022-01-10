@@ -1,5 +1,15 @@
 # Change Log
 
+## [release-7.12.1](https://github.com/auth0/auth0.net/tree/release-7.12.1) (2022-01-07)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.12.0...release-7.12.1)
+
+**Changed**
+- Increase delay between subsequent retries [\#540](https://github.com/auth0/auth0.net/pull/540) ([frederikprijck](https://github.com/frederikprijck))
+
+**Fixed**
+- add webauthn-* enrollment auth methods [\#539](https://github.com/auth0/auth0.net/pull/539) ([frederikprijck](https://github.com/frederikprijck))
+- Support updating all guardian factors [\#536](https://github.com/auth0/auth0.net/pull/536) ([frederikprijck](https://github.com/frederikprijck))
+
 ## [release-7.12.0](https://github.com/auth0/auth0.net/tree/release-7.12.0) (2021-10-27)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.11.0...release-7.12.0)
 
