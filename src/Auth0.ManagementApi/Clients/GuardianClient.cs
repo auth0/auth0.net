@@ -171,5 +171,38 @@ namespace Auth0.ManagementApi.Clients
                 request,
                 DefaultHeaders, cancellationToken: cancellationToken);
         }
+
+        /// <summary>
+        /// Retrieve the enabled phone factors for multi-factor authentication
+        /// </summary>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>A <see cref="GuardianPhoneMessageTypes" /> containing the message types.</returns>
+        public Task<GuardianPhoneMessageTypes> GetPhoneMessageTypesAsync(CancellationToken cancellationToken = default)
+        {
+            return Connection
+                .GetAsync<GuardianPhoneMessageTypes>(
+                    BuildUri("guardian/factors/phone/message-types"), 
+                    DefaultHeaders,
+                    cancellationToken: cancellationToken
+                 );
+        }
+
+        /// <summary>
+        /// Update enabled phone factors for multi-factor authentication
+        /// </summary>
+        /// <param name="messageTypes">A <see cref="GuardianPhoneMessageTypes" /> containing the list of phone factors to enable on the tenan.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>A <see cref="GuardianPhoneMessageTypes" /> containing the message types.</returns>
+        public Task<GuardianPhoneMessageTypes> UpdatePhoneMessageTypesAsync(GuardianPhoneMessageTypes messageTypes, CancellationToken cancellationToken = default)
+        {
+            return Connection
+                .SendAsync<GuardianPhoneMessageTypes>(
+                    HttpMethod.Put,
+                    BuildUri("guardian/factors/phone/message-types"),
+                    messageTypes,
+                    DefaultHeaders,
+                    cancellationToken: cancellationToken
+                );
+        }
     }
 }
