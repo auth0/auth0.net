@@ -3,6 +3,7 @@ using Auth0.ManagementApi.Models;
 using Auth0.Tests.Shared;
 using FluentAssertions;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -170,6 +171,27 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             response = await _managementApiClient.Guardian.GetTwilioConfigurationAsync();
             response.Should().BeEquivalentTo(request);
+        }
+
+        [Fact]
+        public async Task Can_update_phone_messagetypes()
+        {
+            GuardianPhoneMessageTypes response;
+
+            response = await _managementApiClient.Guardian.UpdatePhoneMessageTypesAsync(new GuardianPhoneMessageTypes
+            {
+                MessageTypes = new List<string> { "sms" }
+            });
+            response.MessageTypes.Count.Should().Be(1);
+
+            response = await _managementApiClient.Guardian.UpdatePhoneMessageTypesAsync(new GuardianPhoneMessageTypes
+            {
+                MessageTypes = new List<string> { "sms", "voice" }
+            });
+            response.MessageTypes.Count.Should().Be(2);
+
+            response = await _managementApiClient.Guardian.GetPhoneMessageTypesAsync();
+            response.MessageTypes.Count.Should().Be(2);
         }
     }
 }
