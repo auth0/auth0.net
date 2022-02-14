@@ -23,6 +23,11 @@ namespace Auth0.ManagementApi
         public ActionsClient Actions { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /attack-protection endpoints.
+        /// </summary>
+        public AttackProtectionClient AttackProtection { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /blacklists/tokens endpoints.
         /// </summary>
         public BlacklistedTokensClient BlacklistedTokens { get; }
@@ -170,6 +175,7 @@ namespace Auth0.ManagementApi
             DefaultHeaders = CreateDefaultHeaders(token);
 
             Actions = new ActionsClient(managementConnection, baseUri, DefaultHeaders);
+            AttackProtection = new AttackProtectionClient(managementConnection, baseUri, DefaultHeaders);
             BlacklistedTokens = new BlacklistedTokensClient(managementConnection, baseUri, DefaultHeaders);
             Branding = new BrandingClient(managementConnection, baseUri, DefaultHeaders);
             ClientGrants = new ClientGrantsClient(managementConnection, baseUri, DefaultHeaders);
