@@ -1,5 +1,11 @@
 # Change Log
 
+## [release-7.13.0](https://github.com/auth0/auth0.net/tree/release-7.13.0) (2022-02-11)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.12.1...release-7.13.0)
+
+**Added**
+- Retrieve and Update the Enabled Phone Factors [\#544](https://github.com/auth0/auth0.net/pull/544) ([frederikprijck](https://github.com/frederikprijck))
+
 ## [release-7.12.1](https://github.com/auth0/auth0.net/tree/release-7.12.1) (2022-01-07)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.12.0...release-7.12.1)
 

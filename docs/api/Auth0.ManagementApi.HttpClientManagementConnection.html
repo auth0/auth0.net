@@ -225,8 +225,7 @@ by this instance.</p>
   </table>
   <a id="Auth0_ManagementApi_HttpClientManagementConnection_GetAsync_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.GetAsync*"></a>
   <h4 id="Auth0_ManagementApi_HttpClientManagementConnection_GetAsync__1_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__Newtonsoft_Json_JsonConverter___System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},Newtonsoft.Json.JsonConverter[],System.Threading.CancellationToken)">GetAsync&lt;T&gt;(Uri, IDictionary&lt;String, String&gt;, JsonConverter[], CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Perform a HTTP GET operation against a given <span class="xref">System.Uri</span> and return the materialized response body as <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -245,26 +244,22 @@ by this instance.</p>
       <tr>
         <td><span class="xref">System.Uri</span></td>
         <td><span class="parametername">uri</span></td>
-        <td><p><span class="xref">System.Uri</span> to perform the GET request against.</p>
-</td>
+        <td></td>
       </tr>
       <tr>
         <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">headers</span></td>
-        <td><p>Dictionary containing additional headers that may override the defaults.</p>
-</td>
+        <td></td>
       </tr>
       <tr>
         <td><span class="xref">Newtonsoft.Json.JsonConverter</span>[]</td>
         <td><span class="parametername">converters</span></td>
-        <td><p>Optional array of <span class="xref">Newtonsoft.Json.JsonConverter</span>s used to deserialize the resulting <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
-</td>
+        <td></td>
       </tr>
       <tr>
         <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -279,8 +274,7 @@ by this instance.</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
-        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing response body as <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -295,15 +289,13 @@ by this instance.</p>
     <tbody>
       <tr>
         <td><span class="parametername">T</span></td>
-        <td><p>Type of object to deserialize the result content as.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_HttpClientManagementConnection_SendAsync_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.SendAsync*"></a>
   <h4 id="Auth0_ManagementApi_HttpClientManagementConnection_SendAsync__1_System_Net_Http_HttpMethod_System_Uri_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IList_Auth0_ManagementApi_FileUploadParameter__Newtonsoft_Json_JsonConverter___System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.SendAsync``1(System.Net.Http.HttpMethod,System.Uri,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IList{Auth0.ManagementApi.FileUploadParameter},Newtonsoft.Json.JsonConverter[],System.Threading.CancellationToken)">SendAsync&lt;T&gt;(HttpMethod, Uri, Object, IDictionary&lt;String, String&gt;, IList&lt;FileUploadParameter&gt;, JsonConverter[], CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Perform a HTTP operation against a given <span class="xref">System.Uri</span> and return any materialized response body as <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
-</div>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
@@ -322,46 +314,37 @@ by this instance.</p>
       <tr>
         <td><span class="xref">System.Net.Http.HttpMethod</span></td>
         <td><span class="parametername">method</span></td>
-        <td><p><span class="xref">System.Net.Http.HttpMethod</span> to use in performing the request.</p>
-</td>
+        <td></td>
       </tr>
       <tr>
         <td><span class="xref">System.Uri</span></td>
         <td><span class="parametername">uri</span></td>
-        <td><p><span class="xref">System.Uri</span> to perform the request against.</p>
-</td>
+        <td></td>
       </tr>
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">body</span></td>
-        <td><p>Payload to send to the server.
-If specified as a Dictionary&lt;string, string&gt; then <span class="xref">System.Net.Http.FormUrlEncodedContent</span> is expected,
-otherwise <span class="xref">System.Net.Http.StringContent</span> containing the JSON representation of the object is expected.</p>
-</td>
+        <td></td>
       </tr>
       <tr>
         <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">headers</span></td>
-        <td><p>Dictionary containing additional headers that may override the defaults.</p>
-</td>
+        <td></td>
       </tr>
       <tr>
         <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="Auth0.ManagementApi.FileUploadParameter.html">FileUploadParameter</a>&gt;</td>
         <td><span class="parametername">files</span></td>
-        <td><p>Optional <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span> containing file contents to upload as a <span class="xref">System.Net.Http.MultipartFormDataContent</span> post.</p>
-</td>
+        <td></td>
       </tr>
       <tr>
         <td><span class="xref">Newtonsoft.Json.JsonConverter</span>[]</td>
         <td><span class="parametername">converters</span></td>
-        <td><p>Optional array of <span class="xref">Newtonsoft.Json.JsonConverter</span>s used to deserialize the resulting <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
-</td>
+        <td></td>
       </tr>
       <tr>
         <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -376,8 +359,7 @@ otherwise <span class="xref">System.Net.Http.StringContent</span> containing the
     <tbody>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
-        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing response body as <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -392,14 +374,10 @@ otherwise <span class="xref">System.Net.Http.StringContent</span> containing the
     <tbody>
       <tr>
         <td><span class="parametername">T</span></td>
-        <td><p>Type of object to deserialize the result content as.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_HttpClientManagementConnection_SendAsync__1_System_Net_Http_HttpMethod_System_Uri_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IList_Auth0_ManagementApi_FileUploadParameter__Newtonsoft_Json_JsonConverter___System_Threading_CancellationToken__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p><code data-dev-comment-type="paramref" class="paramref">files</code> can only be specified if <code data-dev-comment-type="paramref" class="paramref">body</code> is a Dictionary%lt;string, object%gt;&quot;/&gt;.</p>
-</div>
   <h3 id="implements">Implements</h3>
   <div>
       <a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a>
