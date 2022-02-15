@@ -3506,6 +3506,106 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.ActionsClient.UpdateTriggerBindingsAsync
   nameWithType: ActionsClient.UpdateTriggerBindingsAsync
+- uid: Auth0.ManagementApi.Clients.AttackProtectionClient
+  name: AttackProtectionClient
+  href: api/Auth0.ManagementApi.Clients.AttackProtectionClient.html
+  commentId: T:Auth0.ManagementApi.Clients.AttackProtectionClient
+  fullName: Auth0.ManagementApi.Clients.AttackProtectionClient
+  nameWithType: AttackProtectionClient
+- uid: Auth0.ManagementApi.Clients.AttackProtectionClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})
+  name: AttackProtectionClient(IManagementConnection, Uri, IDictionary<String, String>)
+  href: api/Auth0.ManagementApi.Clients.AttackProtectionClient.html#Auth0_ManagementApi_Clients_AttackProtectionClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__
+  commentId: M:Auth0.ManagementApi.Clients.AttackProtectionClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})
+  name.vb: AttackProtectionClient(IManagementConnection, Uri, IDictionary(Of String, String))
+  fullName: Auth0.ManagementApi.Clients.AttackProtectionClient.AttackProtectionClient(Auth0.ManagementApi.IManagementConnection, System.Uri, System.Collections.Generic.IDictionary<System.String, System.String>)
+  fullName.vb: Auth0.ManagementApi.Clients.AttackProtectionClient.AttackProtectionClient(Auth0.ManagementApi.IManagementConnection, System.Uri, System.Collections.Generic.IDictionary(Of System.String, System.String))
+  nameWithType: AttackProtectionClient.AttackProtectionClient(IManagementConnection, Uri, IDictionary<String, String>)
+  nameWithType.vb: AttackProtectionClient.AttackProtectionClient(IManagementConnection, Uri, IDictionary(Of String, String))
+- uid: Auth0.ManagementApi.Clients.AttackProtectionClient.#ctor*
+  name: AttackProtectionClient
+  href: api/Auth0.ManagementApi.Clients.AttackProtectionClient.html#Auth0_ManagementApi_Clients_AttackProtectionClient__ctor_
+  commentId: Overload:Auth0.ManagementApi.Clients.AttackProtectionClient.#ctor
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.AttackProtectionClient.AttackProtectionClient
+  nameWithType: AttackProtectionClient.AttackProtectionClient
+- uid: Auth0.ManagementApi.Clients.AttackProtectionClient.GetBreachedPasswordDetectionAsync(System.Threading.CancellationToken)
+  name: GetBreachedPasswordDetectionAsync(CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.AttackProtectionClient.html#Auth0_ManagementApi_Clients_AttackProtectionClient_GetBreachedPasswordDetectionAsync_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.AttackProtectionClient.GetBreachedPasswordDetectionAsync(System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.AttackProtectionClient.GetBreachedPasswordDetectionAsync(System.Threading.CancellationToken)
+  nameWithType: AttackProtectionClient.GetBreachedPasswordDetectionAsync(CancellationToken)
+- uid: Auth0.ManagementApi.Clients.AttackProtectionClient.GetBreachedPasswordDetectionAsync*
+  name: GetBreachedPasswordDetectionAsync
+  href: api/Auth0.ManagementApi.Clients.AttackProtectionClient.html#Auth0_ManagementApi_Clients_AttackProtectionClient_GetBreachedPasswordDetectionAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.AttackProtectionClient.GetBreachedPasswordDetectionAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.AttackProtectionClient.GetBreachedPasswordDetectionAsync
+  nameWithType: AttackProtectionClient.GetBreachedPasswordDetectionAsync
+- uid: Auth0.ManagementApi.Clients.AttackProtectionClient.GetBruteForceProtectionAsync(System.Threading.CancellationToken)
+  name: GetBruteForceProtectionAsync(CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.AttackProtectionClient.html#Auth0_ManagementApi_Clients_AttackProtectionClient_GetBruteForceProtectionAsync_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.AttackProtectionClient.GetBruteForceProtectionAsync(System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.AttackProtectionClient.GetBruteForceProtectionAsync(System.Threading.CancellationToken)
+  nameWithType: AttackProtectionClient.GetBruteForceProtectionAsync(CancellationToken)
+- uid: Auth0.ManagementApi.Clients.AttackProtectionClient.GetBruteForceProtectionAsync*
+  name: GetBruteForceProtectionAsync
+  href: api/Auth0.ManagementApi.Clients.AttackProtectionClient.html#Auth0_ManagementApi_Clients_AttackProtectionClient_GetBruteForceProtectionAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.AttackProtectionClient.GetBruteForceProtectionAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.AttackProtectionClient.GetBruteForceProtectionAsync
+  nameWithType: AttackProtectionClient.GetBruteForceProtectionAsync
+- uid: Auth0.ManagementApi.Clients.AttackProtectionClient.GetSuspiciousIpThrottlingAsync(System.Threading.CancellationToken)
+  name: GetSuspiciousIpThrottlingAsync(CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.AttackProtectionClient.html#Auth0_ManagementApi_Clients_AttackProtectionClient_GetSuspiciousIpThrottlingAsync_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.AttackProtectionClient.GetSuspiciousIpThrottlingAsync(System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.AttackProtectionClient.GetSuspiciousIpThrottlingAsync(System.Threading.CancellationToken)
+  nameWithType: AttackProtectionClient.GetSuspiciousIpThrottlingAsync(CancellationToken)
+- uid: Auth0.ManagementApi.Clients.AttackProtectionClient.GetSuspiciousIpThrottlingAsync*
+  name: GetSuspiciousIpThrottlingAsync
+  href: api/Auth0.ManagementApi.Clients.AttackProtectionClient.html#Auth0_ManagementApi_Clients_AttackProtectionClient_GetSuspiciousIpThrottlingAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.AttackProtectionClient.GetSuspiciousIpThrottlingAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.AttackProtectionClient.GetSuspiciousIpThrottlingAsync
+  nameWithType: AttackProtectionClient.GetSuspiciousIpThrottlingAsync
+- uid: Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBreachedPasswordDetectionAsync(Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection,System.Threading.CancellationToken)
+  name: UpdateBreachedPasswordDetectionAsync(BreachedPasswordDetection, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.AttackProtectionClient.html#Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateBreachedPasswordDetectionAsync_Auth0_ManagementApi_Models_AttackProtection_BreachedPasswordDetection_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBreachedPasswordDetectionAsync(Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBreachedPasswordDetectionAsync(Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection, System.Threading.CancellationToken)
+  nameWithType: AttackProtectionClient.UpdateBreachedPasswordDetectionAsync(BreachedPasswordDetection, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBreachedPasswordDetectionAsync*
+  name: UpdateBreachedPasswordDetectionAsync
+  href: api/Auth0.ManagementApi.Clients.AttackProtectionClient.html#Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateBreachedPasswordDetectionAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBreachedPasswordDetectionAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBreachedPasswordDetectionAsync
+  nameWithType: AttackProtectionClient.UpdateBreachedPasswordDetectionAsync
+- uid: Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBruteForceProtectionAsync(Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection,System.Threading.CancellationToken)
+  name: UpdateBruteForceProtectionAsync(BruteForceProtection, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.AttackProtectionClient.html#Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateBruteForceProtectionAsync_Auth0_ManagementApi_Models_AttackProtection_BruteForceProtection_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBruteForceProtectionAsync(Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBruteForceProtectionAsync(Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection, System.Threading.CancellationToken)
+  nameWithType: AttackProtectionClient.UpdateBruteForceProtectionAsync(BruteForceProtection, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBruteForceProtectionAsync*
+  name: UpdateBruteForceProtectionAsync
+  href: api/Auth0.ManagementApi.Clients.AttackProtectionClient.html#Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateBruteForceProtectionAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBruteForceProtectionAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBruteForceProtectionAsync
+  nameWithType: AttackProtectionClient.UpdateBruteForceProtectionAsync
+- uid: Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateSuspiciousIpThrottlingAsync(Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling,System.Threading.CancellationToken)
+  name: UpdateSuspiciousIpThrottlingAsync(SuspiciousIpThrottling, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.AttackProtectionClient.html#Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateSuspiciousIpThrottlingAsync_Auth0_ManagementApi_Models_AttackProtection_SuspiciousIpThrottling_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateSuspiciousIpThrottlingAsync(Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateSuspiciousIpThrottlingAsync(Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling, System.Threading.CancellationToken)
+  nameWithType: AttackProtectionClient.UpdateSuspiciousIpThrottlingAsync(SuspiciousIpThrottling, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateSuspiciousIpThrottlingAsync*
+  name: UpdateSuspiciousIpThrottlingAsync
+  href: api/Auth0.ManagementApi.Clients.AttackProtectionClient.html#Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateSuspiciousIpThrottlingAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateSuspiciousIpThrottlingAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateSuspiciousIpThrottlingAsync
+  nameWithType: AttackProtectionClient.UpdateSuspiciousIpThrottlingAsync
 - uid: Auth0.ManagementApi.Clients.BaseClient
   name: BaseClient
   href: api/Auth0.ManagementApi.Clients.BaseClient.html
@@ -4381,6 +4481,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.GuardianClient.GetFactorsAsync
   nameWithType: GuardianClient.GetFactorsAsync
+- uid: Auth0.ManagementApi.Clients.GuardianClient.GetPhoneMessageTypesAsync(System.Threading.CancellationToken)
+  name: GetPhoneMessageTypesAsync(CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.GuardianClient.html#Auth0_ManagementApi_Clients_GuardianClient_GetPhoneMessageTypesAsync_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.GuardianClient.GetPhoneMessageTypesAsync(System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.GuardianClient.GetPhoneMessageTypesAsync(System.Threading.CancellationToken)
+  nameWithType: GuardianClient.GetPhoneMessageTypesAsync(CancellationToken)
+- uid: Auth0.ManagementApi.Clients.GuardianClient.GetPhoneMessageTypesAsync*
+  name: GetPhoneMessageTypesAsync
+  href: api/Auth0.ManagementApi.Clients.GuardianClient.html#Auth0_ManagementApi_Clients_GuardianClient_GetPhoneMessageTypesAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.GuardianClient.GetPhoneMessageTypesAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.GuardianClient.GetPhoneMessageTypesAsync
+  nameWithType: GuardianClient.GetPhoneMessageTypesAsync
 - uid: Auth0.ManagementApi.Clients.GuardianClient.GetSmsTemplatesAsync(System.Threading.CancellationToken)
   name: GetSmsTemplatesAsync(CancellationToken)
   href: api/Auth0.ManagementApi.Clients.GuardianClient.html#Auth0_ManagementApi_Clients_GuardianClient_GetSmsTemplatesAsync_System_Threading_CancellationToken_
@@ -4433,6 +4546,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.GuardianClient.UpdateFactorAsync
   nameWithType: GuardianClient.UpdateFactorAsync
+- uid: Auth0.ManagementApi.Clients.GuardianClient.UpdatePhoneMessageTypesAsync(Auth0.ManagementApi.Models.GuardianPhoneMessageTypes,System.Threading.CancellationToken)
+  name: UpdatePhoneMessageTypesAsync(GuardianPhoneMessageTypes, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.GuardianClient.html#Auth0_ManagementApi_Clients_GuardianClient_UpdatePhoneMessageTypesAsync_Auth0_ManagementApi_Models_GuardianPhoneMessageTypes_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.GuardianClient.UpdatePhoneMessageTypesAsync(Auth0.ManagementApi.Models.GuardianPhoneMessageTypes,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.GuardianClient.UpdatePhoneMessageTypesAsync(Auth0.ManagementApi.Models.GuardianPhoneMessageTypes, System.Threading.CancellationToken)
+  nameWithType: GuardianClient.UpdatePhoneMessageTypesAsync(GuardianPhoneMessageTypes, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.GuardianClient.UpdatePhoneMessageTypesAsync*
+  name: UpdatePhoneMessageTypesAsync
+  href: api/Auth0.ManagementApi.Clients.GuardianClient.html#Auth0_ManagementApi_Clients_GuardianClient_UpdatePhoneMessageTypesAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.GuardianClient.UpdatePhoneMessageTypesAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.GuardianClient.UpdatePhoneMessageTypesAsync
+  nameWithType: GuardianClient.UpdatePhoneMessageTypesAsync
 - uid: Auth0.ManagementApi.Clients.GuardianClient.UpdateSmsTemplatesAsync(Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates,System.Threading.CancellationToken)
   name: UpdateSmsTemplatesAsync(GuardianSmsEnrollmentTemplates, CancellationToken)
   href: api/Auth0.ManagementApi.Clients.GuardianClient.html#Auth0_ManagementApi_Clients_GuardianClient_UpdateSmsTemplatesAsync_Auth0_ManagementApi_Models_GuardianSmsEnrollmentTemplates_System_Threading_CancellationToken_
@@ -6217,6 +6343,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.ManagementApiClient.Actions
   nameWithType: ManagementApiClient.Actions
+- uid: Auth0.ManagementApi.ManagementApiClient.AttackProtection
+  name: AttackProtection
+  href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_AttackProtection
+  commentId: P:Auth0.ManagementApi.ManagementApiClient.AttackProtection
+  fullName: Auth0.ManagementApi.ManagementApiClient.AttackProtection
+  nameWithType: ManagementApiClient.AttackProtection
+- uid: Auth0.ManagementApi.ManagementApiClient.AttackProtection*
+  name: AttackProtection
+  href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_AttackProtection_
+  commentId: Overload:Auth0.ManagementApi.ManagementApiClient.AttackProtection
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.ManagementApiClient.AttackProtection
+  nameWithType: ManagementApiClient.AttackProtection
 - uid: Auth0.ManagementApi.ManagementApiClient.BlacklistedTokens
   name: BlacklistedTokens
   href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_BlacklistedTokens
@@ -8068,6 +8207,263 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.AssignUsersRequest.Users
   nameWithType: AssignUsersRequest.Users
+- uid: Auth0.ManagementApi.Models.AttackProtection
+  name: Auth0.ManagementApi.Models.AttackProtection
+  href: api/Auth0.ManagementApi.Models.AttackProtection.html
+  commentId: N:Auth0.ManagementApi.Models.AttackProtection
+  fullName: Auth0.ManagementApi.Models.AttackProtection
+  nameWithType: Auth0.ManagementApi.Models.AttackProtection
+- uid: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection
+  name: BreachedPasswordDetection
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.html
+  commentId: T:Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection
+  nameWithType: BreachedPasswordDetection
+- uid: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.AdminNotificationFrequency
+  name: AdminNotificationFrequency
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.html#Auth0_ManagementApi_Models_AttackProtection_BreachedPasswordDetection_AdminNotificationFrequency
+  commentId: P:Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.AdminNotificationFrequency
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.AdminNotificationFrequency
+  nameWithType: BreachedPasswordDetection.AdminNotificationFrequency
+- uid: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.AdminNotificationFrequency*
+  name: AdminNotificationFrequency
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.html#Auth0_ManagementApi_Models_AttackProtection_BreachedPasswordDetection_AdminNotificationFrequency_
+  commentId: Overload:Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.AdminNotificationFrequency
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.AdminNotificationFrequency
+  nameWithType: BreachedPasswordDetection.AdminNotificationFrequency
+- uid: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Enabled
+  name: Enabled
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.html#Auth0_ManagementApi_Models_AttackProtection_BreachedPasswordDetection_Enabled
+  commentId: P:Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Enabled
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Enabled
+  nameWithType: BreachedPasswordDetection.Enabled
+- uid: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Enabled*
+  name: Enabled
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.html#Auth0_ManagementApi_Models_AttackProtection_BreachedPasswordDetection_Enabled_
+  commentId: Overload:Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Enabled
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Enabled
+  nameWithType: BreachedPasswordDetection.Enabled
+- uid: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Method
+  name: Method
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.html#Auth0_ManagementApi_Models_AttackProtection_BreachedPasswordDetection_Method
+  commentId: P:Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Method
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Method
+  nameWithType: BreachedPasswordDetection.Method
+- uid: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Method*
+  name: Method
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.html#Auth0_ManagementApi_Models_AttackProtection_BreachedPasswordDetection_Method_
+  commentId: Overload:Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Method
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Method
+  nameWithType: BreachedPasswordDetection.Method
+- uid: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Shields
+  name: Shields
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.html#Auth0_ManagementApi_Models_AttackProtection_BreachedPasswordDetection_Shields
+  commentId: P:Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Shields
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Shields
+  nameWithType: BreachedPasswordDetection.Shields
+- uid: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Shields*
+  name: Shields
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.html#Auth0_ManagementApi_Models_AttackProtection_BreachedPasswordDetection_Shields_
+  commentId: Overload:Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Shields
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Shields
+  nameWithType: BreachedPasswordDetection.Shields
+- uid: Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection
+  name: BruteForceProtection
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.html
+  commentId: T:Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection
+  nameWithType: BruteForceProtection
+- uid: Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Allowlist
+  name: Allowlist
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.html#Auth0_ManagementApi_Models_AttackProtection_BruteForceProtection_Allowlist
+  commentId: P:Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Allowlist
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Allowlist
+  nameWithType: BruteForceProtection.Allowlist
+- uid: Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Allowlist*
+  name: Allowlist
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.html#Auth0_ManagementApi_Models_AttackProtection_BruteForceProtection_Allowlist_
+  commentId: Overload:Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Allowlist
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Allowlist
+  nameWithType: BruteForceProtection.Allowlist
+- uid: Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Enabled
+  name: Enabled
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.html#Auth0_ManagementApi_Models_AttackProtection_BruteForceProtection_Enabled
+  commentId: P:Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Enabled
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Enabled
+  nameWithType: BruteForceProtection.Enabled
+- uid: Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Enabled*
+  name: Enabled
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.html#Auth0_ManagementApi_Models_AttackProtection_BruteForceProtection_Enabled_
+  commentId: Overload:Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Enabled
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Enabled
+  nameWithType: BruteForceProtection.Enabled
+- uid: Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.MaxAttempts
+  name: MaxAttempts
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.html#Auth0_ManagementApi_Models_AttackProtection_BruteForceProtection_MaxAttempts
+  commentId: P:Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.MaxAttempts
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.MaxAttempts
+  nameWithType: BruteForceProtection.MaxAttempts
+- uid: Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.MaxAttempts*
+  name: MaxAttempts
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.html#Auth0_ManagementApi_Models_AttackProtection_BruteForceProtection_MaxAttempts_
+  commentId: Overload:Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.MaxAttempts
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.MaxAttempts
+  nameWithType: BruteForceProtection.MaxAttempts
+- uid: Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Mode
+  name: Mode
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.html#Auth0_ManagementApi_Models_AttackProtection_BruteForceProtection_Mode
+  commentId: P:Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Mode
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Mode
+  nameWithType: BruteForceProtection.Mode
+- uid: Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Mode*
+  name: Mode
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.html#Auth0_ManagementApi_Models_AttackProtection_BruteForceProtection_Mode_
+  commentId: Overload:Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Mode
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Mode
+  nameWithType: BruteForceProtection.Mode
+- uid: Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Shields
+  name: Shields
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.html#Auth0_ManagementApi_Models_AttackProtection_BruteForceProtection_Shields
+  commentId: P:Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Shields
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Shields
+  nameWithType: BruteForceProtection.Shields
+- uid: Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Shields*
+  name: Shields
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.html#Auth0_ManagementApi_Models_AttackProtection_BruteForceProtection_Shields_
+  commentId: Overload:Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Shields
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.Shields
+  nameWithType: BruteForceProtection.Shields
+- uid: Auth0.ManagementApi.Models.AttackProtection.Stage
+  name: Stage
+  href: api/Auth0.ManagementApi.Models.AttackProtection.Stage.html
+  commentId: T:Auth0.ManagementApi.Models.AttackProtection.Stage
+  fullName: Auth0.ManagementApi.Models.AttackProtection.Stage
+  nameWithType: Stage
+- uid: Auth0.ManagementApi.Models.AttackProtection.Stage.PreLogin
+  name: PreLogin
+  href: api/Auth0.ManagementApi.Models.AttackProtection.Stage.html#Auth0_ManagementApi_Models_AttackProtection_Stage_PreLogin
+  commentId: P:Auth0.ManagementApi.Models.AttackProtection.Stage.PreLogin
+  fullName: Auth0.ManagementApi.Models.AttackProtection.Stage.PreLogin
+  nameWithType: Stage.PreLogin
+- uid: Auth0.ManagementApi.Models.AttackProtection.Stage.PreLogin*
+  name: PreLogin
+  href: api/Auth0.ManagementApi.Models.AttackProtection.Stage.html#Auth0_ManagementApi_Models_AttackProtection_Stage_PreLogin_
+  commentId: Overload:Auth0.ManagementApi.Models.AttackProtection.Stage.PreLogin
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.AttackProtection.Stage.PreLogin
+  nameWithType: Stage.PreLogin
+- uid: Auth0.ManagementApi.Models.AttackProtection.Stage.PreUserRegistration
+  name: PreUserRegistration
+  href: api/Auth0.ManagementApi.Models.AttackProtection.Stage.html#Auth0_ManagementApi_Models_AttackProtection_Stage_PreUserRegistration
+  commentId: P:Auth0.ManagementApi.Models.AttackProtection.Stage.PreUserRegistration
+  fullName: Auth0.ManagementApi.Models.AttackProtection.Stage.PreUserRegistration
+  nameWithType: Stage.PreUserRegistration
+- uid: Auth0.ManagementApi.Models.AttackProtection.Stage.PreUserRegistration*
+  name: PreUserRegistration
+  href: api/Auth0.ManagementApi.Models.AttackProtection.Stage.html#Auth0_ManagementApi_Models_AttackProtection_Stage_PreUserRegistration_
+  commentId: Overload:Auth0.ManagementApi.Models.AttackProtection.Stage.PreUserRegistration
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.AttackProtection.Stage.PreUserRegistration
+  nameWithType: Stage.PreUserRegistration
+- uid: Auth0.ManagementApi.Models.AttackProtection.Stage.StageEntry
+  name: Stage.StageEntry
+  href: api/Auth0.ManagementApi.Models.AttackProtection.Stage.StageEntry.html
+  commentId: T:Auth0.ManagementApi.Models.AttackProtection.Stage.StageEntry
+  fullName: Auth0.ManagementApi.Models.AttackProtection.Stage.StageEntry
+  nameWithType: Stage.StageEntry
+- uid: Auth0.ManagementApi.Models.AttackProtection.Stage.StageEntry.MaxAttempts
+  name: MaxAttempts
+  href: api/Auth0.ManagementApi.Models.AttackProtection.Stage.StageEntry.html#Auth0_ManagementApi_Models_AttackProtection_Stage_StageEntry_MaxAttempts
+  commentId: P:Auth0.ManagementApi.Models.AttackProtection.Stage.StageEntry.MaxAttempts
+  fullName: Auth0.ManagementApi.Models.AttackProtection.Stage.StageEntry.MaxAttempts
+  nameWithType: Stage.StageEntry.MaxAttempts
+- uid: Auth0.ManagementApi.Models.AttackProtection.Stage.StageEntry.MaxAttempts*
+  name: MaxAttempts
+  href: api/Auth0.ManagementApi.Models.AttackProtection.Stage.StageEntry.html#Auth0_ManagementApi_Models_AttackProtection_Stage_StageEntry_MaxAttempts_
+  commentId: Overload:Auth0.ManagementApi.Models.AttackProtection.Stage.StageEntry.MaxAttempts
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.AttackProtection.Stage.StageEntry.MaxAttempts
+  nameWithType: Stage.StageEntry.MaxAttempts
+- uid: Auth0.ManagementApi.Models.AttackProtection.Stage.StageEntry.Rate
+  name: Rate
+  href: api/Auth0.ManagementApi.Models.AttackProtection.Stage.StageEntry.html#Auth0_ManagementApi_Models_AttackProtection_Stage_StageEntry_Rate
+  commentId: P:Auth0.ManagementApi.Models.AttackProtection.Stage.StageEntry.Rate
+  fullName: Auth0.ManagementApi.Models.AttackProtection.Stage.StageEntry.Rate
+  nameWithType: Stage.StageEntry.Rate
+- uid: Auth0.ManagementApi.Models.AttackProtection.Stage.StageEntry.Rate*
+  name: Rate
+  href: api/Auth0.ManagementApi.Models.AttackProtection.Stage.StageEntry.html#Auth0_ManagementApi_Models_AttackProtection_Stage_StageEntry_Rate_
+  commentId: Overload:Auth0.ManagementApi.Models.AttackProtection.Stage.StageEntry.Rate
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.AttackProtection.Stage.StageEntry.Rate
+  nameWithType: Stage.StageEntry.Rate
+- uid: Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling
+  name: SuspiciousIpThrottling
+  href: api/Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html
+  commentId: T:Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling
+  fullName: Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling
+  nameWithType: SuspiciousIpThrottling
+- uid: Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Allowlist
+  name: Allowlist
+  href: api/Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html#Auth0_ManagementApi_Models_AttackProtection_SuspiciousIpThrottling_Allowlist
+  commentId: P:Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Allowlist
+  fullName: Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Allowlist
+  nameWithType: SuspiciousIpThrottling.Allowlist
+- uid: Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Allowlist*
+  name: Allowlist
+  href: api/Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html#Auth0_ManagementApi_Models_AttackProtection_SuspiciousIpThrottling_Allowlist_
+  commentId: Overload:Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Allowlist
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Allowlist
+  nameWithType: SuspiciousIpThrottling.Allowlist
+- uid: Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Enabled
+  name: Enabled
+  href: api/Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html#Auth0_ManagementApi_Models_AttackProtection_SuspiciousIpThrottling_Enabled
+  commentId: P:Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Enabled
+  fullName: Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Enabled
+  nameWithType: SuspiciousIpThrottling.Enabled
+- uid: Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Enabled*
+  name: Enabled
+  href: api/Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html#Auth0_ManagementApi_Models_AttackProtection_SuspiciousIpThrottling_Enabled_
+  commentId: Overload:Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Enabled
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Enabled
+  nameWithType: SuspiciousIpThrottling.Enabled
+- uid: Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Shields
+  name: Shields
+  href: api/Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html#Auth0_ManagementApi_Models_AttackProtection_SuspiciousIpThrottling_Shields
+  commentId: P:Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Shields
+  fullName: Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Shields
+  nameWithType: SuspiciousIpThrottling.Shields
+- uid: Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Shields*
+  name: Shields
+  href: api/Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html#Auth0_ManagementApi_Models_AttackProtection_SuspiciousIpThrottling_Shields_
+  commentId: Overload:Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Shields
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Shields
+  nameWithType: SuspiciousIpThrottling.Shields
+- uid: Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Stage
+  name: Stage
+  href: api/Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html#Auth0_ManagementApi_Models_AttackProtection_SuspiciousIpThrottling_Stage
+  commentId: P:Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Stage
+  fullName: Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Stage
+  nameWithType: SuspiciousIpThrottling.Stage
+- uid: Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Stage*
+  name: Stage
+  href: api/Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html#Auth0_ManagementApi_Models_AttackProtection_SuspiciousIpThrottling_Stage_
+  commentId: Overload:Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Stage
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Stage
+  nameWithType: SuspiciousIpThrottling.Stage
 - uid: Auth0.ManagementApi.Models.BlacklistedToken
   name: BlacklistedToken
   href: api/Auth0.ManagementApi.Models.BlacklistedToken.html
@@ -11276,6 +11672,25 @@ references:
   commentId: F:Auth0.ManagementApi.Models.GuardianFactorName.WebAuthnRoaming
   fullName: Auth0.ManagementApi.Models.GuardianFactorName.WebAuthnRoaming
   nameWithType: GuardianFactorName.WebAuthnRoaming
+- uid: Auth0.ManagementApi.Models.GuardianPhoneMessageTypes
+  name: GuardianPhoneMessageTypes
+  href: api/Auth0.ManagementApi.Models.GuardianPhoneMessageTypes.html
+  commentId: T:Auth0.ManagementApi.Models.GuardianPhoneMessageTypes
+  fullName: Auth0.ManagementApi.Models.GuardianPhoneMessageTypes
+  nameWithType: GuardianPhoneMessageTypes
+- uid: Auth0.ManagementApi.Models.GuardianPhoneMessageTypes.MessageTypes
+  name: MessageTypes
+  href: api/Auth0.ManagementApi.Models.GuardianPhoneMessageTypes.html#Auth0_ManagementApi_Models_GuardianPhoneMessageTypes_MessageTypes
+  commentId: P:Auth0.ManagementApi.Models.GuardianPhoneMessageTypes.MessageTypes
+  fullName: Auth0.ManagementApi.Models.GuardianPhoneMessageTypes.MessageTypes
+  nameWithType: GuardianPhoneMessageTypes.MessageTypes
+- uid: Auth0.ManagementApi.Models.GuardianPhoneMessageTypes.MessageTypes*
+  name: MessageTypes
+  href: api/Auth0.ManagementApi.Models.GuardianPhoneMessageTypes.html#Auth0_ManagementApi_Models_GuardianPhoneMessageTypes_MessageTypes_
+  commentId: Overload:Auth0.ManagementApi.Models.GuardianPhoneMessageTypes.MessageTypes
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.GuardianPhoneMessageTypes.MessageTypes
+  nameWithType: GuardianPhoneMessageTypes.MessageTypes
 - uid: Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates
   name: GuardianSmsEnrollmentTemplates
   href: api/Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates.html
