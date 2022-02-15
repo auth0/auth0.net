@@ -1,5 +1,11 @@
 # Change Log
 
+## [release-7.14.0](https://github.com/auth0/auth0.net/tree/release-7.14.0) (2022-02-15)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.13.0...release-7.14.0)
+
+**Added**
+- Implement Attack Protection Endpoints [\#547](https://github.com/auth0/auth0.net/pull/547) ([frederikprijck](https://github.com/frederikprijck))
+
 ## [release-7.13.0](https://github.com/auth0/auth0.net/tree/release-7.13.0) (2022-02-11)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.12.1...release-7.13.0)
 
