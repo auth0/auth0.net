@@ -5,13 +5,14 @@ using Auth0.Tests.Shared;
 using FluentAssertions;
 using System;
 using System.Threading.Tasks;
+using Auth0.AuthenticationApi.IntegrationTests.Testing;
+using Auth0.IntegrationTests.Shared.CleanUp;
 using Xunit;
 
 namespace Auth0.AuthenticationApi.IntegrationTests
 {
-    public class AuthenticationTests : TestBase, IAsyncLifetime
+    public class AuthenticationTests : ManagementTestBase, IAsyncLifetime
     {
-        private ManagementApiClient _managementApiClient;
         private AuthenticationApiClient _authenticationApiClient;
         private Connection _connection;
         private User _user;
@@ -23,9 +24,9 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         {
             string token = await GenerateManagementApiToken();
 
-            _managementApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+            ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
 
-            var tenantSettings = await _managementApiClient.TenantSettings.GetAsync();
+            var tenantSettings = await ApiClient.TenantSettings.GetAsync();
 
             if (string.IsNullOrEmpty(tenantSettings.DefaultDirectory))
             {
@@ -35,36 +36,36 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             }
             
             // We will need a connection to add the users to...
-            _connection = await _managementApiClient.Connections.CreateAsync(new ConnectionCreateRequest
+            _connection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
-                Name = Guid.NewGuid().ToString("N"),
+                Name = $"{TestingConstants.ConnectionPrefix}-{MakeRandomName()}",
                 Strategy = "auth0",
                 EnabledClients = new []{ GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
             });
 
             // And add a dummy user to test against
-            _user = await _managementApiClient.Users.CreateAsync(new UserCreateRequest
+            _user = await ApiClient.Users.CreateAsync(new UserCreateRequest
             {
                 Connection = _connection.Name,
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                 EmailVerified = true,
                 Password = Password
             });
 
             // Add a user with a + in the username
-            _plusUser = await _managementApiClient.Users.CreateAsync(new UserCreateRequest
+            _plusUser = await ApiClient.Users.CreateAsync(new UserCreateRequest
             {
                 Connection = _connection.Name,
-                Email = $"{Guid.NewGuid():N}+1@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}+1{TestingConstants.UserEmailDomain}",
                 EmailVerified = true,
                 Password = Password
             });
 
             // Add a user with a + in the username
-            _userInDefaultDirectory = await _managementApiClient.Users.CreateAsync(new UserCreateRequest
+            _userInDefaultDirectory = await ApiClient.Users.CreateAsync(new UserCreateRequest
             {
                 Connection = tenantSettings.DefaultDirectory,
-                Email = $"{Guid.NewGuid():N}+1@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}+1{TestingConstants.UserEmailDomain}",
                 EmailVerified = true,
                 Password = Password
             });
@@ -72,22 +73,11 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             _authenticationApiClient = new TestAuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
         }
 
-        public async Task DisposeAsync()
+        public override async Task DisposeAsync()
         {
-            if (_user != null)
-                await _managementApiClient.Users.DeleteAsync(_user.UserId);
-
-            if (_userInDefaultDirectory != null)
-                await _managementApiClient.Users.DeleteAsync(_userInDefaultDirectory.UserId);
-
-            if (_plusUser != null)
-                await _managementApiClient.Users.DeleteAsync(_plusUser.UserId);
-
-            if (_connection != null)
-                await _managementApiClient.Connections.DeleteAsync(_connection.Id);
-
-            _managementApiClient.Dispose();
             _authenticationApiClient.Dispose();
+            await CleanupAndDisposeAsync(CleanUpType.Users);
+            await CleanupAndDisposeAsync(CleanUpType.Connections);
         }
 
         [Fact]

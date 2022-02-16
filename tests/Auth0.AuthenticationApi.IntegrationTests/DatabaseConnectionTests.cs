@@ -5,13 +5,14 @@ using Auth0.Tests.Shared;
 using FluentAssertions;
 using System;
 using System.Threading.Tasks;
+using Auth0.AuthenticationApi.IntegrationTests.Testing;
+using Auth0.IntegrationTests.Shared.CleanUp;
 using Xunit;
 
 namespace Auth0.AuthenticationApi.IntegrationTests
 {
-    public class DatabaseConnectionTests : TestBase, IAsyncLifetime
+    public class DatabaseConnectionTests : ManagementTestBase, IAsyncLifetime
     {
-        private ManagementApiClient _managementApiClient;
         private AuthenticationApiClient _authenticationApiClient;
         private Connection _connection;
         private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
@@ -20,12 +21,12 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         {
             string token = await GenerateManagementApiToken();
 
-            _managementApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+            ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
 
             // We will need a connection to add the users to...
-            _connection = await _managementApiClient.Connections.CreateAsync(new ConnectionCreateRequest
+            _connection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
-                Name = Guid.NewGuid().ToString("N"),
+                Name = $"{TestingConstants.ConnectionPrefix}-{MakeRandomName()}",
                 Strategy = "auth0",
                 EnabledClients = new[] {GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID")}
             });
@@ -33,12 +34,10 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             _authenticationApiClient = new TestAuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
         }
 
-        public async Task DisposeAsync()
+        public override async Task DisposeAsync()
         {
-            if (_connection != null)
-                await _managementApiClient.Connections.DeleteAsync(_connection.Id);
-            _managementApiClient.Dispose();
             _authenticationApiClient.Dispose();
+            await CleanupAndDisposeAsync(CleanUpType.Connections);
         }
 
         [Fact]
@@ -49,7 +48,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 Connection = _connection.Name,
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                 Password = Password,
                 FamilyName = "Surname",
                 GivenName = "Forename",
@@ -83,7 +82,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 Connection = "Username-Password-Authentication",
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                 Password = Password
             };
             var signupUserResponse = await _authenticationApiClient.SignupUserAsync(signupUserRequest);

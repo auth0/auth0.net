@@ -5,31 +5,31 @@ using FluentAssertions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Auth0.IntegrationTests.Shared.CleanUp;
+using Auth0.ManagementApi.IntegrationTests.Testing;
 using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    public class GuardianTests : TestBase, IAsyncLifetime
+    public class GuardianTests : ManagementTestBase, IAsyncLifetime
     {
-        ManagementApiClient _managementApiClient;
-
         public async Task InitializeAsync()
         {
             string token = await GenerateManagementApiToken();
 
-            _managementApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+            ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
         }
 
-        public Task DisposeAsync()
+        public override async Task DisposeAsync()
         {
-            _managementApiClient.Dispose();
-            return Task.CompletedTask;
+            await CleanupAndDisposeAsync(CleanUpType.Connections);
+            await CleanupAndDisposeAsync(CleanUpType.Users);
         }
 
         [Fact]
         public async Task Can_retrieve_guardian_factors()
         {
-            var response = await _managementApiClient.Guardian.GetFactorsAsync();
+            var response = await ApiClient.Guardian.GetFactorsAsync();
 
             response.Should().HaveCount(8);
 
@@ -42,7 +42,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Retrieving_non_existent_enrollment_throws()
         {
-            Func<Task> getFunc = async () => await _managementApiClient.Guardian.GetEnrollmentAsync("dev_123456");
+            Func<Task> getFunc = async () => await ApiClient.Guardian.GetEnrollmentAsync("dev_123456");
 
             (await getFunc.Should().ThrowAsync<ErrorApiException>())
                 .And.ApiError.ErrorCode.Should().Be("enrollment_not_found");
@@ -51,7 +51,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Deleting_non_existent_enrollment_throws()
         {
-            Func<Task> deleteFunc = async () => await _managementApiClient.Guardian.DeleteEnrollmentAsync("dev_123456");
+            Func<Task> deleteFunc = async () => await ApiClient.Guardian.DeleteEnrollmentAsync("dev_123456");
 
             (await deleteFunc.Should().ThrowAsync<ErrorApiException>())
                 .And.ApiError.ErrorCode.Should().Be("enrollment_not_found");
@@ -61,7 +61,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Can_perform_sms_template_maintenance()
         {
             // Get the current templates
-            var initialTemplates = await _managementApiClient.Guardian.GetSmsTemplatesAsync();
+            var initialTemplates = await ApiClient.Guardian.GetSmsTemplatesAsync();
             initialTemplates.Should().NotBeNull();
 
             // Update the templates
@@ -70,47 +70,63 @@ namespace Auth0.ManagementApi.IntegrationTests
                 EnrollmentMessage = $"This is the enrollment message {Guid.NewGuid()}",
                 VerificationMessage = $"This is the verification message {Guid.NewGuid()}"
             };
-            var templateUpdateResponse = await _managementApiClient.Guardian.UpdateSmsTemplatesAsync(templateUpdateRequest);
+            var templateUpdateResponse = await ApiClient.Guardian.UpdateSmsTemplatesAsync(templateUpdateRequest);
             templateUpdateResponse.Should().BeEquivalentTo(templateUpdateRequest);
         }
 
         [Fact]
         public async Task Can_create_enrollment_ticket()
         {
-            // Create a connection for creating a user
-            var connection = await _managementApiClient.Connections.CreateAsync(new ConnectionCreateRequest
+            Connection connection = null;
+            User user = null;
+            try
             {
-                Name = "Temp-Int-Test-" + MakeRandomName(),
-                Strategy = "auth0",
-                EnabledClients = new[] {
-                    GetVariable("AUTH0_CLIENT_ID"),
-                    GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID")
+                // Create a connection for creating a user
+                connection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
+                {
+                    Name = $"{TestingConstants.ConnectionPrefix}-{MakeRandomName()}",
+                    Strategy = "auth0",
+                    EnabledClients = new[]
+                    {
+                        GetVariable("AUTH0_CLIENT_ID"),
+                        GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID")
+                    }
+                });
+
+                // Create a new user
+                var userCreateRequest = new UserCreateRequest
+                {
+                    Connection = connection.Name,
+                    Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
+                    EmailVerified = true,
+                    Password = "jd78w3hku23134?"
+                };
+                user = await ApiClient.Users.CreateAsync(userCreateRequest);
+
+                // Create an enrollment request
+                var request = new CreateGuardianEnrollmentTicketRequest
+                {
+                    UserId = user.UserId,
+                    MustSendMail = false
+                };
+                var response = await ApiClient.Guardian.CreateEnrollmentTicketAsync(request);
+                response.TicketId.Should().NotBeNull();
+                response.TicketUrl.Should().NotBeNull();
+            }
+            finally
+            {
+                // Clean up after ourselves
+                if (user != null)
+                {
+                    await ApiClient.Users.DeleteAsync(user.UserId);
                 }
-            });
 
-            // Create a new user
-            var userCreateRequest = new UserCreateRequest
-            {
-                Connection = connection.Name,
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
-                EmailVerified = true,
-                Password = "jd78w3hku23134?"
-            };
-            var user = await _managementApiClient.Users.CreateAsync(userCreateRequest);
+                if (connection != null)
+                {
 
-            // Create an enrollment request
-            var request = new CreateGuardianEnrollmentTicketRequest
-            {
-                UserId = user.UserId,
-                MustSendMail = false
-            };
-            var response = await _managementApiClient.Guardian.CreateEnrollmentTicketAsync(request);
-            response.TicketId.Should().NotBeNull();
-            response.TicketUrl.Should().NotBeNull();
-
-            // Clean up after ourselves
-            await _managementApiClient.Users.DeleteAsync(user.UserId);
-            await _managementApiClient.Connections.DeleteAsync(connection.Id);
+                    await ApiClient.Connections.DeleteAsync(connection.Id);
+                }
+            }
         }
 
         [Fact]
@@ -118,28 +134,28 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             UpdateGuardianFactorResponse response;
 
-            response = await _managementApiClient.Guardian.UpdateFactorAsync(new UpdateGuardianFactorRequest
+            response = await ApiClient.Guardian.UpdateFactorAsync(new UpdateGuardianFactorRequest
             {
                 Factor = GuardianFactorName.Sms,
                 IsEnabled = false
             });
             response.IsEnabled.Should().BeFalse();
 
-            response = await _managementApiClient.Guardian.UpdateFactorAsync(new UpdateGuardianFactorRequest
+            response = await ApiClient.Guardian.UpdateFactorAsync(new UpdateGuardianFactorRequest
             {
                 Factor = GuardianFactorName.Sms,
                 IsEnabled = true
             });
             response.IsEnabled.Should().BeTrue();
 
-            response = await _managementApiClient.Guardian.UpdateFactorAsync(new UpdateGuardianFactorRequest
+            response = await ApiClient.Guardian.UpdateFactorAsync(new UpdateGuardianFactorRequest
             {
                 Factor = GuardianFactorName.PushNotifications,
                 IsEnabled = false
             });
             response.IsEnabled.Should().BeFalse();
 
-            response = await _managementApiClient.Guardian.UpdateFactorAsync(new UpdateGuardianFactorRequest
+            response = await ApiClient.Guardian.UpdateFactorAsync(new UpdateGuardianFactorRequest
             {
                 Factor = GuardianFactorName.Sms,
                 IsEnabled = true
@@ -156,7 +172,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 From = "+123456789",
                 Sid = Guid.NewGuid().ToString("N")
             };
-            var response = await _managementApiClient.Guardian.UpdateTwilioConfigurationAsync(request);
+            var response = await ApiClient.Guardian.UpdateTwilioConfigurationAsync(request);
             response.Should().BeEquivalentTo(request);
 
 
@@ -166,10 +182,10 @@ namespace Auth0.ManagementApi.IntegrationTests
                 MessagingServiceSid = Guid.NewGuid().ToString("N"),
                 Sid = Guid.NewGuid().ToString("N")
             };
-            response = await _managementApiClient.Guardian.UpdateTwilioConfigurationAsync(request);
+            response = await ApiClient.Guardian.UpdateTwilioConfigurationAsync(request);
             response.Should().BeEquivalentTo(request);
 
-            response = await _managementApiClient.Guardian.GetTwilioConfigurationAsync();
+            response = await ApiClient.Guardian.GetTwilioConfigurationAsync();
             response.Should().BeEquivalentTo(request);
         }
 
@@ -178,19 +194,19 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             GuardianPhoneMessageTypes response;
 
-            response = await _managementApiClient.Guardian.UpdatePhoneMessageTypesAsync(new GuardianPhoneMessageTypes
+            response = await ApiClient.Guardian.UpdatePhoneMessageTypesAsync(new GuardianPhoneMessageTypes
             {
                 MessageTypes = new List<string> { "sms" }
             });
             response.MessageTypes.Count.Should().Be(1);
 
-            response = await _managementApiClient.Guardian.UpdatePhoneMessageTypesAsync(new GuardianPhoneMessageTypes
+            response = await ApiClient.Guardian.UpdatePhoneMessageTypesAsync(new GuardianPhoneMessageTypes
             {
                 MessageTypes = new List<string> { "sms", "voice" }
             });
             response.MessageTypes.Count.Should().Be(2);
 
-            response = await _managementApiClient.Guardian.GetPhoneMessageTypesAsync();
+            response = await ApiClient.Guardian.GetPhoneMessageTypesAsync();
             response.MessageTypes.Count.Should().Be(2);
         }
     }

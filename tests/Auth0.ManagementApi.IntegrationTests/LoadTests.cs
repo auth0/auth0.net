@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Auth0.IntegrationTests.Shared.CleanUp;
+using Auth0.ManagementApi.IntegrationTests.Testing;
 using Auth0.ManagementApi.Models;
 using Auth0.Tests.Shared;
 using Xunit;
@@ -26,7 +28,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             var connection = await apiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
-                Name = "Temp-Int-Test-" + MakeRandomName(),
+                Name = $"{TestingConstants.ConnectionPrefix}-{MakeRandomName()}",
                 Strategy = "auth0",
                 EnabledClients = new[] { GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
             });
@@ -39,7 +41,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 var newUserRequest = new UserCreateRequest
                 {
                     Connection = connection.Name,
-                    Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                    Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                     EmailVerified = true,
                     Password = Password
                 };

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Auth0.Core.Exceptions;
+using Auth0.ManagementApi.IntegrationTests.Testing;
 using Auth0.ManagementApi.Models;
 using FluentAssertions;
 using Xunit;
@@ -9,27 +10,24 @@ using Auth0.ManagementApi.Paging;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    public class RulesTests : TestBase, IAsyncLifetime
+    public class RulesTests : ManagementTestBase, IAsyncLifetime
     {
-        private ManagementApiClient _apiClient;
-
         public async Task InitializeAsync()
         {
             string token = await GenerateManagementApiToken();
-            _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+            ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
         }
 
-        public Task DisposeAsync()
+        public override Task DisposeAsync()
         {
-            _apiClient.Dispose();
-            return Task.CompletedTask;
+            return CleanupAndDisposeAsync();
         }
 
         [Fact]
         public async Task Test_rules_crud_sequence()
         {
             // Get all rules
-            var rulesBefore = await _apiClient.Rules.GetAllAsync(new GetRulesRequest(), new PaginationInfo());
+            var rulesBefore = await ApiClient.Rules.GetAllAsync(new GetRulesRequest(), new PaginationInfo());
 
             // Add a new rule
             var newRuleRequest = new RuleCreateRequest
@@ -40,12 +38,12 @@ namespace Auth0.ManagementApi.IntegrationTests
                               callback(null, user, context);
                             }"
             };
-            var newRuleResponse = await _apiClient.Rules.CreateAsync(newRuleRequest);
+            var newRuleResponse = await ApiClient.Rules.CreateAsync(newRuleRequest);
             newRuleResponse.Should().NotBeNull();
             newRuleResponse.Name.Should().Be(newRuleRequest.Name);
 
             // Get all the rules again, and check that we now have one more
-            var rulesAfter = await _apiClient.Rules.GetAllAsync(new GetRulesRequest(), new PaginationInfo());
+            var rulesAfter = await ApiClient.Rules.GetAllAsync(new GetRulesRequest(), new PaginationInfo());
             rulesAfter.Count.Should().Be(rulesBefore.Count + 1);
 
             // Update the Rule
@@ -53,18 +51,18 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 Name = $"integration-test-rule-{Guid.NewGuid():N}"
             };
-            var updateRuleResponse = await _apiClient.Rules.UpdateAsync(newRuleResponse.Id, updateRuleRequest);
+            var updateRuleResponse = await ApiClient.Rules.UpdateAsync(newRuleResponse.Id, updateRuleRequest);
             updateRuleResponse.Should().NotBeNull();
             updateRuleResponse.Name.Should().Be(updateRuleRequest.Name);
 
             // Get a single rule
-            var rule = await _apiClient.Rules.GetAsync(newRuleResponse.Id);
+            var rule = await ApiClient.Rules.GetAsync(newRuleResponse.Id);
             rule.Should().NotBeNull();
             rule.Name.Should().Be(updateRuleRequest.Name);
 
             // Delete the rule, and ensure we get exception when trying to fetch it again
-            await _apiClient.Rules.DeleteAsync(rule.Id);
-            Func<Task> getFunc = async () => await _apiClient.Rules.GetAsync(rule.Id);
+            await ApiClient.Rules.DeleteAsync(rule.Id);
+            Func<Task> getFunc = async () => await ApiClient.Rules.GetAsync(rule.Id);
             getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_rule");
         }
         
@@ -72,7 +70,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_when_paging_not_specified_does_not_include_totals()
         {
             // Act
-            var rules = await _apiClient.Rules.GetAllAsync(new GetRulesRequest(), new PaginationInfo());
+            var rules = await ApiClient.Rules.GetAllAsync(new GetRulesRequest(), new PaginationInfo());
             
             // Assert
             Assert.Null(rules.Paging);
@@ -82,7 +80,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_paging_does_not_include_totals()
         {
             // Act
-            var rules = await _apiClient.Rules.GetAllAsync(new GetRulesRequest(), new PaginationInfo(0, 50, false));
+            var rules = await ApiClient.Rules.GetAllAsync(new GetRulesRequest(), new PaginationInfo(0, 50, false));
             
             // Assert
             Assert.Null(rules.Paging);
@@ -92,7 +90,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_paging_includes_totals()
         {
             // Act
-            var rules = await _apiClient.Rules.GetAllAsync(new GetRulesRequest(), new PaginationInfo(0, 50, true));
+            var rules = await ApiClient.Rules.GetAllAsync(new GetRulesRequest(), new PaginationInfo(0, 50, true));
             
             // Assert
             Assert.NotNull(rules.Paging);
@@ -102,7 +100,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_without_paging()
         {
             // Add a new rule
-            var newRule = await _apiClient.Rules.CreateAsync(new RuleCreateRequest
+            var newRule = await ApiClient.Rules.CreateAsync(new RuleCreateRequest
             {
                 Name = $"integration-test-rule-{Guid.NewGuid():N}",
                 Script = @"function (user, context, callback) {
@@ -114,13 +112,13 @@ namespace Auth0.ManagementApi.IntegrationTests
             newRule.Should().NotBeNull();
 
             // Act
-            var rules = await _apiClient.Rules.GetAllAsync(new GetRulesRequest());
+            var rules = await ApiClient.Rules.GetAllAsync(new GetRulesRequest());
 
             // Assert
             rules.Paging.Should().BeNull();
             rules.Count.Should().BeGreaterThan(0);
 
-            await _apiClient.Rules.DeleteAsync(newRule.Id);
+            await ApiClient.Rules.DeleteAsync(newRule.Id);
         }
     }
 }

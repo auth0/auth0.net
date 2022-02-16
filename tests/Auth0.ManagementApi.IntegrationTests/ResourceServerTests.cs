@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Auth0.Core.Exceptions;
+using Auth0.IntegrationTests.Shared.CleanUp;
+using Auth0.ManagementApi.IntegrationTests.Testing;
 using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Paging;
 using Auth0.Tests.Shared;
@@ -10,21 +12,18 @@ using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    public class ResourceServerTests : TestBase, IAsyncLifetime
+    public class ResourceServerTests : ManagementTestBase, IAsyncLifetime
     {
-        private ManagementApiClient _apiClient;
-
         public async Task InitializeAsync()
         {
             string token = await GenerateManagementApiToken();
 
-            _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+            ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
         }
 
-        public Task DisposeAsync()
+        public override Task DisposeAsync()
         {
-            _apiClient.Dispose();
-            return Task.CompletedTask;
+            return CleanupAndDisposeAsync();
         }
 
         [Fact]
@@ -35,7 +34,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var createResourceServerRequest = new ResourceServerCreateRequest()
             {
                 Identifier = identifier.ToString("N"),
-                Name = $"Integration testing {identifier:N}",
+                Name = $"{TestingConstants.ResourceServerPrefix} {identifier:N}",
                 TokenLifetime = 1,
                 TokenLifetimeForWeb = 1,
                 SigningAlgorithm = SigningAlgorithm.HS256,
@@ -53,13 +52,13 @@ namespace Auth0.ManagementApi.IntegrationTests
                 SkipConsentForVerifiableFirstPartyClients = true,
             };
 
-            var newResourceServerResponse = await _apiClient.ResourceServers.CreateAsync(createResourceServerRequest);
+            var newResourceServerResponse = await ApiClient.ResourceServers.CreateAsync(createResourceServerRequest);
             newResourceServerResponse.Should().BeEquivalentTo(createResourceServerRequest, options => options.Excluding(rs => rs.Id));
 
             // Update the resource server
             var updateResourceServerRequest = new ResourceServerUpdateRequest()
             {
-                Name = $"Integration testing {Guid.NewGuid():N}",
+                Name = $"{TestingConstants.ResourceServerPrefix} {Guid.NewGuid():N}",
                 TokenLifetime = 2,
                 TokenLifetimeForWeb = 1,
                 SigningAlgorithm = SigningAlgorithm.HS256,
@@ -83,16 +82,16 @@ namespace Auth0.ManagementApi.IntegrationTests
                 VerificationLocation = "",
                 SkipConsentForVerifiableFirstPartyClients = false,
             };
-            var updateResourceServerResponse = await _apiClient.ResourceServers.UpdateAsync(newResourceServerResponse.Id, updateResourceServerRequest);
+            var updateResourceServerResponse = await ApiClient.ResourceServers.UpdateAsync(newResourceServerResponse.Id, updateResourceServerRequest);
             updateResourceServerResponse.Should().BeEquivalentTo(updateResourceServerRequest, options => options.ExcludingMissingMembers());
 
             // Get a single resource server
-            var resourceServer = await _apiClient.ResourceServers.GetAsync(newResourceServerResponse.Id);
+            var resourceServer = await ApiClient.ResourceServers.GetAsync(newResourceServerResponse.Id);
             resourceServer.Should().BeEquivalentTo(updateResourceServerRequest, options => options.ExcludingMissingMembers());
 
             // Delete the client, and ensure we get exception when trying to fetch client again
-            await _apiClient.ResourceServers.DeleteAsync(resourceServer.Id);
-            Func<Task> getFunc = async () => await _apiClient.ResourceServers.GetAsync(resourceServer.Id);
+            await ApiClient.ResourceServers.DeleteAsync(resourceServer.Id);
+            Func<Task> getFunc = async () => await ApiClient.ResourceServers.GetAsync(resourceServer.Id);
             getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_resource_server");
         }
 
@@ -100,7 +99,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_get_resource_server_by_identifier()
         {
             string identifier = GetVariable("AUTH0_MANAGEMENT_API_AUDIENCE");
-            var resourceServers = await _apiClient.ResourceServers.GetAsync(identifier);
+            var resourceServers = await ApiClient.ResourceServers.GetAsync(identifier);
 
             Assert.Equal(resourceServers.Identifier, identifier);
         }
@@ -109,7 +108,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_paging_does_not_include_totals()
         {
             // Act
-            var resourceServers = await _apiClient.ResourceServers.GetAllAsync(new PaginationInfo(0, 50, false));
+            var resourceServers = await ApiClient.ResourceServers.GetAllAsync(new PaginationInfo(0, 50, false));
 
             // Assert
             Assert.Null(resourceServers.Paging);
@@ -119,7 +118,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_paging_includes_totals()
         {
             // Act
-            var resourceServers = await _apiClient.ResourceServers.GetAllAsync(new PaginationInfo(0, 50, true));
+            var resourceServers = await ApiClient.ResourceServers.GetAllAsync(new PaginationInfo(0, 50, true));
 
             // Assert
             Assert.NotNull(resourceServers.Paging);
@@ -129,7 +128,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_without_paging()
         {
             // Act
-            var resourceServers = await _apiClient.ResourceServers.GetAllAsync();
+            var resourceServers = await ApiClient.ResourceServers.GetAllAsync();
 
             // Assert
             resourceServers.Paging.Should().BeNull();

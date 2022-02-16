@@ -2,25 +2,24 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Auth0.Core.Exceptions;
+using Auth0.ManagementApi.IntegrationTests.Testing;
 using Auth0.ManagementApi.Models;
 using Auth0.Tests.Shared;
 using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    public class EmailTemplatesTests : TestBase, IAsyncLifetime
+    public class EmailTemplatesTests : ManagementTestBase, IAsyncLifetime
     {
-        private ManagementApiClient _apiClient;
-
         public async Task InitializeAsync()
         {
             string token = await GenerateManagementApiToken();
-            _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+            ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
 
             try
             {
                 // We need to set an email provider when configuring templates
-                await _apiClient.EmailProvider.ConfigureAsync(new EmailProviderConfigureRequest
+                await ApiClient.EmailProvider.ConfigureAsync(new EmailProviderConfigureRequest
                 {
                     Name = "mandrill",
                     IsEnabled = true,
@@ -36,17 +35,10 @@ namespace Auth0.ManagementApi.IntegrationTests
             }
         }
 
-        public async Task DisposeAsync()
+        public override async Task DisposeAsync()
         {
-            try
-            {
-                await _apiClient.EmailProvider.DeleteAsync();
-                _apiClient.Dispose();
-            }
-            catch
-            {
-                // Supress errors
-            }
+            await ApiClient.EmailProvider.DeleteAsync();
+            await base.DisposeAsync();
         }
 
         [Fact]
@@ -63,7 +55,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 try
                 {
                     // Try and create the template. If it already exisits, we'll just update it
-                    emailTemplate = await _apiClient.EmailTemplates.CreateAsync(new EmailTemplateCreateRequest
+                    emailTemplate = await ApiClient.EmailTemplates.CreateAsync(new EmailTemplateCreateRequest
                     {
                         Template = emailTemplateName,
                         Body = "<html>",
@@ -76,7 +68,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 }
                 catch (ApiException)
                 {
-                    emailTemplate = await _apiClient.EmailTemplates.UpdateAsync(emailTemplateName, new EmailTemplateUpdateRequest
+                    emailTemplate = await ApiClient.EmailTemplates.UpdateAsync(emailTemplateName, new EmailTemplateUpdateRequest
                     {
                         Template = emailTemplateName,
                         Body = "<html>",
@@ -92,7 +84,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 foreach (var _emailTemplateName in emailTemplateNames)
                 {
                     // Try and create the template. If it already exisits, we'll just update it
-                    var _emailTemplate = await _apiClient.EmailTemplates.PatchAsync(_emailTemplateName, new EmailTemplatePatchRequest
+                    var _emailTemplate = await ApiClient.EmailTemplates.PatchAsync(_emailTemplateName, new EmailTemplatePatchRequest
                     {
                         Enabled = false,
                         From = "test2@test.com"

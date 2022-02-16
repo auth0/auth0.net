@@ -9,12 +9,13 @@ using Auth0.Tests.Shared;
 using System.Linq;
 using Auth0.ManagementApi.Paging;
 using System.Collections.Generic;
+using Auth0.IntegrationTests.Shared.CleanUp;
+using Auth0.ManagementApi.IntegrationTests.Testing;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    public class UsersTests : TestBase, IAsyncLifetime
+    public class UsersTests : ManagementTestBase, IAsyncLifetime
     {
-        private ManagementApiClient _apiClient;
         private Connection _connection;
         private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
 
@@ -22,20 +23,21 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             string token = await GenerateManagementApiToken();
 
-            _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+            ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
 
             // We will need a connection to add the users to...
-            _connection = await _apiClient.Connections.CreateAsync(new ConnectionCreateRequest
+            _connection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
-                Name = "Temp-Int-Test-" + MakeRandomName(),
+                Name = $"{TestingConstants.ConnectionPrefix}-{MakeRandomName()}",
                 Strategy = "auth0",
                 EnabledClients = new[] { GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
             });
         }
 
-        public async Task DisposeAsync()
+        public override async Task DisposeAsync()
         {
-            await _apiClient.Connections.DeleteAsync(_connection.Id);
+            await ApiClient.Connections.DeleteAsync(_connection.Id);
+            await CleanupAndDisposeAsync();
         }
 
         [Fact]
@@ -45,11 +47,11 @@ namespace Auth0.ManagementApi.IntegrationTests
             var newUserRequest = new UserCreateRequest
             {
                 Connection = _connection.Name,
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                 EmailVerified = true,
                 Password = Password
             };
-            var newUserResponse = await _apiClient.Users.CreateAsync(newUserRequest);
+            var newUserResponse = await ApiClient.Users.CreateAsync(newUserRequest);
             newUserResponse.Should().NotBeNull();
             newUserResponse.Email.Should().Be(newUserRequest.Email);
 
@@ -60,10 +62,10 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Update the user
             var updateUserRequest = new UserUpdateRequest
             {
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                 VerifyEmail = false
             };
-            var updateUserResponse = await _apiClient.Users.UpdateAsync(newUserResponse.UserId, updateUserRequest);
+            var updateUserResponse = await ApiClient.Users.UpdateAsync(newUserResponse.UserId, updateUserRequest);
             updateUserResponse.Should().NotBeNull();
             updateUserResponse.Email.Should().Be(updateUserRequest.Email);
 
@@ -72,16 +74,16 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 EmailVerified = true // We need to pass in at least one property, so we set this as the other properties below will not be serialized
             };
-            await _apiClient.Users.UpdateAsync(newUserResponse.UserId, updateUserRequest);
+            await ApiClient.Users.UpdateAsync(newUserResponse.UserId, updateUserRequest);
 
             // Get a single user
-            var user = await _apiClient.Users.GetAsync(newUserResponse.UserId);
+            var user = await ApiClient.Users.GetAsync(newUserResponse.UserId);
             user.Should().NotBeNull();
             user.Email.Should().Be(updateUserResponse.Email);
 
             // Delete the user and ensure we get an exception when trying to fetch them again
-            await _apiClient.Users.DeleteAsync(user.UserId);
-            Func<Task> getFunc = async () => await _apiClient.Users.GetAsync(user.UserId);
+            await ApiClient.Users.DeleteAsync(user.UserId);
+            Func<Task> getFunc = async () => await ApiClient.Users.GetAsync(user.UserId);
             getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_user");
         }
 
@@ -91,14 +93,14 @@ namespace Auth0.ManagementApi.IntegrationTests
         [InlineData("  ")]
         public void Attempting_to_delete_users_with_null_or_empty_id_should_throw(string id)
         {
-            Func<Task> deleteFunc = async () => await _apiClient.Users.DeleteAsync(id);
+            Func<Task> deleteFunc = async () => await ApiClient.Users.DeleteAsync(id);
             deleteFunc.Should().Throw<ArgumentException>().And.Message.Should().StartWith("Value cannot be null or whitespace.");
         }
 
         [Fact]
         public async Task Test_user_by_email()
         {
-            var email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa";
+            var email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}";
 
             var newUserRequest = new UserCreateRequest
             {
@@ -108,10 +110,10 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Password = Password
             };
 
-            var newUserResponse = await _apiClient.Users.CreateAsync(newUserRequest);
+            var newUserResponse = await ApiClient.Users.CreateAsync(newUserRequest);
 
             // Ensure we can find the user by email address
-            var users = await _apiClient.Users.GetUsersByEmailAsync(email);
+            var users = await ApiClient.Users.GetUsersByEmailAsync(email);
             Assert.Single(users);
 
             // Make sure they are one and the same
@@ -125,15 +127,15 @@ namespace Auth0.ManagementApi.IntegrationTests
             var newUserRequest = new UserCreateRequest
             {
                 Connection = _connection.Name,
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                 EmailVerified = true,
                 Password = Password
             };
-            var newUserResponse = await _apiClient.Users.CreateAsync(newUserRequest);
+            var newUserResponse = await ApiClient.Users.CreateAsync(newUserRequest);
             Assert.NotEqual(true, newUserResponse.Blocked);
 
             // Ensure the user is not blocked when we select the user individually
-            var user = await _apiClient.Users.GetAsync(newUserResponse.UserId);
+            var user = await ApiClient.Users.GetAsync(newUserResponse.UserId);
             user.Blocked.Should().NotBeTrue();
 
             // Block the user, and ensure returned user is blocked
@@ -141,15 +143,15 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 Blocked = true
             };
-            var updateUserResponse = await _apiClient.Users.UpdateAsync(newUserResponse.UserId, updateUserRequest);
+            var updateUserResponse = await ApiClient.Users.UpdateAsync(newUserResponse.UserId, updateUserRequest);
             updateUserResponse.Blocked.Should().BeTrue();
 
             // Ensure the user is not blocked when we select the user individually
-            user = await _apiClient.Users.GetAsync(newUserResponse.UserId);
+            user = await ApiClient.Users.GetAsync(newUserResponse.UserId);
             user.Blocked.Should().BeTrue();
 
             // Delete the user
-            await _apiClient.Users.DeleteAsync(user.UserId);
+            await ApiClient.Users.DeleteAsync(user.UserId);
         }
 
         [Fact]
@@ -159,22 +161,22 @@ namespace Auth0.ManagementApi.IntegrationTests
             var newUserRequest = new UserCreateRequest
             {
                 Connection = _connection.Name,
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                 EmailVerified = true,
                 Password = Password
             };
-            var newUserResponse = await _apiClient.Users.CreateAsync(newUserRequest);
+            var newUserResponse = await ApiClient.Users.CreateAsync(newUserRequest);
             Assert.NotEqual(true, newUserResponse.Blocked);
 
             // Delete the user from the connection
-            await _apiClient.Connections.DeleteUserAsync(_connection.Id, newUserRequest.Email);
+            await ApiClient.Connections.DeleteUserAsync(_connection.Id, newUserRequest.Email);
         }
 
         [Fact]
         public async Task Test_when_paging_not_specified_does_not_include_totals()
         {
             // Act
-            var users = await _apiClient.Users.GetAllAsync(new GetUsersRequest(), new PaginationInfo());
+            var users = await ApiClient.Users.GetAllAsync(new GetUsersRequest(), new PaginationInfo());
             
             // Assert
             Assert.Null(users.Paging);
@@ -184,7 +186,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_paging_does_not_include_totals()
         {
             // Act
-            var users = await _apiClient.Users.GetAllAsync(new GetUsersRequest(), new PaginationInfo(0, 50, false));
+            var users = await ApiClient.Users.GetAllAsync(new GetUsersRequest(), new PaginationInfo(0, 50, false));
             
             // Assert
             Assert.Null(users.Paging);
@@ -194,7 +196,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_paging_includes_totals()
         {
             // Act
-            var users = await _apiClient.Users.GetAllAsync(new GetUsersRequest(), new PaginationInfo(0, 50, true));
+            var users = await ApiClient.Users.GetAllAsync(new GetUsersRequest(), new PaginationInfo(0, 50, true));
             
             // Assert
             Assert.NotNull(users.Paging);
@@ -204,7 +206,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_without_paging()
         {
             // Act
-            var users = await _apiClient.Users.GetAllAsync(new GetUsersRequest());
+            var users = await ApiClient.Users.GetAllAsync(new GetUsersRequest());
 
             // Assert
             users.Paging.Should().BeNull();
@@ -219,7 +221,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var newUserRequest = new UserCreateRequest
             {
                 Connection = _connection.Name,
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                 EmailVerified = true,
                 Password = Password,
                 AppMetadata = new
@@ -234,7 +236,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                     Color = "red"
                 }
             };
-            var newUserResponse = await _apiClient.Users.CreateAsync(newUserRequest);
+            var newUserResponse = await ApiClient.Users.CreateAsync(newUserRequest);
             Assert.Equal("red", newUserResponse.UserMetadata.Color.ToString());
 
             // Do some updating
@@ -245,15 +247,15 @@ namespace Auth0.ManagementApi.IntegrationTests
             };
             updateUserRequest.AppMetadata.IsSubscribedTo = "1";
             updateUserRequest.UserMetadata.Color = null;
-            await _apiClient.Users.UpdateAsync(newUserResponse.UserId, updateUserRequest);
+            await ApiClient.Users.UpdateAsync(newUserResponse.UserId, updateUserRequest);
 
             // Get the user to ensure the metadata was set
-            var user = await _apiClient.Users.GetAsync(newUserResponse.UserId);
+            var user = await ApiClient.Users.GetAsync(newUserResponse.UserId);
             Assert.Equal("1", user.AppMetadata.IsSubscribedTo.ToString());
             Assert.Null(user.UserMetadata.Color);
 
             // Delete the user
-            await _apiClient.Users.DeleteAsync(user.UserId);
+            await ApiClient.Users.DeleteAsync(user.UserId);
         }
 
         [Fact]
@@ -262,18 +264,18 @@ namespace Auth0.ManagementApi.IntegrationTests
             var newUserRequest = new UserCreateRequest
             {
                 Connection = _connection.Name,
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                 EmailVerified = true,
                 Password = Password
             };
-            var user = await _apiClient.Users.CreateAsync(newUserRequest);
+            var user = await ApiClient.Users.CreateAsync(newUserRequest);
 
-            var logEntries = await _apiClient.Users.GetLogsAsync(new GetUserLogsRequest
+            var logEntries = await ApiClient.Users.GetLogsAsync(new GetUserLogsRequest
             {
                 UserId = user.UserId
             }, new PaginationInfo());
 
-            await _apiClient.Users.DeleteAsync(user.UserId);
+            await ApiClient.Users.DeleteAsync(user.UserId);
 
             logEntries.Should().NotBeNull();
             logEntries.Paging.Should().BeNull();
@@ -285,18 +287,18 @@ namespace Auth0.ManagementApi.IntegrationTests
             var newUserRequest = new UserCreateRequest
             {
                 Connection = _connection.Name,
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                 EmailVerified = true,
                 Password = Password
             };
-            var user = await _apiClient.Users.CreateAsync(newUserRequest);
+            var user = await ApiClient.Users.CreateAsync(newUserRequest);
 
-            var logEntries = await _apiClient.Users.GetLogsAsync(new GetUserLogsRequest
+            var logEntries = await ApiClient.Users.GetLogsAsync(new GetUserLogsRequest
             {
                 UserId = user.UserId
             }, new PaginationInfo(0, 50, true));
 
-            await _apiClient.Users.DeleteAsync(user.UserId);
+            await ApiClient.Users.DeleteAsync(user.UserId);
 
             logEntries.Should().NotBeNull();
             logEntries.Paging.Should().NotBeNull();
@@ -311,24 +313,24 @@ namespace Auth0.ManagementApi.IntegrationTests
             var mainIdentityCreateRequest = new UserCreateRequest
             {
                 Connection = _connection.Name,
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                 EmailVerified = true,
                 Password = Password
             };
 
-            var mainUser = await _apiClient.Users.CreateAsync(mainIdentityCreateRequest);
+            var mainUser = await ApiClient.Users.CreateAsync(mainIdentityCreateRequest);
 
             var secondaryIdentityUserCreateRequest = new UserCreateRequest
             {
                 Connection = _connection.Name,
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                 EmailVerified = true,
                 Password = Password
             };
 
-            var secondaryUser = await _apiClient.Users.CreateAsync(secondaryIdentityUserCreateRequest);
+            var secondaryUser = await ApiClient.Users.CreateAsync(secondaryIdentityUserCreateRequest);
 
-            await _apiClient.Users.LinkAccountAsync(mainUser.UserId, new UserAccountLinkRequest
+            await ApiClient.Users.LinkAccountAsync(mainUser.UserId, new UserAccountLinkRequest
             {
                 ConnectionId = _connection.Id,
                 Provider = "auth0",
@@ -336,7 +338,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             });
 
 
-            var linkedUser = await _apiClient.Users.GetAsync(mainUser.UserId);
+            var linkedUser = await ApiClient.Users.GetAsync(mainUser.UserId);
             linkedUser.Should().NotBeNull();
             linkedUser.Identities.Should().HaveCount(2);
             var secondaryIdentity = linkedUser.Identities[1];
@@ -353,14 +355,14 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 UserId = userId,
                 Connection = _connection.Name,
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                 EmailVerified = true,
                 Password = Password
             };
-            var user = await _apiClient.Users.CreateAsync(userCreateRequest);
+            var user = await ApiClient.Users.CreateAsync(userCreateRequest);
 
             // Retrieve the new user
-            user = await _apiClient.Users.GetAsync(user.UserId);
+            user = await ApiClient.Users.GetAsync(user.UserId);
 
             // Verify
             user.Should().NotBeNull();
@@ -373,15 +375,15 @@ namespace Auth0.ManagementApi.IntegrationTests
             var userCreateRequest = new UserCreateRequest
             {
                 Connection = _connection.Name,
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                 EmailVerified = true,
                 Password = Password
             };
 
-            var user = await _apiClient.Users.CreateAsync(userCreateRequest);
+            var user = await ApiClient.Users.CreateAsync(userCreateRequest);
 
             // Get a resource server
-            var resourceServer = await _apiClient.ResourceServers.GetAsync("dotnet-testing");
+            var resourceServer = await ApiClient.ResourceServers.GetAsync("dotnet-testing");
             var originalScopes = resourceServer.Scopes != null ? resourceServer.Scopes.ToList() : new List<ResourceServerScope>();
 
 
@@ -389,7 +391,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var newScope = new ResourceServerScope { Value = $"{Guid.NewGuid():N}scope", Description = "Integration test" };
 
             // Update resource server with new scope
-            resourceServer = await _apiClient.ResourceServers.UpdateAsync(resourceServer.Id, new ResourceServerUpdateRequest
+            resourceServer = await ApiClient.ResourceServers.UpdateAsync(resourceServer.Id, new ResourceServerUpdateRequest
             {
                 Scopes = originalScopes.Concat(new[] { newScope }).ToList(),
             });
@@ -399,10 +401,10 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 Permissions = new[] { new PermissionIdentity { Identifier = resourceServer.Identifier, Name = newScope.Value } }
             };
-            await _apiClient.Users.AssignPermissionsAsync(user.UserId, assignPermissionsRequest);
+            await ApiClient.Users.AssignPermissionsAsync(user.UserId, assignPermissionsRequest);
 
             // Ensure the permission is associated with the user
-            var associatedPermissions = await _apiClient.Users.GetPermissionsAsync(user.UserId, new PaginationInfo());
+            var associatedPermissions = await ApiClient.Users.GetPermissionsAsync(user.UserId, new PaginationInfo());
             associatedPermissions.Should().NotBeNull();
             associatedPermissions.Should().HaveCount(1);
             associatedPermissions.First().Identifier.Should().Be(resourceServer.Identifier);
@@ -415,21 +417,21 @@ namespace Auth0.ManagementApi.IntegrationTests
             associatedPermissions.First().Sources.First().Type.Should().Be(PermissionSourceType.Direct);
 
             // Unassociate a permission with the user
-            await _apiClient.Users.RemovePermissionsAsync(user.UserId, assignPermissionsRequest);
+            await ApiClient.Users.RemovePermissionsAsync(user.UserId, assignPermissionsRequest);
 
             // Ensure the permission is unassociated with the user
-            associatedPermissions = await _apiClient.Users.GetPermissionsAsync(user.UserId, new PaginationInfo());
+            associatedPermissions = await ApiClient.Users.GetPermissionsAsync(user.UserId, new PaginationInfo());
             associatedPermissions.Should().NotBeNull();
             associatedPermissions.Should().HaveCount(0);
 
             // Clean Up - Remove the permission from the resource server
-            await _apiClient.ResourceServers.UpdateAsync(resourceServer.Id, new ResourceServerUpdateRequest
+            await ApiClient.ResourceServers.UpdateAsync(resourceServer.Id, new ResourceServerUpdateRequest
             {
                 Scopes = originalScopes
             });
 
             // Clean Up - Remove the user
-            await _apiClient.Users.DeleteAsync(user.UserId);
+            await ApiClient.Users.DeleteAsync(user.UserId);
         }
 
         [Fact]
@@ -439,35 +441,35 @@ namespace Auth0.ManagementApi.IntegrationTests
             var userCreateRequest = new UserCreateRequest
             {
                 Connection = _connection.Name,
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                 EmailVerified = true,
                 Password = Password
             };
 
-            var user = await _apiClient.Users.CreateAsync(userCreateRequest);
+            var user = await ApiClient.Users.CreateAsync(userCreateRequest);
 
-            await _apiClient.Organizations.AddMembersAsync(existingOrganizationId, new OrganizationAddMembersRequest
+            await ApiClient.Organizations.AddMembersAsync(existingOrganizationId, new OrganizationAddMembersRequest
             {
                 Members = new List<string> { user.UserId }
             });
 
-            var organizations = await _apiClient.Users.GetAllOrganizationsAsync(user.UserId, new PaginationInfo());
+            var organizations = await ApiClient.Users.GetAllOrganizationsAsync(user.UserId, new PaginationInfo());
 
             organizations.Should().NotBeNull();
             organizations.Count.Should().Be(1);
 
-            await _apiClient.Organizations.DeleteMemberAsync(existingOrganizationId, new OrganizationDeleteMembersRequest
+            await ApiClient.Organizations.DeleteMemberAsync(existingOrganizationId, new OrganizationDeleteMembersRequest
             {
                 Members = new List<string> { user.UserId }
             });
 
-            organizations = await _apiClient.Users.GetAllOrganizationsAsync(user.UserId, new PaginationInfo());
+            organizations = await ApiClient.Users.GetAllOrganizationsAsync(user.UserId, new PaginationInfo());
 
             organizations.Should().NotBeNull();
             organizations.Count.Should().Be(0);
 
             // Clean Up - Remove the user
-            await _apiClient.Users.DeleteAsync(user.UserId);
+            await ApiClient.Users.DeleteAsync(user.UserId);
         }
     }
 }

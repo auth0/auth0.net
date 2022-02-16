@@ -1,25 +1,19 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Auth0.Core.Exceptions;
+using Auth0.ManagementApi.IntegrationTests.Testing;
 using Auth0.Tests.Shared;
 using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    public class BrandingClientTests : TestBase, IAsyncLifetime
+    public class BrandingClientTests : ManagementTestBase, IAsyncLifetime
     {
-        private ManagementApiClient _apiClient;
-
         public async Task InitializeAsync()
         {
             string token = await GenerateManagementApiToken();
 
-            _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
-        }
-
-        public Task DisposeAsync()
-        {
-            return Task.CompletedTask;
+            ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
         }
 
         [Fact]
@@ -28,7 +22,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             try
             {
                 // Update branding
-                await _apiClient.Branding.UpdateAsync(new Models.BrandingUpdateRequest
+                await ApiClient.Branding.UpdateAsync(new Models.BrandingUpdateRequest
                 {
                     LogoUrl = "https://cdn.auth0.com/website/press/resources/auth0-logo-monotone-white.svg",
                     FaviconUrl = "https://cdn.auth0.com/website/press/resources/auth0-logo-monotone-black.svg",
@@ -43,7 +37,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                     }
                 });
 
-                var updatedBranding = await _apiClient.Branding.GetAsync();
+                var updatedBranding = await ApiClient.Branding.GetAsync();
 
                 Assert.Equal("https://cdn.auth0.com/website/press/resources/auth0-logo-monotone-white.svg", updatedBranding.LogoUrl);
                 Assert.Equal("https://cdn.auth0.com/website/press/resources/auth0-logo-monotone-black.svg", updatedBranding.FaviconUrl);
@@ -55,7 +49,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             finally
             {
                 // Rollback
-                await _apiClient.Branding.UpdateAsync(new Models.BrandingUpdateRequest
+                await ApiClient.Branding.UpdateAsync(new Models.BrandingUpdateRequest
                 {
                     Colors = new Models.BrandingColors { 
                         Primary = "#0059d6",
@@ -74,7 +68,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact(Skip = "Enable when migrated to new Tenant because missing permissions on current")]
         public async Task Test_Branding_ULPTemplate_Reand_Update_Delete()
         {
-            // var temp = await _apiClient.Branding.GetUniversalLoginTemplateAsync();
+            // var temp = await ApiClient.Branding.GetUniversalLoginTemplateAsync();
             try
             {
                 var newTemplateBody = @"<!DOCTYPE html><html>
@@ -85,20 +79,20 @@ namespace Auth0.ManagementApi.IntegrationTests
                     {%- auth0:widget -%}
                   </body></html> ";
 
-                await _apiClient.Branding.SetUniversalLoginTemplateAsync(new Models.UniversalLoginTemplateUpdateRequest
+                await ApiClient.Branding.SetUniversalLoginTemplateAsync(new Models.UniversalLoginTemplateUpdateRequest
                 {
                     Template = newTemplateBody
                 });
 
-                var updatedTemplate = await _apiClient.Branding.GetUniversalLoginTemplateAsync();
+                var updatedTemplate = await ApiClient.Branding.GetUniversalLoginTemplateAsync();
 
                 Assert.Equal(newTemplateBody, updatedTemplate.Body);
             }
             finally
             {
-                await _apiClient.Branding.DeleteUniversalLoginTemplateAsync();
+                await ApiClient.Branding.DeleteUniversalLoginTemplateAsync();
 
-                await Assert.ThrowsAsync<ErrorApiException>(() => _apiClient.Branding.GetUniversalLoginTemplateAsync());
+                await Assert.ThrowsAsync<ErrorApiException>(() => ApiClient.Branding.GetUniversalLoginTemplateAsync());
             }
         }
     }

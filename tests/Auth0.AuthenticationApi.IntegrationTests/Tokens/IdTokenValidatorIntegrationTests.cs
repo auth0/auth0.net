@@ -6,13 +6,14 @@ using Auth0.Tests.Shared;
 using FluentAssertions;
 using System;
 using System.Threading.Tasks;
+using Auth0.AuthenticationApi.IntegrationTests.Testing;
+using Auth0.IntegrationTests.Shared.CleanUp;
 using Xunit;
 
 namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
 {
-    public class IdTokenValidatorIntegrationTests : TestBase, IAsyncLifetime
+    public class IdTokenValidatorIntegrationTests : ManagementTestBase, IAsyncLifetime
     {
-        private ManagementApiClient _managementApiClient;
         private Connection _connection;
         private User _user;
         private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
@@ -21,9 +22,9 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
         {
             string token = await GenerateManagementApiToken();
 
-            _managementApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+            ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
 
-            var tenantSettings = await _managementApiClient.TenantSettings.GetAsync();
+            var tenantSettings = await ApiClient.TenantSettings.GetAsync();
 
             if (string.IsNullOrEmpty(tenantSettings.DefaultDirectory))
             {
@@ -33,9 +34,9 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
             }
 
             // We will need a connection to add the users to...
-            _connection = await _managementApiClient.Connections.CreateAsync(new ConnectionCreateRequest
+            _connection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
-                Name = "Temp-IntTest-" + MakeRandomName(),
+                Name = $"{TestingConstants.ConnectionPrefix}-{MakeRandomName()}",
                 Strategy = "auth0",
                 EnabledClients = new[] {
                     GetVariable("AUTH0_CLIENT_ID"),
@@ -45,22 +46,19 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
             });
 
             // And add a dummy user to test against
-            _user = await _managementApiClient.Users.CreateAsync(new UserCreateRequest
+            _user = await ApiClient.Users.CreateAsync(new UserCreateRequest
             {
                 Connection = _connection.Name,
-                Email = $"{MakeRandomName()}@nonexistingdomain.aaa",
+                Email = $"{MakeRandomName()}{TestingConstants.UserEmailDomain}",
                 EmailVerified = true,
                 Password = Password
             });
         }
 
-        public async Task DisposeAsync()
+        public override async Task DisposeAsync()
         {
-            if (_user != null)
-                await _managementApiClient.Users.DeleteAsync(_user.UserId);
-
-            if (_connection != null)
-                await _managementApiClient.Connections.DeleteAsync(_connection.Id);
+            await CleanupAndDisposeAsync(CleanUpType.Connections);
+            await CleanupAndDisposeAsync(CleanUpType.Users);
         }
 
         [Fact]

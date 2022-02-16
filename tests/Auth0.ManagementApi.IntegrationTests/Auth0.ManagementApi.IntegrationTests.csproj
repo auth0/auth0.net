@@ -34,6 +34,7 @@
     <ProjectReference Include="..\..\src\Auth0.Core\Auth0.Core.csproj" />
     <ProjectReference Include="..\..\src\Auth0.AuthenticationApi\Auth0.AuthenticationApi.csproj" />
     <ProjectReference Include="..\..\src\Auth0.ManagementApi\Auth0.ManagementApi.csproj" />
+    <ProjectReference Include="..\Auth0.IntegrationTests.Shared\Auth0.IntegrationTests.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
