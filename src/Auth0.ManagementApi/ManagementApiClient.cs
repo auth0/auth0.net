@@ -121,6 +121,11 @@ namespace Auth0.ManagementApi
         /// <summary>
         /// Contains all the methods to call the /rules endpoints.
         /// </summary>
+        public RuleConfigsClient RuleConfigs { get; }
+
+        /// <summary>
+        /// Contains all the methods to call the /rules endpoints.
+        /// </summary>
         public RulesClient Rules { get; }
 
         /// <summary>
@@ -195,6 +200,7 @@ namespace Auth0.ManagementApi
             Organizations = new OrganizationsClient(managementConnection, baseUri, DefaultHeaders);
             ResourceServers = new ResourceServersClient(managementConnection, baseUri, DefaultHeaders);
             Roles = new RolesClient(managementConnection, baseUri, DefaultHeaders);
+            RuleConfigs = new RuleConfigsClient(managementConnection, baseUri, DefaultHeaders);
             Rules = new RulesClient(managementConnection, baseUri, DefaultHeaders);
             Stats = new StatsClient(managementConnection, baseUri, DefaultHeaders);
             TenantSettings = new TenantSettingsClient(managementConnection, baseUri, DefaultHeaders);
