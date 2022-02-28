@@ -67,7 +67,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 {
                     Shields = new[] { "admin_notification" },
                     AdminNotificationFrequency = new[] { "daily" },
-                    Method = "enhanced",
+                    Method = "standard",
                     Enabled = true,
                 };
 
