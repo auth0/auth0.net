@@ -5,12 +5,13 @@ using FluentAssertions;
 using Xunit;
 using Auth0.Tests.Shared;
 using System.Collections.Generic;
+using Auth0.IntegrationTests.Shared.CleanUp;
+using Auth0.ManagementApi.IntegrationTests.Testing;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    public class TicketsTests : TestBase, IAsyncLifetime
+    public class TicketsTests : ManagementTestBase, IAsyncLifetime
     {
-        private ManagementApiClient _apiClient;
         private Connection _authConnection;
         private Connection _emailConnection;
         private User _auth0User;
@@ -21,46 +22,47 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             string token = await GenerateManagementApiToken();
 
-            _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+            ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
 
-            _authConnection = await _apiClient.Connections.CreateAsync(new ConnectionCreateRequest
+            _authConnection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
-                Name = "Temp-Int-Test-" + MakeRandomName(),
+                Name = $"{TestingConstants.ConnectionPrefix}-{MakeRandomName()}",
                 Strategy = "auth0",
                 EnabledClients = new[] { GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
             });
 
-            _emailConnection = await _apiClient.Connections.CreateAsync(new ConnectionCreateRequest
+            _emailConnection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
-                Name = "Temp-Int-Test-" + MakeRandomName(),
+                Name = $"{TestingConstants.ConnectionPrefix}-{MakeRandomName()}",
                 Strategy = "email",
                 EnabledClients = new[] { GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
             });
 
-            _auth0User = await _apiClient.Users.CreateAsync(new UserCreateRequest
+            _auth0User = await ApiClient.Users.CreateAsync(new UserCreateRequest
             {
                 Connection = _authConnection.Name,
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                 EmailVerified = true,
                 Password = Password
             });
 
-            _emailUser = await _apiClient.Users.CreateAsync(new UserCreateRequest
+            _emailUser = await ApiClient.Users.CreateAsync(new UserCreateRequest
             {
                 Connection = _emailConnection.Name,
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                 EmailVerified = true,
             });
         }
 
-        public async Task DisposeAsync()
+        public override async Task DisposeAsync()
         {
-            await _apiClient.Users.DeleteAsync(_auth0User.UserId);
-            await _apiClient.Connections.DeleteAsync(_authConnection.Id);
+            await ApiClient.Users.DeleteAsync(_auth0User.UserId);
+            await ApiClient.Connections.DeleteAsync(_authConnection.Id);
 
-            await _apiClient.Users.DeleteAsync(_emailUser.UserId);
-            await _apiClient.Connections.DeleteAsync(_emailConnection.Id);
-            _apiClient.Dispose();
+            await ApiClient.Users.DeleteAsync(_emailUser.UserId);
+            await ApiClient.Connections.DeleteAsync(_emailConnection.Id);
+
+            await CleanupAndDisposeAsync();
         }
 
         [Fact]
@@ -68,7 +70,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             var existingOrganizationId = "org_Jif6mLeWXT5ec0nu";
 
-            await _apiClient.Organizations.AddMembersAsync(existingOrganizationId, new OrganizationAddMembersRequest
+            await ApiClient.Organizations.AddMembersAsync(existingOrganizationId, new OrganizationAddMembersRequest
             {
                 Members = new List<string> { _auth0User.UserId }
             });
@@ -79,7 +81,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 UserId = _auth0User.UserId,
                 OrganizationId = "org_Jif6mLeWXT5ec0nu"
             };
-            var verificationTicketResponse = await _apiClient.Tickets.CreateEmailVerificationTicketAsync(verificationTicketRequest);
+            var verificationTicketResponse = await ApiClient.Tickets.CreateEmailVerificationTicketAsync(verificationTicketRequest);
             verificationTicketResponse.Should().NotBeNull();
             verificationTicketResponse.Value.Should().NotBeNull();
 
@@ -91,11 +93,11 @@ namespace Auth0.ManagementApi.IntegrationTests
                 MarkEmailAsVerified = true,
                 IncludeEmailInRedirect = true,
             };
-            var changeTicketRsponse = await _apiClient.Tickets.CreatePasswordChangeTicketAsync(changeTicketRequest);
+            var changeTicketRsponse = await ApiClient.Tickets.CreatePasswordChangeTicketAsync(changeTicketRequest);
             changeTicketRsponse.Should().NotBeNull();
             changeTicketRsponse.Value.Should().NotBeNull();
 
-            await _apiClient.Organizations.DeleteMemberAsync(existingOrganizationId, new OrganizationDeleteMembersRequest
+            await ApiClient.Organizations.DeleteMemberAsync(existingOrganizationId, new OrganizationDeleteMembersRequest
             {
                 Members = new List<string> { _auth0User.UserId }
             });
@@ -104,7 +106,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Can_send_verification_email_with_identity()
         {
-            var verificationTicketResponse = await _apiClient.Tickets.CreateEmailVerificationTicketAsync(new EmailVerificationTicketRequest
+            var verificationTicketResponse = await ApiClient.Tickets.CreateEmailVerificationTicketAsync(new EmailVerificationTicketRequest
             {
                 UserId = _emailUser.UserId,
                 ResultUrl = "http://www.nonexistingdomain.aaa/success",

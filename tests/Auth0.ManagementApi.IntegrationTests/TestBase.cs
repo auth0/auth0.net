@@ -1,9 +1,9 @@
 ﻿using Auth0.AuthenticationApi.Models;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Logging;
 using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using Xunit;
 
 // We do not want to hit the management API rate limit

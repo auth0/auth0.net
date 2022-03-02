@@ -5,13 +5,14 @@ using Auth0.Tests.Shared;
 using FluentAssertions;
 using System;
 using System.Threading.Tasks;
+using Auth0.AuthenticationApi.IntegrationTests.Testing;
+using Auth0.IntegrationTests.Shared.CleanUp;
 using Xunit;
 
 namespace Auth0.AuthenticationApi.IntegrationTests
 {
-    public class AccessTokenTests : TestBase, IAsyncLifetime
+    public class AccessTokenTests : ManagementTestBase, IAsyncLifetime
     {
-        private ManagementApiClient _managementApiClient;
         private AuthenticationApiClient _authenticationApiClient;
         private Connection _connection;
         private User _newUser;
@@ -21,12 +22,12 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         {
             string token = await GenerateManagementApiToken();
 
-            _managementApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+            ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
 
             // We will need a connection to add the users to...
-            _connection = await _managementApiClient.Connections.CreateAsync(new ConnectionCreateRequest
+            _connection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
-                Name = Guid.NewGuid().ToString("N"),
+                Name = $"{TestingConstants.ConnectionPrefix}-{MakeRandomName()}",
                 Strategy = "auth0",
                 EnabledClients = new[] { GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
             });
@@ -35,22 +36,22 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             var newUserRequest = new UserCreateRequest
             {
                 Connection = _connection.Name,
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                 EmailVerified = true,
                 Password = Password
             };
 
-            _newUser = await _managementApiClient.Users.CreateAsync(newUserRequest);
+            _newUser = await ApiClient.Users.CreateAsync(newUserRequest);
 
             _authenticationApiClient = new TestAuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
         }
 
-        public async Task DisposeAsync()
+        public override async Task DisposeAsync()
         {
-            if (_connection != null)
-                await _managementApiClient.Connections.DeleteAsync(_connection.Id);
-            _managementApiClient.Dispose();
             _authenticationApiClient.Dispose();
+
+            await CleanupAndDisposeAsync(CleanUpType.Connections);
+            await CleanupAndDisposeAsync(CleanUpType.Users);
         }
 
         //[Test, Explicit]

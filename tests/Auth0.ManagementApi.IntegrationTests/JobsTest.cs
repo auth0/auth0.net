@@ -4,13 +4,14 @@ using FluentAssertions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Auth0.IntegrationTests.Shared.CleanUp;
+using Auth0.ManagementApi.IntegrationTests.Testing;
 using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    public class JobsTest : TestBase, IAsyncLifetime
+    public class JobsTest : ManagementTestBase, IAsyncLifetime
     {
-        private ManagementApiClient _apiClient;
         private Connection _auth0Connection;
         private Connection _emailConnection;
         private User _auth0User;
@@ -21,48 +22,44 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             string token = await GenerateManagementApiToken();
 
-            _apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+            ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
 
             // Create a connection
-            _auth0Connection = await _apiClient.Connections.CreateAsync(new ConnectionCreateRequest
+            _auth0Connection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
-                Name = "Temp-Int-Test-" + MakeRandomName(),
+                Name = $"{TestingConstants.ConnectionPrefix}-{MakeRandomName()}",
                 Strategy = "auth0",
                 EnabledClients = new[] { GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
             });
 
-            _emailConnection = await _apiClient.Connections.CreateAsync(new ConnectionCreateRequest
+            _emailConnection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
-                Name = "Temp-Int-Test-" + MakeRandomName(),
+                Name = $"{TestingConstants.ConnectionPrefix}-{MakeRandomName()}",
                 Strategy = "email",
                 EnabledClients = new[] { GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
             });
 
             // Create a user
-            _auth0User = await _apiClient.Users.CreateAsync(new UserCreateRequest
+            _auth0User = await ApiClient.Users.CreateAsync(new UserCreateRequest
             {
                 Connection = _auth0Connection.Name,
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                 EmailVerified = true,
                 Password = Password
             });
 
-            _emailUser = await _apiClient.Users.CreateAsync(new UserCreateRequest
+            _emailUser = await ApiClient.Users.CreateAsync(new UserCreateRequest
             {
                 Connection = _emailConnection.Name,
-                Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                 EmailVerified = true,
             });
         }
 
-        public async Task DisposeAsync()
+        public override async Task DisposeAsync()
         {
-            await _apiClient.Users.DeleteAsync(_auth0User.UserId);
-            await _apiClient.Connections.DeleteAsync(_auth0Connection.Id);
-
-            await _apiClient.Users.DeleteAsync(_emailUser.UserId);
-            await _apiClient.Connections.DeleteAsync(_emailConnection.Id);
-            _apiClient.Dispose();
+            await CleanupAndDisposeAsync(CleanUpType.Users);
+            await CleanupAndDisposeAsync(CleanUpType.Connections);
         }
 
         [Fact]
@@ -70,12 +67,12 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             var existingOrganizationId = "org_Jif6mLeWXT5ec0nu";
 
-            await _apiClient.Organizations.AddMembersAsync(existingOrganizationId, new OrganizationAddMembersRequest
+            await ApiClient.Organizations.AddMembersAsync(existingOrganizationId, new OrganizationAddMembersRequest
             {
                 Members = new List<string> { _auth0User.UserId }
             });
 
-            var sendVerification = await _apiClient.Jobs.SendVerificationEmailAsync(new VerifyEmailJobRequest
+            var sendVerification = await ApiClient.Jobs.SendVerificationEmailAsync(new VerifyEmailJobRequest
             {
                 UserId = _auth0User.UserId,
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
@@ -85,14 +82,14 @@ namespace Auth0.ManagementApi.IntegrationTests
             sendVerification.Id.Should().NotBeNull();
 
             // Check to see whether we can get the same job again
-            var job = await _apiClient.Jobs.GetAsync(sendVerification.Id);
+            var job = await ApiClient.Jobs.GetAsync(sendVerification.Id);
             job.Should().NotBeNull();
             job.Id.Should().Be(sendVerification.Id);
             job.Type.Should().Be("verification_email");
             job.Status.Should().Be("pending");
             job.CreatedAt.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromMinutes(5));
 
-            await _apiClient.Organizations.DeleteMemberAsync(existingOrganizationId, new OrganizationDeleteMembersRequest
+            await ApiClient.Organizations.DeleteMemberAsync(existingOrganizationId, new OrganizationDeleteMembersRequest
             {
                 Members = new List<string> { _auth0User.UserId }
             });
@@ -101,7 +98,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Can_send_verification_email_with_identity()
         {
-            var sendVerification = await _apiClient.Jobs.SendVerificationEmailAsync(new VerifyEmailJobRequest
+            var sendVerification = await ApiClient.Jobs.SendVerificationEmailAsync(new VerifyEmailJobRequest
             {
                 UserId = _emailUser.UserId,
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
@@ -115,7 +112,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             sendVerification.Id.Should().NotBeNull();
 
             // Check to see whether we can get the same job again
-            var job = await _apiClient.Jobs.GetAsync(sendVerification.Id);
+            var job = await ApiClient.Jobs.GetAsync(sendVerification.Id);
             job.Should().NotBeNull();
             job.Id.Should().Be(sendVerification.Id);
             job.Type.Should().Be("verification_email");
@@ -129,7 +126,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Send a user import request
             using (var stream = GetType().Assembly.GetManifestResourceStream("Auth0.ManagementApi.IntegrationTests.user-import-test.json"))
             {
-                var importUsers = await _apiClient.Jobs.ImportUsersAsync(_auth0Connection.Id, "user-import-test.json", stream, sendCompletionEmail: false);
+                var importUsers = await ApiClient.Jobs.ImportUsersAsync(_auth0Connection.Id, "user-import-test.json", stream, sendCompletionEmail: false);
                 importUsers.Should().NotBeNull();
                 importUsers.Id.Should().NotBeNull();
                 importUsers.Type.Should().Be("users_import");
@@ -151,7 +148,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Fields = new System.Collections.Generic.List<UsersExportsJobField> { new UsersExportsJobField { Name = "email" } }
             };
 
-            var exportUsers = await _apiClient.Jobs.ExportUsersAsync(request);
+            var exportUsers = await ApiClient.Jobs.ExportUsersAsync(request);
             exportUsers.Should().NotBeNull();
             exportUsers.Id.Should().NotBeNull();
             exportUsers.Type.Should().Be("users_export");

@@ -32,18 +32,18 @@ namespace Auth0.ManagementApi.IntegrationTests
                 // Set up the correct Client, Connection and User
                 _client = await apiClient.Clients.CreateAsync(new ClientCreateRequest
                 {
-                    Name = $"Integration testing {MakeRandomName()}",
+                Name = $"{TestingConstants.ClientPrefix} {MakeRandomName()}",
                 });
                 _connection = await apiClient.Connections.CreateAsync(new ConnectionCreateRequest
                 {
-                    Name = "Temp-Int-Test-" + MakeRandomName(),
+                    Name = $"{TestingConstants.ConnectionPrefix}-{MakeRandomName()}",
                     Strategy = "auth0",
                     EnabledClients = new[] { _client.ClientId }
                 });
                 _user = await apiClient.Users.CreateAsync(new UserCreateRequest
                 {
                     Connection = _connection.Name,
-                    Email = $"{Guid.NewGuid():N}@nonexistingdomain.aaa",
+                    Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                     EmailVerified = true,
                     Password = Password
                 });
