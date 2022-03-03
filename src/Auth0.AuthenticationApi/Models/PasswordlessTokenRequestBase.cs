@@ -37,5 +37,11 @@ namespace Auth0.AuthenticationApi.Models
         /// Optional, use `openid` to get an ID Token, or `openid profile email` to also include user profile information in the ID Token.
         /// </remarks>
         public string Scope { get; set; }
+
+        /// <summary>
+        /// What <see cref="JwtSignatureAlgorithm"/> is used to verify the signature
+        /// of Id Tokens.
+        /// </summary>
+        public JwtSignatureAlgorithm SigningAlgorithm { get; set; }
     }
 }
