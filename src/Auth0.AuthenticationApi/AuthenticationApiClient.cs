@@ -255,7 +255,7 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <inheritdoc/>
-        public Task<AccessTokenResponse> GetTokenAsync(PasswordlessEmailTokenRequest request, CancellationToken cancellationToken = default)
+        public async Task<AccessTokenResponse> GetTokenAsync(PasswordlessEmailTokenRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -270,15 +270,20 @@ namespace Auth0.AuthenticationApi
                 { "audience", request.Audience },
                 { "scope", request.Scope } };
 
-            return connection.SendAsync<AccessTokenResponse>(
+            var response = await connection.SendAsync<AccessTokenResponse>(
                 HttpMethod.Post,
                 tokenUri,
                 body,
-                cancellationToken: cancellationToken);
+                cancellationToken: cancellationToken).ConfigureAwait(false);
+
+            await AssertIdTokenValidIfExisting(response.IdToken, request.ClientId, request.SigningAlgorithm,
+                request.ClientSecret).ConfigureAwait(false);
+
+            return response;
         }
 
         /// <inheritdoc/>
-        public Task<AccessTokenResponse> GetTokenAsync(PasswordlessSmsTokenRequest request, CancellationToken cancellationToken = default)
+        public async Task<AccessTokenResponse> GetTokenAsync(PasswordlessSmsTokenRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -296,16 +301,22 @@ namespace Auth0.AuthenticationApi
             var headers = String.IsNullOrEmpty(request.ForwardedForIp) ? null
                 : new Dictionary<string, string> { { "auth0-forwarded-for", request.ForwardedForIp } };
 
-            return connection.SendAsync<AccessTokenResponse>(
+            var response = await connection.SendAsync<AccessTokenResponse>(
                 HttpMethod.Post,
                 tokenUri,
                 body,
                 headers,
-                cancellationToken: cancellationToken);
+                cancellationToken
+            ).ConfigureAwait(false);
+
+            await AssertIdTokenValidIfExisting(response.IdToken, request.ClientId, request.SigningAlgorithm,
+                request.ClientSecret).ConfigureAwait(false);
+            
+            return response;
         }
 
         /// <inheritdoc/>
-        public Task<AccessTokenResponse> GetTokenAsync(DeviceCodeTokenRequest request, CancellationToken cancellationToken = default)
+        public async Task<AccessTokenResponse> GetTokenAsync(DeviceCodeTokenRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -317,12 +328,17 @@ namespace Auth0.AuthenticationApi
                 {"client_id", request.ClientId}
             };
 
-            return connection.SendAsync<AccessTokenResponse>(
+            var response = await connection.SendAsync<AccessTokenResponse>(
                 HttpMethod.Post,
                 tokenUri,
                 body,
                 cancellationToken: cancellationToken
-            );
+            ).ConfigureAwait(false);
+            
+            await AssertIdTokenValidIfExisting(response.IdToken, request.ClientId, request.SigningAlgorithm, null)
+                .ConfigureAwait(false);
+
+            return response;
         }
 
         /// <inheritdoc/>
@@ -426,6 +442,14 @@ namespace Auth0.AuthenticationApi
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        private async Task AssertIdTokenValidIfExisting(string idToken, string audience, JwtSignatureAlgorithm algorithm, string clientSecret, string organization = null)
+        {
+            if (!string.IsNullOrEmpty(idToken))
+            {
+               await AssertIdTokenValid(idToken, audience, algorithm, clientSecret, organization).ConfigureAwait(false);
+            }
         }
 
         private Task AssertIdTokenValid(string idToken, string audience, JwtSignatureAlgorithm algorithm, string clientSecret, string organization = null)
