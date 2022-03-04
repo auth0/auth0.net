@@ -26,7 +26,7 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Creates or updates a rules config variable according to the request.
         /// </summary>
-        /// <param name="request">The <see cref="RuleCreateRequest" /> containing the details of the rule to create.</param>
+        /// <param name="request">The <see cref="RulesConfigCreateOrUpdateRequest" /> containing the details of the rule to create or update.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The newly created <see cref="Rule" />.</returns>
         public Task<RulesConfig> CreateOrUpdateAsync(RulesConfigCreateOrUpdateRequest request, CancellationToken cancellationToken = default)
