@@ -14,8 +14,7 @@ There might be a rare occasion where this could break your application, in the s
 However, typically this should not cause any issues as ID Tokens are supposed to be valid. If they aren't, you probably want to get notified about it as soon as possible.
 
 Prior to this change, those methods would return the tokens without checking the validaty of your ID Token.
-However, given the fact that this should realy be an edge case, and we believe it's a good idea to inform you about invalid tokens sooner rather than later, 
-we decided to introduce this change in a minor release.
+However, given the fact that this should realy be an edge case, and we believe it's a good idea to inform you about invalid tokens sooner rather than later, we decided to introduce this change in a minor release.
 
 ## [release-7.14.0](https://github.com/auth0/auth0.net/tree/release-7.14.0) (2022-02-15)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.13.0...release-7.14.0)
