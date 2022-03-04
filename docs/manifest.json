@@ -57,7 +57,7 @@
           "hash": "/O0xm0sg/2Bedl3viF3RRfXupyLRm8rmzg8BjFNnfb4="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -69,7 +69,7 @@
           "hash": "euSAW7htSI+gYBmAkB4lX+Fo3BR9S4d9rn11BGyyB7c="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -81,7 +81,7 @@
           "hash": "3fLmGoKFPfTpCzwvo1pOv2/t/nzKbcCNeIz2/KcOsFM="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -93,7 +93,7 @@
           "hash": "cQBj4yVeejcJSuyIP+wmEt80z2y1VQRPW1tXWYjTKdM="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -102,7 +102,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.AuthenticationApi.AuthenticationApiClient.html",
-          "hash": "aAvSjlajc13lr4YHuv/vQ9Nt7jm6vbksLq6ixuKKoKc="
+          "hash": "ItAwhiajdD20QZgAPRMhi7Qx+aMdsi2vUVfTLirZjNY="
         }
       },
       "is_incremental": false,
@@ -366,7 +366,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.html",
-          "hash": "Z6/uQdyObnW8S4v761Xu48J1D5LPEZOEjWorS1Ni/OY="
+          "hash": "ZFLMRbqtrG0j4Fl1l7ORYB+nW/v8TvK5qKgHtUlYie0="
         }
       },
       "is_incremental": false,
@@ -426,7 +426,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest.html",
-          "hash": "H0D6qroAcYdY0HQRwG3mcVlzFQJ46EXF5tsxREbU6F4="
+          "hash": "HVuvZ7cEBx+/aEPXJuWr4iOu/vceHR6uv9m0Q1A3vLg="
         }
       },
       "is_incremental": false,
@@ -462,7 +462,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest.html",
-          "hash": "EV6Gv9ulaQMcYz5Hpc0Ax38QHEtriWbrukcr0ZyiFug="
+          "hash": "GYb/cZ9VHCSADeFiBLH/1MSSQCBmZhHeacpMu/h3/QQ="
         }
       },
       "is_incremental": false,
@@ -474,7 +474,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.html",
-          "hash": "ltNJpZIin65FaCzEGBCPYjb46Yfds7lGe5kL72Q4zOE="
+          "hash": "xJJ0Yl4QmrGEhfe2j247zzaTEljPfLWBA7/H+CR+4Tc="
         }
       },
       "is_incremental": false,
@@ -738,7 +738,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.BaseClient.html",
-          "hash": "VIDuMG8H2JZVLVJidjwEKZTBLBBuUiczw/xisoBKxBU="
+          "hash": "quy7h+TR/+AjCqdZ2XVw0ABgymPd8u51rBpF9FlfDlQ="
         }
       },
       "is_incremental": false,
@@ -986,6 +986,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.RulesConfigClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.RulesConfigClient.html",
+          "hash": "GQkpkrYx5FNvneCIREJSsPcs/gQNGK2ZBGGV2vVva6Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.StatsClient.yml",
       "output": {
         ".html": {
@@ -1050,7 +1062,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.html",
-          "hash": "n0CSPZlLaOOsmPrUN4jp++SkUFysB6T/DPsLJuakvjU="
+          "hash": "aTHx1lt5WFuVXUhstmLeHXCqEAtNHsJ6ywIhFrWRgLs="
         }
       },
       "is_incremental": false,
@@ -1110,7 +1122,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.ManagementApiClient.html",
-          "hash": "P5c3Vwj4DBIVPz3L/78OEfBw6lbgeZbwZhQwSrCcxEg="
+          "hash": "p3grzz+HzvuFhvWGTFKT7xi2bEGKFk+AmZkQoMniTV8="
         }
       },
       "is_incremental": false,
@@ -3326,6 +3338,30 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.RulesConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.RulesConfig.html",
+          "hash": "VNUFPIXudunVS0hJv/ipv6Y8AZ1IojWeLuUR3h2MGRU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.RulesConfigCreateOrUpdateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.RulesConfigCreateOrUpdateRequest.html",
+          "hash": "Pe/7zvnMxMES2sMhvv2J6Ot7j+OWU+Ec4jySasZTFvk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Auth0.ManagementApi.Models.ScopeEntry.yml",
       "output": {
         ".html": {
@@ -3762,7 +3798,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.html",
-          "hash": "4cSDdN1/QYYRlt3miDETZ9ee8/rUZRm/Ku9yOh5MAlo="
+          "hash": "L+ZlA6i2NJXqpLf8RHraf+ZbWCb2/v9D4U7t2hS8fDg="
         }
       },
       "is_incremental": false,
@@ -3894,7 +3930,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "+1xDXhW1j6d9MVuvt9zXa9q/yhqDX/iS0lMm5pXAqeM="
+          "hash": "d/WrMjjix5HOEa78fVFyNURZlEXjFZEOkib9sP9SSTc="
         }
       },
       "is_incremental": false,
@@ -3916,25 +3952,23 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": false,
-        "details": "Cannot build incrementally because docfx version changed from 2.56.4.0 to 2.59.0.0.",
+        "can_incremental": true,
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0,
-        "full_build_reason_code": "DocfxVersionChanged"
+        "skipped_file_count": 0
       },
       "processors": {
         "ConceptualDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 5,
-          "skipped_file_count": 0
+          "skipped_file_count": 5
         },
         "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
+          "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 316,
-          "skipped_file_count": 0
+          "total_file_count": 319,
+          "skipped_file_count": 12
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,

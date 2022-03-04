@@ -1538,6 +1538,19 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.DeviceCode
   nameWithType: DeviceCodeTokenRequest.DeviceCode
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.SigningAlgorithm
+  name: SigningAlgorithm
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.html#Auth0_AuthenticationApi_Models_DeviceCodeTokenRequest_SigningAlgorithm
+  commentId: P:Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.SigningAlgorithm
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.SigningAlgorithm
+  nameWithType: DeviceCodeTokenRequest.SigningAlgorithm
+- uid: Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.SigningAlgorithm*
+  name: SigningAlgorithm
+  href: api/Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.html#Auth0_AuthenticationApi_Models_DeviceCodeTokenRequest_SigningAlgorithm_
+  commentId: Overload:Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.SigningAlgorithm
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest.SigningAlgorithm
+  nameWithType: DeviceCodeTokenRequest.SigningAlgorithm
 - uid: Auth0.AuthenticationApi.Models.ImpersonationRequest
   name: ImpersonationRequest
   href: api/Auth0.AuthenticationApi.Models.ImpersonationRequest.html
@@ -1994,6 +2007,19 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.Scope
   nameWithType: PasswordlessTokenRequestBase.Scope
+- uid: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.SigningAlgorithm
+  name: SigningAlgorithm
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.html#Auth0_AuthenticationApi_Models_PasswordlessTokenRequestBase_SigningAlgorithm
+  commentId: P:Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.SigningAlgorithm
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.SigningAlgorithm
+  nameWithType: PasswordlessTokenRequestBase.SigningAlgorithm
+- uid: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.SigningAlgorithm*
+  name: SigningAlgorithm
+  href: api/Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.html#Auth0_AuthenticationApi_Models_PasswordlessTokenRequestBase_SigningAlgorithm_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.SigningAlgorithm
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.SigningAlgorithm
+  nameWithType: PasswordlessTokenRequestBase.SigningAlgorithm
 - uid: Auth0.AuthenticationApi.Models.RefreshTokenRequest
   name: RefreshTokenRequest
   href: api/Auth0.AuthenticationApi.Models.RefreshTokenRequest.html
@@ -5657,6 +5683,54 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.RulesClient.UpdateAsync
   nameWithType: RulesClient.UpdateAsync
+- uid: Auth0.ManagementApi.Clients.RulesConfigClient
+  name: RulesConfigClient
+  href: api/Auth0.ManagementApi.Clients.RulesConfigClient.html
+  commentId: T:Auth0.ManagementApi.Clients.RulesConfigClient
+  fullName: Auth0.ManagementApi.Clients.RulesConfigClient
+  nameWithType: RulesConfigClient
+- uid: Auth0.ManagementApi.Clients.RulesConfigClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})
+  name: RulesConfigClient(IManagementConnection, Uri, IDictionary<String, String>)
+  href: api/Auth0.ManagementApi.Clients.RulesConfigClient.html#Auth0_ManagementApi_Clients_RulesConfigClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__
+  commentId: M:Auth0.ManagementApi.Clients.RulesConfigClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})
+  name.vb: RulesConfigClient(IManagementConnection, Uri, IDictionary(Of String, String))
+  fullName: Auth0.ManagementApi.Clients.RulesConfigClient.RulesConfigClient(Auth0.ManagementApi.IManagementConnection, System.Uri, System.Collections.Generic.IDictionary<System.String, System.String>)
+  fullName.vb: Auth0.ManagementApi.Clients.RulesConfigClient.RulesConfigClient(Auth0.ManagementApi.IManagementConnection, System.Uri, System.Collections.Generic.IDictionary(Of System.String, System.String))
+  nameWithType: RulesConfigClient.RulesConfigClient(IManagementConnection, Uri, IDictionary<String, String>)
+  nameWithType.vb: RulesConfigClient.RulesConfigClient(IManagementConnection, Uri, IDictionary(Of String, String))
+- uid: Auth0.ManagementApi.Clients.RulesConfigClient.#ctor*
+  name: RulesConfigClient
+  href: api/Auth0.ManagementApi.Clients.RulesConfigClient.html#Auth0_ManagementApi_Clients_RulesConfigClient__ctor_
+  commentId: Overload:Auth0.ManagementApi.Clients.RulesConfigClient.#ctor
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.RulesConfigClient.RulesConfigClient
+  nameWithType: RulesConfigClient.RulesConfigClient
+- uid: Auth0.ManagementApi.Clients.RulesConfigClient.CreateOrUpdateAsync(Auth0.ManagementApi.Models.RulesConfigCreateOrUpdateRequest,System.Threading.CancellationToken)
+  name: CreateOrUpdateAsync(RulesConfigCreateOrUpdateRequest, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.RulesConfigClient.html#Auth0_ManagementApi_Clients_RulesConfigClient_CreateOrUpdateAsync_Auth0_ManagementApi_Models_RulesConfigCreateOrUpdateRequest_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.RulesConfigClient.CreateOrUpdateAsync(Auth0.ManagementApi.Models.RulesConfigCreateOrUpdateRequest,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.RulesConfigClient.CreateOrUpdateAsync(Auth0.ManagementApi.Models.RulesConfigCreateOrUpdateRequest, System.Threading.CancellationToken)
+  nameWithType: RulesConfigClient.CreateOrUpdateAsync(RulesConfigCreateOrUpdateRequest, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.RulesConfigClient.CreateOrUpdateAsync*
+  name: CreateOrUpdateAsync
+  href: api/Auth0.ManagementApi.Clients.RulesConfigClient.html#Auth0_ManagementApi_Clients_RulesConfigClient_CreateOrUpdateAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.RulesConfigClient.CreateOrUpdateAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.RulesConfigClient.CreateOrUpdateAsync
+  nameWithType: RulesConfigClient.CreateOrUpdateAsync
+- uid: Auth0.ManagementApi.Clients.RulesConfigClient.DeleteAsync(System.String,System.Threading.CancellationToken)
+  name: DeleteAsync(String, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.RulesConfigClient.html#Auth0_ManagementApi_Clients_RulesConfigClient_DeleteAsync_System_String_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.RulesConfigClient.DeleteAsync(System.String,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.RulesConfigClient.DeleteAsync(System.String, System.Threading.CancellationToken)
+  nameWithType: RulesConfigClient.DeleteAsync(String, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.RulesConfigClient.DeleteAsync*
+  name: DeleteAsync
+  href: api/Auth0.ManagementApi.Clients.RulesConfigClient.html#Auth0_ManagementApi_Clients_RulesConfigClient_DeleteAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.RulesConfigClient.DeleteAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.RulesConfigClient.DeleteAsync
+  nameWithType: RulesConfigClient.DeleteAsync
 - uid: Auth0.ManagementApi.Clients.StatsClient
   name: StatsClient
   href: api/Auth0.ManagementApi.Clients.StatsClient.html
@@ -6641,6 +6715,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.ManagementApiClient.Rules
   nameWithType: ManagementApiClient.Rules
+- uid: Auth0.ManagementApi.ManagementApiClient.RulesConfig
+  name: RulesConfig
+  href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_RulesConfig
+  commentId: P:Auth0.ManagementApi.ManagementApiClient.RulesConfig
+  fullName: Auth0.ManagementApi.ManagementApiClient.RulesConfig
+  nameWithType: ManagementApiClient.RulesConfig
+- uid: Auth0.ManagementApi.ManagementApiClient.RulesConfig*
+  name: RulesConfig
+  href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_RulesConfig_
+  commentId: Overload:Auth0.ManagementApi.ManagementApiClient.RulesConfig
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.ManagementApiClient.RulesConfig
+  nameWithType: ManagementApiClient.RulesConfig
 - uid: Auth0.ManagementApi.ManagementApiClient.Stats
   name: Stats
   href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_Stats
@@ -15418,6 +15505,44 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.Rules.RulesRequest.User
   nameWithType: RulesRequest.User
+- uid: Auth0.ManagementApi.Models.RulesConfig
+  name: RulesConfig
+  href: api/Auth0.ManagementApi.Models.RulesConfig.html
+  commentId: T:Auth0.ManagementApi.Models.RulesConfig
+  fullName: Auth0.ManagementApi.Models.RulesConfig
+  nameWithType: RulesConfig
+- uid: Auth0.ManagementApi.Models.RulesConfig.Key
+  name: Key
+  href: api/Auth0.ManagementApi.Models.RulesConfig.html#Auth0_ManagementApi_Models_RulesConfig_Key
+  commentId: P:Auth0.ManagementApi.Models.RulesConfig.Key
+  fullName: Auth0.ManagementApi.Models.RulesConfig.Key
+  nameWithType: RulesConfig.Key
+- uid: Auth0.ManagementApi.Models.RulesConfig.Key*
+  name: Key
+  href: api/Auth0.ManagementApi.Models.RulesConfig.html#Auth0_ManagementApi_Models_RulesConfig_Key_
+  commentId: Overload:Auth0.ManagementApi.Models.RulesConfig.Key
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.RulesConfig.Key
+  nameWithType: RulesConfig.Key
+- uid: Auth0.ManagementApi.Models.RulesConfig.Value
+  name: Value
+  href: api/Auth0.ManagementApi.Models.RulesConfig.html#Auth0_ManagementApi_Models_RulesConfig_Value
+  commentId: P:Auth0.ManagementApi.Models.RulesConfig.Value
+  fullName: Auth0.ManagementApi.Models.RulesConfig.Value
+  nameWithType: RulesConfig.Value
+- uid: Auth0.ManagementApi.Models.RulesConfig.Value*
+  name: Value
+  href: api/Auth0.ManagementApi.Models.RulesConfig.html#Auth0_ManagementApi_Models_RulesConfig_Value_
+  commentId: Overload:Auth0.ManagementApi.Models.RulesConfig.Value
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.RulesConfig.Value
+  nameWithType: RulesConfig.Value
+- uid: Auth0.ManagementApi.Models.RulesConfigCreateOrUpdateRequest
+  name: RulesConfigCreateOrUpdateRequest
+  href: api/Auth0.ManagementApi.Models.RulesConfigCreateOrUpdateRequest.html
+  commentId: T:Auth0.ManagementApi.Models.RulesConfigCreateOrUpdateRequest
+  fullName: Auth0.ManagementApi.Models.RulesConfigCreateOrUpdateRequest
+  nameWithType: RulesConfigCreateOrUpdateRequest
 - uid: Auth0.ManagementApi.Models.RuleUpdateRequest
   name: RuleUpdateRequest
   href: api/Auth0.ManagementApi.Models.RuleUpdateRequest.html
