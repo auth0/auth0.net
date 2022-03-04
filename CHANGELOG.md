@@ -1,5 +1,22 @@
 # Change Log
 
+## [release-7.15.0](https://github.com/auth0/auth0.net/tree/release-7.15.0) (2022-03-04)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.14.0...release-7.15.0)
+
+**Added**
+- Add support for Rules Configs endpoints  [\#552](https://github.com/auth0/auth0.net/pull/552) ([caldwell0414](https://github.com/caldwell0414))
+
+**Changed**
+- Add ID Token validation to device-code and passwordless  [\#553](https://github.com/auth0/auth0.net/pull/553) ([frederikprijck](https://github.com/frederikprijck))
+
+**Note** that with this release, ID Token validation has been added when retrieving a token using any of the Device Code or Passwordless flows.
+There might be a rare occasion where this could break your application, in the situation where you are using invalid ID Tokens.
+However, typically this should not cause any issues as ID Tokens are supposed to be valid. If they aren't, you probably want to get notified about it as soon as possible.
+
+Prior to this change, those methods would return the tokens without checking the validaty of your ID Token.
+However, given the fact that this should realy be an edge case, and we believe it's a good idea to inform you about invalid tokens sooner rather than later, 
+we decided to introduce this change in a minor release.
+
 ## [release-7.14.0](https://github.com/auth0/auth0.net/tree/release-7.14.0) (2022-02-15)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.13.0...release-7.14.0)
 
