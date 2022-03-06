@@ -37,7 +37,7 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Deletes a rules config variable.
         /// </summary>
-        /// <param name="id">The key of the rules-config to delete.</param>
+        /// <param name="key">The key of the rules-config to delete.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
         public Task DeleteAsync(string key, CancellationToken cancellationToken = default)

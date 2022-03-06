@@ -36,6 +36,7 @@ namespace Auth0.ManagementApi
         /// </summary>
         /// <param name="httpClient">Optional <see cref="HttpClient"/> to use. If not specified one will
         /// be created and be used for all requests made by this instance.</param>
+        /// <param name="options">Optional <see cref="HttpClientManagementConnectionOptions"/> to use.</param>
         public HttpClientManagementConnection(HttpClient httpClient = null, HttpClientManagementConnectionOptions options = null)
         {
             ownHttpClient = httpClient == null;
@@ -49,6 +50,7 @@ namespace Auth0.ManagementApi
         /// <param name="handler"><see cref="HttpMessageHandler"/> to use with the managed 
         /// <see cref="HttpClient"/> that will be created and used for all requests made
         /// by this instance.</param>
+        /// <param name="options">Optional <see cref="HttpClientManagementConnectionOptions"/> to use.</param>
         public HttpClientManagementConnection(HttpMessageHandler handler, HttpClientManagementConnectionOptions options = null)
             : this(new HttpClient(handler ?? new HttpClientHandler()), options)
         {
