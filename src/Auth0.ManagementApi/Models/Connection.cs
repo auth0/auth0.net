@@ -30,5 +30,11 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("strategy")]
         public string Strategy { get; set; }
+
+        /// <summary>
+        /// The provisioning ticket URL for AD / LDAP connections
+        /// </summary>
+        [JsonProperty("provisioning_ticket_url")]
+        public string ProvisioningTicketUrl { get; set; }
     }
 }
