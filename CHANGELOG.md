@@ -1,5 +1,15 @@
 # Change Log
 
+## [release-7.16.0](https://github.com/auth0/auth0.net/tree/release-7.16.0) (2022-05-03)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.15.0...release-7.16.0)
+
+**Changed**
+- Add ProvisioningTicketUrl [\#562](https://github.com/auth0/auth0.net/pull/562) ([zzanol](https://github.com/zzanol))
+
+**Security**
+- [Snyk] Security upgrade Newtonsoft.Json from 12.0.3 to 13.0.1 [\#560](https://github.com/auth0/auth0.net/pull/560) ([crew-security](https://github.com/crew-security))
+- [Snyk] Security upgrade Microsoft.IdentityModel.Protocols.OpenIdConnect from 5.6.0 to 6.5.0 [\#559](https://github.com/auth0/auth0.net/pull/559) ([snyk-bot](https://github.com/snyk-bot))
+
 ## [release-7.15.0](https://github.com/auth0/auth0.net/tree/release-7.15.0) (2022-03-04)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.14.0...release-7.15.0)
 
