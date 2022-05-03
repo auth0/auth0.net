@@ -9519,6 +9519,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.Connection.IsDomainConnection
   nameWithType: Connection.IsDomainConnection
+- uid: Auth0.ManagementApi.Models.Connection.ProvisioningTicketUrl
+  name: ProvisioningTicketUrl
+  href: api/Auth0.ManagementApi.Models.Connection.html#Auth0_ManagementApi_Models_Connection_ProvisioningTicketUrl
+  commentId: P:Auth0.ManagementApi.Models.Connection.ProvisioningTicketUrl
+  fullName: Auth0.ManagementApi.Models.Connection.ProvisioningTicketUrl
+  nameWithType: Connection.ProvisioningTicketUrl
+- uid: Auth0.ManagementApi.Models.Connection.ProvisioningTicketUrl*
+  name: ProvisioningTicketUrl
+  href: api/Auth0.ManagementApi.Models.Connection.html#Auth0_ManagementApi_Models_Connection_ProvisioningTicketUrl_
+  commentId: Overload:Auth0.ManagementApi.Models.Connection.ProvisioningTicketUrl
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Connection.ProvisioningTicketUrl
+  nameWithType: Connection.ProvisioningTicketUrl
 - uid: Auth0.ManagementApi.Models.Connection.Strategy
   name: Strategy
   href: api/Auth0.ManagementApi.Models.Connection.html#Auth0_ManagementApi_Models_Connection_Strategy
