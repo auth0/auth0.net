@@ -1,0 +1,7 @@
+{
+    "files": {
+        "build/common.props": []
+    },
+    "postbump": "docfx docs-source/docfx.json",
+    "prefixVersion": false
+}

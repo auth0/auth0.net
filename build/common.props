@@ -20,16 +20,14 @@
   </PropertyGroup>
   <PropertyGroup>
     <LangVersion>7.1</LangVersion>
-    <Major>7</Major>
-    <Minor>16</Minor>
-    <Revision>0</Revision>
+    <Version>7.16.0</Version>
     <Suffix/>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyVersion>$(Major).$(Minor).$(Revision)</AssemblyVersion>
-    <AssemblyFileVersion>$(Major).$(Minor).$(Revision)</AssemblyFileVersion>
-    <InformationalVersion>$(Major).$(Minor).$(Revision)</InformationalVersion>
-    <PackageVersion>$(Major).$(Minor).$(Revision)$(Suffix)</PackageVersion>
+    <AssemblyVersion>$(Version)</AssemblyVersion>
+    <AssemblyFileVersion>$(Version)</AssemblyFileVersion>
+    <InformationalVersion>$(Version)</InformationalVersion>
+    <PackageVersion>$(Version)</PackageVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
