@@ -10,7 +10,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /rules-configs endpoint
     /// </summary>
-    public class RulesConfigClient : BaseClient
+    public class RulesConfigClient : BaseClient, IRulesConfigClient
     {
         /// <summary>
         /// Initializes a new instance of <see cref="RulesConfigClient"/>.

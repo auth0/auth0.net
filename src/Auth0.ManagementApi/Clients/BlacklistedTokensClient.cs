@@ -10,7 +10,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /blacklists/tokens endpoints.
     /// </summary>
-    public class BlacklistedTokensClient : BaseClient
+    public class BlacklistedTokensClient : BaseClient, IBlacklistedTokensClient
     {
         /// <summary>
         /// Initializes a new instance of <see cref="BlacklistedTokensClient"/>.

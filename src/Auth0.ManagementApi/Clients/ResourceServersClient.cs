@@ -12,7 +12,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /resource-server endpoints.
     /// </summary>
-    public class ResourceServersClient : BaseClient
+    public class ResourceServersClient : BaseClient, IResourceServersClient
     {
         readonly JsonConverter[] converters = new JsonConverter[] { new PagedListConverter<ResourceServer>("resource_servers") };
 

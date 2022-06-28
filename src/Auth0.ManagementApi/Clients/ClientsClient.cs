@@ -13,7 +13,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /clients endpoints.
     /// </summary>
-    public class ClientsClient : BaseClient
+    public class ClientsClient : BaseClient, IClientsClient
     {
         readonly JsonConverter[] converters = new JsonConverter[] { new PagedListConverter<Client>("clients") };
 

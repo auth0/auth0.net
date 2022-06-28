@@ -11,7 +11,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /guardian endpoints.
     /// </summary>
-    public class GuardianClient : BaseClient
+    public class GuardianClient : BaseClient, IGuardianClient
     {
         /// <summary>
         /// Initializes a new instance of <see cref="GuardianClient"/>.
@@ -181,7 +181,7 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection
                 .GetAsync<GuardianPhoneMessageTypes>(
-                    BuildUri("guardian/factors/phone/message-types"), 
+                    BuildUri("guardian/factors/phone/message-types"),
                     DefaultHeaders,
                     cancellationToken: cancellationToken
                  );

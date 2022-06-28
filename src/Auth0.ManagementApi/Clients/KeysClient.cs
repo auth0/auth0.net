@@ -11,7 +11,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /keys endpoints.
     /// </summary>
-    public class KeysClient : BaseClient
+    public class KeysClient : BaseClient, IKeysClient
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="KeysClient"/> class.

@@ -10,7 +10,7 @@ namespace Auth0.ManagementApi
     /// <summary>
     /// Represents the Management API client.
     /// </summary>
-    public class ManagementApiClient : IDisposable
+    public class ManagementApiClient : IDisposable, IManagementApiClient
     {
         private const string AuthorizationHeaderKey = "Authorization";
 
@@ -20,143 +20,143 @@ namespace Auth0.ManagementApi
         /// <summary>
         /// Contains all the methods to call the /actions endpoints.
         /// </summary>
-        public ActionsClient Actions { get; }
+        public IActionsClient Actions { get; }
 
         /// <summary>
         /// Contains all the methods to call the /attack-protection endpoints.
         /// </summary>
-        public AttackProtectionClient AttackProtection { get; }
+        public IAttackProtectionClient AttackProtection { get; }
 
         /// <summary>
         /// Contains all the methods to call the /blacklists/tokens endpoints.
         /// </summary>
-        public BlacklistedTokensClient BlacklistedTokens { get; }
+        public IBlacklistedTokensClient BlacklistedTokens { get; }
 
         /// <summary>
         /// Contains all the methods to call the /branding endpoints.
         /// </summary>
-        public BrandingClient Branding { get; }
+        public IBrandingClient Branding { get; }
 
         /// <summary>
         /// Contains all the methods to call the /client-grants endpoints
         /// </summary>
-        public ClientGrantsClient ClientGrants { get; }
+        public IClientGrantsClient ClientGrants { get; }
 
         /// <summary>
         /// Contains all the methods to call the /clients endpoints.
         /// </summary>
-        public ClientsClient Clients { get; }
+        public IClientsClient Clients { get; }
 
         /// <summary>
         /// Contains all the methods to call the /connections endpoints.
         /// </summary>
-        public ConnectionsClient Connections { get; }
+        public IConnectionsClient Connections { get; }
 
         /// <summary>
         /// Contains all the methods to call the /custom-domains endpoints.
         /// </summary>
-        public CustomDomainsClient CustomDomains { get; }
+        public ICustomDomainsClient CustomDomains { get; }
 
         /// <summary>
         /// Contains all the methods to call the /device-credentials endpoints.
         /// </summary>
-        public DeviceCredentialsClient DeviceCredentials { get; }
+        public IDeviceCredentialsClient DeviceCredentials { get; }
 
         /// <summary>
         /// Contains all the methods to call the /emails/provider endpoints.
         /// </summary>
-        public EmailProviderClient EmailProvider { get; }
+        public IEmailProviderClient EmailProvider { get; }
 
         /// <summary>
         /// Contains all the methods to call the /email-templates endpoints.
         /// </summary>
-        public EmailTemplatesClient EmailTemplates { get; }
+        public IEmailTemplatesClient EmailTemplates { get; }
 
         /// <summary>
         /// Contains all the methods to call the /guardian endpoints.
         /// </summary>
-        public GuardianClient Guardian { get; }
+        public IGuardianClient Guardian { get; }
 
         /// <summary>
         /// Contains all the methods to call the /jobs endpoints.
         /// </summary>
-        public JobsClient Jobs { get; }
+        public IJobsClient Jobs { get; }
 
         /// <summary>
         /// Contains all the methods to call the /keys endpoints.
         /// </summary>
-        public KeysClient Keys { get; }
+        public IKeysClient Keys { get; }
 
         /// <summary>
         /// Contains all the methods to call the /logs endpoints.
         /// </summary>
-        public LogsClient Logs { get; }
+        public ILogsClient Logs { get; }
 
         /// <summary>
         /// Contains all the methods to all the /log-streams endpoints.
         /// </summary>
-        public LogStreamsClient LogStreams { get; }
+        public ILogStreamsClient LogStreams { get; }
 
         /// <summary>
         /// Contains all the methods to call the /organizations endpoints.
         /// </summary>
-        public OrganizationsClient Organizations { get; }
+        public IOrganizationsClient Organizations { get; }
 
         /// <summary>
         /// Contains all the methods to call the /prompts endpoints.
         /// </summary>
-        public PromptsClient Prompts { get; }
+        public IPromptsClient Prompts { get; }
 
         /// <summary>
         /// Contains all the methods to call the /resource-servers endpoints.
         /// </summary>
-        public ResourceServersClient ResourceServers { get; }
+        public IResourceServersClient ResourceServers { get; }
 
         /// <summary>
         /// Contains all the methods to call the /roles endpoints.
         /// </summary>
         /// <value>The roles.</value>
-        public RolesClient Roles { get; }
+        public IRolesClient Roles { get; }
 
         /// <summary>
         /// Contains all the methods to call the /rules-configs endpoints.
         /// </summary>
-        public RulesConfigClient RulesConfig { get; }
+        public IRulesConfigClient RulesConfig { get; }
 
         /// <summary>
         /// Contains all the methods to call the /rules endpoints.
         /// </summary>
-        public RulesClient Rules { get; }
+        public IRulesClient Rules { get; }
 
         /// <summary>
         /// Contains all the methods to call the /hooks endpoints.
         /// </summary>
-        public HooksClient Hooks { get; }
+        public IHooksClient Hooks { get; }
 
         /// <summary>
         /// Contains all the methods to call the /stats endpoints.
         /// </summary>
-        public StatsClient Stats { get; }
+        public IStatsClient Stats { get; }
 
         /// <summary>
         /// Contains all the methods to call the /tenants/settings endpoints.
         /// </summary>
-        public TenantSettingsClient TenantSettings { get; set; }
+        public ITenantSettingsClient TenantSettings { get; set; }
 
         /// <summary>
         /// Contains all the methods to call the /tickets endpoints.
         /// </summary>
-        public TicketsClient Tickets { get; }
+        public ITicketsClient Tickets { get; }
 
         /// <summary>
         /// Contains all the methods to call the /user-blocks endpoints.
         /// </summary>
-        public UserBlocksClient UserBlocks { get; }
+        public IUserBlocksClient UserBlocks { get; }
 
         /// <summary>
         /// Contains all the methods to call the /users endpoints.
         /// </summary>
-        public UsersClient Users { get; }
+        public IUsersClient Users { get; }
 
         private Dictionary<string, string> DefaultHeaders { get; set; }
 

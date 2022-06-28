@@ -11,7 +11,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /logs endpoints.
     /// </summary>
-    public class LogsClient : BaseClient
+    public class LogsClient : BaseClient, ILogsClient
     {
         readonly JsonConverter[] converters = new JsonConverter[] { new PagedListConverter<LogEntry>("logs") };
 

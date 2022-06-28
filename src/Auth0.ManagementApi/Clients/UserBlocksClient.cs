@@ -10,7 +10,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /user-blocks endpoints.
     /// </summary>
-    public class UserBlocksClient : BaseClient
+    public class UserBlocksClient : BaseClient, IUserBlocksClient
     {
         /// <summary>
         /// Initializes a new instance of <see cref="UserBlocksClient"/>.
@@ -69,7 +69,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Task"/> that represents the asynchronous unblock operation.</returns>
         public Task UnblockByUserIdAsync(string id, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"user-blocks/{EncodePath(id)}", 
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"user-blocks/{EncodePath(id)}",
                 new Dictionary<string, string> { { "id", id } }), null, DefaultHeaders, cancellationToken: cancellationToken);
         }
     }

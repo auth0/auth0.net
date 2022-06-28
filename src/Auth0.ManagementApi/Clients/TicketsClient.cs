@@ -10,7 +10,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /tickets endpoints.
     /// </summary>
-    public class TicketsClient : BaseClient
+    public class TicketsClient : BaseClient, ITicketsClient
     {
         /// <summary>
         /// Initializes a new instance of <see cref="TicketsClient"/>.
