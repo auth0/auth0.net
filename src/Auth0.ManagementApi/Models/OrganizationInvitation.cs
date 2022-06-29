@@ -7,7 +7,7 @@ namespace Auth0.ManagementApi.Models
     public class OrganizationInvitation
     {
         /// <summary>
-        /// The ID of the organization
+        /// The ID of the invitation
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; }
