@@ -17,6 +17,12 @@ namespace Auth0.ManagementApi.Models
         public string Name { get; set; }
 
         /// <summary>
+        /// The text used on the login button.
+        /// </summary>
+        [JsonProperty("display_name")]
+        public string DisplayName { get; set; }
+
+        /// <summary>
         /// Optional metadata for the connection.
         /// </summary>
         [JsonProperty("metadata")]
