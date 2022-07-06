@@ -15,5 +15,11 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("strategy")]
         public string Strategy { get; set; }
+
+        /// <summary>
+        /// The text used on the login button.
+        /// </summary>
+        [JsonProperty("display_name")]
+        public string DisplayName { get; set; }
     }
 }

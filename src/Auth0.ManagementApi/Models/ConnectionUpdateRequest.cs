@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace Auth0.ManagementApi.Models
 {
     /// <summary>
@@ -5,5 +7,10 @@ namespace Auth0.ManagementApi.Models
     /// </summary>
     public class ConnectionUpdateRequest : ConnectionBase
     {
+        /// <summary>
+        /// The text used on the login button.
+        /// </summary>
+        [JsonProperty("display_name")]
+        public string DisplayName { get; set; }
     }
 }
