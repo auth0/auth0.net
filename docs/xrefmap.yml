@@ -6297,13 +6297,13 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.HttpClientManagementConnection.GetAsync
   nameWithType: HttpClientManagementConnection.GetAsync
-- uid: Auth0.ManagementApi.HttpClientManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},Newtonsoft.Json.JsonConverter[],System.Threading.CancellationToken)
+- uid: Auth0.ManagementApi.HttpClientManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},JsonConverter[],System.Threading.CancellationToken)
   name: GetAsync<T>(Uri, IDictionary<String, String>, JsonConverter[], CancellationToken)
-  href: api/Auth0.ManagementApi.HttpClientManagementConnection.html#Auth0_ManagementApi_HttpClientManagementConnection_GetAsync__1_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__Newtonsoft_Json_JsonConverter___System_Threading_CancellationToken_
-  commentId: M:Auth0.ManagementApi.HttpClientManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},Newtonsoft.Json.JsonConverter[],System.Threading.CancellationToken)
+  href: api/Auth0.ManagementApi.HttpClientManagementConnection.html#Auth0_ManagementApi_HttpClientManagementConnection_GetAsync__1_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__JsonConverter___System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.HttpClientManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},JsonConverter[],System.Threading.CancellationToken)
   name.vb: GetAsync(Of T)(Uri, IDictionary(Of String, String), JsonConverter(), CancellationToken)
-  fullName: Auth0.ManagementApi.HttpClientManagementConnection.GetAsync<T>(System.Uri, System.Collections.Generic.IDictionary<System.String, System.String>, Newtonsoft.Json.JsonConverter[], System.Threading.CancellationToken)
-  fullName.vb: Auth0.ManagementApi.HttpClientManagementConnection.GetAsync(Of T)(System.Uri, System.Collections.Generic.IDictionary(Of System.String, System.String), Newtonsoft.Json.JsonConverter(), System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.HttpClientManagementConnection.GetAsync<T>(System.Uri, System.Collections.Generic.IDictionary<System.String, System.String>, JsonConverter[], System.Threading.CancellationToken)
+  fullName.vb: Auth0.ManagementApi.HttpClientManagementConnection.GetAsync(Of T)(System.Uri, System.Collections.Generic.IDictionary(Of System.String, System.String), JsonConverter(), System.Threading.CancellationToken)
   nameWithType: HttpClientManagementConnection.GetAsync<T>(Uri, IDictionary<String, String>, JsonConverter[], CancellationToken)
   nameWithType.vb: HttpClientManagementConnection.GetAsync(Of T)(Uri, IDictionary(Of String, String), JsonConverter(), CancellationToken)
 - uid: Auth0.ManagementApi.HttpClientManagementConnection.SendAsync*
@@ -6313,13 +6313,13 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.HttpClientManagementConnection.SendAsync
   nameWithType: HttpClientManagementConnection.SendAsync
-- uid: Auth0.ManagementApi.HttpClientManagementConnection.SendAsync``1(System.Net.Http.HttpMethod,System.Uri,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IList{Auth0.ManagementApi.FileUploadParameter},Newtonsoft.Json.JsonConverter[],System.Threading.CancellationToken)
+- uid: Auth0.ManagementApi.HttpClientManagementConnection.SendAsync``1(System.Net.Http.HttpMethod,System.Uri,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IList{Auth0.ManagementApi.FileUploadParameter},JsonConverter[],System.Threading.CancellationToken)
   name: SendAsync<T>(HttpMethod, Uri, Object, IDictionary<String, String>, IList<FileUploadParameter>, JsonConverter[], CancellationToken)
-  href: api/Auth0.ManagementApi.HttpClientManagementConnection.html#Auth0_ManagementApi_HttpClientManagementConnection_SendAsync__1_System_Net_Http_HttpMethod_System_Uri_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IList_Auth0_ManagementApi_FileUploadParameter__Newtonsoft_Json_JsonConverter___System_Threading_CancellationToken_
-  commentId: M:Auth0.ManagementApi.HttpClientManagementConnection.SendAsync``1(System.Net.Http.HttpMethod,System.Uri,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IList{Auth0.ManagementApi.FileUploadParameter},Newtonsoft.Json.JsonConverter[],System.Threading.CancellationToken)
+  href: api/Auth0.ManagementApi.HttpClientManagementConnection.html#Auth0_ManagementApi_HttpClientManagementConnection_SendAsync__1_System_Net_Http_HttpMethod_System_Uri_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IList_Auth0_ManagementApi_FileUploadParameter__JsonConverter___System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.HttpClientManagementConnection.SendAsync``1(System.Net.Http.HttpMethod,System.Uri,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IList{Auth0.ManagementApi.FileUploadParameter},JsonConverter[],System.Threading.CancellationToken)
   name.vb: SendAsync(Of T)(HttpMethod, Uri, Object, IDictionary(Of String, String), IList(Of FileUploadParameter), JsonConverter(), CancellationToken)
-  fullName: Auth0.ManagementApi.HttpClientManagementConnection.SendAsync<T>(System.Net.Http.HttpMethod, System.Uri, System.Object, System.Collections.Generic.IDictionary<System.String, System.String>, System.Collections.Generic.IList<Auth0.ManagementApi.FileUploadParameter>, Newtonsoft.Json.JsonConverter[], System.Threading.CancellationToken)
-  fullName.vb: Auth0.ManagementApi.HttpClientManagementConnection.SendAsync(Of T)(System.Net.Http.HttpMethod, System.Uri, System.Object, System.Collections.Generic.IDictionary(Of System.String, System.String), System.Collections.Generic.IList(Of Auth0.ManagementApi.FileUploadParameter), Newtonsoft.Json.JsonConverter(), System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.HttpClientManagementConnection.SendAsync<T>(System.Net.Http.HttpMethod, System.Uri, System.Object, System.Collections.Generic.IDictionary<System.String, System.String>, System.Collections.Generic.IList<Auth0.ManagementApi.FileUploadParameter>, JsonConverter[], System.Threading.CancellationToken)
+  fullName.vb: Auth0.ManagementApi.HttpClientManagementConnection.SendAsync(Of T)(System.Net.Http.HttpMethod, System.Uri, System.Object, System.Collections.Generic.IDictionary(Of System.String, System.String), System.Collections.Generic.IList(Of Auth0.ManagementApi.FileUploadParameter), JsonConverter(), System.Threading.CancellationToken)
   nameWithType: HttpClientManagementConnection.SendAsync<T>(HttpMethod, Uri, Object, IDictionary<String, String>, IList<FileUploadParameter>, JsonConverter[], CancellationToken)
   nameWithType.vb: HttpClientManagementConnection.SendAsync(Of T)(HttpMethod, Uri, Object, IDictionary(Of String, String), IList(Of FileUploadParameter), JsonConverter(), CancellationToken)
 - uid: Auth0.ManagementApi.HttpClientManagementConnectionOptions
@@ -6354,13 +6354,13 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.IManagementConnection.GetAsync
   nameWithType: IManagementConnection.GetAsync
-- uid: Auth0.ManagementApi.IManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},Newtonsoft.Json.JsonConverter[],System.Threading.CancellationToken)
+- uid: Auth0.ManagementApi.IManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},JsonConverter[],System.Threading.CancellationToken)
   name: GetAsync<T>(Uri, IDictionary<String, String>, JsonConverter[], CancellationToken)
-  href: api/Auth0.ManagementApi.IManagementConnection.html#Auth0_ManagementApi_IManagementConnection_GetAsync__1_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__Newtonsoft_Json_JsonConverter___System_Threading_CancellationToken_
-  commentId: M:Auth0.ManagementApi.IManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},Newtonsoft.Json.JsonConverter[],System.Threading.CancellationToken)
+  href: api/Auth0.ManagementApi.IManagementConnection.html#Auth0_ManagementApi_IManagementConnection_GetAsync__1_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__JsonConverter___System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.IManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},JsonConverter[],System.Threading.CancellationToken)
   name.vb: GetAsync(Of T)(Uri, IDictionary(Of String, String), JsonConverter(), CancellationToken)
-  fullName: Auth0.ManagementApi.IManagementConnection.GetAsync<T>(System.Uri, System.Collections.Generic.IDictionary<System.String, System.String>, Newtonsoft.Json.JsonConverter[], System.Threading.CancellationToken)
-  fullName.vb: Auth0.ManagementApi.IManagementConnection.GetAsync(Of T)(System.Uri, System.Collections.Generic.IDictionary(Of System.String, System.String), Newtonsoft.Json.JsonConverter(), System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.IManagementConnection.GetAsync<T>(System.Uri, System.Collections.Generic.IDictionary<System.String, System.String>, JsonConverter[], System.Threading.CancellationToken)
+  fullName.vb: Auth0.ManagementApi.IManagementConnection.GetAsync(Of T)(System.Uri, System.Collections.Generic.IDictionary(Of System.String, System.String), JsonConverter(), System.Threading.CancellationToken)
   nameWithType: IManagementConnection.GetAsync<T>(Uri, IDictionary<String, String>, JsonConverter[], CancellationToken)
   nameWithType.vb: IManagementConnection.GetAsync(Of T)(Uri, IDictionary(Of String, String), JsonConverter(), CancellationToken)
 - uid: Auth0.ManagementApi.IManagementConnection.SendAsync*
@@ -6370,13 +6370,13 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.IManagementConnection.SendAsync
   nameWithType: IManagementConnection.SendAsync
-- uid: Auth0.ManagementApi.IManagementConnection.SendAsync``1(System.Net.Http.HttpMethod,System.Uri,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IList{Auth0.ManagementApi.FileUploadParameter},Newtonsoft.Json.JsonConverter[],System.Threading.CancellationToken)
+- uid: Auth0.ManagementApi.IManagementConnection.SendAsync``1(System.Net.Http.HttpMethod,System.Uri,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IList{Auth0.ManagementApi.FileUploadParameter},JsonConverter[],System.Threading.CancellationToken)
   name: SendAsync<T>(HttpMethod, Uri, Object, IDictionary<String, String>, IList<FileUploadParameter>, JsonConverter[], CancellationToken)
-  href: api/Auth0.ManagementApi.IManagementConnection.html#Auth0_ManagementApi_IManagementConnection_SendAsync__1_System_Net_Http_HttpMethod_System_Uri_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IList_Auth0_ManagementApi_FileUploadParameter__Newtonsoft_Json_JsonConverter___System_Threading_CancellationToken_
-  commentId: M:Auth0.ManagementApi.IManagementConnection.SendAsync``1(System.Net.Http.HttpMethod,System.Uri,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IList{Auth0.ManagementApi.FileUploadParameter},Newtonsoft.Json.JsonConverter[],System.Threading.CancellationToken)
+  href: api/Auth0.ManagementApi.IManagementConnection.html#Auth0_ManagementApi_IManagementConnection_SendAsync__1_System_Net_Http_HttpMethod_System_Uri_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IList_Auth0_ManagementApi_FileUploadParameter__JsonConverter___System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.IManagementConnection.SendAsync``1(System.Net.Http.HttpMethod,System.Uri,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IList{Auth0.ManagementApi.FileUploadParameter},JsonConverter[],System.Threading.CancellationToken)
   name.vb: SendAsync(Of T)(HttpMethod, Uri, Object, IDictionary(Of String, String), IList(Of FileUploadParameter), JsonConverter(), CancellationToken)
-  fullName: Auth0.ManagementApi.IManagementConnection.SendAsync<T>(System.Net.Http.HttpMethod, System.Uri, System.Object, System.Collections.Generic.IDictionary<System.String, System.String>, System.Collections.Generic.IList<Auth0.ManagementApi.FileUploadParameter>, Newtonsoft.Json.JsonConverter[], System.Threading.CancellationToken)
-  fullName.vb: Auth0.ManagementApi.IManagementConnection.SendAsync(Of T)(System.Net.Http.HttpMethod, System.Uri, System.Object, System.Collections.Generic.IDictionary(Of System.String, System.String), System.Collections.Generic.IList(Of Auth0.ManagementApi.FileUploadParameter), Newtonsoft.Json.JsonConverter(), System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.IManagementConnection.SendAsync<T>(System.Net.Http.HttpMethod, System.Uri, System.Object, System.Collections.Generic.IDictionary<System.String, System.String>, System.Collections.Generic.IList<Auth0.ManagementApi.FileUploadParameter>, JsonConverter[], System.Threading.CancellationToken)
+  fullName.vb: Auth0.ManagementApi.IManagementConnection.SendAsync(Of T)(System.Net.Http.HttpMethod, System.Uri, System.Object, System.Collections.Generic.IDictionary(Of System.String, System.String), System.Collections.Generic.IList(Of Auth0.ManagementApi.FileUploadParameter), JsonConverter(), System.Threading.CancellationToken)
   nameWithType: IManagementConnection.SendAsync<T>(HttpMethod, Uri, Object, IDictionary<String, String>, IList<FileUploadParameter>, JsonConverter[], CancellationToken)
   nameWithType.vb: IManagementConnection.SendAsync(Of T)(HttpMethod, Uri, Object, IDictionary(Of String, String), IList(Of FileUploadParameter), JsonConverter(), CancellationToken)
 - uid: Auth0.ManagementApi.ManagementApiClient
@@ -9551,6 +9551,19 @@ references:
   commentId: T:Auth0.ManagementApi.Models.ConnectionBase
   fullName: Auth0.ManagementApi.Models.ConnectionBase
   nameWithType: ConnectionBase
+- uid: Auth0.ManagementApi.Models.ConnectionBase.DisplayName
+  name: DisplayName
+  href: api/Auth0.ManagementApi.Models.ConnectionBase.html#Auth0_ManagementApi_Models_ConnectionBase_DisplayName
+  commentId: P:Auth0.ManagementApi.Models.ConnectionBase.DisplayName
+  fullName: Auth0.ManagementApi.Models.ConnectionBase.DisplayName
+  nameWithType: ConnectionBase.DisplayName
+- uid: Auth0.ManagementApi.Models.ConnectionBase.DisplayName*
+  name: DisplayName
+  href: api/Auth0.ManagementApi.Models.ConnectionBase.html#Auth0_ManagementApi_Models_ConnectionBase_DisplayName_
+  commentId: Overload:Auth0.ManagementApi.Models.ConnectionBase.DisplayName
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.ConnectionBase.DisplayName
+  nameWithType: ConnectionBase.DisplayName
 - uid: Auth0.ManagementApi.Models.ConnectionBase.EnabledClients
   name: EnabledClients
   href: api/Auth0.ManagementApi.Models.ConnectionBase.html#Auth0_ManagementApi_Models_ConnectionBase_EnabledClients
