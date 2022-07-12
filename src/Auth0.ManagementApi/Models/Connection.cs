@@ -14,12 +14,6 @@ namespace Auth0.ManagementApi.Models
         public string Id { get; set; }
 
         /// <summary>
-        /// Connection name used in login screen for Enterprise Connections.
-        /// </summary>
-        [JsonProperty("display_name")]
-        public string DisplayName { get; set; }
-
-        /// <summary>
         /// Whether the connection is domain level (true), or not (false).
         /// </summary>
         [JsonProperty("is_domain_connection")]
