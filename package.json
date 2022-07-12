@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/auth0/auth0.net#readme",
   "devDependencies": {
-    "moment": "^2.29.2",
+    "moment": "^2.29.4",
     "xml2js": "^0.4.23"
   }
 }
