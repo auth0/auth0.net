@@ -1,4 +1,4 @@
-﻿using Auth0.AuthenticationApi;
+using Auth0.AuthenticationApi;
 using Auth0.Core.Exceptions;
 using Newtonsoft.Json;
 using System;
@@ -86,7 +86,7 @@ namespace Auth0.Tests.Shared
         {
             var maxNrOfTries = 3;
             var nrOfTries = 0;
-            var exponentialInterval = 1500;
+            var exponentialInterval = 5000;
 
             while (true)
             {
@@ -104,7 +104,7 @@ namespace Auth0.Tests.Shared
                     }
                 }
 
-                Thread.Sleep(nrOfTries * exponentialInterval);
+                await Task.Delay(nrOfTries * exponentialInterval);
             }
         }
 

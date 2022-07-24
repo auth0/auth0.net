@@ -8,34 +8,38 @@ using FluentAssertions;
 using Xunit;
 using Auth0.Tests.Shared;
 using Auth0.ManagementApi.Paging;
+using System.Collections.Generic;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    public class ConnectionTests : ManagementTestBase, IAsyncLifetime
+    public class ConnectionTestsFixture : TestBaseFixture
     {
-        public async Task InitializeAsync()
+        public override async Task DisposeAsync()
         {
-            string token = await GenerateManagementApiToken();
-
-            ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+            await ManagementTestBaseUtils.CleanupAndDisposeAsync(ApiClient, new List<CleanUpType> { CleanUpType.Connections });
         }
+    }
 
-        public override Task DisposeAsync()
+    public class ConnectionTests : IClassFixture<ConnectionTestsFixture>
+    {
+        ConnectionTestsFixture fixture;
+
+        public ConnectionTests(ConnectionTestsFixture fixture)
         {
-            return CleanupAndDisposeAsync(CleanUpType.Connections);
+            this.fixture = fixture;
         }
 
         [Fact]
         public async Task Test_database_connection_crud_sequence()
         {
             // Get all connections before
-            var connectionsBefore = await ApiClient.Connections.GetAllAsync(new GetConnectionsRequest
+            var connectionsBefore = await fixture.ApiClient.Connections.GetAllAsync(new GetConnectionsRequest
             {
                 Strategy = new[] { "auth0" }
             }, new PaginationInfo());
 
             // Create a new connection
-            var name = $"{TestingConstants.ConnectionPrefix}-{MakeRandomName()}";
+            var name = $"{TestingConstants.ConnectionPrefix}-{TestBaseUtils.MakeRandomName()}";
             var displayName = "displayname";
             var newConnectionRequest = new ConnectionCreateRequest
             {
@@ -44,7 +48,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 DisplayName = displayName,
                 Realms = new[] { name }
             };
-            var newConnectionResponse = await ApiClient.Connections.CreateAsync(newConnectionRequest);
+            var newConnectionResponse = await fixture.ApiClient.Connections.CreateAsync(newConnectionRequest);
             newConnectionResponse.Should().NotBeNull();
             newConnectionResponse.Name.Should().Be(newConnectionRequest.Name);
             newConnectionResponse.Strategy.Should().Be(newConnectionRequest.Strategy);
@@ -53,14 +57,14 @@ namespace Auth0.ManagementApi.IntegrationTests
             newConnectionResponse.DisplayName.Should().Be(newConnectionRequest.DisplayName);
 
             // Get all connections again
-            var connectionsAfter = await ApiClient.Connections.GetAllAsync(new GetConnectionsRequest
+            var connectionsAfter = await fixture.ApiClient.Connections.GetAllAsync(new GetConnectionsRequest
             {
                 Strategy = new[] { "auth0" }
             }, new PaginationInfo());
             connectionsAfter.Count.Should().Be(connectionsBefore.Count + 1);
 
             // Update a connection
-            var newName = $"{TestingConstants.ConnectionPrefix}-{MakeRandomName()}";
+            var newName = $"{TestingConstants.ConnectionPrefix}-{TestBaseUtils.MakeRandomName()}";
             var newDisplayName = "newdisplayname";
             var updateConnectionRequest = new ConnectionUpdateRequest
             {
@@ -75,7 +79,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Realms = new[] { newName },
                 DisplayName = newDisplayName
             };
-            var updateConnectionResponse = await ApiClient.Connections.UpdateAsync(newConnectionResponse.Id, updateConnectionRequest);
+            var updateConnectionResponse = await fixture.ApiClient.Connections.UpdateAsync(newConnectionResponse.Id, updateConnectionRequest);
             string a = updateConnectionResponse.Options.a;
             a.Should().Be("123");
             string b = updateConnectionResponse.Metadata.b;
@@ -84,12 +88,12 @@ namespace Auth0.ManagementApi.IntegrationTests
             updateConnectionRequest.DisplayName.Should().BeEquivalentTo(newDisplayName);
 
             // Get a single connection
-            var connection = await ApiClient.Connections.GetAsync(newConnectionResponse.Id);
+            var connection = await fixture.ApiClient.Connections.GetAsync(newConnectionResponse.Id);
             connection.Should().NotBeNull();
 
             // Delete the connection and ensure we get exception when trying to get connection again
-            await ApiClient.Connections.DeleteAsync(newConnectionResponse.Id);
-            Func<Task> getFunc = async () => await ApiClient.Connections.GetAsync(newConnectionResponse.Id);
+            await fixture.ApiClient.Connections.DeleteAsync(newConnectionResponse.Id);
+            Func<Task> getFunc = async () => await fixture.ApiClient.Connections.GetAsync(newConnectionResponse.Id);
             getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_connection");
         }
 
@@ -97,7 +101,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_connection_crud_sequence()
         {
             // Get all connections before
-            var connectionsBefore = await ApiClient.Connections.GetAllAsync(new GetConnectionsRequest
+            var connectionsBefore = await fixture.ApiClient.Connections.GetAllAsync(new GetConnectionsRequest
             {
                 Strategy = new[] {"github"}
             }, new PaginationInfo());
@@ -105,18 +109,18 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Create a new connection
             var newConnectionRequest = new ConnectionCreateRequest
             {
-                Name = $"{TestingConstants.ConnectionPrefix}-{MakeRandomName()}",
+                Name = $"{TestingConstants.ConnectionPrefix}-{TestBaseUtils.MakeRandomName()}",
                 Strategy = "github",
                 DisplayName = "displayname"
             };
-            var newConnectionResponse = await ApiClient.Connections.CreateAsync(newConnectionRequest);
+            var newConnectionResponse = await fixture.ApiClient.Connections.CreateAsync(newConnectionRequest);
             newConnectionResponse.Should().NotBeNull();
             newConnectionResponse.Name.Should().Be(newConnectionRequest.Name);
             newConnectionResponse.Strategy.Should().Be(newConnectionRequest.Strategy);
             newConnectionResponse.DisplayName.Should().Be(newConnectionRequest.DisplayName);
 
             // Get all connections again
-            var connectionsAfter = await ApiClient.Connections.GetAllAsync(new GetConnectionsRequest
+            var connectionsAfter = await fixture.ApiClient.Connections.GetAllAsync(new GetConnectionsRequest
             {
                 Strategy = new[] {"github"}
             }, new PaginationInfo());
@@ -136,7 +140,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 },
                 DisplayName = newDisplayName
             };
-            var updateConnectionResponse = await ApiClient.Connections.UpdateAsync(newConnectionResponse.Id, updateConnectionRequest);
+            var updateConnectionResponse = await fixture.ApiClient.Connections.UpdateAsync(newConnectionResponse.Id, updateConnectionRequest);
             string a = updateConnectionResponse.Options.a;
             a.Should().Be("123");
             string b = updateConnectionResponse.Metadata.b;
@@ -144,12 +148,12 @@ namespace Auth0.ManagementApi.IntegrationTests
             newDisplayName.Should().BeEquivalentTo(updateConnectionResponse.DisplayName);
 
             // Get a single connection
-            var connection = await ApiClient.Connections.GetAsync(newConnectionResponse.Id);
+            var connection = await fixture.ApiClient.Connections.GetAsync(newConnectionResponse.Id);
             connection.Should().NotBeNull();
 
             // Delete the connection and ensure we get exception when trying to get connection again
-            await ApiClient.Connections.DeleteAsync(newConnectionResponse.Id);
-            Func<Task> getFunc = async () => await ApiClient.Connections.GetAsync(newConnectionResponse.Id);
+            await fixture.ApiClient.Connections.DeleteAsync(newConnectionResponse.Id);
+            Func<Task> getFunc = async () => await fixture.ApiClient.Connections.GetAsync(newConnectionResponse.Id);
             getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_connection");
         }
 
@@ -157,7 +161,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_when_paging_not_specified_does_not_include_totals()
         {
             // Act
-            var connections = await ApiClient.Connections.GetAllAsync(new GetConnectionsRequest(), new PaginationInfo());
+            var connections = await fixture.ApiClient.Connections.GetAllAsync(new GetConnectionsRequest(), new PaginationInfo());
 
             // Assert
             Assert.Null(connections.Paging);
@@ -167,7 +171,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_paging_does_not_include_totals()
         {
             // Act
-            var connections = await ApiClient.Connections.GetAllAsync(new GetConnectionsRequest(), new PaginationInfo(0, 50, false));
+            var connections = await fixture.ApiClient.Connections.GetAllAsync(new GetConnectionsRequest(), new PaginationInfo(0, 50, false));
 
             // Assert
             Assert.Null(connections.Paging);
@@ -177,7 +181,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_paging_includes_totals()
         {
             // Act
-            var connections = await ApiClient.Connections.GetAllAsync(new GetConnectionsRequest(), new PaginationInfo(0, 50, true));
+            var connections = await fixture.ApiClient.Connections.GetAllAsync(new GetConnectionsRequest(), new PaginationInfo(0, 50, true));
 
             // Assert
             Assert.NotNull(connections.Paging);
@@ -187,7 +191,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_multiple_strategies()
         {
             // Act
-            var connections = await ApiClient.Connections.GetAllAsync(new GetConnectionsRequest
+            var connections = await fixture.ApiClient.Connections.GetAllAsync(new GetConnectionsRequest
             {
                 Strategy = new[] { "google-oauth2", "auth0" }
             }, new PaginationInfo());

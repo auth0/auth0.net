@@ -7,13 +7,15 @@ using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    public class BrandingClientTests : ManagementTestBase, IAsyncLifetime
-    {
-        public async Task InitializeAsync()
-        {
-            string token = await GenerateManagementApiToken();
+    public class BrandingClientTestsFixture : TestBaseFixture {}
 
-            ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+    public class BrandingClientTests : IClassFixture<BrandingClientTestsFixture>
+    {
+        BrandingClientTestsFixture fixture;
+
+        public BrandingClientTests(BrandingClientTestsFixture fixture)
+        {
+            this.fixture = fixture;
         }
 
         [Fact]
@@ -22,7 +24,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             try
             {
                 // Update branding
-                await ApiClient.Branding.UpdateAsync(new Models.BrandingUpdateRequest
+                await fixture.ApiClient.Branding.UpdateAsync(new Models.BrandingUpdateRequest
                 {
                     LogoUrl = "https://cdn.auth0.com/website/press/resources/auth0-logo-monotone-white.svg",
                     FaviconUrl = "https://cdn.auth0.com/website/press/resources/auth0-logo-monotone-black.svg",
@@ -37,7 +39,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                     }
                 });
 
-                var updatedBranding = await ApiClient.Branding.GetAsync();
+                var updatedBranding = await fixture.ApiClient.Branding.GetAsync();
 
                 Assert.Equal("https://cdn.auth0.com/website/press/resources/auth0-logo-monotone-white.svg", updatedBranding.LogoUrl);
                 Assert.Equal("https://cdn.auth0.com/website/press/resources/auth0-logo-monotone-black.svg", updatedBranding.FaviconUrl);
@@ -49,7 +51,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             finally
             {
                 // Rollback
-                await ApiClient.Branding.UpdateAsync(new Models.BrandingUpdateRequest
+                await fixture.ApiClient.Branding.UpdateAsync(new Models.BrandingUpdateRequest
                 {
                     Colors = new Models.BrandingColors { 
                         Primary = "#0059d6",
@@ -79,20 +81,20 @@ namespace Auth0.ManagementApi.IntegrationTests
                     {%- auth0:widget -%}
                   </body></html> ";
 
-                await ApiClient.Branding.SetUniversalLoginTemplateAsync(new Models.UniversalLoginTemplateUpdateRequest
+                await fixture.ApiClient.Branding.SetUniversalLoginTemplateAsync(new Models.UniversalLoginTemplateUpdateRequest
                 {
                     Template = newTemplateBody
                 });
 
-                var updatedTemplate = await ApiClient.Branding.GetUniversalLoginTemplateAsync();
+                var updatedTemplate = await fixture.ApiClient.Branding.GetUniversalLoginTemplateAsync();
 
                 Assert.Equal(newTemplateBody, updatedTemplate.Body);
             }
             finally
             {
-                await ApiClient.Branding.DeleteUniversalLoginTemplateAsync();
+                await fixture.ApiClient.Branding.DeleteUniversalLoginTemplateAsync();
 
-                await Assert.ThrowsAsync<ErrorApiException>(() => ApiClient.Branding.GetUniversalLoginTemplateAsync());
+                await Assert.ThrowsAsync<ErrorApiException>(() => fixture.ApiClient.Branding.GetUniversalLoginTemplateAsync());
             }
         }
     }

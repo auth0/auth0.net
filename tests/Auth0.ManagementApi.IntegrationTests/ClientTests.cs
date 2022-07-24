@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Auth0.Core.Exceptions;
 using Auth0.IntegrationTests.Shared.CleanUp;
@@ -11,18 +12,21 @@ using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    public class ClientTests : ManagementTestBase, IAsyncLifetime
+    public class ClientTestsFixture : TestBaseFixture
     {
-        public async Task InitializeAsync()
+        public override async Task DisposeAsync()
         {
-            string token = await GenerateManagementApiToken();
-
-            ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+            await ManagementTestBaseUtils.CleanupAndDisposeAsync(ApiClient, new List<CleanUpType> { CleanUpType.Clients });
         }
+    }
 
-        public override Task DisposeAsync()
+    public class ClientTests : IClassFixture<ClientTestsFixture>
+    {
+        ClientTestsFixture fixture;
+
+        public ClientTests(ClientTestsFixture fixture)
         {
-            return CleanupAndDisposeAsync(CleanUpType.Clients);
+            this.fixture = fixture;
         }
 
         [Fact]
@@ -31,7 +35,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Add a new client
             var newClientRequest = new ClientCreateRequest
             {
-                Name = $"{TestingConstants.ClientPrefix} {MakeRandomName()}",
+                Name = $"{TestingConstants.ClientPrefix} {TestBaseUtils.MakeRandomName()}",
                 TokenEndpointAuthMethod = TokenEndpointAuthMethod.ClientSecretPost,
                 IsFirstParty = true,
                 ClientMetaData = new
@@ -50,7 +54,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 OrganizationUsage = OrganizationUsage.Require,
                 OrganizationRequireBehavior = OrganizationRequireBehavior.PreLoginPrompt
             };
-            var newClientResponse = await ApiClient.Clients.CreateAsync(newClientRequest);
+            var newClientResponse = await fixture.ApiClient.Clients.CreateAsync(newClientRequest);
             newClientResponse.Should().NotBeNull();
             newClientResponse.Name.Should().Be(newClientRequest.Name);
             newClientResponse.TokenEndpointAuthMethod.Should().Be(TokenEndpointAuthMethod.ClientSecretPost);
@@ -72,7 +76,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Update the client
             var updateClientRequest = new ClientUpdateRequest
             {
-                Name = $"{TestingConstants.ClientPrefix} {MakeRandomName()}",
+                Name = $"{TestingConstants.ClientPrefix} {TestBaseUtils.MakeRandomName()}",
                 TokenEndpointAuthMethod = TokenEndpointAuthMethod.ClientSecretPost,
                 ApplicationType = ClientApplicationType.Spa,
                 GrantTypes = new[] { "refresh_token", "authorization_code" },
@@ -86,7 +90,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 },
                 OrganizationRequireBehavior = OrganizationRequireBehavior.NoPrompt
             };
-            var updateClientResponse = await ApiClient.Clients.UpdateAsync(newClientResponse.ClientId, updateClientRequest);
+            var updateClientResponse = await fixture.ApiClient.Clients.UpdateAsync(newClientResponse.ClientId, updateClientRequest);
             updateClientResponse.Should().NotBeNull();
             updateClientResponse.Name.Should().Be(updateClientRequest.Name);
             updateClientResponse.TokenEndpointAuthMethod.Should().Be(TokenEndpointAuthMethod.ClientSecretPost);
@@ -101,13 +105,13 @@ namespace Auth0.ManagementApi.IntegrationTests
             updateClientResponse.OrganizationRequireBehavior.Should().Be(OrganizationRequireBehavior.NoPrompt);
 
             // Get a single client
-            var client = await ApiClient.Clients.GetAsync(newClientResponse.ClientId);
+            var client = await fixture.ApiClient.Clients.GetAsync(newClientResponse.ClientId);
             client.Should().NotBeNull();
             client.Name.Should().Be(updateClientResponse.Name);
 
             // Delete the client, and ensure we get exception when trying to fetch client again
-            await ApiClient.Clients.DeleteAsync(client.ClientId);
-            Func<Task> getFunc = async () => await ApiClient.Clients.GetAsync(client.ClientId);
+            await fixture.ApiClient.Clients.DeleteAsync(client.ClientId);
+            Func<Task> getFunc = async () => await fixture.ApiClient.Clients.GetAsync(client.ClientId);
             getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_client");
         }
 
@@ -117,7 +121,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Add a new client
             var newClientRequest = new ClientCreateRequest
             {
-                Name = $"{TestingConstants.ClientPrefix} {MakeRandomName()}",
+                Name = $"{TestingConstants.ClientPrefix} {TestBaseUtils.MakeRandomName()}",
                 TokenEndpointAuthMethod = TokenEndpointAuthMethod.ClientSecretPost,
                 IsFirstParty = true,
                 ClientMetaData = new
@@ -127,23 +131,23 @@ namespace Auth0.ManagementApi.IntegrationTests
                 },
                 ApplicationType = ClientApplicationType.Native
             };
-            var newClientResponse = await ApiClient.Clients.CreateAsync(newClientRequest);
+            var newClientResponse = await fixture.ApiClient.Clients.CreateAsync(newClientRequest);
 
             // Rotate the secret
-            var updateClientResponse = await ApiClient.Clients.RotateClientSecret(newClientResponse.ClientId);
+            var updateClientResponse = await fixture.ApiClient.Clients.RotateClientSecret(newClientResponse.ClientId);
 
             // Assert
             updateClientResponse.ClientSecret.Should().NotBe(newClientResponse.ClientSecret);
 
             // Delete the client, and ensure we get exception when trying to fetch client again
-            await ApiClient.Clients.DeleteAsync(newClientResponse.ClientId);
+            await fixture.ApiClient.Clients.DeleteAsync(newClientResponse.ClientId);
         }
 
         [Fact]
         public async Task Test_when_paging_not_specified_does_not_include_totals()
         {
             // Act
-            var clients = await ApiClient.Clients.GetAllAsync(new GetClientsRequest(), new PaginationInfo());
+            var clients = await fixture.ApiClient.Clients.GetAllAsync(new GetClientsRequest(), new PaginationInfo());
 
             // Assert
             Assert.Null(clients.Paging);
@@ -153,7 +157,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_paging_does_not_include_totals()
         {
             // Act
-            var clients = await ApiClient.Clients.GetAllAsync(new GetClientsRequest(), new PaginationInfo(0, 50, false));
+            var clients = await fixture.ApiClient.Clients.GetAllAsync(new GetClientsRequest(), new PaginationInfo(0, 50, false));
 
             // Assert
             Assert.Null(clients.Paging);
@@ -163,7 +167,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_paging_includes_totals()
         {
             // Act
-            var clients = await ApiClient.Clients.GetAllAsync(new GetClientsRequest(), new PaginationInfo(0, 50, true));
+            var clients = await fixture.ApiClient.Clients.GetAllAsync(new GetClientsRequest(), new PaginationInfo(0, 50, true));
 
             // Assert
             Assert.NotNull(clients.Paging);
@@ -173,7 +177,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_without_paging()
         {
             // Act
-            var clients = await ApiClient.Clients.GetAllAsync(new GetClientsRequest());
+            var clients = await fixture.ApiClient.Clients.GetAllAsync(new GetClientsRequest());
 
             // Assert
             Assert.Null(clients.Paging);
@@ -186,7 +190,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Add a new client
             var newClientRequest = new ClientCreateRequest
             {
-                Name = $"{TestingConstants.ClientPrefix} {MakeRandomName()}",
+                Name = $"{TestingConstants.ClientPrefix} {TestBaseUtils.MakeRandomName()}",
                 TokenEndpointAuthMethod = TokenEndpointAuthMethod.ClientSecretPost,
                 IsFirstParty = true,
                 ClientMetaData = new
@@ -196,10 +200,10 @@ namespace Auth0.ManagementApi.IntegrationTests
                 },
                 ApplicationType = ClientApplicationType.Native
             };
-            var newClientResponse = await ApiClient.Clients.CreateAsync(newClientRequest);
+            var newClientResponse = await fixture.ApiClient.Clients.CreateAsync(newClientRequest);
 
             // Rotate the secret
-            var connections = await ApiClient.Clients.GetAllAsync(new GetClientsRequest
+            var connections = await fixture.ApiClient.Clients.GetAllAsync(new GetClientsRequest
             {
                 AppType = new[] {ClientApplicationType.Native}
             }, new PaginationInfo());
@@ -208,7 +212,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             connections.Count.Should().BeGreaterThan(0);
 
             // Delete the client, and ensure we get exception when trying to fetch client again
-            await ApiClient.Clients.DeleteAsync(newClientResponse.ClientId);
+            await fixture.ApiClient.Clients.DeleteAsync(newClientResponse.ClientId);
         }
     }
 }

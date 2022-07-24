@@ -216,10 +216,10 @@ namespace Auth0.ManagementApi
                 // Use an exponential back-off with the formula:
                 // max(MIN_REQUEST_RETRY_DELAY, min(MAX_REQUEST_RETRY_DELAY, (BASE_DELAY * (2 ** attempt - 1)) + random_between(0, MAX_REQUEST_RETRY_JITTER)))
                 //
-                // ✔ Each attempt increases base delay by (100ms * (2 ** attempt - 1))
+                // ✔ Each attempt increases base delay by (250ms * (2 ** attempt - 1))
                 // ✔ Randomizes jitter, adding up to MAX_REQUEST_RETRY_JITTER (250ms)
-                // ✔ Never less than MIN_REQUEST_RETRY_DELAY (100ms)
-                // ✔ Never more than MAX_REQUEST_RETRY_DELAY (500ms)
+                // ✔ Never less than MIN_REQUEST_RETRY_DELAY (250ms)
+                // ✔ Never more than MAX_REQUEST_RETRY_DELAY (1000ms)
 
                 var wait = Convert.ToInt32(BASE_DELAY * Math.Pow(2, nrOfTries - 1));
                 wait = random.Next(wait + 1, wait + MAX_REQUEST_RETRY_JITTER);

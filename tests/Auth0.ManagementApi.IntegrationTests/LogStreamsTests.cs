@@ -1,32 +1,39 @@
 ﻿using Auth0.Core.Exceptions;
 using Auth0.ManagementApi.Models;
-using Auth0.Tests.Shared;
 using FluentAssertions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Auth0.ManagementApi.IntegrationTests.Testing;
 using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    public class LogStreamsTests : ManagementTestBase, IAsyncLifetime
+    public class LogStreamsTestsFixture : TestBaseFixture
     {
+    }
+
+    public class LogStreamsTests : IClassFixture<LogStreamsTestsFixture>, IAsyncLifetime
+    {
+        LogStreamsTestsFixture fixture;
         private readonly List<LogStream> _createdStreams = new List<LogStream>();
 
-        public async Task InitializeAsync()
+        public LogStreamsTests(LogStreamsTestsFixture fixture)
         {
-            string token = await GenerateManagementApiToken();
-            ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+            this.fixture = fixture;
         }
 
-        public override Task DisposeAsync()
+        public Task InitializeAsync()
+        {
+            return Task.CompletedTask;
+        }
+
+        public async Task DisposeAsync()
         {
             // Clean up any log stream entities on the tenant after every test executes
-            var deleteTasks = _createdStreams.Select(stream => ApiClient.LogStreams.DeleteAsync(stream.Id));
+            var deleteTasks = _createdStreams.Select(stream => fixture.ApiClient.LogStreams.DeleteAsync(stream.Id));
 
-            return Task.WhenAll(deleteTasks.ToArray()).ContinueWith(_ => base.DisposeAsync());
+            await Task.WhenAll(deleteTasks.ToArray());
         }
 
         [Fact]
@@ -48,14 +55,14 @@ namespace Auth0.ManagementApi.IntegrationTests
                 }
             };
 
-            var createdLogStream = await ApiClient.LogStreams.CreateAsync(request);
+            var createdLogStream = await fixture.ApiClient.LogStreams.CreateAsync(request);
             _createdStreams.Add(createdLogStream);
 
             createdLogStream.Should().NotBeNull();
             createdLogStream.Name.Should().Be(name);
 
             // Get an entity
-            var fetchedLogStream = await ApiClient.LogStreams.GetAsync(createdLogStream.Id);
+            var fetchedLogStream = await fixture.ApiClient.LogStreams.GetAsync(createdLogStream.Id);
             fetchedLogStream.Should().NotBeNull();
             fetchedLogStream.Name.Should().Be(name);
             fetchedLogStream.Id.Should().Be(createdLogStream.Id);
@@ -71,7 +78,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 }
             };
 
-            var updatedLogStream = await ApiClient.LogStreams.UpdateAsync(fetchedLogStream.Id, updateRequest);
+            var updatedLogStream = await fixture.ApiClient.LogStreams.UpdateAsync(fetchedLogStream.Id, updateRequest);
             updatedLogStream.Name.Should().Be(updateRequest.Name);
             updatedLogStream.Status.Should().Be(LogStreamStatus.Paused);
             updatedLogStream.Id.Should().Be(fetchedLogStream.Id);
@@ -81,8 +88,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             ((string)updatedLogStream.Sink.httpEndpoint).Should().Be(updateRequest.Sink.httpEndpoint);
 
             // Delete the entity
-            await ApiClient.LogStreams.DeleteAsync(createdLogStream.Id);
-            Func<Task> getFunc = async () => await ApiClient.LogStreams.GetAsync(createdLogStream.Id);
+            await fixture.ApiClient.LogStreams.DeleteAsync(createdLogStream.Id);
+            Func<Task> getFunc = async () => await fixture.ApiClient.LogStreams.GetAsync(createdLogStream.Id);
             getFunc.Should().Throw<ErrorApiException>().And.ApiError.Error.Should().Be("Not Found");
         }
 
@@ -119,11 +126,11 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             foreach(var request in requests)
             {
-                _createdStreams.Add(await ApiClient.LogStreams.CreateAsync(request));
+                _createdStreams.Add(await fixture.ApiClient.LogStreams.CreateAsync(request));
             }
 
             // Act
-            var streams = await ApiClient.LogStreams.GetAllAsync();
+            var streams = await fixture.ApiClient.LogStreams.GetAllAsync();
 
             // Assert
             streams.Count.Should().Be(2);

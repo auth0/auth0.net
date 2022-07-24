@@ -20,7 +20,7 @@ namespace Auth0.Tests.Shared
             IdentityModelEventSource.ShowPII = true;
         }
 
-        private static readonly IConfigurationRoot _config = new ConfigurationBuilder()
+        public static readonly IConfigurationRoot Config = new ConfigurationBuilder()
                 .AddJsonFile("client-secrets.json", true)
                 .AddEnvironmentVariables()
                 .Build();
@@ -65,7 +65,7 @@ namespace Auth0.Tests.Shared
 
         protected static string GetVariable(string variableName, bool throwIfMissing = true)
         {
-            var value = _config[variableName];
+            var value = Config[variableName];
             if (String.IsNullOrEmpty(value) && throwIfMissing)
                 throw new ArgumentOutOfRangeException($"Configuration value '{variableName}' has not been set.");
             return value;
