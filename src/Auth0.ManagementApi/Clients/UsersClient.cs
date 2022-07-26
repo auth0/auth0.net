@@ -12,7 +12,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /users endpoints.
     /// </summary>
-    public class UsersClient : BaseClient
+    public class UsersClient : BaseClient, IUsersClient
     {
         readonly JsonConverter[] usersConverters = new JsonConverter[] { new PagedListConverter<User>("users") };
         readonly JsonConverter[] logsConverters = new JsonConverter[] { new PagedListConverter<LogEntry>("logs", true) };

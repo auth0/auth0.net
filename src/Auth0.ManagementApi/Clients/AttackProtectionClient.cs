@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
-    public class AttackProtectionClient : BaseClient
+    public class AttackProtectionClient : BaseClient, IAttackProtectionClient
     {
         private const string AttackProtectionBasePath = "attack-protection";
         private const string SuspiciousIpThrottlingPath = "suspicious-ip-throttling";

@@ -12,7 +12,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /hooks endpoints.
     /// </summary>
-    public class HooksClient : BaseClient
+    public class HooksClient : BaseClient, IHooksClient
     {
         readonly JsonConverter[] hooksConverters = new JsonConverter[] { new PagedListConverter<Hook>("hooks") };
 

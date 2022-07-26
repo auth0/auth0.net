@@ -10,7 +10,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /email-templates endpoints.
     /// </summary>
-    public class EmailTemplatesClient : BaseClient
+    public class EmailTemplatesClient : BaseClient, IEmailTemplatesClient
     {
         /// <summary>
         /// Creates a new instance of <see cref="EmailTemplatesClient"/>.

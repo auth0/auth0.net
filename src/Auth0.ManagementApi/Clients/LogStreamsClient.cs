@@ -10,7 +10,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /log-streams endpoint
     /// </summary>
-    public class LogStreamsClient : BaseClient
+    public class LogStreamsClient : BaseClient, ILogStreamsClient
     {
         /// <summary>
         /// Initializes a new instance of <see cref="LogStreamsClient"/>
@@ -87,4 +87,3 @@ namespace Auth0.ManagementApi.Clients
         }
     }
 }
-

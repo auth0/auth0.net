@@ -12,7 +12,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /roles endpoints.
     /// </summary>
-    public class RolesClient : BaseClient
+    public class RolesClient : BaseClient, IRolesClient
     {
         readonly JsonConverter[] rolesConverters = new JsonConverter[] { new PagedListConverter<Role>("roles") };
         readonly JsonConverter[] assignedUsersConverters = new JsonConverter[] { new PagedListConverter<AssignedUser>("users") };

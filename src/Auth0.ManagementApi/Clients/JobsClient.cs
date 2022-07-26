@@ -11,7 +11,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /jobs endpoints.
     /// </summary>
-    public class JobsClient : BaseClient
+    public class JobsClient : BaseClient, IJobsClient
     {
         /// <summary>
         /// Initializes a new instance on <see cref="JobsClient"/>
@@ -39,7 +39,7 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Imports users to a connection from a file using a long running job. 
+        /// Imports users to a connection from a file using a long running job.
         /// </summary>
         /// <remarks>
         /// The documentation for the file format is <a href="https://auth0.com/docs/bulk-import">here</a>.
@@ -79,7 +79,7 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Exports users from a connection to a file using a long running job. 
+        /// Exports users from a connection to a file using a long running job.
         /// </summary>
         /// <remarks>
         /// The documentation for user exports can be found <a href="https://auth0.com/docs/users/bulk-user-exports">here</a>.

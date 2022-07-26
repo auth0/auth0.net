@@ -10,7 +10,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /custom-domains endpoints.
     /// </summary>
-    public class CustomDomainsClient : BaseClient
+    public class CustomDomainsClient : BaseClient, ICustomDomainsClient
     {
         /// <summary>
         /// Initializes a new instance of <see cref="CustomDomainsClient"/>.
@@ -68,7 +68,7 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Run the verification process for the custom domain. 
+        /// Run the verification process for the custom domain.
         /// </summary>
         /// <param name="id">The ID of the domain to verify.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>

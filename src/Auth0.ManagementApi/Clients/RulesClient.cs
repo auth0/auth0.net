@@ -12,7 +12,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /rules endpoints.
     /// </summary>
-    public class RulesClient : BaseClient
+    public class RulesClient : BaseClient, IRulesClient
     {
         readonly JsonConverter[] rulesConverters = new JsonConverter[] { new PagedListConverter<Rule>("rules") };
 
