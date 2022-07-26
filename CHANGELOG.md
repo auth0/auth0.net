@@ -1,5 +1,11 @@
 # Change Log
 
+## [7.16.1](https://github.com/auth0/auth0.net/tree/7.16.1) (2022-07-12)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.16.0...7.16.1)
+
+**Changed**
+- Add display_name to ConnectionCreateRequest and ConnectionUpdateRequest [\#573](https://github.com/auth0/auth0.net/pull/573) ([rinkeb](https://github.com/rinkeb))
+
 ## [release-7.16.0](https://github.com/auth0/auth0.net/tree/release-7.16.0) (2022-05-03)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.15.0...release-7.16.0)
 

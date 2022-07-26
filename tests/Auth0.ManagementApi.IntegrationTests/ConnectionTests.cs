@@ -36,10 +36,12 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Create a new connection
             var name = $"{TestingConstants.ConnectionPrefix}-{MakeRandomName()}";
+            var displayName = "displayname";
             var newConnectionRequest = new ConnectionCreateRequest
             {
                 Name = name,
                 Strategy = "auth0",
+                DisplayName = displayName,
                 Realms = new[] { name }
             };
             var newConnectionResponse = await ApiClient.Connections.CreateAsync(newConnectionRequest);
@@ -48,6 +50,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             newConnectionResponse.Strategy.Should().Be(newConnectionRequest.Strategy);
             newConnectionResponse.Realms.Should().BeEquivalentTo(newConnectionRequest.Realms);
             newConnectionResponse.IsDomainConnection.Should().BeFalse();
+            newConnectionResponse.DisplayName.Should().Be(newConnectionRequest.DisplayName);
 
             // Get all connections again
             var connectionsAfter = await ApiClient.Connections.GetAllAsync(new GetConnectionsRequest
@@ -58,6 +61,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Update a connection
             var newName = $"{TestingConstants.ConnectionPrefix}-{MakeRandomName()}";
+            var newDisplayName = "newdisplayname";
             var updateConnectionRequest = new ConnectionUpdateRequest
             {
                 Options = new
@@ -68,7 +72,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                 {
                     b = "456"
                 },
-                Realms = new[] { newName }
+                Realms = new[] { newName },
+                DisplayName = newDisplayName
             };
             var updateConnectionResponse = await ApiClient.Connections.UpdateAsync(newConnectionResponse.Id, updateConnectionRequest);
             string a = updateConnectionResponse.Options.a;
@@ -76,6 +81,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             string b = updateConnectionResponse.Metadata.b;
             b.Should().Be("456");
             updateConnectionRequest.Realms.Should().BeEquivalentTo(new[] { newName });
+            updateConnectionRequest.DisplayName.Should().BeEquivalentTo(newDisplayName);
 
             // Get a single connection
             var connection = await ApiClient.Connections.GetAsync(newConnectionResponse.Id);
@@ -100,12 +106,14 @@ namespace Auth0.ManagementApi.IntegrationTests
             var newConnectionRequest = new ConnectionCreateRequest
             {
                 Name = $"{TestingConstants.ConnectionPrefix}-{MakeRandomName()}",
-                Strategy = "github"
+                Strategy = "github",
+                DisplayName = "displayname"
             };
             var newConnectionResponse = await ApiClient.Connections.CreateAsync(newConnectionRequest);
             newConnectionResponse.Should().NotBeNull();
             newConnectionResponse.Name.Should().Be(newConnectionRequest.Name);
             newConnectionResponse.Strategy.Should().Be(newConnectionRequest.Strategy);
+            newConnectionResponse.DisplayName.Should().Be(newConnectionRequest.DisplayName);
 
             // Get all connections again
             var connectionsAfter = await ApiClient.Connections.GetAllAsync(new GetConnectionsRequest
@@ -115,6 +123,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             connectionsAfter.Count.Should().Be(connectionsBefore.Count + 1);
 
             // Update a connection
+            var newDisplayName = "newdisplayname";
             var updateConnectionRequest = new ConnectionUpdateRequest
             {
                 Options = new
@@ -124,13 +133,15 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Metadata = new
                 {
                     b = "456"
-                }
+                },
+                DisplayName = newDisplayName
             };
             var updateConnectionResponse = await ApiClient.Connections.UpdateAsync(newConnectionResponse.Id, updateConnectionRequest);
             string a = updateConnectionResponse.Options.a;
             a.Should().Be("123");
             string b = updateConnectionResponse.Metadata.b;
             b.Should().Be("456");
+            newDisplayName.Should().BeEquivalentTo(updateConnectionResponse.DisplayName);
 
             // Get a single connection
             var connection = await ApiClient.Connections.GetAsync(newConnectionResponse.Id);

@@ -10,7 +10,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /branding endpoints.
     /// </summary>
-    public class BrandingClient : BaseClient
+    public class BrandingClient : BaseClient, IBrandingClient
     {
         /// <summary>
         /// Initializes a new instance of <see cref="BrandingClient"/>.
