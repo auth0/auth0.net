@@ -1,6 +1,6 @@
 {
   "name": "auth0.net",
-  "version": "0.0.1",
+  "version": "7.16.1",
   "description": ".NET client library for Auth0",
   "scripts": {
     "release": "node ./scripts/release",
@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/auth0/auth0.net#readme",
   "devDependencies": {
-    "moment": "^2.29.2",
+    "moment": "^2.29.4",
     "xml2js": "^0.4.23"
   }
 }

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class HttpClientManagementConnection
    ">
-    <meta name="generator" content="docfx 2.59.0.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../images/logo.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -81,7 +81,7 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">HttpClientManagementConnection</span></div>
   </div>
-  <div classs="implements">
+  <div class="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a></div>
     <div><span class="xref">System.IDisposable</span></div>
@@ -226,7 +226,7 @@ by this instance.</p>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_HttpClientManagementConnection_GetAsync_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_HttpClientManagementConnection_GetAsync__1_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__Newtonsoft_Json_JsonConverter___System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},Newtonsoft.Json.JsonConverter[],System.Threading.CancellationToken)">GetAsync&lt;T&gt;(Uri, IDictionary&lt;String, String&gt;, JsonConverter[], CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_HttpClientManagementConnection_GetAsync__1_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__JsonConverter___System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},JsonConverter[],System.Threading.CancellationToken)">GetAsync&lt;T&gt;(Uri, IDictionary&lt;String, String&gt;, JsonConverter[], CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Perform a HTTP GET operation against a given <span class="xref">System.Uri</span> and return the materialized response body as <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -257,9 +257,9 @@ by this instance.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Newtonsoft.Json.JsonConverter</span>[]</td>
+        <td><span class="xref">JsonConverter</span>[]</td>
         <td><span class="parametername">converters</span></td>
-        <td><p>Optional array of <span class="xref">Newtonsoft.Json.JsonConverter</span>s used to deserialize the resulting <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
+        <td><p>Optional array of <see cref="!:JsonConverter"></see>s used to deserialize the resulting <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
 </td>
       </tr>
       <tr>
@@ -303,7 +303,7 @@ by this instance.</p>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_HttpClientManagementConnection_SendAsync_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.SendAsync*"></a>
-  <h4 id="Auth0_ManagementApi_HttpClientManagementConnection_SendAsync__1_System_Net_Http_HttpMethod_System_Uri_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IList_Auth0_ManagementApi_FileUploadParameter__Newtonsoft_Json_JsonConverter___System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.SendAsync``1(System.Net.Http.HttpMethod,System.Uri,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IList{Auth0.ManagementApi.FileUploadParameter},Newtonsoft.Json.JsonConverter[],System.Threading.CancellationToken)">SendAsync&lt;T&gt;(HttpMethod, Uri, Object, IDictionary&lt;String, String&gt;, IList&lt;FileUploadParameter&gt;, JsonConverter[], CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_HttpClientManagementConnection_SendAsync__1_System_Net_Http_HttpMethod_System_Uri_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IList_Auth0_ManagementApi_FileUploadParameter__JsonConverter___System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.SendAsync``1(System.Net.Http.HttpMethod,System.Uri,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IList{Auth0.ManagementApi.FileUploadParameter},JsonConverter[],System.Threading.CancellationToken)">SendAsync&lt;T&gt;(HttpMethod, Uri, Object, IDictionary&lt;String, String&gt;, IList&lt;FileUploadParameter&gt;, JsonConverter[], CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Perform a HTTP operation against a given <span class="xref">System.Uri</span> and return any materialized response body as <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -354,9 +354,9 @@ otherwise <span class="xref">System.Net.Http.StringContent</span> containing the
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Newtonsoft.Json.JsonConverter</span>[]</td>
+        <td><span class="xref">JsonConverter</span>[]</td>
         <td><span class="parametername">converters</span></td>
-        <td><p>Optional array of <span class="xref">Newtonsoft.Json.JsonConverter</span>s used to deserialize the resulting <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
+        <td><p>Optional array of <see cref="!:JsonConverter"></see>s used to deserialize the resulting <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
 </td>
       </tr>
       <tr>
@@ -399,7 +399,7 @@ otherwise <span class="xref">System.Net.Http.StringContent</span> containing the
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_HttpClientManagementConnection_SendAsync__1_System_Net_Http_HttpMethod_System_Uri_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IList_Auth0_ManagementApi_FileUploadParameter__Newtonsoft_Json_JsonConverter___System_Threading_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Auth0_ManagementApi_HttpClientManagementConnection_SendAsync__1_System_Net_Http_HttpMethod_System_Uri_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IList_Auth0_ManagementApi_FileUploadParameter__JsonConverter___System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p><code data-dev-comment-type="paramref" class="paramref">files</code> can only be specified if <code data-dev-comment-type="paramref" class="paramref">body</code> is a Dictionary%lt;string, object%gt;&quot;/&gt;.</p>
 </div>
   <h3 id="implements">Implements</h3>
