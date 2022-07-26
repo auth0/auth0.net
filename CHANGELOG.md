@@ -1,5 +1,11 @@
 # Change Log
 
+## [7.17.0](https://github.com/auth0/auth0.net/tree/7.17.0) (2022-07-26)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.16.1...7.17.0)
+
+**Added**
+- Add interfaces for Management Clients [\#569](https://github.com/auth0/auth0.net/pull/569) ([DerKobe](https://github.com/derkobe))
+
 ## [7.16.1](https://github.com/auth0/auth0.net/tree/7.16.1) (2022-07-12)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.16.0...7.16.1)
 

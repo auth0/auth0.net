@@ -714,7 +714,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.ActionsClient.html",
-          "hash": "9cfEpX20Zg/kBXsMnhnglnGxZlungEG1oWlvBFEYkKU="
+          "hash": "pRUHce4ooXM02x+UiGRSQLT4dMgSbE4WGsVQxKXTFwM="
         }
       },
       "is_incremental": false,
@@ -726,7 +726,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.AttackProtectionClient.html",
-          "hash": "s8HPzdlj87ifQaH0QQB/T4ldEo/gwhQU/lrdIRYwQ+g="
+          "hash": "GswUTkK/UO14t5eoJt5guDI6tV56LeEKZd4LHYIaJp4="
         }
       },
       "is_incremental": false,
@@ -750,7 +750,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.BlacklistedTokensClient.html",
-          "hash": "V75Pa/k6wKbdu0aApg9d4rwhZhLF0HKMvCTXl/YxkNM="
+          "hash": "0yjk15pDrb7t2r5OllQ4rOH5MEEPlUxZdKPv18o1b4A="
         }
       },
       "is_incremental": false,
@@ -762,7 +762,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.BrandingClient.html",
-          "hash": "qBAh0TwfBIJtxae7NODWOTtqzkv1fkf/buxpJpOH/Mw="
+          "hash": "JwFs3gdJZwFJ9ySGE5XLZf9G8oKizM2vHeHi1pI2VKs="
         }
       },
       "is_incremental": false,
@@ -774,7 +774,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.ClientGrantsClient.html",
-          "hash": "NzE2nc3DKYR+VQIhsIKBRrLQgvzZ367OZD0tSC86AJM="
+          "hash": "skLEKEl5cHEJILvAllypWkp7nrDc4ZKl/WMHRG7OjmM="
         }
       },
       "is_incremental": false,
@@ -786,7 +786,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.ClientsClient.html",
-          "hash": "zMk3Wiy5kZNzRSgfHXd8ZmoG7stOrFefGSMQU4mIbbU="
+          "hash": "UalwAFdES2MisaLWtQxnAq5+nNiSdT+rdYbUrcP7Egk="
         }
       },
       "is_incremental": false,
@@ -798,7 +798,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.ConnectionsClient.html",
-          "hash": "UipU61+Ekdyf1/AubyvNA176X+0N94mUK9S97AVBxvg="
+          "hash": "SyhGb4FmhX8JH2eKbGA6Pr5+NCsz0ec+c1j8DF78BZ0="
         }
       },
       "is_incremental": false,
@@ -810,7 +810,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.CustomDomainsClient.html",
-          "hash": "uiglvrCieuOqEiJPbq7hBUFf5RQ2Gaq4qozEc9V4DGc="
+          "hash": "0THo/1oWmYvcrikQPArrwqK9ymuheav+fiAYMJVQEMc="
         }
       },
       "is_incremental": false,
@@ -822,7 +822,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.DeviceCredentialsClient.html",
-          "hash": "IJQV8eKqOLw8WURhTaAyKxe9oejjJQP4o8eEpvI49co="
+          "hash": "KAG5lxauIObAYvE8Q/6eLcfQJOZCbt6Ut9hvWLatY3w="
         }
       },
       "is_incremental": false,
@@ -834,7 +834,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.EmailProviderClient.html",
-          "hash": "T+Nes1OS7bJmCSqD39xIiKch1RqmtJh/kuO6rFeU60s="
+          "hash": "gcDrHkolS50nndI1buIdrFg1FoDscKT+cAlE0Z9aQNw="
         }
       },
       "is_incremental": false,
@@ -846,7 +846,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.EmailTemplatesClient.html",
-          "hash": "9fXw3lQj9HlAIHKmqd/gGYokgVFPPLCIVmgnflaiY60="
+          "hash": "SCpVKiQmc0Uy8Xijw++klgItF037ogoK06dr+G71umA="
         }
       },
       "is_incremental": false,
@@ -858,7 +858,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.GuardianClient.html",
-          "hash": "Lox7e0JlumpQIPBJwaAhexUcnFG8HOUj5WjuRh0y+jw="
+          "hash": "EO48pWUDwGSVW44JF/+3hpxBI1jRIw9Kz0ZJze+m5jc="
         }
       },
       "is_incremental": false,
@@ -870,7 +870,343 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.HooksClient.html",
-          "hash": "jjjn/I6LnstAeqACykHp4YA4nurgXlN1GT+1UxTpe+g="
+          "hash": "9kvqEQFQiEYP6p121sMhBPCEZqAGcciQ67ofpVhf210="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IActionsClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IActionsClient.html",
+          "hash": "clvpXh0s+xQZ11/mM7LusROvSNAjqp9Wcq8YONqyeWA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IAttackProtectionClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IAttackProtectionClient.html",
+          "hash": "Tdt4GR+oefMFhHrlnn8aW/kJuk0WoICGMRwjTyyGgGE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IBlacklistedTokensClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IBlacklistedTokensClient.html",
+          "hash": "w9udnoRXHP7oIc/7ANej0AzbemibKku4DE1DFgnJnKA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IBrandingClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IBrandingClient.html",
+          "hash": "J6+us9NL7D5ZpEFbUZvSeE/A2g5pyUjU8ypB9dCpB6Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IClientGrantsClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IClientGrantsClient.html",
+          "hash": "NR5UkQgXA2Z0q2kTch1MUIsFZnJj9tC2ARXdV81Zcn8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IClientsClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IClientsClient.html",
+          "hash": "vKLCJSpy7AiGVk7y1HJSTUOJmkyKTOZuRMEs5LD74q8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IConnectionsClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IConnectionsClient.html",
+          "hash": "4wfUEZ5U/WwF4MDGm1Oh62HbmZXKbiJyp9YBbeVcraY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.ICustomDomainsClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.ICustomDomainsClient.html",
+          "hash": "V6S5l1eo3WIXhCyNCS5J8Y6qMM11FRaTtYhefj20E3A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IDeviceCredentialsClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IDeviceCredentialsClient.html",
+          "hash": "Sf+BbgipqjfmeNzo2MVtZP4jcJxnXStfHfyfKnY8LoA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IEmailProviderClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IEmailProviderClient.html",
+          "hash": "7cd7LoeEbAecST26MOswD1igAkY+jlX+1qBQ1BjyedU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IEmailTemplatesClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IEmailTemplatesClient.html",
+          "hash": "ezNYhdmJ8g7lw1m1WUoaskTjxKv8NLBK1I1MAlqJNtE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IGuardianClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IGuardianClient.html",
+          "hash": "ec8zmzz2+N14BHlaywuAKx6ybvZeQk8j3xTsTBd857s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IHooksClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IHooksClient.html",
+          "hash": "ZU2AvQmRNhSEfwZlncYWJo6elWushPo8jvtmtG43gFs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IJobsClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IJobsClient.html",
+          "hash": "zE8XS19tEhgLg0tUpCDX2IOxo4jJPubmHdgCEEXEMlo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IKeysClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IKeysClient.html",
+          "hash": "KPjm1JNcgCfkn0Wx6Zs/JDC1xEfqui05jXtpXD6aK0o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.ILogStreamsClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.ILogStreamsClient.html",
+          "hash": "n4RG9plfhwsZk8s24PRhdVhcYTXIQ4D+XeRGenfWUqA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.ILogsClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.ILogsClient.html",
+          "hash": "xpt1bEDsofkgEE+v9m5DbF1pP/jf+Wn52QRrwGffdEQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IOrganizationsClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IOrganizationsClient.html",
+          "hash": "6hxxCbpItJFrqCpXq+Eh12XwMthcmbSF3oszYCxoMWM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IPromptsClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IPromptsClient.html",
+          "hash": "e4IAqStAM/X91tQAm4VSeXqciKAOoKWMcQzPbr8tflA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IResourceServersClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IResourceServersClient.html",
+          "hash": "h18f6ThodhQQMq2FdcM2fVb5SteJuGKRP1M7WaklIYc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IRolesClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IRolesClient.html",
+          "hash": "QHMVz5+zhGx7uHkyFfmCY41sSfjNOuN0AtgW8cN0BaI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IRulesClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IRulesClient.html",
+          "hash": "yGqP6B+6Xn+osnYM2EIt73o/hKG8RnIfI9eBDGIFTLY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IRulesConfigClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IRulesConfigClient.html",
+          "hash": "dYAaGDTiTTtTAGNwIOg45UrmalAQ8wUqYberrSKN4w0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IStatsClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IStatsClient.html",
+          "hash": "uYTaRFJV2+PxkAa66omdI2KtFh3C9xexACTKAHmU924="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.ITenantSettingsClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.ITenantSettingsClient.html",
+          "hash": "cey/5/YT1gJOoS5UVUB+30X9VoqL2v0rSOxALIhQxm4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.ITicketsClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.ITicketsClient.html",
+          "hash": "N/oIGUpeuOBGTKMAOiDrEsut4q9qX3xRr8rkaEeuHnc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IUserBlocksClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IUserBlocksClient.html",
+          "hash": "CB2DP3QBFelAfQc2pNmNP3lbqMznbGAt1uZW08X+WNo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IUsersClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IUsersClient.html",
+          "hash": "iYXqphaDxL9jkUSZT8bgHTbjXdwvEHMbyTADnvWvAiA="
         }
       },
       "is_incremental": false,
@@ -882,7 +1218,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.JobsClient.html",
-          "hash": "R9BP/vkvQeggw32LDiYT8THo6dot+ZFr/X/emLjRV/k="
+          "hash": "XDcmzh9Z11SJFBmQQlv8jGwY3q1j2fB0Y2Q/Ja9xRbc="
         }
       },
       "is_incremental": false,
@@ -894,7 +1230,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.KeysClient.html",
-          "hash": "OZLyarbvdJjy1Xu/WqbMi+gdbQQzOSWeu6qfVQSk6xI="
+          "hash": "z8bnWJ9MiECN727FtWP+bKQePcl2PVPo2omXkkjxXN4="
         }
       },
       "is_incremental": false,
@@ -906,7 +1242,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.LogStreamsClient.html",
-          "hash": "eIJiZTdkFWqzl6S0Ttw0NSEgWBlIxxqxjUcz+dBES5w="
+          "hash": "1T/sSOWyUFW0y6h4ca0osp/kGv0FmmsXmB2tm/MAuoQ="
         }
       },
       "is_incremental": false,
@@ -918,7 +1254,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.LogsClient.html",
-          "hash": "rL2VoMywOocIBnwNTvTwJKLK49HKyCS0xNSNScmu+O4="
+          "hash": "2clUNVHnSBu84CqDz+B1HFY6lMD4KSO67Or+Ole8gl8="
         }
       },
       "is_incremental": false,
@@ -930,7 +1266,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.OrganizationsClient.html",
-          "hash": "GIdjAIdCNyyudV6uYaihJteh1rQwelaXTBfCghTEsWM="
+          "hash": "csb2BdLiq+/f6vt5jRw+nT4C6Gn3r7MyLE2wSUR3zlA="
         }
       },
       "is_incremental": false,
@@ -942,7 +1278,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.PromptsClient.html",
-          "hash": "dNICcaH1LJX4+ZiXusz0uZIS6dO/NDR/4b5m++bI/pI="
+          "hash": "1zrN8Kg3t6Y3Wx2HeRz2cXHchWLy/kZHerokxcJK0XA="
         }
       },
       "is_incremental": false,
@@ -954,7 +1290,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.ResourceServersClient.html",
-          "hash": "lDThIhD15GjBes8pOwfIl8iS2sMSkTK8ZbCM88MYbZc="
+          "hash": "Tsp5qHG7ZruAek7hpu+9+o9JSAW4tJRD+awfd1kEdZU="
         }
       },
       "is_incremental": false,
@@ -966,7 +1302,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.RolesClient.html",
-          "hash": "NWd3Ue+HPiUrJ3qh93bVYemC39Zbx0WJx1THf119JnA="
+          "hash": "EZWHueElVi1ZGvmdGkGlrr0/vnXG8UFM4SgNkpJLENE="
         }
       },
       "is_incremental": false,
@@ -978,7 +1314,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.RulesClient.html",
-          "hash": "DyAszKsLIi6Uus9So0H/nOkeelChwzvX8dLRIHXXNCc="
+          "hash": "6HAEwZojpErIYelWo5CnQ5zwQeu3tKC5fH9VxR9U9aE="
         }
       },
       "is_incremental": false,
@@ -990,7 +1326,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.RulesConfigClient.html",
-          "hash": "S079ScxLR1l/w+63mhM1irhNynkdNPnSwGVEZEHo1Ik="
+          "hash": "l9GiUh5+NT6KtbnO7DU4iy/7rBxmD/Lk1WN0rO+5lJU="
         }
       },
       "is_incremental": false,
@@ -1002,7 +1338,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.StatsClient.html",
-          "hash": "OZ/E7iZM0lr3+mANk+CSfV8GjwgdVCJq6tV5m34xO04="
+          "hash": "BXy1j6teXVAtex7sIbvwr5z/F+g3oBtX9e5DY9PiR1M="
         }
       },
       "is_incremental": false,
@@ -1014,7 +1350,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.TenantSettingsClient.html",
-          "hash": "tZT2/mog2yarbOrtqWwj2UaA28SWhF86H/b8bTNZx4Y="
+          "hash": "Hdp4Nxqgrhq3P4NhiAcWifvf8agPtqB8Q9/bNBl2+/4="
         }
       },
       "is_incremental": false,
@@ -1026,7 +1362,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.TicketsClient.html",
-          "hash": "IGAdww8JLBL3UgT9tQnYm9j2sw8xvK52l4M9kKOjh7U="
+          "hash": "uK72KJQzJRf+foOjF3lauZVjnAVCKbqoFOEc7NlcZzM="
         }
       },
       "is_incremental": false,
@@ -1038,7 +1374,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.UserBlocksClient.html",
-          "hash": "Se12J6P3nqIDrW3dEsjaooG7lbETceMax7ZQ3oGN5Ck="
+          "hash": "tTl8V9ts8i3ywHwcb0sh+Vosh6G2134w4muTYtAl0Vo="
         }
       },
       "is_incremental": false,
@@ -1050,7 +1386,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.UsersClient.html",
-          "hash": "v46+T0NxM7O4JHj9IWdpxf/XbWgG5ZMX7hiooB4v5V0="
+          "hash": "RQjL49I6+DWzMPUyWP5VtCq0nr3RmISCSCXEX8nU/JQ="
         }
       },
       "is_incremental": false,
@@ -1062,7 +1398,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.html",
-          "hash": "Mto581Poah06c8s9WkcMJz8SrSLcn2kB4wvdxLkB2dM="
+          "hash": "HJlzoyLL/sTfgHfLe/JfSr8CpRym6UuoeTHnUnaXmc8="
         }
       },
       "is_incremental": false,
@@ -1106,6 +1442,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.IManagementApiClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.IManagementApiClient.html",
+          "hash": "iAVgs3v0ryyBZaZi4coZ4+OoJ1w4MUUCi0jWBsh0UgA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Auth0.ManagementApi.IManagementConnection.yml",
       "output": {
         ".html": {
@@ -1122,7 +1470,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.ManagementApiClient.html",
-          "hash": "VUF2lgUNfA9r5+A0ZlygXHlQD/IloXw+catN+PgRmtk="
+          "hash": "PtZHxUoxaqH+vWcb5EFL7JpgQptlaO9pijHJ2MAxDfI="
         }
       },
       "is_incremental": false,
@@ -1734,7 +2082,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.Connection.html",
-          "hash": "gd5z/0kqb+ZhgR/5Ol20ZmHs+Mg5oa3oxtG3R2ZTT7o="
+          "hash": "ezLCGWY6fwvuCv4aTOgPDhQy/Qf3qeacog1Dpj6eNYM="
         }
       },
       "is_incremental": false,
@@ -3918,7 +4266,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.html",
-          "hash": "K66V2ps9qAJomvYGwJ6qWzLwC9H4AoBiMOMl4pjZPxU="
+          "hash": "Vt7dWZsj8Y9MAHNede+yW+/gfXMN1Q0rYVn3AkLV7NM="
         }
       },
       "is_incremental": false,
@@ -3930,7 +4278,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "d/WrMjjix5HOEa78fVFyNURZlEXjFZEOkib9sP9SSTc="
+          "hash": "LIVQVcU9DTfK6ZACpeVl6Z+smUYS2IyEJYdem5NtXKY="
         }
       },
       "is_incremental": false,
@@ -3967,8 +4315,8 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 319,
-          "skipped_file_count": 14
+          "total_file_count": 348,
+          "skipped_file_count": 12
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
