@@ -12,7 +12,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /connections endpoints.
     /// </summary>
-    public class ConnectionsClient : BaseClient
+    public class ConnectionsClient : BaseClient, IConnectionsClient
     {
         readonly JsonConverter[] converters = new JsonConverter[] { new PagedListConverter<Connection>("connections") };
 

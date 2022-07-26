@@ -9,7 +9,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /stats endpoints.
     /// </summary>
-    public class StatsClient : BaseClient
+    public class StatsClient : BaseClient, IStatsClient
     {
         /// <summary>
         /// Initializes a new instance of <see cref="StatsClient"/>.

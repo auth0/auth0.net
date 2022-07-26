@@ -14,7 +14,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /actions endpoints.
     /// </summary>
-    public class ActionsClient : BaseClient
+    public class ActionsClient : BaseClient, IActionsClient
     {
         private const string ActionsBasePath = "actions";
         private const string ActionsPath = "actions";
@@ -75,7 +75,7 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Create an action. 
+        /// Create an action.
         /// </summary>
         /// <remarks>
         /// Once an action is created, it must be deployed, and then bound to a trigger before it will be executed as part of a flow.

@@ -10,7 +10,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /tenants/settings endpoints.
     /// </summary>
-    public class TenantSettingsClient : BaseClient
+    public class TenantSettingsClient : BaseClient, ITenantSettingsClient
     {
         /// <summary>
         /// Initializes a new instance of <see cref="TenantSettingsClient"/>.

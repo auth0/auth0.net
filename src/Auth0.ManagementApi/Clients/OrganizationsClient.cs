@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Auth0.ManagementApi.Clients
 {
-    public class OrganizationsClient : BaseClient
+    public class OrganizationsClient : BaseClient, IOrganizationsClient
     {
         readonly JsonConverter[] converters = new JsonConverter[] { new PagedListConverter<Organization>("organizations") };
         readonly JsonConverter[] checkpointConverters = new JsonConverter[] { new CheckpointPagedListConverter<Organization>("organizations") };

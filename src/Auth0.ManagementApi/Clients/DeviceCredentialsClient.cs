@@ -12,7 +12,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /device-credentials endpoints.
     /// </summary>
-    public class DeviceCredentialsClient : BaseClient
+    public class DeviceCredentialsClient : BaseClient, IDeviceCredentialsClient
     {
 
         readonly JsonConverter[] converters = new JsonConverter[] { new PagedListConverter<DeviceCredential>("device_credentials") };

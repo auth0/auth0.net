@@ -10,7 +10,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /prompts endpoints.
     /// </summary>
-    public class PromptsClient : BaseClient
+    public class PromptsClient : BaseClient, IPromptsClient
     {
         private const string PromptsBasePath = "prompts";
         /// <summary>

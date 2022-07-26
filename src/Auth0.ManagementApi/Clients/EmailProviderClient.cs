@@ -10,7 +10,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Contains methods to access the /emails/provider endpoints.
     /// </summary>
-    public class EmailProviderClient : BaseClient
+    public class EmailProviderClient : BaseClient, IEmailProviderClient
     {
         /// <summary>
         /// Initializes a new instance of <see cref="EmailProviderClient"/>.
