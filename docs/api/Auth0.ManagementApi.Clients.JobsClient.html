@@ -82,6 +82,10 @@
     <div class="level1"><a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html">BaseClient</a></div>
     <div class="level2"><span class="xref">JobsClient</span></div>
   </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Auth0.ManagementApi.Clients.IJobsClient.html">IJobsClient</a></div>
+  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
@@ -125,7 +129,7 @@
   <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Clients_JobsClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class JobsClient : BaseClient</code></pre>
+    <pre><code class="lang-csharp hljs">public class JobsClient : BaseClient, IJobsClient</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -172,7 +176,7 @@
   </h3>
   <a id="Auth0_ManagementApi_Clients_JobsClient_ExportUsersAsync_" data-uid="Auth0.ManagementApi.Clients.JobsClient.ExportUsersAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_JobsClient_ExportUsersAsync_Auth0_ManagementApi_Models_UsersExportsJobRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.JobsClient.ExportUsersAsync(Auth0.ManagementApi.Models.UsersExportsJobRequest,System.Threading.CancellationToken)">ExportUsersAsync(UsersExportsJobRequest, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Exports users from a connection to a file using a long running job. </p>
+  <div class="markdown level1 summary"><p>Exports users from a connection to a file using a long running job.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -276,7 +280,7 @@
 </div>
   <a id="Auth0_ManagementApi_Clients_JobsClient_ImportUsersAsync_" data-uid="Auth0.ManagementApi.Clients.JobsClient.ImportUsersAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_JobsClient_ImportUsersAsync_System_String_System_String_System_IO_Stream_System_Nullable_System_Boolean__System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.JobsClient.ImportUsersAsync(System.String,System.String,System.IO.Stream,System.Nullable{System.Boolean},System.String,System.Nullable{System.Boolean},System.Threading.CancellationToken)">ImportUsersAsync(String, String, Stream, Nullable&lt;Boolean&gt;, String, Nullable&lt;Boolean&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Imports users to a connection from a file using a long running job. </p>
+  <div class="markdown level1 summary"><p>Imports users to a connection from a file using a long running job.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -405,6 +409,10 @@
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Auth0.ManagementApi.Clients.IJobsClient.html">IJobsClient</a>
+  </div>
 </article>
           </div>
           
