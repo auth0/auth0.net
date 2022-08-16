@@ -10,7 +10,7 @@ namespace Auth0.ManagementApi
     /// <summary>
     /// Represents the Management API client.
     /// </summary>
-    public class ManagementApiClient : IDisposable, IManagementApiClient
+    public class ManagementApiClient : IManagementApiClient
     {
         private const string AuthorizationHeaderKey = "Authorization";
 

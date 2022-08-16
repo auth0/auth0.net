@@ -1,8 +1,9 @@
 namespace Auth0.ManagementApi
 {
   using Clients;
+  using System;
 
-  public interface IManagementApiClient
+  public interface IManagementApiClient : IDisposable
   {
     /// <summary>
     /// Contains all the methods to call the /actions endpoints.
