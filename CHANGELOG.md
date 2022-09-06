@@ -1,5 +1,11 @@
 # Change Log
 
+## [7.17.1](https://github.com/auth0/auth0.net/tree/7.17.1) (2022-08-16)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.17.0...7.17.1)
+
+**Fixed**
+- Moving IDisposable on to IManagementApiClient [\#581](https://github.com/auth0/auth0.net/pull/581) ([kevbite](https://github.com/kevbite))
+
 ## [7.17.0](https://github.com/auth0/auth0.net/tree/7.17.0) (2022-07-26)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.16.1...7.17.0)
 
