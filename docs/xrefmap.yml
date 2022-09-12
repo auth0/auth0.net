@@ -16410,6 +16410,19 @@ references:
   commentId: T:Auth0.ManagementApi.Models.OrganizationCreateRequest
   fullName: Auth0.ManagementApi.Models.OrganizationCreateRequest
   nameWithType: OrganizationCreateRequest
+- uid: Auth0.ManagementApi.Models.OrganizationCreateRequest.EnabledConnections
+  name: EnabledConnections
+  href: api/Auth0.ManagementApi.Models.OrganizationCreateRequest.html#Auth0_ManagementApi_Models_OrganizationCreateRequest_EnabledConnections
+  commentId: P:Auth0.ManagementApi.Models.OrganizationCreateRequest.EnabledConnections
+  fullName: Auth0.ManagementApi.Models.OrganizationCreateRequest.EnabledConnections
+  nameWithType: OrganizationCreateRequest.EnabledConnections
+- uid: Auth0.ManagementApi.Models.OrganizationCreateRequest.EnabledConnections*
+  name: EnabledConnections
+  href: api/Auth0.ManagementApi.Models.OrganizationCreateRequest.html#Auth0_ManagementApi_Models_OrganizationCreateRequest_EnabledConnections_
+  commentId: Overload:Auth0.ManagementApi.Models.OrganizationCreateRequest.EnabledConnections
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.OrganizationCreateRequest.EnabledConnections
+  nameWithType: OrganizationCreateRequest.EnabledConnections
 - uid: Auth0.ManagementApi.Models.OrganizationDeleteMemberRolesRequest
   name: OrganizationDeleteMemberRolesRequest
   href: api/Auth0.ManagementApi.Models.OrganizationDeleteMemberRolesRequest.html
