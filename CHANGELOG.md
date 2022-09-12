@@ -6,6 +6,9 @@
 **Fixed**
 - Moving IDisposable on to IManagementApiClient [\#581](https://github.com/auth0/auth0.net/pull/581) ([kevbite](https://github.com/kevbite))
 
+**Changes**
+- Support EnabledConnections in OrganizationCreateRequest [\#585](https://github.com/auth0/auth0.net/pull/585) ([ssurowiec](https://github.com/ssurowiec))
+
 ## [7.17.0](https://github.com/auth0/auth0.net/tree/7.17.0) (2022-07-26)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.16.1...7.17.0)
 
