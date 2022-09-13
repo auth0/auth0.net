@@ -1,6 +1,12 @@
 # Change Log
 
-## [7.17.1](https://github.com/auth0/auth0.net/tree/7.17.1) (2022-08-16)
+## [7.17.2](https://github.com/auth0/auth0.net/tree/7.17.2) (2022-09-12)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.17.1...7.17.2)
+
+**Changed**
+- Support EnabledConnections in OrganizationCreateRequest [\#585](https://github.com/auth0/auth0.net/pull/585) ([ssurowiec](https://github.com/ssurowiec))
+
+## [7.17.1](https://github.com/auth0/auth0.net/tree/7.17.1) (2022-09-12)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.17.0...7.17.1)
 
 **Fixed**
