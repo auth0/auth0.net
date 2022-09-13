@@ -1,6 +1,6 @@
 # Change Log
 
-## [7.17.2](https://github.com/auth0/auth0.net/tree/7.17.2) (2022-09-12)
+## [7.17.2](https://github.com/auth0/auth0.net/tree/7.17.2) (2022-09-13)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.17.1...7.17.2)
 
 **Changed**
