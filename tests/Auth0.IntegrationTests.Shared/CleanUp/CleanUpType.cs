@@ -8,6 +8,7 @@
         Hooks,
         Organizations,
         ResourceServers,
-        Users
+        Users,
+        Rules
     }
 }

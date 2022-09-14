@@ -3,7 +3,6 @@ using System.Threading.Tasks;
 using Auth0.ManagementApi.Models;
 using FluentAssertions;
 using Xunit;
-using Auth0.Tests.Shared;
 using System.Collections.Generic;
 using Auth0.IntegrationTests.Shared.CleanUp;
 using Auth0.ManagementApi.IntegrationTests.Testing;

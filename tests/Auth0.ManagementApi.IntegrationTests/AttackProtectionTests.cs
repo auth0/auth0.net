@@ -6,19 +6,21 @@ using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    public class AttackProtectionTests : ManagementTestBase, IAsyncLifetime
-    {
-        public async Task InitializeAsync()
-        {
-            string token = await GenerateManagementApiToken();
+    public class AttackProtectionTestsFixture : TestBaseFixture {}
 
-            ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+    public class AttackProtectionTests : IClassFixture<AttackProtectionTestsFixture>
+    {
+        AttackProtectionTestsFixture fixture;
+
+        public AttackProtectionTests(AttackProtectionTestsFixture fixture)
+        {
+            this.fixture = fixture;
         }
 
         [Fact]
         public async Task Test_suspicious_ip_throttling_crud_sequence()
         {
-            var before = await ApiClient.AttackProtection.GetSuspiciousIpThrottlingAsync();
+            var before = await fixture.ApiClient.AttackProtection.GetSuspiciousIpThrottlingAsync();
 
             try
             {
@@ -42,9 +44,9 @@ namespace Auth0.ManagementApi.IntegrationTests
                     }
                 };
 
-                var updated = await ApiClient.AttackProtection.UpdateSuspiciousIpThrottlingAsync(toUpdate);
+                var updated = await fixture.ApiClient.AttackProtection.UpdateSuspiciousIpThrottlingAsync(toUpdate);
 
-                var after = await ApiClient.AttackProtection.GetSuspiciousIpThrottlingAsync();
+                var after = await fixture.ApiClient.AttackProtection.GetSuspiciousIpThrottlingAsync();
 
 
                 updated.Should().BeEquivalentTo(toUpdate);
@@ -52,14 +54,14 @@ namespace Auth0.ManagementApi.IntegrationTests
             }
             finally
             {
-                await ApiClient.AttackProtection.UpdateSuspiciousIpThrottlingAsync(before);
+                await fixture.ApiClient.AttackProtection.UpdateSuspiciousIpThrottlingAsync(before);
             }
         }
 
         [Fact]
         public async Task Test_breached_password_detection_crud_sequence()
         {
-            var before = await ApiClient.AttackProtection.GetBreachedPasswordDetectionAsync();
+            var before = await fixture.ApiClient.AttackProtection.GetBreachedPasswordDetectionAsync();
 
             try
             {
@@ -71,9 +73,9 @@ namespace Auth0.ManagementApi.IntegrationTests
                     Enabled = true,
                 };
 
-                var updated = await ApiClient.AttackProtection.UpdateBreachedPasswordDetectionAsync(toUpdate);
+                var updated = await fixture.ApiClient.AttackProtection.UpdateBreachedPasswordDetectionAsync(toUpdate);
 
-                var after = await ApiClient.AttackProtection.GetBreachedPasswordDetectionAsync();
+                var after = await fixture.ApiClient.AttackProtection.GetBreachedPasswordDetectionAsync();
 
 
                 updated.Should().BeEquivalentTo(toUpdate);
@@ -81,14 +83,14 @@ namespace Auth0.ManagementApi.IntegrationTests
             }
             finally
             {
-                await ApiClient.AttackProtection.UpdateBreachedPasswordDetectionAsync(before);
+                await fixture.ApiClient.AttackProtection.UpdateBreachedPasswordDetectionAsync(before);
             }
         }
 
         [Fact]
         public async Task Test_brute_force_protection_crud_sequence()
         {
-            var before = await ApiClient.AttackProtection.GetBruteForceProtectionAsync();
+            var before = await fixture.ApiClient.AttackProtection.GetBruteForceProtectionAsync();
 
             try
             {
@@ -101,9 +103,9 @@ namespace Auth0.ManagementApi.IntegrationTests
                     MaxAttempts = 11,
                 };
 
-                var updated = await ApiClient.AttackProtection.UpdateBruteForceProtectionAsync(toUpdate);
+                var updated = await fixture.ApiClient.AttackProtection.UpdateBruteForceProtectionAsync(toUpdate);
 
-                var after = await ApiClient.AttackProtection.GetBruteForceProtectionAsync();
+                var after = await fixture.ApiClient.AttackProtection.GetBruteForceProtectionAsync();
 
 
                 updated.Should().BeEquivalentTo(toUpdate);
@@ -111,7 +113,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             }
             finally
             {
-                await ApiClient.AttackProtection.UpdateBruteForceProtectionAsync(before);
+                await fixture.ApiClient.AttackProtection.UpdateBruteForceProtectionAsync(before);
             }
         }
     }

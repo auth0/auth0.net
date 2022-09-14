@@ -97,7 +97,7 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="id">The id of the action to update.</param>
         /// <param name="request">Specifies criteria to use when updating an action.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>The <see cref="Client"/> that was updated.</returns>
+        /// <returns>The <see cref="Action"/> that was updated.</returns>
         public Task<Action> UpdateAsync(string id, UpdateActionRequest request, CancellationToken cancellationToken = default)
         {
             return Connection.SendAsync<Action>(new HttpMethod("PATCH"), BuildUri($"{ActionsBasePath}/{ActionsPath}/{EncodePath(id)}"), request, DefaultHeaders, cancellationToken: cancellationToken);

@@ -1,23 +1,37 @@
-﻿using Auth0.IntegrationTests.Shared.CleanUp;
-using Auth0.ManagementApi.IntegrationTests.Testing;
-using Auth0.ManagementApi.Models;
+﻿using Auth0.ManagementApi.Models;
+using Auth0.Tests.Shared;
 using FluentAssertions;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
-
 namespace Auth0.ManagementApi.IntegrationTests
 {
+    public class RulesConfigTestsFixture : TestBaseFixture
+    {
+        public readonly List<LogStream> TestCreatedStreams = new List<LogStream>();
+
+        public override async Task DisposeAsync()
+        {
+            // Clean up any log stream entities on the tenant after every test executes
+            var deleteTasks = TestCreatedStreams.Select(stream => ApiClient.LogStreams.DeleteAsync(stream.Id));
+
+            await Task.WhenAll(deleteTasks.ToArray());
+            await base.DisposeAsync();
+        }
+    }
+
     /// <summary>
     /// Tests functionality of the <see cref="RulesConfigClient"/> in the <see cref="ManagementApiClient"/>.
     /// </summary>
-    public class RulesConfigTests : ManagementTestBase, IAsyncLifetime
+    public class RulesConfigTests : IClassFixture<RulesConfigTestsFixture>
     {
-        public async Task InitializeAsync()
-        {
-            string token = await GenerateManagementApiToken();
+        RulesConfigTestsFixture fixture;
 
-            ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+        public RulesConfigTests(RulesConfigTestsFixture fixture)
+        {
+            this.fixture = fixture;
         }
 
         /// <summary>
@@ -32,16 +46,16 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Add a new rule
             var newRuleConfigRequest = new RulesConfigCreateOrUpdateRequest
             {
-                Key = MakeRandomName(),
+                Key = TestBaseUtils.MakeRandomName(),
                 Value = "i am iron man!"
             };
-            var newRuleConfigResponse = await ApiClient.RulesConfig.CreateOrUpdateAsync(newRuleConfigRequest);
+            var newRuleConfigResponse = await fixture.ApiClient.RulesConfig.CreateOrUpdateAsync(newRuleConfigRequest);
             newRuleConfigResponse.Should().NotBeNull();
             newRuleConfigResponse.Key.Should().Be(newRuleConfigRequest.Key);
             newRuleConfigResponse.Value.Should().NotBeNullOrEmpty();
 
             // delete the rule
-            await ApiClient.RulesConfig.DeleteAsync(newRuleConfigRequest.Key);
+            await fixture.ApiClient.RulesConfig.DeleteAsync(newRuleConfigRequest.Key);
         }
 
         /// <summary>
@@ -55,10 +69,10 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Add a new rule
             var newRuleConfigRequest = new RulesConfigCreateOrUpdateRequest
             {
-                Key = MakeRandomName(),
+                Key = TestBaseUtils.MakeRandomName(),
                 Value = "i am iron man!"
             };
-            var newRuleConfigResponse = await ApiClient.RulesConfig.CreateOrUpdateAsync(newRuleConfigRequest);
+            var newRuleConfigResponse = await fixture.ApiClient.RulesConfig.CreateOrUpdateAsync(newRuleConfigRequest);
             newRuleConfigResponse.Should().NotBeNull();
             newRuleConfigResponse.Key.Should().Be(newRuleConfigRequest.Key);
             newRuleConfigResponse.Value.Should().NotBeNullOrEmpty();
@@ -69,14 +83,14 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Key = newRuleConfigResponse.Key,
                 Value = "avengers assemble!"
             };
-            var updateRuleConfigResponse = await ApiClient.RulesConfig.CreateOrUpdateAsync(updateRuleConfigRequest);
+            var updateRuleConfigResponse = await fixture.ApiClient.RulesConfig.CreateOrUpdateAsync(updateRuleConfigRequest);
             updateRuleConfigResponse.Should().NotBeNull();
             updateRuleConfigResponse.Key.Should().Be(newRuleConfigRequest.Key);
             updateRuleConfigResponse.Value.Should().NotBeNullOrEmpty();
             updateRuleConfigResponse.Value.Should().NotBe(newRuleConfigRequest.Value);
 
             // delete the rule
-            await ApiClient.RulesConfig.DeleteAsync(newRuleConfigRequest.Key);
+            await fixture.ApiClient.RulesConfig.DeleteAsync(newRuleConfigRequest.Key);
 
         }
     }
