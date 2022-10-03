@@ -714,7 +714,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.ActionsClient.html",
-          "hash": "pRUHce4ooXM02x+UiGRSQLT4dMgSbE4WGsVQxKXTFwM="
+          "hash": "MuHTXmI2qxhHdzc/vapagmAqZhkLtuqMa+9J5Wgcpn8="
         }
       },
       "is_incremental": false,
@@ -882,7 +882,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.IActionsClient.html",
-          "hash": "clvpXh0s+xQZ11/mM7LusROvSNAjqp9Wcq8YONqyeWA="
+          "hash": "un3Ijzih9emzyCdSwkbtDKoVLS3HMtutZp/F6A26PJw="
         }
       },
       "is_incremental": false,
@@ -1794,7 +1794,31 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.html",
-          "hash": "5GBEsqTUwHoNBryttPL83bXUp8bOYWxv1eN3BxNMrIs="
+          "hash": "OkwNINI9I0JZAz8eVAabolv2IyjHCyd/1DP0HajdhRs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.StageEntry.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.StageEntry.html",
+          "hash": "pREqU1/KmKK8pcwbNg2AYMKwNB5xgodAbpmAsu6DYaQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.html",
+          "hash": "yiiI4uqZZfX11Us5oxoTF96otRXLuR/IZBUtWHdJ6AY="
         }
       },
       "is_incremental": false,
@@ -1854,7 +1878,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.AttackProtection.html",
-          "hash": "FxHalwk3NpTTbyGJMAPyO/vNV8YTlFrnbI0tXijoCS0="
+          "hash": "JJ8q8JwzcUuv9+vXsPjvTkBBavo1/J7H1Sy/R8vNBCw="
         }
       },
       "is_incremental": false,
@@ -4278,7 +4302,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "LIVQVcU9DTfK6ZACpeVl6Z+smUYS2IyEJYdem5NtXKY="
+          "hash": "B210d1U22/zxdZPxP8uopaajWequmk9br3QVEtTrvAQ="
         }
       },
       "is_incremental": false,
@@ -4315,8 +4339,8 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 348,
-          "skipped_file_count": 14
+          "total_file_count": 350,
+          "skipped_file_count": 13
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
