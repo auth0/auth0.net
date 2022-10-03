@@ -3,6 +3,23 @@ using System.Collections.Generic;
 
 namespace Auth0.ManagementApi.Models.AttackProtection
 {
+    public class BreachedPasswordDetectionStage
+    {
+        public class StageEntry {
+            /// <summary>
+            /// Action to take when a breached password is detected. Possible values: "block", "admin_notification".
+            /// </summary>
+            [JsonProperty("shields")]
+            public IList<string> Shields { get; set; }
+        }
+
+        /// <summary>
+        /// Configuration options that apply before every user registration attempt.
+        /// </summary>
+        [JsonProperty("pre-user-registration")]
+        public StageEntry PreUserRegistration { get; set; }
+    }
+
     public class BreachedPasswordDetection
     {
         /// <summary>
@@ -28,6 +45,12 @@ namespace Auth0.ManagementApi.Models.AttackProtection
         /// </summary>
         [JsonProperty("method")]
         public string Method { get; set; }
+
+        /// <summary>
+        /// Holds per-stage configuration options (shiels).
+        /// </summary>
+        [JsonProperty("stage")]
+        public Stage Stage { get; set; }
     }
 
 }
