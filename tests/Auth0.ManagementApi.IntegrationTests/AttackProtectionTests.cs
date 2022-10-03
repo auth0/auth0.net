@@ -71,6 +71,13 @@ namespace Auth0.ManagementApi.IntegrationTests
                     AdminNotificationFrequency = new[] { "daily" },
                     Method = "standard",
                     Enabled = true,
+                    Stage = new BreachedPasswordDetectionStage
+                    {
+                        PreUserRegistration = new BreachedPasswordDetectionStage.StageEntry
+                        {
+                            Shields = new[] { "admin_notification" }
+                        }
+                    }
                 };
 
                 var updated = await fixture.ApiClient.AttackProtection.UpdateBreachedPasswordDetectionAsync(toUpdate);
