@@ -1,5 +1,11 @@
 # Change Log
 
+## [7.17.3](https://github.com/auth0/auth0.net/tree/7.17.3) (2022-10-03)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.17.2...7.17.3)
+
+**Changed**
+- [SDK-3641] Support stage property in Breached Password Detection configuration [\#591](https://github.com/auth0/auth0.net/pull/591) ([ewanharris](https://github.com/ewanharris))
+
 ## [7.17.2](https://github.com/auth0/auth0.net/tree/7.17.2) (2022-09-12)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.17.1...7.17.2)
 
