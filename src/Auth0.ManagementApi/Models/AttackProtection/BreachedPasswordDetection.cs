@@ -47,10 +47,10 @@ namespace Auth0.ManagementApi.Models.AttackProtection
         public string Method { get; set; }
 
         /// <summary>
-        /// Holds per-stage configuration options (shiels).
+        /// Holds per-stage configuration options (shields).
         /// </summary>
         [JsonProperty("stage")]
-        public Stage Stage { get; set; }
+        public BreachedPasswordDetectionStage Stage { get; set; }
     }
 
 }
