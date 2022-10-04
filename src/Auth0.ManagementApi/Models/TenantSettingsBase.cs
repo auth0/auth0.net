@@ -2,6 +2,16 @@
 
 namespace Auth0.ManagementApi.Models
 {
+    public class SessionCookie
+    {
+        /// <summary>
+        /// Behavior of the session cookie
+        /// </summary>
+        /// <remarks>Can be any of 'persistent' or 'non-persistent'</remarks>
+        [JsonProperty("mode")]
+        public string Mode { get; set; }
+    }
+
     /// <summary>
     /// Settings for a given tenant.
     /// </summary>
@@ -108,5 +118,11 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("enabled_locales")]
         public string[] EnabledLocales { get; set; }
+
+        /// <summary>
+        /// Session cookie configuration
+        /// </summary>
+        [JsonProperty("session_cookie")]
+        public SessionCookie SessionCookie { get; set; }
     }
 }
