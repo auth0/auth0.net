@@ -17,7 +17,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             using (var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 })))
             {
                 // Get the current settings
-                var settings = apiClient.TenantSettings.GetAsync();
+                var settings = await apiClient.TenantSettings.GetAsync();
                 settings.Should().NotBeNull();
 
                 // Update the tenant settings - do not set some properties as the tenant is pre-configured
@@ -59,7 +59,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                     {
                         Charset = TenantDeviceFlowCharset.Base20,
                         Mask = "***-***-***"
-                    }
+                    },
+                    SessionCookie = new SessionCookie { Mode = "persistent" }
                 };
 
                 var settingsUpdateResponse = await apiClient.TenantSettings.UpdateAsync(settingsUpdateRequest);
@@ -75,6 +76,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 settingsUpdateResponse.Flags.EnableAPIsSection.Should().BeTrue();
                 settingsUpdateResponse.Flags.EnableClientConnections.Should().BeFalse();
                 settingsUpdateResponse.Flags.EnablePipeline2.Should().BeTrue();
+                settingsUpdateResponse.SessionCookie.Mode.Should().Be("persistent");
 
                 var resetUpdateRequest = new TenantSettingsUpdateRequest
                 {
