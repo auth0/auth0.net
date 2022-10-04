@@ -11102,6 +11102,57 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Shields
   nameWithType: BreachedPasswordDetection.Shields
+- uid: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Stage
+  name: Stage
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.html#Auth0_ManagementApi_Models_AttackProtection_BreachedPasswordDetection_Stage
+  commentId: P:Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Stage
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Stage
+  nameWithType: BreachedPasswordDetection.Stage
+- uid: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Stage*
+  name: Stage
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.html#Auth0_ManagementApi_Models_AttackProtection_BreachedPasswordDetection_Stage_
+  commentId: Overload:Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Stage
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.Stage
+  nameWithType: BreachedPasswordDetection.Stage
+- uid: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage
+  name: BreachedPasswordDetectionStage
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.html
+  commentId: T:Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage
+  nameWithType: BreachedPasswordDetectionStage
+- uid: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.PreUserRegistration
+  name: PreUserRegistration
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.html#Auth0_ManagementApi_Models_AttackProtection_BreachedPasswordDetectionStage_PreUserRegistration
+  commentId: P:Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.PreUserRegistration
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.PreUserRegistration
+  nameWithType: BreachedPasswordDetectionStage.PreUserRegistration
+- uid: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.PreUserRegistration*
+  name: PreUserRegistration
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.html#Auth0_ManagementApi_Models_AttackProtection_BreachedPasswordDetectionStage_PreUserRegistration_
+  commentId: Overload:Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.PreUserRegistration
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.PreUserRegistration
+  nameWithType: BreachedPasswordDetectionStage.PreUserRegistration
+- uid: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.StageEntry
+  name: BreachedPasswordDetectionStage.StageEntry
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.StageEntry.html
+  commentId: T:Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.StageEntry
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.StageEntry
+  nameWithType: BreachedPasswordDetectionStage.StageEntry
+- uid: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.StageEntry.Shields
+  name: Shields
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.StageEntry.html#Auth0_ManagementApi_Models_AttackProtection_BreachedPasswordDetectionStage_StageEntry_Shields
+  commentId: P:Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.StageEntry.Shields
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.StageEntry.Shields
+  nameWithType: BreachedPasswordDetectionStage.StageEntry.Shields
+- uid: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.StageEntry.Shields*
+  name: Shields
+  href: api/Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.StageEntry.html#Auth0_ManagementApi_Models_AttackProtection_BreachedPasswordDetectionStage_StageEntry_Shields_
+  commentId: Overload:Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.StageEntry.Shields
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetectionStage.StageEntry.Shields
+  nameWithType: BreachedPasswordDetectionStage.StageEntry.Shields
 - uid: Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection
   name: BruteForceProtection
   href: api/Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.html

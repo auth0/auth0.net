@@ -1,6 +1,6 @@
 {
   "name": "auth0.net",
-  "version": "7.17.0",
+  "version": "7.17.3",
   "description": ".NET client library for Auth0",
   "scripts": {
     "release": "node ./scripts/release",
