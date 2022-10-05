@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Auth0.NET5
+namespace Auth0.NET6
 {
     public class Startup
     {
@@ -30,7 +30,7 @@ namespace Auth0.NET5
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Auth0.NET5", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Auth0.NET6", Version = "v1" });
             });
         }
 
@@ -41,7 +41,7 @@ namespace Auth0.NET5
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Auth0.NET5 v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Auth0.NET6 v1"));
             }
 
             app.UseHttpsRedirection();
