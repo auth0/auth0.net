@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Auth0.NET5
+namespace Auth0.NET6
 {
     public class Program
     {
