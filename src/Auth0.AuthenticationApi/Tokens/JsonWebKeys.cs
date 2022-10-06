@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Auth0.AuthenticationApi.Tokens
 {
-    public class JsonWebKeys
+    internal class JsonWebKeys
     {
         private readonly IDocumentRetriever openIdConnectDocumentRetriever;
 

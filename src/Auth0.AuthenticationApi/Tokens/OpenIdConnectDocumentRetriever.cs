@@ -5,7 +5,7 @@ using Microsoft.IdentityModel.Protocols;
 
 namespace Auth0.AuthenticationApi.Tokens
 {
-    public class OpenIdConnectDocumentRetriever : IDocumentRetriever
+    internal class OpenIdConnectDocumentRetriever : IDocumentRetriever
     {
         private readonly IAuthenticationConnection connection;
 
