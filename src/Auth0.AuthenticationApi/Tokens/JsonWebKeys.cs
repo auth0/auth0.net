@@ -8,11 +8,11 @@ namespace Auth0.AuthenticationApi.Tokens
 {
     public class JsonWebKeys
     {
-        private readonly IDocumentRetriever openIdConnectDcumentRetriever;
+        private readonly IDocumentRetriever openIdConnectDocumentRetriever;
 
-        public JsonWebKeys(IDocumentRetriever openIdConnectDcumentRetriever = null)
+        public JsonWebKeys(IDocumentRetriever openIdConnectDocumentRetriever = null)
         {
-            this.openIdConnectDcumentRetriever = openIdConnectDcumentRetriever;
+            this.openIdConnectDocumentRetriever = openIdConnectDocumentRetriever;
         }
 
         public async Task<JsonWebKeySet> GetForIssuer(string issuer)
@@ -26,7 +26,7 @@ namespace Auth0.AuthenticationApi.Tokens
         {
             try
             {
-                var configurationManager = openIdConnectDcumentRetriever != null ? new ConfigurationManager<OpenIdConnectConfiguration>(metadataAddress, new OpenIdConnectConfigurationRetriever(), openIdConnectDcumentRetriever) : new ConfigurationManager<OpenIdConnectConfiguration>(metadataAddress, new OpenIdConnectConfigurationRetriever());
+                var configurationManager = openIdConnectDocumentRetriever != null ? new ConfigurationManager<OpenIdConnectConfiguration>(metadataAddress, new OpenIdConnectConfigurationRetriever(), openIdConnectDocumentRetriever) : new ConfigurationManager<OpenIdConnectConfiguration>(metadataAddress, new OpenIdConnectConfigurationRetriever());
                 return configurationManager.GetConfigurationAsync();
             }
             catch (Exception e)

@@ -12,9 +12,9 @@ namespace Auth0.AuthenticationApi
         readonly TimeSpan minJwksRefreshInterval = TimeSpan.FromSeconds(15);
         readonly JsonWebKeyCache jsonWebKeyCache;
 
-        public IdTokenValidator(IDocumentRetriever openIdConnectDcumentRetriever = null)
+        public IdTokenValidator(IDocumentRetriever openIdConnectDocumentRetriever = null)
         {
-            jsonWebKeyCache = new JsonWebKeyCache(new JsonWebKeys(openIdConnectDcumentRetriever));
+            jsonWebKeyCache = new JsonWebKeyCache(new JsonWebKeys(openIdConnectDocumentRetriever));
         }
 
         public async Task Assert(IdTokenRequirements requirements, string idToken, string clientSecret, DateTime? pointInTime = null)
