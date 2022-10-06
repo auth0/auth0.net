@@ -6,20 +6,27 @@ using System.Threading.Tasks;
 
 namespace Auth0.AuthenticationApi.Tokens
 {
-    static class JsonWebKeys
+    public class JsonWebKeys
     {
-        public static async Task<JsonWebKeySet> GetForIssuer(string issuer)
+        private readonly IDocumentRetriever openIdConnectDcumentRetriever;
+
+        public JsonWebKeys(IDocumentRetriever openIdConnectDcumentRetriever = null)
+        {
+            this.openIdConnectDcumentRetriever = openIdConnectDcumentRetriever;
+        }
+
+        public async Task<JsonWebKeySet> GetForIssuer(string issuer)
         {
             var metadataAddress = new UriBuilder(issuer) { Path = "/.well-known/openid-configuration" }.Uri.OriginalString;
             var openIdConfiguration = await GetOpenIdConfiguration(metadataAddress).ConfigureAwait(false);
             return openIdConfiguration.JsonWebKeySet;
         }
 
-        private static Task<OpenIdConnectConfiguration> GetOpenIdConfiguration(string metadataAddress)
+        private Task<OpenIdConnectConfiguration> GetOpenIdConfiguration(string metadataAddress)
         {
             try
             {
-                var configurationManager = new ConfigurationManager<OpenIdConnectConfiguration>(metadataAddress, new OpenIdConnectConfigurationRetriever());
+                var configurationManager = openIdConnectDcumentRetriever != null ? new ConfigurationManager<OpenIdConnectConfiguration>(metadataAddress, new OpenIdConnectConfigurationRetriever(), openIdConnectDcumentRetriever) : new ConfigurationManager<OpenIdConnectConfiguration>(metadataAddress, new OpenIdConnectConfigurationRetriever());
                 return configurationManager.GetConfigurationAsync();
             }
             catch (Exception e)

@@ -89,6 +89,35 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
         }
 
         [Fact]
+        public async Task Passes_Token_Validation_RS256_With_Document_Retreiver()
+        {
+            var authUrl = GetVariable("AUTH0_AUTHENTICATION_API_URL");
+            var clientId = GetVariable("AUTH0_CLIENT_ID");
+            var clientSecret = GetVariable("AUTH0_CLIENT_SECRET");
+
+            // Arrange
+            var connection = new TestHttpClientAuthenticationConnection();
+            var documentRetreiver = new OpenIdConnectDocumentRetriever(connection);
+            using (var authenticationApiClient = new TestAuthenticationApiClient(authUrl, connection))
+            {
+                // Act
+                var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+                {
+                    ClientId = clientId,
+                    ClientSecret = clientSecret,
+                    Realm = _connection.Name,
+                    Scope = "openid",
+                    Username = _user.Email,
+                    Password = Password
+                });
+
+                var issuer = $"https://{authUrl}/";
+                var requirements = new IdTokenRequirements(JwtSignatureAlgorithm.RS256, issuer, clientId, TimeSpan.FromMinutes(1));
+                await new IdTokenValidator(documentRetreiver).Assert(requirements, authenticationResponse.IdToken, clientSecret);
+            }
+        }
+
+        [Fact]
         public async Task Passes_Token_Validation_HS256()
         {
             var authUrl = GetVariable("AUTH0_AUTHENTICATION_API_URL");
@@ -113,6 +142,36 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
                 var issuer = $"https://{authUrl}/";
                 var requirements = new IdTokenRequirements(JwtSignatureAlgorithm.HS256, issuer, clientId, TimeSpan.FromMinutes(1));
                 await new IdTokenValidator().Assert(requirements, authenticationResponse.IdToken, clientSecret);
+            }
+        }
+
+        [Fact]
+        public async Task Passes_Token_Validation_HS256_With_Document_Retreiver()
+        {
+            var authUrl = GetVariable("AUTH0_AUTHENTICATION_API_URL");
+            var clientId = GetVariable("AUTH0_HS256_CLIENT_ID");
+            var clientSecret = GetVariable("AUTH0_HS256_CLIENT_SECRET");
+
+            // Arrange
+            var connection = new TestHttpClientAuthenticationConnection();
+            var documentRetreiver = new OpenIdConnectDocumentRetriever(connection);
+            using (var authenticationApiClient = new TestAuthenticationApiClient(authUrl, connection))
+            {
+                // Act
+                var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+                {
+                    ClientId = clientId,
+                    ClientSecret = clientSecret,
+                    Realm = _connection.Name,
+                    SigningAlgorithm = JwtSignatureAlgorithm.HS256,
+                    Scope = "openid",
+                    Username = _user.Email,
+                    Password = Password
+                });
+
+                var issuer = $"https://{authUrl}/";
+                var requirements = new IdTokenRequirements(JwtSignatureAlgorithm.HS256, issuer, clientId, TimeSpan.FromMinutes(1));
+                await new IdTokenValidator(documentRetreiver).Assert(requirements, authenticationResponse.IdToken, clientSecret);
             }
         }
 

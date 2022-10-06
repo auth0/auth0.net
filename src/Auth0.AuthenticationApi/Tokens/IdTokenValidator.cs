@@ -1,4 +1,5 @@
 ﻿using Auth0.AuthenticationApi.Tokens;
+using Microsoft.IdentityModel.Protocols;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Threading.Tasks;
@@ -9,7 +10,12 @@ namespace Auth0.AuthenticationApi
     {
         readonly TimeSpan maxJwksKeySetValidFor = TimeSpan.FromMinutes(10);
         readonly TimeSpan minJwksRefreshInterval = TimeSpan.FromSeconds(15);
-        readonly JsonWebKeyCache jsonWebKeyCache = new JsonWebKeyCache();
+        readonly JsonWebKeyCache jsonWebKeyCache;
+
+        public IdTokenValidator(IDocumentRetriever openIdConnectDcumentRetriever = null)
+        {
+            jsonWebKeyCache = new JsonWebKeyCache(new JsonWebKeys(openIdConnectDcumentRetriever));
+        }
 
         public async Task Assert(IdTokenRequirements requirements, string idToken, string clientSecret, DateTime? pointInTime = null)
         {
