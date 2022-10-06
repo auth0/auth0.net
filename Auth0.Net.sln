@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32210.308
@@ -27,7 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth0.ManagementApi.Integra
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "playground", "playground", "{E0399446-B2A6-44F6-B179-4D97676B479F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth0.NET6", "playground\Auth0.NET5\Auth0.NET6.csproj", "{AEDB01F2-B535-45D0-9ED5-3FEB90179786}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth0.NET6", "playground\Auth0.NET6\Auth0.NET6.csproj", "{AEDB01F2-B535-45D0-9ED5-3FEB90179786}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Auth0.NETCore3", "playground\Auth0.NETCore3\Auth0.NETCore3.csproj", "{F4721D05-77E6-41D7-BFCD-FEEF06F083F3}"
 EndProject
