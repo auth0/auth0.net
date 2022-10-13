@@ -1,5 +1,5 @@
 # auth0-net
-.NET API client for [Auth0](https://auth0.com/) platform.
+.NET API client for the [Auth0](https://auth0.com/) platform.
 
 
 ![Release](https://img.shields.io/github/v/release/auth0/auth0.net)
