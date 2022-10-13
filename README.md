@@ -1,4 +1,5 @@
 # auth0-net
+.NET API client for [Auth0](https://auth0.com/) platform.
 
 
 ![Release](https://img.shields.io/github/v/release/auth0/auth0.net)
@@ -9,8 +10,6 @@
 
 :books: [Documentation](#documentation) - :rocket: [Getting Started](#getting-started) - :computer: [API Reference](https://auth0.github.io/auth0.net/) - :speech_balloon: [Feedback](#feedback)
 
-
-This is for clients that are either flagged as **OIDC Conformant** (under the **OAuth** tab in the client **Advanced settings**) or if you are triggering the OIDC-conformant pipeline by using the `audience` parameter when starting an authorization flow.
 
 ## Documentation
 
