@@ -98,31 +98,10 @@
       <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_DefaultHeaders">BaseClient.DefaultHeaders</a>
     </div>
     <div>
-      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BuildUri_System_String_System_Collections_Generic_IDictionary_System_String_System_String__">BaseClient.BuildUri(String, IDictionary&lt;String, String&gt;)</a>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BuildUri_System_String_IDictionary_System_String_System_String__">BaseClient.BuildUri(String, IDictionary&lt;String, String&gt;)</a>
     </div>
     <div>
       <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_EncodePath_System_String_">BaseClient.EncodePath(String)</a>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Clients.html">Auth0.ManagementApi.Clients</a></h6>
@@ -134,7 +113,7 @@
   <h3 id="constructors">Constructors
   </h3>
   <a id="Auth0_ManagementApi_Clients_BrandingClient__ctor_" data-uid="Auth0.ManagementApi.Clients.BrandingClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_BrandingClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.BrandingClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})">BrandingClient(IManagementConnection, Uri, IDictionary&lt;String, String&gt;)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_BrandingClient__ctor_Auth0_ManagementApi_IManagementConnection_Uri_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.BrandingClient.#ctor(Auth0.ManagementApi.IManagementConnection,Uri,IDictionary{System.String,System.String})">BrandingClient(IManagementConnection, Uri, IDictionary&lt;String, String&gt;)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of <a class="xref" href="Auth0.ManagementApi.Clients.BrandingClient.html">BrandingClient</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -159,13 +138,13 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Uri</span></td>
+        <td><span class="xref">Uri</span></td>
         <td><span class="parametername">baseUri</span></td>
-        <td><p><span class="xref">System.Uri</span> of the endpoint to use in making API calls.</p>
+        <td><p><see cref="!:Uri"></see> of the endpoint to use in making API calls.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">defaultHeaders</span></td>
         <td><p>Dictionary containing default headers included with every request this client makes.</p>
 </td>
@@ -175,13 +154,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_BrandingClient_DeleteUniversalLoginTemplateAsync_" data-uid="Auth0.ManagementApi.Clients.BrandingClient.DeleteUniversalLoginTemplateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_BrandingClient_DeleteUniversalLoginTemplateAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.BrandingClient.DeleteUniversalLoginTemplateAsync(System.Threading.CancellationToken)">DeleteUniversalLoginTemplateAsync(CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_BrandingClient_DeleteUniversalLoginTemplateAsync_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.BrandingClient.DeleteUniversalLoginTemplateAsync(CancellationToken)">DeleteUniversalLoginTemplateAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Delete the template for the New Universal Login Experience</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task DeleteUniversalLoginTemplateAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task DeleteUniversalLoginTemplateAsync(CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -194,7 +173,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -211,20 +190,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span></td>
-        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous delete operation.</p>
+        <td><span class="xref">Task</span></td>
+        <td><p>A <see cref="!:Task"></see> that represents the asynchronous delete operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_BrandingClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.BrandingClient.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_BrandingClient_GetAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.BrandingClient.GetAsync(System.Threading.CancellationToken)">GetAsync(CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_BrandingClient_GetAsync_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.BrandingClient.GetAsync(CancellationToken)">GetAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves branding settings for a tenant.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;Branding&gt; GetAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;Branding&gt; GetAsync(CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -237,7 +216,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -254,20 +233,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Branding.html">Branding</a>&gt;</td>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Branding.html">Branding</a>&gt;</td>
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.Branding.html">Branding</a> containing the branding for the tenant.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_BrandingClient_GetUniversalLoginTemplateAsync_" data-uid="Auth0.ManagementApi.Clients.BrandingClient.GetUniversalLoginTemplateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_BrandingClient_GetUniversalLoginTemplateAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.BrandingClient.GetUniversalLoginTemplateAsync(System.Threading.CancellationToken)">GetUniversalLoginTemplateAsync(CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_BrandingClient_GetUniversalLoginTemplateAsync_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.BrandingClient.GetUniversalLoginTemplateAsync(CancellationToken)">GetUniversalLoginTemplateAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves the template for the New Universal Login Experience.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;UniversalLoginTemplate&gt; GetUniversalLoginTemplateAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;UniversalLoginTemplate&gt; GetUniversalLoginTemplateAsync(CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -280,7 +259,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -297,20 +276,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.UniversalLoginTemplate.html">UniversalLoginTemplate</a>&gt;</td>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.UniversalLoginTemplate.html">UniversalLoginTemplate</a>&gt;</td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.UniversalLoginTemplate.html">UniversalLoginTemplate</a> for the new universal login experience.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_BrandingClient_SetUniversalLoginTemplateAsync_" data-uid="Auth0.ManagementApi.Clients.BrandingClient.SetUniversalLoginTemplateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_BrandingClient_SetUniversalLoginTemplateAsync_Auth0_ManagementApi_Models_UniversalLoginTemplateUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.BrandingClient.SetUniversalLoginTemplateAsync(Auth0.ManagementApi.Models.UniversalLoginTemplateUpdateRequest,System.Threading.CancellationToken)">SetUniversalLoginTemplateAsync(UniversalLoginTemplateUpdateRequest, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_BrandingClient_SetUniversalLoginTemplateAsync_Auth0_ManagementApi_Models_UniversalLoginTemplateUpdateRequest_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.BrandingClient.SetUniversalLoginTemplateAsync(Auth0.ManagementApi.Models.UniversalLoginTemplateUpdateRequest,CancellationToken)">SetUniversalLoginTemplateAsync(UniversalLoginTemplateUpdateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Sets the template for the New Universal Login Experience.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;UniversalLoginTemplate&gt; SetUniversalLoginTemplateAsync(UniversalLoginTemplateUpdateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;UniversalLoginTemplate&gt; SetUniversalLoginTemplateAsync(UniversalLoginTemplateUpdateRequest request, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -329,7 +308,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -346,21 +325,21 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.UniversalLoginTemplate.html">UniversalLoginTemplate</a>&gt;</td>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.UniversalLoginTemplate.html">UniversalLoginTemplate</a>&gt;</td>
         <td><p>The newly updated <a class="xref" href="Auth0.ManagementApi.Models.UniversalLoginTemplate.html">UniversalLoginTemplate</a>.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_BrandingClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.BrandingClient.UpdateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_BrandingClient_UpdateAsync_Auth0_ManagementApi_Models_BrandingUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.BrandingClient.UpdateAsync(Auth0.ManagementApi.Models.BrandingUpdateRequest,System.Threading.CancellationToken)">UpdateAsync(BrandingUpdateRequest, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_BrandingClient_UpdateAsync_Auth0_ManagementApi_Models_BrandingUpdateRequest_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.BrandingClient.UpdateAsync(Auth0.ManagementApi.Models.BrandingUpdateRequest,CancellationToken)">UpdateAsync(BrandingUpdateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>s
 Updates the branding for a tenant.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;Branding&gt; UpdateAsync(BrandingUpdateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;Branding&gt; UpdateAsync(BrandingUpdateRequest request, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -379,7 +358,7 @@ Updates the branding for a tenant.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -396,7 +375,7 @@ Updates the branding for a tenant.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Branding.html">Branding</a>&gt;</td>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Branding.html">Branding</a>&gt;</td>
         <td><p>The newly updated <a class="xref" href="Auth0.ManagementApi.Models.Branding.html">Branding</a>.</p>
 </td>
       </tr>

@@ -1,5 +1,12 @@
 # Change Log
 
+## [7.17.4](https://github.com/auth0/auth0.net/tree/7.17.4) (2022-10-17)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.17.3...7.17.4)
+
+**Changed**
+- Rework IdTokenValidator to be able to use a proxy [\#596](https://github.com/auth0/auth0.net/pull/596) ([frederikprijck](https://github.com/frederikprijck))
+- Add support for Ephemeral sessions [\#593](https://github.com/auth0/auth0.net/pull/593) ([frederikprijck](https://github.com/frederikprijck))
+
 ## [7.17.3](https://github.com/auth0/auth0.net/tree/7.17.3) (2022-10-03)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.17.2...7.17.3)
 
