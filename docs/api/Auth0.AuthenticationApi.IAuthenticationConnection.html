@@ -85,14 +85,14 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_AuthenticationApi_IAuthenticationConnection_GetAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationConnection.GetAsync*"></a>
-  <h4 id="Auth0_AuthenticationApi_IAuthenticationConnection_GetAsync__1_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__System_Threading_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},System.Threading.CancellationToken)">GetAsync&lt;T&gt;(Uri, IDictionary&lt;String, String&gt;, CancellationToken)</h4>
+  <h4 id="Auth0_AuthenticationApi_IAuthenticationConnection_GetAsync__1_Uri_IDictionary_System_String_System_String__CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationConnection.GetAsync``1(Uri,IDictionary{System.String,System.String},CancellationToken)">GetAsync&lt;T&gt;(Uri, IDictionary&lt;String, String&gt;, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Send a HTTP GET request to the given <code data-dev-comment-type="paramref" class="paramref">uri</code> with optional <code data-dev-comment-type="paramref" class="paramref">headers</code> as
 an asynchronous operation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;T&gt; GetAsync&lt;T&gt;(Uri uri, IDictionary&lt;string, string&gt; headers = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; GetAsync&lt;T&gt;(Uri uri, IDictionary&lt;string, string&gt; headers = null, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -105,19 +105,19 @@ an asynchronous operation.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Uri</span></td>
+        <td><span class="xref">Uri</span></td>
         <td><span class="parametername">uri</span></td>
-        <td><p>Absolute <span class="xref">System.Uri</span> to send the request to.</p>
+        <td><p>Absolute <see cref="!:Uri"></see> to send the request to.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">headers</span></td>
         <td><p>Optional dictionary containing additional headers to be sent.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -134,7 +134,7 @@ an asynchronous operation.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td><span class="xref">Task</span>&lt;T&gt;</td>
         <td><p>The task object representing the asynchronous operation.</p>
 </td>
       </tr>
@@ -157,13 +157,13 @@ an asynchronous operation.</p>
     </tbody>
   </table>
   <a id="Auth0_AuthenticationApi_IAuthenticationConnection_SendAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationConnection.SendAsync*"></a>
-  <h4 id="Auth0_AuthenticationApi_IAuthenticationConnection_SendAsync__1_System_Net_Http_HttpMethod_System_Uri_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__System_Threading_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationConnection.SendAsync``1(System.Net.Http.HttpMethod,System.Uri,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},System.Threading.CancellationToken)">SendAsync&lt;T&gt;(HttpMethod, Uri, Object, IDictionary&lt;String, String&gt;, CancellationToken)</h4>
+  <h4 id="Auth0_AuthenticationApi_IAuthenticationConnection_SendAsync__1_HttpMethod_Uri_System_Object_IDictionary_System_String_System_String__CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationConnection.SendAsync``1(HttpMethod,Uri,System.Object,IDictionary{System.String,System.String},CancellationToken)">SendAsync&lt;T&gt;(HttpMethod, Uri, Object, IDictionary&lt;String, String&gt;, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Send an HTTP request to <code data-dev-comment-type="paramref" class="paramref">uri</code> using the HTTP <code data-dev-comment-type="paramref" class="paramref">method</code> as an asynchronous operation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;T&gt; SendAsync&lt;T&gt;(HttpMethod method, Uri uri, object body, IDictionary&lt;string, string&gt; headers = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; SendAsync&lt;T&gt;(HttpMethod method, Uri uri, object body, IDictionary&lt;string, string&gt; headers = null, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -176,15 +176,15 @@ an asynchronous operation.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Net.Http.HttpMethod</span></td>
+        <td><span class="xref">HttpMethod</span></td>
         <td><span class="parametername">method</span></td>
-        <td><p><span class="xref">System.Net.Http.HttpMethod</span> to use.</p>
+        <td><p><see cref="!:HttpMethod"></see> to use.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Uri</span></td>
+        <td><span class="xref">Uri</span></td>
         <td><span class="parametername">uri</span></td>
-        <td><p>Absolute <span class="xref">System.Uri</span> to send the request to.</p>
+        <td><p>Absolute <see cref="!:Uri"></see> to send the request to.</p>
 </td>
       </tr>
       <tr>
@@ -194,13 +194,13 @@ an asynchronous operation.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">headers</span></td>
         <td><p>Optional dictionary containing additional headers to be sent.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -217,7 +217,7 @@ an asynchronous operation.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td><span class="xref">Task</span>&lt;T&gt;</td>
         <td><p>The task object representing the asynchronous operation.</p>
 </td>
       </tr>

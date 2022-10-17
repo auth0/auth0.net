@@ -98,31 +98,10 @@
       <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_DefaultHeaders">BaseClient.DefaultHeaders</a>
     </div>
     <div>
-      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BuildUri_System_String_System_Collections_Generic_IDictionary_System_String_System_String__">BaseClient.BuildUri(String, IDictionary&lt;String, String&gt;)</a>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BuildUri_System_String_IDictionary_System_String_System_String__">BaseClient.BuildUri(String, IDictionary&lt;String, String&gt;)</a>
     </div>
     <div>
       <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_EncodePath_System_String_">BaseClient.EncodePath(String)</a>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Clients.html">Auth0.ManagementApi.Clients</a></h6>
@@ -134,7 +113,7 @@
   <h3 id="constructors">Constructors
   </h3>
   <a id="Auth0_ManagementApi_Clients_UserBlocksClient__ctor_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})">UserBlocksClient(IManagementConnection, Uri, IDictionary&lt;String, String&gt;)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient__ctor_Auth0_ManagementApi_IManagementConnection_Uri_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.#ctor(Auth0.ManagementApi.IManagementConnection,Uri,IDictionary{System.String,System.String})">UserBlocksClient(IManagementConnection, Uri, IDictionary&lt;String, String&gt;)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of <a class="xref" href="Auth0.ManagementApi.Clients.UserBlocksClient.html">UserBlocksClient</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -159,13 +138,13 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Uri</span></td>
+        <td><span class="xref">Uri</span></td>
         <td><span class="parametername">baseUri</span></td>
-        <td><p><span class="xref">System.Uri</span> of the endpoint to use in making API calls.</p>
+        <td><p><see cref="!:Uri"></see> of the endpoint to use in making API calls.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">defaultHeaders</span></td>
         <td><p>Dictionary containing default headers included with every request this client makes.</p>
 </td>
@@ -175,13 +154,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_UserBlocksClient_GetByIdentifierAsync_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.GetByIdentifierAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient_GetByIdentifierAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.GetByIdentifierAsync(System.String,System.Threading.CancellationToken)">GetByIdentifierAsync(String, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient_GetByIdentifierAsync_System_String_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.GetByIdentifierAsync(System.String,CancellationToken)">GetByIdentifierAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Get a user&apos;s blocks by identifier.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;UserBlocks&gt; GetByIdentifierAsync(string identifier, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;UserBlocks&gt; GetByIdentifierAsync(string identifier, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -200,7 +179,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -217,20 +196,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.UserBlocks.html">UserBlocks</a>&gt;</td>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.UserBlocks.html">UserBlocks</a>&gt;</td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.UserBlocks.html">UserBlocks</a> relating to the user requested.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UserBlocksClient_GetByUserIdAsync_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.GetByUserIdAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient_GetByUserIdAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.GetByUserIdAsync(System.String,System.Threading.CancellationToken)">GetByUserIdAsync(String, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient_GetByUserIdAsync_System_String_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.GetByUserIdAsync(System.String,CancellationToken)">GetByUserIdAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Get a user&apos;s blocks by user id.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;UserBlocks&gt; GetByUserIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;UserBlocks&gt; GetByUserIdAsync(string id, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -249,7 +228,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -266,20 +245,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.UserBlocks.html">UserBlocks</a>&gt;</td>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.UserBlocks.html">UserBlocks</a>&gt;</td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.UserBlocks.html">UserBlocks</a> relating to the user requested.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UserBlocksClient_UnblockByIdentifierAsync_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.UnblockByIdentifierAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient_UnblockByIdentifierAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.UnblockByIdentifierAsync(System.String,System.Threading.CancellationToken)">UnblockByIdentifierAsync(String, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient_UnblockByIdentifierAsync_System_String_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.UnblockByIdentifierAsync(System.String,CancellationToken)">UnblockByIdentifierAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Unblock a user by their identifier.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task UnblockByIdentifierAsync(string identifier, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task UnblockByIdentifierAsync(string identifier, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -298,7 +277,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -315,20 +294,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span></td>
-        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous unblock operation.</p>
+        <td><span class="xref">Task</span></td>
+        <td><p>A <see cref="!:Task"></see> that represents the asynchronous unblock operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_UserBlocksClient_UnblockByUserIdAsync_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.UnblockByUserIdAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient_UnblockByUserIdAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.UnblockByUserIdAsync(System.String,System.Threading.CancellationToken)">UnblockByUserIdAsync(String, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_UserBlocksClient_UnblockByUserIdAsync_System_String_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UserBlocksClient.UnblockByUserIdAsync(System.String,CancellationToken)">UnblockByUserIdAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Unblock a user by their id.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task UnblockByUserIdAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task UnblockByUserIdAsync(string id, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -347,7 +326,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -364,8 +343,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span></td>
-        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous unblock operation.</p>
+        <td><span class="xref">Task</span></td>
+        <td><p>A <see cref="!:Task"></see> that represents the asynchronous unblock operation.</p>
 </td>
       </tr>
     </tbody>
