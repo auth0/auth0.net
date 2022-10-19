@@ -62,5 +62,13 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
     /// <returns>The <see cref="Connection"/> that has been updated.</returns>
     Task<Connection> UpdateAsync(string id, ConnectionUpdateRequest request, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Retrieves the status of an ad/ldap connection.
+    /// </summary>
+    /// <param name="id">ID of the connection to check.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>A <see cref="Task"/> that represents the asynchronous check operation. Will throw if the status check fails.</returns>
+    Task CheckAsync(string id, CancellationToken cancellationToken = default);
   }
 }

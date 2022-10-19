@@ -132,5 +132,16 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection.SendAsync<Connection>(new HttpMethod("PATCH"), BuildUri($"connections/{EncodePath(id)}"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
+
+        /// <summary>
+        /// Retrieves the status of an ad/ldap connection 
+        /// </summary>
+        /// <param name="id">D of the connection to check</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous check operation. Will throw if the check fails.</returns>
+        public Task CheckAsync(string id, CancellationToken cancellationToken = default)
+        {
+            return Connection.GetAsync<object>(BuildUri($"connections/{EncodePath(id)}/status"), DefaultHeaders, cancellationToken: cancellationToken);
+        }
     }
 }
