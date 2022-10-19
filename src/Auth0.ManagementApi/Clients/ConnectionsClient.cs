@@ -134,9 +134,9 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Retrieves the status of an ad/ldap connection 
+        /// Retrieves the status of an ad/ldap connection.
         /// </summary>
-        /// <param name="id">ID of the connection to check</param>
+        /// <param name="id">ID of the connection to check.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous check operation. Will throw if the check fails.</returns>
         public Task CheckStatusAsync(string id, CancellationToken cancellationToken = default)
