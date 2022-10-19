@@ -69,6 +69,6 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="id">ID of the connection to check.</param>
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
     /// <returns>A <see cref="Task"/> that represents the asynchronous check operation. Will throw if the status check fails.</returns>
-    Task CheckAsync(string id, CancellationToken cancellationToken = default);
+    Task CheckStatusAsync(string id, CancellationToken cancellationToken = default);
   }
 }
