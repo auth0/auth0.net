@@ -27,6 +27,12 @@
         "files": [
           "images/**"
         ]
+      },
+      {
+        "files": [
+          "banner.png"
+        ],
+        "src": ".."
       }
     ],
     "dest": "../docs",
