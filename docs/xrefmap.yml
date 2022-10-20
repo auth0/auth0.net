@@ -4053,6 +4053,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.ConnectionsClient.ConnectionsClient
   nameWithType: ConnectionsClient.ConnectionsClient
+- uid: Auth0.ManagementApi.Clients.ConnectionsClient.CheckStatusAsync(System.String,CancellationToken)
+  name: CheckStatusAsync(String, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.ConnectionsClient.html#Auth0_ManagementApi_Clients_ConnectionsClient_CheckStatusAsync_System_String_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.ConnectionsClient.CheckStatusAsync(System.String,CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.ConnectionsClient.CheckStatusAsync(System.String, CancellationToken)
+  nameWithType: ConnectionsClient.CheckStatusAsync(String, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.ConnectionsClient.CheckStatusAsync*
+  name: CheckStatusAsync
+  href: api/Auth0.ManagementApi.Clients.ConnectionsClient.html#Auth0_ManagementApi_Clients_ConnectionsClient_CheckStatusAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.ConnectionsClient.CheckStatusAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.ConnectionsClient.CheckStatusAsync
+  nameWithType: ConnectionsClient.CheckStatusAsync
 - uid: Auth0.ManagementApi.Clients.ConnectionsClient.CreateAsync(Auth0.ManagementApi.Models.ConnectionCreateRequest,CancellationToken)
   name: CreateAsync(ConnectionCreateRequest, CancellationToken)
   href: api/Auth0.ManagementApi.Clients.ConnectionsClient.html#Auth0_ManagementApi_Clients_ConnectionsClient_CreateAsync_Auth0_ManagementApi_Models_ConnectionCreateRequest_CancellationToken_
@@ -5208,6 +5221,19 @@ references:
   commentId: T:Auth0.ManagementApi.Clients.IConnectionsClient
   fullName: Auth0.ManagementApi.Clients.IConnectionsClient
   nameWithType: IConnectionsClient
+- uid: Auth0.ManagementApi.Clients.IConnectionsClient.CheckStatusAsync(System.String,CancellationToken)
+  name: CheckStatusAsync(String, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.IConnectionsClient.html#Auth0_ManagementApi_Clients_IConnectionsClient_CheckStatusAsync_System_String_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.IConnectionsClient.CheckStatusAsync(System.String,CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.IConnectionsClient.CheckStatusAsync(System.String, CancellationToken)
+  nameWithType: IConnectionsClient.CheckStatusAsync(String, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.IConnectionsClient.CheckStatusAsync*
+  name: CheckStatusAsync
+  href: api/Auth0.ManagementApi.Clients.IConnectionsClient.html#Auth0_ManagementApi_Clients_IConnectionsClient_CheckStatusAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.IConnectionsClient.CheckStatusAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.IConnectionsClient.CheckStatusAsync
+  nameWithType: IConnectionsClient.CheckStatusAsync
 - uid: Auth0.ManagementApi.Clients.IConnectionsClient.CreateAsync(Auth0.ManagementApi.Models.ConnectionCreateRequest,CancellationToken)
   name: CreateAsync(ConnectionCreateRequest, CancellationToken)
   href: api/Auth0.ManagementApi.Clients.IConnectionsClient.html#Auth0_ManagementApi_Clients_IConnectionsClient_CreateAsync_Auth0_ManagementApi_Models_ConnectionCreateRequest_CancellationToken_
