@@ -84,13 +84,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_IBlacklistedTokensClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.IBlacklistedTokensClient.CreateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IBlacklistedTokensClient_CreateAsync_Auth0_ManagementApi_Models_BlacklistedTokenCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IBlacklistedTokensClient.CreateAsync(Auth0.ManagementApi.Models.BlacklistedTokenCreateRequest,System.Threading.CancellationToken)">CreateAsync(BlacklistedTokenCreateRequest, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IBlacklistedTokensClient_CreateAsync_Auth0_ManagementApi_Models_BlacklistedTokenCreateRequest_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IBlacklistedTokensClient.CreateAsync(Auth0.ManagementApi.Models.BlacklistedTokenCreateRequest,CancellationToken)">CreateAsync(BlacklistedTokenCreateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Blacklists a JWT token.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task CreateAsync(BlacklistedTokenCreateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">Task CreateAsync(BlacklistedTokenCreateRequest request, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -109,7 +109,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -126,20 +126,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span></td>
-        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous create operation.</p>
+        <td><span class="xref">Task</span></td>
+        <td><p>A <see cref="!:Task"></see> that represents the asynchronous create operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IBlacklistedTokensClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.IBlacklistedTokensClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IBlacklistedTokensClient_GetAllAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IBlacklistedTokensClient.GetAllAsync(System.String,System.Threading.CancellationToken)">GetAllAsync(String, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IBlacklistedTokensClient_GetAllAsync_System_String_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IBlacklistedTokensClient.GetAllAsync(System.String,CancellationToken)">GetAllAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Gets all the blacklisted claims.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IList&lt;BlacklistedToken&gt;&gt; GetAllAsync(string aud, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;IList&lt;BlacklistedToken&gt;&gt; GetAllAsync(string aud, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -158,7 +158,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -175,7 +175,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.BlacklistedToken.html">BlacklistedToken</a>&gt;&gt;</td>
+        <td><span class="xref">Task</span>&lt;<span class="xref">IList</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.BlacklistedToken.html">BlacklistedToken</a>&gt;&gt;</td>
         <td><p>A list of <a class="xref" href="Auth0.ManagementApi.Models.BlacklistedToken.html">BlacklistedToken</a> objects.</p>
 </td>
       </tr>

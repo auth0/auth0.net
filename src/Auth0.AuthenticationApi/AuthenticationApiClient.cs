@@ -17,7 +17,7 @@ namespace Auth0.AuthenticationApi
     /// </remarks>
     public class AuthenticationApiClient : IAuthenticationApiClient, IDisposable
     {
-        static readonly IdTokenValidator idTokenValidator = new IdTokenValidator();
+        readonly IdTokenValidator idTokenValidator;
         readonly TimeSpan idTokenValidationLeeway = TimeSpan.FromMinutes(1);
         readonly Uri tokenUri;
         protected readonly IAuthenticationConnection connection;        
@@ -50,6 +50,8 @@ namespace Auth0.AuthenticationApi
             {
                 this.connection = connection;
             }
+
+            idTokenValidator = new IdTokenValidator(new OpenIdConnectDocumentRetriever(this.connection));
 
             tokenUri = BuildUri("oauth/token");
         }

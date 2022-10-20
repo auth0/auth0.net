@@ -6,7 +6,12 @@ namespace Auth0.AuthenticationApi.Tokens
 {
     internal class JsonWebKeyCache
     {
-        readonly AsyncAgedCache<string, JsonWebKeySet> cache = new AsyncAgedCache<string, JsonWebKeySet>(JsonWebKeys.GetForIssuer);
+        readonly AsyncAgedCache<string, JsonWebKeySet> cache;
+
+        public JsonWebKeyCache(JsonWebKeys jsonWebKeys)
+        {
+            cache = new AsyncAgedCache<string, JsonWebKeySet>(jsonWebKeys.GetForIssuer);
+        }
 
         public Task<JsonWebKeySet> Get(string issuer, TimeSpan maxAge)
         {
