@@ -1,4 +1,4 @@
-![](./banner.png)
+![](https://cdn.auth0.com/website/sdks/banners/auth0-net-banner.png)
 
 ![Release](https://img.shields.io/github/v/release/auth0/auth0.net)
 ![Downloads](https://img.shields.io/nuget/dt/auth0.core)
