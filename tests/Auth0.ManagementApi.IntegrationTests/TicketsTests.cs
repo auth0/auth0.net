@@ -67,7 +67,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Test_tickets_sequence()
         {
-            var existingOrganizationId = "org_Jif6mLeWXT5ec0nu";
+            var existingOrganizationId = "org_V6ojENVd1ERs5YY1";
 
             await ApiClient.Organizations.AddMembersAsync(existingOrganizationId, new OrganizationAddMembersRequest
             {
@@ -78,7 +78,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var verificationTicketRequest = new EmailVerificationTicketRequest
             {
                 UserId = _auth0User.UserId,
-                OrganizationId = "org_Jif6mLeWXT5ec0nu"
+                OrganizationId = "org_V6ojENVd1ERs5YY1"
             };
             var verificationTicketResponse = await ApiClient.Tickets.CreateEmailVerificationTicketAsync(verificationTicketRequest);
             verificationTicketResponse.Should().NotBeNull();
