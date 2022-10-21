@@ -73,7 +73,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Can_send_verification_email()
         {
-            var existingOrganizationId = "org_Jif6mLeWXT5ec0nu";
+            var existingOrganizationId = "org_V6ojENVd1ERs5YY1";
 
             await fixture.ApiClient.Organizations.AddMembersAsync(existingOrganizationId, new OrganizationAddMembersRequest
             {

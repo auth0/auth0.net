@@ -21,7 +21,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
     public class OrganizationTests : IClassFixture<OrganizationTestsFixture>
     {
-        private const string ExistingOrganizationId = "org_Jif6mLeWXT5ec0nu";
+        private const string ExistingOrganizationId = "org_V6ojENVd1ERs5YY1";
         private const string ExistingConnectionId = "con_vKey1CGOPTJClWrB";
         private const string ExistingRoleId = "rol_gOsYvLA232E0vg7p";
         private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
@@ -211,36 +211,48 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Test_organization_members_checkpoint_pagination()
         {
-            var user = await fixture.ApiClient.Users.CreateAsync(new UserCreateRequest
+            User user = null;
+            User user2 = null;
+            try
             {
-                Connection = "Username-Password-Authentication",
-                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
-                EmailVerified = true,
-                Password = Password
-            });
+                user = await fixture.ApiClient.Users.CreateAsync(new UserCreateRequest
+                {
+                    Connection = "Username-Password-Authentication",
+                    Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
+                    EmailVerified = true,
+                    Password = Password
+                });
 
-            var user2 = await fixture.ApiClient.Users.CreateAsync(new UserCreateRequest
+                user2 = await fixture.ApiClient.Users.CreateAsync(new UserCreateRequest
+                {
+                    Connection = "Username-Password-Authentication",
+                    Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
+                    EmailVerified = true,
+                    Password = Password
+                });
+
+                await fixture.ApiClient.Organizations.AddMembersAsync(ExistingOrganizationId, new OrganizationAddMembersRequest
+                {
+                    Members = new List<string> { user.UserId, user2.UserId }
+                });
+
+
+                var firstCheckPointPaginationRequest = await fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new Paging.CheckpointPaginationInfo(1));
+                var secondCheckPointPaginationRequest = await fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new Paging.CheckpointPaginationInfo(1, firstCheckPointPaginationRequest.Paging.Next));
+
+                secondCheckPointPaginationRequest.Count.Should().Be(1);
+                secondCheckPointPaginationRequest.Paging.Next.Should().NotBeNullOrEmpty();
+
+            }
+            finally
             {
-                Connection = "Username-Password-Authentication",
-                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
-                EmailVerified = true,
-                Password = Password
-            });
+                if (user != null && user2 != null) {
+                    await fixture.ApiClient.Organizations.DeleteMemberAsync(ExistingOrganizationId, new OrganizationDeleteMembersRequest { Members = new List<string> { user.UserId, user2.UserId } });
 
-            await fixture.ApiClient.Organizations.AddMembersAsync(ExistingOrganizationId, new OrganizationAddMembersRequest
-            {
-                Members = new List<string> { user.UserId, user2.UserId }
-            });
-
-
-            var firstCheckPointPaginationRequest = await fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new Paging.CheckpointPaginationInfo(1));
-            var secondCheckPointPaginationRequest = await fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new Paging.CheckpointPaginationInfo(1, firstCheckPointPaginationRequest.Paging.Next));
-
-            secondCheckPointPaginationRequest.Count.Should().Be(1);
-            secondCheckPointPaginationRequest.Paging.Next.Should().NotBeNullOrEmpty();
-            
-            await fixture.ApiClient.Users.DeleteAsync(user.UserId);
-            await fixture.ApiClient.Users.DeleteAsync(user2.UserId);
+                    await fixture.ApiClient.Users.DeleteAsync(user.UserId);
+                    await fixture.ApiClient.Users.DeleteAsync(user2.UserId);
+                }
+            }
         }
 
         [Fact]
