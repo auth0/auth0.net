@@ -1,6 +1,9 @@
 ﻿using Auth0.AuthenticationApi.Models;
 using Auth0.Tests.Shared;
 using FluentAssertions;
+using Microsoft.IdentityModel.Tokens;
+using System;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -19,6 +22,40 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                     ClientId = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
                     ClientSecret = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET"),
                     Audience = GetVariable("AUTH0_MANAGEMENT_API_AUDIENCE")
+                });
+
+                // Ensure that we received an access token back
+                token.Should().NotBeNull();
+            }
+        }
+
+        [Fact(Skip = "Run Manual")]
+        public async Task Can_get_token_using_client_credentials_and_ca()
+        {
+            // Be sure to use a client that supports CA.
+            var domain = "...";
+            var clientId = "...";
+
+            using (var authenticationApiClient = new AuthenticationApiClient(domain))
+            {
+                var privateKeyPem = @"...";
+
+                byte[] privateKeyRaw = Convert.FromBase64String(privateKeyPem);
+                using var provider = new RSACryptoServiceProvider(2048);
+                provider.ImportRSAPrivateKey(new ReadOnlySpan<byte>(privateKeyRaw), out _);
+
+                var key = new RsaSecurityKey(provider);
+
+                // Temporary
+                key.KeyId = "5qH1fh9vz3C47Q17YlhWwG9gl1SuFTxvGwZEaVacmbk";
+
+                // Get the access token
+                var token = await authenticationApiClient.GetTokenAsync(new ClientCredentialsTokenRequest
+                {
+                    ClientId = clientId,
+                    Audience = "...",
+                    ClientAssertionSecurityKey = key,
+                    ClientAssertionSecurityKeyAlgorithm = SecurityAlgorithms.RsaSha256
                 });
 
                 // Ensure that we received an access token back

@@ -1,4 +1,6 @@
-﻿namespace Auth0.AuthenticationApi.Models
+﻿using Microsoft.IdentityModel.Tokens;
+
+namespace Auth0.AuthenticationApi.Models
 {
     /// <summary>
     /// Represents a request to get new tokens based on a previously obtained refresh token.
@@ -34,6 +36,18 @@
         /// Client secret for which the refresh token was issued.
         /// </summary>
         public string ClientSecret { get; set; }
+
+        /// <summary>
+        /// Security Key to use with Client Assertion
+        /// </summary>
+        /// <remarks>
+        public SecurityKey ClientAssertionSecurityKey { get; set; }
+
+        /// <summary>
+        /// Algorithm for the Security Key to use with Client Assertion
+        /// </summary>
+        /// <remarks>
+        public string ClientAssertionSecurityKeyAlgorithm { get; set; }
 
         /// <summary>
         /// What <see cref="JwtSignatureAlgorithm"/> is used to verify the signature

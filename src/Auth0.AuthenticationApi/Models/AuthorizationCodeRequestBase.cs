@@ -1,4 +1,6 @@
-﻿namespace Auth0.AuthenticationApi.Models
+﻿using Microsoft.IdentityModel.Tokens;
+
+namespace Auth0.AuthenticationApi.Models
 {
     /// <summary>
     /// Base class for all types of Authorization Code requests.
@@ -33,6 +35,18 @@
         /// Optional except when using <see cref="AuthorizationCodeRequestBase"/>.
         /// </remarks>
         public string ClientSecret { get; set; }
+
+        /// <summary>
+        /// Security Key to use with Client Assertion
+        /// </summary>
+        /// <remarks>
+        public SecurityKey ClientAssertionSecurityKey { get; set; }
+
+        /// <summary>
+        /// Algorithm for the Security Key to use with Client Assertion
+        /// </summary>
+        /// <remarks>
+        public string ClientAssertionSecurityKeyAlgorithm { get; set; }
 
         /// <summary>
         /// Organization for Id Token verification.
