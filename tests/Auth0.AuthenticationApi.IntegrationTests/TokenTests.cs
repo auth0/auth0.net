@@ -62,5 +62,42 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 token.Should().NotBeNull();
             }
         }
+
+        [Fact]
+        public async Task Can_get_token_using_resource_owner_and_ca()
+        {
+            // Be sure to use a client that supports CA.
+            var domain = "...";
+            var clientId = "...";
+
+            using (var authenticationApiClient = new AuthenticationApiClient(domain))
+            {
+                var privateKeyPem = @"...";
+
+                byte[] privateKeyRaw = Convert.FromBase64String(privateKeyPem);
+                using var provider = new RSACryptoServiceProvider(2048);
+                provider.ImportRSAPrivateKey(new ReadOnlySpan<byte>(privateKeyRaw), out _);
+
+                var key = new RsaSecurityKey(provider);
+
+                // Temporary
+                key.KeyId = "5qH1fh9vz3C47Q17YlhWwG9gl1SuFTxvGwZEaVacmbk";
+
+                // Get the access token
+                var token = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+                {
+                    ClientId = clientId,
+                    Audience = "...",
+                    ClientAssertionSecurityKey = key,
+                    ClientAssertionSecurityKeyAlgorithm = SecurityAlgorithms.RsaSha256,
+                    Username = "...",
+                    Password = "...",
+                    Scope = "openid"
+                });
+
+                // Ensure that we received an access token back
+                token.Should().NotBeNull();
+            }
+        }
     }
 }
