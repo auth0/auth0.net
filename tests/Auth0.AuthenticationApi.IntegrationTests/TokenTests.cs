@@ -63,7 +63,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Run Manual")]
         public async Task Can_get_token_using_resource_owner_and_ca()
         {
             // Be sure to use a client that supports CA.
