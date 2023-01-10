@@ -5,7 +5,7 @@ namespace Auth0.AuthenticationApi.Models
     /// <summary>
     /// Represents a request get a token using the Client Credentials Grant flow.
     /// </summary>
-    public class ClientCredentialsTokenRequest
+    public class ClientCredentialsTokenRequest : IClientAuthentication
     {
         /// <summary>
         /// Unique identifier of the target API to access.

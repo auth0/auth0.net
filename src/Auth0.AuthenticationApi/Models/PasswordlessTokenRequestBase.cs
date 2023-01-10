@@ -6,7 +6,7 @@ namespace Auth0.AuthenticationApi.Models
     /// <summary>
     /// Base class for all types of Passwordless requests.
     /// </summary>
-    public abstract class PasswordlessTokenRequestBase
+    public abstract class PasswordlessTokenRequestBase : IClientAuthentication
     {
         /// <summary>
         /// Client ID of the application.

@@ -5,7 +5,7 @@ namespace Auth0.AuthenticationApi.Models
     /// <summary>
     /// Represents a request get a token using the Resource Owner Grant flow.
     /// </summary>
-    public class ResourceOwnerTokenRequest
+    public class ResourceOwnerTokenRequest : IClientAuthentication
     {
         /// <summary>
         /// Optional unique identifier of the target API to access.

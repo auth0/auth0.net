@@ -130,24 +130,13 @@ namespace Auth0.AuthenticationApi
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
 
-            var body = new Dictionary<string, object> {
+            var body = new Dictionary<string, string> {
                 { "grant_type", "authorization_code" },
                 { "client_id", request.ClientId },
                 { "code", request.Code },
                 { "redirect_uri", request.RedirectUri } };
 
-            if (request.ClientAssertionSecurityKey != null)
-            {
-                body.Add("client_assertion", new JwtTokenFactory(request.ClientAssertionSecurityKey, request.ClientAssertionSecurityKeyAlgorithm)
-                   .GenerateToken(request.ClientId, BaseUri.AbsoluteUri, request.ClientId
-                ));
-
-                body.Add("client_assertion_type", "urn:ietf:params:oauth:client-assertion-type:jwt-bearer");
-            }
-            else
-            {
-                body.Add("client_secret", request.ClientSecret);
-            }
+            ApplyClientAuthentication(request, body);
 
             var response = await connection.SendAsync<AccessTokenResponse>(
                 HttpMethod.Post,
@@ -174,18 +163,7 @@ namespace Auth0.AuthenticationApi
                 { "code_verifier", request.CodeVerifier },
                 { "redirect_uri", request.RedirectUri } };
 
-            if (request.ClientAssertionSecurityKey != null)
-            {
-                body.Add("client_assertion", new JwtTokenFactory(request.ClientAssertionSecurityKey, request.ClientAssertionSecurityKeyAlgorithm)
-                   .GenerateToken(request.ClientId, BaseUri.AbsoluteUri, request.ClientId
-                ));
-
-                body.Add("client_assertion_type", "urn:ietf:params:oauth:client-assertion-type:jwt-bearer");
-            }
-            else if (!string.IsNullOrEmpty(request.ClientSecret))
-            {
-                body.Add("client_secret", request.ClientSecret);
-            }
+            ApplyClientAuthentication(request, body);
 
             var response = await connection.SendAsync<AccessTokenResponse>(
                 HttpMethod.Post,
@@ -210,18 +188,7 @@ namespace Auth0.AuthenticationApi
                 { "client_id", request.ClientId },
                 { "audience", request.Audience } };
 
-            if (request.ClientAssertionSecurityKey != null)
-            {
-                body.Add("client_assertion", new JwtTokenFactory(request.ClientAssertionSecurityKey, request.ClientAssertionSecurityKeyAlgorithm)
-                   .GenerateToken(request.ClientId, BaseUri.AbsoluteUri, request.ClientId
-                ));
-
-                body.Add("client_assertion_type", "urn:ietf:params:oauth:client-assertion-type:jwt-bearer");
-            }
-            else
-            {
-                body.Add("client_secret", request.ClientSecret);
-            }
+            ApplyClientAuthentication(request, body);
 
             return connection.SendAsync<AccessTokenResponse>(
                 HttpMethod.Post,
@@ -242,18 +209,7 @@ namespace Auth0.AuthenticationApi
                 { "refresh_token", request.RefreshToken }
             };
 
-            if (request.ClientAssertionSecurityKey != null)
-            {
-                body.Add("client_assertion", new JwtTokenFactory(request.ClientAssertionSecurityKey, request.ClientAssertionSecurityKeyAlgorithm)
-                   .GenerateToken(request.ClientId, BaseUri.AbsoluteUri, request.ClientId
-                ));
-
-                body.Add("client_assertion_type", "urn:ietf:params:oauth:client-assertion-type:jwt-bearer");
-            }
-            else
-            {
-                body.Add("client_secret", request.ClientSecret);
-            }
+            ApplyClientAuthentication(request, body);
 
             body.AddIfNotEmpty("audience", request.Audience);
             body.AddIfNotEmpty("scope", request.Scope);
@@ -283,18 +239,7 @@ namespace Auth0.AuthenticationApi
                 { "scope", request.Scope }
             };
 
-            if (request.ClientAssertionSecurityKey != null)
-            {
-                body.Add("client_assertion", new JwtTokenFactory(request.ClientAssertionSecurityKey, request.ClientAssertionSecurityKeyAlgorithm)
-                   .GenerateToken(request.ClientId, BaseUri.AbsoluteUri, request.ClientId
-                ));
-
-                body.Add("client_assertion_type", "urn:ietf:params:oauth:client-assertion-type:jwt-bearer");
-            }
-            else
-            {
-                body.AddIfNotEmpty("client_secret", request.ClientSecret);
-            }
+            ApplyClientAuthentication(request, body);
 
             body.AddIfNotEmpty("audience", request.Audience);
             body.AddIfNotEmpty("realm", request.Realm);
@@ -331,18 +276,7 @@ namespace Auth0.AuthenticationApi
                 { "audience", request.Audience },
                 { "scope", request.Scope } };
 
-            if (request.ClientAssertionSecurityKey != null)
-            {
-                body.Add("client_assertion", new JwtTokenFactory(request.ClientAssertionSecurityKey, request.ClientAssertionSecurityKeyAlgorithm)
-                   .GenerateToken(request.ClientId, BaseUri.AbsoluteUri, request.ClientId
-                ));
-
-                body.Add("client_assertion_type", "urn:ietf:params:oauth:client-assertion-type:jwt-bearer");
-            }
-            else
-            {
-                body.Add("client_secret", request.ClientSecret);
-            }
+            ApplyClientAuthentication(request, body);
 
             var response = await connection.SendAsync<AccessTokenResponse>(
                 HttpMethod.Post,
@@ -371,18 +305,7 @@ namespace Auth0.AuthenticationApi
                 { "audience", request.Audience },
                 { "scope", request.Scope } };
 
-            if (request.ClientAssertionSecurityKey != null)
-            {
-                body.Add("client_assertion", new JwtTokenFactory(request.ClientAssertionSecurityKey, request.ClientAssertionSecurityKeyAlgorithm)
-                    .GenerateToken(request.ClientId, BaseUri.AbsoluteUri, request.ClientId
-                ));
-
-                body.Add("client_assertion_type", "urn:ietf:params:oauth:client-assertion-type:jwt-bearer");
-            }
-            else
-            {
-                body.Add("client_secret", request.ClientSecret);
-            }
+            ApplyClientAuthentication(request, body);
 
             var headers = String.IsNullOrEmpty(request.ForwardedForIp) ? null
                 : new Dictionary<string, string> { { "auth0-forwarded-for", request.ForwardedForIp } };
@@ -577,6 +500,22 @@ namespace Auth0.AuthenticationApi
         private IDictionary<string, string> BuildHeaders(string accessToken)
         {
             return new Dictionary<string, string> { { "Authorization", "Bearer " + accessToken } };
+        }
+
+        private void ApplyClientAuthentication(IClientAuthentication request, Dictionary<string, string> body)
+        {
+            if (request.ClientAssertionSecurityKey != null)
+            {
+                body.Add("client_assertion", new JwtTokenFactory(request.ClientAssertionSecurityKey, request.ClientAssertionSecurityKeyAlgorithm)
+                   .GenerateToken(request.ClientId, BaseUri.AbsoluteUri, request.ClientId
+                ));
+
+                body.Add("client_assertion_type", "urn:ietf:params:oauth:client-assertion-type:jwt-bearer");
+            }
+            else
+            {
+                body.AddIfNotEmpty("client_secret", request.ClientSecret);
+            }
         }
     }
 }

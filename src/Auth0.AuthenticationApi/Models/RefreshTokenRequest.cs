@@ -5,7 +5,7 @@ namespace Auth0.AuthenticationApi.Models
     /// <summary>
     /// Represents a request to get new tokens based on a previously obtained refresh token.
     /// </summary>
-    public class RefreshTokenRequest
+    public class RefreshTokenRequest : IClientAuthentication
     {
         /// <summary>
         /// Optional audience used for refreshing the access token token.
