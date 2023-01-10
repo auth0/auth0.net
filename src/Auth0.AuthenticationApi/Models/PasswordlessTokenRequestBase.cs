@@ -21,13 +21,11 @@ namespace Auth0.AuthenticationApi.Models
         /// <summary>
         /// Security Key to use with Client Assertion
         /// </summary>
-        /// <remarks>
         public SecurityKey ClientAssertionSecurityKey { get; set; }
 
         /// <summary>
         /// Algorithm for the Security Key to use with Client Assertion
         /// </summary>
-        /// <remarks>
         public string ClientAssertionSecurityKeyAlgorithm { get; set; }
 
         /// <summary>
