@@ -4,6 +4,7 @@ using Auth0.Core.Http;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http;
 using System.Security.Claims;
@@ -369,46 +370,31 @@ namespace Auth0.AuthenticationApi
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
 
+            dynamic body = new ExpandoObject();
+
+            body.client_id = request.ClientId;
+            body.connection = "email";
+            body.email = request.Email;
+            body.send = request.Type.ToString().ToLower();
+            body.authParams = request.AuthenticationParameters;
+
             if (request.ClientAssertionSecurityKey != null)
             {
-                var body = new
-                {
-                    client_id = request.ClientId,
-                    client_assertion = new JwtTokenFactory(request.ClientAssertionSecurityKey, request.ClientAssertionSecurityKeyAlgorithm)
+                body.client_assertion = new JwtTokenFactory(request.ClientAssertionSecurityKey, request.ClientAssertionSecurityKeyAlgorithm)
                         .GenerateToken(request.ClientId, BaseUri.AbsoluteUri, request.ClientId
-                    ),
-                    client_assertion_type = "urn:ietf:params:oauth:client-assertion-type:jwt-bearer",
-                    connection = "email",
-                    email = request.Email,
-                    send = request.Type.ToString().ToLower(),
-                    authParams = request.AuthenticationParameters
-                };
-
-                return connection.SendAsync<PasswordlessEmailResponse>(
-                    HttpMethod.Post,
-                    BuildUri("passwordless/start"),
-                    body,
-                    cancellationToken: cancellationToken
-                );
+                    );
+                body.client_assertion_type = "urn:ietf:params:oauth:client-assertion-type:jwt-bearer";
             }
             else
             {
-                var body = new
-                {
-                    client_id = request.ClientId,
-                    client_secret = request.ClientSecret,
-                    connection = "email",
-                    email = request.Email,
-                    send = request.Type.ToString().ToLower(),
-                    authParams = request.AuthenticationParameters
-                };
+                body.client_secret = request.ClientSecret;
+            }
 
-                return connection.SendAsync<PasswordlessEmailResponse>(
+            return connection.SendAsync<PasswordlessEmailResponse>(
                 HttpMethod.Post,
                 BuildUri("passwordless/start"),
                 body,
                 cancellationToken: cancellationToken);
-            }
         }
 
         /// <inheritdoc/>
