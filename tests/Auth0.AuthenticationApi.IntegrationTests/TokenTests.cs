@@ -33,12 +33,13 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         public async Task Can_get_token_using_client_credentials_and_ca()
         {
             // Be sure to use a client that supports CA.
-            var domain = "...";
-            var clientId = "...";
+            var domain = "";
+            var clientId = "";
 
             using (var authenticationApiClient = new AuthenticationApiClient(domain))
             {
-                var privateKeyPem = @"...";
+
+                var privateKeyPem = @"";
 
                 byte[] privateKeyRaw = Convert.FromBase64String(privateKeyPem);
                 using var provider = new RSACryptoServiceProvider(2048);
@@ -46,14 +47,11 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
                 var key = new RsaSecurityKey(provider);
 
-                // Temporary
-                key.KeyId = "5qH1fh9vz3C47Q17YlhWwG9gl1SuFTxvGwZEaVacmbk";
-
                 // Get the access token
                 var token = await authenticationApiClient.GetTokenAsync(new ClientCredentialsTokenRequest
                 {
                     ClientId = clientId,
-                    Audience = "...",
+                    Audience = $"https://{domain}/api/v2/",
                     ClientAssertionSecurityKey = key,
                     ClientAssertionSecurityKeyAlgorithm = SecurityAlgorithms.RsaSha256
                 });
@@ -67,11 +65,46 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         public async Task Can_get_token_using_resource_owner_and_ca()
         {
             // Be sure to use a client that supports CA.
-            var domain = "...";
-            var clientId = "...";
+            var domain = "";
+            var clientId = "";
 
             using (var authenticationApiClient = new AuthenticationApiClient(domain))
             {
+                var privateKeyPem = @"";
+
+                byte[] privateKeyRaw = Convert.FromBase64String(privateKeyPem);
+                using var provider = new RSACryptoServiceProvider(2048);
+                provider.ImportRSAPrivateKey(new ReadOnlySpan<byte>(privateKeyRaw), out _);
+
+                var key = new RsaSecurityKey(provider);
+
+                // Get the access token
+                var token = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+                {
+                    ClientId = clientId,
+                    Audience = $"https://{domain}/api/v2/",
+                    ClientAssertionSecurityKey = key,
+                    ClientAssertionSecurityKeyAlgorithm = SecurityAlgorithms.RsaSha256,
+                    Username = "",
+                    Password = "",
+                    Scope = "openid"
+                });
+
+                // Ensure that we received an access token back
+                token.Should().NotBeNull();
+            }
+        }
+
+        [Fact(Skip = "Run Manual")]
+        public async Task Can_get_token_using_passwordless_email_and_ca()
+        {
+            // Be sure to use a client that supports CA.
+            var domain = "";
+            var clientId = "";
+
+            using (var authenticationApiClient = new AuthenticationApiClient(domain))
+            {
+
                 var privateKeyPem = @"...";
 
                 byte[] privateKeyRaw = Convert.FromBase64String(privateKeyPem);
@@ -80,19 +113,26 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
                 var key = new RsaSecurityKey(provider);
 
-                // Temporary
-                key.KeyId = "5qH1fh9vz3C47Q17YlhWwG9gl1SuFTxvGwZEaVacmbk";
-
-                // Get the access token
-                var token = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+                await authenticationApiClient.StartPasswordlessEmailFlowAsync(new PasswordlessEmailRequest
                 {
-                    ClientId = clientId,
-                    Audience = "...",
                     ClientAssertionSecurityKey = key,
                     ClientAssertionSecurityKeyAlgorithm = SecurityAlgorithms.RsaSha256,
-                    Username = "...",
-                    Password = "...",
-                    Scope = "openid"
+                    ClientId = clientId,
+                    Type = PasswordlessEmailRequestType.Code,
+                    Email = ""
+                });
+
+                var code = "";
+
+                // Get the access token
+                var token = await authenticationApiClient.GetTokenAsync(new PasswordlessEmailTokenRequest
+                {
+                    ClientId = clientId,
+                    Audience = $"https://{domain}/api/v2/",
+                    ClientAssertionSecurityKey = key,
+                    ClientAssertionSecurityKeyAlgorithm = SecurityAlgorithms.RsaSha256,
+                    Code = code,
+                    Email = ""
                 });
 
                 // Ensure that we received an access token back
