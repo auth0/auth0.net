@@ -129,5 +129,52 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection.SendAsync<Client>(new HttpMethod("PATCH"), BuildUri($"clients/{EncodePath(id)}"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
+
+        /// <summary>
+        /// Creates a new client credential.
+        /// </summary>
+        /// <param name="clientId">The id of the client for which you want to create the credential.</param>
+        /// <param name="request">The <see cref="CreateCredentialRequest"/> containing the properties of the new client credential.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>The new <see cref="Credential"/> that has been created.</returns>
+        public Task<Credential> CreateCredentialAsync(string clientId, CreateCredential request, CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<Credential>(HttpMethod.Post, BuildUri($"clients/{EncodePath(clientId)}/credentials"), request, DefaultHeaders, cancellationToken: cancellationToken);
+        }
+
+        /// <summary>
+        /// Retrieves a list of all credentials for a client.
+        /// </summary>
+        /// <param name="clientId">The id of the client for which you want to retrieve the credentials.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>An <see cref="IList{Credential}"/> containing the client's credentials.</returns>
+        public Task<IList<Credential>> GetAllCredentialsAsync(string clientId, CancellationToken cancellationToken = default)
+        {
+            return Connection.GetAsync<IList<Credential>>(BuildUri($"clients/{EncodePath(clientId)}/credentials"), DefaultHeaders, null, cancellationToken);
+        }
+
+        /// <summary>
+        /// Retrieves a specific credential for a client.
+        /// </summary>
+        /// <param name="clientId">The id of the client for which you want to retrieve the credential.</param>
+        /// <param name="credentialId">The id of the credential to retrieve.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>A <see cref="{Credential}"/> containing the client's credential.</returns>
+        public Task<Credential> GetCredentialAsync(string clientId, string credentialId, CancellationToken cancellationToken = default)
+        {
+            return Connection.GetAsync<Credential>(BuildUri($"clients/{EncodePath(clientId)}/credentials/{EncodePath(credentialId)}"), DefaultHeaders, null, cancellationToken);
+        }
+
+        /// <summary>
+        /// Deletes a specific credential registered with the provided client.
+        /// </summary>
+        /// <param name="clientId">The id of the client for which you want to remove the credential.</param>
+        /// <param name="credentialId">The id of the credential to remove.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
+        public Task DeleteCredentialAsync(string clientId, string credentialId, CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"clients/{EncodePath(clientId)}/credentials/{EncodePath(credentialId)}"), null, DefaultHeaders, cancellationToken: cancellationToken);
+        }
     }
 }

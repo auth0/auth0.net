@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 namespace Auth0.ManagementApi.Models
@@ -36,5 +38,26 @@ namespace Auth0.ManagementApi.Models
         [JsonProperty("token_endpoint_auth_method")]
         [JsonConverter(typeof(StringEnumConverter))]
         public TokenEndpointAuthMethod TokenEndpointAuthMethod { get; set; }
+
+        [JsonProperty("client_authentication_methods")]
+        public ClientAuthenticationMethods ClientAuthenticationMethods { get; set; }
+    }
+
+    public class ClientAuthenticationMethods
+    {
+        [JsonProperty("private_key_jwt")]
+        public PrivateKeyJwt PrivateKeyJwt { get; set; }
+    }
+
+    public class PrivateKeyJwt
+    {
+        [JsonProperty("credentials")]
+        public IList<CredentialId> Credentials { get; set; }
+    }
+
+    public class CredentialId
+    {
+        [JsonProperty("id")]
+        public string Id { get; set; }
     }
 }
