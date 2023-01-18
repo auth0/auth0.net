@@ -1,9 +1,11 @@
-﻿namespace Auth0.AuthenticationApi.Models
+﻿using Microsoft.IdentityModel.Tokens;
+
+namespace Auth0.AuthenticationApi.Models
 {
     /// <summary>
     /// Represents a request get a token using the Resource Owner Grant flow.
     /// </summary>
-    public class ResourceOwnerTokenRequest
+    public class ResourceOwnerTokenRequest : IClientAuthentication
     {
         /// <summary>
         /// Optional unique identifier of the target API to access.
@@ -19,6 +21,16 @@
         /// Optional client secret of the application.
         /// </summary>
         public string ClientSecret { get; set; }
+
+        /// <summary>
+        /// Security Key to use with Client Assertion
+        /// </summary>
+        public SecurityKey ClientAssertionSecurityKey { get; set; }
+
+        /// <summary>
+        /// Algorithm for the Security Key to use with Client Assertion
+        /// </summary>
+        public string ClientAssertionSecurityKeyAlgorithm { get; set; }
 
         /// <summary>
         /// Optional realm the user belongs to.

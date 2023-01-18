@@ -1,3 +1,4 @@
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
@@ -19,6 +20,16 @@ namespace Auth0.AuthenticationApi.Models
         /// </summary>
         [JsonProperty("client_secret")]
         public string ClientSecret { get; set; }
+
+        /// <summary>
+        /// Security Key to use with Client Assertion
+        /// </summary>
+        public SecurityKey ClientAssertionSecurityKey { get; set; }
+
+        /// <summary>
+        /// Algorithm for the Security Key to use with Client Assertion
+        /// </summary>
+        public string ClientAssertionSecurityKeyAlgorithm { get; set; }
 
         /// <summary>
         /// Email to which the link or code must be sent.
