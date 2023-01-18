@@ -82,6 +82,10 @@
     <div class="level1"><a class="xref" href="Auth0.AuthenticationApi.Models.AuthorizationCodeRequestBase.html">AuthorizationCodeRequestBase</a></div>
     <div class="level2"><span class="xref">AuthorizationCodePkceTokenRequest</span></div>
   </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Auth0.AuthenticationApi.Models.IClientAuthentication.html">IClientAuthentication</a></div>
+  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
@@ -100,14 +104,41 @@
       <a class="xref" href="Auth0.AuthenticationApi.Models.AuthorizationCodeRequestBase.html#Auth0_AuthenticationApi_Models_AuthorizationCodeRequestBase_ClientSecret">AuthorizationCodeRequestBase.ClientSecret</a>
     </div>
     <div>
+      <a class="xref" href="Auth0.AuthenticationApi.Models.AuthorizationCodeRequestBase.html#Auth0_AuthenticationApi_Models_AuthorizationCodeRequestBase_ClientAssertionSecurityKey">AuthorizationCodeRequestBase.ClientAssertionSecurityKey</a>
+    </div>
+    <div>
+      <a class="xref" href="Auth0.AuthenticationApi.Models.AuthorizationCodeRequestBase.html#Auth0_AuthenticationApi_Models_AuthorizationCodeRequestBase_ClientAssertionSecurityKeyAlgorithm">AuthorizationCodeRequestBase.ClientAssertionSecurityKeyAlgorithm</a>
+    </div>
+    <div>
       <a class="xref" href="Auth0.AuthenticationApi.Models.AuthorizationCodeRequestBase.html#Auth0_AuthenticationApi_Models_AuthorizationCodeRequestBase_Organization">AuthorizationCodeRequestBase.Organization</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.AuthenticationApi.Models.html">Auth0.AuthenticationApi.Models</a></h6>
   <h6><strong>Assembly</strong>: Auth0.AuthenticationApi.dll</h6>
   <h5 id="Auth0_AuthenticationApi_Models_AuthorizationCodePkceTokenRequest_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class AuthorizationCodePkceTokenRequest : AuthorizationCodeRequestBase</code></pre>
+    <pre><code class="lang-csharp hljs">public class AuthorizationCodePkceTokenRequest : AuthorizationCodeRequestBase, IClientAuthentication</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
@@ -135,6 +166,10 @@
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Auth0.AuthenticationApi.Models.IClientAuthentication.html">IClientAuthentication</a>
+  </div>
 </article>
           </div>
           

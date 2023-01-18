@@ -79,14 +79,77 @@
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">IdTokenValidationException</span></div>
-      <div class="level2"><a class="xref" href="Auth0.AuthenticationApi.Tokens.IdTokenValidationKeyMissingException.html">IdTokenValidationKeyMissingException</a></div>
+    <div class="level1"><span class="xref">System.Exception</span></div>
+    <div class="level2"><span class="xref">IdTokenValidationException</span></div>
+      <div class="level3"><a class="xref" href="Auth0.AuthenticationApi.Tokens.IdTokenValidationKeyMissingException.html">IdTokenValidationKeyMissingException</a></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.Runtime.Serialization.ISerializable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Exception.GetBaseException()</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.GetObjectData(System.Runtime.Serialization.SerializationInfo, System.Runtime.Serialization.StreamingContext)</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.Data</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.HelpLink</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.HResult</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.InnerException</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.Message</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.Source</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.StackTrace</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.TargetSite</span>
+    </div>
+    <div>
+      <span class="xref">System.Exception.SerializeObjectState</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.AuthenticationApi.Tokens.html">Auth0.AuthenticationApi.Tokens</a></h6>
   <h6><strong>Assembly</strong>: Auth0.AuthenticationApi.dll</h6>
   <h5 id="Auth0_AuthenticationApi_Tokens_IdTokenValidationException_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class IdTokenValidationException : Exception</code></pre>
+    <pre><code class="lang-csharp hljs">[Serializable]
+public class IdTokenValidationException : Exception, ISerializable</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -99,7 +162,7 @@
     <pre><code class="lang-csharp hljs">public IdTokenValidationException()</code></pre>
   </div>
   <a id="Auth0_AuthenticationApi_Tokens_IdTokenValidationException__ctor_" data-uid="Auth0.AuthenticationApi.Tokens.IdTokenValidationException.#ctor*"></a>
-  <h4 id="Auth0_AuthenticationApi_Tokens_IdTokenValidationException__ctor_SerializationInfo_StreamingContext_" data-uid="Auth0.AuthenticationApi.Tokens.IdTokenValidationException.#ctor(SerializationInfo,StreamingContext)">IdTokenValidationException(SerializationInfo, StreamingContext)</h4>
+  <h4 id="Auth0_AuthenticationApi_Tokens_IdTokenValidationException__ctor_System_Runtime_Serialization_SerializationInfo_System_Runtime_Serialization_StreamingContext_" data-uid="Auth0.AuthenticationApi.Tokens.IdTokenValidationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">IdTokenValidationException(SerializationInfo, StreamingContext)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -117,12 +180,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">SerializationInfo</span></td>
+        <td><span class="xref">System.Runtime.Serialization.SerializationInfo</span></td>
         <td><span class="parametername">info</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">StreamingContext</span></td>
+        <td><span class="xref">System.Runtime.Serialization.StreamingContext</span></td>
         <td><span class="parametername">context</span></td>
         <td></td>
       </tr>
@@ -156,9 +219,9 @@
     </tbody>
   </table>
   <a id="Auth0_AuthenticationApi_Tokens_IdTokenValidationException__ctor_" data-uid="Auth0.AuthenticationApi.Tokens.IdTokenValidationException.#ctor*"></a>
-  <h4 id="Auth0_AuthenticationApi_Tokens_IdTokenValidationException__ctor_System_String_Exception_" data-uid="Auth0.AuthenticationApi.Tokens.IdTokenValidationException.#ctor(System.String,Exception)">IdTokenValidationException(String, Exception)</h4>
+  <h4 id="Auth0_AuthenticationApi_Tokens_IdTokenValidationException__ctor_System_String_System_Exception_" data-uid="Auth0.AuthenticationApi.Tokens.IdTokenValidationException.#ctor(System.String,System.Exception)">IdTokenValidationException(String, Exception)</h4>
   <div class="markdown level1 summary"><p>Create a new <a class="xref" href="Auth0.AuthenticationApi.Tokens.IdTokenValidationException.html">IdTokenValidationException</a> that contains a further inner 
-<see cref="!:Exception"></see> describing how this token could not be validated.</p>
+<span class="xref">System.Exception</span> describing how this token could not be validated.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -182,13 +245,17 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Exception</span></td>
+        <td><span class="xref">System.Exception</span></td>
         <td><span class="parametername">innerException</span></td>
         <td><p>Inner exception that caused this validation exception.</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.Runtime.Serialization.ISerializable</span>
+  </div>
 </article>
           </div>
           

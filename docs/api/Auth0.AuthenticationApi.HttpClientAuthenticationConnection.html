@@ -73,7 +73,7 @@
   
   <h1 id="Auth0_AuthenticationApi_HttpClientAuthenticationConnection" data-uid="Auth0.AuthenticationApi.HttpClientAuthenticationConnection" class="text-break">Class HttpClientAuthenticationConnection
   </h1>
-  <div class="markdown level0 summary"><p>Implements the <a class="xref" href="Auth0.AuthenticationApi.IAuthenticationConnection.html">IAuthenticationConnection</a> using <see cref="!:HttpClient"></see> which
+  <div class="markdown level0 summary"><p>Implements the <a class="xref" href="Auth0.AuthenticationApi.IAuthenticationConnection.html">IAuthenticationConnection</a> using <span class="xref">System.Net.Http.HttpClient</span> which
 can be either supplied or automatically managed.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
@@ -85,18 +85,42 @@ can be either supplied or automatically managed.</p>
   <div class="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="Auth0.AuthenticationApi.IAuthenticationConnection.html">IAuthenticationConnection</a></div>
-    <div><span class="xref">IDisposable</span></div>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.AuthenticationApi.html">Auth0.AuthenticationApi</a></h6>
   <h6><strong>Assembly</strong>: Auth0.AuthenticationApi.dll</h6>
   <h5 id="Auth0_AuthenticationApi_HttpClientAuthenticationConnection_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class HttpClientAuthenticationConnection : object, IAuthenticationConnection</code></pre>
+    <pre><code class="lang-csharp hljs">public class HttpClientAuthenticationConnection : IAuthenticationConnection, IDisposable</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   <a id="Auth0_AuthenticationApi_HttpClientAuthenticationConnection__ctor_" data-uid="Auth0.AuthenticationApi.HttpClientAuthenticationConnection.#ctor*"></a>
-  <h4 id="Auth0_AuthenticationApi_HttpClientAuthenticationConnection__ctor_HttpClient_" data-uid="Auth0.AuthenticationApi.HttpClientAuthenticationConnection.#ctor(HttpClient)">HttpClientAuthenticationConnection(HttpClient)</h4>
+  <h4 id="Auth0_AuthenticationApi_HttpClientAuthenticationConnection__ctor_System_Net_Http_HttpClient_" data-uid="Auth0.AuthenticationApi.HttpClientAuthenticationConnection.#ctor(System.Net.Http.HttpClient)">HttpClientAuthenticationConnection(HttpClient)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.AuthenticationApi.HttpClientAuthenticationConnection.html">HttpClientAuthenticationConnection</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -115,23 +139,23 @@ can be either supplied or automatically managed.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">HttpClient</span></td>
+        <td><span class="xref">System.Net.Http.HttpClient</span></td>
         <td><span class="parametername">httpClient</span></td>
-        <td><p>Optional <see cref="!:HttpClient"></see> to use when sending requests.</p>
+        <td><p>Optional <span class="xref">System.Net.Http.HttpClient</span> to use when sending requests.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_AuthenticationApi_HttpClientAuthenticationConnection__ctor_HttpClient__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>If you supply a <see cref="!:HttpClient"></see> it is your responsibility to manage its lifecycle and 
+  <h5 id="Auth0_AuthenticationApi_HttpClientAuthenticationConnection__ctor_System_Net_Http_HttpClient__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>If you supply a <span class="xref">System.Net.Http.HttpClient</span> it is your responsibility to manage its lifecycle and 
 dispose it when appropriate.
-If you do not supply a <see cref="!:HttpClient"></see> one will be created automatically and disposed
+If you do not supply a <span class="xref">System.Net.Http.HttpClient</span> one will be created automatically and disposed
 of when this object is disposed.</p>
 </div>
   <a id="Auth0_AuthenticationApi_HttpClientAuthenticationConnection__ctor_" data-uid="Auth0.AuthenticationApi.HttpClientAuthenticationConnection.#ctor*"></a>
-  <h4 id="Auth0_AuthenticationApi_HttpClientAuthenticationConnection__ctor_HttpMessageHandler_" data-uid="Auth0.AuthenticationApi.HttpClientAuthenticationConnection.#ctor(HttpMessageHandler)">HttpClientAuthenticationConnection(HttpMessageHandler)</h4>
+  <h4 id="Auth0_AuthenticationApi_HttpClientAuthenticationConnection__ctor_System_Net_Http_HttpMessageHandler_" data-uid="Auth0.AuthenticationApi.HttpClientAuthenticationConnection.#ctor(System.Net.Http.HttpMessageHandler)">HttpClientAuthenticationConnection(HttpMessageHandler)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.AuthenticationApi.HttpClientAuthenticationConnection.html">HttpClientAuthenticationConnection</a> class
-with a specific <see cref="!:HttpMessageHandler"></see>.</p>
+with a specific <span class="xref">System.Net.Http.HttpMessageHandler</span>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -149,9 +173,9 @@ with a specific <see cref="!:HttpMessageHandler"></see>.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">HttpMessageHandler</span></td>
+        <td><span class="xref">System.Net.Http.HttpMessageHandler</span></td>
         <td><span class="parametername">handler</span></td>
-        <td><p><see cref="!:HttpMessageHandler"></see> to use within the managed <see cref="!:HttpClient"></see>.</p>
+        <td><p><span class="xref">System.Net.Http.HttpMessageHandler</span> to use within the managed <span class="xref">System.Net.Http.HttpClient</span>.</p>
 </td>
       </tr>
     </tbody>
@@ -160,7 +184,7 @@ with a specific <see cref="!:HttpMessageHandler"></see>.</p>
   </h3>
   <a id="Auth0_AuthenticationApi_HttpClientAuthenticationConnection_Dispose_" data-uid="Auth0.AuthenticationApi.HttpClientAuthenticationConnection.Dispose*"></a>
   <h4 id="Auth0_AuthenticationApi_HttpClientAuthenticationConnection_Dispose" data-uid="Auth0.AuthenticationApi.HttpClientAuthenticationConnection.Dispose">Dispose()</h4>
-  <div class="markdown level1 summary"><p>Disposes of any owned disposable resources such as the underlying <see cref="!:HttpClient"></see> if owned.</p>
+  <div class="markdown level1 summary"><p>Disposes of any owned disposable resources such as the underlying <span class="xref">System.Net.Http.HttpClient</span> if owned.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -169,7 +193,7 @@ with a specific <see cref="!:HttpMessageHandler"></see>.</p>
   </div>
   <a id="Auth0_AuthenticationApi_HttpClientAuthenticationConnection_Dispose_" data-uid="Auth0.AuthenticationApi.HttpClientAuthenticationConnection.Dispose*"></a>
   <h4 id="Auth0_AuthenticationApi_HttpClientAuthenticationConnection_Dispose_System_Boolean_" data-uid="Auth0.AuthenticationApi.HttpClientAuthenticationConnection.Dispose(System.Boolean)">Dispose(Boolean)</h4>
-  <div class="markdown level1 summary"><p>Disposes of any owned disposable resources such as the underlying <see cref="!:HttpClient"></see> if owned.</p>
+  <div class="markdown level1 summary"><p>Disposes of any owned disposable resources such as the underlying <span class="xref">System.Net.Http.HttpClient</span> if owned.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -195,14 +219,14 @@ with a specific <see cref="!:HttpMessageHandler"></see>.</p>
     </tbody>
   </table>
   <a id="Auth0_AuthenticationApi_HttpClientAuthenticationConnection_GetAsync_" data-uid="Auth0.AuthenticationApi.HttpClientAuthenticationConnection.GetAsync*"></a>
-  <h4 id="Auth0_AuthenticationApi_HttpClientAuthenticationConnection_GetAsync__1_Uri_IDictionary_System_String_System_String__CancellationToken_" data-uid="Auth0.AuthenticationApi.HttpClientAuthenticationConnection.GetAsync``1(Uri,IDictionary{System.String,System.String},CancellationToken)">GetAsync&lt;T&gt;(Uri, IDictionary&lt;String, String&gt;, CancellationToken)</h4>
+  <h4 id="Auth0_AuthenticationApi_HttpClientAuthenticationConnection_GetAsync__1_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__System_Threading_CancellationToken_" data-uid="Auth0.AuthenticationApi.HttpClientAuthenticationConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},System.Threading.CancellationToken)">GetAsync&lt;T&gt;(Uri, IDictionary&lt;String, String&gt;, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Send a HTTP GET request to the given <code data-dev-comment-type="paramref" class="paramref">uri</code> with optional <code data-dev-comment-type="paramref" class="paramref">headers</code> as
 an asynchronous operation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;T&gt; GetAsync&lt;T&gt;(Uri uri, IDictionary&lt;string, string&gt; headers = null, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;T&gt; GetAsync&lt;T&gt;(Uri uri, IDictionary&lt;string, string&gt; headers = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -215,19 +239,19 @@ an asynchronous operation.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Uri</span></td>
+        <td><span class="xref">System.Uri</span></td>
         <td><span class="parametername">uri</span></td>
-        <td><p>Absolute <see cref="!:Uri"></see> to send the request to.</p>
+        <td><p>Absolute <span class="xref">System.Uri</span> to send the request to.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">headers</span></td>
         <td><p>Optional dictionary containing additional headers to be sent.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -244,7 +268,7 @@ an asynchronous operation.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;T&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
         <td><p>The task object representing the asynchronous operation.</p>
 </td>
       </tr>
@@ -267,13 +291,13 @@ an asynchronous operation.</p>
     </tbody>
   </table>
   <a id="Auth0_AuthenticationApi_HttpClientAuthenticationConnection_SendAsync_" data-uid="Auth0.AuthenticationApi.HttpClientAuthenticationConnection.SendAsync*"></a>
-  <h4 id="Auth0_AuthenticationApi_HttpClientAuthenticationConnection_SendAsync__1_HttpMethod_Uri_System_Object_IDictionary_System_String_System_String__CancellationToken_" data-uid="Auth0.AuthenticationApi.HttpClientAuthenticationConnection.SendAsync``1(HttpMethod,Uri,System.Object,IDictionary{System.String,System.String},CancellationToken)">SendAsync&lt;T&gt;(HttpMethod, Uri, Object, IDictionary&lt;String, String&gt;, CancellationToken)</h4>
+  <h4 id="Auth0_AuthenticationApi_HttpClientAuthenticationConnection_SendAsync__1_System_Net_Http_HttpMethod_System_Uri_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__System_Threading_CancellationToken_" data-uid="Auth0.AuthenticationApi.HttpClientAuthenticationConnection.SendAsync``1(System.Net.Http.HttpMethod,System.Uri,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},System.Threading.CancellationToken)">SendAsync&lt;T&gt;(HttpMethod, Uri, Object, IDictionary&lt;String, String&gt;, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Send an HTTP request to <code data-dev-comment-type="paramref" class="paramref">uri</code> using the HTTP <code data-dev-comment-type="paramref" class="paramref">method</code> as an asynchronous operation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;T&gt; SendAsync&lt;T&gt;(HttpMethod method, Uri uri, object body, IDictionary&lt;string, string&gt; headers = null, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;T&gt; SendAsync&lt;T&gt;(HttpMethod method, Uri uri, object body, IDictionary&lt;string, string&gt; headers = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -286,15 +310,15 @@ an asynchronous operation.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">HttpMethod</span></td>
+        <td><span class="xref">System.Net.Http.HttpMethod</span></td>
         <td><span class="parametername">method</span></td>
-        <td><p><see cref="!:HttpMethod"></see> to use.</p>
+        <td><p><span class="xref">System.Net.Http.HttpMethod</span> to use.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Uri</span></td>
+        <td><span class="xref">System.Uri</span></td>
         <td><span class="parametername">uri</span></td>
-        <td><p>Absolute <see cref="!:Uri"></see> to send the request to.</p>
+        <td><p>Absolute <span class="xref">System.Uri</span> to send the request to.</p>
 </td>
       </tr>
       <tr>
@@ -304,13 +328,13 @@ an asynchronous operation.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">headers</span></td>
         <td><p>Optional dictionary containing additional headers to be sent.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -327,7 +351,7 @@ an asynchronous operation.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;T&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
         <td><p>The task object representing the asynchronous operation.</p>
 </td>
       </tr>
@@ -354,7 +378,7 @@ an asynchronous operation.</p>
       <a class="xref" href="Auth0.AuthenticationApi.IAuthenticationConnection.html">IAuthenticationConnection</a>
   </div>
   <div>
-      <span class="xref">IDisposable</span>
+      <span class="xref">System.IDisposable</span>
   </div>
 </article>
           </div>

@@ -1,5 +1,12 @@
 # Change Log
 
+## [7.18.0](https://github.com/auth0/auth0.net/tree/7.18.0) (2023-01-18)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.17.4...7.18.0)
+
+**Added**
+- Add support for Client Assertion [\#605](https://github.com/auth0/auth0.net/pull/605) ([frederikprijck](https://github.com/frederikprijck))
+- Add support for the connection status API [\#601](https://github.com/auth0/auth0.net/pull/601) ([Hawxy](https://github.com/Hawxy))
+
 ## [7.17.4](https://github.com/auth0/auth0.net/tree/7.17.4) (2022-10-17)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.17.3...7.17.4)
 
