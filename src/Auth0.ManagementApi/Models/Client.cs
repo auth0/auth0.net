@@ -39,22 +39,37 @@ namespace Auth0.ManagementApi.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public TokenEndpointAuthMethod TokenEndpointAuthMethod { get; set; }
 
+        /// <summary>
+        /// The client's authentication methods
+        /// </summary>
         [JsonProperty("client_authentication_methods")]
         public ClientAuthenticationMethods ClientAuthenticationMethods { get; set; }
     }
 
+    /// <summary>
+    /// Structure for a client's authentication methods
+    /// </summary>
     public class ClientAuthenticationMethods
     {
         [JsonProperty("private_key_jwt")]
         public PrivateKeyJwt PrivateKeyJwt { get; set; }
     }
 
+    /// <summary>
+    /// Structure for credentials using Private Key JWT
+    /// </summary>
     public class PrivateKeyJwt
     {
         [JsonProperty("credentials")]
         public IList<CredentialId> Credentials { get; set; }
     }
 
+    /// <summary>
+    /// Structure for a client's credential.
+    /// </summary>
+    /// <remarks>
+    /// Only contains the credential's id.
+    /// </remarks>
     public class CredentialId
     {
         [JsonProperty("id")]
