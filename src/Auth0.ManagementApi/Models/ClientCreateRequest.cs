@@ -29,7 +29,7 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("token_endpoint_auth_method")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public TokenEndpointAuthMethod TokenEndpointAuthMethod { get; set; }
+        public TokenEndpointAuthMethod? TokenEndpointAuthMethod { get; set; }
 
         /// <summary>
         /// Defines the client authentication methods to use

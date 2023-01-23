@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
@@ -255,7 +256,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             allCredentialsForClient.Should().NotBeNull();
             allCredentialsForClient.Should().NotBeEmpty();
             allCredentialsForClient.Count.Should().Be(1);
-            allCredentialsForClient.Should().Contain(credential1.Id);
+            allCredentialsForClient.Select(x => x.Id).Should().Contain(credential1.Id);
 
             credential1.Name.Should().Be("Test Credential 1");
             credential1.CredentialType.Should().Be("public_key");
@@ -302,8 +303,22 @@ namespace Auth0.ManagementApi.IntegrationTests
             allCredentialsForClient.Should().NotBeNull();
             allCredentialsForClient.Should().NotBeEmpty();
             allCredentialsForClient.Count.Should().Be(2);
-            allCredentialsForClient.Should().Contain(credential1.Id);
-            allCredentialsForClient.Should().Contain(credential2.Id);
+            allCredentialsForClient.Select(x => x.Id).Should().Contain(credential1.Id);
+            allCredentialsForClient.Select(x => x.Id).Should().Contain(credential2.Id);
+
+            updatedClient = await fixture.ApiClient.Clients.UpdateAsync(newClient.ClientId, new ClientUpdateRequest
+            {
+                ClientAuthenticationMethods = new ClientAuthenticationMethods
+                {
+                    PrivateKeyJwt = new PrivateKeyJwt
+                    {
+                        Credentials = new List<CredentialId>
+                        {
+                            
+                        }
+                    }
+                }
+            });
 
             await fixture.ApiClient.Clients.DeleteCredentialAsync(newClient.ClientId, credential2.Id);
             await fixture.ApiClient.Clients.DeleteCredentialAsync(newClient.ClientId, credential1.Id);
@@ -311,8 +326,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             allCredentialsForClient = await fixture.ApiClient.Clients.GetAllCredentialsAsync(newClient.ClientId);
 
             allCredentialsForClient.Should().NotBeNull();
-            allCredentialsForClient.Should().NotBeEmpty();
-            allCredentialsForClient.Count.Should().Be(0);
+            allCredentialsForClient.Should().BeEmpty();
         }
     }
 }
