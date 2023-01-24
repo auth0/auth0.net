@@ -81,11 +81,39 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">RefreshTokenRequest</span></div>
   </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Auth0.AuthenticationApi.Models.IClientAuthentication.html">IClientAuthentication</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.AuthenticationApi.Models.html">Auth0.AuthenticationApi.Models</a></h6>
   <h6><strong>Assembly</strong>: Auth0.AuthenticationApi.dll</h6>
   <h5 id="Auth0_AuthenticationApi_Models_RefreshTokenRequest_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class RefreshTokenRequest : object</code></pre>
+    <pre><code class="lang-csharp hljs">public class RefreshTokenRequest : IClientAuthentication</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
@@ -97,6 +125,54 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public string Audience { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_AuthenticationApi_Models_RefreshTokenRequest_ClientAssertionSecurityKey_" data-uid="Auth0.AuthenticationApi.Models.RefreshTokenRequest.ClientAssertionSecurityKey*"></a>
+  <h4 id="Auth0_AuthenticationApi_Models_RefreshTokenRequest_ClientAssertionSecurityKey" data-uid="Auth0.AuthenticationApi.Models.RefreshTokenRequest.ClientAssertionSecurityKey">ClientAssertionSecurityKey</h4>
+  <div class="markdown level1 summary"><p>Security Key to use with Client Assertion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SecurityKey ClientAssertionSecurityKey { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">SecurityKey</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_AuthenticationApi_Models_RefreshTokenRequest_ClientAssertionSecurityKeyAlgorithm_" data-uid="Auth0.AuthenticationApi.Models.RefreshTokenRequest.ClientAssertionSecurityKeyAlgorithm*"></a>
+  <h4 id="Auth0_AuthenticationApi_Models_RefreshTokenRequest_ClientAssertionSecurityKeyAlgorithm" data-uid="Auth0.AuthenticationApi.Models.RefreshTokenRequest.ClientAssertionSecurityKeyAlgorithm">ClientAssertionSecurityKeyAlgorithm</h4>
+  <div class="markdown level1 summary"><p>Algorithm for the Security Key to use with Client Assertion</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ClientAssertionSecurityKeyAlgorithm { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -263,6 +339,10 @@ of Id Tokens.</p>
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Auth0.AuthenticationApi.Models.IClientAuthentication.html">IClientAuthentication</a>
+  </div>
 </article>
           </div>
           

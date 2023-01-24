@@ -84,13 +84,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_IActionsClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.CreateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_CreateAsync_Auth0_ManagementApi_Models_Actions_CreateActionRequest_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.CreateAsync(Auth0.ManagementApi.Models.Actions.CreateActionRequest,CancellationToken)">CreateAsync(CreateActionRequest, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_CreateAsync_Auth0_ManagementApi_Models_Actions_CreateActionRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.CreateAsync(Auth0.ManagementApi.Models.Actions.CreateActionRequest,System.Threading.CancellationToken)">CreateAsync(CreateActionRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Create an action. </p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;Action&gt; CreateAsync(CreateActionRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;Action&gt; CreateAsync(CreateActionRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -109,7 +109,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -126,23 +126,23 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.Action.html">Action</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.Action.html">Action</a>&gt;</td>
         <td><p>The new <a class="xref" href="Auth0.ManagementApi.Models.Actions.Action.html">Action</a> that has been created.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_Clients_IActionsClient_CreateAsync_Auth0_ManagementApi_Models_Actions_CreateActionRequest_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Auth0_ManagementApi_Clients_IActionsClient_CreateAsync_Auth0_ManagementApi_Models_Actions_CreateActionRequest_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Once an action is created, it must be deployed, and then bound to a trigger before it will be executed as part of a flow.</p>
 </div>
   <a id="Auth0_ManagementApi_Clients_IActionsClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.DeleteAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_DeleteAsync_System_String_Auth0_ManagementApi_Models_Actions_DeleteActionRequest_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.DeleteAsync(System.String,Auth0.ManagementApi.Models.Actions.DeleteActionRequest,CancellationToken)">DeleteAsync(String, DeleteActionRequest, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_DeleteAsync_System_String_Auth0_ManagementApi_Models_Actions_DeleteActionRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.DeleteAsync(System.String,Auth0.ManagementApi.Models.Actions.DeleteActionRequest,System.Threading.CancellationToken)">DeleteAsync(String, DeleteActionRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Deletes an action and all of its associated versions.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task DeleteAsync(string id, DeleteActionRequest request = null, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task DeleteAsync(string id, DeleteActionRequest request = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -167,7 +167,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -184,23 +184,23 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
-        <td><p>A <see cref="!:Task"></see> that represents the asynchronous delete operation.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous delete operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_Clients_IActionsClient_DeleteAsync_System_String_Auth0_ManagementApi_Models_Actions_DeleteActionRequest_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Auth0_ManagementApi_Clients_IActionsClient_DeleteAsync_System_String_Auth0_ManagementApi_Models_Actions_DeleteActionRequest_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>An action must be unbound from all triggers before it can be deleted.</p>
 </div>
   <a id="Auth0_ManagementApi_Clients_IActionsClient_DeployAsync_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.DeployAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_DeployAsync_System_String_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.DeployAsync(System.String,CancellationToken)">DeployAsync(String, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_DeployAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.DeployAsync(System.String,System.Threading.CancellationToken)">DeployAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Deploy an action.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;ActionVersion&gt; DeployAsync(string id, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;ActionVersion&gt; DeployAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -219,7 +219,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -236,24 +236,24 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.ActionVersion.html">ActionVersion</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.ActionVersion.html">ActionVersion</a>&gt;</td>
         <td><p>The action version that was created.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_Clients_IActionsClient_DeployAsync_System_String_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Auth0_ManagementApi_Clients_IActionsClient_DeployAsync_System_String_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Deploying an action will create a new immutable version of the action. If the action is currently bound to a trigger,
 then the system will begin executing the newly deployed version of the action immediately.Otherwise, the action will only be executed as a part of a flow once it is bound to that flow.</p>
 </div>
   <a id="Auth0_ManagementApi_Clients_IActionsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_GetAllAsync_Auth0_ManagementApi_Models_Actions_GetActionsRequest_Auth0_ManagementApi_Paging_PaginationInfo_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.GetAllAsync(Auth0.ManagementApi.Models.Actions.GetActionsRequest,Auth0.ManagementApi.Paging.PaginationInfo,CancellationToken)">GetAllAsync(GetActionsRequest, PaginationInfo, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_GetAllAsync_Auth0_ManagementApi_Models_Actions_GetActionsRequest_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.GetAllAsync(Auth0.ManagementApi.Models.Actions.GetActionsRequest,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetAllAsync(GetActionsRequest, PaginationInfo, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieve all actions.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;Action&gt;&gt; GetAllAsync(GetActionsRequest request, PaginationInfo pagination, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;Action&gt;&gt; GetAllAsync(GetActionsRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -278,7 +278,7 @@ then the system will begin executing the newly deployed version of the action im
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -295,20 +295,20 @@ then the system will begin executing the newly deployed version of the action im
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.Action.html">Action</a>&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.Action.html">Action</a>&gt;&gt;</td>
         <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the actions.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IActionsClient_GetAllTriggerBindingsAsync_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.GetAllTriggerBindingsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_GetAllTriggerBindingsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.GetAllTriggerBindingsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,CancellationToken)">GetAllTriggerBindingsAsync(String, PaginationInfo, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_GetAllTriggerBindingsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.GetAllTriggerBindingsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetAllTriggerBindingsAsync(String, PaginationInfo, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieve the actions that are bound to a trigger.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;TriggerBinding&gt;&gt; GetAllTriggerBindingsAsync(string triggerId, PaginationInfo pagination, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;TriggerBinding&gt;&gt; GetAllTriggerBindingsAsync(string triggerId, PaginationInfo pagination, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -333,7 +333,7 @@ then the system will begin executing the newly deployed version of the action im
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -350,24 +350,24 @@ then the system will begin executing the newly deployed version of the action im
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.TriggerBinding.html">TriggerBinding</a>&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.TriggerBinding.html">TriggerBinding</a>&gt;&gt;</td>
         <td><p>The retrieved trigger bindings.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_Clients_IActionsClient_GetAllTriggerBindingsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Auth0_ManagementApi_Clients_IActionsClient_GetAllTriggerBindingsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Once an action is created and deployed, it must be attached (i.e. bound) to a trigger so that it will be executed as part of a flow.
 The list of actions returned reflects the order in which they will be executed during the appropriate flow.</p>
 </div>
   <a id="Auth0_ManagementApi_Clients_IActionsClient_GetAllTriggersAsync_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.GetAllTriggersAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_GetAllTriggersAsync_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.GetAllTriggersAsync(CancellationToken)">GetAllTriggersAsync(CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_GetAllTriggersAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.GetAllTriggersAsync(System.Threading.CancellationToken)">GetAllTriggersAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieve the set of triggers currently available within actions. A trigger is an extensibility point to which actions can be bound</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IList&lt;Trigger&gt;&gt; GetAllTriggersAsync(CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;IList&lt;Trigger&gt;&gt; GetAllTriggersAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -380,7 +380,7 @@ The list of actions returned reflects the order in which they will be executed d
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -397,20 +397,20 @@ The list of actions returned reflects the order in which they will be executed d
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">IList</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.Trigger.html">Trigger</a>&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.Trigger.html">Trigger</a>&gt;&gt;</td>
         <td><p>A list containing the triggers.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IActionsClient_GetAllVersionsAsync_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.GetAllVersionsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_GetAllVersionsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.GetAllVersionsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,CancellationToken)">GetAllVersionsAsync(String, PaginationInfo, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_GetAllVersionsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.GetAllVersionsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetAllVersionsAsync(String, PaginationInfo, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieve all versions of an action.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;ActionVersion&gt;&gt; GetAllVersionsAsync(string actionId, PaginationInfo pagination, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;ActionVersion&gt;&gt; GetAllVersionsAsync(string actionId, PaginationInfo pagination, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -435,7 +435,7 @@ The list of actions returned reflects the order in which they will be executed d
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -452,23 +452,23 @@ The list of actions returned reflects the order in which they will be executed d
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.ActionVersion.html">ActionVersion</a>&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.ActionVersion.html">ActionVersion</a>&gt;&gt;</td>
         <td><p>The retrieved versions of the specified action.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_Clients_IActionsClient_GetAllVersionsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Auth0_ManagementApi_Clients_IActionsClient_GetAllVersionsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>An action version is created whenever an action is deployed. An action version is immutable, once created.</p>
 </div>
   <a id="Auth0_ManagementApi_Clients_IActionsClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_GetAsync_System_String_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.GetAsync(System.String,CancellationToken)">GetAsync(String, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_GetAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.GetAsync(System.String,System.Threading.CancellationToken)">GetAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieve an action by its ID.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;Action&gt; GetAsync(string id, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;Action&gt; GetAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -487,7 +487,7 @@ The list of actions returned reflects the order in which they will be executed d
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -504,20 +504,20 @@ The list of actions returned reflects the order in which they will be executed d
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.Action.html">Action</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.Action.html">Action</a>&gt;</td>
         <td><p>The retrieved action.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IActionsClient_GetExecutionAsync_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.GetExecutionAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_GetExecutionAsync_System_String_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.GetExecutionAsync(System.String,CancellationToken)">GetExecutionAsync(String, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_GetExecutionAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.GetExecutionAsync(System.String,System.Threading.CancellationToken)">GetExecutionAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieve information about a specific execution of a trigger.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;ActionExecution&gt; GetExecutionAsync(string id, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;ActionExecution&gt; GetExecutionAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -536,7 +536,7 @@ The list of actions returned reflects the order in which they will be executed d
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -553,24 +553,24 @@ The list of actions returned reflects the order in which they will be executed d
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.ActionExecution.html">ActionExecution</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.ActionExecution.html">ActionExecution</a>&gt;</td>
         <td><p>The retrieved execution.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_Clients_IActionsClient_GetExecutionAsync_System_String_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Auth0_ManagementApi_Clients_IActionsClient_GetExecutionAsync_System_String_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Relevant execution IDs will be included in tenant logs generated as part of that authentication flow.
 Executions will only be stored for 10 days after their creation.</p>
 </div>
   <a id="Auth0_ManagementApi_Clients_IActionsClient_GetVersionAsync_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.GetVersionAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_GetVersionAsync_System_String_System_String_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.GetVersionAsync(System.String,System.String,CancellationToken)">GetVersionAsync(String, String, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_GetVersionAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.GetVersionAsync(System.String,System.String,System.Threading.CancellationToken)">GetVersionAsync(String, String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieve a specific version of an action.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;ActionVersion&gt; GetVersionAsync(string actionId, string versionId, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;ActionVersion&gt; GetVersionAsync(string actionId, string versionId, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -595,7 +595,7 @@ Executions will only be stored for 10 days after their creation.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -612,23 +612,23 @@ Executions will only be stored for 10 days after their creation.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.ActionVersion.html">ActionVersion</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.ActionVersion.html">ActionVersion</a>&gt;</td>
         <td><p>The retrieved version of the specified action.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_Clients_IActionsClient_GetVersionAsync_System_String_System_String_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Auth0_ManagementApi_Clients_IActionsClient_GetVersionAsync_System_String_System_String_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>An action version is created whenever an action is deployed. An action version is immutable, once created.</p>
 </div>
   <a id="Auth0_ManagementApi_Clients_IActionsClient_RollbackToVersionAsync_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.RollbackToVersionAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_RollbackToVersionAsync_System_String_System_String_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.RollbackToVersionAsync(System.String,System.String,CancellationToken)">RollbackToVersionAsync(String, String, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_RollbackToVersionAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.RollbackToVersionAsync(System.String,System.String,System.Threading.CancellationToken)">RollbackToVersionAsync(String, String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Performs the equivalent of a roll-back of an action to an earlier, specified version.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;ActionVersion&gt; RollbackToVersionAsync(string actionId, string versionId, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;ActionVersion&gt; RollbackToVersionAsync(string actionId, string versionId, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -653,7 +653,7 @@ Executions will only be stored for 10 days after their creation.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -670,24 +670,24 @@ Executions will only be stored for 10 days after their creation.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.ActionVersion.html">ActionVersion</a>&gt;</td>
-        <td><p>A <see cref="!:Task"></see> that represents the asynchronous delete operation.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.ActionVersion.html">ActionVersion</a>&gt;</td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous delete operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_Clients_IActionsClient_RollbackToVersionAsync_System_String_System_String_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Auth0_ManagementApi_Clients_IActionsClient_RollbackToVersionAsync_System_String_System_String_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Creates a new, deployed action version that is identical to the specified version.
 If this action is currently bound to a trigger, the system will begin executing the newly-created version immediately.</p>
 </div>
   <a id="Auth0_ManagementApi_Clients_IActionsClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.UpdateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_Actions_UpdateActionRequest_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.Actions.UpdateActionRequest,CancellationToken)">UpdateAsync(String, UpdateActionRequest, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_Actions_UpdateActionRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.Actions.UpdateActionRequest,System.Threading.CancellationToken)">UpdateAsync(String, UpdateActionRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Update an existing action.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;Action&gt; UpdateAsync(string id, UpdateActionRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;Action&gt; UpdateAsync(string id, UpdateActionRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -712,7 +712,7 @@ If this action is currently bound to a trigger, the system will begin executing 
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -729,17 +729,17 @@ If this action is currently bound to a trigger, the system will begin executing 
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.Action.html">Action</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.Action.html">Action</a>&gt;</td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.Actions.Action.html">Action</a> that was updated.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_Clients_IActionsClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_Actions_UpdateActionRequest_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Auth0_ManagementApi_Clients_IActionsClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_Actions_UpdateActionRequest_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>If this action is currently bound to a trigger, updating it will not affect any user flows until the action is deployed.</p>
 </div>
   <a id="Auth0_ManagementApi_Clients_IActionsClient_UpdateTriggerBindingsAsync_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.UpdateTriggerBindingsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_UpdateTriggerBindingsAsync_System_String_Auth0_ManagementApi_Models_Actions_UpdateTriggerBindingsRequest_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.UpdateTriggerBindingsAsync(System.String,Auth0.ManagementApi.Models.Actions.UpdateTriggerBindingsRequest,CancellationToken)">UpdateTriggerBindingsAsync(String, UpdateTriggerBindingsRequest, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IActionsClient_UpdateTriggerBindingsAsync_System_String_Auth0_ManagementApi_Models_Actions_UpdateTriggerBindingsRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IActionsClient.UpdateTriggerBindingsAsync(System.String,Auth0.ManagementApi.Models.Actions.UpdateTriggerBindingsRequest,System.Threading.CancellationToken)">UpdateTriggerBindingsAsync(String, UpdateTriggerBindingsRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Update the actions that are bound (i.e. attached) to a trigger.
 Once an action is created and deployed, it must be attached(i.e.bound) to a trigger so that it will be executed as part of a flow.
 The order in which the actions are provided will determine the order in which they are executed.</p>
@@ -747,7 +747,7 @@ The order in which the actions are provided will determine the order in which th
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IList&lt;TriggerBinding&gt;&gt; UpdateTriggerBindingsAsync(string triggerId, UpdateTriggerBindingsRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;IList&lt;TriggerBinding&gt;&gt; UpdateTriggerBindingsAsync(string triggerId, UpdateTriggerBindingsRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -772,7 +772,7 @@ The order in which the actions are provided will determine the order in which th
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -789,7 +789,7 @@ The order in which the actions are provided will determine the order in which th
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">IList</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.TriggerBinding.html">TriggerBinding</a>&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Actions.TriggerBinding.html">TriggerBinding</a>&gt;&gt;</td>
         <td><p>The trigger bindings.</p>
 </td>
       </tr>
