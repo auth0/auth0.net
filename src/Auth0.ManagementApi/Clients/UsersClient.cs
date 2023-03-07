@@ -1,4 +1,5 @@
 ﻿using Auth0.ManagementApi.Models;
+using Auth0.ManagementApi.Models.Users;
 using Auth0.ManagementApi.Paging;
 using Newtonsoft.Json;
 using System;
@@ -372,6 +373,103 @@ namespace Auth0.ManagementApi.Clients
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
                 }), DefaultHeaders, organizationsConverters, cancellationToken);
+        }
+
+        /// <summary>
+        /// Gets a list of authentication methods.
+        /// </summary>
+        /// <param name="userId">The ID of the user for which you want to retrieve the authentication methods.</param>
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>An <see cref="IPagedList{AuthenticationMethod}"/> containing the list of authentication methods.</returns>
+        public Task<IPagedList<AuthenticationMethod>> GetAuthenticationMethodsAsync(string userId, PaginationInfo pagination, CancellationToken cancellationToken = default)
+        {
+            if (pagination == null)
+                throw new ArgumentNullException(nameof(pagination));
+
+            return Connection.GetAsync<IPagedList<AuthenticationMethod>>(BuildUri($"users/{EncodePath(userId)}/authentication-methods",
+                new Dictionary<string, string>
+                {
+                    {"page", pagination.PageNo.ToString()},
+                    {"per_page", pagination.PerPage.ToString()},
+                    {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
+                }), DefaultHeaders, organizationsConverters, cancellationToken);
+        }
+
+        /// <summary>
+        /// Gets an authentication method for a given user.
+        /// </summary>
+        /// <param name="userId">The ID of the user for which you want to retrieve the authentication method.</param>
+        /// <param name="authenticationMethodId">The ID of the authentication method you want to retrieve.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>The <see cref="AuthenticationMethod"/> that was requested.</returns>
+        public Task<AuthenticationMethod> GetAuthenticationMethodAsync(string userId, string authenticationMethodId, CancellationToken cancellationToken = default)
+        {
+            return Connection.GetAsync<AuthenticationMethod>(BuildUri($"users/{EncodePath(userId)}/authentication-methods/{EncodePath(authenticationMethodId)}"), DefaultHeaders, cancellationToken: cancellationToken);
+        }
+
+        /// <summary>
+        /// Creates an authentication method for a given user.
+        /// </summary>
+        /// <remarks>
+        /// Authentication methods created via this endpoint will be auto confirmed and should already have verification completed.
+        /// </remarks>
+        /// <param name="userId">The ID of the user for which you want to create the authentication method.</param>
+        /// <param name="request">The <see cref="AuthenticationMethodCreateRequest" /> containing the properties of the authentication method to create.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>The newly created <see cref="AuthenticationMethod"/>.</returns>
+        public Task<AuthenticationMethod> CreateAuthenticationMethodAsync(string userId, AuthenticationMethodCreateRequest request, CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<AuthenticationMethod>(HttpMethod.Post, BuildUri($"users/{EncodePath(userId)}/authentication-methods"), request, DefaultHeaders, cancellationToken: cancellationToken);
+        }
+
+        /// <summary>
+        /// Updates all authentication methods by replacing them with the given ones.
+        /// </summary>
+        /// <param name="userId">The ID of the user for which you want to update the authentication methods.</param>
+        /// <param name="request">The <see cref="AuthenticationMethodsUpdateRequest" /> containing the properties of the authentication methods to update.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
+        public Task UpdateAuthenticationMethodsAsync(string userId, AuthenticationMethodsUpdateRequest request, CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<object>(HttpMethod.Put, BuildUri($"users/{EncodePath(userId)}/authentication-methods"), request, DefaultHeaders, cancellationToken: cancellationToken);
+        }
+
+
+        /// <summary>
+        /// Update an authentication methods.
+        /// </summary>
+        /// <param name="userId">The ID of the user for which you want to update the authentication methods</param>
+        /// <param name="authenticationMethodId">The ID of the authentication method you want to update.</param>
+        /// <param name="request">The <see cref="AuthenticationMethodUpdateRequest" /> containing the properties of the authentication methods to update.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
+        public Task UpdateAuthenticationMethodAsync(string userId, string authenticationMethodId, AuthenticationMethodUpdateRequest request, CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<object>(new HttpMethod("PATCH"), BuildUri($"users/{EncodePath(userId)}/authentication-methods/{EncodePath(authenticationMethodId)}"), request, DefaultHeaders, cancellationToken: cancellationToken);
+        }
+
+        /// <summary>
+        /// Deletes all authentication methods for the given user.
+        /// </summary>
+        /// <param name="userId">The ID of the user for which you want to update the authentication methods.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
+        public Task DeleteAuthenticationMethodsAsync(string userId, CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"users/{EncodePath(userId)}/authentication-methods"), null, DefaultHeaders, cancellationToken: cancellationToken);
+        }
+
+        /// <summary>
+        /// Deletes an authentication method by id,.
+        /// </summary>
+        /// <param name="userId">The ID of the user for which you want to delete the authentication methods.</param>
+        /// <param name="authenticationMethodId">The ID of the authentication method you want to delete.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
+        public Task DeleteAuthenticationMethodAsync(string userId, string authenticationMethodId, CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"users/{EncodePath(userId)}/authentication-methods/{EncodePath(authenticationMethodId)}"), null, DefaultHeaders, cancellationToken: cancellationToken);
         }
     }
 }
