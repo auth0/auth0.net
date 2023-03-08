@@ -20,6 +20,7 @@ namespace Auth0.ManagementApi.Clients
         readonly JsonConverter[] rolesConverters = new JsonConverter[] { new PagedListConverter<Role>("roles") };
         readonly JsonConverter[] permissionsConverters = new JsonConverter[] { new PagedListConverter<UserPermission>("permissions") };
         readonly JsonConverter[] organizationsConverters = new JsonConverter[] { new PagedListConverter<Organization>("organizations") };
+        readonly JsonConverter[] authenticationMethodConverters = new JsonConverter[] { new PagedListConverter<AuthenticationMethod>("") };
 
         /// <summary>
         /// Initializes a new instance of <see cref="UsersClient"/>.
@@ -393,7 +394,7 @@ namespace Auth0.ManagementApi.Clients
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
-                }), DefaultHeaders, organizationsConverters, cancellationToken);
+                }), DefaultHeaders, authenticationMethodConverters, cancellationToken);
         }
 
         /// <summary>
@@ -430,7 +431,7 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="request">The <see cref="AuthenticationMethodsUpdateRequest" /> containing the properties of the authentication methods to update.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-        public Task UpdateAuthenticationMethodsAsync(string userId, AuthenticationMethodsUpdateRequest request, CancellationToken cancellationToken = default)
+        public Task UpdateAuthenticationMethodsAsync(string userId, IList<AuthenticationMethodsUpdateRequest> request, CancellationToken cancellationToken = default)
         {
             return Connection.SendAsync<object>(HttpMethod.Put, BuildUri($"users/{EncodePath(userId)}/authentication-methods"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }

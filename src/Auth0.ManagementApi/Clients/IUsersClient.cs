@@ -3,6 +3,7 @@ namespace Auth0.ManagementApi.Clients
   using System.Collections.Generic;
   using System.Threading;
   using System.Threading.Tasks;
+  using Auth0.ManagementApi.Models.Users;
   using Models;
   using Paging;
 
@@ -200,5 +201,72 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
     /// <returns>An <see cref="IPagedList{Organization}"/> containing the list of organizations.</returns>
     Task<IPagedList<Organization>> GetAllOrganizationsAsync(string userId, PaginationInfo pagination, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Gets a list of authentication methods.
+    /// </summary>
+    /// <param name="userId">The ID of the user for which you want to retrieve the authentication methods.</param>
+    /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>An <see cref="IPagedList{AuthenticationMethod}"/> containing the list of authentication methods.</returns>
+    Task<IPagedList<AuthenticationMethod>> GetAuthenticationMethodsAsync(string userId, PaginationInfo pagination, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Gets an authentication method for a given user.
+    /// </summary>
+    /// <param name="userId">The ID of the user for which you want to retrieve the authentication method.</param>
+    /// <param name="authenticationMethodId">The ID of the authentication method you want to retrieve.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>The <see cref="AuthenticationMethod"/> that was requested.</returns>
+    Task<AuthenticationMethod> GetAuthenticationMethodAsync(string userId, string authenticationMethodId, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Creates an authentication method for a given user.
+    /// </summary>
+    /// <remarks>
+    /// Authentication methods created via this endpoint will be auto confirmed and should already have verification completed.
+    /// </remarks>
+    /// <param name="userId">The ID of the user for which you want to create the authentication method.</param>
+    /// <param name="request">The <see cref="AuthenticationMethodCreateRequest" /> containing the properties of the authentication method to create.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>The newly created <see cref="AuthenticationMethod"/>.</returns>
+    Task<AuthenticationMethod> CreateAuthenticationMethodAsync(string userId, AuthenticationMethodCreateRequest request, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Updates all authentication methods by replacing them with the given ones.
+    /// </summary>
+    /// <param name="userId">The ID of the user for which you want to update the authentication methods.</param>
+    /// <param name="request">The <see cref="AuthenticationMethodsUpdateRequest" /> containing the properties of the authentication methods to update.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
+    Task UpdateAuthenticationMethodsAsync(string userId, IList<AuthenticationMethodsUpdateRequest> request, CancellationToken cancellationToken = default);
+
+
+    /// <summary>
+    /// Update an authentication methods.
+    /// </summary>
+    /// <param name="userId">The ID of the user for which you want to update the authentication methods</param>
+    /// <param name="authenticationMethodId">The ID of the authentication method you want to update.</param>
+    /// <param name="request">The <see cref="AuthenticationMethodUpdateRequest" /> containing the properties of the authentication methods to update.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
+    Task UpdateAuthenticationMethodAsync(string userId, string authenticationMethodId, AuthenticationMethodUpdateRequest request, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Deletes all authentication methods for the given user.
+    /// </summary>
+    /// <param name="userId">The ID of the user for which you want to update the authentication methods.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
+    Task DeleteAuthenticationMethodsAsync(string userId, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Deletes an authentication method by id,.
+    /// </summary>
+    /// <param name="userId">The ID of the user for which you want to delete the authentication methods.</param>
+    /// <param name="authenticationMethodId">The ID of the authentication method you want to delete.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
+    Task DeleteAuthenticationMethodAsync(string userId, string authenticationMethodId, CancellationToken cancellationToken = default);
   }
 }
