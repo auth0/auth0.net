@@ -20,7 +20,7 @@ namespace Auth0.ManagementApi.Clients
         readonly JsonConverter[] rolesConverters = new JsonConverter[] { new PagedListConverter<Role>("roles") };
         readonly JsonConverter[] permissionsConverters = new JsonConverter[] { new PagedListConverter<UserPermission>("permissions") };
         readonly JsonConverter[] organizationsConverters = new JsonConverter[] { new PagedListConverter<Organization>("organizations") };
-        readonly JsonConverter[] authenticationMethodConverters = new JsonConverter[] { new PagedListConverter<AuthenticationMethod>("") };
+        readonly JsonConverter[] authenticationMethodConverters = new JsonConverter[] { new PagedListConverter<AuthenticationMethod>("authenticators") };
 
         /// <summary>
         /// Initializes a new instance of <see cref="UsersClient"/>.
@@ -383,10 +383,9 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>An <see cref="IPagedList{AuthenticationMethod}"/> containing the list of authentication methods.</returns>
-        public Task<IPagedList<AuthenticationMethod>> GetAuthenticationMethodsAsync(string userId, PaginationInfo pagination, CancellationToken cancellationToken = default)
+        public Task<IPagedList<AuthenticationMethod>> GetAuthenticationMethodsAsync(string userId, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
-            if (pagination == null)
-                throw new ArgumentNullException(nameof(pagination));
+            pagination = pagination ?? new PaginationInfo();
 
             return Connection.GetAsync<IPagedList<AuthenticationMethod>>(BuildUri($"users/{EncodePath(userId)}/authentication-methods",
                 new Dictionary<string, string>

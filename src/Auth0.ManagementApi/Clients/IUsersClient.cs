@@ -209,7 +209,7 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
     /// <returns>An <see cref="IPagedList{AuthenticationMethod}"/> containing the list of authentication methods.</returns>
-    Task<IPagedList<AuthenticationMethod>> GetAuthenticationMethodsAsync(string userId, PaginationInfo pagination, CancellationToken cancellationToken = default);
+    Task<IPagedList<AuthenticationMethod>> GetAuthenticationMethodsAsync(string userId, PaginationInfo pagination = null, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Gets an authentication method for a given user.
