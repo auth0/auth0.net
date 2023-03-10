@@ -238,9 +238,8 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="userId">The ID of the user for which you want to update the authentication methods.</param>
     /// <param name="request">The <see cref="AuthenticationMethodsUpdateRequest" /> containing the properties of the authentication methods to update.</param>
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-    /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-    Task UpdateAuthenticationMethodsAsync(string userId, IList<AuthenticationMethodsUpdateRequest> request, CancellationToken cancellationToken = default);
-
+    /// <returns>The updated list of <see cref="AuthenticationMethod"/>.</returns>
+    Task<IList<AuthenticationMethod>> UpdateAuthenticationMethodsAsync(string userId, IList<AuthenticationMethodsUpdateRequest> request, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Update an authentication methods.
@@ -249,8 +248,8 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="authenticationMethodId">The ID of the authentication method you want to update.</param>
     /// <param name="request">The <see cref="AuthenticationMethodUpdateRequest" /> containing the properties of the authentication methods to update.</param>
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-    /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-    Task UpdateAuthenticationMethodAsync(string userId, string authenticationMethodId, AuthenticationMethodUpdateRequest request, CancellationToken cancellationToken = default);
+    /// <returns>The updated <see cref="AuthenticationMethod"/>.</returns>
+    Task<AuthenticationMethod> UpdateAuthenticationMethodAsync(string userId, string authenticationMethodId, AuthenticationMethodUpdateRequest request, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Deletes all authentication methods for the given user.
