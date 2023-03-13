@@ -15,4 +15,10 @@
   <ItemGroup Condition="'$(TargetFramework)'=='net452'">
     <Reference Include="System.Net.Http" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Models\Users\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Users\" />
+  </ItemGroup>
 </Project>
