@@ -1,5 +1,11 @@
 # Change Log
 
+## [7.19.0](https://github.com/auth0/auth0.net/tree/7.19.0) (2023-03-13)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.18.0...7.19.0)
+
+**Added**
+- Add Factor Management Endpoints [\#608](https://github.com/auth0/auth0.net/pull/608) ([frederikprijck](https://github.com/frederikprijck))
+
 ## [7.18.0](https://github.com/auth0/auth0.net/tree/7.18.0) (2023-01-18)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.17.4...7.18.0)
 

@@ -1221,7 +1221,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.IUsersClient.html",
-          "hash": "51zoYIMRb94yfu5GZhyZlKzkehF/+NZnUrqY/XNJ4yw="
+          "hash": "hv/ykKsPzjFq8lK3nn9FfNVejO25S0WXAU189hkeTVw="
         }
       },
       "is_incremental": false,
@@ -1401,7 +1401,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.UsersClient.html",
-          "hash": "4+Ds3D6eJ1lvTOjOgAQYZmkG1iDMQOsotxGiuNScsfY="
+          "hash": "XDydnM4u+oiponcFXHakwuJfKRvuOZeB8TRwomIaBDc="
         }
       },
       "is_incremental": false,
@@ -4145,6 +4145,78 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html",
+          "hash": "3UxoJPUL8veinoglsD2GZ2mO15Zu02bxRi4BeiIlSJ8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Users.AuthenticationMethodBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Users.AuthenticationMethodBase.html",
+          "hash": "drUCwKPmH+/am6SFswnYdvcQVIa/yUfES6PboYM8WCE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html",
+          "hash": "vWV+9eZeM4IDWe+HfcRXc+jiqpuuAyMOKmh+NFVdT+g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.html",
+          "hash": "xo8R/UDAqD+tZ05sdmOZ6+kQ5H3FnEbp56+FS8Qw4tQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.html",
+          "hash": "dwYYGlomXIn2fsfwrJIa0xQdCCqP2ohQpqskvGNCTdY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Users.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Users.html",
+          "hash": "IsbaJHlEbLe341DYUGc/ikNDPy+guozL4h1BYWWb3qU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Auth0.ManagementApi.Models.UsersExportsJobField.yml",
       "output": {
         ".html": {
@@ -4329,7 +4401,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "q0iyoa0gxSOkoA0p+NOHz+hiYyug2Lbv5r65JPlBFUM="
+          "hash": "srEVL5goxZZ9PU2M4JAru79nHvkj8/wnTJRcbKM+8Wc="
         }
       },
       "is_incremental": false,
@@ -4366,8 +4438,8 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 352,
-          "skipped_file_count": 13
+          "total_file_count": 358,
+          "skipped_file_count": 14
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
