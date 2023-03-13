@@ -333,6 +333,64 @@
       </tr>
     </tbody>
   </table>
+  <a id="Auth0_ManagementApi_Clients_UsersClient_CreateAuthenticationMethodAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.CreateAuthenticationMethodAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_CreateAuthenticationMethodAsync_System_String_Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.CreateAuthenticationMethodAsync(System.String,Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest,System.Threading.CancellationToken)">CreateAuthenticationMethodAsync(String, AuthenticationMethodCreateRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Creates an authentication method for a given user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;AuthenticationMethod&gt; CreateAuthenticationMethodAsync(string userId, AuthenticationMethodCreateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">userId</span></td>
+        <td><p>The ID of the user for which you want to create the authentication method.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html">AuthenticationMethodCreateRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html">AuthenticationMethodCreateRequest</a> containing the properties of the authentication method to create.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>&gt;</td>
+        <td><p>The newly created <a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Auth0_ManagementApi_Clients_UsersClient_CreateAuthenticationMethodAsync_System_String_Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Authentication methods created via this endpoint will be auto confirmed and should already have verification completed.</p>
+</div>
   <a id="Auth0_ManagementApi_Clients_UsersClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.DeleteAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_UsersClient_DeleteAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.UsersClient.DeleteAsync(System.String)">DeleteAsync(String)</h4>
   <div class="markdown level1 summary"><p>Deletes a user.</p>
@@ -356,6 +414,110 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The id of the user to delete.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous delete operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Clients_UsersClient_DeleteAuthenticationMethodAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.DeleteAuthenticationMethodAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_DeleteAuthenticationMethodAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.DeleteAuthenticationMethodAsync(System.String,System.String,System.Threading.CancellationToken)">DeleteAuthenticationMethodAsync(String, String, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Deletes an authentication method by id,.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DeleteAuthenticationMethodAsync(string userId, string authenticationMethodId, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">userId</span></td>
+        <td><p>The ID of the user for which you want to delete the authentication methods.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">authenticationMethodId</span></td>
+        <td><p>The ID of the authentication method you want to delete.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous delete operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Clients_UsersClient_DeleteAuthenticationMethodsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.DeleteAuthenticationMethodsAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_DeleteAuthenticationMethodsAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.DeleteAuthenticationMethodsAsync(System.String,System.Threading.CancellationToken)">DeleteAuthenticationMethodsAsync(String, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Deletes all authentication methods for the given user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DeleteAuthenticationMethodsAsync(string userId, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">userId</span></td>
+        <td><p>The ID of the user for which you want to update the authentication methods.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
 </td>
       </tr>
     </tbody>
@@ -649,6 +811,116 @@ true)</p>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>&gt;</td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a> that was requested.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Clients_UsersClient_GetAuthenticationMethodAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAuthenticationMethodAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetAuthenticationMethodAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAuthenticationMethodAsync(System.String,System.String,System.Threading.CancellationToken)">GetAuthenticationMethodAsync(String, String, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets an authentication method for a given user.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;AuthenticationMethod&gt; GetAuthenticationMethodAsync(string userId, string authenticationMethodId, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">userId</span></td>
+        <td><p>The ID of the user for which you want to retrieve the authentication method.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">authenticationMethodId</span></td>
+        <td><p>The ID of the authentication method you want to retrieve.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>&gt;</td>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a> that was requested.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Clients_UsersClient_GetAuthenticationMethodsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAuthenticationMethodsAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetAuthenticationMethodsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAuthenticationMethodsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetAuthenticationMethodsAsync(String, PaginationInfo, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Gets a list of authentication methods.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;AuthenticationMethod&gt;&gt; GetAuthenticationMethodsAsync(string userId, PaginationInfo pagination = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">userId</span></td>
+        <td><p>The ID of the user for which you want to retrieve the authentication methods.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></td>
+        <td><span class="parametername">pagination</span></td>
+        <td><p>Specifies pagination info to use when requesting paged results.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>&gt;&gt;</td>
+        <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the list of authentication methods.</p>
 </td>
       </tr>
     </tbody>
@@ -1315,6 +1587,122 @@ true)</p>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>&gt;</td>
         <td><p>The newly updated <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Clients_UsersClient_UpdateAuthenticationMethodAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.UpdateAuthenticationMethodAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_UpdateAuthenticationMethodAsync_System_String_System_String_Auth0_ManagementApi_Models_Users_AuthenticationMethodUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.UpdateAuthenticationMethodAsync(System.String,System.String,Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest,System.Threading.CancellationToken)">UpdateAuthenticationMethodAsync(String, String, AuthenticationMethodUpdateRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Update an authentication methods.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;AuthenticationMethod&gt; UpdateAuthenticationMethodAsync(string userId, string authenticationMethodId, AuthenticationMethodUpdateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">userId</span></td>
+        <td><p>The ID of the user for which you want to update the authentication methods</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">authenticationMethodId</span></td>
+        <td><p>The ID of the authentication method you want to update.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.html">AuthenticationMethodUpdateRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.html">AuthenticationMethodUpdateRequest</a> containing the properties of the authentication methods to update.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>&gt;</td>
+        <td><p>The updated <a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Clients_UsersClient_UpdateAuthenticationMethodsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.UpdateAuthenticationMethodsAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_UsersClient_UpdateAuthenticationMethodsAsync_System_String_System_Collections_Generic_IList_Auth0_ManagementApi_Models_Users_AuthenticationMethodsUpdateRequest__System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.UpdateAuthenticationMethodsAsync(System.String,System.Collections.Generic.IList{Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest},System.Threading.CancellationToken)">UpdateAuthenticationMethodsAsync(String, IList&lt;AuthenticationMethodsUpdateRequest&gt;, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Updates all authentication methods by replacing them with the given ones.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;AuthenticationMethod&gt;&gt; UpdateAuthenticationMethodsAsync(string userId, IList&lt;AuthenticationMethodsUpdateRequest&gt; request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">userId</span></td>
+        <td><p>The ID of the user for which you want to update the authentication methods.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.html">AuthenticationMethodsUpdateRequest</a>&gt;</td>
+        <td><span class="parametername">request</span></td>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.html">AuthenticationMethodsUpdateRequest</a> containing the properties of the authentication methods to update.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>&gt;&gt;</td>
+        <td><p>The updated list of <a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>.</p>
 </td>
       </tr>
     </tbody>
