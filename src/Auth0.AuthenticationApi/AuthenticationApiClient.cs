@@ -20,7 +20,7 @@ namespace Auth0.AuthenticationApi
     /// <remarks>
     /// Full documentation on the Auth0 Authentication API is available at https://auth0.com/docs/api/authentication
     /// </remarks>
-    public class AuthenticationApiClient : IAuthenticationApiClient, IDisposable
+    public class AuthenticationApiClient : IAuthenticationApiClient
     {
         readonly IdTokenValidator idTokenValidator;
         readonly TimeSpan idTokenValidationLeeway = TimeSpan.FromMinutes(1);

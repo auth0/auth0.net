@@ -11,7 +11,7 @@ namespace Auth0.AuthenticationApi
     /// <remarks>
     /// Full documentation for the Authentication API is available at https://auth0.com/docs/auth-api
     /// </remarks>
-    public interface IAuthenticationApiClient
+    public interface IAuthenticationApiClient : IDisposable
     {
         /// <summary>
         /// Base URI that will be used for all the requests.
