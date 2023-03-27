@@ -7069,6 +7069,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.IUsersClient.CreateAsync
   nameWithType: IUsersClient.CreateAsync
+- uid: Auth0.ManagementApi.Clients.IUsersClient.CreateAuthenticationMethodAsync(System.String,Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest,System.Threading.CancellationToken)
+  name: CreateAuthenticationMethodAsync(String, AuthenticationMethodCreateRequest, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.IUsersClient.html#Auth0_ManagementApi_Clients_IUsersClient_CreateAuthenticationMethodAsync_System_String_Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.IUsersClient.CreateAuthenticationMethodAsync(System.String,Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.IUsersClient.CreateAuthenticationMethodAsync(System.String, Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest, System.Threading.CancellationToken)
+  nameWithType: IUsersClient.CreateAuthenticationMethodAsync(String, AuthenticationMethodCreateRequest, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.IUsersClient.CreateAuthenticationMethodAsync*
+  name: CreateAuthenticationMethodAsync
+  href: api/Auth0.ManagementApi.Clients.IUsersClient.html#Auth0_ManagementApi_Clients_IUsersClient_CreateAuthenticationMethodAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.IUsersClient.CreateAuthenticationMethodAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.IUsersClient.CreateAuthenticationMethodAsync
+  nameWithType: IUsersClient.CreateAuthenticationMethodAsync
 - uid: Auth0.ManagementApi.Clients.IUsersClient.DeleteAsync(System.String)
   name: DeleteAsync(String)
   href: api/Auth0.ManagementApi.Clients.IUsersClient.html#Auth0_ManagementApi_Clients_IUsersClient_DeleteAsync_System_String_
@@ -7082,6 +7095,32 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.IUsersClient.DeleteAsync
   nameWithType: IUsersClient.DeleteAsync
+- uid: Auth0.ManagementApi.Clients.IUsersClient.DeleteAuthenticationMethodAsync(System.String,System.String,System.Threading.CancellationToken)
+  name: DeleteAuthenticationMethodAsync(String, String, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.IUsersClient.html#Auth0_ManagementApi_Clients_IUsersClient_DeleteAuthenticationMethodAsync_System_String_System_String_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.IUsersClient.DeleteAuthenticationMethodAsync(System.String,System.String,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.IUsersClient.DeleteAuthenticationMethodAsync(System.String, System.String, System.Threading.CancellationToken)
+  nameWithType: IUsersClient.DeleteAuthenticationMethodAsync(String, String, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.IUsersClient.DeleteAuthenticationMethodAsync*
+  name: DeleteAuthenticationMethodAsync
+  href: api/Auth0.ManagementApi.Clients.IUsersClient.html#Auth0_ManagementApi_Clients_IUsersClient_DeleteAuthenticationMethodAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.IUsersClient.DeleteAuthenticationMethodAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.IUsersClient.DeleteAuthenticationMethodAsync
+  nameWithType: IUsersClient.DeleteAuthenticationMethodAsync
+- uid: Auth0.ManagementApi.Clients.IUsersClient.DeleteAuthenticationMethodsAsync(System.String,System.Threading.CancellationToken)
+  name: DeleteAuthenticationMethodsAsync(String, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.IUsersClient.html#Auth0_ManagementApi_Clients_IUsersClient_DeleteAuthenticationMethodsAsync_System_String_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.IUsersClient.DeleteAuthenticationMethodsAsync(System.String,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.IUsersClient.DeleteAuthenticationMethodsAsync(System.String, System.Threading.CancellationToken)
+  nameWithType: IUsersClient.DeleteAuthenticationMethodsAsync(String, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.IUsersClient.DeleteAuthenticationMethodsAsync*
+  name: DeleteAuthenticationMethodsAsync
+  href: api/Auth0.ManagementApi.Clients.IUsersClient.html#Auth0_ManagementApi_Clients_IUsersClient_DeleteAuthenticationMethodsAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.IUsersClient.DeleteAuthenticationMethodsAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.IUsersClient.DeleteAuthenticationMethodsAsync
+  nameWithType: IUsersClient.DeleteAuthenticationMethodsAsync
 - uid: Auth0.ManagementApi.Clients.IUsersClient.DeleteMultifactorProviderAsync(System.String,System.String,System.Threading.CancellationToken)
   name: DeleteMultifactorProviderAsync(String, String, CancellationToken)
   href: api/Auth0.ManagementApi.Clients.IUsersClient.html#Auth0_ManagementApi_Clients_IUsersClient_DeleteMultifactorProviderAsync_System_String_System_String_System_Threading_CancellationToken_
@@ -7147,6 +7186,32 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.IUsersClient.GetAsync
   nameWithType: IUsersClient.GetAsync
+- uid: Auth0.ManagementApi.Clients.IUsersClient.GetAuthenticationMethodAsync(System.String,System.String,System.Threading.CancellationToken)
+  name: GetAuthenticationMethodAsync(String, String, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.IUsersClient.html#Auth0_ManagementApi_Clients_IUsersClient_GetAuthenticationMethodAsync_System_String_System_String_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.IUsersClient.GetAuthenticationMethodAsync(System.String,System.String,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.IUsersClient.GetAuthenticationMethodAsync(System.String, System.String, System.Threading.CancellationToken)
+  nameWithType: IUsersClient.GetAuthenticationMethodAsync(String, String, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.IUsersClient.GetAuthenticationMethodAsync*
+  name: GetAuthenticationMethodAsync
+  href: api/Auth0.ManagementApi.Clients.IUsersClient.html#Auth0_ManagementApi_Clients_IUsersClient_GetAuthenticationMethodAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.IUsersClient.GetAuthenticationMethodAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.IUsersClient.GetAuthenticationMethodAsync
+  nameWithType: IUsersClient.GetAuthenticationMethodAsync
+- uid: Auth0.ManagementApi.Clients.IUsersClient.GetAuthenticationMethodsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)
+  name: GetAuthenticationMethodsAsync(String, PaginationInfo, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.IUsersClient.html#Auth0_ManagementApi_Clients_IUsersClient_GetAuthenticationMethodsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.IUsersClient.GetAuthenticationMethodsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.IUsersClient.GetAuthenticationMethodsAsync(System.String, Auth0.ManagementApi.Paging.PaginationInfo, System.Threading.CancellationToken)
+  nameWithType: IUsersClient.GetAuthenticationMethodsAsync(String, PaginationInfo, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.IUsersClient.GetAuthenticationMethodsAsync*
+  name: GetAuthenticationMethodsAsync
+  href: api/Auth0.ManagementApi.Clients.IUsersClient.html#Auth0_ManagementApi_Clients_IUsersClient_GetAuthenticationMethodsAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.IUsersClient.GetAuthenticationMethodsAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.IUsersClient.GetAuthenticationMethodsAsync
+  nameWithType: IUsersClient.GetAuthenticationMethodsAsync
 - uid: Auth0.ManagementApi.Clients.IUsersClient.GetEnrollmentsAsync(System.String,System.Threading.CancellationToken)
   name: GetEnrollmentsAsync(String, CancellationToken)
   href: api/Auth0.ManagementApi.Clients.IUsersClient.html#Auth0_ManagementApi_Clients_IUsersClient_GetEnrollmentsAsync_System_String_System_Threading_CancellationToken_
@@ -7299,6 +7364,35 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.IUsersClient.UpdateAsync
   nameWithType: IUsersClient.UpdateAsync
+- uid: Auth0.ManagementApi.Clients.IUsersClient.UpdateAuthenticationMethodAsync(System.String,System.String,Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest,System.Threading.CancellationToken)
+  name: UpdateAuthenticationMethodAsync(String, String, AuthenticationMethodUpdateRequest, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.IUsersClient.html#Auth0_ManagementApi_Clients_IUsersClient_UpdateAuthenticationMethodAsync_System_String_System_String_Auth0_ManagementApi_Models_Users_AuthenticationMethodUpdateRequest_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.IUsersClient.UpdateAuthenticationMethodAsync(System.String,System.String,Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.IUsersClient.UpdateAuthenticationMethodAsync(System.String, System.String, Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest, System.Threading.CancellationToken)
+  nameWithType: IUsersClient.UpdateAuthenticationMethodAsync(String, String, AuthenticationMethodUpdateRequest, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.IUsersClient.UpdateAuthenticationMethodAsync*
+  name: UpdateAuthenticationMethodAsync
+  href: api/Auth0.ManagementApi.Clients.IUsersClient.html#Auth0_ManagementApi_Clients_IUsersClient_UpdateAuthenticationMethodAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.IUsersClient.UpdateAuthenticationMethodAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.IUsersClient.UpdateAuthenticationMethodAsync
+  nameWithType: IUsersClient.UpdateAuthenticationMethodAsync
+- uid: Auth0.ManagementApi.Clients.IUsersClient.UpdateAuthenticationMethodsAsync(System.String,System.Collections.Generic.IList{Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest},System.Threading.CancellationToken)
+  name: UpdateAuthenticationMethodsAsync(String, IList<AuthenticationMethodsUpdateRequest>, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.IUsersClient.html#Auth0_ManagementApi_Clients_IUsersClient_UpdateAuthenticationMethodsAsync_System_String_System_Collections_Generic_IList_Auth0_ManagementApi_Models_Users_AuthenticationMethodsUpdateRequest__System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.IUsersClient.UpdateAuthenticationMethodsAsync(System.String,System.Collections.Generic.IList{Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest},System.Threading.CancellationToken)
+  name.vb: UpdateAuthenticationMethodsAsync(String, IList(Of AuthenticationMethodsUpdateRequest), CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.IUsersClient.UpdateAuthenticationMethodsAsync(System.String, System.Collections.Generic.IList<Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest>, System.Threading.CancellationToken)
+  fullName.vb: Auth0.ManagementApi.Clients.IUsersClient.UpdateAuthenticationMethodsAsync(System.String, System.Collections.Generic.IList(Of Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest), System.Threading.CancellationToken)
+  nameWithType: IUsersClient.UpdateAuthenticationMethodsAsync(String, IList<AuthenticationMethodsUpdateRequest>, CancellationToken)
+  nameWithType.vb: IUsersClient.UpdateAuthenticationMethodsAsync(String, IList(Of AuthenticationMethodsUpdateRequest), CancellationToken)
+- uid: Auth0.ManagementApi.Clients.IUsersClient.UpdateAuthenticationMethodsAsync*
+  name: UpdateAuthenticationMethodsAsync
+  href: api/Auth0.ManagementApi.Clients.IUsersClient.html#Auth0_ManagementApi_Clients_IUsersClient_UpdateAuthenticationMethodsAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.IUsersClient.UpdateAuthenticationMethodsAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.IUsersClient.UpdateAuthenticationMethodsAsync
+  nameWithType: IUsersClient.UpdateAuthenticationMethodsAsync
 - uid: Auth0.ManagementApi.Clients.JobsClient
   name: JobsClient
   href: api/Auth0.ManagementApi.Clients.JobsClient.html
@@ -8611,6 +8705,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.UsersClient.CreateAsync
   nameWithType: UsersClient.CreateAsync
+- uid: Auth0.ManagementApi.Clients.UsersClient.CreateAuthenticationMethodAsync(System.String,Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest,System.Threading.CancellationToken)
+  name: CreateAuthenticationMethodAsync(String, AuthenticationMethodCreateRequest, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_CreateAuthenticationMethodAsync_System_String_Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.UsersClient.CreateAuthenticationMethodAsync(System.String,Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.UsersClient.CreateAuthenticationMethodAsync(System.String, Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest, System.Threading.CancellationToken)
+  nameWithType: UsersClient.CreateAuthenticationMethodAsync(String, AuthenticationMethodCreateRequest, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.UsersClient.CreateAuthenticationMethodAsync*
+  name: CreateAuthenticationMethodAsync
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_CreateAuthenticationMethodAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.UsersClient.CreateAuthenticationMethodAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.UsersClient.CreateAuthenticationMethodAsync
+  nameWithType: UsersClient.CreateAuthenticationMethodAsync
 - uid: Auth0.ManagementApi.Clients.UsersClient.DeleteAsync(System.String)
   name: DeleteAsync(String)
   href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_DeleteAsync_System_String_
@@ -8624,6 +8731,32 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.UsersClient.DeleteAsync
   nameWithType: UsersClient.DeleteAsync
+- uid: Auth0.ManagementApi.Clients.UsersClient.DeleteAuthenticationMethodAsync(System.String,System.String,System.Threading.CancellationToken)
+  name: DeleteAuthenticationMethodAsync(String, String, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_DeleteAuthenticationMethodAsync_System_String_System_String_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.UsersClient.DeleteAuthenticationMethodAsync(System.String,System.String,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.UsersClient.DeleteAuthenticationMethodAsync(System.String, System.String, System.Threading.CancellationToken)
+  nameWithType: UsersClient.DeleteAuthenticationMethodAsync(String, String, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.UsersClient.DeleteAuthenticationMethodAsync*
+  name: DeleteAuthenticationMethodAsync
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_DeleteAuthenticationMethodAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.UsersClient.DeleteAuthenticationMethodAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.UsersClient.DeleteAuthenticationMethodAsync
+  nameWithType: UsersClient.DeleteAuthenticationMethodAsync
+- uid: Auth0.ManagementApi.Clients.UsersClient.DeleteAuthenticationMethodsAsync(System.String,System.Threading.CancellationToken)
+  name: DeleteAuthenticationMethodsAsync(String, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_DeleteAuthenticationMethodsAsync_System_String_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.UsersClient.DeleteAuthenticationMethodsAsync(System.String,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.UsersClient.DeleteAuthenticationMethodsAsync(System.String, System.Threading.CancellationToken)
+  nameWithType: UsersClient.DeleteAuthenticationMethodsAsync(String, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.UsersClient.DeleteAuthenticationMethodsAsync*
+  name: DeleteAuthenticationMethodsAsync
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_DeleteAuthenticationMethodsAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.UsersClient.DeleteAuthenticationMethodsAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.UsersClient.DeleteAuthenticationMethodsAsync
+  nameWithType: UsersClient.DeleteAuthenticationMethodsAsync
 - uid: Auth0.ManagementApi.Clients.UsersClient.DeleteMultifactorProviderAsync(System.String,System.String,System.Threading.CancellationToken)
   name: DeleteMultifactorProviderAsync(String, String, CancellationToken)
   href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_DeleteMultifactorProviderAsync_System_String_System_String_System_Threading_CancellationToken_
@@ -8689,6 +8822,32 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.UsersClient.GetAsync
   nameWithType: UsersClient.GetAsync
+- uid: Auth0.ManagementApi.Clients.UsersClient.GetAuthenticationMethodAsync(System.String,System.String,System.Threading.CancellationToken)
+  name: GetAuthenticationMethodAsync(String, String, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_GetAuthenticationMethodAsync_System_String_System_String_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.UsersClient.GetAuthenticationMethodAsync(System.String,System.String,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.UsersClient.GetAuthenticationMethodAsync(System.String, System.String, System.Threading.CancellationToken)
+  nameWithType: UsersClient.GetAuthenticationMethodAsync(String, String, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.UsersClient.GetAuthenticationMethodAsync*
+  name: GetAuthenticationMethodAsync
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_GetAuthenticationMethodAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.UsersClient.GetAuthenticationMethodAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.UsersClient.GetAuthenticationMethodAsync
+  nameWithType: UsersClient.GetAuthenticationMethodAsync
+- uid: Auth0.ManagementApi.Clients.UsersClient.GetAuthenticationMethodsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)
+  name: GetAuthenticationMethodsAsync(String, PaginationInfo, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_GetAuthenticationMethodsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.UsersClient.GetAuthenticationMethodsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.UsersClient.GetAuthenticationMethodsAsync(System.String, Auth0.ManagementApi.Paging.PaginationInfo, System.Threading.CancellationToken)
+  nameWithType: UsersClient.GetAuthenticationMethodsAsync(String, PaginationInfo, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.UsersClient.GetAuthenticationMethodsAsync*
+  name: GetAuthenticationMethodsAsync
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_GetAuthenticationMethodsAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.UsersClient.GetAuthenticationMethodsAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.UsersClient.GetAuthenticationMethodsAsync
+  nameWithType: UsersClient.GetAuthenticationMethodsAsync
 - uid: Auth0.ManagementApi.Clients.UsersClient.GetEnrollmentsAsync(System.String,System.Threading.CancellationToken)
   name: GetEnrollmentsAsync(String, CancellationToken)
   href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_GetEnrollmentsAsync_System_String_System_Threading_CancellationToken_
@@ -8841,6 +9000,35 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.UsersClient.UpdateAsync
   nameWithType: UsersClient.UpdateAsync
+- uid: Auth0.ManagementApi.Clients.UsersClient.UpdateAuthenticationMethodAsync(System.String,System.String,Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest,System.Threading.CancellationToken)
+  name: UpdateAuthenticationMethodAsync(String, String, AuthenticationMethodUpdateRequest, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_UpdateAuthenticationMethodAsync_System_String_System_String_Auth0_ManagementApi_Models_Users_AuthenticationMethodUpdateRequest_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.UsersClient.UpdateAuthenticationMethodAsync(System.String,System.String,Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.UsersClient.UpdateAuthenticationMethodAsync(System.String, System.String, Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest, System.Threading.CancellationToken)
+  nameWithType: UsersClient.UpdateAuthenticationMethodAsync(String, String, AuthenticationMethodUpdateRequest, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.UsersClient.UpdateAuthenticationMethodAsync*
+  name: UpdateAuthenticationMethodAsync
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_UpdateAuthenticationMethodAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.UsersClient.UpdateAuthenticationMethodAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.UsersClient.UpdateAuthenticationMethodAsync
+  nameWithType: UsersClient.UpdateAuthenticationMethodAsync
+- uid: Auth0.ManagementApi.Clients.UsersClient.UpdateAuthenticationMethodsAsync(System.String,System.Collections.Generic.IList{Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest},System.Threading.CancellationToken)
+  name: UpdateAuthenticationMethodsAsync(String, IList<AuthenticationMethodsUpdateRequest>, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_UpdateAuthenticationMethodsAsync_System_String_System_Collections_Generic_IList_Auth0_ManagementApi_Models_Users_AuthenticationMethodsUpdateRequest__System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.UsersClient.UpdateAuthenticationMethodsAsync(System.String,System.Collections.Generic.IList{Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest},System.Threading.CancellationToken)
+  name.vb: UpdateAuthenticationMethodsAsync(String, IList(Of AuthenticationMethodsUpdateRequest), CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.UsersClient.UpdateAuthenticationMethodsAsync(System.String, System.Collections.Generic.IList<Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest>, System.Threading.CancellationToken)
+  fullName.vb: Auth0.ManagementApi.Clients.UsersClient.UpdateAuthenticationMethodsAsync(System.String, System.Collections.Generic.IList(Of Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest), System.Threading.CancellationToken)
+  nameWithType: UsersClient.UpdateAuthenticationMethodsAsync(String, IList<AuthenticationMethodsUpdateRequest>, CancellationToken)
+  nameWithType.vb: UsersClient.UpdateAuthenticationMethodsAsync(String, IList(Of AuthenticationMethodsUpdateRequest), CancellationToken)
+- uid: Auth0.ManagementApi.Clients.UsersClient.UpdateAuthenticationMethodsAsync*
+  name: UpdateAuthenticationMethodsAsync
+  href: api/Auth0.ManagementApi.Clients.UsersClient.html#Auth0_ManagementApi_Clients_UsersClient_UpdateAuthenticationMethodsAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.UsersClient.UpdateAuthenticationMethodsAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.UsersClient.UpdateAuthenticationMethodsAsync
+  nameWithType: UsersClient.UpdateAuthenticationMethodsAsync
 - uid: Auth0.ManagementApi.FileUploadParameter
   name: FileUploadParameter
   href: api/Auth0.ManagementApi.FileUploadParameter.html
@@ -20156,6 +20344,445 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.UserPermission.Sources
   nameWithType: UserPermission.Sources
+- uid: Auth0.ManagementApi.Models.Users
+  name: Auth0.ManagementApi.Models.Users
+  href: api/Auth0.ManagementApi.Models.Users.html
+  commentId: N:Auth0.ManagementApi.Models.Users
+  fullName: Auth0.ManagementApi.Models.Users
+  nameWithType: Auth0.ManagementApi.Models.Users
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod
+  name: AuthenticationMethod
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html
+  commentId: T:Auth0.ManagementApi.Models.Users.AuthenticationMethod
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod
+  nameWithType: AuthenticationMethod
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.AuthenticationMethods
+  name: AuthenticationMethods
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_AuthenticationMethods
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethod.AuthenticationMethods
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.AuthenticationMethods
+  nameWithType: AuthenticationMethod.AuthenticationMethods
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.AuthenticationMethods*
+  name: AuthenticationMethods
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_AuthenticationMethods_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethod.AuthenticationMethods
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.AuthenticationMethods
+  nameWithType: AuthenticationMethod.AuthenticationMethods
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.Confirmed
+  name: Confirmed
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_Confirmed
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethod.Confirmed
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.Confirmed
+  nameWithType: AuthenticationMethod.Confirmed
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.Confirmed*
+  name: Confirmed
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_Confirmed_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethod.Confirmed
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.Confirmed
+  nameWithType: AuthenticationMethod.Confirmed
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.CreatedAt
+  name: CreatedAt
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_CreatedAt
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethod.CreatedAt
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.CreatedAt
+  nameWithType: AuthenticationMethod.CreatedAt
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.CreatedAt*
+  name: CreatedAt
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_CreatedAt_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethod.CreatedAt
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.CreatedAt
+  nameWithType: AuthenticationMethod.CreatedAt
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.Email
+  name: Email
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_Email
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethod.Email
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.Email
+  nameWithType: AuthenticationMethod.Email
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.Email*
+  name: Email
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_Email_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethod.Email
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.Email
+  nameWithType: AuthenticationMethod.Email
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.EnrolledAt
+  name: EnrolledAt
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_EnrolledAt
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethod.EnrolledAt
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.EnrolledAt
+  nameWithType: AuthenticationMethod.EnrolledAt
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.EnrolledAt*
+  name: EnrolledAt
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_EnrolledAt_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethod.EnrolledAt
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.EnrolledAt
+  nameWithType: AuthenticationMethod.EnrolledAt
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.KeyId
+  name: KeyId
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_KeyId
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethod.KeyId
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.KeyId
+  nameWithType: AuthenticationMethod.KeyId
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.KeyId*
+  name: KeyId
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_KeyId_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethod.KeyId
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.KeyId
+  nameWithType: AuthenticationMethod.KeyId
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.LastAuthAt
+  name: LastAuthAt
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_LastAuthAt
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethod.LastAuthAt
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.LastAuthAt
+  nameWithType: AuthenticationMethod.LastAuthAt
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.LastAuthAt*
+  name: LastAuthAt
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_LastAuthAt_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethod.LastAuthAt
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.LastAuthAt
+  nameWithType: AuthenticationMethod.LastAuthAt
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.LinkId
+  name: LinkId
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_LinkId
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethod.LinkId
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.LinkId
+  nameWithType: AuthenticationMethod.LinkId
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.LinkId*
+  name: LinkId
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_LinkId_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethod.LinkId
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.LinkId
+  nameWithType: AuthenticationMethod.LinkId
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.Name
+  name: Name
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_Name
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethod.Name
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.Name
+  nameWithType: AuthenticationMethod.Name
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.Name*
+  name: Name
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_Name_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethod.Name
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.Name
+  nameWithType: AuthenticationMethod.Name
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.PhoneNumber
+  name: PhoneNumber
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_PhoneNumber
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethod.PhoneNumber
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.PhoneNumber
+  nameWithType: AuthenticationMethod.PhoneNumber
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.PhoneNumber*
+  name: PhoneNumber
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_PhoneNumber_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethod.PhoneNumber
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.PhoneNumber
+  nameWithType: AuthenticationMethod.PhoneNumber
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.PreferredAuthenticationMethod
+  name: PreferredAuthenticationMethod
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_PreferredAuthenticationMethod
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethod.PreferredAuthenticationMethod
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.PreferredAuthenticationMethod
+  nameWithType: AuthenticationMethod.PreferredAuthenticationMethod
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.PreferredAuthenticationMethod*
+  name: PreferredAuthenticationMethod
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_PreferredAuthenticationMethod_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethod.PreferredAuthenticationMethod
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.PreferredAuthenticationMethod
+  nameWithType: AuthenticationMethod.PreferredAuthenticationMethod
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.PublicKey
+  name: PublicKey
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_PublicKey
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethod.PublicKey
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.PublicKey
+  nameWithType: AuthenticationMethod.PublicKey
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.PublicKey*
+  name: PublicKey
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_PublicKey_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethod.PublicKey
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.PublicKey
+  nameWithType: AuthenticationMethod.PublicKey
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodBase
+  name: AuthenticationMethodBase
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodBase.html
+  commentId: T:Auth0.ManagementApi.Models.Users.AuthenticationMethodBase
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodBase
+  nameWithType: AuthenticationMethodBase
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodBase.Id
+  name: Id
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodBase.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodBase_Id
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethodBase.Id
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodBase.Id
+  nameWithType: AuthenticationMethodBase.Id
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodBase.Id*
+  name: Id
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodBase.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodBase_Id_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethodBase.Id
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodBase.Id
+  nameWithType: AuthenticationMethodBase.Id
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodBase.Type
+  name: Type
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodBase.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodBase_Type
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethodBase.Type
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodBase.Type
+  nameWithType: AuthenticationMethodBase.Type
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodBase.Type*
+  name: Type
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodBase.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodBase_Type_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethodBase.Type
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodBase.Type
+  nameWithType: AuthenticationMethodBase.Type
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest
+  name: AuthenticationMethodCreateRequest
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html
+  commentId: T:Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest
+  nameWithType: AuthenticationMethodCreateRequest
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.Email
+  name: Email
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_Email
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.Email
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.Email
+  nameWithType: AuthenticationMethodCreateRequest.Email
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.Email*
+  name: Email
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_Email_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.Email
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.Email
+  nameWithType: AuthenticationMethodCreateRequest.Email
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.KeyId
+  name: KeyId
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_KeyId
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.KeyId
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.KeyId
+  nameWithType: AuthenticationMethodCreateRequest.KeyId
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.KeyId*
+  name: KeyId
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_KeyId_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.KeyId
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.KeyId
+  nameWithType: AuthenticationMethodCreateRequest.KeyId
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.Name
+  name: Name
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_Name
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.Name
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.Name
+  nameWithType: AuthenticationMethodCreateRequest.Name
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.Name*
+  name: Name
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_Name_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.Name
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.Name
+  nameWithType: AuthenticationMethodCreateRequest.Name
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.PhoneNumber
+  name: PhoneNumber
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_PhoneNumber
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.PhoneNumber
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.PhoneNumber
+  nameWithType: AuthenticationMethodCreateRequest.PhoneNumber
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.PhoneNumber*
+  name: PhoneNumber
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_PhoneNumber_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.PhoneNumber
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.PhoneNumber
+  nameWithType: AuthenticationMethodCreateRequest.PhoneNumber
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.PreferredAuthenticationMethod
+  name: PreferredAuthenticationMethod
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_PreferredAuthenticationMethod
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.PreferredAuthenticationMethod
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.PreferredAuthenticationMethod
+  nameWithType: AuthenticationMethodCreateRequest.PreferredAuthenticationMethod
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.PreferredAuthenticationMethod*
+  name: PreferredAuthenticationMethod
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_PreferredAuthenticationMethod_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.PreferredAuthenticationMethod
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.PreferredAuthenticationMethod
+  nameWithType: AuthenticationMethodCreateRequest.PreferredAuthenticationMethod
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.PublicKey
+  name: PublicKey
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_PublicKey
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.PublicKey
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.PublicKey
+  nameWithType: AuthenticationMethodCreateRequest.PublicKey
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.PublicKey*
+  name: PublicKey
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_PublicKey_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.PublicKey
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.PublicKey
+  nameWithType: AuthenticationMethodCreateRequest.PublicKey
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.RelyingPartyIdentifier
+  name: RelyingPartyIdentifier
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_RelyingPartyIdentifier
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.RelyingPartyIdentifier
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.RelyingPartyIdentifier
+  nameWithType: AuthenticationMethodCreateRequest.RelyingPartyIdentifier
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.RelyingPartyIdentifier*
+  name: RelyingPartyIdentifier
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_RelyingPartyIdentifier_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.RelyingPartyIdentifier
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.RelyingPartyIdentifier
+  nameWithType: AuthenticationMethodCreateRequest.RelyingPartyIdentifier
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.TOTPSecret
+  name: TOTPSecret
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_TOTPSecret
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.TOTPSecret
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.TOTPSecret
+  nameWithType: AuthenticationMethodCreateRequest.TOTPSecret
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.TOTPSecret*
+  name: TOTPSecret
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_TOTPSecret_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.TOTPSecret
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.TOTPSecret
+  nameWithType: AuthenticationMethodCreateRequest.TOTPSecret
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.Type
+  name: Type
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_Type
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.Type
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.Type
+  nameWithType: AuthenticationMethodCreateRequest.Type
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.Type*
+  name: Type
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_Type_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.Type
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.Type
+  nameWithType: AuthenticationMethodCreateRequest.Type
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest
+  name: AuthenticationMethodsUpdateRequest
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.html
+  commentId: T:Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest
+  nameWithType: AuthenticationMethodsUpdateRequest
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.Email
+  name: Email
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodsUpdateRequest_Email
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.Email
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.Email
+  nameWithType: AuthenticationMethodsUpdateRequest.Email
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.Email*
+  name: Email
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodsUpdateRequest_Email_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.Email
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.Email
+  nameWithType: AuthenticationMethodsUpdateRequest.Email
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.Name
+  name: Name
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodsUpdateRequest_Name
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.Name
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.Name
+  nameWithType: AuthenticationMethodsUpdateRequest.Name
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.Name*
+  name: Name
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodsUpdateRequest_Name_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.Name
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.Name
+  nameWithType: AuthenticationMethodsUpdateRequest.Name
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.PhoneNumber
+  name: PhoneNumber
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodsUpdateRequest_PhoneNumber
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.PhoneNumber
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.PhoneNumber
+  nameWithType: AuthenticationMethodsUpdateRequest.PhoneNumber
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.PhoneNumber*
+  name: PhoneNumber
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodsUpdateRequest_PhoneNumber_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.PhoneNumber
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.PhoneNumber
+  nameWithType: AuthenticationMethodsUpdateRequest.PhoneNumber
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.PreferredAuthenticationMethod
+  name: PreferredAuthenticationMethod
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodsUpdateRequest_PreferredAuthenticationMethod
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.PreferredAuthenticationMethod
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.PreferredAuthenticationMethod
+  nameWithType: AuthenticationMethodsUpdateRequest.PreferredAuthenticationMethod
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.PreferredAuthenticationMethod*
+  name: PreferredAuthenticationMethod
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodsUpdateRequest_PreferredAuthenticationMethod_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.PreferredAuthenticationMethod
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.PreferredAuthenticationMethod
+  nameWithType: AuthenticationMethodsUpdateRequest.PreferredAuthenticationMethod
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.TOTPSecret
+  name: TOTPSecret
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodsUpdateRequest_TOTPSecret
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.TOTPSecret
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.TOTPSecret
+  nameWithType: AuthenticationMethodsUpdateRequest.TOTPSecret
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.TOTPSecret*
+  name: TOTPSecret
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodsUpdateRequest_TOTPSecret_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.TOTPSecret
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.TOTPSecret
+  nameWithType: AuthenticationMethodsUpdateRequest.TOTPSecret
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.Type
+  name: Type
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodsUpdateRequest_Type
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.Type
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.Type
+  nameWithType: AuthenticationMethodsUpdateRequest.Type
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.Type*
+  name: Type
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodsUpdateRequest_Type_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.Type
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.Type
+  nameWithType: AuthenticationMethodsUpdateRequest.Type
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest
+  name: AuthenticationMethodUpdateRequest
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.html
+  commentId: T:Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest
+  nameWithType: AuthenticationMethodUpdateRequest
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.Name
+  name: Name
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodUpdateRequest_Name
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.Name
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.Name
+  nameWithType: AuthenticationMethodUpdateRequest.Name
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.Name*
+  name: Name
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodUpdateRequest_Name_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.Name
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.Name
+  nameWithType: AuthenticationMethodUpdateRequest.Name
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.PreferredAuthenticationMethod
+  name: PreferredAuthenticationMethod
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodUpdateRequest_PreferredAuthenticationMethod
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.PreferredAuthenticationMethod
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.PreferredAuthenticationMethod
+  nameWithType: AuthenticationMethodUpdateRequest.PreferredAuthenticationMethod
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.PreferredAuthenticationMethod*
+  name: PreferredAuthenticationMethod
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.html#Auth0_ManagementApi_Models_Users_AuthenticationMethodUpdateRequest_PreferredAuthenticationMethod_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.PreferredAuthenticationMethod
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.PreferredAuthenticationMethod
+  nameWithType: AuthenticationMethodUpdateRequest.PreferredAuthenticationMethod
 - uid: Auth0.ManagementApi.Models.UsersExportsJobField
   name: UsersExportsJobField
   href: api/Auth0.ManagementApi.Models.UsersExportsJobField.html
