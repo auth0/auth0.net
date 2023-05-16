@@ -352,6 +352,20 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <inheritdoc/>
+
+        public Task<string> RevokeRefreshTokenAsync(RevokeRefreshTokenRequest request, CancellationToken cancellationToken = default)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            return connection.SendAsync<string>(
+                HttpMethod.Post,
+                BuildUri("ouath/revoke"),
+                request,
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc/>
         public Task<SignupUserResponse> SignupUserAsync(SignupUserRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
