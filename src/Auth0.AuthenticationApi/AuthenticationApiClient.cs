@@ -360,7 +360,7 @@ namespace Auth0.AuthenticationApi
 
             return connection.SendAsync<string>(
                 HttpMethod.Post,
-                BuildUri("ouath/revoke"),
+                BuildUri("oauth/revoke"),
                 request,
                 cancellationToken: cancellationToken);
         }
