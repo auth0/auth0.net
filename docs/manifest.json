@@ -105,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.AuthenticationApi.AuthenticationApiClient.html",
-          "hash": "z3VqNZsaqVL0gjz5EfQzHYK24hVH+rtcZYu0Bd+F4qU="
+          "hash": "pqGAa7CLgPK66NuXZSWQSmVdWre6RCuoKRNRLlHoQgc="
         }
       },
       "is_incremental": false,
@@ -213,7 +213,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.AuthenticationApi.IAuthenticationApiClient.html",
-          "hash": "ssKsNinN9sPZcjliDjhnWPavrHpHSI91PXaxTNjzu7E="
+          "hash": "0GFGWFLXRWlyNFE7LJTStBQwSKCVie3cZg/jZYlnk4w="
         }
       },
       "is_incremental": false,
@@ -521,6 +521,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.html",
+          "hash": "KiWzak0a7XB7+P3rYEcsLIFm0wAmZ4bpha8bL4ihGxc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Auth0.AuthenticationApi.Models.SignupUserRequest.yml",
       "output": {
         ".html": {
@@ -597,7 +609,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.AuthenticationApi.Models.html",
-          "hash": "S/ul2uksMbLBqrmtpWxbW50ebt4CYj0SGmX6VZ2OayQ="
+          "hash": "nbLSK+oMLmW5bEW+4uxmr+8aiQngfrkid1Iiz/zYDE8="
         }
       },
       "is_incremental": false,
@@ -4401,7 +4413,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "srEVL5goxZZ9PU2M4JAru79nHvkj8/wnTJRcbKM+8Wc="
+          "hash": "nKfFL+/C3bP7qLEXWNjQxWq5wSH2MwxOUjSpK68TxFM="
         }
       },
       "is_incremental": false,
@@ -4438,8 +4450,8 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 358,
-          "skipped_file_count": 15
+          "total_file_count": 359,
+          "skipped_file_count": 14
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
