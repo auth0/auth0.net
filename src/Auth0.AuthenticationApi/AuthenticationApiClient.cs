@@ -358,6 +358,14 @@ namespace Auth0.AuthenticationApi
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
 
+            var body = new Dictionary<string, string>
+            {
+                {"client_id", request.ClientId},
+                {"token", request.RefreshToken}
+            };
+
+            ApplyClientAuthentication(request, body);
+
             return connection.SendAsync<string>(
                 HttpMethod.Post,
                 BuildUri("oauth/revoke"),

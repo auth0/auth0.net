@@ -31,7 +31,6 @@ namespace Auth0.AuthenticationApi.Models
         /// <summary>
         /// A refresh token you want to revoke.
         /// </summary>
-        [JsonProperty("token")]
         public string RefreshToken { get; set; }
     }
 }
