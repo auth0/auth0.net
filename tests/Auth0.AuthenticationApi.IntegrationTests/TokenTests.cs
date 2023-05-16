@@ -145,16 +145,12 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         {
             using (var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
             {
-                // Get the access token
-                var result = await authenticationApiClient.RevokeRefreshTokenAsync(new RevokeRefreshTokenRequest
+                await authenticationApiClient.RevokeRefreshTokenAsync(new RevokeRefreshTokenRequest
                 {
                     ClientId = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
                     ClientSecret = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET"),
                     RefreshToken = "SomeRefreshToken"
                 });
-
-                // Ensure that we received an access token back
-                result.Should().BeNullOrEmpty();
             }
         }
     }

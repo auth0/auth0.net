@@ -353,7 +353,7 @@ namespace Auth0.AuthenticationApi
 
         /// <inheritdoc/>
 
-        public Task<string> RevokeRefreshTokenAsync(RevokeRefreshTokenRequest request, CancellationToken cancellationToken = default)
+        public Task RevokeRefreshTokenAsync(RevokeRefreshTokenRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
@@ -366,7 +366,7 @@ namespace Auth0.AuthenticationApi
 
             ApplyClientAuthentication(request, body);
 
-            return connection.SendAsync<string>(
+            return connection.SendAsync<object>(
                 HttpMethod.Post,
                 BuildUri("oauth/revoke"),
                 body,

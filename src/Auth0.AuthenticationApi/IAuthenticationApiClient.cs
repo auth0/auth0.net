@@ -131,7 +131,7 @@ namespace Auth0.AuthenticationApi
         /// <param name="request"><see cref="RevokeRefreshTokenRequest"/> containing Refresh Token and associated parameters.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns><see cref="Task"/> representing the async operation containing either the JSON error response or the plain text success message response.</returns>
-        Task<string> RevokeRefreshTokenAsync(RevokeRefreshTokenRequest request, CancellationToken cancellationToken = default);
+        Task RevokeRefreshTokenAsync(RevokeRefreshTokenRequest request, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates a new user given the user details specified.
