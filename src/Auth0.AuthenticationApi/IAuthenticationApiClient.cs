@@ -126,6 +126,14 @@ namespace Auth0.AuthenticationApi
         Task<AccessTokenResponse> GetTokenAsync(DeviceCodeTokenRequest request, CancellationToken cancellationToken = default);
 
         /// <summary>
+        /// Revokes refresh token provided in request.
+        /// </summary>
+        /// <param name="request"><see cref="RevokeRefreshTokenRequest"/> containing Refresh Token and associated parameters.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns><see cref="Task"/> representing the async operation.</returns>
+        Task RevokeRefreshTokenAsync(RevokeRefreshTokenRequest request, CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// Creates a new user given the user details specified.
         /// </summary>
         /// <param name="request"><see cref="SignupUserRequest" /> containing information of the user to sign up.</param>
