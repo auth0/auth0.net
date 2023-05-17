@@ -1,5 +1,11 @@
 # Change Log
 
+## [7.20.0](https://github.com/auth0/auth0.net/tree/7.20.0) (2023-05-16)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.19.1...7.20.0)
+
+**Added**
+- Added revoke refresh token endpoint support [\#617](https://github.com/auth0/auth0.net/pull/617) ([msmolka](https://github.com/msmolka))
+
 ## [7.19.1](https://github.com/auth0/auth0.net/tree/7.19.1) (2023-04-25)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.19.0...7.19.1)
 

@@ -851,6 +851,55 @@ then the grant_type will be set to &quot;password&quot;. If a Realm was specifie
   <h5 id="Auth0_AuthenticationApi_AuthenticationApiClient_GetUserInfoAsync_System_String_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Information included in the response depends on the scopes initially granted.</p>
 </div>
+  <a id="Auth0_AuthenticationApi_AuthenticationApiClient_RevokeRefreshTokenAsync_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.RevokeRefreshTokenAsync*"></a>
+  <h4 id="Auth0_AuthenticationApi_AuthenticationApiClient_RevokeRefreshTokenAsync_Auth0_AuthenticationApi_Models_RevokeRefreshTokenRequest_System_Threading_CancellationToken_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.RevokeRefreshTokenAsync(Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest,System.Threading.CancellationToken)">RevokeRefreshTokenAsync(RevokeRefreshTokenRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Revokes refresh token provided in request.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task RevokeRefreshTokenAsync(RevokeRefreshTokenRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.html">RevokeRefreshTokenRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p><a class="xref" href="Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.html">RevokeRefreshTokenRequest</a> containing Refresh Token and associated parameters.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <a id="Auth0_AuthenticationApi_AuthenticationApiClient_SignupUserAsync_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.SignupUserAsync*"></a>
   <h4 id="Auth0_AuthenticationApi_AuthenticationApiClient_SignupUserAsync_Auth0_AuthenticationApi_Models_SignupUserRequest_System_Threading_CancellationToken_" data-uid="Auth0.AuthenticationApi.AuthenticationApiClient.SignupUserAsync(Auth0.AuthenticationApi.Models.SignupUserRequest,System.Threading.CancellationToken)">SignupUserAsync(SignupUserRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Creates a new user given the user details specified.</p>
