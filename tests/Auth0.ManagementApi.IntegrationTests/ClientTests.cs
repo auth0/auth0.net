@@ -229,17 +229,21 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 Name = $"{TestingConstants.ClientPrefix} {TestBaseUtils.MakeRandomName()}",
                 ApplicationType = ClientApplicationType.RegularWeb,
+                JwtConfiguration = new JwtConfiguration
+                {
+                    SigningAlgorithm = "RS256"
+                },
                 ClientAuthenticationMethods = new CreateClientAuthenticationMethods
                 {
                     PrivateKeyJwt = new CreatePrivateKeyJwt
                     {
-                        Credentials = new List<CreateCredential>
+                        Credentials = new List<ClientCredentialCreateRequest>
                         {
-                            new CreateCredential
+                            new ClientCredentialCreateRequest
                             {
                                 CredentialType = "public_key",
                                 Name = "Test Credential 1",
-                                Pem = RsaTestUtils.ExportPublicKey(new RSACryptoServiceProvider())
+                                Pem = RsaTestUtils.ExportPublicKey(new RSACryptoServiceProvider(2048)),
                             }
                         }
                     }
@@ -261,12 +265,24 @@ namespace Auth0.ManagementApi.IntegrationTests
             credential1.Name.Should().Be("Test Credential 1");
             credential1.CredentialType.Should().Be("public_key");
 
-            var newCredential = await fixture.ApiClient.Clients.CreateCredentialAsync(newClient.ClientId, new CreateCredential
+            var newCredential = await fixture.ApiClient.Clients.CreateCredentialAsync(newClient.ClientId, new ClientCredentialCreateRequest
             {
                 CredentialType = "public_key",
                 Name = "Test Credential 2",
-                Pem = RsaTestUtils.ExportPublicKey(new RSACryptoServiceProvider())
+                Pem = RsaTestUtils.ExportPublicKey(new RSACryptoServiceProvider(2048)),
             });
+
+
+            newCredential.ExpiresAt.Should().BeNull();
+
+            var newExpiry =  DateTime.UtcNow.AddDays(2);
+            var newExpiryWithoutMilliSeconds = new DateTime(
+                newExpiry.Ticks - (newExpiry.Ticks % TimeSpan.TicksPerSecond),
+                newExpiry.Kind
+            );
+            var newCredential2 = await fixture.ApiClient.Clients.UpdateCredentialAsync(newClient.ClientId, newCredential.Id, new ClientCredentialUpdateRequest { ExpiresAt = newExpiryWithoutMilliSeconds });
+
+            newCredential2.ExpiresAt?.ToString("o").Should().Be(newExpiryWithoutMilliSeconds.ToString("o"));
 
             var credential2 = await fixture.ApiClient.Clients.GetCredentialAsync(newClient.ClientId, newCredential.Id);
 

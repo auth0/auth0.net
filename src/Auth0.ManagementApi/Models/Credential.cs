@@ -26,14 +26,24 @@ namespace Auth0.ManagementApi.Models
         [JsonProperty("id")]
         public string Id { get; set; }
         /// <summary>
-        /// The thumbprint of the credential
+        /// Algorithm which will be used with the credential. Supported algorithms: RS256,RS384,PS256
         /// </summary>
-        [JsonProperty("thumbprint")]
-        public string Thumbprint { get; set; }
+        [JsonProperty("alg")]
+        public string Algorithm { get; set; }
         /// <summary>
         /// The DateTime when the credential was created
         /// </summary>
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; }
+        /// <summary>
+        /// The DateTime when the credential was updated
+        /// </summary>
+        [JsonProperty("updated_at")]
+        public DateTime UpdatedAt { get; set; }
+        /// <summary>
+        /// The DateTime when the credential expires
+        /// </summary>
+        [JsonProperty("expires_at")]
+        public DateTime? ExpiresAt { get; set; }
     }
 }

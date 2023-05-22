@@ -70,10 +70,20 @@ namespace Auth0.ManagementApi.Clients
     /// Creates a new client credential.
     /// </summary>
     /// <param name="clientId">The id of the client for which you want to create the credential.</param>
-    /// <param name="request">The <see cref="CreateCredentialRequest"/> containing the properties of the new client credential.</param>
+    /// <param name="request">The <see cref="ClientCredentialCreateRequest"/> containing the properties of the new client credential.</param>
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
     /// <returns>The new <see cref="Credential"/> that has been created.</returns>
-    Task<Credential> CreateCredentialAsync(string clientId, CreateCredential request, CancellationToken cancellationToken = default);
+    Task<Credential> CreateCredentialAsync(string clientId, ClientCredentialCreateRequest request, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Update a client credential.
+    /// </summary>
+    /// <param name="clientId">The id of the client for which you want to update the credential.</param>
+    /// <param name="credentialId">The id of the credential to update.</param>
+    /// <param name="request">The <see cref="ClientCredentialUpdateRequest"/> containing the properties of the new client credential.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>The new <see cref="Credential"/> that has been created.</returns>
+    Task<Credential> UpdateCredentialAsync(string clientId, string credentialId, ClientCredentialUpdateRequest request, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Retrieves a list of all credentials for a client.

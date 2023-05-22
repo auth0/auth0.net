@@ -53,28 +53,6 @@ namespace Auth0.ManagementApi.Models
     public class CreatePrivateKeyJwt
     {
         [JsonProperty("credentials")]
-        public IList<CreateCredential> Credentials { get; set; }
-    }
-
-    /// <summary>
-    /// Structure for creating a new client credential
-    /// </summary>
-    public class CreateCredential
-    {
-        /// <summary>
-        /// The type of the credential
-        /// </summary>
-        [JsonProperty("credential_type")]
-        public string CredentialType { get; set; }
-        /// <summary>
-        /// The name of the credential
-        /// </summary>
-        [JsonProperty("name")]
-        public string Name { get; set; }
-        /// <summary>
-        /// The value of the credential in PEM format.
-        /// </summary>
-        [JsonProperty("pem")]
-        public string Pem { get; set; }
+        public IList<ClientCredentialCreateRequest> Credentials { get; set; }
     }
 }
