@@ -84,13 +84,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_IGuardianClient_CreateEnrollmentTicketAsync_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.CreateEnrollmentTicketAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_CreateEnrollmentTicketAsync_Auth0_ManagementApi_Models_CreateGuardianEnrollmentTicketRequest_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.CreateEnrollmentTicketAsync(Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketRequest,CancellationToken)">CreateEnrollmentTicketAsync(CreateGuardianEnrollmentTicketRequest, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_CreateEnrollmentTicketAsync_Auth0_ManagementApi_Models_CreateGuardianEnrollmentTicketRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.CreateEnrollmentTicketAsync(Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketRequest,System.Threading.CancellationToken)">CreateEnrollmentTicketAsync(CreateGuardianEnrollmentTicketRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Generate an email with a link to start the Guardian enrollment process.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;CreateGuardianEnrollmentTicketResponse&gt; CreateEnrollmentTicketAsync(CreateGuardianEnrollmentTicketRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;CreateGuardianEnrollmentTicketResponse&gt; CreateEnrollmentTicketAsync(CreateGuardianEnrollmentTicketRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -109,7 +109,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -126,20 +126,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketResponse.html">CreateGuardianEnrollmentTicketResponse</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketResponse.html">CreateGuardianEnrollmentTicketResponse</a>&gt;</td>
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketResponse.html">CreateGuardianEnrollmentTicketResponse</a> with the details of the ticket that was created.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IGuardianClient_DeleteEnrollmentAsync_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.DeleteEnrollmentAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_DeleteEnrollmentAsync_System_String_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.DeleteEnrollmentAsync(System.String,CancellationToken)">DeleteEnrollmentAsync(String, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_DeleteEnrollmentAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.DeleteEnrollmentAsync(System.String,System.Threading.CancellationToken)">DeleteEnrollmentAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Deletes an enrollment.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task DeleteEnrollmentAsync(string id, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task DeleteEnrollmentAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -158,7 +158,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -175,20 +175,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
-        <td><p>A <see cref="!:Task"></see> that represents the asynchronous delete operation.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous delete operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IGuardianClient_GetEnrollmentAsync_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.GetEnrollmentAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_GetEnrollmentAsync_System_String_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.GetEnrollmentAsync(System.String,CancellationToken)">GetEnrollmentAsync(String, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_GetEnrollmentAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.GetEnrollmentAsync(System.String,System.Threading.CancellationToken)">GetEnrollmentAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves an enrollment.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;GuardianEnrollment&gt; GetEnrollmentAsync(string id, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;GuardianEnrollment&gt; GetEnrollmentAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -207,7 +207,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -224,20 +224,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianEnrollment.html">GuardianEnrollment</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianEnrollment.html">GuardianEnrollment</a>&gt;</td>
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.GuardianEnrollment.html">GuardianEnrollment</a> containing details of the enrollment.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IGuardianClient_GetFactorsAsync_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.GetFactorsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_GetFactorsAsync_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.GetFactorsAsync(CancellationToken)">GetFactorsAsync(CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_GetFactorsAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.GetFactorsAsync(System.Threading.CancellationToken)">GetFactorsAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves all factors. Useful to check factor enablement and trial status.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IList&lt;GuardianFactor&gt;&gt; GetFactorsAsync(CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;IList&lt;GuardianFactor&gt;&gt; GetFactorsAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -250,7 +250,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td></td>
       </tr>
@@ -266,20 +266,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">IList</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianFactor.html">GuardianFactor</a>&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianFactor.html">GuardianFactor</a>&gt;&gt;</td>
         <td><p>List of <a class="xref" href="Auth0.ManagementApi.Models.GuardianFactor.html">GuardianFactor</a> instances with the available factors.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IGuardianClient_GetPhoneMessageTypesAsync_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.GetPhoneMessageTypesAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_GetPhoneMessageTypesAsync_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.GetPhoneMessageTypesAsync(CancellationToken)">GetPhoneMessageTypesAsync(CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_GetPhoneMessageTypesAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.GetPhoneMessageTypesAsync(System.Threading.CancellationToken)">GetPhoneMessageTypesAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieve the enabled phone factors for multi-factor authentication</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;GuardianPhoneMessageTypes&gt; GetPhoneMessageTypesAsync(CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;GuardianPhoneMessageTypes&gt; GetPhoneMessageTypesAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -292,7 +292,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -309,20 +309,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianPhoneMessageTypes.html">GuardianPhoneMessageTypes</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianPhoneMessageTypes.html">GuardianPhoneMessageTypes</a>&gt;</td>
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.GuardianPhoneMessageTypes.html">GuardianPhoneMessageTypes</a> containing the message types.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IGuardianClient_GetSmsTemplatesAsync_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.GetSmsTemplatesAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_GetSmsTemplatesAsync_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.GetSmsTemplatesAsync(CancellationToken)">GetSmsTemplatesAsync(CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_GetSmsTemplatesAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.GetSmsTemplatesAsync(System.Threading.CancellationToken)">GetSmsTemplatesAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves enrollment and verification templates. You can use it to check the current values for your templates.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;GuardianSmsEnrollmentTemplates&gt; GetSmsTemplatesAsync(CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;GuardianSmsEnrollmentTemplates&gt; GetSmsTemplatesAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -335,7 +335,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td></td>
       </tr>
@@ -351,20 +351,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates.html">GuardianSmsEnrollmentTemplates</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates.html">GuardianSmsEnrollmentTemplates</a>&gt;</td>
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates.html">GuardianSmsEnrollmentTemplates</a> containing the templates.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IGuardianClient_GetSnsConfigurationAsync_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.GetSnsConfigurationAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_GetSnsConfigurationAsync_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.GetSnsConfigurationAsync(CancellationToken)">GetSnsConfigurationAsync(CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_GetSnsConfigurationAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.GetSnsConfigurationAsync(System.Threading.CancellationToken)">GetSnsConfigurationAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Returns provider configuration for AWS SNS.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;GuardianSnsConfiguration&gt; GetSnsConfigurationAsync(CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;GuardianSnsConfiguration&gt; GetSnsConfigurationAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -377,7 +377,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td></td>
       </tr>
@@ -393,20 +393,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianSnsConfiguration.html">GuardianSnsConfiguration</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianSnsConfiguration.html">GuardianSnsConfiguration</a>&gt;</td>
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.GuardianSnsConfiguration.html">GuardianSnsConfiguration</a> containing Amazon SNS configuration.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IGuardianClient_GetTwilioConfigurationAsync_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.GetTwilioConfigurationAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_GetTwilioConfigurationAsync_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.GetTwilioConfigurationAsync(CancellationToken)">GetTwilioConfigurationAsync(CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_GetTwilioConfigurationAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.GetTwilioConfigurationAsync(System.Threading.CancellationToken)">GetTwilioConfigurationAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Returns configuration for the Guardian Twilio provider.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;GuardianTwilioConfiguration&gt; GetTwilioConfigurationAsync(CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;GuardianTwilioConfiguration&gt; GetTwilioConfigurationAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -419,7 +419,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td></td>
       </tr>
@@ -435,20 +435,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianTwilioConfiguration.html">GuardianTwilioConfiguration</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianTwilioConfiguration.html">GuardianTwilioConfiguration</a>&gt;</td>
         <td><p><a class="xref" href="Auth0.ManagementApi.Models.GuardianTwilioConfiguration.html">GuardianTwilioConfiguration</a> with the Twilio configuration.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IGuardianClient_UpdateFactorAsync_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.UpdateFactorAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_UpdateFactorAsync_Auth0_ManagementApi_Models_UpdateGuardianFactorRequest_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.UpdateFactorAsync(Auth0.ManagementApi.Models.UpdateGuardianFactorRequest,CancellationToken)">UpdateFactorAsync(UpdateGuardianFactorRequest, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_UpdateFactorAsync_Auth0_ManagementApi_Models_UpdateGuardianFactorRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.UpdateFactorAsync(Auth0.ManagementApi.Models.UpdateGuardianFactorRequest,System.Threading.CancellationToken)">UpdateFactorAsync(UpdateGuardianFactorRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Enable or Disable a Guardian factor.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;UpdateGuardianFactorResponse&gt; UpdateFactorAsync(UpdateGuardianFactorRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;UpdateGuardianFactorResponse&gt; UpdateFactorAsync(UpdateGuardianFactorRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -467,7 +467,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -484,20 +484,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianFactorResponse.html">UpdateGuardianFactorResponse</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianFactorResponse.html">UpdateGuardianFactorResponse</a>&gt;</td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianFactorResponse.html">UpdateGuardianFactorResponse</a> indicating the status of the factor.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IGuardianClient_UpdatePhoneMessageTypesAsync_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.UpdatePhoneMessageTypesAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_UpdatePhoneMessageTypesAsync_Auth0_ManagementApi_Models_GuardianPhoneMessageTypes_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.UpdatePhoneMessageTypesAsync(Auth0.ManagementApi.Models.GuardianPhoneMessageTypes,CancellationToken)">UpdatePhoneMessageTypesAsync(GuardianPhoneMessageTypes, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_UpdatePhoneMessageTypesAsync_Auth0_ManagementApi_Models_GuardianPhoneMessageTypes_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.UpdatePhoneMessageTypesAsync(Auth0.ManagementApi.Models.GuardianPhoneMessageTypes,System.Threading.CancellationToken)">UpdatePhoneMessageTypesAsync(GuardianPhoneMessageTypes, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Update enabled phone factors for multi-factor authentication</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;GuardianPhoneMessageTypes&gt; UpdatePhoneMessageTypesAsync(GuardianPhoneMessageTypes messageTypes, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;GuardianPhoneMessageTypes&gt; UpdatePhoneMessageTypesAsync(GuardianPhoneMessageTypes messageTypes, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -516,7 +516,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -533,20 +533,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianPhoneMessageTypes.html">GuardianPhoneMessageTypes</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianPhoneMessageTypes.html">GuardianPhoneMessageTypes</a>&gt;</td>
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.GuardianPhoneMessageTypes.html">GuardianPhoneMessageTypes</a> containing the message types.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IGuardianClient_UpdateSmsTemplatesAsync_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.UpdateSmsTemplatesAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_UpdateSmsTemplatesAsync_Auth0_ManagementApi_Models_GuardianSmsEnrollmentTemplates_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.UpdateSmsTemplatesAsync(Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates,CancellationToken)">UpdateSmsTemplatesAsync(GuardianSmsEnrollmentTemplates, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_UpdateSmsTemplatesAsync_Auth0_ManagementApi_Models_GuardianSmsEnrollmentTemplates_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.UpdateSmsTemplatesAsync(Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates,System.Threading.CancellationToken)">UpdateSmsTemplatesAsync(GuardianSmsEnrollmentTemplates, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Updates enrollment and verification templates. Useful to send custom messages on SMS enrollment and verification.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;GuardianSmsEnrollmentTemplates&gt; UpdateSmsTemplatesAsync(GuardianSmsEnrollmentTemplates templates, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;GuardianSmsEnrollmentTemplates&gt; UpdateSmsTemplatesAsync(GuardianSmsEnrollmentTemplates templates, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -565,7 +565,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -582,20 +582,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates.html">GuardianSmsEnrollmentTemplates</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates.html">GuardianSmsEnrollmentTemplates</a>&gt;</td>
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates.html">GuardianSmsEnrollmentTemplates</a> containing the templates.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IGuardianClient_UpdateTwilioConfigurationAsync_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.UpdateTwilioConfigurationAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_UpdateTwilioConfigurationAsync_Auth0_ManagementApi_Models_UpdateGuardianTwilioConfigurationRequest_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.UpdateTwilioConfigurationAsync(Auth0.ManagementApi.Models.UpdateGuardianTwilioConfigurationRequest,CancellationToken)">UpdateTwilioConfigurationAsync(UpdateGuardianTwilioConfigurationRequest, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IGuardianClient_UpdateTwilioConfigurationAsync_Auth0_ManagementApi_Models_UpdateGuardianTwilioConfigurationRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGuardianClient.UpdateTwilioConfigurationAsync(Auth0.ManagementApi.Models.UpdateGuardianTwilioConfigurationRequest,System.Threading.CancellationToken)">UpdateTwilioConfigurationAsync(UpdateGuardianTwilioConfigurationRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Configure the Guardian Twilio provider.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;GuardianTwilioConfiguration&gt; UpdateTwilioConfigurationAsync(UpdateGuardianTwilioConfigurationRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;GuardianTwilioConfiguration&gt; UpdateTwilioConfigurationAsync(UpdateGuardianTwilioConfigurationRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -614,7 +614,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -631,7 +631,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianTwilioConfiguration.html">GuardianTwilioConfiguration</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GuardianTwilioConfiguration.html">GuardianTwilioConfiguration</a>&gt;</td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.GuardianTwilioConfiguration.html">GuardianTwilioConfiguration</a> containing the updated configuration settings.</p>
 </td>
       </tr>

@@ -16,8 +16,9 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="userId">The user id of the devices to retrieve.</param>
     /// <param name="clientId">The client id of the devices to retrieve.</param>
     /// <param name="type">The type of credentials.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
     /// <returns>A list of <see cref="DeviceCredential"/> which conforms to the criteria specified.</returns>
-    Task<IList<DeviceCredential>> GetAllAsync(string fields = null, bool includeFields = true, string userId = null, string clientId = null, string type = null);
+    Task<IList<DeviceCredential>> GetAllAsync(string fields = null, bool includeFields = true, string userId = null, string clientId = null, string type = null, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Gets a list of all the device credentials.

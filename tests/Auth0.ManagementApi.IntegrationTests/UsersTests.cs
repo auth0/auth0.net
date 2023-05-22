@@ -17,6 +17,8 @@ namespace Auth0.ManagementApi.IntegrationTests
     public class UsersTestsFixture : TestBaseFixture
     {
         public Connection Connection { get; private set; }
+        public User User { get; private set; }
+        public const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
 
         public override async Task InitializeAsync()
         {
@@ -28,10 +30,19 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Strategy = "auth0",
                 EnabledClients = new[] { TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
             });
+
+            User = await ApiClient.Users.CreateAsync(new UserCreateRequest
+            {
+                Connection = Connection.Name,
+                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
+                EmailVerified = true,
+                Password = Password
+            });
         }
 
         public override async Task DisposeAsync()
         {
+            await ApiClient.Users.DeleteAsync(User.UserId);
             await ApiClient.Connections.DeleteAsync(Connection.Id);
             await ManagementTestBaseUtils.CleanupAndDisposeAsync(ApiClient);
         }
@@ -477,6 +488,47 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Clean Up - Remove the user
             await fixture.ApiClient.Users.DeleteAsync(user.UserId);
+        }
+
+        [Fact]
+        public async Task Test_authentication_methods_crud()
+        {
+            var authenticationMethods = await fixture.ApiClient.Users.GetAuthenticationMethodsAsync(fixture.User.UserId, new PaginationInfo(0, 50, true));
+
+            var newAuthenticationMethod = await fixture.ApiClient.Users.CreateAuthenticationMethodAsync(fixture.User.UserId, new Models.Users.AuthenticationMethodCreateRequest
+            {
+                Type = "email",
+                Email = "frederik.prijck@gmail.com"
+            });
+
+            newAuthenticationMethod.Type.Should().Equals("email");
+
+            await fixture.ApiClient.Users.UpdateAuthenticationMethodAsync(fixture.User.UserId, newAuthenticationMethod.Id, new Models.Users.AuthenticationMethodUpdateRequest
+            {
+                Name = "Test"
+            });
+
+            var getAuthenticationMethod = await fixture.ApiClient.Users.GetAuthenticationMethodAsync(fixture.User.UserId, newAuthenticationMethod.Id);
+            getAuthenticationMethod.Type.Should().Equals("email");
+            getAuthenticationMethod.Name.Should().Equals("Test");
+
+            var allAuthenticationMethods = await fixture.ApiClient.Users.GetAuthenticationMethodsAsync(fixture.User.UserId);
+            allAuthenticationMethods.Count.Should().Be(1);
+
+            await fixture.ApiClient.Users.UpdateAuthenticationMethodsAsync(fixture.User.UserId, new List<Models.Users.AuthenticationMethodsUpdateRequest> {  new Models.Users.AuthenticationMethodsUpdateRequest
+            {
+                Name = "Test2",
+                Type = "email",
+                Email = "frederik.prijck@gmail.com"
+            }});
+
+            var allAuthenticationMethods2 = await fixture.ApiClient.Users.GetAuthenticationMethodsAsync(fixture.User.UserId, new PaginationInfo(0, 50, true));
+            allAuthenticationMethods2.Count.Should().Be(1);
+
+            await fixture.ApiClient.Users.DeleteAuthenticationMethodsAsync(fixture.User.UserId);
+
+            var allAuthenticationMethods3 = await fixture.ApiClient.Users.GetAuthenticationMethodsAsync(fixture.User.UserId);
+            allAuthenticationMethods3.Count.Should().Be(0);
         }
     }
 }

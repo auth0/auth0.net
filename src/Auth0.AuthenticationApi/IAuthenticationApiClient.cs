@@ -11,7 +11,7 @@ namespace Auth0.AuthenticationApi
     /// <remarks>
     /// Full documentation for the Authentication API is available at https://auth0.com/docs/auth-api
     /// </remarks>
-    public interface IAuthenticationApiClient
+    public interface IAuthenticationApiClient : IDisposable
     {
         /// <summary>
         /// Base URI that will be used for all the requests.
@@ -124,6 +124,14 @@ namespace Auth0.AuthenticationApi
         /// This must be polled while the user is completing their part of the flow at an interval no more frequent than that returned by <see cref="StartDeviceFlowAsync" />.
         /// </remarks>
         Task<AccessTokenResponse> GetTokenAsync(DeviceCodeTokenRequest request, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Revokes refresh token provided in request.
+        /// </summary>
+        /// <param name="request"><see cref="RevokeRefreshTokenRequest"/> containing Refresh Token and associated parameters.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns><see cref="Task"/> representing the async operation.</returns>
+        Task RevokeRefreshTokenAsync(RevokeRefreshTokenRequest request, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates a new user given the user details specified.

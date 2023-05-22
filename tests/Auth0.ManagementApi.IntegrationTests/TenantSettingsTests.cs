@@ -60,7 +60,10 @@ namespace Auth0.ManagementApi.IntegrationTests
                         Charset = TenantDeviceFlowCharset.Base20,
                         Mask = "***-***-***"
                     },
-                    SessionCookie = new SessionCookie { Mode = "persistent" }
+                    SessionCookie = new SessionCookie { Mode = "persistent" },
+                    AllowedLogoutUrls = new string[] { "https://app.com/logout", "http://localhost/logout" },
+                    SessionLifetime = 1080,
+                    IdleSessionLifetime = 720
                 };
 
                 var settingsUpdateResponse = await apiClient.TenantSettings.UpdateAsync(settingsUpdateRequest);

@@ -1,5 +1,30 @@
 # Change Log
 
+## [7.20.0](https://github.com/auth0/auth0.net/tree/7.20.0) (2023-05-16)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.19.1...7.20.0)
+
+**Added**
+- Added revoke refresh token endpoint support [\#617](https://github.com/auth0/auth0.net/pull/617) ([msmolka](https://github.com/msmolka))
+
+## [7.19.1](https://github.com/auth0/auth0.net/tree/7.19.1) (2023-04-25)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.19.0...7.19.1)
+
+**Changed**
+- Move IDisposable to IAuthenticationApiClient [\#611](https://github.com/auth0/auth0.net/pull/611) ([frederikprijck](https://github.com/frederikprijck))
+
+## [7.19.0](https://github.com/auth0/auth0.net/tree/7.19.0) (2023-03-13)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.18.0...7.19.0)
+
+**Added**
+- Add Factor Management Endpoints [\#608](https://github.com/auth0/auth0.net/pull/608) ([frederikprijck](https://github.com/frederikprijck))
+
+## [7.18.0](https://github.com/auth0/auth0.net/tree/7.18.0) (2023-01-18)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.17.4...7.18.0)
+
+**Added**
+- Add support for Client Assertion [\#605](https://github.com/auth0/auth0.net/pull/605) ([frederikprijck](https://github.com/frederikprijck))
+- Add support for the connection status API [\#601](https://github.com/auth0/auth0.net/pull/601) ([Hawxy](https://github.com/Hawxy))
+
 ## [7.17.4](https://github.com/auth0/auth0.net/tree/7.17.4) (2022-10-17)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.17.3...7.17.4)
 

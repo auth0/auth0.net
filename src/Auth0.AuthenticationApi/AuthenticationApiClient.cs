@@ -20,7 +20,7 @@ namespace Auth0.AuthenticationApi
     /// <remarks>
     /// Full documentation on the Auth0 Authentication API is available at https://auth0.com/docs/api/authentication
     /// </remarks>
-    public class AuthenticationApiClient : IAuthenticationApiClient, IDisposable
+    public class AuthenticationApiClient : IAuthenticationApiClient
     {
         readonly IdTokenValidator idTokenValidator;
         readonly TimeSpan idTokenValidationLeeway = TimeSpan.FromMinutes(1);
@@ -349,6 +349,28 @@ namespace Auth0.AuthenticationApi
                 .ConfigureAwait(false);
 
             return response;
+        }
+
+        /// <inheritdoc/>
+
+        public Task RevokeRefreshTokenAsync(RevokeRefreshTokenRequest request, CancellationToken cancellationToken = default)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            var body = new Dictionary<string, string>
+            {
+                {"client_id", request.ClientId},
+                {"token", request.RefreshToken}
+            };
+
+            ApplyClientAuthentication(request, body);
+
+            return connection.SendAsync<object>(
+                HttpMethod.Post,
+                BuildUri("oauth/revoke"),
+                body,
+                cancellationToken: cancellationToken);
         }
 
         /// <inheritdoc/>
