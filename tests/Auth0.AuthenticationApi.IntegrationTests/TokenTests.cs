@@ -139,5 +139,19 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 token.Should().NotBeNull();
             }
         }
+
+        [Fact]
+        public async Task Can_revoke_refresh_token_when_token_not_null()
+        {
+            using (var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
+            {
+                await authenticationApiClient.RevokeRefreshTokenAsync(new RevokeRefreshTokenRequest
+                {
+                    ClientId = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
+                    ClientSecret = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET"),
+                    RefreshToken = "SomeRefreshToken"
+                });
+            }
+        }
     }
 }

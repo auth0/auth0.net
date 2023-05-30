@@ -36,19 +36,22 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="userId">The user id of the devices to retrieve.</param>
         /// <param name="clientId">The client id of the devices to retrieve.</param>
         /// <param name="type">The type of credentials.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A list of <see cref="DeviceCredential"/> which conforms to the criteria specified.</returns>
         [Obsolete("Getting a list of device credentials without pagination is not recommended. Please use the overload that accepts pagination information.")]
-        public Task<IList<DeviceCredential>> GetAllAsync(string fields = null, bool includeFields = true, string userId = null, string clientId = null, string type = null)
+        public Task<IList<DeviceCredential>> GetAllAsync(string fields = null, bool includeFields = true, string userId = null, string clientId = null, string type = null, CancellationToken cancellationToken = default)
         {
             return Connection.GetAsync<IList<DeviceCredential>>(BuildUri("device-credentials",
-               new Dictionary<string, string>
-               {
-                    {"fields", fields},
-                    {"include_fields", includeFields.ToString().ToLower()},
-                    {"user_id", userId},
-                    {"client_id", clientId},
-                    {"type", type}
-               }), DefaultHeaders);
+                    new Dictionary<string, string>
+                    {
+                        { "fields", fields },
+                        { "include_fields", includeFields.ToString().ToLower() },
+                        { "user_id", userId },
+                        { "client_id", clientId },
+                        { "type", type }
+                    }),
+                DefaultHeaders,
+                cancellationToken: cancellationToken);
         }
 
         /// <summary>

@@ -164,6 +164,19 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.AuthenticationApiClient.GetUserInfoAsync
   nameWithType: AuthenticationApiClient.GetUserInfoAsync
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.RevokeRefreshTokenAsync(Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest,System.Threading.CancellationToken)
+  name: RevokeRefreshTokenAsync(RevokeRefreshTokenRequest, CancellationToken)
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_RevokeRefreshTokenAsync_Auth0_AuthenticationApi_Models_RevokeRefreshTokenRequest_System_Threading_CancellationToken_
+  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.RevokeRefreshTokenAsync(Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest,System.Threading.CancellationToken)
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.RevokeRefreshTokenAsync(Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest, System.Threading.CancellationToken)
+  nameWithType: AuthenticationApiClient.RevokeRefreshTokenAsync(RevokeRefreshTokenRequest, CancellationToken)
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.RevokeRefreshTokenAsync*
+  name: RevokeRefreshTokenAsync
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_RevokeRefreshTokenAsync_
+  commentId: Overload:Auth0.AuthenticationApi.AuthenticationApiClient.RevokeRefreshTokenAsync
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.RevokeRefreshTokenAsync
+  nameWithType: AuthenticationApiClient.RevokeRefreshTokenAsync
 - uid: Auth0.AuthenticationApi.AuthenticationApiClient.SignupUserAsync(Auth0.AuthenticationApi.Models.SignupUserRequest,System.Threading.CancellationToken)
   name: SignupUserAsync(SignupUserRequest, CancellationToken)
   href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_SignupUserAsync_Auth0_AuthenticationApi_Models_SignupUserRequest_System_Threading_CancellationToken_
@@ -1009,6 +1022,19 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.GetUserInfoAsync
   nameWithType: IAuthenticationApiClient.GetUserInfoAsync
+- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.RevokeRefreshTokenAsync(Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest,System.Threading.CancellationToken)
+  name: RevokeRefreshTokenAsync(RevokeRefreshTokenRequest, CancellationToken)
+  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_RevokeRefreshTokenAsync_Auth0_AuthenticationApi_Models_RevokeRefreshTokenRequest_System_Threading_CancellationToken_
+  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.RevokeRefreshTokenAsync(Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest,System.Threading.CancellationToken)
+  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.RevokeRefreshTokenAsync(Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest, System.Threading.CancellationToken)
+  nameWithType: IAuthenticationApiClient.RevokeRefreshTokenAsync(RevokeRefreshTokenRequest, CancellationToken)
+- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.RevokeRefreshTokenAsync*
+  name: RevokeRefreshTokenAsync
+  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_RevokeRefreshTokenAsync_
+  commentId: Overload:Auth0.AuthenticationApi.IAuthenticationApiClient.RevokeRefreshTokenAsync
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.RevokeRefreshTokenAsync
+  nameWithType: IAuthenticationApiClient.RevokeRefreshTokenAsync
 - uid: Auth0.AuthenticationApi.IAuthenticationApiClient.SignupUserAsync(Auth0.AuthenticationApi.Models.SignupUserRequest,System.Threading.CancellationToken)
   name: SignupUserAsync(SignupUserRequest, CancellationToken)
   href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_SignupUserAsync_Auth0_AuthenticationApi_Models_SignupUserRequest_System_Threading_CancellationToken_
@@ -2454,6 +2480,77 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.Username
   nameWithType: ResourceOwnerTokenRequest.Username
+- uid: Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest
+  name: RevokeRefreshTokenRequest
+  href: api/Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.html
+  commentId: T:Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest
+  fullName: Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest
+  nameWithType: RevokeRefreshTokenRequest
+- uid: Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientAssertionSecurityKey
+  name: ClientAssertionSecurityKey
+  href: api/Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.html#Auth0_AuthenticationApi_Models_RevokeRefreshTokenRequest_ClientAssertionSecurityKey
+  commentId: P:Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientAssertionSecurityKey
+  fullName: Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientAssertionSecurityKey
+  nameWithType: RevokeRefreshTokenRequest.ClientAssertionSecurityKey
+- uid: Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientAssertionSecurityKey*
+  name: ClientAssertionSecurityKey
+  href: api/Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.html#Auth0_AuthenticationApi_Models_RevokeRefreshTokenRequest_ClientAssertionSecurityKey_
+  commentId: Overload:Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientAssertionSecurityKey
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientAssertionSecurityKey
+  nameWithType: RevokeRefreshTokenRequest.ClientAssertionSecurityKey
+- uid: Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientAssertionSecurityKeyAlgorithm
+  name: ClientAssertionSecurityKeyAlgorithm
+  href: api/Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.html#Auth0_AuthenticationApi_Models_RevokeRefreshTokenRequest_ClientAssertionSecurityKeyAlgorithm
+  commentId: P:Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientAssertionSecurityKeyAlgorithm
+  fullName: Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientAssertionSecurityKeyAlgorithm
+  nameWithType: RevokeRefreshTokenRequest.ClientAssertionSecurityKeyAlgorithm
+- uid: Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientAssertionSecurityKeyAlgorithm*
+  name: ClientAssertionSecurityKeyAlgorithm
+  href: api/Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.html#Auth0_AuthenticationApi_Models_RevokeRefreshTokenRequest_ClientAssertionSecurityKeyAlgorithm_
+  commentId: Overload:Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientAssertionSecurityKeyAlgorithm
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientAssertionSecurityKeyAlgorithm
+  nameWithType: RevokeRefreshTokenRequest.ClientAssertionSecurityKeyAlgorithm
+- uid: Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientId
+  name: ClientId
+  href: api/Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.html#Auth0_AuthenticationApi_Models_RevokeRefreshTokenRequest_ClientId
+  commentId: P:Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientId
+  fullName: Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientId
+  nameWithType: RevokeRefreshTokenRequest.ClientId
+- uid: Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientId*
+  name: ClientId
+  href: api/Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.html#Auth0_AuthenticationApi_Models_RevokeRefreshTokenRequest_ClientId_
+  commentId: Overload:Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientId
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientId
+  nameWithType: RevokeRefreshTokenRequest.ClientId
+- uid: Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientSecret
+  name: ClientSecret
+  href: api/Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.html#Auth0_AuthenticationApi_Models_RevokeRefreshTokenRequest_ClientSecret
+  commentId: P:Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientSecret
+  fullName: Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientSecret
+  nameWithType: RevokeRefreshTokenRequest.ClientSecret
+- uid: Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientSecret*
+  name: ClientSecret
+  href: api/Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.html#Auth0_AuthenticationApi_Models_RevokeRefreshTokenRequest_ClientSecret_
+  commentId: Overload:Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientSecret
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.ClientSecret
+  nameWithType: RevokeRefreshTokenRequest.ClientSecret
+- uid: Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.RefreshToken
+  name: RefreshToken
+  href: api/Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.html#Auth0_AuthenticationApi_Models_RevokeRefreshTokenRequest_RefreshToken
+  commentId: P:Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.RefreshToken
+  fullName: Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.RefreshToken
+  nameWithType: RevokeRefreshTokenRequest.RefreshToken
+- uid: Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.RefreshToken*
+  name: RefreshToken
+  href: api/Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.html#Auth0_AuthenticationApi_Models_RevokeRefreshTokenRequest_RefreshToken_
+  commentId: Overload:Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.RefreshToken
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest.RefreshToken
+  nameWithType: RevokeRefreshTokenRequest.RefreshToken
 - uid: Auth0.AuthenticationApi.Models.SignupUserRequest
   name: SignupUserRequest
   href: api/Auth0.AuthenticationApi.Models.SignupUserRequest.html
