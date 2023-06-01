@@ -1,5 +1,6 @@
 namespace Auth0.ManagementApi.Clients
 {
+  using System.Collections.Generic;
   using System.Threading;
   using System.Threading.Tasks;
   using Models;
@@ -64,5 +65,50 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
     /// <returns>The <see cref="Client"/> that was updated.</returns>
     Task<Client> UpdateAsync(string id, ClientUpdateRequest request, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Creates a new client credential.
+    /// </summary>
+    /// <param name="clientId">The id of the client for which you want to create the credential.</param>
+    /// <param name="request">The <see cref="ClientCredentialCreateRequest"/> containing the properties of the new client credential.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>The new <see cref="Credential"/> that has been created.</returns>
+    Task<Credential> CreateCredentialAsync(string clientId, ClientCredentialCreateRequest request, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Update a client credential.
+    /// </summary>
+    /// <param name="clientId">The id of the client for which you want to update the credential.</param>
+    /// <param name="credentialId">The id of the credential to update.</param>
+    /// <param name="request">The <see cref="ClientCredentialUpdateRequest"/> containing the properties of the new client credential.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>The new <see cref="Credential"/> that has been created.</returns>
+    Task<Credential> UpdateCredentialAsync(string clientId, string credentialId, ClientCredentialUpdateRequest request, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Retrieves a list of all credentials for a client.
+    /// </summary>
+    /// <param name="clientId">The id of the client for which you want to retrieve the credentials.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>An <see cref="IList{Credential}"/> containing the client's credentials.</returns>
+    Task<IList<Credential>> GetAllCredentialsAsync(string clientId, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Retrieves a specific credential for a client.
+    /// </summary>
+    /// <param name="clientId">The id of the client for which you want to retrieve the credential.</param>
+    /// <param name="credentialId">The id of the credential to retrieve.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>A <see cref="{Credential}"/> containing the client's credential.</returns>
+    Task<Credential> GetCredentialAsync(string clientId, string credentialId, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Deletes a specific credential registered with the provided client.
+    /// </summary>
+    /// <param name="clientId">The id of the client for which you want to remove the credential.</param>
+    /// <param name="credentialId">The id of the credential to remove.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
+    Task DeleteCredentialAsync(string clientId, string credentialId, CancellationToken cancellationToken = default);
   }
 }

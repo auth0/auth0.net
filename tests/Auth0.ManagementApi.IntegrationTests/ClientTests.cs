@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using Auth0.Core.Exceptions;
 using Auth0.IntegrationTests.Shared.CleanUp;
@@ -8,6 +12,8 @@ using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Paging;
 using Auth0.Tests.Shared;
 using FluentAssertions;
+using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Linq;
 using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
@@ -213,6 +219,130 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Delete the client, and ensure we get exception when trying to fetch client again
             await fixture.ApiClient.Clients.DeleteAsync(newClientResponse.ClientId);
+        }
+
+
+        [Fact]
+        public async Task Test_crud_credentials()
+        {
+            var newClient = await fixture.ApiClient.Clients.CreateAsync(new ClientCreateRequest
+            {
+                Name = $"{TestingConstants.ClientPrefix} {TestBaseUtils.MakeRandomName()}",
+                ApplicationType = ClientApplicationType.RegularWeb,
+                JwtConfiguration = new JwtConfiguration
+                {
+                    SigningAlgorithm = "RS256"
+                },
+                ClientAuthenticationMethods = new CreateClientAuthenticationMethods
+                {
+                    PrivateKeyJwt = new CreatePrivateKeyJwt
+                    {
+                        Credentials = new List<ClientCredentialCreateRequest>
+                        {
+                            new ClientCredentialCreateRequest
+                            {
+                                CredentialType = "public_key",
+                                Name = "Test Credential 1",
+                                Pem = RsaTestUtils.ExportPublicKey(new RSACryptoServiceProvider(2048)),
+                            }
+                        }
+                    }
+                }
+            });
+
+            newClient.ClientAuthenticationMethods.PrivateKeyJwt.Credentials.Should().NotBeNull();
+            newClient.ClientAuthenticationMethods.PrivateKeyJwt.Credentials.Should().NotBeEmpty();
+            newClient.ClientAuthenticationMethods.PrivateKeyJwt.Credentials[0].Id.Should().NotBeNull();
+
+            var allCredentialsForClient = await fixture.ApiClient.Clients.GetAllCredentialsAsync(newClient.ClientId);
+            var credential1 = await fixture.ApiClient.Clients.GetCredentialAsync(newClient.ClientId, newClient.ClientAuthenticationMethods.PrivateKeyJwt.Credentials[0].Id);
+
+            allCredentialsForClient.Should().NotBeNull();
+            allCredentialsForClient.Should().NotBeEmpty();
+            allCredentialsForClient.Count.Should().Be(1);
+            allCredentialsForClient.Select(x => x.Id).Should().Contain(credential1.Id);
+
+            credential1.Name.Should().Be("Test Credential 1");
+            credential1.CredentialType.Should().Be("public_key");
+
+            var newCredential = await fixture.ApiClient.Clients.CreateCredentialAsync(newClient.ClientId, new ClientCredentialCreateRequest
+            {
+                CredentialType = "public_key",
+                Name = "Test Credential 2",
+                Pem = RsaTestUtils.ExportPublicKey(new RSACryptoServiceProvider(2048)),
+            });
+
+
+            newCredential.ExpiresAt.Should().BeNull();
+
+            var newExpiry =  DateTime.UtcNow.AddDays(2);
+            var newExpiryWithoutMilliSeconds = new DateTime(
+                newExpiry.Ticks - (newExpiry.Ticks % TimeSpan.TicksPerSecond),
+                newExpiry.Kind
+            );
+            var newCredential2 = await fixture.ApiClient.Clients.UpdateCredentialAsync(newClient.ClientId, newCredential.Id, new ClientCredentialUpdateRequest { ExpiresAt = newExpiryWithoutMilliSeconds });
+
+            newCredential2.ExpiresAt?.ToString("o").Should().Be(newExpiryWithoutMilliSeconds.ToString("o"));
+
+            var credential2 = await fixture.ApiClient.Clients.GetCredentialAsync(newClient.ClientId, newCredential.Id);
+
+            credential2.Name.Should().Be("Test Credential 2");
+            credential2.CredentialType.Should().Be("public_key");
+
+            var updatedClient = await fixture.ApiClient.Clients.UpdateAsync(newClient.ClientId, new ClientUpdateRequest
+            {
+                ClientAuthenticationMethods = new ClientAuthenticationMethods
+                {
+                    PrivateKeyJwt = new PrivateKeyJwt
+                    {
+                        Credentials = new List<CredentialId>
+                        {
+                            new CredentialId
+                            {
+                                Id = credential1.Id
+                            },
+                            new CredentialId
+                            {
+                                Id = credential2.Id
+                            }
+                        }
+                    }
+                }
+            });
+
+            updatedClient.ClientAuthenticationMethods.PrivateKeyJwt.Credentials.Should().NotBeNull();
+            updatedClient.ClientAuthenticationMethods.PrivateKeyJwt.Credentials.Should().NotBeEmpty();
+            updatedClient.ClientAuthenticationMethods.PrivateKeyJwt.Credentials.Count.Should().Be(2);
+
+            allCredentialsForClient = await fixture.ApiClient.Clients.GetAllCredentialsAsync(newClient.ClientId);
+
+            allCredentialsForClient.Should().NotBeNull();
+            allCredentialsForClient.Should().NotBeEmpty();
+            allCredentialsForClient.Count.Should().Be(2);
+            allCredentialsForClient.Select(x => x.Id).Should().Contain(credential1.Id);
+            allCredentialsForClient.Select(x => x.Id).Should().Contain(credential2.Id);
+
+            updatedClient = await fixture.ApiClient.Clients.UpdateAsync(newClient.ClientId, new ClientUpdateRequest
+            {
+                ClientAuthenticationMethods = new ClientAuthenticationMethods
+                {
+                    PrivateKeyJwt = new PrivateKeyJwt
+                    {
+                        Credentials = new List<CredentialId>
+                        {
+                            
+                        }
+                    }
+                }
+            });
+
+            await fixture.ApiClient.Clients.DeleteCredentialAsync(newClient.ClientId, credential2.Id);
+            await fixture.ApiClient.Clients.DeleteCredentialAsync(newClient.ClientId, credential1.Id);
+
+            allCredentialsForClient = await fixture.ApiClient.Clients.GetAllCredentialsAsync(newClient.ClientId);
+
+            allCredentialsForClient.Should().NotBeNull();
+            allCredentialsForClient.Should().BeEmpty();
         }
     }
 }
