@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
+using System.Net.Http;
 using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using Auth0.Core.Exceptions;
 using Auth0.IntegrationTests.Shared.CleanUp;
 using Auth0.ManagementApi.IntegrationTests.Testing;
@@ -33,6 +33,183 @@ namespace Auth0.ManagementApi.IntegrationTests
         public ClientTests(ClientTestsFixture fixture)
         {
             this.fixture = fixture;
+        }
+
+        [Fact]
+        public async Task Test_client_create()
+        {
+            var newClientRequest = new ClientCreateRequest
+            {
+                Name = $"{TestingConstants.ClientPrefix} {TestBaseUtils.MakeRandomName()}",
+                TokenEndpointAuthMethod = TokenEndpointAuthMethod.ClientSecretPost,
+                IsFirstParty = true,
+                ClientMetaData = new
+                {
+                    Prop1 = "1",
+                    Prop2 = "2"
+                },
+                ApplicationType = ClientApplicationType.Native,
+                InitiateLoginUri = "https://create.com/login",
+                RefreshToken = new RefreshToken
+                {
+                    ExpirationType = RefreshTokenExpirationType.NonExpiring,
+                    RotationType = RefreshTokenRotationType.NonRotating
+                },
+                OidcConformant = true,
+                GrantTypes = new[] { "refresh_token" },
+                OrganizationUsage = OrganizationUsage.Require,
+                OrganizationRequireBehavior = OrganizationRequireBehavior.PreLoginPrompt
+            };
+
+            var expectedParams = new Dictionary<string, object>
+            {
+                { "name", newClientRequest.Name },
+                { "token_endpoint_auth_method", (int) newClientRequest.TokenEndpointAuthMethod },
+                { "is_first_party", newClientRequest.IsFirstParty },
+                { "client_metadata", new Dictionary<string, string> { { "Prop1", "1" }, { "Prop2", "2" } } },
+                { "app_type", "native" },
+                { "initiate_login_uri", "https://create.com/login" },
+                { "refresh_token", new Dictionary<string, object> { { "expiration_type", "non-expiring" }, { "rotation_type", "non-rotating" } } },
+                { "oidc_conformant", true },
+                { "grant_types", new[] { "refresh_token" } },
+                { "organization_usage", "require" },
+                { "organization_require_behavior", "pre_login_prompt" },
+            };
+
+            // Request and Response are the same
+            var response = expectedParams;
+
+            var mockHandler = new MockRequestBuilder($"https://{TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL")}/api/v2")
+                .Request(path: "clients", method: HttpMethod.Post)
+                .ExpectParams(expectedParams)
+                .Response(response)
+                .Build();
+
+            var httpClient = new HttpClient(mockHandler);
+            string token = await TestBaseUtils.GenerateManagementApiToken();
+            var managementClient = new ManagementApiClient(token, TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(httpClient));
+
+            var newClientResponse = await managementClient.Clients.CreateAsync(newClientRequest);
+
+            newClientResponse.Should().NotBeNull();
+            newClientResponse.Name.Should().Be(newClientRequest.Name);
+            newClientResponse.TokenEndpointAuthMethod.Should().Be(TokenEndpointAuthMethod.ClientSecretPost);
+            newClientResponse.ApplicationType.Should().Be(ClientApplicationType.Native);
+            newClientResponse.IsFirstParty.Should().BeTrue();
+            newClientResponse.RefreshToken.Should().NotBeNull();
+            newClientResponse.RefreshToken.ExpirationType.Should().Be(newClientRequest.RefreshToken.ExpirationType);
+            newClientResponse.RefreshToken.RotationType.Should().Be(newClientRequest.RefreshToken.RotationType);
+            newClientResponse.OrganizationUsage.Should().Be(OrganizationUsage.Require);
+            newClientResponse.OrganizationRequireBehavior.Should().Be(OrganizationRequireBehavior.PreLoginPrompt);
+
+            string prop1 = newClientResponse.ClientMetaData.Prop1;
+            prop1.Should().Be("1");
+            string prop2 = newClientResponse.ClientMetaData.Prop2;
+            prop2.Should().Be("2");
+            newClientResponse.GrantTypes.Should().HaveCount(1);
+            newClientResponse.InitiateLoginUri.Should().Be("https://create.com/login");
+        }
+
+        [Fact]
+        public async Task Test_client_update()
+        {
+            var updateClientRequest = new ClientUpdateRequest
+            {
+                Name = $"{TestingConstants.ClientPrefix} {TestBaseUtils.MakeRandomName()}",
+                TokenEndpointAuthMethod = TokenEndpointAuthMethod.ClientSecretPost,
+                ApplicationType = ClientApplicationType.Spa,
+                GrantTypes = new[] { "refresh_token", "authorization_code" },
+                InitiateLoginUri = "https://update.com/login",
+                RefreshToken = new RefreshToken
+                {
+                    ExpirationType = RefreshTokenExpirationType.Expiring,
+                    RotationType = RefreshTokenRotationType.Rotating,
+                    TokenLifetime = 3600,
+                    Leeway = 1800
+                },
+                OrganizationRequireBehavior = OrganizationRequireBehavior.NoPrompt
+            };
+
+            var expectedParams = new Dictionary<string, object>
+            {
+                { "name", updateClientRequest.Name },
+                { "token_endpoint_auth_method", (int) updateClientRequest.TokenEndpointAuthMethod },
+                { "app_type", "spa" },
+                { "initiate_login_uri", "https://update.com/login" },
+                { "refresh_token", new Dictionary<string, object> { { "expiration_type", "expiring" }, { "rotation_type", "rotating" }, { "token_lifetime", 3600 }, { "leeway", 1800 } } },
+                { "grant_types", new[] { "refresh_token", "authorization_code" } },
+                { "organization_require_behavior", "no_prompt" },
+            };
+
+            // Request and Response are the same
+            var response = expectedParams;
+
+            var mockHandler = new MockRequestBuilder($"https://{TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL")}/api/v2")
+                .Request(path: $"clients/1", method: HttpMethod.Patch)
+                .ExpectParams(expectedParams)
+                .Response(response)
+                .Build();
+
+            var httpClient = new HttpClient(mockHandler);
+            string token = await TestBaseUtils.GenerateManagementApiToken();
+            var managementClient = new ManagementApiClient(token, TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(httpClient));
+
+            var updateClientResponse = await managementClient.Clients.UpdateAsync("1", updateClientRequest);
+            updateClientResponse.Should().NotBeNull();
+            updateClientResponse.Name.Should().Be(updateClientRequest.Name);
+            updateClientResponse.TokenEndpointAuthMethod.Should().Be(TokenEndpointAuthMethod.ClientSecretPost);
+            updateClientResponse.ApplicationType.Should().Be(ClientApplicationType.Spa);
+            updateClientResponse.GrantTypes.Should().HaveCount(2);
+            updateClientResponse.InitiateLoginUri.Should().Be("https://update.com/login");
+            updateClientResponse.RefreshToken.Should().NotBeNull();
+            updateClientResponse.RefreshToken.RotationType.Should().Be(updateClientRequest.RefreshToken.RotationType);
+            updateClientResponse.RefreshToken.ExpirationType.Should().Be(updateClientRequest.RefreshToken.ExpirationType);
+            updateClientResponse.RefreshToken.TokenLifetime.Should().Be(updateClientRequest.RefreshToken.TokenLifetime);
+            updateClientResponse.RefreshToken.Leeway.Should().Be(updateClientRequest.RefreshToken.Leeway);
+            updateClientResponse.OrganizationRequireBehavior.Should().Be(OrganizationRequireBehavior.NoPrompt);
+        }
+
+        [Fact]
+        public async Task Test_client_get()
+        {
+            var response = new Dictionary<string, object>
+            {
+                { "name", "Test Client" },
+                { "token_endpoint_auth_method", (int) TokenEndpointAuthMethod.ClientSecretPost },
+                { "app_type", "spa" },
+                { "initiate_login_uri", "https://update.com/login" },
+                { "refresh_token", new Dictionary<string, object> { { "expiration_type", "expiring" }, { "rotation_type", "rotating" }, { "token_lifetime", 3600 }, { "leeway", 1800 } } },
+                { "grant_types", new[] { "refresh_token", "authorization_code" } },
+                { "organization_require_behavior", "no_prompt" },
+            };
+
+            var mockHandler = new MockRequestBuilder($"https://{TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL")}/api/v2")
+                .Request(path: $"clients/1", method: HttpMethod.Get)
+                .Response(response)
+                .Build();
+
+            var httpClient = new HttpClient(mockHandler);
+
+            string token = await TestBaseUtils.GenerateManagementApiToken();
+            var managementClient = new ManagementApiClient(token, TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(httpClient));
+
+            var getClientResponse = await managementClient.Clients.GetAsync("1");
+            getClientResponse.Should().NotBeNull();
+            getClientResponse.Name.Should().Be("Test Client");
+
+        }
+
+        [Fact]
+        public async Task Test_client_delete()
+        {
+            var mockHandler = new MockRequestBuilder($"https://{TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL")}/api/v2")
+                .Request(path: $"clients/1", method: HttpMethod.Delete)
+                .Build();
+
+            var httpClient = new HttpClient(mockHandler);
+            var managementClient = new ManagementApiClient("", TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(httpClient));
+
+            await managementClient.Clients.DeleteAsync("1");
         }
 
         [Fact]
