@@ -4277,6 +4277,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.ClientsClient.CreateAsync
   nameWithType: ClientsClient.CreateAsync
+- uid: Auth0.ManagementApi.Clients.ClientsClient.CreateCredentialAsync(System.String,Auth0.ManagementApi.Models.ClientCredentialCreateRequest,System.Threading.CancellationToken)
+  name: CreateCredentialAsync(String, ClientCredentialCreateRequest, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.ClientsClient.html#Auth0_ManagementApi_Clients_ClientsClient_CreateCredentialAsync_System_String_Auth0_ManagementApi_Models_ClientCredentialCreateRequest_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.ClientsClient.CreateCredentialAsync(System.String,Auth0.ManagementApi.Models.ClientCredentialCreateRequest,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.ClientsClient.CreateCredentialAsync(System.String, Auth0.ManagementApi.Models.ClientCredentialCreateRequest, System.Threading.CancellationToken)
+  nameWithType: ClientsClient.CreateCredentialAsync(String, ClientCredentialCreateRequest, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.ClientsClient.CreateCredentialAsync*
+  name: CreateCredentialAsync
+  href: api/Auth0.ManagementApi.Clients.ClientsClient.html#Auth0_ManagementApi_Clients_ClientsClient_CreateCredentialAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.ClientsClient.CreateCredentialAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.ClientsClient.CreateCredentialAsync
+  nameWithType: ClientsClient.CreateCredentialAsync
 - uid: Auth0.ManagementApi.Clients.ClientsClient.DeleteAsync(System.String,System.Threading.CancellationToken)
   name: DeleteAsync(String, CancellationToken)
   href: api/Auth0.ManagementApi.Clients.ClientsClient.html#Auth0_ManagementApi_Clients_ClientsClient_DeleteAsync_System_String_System_Threading_CancellationToken_
@@ -4290,6 +4303,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.ClientsClient.DeleteAsync
   nameWithType: ClientsClient.DeleteAsync
+- uid: Auth0.ManagementApi.Clients.ClientsClient.DeleteCredentialAsync(System.String,System.String,System.Threading.CancellationToken)
+  name: DeleteCredentialAsync(String, String, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.ClientsClient.html#Auth0_ManagementApi_Clients_ClientsClient_DeleteCredentialAsync_System_String_System_String_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.ClientsClient.DeleteCredentialAsync(System.String,System.String,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.ClientsClient.DeleteCredentialAsync(System.String, System.String, System.Threading.CancellationToken)
+  nameWithType: ClientsClient.DeleteCredentialAsync(String, String, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.ClientsClient.DeleteCredentialAsync*
+  name: DeleteCredentialAsync
+  href: api/Auth0.ManagementApi.Clients.ClientsClient.html#Auth0_ManagementApi_Clients_ClientsClient_DeleteCredentialAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.ClientsClient.DeleteCredentialAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.ClientsClient.DeleteCredentialAsync
+  nameWithType: ClientsClient.DeleteCredentialAsync
 - uid: Auth0.ManagementApi.Clients.ClientsClient.GetAllAsync(Auth0.ManagementApi.Models.GetClientsRequest,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)
   name: GetAllAsync(GetClientsRequest, PaginationInfo, CancellationToken)
   href: api/Auth0.ManagementApi.Clients.ClientsClient.html#Auth0_ManagementApi_Clients_ClientsClient_GetAllAsync_Auth0_ManagementApi_Models_GetClientsRequest_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_
@@ -4303,6 +4329,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.ClientsClient.GetAllAsync
   nameWithType: ClientsClient.GetAllAsync
+- uid: Auth0.ManagementApi.Clients.ClientsClient.GetAllCredentialsAsync(System.String,System.Threading.CancellationToken)
+  name: GetAllCredentialsAsync(String, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.ClientsClient.html#Auth0_ManagementApi_Clients_ClientsClient_GetAllCredentialsAsync_System_String_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.ClientsClient.GetAllCredentialsAsync(System.String,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.ClientsClient.GetAllCredentialsAsync(System.String, System.Threading.CancellationToken)
+  nameWithType: ClientsClient.GetAllCredentialsAsync(String, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.ClientsClient.GetAllCredentialsAsync*
+  name: GetAllCredentialsAsync
+  href: api/Auth0.ManagementApi.Clients.ClientsClient.html#Auth0_ManagementApi_Clients_ClientsClient_GetAllCredentialsAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.ClientsClient.GetAllCredentialsAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.ClientsClient.GetAllCredentialsAsync
+  nameWithType: ClientsClient.GetAllCredentialsAsync
 - uid: Auth0.ManagementApi.Clients.ClientsClient.GetAsync(System.String,System.String,System.Boolean,System.Threading.CancellationToken)
   name: GetAsync(String, String, Boolean, CancellationToken)
   href: api/Auth0.ManagementApi.Clients.ClientsClient.html#Auth0_ManagementApi_Clients_ClientsClient_GetAsync_System_String_System_String_System_Boolean_System_Threading_CancellationToken_
@@ -4316,6 +4355,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.ClientsClient.GetAsync
   nameWithType: ClientsClient.GetAsync
+- uid: Auth0.ManagementApi.Clients.ClientsClient.GetCredentialAsync(System.String,System.String,System.Threading.CancellationToken)
+  name: GetCredentialAsync(String, String, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.ClientsClient.html#Auth0_ManagementApi_Clients_ClientsClient_GetCredentialAsync_System_String_System_String_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.ClientsClient.GetCredentialAsync(System.String,System.String,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.ClientsClient.GetCredentialAsync(System.String, System.String, System.Threading.CancellationToken)
+  nameWithType: ClientsClient.GetCredentialAsync(String, String, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.ClientsClient.GetCredentialAsync*
+  name: GetCredentialAsync
+  href: api/Auth0.ManagementApi.Clients.ClientsClient.html#Auth0_ManagementApi_Clients_ClientsClient_GetCredentialAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.ClientsClient.GetCredentialAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.ClientsClient.GetCredentialAsync
+  nameWithType: ClientsClient.GetCredentialAsync
 - uid: Auth0.ManagementApi.Clients.ClientsClient.RotateClientSecret(System.String,System.Threading.CancellationToken)
   name: RotateClientSecret(String, CancellationToken)
   href: api/Auth0.ManagementApi.Clients.ClientsClient.html#Auth0_ManagementApi_Clients_ClientsClient_RotateClientSecret_System_String_System_Threading_CancellationToken_
@@ -4342,6 +4394,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.ClientsClient.UpdateAsync
   nameWithType: ClientsClient.UpdateAsync
+- uid: Auth0.ManagementApi.Clients.ClientsClient.UpdateCredentialAsync(System.String,System.String,Auth0.ManagementApi.Models.ClientCredentialUpdateRequest,System.Threading.CancellationToken)
+  name: UpdateCredentialAsync(String, String, ClientCredentialUpdateRequest, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.ClientsClient.html#Auth0_ManagementApi_Clients_ClientsClient_UpdateCredentialAsync_System_String_System_String_Auth0_ManagementApi_Models_ClientCredentialUpdateRequest_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.ClientsClient.UpdateCredentialAsync(System.String,System.String,Auth0.ManagementApi.Models.ClientCredentialUpdateRequest,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.ClientsClient.UpdateCredentialAsync(System.String, System.String, Auth0.ManagementApi.Models.ClientCredentialUpdateRequest, System.Threading.CancellationToken)
+  nameWithType: ClientsClient.UpdateCredentialAsync(String, String, ClientCredentialUpdateRequest, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.ClientsClient.UpdateCredentialAsync*
+  name: UpdateCredentialAsync
+  href: api/Auth0.ManagementApi.Clients.ClientsClient.html#Auth0_ManagementApi_Clients_ClientsClient_UpdateCredentialAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.ClientsClient.UpdateCredentialAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.ClientsClient.UpdateCredentialAsync
+  nameWithType: ClientsClient.UpdateCredentialAsync
 - uid: Auth0.ManagementApi.Clients.ConnectionsClient
   name: ConnectionsClient
   href: api/Auth0.ManagementApi.Clients.ConnectionsClient.html
@@ -4596,12 +4661,12 @@ references:
   commentId: M:Auth0.ManagementApi.Clients.DeviceCredentialsClient.GetAllAsync(Auth0.ManagementApi.Models.GetDeviceCredentialsRequest,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)
   fullName: Auth0.ManagementApi.Clients.DeviceCredentialsClient.GetAllAsync(Auth0.ManagementApi.Models.GetDeviceCredentialsRequest, Auth0.ManagementApi.Paging.PaginationInfo, System.Threading.CancellationToken)
   nameWithType: DeviceCredentialsClient.GetAllAsync(GetDeviceCredentialsRequest, PaginationInfo, CancellationToken)
-- uid: Auth0.ManagementApi.Clients.DeviceCredentialsClient.GetAllAsync(System.String,System.Boolean,System.String,System.String,System.String)
-  name: GetAllAsync(String, Boolean, String, String, String)
-  href: api/Auth0.ManagementApi.Clients.DeviceCredentialsClient.html#Auth0_ManagementApi_Clients_DeviceCredentialsClient_GetAllAsync_System_String_System_Boolean_System_String_System_String_System_String_
-  commentId: M:Auth0.ManagementApi.Clients.DeviceCredentialsClient.GetAllAsync(System.String,System.Boolean,System.String,System.String,System.String)
-  fullName: Auth0.ManagementApi.Clients.DeviceCredentialsClient.GetAllAsync(System.String, System.Boolean, System.String, System.String, System.String)
-  nameWithType: DeviceCredentialsClient.GetAllAsync(String, Boolean, String, String, String)
+- uid: Auth0.ManagementApi.Clients.DeviceCredentialsClient.GetAllAsync(System.String,System.Boolean,System.String,System.String,System.String,System.Threading.CancellationToken)
+  name: GetAllAsync(String, Boolean, String, String, String, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.DeviceCredentialsClient.html#Auth0_ManagementApi_Clients_DeviceCredentialsClient_GetAllAsync_System_String_System_Boolean_System_String_System_String_System_String_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.DeviceCredentialsClient.GetAllAsync(System.String,System.Boolean,System.String,System.String,System.String,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.DeviceCredentialsClient.GetAllAsync(System.String, System.Boolean, System.String, System.String, System.String, System.Threading.CancellationToken)
+  nameWithType: DeviceCredentialsClient.GetAllAsync(String, Boolean, String, String, String, CancellationToken)
 - uid: Auth0.ManagementApi.Clients.DeviceCredentialsClient.GetAllAsync*
   name: GetAllAsync
   href: api/Auth0.ManagementApi.Clients.DeviceCredentialsClient.html#Auth0_ManagementApi_Clients_DeviceCredentialsClient_GetAllAsync_
@@ -5461,6 +5526,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.IClientsClient.CreateAsync
   nameWithType: IClientsClient.CreateAsync
+- uid: Auth0.ManagementApi.Clients.IClientsClient.CreateCredentialAsync(System.String,Auth0.ManagementApi.Models.ClientCredentialCreateRequest,System.Threading.CancellationToken)
+  name: CreateCredentialAsync(String, ClientCredentialCreateRequest, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.IClientsClient.html#Auth0_ManagementApi_Clients_IClientsClient_CreateCredentialAsync_System_String_Auth0_ManagementApi_Models_ClientCredentialCreateRequest_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.IClientsClient.CreateCredentialAsync(System.String,Auth0.ManagementApi.Models.ClientCredentialCreateRequest,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.IClientsClient.CreateCredentialAsync(System.String, Auth0.ManagementApi.Models.ClientCredentialCreateRequest, System.Threading.CancellationToken)
+  nameWithType: IClientsClient.CreateCredentialAsync(String, ClientCredentialCreateRequest, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.IClientsClient.CreateCredentialAsync*
+  name: CreateCredentialAsync
+  href: api/Auth0.ManagementApi.Clients.IClientsClient.html#Auth0_ManagementApi_Clients_IClientsClient_CreateCredentialAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.IClientsClient.CreateCredentialAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.IClientsClient.CreateCredentialAsync
+  nameWithType: IClientsClient.CreateCredentialAsync
 - uid: Auth0.ManagementApi.Clients.IClientsClient.DeleteAsync(System.String,System.Threading.CancellationToken)
   name: DeleteAsync(String, CancellationToken)
   href: api/Auth0.ManagementApi.Clients.IClientsClient.html#Auth0_ManagementApi_Clients_IClientsClient_DeleteAsync_System_String_System_Threading_CancellationToken_
@@ -5474,6 +5552,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.IClientsClient.DeleteAsync
   nameWithType: IClientsClient.DeleteAsync
+- uid: Auth0.ManagementApi.Clients.IClientsClient.DeleteCredentialAsync(System.String,System.String,System.Threading.CancellationToken)
+  name: DeleteCredentialAsync(String, String, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.IClientsClient.html#Auth0_ManagementApi_Clients_IClientsClient_DeleteCredentialAsync_System_String_System_String_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.IClientsClient.DeleteCredentialAsync(System.String,System.String,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.IClientsClient.DeleteCredentialAsync(System.String, System.String, System.Threading.CancellationToken)
+  nameWithType: IClientsClient.DeleteCredentialAsync(String, String, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.IClientsClient.DeleteCredentialAsync*
+  name: DeleteCredentialAsync
+  href: api/Auth0.ManagementApi.Clients.IClientsClient.html#Auth0_ManagementApi_Clients_IClientsClient_DeleteCredentialAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.IClientsClient.DeleteCredentialAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.IClientsClient.DeleteCredentialAsync
+  nameWithType: IClientsClient.DeleteCredentialAsync
 - uid: Auth0.ManagementApi.Clients.IClientsClient.GetAllAsync(Auth0.ManagementApi.Models.GetClientsRequest,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)
   name: GetAllAsync(GetClientsRequest, PaginationInfo, CancellationToken)
   href: api/Auth0.ManagementApi.Clients.IClientsClient.html#Auth0_ManagementApi_Clients_IClientsClient_GetAllAsync_Auth0_ManagementApi_Models_GetClientsRequest_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_
@@ -5487,6 +5578,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.IClientsClient.GetAllAsync
   nameWithType: IClientsClient.GetAllAsync
+- uid: Auth0.ManagementApi.Clients.IClientsClient.GetAllCredentialsAsync(System.String,System.Threading.CancellationToken)
+  name: GetAllCredentialsAsync(String, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.IClientsClient.html#Auth0_ManagementApi_Clients_IClientsClient_GetAllCredentialsAsync_System_String_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.IClientsClient.GetAllCredentialsAsync(System.String,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.IClientsClient.GetAllCredentialsAsync(System.String, System.Threading.CancellationToken)
+  nameWithType: IClientsClient.GetAllCredentialsAsync(String, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.IClientsClient.GetAllCredentialsAsync*
+  name: GetAllCredentialsAsync
+  href: api/Auth0.ManagementApi.Clients.IClientsClient.html#Auth0_ManagementApi_Clients_IClientsClient_GetAllCredentialsAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.IClientsClient.GetAllCredentialsAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.IClientsClient.GetAllCredentialsAsync
+  nameWithType: IClientsClient.GetAllCredentialsAsync
 - uid: Auth0.ManagementApi.Clients.IClientsClient.GetAsync(System.String,System.String,System.Boolean,System.Threading.CancellationToken)
   name: GetAsync(String, String, Boolean, CancellationToken)
   href: api/Auth0.ManagementApi.Clients.IClientsClient.html#Auth0_ManagementApi_Clients_IClientsClient_GetAsync_System_String_System_String_System_Boolean_System_Threading_CancellationToken_
@@ -5500,6 +5604,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.IClientsClient.GetAsync
   nameWithType: IClientsClient.GetAsync
+- uid: Auth0.ManagementApi.Clients.IClientsClient.GetCredentialAsync(System.String,System.String,System.Threading.CancellationToken)
+  name: GetCredentialAsync(String, String, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.IClientsClient.html#Auth0_ManagementApi_Clients_IClientsClient_GetCredentialAsync_System_String_System_String_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.IClientsClient.GetCredentialAsync(System.String,System.String,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.IClientsClient.GetCredentialAsync(System.String, System.String, System.Threading.CancellationToken)
+  nameWithType: IClientsClient.GetCredentialAsync(String, String, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.IClientsClient.GetCredentialAsync*
+  name: GetCredentialAsync
+  href: api/Auth0.ManagementApi.Clients.IClientsClient.html#Auth0_ManagementApi_Clients_IClientsClient_GetCredentialAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.IClientsClient.GetCredentialAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.IClientsClient.GetCredentialAsync
+  nameWithType: IClientsClient.GetCredentialAsync
 - uid: Auth0.ManagementApi.Clients.IClientsClient.RotateClientSecret(System.String,System.Threading.CancellationToken)
   name: RotateClientSecret(String, CancellationToken)
   href: api/Auth0.ManagementApi.Clients.IClientsClient.html#Auth0_ManagementApi_Clients_IClientsClient_RotateClientSecret_System_String_System_Threading_CancellationToken_
@@ -5526,6 +5643,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.IClientsClient.UpdateAsync
   nameWithType: IClientsClient.UpdateAsync
+- uid: Auth0.ManagementApi.Clients.IClientsClient.UpdateCredentialAsync(System.String,System.String,Auth0.ManagementApi.Models.ClientCredentialUpdateRequest,System.Threading.CancellationToken)
+  name: UpdateCredentialAsync(String, String, ClientCredentialUpdateRequest, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.IClientsClient.html#Auth0_ManagementApi_Clients_IClientsClient_UpdateCredentialAsync_System_String_System_String_Auth0_ManagementApi_Models_ClientCredentialUpdateRequest_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.IClientsClient.UpdateCredentialAsync(System.String,System.String,Auth0.ManagementApi.Models.ClientCredentialUpdateRequest,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.IClientsClient.UpdateCredentialAsync(System.String, System.String, Auth0.ManagementApi.Models.ClientCredentialUpdateRequest, System.Threading.CancellationToken)
+  nameWithType: IClientsClient.UpdateCredentialAsync(String, String, ClientCredentialUpdateRequest, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.IClientsClient.UpdateCredentialAsync*
+  name: UpdateCredentialAsync
+  href: api/Auth0.ManagementApi.Clients.IClientsClient.html#Auth0_ManagementApi_Clients_IClientsClient_UpdateCredentialAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.IClientsClient.UpdateCredentialAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.IClientsClient.UpdateCredentialAsync
+  nameWithType: IClientsClient.UpdateCredentialAsync
 - uid: Auth0.ManagementApi.Clients.IConnectionsClient
   name: IConnectionsClient
   href: api/Auth0.ManagementApi.Clients.IConnectionsClient.html
@@ -5732,12 +5862,12 @@ references:
   commentId: M:Auth0.ManagementApi.Clients.IDeviceCredentialsClient.GetAllAsync(Auth0.ManagementApi.Models.GetDeviceCredentialsRequest,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)
   fullName: Auth0.ManagementApi.Clients.IDeviceCredentialsClient.GetAllAsync(Auth0.ManagementApi.Models.GetDeviceCredentialsRequest, Auth0.ManagementApi.Paging.PaginationInfo, System.Threading.CancellationToken)
   nameWithType: IDeviceCredentialsClient.GetAllAsync(GetDeviceCredentialsRequest, PaginationInfo, CancellationToken)
-- uid: Auth0.ManagementApi.Clients.IDeviceCredentialsClient.GetAllAsync(System.String,System.Boolean,System.String,System.String,System.String)
-  name: GetAllAsync(String, Boolean, String, String, String)
-  href: api/Auth0.ManagementApi.Clients.IDeviceCredentialsClient.html#Auth0_ManagementApi_Clients_IDeviceCredentialsClient_GetAllAsync_System_String_System_Boolean_System_String_System_String_System_String_
-  commentId: M:Auth0.ManagementApi.Clients.IDeviceCredentialsClient.GetAllAsync(System.String,System.Boolean,System.String,System.String,System.String)
-  fullName: Auth0.ManagementApi.Clients.IDeviceCredentialsClient.GetAllAsync(System.String, System.Boolean, System.String, System.String, System.String)
-  nameWithType: IDeviceCredentialsClient.GetAllAsync(String, Boolean, String, String, String)
+- uid: Auth0.ManagementApi.Clients.IDeviceCredentialsClient.GetAllAsync(System.String,System.Boolean,System.String,System.String,System.String,System.Threading.CancellationToken)
+  name: GetAllAsync(String, Boolean, String, String, String, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.IDeviceCredentialsClient.html#Auth0_ManagementApi_Clients_IDeviceCredentialsClient_GetAllAsync_System_String_System_Boolean_System_String_System_String_System_String_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.IDeviceCredentialsClient.GetAllAsync(System.String,System.Boolean,System.String,System.String,System.String,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.IDeviceCredentialsClient.GetAllAsync(System.String, System.Boolean, System.String, System.String, System.String, System.Threading.CancellationToken)
+  nameWithType: IDeviceCredentialsClient.GetAllAsync(String, Boolean, String, String, String, CancellationToken)
 - uid: Auth0.ManagementApi.Clients.IDeviceCredentialsClient.GetAllAsync*
   name: GetAllAsync
   href: api/Auth0.ManagementApi.Clients.IDeviceCredentialsClient.html#Auth0_ManagementApi_Clients_IDeviceCredentialsClient_GetAllAsync_
@@ -12055,6 +12185,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.Client.ApplicationType
   nameWithType: Client.ApplicationType
+- uid: Auth0.ManagementApi.Models.Client.ClientAuthenticationMethods
+  name: ClientAuthenticationMethods
+  href: api/Auth0.ManagementApi.Models.Client.html#Auth0_ManagementApi_Models_Client_ClientAuthenticationMethods
+  commentId: P:Auth0.ManagementApi.Models.Client.ClientAuthenticationMethods
+  fullName: Auth0.ManagementApi.Models.Client.ClientAuthenticationMethods
+  nameWithType: Client.ClientAuthenticationMethods
+- uid: Auth0.ManagementApi.Models.Client.ClientAuthenticationMethods*
+  name: ClientAuthenticationMethods
+  href: api/Auth0.ManagementApi.Models.Client.html#Auth0_ManagementApi_Models_Client_ClientAuthenticationMethods_
+  commentId: Overload:Auth0.ManagementApi.Models.Client.ClientAuthenticationMethods
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Client.ClientAuthenticationMethods
+  nameWithType: Client.ClientAuthenticationMethods
 - uid: Auth0.ManagementApi.Models.Client.ClientId
   name: ClientId
   href: api/Auth0.ManagementApi.Models.Client.html#Auth0_ManagementApi_Models_Client_ClientId
@@ -12226,6 +12369,25 @@ references:
   commentId: F:Auth0.ManagementApi.Models.ClientApplicationType.Zoom
   fullName: Auth0.ManagementApi.Models.ClientApplicationType.Zoom
   nameWithType: ClientApplicationType.Zoom
+- uid: Auth0.ManagementApi.Models.ClientAuthenticationMethods
+  name: ClientAuthenticationMethods
+  href: api/Auth0.ManagementApi.Models.ClientAuthenticationMethods.html
+  commentId: T:Auth0.ManagementApi.Models.ClientAuthenticationMethods
+  fullName: Auth0.ManagementApi.Models.ClientAuthenticationMethods
+  nameWithType: ClientAuthenticationMethods
+- uid: Auth0.ManagementApi.Models.ClientAuthenticationMethods.PrivateKeyJwt
+  name: PrivateKeyJwt
+  href: api/Auth0.ManagementApi.Models.ClientAuthenticationMethods.html#Auth0_ManagementApi_Models_ClientAuthenticationMethods_PrivateKeyJwt
+  commentId: P:Auth0.ManagementApi.Models.ClientAuthenticationMethods.PrivateKeyJwt
+  fullName: Auth0.ManagementApi.Models.ClientAuthenticationMethods.PrivateKeyJwt
+  nameWithType: ClientAuthenticationMethods.PrivateKeyJwt
+- uid: Auth0.ManagementApi.Models.ClientAuthenticationMethods.PrivateKeyJwt*
+  name: PrivateKeyJwt
+  href: api/Auth0.ManagementApi.Models.ClientAuthenticationMethods.html#Auth0_ManagementApi_Models_ClientAuthenticationMethods_PrivateKeyJwt_
+  commentId: Overload:Auth0.ManagementApi.Models.ClientAuthenticationMethods.PrivateKeyJwt
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.ClientAuthenticationMethods.PrivateKeyJwt
+  nameWithType: ClientAuthenticationMethods.PrivateKeyJwt
 - uid: Auth0.ManagementApi.Models.ClientBase
   name: ClientBase
   href: api/Auth0.ManagementApi.Models.ClientBase.html
@@ -12615,6 +12777,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.ClientCreateRequest.ApplicationType
   nameWithType: ClientCreateRequest.ApplicationType
+- uid: Auth0.ManagementApi.Models.ClientCreateRequest.ClientAuthenticationMethods
+  name: ClientAuthenticationMethods
+  href: api/Auth0.ManagementApi.Models.ClientCreateRequest.html#Auth0_ManagementApi_Models_ClientCreateRequest_ClientAuthenticationMethods
+  commentId: P:Auth0.ManagementApi.Models.ClientCreateRequest.ClientAuthenticationMethods
+  fullName: Auth0.ManagementApi.Models.ClientCreateRequest.ClientAuthenticationMethods
+  nameWithType: ClientCreateRequest.ClientAuthenticationMethods
+- uid: Auth0.ManagementApi.Models.ClientCreateRequest.ClientAuthenticationMethods*
+  name: ClientAuthenticationMethods
+  href: api/Auth0.ManagementApi.Models.ClientCreateRequest.html#Auth0_ManagementApi_Models_ClientCreateRequest_ClientAuthenticationMethods_
+  commentId: Overload:Auth0.ManagementApi.Models.ClientCreateRequest.ClientAuthenticationMethods
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.ClientCreateRequest.ClientAuthenticationMethods
+  nameWithType: ClientCreateRequest.ClientAuthenticationMethods
 - uid: Auth0.ManagementApi.Models.ClientCreateRequest.IsHerokuApp
   name: IsHerokuApp
   href: api/Auth0.ManagementApi.Models.ClientCreateRequest.html#Auth0_ManagementApi_Models_ClientCreateRequest_IsHerokuApp
@@ -12641,6 +12816,109 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.ClientCreateRequest.TokenEndpointAuthMethod
   nameWithType: ClientCreateRequest.TokenEndpointAuthMethod
+- uid: Auth0.ManagementApi.Models.ClientCredentialCreateRequest
+  name: ClientCredentialCreateRequest
+  href: api/Auth0.ManagementApi.Models.ClientCredentialCreateRequest.html
+  commentId: T:Auth0.ManagementApi.Models.ClientCredentialCreateRequest
+  fullName: Auth0.ManagementApi.Models.ClientCredentialCreateRequest
+  nameWithType: ClientCredentialCreateRequest
+- uid: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.Algorithm
+  name: Algorithm
+  href: api/Auth0.ManagementApi.Models.ClientCredentialCreateRequest.html#Auth0_ManagementApi_Models_ClientCredentialCreateRequest_Algorithm
+  commentId: P:Auth0.ManagementApi.Models.ClientCredentialCreateRequest.Algorithm
+  fullName: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.Algorithm
+  nameWithType: ClientCredentialCreateRequest.Algorithm
+- uid: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.Algorithm*
+  name: Algorithm
+  href: api/Auth0.ManagementApi.Models.ClientCredentialCreateRequest.html#Auth0_ManagementApi_Models_ClientCredentialCreateRequest_Algorithm_
+  commentId: Overload:Auth0.ManagementApi.Models.ClientCredentialCreateRequest.Algorithm
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.Algorithm
+  nameWithType: ClientCredentialCreateRequest.Algorithm
+- uid: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.CredentialType
+  name: CredentialType
+  href: api/Auth0.ManagementApi.Models.ClientCredentialCreateRequest.html#Auth0_ManagementApi_Models_ClientCredentialCreateRequest_CredentialType
+  commentId: P:Auth0.ManagementApi.Models.ClientCredentialCreateRequest.CredentialType
+  fullName: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.CredentialType
+  nameWithType: ClientCredentialCreateRequest.CredentialType
+- uid: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.CredentialType*
+  name: CredentialType
+  href: api/Auth0.ManagementApi.Models.ClientCredentialCreateRequest.html#Auth0_ManagementApi_Models_ClientCredentialCreateRequest_CredentialType_
+  commentId: Overload:Auth0.ManagementApi.Models.ClientCredentialCreateRequest.CredentialType
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.CredentialType
+  nameWithType: ClientCredentialCreateRequest.CredentialType
+- uid: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.ExpiresAt
+  name: ExpiresAt
+  href: api/Auth0.ManagementApi.Models.ClientCredentialCreateRequest.html#Auth0_ManagementApi_Models_ClientCredentialCreateRequest_ExpiresAt
+  commentId: P:Auth0.ManagementApi.Models.ClientCredentialCreateRequest.ExpiresAt
+  fullName: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.ExpiresAt
+  nameWithType: ClientCredentialCreateRequest.ExpiresAt
+- uid: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.ExpiresAt*
+  name: ExpiresAt
+  href: api/Auth0.ManagementApi.Models.ClientCredentialCreateRequest.html#Auth0_ManagementApi_Models_ClientCredentialCreateRequest_ExpiresAt_
+  commentId: Overload:Auth0.ManagementApi.Models.ClientCredentialCreateRequest.ExpiresAt
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.ExpiresAt
+  nameWithType: ClientCredentialCreateRequest.ExpiresAt
+- uid: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.Name
+  name: Name
+  href: api/Auth0.ManagementApi.Models.ClientCredentialCreateRequest.html#Auth0_ManagementApi_Models_ClientCredentialCreateRequest_Name
+  commentId: P:Auth0.ManagementApi.Models.ClientCredentialCreateRequest.Name
+  fullName: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.Name
+  nameWithType: ClientCredentialCreateRequest.Name
+- uid: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.Name*
+  name: Name
+  href: api/Auth0.ManagementApi.Models.ClientCredentialCreateRequest.html#Auth0_ManagementApi_Models_ClientCredentialCreateRequest_Name_
+  commentId: Overload:Auth0.ManagementApi.Models.ClientCredentialCreateRequest.Name
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.Name
+  nameWithType: ClientCredentialCreateRequest.Name
+- uid: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.ParseExpiryFromCert
+  name: ParseExpiryFromCert
+  href: api/Auth0.ManagementApi.Models.ClientCredentialCreateRequest.html#Auth0_ManagementApi_Models_ClientCredentialCreateRequest_ParseExpiryFromCert
+  commentId: P:Auth0.ManagementApi.Models.ClientCredentialCreateRequest.ParseExpiryFromCert
+  fullName: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.ParseExpiryFromCert
+  nameWithType: ClientCredentialCreateRequest.ParseExpiryFromCert
+- uid: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.ParseExpiryFromCert*
+  name: ParseExpiryFromCert
+  href: api/Auth0.ManagementApi.Models.ClientCredentialCreateRequest.html#Auth0_ManagementApi_Models_ClientCredentialCreateRequest_ParseExpiryFromCert_
+  commentId: Overload:Auth0.ManagementApi.Models.ClientCredentialCreateRequest.ParseExpiryFromCert
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.ParseExpiryFromCert
+  nameWithType: ClientCredentialCreateRequest.ParseExpiryFromCert
+- uid: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.Pem
+  name: Pem
+  href: api/Auth0.ManagementApi.Models.ClientCredentialCreateRequest.html#Auth0_ManagementApi_Models_ClientCredentialCreateRequest_Pem
+  commentId: P:Auth0.ManagementApi.Models.ClientCredentialCreateRequest.Pem
+  fullName: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.Pem
+  nameWithType: ClientCredentialCreateRequest.Pem
+- uid: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.Pem*
+  name: Pem
+  href: api/Auth0.ManagementApi.Models.ClientCredentialCreateRequest.html#Auth0_ManagementApi_Models_ClientCredentialCreateRequest_Pem_
+  commentId: Overload:Auth0.ManagementApi.Models.ClientCredentialCreateRequest.Pem
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.ClientCredentialCreateRequest.Pem
+  nameWithType: ClientCredentialCreateRequest.Pem
+- uid: Auth0.ManagementApi.Models.ClientCredentialUpdateRequest
+  name: ClientCredentialUpdateRequest
+  href: api/Auth0.ManagementApi.Models.ClientCredentialUpdateRequest.html
+  commentId: T:Auth0.ManagementApi.Models.ClientCredentialUpdateRequest
+  fullName: Auth0.ManagementApi.Models.ClientCredentialUpdateRequest
+  nameWithType: ClientCredentialUpdateRequest
+- uid: Auth0.ManagementApi.Models.ClientCredentialUpdateRequest.ExpiresAt
+  name: ExpiresAt
+  href: api/Auth0.ManagementApi.Models.ClientCredentialUpdateRequest.html#Auth0_ManagementApi_Models_ClientCredentialUpdateRequest_ExpiresAt
+  commentId: P:Auth0.ManagementApi.Models.ClientCredentialUpdateRequest.ExpiresAt
+  fullName: Auth0.ManagementApi.Models.ClientCredentialUpdateRequest.ExpiresAt
+  nameWithType: ClientCredentialUpdateRequest.ExpiresAt
+- uid: Auth0.ManagementApi.Models.ClientCredentialUpdateRequest.ExpiresAt*
+  name: ExpiresAt
+  href: api/Auth0.ManagementApi.Models.ClientCredentialUpdateRequest.html#Auth0_ManagementApi_Models_ClientCredentialUpdateRequest_ExpiresAt_
+  commentId: Overload:Auth0.ManagementApi.Models.ClientCredentialUpdateRequest.ExpiresAt
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.ClientCredentialUpdateRequest.ExpiresAt
+  nameWithType: ClientCredentialUpdateRequest.ExpiresAt
 - uid: Auth0.ManagementApi.Models.ClientGrant
   name: ClientGrant
   href: api/Auth0.ManagementApi.Models.ClientGrant.html
@@ -12781,6 +13059,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.ClientUpdateRequest.ApplicationType
   nameWithType: ClientUpdateRequest.ApplicationType
+- uid: Auth0.ManagementApi.Models.ClientUpdateRequest.ClientAuthenticationMethods
+  name: ClientAuthenticationMethods
+  href: api/Auth0.ManagementApi.Models.ClientUpdateRequest.html#Auth0_ManagementApi_Models_ClientUpdateRequest_ClientAuthenticationMethods
+  commentId: P:Auth0.ManagementApi.Models.ClientUpdateRequest.ClientAuthenticationMethods
+  fullName: Auth0.ManagementApi.Models.ClientUpdateRequest.ClientAuthenticationMethods
+  nameWithType: ClientUpdateRequest.ClientAuthenticationMethods
+- uid: Auth0.ManagementApi.Models.ClientUpdateRequest.ClientAuthenticationMethods*
+  name: ClientAuthenticationMethods
+  href: api/Auth0.ManagementApi.Models.ClientUpdateRequest.html#Auth0_ManagementApi_Models_ClientUpdateRequest_ClientAuthenticationMethods_
+  commentId: Overload:Auth0.ManagementApi.Models.ClientUpdateRequest.ClientAuthenticationMethods
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.ClientUpdateRequest.ClientAuthenticationMethods
+  nameWithType: ClientUpdateRequest.ClientAuthenticationMethods
 - uid: Auth0.ManagementApi.Models.ClientUpdateRequest.TokenEndpointAuthMethod
   name: TokenEndpointAuthMethod
   href: api/Auth0.ManagementApi.Models.ClientUpdateRequest.html#Auth0_ManagementApi_Models_ClientUpdateRequest_TokenEndpointAuthMethod
@@ -12961,6 +13252,25 @@ references:
   commentId: T:Auth0.ManagementApi.Models.ConnectionUpdateRequest
   fullName: Auth0.ManagementApi.Models.ConnectionUpdateRequest
   nameWithType: ConnectionUpdateRequest
+- uid: Auth0.ManagementApi.Models.CreateClientAuthenticationMethods
+  name: CreateClientAuthenticationMethods
+  href: api/Auth0.ManagementApi.Models.CreateClientAuthenticationMethods.html
+  commentId: T:Auth0.ManagementApi.Models.CreateClientAuthenticationMethods
+  fullName: Auth0.ManagementApi.Models.CreateClientAuthenticationMethods
+  nameWithType: CreateClientAuthenticationMethods
+- uid: Auth0.ManagementApi.Models.CreateClientAuthenticationMethods.PrivateKeyJwt
+  name: PrivateKeyJwt
+  href: api/Auth0.ManagementApi.Models.CreateClientAuthenticationMethods.html#Auth0_ManagementApi_Models_CreateClientAuthenticationMethods_PrivateKeyJwt
+  commentId: P:Auth0.ManagementApi.Models.CreateClientAuthenticationMethods.PrivateKeyJwt
+  fullName: Auth0.ManagementApi.Models.CreateClientAuthenticationMethods.PrivateKeyJwt
+  nameWithType: CreateClientAuthenticationMethods.PrivateKeyJwt
+- uid: Auth0.ManagementApi.Models.CreateClientAuthenticationMethods.PrivateKeyJwt*
+  name: PrivateKeyJwt
+  href: api/Auth0.ManagementApi.Models.CreateClientAuthenticationMethods.html#Auth0_ManagementApi_Models_CreateClientAuthenticationMethods_PrivateKeyJwt_
+  commentId: Overload:Auth0.ManagementApi.Models.CreateClientAuthenticationMethods.PrivateKeyJwt
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.CreateClientAuthenticationMethods.PrivateKeyJwt
+  nameWithType: CreateClientAuthenticationMethods.PrivateKeyJwt
 - uid: Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketRequest
   name: CreateGuardianEnrollmentTicketRequest
   href: api/Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketRequest.html
@@ -13038,6 +13348,154 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketResponse.TicketUrl
   nameWithType: CreateGuardianEnrollmentTicketResponse.TicketUrl
+- uid: Auth0.ManagementApi.Models.CreatePrivateKeyJwt
+  name: CreatePrivateKeyJwt
+  href: api/Auth0.ManagementApi.Models.CreatePrivateKeyJwt.html
+  commentId: T:Auth0.ManagementApi.Models.CreatePrivateKeyJwt
+  fullName: Auth0.ManagementApi.Models.CreatePrivateKeyJwt
+  nameWithType: CreatePrivateKeyJwt
+- uid: Auth0.ManagementApi.Models.CreatePrivateKeyJwt.Credentials
+  name: Credentials
+  href: api/Auth0.ManagementApi.Models.CreatePrivateKeyJwt.html#Auth0_ManagementApi_Models_CreatePrivateKeyJwt_Credentials
+  commentId: P:Auth0.ManagementApi.Models.CreatePrivateKeyJwt.Credentials
+  fullName: Auth0.ManagementApi.Models.CreatePrivateKeyJwt.Credentials
+  nameWithType: CreatePrivateKeyJwt.Credentials
+- uid: Auth0.ManagementApi.Models.CreatePrivateKeyJwt.Credentials*
+  name: Credentials
+  href: api/Auth0.ManagementApi.Models.CreatePrivateKeyJwt.html#Auth0_ManagementApi_Models_CreatePrivateKeyJwt_Credentials_
+  commentId: Overload:Auth0.ManagementApi.Models.CreatePrivateKeyJwt.Credentials
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.CreatePrivateKeyJwt.Credentials
+  nameWithType: CreatePrivateKeyJwt.Credentials
+- uid: Auth0.ManagementApi.Models.Credential
+  name: Credential
+  href: api/Auth0.ManagementApi.Models.Credential.html
+  commentId: T:Auth0.ManagementApi.Models.Credential
+  fullName: Auth0.ManagementApi.Models.Credential
+  nameWithType: Credential
+- uid: Auth0.ManagementApi.Models.Credential.Algorithm
+  name: Algorithm
+  href: api/Auth0.ManagementApi.Models.Credential.html#Auth0_ManagementApi_Models_Credential_Algorithm
+  commentId: P:Auth0.ManagementApi.Models.Credential.Algorithm
+  fullName: Auth0.ManagementApi.Models.Credential.Algorithm
+  nameWithType: Credential.Algorithm
+- uid: Auth0.ManagementApi.Models.Credential.Algorithm*
+  name: Algorithm
+  href: api/Auth0.ManagementApi.Models.Credential.html#Auth0_ManagementApi_Models_Credential_Algorithm_
+  commentId: Overload:Auth0.ManagementApi.Models.Credential.Algorithm
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Credential.Algorithm
+  nameWithType: Credential.Algorithm
+- uid: Auth0.ManagementApi.Models.Credential.CreatedAt
+  name: CreatedAt
+  href: api/Auth0.ManagementApi.Models.Credential.html#Auth0_ManagementApi_Models_Credential_CreatedAt
+  commentId: P:Auth0.ManagementApi.Models.Credential.CreatedAt
+  fullName: Auth0.ManagementApi.Models.Credential.CreatedAt
+  nameWithType: Credential.CreatedAt
+- uid: Auth0.ManagementApi.Models.Credential.CreatedAt*
+  name: CreatedAt
+  href: api/Auth0.ManagementApi.Models.Credential.html#Auth0_ManagementApi_Models_Credential_CreatedAt_
+  commentId: Overload:Auth0.ManagementApi.Models.Credential.CreatedAt
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Credential.CreatedAt
+  nameWithType: Credential.CreatedAt
+- uid: Auth0.ManagementApi.Models.Credential.CredentialType
+  name: CredentialType
+  href: api/Auth0.ManagementApi.Models.Credential.html#Auth0_ManagementApi_Models_Credential_CredentialType
+  commentId: P:Auth0.ManagementApi.Models.Credential.CredentialType
+  fullName: Auth0.ManagementApi.Models.Credential.CredentialType
+  nameWithType: Credential.CredentialType
+- uid: Auth0.ManagementApi.Models.Credential.CredentialType*
+  name: CredentialType
+  href: api/Auth0.ManagementApi.Models.Credential.html#Auth0_ManagementApi_Models_Credential_CredentialType_
+  commentId: Overload:Auth0.ManagementApi.Models.Credential.CredentialType
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Credential.CredentialType
+  nameWithType: Credential.CredentialType
+- uid: Auth0.ManagementApi.Models.Credential.ExpiresAt
+  name: ExpiresAt
+  href: api/Auth0.ManagementApi.Models.Credential.html#Auth0_ManagementApi_Models_Credential_ExpiresAt
+  commentId: P:Auth0.ManagementApi.Models.Credential.ExpiresAt
+  fullName: Auth0.ManagementApi.Models.Credential.ExpiresAt
+  nameWithType: Credential.ExpiresAt
+- uid: Auth0.ManagementApi.Models.Credential.ExpiresAt*
+  name: ExpiresAt
+  href: api/Auth0.ManagementApi.Models.Credential.html#Auth0_ManagementApi_Models_Credential_ExpiresAt_
+  commentId: Overload:Auth0.ManagementApi.Models.Credential.ExpiresAt
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Credential.ExpiresAt
+  nameWithType: Credential.ExpiresAt
+- uid: Auth0.ManagementApi.Models.Credential.Id
+  name: Id
+  href: api/Auth0.ManagementApi.Models.Credential.html#Auth0_ManagementApi_Models_Credential_Id
+  commentId: P:Auth0.ManagementApi.Models.Credential.Id
+  fullName: Auth0.ManagementApi.Models.Credential.Id
+  nameWithType: Credential.Id
+- uid: Auth0.ManagementApi.Models.Credential.Id*
+  name: Id
+  href: api/Auth0.ManagementApi.Models.Credential.html#Auth0_ManagementApi_Models_Credential_Id_
+  commentId: Overload:Auth0.ManagementApi.Models.Credential.Id
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Credential.Id
+  nameWithType: Credential.Id
+- uid: Auth0.ManagementApi.Models.Credential.Kid
+  name: Kid
+  href: api/Auth0.ManagementApi.Models.Credential.html#Auth0_ManagementApi_Models_Credential_Kid
+  commentId: P:Auth0.ManagementApi.Models.Credential.Kid
+  fullName: Auth0.ManagementApi.Models.Credential.Kid
+  nameWithType: Credential.Kid
+- uid: Auth0.ManagementApi.Models.Credential.Kid*
+  name: Kid
+  href: api/Auth0.ManagementApi.Models.Credential.html#Auth0_ManagementApi_Models_Credential_Kid_
+  commentId: Overload:Auth0.ManagementApi.Models.Credential.Kid
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Credential.Kid
+  nameWithType: Credential.Kid
+- uid: Auth0.ManagementApi.Models.Credential.Name
+  name: Name
+  href: api/Auth0.ManagementApi.Models.Credential.html#Auth0_ManagementApi_Models_Credential_Name
+  commentId: P:Auth0.ManagementApi.Models.Credential.Name
+  fullName: Auth0.ManagementApi.Models.Credential.Name
+  nameWithType: Credential.Name
+- uid: Auth0.ManagementApi.Models.Credential.Name*
+  name: Name
+  href: api/Auth0.ManagementApi.Models.Credential.html#Auth0_ManagementApi_Models_Credential_Name_
+  commentId: Overload:Auth0.ManagementApi.Models.Credential.Name
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Credential.Name
+  nameWithType: Credential.Name
+- uid: Auth0.ManagementApi.Models.Credential.UpdatedAt
+  name: UpdatedAt
+  href: api/Auth0.ManagementApi.Models.Credential.html#Auth0_ManagementApi_Models_Credential_UpdatedAt
+  commentId: P:Auth0.ManagementApi.Models.Credential.UpdatedAt
+  fullName: Auth0.ManagementApi.Models.Credential.UpdatedAt
+  nameWithType: Credential.UpdatedAt
+- uid: Auth0.ManagementApi.Models.Credential.UpdatedAt*
+  name: UpdatedAt
+  href: api/Auth0.ManagementApi.Models.Credential.html#Auth0_ManagementApi_Models_Credential_UpdatedAt_
+  commentId: Overload:Auth0.ManagementApi.Models.Credential.UpdatedAt
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Credential.UpdatedAt
+  nameWithType: Credential.UpdatedAt
+- uid: Auth0.ManagementApi.Models.CredentialId
+  name: CredentialId
+  href: api/Auth0.ManagementApi.Models.CredentialId.html
+  commentId: T:Auth0.ManagementApi.Models.CredentialId
+  fullName: Auth0.ManagementApi.Models.CredentialId
+  nameWithType: CredentialId
+- uid: Auth0.ManagementApi.Models.CredentialId.Id
+  name: Id
+  href: api/Auth0.ManagementApi.Models.CredentialId.html#Auth0_ManagementApi_Models_CredentialId_Id
+  commentId: P:Auth0.ManagementApi.Models.CredentialId.Id
+  fullName: Auth0.ManagementApi.Models.CredentialId.Id
+  nameWithType: CredentialId.Id
+- uid: Auth0.ManagementApi.Models.CredentialId.Id*
+  name: Id
+  href: api/Auth0.ManagementApi.Models.CredentialId.html#Auth0_ManagementApi_Models_CredentialId_Id_
+  commentId: Overload:Auth0.ManagementApi.Models.CredentialId.Id
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.CredentialId.Id
+  nameWithType: CredentialId.Id
 - uid: Auth0.ManagementApi.Models.CustomDomain
   name: CustomDomain
   href: api/Auth0.ManagementApi.Models.CustomDomain.html
@@ -17696,6 +18154,25 @@ references:
   commentId: F:Auth0.ManagementApi.Models.PermissionSourceType.Role
   fullName: Auth0.ManagementApi.Models.PermissionSourceType.Role
   nameWithType: PermissionSourceType.Role
+- uid: Auth0.ManagementApi.Models.PrivateKeyJwt
+  name: PrivateKeyJwt
+  href: api/Auth0.ManagementApi.Models.PrivateKeyJwt.html
+  commentId: T:Auth0.ManagementApi.Models.PrivateKeyJwt
+  fullName: Auth0.ManagementApi.Models.PrivateKeyJwt
+  nameWithType: PrivateKeyJwt
+- uid: Auth0.ManagementApi.Models.PrivateKeyJwt.Credentials
+  name: Credentials
+  href: api/Auth0.ManagementApi.Models.PrivateKeyJwt.html#Auth0_ManagementApi_Models_PrivateKeyJwt_Credentials
+  commentId: P:Auth0.ManagementApi.Models.PrivateKeyJwt.Credentials
+  fullName: Auth0.ManagementApi.Models.PrivateKeyJwt.Credentials
+  nameWithType: PrivateKeyJwt.Credentials
+- uid: Auth0.ManagementApi.Models.PrivateKeyJwt.Credentials*
+  name: Credentials
+  href: api/Auth0.ManagementApi.Models.PrivateKeyJwt.html#Auth0_ManagementApi_Models_PrivateKeyJwt_Credentials_
+  commentId: Overload:Auth0.ManagementApi.Models.PrivateKeyJwt.Credentials
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.PrivateKeyJwt.Credentials
+  nameWithType: PrivateKeyJwt.Credentials
 - uid: Auth0.ManagementApi.Models.Prompts
   name: Auth0.ManagementApi.Models.Prompts
   href: api/Auth0.ManagementApi.Models.Prompts.html
