@@ -1,5 +1,12 @@
 # Change Log
 
+## [7.21.0](https://github.com/auth0/auth0.net/tree/7.21.0) (2023-06-05)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.20.0...7.21.0)
+
+**Added**
+- Add support for Client Credentials endpoint support in Management API [\#607](https://github.com/auth0/auth0.net/pull/607) ([frederikprijck](https://github.com/frederikprijck))
+- Added cancellation token to device credentials request [\#619](https://github.com/auth0/auth0.net/pull/619) ([msmolka](https://github.com/msmolka))
+
 ## [7.20.0](https://github.com/auth0/auth0.net/tree/7.20.0) (2023-05-16)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.19.1...7.20.0)
 
