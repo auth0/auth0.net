@@ -94,6 +94,8 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             await fixture.ApiClient.Actions.DeployAsync(createdAction.Id);
 
+            await RetryUtils.Retry(() => fixture.ApiClient.Actions.GetAsync(createdAction.Id), response => !response.AllChangesDeployed);
+
             await fixture.ApiClient.Actions.UpdateTriggerBindingsAsync("post-login", new UpdateTriggerBindingsRequest
             {
                 Bindings = new List<UpdateTriggerBindingEntry>
