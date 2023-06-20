@@ -168,7 +168,10 @@ namespace Auth0.ManagementApi.IntegrationTests
             
             versionsAfterCreate.Count.Should().Be(0);
 
-            // 3. Deploy the current version
+            // 3.a Before deploying, ensure it's in built status (this is async and sometimes causes CI to fail)
+            await RetryUtils.Retry(() => fixture.ApiClient.Actions.GetAsync(createdAction.Id), (action) => action.Status != "built");
+
+            // 3.b Deploy the current version
             await fixture.ApiClient.Actions.DeployAsync(createdAction.Id);
 
             // 4. Get all the versions after the action was deployed
