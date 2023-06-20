@@ -15,34 +15,6 @@ using Xunit;
 namespace Auth0.ManagementApi.IntegrationTests
 {
 
-    public class RetryUtils
-    {
-        public static async Task<TResult> Retry<TResult>(Func<Task<TResult>> retryable, Func<TResult, bool> retryWhen, int numberOfHttpRetries = 3)
-        {
-            var nrOfTries = 0;
-            var nrOfTriesToAttempt = numberOfHttpRetries;
-
-            while (true)
-            {
-                nrOfTries++;
-
-                var result = await retryable();
-
-                Console.WriteLine("Check retrying call based on retryWhen condition");
-
-                if (!retryWhen(result) || nrOfTries >= nrOfTriesToAttempt)
-                {
-                    Console.WriteLine("Not retrying call based on retryWhen condition");
-                    return result;
-                }
-
-                Console.WriteLine("Retrying call based on retryWhen condition");
-
-                await Task.Delay(100);
-            }
-        }
-    }
-
     public class ActionsTestsFixture : TestBaseFixture
     {
         public override async Task DisposeAsync()
