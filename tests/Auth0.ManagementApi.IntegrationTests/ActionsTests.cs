@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -28,10 +28,15 @@ namespace Auth0.ManagementApi.IntegrationTests
 
                 var result = await retryable();
 
+                Console.WriteLine("Check retrying call based on retryWhen condition");
+
                 if (!retryWhen(result) || nrOfTries >= nrOfTriesToAttempt)
                 {
+                    Console.WriteLine("Not retrying call based on retryWhen condition");
                     return result;
                 }
+
+                Console.WriteLine("Retrying call based on retryWhen condition");
 
                 await Task.Delay(100);
             }
