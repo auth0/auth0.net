@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Auth0.Core.Exceptions;
 using Auth0.IntegrationTests.Shared.CleanUp;
 using Auth0.ManagementApi.IntegrationTests.Testing;
 using Auth0.ManagementApi.Models.Actions;
@@ -13,6 +14,30 @@ using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
+
+    public class RetryUtils
+    {
+        public static async Task<TResult> Retry<TResult>(Func<Task<TResult>> retryable, Func<TResult, bool> retryWhen, int numberOfHttpRetries = 3)
+        {
+            var nrOfTries = 0;
+            var nrOfTriesToAttempt = numberOfHttpRetries;
+
+            while (true)
+            {
+                nrOfTries++;
+
+                var result = await retryable();
+
+                if (!retryWhen(result) || nrOfTries >= nrOfTriesToAttempt)
+                {
+                    return result;
+                }
+
+                await Task.Delay(100);
+            }
+        }
+    }
+
     public class ActionsTestsFixture : TestBaseFixture
     {
         public override async Task DisposeAsync()
@@ -172,8 +197,10 @@ namespace Auth0.ManagementApi.IntegrationTests
             var rollbackedVersion = await fixture.ApiClient.Actions.RollbackToVersionAsync(createdAction.Id, versionsAfterDeploy.Single().Id);
 
             // 10. Get all the versions after the action was rollbacked
+            // TEST: Flakyness
+            var versionAfterRollback = await RetryUtils.Retry(() => fixture.ApiClient.Actions.GetVersionAsync(createdAction.Id, rollbackedVersion.Id), (response) => response.Deployed == false);
+
             var versionsAfterRollback = await fixture.ApiClient.Actions.GetAllVersionsAsync(createdAction.Id, new PaginationInfo());
-            var versionAfterRollback = await fixture.ApiClient.Actions.GetVersionAsync(createdAction.Id, rollbackedVersion.Id);
 
             versionsAfterRollback.Count.Should().Be(3);
             versionsAfterRollback.Single(v => v.Id == versionAfterRollback.Id).Should().BeEquivalentTo(versionAfterRollback);
