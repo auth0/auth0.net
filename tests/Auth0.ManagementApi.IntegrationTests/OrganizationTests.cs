@@ -191,7 +191,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Members = new List<string> { user.UserId, user2.UserId }
             });
 
-            var members = await fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new Paging.PaginationInfo());
+            var members = await RetryUtils.Retry(() => fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new Paging.PaginationInfo()), members => members.Count != 2);
 
             members.Count.Should().Be(2);
 
@@ -236,6 +236,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                     Members = new List<string> { user.UserId, user2.UserId }
                 });
 
+                await RetryUtils.Retry(() => fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new Paging.CheckpointPaginationInfo(2)), response => response.Count != 2);
 
                 var firstCheckPointPaginationRequest = await fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new Paging.CheckpointPaginationInfo(1));
                 var secondCheckPointPaginationRequest = await fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new Paging.CheckpointPaginationInfo(1, firstCheckPointPaginationRequest.Paging.Next));
