@@ -99,7 +99,7 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="clientId">The id of the client for which you want to retrieve the credential.</param>
     /// <param name="credentialId">The id of the credential to retrieve.</param>
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-    /// <returns>A <see cref="{Credential}"/> containing the client's credential.</returns>
+    /// <returns>A <see cref="Credential"/> containing the client's credential.</returns>
     Task<Credential> GetCredentialAsync(string clientId, string credentialId, CancellationToken cancellationToken = default);
 
     /// <summary>
