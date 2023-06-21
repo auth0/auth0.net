@@ -92,6 +92,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                 SupportedTriggers = new List<ActionSupportedTrigger> { new ActionSupportedTrigger { Id = "post-login", Version = "v2" } }
             });
 
+            await RetryUtils.Retry(() => fixture.ApiClient.Actions.GetAsync(createdAction.Id), response => response.Status != "built");
+
             await fixture.ApiClient.Actions.DeployAsync(createdAction.Id);
 
             await RetryUtils.Retry(() => fixture.ApiClient.Actions.GetAsync(createdAction.Id), response => !response.AllChangesDeployed);
