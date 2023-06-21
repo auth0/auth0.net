@@ -21,6 +21,8 @@ namespace Auth0.ManagementApi.IntegrationTests
 
         public override async Task InitializeAsync()
         {
+            await base.InitializeAsync();
+
             AuthConnection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
                 Name = $"{TestingConstants.ConnectionPrefix}-{TestBaseUtils.MakeRandomName()}",
