@@ -10,12 +10,6 @@ namespace Auth0.IntegrationTests.Shared.CleanUp
 
         }
 
-        public override Task Run()
-        {
-            // Not supported
-            return Task.CompletedTask;
-        }
-
         public override async Task Run(string id)
         {
             System.Diagnostics.Debug.WriteLine("Running RolesCleanUpStrategy");

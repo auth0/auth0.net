@@ -10,12 +10,6 @@ namespace Auth0.IntegrationTests.Shared.CleanUp
 
         }
 
-        public override async Task Run()
-        {
-            // SHOULD NOT BE USED
-            await Task.CompletedTask;
-        }
-
         public override async Task Run(string id)
         {
             System.Diagnostics.Debug.WriteLine("Running ClientGrantsCleanUpStrategy");

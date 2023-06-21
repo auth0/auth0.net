@@ -31,10 +31,5 @@ namespace Auth0.ManagementApi.IntegrationTests.Testing
                 await cleanUpStrategy.Run(identifier);
             }
         }
-
-
-        
-
-        
     }
 }

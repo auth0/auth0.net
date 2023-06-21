@@ -14,21 +14,6 @@ namespace Auth0.IntegrationTests.Shared.CleanUp
                 
         }
 
-        public override async Task Run()
-        {
-            System.Diagnostics.Debug.WriteLine("Running ActionsCleanUpStrategy");
-            var actions = await ApiClient.Actions.GetAllAsync(new GetActionsRequest(), new PaginationInfo());
-
-            foreach (var action in actions)
-            {
-                if (action.Name.StartsWith(TestingConstants.ActionPrefix))
-                {
-                    Console.WriteLine($"Removing action {action.Name}");
-                    await Run(action.Id);
-                }
-            }
-        }
-
         public override async Task Run(string id)
         {
             System.Diagnostics.Debug.WriteLine("Running ActionsCleanUpStrategy");
