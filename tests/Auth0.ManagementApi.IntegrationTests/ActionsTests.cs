@@ -177,7 +177,10 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Code = "module.exports = () => { console.log(true); }"
             });
 
-            // 6. Deploy the latest version
+            // 6.a Before deploying, ensure it's in built status (this is async and sometimes causes CI to fail)
+            await RetryUtils.Retry(() => fixture.ApiClient.Actions.GetAsync(createdAction.Id), (action) => action.Status != "built");
+
+            // 6.b. Deploy the latest version
             var deployedVersion = await fixture.ApiClient.Actions.DeployAsync(createdAction.Id);
 
             // Wait 2 seconds because it can take a while for the Action to be deployed
