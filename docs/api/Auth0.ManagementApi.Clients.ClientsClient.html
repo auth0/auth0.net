@@ -223,6 +223,61 @@
       </tr>
     </tbody>
   </table>
+  <a id="Auth0_ManagementApi_Clients_ClientsClient_CreateCredentialAsync_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.CreateCredentialAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_ClientsClient_CreateCredentialAsync_System_String_Auth0_ManagementApi_Models_ClientCredentialCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.CreateCredentialAsync(System.String,Auth0.ManagementApi.Models.ClientCredentialCreateRequest,System.Threading.CancellationToken)">CreateCredentialAsync(String, ClientCredentialCreateRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Creates a new client credential.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Credential&gt; CreateCredentialAsync(string clientId, ClientCredentialCreateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">clientId</span></td>
+        <td><p>The id of the client for which you want to create the credential.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.ClientCredentialCreateRequest.html">ClientCredentialCreateRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.ClientCredentialCreateRequest.html">ClientCredentialCreateRequest</a> containing the properties of the new client credential.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Credential.html">Credential</a>&gt;</td>
+        <td><p>The new <a class="xref" href="Auth0.ManagementApi.Models.Credential.html">Credential</a> that has been created.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <a id="Auth0_ManagementApi_Clients_ClientsClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.DeleteAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_ClientsClient_DeleteAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.DeleteAsync(System.String,System.Threading.CancellationToken)">DeleteAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Deletes a client and all its related assets (like rules, connections, etc) given its id.</p>
@@ -246,6 +301,61 @@
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">id</span></td>
         <td><p>The id of the client to delete.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous delete operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Clients_ClientsClient_DeleteCredentialAsync_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.DeleteCredentialAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_ClientsClient_DeleteCredentialAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.DeleteCredentialAsync(System.String,System.String,System.Threading.CancellationToken)">DeleteCredentialAsync(String, String, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Deletes a specific credential registered with the provided client.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DeleteCredentialAsync(string clientId, string credentialId, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">clientId</span></td>
+        <td><p>The id of the client for which you want to remove the credential.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">credentialId</span></td>
+        <td><p>The id of the credential to remove.</p>
 </td>
       </tr>
       <tr>
@@ -327,6 +437,55 @@
       </tr>
     </tbody>
   </table>
+  <a id="Auth0_ManagementApi_Clients_ClientsClient_GetAllCredentialsAsync_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.GetAllCredentialsAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_ClientsClient_GetAllCredentialsAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.GetAllCredentialsAsync(System.String,System.Threading.CancellationToken)">GetAllCredentialsAsync(String, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a list of all credentials for a client.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;Credential&gt;&gt; GetAllCredentialsAsync(string clientId, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">clientId</span></td>
+        <td><p>The id of the client for which you want to retrieve the credentials.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Credential.html">Credential</a>&gt;&gt;</td>
+        <td><p>An <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span> containing the client&apos;s credentials.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <a id="Auth0_ManagementApi_Clients_ClientsClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.GetAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_ClientsClient_GetAsync_System_String_System_String_System_Boolean_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.GetAsync(System.String,System.String,System.Boolean,System.Threading.CancellationToken)">GetAsync(String, String, Boolean, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves a client by its id.</p>
@@ -386,6 +545,61 @@ true)</p>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Client.html">Client</a>&gt;</td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.Client.html">Client</a> retrieved.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Clients_ClientsClient_GetCredentialAsync_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.GetCredentialAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_ClientsClient_GetCredentialAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.GetCredentialAsync(System.String,System.String,System.Threading.CancellationToken)">GetCredentialAsync(String, String, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Retrieves a specific credential for a client.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Credential&gt; GetCredentialAsync(string clientId, string credentialId, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">clientId</span></td>
+        <td><p>The id of the client for which you want to retrieve the credential.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">credentialId</span></td>
+        <td><p>The id of the credential to retrieve.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Credential.html">Credential</a>&gt;</td>
+        <td><p>A <see cref="!:&lt;Credential>"></see> containing the client&apos;s credential.</p>
 </td>
       </tr>
     </tbody>
@@ -490,6 +704,67 @@ true)</p>
       <tr>
         <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Client.html">Client</a>&gt;</td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.Client.html">Client</a> that was updated.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Auth0_ManagementApi_Clients_ClientsClient_UpdateCredentialAsync_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.UpdateCredentialAsync*"></a>
+  <h4 id="Auth0_ManagementApi_Clients_ClientsClient_UpdateCredentialAsync_System_String_System_String_Auth0_ManagementApi_Models_ClientCredentialUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ClientsClient.UpdateCredentialAsync(System.String,System.String,Auth0.ManagementApi.Models.ClientCredentialUpdateRequest,System.Threading.CancellationToken)">UpdateCredentialAsync(String, String, ClientCredentialUpdateRequest, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Update a client credential.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;Credential&gt; UpdateCredentialAsync(string clientId, string credentialId, ClientCredentialUpdateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">clientId</span></td>
+        <td><p>The id of the client for which you want to update the credential.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">credentialId</span></td>
+        <td><p>The id of the credential to update.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Auth0.ManagementApi.Models.ClientCredentialUpdateRequest.html">ClientCredentialUpdateRequest</a></td>
+        <td><span class="parametername">request</span></td>
+        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.ClientCredentialUpdateRequest.html">ClientCredentialUpdateRequest</a> containing the properties of the new client credential.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="parametername">cancellationToken</span></td>
+        <td><p>The cancellation token to cancel operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Credential.html">Credential</a>&gt;</td>
+        <td><p>The new <a class="xref" href="Auth0.ManagementApi.Models.Credential.html">Credential</a> that has been created.</p>
 </td>
       </tr>
     </tbody>

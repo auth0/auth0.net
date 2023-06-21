@@ -813,7 +813,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.ClientsClient.html",
-          "hash": "PD3GnMWrWABygnvHtx29ga0nixeibAB1Hb1vFd8joUE="
+          "hash": "JuyGQs8NxcLBwJEMRbmfifjmFYZjn5xPREEEjhL/RZk="
         }
       },
       "is_incremental": false,
@@ -849,7 +849,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.DeviceCredentialsClient.html",
-          "hash": "tAzNiPJtEWYypoxO/vcOLBolgSfCTROGTP9PMldp418="
+          "hash": "s1dnV6yMMGqjXBstAZXdkI/LxAjfQcvOO5GWwtX5Zsk="
         }
       },
       "is_incremental": false,
@@ -969,7 +969,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.IClientsClient.html",
-          "hash": "8ZEtXkIR8Mk22KFLz3rsH4lal2KFHo/+R/xxH6D6QZg="
+          "hash": "N92oTrEE1pWsFT52ysq5ZOEtGFY1Kp4jZ3C7KyuApRs="
         }
       },
       "is_incremental": false,
@@ -1005,7 +1005,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.IDeviceCredentialsClient.html",
-          "hash": "8RNrc2RdsFx1JuW1xDlN952mvnVx9O3Zy3L7KH85LDY="
+          "hash": "lLMhzoO3MvnlsS3XLxzJX2dB/pu5WvmiBMw7sj+RgvQ="
         }
       },
       "is_incremental": false,
@@ -2013,7 +2013,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.Client.html",
-          "hash": "wmDNEpKOnkfEepaVI0Y6GCQ6p7xNzEnvKecn+h/7Hf4="
+          "hash": "3xMyur+IqdwhbzRWnfdgIVa7YZ/H+MKrPW8QL6ZOoFM="
         }
       },
       "is_incremental": false,
@@ -2026,6 +2026,18 @@
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.ClientApplicationType.html",
           "hash": "m0DbxiLqBVQF7SBLfXfJXz1v/brCAriee4fsqrRudkQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.ClientAuthenticationMethods.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.ClientAuthenticationMethods.html",
+          "hash": "aTAKFwwVP4CFMoluclFlrGCeMJTzz8lULZV1zMxxIxA="
         }
       },
       "is_incremental": false,
@@ -2049,7 +2061,31 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.ClientCreateRequest.html",
-          "hash": "HlOQ53gB4H4fB0hL891o/GCIONBRjLu2EpQ6+npTUzs="
+          "hash": "lk0rsROhXqs/pKN8d8oBRcC7jZKFMNnVz8X9A6Sww/s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.ClientCredentialCreateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.ClientCredentialCreateRequest.html",
+          "hash": "aSVfbydpnLaAKgFoAlkSE/RrPtt5j+qCf7Yf44vJI54="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.ClientCredentialUpdateRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.ClientCredentialUpdateRequest.html",
+          "hash": "ZxJmynLtwaezD8Y9QAa19Z8X9potWYxwe3awMB6s1WI="
         }
       },
       "is_incremental": false,
@@ -2121,7 +2157,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.ClientUpdateRequest.html",
-          "hash": "cu/niP+kDrexFOxp4KWIFHig/hHAVMwFPJ849e+HWy0="
+          "hash": "xxKGGkYPM3tpHEWZlVyLne6MHMKdQrjBdk3yBhHclPM="
         }
       },
       "is_incremental": false,
@@ -2177,6 +2213,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.CreateClientAuthenticationMethods.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.CreateClientAuthenticationMethods.html",
+          "hash": "3auKzwubMmW/7As2FngWIbqQGztlRIfXhKj4cVeHA7I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketRequest.yml",
       "output": {
         ".html": {
@@ -2194,6 +2242,42 @@
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketResponse.html",
           "hash": "1O0BdfRD7QcxtSUvcm+mrIlgvvWO/JqLZvnzTdqNcHw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.CreatePrivateKeyJwt.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.CreatePrivateKeyJwt.html",
+          "hash": "SdAduR4p2hQ3zqHaaTG52ImiW5MEoh1VZayDT5W6Klg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Credential.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Credential.html",
+          "hash": "0BOXp28cwRkA37fa+9lUWSiNcqVKf2TRmKJY/SncniA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.CredentialId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.CredentialId.html",
+          "hash": "fGcBB6lnxEm3vOeLumz4APEto7wXvanZbBLvp7zOJSQ="
         }
       },
       "is_incremental": false,
@@ -3413,6 +3497,18 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.PrivateKeyJwt.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.PrivateKeyJwt.html",
+          "hash": "L8F3d5vzYj19VXayAJIQtshxsLuBOvorndqwYEF/ez8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Prompts.Prompt.yml",
       "output": {
         ".html": {
@@ -4281,7 +4377,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.html",
-          "hash": "E+UrsWTbxgu2b2TgruTF93ofd7pocyvyEfUBJ3/G850="
+          "hash": "OAu1wRo4lM5va4/7RSC+g/LLGF9kc3JnUzWA0G3SDic="
         }
       },
       "is_incremental": false,
@@ -4413,7 +4509,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "nKfFL+/C3bP7qLEXWNjQxWq5wSH2MwxOUjSpK68TxFM="
+          "hash": "u0qwT/U8F5lDv6vyDEKZc0ia5/ZZtQhxZn7oNVy8YTw="
         }
       },
       "is_incremental": false,
@@ -4450,7 +4546,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 359,
+          "total_file_count": 367,
           "skipped_file_count": 14
         },
         "ResourceDocumentProcessor": {
