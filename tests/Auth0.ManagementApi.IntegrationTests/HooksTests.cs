@@ -16,7 +16,12 @@ namespace Auth0.ManagementApi.IntegrationTests
     {
         public override async Task DisposeAsync()
         {
-            await ManagementTestBaseUtils.CleanupAndDisposeAsync(ApiClient, new List<CleanUpType> { CleanUpType.Hooks });
+            foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
+            {
+                await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
+            }
+
+            ApiClient.Dispose();
         }
     }
 
@@ -47,6 +52,9 @@ namespace Auth0.ManagementApi.IntegrationTests
                 TriggerId = "credentials-exchange"
             };
             var newHookResponse = await fixture.ApiClient.Hooks.CreateAsync(newHookRequest);
+
+            fixture.TrackIdentifier(CleanUpType.Hooks, newHookResponse.Id);
+
             newHookResponse.Should().NotBeNull();
             Assert.True(JObject.DeepEquals(newHookRequest.Dependencies, newHookResponse.Dependencies));
 
@@ -77,6 +85,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             await fixture.ApiClient.Hooks.DeleteAsync(hook.Id);
             Func<Task> getFunc = async () => await fixture.ApiClient.Hooks.GetAsync(hook.Id);
             getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("HookDoesNotExist");
+
+            fixture.UnTrackIdentifier(CleanUpType.Hooks, newHookResponse.Id);
         }
 
         [Fact]
@@ -124,6 +134,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                 TriggerId = "credentials-exchange"
             });
 
+            fixture.TrackIdentifier(CleanUpType.Hooks, newHook.Id);
+
             newHook.Should().NotBeNull();
             
             // Act
@@ -133,6 +145,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             hooks.Count.Should().BeGreaterThan(0);
 
             await fixture.ApiClient.Hooks.DeleteAsync(newHook.Id);
+
+            fixture.UnTrackIdentifier(CleanUpType.Hooks, newHook.Id);
         }
     }
 }

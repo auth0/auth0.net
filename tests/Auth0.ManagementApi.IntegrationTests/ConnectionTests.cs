@@ -16,7 +16,12 @@ namespace Auth0.ManagementApi.IntegrationTests
     {
         public override async Task DisposeAsync()
         {
-            await ManagementTestBaseUtils.CleanupAndDisposeAsync(ApiClient, new List<CleanUpType> { CleanUpType.Connections });
+            foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
+            {
+                await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
+            }
+
+            ApiClient.Dispose();
         }
     }
 
@@ -49,6 +54,9 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Realms = new[] { name }
             };
             var newConnectionResponse = await fixture.ApiClient.Connections.CreateAsync(newConnectionRequest);
+
+            fixture.TrackIdentifier(CleanUpType.Connections, newConnectionResponse.Id);
+
             newConnectionResponse.Should().NotBeNull();
             newConnectionResponse.Name.Should().Be(newConnectionRequest.Name);
             newConnectionResponse.Strategy.Should().Be(newConnectionRequest.Strategy);
@@ -95,6 +103,9 @@ namespace Auth0.ManagementApi.IntegrationTests
             await fixture.ApiClient.Connections.DeleteAsync(newConnectionResponse.Id);
             Func<Task> getFunc = async () => await fixture.ApiClient.Connections.GetAsync(newConnectionResponse.Id);
             getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_connection");
+
+
+            fixture.UnTrackIdentifier(CleanUpType.Connections, newConnectionResponse.Id);
         }
 
         [Fact]
@@ -114,6 +125,9 @@ namespace Auth0.ManagementApi.IntegrationTests
                 DisplayName = "displayname"
             };
             var newConnectionResponse = await fixture.ApiClient.Connections.CreateAsync(newConnectionRequest);
+
+            fixture.TrackIdentifier(CleanUpType.Connections, newConnectionResponse.Id);
+
             newConnectionResponse.Should().NotBeNull();
             newConnectionResponse.Name.Should().Be(newConnectionRequest.Name);
             newConnectionResponse.Strategy.Should().Be(newConnectionRequest.Strategy);
@@ -155,6 +169,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             await fixture.ApiClient.Connections.DeleteAsync(newConnectionResponse.Id);
             Func<Task> getFunc = async () => await fixture.ApiClient.Connections.GetAsync(newConnectionResponse.Id);
             getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_connection");
+
+            fixture.UnTrackIdentifier(CleanUpType.Connections, newConnectionResponse.Id);
         }
 
         [Fact]

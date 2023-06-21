@@ -31,6 +31,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                 EnabledClients = new[] { TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
             });
 
+            TrackIdentifier(CleanUpType.Connections, Connection.Id);
+
             User = await ApiClient.Users.CreateAsync(new UserCreateRequest
             {
                 Connection = Connection.Name,
@@ -38,15 +40,21 @@ namespace Auth0.ManagementApi.IntegrationTests
                 EmailVerified = true,
                 Password = Password
             });
+
+            TrackIdentifier(CleanUpType.Users, User.UserId);
         }
 
         public override async Task DisposeAsync()
         {
-            await ApiClient.Users.DeleteAsync(User.UserId);
-            await ApiClient.Connections.DeleteAsync(Connection.Id);
-            await ManagementTestBaseUtils.CleanupAndDisposeAsync(ApiClient);
+            foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
+            {
+                await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
+            }
+
+            ApiClient.Dispose();
         }
     }
+
     public class UsersTests : IClassFixture<UsersTestsFixture>
     {
         private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
@@ -70,6 +78,9 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Password = Password
             };
             var newUserResponse = await fixture.ApiClient.Users.CreateAsync(newUserRequest);
+
+            fixture.TrackIdentifier(CleanUpType.Users, newUserResponse.UserId);
+
             newUserResponse.Should().NotBeNull();
             newUserResponse.Email.Should().Be(newUserRequest.Email);
 
@@ -103,6 +114,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             await fixture.ApiClient.Users.DeleteAsync(user.UserId);
             Func<Task> getFunc = async () => await fixture.ApiClient.Users.GetAsync(user.UserId);
             getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_user");
+
+            fixture.UnTrackIdentifier(CleanUpType.Users, newUserResponse.UserId);
         }
 
         [Theory]
@@ -129,6 +142,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             };
 
             var newUserResponse = await fixture.ApiClient.Users.CreateAsync(newUserRequest);
+            fixture.TrackIdentifier(CleanUpType.Users, newUserResponse.UserId);
 
             // Ensure we can find the user by email address
             var users = await fixture.ApiClient.Users.GetUsersByEmailAsync(email);
@@ -136,6 +150,9 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Make sure they are one and the same
             Assert.Equal(newUserResponse.UserId, users[0].UserId);
+
+            await fixture.ApiClient.Users.DeleteAsync(newUserResponse.UserId);
+            fixture.UnTrackIdentifier(CleanUpType.Users, newUserResponse.UserId);
         }
 
         [Fact]
@@ -150,6 +167,9 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Password = Password
             };
             var newUserResponse = await fixture.ApiClient.Users.CreateAsync(newUserRequest);
+
+            fixture.TrackIdentifier(CleanUpType.Users, newUserResponse.UserId);
+
             Assert.NotEqual(true, newUserResponse.Blocked);
 
             // Ensure the user is not blocked when we select the user individually
@@ -170,6 +190,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Delete the user
             await fixture.ApiClient.Users.DeleteAsync(user.UserId);
+            fixture.UnTrackIdentifier(CleanUpType.Users, newUserResponse.UserId);
         }
 
         [Fact]
@@ -184,10 +205,15 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Password = Password
             };
             var newUserResponse = await fixture.ApiClient.Users.CreateAsync(newUserRequest);
+            fixture.TrackIdentifier(CleanUpType.Users, newUserResponse.UserId);
+
             Assert.NotEqual(true, newUserResponse.Blocked);
 
             // Delete the user from the connection
             await fixture.ApiClient.Connections.DeleteUserAsync(fixture.Connection.Id, newUserRequest.Email);
+
+            await fixture.ApiClient.Users.DeleteAsync(newUserResponse.UserId);
+            fixture.UnTrackIdentifier(CleanUpType.Users, newUserResponse.UserId);
         }
 
         [Fact]
@@ -255,6 +281,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                 }
             };
             var newUserResponse = await fixture.ApiClient.Users.CreateAsync(newUserRequest);
+            fixture.TrackIdentifier(CleanUpType.Users, newUserResponse.UserId);
+
             Assert.Equal("red", newUserResponse.UserMetadata.Color.ToString());
 
             // Do some updating
@@ -274,6 +302,8 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Delete the user
             await fixture.ApiClient.Users.DeleteAsync(user.UserId);
+            fixture.UnTrackIdentifier(CleanUpType.Users, newUserResponse.UserId);
+
         }
 
         [Fact]
@@ -287,6 +317,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Password = Password
             };
             var user = await fixture.ApiClient.Users.CreateAsync(newUserRequest);
+            fixture.TrackIdentifier(CleanUpType.Users, user.UserId);
 
             var logEntries = await fixture.ApiClient.Users.GetLogsAsync(new GetUserLogsRequest
             {
@@ -294,6 +325,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             }, new PaginationInfo());
 
             await fixture.ApiClient.Users.DeleteAsync(user.UserId);
+            fixture.UnTrackIdentifier(CleanUpType.Users, user.UserId);
+
 
             logEntries.Should().NotBeNull();
             logEntries.Paging.Should().BeNull();
@@ -310,6 +343,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Password = Password
             };
             var user = await fixture.ApiClient.Users.CreateAsync(newUserRequest);
+            fixture.TrackIdentifier(CleanUpType.Users, user.UserId);
 
             var logEntries = await fixture.ApiClient.Users.GetLogsAsync(new GetUserLogsRequest
             {
@@ -317,6 +351,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             }, new PaginationInfo(0, 50, true));
 
             await fixture.ApiClient.Users.DeleteAsync(user.UserId);
+            fixture.UnTrackIdentifier(CleanUpType.Users, user.UserId);
+
 
             logEntries.Should().NotBeNull();
             logEntries.Paging.Should().NotBeNull();
@@ -337,6 +373,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             };
 
             var mainUser = await fixture.ApiClient.Users.CreateAsync(mainIdentityCreateRequest);
+            fixture.TrackIdentifier(CleanUpType.Users, mainUser.UserId);
 
             var secondaryIdentityUserCreateRequest = new UserCreateRequest
             {
@@ -347,6 +384,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             };
 
             var secondaryUser = await fixture.ApiClient.Users.CreateAsync(secondaryIdentityUserCreateRequest);
+            fixture.TrackIdentifier(CleanUpType.Users, secondaryUser.UserId);
+
 
             await fixture.ApiClient.Users.LinkAccountAsync(mainUser.UserId, new UserAccountLinkRequest
             {
@@ -362,6 +401,14 @@ namespace Auth0.ManagementApi.IntegrationTests
             var secondaryIdentity = linkedUser.Identities[1];
             secondaryIdentity.ProfileData.Should().NotBeNull();
             secondaryIdentity.ProfileData["email"].Should().Be(secondaryUser.Email);
+
+
+            await fixture.ApiClient.Users.DeleteAsync(mainUser.UserId);
+            fixture.UnTrackIdentifier(CleanUpType.Users, mainUser.UserId);
+
+
+            await fixture.ApiClient.Users.DeleteAsync(secondaryUser.UserId);
+            fixture.UnTrackIdentifier(CleanUpType.Users, secondaryUser.UserId);
         }
 
         [Fact]
@@ -378,6 +425,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Password = Password
             };
             var user = await fixture.ApiClient.Users.CreateAsync(userCreateRequest);
+            fixture.TrackIdentifier(CleanUpType.Users, user.UserId);
 
             // Retrieve the new user
             user = await fixture.ApiClient.Users.GetAsync(user.UserId);
@@ -385,6 +433,9 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Verify
             user.Should().NotBeNull();
             user.Identities[0].UserId.Should().Be(userId);
+
+            await fixture.ApiClient.Users.DeleteAsync(user.UserId);
+            fixture.UnTrackIdentifier(CleanUpType.Users, user.UserId);
         }
 
         [Fact]
@@ -399,6 +450,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             };
 
             var user = await fixture.ApiClient.Users.CreateAsync(userCreateRequest);
+            fixture.TrackIdentifier(CleanUpType.Users, user.UserId);
 
             // Get a resource server
             var resourceServer = await fixture.ApiClient.ResourceServers.GetAsync("dotnet-testing");
@@ -450,6 +502,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Clean Up - Remove the user
             await fixture.ApiClient.Users.DeleteAsync(user.UserId);
+            fixture.UnTrackIdentifier(CleanUpType.Users, user.UserId);
         }
 
         [Fact]
@@ -465,6 +518,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             };
 
             var user = await fixture.ApiClient.Users.CreateAsync(userCreateRequest);
+            fixture.TrackIdentifier(CleanUpType.Users, user.UserId);
 
             await fixture.ApiClient.Organizations.AddMembersAsync(existingOrganizationId, new OrganizationAddMembersRequest
             {
@@ -488,6 +542,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Clean Up - Remove the user
             await fixture.ApiClient.Users.DeleteAsync(user.UserId);
+            fixture.UnTrackIdentifier(CleanUpType.Users, user.UserId);
         }
 
         [Fact]

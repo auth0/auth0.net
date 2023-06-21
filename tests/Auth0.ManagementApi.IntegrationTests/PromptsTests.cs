@@ -16,11 +16,6 @@ namespace Auth0.ManagementApi.IntegrationTests
             ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
         }
 
-        public override Task DisposeAsync()
-        {
-            return CleanupAndDisposeAsync();
-        }
-
         [Fact]
         public async Task Test_get_and_update_prompts()
         {

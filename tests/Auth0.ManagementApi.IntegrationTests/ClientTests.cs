@@ -20,9 +20,15 @@ namespace Auth0.ManagementApi.IntegrationTests
 {
     public class ClientTestsFixture : TestBaseFixture
     {
+
         public override async Task DisposeAsync()
         {
-            await ManagementTestBaseUtils.CleanupAndDisposeAsync(ApiClient, new List<CleanUpType> { CleanUpType.Clients });
+            foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
+            {
+                await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
+            }
+
+            ApiClient.Dispose();
         }
     }
 

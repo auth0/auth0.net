@@ -15,5 +15,7 @@ namespace Auth0.IntegrationTests.Shared.CleanUp
         }
 
         public abstract Task Run();
+
+        public abstract Task Run(string id);
     }
 }

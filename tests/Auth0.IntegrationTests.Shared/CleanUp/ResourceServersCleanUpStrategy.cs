@@ -25,5 +25,11 @@ namespace Auth0.IntegrationTests.Shared.CleanUp
                 }
             }
         }
+
+        public override async Task Run(string id)
+        {
+            System.Diagnostics.Debug.WriteLine("Running ResourceServersCleanUpStrategy");
+            await ApiClient.ResourceServers.DeleteAsync(id);
+        }
     }
 }

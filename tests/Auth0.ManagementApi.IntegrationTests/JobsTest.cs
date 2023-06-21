@@ -30,12 +30,16 @@ namespace Auth0.ManagementApi.IntegrationTests
                 EnabledClients = new[] { TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
             });
 
+            TrackIdentifier(CleanUpType.Connections, TestAuth0Connection.Id);
+
             TestEmailConnection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
                 Name = $"{TestingConstants.ConnectionPrefix}-{TestBaseUtils.MakeRandomName()}",
                 Strategy = "email",
                 EnabledClients = new[] { TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
             });
+
+            TrackIdentifier(CleanUpType.Connections, TestEmailConnection.Id);
 
             // Create a user
             TestAuth0User = await ApiClient.Users.CreateAsync(new UserCreateRequest
@@ -46,6 +50,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Password = Password
             });
 
+            TrackIdentifier(CleanUpType.Users, TestAuth0User.UserId);
+
             TestEmailUser = await ApiClient.Users.CreateAsync(new UserCreateRequest
             {
                 Connection = TestEmailConnection.Name,
@@ -53,11 +59,18 @@ namespace Auth0.ManagementApi.IntegrationTests
                 EmailVerified = true,
             });
 
+            TrackIdentifier(CleanUpType.Users, TestEmailUser.UserId);
+
         }
 
         public override async Task DisposeAsync()
         {
-            await ManagementTestBaseUtils.CleanupAndDisposeAsync(ApiClient, new List<CleanUpType> { CleanUpType.Users, CleanUpType.Connections });
+            foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
+            {
+                await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
+            }
+
+            ApiClient.Dispose();
         }
     }
 

@@ -19,7 +19,12 @@ namespace Auth0.ManagementApi.IntegrationTests
     {
         public override async Task DisposeAsync()
         {
-            await ManagementTestBaseUtils.CleanupAndDisposeAsync(ApiClient, new List<CleanUpType> { CleanUpType.Actions });
+            foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
+            {
+                await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
+            }
+
+            ApiClient.Dispose();
         }
     }
 
@@ -46,6 +51,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                 SupportedTriggers = new List<ActionSupportedTrigger> { new ActionSupportedTrigger { Id = "post-login", Version = "v2"} }
             });
 
+            fixture.TrackIdentifier(CleanUpType.Actions, createdAction.Id);
+
             var actionsAfterCreate = await fixture.ApiClient.Actions.GetAllAsync(new GetActionsRequest(), new PaginationInfo());
 
             actionsAfterCreate.Count.Should().Be(actionsBeforeCreate.Count + 1);
@@ -68,6 +75,8 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             var actionsAfterDelete = await fixture.ApiClient.Actions.GetAllAsync(new GetActionsRequest(), new PaginationInfo());
             actionsAfterDelete.Count.Should().Be(actionsBeforeCreate.Count);
+
+            fixture.UnTrackIdentifier(CleanUpType.Actions, createdAction.Id);
         }
 
         [Fact]
@@ -92,10 +101,13 @@ namespace Auth0.ManagementApi.IntegrationTests
                 SupportedTriggers = new List<ActionSupportedTrigger> { new ActionSupportedTrigger { Id = "post-login", Version = "v2" } }
             });
 
+            fixture.TrackIdentifier(CleanUpType.Actions, createdAction.Id);
+
             await RetryUtils.Retry(() => fixture.ApiClient.Actions.GetAsync(createdAction.Id), response => response.Status != "built");
 
             await fixture.ApiClient.Actions.DeployAsync(createdAction.Id);
 
+            // 
             await RetryUtils.Retry(() => fixture.ApiClient.Actions.GetAsync(createdAction.Id), response => !response.AllChangesDeployed);
 
             await fixture.ApiClient.Actions.UpdateTriggerBindingsAsync("post-login", new UpdateTriggerBindingsRequest
@@ -124,6 +136,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             });
 
             await fixture.ApiClient.Actions.DeleteAsync(createdAction.Id);
+
+            fixture.UnTrackIdentifier(CleanUpType.Actions, createdAction.Id);
         }
 
         [Fact]
@@ -138,6 +152,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Secrets = new List<ActionSecret> { new ActionSecret { Name = "My_Secret", Value = "Test123" } },
                 SupportedTriggers = new List<ActionSupportedTrigger> { new ActionSupportedTrigger { Id = "post-login", Version = "v2" } }
             });
+
+            fixture.TrackIdentifier(CleanUpType.Actions, createdAction.Id);
 
             // 2. Get all the versions after the action was created
             var versionsAfterCreate = await fixture.ApiClient.Actions.GetAllVersionsAsync(createdAction.Id, new PaginationInfo());
@@ -181,7 +197,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var rollbackedVersion = await fixture.ApiClient.Actions.RollbackToVersionAsync(createdAction.Id, versionsAfterDeploy.Single().Id);
 
             // 10. Get all the versions after the action was rollbacked
-            // TEST: Flakyness
+            // Retry until the rollback was processed as this is async
             var versionAfterRollback = await RetryUtils.Retry(() => fixture.ApiClient.Actions.GetVersionAsync(createdAction.Id, rollbackedVersion.Id), (response) => response.Deployed == false);
 
             var versionsAfterRollback = await fixture.ApiClient.Actions.GetAllVersionsAsync(createdAction.Id, new PaginationInfo());
@@ -193,6 +209,8 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // 10. Delete Action
             await fixture.ApiClient.Actions.DeleteAsync(createdAction.Id);
+
+            fixture.UnTrackIdentifier(CleanUpType.Actions, createdAction.Id);
         }
     }
 }

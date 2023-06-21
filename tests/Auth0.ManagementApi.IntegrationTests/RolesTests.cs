@@ -28,12 +28,18 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Strategy = "auth0",
                 EnabledClients = new[] { TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
             });
+
+            TrackIdentifier(CleanUpType.Connections, Connection.Id);
         }
 
         public override async Task DisposeAsync()
         {
-            await ApiClient.Connections.DeleteAsync(Connection.Id);
-            await ManagementTestBaseUtils.CleanupAndDisposeAsync(ApiClient);
+            foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
+            {
+                await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
+            }
+
+            ApiClient.Dispose();
         }
     }
 
@@ -57,6 +63,9 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Description = $"{Guid.NewGuid():N}description",
             };
             var newRoleResponse = await fixture.ApiClient.Roles.CreateAsync(newRoleRequest);
+
+            fixture.TrackIdentifier(CleanUpType.Roles, newRoleResponse.Id);
+
             newRoleResponse.Should().NotBeNull();
             newRoleResponse.Name.Should().Be(newRoleRequest.Name);
             newRoleResponse.Description.Should().Be(newRoleRequest.Description);
@@ -83,7 +92,9 @@ namespace Auth0.ManagementApi.IntegrationTests
                 EmailVerified = true,
                 Password = Password
             };
+
             var user = await fixture.ApiClient.Users.CreateAsync(newUserRequest);
+            fixture.TrackIdentifier(CleanUpType.Users, user.UserId);
 
             // Assign a user to the role
             var assignUsersRequest = new AssignUsersRequest
@@ -110,8 +121,11 @@ namespace Auth0.ManagementApi.IntegrationTests
             Func<Task> getFunc = async () => await fixture.ApiClient.Roles.GetAsync(role.Id);
             getFunc.Should().Throw<ErrorApiException>().And.ApiError.Error.Should().Be("Not Found");
 
+            fixture.UnTrackIdentifier(CleanUpType.Roles, newRoleResponse.Id);
+
             // Delete the user
             await fixture.ApiClient.Users.DeleteAsync(user.UserId);
+            fixture.UnTrackIdentifier(CleanUpType.Users, user.UserId);
         }
 
         [Fact]
@@ -124,6 +138,9 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Description = $"{Guid.NewGuid():N}description",
             };
             var role = await fixture.ApiClient.Roles.CreateAsync(newRoleRequest);
+
+            fixture.TrackIdentifier(CleanUpType.Roles, role.Id);
+
             role.Should().NotBeNull();
             role.Name.Should().Be(newRoleRequest.Name);
             role.Description.Should().Be(newRoleRequest.Description);
@@ -137,6 +154,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Password = Password
             };
             var user = await fixture.ApiClient.Users.CreateAsync(newUserRequest);
+
+            fixture.TrackIdentifier(CleanUpType.Users, user.UserId);
 
             // Assign a user to the role
             var assignUsersRequest = new AssignUsersRequest
@@ -155,7 +174,9 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Clean Up
             await fixture.ApiClient.Roles.DeleteAsync(role.Id);
+            fixture.UnTrackIdentifier(CleanUpType.Roles, role.Id);
             await fixture.ApiClient.Users.DeleteAsync(user.UserId);
+            fixture.UnTrackIdentifier(CleanUpType.Users, user.UserId);
         }
 
         [Fact]
@@ -168,6 +189,9 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Description = $"{Guid.NewGuid():N}description",
             };
             var role = await fixture.ApiClient.Roles.CreateAsync(newRoleRequest);
+
+            fixture.TrackIdentifier(CleanUpType.Roles, role.Id);
+
             role.Should().NotBeNull();
             role.Name.Should().Be(newRoleRequest.Name);
             role.Description.Should().Be(newRoleRequest.Description);
@@ -181,6 +205,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Password = Password
             };
             var user = await fixture.ApiClient.Users.CreateAsync(newUserRequest);
+
+            fixture.TrackIdentifier(CleanUpType.Users, user.UserId);
 
             // Assign a user to the role
             var assignRolesRequest = new AssignRolesRequest()
@@ -208,7 +234,9 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Clean Up
             await fixture.ApiClient.Roles.DeleteAsync(role.Id);
+            fixture.UnTrackIdentifier(CleanUpType.Roles, role.Id);
             await fixture.ApiClient.Users.DeleteAsync(user.UserId);
+            fixture.UnTrackIdentifier(CleanUpType.Users, user.UserId);
         }
 
         [Fact]
@@ -221,6 +249,9 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Description = $"{Guid.NewGuid():N}description",
             };
             var role = await fixture.ApiClient.Roles.CreateAsync(newRoleRequest);
+
+            fixture.TrackIdentifier(CleanUpType.Roles, role.Id);
+
             role.Should().NotBeNull();
             role.Name.Should().Be(newRoleRequest.Name);
             role.Description.Should().Be(newRoleRequest.Description);
@@ -268,6 +299,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Clean Up - Remove the role
             await fixture.ApiClient.Roles.DeleteAsync(role.Id);
+            fixture.UnTrackIdentifier(CleanUpType.Roles, role.Id);
         }
 
         [Fact]
@@ -308,6 +340,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Name = $"{Guid.NewGuid():N}role",
                 Description = $"{Guid.NewGuid():N}description",
             });
+            fixture.TrackIdentifier(CleanUpType.Roles, role.Id);
 
             // Create a user
             var user1 = await fixture.ApiClient.Users.CreateAsync(new UserCreateRequest
@@ -317,6 +350,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                 EmailVerified = true,
                 Password = Password
             });
+            fixture.TrackIdentifier(CleanUpType.Users, user1.UserId);
+
             var user2 = await fixture.ApiClient.Users.CreateAsync(new UserCreateRequest
             {
                 Connection = fixture.Connection.Name,
@@ -324,7 +359,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                 EmailVerified = true,
                 Password = Password
             });
-            
+            fixture.TrackIdentifier(CleanUpType.Users, user2.UserId);
+
             await fixture.ApiClient.Roles.AssignUsersAsync(role.Id, new AssignUsersRequest
             {
                 Users = new[]
@@ -345,8 +381,11 @@ namespace Auth0.ManagementApi.IntegrationTests
             checkpointPagingationRequestWithoutNext.Paging.Next.Should().BeNullOrEmpty();
 
             await fixture.ApiClient.Users.DeleteAsync(user1.UserId);
+            fixture.UnTrackIdentifier(CleanUpType.Users, user1.UserId);
             await fixture.ApiClient.Users.DeleteAsync(user2.UserId);
+            fixture.UnTrackIdentifier(CleanUpType.Users, user2.UserId);
             await fixture.ApiClient.Roles.DeleteAsync(role.Id);
+            fixture.UnTrackIdentifier(CleanUpType.Roles, role.Id);
         }
 
         [Fact]
@@ -358,6 +397,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Description = $"{Guid.NewGuid():N}description",
             };
             var role = await fixture.ApiClient.Roles.CreateAsync(newRoleRequest);
+            fixture.TrackIdentifier(CleanUpType.Roles, role.Id);
 
             var assignPermissionsRequest = new AssignPermissionsRequest
             {
@@ -374,6 +414,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             await fixture.ApiClient.Roles.RemovePermissionsAsync(role.Id, assignPermissionsRequest);
             await fixture.ApiClient.Roles.DeleteAsync(role.Id);
+            fixture.UnTrackIdentifier(CleanUpType.Roles, role.Id);
         }
     }
 }

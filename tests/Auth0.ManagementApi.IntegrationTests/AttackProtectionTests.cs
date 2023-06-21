@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Auth0.IntegrationTests.Shared.CleanUp;
 using Auth0.ManagementApi.IntegrationTests.Testing;
 using Auth0.ManagementApi.Models.AttackProtection;
 using FluentAssertions;
@@ -6,7 +8,18 @@ using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    public class AttackProtectionTestsFixture : TestBaseFixture {}
+    public class AttackProtectionTestsFixture : TestBaseFixture
+    {
+        public override async Task DisposeAsync()
+        {
+            foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
+            {
+                await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
+            }
+
+            ApiClient.Dispose();
+        }
+    }
 
     public class AttackProtectionTests : IClassFixture<AttackProtectionTestsFixture>
     {

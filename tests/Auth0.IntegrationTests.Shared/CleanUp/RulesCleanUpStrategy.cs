@@ -26,5 +26,11 @@ namespace Auth0.IntegrationTests.Shared.CleanUp
                 }
             }
         }
+
+        public override async Task Run(string id)
+        {
+            System.Diagnostics.Debug.WriteLine("Running RulesCleanUpStrategy");
+            await ApiClient.Rules.DeleteAsync(id);   
+        }
     }
 }
