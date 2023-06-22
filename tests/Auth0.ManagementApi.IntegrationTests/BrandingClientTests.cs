@@ -19,7 +19,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         }
 
         [Fact]
-        public async Task Test_Branding_Reand_And_Update()
+        public async Task Test_Branding_Read_And_Update()
         {
             try
             {
@@ -68,7 +68,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         }
 
         [Fact(Skip = "Enable when migrated to new Tenant because missing permissions on current")]
-        public async Task Test_Branding_ULPTemplate_Reand_Update_Delete()
+        public async Task Test_Branding_ULPTemplate_Read_Update_Delete()
         {
             // var temp = await ApiClient.Branding.GetUniversalLoginTemplateAsync();
             try

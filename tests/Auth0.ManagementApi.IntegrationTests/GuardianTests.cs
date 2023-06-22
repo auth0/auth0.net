@@ -16,7 +16,12 @@ namespace Auth0.ManagementApi.IntegrationTests
     {
         public override async Task DisposeAsync()
         {
-            await ManagementTestBaseUtils.CleanupAndDisposeAsync(ApiClient, new List<CleanUpType> { CleanUpType.Connections, CleanUpType.Users });
+            foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
+            {
+                await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
+            }
+
+            ApiClient.Dispose();
         }
     }
 
@@ -96,6 +101,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                     }
                 });
 
+                fixture.TrackIdentifier(CleanUpType.Connections, connection.Id);
+
                 // Create a new user
                 var userCreateRequest = new UserCreateRequest
                 {
@@ -105,6 +112,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                     Password = "jd78w3hku23134?"
                 };
                 user = await fixture.ApiClient.Users.CreateAsync(userCreateRequest);
+
+                fixture.TrackIdentifier(CleanUpType.Users, user.UserId);
 
                 // Create an enrollment request
                 var request = new CreateGuardianEnrollmentTicketRequest
@@ -122,12 +131,14 @@ namespace Auth0.ManagementApi.IntegrationTests
                 if (user != null)
                 {
                     await fixture.ApiClient.Users.DeleteAsync(user.UserId);
+                    fixture.UnTrackIdentifier(CleanUpType.Users, user.UserId);
                 }
 
                 if (connection != null)
                 {
 
                     await fixture.ApiClient.Connections.DeleteAsync(connection.Id);
+                    fixture.UnTrackIdentifier(CleanUpType.Connections, connection.Id);
                 }
             }
         }

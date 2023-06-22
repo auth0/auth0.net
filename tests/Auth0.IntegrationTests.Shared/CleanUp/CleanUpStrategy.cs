@@ -14,6 +14,6 @@ namespace Auth0.IntegrationTests.Shared.CleanUp
             ApiClient = apiClient;
         }
 
-        public abstract Task Run();
+        public abstract Task Run(string id);
     }
 }

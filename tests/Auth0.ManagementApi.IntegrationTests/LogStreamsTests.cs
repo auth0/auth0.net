@@ -1,4 +1,6 @@
 ﻿using Auth0.Core.Exceptions;
+using Auth0.IntegrationTests.Shared.CleanUp;
+using Auth0.ManagementApi.IntegrationTests.Testing;
 using Auth0.ManagementApi.Models;
 using FluentAssertions;
 using System;
@@ -11,9 +13,18 @@ namespace Auth0.ManagementApi.IntegrationTests
 {
     public class LogStreamsTestsFixture : TestBaseFixture
     {
+        public override async Task DisposeAsync()
+        {
+            foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
+            {
+                await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
+            }
+
+            ApiClient.Dispose();
+        }
     }
 
-    public class LogStreamsTests : IClassFixture<LogStreamsTestsFixture>, IAsyncLifetime
+    public class LogStreamsTests : IClassFixture<LogStreamsTestsFixture>
     {
         LogStreamsTestsFixture fixture;
         private readonly List<LogStream> _createdStreams = new List<LogStream>();
@@ -21,19 +32,6 @@ namespace Auth0.ManagementApi.IntegrationTests
         public LogStreamsTests(LogStreamsTestsFixture fixture)
         {
             this.fixture = fixture;
-        }
-
-        public Task InitializeAsync()
-        {
-            return Task.CompletedTask;
-        }
-
-        public async Task DisposeAsync()
-        {
-            // Clean up any log stream entities on the tenant after every test executes
-            var deleteTasks = _createdStreams.Select(stream => fixture.ApiClient.LogStreams.DeleteAsync(stream.Id));
-
-            await Task.WhenAll(deleteTasks.ToArray());
         }
 
         [Fact]
@@ -57,6 +55,8 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             var createdLogStream = await fixture.ApiClient.LogStreams.CreateAsync(request);
             _createdStreams.Add(createdLogStream);
+
+            fixture.TrackIdentifier(Auth0.IntegrationTests.Shared.CleanUp.CleanUpType.LogStreams, createdLogStream.Id);
 
             createdLogStream.Should().NotBeNull();
             createdLogStream.Name.Should().Be(name);
@@ -91,6 +91,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             await fixture.ApiClient.LogStreams.DeleteAsync(createdLogStream.Id);
             Func<Task> getFunc = async () => await fixture.ApiClient.LogStreams.GetAsync(createdLogStream.Id);
             getFunc.Should().Throw<ErrorApiException>().And.ApiError.Error.Should().Be("Not Found");
+
+            fixture.UnTrackIdentifier(Auth0.IntegrationTests.Shared.CleanUp.CleanUpType.LogStreams, createdLogStream.Id);
         }
 
         [Fact]
@@ -126,7 +128,11 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             foreach(var request in requests)
             {
-                _createdStreams.Add(await fixture.ApiClient.LogStreams.CreateAsync(request));
+                var stream = await fixture.ApiClient.LogStreams.CreateAsync(request);
+
+                fixture.TrackIdentifier(Auth0.IntegrationTests.Shared.CleanUp.CleanUpType.LogStreams, stream.Id);
+
+                _createdStreams.Add(stream);
             }
 
             // Act
@@ -134,6 +140,13 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Assert
             streams.Count.Should().Be(2);
+
+            // Remove
+            foreach (var stream in streams)
+            {
+                await fixture.ApiClient.LogStreams.DeleteAsync(stream.Id);
+                fixture.UnTrackIdentifier(Auth0.IntegrationTests.Shared.CleanUp.CleanUpType.LogStreams, stream.Id);
+            }
         }
     }
 }

@@ -12,19 +12,10 @@ namespace Auth0.IntegrationTests.Shared.CleanUp
 
         }
 
-        public override async Task Run()
+        public override async Task Run(string id)
         {
             System.Diagnostics.Debug.WriteLine("Running RulesCleanUpStrategy");
-            var rules = await ApiClient.Rules.GetAllAsync(new ManagementApi.Models.GetRulesRequest(), new PaginationInfo());
-
-            foreach (var rule in rules)
-            {
-                if (rule.Name.StartsWith(TestingConstants.RulesRefix))
-                {
-                    Console.WriteLine($"Removing rule {rule.Name}");
-                    await ApiClient.Rules.DeleteAsync(rule.Id);
-                }
-            }
+            await ApiClient.Rules.DeleteAsync(id);   
         }
     }
 }

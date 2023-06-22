@@ -15,7 +15,12 @@ namespace Auth0.ManagementApi.IntegrationTests
     {
         public override async Task DisposeAsync()
         {
-            await ManagementTestBaseUtils.CleanupAndDisposeAsync(ApiClient, new List<CleanUpType> { CleanUpType.Organizations });
+            foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
+            {
+                await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
+            }
+
+            ApiClient.Dispose();
         }
     }
 
@@ -53,6 +58,9 @@ namespace Auth0.ManagementApi.IntegrationTests
                 }
             };
             var createResponse = await fixture.ApiClient.Organizations.CreateAsync(createRequest);
+
+            fixture.TrackIdentifier(CleanUpType.Organizations, createResponse.Id);
+
             createResponse.Should().NotBeNull();
             createResponse.Name.Should().Be(createRequest.Name);
             createResponse.Branding.LogoUrl.Should().Be(createRequest.Branding.LogoUrl);
@@ -81,6 +89,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             await fixture.ApiClient.Organizations.DeleteAsync(updateResponse.Id);
             Func<Task> getFunc = async () => await fixture.ApiClient.Organizations.GetAsync(organization.Id);
             getFunc.Should().Throw<ErrorApiException>().And.Message.Should().Be("No organization found by that id or name");
+
+            fixture.UnTrackIdentifier(CleanUpType.Organizations, createResponse.Id);
         }
 
         [Fact]
@@ -102,6 +112,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             };
             var createResponse1 = await fixture.ApiClient.Organizations.CreateAsync(organization1);
 
+            fixture.TrackIdentifier(CleanUpType.Organizations, createResponse1.Id);
+
             var organization2 = new OrganizationCreateRequest
             {
                 Name = ($"{TestingConstants.OrganizationPrefix}-" + TestBaseUtils.MakeRandomName()).ToLower(),
@@ -118,6 +130,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             };
             var createResponse2 = await fixture.ApiClient.Organizations.CreateAsync(organization2);
 
+            fixture.TrackIdentifier(CleanUpType.Organizations, createResponse2.Id);
+
             var firstCheckPointPaginationRequest = await fixture.ApiClient.Organizations.GetAllAsync(new Paging.CheckpointPaginationInfo(1));
             var secondCheckPointPaginationRequest = await fixture.ApiClient.Organizations.GetAllAsync(new Paging.CheckpointPaginationInfo(1, firstCheckPointPaginationRequest.Paging.Next));
 
@@ -125,7 +139,9 @@ namespace Auth0.ManagementApi.IntegrationTests
             secondCheckPointPaginationRequest.Paging.Next.Should().NotBeNullOrEmpty();
 
             await fixture.ApiClient.Organizations.DeleteAsync(createResponse1.Id);
+            fixture.UnTrackIdentifier(CleanUpType.Organizations, createResponse1.Id);
             await fixture.ApiClient.Organizations.DeleteAsync(createResponse2.Id);
+            fixture.UnTrackIdentifier(CleanUpType.Organizations, createResponse2.Id);
         }
 
         [Fact]
@@ -142,29 +158,35 @@ namespace Auth0.ManagementApi.IntegrationTests
             createConnectionResponse.Should().NotBeNull();
             createConnectionResponse.AssignMembershipOnLogin.Should().Be(true);
 
-            var updateConnectionResponse = await fixture.ApiClient.Organizations.UpdateConnectionAsync(ExistingOrganizationId, ExistingConnectionId, new OrganizationConnectionUpdateRequest
+            try
             {
-                AssignMembershipOnLogin = false
-            });
+                var updateConnectionResponse = await fixture.ApiClient.Organizations.UpdateConnectionAsync(ExistingOrganizationId, ExistingConnectionId, new OrganizationConnectionUpdateRequest
+                {
+                    AssignMembershipOnLogin = false
+                });
 
-            updateConnectionResponse.Should().NotBeNull();
-            updateConnectionResponse.AssignMembershipOnLogin.Should().Be(false);
+                updateConnectionResponse.Should().NotBeNull();
+                updateConnectionResponse.AssignMembershipOnLogin.Should().Be(false);
 
-            var connection = await fixture.ApiClient.Organizations.GetConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
+                var connection = await fixture.ApiClient.Organizations.GetConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
 
-            connection.Should().NotBeNull();
-            connection.AssignMembershipOnLogin.Should().Be(false);
+                connection.Should().NotBeNull();
+                connection.AssignMembershipOnLogin.Should().Be(false);
 
-            var connections = await fixture.ApiClient.Organizations.GetAllConnectionsAsync(ExistingOrganizationId, new Paging.PaginationInfo());
-            connections.Count.Should().Be(initialConnections.Count + 1);
+                var connections = await fixture.ApiClient.Organizations.GetAllConnectionsAsync(ExistingOrganizationId, new Paging.PaginationInfo());
+                connections.Count.Should().Be(initialConnections.Count + 1);
 
-            await fixture.ApiClient.Organizations.DeleteConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
+                await fixture.ApiClient.Organizations.DeleteConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
 
-            Func<Task> getFunc = async () => await fixture.ApiClient.Organizations.GetConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
-            getFunc.Should().Throw<ErrorApiException>().And.Message.Should().Be("No connection found by that id");
+                Func<Task> getFunc = async () => await fixture.ApiClient.Organizations.GetConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
+                getFunc.Should().Throw<ErrorApiException>().And.Message.Should().Be("No connection found by that id");
 
-            // Unlink Connection
-            await fixture.ApiClient.Organizations.DeleteConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
+            }
+            finally
+            {
+                // Unlink Connection
+                await fixture.ApiClient.Organizations.DeleteConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
+            }
         }
 
         [Fact]
@@ -178,6 +200,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Password = Password
             });
 
+            fixture.TrackIdentifier(CleanUpType.Users, user.UserId);
+
             var user2 = await fixture.ApiClient.Users.CreateAsync(new UserCreateRequest
             {
                 Connection = "Username-Password-Authentication",
@@ -186,26 +210,35 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Password = Password
             });
 
+            fixture.TrackIdentifier(CleanUpType.Users, user2.UserId);
+
             await fixture.ApiClient.Organizations.AddMembersAsync(ExistingOrganizationId, new OrganizationAddMembersRequest
             {
                 Members = new List<string> { user.UserId, user2.UserId }
             });
 
-            var members = await RetryUtils.Retry(() => fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new Paging.PaginationInfo()), members => members.Count != 2);
-
-            members.Count.Should().Be(2);
-
-            await fixture.ApiClient.Organizations.DeleteMemberAsync(ExistingOrganizationId, new OrganizationDeleteMembersRequest
+            try
             {
-                Members = new List<string> { user2.UserId }
-            });
+                var members = await RetryUtils.Retry(() => fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new Paging.PaginationInfo()), members => members.Count != 2);
 
-            var updatedMembers = await fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new Paging.PaginationInfo());
+                members.Count.Should().Be(2);
 
-            updatedMembers.Count.Should().Be(1);
+                await fixture.ApiClient.Organizations.DeleteMemberAsync(ExistingOrganizationId, new OrganizationDeleteMembersRequest
+                {
+                    Members = new List<string> { user2.UserId }
+                });
 
-            await fixture.ApiClient.Users.DeleteAsync(user.UserId);
-            await fixture.ApiClient.Users.DeleteAsync(user2.UserId);
+                var updatedMembers = await fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new Paging.PaginationInfo());
+
+                updatedMembers.Count.Should().Be(1);
+                
+            } finally
+            {
+                await fixture.ApiClient.Users.DeleteAsync(user.UserId);
+                fixture.UnTrackIdentifier(CleanUpType.Users, user.UserId);
+                await fixture.ApiClient.Users.DeleteAsync(user2.UserId);
+                fixture.UnTrackIdentifier(CleanUpType.Users, user2.UserId);
+            }
         }
 
         [Fact]
@@ -223,6 +256,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                     Password = Password
                 });
 
+                fixture.TrackIdentifier(CleanUpType.Users, user.UserId);
+
                 user2 = await fixture.ApiClient.Users.CreateAsync(new UserCreateRequest
                 {
                     Connection = "Username-Password-Authentication",
@@ -230,6 +265,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                     EmailVerified = true,
                     Password = Password
                 });
+
+                fixture.TrackIdentifier(CleanUpType.Users, user2.UserId);
 
                 await fixture.ApiClient.Organizations.AddMembersAsync(ExistingOrganizationId, new OrganizationAddMembersRequest
                 {
@@ -247,12 +284,13 @@ namespace Auth0.ManagementApi.IntegrationTests
             }
             finally
             {
-                if (user != null && user2 != null) {
-                    await fixture.ApiClient.Organizations.DeleteMemberAsync(ExistingOrganizationId, new OrganizationDeleteMembersRequest { Members = new List<string> { user.UserId, user2.UserId } });
+                await fixture.ApiClient.Organizations.DeleteMemberAsync(ExistingOrganizationId, new OrganizationDeleteMembersRequest { Members = new List<string> { user.UserId, user2.UserId } });
 
-                    await fixture.ApiClient.Users.DeleteAsync(user.UserId);
-                    await fixture.ApiClient.Users.DeleteAsync(user2.UserId);
-                }
+                await fixture.ApiClient.Users.DeleteAsync(user.UserId);
+                fixture.UnTrackIdentifier(CleanUpType.Users, user.UserId);
+
+                await fixture.ApiClient.Users.DeleteAsync(user2.UserId);
+                fixture.UnTrackIdentifier(CleanUpType.Users, user2.UserId);
             }
         }
 
@@ -267,34 +305,41 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Password = Password
             });
 
-            await fixture.ApiClient.Organizations.AddMembersAsync(ExistingOrganizationId, new OrganizationAddMembersRequest
+            fixture.TrackIdentifier(CleanUpType.Users, user.UserId);
+
+            try
             {
-                Members = new List<string> { user.UserId }
-            });
+                await fixture.ApiClient.Organizations.AddMembersAsync(ExistingOrganizationId, new OrganizationAddMembersRequest
+                {
+                    Members = new List<string> { user.UserId }
+                });
 
-            // Create
-            await fixture.ApiClient.Organizations.AddMemberRolesAsync(ExistingOrganizationId, user.UserId, new OrganizationAddMemberRolesRequest
+                // Create
+                await fixture.ApiClient.Organizations.AddMemberRolesAsync(ExistingOrganizationId, user.UserId, new OrganizationAddMemberRolesRequest
+                {
+                    Roles = new List<string> { ExistingRoleId }
+                });
+
+                var roles = await fixture.ApiClient.Organizations.GetAllMemberRolesAsync(ExistingOrganizationId, user.UserId, new Paging.PaginationInfo());
+
+                roles.Should().NotBeNull();
+                roles.Count.Should().Be(1);
+                roles[0].Name.Should().Be("Admin");
+
+                await fixture.ApiClient.Organizations.DeleteMemberRolesAsync(ExistingOrganizationId, user.UserId, new OrganizationDeleteMemberRolesRequest
+                {
+                    Roles = new List<string> { ExistingRoleId }
+                });
+
+                roles = await fixture.ApiClient.Organizations.GetAllMemberRolesAsync(ExistingOrganizationId, user.UserId, new Paging.PaginationInfo());
+
+                roles.Should().NotBeNull();
+                roles.Count.Should().Be(0);
+            } finally
             {
-                Roles = new List<string> { ExistingRoleId }
-            });
-
-            var roles = await fixture.ApiClient.Organizations.GetAllMemberRolesAsync(ExistingOrganizationId, user.UserId, new Paging.PaginationInfo());
-
-            roles.Should().NotBeNull();
-            roles.Count.Should().Be(1);
-            roles[0].Name.Should().Be("Admin");
-
-            await fixture.ApiClient.Organizations.DeleteMemberRolesAsync(ExistingOrganizationId, user.UserId, new OrganizationDeleteMemberRolesRequest
-            {
-                Roles = new List<string> { ExistingRoleId }
-            });
-
-            roles = await fixture.ApiClient.Organizations.GetAllMemberRolesAsync(ExistingOrganizationId, user.UserId, new Paging.PaginationInfo());
-
-            roles.Should().NotBeNull();
-            roles.Count.Should().Be(0);
-
-            await fixture.ApiClient.Users.DeleteAsync(user.UserId);
+                await fixture.ApiClient.Users.DeleteAsync(user.UserId);
+                fixture.UnTrackIdentifier(CleanUpType.Users, user.UserId);
+            }
         }
 
         [Fact]
@@ -307,45 +352,50 @@ namespace Auth0.ManagementApi.IntegrationTests
                 AssignMembershipOnLogin = true
             });
 
-            var createdInvitation = await fixture.ApiClient.Organizations.CreateInvitationAsync(ExistingOrganizationId, new OrganizationCreateInvitationRequest
+            try
             {
-                ClientId = TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"),
-                ConnectionId = ExistingConnectionId,
-                Inviter = new OrganizationInvitationInviter
+                var createdInvitation = await fixture.ApiClient.Organizations.CreateInvitationAsync(ExistingOrganizationId, new OrganizationCreateInvitationRequest
                 {
-                    Name = "John Doe"
-                },
-                Invitee = new OrganizationInvitationInvitee
-                {
-                    Email = "jane.doe@auth0.com"
-                },
-                TimeToLive = 360,
-                SendInvitationEmail = false
-            });
+                    ClientId = TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"),
+                    ConnectionId = ExistingConnectionId,
+                    Inviter = new OrganizationInvitationInviter
+                    {
+                        Name = "John Doe"
+                    },
+                    Invitee = new OrganizationInvitationInvitee
+                    {
+                        Email = "jane.doe@auth0.com"
+                    },
+                    TimeToLive = 360,
+                    SendInvitationEmail = false
+                });
 
-            createdInvitation.Should().NotBeNull();
-            createdInvitation.InvitationUrl.Should().NotBeNull();
+                createdInvitation.Should().NotBeNull();
+                createdInvitation.InvitationUrl.Should().NotBeNull();
 
-            var invitations = await fixture.ApiClient.Organizations.GetAllInvitationsAsync(ExistingOrganizationId, new OrganizationGetAllInvitationsRequest(), new Paging.PaginationInfo());
+                var invitations = await fixture.ApiClient.Organizations.GetAllInvitationsAsync(ExistingOrganizationId, new OrganizationGetAllInvitationsRequest(), new Paging.PaginationInfo());
 
-            invitations.Should().NotBeNull();
-            invitations.Count.Should().Be(1);
+                invitations.Should().NotBeNull();
+                invitations.Count.Should().Be(1);
 
-            var invitation = await fixture.ApiClient.Organizations.GetInvitationAsync(ExistingOrganizationId, createdInvitation.Id, new OrganizationGetInvitationRequest());
+                var invitation = await fixture.ApiClient.Organizations.GetInvitationAsync(ExistingOrganizationId, createdInvitation.Id, new OrganizationGetInvitationRequest());
 
-            invitation.Should().NotBeNull();
-            invitation.Id.Should().Be(createdInvitation.Id);
-            invitation.InvitationUrl.Should().NotBeNull();
+                invitation.Should().NotBeNull();
+                invitation.Id.Should().Be(createdInvitation.Id);
+                invitation.InvitationUrl.Should().NotBeNull();
 
-            await fixture.ApiClient.Organizations.DeleteInvitationAsync(ExistingOrganizationId, createdInvitation.Id);
+                await fixture.ApiClient.Organizations.DeleteInvitationAsync(ExistingOrganizationId, createdInvitation.Id);
 
-            invitations = await fixture.ApiClient.Organizations.GetAllInvitationsAsync(ExistingOrganizationId, new OrganizationGetAllInvitationsRequest(), new Paging.PaginationInfo());
+                invitations = await fixture.ApiClient.Organizations.GetAllInvitationsAsync(ExistingOrganizationId, new OrganizationGetAllInvitationsRequest(), new Paging.PaginationInfo());
 
-            invitations.Should().NotBeNull();
-            invitations.Count.Should().Be(0);
+                invitations.Should().NotBeNull();
+                invitations.Count.Should().Be(0);
+            } finally
+            {
+                // Unlink Connection
+                await fixture.ApiClient.Organizations.DeleteConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
+            }
 
-            // Unlink Connection
-            await fixture.ApiClient.Organizations.DeleteConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
         }
     }
 }

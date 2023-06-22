@@ -13,19 +13,12 @@ namespace Auth0.IntegrationTests.Shared.CleanUp
 
         }
 
-        public override async Task Run()
+        public override async Task Run(string id)
         {
             System.Diagnostics.Debug.WriteLine("Running HooksCleanUpStrategy");
-            var hooks = await ApiClient.Hooks.GetAllAsync(new GetHooksRequest(), new PaginationInfo());
-
-            foreach (var hook in hooks)
-            {
-                if (hook.Name.StartsWith(TestingConstants.HooksPrefix))
-                {
-                    Console.WriteLine($"Removing hook {hook.Name}");
-                    await ApiClient.Hooks.DeleteAsync(hook.Id);
-                }
-            }
+            
+            await ApiClient.Hooks.DeleteAsync(id);
+                
         }
     }
 }

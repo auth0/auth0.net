@@ -17,7 +17,12 @@ namespace Auth0.ManagementApi.IntegrationTests
 
         public override async Task DisposeAsync()
         {
-            await ManagementTestBaseUtils.CleanupAndDisposeAsync(ApiClient, new List<CleanUpType> { CleanUpType.Rules });
+            foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
+            {
+                await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
+            }
+
+            ApiClient.Dispose();
         }
     }
 
@@ -46,6 +51,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                             }"
             };
             var newRuleResponse = await fixture.ApiClient.Rules.CreateAsync(newRuleRequest);
+            fixture.TrackIdentifier(CleanUpType.Rules, newRuleResponse.Id);
+
             newRuleResponse.Should().NotBeNull();
             newRuleResponse.Name.Should().Be(newRuleRequest.Name);
 
@@ -71,6 +78,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             await fixture.ApiClient.Rules.DeleteAsync(rule.Id);
             Func<Task> getFunc = async () => await fixture.ApiClient.Rules.GetAsync(rule.Id);
             getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_rule");
+            fixture.UnTrackIdentifier(CleanUpType.Rules, newRuleResponse.Id);
         }
         
         [Fact]
@@ -115,6 +123,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                               callback(null, user, context);
                             }"
             });
+            fixture.TrackIdentifier(CleanUpType.Rules, newRule.Id);
 
             newRule.Should().NotBeNull();
 
@@ -126,6 +135,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             rules.Count.Should().BeGreaterThan(0);
 
             await fixture.ApiClient.Rules.DeleteAsync(newRule.Id);
+            fixture.UnTrackIdentifier(CleanUpType.Rules, newRule.Id);
         }
     }
 }

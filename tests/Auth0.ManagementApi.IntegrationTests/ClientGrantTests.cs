@@ -25,6 +25,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Name = $"{TestingConstants.ClientPrefix} {TestBaseUtils.MakeRandomName()}",
             });
 
+            TrackIdentifier(CleanUpType.Clients, TestClient.ClientId);
+
             var identifier = Guid.NewGuid();
             TestResourceServer = await ApiClient.ResourceServers.CreateAsync(new ResourceServerCreateRequest
             {
@@ -51,12 +53,20 @@ namespace Auth0.ManagementApi.IntegrationTests
                     }
                 }
             });
+
+            TrackIdentifier(CleanUpType.ResourceServers, TestResourceServer.Id);
         }
 
         public override async Task DisposeAsync()
         {
-            await ManagementTestBaseUtils.CleanupAndDisposeAsync(ApiClient, new List<CleanUpType> { CleanUpType.Clients, CleanUpType.ResourceServers });
+            foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
+            {
+                await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
+            }
+
+            ApiClient.Dispose();
         }
+
     }
 
     public class ClientGrantTests : IClassFixture<ClientGrantTestsFixture>
@@ -85,10 +95,14 @@ namespace Auth0.ManagementApi.IntegrationTests
                     "scope2"
                 }
             };
+
             var newClientGrantResponse = await fixture.ApiClient.ClientGrants.CreateAsync(newClientGrantRequest);
             newClientGrantResponse.Should().NotBeNull();
             newClientGrantResponse.Should().BeEquivalentTo(newClientGrantRequest,
                 options => options.Excluding(cg => cg.ClientId));
+
+
+            fixture.TrackIdentifier(CleanUpType.ClientGrants, newClientGrantResponse.Id);
 
             // Get all the client grants again, and verify we have one more
             var clientGrantsAfter = await fixture.ApiClient.ClientGrants.GetAllAsync(new GetClientGrantsRequest(), new PaginationInfo());
@@ -110,6 +124,8 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Delete the client grant
             await fixture.ApiClient.ClientGrants.DeleteAsync(newClientGrantResponse.Id);
+
+            fixture.UnTrackIdentifier(CleanUpType.ClientGrants, newClientGrantResponse.Id);
         }
 
         [Fact]

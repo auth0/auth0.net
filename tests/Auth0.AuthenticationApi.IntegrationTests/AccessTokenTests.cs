@@ -8,50 +8,68 @@ using System.Threading.Tasks;
 using Auth0.AuthenticationApi.IntegrationTests.Testing;
 using Auth0.IntegrationTests.Shared.CleanUp;
 using Xunit;
+using System.Collections.Generic;
+using System.Data.Common;
 
 namespace Auth0.AuthenticationApi.IntegrationTests
 {
-    public class AccessTokenTests : ManagementTestBase, IAsyncLifetime
+    public class AccessTokenTestsFixture : TestBaseFixture
     {
-        private AuthenticationApiClient _authenticationApiClient;
-        private Connection _connection;
-        private User _newUser;
-        private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
+        public AuthenticationApiClient AuthenticationApiClient;
 
-        public async Task InitializeAsync()
+        public Connection Connection;
+        public User NewUser;
+        public string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
+
+        public override async Task InitializeAsync()
         {
-            string token = await GenerateManagementApiToken();
+            await base.InitializeAsync();
 
-            ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+            AuthenticationApiClient = new TestAuthenticationApiClient(TestBaseUtils.GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             // We will need a connection to add the users to...
-            _connection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
+            Connection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
-                Name = $"{TestingConstants.ConnectionPrefix}-{MakeRandomName()}",
+                Name = $"{TestingConstants.ConnectionPrefix}-{TestBaseUtils.MakeRandomName()}",
                 Strategy = "auth0",
-                EnabledClients = new[] { GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
+                EnabledClients = new[] { TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
             });
+
+            TrackIdentifier(CleanUpType.Connections, Connection.Id);
 
             // Add a new user
             var newUserRequest = new UserCreateRequest
             {
-                Connection = _connection.Name,
+                Connection = Connection.Name,
                 Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                 EmailVerified = true,
                 Password = Password
             };
 
-            _newUser = await ApiClient.Users.CreateAsync(newUserRequest);
+            NewUser = await ApiClient.Users.CreateAsync(newUserRequest);
 
-            _authenticationApiClient = new TestAuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
+            TrackIdentifier(CleanUpType.Users, NewUser.UserId);
         }
 
         public override async Task DisposeAsync()
         {
-            _authenticationApiClient.Dispose();
+            foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
+            {
+                await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
+            }
 
-            await CleanupAndDisposeAsync(CleanUpType.Connections);
-            await CleanupAndDisposeAsync(CleanUpType.Users);
+            AuthenticationApiClient.Dispose();
+            ApiClient.Dispose();
+        }
+    }
+
+    public class AccessTokenTests : IClassFixture<AccessTokenTestsFixture>
+    {
+        AccessTokenTestsFixture fixture;
+
+        public AccessTokenTests(AccessTokenTestsFixture fixture)
+        {
+            this.fixture = fixture;
         }
 
         //[Test, Explicit]
@@ -89,18 +107,18 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         public async Task Can_obtain_user_info()
         {
             // First get the access token
-            var token = await _authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
+            var token = await fixture.AuthenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
             {
-                ClientId = GetVariable("AUTH0_CLIENT_ID"),
-                ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
-                Realm = _connection.Name,
-                Username = _newUser.Email,
-                Password = Password,
+                ClientId = TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"),
+                ClientSecret = TestBaseUtils.GetVariable("AUTH0_CLIENT_SECRET"),
+                Realm = fixture.Connection.Name,
+                Username = fixture.NewUser.Email,
+                Password = fixture.Password,
                 Scope = "openid profile"
             });
 
             // Get the user info
-            var user = await _authenticationApiClient.GetUserInfoAsync(token.AccessToken);
+            var user = await fixture.AuthenticationApiClient.GetUserInfoAsync(token.AccessToken);
             user.Should().NotBeNull();
             user.UserId.Should().NotBeNull();
         }
@@ -108,13 +126,13 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact(Skip = "Run manually")]
         public async Task Can_exchange_authorization_code_for_access_token()
         {
-            var authenticationApiClient = new TestAuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
+            var authenticationApiClient = new TestAuthenticationApiClient(TestBaseUtils.GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
             // Exchange the authorization code
             var token = await authenticationApiClient.GetTokenAsync(new AuthorizationCodeTokenRequest
             {
-                ClientId = GetVariable("AUTH0_CLIENT_ID"),
-                ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
+                ClientId = TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"),
+                ClientSecret = TestBaseUtils.GetVariable("AUTH0_CLIENT_SECRET"),
                 RedirectUri = "http://www.blah.com/test",
                 Code= "AaBhdAOl4OKvjX2I"
             });

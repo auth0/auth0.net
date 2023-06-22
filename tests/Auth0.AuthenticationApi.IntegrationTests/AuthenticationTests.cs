@@ -41,6 +41,8 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 EnabledClients = new[] { TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
             });
 
+            TrackIdentifier(CleanUpType.Connections, TestConnection.Id);
+
             // And add a dummy user to test against
             TestUser = await ApiClient.Users.CreateAsync(new UserCreateRequest
             {
@@ -49,6 +51,8 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 EmailVerified = true,
                 Password = TestPassword
             });
+
+            TrackIdentifier(CleanUpType.Users, TestUser.UserId);
 
             // Add a user with a + in the username
             TestPlusUser = await ApiClient.Users.CreateAsync(new UserCreateRequest
@@ -59,6 +63,8 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 Password = TestPassword
             });
 
+            TrackIdentifier(CleanUpType.Users, TestPlusUser.UserId);
+
             // Add a user with a + in the username
             TestUserInDefaultDirectory = await ApiClient.Users.CreateAsync(new UserCreateRequest
             {
@@ -68,11 +74,18 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 Password = TestPassword
             });
 
+            TrackIdentifier(CleanUpType.Users, TestUserInDefaultDirectory.UserId);
+
             TestAuthenticationApiClient = new TestAuthenticationApiClient(TestBaseUtils.GetVariable("AUTH0_AUTHENTICATION_API_URL"));
         }
         public override async Task DisposeAsync()
         {
-            await ManagementTestBaseUtils.CleanupAndDisposeAsync(ApiClient, new List<CleanUpType> { CleanUpType.Users, CleanUpType.Connections });
+            foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
+            {
+                await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
+            }
+
+            ApiClient.Dispose();
         }
     }
 

@@ -9,20 +9,21 @@ using System.Threading.Tasks;
 using Auth0.AuthenticationApi.IntegrationTests.Testing;
 using Auth0.IntegrationTests.Shared.CleanUp;
 using Xunit;
+using System.Collections.Generic;
+using System.Data.Common;
 
 namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
 {
-    public class IdTokenValidatorIntegrationTests : ManagementTestBase, IAsyncLifetime
+    public class IdTokenValidatorIntegrationTestsFixture : TestBaseFixture
     {
-        private Connection _connection;
-        private User _user;
-        private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
+        public Connection Connection;
+        public User User;
+        public string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
 
-        public async Task InitializeAsync()
+
+        public override async Task InitializeAsync()
         {
-            string token = await GenerateManagementApiToken();
-
-            ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+            await base.InitializeAsync();
 
             var tenantSettings = await ApiClient.TenantSettings.GetAsync();
 
@@ -34,39 +35,57 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
             }
 
             // We will need a connection to add the users to...
-            _connection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
+            Connection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
-                Name = $"{TestingConstants.ConnectionPrefix}-{MakeRandomName()}",
+                Name = $"{TestingConstants.ConnectionPrefix}-{TestBaseUtils.MakeRandomName()}",
                 Strategy = "auth0",
                 EnabledClients = new[] {
-                    GetVariable("AUTH0_CLIENT_ID"),
-                    GetVariable("AUTH0_HS256_CLIENT_ID"),
-                    GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID")
+                    TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"),
+                    TestBaseUtils.GetVariable("AUTH0_HS256_CLIENT_ID"),
+                    TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID")
                 }
             });
 
+            TrackIdentifier(CleanUpType.Connections, Connection.Id);
+
             // And add a dummy user to test against
-            _user = await ApiClient.Users.CreateAsync(new UserCreateRequest
+            User = await ApiClient.Users.CreateAsync(new UserCreateRequest
             {
-                Connection = _connection.Name,
-                Email = $"{MakeRandomName()}{TestingConstants.UserEmailDomain}",
+                Connection = Connection.Name,
+                Email = $"{TestBaseUtils.MakeRandomName()}{TestingConstants.UserEmailDomain}",
                 EmailVerified = true,
                 Password = Password
             });
+
+            TrackIdentifier(CleanUpType.Users, User.UserId);
         }
 
         public override async Task DisposeAsync()
         {
-            await CleanupAndDisposeAsync(CleanUpType.Connections);
-            await CleanupAndDisposeAsync(CleanUpType.Users);
+            foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
+            {
+                await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
+            }
+
+            ApiClient.Dispose();
+        }
+    }
+    public class IdTokenValidatorIntegrationTests : IClassFixture<IdTokenValidatorIntegrationTestsFixture>
+    {
+        
+        IdTokenValidatorIntegrationTestsFixture fixture;
+
+        public IdTokenValidatorIntegrationTests(IdTokenValidatorIntegrationTestsFixture fixture)
+        {
+            this.fixture = fixture;
         }
 
         [Fact]
         public async Task Passes_Token_Validation_RS256()
         {
-            var authUrl = GetVariable("AUTH0_AUTHENTICATION_API_URL");
-            var clientId = GetVariable("AUTH0_CLIENT_ID");
-            var clientSecret = GetVariable("AUTH0_CLIENT_SECRET");
+            var authUrl = TestBaseUtils.GetVariable("AUTH0_AUTHENTICATION_API_URL");
+            var clientId = TestBaseUtils.GetVariable("AUTH0_CLIENT_ID");
+            var clientSecret = TestBaseUtils.GetVariable("AUTH0_CLIENT_SECRET");
 
             // Arrange
             using (var authenticationApiClient = new TestAuthenticationApiClient(authUrl))
@@ -76,10 +95,10 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
                 {
                     ClientId = clientId,
                     ClientSecret = clientSecret,
-                    Realm = _connection.Name,
+                    Realm = fixture.Connection.Name,
                     Scope = "openid",
-                    Username = _user.Email,
-                    Password = Password
+                    Username = fixture.User.Email,
+                    Password = fixture.Password
                 });
 
                 var issuer = $"https://{authUrl}/";
@@ -91,9 +110,9 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
         [Fact]
         public async Task Passes_Token_Validation_RS256_With_Document_Retreiver()
         {
-            var authUrl = GetVariable("AUTH0_AUTHENTICATION_API_URL");
-            var clientId = GetVariable("AUTH0_CLIENT_ID");
-            var clientSecret = GetVariable("AUTH0_CLIENT_SECRET");
+            var authUrl = TestBaseUtils.GetVariable("AUTH0_AUTHENTICATION_API_URL");
+            var clientId = TestBaseUtils.GetVariable("AUTH0_CLIENT_ID");
+            var clientSecret = TestBaseUtils.GetVariable("AUTH0_CLIENT_SECRET");
 
             // Arrange
             var connection = new TestHttpClientAuthenticationConnection();
@@ -105,10 +124,10 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
                 {
                     ClientId = clientId,
                     ClientSecret = clientSecret,
-                    Realm = _connection.Name,
+                    Realm = fixture.Connection.Name,
                     Scope = "openid",
-                    Username = _user.Email,
-                    Password = Password
+                    Username = fixture.User.Email,
+                    Password = fixture.Password
                 });
 
                 var issuer = $"https://{authUrl}/";
@@ -120,9 +139,9 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
         [Fact]
         public async Task Passes_Token_Validation_HS256()
         {
-            var authUrl = GetVariable("AUTH0_AUTHENTICATION_API_URL");
-            var clientId = GetVariable("AUTH0_HS256_CLIENT_ID");
-            var clientSecret = GetVariable("AUTH0_HS256_CLIENT_SECRET");
+            var authUrl = TestBaseUtils.GetVariable("AUTH0_AUTHENTICATION_API_URL");
+            var clientId = TestBaseUtils.GetVariable("AUTH0_HS256_CLIENT_ID");
+            var clientSecret = TestBaseUtils.GetVariable("AUTH0_HS256_CLIENT_SECRET");
 
             // Arrange
             using (var authenticationApiClient = new TestAuthenticationApiClient(authUrl))
@@ -132,11 +151,11 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
                 {
                     ClientId = clientId,
                     ClientSecret = clientSecret,
-                    Realm = _connection.Name,
+                    Realm = fixture.Connection.Name,
                     SigningAlgorithm = JwtSignatureAlgorithm.HS256,
                     Scope = "openid",
-                    Username = _user.Email,
-                    Password = Password
+                    Username = fixture.User.Email,
+                    Password = fixture.Password
                 });
 
                 var issuer = $"https://{authUrl}/";
@@ -148,9 +167,9 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
         [Fact]
         public async Task Passes_Token_Validation_HS256_With_Document_Retreiver()
         {
-            var authUrl = GetVariable("AUTH0_AUTHENTICATION_API_URL");
-            var clientId = GetVariable("AUTH0_HS256_CLIENT_ID");
-            var clientSecret = GetVariable("AUTH0_HS256_CLIENT_SECRET");
+            var authUrl = TestBaseUtils.GetVariable("AUTH0_AUTHENTICATION_API_URL");
+            var clientId = TestBaseUtils.GetVariable("AUTH0_HS256_CLIENT_ID");
+            var clientSecret = TestBaseUtils.GetVariable("AUTH0_HS256_CLIENT_SECRET");
 
             // Arrange
             var connection = new TestHttpClientAuthenticationConnection();
@@ -162,11 +181,11 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
                 {
                     ClientId = clientId,
                     ClientSecret = clientSecret,
-                    Realm = _connection.Name,
+                    Realm = fixture.Connection.Name,
                     SigningAlgorithm = JwtSignatureAlgorithm.HS256,
                     Scope = "openid",
-                    Username = _user.Email,
-                    Password = Password
+                    Username = fixture.User.Email,
+                    Password = fixture.Password
                 });
 
                 var issuer = $"https://{authUrl}/";
@@ -179,22 +198,22 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
         public async Task Passes_Token_Validation_With_CNAME()
         {
             // Arrange
-            using (var authenticationApiClient = new TestAuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
+            using (var authenticationApiClient = new TestAuthenticationApiClient(TestBaseUtils.GetVariable("AUTH0_AUTHENTICATION_API_URL")))
             {
                 // Act
                 var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
                 {
-                    ClientId = GetVariable("AUTH0_CLIENT_ID"),
-                    ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
-                    Realm = _connection.Name,
+                    ClientId = TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"),
+                    ClientSecret = TestBaseUtils.GetVariable("AUTH0_CLIENT_SECRET"),
+                    Realm = fixture.Connection.Name,
                     Scope = "openid",
-                    Username = _user.Email,
-                    Password = Password
+                    Username = fixture.User.Email,
+                    Password = fixture.Password
                 });
 
-                var issuer = $"https://{GetVariable("AUTH0_AUTHENTICATION_API_URL")}/";
-                var requirements = new IdTokenRequirements(JwtSignatureAlgorithm.RS256, issuer, GetVariable("AUTH0_CLIENT_ID"), TimeSpan.FromMinutes(1));
-                await new IdTokenValidator().Assert(requirements, authenticationResponse.IdToken, GetVariable("AUTH0_CLIENT_SECRET"));
+                var issuer = $"https://{TestBaseUtils.GetVariable("AUTH0_AUTHENTICATION_API_URL")}/";
+                var requirements = new IdTokenRequirements(JwtSignatureAlgorithm.RS256, issuer, TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"), TimeSpan.FromMinutes(1));
+                await new IdTokenValidator().Assert(requirements, authenticationResponse.IdToken, TestBaseUtils.GetVariable("AUTH0_CLIENT_SECRET"));
             }
         }
 
@@ -202,25 +221,25 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
         public async Task Fails_Token_Validation_With_Incorrect_Domain()
         {
             // Arrange
-            using (var authenticationApiClient = new TestAuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
+            using (var authenticationApiClient = new TestAuthenticationApiClient(TestBaseUtils.GetVariable("AUTH0_AUTHENTICATION_API_URL")))
             {
                 // Act
                 var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
                 {
-                    ClientId = GetVariable("AUTH0_CLIENT_ID"),
-                    ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
-                    Realm = _connection.Name,
+                    ClientId = TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"),
+                    ClientSecret = TestBaseUtils.GetVariable("AUTH0_CLIENT_SECRET"),
+                    Realm = fixture.Connection.Name,
                     Scope = "openid",
-                    Username = _user.Email,
-                    Password = Password
+                    Username = fixture.User.Email,
+                    Password = fixture.Password
 
                 });
 
-                var requirements = new IdTokenRequirements(JwtSignatureAlgorithm.RS256, "https://auth0.auth0.com/", GetVariable("AUTH0_CLIENT_ID"), TimeSpan.FromMinutes(1));
+                var requirements = new IdTokenRequirements(JwtSignatureAlgorithm.RS256, "https://auth0.auth0.com/", TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"), TimeSpan.FromMinutes(1));
 
                 // Assert
                 authenticationResponse.IdToken.Should().NotBeNull();
-                await Assert.ThrowsAsync<IdTokenValidationKeyMissingException>(() => new IdTokenValidator().Assert(requirements, authenticationResponse.IdToken, GetVariable("AUTH0_CLIENT_SECRET")));
+                await Assert.ThrowsAsync<IdTokenValidationKeyMissingException>(() => new IdTokenValidator().Assert(requirements, authenticationResponse.IdToken, TestBaseUtils.GetVariable("AUTH0_CLIENT_SECRET")));
             }
         }
 
@@ -228,26 +247,26 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
         public async Task Fails_Token_Validation_With_Incorrect_Audience()
         {
             // Arrange
-            using (var authenticationApiClient = new TestAuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
+            using (var authenticationApiClient = new TestAuthenticationApiClient(TestBaseUtils.GetVariable("AUTH0_AUTHENTICATION_API_URL")))
             {
                 // Act
                 var authenticationResponse = await authenticationApiClient.GetTokenAsync(new ResourceOwnerTokenRequest
                 {
-                    ClientId = GetVariable("AUTH0_CLIENT_ID"),
-                    ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
-                    Realm = _connection.Name,
+                    ClientId = TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"),
+                    ClientSecret = TestBaseUtils.GetVariable("AUTH0_CLIENT_SECRET"),
+                    Realm = fixture.Connection.Name,
                     Scope = "openid",
-                    Username = _user.Email,
-                    Password = Password
+                    Username = fixture.User.Email,
+                    Password = fixture.Password
 
                 });
 
-                var issuer = $"https://{GetVariable("AUTH0_AUTHENTICATION_API_URL")}/";
+                var issuer = $"https://{TestBaseUtils.GetVariable("AUTH0_AUTHENTICATION_API_URL")}/";
                 var requirements = new IdTokenRequirements(JwtSignatureAlgorithm.RS256, issuer, "invalid_audience", TimeSpan.FromMinutes(1));
 
                 // Assert
                 authenticationResponse.IdToken.Should().NotBeNull();
-                await Assert.ThrowsAsync<IdTokenValidationException>(() => new IdTokenValidator().Assert(requirements, authenticationResponse.IdToken, GetVariable("AUTH0_CLIENT_SECRET")));
+                await Assert.ThrowsAsync<IdTokenValidationException>(() => new IdTokenValidator().Assert(requirements, authenticationResponse.IdToken, TestBaseUtils.GetVariable("AUTH0_CLIENT_SECRET")));
             }
         }
     }

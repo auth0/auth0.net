@@ -12,18 +12,26 @@ using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    public class ResourceServerTests : ManagementTestBase, IAsyncLifetime
+    public class ResourceServerTestsFixture : TestBaseFixture
     {
-        public async Task InitializeAsync()
+        public override async Task DisposeAsync()
         {
-            string token = await GenerateManagementApiToken();
+            foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
+            {
+                await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
+            }
 
-            ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+            ApiClient.Dispose();
         }
+    }
 
-        public override Task DisposeAsync()
+    public class ResourceServerTests : IClassFixture<ResourceServerTestsFixture>
+    {
+        ResourceServerTestsFixture fixture;
+
+        public ResourceServerTests(ResourceServerTestsFixture fixture)
         {
-            return CleanupAndDisposeAsync();
+            this.fixture = fixture;
         }
 
         [Fact]
@@ -52,7 +60,10 @@ namespace Auth0.ManagementApi.IntegrationTests
                 SkipConsentForVerifiableFirstPartyClients = true,
             };
 
-            var newResourceServerResponse = await ApiClient.ResourceServers.CreateAsync(createResourceServerRequest);
+            var newResourceServerResponse = await fixture.ApiClient.ResourceServers.CreateAsync(createResourceServerRequest);
+
+            fixture.TrackIdentifier(CleanUpType.ResourceServers, newResourceServerResponse.Id);
+
             newResourceServerResponse.Should().BeEquivalentTo(createResourceServerRequest, options => options.Excluding(rs => rs.Id));
 
             // Update the resource server
@@ -82,24 +93,26 @@ namespace Auth0.ManagementApi.IntegrationTests
                 VerificationLocation = "",
                 SkipConsentForVerifiableFirstPartyClients = false,
             };
-            var updateResourceServerResponse = await ApiClient.ResourceServers.UpdateAsync(newResourceServerResponse.Id, updateResourceServerRequest);
+            var updateResourceServerResponse = await fixture.ApiClient.ResourceServers.UpdateAsync(newResourceServerResponse.Id, updateResourceServerRequest);
             updateResourceServerResponse.Should().BeEquivalentTo(updateResourceServerRequest, options => options.ExcludingMissingMembers());
 
             // Get a single resource server
-            var resourceServer = await ApiClient.ResourceServers.GetAsync(newResourceServerResponse.Id);
+            var resourceServer = await fixture.ApiClient.ResourceServers.GetAsync(newResourceServerResponse.Id);
             resourceServer.Should().BeEquivalentTo(updateResourceServerRequest, options => options.ExcludingMissingMembers());
 
             // Delete the client, and ensure we get exception when trying to fetch client again
-            await ApiClient.ResourceServers.DeleteAsync(resourceServer.Id);
-            Func<Task> getFunc = async () => await ApiClient.ResourceServers.GetAsync(resourceServer.Id);
+            await fixture.ApiClient.ResourceServers.DeleteAsync(resourceServer.Id);
+            Func<Task> getFunc = async () => await fixture.ApiClient.ResourceServers.GetAsync(resourceServer.Id);
             getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_resource_server");
+
+            fixture.UnTrackIdentifier(CleanUpType.ResourceServers, newResourceServerResponse.Id);
         }
 
         [Fact]
         public async Task Test_get_resource_server_by_identifier()
         {
-            string identifier = GetVariable("AUTH0_MANAGEMENT_API_AUDIENCE");
-            var resourceServers = await ApiClient.ResourceServers.GetAsync(identifier);
+            string identifier = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_AUDIENCE");
+            var resourceServers = await fixture.ApiClient.ResourceServers.GetAsync(identifier);
 
             Assert.Equal(resourceServers.Identifier, identifier);
         }
@@ -108,7 +121,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_paging_does_not_include_totals()
         {
             // Act
-            var resourceServers = await ApiClient.ResourceServers.GetAllAsync(new PaginationInfo(0, 50, false));
+            var resourceServers = await fixture.ApiClient.ResourceServers.GetAllAsync(new PaginationInfo(0, 50, false));
 
             // Assert
             Assert.Null(resourceServers.Paging);
@@ -118,7 +131,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_paging_includes_totals()
         {
             // Act
-            var resourceServers = await ApiClient.ResourceServers.GetAllAsync(new PaginationInfo(0, 50, true));
+            var resourceServers = await fixture.ApiClient.ResourceServers.GetAllAsync(new PaginationInfo(0, 50, true));
 
             // Assert
             Assert.NotNull(resourceServers.Paging);
@@ -128,7 +141,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_without_paging()
         {
             // Act
-            var resourceServers = await ApiClient.ResourceServers.GetAllAsync();
+            var resourceServers = await fixture.ApiClient.ResourceServers.GetAllAsync();
 
             // Assert
             resourceServers.Paging.Should().BeNull();

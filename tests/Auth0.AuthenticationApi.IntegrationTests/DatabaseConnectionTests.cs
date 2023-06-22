@@ -8,36 +8,56 @@ using System.Threading.Tasks;
 using Auth0.AuthenticationApi.IntegrationTests.Testing;
 using Auth0.IntegrationTests.Shared.CleanUp;
 using Xunit;
+using System.Collections.Generic;
+using System.Data.Common;
+using Auth0.AuthenticationApi.IntegrationTests.Tokens;
 
 namespace Auth0.AuthenticationApi.IntegrationTests
 {
-    public class DatabaseConnectionTests : ManagementTestBase, IAsyncLifetime
+    public class DatabaseConnectionTestsFixture : TestBaseFixture
     {
-        private AuthenticationApiClient _authenticationApiClient;
-        private Connection _connection;
-        private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
+        public Connection Connection;
 
-        public async Task InitializeAsync()
+        public AuthenticationApiClient AuthenticationApiClient;
+
+        public override async Task InitializeAsync()
         {
-            string token = await GenerateManagementApiToken();
-
-            ApiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+            await base.InitializeAsync();
 
             // We will need a connection to add the users to...
-            _connection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
+            Connection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
             {
-                Name = $"{TestingConstants.ConnectionPrefix}-{MakeRandomName()}",
+                Name = $"{TestingConstants.ConnectionPrefix}-{TestBaseUtils.MakeRandomName()}",
                 Strategy = "auth0",
-                EnabledClients = new[] {GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID")}
+                EnabledClients = new[] { TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
             });
 
-            _authenticationApiClient = new TestAuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
+            TrackIdentifier(CleanUpType.Connections, Connection.Id);
+
+            AuthenticationApiClient = new TestAuthenticationApiClient(TestBaseUtils.GetVariable("AUTH0_AUTHENTICATION_API_URL"));
         }
+    
 
         public override async Task DisposeAsync()
         {
-            _authenticationApiClient.Dispose();
-            await CleanupAndDisposeAsync(CleanUpType.Connections);
+            foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
+            {
+                await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
+            }
+
+            ApiClient.Dispose();
+        }
+    }
+
+    public class DatabaseConnectionTests : IClassFixture<DatabaseConnectionTestsFixture>
+    {
+        private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
+
+        DatabaseConnectionTestsFixture fixture;
+
+        public DatabaseConnectionTests(DatabaseConnectionTestsFixture fixture)
+        {
+            this.fixture = fixture;
         }
 
         [Fact]
@@ -46,8 +66,8 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             // Sign up the user
             var signupUserRequest = new SignupUserRequest
             {
-                ClientId = GetVariable("AUTH0_CLIENT_ID"),
-                Connection = _connection.Name,
+                ClientId = TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"),
+                Connection = fixture.Connection.Name,
                 Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                 Password = Password,
                 FamilyName = "Surname",
@@ -62,7 +82,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                     b = "two"
                 }
             };
-            var signupUserResponse = await _authenticationApiClient.SignupUserAsync(signupUserRequest);
+            var signupUserResponse = await fixture.AuthenticationApiClient.SignupUserAsync(signupUserRequest);
             signupUserResponse.Should().NotBeNull();
             signupUserResponse.Id.Should().NotBeNull();
             signupUserResponse.EmailVerified.Should().BeFalse();
@@ -80,12 +100,12 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             // Sign up the user
             var signupUserRequest = new SignupUserRequest
             {
-                ClientId = GetVariable("AUTH0_CLIENT_ID"),
+                ClientId = TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"),
                 Connection = "Username-Password-Authentication",
                 Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
                 Password = Password
             };
-            var signupUserResponse = await _authenticationApiClient.SignupUserAsync(signupUserRequest);
+            var signupUserResponse = await fixture.AuthenticationApiClient.SignupUserAsync(signupUserRequest);
             signupUserResponse.Should().NotBeNull();
             signupUserResponse.Id.Should().NotBeNull();
             signupUserResponse.Email.Should().Be(signupUserRequest.Email);

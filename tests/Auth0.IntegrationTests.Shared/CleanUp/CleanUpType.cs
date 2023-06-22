@@ -3,12 +3,15 @@
     public enum CleanUpType
     {
         Actions,
+        ClientGrants,
         Clients,
         Connections,
         Hooks,
         Organizations,
         ResourceServers,
         Users,
-        Rules
+        Roles,
+        Rules,
+        LogStreams
     }
 }
