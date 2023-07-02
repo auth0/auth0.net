@@ -143,7 +143,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             var verificationTicketResponse = await fixture.ApiClient.Tickets.CreateEmailVerificationTicketAsync(new EmailVerificationTicketRequest
             {
-                UserId = fixture.EmailUser.UserId,
+                UserId = fixture.Auth0User.UserId,
                 ClientId = TestBaseUtils.GetVariable("AUTH0_CLIENT_ID")
             });
             verificationTicketResponse.Should().NotBeNull();
