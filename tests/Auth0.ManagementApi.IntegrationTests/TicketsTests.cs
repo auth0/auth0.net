@@ -137,5 +137,17 @@ namespace Auth0.ManagementApi.IntegrationTests
             verificationTicketResponse.Should().NotBeNull();
             verificationTicketResponse.Value.Should().NotBeNull();
         }
+
+        [Fact]
+        public async Task Can_send_verification_email_with_client_id()
+        {
+            var verificationTicketResponse = await fixture.ApiClient.Tickets.CreateEmailVerificationTicketAsync(new EmailVerificationTicketRequest
+            {
+                UserId = fixture.Auth0User.UserId,
+                ClientId = TestBaseUtils.GetVariable("AUTH0_CLIENT_ID")
+            });
+            verificationTicketResponse.Should().NotBeNull();
+            verificationTicketResponse.Value.Should().NotBeNull();
+        }
     }
 }
