@@ -14476,6 +14476,19 @@ references:
   commentId: T:Auth0.ManagementApi.Models.EmailVerificationTicketRequest
   fullName: Auth0.ManagementApi.Models.EmailVerificationTicketRequest
   nameWithType: EmailVerificationTicketRequest
+- uid: Auth0.ManagementApi.Models.EmailVerificationTicketRequest.ClientId
+  name: ClientId
+  href: api/Auth0.ManagementApi.Models.EmailVerificationTicketRequest.html#Auth0_ManagementApi_Models_EmailVerificationTicketRequest_ClientId
+  commentId: P:Auth0.ManagementApi.Models.EmailVerificationTicketRequest.ClientId
+  fullName: Auth0.ManagementApi.Models.EmailVerificationTicketRequest.ClientId
+  nameWithType: EmailVerificationTicketRequest.ClientId
+- uid: Auth0.ManagementApi.Models.EmailVerificationTicketRequest.ClientId*
+  name: ClientId
+  href: api/Auth0.ManagementApi.Models.EmailVerificationTicketRequest.html#Auth0_ManagementApi_Models_EmailVerificationTicketRequest_ClientId_
+  commentId: Overload:Auth0.ManagementApi.Models.EmailVerificationTicketRequest.ClientId
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.EmailVerificationTicketRequest.ClientId
+  nameWithType: EmailVerificationTicketRequest.ClientId
 - uid: Auth0.ManagementApi.Models.EmailVerificationTicketRequest.Identity
   name: Identity
   href: api/Auth0.ManagementApi.Models.EmailVerificationTicketRequest.html#Auth0_ManagementApi_Models_EmailVerificationTicketRequest_Identity
