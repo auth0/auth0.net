@@ -1,5 +1,11 @@
 # Change Log
 
+## [7.21.1](https://github.com/auth0/auth0.net/tree/7.21.1) (2023-07-03)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.21.0...7.21.1)
+
+**Fixed**
+- Add ClientId to EmailVerificationTicket [\#629](https://github.com/auth0/auth0.net/pull/629) ([bellascalzi1](https://github.com/bellascalzi1))
+
 ## [7.21.0](https://github.com/auth0/auth0.net/tree/7.21.0) (2023-06-05)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.20.0...7.21.0)
 
