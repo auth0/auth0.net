@@ -39,7 +39,7 @@ namespace Auth0.AuthenticationApi.Tokens
         public TimeSpan Leeway;
 
         /// <summary>
-        /// Optional organization (org_id) the token must be for.
+        /// Optional organization (org_id / org_name) the token must be for.
         /// </summary>
         public string Organization;
 

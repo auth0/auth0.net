@@ -94,11 +94,13 @@ namespace Auth0.AuthenticationApi.Tokens
             if (!string.IsNullOrWhiteSpace(required.Organization))
             {
                 var organizationClaim = required.Organization.StartsWith("org_") ? Auth0ClaimNames.OrganizationId : Auth0ClaimNames.OrganizationName;
-                var organization = GetClaimValue(token.Claims, organizationClaim);
+                var organization = organizationClaim == Auth0ClaimNames.OrganizationName ? GetClaimValue(token.Claims, organizationClaim).ToLower() : GetClaimValue(token.Claims, organizationClaim);
+                var expectedOrganization = organizationClaim == Auth0ClaimNames.OrganizationName ? required.Organization.ToLower() : required.Organization;
+
                 if (string.IsNullOrWhiteSpace(organization))
                     throw new IdTokenValidationException($"Organization claim ({organizationClaim}) must be a string present in the ID token.");
-                if (organization != required.Organization)
-                    throw new IdTokenValidationException($"Organization claim ({organizationClaim}) mismatch in the ID token; expected \"{required.Organization}\", found \"{organization}\".");
+                if (organization != expectedOrganization)
+                    throw new IdTokenValidationException($"Organization claim ({organizationClaim}) mismatch in the ID token; expected \"{expectedOrganization}\", found \"{organization}\".");
             }
 
         }

@@ -282,7 +282,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
             var key = new RsaSecurityKey(new RSACryptoServiceProvider(2048));
             var tokenFactory = new JwtTokenFactory(key, SecurityAlgorithms.RsaSha256);
 
-            var token = tokenFactory.GenerateToken("https://tokens-test.auth0.com/", "tokens-test-123", "test_sub", new List<Claim> { new Claim(JwtRegisteredClaimNames.Nonce, "a1b2c3d4e5"), new Claim("org_name", "organizationA") });
+            var token = tokenFactory.GenerateToken("https://tokens-test.auth0.com/", "tokens-test-123", "test_sub", new List<Claim> { new Claim(JwtRegisteredClaimNames.Nonce, "a1b2c3d4e5"), new Claim("org_name", "organizationa") });
 
             ValidateToken(token, requirements);
         }
