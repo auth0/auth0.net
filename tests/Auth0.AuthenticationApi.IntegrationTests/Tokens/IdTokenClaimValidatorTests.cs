@@ -1,7 +1,12 @@
 ﻿using Auth0.AuthenticationApi.Tokens;
 using Auth0.Tests.Shared;
+using Microsoft.IdentityModel.Tokens;
 using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Text;
 using Xunit;
 
 namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
@@ -161,6 +166,125 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
 
             var ex = Assert.Throws<IdTokenValidationException>(() => ValidateToken(token));
             Assert.Equal("Authentication Time (auth_time) claim in the ID token indicates that too much time has passed since the last end-user authentication. Current time (1568023200) is after last auth at 1568008254.", ex.Message);
+        }
+
+        [Fact]
+        public void ThrowsWhenNoOrgIdWhileOrgIdRequired()
+        {
+            IdTokenRequirements requirements =
+            new IdTokenRequirements(JwtSignatureAlgorithm.RS256, "https://tokens-test.auth0.com/", "tokens-test-123", TimeSpan.FromMinutes(1))
+            {
+                Nonce = "a1b2c3d4e5",
+                MaxAge = TimeSpan.FromSeconds(100),
+                Organization = "org_123"
+            };
+
+            var key = new RsaSecurityKey(new RSACryptoServiceProvider(2048));
+            var tokenFactory = new JwtTokenFactory(key, SecurityAlgorithms.RsaSha256);
+
+            var token = tokenFactory.GenerateToken("https://tokens-test.auth0.com/", "tokens-test-123", "test_sub", new List<Claim> { new Claim(JwtRegisteredClaimNames.Nonce, "a1b2c3d4e5"), new Claim("org_name", "organizationA") });
+
+            var ex = Assert.Throws<IdTokenValidationException>(() => ValidateToken(token, requirements));
+            Assert.Equal("Organization claim (org_id) must be a string present in the ID token.", ex.Message);
+        }
+
+        [Fact]
+        public void ThrowsWhenOrgIdDoesntMatch()
+        {
+            IdTokenRequirements requirements =
+            new IdTokenRequirements(JwtSignatureAlgorithm.RS256, "https://tokens-test.auth0.com/", "tokens-test-123", TimeSpan.FromMinutes(1))
+            {
+                Nonce = "a1b2c3d4e5",
+                MaxAge = TimeSpan.FromSeconds(100),
+                Organization = "org_123"
+            };
+
+            var key = new RsaSecurityKey(new RSACryptoServiceProvider(2048));
+            var tokenFactory = new JwtTokenFactory(key, SecurityAlgorithms.RsaSha256);
+
+            var organization = "abc";
+            var token = tokenFactory.GenerateToken("https://tokens-test.auth0.com/", "tokens-test-123", "test_sub", new List<Claim> { new Claim(JwtRegisteredClaimNames.Nonce, "a1b2c3d4e5"), new Claim("org_id", organization) });
+
+            var ex = Assert.Throws<IdTokenValidationException>(() => ValidateToken(token, requirements));
+            Assert.Equal($"Organization claim (org_id) mismatch in the ID token; expected \"{requirements.Organization}\", found \"{organization}\".", ex.Message);
+        }
+
+        [Fact]
+        public void DoesNotThrowWhenOrgIdMatch()
+        {
+            IdTokenRequirements requirements =
+            new IdTokenRequirements(JwtSignatureAlgorithm.RS256, "https://tokens-test.auth0.com/", "tokens-test-123", TimeSpan.FromMinutes(1))
+            {
+                Nonce = "a1b2c3d4e5",
+                MaxAge = TimeSpan.FromSeconds(100),
+                Organization = "org_123"
+            };
+
+            var key = new RsaSecurityKey(new RSACryptoServiceProvider(2048));
+            var tokenFactory = new JwtTokenFactory(key, SecurityAlgorithms.RsaSha256);
+            var token = tokenFactory.GenerateToken("https://tokens-test.auth0.com/", "tokens-test-123", "test_sub", new List<Claim> { new Claim(JwtRegisteredClaimNames.Nonce, "a1b2c3d4e5"), new Claim("org_id", "org_123") });
+
+            ValidateToken(token, requirements);
+        }
+
+        [Fact]
+        public void ThrowsWhenNoOrgNameWhileOrgNameRequired()
+        {
+            IdTokenRequirements requirements =
+            new IdTokenRequirements(JwtSignatureAlgorithm.RS256, "https://tokens-test.auth0.com/", "tokens-test-123", TimeSpan.FromMinutes(1))
+            {
+                Nonce = "a1b2c3d4e5",
+                MaxAge = TimeSpan.FromSeconds(100),
+                Organization = "organizationA"
+            };
+
+            var key = new RsaSecurityKey(new RSACryptoServiceProvider(2048));
+            var tokenFactory = new JwtTokenFactory(key, SecurityAlgorithms.RsaSha256);
+
+            var token = tokenFactory.GenerateToken("https://tokens-test.auth0.com/", "tokens-test-123", "test_sub", new List<Claim> { new Claim(JwtRegisteredClaimNames.Nonce, "a1b2c3d4e5"), new Claim("org_id", "org_123") });
+
+            var ex = Assert.Throws<IdTokenValidationException>(() => ValidateToken(token, requirements));
+            Assert.Equal("Organization claim (org_name) must be a string present in the ID token.", ex.Message);
+        }
+
+        [Fact]
+        public void ThrowsWhenOrgNameDoesntMatch()
+        {
+            IdTokenRequirements requirements =
+            new IdTokenRequirements(JwtSignatureAlgorithm.RS256, "https://tokens-test.auth0.com/", "tokens-test-123", TimeSpan.FromMinutes(1))
+            {
+                Nonce = "a1b2c3d4e5",
+                MaxAge = TimeSpan.FromSeconds(100),
+                Organization = "organizationA"
+            };
+
+            var key = new RsaSecurityKey(new RSACryptoServiceProvider(2048));
+            var tokenFactory = new JwtTokenFactory(key, SecurityAlgorithms.RsaSha256);
+
+            var organization = "organization2";
+            var token = tokenFactory.GenerateToken("https://tokens-test.auth0.com/", "tokens-test-123", "test_sub", new List<Claim> { new Claim(JwtRegisteredClaimNames.Nonce, "a1b2c3d4e5"), new Claim("org_name", organization) });
+
+            var ex = Assert.Throws<IdTokenValidationException>(() => ValidateToken(token, requirements));
+            Assert.Equal($"Organization claim (org_name) mismatch in the ID token; expected \"{requirements.Organization}\", found \"{organization}\".", ex.Message);
+        }
+
+        [Fact]
+        public void DoesNotThrowWhenOrgNameMatch()
+        {
+            IdTokenRequirements requirements =
+            new IdTokenRequirements(JwtSignatureAlgorithm.RS256, "https://tokens-test.auth0.com/", "tokens-test-123", TimeSpan.FromMinutes(1))
+            {
+                Nonce = "a1b2c3d4e5",
+                MaxAge = TimeSpan.FromSeconds(100),
+                Organization = "organizationA"
+            };
+
+            var key = new RsaSecurityKey(new RSACryptoServiceProvider(2048));
+            var tokenFactory = new JwtTokenFactory(key, SecurityAlgorithms.RsaSha256);
+
+            var token = tokenFactory.GenerateToken("https://tokens-test.auth0.com/", "tokens-test-123", "test_sub", new List<Claim> { new Claim(JwtRegisteredClaimNames.Nonce, "a1b2c3d4e5"), new Claim("org_name", "organizationA") });
+
+            ValidateToken(token, requirements);
         }
     }
 }
