@@ -235,7 +235,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
             {
                 Nonce = "a1b2c3d4e5",
                 MaxAge = TimeSpan.FromSeconds(100),
-                Organization = "organizationA"
+                Organization = "organizationa"
             };
 
             var key = new RsaSecurityKey(new RSACryptoServiceProvider(2048));
@@ -255,7 +255,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
             {
                 Nonce = "a1b2c3d4e5",
                 MaxAge = TimeSpan.FromSeconds(100),
-                Organization = "organizationA"
+                Organization = "organizationa"
             };
 
             var key = new RsaSecurityKey(new RSACryptoServiceProvider(2048));
