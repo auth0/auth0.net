@@ -17,8 +17,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Models\Users\" />
+    <None Remove="Models\Grants\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Users\" />
+    <Folder Include="Models\Grants\" />
   </ItemGroup>
 </Project>
