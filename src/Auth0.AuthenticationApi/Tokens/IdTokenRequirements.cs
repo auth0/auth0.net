@@ -1,4 +1,6 @@
 ﻿using System;
+using Newtonsoft.Json.Linq;
+using System.Security.Claims;
 
 namespace Auth0.AuthenticationApi.Tokens
 {
@@ -39,8 +41,12 @@ namespace Auth0.AuthenticationApi.Tokens
         public TimeSpan Leeway;
 
         /// <summary>
-        /// Optional organization (org_id) the token must be for.
+        /// Optional organization (org_id / org_name) the token must be for.
         /// </summary>
+        /// <remarks>
+        /// - If you provide an Organization ID (a string with the prefix `org_`), it will be validated against the `org_id` claim of your user's ID Token. The validation is case-sensitive.
+        /// - If you provide an Organization Name (a string *without* the prefix `org_`), it will be validated against the `org_name` claim of your user's ID Token.The validation is case-insensitive.
+        /// </remarks>
         public string Organization;
 
         /// <summary>
