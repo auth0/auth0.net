@@ -49,6 +49,10 @@ namespace Auth0.AuthenticationApi.Models
         /// <summary>
         /// Organization for Id Token verification.
         /// </summary>
+        /// <remarks>
+        /// - If you provide an Organization ID (a string with the prefix `org_`), it will be validated against the `org_id` claim of your user's ID Token. The validation is case-sensitive.
+        /// - If you provide an Organization Name (a string *without* the prefix `org_`), it will be validated against the `org_name` claim of your user's ID Token.The validation is case-insensitive.
+        /// </remarks>
         public string Organization { get; set; }
     }
 }
