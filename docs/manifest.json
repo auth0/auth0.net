@@ -273,7 +273,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.AuthenticationApi.Models.AuthorizationCodeRequestBase.html",
-          "hash": "lPzq2C2lo5HeVNjOKjJ6TUrESRqjgBdNOKvUWdbSSmI="
+          "hash": "ugiPQWgj28tNq/zcu6LKqmX08C6Cnb7Z3T/xtmE0yLw="
         }
       },
       "is_incremental": false,
@@ -501,7 +501,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.AuthenticationApi.Models.RefreshTokenRequest.html",
-          "hash": "jIKB7fVpUbvkcM9DsD3rANnEuJoedewoZfuog2mMyb8="
+          "hash": "FwhlcObm4E+kVCGFaCONkIoiIVfqbtr4avA8NiClFA0="
         }
       },
       "is_incremental": false,
@@ -765,7 +765,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.BaseClient.html",
-          "hash": "7oMuK4vpiNGUdo0oQ0UIQBJuiicOmzHBXr3/DQiHXH4="
+          "hash": "/JiJshT0rnKDcWbgHMDflwk3Vgw+6LDtzFTuGNBW9Bs="
         }
       },
       "is_incremental": false,
@@ -874,6 +874,18 @@
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.EmailTemplatesClient.html",
           "hash": "PZUST//flzB7NUHS8QjNSHuv+lqrSN7dE2lO8CVkM2U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.GrantsClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.GrantsClient.html",
+          "hash": "NQOR+35+WyeSCi2NTB7u3i7na65951LdmCl3T9jomtk="
         }
       },
       "is_incremental": false,
@@ -1030,6 +1042,18 @@
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.IEmailTemplatesClient.html",
           "hash": "fDxIKby04UNaiKyNd5EhmjoJQql+gohHjpRqynEP3Zc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Clients.IGrantsClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Clients.IGrantsClient.html",
+          "hash": "0D0s5hkvjypVf5n9bp6+8wLc5OK8Fm0JAiALmqFswIY="
         }
       },
       "is_incremental": false,
@@ -1425,7 +1449,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Clients.html",
-          "hash": "wnilVz/aJ2JSROmzv/fg3ScQTqn3PVIcva3jdZWOkQI="
+          "hash": "ZioGTG2JIJKR03RB3KZOzQXZuf+Hwnqf3zl6Dpa8zjA="
         }
       },
       "is_incremental": false,
@@ -1497,7 +1521,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.ManagementApiClient.html",
-          "hash": "GezPjL0HmjkGPicl1yOaQ+3cvQQsn3xAi48u5iTm+xA="
+          "hash": "PXHXglJ9c9tFx9SRBSiUqo8qh4eOGM9Pu2qcpw8A6AU="
         }
       },
       "is_incremental": false,
@@ -2770,6 +2794,42 @@
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.GetUsersRequest.html",
           "hash": "O2TKjBqJmVQt4x9kNI+grHDAzglt5CgsnUl+9k0jx+Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Grants.GetGrantsRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Grants.GetGrantsRequest.html",
+          "hash": "I+pLBd1I7C6gxQbAl59z2E3UN8UI5SJZanmGKxPKO2U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Grants.Grant.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Grants.Grant.html",
+          "hash": "1/bA1ppggNLztvPO1RDCNnXf1VFhUD0WUw96CRCe8Mc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Grants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.Grants.html",
+          "hash": "5na7Z9gW2M5WBxVOZMz81Xl3Id3jTquRnWnlxEVXz0Y="
         }
       },
       "is_incremental": false,
@@ -4509,7 +4569,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "u0qwT/U8F5lDv6vyDEKZc0ia5/ZZtQhxZn7oNVy8YTw="
+          "hash": "Kc8a8wrniyoxX9bg81BXcf8YUoljJKeWCI5U+KmbjSY="
         }
       },
       "is_incremental": false,
@@ -4546,8 +4606,8 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
-          "total_file_count": 367,
-          "skipped_file_count": 15
+          "total_file_count": 372,
+          "skipped_file_count": 14
         },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
