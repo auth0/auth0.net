@@ -4822,6 +4822,67 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.EmailTemplatesClient.UpdateAsync
   nameWithType: EmailTemplatesClient.UpdateAsync
+- uid: Auth0.ManagementApi.Clients.GrantsClient
+  name: GrantsClient
+  href: api/Auth0.ManagementApi.Clients.GrantsClient.html
+  commentId: T:Auth0.ManagementApi.Clients.GrantsClient
+  fullName: Auth0.ManagementApi.Clients.GrantsClient
+  nameWithType: GrantsClient
+- uid: Auth0.ManagementApi.Clients.GrantsClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})
+  name: GrantsClient(IManagementConnection, Uri, IDictionary<String, String>)
+  href: api/Auth0.ManagementApi.Clients.GrantsClient.html#Auth0_ManagementApi_Clients_GrantsClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__
+  commentId: M:Auth0.ManagementApi.Clients.GrantsClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})
+  name.vb: GrantsClient(IManagementConnection, Uri, IDictionary(Of String, String))
+  fullName: Auth0.ManagementApi.Clients.GrantsClient.GrantsClient(Auth0.ManagementApi.IManagementConnection, System.Uri, System.Collections.Generic.IDictionary<System.String, System.String>)
+  fullName.vb: Auth0.ManagementApi.Clients.GrantsClient.GrantsClient(Auth0.ManagementApi.IManagementConnection, System.Uri, System.Collections.Generic.IDictionary(Of System.String, System.String))
+  nameWithType: GrantsClient.GrantsClient(IManagementConnection, Uri, IDictionary<String, String>)
+  nameWithType.vb: GrantsClient.GrantsClient(IManagementConnection, Uri, IDictionary(Of String, String))
+- uid: Auth0.ManagementApi.Clients.GrantsClient.#ctor*
+  name: GrantsClient
+  href: api/Auth0.ManagementApi.Clients.GrantsClient.html#Auth0_ManagementApi_Clients_GrantsClient__ctor_
+  commentId: Overload:Auth0.ManagementApi.Clients.GrantsClient.#ctor
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.GrantsClient.GrantsClient
+  nameWithType: GrantsClient.GrantsClient
+- uid: Auth0.ManagementApi.Clients.GrantsClient.DeleteAllAsync(System.String,System.Threading.CancellationToken)
+  name: DeleteAllAsync(String, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.GrantsClient.html#Auth0_ManagementApi_Clients_GrantsClient_DeleteAllAsync_System_String_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.GrantsClient.DeleteAllAsync(System.String,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.GrantsClient.DeleteAllAsync(System.String, System.Threading.CancellationToken)
+  nameWithType: GrantsClient.DeleteAllAsync(String, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.GrantsClient.DeleteAllAsync*
+  name: DeleteAllAsync
+  href: api/Auth0.ManagementApi.Clients.GrantsClient.html#Auth0_ManagementApi_Clients_GrantsClient_DeleteAllAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.GrantsClient.DeleteAllAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.GrantsClient.DeleteAllAsync
+  nameWithType: GrantsClient.DeleteAllAsync
+- uid: Auth0.ManagementApi.Clients.GrantsClient.DeleteAsync(System.String,System.Threading.CancellationToken)
+  name: DeleteAsync(String, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.GrantsClient.html#Auth0_ManagementApi_Clients_GrantsClient_DeleteAsync_System_String_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.GrantsClient.DeleteAsync(System.String,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.GrantsClient.DeleteAsync(System.String, System.Threading.CancellationToken)
+  nameWithType: GrantsClient.DeleteAsync(String, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.GrantsClient.DeleteAsync*
+  name: DeleteAsync
+  href: api/Auth0.ManagementApi.Clients.GrantsClient.html#Auth0_ManagementApi_Clients_GrantsClient_DeleteAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.GrantsClient.DeleteAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.GrantsClient.DeleteAsync
+  nameWithType: GrantsClient.DeleteAsync
+- uid: Auth0.ManagementApi.Clients.GrantsClient.GetAllAsync(Auth0.ManagementApi.Models.Grants.GetGrantsRequest,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)
+  name: GetAllAsync(GetGrantsRequest, PaginationInfo, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.GrantsClient.html#Auth0_ManagementApi_Clients_GrantsClient_GetAllAsync_Auth0_ManagementApi_Models_Grants_GetGrantsRequest_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.GrantsClient.GetAllAsync(Auth0.ManagementApi.Models.Grants.GetGrantsRequest,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.GrantsClient.GetAllAsync(Auth0.ManagementApi.Models.Grants.GetGrantsRequest, Auth0.ManagementApi.Paging.PaginationInfo, System.Threading.CancellationToken)
+  nameWithType: GrantsClient.GetAllAsync(GetGrantsRequest, PaginationInfo, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.GrantsClient.GetAllAsync*
+  name: GetAllAsync
+  href: api/Auth0.ManagementApi.Clients.GrantsClient.html#Auth0_ManagementApi_Clients_GrantsClient_GetAllAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.GrantsClient.GetAllAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.GrantsClient.GetAllAsync
+  nameWithType: GrantsClient.GetAllAsync
 - uid: Auth0.ManagementApi.Clients.GuardianClient
   name: GuardianClient
   href: api/Auth0.ManagementApi.Clients.GuardianClient.html
@@ -5991,6 +6052,51 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Clients.IEmailTemplatesClient.UpdateAsync
   nameWithType: IEmailTemplatesClient.UpdateAsync
+- uid: Auth0.ManagementApi.Clients.IGrantsClient
+  name: IGrantsClient
+  href: api/Auth0.ManagementApi.Clients.IGrantsClient.html
+  commentId: T:Auth0.ManagementApi.Clients.IGrantsClient
+  fullName: Auth0.ManagementApi.Clients.IGrantsClient
+  nameWithType: IGrantsClient
+- uid: Auth0.ManagementApi.Clients.IGrantsClient.DeleteAllAsync(System.String,System.Threading.CancellationToken)
+  name: DeleteAllAsync(String, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.IGrantsClient.html#Auth0_ManagementApi_Clients_IGrantsClient_DeleteAllAsync_System_String_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.IGrantsClient.DeleteAllAsync(System.String,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.IGrantsClient.DeleteAllAsync(System.String, System.Threading.CancellationToken)
+  nameWithType: IGrantsClient.DeleteAllAsync(String, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.IGrantsClient.DeleteAllAsync*
+  name: DeleteAllAsync
+  href: api/Auth0.ManagementApi.Clients.IGrantsClient.html#Auth0_ManagementApi_Clients_IGrantsClient_DeleteAllAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.IGrantsClient.DeleteAllAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.IGrantsClient.DeleteAllAsync
+  nameWithType: IGrantsClient.DeleteAllAsync
+- uid: Auth0.ManagementApi.Clients.IGrantsClient.DeleteAsync(System.String,System.Threading.CancellationToken)
+  name: DeleteAsync(String, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.IGrantsClient.html#Auth0_ManagementApi_Clients_IGrantsClient_DeleteAsync_System_String_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.IGrantsClient.DeleteAsync(System.String,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.IGrantsClient.DeleteAsync(System.String, System.Threading.CancellationToken)
+  nameWithType: IGrantsClient.DeleteAsync(String, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.IGrantsClient.DeleteAsync*
+  name: DeleteAsync
+  href: api/Auth0.ManagementApi.Clients.IGrantsClient.html#Auth0_ManagementApi_Clients_IGrantsClient_DeleteAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.IGrantsClient.DeleteAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.IGrantsClient.DeleteAsync
+  nameWithType: IGrantsClient.DeleteAsync
+- uid: Auth0.ManagementApi.Clients.IGrantsClient.GetAllAsync(Auth0.ManagementApi.Models.Grants.GetGrantsRequest,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)
+  name: GetAllAsync(GetGrantsRequest, PaginationInfo, CancellationToken)
+  href: api/Auth0.ManagementApi.Clients.IGrantsClient.html#Auth0_ManagementApi_Clients_IGrantsClient_GetAllAsync_Auth0_ManagementApi_Models_Grants_GetGrantsRequest_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_
+  commentId: M:Auth0.ManagementApi.Clients.IGrantsClient.GetAllAsync(Auth0.ManagementApi.Models.Grants.GetGrantsRequest,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)
+  fullName: Auth0.ManagementApi.Clients.IGrantsClient.GetAllAsync(Auth0.ManagementApi.Models.Grants.GetGrantsRequest, Auth0.ManagementApi.Paging.PaginationInfo, System.Threading.CancellationToken)
+  nameWithType: IGrantsClient.GetAllAsync(GetGrantsRequest, PaginationInfo, CancellationToken)
+- uid: Auth0.ManagementApi.Clients.IGrantsClient.GetAllAsync*
+  name: GetAllAsync
+  href: api/Auth0.ManagementApi.Clients.IGrantsClient.html#Auth0_ManagementApi_Clients_IGrantsClient_GetAllAsync_
+  commentId: Overload:Auth0.ManagementApi.Clients.IGrantsClient.GetAllAsync
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Clients.IGrantsClient.GetAllAsync
+  nameWithType: IGrantsClient.GetAllAsync
 - uid: Auth0.ManagementApi.Clients.IGuardianClient
   name: IGuardianClient
   href: api/Auth0.ManagementApi.Clients.IGuardianClient.html
@@ -9971,6 +10077,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.ManagementApiClient.EmailTemplates
   nameWithType: ManagementApiClient.EmailTemplates
+- uid: Auth0.ManagementApi.ManagementApiClient.Grants
+  name: Grants
+  href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_Grants
+  commentId: P:Auth0.ManagementApi.ManagementApiClient.Grants
+  fullName: Auth0.ManagementApi.ManagementApiClient.Grants
+  nameWithType: ManagementApiClient.Grants
+- uid: Auth0.ManagementApi.ManagementApiClient.Grants*
+  name: Grants
+  href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_Grants_
+  commentId: Overload:Auth0.ManagementApi.ManagementApiClient.Grants
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.ManagementApiClient.Grants
+  nameWithType: ManagementApiClient.Grants
 - uid: Auth0.ManagementApi.ManagementApiClient.Guardian
   name: Guardian
   href: api/Auth0.ManagementApi.ManagementApiClient.html#Auth0_ManagementApi_ManagementApiClient_Guardian
@@ -15349,6 +15468,128 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.GetUsersRequest.Sort
   nameWithType: GetUsersRequest.Sort
+- uid: Auth0.ManagementApi.Models.Grants
+  name: Auth0.ManagementApi.Models.Grants
+  href: api/Auth0.ManagementApi.Models.Grants.html
+  commentId: N:Auth0.ManagementApi.Models.Grants
+  fullName: Auth0.ManagementApi.Models.Grants
+  nameWithType: Auth0.ManagementApi.Models.Grants
+- uid: Auth0.ManagementApi.Models.Grants.GetGrantsRequest
+  name: GetGrantsRequest
+  href: api/Auth0.ManagementApi.Models.Grants.GetGrantsRequest.html
+  commentId: T:Auth0.ManagementApi.Models.Grants.GetGrantsRequest
+  fullName: Auth0.ManagementApi.Models.Grants.GetGrantsRequest
+  nameWithType: GetGrantsRequest
+- uid: Auth0.ManagementApi.Models.Grants.GetGrantsRequest.Audience
+  name: Audience
+  href: api/Auth0.ManagementApi.Models.Grants.GetGrantsRequest.html#Auth0_ManagementApi_Models_Grants_GetGrantsRequest_Audience
+  commentId: P:Auth0.ManagementApi.Models.Grants.GetGrantsRequest.Audience
+  fullName: Auth0.ManagementApi.Models.Grants.GetGrantsRequest.Audience
+  nameWithType: GetGrantsRequest.Audience
+- uid: Auth0.ManagementApi.Models.Grants.GetGrantsRequest.Audience*
+  name: Audience
+  href: api/Auth0.ManagementApi.Models.Grants.GetGrantsRequest.html#Auth0_ManagementApi_Models_Grants_GetGrantsRequest_Audience_
+  commentId: Overload:Auth0.ManagementApi.Models.Grants.GetGrantsRequest.Audience
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Grants.GetGrantsRequest.Audience
+  nameWithType: GetGrantsRequest.Audience
+- uid: Auth0.ManagementApi.Models.Grants.GetGrantsRequest.ClientId
+  name: ClientId
+  href: api/Auth0.ManagementApi.Models.Grants.GetGrantsRequest.html#Auth0_ManagementApi_Models_Grants_GetGrantsRequest_ClientId
+  commentId: P:Auth0.ManagementApi.Models.Grants.GetGrantsRequest.ClientId
+  fullName: Auth0.ManagementApi.Models.Grants.GetGrantsRequest.ClientId
+  nameWithType: GetGrantsRequest.ClientId
+- uid: Auth0.ManagementApi.Models.Grants.GetGrantsRequest.ClientId*
+  name: ClientId
+  href: api/Auth0.ManagementApi.Models.Grants.GetGrantsRequest.html#Auth0_ManagementApi_Models_Grants_GetGrantsRequest_ClientId_
+  commentId: Overload:Auth0.ManagementApi.Models.Grants.GetGrantsRequest.ClientId
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Grants.GetGrantsRequest.ClientId
+  nameWithType: GetGrantsRequest.ClientId
+- uid: Auth0.ManagementApi.Models.Grants.GetGrantsRequest.UserId
+  name: UserId
+  href: api/Auth0.ManagementApi.Models.Grants.GetGrantsRequest.html#Auth0_ManagementApi_Models_Grants_GetGrantsRequest_UserId
+  commentId: P:Auth0.ManagementApi.Models.Grants.GetGrantsRequest.UserId
+  fullName: Auth0.ManagementApi.Models.Grants.GetGrantsRequest.UserId
+  nameWithType: GetGrantsRequest.UserId
+- uid: Auth0.ManagementApi.Models.Grants.GetGrantsRequest.UserId*
+  name: UserId
+  href: api/Auth0.ManagementApi.Models.Grants.GetGrantsRequest.html#Auth0_ManagementApi_Models_Grants_GetGrantsRequest_UserId_
+  commentId: Overload:Auth0.ManagementApi.Models.Grants.GetGrantsRequest.UserId
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Grants.GetGrantsRequest.UserId
+  nameWithType: GetGrantsRequest.UserId
+- uid: Auth0.ManagementApi.Models.Grants.Grant
+  name: Grant
+  href: api/Auth0.ManagementApi.Models.Grants.Grant.html
+  commentId: T:Auth0.ManagementApi.Models.Grants.Grant
+  fullName: Auth0.ManagementApi.Models.Grants.Grant
+  nameWithType: Grant
+- uid: Auth0.ManagementApi.Models.Grants.Grant.Audience
+  name: Audience
+  href: api/Auth0.ManagementApi.Models.Grants.Grant.html#Auth0_ManagementApi_Models_Grants_Grant_Audience
+  commentId: P:Auth0.ManagementApi.Models.Grants.Grant.Audience
+  fullName: Auth0.ManagementApi.Models.Grants.Grant.Audience
+  nameWithType: Grant.Audience
+- uid: Auth0.ManagementApi.Models.Grants.Grant.Audience*
+  name: Audience
+  href: api/Auth0.ManagementApi.Models.Grants.Grant.html#Auth0_ManagementApi_Models_Grants_Grant_Audience_
+  commentId: Overload:Auth0.ManagementApi.Models.Grants.Grant.Audience
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Grants.Grant.Audience
+  nameWithType: Grant.Audience
+- uid: Auth0.ManagementApi.Models.Grants.Grant.ClientId
+  name: ClientId
+  href: api/Auth0.ManagementApi.Models.Grants.Grant.html#Auth0_ManagementApi_Models_Grants_Grant_ClientId
+  commentId: P:Auth0.ManagementApi.Models.Grants.Grant.ClientId
+  fullName: Auth0.ManagementApi.Models.Grants.Grant.ClientId
+  nameWithType: Grant.ClientId
+- uid: Auth0.ManagementApi.Models.Grants.Grant.ClientId*
+  name: ClientId
+  href: api/Auth0.ManagementApi.Models.Grants.Grant.html#Auth0_ManagementApi_Models_Grants_Grant_ClientId_
+  commentId: Overload:Auth0.ManagementApi.Models.Grants.Grant.ClientId
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Grants.Grant.ClientId
+  nameWithType: Grant.ClientId
+- uid: Auth0.ManagementApi.Models.Grants.Grant.Id
+  name: Id
+  href: api/Auth0.ManagementApi.Models.Grants.Grant.html#Auth0_ManagementApi_Models_Grants_Grant_Id
+  commentId: P:Auth0.ManagementApi.Models.Grants.Grant.Id
+  fullName: Auth0.ManagementApi.Models.Grants.Grant.Id
+  nameWithType: Grant.Id
+- uid: Auth0.ManagementApi.Models.Grants.Grant.Id*
+  name: Id
+  href: api/Auth0.ManagementApi.Models.Grants.Grant.html#Auth0_ManagementApi_Models_Grants_Grant_Id_
+  commentId: Overload:Auth0.ManagementApi.Models.Grants.Grant.Id
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Grants.Grant.Id
+  nameWithType: Grant.Id
+- uid: Auth0.ManagementApi.Models.Grants.Grant.Scope
+  name: Scope
+  href: api/Auth0.ManagementApi.Models.Grants.Grant.html#Auth0_ManagementApi_Models_Grants_Grant_Scope
+  commentId: P:Auth0.ManagementApi.Models.Grants.Grant.Scope
+  fullName: Auth0.ManagementApi.Models.Grants.Grant.Scope
+  nameWithType: Grant.Scope
+- uid: Auth0.ManagementApi.Models.Grants.Grant.Scope*
+  name: Scope
+  href: api/Auth0.ManagementApi.Models.Grants.Grant.html#Auth0_ManagementApi_Models_Grants_Grant_Scope_
+  commentId: Overload:Auth0.ManagementApi.Models.Grants.Grant.Scope
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Grants.Grant.Scope
+  nameWithType: Grant.Scope
+- uid: Auth0.ManagementApi.Models.Grants.Grant.UserId
+  name: UserId
+  href: api/Auth0.ManagementApi.Models.Grants.Grant.html#Auth0_ManagementApi_Models_Grants_Grant_UserId
+  commentId: P:Auth0.ManagementApi.Models.Grants.Grant.UserId
+  fullName: Auth0.ManagementApi.Models.Grants.Grant.UserId
+  nameWithType: Grant.UserId
+- uid: Auth0.ManagementApi.Models.Grants.Grant.UserId*
+  name: UserId
+  href: api/Auth0.ManagementApi.Models.Grants.Grant.html#Auth0_ManagementApi_Models_Grants_Grant_UserId_
+  commentId: Overload:Auth0.ManagementApi.Models.Grants.Grant.UserId
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Grants.Grant.UserId
+  nameWithType: Grant.UserId
 - uid: Auth0.ManagementApi.Models.GuardianEnrollment
   name: GuardianEnrollment
   href: api/Auth0.ManagementApi.Models.GuardianEnrollment.html

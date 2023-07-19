@@ -1,5 +1,12 @@
 # Change Log
 
+## [7.22.0](https://github.com/auth0/auth0.net/tree/7.22.0) (2023-07-19)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.21.1...7.22.0)
+
+**Added**
+- Add Grants endpoint [\#633](https://github.com/auth0/auth0.net/pull/633) ([frederikprijck](https://github.com/frederikprijck))
+- Support Organization Name [\#631](https://github.com/auth0/auth0.net/pull/631) ([frederikprijck](https://github.com/frederikprijck))
+
 ## [7.21.1](https://github.com/auth0/auth0.net/tree/7.21.1) (2023-07-03)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.21.0...7.21.1)
 
