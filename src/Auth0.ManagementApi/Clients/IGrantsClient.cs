@@ -8,7 +8,7 @@ namespace Auth0.ManagementApi.Clients
     public interface IGrantsClient
     {
         /// <summary>
-        /// Retrieve all grants.
+        /// Retrieve all Grants.
         /// </summary>
         /// <remarks>
         /// A token with scope read:grants is needed
