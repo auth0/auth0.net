@@ -73,6 +73,11 @@ namespace Auth0.ManagementApi
         public IEmailTemplatesClient EmailTemplates { get; }
 
         /// <summary>
+        /// Contains all the methods to call the /grants endpoints.
+        /// </summary>
+        public IGrantsClient Grants { get; }
+
+        /// <summary>
         /// Contains all the methods to call the /guardian endpoints.
         /// </summary>
         public IGuardianClient Guardian { get; }
@@ -190,6 +195,7 @@ namespace Auth0.ManagementApi
             DeviceCredentials = new DeviceCredentialsClient(managementConnection, baseUri, DefaultHeaders);
             EmailProvider = new EmailProviderClient(managementConnection, baseUri, DefaultHeaders);
             EmailTemplates = new EmailTemplatesClient(managementConnection, baseUri, DefaultHeaders);
+            Grants = new GrantsClient(managementConnection, baseUri, DefaultHeaders);
             Guardian = new GuardianClient(managementConnection, baseUri, DefaultHeaders);
             Hooks = new HooksClient(managementConnection, baseUri, DefaultHeaders);
             Jobs = new JobsClient(managementConnection, baseUri, DefaultHeaders);
