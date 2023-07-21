@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace Auth0.AuthenticationApi.Models
 {
     /// <summary>
@@ -5,5 +7,10 @@ namespace Auth0.AuthenticationApi.Models
     /// </summary>
     public class ChangePasswordRequest : UserMaintenanceRequestBase
     {
+        /// <summary>
+        /// The organization of the user.
+        /// </summary>
+        [JsonProperty("organization")]
+        public string Organization { get; set; }
     }
 }
