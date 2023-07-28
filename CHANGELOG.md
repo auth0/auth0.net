@@ -1,5 +1,14 @@
 # Change Log
 
+## [7.22.1](https://github.com/auth0/auth0.net/tree/7.22.1) (2023-07-28)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.22.0...7.22.1)
+
+**Changed**
+- Add Name to Org Update Request [\#639](https://github.com/auth0/auth0.net/pull/639) ([amummaprojectmanager](https://github.com/amummaprojectmanager))
+
+**Fixed**
+- Add post_login_prompt to OrganizationRequireBehavior [\#637](https://github.com/auth0/auth0.net/pull/637) ([frederikprijck](https://github.com/frederikprijck))
+
 ## [7.22.0](https://github.com/auth0/auth0.net/tree/7.22.0) (2023-07-19)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.21.1...7.22.0)
 
