@@ -73,7 +73,7 @@
   
   <h1 id="Auth0_ManagementApi_HttpClientManagementConnection" data-uid="Auth0.ManagementApi.HttpClientManagementConnection" class="text-break">Class HttpClientManagementConnection
   </h1>
-  <div class="markdown level0 summary"><p>Implements <a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a> using <span class="xref">System.Net.Http.HttpClient</span>.</p>
+  <div class="markdown level0 summary"><p>Implements <a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a> using <see cref="!:HttpClient"></see>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -84,42 +84,18 @@
   <div class="implements">
     <h5>Implements</h5>
     <div><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a></div>
-    <div><span class="xref">System.IDisposable</span></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
+    <div><span class="xref">IDisposable</span></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.html">Auth0.ManagementApi</a></h6>
   <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_HttpClientManagementConnection_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class HttpClientManagementConnection : IManagementConnection, IDisposable</code></pre>
+    <pre><code class="lang-csharp hljs">public class HttpClientManagementConnection : object, IManagementConnection</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   <a id="Auth0_ManagementApi_HttpClientManagementConnection__ctor_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_HttpClientManagementConnection__ctor_System_Net_Http_HttpClient_Auth0_ManagementApi_HttpClientManagementConnectionOptions_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.#ctor(System.Net.Http.HttpClient,Auth0.ManagementApi.HttpClientManagementConnectionOptions)">HttpClientManagementConnection(HttpClient, HttpClientManagementConnectionOptions)</h4>
+  <h4 id="Auth0_ManagementApi_HttpClientManagementConnection__ctor_HttpClient_Auth0_ManagementApi_HttpClientManagementConnectionOptions_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.#ctor(HttpClient,Auth0.ManagementApi.HttpClientManagementConnectionOptions)">HttpClientManagementConnection(HttpClient, HttpClientManagementConnectionOptions)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.HttpClientManagementConnection.html">HttpClientManagementConnection</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -138,9 +114,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Net.Http.HttpClient</span></td>
+        <td><span class="xref">HttpClient</span></td>
         <td><span class="parametername">httpClient</span></td>
-        <td><p>Optional <span class="xref">System.Net.Http.HttpClient</span> to use. If not specified one will
+        <td><p>Optional <see cref="!:HttpClient"></see> to use. If not specified one will
 be created and be used for all requests made by this instance.</p>
 </td>
       </tr>
@@ -153,7 +129,7 @@ be created and be used for all requests made by this instance.</p>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_HttpClientManagementConnection__ctor_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_HttpClientManagementConnection__ctor_System_Net_Http_HttpMessageHandler_Auth0_ManagementApi_HttpClientManagementConnectionOptions_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.#ctor(System.Net.Http.HttpMessageHandler,Auth0.ManagementApi.HttpClientManagementConnectionOptions)">HttpClientManagementConnection(HttpMessageHandler, HttpClientManagementConnectionOptions)</h4>
+  <h4 id="Auth0_ManagementApi_HttpClientManagementConnection__ctor_HttpMessageHandler_Auth0_ManagementApi_HttpClientManagementConnectionOptions_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.#ctor(HttpMessageHandler,Auth0.ManagementApi.HttpClientManagementConnectionOptions)">HttpClientManagementConnection(HttpMessageHandler, HttpClientManagementConnectionOptions)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.HttpClientManagementConnection.html">HttpClientManagementConnection</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -172,10 +148,10 @@ be created and be used for all requests made by this instance.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Net.Http.HttpMessageHandler</span></td>
+        <td><span class="xref">HttpMessageHandler</span></td>
         <td><span class="parametername">handler</span></td>
-        <td><p><span class="xref">System.Net.Http.HttpMessageHandler</span> to use with the managed 
-<span class="xref">System.Net.Http.HttpClient</span> that will be created and used for all requests made
+        <td><p><see cref="!:HttpMessageHandler"></see> to use with the managed 
+<see cref="!:HttpClient"></see> that will be created and used for all requests made
 by this instance.</p>
 </td>
       </tr>
@@ -191,7 +167,7 @@ by this instance.</p>
   </h3>
   <a id="Auth0_ManagementApi_HttpClientManagementConnection_Dispose_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.Dispose*"></a>
   <h4 id="Auth0_ManagementApi_HttpClientManagementConnection_Dispose" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.Dispose">Dispose()</h4>
-  <div class="markdown level1 summary"><p>Disposes of any owned disposable resources such as the underlying <span class="xref">System.Net.Http.HttpClient</span> if owned.</p>
+  <div class="markdown level1 summary"><p>Disposes of any owned disposable resources such as the underlying <see cref="!:HttpClient"></see> if owned.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -200,7 +176,7 @@ by this instance.</p>
   </div>
   <a id="Auth0_ManagementApi_HttpClientManagementConnection_Dispose_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.Dispose*"></a>
   <h4 id="Auth0_ManagementApi_HttpClientManagementConnection_Dispose_System_Boolean_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.Dispose(System.Boolean)">Dispose(Boolean)</h4>
-  <div class="markdown level1 summary"><p>Disposes of any owned disposable resources such as the underlying <span class="xref">System.Net.Http.HttpClient</span> if owned.</p>
+  <div class="markdown level1 summary"><p>Disposes of any owned disposable resources such as the underlying <see cref="!:HttpClient"></see> if owned.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -226,13 +202,13 @@ by this instance.</p>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_HttpClientManagementConnection_GetAsync_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_HttpClientManagementConnection_GetAsync__1_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__JsonConverter___System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},JsonConverter[],System.Threading.CancellationToken)">GetAsync&lt;T&gt;(Uri, IDictionary&lt;String, String&gt;, JsonConverter[], CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Perform a HTTP GET operation against a given <span class="xref">System.Uri</span> and return the materialized response body as <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
+  <h4 id="Auth0_ManagementApi_HttpClientManagementConnection_GetAsync__1_Uri_IDictionary_System_String_System_String__JsonConverter___CancellationToken_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.GetAsync``1(Uri,IDictionary{System.String,System.String},JsonConverter[],CancellationToken)">GetAsync&lt;T&gt;(Uri, IDictionary&lt;String, String&gt;, JsonConverter[], CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Perform a HTTP GET operation against a given <see cref="!:Uri"></see> and return the materialized response body as <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;T&gt; GetAsync&lt;T&gt;(Uri uri, IDictionary&lt;string, string&gt; headers, JsonConverter[] converters = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;T&gt; GetAsync&lt;T&gt;(Uri uri, IDictionary&lt;string, string&gt; headers, JsonConverter[] converters = null, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -245,13 +221,13 @@ by this instance.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Uri</span></td>
+        <td><span class="xref">Uri</span></td>
         <td><span class="parametername">uri</span></td>
-        <td><p><span class="xref">System.Uri</span> to perform the GET request against.</p>
+        <td><p><see cref="!:Uri"></see> to perform the GET request against.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">headers</span></td>
         <td><p>Dictionary containing additional headers that may override the defaults.</p>
 </td>
@@ -263,7 +239,7 @@ by this instance.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -280,8 +256,8 @@ by this instance.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
-        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing response body as <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
+        <td><span class="xref">Task</span>&lt;T&gt;</td>
+        <td><p><see cref="!:Task"></see> representing the async operation containing response body as <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
 </td>
       </tr>
     </tbody>
@@ -303,13 +279,13 @@ by this instance.</p>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_HttpClientManagementConnection_SendAsync_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.SendAsync*"></a>
-  <h4 id="Auth0_ManagementApi_HttpClientManagementConnection_SendAsync__1_System_Net_Http_HttpMethod_System_Uri_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IList_Auth0_ManagementApi_FileUploadParameter__JsonConverter___System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.SendAsync``1(System.Net.Http.HttpMethod,System.Uri,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IList{Auth0.ManagementApi.FileUploadParameter},JsonConverter[],System.Threading.CancellationToken)">SendAsync&lt;T&gt;(HttpMethod, Uri, Object, IDictionary&lt;String, String&gt;, IList&lt;FileUploadParameter&gt;, JsonConverter[], CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Perform a HTTP operation against a given <span class="xref">System.Uri</span> and return any materialized response body as <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
+  <h4 id="Auth0_ManagementApi_HttpClientManagementConnection_SendAsync__1_HttpMethod_Uri_System_Object_IDictionary_System_String_System_String__IList_Auth0_ManagementApi_FileUploadParameter__JsonConverter___CancellationToken_" data-uid="Auth0.ManagementApi.HttpClientManagementConnection.SendAsync``1(HttpMethod,Uri,System.Object,IDictionary{System.String,System.String},IList{Auth0.ManagementApi.FileUploadParameter},JsonConverter[],CancellationToken)">SendAsync&lt;T&gt;(HttpMethod, Uri, Object, IDictionary&lt;String, String&gt;, IList&lt;FileUploadParameter&gt;, JsonConverter[], CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Perform a HTTP operation against a given <see cref="!:Uri"></see> and return any materialized response body as <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task&lt;T&gt; SendAsync&lt;T&gt;(HttpMethod method, Uri uri, object body, IDictionary&lt;string, string&gt; headers, IList&lt;FileUploadParameter&gt; files = null, JsonConverter[] converters = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task&lt;T&gt; SendAsync&lt;T&gt;(HttpMethod method, Uri uri, object body, IDictionary&lt;string, string&gt; headers, IList&lt;FileUploadParameter&gt; files = null, JsonConverter[] converters = null, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -322,35 +298,35 @@ by this instance.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Net.Http.HttpMethod</span></td>
+        <td><span class="xref">HttpMethod</span></td>
         <td><span class="parametername">method</span></td>
-        <td><p><span class="xref">System.Net.Http.HttpMethod</span> to use in performing the request.</p>
+        <td><p><see cref="!:HttpMethod"></see> to use in performing the request.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Uri</span></td>
+        <td><span class="xref">Uri</span></td>
         <td><span class="parametername">uri</span></td>
-        <td><p><span class="xref">System.Uri</span> to perform the request against.</p>
+        <td><p><see cref="!:Uri"></see> to perform the request against.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">body</span></td>
         <td><p>Payload to send to the server.
-If specified as a Dictionary&lt;string, string&gt; then <span class="xref">System.Net.Http.FormUrlEncodedContent</span> is expected,
-otherwise <span class="xref">System.Net.Http.StringContent</span> containing the JSON representation of the object is expected.</p>
+If specified as a Dictionary&lt;string, string&gt; then <see cref="!:FormUrlEncodedContent"></see> is expected,
+otherwise <see cref="!:StringContent"></see> containing the JSON representation of the object is expected.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">headers</span></td>
         <td><p>Dictionary containing additional headers that may override the defaults.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="Auth0.ManagementApi.FileUploadParameter.html">FileUploadParameter</a>&gt;</td>
+        <td><span class="xref">IList</span>&lt;<a class="xref" href="Auth0.ManagementApi.FileUploadParameter.html">FileUploadParameter</a>&gt;</td>
         <td><span class="parametername">files</span></td>
-        <td><p>Optional <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span> containing file contents to upload as a <span class="xref">System.Net.Http.MultipartFormDataContent</span> post.</p>
+        <td><p>Optional <see cref="!:IList&lt;FileUploadParameter>"></see> containing file contents to upload as a <see cref="!:MultipartFormDataContent"></see> post.</p>
 </td>
       </tr>
       <tr>
@@ -360,7 +336,7 @@ otherwise <span class="xref">System.Net.Http.StringContent</span> containing the
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -377,8 +353,8 @@ otherwise <span class="xref">System.Net.Http.StringContent</span> containing the
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
-        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing response body as <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
+        <td><span class="xref">Task</span>&lt;T&gt;</td>
+        <td><p><see cref="!:Task"></see> representing the async operation containing response body as <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
 </td>
       </tr>
     </tbody>
@@ -399,7 +375,7 @@ otherwise <span class="xref">System.Net.Http.StringContent</span> containing the
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_HttpClientManagementConnection_SendAsync__1_System_Net_Http_HttpMethod_System_Uri_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IList_Auth0_ManagementApi_FileUploadParameter__JsonConverter___System_Threading_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Auth0_ManagementApi_HttpClientManagementConnection_SendAsync__1_HttpMethod_Uri_System_Object_IDictionary_System_String_System_String__IList_Auth0_ManagementApi_FileUploadParameter__JsonConverter___CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p><code data-dev-comment-type="paramref" class="paramref">files</code> can only be specified if <code data-dev-comment-type="paramref" class="paramref">body</code> is a Dictionary%lt;string, object%gt;&quot;/&gt;.</p>
 </div>
   <h3 id="implements">Implements</h3>
@@ -407,7 +383,7 @@ otherwise <span class="xref">System.Net.Http.StringContent</span> containing the
       <a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a>
   </div>
   <div>
-      <span class="xref">System.IDisposable</span>
+      <span class="xref">IDisposable</span>
   </div>
 </article>
           </div>
