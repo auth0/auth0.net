@@ -14,9 +14,16 @@ namespace Auth0.ManagementApi.Models
         NoPrompt,
 
         /// <summary>
-        /// Prompt for an organization
+        /// Prompt for an organization before login
         /// </summary>
         [EnumMember(Value = "pre_login_prompt")]
         PreLoginPrompt,
+
+
+        /// <summary>
+        /// Prompt for an organization after login
+        /// </summary>
+        [EnumMember(Value = "post_login_prompt")]
+        PostLoginPrompt,
     }
 }

@@ -14,6 +14,11 @@ namespace Auth0.ManagementApi.Models
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }
         /// <summary>
+        /// The name of this organization
+        /// </summary>
+        [JsonProperty("name")]
+        public string Name { get; set; }
+        /// <summary>
         /// Organization specific branding settings
         /// </summary>
         [JsonProperty("branding")]
