@@ -76,11 +76,17 @@
   <div class="markdown level0 summary"><p>Client for communicating with the Auth0 Authentication API.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.IDisposable.Dispose()</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.AuthenticationApi.html">Auth0.AuthenticationApi</a></h6>
   <h6><strong>Assembly</strong>: Auth0.AuthenticationApi.dll</h6>
   <h5 id="Auth0_AuthenticationApi_IAuthenticationApiClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IAuthenticationApiClient</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IAuthenticationApiClient : IDisposable</code></pre>
   </div>
   <h5 id="Auth0_AuthenticationApi_IAuthenticationApiClient_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>Full documentation for the Authentication API is available at <a href="https://auth0.com/docs/auth-api">https://auth0.com/docs/auth-api</a></p>
@@ -106,7 +112,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Uri</span></td>
+        <td><span class="xref">System.Uri</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -114,13 +120,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_ChangePasswordAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.ChangePasswordAsync*"></a>
-  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_ChangePasswordAsync_Auth0_AuthenticationApi_Models_ChangePasswordRequest_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.ChangePasswordAsync(Auth0.AuthenticationApi.Models.ChangePasswordRequest,CancellationToken)">ChangePasswordAsync(ChangePasswordRequest, CancellationToken)</h4>
+  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_ChangePasswordAsync_Auth0_AuthenticationApi_Models_ChangePasswordRequest_System_Threading_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.ChangePasswordAsync(Auth0.AuthenticationApi.Models.ChangePasswordRequest,System.Threading.CancellationToken)">ChangePasswordAsync(ChangePasswordRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Requests a password change email for a given email address and connection.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;string&gt; ChangePasswordAsync(ChangePasswordRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;string&gt; ChangePasswordAsync(ChangePasswordRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -139,7 +145,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -156,20 +162,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">System.String</span>&gt;</td>
-        <td><p><see cref="!:Task"></see> representing the async operation containing either the JSON error response or the plain text success message response.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing either the JSON error response or the plain text success message response.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetImpersonationUrlAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetImpersonationUrlAsync*"></a>
-  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetImpersonationUrlAsync_Auth0_AuthenticationApi_Models_ImpersonationRequest_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetImpersonationUrlAsync(Auth0.AuthenticationApi.Models.ImpersonationRequest,CancellationToken)">GetImpersonationUrlAsync(ImpersonationRequest, CancellationToken)</h4>
+  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetImpersonationUrlAsync_Auth0_AuthenticationApi_Models_ImpersonationRequest_System_Threading_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetImpersonationUrlAsync(Auth0.AuthenticationApi.Models.ImpersonationRequest,System.Threading.CancellationToken)">GetImpersonationUrlAsync(ImpersonationRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Obtains a one-time link that can be used to log in as a specific user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;Uri&gt; GetImpersonationUrlAsync(ImpersonationRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;Uri&gt; GetImpersonationUrlAsync(ImpersonationRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -188,7 +194,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -205,23 +211,23 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">Uri</span>&gt;</td>
-        <td><p><see cref="!:Task"></see> which can be used to sign in as the specified user.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Uri</span>&gt;</td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> which can be used to sign in as the specified user.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetImpersonationUrlAsync_Auth0_AuthenticationApi_Models_ImpersonationRequest_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetImpersonationUrlAsync_Auth0_AuthenticationApi_Models_ImpersonationRequest_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>This feature has been deprecated and will be removed from Auth0 and this library in a future release.</p>
 </div>
   <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync*"></a>
-  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_AuthorizationCodePkceTokenRequest_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.AuthorizationCodePkceTokenRequest,CancellationToken)">GetTokenAsync(AuthorizationCodePkceTokenRequest, CancellationToken)</h4>
+  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_AuthorizationCodePkceTokenRequest_System_Threading_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.AuthorizationCodePkceTokenRequest,System.Threading.CancellationToken)">GetTokenAsync(AuthorizationCodePkceTokenRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Exchanges an Authorization Code using PKCE for an Access Token.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; GetTokenAsync(AuthorizationCodePkceTokenRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; GetTokenAsync(AuthorizationCodePkceTokenRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -240,7 +246,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -257,21 +263,21 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
-        <td><p><see cref="!:Task"></see> representing the async operation containing 
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing 
     a <a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a> with the requested tokens.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync*"></a>
-  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_AuthorizationCodeTokenRequest_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest,CancellationToken)">GetTokenAsync(AuthorizationCodeTokenRequest, CancellationToken)</h4>
+  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_AuthorizationCodeTokenRequest_System_Threading_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.AuthorizationCodeTokenRequest,System.Threading.CancellationToken)">GetTokenAsync(AuthorizationCodeTokenRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Exchanges an Authorization Code for an Access Token.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; GetTokenAsync(AuthorizationCodeTokenRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; GetTokenAsync(AuthorizationCodeTokenRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -290,7 +296,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -307,21 +313,21 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
-        <td><p><see cref="!:Task"></see> representing the async operation containing 
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing 
     a <a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a> with the requested tokens.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync*"></a>
-  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_ClientCredentialsTokenRequest_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest,CancellationToken)">GetTokenAsync(ClientCredentialsTokenRequest, CancellationToken)</h4>
+  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_ClientCredentialsTokenRequest_System_Threading_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ClientCredentialsTokenRequest,System.Threading.CancellationToken)">GetTokenAsync(ClientCredentialsTokenRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Requests an Access Token using the Client Credentials Grant flow.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; GetTokenAsync(ClientCredentialsTokenRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; GetTokenAsync(ClientCredentialsTokenRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -341,7 +347,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -358,21 +364,21 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
-        <td><p><see cref="!:Task"></see> representing the async operation containing 
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing 
     a <a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a> with the requested tokens.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync*"></a>
-  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_DeviceCodeTokenRequest_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest,CancellationToken)">GetTokenAsync(DeviceCodeTokenRequest, CancellationToken)</h4>
+  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_DeviceCodeTokenRequest_System_Threading_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.DeviceCodeTokenRequest,System.Threading.CancellationToken)">GetTokenAsync(DeviceCodeTokenRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Requests an Access Token using the Device Authorization flow</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; GetTokenAsync(DeviceCodeTokenRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; GetTokenAsync(DeviceCodeTokenRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -391,7 +397,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -408,24 +414,24 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
-        <td><p><see cref="!:Task"></see> representing the async operation containing 
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing 
     a <a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a> with the requested tokens.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_DeviceCodeTokenRequest_CancellationToken__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>This must be polled while the user is completing their part of the flow at an interval no more frequent than that returned by <a class="xref" href="Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_StartDeviceFlowAsync_Auth0_AuthenticationApi_Models_DeviceCodeRequest_CancellationToken_">StartDeviceFlowAsync(DeviceCodeRequest, CancellationToken)</a>.</p>
+  <h5 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_DeviceCodeTokenRequest_System_Threading_CancellationToken__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>This must be polled while the user is completing their part of the flow at an interval no more frequent than that returned by <a class="xref" href="Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_StartDeviceFlowAsync_Auth0_AuthenticationApi_Models_DeviceCodeRequest_System_Threading_CancellationToken_">StartDeviceFlowAsync(DeviceCodeRequest, CancellationToken)</a>.</p>
 </div>
   <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync*"></a>
-  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_PasswordlessEmailTokenRequest_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest,CancellationToken)">GetTokenAsync(PasswordlessEmailTokenRequest, CancellationToken)</h4>
+  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_PasswordlessEmailTokenRequest_System_Threading_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailTokenRequest,System.Threading.CancellationToken)">GetTokenAsync(PasswordlessEmailTokenRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Requests an Access Token using the Passwordless flow through email.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; GetTokenAsync(PasswordlessEmailTokenRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; GetTokenAsync(PasswordlessEmailTokenRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -444,7 +450,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -461,21 +467,21 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
-        <td><p><see cref="!:Task"></see> representing the async operation containing 
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing 
     a <a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a> with the requested tokens.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync*"></a>
-  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_PasswordlessSmsTokenRequest_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest,CancellationToken)">GetTokenAsync(PasswordlessSmsTokenRequest, CancellationToken)</h4>
+  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_PasswordlessSmsTokenRequest_System_Threading_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.PasswordlessSmsTokenRequest,System.Threading.CancellationToken)">GetTokenAsync(PasswordlessSmsTokenRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Requests an Access Token using the Passwordless flow through SMS.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; GetTokenAsync(PasswordlessSmsTokenRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; GetTokenAsync(PasswordlessSmsTokenRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -494,7 +500,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -511,21 +517,21 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
-        <td><p><see cref="!:Task"></see> representing the async operation containing 
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing 
     a <a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a> with the requested tokens.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync*"></a>
-  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_RefreshTokenRequest_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.RefreshTokenRequest,CancellationToken)">GetTokenAsync(RefreshTokenRequest, CancellationToken)</h4>
+  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_RefreshTokenRequest_System_Threading_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.RefreshTokenRequest,System.Threading.CancellationToken)">GetTokenAsync(RefreshTokenRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Refreshes all tokens by way of the the Refresh Token obtained during authorization.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; GetTokenAsync(RefreshTokenRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; GetTokenAsync(RefreshTokenRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -544,7 +550,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -561,21 +567,21 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
-        <td><p><see cref="!:Task"></see> representing the async operation containing 
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing 
     a <a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a> with the requested tokens.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync*"></a>
-  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest,CancellationToken)">GetTokenAsync(ResourceOwnerTokenRequest, CancellationToken)</h4>
+  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_System_Threading_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetTokenAsync(Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest,System.Threading.CancellationToken)">GetTokenAsync(ResourceOwnerTokenRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Performs authentication by providing user-supplied information in a <a class="xref" href="Auth0.AuthenticationApi.Models.ResourceOwnerTokenRequest.html">ResourceOwnerTokenRequest</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; GetTokenAsync(ResourceOwnerTokenRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;AccessTokenResponse&gt; GetTokenAsync(ResourceOwnerTokenRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -594,7 +600,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -611,25 +617,25 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
-        <td><p><see cref="!:Task"></see> representing the async operation containing 
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a>&gt;</td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing 
     a <a class="xref" href="Auth0.AuthenticationApi.Models.AccessTokenResponse.html">AccessTokenResponse</a> with the requested tokens.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetTokenAsync_Auth0_AuthenticationApi_Models_ResourceOwnerTokenRequest_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>The grant_type parameter required by the /oauth/token endpoint will automatically be inferred from the <code data-dev-comment-type="paramref" class="paramref">request</code> parameter. If no Realm was specified,
 then the grant_type will be set to &quot;password&quot;. If a Realm was specified, then the grant_type will be set to &quot;<a href="http://auth0.com/oauth/grant-type/password-realm&amp;quot">http://auth0.com/oauth/grant-type/password-realm&quot</a>;</p>
 </div>
   <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetUserInfoAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetUserInfoAsync*"></a>
-  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetUserInfoAsync_System_String_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetUserInfoAsync(System.String,CancellationToken)">GetUserInfoAsync(String, CancellationToken)</h4>
+  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetUserInfoAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.GetUserInfoAsync(System.String,System.Threading.CancellationToken)">GetUserInfoAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Returns user information based on the access token that was obtained during login.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;UserInfo&gt; GetUserInfoAsync(string accessToken, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;UserInfo&gt; GetUserInfoAsync(string accessToken, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -648,7 +654,7 @@ then the grant_type will be set to &quot;password&quot;. If a Realm was specifie
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -665,24 +671,24 @@ then the grant_type will be set to &quot;password&quot;. If a Realm was specifie
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.UserInfo.html">UserInfo</a>&gt;</td>
-        <td><p><see cref="!:Task"></see> representing the async operation containing the
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.UserInfo.html">UserInfo</a>&gt;</td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing the
 <a class="xref" href="Auth0.AuthenticationApi.Models.UserInfo.html">UserInfo</a> requested..</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetUserInfoAsync_System_String_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Auth0_AuthenticationApi_IAuthenticationApiClient_GetUserInfoAsync_System_String_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Information included in the response depends on the scopes initially granted.</p>
 </div>
   <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_RevokeRefreshTokenAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.RevokeRefreshTokenAsync*"></a>
-  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_RevokeRefreshTokenAsync_Auth0_AuthenticationApi_Models_RevokeRefreshTokenRequest_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.RevokeRefreshTokenAsync(Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest,CancellationToken)">RevokeRefreshTokenAsync(RevokeRefreshTokenRequest, CancellationToken)</h4>
+  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_RevokeRefreshTokenAsync_Auth0_AuthenticationApi_Models_RevokeRefreshTokenRequest_System_Threading_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.RevokeRefreshTokenAsync(Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest,System.Threading.CancellationToken)">RevokeRefreshTokenAsync(RevokeRefreshTokenRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Revokes refresh token provided in request.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task RevokeRefreshTokenAsync(RevokeRefreshTokenRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task RevokeRefreshTokenAsync(RevokeRefreshTokenRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -701,7 +707,7 @@ then the grant_type will be set to &quot;password&quot;. If a Realm was specifie
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -718,20 +724,20 @@ then the grant_type will be set to &quot;password&quot;. If a Realm was specifie
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
-        <td><p><see cref="!:Task"></see> representing the async operation.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_SignupUserAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.SignupUserAsync*"></a>
-  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_SignupUserAsync_Auth0_AuthenticationApi_Models_SignupUserRequest_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.SignupUserAsync(Auth0.AuthenticationApi.Models.SignupUserRequest,CancellationToken)">SignupUserAsync(SignupUserRequest, CancellationToken)</h4>
+  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_SignupUserAsync_Auth0_AuthenticationApi_Models_SignupUserRequest_System_Threading_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.SignupUserAsync(Auth0.AuthenticationApi.Models.SignupUserRequest,System.Threading.CancellationToken)">SignupUserAsync(SignupUserRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Creates a new user given the user details specified.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;SignupUserResponse&gt; SignupUserAsync(SignupUserRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;SignupUserResponse&gt; SignupUserAsync(SignupUserRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -750,7 +756,7 @@ then the grant_type will be set to &quot;password&quot;. If a Realm was specifie
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -767,21 +773,21 @@ then the grant_type will be set to &quot;password&quot;. If a Realm was specifie
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.SignupUserResponse.html">SignupUserResponse</a>&gt;</td>
-        <td><p><see cref="!:Task"></see> representing the async operation containing 
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.SignupUserResponse.html">SignupUserResponse</a>&gt;</td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing 
     a <a class="xref" href="Auth0.AuthenticationApi.Models.SignupUserResponse.html">SignupUserResponse</a> with the information of the signed up user.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_StartDeviceFlowAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.StartDeviceFlowAsync*"></a>
-  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_StartDeviceFlowAsync_Auth0_AuthenticationApi_Models_DeviceCodeRequest_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.StartDeviceFlowAsync(Auth0.AuthenticationApi.Models.DeviceCodeRequest,CancellationToken)">StartDeviceFlowAsync(DeviceCodeRequest, CancellationToken)</h4>
+  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_StartDeviceFlowAsync_Auth0_AuthenticationApi_Models_DeviceCodeRequest_System_Threading_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.StartDeviceFlowAsync(Auth0.AuthenticationApi.Models.DeviceCodeRequest,System.Threading.CancellationToken)">StartDeviceFlowAsync(DeviceCodeRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Starts a new Device Authorization flow</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;DeviceCodeResponse&gt; StartDeviceFlowAsync(DeviceCodeRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;DeviceCodeResponse&gt; StartDeviceFlowAsync(DeviceCodeRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -800,7 +806,7 @@ then the grant_type will be set to &quot;password&quot;. If a Realm was specifie
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -817,21 +823,21 @@ then the grant_type will be set to &quot;password&quot;. If a Realm was specifie
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.DeviceCodeResponse.html">DeviceCodeResponse</a>&gt;</td>
-        <td><p><see cref="!:Task"></see> representing the async operation containing 
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.DeviceCodeResponse.html">DeviceCodeResponse</a>&gt;</td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing 
     a <a class="xref" href="Auth0.AuthenticationApi.Models.DeviceCodeResponse.html">DeviceCodeResponse</a> with the details of the request.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_StartPasswordlessEmailFlowAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessEmailFlowAsync*"></a>
-  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_StartPasswordlessEmailFlowAsync_Auth0_AuthenticationApi_Models_PasswordlessEmailRequest_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessEmailFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailRequest,CancellationToken)">StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest, CancellationToken)</h4>
+  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_StartPasswordlessEmailFlowAsync_Auth0_AuthenticationApi_Models_PasswordlessEmailRequest_System_Threading_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessEmailFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessEmailRequest,System.Threading.CancellationToken)">StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Starts a new Passwordless email flow.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;PasswordlessEmailResponse&gt; StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;PasswordlessEmailResponse&gt; StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -850,7 +856,7 @@ then the grant_type will be set to &quot;password&quot;. If a Realm was specifie
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -867,21 +873,21 @@ then the grant_type will be set to &quot;password&quot;. If a Realm was specifie
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessEmailResponse.html">PasswordlessEmailResponse</a>&gt;</td>
-        <td><p><see cref="!:Task"></see> representing the async operation containing 
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessEmailResponse.html">PasswordlessEmailResponse</a>&gt;</td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing 
     a <a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessEmailResponse.html">PasswordlessEmailResponse</a> with the information of the signed up user.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_AuthenticationApi_IAuthenticationApiClient_StartPasswordlessSmsFlowAsync_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessSmsFlowAsync*"></a>
-  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_StartPasswordlessSmsFlowAsync_Auth0_AuthenticationApi_Models_PasswordlessSmsRequest_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessSmsFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessSmsRequest,CancellationToken)">StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest, CancellationToken)</h4>
+  <h4 id="Auth0_AuthenticationApi_IAuthenticationApiClient_StartPasswordlessSmsFlowAsync_Auth0_AuthenticationApi_Models_PasswordlessSmsRequest_System_Threading_CancellationToken_" data-uid="Auth0.AuthenticationApi.IAuthenticationApiClient.StartPasswordlessSmsFlowAsync(Auth0.AuthenticationApi.Models.PasswordlessSmsRequest,System.Threading.CancellationToken)">StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Starts a new Passwordless SMS flow.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;PasswordlessSmsResponse&gt; StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;PasswordlessSmsResponse&gt; StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -900,7 +906,7 @@ then the grant_type will be set to &quot;password&quot;. If a Realm was specifie
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -917,8 +923,8 @@ then the grant_type will be set to &quot;password&quot;. If a Realm was specifie
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessSmsResponse.html">PasswordlessSmsResponse</a>&gt;</td>
-        <td><p><see cref="!:Task"></see> representing the async operation containing 
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessSmsResponse.html">PasswordlessSmsResponse</a>&gt;</td>
+        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing 
     a <a class="xref" href="Auth0.AuthenticationApi.Models.PasswordlessSmsResponse.html">PasswordlessSmsResponse</a> with the details of the request.</p>
 </td>
       </tr>

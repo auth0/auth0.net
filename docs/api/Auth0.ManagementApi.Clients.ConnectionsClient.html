@@ -98,10 +98,31 @@
       <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_DefaultHeaders">BaseClient.DefaultHeaders</a>
     </div>
     <div>
-      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BuildUri_System_String_IDictionary_System_String_System_String__">BaseClient.BuildUri(String, IDictionary&lt;String, String&gt;)</a>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BuildUri_System_String_System_Collections_Generic_IDictionary_System_String_System_String__">BaseClient.BuildUri(String, IDictionary&lt;String, String&gt;)</a>
     </div>
     <div>
       <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_EncodePath_System_String_">BaseClient.EncodePath(String)</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Clients.html">Auth0.ManagementApi.Clients</a></h6>
@@ -113,7 +134,7 @@
   <h3 id="constructors">Constructors
   </h3>
   <a id="Auth0_ManagementApi_Clients_ConnectionsClient__ctor_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient__ctor_Auth0_ManagementApi_IManagementConnection_Uri_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.#ctor(Auth0.ManagementApi.IManagementConnection,Uri,IDictionary{System.String,System.String})">ConnectionsClient(IManagementConnection, Uri, IDictionary&lt;String, String&gt;)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})">ConnectionsClient(IManagementConnection, Uri, IDictionary&lt;String, String&gt;)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.Clients.ConnectionsClient.html">ConnectionsClient</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -138,13 +159,13 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Uri</span></td>
+        <td><span class="xref">System.Uri</span></td>
         <td><span class="parametername">baseUri</span></td>
-        <td><p><see cref="!:Uri"></see> of the endpoint to use in making API calls.</p>
+        <td><p><span class="xref">System.Uri</span> of the endpoint to use in making API calls.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">defaultHeaders</span></td>
         <td><p>Dictionary containing default headers included with every request this client makes.</p>
 </td>
@@ -154,13 +175,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_ConnectionsClient_CheckStatusAsync_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.CheckStatusAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_CheckStatusAsync_System_String_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.CheckStatusAsync(System.String,CancellationToken)">CheckStatusAsync(String, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_CheckStatusAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.CheckStatusAsync(System.String,System.Threading.CancellationToken)">CheckStatusAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves the status of an ad/ldap connection.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task CheckStatusAsync(string id, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task CheckStatusAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -179,7 +200,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -196,20 +217,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
-        <td><p>A <see cref="!:Task"></see> that represents the asynchronous check operation. Will throw if the check fails.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous check operation. Will throw if the check fails.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_ConnectionsClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.CreateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_CreateAsync_Auth0_ManagementApi_Models_ConnectionCreateRequest_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.CreateAsync(Auth0.ManagementApi.Models.ConnectionCreateRequest,CancellationToken)">CreateAsync(ConnectionCreateRequest, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_CreateAsync_Auth0_ManagementApi_Models_ConnectionCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.CreateAsync(Auth0.ManagementApi.Models.ConnectionCreateRequest,System.Threading.CancellationToken)">CreateAsync(ConnectionCreateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Creates a new connection according to the request.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;Connection&gt; CreateAsync(ConnectionCreateRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;Connection&gt; CreateAsync(ConnectionCreateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -228,7 +249,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -245,20 +266,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Connection.html">Connection</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Connection.html">Connection</a>&gt;</td>
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.Connection.html">Connection</a> containing the newly created Connection.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_ConnectionsClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.DeleteAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_DeleteAsync_System_String_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.DeleteAsync(System.String,CancellationToken)">DeleteAsync(String, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_DeleteAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.DeleteAsync(System.String,System.Threading.CancellationToken)">DeleteAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Deletes a connection and all its users.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task DeleteAsync(string id, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task DeleteAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -277,7 +298,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -294,20 +315,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
-        <td><p>A <see cref="!:Task"></see> that represents the asynchronous delete operation.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous delete operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_ConnectionsClient_DeleteUserAsync_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.DeleteUserAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_DeleteUserAsync_System_String_System_String_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.DeleteUserAsync(System.String,System.String,CancellationToken)">DeleteUserAsync(String, String, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_DeleteUserAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.DeleteUserAsync(System.String,System.String,System.Threading.CancellationToken)">DeleteUserAsync(String, String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Deletes a specified connection user by its <code data-dev-comment-type="paramref" class="paramref">email</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task DeleteUserAsync(string id, string email, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task DeleteUserAsync(string id, string email, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -332,7 +353,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -349,23 +370,23 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
-        <td><p>A <see cref="!:Task"></see> that represents the asynchronous delete operation.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous delete operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_Clients_ConnectionsClient_DeleteUserAsync_System_String_System_String_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Auth0_ManagementApi_Clients_ConnectionsClient_DeleteUserAsync_System_String_System_String_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Currently only database connections are supported and you cannot delete all users from specific connection.</p>
 </div>
   <a id="Auth0_ManagementApi_Clients_ConnectionsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_GetAllAsync_Auth0_ManagementApi_Models_GetConnectionsRequest_Auth0_ManagementApi_Paging_PaginationInfo_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.GetAllAsync(Auth0.ManagementApi.Models.GetConnectionsRequest,Auth0.ManagementApi.Paging.PaginationInfo,CancellationToken)">GetAllAsync(GetConnectionsRequest, PaginationInfo, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_GetAllAsync_Auth0_ManagementApi_Models_GetConnectionsRequest_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.GetAllAsync(Auth0.ManagementApi.Models.GetConnectionsRequest,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetAllAsync(GetConnectionsRequest, PaginationInfo, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves every connection matching the specified strategy. All connections are retrieved if no strategy is being specified. Accepts a list of fields to include or exclude in the resulting list of connection objects.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;Connection&gt;&gt; GetAllAsync(GetConnectionsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;Connection&gt;&gt; GetAllAsync(GetConnectionsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -390,7 +411,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -407,20 +428,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Connection.html">Connection</a>&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Connection.html">Connection</a>&gt;&gt;</td>
         <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the list of connections.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_ConnectionsClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_GetAsync_System_String_System_String_System_Boolean_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.GetAsync(System.String,System.String,System.Boolean,CancellationToken)">GetAsync(String, String, Boolean, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_GetAsync_System_String_System_String_System_Boolean_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.GetAsync(System.String,System.String,System.Boolean,System.Threading.CancellationToken)">GetAsync(String, String, Boolean, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieves a connection by its <code data-dev-comment-type="paramref" class="paramref">id</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;Connection&gt; GetAsync(string id, string fields = null, bool includeFields = true, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;Connection&gt; GetAsync(string id, string fields = null, bool includeFields = true, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -451,7 +472,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -468,20 +489,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Connection.html">Connection</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Connection.html">Connection</a>&gt;</td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.Connection.html">Connection</a>.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_ConnectionsClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.UpdateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_ConnectionUpdateRequest_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.ConnectionUpdateRequest,CancellationToken)">UpdateAsync(String, ConnectionUpdateRequest, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_ConnectionsClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_ConnectionUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.ConnectionsClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.ConnectionUpdateRequest,System.Threading.CancellationToken)">UpdateAsync(String, ConnectionUpdateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Updates a connection.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;Connection&gt; UpdateAsync(string id, ConnectionUpdateRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;Connection&gt; UpdateAsync(string id, ConnectionUpdateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -506,7 +527,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -523,7 +544,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Connection.html">Connection</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Connection.html">Connection</a>&gt;</td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.Connection.html">Connection</a> that has been updated.</p>
 </td>
       </tr>
