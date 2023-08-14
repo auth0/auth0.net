@@ -8,7 +8,7 @@ namespace Auth0.AuthenticationApi.Models
     public class ChangePasswordRequest : UserMaintenanceRequestBase
     {
         /// <summary>
-        /// The organization of the user.
+        /// The organization_id of the Organization associated with the user.
         /// </summary>
         [JsonProperty("organization")]
         public string Organization { get; set; }
