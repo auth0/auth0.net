@@ -84,13 +84,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_IKeysClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.IKeysClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IKeysClient_GetAllAsync_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IKeysClient.GetAllAsync(CancellationToken)">GetAllAsync(CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IKeysClient_GetAllAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IKeysClient.GetAllAsync(System.Threading.CancellationToken)">GetAllAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Get all Application Signing Keys</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IList&lt;Key&gt;&gt; GetAllAsync(CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;IList&lt;Key&gt;&gt; GetAllAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -103,7 +103,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -120,20 +120,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">IList</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Keys.Key.html">Key</a>&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Keys.Key.html">Key</a>&gt;&gt;</td>
         <td><p>All available signing keys <a class="xref" href="Auth0.ManagementApi.Models.Keys.Key.html">Key</a>.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IKeysClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.IKeysClient.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IKeysClient_GetAsync_System_String_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IKeysClient.GetAsync(System.String,CancellationToken)">GetAsync(String, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IKeysClient_GetAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IKeysClient.GetAsync(System.String,System.Threading.CancellationToken)">GetAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Get an Application Signing Key by its key ID.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;Key&gt; GetAsync(string kid, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;Key&gt; GetAsync(string kid, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -152,7 +152,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -169,20 +169,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Keys.Key.html">Key</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Keys.Key.html">Key</a>&gt;</td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.Keys.Key.html">Key</a> that was requested.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IKeysClient_RevokeSigningKeyAsync_" data-uid="Auth0.ManagementApi.Clients.IKeysClient.RevokeSigningKeyAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IKeysClient_RevokeSigningKeyAsync_System_String_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IKeysClient.RevokeSigningKeyAsync(System.String,CancellationToken)">RevokeSigningKeyAsync(String, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IKeysClient_RevokeSigningKeyAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IKeysClient.RevokeSigningKeyAsync(System.String,System.Threading.CancellationToken)">RevokeSigningKeyAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Revoke an Application Signing Key by its key ID.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;RevokeSigningKeyResponse&gt; RevokeSigningKeyAsync(string kid, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;RevokeSigningKeyResponse&gt; RevokeSigningKeyAsync(string kid, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -201,7 +201,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -218,20 +218,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Keys.RevokeSigningKeyResponse.html">RevokeSigningKeyResponse</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Keys.RevokeSigningKeyResponse.html">RevokeSigningKeyResponse</a>&gt;</td>
         <td><p>The revoked key&apos;s cert and kid.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IKeysClient_RotateSigningKeyAsync_" data-uid="Auth0.ManagementApi.Clients.IKeysClient.RotateSigningKeyAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IKeysClient_RotateSigningKeyAsync_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IKeysClient.RotateSigningKeyAsync(CancellationToken)">RotateSigningKeyAsync(CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IKeysClient_RotateSigningKeyAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IKeysClient.RotateSigningKeyAsync(System.Threading.CancellationToken)">RotateSigningKeyAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Rotate the Application Signing Key.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;RotateSigningKeyResponse&gt; RotateSigningKeyAsync(CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;RotateSigningKeyResponse&gt; RotateSigningKeyAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -244,7 +244,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -261,7 +261,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Keys.RotateSigningKeyResponse.html">RotateSigningKeyResponse</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Keys.RotateSigningKeyResponse.html">RotateSigningKeyResponse</a>&gt;</td>
         <td><p>The next rotated key&apos;s cert and kid.</p>
 </td>
       </tr>

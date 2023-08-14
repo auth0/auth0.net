@@ -84,13 +84,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_IEmailProviderClient_ConfigureAsync_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.ConfigureAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IEmailProviderClient_ConfigureAsync_Auth0_ManagementApi_Models_EmailProviderConfigureRequest_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.ConfigureAsync(Auth0.ManagementApi.Models.EmailProviderConfigureRequest,CancellationToken)">ConfigureAsync(EmailProviderConfigureRequest, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IEmailProviderClient_ConfigureAsync_Auth0_ManagementApi_Models_EmailProviderConfigureRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.ConfigureAsync(Auth0.ManagementApi.Models.EmailProviderConfigureRequest,System.Threading.CancellationToken)">ConfigureAsync(EmailProviderConfigureRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Configures the email provider.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;EmailProvider&gt; ConfigureAsync(EmailProviderConfigureRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;EmailProvider&gt; ConfigureAsync(EmailProviderConfigureRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -110,7 +110,7 @@ provider.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -127,20 +127,20 @@ provider.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.EmailProvider.html">EmailProvider</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.EmailProvider.html">EmailProvider</a>&gt;</td>
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.EmailProvider.html">EmailProvider</a> instance containing the email provider details.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IEmailProviderClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.DeleteAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IEmailProviderClient_DeleteAsync_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.DeleteAsync(CancellationToken)">DeleteAsync(CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IEmailProviderClient_DeleteAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.DeleteAsync(System.Threading.CancellationToken)">DeleteAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Deletes the email provider.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task DeleteAsync(CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task DeleteAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -153,7 +153,7 @@ provider.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td></td>
       </tr>
@@ -169,20 +169,20 @@ provider.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
-        <td><p>A <see cref="!:Task"></see> that represents the asynchronous delete operation.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous delete operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IEmailProviderClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IEmailProviderClient_GetAsync_System_String_System_Boolean_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.GetAsync(System.String,System.Boolean,CancellationToken)">GetAsync(String, Boolean, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IEmailProviderClient_GetAsync_System_String_System_Boolean_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.GetAsync(System.String,System.Boolean,System.Threading.CancellationToken)">GetAsync(String, Boolean, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Gets the email provider.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;EmailProvider&gt; GetAsync(string fields = null, bool includeFields = true, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;EmailProvider&gt; GetAsync(string fields = null, bool includeFields = true, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -209,7 +209,7 @@ to true).</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -226,20 +226,20 @@ to true).</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.EmailProvider.html">EmailProvider</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.EmailProvider.html">EmailProvider</a>&gt;</td>
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.EmailProvider.html">EmailProvider</a> instance containing the email provider details.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IEmailProviderClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.UpdateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IEmailProviderClient_UpdateAsync_Auth0_ManagementApi_Models_EmailProviderUpdateRequest_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.UpdateAsync(Auth0.ManagementApi.Models.EmailProviderUpdateRequest,CancellationToken)">UpdateAsync(EmailProviderUpdateRequest, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IEmailProviderClient_UpdateAsync_Auth0_ManagementApi_Models_EmailProviderUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IEmailProviderClient.UpdateAsync(Auth0.ManagementApi.Models.EmailProviderUpdateRequest,System.Threading.CancellationToken)">UpdateAsync(EmailProviderUpdateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Updates the email provider.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;EmailProvider&gt; UpdateAsync(EmailProviderUpdateRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;EmailProvider&gt; UpdateAsync(EmailProviderUpdateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -259,7 +259,7 @@ email provider.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -276,7 +276,7 @@ email provider.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.EmailProvider.html">EmailProvider</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.EmailProvider.html">EmailProvider</a>&gt;</td>
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.EmailProvider.html">EmailProvider</a> instance containing the email provider details.</p>
 </td>
       </tr>

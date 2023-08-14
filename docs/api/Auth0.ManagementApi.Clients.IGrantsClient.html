@@ -84,13 +84,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_IGrantsClient_DeleteAllAsync_" data-uid="Auth0.ManagementApi.Clients.IGrantsClient.DeleteAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IGrantsClient_DeleteAllAsync_System_String_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGrantsClient.DeleteAllAsync(System.String,CancellationToken)">DeleteAllAsync(String, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IGrantsClient_DeleteAllAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGrantsClient.DeleteAllAsync(System.String,System.Threading.CancellationToken)">DeleteAllAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Deletes all Grants of a given user. </p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task DeleteAllAsync(string userId, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task DeleteAllAsync(string userId, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -108,7 +108,7 @@
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -125,23 +125,23 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
-        <td><p>A <see cref="!:Task"></see> that represents the asynchronous delete operation.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous delete operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_Clients_IGrantsClient_DeleteAllAsync_System_String_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Auth0_ManagementApi_Clients_IGrantsClient_DeleteAllAsync_System_String_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>A token with scope delete:grants is needed.</p>
 </div>
   <a id="Auth0_ManagementApi_Clients_IGrantsClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.IGrantsClient.DeleteAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IGrantsClient_DeleteAsync_System_String_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGrantsClient.DeleteAsync(System.String,CancellationToken)">DeleteAsync(String, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IGrantsClient_DeleteAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGrantsClient.DeleteAsync(System.String,System.Threading.CancellationToken)">DeleteAsync(String, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Delete an existing Grant</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task DeleteAsync(string id, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task DeleteAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -160,7 +160,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -177,23 +177,23 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
-        <td><p>A <see cref="!:Task"></see> that represents the asynchronous delete operation.</p>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous delete operation.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_Clients_IGrantsClient_DeleteAsync_System_String_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Auth0_ManagementApi_Clients_IGrantsClient_DeleteAsync_System_String_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>A token with scope delete:grants is needed.</p>
 </div>
   <a id="Auth0_ManagementApi_Clients_IGrantsClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.IGrantsClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IGrantsClient_GetAllAsync_Auth0_ManagementApi_Models_Grants_GetGrantsRequest_Auth0_ManagementApi_Paging_PaginationInfo_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGrantsClient.GetAllAsync(Auth0.ManagementApi.Models.Grants.GetGrantsRequest,Auth0.ManagementApi.Paging.PaginationInfo,CancellationToken)">GetAllAsync(GetGrantsRequest, PaginationInfo, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IGrantsClient_GetAllAsync_Auth0_ManagementApi_Models_Grants_GetGrantsRequest_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IGrantsClient.GetAllAsync(Auth0.ManagementApi.Models.Grants.GetGrantsRequest,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetAllAsync(GetGrantsRequest, PaginationInfo, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Retrieve all Grants.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;Grant&gt;&gt; GetAllAsync(GetGrantsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;Grant&gt;&gt; GetAllAsync(GetGrantsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -218,7 +218,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -235,13 +235,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Grants.Grant.html">Grant</a>&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Grants.Grant.html">Grant</a>&gt;&gt;</td>
         <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the grants.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_Clients_IGrantsClient_GetAllAsync_Auth0_ManagementApi_Models_Grants_GetGrantsRequest_Auth0_ManagementApi_Paging_PaginationInfo_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Auth0_ManagementApi_Clients_IGrantsClient_GetAllAsync_Auth0_ManagementApi_Models_Grants_GetGrantsRequest_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>A token with scope read:grants is needed</p>
 </div>
 </article>

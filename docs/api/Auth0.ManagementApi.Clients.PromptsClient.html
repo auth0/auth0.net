@@ -98,10 +98,31 @@
       <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_DefaultHeaders">BaseClient.DefaultHeaders</a>
     </div>
     <div>
-      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BuildUri_System_String_IDictionary_System_String_System_String__">BaseClient.BuildUri(String, IDictionary&lt;String, String&gt;)</a>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BuildUri_System_String_System_Collections_Generic_IDictionary_System_String_System_String__">BaseClient.BuildUri(String, IDictionary&lt;String, String&gt;)</a>
     </div>
     <div>
       <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_EncodePath_System_String_">BaseClient.EncodePath(String)</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Clients.html">Auth0.ManagementApi.Clients</a></h6>
@@ -113,7 +134,7 @@
   <h3 id="constructors">Constructors
   </h3>
   <a id="Auth0_ManagementApi_Clients_PromptsClient__ctor_" data-uid="Auth0.ManagementApi.Clients.PromptsClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_PromptsClient__ctor_Auth0_ManagementApi_IManagementConnection_Uri_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.PromptsClient.#ctor(Auth0.ManagementApi.IManagementConnection,Uri,IDictionary{System.String,System.String})">PromptsClient(IManagementConnection, Uri, IDictionary&lt;String, String&gt;)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_PromptsClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.PromptsClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})">PromptsClient(IManagementConnection, Uri, IDictionary&lt;String, String&gt;)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance on <a class="xref" href="Auth0.ManagementApi.Clients.PromptsClient.html">PromptsClient</a></p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -138,13 +159,13 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Uri</span></td>
+        <td><span class="xref">System.Uri</span></td>
         <td><span class="parametername">baseUri</span></td>
-        <td><p><see cref="!:Uri"></see> of the endpoint to use in making API calls.</p>
+        <td><p><span class="xref">System.Uri</span> of the endpoint to use in making API calls.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">defaultHeaders</span></td>
         <td><p>Dictionary containing default headers included with every request this client makes.</p>
 </td>
@@ -154,13 +175,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_PromptsClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.PromptsClient.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_PromptsClient_GetAsync_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.PromptsClient.GetAsync(CancellationToken)">GetAsync(CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_PromptsClient_GetAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.PromptsClient.GetAsync(System.Threading.CancellationToken)">GetAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Get prompts settings</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;Prompt&gt; GetAsync(CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;Prompt&gt; GetAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -173,7 +194,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -190,23 +211,23 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Prompts.Prompt.html">Prompt</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Prompts.Prompt.html">Prompt</a>&gt;</td>
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.Prompts.Prompt.html">Prompt</a> instance containing the information about the prompt settings.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_Clients_PromptsClient_GetAsync_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Auth0_ManagementApi_Clients_PromptsClient_GetAsync_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Get prompts settings</p>
 </div>
   <a id="Auth0_ManagementApi_Clients_PromptsClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.PromptsClient.UpdateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_PromptsClient_UpdateAsync_Auth0_ManagementApi_Models_Prompts_PromptUpdateRequest_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.PromptsClient.UpdateAsync(Auth0.ManagementApi.Models.Prompts.PromptUpdateRequest,CancellationToken)">UpdateAsync(PromptUpdateRequest, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_PromptsClient_UpdateAsync_Auth0_ManagementApi_Models_Prompts_PromptUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.PromptsClient.UpdateAsync(Auth0.ManagementApi.Models.Prompts.PromptUpdateRequest,System.Threading.CancellationToken)">UpdateAsync(PromptUpdateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Update prompts settings.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;Prompt&gt; UpdateAsync(PromptUpdateRequest request, CancellationToken cancellationToken = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;Prompt&gt; UpdateAsync(PromptUpdateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -225,7 +246,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">CancellationToken</span></td>
+        <td><span class="xref">System.Threading.CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -242,13 +263,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Prompts.Prompt.html">Prompt</a>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Prompts.Prompt.html">Prompt</a>&gt;</td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.Prompts.Prompt.html">Prompt</a> that was updated.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_Clients_PromptsClient_UpdateAsync_Auth0_ManagementApi_Models_Prompts_PromptUpdateRequest_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Auth0_ManagementApi_Clients_PromptsClient_UpdateAsync_Auth0_ManagementApi_Models_Prompts_PromptUpdateRequest_System_Threading_CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>Update prompts settings.</p>
 </div>
   <h3 id="implements">Implements</h3>

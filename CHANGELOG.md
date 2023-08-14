@@ -1,5 +1,12 @@
 # Change Log
 
+## [7.22.2](https://github.com/auth0/auth0.net/tree/7.22.2) (2023-08-14)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.22.1...7.22.2)
+
+**Changed**
+- Support providing Organization when resetting password [\#635](https://github.com/auth0/auth0.net/pull/635) ([frederikprijck](https://github.com/frederikprijck))
+- Add cross_origin_authentication on Clients [\#643](https://github.com/auth0/auth0.net/pull/643) ([frederikprijck](https://github.com/frederikprijck))
+
 ## [7.22.1](https://github.com/auth0/auth0.net/tree/7.22.1) (2023-07-28)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.22.0...7.22.1)
 
