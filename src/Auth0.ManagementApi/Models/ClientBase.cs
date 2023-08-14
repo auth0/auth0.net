@@ -184,6 +184,12 @@ namespace Auth0.ManagementApi.Models
         [JsonProperty("organization_require_behavior")]
         [JsonConverter(typeof(StringEnumConverter))]
         public OrganizationRequireBehavior? OrganizationRequireBehavior { get; set; }
+
+        /// <summary>
+        /// Whether this client can be used to make cross-origin authentication requests (true) or it is not allowed to make such requests (false).
+        /// </summary>
+        [JsonProperty("cross_origin_authentication")]
+        public bool? CrossOriginAuthentication { get; set; }
     }
 
 }
