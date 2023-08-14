@@ -97,31 +97,10 @@
       <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_DefaultHeaders">BaseClient.DefaultHeaders</a>
     </div>
     <div>
-      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BuildUri_System_String_System_Collections_Generic_IDictionary_System_String_System_String__">BaseClient.BuildUri(String, IDictionary&lt;String, String&gt;)</a>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BuildUri_System_String_IDictionary_System_String_System_String__">BaseClient.BuildUri(String, IDictionary&lt;String, String&gt;)</a>
     </div>
     <div>
       <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_EncodePath_System_String_">BaseClient.EncodePath(String)</a>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Clients.html">Auth0.ManagementApi.Clients</a></h6>
@@ -133,7 +112,7 @@
   <h3 id="constructors">Constructors
   </h3>
   <a id="Auth0_ManagementApi_Clients_AttackProtectionClient__ctor_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_AttackProtectionClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})">AttackProtectionClient(IManagementConnection, Uri, IDictionary&lt;String, String&gt;)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_AttackProtectionClient__ctor_Auth0_ManagementApi_IManagementConnection_Uri_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.#ctor(Auth0.ManagementApi.IManagementConnection,Uri,IDictionary{System.String,System.String})">AttackProtectionClient(IManagementConnection, Uri, IDictionary&lt;String, String&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -156,12 +135,12 @@
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.Uri</span></td>
+        <td><span class="xref">Uri</span></td>
         <td><span class="parametername">baseUri</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">defaultHeaders</span></td>
         <td></td>
       </tr>
@@ -170,13 +149,13 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_AttackProtectionClient_GetBreachedPasswordDetectionAsync_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.GetBreachedPasswordDetectionAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_AttackProtectionClient_GetBreachedPasswordDetectionAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.GetBreachedPasswordDetectionAsync(System.Threading.CancellationToken)">GetBreachedPasswordDetectionAsync(CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_AttackProtectionClient_GetBreachedPasswordDetectionAsync_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.GetBreachedPasswordDetectionAsync(CancellationToken)">GetBreachedPasswordDetectionAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Get breached password detection settings.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;BreachedPasswordDetection&gt; GetBreachedPasswordDetectionAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;BreachedPasswordDetection&gt; GetBreachedPasswordDetectionAsync(CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -189,7 +168,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -206,20 +185,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.html">BreachedPasswordDetection</a>&gt;</td>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.html">BreachedPasswordDetection</a>&gt;</td>
         <td><p>A <span class="xref">Auth0.ManagementApi.Clients.AttackProtectionClient.BreachedPasswordDetection</span> containing the configuration.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_AttackProtectionClient_GetBruteForceProtectionAsync_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.GetBruteForceProtectionAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_AttackProtectionClient_GetBruteForceProtectionAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.GetBruteForceProtectionAsync(System.Threading.CancellationToken)">GetBruteForceProtectionAsync(CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_AttackProtectionClient_GetBruteForceProtectionAsync_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.GetBruteForceProtectionAsync(CancellationToken)">GetBruteForceProtectionAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Get the brute force configuration.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;BruteForceProtection&gt; GetBruteForceProtectionAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;BruteForceProtection&gt; GetBruteForceProtectionAsync(CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -232,7 +211,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -249,20 +228,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.html">BruteForceProtection</a>&gt;</td>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.html">BruteForceProtection</a>&gt;</td>
         <td><p>A <span class="xref">Auth0.ManagementApi.Clients.AttackProtectionClient.BruteForceProtection</span> containing the configuration.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_AttackProtectionClient_GetSuspiciousIpThrottlingAsync_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.GetSuspiciousIpThrottlingAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_AttackProtectionClient_GetSuspiciousIpThrottlingAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.GetSuspiciousIpThrottlingAsync(System.Threading.CancellationToken)">GetSuspiciousIpThrottlingAsync(CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_AttackProtectionClient_GetSuspiciousIpThrottlingAsync_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.GetSuspiciousIpThrottlingAsync(CancellationToken)">GetSuspiciousIpThrottlingAsync(CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Get the suspicious IP throttling configuration.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;SuspiciousIpThrottling&gt; GetSuspiciousIpThrottlingAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;SuspiciousIpThrottling&gt; GetSuspiciousIpThrottlingAsync(CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -275,7 +254,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -292,20 +271,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html">SuspiciousIpThrottling</a>&gt;</td>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html">SuspiciousIpThrottling</a>&gt;</td>
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html">SuspiciousIpThrottling</a> containing the configuration.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateBreachedPasswordDetectionAsync_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBreachedPasswordDetectionAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateBreachedPasswordDetectionAsync_Auth0_ManagementApi_Models_AttackProtection_BreachedPasswordDetection_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBreachedPasswordDetectionAsync(Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection,System.Threading.CancellationToken)">UpdateBreachedPasswordDetectionAsync(BreachedPasswordDetection, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateBreachedPasswordDetectionAsync_Auth0_ManagementApi_Models_AttackProtection_BreachedPasswordDetection_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBreachedPasswordDetectionAsync(Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection,CancellationToken)">UpdateBreachedPasswordDetectionAsync(BreachedPasswordDetection, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Update breached password detection settings.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;BreachedPasswordDetection&gt; UpdateBreachedPasswordDetectionAsync(BreachedPasswordDetection request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;BreachedPasswordDetection&gt; UpdateBreachedPasswordDetectionAsync(BreachedPasswordDetection request, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -324,7 +303,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -341,20 +320,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.html">BreachedPasswordDetection</a>&gt;</td>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.html">BreachedPasswordDetection</a>&gt;</td>
         <td><p>The <span class="xref">Auth0.ManagementApi.Clients.AttackProtectionClient.BreachedPasswordDetection</span> that was updated.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateBruteForceProtectionAsync_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBruteForceProtectionAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateBruteForceProtectionAsync_Auth0_ManagementApi_Models_AttackProtection_BruteForceProtection_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBruteForceProtectionAsync(Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection,System.Threading.CancellationToken)">UpdateBruteForceProtectionAsync(BruteForceProtection, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateBruteForceProtectionAsync_Auth0_ManagementApi_Models_AttackProtection_BruteForceProtection_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBruteForceProtectionAsync(Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection,CancellationToken)">UpdateBruteForceProtectionAsync(BruteForceProtection, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Update the brute force configuration.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;BruteForceProtection&gt; UpdateBruteForceProtectionAsync(BruteForceProtection request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;BruteForceProtection&gt; UpdateBruteForceProtectionAsync(BruteForceProtection request, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -373,7 +352,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -390,20 +369,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.html">BruteForceProtection</a>&gt;</td>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.html">BruteForceProtection</a>&gt;</td>
         <td><p>The <span class="xref">Auth0.ManagementApi.Clients.AttackProtectionClient.BruteForceProtection</span> that was updated.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateSuspiciousIpThrottlingAsync_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateSuspiciousIpThrottlingAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateSuspiciousIpThrottlingAsync_Auth0_ManagementApi_Models_AttackProtection_SuspiciousIpThrottling_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateSuspiciousIpThrottlingAsync(Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling,System.Threading.CancellationToken)">UpdateSuspiciousIpThrottlingAsync(SuspiciousIpThrottling, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateSuspiciousIpThrottlingAsync_Auth0_ManagementApi_Models_AttackProtection_SuspiciousIpThrottling_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateSuspiciousIpThrottlingAsync(Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling,CancellationToken)">UpdateSuspiciousIpThrottlingAsync(SuspiciousIpThrottling, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Update the suspicious IP throttling configuration.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;SuspiciousIpThrottling&gt; UpdateSuspiciousIpThrottlingAsync(SuspiciousIpThrottling request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;SuspiciousIpThrottling&gt; UpdateSuspiciousIpThrottlingAsync(SuspiciousIpThrottling request, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -422,7 +401,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -439,7 +418,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html">SuspiciousIpThrottling</a>&gt;</td>
+        <td><span class="xref">Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html">SuspiciousIpThrottling</a>&gt;</td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html">SuspiciousIpThrottling</a> that was updated.</p>
 </td>
       </tr>

@@ -110,40 +110,16 @@
       <div class="level2"><a class="xref" href="Auth0.ManagementApi.Clients.UserBlocksClient.html">UserBlocksClient</a></div>
       <div class="level2"><a class="xref" href="Auth0.ManagementApi.Clients.UsersClient.html">UsersClient</a></div>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Clients.html">Auth0.ManagementApi.Clients</a></h6>
   <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Clients_BaseClient_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class BaseClient</code></pre>
+    <pre><code class="lang-csharp hljs">public abstract class BaseClient : object</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   <a id="Auth0_ManagementApi_Clients_BaseClient__ctor_" data-uid="Auth0.ManagementApi.Clients.BaseClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_BaseClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.BaseClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})">BaseClient(IManagementConnection, Uri, IDictionary&lt;String, String&gt;)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_BaseClient__ctor_Auth0_ManagementApi_IManagementConnection_Uri_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.BaseClient.#ctor(Auth0.ManagementApi.IManagementConnection,Uri,IDictionary{System.String,System.String})">BaseClient(IManagementConnection, Uri, IDictionary&lt;String, String&gt;)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html">BaseClient</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -168,13 +144,13 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Uri</span></td>
+        <td><span class="xref">Uri</span></td>
         <td><span class="parametername">baseUri</span></td>
-        <td><p><span class="xref">System.Uri</span> of the endpoint to use in making API calls.</p>
+        <td><p><see cref="!:Uri"></see> of the endpoint to use in making API calls.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">defaultHeaders</span></td>
         <td><p>Dictionary containing default headers included with every request this client makes.</p>
 </td>
@@ -185,7 +161,7 @@
   </h3>
   <a id="Auth0_ManagementApi_Clients_BaseClient_BaseUri_" data-uid="Auth0.ManagementApi.Clients.BaseClient.BaseUri*"></a>
   <h4 id="Auth0_ManagementApi_Clients_BaseClient_BaseUri" data-uid="Auth0.ManagementApi.Clients.BaseClient.BaseUri">BaseUri</h4>
-  <div class="markdown level1 summary"><p><span class="xref">System.Uri</span> of the endpoint to use in making API calls.</p>
+  <div class="markdown level1 summary"><p><see cref="!:Uri"></see> of the endpoint to use in making API calls.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -202,7 +178,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Uri</span></td>
+        <td><span class="xref">Uri</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -250,7 +226,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -258,8 +234,8 @@
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_Clients_BaseClient_BuildUri_" data-uid="Auth0.ManagementApi.Clients.BaseClient.BuildUri*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_BaseClient_BuildUri_System_String_System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.BaseClient.BuildUri(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">BuildUri(String, IDictionary&lt;String, String&gt;)</h4>
-  <div class="markdown level1 summary"><p>Build the <span class="xref">System.Uri</span> for this API request given a <code data-dev-comment-type="paramref" class="paramref">resource</code> and
+  <h4 id="Auth0_ManagementApi_Clients_BaseClient_BuildUri_System_String_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.BaseClient.BuildUri(System.String,IDictionary{System.String,System.String})">BuildUri(String, IDictionary&lt;String, String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Build the <see cref="!:Uri"></see> for this API request given a <code data-dev-comment-type="paramref" class="paramref">resource</code> and
 <code data-dev-comment-type="paramref" class="paramref">queryStrings</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -284,7 +260,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">queryStrings</span></td>
         <td><p>Query strings that should be combined with the URL.</p>
 </td>
@@ -301,7 +277,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Uri</span></td>
+        <td><span class="xref">Uri</span></td>
         <td><p>Completed absolute URI for the request.</p>
 </td>
       </tr>

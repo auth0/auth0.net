@@ -84,7 +84,7 @@ the remote server.</p>
     <pre><code class="lang-csharp hljs">public interface IManagementConnection</code></pre>
   </div>
   <h5 id="Auth0_ManagementApi_IManagementConnection_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>A default implementation of this using <span class="xref">System.Net.Http.HttpClient</span> is included as
+  <div class="markdown level0 remarks"><p>A default implementation of this using <see cref="!:HttpClient"></see> is included as
 <a class="xref" href="Auth0.ManagementApi.HttpClientManagementConnection.html">HttpClientManagementConnection</a>.
 You should mock this interface to perform unit testing of code that uses
 <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a>.</p>
@@ -92,13 +92,13 @@ You should mock this interface to perform unit testing of code that uses
   <h3 id="methods">Methods
   </h3>
   <a id="Auth0_ManagementApi_IManagementConnection_GetAsync_" data-uid="Auth0.ManagementApi.IManagementConnection.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_IManagementConnection_GetAsync__1_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__JsonConverter___System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.IManagementConnection.GetAsync``1(System.Uri,System.Collections.Generic.IDictionary{System.String,System.String},JsonConverter[],System.Threading.CancellationToken)">GetAsync&lt;T&gt;(Uri, IDictionary&lt;String, String&gt;, JsonConverter[], CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Perform a HTTP GET operation against a given <span class="xref">System.Uri</span> and return the materialized response body as <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
+  <h4 id="Auth0_ManagementApi_IManagementConnection_GetAsync__1_Uri_IDictionary_System_String_System_String__JsonConverter___CancellationToken_" data-uid="Auth0.ManagementApi.IManagementConnection.GetAsync``1(Uri,IDictionary{System.String,System.String},JsonConverter[],CancellationToken)">GetAsync&lt;T&gt;(Uri, IDictionary&lt;String, String&gt;, JsonConverter[], CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Perform a HTTP GET operation against a given <see cref="!:Uri"></see> and return the materialized response body as <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;T&gt; GetAsync&lt;T&gt;(Uri uri, IDictionary&lt;string, string&gt; headers, JsonConverter[] converters = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; GetAsync&lt;T&gt;(Uri uri, IDictionary&lt;string, string&gt; headers, JsonConverter[] converters = null, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -111,13 +111,13 @@ You should mock this interface to perform unit testing of code that uses
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Uri</span></td>
+        <td><span class="xref">Uri</span></td>
         <td><span class="parametername">uri</span></td>
-        <td><p><span class="xref">System.Uri</span> to perform the GET request against.</p>
+        <td><p><see cref="!:Uri"></see> to perform the GET request against.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">headers</span></td>
         <td><p>Dictionary containing additional headers that may override the defaults.</p>
 </td>
@@ -129,7 +129,7 @@ You should mock this interface to perform unit testing of code that uses
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -146,8 +146,8 @@ You should mock this interface to perform unit testing of code that uses
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
-        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing response body as <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
+        <td><span class="xref">Task</span>&lt;T&gt;</td>
+        <td><p><see cref="!:Task"></see> representing the async operation containing response body as <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
 </td>
       </tr>
     </tbody>
@@ -169,13 +169,13 @@ You should mock this interface to perform unit testing of code that uses
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_IManagementConnection_SendAsync_" data-uid="Auth0.ManagementApi.IManagementConnection.SendAsync*"></a>
-  <h4 id="Auth0_ManagementApi_IManagementConnection_SendAsync__1_System_Net_Http_HttpMethod_System_Uri_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IList_Auth0_ManagementApi_FileUploadParameter__JsonConverter___System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.IManagementConnection.SendAsync``1(System.Net.Http.HttpMethod,System.Uri,System.Object,System.Collections.Generic.IDictionary{System.String,System.String},System.Collections.Generic.IList{Auth0.ManagementApi.FileUploadParameter},JsonConverter[],System.Threading.CancellationToken)">SendAsync&lt;T&gt;(HttpMethod, Uri, Object, IDictionary&lt;String, String&gt;, IList&lt;FileUploadParameter&gt;, JsonConverter[], CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Perform a HTTP operation against a given <span class="xref">System.Uri</span> and return any materialized response body as <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
+  <h4 id="Auth0_ManagementApi_IManagementConnection_SendAsync__1_HttpMethod_Uri_System_Object_IDictionary_System_String_System_String__IList_Auth0_ManagementApi_FileUploadParameter__JsonConverter___CancellationToken_" data-uid="Auth0.ManagementApi.IManagementConnection.SendAsync``1(HttpMethod,Uri,System.Object,IDictionary{System.String,System.String},IList{Auth0.ManagementApi.FileUploadParameter},JsonConverter[],CancellationToken)">SendAsync&lt;T&gt;(HttpMethod, Uri, Object, IDictionary&lt;String, String&gt;, IList&lt;FileUploadParameter&gt;, JsonConverter[], CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Perform a HTTP operation against a given <see cref="!:Uri"></see> and return any materialized response body as <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;T&gt; SendAsync&lt;T&gt;(HttpMethod method, Uri uri, object body, IDictionary&lt;string, string&gt; headers, IList&lt;FileUploadParameter&gt; files = null, JsonConverter[] converters = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;T&gt; SendAsync&lt;T&gt;(HttpMethod method, Uri uri, object body, IDictionary&lt;string, string&gt; headers, IList&lt;FileUploadParameter&gt; files = null, JsonConverter[] converters = null, CancellationToken cancellationToken = null)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -188,35 +188,35 @@ You should mock this interface to perform unit testing of code that uses
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Net.Http.HttpMethod</span></td>
+        <td><span class="xref">HttpMethod</span></td>
         <td><span class="parametername">method</span></td>
-        <td><p><span class="xref">System.Net.Http.HttpMethod</span> to use in performing the request.</p>
+        <td><p><see cref="!:HttpMethod"></see> to use in performing the request.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Uri</span></td>
+        <td><span class="xref">Uri</span></td>
         <td><span class="parametername">uri</span></td>
-        <td><p><span class="xref">System.Uri</span> to perform the request against.</p>
+        <td><p><see cref="!:Uri"></see> to perform the request against.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">body</span></td>
         <td><p>Payload to send to the server.
-If specified as a Dictionary&lt;string, string&gt; then <span class="xref">System.Net.Http.FormUrlEncodedContent</span> is expected,
-otherwise <span class="xref">System.Net.Http.StringContent</span> containing the JSON representation of the object is expected.</p>
+If specified as a Dictionary&lt;string, string&gt; then <see cref="!:FormUrlEncodedContent"></see> is expected,
+otherwise <see cref="!:StringContent"></see> containing the JSON representation of the object is expected.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">headers</span></td>
         <td><p>Dictionary containing additional headers that may override the defaults.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="Auth0.ManagementApi.FileUploadParameter.html">FileUploadParameter</a>&gt;</td>
+        <td><span class="xref">IList</span>&lt;<a class="xref" href="Auth0.ManagementApi.FileUploadParameter.html">FileUploadParameter</a>&gt;</td>
         <td><span class="parametername">files</span></td>
-        <td><p>Optional <span class="xref">System.Collections.Generic.IList&lt;T&gt;</span> containing file contents to upload as a <span class="xref">System.Net.Http.MultipartFormDataContent</span> post.</p>
+        <td><p>Optional <see cref="!:IList&lt;FileUploadParameter>"></see> containing file contents to upload as a <see cref="!:MultipartFormDataContent"></see> post.</p>
 </td>
       </tr>
       <tr>
@@ -226,7 +226,7 @@ otherwise <span class="xref">System.Net.Http.StringContent</span> containing the
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><span class="xref">CancellationToken</span></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -243,8 +243,8 @@ otherwise <span class="xref">System.Net.Http.StringContent</span> containing the
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
-        <td><p><span class="xref">System.Threading.Tasks.Task</span> representing the async operation containing response body as <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
+        <td><span class="xref">Task</span>&lt;T&gt;</td>
+        <td><p><see cref="!:Task"></see> representing the async operation containing response body as <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
 </td>
       </tr>
     </tbody>
@@ -265,7 +265,7 @@ otherwise <span class="xref">System.Net.Http.StringContent</span> containing the
       </tr>
     </tbody>
   </table>
-  <h5 id="Auth0_ManagementApi_IManagementConnection_SendAsync__1_System_Net_Http_HttpMethod_System_Uri_System_Object_System_Collections_Generic_IDictionary_System_String_System_String__System_Collections_Generic_IList_Auth0_ManagementApi_FileUploadParameter__JsonConverter___System_Threading_CancellationToken__remarks">Remarks</h5>
+  <h5 id="Auth0_ManagementApi_IManagementConnection_SendAsync__1_HttpMethod_Uri_System_Object_IDictionary_System_String_System_String__IList_Auth0_ManagementApi_FileUploadParameter__JsonConverter___CancellationToken__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p><code data-dev-comment-type="paramref" class="paramref">files</code> can only be specified if <code data-dev-comment-type="paramref" class="paramref">body</code> is a Dictionary%lt;string, object%gt;&quot;/&gt;.</p>
 </div>
 </article>
