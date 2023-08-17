@@ -51,7 +51,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
             }
 
-            ApiClient.Dispose();
+            ApiClient?.Dispose();
         }
     }
 
@@ -221,7 +221,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             // Act
             var users = await fixture.ApiClient.Users.GetAllAsync(new GetUsersRequest(), new PaginationInfo());
-            
+
             // Assert
             Assert.Null(users.Paging);
         }
@@ -231,7 +231,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             // Act
             var users = await fixture.ApiClient.Users.GetAllAsync(new GetUsersRequest(), new PaginationInfo(0, 50, false));
-            
+
             // Assert
             Assert.Null(users.Paging);
         }
@@ -241,7 +241,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             // Act
             var users = await fixture.ApiClient.Users.GetAllAsync(new GetUsersRequest(), new PaginationInfo(0, 50, true));
-            
+
             // Assert
             Assert.NotNull(users.Paging);
         }
@@ -304,6 +304,44 @@ namespace Auth0.ManagementApi.IntegrationTests
             await fixture.ApiClient.Users.DeleteAsync(user.UserId);
             fixture.UnTrackIdentifier(CleanUpType.Users, newUserResponse.UserId);
 
+        }
+
+
+        [Fact]
+        public void Can_read_user_metadata_as_type()
+        {
+            // create a user instance
+            var user = new User
+            {
+                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
+                EmailVerified = true
+            };
+            var customAppMetadata = new CustomMetadata
+            {
+                Amount = 42,
+                Name = "A name"
+            };
+            var customUserMetadat = new CustomMetadata
+            {
+                Amount = 43,
+                Name = "One off"
+            };
+            
+            // set metadata
+            user.SetAppMetadata(customAppMetadata);
+            user.SetUserMetadata(customUserMetadat);
+
+            // read metadata
+            var appMetadata = user.GetAppMetadata<CustomMetadata>();
+            var userMetadata = user.GetUserMetadata<CustomMetadata>();
+            
+            Assert.NotNull(appMetadata);
+            Assert.Equal(appMetadata.Amount, customAppMetadata.Amount);
+            Assert.Equal(appMetadata.Name, customAppMetadata.Name);
+
+            Assert.NotNull(userMetadata);
+            Assert.Equal(userMetadata.Amount, customUserMetadat.Amount);
+            Assert.Equal(userMetadata.Name, customUserMetadat.Name);
         }
 
         [Fact]
@@ -584,6 +622,12 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             var allAuthenticationMethods3 = await fixture.ApiClient.Users.GetAuthenticationMethodsAsync(fixture.User.UserId);
             allAuthenticationMethods3.Count.Should().Be(0);
+        }
+
+        private class CustomMetadata
+        {
+            public string Name { get; set; }
+            public int Amount { get; set; }
         }
     }
 }

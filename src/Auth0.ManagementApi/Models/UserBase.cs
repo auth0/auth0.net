@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 
 namespace Auth0.ManagementApi.Models
 {
@@ -58,7 +60,7 @@ namespace Auth0.ManagementApi.Models
         [JsonProperty("username")]
         public string UserName { get; set; }
 
-                /// <summary>
+        /// <summary>
         /// The Nickname of the user.
         /// </summary>
         [JsonProperty("nickname")]
@@ -102,5 +104,67 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("blocked")]
         public bool? Blocked { get; set; }
+
+        /// <summary>
+        /// Returns <see cref="AppMetadata"/> as specific type.
+        /// </summary>
+        /// <typeparam name="T">Type to be returned.</typeparam>
+        /// <returns>An instance of T.</returns>
+        /// <exception cref="ArgumentException"></exception>
+        public T GetAppMetadata<T>()
+        {
+            if (AppMetadata is null)
+            {
+                return default;
+            }
+
+            if (AppMetadata is JObject jObject)
+            {
+                return jObject.ToObject<T>();
+            }
+
+            throw new ArgumentException("Unknown metadata type");
+        }
+
+        /// <summary>
+        /// Returns <see cref="UserMetadata"/> as specific type.
+        /// </summary>
+        /// <typeparam name="T">Type to be returned.</typeparam>
+        /// <returns>An instance of T.</returns>
+        /// <exception cref="ArgumentException"></exception>
+        public T GetUserMetadata<T>()
+        {
+            if (UserMetadata is null)
+            {
+                return default;
+            }
+
+            if (UserMetadata is JObject jObject)
+            {
+                return jObject.ToObject<T>();
+            }
+
+            throw new ArgumentException("Unknown metadata type");
+        }
+
+        /// <summary>
+        /// Set given appMetadata as <see cref="AppMetadata"/>.
+        /// </summary>
+        /// <typeparam name="T">Metadata type.</typeparam>
+        /// <param name="appMetadata">Metadata to set.</param>
+        public void SetAppMetadata<T>(T appMetadata)
+        {
+            AppMetadata = JObject.FromObject(appMetadata);
+        }
+
+        /// <summary>
+        /// Set given userMetadata as <see cref="UserMetadata"/>.
+        /// </summary>
+        /// <typeparam name="T">Metadata type.</typeparam>
+        /// <param name="userMetadata">Metadata to set.</param>
+        public void SetUserMetadata<T>(T userMetadata)
+        {
+            UserMetadata = JObject.FromObject(userMetadata);
+        }
     }
 }
