@@ -111,19 +111,14 @@ namespace Auth0.ManagementApi.Models
         /// <typeparam name="T">Type to be returned.</typeparam>
         /// <returns>An instance of T.</returns>
         /// <exception cref="ArgumentException"></exception>
-        public T GetAppMetadata<T>()
+        public T GetAppMetadata<T>() where T : class
         {
-            if (AppMetadata is null)
-            {
-                return default;
-            }
-
             if (AppMetadata is JObject jObject)
             {
                 return jObject.ToObject<T>();
             }
 
-            throw new ArgumentException("Unknown metadata type");
+            return null;
         }
 
         /// <summary>
@@ -132,19 +127,14 @@ namespace Auth0.ManagementApi.Models
         /// <typeparam name="T">Type to be returned.</typeparam>
         /// <returns>An instance of T.</returns>
         /// <exception cref="ArgumentException"></exception>
-        public T GetUserMetadata<T>()
+        public T GetUserMetadata<T>() where T : class
         {
-            if (UserMetadata is null)
-            {
-                return default;
-            }
-
             if (UserMetadata is JObject jObject)
             {
                 return jObject.ToObject<T>();
             }
 
-            throw new ArgumentException("Unknown metadata type");
+            return null;
         }
 
         /// <summary>
@@ -152,7 +142,7 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         /// <typeparam name="T">Metadata type.</typeparam>
         /// <param name="appMetadata">Metadata to set.</param>
-        public void SetAppMetadata<T>(T appMetadata)
+        public void SetAppMetadata<T>(T appMetadata) where T : class
         {
             AppMetadata = JObject.FromObject(appMetadata);
         }
@@ -162,7 +152,7 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         /// <typeparam name="T">Metadata type.</typeparam>
         /// <param name="userMetadata">Metadata to set.</param>
-        public void SetUserMetadata<T>(T userMetadata)
+        public void SetUserMetadata<T>(T userMetadata) where T : class
         {
             UserMetadata = JObject.FromObject(userMetadata);
         }

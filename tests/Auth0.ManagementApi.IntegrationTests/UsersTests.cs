@@ -308,14 +308,9 @@ namespace Auth0.ManagementApi.IntegrationTests
 
 
         [Fact]
-        public void Can_read_user_metadata_as_type()
+        public async Task Can_read_user_metadata_as_type()
         {
-            // create a user instance
-            var user = new User
-            {
-                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
-                EmailVerified = true
-            };
+            // Add a new user with metadata
             var customAppMetadata = new CustomMetadata
             {
                 Amount = 42,
@@ -326,15 +321,22 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Amount = 43,
                 Name = "One off"
             };
-            
-            // set metadata
-            user.SetAppMetadata(customAppMetadata);
-            user.SetUserMetadata(customUserMetadat);
+            var newUserRequest = new UserCreateRequest
+            {
+                Connection = fixture.Connection.Name,
+                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
+                EmailVerified = true,
+                Password = Password
+            };
+            newUserRequest.SetAppMetadata(customAppMetadata);
+            newUserRequest.SetUserMetadata(customUserMetadat);
 
+            var newUserResponse = await fixture.ApiClient.Users.CreateAsync(newUserRequest);
+            fixture.TrackIdentifier(CleanUpType.Users, newUserResponse.UserId);
             // read metadata
-            var appMetadata = user.GetAppMetadata<CustomMetadata>();
-            var userMetadata = user.GetUserMetadata<CustomMetadata>();
-            
+            var appMetadata = newUserRequest.GetAppMetadata<CustomMetadata>();
+            var userMetadata = newUserRequest.GetUserMetadata<CustomMetadata>();
+
             Assert.NotNull(appMetadata);
             Assert.Equal(appMetadata.Amount, customAppMetadata.Amount);
             Assert.Equal(appMetadata.Name, customAppMetadata.Name);
@@ -342,6 +344,39 @@ namespace Auth0.ManagementApi.IntegrationTests
             Assert.NotNull(userMetadata);
             Assert.Equal(userMetadata.Amount, customUserMetadat.Amount);
             Assert.Equal(userMetadata.Name, customUserMetadat.Name);
+
+            // Do some updating
+            var updateUserRequest = new UserUpdateRequest();
+            customAppMetadata = new CustomMetadata
+            {
+                Amount = 1,
+                Name = "Another name"
+            };
+            customUserMetadat = new CustomMetadata
+            {
+                Amount = 44,
+                Name = "Two off"
+            };
+            updateUserRequest.SetAppMetadata(customAppMetadata);
+            updateUserRequest.SetUserMetadata(customUserMetadat);
+            await fixture.ApiClient.Users.UpdateAsync(newUserResponse.UserId, updateUserRequest);
+
+            // Get the user to ensure the metadata was set
+            var user = await fixture.ApiClient.Users.GetAsync(newUserResponse.UserId);
+            appMetadata = newUserRequest.GetAppMetadata<CustomMetadata>();
+            userMetadata = newUserRequest.GetUserMetadata<CustomMetadata>();
+
+            Assert.NotNull(appMetadata);
+            Assert.Equal(appMetadata.Amount, customAppMetadata.Amount);
+            Assert.Equal(appMetadata.Name, customAppMetadata.Name);
+
+            Assert.NotNull(userMetadata);
+            Assert.Equal(userMetadata.Amount, customUserMetadat.Amount);
+            Assert.Equal(userMetadata.Name, customUserMetadat.Name);
+
+            // Delete the user
+            await fixture.ApiClient.Users.DeleteAsync(user.UserId);
+            fixture.UnTrackIdentifier(CleanUpType.Users, newUserResponse.UserId);
         }
 
         [Fact]
