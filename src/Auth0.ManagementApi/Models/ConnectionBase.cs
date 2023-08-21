@@ -45,5 +45,11 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("enabled_clients")]
         public string[] EnabledClients { get; set; }
+
+        /// <summary>
+        /// True to show this connection as a button on login, false otherwise.
+        /// </summary>
+        [JsonProperty("show_as_button")]
+        public bool? ShowAsButton { get; set; }
     }
 }
