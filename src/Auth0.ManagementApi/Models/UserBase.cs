@@ -110,7 +110,6 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         /// <typeparam name="T">Type to be returned.</typeparam>
         /// <returns>An instance of T.</returns>
-        /// <exception cref="ArgumentException"></exception>
         public T GetAppMetadata<T>() where T : class
         {
             if (AppMetadata is JObject jObject)
@@ -126,7 +125,6 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         /// <typeparam name="T">Type to be returned.</typeparam>
         /// <returns>An instance of T.</returns>
-        /// <exception cref="ArgumentException"></exception>
         public T GetUserMetadata<T>() where T : class
         {
             if (UserMetadata is JObject jObject)
