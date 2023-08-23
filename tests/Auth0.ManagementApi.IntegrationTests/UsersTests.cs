@@ -334,8 +334,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             var newUserResponse = await fixture.ApiClient.Users.CreateAsync(newUserRequest);
             fixture.TrackIdentifier(CleanUpType.Users, newUserResponse.UserId);
             // read metadata
-            var appMetadata = newUserRequest.GetAppMetadata<CustomMetadata>();
-            var userMetadata = newUserRequest.GetUserMetadata<CustomMetadata>();
+            var appMetadata = newUserResponse.GetAppMetadata<CustomMetadata>();
+            var userMetadata = newUserResponse.GetUserMetadata<CustomMetadata>();
 
             Assert.NotNull(appMetadata);
             Assert.Equal(appMetadata.Amount, customAppMetadata.Amount);
@@ -363,8 +363,8 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Get the user to ensure the metadata was set
             var user = await fixture.ApiClient.Users.GetAsync(newUserResponse.UserId);
-            appMetadata = newUserRequest.GetAppMetadata<CustomMetadata>();
-            userMetadata = newUserRequest.GetUserMetadata<CustomMetadata>();
+            appMetadata = user.GetAppMetadata<CustomMetadata>();
+            userMetadata = user.GetUserMetadata<CustomMetadata>();
 
             Assert.NotNull(appMetadata);
             Assert.Equal(appMetadata.Amount, customAppMetadata.Amount);
