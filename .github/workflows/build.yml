@@ -22,7 +22,7 @@ jobs:
     - name: DUMP env
       run: echo "AUTH0_AUTHENTICATION_API_URL $AUTH0_AUTHENTICATION_API_URL"
       env:
-        AUTH0_AUTHENTICATION_API_URL: '${{ env.AUTH0_AUTHENTICATION_API_URL }}'
+        AUTH0_AUTHENTICATION_API_URL: '${{ vars.AUTH0_AUTHENTICATION_API_URL }}'
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
