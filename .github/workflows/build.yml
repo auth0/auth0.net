@@ -24,10 +24,10 @@ env:
   BRUCKE_MANAGEMENT_API_CLIENT_SECRET: '${{ secrets.BRUCKE_MANAGEMENT_API_CLIENT_SECRET }}'
   BRUCKE_MANAGEMENT_API_URL: '${{ vars.BRUCKE_MANAGEMENT_API_URL }}'
   BuildConfiguration: '${{ vars.BuildConfiguration }}'
+  CACHE_KEY: '${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}'
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -36,17 +36,63 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
-    - name: DUMP env
-      run: echo "AUTH0_AUTHENTICATION_API_URL $AUTH0_AUTHENTICATION_API_URL"
-      env:
-        AUTH0_AUTHENTICATION_API_URL: '${{ vars.AUTH0_AUTHENTICATION_API_URL }}'
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
+    - name: Save build artifacts
+      uses: actions/cache/save@v3
+      with:
+        path: .
+        key: ${{ env.CACHE_KEY }}
+  test_core: 
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore build artifacts
+      uses: actions/cache/restore@v3
+      with:
+        path: .
+        key: ${{ env.CACHE_KEY }}
     - name: Test Core
       run: dotnet test tests/Auth0.Core.UnitTests/Auth0.Core.UnitTests.csproj
+  test_auth:
+    needs: test_core
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore build artifacts
+      uses: actions/cache/restore@v3
+      with:
+        path: .
+        key: ${{ env.CACHE_KEY }}
     - name: Test Authentication API
       run: dotnet test tests/Auth0.AuthenticationApi.IntegrationTests/Auth0.AuthenticationApi.IntegrationTests.csproj
+  test_management:
+    needs: test_auth
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore build artifacts
+      uses: actions/cache/restore@v3
+      with:
+        path: .
+        key: ${{ env.CACHE_KEY }}
     - name: Test Management API
       run: dotnet test tests/Auth0.ManagementApi.IntegrationTests/Auth0.ManagementApi.IntegrationTests.csproj
