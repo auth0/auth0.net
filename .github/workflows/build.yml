@@ -21,3 +21,9 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
+    - name: Test Core
+      run: dotnet test tests/Auth0.Core.UnitTests/Auth0.Core.UnitTests.csproj
+    - name: Test Authentication API
+      run: dotnet test tests/Auth0.AuthenticationApi.IntegrationTests/Auth0.AuthenticationApi.IntegrationTests.csproj
+    - name: Test Management API
+      run: dotnet test tests/Auth0.ManagementApi.IntegrationTests/Auth0.ManagementApi.IntegrationTests.csproj
