@@ -19,6 +19,10 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
+    - name: DUMP env
+      run: echo "AUTH0_AUTHENTICATION_API_URL: $AUTH0_AUTHENTICATION_API_URL"
+      env:
+        AUTH0_AUTHENTICATION_API_URL: '${{ env.AUTH0_AUTHENTICATION_API_URL }}'
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
