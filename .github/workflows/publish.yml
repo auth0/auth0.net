@@ -41,8 +41,8 @@ jobs:
         path: ${{ env.NuGetDirectory }}/*.nupkg
 
   publish_nuget:
-    if: github.event_name == 'release'
     name: 'Publish NuGet'
+    environment: release
     runs-on: ubuntu-latest
     needs: [ create_nuget ]
     steps:
