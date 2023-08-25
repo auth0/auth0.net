@@ -1,0 +1,63 @@
+name: Publish Release
+
+on:
+  workflow_dispatch:
+  release:
+    types:
+      - published
+
+env:
+  NuGetDirectory: ${{ github.workspace}}/nuget
+
+defaults:
+  run:
+    shell: pwsh
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  create_nuget:
+    name: 'Create NuGet'
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+
+    - run: dotnet pack src/**/*.csproj --configuration Release --output ${{ env.NuGetDirectory }}
+
+    - uses: actions/upload-artifact@v3
+      with:
+        name: nuget
+        if-no-files-found: error
+        retention-days: 7
+        path: ${{ env.NuGetDirectory }}/*.nupkg
+
+  publish_nuget:
+    name: 'Publish NuGet'
+    environment: release
+    runs-on: ubuntu-latest
+    needs: [ create_nuget ]
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: nuget
+          path: ${{ env.NuGetDirectory }}
+
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Publish NuGet package
+        run: |
+          foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}" -Recurse -Include *.nupkg)) {
+              dotnet nuget push $file --api-key "${{ secrets.NUGET_APIKEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+          }
