@@ -31,7 +31,9 @@ jobs:
       with:
         dotnet-version: 6.0.x
 
-    - run: dotnet pack src/**/*.csproj --configuration Release --output ${{ env.NuGetDirectory }}
+    - run: dotnet pack src/Auth0.Core/Auth0.Core.csproj --configuration Release --output ${{ env.NuGetDirectory }}
+    - run: dotnet pack src/Auth0.AuthenticationApi/Auth0.AuthenticationApi.csproj --configuration Release --output ${{ env.NuGetDirectory }}
+    - run: dotnet pack src/Auth0.ManagementApi/Auth0.ManagementApi.csproj --configuration Release --output ${{ env.NuGetDirectory }}
 
     - uses: actions/upload-artifact@v3
       with:
