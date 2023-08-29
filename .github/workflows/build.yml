@@ -48,7 +48,7 @@ jobs:
   test_core: 
     needs: build
     runs-on: ubuntu-latest
-
+    name: Test Auth0.Core
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET
@@ -65,7 +65,7 @@ jobs:
   test_auth:
     needs: test_core
     runs-on: ubuntu-latest
-
+    name: Test Auth0.AuthenticationApi
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET
@@ -82,7 +82,7 @@ jobs:
   test_management:
     needs: test_auth
     runs-on: ubuntu-latest
-
+    name: Test Auth0.ManagementApi
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET
