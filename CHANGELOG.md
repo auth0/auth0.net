@@ -1,5 +1,11 @@
 # Change Log
 
+## [7.22.3](https://github.com/auth0/auth0.net/tree/7.22.3) (2023-08-29)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.22.2...7.22.3)
+
+**Changed**
+- added generic get/set metadata methods on UserBase [\#646](https://github.com/auth0/auth0.net/pull/646) ([MichaelPruefer](https://github.com/MichaelPruefer))
+
 ## [7.22.2](https://github.com/auth0/auth0.net/tree/7.22.2) (2023-08-14)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.22.1...7.22.2)
 
