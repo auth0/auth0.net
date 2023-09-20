@@ -45,5 +45,11 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("enabled_clients")]
         public string[] EnabledClients { get; set; }
+
+        /// <summary>
+        /// Whether the connection is domain level (true), or not (false).
+        /// </summary>
+        [JsonProperty("is_domain_connection")]
+        public bool IsDomainConnection { get; set; }
     }
 }
