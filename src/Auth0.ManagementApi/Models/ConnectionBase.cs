@@ -51,5 +51,11 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("show_as_button")]
         public bool? ShowAsButton { get; set; }
+      
+        /// <summary>
+        /// Whether the connection is domain level (true), or not (false).
+        /// </summary>
+        [JsonProperty("is_domain_connection")]
+        public bool IsDomainConnection { get; set; }
     }
 }

@@ -20985,6 +20985,38 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.UserBase.FullName
   nameWithType: UserBase.FullName
+- uid: Auth0.ManagementApi.Models.UserBase.GetAppMetadata*
+  name: GetAppMetadata
+  href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_GetAppMetadata_
+  commentId: Overload:Auth0.ManagementApi.Models.UserBase.GetAppMetadata
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.UserBase.GetAppMetadata
+  nameWithType: UserBase.GetAppMetadata
+- uid: Auth0.ManagementApi.Models.UserBase.GetAppMetadata``1
+  name: GetAppMetadata<T>()
+  href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_GetAppMetadata__1
+  commentId: M:Auth0.ManagementApi.Models.UserBase.GetAppMetadata``1
+  name.vb: GetAppMetadata(Of T)()
+  fullName: Auth0.ManagementApi.Models.UserBase.GetAppMetadata<T>()
+  fullName.vb: Auth0.ManagementApi.Models.UserBase.GetAppMetadata(Of T)()
+  nameWithType: UserBase.GetAppMetadata<T>()
+  nameWithType.vb: UserBase.GetAppMetadata(Of T)()
+- uid: Auth0.ManagementApi.Models.UserBase.GetUserMetadata*
+  name: GetUserMetadata
+  href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_GetUserMetadata_
+  commentId: Overload:Auth0.ManagementApi.Models.UserBase.GetUserMetadata
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.UserBase.GetUserMetadata
+  nameWithType: UserBase.GetUserMetadata
+- uid: Auth0.ManagementApi.Models.UserBase.GetUserMetadata``1
+  name: GetUserMetadata<T>()
+  href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_GetUserMetadata__1
+  commentId: M:Auth0.ManagementApi.Models.UserBase.GetUserMetadata``1
+  name.vb: GetUserMetadata(Of T)()
+  fullName: Auth0.ManagementApi.Models.UserBase.GetUserMetadata<T>()
+  fullName.vb: Auth0.ManagementApi.Models.UserBase.GetUserMetadata(Of T)()
+  nameWithType: UserBase.GetUserMetadata<T>()
+  nameWithType.vb: UserBase.GetUserMetadata(Of T)()
 - uid: Auth0.ManagementApi.Models.UserBase.LastName
   name: LastName
   href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_LastName
@@ -21050,6 +21082,38 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.UserBase.Picture
   nameWithType: UserBase.Picture
+- uid: Auth0.ManagementApi.Models.UserBase.SetAppMetadata*
+  name: SetAppMetadata
+  href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_SetAppMetadata_
+  commentId: Overload:Auth0.ManagementApi.Models.UserBase.SetAppMetadata
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.UserBase.SetAppMetadata
+  nameWithType: UserBase.SetAppMetadata
+- uid: Auth0.ManagementApi.Models.UserBase.SetAppMetadata``1(``0)
+  name: SetAppMetadata<T>(T)
+  href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_SetAppMetadata__1___0_
+  commentId: M:Auth0.ManagementApi.Models.UserBase.SetAppMetadata``1(``0)
+  name.vb: SetAppMetadata(Of T)(T)
+  fullName: Auth0.ManagementApi.Models.UserBase.SetAppMetadata<T>(T)
+  fullName.vb: Auth0.ManagementApi.Models.UserBase.SetAppMetadata(Of T)(T)
+  nameWithType: UserBase.SetAppMetadata<T>(T)
+  nameWithType.vb: UserBase.SetAppMetadata(Of T)(T)
+- uid: Auth0.ManagementApi.Models.UserBase.SetUserMetadata*
+  name: SetUserMetadata
+  href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_SetUserMetadata_
+  commentId: Overload:Auth0.ManagementApi.Models.UserBase.SetUserMetadata
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.UserBase.SetUserMetadata
+  nameWithType: UserBase.SetUserMetadata
+- uid: Auth0.ManagementApi.Models.UserBase.SetUserMetadata``1(``0)
+  name: SetUserMetadata<T>(T)
+  href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_SetUserMetadata__1___0_
+  commentId: M:Auth0.ManagementApi.Models.UserBase.SetUserMetadata``1(``0)
+  name.vb: SetUserMetadata(Of T)(T)
+  fullName: Auth0.ManagementApi.Models.UserBase.SetUserMetadata<T>(T)
+  fullName.vb: Auth0.ManagementApi.Models.UserBase.SetUserMetadata(Of T)(T)
+  nameWithType: UserBase.SetUserMetadata<T>(T)
+  nameWithType.vb: UserBase.SetUserMetadata(Of T)(T)
 - uid: Auth0.ManagementApi.Models.UserBase.UserMetadata
   name: UserMetadata
   href: api/Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_UserMetadata
