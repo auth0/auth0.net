@@ -88,7 +88,7 @@ namespace Auth0.ManagementApi.Models
         }
 
         /// <summary>
-        /// The external ID used to correlate multiple jobs
+        /// Customer-defined id.
         /// </summary>
         [JsonProperty("external_id")]
         public int ExternalId { get; set; }
