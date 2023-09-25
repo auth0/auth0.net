@@ -47,6 +47,12 @@ namespace Auth0.ManagementApi.Models
         public string[] EnabledClients { get; set; }
 
         /// <summary>
+        /// True to show this connection as a button on login, false otherwise.
+        /// </summary>
+        [JsonProperty("show_as_button")]
+        public bool? ShowAsButton { get; set; }
+      
+        /// <summary>
         /// Whether the connection is domain level (true), or not (false).
         /// </summary>
         [JsonProperty("is_domain_connection")]
