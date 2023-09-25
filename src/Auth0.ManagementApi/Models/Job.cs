@@ -86,5 +86,11 @@ namespace Auth0.ManagementApi.Models
             get { return TimeSpan.FromSeconds(TimeLeftSeconds); }
             set { TimeLeftSeconds = (int)value.TotalSeconds; }
         }
+
+        /// <summary>
+        /// The external ID used to correlate multiple jobs
+        /// </summary>
+        [JsonProperty("external_id")]
+        public int ExternalId { get; set; }
     }
 }
