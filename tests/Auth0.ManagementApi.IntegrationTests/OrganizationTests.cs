@@ -219,9 +219,11 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             try
             {
-                var members = await RetryUtils.Retry(() => fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new Paging.PaginationInfo()), members => members.Count != 2);
+                var members = await RetryUtils.Retry(() => fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new OrganizationGetAllMembersRequest { Fields = "name", IncludeFields = false }, new Paging.PaginationInfo()), members => members.Count != 2);
 
                 members.Count.Should().Be(2);
+                members[0].Name.Should().BeNull();
+                members[1].Name.Should().BeNull();
 
                 await fixture.ApiClient.Organizations.DeleteMemberAsync(ExistingOrganizationId, new OrganizationDeleteMembersRequest
                 {
@@ -275,10 +277,12 @@ namespace Auth0.ManagementApi.IntegrationTests
 
                 await RetryUtils.Retry(() => fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new Paging.CheckpointPaginationInfo(2)), response => response.Count != 2);
 
-                var firstCheckPointPaginationRequest = await fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new Paging.CheckpointPaginationInfo(1));
+                var firstCheckPointPaginationRequest = await fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new OrganizationGetAllMembersRequest { Fields = "name", IncludeFields = false }, new Paging.CheckpointPaginationInfo(1));
                 var secondCheckPointPaginationRequest = await fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new Paging.CheckpointPaginationInfo(1, firstCheckPointPaginationRequest.Paging.Next));
 
+                firstCheckPointPaginationRequest[0].Name.Should().BeNull();
                 secondCheckPointPaginationRequest.Count.Should().Be(1);
+                secondCheckPointPaginationRequest[0].Name.Should().NotBeNull();
                 secondCheckPointPaginationRequest.Paging.Next.Should().NotBeNullOrEmpty();
 
             }

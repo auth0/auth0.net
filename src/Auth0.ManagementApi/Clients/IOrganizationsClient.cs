@@ -129,6 +129,16 @@ namespace Auth0.ManagementApi.Clients
     Task<IPagedList<OrganizationMember>> GetAllMembersAsync(string organizationId, PaginationInfo pagination, CancellationToken cancellationToken = default);
 
     /// <summary>
+    /// Retrieves a list of all organization members.
+    /// </summary>
+    /// <param name="organizationId">The ID of the organization for which you want to retrieve the members.</param>
+    /// <param name="request">Specifies criteria to use when querying organization members.</param>
+    /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>An <see cref="IPagedList{OrganizationMember}"/> containing the organization members.</returns>
+    Task<IPagedList<OrganizationMember>> GetAllMembersAsync(string organizationId, OrganizationGetAllMembersRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default);
+
+    /// <summary>
     /// Retrieves a list of all organization members using checkpoint <paramref name="pagination"/>.
     /// </summary>
     /// <param name="organizationId">The ID of the organization for which you want to retrieve the members.</param>
@@ -136,6 +146,16 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
     /// <returns>An <see cref="ICheckpointPagedList{OrganizationMember}"/> containing the organization members.</returns>
     Task<ICheckpointPagedList<OrganizationMember>> GetAllMembersAsync(string organizationId, CheckpointPaginationInfo pagination, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Retrieves a list of all organization members using checkpoint <paramref name="pagination"/>.
+    /// </summary>
+    /// <param name="organizationId">The ID of the organization for which you want to retrieve the members.</param>
+    /// <param name="request">Specifies criteria to use when querying organization members.</param>
+    /// <param name="pagination">Specifies <see cref="CheckpointPaginationInfo"/> to use in requesting checkpoint-paginated results.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>An <see cref="ICheckpointPagedList{OrganizationMember}"/> containing the organization members.</returns>
+    Task<ICheckpointPagedList<OrganizationMember>> GetAllMembersAsync(string organizationId, OrganizationGetAllMembersRequest request, CheckpointPaginationInfo pagination, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Deletes members from an organization.
