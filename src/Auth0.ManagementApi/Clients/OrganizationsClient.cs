@@ -219,6 +219,19 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{OrganizationMember}"/> containing the organization members.</returns>
         public Task<IPagedList<OrganizationMember>> GetAllMembersAsync(string organizationId, PaginationInfo pagination, CancellationToken cancellationToken = default)
         {
+            return GetAllMembersAsync(organizationId, null, pagination, cancellationToken);
+        }
+
+        /// <summary>
+        /// Retrieves a list of all organization members.
+        /// </summary>
+        /// <param name="organizationId">The ID of the organization for which you want to retrieve the members.</param>
+        /// <param name="request">Specifies criteria to use when querying clients.</param>
+        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>An <see cref="IPagedList{OrganizationMember}"/> containing the organization members.</returns>
+        public Task<IPagedList<OrganizationMember>> GetAllMembersAsync(string organizationId, OrganizationGetAllMembersRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default)
+        {
             if (pagination == null)
                 throw new ArgumentNullException(nameof(pagination));
 
@@ -228,6 +241,12 @@ namespace Auth0.ManagementApi.Clients
                 {"per_page", pagination.PerPage.ToString()},
                 {"include_totals", pagination.IncludeTotals.ToString().ToLower()},
             };
+
+            if (request != null)
+            {
+                queryStrings.Add("fields", request.Fields);
+                queryStrings.Add("include_fields", request.IncludeFields?.ToString().ToLower());
+            }
 
             return Connection.GetAsync<IPagedList<OrganizationMember>>(BuildUri($"organizations/{EncodePath(organizationId)}/members", queryStrings), DefaultHeaders, membersConverters, cancellationToken);
         }
