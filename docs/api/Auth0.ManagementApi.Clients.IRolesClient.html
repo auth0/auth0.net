@@ -1,804 +1,715 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Interface IRolesClient
  </title>
-      <meta name="viewport" content="width=device-width">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Interface IRolesClient
  ">
-    
-      <link rel="shortcut icon" href="../images/logo.png">
-      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
-      <link rel="stylesheet" href="../styles/docfx.css">
-      <link rel="stylesheet" href="../styles/main.css">
-      <meta property="docfx:navrel" content="../toc.html">
-      <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      
+      <link rel="icon" href="../images/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/auth0/auth0.net/new/feat/modern-api-docs/apiSpec/new?filename=Auth0_ManagementApi_Clients_IRolesClient.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.Clients.IRolesClient%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
 
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../images/logo.svg" alt="">
-              </a>
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
             </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
-              </form>
-            </div>
-          </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
           </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
+      </nav>
+    </header>
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-        </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Clients.IRolesClient">
-
-
-
-  <h1 id="Auth0_ManagementApi_Clients_IRolesClient" data-uid="Auth0.ManagementApi.Clients.IRolesClient" class="text-break">Interface IRolesClient
-</h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.html">Auth0</a>.<a class="xref" href="Auth0.ManagementApi.html">ManagementApi</a>.<a class="xref" href="Auth0.ManagementApi.Clients.html">Clients</a></h6>
-  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
-  <h5 id="Auth0_ManagementApi_Clients_IRolesClient_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IRolesClient</code></pre>
-  </div>
-  <h3 id="methods">Methods
-</h3>
-  <a id="Auth0_ManagementApi_Clients_IRolesClient_AssignPermissionsAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.AssignPermissionsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IRolesClient_AssignPermissionsAsync_System_String_Auth0_ManagementApi_Models_AssignPermissionsRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.AssignPermissionsAsync(System.String,Auth0.ManagementApi.Models.AssignPermissionsRequest,System.Threading.CancellationToken)">AssignPermissionsAsync(string, AssignPermissionsRequest, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Assign permissions to a role.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task AssignPermissionsAsync(string id, AssignPermissionsRequest request, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The ID of the role to assign permissions to.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a> containing the permission identifiers to assign to the role.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous assignment operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Auth0_ManagementApi_Clients_IRolesClient_AssignUsersAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.AssignUsersAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IRolesClient_AssignUsersAsync_System_String_Auth0_ManagementApi_Models_AssignUsersRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.AssignUsersAsync(System.String,Auth0.ManagementApi.Models.AssignUsersRequest,System.Threading.CancellationToken)">AssignUsersAsync(string, AssignUsersRequest, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Assigns Users to a role.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task AssignUsersAsync(string id, AssignUsersRequest request, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The ID of the role to assign users to.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.AssignUsersRequest.html">AssignUsersRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.AssignUsersRequest.html">AssignUsersRequest</a> containing the user IDs to assign to the role.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous assign operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Auth0_ManagementApi_Clients_IRolesClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.CreateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IRolesClient_CreateAsync_Auth0_ManagementApi_Models_RoleCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.CreateAsync(Auth0.ManagementApi.Models.RoleCreateRequest,System.Threading.CancellationToken)">CreateAsync(RoleCreateRequest, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Creates a new role according to the request.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;Role&gt; CreateAsync(RoleCreateRequest request, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.RoleCreateRequest.html">RoleCreateRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.RoleCreateRequest.html">RoleCreateRequest</a> containing the details of the role to create.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>&gt;</td>
-        <td><p>The newly created <a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Auth0_ManagementApi_Clients_IRolesClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.DeleteAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IRolesClient_DeleteAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.DeleteAsync(System.String,System.Threading.CancellationToken)">DeleteAsync(string, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Deletes a role.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task DeleteAsync(string id, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The ID of the role to delete.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous delete operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Auth0_ManagementApi_Clients_IRolesClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IRolesClient_GetAllAsync_Auth0_ManagementApi_Models_GetRolesRequest_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetAllAsync(Auth0.ManagementApi.Models.GetRolesRequest,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetAllAsync(GetRolesRequest, PaginationInfo, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Retrieves a list of all roles.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;Role&gt;&gt; GetAllAsync(GetRolesRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.GetRolesRequest.html">GetRolesRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>Specifies criteria to use when querying roles.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></td>
-        <td><span class="parametername">pagination</span></td>
-        <td><p>Specifies pagination info to use when requesting paged results.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>&gt;&gt;</td>
-        <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the roles requested.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Auth0_ManagementApi_Clients_IRolesClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IRolesClient_GetAllAsync_Auth0_ManagementApi_Models_GetRolesRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetAllAsync(Auth0.ManagementApi.Models.GetRolesRequest,System.Threading.CancellationToken)">GetAllAsync(GetRolesRequest, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Retrieves a list of all roles.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;Role&gt;&gt; GetAllAsync(GetRolesRequest request, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.GetRolesRequest.html">GetRolesRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>Specifies criteria to use when querying roles.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>&gt;&gt;</td>
-        <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the roles</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Auth0_ManagementApi_Clients_IRolesClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IRolesClient_GetAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetAsync(System.String,System.Threading.CancellationToken)">GetAsync(string, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Retrieves a role by its ID.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;Role&gt; GetAsync(string id, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The ID of the role to retrieve.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>&gt;</td>
-        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a> that was requested.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Auth0_ManagementApi_Clients_IRolesClient_GetPermissionsAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetPermissionsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IRolesClient_GetPermissionsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetPermissionsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetPermissionsAsync(string, PaginationInfo, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets the permissions assigned to a role.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;Permission&gt;&gt; GetPermissionsAsync(string id, PaginationInfo pagination, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The id of the role to obtain the permissions for.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></td>
-        <td><span class="parametername">pagination</span></td>
-        <td><p>Specifies <a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a> to use in requesting paged results.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Permission.html">Permission</a>&gt;&gt;</td>
-        <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the assigned permissions for this role.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Auth0_ManagementApi_Clients_IRolesClient_GetUsersAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetUsersAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IRolesClient_GetUsersAsync_System_String_Auth0_ManagementApi_Paging_CheckpointPaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetUsersAsync(System.String,Auth0.ManagementApi.Paging.CheckpointPaginationInfo,System.Threading.CancellationToken)">GetUsersAsync(string, CheckpointPaginationInfo, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Retrieves a list of users associated with a role.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;ICheckpointPagedList&lt;AssignedUser&gt;&gt; GetUsersAsync(string id, CheckpointPaginationInfo pagination, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The ID of the role to query.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Paging.CheckpointPaginationInfo.html">CheckpointPaginationInfo</a></td>
-        <td><span class="parametername">pagination</span></td>
-        <td><p>Specifies <a class="xref" href="Auth0.ManagementApi.Paging.CheckpointPaginationInfo.html">CheckpointPaginationInfo</a> to use in requesting checkpoint-paginated results.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.ICheckpointPagedList-1.html">ICheckpointPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AssignedUser.html">AssignedUser</a>&gt;&gt;</td>
-        <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the assigned users.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Auth0_ManagementApi_Clients_IRolesClient_GetUsersAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetUsersAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IRolesClient_GetUsersAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetUsersAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetUsersAsync(string, PaginationInfo, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Retrieves a list of users associated with a role.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;AssignedUser&gt;&gt; GetUsersAsync(string id, PaginationInfo pagination, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The ID of the role to query.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></td>
-        <td><span class="parametername">pagination</span></td>
-        <td><p>Specifies <a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a> to use in requesting paged results.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AssignedUser.html">AssignedUser</a>&gt;&gt;</td>
-        <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the assigned users.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Auth0_ManagementApi_Clients_IRolesClient_GetUsersAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetUsersAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IRolesClient_GetUsersAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetUsersAsync(System.String,System.Threading.CancellationToken)">GetUsersAsync(string, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Retrieves a list of users associated with a role.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;AssignedUser&gt;&gt; GetUsersAsync(string id, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The ID of the role to query.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AssignedUser.html">AssignedUser</a>&gt;&gt;</td>
-        <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the assigned users.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Auth0_ManagementApi_Clients_IRolesClient_RemovePermissionsAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.RemovePermissionsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IRolesClient_RemovePermissionsAsync_System_String_Auth0_ManagementApi_Models_AssignPermissionsRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.RemovePermissionsAsync(System.String,Auth0.ManagementApi.Models.AssignPermissionsRequest,System.Threading.CancellationToken)">RemovePermissionsAsync(string, AssignPermissionsRequest, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Remove permissions assigned to a role.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task RemovePermissionsAsync(string id, AssignPermissionsRequest request, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The ID of the role to remove permissions from.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a> containing the permission identifiers to remove from the role.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous remove operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Auth0_ManagementApi_Clients_IRolesClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.UpdateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IRolesClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_RoleUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.RoleUpdateRequest,System.Threading.CancellationToken)">UpdateAsync(string, RoleUpdateRequest, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Updates a role.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;Role&gt; UpdateAsync(string id, RoleUpdateRequest request, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The ID of the role to update.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.RoleUpdateRequest.html">RoleUpdateRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.RoleUpdateRequest.html">RoleUpdateRequest</a> containing the information to update.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>&gt;</td>
-        <td><p>The newly updated <a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-
-</article>
-          </div>
-
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      
-      <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
 
-    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Auth0.ManagementApi.Clients.IRolesClient">
+
+
+
+  <h1 id="Auth0_ManagementApi_Clients_IRolesClient" data-uid="Auth0.ManagementApi.Clients.IRolesClient" class="text-break">
+    Interface IRolesClient
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/IRolesClient.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Auth0.html">Auth0</a>.<a class="xref" href="Auth0.ManagementApi.html">ManagementApi</a>.<a class="xref" href="Auth0.ManagementApi.Clients.html">Clients</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Auth0.ManagementApi.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IRolesClient</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Auth0_ManagementApi_Clients_IRolesClient_AssignPermissionsAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.AssignPermissionsAsync*"></a>
+
+  <h3 id="Auth0_ManagementApi_Clients_IRolesClient_AssignPermissionsAsync_System_String_Auth0_ManagementApi_Models_AssignPermissionsRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.AssignPermissionsAsync(System.String,Auth0.ManagementApi.Models.AssignPermissionsRequest,System.Threading.CancellationToken)">
+  AssignPermissionsAsync(string, AssignPermissionsRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/IRolesClient.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Assign permissions to a role.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task AssignPermissionsAsync(string id, AssignPermissionsRequest request, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the role to assign permissions to.</p>
+</dd>
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a></dt>
+    <dd><p>A <a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a> containing the permission identifiers to assign to the role.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous assignment operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Auth0_ManagementApi_Clients_IRolesClient_AssignUsersAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.AssignUsersAsync*"></a>
+
+  <h3 id="Auth0_ManagementApi_Clients_IRolesClient_AssignUsersAsync_System_String_Auth0_ManagementApi_Models_AssignUsersRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.AssignUsersAsync(System.String,Auth0.ManagementApi.Models.AssignUsersRequest,System.Threading.CancellationToken)">
+  AssignUsersAsync(string, AssignUsersRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/IRolesClient.cs/#L93"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Assigns Users to a role.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task AssignUsersAsync(string id, AssignUsersRequest request, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the role to assign users to.</p>
+</dd>
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.AssignUsersRequest.html">AssignUsersRequest</a></dt>
+    <dd><p>A <a class="xref" href="Auth0.ManagementApi.Models.AssignUsersRequest.html">AssignUsersRequest</a> containing the user IDs to assign to the role.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous assign operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Auth0_ManagementApi_Clients_IRolesClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.CreateAsync*"></a>
+
+  <h3 id="Auth0_ManagementApi_Clients_IRolesClient_CreateAsync_Auth0_ManagementApi_Models_RoleCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.CreateAsync(Auth0.ManagementApi.Models.RoleCreateRequest,System.Threading.CancellationToken)">
+  CreateAsync(RoleCreateRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/IRolesClient.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new role according to the request.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Role&gt; CreateAsync(RoleCreateRequest request, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.RoleCreateRequest.html">RoleCreateRequest</a></dt>
+    <dd><p>The <a class="xref" href="Auth0.ManagementApi.Models.RoleCreateRequest.html">RoleCreateRequest</a> containing the details of the role to create.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>&gt;</dt>
+    <dd><p>The newly created <a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Auth0_ManagementApi_Clients_IRolesClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.DeleteAsync*"></a>
+
+  <h3 id="Auth0_ManagementApi_Clients_IRolesClient_DeleteAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.DeleteAsync(System.String,System.Threading.CancellationToken)">
+  DeleteAsync(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/IRolesClient.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Deletes a role.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task DeleteAsync(string id, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the role to delete.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous delete operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Auth0_ManagementApi_Clients_IRolesClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetAllAsync*"></a>
+
+  <h3 id="Auth0_ManagementApi_Clients_IRolesClient_GetAllAsync_Auth0_ManagementApi_Models_GetRolesRequest_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetAllAsync(Auth0.ManagementApi.Models.GetRolesRequest,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">
+  GetAllAsync(GetRolesRequest, PaginationInfo, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/IRolesClient.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a list of all roles.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;Role&gt;&gt; GetAllAsync(GetRolesRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.GetRolesRequest.html">GetRolesRequest</a></dt>
+    <dd><p>Specifies criteria to use when querying roles.</p>
+</dd>
+    <dt><code>pagination</code> <a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></dt>
+    <dd><p>Specifies pagination info to use when requesting paged results.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>&gt;&gt;</dt>
+    <dd><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the roles requested.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Auth0_ManagementApi_Clients_IRolesClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetAllAsync*"></a>
+
+  <h3 id="Auth0_ManagementApi_Clients_IRolesClient_GetAllAsync_Auth0_ManagementApi_Models_GetRolesRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetAllAsync(Auth0.ManagementApi.Models.GetRolesRequest,System.Threading.CancellationToken)">
+  GetAllAsync(GetRolesRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/IRolesClient.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a list of all roles.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;Role&gt;&gt; GetAllAsync(GetRolesRequest request, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.GetRolesRequest.html">GetRolesRequest</a></dt>
+    <dd><p>Specifies criteria to use when querying roles.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>&gt;&gt;</dt>
+    <dd><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the roles</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Auth0_ManagementApi_Clients_IRolesClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetAsync*"></a>
+
+  <h3 id="Auth0_ManagementApi_Clients_IRolesClient_GetAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetAsync(System.String,System.Threading.CancellationToken)">
+  GetAsync(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/IRolesClient.cs/#L49"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a role by its ID.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Role&gt; GetAsync(string id, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the role to retrieve.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>&gt;</dt>
+    <dd><p>The <a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a> that was requested.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Auth0_ManagementApi_Clients_IRolesClient_GetPermissionsAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetPermissionsAsync*"></a>
+
+  <h3 id="Auth0_ManagementApi_Clients_IRolesClient_GetPermissionsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetPermissionsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">
+  GetPermissionsAsync(string, PaginationInfo, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/IRolesClient.cs/#L102"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the permissions assigned to a role.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;Permission&gt;&gt; GetPermissionsAsync(string id, PaginationInfo pagination, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The id of the role to obtain the permissions for.</p>
+</dd>
+    <dt><code>pagination</code> <a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></dt>
+    <dd><p>Specifies <a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a> to use in requesting paged results.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Permission.html">Permission</a>&gt;&gt;</dt>
+    <dd><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the assigned permissions for this role.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Auth0_ManagementApi_Clients_IRolesClient_GetUsersAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetUsersAsync*"></a>
+
+  <h3 id="Auth0_ManagementApi_Clients_IRolesClient_GetUsersAsync_System_String_Auth0_ManagementApi_Paging_CheckpointPaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetUsersAsync(System.String,Auth0.ManagementApi.Paging.CheckpointPaginationInfo,System.Threading.CancellationToken)">
+  GetUsersAsync(string, CheckpointPaginationInfo, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/IRolesClient.cs/#L84"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a list of users associated with a role.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;ICheckpointPagedList&lt;AssignedUser&gt;&gt; GetUsersAsync(string id, CheckpointPaginationInfo pagination, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the role to query.</p>
+</dd>
+    <dt><code>pagination</code> <a class="xref" href="Auth0.ManagementApi.Paging.CheckpointPaginationInfo.html">CheckpointPaginationInfo</a></dt>
+    <dd><p>Specifies <a class="xref" href="Auth0.ManagementApi.Paging.CheckpointPaginationInfo.html">CheckpointPaginationInfo</a> to use in requesting checkpoint-paginated results.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.ICheckpointPagedList-1.html">ICheckpointPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AssignedUser.html">AssignedUser</a>&gt;&gt;</dt>
+    <dd><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the assigned users.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Auth0_ManagementApi_Clients_IRolesClient_GetUsersAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetUsersAsync*"></a>
+
+  <h3 id="Auth0_ManagementApi_Clients_IRolesClient_GetUsersAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetUsersAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">
+  GetUsersAsync(string, PaginationInfo, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/IRolesClient.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a list of users associated with a role.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;AssignedUser&gt;&gt; GetUsersAsync(string id, PaginationInfo pagination, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the role to query.</p>
+</dd>
+    <dt><code>pagination</code> <a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></dt>
+    <dd><p>Specifies <a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a> to use in requesting paged results.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AssignedUser.html">AssignedUser</a>&gt;&gt;</dt>
+    <dd><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the assigned users.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Auth0_ManagementApi_Clients_IRolesClient_GetUsersAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetUsersAsync*"></a>
+
+  <h3 id="Auth0_ManagementApi_Clients_IRolesClient_GetUsersAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.GetUsersAsync(System.String,System.Threading.CancellationToken)">
+  GetUsersAsync(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/IRolesClient.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Retrieves a list of users associated with a role.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;AssignedUser&gt;&gt; GetUsersAsync(string id, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the role to query.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AssignedUser.html">AssignedUser</a>&gt;&gt;</dt>
+    <dd><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the assigned users.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Auth0_ManagementApi_Clients_IRolesClient_RemovePermissionsAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.RemovePermissionsAsync*"></a>
+
+  <h3 id="Auth0_ManagementApi_Clients_IRolesClient_RemovePermissionsAsync_System_String_Auth0_ManagementApi_Models_AssignPermissionsRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.RemovePermissionsAsync(System.String,Auth0.ManagementApi.Models.AssignPermissionsRequest,System.Threading.CancellationToken)">
+  RemovePermissionsAsync(string, AssignPermissionsRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/IRolesClient.cs/#L120"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Remove permissions assigned to a role.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task RemovePermissionsAsync(string id, AssignPermissionsRequest request, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the role to remove permissions from.</p>
+</dd>
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a></dt>
+    <dd><p>A <a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a> containing the permission identifiers to remove from the role.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous remove operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Auth0_ManagementApi_Clients_IRolesClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.UpdateAsync*"></a>
+
+  <h3 id="Auth0_ManagementApi_Clients_IRolesClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_RoleUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IRolesClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.RoleUpdateRequest,System.Threading.CancellationToken)">
+  UpdateAsync(string, RoleUpdateRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/IRolesClient.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates a role.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;Role&gt; UpdateAsync(string id, RoleUpdateRequest request, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the role to update.</p>
+</dd>
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.RoleUpdateRequest.html">RoleUpdateRequest</a></dt>
+    <dd><p>A <a class="xref" href="Auth0.ManagementApi.Models.RoleUpdateRequest.html">RoleUpdateRequest</a> containing the information to update.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>&gt;</dt>
+    <dd><p>The newly updated <a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

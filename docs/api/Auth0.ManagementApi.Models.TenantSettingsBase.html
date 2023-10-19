@@ -1,90 +1,134 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Class TenantSettingsBase
  </title>
-      <meta name="viewport" content="width=device-width">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class TenantSettingsBase
  ">
-    
-      <link rel="shortcut icon" href="../images/logo.png">
-      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
-      <link rel="stylesheet" href="../styles/docfx.css">
-      <link rel="stylesheet" href="../styles/main.css">
-      <meta property="docfx:navrel" content="../toc.html">
-      <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      
+      <link rel="icon" href="../images/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/auth0/auth0.net/new/feat/modern-api-docs/apiSpec/new?filename=Auth0_ManagementApi_Models_TenantSettingsBase.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.Models.TenantSettingsBase%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
 
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../images/logo.svg" alt="">
-              </a>
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
             </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
-              </form>
-            </div>
-          </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
           </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
+      </nav>
+    </header>
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase">
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Auth0.ManagementApi.Models.TenantSettingsBase">
 
 
 
-  <h1 id="Auth0_ManagementApi_Models_TenantSettingsBase" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase" class="text-break">Class TenantSettingsBase
-</h1>
-  <div class="markdown level0 summary"><p>Settings for a given tenant.</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><span class="xref">TenantSettingsBase</span></div>
-      <div class="level2"><a class="xref" href="Auth0.ManagementApi.Models.TenantSettings.html">TenantSettings</a></div>
-      <div class="level2"><a class="xref" href="Auth0.ManagementApi.Models.TenantSettingsUpdateRequest.html">TenantSettingsUpdateRequest</a></div>
+  <h1 id="Auth0_ManagementApi_Models_TenantSettingsBase" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase" class="text-break">
+    Class TenantSettingsBase
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/TenantSettingsBase.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Auth0.html">Auth0</a>.<a class="xref" href="Auth0.ManagementApi.html">ManagementApi</a>.<a class="xref" href="Auth0.ManagementApi.Models.html">Models</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Auth0.ManagementApi.dll</dd></dl>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+  <div class="markdown summary"><p>Settings for a given tenant.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class TenantSettingsBase</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">TenantSettingsBase</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="Auth0.ManagementApi.Models.TenantSettings.html">TenantSettings</a></div>
+      <div><a class="xref" href="Auth0.ManagementApi.Models.TenantSettingsUpdateRequest.html">TenantSettingsUpdateRequest</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -106,496 +150,630 @@
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.html">Auth0</a>.<a class="xref" href="Auth0.ManagementApi.html">ManagementApi</a>.<a class="xref" href="Auth0.ManagementApi.Models.html">Models</a></h6>
-  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
-  <h5 id="Auth0_ManagementApi_Models_TenantSettingsBase_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class TenantSettingsBase</code></pre>
-  </div>
-  <h3 id="properties">Properties
-</h3>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_AllowedLogoutUrls_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.AllowedLogoutUrls*"></a>
-  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_AllowedLogoutUrls" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.AllowedLogoutUrls">AllowedLogoutUrls</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_TenantSettingsBase_AllowedLogoutUrls" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.AllowedLogoutUrls">
+  AllowedLogoutUrls
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/TenantSettingsBase.cs/#L89"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>A set of URLs that are valid to redirect to after logout from Auth0.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;allowed_logout_urls&quot;)]
 public string[] AllowedLogoutUrls { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_ChangePassword_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.ChangePassword*"></a>
-  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_ChangePassword" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.ChangePassword">ChangePassword</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_TenantSettingsBase_ChangePassword" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.ChangePassword">
+  ChangePassword
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/TenantSettingsBase.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Change Password page customization.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;change_password&quot;)]
 public TenantChangePassword ChangePassword { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.TenantChangePassword.html">TenantChangePassword</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Models.TenantChangePassword.html">TenantChangePassword</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_DefaultAudience_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.DefaultAudience*"></a>
-  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_DefaultAudience" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.DefaultAudience">DefaultAudience</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_TenantSettingsBase_DefaultAudience" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.DefaultAudience">
+  DefaultAudience
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/TenantSettingsBase.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Default audience for API Authorization.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;default_audience&quot;)]
 public string DefaultAudience { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_DefaultDirectory_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.DefaultDirectory*"></a>
-  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_DefaultDirectory" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.DefaultDirectory">DefaultDirectory</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_TenantSettingsBase_DefaultDirectory" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.DefaultDirectory">
+  DefaultDirectory
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/TenantSettingsBase.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Name of the connection that will be used for password grants at the token endpoint. Only the following connection types are supported: LDAP, AD, Database Connections, Passwordless, Windows Azure Active Directory, ADFS.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;default_directory&quot;)]
 public string DefaultDirectory { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_DeviceFlow_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.DeviceFlow*"></a>
-  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_DeviceFlow" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.DeviceFlow">DeviceFlow</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_TenantSettingsBase_DeviceFlow" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.DeviceFlow">
+  DeviceFlow
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/TenantSettingsBase.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Tenant Device Flow configuration.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;device_flow&quot;)]
 public TenantDeviceFlow DeviceFlow { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.TenantDeviceFlow.html">TenantDeviceFlow</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Models.TenantDeviceFlow.html">TenantDeviceFlow</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_EnabledLocales_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.EnabledLocales*"></a>
-  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_EnabledLocales" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.EnabledLocales">EnabledLocales</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_TenantSettingsBase_EnabledLocales" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.EnabledLocales">
+  EnabledLocales
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/TenantSettingsBase.cs/#L119"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Supported locales for the UI.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;enabled_locales&quot;)]
 public string[] EnabledLocales { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_ErrorPage_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.ErrorPage*"></a>
-  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_ErrorPage" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.ErrorPage">ErrorPage</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_TenantSettingsBase_ErrorPage" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.ErrorPage">
+  ErrorPage
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/TenantSettingsBase.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Tenant error page customization.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;error_page&quot;)]
 public TenantErrorPage ErrorPage { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.TenantErrorPage.html">TenantErrorPage</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Models.TenantErrorPage.html">TenantErrorPage</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_Flags_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.Flags*"></a>
-  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_Flags" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.Flags">Flags</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_TenantSettingsBase_Flags" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.Flags">
+  Flags
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/TenantSettingsBase.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Tenant flags.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;flags&quot;)]
 public TenantFlags Flags { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.TenantFlags.html">TenantFlags</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Models.TenantFlags.html">TenantFlags</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_FriendlyName_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.FriendlyName*"></a>
-  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_FriendlyName" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.FriendlyName">FriendlyName</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_TenantSettingsBase_FriendlyName" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.FriendlyName">
+  FriendlyName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/TenantSettingsBase.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>The friendly name of the tenant.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;friendly_name&quot;)]
 public string FriendlyName { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_GuardianMfaPage_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.GuardianMfaPage*"></a>
-  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_GuardianMfaPage" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.GuardianMfaPage">GuardianMfaPage</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_TenantSettingsBase_GuardianMfaPage" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.GuardianMfaPage">
+  GuardianMfaPage
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/TenantSettingsBase.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Guardian page customization.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;guardian_mfa_page&quot;)]
 public TenantGuardianMfaPage GuardianMfaPage { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.TenantGuardianMfaPage.html">TenantGuardianMfaPage</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Models.TenantGuardianMfaPage.html">TenantGuardianMfaPage</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_IdleSessionLifetime_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.IdleSessionLifetime*"></a>
-  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_IdleSessionLifetime" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.IdleSessionLifetime">IdleSessionLifetime</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_TenantSettingsBase_IdleSessionLifetime" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.IdleSessionLifetime">
+  IdleSessionLifetime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/TenantSettingsBase.cs/#L101"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Force a user to login after they have been inactive for the specified number (unit: hours).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;idle_session_lifetime&quot;)]
 public float? IdleSessionLifetime { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_PictureUrl_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.PictureUrl*"></a>
-  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_PictureUrl" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.PictureUrl">PictureUrl</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_TenantSettingsBase_PictureUrl" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.PictureUrl">
+  PictureUrl
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/TenantSettingsBase.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>The URL of the tenant logo (recommended size: 150x150).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;picture_url&quot;)]
 public string PictureUrl { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_SandboxVersion_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersion*"></a>
-  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_SandboxVersion" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersion">SandboxVersion</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_TenantSettingsBase_SandboxVersion" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersion">
+  SandboxVersion
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/TenantSettingsBase.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>The selected sandbox version to be used for the extensibility environment.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;sandbox_version&quot;)]
 public string SandboxVersion { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_SandboxVersionsAvailable_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersionsAvailable*"></a>
-  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_SandboxVersionsAvailable" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersionsAvailable">SandboxVersionsAvailable</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_TenantSettingsBase_SandboxVersionsAvailable" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SandboxVersionsAvailable">
+  SandboxVersionsAvailable
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/TenantSettingsBase.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>A set of available sandbox versions for the extensibility environment.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;sandbox_versions_available&quot;)]
 public string[] SandboxVersionsAvailable { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>[]</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_SessionCookie_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SessionCookie*"></a>
-  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_SessionCookie" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SessionCookie">SessionCookie</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_TenantSettingsBase_SessionCookie" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SessionCookie">
+  SessionCookie
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/TenantSettingsBase.cs/#L125"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Session cookie configuration</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;session_cookie&quot;)]
 public SessionCookie SessionCookie { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.SessionCookie.html">SessionCookie</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Models.SessionCookie.html">SessionCookie</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_SessionLifetime_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SessionLifetime*"></a>
-  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_SessionLifetime" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SessionLifetime">SessionLifetime</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_TenantSettingsBase_SessionLifetime" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SessionLifetime">
+  SessionLifetime
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/TenantSettingsBase.cs/#L95"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Login session lifetime, how long the session will stay valid (unit: hours).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;session_lifetime&quot;)]
 public float? SessionLifetime { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.single">float</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_SupportEmail_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SupportEmail*"></a>
-  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_SupportEmail" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SupportEmail">SupportEmail</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_TenantSettingsBase_SupportEmail" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SupportEmail">
+  SupportEmail
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/TenantSettingsBase.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>User support email.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;support_email&quot;)]
 public string SupportEmail { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_TenantSettingsBase_SupportUrl_" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SupportUrl*"></a>
-  <h4 id="Auth0_ManagementApi_Models_TenantSettingsBase_SupportUrl" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SupportUrl">SupportUrl</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_TenantSettingsBase_SupportUrl" data-uid="Auth0.ManagementApi.Models.TenantSettingsBase.SupportUrl">
+  SupportUrl
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/TenantSettingsBase.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>User support URL.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;support_url&quot;)]
 public string SupportUrl { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
 
 </article>
-          </div>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
-        </div>
+
+        
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      
-      <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

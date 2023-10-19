@@ -1,327 +1,319 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Interface IEmailTemplatesClient
  </title>
-      <meta name="viewport" content="width=device-width">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Interface IEmailTemplatesClient
  ">
-    
-      <link rel="shortcut icon" href="../images/logo.png">
-      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
-      <link rel="stylesheet" href="../styles/docfx.css">
-      <link rel="stylesheet" href="../styles/main.css">
-      <meta property="docfx:navrel" content="../toc.html">
-      <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      
+      <link rel="icon" href="../images/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/auth0/auth0.net/new/feat/modern-api-docs/apiSpec/new?filename=Auth0_ManagementApi_Clients_IEmailTemplatesClient.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.Clients.IEmailTemplatesClient%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
 
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../images/logo.svg" alt="">
-              </a>
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
             </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
-              </form>
-            </div>
-          </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
           </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
+      </nav>
+    </header>
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
           </div>
-        </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Clients.IEmailTemplatesClient">
-
-
-
-  <h1 id="Auth0_ManagementApi_Clients_IEmailTemplatesClient" data-uid="Auth0.ManagementApi.Clients.IEmailTemplatesClient" class="text-break">Interface IEmailTemplatesClient
-</h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.html">Auth0</a>.<a class="xref" href="Auth0.ManagementApi.html">ManagementApi</a>.<a class="xref" href="Auth0.ManagementApi.Clients.html">Clients</a></h6>
-  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
-  <h5 id="Auth0_ManagementApi_Clients_IEmailTemplatesClient_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IEmailTemplatesClient</code></pre>
-  </div>
-  <h3 id="methods">Methods
-</h3>
-  <a id="Auth0_ManagementApi_Clients_IEmailTemplatesClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.IEmailTemplatesClient.CreateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IEmailTemplatesClient_CreateAsync_Auth0_ManagementApi_Models_EmailTemplateCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IEmailTemplatesClient.CreateAsync(Auth0.ManagementApi.Models.EmailTemplateCreateRequest,System.Threading.CancellationToken)">CreateAsync(EmailTemplateCreateRequest, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Creates a new email template.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;EmailTemplate&gt; CreateAsync(EmailTemplateCreateRequest request, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateCreateRequest.html">EmailTemplateCreateRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateCreateRequest.html">EmailTemplateCreateRequest</a> containing details of the template to create.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a>&gt;</td>
-        <td><p>The newly created <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Auth0_ManagementApi_Clients_IEmailTemplatesClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.IEmailTemplatesClient.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IEmailTemplatesClient_GetAsync_Auth0_ManagementApi_Models_EmailTemplateName_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IEmailTemplatesClient.GetAsync(Auth0.ManagementApi.Models.EmailTemplateName,System.Threading.CancellationToken)">GetAsync(EmailTemplateName, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Gets an email template.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;EmailTemplate&gt; GetAsync(EmailTemplateName templateName, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateName.html">EmailTemplateName</a></td>
-        <td><span class="parametername">templateName</span></td>
-        <td><p>The name of email template you wish to retrieve.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a>&gt;</td>
-        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a> that was requested.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Auth0_ManagementApi_Clients_IEmailTemplatesClient_PatchAsync_" data-uid="Auth0.ManagementApi.Clients.IEmailTemplatesClient.PatchAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IEmailTemplatesClient_PatchAsync_Auth0_ManagementApi_Models_EmailTemplateName_Auth0_ManagementApi_Models_EmailTemplatePatchRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IEmailTemplatesClient.PatchAsync(Auth0.ManagementApi.Models.EmailTemplateName,Auth0.ManagementApi.Models.EmailTemplatePatchRequest,System.Threading.CancellationToken)">PatchAsync(EmailTemplateName, EmailTemplatePatchRequest, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Updates an email template.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;EmailTemplate&gt; PatchAsync(EmailTemplateName templateName, EmailTemplatePatchRequest request, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateName.html">EmailTemplateName</a></td>
-        <td><span class="parametername">templateName</span></td>
-        <td><p>The name of the email template to update.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplatePatchRequest.html">EmailTemplatePatchRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplatePatchRequest.html">EmailTemplatePatchRequest</a> containing details of the template to patch.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a>&gt;</td>
-        <td><p>The newly updated <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Auth0_ManagementApi_Clients_IEmailTemplatesClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.IEmailTemplatesClient.UpdateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IEmailTemplatesClient_UpdateAsync_Auth0_ManagementApi_Models_EmailTemplateName_Auth0_ManagementApi_Models_EmailTemplateUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IEmailTemplatesClient.UpdateAsync(Auth0.ManagementApi.Models.EmailTemplateName,Auth0.ManagementApi.Models.EmailTemplateUpdateRequest,System.Threading.CancellationToken)">UpdateAsync(EmailTemplateName, EmailTemplateUpdateRequest, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Updates an email template.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;EmailTemplate&gt; UpdateAsync(EmailTemplateName templateName, EmailTemplateUpdateRequest request, CancellationToken cancellationToken = default)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateName.html">EmailTemplateName</a></td>
-        <td><span class="parametername">templateName</span></td>
-        <td><p>The name of the email template to patch.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateUpdateRequest.html">EmailTemplateUpdateRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateUpdateRequest.html">EmailTemplateUpdateRequest</a> containing details of the template to update.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a>&gt;</td>
-        <td><p>The newly updated <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-
-</article>
-          </div>
-
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      
-      <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
 
-    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Auth0.ManagementApi.Clients.IEmailTemplatesClient">
+
+
+
+  <h1 id="Auth0_ManagementApi_Clients_IEmailTemplatesClient" data-uid="Auth0.ManagementApi.Clients.IEmailTemplatesClient" class="text-break">
+    Interface IEmailTemplatesClient
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/IEmailTemplatesClient.cs/#L7"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Auth0.html">Auth0</a>.<a class="xref" href="Auth0.ManagementApi.html">ManagementApi</a>.<a class="xref" href="Auth0.ManagementApi.Clients.html">Clients</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Auth0.ManagementApi.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IEmailTemplatesClient</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="Auth0_ManagementApi_Clients_IEmailTemplatesClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.IEmailTemplatesClient.CreateAsync*"></a>
+
+  <h3 id="Auth0_ManagementApi_Clients_IEmailTemplatesClient_CreateAsync_Auth0_ManagementApi_Models_EmailTemplateCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IEmailTemplatesClient.CreateAsync(Auth0.ManagementApi.Models.EmailTemplateCreateRequest,System.Threading.CancellationToken)">
+  CreateAsync(EmailTemplateCreateRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/IEmailTemplatesClient.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Creates a new email template.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;EmailTemplate&gt; CreateAsync(EmailTemplateCreateRequest request, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateCreateRequest.html">EmailTemplateCreateRequest</a></dt>
+    <dd><p>The <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateCreateRequest.html">EmailTemplateCreateRequest</a> containing details of the template to create.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a>&gt;</dt>
+    <dd><p>The newly created <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Auth0_ManagementApi_Clients_IEmailTemplatesClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.IEmailTemplatesClient.GetAsync*"></a>
+
+  <h3 id="Auth0_ManagementApi_Clients_IEmailTemplatesClient_GetAsync_Auth0_ManagementApi_Models_EmailTemplateName_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IEmailTemplatesClient.GetAsync(Auth0.ManagementApi.Models.EmailTemplateName,System.Threading.CancellationToken)">
+  GetAsync(EmailTemplateName, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/IEmailTemplatesClient.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets an email template.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;EmailTemplate&gt; GetAsync(EmailTemplateName templateName, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>templateName</code> <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateName.html">EmailTemplateName</a></dt>
+    <dd><p>The name of email template you wish to retrieve.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a>&gt;</dt>
+    <dd><p>The <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a> that was requested.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Auth0_ManagementApi_Clients_IEmailTemplatesClient_PatchAsync_" data-uid="Auth0.ManagementApi.Clients.IEmailTemplatesClient.PatchAsync*"></a>
+
+  <h3 id="Auth0_ManagementApi_Clients_IEmailTemplatesClient_PatchAsync_Auth0_ManagementApi_Models_EmailTemplateName_Auth0_ManagementApi_Models_EmailTemplatePatchRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IEmailTemplatesClient.PatchAsync(Auth0.ManagementApi.Models.EmailTemplateName,Auth0.ManagementApi.Models.EmailTemplatePatchRequest,System.Threading.CancellationToken)">
+  PatchAsync(EmailTemplateName, EmailTemplatePatchRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/IEmailTemplatesClient.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates an email template.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;EmailTemplate&gt; PatchAsync(EmailTemplateName templateName, EmailTemplatePatchRequest request, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>templateName</code> <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateName.html">EmailTemplateName</a></dt>
+    <dd><p>The name of the email template to update.</p>
+</dd>
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplatePatchRequest.html">EmailTemplatePatchRequest</a></dt>
+    <dd><p>The <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplatePatchRequest.html">EmailTemplatePatchRequest</a> containing details of the template to patch.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a>&gt;</dt>
+    <dd><p>The newly updated <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="Auth0_ManagementApi_Clients_IEmailTemplatesClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.IEmailTemplatesClient.UpdateAsync*"></a>
+
+  <h3 id="Auth0_ManagementApi_Clients_IEmailTemplatesClient_UpdateAsync_Auth0_ManagementApi_Models_EmailTemplateName_Auth0_ManagementApi_Models_EmailTemplateUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IEmailTemplatesClient.UpdateAsync(Auth0.ManagementApi.Models.EmailTemplateName,Auth0.ManagementApi.Models.EmailTemplateUpdateRequest,System.Threading.CancellationToken)">
+  UpdateAsync(EmailTemplateName, EmailTemplateUpdateRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/IEmailTemplatesClient.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Updates an email template.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Task&lt;EmailTemplate&gt; UpdateAsync(EmailTemplateName templateName, EmailTemplateUpdateRequest request, CancellationToken cancellationToken = default)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>templateName</code> <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateName.html">EmailTemplateName</a></dt>
+    <dd><p>The name of the email template to patch.</p>
+</dd>
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateUpdateRequest.html">EmailTemplateUpdateRequest</a></dt>
+    <dd><p>The <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateUpdateRequest.html">EmailTemplateUpdateRequest</a> containing details of the template to update.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a>&gt;</dt>
+    <dd><p>The newly updated <a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

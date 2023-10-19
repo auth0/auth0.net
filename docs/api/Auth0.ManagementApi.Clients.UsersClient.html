@@ -1,93 +1,134 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Class UsersClient
  </title>
-      <meta name="viewport" content="width=device-width">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class UsersClient
  ">
-    
-      <link rel="shortcut icon" href="../images/logo.png">
-      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
-      <link rel="stylesheet" href="../styles/docfx.css">
-      <link rel="stylesheet" href="../styles/main.css">
-      <meta property="docfx:navrel" content="../toc.html">
-      <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      
+      <link rel="icon" href="../images/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/auth0/auth0.net/new/feat/modern-api-docs/apiSpec/new?filename=Auth0_ManagementApi_Clients_UsersClient.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.Clients.UsersClient%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
 
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../images/logo.svg" alt="">
-              </a>
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
             </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
-              </form>
-            </div>
-          </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
           </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
+      </nav>
+    </header>
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Clients.UsersClient">
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Auth0.ManagementApi.Clients.UsersClient">
 
 
 
-  <h1 id="Auth0_ManagementApi_Clients_UsersClient" data-uid="Auth0.ManagementApi.Clients.UsersClient" class="text-break">Class UsersClient
-</h1>
-  <div class="markdown level0 summary"><p>Contains methods to access the /users endpoints.</p>
+  <h1 id="Auth0_ManagementApi_Clients_UsersClient" data-uid="Auth0.ManagementApi.Clients.UsersClient" class="text-break">
+    Class UsersClient
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Auth0.html">Auth0</a>.<a class="xref" href="Auth0.ManagementApi.html">ManagementApi</a>.<a class="xref" href="Auth0.ManagementApi.Clients.html">Clients</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Auth0.ManagementApi.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Contains methods to access the /users endpoints.</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html">BaseClient</a></div>
-    <div class="level2"><span class="xref">UsersClient</span></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class UsersClient : BaseClient, IUsersClient</code></pre>
   </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="Auth0.ManagementApi.Clients.IUsersClient.html">IUsersClient</a></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html">BaseClient</a></div>
+      <div><span class="xref">UsersClient</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Auth0.ManagementApi.Clients.IUsersClient.html">IUsersClient</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_Connection">BaseClient.Connection</a>
     </div>
@@ -124,1624 +165,1338 @@
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.html">Auth0</a>.<a class="xref" href="Auth0.ManagementApi.html">ManagementApi</a>.<a class="xref" href="Auth0.ManagementApi.Clients.html">Clients</a></h6>
-  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
-  <h5 id="Auth0_ManagementApi_Clients_UsersClient_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class UsersClient : BaseClient, IUsersClient</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-</h3>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient__ctor_" data-uid="Auth0.ManagementApi.Clients.UsersClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.UsersClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})">UsersClient(IManagementConnection, Uri, IDictionary&lt;string, string&gt;)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.UsersClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})">
+  UsersClient(IManagementConnection, Uri, IDictionary&lt;string, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Initializes a new instance of <a class="xref" href="Auth0.ManagementApi.Clients.UsersClient.html">UsersClient</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public UsersClient(IManagementConnection connection, Uri baseUri, IDictionary&lt;string, string&gt; defaultHeaders)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a></td>
-        <td><span class="parametername">connection</span></td>
-        <td><p><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a> used to make all API calls.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uri">Uri</a></td>
-        <td><span class="parametername">baseUri</span></td>
-        <td><p><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uri">Uri</a> of the endpoint to use in making API calls.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</td>
-        <td><span class="parametername">defaultHeaders</span></td>
-        <td><p>Dictionary containing default headers included with every request this client makes.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-</h3>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>connection</code> <a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a></dt>
+    <dd><p><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a> used to make all API calls.</p>
+</dd>
+    <dt><code>baseUri</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uri">Uri</a></dt>
+    <dd><p><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uri">Uri</a> of the endpoint to use in making API calls.</p>
+</dd>
+    <dt><code>defaultHeaders</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>Dictionary containing default headers included with every request this client makes.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_AssignPermissionsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.AssignPermissionsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_AssignPermissionsAsync_System_String_Auth0_ManagementApi_Models_AssignPermissionsRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.AssignPermissionsAsync(System.String,Auth0.ManagementApi.Models.AssignPermissionsRequest,System.Threading.CancellationToken)">AssignPermissionsAsync(string, AssignPermissionsRequest, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_AssignPermissionsAsync_System_String_Auth0_ManagementApi_Models_AssignPermissionsRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.AssignPermissionsAsync(System.String,Auth0.ManagementApi.Models.AssignPermissionsRequest,System.Threading.CancellationToken)">
+  AssignPermissionsAsync(string, AssignPermissionsRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L341"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Assign permissions to a user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task AssignPermissionsAsync(string id, AssignPermissionsRequest request, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The ID of the user to assign permissions to.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a> containing the permission identifiers to assign to the user.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous assignment operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the user to assign permissions to.</p>
+</dd>
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a></dt>
+    <dd><p>A <a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a> containing the permission identifiers to assign to the user.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous assignment operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_AssignRolesAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.AssignRolesAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_AssignRolesAsync_System_String_Auth0_ManagementApi_Models_AssignRolesRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.AssignRolesAsync(System.String,Auth0.ManagementApi.Models.AssignRolesRequest,System.Threading.CancellationToken)">AssignRolesAsync(string, AssignRolesRequest, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_AssignRolesAsync_System_String_Auth0_ManagementApi_Models_AssignRolesRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.AssignRolesAsync(System.String,Auth0.ManagementApi.Models.AssignRolesRequest,System.Threading.CancellationToken)">
+  AssignRolesAsync(string, AssignRolesRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Assigns Roles to a user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task AssignRolesAsync(string id, AssignRolesRequest request, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The ID of the user to assign roles to.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.AssignRolesRequest.html">AssignRolesRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.AssignRolesRequest.html">AssignRolesRequest</a> containing the role IDs to assign to the user.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous assign operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the user to assign roles to.</p>
+</dd>
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.AssignRolesRequest.html">AssignRolesRequest</a></dt>
+    <dd><p>A <a class="xref" href="Auth0.ManagementApi.Models.AssignRolesRequest.html">AssignRolesRequest</a> containing the role IDs to assign to the user.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous assign operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.CreateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_CreateAsync_Auth0_ManagementApi_Models_UserCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.CreateAsync(Auth0.ManagementApi.Models.UserCreateRequest,System.Threading.CancellationToken)">CreateAsync(UserCreateRequest, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_CreateAsync_Auth0_ManagementApi_Models_UserCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.CreateAsync(Auth0.ManagementApi.Models.UserCreateRequest,System.Threading.CancellationToken)">
+  CreateAsync(UserCreateRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates a new user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task&lt;User&gt; CreateAsync(UserCreateRequest request, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.UserCreateRequest.html">UserCreateRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.UserCreateRequest.html">UserCreateRequest</a> containing the properties of the user to create.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>&gt;</td>
-        <td><p>The newly created <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.UserCreateRequest.html">UserCreateRequest</a></dt>
+    <dd><p>The <a class="xref" href="Auth0.ManagementApi.Models.UserCreateRequest.html">UserCreateRequest</a> containing the properties of the user to create.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>&gt;</dt>
+    <dd><p>The newly created <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_CreateAuthenticationMethodAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.CreateAuthenticationMethodAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_CreateAuthenticationMethodAsync_System_String_Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.CreateAuthenticationMethodAsync(System.String,Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest,System.Threading.CancellationToken)">CreateAuthenticationMethodAsync(string, AuthenticationMethodCreateRequest, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_CreateAuthenticationMethodAsync_System_String_Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.CreateAuthenticationMethodAsync(System.String,Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest,System.Threading.CancellationToken)">
+  CreateAuthenticationMethodAsync(string, AuthenticationMethodCreateRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L421"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Creates an authentication method for a given user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task&lt;AuthenticationMethod&gt; CreateAuthenticationMethodAsync(string userId, AuthenticationMethodCreateRequest request, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">userId</span></td>
-        <td><p>The ID of the user for which you want to create the authentication method.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html">AuthenticationMethodCreateRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html">AuthenticationMethodCreateRequest</a> containing the properties of the authentication method to create.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>&gt;</td>
-        <td><p>The newly created <a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Auth0_ManagementApi_Clients_UsersClient_CreateAuthenticationMethodAsync_System_String_Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_System_Threading_CancellationToken__remarks">Remarks</h5>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the user for which you want to create the authentication method.</p>
+</dd>
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html">AuthenticationMethodCreateRequest</a></dt>
+    <dd><p>The <a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethodCreateRequest.html">AuthenticationMethodCreateRequest</a> containing the properties of the authentication method to create.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>&gt;</dt>
+    <dd><p>The newly created <a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section" id="Auth0_ManagementApi_Clients_UsersClient_CreateAuthenticationMethodAsync_System_String_Auth0_ManagementApi_Models_Users_AuthenticationMethodCreateRequest_System_Threading_CancellationToken__remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>Authentication methods created via this endpoint will be auto confirmed and should already have verification completed.</p>
 </div>
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.DeleteAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_DeleteAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.UsersClient.DeleteAsync(System.String)">DeleteAsync(string)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_DeleteAsync_System_String_" data-uid="Auth0.ManagementApi.Clients.UsersClient.DeleteAsync(System.String)">
+  DeleteAsync(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Deletes a user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task DeleteAsync(string id)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The id of the user to delete.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous delete operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The id of the user to delete.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous delete operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_DeleteAuthenticationMethodAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.DeleteAuthenticationMethodAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_DeleteAuthenticationMethodAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.DeleteAuthenticationMethodAsync(System.String,System.String,System.Threading.CancellationToken)">DeleteAuthenticationMethodAsync(string, string, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_DeleteAuthenticationMethodAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.DeleteAuthenticationMethodAsync(System.String,System.String,System.Threading.CancellationToken)">
+  DeleteAuthenticationMethodAsync(string, string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L470"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Deletes an authentication method by id,.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task DeleteAuthenticationMethodAsync(string userId, string authenticationMethodId, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">userId</span></td>
-        <td><p>The ID of the user for which you want to delete the authentication methods.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">authenticationMethodId</span></td>
-        <td><p>The ID of the authentication method you want to delete.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous delete operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the user for which you want to delete the authentication methods.</p>
+</dd>
+    <dt><code>authenticationMethodId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the authentication method you want to delete.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous delete operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_DeleteAuthenticationMethodsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.DeleteAuthenticationMethodsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_DeleteAuthenticationMethodsAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.DeleteAuthenticationMethodsAsync(System.String,System.Threading.CancellationToken)">DeleteAuthenticationMethodsAsync(string, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_DeleteAuthenticationMethodsAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.DeleteAuthenticationMethodsAsync(System.String,System.Threading.CancellationToken)">
+  DeleteAuthenticationMethodsAsync(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L458"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Deletes all authentication methods for the given user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task DeleteAuthenticationMethodsAsync(string userId, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">userId</span></td>
-        <td><p>The ID of the user for which you want to update the authentication methods.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous delete operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the user for which you want to update the authentication methods.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous delete operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_DeleteMultifactorProviderAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.DeleteMultifactorProviderAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_DeleteMultifactorProviderAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.DeleteMultifactorProviderAsync(System.String,System.String,System.Threading.CancellationToken)">DeleteMultifactorProviderAsync(string, string, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_DeleteMultifactorProviderAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.DeleteMultifactorProviderAsync(System.String,System.String,System.Threading.CancellationToken)">
+  DeleteMultifactorProviderAsync(string, string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Deletes a user's multifactor provider.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task DeleteMultifactorProviderAsync(string id, string provider, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The id of the user who multi factor provider to delete.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">provider</span></td>
-        <td><p>The type of the multifactor provider. Supported values 'duo' or 'google-authenticator'.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous delete operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The id of the user who multi factor provider to delete.</p>
+</dd>
+    <dt><code>provider</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The type of the multifactor provider. Supported values 'duo' or 'google-authenticator'.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous delete operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_GenerateRecoveryCodeAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GenerateRecoveryCodeAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GenerateRecoveryCodeAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GenerateRecoveryCodeAsync(System.String,System.Threading.CancellationToken)">GenerateRecoveryCodeAsync(string, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_GenerateRecoveryCodeAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GenerateRecoveryCodeAsync(System.String,System.Threading.CancellationToken)">
+  GenerateRecoveryCodeAsync(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L235"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Generate new Guardian recovery code.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task&lt;GenerateRecoveryCodeResponse&gt; GenerateRecoveryCodeAsync(string id, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The user_id of the user which guardian code will be regenerated.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GenerateRecoveryCodeResponse.html">GenerateRecoveryCodeResponse</a>&gt;</td>
-        <td><p>A Task representing the operation and potential return value.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The user_id of the user which guardian code will be regenerated.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.GenerateRecoveryCodeResponse.html">GenerateRecoveryCodeResponse</a>&gt;</dt>
+    <dd><p>A Task representing the operation and potential return value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_GetAllAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAllAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetAllAsync_Auth0_ManagementApi_Models_GetUsersRequest_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAllAsync(Auth0.ManagementApi.Models.GetUsersRequest,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetAllAsync(GetUsersRequest, PaginationInfo, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_GetAllAsync_Auth0_ManagementApi_Models_GetUsersRequest_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAllAsync(Auth0.ManagementApi.Models.GetUsersRequest,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">
+  GetAllAsync(GetUsersRequest, PaginationInfo, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L91"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Lists or search for users based on criteria.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;User&gt;&gt; GetAllAsync(GetUsersRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.GetUsersRequest.html">GetUsersRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>Specifies criteria to use when querying users.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></td>
-        <td><span class="parametername">pagination</span></td>
-        <td><p>Specifies pagination info to use when requesting paged results.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>&gt;&gt;</td>
-        <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the list of users.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.GetUsersRequest.html">GetUsersRequest</a></dt>
+    <dd><p>Specifies criteria to use when querying users.</p>
+</dd>
+    <dt><code>pagination</code> <a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></dt>
+    <dd><p>Specifies pagination info to use when requesting paged results.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>&gt;&gt;</dt>
+    <dd><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the list of users.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_GetAllOrganizationsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAllOrganizationsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetAllOrganizationsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAllOrganizationsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetAllOrganizationsAsync(string, PaginationInfo, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_GetAllOrganizationsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAllOrganizationsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">
+  GetAllOrganizationsAsync(string, PaginationInfo, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L365"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Lists organizations for a user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;Organization&gt;&gt; GetAllOrganizationsAsync(string userId, PaginationInfo pagination, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">userId</span></td>
-        <td><p>The ID of the user for which you want to retrieve the organizations.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></td>
-        <td><span class="parametername">pagination</span></td>
-        <td><p>Specifies pagination info to use when requesting paged results.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Organization.html">Organization</a>&gt;&gt;</td>
-        <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the list of organizations.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the user for which you want to retrieve the organizations.</p>
+</dd>
+    <dt><code>pagination</code> <a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></dt>
+    <dd><p>Specifies pagination info to use when requesting paged results.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Organization.html">Organization</a>&gt;&gt;</dt>
+    <dd><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the list of organizations.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetAsync_System_String_System_String_System_Boolean_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAsync(System.String,System.String,System.Boolean,System.Threading.CancellationToken)">GetAsync(string, string, bool, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_GetAsync_System_String_System_String_System_Boolean_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAsync(System.String,System.String,System.Boolean,System.Threading.CancellationToken)">
+  GetAsync(string, string, bool, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L130"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets a user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task&lt;User&gt; GetAsync(string id, string fields = null, bool includeFields = true, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The id of the user to retrieve.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">fields</span></td>
-        <td><p>A comma separated list of fields to include or exclude (depending on includeFields) from the
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The id of the user to retrieve.</p>
+</dd>
+    <dt><code>fields</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A comma separated list of fields to include or exclude (depending on includeFields) from the
 result, empty to retrieve all fields</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">includeFields</span></td>
-        <td><p>true if the fields specified are to be included in the result, false otherwise (defaults to
+</dd>
+    <dt><code>includeFields</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>true if the fields specified are to be included in the result, false otherwise (defaults to
 true)</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>&gt;</td>
-        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a> that was requested.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>&gt;</dt>
+    <dd><p>The <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a> that was requested.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_GetAuthenticationMethodAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAuthenticationMethodAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetAuthenticationMethodAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAuthenticationMethodAsync(System.String,System.String,System.Threading.CancellationToken)">GetAuthenticationMethodAsync(string, string, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_GetAuthenticationMethodAsync_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAuthenticationMethodAsync(System.String,System.String,System.Threading.CancellationToken)">
+  GetAuthenticationMethodAsync(string, string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L406"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets an authentication method for a given user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task&lt;AuthenticationMethod&gt; GetAuthenticationMethodAsync(string userId, string authenticationMethodId, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">userId</span></td>
-        <td><p>The ID of the user for which you want to retrieve the authentication method.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">authenticationMethodId</span></td>
-        <td><p>The ID of the authentication method you want to retrieve.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>&gt;</td>
-        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a> that was requested.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the user for which you want to retrieve the authentication method.</p>
+</dd>
+    <dt><code>authenticationMethodId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the authentication method you want to retrieve.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>&gt;</dt>
+    <dd><p>The <a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a> that was requested.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_GetAuthenticationMethodsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAuthenticationMethodsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetAuthenticationMethodsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAuthenticationMethodsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetAuthenticationMethodsAsync(string, PaginationInfo, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_GetAuthenticationMethodsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetAuthenticationMethodsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">
+  GetAuthenticationMethodsAsync(string, PaginationInfo, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L386"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets a list of authentication methods.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;AuthenticationMethod&gt;&gt; GetAuthenticationMethodsAsync(string userId, PaginationInfo pagination = null, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">userId</span></td>
-        <td><p>The ID of the user for which you want to retrieve the authentication methods.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></td>
-        <td><span class="parametername">pagination</span></td>
-        <td><p>Specifies pagination info to use when requesting paged results.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>&gt;&gt;</td>
-        <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the list of authentication methods.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the user for which you want to retrieve the authentication methods.</p>
+</dd>
+    <dt><code>pagination</code> <a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></dt>
+    <dd><p>Specifies pagination info to use when requesting paged results.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>&gt;&gt;</dt>
+    <dd><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the list of authentication methods.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_GetEnrollmentsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetEnrollmentsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetEnrollmentsAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetEnrollmentsAsync(System.String,System.Threading.CancellationToken)">GetEnrollmentsAsync(string, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_GetEnrollmentsAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetEnrollmentsAsync(System.String,System.Threading.CancellationToken)">
+  GetEnrollmentsAsync(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L213"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Get a list of Guardian enrollments.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;EnrollmentsResponse&gt;&gt; GetEnrollmentsAsync(string id, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The user_id of the user to retrieve.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.EnrollmentsResponse.html">EnrollmentsResponse</a>&gt;&gt;</td>
-        <td><p>A Task representing the operation and potential return value.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The user_id of the user to retrieve.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.EnrollmentsResponse.html">EnrollmentsResponse</a>&gt;&gt;</dt>
+    <dd><p>A Task representing the operation and potential return value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_GetLogsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetLogsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetLogsAsync_Auth0_ManagementApi_Models_GetUserLogsRequest_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetLogsAsync(Auth0.ManagementApi.Models.GetUserLogsRequest,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetLogsAsync(GetUserLogsRequest, PaginationInfo, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_GetLogsAsync_Auth0_ManagementApi_Models_GetUserLogsRequest_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetLogsAsync(Auth0.ManagementApi.Models.GetUserLogsRequest,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">
+  GetLogsAsync(GetUserLogsRequest, PaginationInfo, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L147"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Retrieve every log event for a specific user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;LogEntry&gt;&gt; GetLogsAsync(GetUserLogsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.GetUserLogsRequest.html">GetUserLogsRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>Specifies criteria to use when querying logs for a user.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></td>
-        <td><span class="parametername">pagination</span></td>
-        <td><p>Specifies pagination info to use when requesting paged results.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.LogEntry.html">LogEntry</a>&gt;&gt;</td>
-        <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the log entries for the user.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.GetUserLogsRequest.html">GetUserLogsRequest</a></dt>
+    <dd><p>Specifies criteria to use when querying logs for a user.</p>
+</dd>
+    <dt><code>pagination</code> <a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></dt>
+    <dd><p>Specifies pagination info to use when requesting paged results.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.LogEntry.html">LogEntry</a>&gt;&gt;</dt>
+    <dd><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the log entries for the user.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_GetPermissionsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetPermissionsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetPermissionsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetPermissionsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetPermissionsAsync(string, PaginationInfo, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_GetPermissionsAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetPermissionsAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">
+  GetPermissionsAsync(string, PaginationInfo, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L320"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Get the permissions assigned to the user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;UserPermission&gt;&gt; GetPermissionsAsync(string id, PaginationInfo pagination = null, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The id of the user to obtain the permissions for.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></td>
-        <td><span class="parametername">pagination</span></td>
-        <td><p>Specifies <a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a> to use in requesting paged results.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.UserPermission.html">UserPermission</a>&gt;&gt;</td>
-        <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the assigned permissions for this user.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The id of the user to obtain the permissions for.</p>
+</dd>
+    <dt><code>pagination</code> <a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></dt>
+    <dd><p>Specifies <a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a> to use in requesting paged results.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.UserPermission.html">UserPermission</a>&gt;&gt;</dt>
+    <dd><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the assigned permissions for this user.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_GetRolesAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetRolesAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetRolesAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetRolesAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">GetRolesAsync(string, PaginationInfo, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_GetRolesAsync_System_String_Auth0_ManagementApi_Paging_PaginationInfo_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetRolesAsync(System.String,Auth0.ManagementApi.Paging.PaginationInfo,System.Threading.CancellationToken)">
+  GetRolesAsync(string, PaginationInfo, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L174"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Retrieve assigned roles for a specific user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task&lt;IPagedList&lt;Role&gt;&gt; GetRolesAsync(string userId, PaginationInfo pagination = null, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">userId</span></td>
-        <td><p>The user id of the roles to retrieve.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></td>
-        <td><span class="parametername">pagination</span></td>
-        <td><p>Specifies pagination info to use when requesting paged results.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>&gt;&gt;</td>
-        <td><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the roles for the user.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The user id of the roles to retrieve.</p>
+</dd>
+    <dt><code>pagination</code> <a class="xref" href="Auth0.ManagementApi.Paging.PaginationInfo.html">PaginationInfo</a></dt>
+    <dd><p>Specifies pagination info to use when requesting paged results.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a>&gt;&gt;</dt>
+    <dd><p>An <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the roles for the user.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_GetUsersByEmailAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetUsersByEmailAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_GetUsersByEmailAsync_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetUsersByEmailAsync(System.String,System.String,System.Nullable{System.Boolean},System.Threading.CancellationToken)">GetUsersByEmailAsync(string, string, bool?, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_GetUsersByEmailAsync_System_String_System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.GetUsersByEmailAsync(System.String,System.String,System.Nullable{System.Boolean},System.Threading.CancellationToken)">
+  GetUsersByEmailAsync(string, string, bool?, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L196"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets all users by email address.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;User&gt;&gt; GetUsersByEmailAsync(string email, string fields = null, bool? includeFields = null, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">email</span></td>
-        <td><p>The email address to search for.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">fields</span></td>
-        <td><p>A comma separated list of fields to include or exclude (depending on <code class="paramref">includeFields</code>) from the result, null to retrieve all fields.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</td>
-        <td><span class="parametername">includeFields</span></td>
-        <td><p>true if the fields specified are to be included in the result, false otherwise. Defaults to true.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>&gt;&gt;</td>
-        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a> containing all users for this email address.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>email</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The email address to search for.</p>
+</dd>
+    <dt><code>fields</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A comma separated list of fields to include or exclude (depending on <code class="paramref">includeFields</code>) from the result, null to retrieve all fields.</p>
+</dd>
+    <dt><code>includeFields</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd><p>true if the fields specified are to be included in the result, false otherwise. Defaults to true.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>&gt;&gt;</dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a> containing all users for this email address.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_InvalidateRememberBrowserAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.InvalidateRememberBrowserAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_InvalidateRememberBrowserAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.InvalidateRememberBrowserAsync(System.String,System.Threading.CancellationToken)">InvalidateRememberBrowserAsync(string, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_InvalidateRememberBrowserAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.InvalidateRememberBrowserAsync(System.String,System.Threading.CancellationToken)">
+  InvalidateRememberBrowserAsync(string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L224"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Invalidate all remembered browsers for MFA.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task InvalidateRememberBrowserAsync(string id, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The user_id of the user which will have its remembered browsers for MFA invalidated.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>A Task representing the operation and potential return value.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The user_id of the user which will have its remembered browsers for MFA invalidated.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A Task representing the operation and potential return value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_LinkAccountAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.LinkAccountAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_LinkAccountAsync_System_String_Auth0_ManagementApi_Models_UserAccountLinkRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.LinkAccountAsync(System.String,Auth0.ManagementApi.Models.UserAccountLinkRequest,System.Threading.CancellationToken)">LinkAccountAsync(string, UserAccountLinkRequest, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_LinkAccountAsync_System_String_Auth0_ManagementApi_Models_UserAccountLinkRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.LinkAccountAsync(System.String,Auth0.ManagementApi.Models.UserAccountLinkRequest,System.Threading.CancellationToken)">
+  LinkAccountAsync(string, UserAccountLinkRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L247"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Links a secondary account to a primary account.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;AccountLinkResponse&gt;&gt; LinkAccountAsync(string id, UserAccountLinkRequest request, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The ID of the primary account.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.UserAccountLinkRequest.html">UserAccountLinkRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.UserAccountLinkRequest.html">UserAccountLinkRequest</a> containing details of the secondary account to link.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AccountLinkResponse.html">AccountLinkResponse</a>&gt;&gt;</td>
-        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a> containing details about this account link.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the primary account.</p>
+</dd>
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.UserAccountLinkRequest.html">UserAccountLinkRequest</a></dt>
+    <dd><p>The <a class="xref" href="Auth0.ManagementApi.Models.UserAccountLinkRequest.html">UserAccountLinkRequest</a> containing details of the secondary account to link.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AccountLinkResponse.html">AccountLinkResponse</a>&gt;&gt;</dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a> containing details about this account link.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_LinkAccountAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.LinkAccountAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_LinkAccountAsync_System_String_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.LinkAccountAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">LinkAccountAsync(string, string, string, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_LinkAccountAsync_System_String_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.LinkAccountAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+  LinkAccountAsync(string, string, string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L260"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Links a secondary account to a primary account.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;AccountLinkResponse&gt;&gt; LinkAccountAsync(string id, string primaryJwtToken, string secondaryJwtToken, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The ID of the primary account.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">primaryJwtToken</span></td>
-        <td><p>The JWT of the primary account.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">secondaryJwtToken</span></td>
-        <td><p>The JWT for the secondary account you wish to link.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AccountLinkResponse.html">AccountLinkResponse</a>&gt;&gt;</td>
-        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a> containing details about this account link.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the primary account.</p>
+</dd>
+    <dt><code>primaryJwtToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The JWT of the primary account.</p>
+</dd>
+    <dt><code>secondaryJwtToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The JWT for the secondary account you wish to link.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AccountLinkResponse.html">AccountLinkResponse</a>&gt;&gt;</dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a> containing details about this account link.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_RemovePermissionsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.RemovePermissionsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_RemovePermissionsAsync_System_String_Auth0_ManagementApi_Models_AssignPermissionsRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.RemovePermissionsAsync(System.String,Auth0.ManagementApi.Models.AssignPermissionsRequest,System.Threading.CancellationToken)">RemovePermissionsAsync(string, AssignPermissionsRequest, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_RemovePermissionsAsync_System_String_Auth0_ManagementApi_Models_AssignPermissionsRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.RemovePermissionsAsync(System.String,Auth0.ManagementApi.Models.AssignPermissionsRequest,System.Threading.CancellationToken)">
+  RemovePermissionsAsync(string, AssignPermissionsRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L353"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Removes permissions assigned to a user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task RemovePermissionsAsync(string id, AssignPermissionsRequest request, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The ID of the user to remove permissions from.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a> containing the permission identifiers to remove from the user.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous remove operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the user to remove permissions from.</p>
+</dd>
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a></dt>
+    <dd><p>A <a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a> containing the permission identifiers to remove from the user.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous remove operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_RemoveRolesAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.RemoveRolesAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_RemoveRolesAsync_System_String_Auth0_ManagementApi_Models_AssignRolesRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.RemoveRolesAsync(System.String,Auth0.ManagementApi.Models.AssignRolesRequest,System.Threading.CancellationToken)">RemoveRolesAsync(string, AssignRolesRequest, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_RemoveRolesAsync_System_String_Auth0_ManagementApi_Models_AssignRolesRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.RemoveRolesAsync(System.String,Auth0.ManagementApi.Models.AssignRolesRequest,System.Threading.CancellationToken)">
+  RemoveRolesAsync(string, AssignRolesRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L282"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Removes Roles from a user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task RemoveRolesAsync(string id, AssignRolesRequest request, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The ID of the user to remove roles from.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.AssignRolesRequest.html">AssignRolesRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.AssignRolesRequest.html">AssignRolesRequest</a> containing the role IDs to remove to the user.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous remove operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the user to remove roles from.</p>
+</dd>
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.AssignRolesRequest.html">AssignRolesRequest</a></dt>
+    <dd><p>A <a class="xref" href="Auth0.ManagementApi.Models.AssignRolesRequest.html">AssignRolesRequest</a> containing the role IDs to remove to the user.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous remove operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_UnlinkAccountAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.UnlinkAccountAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_UnlinkAccountAsync_System_String_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.UnlinkAccountAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">UnlinkAccountAsync(string, string, string, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_UnlinkAccountAsync_System_String_System_String_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.UnlinkAccountAsync(System.String,System.String,System.String,System.Threading.CancellationToken)">
+  UnlinkAccountAsync(string, string, string, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L295"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Unlinks user accounts</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;AccountLinkResponse&gt;&gt; UnlinkAccountAsync(string primaryUserId, string provider, string secondaryUserId, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">primaryUserId</span></td>
-        <td><p>The ID of the primary account.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">provider</span></td>
-        <td><p>The type of the identity provider.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">secondaryUserId</span></td>
-        <td><p>The ID for the secondary account.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AccountLinkResponse.html">AccountLinkResponse</a>&gt;&gt;</td>
-        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a> containing details about this account link.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>primaryUserId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the primary account.</p>
+</dd>
+    <dt><code>provider</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The type of the identity provider.</p>
+</dd>
+    <dt><code>secondaryUserId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID for the secondary account.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AccountLinkResponse.html">AccountLinkResponse</a>&gt;&gt;</dt>
+    <dd><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList&lt;T&gt;</a> containing details about this account link.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.UpdateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_UserUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.UserUpdateRequest,System.Threading.CancellationToken)">UpdateAsync(string, UserUpdateRequest, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_UserUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.UserUpdateRequest,System.Threading.CancellationToken)">
+  UpdateAsync(string, UserUpdateRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L308"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Updates a user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task&lt;User&gt; UpdateAsync(string id, UserUpdateRequest request, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">id</span></td>
-        <td><p>The id of the user to update.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.UserUpdateRequest.html">UserUpdateRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.UserUpdateRequest.html">UserUpdateRequest</a> containing the information you wish to update.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>&gt;</td>
-        <td><p>The newly updated <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The id of the user to update.</p>
+</dd>
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.UserUpdateRequest.html">UserUpdateRequest</a></dt>
+    <dd><p>The <a class="xref" href="Auth0.ManagementApi.Models.UserUpdateRequest.html">UserUpdateRequest</a> containing the information you wish to update.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>&gt;</dt>
+    <dd><p>The newly updated <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_UpdateAuthenticationMethodAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.UpdateAuthenticationMethodAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_UpdateAuthenticationMethodAsync_System_String_System_String_Auth0_ManagementApi_Models_Users_AuthenticationMethodUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.UpdateAuthenticationMethodAsync(System.String,System.String,Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest,System.Threading.CancellationToken)">UpdateAuthenticationMethodAsync(string, string, AuthenticationMethodUpdateRequest, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_UpdateAuthenticationMethodAsync_System_String_System_String_Auth0_ManagementApi_Models_Users_AuthenticationMethodUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.UpdateAuthenticationMethodAsync(System.String,System.String,Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest,System.Threading.CancellationToken)">
+  UpdateAuthenticationMethodAsync(string, string, AuthenticationMethodUpdateRequest, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L447"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Update an authentication methods.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task&lt;AuthenticationMethod&gt; UpdateAuthenticationMethodAsync(string userId, string authenticationMethodId, AuthenticationMethodUpdateRequest request, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">userId</span></td>
-        <td><p>The ID of the user for which you want to update the authentication methods</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">authenticationMethodId</span></td>
-        <td><p>The ID of the authentication method you want to update.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.html">AuthenticationMethodUpdateRequest</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.html">AuthenticationMethodUpdateRequest</a> containing the properties of the authentication methods to update.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>&gt;</td>
-        <td><p>The updated <a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the user for which you want to update the authentication methods</p>
+</dd>
+    <dt><code>authenticationMethodId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the authentication method you want to update.</p>
+</dd>
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.html">AuthenticationMethodUpdateRequest</a></dt>
+    <dd><p>The <a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethodUpdateRequest.html">AuthenticationMethodUpdateRequest</a> containing the properties of the authentication methods to update.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>&gt;</dt>
+    <dd><p>The updated <a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_UsersClient_UpdateAuthenticationMethodsAsync_" data-uid="Auth0.ManagementApi.Clients.UsersClient.UpdateAuthenticationMethodsAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_UsersClient_UpdateAuthenticationMethodsAsync_System_String_System_Collections_Generic_IList_Auth0_ManagementApi_Models_Users_AuthenticationMethodsUpdateRequest__System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.UpdateAuthenticationMethodsAsync(System.String,System.Collections.Generic.IList{Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest},System.Threading.CancellationToken)">UpdateAuthenticationMethodsAsync(string, IList&lt;AuthenticationMethodsUpdateRequest&gt;, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_UsersClient_UpdateAuthenticationMethodsAsync_System_String_System_Collections_Generic_IList_Auth0_ManagementApi_Models_Users_AuthenticationMethodsUpdateRequest__System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.UsersClient.UpdateAuthenticationMethodsAsync(System.String,System.Collections.Generic.IList{Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest},System.Threading.CancellationToken)">
+  UpdateAuthenticationMethodsAsync(string, IList&lt;AuthenticationMethodsUpdateRequest&gt;, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Clients/UsersClient.cs/#L433"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Updates all authentication methods by replacing them with the given ones.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public Task&lt;IList&lt;AuthenticationMethod&gt;&gt; UpdateAuthenticationMethodsAsync(string userId, IList&lt;AuthenticationMethodsUpdateRequest&gt; request, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">userId</span></td>
-        <td><p>The ID of the user for which you want to update the authentication methods.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.html">AuthenticationMethodsUpdateRequest</a>&gt;</td>
-        <td><span class="parametername">request</span></td>
-        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.html">AuthenticationMethodsUpdateRequest</a> containing the properties of the authentication methods to update.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>&gt;&gt;</td>
-        <td><p>The updated list of <a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="Auth0.ManagementApi.Clients.IUsersClient.html">IUsersClient</a>
-  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The ID of the user for which you want to update the authentication methods.</p>
+</dd>
+    <dt><code>request</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.html">AuthenticationMethodsUpdateRequest</a>&gt;</dt>
+    <dd><p>The <a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethodsUpdateRequest.html">AuthenticationMethodsUpdateRequest</a> containing the properties of the authentication methods to update.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>&gt;&gt;</dt>
+    <dd><p>The updated list of <a class="xref" href="Auth0.ManagementApi.Models.Users.AuthenticationMethod.html">AuthenticationMethod</a>.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
-          </div>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
-        </div>
+
+        
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      
-      <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

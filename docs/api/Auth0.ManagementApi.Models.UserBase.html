@@ -1,91 +1,135 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Class UserBase
  </title>
-      <meta name="viewport" content="width=device-width">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class UserBase
  ">
-    
-      <link rel="shortcut icon" href="../images/logo.png">
-      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
-      <link rel="stylesheet" href="../styles/docfx.css">
-      <link rel="stylesheet" href="../styles/main.css">
-      <meta property="docfx:navrel" content="../toc.html">
-      <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      
+      <link rel="icon" href="../images/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/auth0/auth0.net/new/feat/modern-api-docs/apiSpec/new?filename=Auth0_ManagementApi_Models_UserBase.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.Models.UserBase%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
 
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../images/logo.svg" alt="">
-              </a>
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
             </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
-              </form>
-            </div>
-          </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
           </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
+      </nav>
+    </header>
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Models.UserBase">
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Auth0.ManagementApi.Models.UserBase">
 
 
 
-  <h1 id="Auth0_ManagementApi_Models_UserBase" data-uid="Auth0.ManagementApi.Models.UserBase" class="text-break">Class UserBase
-</h1>
-  <div class="markdown level0 summary"><p>Contains common elements used for both constructing <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>-related requests, and comprising <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>-related responses.</p>
-</div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><span class="xref">UserBase</span></div>
-      <div class="level2"><a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a></div>
-      <div class="level2"><a class="xref" href="Auth0.ManagementApi.Models.UserCreateRequest.html">UserCreateRequest</a></div>
-      <div class="level2"><a class="xref" href="Auth0.ManagementApi.Models.UserUpdateRequest.html">UserUpdateRequest</a></div>
+  <h1 id="Auth0_ManagementApi_Models_UserBase" data-uid="Auth0.ManagementApi.Models.UserBase" class="text-break">
+    Class UserBase
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/UserBase.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Auth0.html">Auth0</a>.<a class="xref" href="Auth0.ManagementApi.html">ManagementApi</a>.<a class="xref" href="Auth0.ManagementApi.Models.html">Models</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Auth0.ManagementApi.dll</dd></dl>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+  <div class="markdown summary"><p>Contains common elements used for both constructing <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>-related requests, and comprising <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>-related responses.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class UserBase</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">UserBase</span></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Derived</dt>
+    <dd>
+      <div><a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a></div>
+      <div><a class="xref" href="Auth0.ManagementApi.Models.UserCreateRequest.html">UserCreateRequest</a></div>
+      <div><a class="xref" href="Auth0.ManagementApi.Models.UserUpdateRequest.html">UserUpdateRequest</a></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -107,559 +151,643 @@
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.html">Auth0</a>.<a class="xref" href="Auth0.ManagementApi.html">ManagementApi</a>.<a class="xref" href="Auth0.ManagementApi.Models.html">Models</a></h6>
-  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
-  <h5 id="Auth0_ManagementApi_Models_UserBase_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public abstract class UserBase</code></pre>
-  </div>
-  <h3 id="properties">Properties
-</h3>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="Auth0_ManagementApi_Models_UserBase_AppMetadata_" data-uid="Auth0.ManagementApi.Models.UserBase.AppMetadata*"></a>
-  <h4 id="Auth0_ManagementApi_Models_UserBase_AppMetadata" data-uid="Auth0.ManagementApi.Models.UserBase.AppMetadata">AppMetadata</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_UserBase_AppMetadata" data-uid="Auth0.ManagementApi.Models.UserBase.AppMetadata">
+  AppMetadata
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/UserBase.cs/#L15"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains user meta data. The user has read-only access to this.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;app_metadata&quot;)]
 public dynamic AppMetadata { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">dynamic</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">dynamic</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_UserBase_Blocked_" data-uid="Auth0.ManagementApi.Models.UserBase.Blocked*"></a>
-  <h4 id="Auth0_ManagementApi_Models_UserBase_Blocked" data-uid="Auth0.ManagementApi.Models.UserBase.Blocked">Blocked</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_UserBase_Blocked" data-uid="Auth0.ManagementApi.Models.UserBase.Blocked">
+  Blocked
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/UserBase.cs/#L105"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets or sets whether the user is blocked. True if the user is blocked, otherwise false.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;blocked&quot;)]
 public bool? Blocked { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_UserBase_Email_" data-uid="Auth0.ManagementApi.Models.UserBase.Email*"></a>
-  <h4 id="Auth0_ManagementApi_Models_UserBase_Email" data-uid="Auth0.ManagementApi.Models.UserBase.Email">Email</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_UserBase_Email" data-uid="Auth0.ManagementApi.Models.UserBase.Email">
+  Email
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/UserBase.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets or sets the user's email address.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;email&quot;)]
 public string Email { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_UserBase_EmailVerified_" data-uid="Auth0.ManagementApi.Models.UserBase.EmailVerified*"></a>
-  <h4 id="Auth0_ManagementApi_Models_UserBase_EmailVerified" data-uid="Auth0.ManagementApi.Models.UserBase.EmailVerified">EmailVerified</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_UserBase_EmailVerified" data-uid="Auth0.ManagementApi.Models.UserBase.EmailVerified">
+  EmailVerified
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/UserBase.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets or sets whether the user's email address is verified.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;email_verified&quot;)]
 public bool? EmailVerified { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Auth0_ManagementApi_Models_UserBase_EmailVerified_remarks">Remarks</h5>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="Auth0_ManagementApi_Models_UserBase_EmailVerified_remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>True if the email address is verified, otherwise false.</p>
 </div>
+
+
+
+
   <a id="Auth0_ManagementApi_Models_UserBase_FirstName_" data-uid="Auth0.ManagementApi.Models.UserBase.FirstName*"></a>
-  <h4 id="Auth0_ManagementApi_Models_UserBase_FirstName" data-uid="Auth0.ManagementApi.Models.UserBase.FirstName">FirstName</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_UserBase_FirstName" data-uid="Auth0.ManagementApi.Models.UserBase.FirstName">
+  FirstName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/UserBase.cs/#L75"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>The first name of the user (if available).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;given_name&quot;)]
 public string FirstName { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Auth0_ManagementApi_Models_UserBase_FirstName_remarks">Remarks</h5>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="Auth0_ManagementApi_Models_UserBase_FirstName_remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>This is the given_name attribute supplied by the underlying API.</p>
 </div>
+
+
+
+
   <a id="Auth0_ManagementApi_Models_UserBase_FullName_" data-uid="Auth0.ManagementApi.Models.UserBase.FullName*"></a>
-  <h4 id="Auth0_ManagementApi_Models_UserBase_FullName" data-uid="Auth0.ManagementApi.Models.UserBase.FullName">FullName</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_UserBase_FullName" data-uid="Auth0.ManagementApi.Models.UserBase.FullName">
+  FullName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/UserBase.cs/#L84"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>The full name of the user (e.g.: John Foo). ALWAYS GENERATED.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;name&quot;)]
 public string FullName { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Auth0_ManagementApi_Models_UserBase_FullName_remarks">Remarks</h5>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="Auth0_ManagementApi_Models_UserBase_FullName_remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>This is the name attribute supplied by the underlying API.</p>
 </div>
+
+
+
+
   <a id="Auth0_ManagementApi_Models_UserBase_LastName_" data-uid="Auth0.ManagementApi.Models.UserBase.LastName*"></a>
-  <h4 id="Auth0_ManagementApi_Models_UserBase_LastName" data-uid="Auth0.ManagementApi.Models.UserBase.LastName">LastName</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_UserBase_LastName" data-uid="Auth0.ManagementApi.Models.UserBase.LastName">
+  LastName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/UserBase.cs/#L93"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>The last name of the user (if available).</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;family_name&quot;)]
 public string LastName { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Auth0_ManagementApi_Models_UserBase_LastName_remarks">Remarks</h5>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="Auth0_ManagementApi_Models_UserBase_LastName_remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>This is the family_name attribute supplied by the underlying API.</p>
 </div>
+
+
+
+
   <a id="Auth0_ManagementApi_Models_UserBase_NickName_" data-uid="Auth0.ManagementApi.Models.UserBase.NickName*"></a>
-  <h4 id="Auth0_ManagementApi_Models_UserBase_NickName" data-uid="Auth0.ManagementApi.Models.UserBase.NickName">NickName</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_UserBase_NickName" data-uid="Auth0.ManagementApi.Models.UserBase.NickName">
+  NickName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/UserBase.cs/#L66"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>The Nickname of the user.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;nickname&quot;)]
 public string NickName { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_UserBase_PhoneNumber_" data-uid="Auth0.ManagementApi.Models.UserBase.PhoneNumber*"></a>
-  <h4 id="Auth0_ManagementApi_Models_UserBase_PhoneNumber" data-uid="Auth0.ManagementApi.Models.UserBase.PhoneNumber">PhoneNumber</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_UserBase_PhoneNumber" data-uid="Auth0.ManagementApi.Models.UserBase.PhoneNumber">
+  PhoneNumber
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/UserBase.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets or sets the user's phone number.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;phone_number&quot;)]
 public string PhoneNumber { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Auth0_ManagementApi_Models_UserBase_PhoneNumber_remarks">Remarks</h5>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="Auth0_ManagementApi_Models_UserBase_PhoneNumber_remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>This is only valid for users from SMS connections.</p>
 </div>
+
+
+
+
   <a id="Auth0_ManagementApi_Models_UserBase_PhoneVerified_" data-uid="Auth0.ManagementApi.Models.UserBase.PhoneVerified*"></a>
-  <h4 id="Auth0_ManagementApi_Models_UserBase_PhoneVerified" data-uid="Auth0.ManagementApi.Models.UserBase.PhoneVerified">PhoneVerified</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_UserBase_PhoneVerified" data-uid="Auth0.ManagementApi.Models.UserBase.PhoneVerified">
+  PhoneVerified
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/UserBase.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets or sets whether the user's phone is verified.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;phone_verified&quot;)]
 public bool? PhoneVerified { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 id="Auth0_ManagementApi_Models_UserBase_PhoneVerified_remarks">Remarks</h5>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+  <h4 class="section" id="Auth0_ManagementApi_Models_UserBase_PhoneVerified_remarks">Remarks</h4>
   <div class="markdown level1 remarks"><p>True if the phone is verified, otherwise false.</p>
 </div>
+
+
+
+
   <a id="Auth0_ManagementApi_Models_UserBase_Picture_" data-uid="Auth0.ManagementApi.Models.UserBase.Picture*"></a>
-  <h4 id="Auth0_ManagementApi_Models_UserBase_Picture" data-uid="Auth0.ManagementApi.Models.UserBase.Picture">Picture</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_UserBase_Picture" data-uid="Auth0.ManagementApi.Models.UserBase.Picture">
+  Picture
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/UserBase.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>URL pointing to the user picture (if not available, will use gravatar.com with the email). ALWAYS GENERATED</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;picture&quot;)]
 public string Picture { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_UserBase_UserMetadata_" data-uid="Auth0.ManagementApi.Models.UserBase.UserMetadata*"></a>
-  <h4 id="Auth0_ManagementApi_Models_UserBase_UserMetadata" data-uid="Auth0.ManagementApi.Models.UserBase.UserMetadata">UserMetadata</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_UserBase_UserMetadata" data-uid="Auth0.ManagementApi.Models.UserBase.UserMetadata">
+  UserMetadata
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/UserBase.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains user meta data. The user has read/write access to this.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;user_metadata&quot;)]
 public dynamic UserMetadata { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">dynamic</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><span class="xref">dynamic</span></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_UserBase_UserName_" data-uid="Auth0.ManagementApi.Models.UserBase.UserName*"></a>
-  <h4 id="Auth0_ManagementApi_Models_UserBase_UserName" data-uid="Auth0.ManagementApi.Models.UserBase.UserName">UserName</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_UserBase_UserName" data-uid="Auth0.ManagementApi.Models.UserBase.UserName">
+  UserName
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/UserBase.cs/#L60"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Gets or sets the user' username.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">[JsonProperty(&quot;username&quot;)]
 public string UserName { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-</h3>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Auth0_ManagementApi_Models_UserBase_GetAppMetadata_" data-uid="Auth0.ManagementApi.Models.UserBase.GetAppMetadata*"></a>
-  <h4 id="Auth0_ManagementApi_Models_UserBase_GetAppMetadata__1" data-uid="Auth0.ManagementApi.Models.UserBase.GetAppMetadata``1">GetAppMetadata&lt;T&gt;()</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_UserBase_GetAppMetadata__1" data-uid="Auth0.ManagementApi.Models.UserBase.GetAppMetadata``1">
+  GetAppMetadata&lt;T&gt;()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/UserBase.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns <a class="xref" href="Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_AppMetadata">AppMetadata</a> as specific type.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public T GetAppMetadata&lt;T&gt;() where T : class</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><p>An instance of T.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
-        <td><p>Type to be returned.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd><p>An instance of T.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>Type to be returned.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_UserBase_GetUserMetadata_" data-uid="Auth0.ManagementApi.Models.UserBase.GetUserMetadata*"></a>
-  <h4 id="Auth0_ManagementApi_Models_UserBase_GetUserMetadata__1" data-uid="Auth0.ManagementApi.Models.UserBase.GetUserMetadata``1">GetUserMetadata&lt;T&gt;()</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_UserBase_GetUserMetadata__1" data-uid="Auth0.ManagementApi.Models.UserBase.GetUserMetadata``1">
+  GetUserMetadata&lt;T&gt;()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/UserBase.cs/#L128"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Returns <a class="xref" href="Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_UserMetadata">UserMetadata</a> as specific type.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public T GetUserMetadata&lt;T&gt;() where T : class</code></pre>
   </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><p>An instance of T.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
-        <td><p>Type to be returned.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><span class="xref">T</span></dt>
+    <dd><p>An instance of T.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>Type to be returned.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_UserBase_SetAppMetadata_" data-uid="Auth0.ManagementApi.Models.UserBase.SetAppMetadata*"></a>
-  <h4 id="Auth0_ManagementApi_Models_UserBase_SetAppMetadata__1___0_" data-uid="Auth0.ManagementApi.Models.UserBase.SetAppMetadata``1(``0)">SetAppMetadata&lt;T&gt;(T)</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_UserBase_SetAppMetadata__1___0_" data-uid="Auth0.ManagementApi.Models.UserBase.SetAppMetadata``1(``0)">
+  SetAppMetadata&lt;T&gt;(T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/UserBase.cs/#L143"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Set given appMetadata as <a class="xref" href="Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_AppMetadata">AppMetadata</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void SetAppMetadata&lt;T&gt;(T appMetadata) where T : class</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><span class="parametername">appMetadata</span></td>
-        <td><p>Metadata to set.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
-        <td><p>Metadata type.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>appMetadata</code> <span class="xref">T</span></dt>
+    <dd><p>Metadata to set.</p>
+</dd>
+  </dl>
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>Metadata type.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Models_UserBase_SetUserMetadata_" data-uid="Auth0.ManagementApi.Models.UserBase.SetUserMetadata*"></a>
-  <h4 id="Auth0_ManagementApi_Models_UserBase_SetUserMetadata__1___0_" data-uid="Auth0.ManagementApi.Models.UserBase.SetUserMetadata``1(``0)">SetUserMetadata&lt;T&gt;(T)</h4>
+
+  <h3 id="Auth0_ManagementApi_Models_UserBase_SetUserMetadata__1___0_" data-uid="Auth0.ManagementApi.Models.UserBase.SetUserMetadata``1(``0)">
+  SetUserMetadata&lt;T&gt;(T)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/Models/UserBase.cs/#L153"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Set given userMetadata as <a class="xref" href="Auth0.ManagementApi.Models.UserBase.html#Auth0_ManagementApi_Models_UserBase_UserMetadata">UserMetadata</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void SetUserMetadata&lt;T&gt;(T userMetadata) where T : class</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">T</span></td>
-        <td><span class="parametername">userMetadata</span></td>
-        <td><p>Metadata to set.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">T</span></td>
-        <td><p>Metadata type.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>userMetadata</code> <span class="xref">T</span></dt>
+    <dd><p>Metadata to set.</p>
+</dd>
+  </dl>
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd><p>Metadata type.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
 
 </article>
-          </div>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
-        </div>
+
+        
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      
-      <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

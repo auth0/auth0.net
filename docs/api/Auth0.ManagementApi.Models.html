@@ -1,625 +1,1015 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Namespace Auth0.ManagementApi.Models
  </title>
-      <meta name="viewport" content="width=device-width">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Namespace Auth0.ManagementApi.Models
  ">
-    
-      <link rel="shortcut icon" href="../images/logo.png">
-      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
-      <link rel="stylesheet" href="../styles/docfx.css">
-      <link rel="stylesheet" href="../styles/main.css">
-      <meta property="docfx:navrel" content="../toc.html">
-      <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      
+      <link rel="icon" href="../images/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
 
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../images/logo.svg" alt="">
-              </a>
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
             </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
-              </form>
-            </div>
-          </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
           </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
+      </nav>
+    </header>
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Models">
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Auth0.ManagementApi.Models">
 
   <h1 id="Auth0_ManagementApi_Models" data-uid="Auth0.ManagementApi.Models" class="text-break">Namespace Auth0.ManagementApi.Models
 </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="markdown level0 remarks"></div>
+
     <h3 id="classes">
 Classes
 </h3>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.AccountLinkResponse.html">AccountLinkResponse</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.AccountLinkResponseProfileData.html">AccountLinkResponseProfileData</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.Addons.html">Addons</a></h4>
-      <section><p>Addons are extensions associated with an Application in Auth0. Usually, they are 3rd party APIs used by the app that Auth0 generates access tokens for
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.AccountLinkResponse.html">AccountLinkResponse</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.AccountLinkResponseProfileData.html">AccountLinkResponseProfileData</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.Addons.html">Addons</a></dt>
+      <dd><p>Addons are extensions associated with an Application in Auth0. Usually, they are 3rd party APIs used by the app that Auth0 generates access tokens for
 (e.g. Salesforce, Azure Service Bus, Azure Mobile Services, SAP, etc).</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a></h4>
-      <section><p>Contains details of permissions that should be assigned to a role.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.AssignRolesRequest.html">AssignRolesRequest</a></h4>
-      <section><p>Contains details of roles that should be assigned to a user.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.AssignUsersRequest.html">AssignUsersRequest</a></h4>
-      <section><p>Contains details of users that should be assigned to a role.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.AssignedUser.html">AssignedUser</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.BlacklistedToken.html">BlacklistedToken</a></h4>
-      <section><p>Represents a blacklisted token.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.BlacklistedTokenBase.html">BlacklistedTokenBase</a></h4>
-      <section><p>Base class for blacklisted tokens.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.BlacklistedTokenCreateRequest.html">BlacklistedTokenCreateRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.Branding.html">Branding</a></h4>
-      <section><p>Represents the Auth0 Tenant's branding settings</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.BrandingBase.html">BrandingBase</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.BrandingColors.html">BrandingColors</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.BrandingFont.html">BrandingFont</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.BrandingUpdateRequest.html">BrandingUpdateRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.Client.html">Client</a></h4>
-      <section><p>Represents a client (App) in Auth0</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.ClientAuthenticationMethods.html">ClientAuthenticationMethods</a></h4>
-      <section><p>Structure for a client's authentication methods</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.ClientBase.html">ClientBase</a></h4>
-      <section><p>Base class for clients.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.ClientCreateRequest.html">ClientCreateRequest</a></h4>
-      <section><p>Requests structure for creating a new client.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.ClientCredentialCreateRequest.html">ClientCredentialCreateRequest</a></h4>
-      <section><p>Structure for creating a new client credential</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.ClientCredentialUpdateRequest.html">ClientCredentialUpdateRequest</a></h4>
-      <section><p>Structure for updating a client credential</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.ClientGrant.html">ClientGrant</a></h4>
-      <section><p>Represents a Client Grant</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.ClientGrantBase.html">ClientGrantBase</a></h4>
-      <section><p>Base class for Client Grants</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.ClientGrantCreateRequest.html">ClientGrantCreateRequest</a></h4>
-      <section><p>Request structure for creating a new Client Grant</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.ClientGrantUpdateRequest.html">ClientGrantUpdateRequest</a></h4>
-      <section><p>Request structure for updating a new Client Grant</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.ClientResourceServerAssociation.html">ClientResourceServerAssociation</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.ClientUpdateRequest.html">ClientUpdateRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.Connection.html">Connection</a></h4>
-      <section><p>Connection object as returned from API calls.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.ConnectionBase.html">ConnectionBase</a></h4>
-      <section><p>Base class for connections which includes both request and responses.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.ConnectionCreateRequest.html">ConnectionCreateRequest</a></h4>
-      <section><p>Specifies the properies for creating a new connection.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.ConnectionUpdateRequest.html">ConnectionUpdateRequest</a></h4>
-      <section><p>Specifies the properies for updating an existing connection.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.CreateClientAuthenticationMethods.html">CreateClientAuthenticationMethods</a></h4>
-      <section><p>Structure for creating new client authentication methods</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketRequest.html">CreateGuardianEnrollmentTicketRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketResponse.html">CreateGuardianEnrollmentTicketResponse</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.CreatePrivateKeyJwt.html">CreatePrivateKeyJwt</a></h4>
-      <section><p>Structure for creating a new client credential using Private Key JWT</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.Credential.html">Credential</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.CredentialId.html">CredentialId</a></h4>
-      <section><p>Structure for a client's credential.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.CustomDomain.html">CustomDomain</a></h4>
-      <section><p>Represents a Custom Domain</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainBase.html">CustomDomainBase</a></h4>
-      <section><p>Base class for custom domain responses.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainCreateRequest.html">CustomDomainCreateRequest</a></h4>
-      <section><p>Represents a request to create a new custom domain.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainVerification.html">CustomDomainVerification</a></h4>
-      <section><p>The custom domain verification methods.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainVerificationMethod.html">CustomDomainVerificationMethod</a></h4>
-      <section><p>The custom domain verification method.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainVerificationResponse.html">CustomDomainVerificationResponse</a></h4>
-      <section><p>Response when requesting a custom domain verification</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.DailyStatistics.html">DailyStatistics</a></h4>
-      <section><p>The number of signups and logins for a specific day.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.DeviceCredential.html">DeviceCredential</a></h4>
-      <section><p>Represents device credentials returned from the API.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.DeviceCredentialBase.html">DeviceCredentialBase</a></h4>
-      <section><p>Base class for device credentials.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.DeviceCredentialCreateRequest.html">DeviceCredentialCreateRequest</a></h4>
-      <section><p>Represents a request to create device credentials.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.EmailProvider.html">EmailProvider</a></h4>
-      <section><p>Represents configuration for the email provider.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.EmailProviderBase.html">EmailProviderBase</a></h4>
-      <section><p>Base class for email provider.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.EmailProviderConfigureRequest.html">EmailProviderConfigureRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.EmailProviderCredentials.html">EmailProviderCredentials</a></h4>
-      <section><p>Credentials for an email provider.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.EmailProviderUpdateRequest.html">EmailProviderUpdateRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a></h4>
-      <section><p>Response returned from email template requests</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateBase.html">EmailTemplateBase</a></h4>
-      <section><p>Base class for email templates</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateCreateRequest.html">EmailTemplateCreateRequest</a></h4>
-      <section><p>Request for creating an email template</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplatePatchRequest.html">EmailTemplatePatchRequest</a></h4>
-      <section><p>Request for patching an email template</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateUpdateRequest.html">EmailTemplateUpdateRequest</a></h4>
-      <section><p>Request for updating an email template</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.EmailVerificationIdentity.html">EmailVerificationIdentity</a></h4>
-      <section><p>Represents the identity object that can be sent on requests to create an email verification ticket or job.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.EmailVerificationTicketRequest.html">EmailVerificationTicketRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.EncryptionKey.html">EncryptionKey</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.EnrollmentsResponse.html">EnrollmentsResponse</a></h4>
-      <section><p>Represents a Guardian Enrollment.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.GenerateRecoveryCodeResponse.html">GenerateRecoveryCodeResponse</a></h4>
-      <section><p>Represents a Generate Recovery Code response.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.GetClientGrantsRequest.html">GetClientGrantsRequest</a></h4>
-      <section><p>Specifies criteria to use when querying all client grants.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.GetClientsRequest.html">GetClientsRequest</a></h4>
-      <section><p>Specifies criteria to use when querying all clients.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.GetConnectionsRequest.html">GetConnectionsRequest</a></h4>
-      <section><p>Specifies criteria to use when querying all connections.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.html">GetDeviceCredentialsRequest</a></h4>
-      <section><p>Specifies criteria to use when querying all device credentials.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.GetHooksRequest.html">GetHooksRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.GetLogsRequest.html">GetLogsRequest</a></h4>
-      <section><p>Specifies criteria to use when querying all logs.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.GetRolesRequest.html">GetRolesRequest</a></h4>
-      <section><p>Specifies criteria to use when querying all roles.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.GetRulesRequest.html">GetRulesRequest</a></h4>
-      <section><p>Specifies criteria to use when querying all rules.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.GetUserLogsRequest.html">GetUserLogsRequest</a></h4>
-      <section><p>Specifies criteria to use when querying logs for a user.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.GetUsersRequest.html">GetUsersRequest</a></h4>
-      <section><p>Specifies criteria to use when querying all users.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.GuardianEnrollment.html">GuardianEnrollment</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.GuardianFactor.html">GuardianFactor</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.GuardianPhoneMessageTypes.html">GuardianPhoneMessageTypes</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates.html">GuardianSmsEnrollmentTemplates</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.GuardianSnsConfiguration.html">GuardianSnsConfiguration</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.GuardianSnsConfigurationBase.html">GuardianSnsConfigurationBase</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.GuardianTwilioConfiguration.html">GuardianTwilioConfiguration</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.GuardianTwilioConfigurationBase.html">GuardianTwilioConfigurationBase</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.Hook.html">Hook</a></h4>
-      <section><p>Represents a hook. A hook is arbitrary JavaScript code that can be used to extend Auth0's default behavior when executed in selected extension points.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.HookBase.html">HookBase</a></h4>
-      <section><p>Base class for hooks.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.HookCreateRequest.html">HookCreateRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.HookUpdateRequest.html">HookUpdateRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.Identity.html">Identity</a></h4>
-      <section><p>Describes a 3rd party account for a given <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.Job.html">Job</a></h4>
-      <section><p>Represents a background job.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.JobSummary.html">JobSummary</a></h4>
-      <section><p>Represents the results summary of a job.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.JwtConfiguration.html">JwtConfiguration</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.LogEntry.html">LogEntry</a></h4>
-      <section><p>Information about a log entry</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.LogStream.html">LogStream</a></h4>
-      <section><p>Information about a log stream</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.LogStreamBase.html">LogStreamBase</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.LogStreamCreateRequest.html">LogStreamCreateRequest</a></h4>
-      <section><p>A request for creating log streams</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.LogStreamUpdateRequest.html">LogStreamUpdateRequest</a></h4>
-      <section><p>Information required to update a log stream</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.Mobile.html">Mobile</a></h4>
-      <section><p>Represents configuration of mobile apps for a client.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.Mobile.MobileAndroid.html">Mobile.MobileAndroid</a></h4>
-      <section><p>Represents Android configuration for a client.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.Mobile.MobileIos.html">Mobile.MobileIos</a></h4>
-      <section><p>Represents iOS configuration for a client.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.Organization.html">Organization</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.OrganizationAddMemberRolesRequest.html">OrganizationAddMemberRolesRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.OrganizationAddMembersRequest.html">OrganizationAddMembersRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.OrganizationBase.html">OrganizationBase</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.OrganizationBranding.html">OrganizationBranding</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.OrganizationConnection.html">OrganizationConnection</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.OrganizationConnectionCreateRequest.html">OrganizationConnectionCreateRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.OrganizationConnectionInfo.html">OrganizationConnectionInfo</a></h4>
-      <section><p>Information on the enabled connection for an Organization</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.OrganizationConnectionUpdateRequest.html">OrganizationConnectionUpdateRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest.html">OrganizationCreateInvitationRequest</a></h4>
-      <section><p>Requests structure for creating a new organization invitation.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.OrganizationCreateRequest.html">OrganizationCreateRequest</a></h4>
-      <section><p>Requests structure for creating a new organization.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.OrganizationDeleteMemberRolesRequest.html">OrganizationDeleteMemberRolesRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.OrganizationDeleteMembersRequest.html">OrganizationDeleteMembersRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest.html">OrganizationGetAllInvitationsRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.OrganizationGetAllMembersRequest.html">OrganizationGetAllMembersRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.html">OrganizationGetInvitationRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.OrganizationInvitation.html">OrganizationInvitation</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.OrganizationInvitationInvitee.html">OrganizationInvitationInvitee</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.OrganizationInvitationInviter.html">OrganizationInvitationInviter</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.OrganizationMember.html">OrganizationMember</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.OrganizationUpdateRequest.html">OrganizationUpdateRequest</a></h4>
-      <section><p>Requests structure for updating an organization.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.PasswordChangeTicketRequest.html">PasswordChangeTicketRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.Permission.html">Permission</a></h4>
-      <section><p>Represents a permission.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.PermissionIdentity.html">PermissionIdentity</a></h4>
-      <section><p>Represents the properties of a permission that give it its unique identity.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.PermissionSource.html">PermissionSource</a></h4>
-      <section><p>Represents the source of a permission assignment</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.PrivateKeyJwt.html">PrivateKeyJwt</a></h4>
-      <section><p>Structure for credentials using Private Key JWT</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.RefreshToken.html">RefreshToken</a></h4>
-      <section><p>Represents configuration of refresh tokens for a client.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.ResourceServer.html">ResourceServer</a></h4>
-      <section><p>Represents a resource server</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.ResourceServerBase.html">ResourceServerBase</a></h4>
-      <section><p>Base class for resource server payloads</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.ResourceServerCreateRequest.html">ResourceServerCreateRequest</a></h4>
-      <section><p>Request structure for creating a new resource server</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.ResourceServerScope.html">ResourceServerScope</a></h4>
-      <section><p>Defines a scope for a resource server</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.ResourceServerUpdateRequest.html">ResourceServerUpdateRequest</a></h4>
-      <section><p>Request structure for updating a resource server</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a></h4>
-      <section><p>Class for roles.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.RoleBase.html">RoleBase</a></h4>
-      <section><p>Base class for roles.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.RoleCreateRequest.html">RoleCreateRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.RoleUpdateRequest.html">RoleUpdateRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.Rule.html">Rule</a></h4>
-      <section><p>Represents a rule. A rule is arbitrary JavaScript code that can be used to extend Auth0's default behavior when authenticating a user.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.RuleBase.html">RuleBase</a></h4>
-      <section><p>Base class for rules.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.RuleCreateRequest.html">RuleCreateRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.RuleUpdateRequest.html">RuleUpdateRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.RulesConfig.html">RulesConfig</a></h4>
-      <section><p>Represents a rules config variable.
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.AssignPermissionsRequest.html">AssignPermissionsRequest</a></dt>
+      <dd><p>Contains details of permissions that should be assigned to a role.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.AssignRolesRequest.html">AssignRolesRequest</a></dt>
+      <dd><p>Contains details of roles that should be assigned to a user.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.AssignUsersRequest.html">AssignUsersRequest</a></dt>
+      <dd><p>Contains details of users that should be assigned to a role.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.AssignedUser.html">AssignedUser</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.BlacklistedToken.html">BlacklistedToken</a></dt>
+      <dd><p>Represents a blacklisted token.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.BlacklistedTokenBase.html">BlacklistedTokenBase</a></dt>
+      <dd><p>Base class for blacklisted tokens.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.BlacklistedTokenCreateRequest.html">BlacklistedTokenCreateRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.Branding.html">Branding</a></dt>
+      <dd><p>Represents the Auth0 Tenant's branding settings</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.BrandingBase.html">BrandingBase</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.BrandingColors.html">BrandingColors</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.BrandingFont.html">BrandingFont</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.BrandingUpdateRequest.html">BrandingUpdateRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.Client.html">Client</a></dt>
+      <dd><p>Represents a client (App) in Auth0</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.ClientAuthenticationMethods.html">ClientAuthenticationMethods</a></dt>
+      <dd><p>Structure for a client's authentication methods</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.ClientBase.html">ClientBase</a></dt>
+      <dd><p>Base class for clients.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.ClientCreateRequest.html">ClientCreateRequest</a></dt>
+      <dd><p>Requests structure for creating a new client.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.ClientCredentialCreateRequest.html">ClientCredentialCreateRequest</a></dt>
+      <dd><p>Structure for creating a new client credential</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.ClientCredentialUpdateRequest.html">ClientCredentialUpdateRequest</a></dt>
+      <dd><p>Structure for updating a client credential</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.ClientGrant.html">ClientGrant</a></dt>
+      <dd><p>Represents a Client Grant</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.ClientGrantBase.html">ClientGrantBase</a></dt>
+      <dd><p>Base class for Client Grants</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.ClientGrantCreateRequest.html">ClientGrantCreateRequest</a></dt>
+      <dd><p>Request structure for creating a new Client Grant</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.ClientGrantUpdateRequest.html">ClientGrantUpdateRequest</a></dt>
+      <dd><p>Request structure for updating a new Client Grant</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.ClientResourceServerAssociation.html">ClientResourceServerAssociation</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.ClientUpdateRequest.html">ClientUpdateRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.Connection.html">Connection</a></dt>
+      <dd><p>Connection object as returned from API calls.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.ConnectionBase.html">ConnectionBase</a></dt>
+      <dd><p>Base class for connections which includes both request and responses.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.ConnectionCreateRequest.html">ConnectionCreateRequest</a></dt>
+      <dd><p>Specifies the properies for creating a new connection.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.ConnectionUpdateRequest.html">ConnectionUpdateRequest</a></dt>
+      <dd><p>Specifies the properies for updating an existing connection.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.CreateClientAuthenticationMethods.html">CreateClientAuthenticationMethods</a></dt>
+      <dd><p>Structure for creating new client authentication methods</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketRequest.html">CreateGuardianEnrollmentTicketRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.CreateGuardianEnrollmentTicketResponse.html">CreateGuardianEnrollmentTicketResponse</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.CreatePrivateKeyJwt.html">CreatePrivateKeyJwt</a></dt>
+      <dd><p>Structure for creating a new client credential using Private Key JWT</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.Credential.html">Credential</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.CredentialId.html">CredentialId</a></dt>
+      <dd><p>Structure for a client's credential.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.CustomDomain.html">CustomDomain</a></dt>
+      <dd><p>Represents a Custom Domain</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainBase.html">CustomDomainBase</a></dt>
+      <dd><p>Base class for custom domain responses.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainCreateRequest.html">CustomDomainCreateRequest</a></dt>
+      <dd><p>Represents a request to create a new custom domain.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainVerification.html">CustomDomainVerification</a></dt>
+      <dd><p>The custom domain verification methods.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainVerificationMethod.html">CustomDomainVerificationMethod</a></dt>
+      <dd><p>The custom domain verification method.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainVerificationResponse.html">CustomDomainVerificationResponse</a></dt>
+      <dd><p>Response when requesting a custom domain verification</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.DailyStatistics.html">DailyStatistics</a></dt>
+      <dd><p>The number of signups and logins for a specific day.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.DeviceCredential.html">DeviceCredential</a></dt>
+      <dd><p>Represents device credentials returned from the API.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.DeviceCredentialBase.html">DeviceCredentialBase</a></dt>
+      <dd><p>Base class for device credentials.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.DeviceCredentialCreateRequest.html">DeviceCredentialCreateRequest</a></dt>
+      <dd><p>Represents a request to create device credentials.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.EmailProvider.html">EmailProvider</a></dt>
+      <dd><p>Represents configuration for the email provider.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.EmailProviderBase.html">EmailProviderBase</a></dt>
+      <dd><p>Base class for email provider.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.EmailProviderConfigureRequest.html">EmailProviderConfigureRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.EmailProviderCredentials.html">EmailProviderCredentials</a></dt>
+      <dd><p>Credentials for an email provider.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.EmailProviderUpdateRequest.html">EmailProviderUpdateRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplate.html">EmailTemplate</a></dt>
+      <dd><p>Response returned from email template requests</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateBase.html">EmailTemplateBase</a></dt>
+      <dd><p>Base class for email templates</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateCreateRequest.html">EmailTemplateCreateRequest</a></dt>
+      <dd><p>Request for creating an email template</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplatePatchRequest.html">EmailTemplatePatchRequest</a></dt>
+      <dd><p>Request for patching an email template</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateUpdateRequest.html">EmailTemplateUpdateRequest</a></dt>
+      <dd><p>Request for updating an email template</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.EmailVerificationIdentity.html">EmailVerificationIdentity</a></dt>
+      <dd><p>Represents the identity object that can be sent on requests to create an email verification ticket or job.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.EmailVerificationTicketRequest.html">EmailVerificationTicketRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.EncryptionKey.html">EncryptionKey</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.EnrollmentsResponse.html">EnrollmentsResponse</a></dt>
+      <dd><p>Represents a Guardian Enrollment.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.GenerateRecoveryCodeResponse.html">GenerateRecoveryCodeResponse</a></dt>
+      <dd><p>Represents a Generate Recovery Code response.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.GetClientGrantsRequest.html">GetClientGrantsRequest</a></dt>
+      <dd><p>Specifies criteria to use when querying all client grants.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.GetClientsRequest.html">GetClientsRequest</a></dt>
+      <dd><p>Specifies criteria to use when querying all clients.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.GetConnectionsRequest.html">GetConnectionsRequest</a></dt>
+      <dd><p>Specifies criteria to use when querying all connections.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.GetDeviceCredentialsRequest.html">GetDeviceCredentialsRequest</a></dt>
+      <dd><p>Specifies criteria to use when querying all device credentials.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.GetHooksRequest.html">GetHooksRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.GetLogsRequest.html">GetLogsRequest</a></dt>
+      <dd><p>Specifies criteria to use when querying all logs.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.GetRolesRequest.html">GetRolesRequest</a></dt>
+      <dd><p>Specifies criteria to use when querying all roles.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.GetRulesRequest.html">GetRulesRequest</a></dt>
+      <dd><p>Specifies criteria to use when querying all rules.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.GetUserLogsRequest.html">GetUserLogsRequest</a></dt>
+      <dd><p>Specifies criteria to use when querying logs for a user.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.GetUsersRequest.html">GetUsersRequest</a></dt>
+      <dd><p>Specifies criteria to use when querying all users.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.GuardianEnrollment.html">GuardianEnrollment</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.GuardianFactor.html">GuardianFactor</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.GuardianPhoneMessageTypes.html">GuardianPhoneMessageTypes</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.GuardianSmsEnrollmentTemplates.html">GuardianSmsEnrollmentTemplates</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.GuardianSnsConfiguration.html">GuardianSnsConfiguration</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.GuardianSnsConfigurationBase.html">GuardianSnsConfigurationBase</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.GuardianTwilioConfiguration.html">GuardianTwilioConfiguration</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.GuardianTwilioConfigurationBase.html">GuardianTwilioConfigurationBase</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.Hook.html">Hook</a></dt>
+      <dd><p>Represents a hook. A hook is arbitrary JavaScript code that can be used to extend Auth0's default behavior when executed in selected extension points.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.HookBase.html">HookBase</a></dt>
+      <dd><p>Base class for hooks.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.HookCreateRequest.html">HookCreateRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.HookUpdateRequest.html">HookUpdateRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.Identity.html">Identity</a></dt>
+      <dd><p>Describes a 3rd party account for a given <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.Job.html">Job</a></dt>
+      <dd><p>Represents a background job.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.JobSummary.html">JobSummary</a></dt>
+      <dd><p>Represents the results summary of a job.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.JwtConfiguration.html">JwtConfiguration</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.LogEntry.html">LogEntry</a></dt>
+      <dd><p>Information about a log entry</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.LogStream.html">LogStream</a></dt>
+      <dd><p>Information about a log stream</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.LogStreamBase.html">LogStreamBase</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.LogStreamCreateRequest.html">LogStreamCreateRequest</a></dt>
+      <dd><p>A request for creating log streams</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.LogStreamUpdateRequest.html">LogStreamUpdateRequest</a></dt>
+      <dd><p>Information required to update a log stream</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.Mobile.html">Mobile</a></dt>
+      <dd><p>Represents configuration of mobile apps for a client.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.Mobile.MobileAndroid.html">Mobile.MobileAndroid</a></dt>
+      <dd><p>Represents Android configuration for a client.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.Mobile.MobileIos.html">Mobile.MobileIos</a></dt>
+      <dd><p>Represents iOS configuration for a client.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.Organization.html">Organization</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.OrganizationAddMemberRolesRequest.html">OrganizationAddMemberRolesRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.OrganizationAddMembersRequest.html">OrganizationAddMembersRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.OrganizationBase.html">OrganizationBase</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.OrganizationBranding.html">OrganizationBranding</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.OrganizationConnection.html">OrganizationConnection</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.OrganizationConnectionCreateRequest.html">OrganizationConnectionCreateRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.OrganizationConnectionInfo.html">OrganizationConnectionInfo</a></dt>
+      <dd><p>Information on the enabled connection for an Organization</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.OrganizationConnectionUpdateRequest.html">OrganizationConnectionUpdateRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.OrganizationCreateInvitationRequest.html">OrganizationCreateInvitationRequest</a></dt>
+      <dd><p>Requests structure for creating a new organization invitation.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.OrganizationCreateRequest.html">OrganizationCreateRequest</a></dt>
+      <dd><p>Requests structure for creating a new organization.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.OrganizationDeleteMemberRolesRequest.html">OrganizationDeleteMemberRolesRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.OrganizationDeleteMembersRequest.html">OrganizationDeleteMembersRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.OrganizationGetAllInvitationsRequest.html">OrganizationGetAllInvitationsRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.OrganizationGetAllMembersRequest.html">OrganizationGetAllMembersRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.OrganizationGetInvitationRequest.html">OrganizationGetInvitationRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.OrganizationInvitation.html">OrganizationInvitation</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.OrganizationInvitationInvitee.html">OrganizationInvitationInvitee</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.OrganizationInvitationInviter.html">OrganizationInvitationInviter</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.OrganizationMember.html">OrganizationMember</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.OrganizationUpdateRequest.html">OrganizationUpdateRequest</a></dt>
+      <dd><p>Requests structure for updating an organization.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.PasswordChangeTicketRequest.html">PasswordChangeTicketRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.Permission.html">Permission</a></dt>
+      <dd><p>Represents a permission.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.PermissionIdentity.html">PermissionIdentity</a></dt>
+      <dd><p>Represents the properties of a permission that give it its unique identity.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.PermissionSource.html">PermissionSource</a></dt>
+      <dd><p>Represents the source of a permission assignment</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.PrivateKeyJwt.html">PrivateKeyJwt</a></dt>
+      <dd><p>Structure for credentials using Private Key JWT</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.RefreshToken.html">RefreshToken</a></dt>
+      <dd><p>Represents configuration of refresh tokens for a client.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.ResourceServer.html">ResourceServer</a></dt>
+      <dd><p>Represents a resource server</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.ResourceServerBase.html">ResourceServerBase</a></dt>
+      <dd><p>Base class for resource server payloads</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.ResourceServerCreateRequest.html">ResourceServerCreateRequest</a></dt>
+      <dd><p>Request structure for creating a new resource server</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.ResourceServerScope.html">ResourceServerScope</a></dt>
+      <dd><p>Defines a scope for a resource server</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.ResourceServerUpdateRequest.html">ResourceServerUpdateRequest</a></dt>
+      <dd><p>Request structure for updating a resource server</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.Role.html">Role</a></dt>
+      <dd><p>Class for roles.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.RoleBase.html">RoleBase</a></dt>
+      <dd><p>Base class for roles.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.RoleCreateRequest.html">RoleCreateRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.RoleUpdateRequest.html">RoleUpdateRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.Rule.html">Rule</a></dt>
+      <dd><p>Represents a rule. A rule is arbitrary JavaScript code that can be used to extend Auth0's default behavior when authenticating a user.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.RuleBase.html">RuleBase</a></dt>
+      <dd><p>Base class for rules.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.RuleCreateRequest.html">RuleCreateRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.RuleUpdateRequest.html">RuleUpdateRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.RulesConfig.html">RulesConfig</a></dt>
+      <dd><p>Represents a rules config variable.
 A rules-config is a variable defined by its key that carries an encrypted value, accessible only from within the rules.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.RulesConfigCreateOrUpdateRequest.html">RulesConfigCreateOrUpdateRequest</a></h4>
-      <section><p>Represents a client request to create or update a rules config variable.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.ScopeEntry.html">ScopeEntry</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.Scopes.html">Scopes</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.SessionCookie.html">SessionCookie</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.SigningKey.html">SigningKey</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.TenantChangePassword.html">TenantChangePassword</a></h4>
-      <section><p>Change Password page customization.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.TenantDeviceFlow.html">TenantDeviceFlow</a></h4>
-      <section><p>Tenant Device Flow configuration.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.TenantErrorPage.html">TenantErrorPage</a></h4>
-      <section><p>Tenant error page customization.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.TenantFlags.html">TenantFlags</a></h4>
-      <section><p>Tenant flags.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.TenantGuardianMfaPage.html">TenantGuardianMfaPage</a></h4>
-      <section><p>Guardian page customization.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.TenantSettings.html">TenantSettings</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.TenantSettingsBase.html">TenantSettingsBase</a></h4>
-      <section><p>Settings for a given tenant.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.TenantSettingsUpdateRequest.html">TenantSettingsUpdateRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.Ticket.html">Ticket</a></h4>
-      <section><p>Represents a ticket. Tickets can be for either email verification or a password change.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.UniversalLoginTemplate.html">UniversalLoginTemplate</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.UniversalLoginTemplateUpdateRequest.html">UniversalLoginTemplateUpdateRequest</a></h4>
-      <section><p>Request for updating the template for the New Universal Login Experience.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianFactorBase.html">UpdateGuardianFactorBase</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianFactorRequest.html">UpdateGuardianFactorRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianFactorResponse.html">UpdateGuardianFactorResponse</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianSnsConfigurationRequest.html">UpdateGuardianSnsConfigurationRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianTwilioConfigurationRequest.html">UpdateGuardianTwilioConfigurationRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a></h4>
-      <section><p>Represents a user as returned from various APIs.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.UserAccountJwtLinkRequest.html">UserAccountJwtLinkRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.UserAccountLinkRequest.html">UserAccountLinkRequest</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.UserBase.html">UserBase</a></h4>
-      <section><p>Contains common elements used for both constructing <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>-related requests, and comprising <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>-related responses.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.UserBlock.html">UserBlock</a></h4>
-      <section><p>Represents a user block</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.UserBlocks.html">UserBlocks</a></h4>
-      <section><p>Contains a list of blocks for a user</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.UserCreateRequest.html">UserCreateRequest</a></h4>
-      <section><p>Represents the request to create a <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.UserPermission.html">UserPermission</a></h4>
-      <section><p>User-specific representation of a permission, including its source(s).</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.UserUpdateRequest.html">UserUpdateRequest</a></h4>
-      <section><p>Represents the request to update a <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.UsersExportsJobField.html">UsersExportsJobField</a></h4>
-      <section><p>Contains details of a field to be included in the users exports job</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.UsersExportsJobRequest.html">UsersExportsJobRequest</a></h4>
-      <section><p>Contains details for creating a users exports job.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.VerifyEmailJobRequest.html">VerifyEmailJobRequest</a></h4>
-      <section><p>Contains details for sending an email address verification link.</p>
-</section>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.RulesConfigCreateOrUpdateRequest.html">RulesConfigCreateOrUpdateRequest</a></dt>
+      <dd><p>Represents a client request to create or update a rules config variable.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.ScopeEntry.html">ScopeEntry</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.Scopes.html">Scopes</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.SessionCookie.html">SessionCookie</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.SigningKey.html">SigningKey</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.TenantChangePassword.html">TenantChangePassword</a></dt>
+      <dd><p>Change Password page customization.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.TenantDeviceFlow.html">TenantDeviceFlow</a></dt>
+      <dd><p>Tenant Device Flow configuration.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.TenantErrorPage.html">TenantErrorPage</a></dt>
+      <dd><p>Tenant error page customization.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.TenantFlags.html">TenantFlags</a></dt>
+      <dd><p>Tenant flags.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.TenantGuardianMfaPage.html">TenantGuardianMfaPage</a></dt>
+      <dd><p>Guardian page customization.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.TenantSettings.html">TenantSettings</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.TenantSettingsBase.html">TenantSettingsBase</a></dt>
+      <dd><p>Settings for a given tenant.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.TenantSettingsUpdateRequest.html">TenantSettingsUpdateRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.Ticket.html">Ticket</a></dt>
+      <dd><p>Represents a ticket. Tickets can be for either email verification or a password change.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.UniversalLoginTemplate.html">UniversalLoginTemplate</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.UniversalLoginTemplateUpdateRequest.html">UniversalLoginTemplateUpdateRequest</a></dt>
+      <dd><p>Request for updating the template for the New Universal Login Experience.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianFactorBase.html">UpdateGuardianFactorBase</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianFactorRequest.html">UpdateGuardianFactorRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianFactorResponse.html">UpdateGuardianFactorResponse</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianSnsConfigurationRequest.html">UpdateGuardianSnsConfigurationRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.UpdateGuardianTwilioConfigurationRequest.html">UpdateGuardianTwilioConfigurationRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a></dt>
+      <dd><p>Represents a user as returned from various APIs.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.UserAccountJwtLinkRequest.html">UserAccountJwtLinkRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.UserAccountLinkRequest.html">UserAccountLinkRequest</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.UserBase.html">UserBase</a></dt>
+      <dd><p>Contains common elements used for both constructing <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>-related requests, and comprising <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>-related responses.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.UserBlock.html">UserBlock</a></dt>
+      <dd><p>Represents a user block</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.UserBlocks.html">UserBlocks</a></dt>
+      <dd><p>Contains a list of blocks for a user</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.UserCreateRequest.html">UserCreateRequest</a></dt>
+      <dd><p>Represents the request to create a <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.UserPermission.html">UserPermission</a></dt>
+      <dd><p>User-specific representation of a permission, including its source(s).</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.UserUpdateRequest.html">UserUpdateRequest</a></dt>
+      <dd><p>Represents the request to update a <a class="xref" href="Auth0.ManagementApi.Models.User.html">User</a>.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.UsersExportsJobField.html">UsersExportsJobField</a></dt>
+      <dd><p>Contains details of a field to be included in the users exports job</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.UsersExportsJobRequest.html">UsersExportsJobRequest</a></dt>
+      <dd><p>Contains details for creating a users exports job.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.VerifyEmailJobRequest.html">VerifyEmailJobRequest</a></dt>
+      <dd><p>Contains details for sending an email address verification link.</p>
+</dd>
+    </dl>
     <h3 id="enums">
 Enums
 </h3>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.ClientApplicationType.html">ClientApplicationType</a></h4>
-      <section><p>The type of application for a <a class="xref" href="Auth0.ManagementApi.Models.Client.html">Client</a></p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainCertificateProvisioning.html">CustomDomainCertificateProvisioning</a></h4>
-      <section><p>The custom domain provisioning type.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainStatus.html">CustomDomainStatus</a></h4>
-      <section><p>The custom domain configuration status.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateName.html">EmailTemplateName</a></h4>
-      <section><p>The names of the different email templates which you can manage.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateSyntax.html">EmailTemplateSyntax</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.EnrollmentAuthMethod.html">EnrollmentAuthMethod</a></h4>
-      <section><p>Method of authentication for a Guardian Enrollment.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.EnrollmentStatus.html">EnrollmentStatus</a></h4>
-      <section><p>Status of a Guardian Enrollment.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.GuardianEnrollmentStatus.html">GuardianEnrollmentStatus</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.GuardianFactorName.html">GuardianFactorName</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.LogStreamStatus.html">LogStreamStatus</a></h4>
-      <section><p>The possible statuses of the log stream</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.LogStreamType.html">LogStreamType</a></h4>
-      <section><p>The possible types of log stream</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.LogStreamUpdateStatus.html">LogStreamUpdateStatus</a></h4>
-      <section><p>The possible statuses to update a log strem with</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.OrganizationRequireBehavior.html">OrganizationRequireBehavior</a></h4>
-      <section><p>Defines how to proceed during an authentication transaction when organization usage is required.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.OrganizationUsage.html">OrganizationUsage</a></h4>
-      <section><p>Organization usage for a client</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.PermissionSourceType.html">PermissionSourceType</a></h4>
-      <section><p>Types of permission sources</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.RefreshTokenExpirationType.html">RefreshTokenExpirationType</a></h4>
-      <section><p>The type of expiration for a <a class="xref" href="Auth0.ManagementApi.Models.RefreshToken.html">RefreshToken</a></p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.RefreshTokenRotationType.html">RefreshTokenRotationType</a></h4>
-      <section><p>The type of rotation for a <a class="xref" href="Auth0.ManagementApi.Models.RefreshToken.html">RefreshToken</a></p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.SigningAlgorithm.html">SigningAlgorithm</a></h4>
-      <section><p>Alogithm a token can be signed with.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.TenantDeviceFlowCharset.html">TenantDeviceFlowCharset</a></h4>
-      <section><p>The character set for generating a User Code.</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.TokenDialect.html">TokenDialect</a></h4>
-      <section></section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.TokenEndpointAuthMethod.html">TokenEndpointAuthMethod</a></h4>
-      <section><p>Authentication method for the token endpoint</p>
-</section>
-      <h4><a class="xref" href="Auth0.ManagementApi.Models.UsersExportsJobFormat.html">UsersExportsJobFormat</a></h4>
-      <section><p>Enum used to define the expected format for the users exports job</p>
-</section>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.ClientApplicationType.html">ClientApplicationType</a></dt>
+      <dd><p>The type of application for a <a class="xref" href="Auth0.ManagementApi.Models.Client.html">Client</a></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainCertificateProvisioning.html">CustomDomainCertificateProvisioning</a></dt>
+      <dd><p>The custom domain provisioning type.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.CustomDomainStatus.html">CustomDomainStatus</a></dt>
+      <dd><p>The custom domain configuration status.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateName.html">EmailTemplateName</a></dt>
+      <dd><p>The names of the different email templates which you can manage.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.EmailTemplateSyntax.html">EmailTemplateSyntax</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.EnrollmentAuthMethod.html">EnrollmentAuthMethod</a></dt>
+      <dd><p>Method of authentication for a Guardian Enrollment.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.EnrollmentStatus.html">EnrollmentStatus</a></dt>
+      <dd><p>Status of a Guardian Enrollment.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.GuardianEnrollmentStatus.html">GuardianEnrollmentStatus</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.GuardianFactorName.html">GuardianFactorName</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.LogStreamStatus.html">LogStreamStatus</a></dt>
+      <dd><p>The possible statuses of the log stream</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.LogStreamType.html">LogStreamType</a></dt>
+      <dd><p>The possible types of log stream</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.LogStreamUpdateStatus.html">LogStreamUpdateStatus</a></dt>
+      <dd><p>The possible statuses to update a log strem with</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.OrganizationRequireBehavior.html">OrganizationRequireBehavior</a></dt>
+      <dd><p>Defines how to proceed during an authentication transaction when organization usage is required.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.OrganizationUsage.html">OrganizationUsage</a></dt>
+      <dd><p>Organization usage for a client</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.PermissionSourceType.html">PermissionSourceType</a></dt>
+      <dd><p>Types of permission sources</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.RefreshTokenExpirationType.html">RefreshTokenExpirationType</a></dt>
+      <dd><p>The type of expiration for a <a class="xref" href="Auth0.ManagementApi.Models.RefreshToken.html">RefreshToken</a></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.RefreshTokenRotationType.html">RefreshTokenRotationType</a></dt>
+      <dd><p>The type of rotation for a <a class="xref" href="Auth0.ManagementApi.Models.RefreshToken.html">RefreshToken</a></p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.SigningAlgorithm.html">SigningAlgorithm</a></dt>
+      <dd><p>Alogithm a token can be signed with.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.TenantDeviceFlowCharset.html">TenantDeviceFlowCharset</a></dt>
+      <dd><p>The character set for generating a User Code.</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.TokenDialect.html">TokenDialect</a></dt>
+      <dd></dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.TokenEndpointAuthMethod.html">TokenEndpointAuthMethod</a></dt>
+      <dd><p>Authentication method for the token endpoint</p>
+</dd>
+    </dl>
+    <dl class="jumplist">
+      <dt><a class="xref" href="Auth0.ManagementApi.Models.UsersExportsJobFormat.html">UsersExportsJobFormat</a></dt>
+      <dd><p>Enum used to define the expected format for the users exports job</p>
+</dd>
+    </dl>
 
 
 </article>
-          </div>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
-        </div>
+
+        
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      
-      <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

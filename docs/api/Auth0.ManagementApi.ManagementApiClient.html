@@ -1,93 +1,134 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-
   <head>
     <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <title>Class ManagementApiClient
  </title>
-      <meta name="viewport" content="width=device-width">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="title" content="Class ManagementApiClient
  ">
-    
-      <link rel="shortcut icon" href="../images/logo.png">
-      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
-      <link rel="stylesheet" href="../styles/docfx.css">
-      <link rel="stylesheet" href="../styles/main.css">
-      <meta property="docfx:navrel" content="../toc.html">
-      <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      
+      <link rel="icon" href="../images/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/auth0/auth0.net/new/feat/modern-api-docs/apiSpec/new?filename=Auth0_ManagementApi_ManagementApiClient.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.ManagementApiClient%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
 
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
 
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../images/logo.svg" alt="">
-              </a>
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
             </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
-              </form>
-            </div>
-          </div>
-        </nav>
-
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
           </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
+      </nav>
+    </header>
 
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.ManagementApiClient">
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Auth0.ManagementApi.ManagementApiClient">
 
 
 
-  <h1 id="Auth0_ManagementApi_ManagementApiClient" data-uid="Auth0.ManagementApi.ManagementApiClient" class="text-break">Class ManagementApiClient
-</h1>
-  <div class="markdown level0 summary"><p>Represents the Management API client.</p>
+  <h1 id="Auth0_ManagementApi_ManagementApiClient" data-uid="Auth0.ManagementApi.ManagementApiClient" class="text-break">
+    Class ManagementApiClient
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Auth0.html">Auth0</a>.<a class="xref" href="Auth0.ManagementApi.html">ManagementApi</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Auth0.ManagementApi.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Represents the Management API client.</p>
 </div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
-    <div class="level1"><span class="xref">ManagementApiClient</span></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ManagementApiClient : IManagementApiClient, IDisposable</code></pre>
   </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="Auth0.ManagementApi.IManagementApiClient.html">IManagementApiClient</a></div>
-    <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">ManagementApiClient</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Auth0.ManagementApi.IManagementApiClient.html">IManagementApiClient</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
@@ -109,918 +150,1177 @@
     <div>
       <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.html">Auth0</a>.<a class="xref" href="Auth0.ManagementApi.html">ManagementApi</a></h6>
-  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
-  <h5 id="Auth0_ManagementApi_ManagementApiClient_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ManagementApiClient : IManagementApiClient, IDisposable</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-</h3>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient__ctor_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_System_String_Auth0_ManagementApi_IManagementConnection_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,System.String,Auth0.ManagementApi.IManagementConnection)">ManagementApiClient(string, string, IManagementConnection)</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_System_String_Auth0_ManagementApi_IManagementConnection_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,System.String,Auth0.ManagementApi.IManagementConnection)">
+  ManagementApiClient(string, string, IManagementConnection)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L224"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ManagementApiClient(string token, string domain, IManagementConnection connection = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">token</span></td>
-        <td><p>A valid Auth0 Management API v2 token.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">domain</span></td>
-        <td><p>Your Auth0 domain. <example>tenant.auth0.com</example></p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a></td>
-        <td><span class="parametername">connection</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>token</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A valid Auth0 Management API v2 token.</p>
+</dd>
+    <dt><code>domain</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>Your Auth0 domain. <example>tenant.auth0.com</example></p>
+</dd>
+    <dt><code>connection</code> <a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient__ctor_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_System_Uri_Auth0_ManagementApi_IManagementConnection_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,System.Uri,Auth0.ManagementApi.IManagementConnection)">ManagementApiClient(string, Uri, IManagementConnection)</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient__ctor_System_String_System_Uri_Auth0_ManagementApi_IManagementConnection_" data-uid="Auth0.ManagementApi.ManagementApiClient.#ctor(System.String,System.Uri,Auth0.ManagementApi.IManagementConnection)">
+  ManagementApiClient(string, Uri, IManagementConnection)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L174"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="Auth0.ManagementApi.ManagementApiClient.html">ManagementApiClient</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ManagementApiClient(string token, Uri baseUri, IManagementConnection managementConnection = null)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">token</span></td>
-        <td><p>A valid Auth0 Management API v2 token.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uri">Uri</a></td>
-        <td><span class="parametername">baseUri</span></td>
-        <td><p><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uri">Uri</a> of the tenant to manage.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a></td>
-        <td><span class="parametername">managementConnection</span></td>
-        <td><p><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a> to facilitate communication with server.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="fields">Fields
-</h3>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_connection" data-uid="Auth0.ManagementApi.ManagementApiClient.connection">connection</h4>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>token</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>A valid Auth0 Management API v2 token.</p>
+</dd>
+    <dt><code>baseUri</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uri">Uri</a></dt>
+    <dd><p><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uri">Uri</a> of the tenant to manage.</p>
+</dd>
+    <dt><code>managementConnection</code> <a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a></dt>
+    <dd><p><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a> to facilitate communication with server.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="fields">Fields
+</h2>
+
+
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_connection" data-uid="Auth0.ManagementApi.ManagementApiClient.connection">
+  connection
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected readonly IManagementConnection connection</code></pre>
   </div>
-  <h5 class="fieldValue">Field Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="properties">Properties
-</h3>
+
+
+
+
+  <h4 class="section">Field Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_Actions_" data-uid="Auth0.ManagementApi.ManagementApiClient.Actions*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_Actions" data-uid="Auth0.ManagementApi.ManagementApiClient.Actions">Actions</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_Actions" data-uid="Auth0.ManagementApi.ManagementApiClient.Actions">
+  Actions
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /actions endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IActionsClient Actions { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IActionsClient.html">IActionsClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IActionsClient.html">IActionsClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_AttackProtection_" data-uid="Auth0.ManagementApi.ManagementApiClient.AttackProtection*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_AttackProtection" data-uid="Auth0.ManagementApi.ManagementApiClient.AttackProtection">AttackProtection</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_AttackProtection" data-uid="Auth0.ManagementApi.ManagementApiClient.AttackProtection">
+  AttackProtection
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L28"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /attack-protection endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IAttackProtectionClient AttackProtection { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IAttackProtectionClient.html">IAttackProtectionClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IAttackProtectionClient.html">IAttackProtectionClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_BlacklistedTokens_" data-uid="Auth0.ManagementApi.ManagementApiClient.BlacklistedTokens*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_BlacklistedTokens" data-uid="Auth0.ManagementApi.ManagementApiClient.BlacklistedTokens">BlacklistedTokens</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_BlacklistedTokens" data-uid="Auth0.ManagementApi.ManagementApiClient.BlacklistedTokens">
+  BlacklistedTokens
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L33"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /blacklists/tokens endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IBlacklistedTokensClient BlacklistedTokens { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IBlacklistedTokensClient.html">IBlacklistedTokensClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IBlacklistedTokensClient.html">IBlacklistedTokensClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_Branding_" data-uid="Auth0.ManagementApi.ManagementApiClient.Branding*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_Branding" data-uid="Auth0.ManagementApi.ManagementApiClient.Branding">Branding</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_Branding" data-uid="Auth0.ManagementApi.ManagementApiClient.Branding">
+  Branding
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /branding endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IBrandingClient Branding { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IBrandingClient.html">IBrandingClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IBrandingClient.html">IBrandingClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_ClientGrants_" data-uid="Auth0.ManagementApi.ManagementApiClient.ClientGrants*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_ClientGrants" data-uid="Auth0.ManagementApi.ManagementApiClient.ClientGrants">ClientGrants</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_ClientGrants" data-uid="Auth0.ManagementApi.ManagementApiClient.ClientGrants">
+  ClientGrants
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /client-grants endpoints</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IClientGrantsClient ClientGrants { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IClientGrantsClient.html">IClientGrantsClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IClientGrantsClient.html">IClientGrantsClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_Clients_" data-uid="Auth0.ManagementApi.ManagementApiClient.Clients*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_Clients" data-uid="Auth0.ManagementApi.ManagementApiClient.Clients">Clients</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_Clients" data-uid="Auth0.ManagementApi.ManagementApiClient.Clients">
+  Clients
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L48"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /clients endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IClientsClient Clients { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IClientsClient.html">IClientsClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IClientsClient.html">IClientsClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_Connections_" data-uid="Auth0.ManagementApi.ManagementApiClient.Connections*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_Connections" data-uid="Auth0.ManagementApi.ManagementApiClient.Connections">Connections</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_Connections" data-uid="Auth0.ManagementApi.ManagementApiClient.Connections">
+  Connections
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /connections endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IConnectionsClient Connections { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IConnectionsClient.html">IConnectionsClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IConnectionsClient.html">IConnectionsClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_CustomDomains_" data-uid="Auth0.ManagementApi.ManagementApiClient.CustomDomains*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_CustomDomains" data-uid="Auth0.ManagementApi.ManagementApiClient.CustomDomains">CustomDomains</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_CustomDomains" data-uid="Auth0.ManagementApi.ManagementApiClient.CustomDomains">
+  CustomDomains
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /custom-domains endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ICustomDomainsClient CustomDomains { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.ICustomDomainsClient.html">ICustomDomainsClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.ICustomDomainsClient.html">ICustomDomainsClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_DeviceCredentials_" data-uid="Auth0.ManagementApi.ManagementApiClient.DeviceCredentials*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_DeviceCredentials" data-uid="Auth0.ManagementApi.ManagementApiClient.DeviceCredentials">DeviceCredentials</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_DeviceCredentials" data-uid="Auth0.ManagementApi.ManagementApiClient.DeviceCredentials">
+  DeviceCredentials
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L63"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /device-credentials endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IDeviceCredentialsClient DeviceCredentials { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IDeviceCredentialsClient.html">IDeviceCredentialsClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IDeviceCredentialsClient.html">IDeviceCredentialsClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_EmailProvider_" data-uid="Auth0.ManagementApi.ManagementApiClient.EmailProvider*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_EmailProvider" data-uid="Auth0.ManagementApi.ManagementApiClient.EmailProvider">EmailProvider</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_EmailProvider" data-uid="Auth0.ManagementApi.ManagementApiClient.EmailProvider">
+  EmailProvider
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /emails/provider endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IEmailProviderClient EmailProvider { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IEmailProviderClient.html">IEmailProviderClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IEmailProviderClient.html">IEmailProviderClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_EmailTemplates_" data-uid="Auth0.ManagementApi.ManagementApiClient.EmailTemplates*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_EmailTemplates" data-uid="Auth0.ManagementApi.ManagementApiClient.EmailTemplates">EmailTemplates</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_EmailTemplates" data-uid="Auth0.ManagementApi.ManagementApiClient.EmailTemplates">
+  EmailTemplates
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /email-templates endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IEmailTemplatesClient EmailTemplates { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IEmailTemplatesClient.html">IEmailTemplatesClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IEmailTemplatesClient.html">IEmailTemplatesClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_Grants_" data-uid="Auth0.ManagementApi.ManagementApiClient.Grants*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_Grants" data-uid="Auth0.ManagementApi.ManagementApiClient.Grants">Grants</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_Grants" data-uid="Auth0.ManagementApi.ManagementApiClient.Grants">
+  Grants
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /grants endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IGrantsClient Grants { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IGrantsClient.html">IGrantsClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IGrantsClient.html">IGrantsClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_Guardian_" data-uid="Auth0.ManagementApi.ManagementApiClient.Guardian*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_Guardian" data-uid="Auth0.ManagementApi.ManagementApiClient.Guardian">Guardian</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_Guardian" data-uid="Auth0.ManagementApi.ManagementApiClient.Guardian">
+  Guardian
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /guardian endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IGuardianClient Guardian { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IGuardianClient.html">IGuardianClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IGuardianClient.html">IGuardianClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_Hooks_" data-uid="Auth0.ManagementApi.ManagementApiClient.Hooks*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_Hooks" data-uid="Auth0.ManagementApi.ManagementApiClient.Hooks">Hooks</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_Hooks" data-uid="Auth0.ManagementApi.ManagementApiClient.Hooks">
+  Hooks
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L139"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /hooks endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IHooksClient Hooks { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IHooksClient.html">IHooksClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IHooksClient.html">IHooksClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_Jobs_" data-uid="Auth0.ManagementApi.ManagementApiClient.Jobs*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_Jobs" data-uid="Auth0.ManagementApi.ManagementApiClient.Jobs">Jobs</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_Jobs" data-uid="Auth0.ManagementApi.ManagementApiClient.Jobs">
+  Jobs
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L88"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /jobs endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IJobsClient Jobs { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IJobsClient.html">IJobsClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IJobsClient.html">IJobsClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_Keys_" data-uid="Auth0.ManagementApi.ManagementApiClient.Keys*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_Keys" data-uid="Auth0.ManagementApi.ManagementApiClient.Keys">Keys</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_Keys" data-uid="Auth0.ManagementApi.ManagementApiClient.Keys">
+  Keys
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L93"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /keys endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IKeysClient Keys { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IKeysClient.html">IKeysClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IKeysClient.html">IKeysClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_LogStreams_" data-uid="Auth0.ManagementApi.ManagementApiClient.LogStreams*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_LogStreams" data-uid="Auth0.ManagementApi.ManagementApiClient.LogStreams">LogStreams</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_LogStreams" data-uid="Auth0.ManagementApi.ManagementApiClient.LogStreams">
+  LogStreams
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L103"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to all the /log-streams endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ILogStreamsClient LogStreams { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.ILogStreamsClient.html">ILogStreamsClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.ILogStreamsClient.html">ILogStreamsClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_Logs_" data-uid="Auth0.ManagementApi.ManagementApiClient.Logs*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_Logs" data-uid="Auth0.ManagementApi.ManagementApiClient.Logs">Logs</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_Logs" data-uid="Auth0.ManagementApi.ManagementApiClient.Logs">
+  Logs
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /logs endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ILogsClient Logs { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.ILogsClient.html">ILogsClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.ILogsClient.html">ILogsClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_Organizations_" data-uid="Auth0.ManagementApi.ManagementApiClient.Organizations*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_Organizations" data-uid="Auth0.ManagementApi.ManagementApiClient.Organizations">Organizations</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_Organizations" data-uid="Auth0.ManagementApi.ManagementApiClient.Organizations">
+  Organizations
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L108"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /organizations endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IOrganizationsClient Organizations { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IOrganizationsClient.html">IOrganizationsClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IOrganizationsClient.html">IOrganizationsClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_Prompts_" data-uid="Auth0.ManagementApi.ManagementApiClient.Prompts*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_Prompts" data-uid="Auth0.ManagementApi.ManagementApiClient.Prompts">Prompts</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_Prompts" data-uid="Auth0.ManagementApi.ManagementApiClient.Prompts">
+  Prompts
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L113"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /prompts endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IPromptsClient Prompts { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IPromptsClient.html">IPromptsClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IPromptsClient.html">IPromptsClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_ResourceServers_" data-uid="Auth0.ManagementApi.ManagementApiClient.ResourceServers*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_ResourceServers" data-uid="Auth0.ManagementApi.ManagementApiClient.ResourceServers">ResourceServers</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_ResourceServers" data-uid="Auth0.ManagementApi.ManagementApiClient.ResourceServers">
+  ResourceServers
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L118"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /resource-servers endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IResourceServersClient ResourceServers { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IResourceServersClient.html">IResourceServersClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IResourceServersClient.html">IResourceServersClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_Roles_" data-uid="Auth0.ManagementApi.ManagementApiClient.Roles*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_Roles" data-uid="Auth0.ManagementApi.ManagementApiClient.Roles">Roles</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_Roles" data-uid="Auth0.ManagementApi.ManagementApiClient.Roles">
+  Roles
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L124"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /roles endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IRolesClient Roles { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IRolesClient.html">IRolesClient</a></td>
-        <td><p>The roles.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IRolesClient.html">IRolesClient</a></dt>
+    <dd><p>The roles.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_Rules_" data-uid="Auth0.ManagementApi.ManagementApiClient.Rules*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_Rules" data-uid="Auth0.ManagementApi.ManagementApiClient.Rules">Rules</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_Rules" data-uid="Auth0.ManagementApi.ManagementApiClient.Rules">
+  Rules
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L134"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /rules endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IRulesClient Rules { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IRulesClient.html">IRulesClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IRulesClient.html">IRulesClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_RulesConfig_" data-uid="Auth0.ManagementApi.ManagementApiClient.RulesConfig*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_RulesConfig" data-uid="Auth0.ManagementApi.ManagementApiClient.RulesConfig">RulesConfig</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_RulesConfig" data-uid="Auth0.ManagementApi.ManagementApiClient.RulesConfig">
+  RulesConfig
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L129"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /rules-configs endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IRulesConfigClient RulesConfig { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IRulesConfigClient.html">IRulesConfigClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IRulesConfigClient.html">IRulesConfigClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_Stats_" data-uid="Auth0.ManagementApi.ManagementApiClient.Stats*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_Stats" data-uid="Auth0.ManagementApi.ManagementApiClient.Stats">Stats</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_Stats" data-uid="Auth0.ManagementApi.ManagementApiClient.Stats">
+  Stats
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L144"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /stats endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IStatsClient Stats { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IStatsClient.html">IStatsClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IStatsClient.html">IStatsClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_TenantSettings_" data-uid="Auth0.ManagementApi.ManagementApiClient.TenantSettings*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_TenantSettings" data-uid="Auth0.ManagementApi.ManagementApiClient.TenantSettings">TenantSettings</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_TenantSettings" data-uid="Auth0.ManagementApi.ManagementApiClient.TenantSettings">
+  TenantSettings
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /tenants/settings endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ITenantSettingsClient TenantSettings { get; set; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.ITenantSettingsClient.html">ITenantSettingsClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.ITenantSettingsClient.html">ITenantSettingsClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_Tickets_" data-uid="Auth0.ManagementApi.ManagementApiClient.Tickets*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_Tickets" data-uid="Auth0.ManagementApi.ManagementApiClient.Tickets">Tickets</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_Tickets" data-uid="Auth0.ManagementApi.ManagementApiClient.Tickets">
+  Tickets
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L154"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /tickets endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public ITicketsClient Tickets { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.ITicketsClient.html">ITicketsClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.ITicketsClient.html">ITicketsClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_UserBlocks_" data-uid="Auth0.ManagementApi.ManagementApiClient.UserBlocks*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_UserBlocks" data-uid="Auth0.ManagementApi.ManagementApiClient.UserBlocks">UserBlocks</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_UserBlocks" data-uid="Auth0.ManagementApi.ManagementApiClient.UserBlocks">
+  UserBlocks
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L159"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /user-blocks endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IUserBlocksClient UserBlocks { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IUserBlocksClient.html">IUserBlocksClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IUserBlocksClient.html">IUserBlocksClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_Users_" data-uid="Auth0.ManagementApi.ManagementApiClient.Users*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_Users" data-uid="Auth0.ManagementApi.ManagementApiClient.Users">Users</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_Users" data-uid="Auth0.ManagementApi.ManagementApiClient.Users">
+  Users
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L164"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Contains all the methods to call the /users endpoints.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public IUsersClient Users { get; }</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Clients.IUsersClient.html">IUsersClient</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-</h3>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="Auth0.ManagementApi.Clients.IUsersClient.html">IUsersClient</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_Dispose_" data-uid="Auth0.ManagementApi.ManagementApiClient.Dispose*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_Dispose" data-uid="Auth0.ManagementApi.ManagementApiClient.Dispose">Dispose()</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_Dispose" data-uid="Auth0.ManagementApi.ManagementApiClient.Dispose">
+  Dispose()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L271"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Disposes of any owned disposable resources.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
   </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_Dispose_" data-uid="Auth0.ManagementApi.ManagementApiClient.Dispose*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_Dispose_System_Boolean_" data-uid="Auth0.ManagementApi.ManagementApiClient.Dispose(System.Boolean)">Dispose(bool)</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_Dispose_System_Boolean_" data-uid="Auth0.ManagementApi.ManagementApiClient.Dispose(System.Boolean)">
+  Dispose(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L259"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Disposes of any owned disposable resources.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected virtual void Dispose(bool disposing)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></td>
-        <td><span class="parametername">disposing</span></td>
-        <td><p>Whether we are actually disposing (<a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>) or not (<a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>).</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>disposing</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>Whether we are actually disposing (<a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a>) or not (<a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a>).</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_ManagementApiClient_UpdateAccessToken_" data-uid="Auth0.ManagementApi.ManagementApiClient.UpdateAccessToken*"></a>
-  <h4 id="Auth0_ManagementApi_ManagementApiClient_UpdateAccessToken_System_String_" data-uid="Auth0.ManagementApi.ManagementApiClient.UpdateAccessToken(System.String)">UpdateAccessToken(string)</h4>
+
+  <h3 id="Auth0_ManagementApi_ManagementApiClient_UpdateAccessToken_System_String_" data-uid="Auth0.ManagementApi.ManagementApiClient.UpdateAccessToken(System.String)">
+  UpdateAccessToken(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/feat/modern-api-docs/src/Auth0.ManagementApi/ManagementApiClient.cs/#L245"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Update the Access Token used with every request.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public void UpdateAccessToken(string token)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">token</span></td>
-        <td><p>The new and valid Auth0 Management API v2 token.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="Auth0.ManagementApi.IManagementApiClient.html">IManagementApiClient</a>
-  </div>
-  <div>
-      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a>
-  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>token</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The new and valid Auth0 Management API v2 token.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
 
 </article>
-          </div>
 
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In this article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
-        </div>
+
+        
       </div>
 
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-      
-      <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
-    </div>
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
 
-    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
