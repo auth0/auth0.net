@@ -1,5 +1,17 @@
 # Change Log
 
+## [7.23.0](https://github.com/auth0/auth0.net/tree/7.23.0) (2023-10-19)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.22.3...7.23.0)
+
+**Added**
+- Add roles to OrganizationMember [\#661](https://github.com/auth0/auth0.net/pull/661) ([frederikprijck](https://github.com/frederikprijck))
+- Add fields to Organizations Get All Members [\#660](https://github.com/auth0/auth0.net/pull/660) ([frederikprijck](https://github.com/frederikprijck))
+- Add external_id on Job [\#658](https://github.com/auth0/auth0.net/pull/658) ([frederikprijck](https://github.com/frederikprijck))
+- Add show_as_button to ConnectionBase.cs [\#647](https://github.com/auth0/auth0.net/pull/647) ([dylanAtWork](https://github.com/dylanAtWork))
+
+**Changed**
+- Move IsDomainConnection down into ConnectionBase [\#656](https://github.com/auth0/auth0.net/pull/656) ([amummaprojectmanager](https://github.com/amummaprojectmanager))
+
 ## [7.22.3](https://github.com/auth0/auth0.net/tree/7.22.3) (2023-08-29)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.22.2...7.22.3)
 

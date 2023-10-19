@@ -1,23 +1,22 @@
 ﻿<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
-  
+
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IJobsClient
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IJobsClient
-   ">
-    <meta name="generator" content="docfx 2.59.4.0">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Interface IJobsClient
+ </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Interface IJobsClient
+ ">
     
-    <link rel="shortcut icon" href="../images/logo.png">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+      <link rel="shortcut icon" href="../images/logo.png">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
     
     
     
@@ -25,7 +24,7 @@
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -35,7 +34,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../index.html">
                 <img id="logo" class="svg" src="../images/logo.svg" alt="">
               </a>
@@ -49,7 +48,7 @@
             </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -59,7 +58,7 @@
         </div>
       </header>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -69,31 +68,32 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Clients.IJobsClient">
-  
-  
+
+
+
   <h1 id="Auth0_ManagementApi_Clients_IJobsClient" data-uid="Auth0.ManagementApi.Clients.IJobsClient" class="text-break">Interface IJobsClient
-  </h1>
+</h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Clients.html">Auth0.ManagementApi.Clients</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.html">Auth0</a>.<a class="xref" href="Auth0.ManagementApi.html">ManagementApi</a>.<a class="xref" href="Auth0.ManagementApi.Clients.html">Clients</a></h6>
   <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Clients_IJobsClient_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IJobsClient</code></pre>
   </div>
   <h3 id="methods">Methods
-  </h3>
+</h3>
   <a id="Auth0_ManagementApi_Clients_IJobsClient_ExportUsersAsync_" data-uid="Auth0.ManagementApi.Clients.IJobsClient.ExportUsersAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_IJobsClient_ExportUsersAsync_Auth0_ManagementApi_Models_UsersExportsJobRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IJobsClient.ExportUsersAsync(Auth0.ManagementApi.Models.UsersExportsJobRequest,System.Threading.CancellationToken)">ExportUsersAsync(UsersExportsJobRequest, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Exports users from a connection to a file using a long running job. </p>
+  <div class="markdown level1 summary"><p>Exports users from a connection to a file using a long running job.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;Job&gt; ExportUsersAsync(UsersExportsJobRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;Job&gt; ExportUsersAsync(UsersExportsJobRequest request, CancellationToken cancellationToken = default)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -109,7 +109,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -117,7 +117,7 @@
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -126,7 +126,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Job.html">Job</a>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Job.html">Job</a>&gt;</td>
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.Job.html">Job</a> instance containing the information about the job.</p>
 </td>
       </tr>
@@ -136,16 +136,16 @@
   <div class="markdown level1 remarks"><p>The documentation for user exports can be found <a href="https://auth0.com/docs/users/bulk-user-exports">here</a>.</p>
 </div>
   <a id="Auth0_ManagementApi_Clients_IJobsClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.IJobsClient.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IJobsClient_GetAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IJobsClient.GetAsync(System.String,System.Threading.CancellationToken)">GetAsync(String, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IJobsClient_GetAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IJobsClient.GetAsync(System.String,System.Threading.CancellationToken)">GetAsync(string, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Gets a job.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;Job&gt; GetAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;Job&gt; GetAsync(string id, CancellationToken cancellationToken = default)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -155,13 +155,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">id</span></td>
         <td><p>The ID of the job to retrieve.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -169,7 +169,7 @@
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -178,7 +178,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Job.html">Job</a>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Job.html">Job</a>&gt;</td>
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.Job.html">Job</a> instance containing the information about the job.</p>
 </td>
       </tr>
@@ -188,16 +188,16 @@
   <div class="markdown level1 remarks"><p>This is useful to check the status of a job.</p>
 </div>
   <a id="Auth0_ManagementApi_Clients_IJobsClient_ImportUsersAsync_" data-uid="Auth0.ManagementApi.Clients.IJobsClient.ImportUsersAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IJobsClient_ImportUsersAsync_System_String_System_String_System_IO_Stream_System_Nullable_System_Boolean__System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IJobsClient.ImportUsersAsync(System.String,System.String,System.IO.Stream,System.Nullable{System.Boolean},System.String,System.Nullable{System.Boolean},System.Threading.CancellationToken)">ImportUsersAsync(String, String, Stream, Nullable&lt;Boolean&gt;, String, Nullable&lt;Boolean&gt;, CancellationToken)</h4>
-  <div class="markdown level1 summary"><p>Imports users to a connection from a file using a long running job. </p>
+  <h4 id="Auth0_ManagementApi_Clients_IJobsClient_ImportUsersAsync_System_String_System_String_System_IO_Stream_System_Nullable_System_Boolean__System_String_System_Nullable_System_Boolean__System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IJobsClient.ImportUsersAsync(System.String,System.String,System.IO.Stream,System.Nullable{System.Boolean},System.String,System.Nullable{System.Boolean},System.Threading.CancellationToken)">ImportUsersAsync(string, string, Stream, bool?, string, bool?, CancellationToken)</h4>
+  <div class="markdown level1 summary"><p>Imports users to a connection from a file using a long running job.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;Job&gt; ImportUsersAsync(string connectionId, string fileName, Stream file, bool? upsert = null, string externalId = null, bool? sendCompletionEmail = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;Job&gt; ImportUsersAsync(string connectionId, string fileName, Stream file, bool? upsert = null, string externalId = null, bool? sendCompletionEmail = null, CancellationToken cancellationToken = default)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -207,43 +207,43 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">connectionId</span></td>
         <td><p>The connection identifier.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">fileName</span></td>
         <td><p>Name of the file.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.IO.Stream</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.io.stream">Stream</a></td>
         <td><span class="parametername">file</span></td>
         <td><p>The file.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</td>
         <td><span class="parametername">upsert</span></td>
         <td><p>Whether to update the user if already exists.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">externalId</span></td>
         <td><p>Customer-defined id.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Nullable</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>?</td>
         <td><span class="parametername">sendCompletionEmail</span></td>
         <td><p>Whether to send the user an email on import completion (true) or not (false).</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -251,7 +251,7 @@
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -260,7 +260,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Job.html">Job</a>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Job.html">Job</a>&gt;</td>
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.Job.html">Job</a> instance containing the information about the job.</p>
 </td>
       </tr>
@@ -274,12 +274,12 @@
   <div class="markdown level1 summary"><p>Send an email to the specified user that asks them to click a link to verify their email address.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;Job&gt; SendVerificationEmailAsync(VerifyEmailJobRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;Job&gt; SendVerificationEmailAsync(VerifyEmailJobRequest request, CancellationToken cancellationToken = default)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -295,7 +295,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -303,7 +303,7 @@
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -312,26 +312,27 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Job.html">Job</a>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.Job.html">Job</a>&gt;</td>
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.Job.html">Job</a> instance containing the information about the job.</p>
 </td>
       </tr>
     </tbody>
   </table>
+
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -339,14 +340,14 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../styles/docfx.js"></script>
     <script type="text/javascript" src="../styles/main.js"></script>
   </body>
