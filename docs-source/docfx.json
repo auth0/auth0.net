@@ -31,10 +31,12 @@
     ],
     "dest": "../docs",
     "template": [
-      "default"
+      "default",
+      "modern",
+      "custom-template"
     ],
     "globalMetadata": {
-      "_appLogoPath": "images/logo.svg",
+      "_appLogoPath": "images/logo.png",
       "_appFaviconPath": "images/logo.png",
       "_disableContribution": true
     }

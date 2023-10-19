@@ -1,92 +1,133 @@
 ﻿<!DOCTYPE html>
-<!--[if IE]><![endif]-->
 <html>
-  
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class AttackProtectionClient
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class AttackProtectionClient
-   ">
-    <meta name="generator" content="docfx 2.59.4.0">
-    
-    <link rel="shortcut icon" href="../images/logo.png">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
-    
-    
-    
+      <title>Class AttackProtectionClient
+ </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class AttackProtectionClient
+ ">
+      
+      <link rel="icon" href="../images/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/auth0/auth0.net/new/master/apiSpec/new?filename=Auth0_ManagementApi_Clients_AttackProtectionClient.md&amp;value=---%0Auid%3A%20Auth0.ManagementApi.Clients.AttackProtectionClient%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
   </head>
-  <body data-spy="scroll" data-target="#affix" data-offset="120">
-    <div id="wrapper">
-      <header>
-        
-        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../images/logo.svg" alt="">
-              </a>
+
+  <script type="module">
+    import options from './../public/main.js'
+    import { init } from './../public/docfx.min.js'
+    init(options)
+  </script>
+
+  <script>
+    const theme = localStorage.getItem('theme') || 'auto'
+    document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+  </script>
+
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
             </div>
-            <div class="collapse navbar-collapse" id="navbar">
-              <form class="navbar-form navbar-right" role="search" id="search">
-                <div class="form-group">
-                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
-                </div>
-              </form>
-            </div>
-          </div>
-        </nav>
-        
-        <div class="subnav navbar navbar-default">
-          <div class="container hide-when-search" id="breadcrumb">
-            <ul class="breadcrumb">
-              <li></li>
-            </ul>
           </div>
         </div>
-      </header>
-      <div role="main" class="container body-content hide-when-search">
-        
-        <div class="sidenav hide-when-search">
-          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
-          <div class="sidetoggle collapse" id="sidetoggle">
-            <div id="sidetoc"></div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
           </div>
         </div>
-        <div class="article row grid-right">
-          <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient">
-  
-  
-  <h1 id="Auth0_ManagementApi_Clients_AttackProtectionClient" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient" class="text-break">Class AttackProtectionClient
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" style="margin-top: -.65em; margin-left: -.8em" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient">
+
+
+
+  <h1 id="Auth0_ManagementApi_Clients_AttackProtectionClient" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient" class="text-break">
+    Class AttackProtectionClient
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/Clients/AttackProtectionClient.cs/#L10"><i class="bi bi-code-slash"></i></a>
   </h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="inheritance">
-    <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html">BaseClient</a></div>
-    <div class="level2"><span class="xref">AttackProtectionClient</span></div>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="Auth0.html">Auth0</a>.<a class="xref" href="Auth0.ManagementApi.html">ManagementApi</a>.<a class="xref" href="Auth0.ManagementApi.Clients.html">Clients</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>Auth0.ManagementApi.dll</dd></dl>
   </div>
-  <div class="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="Auth0.ManagementApi.Clients.IAttackProtectionClient.html">IAttackProtectionClient</a></div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class AttackProtectionClient : BaseClient, IAttackProtectionClient</code></pre>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html">BaseClient</a></div>
+      <div><span class="xref">AttackProtectionClient</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="Auth0.ManagementApi.Clients.IAttackProtectionClient.html">IAttackProtectionClient</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist derived">
+    <dt>Inherited Members</dt>
+    <dd>
     <div>
       <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_Connection">BaseClient.Connection</a>
     </div>
@@ -97,388 +138,344 @@
       <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_DefaultHeaders">BaseClient.DefaultHeaders</a>
     </div>
     <div>
-      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BuildUri_System_String_System_Collections_Generic_IDictionary_System_String_System_String__">BaseClient.BuildUri(String, IDictionary&lt;String, String&gt;)</a>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_BuildUri_System_String_System_Collections_Generic_IDictionary_System_String_System_String__">BaseClient.BuildUri(string, IDictionary&lt;string, string&gt;)</a>
     </div>
     <div>
-      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_EncodePath_System_String_">BaseClient.EncodePath(String)</a>
+      <a class="xref" href="Auth0.ManagementApi.Clients.BaseClient.html#Auth0_ManagementApi_Clients_BaseClient_EncodePath_System_String_">BaseClient.EncodePath(string)</a>
     </div>
     <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
     </div>
     <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
     </div>
     <div>
-      <span class="xref">System.Object.GetHashCode()</span>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
     </div>
     <div>
-      <span class="xref">System.Object.GetType()</span>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
     </div>
     <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
     </div>
     <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
     </div>
     <div>
-      <span class="xref">System.Object.ToString()</span>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
     </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Clients.html">Auth0.ManagementApi.Clients</a></h6>
-  <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
-  <h5 id="Auth0_ManagementApi_Clients_AttackProtectionClient_syntax">Syntax</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class AttackProtectionClient : BaseClient, IAttackProtectionClient</code></pre>
-  </div>
-  <h3 id="constructors">Constructors
-  </h3>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
   <a id="Auth0_ManagementApi_Clients_AttackProtectionClient__ctor_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.#ctor*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_AttackProtectionClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})">AttackProtectionClient(IManagementConnection, Uri, IDictionary&lt;String, String&gt;)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_AttackProtectionClient__ctor_Auth0_ManagementApi_IManagementConnection_System_Uri_System_Collections_Generic_IDictionary_System_String_System_String__" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.#ctor(Auth0.ManagementApi.IManagementConnection,System.Uri,System.Collections.Generic.IDictionary{System.String,System.String})">
+  AttackProtectionClient(IManagementConnection, Uri, IDictionary&lt;string, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/Clients/AttackProtectionClient.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public AttackProtectionClient(IManagementConnection connection, Uri baseUri, IDictionary&lt;string, string&gt; defaultHeaders)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a></td>
-        <td><span class="parametername">connection</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Uri</span></td>
-        <td><span class="parametername">baseUri</span></td>
-        <td></td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Collections.Generic.IDictionary</span>&lt;<span class="xref">System.String</span>, <span class="xref">System.String</span>&gt;</td>
-        <td><span class="parametername">defaultHeaders</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>connection</code> <a class="xref" href="Auth0.ManagementApi.IManagementConnection.html">IManagementConnection</a></dt>
+    <dd></dd>
+    <dt><code>baseUri</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.uri">Uri</a></dt>
+    <dd></dd>
+    <dt><code>defaultHeaders</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.idictionary-2">IDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
   <a id="Auth0_ManagementApi_Clients_AttackProtectionClient_GetBreachedPasswordDetectionAsync_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.GetBreachedPasswordDetectionAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_AttackProtectionClient_GetBreachedPasswordDetectionAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.GetBreachedPasswordDetectionAsync(System.Threading.CancellationToken)">GetBreachedPasswordDetectionAsync(CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_AttackProtectionClient_GetBreachedPasswordDetectionAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.GetBreachedPasswordDetectionAsync(System.Threading.CancellationToken)">
+  GetBreachedPasswordDetectionAsync(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/Clients/AttackProtectionClient.cs/#L55"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Get breached password detection settings.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;BreachedPasswordDetection&gt; GetBreachedPasswordDetectionAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;BreachedPasswordDetection&gt; GetBreachedPasswordDetectionAsync(CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.html">BreachedPasswordDetection</a>&gt;</td>
-        <td><p>A <span class="xref">Auth0.ManagementApi.Clients.AttackProtectionClient.BreachedPasswordDetection</span> containing the configuration.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.html">BreachedPasswordDetection</a>&gt;</dt>
+    <dd><p>A <a class="xref" href="Auth0.ManagementApi.Clients.AttackProtectionClient.html#Auth0.ManagementApi.Clients.AttackProtectionClient.BreachedPasswordDetection">BreachedPasswordDetection</a> containing the configuration.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_AttackProtectionClient_GetBruteForceProtectionAsync_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.GetBruteForceProtectionAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_AttackProtectionClient_GetBruteForceProtectionAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.GetBruteForceProtectionAsync(System.Threading.CancellationToken)">GetBruteForceProtectionAsync(CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_AttackProtectionClient_GetBruteForceProtectionAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.GetBruteForceProtectionAsync(System.Threading.CancellationToken)">
+  GetBruteForceProtectionAsync(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/Clients/AttackProtectionClient.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Get the brute force configuration.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;BruteForceProtection&gt; GetBruteForceProtectionAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;BruteForceProtection&gt; GetBruteForceProtectionAsync(CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.html">BruteForceProtection</a>&gt;</td>
-        <td><p>A <span class="xref">Auth0.ManagementApi.Clients.AttackProtectionClient.BruteForceProtection</span> containing the configuration.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.html">BruteForceProtection</a>&gt;</dt>
+    <dd><p>A <a class="xref" href="Auth0.ManagementApi.Clients.AttackProtectionClient.html#Auth0.ManagementApi.Clients.AttackProtectionClient.BruteForceProtection">BruteForceProtection</a> containing the configuration.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_AttackProtectionClient_GetSuspiciousIpThrottlingAsync_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.GetSuspiciousIpThrottlingAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_AttackProtectionClient_GetSuspiciousIpThrottlingAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.GetSuspiciousIpThrottlingAsync(System.Threading.CancellationToken)">GetSuspiciousIpThrottlingAsync(CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_AttackProtectionClient_GetSuspiciousIpThrottlingAsync_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.GetSuspiciousIpThrottlingAsync(System.Threading.CancellationToken)">
+  GetSuspiciousIpThrottlingAsync(CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/Clients/AttackProtectionClient.cs/#L27"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Get the suspicious IP throttling configuration.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;SuspiciousIpThrottling&gt; GetSuspiciousIpThrottlingAsync(CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;SuspiciousIpThrottling&gt; GetSuspiciousIpThrottlingAsync(CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html">SuspiciousIpThrottling</a>&gt;</td>
-        <td><p>A <a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html">SuspiciousIpThrottling</a> containing the configuration.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html">SuspiciousIpThrottling</a>&gt;</dt>
+    <dd><p>A <a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html">SuspiciousIpThrottling</a> containing the configuration.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateBreachedPasswordDetectionAsync_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBreachedPasswordDetectionAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateBreachedPasswordDetectionAsync_Auth0_ManagementApi_Models_AttackProtection_BreachedPasswordDetection_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBreachedPasswordDetectionAsync(Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection,System.Threading.CancellationToken)">UpdateBreachedPasswordDetectionAsync(BreachedPasswordDetection, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateBreachedPasswordDetectionAsync_Auth0_ManagementApi_Models_AttackProtection_BreachedPasswordDetection_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBreachedPasswordDetectionAsync(Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection,System.Threading.CancellationToken)">
+  UpdateBreachedPasswordDetectionAsync(BreachedPasswordDetection, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/Clients/AttackProtectionClient.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Update breached password detection settings.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;BreachedPasswordDetection&gt; UpdateBreachedPasswordDetectionAsync(BreachedPasswordDetection request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;BreachedPasswordDetection&gt; UpdateBreachedPasswordDetectionAsync(BreachedPasswordDetection request, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.html">BreachedPasswordDetection</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>Specifies criteria to use when updating the configuration.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.html">BreachedPasswordDetection</a>&gt;</td>
-        <td><p>The <span class="xref">Auth0.ManagementApi.Clients.AttackProtectionClient.BreachedPasswordDetection</span> that was updated.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.html">BreachedPasswordDetection</a></dt>
+    <dd><p>Specifies criteria to use when updating the configuration.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.BreachedPasswordDetection.html">BreachedPasswordDetection</a>&gt;</dt>
+    <dd><p>The <a class="xref" href="Auth0.ManagementApi.Clients.AttackProtectionClient.html#Auth0.ManagementApi.Clients.AttackProtectionClient.BreachedPasswordDetection">BreachedPasswordDetection</a> that was updated.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateBruteForceProtectionAsync_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBruteForceProtectionAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateBruteForceProtectionAsync_Auth0_ManagementApi_Models_AttackProtection_BruteForceProtection_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBruteForceProtectionAsync(Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection,System.Threading.CancellationToken)">UpdateBruteForceProtectionAsync(BruteForceProtection, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateBruteForceProtectionAsync_Auth0_ManagementApi_Models_AttackProtection_BruteForceProtection_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateBruteForceProtectionAsync(Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection,System.Threading.CancellationToken)">
+  UpdateBruteForceProtectionAsync(BruteForceProtection, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/Clients/AttackProtectionClient.cs/#L95"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Update the brute force configuration.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;BruteForceProtection&gt; UpdateBruteForceProtectionAsync(BruteForceProtection request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;BruteForceProtection&gt; UpdateBruteForceProtectionAsync(BruteForceProtection request, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.html">BruteForceProtection</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>Specifies criteria to use when updating the configuration.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.html">BruteForceProtection</a>&gt;</td>
-        <td><p>The <span class="xref">Auth0.ManagementApi.Clients.AttackProtectionClient.BruteForceProtection</span> that was updated.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.html">BruteForceProtection</a></dt>
+    <dd><p>Specifies criteria to use when updating the configuration.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.BruteForceProtection.html">BruteForceProtection</a>&gt;</dt>
+    <dd><p>The <a class="xref" href="Auth0.ManagementApi.Clients.AttackProtectionClient.html#Auth0.ManagementApi.Clients.AttackProtectionClient.BruteForceProtection">BruteForceProtection</a> that was updated.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
   <a id="Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateSuspiciousIpThrottlingAsync_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateSuspiciousIpThrottlingAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateSuspiciousIpThrottlingAsync_Auth0_ManagementApi_Models_AttackProtection_SuspiciousIpThrottling_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateSuspiciousIpThrottlingAsync(Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling,System.Threading.CancellationToken)">UpdateSuspiciousIpThrottlingAsync(SuspiciousIpThrottling, CancellationToken)</h4>
+
+  <h3 id="Auth0_ManagementApi_Clients_AttackProtectionClient_UpdateSuspiciousIpThrottlingAsync_Auth0_ManagementApi_Models_AttackProtection_SuspiciousIpThrottling_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.AttackProtectionClient.UpdateSuspiciousIpThrottlingAsync(Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling,System.Threading.CancellationToken)">
+  UpdateSuspiciousIpThrottlingAsync(SuspiciousIpThrottling, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/auth0/auth0.net/blob/master/src/Auth0.ManagementApi/Clients/AttackProtectionClient.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
   <div class="markdown level1 summary"><p>Update the suspicious IP throttling configuration.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Task&lt;SuspiciousIpThrottling&gt; UpdateSuspiciousIpThrottlingAsync(SuspiciousIpThrottling request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">public Task&lt;SuspiciousIpThrottling&gt; UpdateSuspiciousIpThrottlingAsync(SuspiciousIpThrottling request, CancellationToken cancellationToken = default)</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html">SuspiciousIpThrottling</a></td>
-        <td><span class="parametername">request</span></td>
-        <td><p>Specifies criteria to use when updating the configuration.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
-        <td><span class="parametername">cancellationToken</span></td>
-        <td><p>The cancellation token to cancel operation.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html">SuspiciousIpThrottling</a>&gt;</td>
-        <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html">SuspiciousIpThrottling</a> that was updated.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="Auth0.ManagementApi.Clients.IAttackProtectionClient.html">IAttackProtectionClient</a>
-  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html">SuspiciousIpThrottling</a></dt>
+    <dd><p>Specifies criteria to use when updating the configuration.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>The cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html">SuspiciousIpThrottling</a>&gt;</dt>
+    <dd><p>The <a class="xref" href="Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.html">SuspiciousIpThrottling</a> that was updated.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
 </article>
-          </div>
-          
-          <div class="hidden-sm col-md-2" role="complementary">
-            <div class="sideaffix">
-              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
-                <div></div>
-              </nav>
-            </div>
-          </div>
+
+
+        
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+
+    <footer class="border-top">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
         </div>
       </div>
-      
-      <footer>
-        <div class="grad-bottom"></div>
-        <div class="footer">
-          <div class="container">
-            <span class="pull-right">
-              <a href="#top">Back to top</a>
-            </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
-          </div>
-        </div>
-      </footer>
-    </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    </footer>
   </body>
 </html>
