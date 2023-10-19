@@ -330,6 +330,10 @@ namespace Auth0.ManagementApi.IntegrationTests
                 roles.Count.Should().Be(1);
                 roles[0].Name.Should().Be("Admin");
 
+                var response = await fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new OrganizationGetAllMembersRequest { Fields = "roles", IncludeFields = true }, new Paging.PaginationInfo());
+
+                response[0].Roles[0].Name.Should().Be("Admin");
+
                 await fixture.ApiClient.Organizations.DeleteMemberRolesAsync(ExistingOrganizationId, user.UserId, new OrganizationDeleteMemberRolesRequest
                 {
                     Roles = new List<string> { ExistingRoleId }

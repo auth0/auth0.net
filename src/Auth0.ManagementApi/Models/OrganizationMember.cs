@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Auth0.ManagementApi.Models
 {
@@ -27,5 +28,11 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("email")]
         public string Email { get; set; }
+        
+        /// <summary>
+        /// The roles of the user
+        /// </summary>
+        [JsonProperty("roles")]
+        public IList<Role> Roles { get; set; }
     }
 }
