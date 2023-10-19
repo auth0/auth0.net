@@ -1,21 +1,20 @@
 ﻿<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
-  
+
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Documentation </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Documentation ">
-    <meta name="generator" content="docfx 2.59.4.0">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Documentation </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Documentation ">
     
-    <link rel="shortcut icon" href="images/logo.png">
-    <link rel="stylesheet" href="styles/docfx.vendor.css">
-    <link rel="stylesheet" href="styles/docfx.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <meta property="docfx:navrel" content="toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+      <link rel="shortcut icon" href="images/logo.png">
+      <link rel="stylesheet" href="styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="styles/docfx.css">
+      <link rel="stylesheet" href="styles/main.css">
+      <meta property="docfx:navrel" content="toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
     
     
     
@@ -23,7 +22,7 @@
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -33,7 +32,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="index.html">
                 <img id="logo" class="svg" src="images/logo.svg" alt="">
               </a>
@@ -47,7 +46,7 @@
             </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -66,7 +65,7 @@
 <img src="https://img.shields.io/nuget/dt/auth0.core" alt="Downloads">
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/:license-MIT-blue.svg?style=flat" alt="License"></a>
 <img src="https://img.shields.io/azure-devops/build/Auth0SDK/Auth0.Net/6" alt="AzureDevOps"></p>
-<p><span class="emoji" shortcode="books">📚</span> <a href="#documentation">Documentation</a> - <span class="emoji" shortcode="rocket">🚀</span> <a href="#getting-started">Getting Started</a> - <span class="emoji" shortcode="computer">💻</span> <a href="https://auth0.github.io/auth0.net/">API Reference</a> - <span class="emoji" shortcode="speech_balloon">💬</span> <a href="#feedback">Feedback</a></p>
+<p>📚 <a href="#documentation">Documentation</a> - 🚀 <a href="#getting-started">Getting Started</a> - 💻 <a href="https://auth0.github.io/auth0.net/">API Reference</a> - 💬 <a href="#feedback">Feedback</a></p>
 <h2 id="documentation">Documentation</h2>
 <ul>
 <li><a href="https://www.auth0.com/docs">Docs site</a> - explore our docs site and learn more about Auth0.</li>
@@ -77,26 +76,31 @@
 <h3 id="management-api">Management API</h3>
 <h4 id="installation">Installation</h4>
 <pre><code class="lang-powershell">Install-Package Auth0.ManagementApi
-</code></pre><h4 id="usage">Usage</h4>
+</code></pre>
+<h4 id="usage">Usage</h4>
 <p>Generate a token for the API calls you wish to make (see <a href="https://auth0.com/docs/api/management/v2/tokens">Access Tokens for the Management API</a>). Create an instance of the <code>ManagementApiClient</code> class with the token and the API URL of your Auth0 instance:</p>
 <pre><code class="lang-csharp">var client = new ManagementApiClient(&quot;your token&quot;, new Uri(&quot;https://YOUR_AUTH0_DOMAIN/api/v2&quot;));
-</code></pre><p>The API calls are divided into groups which correlate to the <a href="https://auth0.com/docs/api/v2">Management API documentation</a>. For example all Connection related methods can be found under the <code>ManagementApiClient.Connections</code> property. So to get a list of all database (Auth0) connections, you can make the following API call:</p>
+</code></pre>
+<p>The API calls are divided into groups which correlate to the <a href="https://auth0.com/docs/api/v2">Management API documentation</a>. For example all Connection related methods can be found under the <code>ManagementApiClient.Connections</code> property. So to get a list of all database (Auth0) connections, you can make the following API call:</p>
 <pre><code class="lang-csharp">await client.Connections.GetAllAsync(&quot;auth0&quot;);
-</code></pre><h3 id="authentication-api">Authentication API</h3>
+</code></pre>
+<h3 id="authentication-api">Authentication API</h3>
 <h4 id="installation-1">Installation</h4>
 <pre><code class="lang-powershell">Install-Package Auth0.AuthenticationApi
-</code></pre><h4 id="usage-1">Usage</h4>
+</code></pre>
+<h4 id="usage-1">Usage</h4>
 <p>To use the Authentication API, create a new instance of the <code>AuthenticationApiClient</code> class, passing in the URL of your Auth0 instance, e.g.:</p>
 <pre><code class="lang-csharp">var client = new AuthenticationApiClient(new Uri(&quot;https://YOUR_AUTH0_DOMAIN&quot;));
-</code></pre><h4 id="authentication">Authentication</h4>
+</code></pre>
+<h4 id="authentication">Authentication</h4>
 <p>This library contains <a href="https://auth0.github.io/auth0.net/#using-url-builders">URL Builders</a> which will assist you with constructing an authentication URL, but does not actually handle the authentication/authorization flow for you. It is suggested that you refer to the <a href="https://auth0.com/docs/quickstarts">Quickstart tutorials</a> for guidance on how to implement authentication for your specific platform.</p>
 <p><strong>Important note on state validation</strong>: If you choose to use the <a href="https://auth0.github.io/auth0.net/api/Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html">AuthorizationUrlBuilder</a> to construct the authorization URL and implement a login flow callback yourself, it is important to generate and store a state value (using <a href="https://auth0.github.io/auth0.net/api/Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html#Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithState_System_String_">WithState</a>) and validate it in your callback URL before exchanging the authorization code for the tokens.</p>
 <h2 id="feedback">Feedback</h2>
 <h3 id="contributing">Contributing</h3>
 <p>We appreciate feedback and contribution to this repo! Before you get started, please see the following:</p>
 <ul>
-<li><a href="https://github.com/auth0/open-source-template/blob/master/GENERAL-CONTRIBUTING.md">Auth0&#39;s general contribution guidelines</a></li>
-<li><a href="https://github.com/auth0/open-source-template/blob/master/CODE-OF-CONDUCT.md">Auth0&#39;s code of conduct guidelines</a></li>
+<li><a href="https://github.com/auth0/open-source-template/blob/master/GENERAL-CONTRIBUTING.md">Auth0's general contribution guidelines</a></li>
+<li><a href="https://github.com/auth0/open-source-template/blob/master/CODE-OF-CONDUCT.md">Auth0's code of conduct guidelines</a></li>
 </ul>
 <h3 id="raise-an-issue">Raise an issue</h3>
 <p>To provide feedback or report a bug, please <a href="https://github.com/auth0/auth0.net/issues">raise an issue on our issue tracker</a>.</p>
@@ -108,24 +112,25 @@
     <source media="(prefers-color-scheme: light)" srcset="https://cdn.auth0.com/website/sdks/logos/auth0_light_mode.png" width="150">
     <source media="(prefers-color-scheme: dark)" srcset="https://cdn.auth0.com/website/sdks/logos/auth0_dark_mode.png" width="150">
     <img alt="Auth0 Logo" src="https://cdn.auth0.com/website/sdks/logos/auth0_light_mode.png" width="150">
-  </source></source></picture>
+  </picture>
 </p>
 <p align="center">Auth0 is an easy to implement, adaptable authentication and authorization platform. To learn more checkout <a href="https://auth0.com/why-auth0">Why Auth0?</a></p>
 <p align="center">
-This project is licensed under the MIT license. See the <a href="./LICENSE"> LICENSE</a> file for more info.</p></article>
+This project is licensed under the MIT license. See the <a href="./LICENSE"> LICENSE</a> file for more info.</p>
+</article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -133,14 +138,14 @@ This project is licensed under the MIT license. See the <a href="./LICENSE"> LIC
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
-    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+
+    <script type="text/javascript" src="styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="styles/docfx.js"></script>
     <script type="text/javascript" src="styles/main.js"></script>
   </body>

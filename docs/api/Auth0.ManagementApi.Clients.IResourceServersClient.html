@@ -1,23 +1,22 @@
 ﻿<!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <html>
-  
+
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IResourceServersClient
-   </title>
-    <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IResourceServersClient
-   ">
-    <meta name="generator" content="docfx 2.59.4.0">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>Interface IResourceServersClient
+ </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="Interface IResourceServersClient
+ ">
     
-    <link rel="shortcut icon" href="../images/logo.png">
-    <link rel="stylesheet" href="../styles/docfx.vendor.css">
-    <link rel="stylesheet" href="../styles/docfx.css">
-    <link rel="stylesheet" href="../styles/main.css">
-    <meta property="docfx:navrel" content="../toc.html">
-    <meta property="docfx:tocrel" content="toc.html">
+      <link rel="shortcut icon" href="../images/logo.png">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
     
     
     
@@ -25,7 +24,7 @@
   <body data-spy="scroll" data-target="#affix" data-offset="120">
     <div id="wrapper">
       <header>
-        
+
         <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
           <div class="container">
             <div class="navbar-header">
@@ -35,7 +34,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
+
               <a class="navbar-brand" href="../index.html">
                 <img id="logo" class="svg" src="../images/logo.svg" alt="">
               </a>
@@ -49,7 +48,7 @@
             </div>
           </div>
         </nav>
-        
+
         <div class="subnav navbar navbar-default">
           <div class="container hide-when-search" id="breadcrumb">
             <ul class="breadcrumb">
@@ -59,7 +58,7 @@
         </div>
       </header>
       <div role="main" class="container body-content hide-when-search">
-        
+
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
@@ -69,31 +68,32 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="Auth0.ManagementApi.Clients.IResourceServersClient">
-  
-  
+
+
+
   <h1 id="Auth0_ManagementApi_Clients_IResourceServersClient" data-uid="Auth0.ManagementApi.Clients.IResourceServersClient" class="text-break">Interface IResourceServersClient
-  </h1>
+</h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.ManagementApi.Clients.html">Auth0.ManagementApi.Clients</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Auth0.html">Auth0</a>.<a class="xref" href="Auth0.ManagementApi.html">ManagementApi</a>.<a class="xref" href="Auth0.ManagementApi.Clients.html">Clients</a></h6>
   <h6><strong>Assembly</strong>: Auth0.ManagementApi.dll</h6>
   <h5 id="Auth0_ManagementApi_Clients_IResourceServersClient_syntax">Syntax</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public interface IResourceServersClient</code></pre>
   </div>
   <h3 id="methods">Methods
-  </h3>
+</h3>
   <a id="Auth0_ManagementApi_Clients_IResourceServersClient_CreateAsync_" data-uid="Auth0.ManagementApi.Clients.IResourceServersClient.CreateAsync*"></a>
   <h4 id="Auth0_ManagementApi_Clients_IResourceServersClient_CreateAsync_Auth0_ManagementApi_Models_ResourceServerCreateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IResourceServersClient.CreateAsync(Auth0.ManagementApi.Models.ResourceServerCreateRequest,System.Threading.CancellationToken)">CreateAsync(ResourceServerCreateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Creates a new resource server.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;ResourceServer&gt; CreateAsync(ResourceServerCreateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;ResourceServer&gt; CreateAsync(ResourceServerCreateRequest request, CancellationToken cancellationToken = default)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -109,7 +109,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -117,7 +117,7 @@
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -126,23 +126,23 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.ResourceServer.html">ResourceServer</a>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.ResourceServer.html">ResourceServer</a>&gt;</td>
         <td><p>The newly created <a class="xref" href="Auth0.ManagementApi.Models.ResourceServer.html">ResourceServer</a>.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IResourceServersClient_DeleteAsync_" data-uid="Auth0.ManagementApi.Clients.IResourceServersClient.DeleteAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IResourceServersClient_DeleteAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IResourceServersClient.DeleteAsync(System.String,System.Threading.CancellationToken)">DeleteAsync(String, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IResourceServersClient_DeleteAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IResourceServersClient.DeleteAsync(System.String,System.Threading.CancellationToken)">DeleteAsync(string, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Deletes a resource server.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task DeleteAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">Task DeleteAsync(string id, CancellationToken cancellationToken = default)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -152,13 +152,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">id</span></td>
         <td><p>The id of the resource server to delete.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -166,7 +166,7 @@
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -175,8 +175,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span></td>
-        <td><p>A <span class="xref">System.Threading.Tasks.Task</span> that represents the asynchronous delete operation.</p>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
+        <td><p>A <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a> that represents the asynchronous delete operation.</p>
 </td>
       </tr>
     </tbody>
@@ -186,12 +186,12 @@
   <div class="markdown level1 summary"><p>Gets a list of all the resource servers.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;ResourceServer&gt;&gt; GetAllAsync(PaginationInfo pagination = null, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;IPagedList&lt;ResourceServer&gt;&gt; GetAllAsync(PaginationInfo pagination = null, CancellationToken cancellationToken = default)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -207,7 +207,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -215,7 +215,7 @@
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -224,23 +224,23 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.ResourceServer.html">ResourceServer</a>&gt;&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.ResourceServer.html">ResourceServer</a>&gt;&gt;</td>
         <td><p>A <a class="xref" href="Auth0.ManagementApi.Paging.IPagedList-1.html">IPagedList&lt;T&gt;</a> containing the list of resource servers.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IResourceServersClient_GetAsync_" data-uid="Auth0.ManagementApi.Clients.IResourceServersClient.GetAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IResourceServersClient_GetAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IResourceServersClient.GetAsync(System.String,System.Threading.CancellationToken)">GetAsync(String, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IResourceServersClient_GetAsync_System_String_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IResourceServersClient.GetAsync(System.String,System.Threading.CancellationToken)">GetAsync(string, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Get a resource server by its id.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;ResourceServer&gt; GetAsync(string id, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;ResourceServer&gt; GetAsync(string id, CancellationToken cancellationToken = default)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -250,13 +250,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">id</span></td>
         <td><p>The identifier of the resource server.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -264,7 +264,7 @@
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -273,23 +273,23 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.ResourceServer.html">ResourceServer</a>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.ResourceServer.html">ResourceServer</a>&gt;</td>
         <td><p>The <a class="xref" href="Auth0.ManagementApi.Models.ResourceServer.html">ResourceServer</a> that was requested.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="Auth0_ManagementApi_Clients_IResourceServersClient_UpdateAsync_" data-uid="Auth0.ManagementApi.Clients.IResourceServersClient.UpdateAsync*"></a>
-  <h4 id="Auth0_ManagementApi_Clients_IResourceServersClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_ResourceServerUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IResourceServersClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.ResourceServerUpdateRequest,System.Threading.CancellationToken)">UpdateAsync(String, ResourceServerUpdateRequest, CancellationToken)</h4>
+  <h4 id="Auth0_ManagementApi_Clients_IResourceServersClient_UpdateAsync_System_String_Auth0_ManagementApi_Models_ResourceServerUpdateRequest_System_Threading_CancellationToken_" data-uid="Auth0.ManagementApi.Clients.IResourceServersClient.UpdateAsync(System.String,Auth0.ManagementApi.Models.ResourceServerUpdateRequest,System.Threading.CancellationToken)">UpdateAsync(string, ResourceServerUpdateRequest, CancellationToken)</h4>
   <div class="markdown level1 summary"><p>Updates a resource server,</p>
 </div>
   <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
+  <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">Task&lt;ResourceServer&gt; UpdateAsync(string id, ResourceServerUpdateRequest request, CancellationToken cancellationToken = default(CancellationToken))</code></pre>
+    <pre><code class="lang-csharp hljs">Task&lt;ResourceServer&gt; UpdateAsync(string id, ResourceServerUpdateRequest request, CancellationToken cancellationToken = default)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -299,7 +299,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">id</span></td>
         <td><p>The id of the resource server to update.</p>
 </td>
@@ -311,7 +311,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Threading.CancellationToken</span></td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></td>
         <td><span class="parametername">cancellationToken</span></td>
         <td><p>The cancellation token to cancel operation.</p>
 </td>
@@ -319,7 +319,7 @@
     </tbody>
   </table>
   <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
+  <table class="table table-bordered table-condensed">
     <thead>
       <tr>
         <th>Type</th>
@@ -328,26 +328,27 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<a class="xref" href="Auth0.ManagementApi.Models.ResourceServer.html">ResourceServer</a>&gt;</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="Auth0.ManagementApi.Models.ResourceServer.html">ResourceServer</a>&gt;</td>
         <td><p>The newly updated <a class="xref" href="Auth0.ManagementApi.Models.ResourceServer.html">ResourceServer</a>.</p>
 </td>
       </tr>
     </tbody>
   </table>
+
 </article>
           </div>
-          
+
           <div class="hidden-sm col-md-2" role="complementary">
             <div class="sideaffix">
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-                <h5>In This Article</h5>
+                <h5>In this article</h5>
                 <div></div>
               </nav>
             </div>
           </div>
         </div>
       </div>
-      
+
       <footer>
         <div class="grad-bottom"></div>
         <div class="footer">
@@ -355,14 +356,14 @@
             <span class="pull-right">
               <a href="#top">Back to top</a>
             </span>
-            
-            <span>Generated by <strong>DocFX</strong></span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
           </div>
         </div>
       </footer>
     </div>
-    
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
     <script type="text/javascript" src="../styles/docfx.js"></script>
     <script type="text/javascript" src="../styles/main.js"></script>
   </body>
