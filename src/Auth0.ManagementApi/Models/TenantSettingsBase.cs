@@ -124,5 +124,11 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("session_cookie")]
         public SessionCookie SessionCookie { get; set; }
+        
+        /// <summary>
+        /// Whether to enable flexible factors for MFA in the PostLogin action
+        /// </summary>
+        [JsonProperty("customize_mfa_in_postlogin_action")]
+        public bool? CustomizeMfaInPostLoginAction { get; set; } = null;
     }
 }
