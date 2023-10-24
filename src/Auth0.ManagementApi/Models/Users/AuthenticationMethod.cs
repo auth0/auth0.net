@@ -74,6 +74,36 @@ namespace Auth0.ManagementApi.Models.Users
 
         [JsonProperty("authentication_methods")]
         public IList<AuthenticationMethodBase> AuthenticationMethods { get; set; }
+        
+        /// <summary>
+        /// Applies to passkeys only.
+        /// The kind of device the credential is stored on as defined by backup eligibility.
+        /// "single_device" credentials cannot be backed up and synced to another device,
+        /// "multi_device" credentials can be backed up if enabled by the end-user.
+        /// </summary>
+        [JsonProperty("credential_device_type")]
+        public string CredentialDeviceType { get; set; } = null;
+        
+        /// <summary>
+        /// Applies to passkeys only.
+        /// Whether the credential was backed up.
+        /// </summary>
+        [JsonProperty("credential_backed_up")]
+        public bool? CredentialBackedUp { get; set; } = null;
+        
+        /// <summary>
+        /// Applies to passkeys only.
+        /// The ID of the user identity linked with the authentication method.
+        /// </summary>
+        [JsonProperty("identity_user_id")]
+        public string IdentityUserId { get; set; } = null;
+        
+        /// <summary>
+        /// Applies to passkeys only.
+        /// The user-agent of the browser used to create the passkey.
+        /// </summary>
+        [JsonProperty("user_agent")]
+        public string UserAgent { get; set; } = null;
     }
 }
 
