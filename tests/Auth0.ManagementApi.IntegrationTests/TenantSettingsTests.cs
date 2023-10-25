@@ -23,7 +23,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 // Update the tenant settings - do not set some properties as the tenant is pre-configured
                 // to allow all the right logout urls etc.
                 var settingsUpdateRequest = new TenantSettingsUpdateRequest
-                {
+                {      
                     ChangePassword = new TenantChangePassword
                     {
                         Enabled = true,
@@ -53,7 +53,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                         DisableClickjackProtectionHeaders = true,
                         EnableAPIsSection = true,
                         EnableClientConnections = false,
-                        EnablePipeline2 = true
+                        EnablePipeline2 = true,
                     },
                     DeviceFlow = new TenantDeviceFlow()
                     {
@@ -63,7 +63,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                     SessionCookie = new SessionCookie { Mode = "persistent" },
                     AllowedLogoutUrls = new string[] { "https://app.com/logout", "http://localhost/logout" },
                     SessionLifetime = 1080,
-                    IdleSessionLifetime = 720
+                    IdleSessionLifetime = 720,
+                    CustomizeMfaInPostLoginAction = true
                 };
 
                 var settingsUpdateResponse = await apiClient.TenantSettings.UpdateAsync(settingsUpdateRequest);
@@ -79,6 +80,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 settingsUpdateResponse.Flags.EnableAPIsSection.Should().BeTrue();
                 settingsUpdateResponse.Flags.EnableClientConnections.Should().BeFalse();
                 settingsUpdateResponse.Flags.EnablePipeline2.Should().BeTrue();
+                settingsUpdateResponse.CustomizeMfaInPostLoginAction.Should().BeTrue();
                 settingsUpdateResponse.SessionCookie.Mode.Should().Be("persistent");
 
                 var resetUpdateRequest = new TenantSettingsUpdateRequest
