@@ -21437,6 +21437,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.TenantSettingsBase.ChangePassword
   nameWithType: TenantSettingsBase.ChangePassword
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.CustomizeMfaInPostLoginAction
+  name: CustomizeMfaInPostLoginAction
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_CustomizeMfaInPostLoginAction
+  commentId: P:Auth0.ManagementApi.Models.TenantSettingsBase.CustomizeMfaInPostLoginAction
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.CustomizeMfaInPostLoginAction
+  nameWithType: TenantSettingsBase.CustomizeMfaInPostLoginAction
+- uid: Auth0.ManagementApi.Models.TenantSettingsBase.CustomizeMfaInPostLoginAction*
+  name: CustomizeMfaInPostLoginAction
+  href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_CustomizeMfaInPostLoginAction_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantSettingsBase.CustomizeMfaInPostLoginAction
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantSettingsBase.CustomizeMfaInPostLoginAction
+  nameWithType: TenantSettingsBase.CustomizeMfaInPostLoginAction
 - uid: Auth0.ManagementApi.Models.TenantSettingsBase.DefaultAudience
   name: DefaultAudience
   href: api/Auth0.ManagementApi.Models.TenantSettingsBase.html#Auth0_ManagementApi_Models_TenantSettingsBase_DefaultAudience
@@ -22534,6 +22547,32 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.CreatedAt
   nameWithType: AuthenticationMethod.CreatedAt
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.CredentialBackedUp
+  name: CredentialBackedUp
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_CredentialBackedUp
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethod.CredentialBackedUp
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.CredentialBackedUp
+  nameWithType: AuthenticationMethod.CredentialBackedUp
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.CredentialBackedUp*
+  name: CredentialBackedUp
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_CredentialBackedUp_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethod.CredentialBackedUp
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.CredentialBackedUp
+  nameWithType: AuthenticationMethod.CredentialBackedUp
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.CredentialDeviceType
+  name: CredentialDeviceType
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_CredentialDeviceType
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethod.CredentialDeviceType
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.CredentialDeviceType
+  nameWithType: AuthenticationMethod.CredentialDeviceType
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.CredentialDeviceType*
+  name: CredentialDeviceType
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_CredentialDeviceType_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethod.CredentialDeviceType
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.CredentialDeviceType
+  nameWithType: AuthenticationMethod.CredentialDeviceType
 - uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.Email
   name: Email
   href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_Email
@@ -22560,6 +22599,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.EnrolledAt
   nameWithType: AuthenticationMethod.EnrolledAt
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.IdentityUserId
+  name: IdentityUserId
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_IdentityUserId
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethod.IdentityUserId
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.IdentityUserId
+  nameWithType: AuthenticationMethod.IdentityUserId
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.IdentityUserId*
+  name: IdentityUserId
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_IdentityUserId_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethod.IdentityUserId
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.IdentityUserId
+  nameWithType: AuthenticationMethod.IdentityUserId
 - uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.KeyId
   name: KeyId
   href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_KeyId
@@ -22651,6 +22703,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.PublicKey
   nameWithType: AuthenticationMethod.PublicKey
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.UserAgent
+  name: UserAgent
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_UserAgent
+  commentId: P:Auth0.ManagementApi.Models.Users.AuthenticationMethod.UserAgent
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.UserAgent
+  nameWithType: AuthenticationMethod.UserAgent
+- uid: Auth0.ManagementApi.Models.Users.AuthenticationMethod.UserAgent*
+  name: UserAgent
+  href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethod.html#Auth0_ManagementApi_Models_Users_AuthenticationMethod_UserAgent_
+  commentId: Overload:Auth0.ManagementApi.Models.Users.AuthenticationMethod.UserAgent
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.Users.AuthenticationMethod.UserAgent
+  nameWithType: AuthenticationMethod.UserAgent
 - uid: Auth0.ManagementApi.Models.Users.AuthenticationMethodBase
   name: AuthenticationMethodBase
   href: api/Auth0.ManagementApi.Models.Users.AuthenticationMethodBase.html
