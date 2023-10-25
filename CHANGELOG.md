@@ -1,5 +1,12 @@
 # Change Log
 
+## [7.23.1](https://github.com/auth0/auth0.net/tree/7.23.1) (2023-10-25)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.23.0...7.23.1)
+
+**Changed**
+- Add customize_mfa_in_postlogin_action to TenantSettings [\#670](https://github.com/auth0/auth0.net/pull/670) ([frederikprijck](https://github.com/frederikprijck))
+- Add passkey properties to AuthenticationMethod [\#669](https://github.com/auth0/auth0.net/pull/669) ([frederikprijck](https://github.com/frederikprijck))
+
 ## [7.23.0](https://github.com/auth0/auth0.net/tree/7.23.0) (2023-10-19)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.22.3...7.23.0)
 
