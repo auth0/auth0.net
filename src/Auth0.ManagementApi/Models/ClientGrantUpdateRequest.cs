@@ -14,5 +14,19 @@ namespace Auth0.ManagementApi.Models
         [JsonProperty("scope")]
         public List<string> Scope { get; set; }
 
+        /// <summary>
+        /// Defines whether organizations can be used with client credentials exchanges for this grant. (defaults to deny when not defined)
+        /// </summary>
+        /// <remarks>
+        /// Possible values: [deny, allow, require]
+        /// </remarks>
+        [JsonProperty("organization_usage")]
+        public string OrganizationUsage { get; set; }
+        
+        /// <summary>
+        /// If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
+        /// </summary>
+        [JsonProperty("allow_any_organization")]
+        public bool? AllowAnyOrganization { get; set; }
     }
 }

@@ -13,6 +13,11 @@
         /// <summary>
         ///  The Id of a client to filter by. 
         /// </summary>
-        public string ClientId { get; set; }    
+        public string ClientId { get; set; }   
+        
+        /// <summary>
+        /// If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations. 
+        /// </summary>
+        public bool? AllowAnyOrganization { get; set; }  
     }
 }

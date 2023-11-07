@@ -18,6 +18,7 @@ namespace Auth0.ManagementApi.Clients
         readonly JsonConverter[] memberRolesConverters = new JsonConverter[] { new PagedListConverter<Role>("roles") };
         readonly JsonConverter[] membersCheckpointConverters = new JsonConverter[] { new CheckpointPagedListConverter<OrganizationMember>("members") };
         readonly JsonConverter[] invitationsConverters = new JsonConverter[] { new PagedListConverter<OrganizationInvitation>("invitations") };
+        readonly JsonConverter[] clientGrantsConverters = new JsonConverter[] { new PagedListConverter<OrganizationClientGrant>("client_grants") };
 
         /// <summary>
         /// Initializes a new instance of <see cref="ClientsClient"/>.
@@ -419,6 +420,59 @@ namespace Auth0.ManagementApi.Clients
         public Task DeleteInvitationAsync(string organizationId, string invitationId, CancellationToken cancellationToken = default)
         {
             return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"organizations/{EncodePath(organizationId)}/invitations/{EncodePath(invitationId)}"), null, DefaultHeaders, cancellationToken: cancellationToken);
+        }
+        
+        /// <summary>
+        /// Get client grants associated to an organization.
+        /// </summary>
+        /// <param name="organizationId">The id of the organization for which you want to retrieve the client grants.</param>
+        /// <param name="request">Specifies criteria to use when querying client grants for the organization.</param>
+        /// <param name="pagination">Specifies <see cref="PaginationInfo"/> to use in requesting paged results.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>A <see cref="IPagedList{ClientGrant}"/> containing the client grants requested.</returns>
+        public Task<IPagedList<OrganizationClientGrant>> GetAllClientGrantsAsync(string organizationId, OrganizationGetClientGrantsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            var queryStrings = new Dictionary<string, string>
+            {
+                {"audience", request.Audience},
+                {"client_id", request.ClientId},
+            };
+
+            if (pagination != null)
+            {
+                queryStrings["page"] = pagination.PageNo.ToString();
+                queryStrings["per_page"] = pagination.PerPage.ToString();
+                queryStrings["include_totals"] = pagination.IncludeTotals.ToString().ToLower();
+            }
+
+            return Connection.GetAsync<IPagedList<OrganizationClientGrant>>(BuildUri($"organizations/{EncodePath(organizationId)}/client-grants", queryStrings), DefaultHeaders, clientGrantsConverters, cancellationToken);
+        }
+        
+        /// <summary>
+        /// Associate a client grant with an organization
+        /// </summary>
+        /// <param name="organizationId">The id of the organization to which you want to associate the client grants.</param>
+        /// <param name="request">The <see cref="OrganizationCreateClientGrantRequest"/> containing the properties of the Client Grant to associate with the organization.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>The new <see cref="ClientGrant"/> that has been created.</returns>
+        public Task<OrganizationClientGrant> CreateClientGrantAsync(string organizationId, OrganizationCreateClientGrantRequest request, CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<OrganizationClientGrant>(HttpMethod.Post, BuildUri($"organizations/{EncodePath(organizationId)}/client-grants"), request, DefaultHeaders, cancellationToken: cancellationToken);
+        }
+        
+        /// <summary>
+        /// Remove a client grant from an organization.
+        /// </summary>
+        /// <param name="organizationId">The id of the organization for which you want to delete the client grant.</param>
+        /// <param name="clientGrantId">The id of the client grant you want to delete from the organization</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
+        public Task DeleteClientGrantAsync(string organizationId, string clientGrantId, CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"organizations/{EncodePath(organizationId)}/client-grants/{EncodePath(clientGrantId)}"), null, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
     }

@@ -169,5 +169,64 @@ namespace Auth0.ManagementApi.IntegrationTests
             Assert.Null(grants.Paging);
         }
 
+        [Fact]
+        public async Task Organization_Client_Grants()
+        {
+            var apiId = "dotnet-testing";
+            var clientId = fixture.TestClient.ClientId;
+            var existingOrgId = "org_V6ojENVd1ERs5YY1";
+            
+            await fixture.ApiClient.Clients.UpdateAsync(clientId, new ClientUpdateRequest
+            {
+                ApplicationType = ClientApplicationType.NonInteractive,
+                OrganizationUsage = OrganizationUsage.Allow,
+                GrantTypes = new[] { "client_credentials" }
+            });
+            
+            var newGrant = await fixture.ApiClient.ClientGrants.CreateAsync(new ClientGrantCreateRequest
+            {
+                ClientId = clientId,
+                Audience = apiId,
+                Scope = new List<string> { "dotnet:testing" },
+                OrganizationUsage = OrganizationUsage.Allow,
+                AllowAnyOrganization = true
+            });
+            
+            fixture.TrackIdentifier(CleanUpType.ClientGrants, newGrant.Id);
+
+            var orgsBefore = await fixture.ApiClient.ClientGrants.GetAllOrganizationsAsync(newGrant.Id);
+
+            var orgGrantsBefore = await fixture.ApiClient.Organizations.GetAllClientGrantsAsync(existingOrgId,
+                new OrganizationGetClientGrantsRequest()
+                {
+                    ClientId = clientId,
+                    Audience = apiId,
+                });
+
+            orgsBefore.Count.Should().Be(0);
+            orgGrantsBefore.Count.Should().Be(0);
+
+            await fixture.ApiClient.Organizations.CreateClientGrantAsync(existingOrgId, new OrganizationCreateClientGrantRequest()
+            {
+                GrantId = newGrant.Id
+            });
+            
+            var orgsAfter = await fixture.ApiClient.ClientGrants.GetAllOrganizationsAsync(newGrant.Id);
+
+            var orgGrantsAfter = await fixture.ApiClient.Organizations.GetAllClientGrantsAsync(existingOrgId,
+                new OrganizationGetClientGrantsRequest()
+                {
+                    ClientId = clientId,
+                    Audience = apiId,
+                });
+            
+            
+            orgsBefore.Count.Should().Be(1);
+            orgGrantsBefore.Count.Should().Be(1);
+
+            await fixture.ApiClient.ClientGrants.DeleteAsync(newGrant.Id);
+            fixture.UnTrackIdentifier(CleanUpType.ClientGrants, newGrant.Id);
+        }
+
     }
 }

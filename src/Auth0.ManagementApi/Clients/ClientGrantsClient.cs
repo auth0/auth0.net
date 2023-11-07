@@ -15,6 +15,7 @@ namespace Auth0.ManagementApi.Clients
     public class ClientGrantsClient : BaseClient, IClientGrantsClient
     {
         readonly JsonConverter[] converters = new JsonConverter[] { new PagedListConverter<ClientGrant>("client_grants") };
+        readonly JsonConverter[] organizationsConverters = new JsonConverter[] { new PagedListConverter<Organization>("organizations") };
 
         /// <summary>
         /// Initializes a new instance of <see cref="ClientGrantsClient"/>.
@@ -66,6 +67,8 @@ namespace Auth0.ManagementApi.Clients
                 {"audience", request.Audience},
                 {"client_id", request.ClientId},
             };
+            
+            queryStrings.AddIfNotEmpty("allow_any_organization", request.AllowAnyOrganization?.ToString() ?? string.Empty);
 
             if (pagination != null)
             {
@@ -87,6 +90,65 @@ namespace Auth0.ManagementApi.Clients
         public Task<ClientGrant> UpdateAsync(string id, ClientGrantUpdateRequest request, CancellationToken cancellationToken = default)
         {
             return Connection.SendAsync<ClientGrant>(new HttpMethod("PATCH"), BuildUri($"client-grants/{EncodePath(id)}"), request, DefaultHeaders, cancellationToken: cancellationToken);
+        }
+        
+        /// <summary>
+        /// Get the organizations associated to a client grant
+        /// </summary>
+        /// <param name="id">The identifier of the client grant.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>A <see cref="IPagedList{Organization}"/> containing the organizations requested.</returns>
+        public Task<IPagedList<Organization>> GetAllOrganizationsAsync(string id, CancellationToken cancellationToken = default)
+        {
+            var queryStrings = new Dictionary<string, string>();
+            return Connection.GetAsync<IPagedList<Organization>>(BuildUri($"client-grants/{EncodePath(id)}/organizations", queryStrings), DefaultHeaders, organizationsConverters, cancellationToken);
+            
+        }
+        /// <summary>
+        /// Get the organizations associated to a client grant
+        /// </summary>
+        /// <param name="id">The identifier of the client grant.</param>
+        /// <param name="pagination">Specifies <see cref="PaginationInfo"/> to use in requesting paged results.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>A <see cref="IPagedList{Organization}"/> containing the organizations requested.</returns>
+        public Task<IPagedList<Organization>> GetAllOrganizationsAsync(string id, PaginationInfo pagination, CancellationToken cancellationToken = default)
+        {
+            if (pagination == null)
+            {
+                throw new ArgumentNullException(nameof(pagination));
+            }
+
+            var queryStrings = new Dictionary<string, string>
+            {
+                ["page"] = pagination.PageNo.ToString(),
+                ["per_page"] = pagination.PerPage.ToString(),
+                ["include_totals"] = pagination.IncludeTotals.ToString().ToLower()
+            };
+            
+            return Connection.GetAsync<IPagedList<Organization>>(BuildUri($"client-grants/{EncodePath(id)}/organizations", queryStrings), DefaultHeaders, organizationsConverters, cancellationToken);
+        }
+        
+        /// <summary>
+        /// Get the organizations associated to a client grant
+        /// </summary>
+        /// <param name="id">The identifier of the client grant.</param>
+        /// <param name="pagination">Specifies <see cref="CheckpointPaginationInfo"/> to use in requesting checkpoint-paginated results.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>A <see cref="IPagedList{Organization}"/> containing the organizations requested.</returns>
+        public Task<IPagedList<Organization>> GetAllOrganizationsAsync(string id, CheckpointPaginationInfo pagination = null, CancellationToken cancellationToken = default)
+        {
+            if (pagination == null)
+            {
+                throw new ArgumentNullException(nameof(pagination));
+            }
+
+            var queryStrings = new Dictionary<string, string>
+            {
+                ["from"] = pagination.From?.ToString(),
+                ["take"] = pagination.Take.ToString()
+            };
+            
+            return Connection.GetAsync<IPagedList<Organization>>(BuildUri($"client-grants/{EncodePath(id)}/organizations", queryStrings), DefaultHeaders, organizationsConverters, cancellationToken);
         }
     }
 }
