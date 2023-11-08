@@ -9,8 +9,8 @@
       <link rel="icon" href="images/logo.png">
       <link rel="stylesheet" href="public/docfx.min.css">
       <link rel="stylesheet" href="public/main.css">
-      <meta name="docfx:navrel" content="toc.json">
-      <meta name="docfx:tocrel" content="toc.json">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
       
       
       
@@ -27,10 +27,13 @@
       <meta name="loc:themeAuto" content="Auto">
       <meta name="loc:changeTheme" content="Change theme">
       <meta name="loc:copy" content="Copy">
-      <meta name="loc:downloadPdf" content="Download PDF">
   </head>
 
-  <script type="module" src="./public/docfx.min.js"></script>
+  <script type="module">
+    import options from './public/main.js'
+    import { init } from './public/docfx.min.js'
+    init(options)
+  </script>
 
   <script>
     const theme = localStorage.getItem('theme') || 'auto'
@@ -138,12 +141,11 @@
 <p align="center">Auth0 is an easy to implement, adaptable authentication and authorization platform. To learn more checkout <a href="https://auth0.com/why-auth0">Why Auth0?</a></p>
 <p align="center">
 This project is licensed under the MIT license. See the <a href="./LICENSE"> LICENSE</a> file for more info.</p>
-
 </article>
 
 
         <div class="next-article d-print-none border-top" id="nextArticle"></div>
-
+        
       </div>
 
       <div class="affix">
@@ -152,7 +154,7 @@ This project is licensed under the MIT license. See the <a href="./LICENSE"> LIC
     </main>
 
 
-    <footer class="border-top text-secondary">
+    <footer class="border-top">
       <div class="container-xxl">
         <div class="flex-fill">
           <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
