@@ -40,9 +40,9 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 // Get the access token
                 var token = await authenticationApiClient.GetTokenAsync(new ClientCredentialsTokenRequest
                 {
-                    ClientId = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
-                    ClientSecret = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET"),
-                    Audience = GetVariable("AUTH0_MANAGEMENT_API_AUDIENCE"),
+                    ClientId = GetVariable("AUTH0_CLIENT_ID"),
+                    ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
+                    Audience = "dotnet-testing",
                     Organization = existingOrgId
                 });
 

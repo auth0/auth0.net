@@ -221,8 +221,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                 });
             
             
-            orgsBefore.Count.Should().Be(1);
-            orgGrantsBefore.Count.Should().Be(1);
+            orgsAfter.Count.Should().Be(1);
+            orgGrantsAfter.Count.Should().Be(1);
 
             await fixture.ApiClient.ClientGrants.DeleteAsync(newGrant.Id);
             fixture.UnTrackIdentifier(CleanUpType.ClientGrants, newGrant.Id);

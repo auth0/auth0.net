@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Auth0.ManagementApi.Models
 {
@@ -21,7 +22,8 @@ namespace Auth0.ManagementApi.Models
         /// Possible values: [deny, allow, require]
         /// </remarks>
         [JsonProperty("organization_usage")]
-        public string OrganizationUsage { get; set; }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public OrganizationUsage? OrganizationUsage { get; set; }
         
         /// <summary>
         /// If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations.
