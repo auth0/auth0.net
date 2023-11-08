@@ -9,7 +9,6 @@ on:
   push:
     branches:
       - master
-      - frederikprijck-patch-2
   schedule:
     - cron: "30 0 1,15 * *"
 
