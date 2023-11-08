@@ -55,14 +55,12 @@ jobs:
 
       # Check that project is registered with Snyk when triggered from master branch
       - if: github.ref == 'refs/heads/master'
-        working-directory: src
-        run: snyk monitor --all-projects
+        run: snyk monitor --file=Auth0.Net.sln
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         continue-on-error: true
 
       # Report vulnerabilities
-      - run: snyk test --all-projects
-        working-directory: src
+      - run: snyk test --file=Auth0.Net.sln
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
