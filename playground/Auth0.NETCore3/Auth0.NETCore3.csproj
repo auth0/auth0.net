@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Auth0.AuthenticationApi" Version="7.5.1" />
-    <PackageReference Include="Auth0.ManagementApi" Version="7.5.1" />
+    <PackageReference Include="Auth0.AuthenticationApi" Version="7.23.1" />
+    <PackageReference Include="Auth0.ManagementApi" Version="7.23.1" />
   </ItemGroup>
 
 
