@@ -1,14 +1,10 @@
 ﻿using Auth0.AuthenticationApi.Models;
 using Auth0.AuthenticationApi.Tokens;
 using Auth0.Core.Http;
-using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
-using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http;
-using System.Security.Claims;
-using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -188,6 +184,8 @@ namespace Auth0.AuthenticationApi
                 { "grant_type", "client_credentials" },
                 { "client_id", request.ClientId },
                 { "audience", request.Audience } };
+
+            body.AddIfNotEmpty("organization", request.Organization);
 
             ApplyClientAuthentication(request, body);
 

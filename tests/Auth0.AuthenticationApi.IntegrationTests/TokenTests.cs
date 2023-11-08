@@ -3,6 +3,8 @@ using Auth0.Tests.Shared;
 using FluentAssertions;
 using Microsoft.IdentityModel.Tokens;
 using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Xunit;
@@ -26,6 +28,33 @@ namespace Auth0.AuthenticationApi.IntegrationTests
 
                 // Ensure that we received an access token back
                 token.Should().NotBeNull();
+            }
+        }
+        
+        [Fact]
+        public async Task Can_get_token_using_client_credentials_for_organization()
+        {
+            var existingOrgId = "org_V6ojENVd1ERs5YY1";
+            using (var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
+            {
+                // Get the access token
+                var token = await authenticationApiClient.GetTokenAsync(new ClientCredentialsTokenRequest
+                {
+                    ClientId = GetVariable("AUTH0_CLIENT_ID"),
+                    ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
+                    Audience = "dotnet-testing",
+                    Organization = existingOrgId
+                });
+
+                // Ensure that we received an access token back
+                token.Should().NotBeNull();
+                  
+                var handler = new JwtSecurityTokenHandler();
+                var jwtSecurityToken = handler.ReadJwtToken(token.AccessToken);
+                var orgIdClaim = jwtSecurityToken.Claims.First(claim => claim.Type == "org_id").Value;
+                
+                orgIdClaim.Should().NotBeNull();
+                orgIdClaim.Should().Be(existingOrgId);
             }
         }
 
