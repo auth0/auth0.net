@@ -61,6 +61,6 @@ jobs:
         continue-on-error: true
 
       # Report vulnerabilities
-      - run: snyk test
+      - run: snyk test --file=Auth0.Net.sln --project-name-prefix=src/
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
