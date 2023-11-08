@@ -37,5 +37,13 @@ namespace Auth0.AuthenticationApi.Models
         /// of Id Tokens.
         /// </summary>
         public JwtSignatureAlgorithm SigningAlgorithm { get; set; }
+        
+        /// <summary>
+        /// Organization.
+        /// </summary>
+        /// <remarks>
+        /// This can be an Organization Name or ID. When included, the access token returned will include the org_id and org_name claims
+        /// </remarks>
+        public string Organization { get; set; }
     }
 }

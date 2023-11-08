@@ -233,5 +233,37 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
     /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
     Task DeleteInvitationAsync(string organizationId, string invitationId, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Get client grants associated with an organization.
+    /// </summary>
+    /// <param name="organizationId">The id of the organization for which you want to retrieve the client grants.</param>
+    /// <param name="request">Specifies criteria to use when querying client grants for the organization.</param>
+    /// <param name="pagination">Specifies <see cref="PaginationInfo"/> to use in requesting paged results.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>A <see cref="IPagedList{ClientGrant}"/> containing the client grants requested.</returns>
+    Task<IPagedList<OrganizationClientGrant>> GetAllClientGrantsAsync(string organizationId,
+      OrganizationGetClientGrantsRequest request, PaginationInfo pagination = null,
+      CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Associate a client grant with an organization
+    /// </summary>
+    /// <param name="organizationId">The id of the organization to which you want to associate the client grant.</param>
+    /// <param name="request">The <see cref="OrganizationCreateClientGrantRequest"/> containing the properties of the Client Grant to associate with the organization.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>The new <see cref="ClientGrant"/> that has been created.</returns>
+    Task<OrganizationClientGrant> CreateClientGrantAsync(string organizationId,
+      OrganizationCreateClientGrantRequest request, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Remove a client grant from an organization.
+    /// </summary>
+    /// <param name="organizationId">The id of the organization for which you want to delete the client grant.</param>
+    /// <param name="clientGrantId">The id of the client grant you want to delete from the organization</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
+    Task DeleteClientGrantAsync(string organizationId, string clientGrantId,
+      CancellationToken cancellationToken = default);
   }
 }

@@ -40,5 +40,33 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
     /// <returns>The <see cref="ClientGrant"/> that has been updated.</returns>
     Task<ClientGrant> UpdateAsync(string id, ClientGrantUpdateRequest request, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Get the organizations associated to a client grant
+    /// </summary>
+    /// <param name="id">The identifier of the client grant.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>A <see cref="IPagedList{Organization}"/> containing the organizations requested.</returns>
+    Task<IPagedList<Organization>> GetAllOrganizationsAsync(string id, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Get the organizations associated to a client grant
+    /// </summary>
+    /// <param name="id">The identifier of the client grant.</param>
+    /// <param name="pagination">Specifies <see cref="PaginationInfo"/> to use in requesting paged results.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>A <see cref="IPagedList{Organization}"/> containing the organizations requested.</returns>
+    Task<IPagedList<Organization>> GetAllOrganizationsAsync(string id, PaginationInfo pagination,
+      CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Get the organizations associated to a client grant
+    /// </summary>
+    /// <param name="id">The identifier of the client grant.</param>
+    /// <param name="pagination">Specifies <see cref="CheckpointPaginationInfo"/> to use in requesting checkpoint-paginated results.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>A <see cref="IPagedList{Organization}"/> containing the organizations requested.</returns>
+    Task<IPagedList<Organization>> GetAllOrganizationsAsync(string id, CheckpointPaginationInfo pagination,
+      CancellationToken cancellationToken = default);
   }
 }
