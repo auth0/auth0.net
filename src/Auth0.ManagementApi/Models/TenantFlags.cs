@@ -126,5 +126,11 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("revoke_refresh_token_grant")]
         public bool? RevokeRefreshTokenGrant { get; set; } = null;
+        
+        /// <summary>
+        /// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
+        /// </summary>
+        [JsonProperty("require_pushed_authorization_requests")]
+        public bool? RequirePushedAuthorizationRequests { get; set; } = null;
     }
 }

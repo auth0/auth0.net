@@ -190,6 +190,12 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("cross_origin_authentication")]
         public bool? CrossOriginAuthentication { get; set; }
+        
+        /// <summary>
+        /// Makes the use of Pushed Authorization Requests mandatory for this client.
+        /// </summary>
+        [JsonProperty("require_pushed_authorization_requests")]
+        public bool? RequirePushedAuthorizationRequests { get; set; }
     }
 
 }
