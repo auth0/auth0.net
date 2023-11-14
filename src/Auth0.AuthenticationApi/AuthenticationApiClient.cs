@@ -462,6 +462,39 @@ namespace Auth0.AuthenticationApi
             );
         }
 
+        /// <inheritdoc/>
+        public Task<PushedAuthorizationRequestResponse> PushedAuthorizationRequestAsync(PushedAuthorizationRequest request, CancellationToken cancellationToken = default)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            var body = new Dictionary<string, string> {
+                { "client_id", request.ClientId }
+            };
+            
+            body.AddIfNotEmpty("redirect_uri", request.RedirectUri);
+            body.AddIfNotEmpty("state", request.State);
+            body.AddIfNotEmpty("nonce", request.Nonce);
+            body.AddIfNotEmpty("response_type", request.ResponseType?.ToStringValue());
+            body.AddIfNotEmpty("response_mode", request.ResponseMode?.ToStringValue());
+            body.AddIfNotEmpty("organization", request.Organization);
+            body.AddIfNotEmpty("invitation", request.Invitation);
+            body.AddIfNotEmpty("connection", request.Connection);
+            body.AddIfNotEmpty("scope", request.Scope);
+            body.AddIfNotEmpty("audience", request.Audience);
+            
+            body.AddAll(request.AdditionalProperties);
+
+            ApplyClientAuthentication(request, body, true);
+
+            return connection.SendAsync<PushedAuthorizationRequestResponse>(
+                HttpMethod.Post,
+                BuildUri("oauth/par"),
+                body,
+                cancellationToken: cancellationToken
+            );
+        }
+
         /// <summary>
         /// Disposes of any owned disposable resources such as a <see cref="IAuthenticationConnection"/>.
         /// </summary>
@@ -508,8 +541,23 @@ namespace Auth0.AuthenticationApi
             return new Dictionary<string, string> { { "Authorization", "Bearer " + accessToken } };
         }
 
-        private void ApplyClientAuthentication(IClientAuthentication request, Dictionary<string, string> body)
+        private void ApplyClientAuthentication(IClientAuthentication request, Dictionary<string, string> body, bool requireSecret = false)
         {
+            if (requireSecret)
+            {
+                if (string.IsNullOrWhiteSpace(request.ClientSecret) && request.ClientAssertionSecurityKey == null)
+                {
+                    throw new InvalidOperationException(
+                        "Both Client Secret and Client Assertion can not be null.");
+                }
+
+                if (!string.IsNullOrWhiteSpace(request.ClientSecret) && request.ClientAssertionSecurityKey != null)
+                {
+                    throw new InvalidOperationException(
+                        "Both Client Secret and Client Assertion can not be set at the same time.");
+                }
+            }
+
             if (request.ClientAssertionSecurityKey != null)
             {
                 body.Add("client_assertion", new JwtTokenFactory(request.ClientAssertionSecurityKey, request.ClientAssertionSecurityKeyAlgorithm)

@@ -13,13 +13,6 @@ namespace Auth0.AuthenticationApi.Builders
     /// </remarks>
     public class AuthorizationUrlBuilder : UrlBuilderBase<AuthorizationUrlBuilder>
     {
-        private static readonly Dictionary<AuthorizationResponseType, string> Map = new Dictionary<AuthorizationResponseType, string>
-        {
-            { AuthorizationResponseType.Code, "code" },
-            { AuthorizationResponseType.IdToken, "id_token" },
-            { AuthorizationResponseType.Token, "token" }
-        };
-
         /// <summary>
         /// Initializes a new instance of the <see cref="AuthorizationUrlBuilder"/> class.
         /// </summary>
@@ -87,9 +80,16 @@ namespace Auth0.AuthenticationApi.Builders
         {
             return WithValue("response_type",
                 string.Join(" ", responseType
-                    .Select(r => Map.TryGetValue(r, out var value)
-                        ? value
-                        : throw new ArgumentException("Unknown AuthorizationResponseType.", nameof(responseType)))));
+                    .Select(r =>
+                    {
+                        var value = r.ToStringValue();
+                        if (value == null)
+                        {
+                            throw new ArgumentException("Unknown AuthorizationResponseType.", nameof(responseType));
+                        }
+
+                        return value;
+                    })));
         }
 
         /// <summary>

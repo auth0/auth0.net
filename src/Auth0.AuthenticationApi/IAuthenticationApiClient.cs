@@ -170,5 +170,15 @@ namespace Auth0.AuthenticationApi
         /// <returns><see cref="Task"/> representing the async operation containing 
         /// a <see cref="DeviceCodeResponse" /> with the details of the request.</returns>
         Task<DeviceCodeResponse> StartDeviceFlowAsync(DeviceCodeRequest request, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Starts a new Pushed Authorization Request flow.
+        /// </summary>
+        /// <param name="request"><see cref="PushedAuthorizationRequest"/> containing information to start the Pushed Authorization Request.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns><see cref="Task"/> representing the async operation containing 
+        /// a <see cref="PushedAuthorizationRequestResponse" /> with the details of the response.</returns>
+        Task<PushedAuthorizationRequestResponse> PushedAuthorizationRequestAsync(PushedAuthorizationRequest request,
+            CancellationToken cancellationToken = default);
     }
 }
