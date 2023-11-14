@@ -1,5 +1,11 @@
 # Change Log
 
+## [7.24.0](https://github.com/auth0/auth0.net/tree/7.24.0) (2023-11-08)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.23.1...7.24.0)
+
+**Added**
+- Add Organizations in Client Credentials [\#673](https://github.com/auth0/auth0.net/pull/673) ([frederikprijck](https://github.com/frederikprijck))
+
 ## [7.23.1](https://github.com/auth0/auth0.net/tree/7.23.1) (2023-10-25)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.23.0...7.23.1)
 

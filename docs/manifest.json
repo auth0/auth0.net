@@ -2738,6 +2738,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.OrganizationClientGrant.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.OrganizationClientGrant.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Auth0.ManagementApi.Models.OrganizationConnection.yml",
       "output": {
         ".html": {
@@ -2772,6 +2782,16 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.OrganizationConnectionUpdateRequest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.OrganizationCreateClientGrantRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.OrganizationCreateClientGrantRequest.html"
         }
       },
       "version": ""
@@ -2832,6 +2852,16 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.OrganizationGetAllMembersRequest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.OrganizationGetClientGrantsRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.OrganizationGetClientGrantsRequest.html"
         }
       },
       "version": ""
