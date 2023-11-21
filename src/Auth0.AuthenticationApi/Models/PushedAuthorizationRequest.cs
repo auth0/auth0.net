@@ -26,7 +26,7 @@ namespace Auth0.AuthenticationApi.Models
         /// <summary>
         /// <see cref="AuthorizationResponseType"/> the client expects.
         /// </summary>
-        public AuthorizationResponseType? ResponseType { get; set; }
+        public AuthorizationResponseType ResponseType { get; set; }
         
         /// <summary>
         /// Response mode to use.

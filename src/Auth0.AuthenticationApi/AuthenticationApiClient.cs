@@ -469,13 +469,13 @@ namespace Auth0.AuthenticationApi
                 throw new ArgumentNullException(nameof(request));
 
             var body = new Dictionary<string, string> {
-                { "client_id", request.ClientId }
+                { "client_id", request.ClientId },
+                { "response_type", request.ResponseType.ToStringValue() },
+                { "redirect_uri", request.RedirectUri }
             };
             
-            body.AddIfNotEmpty("redirect_uri", request.RedirectUri);
             body.AddIfNotEmpty("state", request.State);
             body.AddIfNotEmpty("nonce", request.Nonce);
-            body.AddIfNotEmpty("response_type", request.ResponseType?.ToStringValue());
             body.AddIfNotEmpty("response_mode", request.ResponseMode?.ToStringValue());
             body.AddIfNotEmpty("organization", request.Organization);
             body.AddIfNotEmpty("invitation", request.Invitation);
