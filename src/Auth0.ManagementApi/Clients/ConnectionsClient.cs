@@ -92,7 +92,7 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="request">Specifies criteria to use when querying connections.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>An <see cref="IPagedList{Connection}"/> containing the list of connections.</returns>
-        private Task<IPagedList<Connection>> GetAllAsync(GetConnectionsRequest request, CancellationToken cancellationToken = default)
+        public Task<IPagedList<Connection>> GetAllAsync(GetConnectionsRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
