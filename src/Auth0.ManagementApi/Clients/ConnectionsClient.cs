@@ -114,13 +114,16 @@ namespace Auth0.ManagementApi.Clients
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
+            
+            if (pagination == null)
+                throw new ArgumentNullException(nameof(pagination));
 
             var queryStrings = new Dictionary<string, string>();
             queryStrings["page"] = pagination.PageNo.ToString();
             queryStrings["per_page"] = pagination.PerPage.ToString();
             queryStrings["include_totals"] = pagination.IncludeTotals.ToString().ToLower();
 
-            return GetAllAsync(request, new Dictionary<string, string>(), cancellationToken);
+            return GetAllAsync(request, queryStrings, cancellationToken);
         }
 
         /// <summary>
@@ -134,6 +137,9 @@ namespace Auth0.ManagementApi.Clients
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
+            
+            if (pagination == null)
+                throw new ArgumentNullException(nameof(pagination));
 
             var queryStrings = new Dictionary<string, string>();
             queryStrings["take"] = pagination.Take.ToString();
@@ -142,7 +148,7 @@ namespace Auth0.ManagementApi.Clients
                 queryStrings["from"] = pagination.From.ToString();
             }
 
-            return GetAllAsync(request, new Dictionary<string, string>(), cancellationToken);
+            return GetAllAsync(request, queryStrings, cancellationToken);
         }
 
         /// <summary>
