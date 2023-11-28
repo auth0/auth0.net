@@ -91,6 +91,6 @@ namespace Auth0.ManagementApi.Models
         /// Customer-defined id.
         /// </summary>
         [JsonProperty("external_id")]
-        public int ExternalId { get; set; }
+        public string ExternalId { get; set; }
     }
 }
