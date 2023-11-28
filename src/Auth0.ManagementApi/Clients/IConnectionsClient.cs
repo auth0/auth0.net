@@ -52,7 +52,7 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
     /// <returns>An <see cref="IPagedList{Connection}"/> containing the list of connections.</returns>
-    Task<IPagedList<Connection>> GetAllAsync(GetConnectionsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default);
+    Task<IPagedList<Connection>> GetAllAsync(GetConnectionsRequest request, BasePaginationInfo pagination = null, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Updates a connection.

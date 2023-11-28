@@ -86,83 +86,37 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Retrieves every connection matching the specified strategy. All connections are retrieved if no strategy is being specified. Accepts a list of fields to include or exclude in the resulting list of connection objects.
         /// </summary>
-        /// <remarks>
-        /// Can only retrieve a maximum of 1000 connections, if you need to retrieve more use the overload with <see cref="CheckpointPagingInformation"/>
-        /// </remarks>
-        /// <param name="request">Specifies criteria to use when querying connections.</param>
-        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>An <see cref="IPagedList{Connection}"/> containing the list of connections.</returns>
-        public Task<IPagedList<Connection>> GetAllAsync(GetConnectionsRequest request, CancellationToken cancellationToken = default)
-        {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-
-            return GetAllAsync(request, new Dictionary<string, string>(), cancellationToken);
-        }
-
-        /// <summary>
-        /// Retrieves every connection matching the specified strategy. All connections are retrieved if no strategy is being specified. Accepts a list of fields to include or exclude in the resulting list of connection objects.
-        /// </summary>
-        /// <remarks>
-        /// Can only retrieve a maximum of 1000 connections, if you need to retrieve more use the overload with <see cref="CheckpointPagingInformation"/>
-        /// </remarks>
         /// <param name="request">Specifies criteria to use when querying connections.</param>
         /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>An <see cref="IPagedList{Connection}"/> containing the list of connections.</returns>
-        public Task<IPagedList<Connection>> GetAllAsync(GetConnectionsRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default)
+        public Task<IPagedList<Connection>> GetAllAsync(GetConnectionsRequest request, BasePaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
-            
-            if (pagination == null)
-                throw new ArgumentNullException(nameof(pagination));
 
-            var queryStrings = new Dictionary<string, string>();
-            queryStrings["page"] = pagination.PageNo.ToString();
-            queryStrings["per_page"] = pagination.PerPage.ToString();
-            queryStrings["include_totals"] = pagination.IncludeTotals.ToString().ToLower();
-
-            return GetAllAsync(request, queryStrings, cancellationToken);
-        }
-
-        /// <summary>
-        /// Retrieves every connection matching the specified strategy. All connections are retrieved if no strategy is being specified. Accepts a list of fields to include or exclude in the resulting list of connection objects.
-        /// </summary>
-        /// <param name="request">Specifies criteria to use when querying connections.</param>
-        /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
-        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>An <see cref="IPagedList{Connection}"/> containing the list of connections.</returns>
-        public Task<IPagedList<Connection>> GetAllAsync(GetConnectionsRequest request, CheckpointPagingInformation pagination, CancellationToken cancellationToken = default)
-        {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-            
-            if (pagination == null)
-                throw new ArgumentNullException(nameof(pagination));
-
-            var queryStrings = new Dictionary<string, string>();
-            queryStrings["take"] = pagination.Take.ToString();
-            if (pagination.From != null)
+            var queryStrings = new Dictionary<string, string>
             {
-                queryStrings["from"] = pagination.From.ToString();
+                {"fields", request.Fields},
+                {"include_fields", request.IncludeFields?.ToString().ToLower()},
+                {"name", request.Name},
+            };
+
+            if (pagination != null)
+            {
+                switch (pagination)
+                {
+                    case PaginationInfo offsetPagination:
+                        queryStrings["page"] = offsetPagination.PageNo.ToString();
+                        queryStrings["per_page"] = offsetPagination.PerPage.ToString();
+                        queryStrings["include_totals"] = offsetPagination.IncludeTotals.ToString().ToLower();
+                        break;
+                    case CheckpointPaginationInfo checkpointPagination:
+                        queryStrings["from"] = checkpointPagination.From;
+                        queryStrings["take"] = checkpointPagination.Take.ToString();
+                        break;
+                }
             }
-
-            return GetAllAsync(request, queryStrings, cancellationToken);
-        }
-
-        /// <summary>
-        /// Inner call to resolve all overloads to the same call
-        /// </summary>
-        /// <param name="request">Specifies criteria to use when querying connections.</param>
-        /// <param name="queryStrings">Specifies pre set query strings</param>
-        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>An <see cref="IPagedList{Connection}"/> containing the list of connections.</returns>
-        private Task<IPagedList<Connection>> GetAllAsync(GetConnectionsRequest request, Dictionary<string, string> queryStrings, CancellationToken cancellationToken = default)
-        {
-            queryStrings["fields"] = request.Fields;
-            queryStrings["include_fields"] = request.IncludeFields?.ToString().ToLower();
-            queryStrings["name"] = request.Name;
 
             // Add each strategy as a separate querystring
             if (request.Strategy != null)

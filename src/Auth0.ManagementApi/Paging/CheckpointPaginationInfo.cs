@@ -3,7 +3,7 @@ namespace Auth0.ManagementApi.Paging
     /// <summary>
     /// Specifies checkpoint pagination info to use when requesting paged results.
     /// </summary>
-    public class CheckpointPaginationInfo
+    public class CheckpointPaginationInfo : BasePaginationInfo
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CheckpointPaginationInfo"/> class.
