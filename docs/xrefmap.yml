@@ -173,6 +173,19 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.AuthenticationApiClient.GetUserInfoAsync
   nameWithType: AuthenticationApiClient.GetUserInfoAsync
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.PushedAuthorizationRequestAsync(Auth0.AuthenticationApi.Models.PushedAuthorizationRequest,System.Threading.CancellationToken)
+  name: PushedAuthorizationRequestAsync(PushedAuthorizationRequest, CancellationToken)
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_PushedAuthorizationRequestAsync_Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_System_Threading_CancellationToken_
+  commentId: M:Auth0.AuthenticationApi.AuthenticationApiClient.PushedAuthorizationRequestAsync(Auth0.AuthenticationApi.Models.PushedAuthorizationRequest,System.Threading.CancellationToken)
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.PushedAuthorizationRequestAsync(Auth0.AuthenticationApi.Models.PushedAuthorizationRequest, System.Threading.CancellationToken)
+  nameWithType: AuthenticationApiClient.PushedAuthorizationRequestAsync(PushedAuthorizationRequest, CancellationToken)
+- uid: Auth0.AuthenticationApi.AuthenticationApiClient.PushedAuthorizationRequestAsync*
+  name: PushedAuthorizationRequestAsync
+  href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_PushedAuthorizationRequestAsync_
+  commentId: Overload:Auth0.AuthenticationApi.AuthenticationApiClient.PushedAuthorizationRequestAsync
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.AuthenticationApiClient.PushedAuthorizationRequestAsync
+  nameWithType: AuthenticationApiClient.PushedAuthorizationRequestAsync
 - uid: Auth0.AuthenticationApi.AuthenticationApiClient.RevokeRefreshTokenAsync(Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest,System.Threading.CancellationToken)
   name: RevokeRefreshTokenAsync(RevokeRefreshTokenRequest, CancellationToken)
   href: api/Auth0.AuthenticationApi.AuthenticationApiClient.html#Auth0_AuthenticationApi_AuthenticationApiClient_RevokeRefreshTokenAsync_Auth0_AuthenticationApi_Models_RevokeRefreshTokenRequest_System_Threading_CancellationToken_
@@ -1151,6 +1164,19 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.GetUserInfoAsync
   nameWithType: IAuthenticationApiClient.GetUserInfoAsync
+- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.PushedAuthorizationRequestAsync(Auth0.AuthenticationApi.Models.PushedAuthorizationRequest,System.Threading.CancellationToken)
+  name: PushedAuthorizationRequestAsync(PushedAuthorizationRequest, CancellationToken)
+  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_PushedAuthorizationRequestAsync_Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_System_Threading_CancellationToken_
+  commentId: M:Auth0.AuthenticationApi.IAuthenticationApiClient.PushedAuthorizationRequestAsync(Auth0.AuthenticationApi.Models.PushedAuthorizationRequest,System.Threading.CancellationToken)
+  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.PushedAuthorizationRequestAsync(Auth0.AuthenticationApi.Models.PushedAuthorizationRequest, System.Threading.CancellationToken)
+  nameWithType: IAuthenticationApiClient.PushedAuthorizationRequestAsync(PushedAuthorizationRequest, CancellationToken)
+- uid: Auth0.AuthenticationApi.IAuthenticationApiClient.PushedAuthorizationRequestAsync*
+  name: PushedAuthorizationRequestAsync
+  href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_PushedAuthorizationRequestAsync_
+  commentId: Overload:Auth0.AuthenticationApi.IAuthenticationApiClient.PushedAuthorizationRequestAsync
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.IAuthenticationApiClient.PushedAuthorizationRequestAsync
+  nameWithType: IAuthenticationApiClient.PushedAuthorizationRequestAsync
 - uid: Auth0.AuthenticationApi.IAuthenticationApiClient.RevokeRefreshTokenAsync(Auth0.AuthenticationApi.Models.RevokeRefreshTokenRequest,System.Threading.CancellationToken)
   name: RevokeRefreshTokenAsync(RevokeRefreshTokenRequest, CancellationToken)
   href: api/Auth0.AuthenticationApi.IAuthenticationApiClient.html#Auth0_AuthenticationApi_IAuthenticationApiClient_RevokeRefreshTokenAsync_Auth0_AuthenticationApi_Models_RevokeRefreshTokenRequest_System_Threading_CancellationToken_
@@ -2363,6 +2389,239 @@ references:
   isSpec: "True"
   fullName: Auth0.AuthenticationApi.Models.PasswordlessTokenRequestBase.SigningAlgorithm
   nameWithType: PasswordlessTokenRequestBase.SigningAlgorithm
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest
+  name: PushedAuthorizationRequest
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html
+  commentId: T:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest
+  nameWithType: PushedAuthorizationRequest
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.AdditionalProperties
+  name: AdditionalProperties
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_AdditionalProperties
+  commentId: P:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.AdditionalProperties
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.AdditionalProperties
+  nameWithType: PushedAuthorizationRequest.AdditionalProperties
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.AdditionalProperties*
+  name: AdditionalProperties
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_AdditionalProperties_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.AdditionalProperties
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.AdditionalProperties
+  nameWithType: PushedAuthorizationRequest.AdditionalProperties
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Audience
+  name: Audience
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_Audience
+  commentId: P:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Audience
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Audience
+  nameWithType: PushedAuthorizationRequest.Audience
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Audience*
+  name: Audience
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_Audience_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Audience
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Audience
+  nameWithType: PushedAuthorizationRequest.Audience
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientAssertionSecurityKey
+  name: ClientAssertionSecurityKey
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_ClientAssertionSecurityKey
+  commentId: P:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientAssertionSecurityKey
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientAssertionSecurityKey
+  nameWithType: PushedAuthorizationRequest.ClientAssertionSecurityKey
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientAssertionSecurityKey*
+  name: ClientAssertionSecurityKey
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_ClientAssertionSecurityKey_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientAssertionSecurityKey
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientAssertionSecurityKey
+  nameWithType: PushedAuthorizationRequest.ClientAssertionSecurityKey
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientAssertionSecurityKeyAlgorithm
+  name: ClientAssertionSecurityKeyAlgorithm
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_ClientAssertionSecurityKeyAlgorithm
+  commentId: P:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientAssertionSecurityKeyAlgorithm
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientAssertionSecurityKeyAlgorithm
+  nameWithType: PushedAuthorizationRequest.ClientAssertionSecurityKeyAlgorithm
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientAssertionSecurityKeyAlgorithm*
+  name: ClientAssertionSecurityKeyAlgorithm
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_ClientAssertionSecurityKeyAlgorithm_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientAssertionSecurityKeyAlgorithm
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientAssertionSecurityKeyAlgorithm
+  nameWithType: PushedAuthorizationRequest.ClientAssertionSecurityKeyAlgorithm
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientId
+  name: ClientId
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_ClientId
+  commentId: P:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientId
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientId
+  nameWithType: PushedAuthorizationRequest.ClientId
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientId*
+  name: ClientId
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_ClientId_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientId
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientId
+  nameWithType: PushedAuthorizationRequest.ClientId
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientSecret
+  name: ClientSecret
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_ClientSecret
+  commentId: P:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientSecret
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientSecret
+  nameWithType: PushedAuthorizationRequest.ClientSecret
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientSecret*
+  name: ClientSecret
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_ClientSecret_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientSecret
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ClientSecret
+  nameWithType: PushedAuthorizationRequest.ClientSecret
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Connection
+  name: Connection
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_Connection
+  commentId: P:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Connection
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Connection
+  nameWithType: PushedAuthorizationRequest.Connection
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Connection*
+  name: Connection
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_Connection_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Connection
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Connection
+  nameWithType: PushedAuthorizationRequest.Connection
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Invitation
+  name: Invitation
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_Invitation
+  commentId: P:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Invitation
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Invitation
+  nameWithType: PushedAuthorizationRequest.Invitation
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Invitation*
+  name: Invitation
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_Invitation_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Invitation
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Invitation
+  nameWithType: PushedAuthorizationRequest.Invitation
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Nonce
+  name: Nonce
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_Nonce
+  commentId: P:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Nonce
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Nonce
+  nameWithType: PushedAuthorizationRequest.Nonce
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Nonce*
+  name: Nonce
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_Nonce_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Nonce
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Nonce
+  nameWithType: PushedAuthorizationRequest.Nonce
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Organization
+  name: Organization
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_Organization
+  commentId: P:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Organization
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Organization
+  nameWithType: PushedAuthorizationRequest.Organization
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Organization*
+  name: Organization
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_Organization_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Organization
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Organization
+  nameWithType: PushedAuthorizationRequest.Organization
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.RedirectUri
+  name: RedirectUri
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_RedirectUri
+  commentId: P:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.RedirectUri
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.RedirectUri
+  nameWithType: PushedAuthorizationRequest.RedirectUri
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.RedirectUri*
+  name: RedirectUri
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_RedirectUri_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.RedirectUri
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.RedirectUri
+  nameWithType: PushedAuthorizationRequest.RedirectUri
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ResponseMode
+  name: ResponseMode
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_ResponseMode
+  commentId: P:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ResponseMode
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ResponseMode
+  nameWithType: PushedAuthorizationRequest.ResponseMode
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ResponseMode*
+  name: ResponseMode
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_ResponseMode_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ResponseMode
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ResponseMode
+  nameWithType: PushedAuthorizationRequest.ResponseMode
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ResponseType
+  name: ResponseType
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_ResponseType
+  commentId: P:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ResponseType
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ResponseType
+  nameWithType: PushedAuthorizationRequest.ResponseType
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ResponseType*
+  name: ResponseType
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_ResponseType_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ResponseType
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.ResponseType
+  nameWithType: PushedAuthorizationRequest.ResponseType
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Scope
+  name: Scope
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_Scope
+  commentId: P:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Scope
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Scope
+  nameWithType: PushedAuthorizationRequest.Scope
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Scope*
+  name: Scope
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_Scope_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Scope
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.Scope
+  nameWithType: PushedAuthorizationRequest.Scope
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.State
+  name: State
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_State
+  commentId: P:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.State
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.State
+  nameWithType: PushedAuthorizationRequest.State
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.State*
+  name: State
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequest_State_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.State
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.State
+  nameWithType: PushedAuthorizationRequest.State
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequestResponse
+  name: PushedAuthorizationRequestResponse
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequestResponse.html
+  commentId: T:Auth0.AuthenticationApi.Models.PushedAuthorizationRequestResponse
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequestResponse
+  nameWithType: PushedAuthorizationRequestResponse
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequestResponse.ExpiresIn
+  name: ExpiresIn
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequestResponse.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequestResponse_ExpiresIn
+  commentId: P:Auth0.AuthenticationApi.Models.PushedAuthorizationRequestResponse.ExpiresIn
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequestResponse.ExpiresIn
+  nameWithType: PushedAuthorizationRequestResponse.ExpiresIn
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequestResponse.ExpiresIn*
+  name: ExpiresIn
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequestResponse.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequestResponse_ExpiresIn_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PushedAuthorizationRequestResponse.ExpiresIn
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequestResponse.ExpiresIn
+  nameWithType: PushedAuthorizationRequestResponse.ExpiresIn
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequestResponse.RequestUri
+  name: RequestUri
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequestResponse.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequestResponse_RequestUri
+  commentId: P:Auth0.AuthenticationApi.Models.PushedAuthorizationRequestResponse.RequestUri
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequestResponse.RequestUri
+  nameWithType: PushedAuthorizationRequestResponse.RequestUri
+- uid: Auth0.AuthenticationApi.Models.PushedAuthorizationRequestResponse.RequestUri*
+  name: RequestUri
+  href: api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequestResponse.html#Auth0_AuthenticationApi_Models_PushedAuthorizationRequestResponse_RequestUri_
+  commentId: Overload:Auth0.AuthenticationApi.Models.PushedAuthorizationRequestResponse.RequestUri
+  isSpec: "True"
+  fullName: Auth0.AuthenticationApi.Models.PushedAuthorizationRequestResponse.RequestUri
+  nameWithType: PushedAuthorizationRequestResponse.RequestUri
 - uid: Auth0.AuthenticationApi.Models.RefreshTokenRequest
   name: RefreshTokenRequest
   href: api/Auth0.AuthenticationApi.Models.RefreshTokenRequest.html
@@ -14088,6 +14347,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.ClientBase.RefreshToken
   nameWithType: ClientBase.RefreshToken
+- uid: Auth0.ManagementApi.Models.ClientBase.RequirePushedAuthorizationRequests
+  name: RequirePushedAuthorizationRequests
+  href: api/Auth0.ManagementApi.Models.ClientBase.html#Auth0_ManagementApi_Models_ClientBase_RequirePushedAuthorizationRequests
+  commentId: P:Auth0.ManagementApi.Models.ClientBase.RequirePushedAuthorizationRequests
+  fullName: Auth0.ManagementApi.Models.ClientBase.RequirePushedAuthorizationRequests
+  nameWithType: ClientBase.RequirePushedAuthorizationRequests
+- uid: Auth0.ManagementApi.Models.ClientBase.RequirePushedAuthorizationRequests*
+  name: RequirePushedAuthorizationRequests
+  href: api/Auth0.ManagementApi.Models.ClientBase.html#Auth0_ManagementApi_Models_ClientBase_RequirePushedAuthorizationRequests_
+  commentId: Overload:Auth0.ManagementApi.Models.ClientBase.RequirePushedAuthorizationRequests
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.ClientBase.RequirePushedAuthorizationRequests
+  nameWithType: ClientBase.RequirePushedAuthorizationRequests
 - uid: Auth0.ManagementApi.Models.ClientBase.ResourceServers
   name: ResourceServers
   href: api/Auth0.ManagementApi.Models.ClientBase.html#Auth0_ManagementApi_Models_ClientBase_ResourceServers
@@ -21692,6 +21964,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.TenantFlags.NoDiscloseEnterpriseConnections
   nameWithType: TenantFlags.NoDiscloseEnterpriseConnections
+- uid: Auth0.ManagementApi.Models.TenantFlags.RequirePushedAuthorizationRequests
+  name: RequirePushedAuthorizationRequests
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_RequirePushedAuthorizationRequests
+  commentId: P:Auth0.ManagementApi.Models.TenantFlags.RequirePushedAuthorizationRequests
+  fullName: Auth0.ManagementApi.Models.TenantFlags.RequirePushedAuthorizationRequests
+  nameWithType: TenantFlags.RequirePushedAuthorizationRequests
+- uid: Auth0.ManagementApi.Models.TenantFlags.RequirePushedAuthorizationRequests*
+  name: RequirePushedAuthorizationRequests
+  href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_RequirePushedAuthorizationRequests_
+  commentId: Overload:Auth0.ManagementApi.Models.TenantFlags.RequirePushedAuthorizationRequests
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.TenantFlags.RequirePushedAuthorizationRequests
+  nameWithType: TenantFlags.RequirePushedAuthorizationRequests
 - uid: Auth0.ManagementApi.Models.TenantFlags.RevokeRefreshTokenGrant
   name: RevokeRefreshTokenGrant
   href: api/Auth0.ManagementApi.Models.TenantFlags.html#Auth0_ManagementApi_Models_TenantFlags_RevokeRefreshTokenGrant

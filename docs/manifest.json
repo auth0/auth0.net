@@ -408,6 +408,26 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequestResponse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.AuthenticationApi.Models.PushedAuthorizationRequestResponse.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Auth0.AuthenticationApi.Models.RefreshTokenRequest.yml",
       "output": {
         ".html": {
