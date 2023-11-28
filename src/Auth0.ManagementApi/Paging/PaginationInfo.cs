@@ -8,9 +8,6 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="PaginationInfo"/> class for offset pagination.
         /// </summary>
-        /// <remarks>
-        /// If you need to retrieve >1000 items use the overload for checkpoint pagination instead.
-        /// </remarks>
         /// <param name="pageNo">Page index of the results to return. First page is 0.</param>
         /// <param name="perPage">Number of results per page.</param>
         /// <param name="includeTotals">Whether to return the complete total result count (true) or not (false).</param>
