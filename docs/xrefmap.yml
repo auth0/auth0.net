@@ -11090,6 +11090,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.IManagementApiClient.EmailTemplates
   nameWithType: IManagementApiClient.EmailTemplates
+- uid: Auth0.ManagementApi.IManagementApiClient.Grants
+  name: Grants
+  href: api/Auth0.ManagementApi.IManagementApiClient.html#Auth0_ManagementApi_IManagementApiClient_Grants
+  commentId: P:Auth0.ManagementApi.IManagementApiClient.Grants
+  fullName: Auth0.ManagementApi.IManagementApiClient.Grants
+  nameWithType: IManagementApiClient.Grants
+- uid: Auth0.ManagementApi.IManagementApiClient.Grants*
+  name: Grants
+  href: api/Auth0.ManagementApi.IManagementApiClient.html#Auth0_ManagementApi_IManagementApiClient_Grants_
+  commentId: Overload:Auth0.ManagementApi.IManagementApiClient.Grants
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.IManagementApiClient.Grants
+  nameWithType: IManagementApiClient.Grants
 - uid: Auth0.ManagementApi.IManagementApiClient.Guardian
   name: Guardian
   href: api/Auth0.ManagementApi.IManagementApiClient.html#Auth0_ManagementApi_IManagementApiClient_Guardian
