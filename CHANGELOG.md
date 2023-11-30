@@ -8,6 +8,7 @@
 
 **Fixed**
 - Ensure external_id is defined as string instead of int [\#679](https://github.com/auth0/auth0.net/pull/679) ([frederikprijck](https://github.com/frederikprijck))
+- Add Grants to IManagementApiClient [\#681](https://github.com/auth0/auth0.net/pull/681) ([pabrodez](https://github.com/pabrodez))
 
 ## [7.24.0](https://github.com/auth0/auth0.net/tree/7.24.0) (2023-11-08)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.23.1...7.24.0)
