@@ -150,6 +150,9 @@ namespace Auth0.ManagementApi.Models
         [JsonProperty("oidc_conformant")]
         public bool? OidcConformant { get; set; }
 
+        [JsonProperty("oidc_logout")]
+        public OidcLogoutConfig OidcLogout { get; set; }
+
         /// <summary>
         /// A list of resource servers (APIs) that the client is authorized to request access tokens for, using the Client Credentials exchange.
         /// </summary>
