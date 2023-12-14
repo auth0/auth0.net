@@ -64,7 +64,16 @@ namespace Auth0.ManagementApi.IntegrationTests
                 OidcConformant = true,
                 GrantTypes = new[] { "refresh_token" },
                 OrganizationUsage = OrganizationUsage.Require,
-                OrganizationRequireBehavior = OrganizationRequireBehavior.PreLoginPrompt
+                OrganizationRequireBehavior = OrganizationRequireBehavior.PreLoginPrompt,
+                OidcLogout = new OidcLogoutConfig
+                {
+                    BackchannelLogoutInitiators = new BackchannelLogoutInitiators
+                    {
+                        Mode = LogoutInitiatorModes.Custom,
+                        SelectedInitiators = new [] { LogoutInitiators.RpLogout, LogoutInitiators.IdpLogout, LogoutInitiators.PasswordChanged }
+                    },
+                    BackchannelLogoutUrls = new [] { "https://create.com/logout" }
+                }
             };
             var newClientResponse = await fixture.ApiClient.Clients.CreateAsync(newClientRequest);
             newClientResponse.Should().NotBeNull();
@@ -77,6 +86,10 @@ namespace Auth0.ManagementApi.IntegrationTests
             newClientResponse.RefreshToken.RotationType.Should().Be(newClientRequest.RefreshToken.RotationType);
             newClientResponse.OrganizationUsage.Should().Be(OrganizationUsage.Require);
             newClientResponse.OrganizationRequireBehavior.Should().Be(OrganizationRequireBehavior.PreLoginPrompt);
+            newClientResponse.OidcLogout.BackchannelLogoutUrls[0].Should().Be("https://create.com/logout");
+            newClientResponse.OidcLogout.BackchannelLogoutInitiators.Mode.Should().Be(LogoutInitiatorModes.Custom);
+            newClientResponse.OidcLogout.BackchannelLogoutInitiators.SelectedInitiators.Length.Should().Be(3);
+            newClientResponse.OidcLogout.BackchannelLogoutInitiators.SelectedInitiators.Any(i => i == LogoutInitiators.PasswordChanged).Should().BeTrue();
 
             string prop1 = newClientResponse.ClientMetaData.Prop1;
             prop1.Should().Be("1");
@@ -115,6 +128,10 @@ namespace Auth0.ManagementApi.IntegrationTests
             updateClientResponse.RefreshToken.TokenLifetime.Should().Be(updateClientRequest.RefreshToken.TokenLifetime);
             updateClientResponse.RefreshToken.Leeway.Should().Be(updateClientRequest.RefreshToken.Leeway);
             updateClientResponse.OrganizationRequireBehavior.Should().Be(OrganizationRequireBehavior.NoPrompt);
+            updateClientResponse.OidcLogout.BackchannelLogoutUrls[0].Should().Be("https://create.com/logout");
+            updateClientResponse.OidcLogout.BackchannelLogoutInitiators.Mode.Should().Be(LogoutInitiatorModes.Custom);
+            updateClientResponse.OidcLogout.BackchannelLogoutInitiators.SelectedInitiators.Length.Should().Be(3);
+            updateClientResponse.OidcLogout.BackchannelLogoutInitiators.SelectedInitiators.Any(i => i == LogoutInitiators.PasswordChanged).Should().BeTrue();
 
             // Get a single client
             var client = await fixture.ApiClient.Clients.GetAsync(newClientResponse.ClientId);
