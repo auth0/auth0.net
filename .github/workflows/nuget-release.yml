@@ -5,8 +5,10 @@ on:
     inputs:
       dotnet-version:
         required: true
+        type: string
       project-paths:
         required: true
+        type: string
     secrets:
       github-token:
         required: true
