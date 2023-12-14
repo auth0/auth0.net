@@ -24,6 +24,7 @@ namespace Auth0.Tests.Shared
                 .AddJsonFile("client-secrets.json", true)
                 .AddEnvironmentVariables()
                 .Build();
+
         private readonly Regex _alphaNumeric = new Regex("[^a-zA-Z0-9]");
 
         protected string MakeRandomName()

@@ -15,6 +15,5 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("scopes")]
         public string[] Scopes { get; set; }
-
     }
 }
