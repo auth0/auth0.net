@@ -1,0 +1,37 @@
+name: Publish release to NuGet
+
+inputs:
+  dotnet-version:
+    required: true
+  nuget-token:
+    required: true
+  version:
+    required: true
+  project-paths:
+    required: true
+
+env:
+  NuGetDirectory: ${{ github.workspace}}/nuget
+
+runs:
+  using: composite
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    
+    - name: Create NuGet packages
+      run: |
+        foreach($file in (ConvertFrom-Json -InputObject "${{ inputs.project-paths }}")) {
+            dotnet pack $file --configuration Release --output ${{ env.NuGetDirectory }}
+        }
+
+    - name: Publish NuGet packages
+      run: |
+        foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}" -Recurse -Include *.nupkg)) {
+            dotnet nuget push $file --api-key "${{ inputs.nuget-token }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+        }
