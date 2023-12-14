@@ -13629,6 +13629,38 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.AttackProtection.SuspiciousIpThrottling.Stage
   nameWithType: SuspiciousIpThrottling.Stage
+- uid: Auth0.ManagementApi.Models.BackchannelLogoutInitiators
+  name: BackchannelLogoutInitiators
+  href: api/Auth0.ManagementApi.Models.BackchannelLogoutInitiators.html
+  commentId: T:Auth0.ManagementApi.Models.BackchannelLogoutInitiators
+  fullName: Auth0.ManagementApi.Models.BackchannelLogoutInitiators
+  nameWithType: BackchannelLogoutInitiators
+- uid: Auth0.ManagementApi.Models.BackchannelLogoutInitiators.Mode
+  name: Mode
+  href: api/Auth0.ManagementApi.Models.BackchannelLogoutInitiators.html#Auth0_ManagementApi_Models_BackchannelLogoutInitiators_Mode
+  commentId: P:Auth0.ManagementApi.Models.BackchannelLogoutInitiators.Mode
+  fullName: Auth0.ManagementApi.Models.BackchannelLogoutInitiators.Mode
+  nameWithType: BackchannelLogoutInitiators.Mode
+- uid: Auth0.ManagementApi.Models.BackchannelLogoutInitiators.Mode*
+  name: Mode
+  href: api/Auth0.ManagementApi.Models.BackchannelLogoutInitiators.html#Auth0_ManagementApi_Models_BackchannelLogoutInitiators_Mode_
+  commentId: Overload:Auth0.ManagementApi.Models.BackchannelLogoutInitiators.Mode
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.BackchannelLogoutInitiators.Mode
+  nameWithType: BackchannelLogoutInitiators.Mode
+- uid: Auth0.ManagementApi.Models.BackchannelLogoutInitiators.SelectedInitiators
+  name: SelectedInitiators
+  href: api/Auth0.ManagementApi.Models.BackchannelLogoutInitiators.html#Auth0_ManagementApi_Models_BackchannelLogoutInitiators_SelectedInitiators
+  commentId: P:Auth0.ManagementApi.Models.BackchannelLogoutInitiators.SelectedInitiators
+  fullName: Auth0.ManagementApi.Models.BackchannelLogoutInitiators.SelectedInitiators
+  nameWithType: BackchannelLogoutInitiators.SelectedInitiators
+- uid: Auth0.ManagementApi.Models.BackchannelLogoutInitiators.SelectedInitiators*
+  name: SelectedInitiators
+  href: api/Auth0.ManagementApi.Models.BackchannelLogoutInitiators.html#Auth0_ManagementApi_Models_BackchannelLogoutInitiators_SelectedInitiators_
+  commentId: Overload:Auth0.ManagementApi.Models.BackchannelLogoutInitiators.SelectedInitiators
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.BackchannelLogoutInitiators.SelectedInitiators
+  nameWithType: BackchannelLogoutInitiators.SelectedInitiators
 - uid: Auth0.ManagementApi.Models.BlacklistedToken
   name: BlacklistedToken
   href: api/Auth0.ManagementApi.Models.BlacklistedToken.html
@@ -14321,6 +14353,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.ClientBase.OidcConformant
   nameWithType: ClientBase.OidcConformant
+- uid: Auth0.ManagementApi.Models.ClientBase.OidcLogout
+  name: OidcLogout
+  href: api/Auth0.ManagementApi.Models.ClientBase.html#Auth0_ManagementApi_Models_ClientBase_OidcLogout
+  commentId: P:Auth0.ManagementApi.Models.ClientBase.OidcLogout
+  fullName: Auth0.ManagementApi.Models.ClientBase.OidcLogout
+  nameWithType: ClientBase.OidcLogout
+- uid: Auth0.ManagementApi.Models.ClientBase.OidcLogout*
+  name: OidcLogout
+  href: api/Auth0.ManagementApi.Models.ClientBase.html#Auth0_ManagementApi_Models_ClientBase_OidcLogout_
+  commentId: Overload:Auth0.ManagementApi.Models.ClientBase.OidcLogout
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.ClientBase.OidcLogout
+  nameWithType: ClientBase.OidcLogout
 - uid: Auth0.ManagementApi.Models.ClientBase.OrganizationRequireBehavior
   name: OrganizationRequireBehavior
   href: api/Auth0.ManagementApi.Models.ClientBase.html#Auth0_ManagementApi_Models_ClientBase_OrganizationRequireBehavior
@@ -18824,6 +18869,54 @@ references:
   commentId: F:Auth0.ManagementApi.Models.LogStreamUpdateStatus.Paused
   fullName: Auth0.ManagementApi.Models.LogStreamUpdateStatus.Paused
   nameWithType: LogStreamUpdateStatus.Paused
+- uid: Auth0.ManagementApi.Models.LogoutInitiatorModes
+  name: LogoutInitiatorModes
+  href: api/Auth0.ManagementApi.Models.LogoutInitiatorModes.html
+  commentId: T:Auth0.ManagementApi.Models.LogoutInitiatorModes
+  fullName: Auth0.ManagementApi.Models.LogoutInitiatorModes
+  nameWithType: LogoutInitiatorModes
+- uid: Auth0.ManagementApi.Models.LogoutInitiatorModes.All
+  name: All
+  href: api/Auth0.ManagementApi.Models.LogoutInitiatorModes.html#Auth0_ManagementApi_Models_LogoutInitiatorModes_All
+  commentId: F:Auth0.ManagementApi.Models.LogoutInitiatorModes.All
+  fullName: Auth0.ManagementApi.Models.LogoutInitiatorModes.All
+  nameWithType: LogoutInitiatorModes.All
+- uid: Auth0.ManagementApi.Models.LogoutInitiatorModes.Custom
+  name: Custom
+  href: api/Auth0.ManagementApi.Models.LogoutInitiatorModes.html#Auth0_ManagementApi_Models_LogoutInitiatorModes_Custom
+  commentId: F:Auth0.ManagementApi.Models.LogoutInitiatorModes.Custom
+  fullName: Auth0.ManagementApi.Models.LogoutInitiatorModes.Custom
+  nameWithType: LogoutInitiatorModes.Custom
+- uid: Auth0.ManagementApi.Models.LogoutInitiators
+  name: LogoutInitiators
+  href: api/Auth0.ManagementApi.Models.LogoutInitiators.html
+  commentId: T:Auth0.ManagementApi.Models.LogoutInitiators
+  fullName: Auth0.ManagementApi.Models.LogoutInitiators
+  nameWithType: LogoutInitiators
+- uid: Auth0.ManagementApi.Models.LogoutInitiators.IdpLogout
+  name: IdpLogout
+  href: api/Auth0.ManagementApi.Models.LogoutInitiators.html#Auth0_ManagementApi_Models_LogoutInitiators_IdpLogout
+  commentId: F:Auth0.ManagementApi.Models.LogoutInitiators.IdpLogout
+  fullName: Auth0.ManagementApi.Models.LogoutInitiators.IdpLogout
+  nameWithType: LogoutInitiators.IdpLogout
+- uid: Auth0.ManagementApi.Models.LogoutInitiators.PasswordChanged
+  name: PasswordChanged
+  href: api/Auth0.ManagementApi.Models.LogoutInitiators.html#Auth0_ManagementApi_Models_LogoutInitiators_PasswordChanged
+  commentId: F:Auth0.ManagementApi.Models.LogoutInitiators.PasswordChanged
+  fullName: Auth0.ManagementApi.Models.LogoutInitiators.PasswordChanged
+  nameWithType: LogoutInitiators.PasswordChanged
+- uid: Auth0.ManagementApi.Models.LogoutInitiators.RpLogout
+  name: RpLogout
+  href: api/Auth0.ManagementApi.Models.LogoutInitiators.html#Auth0_ManagementApi_Models_LogoutInitiators_RpLogout
+  commentId: F:Auth0.ManagementApi.Models.LogoutInitiators.RpLogout
+  fullName: Auth0.ManagementApi.Models.LogoutInitiators.RpLogout
+  nameWithType: LogoutInitiators.RpLogout
+- uid: Auth0.ManagementApi.Models.LogoutInitiators.SessionExpired
+  name: SessionExpired
+  href: api/Auth0.ManagementApi.Models.LogoutInitiators.html#Auth0_ManagementApi_Models_LogoutInitiators_SessionExpired
+  commentId: F:Auth0.ManagementApi.Models.LogoutInitiators.SessionExpired
+  fullName: Auth0.ManagementApi.Models.LogoutInitiators.SessionExpired
+  nameWithType: LogoutInitiators.SessionExpired
 - uid: Auth0.ManagementApi.Models.Mobile
   name: Mobile
   href: api/Auth0.ManagementApi.Models.Mobile.html
@@ -18920,6 +19013,38 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.Mobile.MobileIos.TeamId
   nameWithType: Mobile.MobileIos.TeamId
+- uid: Auth0.ManagementApi.Models.OidcLogoutConfig
+  name: OidcLogoutConfig
+  href: api/Auth0.ManagementApi.Models.OidcLogoutConfig.html
+  commentId: T:Auth0.ManagementApi.Models.OidcLogoutConfig
+  fullName: Auth0.ManagementApi.Models.OidcLogoutConfig
+  nameWithType: OidcLogoutConfig
+- uid: Auth0.ManagementApi.Models.OidcLogoutConfig.BackchannelLogoutInitiators
+  name: BackchannelLogoutInitiators
+  href: api/Auth0.ManagementApi.Models.OidcLogoutConfig.html#Auth0_ManagementApi_Models_OidcLogoutConfig_BackchannelLogoutInitiators
+  commentId: P:Auth0.ManagementApi.Models.OidcLogoutConfig.BackchannelLogoutInitiators
+  fullName: Auth0.ManagementApi.Models.OidcLogoutConfig.BackchannelLogoutInitiators
+  nameWithType: OidcLogoutConfig.BackchannelLogoutInitiators
+- uid: Auth0.ManagementApi.Models.OidcLogoutConfig.BackchannelLogoutInitiators*
+  name: BackchannelLogoutInitiators
+  href: api/Auth0.ManagementApi.Models.OidcLogoutConfig.html#Auth0_ManagementApi_Models_OidcLogoutConfig_BackchannelLogoutInitiators_
+  commentId: Overload:Auth0.ManagementApi.Models.OidcLogoutConfig.BackchannelLogoutInitiators
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.OidcLogoutConfig.BackchannelLogoutInitiators
+  nameWithType: OidcLogoutConfig.BackchannelLogoutInitiators
+- uid: Auth0.ManagementApi.Models.OidcLogoutConfig.BackchannelLogoutUrls
+  name: BackchannelLogoutUrls
+  href: api/Auth0.ManagementApi.Models.OidcLogoutConfig.html#Auth0_ManagementApi_Models_OidcLogoutConfig_BackchannelLogoutUrls
+  commentId: P:Auth0.ManagementApi.Models.OidcLogoutConfig.BackchannelLogoutUrls
+  fullName: Auth0.ManagementApi.Models.OidcLogoutConfig.BackchannelLogoutUrls
+  nameWithType: OidcLogoutConfig.BackchannelLogoutUrls
+- uid: Auth0.ManagementApi.Models.OidcLogoutConfig.BackchannelLogoutUrls*
+  name: BackchannelLogoutUrls
+  href: api/Auth0.ManagementApi.Models.OidcLogoutConfig.html#Auth0_ManagementApi_Models_OidcLogoutConfig_BackchannelLogoutUrls_
+  commentId: Overload:Auth0.ManagementApi.Models.OidcLogoutConfig.BackchannelLogoutUrls
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.OidcLogoutConfig.BackchannelLogoutUrls
+  nameWithType: OidcLogoutConfig.BackchannelLogoutUrls
 - uid: Auth0.ManagementApi.Models.Organization
   name: Organization
   href: api/Auth0.ManagementApi.Models.Organization.html

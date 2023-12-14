@@ -1628,6 +1628,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.BackchannelLogoutInitiators.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.BackchannelLogoutInitiators.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Auth0.ManagementApi.Models.BlacklistedToken.yml",
       "output": {
         ".html": {
@@ -2678,6 +2688,26 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.LogoutInitiatorModes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.LogoutInitiatorModes.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.LogoutInitiators.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.LogoutInitiators.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/api/Auth0.ManagementApi.Models.Mobile.MobileAndroid.yml",
       "output": {
         ".html": {
@@ -2702,6 +2732,16 @@
       "output": {
         ".html": {
           "relative_path": "api/Auth0.ManagementApi.Models.Mobile.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Auth0.ManagementApi.Models.OidcLogoutConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Auth0.ManagementApi.Models.OidcLogoutConfig.html"
         }
       },
       "version": ""

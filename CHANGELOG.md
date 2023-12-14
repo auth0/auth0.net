@@ -1,5 +1,11 @@
 # Change Log
 
+## [7.25.1](https://github.com/auth0/auth0.net/tree/7.25.1) (2023-12-14)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.25.0...7.25.1)
+
+**Added**
+- Add OIDC back channel logout [\#682](https://github.com/auth0/auth0.net/pull/682) ([mfolker-sage](https://github.com/mfolker-sage))
+
 ## [7.25.0](https://github.com/auth0/auth0.net/tree/7.25.0) (2023-11-28)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.24.0...7.25.0)
 
