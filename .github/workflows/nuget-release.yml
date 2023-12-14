@@ -64,6 +64,7 @@ jobs:
           project-paths: ${{ inputs.project-paths }}
           version: ${{ steps.get_version.outputs.version }}
           nuget-token: ${{ secrets.nuget-token }}
+          nuget-directory: ${{ github.workspace}}/nuget
 
       # Create a release for the tag
       - uses: ./.github/actions/release-create

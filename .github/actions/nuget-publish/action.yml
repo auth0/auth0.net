@@ -9,9 +9,8 @@ inputs:
     required: true
   project-paths:
     required: true
-
-env:
-  NuGetDirectory: ${{ github.workspace}}/nuget
+  nuget-directory:
+    required: true
 
 runs:
   using: composite
@@ -25,13 +24,15 @@ runs:
         dotnet-version: 6.0.x
     
     - name: Create NuGet packages
+      shell: pwsh
       run: |
         foreach($file in (ConvertFrom-Json -InputObject "${{ inputs.project-paths }}")) {
-            dotnet pack $file --configuration Release --output ${{ env.NuGetDirectory }}
+            dotnet pack $file --configuration Release --output ${{ inputs.nuget-directory }}
         }
 
     - name: Publish NuGet packages
+      shell: pwsh
       run: |
-        foreach($file in (Get-ChildItem "${{ env.NuGetDirectory }}" -Recurse -Include *.nupkg)) {
+        foreach($file in (Get-ChildItem "${{ inputs.nuget-directory }}" -Recurse -Include *.nupkg)) {
             dotnet nuget push $file --api-key "${{ inputs.nuget-token }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
         }
