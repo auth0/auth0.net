@@ -21,7 +21,7 @@ runs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: ${{ inputs.dotnet-version }}
     
     - name: Create NuGet packages
       shell: pwsh

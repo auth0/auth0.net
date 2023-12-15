@@ -60,7 +60,7 @@ jobs:
       # Publish the release to our package manager
       - uses: ./.github/actions/nuget-publish
         with:
-          dotnet-version: ${{ inputs.node-version }}
+          dotnet-version: ${{ inputs.dotnet-version }}
           project-paths: ${{ inputs.project-paths }}
           version: ${{ steps.get_version.outputs.version }}
           nuget-token: ${{ secrets.nuget-token }}
