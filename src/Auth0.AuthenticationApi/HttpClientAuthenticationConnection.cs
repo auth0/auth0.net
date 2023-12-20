@@ -126,8 +126,8 @@ namespace Auth0.AuthenticationApi
 
         private static string CreateAgentString()
         {
-#if NET452
-            var target = "NET452";
+#if NET462
+            var target = "NET462";
 #endif
 #if NETSTANDARD2_0
             var target = "NETSTANDARD2.0";
