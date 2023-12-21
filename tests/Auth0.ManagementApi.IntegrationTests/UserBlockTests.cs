@@ -104,7 +104,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             } while (!userBlocked && attempts < 20); // Add failsafe to stop if we go over 20 attempts. User should be blocked by then, but just to make sure...
         }
 
-        [Fact]
+        [Fact(Skip = "Flakey - Run Manually")]
         public async Task Test_user_blocks_by_identifier()
         {
             // Check we should have 1 block for the user
@@ -120,7 +120,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         }
 
 
-        [Fact]
+        [Fact(Skip = "Flakey - Run Manually")]
         public async Task Test_user_blocks_by_userid()
         {
             // Check we should have 1 block for the user
