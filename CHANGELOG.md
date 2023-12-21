@@ -1,5 +1,13 @@
 # Change Log
 
+## [7.26.0](https://github.com/auth0/auth0.net/tree/7.26.0) (2023-12-21)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.25.1...7.26.0)
+
+**Changed**
+- Target .NET Framework 4.6.2 instead of 4.5.2 [\#687](https://github.com/auth0/auth0.net/pull/687) ([frederikprijck](https://github.com/frederikprijck))
+
+**Note:** This release drops support for .NET Framework 4.5.2, 4.6.0 and 4.6.1, [which have no longer been supported by Microsoft since April 2022](https://learn.microsoft.com/en-us/lifecycle/products/microsoft-net-framework?branch=live).
+
 ## [7.25.1](https://github.com/auth0/auth0.net/tree/7.25.1) (2023-12-14)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.25.0...7.25.1)
 
