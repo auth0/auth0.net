@@ -32,6 +32,28 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
             await cache.GetOrAddAsync("abc", TimeSpan.FromSeconds(30));
             Assert.Equal(1, factoryCallCount);
         }
+        
+        [Fact]
+        public async Task CorrectlyUpdatesTheCache()
+        {
+            var factoryCallCount = 0;
+            Task<int> factory(string s) => Task.FromResult(factoryCallCount++);
+            var cache = new AsyncAgedCache<string, int>(factory);
+
+            await cache.GetOrAddAsync("abc", TimeSpan.FromSeconds(5));
+            Assert.Equal(1, factoryCallCount);
+            await cache.GetOrAddAsync("abc", TimeSpan.FromSeconds(5));
+            Assert.Equal(1, factoryCallCount);
+            
+            // Wait 10 sec
+            await Task.Delay(10000);
+            factoryCallCount = 0;
+            
+            await cache.GetOrAddAsync("abc", TimeSpan.FromSeconds(5));
+            Assert.Equal(1, factoryCallCount);
+            await cache.GetOrAddAsync("abc", TimeSpan.FromSeconds(5));
+            Assert.Equal(1, factoryCallCount);
+        }
 
         [Fact]
         public async Task DoesNotCallFactoryWithWrongKey()
