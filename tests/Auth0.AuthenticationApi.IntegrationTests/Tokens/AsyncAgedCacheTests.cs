@@ -40,18 +40,18 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
             Task<int> factory(string s) => Task.FromResult(factoryCallCount++);
             var cache = new AsyncAgedCache<string, int>(factory);
 
-            await cache.GetOrAddAsync("abc", TimeSpan.FromSeconds(5));
+            await cache.GetOrAddAsync("abc", TimeSpan.FromSeconds(1));
             Assert.Equal(1, factoryCallCount);
-            await cache.GetOrAddAsync("abc", TimeSpan.FromSeconds(5));
+            await cache.GetOrAddAsync("abc", TimeSpan.FromSeconds(1));
             Assert.Equal(1, factoryCallCount);
             
-            // Wait 10 sec
-            await Task.Delay(10000);
+            // Wait 2 sec
+            await Task.Delay(2000);
             factoryCallCount = 0;
             
-            await cache.GetOrAddAsync("abc", TimeSpan.FromSeconds(5));
+            await cache.GetOrAddAsync("abc", TimeSpan.FromSeconds(1));
             Assert.Equal(1, factoryCallCount);
-            await cache.GetOrAddAsync("abc", TimeSpan.FromSeconds(5));
+            await cache.GetOrAddAsync("abc", TimeSpan.FromSeconds(1));
             Assert.Equal(1, factoryCallCount);
         }
 
