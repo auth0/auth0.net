@@ -4,6 +4,7 @@ using Auth0.Core.Http;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -350,7 +351,30 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <inheritdoc/>
+        public async Task<MfaOobTokenResponse> GetTokenAsync(MfaOobTokenRequest request, CancellationToken cancellationToken = default)
+        {
+            if (request == null)
+            {
+                throw new ArgumentNullException(nameof(request));
+            }
 
+            var body = new Dictionary<string, string>()
+            {
+                { "grant_type", "http://auth0.com/oauth/grant-type/mfa-oob" },
+                { "client_id", request.ClientId },
+                { "client_secret", request.ClientSecret },
+                { "mfa_token", request.MfaToken},
+                { "oob_code", request.OobCode},
+                { "binding_code", request.BindingCode}
+            };
+            return await connection.SendAsync<MfaOobTokenResponse>(
+                HttpMethod.Post,
+                tokenUri,
+                body,
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc/>
         public Task RevokeRefreshTokenAsync(RevokeRefreshTokenRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
@@ -493,6 +517,31 @@ namespace Auth0.AuthenticationApi
                 body,
                 cancellationToken: cancellationToken
             );
+        }
+        
+        /// <inheritdoc/>
+        public Task<AssociateNewAuthenticatorResponse> AssociateNewAuthenticatorAsync(AssociateNewAuthenticatorRequest request, CancellationToken cancellationToken = default)
+        {
+            if (request == null)
+            {
+                throw new ArgumentNullException(nameof(request));
+            }
+            if (!request.IsValid(out List<string> validationErrors))
+            {
+                if (validationErrors.Count == 1)
+                {
+                    throw new InvalidOperationException(validationErrors.First());
+                }
+
+                throw new InvalidOperationException(validationErrors.Aggregate((x, y) => x + "\n" + y));
+            }
+
+            return connection.SendAsync<AssociateNewAuthenticatorResponse>(
+                HttpMethod.Post,
+                BuildUri("mfa/associate"),
+                request,
+                BuildHeaders(request.Token),
+                cancellationToken);
         }
 
         /// <summary>

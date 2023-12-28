@@ -126,6 +126,15 @@ namespace Auth0.AuthenticationApi
         Task<AccessTokenResponse> GetTokenAsync(DeviceCodeTokenRequest request, CancellationToken cancellationToken = default);
 
         /// <summary>
+        /// Requests an Access Token using Oob MFA verification.
+        /// </summary>
+        /// <param name="request"><see cref="MfaOobTokenRequest"/> containing request details to verify oob.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns><see cref="Task"/> representing the async operation containing 
+        /// a <see cref="MfaOobTokenResponse" /> with the requested tokens.</returns>
+        Task<MfaOobTokenResponse> GetTokenAsync(MfaOobTokenRequest request, CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// Revokes refresh token provided in request.
         /// </summary>
         /// <param name="request"><see cref="RevokeRefreshTokenRequest"/> containing Refresh Token and associated parameters.</param>
@@ -180,5 +189,19 @@ namespace Auth0.AuthenticationApi
         /// a <see cref="PushedAuthorizationRequestResponse" /> with the details of the response.</returns>
         Task<PushedAuthorizationRequestResponse> PushedAuthorizationRequestAsync(PushedAuthorizationRequest request,
             CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Sends a Mfa enrollment request
+        /// </summary>
+        /// <param name="request"><see cref="AssociateNewAuthenticatorRequest"/>containing information to enroll a new Authenticator.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns><see cref="Task"/> representing the async operation containing 
+        /// a <see cref="AssociateNewAuthenticatorResponse" /> with the details of the response.</returns>
+        /// <returns></returns>
+        Task<AssociateNewAuthenticatorResponse> AssociateNewAuthenticatorAsync(
+            AssociateNewAuthenticatorRequest request,
+            CancellationToken cancellationToken = default);
+
+        
     }
 }
