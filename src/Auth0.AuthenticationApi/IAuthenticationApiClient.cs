@@ -1,5 +1,6 @@
 ﻿using Auth0.AuthenticationApi.Models;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -180,5 +181,25 @@ namespace Auth0.AuthenticationApi
         /// a <see cref="PushedAuthorizationRequestResponse" /> with the details of the response.</returns>
         Task<PushedAuthorizationRequestResponse> PushedAuthorizationRequestAsync(PushedAuthorizationRequest request,
             CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Deletes an associated authenticator using its ID.
+        /// </summary>
+        /// <param name="request"><see cref="DeleteMfaAuthenticatorRequest"/> containing information to delete an associated authenticator</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns><see cref="Task"/> representing the async operation.</returns>
+        Task DeleteMfaAuthenticatorAsync(
+            DeleteMfaAuthenticatorRequest request,
+            CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Lists authenticators associated with the access token
+        /// </summary>
+        /// <param name="accessToken"> Access token with scope: read:authenticators and audience: https://{yourDomain}/mfa/</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns><see cref="Task"/> representing the async operation containing
+        /// List of <see cref="Authenticator"/>
+        /// </returns>
+        Task<List<Authenticator>> ListAuthenticatorsAsync(string accessToken, CancellationToken cancellationToken = default);
     }
 }

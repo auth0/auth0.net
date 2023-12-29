@@ -495,6 +495,50 @@ namespace Auth0.AuthenticationApi
             );
         }
 
+        /// <inheritdoc/>
+        public Task DeleteMfaAuthenticatorAsync(
+            DeleteMfaAuthenticatorRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            if (request == null)
+            {
+                throw new ArgumentNullException(nameof(request));
+            }
+
+            if (string.IsNullOrEmpty(request.AccessToken))
+            {
+                throw new InvalidOperationException($"{nameof(request.AccessToken)} is required");
+            }
+
+            if (string.IsNullOrEmpty(request.AuthenticatorId))
+            {
+                throw new InvalidOperationException($"{nameof(request.AuthenticatorId)} is required");
+            }
+
+            return connection.SendAsync<object>(
+                HttpMethod.Delete,
+                BuildUri($"mfa/authenticators/{request.AuthenticatorId}"),
+                null,
+                headers: BuildHeaders(request.AccessToken),
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc/>
+        public Task<List<Authenticator>> ListAuthenticatorsAsync(string accessToken, CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrEmpty(accessToken))
+            {
+                throw new ArgumentNullException(nameof(accessToken));
+            }
+
+            return connection.SendAsync<List<Authenticator>>(
+                HttpMethod.Get,
+                BuildUri($"mfa/authenticators"),
+                null,
+                headers: BuildHeaders(accessToken),
+                cancellationToken: cancellationToken);
+        }
+
         /// <summary>
         /// Disposes of any owned disposable resources such as a <see cref="IAuthenticationConnection"/>.
         /// </summary>
