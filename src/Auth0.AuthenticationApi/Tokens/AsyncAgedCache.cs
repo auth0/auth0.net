@@ -28,6 +28,9 @@ namespace Auth0.AuthenticationApi.Tokens
                 var cacheExpiresAt = entry.CachedAt.Add(maxAge);
                 if (now < cacheExpiresAt)
                     return entry.Task;
+                
+                // When a cache entry was found, but expired, we want to remove it.
+                cache.TryRemove(key, out _);
             }
 
             var task = valueFactory(key);
