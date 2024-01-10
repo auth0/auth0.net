@@ -26,7 +26,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
         [Fact]
         public void ThrowsWhenSignatureIsInvalid()
         {
-            var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("_AUTH0_INVALID__CLIENT_SECRET_"));
+            var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("__AUTH0_INVALID__CLIENT_SECRET__"));
 
             var tokenFactory = new JwtTokenFactory(key, SecurityAlgorithms.HmacSha256Signature);
 
