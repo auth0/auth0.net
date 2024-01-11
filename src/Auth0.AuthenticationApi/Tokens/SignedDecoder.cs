@@ -37,6 +37,10 @@ namespace Auth0.AuthenticationApi.Tokens
             }
             catch (SecurityTokenSignatureKeyNotFoundException ex)
             {
+                if (signatureAlgorithm == JwtSignatureAlgorithm.HS256)
+                {
+                    throw new IdTokenValidationException("Invalid token signature.", ex);
+                }
                 throw new IdTokenValidationKeyMissingException("Token signature key could not be found", ex);
             }
             catch (SecurityTokenException ex)

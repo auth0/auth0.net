@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using Auth0.Core.Serialization;
 
 namespace Auth0.AuthenticationApi.Models
 {
@@ -158,6 +159,7 @@ namespace Auth0.AuthenticationApi.Models
         /// ISO 3166-1 Alpha-2 country code in uppercase, separated by a dash. 
         /// </remarks>
         [JsonProperty("locale")]
+        [JsonConverter(typeof(StringOrObjectAsStringConverter))]
         public string Locale { get; set; }
 
         /// <summary>
