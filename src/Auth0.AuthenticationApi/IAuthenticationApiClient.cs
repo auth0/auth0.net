@@ -200,6 +200,6 @@ namespace Auth0.AuthenticationApi
         /// <returns><see cref="Task"/> representing the async operation containing
         /// List of <see cref="Authenticator"/>
         /// </returns>
-        Task<List<Authenticator>> ListAuthenticatorsAsync(string accessToken, CancellationToken cancellationToken = default);
+        Task<List<Authenticator>> ListMfaAuthenticatorsAsync(string accessToken, CancellationToken cancellationToken = default);
     }
 }

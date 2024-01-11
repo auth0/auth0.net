@@ -31,7 +31,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact(Skip = "Run manually")]
         public async Task Should_Return_Authenticators()
         {
-            var response = await _authenticationApiClient.ListAuthenticatorsAsync(
+            var response = await _authenticationApiClient.ListMfaAuthenticatorsAsync(
                 GetVariable("MFA_ACCESS_TOKEN")
             );
 

@@ -505,16 +505,6 @@ namespace Auth0.AuthenticationApi
                 throw new ArgumentNullException(nameof(request));
             }
 
-            if (string.IsNullOrEmpty(request.AccessToken))
-            {
-                throw new InvalidOperationException($"{nameof(request.AccessToken)} is required");
-            }
-
-            if (string.IsNullOrEmpty(request.AuthenticatorId))
-            {
-                throw new InvalidOperationException($"{nameof(request.AuthenticatorId)} is required");
-            }
-
             return connection.SendAsync<object>(
                 HttpMethod.Delete,
                 BuildUri($"mfa/authenticators/{request.AuthenticatorId}"),
@@ -524,7 +514,7 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <inheritdoc/>
-        public Task<List<Authenticator>> ListAuthenticatorsAsync(string accessToken, CancellationToken cancellationToken = default)
+        public Task<List<Authenticator>> ListMfaAuthenticatorsAsync(string accessToken, CancellationToken cancellationToken = default)
         {
             if (string.IsNullOrEmpty(accessToken))
             {
