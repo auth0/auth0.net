@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Auth0.Core.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -47,6 +48,7 @@ namespace Auth0.ManagementApi.Models
         /// Returned for the Facebook, Google, and Microsoft social providers.
         /// </remarks>
         [JsonProperty("locale")]
+        [JsonConverter(typeof(StringOrObjectAsStringConverter))]
         public string Locale { get; set; }
 
         /// <summary>

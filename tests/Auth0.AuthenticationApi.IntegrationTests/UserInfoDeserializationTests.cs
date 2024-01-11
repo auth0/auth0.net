@@ -72,6 +72,25 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         }
 
         [Fact]
+        public void Can_read_custom_locale_claim()
+        {
+            var jsonPayload = @"{
+   'sub': '123456',
+   'locale': {
+        'country': 'US',
+        'language': 'en'
+   },
+   'updated_at': 1233233333
+}";
+            var userInfo = GetUserInfoFromJsonPayload(jsonPayload);
+
+            userInfo.UserId.Should().Be("123456");
+            userInfo.Locale.Should().NotBeNull();
+            JObject.Parse(userInfo.Locale).GetValue("country")!.Value<string>().Should().Be("US");
+            JObject.Parse(userInfo.Locale).GetValue("language")!.Value<string>().Should().Be("en");
+        }
+        
+        [Fact]
         public void Missing_values_are_null()
         {
             var jsonPayload = @"{ 'sub': '123456'}";
