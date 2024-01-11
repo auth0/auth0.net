@@ -520,20 +520,11 @@ namespace Auth0.AuthenticationApi
         }
         
         /// <inheritdoc/>
-        public Task<AssociateNewAuthenticatorResponse> AssociateNewAuthenticatorAsync(AssociateNewAuthenticatorRequest request, CancellationToken cancellationToken = default)
+        public Task<AssociateNewAuthenticatorResponse> AssociateNewAuthenticatorAsync(AssociateMfaAuthenticatorRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
             {
                 throw new ArgumentNullException(nameof(request));
-            }
-            if (!request.IsValid(out List<string> validationErrors))
-            {
-                if (validationErrors.Count == 1)
-                {
-                    throw new InvalidOperationException(validationErrors.First());
-                }
-
-                throw new InvalidOperationException(validationErrors.Aggregate((x, y) => x + "\n" + y));
             }
 
             return connection.SendAsync<AssociateNewAuthenticatorResponse>(

@@ -20,7 +20,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         public async Task Should_Receive_Associate_Response_For_Sms_Mfa_Enrollment()
         {
             var request =
-                new AssociateNewAuthenticatorRequest()
+                new AssociateMfaAuthenticatorRequest()
                 {
                     Token = TestBaseUtils.GetVariable("AUTH0_AUTHENTICATOR_ENROLL_TOKEN"),
                     ClientId = TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"),
