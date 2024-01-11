@@ -1,5 +1,12 @@
 # Change Log
 
+## [7.26.1](https://github.com/auth0/auth0.net/tree/7.26.1) (2024-01-11)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.26.0...7.26.1)
+
+**Fixed**
+- Do not crash when User.Locale and UserInfo.Locale are an object [\#699](https://github.com/auth0/auth0.net/pull/699) ([frederikprijck](https://github.com/frederikprijck))
+- Ensure AsyncAgedCache is correctly updated [\#693](https://github.com/auth0/auth0.net/pull/693) ([frederikprijck](https://github.com/frederikprijck))
+
 ## [7.26.0](https://github.com/auth0/auth0.net/tree/7.26.0) (2023-12-21)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.25.1...7.26.0)
 
