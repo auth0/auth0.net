@@ -9,12 +9,12 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
 {
     public class SymmetricSignedDecoderTests : TestBase
     {
-        readonly SignedDecoder hs256Verifier = new SymmetricSignedDecoder("AUTH0_VALID_CLIENT_SECRET");
+        readonly SignedDecoder hs256Verifier = new SymmetricSignedDecoder("___AUTH0_VALID__CLIENT_SECRET___");
 
         [Fact]
         public void SucceedsWhenSignatureIsValid()
         {
-            var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("AUTH0_VALID_CLIENT_SECRET"));
+            var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("___AUTH0_VALID__CLIENT_SECRET___"));
 
             var tokenFactory = new JwtTokenFactory(key, SecurityAlgorithms.HmacSha256Signature);
 
@@ -26,7 +26,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
         [Fact]
         public void ThrowsWhenSignatureIsInvalid()
         {
-            var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("AUTH0_INVALID_CLIENT_SECRET"));
+            var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes("__AUTH0_INVALID__CLIENT_SECRET__"));
 
             var tokenFactory = new JwtTokenFactory(key, SecurityAlgorithms.HmacSha256Signature);
 
