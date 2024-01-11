@@ -144,7 +144,7 @@
       <Version>13.0.1</Version>
     </PackageReference>
     <PackageReference Include="System.IdentityModel.Tokens.Jwt">
-      <Version>5.6.0</Version>
+      <Version>5.7.0</Version>
     </PackageReference>
   </ItemGroup>
   <PropertyGroup>
