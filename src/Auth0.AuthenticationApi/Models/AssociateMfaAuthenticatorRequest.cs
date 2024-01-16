@@ -10,7 +10,7 @@ namespace Auth0.AuthenticationApi.Models
         public string Token { get; set; }
 
         /// <summary>Your application's Client ID.</summary>
-        [JsonProperty("client_id", Required = Required.Always)]
+        [JsonProperty("client_id")]
         public string ClientId { get; set; }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Auth0.AuthenticationApi.Models
         public string ClientAssertionType { get; set; }
 
         /// <summary>The type of authenticators supported by the client. Value is an array with values "otp" or "oob".</summary>
-        [JsonProperty("authenticator_types", Required = Required.Always)]
+        [JsonProperty("authenticator_types")]
         public List<string> AuthenticatorTypes { get; set; }
 
         /// <summary>

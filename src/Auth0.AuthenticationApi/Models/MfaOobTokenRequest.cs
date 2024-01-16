@@ -1,6 +1,6 @@
 ﻿namespace Auth0.AuthenticationApi.Models
 {
-    public class MfaOobTokenRequest
+    public class MfaOobTokenRequest : IClientAuthentication
     {
         /// <summary>
         /// Your application's Client ID.
@@ -12,6 +12,16 @@
         /// Required when the Token Endpoint Authentication Method field at your Application Settings is Post or Basic.
         /// </summary>
         public string ClientSecret { get; set; }
+
+        /// <summary>
+        /// Security Key to use with Client Assertion
+        /// </summary>
+        public SecurityKey ClientAssertionSecurityKey { get; set; }
+
+        /// <summary>
+        /// Algorithm for the Security Key to use with Client Assertion
+        /// </summary>
+        public string ClientAssertionSecurityKeyAlgorithm { get; set; }
         
         /// <summary>
         /// The mfa_token you received from mfa_required error or access token with enroll scope and audience: https://{yourDomain}/mfa/

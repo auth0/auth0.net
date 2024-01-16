@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Auth0.AuthenticationApi.Models
 {
-    public class AssociateNewAuthenticatorResponse
+    public class AssociateMfaAuthenticatorResponse
     {
         [JsonProperty("oob_code")]
         public string OobCode { get; set; }

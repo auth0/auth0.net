@@ -196,9 +196,9 @@ namespace Auth0.AuthenticationApi
         /// <param name="request"><see cref="AssociateMfaAuthenticatorRequest"/>containing information to enroll a new Authenticator.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns><see cref="Task"/> representing the async operation containing 
-        /// a <see cref="AssociateNewAuthenticatorResponse" /> with the details of the response.</returns>
+        /// a <see cref="AssociateMfaAuthenticatorResponse" /> with the details of the response.</returns>
         /// <returns></returns>
-        Task<AssociateNewAuthenticatorResponse> AssociateNewAuthenticatorAsync(
+        Task<AssociateMfaAuthenticatorResponse> AssociateMfaAuthenticatorAsync(
             AssociateMfaAuthenticatorRequest request,
             CancellationToken cancellationToken = default);
 

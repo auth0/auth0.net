@@ -365,8 +365,12 @@ namespace Auth0.AuthenticationApi
                 { "client_secret", request.ClientSecret },
                 { "mfa_token", request.MfaToken},
                 { "oob_code", request.OobCode},
-                { "binding_code", request.BindingCode}
             };
+            
+            body.AddIfNotEmpty("binding_code", request.BindingCode);
+            
+            ApplyClientAuthentication(request, body);
+            
             return await connection.SendAsync<MfaOobTokenResponse>(
                 HttpMethod.Post,
                 tokenUri,
@@ -520,7 +524,7 @@ namespace Auth0.AuthenticationApi
         }
         
         /// <inheritdoc/>
-        public Task<AssociateNewAuthenticatorResponse> AssociateNewAuthenticatorAsync(AssociateMfaAuthenticatorRequest request, CancellationToken cancellationToken = default)
+        public Task<AssociateMgaAuthenticatorResponse> AssociateMfaAuthenticatorAsync(AssociateMfaAuthenticatorRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
             {
