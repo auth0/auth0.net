@@ -17,6 +17,12 @@ namespace Auth0.ManagementApi.Models
         public bool AssignMembershipOnLogin { get; set; }
 
         /// <summary>
+        /// Determines whether a connection should be displayed on this organization’s login prompt.
+        /// </summary>
+        [JsonProperty("show_as_button")]
+        public bool ShowAsButton { get; set; }
+
+        /// <summary>
         /// Information on the enabled connection
         /// </summary>
         [JsonProperty("connection")]
