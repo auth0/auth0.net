@@ -152,8 +152,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var createConnectionResponse = await fixture.ApiClient.Organizations.CreateConnectionAsync(ExistingOrganizationId, new OrganizationConnectionCreateRequest
             {
                 ConnectionId = ExistingConnectionId,
-                AssignMembershipOnLogin = true,
-                ShowAsButton = true
+                AssignMembershipOnLogin = true
             });
 
             createConnectionResponse.Should().NotBeNull();
