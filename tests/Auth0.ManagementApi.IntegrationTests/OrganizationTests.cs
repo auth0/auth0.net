@@ -193,6 +193,40 @@ namespace Auth0.ManagementApi.IntegrationTests
         }
 
         [Fact]
+        public async Task Test_organization_connections_show_as_button_crud_sequence()
+        {
+            var createConnectionResponse = await fixture.ApiClient.Organizations.CreateConnectionAsync(ExistingOrganizationId, new OrganizationConnectionCreateRequest
+            {
+                ConnectionId = ExistingConnectionId,
+                ShowAsButton = false
+            });
+
+            createConnectionResponse.Should().NotBeNull();
+            createConnectionResponse.ShowAsButton.Should().Be(false);
+
+            try
+            {
+                var updateConnectionResponse = await fixture.ApiClient.Organizations.UpdateConnectionAsync(ExistingOrganizationId, ExistingConnectionId, new OrganizationConnectionUpdateRequest
+                {
+                    ShowAsButton = true
+                });
+
+                updateConnectionResponse.Should().NotBeNull();
+                updateConnectionResponse.ShowAsButton.Should().Be(true);
+
+                var connection = await fixture.ApiClient.Organizations.GetConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
+
+                connection.Should().NotBeNull();
+                connection.ShowAsButton.Should().Be(true);
+            }
+            finally
+            {
+                // Unlink Connection
+                await fixture.ApiClient.Organizations.DeleteConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
+            }
+        }
+
+        [Fact]
         public async Task Test_organization_members_crud_sequence()
         {
             var user = await fixture.ApiClient.Users.CreateAsync(new UserCreateRequest
