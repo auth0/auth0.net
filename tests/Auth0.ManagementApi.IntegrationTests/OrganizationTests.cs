@@ -163,18 +163,19 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 var updateConnectionResponse = await fixture.ApiClient.Organizations.UpdateConnectionAsync(ExistingOrganizationId, ExistingConnectionId, new OrganizationConnectionUpdateRequest
                 {
-                    AssignMembershipOnLogin = false
+                    AssignMembershipOnLogin = false,
+                    ShowAsButton = false
                 });
 
                 updateConnectionResponse.Should().NotBeNull();
                 updateConnectionResponse.AssignMembershipOnLogin.Should().Be(false);
-                updateConnectionResponse.ShowAsButton.Should().Be(true);
+                updateConnectionResponse.ShowAsButton.Should().Be(false);
 
                 var connection = await fixture.ApiClient.Organizations.GetConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
 
                 connection.Should().NotBeNull();
                 connection.AssignMembershipOnLogin.Should().Be(false);
-                connection.ShowAsButton.Should().Be(true);
+                connection.ShowAsButton.Should().Be(false);
 
                 var connections = await fixture.ApiClient.Organizations.GetAllConnectionsAsync(ExistingOrganizationId, new Paging.PaginationInfo());
                 connections.Count.Should().Be(initialConnections.Count + 1);
@@ -184,40 +185,6 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Func<Task> getFunc = async () => await fixture.ApiClient.Organizations.GetConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
                 getFunc.Should().Throw<ErrorApiException>().And.Message.Should().Be("No connection found by that id");
 
-            }
-            finally
-            {
-                // Unlink Connection
-                await fixture.ApiClient.Organizations.DeleteConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
-            }
-        }
-
-        [Fact]
-        public async Task Test_organization_connections_show_as_button_crud_sequence()
-        {
-            var createConnectionResponse = await fixture.ApiClient.Organizations.CreateConnectionAsync(ExistingOrganizationId, new OrganizationConnectionCreateRequest
-            {
-                ConnectionId = ExistingConnectionId,
-                ShowAsButton = false
-            });
-
-            createConnectionResponse.Should().NotBeNull();
-            createConnectionResponse.ShowAsButton.Should().Be(false);
-
-            try
-            {
-                var updateConnectionResponse = await fixture.ApiClient.Organizations.UpdateConnectionAsync(ExistingOrganizationId, ExistingConnectionId, new OrganizationConnectionUpdateRequest
-                {
-                    ShowAsButton = true
-                });
-
-                updateConnectionResponse.Should().NotBeNull();
-                updateConnectionResponse.ShowAsButton.Should().Be(true);
-
-                var connection = await fixture.ApiClient.Organizations.GetConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
-
-                connection.Should().NotBeNull();
-                connection.ShowAsButton.Should().Be(true);
             }
             finally
             {
