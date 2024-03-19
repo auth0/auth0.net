@@ -21,6 +21,6 @@ namespace Auth0.ManagementApi.Models
         /// Determines whether a connection should be displayed on this organization’s login prompt.
         /// </summary>
         [JsonProperty("show_as_button")]
-        public bool ShowAsButton { get; set; }
+        public bool? ShowAsButton { get; set; }
     }
 }
