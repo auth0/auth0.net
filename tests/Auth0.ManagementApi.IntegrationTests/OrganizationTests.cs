@@ -164,12 +164,11 @@ namespace Auth0.ManagementApi.IntegrationTests
                 var updateConnectionResponse = await fixture.ApiClient.Organizations.UpdateConnectionAsync(ExistingOrganizationId, ExistingConnectionId, new OrganizationConnectionUpdateRequest
                 {
                     AssignMembershipOnLogin = false,
-                    ShowAsButton = false,
                 });
 
                 updateConnectionResponse.Should().NotBeNull();
                 updateConnectionResponse.AssignMembershipOnLogin.Should().Be(false);
-                updateConnectionResponse.ShowAsButton.Should().Be(false);
+                updateConnectionResponse.ShowAsButton.Should().Be(true);
 
                 var connection = await fixture.ApiClient.Organizations.GetConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
 
