@@ -157,21 +157,25 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             createConnectionResponse.Should().NotBeNull();
             createConnectionResponse.AssignMembershipOnLogin.Should().Be(true);
+            createConnectionResponse.ShowAsButton.Should().Be(true);
 
             try
             {
                 var updateConnectionResponse = await fixture.ApiClient.Organizations.UpdateConnectionAsync(ExistingOrganizationId, ExistingConnectionId, new OrganizationConnectionUpdateRequest
                 {
-                    AssignMembershipOnLogin = false
+                    AssignMembershipOnLogin = false,
+                    ShowAsButton = false
                 });
 
                 updateConnectionResponse.Should().NotBeNull();
                 updateConnectionResponse.AssignMembershipOnLogin.Should().Be(false);
+                updateConnectionResponse.ShowAsButton.Should().Be(false);
 
                 var connection = await fixture.ApiClient.Organizations.GetConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
 
                 connection.Should().NotBeNull();
                 connection.AssignMembershipOnLogin.Should().Be(false);
+                connection.ShowAsButton.Should().Be(false);
 
                 var connections = await fixture.ApiClient.Organizations.GetAllConnectionsAsync(ExistingOrganizationId, new Paging.PaginationInfo());
                 connections.Count.Should().Be(initialConnections.Count + 1);
