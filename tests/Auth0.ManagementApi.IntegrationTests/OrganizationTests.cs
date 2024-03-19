@@ -163,7 +163,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 var updateConnectionResponse = await fixture.ApiClient.Organizations.UpdateConnectionAsync(ExistingOrganizationId, ExistingConnectionId, new OrganizationConnectionUpdateRequest
                 {
-                    AssignMembershipOnLogin = false,
+                    AssignMembershipOnLogin = false
                 });
 
                 updateConnectionResponse.Should().NotBeNull();
@@ -174,7 +174,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
                 connection.Should().NotBeNull();
                 connection.AssignMembershipOnLogin.Should().Be(false);
-                connection.ShowAsButton.Should().Be(false);
+                connection.ShowAsButton.Should().Be(true);
 
                 var connections = await fixture.ApiClient.Organizations.GetAllConnectionsAsync(ExistingOrganizationId, new Paging.PaginationInfo());
                 connections.Count.Should().Be(initialConnections.Count + 1);
