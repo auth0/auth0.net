@@ -19295,6 +19295,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.OrganizationConnection.ConnectionId
   nameWithType: OrganizationConnection.ConnectionId
+- uid: Auth0.ManagementApi.Models.OrganizationConnection.ShowAsButton
+  name: ShowAsButton
+  href: api/Auth0.ManagementApi.Models.OrganizationConnection.html#Auth0_ManagementApi_Models_OrganizationConnection_ShowAsButton
+  commentId: P:Auth0.ManagementApi.Models.OrganizationConnection.ShowAsButton
+  fullName: Auth0.ManagementApi.Models.OrganizationConnection.ShowAsButton
+  nameWithType: OrganizationConnection.ShowAsButton
+- uid: Auth0.ManagementApi.Models.OrganizationConnection.ShowAsButton*
+  name: ShowAsButton
+  href: api/Auth0.ManagementApi.Models.OrganizationConnection.html#Auth0_ManagementApi_Models_OrganizationConnection_ShowAsButton_
+  commentId: Overload:Auth0.ManagementApi.Models.OrganizationConnection.ShowAsButton
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.OrganizationConnection.ShowAsButton
+  nameWithType: OrganizationConnection.ShowAsButton
 - uid: Auth0.ManagementApi.Models.OrganizationConnectionCreateRequest
   name: OrganizationConnectionCreateRequest
   href: api/Auth0.ManagementApi.Models.OrganizationConnectionCreateRequest.html
@@ -19327,6 +19340,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.OrganizationConnectionCreateRequest.ConnectionId
   nameWithType: OrganizationConnectionCreateRequest.ConnectionId
+- uid: Auth0.ManagementApi.Models.OrganizationConnectionCreateRequest.ShowAsButton
+  name: ShowAsButton
+  href: api/Auth0.ManagementApi.Models.OrganizationConnectionCreateRequest.html#Auth0_ManagementApi_Models_OrganizationConnectionCreateRequest_ShowAsButton
+  commentId: P:Auth0.ManagementApi.Models.OrganizationConnectionCreateRequest.ShowAsButton
+  fullName: Auth0.ManagementApi.Models.OrganizationConnectionCreateRequest.ShowAsButton
+  nameWithType: OrganizationConnectionCreateRequest.ShowAsButton
+- uid: Auth0.ManagementApi.Models.OrganizationConnectionCreateRequest.ShowAsButton*
+  name: ShowAsButton
+  href: api/Auth0.ManagementApi.Models.OrganizationConnectionCreateRequest.html#Auth0_ManagementApi_Models_OrganizationConnectionCreateRequest_ShowAsButton_
+  commentId: Overload:Auth0.ManagementApi.Models.OrganizationConnectionCreateRequest.ShowAsButton
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.OrganizationConnectionCreateRequest.ShowAsButton
+  nameWithType: OrganizationConnectionCreateRequest.ShowAsButton
 - uid: Auth0.ManagementApi.Models.OrganizationConnectionInfo
   name: OrganizationConnectionInfo
   href: api/Auth0.ManagementApi.Models.OrganizationConnectionInfo.html
@@ -19378,6 +19404,19 @@ references:
   isSpec: "True"
   fullName: Auth0.ManagementApi.Models.OrganizationConnectionUpdateRequest.AssignMembershipOnLogin
   nameWithType: OrganizationConnectionUpdateRequest.AssignMembershipOnLogin
+- uid: Auth0.ManagementApi.Models.OrganizationConnectionUpdateRequest.ShowAsButton
+  name: ShowAsButton
+  href: api/Auth0.ManagementApi.Models.OrganizationConnectionUpdateRequest.html#Auth0_ManagementApi_Models_OrganizationConnectionUpdateRequest_ShowAsButton
+  commentId: P:Auth0.ManagementApi.Models.OrganizationConnectionUpdateRequest.ShowAsButton
+  fullName: Auth0.ManagementApi.Models.OrganizationConnectionUpdateRequest.ShowAsButton
+  nameWithType: OrganizationConnectionUpdateRequest.ShowAsButton
+- uid: Auth0.ManagementApi.Models.OrganizationConnectionUpdateRequest.ShowAsButton*
+  name: ShowAsButton
+  href: api/Auth0.ManagementApi.Models.OrganizationConnectionUpdateRequest.html#Auth0_ManagementApi_Models_OrganizationConnectionUpdateRequest_ShowAsButton_
+  commentId: Overload:Auth0.ManagementApi.Models.OrganizationConnectionUpdateRequest.ShowAsButton
+  isSpec: "True"
+  fullName: Auth0.ManagementApi.Models.OrganizationConnectionUpdateRequest.ShowAsButton
+  nameWithType: OrganizationConnectionUpdateRequest.ShowAsButton
 - uid: Auth0.ManagementApi.Models.OrganizationCreateClientGrantRequest
   name: OrganizationCreateClientGrantRequest
   href: api/Auth0.ManagementApi.Models.OrganizationCreateClientGrantRequest.html

@@ -1,5 +1,13 @@
 # Change Log
 
+## [7.26.2](https://github.com/auth0/auth0.net/tree/7.26.2) (2024-04-03)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.26.1...7.26.2)
+
+**Changed**
+- Add show_as_button to organizations connection [\#706](https://github.com/auth0/auth0.net/pull/706) ([jpealing-fiscaltec](https://github.com/jpealing-fiscaltec))
+- Update LogStreamType to include all types [\#713](https://github.com/auth0/auth0.net/pull/713) ([frederikprijck](https://github.com/frederikprijck))
+- Support JWT Access Token Profile values in TokenDialect [\#714](https://github.com/auth0/auth0.net/pull/714) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
 ## [7.26.1](https://github.com/auth0/auth0.net/tree/7.26.1) (2024-01-11)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.26.0...7.26.1)
 
