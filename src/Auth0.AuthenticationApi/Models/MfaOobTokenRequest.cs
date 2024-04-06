@@ -1,4 +1,6 @@
-﻿namespace Auth0.AuthenticationApi.Models
+﻿using Microsoft.IdentityModel.Tokens;
+
+namespace Auth0.AuthenticationApi.Models
 {
     public class MfaOobTokenRequest : IClientAuthentication
     {

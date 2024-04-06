@@ -29,7 +29,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                     OobChannels = new List<string>() { "sms" },
                     PhoneNumber = TestBaseUtils.GetVariable("MFA_PHONE_NUMBER")
                 };
-            var response = await _authenticationApiClient.AssociateNewAuthenticatorAsync(request);
+            var response = await _authenticationApiClient.AssociateMfaAuthenticatorAsync(request);
             response.Should().NotBeNull();
             response.AuthenticatorType.Should().Be("oob");
             response.BindingMethod.Should().Be("prompt");

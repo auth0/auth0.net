@@ -362,7 +362,6 @@ namespace Auth0.AuthenticationApi
             {
                 { "grant_type", "http://auth0.com/oauth/grant-type/mfa-oob" },
                 { "client_id", request.ClientId },
-                { "client_secret", request.ClientSecret },
                 { "mfa_token", request.MfaToken},
                 { "oob_code", request.OobCode},
             };
@@ -524,14 +523,14 @@ namespace Auth0.AuthenticationApi
         }
         
         /// <inheritdoc/>
-        public Task<AssociateMgaAuthenticatorResponse> AssociateMfaAuthenticatorAsync(AssociateMfaAuthenticatorRequest request, CancellationToken cancellationToken = default)
+        public Task<AssociateMfaAuthenticatorResponse> AssociateMfaAuthenticatorAsync(AssociateMfaAuthenticatorRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
             {
                 throw new ArgumentNullException(nameof(request));
             }
 
-            return connection.SendAsync<AssociateNewAuthenticatorResponse>(
+            return connection.SendAsync<AssociateMfaAuthenticatorResponse>(
                 HttpMethod.Post,
                 BuildUri("mfa/associate"),
                 request,
