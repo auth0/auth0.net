@@ -15,13 +15,13 @@ namespace Auth0.Core.UnitTests
 			var response = CreateResponseMessage(
 				@"{ 
 						""error"": ""too_many_attempts"", 
-						""error_description"": ""Your account has been blocked after multiple consecutive login attempts. We've sent you an email with instructions on how to unblock it.""
+						""error_description"": ""Your account has been blocked after multiple consecutive login attempts. We've sent you a notification via your preferred contact method with instructions on how to unblock it.""
 					}");
 
 			var actual = RateLimitApiException.CreateAsync(response).GetAwaiter().GetResult();
 
 			actual.ApiError.Error.Should().BeEquivalentTo("too_many_attempts");
-			actual.ApiError.Message.Should().BeEquivalentTo("Your account has been blocked after multiple consecutive login attempts. We've sent you an email with instructions on how to unblock it.");
+			actual.ApiError.Message.Should().BeEquivalentTo("Your account has been blocked after multiple consecutive login attempts. We've sent you a notification via your preferred contact method with instructions on how to unblock it.");
 		}
 
 		[Fact]
