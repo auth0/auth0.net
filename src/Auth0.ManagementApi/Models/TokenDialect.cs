@@ -8,6 +8,12 @@ namespace Auth0.ManagementApi.Models
         AccessToken,
 
         [EnumMember(Value = "access_token_authz")]
-        AccessTokenAuthZ
+        AccessTokenAuthZ,
+        
+        [EnumMember(Value = "rfc9068_profile")]
+        Rfc9068Profile,
+        
+        [EnumMember(Value = "rfc9068_profile_authz")]
+        Rfc9068ProfileAuthz
     }
 }
