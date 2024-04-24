@@ -11,6 +11,24 @@ namespace Auth0.ManagementApi.Models
         Http,
 
         [EnumMember(Value = "eventbridge")]
-        EventBridge
+        EventBridge,
+        
+        [EnumMember(Value = "eventgrid")]
+        EventGrid,
+        
+        [EnumMember(Value = "datadog")]
+        Datadog,
+        
+        [EnumMember(Value = "splunk")]
+        Splunk,
+        
+        [EnumMember(Value = "sumo")]
+        Sumo,
+        
+        [EnumMember(Value = "segment")]
+        Segment,
+        
+        [EnumMember(Value = "mixpanel")]
+        MixPanel
     }
 }
