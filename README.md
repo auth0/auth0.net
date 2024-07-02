@@ -14,7 +14,7 @@
 ## Getting started
 
 ### Requirements
-This library supports .NET Standard 2.0 and .NET Framework 4.5.2 as well as later versions of both.
+This library supports .NET Standard 2.0 and .NET Framework 4.6.2 as well as later versions of both.
 
 ### Management API
 
