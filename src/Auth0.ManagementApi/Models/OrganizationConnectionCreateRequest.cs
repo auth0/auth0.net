@@ -22,5 +22,11 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("show_as_button")]
         public bool? ShowAsButton { get; set; }
+        
+        /// <summary>
+        /// Determines whether organization signup should be enabled for this organization connection.
+        /// </summary>
+        [JsonProperty("is_signup_enabled")]
+        public bool? IsSignUpEnabled { get; set; }
     }
 }
