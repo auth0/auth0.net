@@ -1,7 +1,10 @@
+
+
 namespace Auth0.ManagementApi.Clients
 {
   using System.Threading;
   using System.Threading.Tasks;
+  using System.Collections.Generic;
   using Models;
   using Paging;
 
@@ -91,7 +94,7 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Updates an SCIM configuration.
     /// </summary>
-    /// <param name="id">The id of the connection to be update its <see cref="ScimConfiguration"/></param>
+    /// <param name="id">The id of the connection to update <see cref="ScimConfiguration"/></param>
     /// <param name="request"> <see cref="ScimConfigurationUpdateRequest"/> containing information required for updating an <see cref="ScimConfiguration"/></param>
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
     /// <returns>A <see cref="ScimConfiguration"/>.</returns>
@@ -100,8 +103,41 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Deletes an SCIM configuration.
     /// </summary>
-    /// <param name="id">The id of the connection to be update its <see cref="ScimConfiguration"/></param>
+    /// <param name="id">The id of the connection to delete <see cref="ScimConfiguration"/></param>
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
     Task DeleteScimConfigurationAsync(string id, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Retrieves the default <see cref="ScimMapping"/>.
+    /// </summary>
+    /// <param name="id">The id of the connection to retrieve its default <see cref="ScimMapping"/></param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>An IList of <see cref="ScimMapping"/>.</returns>
+    Task<IList<ScimMapping>> GetDefaultScimMappingAsync(string id, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Creates an SCIM token.
+    /// </summary>
+    /// <param name="id">The id of the connection to create an <see cref="ScimToken"/></param>
+    /// <param name="request"> <see cref="ScimTokenCreateRequest"/> containing information required for creating an <see cref="ScimToken"/></param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>An <see cref="ScimTokenCreateResponse"/>.</returns>
+    Task<ScimTokenCreateResponse> CreateScimTokenAsync(string id, ScimTokenCreateRequest request, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Retrieves all <see cref="ScimToken"/> for the given connection.
+    /// </summary>
+    /// <param name="id">The id of the connection to retrieve its <see cref="ScimToken"/></param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>An <see cref="ScimToken"/>.</returns>
+    Task<IList<ScimToken>> GetScimTokenAsync(string id, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Deletes an SCIM token.
+    /// </summary>
+    /// <param name="id">The ID of the connection that owns the  <see cref="ScimToken"/> to be deleted</param>
+    /// <param name="tokenId">The ID of the <see cref="ScimToken"/> to delete</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    Task DeleteScimTokenAsync(string id, string tokenId, CancellationToken cancellationToken = default);
   }
 }

@@ -290,6 +290,137 @@ namespace Auth0.ManagementApi.IntegrationTests
             }
         }
         
+        [Fact]
+        public async Task Test_get_default_scim_configuration()
+        {
+            var expectedScimConfiguration = new ScimConfiguration()
+            {
+                Strategy = "samlp",
+                ConnectionId = "con_wP6Ya7Fbp98JQXuY",
+                ConnectionName = "fake-saml",
+                TenantName = "brucke",
+                UserIdAttribute = "string",
+                Mapping = new List<ScimMapping>()
+                {
+                    new()
+                    {
+                        Auth0 = "random",
+                        Scim = "random"
+                    }
+                }
+            };
+
+            var token = await GenerateBruckeManagementApiToken();
+            var apiClient = new ManagementApiClient(token, TestBaseUtils.GetVariable("BRUCKE_MANAGEMENT_API_URL"),
+                new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions
+                    { NumberOfHttpRetries = 9 }));
+            try
+            {
+                // Create an SCIM configuration
+                await apiClient.Connections.CreateScimConfigurationAsync(
+                    expectedScimConfiguration.ConnectionId, new ScimConfigurationCreateRequest()
+                    {
+                        UserIdAttribute = expectedScimConfiguration.UserIdAttribute,
+                        Mapping = expectedScimConfiguration.Mapping
+                    });
+
+                var defaultScimMapping = await apiClient.Connections.GetDefaultScimMappingAsync(expectedScimConfiguration.ConnectionId);
+                Assert.NotNull(defaultScimMapping);
+            }
+            finally
+            {
+                // Clean-up
+                await apiClient.Connections.DeleteScimConfigurationAsync(expectedScimConfiguration.ConnectionId);
+            }
+        }
+        
+        [Fact]
+        public async Task Test_scim_token_crud_sequence()
+        {
+            var expectedScimConfiguration = new ScimConfiguration()
+            {
+                Strategy = "samlp",
+                ConnectionId = "con_wP6Ya7Fbp98JQXuY",
+                ConnectionName = "fake-saml",
+                TenantName = "brucke",
+                UserIdAttribute = "string",
+                Mapping = new List<ScimMapping>()
+                {
+                    new()
+                    {
+                        Auth0 = "random",
+                        Scim = "random"
+                    }
+                }
+            };
+
+            var token = await GenerateBruckeManagementApiToken();
+            var apiClient = new ManagementApiClient(token, TestBaseUtils.GetVariable("BRUCKE_MANAGEMENT_API_URL"),
+                new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions
+                    { NumberOfHttpRetries = 9 }));
+            try
+            {
+                // Create an SCIM configuration
+                await apiClient.Connections.CreateScimConfigurationAsync(
+                    expectedScimConfiguration.ConnectionId, new ScimConfigurationCreateRequest()
+                    {
+                        UserIdAttribute = expectedScimConfiguration.UserIdAttribute,
+                        Mapping = expectedScimConfiguration.Mapping
+                    });
+
+                var createTokenRequest = new ScimTokenCreateRequest()
+                {
+                    Scopes = new string[] { "openid", "offline_access" },
+                    TokenLifetime = 1000
+                };
+                
+                // Create two SCIM tokens and Validate
+                var scimTokenOne = await CreateScimTokenAndValidate(createTokenRequest);
+                var scimTokenTwo = await CreateScimTokenAndValidate(createTokenRequest);
+
+                // Retrieve the token and validate
+                var retrievedScimTokens = 
+                    await apiClient.Connections.GetScimTokenAsync(expectedScimConfiguration.ConnectionId);
+                Assert.Equal(scimTokenOne.Scopes, retrievedScimTokens[0].Scopes);
+                Assert.Equal(scimTokenOne.TokenId, retrievedScimTokens[0].TokenId);
+                Assert.Equal(scimTokenOne.CreatedAt, retrievedScimTokens[0].CreatedAt);
+                Assert.Equal(scimTokenOne.ValidUntil, retrievedScimTokens[0].ValidUntil);
+                
+                Assert.Equal(scimTokenTwo.Scopes, retrievedScimTokens[1].Scopes);
+                Assert.Equal(scimTokenTwo.TokenId, retrievedScimTokens[1].TokenId);
+                Assert.Equal(scimTokenTwo.CreatedAt, retrievedScimTokens[1].CreatedAt);
+                Assert.Equal(scimTokenTwo.ValidUntil, retrievedScimTokens[1].ValidUntil);
+                
+                // Delete SCIM Token and validate
+                await apiClient.Connections.DeleteScimTokenAsync(expectedScimConfiguration.ConnectionId, scimTokenOne.TokenId);
+                await apiClient.Connections.DeleteScimTokenAsync(expectedScimConfiguration.ConnectionId, scimTokenTwo.TokenId);
+                var retrievedScimTokensAfterDelete = 
+                    await apiClient.Connections.GetScimTokenAsync(expectedScimConfiguration.ConnectionId);
+                Assert.Empty(retrievedScimTokensAfterDelete);
+            }
+            finally
+            {
+                // Clean-up
+                await apiClient.Connections.DeleteScimConfigurationAsync(expectedScimConfiguration.ConnectionId);
+            }
+
+            async Task<ScimTokenCreateResponse> CreateScimTokenAndValidate(ScimTokenCreateRequest createTokenRequest)
+            {
+                var scimToken = 
+                    await apiClient.Connections.CreateScimTokenAsync(expectedScimConfiguration.ConnectionId, createTokenRequest);
+                Assert.NotNull(scimToken);
+                Assert.NotNull(scimToken.Scopes);
+                Assert.NotNull(scimToken.TokenId);
+                Assert.NotNull(scimToken.Token);
+                Assert.NotNull(scimToken.CreatedAt);
+                Assert.NotNull(scimToken.ValidUntil);
+                scimToken.Scopes.Should().HaveCount(2);
+                Assert.Equal(createTokenRequest.Scopes, scimToken.Scopes);
+                return scimToken;
+            }
+        }
+        
+        
         private async Task<string> GenerateBruckeManagementApiToken()
         {
             using var authenticationApiClient = 
