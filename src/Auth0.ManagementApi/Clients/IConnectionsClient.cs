@@ -70,5 +70,38 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
     /// <returns>A <see cref="Task"/> that represents the asynchronous check operation. Will throw if the status check fails.</returns>
     Task CheckStatusAsync(string id, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Creates an SCIM configuration.
+    /// </summary>
+    /// <param name="id">The id of the connection to create an <see cref="ScimConfiguration"/></param>
+    /// <param name="request"> <see cref="ScimConfigurationCreateRequest"/> containing information required for creating an <see cref="ScimConfiguration"/></param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>A <see cref="ScimConfiguration"/>.</returns>
+    Task<ScimConfiguration> CreateScimConfigurationAsync(string id, ScimConfigurationCreateRequest request, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Retrieves an SCIM configuration.
+    /// </summary>
+    /// <param name="id">The id of the connection to retrieve its <see cref="ScimConfiguration"/></param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>A <see cref="ScimConfiguration"/>.</returns>
+    Task<ScimConfiguration> GetScimConfigurationAsync(string id, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Updates an SCIM configuration.
+    /// </summary>
+    /// <param name="id">The id of the connection to be update its <see cref="ScimConfiguration"/></param>
+    /// <param name="request"> <see cref="ScimConfigurationUpdateRequest"/> containing information required for updating an <see cref="ScimConfiguration"/></param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>A <see cref="ScimConfiguration"/>.</returns>
+    Task<ScimConfiguration> UpdateScimConfigurationAsync(string id, ScimConfigurationUpdateRequest request, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Deletes an SCIM configuration.
+    /// </summary>
+    /// <param name="id">The id of the connection to be update its <see cref="ScimConfiguration"/></param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    Task DeleteScimConfigurationAsync(string id, CancellationToken cancellationToken = default);
   }
 }

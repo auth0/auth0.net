@@ -143,5 +143,50 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection.GetAsync<object>(BuildUri($"connections/{EncodePath(id)}/status"), DefaultHeaders, cancellationToken: cancellationToken);
         }
+
+        /// <summary>
+        /// Retrieves an SCIM configuration.
+        /// </summary>
+        /// <param name="id">The id of the connection to retrieve its SCIM configuration</param>
+        /// <param name="request"> <see cref="ScimConfigurationCreateRequest"/> containing information required for creating an <see cref="ScimConfiguration"/></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>A <see cref="ScimConfiguration"/>.</returns>
+        public Task<ScimConfiguration> CreateScimConfigurationAsync(string id, ScimConfigurationCreateRequest request, CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<ScimConfiguration>(HttpMethod.Post, BuildUri($"connections/{EncodePath(id)}/scim-configuration"), request, DefaultHeaders, cancellationToken: cancellationToken);            
+        }
+        
+        /// <summary>
+        /// Retrieves an SCIM configuration.
+        /// </summary>
+        /// <param name="id">The id of the connection to retrieve its SCIM configuration</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>A <see cref="ScimConfiguration"/>.</returns>
+        public Task<ScimConfiguration> GetScimConfigurationAsync(string id, CancellationToken cancellationToken = default)
+        {
+            return Connection.GetAsync<ScimConfiguration>(BuildUri($"connections/{EncodePath(id)}/scim-configuration"), DefaultHeaders, cancellationToken: cancellationToken);            
+        }
+        
+        /// <summary>
+        /// Updates an SCIM configuration.
+        /// </summary>
+        /// <param name="id">The id of the connection to update its SCIM configuration</param>
+        /// <param name="request"> <see cref="ScimConfigurationUpdateRequest"/> containing information required for updating an <see cref="ScimConfiguration"/></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>A <see cref="ScimConfiguration"/>.</returns>
+        public Task<ScimConfiguration> UpdateScimConfigurationAsync(string id, ScimConfigurationUpdateRequest request, CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<ScimConfiguration>(new HttpMethod("PATCH"), BuildUri($"connections/{EncodePath(id)}/scim-configuration"), request, DefaultHeaders, cancellationToken: cancellationToken);            
+        }
+        
+        /// <summary>
+        /// Deletes an SCIM configuration.
+        /// </summary>
+        /// <param name="id">The id of the connection to delete its SCIM configuration</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        public Task DeleteScimConfigurationAsync(string id, CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"connections/{EncodePath(id)}/scim-configuration"), null, DefaultHeaders, cancellationToken: cancellationToken);            
+        }
     }
 }
