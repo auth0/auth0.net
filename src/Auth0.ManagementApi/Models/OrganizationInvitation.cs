@@ -31,7 +31,7 @@ namespace Auth0.ManagementApi.Models
         public OrganizationInvitationInvitee Invitee { get; set; }
 
         /// <summary>
-        /// The invitation URL to be send to the invitee.
+        /// The invitation URL to be sent to the invitee.
         /// </summary>
         [JsonProperty("invitation_url")]
         public string InvitationUrl { get; set; }
@@ -61,13 +61,13 @@ namespace Auth0.ManagementApi.Models
         public string ClientId { get; set; }
 
         /// <summary>
-        /// Contains app meta data. The user has read/write access to this.
+        /// Contains app metadata. The user has read/write access to this.
         /// </summary>
         [JsonProperty("app_metadata")]
         public dynamic AppMetadata { get; set; }
 
         /// <summary>
-        /// Contains user meta data. The user has read/write access to this.
+        /// Contains user metadata. The user has read/write access to this.
         /// </summary>
         [JsonProperty("user_metadata")]
         public dynamic UserMetadata { get; set; }

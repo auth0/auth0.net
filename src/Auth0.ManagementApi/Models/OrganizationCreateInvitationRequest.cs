@@ -33,13 +33,13 @@ namespace Auth0.ManagementApi.Models
         public string ClientId { get; set; }
 
         /// <summary>
-        /// Contains app meta data. The user has read/write access to this.
+        /// Contains app metadata. The user has read/write access to this.
         /// </summary>
         [JsonProperty("app_metadata")]
         public dynamic AppMetadata { get; set; }
 
         /// <summary>
-        /// Contains user meta data. The user has read/write access to this.
+        /// Contains user metadata. The user has read/write access to this.
         /// </summary>
         [JsonProperty("user_metadata")]
         public dynamic UserMetadata { get; set; }
@@ -51,13 +51,13 @@ namespace Auth0.ManagementApi.Models
         /// If unspecified or set to 0, this value defaults to 604800 seconds (7 days). Max value: 2592000 seconds (30 days).
         /// </remarks>
         [JsonProperty("ttl_sec")]
-        public int TimeToLive { get; set; }
+        public int? TimeToLive { get; set; }
 
         /// <summary>
         /// Whether the user will receive an invitation email (true) or no email (false), true by default
         /// </summary>
         [JsonProperty("send_invitation_email")]
-        public bool SendInvitationEmail { get; set; }
+        public bool? SendInvitationEmail { get; set; }
 
         /// <summary>
         /// List of role IDs to associated with the user.

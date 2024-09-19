@@ -367,7 +367,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             try
             {
-                var createdInvitation = await fixture.ApiClient.Organizations.CreateInvitationAsync(ExistingOrganizationId, new OrganizationCreateInvitationRequest
+                var invitationRequest = new OrganizationCreateInvitationRequest
                 {
                     ClientId = TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"),
                     ConnectionId = ExistingConnectionId,
@@ -378,10 +378,11 @@ namespace Auth0.ManagementApi.IntegrationTests
                     Invitee = new OrganizationInvitationInvitee
                     {
                         Email = "jane.doe@auth0.com"
-                    },
-                    TimeToLive = 360,
-                    SendInvitationEmail = false
-                });
+                    }
+                };
+                
+                var createdInvitation = 
+                    await fixture.ApiClient.Organizations.CreateInvitationAsync(ExistingOrganizationId, invitationRequest);
 
                 createdInvitation.Should().NotBeNull();
                 createdInvitation.InvitationUrl.Should().NotBeNull();
