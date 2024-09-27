@@ -22,3 +22,49 @@ jobs:
     secrets:
       nuget-token: ${{ secrets.NUGET_APIKEY }}
       github-token: ${{ secrets.GITHUB_TOKEN }}
+
+  generate-docs:
+    name: Generate API docs
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.event.pull_request.merged && startsWith(github.event.pull_request.head.ref, 'release/'))
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Install DocFX
+        run: dotnet tool install -g docfx        
+
+      - name: Build docs
+        run: docfx docs-source/docfx.json        
+
+      - name: Uploading Artifacts
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: docs
+
+  deploy-docs:
+    needs: generate-docs
+    name: Deploy API docs
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && github.event.pull_request.merged && startsWith(github.event.pull_request.head.ref, 'release/'))
+
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from an appropriate source
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v3 # or specific "vX.X.X" version tag for this action
