@@ -1,5 +1,15 @@
 # Change Log
 
+## [7.27.0](https://github.com/auth0/auth0.net/tree/7.27.0) (2024-09-27)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.26.2...7.27.0)
+
+**Added**
+- Add support for Managing SCIM configuration [\#726](https://github.com/auth0/auth0.net/pull/726) ([kailash-b](https://github.com/kailash-b))
+- Adds 'is_signup_enabled' for OrganisationConnection [\#724](https://github.com/auth0/auth0.net/pull/724) ([kailash-b](https://github.com/kailash-b))
+
+**Fixed**
+- Fixes issue where SendInvitationEmail is not defaulting to True [\#728](https://github.com/auth0/auth0.net/pull/728) ([kailash-b](https://github.com/kailash-b))
+
 ## [7.26.2](https://github.com/auth0/auth0.net/tree/7.26.2) (2024-04-03)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.26.1...7.26.2)
 
