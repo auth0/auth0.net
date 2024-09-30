@@ -5,7 +5,7 @@
         {
           "files": [ "**/*.csproj" ],
           "exclude": [ "**/bin/**", "**/obj/**" ],
-          "cwd": "../src"
+          "src": "../src"
         }
       ],
       "dest": "obj/api"
