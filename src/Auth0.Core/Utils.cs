@@ -50,11 +50,11 @@ namespace Auth0.Core.Http
 
             return new Uri(resource, UriKind.RelativeOrAbsolute);
         }
-        internal static Uri BuildUri(string baseUrl, string resource, IDictionary<string, string> urlSegments, IList<Tuple<string, string>> queryStrings, bool includeEmptyParameters = false)
+        internal static Uri BuildUri(string baseUrl, string resource, IDictionary<string, string> urlSegments, IList<Tuple<string, string>> queryStringsTuple, bool includeEmptyParameters = false)
         {
             resource = ReplaceUrlSegments(resource, urlSegments);
 
-            var queryString = AddQueryString(queryStrings, includeEmptyParameters);
+            var queryString = AddQueryString(queryStringsTuple, includeEmptyParameters);
 
             // If we have a querystring, append it to the resource
             if (!string.IsNullOrEmpty(queryString))
