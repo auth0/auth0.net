@@ -4,9 +4,11 @@ using Auth0.Tests.Shared;
 using FluentAssertions;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Auth0.IntegrationTests.Shared.CleanUp;
 using Auth0.ManagementApi.IntegrationTests.Testing;
+using Auth0.ManagementApi.Paging;
 using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
@@ -410,6 +412,65 @@ namespace Auth0.ManagementApi.IntegrationTests
                 await fixture.ApiClient.Organizations.DeleteConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
             }
 
+        }
+        
+        [Fact]
+        public async Task Test_organization_client_grants_association_with_client()
+        {
+            // Given an Organization
+            var organization = await fixture.Utils.CreateOrganization();
+            fixture.TrackIdentifier(CleanUpType.Organizations, organization.Id);
+            
+            var clientCreateRequest = new ClientCreateRequest()
+            {
+                Name = "Test-Client-" + Guid.NewGuid(),
+                Description = "This is a test client - TBD",
+                OrganizationUsage = OrganizationUsage.Allow,
+                DefaultOrganization = new DefaultOrganization()
+                {
+                    Flows = new[] { Flows.ClientCredentials },
+                    OrganizationId = organization.Id.ToString()
+                },
+            };
+            
+            // Given a Client
+            var client = await fixture.Utils.CreateClient(clientCreateRequest);
+            fixture.TrackIdentifier(CleanUpType.Clients, client.ClientId);
+            // Given a Resource Server
+            var resourceServer = await fixture.Utils.CreateResourceServer();
+            fixture.TrackIdentifier(CleanUpType.ResourceServers, resourceServer.Id);
+            
+            var clientGrantRequest = new ClientGrantCreateRequest()
+            {
+                AllowAnyOrganization = true,
+                OrganizationUsage = OrganizationUsage.Allow,
+                Audience = resourceServer.Identifier,
+                Scope = new List<string>(new[] { "create:resource", "create:organization_client_grants" }),
+                ClientId = client.ClientId,
+                
+            };
+            
+            // Given a Client Grant
+            var clientGrant = await fixture.ApiClient.ClientGrants.CreateAsync(clientGrantRequest);
+            fixture.TrackIdentifier(CleanUpType.ClientGrants, clientGrant.Id);
+            
+            // Associating the client grant with the organization
+            await fixture.ApiClient.Organizations.CreateClientGrantAsync(organization.Id,
+                new OrganizationCreateClientGrantRequest()
+                {
+                    GrantId = clientGrant.Id,
+                });
+            
+            var request = new GetClientsRequest()
+            {
+                Query = $"client_grant.organization_id:{organization.Id}"
+            };
+            
+            // Act
+            var clients = await fixture.ApiClient.Clients.GetAllAsync(request, new PaginationInfo(0, 100));
+            
+            // Assert
+            Assert.Contains(clients.ToList(), x => x.ClientId == client.ClientId);
         }
     }
 }
