@@ -1,5 +1,4 @@
-﻿using Auth0.Core.Http;
-using Auth0.Tests.Shared;
+﻿using Auth0.Tests.Shared;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -23,7 +22,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             management = new ManagementApiClient("fake", GetVariable("AUTH0_MANAGEMENT_API_URL"), grabber);
 
             management.TenantSettings.GetAsync(); // Cause headers to be "sent" to the grabber for testing
-            payload = JObject.Parse(Encoding.ASCII.GetString(Utils.Base64UrlDecode(grabber.LastHeaders["Auth0-Client"])));
+            payload = JObject.Parse(Encoding.ASCII.GetString(Auth0.Core.Http.Utils.Base64UrlDecode(grabber.LastHeaders["Auth0-Client"])));
         }
 
         [Fact]

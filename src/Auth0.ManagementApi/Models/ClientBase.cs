@@ -199,6 +199,12 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("require_pushed_authorization_requests")]
         public bool? RequirePushedAuthorizationRequests { get; set; }
+        
+        /// <summary>
+        /// Defines the default Organization ID and flows
+        /// </summary>
+        [JsonProperty("default_organization")]
+        public DefaultOrganization DefaultOrganization { get; set; }
     }
 
 }

@@ -3,6 +3,7 @@ using Auth0.ManagementApi.Paging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -70,11 +71,35 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection.GetAsync<IPagedList<ResourceServer>>(BuildUri("resource-servers",
                 pagination != null ? new Dictionary<string, string>
-                {
+                    {
                     {"page", pagination.PageNo.ToString()},
                     {"per_page", pagination.PerPage.ToString()},
                     {"include_totals", pagination.IncludeTotals.ToString().ToLower()}
                 } : null), DefaultHeaders, converters, cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public Task<IPagedList<ResourceServer>> GetAllAsync(ResourceServerGetRequest request,
+            PaginationInfo pagination = null, CancellationToken cancellationToken = default)
+        {
+            var queryStrings = new List<Tuple<string, string>>();
+
+            if (request?.Identifiers != null)
+            {
+                queryStrings.AddRange(
+                    request.Identifiers.Select(
+                        identifier => new Tuple<string, string>("identifiers", identifier)));
+            }
+            
+            if (pagination != null)
+            {
+                queryStrings.Add(new Tuple<string, string>("page", pagination.PageNo.ToString()));
+                queryStrings.Add(new Tuple<string, string>("per_page", pagination.PerPage.ToString()));
+                queryStrings.Add(new Tuple<string, string>("include_totals", pagination.IncludeTotals.ToString().ToLower()));
+            }
+
+            return Connection.GetAsync<IPagedList<ResourceServer>>(
+                BuildUri("resource-servers", queryStrings), DefaultHeaders, converters, cancellationToken);
         }
 
         /// <summary>

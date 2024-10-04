@@ -34,6 +34,16 @@ namespace Auth0.ManagementApi.Clients
     /// <summary>
     /// Gets a list of all the resource servers.
     /// </summary>
+    /// <param name="request">Contains the information required to retrieve the Resource Servers</param>
+    /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>A <see cref="IPagedList{ResourceServer}"/> containing the list of resource servers.</returns>
+    Task<IPagedList<ResourceServer>> GetAllAsync(ResourceServerGetRequest request, PaginationInfo pagination = null,
+      CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Gets a list of all the resource servers.
+    /// </summary>
     /// <param name="pagination">Specifies pagination info to use when requesting paged results.</param>
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
     /// <returns>A <see cref="IPagedList{ResourceServer}"/> containing the list of resource servers.</returns>

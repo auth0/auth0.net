@@ -44,6 +44,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Test_client_crud_sequence()
         {
+            string existingOrganizationId = "org_V6ojENVd1ERs5YY1";
             // Add a new client
             var newClientRequest = new ClientCreateRequest
             {
@@ -73,6 +74,11 @@ namespace Auth0.ManagementApi.IntegrationTests
                         SelectedInitiators = new [] { LogoutInitiators.RpLogout, LogoutInitiators.IdpLogout, LogoutInitiators.PasswordChanged }
                     },
                     BackchannelLogoutUrls = new [] { "https://create.com/logout" }
+                },
+                DefaultOrganization = new DefaultOrganization()
+                {
+                    OrganizationId = existingOrganizationId,
+                    Flows = new[] { Flows.ClientCredentials }
                 }
             };
             var newClientResponse = await fixture.ApiClient.Clients.CreateAsync(newClientRequest);
@@ -90,6 +96,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             newClientResponse.OidcLogout.BackchannelLogoutInitiators.Mode.Should().Be(LogoutInitiatorModes.Custom);
             newClientResponse.OidcLogout.BackchannelLogoutInitiators.SelectedInitiators.Length.Should().Be(3);
             newClientResponse.OidcLogout.BackchannelLogoutInitiators.SelectedInitiators.Any(i => i == LogoutInitiators.PasswordChanged).Should().BeTrue();
+            newClientResponse.DefaultOrganization.OrganizationId.Should().Be(existingOrganizationId);
 
             string prop1 = newClientResponse.ClientMetaData.Prop1;
             prop1.Should().Be("1");
@@ -132,11 +139,17 @@ namespace Auth0.ManagementApi.IntegrationTests
             updateClientResponse.OidcLogout.BackchannelLogoutInitiators.Mode.Should().Be(LogoutInitiatorModes.Custom);
             updateClientResponse.OidcLogout.BackchannelLogoutInitiators.SelectedInitiators.Length.Should().Be(3);
             updateClientResponse.OidcLogout.BackchannelLogoutInitiators.SelectedInitiators.Any(i => i == LogoutInitiators.PasswordChanged).Should().BeTrue();
+            updateClientResponse.DefaultOrganization.OrganizationId.Should().Be(existingOrganizationId);
+            updateClientResponse.DefaultOrganization.Flows.Should().HaveCount(1);
+            updateClientResponse.DefaultOrganization.Flows.First().Should().Be(Flows.ClientCredentials);
 
             // Get a single client
             var client = await fixture.ApiClient.Clients.GetAsync(newClientResponse.ClientId);
             client.Should().NotBeNull();
             client.Name.Should().Be(updateClientResponse.Name);
+            client.DefaultOrganization.OrganizationId.Should().Be(existingOrganizationId);
+            client.DefaultOrganization.Flows.Should().HaveCount(1);
+            client.DefaultOrganization.Flows.First().Should().Be(Flows.ClientCredentials);
 
             // Delete the client, and ensure we get exception when trying to fetch client again
             await fixture.ApiClient.Clients.DeleteAsync(client.ClientId);

@@ -533,7 +533,7 @@ namespace Auth0.AuthenticationApi
 
         private Uri BuildUri(string path)
         {
-            return Utils.BuildUri(BaseUri.AbsoluteUri, path, null, null);
+            return Utils.BuildUri(BaseUri.AbsoluteUri, path, null, queryStrings:null);
         }
 
         private IDictionary<string, string> BuildHeaders(string accessToken)

@@ -3,6 +3,7 @@ using Auth0.ManagementApi.Paging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -435,17 +436,23 @@ namespace Auth0.ManagementApi.Clients
             if (request == null)
                 throw new ArgumentNullException(nameof(request));
 
-            var queryStrings = new Dictionary<string, string>
+            var queryStrings = new List<Tuple<string, string>>()
             {
-                {"audience", request.Audience},
-                {"client_id", request.ClientId},
+                new Tuple<string, string>("audience", request.Audience),
+                new Tuple<string, string>("client_id", request.ClientId)
             };
+
+            if (request.GrantIds != null)
+            {
+                queryStrings.AddRange(
+                    request.GrantIds.Select(grantId => new Tuple<string, string>("grant_ids", grantId)));    
+            }
 
             if (pagination != null)
             {
-                queryStrings["page"] = pagination.PageNo.ToString();
-                queryStrings["per_page"] = pagination.PerPage.ToString();
-                queryStrings["include_totals"] = pagination.IncludeTotals.ToString().ToLower();
+                queryStrings.Add(new Tuple<string, string>("page", pagination.PageNo.ToString()));
+                queryStrings.Add(new Tuple<string, string>("per_page", pagination.PerPage.ToString()));
+                queryStrings.Add(new Tuple<string, string>("include_totals", pagination.IncludeTotals.ToString().ToLower()));
             }
 
             return Connection.GetAsync<IPagedList<OrganizationClientGrant>>(BuildUri($"organizations/{EncodePath(organizationId)}/client-grants", queryStrings), DefaultHeaders, clientGrantsConverters, cancellationToken);

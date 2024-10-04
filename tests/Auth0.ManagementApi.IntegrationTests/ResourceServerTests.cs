@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Auth0.Core.Exceptions;
 using Auth0.IntegrationTests.Shared.CleanUp;
@@ -99,7 +100,22 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Get a single resource server
             var resourceServer = await fixture.ApiClient.ResourceServers.GetAsync(newResourceServerResponse.Id);
             resourceServer.Should().BeEquivalentTo(updateResourceServerRequest, options => options.ExcludingMissingMembers());
-
+            
+            // Get all resource servers with pagination
+            var pagination = new PaginationInfo(0, 10, true);
+            var request = new ResourceServerGetRequest()
+            {
+                Identifiers = new List<string>() { resourceServer.Identifier, resourceServer.Identifier }
+            };
+            var resourceServers = await fixture.ApiClient.ResourceServers.GetAllAsync(request, pagination);
+            resourceServers.Count.Should().Be(1);
+            resourceServers.First().Identifier.Should().BeEquivalentTo(resourceServer.Identifier);
+            
+            // Get all resource servers with pagination
+            pagination = new PaginationInfo(0, 10, true);
+            resourceServers = await fixture.ApiClient.ResourceServers.GetAllAsync(null, pagination);
+            resourceServers.Count.Should().BeGreaterThan(1);
+            
             // Delete the client, and ensure we get exception when trying to fetch client again
             await fixture.ApiClient.ResourceServers.DeleteAsync(resourceServer.Id);
             Func<Task> getFunc = async () => await fixture.ApiClient.ResourceServers.GetAsync(resourceServer.Id);

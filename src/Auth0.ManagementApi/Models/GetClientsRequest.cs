@@ -29,5 +29,10 @@
         /// Filter on whether or not a client is a first party client.
         /// </summary>
         public bool? IsFirstParty { get; set; } = null;
+        
+        /// <summary>
+        /// Query in <a href ="http://www.lucenetutorial.com/lucene-query-syntax.html">Lucene query string syntax</a> to search for clients.
+        /// </summary>
+        public string Query { get; set; }
     }
 }
