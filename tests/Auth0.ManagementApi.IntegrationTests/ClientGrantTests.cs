@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Auth0.IntegrationTests.Shared.CleanUp;
 using Auth0.ManagementApi.IntegrationTests.Testing;
@@ -191,7 +192,6 @@ namespace Auth0.ManagementApi.IntegrationTests
                 OrganizationUsage = OrganizationUsage.Allow,
                 AllowAnyOrganization = true
             });
-            
             fixture.TrackIdentifier(CleanUpType.ClientGrants, newGrant.Id);
 
             var orgsBefore = await fixture.ApiClient.ClientGrants.GetAllOrganizationsAsync(newGrant.Id);
@@ -223,10 +223,20 @@ namespace Auth0.ManagementApi.IntegrationTests
             
             orgsAfter.Count.Should().Be(1);
             orgGrantsAfter.Count.Should().Be(1);
-
+            
+            // Get client grants using a client-Grants filter
+            var grantsFilter = new List<string>() { newGrant.Id, newGrant.Id };
+            var filteredUsingClientGrants =
+                await fixture.ApiClient.Organizations.GetAllClientGrantsAsync(existingOrgId,
+                    new OrganizationGetClientGrantsRequest()
+                    {
+                        GrantIds = grantsFilter
+                    });
+            
+            filteredUsingClientGrants.Count.Should().Be(1);
+            filteredUsingClientGrants.First().Id.Should().BeEquivalentTo(newGrant.Id);
             await fixture.ApiClient.ClientGrants.DeleteAsync(newGrant.Id);
             fixture.UnTrackIdentifier(CleanUpType.ClientGrants, newGrant.Id);
         }
-
     }
 }

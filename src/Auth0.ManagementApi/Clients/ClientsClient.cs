@@ -67,7 +67,8 @@ namespace Auth0.ManagementApi.Clients
                 {"fields", request.Fields},
                 {"include_fields", request.IncludeFields?.ToString().ToLower()},
                 {"is_global", request.IsGlobal?.ToString().ToLower()},
-                {"is_first_party", request.IsFirstParty?.ToString().ToLower()}
+                {"is_first_party", request.IsFirstParty?.ToString().ToLower()},
+                {"q", request.Query?.ToLower()}
             };
 
             if (pagination != null)

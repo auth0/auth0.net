@@ -48,6 +48,11 @@ namespace Auth0.ManagementApi.Clients
         {
             return Utils.BuildUri(BaseUri.AbsoluteUri, resource, null, queryStrings);
         }
+        
+        protected Uri BuildUri(string resource, IList<Tuple<string, string>> queryStrings)
+        {
+            return Utils.BuildUri(BaseUri.AbsoluteUri, resource, null, queryStrings);
+        }
 
         /// <summary>
         /// Encode a value so it can be successfully used in the path.

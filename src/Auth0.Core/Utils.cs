@@ -36,39 +36,25 @@ namespace Auth0.Core.Http
 
         internal static Uri BuildUri(string baseUrl, string resource, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings, bool includeEmptyParameters = false)
         {
-            // Replace the URL Segments
-            if (urlSegments != null)
-            {
-                foreach (var urlSegment in urlSegments)
-                {
-                    resource = resource.Replace($"{{{urlSegment.Key}}}", Uri.EscapeDataString(urlSegment.Value ?? String.Empty));
-                }
+            resource = ReplaceUrlSegments(resource, urlSegments);
 
-                // Remove trailing slash
-                resource = resource.TrimEnd('/');
+            var queryString = AddQueryString(queryStrings, includeEmptyParameters);
+
+            // If we have a querystring, append it to the resource
+            if (!string.IsNullOrEmpty(queryString))
+            {
+                resource = resource.Contains("?") ? $"{resource}&{queryString}" : $"{resource}?{queryString}";
             }
 
-            // Add the query strings
-            var queryString = queryStrings?.Aggregate(new StringBuilder(), (sb, kvp) =>
-                {
-                    if (kvp.Value != null)
-                    {
-                        if (sb.Length > 0)
-                            sb = sb.Append("&");
+            resource = CombineUriParts(baseUrl, resource);
 
-                        sb.Append($"{Uri.EscapeDataString(kvp.Key)}={Uri.EscapeDataString(kvp.Value)}");
-                    }
-                    else if (includeEmptyParameters)
-                    {
-                        if (sb.Length > 0)
-                            sb = sb.Append("&");
+            return new Uri(resource, UriKind.RelativeOrAbsolute);
+        }
+        internal static Uri BuildUri(string baseUrl, string resource, IDictionary<string, string> urlSegments, IList<Tuple<string, string>> queryStringsTuple, bool includeEmptyParameters = false)
+        {
+            resource = ReplaceUrlSegments(resource, urlSegments);
 
-                        sb.Append(Uri.EscapeDataString(kvp.Key));
-                    }
-
-                    return sb;
-                })
-                .ToString();
+            var queryString = AddQueryString(queryStringsTuple, includeEmptyParameters);
 
             // If we have a querystring, append it to the resource
             if (!string.IsNullOrEmpty(queryString))
@@ -101,6 +87,67 @@ namespace Auth0.Core.Http
             }
             return uri;
         }
+        private static string AddQueryString(IList<Tuple<string, string>> queryStrings, bool includeEmptyParameters)
+        {
+            var sb = new StringBuilder();
+            // Add the query strings
+            foreach (var keyValuePair in queryStrings)
+            {
+                if (keyValuePair.Item2 != null)
+                {
+                    if (sb.Length > 0)
+                        sb = sb.Append("&");
 
+                    sb.Append($"{Uri.EscapeDataString(keyValuePair.Item1)}={Uri.EscapeDataString(keyValuePair.Item2)}");
+                }
+                else if (includeEmptyParameters)
+                {
+                    if (sb.Length > 0)
+                        sb = sb.Append("&");
+
+                    sb.Append(Uri.EscapeDataString(keyValuePair.Item1));
+                }
+            }
+            return sb.ToString();
+        }
+        private static string AddQueryString(IDictionary<string, string> queryStrings, bool includeEmptyParameters)
+        {
+            // Add the query strings
+            var queryString = queryStrings?.Aggregate(new StringBuilder(), (sb, kvp) =>
+                {
+                    if (kvp.Value != null)
+                    {
+                        if (sb.Length > 0)
+                            sb = sb.Append("&");
+
+                        sb.Append($"{Uri.EscapeDataString(kvp.Key)}={Uri.EscapeDataString(kvp.Value)}");
+                    }
+                    else if (includeEmptyParameters)
+                    {
+                        if (sb.Length > 0)
+                            sb = sb.Append("&");
+
+                        sb.Append(Uri.EscapeDataString(kvp.Key));
+                    }
+
+                    return sb;
+                })
+                .ToString();
+            return queryString;
+        }
+        private static string ReplaceUrlSegments(string resource, IDictionary<string, string> urlSegments)
+        {
+            // Replace the URL Segments
+            if (urlSegments == null) return resource;
+            foreach (var urlSegment in urlSegments)
+            {
+                resource = 
+                    resource.Replace($"{{{urlSegment.Key}}}", Uri.EscapeDataString(urlSegment.Value ?? String.Empty));
+            }
+
+            // Remove trailing slash
+            resource = resource.TrimEnd('/');
+            return resource;
+        }
     }
 }
