@@ -1,0 +1,82 @@
+name: RL-Secure
+run-name: rl-scanner
+
+on:
+  merge_group:
+  workflow_dispatch:
+  push:
+    branches: ['master']
+
+env:
+  NUGET_DIRECTORY: ${{ github.workspace}}/nuget
+  PROJECT_PATHS: "['src/Auth0.Core/Auth0.Core.csproj', 'src/Auth0.AuthenticationApi/Auth0.AuthenticationApi.csproj', 'src/Auth0.ManagementApi/Auth0.ManagementApi.csproj']"
+
+jobs:
+  rl-scanner:
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'pull_request' && startsWith(github.event.pull_request.head.ref, 'release/'))
+    runs-on: ubuntu-latest
+
+    permissions:
+      pull-requests: write
+      id-token: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"     
+
+      - name: Install Python dependencies
+        run: |
+          pip install --upgrade pip
+          pip install boto3 requests
+
+      - name: Get Artifact Version
+        id: get_version
+        run: echo "version=$(cat .version)" >> $GITHUB_ENV
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{ secrets.PRODSEC_TOOLS_ARN }}
+          aws-region: us-east-1
+          mask-aws-account-id: true
+
+      - name: Create NuGet packages
+        shell: pwsh
+        run: |
+          foreach($file in (ConvertFrom-Json -InputObject "${{ env.PROJECT_PATHS }}")) {
+              dotnet pack $file --configuration Release --output ${{ env.NUGET_DIRECTORY }}
+          }
+
+      - name: Install rl-wrapper
+        env:
+          WRAPPER_INDEX_URL: "https://${{ secrets.PRODSEC_TOOLS_USER }}:${{ secrets.PRODSEC_TOOLS_TOKEN }}@a0us.jfrog.io/artifactory/api/pypi/python-local/simple"
+        run: |
+          pip install rl-wrapper --index-url $WRAPPER_INDEX_URL
+
+      - name: Run Reversing Labs Wrapper Scanner
+        env:
+          RLSECURE_LICENSE: ${{ secrets.RLSECURE_LICENSE }}
+          RLSECURE_SITE_KEY: ${{ secrets.RLSECURE_SITE_KEY }}
+          SIGNAL_HANDLER_TOKEN: ${{ secrets.SIGNAL_HANDLER_TOKEN }}
+          PYTHONUNBUFFERED: 1
+        run: |
+          for file in ${{ env.NUGET_DIRECTORY }}/*.nupkg; do
+            rl-wrapper \
+              --artifact "$file" \
+              --name "${{ github.event.repository.name }}" \
+              --version "${{ steps.get_version.outputs.version }}" \
+              --repository "${{ github.repository }}" \
+              --commit "${{ github.sha }}" \
+              --build-env "github_action"
+          done
+        continue-on-error: true
