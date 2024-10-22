@@ -1,9 +1,13 @@
+
+
 namespace Auth0.ManagementApi.Clients
 {
   using System.Collections.Generic;
   using System.Threading;
   using System.Threading.Tasks;
   using Auth0.ManagementApi.Models.Users;
+  using Auth0.ManagementApi.Models.RefreshTokens;
+  using Auth0.ManagementApi.Models.Sessions;
   using Models;
   using Paging;
 
@@ -267,5 +271,41 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
     /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
     Task DeleteAuthenticationMethodAsync(string userId, string authenticationMethodId, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Retrieve details for a user's refresh tokens.
+    /// </summary>
+    /// <param name="request"><see cref="UserRefreshTokensGetRequest"/></param>
+    /// <param name="pagination"><see cref="CheckpointPaginationInfo"/></param>
+    /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+    /// <returns>Collection of <see cref="RefreshTokenInformation"/></returns>
+    Task<ICheckpointPagedList<RefreshTokenInformation>> GetRefreshTokensAsync(
+      UserRefreshTokensGetRequest request, CheckpointPaginationInfo pagination, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Delete all refresh tokens for a user.
+    /// </summary>
+    /// <param name="userId">ID of the user to remove refresh tokens for</param>
+    /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+    /// <returns></returns>
+    Task DeleteRefreshTokensAsync(string userId, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Retrieve details for a user's sessions.
+    /// </summary>
+    /// <param name="request"><see cref="UserSessionsGetRequest"/></param>
+    /// <param name="pagination"><see cref="CheckpointPaginationInfo"/></param>
+    /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+    /// <returns>Collection of <see cref="Sessions"/></returns>
+    Task<ICheckpointPagedList<Sessions>> GetUserSessionsAsync(
+      UserSessionsGetRequest request, CheckpointPaginationInfo pagination, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Delete all sessions for a user.
+    /// </summary>
+    /// <param name="userId">ID of the user to remove sessions for</param>
+    /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+    /// <returns></returns>
+    Task DeleteSessionsAsync(string userId, CancellationToken cancellationToken = default);
   }
 }

@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Auth0.ManagementApi.Models.RefreshTokens;
+using Auth0.ManagementApi.Models.Sessions;
 
 namespace Auth0.ManagementApi.Clients
 {
@@ -21,6 +23,8 @@ namespace Auth0.ManagementApi.Clients
         readonly JsonConverter[] permissionsConverters = new JsonConverter[] { new PagedListConverter<UserPermission>("permissions") };
         readonly JsonConverter[] organizationsConverters = new JsonConverter[] { new PagedListConverter<Organization>("organizations") };
         readonly JsonConverter[] authenticationMethodConverters = new JsonConverter[] { new PagedListConverter<AuthenticationMethod>("authenticators") };
+        readonly JsonConverter[] refreshTokensConverter = new JsonConverter[] { new CheckpointPagedListConverter<RefreshTokenInformation>("tokens") };
+        readonly JsonConverter[] sessionsConverter = new JsonConverter[] { new CheckpointPagedListConverter<Sessions>("sessions") };
 
         /// <summary>
         /// Initializes a new instance of <see cref="UsersClient"/>.
@@ -470,6 +474,70 @@ namespace Auth0.ManagementApi.Clients
         public Task DeleteAuthenticationMethodAsync(string userId, string authenticationMethodId, CancellationToken cancellationToken = default)
         {
             return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"users/{EncodePath(userId)}/authentication-methods/{EncodePath(authenticationMethodId)}"), null, DefaultHeaders, cancellationToken: cancellationToken);
+        }
+        
+        /// <inheritdoc cref="IUsersClient.GetRefreshTokensAsync"/>
+        public Task<ICheckpointPagedList<RefreshTokenInformation>> GetRefreshTokensAsync(UserRefreshTokensGetRequest request, CheckpointPaginationInfo pagination, CancellationToken cancellationToken = default)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+            
+            if(string.IsNullOrEmpty(request.UserId))
+                throw new ArgumentException("Value cannot be null or empty.", nameof(request.UserId));
+            
+            var queryStrings = new Dictionary<string, string>
+            {
+                {"from", pagination.From},
+                {"take", pagination.Take.ToString()},
+            };
+            
+            return Connection.GetAsync<ICheckpointPagedList<RefreshTokenInformation>>(
+                BuildUri($"users/{EncodePath(request.UserId)}/refresh-tokens", queryStrings),
+                DefaultHeaders, 
+                refreshTokensConverter, cancellationToken: cancellationToken);
+        }
+        
+        /// <inheritdoc cref="IUsersClient.DeleteRefreshTokensAsync"/>
+        public Task DeleteRefreshTokensAsync(string userId, CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<object>(
+                HttpMethod.Delete,
+                BuildUri($"users/{EncodePath(userId)}/refresh-tokens"),
+                null, 
+                DefaultHeaders, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc cref="IUsersClient.GetUserSessionsAsync"/>
+        public Task<ICheckpointPagedList<Sessions>> GetUserSessionsAsync(
+            UserSessionsGetRequest request, CheckpointPaginationInfo pagination,
+            CancellationToken cancellationToken = default)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+            
+            if(string.IsNullOrEmpty(request.UserId))
+                throw new ArgumentException("Value cannot be null or empty.", nameof(request.UserId));
+            
+            var queryStrings = new Dictionary<string, string>
+            {
+                {"from", pagination.From},
+                {"take", pagination.Take.ToString()},
+            };
+            
+            return Connection.GetAsync<ICheckpointPagedList<Sessions>>(
+                BuildUri($"users/{EncodePath(request.UserId)}/sessions", queryStrings),
+                DefaultHeaders, 
+                sessionsConverter, cancellationToken: cancellationToken);
+        }
+        
+        /// <inheritdoc cref="IUsersClient.DeleteSessionsAsync"/>
+        public Task DeleteSessionsAsync(string userId, CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<object>(
+                HttpMethod.Delete,
+                BuildUri($"users/{EncodePath(userId)}/sessions"),
+                null, 
+                DefaultHeaders, cancellationToken: cancellationToken);
         }
     }
 }

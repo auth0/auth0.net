@@ -1,16 +1,22 @@
 ﻿using System;
 using System.Dynamic;
 using System.Threading.Tasks;
-using Auth0.Core.Exceptions;
-using Auth0.ManagementApi.Models;
+using System.Linq;
+using System.Collections.Generic;
+using System.IO;
+
+using Newtonsoft.Json;
 using FluentAssertions;
 using Xunit;
+
+using Auth0.Core.Exceptions;
+using Auth0.ManagementApi.Models;
 using Auth0.Tests.Shared;
-using System.Linq;
 using Auth0.ManagementApi.Paging;
-using System.Collections.Generic;
 using Auth0.IntegrationTests.Shared.CleanUp;
 using Auth0.ManagementApi.IntegrationTests.Testing;
+using Auth0.ManagementApi.Models.RefreshTokens;
+using Auth0.ManagementApi.Models.Sessions;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
@@ -657,6 +663,32 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             var allAuthenticationMethods3 = await fixture.ApiClient.Users.GetAuthenticationMethodsAsync(fixture.User.UserId);
             allAuthenticationMethods3.Count.Should().Be(0);
+        }
+
+        [Fact]
+        public async void Test_get_user_refresh_tokens()
+        {
+            var sampleGetRefreshTokensResponse = await File.ReadAllTextAsync("./Data/UserGetRefreshTokensResponse.json");
+            var httpClientManagementConnection = new HttpClientManagementConnection();
+            var refreshTokens = httpClientManagementConnection.DeserializeContent<ICheckpointPagedList<RefreshTokenInformation>>(
+                sampleGetRefreshTokensResponse,
+                new JsonConverter[] { new CheckpointPagedListConverter<RefreshTokenInformation>("tokens") });
+
+            refreshTokens.Should().NotBeNull();
+            refreshTokens.Count.Should().Be(2);
+        }
+        
+        [Fact]
+        public async void Test_get_user_sessions()
+        {
+            var sampleSessionResponse = await File.ReadAllTextAsync("./Data/UserGetSessionsResponse.json");
+            var httpClientManagementConnection = new HttpClientManagementConnection();
+            var sessions = httpClientManagementConnection.DeserializeContent<ICheckpointPagedList<Sessions>>(
+                sampleSessionResponse,
+                new JsonConverter[] { new CheckpointPagedListConverter<Sessions>("sessions") });
+
+            sessions.Should().NotBeNull();
+            sessions.Count.Should().Be(2);
         }
 
         private class CustomMetadata
