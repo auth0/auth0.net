@@ -119,12 +119,17 @@ namespace Auth0.ManagementApi
 
                 return typeof(T) == typeof(string)
                     ? (T)(object)content
-                    : JsonConvert.DeserializeObject<T>(content,
-                        converters == null ? jsonSerializerSettings : new JsonSerializerSettings() { Converters = converters });
+                    : DeserializeContent<T>(content, converters);
             }
         }
+        
+        internal T DeserializeContent<T>(string content, JsonConverter[] converters)
+        {
+            return JsonConvert.DeserializeObject<T>(content,
+                converters == null ? jsonSerializerSettings : new JsonSerializerSettings() { Converters = converters });
+        }
 
-        private void ApplyHeaders(HttpHeaders current, IDictionary<string, string> input)
+        internal void ApplyHeaders(HttpHeaders current, IDictionary<string, string> input)
         {
             if (input == null) return;
 
