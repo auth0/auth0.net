@@ -162,6 +162,12 @@ namespace Auth0.ManagementApi
         /// Contains all the methods to call the /users endpoints.
         /// </summary>
         public IUsersClient Users { get; }
+        
+        /// <inheritdoc cref="Auth0.ManagementApi.IManagementApiClient.RefreshTokens"/>
+        public IRefreshTokenClient RefreshTokens { get; }
+        
+        /// <inheritdoc cref="Auth0.ManagementApi.IManagementApiClient.Sessions"/>
+        public ISessionsClient Sessions { get; }
 
         private Dictionary<string, string> DefaultHeaders { get; set; }
 
@@ -213,6 +219,8 @@ namespace Auth0.ManagementApi
             Tickets = new TicketsClient(managementConnection, baseUri, DefaultHeaders);
             UserBlocks = new UserBlocksClient(managementConnection, baseUri, DefaultHeaders);
             Users = new UsersClient(managementConnection, baseUri, DefaultHeaders);
+            RefreshTokens = new RefreshTokenClient(managementConnection, baseUri, DefaultHeaders);
+            Sessions = new SessionsClient(managementConnection, baseUri, DefaultHeaders);
         }
 
         /// <summary>

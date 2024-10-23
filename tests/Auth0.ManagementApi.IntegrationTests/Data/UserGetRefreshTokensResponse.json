@@ -1,0 +1,38 @@
+{
+  "tokens": [
+    {
+      "id": "6srfsU4dh510",
+      "user_id": "auth0|8374f7459j7493u84335",
+      "client_id": "Hwo482a51heU632d34",
+      "created_at": "2024-05-10T12:04:22.3452",
+      "updated_at": "2024-05-10T12:04:22.3452",
+      "idle_expires_at": "2024-05-21T12:29:12.4251",
+      "expires_at": "2024-06-21T18:29:12.4251",
+      "session_id": "2Lw8dT76wJpOl924",
+      "rotating": "true",
+      "resource_servers": [
+        {
+          "audience": "http://myapi.com",
+          "scopes": "read:users"
+        }
+      ]
+    },
+    {
+      "id": "6fsdgrfsU4dh510",
+      "user_id": "auth0|8374f7459j7493u766335",
+      "client_id": "Hwo482a51heU632d34",
+      "created_at": "2024-05-10T12:04:22.3452",
+      "updated_at": "2024-05-10T12:04:22.3452",
+      "idle_expires_at": "2024-05-21T12:29:12.4251",
+      "expires_at": "2024-06-21T18:29:12.4251",
+      "session_id": "2Lw8dT76wJpOl924",
+      "rotating": "true",
+      "resource_servers": [
+        {
+          "audience": "http://myapi.com",
+          "scopes": "read:users"
+        }
+      ]
+    }
+  ]
+}

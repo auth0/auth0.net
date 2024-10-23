@@ -150,6 +150,16 @@ namespace Auth0.ManagementApi
     /// Contains all the methods to call the /users endpoints.
     /// </summary>
     IUsersClient Users { get; }
+    
+    /// <summary>
+    /// Contains all the methods to call the /refresh-tokens endpoints.
+    /// </summary>
+    IRefreshTokenClient RefreshTokens { get; }
+    
+    /// <summary>
+    /// Contains all the methods to call the /sessions endpoints.
+    /// </summary>
+    ISessionsClient Sessions { get; }
 
     /// <summary>
     /// Update the Access Token used with every request.
