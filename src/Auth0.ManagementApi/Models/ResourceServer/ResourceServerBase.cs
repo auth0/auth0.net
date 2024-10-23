@@ -25,7 +25,7 @@ namespace Auth0.ManagementApi.Models
         public List<ResourceServerScope> Scopes { get; set; }
 
         /// <summary>
-        /// The algorithm used to sign tokens
+        /// <inheritdoc cref="Auth0.ManagementApi.Models.SigningAlgorithm"/>
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
         [JsonProperty("signing_alg")]
@@ -80,5 +80,30 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("enforce_policies")]
         public bool? EnforcePolicies { get; set; }
+        
+        /// <summary>
+        /// <inheritdoc cref="Auth0.ManagementApi.Models.ConsentPolicy"/>
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonProperty("consent_policy")]
+        public ConsentPolicy? ConsentPolicy { get; set; }
+        
+        /// <summary>
+        /// <inheritdoc cref="ResourceServerAuthorizationDetail"/>
+        /// </summary>
+        [JsonProperty("authorization_details")]
+        public IList<ResourceServerAuthorizationDetail> AuthorizationDetails { get; set; }
+        
+        /// <summary>
+        /// <inheritdoc cref="Auth0.ManagementApi.Models.TokenEncryption"/>
+        /// </summary>
+        [JsonProperty("token_encryption")]
+        public TokenEncryption TokenEncryption { get; set; }
+
+        /// <summary>
+        /// <inheritdoc cref="Auth0.ManagementApi.Models.ProofOfPossession"/>
+        /// </summary>
+        [JsonProperty("proof_of_possession")]
+        public ProofOfPossession ProofOfPossession { get; set; }
     }
 }

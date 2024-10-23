@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Auth0.Core.Exceptions;
 using Auth0.IntegrationTests.Shared.CleanUp;
@@ -59,12 +60,38 @@ namespace Auth0.ManagementApi.IntegrationTests
                 AllowOfflineAccess = true,
                 VerificationLocation = "https://abc.auth0.com/def",
                 SkipConsentForVerifiableFirstPartyClients = true,
+                ConsentPolicy = ConsentPolicy.TransactionalAuthorizationWithMfa,
+                AuthorizationDetails = new List<ResourceServerAuthorizationDetail>()
+                {
+                    new ResourceServerAuthorizationDetail()
+                    {
+                        Type = "Sample"
+                    }
+                },
+                TokenEncryption = new TokenEncryption()
+                {
+                    Format = TokenFormat.CompactNestedJwe,
+                    EncryptionKey = new TokenEncryptionKey()
+                    {
+                        Name = "Sample",
+                        Algorithm = "RSA-OAEP-256",
+                        Kid = "Sample",
+                        Pem = RsaTestUtils.ExportPublicKey(new RSACryptoServiceProvider(2048))
+                    }
+                },
+                ProofOfPossession = new ProofOfPossession()
+                {
+                    Mechanism = Mechanism.Mtls,
+                    Required = true
+                }
             };
 
             var newResourceServerResponse = await fixture.ApiClient.ResourceServers.CreateAsync(createResourceServerRequest);
 
             fixture.TrackIdentifier(CleanUpType.ResourceServers, newResourceServerResponse.Id);
 
+            // CreateResourceServerResponse will always have Pem as NULL
+            createResourceServerRequest.TokenEncryption.EncryptionKey.Pem = null;
             newResourceServerResponse.Should().BeEquivalentTo(createResourceServerRequest, options => options.Excluding(rs => rs.Id));
 
             // Update the resource server
@@ -93,9 +120,40 @@ namespace Auth0.ManagementApi.IntegrationTests
                 TokenDialect = TokenDialect.AccessToken,
                 VerificationLocation = "",
                 SkipConsentForVerifiableFirstPartyClients = false,
+                ConsentPolicy = ConsentPolicy.TransactionalAuthorizationWithMfa,
+                AuthorizationDetails = new List<ResourceServerAuthorizationDetail>()
+                {
+                    new ResourceServerAuthorizationDetail()
+                    {
+                        Type = "Sample"
+                    }
+                },
+                TokenEncryption = new TokenEncryption()
+                {
+                    Format = TokenFormat.CompactNestedJwe,
+                    EncryptionKey = new TokenEncryptionKey()
+                    {
+                        Name = "Sample",
+                        Algorithm = "RSA-OAEP-256",
+                        Kid = "Sample",
+                        Pem = RsaTestUtils.ExportPublicKey(new RSACryptoServiceProvider(2048))
+                    }
+                },
+                ProofOfPossession = new ProofOfPossession()
+                {
+                    Mechanism = Mechanism.Mtls,
+                    Required = true
+                }
             };
             var updateResourceServerResponse = await fixture.ApiClient.ResourceServers.UpdateAsync(newResourceServerResponse.Id, updateResourceServerRequest);
+            
+            // Update Resource Server response will always have Pem as NULL
+            updateResourceServerRequest.TokenEncryption.EncryptionKey.Pem = null;
             updateResourceServerResponse.Should().BeEquivalentTo(updateResourceServerRequest, options => options.ExcludingMissingMembers());
+            updateResourceServerResponse.AuthorizationDetails.Should().NotBeNullOrEmpty();
+            updateResourceServerResponse.TokenEncryption.Should().NotBeNull();
+            updateResourceServerResponse.ProofOfPossession.Should().NotBeNull();
+            updateResourceServerResponse.ProofOfPossession.Mechanism.Should().Be(Mechanism.Mtls);
 
             // Get a single resource server
             var resourceServer = await fixture.ApiClient.ResourceServers.GetAsync(newResourceServerResponse.Id);

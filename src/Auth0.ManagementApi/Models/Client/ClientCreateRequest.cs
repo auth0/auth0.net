@@ -36,23 +36,30 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("client_authentication_methods")]
         public CreateClientAuthenticationMethods ClientAuthenticationMethods { get; set; }
+        
+        /// <summary>
+        /// JWT-secured Authorization Requests (JAR) settings.
+        /// </summary>
+        [JsonProperty("signed_request_object")]
+        public CreateSignedRequestObject SignedRequestObject { get; set; }
     }
-
+    
     /// <summary>
-    /// Structure for creating new client authentication methods
+    /// Structure for creating a new SignedRequestObject
     /// </summary>
-    public class CreateClientAuthenticationMethods
+    public class CreateSignedRequestObject
     {
-        [JsonProperty("private_key_jwt")]
-        public CreatePrivateKeyJwt PrivateKeyJwt { get; set; }
-    }
-
-    /// <summary>
-    /// Structure for creating a new client credential using Private Key JWT
-    /// </summary>
-    public class CreatePrivateKeyJwt
-    {
+        
+        /// <summary>
+        /// Indicates whether the JAR requests are mandatory
+        /// </summary>
+        [JsonProperty("required")]
+        public bool? Required { get; set; }
+        
+        /// <summary>
+        /// List of <see cref="Credentials"/> for the JAR requests
+        /// </summary>
         [JsonProperty("credentials")]
-        public IList<ClientCredentialCreateRequest> Credentials { get; set; }
+        public IList<CredentialsCreateRequest> Credentials { get; set; }
     }
 }

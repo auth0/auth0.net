@@ -130,5 +130,23 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("customize_mfa_in_postlogin_action")]
         public bool? CustomizeMfaInPostLoginAction { get; set; } = null;
+        
+        /// <summary>
+        /// Supported ACR values
+        /// </summary>
+        [JsonProperty("acr_values_supported")]
+        public string[] AcrValuesSupported { get; set; }
+        
+        /// <summary>
+        /// Enables the use of Pushed Authorization Requests
+        /// </summary>
+        [JsonProperty("pushed_authorization_requests_supported")]
+        public bool? PushedAuthorizationRequestsSupported { get; set; }
+
+        /// <summary>
+        /// mTLS configuration.
+        /// </summary>
+        [JsonProperty("mtls")]
+        public TenantMtls Mtls { get; set; }
     }
 }

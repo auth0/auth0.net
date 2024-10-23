@@ -54,6 +54,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                         EnableAPIsSection = true,
                         EnableClientConnections = false,
                         EnablePipeline2 = true,
+                        RemoveAlgFromJwks = true
                     },
                     DeviceFlow = new TenantDeviceFlow()
                     {
@@ -64,7 +65,10 @@ namespace Auth0.ManagementApi.IntegrationTests
                     AllowedLogoutUrls = new string[] { "https://app.com/logout", "http://localhost/logout" },
                     SessionLifetime = 1080,
                     IdleSessionLifetime = 720,
-                    CustomizeMfaInPostLoginAction = true
+                    CustomizeMfaInPostLoginAction = true,
+                    AcrValuesSupported = new []{"value1", "value2"},
+                    PushedAuthorizationRequestsSupported = true,
+                    Mtls = new TenantMtls() { EnableEndpointAliases = true },
                 };
 
                 var settingsUpdateResponse = await apiClient.TenantSettings.UpdateAsync(settingsUpdateRequest);
@@ -80,6 +84,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 settingsUpdateResponse.Flags.EnableAPIsSection.Should().BeTrue();
                 settingsUpdateResponse.Flags.EnableClientConnections.Should().BeFalse();
                 settingsUpdateResponse.Flags.EnablePipeline2.Should().BeTrue();
+                settingsUpdateResponse.Flags.RemoveAlgFromJwks.Should().BeTrue();
                 settingsUpdateResponse.CustomizeMfaInPostLoginAction.Should().BeTrue();
                 settingsUpdateResponse.SessionCookie.Mode.Should().Be("persistent");
 
@@ -100,10 +105,17 @@ namespace Auth0.ManagementApi.IntegrationTests
                         Html = null,
                         Enabled = false,
                     },
+                    Flags = new TenantFlags()
+                    {
+                        RemoveAlgFromJwks = false
+                    },
                     FriendlyName = "Auth0.NET SDK integration test",
                     PictureUrl = "",
                     SupportEmail = "sdks@auth0.com",
                     SupportUrl = "",
+                    AcrValuesSupported = null,
+                    PushedAuthorizationRequestsSupported = false,
+                    Mtls = null,
                 };
 
                 await apiClient.TenantSettings.UpdateAsync(resetUpdateRequest);

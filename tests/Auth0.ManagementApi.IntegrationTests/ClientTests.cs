@@ -79,9 +79,27 @@ namespace Auth0.ManagementApi.IntegrationTests
                 {
                     OrganizationId = existingOrganizationId,
                     Flows = new[] { Flows.ClientCredentials }
-                }
+                },
+                RequirePushedAuthorizationRequests = true,
+                SignedRequestObject = new CreateSignedRequestObject()
+                {
+                    Required = true,
+                    Credentials = new List<CredentialsCreateRequest>()
+                    {
+                        new CredentialsCreateRequest()
+                        {
+                            Name = "Sample-Credentials",
+                            Pem = RsaTestUtils.ExportPublicKey(new RSACryptoServiceProvider(2048)),
+                            CredentialType = "public_key",
+                            Algorithm = "RS256"
+                        }
+                    }
+                },
+                ComplianceLevel = ComplianceLevel.FAPI1_ADV_PKJ_PAR,
+                RequireProofOfPossession = true
             };
             var newClientResponse = await fixture.ApiClient.Clients.CreateAsync(newClientRequest);
+            fixture.TrackIdentifier(CleanUpType.Clients, newClientResponse.ClientId);
             newClientResponse.Should().NotBeNull();
             newClientResponse.Name.Should().Be(newClientRequest.Name);
             newClientResponse.TokenEndpointAuthMethod.Should().Be(TokenEndpointAuthMethod.ClientSecretPost);
@@ -97,7 +115,13 @@ namespace Auth0.ManagementApi.IntegrationTests
             newClientResponse.OidcLogout.BackchannelLogoutInitiators.SelectedInitiators.Length.Should().Be(3);
             newClientResponse.OidcLogout.BackchannelLogoutInitiators.SelectedInitiators.Any(i => i == LogoutInitiators.PasswordChanged).Should().BeTrue();
             newClientResponse.DefaultOrganization.OrganizationId.Should().Be(existingOrganizationId);
-
+            newClientResponse.RequirePushedAuthorizationRequests.Should().BeTrue();
+            newClientResponse.SignedRequestObject.Should().NotBeNull();
+            newClientResponse.SignedRequestObject.Credentials.Should().NotBeNull();
+            newClientResponse.SignedRequestObject.Credentials.First().Id.Should().NotBeNull();
+            newClientResponse.ComplianceLevel.Should().Be(ComplianceLevel.FAPI1_ADV_PKJ_PAR);
+            newClientResponse.RequireProofOfPossession.Should().BeTrue();
+            
             string prop1 = newClientResponse.ClientMetaData.Prop1;
             prop1.Should().Be("1");
             string prop2 = newClientResponse.ClientMetaData.Prop2;
@@ -120,8 +144,16 @@ namespace Auth0.ManagementApi.IntegrationTests
                     TokenLifetime = 3600,
                     Leeway = 1800
                 },
-                OrganizationRequireBehavior = OrganizationRequireBehavior.NoPrompt
+                OrganizationRequireBehavior = OrganizationRequireBehavior.NoPrompt,
+                RequirePushedAuthorizationRequests = false,
+                SignedRequestObject = new SignedRequestObject()
+                {
+                    Required = false
+                },
+                ComplianceLevel = ComplianceLevel.NONE,
+                RequireProofOfPossession = false
             };
+            
             var updateClientResponse = await fixture.ApiClient.Clients.UpdateAsync(newClientResponse.ClientId, updateClientRequest);
             updateClientResponse.Should().NotBeNull();
             updateClientResponse.Name.Should().Be(updateClientRequest.Name);
@@ -142,6 +174,10 @@ namespace Auth0.ManagementApi.IntegrationTests
             updateClientResponse.DefaultOrganization.OrganizationId.Should().Be(existingOrganizationId);
             updateClientResponse.DefaultOrganization.Flows.Should().HaveCount(1);
             updateClientResponse.DefaultOrganization.Flows.First().Should().Be(Flows.ClientCredentials);
+            updateClientResponse.RequirePushedAuthorizationRequests.Should().BeFalse();
+            updateClientResponse.SignedRequestObject.Required.Should().BeFalse();
+            updateClientResponse.ComplianceLevel.Should().Be(ComplianceLevel.NONE);
+            updateClientResponse.RequireProofOfPossession.Should().BeFalse();
 
             // Get a single client
             var client = await fixture.ApiClient.Clients.GetAsync(newClientResponse.ClientId);
@@ -150,6 +186,9 @@ namespace Auth0.ManagementApi.IntegrationTests
             client.DefaultOrganization.OrganizationId.Should().Be(existingOrganizationId);
             client.DefaultOrganization.Flows.Should().HaveCount(1);
             client.DefaultOrganization.Flows.First().Should().Be(Flows.ClientCredentials);
+            client.RequirePushedAuthorizationRequests.Should().BeFalse();
+            client.SignedRequestObject.Required.Should().BeFalse();
+            client.ComplianceLevel.Should().Be(ComplianceLevel.NONE);
 
             // Delete the client, and ensure we get exception when trying to fetch client again
             await fixture.ApiClient.Clients.DeleteAsync(client.ClientId);

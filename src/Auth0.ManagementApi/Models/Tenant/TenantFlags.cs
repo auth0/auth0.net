@@ -132,5 +132,11 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("require_pushed_authorization_requests")]
         public bool? RequirePushedAuthorizationRequests { get; set; } = null;
+        
+        /// <summary>
+        /// Removes alg property from jwks .well-known endpoint
+        /// </summary>
+        [JsonProperty("remove_alg_from_jwks")]
+        public bool? RemoveAlgFromJwks { get; set; } = null;
     }
 }
