@@ -88,5 +88,17 @@ namespace Auth0.AuthenticationApi.Models
         /// Any additional properties to use.
         /// </summary>
         public IDictionary<string, string> AdditionalProperties { get; set; } = new Dictionary<string, string>();
+        
+        /// <summary>
+        /// Allows JWT-Secured Authorization Request (JAR), when JAR & PAR request are used together.
+        /// </summary>
+        public string Request { get; set; }
+        
+        /// <summary>
+        /// A JSON stringified array of objects.
+        /// It can carry fine-grained authorization data in OAuth messages as part of Rich Authorization Requests (RAR)
+        /// <see href="https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow/authorization-code-flow-with-rar">reference</see>
+        /// </summary>
+        public string AuthorizationDetails { get; set; }
     }
 }

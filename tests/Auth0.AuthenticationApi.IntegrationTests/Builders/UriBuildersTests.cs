@@ -303,5 +303,18 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Builders
 
             wsfedUrl.Should().Be(@"https://dx-sdks-testing.us.auth0.com/wsfed?wctx=xcrf%3Dabc%26ru%3D%2Ffoo");
         }
+        
+        [Fact]
+        public void Can_build_with_request()
+        {
+            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
+
+            var wsfedUrl = authenticationApiClient.BuildAuthorizationUrl()
+                .WithClient("client-id")
+                .WithRequest("this-is-a-sample-jwt-request")
+                .Build();
+
+            wsfedUrl.Should().Be(@"https://dx-sdks-testing.us.auth0.com/authorize?client_id=client-id&request=this-is-a-sample-jwt-request");
+        }
     }
 }
