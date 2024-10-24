@@ -26,6 +26,7 @@ namespace Auth0.ManagementApi.Models
 
         /// <summary>
         /// The algorithm used to sign the JsonWebToken. Possible values are 'HS256' or 'RS256'.
+        /// 'PS256' available via addon.
         /// </summary>
         [JsonProperty("alg")]
         public string SigningAlgorithm { get; set; }

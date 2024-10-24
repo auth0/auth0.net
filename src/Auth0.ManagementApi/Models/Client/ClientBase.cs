@@ -205,7 +205,17 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("default_organization")]
         public DefaultOrganization DefaultOrganization { get; set; }
+        
+        /// <inheritdoc cref="Auth0.ManagementApi.Models.ComplianceLevel"/>
+        [JsonProperty("compliance_level")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ComplianceLevel? ComplianceLevel { get; set; }
+        
+        /// <summary>
+        /// Makes the use of Proof-of-Possession mandatory for this client
+        /// </summary>
+        [JsonProperty("require_proof_of_possession")]
+        public bool? RequireProofOfPossession { get; set; }
     }
-
 }
 

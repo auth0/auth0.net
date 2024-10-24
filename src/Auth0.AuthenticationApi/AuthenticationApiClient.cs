@@ -482,6 +482,8 @@ namespace Auth0.AuthenticationApi
             body.AddIfNotEmpty("connection", request.Connection);
             body.AddIfNotEmpty("scope", request.Scope);
             body.AddIfNotEmpty("audience", request.Audience);
+            body.AddIfNotEmpty("request", request.Request);
+            body.AddIfNotEmpty("authorization_details", request.AuthorizationDetails);
             
             body.AddAll(request.AdditionalProperties);
 

@@ -27,5 +27,11 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("client_authentication_methods")]
         public ClientAuthenticationMethods ClientAuthenticationMethods { get; set; }
+        
+        /// <summary>
+        /// JWT-secured Authorization Requests (JAR) settings.
+        /// </summary>
+        [JsonProperty("signed_request_object")]
+        public SignedRequestObject SignedRequestObject { get; set; }
     }
 }

@@ -158,6 +158,8 @@ public class PushedAuthorizationRequestTests
             { "organization", "TEST_ORGANIZATION" },
             { "invitation", "TEST_INVITATION" },
             { "scope", "TEST_SCOPE" },
+            { "request", "TEST_REQUEST_JWT"},
+            { "authorization_details", "TEST_AUTHORIZATION_DETAILS"}
         };
 
         mockHandler.Protected()
@@ -185,7 +187,9 @@ public class PushedAuthorizationRequestTests
             Nonce = "TEST_NONCE",
             Organization = "TEST_ORGANIZATION",
             Invitation = "TEST_INVITATION",
-            Scope = "TEST_SCOPE"
+            Scope = "TEST_SCOPE",
+            Request = "TEST_REQUEST_JWT",
+            AuthorizationDetails = "TEST_AUTHORIZATION_DETAILS"
         });
 
         tokenReponse.Should().NotBeNull();

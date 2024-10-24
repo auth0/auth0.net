@@ -1,7 +1,7 @@
 ﻿namespace Auth0.ManagementApi.Models
 {
     /// <summary>
-    /// Alogithm a token can be signed with.
+    /// Algorithm used to sign JWTs. Can be HS256 or RS256. PS256 available via addon.
     /// </summary>
     public enum SigningAlgorithm
     {
@@ -13,6 +13,11 @@
         /// <summary>
         /// RS256 asymmetrical (requires access to JWKS public keys)
         /// </summary>
-        RS256
+        RS256,
+        
+        /// <summary>
+        /// PS256 available via addon. 
+        /// </summary>
+        PS256
     }
 }

@@ -196,5 +196,15 @@ namespace Auth0.AuthenticationApi.Builders
         {
             return WithValue("invitation", invitation);
         }
+        
+        /// <summary>
+        /// Adds the `request` query string parameter.
+        /// </summary>
+        /// <param name="request">Signed JWT request</param>
+        /// <returns>Current <see cref="AuthorizationUrlBuilder"/> to allow fluent configuration.</returns>
+        public AuthorizationUrlBuilder WithRequest(string request)
+        {
+            return WithValue("request", request);
+        }
     }
 }
