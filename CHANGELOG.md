@@ -1,5 +1,13 @@
 # Change Log
 
+## [7.28.0](https://github.com/auth0/auth0.net/tree/7.28.0) (2024-10-25)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.27.0...7.28.0)
+
+**Added**
+- Adds support for HRI [\#738](https://github.com/auth0/auth0.net/pull/738) ([kailash-b](https://github.com/kailash-b))
+- Adds support for session management and refresh-tokens [\#737](https://github.com/auth0/auth0.net/pull/737) ([kailash-b](https://github.com/kailash-b))
+- Organization support for client credentials [\#733](https://github.com/auth0/auth0.net/pull/733) ([kailash-b](https://github.com/kailash-b))
+
 ## [7.27.0](https://github.com/auth0/auth0.net/tree/7.27.0) (2024-09-30)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.26.2...7.27.0)
 
