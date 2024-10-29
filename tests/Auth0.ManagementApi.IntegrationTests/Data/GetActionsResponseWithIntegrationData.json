@@ -1,0 +1,137 @@
+{
+  "id": "9be52336-3338-46fe-be43-3845ea874b16",
+  "name": "post-login-action",
+  "supported_triggers": [
+    {
+      "id": "post-login",
+      "version": "v3",
+      "status": "built",
+      "runtimes": [
+        "v18",
+        "v19",
+        "v20"
+      ],
+      "default_runtime": "v18",
+      "compatible_triggers": [
+        {
+          "id": "d929f92d-efd5-465f-9801-cdd40bfe2c55",
+          "version": "v2"
+        }
+      ],
+      "binding_policy": "trigger-bound"
+    }
+  ],
+  "created_at": "2024-10-28T11:53:00.800362301Z",
+  "updated_at": "2024-10-28T11:53:00.811042526Z",
+  "built_at": "2024-10-28T11:53:00.811042526Z",
+  "code": "// --- AUTH0 ACTIONS TEMPLATE https://github.com/auth0/opensource-marketplace/blob/main/templates/add-email-to-access-token-POST_LOGIN ---\n/**\n * Handler that will be called during the execution of a PostLogin flow.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\n */\nexports.onExecutePostLogin = async (event, api) => {\n    // This action adds the authenticated user's email address to the access token.\n\n    let namespace = event.secrets.NAMESPACE || '';\n    if (namespace && !namespace.endsWith('/')) {\n        namespace += '/';\n    }\n\n    api.accessToken.setCustomClaim(namespace + 'email', event.user.email);\n};\n\n/**\n * Handler that will be invoked when this action is resuming after an external redirect. If your\n * onExecutePostLogin function does not perform a redirect, this function can be safely ignored.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\n */\n// exports.onContinuePostLogin = async (event, api) => {\n// };\n",
+  "dependencies": [],
+  "runtime": "node18-actions",
+  "status": "building",
+  "secrets": [],
+  "current_version": {
+    "id": "51ab4488-998b-4956-808c-86cd0deb3663",
+    "code": "// --- AUTH0 ACTIONS TEMPLATE https://github.com/auth0/opensource-marketplace/blob/main/templates/add-email-to-access-token-POST_LOGIN ---\n/**\n * Handler that will be called during the execution of a PostLogin flow.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\n */\nexports.onExecutePostLogin = async (event, api) => {\n    // This action adds the authenticated user's email address to the access token.\n\n    let namespace = event.secrets.NAMESPACE || '';\n    if (namespace && !namespace.endsWith('/')) {\n        namespace += '/';\n    }\n\n    api.accessToken.setCustomClaim(namespace + 'email', event.user.email);\n};\n\n/**\n * Handler that will be invoked when this action is resuming after an external redirect. If your\n * onExecutePostLogin function does not perform a redirect, this function can be safely ignored.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\n */\n// exports.onContinuePostLogin = async (event, api) => {\n// };\n",
+    "runtime": "node18-actions",
+    "status": "BUILT",
+    "number": 1,
+    "build_time": "2024-10-28T11:53:22.299356405Z",
+    "created_at": "2024-10-28T11:53:22.202130877Z",
+    "updated_at": "2024-10-28T11:53:22.300515959Z"
+  },
+  "deployed_version": {
+    "code": "// --- AUTH0 ACTIONS TEMPLATE https://github.com/auth0/opensource-marketplace/blob/main/templates/add-email-to-access-token-POST_LOGIN ---\n/**\n * Handler that will be called during the execution of a PostLogin flow.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\n */\nexports.onExecutePostLogin = async (event, api) => {\n    // This action adds the authenticated user's email address to the access token.\n\n    let namespace = event.secrets.NAMESPACE || '';\n    if (namespace && !namespace.endsWith('/')) {\n        namespace += '/';\n    }\n\n    api.accessToken.setCustomClaim(namespace + 'email', event.user.email);\n};\n\n/**\n * Handler that will be invoked when this action is resuming after an external redirect. If your\n * onExecutePostLogin function does not perform a redirect, this function can be safely ignored.\n *\n * @param {Event} event - Details about the user and the context in which they are logging in.\n * @param {PostLoginAPI} api - Interface whose methods can be used to change the behavior of the login.\n */\n// exports.onContinuePostLogin = async (event, api) => {\n// };\n",
+    "dependencies": [],
+    "id": "51ab4488-998b-4956-808c-86cd0deb3663",
+    "deployed": true,
+    "number": 1,
+    "built_at": "2024-10-28T11:53:22.299356405Z",
+    "secrets": [],
+    "status": "built",
+    "created_at": "2024-10-28T11:53:22.202130877Z",
+    "updated_at": "2024-10-28T11:53:22.300515959Z",
+    "runtime": "node18-actions",
+    "supported_triggers": [
+      {
+        "id": "post-login",
+        "version": "v3"
+      }
+    ]
+  },
+  "all_changes_deployed": true,
+  "installed_integration_id": "a758bb11-51fd-4e81-b707-e41f565fd046",
+  "integration": {
+    "id": "750ce7ba-eac5-44a2-97ac-a67b2183bdea",
+    "catalog_id": "auth0-country-based-access",
+    "url_slug": "country-based-access",
+    "partner_id": "d929f92d-efd5-465f-9801-cdd40bfe2c39",
+    "name": "Country-based Access",
+    "description": "This integration allows you to restrict access to your applications by country. You may choose to implement Country-based Access controls for various reasons, including to allow your applications to comply with unique restrictions based on where you do business. \n\nWith the Country-based Access integration, you can define any and all countries to restrict persons and entities from those countries logging into your applications. ",
+    "short_description": "Restrict access to users by country",
+    "logo": "https://cdn.auth0.com/marketplace/catalog/content/assets/creators/auth0/auth0-avatar.png",
+    "terms_of_use_url": "https://cdn.auth0.com/website/legal/files/mktplace/auth0-integration.pdf",
+    "public_support_link": "https://support.auth0.com/",
+    "updated_at": "2022-05-18T22:38:09.809749669Z",
+    "created_at": "2022-05-12T19:54:02.958669136Z",
+    "feature_type": "action",
+    "current_release": {
+      "id": "d929f92d-efd5-465f-9801-cdd40bfe2c61",
+      "semver": {
+        "major": 8,
+        "minor": 1
+      },
+      "trigger": {
+        "id": "d929f92d-edv5-465f-9801-cdd40bfe2c39",
+        "version": "v1",
+        "status": "built",
+        "runtimes": [
+          "v18",
+          "v19",
+          "v20"
+        ],
+        "default_runtime": "v18",
+        "compatible_triggers": [
+          {
+            "id": "d929f92d-efd5-465f-9801-cdd40bfe2c55",
+            "version": "v2"
+          }
+        ],
+        "binding_policy": "trigger-bound"
+      },
+      "required_secrets": [
+        {
+          "type": "STRING",
+          "name": "secret",
+          "required": true,
+          "optional": true,
+          "label": "short label",
+          "description": "lengthy description",
+          "placeholder": "placeholder text",
+          "options": [
+            {
+              "value": "This value",
+              "label": "option label"
+            }
+          ]
+        }
+      ],
+      "required_configuration": [
+        {
+          "type": "STRING",
+          "name": "secret",
+          "required": true,
+          "optional": true,
+          "label": "short label",
+          "description": "lengthy description",
+          "placeholder": "placeholder text",
+          "options": [
+            {
+              "value": "This value",
+              "label": "option label"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

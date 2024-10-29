@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Auth0.ManagementApi.Models.Actions
 {
@@ -37,5 +38,16 @@ namespace Auth0.ManagementApi.Models.Actions
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
+        
+        /// <summary>
+        /// Informs which other trigger supports the same event and api.
+        /// </summary>
+        [JsonProperty("compatible_triggers")]
+        public IList<CompatibleTrigger> CompatibleTriggers { get; set; }
+        
+        /// <inheritdoc cref="Auth0.ManagementApi.Models.Actions.BindingPolicy"/>
+        [JsonProperty("binding_policy")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public BindingPolicy BindingPolicy { get; set; }
     }
 }
