@@ -18,5 +18,11 @@ namespace Auth0.ManagementApi.Models.Actions
         /// </summary>
         [JsonProperty("version")]
         public string Version { get; set; }
+        
+        /// <summary>
+        /// Optional value used primarily for private non registries.
+        /// </summary>
+        [JsonProperty("registry_url")]
+        public string RegistryUrl { get; set; }
     }
 }

@@ -50,5 +50,21 @@ namespace Auth0.ManagementApi.Models.Actions
         /// </summary>
         [JsonProperty("supported_triggers")]
         public IList<ActionSupportedTrigger> SupportedTriggers { get; set; }
+        
+        /// <summary>
+        /// The fk reference to InstalledIntegration entity.
+        /// </summary>
+        [JsonProperty("installed_integration_id")]
+        public string InstalledIntegrationId { get; set; }
+        
+        ///  <inheritdoc cref="Auth0.ManagementApi.Models.Actions.Integration"/>
+        [JsonProperty("integration")]
+        public Integration Integration { get; set; }
+        
+        /// <summary>
+        /// The time when this action was built successfully.
+        /// </summary>
+        [JsonProperty("built_at")]
+        public DateTime BuiltAt { get; set; }
     }
 }
