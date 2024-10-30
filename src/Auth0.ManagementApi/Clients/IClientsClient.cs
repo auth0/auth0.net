@@ -32,6 +32,15 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
     /// <returns>An <see cref="IPagedList{Client}"/> containing the clients.</returns>
     Task<IPagedList<Client>> GetAllAsync(GetClientsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Retrieves a list of all client applications.
+    /// </summary>
+    /// <param name="request">Specifies criteria to use when querying clients.</param>
+    /// <param name="pagination">Specifies <see cref="CheckpointPaginationInfo"/> to use in requesting checkpoint-paginated results.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>An <see cref="ICheckpointPagedList{Client}"/> containing the clients.</returns>
+    Task<ICheckpointPagedList<Client>> GetAllAsync(GetClientsRequest request, CheckpointPaginationInfo pagination, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Retrieves a client by its id.
