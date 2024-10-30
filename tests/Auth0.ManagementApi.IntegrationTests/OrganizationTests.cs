@@ -463,11 +463,11 @@ namespace Auth0.ManagementApi.IntegrationTests
             
             var request = new GetClientsRequest()
             {
-                Query = $"client_grant.organization_id:{organization.Id}"
+                Query = $"client_grant.allow_any_organization:true"
             };
             
             // Act
-            var clients = await fixture.ApiClient.Clients.GetAllAsync(request, new PaginationInfo(0, 100));
+            var clients = await fixture.ApiClient.Clients.GetAllAsync(request, new CheckpointPaginationInfo(100));
             
             // Assert
             Assert.Contains(clients.ToList(), x => x.ClientId == client.ClientId);

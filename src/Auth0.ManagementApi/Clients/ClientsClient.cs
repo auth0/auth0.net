@@ -16,6 +16,7 @@ namespace Auth0.ManagementApi.Clients
     public class ClientsClient : BaseClient, IClientsClient
     {
         readonly JsonConverter[] converters = new JsonConverter[] { new PagedListConverter<Client>("clients") };
+        readonly JsonConverter[] checkpointConverters = new JsonConverter[] { new CheckpointPagedListConverter<Client>("clients") };
 
         /// <summary>
         /// Initializes a new instance of <see cref="ClientsClient"/>.
@@ -82,6 +83,33 @@ namespace Auth0.ManagementApi.Clients
                 queryStrings.Add("app_type", string.Join(",", request.AppType.Select(ExtensionMethods.ToEnumString)));
 
             return Connection.GetAsync<IPagedList<Client>>(BuildUri("clients", queryStrings), DefaultHeaders, converters, cancellationToken);
+        }
+        
+        /// <inheritdoc cref="IClientsClient.GetAllAsync(Auth0.ManagementApi.Models.GetClientsRequest,Auth0.ManagementApi.Paging.CheckpointPaginationInfo,System.Threading.CancellationToken)"/> 
+        public Task<ICheckpointPagedList<Client>> GetAllAsync(GetClientsRequest request, CheckpointPaginationInfo pagination, CancellationToken cancellationToken = default)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            var queryStrings = new Dictionary<string, string>
+            {
+                {"fields", request.Fields},
+                {"include_fields", request.IncludeFields?.ToString().ToLower()},
+                {"is_global", request.IsGlobal?.ToString().ToLower()},
+                {"is_first_party", request.IsFirstParty?.ToString().ToLower()},
+                {"q", request.Query?.ToLower()}
+            };
+
+            if (pagination != null)
+            {
+                queryStrings["from"] = pagination.From?.ToString();
+                queryStrings["take"] = pagination.Take.ToString();
+            }
+
+            if (request.AppType != null)
+                queryStrings.Add("app_type", string.Join(",", request.AppType.Select(ExtensionMethods.ToEnumString)));
+
+            return Connection.GetAsync<ICheckpointPagedList<Client>>(BuildUri("clients", queryStrings), DefaultHeaders, checkpointConverters, cancellationToken);
         }
 
         /// <summary>
