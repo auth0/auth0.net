@@ -1,11 +1,30 @@
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Auth0.IntegrationTests.Shared.CleanUp;
+using Auth0.ManagementApi.Clients;
+using Auth0.ManagementApi.IntegrationTests.Testing;
+using Auth0.ManagementApi.Models.Keys;
+using Auth0.ManagementApi.Paging;
 using FluentAssertions;
+using Newtonsoft.Json;
 using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
-    public class KeysTestsFixture : TestBaseFixture {}
+    public class KeysTestsFixture : TestBaseFixture
+    {
+        public override async Task DisposeAsync()
+        {
+            foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
+            {
+                await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
+            }
+
+            ApiClient.Dispose();
+        }
+    }
 
     public class KeysTests : IClassFixture<KeysTestsFixture>
     {
@@ -76,6 +95,65 @@ namespace Auth0.ManagementApi.IntegrationTests
 
             // Assert
             revoked.Kid.Should().Be(previousKeyId);
+        }
+
+        [Fact]
+        public async Task Test_encryption_keys_crud_sequence()
+        {
+            var encryptionKeysCreateRequest = new EncryptionKeyCreateRequest()
+            {
+                Type = "customer-provided-root-key"
+            };
+            // Create a new Encryption Key for testing purpose
+            var encryptionKey = await fixture.ApiClient.Keys.CreateEncryptionKeyAsync(encryptionKeysCreateRequest);
+            fixture.TrackIdentifier(CleanUpType.EncryptionKeys, encryptionKey.Kid);
+            
+            encryptionKey.Type.Should().Be(EncryptionKeyType.CustomerProvidedRootKey);
+            encryptionKey.State.Should().NotBeNull();
+            
+            // Get all the existing encryption keys
+            var allEncryptionKeys = 
+                await fixture.ApiClient.Keys.GetAllEncryptionKeysAsync(new PaginationInfo());
+            allEncryptionKeys.Count.Should().BeGreaterThan(0);
+            
+            // Get the newly created encryption key by its kid
+            var encryptionKeyById = await fixture.ApiClient.Keys.GetEncryptionKeyAsync(new EncryptionKeyGetRequest()
+            {
+                Kid = encryptionKey.Kid     
+            });
+            encryptionKeyById.Should().BeEquivalentTo(encryptionKey);
+
+            // Create Public key wrapping
+            var wrapping = await fixture.ApiClient.Keys.CreatePublicWrappingKeyAsync(new WrappingKeyCreateRequest()
+            {
+                Kid = encryptionKey.Kid
+            });
+
+            wrapping.Should().NotBeNull();
+            wrapping.Algorithm.Should().NotBeNull();
+            wrapping.PublicKey.Should().NotBeNull();
+
+            // Delete the encryption key
+            await fixture.ApiClient.Keys.DeleteEncryptionKeyAsync(encryptionKey.Kid);
+            fixture.UnTrackIdentifier(CleanUpType.EncryptionKeys, encryptionKey.Kid);
+            var allEncryptionKeysAfterCleanup = 
+                await fixture.ApiClient.Keys.GetAllEncryptionKeysAsync(new PaginationInfo());
+            allEncryptionKeysAfterCleanup.Should().NotContain(encryptionKey);
+        }
+        
+        [Fact]
+        public async void Test_import_encrypted_keys()
+        {
+            var sampleImportEncryptionKeyResponse = 
+                await File.ReadAllTextAsync("./Data/ImportEncryptionKeyResponse.json");
+            var httpClientManagementConnection = new HttpClientManagementConnection();
+            var importedKeys = 
+                httpClientManagementConnection.DeserializeContent<EncryptionKey>(sampleImportEncryptionKeyResponse, null);
+            importedKeys.PublicKey.Should().Be("Random-PUBLIC-KEY");
+            importedKeys.Kid.Should().Be("093e36a8-88a1-4c34-8202-e454553ee2dc");
+            importedKeys.State.Should().Be(EncryptionKeyState.Destroyed);
+            importedKeys.Type.Should().Be(EncryptionKeyType.CustomerProvidedRootKey);
+            importedKeys.ParentKid.Should().Be("a20128c5-9bf5-4209-8c43-b6dfcee60e9b");
         }
     }
 }

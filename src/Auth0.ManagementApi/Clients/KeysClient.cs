@@ -5,6 +5,9 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Auth0.ManagementApi.Models.Keys;
+using Auth0.ManagementApi.Paging;
+using Newtonsoft.Json;
+using EncryptionKey = Auth0.ManagementApi.Models.Keys.EncryptionKey;
 
 namespace Auth0.ManagementApi.Clients
 {
@@ -13,6 +16,7 @@ namespace Auth0.ManagementApi.Clients
     /// </summary>
     public class KeysClient : BaseClient, IKeysClient
     {
+        readonly JsonConverter[] converters = new JsonConverter[] { new PagedListConverter<EncryptionKey>("keys") };
         /// <summary>
         /// Initializes a new instance of the <see cref="KeysClient"/> class.
         /// </summary>
@@ -64,6 +68,105 @@ namespace Auth0.ManagementApi.Clients
         public Task<RevokeSigningKeyResponse> RevokeSigningKeyAsync(string kid, CancellationToken cancellationToken = default)
         {
             return Connection.SendAsync<RevokeSigningKeyResponse>(HttpMethod.Put, BuildUri($"keys/signing/{EncodePath(kid)}/revoke"), null, DefaultHeaders, cancellationToken: cancellationToken);
+        }
+        
+        /// <inheritdoc cref="IKeysClient.GetAllEncryptionKeysAsync"/>
+        public Task<IPagedList<EncryptionKey>> GetAllEncryptionKeysAsync(
+            PaginationInfo pagination, CancellationToken cancellationToken = default)
+        {
+            var queryStrings = new Dictionary<string, string>();
+
+            if (pagination != null)
+            {
+                queryStrings["page"] = pagination.PageNo.ToString();
+                queryStrings["per_page"] = pagination.PerPage.ToString();
+                queryStrings["include_totals"] = pagination.IncludeTotals.ToString().ToLower();
+            }
+            
+            return Connection.GetAsync<IPagedList<EncryptionKey>>(
+                BuildUri("keys/encryption", queryStrings), DefaultHeaders, converters, cancellationToken);
+        }
+
+        /// <inheritdoc cref="IKeysClient.CreateEncryptionKeyAsync"/>
+        public Task<EncryptionKey> CreateEncryptionKeyAsync(
+            EncryptionKeyCreateRequest request, CancellationToken cancellationToken = default)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            if (string.IsNullOrEmpty(request.Type))
+                throw new ArgumentNullException(nameof(request.Type));
+
+            return Connection.SendAsync<EncryptionKey>(
+                HttpMethod.Post,
+                BuildUri("keys/encryption"),
+                request, 
+                DefaultHeaders,
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc cref="IKeysClient.GetEncryptionKeyAsync"/>
+        public Task<EncryptionKey> GetEncryptionKeyAsync(
+            EncryptionKeyGetRequest request, CancellationToken cancellationToken = default)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            if (string.IsNullOrEmpty(request.Kid))
+                throw new ArgumentNullException(nameof(request.Kid));
+            
+            return Connection.GetAsync<EncryptionKey>(
+                BuildUri($"keys/encryption/{EncodePath(request.Kid)}"), DefaultHeaders, null, cancellationToken);
+        }
+        
+        /// <inheritdoc cref="IKeysClient.DeleteEncryptionKeyAsync"/>
+        public Task DeleteEncryptionKeyAsync(string kid, CancellationToken cancellationToken = default)
+        {
+            if (kid == null)
+                throw new ArgumentNullException(nameof(kid));
+            
+            return Connection.SendAsync<object>(
+                HttpMethod.Delete,
+                BuildUri($"keys/encryption/{EncodePath(kid)}"),
+                null,
+                DefaultHeaders, 
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc cref="IKeysClient.ImportEncryptionKeyAsync"/>
+        public Task<EncryptionKey> ImportEncryptionKeyAsync(
+            EncryptionKeyImportRequest request, CancellationToken cancellationToken = default)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            if (string.IsNullOrEmpty(request.Kid))
+                throw new ArgumentNullException(nameof(request.Kid));
+            
+            return Connection.SendAsync<EncryptionKey>(
+                HttpMethod.Post,
+                BuildUri($"keys/encryption/{EncodePath(request.Kid)}"),
+                request,
+                DefaultHeaders,
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc cref="IKeysClient.CreatePublicWrappingKeyAsync"/>
+        public Task<WrappingKey> CreatePublicWrappingKeyAsync(
+            WrappingKeyCreateRequest request, CancellationToken cancellationToken = default)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            if (string.IsNullOrEmpty(request.Kid))
+                throw new ArgumentNullException(nameof(request.Kid));
+            
+            return Connection.SendAsync<WrappingKey>(
+                HttpMethod.Post,
+                BuildUri($"keys/encryption/{EncodePath(request.Kid)}/wrapping-key"),
+                body: null,
+                headers: DefaultHeaders,
+                cancellationToken: cancellationToken);
         }
     }
 }
