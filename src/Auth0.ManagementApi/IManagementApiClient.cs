@@ -160,6 +160,11 @@ namespace Auth0.ManagementApi
     /// Contains all the methods to call the /sessions endpoints.
     /// </summary>
     ISessionsClient Sessions { get; }
+    
+    /// <summary>
+    /// Contains all the methods to call the /self-service-profile endpoints.
+    /// </summary>
+    ISelfServiceProfilesClient SelfServiceProfilesClient { get; }
 
     /// <summary>
     /// Update the Access Token used with every request.
