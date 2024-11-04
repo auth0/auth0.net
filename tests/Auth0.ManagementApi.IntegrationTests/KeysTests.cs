@@ -155,5 +155,41 @@ namespace Auth0.ManagementApi.IntegrationTests
             importedKeys.Type.Should().Be(EncryptionKeyType.CustomerProvidedRootKey);
             importedKeys.ParentKid.Should().Be("a20128c5-9bf5-4209-8c43-b6dfcee60e9b");
         }
+        
+        [Fact]
+        public async void Test_rekey_encrypted_keys()
+        {
+            // Get the existing Tenant Master Key
+            var existingTenantMasterKey = await GetExistingTenantMasterKey();
+            
+            await fixture.ApiClient.Keys.RekeyAsync();
+
+            var newTenantMasterKey = await GetExistingTenantMasterKey();
+            
+            // After rekey operation, a new Tenant Master Key should be generated
+            existingTenantMasterKey.Should().NotBeEquivalentTo(newTenantMasterKey);
+
+            var existingTenantMasterKeyAfterRekey = 
+                await fixture.ApiClient.Keys.GetEncryptionKeyAsync(
+                    new EncryptionKeyGetRequest() 
+                        {
+                            Kid = existingTenantMasterKey.Kid
+                        }
+                    );
+
+            // Confirming that the old master key is destroyed
+            existingTenantMasterKeyAfterRekey.State.Should().Be(EncryptionKeyState.Destroyed);
+        }
+
+        private async Task<EncryptionKey> GetExistingTenantMasterKey()
+        {
+            var existingEncryptionKeys = await fixture.ApiClient.Keys.GetAllEncryptionKeysAsync(new PaginationInfo());
+            
+            // Get the existing Tenant Master Key
+            var existingTenantMasterKey = 
+                existingEncryptionKeys.FirstOrDefault(x => x.State == EncryptionKeyState.Active &&
+                                                           x.Type == EncryptionKeyType.TenantMasterKey);
+            return existingTenantMasterKey;
+        }
     }
 }
