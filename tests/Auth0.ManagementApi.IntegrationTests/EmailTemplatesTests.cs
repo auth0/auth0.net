@@ -75,20 +75,12 @@ namespace Auth0.ManagementApi.IntegrationTests
                     });
                 }
                 
-
-                // Patch each template
-                foreach (var _emailTemplateName in emailTemplateNames)
+                var updatedTemplate = await fixture.ApiClient.EmailTemplates.PatchAsync(emailTemplate.Template, new EmailTemplatePatchRequest
                 {
-                    // Try and create the template. If it already exisits, we'll just update it
-                    var _emailTemplate = await fixture.ApiClient.EmailTemplates.PatchAsync(_emailTemplateName, new EmailTemplatePatchRequest
-                    {
-                        Enabled = false,
-                        From = "test2@test.com"
-                    });
-                }
+                    Enabled = false,
+                    From = "test2@test.com"
+                });
             }
-
         }
-
     }
 }
