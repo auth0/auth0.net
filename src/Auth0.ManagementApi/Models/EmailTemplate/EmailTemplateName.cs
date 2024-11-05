@@ -59,6 +59,24 @@ namespace Auth0.ManagementApi.Models
         /// This email will provide the MFA verification code to a user that is using a MFA email verifier. 
         /// </summary>
         [EnumMember(Value = "mfa_oob_code")]
-        MfaOobCode
+        MfaOobCode,
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        [EnumMember(Value = "verify_email_by_code")]
+        VerifyEmailByCode,
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        [EnumMember(Value = "reset_email_by_code")]
+        ResetEmailByCode,
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        [EnumMember(Value = "user_invitation")]
+        UserInvitation
     }
 }
