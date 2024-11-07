@@ -82,5 +82,11 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="request"><see cref="WrappingKeyCreateRequest"/></param>
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
     Task<WrappingKey> CreatePublicWrappingKeyAsync(WrappingKeyCreateRequest request, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Perform rekeying operation on the key hierarchy.
+    /// </summary>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    Task RekeyAsync(CancellationToken cancellationToken = default);
   }
 }

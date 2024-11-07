@@ -160,10 +160,21 @@ namespace Auth0.ManagementApi.Clients
 
             if (string.IsNullOrEmpty(request.Kid))
                 throw new ArgumentNullException(nameof(request.Kid));
-            
+
             return Connection.SendAsync<WrappingKey>(
                 HttpMethod.Post,
                 BuildUri($"keys/encryption/{EncodePath(request.Kid)}/wrapping-key"),
+                body: null,
+                headers: DefaultHeaders,
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc cref="IKeysClient.RekeyAsync"/>
+        public Task RekeyAsync(CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<object>(
+                HttpMethod.Post,
+                BuildUri("keys/encryption/rekey"),
                 body: null,
                 headers: DefaultHeaders,
                 cancellationToken: cancellationToken);
