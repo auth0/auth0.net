@@ -12,6 +12,7 @@
         Users,
         Roles,
         Rules,
-        LogStreams
+        LogStreams,
+        EncryptionKeys
     }
 }

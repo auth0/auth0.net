@@ -1,0 +1,9 @@
+{
+  "kid": "093e36a8-88a1-4c34-8202-e454553ee2dc",
+  "type": "customer-provided-root-key",
+  "state": "destroyed",
+  "created_at": "2024-11-04T15:33:27.535Z",
+  "updated_at": "2024-11-04T15:33:32.274Z",
+  "parent_kid": "a20128c5-9bf5-4209-8c43-b6dfcee60e9b",
+  "public_key": "Random-PUBLIC-KEY"
+}
