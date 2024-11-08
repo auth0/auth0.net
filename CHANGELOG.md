@@ -1,5 +1,15 @@
 # Change Log
 
+## [7.29.0](https://github.com/auth0/auth0.net/tree/7.29.0) (2024-11-08)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.28.0...7.29.0)
+
+**Added**
+- Adds support for CYOK end-points [\#744](https://github.com/auth0/auth0.net/pull/744) ([kailash-b](https://github.com/kailash-b))
+- Adds support for BYOK end-points [\#743](https://github.com/auth0/auth0.net/pull/743) ([kailash-b](https://github.com/kailash-b))
+- Adds missing EmailTemplate types [\#742](https://github.com/auth0/auth0.net/pull/742) ([kailash-b](https://github.com/kailash-b))
+- Support CheckPointPagination for fetching all clients [\#741](https://github.com/auth0/auth0.net/pull/741) ([kailash-b](https://github.com/kailash-b))
+- Adds Integration information in Actions response [\#740](https://github.com/auth0/auth0.net/pull/740) ([kailash-b](https://github.com/kailash-b))
+
 ## [7.28.0](https://github.com/auth0/auth0.net/tree/7.28.0) (2024-10-25)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.27.0...7.28.0)
 
