@@ -1,3 +1,4 @@
+using Auth0.ManagementApi.Models.Connections;
 using Newtonsoft.Json;
 
 namespace Auth0.ManagementApi.Models
@@ -27,13 +28,7 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("metadata")]
         public dynamic Metadata { get; set; }
-
-        /// <summary>
-        /// The options for the connection.
-        /// </summary>
-        [JsonProperty("options")]
-        public dynamic Options { get; set; }
-
+        
         /// <summary>
         /// Defines the realms for which the connection will be used (ie: email domains). If the array is empty or the property is not specified, the connection name will be added as realm. Maximum of 10 items.
         /// </summary>

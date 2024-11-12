@@ -1,3 +1,4 @@
+using Auth0.ManagementApi.Models.Connections;
 using Newtonsoft.Json;
 
 namespace Auth0.ManagementApi.Models
@@ -15,5 +16,9 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("strategy")]
         public string Strategy { get; set; }
+        
+        /// <inheritdoc cref="ConnectionOptions"/> 
+        [JsonProperty("options")]
+        public dynamic Options { get; set; }
     }
 }
