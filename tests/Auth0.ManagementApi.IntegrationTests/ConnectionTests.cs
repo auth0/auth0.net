@@ -10,7 +10,9 @@ using Auth0.Tests.Shared;
 using Auth0.ManagementApi.Paging;
 using System.Collections.Generic;
 using Auth0.AuthenticationApi.Models;
+using Auth0.ManagementApi.Models.Connections;
 using Auth0.Tests.Shared;
+using Newtonsoft.Json;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
@@ -116,15 +118,17 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Get all connections before
             var connectionsBefore = await fixture.ApiClient.Connections.GetAllAsync(new GetConnectionsRequest
             {
-                Strategy = new[] {"github"}
+                Strategy = new[] {"auth0"}
             }, new PaginationInfo());
 
+            var optionsCreateRequestObject = GetConnectionOptionsRequest();
             // Create a new connection
             var newConnectionRequest = new ConnectionCreateRequest
             {
                 Name = $"{TestingConstants.ConnectionPrefix}-{TestBaseUtils.MakeRandomName()}",
-                Strategy = "github",
-                DisplayName = "displayname"
+                Strategy = "auth0",
+                DisplayName = "displayname",
+                Options = optionsCreateRequestObject
             };
             var newConnectionResponse = await fixture.ApiClient.Connections.CreateAsync(newConnectionRequest);
 
@@ -134,35 +138,42 @@ namespace Auth0.ManagementApi.IntegrationTests
             newConnectionResponse.Name.Should().Be(newConnectionRequest.Name);
             newConnectionResponse.Strategy.Should().Be(newConnectionRequest.Strategy);
             newConnectionResponse.DisplayName.Should().Be(newConnectionRequest.DisplayName);
-
+            // Cast to ConnectionOptions object for verification
+            ConnectionOptions optionsCreateResponse = CastToConnectionOptions(newConnectionResponse.Options.ToString());
+            optionsCreateResponse.Should().BeEquivalentTo(
+                optionsCreateRequestObject, options => options.ExcludingMissingMembers());
+            
             // Get all connections again
-            var connectionsAfter = await fixture.ApiClient.Connections.GetAllAsync(new GetConnectionsRequest
-            {
-                Strategy = new[] {"github"}
-            }, new PaginationInfo());
+            var connectionsAfter = await fixture.ApiClient.Connections.GetAllAsync(
+                new GetConnectionsRequest
+                {
+                    Strategy = new[] {"auth0"}
+                },
+                new PaginationInfo());
             connectionsAfter.Count.Should().Be(connectionsBefore.Count + 1);
 
             // Update a connection
             var newDisplayName = "newdisplayname";
+            var optionsRequestObject = GetConnectionOptionsRequest();
             var updateConnectionRequest = new ConnectionUpdateRequest
             {
-                Options = new
-                {
-                    a = "123"
-                },
+                Options = optionsRequestObject,
                 Metadata = new
                 {
                     b = "456"
                 },
                 DisplayName = newDisplayName
             };
-            var updateConnectionResponse = await fixture.ApiClient.Connections.UpdateAsync(newConnectionResponse.Id, updateConnectionRequest);
-            string a = updateConnectionResponse.Options.a;
-            a.Should().Be("123");
-            string b = updateConnectionResponse.Metadata.b;
-            b.Should().Be("456");
+            var updateConnectionResponse = 
+                await fixture.ApiClient.Connections.UpdateAsync(newConnectionResponse.Id, updateConnectionRequest);
+            
             newDisplayName.Should().BeEquivalentTo(updateConnectionResponse.DisplayName);
-
+            
+            // Cast to ConnectionOptions object for verification
+            ConnectionOptions optionsObject = CastToConnectionOptions(updateConnectionResponse.Options.ToString());
+            optionsObject.Should().BeEquivalentTo(
+                optionsRequestObject, options => options.ExcludingMissingMembers());
+            
             // Get a single connection
             var connection = await fixture.ApiClient.Connections.GetAsync(newConnectionResponse.Id);
             connection.Should().NotBeNull();
@@ -420,7 +431,6 @@ namespace Auth0.ManagementApi.IntegrationTests
             }
         }
         
-        
         private async Task<string> GenerateBruckeManagementApiToken()
         {
             using var authenticationApiClient = 
@@ -447,6 +457,156 @@ namespace Auth0.ManagementApi.IntegrationTests
             Assert.Equal(expectedScimConfiguration.Strategy, actualScimConfiguration.Strategy);
             Assert.NotNull(actualScimConfiguration.UpdatedOn);
             Assert.NotNull(actualScimConfiguration.CreatedAt);
+        }
+
+        private ConnectionOptions CastToConnectionOptions(string dynamicOptions)
+        {
+            return JsonConvert.DeserializeObject<ConnectionOptions>(dynamicOptions);
+        }
+
+        private ConnectionOptions GetConnectionOptionsRequest()
+        {
+            var optionsRequestObject = new ConnectionOptions()
+            {
+                NonPersistentAttributes = new string[]
+                {
+                    "user_field1",
+                    "user_field2"
+                },
+                Precedence = new[]
+                {
+                    ConnectionOptionsPrecedence.Email,
+                    ConnectionOptionsPrecedence.PhoneNumber,
+                    ConnectionOptionsPrecedence.UserName,
+                },
+                Attributes = new ConnectionOptionsAttributes()
+                {
+                    Email = new ConnectionOptionsEmailAttribute()
+                    {
+                        ProfileRequired = false,
+                        Identifier = new ConnectionOptionsAttributeIdentifier()
+                        {
+                            Active = true
+                        },
+                        Signup = new ConnectionOptionsEmailSignup()
+                        {
+                            Status = ConnectionOptionsAttributeStatus.Optional,
+                            Verification = new ConnectionOptionsVerification()
+                            {
+                                Active = false
+                            }
+                        }
+                    },
+                    PhoneNumber = new ConnectionOptionsPhoneNumberAttribute()
+                    {
+                        ProfileRequired = true,
+                        Identifier = new ConnectionOptionsAttributeIdentifier()
+                        {
+                            Active = true
+                        },
+                        Signup = new ConnectionOptionsPhoneNumberSignup()
+                        {
+                            Status = ConnectionOptionsAttributeStatus.Required,
+                            Verification = new ConnectionOptionsVerification()
+                            {
+                                Active = false
+                            }
+                        }
+                    },
+                    Username = new ConnectionOptionsUsernameAttribute()
+                    {
+                        ProfileRequired = true,
+                        Identifier = new ConnectionOptionsAttributeIdentifier()
+                        {
+                            Active = true
+                        },
+                        Signup = new ConnectionOptionsUsernameSignup()
+                        {
+                            Status = ConnectionOptionsAttributeStatus.Required
+                        },
+                        Validation = new ConnectionOptionsAttributeValidation()
+                        {
+                            MinLength = 5,
+                            MaxLength = 10,
+                            AllowedTypes = new ConnectionOptionsAttributeAllowedTypes()
+                            {
+                                PhoneNumber = false,
+                                Email = true
+                            }
+                        }
+                    }
+                },
+                EnableScriptContext = false,
+                EnableDatabaseCustomization = false,
+                ImportMode = false,
+                CustomScripts = new ConnectionOptionsCustomScripts()
+                {
+                    Login = "login",
+                    GetUser = "get user",
+                    Delete = "Delete",
+                    ChangePassword = "Changed password",
+                    Verify = "Verify",
+                    Create = "Create",
+                    ChangeUsername = "changed user name",
+                    ChangeEmail = "changed email",
+                    ChangePhoneNumber = "changed phone number"
+                },
+                AuthenticationMethods = new ConnectionOptionsAuthenticationMethods()
+                {
+                    Password = new ConnectionOptionsPasswordAuthenticationMethod()
+                    {
+                        Enabled = true
+                    },
+                    Passkey = new ConnectionOptionsPasskeyAuthenticationMethod()
+                    {
+                        Enabled = false
+                    }
+                },
+                PasskeyOptions = new ConnectionOptionsPasskeyOptions()
+                {
+                    ChallengeUi = ChallengeUi.Both,
+                    ProgressiveEnrollmentEnabled = false,
+                    LocalEnrollmentEnabled = true
+                },
+                PasswordPolicy = ConnectionOptionsPasswordPolicy.Good,
+                PasswordComplexityOptions = new ConnectionOptionsPasswordComplexityOptions()
+                {
+                    MinLength = 10
+                },
+                PasswordHistory = new ConnectionOptionsPasswordHistory()
+                {
+                    Enable = false,
+                    Size = 10
+                },
+                PasswordNoPersonalInfo = new ConnectionOptionsPasswordNoPersonalInfo()
+                {
+                    Enable = false
+                },
+                PasswordDictionary = new ConnectionOptionsPasswordDictionary()
+                {
+                    Enable = true,
+                    Dictionary = new []{"item1", "item2"}
+                },
+                ApiEnableUsers = true,
+                BasicProfile = true,
+                ExtAdmin = true,
+                ExtIsSuspended = true,
+                ExtAgreedTerms = true,
+                ExtGroups = true,
+                ExtAssignedPlans = true,
+                ExtProfile = true,
+                DisableSelfServiceChangePassword = false,
+                UpstreamParams = null,
+                GatewayAuthentication = new GatewayAuthentication()
+                {
+                    Method = "authMethod",
+                    Subject = "authSubject",
+                    Audience = "authAudience",
+                    Secret = Guid.NewGuid().ToString(),
+                    SecretBase64Encoded = false
+                }
+            };
+            return optionsRequestObject;
         }
     }
 }

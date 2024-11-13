@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-
+using Auth0.ManagementApi.Models.Connections;
 namespace Auth0.ManagementApi.Models
 {
     /// <summary>
@@ -24,5 +24,9 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("provisioning_ticket_url")]
         public string ProvisioningTicketUrl { get; set; }
+        
+        /// <inheritdoc cref="ConnectionOptions"/> 
+        [JsonProperty("options")]
+        public dynamic Options { get; set; }
     }
 }
