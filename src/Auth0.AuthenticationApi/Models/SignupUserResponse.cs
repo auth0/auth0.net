@@ -86,5 +86,11 @@ namespace Auth0.AuthenticationApi.Models
         /// </summary>
         [JsonProperty("user_metadata")]
         public dynamic UserMetadata { get; set; }
+        
+        /// <summary>
+        ///  The user's phone number.
+        /// </summary>
+        [JsonProperty("phone_number")]
+        public string PhoneNumber { get; set; }
     }
 }
