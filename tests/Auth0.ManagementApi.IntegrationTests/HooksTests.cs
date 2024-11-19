@@ -9,6 +9,7 @@ using Xunit;
 using Auth0.ManagementApi.Paging;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
@@ -34,59 +35,36 @@ namespace Auth0.ManagementApi.IntegrationTests
             this.fixture = fixture;
         }
 
+        /// <summary>
+        /// Hooks are deprecated as on 18th November 2024.
+        /// All the existing hooks can still be accessed in a read-only mode.
+        /// The users can delete an existing hook OR update an existing hook to
+        /// only enable/disable it (None of the other properties can be updated).
+        /// Modifying the below test case to work with the existing hooks. 
+        /// </summary>
         [Fact]
         public async Task Test_hooks_crud_sequence()
         {
             // Get all hooks
-            var hooksBefore = await fixture.ApiClient.Hooks.GetAllAsync(new GetHooksRequest(), new PaginationInfo());
+            var existingHook = (await fixture.ApiClient.Hooks.GetAllAsync(new GetHooksRequest(), new PaginationInfo())).FirstOrDefault();
 
-            // Add a new hook
-            var newHookRequest = new HookCreateRequest()
-            {
-                Name = $"{TestingConstants.HooksPrefix}-{Guid.NewGuid():N}",
-                Script = @"module.exports = function(client, scope, audience, context, callback) { {
-                              // TODO: implement your hook
-                              callback(null, context);
-                            }",
-                Dependencies = JObject.Parse("{ \"auth0\": \"2.32.0\"}"),
-                TriggerId = "credentials-exchange"
-            };
-            var newHookResponse = await fixture.ApiClient.Hooks.CreateAsync(newHookRequest);
+            existingHook.Should().NotBeNull();
 
-            fixture.TrackIdentifier(CleanUpType.Hooks, newHookResponse.Id);
-
-            newHookResponse.Should().NotBeNull();
-            Assert.True(JObject.DeepEquals(newHookRequest.Dependencies, newHookResponse.Dependencies));
-
-            // Get all the hooks again, and check that we now have one more
-            var hooksAfter = await fixture.ApiClient.Hooks.GetAllAsync(new GetHooksRequest(), new PaginationInfo());
-            hooksAfter.Count.Should().Be(hooksBefore.Count + 1);
-
-            // Update the Hook
+            // Update the Hook - Disable the hook
             var updateHookRequest = new HookUpdateRequest
             {
-                Name = $"{TestingConstants.HooksPrefix}-2-{Guid.NewGuid():N}",
-                Enabled = true
+                Enabled = false
             };
-            var updateHookResponse = await fixture.ApiClient.Hooks.UpdateAsync(newHookResponse.Id, updateHookRequest);
+
+            var updateHookResponse = await fixture.ApiClient.Hooks.UpdateAsync(existingHook.Id, updateHookRequest);
             updateHookResponse.Should().NotBeNull();
-            // Because the Hooks endpoint changes the name of a Hook when using a Guid in the name, 
-            // we can only verify the name starts with the part without the Guid.
-            updateHookResponse.Name.StartsWith($"{TestingConstants.HooksPrefix}-2-".ToLower()).Should().BeTrue();
-            updateHookResponse.Enabled.Should().BeTrue();
+            updateHookResponse.Enabled.Should().BeFalse();
+            updateHookResponse.Id.Should().Be(existingHook.Id);
 
             // Get a single hook
-            var hook = await fixture.ApiClient.Hooks.GetAsync(newHookResponse.Id);
+            var hook = await fixture.ApiClient.Hooks.GetAsync(existingHook.Id);
             hook.Should().NotBeNull();
-            hook.Name.StartsWith($"{TestingConstants.HooksPrefix}-2").Should().BeTrue();
-            hook.Enabled.Should().BeTrue();
-
-            // Delete the hook, and ensure we get exception when trying to fetch it again
-            await fixture.ApiClient.Hooks.DeleteAsync(hook.Id);
-            Func<Task> getFunc = async () => await fixture.ApiClient.Hooks.GetAsync(hook.Id);
-            getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("HookDoesNotExist");
-
-            fixture.UnTrackIdentifier(CleanUpType.Hooks, newHookResponse.Id);
+            hook.Enabled.Should().BeFalse();
         }
 
         [Fact]
@@ -119,34 +97,21 @@ namespace Auth0.ManagementApi.IntegrationTests
             Assert.NotNull(hooks.Paging);
         }
 
+        /// <summary>
+        /// Hooks are deprecated as on 18th November 2024.
+        /// All the existing hooks can still be accessed in a read-only mode.
+        /// The users can delete an existing hook OR update an existing hook to
+        /// only enable/disable it (None of the other properties can be updated).
+        /// Modifying the below test case to work with the existing hooks. 
+        /// </summary>
         [Fact]
         public async Task Test_without_paging()
         {
-            // Add a new hook
-            var newHook = await fixture.ApiClient.Hooks.CreateAsync(new HookCreateRequest()
-            {
-                Name = $"{TestingConstants.HooksPrefix}-{Guid.NewGuid():N}",
-                Script = @"module.exports = function(client, scope, audience, context, callback) { {
-                              // TODO: implement your hook
-                              callback(null, context);
-                            }",
-                Dependencies = JObject.Parse("{ \"auth0\": \"2.32.0\"}"),
-                TriggerId = "credentials-exchange"
-            });
-
-            fixture.TrackIdentifier(CleanUpType.Hooks, newHook.Id);
-
-            newHook.Should().NotBeNull();
-            
             // Act
             var hooks = await fixture.ApiClient.Hooks.GetAllAsync(new GetHooksRequest());
 
             hooks.Paging.Should().BeNull();
             hooks.Count.Should().BeGreaterThan(0);
-
-            await fixture.ApiClient.Hooks.DeleteAsync(newHook.Id);
-
-            fixture.UnTrackIdentifier(CleanUpType.Hooks, newHook.Id);
         }
     }
 }

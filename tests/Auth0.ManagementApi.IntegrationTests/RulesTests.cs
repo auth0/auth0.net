@@ -35,7 +35,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             this.fixture = fixture;
         }
 
-        [Fact]
+        [Fact(Skip = "Rules have been deprecated as on 18th November 2024")]
         public async Task Test_rules_crud_sequence()
         {
             // Get all rules
@@ -111,7 +111,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             Assert.NotNull(rules.Paging);
         }
 
-        [Fact]
+        [Fact(Skip = "Rules have been deprecated as on 18th November 2024")]
         public async Task Test_without_paging()
         {
             // Add a new rule
