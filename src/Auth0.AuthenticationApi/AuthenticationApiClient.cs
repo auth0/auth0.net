@@ -4,6 +4,7 @@ using Auth0.Core.Http;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -350,7 +351,33 @@ namespace Auth0.AuthenticationApi
         }
 
         /// <inheritdoc/>
+        public async Task<MfaOobTokenResponse> GetTokenAsync(MfaOobTokenRequest request, CancellationToken cancellationToken = default)
+        {
+            if (request == null)
+            {
+                throw new ArgumentNullException(nameof(request));
+            }
 
+            var body = new Dictionary<string, string>()
+            {
+                { "grant_type", "http://auth0.com/oauth/grant-type/mfa-oob" },
+                { "client_id", request.ClientId },
+                { "mfa_token", request.MfaToken},
+                { "oob_code", request.OobCode},
+            };
+            
+            body.AddIfNotEmpty("binding_code", request.BindingCode);
+            
+            ApplyClientAuthentication(request, body);
+            
+            return await connection.SendAsync<MfaOobTokenResponse>(
+                HttpMethod.Post,
+                tokenUri,
+                body,
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc/>
         public Task RevokeRefreshTokenAsync(RevokeRefreshTokenRequest request, CancellationToken cancellationToken = default)
         {
             if (request == null)
@@ -495,6 +522,22 @@ namespace Auth0.AuthenticationApi
                 body,
                 cancellationToken: cancellationToken
             );
+        }
+        
+        /// <inheritdoc/>
+        public Task<AssociateMfaAuthenticatorResponse> AssociateMfaAuthenticatorAsync(AssociateMfaAuthenticatorRequest request, CancellationToken cancellationToken = default)
+        {
+            if (request == null)
+            {
+                throw new ArgumentNullException(nameof(request));
+            }
+
+            return connection.SendAsync<AssociateMfaAuthenticatorResponse>(
+                HttpMethod.Post,
+                BuildUri("mfa/associate"),
+                request,
+                BuildHeaders(request.Token),
+                cancellationToken);
         }
 
         /// <summary>
