@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Auth0.ManagementApi.Models.Prompts;
 
 namespace Auth0.ManagementApi.Clients
@@ -49,6 +50,63 @@ namespace Auth0.ManagementApi.Clients
         public Task<Prompt> UpdateAsync(PromptUpdateRequest request, CancellationToken cancellationToken = default)
         {
             return Connection.SendAsync<Prompt>(new HttpMethod("PATCH"), BuildUri($"{PromptsBasePath}"), request, DefaultHeaders, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc cref="IPromptsClient.GetCustomTextForPromptAsync"/>
+        public Task<object> GetCustomTextForPromptAsync(string promptName, string language, CancellationToken cancellationToken)
+        {
+            if (string.IsNullOrEmpty(promptName))
+                throw new ArgumentNullException(nameof(promptName));
+            if (string.IsNullOrEmpty(language))
+                throw new ArgumentNullException(nameof(language));
+            
+            return Connection.GetAsync<object>(
+                BuildUri($"{PromptsBasePath}/{promptName}/custom-text/{language}"),
+                DefaultHeaders, 
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc cref="IPromptsClient.SetCustomTextForPromptAsync"/>
+        public Task SetCustomTextForPromptAsync(string promptName, string language, object customText,
+            CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrEmpty(promptName))
+                throw new ArgumentNullException(nameof(promptName));
+            if (string.IsNullOrEmpty(language))
+                throw new ArgumentNullException(nameof(language));
+            
+            return Connection.SendAsync<object>(
+                HttpMethod.Put, 
+                BuildUri($"{PromptsBasePath}/{promptName}/custom-text/{language}"),
+                customText,
+                DefaultHeaders, 
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc cref="IPromptsClient.GetPartialsAsync"/>
+        public Task<object> GetPartialsAsync(string promptName, CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrEmpty(promptName))
+                throw new ArgumentNullException(nameof(promptName));
+            
+            return Connection.GetAsync<object>(
+                BuildUri($"{PromptsBasePath}/{promptName}/partials"),
+                DefaultHeaders, 
+                cancellationToken: cancellationToken);
+        }
+        
+        /// <inheritdoc cref="IPromptsClient.SetPartialsAsync"/>
+        public Task SetPartialsAsync(string promptName, object partials, CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrEmpty(promptName))
+                throw new ArgumentNullException(nameof(promptName));
+            
+            return Connection.SendAsync<object>(
+                HttpMethod.Put, 
+                BuildUri($"{PromptsBasePath}/{promptName}/partials"),
+                partials,
+                DefaultHeaders, 
+                cancellationToken: cancellationToken);
         }
     }
 }
