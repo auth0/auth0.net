@@ -13,6 +13,7 @@
         Roles,
         Rules,
         LogStreams,
-        EncryptionKeys
+        EncryptionKeys,
+        SelfServiceProvider
     }
 }

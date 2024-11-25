@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Auth0.IntegrationTests.Shared.CleanUp;
 using Auth0.ManagementApi;
+using Auth0.ManagementApi.Clients;
 
 namespace Auth0.AuthenticationApi.IntegrationTests.Testing
 {
@@ -23,7 +24,8 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Testing
                 new RulesCleanUpStrategy(client),
                 new LogStreamsCleanUpStrategy(client),
                 new RolesCleanUpStrategy(client),
-                new EncryptionKeysCleanupStrategy(client)
+                new EncryptionKeysCleanupStrategy(client),
+                new SelfServiceProviderCleanUpStrategy(client)
             };
 
             var cleanUpStrategy = strategies.Single(s => s.Type == type);

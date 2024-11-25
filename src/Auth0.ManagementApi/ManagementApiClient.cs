@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Auth0.ManagementApi.Models.SelfServiceProfiles;
 
 namespace Auth0.ManagementApi
 {
@@ -168,6 +169,9 @@ namespace Auth0.ManagementApi
         
         /// <inheritdoc cref="Auth0.ManagementApi.IManagementApiClient.Sessions"/>
         public ISessionsClient Sessions { get; }
+        
+        /// <inheritdoc cref="Auth0.ManagementApi.IManagementApiClient.SelfServiceProfilesClient"/>
+        public ISelfServiceProfilesClient SelfServiceProfilesClient { get; }
 
         private Dictionary<string, string> DefaultHeaders { get; set; }
 
@@ -221,6 +225,7 @@ namespace Auth0.ManagementApi
             Users = new UsersClient(managementConnection, baseUri, DefaultHeaders);
             RefreshTokens = new RefreshTokenClient(managementConnection, baseUri, DefaultHeaders);
             Sessions = new SessionsClient(managementConnection, baseUri, DefaultHeaders);
+            SelfServiceProfilesClient = new SelfServiceProfilesClient(managementConnection, baseUri, DefaultHeaders);
         }
 
         /// <summary>
