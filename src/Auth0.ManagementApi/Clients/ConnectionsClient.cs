@@ -15,6 +15,7 @@ namespace Auth0.ManagementApi.Clients
     public class ConnectionsClient : BaseClient, IConnectionsClient
     {
         private readonly JsonConverter[] _converters = { new PagedListConverter<Connection>("connections") };
+        readonly JsonConverter[] checkpointPaginationConverter = new JsonConverter[] { new CheckpointPagedListConverter<Connection>("connections") };
         private readonly JsonConverter[] _defaultMappingsConverter = { new ListConverter<ScimMapping>("mapping") };
 
         /// <summary>
@@ -120,6 +121,46 @@ namespace Auth0.ManagementApi.Clients
             }
 
             return Connection.GetAsync<IPagedList<Connection>>(BuildUri("connections", queryStrings), DefaultHeaders, _converters, cancellationToken);
+        }
+
+        /// <summary>
+        /// Retrieves every connection matching the specified strategy.
+        /// All connections are retrieved if no strategy is being specified.
+        /// Accepts a list of fields to include or exclude in the resulting list of connection objects.
+        /// </summary>
+        /// <param name="request"><see cref="GetConnectionsRequest"/></param>
+        /// <param name="pagination"><see cref="CheckpointPaginationInfo"/></param>
+        /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+        /// <returns>List of <see cref="Connection"/></returns>
+        public Task<ICheckpointPagedList<Connection>> GetAllAsync(GetConnectionsRequest request, CheckpointPaginationInfo pagination = null,
+            CancellationToken cancellationToken = default)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            var queryStrings = new Dictionary<string, string>
+            {
+                {"fields", request.Fields},
+                {"include_fields", request.IncludeFields?.ToString().ToLower()},
+                {"name", request.Name},
+            };
+
+            if (pagination != null)
+            {
+                queryStrings["from"] = pagination.From?.ToString();
+                queryStrings["take"] = pagination.Take.ToString();
+            }
+
+            // Add each strategy as a separate querystring
+            if (request.Strategy != null)
+            {
+                for (var i = 0; i < request.Strategy.Length; i++)
+                {
+                    queryStrings.Add($"strategy[{i}]", request.Strategy[i]);
+                }
+            }
+
+            return Connection.GetAsync<ICheckpointPagedList<Connection>>(BuildUri("connections", queryStrings), DefaultHeaders, checkpointPaginationConverter, cancellationToken);
         }
 
         /// <summary>

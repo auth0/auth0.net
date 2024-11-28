@@ -13,7 +13,6 @@ namespace Auth0.IntegrationTests.Shared.CleanUp
         public override async Task Run(string id)
         {
             System.Diagnostics.Debug.WriteLine("Running ConnectionsCleanUpStrategy");
-            var connections = await ApiClient.Connections.GetAllAsync(new ManagementApi.Models.GetConnectionsRequest { });
             await ApiClient.Connections.DeleteAsync(id);        
         }
     }

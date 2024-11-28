@@ -56,6 +56,15 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
     /// <returns>An <see cref="IPagedList{Connection}"/> containing the list of connections.</returns>
     Task<IPagedList<Connection>> GetAllAsync(GetConnectionsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Retrieves every connection matching the specified strategy. All connections are retrieved if no strategy is being specified. Accepts a list of fields to include or exclude in the resulting list of connection objects.
+    /// </summary>
+    /// <param name="request">Specifies criteria to use when querying connections.</param>
+    /// <param name="pagination">Specifies the CheckPoint Pagination info <see cref="CheckpointPaginationInfo"/></param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>An <see cref="ICheckpointPagedList{Connection}"/> containing the list of connections.</returns>
+    Task<ICheckpointPagedList<Connection>> GetAllAsync(GetConnectionsRequest request, CheckpointPaginationInfo pagination = null, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Updates a connection.
