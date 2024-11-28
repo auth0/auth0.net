@@ -195,6 +195,17 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Assert
             Assert.Null(connections.Paging);
         }
+        
+        [Fact]
+        public async Task Test_get_all_with_checkpoint_pagination()
+        {
+            // Act
+            var connections = await fixture.ApiClient.Connections.GetAllAsync(
+                new GetConnectionsRequest(), new CheckpointPaginationInfo(10));
+
+            // Assert
+            connections.Count.Should().Be(10);
+        }
 
         [Fact]
         public async Task Test_paging_does_not_include_totals()
