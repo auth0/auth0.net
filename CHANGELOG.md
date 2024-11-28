@@ -1,5 +1,14 @@
 # Change Log
 
+## [7.30.0](https://github.com/auth0/auth0.net/tree/7.30.0) (2024-11-28)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.29.0...7.30.0)
+
+**Added**
+- Adds Checkpoint Pagination support for fetching all connections [\#752](https://github.com/auth0/auth0.net/pull/752) ([kailash-b](https://github.com/kailash-b))
+- Adds support for managing custom-text and partial-prompts [\#749](https://github.com/auth0/auth0.net/pull/749) ([kailash-b](https://github.com/kailash-b))
+- Adds support for Self-Service-Profile endpoints [\#747](https://github.com/auth0/auth0.net/pull/747) ([kailash-b](https://github.com/kailash-b))
+- Support PhoneNumber as a flexible identifier [\#746](https://github.com/auth0/auth0.net/pull/746) ([kailash-b](https://github.com/kailash-b))
+
 ## [7.29.0](https://github.com/auth0/auth0.net/tree/7.29.0) (2024-11-08)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.28.0...7.29.0)
 
