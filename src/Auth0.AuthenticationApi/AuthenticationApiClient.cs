@@ -7,6 +7,7 @@ using System.Dynamic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Auth0.AuthenticationApi.Models.Ciba;
 
 namespace Auth0.AuthenticationApi
 {
@@ -495,6 +496,59 @@ namespace Auth0.AuthenticationApi
                 body,
                 cancellationToken: cancellationToken
             );
+        }
+
+        /// <inheritdoc/>
+        public Task<ClientInitiatedBackchannelAuthorizationResponse> ClientInitiatedBackchannelAuthorization(ClientInitiatedBackchannelAuthorizationRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            var body = new Dictionary<string, string> {
+                { "client_id", request.ClientId },
+                { "binding_message", request.BindingMessage },
+                { "login_hint", request.LoginHint.ToString() }
+            };
+            
+            body.AddIfNotEmpty("scope", request.Scope);
+            body.AddIfNotEmpty("audience", request.Audience);
+            
+            body.AddAll(request.AdditionalProperties);
+
+            ApplyClientAuthentication(request, body, true);
+
+            return connection.SendAsync<ClientInitiatedBackchannelAuthorizationResponse>(
+                HttpMethod.Post,
+                BuildUri("/bc-authorize"),
+                body,
+                cancellationToken: cancellationToken
+                );
+        }
+
+        /// <inheritdoc/>
+        public async Task<ClientInitiatedBackchannelAuthorizationTokenResponse> GetTokenAsync(
+            ClientInitiatedBackchannelAuthorizationTokenRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+
+            var body = new Dictionary<string, string>
+            {
+                {"grant_type", "urn:openid:params:grant-type:ciba"},
+                {"auth_req_id", request.AuthRequestId},
+                {"client_id", request.ClientId}
+            };
+            ApplyClientAuthentication(request, body, true);
+            var response = await connection.SendAsync<ClientInitiatedBackchannelAuthorizationTokenResponse>(
+                HttpMethod.Post,
+                tokenUri,
+                body,
+                cancellationToken: cancellationToken
+            ).ConfigureAwait(false);
+
+            return response;
         }
 
         /// <summary>

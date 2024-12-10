@@ -2,6 +2,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using Auth0.AuthenticationApi.Models.Ciba;
 
 namespace Auth0.AuthenticationApi
 {
@@ -180,5 +181,27 @@ namespace Auth0.AuthenticationApi
         /// a <see cref="PushedAuthorizationRequestResponse" /> with the details of the response.</returns>
         Task<PushedAuthorizationRequestResponse> PushedAuthorizationRequestAsync(PushedAuthorizationRequest request,
             CancellationToken cancellationToken = default);
+        
+        /// <summary>
+        /// Initiates a Client Initiated Backchannel Authorization flow.
+        /// </summary>
+        /// <param name="request"><see cref="ClientInitiatedBackchannelAuthorizationRequest"/></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns><see cref="Task"/> representing the async operation containing 
+        /// a <see cref="ClientInitiatedBackchannelAuthorizationResponse" /> with the details of the response.</returns>
+        Task<ClientInitiatedBackchannelAuthorizationResponse> ClientInitiatedBackchannelAuthorization(ClientInitiatedBackchannelAuthorizationRequest request,
+            CancellationToken cancellationToken = default);
+        
+        /// <summary>
+        /// Requests an Access Token using the CIBA flow
+        /// </summary>
+        /// <param name="request"><see cref="ClientInitiatedBackchannelAuthorizationTokenRequest"/></param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns><see cref="Task"/> representing the async operation containing 
+        /// a <see cref="ClientInitiatedBackchannelAuthorizationTokenResponse" /> with the requested tokens.</returns>
+        /// <remarks>
+        /// This must be polled while the user is completing their part of the flow at an interval no more frequent than that returned by <see cref="ClientInitiatedBackchannelAuthorizationResponse"/>.
+        /// </remarks>
+        Task<ClientInitiatedBackchannelAuthorizationTokenResponse> GetTokenAsync(ClientInitiatedBackchannelAuthorizationTokenRequest request, CancellationToken cancellationToken = default);
     }
 }

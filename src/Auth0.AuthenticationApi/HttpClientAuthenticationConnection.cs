@@ -87,10 +87,15 @@ namespace Auth0.AuthenticationApi
 
                 var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
-                return typeof(T) == typeof(string)
-                    ? (T)(object)content
-                    : JsonConvert.DeserializeObject<T>(content, jsonSerializerSettings);
+                return DeserializeContent<T>(content);
             }
+        }
+
+        internal T DeserializeContent<T>(string content)
+        {
+            return typeof(T) == typeof(string)
+                ? (T)(object)content
+                : JsonConvert.DeserializeObject<T>(content, jsonSerializerSettings);
         }
 
         private void ApplyHeaders(HttpRequestMessage request, IDictionary<string, string> headers)
