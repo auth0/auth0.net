@@ -172,6 +172,9 @@ namespace Auth0.ManagementApi
         
         /// <inheritdoc cref="Auth0.ManagementApi.IManagementApiClient.SelfServiceProfilesClient"/>
         public ISelfServiceProfilesClient SelfServiceProfilesClient { get; }
+        
+        /// <inheritdoc cref="Auth0.ManagementApi.IManagementApiClient.FormsClient"/>
+        public IFormsClient FormsClient { get; }
 
         private Dictionary<string, string> DefaultHeaders { get; set; }
 
@@ -226,6 +229,7 @@ namespace Auth0.ManagementApi
             RefreshTokens = new RefreshTokenClient(managementConnection, baseUri, DefaultHeaders);
             Sessions = new SessionsClient(managementConnection, baseUri, DefaultHeaders);
             SelfServiceProfilesClient = new SelfServiceProfilesClient(managementConnection, baseUri, DefaultHeaders);
+            FormsClient = new FormsClient(managementConnection, baseUri, DefaultHeaders);
         }
 
         /// <summary>
