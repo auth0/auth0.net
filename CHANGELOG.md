@@ -1,5 +1,11 @@
 # Change Log
 
+## [7.31.0](https://github.com/auth0/auth0.net/tree/7.31.0) (2025-01-08)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.30.0...7.31.0)
+
+**Added**
+- Adds support for CIBA [\#755](https://github.com/auth0/auth0.net/pull/755) ([kailash-b](https://github.com/kailash-b))
+
 ## [7.30.0](https://github.com/auth0/auth0.net/tree/7.30.0) (2024-11-28)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.29.0...7.30.0)
 
