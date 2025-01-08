@@ -14,6 +14,7 @@
         Rules,
         LogStreams,
         EncryptionKeys,
-        SelfServiceProvider
+        SelfServiceProvider,
+        Forms
     }
 }

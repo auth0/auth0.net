@@ -165,6 +165,11 @@ namespace Auth0.ManagementApi
     /// Contains all the methods to call the /self-service-profile endpoints.
     /// </summary>
     ISelfServiceProfilesClient SelfServiceProfilesClient { get; }
+    
+    /// <summary>
+    /// Contains all the methods to call the /forms endpoints.
+    /// </summary>
+    IFormsClient FormsClient { get; }
 
     /// <summary>
     /// Update the Access Token used with every request.

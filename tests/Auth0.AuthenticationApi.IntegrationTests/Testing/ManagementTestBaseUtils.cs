@@ -25,7 +25,8 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Testing
                 new LogStreamsCleanUpStrategy(client),
                 new RolesCleanUpStrategy(client),
                 new EncryptionKeysCleanupStrategy(client),
-                new SelfServiceProviderCleanUpStrategy(client)
+                new SelfServiceProviderCleanUpStrategy(client),
+                new FormsCleanUpStrategy(client)
             };
 
             var cleanUpStrategy = strategies.Single(s => s.Type == type);
