@@ -42,7 +42,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         /// only enable/disable it (None of the other properties can be updated).
         /// Modifying the below test case to work with the existing hooks. 
         /// </summary>
-        [Fact]
+        [Fact(Skip = "Hooks are deprecated")]
         public async Task Test_hooks_crud_sequence()
         {
             // Get all hooks
@@ -67,7 +67,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             hook.Enabled.Should().BeFalse();
         }
 
-        [Fact]
+        [Fact(Skip = "Hooks are deprecated")]
         public async Task Test_when_paging_not_specified_does_not_include_totals()
         {
             // Act
@@ -77,7 +77,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             Assert.Null(hooks.Paging);
         }
 
-        [Fact]
+        [Fact(Skip = "Hooks are deprecated")]
         public async Task Test_paging_does_not_include_totals()
         {
             // Act
@@ -87,7 +87,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             Assert.Null(hooks.Paging);
         }
 
-        [Fact]
+        [Fact(Skip = "Hooks are deprecated")]
         public async Task Test_paging_includes_totals()
         {
             // Act
@@ -104,7 +104,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         /// only enable/disable it (None of the other properties can be updated).
         /// Modifying the below test case to work with the existing hooks. 
         /// </summary>
-        [Fact]
+        [Fact(Skip = "Hooks are deprecated")]
         public async Task Test_without_paging()
         {
             // Act
