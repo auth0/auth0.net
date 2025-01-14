@@ -172,6 +172,11 @@ namespace Auth0.ManagementApi
     IFormsClient FormsClient { get; }
 
     /// <summary>
+    /// Contains all the methods to call the /flows endpoints.
+    /// </summary>
+    IFlowsClient FlowsClient { get; }
+    
+    /// <summary>
     /// Update the Access Token used with every request.
     /// </summary>
     /// <param name="token">The new and valid Auth0 Management API v2 token.</param>
