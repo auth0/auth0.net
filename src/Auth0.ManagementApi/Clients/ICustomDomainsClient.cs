@@ -46,5 +46,14 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
     /// <returns>The <see cref="CustomDomainVerification"/> that was requested.</returns>
     Task<CustomDomainVerificationResponse> VerifyAsync(string id, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Update a custom domain.
+    /// </summary>
+    /// <param name="id">The ID of the domain to update.</param>
+    /// <param name="request"><see cref="CustomDomainUpdateRequest"/></param>
+    /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+    /// <returns>Updated <see cref="CustomDomain"/></returns>
+    Task<CustomDomain> UpdateAsync(string id, CustomDomainUpdateRequest request, CancellationToken cancellationToken = default);
   }
 }

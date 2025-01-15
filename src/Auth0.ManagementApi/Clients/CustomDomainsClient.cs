@@ -77,5 +77,11 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection.SendAsync<CustomDomainVerificationResponse>(HttpMethod.Post, BuildUri($"custom-domains/{EncodePath(id)}/verify"), null, DefaultHeaders, cancellationToken: cancellationToken);
         }
+        
+        /// <inheritdoc />
+        public Task<CustomDomain> UpdateAsync(string id, CustomDomainUpdateRequest request, CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<CustomDomain>(new HttpMethod("PATCH"), BuildUri($"custom-domains/{EncodePath(id)}"), request, DefaultHeaders, cancellationToken: cancellationToken);
+        }
     }
 }

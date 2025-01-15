@@ -30,6 +30,18 @@ namespace Auth0.ManagementApi.IntegrationTests
                 var domain = await apiClient.CustomDomains.GetAsync(id);
                 domain.Should().NotBeNull();
                 domain.CustomDomainId.Should().Be(id);
+                
+                // Test updating a custom domain
+                var updateRequest = new CustomDomainUpdateRequest()
+                {
+                    TlsPolicy = "recommended",
+                    CustomClientIpHeader = null
+                };
+
+                var updatedCustomDomain = await apiClient.CustomDomains.UpdateAsync(id, updateRequest);
+                updatedCustomDomain.Should().NotBeNull();
+                updatedCustomDomain.CustomClientIpHeader.Should().Be(updateRequest.CustomClientIpHeader);
+                updatedCustomDomain.TlsPolicy.Should().Be(updateRequest.TlsPolicy);
 
                 string non_existent_id = "cd_XXw4P8C04x1Aa9e5";
 
