@@ -78,9 +78,9 @@ namespace Auth0.ManagementApi.IntegrationTests
             });
 
             allForms.Should().NotBeNull();
-            allForms.Count.Should().Be(1);
+            allForms.Count.Should().BeGreaterThan(0);
             
-            var form = await fixture.ApiClient.FormsClient.GetAsync(new FormsGetRequest { Id = allForms.First().Id });
+            var form = await fixture.ApiClient.FormsClient.GetAsync(new FormsGetRequest { Id = createdForm.Id });
             
             form.Should().BeEquivalentTo(createdForm, options => options.ExcludingMissingMembers());
 

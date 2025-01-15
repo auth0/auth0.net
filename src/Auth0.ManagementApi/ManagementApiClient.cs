@@ -176,6 +176,9 @@ namespace Auth0.ManagementApi
         /// <inheritdoc cref="Auth0.ManagementApi.IManagementApiClient.FormsClient"/>
         public IFormsClient FormsClient { get; }
 
+        /// <inheritdoc cref="Auth0.ManagementApi.IManagementApiClient.FlowsClient"/>
+        public IFlowsClient FlowsClient { get; }
+
         private Dictionary<string, string> DefaultHeaders { get; set; }
 
         /// <summary>
@@ -230,6 +233,7 @@ namespace Auth0.ManagementApi
             Sessions = new SessionsClient(managementConnection, baseUri, DefaultHeaders);
             SelfServiceProfilesClient = new SelfServiceProfilesClient(managementConnection, baseUri, DefaultHeaders);
             FormsClient = new FormsClient(managementConnection, baseUri, DefaultHeaders);
+            FlowsClient = new FlowsClient(managementConnection, baseUri, DefaultHeaders);
         }
 
         /// <summary>
