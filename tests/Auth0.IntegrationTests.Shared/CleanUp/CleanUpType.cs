@@ -15,6 +15,7 @@
         LogStreams,
         EncryptionKeys,
         SelfServiceProvider,
-        Forms
+        Forms,
+        Flows
     }
 }
