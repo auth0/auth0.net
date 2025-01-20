@@ -12,5 +12,11 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the device credential's user identifier.
+        /// </summary>
+        [JsonProperty("user_id")]
+        public string UserId { get; set; }
     }
 }
