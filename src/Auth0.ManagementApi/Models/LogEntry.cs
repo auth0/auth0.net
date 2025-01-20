@@ -128,5 +128,34 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("user_name")]
         public string UserName { get; set; }
+        /// <summary>
+        /// The IP address of the Client
+        /// </summary>
+        [JsonProperty("client_ip")]
+        public string ClientIpAddress { get; set; }
+
+        /// <summary>
+        /// API audience the event applies to
+        /// </summary>
+        [JsonProperty("audience")]
+        public string Audience { get; set; }
+
+        /// <summary>
+        /// Scope permissions applied to the event
+        /// </summary>
+        [JsonProperty("scope")]
+        public string Scope { get; set; }
+
+        /// <summary>
+        /// Unique ID of the event
+        /// </summary>
+        [JsonProperty("log_id")]
+        public string LogId { get; set; }
+
+        /// <summary>
+        /// The tenant in which the log event belongs to
+        /// </summary>
+        [JsonProperty("tenant_name")]
+        public string TenantName { get; set; }
     }
 }
