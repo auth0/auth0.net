@@ -22,5 +22,11 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("user_id")]
         public string UserId { get; set; }
+        
+        /// <summary>
+        /// Optional. Specify the locale of the enrollment email. Used with send_email.
+        /// </summary>
+        [JsonProperty("email_locale")]
+        public string EmailLocale { get; set; }
     }
 }

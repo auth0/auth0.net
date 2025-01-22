@@ -1,10 +1,10 @@
-﻿using Auth0.ManagementApi.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Auth0.Core.Http;
+
+using Auth0.ManagementApi.Models;
 
 namespace Auth0.ManagementApi.Clients
 {
@@ -25,14 +25,20 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Generate an email with a link to start the Guardian enrollment process.
+        /// Create a
+        /// <a href='https://auth0.com/docs/secure/multi-factor-authentication/auth0-guardian/create-custom-enrollment-tickets'>
+        /// multi-factor authentication (MFA) enrollment ticket </a>, and optionally send an email with the created
+        /// ticket, to a given user.
         /// </summary>
         /// <param name="request">
-        /// The <see cref="CreateGuardianEnrollmentTicketRequest" /> containing the information about the user who should be enrolled.
+        /// The <see cref="CreateGuardianEnrollmentTicketRequest" /> containing the information about the user
+        /// who should be enrolled.
         /// </param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>A <see cref="CreateGuardianEnrollmentTicketResponse" /> with the details of the ticket that was created.</returns>
-        public Task<CreateGuardianEnrollmentTicketResponse> CreateEnrollmentTicketAsync(CreateGuardianEnrollmentTicketRequest request, CancellationToken cancellationToken = default)
+        /// <returns>A <see cref="CreateGuardianEnrollmentTicketResponse" /> with the details of the ticket that
+        /// was created.</returns>
+        public Task<CreateGuardianEnrollmentTicketResponse> CreateEnrollmentTicketAsync(
+            CreateGuardianEnrollmentTicketRequest request, CancellationToken cancellationToken = default)
         {
             return Connection
                 .SendAsync<CreateGuardianEnrollmentTicketResponse>(
@@ -43,7 +49,10 @@ namespace Auth0.ManagementApi.Clients
         }
 
         /// <summary>
-        /// Deletes an enrollment.
+        /// Remove a specific multi-factor authentication (MFA) enrollment from a user's account.
+        /// This allows the user to re-enroll with MFA. For more information,
+        /// review <a href="https://auth0.com/docs/secure/multi-factor-authentication/reset-user-mfa">
+        /// Reset User Multi-Factor Authentication and Recovery Codes.</a>
         /// </summary>
         /// <param name="id">The ID of the enrollment to delete.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
@@ -55,11 +64,13 @@ namespace Auth0.ManagementApi.Clients
                 HttpMethod.Delete,
                 BuildUri($"guardian/enrollments/{EncodePath(id)}"),
                 null,
-                DefaultHeaders, cancellationToken: cancellationToken);
+                DefaultHeaders, 
+                cancellationToken: cancellationToken);
         }
 
         /// <summary>
-        /// Retrieves an enrollment.
+        /// Retrieve details, such as status and type, for a specific multi-factor authentication enrollment
+        /// registered to a user account.
         /// </summary>
         /// <param name="id">The ID of the enrollment to retrieve.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
@@ -71,11 +82,8 @@ namespace Auth0.ManagementApi.Clients
                 BuildUri($"guardian/enrollments/{EncodePath(id)}"),
                 DefaultHeaders, cancellationToken: cancellationToken);
         }
-
-        /// <summary>
-        /// Retrieves all factors. Useful to check factor enablement and trial status.
-        /// </summary>
-        /// <returns>List of <see cref="GuardianFactor" /> instances with the available factors.</returns>
+        
+        /// <inheritdoc />
         public Task<IList<GuardianFactor>> GetFactorsAsync(CancellationToken cancellationToken = default)
         {
             return Connection
@@ -108,11 +116,9 @@ namespace Auth0.ManagementApi.Clients
                 DefaultHeaders, cancellationToken: cancellationToken);
         }
 
-        /// <summary>
-        /// Returns configuration for the Guardian Twilio provider.
-        /// </summary>
-        /// <returns><see cref="GuardianTwilioConfiguration" /> with the Twilio configuration.</returns>
-        public Task<GuardianTwilioConfiguration> GetTwilioConfigurationAsync(CancellationToken cancellationToken = default)
+        /// <inheritdoc />
+        public Task<GuardianTwilioConfiguration> GetTwilioConfigurationAsync(
+            CancellationToken cancellationToken = default)
         {
             return Connection
                 .GetAsync<GuardianTwilioConfiguration>(
@@ -123,10 +129,12 @@ namespace Auth0.ManagementApi.Clients
         /// <summary>
         /// Enable or Disable a Guardian factor.
         /// </summary>
-        /// <param name="request">The <see cref="UpdateGuardianFactorRequest" /> containing the details of the factor to update.</param>
+        /// <param name="request">
+        /// The <see cref="UpdateGuardianFactorRequest" /> containing the details of the factor to update.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The <see cref="UpdateGuardianFactorResponse" /> indicating the status of the factor.</returns>
-        public Task<UpdateGuardianFactorResponse> UpdateFactorAsync(UpdateGuardianFactorRequest request, CancellationToken cancellationToken = default)
+        public Task<UpdateGuardianFactorResponse> UpdateFactorAsync(
+            UpdateGuardianFactorRequest request, CancellationToken cancellationToken = default)
         {
             var name = request.Factor.ToEnumString();
 
@@ -144,7 +152,8 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="templates">A <see cref="GuardianSmsEnrollmentTemplates" /> containing the updated templates.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="GuardianSmsEnrollmentTemplates" /> containing the templates.</returns>
-        public Task<GuardianSmsEnrollmentTemplates> UpdateSmsTemplatesAsync(GuardianSmsEnrollmentTemplates templates, CancellationToken cancellationToken = default)
+        public Task<GuardianSmsEnrollmentTemplates> UpdateSmsTemplatesAsync(
+            GuardianSmsEnrollmentTemplates templates, CancellationToken cancellationToken = default)
         {
             return Connection
                 .SendAsync<GuardianSmsEnrollmentTemplates>(
@@ -154,15 +163,9 @@ namespace Auth0.ManagementApi.Clients
                 DefaultHeaders, cancellationToken: cancellationToken);
         }
 
-        /// <summary>
-        /// Configure the Guardian Twilio provider.
-        /// </summary>
-        /// <param name="request">
-        /// The <see cref="UpdateGuardianTwilioConfigurationRequest" /> containing the configuration settings.
-        /// </param>
-        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>The <see cref="GuardianTwilioConfiguration" /> containing the updated configuration settings.</returns>
-        public Task<GuardianTwilioConfiguration> UpdateTwilioConfigurationAsync(UpdateGuardianTwilioConfigurationRequest request, CancellationToken cancellationToken = default)
+        /// <inheritdoc />
+        public Task<GuardianTwilioConfiguration> UpdateTwilioConfigurationAsync(
+            UpdateGuardianTwilioConfigurationRequest request, CancellationToken cancellationToken = default)
         {
             return Connection
                 .SendAsync<GuardianTwilioConfiguration>(
@@ -172,11 +175,7 @@ namespace Auth0.ManagementApi.Clients
                 DefaultHeaders, cancellationToken: cancellationToken);
         }
 
-        /// <summary>
-        /// Retrieve the enabled phone factors for multi-factor authentication
-        /// </summary>
-        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>A <see cref="GuardianPhoneMessageTypes" /> containing the message types.</returns>
+        /// <inheritdoc />
         public Task<GuardianPhoneMessageTypes> GetPhoneMessageTypesAsync(CancellationToken cancellationToken = default)
         {
             return Connection
@@ -187,13 +186,9 @@ namespace Auth0.ManagementApi.Clients
                  );
         }
 
-        /// <summary>
-        /// Update enabled phone factors for multi-factor authentication
-        /// </summary>
-        /// <param name="messageTypes">A <see cref="GuardianPhoneMessageTypes" /> containing the list of phone factors to enable on the tenan.</param>
-        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>A <see cref="GuardianPhoneMessageTypes" /> containing the message types.</returns>
-        public Task<GuardianPhoneMessageTypes> UpdatePhoneMessageTypesAsync(GuardianPhoneMessageTypes messageTypes, CancellationToken cancellationToken = default)
+        /// <inheritdoc />
+        public Task<GuardianPhoneMessageTypes> UpdatePhoneMessageTypesAsync(
+            GuardianPhoneMessageTypes messageTypes, CancellationToken cancellationToken = default)
         {
             return Connection
                 .SendAsync<GuardianPhoneMessageTypes>(
@@ -203,6 +198,187 @@ namespace Auth0.ManagementApi.Clients
                     DefaultHeaders,
                     cancellationToken: cancellationToken
                 );
+        }
+
+        /// <inheritdoc />
+        public Task<DuoConfiguration> GetDuoConfigurationAsync(CancellationToken cancellationToken = default)
+        {
+            return Connection.GetAsync<DuoConfiguration>(
+                BuildUri("guardian/factors/duo/settings"),
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+                );
+        }
+
+        /// <inheritdoc />
+        public Task<DuoConfiguration> UpdateDuoConfigurationAsync(
+            DuoConfigurationPatchRequest configuration,
+            CancellationToken cancellationToken = default)
+        {
+            return Connection
+                .SendAsync<DuoConfiguration>(
+                    new HttpMethod("PATCH"),
+                    BuildUri("guardian/factors/duo/settings"),
+                    configuration,
+                    DefaultHeaders,
+                    cancellationToken: cancellationToken);        
+        }
+
+        /// <inheritdoc />
+        public Task<DuoConfiguration> UpdateDuoConfigurationAsync(
+            DuoConfigurationPutRequest configuration,
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<DuoConfiguration>(
+                    HttpMethod.Put,
+                    BuildUri("guardian/factors/duo/settings"),
+                    configuration,
+                    DefaultHeaders,
+                    cancellationToken: cancellationToken
+                );
+        }
+
+        /// <inheritdoc />
+        public Task<PhoneProviderConfiguration> GetPhoneProviderConfigurationAsync(
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.GetAsync<PhoneProviderConfiguration>(
+                BuildUri("guardian/factors/phone/selected-provider"),
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+                );
+        }
+
+        /// <inheritdoc />
+        public Task<PhoneProviderConfiguration> UpdatePhoneProviderConfigurationAsync(
+            PhoneProviderConfiguration phoneProviderConfiguraiton,
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<PhoneProviderConfiguration>(
+                HttpMethod.Put,
+                BuildUri("guardian/factors/phone/selected-provider"),
+                phoneProviderConfiguraiton,
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+                );
+        }
+
+        /// <inheritdoc />
+        public Task<GuardianPhoneEnrollmentTemplate> GetPhoneEnrollmentTemplateAsync(
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.GetAsync<GuardianPhoneEnrollmentTemplate>(
+                BuildUri("guardian/factors/phone/templates"),
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+                );
+        }
+
+        /// <inheritdoc />
+        public Task<GuardianPhoneEnrollmentTemplate> UpdatePhoneEnrollmentTemplateAsync(
+            GuardianPhoneEnrollmentTemplate phoneEnrollmentTemplate,
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<GuardianPhoneEnrollmentTemplate>(
+                HttpMethod.Put,
+                BuildUri("guardian/factors/phone/templates"),
+                phoneEnrollmentTemplate,
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+                );
+        }
+
+        /// <inheritdoc />
+        public Task<PushNotificationApnsConfiguration> GetPushNotificationApnsProviderConfigurationAsync(
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.GetAsync<PushNotificationApnsConfiguration>(
+                BuildUri("guardian/factors/push-notification/providers/apns"),
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+                );
+        }
+
+        /// <inheritdoc />
+        public Task<PushNotificationApnsConfigurationUpdateResponse> UpdatePushNotificationApnsProviderConfigurationAsync(
+            PushNotificationApnsConfigurationPutUpdateRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<PushNotificationApnsConfigurationUpdateResponse>(
+                HttpMethod.Put,
+                BuildUri("guardian/factors/push-notification/providers/apns"),
+                request,
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+                );
+        }
+
+        /// <inheritdoc />
+        public Task<PushNotificationApnsConfigurationUpdateResponse> UpdatePushNotificationApnsProviderConfigurationAsync(
+            PushNotificationApnsConfigurationPatchUpdateRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<PushNotificationApnsConfigurationUpdateResponse>(
+                new HttpMethod("PATCH"),
+                BuildUri("guardian/factors/push-notification/providers/apns"),
+                request,
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+                );
+        }
+
+        /// <inheritdoc />
+        public Task<object> UpdatePushNotificationFcmConfigurationAsync(
+            FcmConfigurationPatchUpdateRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<object>(
+                new HttpMethod("PATCH"),
+                BuildUri("guardian/factors/push-notification/providers/fcm"),
+                request,
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+                );
+        }
+
+        /// <inheritdoc />
+        public Task<object> UpdatePushNotificationFcmConfigurationAsync(
+            FcmConfigurationPutUpdateRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<object>(
+                HttpMethod.Put,
+                BuildUri("guardian/factors/push-notification/providers/fcm"),
+                request,
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+                );
+        }
+
+        /// <inheritdoc />
+        public Task<object> UpdatePushNotificationFcmV1ConfigurationAsync(FcmV1ConfigurationPatchUpdateRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<object>(
+                new HttpMethod("PATCH"),
+                BuildUri("guardian/factors/push-notification/providers/fcmv1"),
+                request,
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+                );
+        }
+        
+        /// <inheritdoc />
+        public Task<object> UpdatePushNotificationFcmV1ConfigurationAsync(FcmV1ConfigurationPutUpdateRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<object>(
+                HttpMethod.Put,
+                BuildUri("guardian/factors/push-notification/providers/fcmv1"),
+                request,
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+                );        
         }
     }
 }
