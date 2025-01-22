@@ -1,5 +1,17 @@
 # Change Log
 
+## [7.32.0](https://github.com/auth0/auth0.net/tree/7.32.0) (2025-01-22)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.31.0...7.32.0)
+
+**Added**
+- Add support to manage /flows endpoints [\#765](https://github.com/auth0/auth0.net/pull/765) ([kailash-b](https://github.com/kailash-b))
+- Add support to Update a Custom Domain [\#763](https://github.com/auth0/auth0.net/pull/763) ([kailash-b](https://github.com/kailash-b))
+- Adds CnameApiKey to CustomDomainVerificationResponse (#757) [\#764](https://github.com/auth0/auth0.net/pull/764) ([tmschlot](https://github.com/tmschlot))
+
+**Fixed**
+- Added missing user ID field in Device Credentials class [\#768](https://github.com/auth0/auth0.net/pull/768) ([Mohsens22](https://github.com/Mohsens22))
+- Added missing fields to LogEntry (#766) [\#767](https://github.com/auth0/auth0.net/pull/767) ([Mohsens22](https://github.com/Mohsens22))
+
 ## [7.31.0](https://github.com/auth0/auth0.net/tree/7.31.0) (2025-01-08)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.30.0...7.31.0)
 
