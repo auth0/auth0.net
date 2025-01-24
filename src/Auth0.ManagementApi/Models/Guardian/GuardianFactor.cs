@@ -8,7 +8,7 @@ namespace Auth0.ManagementApi.Models
     public class GuardianFactor
     {
         /// <summary>
-        /// States if this factor is enabled.
+        /// Whether this factor is enabled (true) or disabled (false).
         /// </summary>
         [JsonProperty("enabled")]
         public bool Enabled { get; set; }
@@ -21,7 +21,7 @@ namespace Auth0.ManagementApi.Models
         public GuardianFactorName? Name { get; set; }
 
         /// <summary>
-        /// For factors with trial limits (e.g. SMS) states if those limits have been exceeded.
+        /// Whether trial limits have been exceeded.
         /// </summary>
         [JsonProperty("trial_expired")]
         public bool? IsTrialExpired { get; set; }
