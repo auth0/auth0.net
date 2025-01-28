@@ -10,6 +10,10 @@ namespace Auth0.AuthenticationApi.Models.Ciba
         [JsonProperty("format")]
         public string Format { get; set; }
         
+        /// <summary>
+        /// Issuer of the ID Token. 
+        /// This value should match the 'Issuer' value configured in the well-known configuration.
+        /// </summary>
         [JsonProperty("iss")]
         public string Issuer { get; set; }
         

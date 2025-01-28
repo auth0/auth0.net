@@ -68,6 +68,9 @@ We appreciate feedback and contribution to this repo! Before you get started, pl
 
 - [Auth0's general contribution guidelines](https://github.com/auth0/open-source-template/blob/master/GENERAL-CONTRIBUTING.md)
 - [Auth0's code of conduct guidelines](https://github.com/auth0/open-source-template/blob/master/CODE-OF-CONDUCT.md)
+- Ensure your commits are signed to enhance security, authorship, trust and compliance.
+[About commit signature verification](https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification)
+
 
 ### Raise an issue
 
