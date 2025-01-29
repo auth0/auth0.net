@@ -259,5 +259,23 @@ namespace Auth0.ManagementApi.Clients
     /// <returns>A <see cref="GuardianSnsConfiguration"/> containing information about the SNS configuration</returns>
     Task<GuardianSnsConfiguration> UpdatePushNotificationSnsConfigurationAsync(GuardianSnsConfigurationPutUpdateRequest request, CancellationToken cancellationToken = default);
     
+    /// <summary>
+    /// Retrieve details of the push-notification providers configured for your tenant.
+    /// </summary>
+    /// <param name="cancellationToken">
+    /// <see cref="CancellationToken"/> The cancellation token to cancel operation.</param>
+    /// <returns><see cref="PushNotificationProviderConfiguration"/></returns>
+    Task<PushNotificationProviderConfiguration> GetPushNotificationProviderConfigurationAsync(CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Modify the push notification provider configured for your tenant. For more information, review
+    /// <a href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-push-notifications-for-mfa">
+    /// Configure Push Notifications for MFA. </a>
+    /// </summary>
+    /// <param name="pushNotificationProviderConfiguration"><see cref="PushNotificationProviderConfiguration"/> - Containing the configuration information to be updated</param>
+    /// <param name="cancellationToken">
+    /// <see cref="CancellationToken"/> The cancellation token to cancel operation.</param>
+    /// <returns><see cref="PushNotificationProviderConfiguration"/></returns>
+    Task<PushNotificationProviderConfiguration> UpdatePushNotificationProviderConfigurationAsync(PushNotificationProviderConfiguration pushNotificationProviderConfiguration, CancellationToken cancellationToken = default);
   }
 }

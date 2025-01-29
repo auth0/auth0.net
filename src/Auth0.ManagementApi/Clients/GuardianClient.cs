@@ -408,5 +408,30 @@ namespace Auth0.ManagementApi.Clients
                 cancellationToken: cancellationToken
             );
         }
+
+        /// <inheritdoc />
+        public Task<PushNotificationProviderConfiguration> GetPushNotificationProviderConfigurationAsync(
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.GetAsync<PushNotificationProviderConfiguration>(
+                BuildUri("guardian/factors/push-notification/selected-provider"),
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+            );
+        }
+
+        /// <inheritdoc />
+        public Task<PushNotificationProviderConfiguration> UpdatePushNotificationProviderConfigurationAsync(
+            PushNotificationProviderConfiguration pushNotificationProviderConfiguration,
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<PushNotificationProviderConfiguration>(
+                HttpMethod.Put,
+                BuildUri("guardian/factors/push-notification/selected-provider"),
+                pushNotificationProviderConfiguration,
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+            );
+        }
     }
 }
