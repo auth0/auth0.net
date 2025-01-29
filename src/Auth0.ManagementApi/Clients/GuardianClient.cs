@@ -380,5 +380,33 @@ namespace Auth0.ManagementApi.Clients
                 cancellationToken: cancellationToken
                 );        
         }
+
+        /// <inheritdoc />
+        public Task<GuardianSnsConfiguration> UpdatePushNotificationSnsConfigurationAsync(
+            GuardianSnsConfigurationPatchUpdateRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<GuardianSnsConfiguration>(
+                new HttpMethod("PATCH"),
+                BuildUri("guardian/factors/push-notification/providers/sns"),
+                request,
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+            );
+        }
+
+        /// <inheritdoc />
+        public Task<GuardianSnsConfiguration> UpdatePushNotificationSnsConfigurationAsync(
+            GuardianSnsConfigurationPutUpdateRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<GuardianSnsConfiguration>(
+                HttpMethod.Put,
+                BuildUri("guardian/factors/push-notification/providers/sns"),
+                request,
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+            );
+        }
     }
 }

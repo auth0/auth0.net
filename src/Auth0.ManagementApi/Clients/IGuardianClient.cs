@@ -236,5 +236,28 @@ namespace Auth0.ManagementApi.Clients
     /// <see cref="CancellationToken"/> The cancellation token to cancel operation.</param>
     /// <returns>An <see cref="object"/> containing information about the FCMV1 configuration</returns>
     Task<object> UpdatePushNotificationFcmV1ConfigurationAsync(FcmV1ConfigurationPutUpdateRequest request, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Configure the
+    /// <a href="https://auth0.com/docs/multifactor-authentication/developer/sns-configuration">
+    /// AWS SNS push notification provider configuration </a> (subscription required).
+    /// </summary>
+    /// <param name="request"><see cref="GuardianSnsConfigurationPatchUpdateRequest"/></param>
+    /// <param name="cancellationToken">
+    /// <see cref="CancellationToken"/> The cancellation token to cancel operation.</param>
+    /// <returns>A <see cref="GuardianSnsConfiguration"/> containing information about the SNS configuration</returns>
+    Task<GuardianSnsConfiguration> UpdatePushNotificationSnsConfigurationAsync(GuardianSnsConfigurationPatchUpdateRequest request, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Configure the
+    /// <a href="https://auth0.com/docs/multifactor-authentication/developer/sns-configuration">
+    /// AWS SNS push notification provider configuration </a> (subscription required).
+    /// </summary>
+    /// <param name="request"><see cref="GuardianSnsConfigurationPutUpdateRequest"/></param>
+    /// <param name="cancellationToken">
+    /// <see cref="CancellationToken"/> The cancellation token to cancel operation.</param>
+    /// <returns>A <see cref="GuardianSnsConfiguration"/> containing information about the SNS configuration</returns>
+    Task<GuardianSnsConfiguration> UpdatePushNotificationSnsConfigurationAsync(GuardianSnsConfigurationPutUpdateRequest request, CancellationToken cancellationToken = default);
+    
   }
 }
