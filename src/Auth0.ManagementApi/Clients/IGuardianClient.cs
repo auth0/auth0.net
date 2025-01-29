@@ -63,7 +63,7 @@ namespace Auth0.ManagementApi.Clients
     Task<GuardianTwilioConfiguration> GetTwilioConfigurationAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Enable or Disable a Guardian factor.
+    /// Update the status (i.e., enabled or disabled) of a specific multi-factor authentication factor.
     /// </summary>
     /// <param name="request">The <see cref="UpdateGuardianFactorRequest" /> containing the details of the factor to update.</param>
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>

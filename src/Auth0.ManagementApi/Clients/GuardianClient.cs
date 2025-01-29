@@ -126,13 +126,7 @@ namespace Auth0.ManagementApi.Clients
                 DefaultHeaders, cancellationToken: cancellationToken);
         }
 
-        /// <summary>
-        /// Enable or Disable a Guardian factor.
-        /// </summary>
-        /// <param name="request">
-        /// The <see cref="UpdateGuardianFactorRequest" /> containing the details of the factor to update.</param>
-        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>The <see cref="UpdateGuardianFactorResponse" /> indicating the status of the factor.</returns>
+        /// <inheritdoc />
         public Task<UpdateGuardianFactorResponse> UpdateFactorAsync(
             UpdateGuardianFactorRequest request, CancellationToken cancellationToken = default)
         {
