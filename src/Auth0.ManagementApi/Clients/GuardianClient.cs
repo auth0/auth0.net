@@ -427,5 +427,29 @@ namespace Auth0.ManagementApi.Clients
                 cancellationToken: cancellationToken
             );
         }
+
+        /// <inheritdoc />
+        public Task<string[]> GetMultifactorAuthenticationPolicies(CancellationToken cancellationToken = default)
+        {
+            return Connection.GetAsync<string[]>(
+                BuildUri("guardian/policies"),
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+            );
+        }
+
+        /// <inheritdoc />
+        public Task<string[]> UpdateMultifactorAuthenticationPolicies(
+            string[] mfaPolicies,
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<string[]>(
+                HttpMethod.Put,
+                BuildUri("guardian/policies"),
+                mfaPolicies,
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+            );
+        }
     }
 }

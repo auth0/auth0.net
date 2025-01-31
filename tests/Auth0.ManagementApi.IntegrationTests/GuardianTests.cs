@@ -416,5 +416,29 @@ namespace Auth0.ManagementApi.IntegrationTests
             pushNotificationProviderConfiguration.Should().NotBeNull();
             updatedProviderConfiguration.PushNotificationProvider.Should().Be(PushNotificationProvider.Direct);
         }
+        
+        [Fact]
+        public async void Update_Get_MultifactorAuthenticationPolicies_successfully()
+        {
+            try
+            {
+                // update MFA policy
+                var updatedMfaPolicy =
+                    await fixture.ApiClient.Guardian.UpdateMultifactorAuthenticationPolicies(["all-applications"]);
+
+                updatedMfaPolicy.Should().NotBeNull();
+                updatedMfaPolicy.Should().BeEquivalentTo(["all-applications"]);
+
+                // Get the Push Notification provider configuration explicitly
+                var mfaPolicy =
+                    await fixture.ApiClient.Guardian.GetMultifactorAuthenticationPolicies();
+                mfaPolicy.Should().NotBeNull();
+                mfaPolicy.Should().BeEquivalentTo(["all-applications"]);
+            }
+            finally
+            {
+                await fixture.ApiClient.Guardian.UpdateMultifactorAuthenticationPolicies([]);    
+            }
+        }
     }
 }

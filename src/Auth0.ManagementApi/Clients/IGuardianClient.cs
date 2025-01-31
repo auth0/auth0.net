@@ -277,5 +277,24 @@ namespace Auth0.ManagementApi.Clients
     /// <see cref="CancellationToken"/> The cancellation token to cancel operation.</param>
     /// <returns><see cref="PushNotificationProviderConfiguration"/></returns>
     Task<PushNotificationProviderConfiguration> UpdatePushNotificationProviderConfigurationAsync(PushNotificationProviderConfiguration pushNotificationProviderConfiguration, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Retrieve the
+    ///<a href="https://auth0.com/docs/secure/multi-factor-authentication/enable-mfa">
+    /// multi-factor authentication (MFA) policies </a> configured for your tenant.
+    /// </summary>
+    /// <param name="cancellationToken"></param>
+    /// <returns>MFA authentication policies configured for your tenant</returns>
+    Task<string[]> GetMultifactorAuthenticationPolicies(CancellationToken cancellationToken = default);
+
+    ///  <summary>
+    ///  Set the
+    /// <a href="https://auth0.com/docs/secure/multi-factor-authentication/enable-mfa">
+    ///  multi-factor authentication (MFA) policies </a> for your tenant.
+    ///  </summary>
+    ///  <param name="mfaPolicies">MFA policies to update</param>
+    ///  <param name="cancellationToken"></param>
+    ///  <returns>MFA policies configured for your tenant</returns>
+    Task<string[]> UpdateMultifactorAuthenticationPolicies(string[] mfaPolicies, CancellationToken cancellationToken = default);
   }
 }
