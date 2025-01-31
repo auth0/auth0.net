@@ -126,13 +126,7 @@ namespace Auth0.ManagementApi.Clients
                 DefaultHeaders, cancellationToken: cancellationToken);
         }
 
-        /// <summary>
-        /// Enable or Disable a Guardian factor.
-        /// </summary>
-        /// <param name="request">
-        /// The <see cref="UpdateGuardianFactorRequest" /> containing the details of the factor to update.</param>
-        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>The <see cref="UpdateGuardianFactorResponse" /> indicating the status of the factor.</returns>
+        /// <inheritdoc />
         public Task<UpdateGuardianFactorResponse> UpdateFactorAsync(
             UpdateGuardianFactorRequest request, CancellationToken cancellationToken = default)
         {
@@ -379,6 +373,83 @@ namespace Auth0.ManagementApi.Clients
                 DefaultHeaders,
                 cancellationToken: cancellationToken
                 );        
+        }
+
+        /// <inheritdoc />
+        public Task<GuardianSnsConfiguration> UpdatePushNotificationSnsConfigurationAsync(
+            GuardianSnsConfigurationPatchUpdateRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<GuardianSnsConfiguration>(
+                new HttpMethod("PATCH"),
+                BuildUri("guardian/factors/push-notification/providers/sns"),
+                request,
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+            );
+        }
+
+        /// <inheritdoc />
+        public Task<GuardianSnsConfiguration> UpdatePushNotificationSnsConfigurationAsync(
+            GuardianSnsConfigurationPutUpdateRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<GuardianSnsConfiguration>(
+                HttpMethod.Put,
+                BuildUri("guardian/factors/push-notification/providers/sns"),
+                request,
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+            );
+        }
+
+        /// <inheritdoc />
+        public Task<PushNotificationProviderConfiguration> GetPushNotificationProviderConfigurationAsync(
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.GetAsync<PushNotificationProviderConfiguration>(
+                BuildUri("guardian/factors/push-notification/selected-provider"),
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+            );
+        }
+
+        /// <inheritdoc />
+        public Task<PushNotificationProviderConfiguration> UpdatePushNotificationProviderConfigurationAsync(
+            PushNotificationProviderConfiguration pushNotificationProviderConfiguration,
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<PushNotificationProviderConfiguration>(
+                HttpMethod.Put,
+                BuildUri("guardian/factors/push-notification/selected-provider"),
+                pushNotificationProviderConfiguration,
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+            );
+        }
+
+        /// <inheritdoc />
+        public Task<string[]> GetMultifactorAuthenticationPolicies(CancellationToken cancellationToken = default)
+        {
+            return Connection.GetAsync<string[]>(
+                BuildUri("guardian/policies"),
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+            );
+        }
+
+        /// <inheritdoc />
+        public Task<string[]> UpdateMultifactorAuthenticationPolicies(
+            string[] mfaPolicies,
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<string[]>(
+                HttpMethod.Put,
+                BuildUri("guardian/policies"),
+                mfaPolicies,
+                DefaultHeaders,
+                cancellationToken: cancellationToken
+            );
         }
     }
 }

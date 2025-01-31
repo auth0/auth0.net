@@ -63,7 +63,7 @@ namespace Auth0.ManagementApi.Clients
     Task<GuardianTwilioConfiguration> GetTwilioConfigurationAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Enable or Disable a Guardian factor.
+    /// Update the status (i.e., enabled or disabled) of a specific multi-factor authentication factor.
     /// </summary>
     /// <param name="request">The <see cref="UpdateGuardianFactorRequest" /> containing the details of the factor to update.</param>
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
@@ -236,5 +236,65 @@ namespace Auth0.ManagementApi.Clients
     /// <see cref="CancellationToken"/> The cancellation token to cancel operation.</param>
     /// <returns>An <see cref="object"/> containing information about the FCMV1 configuration</returns>
     Task<object> UpdatePushNotificationFcmV1ConfigurationAsync(FcmV1ConfigurationPutUpdateRequest request, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Configure the
+    /// <a href="https://auth0.com/docs/multifactor-authentication/developer/sns-configuration">
+    /// AWS SNS push notification provider configuration </a> (subscription required).
+    /// </summary>
+    /// <param name="request"><see cref="GuardianSnsConfigurationPatchUpdateRequest"/></param>
+    /// <param name="cancellationToken">
+    /// <see cref="CancellationToken"/> The cancellation token to cancel operation.</param>
+    /// <returns>A <see cref="GuardianSnsConfiguration"/> containing information about the SNS configuration</returns>
+    Task<GuardianSnsConfiguration> UpdatePushNotificationSnsConfigurationAsync(GuardianSnsConfigurationPatchUpdateRequest request, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Configure the
+    /// <a href="https://auth0.com/docs/multifactor-authentication/developer/sns-configuration">
+    /// AWS SNS push notification provider configuration </a> (subscription required).
+    /// </summary>
+    /// <param name="request"><see cref="GuardianSnsConfigurationPutUpdateRequest"/></param>
+    /// <param name="cancellationToken">
+    /// <see cref="CancellationToken"/> The cancellation token to cancel operation.</param>
+    /// <returns>A <see cref="GuardianSnsConfiguration"/> containing information about the SNS configuration</returns>
+    Task<GuardianSnsConfiguration> UpdatePushNotificationSnsConfigurationAsync(GuardianSnsConfigurationPutUpdateRequest request, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Retrieve details of the push-notification providers configured for your tenant.
+    /// </summary>
+    /// <param name="cancellationToken">
+    /// <see cref="CancellationToken"/> The cancellation token to cancel operation.</param>
+    /// <returns><see cref="PushNotificationProviderConfiguration"/></returns>
+    Task<PushNotificationProviderConfiguration> GetPushNotificationProviderConfigurationAsync(CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Modify the push notification provider configured for your tenant. For more information, review
+    /// <a href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-push-notifications-for-mfa">
+    /// Configure Push Notifications for MFA. </a>
+    /// </summary>
+    /// <param name="pushNotificationProviderConfiguration"><see cref="PushNotificationProviderConfiguration"/> - Containing the configuration information to be updated</param>
+    /// <param name="cancellationToken">
+    /// <see cref="CancellationToken"/> The cancellation token to cancel operation.</param>
+    /// <returns><see cref="PushNotificationProviderConfiguration"/></returns>
+    Task<PushNotificationProviderConfiguration> UpdatePushNotificationProviderConfigurationAsync(PushNotificationProviderConfiguration pushNotificationProviderConfiguration, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Retrieve the
+    ///<a href="https://auth0.com/docs/secure/multi-factor-authentication/enable-mfa">
+    /// multi-factor authentication (MFA) policies </a> configured for your tenant.
+    /// </summary>
+    /// <param name="cancellationToken"></param>
+    /// <returns>MFA authentication policies configured for your tenant</returns>
+    Task<string[]> GetMultifactorAuthenticationPolicies(CancellationToken cancellationToken = default);
+
+    ///  <summary>
+    ///  Set the
+    /// <a href="https://auth0.com/docs/secure/multi-factor-authentication/enable-mfa">
+    ///  multi-factor authentication (MFA) policies </a> for your tenant.
+    ///  </summary>
+    ///  <param name="mfaPolicies">MFA policies to update</param>
+    ///  <param name="cancellationToken"></param>
+    ///  <returns>MFA policies configured for your tenant</returns>
+    Task<string[]> UpdateMultifactorAuthenticationPolicies(string[] mfaPolicies, CancellationToken cancellationToken = default);
   }
 }

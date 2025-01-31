@@ -8,10 +8,10 @@ namespace Auth0.ManagementApi.Models
     {
         [JsonProperty("provider")]
         [JsonConverter(typeof(StringEnumConverter))]
-        public Provider Provider { get; set; }
+        public PhoneProvider PhoneProvider { get; set; }
     }
 
-    public enum Provider
+    public enum PhoneProvider
     {
         [EnumMember(Value = "auth0")]
         Auth0,

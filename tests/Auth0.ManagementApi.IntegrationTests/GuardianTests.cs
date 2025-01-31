@@ -274,19 +274,19 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             var phoneProviderConfiguration = new PhoneProviderConfiguration()
             {
-                Provider = Provider.Auth0,
+                PhoneProvider = PhoneProvider.Auth0,
             };
 
             // update phone provider configuration
             var updatedProviderConfiguration = 
                 await fixture.ApiClient.Guardian.UpdatePhoneProviderConfigurationAsync(phoneProviderConfiguration);
             updatedProviderConfiguration.Should().NotBeNull();
-            updatedProviderConfiguration.Provider.Should().Be(Provider.Auth0);
+            updatedProviderConfiguration.PhoneProvider.Should().Be(PhoneProvider.Auth0);
             
             // Get the Phone provider configuration explicitly
             phoneProviderConfiguration = await fixture.ApiClient.Guardian.GetPhoneProviderConfigurationAsync();
             phoneProviderConfiguration.Should().NotBeNull();
-            phoneProviderConfiguration.Provider.Should().Be(Provider.Auth0);
+            phoneProviderConfiguration.PhoneProvider.Should().Be(PhoneProvider.Auth0);
         }
         
         [Fact]
@@ -368,7 +368,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 ServerCredentials = "server_credentials"
             };
             
-            var fcmV1ConfigurationPutUpdateRequest = new FcmV1ConfigurationPatchUpdateRequest()
+            var fcmV1ConfigurationPutUpdateRequest = new FcmV1ConfigurationPutUpdateRequest()
             {
                 ServerCredentials = "server_credentials"
             };
@@ -392,6 +392,53 @@ namespace Auth0.ManagementApi.IntegrationTests
             response =
                 await fixture.ApiClient.Guardian.UpdatePushNotificationFcmV1ConfigurationAsync(fcmV1ConfigurationPutUpdateRequest);
             response.Should().NotBeNull();
+        }
+        
+        [Fact]
+        public async void Update_Get_PushNotificationProviderConfiguration_successfully()
+        {
+            var pushNotificationProviderConfiguration = new PushNotificationProviderConfiguration()
+            {
+                PushNotificationProvider = PushNotificationProvider.Direct,
+            };
+
+            // update push notification provider configuration
+            var updatedProviderConfiguration = 
+                await fixture.ApiClient.Guardian.UpdatePushNotificationProviderConfigurationAsync(
+                    pushNotificationProviderConfiguration);
+            
+            updatedProviderConfiguration.Should().NotBeNull();
+            updatedProviderConfiguration.PushNotificationProvider.Should().Be(PushNotificationProvider.Direct);
+            
+            // Get the Push Notification provider configuration explicitly
+            pushNotificationProviderConfiguration = 
+                await fixture.ApiClient.Guardian.GetPushNotificationProviderConfigurationAsync();
+            pushNotificationProviderConfiguration.Should().NotBeNull();
+            updatedProviderConfiguration.PushNotificationProvider.Should().Be(PushNotificationProvider.Direct);
+        }
+        
+        [Fact]
+        public async void Update_Get_MultifactorAuthenticationPolicies_successfully()
+        {
+            try
+            {
+                // update MFA policy
+                var updatedMfaPolicy =
+                    await fixture.ApiClient.Guardian.UpdateMultifactorAuthenticationPolicies(["all-applications"]);
+
+                updatedMfaPolicy.Should().NotBeNull();
+                updatedMfaPolicy.Should().BeEquivalentTo(["all-applications"]);
+
+                // Get the Push Notification provider configuration explicitly
+                var mfaPolicy =
+                    await fixture.ApiClient.Guardian.GetMultifactorAuthenticationPolicies();
+                mfaPolicy.Should().NotBeNull();
+                mfaPolicy.Should().BeEquivalentTo(["all-applications"]);
+            }
+            finally
+            {
+                await fixture.ApiClient.Guardian.UpdateMultifactorAuthenticationPolicies([]);    
+            }
         }
     }
 }
