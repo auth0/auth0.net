@@ -1,5 +1,16 @@
 # Change Log
 
+## [7.33.0](https://github.com/auth0/auth0.net/tree/7.33.0) (2025-02-05)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.32.0...7.33.0)
+
+**Added**
+- Adds support for managing SNS configuration - Push Notification - MFA policies [\#775](https://github.com/auth0/auth0.net/pull/775) ([kailash-b](https://github.com/kailash-b))
+- Update documentation to clarify LoginHint.Issuer field usage in CIBA context [\#773](https://github.com/auth0/auth0.net/pull/773) ([kailash-b](https://github.com/kailash-b))
+- Add support for /guardian end-points [\#771](https://github.com/auth0/auth0.net/pull/771) ([kailash-b](https://github.com/kailash-b))
+
+**Changed**
+- Allow Optional AssignMembershipOnLogin field to be nullable [\#776](https://github.com/auth0/auth0.net/pull/776) ([kailash-b](https://github.com/kailash-b))
+
 ## [7.32.0](https://github.com/auth0/auth0.net/tree/7.32.0) (2025-01-22)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.31.0...7.32.0)
 
