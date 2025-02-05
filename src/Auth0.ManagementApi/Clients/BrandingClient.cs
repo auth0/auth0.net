@@ -1,9 +1,12 @@
 ﻿using Auth0.ManagementApi.Models;
+
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Newtonsoft.Json;
 
 namespace Auth0.ManagementApi.Clients
 {
@@ -12,6 +15,9 @@ namespace Auth0.ManagementApi.Clients
     /// </summary>
     public class BrandingClient : BaseClient, IBrandingClient
     {
+        private readonly JsonConverter[] _brandingPhoneProviderConverters = 
+            { new ListConverter<BrandingPhoneProvider>("providers") };
+        
         /// <summary>
         /// Initializes a new instance of <see cref="BrandingClient"/>.
         /// </summary>
@@ -23,42 +29,25 @@ namespace Auth0.ManagementApi.Clients
         {
         }
 
-        /// <summary>
-        /// Retrieves branding settings for a tenant.
-        /// </summary>
-        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>A <see cref="Branding"/> containing the branding for the tenant.</returns>
+        /// <inheritdoc />
         public Task<Branding> GetAsync(CancellationToken cancellationToken = default)
         {
             return Connection.GetAsync<Branding>(BuildUri("branding"), DefaultHeaders, cancellationToken: cancellationToken);
         }
 
-        /// <summary>s
-        /// Updates the branding for a tenant.
-        /// </summary>
-        /// <param name="request">A <see cref="BrandingUpdateRequest" /> containing the branding information to update.</param>
-        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>The newly updated <see cref="Branding"/>.</returns>
+        /// <inheritdoc />
         public Task<Branding> UpdateAsync(BrandingUpdateRequest request, CancellationToken cancellationToken = default)
         {
             return Connection.SendAsync<Branding>(new HttpMethod("PATCH"), BuildUri("branding"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
-        /// <summary>
-        /// Retrieves the template for the New Universal Login Experience.
-        /// </summary>
-        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>The <see cref="UniversalLoginTemplate"/> for the new universal login experience.</returns>
+        /// <inheritdoc />
         public Task<UniversalLoginTemplate> GetUniversalLoginTemplateAsync(CancellationToken cancellationToken = default)
         {
             return Connection.GetAsync<UniversalLoginTemplate>(BuildUri("branding/templates/universal-login"), DefaultHeaders, cancellationToken: cancellationToken);
         }
 
-        /// <summary>
-        /// Delete the template for the New Universal Login Experience
-        /// </summary>
-        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
+        /// <inheritdoc />
         public Task DeleteUniversalLoginTemplateAsync(CancellationToken cancellationToken = default)
         {
             return Connection
@@ -69,16 +58,75 @@ namespace Auth0.ManagementApi.Clients
                             DefaultHeaders,
                             cancellationToken: cancellationToken);
         }
-
-        /// <summary>
-        /// Sets the template for the New Universal Login Experience.
-        /// </summary>
-        /// <param name="request">The <see cref="UniversalLoginTemplateUpdateRequest"/> containing details of the template to set.</param>
-        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-        /// <returns>The newly updated <see cref="UniversalLoginTemplate"/>.</returns>
+        
+        /// <inheritdoc />
         public Task<UniversalLoginTemplate> SetUniversalLoginTemplateAsync(UniversalLoginTemplateUpdateRequest request, CancellationToken cancellationToken = default)
         {
             return Connection.SendAsync<UniversalLoginTemplate>(HttpMethod.Put, BuildUri("branding/templates/universal-login"), request, DefaultHeaders, cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public Task<IList<BrandingPhoneProvider>> GetAllPhoneProvidersAsync(
+            BrandingPhoneProviderGetRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            var queryStrings = new Dictionary<string, string>
+            {
+                {"disabled", request.Disabled?.ToString().ToLower()},
+            };
+            return Connection.GetAsync<IList<BrandingPhoneProvider>>(
+                BuildUri("branding/phone/providers", queryStrings),
+                DefaultHeaders,
+                cancellationToken: cancellationToken,
+                converters:_brandingPhoneProviderConverters);
+        }
+
+        /// <inheritdoc />
+        public Task<BrandingPhoneProvider> CreatePhoneProviderAsync(
+            BrandingPhoneProviderCreateRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<BrandingPhoneProvider>(
+                HttpMethod.Post,
+                BuildUri("branding/phone/providers"),
+                request,
+                DefaultHeaders,
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public Task<BrandingPhoneProvider> GetPhoneProviderAsync(string id, CancellationToken cancellationToken = default)
+        {
+            return Connection.GetAsync<BrandingPhoneProvider>(
+                BuildUri($"branding/phone/providers/{EncodePath(id)}"),
+                DefaultHeaders,
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public Task DeletePhoneProviderAsync(string id, CancellationToken cancellationToken = default)
+        {
+            return Connection
+                .SendAsync<object>(
+                    HttpMethod.Delete,
+                    BuildUri($"branding/phone/providers/{EncodePath(id)}"),
+                    null,
+                    DefaultHeaders,
+                    cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public Task<BrandingPhoneProvider> UpdatePhoneProviderAsync(
+            string id,
+            BrandingPhoneProviderUpdateRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<BrandingPhoneProvider>(
+                new HttpMethod("PATCH"),
+                BuildUri($"branding/phone/providers/{EncodePath(id)}"),
+                request, 
+                DefaultHeaders,
+                cancellationToken: cancellationToken);
         }
     }
 }
