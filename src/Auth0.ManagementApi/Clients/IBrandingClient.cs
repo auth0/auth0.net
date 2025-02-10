@@ -94,5 +94,73 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
     /// <returns>Updated <see cref="BrandingPhoneProvider"/></returns>
     Task<BrandingPhoneProvider> UpdatePhoneProviderAsync(string id, BrandingPhoneProviderUpdateRequest request, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Send a test phone notification for the configured provider
+    /// </summary>
+    /// <param name="id">ID of the <see cref="BrandingPhoneProvider"/></param>
+    /// <param name="request">
+    /// <see cref="BrandingPhoneTestNotificationRequest"/> containing information on whom to send the notification to.</param>
+    /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+    /// <returns><see cref="BrandingPhoneTestNotificationResponse"/></returns>
+    Task<BrandingPhoneTestNotificationResponse> SendBrandingPhoneTestNotificationAsync(string id, BrandingPhoneTestNotificationRequest request, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Get a list of phone notification templates
+    /// </summary>
+    /// <param name="request"><see cref="BrandingPhoneNotificationTemplatesGetRequest"/></param>
+    /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+    /// <returns><see cref="IList{T}"/> of <see cref="BrandingPhoneNotificationTemplate"/></returns>
+    Task<IList<BrandingPhoneNotificationTemplate>> GetAllBrandingPhoneNotificationTemplatesAsync(BrandingPhoneNotificationTemplatesGetRequest request, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Create a phone notification template
+    /// </summary>
+    /// <param name="request"><see cref="BrandingPhoneNotificationTemplateCreateRequest"/> containing information on the template to be created</param>
+    /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+    /// <returns>Newly created <see cref="BrandingPhoneNotificationTemplate"/></returns>
+    Task<BrandingPhoneNotificationTemplate> CreateBrandingPhoneNotificationTemplateAsync(BrandingPhoneNotificationTemplateCreateRequest request, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Get a phone notification template
+    /// </summary>
+    /// <param name="id">ID of the <see cref="BrandingPhoneNotificationTemplate"/></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns><see cref="BrandingPhoneNotificationTemplate"/></returns>
+    Task<BrandingPhoneNotificationTemplate> GetBrandingPhoneNotificationTemplateAsync(string id, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Delete a phone notification template
+    /// </summary>
+    /// <param name="id">ID of the <see cref="BrandingPhoneNotificationTemplate"/></param>
+    /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+    /// <returns></returns>
+    Task DeleteBrandingPhoneNotificationTemplateAsync(string id, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Update a phone notification template
+    /// </summary>
+    /// <param name="id">ID of the Notification Template to be updated</param>
+    /// <param name="request"><see cref="BrandingPhoneNotificationTemplateUpdateRequest"/> containing information to be updated</param>
+    /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+    /// <returns>Updated <see cref="BrandingPhoneNotificationTemplate"/></returns>
+    Task<BrandingPhoneNotificationTemplate> UpdateBrandingPhoneNotificationTemplate(string id, BrandingPhoneNotificationTemplateUpdateRequest request, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Resets a phone notification template values
+    /// </summary>
+    /// <param name="id">ID of the Notification Template to be reset</param>
+    /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+    /// <returns>Updated <see cref="BrandingPhoneNotificationTemplate"/></returns>
+    Task<BrandingPhoneNotificationTemplate> ResetBrandingPhoneNotificationTemplate(string id, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Send a test phone notification for the configured template
+    /// </summary>
+    /// <param name="id">Id of the Branding Phone Notification Template</param>
+    /// <param name="request"><see cref="BrandingPhoneTestNotificationRequest"/></param>
+    /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+    /// <returns><see cref="BrandingPhoneTestNotificationResponse"/></returns>
+    Task<BrandingPhoneTestNotificationResponse> SendBrandingPhoneTemplateTestNotificationAsync(string id, BrandingPhoneTestNotificationRequest request, CancellationToken cancellationToken = default);
   }
 }
