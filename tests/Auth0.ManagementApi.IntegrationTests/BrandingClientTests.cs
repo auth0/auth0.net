@@ -170,5 +170,137 @@ namespace Auth0.ManagementApi.IntegrationTests
                 await fixture.ApiClient.Branding.DeletePhoneProviderAsync(newBrandingPhoneProvider.Id);
             }
         }
+
+        [Fact]
+        public async void Test_GetBrandingPhoneProvider_should_not_fail_for_null_input()
+        {
+            await Assert.ThrowsAsync<ArgumentNullException>(
+                () => fixture.ApiClient.Branding.GetPhoneProviderAsync(null));
+        }
+        
+        [Fact]
+        public async void Test_UpdateBrandingPhoneProvider_should_not_fail_for_null_input()
+        {
+            await Assert.ThrowsAsync<ArgumentNullException>(
+                () => fixture.ApiClient.Branding.UpdatePhoneProviderAsync(null, new BrandingPhoneProviderUpdateRequest()));
+        }
+        
+        [Fact]
+        public async void Test_DeleteBrandingPhoneProvider_should_not_fail_for_null_input()
+        {
+            await Assert.ThrowsAsync<ArgumentNullException>(
+                () => fixture.ApiClient.Branding.DeletePhoneProviderAsync(null));
+        }
+        
+        [Fact]
+        public async void Test_SendBrandingPhoneNotitication_should_not_fail_for_null_input()
+        {
+            await Assert.ThrowsAsync<ArgumentNullException>(
+                () => fixture.ApiClient.Branding.SendBrandingPhoneTestNotificationAsync(null, new BrandingPhoneTestNotificationRequest()));
+        }
+        
+        [Fact]
+        public async void Test_UpdateBrandingPhoneNotitication_should_not_fail_for_null_input()
+        {
+            await Assert.ThrowsAsync<ArgumentNullException>(
+                () => fixture.ApiClient.Branding.UpdateBrandingPhoneNotificationTemplate(null, new BrandingPhoneNotificationTemplateUpdateRequest()));
+        }
+        
+        [Fact]
+        public async void Test_DeleteBrandingPhoneNotitication_should_not_fail_for_null_input()
+        {
+            await Assert.ThrowsAsync<ArgumentNullException>(
+                () => fixture.ApiClient.Branding.DeleteBrandingPhoneNotificationTemplateAsync(null));
+        }
+        
+        [Fact]
+        public async void Test_ResetBrandingPhoneNotitication_should_not_fail_for_null_input()
+        {
+            await Assert.ThrowsAsync<ArgumentNullException>(
+                () => fixture.ApiClient.Branding.ResetBrandingPhoneNotificationTemplate(null));
+        }
+        
+        [Fact]
+        public async void Test_BrandingPhoneNotificationTemplate_crud_sequence()
+        {
+            BrandingPhoneNotificationTemplate createdBrandingPhoneNotificationTemplate = null;
+            try
+            {
+                // Create a Branding Phone Notification Template 
+                var createRequest = new BrandingPhoneNotificationTemplateCreateRequest()
+                {
+                    Content = new Content()
+                    {
+                        Syntax = "string",
+                        Body = new ContentBody()
+                        {
+                            Text = "This is a text message",
+                            Voice = "This is a voice message",
+                        },
+                        From = "1234567890",
+                    },
+                    Disabled = false,
+                    Type = BrandingPhoneNotificationTemplateType.OtpVerify,
+                };
+
+                createdBrandingPhoneNotificationTemplate =
+                    await fixture.ApiClient.Branding.CreateBrandingPhoneNotificationTemplateAsync(createRequest);
+
+                createdBrandingPhoneNotificationTemplate.Should().NotBeNull();
+                createdBrandingPhoneNotificationTemplate.Id.Should().NotBeNull();
+                createdBrandingPhoneNotificationTemplate.Should()
+                    .BeEquivalentTo(createRequest, options => options.ExcludingMissingMembers().Excluding( x => x.Content.Syntax));
+                
+                // Send a Test notification using the newly created Branding Phone Notification Template
+                var testNotificationRequest = new BrandingPhoneTestNotificationRequest()
+                {
+                    To = "+911234567890",
+                    DeliveryMethod = "text"
+                };
+                var testNotificationResponse = await fixture.ApiClient.Branding.SendBrandingPhoneTemplateTestNotificationAsync(
+                    createdBrandingPhoneNotificationTemplate.Id, testNotificationRequest);
+                testNotificationResponse.Should().NotBeNull();
+                
+                // Update the branding Phone Notification Template
+                var updateRequest = new BrandingPhoneNotificationTemplateUpdateRequest()
+                {
+                    Content = new Content()
+                    {
+                        Body = new ContentBody()
+                        {
+                            Text = "This is an updated text message",
+                            Voice = "This is an updated voice message",
+                        },
+                        From = "0987654321",
+                    },
+                };
+                
+                var updatedBrandingPhoneNotificationTemplate =
+                    await fixture.ApiClient.Branding.UpdateBrandingPhoneNotificationTemplate(
+                        createdBrandingPhoneNotificationTemplate.Id, updateRequest);
+                updatedBrandingPhoneNotificationTemplate.Should().NotBeNull();
+                
+                // Get the Branding Phone Notification Template
+                var retrievedBrandingPhoneNotificationTemplate =
+                    await fixture.ApiClient.Branding.GetBrandingPhoneNotificationTemplateAsync(
+                        updatedBrandingPhoneNotificationTemplate.Id);
+                retrievedBrandingPhoneNotificationTemplate.Should().NotBeNull();
+                retrievedBrandingPhoneNotificationTemplate.Should().BeEquivalentTo(
+                    updatedBrandingPhoneNotificationTemplate, options => options.ExcludingMissingMembers());
+            }
+            finally
+            {
+                // Delete the Branding Phone Notification Template
+                await fixture.ApiClient.Branding.DeleteBrandingPhoneNotificationTemplateAsync(
+                    createdBrandingPhoneNotificationTemplate?.Id);
+            }
+
+            // Get All Branding Phone Notification Templates and ensure delete was successful
+            var allBrandingPhoneNotificationTemplates = 
+                await fixture.ApiClient.Branding.GetAllBrandingPhoneNotificationTemplatesAsync(
+                    new BrandingPhoneNotificationTemplatesGetRequest());
+            allBrandingPhoneNotificationTemplates.Should()
+                .NotContain(x => x.Id == createdBrandingPhoneNotificationTemplate.Id);
+        }
     }
 }

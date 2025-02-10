@@ -18,6 +18,9 @@ namespace Auth0.ManagementApi.Clients
         private readonly JsonConverter[] _brandingPhoneProviderConverters = 
             { new ListConverter<BrandingPhoneProvider>("providers") };
         
+        private readonly JsonConverter[] _brandingPhoneNotificationTemplateConverters = 
+            { new ListConverter<BrandingPhoneNotificationTemplate>("templates") };
+        
         /// <summary>
         /// Initializes a new instance of <see cref="BrandingClient"/>.
         /// </summary>
@@ -72,7 +75,7 @@ namespace Auth0.ManagementApi.Clients
         {
             var queryStrings = new Dictionary<string, string>
             {
-                {"disabled", request.Disabled?.ToString().ToLower()},
+                {"disabled", request?.Disabled?.ToString().ToLower()},
             };
             return Connection.GetAsync<IList<BrandingPhoneProvider>>(
                 BuildUri("branding/phone/providers", queryStrings),
@@ -97,6 +100,10 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc />
         public Task<BrandingPhoneProvider> GetPhoneProviderAsync(string id, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
             return Connection.GetAsync<BrandingPhoneProvider>(
                 BuildUri($"branding/phone/providers/{EncodePath(id)}"),
                 DefaultHeaders,
@@ -106,6 +113,10 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc />
         public Task DeletePhoneProviderAsync(string id, CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
             return Connection
                 .SendAsync<object>(
                     HttpMethod.Delete,
@@ -121,10 +132,148 @@ namespace Auth0.ManagementApi.Clients
             BrandingPhoneProviderUpdateRequest request,
             CancellationToken cancellationToken = default)
         {
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
             return Connection.SendAsync<BrandingPhoneProvider>(
                 new HttpMethod("PATCH"),
                 BuildUri($"branding/phone/providers/{EncodePath(id)}"),
                 request, 
+                DefaultHeaders,
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public Task<BrandingPhoneTestNotificationResponse> SendBrandingPhoneTestNotificationAsync(
+            string id,
+            BrandingPhoneTestNotificationRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+            return Connection.SendAsync<BrandingPhoneTestNotificationResponse>(
+                HttpMethod.Post,
+                BuildUri($"branding/phone/providers/{EncodePath(id)}/try"),
+                request,
+                DefaultHeaders,
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public Task<IList<BrandingPhoneNotificationTemplate>> GetAllBrandingPhoneNotificationTemplatesAsync(
+            BrandingPhoneNotificationTemplatesGetRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            var queryStrings = new Dictionary<string, string>
+            {
+                {"disabled", request?.Disabled?.ToString().ToLower()},
+            };
+            
+            return Connection.GetAsync<IList<BrandingPhoneNotificationTemplate>>(
+                BuildUri("branding/phone/templates", queryStrings),
+                DefaultHeaders,
+                cancellationToken: cancellationToken,
+                converters:_brandingPhoneNotificationTemplateConverters);
+        }
+
+        /// <inheritdoc />
+        public Task<BrandingPhoneNotificationTemplate> CreateBrandingPhoneNotificationTemplateAsync(
+            BrandingPhoneNotificationTemplateCreateRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<BrandingPhoneNotificationTemplate>(
+                HttpMethod.Post,
+                BuildUri("branding/phone/templates"),
+                request,
+                DefaultHeaders,
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public Task<BrandingPhoneNotificationTemplate> GetBrandingPhoneNotificationTemplateAsync(
+            string id,
+            CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+            return Connection.GetAsync<BrandingPhoneNotificationTemplate>(
+                BuildUri($"branding/phone/templates/{EncodePath(id)}"),
+                DefaultHeaders,
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public Task DeleteBrandingPhoneNotificationTemplateAsync(string id, CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+            
+            return Connection
+                .SendAsync<object>(
+                    HttpMethod.Delete,
+                    BuildUri($"branding/phone/templates/{EncodePath(id)}"),
+                    null,
+                    DefaultHeaders,
+                    cancellationToken: cancellationToken);       
+        }
+
+        /// <inheritdoc />
+        public Task<BrandingPhoneNotificationTemplate> UpdateBrandingPhoneNotificationTemplate(
+            string id,
+            BrandingPhoneNotificationTemplateUpdateRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+            
+            return Connection.SendAsync<BrandingPhoneNotificationTemplate>(
+                new HttpMethod("PATCH"),
+                BuildUri($"branding/phone/templates/{EncodePath(id)}"),
+                request, 
+                DefaultHeaders,
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public Task<BrandingPhoneNotificationTemplate> ResetBrandingPhoneNotificationTemplate(
+            string id,
+            CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+            
+            return Connection.SendAsync<BrandingPhoneNotificationTemplate>(
+                new HttpMethod("PATCH"),
+                BuildUri($"branding/phone/templates/{EncodePath(id)}/reset"),
+                null, 
+                DefaultHeaders,
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public Task<BrandingPhoneTestNotificationResponse> SendBrandingPhoneTemplateTestNotificationAsync(string id, BrandingPhoneTestNotificationRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new ArgumentNullException(nameof(id));
+            }
+            
+            return Connection.SendAsync<BrandingPhoneTestNotificationResponse>(
+                HttpMethod.Post,
+                BuildUri($"branding/phone/templates/{EncodePath(id)}/try"),
+                request,
                 DefaultHeaders,
                 cancellationToken: cancellationToken);
         }
