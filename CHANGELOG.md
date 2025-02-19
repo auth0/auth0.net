@@ -1,5 +1,16 @@
 # Change Log
 
+## [7.34.0](https://github.com/auth0/auth0.net/tree/7.34.0) (2025-02-19)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.33.0...7.34.0)
+
+**Added**
+- Adding support for managing branding theme [\#784](https://github.com/auth0/auth0.net/pull/784) ([kailash-b](https://github.com/kailash-b))
+- Add support for managing Branding Phone Notification Templates [\#783](https://github.com/auth0/auth0.net/pull/783) ([kailash-b](https://github.com/kailash-b))
+- Add support for managing Branding Phone Provider settings [\#780](https://github.com/auth0/auth0.net/pull/780) ([kailash-b](https://github.com/kailash-b))
+
+**Fixed**
+- Update ChangeLog with for v7.30.0 [\#782](https://github.com/auth0/auth0.net/pull/782) ([kailash-b](https://github.com/kailash-b))
+
 ## [7.33.0](https://github.com/auth0/auth0.net/tree/7.33.0) (2025-02-05)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.32.0...7.33.0)
 
