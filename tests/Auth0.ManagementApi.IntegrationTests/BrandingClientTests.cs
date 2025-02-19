@@ -5,6 +5,7 @@ using Auth0.ManagementApi.IntegrationTests.Testing;
 using Auth0.ManagementApi.Models;
 using Auth0.Tests.Shared;
 using FluentAssertions;
+using FluentAssertions.Common;
 using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
@@ -221,6 +222,13 @@ namespace Auth0.ManagementApi.IntegrationTests
         }
         
         [Fact]
+        public async void Test_GetBrandingTheme_should_throw_for_null_input()
+        {
+            await Assert.ThrowsAsync<ArgumentNullException>(
+                () => fixture.ApiClient.Branding.GetBrandingThemeAsync(null));
+        }
+        
+        [Fact]
         public async void Test_BrandingPhoneNotificationTemplate_crud_sequence()
         {
             BrandingPhoneNotificationTemplate createdBrandingPhoneNotificationTemplate = null;
@@ -301,6 +309,214 @@ namespace Auth0.ManagementApi.IntegrationTests
                     new BrandingPhoneNotificationTemplatesGetRequest());
             allBrandingPhoneNotificationTemplates.Should()
                 .NotContain(x => x.Id == createdBrandingPhoneNotificationTemplate.Id);
+        }
+
+        [Fact]
+        public async void Test_BrandingTheme_crud_sequence()
+        {
+            // Create a branding theme 
+            var createBrandingThemeRequest = new BrandingThemeCreateRequest()
+            {
+                Borders = new BrandingThemeBorder()
+                {
+                    ButtonBorderRadius = 1,
+                    ButtonBorderWeight = 2,
+                    ButtonsStyle = ButtonsStyle.Rounded,
+                    InputBorderRadius = 3,
+                    InputBorderWeight = 3,
+                    InputsStyle = ButtonsStyle.Pill,
+                    ShowWidgetShadow = true,
+                    WidgetBorderWeight = 5,
+                    WidgetCornerRadius = 5
+                },
+                Colors = new BrandingThemeColors()
+                {
+                    BaseFocusColor = "#abcabc",
+                    BaseHoverColor = "#abcabc",
+                    BodyText = "#abcabc",
+                    CaptchaWidgetTheme = CaptchaWidgetTheme.Dark,
+                    Error = "#abcabc",
+                    Header = "#abcabc",
+                    Icons = "#abcabc",
+                    InputBackground = "#abcabc",
+                    InputBorder = "#abcabc",
+                    InputFilledText = "#abcabc",
+                    InputLabelsPlaceholders = "#abcabc",
+                    LinksFocusedComponents = "#abcabc",
+                    PrimaryButton = "#abcabc",
+                    PrimaryButtonLabel = "#abcabc",
+                    SecondaryButtonBorder = "#abcabc",
+                    SecondaryButtonLabel = "#abcabc",
+                    Success = "#abaabc",
+                    WidgetBackground = "#abcaba",
+                    WidgetBorder = "#abcabc"
+                },
+                DisplayName = "Test branding Theme",
+                Fonts = new BrandingThemeFonts()
+                {
+                    BodyText = new BodyText()
+                    {
+                        Bold = true,
+                        Size = 3
+                    },
+                    ButtonsText = new ButtonsText()
+                    {
+                        Size = 10,
+                        Bold = false
+                    },
+                    FontUrl = "https://some.randomurl.com/",
+                    InputLabels = new InputLabels()
+                    {
+                        Bold = true
+                    },
+                    Links = new Links()
+                    {
+                        Bold = false
+                    },
+                    LinksStyle = LinksStyle.Normal,
+                    ReferenceTextSize = 12,
+                    Subtitle = new Subtitle()
+                    {
+                        Bold = true,
+                        Size = 5
+                    },
+                    Title = new Title()
+                    {
+                        Bold = true,
+                        Size = 75
+                    }
+                },
+                PageBackground = new BrandingThemePageBackground()
+                {
+                    BackgroundColor = "#abcabc",
+                    BackgroundImageUrl = "https://another-random-url.com/",
+                    PageLayout = PageLayout.Left
+                },
+                Widget = new BrandingThemeWidget()
+                {
+                    HeaderTextAlignment = HeaderTextAlignment.Center,
+                    LogoHeight = 10,
+                    LogoPosition = LogoPosition.Center,
+                    LogoUrl = "https://logo-url.com/",
+                    SocialButtonsLayout = SocialButtonsLayout.Bottom
+                    
+                }
+            };
+            var createdBrandingTheme =
+                await fixture.ApiClient.Branding.CreateBrandingThemeAsync(createBrandingThemeRequest);
+
+            try
+            {
+                createdBrandingTheme.Should().BeEquivalentTo(createBrandingThemeRequest, options => options.ExcludingMissingMembers());
+
+                // Get the default branding theme
+                var defaultBrandingTheme =
+                    await fixture.ApiClient.Branding.GetDefaultBrandingThemeAsync();
+                defaultBrandingTheme.Should().NotBeNull();
+
+                // Update a branding theme 
+                var updateRequest = new BrandingThemeUpdateRequest()
+                {
+                    Borders = new BrandingThemeBorder()
+                    {
+                        ButtonBorderRadius = 1,
+                        ButtonBorderWeight = 2,
+                        ButtonsStyle = ButtonsStyle.Pill,
+                        InputBorderRadius = 3,
+                        InputBorderWeight = 3,
+                        InputsStyle = ButtonsStyle.Pill,
+                        ShowWidgetShadow = true,
+                        WidgetBorderWeight = 5,
+                        WidgetCornerRadius = 5
+                    },
+                    Colors = new BrandingThemeColors()
+                    {
+                        BaseFocusColor = "#abcabc",
+                        BaseHoverColor = "#abcabc",
+                        BodyText = "#abcabc",
+                        CaptchaWidgetTheme = CaptchaWidgetTheme.Dark,
+                        Error = "#accabc",
+                        Header = "#abcabc",
+                        Icons = "#abcabc",
+                        InputBackground = "#abcabc",
+                        InputBorder = "#abcabc",
+                        InputFilledText = "#abcabc",
+                        InputLabelsPlaceholders = "#abcabc",
+                        LinksFocusedComponents = "#abcabc",
+                        PrimaryButton = "#abcabc",
+                        PrimaryButtonLabel = "#abcabc",
+                        SecondaryButtonBorder = "#abcabc",
+                        SecondaryButtonLabel = "#abcabc",
+                        Success = "#abaabc",
+                        WidgetBackground = "#abcaba",
+                        WidgetBorder = "#abcabc"
+                    },
+                    DisplayName = "Test branding Theme",
+                    Fonts = new BrandingThemeFonts()
+                    {
+                        BodyText = new BodyText()
+                        {
+                            Bold = true,
+                            Size = 3
+                        },
+                        ButtonsText = new ButtonsText()
+                        {
+                            Size = 10,
+                            Bold = false
+                        },
+                        FontUrl = "https://some.randomurl.com/",
+                        InputLabels = new InputLabels()
+                        {
+                            Bold = true
+                        },
+                        Links = new Links()
+                        {
+                            Bold = false
+                        },
+                        LinksStyle = LinksStyle.Normal,
+                        ReferenceTextSize = 12,
+                        Subtitle = new Subtitle()
+                        {
+                            Bold = true,
+                            Size = 5
+                        },
+                        Title = new Title()
+                        {
+                            Bold = true,
+                            Size = 75
+                        }
+                    },
+                    PageBackground = new BrandingThemePageBackground()
+                    {
+                        BackgroundColor = "#abcabc",
+                        BackgroundImageUrl = "https://another-random-url.com/",
+                        PageLayout = PageLayout.Left
+                    },
+                    Widget = new BrandingThemeWidget()
+                    {
+                        HeaderTextAlignment = HeaderTextAlignment.Center,
+                        LogoHeight = 10,
+                        LogoPosition = LogoPosition.Left,
+                        LogoUrl = "https://logo-url.com/",
+                        SocialButtonsLayout = SocialButtonsLayout.Bottom
+                        
+                    }
+                };
+                var updatedBrandingTheme =
+                    await fixture.ApiClient.Branding.UpdateBrandingThemeAsync(createdBrandingTheme.ThemeId, updateRequest);
+            
+                updatedBrandingTheme.Widget.LogoPosition.Should().Be(LogoPosition.Left);
+            
+                // get the branding theme 
+                var fetchBrandingTheme = await fixture.ApiClient.Branding.GetBrandingThemeAsync(createdBrandingTheme.ThemeId);
+                fetchBrandingTheme.Should().BeEquivalentTo(updatedBrandingTheme, options => options.Excluding( x => x.ThemeId));
+
+            }
+            finally
+            {
+                // delete the branding theme
+                await fixture.ApiClient.Branding.DeleteBrandingThemeAsync(createdBrandingTheme.ThemeId);
+            }
         }
     }
 }
