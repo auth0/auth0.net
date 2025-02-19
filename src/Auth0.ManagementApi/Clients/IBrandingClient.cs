@@ -162,5 +162,44 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
     /// <returns><see cref="BrandingPhoneTestNotificationResponse"/></returns>
     Task<BrandingPhoneTestNotificationResponse> SendBrandingPhoneTemplateTestNotificationAsync(string id, BrandingPhoneTestNotificationRequest request, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Create branding theme.
+    /// </summary>
+    /// <param name="request">A <see cref="BrandingThemeCreateRequest"/> containing information required for creating a <see cref="BrandingTheme"/></param>
+    /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+    /// <returns>A <see cref="BrandingTheme"/></returns>
+    Task<BrandingTheme> CreateBrandingThemeAsync(BrandingThemeCreateRequest request, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Retrieve default branding theme.
+    /// </summary>
+    /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+    /// <returns>The default <see cref="BrandingTheme"/></returns>
+    Task<BrandingTheme> GetDefaultBrandingThemeAsync(CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Retrieve branding theme.
+    /// </summary>
+    /// <param name="brandingThemeId">ID of the branding Theme to retrieve</param>
+    /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+    /// <returns>The <see cref="BrandingTheme"/></returns>
+    Task<BrandingTheme> GetBrandingThemeAsync(string brandingThemeId, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Delete branding theme.
+    /// </summary>
+    /// <param name="brandingThemeId">ID of the branding Theme to delete</param>
+    /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+    Task DeleteBrandingThemeAsync(string brandingThemeId, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Update branding theme.
+    /// </summary>
+    /// <param name="brandingThemeId">ID of the branding Theme to update</param>
+    /// <param name="request">A <see cref="BrandingThemeUpdateRequest"/> containing information required for updating a <see cref="BrandingTheme"/></param>
+    /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+    /// <returns>An updated <see cref="BrandingTheme"/></returns>
+    Task<BrandingTheme> UpdateBrandingThemeAsync(string brandingThemeId, BrandingThemeUpdateRequest request, CancellationToken cancellationToken = default);
   }
 }

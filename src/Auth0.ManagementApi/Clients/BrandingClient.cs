@@ -277,5 +277,74 @@ namespace Auth0.ManagementApi.Clients
                 DefaultHeaders,
                 cancellationToken: cancellationToken);
         }
+
+        /// <inheritdoc />
+        public Task<BrandingTheme> CreateBrandingThemeAsync(
+            BrandingThemeCreateRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<BrandingTheme>(
+                HttpMethod.Post,
+                BuildUri($"branding/themes"),
+                request,
+                DefaultHeaders,
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public Task<BrandingTheme> GetDefaultBrandingThemeAsync(CancellationToken cancellationToken = default)
+        {
+            return Connection.GetAsync<BrandingTheme>(
+                BuildUri($"branding/themes/default"),
+                DefaultHeaders,
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public Task<BrandingTheme> GetBrandingThemeAsync(string brandingThemeId, CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrEmpty(brandingThemeId))
+            {
+                throw new ArgumentNullException(nameof(brandingThemeId));
+            }
+            
+            return Connection.GetAsync<BrandingTheme>(
+                BuildUri($"branding/themes/{EncodePath(brandingThemeId)}"),
+                DefaultHeaders,
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public Task DeleteBrandingThemeAsync(string brandingThemeId, CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrEmpty(brandingThemeId))
+            {
+                throw new ArgumentNullException(nameof(brandingThemeId));
+            }
+            
+            return Connection
+                .SendAsync<object>(
+                    HttpMethod.Delete,
+                    BuildUri($"branding/themes/{EncodePath(brandingThemeId)}"),
+                    null,
+                    DefaultHeaders,
+                    cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public Task<BrandingTheme> UpdateBrandingThemeAsync(string brandingThemeId, BrandingThemeUpdateRequest request, CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrEmpty(brandingThemeId))
+            {
+                throw new ArgumentNullException(nameof(brandingThemeId));
+            }
+            
+            return Connection.SendAsync<BrandingTheme>(
+                new HttpMethod("PATCH"),
+                BuildUri($"branding/themes/{EncodePath(brandingThemeId)}"),
+                request, 
+                DefaultHeaders,
+                cancellationToken: cancellationToken);
+        }
     }
 }
