@@ -61,7 +61,17 @@ jobs:
         path: .
         key: ${{ env.CACHE_KEY }}
     - name: Test Core
-      run: dotnet test tests/Auth0.Core.UnitTests/Auth0.Core.UnitTests.csproj
+      run: dotnet test tests/Auth0.Core.UnitTests/Auth0.Core.UnitTests.csproj  --collect:"XPlat Code coverage" --results-directory ./TestResults/ /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
+    
+    - name: Update codecov report
+      uses: codecov/codecov-action@13ce06bfc6bbe3ecf90edbbf1bc32fe5978ca1d3 # pin@5.3.1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./TestResults/**/coverage.cobertura.xml
+        fail_ci_if_error: false
+        verbose: true
+        flags: unittests
+
   test_auth:
     needs: test_core
     runs-on: ubuntu-latest
@@ -78,7 +88,16 @@ jobs:
         path: .
         key: ${{ env.CACHE_KEY }}
     - name: Test Authentication API
-      run: dotnet test tests/Auth0.AuthenticationApi.IntegrationTests/Auth0.AuthenticationApi.IntegrationTests.csproj
+      run: dotnet test tests/Auth0.AuthenticationApi.IntegrationTests/Auth0.AuthenticationApi.IntegrationTests.csproj --collect:"XPlat Code coverage" --results-directory ./TestResults/ /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
+
+    - name: Update codecov report
+      uses: codecov/codecov-action@13ce06bfc6bbe3ecf90edbbf1bc32fe5978ca1d3 # pin@5.3.1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./TestResults/**/coverage.cobertura.xml
+        fail_ci_if_error: false
+        verbose: true
+        flags: authIntTests
   test_management:
     needs: test_auth
     runs-on: ubuntu-latest
@@ -95,4 +114,13 @@ jobs:
         path: .
         key: ${{ env.CACHE_KEY }}
     - name: Test Management API
-      run: dotnet test tests/Auth0.ManagementApi.IntegrationTests/Auth0.ManagementApi.IntegrationTests.csproj
+      run: dotnet test tests/Auth0.ManagementApi.IntegrationTests/Auth0.ManagementApi.IntegrationTests.csproj --collect:"XPlat Code coverage" --results-directory ./TestResults/ /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
+    
+    - name: Update codecov report
+      uses: codecov/codecov-action@13ce06bfc6bbe3ecf90edbbf1bc32fe5978ca1d3 # pin@5.3.1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./TestResults/**/coverage.cobertura.xml
+        fail_ci_if_error: false
+        verbose: true
+        flags: mgmtIntTests
