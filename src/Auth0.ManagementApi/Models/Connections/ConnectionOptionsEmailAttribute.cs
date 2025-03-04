@@ -12,5 +12,12 @@ namespace Auth0.ManagementApi.Models.Connections
         /// </summary>
         [JsonProperty("signup")]
         public ConnectionOptionsEmailSignup Signup { get; set; }
+
+        /// <summary>
+        /// Gets or sets the verification method for email.
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        [JsonProperty("verification_method")]
+        public ConnectionOptionsEmailVerificationMethod? VerificationMethod { get; set; }
     }
 }
