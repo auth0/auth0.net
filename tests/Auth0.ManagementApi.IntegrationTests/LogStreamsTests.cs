@@ -50,6 +50,12 @@ namespace Auth0.ManagementApi.IntegrationTests
                     httpContentType = "application/json",
                     httpContentFormat = "JSONOBJECT",
                     httpAuthorization = "http-auth"
+                },
+                Filters = new List<LogStreamFilter>() {
+                    new LogStreamFilter{
+                        Type = "category",
+                        Name = "user.notification"
+                    }
                 }
             };
 
@@ -66,6 +72,9 @@ namespace Auth0.ManagementApi.IntegrationTests
             fetchedLogStream.Should().NotBeNull();
             fetchedLogStream.Name.Should().Be(name);
             fetchedLogStream.Id.Should().Be(createdLogStream.Id);
+            fetchedLogStream.Filters.Should().HaveCount(1);
+            fetchedLogStream.Filters[0].Name.Should().Be(request.Filters[0].Name);
+            fetchedLogStream.Filters[0].Type.Should().Be(request.Filters[0].Type);
 
             // Update the entity
             var updateRequest = new LogStreamUpdateRequest
@@ -75,6 +84,12 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Sink = new
                 {
                     httpEndpoint = "https://new-stream.com"
+                },
+                Filters = new List<LogStreamFilter>() {
+                    new LogStreamFilter{
+                        Type = "category",
+                        Name = "system.notification"
+                    }
                 }
             };
 
@@ -82,9 +97,12 @@ namespace Auth0.ManagementApi.IntegrationTests
             updatedLogStream.Name.Should().Be(updateRequest.Name);
             updatedLogStream.Status.Should().Be(LogStreamStatus.Paused);
             updatedLogStream.Id.Should().Be(fetchedLogStream.Id);
-            
+            updatedLogStream.Filters.Should().HaveCount(1);
+            updatedLogStream.Filters[0].Name.Should().Be(updateRequest.Filters[0].Name);
+            updatedLogStream.Filters[0].Type.Should().Be(updateRequest.Filters[0].Type);
+
             // show that sink properties are merged
-            ((string)updatedLogStream.Sink.httpContentType).Should().Be("application/json");             
+            ((string)updatedLogStream.Sink.httpContentType).Should().Be("application/json");
             ((string)updatedLogStream.Sink.httpEndpoint).Should().Be(updateRequest.Sink.httpEndpoint);
 
             // Delete the entity
@@ -110,6 +128,12 @@ namespace Auth0.ManagementApi.IntegrationTests
                         httpContentType = "application/json",
                         httpContentFormat = "JSONOBJECT",
                         httpAuthorization = "http-auth"
+                    },
+                    Filters = new List<LogStreamFilter>() {
+                        new LogStreamFilter{
+                            Type = "category",
+                            Name = "user.notification"
+                        }
                     }
                 },
                 new LogStreamCreateRequest
@@ -122,11 +146,17 @@ namespace Auth0.ManagementApi.IntegrationTests
                         httpContentType = "application/json",
                         httpContentFormat = "JSONOBJECT",
                         httpAuthorization = "http-auth"
+                    },
+                    Filters = new List<LogStreamFilter>() {
+                        new LogStreamFilter{
+                            Type = "category",
+                            Name = "system.notification"
+                        }
                     }
                 }
             };
 
-            foreach(var request in requests)
+            foreach (var request in requests)
             {
                 var stream = await fixture.ApiClient.LogStreams.CreateAsync(request);
 
