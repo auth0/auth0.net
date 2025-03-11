@@ -32,6 +32,6 @@ namespace Auth0.ManagementApi.Models
         /// The new collection of properties describing the log stream filters
         /// </summary>
         [JsonProperty("filters", DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public IList<LogStreamFilter> Filters { get; set; }
+        public IList<LogStreamFilterRequest> Filters { get; set; }
     }
 }
