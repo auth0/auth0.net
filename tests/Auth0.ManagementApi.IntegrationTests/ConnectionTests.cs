@@ -11,7 +11,6 @@ using Auth0.ManagementApi.Paging;
 using System.Collections.Generic;
 using Auth0.AuthenticationApi.Models;
 using Auth0.ManagementApi.Models.Connections;
-using Auth0.Tests.Shared;
 using Newtonsoft.Json;
 
 namespace Auth0.ManagementApi.IntegrationTests
@@ -506,7 +505,8 @@ namespace Auth0.ManagementApi.IntegrationTests
                             {
                                 Active = false
                             }
-                        }
+                        },
+                        VerificationMethod = ConnectionOptionsEmailVerificationMethod.Otp
                     },
                     PhoneNumber = new ConnectionOptionsPhoneNumberAttribute()
                     {
