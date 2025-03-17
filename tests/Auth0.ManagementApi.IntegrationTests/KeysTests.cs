@@ -156,7 +156,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             importedKeys.ParentKid.Should().Be("a20128c5-9bf5-4209-8c43-b6dfcee60e9b");
         }
         
-        [Fact]
+        [Fact(Skip = "Run manually - Running often on CI causes Rate Limit errors")]
         public async void Test_rekey_encrypted_keys()
         {
             // Get the existing Tenant Master Key
