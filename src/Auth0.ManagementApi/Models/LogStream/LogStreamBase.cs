@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 namespace Auth0.ManagementApi.Models
@@ -23,5 +24,11 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("sink")]
         public dynamic Sink { get; set; }
+
+        /// <summary>
+        /// Information about log stream filters
+        /// </summary>
+        [JsonProperty("filters")]
+        public IList<LogStreamFilter> Filters { get; set; }
     }
 }

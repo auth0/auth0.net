@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 namespace Auth0.ManagementApi.Models
@@ -7,7 +8,7 @@ namespace Auth0.ManagementApi.Models
     /// Information required to update a log stream
     /// </summary>
     public class LogStreamUpdateRequest
-    { 
+    {
         /// <summary>
         /// The name of the log stream
         /// </summary>
@@ -26,5 +27,12 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("sink", DefaultValueHandling = DefaultValueHandling.Ignore)]
         public dynamic Sink { get; set; }
+
+        /// <summary>
+        /// Only logs events matching these filters will be delivered by the stream.
+        /// If omitted or empty, all events will be delivered.
+        /// </summary>
+        [JsonProperty("filters", DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public IList<LogStreamFilter> Filters { get; set; }
     }
 }
