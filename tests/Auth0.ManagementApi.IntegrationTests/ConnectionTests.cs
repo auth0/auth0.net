@@ -9,6 +9,7 @@ using Xunit;
 using Auth0.Tests.Shared;
 using Auth0.ManagementApi.Paging;
 using System.Collections.Generic;
+using System.Linq;
 using Auth0.AuthenticationApi.Models;
 using Auth0.ManagementApi.Models.Connections;
 using Newtonsoft.Json;
@@ -402,15 +403,18 @@ namespace Auth0.ManagementApi.IntegrationTests
                 // Retrieve the token and validate
                 var retrievedScimTokens = 
                     await apiClient.Connections.GetScimTokenAsync(expectedScimConfiguration.ConnectionId);
-                Assert.Equal(scimTokenOne.Scopes, retrievedScimTokens[0].Scopes);
-                Assert.Equal(scimTokenOne.TokenId, retrievedScimTokens[0].TokenId);
-                Assert.Equal(scimTokenOne.CreatedAt, retrievedScimTokens[0].CreatedAt);
-                Assert.Equal(scimTokenOne.ValidUntil, retrievedScimTokens[0].ValidUntil);
+
+                var retrievedScimTokenOne = retrievedScimTokens.Single(x => x.TokenId == scimTokenOne.TokenId);
+                var retrievedScimTokenTwo = retrievedScimTokens.Single(x => x.TokenId == scimTokenTwo.TokenId);
+                Assert.Equal(scimTokenOne.Scopes, retrievedScimTokenOne.Scopes);
+                Assert.Equal(scimTokenOne.TokenId, retrievedScimTokenOne.TokenId);
+                Assert.Equal(scimTokenOne.CreatedAt, retrievedScimTokenOne.CreatedAt);
+                Assert.Equal(scimTokenOne.ValidUntil, retrievedScimTokenOne.ValidUntil);
                 
-                Assert.Equal(scimTokenTwo.Scopes, retrievedScimTokens[1].Scopes);
-                Assert.Equal(scimTokenTwo.TokenId, retrievedScimTokens[1].TokenId);
-                Assert.Equal(scimTokenTwo.CreatedAt, retrievedScimTokens[1].CreatedAt);
-                Assert.Equal(scimTokenTwo.ValidUntil, retrievedScimTokens[1].ValidUntil);
+                Assert.Equal(scimTokenTwo.Scopes, retrievedScimTokenTwo.Scopes);
+                Assert.Equal(scimTokenTwo.TokenId, retrievedScimTokenTwo.TokenId);
+                Assert.Equal(scimTokenTwo.CreatedAt, retrievedScimTokenTwo.CreatedAt);
+                Assert.Equal(scimTokenTwo.ValidUntil, retrievedScimTokenTwo.ValidUntil);
                 
                 // Delete SCIM Token and validate
                 await apiClient.Connections.DeleteScimTokenAsync(expectedScimConfiguration.ConnectionId, scimTokenOne.TokenId);
