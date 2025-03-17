@@ -2,12 +2,14 @@
 using Auth0.IntegrationTests.Shared.CleanUp;
 using Auth0.ManagementApi.IntegrationTests.Testing;
 using Auth0.ManagementApi.Models;
+
 using FluentAssertions;
+using Xunit;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
 {
@@ -50,13 +52,20 @@ namespace Auth0.ManagementApi.IntegrationTests
                     httpContentType = "application/json",
                     httpContentFormat = "JSONOBJECT",
                     httpAuthorization = "http-auth"
+                },
+                Filters = new List<LogStreamFilter>() {
+                    new()
+                    {
+                        Type = LogStreamFilterType.Category,
+                        Name = LogStreamFilterName.UserNotification
+                    }
                 }
             };
 
             var createdLogStream = await fixture.ApiClient.LogStreams.CreateAsync(request);
             _createdStreams.Add(createdLogStream);
 
-            fixture.TrackIdentifier(Auth0.IntegrationTests.Shared.CleanUp.CleanUpType.LogStreams, createdLogStream.Id);
+            fixture.TrackIdentifier(CleanUpType.LogStreams, createdLogStream.Id);
 
             createdLogStream.Should().NotBeNull();
             createdLogStream.Name.Should().Be(name);
@@ -66,6 +75,9 @@ namespace Auth0.ManagementApi.IntegrationTests
             fetchedLogStream.Should().NotBeNull();
             fetchedLogStream.Name.Should().Be(name);
             fetchedLogStream.Id.Should().Be(createdLogStream.Id);
+            fetchedLogStream.Filters.Should().HaveCount(1);
+            fetchedLogStream.Filters[0].Name.Should().Be(request.Filters[0].Name);
+            fetchedLogStream.Filters[0].Type.Should().Be(request.Filters[0].Type);
 
             // Update the entity
             var updateRequest = new LogStreamUpdateRequest
@@ -75,6 +87,13 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Sink = new
                 {
                     httpEndpoint = "https://new-stream.com"
+                },
+                Filters = new List<LogStreamFilter>() {
+                    new()
+                    {
+                        Type = LogStreamFilterType.Category,
+                        Name = LogStreamFilterName.SystemNotification
+                    }
                 }
             };
 
@@ -82,9 +101,12 @@ namespace Auth0.ManagementApi.IntegrationTests
             updatedLogStream.Name.Should().Be(updateRequest.Name);
             updatedLogStream.Status.Should().Be(LogStreamStatus.Paused);
             updatedLogStream.Id.Should().Be(fetchedLogStream.Id);
-            
+            updatedLogStream.Filters.Should().HaveCount(1);
+            updatedLogStream.Filters[0].Name.Should().Be(updateRequest.Filters[0].Name);
+            updatedLogStream.Filters[0].Type.Should().Be(updateRequest.Filters[0].Type);
+
             // show that sink properties are merged
-            ((string)updatedLogStream.Sink.httpContentType).Should().Be("application/json");             
+            ((string)updatedLogStream.Sink.httpContentType).Should().Be("application/json");
             ((string)updatedLogStream.Sink.httpEndpoint).Should().Be(updateRequest.Sink.httpEndpoint);
 
             // Delete the entity
@@ -92,7 +114,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             Func<Task> getFunc = async () => await fixture.ApiClient.LogStreams.GetAsync(createdLogStream.Id);
             getFunc.Should().Throw<ErrorApiException>().And.ApiError.Error.Should().Be("Not Found");
 
-            fixture.UnTrackIdentifier(Auth0.IntegrationTests.Shared.CleanUp.CleanUpType.LogStreams, createdLogStream.Id);
+            fixture.UnTrackIdentifier(CleanUpType.LogStreams, createdLogStream.Id);
         }
 
         [Fact]
@@ -110,6 +132,12 @@ namespace Auth0.ManagementApi.IntegrationTests
                         httpContentType = "application/json",
                         httpContentFormat = "JSONOBJECT",
                         httpAuthorization = "http-auth"
+                    },
+                    Filters = new List<LogStreamFilter>() {
+                        new LogStreamFilter{
+                            Type = LogStreamFilterType.Category,
+                            Name = LogStreamFilterName.UserNotification
+                        }
                     }
                 },
                 new LogStreamCreateRequest
@@ -122,15 +150,15 @@ namespace Auth0.ManagementApi.IntegrationTests
                         httpContentType = "application/json",
                         httpContentFormat = "JSONOBJECT",
                         httpAuthorization = "http-auth"
-                    }
+                    },
                 }
             };
 
-            foreach(var request in requests)
+            foreach (var request in requests)
             {
                 var stream = await fixture.ApiClient.LogStreams.CreateAsync(request);
 
-                fixture.TrackIdentifier(Auth0.IntegrationTests.Shared.CleanUp.CleanUpType.LogStreams, stream.Id);
+                fixture.TrackIdentifier(CleanUpType.LogStreams, stream.Id);
 
                 _createdStreams.Add(stream);
             }
@@ -141,6 +169,11 @@ namespace Auth0.ManagementApi.IntegrationTests
             // Assert
             streams.Count.Should().Be(2);
 
+            streams.Count(x => x.Filters != null && x.Filters.Any(filter => filter.Name == LogStreamFilterName.UserNotification))
+                .Should().Be(1);
+            
+            streams.Count(x => x.Filters == null).Should().Be(1);
+            
             // Remove
             foreach (var stream in streams)
             {
