@@ -70,13 +70,31 @@ public class SelfServiceProfileTest : IClassFixture<SelfServiceProfileTestFixtur
             {
                 ConnectionConfig = new SelfServiceSsoConnectionConfig()
                 {
-                    Name = "Test-Connection-For-SSO"
+                    Name = "Test-Connection-For-SSO",
+                    DisplayName = "Test Display Name",
+                    IsDomainConnection = false,
+                    Metadata = new object(),
+                    ShowAsButton = false,
+                    Options = new SelfServiceSsoConnectionConfigOptions()
+                    {
+                        DomainAliases = new []{"alias1", "alias2"},
+                        IconUrl = "https://cdn2.auth0.com/styleguide/latest/lib/logos/img/favicon.png",
+                        IdpInitiated = new SelfServiceSsoConnectionConfigIdpInitiated()
+                        {
+                            Enabled = true,
+                            ClientId = "AydyL76hVpC0meG2T7lTTQn667mrzS3A",
+                            ClientAuthorizeQuery = "redirect_uri",
+                            ClientProtocol = ClientProtocol.Oauth2
+                        }
+                    }
                 },
                 EnabledOrganizations = new List<EnabledOrganization>()
                 {
                     new EnabledOrganization()
                     {
-                        OrganizationId = existingOrganizationId
+                        OrganizationId = existingOrganizationId,
+                        AssignMembershipOnLogin = false,
+                        ShowAsButton = false
                     }
                 }
             });
