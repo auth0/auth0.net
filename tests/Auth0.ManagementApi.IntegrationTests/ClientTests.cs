@@ -71,7 +71,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                     BackchannelLogoutInitiators = new BackchannelLogoutInitiators
                     {
                         Mode = LogoutInitiatorModes.Custom,
-                        SelectedInitiators = new [] { LogoutInitiators.RpLogout, LogoutInitiators.IdpLogout, LogoutInitiators.PasswordChanged }
+                        SelectedInitiators = new[] { LogoutInitiators.RpLogout, LogoutInitiators.IdpLogout, LogoutInitiators.PasswordChanged, LogoutInitiators.SessionRevoked, LogoutInitiators.AccountDeleted, LogoutInitiators.EmailIdentifierChanged }
                     },
                     BackchannelLogoutUrls = new [] { "https://create.com/logout" }
                 },
