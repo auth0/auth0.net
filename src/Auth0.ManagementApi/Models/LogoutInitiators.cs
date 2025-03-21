@@ -26,6 +26,24 @@ namespace Auth0.ManagementApi.Models
         /// Request was initiated when a session expires.
         /// </summary>
         [EnumMember(Value = "session-expired")]
-        SessionExpired
+        SessionExpired,
+
+        /// <summary>
+        /// Request was initiated by session deletion.
+        /// </summary>
+        [EnumMember(Value = "session-revoked")]
+        SessionRevoked,
+
+        /// <summary>
+        /// Request was initiated by an account deletion.
+        /// </summary>
+        [EnumMember(Value = "account-deleted")]
+        AccountDeleted,
+
+        /// <summary>
+        /// Request was initiated by an email identifier change.
+        /// </summary>
+        [EnumMember(Value = "email-identifier-changed")]
+        EmailIdentifierChanged
     }
 }
