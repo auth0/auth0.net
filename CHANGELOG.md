@@ -1,5 +1,13 @@
 # Change Log
 
+## [7.35.0](https://github.com/auth0/auth0.net/tree/7.35.0) (2025-03-24)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.34.0...7.35.0)
+
+**Added**
+- Add missing fields in SelfServiceSso config [\#793](https://github.com/auth0/auth0.net/pull/793) ([kll2105](https://github.com/kll2105))
+- Adds support for email verification_method in ConnectionOptions [\#792](https://github.com/auth0/auth0.net/pull/792) ([hdmoreland](https://github.com/hdmoreland))
+- Support for LogFilterStream [\#791](https://github.com/auth0/auth0.net/pull/791) ([iamsushantk](https://github.com/iamsushantk))
+
 ## [7.34.0](https://github.com/auth0/auth0.net/tree/7.34.0) (2025-02-19)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.33.0...7.34.0)
 
