@@ -45,6 +45,16 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Test_client_crud_sequence()
         {
             string existingOrganizationId = "org_V6ojENVd1ERs5YY1";
+            var selectedInitiators = new[]
+            {
+                LogoutInitiators.RpLogout,
+                LogoutInitiators.IdpLogout,
+                LogoutInitiators.PasswordChanged,
+                LogoutInitiators.SessionRevoked,
+                LogoutInitiators.AccountDeleted,
+                LogoutInitiators.EmailIdentifierChanged
+            };
+            
             // Add a new client
             var newClientRequest = new ClientCreateRequest
             {
@@ -71,7 +81,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                     BackchannelLogoutInitiators = new BackchannelLogoutInitiators
                     {
                         Mode = LogoutInitiatorModes.Custom,
-                        SelectedInitiators = new [] { LogoutInitiators.RpLogout, LogoutInitiators.IdpLogout, LogoutInitiators.PasswordChanged }
+                        SelectedInitiators = selectedInitiators
                     },
                     BackchannelLogoutUrls = new [] { "https://create.com/logout" }
                 },
@@ -112,8 +122,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             newClientResponse.OrganizationRequireBehavior.Should().Be(OrganizationRequireBehavior.PreLoginPrompt);
             newClientResponse.OidcLogout.BackchannelLogoutUrls[0].Should().Be("https://create.com/logout");
             newClientResponse.OidcLogout.BackchannelLogoutInitiators.Mode.Should().Be(LogoutInitiatorModes.Custom);
-            newClientResponse.OidcLogout.BackchannelLogoutInitiators.SelectedInitiators.Length.Should().Be(3);
-            newClientResponse.OidcLogout.BackchannelLogoutInitiators.SelectedInitiators.Any(i => i == LogoutInitiators.PasswordChanged).Should().BeTrue();
+            newClientResponse.OidcLogout.BackchannelLogoutInitiators.SelectedInitiators.Should().BeEquivalentTo(selectedInitiators);
             newClientResponse.DefaultOrganization.OrganizationId.Should().Be(existingOrganizationId);
             newClientResponse.RequirePushedAuthorizationRequests.Should().BeTrue();
             newClientResponse.SignedRequestObject.Should().NotBeNull();
@@ -169,8 +178,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             updateClientResponse.OrganizationRequireBehavior.Should().Be(OrganizationRequireBehavior.NoPrompt);
             updateClientResponse.OidcLogout.BackchannelLogoutUrls[0].Should().Be("https://create.com/logout");
             updateClientResponse.OidcLogout.BackchannelLogoutInitiators.Mode.Should().Be(LogoutInitiatorModes.Custom);
-            updateClientResponse.OidcLogout.BackchannelLogoutInitiators.SelectedInitiators.Length.Should().Be(3);
-            updateClientResponse.OidcLogout.BackchannelLogoutInitiators.SelectedInitiators.Any(i => i == LogoutInitiators.PasswordChanged).Should().BeTrue();
+            updateClientResponse.OidcLogout.BackchannelLogoutInitiators.SelectedInitiators.Should().BeEquivalentTo(selectedInitiators);
             updateClientResponse.DefaultOrganization.OrganizationId.Should().Be(existingOrganizationId);
             updateClientResponse.DefaultOrganization.Flows.Should().HaveCount(1);
             updateClientResponse.DefaultOrganization.Flows.First().Should().Be(Flows.ClientCredentials);
