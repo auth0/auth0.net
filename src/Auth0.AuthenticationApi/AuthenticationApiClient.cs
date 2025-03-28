@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Auth0.AuthenticationApi.Models.Ciba;
+using Auth0.AuthenticationApi.Models.Mfa;
 
 namespace Auth0.AuthenticationApi
 {
@@ -77,8 +78,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc />
         public Task<string> ChangePasswordAsync(ChangePasswordRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             return connection.SendAsync<string>(
                 HttpMethod.Post,
@@ -90,8 +90,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc />
         public async Task<Uri> GetImpersonationUrlAsync(ImpersonationRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new
             {
@@ -116,8 +115,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc />
         public Task<UserInfo> GetUserInfoAsync(string accessToken, CancellationToken cancellationToken = default)
         {
-            if (accessToken == null)
-                throw new ArgumentNullException(nameof(accessToken));
+            accessToken.ThrowIfNull();
 
             return connection.GetAsync<UserInfo>(BuildUri("userinfo"), BuildHeaders(accessToken), cancellationToken);
         }
@@ -125,8 +123,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc />
         public async Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodeTokenRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string> {
                 { "grant_type", "authorization_code" },
@@ -151,8 +148,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public async Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodePkceTokenRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string> {
                 { "grant_type", "authorization_code" },
@@ -178,14 +174,13 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public Task<AccessTokenResponse> GetTokenAsync(ClientCredentialsTokenRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string> {
                 { "grant_type", "client_credentials" },
                 { "client_id", request.ClientId },
                 { "audience", request.Audience } };
-
+            
             body.AddIfNotEmpty("organization", request.Organization);
 
             ApplyClientAuthentication(request, body);
@@ -200,8 +195,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public async Task<AccessTokenResponse> GetTokenAsync(RefreshTokenRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string> {
                 { "grant_type", "refresh_token" },
@@ -229,8 +223,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public async Task<AccessTokenResponse> GetTokenAsync(ResourceOwnerTokenRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string> {
                 { "client_id", request.ClientId },
@@ -264,8 +257,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public async Task<AccessTokenResponse> GetTokenAsync(PasswordlessEmailTokenRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string> {
                 { "grant_type", "http://auth0.com/oauth/grant-type/passwordless/otp" },
@@ -293,8 +285,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public async Task<AccessTokenResponse> GetTokenAsync(PasswordlessSmsTokenRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string> {
                 { "grant_type", "http://auth0.com/oauth/grant-type/passwordless/otp" },
@@ -327,8 +318,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public async Task<AccessTokenResponse> GetTokenAsync(DeviceCodeTokenRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string>
             {
@@ -354,8 +344,7 @@ namespace Auth0.AuthenticationApi
 
         public Task RevokeRefreshTokenAsync(RevokeRefreshTokenRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string>
             {
@@ -375,8 +364,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public Task<SignupUserResponse> SignupUserAsync(SignupUserRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             return connection.SendAsync<SignupUserResponse>(
                 HttpMethod.Post,
@@ -388,8 +376,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public Task<PasswordlessEmailResponse> StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             dynamic body = new ExpandoObject();
 
@@ -421,8 +408,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public Task<PasswordlessSmsResponse> StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new
             {
@@ -446,7 +432,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public Task<DeviceCodeResponse> StartDeviceFlowAsync(DeviceCodeRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null) throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string>
             {
@@ -466,8 +452,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public Task<PushedAuthorizationRequestResponse> PushedAuthorizationRequestAsync(PushedAuthorizationRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string> {
                 { "client_id", request.ClientId },
@@ -502,8 +487,7 @@ namespace Auth0.AuthenticationApi
         public Task<ClientInitiatedBackchannelAuthorizationResponse> ClientInitiatedBackchannelAuthorization(ClientInitiatedBackchannelAuthorizationRequest request,
             CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string> {
                 { "client_id", request.ClientId },
@@ -531,8 +515,7 @@ namespace Auth0.AuthenticationApi
             ClientInitiatedBackchannelAuthorizationTokenRequest request,
             CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string>
             {
@@ -549,6 +532,149 @@ namespace Auth0.AuthenticationApi
             ).ConfigureAwait(false);
 
             return response;
+        }
+
+        /// <inheritdoc />
+        public async Task<MfaOobTokenResponse> GetTokenAsync(
+            MfaOobTokenRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            request.ThrowIfNull();
+
+            var body = new Dictionary<string, string>()
+            {
+                { "grant_type", "http://auth0.com/oauth/grant-type/mfa-oob" },
+                { "client_id", request.ClientId },
+                { "mfa_token", request.MfaToken},
+                { "oob_code", request.OobCode},
+            };
+
+            body.AddIfNotEmpty("binding_code", request.BindingCode);
+
+            ApplyClientAuthentication(request, body);
+
+            return await connection.SendAsync<MfaOobTokenResponse>(
+                HttpMethod.Post,
+                tokenUri,
+                body,
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public async Task<MfaOtpTokenResponse> GetTokenAsync(
+            MfaOtpTokenRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            request.ThrowIfNull();
+
+            var body = new Dictionary<string, string>()
+            {
+                { "grant_type", "http://auth0.com/oauth/grant-type/mfa-otp" },
+                { "client_id", request.ClientId },
+                { "mfa_token", request.MfaToken},
+                { "otp", request.Otp},
+            };
+
+            ApplyClientAuthentication(request, body);
+
+            return await connection.SendAsync<MfaOtpTokenResponse>(
+                HttpMethod.Post,
+                tokenUri,
+                body,
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public async Task<MfaRecoveryCodeResponse> GetTokenAsync(
+            MfaRecoveryCodeRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            request.ThrowIfNull();
+
+            var body = new Dictionary<string, string>()
+            {
+                { "grant_type", "http://auth0.com/oauth/grant-type/mfa-recovery-code" },
+                { "client_id", request.ClientId },
+                { "mfa_token", request.MfaToken},
+                { "recovery_code", request.RecoveryCode},
+            };
+
+            ApplyClientAuthentication(request, body);
+
+            return await connection.SendAsync<MfaRecoveryCodeResponse>(
+                HttpMethod.Post,
+                tokenUri,
+                body,
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public Task<MfaChallengeResponse> MfaChallenge(
+            MfaChallengeRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            request.ThrowIfNull();
+
+            var body = new Dictionary<string, string>()
+            {
+                { "mfa_token", request.MfaToken },
+                { "client_id", request.ClientId },
+                { "challenge_type", request.ChallengeType},
+                { "authenticator_id", request.AuthenticatorId},
+            };
+
+            ApplyClientAuthentication(request, body);
+
+            return connection.SendAsync<MfaChallengeResponse>(
+                HttpMethod.Post,
+                BuildUri("mfa/challenge"),
+                body,
+                null,
+                cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public Task<AssociateMfaAuthenticatorResponse> AssociateMfaAuthenticatorAsync(
+            AssociateMfaAuthenticatorRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            request.ThrowIfNull();
+
+            return connection.SendAsync<AssociateMfaAuthenticatorResponse>(
+                HttpMethod.Post,
+                BuildUri("mfa/associate"),
+                request,
+                BuildHeaders(request.Token),
+                cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public Task<IList<Authenticator>> ListMfaAuthenticatorsAsync(
+            string accessToken, CancellationToken cancellationToken = default)
+        {
+            accessToken.ThrowIfNull();
+
+            return connection.SendAsync<IList<Authenticator>>(
+                HttpMethod.Get,
+                BuildUri($"mfa/authenticators"),
+                null,
+                headers: BuildHeaders(accessToken),
+                cancellationToken: cancellationToken);
+        }
+
+        /// <inheritdoc />
+        public Task DeleteMfaAuthenticatorAsync(
+            DeleteMfaAuthenticatorRequest request,
+            CancellationToken cancellationToken = default)
+        {
+            request.ThrowIfNull();
+            
+            return connection.SendAsync<object>(
+                HttpMethod.Delete,
+                BuildUri($"mfa/authenticators/{request.AuthenticatorId}"),
+                null,
+                headers: BuildHeaders(request.AccessToken),
+                cancellationToken: cancellationToken);
         }
 
         /// <summary>

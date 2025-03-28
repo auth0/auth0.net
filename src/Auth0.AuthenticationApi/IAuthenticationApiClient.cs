@@ -1,8 +1,11 @@
-﻿using Auth0.AuthenticationApi.Models;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Auth0.AuthenticationApi.Models.Ciba;
+using Auth0.AuthenticationApi.Models.Mfa;
+using Auth0.AuthenticationApi.Models;
 
 namespace Auth0.AuthenticationApi
 {
@@ -203,5 +206,69 @@ namespace Auth0.AuthenticationApi
         /// This must be polled while the user is completing their part of the flow at an interval no more frequent than that returned by <see cref="ClientInitiatedBackchannelAuthorizationResponse"/>.
         /// </remarks>
         Task<ClientInitiatedBackchannelAuthorizationTokenResponse> GetTokenAsync(ClientInitiatedBackchannelAuthorizationTokenRequest request, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Associates or adds a new authenticator for Multi-Factor authentication (MFA).
+        /// </summary>
+        /// <param name="request"><see cref="AssociateMfaAuthenticatorRequest"/> containing information to enroll a new Authenticator.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>A <see cref="AssociateMfaAuthenticatorResponse" /> with the details of the response.</returns>
+        Task<AssociateMfaAuthenticatorResponse> AssociateMfaAuthenticatorAsync(AssociateMfaAuthenticatorRequest request, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// List authenticators associated with your application.
+        /// </summary>
+        /// <param name="accessToken">
+        /// Access token with
+        /// scope: read:authenticators and
+        /// audience: https://{yourDomain}/mfa/
+        /// </param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns>
+        /// List of <see cref="Auth0.AuthenticationApi.Models.Mfa.Authenticator"/>
+        /// </returns>
+        Task<IList<Authenticator>> ListMfaAuthenticatorsAsync(string accessToken, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Deletes an associated authenticator using its ID.
+        /// </summary>
+        /// <param name="request"><see cref="DeleteMfaAuthenticatorRequest"/> containing information to
+        /// delete an associated authenticator</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns></returns>
+        Task DeleteMfaAuthenticatorAsync(DeleteMfaAuthenticatorRequest request, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Requests an Access Token using Oob MFA verification.
+        /// </summary>
+        /// <param name="request"><see cref="MfaOobTokenRequest"/> containing request details to verify oob.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns><see cref="Task"/> representing the async operation containing 
+        /// a <see cref="MfaOobTokenResponse" /> with the requested tokens.</returns>
+        Task<MfaOobTokenResponse> GetTokenAsync(MfaOobTokenRequest request, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Requests an Access Token using OTP MFA verification.
+        /// </summary>
+        /// <param name="request"><see cref="MfaOtpTokenRequest"/> containing request details to verify otp.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns> An <see cref="MfaOtpTokenResponse" /> with the requested tokens.</returns>
+        Task<MfaOtpTokenResponse> GetTokenAsync(MfaOtpTokenRequest request, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Verifies multi-factor authentication (MFA) using a recovery code.
+        /// </summary>
+        /// <param name="request"><see cref="MfaRecoveryCodeRequest"/> containing request details to verify recovery code.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+        /// <returns> An <see cref="MfaRecoveryCodeResponse" /> with the requested tokens.</returns>
+        Task<MfaRecoveryCodeResponse> GetTokenAsync(MfaRecoveryCodeRequest request, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// The Multi-factor Authentication (MFA) API endpoints allow you to enforce MFA when users interact with the Token endpoints, as well as enroll and manage user authenticators.
+        /// </summary>
+        /// <param name="request"><see cref="MfaChallengeRequest"/> containing request details to challenge.</param>
+        /// <param name="cancellationToken">The cancellation token to cancel operation</param>
+        /// <returns> An <see cref="MfaRecoveryCodeResponse" /> with the requested tokens</returns>
+        Task<MfaChallengeResponse> MfaChallenge(MfaChallengeRequest request, CancellationToken cancellationToken = default);
     }
 }
