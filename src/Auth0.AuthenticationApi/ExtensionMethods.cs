@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Auth0.AuthenticationApi.Models;
 
 namespace Auth0.AuthenticationApi
@@ -73,6 +74,17 @@ namespace Auth0.AuthenticationApi
                     return "token";
                 default:
                     return null;
+            }
+        }
+
+        /// <summary>
+        /// Throws an <see cref="ArgumentNullException"/> if the input object is <see langword="null"/>.
+        /// </summary>
+        public static void ThrowIfNull(this object input)
+        {
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input));
             }
         }
     }

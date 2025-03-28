@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -471,6 +472,72 @@ public class MfaAuthenticationTests : TestBase
         response.ChallengeType.Should().Be("oob");
         response.OobCode.Should().Be("random_oob_code");
         mockHandler.VerifyAll();
+    }
+    
+    [Fact]
+    public async void MFA_Challenge_Throws_For_Null_Request()
+    {
+        var authenticationApiClient =
+            new TestAuthenticationApiClient(_domain, new TestHttpClientAuthenticationConnection(new HttpClient()));
+        // Act / Assert
+        await Assert.ThrowsAsync<ArgumentNullException>(() => authenticationApiClient.MfaChallenge(null));
+    }
+    
+    [Fact]
+    public async void MFA_AssociateMfaAuthenticatorAsync_Throws_For_Null_Request()
+    {
+        var authenticationApiClient =
+            new TestAuthenticationApiClient(_domain, new TestHttpClientAuthenticationConnection(new HttpClient()));
+        // Act / Assert
+        await Assert.ThrowsAsync<ArgumentNullException>(() => authenticationApiClient.AssociateMfaAuthenticatorAsync(null));
+    }
+    
+    [Fact]
+    public async void MFA_ListMfaAuthenticators_Throws_For_Null_Request()
+    {
+        var authenticationApiClient =
+            new TestAuthenticationApiClient(_domain, new TestHttpClientAuthenticationConnection(new HttpClient()));
+        // Act / Assert
+        await Assert.ThrowsAsync<ArgumentNullException>(() => authenticationApiClient.ListMfaAuthenticatorsAsync(null));
+    }
+    
+    [Fact]
+    public async void MFA_DeleteMfaAuthenticatorAsync_Throws_For_Null_Request()
+    {
+        var authenticationApiClient =
+            new TestAuthenticationApiClient(_domain, new TestHttpClientAuthenticationConnection(new HttpClient()));
+        // Act / Assert
+        await Assert.ThrowsAsync<ArgumentNullException>(() => authenticationApiClient.DeleteMfaAuthenticatorAsync(null));
+    }
+    
+    [Fact]
+    public async void MFA_GetToken_With_MfaOobTokenRequest_Throws_For_Null_Request()
+    {
+        var authenticationApiClient =
+            new TestAuthenticationApiClient(_domain, new TestHttpClientAuthenticationConnection(new HttpClient()));
+        // Act / Assert
+        MfaOobTokenRequest request = null;
+        await Assert.ThrowsAsync<ArgumentNullException>(() => authenticationApiClient.GetTokenAsync(request));
+    }
+    
+    [Fact]
+    public async void MFA_GetToken_With_MfaOtpTokenRequest_Throws_For_Null_Request()
+    {
+        var authenticationApiClient =
+            new TestAuthenticationApiClient(_domain, new TestHttpClientAuthenticationConnection(new HttpClient()));
+        // Act / Assert
+        MfaOtpTokenRequest request = null;
+        await Assert.ThrowsAsync<ArgumentNullException>(() => authenticationApiClient.GetTokenAsync(request));
+    }
+    
+    [Fact]
+    public async void MFA_GetToken_With_MfaRecoveryTokenRequest_Throws_For_Null_Request()
+    {
+        var authenticationApiClient =
+            new TestAuthenticationApiClient(_domain, new TestHttpClientAuthenticationConnection(new HttpClient()));
+        // Act / Assert
+        MfaRecoveryCodeRequest request = null;
+        await Assert.ThrowsAsync<ArgumentNullException>(() => authenticationApiClient.GetTokenAsync(request));
     }
     
     private static void SetupMockWith(Mock<HttpMessageHandler> mockHandler, string domain, string stringContent, HttpStatusCode code = HttpStatusCode.OK)

@@ -78,8 +78,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc />
         public Task<string> ChangePasswordAsync(ChangePasswordRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             return connection.SendAsync<string>(
                 HttpMethod.Post,
@@ -91,8 +90,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc />
         public async Task<Uri> GetImpersonationUrlAsync(ImpersonationRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new
             {
@@ -117,8 +115,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc />
         public Task<UserInfo> GetUserInfoAsync(string accessToken, CancellationToken cancellationToken = default)
         {
-            if (accessToken == null)
-                throw new ArgumentNullException(nameof(accessToken));
+            accessToken.ThrowIfNull();
 
             return connection.GetAsync<UserInfo>(BuildUri("userinfo"), BuildHeaders(accessToken), cancellationToken);
         }
@@ -126,8 +123,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc />
         public async Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodeTokenRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string> {
                 { "grant_type", "authorization_code" },
@@ -152,8 +148,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public async Task<AccessTokenResponse> GetTokenAsync(AuthorizationCodePkceTokenRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string> {
                 { "grant_type", "authorization_code" },
@@ -179,14 +174,13 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public Task<AccessTokenResponse> GetTokenAsync(ClientCredentialsTokenRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string> {
                 { "grant_type", "client_credentials" },
                 { "client_id", request.ClientId },
                 { "audience", request.Audience } };
-
+            
             body.AddIfNotEmpty("organization", request.Organization);
 
             ApplyClientAuthentication(request, body);
@@ -201,8 +195,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public async Task<AccessTokenResponse> GetTokenAsync(RefreshTokenRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string> {
                 { "grant_type", "refresh_token" },
@@ -230,8 +223,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public async Task<AccessTokenResponse> GetTokenAsync(ResourceOwnerTokenRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string> {
                 { "client_id", request.ClientId },
@@ -265,8 +257,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public async Task<AccessTokenResponse> GetTokenAsync(PasswordlessEmailTokenRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string> {
                 { "grant_type", "http://auth0.com/oauth/grant-type/passwordless/otp" },
@@ -294,8 +285,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public async Task<AccessTokenResponse> GetTokenAsync(PasswordlessSmsTokenRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string> {
                 { "grant_type", "http://auth0.com/oauth/grant-type/passwordless/otp" },
@@ -328,8 +318,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public async Task<AccessTokenResponse> GetTokenAsync(DeviceCodeTokenRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string>
             {
@@ -355,8 +344,7 @@ namespace Auth0.AuthenticationApi
 
         public Task RevokeRefreshTokenAsync(RevokeRefreshTokenRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string>
             {
@@ -376,8 +364,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public Task<SignupUserResponse> SignupUserAsync(SignupUserRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             return connection.SendAsync<SignupUserResponse>(
                 HttpMethod.Post,
@@ -389,8 +376,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public Task<PasswordlessEmailResponse> StartPasswordlessEmailFlowAsync(PasswordlessEmailRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             dynamic body = new ExpandoObject();
 
@@ -422,8 +408,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public Task<PasswordlessSmsResponse> StartPasswordlessSmsFlowAsync(PasswordlessSmsRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new
             {
@@ -447,7 +432,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public Task<DeviceCodeResponse> StartDeviceFlowAsync(DeviceCodeRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null) throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string>
             {
@@ -467,8 +452,7 @@ namespace Auth0.AuthenticationApi
         /// <inheritdoc/>
         public Task<PushedAuthorizationRequestResponse> PushedAuthorizationRequestAsync(PushedAuthorizationRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string> {
                 { "client_id", request.ClientId },
@@ -503,8 +487,7 @@ namespace Auth0.AuthenticationApi
         public Task<ClientInitiatedBackchannelAuthorizationResponse> ClientInitiatedBackchannelAuthorization(ClientInitiatedBackchannelAuthorizationRequest request,
             CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string> {
                 { "client_id", request.ClientId },
@@ -532,8 +515,7 @@ namespace Auth0.AuthenticationApi
             ClientInitiatedBackchannelAuthorizationTokenRequest request,
             CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string>
             {
@@ -557,10 +539,7 @@ namespace Auth0.AuthenticationApi
             MfaOobTokenRequest request,
             CancellationToken cancellationToken = default)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException(nameof(request));
-            }
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string>()
             {
@@ -586,10 +565,7 @@ namespace Auth0.AuthenticationApi
             MfaOtpTokenRequest request,
             CancellationToken cancellationToken = default)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException(nameof(request));
-            }
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string>()
             {
@@ -613,10 +589,7 @@ namespace Auth0.AuthenticationApi
             MfaRecoveryCodeRequest request,
             CancellationToken cancellationToken = default)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException(nameof(request));
-            }
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string>()
             {
@@ -640,10 +613,7 @@ namespace Auth0.AuthenticationApi
             MfaChallengeRequest request,
             CancellationToken cancellationToken = default)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException(nameof(request));
-            }
+            request.ThrowIfNull();
 
             var body = new Dictionary<string, string>()
             {
@@ -668,10 +638,7 @@ namespace Auth0.AuthenticationApi
             AssociateMfaAuthenticatorRequest request,
             CancellationToken cancellationToken = default)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException(nameof(request));
-            }
+            request.ThrowIfNull();
 
             return connection.SendAsync<AssociateMfaAuthenticatorResponse>(
                 HttpMethod.Post,
@@ -685,10 +652,7 @@ namespace Auth0.AuthenticationApi
         public Task<IList<Authenticator>> ListMfaAuthenticatorsAsync(
             string accessToken, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(accessToken))
-            {
-                throw new ArgumentNullException(nameof(accessToken));
-            }
+            accessToken.ThrowIfNull();
 
             return connection.SendAsync<IList<Authenticator>>(
                 HttpMethod.Get,
@@ -703,11 +667,8 @@ namespace Auth0.AuthenticationApi
             DeleteMfaAuthenticatorRequest request,
             CancellationToken cancellationToken = default)
         {
-            if (request == null)
-            {
-                throw new ArgumentNullException(nameof(request));
-            }
-
+            request.ThrowIfNull();
+            
             return connection.SendAsync<object>(
                 HttpMethod.Delete,
                 BuildUri($"mfa/authenticators/{request.AuthenticatorId}"),
