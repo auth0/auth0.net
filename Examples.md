@@ -1,6 +1,9 @@
 # Examples using auth0.net
 
-# Authentication
+- [Authentication API](#authentication-api)
+- [Management API](#management-api)
+
+# Authentication API
 - [1. Client Initialization](#1-client-initialization)
 - [2. Login With Client Credentials](#2-login-with-client-credentials)
 - [3. Authenticate using Resource Owner Password Grant Flow with MFA](#3-authenticate-using-resource-owner-password-grant-flow-with-mfa)
@@ -170,3 +173,103 @@ await authClient.DeleteMfaAuthenticatorAsync(
 ```
 ⬆️ [Go to Top](#)
 
+# Management API
+
+## 1. Client Initialization
+
+To initialize the Management API client, you also need the Authentication API client to get the access token required by the Management API client constructor.
+
+```csharp
+public async Task Initialize()
+{
+    var authClient = new AuthenticationApiClient("my.custom.domain");
+
+    // Fetch the access token using the Client Credentials.
+    var accessTokenResponse = await authClient.GetTokenAsync(new ClientCredentialsTokenRequest()
+    {
+        Audience = "audience",
+        ClientId = "clientId",
+        ClientSecret = "clientSecret",
+    });
+
+    managementClient = new ManagementApiClient(accessTokenResponse.AccessToken, "my.custom.domain");
+}
+```
+
+⬆️ [Go to Top](#)
+
+## 2. Client Initialization as a Singleton in ASP.NET Core
+
+To configure the Management API client as a Singleton in the context of an ASP.NET Core application, you should:
+
+1. Define an interface with a client builder method.
+2. Define a class implementing that interface.
+3. Register the class instance as a singleton service.
+
+Define an interface with a client builder method.
+
+```csharp
+using Auth0.ManagementApi;
+
+interface IAuth0Management
+{
+ Task<ManagementApiClient> getClient();
+}
+```
+
+Define a class implementing that interface.
+
+```csharp
+using Auth0.ManagementApi;
+using Auth0.AuthenticationApi;
+using Auth0.AuthenticationApi.Models;
+
+public class Auth0Management: IAuth0Management
+{
+  private string _domain = "";
+  private string _clientId = "";
+  private string _clientSecret = "";
+  private ManagementApiClient managementClient = null;
+
+  public Auth0Management(string domain, string clientId, string clientSecret)
+  {
+    _domain = domain;
+    _clientId = clientId;
+    _clientSecret = clientSecret;
+  }
+
+  public async Task<ManagementApiClient> getClient()
+  {
+    if (managementClient is null)
+    {
+      var authClient = new AuthenticationApiClient(_domain);
+      var accessTokenResponse = await authClient.GetTokenAsync(new ClientCredentialsTokenRequest
+      {
+        Audience = $"https://{_domain}/api/v2/",
+        ClientId = _clientId,
+        ClientSecret = _clientSecret
+      });
+      managementClient = new ManagementApiClient(accessTokenResponse.AccessToken, _domain);   
+    }
+    return managementClient;
+  }
+}
+```
+
+> This class implementation does not take into account refreshing the access token.
+
+Register the class instance as a singleton service in `Program.cs`.
+
+```csharp
+...
+
+builder.Services.AddSingleton<IAuth0Management>(sp => 
+  new Auth0Management(
+ builder.Configuration["Auth0:Domain"],
+ builder.Configuration["Auth0:ManagementClientId"],
+ builder.Configuration["Auth0:ManagementClientSecret"]
+  )
+);
+
+var app = builder.Build();
+```
