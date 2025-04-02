@@ -1,6 +1,9 @@
 # Examples using auth0.net
 
-# Authentication
+- [Authentication API](#authentication-api)
+- [Management API](#management-api)
+
+# Authentication API
 - [1. Client Initialization](#1-client-initialization)
 - [2. Login With Client Credentials](#2-login-with-client-credentials)
 - [3. Authenticate using Resource Owner Password Grant Flow with MFA](#3-authenticate-using-resource-owner-password-grant-flow-with-mfa)
@@ -168,5 +171,30 @@ await authClient.DeleteMfaAuthenticatorAsync(
         AuthenticatorId = "id-random"
     });
 ```
+⬆️ [Go to Top](#)
+
+# Management API
+
+## 1. Client Initialization
+
+To initialize the Management API client, you also need the Authentication API client to get the access token required by the Management API client constructor.
+
+```csharp
+public async Task Initialize()
+{
+    var authClient = new AuthenticationApiClient("my.custom.domain");
+
+    // Fetch the access token using the Client Credentials.
+    var accessTokenResponse = await authClient.GetTokenAsync(new ClientCredentialsTokenRequest()
+    {
+        Audience = "audience",
+        ClientId = "clientId",
+        ClientSecret = "clientSecret",
+    });
+
+    managementClient = new ManagementApiClient(accessTokenResponse.AccessToken, "my.custom.domain");
+}
+```
+
 ⬆️ [Go to Top](#)
 

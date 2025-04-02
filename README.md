@@ -10,6 +10,7 @@
 ## Documentation
 
 - [Docs site](https://www.auth0.com/docs) - explore our docs site and learn more about Auth0.
+- [Examples](Examples.md) - code samples for common scenarios.
 
 ## Getting started
 
@@ -38,6 +39,8 @@ The API calls are divided into groups which correlate to the [Management API doc
 await client.Connections.GetAllAsync("auth0");
 ```
 
+See [more examples](Examples.md#management-api).
+
 ### Authentication API
 
 #### Installation
@@ -59,6 +62,8 @@ var client = new AuthenticationApiClient(new Uri("https://YOUR_AUTH0_DOMAIN"));
 This library contains [URL Builders](https://auth0.github.io/auth0.net/#using-url-builders) which will assist you with constructing an authentication URL, but does not actually handle the authentication/authorization flow for you. It is suggested that you refer to the [Quickstart tutorials](https://auth0.com/docs/quickstarts) for guidance on how to implement authentication for your specific platform.
 
 **Important note on state validation**: If you choose to use the [AuthorizationUrlBuilder](https://auth0.github.io/auth0.net/api/Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html) to construct the authorization URL and implement a login flow callback yourself, it is important to generate and store a state value (using [WithState](https://auth0.github.io/auth0.net/api/Auth0.AuthenticationApi.Builders.AuthorizationUrlBuilder.html#Auth0_AuthenticationApi_Builders_AuthorizationUrlBuilder_WithState_System_String_)) and validate it in your callback URL before exchanging the authorization code for the tokens.
+
+See [more examples](Examples.md#authentication-api).
 
 ## Feedback
 
@@ -92,3 +97,4 @@ Please do not report security vulnerabilities on the public GitHub issue tracker
 <p align="center">Auth0 is an easy to implement, adaptable authentication and authorization platform. To learn more checkout <a href="https://auth0.com/why-auth0">Why Auth0?</a></p>
 <p align="center">
 This project is licensed under the MIT license. See the <a href="./LICENSE"> LICENSE</a> file for more info.</p>
+
