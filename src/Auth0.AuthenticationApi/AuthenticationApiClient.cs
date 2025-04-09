@@ -395,7 +395,8 @@ namespace Auth0.AuthenticationApi
             }
             else
             {
-                body.client_secret = request.ClientSecret;
+                if (!string.IsNullOrEmpty(request.ClientSecret))
+                    body.client_secret = request.ClientSecret;
             }
 
             return connection.SendAsync<PasswordlessEmailResponse>(
