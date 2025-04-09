@@ -1,7 +1,4 @@
-﻿using Auth0.AuthenticationApi.Models;
-using Auth0.Tests.Shared;
-using FluentAssertions;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -9,10 +6,15 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
+
+using FluentAssertions;
 using Xunit;
 using Moq;
 using Moq.Protected;
 using Newtonsoft.Json;
+
+using Auth0.AuthenticationApi.Models;
+using Auth0.Tests.Shared;
 
 namespace Auth0.AuthenticationApi.IntegrationTests
 {
@@ -87,6 +89,29 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
                 Email = email,
                 Type = PasswordlessEmailRequestType.Code
+            };
+            var response = await authenticationApiClient.StartPasswordlessEmailFlowAsync(request);
+            response.Should().NotBeNull();
+            response.Email.Should().Be(request.Email);
+            response.Id.Should().NotBeNullOrEmpty();
+            response.EmailVerified.Should().NotBeNull();
+        }
+
+        [SkippableFact]
+        public async Task Can_launch_email_code_flow_for_SPA()
+        {
+            Skip.If(string.IsNullOrEmpty(email), "AUTH0_PASSWORDLESSDEMO_EMAIL not set");
+
+            var request = new PasswordlessEmailRequest
+            {
+                ClientId = "Qpnq5llXeWEn1o1iLYNQSr3zFI1YPg3K",
+                Email = email,
+                Type = PasswordlessEmailRequestType.Code,
+                AuthenticationParameters = new Dictionary<string, object>
+                {
+                    ["audience"] = "settings.Audience",
+                    ["scope"] = "openid profile email offline_access",
+                }
             };
             var response = await authenticationApiClient.StartPasswordlessEmailFlowAsync(request);
             response.Should().NotBeNull();
