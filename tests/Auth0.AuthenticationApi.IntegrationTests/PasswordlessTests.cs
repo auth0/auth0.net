@@ -21,21 +21,17 @@ namespace Auth0.AuthenticationApi.IntegrationTests
     public class PasswordlessTests : TestBase
     {
         private AuthenticationApiClient authenticationApiClient;
-        private string email;
-        private string phone;
+        private readonly string email = "dummy-email@dummy.domain";
+        private readonly string phone = "+911234567890";
 
         public PasswordlessTests()
         {
             authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
-            email = GetVariable("AUTH0_PASSWORDLESSDEMO_EMAIL", false);
-            phone = GetVariable("AUTH0_PASSWORDLESSDEMO_PHONE", false);
         }
 
-        [SkippableFact]
+        [Fact]
         public async Task Can_launch_email_link_flow()
         {
-            Skip.If(string.IsNullOrEmpty(email), "AUTH0_PASSWORDLESSDEMO_EMAIL not set");
-
             var request = new PasswordlessEmailRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
@@ -51,11 +47,9 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             response.EmailVerified.Should().NotBeNull();
         }
 
-        [SkippableFact]
+        [Fact]
         public async Task Can_launch_email_link_flow_with_auth_parameters()
         {
-            Skip.If(string.IsNullOrEmpty(email), "AUTH0_PASSWORDLESSDEMO_EMAIL not set");
-
             var request = new PasswordlessEmailRequest
             {
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
@@ -78,15 +72,13 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             response.EmailVerified.Should().NotBeNull();
         }
 
-        [SkippableFact]
+        [Fact]
         public async Task Can_launch_email_code_flow()
         {
-            Skip.If(string.IsNullOrEmpty(email), "AUTH0_PASSWORDLESSDEMO_EMAIL not set");
-
             var request = new PasswordlessEmailRequest
             {
-                ClientId = GetVariable("AUTH0_CLIENT_ID"),
-                ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
+                ClientId = GetVariable("AUTH0_SPA_CLIENT_ID"),
+                ClientSecret = GetVariable("AUTH0_SPA_CLIENT_SECRET"),
                 Email = email,
                 Type = PasswordlessEmailRequestType.Code
             };
@@ -97,14 +89,12 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             response.EmailVerified.Should().NotBeNull();
         }
 
-        [SkippableFact]
+        [Fact]
         public async Task Can_launch_email_code_flow_for_SPA()
         {
-            Skip.If(string.IsNullOrEmpty(email), "AUTH0_PASSWORDLESSDEMO_EMAIL not set");
-
             var request = new PasswordlessEmailRequest
             {
-                ClientId = "Qpnq5llXeWEn1o1iLYNQSr3zFI1YPg3K",
+                ClientId = GetVariable("AUTH0_SPA_CLIENT_ID"),
                 Email = email,
                 Type = PasswordlessEmailRequestType.Code,
                 AuthenticationParameters = new Dictionary<string, object>
@@ -120,32 +110,24 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             response.EmailVerified.Should().NotBeNull();
         }
 
-        [SkippableFact]
+        [SkippableFact(Skip = "Requires PhoneProvider setup")]
         public async Task Can_launch_sms_flow()
         {
-            Skip.If(string.IsNullOrEmpty(phone), "AUTH0_PASSWORDLESSDEMO_PHONE not set");
-
-            // Arrange
-            using (var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_PASSWORDLESSDEMO_AUTHENTICATION_API_URL")))
+            // Act
+            var request = new PasswordlessSmsRequest
             {
-                // Act
-                var request = new PasswordlessSmsRequest
-                {
-                    ClientId = GetVariable("AUTH0_PASSWORDLESSDEMO_CLIENT_ID"),
-                    ClientSecret = GetVariable("AUTH0_PASSWORDLESSDEMO_CLIENT_SECRET"),
-                    PhoneNumber = phone
-                };
-                var response = await authenticationApiClient.StartPasswordlessSmsFlowAsync(request);
-                response.Should().NotBeNull();
-                response.PhoneNumber.Should().Be(request.PhoneNumber);
-            }
+                ClientId = GetVariable("AUTH0_SPA_CLIENT_ID"),
+                ClientSecret = GetVariable("AUTH0_SPA_CLIENT_SECRET"),
+                PhoneNumber = phone
+            };
+            var response = await authenticationApiClient.StartPasswordlessSmsFlowAsync(request);
+            response.Should().NotBeNull();
+            response.PhoneNumber.Should().Be(request.PhoneNumber);
         }
 
-        [Fact(Skip = "Run manually")]
+        [Fact(Skip = "Involves sending message - receiving code - Using that in test case")]
         public async Task Can_exchange_sms_code_for_access_token()
         {
-            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
-
             // Exchange the code
             var token = await authenticationApiClient.GetTokenAsync(new PasswordlessSmsTokenRequest
             {
@@ -162,16 +144,14 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             token.Should().NotBeNull();
         }
 
-        [Fact(Skip = "Run manually")]
+        [Fact(Skip = "Involves sending an email - receiving a code - using that code to run test")]
         public async Task Can_exchange_email_code_for_access_token()
         {
-            var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
-
             // Exchange the code
             var token = await authenticationApiClient.GetTokenAsync(new PasswordlessEmailTokenRequest
             {
-                ClientId = GetVariable("AUTH0_PASSWORDLESSDEMO_CLIENT_ID"),
-                ClientSecret = GetVariable("AUTH0_PASSWORDLESSDEMO_CLIENT_SECRET"),
+                ClientId = GetVariable("AUTH0_SPA_CLIENT_ID"),
+                ClientSecret = GetVariable("AUTH0_SPA_CLIENT_SECRET"),
                 Code = "...",
                 Audience = GetVariable("AUTH0_MANAGEMENT_API_AUDIENCE"),
                 Scope = "openid email",
