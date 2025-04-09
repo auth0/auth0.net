@@ -4,10 +4,6 @@
     <AssemblyTitle>Auth0.AuthenticationApi</AssemblyTitle>
     <AssemblyName>Auth0.AuthenticationApi</AssemblyName>
     <PackageId>Auth0.AuthenticationApi</PackageId>
-    <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
-    <NetStandardImplicitPackageVersion>2.0.3</NetStandardImplicitPackageVersion>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\..\build\Auth0NetStrongName.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Auth0.Core\Auth0.Core.csproj" />

@@ -77,8 +77,8 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         {
             var request = new PasswordlessEmailRequest
             {
-                ClientId = GetVariable("AUTH0_SPA_CLIENT_ID"),
-                ClientSecret = GetVariable("AUTH0_SPA_CLIENT_SECRET"),
+                ClientId = GetVariable("AUTH0_CLIENT_ID"),
+                ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
                 Email = email,
                 Type = PasswordlessEmailRequestType.Code
             };
@@ -89,7 +89,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             response.EmailVerified.Should().NotBeNull();
         }
 
-        [Fact]
+        [SkippableFact(Skip = "Requires SPA application setup")]
         public async Task Can_launch_email_code_flow_for_SPA()
         {
             var request = new PasswordlessEmailRequest
