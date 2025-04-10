@@ -1,5 +1,15 @@
 # Change Log
 
+## [7.36.0](https://github.com/auth0/auth0.net/tree/7.36.0) (2025-04-10)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.35.0...7.36.0)
+
+**Added**
+- Adds support to Enroll / Verify / List / Challenge / Delete Multi Factor Authenticators [\#798](https://github.com/auth0/auth0.net/pull/798) ([czf](https://github.com/czf) / [kailash-b](https://github.com/kailash-b))
+- Adds missing backchannel logout initiators [\#796](https://github.com/auth0/auth0.net/pull/796) ([dmarjoram](https://github.com/dmarjoram))
+
+**Fixed**
+- Fix for PasswordlessEmailRequest passing literal NULL when no client_secre… [\#800](https://github.com/auth0/auth0.net/pull/800) ([kailash-b](https://github.com/kailash-b))
+
 ## [7.35.0](https://github.com/auth0/auth0.net/tree/7.35.0) (2025-03-24)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.34.0...7.35.0)
 
