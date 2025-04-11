@@ -148,5 +148,11 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("mtls")]
         public TenantMtls Mtls { get; set; }
+
+        /// <summary>
+        /// This defines the default token quota which will be used when there is no specified token quota.
+        /// </summary>
+        [JsonProperty("default_token_quota")]
+        public DefaultTokenQuota DefaultTokenQuota { get; set; }
     }
 }
