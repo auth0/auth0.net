@@ -175,7 +175,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             var apiId = "dotnet-testing";
             var clientId = fixture.TestClient.ClientId;
-            var existingOrgId = "org_V6ojENVd1ERs5YY1";
+            var existingOrgId = "org_x2j4mAL75v96wKkt";
             
             await fixture.ApiClient.Clients.UpdateAsync(clientId, new ClientUpdateRequest
             {

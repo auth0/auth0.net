@@ -28,7 +28,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
     public class OrganizationTests : IClassFixture<OrganizationTestsFixture>
     {
-        private const string ExistingOrganizationId = "org_V6ojENVd1ERs5YY1";
+        private const string ExistingOrganizationId = "org_x2j4mAL75v96wKkt";
         private const string ExistingConnectionId = "con_vKey1CGOPTJClWrB";
         private const string ExistingRoleId = "rol_gOsYvLA232E0vg7p";
         private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";

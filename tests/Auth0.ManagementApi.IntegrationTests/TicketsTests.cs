@@ -86,7 +86,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Test_tickets_sequence()
         {
-            var existingOrganizationId = "org_V6ojENVd1ERs5YY1";
+            var existingOrganizationId = "org_x2j4mAL75v96wKkt";
 
             await fixture.ApiClient.Organizations.AddMembersAsync(existingOrganizationId, new OrganizationAddMembersRequest
             {
@@ -97,7 +97,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var verificationTicketRequest = new EmailVerificationTicketRequest
             {
                 UserId = fixture.Auth0User.UserId,
-                OrganizationId = "org_V6ojENVd1ERs5YY1"
+                OrganizationId = "org_x2j4mAL75v96wKkt"
             };
             var verificationTicketResponse = await fixture.ApiClient.Tickets.CreateEmailVerificationTicketAsync(verificationTicketRequest);
             verificationTicketResponse.Should().NotBeNull();

@@ -587,7 +587,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async void Test_user_organizations()
         {
-            var existingOrganizationId = "org_V6ojENVd1ERs5YY1";
+            var existingOrganizationId = "org_x2j4mAL75v96wKkt";
             var userCreateRequest = new UserCreateRequest
             {
                 Connection = fixture.Connection.Name,
