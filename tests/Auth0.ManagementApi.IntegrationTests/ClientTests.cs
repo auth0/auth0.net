@@ -44,7 +44,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         [Fact]
         public async Task Test_client_crud_sequence()
         {
-            string existingOrganizationId = "org_V6ojENVd1ERs5YY1";
+            string existingOrganizationId = "org_x2j4mAL75v96wKkt";
             var selectedInitiators = new[]
             {
                 LogoutInitiators.RpLogout,
@@ -106,7 +106,16 @@ namespace Auth0.ManagementApi.IntegrationTests
                     }
                 },
                 ComplianceLevel = ComplianceLevel.FAPI1_ADV_PKJ_PAR,
-                RequireProofOfPossession = true
+                RequireProofOfPossession = true,
+                TokenQuota = new TokenQuota()
+                {
+                    ClientCredentials = new Quota()
+                    {
+                        PerDay = 100,
+                        PerHour = 10,
+                        Enforce = true
+                    }
+                }
             };
             var newClientResponse = await fixture.ApiClient.Clients.CreateAsync(newClientRequest);
             fixture.TrackIdentifier(CleanUpType.Clients, newClientResponse.ClientId);
@@ -130,7 +139,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             newClientResponse.SignedRequestObject.Credentials.First().Id.Should().NotBeNull();
             newClientResponse.ComplianceLevel.Should().Be(ComplianceLevel.FAPI1_ADV_PKJ_PAR);
             newClientResponse.RequireProofOfPossession.Should().BeTrue();
-            
+            newClientResponse.TokenQuota.Should().BeEquivalentTo(newClientRequest.TokenQuota);
+
             string prop1 = newClientResponse.ClientMetaData.Prop1;
             prop1.Should().Be("1");
             string prop2 = newClientResponse.ClientMetaData.Prop2;
@@ -160,7 +170,14 @@ namespace Auth0.ManagementApi.IntegrationTests
                     Required = false
                 },
                 ComplianceLevel = ComplianceLevel.NONE,
-                RequireProofOfPossession = false
+                RequireProofOfPossession = false,
+                TokenQuota = new TokenQuota()
+                {
+                    ClientCredentials = new Quota()
+                    {
+                        Enforce = false
+                    }
+                }
             };
             
             var updateClientResponse = await fixture.ApiClient.Clients.UpdateAsync(newClientResponse.ClientId, updateClientRequest);
@@ -186,6 +203,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             updateClientResponse.SignedRequestObject.Required.Should().BeFalse();
             updateClientResponse.ComplianceLevel.Should().Be(ComplianceLevel.NONE);
             updateClientResponse.RequireProofOfPossession.Should().BeFalse();
+            updateClientResponse.TokenQuota.Should().BeEquivalentTo(updateClientRequest.TokenQuota);
 
             // Get a single client
             var client = await fixture.ApiClient.Clients.GetAsync(newClientResponse.ClientId);
@@ -197,6 +215,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             client.RequirePushedAuthorizationRequests.Should().BeFalse();
             client.SignedRequestObject.Required.Should().BeFalse();
             client.ComplianceLevel.Should().Be(ComplianceLevel.NONE);
+            client.TokenQuota.ClientCredentials.Enforce.Should().Be(false);
 
             // Delete the client, and ensure we get exception when trying to fetch client again
             await fixture.ApiClient.Clients.DeleteAsync(client.ClientId);
