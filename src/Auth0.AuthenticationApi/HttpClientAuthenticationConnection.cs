@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Auth0.AuthenticationApi.Models;
 
 namespace Auth0.AuthenticationApi
 {
@@ -74,7 +75,7 @@ namespace Auth0.AuthenticationApi
                 return await SendRequest<T>(request, cancellationToken).ConfigureAwait(false);
             }
         }
-
+        
         private async Task<T> SendRequest<T>(HttpRequestMessage request, CancellationToken cancellationToken = default)
         {
             if (!ownHttpClient)
@@ -86,8 +87,12 @@ namespace Auth0.AuthenticationApi
                     throw await ApiException.CreateSpecificExceptionAsync(response).ConfigureAwait(false);
 
                 var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                
 
-                return DeserializeContent<T>(content);
+                var parsedResponse = DeserializeContent<T>(content);
+                
+                AddResponseHeaders(parsedResponse, response);
+                return parsedResponse;
             }
         }
 
@@ -127,6 +132,19 @@ namespace Auth0.AuthenticationApi
         private static HttpContent CreateFormUrlEncodedContent(IDictionary<string, string> parameters)
         {
             return new FormUrlEncodedContent(parameters.Select(p => new KeyValuePair<string, string>(p.Key, p.Value ?? "")));
+        }
+        
+        private static void AddResponseHeaders<T>(T parsedResponse, HttpResponseMessage httpResponse)
+        {
+            if (parsedResponse == null || httpResponse == null) return;
+
+            var headers = httpResponse.Headers?.ToDictionary(h => h.Key, h => h.Value);
+            var headersProperty = typeof(T).GetProperty("Headers");
+            
+            if (headersProperty != null && headersProperty.PropertyType == typeof(IDictionary<string, IEnumerable<string>>))
+            {
+                headersProperty.SetValue(parsedResponse, headers);
+            }
         }
 
         private static string CreateAgentString()
