@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using System.Net;
+using System.Net.Http.Headers;
+using Auth0.AuthenticationApi.Models.Mfa;
 using Newtonsoft.Json;
 
 namespace Auth0.AuthenticationApi.Models
@@ -24,5 +28,16 @@ namespace Auth0.AuthenticationApi.Models
         /// </summary>
         [JsonProperty("refresh_token")]
         public string RefreshToken { get; set; }
+        
+        public IDictionary<string, IEnumerable<string>> Headers { get; set; }
+        
+    }
+
+
+    public class ApiResponse<T>
+    {
+        public T Data { get; set; }
+        
+        public HttpResponseHeaders Headers { get; set; }
     }
 }
