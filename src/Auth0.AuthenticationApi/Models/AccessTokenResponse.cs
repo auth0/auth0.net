@@ -30,14 +30,5 @@ namespace Auth0.AuthenticationApi.Models
         public string RefreshToken { get; set; }
         
         public IDictionary<string, IEnumerable<string>> Headers { get; set; }
-        
-    }
-
-
-    public class ApiResponse<T>
-    {
-        public T Data { get; set; }
-        
-        public HttpResponseHeaders Headers { get; set; }
     }
 }
