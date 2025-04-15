@@ -88,7 +88,6 @@ namespace Auth0.AuthenticationApi
 
                 var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 
-
                 var parsedResponse = DeserializeContent<T>(content);
                 
                 AddResponseHeaders(parsedResponse, response);
@@ -134,7 +133,7 @@ namespace Auth0.AuthenticationApi
             return new FormUrlEncodedContent(parameters.Select(p => new KeyValuePair<string, string>(p.Key, p.Value ?? "")));
         }
         
-        private static void AddResponseHeaders<T>(T parsedResponse, HttpResponseMessage httpResponse)
+        internal static void AddResponseHeaders<T>(T parsedResponse, HttpResponseMessage httpResponse)
         {
             if (parsedResponse == null || httpResponse == null) return;
 
