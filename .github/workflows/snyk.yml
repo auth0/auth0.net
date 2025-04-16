@@ -24,7 +24,7 @@ jobs:
   check:
 
     name: Check for Vulnerabilities
-    runs-on: windows-2022
+    runs-on: ubuntu-latest
 
     steps:
       - if: github.actor == 'dependabot[bot]' || github.event_name == 'merge_group'
@@ -42,17 +42,9 @@ jobs:
       - name: Dotnet Restore
         run: dotnet restore
 
-      # Install Snyk
-      - run: npm install snyk -g
-
-      # Check that project is registered with Snyk when triggered from master branch
-      - if: github.ref == 'refs/heads/master'
-        run: snyk monitor --file=Auth0.Net.sln
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/dotnet@b98d498629f1c368650224d6d212bf7dfa89e4bf # pin@0.4.0
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        continue-on-error: true
-
-      # Report vulnerabilities
-      - run: snyk test --file=Auth0.Net.sln
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --file=Auth0.Net.sln --severity-threshold=medium

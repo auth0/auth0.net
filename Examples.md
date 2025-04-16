@@ -175,7 +175,13 @@ await authClient.DeleteMfaAuthenticatorAsync(
 
 # Management API
 
-## 1. Client Initialization
+- [1. Management Client Initialization](#1-management-client-initialization)
+- [2. Update M2M Token Quota at different levels](#2-update-m2m-token-quota-at-different-levels)
+    - [2.1. Update Default Token Quota at Tenant level](#21-update-default-token-quota-at-tenant-level)
+    - [2.2 Update Token Quota at Client level](#22-update-token-quota-at-client-level)
+    - [2.2 Update Token Quota at Organisation level](#23-update-token-quota-at-organisation-level)
+
+## 1. Management Client Initialization
 
 To initialize the Management API client, you also need the Authentication API client to get the access token required by the Management API client constructor.
 
@@ -198,3 +204,87 @@ public async Task Initialize()
 
 ⬆️ [Go to Top](#)
 
+## 2. Update M2M Token Quota at different levels
+
+### 2.1 Update Default Token Quota at Tenant level
+Assuming you have an access token available with the required scopes.
+```csharp
+
+    using var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+    var tenantUpdateSettings = new TenantSettingsUpdateRequest()
+    {
+        DefaultTokenQuota = new DefaultTokenQuota()
+        {
+            Clients = new TokenQuota()
+            {
+                ClientCredentials = new Quota()
+                {
+                    Enforce = true,
+                    PerDay = 200,
+                    PerHour = 100
+                }
+            },
+            Organizations = new TokenQuota()
+            {
+                ClientCredentials = new Quota()
+                {
+                    Enforce = true,
+                    PerDay = 200,
+                    PerHour = 100
+                }
+            }
+        }
+    };
+
+    var updatedSettings = await apiClient.TenantSettings.UpdateAsync(tenantUpdateSettings);
+
+```
+⬆️ [Go to Top](#)
+
+### 2.2 Update Token Quota at Client level
+Assuming you have an access token available with the required scopes.
+```csharp
+
+    using var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+
+    var clientUpdateRequest = new ClientUpdateRequest()
+    {
+        TokenQuota = new TokenQuota()
+        {
+            ClientCredentials = new Quota()
+            {
+                Enforce = true,
+                PerDay = 200,
+                PerHour = 100
+            }
+        }
+    };
+
+    var clientUpdateResponse = await apiClient.Clients.UpdateAsync("client_id", clientUpdateRequest);
+
+```
+⬆️ [Go to Top](#)
+
+### 2.3 Update Token Quota at Organisation level
+Assuming you have an access token available with the required scopes.
+```csharp
+
+    using var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"));
+
+    var orgUpdateRequest = new OrganizationUpdateRequest()
+    {
+        TokenQuota = new TokenQuota()
+        {
+            ClientCredentials = new Quota()
+            {
+                Enforce = true,
+                PerDay = 200,
+                PerHour = 100
+            }
+        }
+    };
+
+    var orgUpdateResponse = await apiClient.Organizations.UpdateAsync("org_id", orgUpdateRequest);
+
+```
+⬆️ [Go to Top](#)

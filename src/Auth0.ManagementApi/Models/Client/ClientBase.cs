@@ -216,6 +216,12 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("require_proof_of_possession")]
         public bool? RequireProofOfPossession { get; set; }
+
+        /// <summary>
+        /// This defines the fields that control the token quota for the client
+        /// </summary>
+        [JsonProperty("token_quota")]
+        public TokenQuota TokenQuota { get; set; }
     }
 }
 

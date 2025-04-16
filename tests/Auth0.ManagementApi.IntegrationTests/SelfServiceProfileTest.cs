@@ -64,7 +64,7 @@ public class SelfServiceProfileTest : IClassFixture<SelfServiceProfileTestFixtur
         var createRequest = GetASelfServiceProfileCreateRequest();
         var ssp = await CreateASelfServiceProfile(createRequest);
 
-        var existingOrganizationId = "org_V6ojENVd1ERs5YY1";
+        var existingOrganizationId = "org_x2j4mAL75v96wKkt";
         var ssoTicket = await _fixture.ApiClient.SelfServiceProfilesClient.CreateSsoTicketAsync(
             ssp.Id, new SelfServiceSsoTicketCreateRequest()
             {
