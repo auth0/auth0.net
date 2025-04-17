@@ -1,12 +1,12 @@
 namespace Auth0.Core.Exceptions
 {
-    public class QuotaClientLimit
+    public class ClientQuotaLimit
     {
         public QuotaLimit PerHour { get; set; }
         public QuotaLimit PerDay { get; set; }
     }
 
-    public class QuotaOrganizationLimit
+    public class OrganizationQuotaLimit
     {
         public QuotaLimit PerHour { get; set; }
         public QuotaLimit PerDay { get; set; }
