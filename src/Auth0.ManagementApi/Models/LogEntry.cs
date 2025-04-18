@@ -144,7 +144,7 @@ namespace Auth0.ManagementApi.Models
         /// Scope permissions applied to the event
         /// </summary>
         [JsonProperty("scope")]
-        public string Scope { get; set; }
+        public string[] Scope { get; set; }
 
         /// <summary>
         /// Unique ID of the event
