@@ -1,6 +1,9 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Xml.Schema;
 
 namespace Auth0.Core.Exceptions
 {
@@ -27,24 +30,38 @@ namespace Auth0.Core.Exceptions
         public DateTimeOffset? Reset { get; internal set; }
 
         /// <summary>
+        /// Represents Client Quota Headers returned.  
+        /// </summary>
+        public ClientQuotaLimit ClientQuotaLimit { get; internal set; }
+
+        /// <summary>
+        /// Represents Client Quota Headers returned.  
+        /// </summary>
+        public OrganizationQuotaLimit OrganizationQuotaLimit { get; internal set; }
+
+        /// <summary>
         /// Parse the rate limit headers into a <see cref="RateLimit"/> object.
         /// </summary>
         /// <param name="headers"><see cref="HttpHeaders"/> to parse.</param>
         /// <returns>Instance of <see cref="RateLimit"/> containing parsed rate limit headers.</returns>
         public static RateLimit Parse(HttpHeaders headers)
         {
-            var reset = GetHeaderValue(headers, "x-ratelimit-reset");
+            var headersKvp = 
+                headers?.ToDictionary(h => h.Key, h => h.Value);
+            var reset = GetHeaderValue(headersKvp, "x-ratelimit-reset");
             return new RateLimit
             {
-                Limit = GetHeaderValue(headers, "x-ratelimit-limit"),
-                Remaining = GetHeaderValue(headers, "x-ratelimit-remaining"),
-                Reset = reset == 0 ? null : (DateTimeOffset?)epoch.AddSeconds(reset)
+                Limit = GetHeaderValue(headersKvp, "x-ratelimit-limit"),
+                Remaining = GetHeaderValue(headersKvp, "x-ratelimit-remaining"),
+                Reset = reset == 0 ? null : (DateTimeOffset?)epoch.AddSeconds(reset),
+                ClientQuotaLimit = headersKvp.GetClientQuotaLimit(),
+                OrganizationQuotaLimit = headersKvp.GetOrganizationQuotaLimit()
             };
         }
 
-        private static long GetHeaderValue(HttpHeaders headers, string name)
+        private static long GetHeaderValue(IDictionary<string, IEnumerable<string>> headers, string name)
         {
-            if (headers.TryGetValues(name, out var v) && long.TryParse(v?.FirstOrDefault(), out var value))
+            if (headers.TryGetValue(name, out var v) && long.TryParse(v?.FirstOrDefault(), out var value))
                 return value;
 
             return 0;
