@@ -93,7 +93,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var updateResponse = await fixture.ApiClient.Organizations.UpdateAsync(createResponse.Id, updateRequest);
             updateResponse.Should().NotBeNull();
             updateResponse.DisplayName.Should().Be(updateRequest.DisplayName);
-            updateResponse.TokenQuota.Should().Be(updateRequest.TokenQuota);
+            updateResponse.TokenQuota.Should().BeEquivalentTo(updateRequest.TokenQuota);
 
             var organization = await fixture.ApiClient.Organizations.GetAsync(createResponse.Id);
             organization.Should().NotBeNull();
