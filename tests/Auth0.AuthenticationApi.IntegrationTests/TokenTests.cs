@@ -7,6 +7,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
+using Auth0.Core;
 using Xunit;
 
 namespace Auth0.AuthenticationApi.IntegrationTests
@@ -195,8 +196,6 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                 ClientId = GetVariable("AUTH0_CLIENT_ID"),
                 ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
                 Audience = GetVariable("AUTH0_MANAGEMENT_API_AUDIENCE"),
-                Organization = "org_x2j4mAL75v96wKkt"
-
             });
 
             // Ensure that we received an access token back
@@ -205,8 +204,6 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             token.Headers.Should().NotBeNull();
 
             var clientQuota = token.Headers.GetClientQuotaLimit();
-            var organizationQuota = token.Headers.GetOrganizationQuotaLimit();
-
             clientQuota.Should().NotBeNull();
         }
     }
