@@ -13,6 +13,9 @@
     - [3.4. Challenge an already enrolled user](#34-challenge-an-already-enrolled-user)
     - [3.5. Get the list of Authenticators for a user](#35-get-the-list-of-authenticators-for-a-user)
     - [3.6. Delete an enrolled authenticator](#36-delete-an-enrolled-authenticator)
+- [4. Monitor Client / Organization Quota when authenticating using Client Credentials (M2M)](#4-client-organization-quota-when-authenticating-using-client-credentials-m2m)
+    - [4.1. Monitor quota when authenticating using Client Credentials (M2M)](#41-monitor-quota-when-authenticating-using-client-credentials-m2m)
+    - [4.1 Rate limit exception when quota is breached while authenticating using Client Credentials (M2M)](#42-rate-limit-exception-when-quota-is-breached-while-authenticating-using-client-credentials-m2m)
 
 ## 1. Client Initialization
 
@@ -170,6 +173,79 @@ await authClient.DeleteMfaAuthenticatorAsync(
         AccessToken = "AccessToken",
         AuthenticatorId = "id-random"
     });
+```
+⬆️ [Go to Top](#)
+
+## 4. Client / Organization Quota when authenticating using Client Credentials (M2M)
+Assuming the Client and Organization Quota is configured using one of the options as shown [here](#2-update-m2m-token-quota-at-different-levels).
+
+### 4.1 Monitor quota when authenticating using Client Credentials (M2M)
+You can monitor the usage on every authentication request like below
+```csharp
+public async Task LoginWithClientCredentialsAndMonitorClientQuota()
+{
+    var authClient = new AuthenticationApiClient("my.custom.domain");
+
+    // Fetch the access token using the Client Credentials.
+    var accessTokenResponse = await authClient.GetTokenAsync(new ClientCredentialsTokenRequest()
+    {
+        Audience = "audience",
+        ClientId = "clientId",
+        ClientSecret = "clientSecret",
+    });
+
+    Console.WriteLine($"Access Token : {accessTokenResponse.AccessToken}");
+
+    var clientQuota = accessTokenResponse.Headers.GetClientQuotaLimit();
+    Console.WriteLine($"Client Quota remaining in the hour bucket : {clientQuota.PerHour.Remaining }");
+    Console.WriteLine($"Client Quota configured in the hour bucket : {clientQuota.PerHour.Quota }");
+    Console.WriteLine($"Client Quota for the hour bucket is refreshed after (in secs): {clientQuota.PerHour.Time }");
+
+    Console.WriteLine($"Client Quota remaining in the Day bucket : {clientQuota.PerDay.Remaining }");
+    Console.WriteLine($"Client Quota configured in the Day bucket : {clientQuota.PerDay.Quota }");
+    Console.WriteLine($"Client Quota for the Day bucket is refreshed after (in secs): {clientQuota.PerDay.Time }");
+
+    var orgQuota = accessTokenResponse.Headers.GetOrganizationQuotaLimit();
+    Console.WriteLine($"Organization Quota remaining in the hour bucket : {orgQuota.PerHour.Remaining }");
+    Console.WriteLine($"Organization Quota configured in the hour bucket : {orgQuota.PerHour.Quota }");
+    Console.WriteLine($"Organization Quota for the hour bucket is refreshed after (in secs): {orgQuota.PerHour.Time }");
+
+    Console.WriteLine($"Organization Quota remaining in the Day bucket : {orgQuota.PerDay.Remaining }");
+    Console.WriteLine($"Organization Quota configured in the Day bucket : {orgQuota.PerDay.Quota }");
+    Console.WriteLine($"Organization Quota for the Day bucket is refreshed after (in secs): {orgQuota.PerDay.Time }");
+}
+```
+⬆️ [Go to Top](#)
+
+### 4.2 Rate limit exception when quota is breached while authenticating using Client Credentials (M2M)
+When the token quota is breached (either at client level OR at org level), the server returns a 429 with some extra headers that we can use to extract details of the failure. 
+Below is an example where there is a client quota breach.
+```csharp
+public async Task LoginWithClientCredentialsAndMonitorClientQuota()
+{
+    var authClient = new AuthenticationApiClient("my.custom.domain");
+
+    try
+    {
+        // Fetch the access token using the Client Credentials.
+        var accessTokenResponse = await authClient.GetTokenAsync(new ClientCredentialsTokenRequest()
+        {
+            Audience = "audience",
+            ClientId = "clientId",
+            ClientSecret = "clientSecret",
+        });
+        Console.WriteLine($"Access Token : {accessTokenResponse.AccessToken}");
+    }
+    catch (RateLimitApiException ex)
+    {
+        Console.WriteLine($"Error message : {ex.ApiError.Message}");
+        Console.WriteLine($"Time to reset the breached client quota: {ex.RateLimit.ClientQuotaLimit.PerHour.Time}");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("An exception occurred");
+    }
+}
 ```
 ⬆️ [Go to Top](#)
 
