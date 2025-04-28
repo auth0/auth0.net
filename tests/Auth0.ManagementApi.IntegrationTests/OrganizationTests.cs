@@ -28,7 +28,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 
     public class OrganizationTests : IClassFixture<OrganizationTestsFixture>
     {
-        private const string ExistingOrganizationId = "org_V6ojENVd1ERs5YY1";
+        private const string ExistingOrganizationId = "org_x2j4mAL75v96wKkt";
         private const string ExistingConnectionId = "con_vKey1CGOPTJClWrB";
         private const string ExistingRoleId = "rol_gOsYvLA232E0vg7p";
         private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
@@ -57,6 +57,15 @@ namespace Auth0.ManagementApi.IntegrationTests
                         Primary = "#ff0000",
                         PageBackground = "#00ff00"
                     }
+                },
+                TokenQuota = new TokenQuota()
+                {
+                    ClientCredentials = new Quota()
+                    {
+                        Enforce = true,
+                        PerDay = 100,
+                        PerHour = 10
+                    }
                 }
             };
             var createResponse = await fixture.ApiClient.Organizations.CreateAsync(createRequest);
@@ -68,18 +77,28 @@ namespace Auth0.ManagementApi.IntegrationTests
             createResponse.Branding.LogoUrl.Should().Be(createRequest.Branding.LogoUrl);
             createResponse.Branding.Colors.Primary.Should().Be("#ff0000");
             createResponse.Branding.Colors.PageBackground.Should().Be("#00ff00");
+            createResponse.TokenQuota.Should().BeEquivalentTo(createRequest.TokenQuota);
 
             var updateRequest = new OrganizationUpdateRequest
             {
                 DisplayName = $"Integration testing 123",
+                TokenQuota = new TokenQuota()
+                {
+                    ClientCredentials = new Quota()
+                    {
+                        Enforce = false
+                    }
+                }
             };
             var updateResponse = await fixture.ApiClient.Organizations.UpdateAsync(createResponse.Id, updateRequest);
             updateResponse.Should().NotBeNull();
             updateResponse.DisplayName.Should().Be(updateRequest.DisplayName);
+            updateResponse.TokenQuota.Should().BeEquivalentTo(updateRequest.TokenQuota);
 
             var organization = await fixture.ApiClient.Organizations.GetAsync(createResponse.Id);
             organization.Should().NotBeNull();
             organization.DisplayName.Should().Be(updateResponse.DisplayName);
+            organization.TokenQuota.ClientCredentials.Enforce.Should().Be(false);
 
             var organizationByName = await fixture.ApiClient.Organizations.GetByNameAsync(organization.Name);
             organizationByName.Should().NotBeNull();

@@ -34,7 +34,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
         [Fact(Skip = "Run Manual")]
         public async Task Can_get_token_using_client_credentials_for_organization()
         {
-            var existingOrgId = "org_V6ojENVd1ERs5YY1";
+            var existingOrgId = "org_x2j4mAL75v96wKkt";
             using (var authenticationApiClient = new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL")))
             {
                 // Get the access token
