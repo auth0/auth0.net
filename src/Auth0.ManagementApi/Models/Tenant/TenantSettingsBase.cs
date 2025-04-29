@@ -11,6 +11,30 @@ namespace Auth0.ManagementApi.Models
         [JsonProperty("mode")]
         public string Mode { get; set; }
     }
+    
+    /// <summary>
+    /// Sessions related settings for tenant
+    /// </summary>
+    public class Session
+    {
+        /// <summary>
+        /// Whether to bypass prompting logic (false) when performing OIDC Logout
+        /// </summary>
+        [JsonProperty("oidc_logout_prompt_enabled")]
+        public bool? OidcLogoutPromptEnabled { get; set; }
+    }
+
+    /// <summary>
+    /// Settings related to OIDC RP-initiated Logout
+    /// </summary>
+    public class OidcLogout
+    {
+        /// <summary>
+        /// Enable the end_session_endpoint URL in the .well-known discovery configuration.
+        /// </summary>
+        [JsonProperty("rp_logout_end_session_endpoint_discovery")]
+        public bool? RpLogoutEndSessionEndpointDiscovery { get; set; }
+    }
 
     /// <summary>
     /// Settings for a given tenant.
@@ -108,11 +132,23 @@ namespace Auth0.ManagementApi.Models
         public string SandboxVersion { get; set; }
 
         /// <summary>
+        /// Selected sandbox version for rules and hooks extensibility.
+        /// </summary>
+        [JsonProperty("legacy_sandbox_version")]
+        public string LegacySandboxVersion { get; set; }
+        
+        /// <summary>
         /// A set of available sandbox versions for the extensibility environment.
         /// </summary>
         [JsonProperty("sandbox_versions_available")]
         public string[] SandboxVersionsAvailable { get; set; }
 
+        /// <summary>
+        /// The default absolute redirection uri, must be https
+        /// </summary>
+        [JsonProperty("default_redirection_uri")]
+        public string DefaultRedirectionUri { get; set; }
+        
         /// <summary>
         /// Supported locales for the UI.
         /// </summary>
@@ -124,6 +160,20 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("session_cookie")]
         public SessionCookie SessionCookie { get; set; }
+        
+        /// <inheritdoc cref="Session"/>
+        [JsonProperty("sessions")]
+        public Session Sessions { get; set; }
+        
+        /// <inheritdoc cref="Auth0.ManagementApi.Models.OidcLogout"/>
+        [JsonProperty("oidc_logout")]
+        public OidcLogout OidcLogout { get; set; }
+        
+        /// <summary>
+        /// Whether to accept an organization name instead of an ID on auth endpoints
+        /// </summary>
+        [JsonProperty("allow_organization_name_in_authentication_api")]
+        public bool? AllowOrganizationNameInAuthenticationApi { get; set; }
         
         /// <summary>
         /// Whether to enable flexible factors for MFA in the PostLogin action
@@ -149,6 +199,12 @@ namespace Auth0.ManagementApi.Models
         [JsonProperty("mtls")]
         public TenantMtls Mtls { get; set; }
 
+        /// <summary>
+        /// Supports iss parameter in authorization responses
+        /// </summary>
+        [JsonProperty("authorization_response_iss_parameter_supported")]
+        public bool? AuthorizationResponseIssParameterSupported { get; set; }
+        
         /// <summary>
         /// This defines the default token quota which will be used when there is no specified token quota.
         /// </summary>

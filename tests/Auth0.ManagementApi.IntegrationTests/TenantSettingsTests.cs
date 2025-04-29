@@ -96,7 +96,19 @@ namespace Auth0.ManagementApi.IntegrationTests
                                     PerHour = 100
                                 }
                             },
-                        }
+                        },
+                        LegacySandboxVersion = "12",
+                        DefaultRedirectionUri = "https://www.example-domain.com/login",
+                        Sessions = new Session()
+                        {
+                            OidcLogoutPromptEnabled = false
+                        },
+                        OidcLogout = new OidcLogout()
+                        {
+                            RpLogoutEndSessionEndpointDiscovery = false
+                        },
+                        AllowOrganizationNameInAuthenticationApi = false,
+                        AuthorizationResponseIssParameterSupported = false
                     };
 
                     var settingsUpdateResponse = await apiClient.TenantSettings.UpdateAsync(settingsUpdateRequest);
@@ -162,7 +174,13 @@ namespace Auth0.ManagementApi.IntegrationTests
                                     Enforce = false
                                 }
                             },
-                        }
+                        },
+                        LegacySandboxVersion = null,
+                        DefaultRedirectionUri = null,
+                        Sessions = null,
+                        OidcLogout = null,
+                        AllowOrganizationNameInAuthenticationApi = null,
+                        AuthorizationResponseIssParameterSupported = null
                     }; 
                     await apiClient.TenantSettings.UpdateAsync(resetUpdateRequest);
                 }

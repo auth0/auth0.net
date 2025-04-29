@@ -18,6 +18,12 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("enable_apis_section")]
         public bool EnableAPIsSection { get; set; }
+        
+        /// <summary>
+        /// Whether the impersonation functionality has been disabled (true) or not (false). Read-only.
+        /// </summary>
+        [JsonProperty("disable_impersonation")]
+        public bool? DisableImpersonation { get; set; }
 
         /// <summary>
         /// This flag determines whether all current connections shall be enabled when a new client is created. Default value is true.
@@ -90,6 +96,12 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("enable_sso")]
         public bool? EnableSSO { get; set; } = null;
+        
+        /// <summary>
+        /// Whether the enable_sso setting can be changed (true) or not (false).
+        /// </summary>
+        [JsonProperty("allow_changing_enable_sso")]
+        public bool? AllowChangingEnableSso { get; set; }
 
         /// <summary>
         /// Do not Publish Enterprise Connections Information with IdP domains on the lock configuration file.
@@ -126,6 +138,48 @@ namespace Auth0.ManagementApi.Models
         /// </summary>
         [JsonProperty("revoke_refresh_token_grant")]
         public bool? RevokeRefreshTokenGrant { get; set; } = null;
+        
+        /// <summary>
+        /// Enables beta access to log streaming changes
+        /// </summary>
+        [JsonProperty("dashboard_log_streams_next")]
+        public bool? DashboardLogStreamsNext { get; set; }
+        
+        /// <summary>
+        /// Enables new insights activity page view
+        /// </summary>
+        [JsonProperty("dashboard_insights_view")]
+        public bool? DashboardInsightsView { get; set; }
+        
+        /// <summary>
+        /// Disables SAML fields map fix for bad mappings with repeated attributes
+        /// </summary>
+        [JsonProperty("disable_fields_map_fix")]
+        public bool? DisableFieldsMapFix { get; set; }
+        
+        /// <summary>
+        /// Used to allow users to pick what factor to enroll of the available MFA factors.
+        /// </summary>
+        [JsonProperty("mfa_show_factor_list_on_enrollment")]
+        public bool? MfaShowFactorListOnEnrollment { get; set; }
+        
+        /// <summary>
+        /// Improves bot detection during signup in classic universal login
+        /// </summary>
+        [JsonProperty("improved_signup_bot_detection_in_classic")]
+        public bool? ImprovedSignupBotDetectionInClassic { get; set; }
+        
+        /// <summary>
+        /// This tenant signed up for the Auth4GenAI trail
+        /// </summary>
+        [JsonProperty("genai_trial")]
+        public bool? GenaiTrial { get; set; }
+        
+        /// <summary>
+        /// If true, custom domains feature will be enabled for tenant.
+        /// </summary>
+        [JsonProperty("custom_domains_provisioning")]
+        public bool? CustomDomainsProvisioning { get; set; }
         
         /// <summary>
         /// Makes the use of Pushed Authorization Requests mandatory for all clients across the tenant.
