@@ -35,7 +35,22 @@ namespace Auth0.Core.UnitTests
 			{
 				Limit = 10,
 				Remaining = 5,
-				Reset = new DateTimeOffset(2020, 3, 31, 22, 38, 58, TimeSpan.Zero)
+				Reset = new DateTimeOffset(2020, 3, 31, 22, 38, 58, TimeSpan.Zero),
+				ClientQuotaLimit = new ClientQuotaLimit()
+				{
+					PerDay = new QuotaLimit()
+					{
+						Quota = 100,
+						Remaining = 99,
+						Time = 22374
+					},
+					PerHour = new QuotaLimit()
+					{
+						Quota = 10,
+						Remaining = 9,
+						Time = 774
+					}
+				}
 			});
 		}
 
@@ -50,7 +65,8 @@ namespace Auth0.Core.UnitTests
 			responseMessage.Headers.Add("x-ratelimit-limit", "10");
 			responseMessage.Headers.Add("x-ratelimit-remaining", "5");
 			responseMessage.Headers.Add("x-ratelimit-reset", "1585694338");
-
+			responseMessage.Headers.Add("X-Quota-Client-Limit","b=per_hour;q=10;r=9;t=774,b=per_day;q=100;r=99;t=22374");
+			responseMessage.Headers.Add("X-Quota-Organisation-Limit","b=per_hour;q=10;r=9;t=774,b=per_day;q=100;r=99;t=22374");
 			return responseMessage;
 		}
 	}
