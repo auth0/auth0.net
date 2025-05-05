@@ -539,5 +539,15 @@ namespace Auth0.ManagementApi.Clients
                 null, 
                 DefaultHeaders, cancellationToken: cancellationToken);
         }
+
+        /// <inheritdoc cref="IUsersClient.DeleteAuthenticatorsAsync"/>
+        public Task DeleteAuthenticatorsAsync(string userId, CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<object>(
+                HttpMethod.Delete,
+                BuildUri($"users/{EncodePath(userId)}/authenticators"),
+                null, 
+                DefaultHeaders, cancellationToken: cancellationToken);
+        }
     }
 }
