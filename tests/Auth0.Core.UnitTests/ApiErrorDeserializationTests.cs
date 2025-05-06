@@ -21,6 +21,7 @@ namespace Auth0.Core.UnitTests
             Assert.Contains(parsed.ExtraData, (d) => d.Key == "mfa_token" && string.Equals(d.Value, "2x4b-r2d2-c3po-bb8-ig88"));
         }
 
+
         [Theory]
         [ClassData(typeof(ApiErrorDeserializationData))]
         public void Should_deserialize_all_error_structures_correctly(string content, ApiError expected)
