@@ -24,7 +24,7 @@ namespace Auth0.Core.UnitTests
     public class RateLimitDeserializationData : IEnumerable<object[]>
     {
         private static HttpHeaders CreateHeaders(
-            int? limit, int? remaining, long? reset, string clientQuota = null, string orgQuota = null)
+            int? limit, int? remaining, long? reset,long? retryAfter = null, string clientQuota = null, string orgQuota = null)
         {
             var client = new HttpRequestMessage(HttpMethod.Get, "https://fake");
             if (limit != null)
@@ -33,10 +33,12 @@ namespace Auth0.Core.UnitTests
                 client.Headers.Add("x-ratelimit-remaining", remaining.ToString());
             if (reset != null)
                 client.Headers.Add("x-ratelimit-reset", reset.ToString());
+            if (retryAfter != null)
+                client.Headers.Add("Retry-After", retryAfter.ToString());
             if (clientQuota != null)
-                client.Headers.Add("X-Quota-Client-Limit", clientQuota);
+                client.Headers.Add("Auth0-Client-Quota-Limit", clientQuota);
             if (orgQuota != null)
-                client.Headers.Add("X-Quota-Organization-Limit", orgQuota);
+                client.Headers.Add("Auth0-Organization-Quota-Limit", orgQuota);
             return client.Headers;
         }
 
@@ -76,13 +78,14 @@ namespace Auth0.Core.UnitTests
             };
             yield return new object[]
             {
-                CreateHeaders(null, 10, null,
+                CreateHeaders(null, 10, null, 34567,
                     "b=per_hour;q=10;r=9;t=774,b=per_day;q=100;r=99;t=22374", null),
                 new RateLimit
                 {
                     Limit = 0,
                     Remaining = 10,
                     Reset = null,
+                    RetryAfter = 34567,
                     ClientQuotaLimit = new ClientQuotaLimit()
                     {
                         PerHour = new QuotaLimit
@@ -103,12 +106,13 @@ namespace Auth0.Core.UnitTests
             yield return new object[]
             {
                 CreateHeaders(null, 10, null,
-                    null, "b=per_hour;q=10;r=9;t=774,b=per_day;q=100;r=99;t=22374"),
+                    45678,null, "b=per_hour;q=10;r=9;t=774,b=per_day;q=100;r=99;t=22374"),
                 new RateLimit
                 {
                     Limit = 0,
                     Remaining = 10,
                     Reset = null,
+                    RetryAfter = 45678,
                     OrganizationQuotaLimit = new OrganizationQuotaLimit()
                     {
                         PerHour = new QuotaLimit

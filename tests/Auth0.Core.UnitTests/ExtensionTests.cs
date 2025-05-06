@@ -139,17 +139,17 @@ namespace Auth0.Core.UnitTests
                 { "X-RateLimit-Limit", ["1000"] },
                 { "X-RateLimit-Remaining", ["500"] },
                 { "X-RateLimit-Reset", ["1633036800"] },
-                { "X-Quota-Client-Limit", ["b=per_hour;q=2;r=1;t=924"] },
-                { "X-Quota-Organization-Limit", ["b=per_hour;q=2;r=1;t=924"] }
+                { "Auth0-Client-Quota-Limit", ["b=per_hour;q=2;r=1;t=924"] },
+                { "Auth0-Organization-Quota-Limit", ["b=per_hour;q=2;r=1;t=924"] }
             };
-            var rawHeaders = Extensions.GetRawHeaders(headers, "X-Quota-Client-Limit");
+            var rawHeaders = Extensions.GetRawHeaders(headers, "Auth0-Client-Quota-Limit");
             rawHeaders.Should().Be("b=per_hour;q=2;r=1;t=924");
         }
         
         [Fact]
         public async void GetRawHeaders_Returns_NULL_When_Headers_Is_NULL()
         {
-            var rawHeaders = Extensions.GetRawHeaders(null, "X-Quota-Client-Limit");
+            var rawHeaders = Extensions.GetRawHeaders(null, "Auth0-Client-Quota-Limit");
             rawHeaders.Should().BeNull();
         }
         
@@ -163,8 +163,8 @@ namespace Auth0.Core.UnitTests
                 { "X-RateLimit-Limit", ["1000"] },
                 { "X-RateLimit-Remaining", ["500"] },
                 { "X-RateLimit-Reset", ["1633036800"] },
-                { "X-Quota-Client-Limit", ["b=per_hour;q=2;r=1;t=924,b=per_day;q=20;r=10;t=924"] },
-                { "X-Quota-Organization-Limit", ["b=per_hour;q=2;r=1;t=924,b=per_day;q=20;r=10;t=924"] }
+                { "Auth0-Client-Quota-Limit", ["b=per_hour;q=2;r=1;t=924,b=per_day;q=20;r=10;t=924"] },
+                { "Auth0-Organization-Quota-Limit", ["b=per_hour;q=2;r=1;t=924,b=per_day;q=20;r=10;t=924"] }
             };
             var clientQuotaLimit = headers.GetClientQuotaLimit();
             
@@ -191,8 +191,8 @@ namespace Auth0.Core.UnitTests
                 { "X-RateLimit-Limit", ["1000"] },
                 { "X-RateLimit-Remaining", ["500"] },
                 { "X-RateLimit-Reset", ["1633036800"] },
-                { "X-Quota-Client-Limit", ["b=per_hour;q=2;r=1;t=924,b=per_day;q=20;r=10;t=924"] },
-                { "X-Quota-Organization-Limit", ["b=per_hour;q=2;r=1;t=924,b=per_day;q=20;r=10;t=924"] }
+                { "Auth0-Client-Quota-Limit", ["b=per_hour;q=2;r=1;t=924,b=per_day;q=20;r=10;t=924"] },
+                { "Auth0-Organization-Quota-Limit", ["b=per_hour;q=2;r=1;t=924,b=per_day;q=20;r=10;t=924"] }
             };
             var organizationQuotaLimit = headers.GetOrganizationQuotaLimit();
             

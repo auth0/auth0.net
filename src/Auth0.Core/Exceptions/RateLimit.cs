@@ -1,9 +1,7 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
-using System.Xml.Schema;
 
 namespace Auth0.Core.Exceptions
 {
@@ -23,6 +21,11 @@ namespace Auth0.Core.Exceptions
         /// The number of requests remaining in the current rate limit window.
         /// </summary>
         public long Remaining { get; internal set; }
+        
+        /// <summary>
+        /// Indicates how long the user should wait before making a follow-up request
+        /// </summary>
+        public long RetryAfter { get; internal set; }
 
         /// <summary>
         /// The date and time offset at which the current rate limit window is reset.
@@ -54,6 +57,7 @@ namespace Auth0.Core.Exceptions
                 Limit = GetHeaderValue(headersKvp, "x-ratelimit-limit"),
                 Remaining = GetHeaderValue(headersKvp, "x-ratelimit-remaining"),
                 Reset = reset == 0 ? null : (DateTimeOffset?)epoch.AddSeconds(reset),
+                RetryAfter = GetHeaderValue(headersKvp, "Retry-After"),
                 ClientQuotaLimit = headersKvp.GetClientQuotaLimit(),
                 OrganizationQuotaLimit = headersKvp.GetOrganizationQuotaLimit()
             };

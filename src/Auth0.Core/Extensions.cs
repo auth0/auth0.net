@@ -14,7 +14,7 @@ namespace Auth0.Core
         /// <returns><see cref="ClientQuotaLimit"/></returns>
         public static ClientQuotaLimit GetClientQuotaLimit(this IDictionary<string, IEnumerable<string>> headers)
         {
-            return ParseClientLimit(GetRawHeaders(headers, "X-Quota-Client-Limit"));
+            return ParseClientLimit(GetRawHeaders(headers, "Auth0-Client-Quota-Limit"));
         }
 
         /// <summary>
@@ -25,7 +25,7 @@ namespace Auth0.Core
         public static OrganizationQuotaLimit GetOrganizationQuotaLimit(
             this IDictionary<string, IEnumerable<string>> headers)
         {
-            return ParseOrganizationLimit(GetRawHeaders(headers, "X-Quota-Organization-Limit"));
+            return ParseOrganizationLimit(GetRawHeaders(headers, "Auth0-Organization-Quota-Limit"));
         }
 
         internal static string GetRawHeaders(IDictionary<string, IEnumerable<string>> headers, string headerName)
