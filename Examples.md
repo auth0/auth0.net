@@ -239,6 +239,10 @@ public async Task LoginWithClientCredentialsAndMonitorClientQuota()
     catch (RateLimitApiException ex)
     {
         Console.WriteLine($"Error message : {ex.ApiError.Message}");
+        Console.WriteLine($"x-RateLimit-Limit : {ex.RateLimit.Limit}")
+        Console.WriteLine($"x-RateLimit-Remaining : {ex.RateLimit.Remaining}")
+        Console.WriteLine($"x-RateLimit-Reset : {ex.RateLimit.Reset}")
+        Console.WriteLine($"Retry-After : {ex.RateLimit.RetryAfter}")
         Console.WriteLine($"Time to reset the breached client quota: {ex.RateLimit.ClientQuotaLimit.PerHour.Time}");
     }
     catch (Exception ex)
