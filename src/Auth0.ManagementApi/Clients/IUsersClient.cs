@@ -307,5 +307,13 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
     /// <returns></returns>
     Task DeleteSessionsAsync(string userId, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Remove all authenticators registered to a given user ID, such as OTP, email, phone, and push-notification.
+    /// </summary>
+    /// <param name="userId">ID of the user to delete authenticators for</param>
+    /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+    /// <returns></returns>
+    Task DeleteAuthenticatorsAsync(string userId, CancellationToken cancellationToken = default);
   }
 }
