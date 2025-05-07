@@ -1,5 +1,8 @@
 ﻿using System;
+
 using Newtonsoft.Json;
+
+using Auth0.Core.Serialization;
 
 namespace Auth0.ManagementApi.Models
 {
@@ -144,7 +147,8 @@ namespace Auth0.ManagementApi.Models
         /// Scope permissions applied to the event
         /// </summary>
         [JsonProperty("scope")]
-        public string Scope { get; set; }
+        [JsonConverter(typeof(StringOrStringArrayJsonConverter))]
+        public dynamic Scope { get; set; }
 
         /// <summary>
         /// Unique ID of the event
