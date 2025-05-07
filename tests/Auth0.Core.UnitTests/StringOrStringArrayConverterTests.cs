@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using Auth0.Core.Serialization;
 using FluentAssertions;
@@ -24,6 +25,22 @@ public class StringOrStringArrayJsonConverterTests
 
         // Assert
         Assert.True(result);
+    }
+    
+    [Fact]
+    public void CanWrite_ShouldReturnFalse_Always()
+    {
+        // Act
+        var converter = new StringOrStringArrayJsonConverter();
+        Assert.False(converter.CanWrite);
+    }
+    
+    [Fact]
+    public void WriteJson_ShouldThrow_ForAnyInputs()
+    {
+        // Act
+        var converter = new StringOrStringArrayJsonConverter();
+        Assert.Throws<NotImplementedException>( () => converter.WriteJson(null!, null, new JsonSerializer()));
     }
 
     [Fact]
