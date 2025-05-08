@@ -7,6 +7,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
+using Auth0.Core;
 using Xunit;
 
 namespace Auth0.AuthenticationApi.IntegrationTests
@@ -181,6 +182,29 @@ namespace Auth0.AuthenticationApi.IntegrationTests
                     RefreshToken = "SomeRefreshToken"
                 });
             }
+        }
+        
+        [Fact]
+        public async Task Can_get_response_headers_using_client_credentials()
+        {
+            using var authenticationApiClient = 
+                new AuthenticationApiClient(GetVariable("AUTH0_AUTHENTICATION_API_URL"));
+
+            // Get the access token
+            var token = await authenticationApiClient.GetTokenAsync(new ClientCredentialsTokenRequest
+            {
+                ClientId = GetVariable("AUTH0_CLIENT_ID"),
+                ClientSecret = GetVariable("AUTH0_CLIENT_SECRET"),
+                Audience = GetVariable("AUTH0_MANAGEMENT_API_AUDIENCE"),
+            });
+
+            // Ensure that we received an access token back
+            token.Should().NotBeNull();
+
+            token.Headers.Should().NotBeNull();
+
+            var clientQuota = token.Headers.GetClientQuotaLimit();
+            clientQuota.Should().NotBeNull();
         }
     }
 }
