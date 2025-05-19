@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
 
@@ -20,11 +21,26 @@ namespace Auth0.Core.Exceptions
         /// The number of requests remaining in the current rate limit window.
         /// </summary>
         public long Remaining { get; internal set; }
+        
+        /// <summary>
+        /// Indicates how long the user should wait before making a follow-up request
+        /// </summary>
+        public long RetryAfter { get; internal set; }
 
         /// <summary>
         /// The date and time offset at which the current rate limit window is reset.
         /// </summary>
         public DateTimeOffset? Reset { get; internal set; }
+
+        /// <summary>
+        /// Represents Client Quota Headers returned.  
+        /// </summary>
+        public ClientQuotaLimit ClientQuotaLimit { get; internal set; }
+
+        /// <summary>
+        /// Represents Client Quota Headers returned.  
+        /// </summary>
+        public OrganizationQuotaLimit OrganizationQuotaLimit { get; internal set; }
 
         /// <summary>
         /// Parse the rate limit headers into a <see cref="RateLimit"/> object.
@@ -33,18 +49,23 @@ namespace Auth0.Core.Exceptions
         /// <returns>Instance of <see cref="RateLimit"/> containing parsed rate limit headers.</returns>
         public static RateLimit Parse(HttpHeaders headers)
         {
-            var reset = GetHeaderValue(headers, "x-ratelimit-reset");
+            var headersKvp = 
+                headers?.ToDictionary(h => h.Key, h => h.Value);
+            var reset = GetHeaderValue(headersKvp, "x-ratelimit-reset");
             return new RateLimit
             {
-                Limit = GetHeaderValue(headers, "x-ratelimit-limit"),
-                Remaining = GetHeaderValue(headers, "x-ratelimit-remaining"),
-                Reset = reset == 0 ? null : (DateTimeOffset?)epoch.AddSeconds(reset)
+                Limit = GetHeaderValue(headersKvp, "x-ratelimit-limit"),
+                Remaining = GetHeaderValue(headersKvp, "x-ratelimit-remaining"),
+                Reset = reset == 0 ? null : (DateTimeOffset?)epoch.AddSeconds(reset),
+                RetryAfter = GetHeaderValue(headersKvp, "Retry-After"),
+                ClientQuotaLimit = headersKvp.GetClientQuotaLimit(),
+                OrganizationQuotaLimit = headersKvp.GetOrganizationQuotaLimit()
             };
         }
 
-        private static long GetHeaderValue(HttpHeaders headers, string name)
+        private static long GetHeaderValue(IDictionary<string, IEnumerable<string>> headers, string name)
         {
-            if (headers.TryGetValues(name, out var v) && long.TryParse(v?.FirstOrDefault(), out var value))
+            if (headers.TryGetValue(name, out var v) && long.TryParse(v?.FirstOrDefault(), out var value))
                 return value;
 
             return 0;

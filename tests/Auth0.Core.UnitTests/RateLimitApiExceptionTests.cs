@@ -30,12 +30,28 @@ namespace Auth0.Core.UnitTests
 			var response = CreateResponseMessage(string.Empty);
 
 			var actual = RateLimitApiException.CreateAsync(response).GetAwaiter().GetResult();
-
+			
 			actual.RateLimit.Should().BeEquivalentTo(new RateLimit
 			{
 				Limit = 10,
 				Remaining = 5,
-				Reset = new DateTimeOffset(2020, 3, 31, 22, 38, 58, TimeSpan.Zero)
+				Reset = new DateTimeOffset(2020, 3, 31, 22, 38, 58, TimeSpan.Zero),
+				RetryAfter = 22374,
+				ClientQuotaLimit = new ClientQuotaLimit()
+				{
+					PerDay = new QuotaLimit()
+					{
+						Quota = 100,
+						Remaining = 99,
+						ResetAfter = 22374
+					},
+					PerHour = new QuotaLimit()
+					{
+						Quota = 10,
+						Remaining = 9,
+						ResetAfter = 774
+					}
+				}
 			});
 		}
 
@@ -50,7 +66,9 @@ namespace Auth0.Core.UnitTests
 			responseMessage.Headers.Add("x-ratelimit-limit", "10");
 			responseMessage.Headers.Add("x-ratelimit-remaining", "5");
 			responseMessage.Headers.Add("x-ratelimit-reset", "1585694338");
-
+			responseMessage.Headers.Add("Auth0-Client-Quota-Limit","b=per_hour;q=10;r=9;t=774,b=per_day;q=100;r=99;t=22374");
+			responseMessage.Headers.Add("X-Quota-Organisation-Limit","b=per_hour;q=10;r=9;t=774,b=per_day;q=100;r=99;t=22374");
+			responseMessage.Headers.Add("Retry-After","22374");
 			return responseMessage;
 		}
 	}

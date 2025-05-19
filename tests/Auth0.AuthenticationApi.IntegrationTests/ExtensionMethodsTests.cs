@@ -5,6 +5,8 @@ using FluentAssertions;
 using Xunit;
 
 using Auth0.AuthenticationApi.Models.Mfa;
+using Auth0.Core;
+using Auth0.Core.Exceptions;
 using Auth0.Tests.Shared;
 
 namespace Auth0.AuthenticationApi.IntegrationTests
@@ -17,7 +19,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             MfaOtpTokenRequest request = null;
             Assert.Throws<ArgumentNullException>(request.ThrowIfNull);
         }
-        
+
         [Fact]
         public void ThrowIfNull_Should_Not_Throw_For_Non_Null_Input()
         {
@@ -25,7 +27,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             var ex = Record.Exception(() => request.ThrowIfNull());
             ex.Should().BeNull();
         }
-        
+
         [Fact]
         public void AddIfNotEmpty_Should_Add_Non_Empty_Value()
         {
@@ -34,7 +36,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             dictionary.Should().ContainKey("key");
             dictionary["key"].Should().Be("value");
         }
-        
+
         [Fact]
         public void AddIfNotEmpty_Should_Not_Add_Empty_Value()
         {
@@ -42,12 +44,12 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             // Empty Value
             dictionary.AddIfNotEmpty("key", "");
             dictionary.Should().NotContainKey("key");
-            
+
             // Null Value
             dictionary.AddIfNotEmpty("key", "");
             dictionary.Should().NotContainKey("key");
         }
-        
+
         [Fact]
         public void AddAll_Should_Add_All_Items()
         {
@@ -57,10 +59,10 @@ namespace Auth0.AuthenticationApi.IntegrationTests
             };
             var sourceDictionary = new Dictionary<string, string>
             {
-                {"key1", "value1"},
-                {"key2", "value2"}
+                { "key1", "value1" },
+                { "key2", "value2" }
             };
-            
+
             targetDictionary.AddAll(sourceDictionary);
 
             targetDictionary.Should().ContainKey("key1");
