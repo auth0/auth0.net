@@ -4,6 +4,7 @@
     <AssemblyTitle>Auth0.AuthenticationApi</AssemblyTitle>
     <AssemblyName>Auth0.AuthenticationApi</AssemblyName>
     <PackageId>Auth0.AuthenticationApi</PackageId>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Auth0.Core\Auth0.Core.csproj" />
