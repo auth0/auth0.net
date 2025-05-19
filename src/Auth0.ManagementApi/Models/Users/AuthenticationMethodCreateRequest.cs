@@ -56,7 +56,7 @@ namespace Auth0.ManagementApi.Models.Users
         /// <summary>
         /// Applies to email webauthn authenticators only. The relying party identifier.
         /// </summary>
-        [JsonProperty("relying_party_indentifier")]
+        [JsonProperty("relying_party_identifier")]
         public string RelyingPartyIdentifier { get; set; }
 	}
 }
