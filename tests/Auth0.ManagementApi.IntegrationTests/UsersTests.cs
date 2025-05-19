@@ -632,7 +632,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             var newAuthenticationMethod = await fixture.ApiClient.Users.CreateAuthenticationMethodAsync(fixture.User.UserId, new Models.Users.AuthenticationMethodCreateRequest
             {
                 Type = "email",
-                Email = "frederik.prijck@gmail.com"
+                Email = "frederik.prijck@gmail.com",
+                RelyingPartyIdentifier = "identifier"
             });
 
             newAuthenticationMethod.Type.Should().Equals("email");
