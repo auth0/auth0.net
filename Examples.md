@@ -199,20 +199,20 @@ public async Task LoginWithClientCredentialsAndMonitorClientQuota()
     var clientQuota = accessTokenResponse.Headers.GetClientQuotaLimit();
     Console.WriteLine($"Client Quota remaining in the hour bucket : {clientQuota.PerHour.Remaining }");
     Console.WriteLine($"Client Quota configured in the hour bucket : {clientQuota.PerHour.Quota }");
-    Console.WriteLine($"Client Quota for the hour bucket is refreshed after (in secs): {clientQuota.PerHour.Time }");
+    Console.WriteLine($"Client Quota for the hour bucket is refreshed after (in secs): {clientQuota.PerHour.ResetAfter }");
 
     Console.WriteLine($"Client Quota remaining in the Day bucket : {clientQuota.PerDay.Remaining }");
     Console.WriteLine($"Client Quota configured in the Day bucket : {clientQuota.PerDay.Quota }");
-    Console.WriteLine($"Client Quota for the Day bucket is refreshed after (in secs): {clientQuota.PerDay.Time }");
+    Console.WriteLine($"Client Quota for the Day bucket is refreshed after (in secs): {clientQuota.PerDay.ResetAfter }");
 
     var orgQuota = accessTokenResponse.Headers.GetOrganizationQuotaLimit();
     Console.WriteLine($"Organization Quota remaining in the hour bucket : {orgQuota.PerHour.Remaining }");
     Console.WriteLine($"Organization Quota configured in the hour bucket : {orgQuota.PerHour.Quota }");
-    Console.WriteLine($"Organization Quota for the hour bucket is refreshed after (in secs): {orgQuota.PerHour.Time }");
+    Console.WriteLine($"Organization Quota for the hour bucket is refreshed after (in secs): {orgQuota.PerHour.ResetAfter }");
 
     Console.WriteLine($"Organization Quota remaining in the Day bucket : {orgQuota.PerDay.Remaining }");
     Console.WriteLine($"Organization Quota configured in the Day bucket : {orgQuota.PerDay.Quota }");
-    Console.WriteLine($"Organization Quota for the Day bucket is refreshed after (in secs): {orgQuota.PerDay.Time }");
+    Console.WriteLine($"Organization Quota for the Day bucket is refreshed after (in secs): {orgQuota.PerDay.ResetAfter }");
 }
 ```
 ⬆️ [Go to Top](#)
@@ -243,7 +243,7 @@ public async Task LoginWithClientCredentialsAndMonitorClientQuota()
         Console.WriteLine($"x-RateLimit-Remaining : {ex.RateLimit.Remaining}")
         Console.WriteLine($"x-RateLimit-Reset : {ex.RateLimit.Reset}")
         Console.WriteLine($"Retry-After : {ex.RateLimit.RetryAfter}")
-        Console.WriteLine($"Time to reset the breached client quota: {ex.RateLimit.ClientQuotaLimit.PerHour.Time}");
+        Console.WriteLine($"Time to reset the breached client quota: {ex.RateLimit.ClientQuotaLimit.PerHour.ResetAfter}");
     }
     catch (Exception ex)
     {

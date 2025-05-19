@@ -36,6 +36,6 @@ namespace Auth0.Core.Exceptions
         /// <summary>
         /// Remaining number of seconds when the quota resets.
         /// </summary>
-        public int Time { get; set; }
+        public int ResetAfter { get; set; }
     }
 }

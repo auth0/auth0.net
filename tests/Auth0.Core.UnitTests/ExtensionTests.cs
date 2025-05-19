@@ -18,7 +18,7 @@ namespace Auth0.Core.UnitTests
             quotaLimit.Should().NotBeNull();
             quotaLimit.Quota.Should().Be(q);
             quotaLimit.Remaining.Should().Be(r);
-            quotaLimit.Time.Should().Be(t);
+            quotaLimit.ResetAfter.Should().Be(t);
             actualBucket.Should().Be(bucket);
         }
         
@@ -42,7 +42,7 @@ namespace Auth0.Core.UnitTests
                 clientLimit.Should().NotBeNull();
                 clientLimit.PerHour.Quota.Should().Be(q);
                 clientLimit.PerHour.Remaining.Should().Be(r);
-                clientLimit.PerHour.Time.Should().Be(t);
+                clientLimit.PerHour.ResetAfter.Should().Be(t);
 
                 clientLimit.PerDay.Should().BeNull();    
             }
@@ -51,7 +51,7 @@ namespace Auth0.Core.UnitTests
                 clientLimit.Should().NotBeNull();
                 clientLimit.PerDay.Quota.Should().Be(q);
                 clientLimit.PerDay.Remaining.Should().Be(r);
-                clientLimit.PerDay.Time.Should().Be(t);
+                clientLimit.PerDay.ResetAfter.Should().Be(t);
 
                 clientLimit.PerHour.Should().BeNull();  
             }
@@ -65,11 +65,11 @@ namespace Auth0.Core.UnitTests
 
             clientQuota.PerDay.Quota.Should().Be(100);
             clientQuota.PerDay.Remaining.Should().Be(99);
-            clientQuota.PerDay.Time.Should().Be(924);
+            clientQuota.PerDay.ResetAfter.Should().Be(924);
             
             clientQuota.PerHour.Quota.Should().Be(10);
             clientQuota.PerHour.Remaining.Should().Be(9);
-            clientQuota.PerHour.Time.Should().Be(924);
+            clientQuota.PerHour.ResetAfter.Should().Be(924);
         }
         
         [Theory]
@@ -85,7 +85,7 @@ namespace Auth0.Core.UnitTests
                 organizationLimit.Should().NotBeNull();
                 organizationLimit.PerHour.Quota.Should().Be(q);
                 organizationLimit.PerHour.Remaining.Should().Be(r);
-                organizationLimit.PerHour.Time.Should().Be(t);
+                organizationLimit.PerHour.ResetAfter.Should().Be(t);
 
                 organizationLimit.PerDay.Should().BeNull();    
             }
@@ -94,7 +94,7 @@ namespace Auth0.Core.UnitTests
                 organizationLimit.Should().NotBeNull();
                 organizationLimit.PerDay.Quota.Should().Be(q);
                 organizationLimit.PerDay.Remaining.Should().Be(r);
-                organizationLimit.PerDay.Time.Should().Be(t);
+                organizationLimit.PerDay.ResetAfter.Should().Be(t);
 
                 organizationLimit.PerHour.Should().BeNull();  
             }
@@ -108,11 +108,11 @@ namespace Auth0.Core.UnitTests
 
             organisationQuota.PerDay.Quota.Should().Be(100);
             organisationQuota.PerDay.Remaining.Should().Be(99);
-            organisationQuota.PerDay.Time.Should().Be(924);
+            organisationQuota.PerDay.ResetAfter.Should().Be(924);
             
             organisationQuota.PerHour.Quota.Should().Be(10);
             organisationQuota.PerHour.Remaining.Should().Be(9);
-            organisationQuota.PerHour.Time.Should().Be(924);
+            organisationQuota.PerHour.ResetAfter.Should().Be(924);
         }
         
         [Fact]
@@ -174,11 +174,11 @@ namespace Auth0.Core.UnitTests
             
             clientQuotaLimit.PerDay.Quota.Should().Be(20);
             clientQuotaLimit.PerDay.Remaining.Should().Be(10);
-            clientQuotaLimit.PerDay.Time.Should().Be(924);
+            clientQuotaLimit.PerDay.ResetAfter.Should().Be(924);
             
             clientQuotaLimit.PerHour.Quota.Should().Be(2);
             clientQuotaLimit.PerHour.Remaining.Should().Be(1);
-            clientQuotaLimit.PerHour.Time.Should().Be(924);
+            clientQuotaLimit.PerHour.ResetAfter.Should().Be(924);
         }
         
         [Fact]
@@ -202,11 +202,11 @@ namespace Auth0.Core.UnitTests
             
             organizationQuotaLimit.PerDay.Quota.Should().Be(20);
             organizationQuotaLimit.PerDay.Remaining.Should().Be(10);
-            organizationQuotaLimit.PerDay.Time.Should().Be(924);
+            organizationQuotaLimit.PerDay.ResetAfter.Should().Be(924);
             
             organizationQuotaLimit.PerHour.Quota.Should().Be(2);
             organizationQuotaLimit.PerHour.Remaining.Should().Be(1);
-            organizationQuotaLimit.PerHour.Time.Should().Be(924);
+            organizationQuotaLimit.PerHour.ResetAfter.Should().Be(924);
         }
     }
 }

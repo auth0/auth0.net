@@ -101,7 +101,7 @@ namespace Auth0.Core
             {
                 Quota = int.Parse(kvp["q"]),
                 Remaining = int.Parse(kvp["r"]),
-                Time = int.Parse(kvp["t"])
+                ResetAfter = int.Parse(kvp["t"])
             };
         }
     }
