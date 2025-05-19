@@ -92,13 +92,13 @@ namespace Auth0.Core.UnitTests
                         {
                             Quota = 10,
                             Remaining = 9,
-                            Time = 774
+                            ResetAfter = 774
                         },
                         PerDay = new QuotaLimit
                         {
                             Quota = 100,
                             Remaining = 99,
-                            Time = 22374
+                            ResetAfter = 22374
                         }
                     }
                 }
@@ -119,13 +119,13 @@ namespace Auth0.Core.UnitTests
                         {
                             Quota = 10,
                             Remaining = 9,
-                            Time = 774
+                            ResetAfter = 774
                         },
                         PerDay = new QuotaLimit
                         {
                             Quota = 100,
                             Remaining = 99,
-                            Time = 22374
+                            ResetAfter = 22374
                         }
                     }
                 }

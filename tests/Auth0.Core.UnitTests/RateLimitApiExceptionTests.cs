@@ -43,13 +43,13 @@ namespace Auth0.Core.UnitTests
 					{
 						Quota = 100,
 						Remaining = 99,
-						Time = 22374
+						ResetAfter = 22374
 					},
 					PerHour = new QuotaLimit()
 					{
 						Quota = 10,
 						Remaining = 9,
-						Time = 774
+						ResetAfter = 774
 					}
 				}
 			});
