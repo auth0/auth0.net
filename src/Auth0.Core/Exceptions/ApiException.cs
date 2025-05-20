@@ -23,7 +23,7 @@ namespace Auth0.Core.Exceptions
         /// Initializes a new instance of the <see cref="ApiException"/> class with a specified error message.
         /// </summary>
         /// <param name="message">The error message that explains the reason for the exception.</param>
-        protected ApiException(string message)
+        protected ApiException(string? message)
             : base(message)
         {
         }

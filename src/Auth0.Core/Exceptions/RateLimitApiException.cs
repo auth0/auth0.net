@@ -14,12 +14,12 @@ namespace Auth0.Core.Exceptions
         /// <summary>
         /// <see cref="RateLimit"/> as determined by the server.
         /// </summary>
-        public RateLimit RateLimit { get; }
+        public RateLimit? RateLimit { get; }
 
         /// <summary>
         /// Optional <see cref="Exceptions.ApiError"/> from the failing API call.
         /// </summary>
-        public ApiError ApiError { get; }
+        public ApiError? ApiError { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RateLimitApiException"/> class.
@@ -31,7 +31,7 @@ namespace Auth0.Core.Exceptions
         /// Initializes a new instance of the <see cref="RateLimitApiException"/> class with a specified error message.
         /// </summary>
         /// <param name="message">The error message that explains the reason for the exception.</param>
-        public RateLimitApiException(string message) : base(message)
+        public RateLimitApiException(string? message) : base(message)
         {
         }
 
@@ -53,7 +53,7 @@ namespace Auth0.Core.Exceptions
         /// </summary>
         /// <param name="rateLimit"><see cref="Exceptions.RateLimit"/> received on the API call that failed.</param>
         /// <param name="apiError"><see cref="Exceptions.ApiError"/> received on the API call that failed.</param>
-        public RateLimitApiException(RateLimit rateLimit, ApiError apiError = null)
+        public RateLimitApiException(RateLimit? rateLimit, ApiError? apiError = null)
             : this("Rate limits exceeded")
         {
             RateLimit = rateLimit;

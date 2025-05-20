@@ -13,8 +13,8 @@ namespace Auth0.Core.Serialization
             return true;
         }
 
-        public override object ReadJson(
-            JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object? ReadJson(
+            JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
         {
             if (reader.TokenType == JsonToken.StartArray)
             {
@@ -32,7 +32,7 @@ namespace Auth0.Core.Serialization
             return null;
         }
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {
             throw new NotImplementedException();
         }

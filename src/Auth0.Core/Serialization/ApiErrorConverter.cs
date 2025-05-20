@@ -19,7 +19,7 @@ namespace Auth0.Core.Serialization
 
         public override bool CanWrite => false;
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {
             throw new NotImplementedException();
         }
@@ -29,7 +29,7 @@ namespace Auth0.Core.Serialization
             return objectType.GetTypeInfo().IsClass;
         }
 
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
         {
             var instance = Activator.CreateInstance(objectType);
             var props = objectType.GetTypeInfo().DeclaredProperties.Where(p => p.CanWrite).ToList();
@@ -48,7 +48,7 @@ namespace Auth0.Core.Serialization
                 }
                 else if (extraDataProp != null)
                 {
-                    ((IDictionary<string, string>)extraDataProp.GetValue(instance))[name] = jp.Value.ToObject<string>(serializer);
+                    ((IDictionary<string, string?>)extraDataProp.GetValue(instance))[name] = jp.Value.ToObject<string>(serializer);
                 }
             }
 

@@ -5,6 +5,7 @@
     <AssemblyName>Auth0.Core</AssemblyName>
     <PackageId>Auth0.Core</PackageId>
     <LangVersion>latest</LangVersion>
+    <WarningsAsErrors>nullable</WarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />

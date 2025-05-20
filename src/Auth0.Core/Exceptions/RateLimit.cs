@@ -47,7 +47,7 @@ namespace Auth0.Core.Exceptions
         /// </summary>
         /// <param name="headers"><see cref="HttpHeaders"/> to parse.</param>
         /// <returns>Instance of <see cref="RateLimit"/> containing parsed rate limit headers.</returns>
-        public static RateLimit Parse(HttpHeaders headers)
+        public static RateLimit? Parse(HttpHeaders headers)
         {
             var headersKvp = 
                 headers?.ToDictionary(h => h.Key, h => h.Value);
