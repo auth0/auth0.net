@@ -34,7 +34,7 @@ namespace Auth0.Core.Http
             return output;
         }
 
-        internal static Uri BuildUri(string baseUrl, string resource, IDictionary<string, string> urlSegments, IDictionary<string, string> queryStrings, bool includeEmptyParameters = false)
+        internal static Uri BuildUri(string baseUrl, string resource, IDictionary<string, string>? urlSegments, IDictionary<string, string> queryStrings, bool includeEmptyParameters = false)
         {
             resource = ReplaceUrlSegments(resource, urlSegments);
 
@@ -50,7 +50,7 @@ namespace Auth0.Core.Http
 
             return new Uri(resource, UriKind.RelativeOrAbsolute);
         }
-        internal static Uri BuildUri(string baseUrl, string resource, IDictionary<string, string> urlSegments, IList<Tuple<string, string>> queryStringsTuple, bool includeEmptyParameters = false)
+        internal static Uri BuildUri(string baseUrl, string resource, IDictionary<string, string>? urlSegments, IList<Tuple<string, string>> queryStringsTuple, bool includeEmptyParameters = false)
         {
             resource = ReplaceUrlSegments(resource, urlSegments);
 
@@ -72,7 +72,7 @@ namespace Auth0.Core.Http
         /// See http://stackoverflow.com/a/6704287
         /// </summary>
         /// <param name="uriParts">The URI parts to combine.</param>
-        internal static string CombineUriParts(params string[] uriParts)
+        internal static string CombineUriParts(params string[]? uriParts)
         {
             var uri = string.Empty;
             if (uriParts != null && uriParts.Any())
@@ -110,7 +110,7 @@ namespace Auth0.Core.Http
             }
             return sb.ToString();
         }
-        private static string AddQueryString(IDictionary<string, string> queryStrings, bool includeEmptyParameters)
+        private static string? AddQueryString(IDictionary<string, string> queryStrings, bool includeEmptyParameters)
         {
             // Add the query strings
             var queryString = queryStrings?.Aggregate(new StringBuilder(), (sb, kvp) =>
@@ -135,7 +135,7 @@ namespace Auth0.Core.Http
                 .ToString();
             return queryString;
         }
-        private static string ReplaceUrlSegments(string resource, IDictionary<string, string> urlSegments)
+        private static string ReplaceUrlSegments(string resource, IDictionary<string, string>? urlSegments)
         {
             // Replace the URL Segments
             if (urlSegments == null) return resource;
