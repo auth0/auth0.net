@@ -16,19 +16,19 @@ namespace Auth0.Core.Exceptions
         /// Description of the failing HTTP Status Code.
         /// </summary>
         [JsonProperty("error")]
-        public string Error { get; set; }
+        public string? Error { get; set; }
 
         /// <summary>
         /// Error code returned by the API.
         /// </summary>
         [JsonProperty("errorCode")]
-        public string ErrorCode { get; set; }
+        public string? ErrorCode { get; set; }
 
         /// <summary>
         /// Description of the error.
         /// </summary>
         [JsonProperty("message")]
-        public string Message { get; set; }
+        public string? Message { get; set; }
 
         /// <summary>
         /// Additional key/values that might be returned by the error such as `mfa_required`.
@@ -42,7 +42,7 @@ namespace Auth0.Core.Exceptions
         /// <param name="response"><see cref="HttpResponseMessage"/> to parse.</param>
         /// <returns><see cref="Task"/> representing the operation and associated <see cref="ApiError"/> on
         /// successful completion.</returns>
-        public static async Task<ApiError> Parse(HttpResponseMessage response)
+        public static async Task<ApiError?> Parse(HttpResponseMessage? response)
         {
             if (response == null || response.Content == null)
                 return null;
@@ -54,7 +54,7 @@ namespace Auth0.Core.Exceptions
             return Parse(content);
         }
 
-        internal static ApiError Parse(string content)
+        internal static ApiError? Parse(string content)
         {
             try
             {
