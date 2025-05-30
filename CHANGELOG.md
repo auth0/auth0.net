@@ -1,5 +1,20 @@
 # Change Log
 
+## [7.37.0](https://github.com/auth0/auth0.net/tree/7.37.0) (2025-05-30)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.36.0...7.37.0)
+
+**Added**
+- Allow monitoring Token Quota limits on every M2M authentication call [\#808](https://github.com/auth0/auth0.net/pull/808) ([kailash-b](https://github.com/kailash-b))
+- Add support for Delete authenticators registered to a user [\#810](https://github.com/auth0/auth0.net/pull/810) ([kailash-b](https://github.com/kailash-b))
+- Adds missing fields in Tenant Settings and Tenant flags [\#809](https://github.com/auth0/auth0.net/pull/809) ([kailash-b](https://github.com/kailash-b))
+- Adds support to update Token Quota at different levels [\#805](https://github.com/auth0/auth0.net/pull/805) ([kailash-b](https://github.com/kailash-b))
+
+**Changed**
+- Change `scope` from `string` to `dynamic` in `LogEntry` [\#811](https://github.com/auth0/auth0.net/pull/811) ([kailash-b](https://github.com/kailash-b))
+
+**Fixed**
+- Fix typo in `RelyingPartyIdentifier` [\#812](https://github.com/auth0/auth0.net/pull/812) ([kailash-b](https://github.com/kailash-b))
+
 ## [7.36.0](https://github.com/auth0/auth0.net/tree/7.36.0) (2025-04-10)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.35.0...7.36.0)
 
