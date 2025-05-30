@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Auth0.AuthenticationApi.Models;
+using Auth0.Core.Exceptions;
 
 namespace Auth0.AuthenticationApi
 {
@@ -21,13 +23,14 @@ namespace Auth0.AuthenticationApi
             if (!string.IsNullOrEmpty(value))
                 dictionary.Add(key, value);
         }
-        
+
         /// <summary>
         /// Adds all items from the source to the target dictionary.
         /// </summary>
         /// <param name="targetDictionary">Dictionary to add the items to.</param>
         /// <param name="sourceDictionary">Dictionary whose items you want to add to the target.</param>
-        public static void AddAll(this IDictionary<string, string> targetDictionary, IDictionary<string, string> sourceDictionary)
+        public static void AddAll(this IDictionary<string, string> targetDictionary,
+            IDictionary<string, string> sourceDictionary)
         {
             foreach (var keyValuePair in sourceDictionary)
             {
@@ -41,7 +44,7 @@ namespace Auth0.AuthenticationApi
                 }
             }
         }
-        
+
         /// <summary>
         /// Get the string value for the corresponding <see cref="AuthorizationResponseMode"/>.
         /// </summary>
@@ -56,7 +59,7 @@ namespace Auth0.AuthenticationApi
 
             return null;
         }
-        
+
         /// <summary>
         /// Get the string value for the corresponding <see cref="AuthorizationResponseType"/>.
         /// </summary>
