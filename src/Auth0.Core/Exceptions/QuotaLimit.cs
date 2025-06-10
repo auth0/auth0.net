@@ -5,8 +5,8 @@ namespace Auth0.Core.Exceptions
     /// </summary>
     public class ClientQuotaLimit
     {
-        public QuotaLimit PerHour { get; set; }
-        public QuotaLimit PerDay { get; set; }
+        public QuotaLimit? PerHour { get; set; }
+        public QuotaLimit? PerDay { get; set; }
     }
 
     /// <summary>
@@ -14,8 +14,8 @@ namespace Auth0.Core.Exceptions
     /// </summary>
     public class OrganizationQuotaLimit
     {
-        public QuotaLimit PerHour { get; set; }
-        public QuotaLimit PerDay { get; set; }
+        public QuotaLimit? PerHour { get; set; }
+        public QuotaLimit? PerDay { get; set; }
     }
 
     /// <summary>

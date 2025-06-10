@@ -35,19 +35,19 @@ namespace Auth0.Core.Exceptions
         /// <summary>
         /// Represents Client Quota Headers returned.  
         /// </summary>
-        public ClientQuotaLimit ClientQuotaLimit { get; internal set; }
+        public ClientQuotaLimit? ClientQuotaLimit { get; internal set; }
 
         /// <summary>
         /// Represents Client Quota Headers returned.  
         /// </summary>
-        public OrganizationQuotaLimit OrganizationQuotaLimit { get; internal set; }
+        public OrganizationQuotaLimit? OrganizationQuotaLimit { get; internal set; }
 
         /// <summary>
         /// Parse the rate limit headers into a <see cref="RateLimit"/> object.
         /// </summary>
         /// <param name="headers"><see cref="HttpHeaders"/> to parse.</param>
         /// <returns>Instance of <see cref="RateLimit"/> containing parsed rate limit headers.</returns>
-        public static RateLimit Parse(HttpHeaders headers)
+        public static RateLimit? Parse(HttpHeaders headers)
         {
             var headersKvp = 
                 headers?.ToDictionary(h => h.Key, h => h.Value);
@@ -58,14 +58,14 @@ namespace Auth0.Core.Exceptions
                 Remaining = GetHeaderValue(headersKvp, "x-ratelimit-remaining"),
                 Reset = reset == 0 ? null : (DateTimeOffset?)epoch.AddSeconds(reset),
                 RetryAfter = GetHeaderValue(headersKvp, "Retry-After"),
-                ClientQuotaLimit = headersKvp.GetClientQuotaLimit(),
-                OrganizationQuotaLimit = headersKvp.GetOrganizationQuotaLimit()
+                ClientQuotaLimit = headersKvp?.GetClientQuotaLimit(),
+                OrganizationQuotaLimit = headersKvp?.GetOrganizationQuotaLimit()
             };
         }
 
-        private static long GetHeaderValue(IDictionary<string, IEnumerable<string>> headers, string name)
+        private static long GetHeaderValue(IDictionary<string, IEnumerable<string>>? headers, string name)
         {
-            if (headers.TryGetValue(name, out var v) && long.TryParse(v?.FirstOrDefault(), out var value))
+            if (headers != null && headers.TryGetValue(name, out var v) && long.TryParse(v?.FirstOrDefault(), out var value))
                 return value;
 
             return 0;

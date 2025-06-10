@@ -15,7 +15,7 @@ namespace Auth0.Core.Exceptions
         /// <summary>
         /// Optional <see cref="Exceptions.ApiError"/> from the failing API call.
         /// </summary>
-        public ApiError ApiError { get; }
+        public ApiError? ApiError { get; }
 
         /// <summary>
         /// <see cref="HttpStatusCode"/> code from the failing API call.
@@ -33,7 +33,7 @@ namespace Auth0.Core.Exceptions
         /// Initializes a new instance of the <see cref="ErrorApiException"/> class with a specified error message.
         /// </summary>
         /// <param name="message">The error message that explains the reason for the exception.</param>
-        public ErrorApiException(string message)
+        public ErrorApiException(string? message)
             : base(message)
         {
         }
@@ -56,7 +56,7 @@ namespace Auth0.Core.Exceptions
         /// </summary>
         /// <param name="statusCode"><see cref="HttpStatusCode"/>code of the failing API call.</param>
         /// <param name="apiError">Optional <see cref="ApiError"/> of the failing API call.</param>
-        public ErrorApiException(HttpStatusCode statusCode, ApiError apiError = null)
+        public ErrorApiException(HttpStatusCode statusCode, ApiError? apiError = null)
             : this(apiError == null ? statusCode.ToString() : apiError.Message)
         {
             StatusCode = statusCode;
