@@ -12,7 +12,7 @@ namespace Auth0.Core
         /// </summary>
         /// <param name="headers">The source response headers</param>
         /// <returns><see cref="ClientQuotaLimit"/></returns>
-        public static ClientQuotaLimit GetClientQuotaLimit(this IDictionary<string, IEnumerable<string>> headers)
+        public static ClientQuotaLimit? GetClientQuotaLimit(this IDictionary<string, IEnumerable<string>> headers)
         {
             return ParseClientLimit(GetRawHeaders(headers, "Auth0-Client-Quota-Limit"));
         }
@@ -22,13 +22,13 @@ namespace Auth0.Core
         /// </summary>
         /// <param name="headers">The source response headers</param>
         /// <returns><see cref="OrganizationQuotaLimit"/></returns>
-        public static OrganizationQuotaLimit GetOrganizationQuotaLimit(
+        public static OrganizationQuotaLimit? GetOrganizationQuotaLimit(
             this IDictionary<string, IEnumerable<string>> headers)
         {
             return ParseOrganizationLimit(GetRawHeaders(headers, "Auth0-Organization-Quota-Limit"));
         }
 
-        internal static string GetRawHeaders(IDictionary<string, IEnumerable<string>> headers, string headerName)
+        internal static string? GetRawHeaders(IDictionary<string, IEnumerable<string>> headers, string headerName)
         {
             if (headers == null)
             {
@@ -37,13 +37,13 @@ namespace Auth0.Core
             return !headers.TryGetValue(headerName, out var values) ? null : values.FirstOrDefault();
         }
         
-        internal static ClientQuotaLimit ParseClientLimit(string headerValue)
+        internal static ClientQuotaLimit? ParseClientLimit(string? headerValue)
         {
             if (string.IsNullOrEmpty(headerValue))
             {
                 return null;
             }
-            var buckets = headerValue.Split(',');
+            var buckets = headerValue!.Split(',');
             var quotaClientLimit = new ClientQuotaLimit();
             foreach (var eachBucket in buckets)
             {
@@ -61,14 +61,14 @@ namespace Auth0.Core
             return quotaClientLimit;
         }
 
-        internal static OrganizationQuotaLimit ParseOrganizationLimit(string headerValue)
+        internal static OrganizationQuotaLimit? ParseOrganizationLimit(string? headerValue)
         {
             if (string.IsNullOrEmpty(headerValue))
             {
                 return null;
             }
             
-            var buckets = headerValue.Split(',');
+            var buckets = headerValue!.Split(',');
             var quotaOrganizationLimit = new OrganizationQuotaLimit();
             foreach (var eachBucket in buckets)
             {
@@ -85,7 +85,7 @@ namespace Auth0.Core
             return quotaOrganizationLimit;
         }
 
-        internal static QuotaLimit ParseQuotaLimit(string headerValue, out string bucket)
+        internal static QuotaLimit? ParseQuotaLimit(string headerValue, out string? bucket)
         {
             bucket = null;
 
