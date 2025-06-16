@@ -1,11 +1,13 @@
-﻿using Auth0.ManagementApi.Models;
-using Auth0.Tests.Shared;
-using FluentAssertions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+
 using Auth0.IntegrationTests.Shared.CleanUp;
 using Auth0.ManagementApi.IntegrationTests.Testing;
+using Auth0.ManagementApi.Models;
+using Auth0.Tests.Shared;
+
+using FluentAssertions;
 using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests
@@ -141,7 +143,8 @@ namespace Auth0.ManagementApi.IntegrationTests
             job.CreatedAt.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromMinutes(5));
         }
 
-        [Fact(Skip = "Run Manually")]
+        // [Fact(Skip = "Run Manually")]
+        [Fact]
         public async Task Can_import_users()
         {
             // Send a user import request
@@ -177,6 +180,24 @@ namespace Auth0.ManagementApi.IntegrationTests
             exportUsers.CreatedAt.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromMinutes(5));
             exportUsers.ConnectionId.Should().Be(fixture.TestAuth0Connection.Id);
             exportUsers.Connection.Should().Be(fixture.TestAuth0Connection.Name);
+        }
+        
+        [Fact]
+        public async Task Parse_Errors_When_Import_Users_Fails()
+        {
+            // Send an invalid user import request
+            using var stream = GetType().Assembly.GetManifestResourceStream("Auth0.ManagementApi.IntegrationTests.Data.UsersImportInvalid.json");
+            var importUsers = await fixture.ApiClient.Jobs.ImportUsersAsync(fixture.TestAuth0Connection.Id, "Data.UsersImportInvalid.json", stream, sendCompletionEmail: false);
+            importUsers.Should().NotBeNull();
+            importUsers.Id.Should().NotBeNull();
+            importUsers.Type.Should().Be("users_import");
+            importUsers.Status.Should().Be("pending");
+            importUsers.CreatedAt.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromMinutes(5));
+            importUsers.ConnectionId.Should().Be(fixture.TestAuth0Connection.Id);
+            importUsers.Connection.Should().Be(fixture.TestAuth0Connection.Name);
+            
+            var errorDetails = await fixture.ApiClient.Jobs.GetErrorDetailsAsync(importUsers.Id);
+            errorDetails.Should().NotBeNull();
         }
     }
 }

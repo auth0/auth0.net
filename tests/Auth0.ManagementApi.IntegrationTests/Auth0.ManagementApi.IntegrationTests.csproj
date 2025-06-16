@@ -33,6 +33,10 @@
     <EmbeddedResource Include="user-import-test.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <None Remove="Data\UsersImportInvalid.json" />
+    <EmbeddedResource Include="Data\UsersImportInvalid.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,10 @@
+[
+  {
+    "email": "john.doe@nonexistingdomain",
+    "email_verified": true,
+    "app_metadata": {
+    },
+    "user_metadata": {
+    }
+  }
+]
