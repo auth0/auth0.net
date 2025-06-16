@@ -5,6 +5,7 @@ using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Auth0.ManagementApi.Clients
 {
@@ -35,7 +36,8 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
         public Task<Job> GetAsync(string id, CancellationToken cancellationToken = default)
         {
-            return Connection.GetAsync<Job>(BuildUri($"jobs/{EncodePath(id)}"), DefaultHeaders, cancellationToken: cancellationToken);
+            return Connection.GetAsync<Job>(BuildUri($"jobs/{EncodePath(id)}"), DefaultHeaders,
+                cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -52,7 +54,8 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="sendCompletionEmail">Whether to send the user an email on import completion (true) or not (false).</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
-        public Task<Job> ImportUsersAsync(string connectionId, string fileName, Stream file, bool? upsert = null, string externalId = null, bool? sendCompletionEmail = null, CancellationToken cancellationToken = default)
+        public Task<Job> ImportUsersAsync(string connectionId, string fileName, Stream file, bool? upsert = null,
+            string externalId = null, bool? sendCompletionEmail = null, CancellationToken cancellationToken = default)
         {
             if (file == null)
                 throw new ArgumentNullException(nameof(file));
@@ -75,7 +78,8 @@ namespace Auth0.ManagementApi.Clients
                 }
             };
 
-            return Connection.SendAsync<Job>(HttpMethod.Post, BuildUri("jobs/users-imports"), parameters, DefaultHeaders, files: fileParameters, cancellationToken: cancellationToken);
+            return Connection.SendAsync<Job>(HttpMethod.Post, BuildUri("jobs/users-imports"), parameters,
+                DefaultHeaders, files: fileParameters, cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -89,7 +93,8 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
         public Task<Job> ExportUsersAsync(UsersExportsJobRequest request, CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<Job>(HttpMethod.Post, BuildUri("jobs/users-exports"), request, DefaultHeaders, cancellationToken: cancellationToken);
+            return Connection.SendAsync<Job>(HttpMethod.Post, BuildUri("jobs/users-exports"), request, DefaultHeaders,
+                cancellationToken: cancellationToken);
         }
 
         /// <summary>
@@ -98,15 +103,48 @@ namespace Auth0.ManagementApi.Clients
         /// <param name="request">The <see cref="VerifyEmailJobRequest"/> containing the information of the user whose email you want verified.</param>
         /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
-        public Task<Job> SendVerificationEmailAsync(VerifyEmailJobRequest request, CancellationToken cancellationToken = default)
+        public Task<Job> SendVerificationEmailAsync(VerifyEmailJobRequest request,
+            CancellationToken cancellationToken = default)
         {
-            return Connection.SendAsync<Job>(HttpMethod.Post, BuildUri("jobs/verification-email"), request, DefaultHeaders, cancellationToken: cancellationToken);
+            return Connection.SendAsync<Job>(HttpMethod.Post, BuildUri("jobs/verification-email"), request,
+                DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <inheritdoc cref="IJobsClient.GetErrorDetailsAsync"/>>
-        public Task<object> GetErrorDetailsAsync(string id, CancellationToken cancellationToken = default)
+        public Task<JobError> GetErrorDetailsAsync(string id, CancellationToken cancellationToken = default)
         {
-            return Connection.GetAsync<object>(BuildUri($"jobs/{EncodePath(id)}/errors"), DefaultHeaders, cancellationToken: cancellationToken);
+            var rawResponse = 
+                Connection.GetAsync<string>(
+                    BuildUri($"jobs/{EncodePath(id)}/errors"), DefaultHeaders, cancellationToken: cancellationToken).Result;
+
+            if (string.IsNullOrEmpty(rawResponse)) return null;
+
+            try
+            {
+                var jobImportErrorDetails = JsonConvert.DeserializeObject<JobImportErrorDetails[]>(rawResponse);
+                if (jobImportErrorDetails?.Length > 0)
+                {
+                    return Task.FromResult(new JobError
+                    {
+                        JobImportErrorDetails = jobImportErrorDetails
+                    });
+                }
+            }
+            catch (JsonSerializationException ex)
+            {
+                // ignoring the exception to try to serialize to JobErrorDetails.     
+            }
+
+            var jobErrorDetails = JsonConvert.DeserializeObject<JobErrorDetails>(rawResponse);
+            if (jobErrorDetails != null)
+            {
+                return Task.FromResult(new JobError
+                {
+                    JobErrorDetails = jobErrorDetails
+                });
+            }
+
+            return null;
         }
     }
 }

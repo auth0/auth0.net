@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 using Auth0.IntegrationTests.Shared.CleanUp;
@@ -143,8 +144,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             job.CreatedAt.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromMinutes(5));
         }
 
-        // [Fact(Skip = "Run Manually")]
-        [Fact]
+        [Fact(Skip = "Run Manually")]
         public async Task Can_import_users()
         {
             // Send a user import request
@@ -158,6 +158,10 @@ namespace Auth0.ManagementApi.IntegrationTests
                 importUsers.CreatedAt.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromMinutes(5));
                 importUsers.ConnectionId.Should().Be(fixture.TestAuth0Connection.Id);
                 importUsers.Connection.Should().Be(fixture.TestAuth0Connection.Name);
+                
+                // Error Details for this job should be null
+                var errorDetails = await fixture.ApiClient.Jobs.GetErrorDetailsAsync(importUsers.Id);
+                errorDetails.Should().BeNull();
             }
         }
 
@@ -180,24 +184,103 @@ namespace Auth0.ManagementApi.IntegrationTests
             exportUsers.CreatedAt.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromMinutes(5));
             exportUsers.ConnectionId.Should().Be(fixture.TestAuth0Connection.Id);
             exportUsers.Connection.Should().Be(fixture.TestAuth0Connection.Name);
+            
+            // Error Details for this job should be null
+            var errorDetails = await fixture.ApiClient.Jobs.GetErrorDetailsAsync(exportUsers.Id);
+            errorDetails.Should().BeNull();
         }
         
         [Fact]
-        public async Task Parse_Errors_When_Import_Users_Fails()
+        public async Task Parse_Errors_When_Invalid_Users()
+        {
+            var expectedErrors = new[]
+            {
+                new JobImportErrorDetails()
+                {
+                    Errors =
+                    [
+                        new Error()
+                        {
+                            Code = "INVALID_FORMAT",
+                            Message =
+                                "Error in identities[0].profileData.email property - Object didn't pass validation for format email: john.doe1@nonexistingdomain",
+                            Path = "identities[0].profileData.email"
+                        }
+                    ]
+                },
+                new JobImportErrorDetails()
+                {
+                    Errors =
+                    [
+                        new Error()
+                        {
+                            Code = "INVALID_FORMAT",
+                            Message =
+                                "Error in identities[0].profileData.email property - Object didn't pass validation for format email: john.doe2@nonexistingdomain",
+                            Path = "identities[0].profileData.email"
+                        }
+                    ]
+                }
+            };
+            
+            var importUsers = 
+                await SubmitImportJob(
+                    "Auth0.ManagementApi.IntegrationTests.Data.UsersImportInvalid.json",
+                    "Data.UsersImportInvalid.json");
+            
+            // Job Error should not be null since the import will fail due to invalid data
+            var errorDetails = await fixture.ApiClient.Jobs.GetErrorDetailsAsync(importUsers.Id);
+            errorDetails.Should().NotBeNull();
+            errorDetails.JobErrorDetails.Should().BeNull();
+            errorDetails.JobImportErrorDetails.Should().NotBeNull();
+            errorDetails.JobImportErrorDetails.Length.Should().Be(2);
+            
+            errorDetails.JobImportErrorDetails.Should().BeEquivalentTo(
+                expectedErrors, options => options.Excluding(x => x.User));
+        }
+        
+        [Fact]
+        public async Task Parse_Errors_When_Invalid_File()
+        {
+            var failureReason = "Failed to parse users file JSON when importing users. Make sure it is valid JSON.";
+            
+            var importUsers = 
+                await SubmitImportJob(
+                    "Auth0.ManagementApi.IntegrationTests.Data.UsersImportInvalidFile.json",
+                    "Data.UsersImportInvalidFile.json");
+            
+            // Job Error should not be null since the import will fail due to invalid data
+            var errorDetails = await fixture.ApiClient.Jobs.GetErrorDetailsAsync(importUsers.Id);
+            errorDetails.Should().NotBeNull();
+
+            errorDetails.JobImportErrorDetails.Should().BeNull();
+            
+            errorDetails.JobErrorDetails.Id.Should().NotBeNull();
+            errorDetails.JobErrorDetails.Type.Should().Be("users_import");
+            errorDetails.JobErrorDetails.ConnectionId.Should().Be(fixture.TestAuth0Connection.Id);
+            errorDetails.JobErrorDetails.Connection.Should().Be(fixture.TestAuth0Connection.Name);
+            errorDetails.JobErrorDetails.Status.Should().Be("failed");
+            errorDetails.JobErrorDetails.StatusDetails.Should().Be(failureReason);
+        }
+
+        private async Task<Job> SubmitImportJob(string manifestResourceStreamName, string fileName)
         {
             // Send an invalid user import request
-            using var stream = GetType().Assembly.GetManifestResourceStream("Auth0.ManagementApi.IntegrationTests.Data.UsersImportInvalid.json");
-            var importUsers = await fixture.ApiClient.Jobs.ImportUsersAsync(fixture.TestAuth0Connection.Id, "Data.UsersImportInvalid.json", stream, sendCompletionEmail: false);
+            using var stream = 
+                GetType().Assembly.GetManifestResourceStream(manifestResourceStreamName);
+            var importUsers = 
+                await fixture.ApiClient.Jobs.ImportUsersAsync(
+                    fixture.TestAuth0Connection.Id, fileName, stream, sendCompletionEmail: false);
+            
+            // Let the job execute so that it fails
+            await Task.Delay(TimeSpan.FromSeconds(5));
+            
             importUsers.Should().NotBeNull();
             importUsers.Id.Should().NotBeNull();
             importUsers.Type.Should().Be("users_import");
-            importUsers.Status.Should().Be("pending");
-            importUsers.CreatedAt.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromMinutes(5));
             importUsers.ConnectionId.Should().Be(fixture.TestAuth0Connection.Id);
             importUsers.Connection.Should().Be(fixture.TestAuth0Connection.Name);
-            
-            var errorDetails = await fixture.ApiClient.Jobs.GetErrorDetailsAsync(importUsers.Id);
-            errorDetails.Should().NotBeNull();
+            return importUsers;
         }
     }
 }
