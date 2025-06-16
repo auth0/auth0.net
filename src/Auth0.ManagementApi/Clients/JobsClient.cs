@@ -102,5 +102,11 @@ namespace Auth0.ManagementApi.Clients
         {
             return Connection.SendAsync<Job>(HttpMethod.Post, BuildUri("jobs/verification-email"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
+
+        /// <inheritdoc cref="IJobsClient.GetErrorDetailsAsync"/>>
+        public Task<object> GetErrorDetailsAsync(string id, CancellationToken cancellationToken = default)
+        {
+            return Connection.GetAsync<object>(BuildUri($"jobs/{EncodePath(id)}/errors"), DefaultHeaders, cancellationToken: cancellationToken);
+        }
     }
 }
