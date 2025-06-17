@@ -260,6 +260,7 @@ public async Task LoginWithClientCredentialsAndMonitorClientQuota()
     - [2.1. Update Default Token Quota at Tenant level](#21-update-default-token-quota-at-tenant-level)
     - [2.2 Update Token Quota at Client level](#22-update-token-quota-at-client-level)
     - [2.2 Update Token Quota at Organisation level](#23-update-token-quota-at-organisation-level)
+- [3. Get Job Error Details](#3-get-job-error-details)
 
 ## 1. Management Client Initialization
 
@@ -365,6 +366,39 @@ Assuming you have an access token available with the required scopes.
     };
 
     var orgUpdateResponse = await apiClient.Organizations.UpdateAsync("org_id", orgUpdateRequest);
+
+```
+⬆️ [Go to Top](#)
+
+## 3. Get Job Error Details
+
+When a job fails, you can get the error details using the `GetErrorDetailsAsync` method.
+The response (of type `JobError`) will either contain `JobImportErrorDetails[]` or `JobErrorDetails` depending on the type of job.
+
+Assuming you have an access token available with the required scopes and the `apiClient` is initialized as shown in the previous sections.
+```csharp
+
+public async void GetJobErrorDetails(string jobId) {
+    
+    var jobId = "your_job_id";    
+    var jobError = await apiClient.Jobs.GetErrorDetailsAsync(jobId);
+    
+    Console.WriteLine($"Job ID: {jobId}");
+    Console.WriteLine($"Job Type: {jobError.JobErrorDetails.Type}");
+    Console.WriteLine($"Job Status: {jobError.JobErrorDetails.Status}");
+    Console.WriteLine($"Job Id: {jobError.JobErrorDetails.Id}");
+    Console.WriteLine($"Job Connection: {jobError.JobErrorDetails.Connection}");
+    Console.WriteLine($"Job Connection Id: {jobError.JobErrorDetails.ConnectionId}");
+    Console.WriteLine($"Job Created At: {jobError.JobErrorDetails.CreatedAt}");
+    Console.WriteLine($"Job Status Details: {jobError.JobErrorDetails.StatusDetails}");
+
+    // OR 
+    Console.WriteLine($"Job User object: {jobError.JobImportErrorDetails[0].User}");
+    Console.WriteLine($"Job Error Code: {jobError.JobImportErrorDetails[0].Errors[0].Code}");
+    Console.WriteLine($"Job Error Code: {jobError.JobImportErrorDetails[0].Errors[0].Message}");
+    Console.WriteLine($"Job Error Code: {jobError.JobImportErrorDetails[0].Errors[0].Path}");
+}
+
 
 ```
 ⬆️ [Go to Top](#)
