@@ -69,7 +69,7 @@ namespace Auth0.ManagementApi.Clients
                 {"include_fields", request.IncludeFields?.ToString().ToLower()},
                 {"is_global", request.IsGlobal?.ToString().ToLower()},
                 {"is_first_party", request.IsFirstParty?.ToString().ToLower()},
-                {"q", request.Query?.ToLower()}
+                {"q", request.Query}
             };
 
             if (pagination != null)
@@ -97,7 +97,7 @@ namespace Auth0.ManagementApi.Clients
                 {"include_fields", request.IncludeFields?.ToString().ToLower()},
                 {"is_global", request.IsGlobal?.ToString().ToLower()},
                 {"is_first_party", request.IsFirstParty?.ToString().ToLower()},
-                {"q", request.Query?.ToLower()}
+                {"q", request.Query}
             };
 
             if (pagination != null)
