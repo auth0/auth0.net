@@ -52,5 +52,13 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
     /// <returns>A <see cref="Job"/> instance containing the information about the job.</returns>
     Task<Job> SendVerificationEmailAsync(VerifyEmailJobRequest request, CancellationToken cancellationToken = default);
+    
+    /// <summary>
+    /// Retrieve error details of a failed job.
+    /// </summary>
+    /// <param name="id">The ID of the job.</param>
+    /// <param name="cancellationToken">The <see cref="CancellationToken"/> to cancel operation.</param>
+    /// <returns><see cref="JobError"/></returns>
+    Task<JobError> GetErrorDetailsAsync(string id, CancellationToken cancellationToken = default);
   }
 }

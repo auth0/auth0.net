@@ -1,0 +1,18 @@
+[
+  {
+    "email": "john.doe1@nonexistingdomain",
+    "email_verified": true,
+    "app_metadata": {
+    },
+    "user_metadata": {
+    }
+  },
+  {
+    "email": "john.doe2@nonexistingdomain",
+    "email_verified": true,
+    "app_metadata": {
+    },
+    "user_metadata": {
+    }
+  }  
+]
