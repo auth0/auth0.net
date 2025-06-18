@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Auth0.ManagementApi.Models.Connections;
 
 namespace Auth0.ManagementApi.Clients
 {
@@ -274,6 +275,46 @@ namespace Auth0.ManagementApi.Clients
         public Task DeleteScimTokenAsync(string id, string tokenId, CancellationToken cancellationToken = default)
         {
             return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"connections/{EncodePath(id)}/scim-configuration/tokens/{EncodePath(tokenId)}"), null, DefaultHeaders, cancellationToken: cancellationToken);
+        }
+        
+        /// <inheritdoc />
+        public Task<ICheckpointPagedList<EnabledClients>> GetEnabledClientsAsync(
+            EnabledClientsGetRequest request,
+            CheckpointPaginationInfo? pagination = null,
+            CancellationToken cancellationToken = default)
+        {
+            if (request == null)
+                throw new ArgumentNullException(nameof(request));
+            
+            if (request.ConnectionId == null)
+                throw new ArgumentNullException(nameof(request.ConnectionId));
+
+            var queryStrings = new Dictionary<string, string>();
+            
+            if (pagination != null)
+            {
+                queryStrings["from"] = pagination.From;
+                queryStrings["take"] = pagination.Take.ToString();
+            }
+
+            return Connection.GetAsync<ICheckpointPagedList<EnabledClients>>(
+                BuildUri(
+                    $"connections/{EncodePath(request.ConnectionId)}/clients",
+                    queryStrings),
+                DefaultHeaders,
+                checkpointPaginationConverter,
+                cancellationToken);
+        }
+        
+        /// <inheritdoc />
+        public Task UpdateEnabledClientsAsync(string id, EnabledClientsUpdateRequest request, CancellationToken cancellationToken = default)
+        {
+            return Connection.SendAsync<object>(
+                new HttpMethod("PATCH"),
+                BuildUri($"connections/{EncodePath(id)}/clients"),
+                request,
+                DefaultHeaders,
+                cancellationToken: cancellationToken);
         }
     }
 }
