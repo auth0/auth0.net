@@ -17,6 +17,7 @@ namespace Auth0.ManagementApi.Clients
     {
         private readonly JsonConverter[] _converters = { new PagedListConverter<Connection>("connections") };
         readonly JsonConverter[] checkpointPaginationConverter = new JsonConverter[] { new CheckpointPagedListConverter<Connection>("connections") };
+        readonly JsonConverter[] enabledClientsCheckpointPaginationConverter = new JsonConverter[] { new CheckpointPagedListConverter<EnabledClients>("clients") };
         private readonly JsonConverter[] _defaultMappingsConverter = { new ListConverter<ScimMapping>("mapping") };
 
         /// <summary>
@@ -302,7 +303,7 @@ namespace Auth0.ManagementApi.Clients
                     $"connections/{EncodePath(request.ConnectionId)}/clients",
                     queryStrings),
                 DefaultHeaders,
-                checkpointPaginationConverter,
+                enabledClientsCheckpointPaginationConverter,
                 cancellationToken);
         }
         
@@ -312,7 +313,7 @@ namespace Auth0.ManagementApi.Clients
             return Connection.SendAsync<object>(
                 new HttpMethod("PATCH"),
                 BuildUri($"connections/{EncodePath(id)}/clients"),
-                request,
+                request.EnabledClients,
                 DefaultHeaders,
                 cancellationToken: cancellationToken);
         }
