@@ -493,7 +493,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                     new EnabledClientsGetRequest()
                     {
                         ConnectionId = newConnectionResponse.Id
-                    }
+                    }, new CheckpointPaginationInfo()
                 );
 
             enabledClients.Should().NotBeNull();
@@ -506,6 +506,44 @@ namespace Auth0.ManagementApi.IntegrationTests
             getFunc.Should().Throw<ErrorApiException>().And.ApiError.ErrorCode.Should().Be("inexistent_connection");
 
             fixture.UnTrackIdentifier(CleanUpType.Connections, newConnectionResponse.Id);
+        }
+
+        [Fact]
+        public async Task Test_GetEnabledClients_Throws_When_Input_Is_Null()
+        {
+            var exception = await Assert.ThrowsAsync<ArgumentNullException>(
+                () => fixture.ApiClient.Connections.GetEnabledClientsAsync(null));
+            exception.Message.Should().Contain("request");
+        }
+        
+        [Fact]
+        public async Task Test_GetEnabledClients_Throws_When_ConnectionId_Is_Null()
+        {
+            var request = new EnabledClientsGetRequest();
+            var exception = await Assert.ThrowsAsync<ArgumentNullException>(
+                () => fixture.ApiClient.Connections.GetEnabledClientsAsync(request));
+            exception.Message.Should().Contain("request");
+        }
+        
+        
+        [Fact]
+        public async Task Test_UpdateEnabledClients_Throws_When_ConnectionId_Is_Null()
+        {
+            var exception = await Assert.ThrowsAsync<ArgumentNullException>(
+                () => fixture.ApiClient.Connections.UpdateEnabledClientsAsync("id", null));
+            exception.Message.Should().Contain("request");
+        }
+        
+        [Fact]
+        public async Task Test_GetConnections_Throws_When_Input_Is_Null()
+        {
+            var exception = await Assert.ThrowsAsync<ArgumentNullException>(
+                () => fixture.ApiClient.Connections.GetAllAsync(null, new PaginationInfo()));
+            exception.Message.Should().Contain("request");
+            
+            exception = await Assert.ThrowsAsync<ArgumentNullException>(
+                () => fixture.ApiClient.Connections.GetAllAsync(null, new CheckpointPaginationInfo()));
+            exception.Message.Should().Contain("request");
         }
         private async Task<string> GenerateBruckeManagementApiToken()
         {

@@ -8,5 +8,5 @@ public class EnabledClientsGetRequest
     /// <summary>
     /// The id of the connection for which enabled clients are to be retrieved
     /// </summary>
-    public string ConnectionId { get; set; } = string.Empty;
+    public string ConnectionId { get; set; }
 };

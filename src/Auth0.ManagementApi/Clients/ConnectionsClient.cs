@@ -96,8 +96,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{Connection}"/> containing the list of connections.</returns>
         public Task<IPagedList<Connection>> GetAllAsync(GetConnectionsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>
             {
@@ -137,8 +136,7 @@ namespace Auth0.ManagementApi.Clients
         public Task<ICheckpointPagedList<Connection>> GetAllAsync(GetConnectionsRequest request, CheckpointPaginationInfo pagination = null,
             CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>
             {
@@ -284,11 +282,8 @@ namespace Auth0.ManagementApi.Clients
             CheckpointPaginationInfo? pagination = null,
             CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-            
-            if (request.ConnectionId == null)
-                throw new ArgumentNullException(nameof(request.ConnectionId));
+            request.ThrowIfNull();
+            request.ConnectionId.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>();
             
@@ -310,6 +305,7 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc />
         public Task UpdateEnabledClientsAsync(string id, EnabledClientsUpdateRequest request, CancellationToken cancellationToken = default)
         {
+            request.ThrowIfNull();
             return Connection.SendAsync<object>(
                 new HttpMethod("PATCH"),
                 BuildUri($"connections/{EncodePath(id)}/clients"),

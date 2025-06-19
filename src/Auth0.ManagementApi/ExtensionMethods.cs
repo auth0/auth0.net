@@ -36,5 +36,19 @@ namespace Auth0.ManagementApi
             var enumMemberAttribute = ((EnumMemberAttribute[])enumType.GetTypeInfo().GetDeclaredField(name).GetCustomAttributes(typeof(EnumMemberAttribute), true))[0];
             return enumMemberAttribute.Value;
         }
+
+        /// <summary>
+        /// Throws an <see cref="ArgumentNullException"/> if the provided object is <see langword="null"/>.
+        /// </summary>
+        /// <param name="input">The object to check for <see langword="null"/>.</param>
+        /// <param name="paramName">The name of the parameter being checked, automatically captured using <see cref="System.Runtime.CompilerServices.CallerArgumentExpressionAttribute"/>.</param>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="input"/> is <see langword="null"/>.</exception>
+        public static void ThrowIfNull(this object input, [System.Runtime.CompilerServices.CallerArgumentExpression("input")] string? paramName = null)
+        {
+            if (input == null)
+            {
+                throw new ArgumentNullException(paramName);
+            }
+        }
     }
 }
