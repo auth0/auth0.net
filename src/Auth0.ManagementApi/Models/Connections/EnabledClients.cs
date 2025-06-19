@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace Auth0.ManagementApi.Models.Connections;
 
-public record EnabledClients
+public class EnabledClients
 {
     /// <summary>
     /// The client ID
