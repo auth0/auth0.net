@@ -486,7 +486,25 @@ namespace Auth0.ManagementApi.IntegrationTests
             };
             
             // Act
-            var clients = await fixture.ApiClient.Clients.GetAllAsync(request, new CheckpointPaginationInfo(100));
+            var checkpointPagedClients =
+                await fixture.ApiClient.Clients.GetAllAsync(request, new CheckpointPaginationInfo(100));
+            
+            // Assert
+            Assert.Contains(checkpointPagedClients.ToList(), x => x.ClientId == client.ClientId);
+            
+            request = new GetClientsRequest()
+            {
+                Query = $"client_grant.organization_id:{organization.Id}"
+            };
+            
+            // Act
+            checkpointPagedClients = await fixture.ApiClient.Clients.GetAllAsync(request, new CheckpointPaginationInfo(100));
+            
+            // Assert
+            Assert.Contains(checkpointPagedClients.ToList(), x => x.ClientId == client.ClientId);
+            
+            // Act
+            var clients = await fixture.ApiClient.Clients.GetAllAsync(request);
             
             // Assert
             Assert.Contains(clients.ToList(), x => x.ClientId == client.ClientId);
