@@ -1,3 +1,4 @@
+using System;
 using Auth0.ManagementApi.Models.Connections;
 using Newtonsoft.Json;
 
@@ -35,9 +36,7 @@ namespace Auth0.ManagementApi.Models
         [JsonProperty("realms")]
         public string[] Realms { get; set; }
 
-        /// <summary>
-        /// The identifiers of the clients for which the connection is to be enabled. If the array is empty or the property is not specified, no clients are enabled.
-        /// </summary>
+        [Obsolete("This field is deprecated and will be removed in a future version. Use ConnectionsClient.GetEnabledClientsAsync and ConnectionsClient.UpdateEnabledClientsAsync instead. ")]
         [JsonProperty("enabled_clients")]
         public string[] EnabledClients { get; set; }
 
