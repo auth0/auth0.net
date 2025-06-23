@@ -1,5 +1,7 @@
 
 
+using Auth0.ManagementApi.Models.Connections;
+
 namespace Auth0.ManagementApi.Clients
 {
   using System.Threading;
@@ -148,5 +150,22 @@ namespace Auth0.ManagementApi.Clients
     /// <param name="tokenId">The ID of the <see cref="ScimToken"/> to delete</param>
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
     Task DeleteScimTokenAsync(string id, string tokenId, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Retrieves a <see cref="ICheckpointPagedList"/> list of enabled clients for a connection.
+    /// </summary>
+    /// <param name="request">The request containing criteria for retrieving enabled clients.</param>
+    /// <param name="pagination">The checkpoint pagination information to use for paged results.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel the operation.</param>
+    /// <returns>An <see cref="ICheckpointPagedList{EnabledClients}"/> containing the list of enabled clients.</returns>
+    public Task<ICheckpointPagedList<EnabledClients>> GetEnabledClientsAsync(EnabledClientsGetRequest request, CheckpointPaginationInfo? pagination = null, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Updates the list of enabled clients for a connection.
+    /// </summary>
+    /// <param name="id">The ID of the connection to update enabled clients for.</param>
+    /// <param name="request">The request containing the updated list of enabled clients.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel the operation.</param>
+    public Task UpdateEnabledClientsAsync(string id, EnabledClientsUpdateRequest request, CancellationToken cancellationToken = default);
   }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Auth0.ManagementApi.Models.Connections;
 
 namespace Auth0.ManagementApi.Clients
 {
@@ -16,6 +17,7 @@ namespace Auth0.ManagementApi.Clients
     {
         private readonly JsonConverter[] _converters = { new PagedListConverter<Connection>("connections") };
         readonly JsonConverter[] checkpointPaginationConverter = new JsonConverter[] { new CheckpointPagedListConverter<Connection>("connections") };
+        readonly JsonConverter[] enabledClientsCheckpointPaginationConverter = new JsonConverter[] { new CheckpointPagedListConverter<EnabledClients>("clients") };
         private readonly JsonConverter[] _defaultMappingsConverter = { new ListConverter<ScimMapping>("mapping") };
 
         /// <summary>
@@ -94,8 +96,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{Connection}"/> containing the list of connections.</returns>
         public Task<IPagedList<Connection>> GetAllAsync(GetConnectionsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>
             {
@@ -135,8 +136,7 @@ namespace Auth0.ManagementApi.Clients
         public Task<ICheckpointPagedList<Connection>> GetAllAsync(GetConnectionsRequest request, CheckpointPaginationInfo pagination = null,
             CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>
             {
@@ -274,6 +274,44 @@ namespace Auth0.ManagementApi.Clients
         public Task DeleteScimTokenAsync(string id, string tokenId, CancellationToken cancellationToken = default)
         {
             return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"connections/{EncodePath(id)}/scim-configuration/tokens/{EncodePath(tokenId)}"), null, DefaultHeaders, cancellationToken: cancellationToken);
+        }
+        
+        /// <inheritdoc />
+        public Task<ICheckpointPagedList<EnabledClients>> GetEnabledClientsAsync(
+            EnabledClientsGetRequest request,
+            CheckpointPaginationInfo? pagination = null,
+            CancellationToken cancellationToken = default)
+        {
+            request.ThrowIfNull();
+            request.ConnectionId.ThrowIfNull();
+
+            var queryStrings = new Dictionary<string, string>();
+            
+            if (pagination != null)
+            {
+                queryStrings["from"] = pagination.From;
+                queryStrings["take"] = pagination.Take.ToString();
+            }
+
+            return Connection.GetAsync<ICheckpointPagedList<EnabledClients>>(
+                BuildUri(
+                    $"connections/{EncodePath(request.ConnectionId)}/clients",
+                    queryStrings),
+                DefaultHeaders,
+                enabledClientsCheckpointPaginationConverter,
+                cancellationToken);
+        }
+        
+        /// <inheritdoc />
+        public Task UpdateEnabledClientsAsync(string id, EnabledClientsUpdateRequest request, CancellationToken cancellationToken = default)
+        {
+            request.ThrowIfNull();
+            return Connection.SendAsync<object>(
+                new HttpMethod("PATCH"),
+                BuildUri($"connections/{EncodePath(id)}/clients"),
+                request.EnabledClients,
+                DefaultHeaders,
+                cancellationToken: cancellationToken);
         }
     }
 }
