@@ -1,5 +1,18 @@
 # Change Log
 
+## [7.38.0](https://github.com/auth0/auth0.net/tree/7.38.0) (2025-06-23)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.37.0...7.38.0)
+
+**Added**
+- Add support for `v2/jobs/get-errors` API [\#819](https://github.com/auth0/auth0.net/pull/819) ([kailash-b](https://github.com/kailash-b))
+- Use Polysharp to take advantage of latest language features [\#813](https://github.com/auth0/auth0.net/pull/813) ([kailash-b](https://github.com/kailash-b))
+
+**Deprecated**
+- Deprecate `EnabledClients` in `Connections` in favour of Get and Update EnabledClients [\#821](https://github.com/auth0/auth0.net/pull/821) ([kailash-b](https://github.com/kailash-b))
+
+**Fixed**
+- Fix query generation in GetAllAsync [\#820](https://github.com/auth0/auth0.net/pull/820) ([kailash-b](https://github.com/kailash-b))
+
 ## [7.37.0](https://github.com/auth0/auth0.net/tree/7.37.0) (2025-05-30)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.36.0...7.37.0)
 
