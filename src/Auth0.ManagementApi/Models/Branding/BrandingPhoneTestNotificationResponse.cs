@@ -9,7 +9,7 @@ namespace Auth0.ManagementApi.Models
         /// The status code of the operation.
         /// </summary>
         [JsonProperty("code")]
-        public int Code { get; set; }
+        public float Code { get; set; }
         
         /// <summary>
         /// The description of the operation status.

@@ -49,13 +49,13 @@ namespace Auth0.ManagementApi.Models
         /// Button border radius
         /// </summary>
         [JsonProperty("button_border_radius")]
-        public int ButtonBorderRadius { get; set; }
+        public float ButtonBorderRadius { get; set; }
         
         /// <summary>
         /// Button border weight
         /// </summary>
         [JsonProperty("button_border_weight")]
-        public int ButtonBorderWeight { get; set; }
+        public float ButtonBorderWeight { get; set; }
         
         /// <summary>
         /// Possible values: [pill, rounded, sharp]
@@ -69,13 +69,13 @@ namespace Auth0.ManagementApi.Models
         /// Input border radius
         /// </summary>
         [JsonProperty("input_border_radius")]
-        public int InputBorderRadius { get; set; }
+        public float InputBorderRadius { get; set; }
         
         /// <summary>
         /// Input border weight
         /// </summary>
         [JsonProperty("input_border_weight")]
-        public int InputBorderWeight { get; set; }
+        public float InputBorderWeight { get; set; }
         
         /// <summary>
         /// Possible values: [pill, rounded, sharp]
@@ -95,13 +95,13 @@ namespace Auth0.ManagementApi.Models
         /// Widget border weight
         /// </summary>
         [JsonProperty("widget_border_weight")]
-        public int WidgetBorderWeight { get; set; }
+        public float WidgetBorderWeight { get; set; }
         
         /// <summary>
         /// Widget corner radius
         /// </summary>
         [JsonProperty("widget_corner_radius")]
-        public int WidgetCornerRadius { get; set; }
+        public float WidgetCornerRadius { get; set; }
     }
 
     public class BrandingThemeColors
@@ -265,7 +265,7 @@ namespace Auth0.ManagementApi.Models
         /// Reference text size
         /// </summary>
         [JsonProperty("reference_text_size")]
-        public int ReferenceTextSize { get; set; }
+        public float ReferenceTextSize { get; set; }
         
         /// <summary>
         /// Subtitle
@@ -309,7 +309,7 @@ namespace Auth0.ManagementApi.Models
         /// Logo height
         /// </summary>
         [JsonProperty("logo_height")]
-        public int LogoHeight { get; set; }
+        public float LogoHeight { get; set; }
         
         /// <summary>
         /// Logo Position
@@ -338,7 +338,7 @@ namespace Auth0.ManagementApi.Models
         public bool? Bold { get; set; }
         
         [JsonProperty("size")]
-        public int Size { get; set; }
+        public float Size { get; set; }
     }
     
     public class BodyText : BrandingThemeFontsBase
