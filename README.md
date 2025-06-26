@@ -3,7 +3,7 @@
 ![Release](https://img.shields.io/github/v/release/auth0/auth0.net)
 ![Downloads](https://img.shields.io/nuget/dt/auth0.core)
 [![License](https://img.shields.io/:license-MIT-blue.svg?style=flat)](https://opensource.org/licenses/MIT)
-![AzureDevOps](https://img.shields.io/azure-devops/build/Auth0SDK/Auth0.Net/6)
+[![Build and Test](https://github.com/auth0/auth0.net/actions/workflows/build.yml/badge.svg)](https://github.com/auth0/auth0.net/actions/workflows/build.yml)
 
 :books: [Documentation](#documentation) - :rocket: [Getting Started](#getting-started) - :computer: [API Reference](https://auth0.github.io/auth0.net/) - :speech_balloon: [Feedback](#feedback)
 
