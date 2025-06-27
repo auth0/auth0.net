@@ -1,24 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\build\common.props" />
+  
+  <!-- Project Identity Properties -->
   <PropertyGroup>
     <AssemblyTitle>Auth0.ManagementApi</AssemblyTitle>
     <AssemblyName>Auth0.ManagementApi</AssemblyName>
     <PackageId>Auth0.ManagementApi</PackageId>
-    <LangVersion>latest</LangVersion>
-    
   </PropertyGroup>
+
+  <!-- Project References -->
   <ItemGroup>
     <ProjectReference Include="..\Auth0.Core\Auth0.Core.csproj" />
   </ItemGroup>
+
+  <!-- Framework-specific References -->
+  <!-- System.Net.Http reference needed for .NET Framework 4.6.2 compatibility -->
   <ItemGroup Condition="'$(TargetFramework)'=='net462'">
     <Reference Include="System.Net.Http" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="Models\Users\" />
-    <None Remove="Models\Grants\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\Users\" />
-    <Folder Include="Models\Grants\" />
   </ItemGroup>
 </Project>
