@@ -4,6 +4,7 @@
 ![Downloads](https://img.shields.io/nuget/dt/auth0.core)
 [![License](https://img.shields.io/:license-MIT-blue.svg?style=flat)](https://opensource.org/licenses/MIT)
 [![Build and Test](https://github.com/auth0/auth0.net/actions/workflows/build.yml/badge.svg)](https://github.com/auth0/auth0.net/actions/workflows/build.yml)
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/auth0/auth0.net)
 
 :books: [Documentation](#documentation) - :rocket: [Getting Started](#getting-started) - :computer: [API Reference](https://auth0.github.io/auth0.net/) - :speech_balloon: [Feedback](#feedback)
 
