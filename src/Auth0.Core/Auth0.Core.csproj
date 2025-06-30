@@ -1,18 +1,25 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <Import Project="..\..\build\common.props" />
+  
+  <!-- Project Identity Properties -->
   <PropertyGroup>
     <AssemblyTitle>Auth0.Core</AssemblyTitle>
     <AssemblyName>Auth0.Core</AssemblyName>
     <PackageId>Auth0.Core</PackageId>
-    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <!-- Build Configuration Properties -->
+  <PropertyGroup>
     <WarningsAsErrors>nullable</WarningsAsErrors>
   </PropertyGroup>
+
+  <!-- Package Dependencies -->
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
+
+  <!-- Framework-specific References -->
+  <!-- System.Net.Http reference needed for .NET Framework 4.6.2 compatibility -->
   <ItemGroup Condition="'$(TargetFramework)'=='net462'">
     <Reference Include="System.Net.Http" />
   </ItemGroup>

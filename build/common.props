@@ -19,7 +19,7 @@
     <ComVisible>false</ComVisible>
   </PropertyGroup>
   <PropertyGroup>
-    <LangVersion>7.1</LangVersion>
+    <LangVersion>latest</LangVersion>
     <Version>7.38.0</Version>
     <Suffix/>
   </PropertyGroup>
