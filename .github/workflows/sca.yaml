@@ -1,0 +1,10 @@
+name: sca
+
+on:
+  pull_request: {}
+jobs:
+  snyk-cli:
+    uses: auth0/devsecops-tooling/.github/workflows/sca-scan.yml@main
+    with:
+      runner: ubuntu-latest
+    secrets: inherit
