@@ -1,6 +1,4 @@
 ﻿using System;
-using Newtonsoft.Json.Linq;
-using System.Security.Claims;
 
 namespace Auth0.AuthenticationApi.Tokens
 {

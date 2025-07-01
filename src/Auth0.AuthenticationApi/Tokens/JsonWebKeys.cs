@@ -1,8 +1,9 @@
-﻿using Microsoft.IdentityModel.Protocols;
+﻿using System;
+using System.Threading.Tasks;
+
+using Microsoft.IdentityModel.Protocols;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Threading.Tasks;
 
 namespace Auth0.AuthenticationApi.Tokens
 {

@@ -1,7 +1,7 @@
-using Auth0.AuthenticationApi.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
+
+using Auth0.AuthenticationApi.Models;
 
 namespace Auth0.AuthenticationApi.Builders
 {

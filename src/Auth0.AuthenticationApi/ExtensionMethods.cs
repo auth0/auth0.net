@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Auth0.AuthenticationApi.Models;
-using Auth0.Core.Exceptions;
 
 namespace Auth0.AuthenticationApi
 {

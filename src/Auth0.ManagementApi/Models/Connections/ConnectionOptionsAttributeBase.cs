@@ -1,6 +1,4 @@
-using System.Runtime.Serialization;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace Auth0.ManagementApi.Models.Connections;
 

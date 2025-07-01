@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Auth0.Core.Exceptions;
 using Auth0.IntegrationTests.Shared.CleanUp;
 using Auth0.ManagementApi.IntegrationTests.Testing;
 using Auth0.ManagementApi.Models.Actions;

@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Auth0.IntegrationTests.Shared.CleanUp;
 using Auth0.ManagementApi;
-using Auth0.ManagementApi.Clients;
 
 namespace Auth0.AuthenticationApi.IntegrationTests.Testing
 {

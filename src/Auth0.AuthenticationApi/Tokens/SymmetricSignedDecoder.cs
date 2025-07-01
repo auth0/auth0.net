@@ -1,5 +1,7 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿
 using System.Text;
+
+using Microsoft.IdentityModel.Tokens;
 
 namespace Auth0.AuthenticationApi.Tokens
 {

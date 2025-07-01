@@ -1,12 +1,13 @@
-﻿using Auth0.AuthenticationApi.Models;
-using Auth0.AuthenticationApi.Tokens;
-using Auth0.Core.Http;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Auth0.Core.Http;
+using Auth0.AuthenticationApi.Models;
+using Auth0.AuthenticationApi.Tokens;
 using Auth0.AuthenticationApi.Models.Ciba;
 using Auth0.AuthenticationApi.Models.Mfa;
 

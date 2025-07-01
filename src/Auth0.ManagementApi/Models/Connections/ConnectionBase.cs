@@ -1,5 +1,4 @@
 using System;
-using Auth0.ManagementApi.Models.Connections;
 using Newtonsoft.Json;
 
 namespace Auth0.ManagementApi.Models;

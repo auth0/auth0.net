@@ -1,4 +1,3 @@
-
 namespace Auth0.AuthenticationApi.Models.Mfa
 {
     public class DeleteMfaAuthenticatorRequest

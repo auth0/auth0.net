@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
+using Auth0.AuthenticationApi.Models;
 using Auth0.AuthenticationApi.Models.Ciba;
 using Auth0.AuthenticationApi.Models.Mfa;
-using Auth0.AuthenticationApi.Models;
 
 namespace Auth0.AuthenticationApi
 {

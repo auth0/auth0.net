@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 using Auth0.Core.Exceptions;
 using Auth0.IntegrationTests.Shared.CleanUp;
@@ -12,8 +10,6 @@ using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Paging;
 using Auth0.Tests.Shared;
 using FluentAssertions;
-using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json.Linq;
 using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests

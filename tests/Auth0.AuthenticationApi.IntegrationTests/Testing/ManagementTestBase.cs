@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Auth0.IntegrationTests.Shared.CleanUp;
+﻿using System.Threading.Tasks;
 using Auth0.ManagementApi;
 using Auth0.Tests.Shared;
 

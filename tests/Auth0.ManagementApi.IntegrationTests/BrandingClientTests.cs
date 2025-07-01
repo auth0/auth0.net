@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Auth0.Core.Exceptions;
-using Auth0.ManagementApi.IntegrationTests.Testing;
 using Auth0.ManagementApi.Models;
-using Auth0.Tests.Shared;
 using FluentAssertions;
-using FluentAssertions.Common;
 using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests

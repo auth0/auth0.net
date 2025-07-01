@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Microsoft.IdentityModel.Protocols;
 
 namespace Auth0.AuthenticationApi.Tokens

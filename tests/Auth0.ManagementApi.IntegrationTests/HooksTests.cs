@@ -1,13 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
-using Auth0.Core.Exceptions;
+﻿using System.Threading.Tasks;
 using Auth0.IntegrationTests.Shared.CleanUp;
 using Auth0.ManagementApi.IntegrationTests.Testing;
 using Auth0.ManagementApi.Models;
 using FluentAssertions;
 using Xunit;
 using Auth0.ManagementApi.Paging;
-using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Linq;
 

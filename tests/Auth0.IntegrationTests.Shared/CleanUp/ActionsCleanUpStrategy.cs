@@ -1,9 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Auth0.ManagementApi;
-using Auth0.ManagementApi.Models.Actions;
-using Auth0.ManagementApi.Paging;
-using static System.Collections.Specialized.BitVector32;
 
 namespace Auth0.IntegrationTests.Shared.CleanUp
 {

@@ -1,7 +1,9 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Collections.Generic;
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 using Auth0.Core.Serialization;
 
 namespace Auth0.AuthenticationApi.Models

@@ -1,7 +1,6 @@
 ﻿using Auth0.Tests.Shared;
 using System;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Auth0.AuthenticationApi.Models;
 using Auth0.AuthenticationApi.Models.Ciba;

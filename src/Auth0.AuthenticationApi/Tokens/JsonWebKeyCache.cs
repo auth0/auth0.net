@@ -1,6 +1,7 @@
-﻿using Microsoft.IdentityModel.Tokens;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+
+using Microsoft.IdentityModel.Tokens;
 
 namespace Auth0.AuthenticationApi.Tokens
 {

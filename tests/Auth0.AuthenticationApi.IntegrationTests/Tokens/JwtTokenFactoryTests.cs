@@ -1,12 +1,8 @@
-﻿using System;
-using Auth0.AuthenticationApi.Models;
-using System.Threading.Tasks;
-using Xunit;
+﻿using Xunit;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Cryptography;
 using FluentAssertions;
 using System.IdentityModel.Tokens.Jwt;
-using Newtonsoft.Json.Linq;
 using System.Linq;
 
 namespace Auth0.AuthenticationApi.IntegrationTests.Tokens

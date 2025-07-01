@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+
 using Microsoft.IdentityModel.Tokens;
 
 namespace Auth0.AuthenticationApi.Models

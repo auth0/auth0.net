@@ -1,6 +1,7 @@
-using Auth0.Core.Http;
 using System;
 using System.Collections.Generic;
+
+using Auth0.Core.Http;
 
 namespace Auth0.AuthenticationApi.Builders
 {

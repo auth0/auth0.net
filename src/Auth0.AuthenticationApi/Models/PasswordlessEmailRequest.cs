@@ -1,6 +1,7 @@
+using System.Collections.Generic;
+
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Auth0.AuthenticationApi.Models
 {

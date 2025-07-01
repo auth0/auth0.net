@@ -3,12 +3,10 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Auth0.IntegrationTests.Shared.CleanUp;
-using Auth0.ManagementApi.Clients;
 using Auth0.ManagementApi.IntegrationTests.Testing;
 using Auth0.ManagementApi.Models.Keys;
 using Auth0.ManagementApi.Paging;
 using FluentAssertions;
-using Newtonsoft.Json;
 using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests

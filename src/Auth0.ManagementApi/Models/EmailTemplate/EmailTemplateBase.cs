@@ -1,6 +1,4 @@
-﻿using Auth0.ManagementApi.Clients;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿using Newtonsoft.Json;
 
 namespace Auth0.ManagementApi.Models;
 

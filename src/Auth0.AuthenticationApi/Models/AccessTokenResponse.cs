@@ -1,7 +1,4 @@
 using System.Collections.Generic;
-using System.Net;
-using System.Net.Http.Headers;
-using Auth0.AuthenticationApi.Models.Mfa;
 using Newtonsoft.Json;
 
 namespace Auth0.AuthenticationApi.Models

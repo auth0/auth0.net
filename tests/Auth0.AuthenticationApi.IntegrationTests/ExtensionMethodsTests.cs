@@ -5,8 +5,6 @@ using FluentAssertions;
 using Xunit;
 
 using Auth0.AuthenticationApi.Models.Mfa;
-using Auth0.Core;
-using Auth0.Core.Exceptions;
 using Auth0.Tests.Shared;
 
 namespace Auth0.AuthenticationApi.IntegrationTests

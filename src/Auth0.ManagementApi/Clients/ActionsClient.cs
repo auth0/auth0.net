@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Models.Actions;
 using Auth0.ManagementApi.Paging;
 using Newtonsoft.Json;

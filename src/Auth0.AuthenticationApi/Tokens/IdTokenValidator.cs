@@ -1,8 +1,10 @@
-﻿using Auth0.AuthenticationApi.Tokens;
-using Microsoft.IdentityModel.Protocols;
-using System;
+﻿using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Threading.Tasks;
+
+using Microsoft.IdentityModel.Protocols;
+
+using Auth0.AuthenticationApi.Tokens;
 
 namespace Auth0.AuthenticationApi
 {

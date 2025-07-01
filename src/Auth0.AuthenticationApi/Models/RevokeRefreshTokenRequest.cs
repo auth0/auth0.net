@@ -1,5 +1,4 @@
 ﻿using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json;
 
 namespace Auth0.AuthenticationApi.Models
 {

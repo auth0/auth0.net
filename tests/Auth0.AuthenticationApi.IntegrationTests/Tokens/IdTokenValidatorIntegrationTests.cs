@@ -1,6 +1,5 @@
 ﻿using Auth0.AuthenticationApi.Models;
 using Auth0.AuthenticationApi.Tokens;
-using Auth0.ManagementApi;
 using Auth0.ManagementApi.Models;
 using Auth0.Tests.Shared;
 using FluentAssertions;
@@ -10,7 +9,6 @@ using Auth0.AuthenticationApi.IntegrationTests.Testing;
 using Auth0.IntegrationTests.Shared.CleanUp;
 using Xunit;
 using System.Collections.Generic;
-using System.Data.Common;
 
 namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
 {

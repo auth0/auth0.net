@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Auth0.IntegrationTests.Shared;
 using Auth0.IntegrationTests.Shared.CleanUp;
-using Auth0.ManagementApi.IntegrationTests.Testing;
 using Auth0.Tests.Shared;
 using Xunit;
 

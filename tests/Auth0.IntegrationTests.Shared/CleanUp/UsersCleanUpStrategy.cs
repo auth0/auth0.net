@@ -1,8 +1,5 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Auth0.ManagementApi;
-using Auth0.ManagementApi.Models;
-using Auth0.ManagementApi.Paging;
 
 namespace Auth0.IntegrationTests.Shared.CleanUp
 {
