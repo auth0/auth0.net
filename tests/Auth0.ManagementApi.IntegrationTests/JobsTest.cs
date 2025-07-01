@@ -266,7 +266,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         private async Task<Job> SubmitImportJob(string manifestResourceStreamName, string fileName)
         {
             // Send an invalid user import request
-            using var stream = 
+            await using var stream = 
                 GetType().Assembly.GetManifestResourceStream(manifestResourceStreamName);
             var importUsers = 
                 await fixture.ApiClient.Jobs.ImportUsersAsync(
