@@ -100,10 +100,8 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc />
         public Task<BrandingPhoneProvider> GetPhoneProviderAsync(string id, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException(nameof(id));
-            }
+            id.ThrowIfNull();
+            
             return Connection.GetAsync<BrandingPhoneProvider>(
                 BuildUri($"branding/phone/providers/{EncodePath(id)}"),
                 DefaultHeaders,
@@ -113,10 +111,8 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc />
         public Task DeletePhoneProviderAsync(string id, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException(nameof(id));
-            }
+            id.ThrowIfNull();
+            
             return Connection
                 .SendAsync<object>(
                     HttpMethod.Delete,
@@ -132,10 +128,8 @@ namespace Auth0.ManagementApi.Clients
             BrandingPhoneProviderUpdateRequest request,
             CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException(nameof(id));
-            }
+            id.ThrowIfNull();
+            
             return Connection.SendAsync<BrandingPhoneProvider>(
                 new HttpMethod("PATCH"),
                 BuildUri($"branding/phone/providers/{EncodePath(id)}"),
@@ -150,10 +144,8 @@ namespace Auth0.ManagementApi.Clients
             BrandingPhoneTestNotificationRequest request,
             CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException(nameof(id));
-            }
+            id.ThrowIfNull();
+            
             return Connection.SendAsync<BrandingPhoneTestNotificationResponse>(
                 HttpMethod.Post,
                 BuildUri($"branding/phone/providers/{EncodePath(id)}/try"),
@@ -197,10 +189,8 @@ namespace Auth0.ManagementApi.Clients
             string id,
             CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException(nameof(id));
-            }
+            id.ThrowIfNull();
+            
             return Connection.GetAsync<BrandingPhoneNotificationTemplate>(
                 BuildUri($"branding/phone/templates/{EncodePath(id)}"),
                 DefaultHeaders,
@@ -210,10 +200,7 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc />
         public Task DeleteBrandingPhoneNotificationTemplateAsync(string id, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException(nameof(id));
-            }
+            id.ThrowIfNull();
             
             return Connection
                 .SendAsync<object>(
@@ -230,10 +217,7 @@ namespace Auth0.ManagementApi.Clients
             BrandingPhoneNotificationTemplateUpdateRequest request,
             CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException(nameof(id));
-            }
+            id.ThrowIfNull();
             
             return Connection.SendAsync<BrandingPhoneNotificationTemplate>(
                 new HttpMethod("PATCH"),
@@ -248,10 +232,7 @@ namespace Auth0.ManagementApi.Clients
             string id,
             CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException(nameof(id));
-            }
+            id.ThrowIfNull();
             
             return Connection.SendAsync<BrandingPhoneNotificationTemplate>(
                 new HttpMethod("PATCH"),
@@ -265,10 +246,7 @@ namespace Auth0.ManagementApi.Clients
         public Task<BrandingPhoneTestNotificationResponse> SendBrandingPhoneTemplateTestNotificationAsync(string id, BrandingPhoneTestNotificationRequest request,
             CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException(nameof(id));
-            }
+            id.ThrowIfNull();
             
             return Connection.SendAsync<BrandingPhoneTestNotificationResponse>(
                 HttpMethod.Post,
@@ -303,10 +281,7 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc />
         public Task<BrandingTheme> GetBrandingThemeAsync(string brandingThemeId, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(brandingThemeId))
-            {
-                throw new ArgumentNullException(nameof(brandingThemeId));
-            }
+            brandingThemeId.ThrowIfNull();
             
             return Connection.GetAsync<BrandingTheme>(
                 BuildUri($"branding/themes/{EncodePath(brandingThemeId)}"),
@@ -317,10 +292,7 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc />
         public Task DeleteBrandingThemeAsync(string brandingThemeId, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(brandingThemeId))
-            {
-                throw new ArgumentNullException(nameof(brandingThemeId));
-            }
+            brandingThemeId.ThrowIfNull();
             
             return Connection
                 .SendAsync<object>(
@@ -334,10 +306,7 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc />
         public Task<BrandingTheme> UpdateBrandingThemeAsync(string brandingThemeId, BrandingThemeUpdateRequest request, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(brandingThemeId))
-            {
-                throw new ArgumentNullException(nameof(brandingThemeId));
-            }
+            brandingThemeId.ThrowIfNull();
             
             return Connection.SendAsync<BrandingTheme>(
                 new HttpMethod("PATCH"),

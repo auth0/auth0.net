@@ -43,10 +43,8 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{Action}"/> containing the actions.</returns>
         public Task<IPagedList<Action>> GetAllAsync(GetActionsRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-            if (pagination == null)
-                throw new ArgumentNullException(nameof(pagination));
+            request.ThrowIfNull();
+            pagination.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>
             {

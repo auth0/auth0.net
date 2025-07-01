@@ -35,8 +35,7 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc />
         public Task<IPagedList<Flow>> GetAllAsync(FlowGetRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>();
 
@@ -74,12 +73,9 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc />
         public Task<Flow> GetAsync(FlowGetRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-            
-            if (string.IsNullOrEmpty(request.Id))
-                throw new ArgumentNullException(nameof(request.Id));
-            
+            request.ThrowIfNull();
+            request.Id.ThrowIfNull();
+
             var queryStrings = new Dictionary<string, string>();
 
             if (request.Hydrate != null && request.Hydrate.Any())
@@ -99,11 +95,7 @@ namespace Auth0.ManagementApi.Clients
         public Task<Flow> UpdateAsync(
             string id, FlowUpdateRequest request, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException(nameof(id));
-            }
-            
+            id.ThrowIfNull();
             return Connection.SendAsync<Flow>(
                 new HttpMethod("PATCH"),
                 BuildUri($"flows/{EncodePath(id)}"),
@@ -115,11 +107,7 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc />
         public Task DeleteAsync(string id, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException(nameof(id));
-            }
-            
+            id.ThrowIfNull();
             return Connection.SendAsync<object>(
                 HttpMethod.Delete,
                 BuildUri($"flows/{EncodePath(id)}"),
@@ -132,8 +120,7 @@ namespace Auth0.ManagementApi.Clients
         public Task<IPagedList<FlowVaultConnection>> GetAllFlowVaultConnectionsAsync(
             FlowVaultConnectionGetRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>();
             
@@ -167,17 +154,14 @@ namespace Auth0.ManagementApi.Clients
         public Task<FlowVaultConnection> GetFlowVaultConnectionAsync(
             FlowVaultConnectionGetRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-            
-            if (string.IsNullOrEmpty(request.Id))
-                throw new ArgumentNullException(nameof(request.Id));
+            request.ThrowIfNull();
+            request.Id.ThrowIfNull();
 
             return Connection.GetAsync<FlowVaultConnection>(
                 BuildUri($"flows/vault/connections/{EncodePath(request.Id)}"),
                 DefaultHeaders,
                 null,
-                cancellationToken);        
+                cancellationToken);
         }
 
         /// <inheritdoc />
@@ -186,11 +170,8 @@ namespace Auth0.ManagementApi.Clients
             FlowVaultConnectionUpdateRequest request,
             CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException(nameof(id));
-            }
-            
+            id.ThrowIfNull();
+
             return Connection.SendAsync<FlowVaultConnection>(
                 new HttpMethod("PATCH"),
                 BuildUri($"flows/vault/connections/{EncodePath(id)}"),
@@ -202,11 +183,8 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc />
         public Task DeleteFlowVaultConnectionAsync(string id, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException(nameof(id));
-            }
-            
+            id.ThrowIfNull();
+
             return Connection.SendAsync<object>(
                 HttpMethod.Delete,
                 BuildUri($"flows/vault/connections/{EncodePath(id)}"),
@@ -219,8 +197,7 @@ namespace Auth0.ManagementApi.Clients
         public Task<IPagedList<FlowExecution>> GetAllFlowExecutionsAsync(string flowId, PaginationInfo paginationInfo,
             CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(flowId))
-                throw new ArgumentNullException(nameof(flowId));
+            flowId.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>();
 
@@ -261,11 +238,8 @@ namespace Auth0.ManagementApi.Clients
         public Task<FlowExecution> GetFlowExecutionAsync(
             string flowId, string executionId, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(flowId))
-                throw new ArgumentNullException(nameof(flowId));
-            
-            if (string.IsNullOrEmpty(executionId))
-                throw new ArgumentNullException(nameof(executionId));
+            flowId.ThrowIfNull();
+            executionId.ThrowIfNull();
 
             return Connection.GetAsync<FlowExecution>(
                 BuildUri($"flows/{EncodePath(flowId)}/executions/{EncodePath(executionId)}"),
@@ -278,12 +252,9 @@ namespace Auth0.ManagementApi.Clients
         public Task DeleteFlowExecutionAsync(
             string flowId, string executionId, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(flowId))
-                throw new ArgumentNullException(nameof(flowId));
-            
-            if (string.IsNullOrEmpty(executionId))
-                throw new ArgumentNullException(nameof(executionId));
-            
+            flowId.ThrowIfNull();
+            executionId.ThrowIfNull();
+
             return Connection.SendAsync<object>(
                 HttpMethod.Delete,
                 BuildUri($"flows/{EncodePath(flowId)}/executions/{EncodePath(executionId)}"),

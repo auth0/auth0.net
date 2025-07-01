@@ -91,11 +91,8 @@ namespace Auth0.ManagementApi.Clients
         public Task<EncryptionKey> CreateEncryptionKeyAsync(
             EncryptionKeyCreateRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-
-            if (string.IsNullOrEmpty(request.Type))
-                throw new ArgumentNullException(nameof(request.Type));
+            request.ThrowIfNull();
+            request.Type.ThrowIfNull();
 
             return Connection.SendAsync<EncryptionKey>(
                 HttpMethod.Post,
@@ -109,11 +106,8 @@ namespace Auth0.ManagementApi.Clients
         public Task<EncryptionKey> GetEncryptionKeyAsync(
             EncryptionKeyGetRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-
-            if (string.IsNullOrEmpty(request.Kid))
-                throw new ArgumentNullException(nameof(request.Kid));
+            request.ThrowIfNull();
+            request.Kid.ThrowIfNull();
             
             return Connection.GetAsync<EncryptionKey>(
                 BuildUri($"keys/encryption/{EncodePath(request.Kid)}"), DefaultHeaders, null, cancellationToken);
@@ -122,8 +116,7 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc cref="IKeysClient.DeleteEncryptionKeyAsync"/>
         public Task DeleteEncryptionKeyAsync(string kid, CancellationToken cancellationToken = default)
         {
-            if (kid == null)
-                throw new ArgumentNullException(nameof(kid));
+            kid.ThrowIfNull();
             
             return Connection.SendAsync<object>(
                 HttpMethod.Delete,
@@ -137,11 +130,8 @@ namespace Auth0.ManagementApi.Clients
         public Task<EncryptionKey> ImportEncryptionKeyAsync(
             EncryptionKeyImportRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-
-            if (string.IsNullOrEmpty(request.Kid))
-                throw new ArgumentNullException(nameof(request.Kid));
+            request.ThrowIfNull();
+            request.Kid.ThrowIfNull();
             
             return Connection.SendAsync<EncryptionKey>(
                 HttpMethod.Post,
@@ -155,11 +145,8 @@ namespace Auth0.ManagementApi.Clients
         public Task<WrappingKey> CreatePublicWrappingKeyAsync(
             WrappingKeyCreateRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-
-            if (string.IsNullOrEmpty(request.Kid))
-                throw new ArgumentNullException(nameof(request.Kid));
+            request.ThrowIfNull();
+            request.Kid.ThrowIfNull();
 
             return Connection.SendAsync<WrappingKey>(
                 HttpMethod.Post,

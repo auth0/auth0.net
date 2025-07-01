@@ -57,8 +57,7 @@ namespace Auth0.ManagementApi.Clients
         public Task<Job> ImportUsersAsync(string connectionId, string fileName, Stream file, bool? upsert = null,
             string externalId = null, bool? sendCompletionEmail = null, CancellationToken cancellationToken = default)
         {
-            if (file == null)
-                throw new ArgumentNullException(nameof(file));
+            file.ThrowIfNull();
 
             var parameters = new Dictionary<string, object>
             {

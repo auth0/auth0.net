@@ -60,8 +60,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{Client}"/> containing the clients.</returns>
         public Task<IPagedList<Client>> GetAllAsync(GetClientsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>
             {
@@ -88,8 +87,7 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc cref="IClientsClient.GetAllAsync(Auth0.ManagementApi.Models.GetClientsRequest,Auth0.ManagementApi.Paging.CheckpointPaginationInfo,System.Threading.CancellationToken)"/> 
         public Task<ICheckpointPagedList<Client>> GetAllAsync(GetClientsRequest request, CheckpointPaginationInfo pagination, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>
             {

@@ -94,8 +94,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{GetUsersRequest}"/> containing the list of users.</returns>
         public Task<IPagedList<User>> GetAllAsync(GetUsersRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>
             {
@@ -150,8 +149,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{LogEntry}"/> containing the log entries for the user.</returns>
         public Task<IPagedList<LogEntry>> GetLogsAsync(GetUserLogsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>
             {
@@ -368,8 +366,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{Organization}"/> containing the list of organizations.</returns>
         public Task<IPagedList<Organization>> GetAllOrganizationsAsync(string userId, PaginationInfo pagination, CancellationToken cancellationToken = default)
         {
-            if (pagination == null)
-                throw new ArgumentNullException(nameof(pagination));
+            pagination.ThrowIfNull();
 
             return Connection.GetAsync<IPagedList<Organization>>(BuildUri($"users/{EncodePath(userId)}/organizations",
                 new Dictionary<string, string>
@@ -479,11 +476,8 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc cref="IUsersClient.GetRefreshTokensAsync"/>
         public Task<ICheckpointPagedList<RefreshTokenInformation>> GetRefreshTokensAsync(UserRefreshTokensGetRequest request, CheckpointPaginationInfo pagination, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-            
-            if(string.IsNullOrEmpty(request.UserId))
-                throw new ArgumentException("Value cannot be null or empty.", nameof(request.UserId));
+            request.ThrowIfNull();
+            request.UserId.ThrowIfNull();
             
             var queryStrings = new Dictionary<string, string>
             {
@@ -512,11 +506,8 @@ namespace Auth0.ManagementApi.Clients
             UserSessionsGetRequest request, CheckpointPaginationInfo pagination,
             CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-            
-            if(string.IsNullOrEmpty(request.UserId))
-                throw new ArgumentException("Value cannot be null or empty.", nameof(request.UserId));
+            request.ThrowIfNull();
+            request.UserId.ThrowIfNull();
             
             var queryStrings = new Dictionary<string, string>
             {

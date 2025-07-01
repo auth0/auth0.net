@@ -40,8 +40,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{Organization}"/> containing the organizations.</returns>
         public Task<IPagedList<Organization>> GetAllAsync(PaginationInfo pagination, CancellationToken cancellationToken = default)
         {
-            if (pagination == null)
-                throw new ArgumentNullException(nameof(pagination));
+            pagination.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>
             {
@@ -61,8 +60,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="ICheckpointPagedList{Organization}"/> containing the organizations.</returns>
         public Task<ICheckpointPagedList<Organization>> GetAllAsync(CheckpointPaginationInfo pagination, CancellationToken cancellationToken = default)
         {
-            if (pagination == null)
-                throw new ArgumentNullException(nameof(pagination));
+            pagination.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>
             {
@@ -138,8 +136,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{OrganizationConnection}"/> containing the organization connections.</returns>
         public Task<IPagedList<OrganizationConnection>> GetAllConnectionsAsync(string organizationId, PaginationInfo pagination, CancellationToken cancellationToken = default)
         {
-            if (pagination == null)
-                throw new ArgumentNullException(nameof(pagination));
+            pagination.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>
             {
@@ -234,8 +231,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{OrganizationMember}"/> containing the organization members.</returns>
         public Task<IPagedList<OrganizationMember>> GetAllMembersAsync(string organizationId, OrganizationGetAllMembersRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default)
         {
-            if (pagination == null)
-                throw new ArgumentNullException(nameof(pagination));
+            pagination.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>
             {
@@ -275,8 +271,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="ICheckpointPagedList{OrganizationMember}"/> containing the organization members.</returns>
         public Task<ICheckpointPagedList<OrganizationMember>> GetAllMembersAsync(string organizationId, OrganizationGetAllMembersRequest request, CheckpointPaginationInfo pagination, CancellationToken cancellationToken = default)
         {
-            if (pagination == null)
-                throw new ArgumentNullException(nameof(pagination));
+            pagination.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>
             {
@@ -328,8 +323,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{OrganizationMember}"/> containing the organization members.</returns>
         public Task<IPagedList<Role>> GetAllMemberRolesAsync(string organizationId, string userId, PaginationInfo pagination, CancellationToken cancellationToken = default)
         {
-            if (pagination == null)
-                throw new ArgumentNullException(nameof(pagination));
+            pagination.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>
             {
@@ -376,8 +370,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{OrganizationInvitation}"/> containing the organization members.</returns>
         public Task<IPagedList<OrganizationInvitation>> GetAllInvitationsAsync(string organizationId, OrganizationGetAllInvitationsRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default)
         {
-            if (pagination == null)
-                throw new ArgumentNullException(nameof(pagination));
+            pagination.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>
             {
@@ -433,8 +426,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="IPagedList{ClientGrant}"/> containing the client grants requested.</returns>
         public Task<IPagedList<OrganizationClientGrant>> GetAllClientGrantsAsync(string organizationId, OrganizationGetClientGrantsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var queryStrings = new List<Tuple<string, string>>()
             {

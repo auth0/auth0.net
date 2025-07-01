@@ -44,8 +44,7 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc cref="ISelfServiceProfilesClient.CreateAsync"/>
         public Task<SelfServiceProfile> CreateAsync(SelfServiceProfileCreateRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
             
             return Connection.SendAsync<SelfServiceProfile>(
                 HttpMethod.Post,
@@ -58,8 +57,7 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc cref="ISelfServiceProfilesClient.GetAsync"/>
         public Task<SelfServiceProfile> GetAsync(string id, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(id))
-                throw new ArgumentNullException(nameof(id));
+            id.ThrowIfNull();
             
             return Connection.GetAsync<SelfServiceProfile>(
                 BuildUri($"self-service-profiles/{EncodePath(id)}"),
@@ -82,9 +80,7 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc cref="ISelfServiceProfilesClient.UpdateAsync"/>
         public Task<SelfServiceProfile> UpdateAsync(string id, SelfServiceProfileUpdateRequest request, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(id))
-                throw new ArgumentNullException(nameof(id));
-            
+            id.ThrowIfNull();
             return Connection.SendAsync<SelfServiceProfile>(
                 new HttpMethod("PATCH"),
                 BuildUri($"self-service-profiles/{EncodePath(id)}"),
@@ -96,12 +92,8 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc cref="ISelfServiceProfilesClient.CreateSsoTicketAsync"/>
         public Task<SelfServiceSsoTicket> CreateSsoTicketAsync(string id, SelfServiceSsoTicketCreateRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-            
-            if (string.IsNullOrEmpty(id))
-                throw new ArgumentNullException(nameof(id));
-            
+            request.ThrowIfNull();
+            id.ThrowIfNull();
             return Connection.SendAsync<SelfServiceSsoTicket>(
                 HttpMethod.Post,
                 BuildUri($"self-service-profiles/{EncodePath(id)}/sso-ticket"),
@@ -113,11 +105,8 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc cref="ISelfServiceProfilesClient.RevokeSsoTicketAsync"/>
         public Task RevokeSsoTicketAsync(string profileId, string ticketId, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(profileId))
-                throw new ArgumentNullException(nameof(profileId));
-            
-            if (string.IsNullOrEmpty(ticketId))
-                throw new ArgumentNullException(nameof(ticketId));
+            profileId.ThrowIfNull();
+            ticketId.ThrowIfNull();
             
             return Connection.SendAsync<SelfServiceSsoTicket>(
                 HttpMethod.Post,
@@ -131,15 +120,9 @@ namespace Auth0.ManagementApi.Clients
         public Task<object> GetCustomTextForSelfServiceProfileAsync(string id, string language, string page,
             CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(id))
-                throw new ArgumentNullException(nameof(id));
-            
-            if (string.IsNullOrEmpty(language))
-                throw new ArgumentNullException(nameof(language));
-            
-            if (string.IsNullOrEmpty(page))
-                throw new ArgumentNullException(nameof(page));
-            
+            id.ThrowIfNull();
+            language.ThrowIfNull();
+            page.ThrowIfNull();
             return Connection.GetAsync<object>(
                 BuildUri($"self-service-profiles/{EncodePath(id)}/custom-text/{EncodePath(language)}/{EncodePath(page)}"),
                 DefaultHeaders,
@@ -151,15 +134,9 @@ namespace Auth0.ManagementApi.Clients
         public Task<object> SetCustomTextForSelfServiceProfileAsync(string id, string language, string page, object body,
             CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(id))
-                throw new ArgumentNullException(nameof(id));
-            
-            if (string.IsNullOrEmpty(language))
-                throw new ArgumentNullException(nameof(language));
-            
-            if (string.IsNullOrEmpty(page))
-                throw new ArgumentNullException(nameof(page));
-            
+            id.ThrowIfNull();
+            language.ThrowIfNull();
+            page.ThrowIfNull();
             return Connection
                 .SendAsync<object>(
                     HttpMethod.Put,

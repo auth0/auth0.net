@@ -58,8 +58,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{T}"/> containing the hooks requested.</returns>
         public Task<IPagedList<Hook>> GetAllAsync(GetHooksRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>
             {

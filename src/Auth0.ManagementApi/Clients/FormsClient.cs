@@ -30,8 +30,7 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc />
         public Task<IPagedList<FormBase>> GetAllAsync(FormsGetRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>();
 
@@ -54,8 +53,9 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc />
         public Task<Form> GetAsync(FormsGetRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
+            request.Id.ThrowIfNull();
+
             var queryStrings = new Dictionary<string, string>();
 
             if (request.Hydrate != null && request.Hydrate.Any())
@@ -76,20 +76,15 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc />
         public Task<Form> UpdateAsync(string id, FormUpdateRequest request, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException(nameof(id));
-            }
+            id.ThrowIfNull();
             return Connection.SendAsync<Form>(new HttpMethod("PATCH"), BuildUri($"forms/{EncodePath(id)}"), request, DefaultHeaders, cancellationToken: cancellationToken);
         }
 
         /// <inheritdoc />
         public Task DeleteAsync(string id, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(id))
-            {
-                throw new ArgumentNullException(nameof(id));
-            }
+            id.ThrowIfNull();
+            
             return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"forms/{EncodePath(id)}"), null, DefaultHeaders, cancellationToken: cancellationToken);
         }
     }

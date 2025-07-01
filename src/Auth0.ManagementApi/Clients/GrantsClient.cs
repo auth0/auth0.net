@@ -40,8 +40,7 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc/>
         public Task<IPagedList<Grant>> GetAllAsync(GetGrantsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>
         {

@@ -55,11 +55,8 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc cref="IPromptsClient.GetCustomTextForPromptAsync"/>
         public Task<object> GetCustomTextForPromptAsync(string promptName, string language, CancellationToken cancellationToken)
         {
-            if (string.IsNullOrEmpty(promptName))
-                throw new ArgumentNullException(nameof(promptName));
-            if (string.IsNullOrEmpty(language))
-                throw new ArgumentNullException(nameof(language));
-            
+            promptName.ThrowIfNull();
+            language.ThrowIfNull();
             return Connection.GetAsync<object>(
                 BuildUri($"{PromptsBasePath}/{promptName}/custom-text/{language}"),
                 DefaultHeaders, 
@@ -70,11 +67,8 @@ namespace Auth0.ManagementApi.Clients
         public Task SetCustomTextForPromptAsync(string promptName, string language, object customText,
             CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(promptName))
-                throw new ArgumentNullException(nameof(promptName));
-            if (string.IsNullOrEmpty(language))
-                throw new ArgumentNullException(nameof(language));
-            
+            promptName.ThrowIfNull();
+            language.ThrowIfNull();
             return Connection.SendAsync<object>(
                 HttpMethod.Put, 
                 BuildUri($"{PromptsBasePath}/{promptName}/custom-text/{language}"),
@@ -86,9 +80,7 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc cref="IPromptsClient.GetPartialsAsync"/>
         public Task<object> GetPartialsAsync(string promptName, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(promptName))
-                throw new ArgumentNullException(nameof(promptName));
-            
+            promptName.ThrowIfNull();
             return Connection.GetAsync<object>(
                 BuildUri($"{PromptsBasePath}/{promptName}/partials"),
                 DefaultHeaders, 
@@ -98,9 +90,7 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc cref="IPromptsClient.SetPartialsAsync"/>
         public Task SetPartialsAsync(string promptName, object partials, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrEmpty(promptName))
-                throw new ArgumentNullException(nameof(promptName));
-            
+            promptName.ThrowIfNull();
             return Connection.SendAsync<object>(
                 HttpMethod.Put, 
                 BuildUri($"{PromptsBasePath}/{promptName}/partials"),

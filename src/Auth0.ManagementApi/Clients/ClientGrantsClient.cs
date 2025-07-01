@@ -59,8 +59,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="IPagedList{ClientGrant}"/> containing the client grants requested.</returns>
         public Task<IPagedList<ClientGrant>> GetAllAsync(GetClientGrantsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>
             {
@@ -113,10 +112,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="IPagedList{Organization}"/> containing the organizations requested.</returns>
         public Task<IPagedList<Organization>> GetAllOrganizationsAsync(string id, PaginationInfo pagination, CancellationToken cancellationToken = default)
         {
-            if (pagination == null)
-            {
-                throw new ArgumentNullException(nameof(pagination));
-            }
+            pagination.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>
             {
@@ -137,10 +133,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A <see cref="IPagedList{Organization}"/> containing the organizations requested.</returns>
         public Task<IPagedList<Organization>> GetAllOrganizationsAsync(string id, CheckpointPaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
-            if (pagination == null)
-            {
-                throw new ArgumentNullException(nameof(pagination));
-            }
+            pagination.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>
             {

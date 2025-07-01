@@ -35,8 +35,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{LogEntry}"/> containing the list of log entries.</returns>
         public Task<IPagedList<LogEntry>> GetAllAsync(GetLogsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>
             {

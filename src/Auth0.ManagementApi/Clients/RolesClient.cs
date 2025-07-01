@@ -60,8 +60,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{Role}"/> containing the roles</returns>
         public Task<IPagedList<Role>> GetAllAsync(GetRolesRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             return Connection.GetAsync<IPagedList<Role>>(BuildUri("roles",
                 new Dictionary<string, string> { { "name_filter", request.NameFilter } }),
@@ -78,10 +77,8 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>An <see cref="IPagedList{Role}"/> containing the roles requested.</returns>
         public Task<IPagedList<Role>> GetAllAsync(GetRolesRequest request, PaginationInfo pagination, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
-            if (pagination == null)
-                throw new ArgumentNullException(nameof(pagination));
+            request.ThrowIfNull();
+            pagination.ThrowIfNull();
 
             return Connection.GetAsync<IPagedList<Role>>(BuildUri($"roles",
                 new Dictionary<string, string>

@@ -63,8 +63,7 @@ namespace Auth0.ManagementApi.Clients
         /// <returns>A list of <see cref="DeviceCredential"/> which conforms to the criteria specified.</returns>
         public Task<IPagedList<DeviceCredential>> GetAllAsync(GetDeviceCredentialsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
 
             var queryStrings = new Dictionary<string, string>
                 {

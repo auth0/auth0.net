@@ -27,8 +27,7 @@ namespace Auth0.ManagementApi.Clients
         /// <inheritdoc cref="Auth0.ManagementApi.Clients.IRefreshTokenClient.GetAsync"/>
         public Task<RefreshTokenInformation> GetAsync(RefreshTokenGetRequest request, CancellationToken cancellationToken = default)
         {
-            if (request == null)
-                throw new ArgumentNullException(nameof(request));
+            request.ThrowIfNull();
             
             if(string.IsNullOrEmpty(request.Id))
                 throw new ArgumentException("Value cannot be null or empty.", nameof(request.Id));
