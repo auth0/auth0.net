@@ -1,13 +1,12 @@
 using Newtonsoft.Json;
 
-namespace Auth0.ManagementApi.Models
+namespace Auth0.ManagementApi.Models;
+
+public class UpdateGuardianFactorBase
 {
-    public class UpdateGuardianFactorBase
-    {
-        /// <summary>
-        /// States if this factor is enabled
-        /// </summary>
-        [JsonProperty("enabled")]
-        public bool IsEnabled { get; set; }
-    }
+    /// <summary>
+    /// States if this factor is enabled
+    /// </summary>
+    [JsonProperty("enabled")]
+    public bool IsEnabled { get; set; }
 }

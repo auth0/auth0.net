@@ -1,8 +1,5 @@
-namespace Auth0.ManagementApi.Models
+namespace Auth0.ManagementApi.Models;
+
+public class UpdateGuardianSnsConfigurationRequest : GuardianSnsConfigurationBase
 {
-    public class UpdateGuardianSnsConfigurationRequest : GuardianSnsConfigurationBase
-    {
-    }
-
-
 }

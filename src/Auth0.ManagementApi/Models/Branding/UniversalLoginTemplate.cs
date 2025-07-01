@@ -1,13 +1,12 @@
 ﻿using Newtonsoft.Json;
 
-namespace Auth0.ManagementApi.Models
+namespace Auth0.ManagementApi.Models;
+
+public class UniversalLoginTemplate
 {
-    public class UniversalLoginTemplate
-    {
-        /// <summary>
-        /// The custom page template for the new universal login experience.
-        /// </summary>
-        [JsonProperty("body")]
-        public string Body { get; set; }
-    }
+    /// <summary>
+    /// The custom page template for the new universal login experience.
+    /// </summary>
+    [JsonProperty("body")]
+    public string Body { get; set; }
 }

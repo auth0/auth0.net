@@ -5,21 +5,20 @@ using Newtonsoft.Json.Converters;
 
 using Auth0.ManagementApi.Paging;
 
-namespace Auth0.ManagementApi.Models.Forms
+namespace Auth0.ManagementApi.Models.Forms;
+
+public class FormsGetRequest
 {
-    public class FormsGetRequest
-    {
-        public PaginationInfo PaginationInfo { get; set; }
+    public PaginationInfo PaginationInfo { get; set; }
         
-        /// <summary>
-        /// Hydration parameter
-        /// </summary>
-        [JsonConverter(typeof(StringEnumConverter))]
-        public Hydrate[] Hydrate { get; set; }
+    /// <summary>
+    /// Hydration parameter
+    /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
+    public Hydrate[] Hydrate { get; set; }
         
-        /// <summary>
-        /// Form Identifier
-        /// </summary>
-        public string Id { get; set; }
-    }
+    /// <summary>
+    /// Form Identifier
+    /// </summary>
+    public string Id { get; set; }
 }

@@ -1,14 +1,13 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Auth0.ManagementApi.Models
+namespace Auth0.ManagementApi.Models;
+
+public class OrganizationDeleteMemberRolesRequest
 {
-    public class OrganizationDeleteMemberRolesRequest
-    {
-        /// <summary>
-        /// List of role IDs to remove from the user.
-        /// </summary>
-        [JsonProperty("roles")]
-        public IList<string> Roles { get; set; }
-    }
+    /// <summary>
+    /// List of role IDs to remove from the user.
+    /// </summary>
+    [JsonProperty("roles")]
+    public IList<string> Roles { get; set; }
 }

@@ -1,31 +1,30 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Auth0.ManagementApi.Models
+namespace Auth0.ManagementApi.Models;
+
+public enum GuardianFactorName
 {
-    public enum GuardianFactorName
-    {
-        [EnumMember(Value = "sms")]
-        Sms,
+    [EnumMember(Value = "sms")]
+    Sms,
 
-        [EnumMember(Value = "push-notification")]
-        PushNotifications,
+    [EnumMember(Value = "push-notification")]
+    PushNotifications,
 
-        [EnumMember(Value = "email")]
-        Email,
+    [EnumMember(Value = "email")]
+    Email,
 
-        [EnumMember(Value = "otp")]
-        Otp,
+    [EnumMember(Value = "otp")]
+    Otp,
 
-        [EnumMember(Value = "duo")]
-        Duo,
+    [EnumMember(Value = "duo")]
+    Duo,
         
-        [EnumMember(Value="webauthn-roaming")]
-        WebAuthnRoaming,
+    [EnumMember(Value="webauthn-roaming")]
+    WebAuthnRoaming,
         
-        [EnumMember(Value="webauthn-platform")]
-        WebAuthnPlatform,
+    [EnumMember(Value="webauthn-platform")]
+    WebAuthnPlatform,
 
-        [EnumMember(Value= "recovery-code")]
-        RecoveryCode
-    }
+    [EnumMember(Value= "recovery-code")]
+    RecoveryCode
 }

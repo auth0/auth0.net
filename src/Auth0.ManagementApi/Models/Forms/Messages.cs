@@ -1,13 +1,12 @@
 using Newtonsoft.Json;
 
-namespace Auth0.ManagementApi.Models.Forms
+namespace Auth0.ManagementApi.Models.Forms;
+
+public class Messages
 {
-    public class Messages
-    {
-        [JsonProperty("errors")]
-        public dynamic Errors { get; set; }
+    [JsonProperty("errors")]
+    public dynamic Errors { get; set; }
         
-        [JsonProperty("custom")]
-        public dynamic Custom { get; set; }
-    }
+    [JsonProperty("custom")]
+    public dynamic Custom { get; set; }
 }

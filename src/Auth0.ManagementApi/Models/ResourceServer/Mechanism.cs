@@ -1,16 +1,15 @@
 using System.Runtime.Serialization;
 
-namespace Auth0.ManagementApi.Models
+namespace Auth0.ManagementApi.Models;
+
+/// <summary>
+/// Intended mechanism for Proof-of-Possession
+/// </summary>
+public enum Mechanism
 {
     /// <summary>
-    /// Intended mechanism for Proof-of-Possession
+    /// Mechanism 'mtls'
     /// </summary>
-    public enum Mechanism
-    {
-        /// <summary>
-        /// Mechanism 'mtls'
-        /// </summary>
-        [EnumMember(Value = "mtls")]
-        Mtls,
-    }
+    [EnumMember(Value = "mtls")]
+    Mtls,
 }

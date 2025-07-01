@@ -1,13 +1,12 @@
 using System.Runtime.Serialization;
 
-namespace Auth0.ManagementApi.Models
+namespace Auth0.ManagementApi.Models;
+
+/// <summary>
+/// Filter type.
+/// </summary>
+public enum LogStreamFilterType
 {
-    /// <summary>
-    /// Filter type.
-    /// </summary>
-    public enum LogStreamFilterType
-    {
-        [EnumMember(Value ="category")]
-        Category
-    }
+    [EnumMember(Value ="category")]
+    Category
 }

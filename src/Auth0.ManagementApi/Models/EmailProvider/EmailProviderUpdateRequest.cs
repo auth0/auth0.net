@@ -1,11 +1,8 @@
-﻿namespace Auth0.ManagementApi.Models
+﻿namespace Auth0.ManagementApi.Models;
+
+/// <summary>
+/// 
+/// </summary>
+public class EmailProviderUpdateRequest : EmailProviderBase
 {
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public class EmailProviderUpdateRequest : EmailProviderBase
-    {
-    }
-
 }

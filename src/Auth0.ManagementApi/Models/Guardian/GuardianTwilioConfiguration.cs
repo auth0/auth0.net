@@ -1,6 +1,5 @@
-namespace Auth0.ManagementApi.Models
+namespace Auth0.ManagementApi.Models;
+
+public class GuardianTwilioConfiguration : GuardianTwilioConfigurationBase
 {
-    public class GuardianTwilioConfiguration : GuardianTwilioConfigurationBase
-    {
-    }
 }

@@ -1,13 +1,12 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Auth0.ManagementApi.Models
+namespace Auth0.ManagementApi.Models;
+
+public enum EmailTemplateSyntax
 {
-    public enum EmailTemplateSyntax
-    {
-        /// <summary>
-        /// Liquid syntax is used for the template
-        /// </summary>
-        [EnumMember(Value = "liquid")]
-        Liquid
-    }
+    /// <summary>
+    /// Liquid syntax is used for the template
+    /// </summary>
+    [EnumMember(Value = "liquid")]
+    Liquid
 }

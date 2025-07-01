@@ -1,12 +1,11 @@
-namespace Auth0.ManagementApi.Models
+namespace Auth0.ManagementApi.Models;
+
+public class DuoConfigurationPatchRequest : DuoConfiguration
 {
-    public class DuoConfigurationPatchRequest : DuoConfiguration
-    {
         
-    }
+}
     
-    public class DuoConfigurationPutRequest : DuoConfiguration
-    {
+public class DuoConfigurationPutRequest : DuoConfiguration
+{
         
-    }
 }
