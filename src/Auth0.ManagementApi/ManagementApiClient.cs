@@ -1,10 +1,11 @@
-﻿using Auth0.Core.Http;
-using Auth0.ManagementApi.Clients;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Auth0.ManagementApi.Models.SelfServiceProfiles;
+
+using Newtonsoft.Json;
+
+using Auth0.Core.Http;
+using Auth0.ManagementApi.Clients;
 
 namespace Auth0.ManagementApi
 {
@@ -178,6 +179,9 @@ namespace Auth0.ManagementApi
 
         /// <inheritdoc cref="Auth0.ManagementApi.IManagementApiClient.FlowsClient"/>
         public IFlowsClient FlowsClient { get; }
+        
+        /// <inheritdoc cref="Auth0.ManagementApi.IManagementApiClient.NetworkAclClient"/>
+        public INetworkAclClient NetworkAclClient { get; }
 
         private Dictionary<string, string> DefaultHeaders { get; set; }
 
@@ -234,6 +238,7 @@ namespace Auth0.ManagementApi
             SelfServiceProfilesClient = new SelfServiceProfilesClient(managementConnection, baseUri, DefaultHeaders);
             FormsClient = new FormsClient(managementConnection, baseUri, DefaultHeaders);
             FlowsClient = new FlowsClient(managementConnection, baseUri, DefaultHeaders);
+            NetworkAclClient = new NetworkAclClient(managementConnection, baseUri, DefaultHeaders);
         }
 
         /// <summary>

@@ -176,6 +176,9 @@ namespace Auth0.ManagementApi
     /// </summary>
     IFlowsClient FlowsClient { get; }
     
+    /// <inheritdoc cref="Auth0.ManagementApi.Clients.INetworkAclClient"/>
+    INetworkAclClient NetworkAclClient { get; }
+    
     /// <summary>
     /// Update the Access Token used with every request.
     /// </summary>
