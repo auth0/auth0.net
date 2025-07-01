@@ -15,7 +15,7 @@ namespace Auth0.Tests.Shared
             return value;
         }
 
-        private static readonly Regex _alphaNumeric = new Regex("[^a-zA-Z0-9]");
+        private static readonly Regex _alphaNumeric = new("[^a-zA-Z0-9]");
 
         public static string MakeRandomName()
         {

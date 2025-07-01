@@ -12,14 +12,17 @@ namespace Auth0.ManagementApi.Clients;
 
 public class OrganizationsClient : BaseClient, IOrganizationsClient
 {
-    readonly JsonConverter[] converters = new JsonConverter[] { new PagedListConverter<Organization>("organizations") };
-    readonly JsonConverter[] checkpointConverters = new JsonConverter[] { new CheckpointPagedListConverter<Organization>("organizations") };
-    readonly JsonConverter[] connectionsConverters = new JsonConverter[] { new PagedListConverter<OrganizationConnection>("enabled_connections") };
-    readonly JsonConverter[] membersConverters = new JsonConverter[] { new PagedListConverter<OrganizationMember>("members") };
-    readonly JsonConverter[] memberRolesConverters = new JsonConverter[] { new PagedListConverter<Role>("roles") };
-    readonly JsonConverter[] membersCheckpointConverters = new JsonConverter[] { new CheckpointPagedListConverter<OrganizationMember>("members") };
-    readonly JsonConverter[] invitationsConverters = new JsonConverter[] { new PagedListConverter<OrganizationInvitation>("invitations") };
-    readonly JsonConverter[] clientGrantsConverters = new JsonConverter[] { new PagedListConverter<OrganizationClientGrant>("client_grants") };
+    readonly JsonConverter[] converters = [new PagedListConverter<Organization>("organizations")];
+    readonly JsonConverter[] checkpointConverters = [new CheckpointPagedListConverter<Organization>("organizations")];
+    readonly JsonConverter[] connectionsConverters = [new PagedListConverter<OrganizationConnection>("enabled_connections")
+    ];
+    readonly JsonConverter[] membersConverters = [new PagedListConverter<OrganizationMember>("members")];
+    readonly JsonConverter[] memberRolesConverters = [new PagedListConverter<Role>("roles")];
+    readonly JsonConverter[] membersCheckpointConverters = [new CheckpointPagedListConverter<OrganizationMember>("members")
+    ];
+    readonly JsonConverter[] invitationsConverters = [new PagedListConverter<OrganizationInvitation>("invitations")];
+    readonly JsonConverter[] clientGrantsConverters = [new PagedListConverter<OrganizationClientGrant>("client_grants")
+    ];
 
     /// <summary>
     /// Initializes a new instance of <see cref="ClientsClient"/>.
@@ -430,8 +433,8 @@ public class OrganizationsClient : BaseClient, IOrganizationsClient
 
         var queryStrings = new List<Tuple<string, string>>()
         {
-            new Tuple<string, string>("audience", request.Audience),
-            new Tuple<string, string>("client_id", request.ClientId)
+            new("audience", request.Audience),
+            new("client_id", request.ClientId)
         };
 
         if (request.GrantIds != null)

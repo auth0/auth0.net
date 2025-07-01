@@ -34,7 +34,7 @@ namespace Auth0.Core.Exceptions
         /// Additional key/values that might be returned by the error such as `mfa_required`.
         /// </summary>
         [JsonProperty("extraData")]
-        public Dictionary<string, string> ExtraData { get; set; } = new Dictionary<string, string>();
+        public Dictionary<string, string> ExtraData { get; set; } = new();
 
         /// <summary>
         /// Parse a <see cref="HttpResponseMessage"/> into an <see cref="ApiError"/> asynchronously.

@@ -13,7 +13,7 @@ public class NetworkAclRule
 {
     /// <inheritdoc cref="NetworkAclAction"/>
     [JsonProperty("action")]
-    public NetworkAclAction Action { get; set; } = new NetworkAclAction();
+    public NetworkAclAction Action { get; set; } = new();
     
     /// <inheritdoc cref="NetworkAclMatch"/>
     [JsonProperty("match")]

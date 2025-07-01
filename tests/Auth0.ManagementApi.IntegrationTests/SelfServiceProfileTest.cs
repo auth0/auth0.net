@@ -90,7 +90,7 @@ public class SelfServiceProfileTest : IClassFixture<SelfServiceProfileTestFixtur
                 },
                 EnabledOrganizations = new List<EnabledOrganization>()
                 {
-                    new EnabledOrganization()
+                    new()
                     {
                         OrganizationId = existingOrganizationId,
                         AssignMembershipOnLogin = false,
@@ -145,7 +145,7 @@ public class SelfServiceProfileTest : IClassFixture<SelfServiceProfileTestFixtur
             Description = "Test Self Service Profile Description",
             UserAttributes = new List<UserAttribute>()
             {
-                new UserAttribute()
+                new()
                 {
                     Name = "email",
                     Description = "Email",
@@ -173,7 +173,7 @@ public class SelfServiceProfileTest : IClassFixture<SelfServiceProfileTestFixtur
             Description = "Test Self Service Profile Description Updated",
             UserAttributes = new List<UserAttribute>()
             {
-                new UserAttribute()
+                new()
                 {
                     Name = "email",
                     Description = "Email",

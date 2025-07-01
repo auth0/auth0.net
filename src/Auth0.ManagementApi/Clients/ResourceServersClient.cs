@@ -15,7 +15,7 @@ namespace Auth0.ManagementApi.Clients;
 /// </summary>
 public class ResourceServersClient : BaseClient, IResourceServersClient
 {
-    readonly JsonConverter[] converters = new JsonConverter[] { new PagedListConverter<ResourceServer>("resource_servers") };
+    readonly JsonConverter[] converters = [new PagedListConverter<ResourceServer>("resource_servers")];
 
     /// <summary>
     /// Creates a new instance of <see cref="ResourceServersClient"/>.

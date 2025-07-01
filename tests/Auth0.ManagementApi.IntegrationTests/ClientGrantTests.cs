@@ -37,17 +37,17 @@ namespace Auth0.ManagementApi.IntegrationTests
                 SigningAlgorithm = SigningAlgorithm.RS256,
                 Scopes = new List<ResourceServerScope>
                 {
-                    new ResourceServerScope
+                    new()
                     {
                         Value = "scope1",
                         Description = "Scope number 1"
                     },
-                    new ResourceServerScope
+                    new()
                     {
                         Value = "scope2",
                         Description = "Scope number 2"
                     },
-                    new ResourceServerScope
+                    new()
                     {
                         Value = "scope3",
                         Description = "Scope number 3"

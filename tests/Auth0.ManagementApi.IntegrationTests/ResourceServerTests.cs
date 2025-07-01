@@ -51,7 +51,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 SigningSecret = "thisismysecret0123456789",
                 Scopes = new List<ResourceServerScope>
                 {
-                    new ResourceServerScope
+                    new()
                     {
                         Value = "scope1",
                         Description = "Scope number 1"
@@ -63,7 +63,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 ConsentPolicy = ConsentPolicy.TransactionalAuthorizationWithMfa,
                 AuthorizationDetails = new List<ResourceServerAuthorizationDetail>()
                 {
-                    new ResourceServerAuthorizationDetail()
+                    new()
                     {
                         Type = "Sample"
                     }
@@ -104,12 +104,12 @@ namespace Auth0.ManagementApi.IntegrationTests
                 SigningSecret = "thisismysecret0123456789",
                 Scopes = new List<ResourceServerScope>
                 {
-                    new ResourceServerScope
+                    new()
                     {
                         Value = "scope1",
                         Description = "Scope number 1"
                     },
-                    new ResourceServerScope
+                    new()
                     {
                         Value = "scope2",
                         Description = "Scope number 2"
@@ -123,7 +123,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 ConsentPolicy = ConsentPolicy.TransactionalAuthorizationWithMfa,
                 AuthorizationDetails = new List<ResourceServerAuthorizationDetail>()
                 {
-                    new ResourceServerAuthorizationDetail()
+                    new()
                     {
                         Type = "Sample"
                     }

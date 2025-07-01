@@ -9,7 +9,7 @@ namespace Auth0.Core.Serialization
 {
     internal class ApiErrorConverter : JsonConverter
     {
-        private readonly Dictionary<string, string> _propertyMappings = new Dictionary<string, string>
+        private readonly Dictionary<string, string> _propertyMappings = new()
         {
             {"code", "errorCode"},
             {"name", "error"},

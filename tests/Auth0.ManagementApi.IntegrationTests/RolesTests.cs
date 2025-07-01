@@ -403,7 +403,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 Permissions = new List<PermissionIdentity>
                 {
-                    new PermissionIdentity { Name = "dotnet:testing", Identifier = "dotnet-testing",  }
+                    new() { Name = "dotnet:testing", Identifier = "dotnet-testing",  }
                 }
             };
             await fixture.ApiClient.Roles.AssignPermissionsAsync(role.Id, assignPermissionsRequest);

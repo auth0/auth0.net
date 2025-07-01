@@ -12,7 +12,7 @@ namespace Auth0.AuthenticationApi.Tokens
             public DateTime CachedAt;
         }
 
-        readonly ConcurrentDictionary<TKey, Entry> cache = new ConcurrentDictionary<TKey, Entry>();
+        readonly ConcurrentDictionary<TKey, Entry> cache = new();
         readonly Func<TKey, Task<TValue>> valueFactory;
 
         public AsyncAgedCache(Func<TKey, Task<TValue>> valueFactory)

@@ -8,8 +8,8 @@ namespace Auth0.AuthenticationApi.Tokens
     internal abstract class SignedDecoder
     {
         readonly JwtSignatureAlgorithm signatureAlgorithm;
-        readonly JwtSecurityTokenHandler securityTokenHandler = new JwtSecurityTokenHandler();
-        readonly TokenValidationParameters validationParameters = new TokenValidationParameters
+        readonly JwtSecurityTokenHandler securityTokenHandler = new();
+        readonly TokenValidationParameters validationParameters = new()
         {
             ValidateAudience = false,
             ValidateIssuer = false,

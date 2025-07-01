@@ -52,7 +52,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                 SigningSecret = "thisismysecret0123456789",
                 Scopes = new List<ResourceServerScope>
                 {
-                    new ResourceServerScope
+                    new()
                     {
                         Value = "scope1",
                         Description = "Scope number 1"

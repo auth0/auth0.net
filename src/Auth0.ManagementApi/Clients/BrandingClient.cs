@@ -15,11 +15,11 @@ namespace Auth0.ManagementApi.Clients;
 /// </summary>
 public class BrandingClient : BaseClient, IBrandingClient
 {
-    private readonly JsonConverter[] _brandingPhoneProviderConverters = 
-        { new ListConverter<BrandingPhoneProvider>("providers") };
+    private readonly JsonConverter[] _brandingPhoneProviderConverters =
+        [new ListConverter<BrandingPhoneProvider>("providers")];
         
-    private readonly JsonConverter[] _brandingPhoneNotificationTemplateConverters = 
-        { new ListConverter<BrandingPhoneNotificationTemplate>("templates") };
+    private readonly JsonConverter[] _brandingPhoneNotificationTemplateConverters =
+        [new ListConverter<BrandingPhoneNotificationTemplate>("templates")];
         
     /// <summary>
     /// Initializes a new instance of <see cref="BrandingClient"/>.

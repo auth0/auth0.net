@@ -32,9 +32,9 @@ namespace Auth0.AuthenticationApi
         private static SecurityTokenDescriptor CreateSecurityTokenDescriptor(string issuer, string audience, string sub, SigningCredentials signingCredentials, IList<Claim> additionalClaims = null)
         {
             var claims = new List<Claim> {
-                new Claim(JwtRegisteredClaimNames.Sub, sub),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.AuthTime, DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds.ToString()),
+                new(JwtRegisteredClaimNames.Sub, sub),
+                new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new(JwtRegisteredClaimNames.AuthTime, DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds.ToString()),
             };
 
             if (additionalClaims != null)

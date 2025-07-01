@@ -15,8 +15,8 @@ namespace Auth0.ManagementApi.Clients;
 /// </summary>
 public class ClientsClient : BaseClient, IClientsClient
 {
-    readonly JsonConverter[] converters = new JsonConverter[] { new PagedListConverter<Client>("clients") };
-    readonly JsonConverter[] checkpointConverters = new JsonConverter[] { new CheckpointPagedListConverter<Client>("clients") };
+    readonly JsonConverter[] converters = [new PagedListConverter<Client>("clients")];
+    readonly JsonConverter[] checkpointConverters = [new CheckpointPagedListConverter<Client>("clients")];
 
     /// <summary>
     /// Initializes a new instance of <see cref="ClientsClient"/>.
@@ -62,14 +62,7 @@ public class ClientsClient : BaseClient, IClientsClient
     {
         request.ThrowIfNull();
 
-        var queryStrings = new Dictionary<string, string>
-        {
-            {"fields", request.Fields},
-            {"include_fields", request.IncludeFields?.ToString().ToLower()},
-            {"is_global", request.IsGlobal?.ToString().ToLower()},
-            {"is_first_party", request.IsFirstParty?.ToString().ToLower()},
-            {"q", request.Query}
-        };
+        var queryStrings = BuildClientQueryStrings(request);
 
         if (pagination != null)
         {
@@ -77,9 +70,6 @@ public class ClientsClient : BaseClient, IClientsClient
             queryStrings["per_page"] = pagination.PerPage.ToString();
             queryStrings["include_totals"] = pagination.IncludeTotals.ToString().ToLower();
         }
-
-        if (request.AppType != null)
-            queryStrings.Add("app_type", string.Join(",", request.AppType.Select(ExtensionMethods.ToEnumString)));
 
         return Connection.GetAsync<IPagedList<Client>>(BuildUri("clients", queryStrings), DefaultHeaders, converters, cancellationToken);
     }
@@ -89,23 +79,13 @@ public class ClientsClient : BaseClient, IClientsClient
     {
         request.ThrowIfNull();
 
-        var queryStrings = new Dictionary<string, string>
-        {
-            {"fields", request.Fields},
-            {"include_fields", request.IncludeFields?.ToString().ToLower()},
-            {"is_global", request.IsGlobal?.ToString().ToLower()},
-            {"is_first_party", request.IsFirstParty?.ToString().ToLower()},
-            {"q", request.Query}
-        };
+        var queryStrings = BuildClientQueryStrings(request);
 
         if (pagination != null)
         {
             queryStrings["from"] = pagination.From?.ToString();
             queryStrings["take"] = pagination.Take.ToString();
         }
-
-        if (request.AppType != null)
-            queryStrings.Add("app_type", string.Join(",", request.AppType.Select(ExtensionMethods.ToEnumString)));
 
         return Connection.GetAsync<ICheckpointPagedList<Client>>(BuildUri("clients", queryStrings), DefaultHeaders, checkpointConverters, cancellationToken);
     }
@@ -215,5 +195,27 @@ public class ClientsClient : BaseClient, IClientsClient
     public Task DeleteCredentialAsync(string clientId, string credentialId, CancellationToken cancellationToken = default)
     {
         return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"clients/{EncodePath(clientId)}/credentials/{EncodePath(credentialId)}"), null, DefaultHeaders, cancellationToken: cancellationToken);
+    }
+
+    /// <summary>
+    /// Builds common query strings for client requests.
+    /// </summary>
+    /// <param name="request">The client request containing query parameters.</param>
+    /// <returns>A dictionary of query string parameters.</returns>
+    private Dictionary<string, string> BuildClientQueryStrings(GetClientsRequest request)
+    {
+        var queryStrings = new Dictionary<string, string>
+        {
+            {"fields", request.Fields},
+            {"include_fields", request.IncludeFields?.ToString().ToLower()},
+            {"is_global", request.IsGlobal?.ToString().ToLower()},
+            {"is_first_party", request.IsFirstParty?.ToString().ToLower()},
+            {"q", request.Query}
+        };
+
+        if (request.AppType != null)
+            queryStrings.Add("app_type", string.Join(",", request.AppType.Select(ExtensionMethods.ToEnumString)));
+
+        return queryStrings;
     }
 }

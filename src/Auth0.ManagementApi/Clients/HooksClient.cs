@@ -14,7 +14,7 @@ namespace Auth0.ManagementApi.Clients;
 /// </summary>
 public class HooksClient : BaseClient, IHooksClient
 {
-    readonly JsonConverter[] hooksConverters = new JsonConverter[] { new PagedListConverter<Hook>("hooks") };
+    readonly JsonConverter[] hooksConverters = [new PagedListConverter<Hook>("hooks")];
 
     /// <summary>
     /// Initializes a new instance of <see cref="HooksClient"/>.

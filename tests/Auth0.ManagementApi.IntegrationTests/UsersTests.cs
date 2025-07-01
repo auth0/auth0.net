@@ -650,7 +650,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             var allAuthenticationMethods = await fixture.ApiClient.Users.GetAuthenticationMethodsAsync(fixture.User.UserId);
             allAuthenticationMethods.Count.Should().Be(1);
 
-            await fixture.ApiClient.Users.UpdateAuthenticationMethodsAsync(fixture.User.UserId, new List<Models.Users.AuthenticationMethodsUpdateRequest> {  new Models.Users.AuthenticationMethodsUpdateRequest
+            await fixture.ApiClient.Users.UpdateAuthenticationMethodsAsync(fixture.User.UserId, new List<Models.Users.AuthenticationMethodsUpdateRequest> {  new()
             {
                 Name = "Test2",
                 Type = "email",

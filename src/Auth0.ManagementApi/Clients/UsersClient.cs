@@ -1,14 +1,16 @@
-﻿using Auth0.ManagementApi.Models;
-using Auth0.ManagementApi.Models.Users;
-using Auth0.ManagementApi.Paging;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Newtonsoft.Json;
+
+using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Models.RefreshTokens;
 using Auth0.ManagementApi.Models.Sessions;
+using Auth0.ManagementApi.Models.Users;
+using Auth0.ManagementApi.Paging;
 
 namespace Auth0.ManagementApi.Clients;
 
@@ -17,14 +19,16 @@ namespace Auth0.ManagementApi.Clients;
 /// </summary>
 public class UsersClient : BaseClient, IUsersClient
 {
-    readonly JsonConverter[] usersConverters = new JsonConverter[] { new PagedListConverter<User>("users") };
-    readonly JsonConverter[] logsConverters = new JsonConverter[] { new PagedListConverter<LogEntry>("logs", true) };
-    readonly JsonConverter[] rolesConverters = new JsonConverter[] { new PagedListConverter<Role>("roles") };
-    readonly JsonConverter[] permissionsConverters = new JsonConverter[] { new PagedListConverter<UserPermission>("permissions") };
-    readonly JsonConverter[] organizationsConverters = new JsonConverter[] { new PagedListConverter<Organization>("organizations") };
-    readonly JsonConverter[] authenticationMethodConverters = new JsonConverter[] { new PagedListConverter<AuthenticationMethod>("authenticators") };
-    readonly JsonConverter[] refreshTokensConverter = new JsonConverter[] { new CheckpointPagedListConverter<RefreshTokenInformation>("tokens") };
-    readonly JsonConverter[] sessionsConverter = new JsonConverter[] { new CheckpointPagedListConverter<Sessions>("sessions") };
+    readonly JsonConverter[] usersConverters = [new PagedListConverter<User>("users")];
+    readonly JsonConverter[] logsConverters = [new PagedListConverter<LogEntry>("logs", true)];
+    readonly JsonConverter[] rolesConverters = [new PagedListConverter<Role>("roles")];
+    readonly JsonConverter[] permissionsConverters = [new PagedListConverter<UserPermission>("permissions")];
+    readonly JsonConverter[] organizationsConverters = [new PagedListConverter<Organization>("organizations")];
+    readonly JsonConverter[] authenticationMethodConverters = [new PagedListConverter<AuthenticationMethod>("authenticators")
+    ];
+    readonly JsonConverter[] refreshTokensConverter = [new CheckpointPagedListConverter<RefreshTokenInformation>("tokens")
+    ];
+    readonly JsonConverter[] sessionsConverter = [new CheckpointPagedListConverter<Sessions>("sessions")];
 
     /// <summary>
     /// Initializes a new instance of <see cref="UsersClient"/>.

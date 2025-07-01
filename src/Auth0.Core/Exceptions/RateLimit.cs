@@ -10,7 +10,7 @@ namespace Auth0.Core.Exceptions
     /// </summary>
     public class RateLimit
     {
-        private static DateTimeOffset epoch = new DateTimeOffset(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
+        private static DateTimeOffset epoch = new(1970, 1, 1, 0, 0, 0, TimeSpan.Zero);
 
         /// <summary>
         /// The maximum number of requests the consumer is allowed to make.

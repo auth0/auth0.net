@@ -14,8 +14,8 @@ namespace Auth0.ManagementApi.Clients;
 /// </summary>
 public class ClientGrantsClient : BaseClient, IClientGrantsClient
 {
-    readonly JsonConverter[] converters = new JsonConverter[] { new PagedListConverter<ClientGrant>("client_grants") };
-    readonly JsonConverter[] organizationsConverters = new JsonConverter[] { new PagedListConverter<Organization>("organizations") };
+    readonly JsonConverter[] converters = [new PagedListConverter<ClientGrant>("client_grants")];
+    readonly JsonConverter[] organizationsConverters = [new PagedListConverter<Organization>("organizations")];
 
     /// <summary>
     /// Initializes a new instance of <see cref="ClientGrantsClient"/>.

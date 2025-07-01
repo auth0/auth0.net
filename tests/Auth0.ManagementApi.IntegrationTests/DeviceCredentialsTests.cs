@@ -100,7 +100,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         public async Task Can_request_device_credentials_using_pagination()
         {
             var mockHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
-            var response = new PagedList<DeviceCredential> { new DeviceCredential { DeviceName = "Test" } };
+            var response = new PagedList<DeviceCredential> { new() { DeviceName = "Test" } };
             var token = "AUTH0_TOKEN_DEVICE_CREDENTIALS";
             var domain = GetVariable("AUTH0_MANAGEMENT_API_URL");
 

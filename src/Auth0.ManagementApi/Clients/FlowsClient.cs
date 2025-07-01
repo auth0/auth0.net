@@ -14,11 +14,13 @@ namespace Auth0.ManagementApi.Clients;
 
 public class FlowsClient : BaseClient, IFlowsClient
 {
-    private readonly JsonConverter[] _flowsConverters = { new PagedListConverter<Flow>("flows") };
-    private readonly JsonConverter[] _flowVaultConnectionConverters = 
-        { new PagedListConverter<FlowVaultConnection>("connections") };
-    private readonly JsonConverter[] _paginationFlowExecutionConverters = { new PagedListConverter<FlowExecution>("executions") };
-    private readonly JsonConverter[] _checkpointPaginationFlowExecutionConverters = { new CheckpointPagedListConverter<FlowExecution>("executions") };
+    private readonly JsonConverter[] _flowsConverters = [new PagedListConverter<Flow>("flows")];
+    private readonly JsonConverter[] _flowVaultConnectionConverters =
+        [new PagedListConverter<FlowVaultConnection>("connections")];
+    private readonly JsonConverter[] _paginationFlowExecutionConverters = [new PagedListConverter<FlowExecution>("executions")
+    ];
+    private readonly JsonConverter[] _checkpointPaginationFlowExecutionConverters = [new CheckpointPagedListConverter<FlowExecution>("executions")
+    ];
         
     /// <summary>
     /// Initializes a new instance of <see cref="FlowsClient"/>

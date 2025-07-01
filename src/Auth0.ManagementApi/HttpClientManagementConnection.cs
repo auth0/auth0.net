@@ -17,13 +17,13 @@ namespace Auth0.ManagementApi;
 /// </summary>
 public class HttpClientManagementConnection : IManagementConnection, IDisposable
 {
-    static readonly JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore, DateParseHandling = DateParseHandling.DateTime };
+    static readonly JsonSerializerSettings jsonSerializerSettings = new() { NullValueHandling = NullValueHandling.Ignore, DateParseHandling = DateParseHandling.DateTime };
 
     readonly HttpClient httpClient;
     readonly HttpClientManagementConnectionOptions options;
     bool ownHttpClient;
 
-    readonly ConcurrentRandom random = new ConcurrentRandom();
+    readonly ConcurrentRandom random = new();
     readonly int MAX_REQUEST_RETRY_JITTER = 250;
     readonly int MAX_REQUEST_RETRY_DELAY = 1000;
     readonly int MIN_REQUEST_RETRY_DELAY = 250;

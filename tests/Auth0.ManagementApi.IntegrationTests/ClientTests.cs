@@ -96,7 +96,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                     Required = true,
                     Credentials = new List<CredentialsCreateRequest>()
                     {
-                        new CredentialsCreateRequest()
+                        new()
                         {
                             Name = "Sample-Credentials",
                             Pem = RsaTestUtils.ExportPublicKey(new RSACryptoServiceProvider(2048)),
@@ -341,7 +341,7 @@ namespace Auth0.ManagementApi.IntegrationTests
                     {
                         Credentials = new List<ClientCredentialCreateRequest>
                         {
-                            new ClientCredentialCreateRequest
+                            new()
                             {
                                 CredentialType = "public_key",
                                 Name = "Test Credential 1",
@@ -399,11 +399,11 @@ namespace Auth0.ManagementApi.IntegrationTests
                     {
                         Credentials = new List<CredentialId>
                         {
-                            new CredentialId
+                            new()
                             {
                                 Id = credential1.Id
                             },
-                            new CredentialId
+                            new()
                             {
                                 Id = credential2.Id
                             }

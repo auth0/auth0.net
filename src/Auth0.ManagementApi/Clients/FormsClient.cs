@@ -14,7 +14,7 @@ namespace Auth0.ManagementApi.Clients;
 
 public class FormsClient : BaseClient, IFormsClient
 {
-    private readonly JsonConverter[] formsConverters = { new PagedListConverter<FormBase>("forms") };
+    private readonly JsonConverter[] formsConverters = [new PagedListConverter<FormBase>("forms")];
         
     /// <summary>
     /// Initializes a new instance of <see cref="FormsClient"/>.

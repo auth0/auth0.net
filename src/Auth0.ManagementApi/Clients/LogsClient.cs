@@ -13,7 +13,7 @@ namespace Auth0.ManagementApi.Clients;
 /// </summary>
 public class LogsClient : BaseClient, ILogsClient
 {
-    readonly JsonConverter[] converters = new JsonConverter[] { new PagedListConverter<LogEntry>("logs") };
+    readonly JsonConverter[] converters = [new PagedListConverter<LogEntry>("logs")];
 
     /// <summary>
     /// Initializes a new instance of <see cref="LogsClient"/>

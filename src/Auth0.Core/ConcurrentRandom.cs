@@ -4,7 +4,7 @@ namespace Auth0.Core
 {
     internal sealed class ConcurrentRandom
     {
-        private static readonly Random SRandom = new Random();
+        private static readonly Random SRandom = new();
 
         /// <summary>
         /// Returns a random integer that is within a specified range.

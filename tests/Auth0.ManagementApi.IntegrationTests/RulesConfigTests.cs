@@ -10,7 +10,7 @@ namespace Auth0.ManagementApi.IntegrationTests
 {
     public class RulesConfigTestsFixture : TestBaseFixture
     {
-        public readonly List<LogStream> TestCreatedStreams = new List<LogStream>();
+        public readonly List<LogStream> TestCreatedStreams = new();
 
         public override async Task DisposeAsync()
         {

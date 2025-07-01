@@ -69,7 +69,7 @@ public class JobsClient : BaseClient, IJobsClient
 
         var fileParameters = new List<FileUploadParameter>
         {
-            new FileUploadParameter
+            new()
             {
                 Key = "users",
                 Filename = fileName,

@@ -29,7 +29,7 @@ namespace Auth0.ManagementApi.IntegrationTests
     public class LogStreamsTests : IClassFixture<LogStreamsTestsFixture>
     {
         LogStreamsTestsFixture fixture;
-        private readonly List<LogStream> _createdStreams = new List<LogStream>();
+        private readonly List<LogStream> _createdStreams = new();
 
         public LogStreamsTests(LogStreamsTestsFixture fixture)
         {
@@ -122,7 +122,7 @@ namespace Auth0.ManagementApi.IntegrationTests
         {
             // Arrange
             var requests = new LogStreamCreateRequest[] {
-                new LogStreamCreateRequest
+                new()
                 {
                     Name = "Auth0.net Stream 1",
                     Type = LogStreamType.Http,
@@ -134,13 +134,14 @@ namespace Auth0.ManagementApi.IntegrationTests
                         httpAuthorization = "http-auth"
                     },
                     Filters = new List<LogStreamFilter>() {
-                        new LogStreamFilter{
+                        new()
+                        {
                             Type = LogStreamFilterType.Category,
                             Name = LogStreamFilterName.UserNotification
                         }
                     }
                 },
-                new LogStreamCreateRequest
+                new()
                 {
                     Name = "Auth0.net Stream 2",
                     Type = LogStreamType.Http,

@@ -25,7 +25,7 @@ namespace Auth0.Tests.Shared
                 .AddEnvironmentVariables()
                 .Build();
 
-        private readonly Regex _alphaNumeric = new Regex("[^a-zA-Z0-9]");
+        private readonly Regex _alphaNumeric = new("[^a-zA-Z0-9]");
 
         protected string MakeRandomName()
         {

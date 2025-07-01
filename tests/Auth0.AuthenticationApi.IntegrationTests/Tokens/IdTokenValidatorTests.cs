@@ -8,11 +8,11 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens
 {
     public class IdTokenValidatorUnitTests : TestBase
     {
-        static readonly IdTokenValidator idTokenValidator = new IdTokenValidator();
-        static readonly DateTime tokensWereValid = new DateTime(2019, 9, 9, 10, 00, 00, DateTimeKind.Utc);
+        static readonly IdTokenValidator idTokenValidator = new();
+        static readonly DateTime tokensWereValid = new(2019, 9, 9, 10, 00, 00, DateTimeKind.Utc);
 
         static readonly IdTokenRequirements defaultReqs =
-            new IdTokenRequirements(JwtSignatureAlgorithm.HS256, "https://auth0-dotnet-integration-tests.auth0.com/", "tokens-test-123", TimeSpan.FromMinutes(1))
+            new(JwtSignatureAlgorithm.HS256, "https://auth0-dotnet-integration-tests.auth0.com/", "tokens-test-123", TimeSpan.FromMinutes(1))
             {
                 Nonce = "a1b2c3d4e5",
                 MaxAge = TimeSpan.FromSeconds(100)

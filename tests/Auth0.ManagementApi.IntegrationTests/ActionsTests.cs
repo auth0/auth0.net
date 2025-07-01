@@ -50,9 +50,9 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Name = $"{TestingConstants.ActionPrefix}-{Guid.NewGuid()}",
                 Code = "module.exports = () => {}",
                 Runtime = "node12",
-                Secrets = new List<ActionSecret> { new ActionSecret { Name = "My_Secret", Value = "Test123" } },
+                Secrets = new List<ActionSecret> { new() { Name = "My_Secret", Value = "Test123" } },
                 SupportedTriggers = new List<ActionSupportedTrigger>
-                    { new ActionSupportedTrigger { Id = "post-login", Version = "v2" } }
+                    { new() { Id = "post-login", Version = "v2" } }
             });
 
             fixture.TrackIdentifier(CleanUpType.Actions, createdAction.Id);
@@ -106,9 +106,9 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Name = $"{TestingConstants.ActionPrefix}-{Guid.NewGuid()}",
                 Code = "module.exports = () => {}",
                 Runtime = "node12",
-                Secrets = new List<ActionSecret> { new ActionSecret { Name = "My_Secret", Value = "Test123" } },
+                Secrets = new List<ActionSecret> { new() { Name = "My_Secret", Value = "Test123" } },
                 SupportedTriggers = new List<ActionSupportedTrigger>
-                    { new ActionSupportedTrigger { Id = "post-login", Version = "v2" } }
+                    { new() { Id = "post-login", Version = "v2" } }
             });
 
             fixture.TrackIdentifier(CleanUpType.Actions, createdAction.Id);
@@ -126,7 +126,7 @@ namespace Auth0.ManagementApi.IntegrationTests
             {
                 Bindings = new List<UpdateTriggerBindingEntry>
                 {
-                    new UpdateTriggerBindingEntry
+                    new()
                     {
                         Ref = new UpdateTriggerBindingEntry.BindingRef
                         {
@@ -162,9 +162,9 @@ namespace Auth0.ManagementApi.IntegrationTests
                 Name = $"{TestingConstants.ActionPrefix}-{Guid.NewGuid()}",
                 Code = "module.exports = () => {}",
                 Runtime = "node12",
-                Secrets = new List<ActionSecret> { new ActionSecret { Name = "My_Secret", Value = "Test123" } },
+                Secrets = new List<ActionSecret> { new() { Name = "My_Secret", Value = "Test123" } },
                 SupportedTriggers = new List<ActionSupportedTrigger>
-                    { new ActionSupportedTrigger { Id = "post-login", Version = "v2" } }
+                    { new() { Id = "post-login", Version = "v2" } }
             });
 
             fixture.TrackIdentifier(CleanUpType.Actions, createdAction.Id);

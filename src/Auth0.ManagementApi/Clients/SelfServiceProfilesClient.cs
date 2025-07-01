@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+
+using Newtonsoft.Json;
+
 using Auth0.ManagementApi.Models.SelfServiceProfiles;
 using Auth0.ManagementApi.Paging;
-using Newtonsoft.Json;
 
 namespace Auth0.ManagementApi.Clients;
 
@@ -14,7 +16,7 @@ namespace Auth0.ManagementApi.Clients;
 /// </summary>
 public class SelfServiceProfilesClient : BaseClient, ISelfServiceProfilesClient
 {
-    readonly JsonConverter[] converters = { new PagedListConverter<SelfServiceProfile>("self_service_profiles") };
+    readonly JsonConverter[] converters = [new PagedListConverter<SelfServiceProfile>("self_service_profiles")];
     public SelfServiceProfilesClient(
         IManagementConnection connection, 
         Uri baseUri, 

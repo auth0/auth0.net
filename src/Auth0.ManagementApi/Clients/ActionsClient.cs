@@ -24,11 +24,11 @@ public class ActionsClient : BaseClient, IActionsClient
     private const string BindingsPath = "bindings";
     private const string DeployPath = "deploy";
 
-    private readonly JsonConverter[] _actionsConverters = { new PagedListConverter<Action>("actions") };
-    private readonly JsonConverter[] _triggersConverters = { new ListConverter<Trigger>("triggers") };
-    private readonly JsonConverter[] _versionsConverters = { new PagedListConverter<ActionVersion>("versions") };
-    private readonly JsonConverter[] _triggerBindingsConverters = { new PagedListConverter<TriggerBinding>("bindings") };
-    private readonly JsonConverter[] _triggerBindingsListConverters = { new ListConverter<TriggerBinding>("bindings") };
+    private readonly JsonConverter[] _actionsConverters = [new PagedListConverter<Action>("actions")];
+    private readonly JsonConverter[] _triggersConverters = [new ListConverter<Trigger>("triggers")];
+    private readonly JsonConverter[] _versionsConverters = [new PagedListConverter<ActionVersion>("versions")];
+    private readonly JsonConverter[] _triggerBindingsConverters = [new PagedListConverter<TriggerBinding>("bindings")];
+    private readonly JsonConverter[] _triggerBindingsListConverters = [new ListConverter<TriggerBinding>("bindings")];
 
     public ActionsClient(IManagementConnection connection, Uri baseUri, IDictionary<string, string> defaultHeaders) : base(connection, baseUri, defaultHeaders)
     {
