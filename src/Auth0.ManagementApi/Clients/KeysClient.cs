@@ -15,7 +15,7 @@ namespace Auth0.ManagementApi.Clients;
 /// </summary>
 public class KeysClient : BaseClient, IKeysClient
 {
-    readonly JsonConverter[] converters = [new PagedListConverter<EncryptionKey>("keys")];
+    private readonly JsonConverter[] converters = [new PagedListConverter<EncryptionKey>("keys")];
     /// <summary>
     /// Initializes a new instance of the <see cref="KeysClient"/> class.
     /// </summary>

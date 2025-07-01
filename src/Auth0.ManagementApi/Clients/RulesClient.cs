@@ -14,7 +14,7 @@ namespace Auth0.ManagementApi.Clients;
 /// </summary>
 public class RulesClient : BaseClient, IRulesClient
 {
-    readonly JsonConverter[] rulesConverters = [new PagedListConverter<Rule>("rules")];
+    private readonly JsonConverter[] rulesConverters = [new PagedListConverter<Rule>("rules")];
 
     /// <summary>
     /// Initializes a new instance of <see cref="RulesClient"/>.

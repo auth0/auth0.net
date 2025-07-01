@@ -29,7 +29,7 @@ public class ResourceServerTestsFixture : TestBaseFixture
 
 public class ResourceServerTests : IClassFixture<ResourceServerTestsFixture>
 {
-    ResourceServerTestsFixture fixture;
+    private ResourceServerTestsFixture fixture;
 
     public ResourceServerTests(ResourceServerTestsFixture fixture)
     {

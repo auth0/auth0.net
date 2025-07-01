@@ -10,9 +10,9 @@ namespace Auth0.AuthenticationApi;
 
 internal class IdTokenValidator
 {
-    readonly TimeSpan maxJwksKeySetValidFor = TimeSpan.FromMinutes(10);
-    readonly TimeSpan minJwksRefreshInterval = TimeSpan.FromSeconds(15);
-    readonly JsonWebKeyCache jsonWebKeyCache;
+    private readonly TimeSpan maxJwksKeySetValidFor = TimeSpan.FromMinutes(10);
+    private readonly TimeSpan minJwksRefreshInterval = TimeSpan.FromSeconds(15);
+    private readonly JsonWebKeyCache jsonWebKeyCache;
 
     public IdTokenValidator(IDocumentRetriever openIdConnectDocumentRetriever = null)
     {

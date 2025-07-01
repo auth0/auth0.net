@@ -11,8 +11,7 @@ namespace Auth0.ManagementApi.Clients;
 
 public class GrantsClient : BaseClient, IGrantsClient
 {
-
-    readonly JsonConverter[] converters = [new PagedListConverter<Grant>("grants")];
+    private readonly JsonConverter[] converters = [new PagedListConverter<Grant>("grants")];
 
     public GrantsClient(IManagementConnection connection, Uri baseUri, IDictionary<string, string> defaultHeaders) : base(connection, baseUri, defaultHeaders)
     {

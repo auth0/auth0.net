@@ -14,11 +14,13 @@ namespace Auth0.ManagementApi.Clients;
 /// </summary>
 public class RolesClient : BaseClient, IRolesClient
 {
-    readonly JsonConverter[] rolesConverters = [new PagedListConverter<Role>("roles")];
-    readonly JsonConverter[] assignedUsersConverters = [new PagedListConverter<AssignedUser>("users")];
-    readonly JsonConverter[] assignedUsersCheckpointConverters = [new CheckpointPagedListConverter<AssignedUser>("users")
+    private readonly JsonConverter[] rolesConverters = [new PagedListConverter<Role>("roles")];
+    private readonly JsonConverter[] assignedUsersConverters = [new PagedListConverter<AssignedUser>("users")];
+
+    private readonly JsonConverter[] assignedUsersCheckpointConverters = [new CheckpointPagedListConverter<AssignedUser>("users")
     ];
-    readonly JsonConverter[] permissionsConverters = [new PagedListConverter<Permission>("permissions")];
+
+    private readonly JsonConverter[] permissionsConverters = [new PagedListConverter<Permission>("permissions")];
 
     /// <summary>
     /// Initializes a new instance of the <see cref="RolesClient"/> class.

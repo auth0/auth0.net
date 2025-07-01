@@ -25,7 +25,7 @@ public class HooksTestsFixture : TestBaseFixture
 
 public class HooksTests : IClassFixture<HooksTestsFixture>
 {
-    HooksTestsFixture fixture;
+    private HooksTestsFixture fixture;
 
     public HooksTests(HooksTestsFixture fixture)
     {

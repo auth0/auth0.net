@@ -30,7 +30,7 @@ public class ClientTestsFixture : TestBaseFixture
 
 public class ClientTests : IClassFixture<ClientTestsFixture>
 {
-    ClientTestsFixture fixture;
+    private ClientTestsFixture fixture;
 
     public ClientTests(ClientTestsFixture fixture)
     {

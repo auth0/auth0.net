@@ -26,7 +26,7 @@ public class KeysTestsFixture : TestBaseFixture
 
 public class KeysTests : IClassFixture<KeysTestsFixture>
 {
-    KeysTestsFixture fixture;
+    private KeysTestsFixture fixture;
 
     public KeysTests(KeysTestsFixture fixture)
     {

@@ -26,7 +26,7 @@ public class GuardianTestsFixture : TestBaseFixture
 
 public class GuardianTests : IClassFixture<GuardianTestsFixture>
 {
-    GuardianTestsFixture fixture;
+    private GuardianTestsFixture fixture;
 
     public GuardianTests(GuardianTestsFixture fixture)
     {

@@ -17,7 +17,7 @@ public class ManagementApiClient : IManagementApiClient
     private const string AuthorizationHeaderKey = "Authorization";
 
     protected readonly IManagementConnection connection;
-    IDisposable connectionToDispose;
+    private IDisposable connectionToDispose;
 
     /// <summary>
     /// Contains all the methods to call the /actions endpoints.

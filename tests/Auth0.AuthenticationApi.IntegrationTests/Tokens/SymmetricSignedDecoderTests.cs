@@ -9,7 +9,7 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens;
 
 public class SymmetricSignedDecoderTests : TestBase
 {
-    readonly SignedDecoder hs256Verifier = new SymmetricSignedDecoder("___AUTH0_VALID__CLIENT_SECRET___");
+    private readonly SignedDecoder hs256Verifier = new SymmetricSignedDecoder("___AUTH0_VALID__CLIENT_SECRET___");
 
     [Fact]
     public void SucceedsWhenSignatureIsValid()

@@ -72,7 +72,7 @@ public class ClientGrantTestsFixture : TestBaseFixture
 
 public class ClientGrantTests : IClassFixture<ClientGrantTestsFixture>
 {
-    ClientGrantTestsFixture fixture;
+    private ClientGrantTestsFixture fixture;
 
     public ClientGrantTests(ClientGrantTestsFixture fixture)
     {

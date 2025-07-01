@@ -12,10 +12,10 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens;
 
 public class IdTokenClaimValidatorTests : TestBase
 {
-    static readonly JwtSecurityTokenHandler securityTokenHandler = new();
-    static readonly DateTime tokensWereValid = new(2019, 9, 9, 10, 00, 00, DateTimeKind.Utc);
+    private static readonly JwtSecurityTokenHandler securityTokenHandler = new();
+    private static readonly DateTime tokensWereValid = new(2019, 9, 9, 10, 00, 00, DateTimeKind.Utc);
 
-    static readonly IdTokenRequirements defaultReqs =
+    private static readonly IdTokenRequirements defaultReqs =
         new(JwtSignatureAlgorithm.RS256, "https://tokens-test.auth0.com/", "tokens-test-123", TimeSpan.FromMinutes(1))
         {
             Nonce = "a1b2c3d4e5",

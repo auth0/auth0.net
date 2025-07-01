@@ -29,7 +29,7 @@ public class FlowsTestFixture : TestBaseFixture
 
 public class FlowsTest : IClassFixture<FlowsTestFixture>
 {
-    FlowsTestFixture fixture;
+    private FlowsTestFixture fixture;
 
     public FlowsTest(FlowsTestFixture fixture)
     {

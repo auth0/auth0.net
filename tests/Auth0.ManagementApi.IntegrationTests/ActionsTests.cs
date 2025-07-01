@@ -29,7 +29,7 @@ public class ActionsTestsFixture : TestBaseFixture
 
 public class ActionsTests : IClassFixture<ActionsTestsFixture>
 {
-    ActionsTestsFixture fixture;
+    private ActionsTestsFixture fixture;
 
     public ActionsTests(ActionsTestsFixture fixture)
     {

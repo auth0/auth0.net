@@ -31,7 +31,7 @@ public class ConnectionTestsFixture : TestBaseFixture
 
 public class ConnectionTests : IClassFixture<ConnectionTestsFixture>
 {
-    ConnectionTestsFixture fixture;
+    private ConnectionTestsFixture fixture;
 
     public ConnectionTests(ConnectionTestsFixture fixture)
     {

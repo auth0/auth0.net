@@ -11,10 +11,10 @@ namespace Auth0.AuthenticationApi.Builders;
 /// <typeparam name="T">Type of inherited class to faciliate fluent chaining.</typeparam>
 public class UrlBuilderBase<T> where T : UrlBuilderBase<T>
 {
-    readonly Uri _baseUrl;
-    readonly string _resource;
-    readonly IDictionary<string, string> _queryStrings = new Dictionary<string, string>();
-    readonly IDictionary<string, string> _urlSegments = new Dictionary<string, string>();
+    private readonly Uri _baseUrl;
+    private readonly string _resource;
+    private readonly IDictionary<string, string> _queryStrings = new Dictionary<string, string>();
+    private readonly IDictionary<string, string> _urlSegments = new Dictionary<string, string>();
 
     /// <summary>
     /// Initializes a new instance of the <see cref="UrlBuilderBase{T}"/> class.

@@ -63,7 +63,7 @@ public class AccessTokenTestsFixture : TestBaseFixture
 
 public class AccessTokenTests : IClassFixture<AccessTokenTestsFixture>
 {
-    AccessTokenTestsFixture fixture;
+    private AccessTokenTestsFixture fixture;
 
     public AccessTokenTests(AccessTokenTestsFixture fixture)
     {

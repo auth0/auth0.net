@@ -27,7 +27,7 @@ public class AuthenticationApiClientTests : TestBase
         Assert.False(connection.IsDisposed);
     }
 
-    class FakeConnection : IAuthenticationConnection, IDisposable
+    private class FakeConnection : IAuthenticationConnection, IDisposable
     {
         public bool IsDisposed { get; private set; }
 

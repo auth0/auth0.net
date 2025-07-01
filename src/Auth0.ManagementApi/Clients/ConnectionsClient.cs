@@ -16,9 +16,11 @@ namespace Auth0.ManagementApi.Clients;
 public class ConnectionsClient : BaseClient, IConnectionsClient
 {
     private readonly JsonConverter[] _converters = [new PagedListConverter<Connection>("connections")];
-    readonly JsonConverter[] checkpointPaginationConverter = [new CheckpointPagedListConverter<Connection>("connections")
+
+    private readonly JsonConverter[] checkpointPaginationConverter = [new CheckpointPagedListConverter<Connection>("connections")
     ];
-    readonly JsonConverter[] enabledClientsCheckpointPaginationConverter = [new CheckpointPagedListConverter<EnabledClients>("clients")
+
+    private readonly JsonConverter[] enabledClientsCheckpointPaginationConverter = [new CheckpointPagedListConverter<EnabledClients>("clients")
     ];
     private readonly JsonConverter[] _defaultMappingsConverter = [new ListConverter<ScimMapping>("mapping")];
 

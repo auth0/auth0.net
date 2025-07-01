@@ -23,7 +23,7 @@ public class AttackProtectionTestsFixture : TestBaseFixture
 
 public class AttackProtectionTests : IClassFixture<AttackProtectionTestsFixture>
 {
-    AttackProtectionTestsFixture fixture;
+    private AttackProtectionTestsFixture fixture;
 
     public AttackProtectionTests(AttackProtectionTestsFixture fixture)
     {

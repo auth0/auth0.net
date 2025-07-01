@@ -14,8 +14,7 @@ namespace Auth0.ManagementApi.Clients;
 /// </summary>
 public class DeviceCredentialsClient : BaseClient, IDeviceCredentialsClient
 {
-
-    readonly JsonConverter[] converters = [new PagedListConverter<DeviceCredential>("device_credentials")];
+    private readonly JsonConverter[] converters = [new PagedListConverter<DeviceCredential>("device_credentials")];
 
     /// <summary>
     /// Initializes a new instance of <see cref="DeviceCredentialsClient"/>.

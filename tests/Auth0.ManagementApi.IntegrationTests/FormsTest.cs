@@ -26,7 +26,7 @@ public class FormsTestFixture : TestBaseFixture
 
 public class FormsTest : IClassFixture<FormsTestFixture>
 {
-    FormsTestFixture fixture;
+    private FormsTestFixture fixture;
 
     public FormsTest(FormsTestFixture fixture)
     {

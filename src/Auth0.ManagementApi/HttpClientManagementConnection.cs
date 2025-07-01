@@ -17,19 +17,19 @@ namespace Auth0.ManagementApi;
 /// </summary>
 public class HttpClientManagementConnection : IManagementConnection, IDisposable
 {
-    static readonly JsonSerializerSettings jsonSerializerSettings = new() { NullValueHandling = NullValueHandling.Ignore, DateParseHandling = DateParseHandling.DateTime };
+    private static readonly JsonSerializerSettings jsonSerializerSettings = new() { NullValueHandling = NullValueHandling.Ignore, DateParseHandling = DateParseHandling.DateTime };
 
-    readonly HttpClient httpClient;
-    readonly HttpClientManagementConnectionOptions options;
-    bool ownHttpClient;
+    private readonly HttpClient httpClient;
+    private readonly HttpClientManagementConnectionOptions options;
+    private bool ownHttpClient;
 
-    readonly ConcurrentRandom random = new();
-    readonly int MAX_REQUEST_RETRY_JITTER = 250;
-    readonly int MAX_REQUEST_RETRY_DELAY = 1000;
-    readonly int MIN_REQUEST_RETRY_DELAY = 250;
-    readonly int DEFAULT_NUMBER_RETRIES = 3;
-    readonly int MAX_NUMBER_RETRIES = 10;
-    readonly int BASE_DELAY = 250;
+    private readonly ConcurrentRandom random = new();
+    private readonly int MAX_REQUEST_RETRY_JITTER = 250;
+    private readonly int MAX_REQUEST_RETRY_DELAY = 1000;
+    private readonly int MIN_REQUEST_RETRY_DELAY = 250;
+    private readonly int DEFAULT_NUMBER_RETRIES = 3;
+    private readonly int MAX_NUMBER_RETRIES = 10;
+    private readonly int BASE_DELAY = 250;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="HttpClientManagementConnection"/> class.

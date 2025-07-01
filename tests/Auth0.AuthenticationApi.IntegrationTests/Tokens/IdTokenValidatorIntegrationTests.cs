@@ -70,8 +70,7 @@ public class IdTokenValidatorIntegrationTestsFixture : TestBaseFixture
 }
 public class IdTokenValidatorIntegrationTests : IClassFixture<IdTokenValidatorIntegrationTestsFixture>
 {
-        
-    IdTokenValidatorIntegrationTestsFixture fixture;
+    private IdTokenValidatorIntegrationTestsFixture fixture;
 
     public IdTokenValidatorIntegrationTests(IdTokenValidatorIntegrationTestsFixture fixture)
     {

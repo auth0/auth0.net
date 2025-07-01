@@ -8,10 +8,10 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens;
 
 public class IdTokenValidatorUnitTests : TestBase
 {
-    static readonly IdTokenValidator idTokenValidator = new();
-    static readonly DateTime tokensWereValid = new(2019, 9, 9, 10, 00, 00, DateTimeKind.Utc);
+    private static readonly IdTokenValidator idTokenValidator = new();
+    private static readonly DateTime tokensWereValid = new(2019, 9, 9, 10, 00, 00, DateTimeKind.Utc);
 
-    static readonly IdTokenRequirements defaultReqs =
+    private static readonly IdTokenRequirements defaultReqs =
         new(JwtSignatureAlgorithm.HS256, "https://auth0-dotnet-integration-tests.auth0.com/", "tokens-test-123", TimeSpan.FromMinutes(1))
         {
             Nonce = "a1b2c3d4e5",

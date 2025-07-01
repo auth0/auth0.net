@@ -24,7 +24,7 @@ public class GrantsTestsFixture : TestBaseFixture
 
 public class GrantsTests : IClassFixture<GrantsTestsFixture>
 {
-    GrantsTestsFixture fixture;
+    private GrantsTestsFixture fixture;
 
     public GrantsTests(GrantsTestsFixture fixture)
     {

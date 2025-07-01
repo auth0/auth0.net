@@ -13,7 +13,7 @@ public class BrandingClientTestsFixture : TestBaseFixture
 
 public class BrandingClientTests : IClassFixture<BrandingClientTestsFixture>
 {
-    BrandingClientTestsFixture fixture;
+    private BrandingClientTestsFixture fixture;
 
     public BrandingClientTests(BrandingClientTestsFixture fixture)
     {

@@ -33,7 +33,7 @@ public class OrganizationTests : IClassFixture<OrganizationTestsFixture>
     private const string ExistingRoleId = "rol_gOsYvLA232E0vg7p";
     private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
 
-    OrganizationTestsFixture fixture;
+    private OrganizationTestsFixture fixture;
 
     public OrganizationTests(OrganizationTestsFixture fixture)
     {

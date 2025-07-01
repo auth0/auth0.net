@@ -55,7 +55,7 @@ public class UserBlockTestsFixture : TestBaseFixture
 
 public class UserBlockTests : IClassFixture<UserBlockTestsFixture>, IAsyncLifetime
 {
-    UserBlockTestsFixture fixture;
+    private UserBlockTestsFixture fixture;
 
     public UserBlockTests(UserBlockTestsFixture fixture)
     {

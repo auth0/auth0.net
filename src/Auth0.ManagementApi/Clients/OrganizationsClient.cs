@@ -12,16 +12,21 @@ namespace Auth0.ManagementApi.Clients;
 
 public class OrganizationsClient : BaseClient, IOrganizationsClient
 {
-    readonly JsonConverter[] converters = [new PagedListConverter<Organization>("organizations")];
-    readonly JsonConverter[] checkpointConverters = [new CheckpointPagedListConverter<Organization>("organizations")];
-    readonly JsonConverter[] connectionsConverters = [new PagedListConverter<OrganizationConnection>("enabled_connections")
+    private readonly JsonConverter[] converters = [new PagedListConverter<Organization>("organizations")];
+    private readonly JsonConverter[] checkpointConverters = [new CheckpointPagedListConverter<Organization>("organizations")];
+
+    private readonly JsonConverter[] connectionsConverters = [new PagedListConverter<OrganizationConnection>("enabled_connections")
     ];
-    readonly JsonConverter[] membersConverters = [new PagedListConverter<OrganizationMember>("members")];
-    readonly JsonConverter[] memberRolesConverters = [new PagedListConverter<Role>("roles")];
-    readonly JsonConverter[] membersCheckpointConverters = [new CheckpointPagedListConverter<OrganizationMember>("members")
+
+    private readonly JsonConverter[] membersConverters = [new PagedListConverter<OrganizationMember>("members")];
+    private readonly JsonConverter[] memberRolesConverters = [new PagedListConverter<Role>("roles")];
+
+    private readonly JsonConverter[] membersCheckpointConverters = [new CheckpointPagedListConverter<OrganizationMember>("members")
     ];
-    readonly JsonConverter[] invitationsConverters = [new PagedListConverter<OrganizationInvitation>("invitations")];
-    readonly JsonConverter[] clientGrantsConverters = [new PagedListConverter<OrganizationClientGrant>("client_grants")
+
+    private readonly JsonConverter[] invitationsConverters = [new PagedListConverter<OrganizationInvitation>("invitations")];
+
+    private readonly JsonConverter[] clientGrantsConverters = [new PagedListConverter<OrganizationClientGrant>("client_grants")
     ];
 
     /// <summary>

@@ -28,7 +28,7 @@ public class RulesTestsFixture : TestBaseFixture
 
 public class RulesTests : IClassFixture<RulesTestsFixture>
 {
-    RulesTestsFixture fixture;
+    private RulesTestsFixture fixture;
 
     public RulesTests(RulesTestsFixture fixture)
     {

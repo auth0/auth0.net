@@ -10,7 +10,7 @@ public class LogsTestsFixture : TestBaseFixture {}
 
 public class LogsTests : IClassFixture<LogsTestsFixture>
 {
-    LogsTestsFixture fixture;
+    private LogsTestsFixture fixture;
 
     public LogsTests(LogsTestsFixture fixture)
     {

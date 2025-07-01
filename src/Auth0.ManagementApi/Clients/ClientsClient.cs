@@ -15,8 +15,8 @@ namespace Auth0.ManagementApi.Clients;
 /// </summary>
 public class ClientsClient : BaseClient, IClientsClient
 {
-    readonly JsonConverter[] converters = [new PagedListConverter<Client>("clients")];
-    readonly JsonConverter[] checkpointConverters = [new CheckpointPagedListConverter<Client>("clients")];
+    private readonly JsonConverter[] converters = [new PagedListConverter<Client>("clients")];
+    private readonly JsonConverter[] checkpointConverters = [new CheckpointPagedListConverter<Client>("clients")];
 
     /// <summary>
     /// Initializes a new instance of <see cref="ClientsClient"/>.

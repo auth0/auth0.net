@@ -16,7 +16,7 @@ namespace Auth0.ManagementApi.Clients;
 /// </summary>
 public class SelfServiceProfilesClient : BaseClient, ISelfServiceProfilesClient
 {
-    readonly JsonConverter[] converters = [new PagedListConverter<SelfServiceProfile>("self_service_profiles")];
+    private readonly JsonConverter[] converters = [new PagedListConverter<SelfServiceProfile>("self_service_profiles")];
     public SelfServiceProfilesClient(
         IManagementConnection connection, 
         Uri baseUri, 

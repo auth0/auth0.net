@@ -78,7 +78,7 @@ public class JobsTestsFixture : TestBaseFixture
 
 public class JobsTest : IClassFixture<JobsTestsFixture>
 {
-    JobsTestsFixture fixture;
+    private JobsTestsFixture fixture;
 
     public JobsTest(JobsTestsFixture fixture)
     {

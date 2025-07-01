@@ -91,7 +91,7 @@ public class AuthenticationTestsFixture : TestBaseFixture
 
 public class AuthenticationTests : IClassFixture<AuthenticationTestsFixture>
 {
-    AuthenticationTestsFixture fixture;
+    private AuthenticationTestsFixture fixture;
 
     public AuthenticationTests(AuthenticationTestsFixture fixture)
     {

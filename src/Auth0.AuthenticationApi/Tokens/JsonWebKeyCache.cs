@@ -7,7 +7,7 @@ namespace Auth0.AuthenticationApi.Tokens;
 
 internal class JsonWebKeyCache
 {
-    readonly AsyncAgedCache<string, JsonWebKeySet> cache;
+    private readonly AsyncAgedCache<string, JsonWebKeySet> cache;
 
     public JsonWebKeyCache(JsonWebKeys jsonWebKeys)
     {

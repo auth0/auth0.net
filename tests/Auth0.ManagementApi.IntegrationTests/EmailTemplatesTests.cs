@@ -32,7 +32,7 @@ public class EmailTemplatesTestsFixture : TestBaseFixture
 
 public class EmailTemplatesTests : IClassFixture<EmailTemplatesTestsFixture>
 {
-    EmailTemplatesTestsFixture fixture;
+    private EmailTemplatesTestsFixture fixture;
 
     public EmailTemplatesTests(EmailTemplatesTestsFixture fixture)
     {

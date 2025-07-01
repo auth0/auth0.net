@@ -47,7 +47,7 @@ public class RolesTests : IClassFixture<RolesTestsFixture>
 {
     private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
 
-    RolesTestsFixture fixture;
+    private RolesTestsFixture fixture;
 
     public RolesTests(RolesTestsFixture fixture)
     {

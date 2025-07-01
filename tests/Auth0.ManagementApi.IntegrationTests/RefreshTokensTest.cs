@@ -28,7 +28,7 @@ public class RefreshTokensTestFixture : TestBaseFixture
 
 public class RefreshTokensTest: IClassFixture<RefreshTokensTestFixture>
 {
-    RefreshTokensTestFixture fixture;
+    private RefreshTokensTestFixture fixture;
     
     public RefreshTokensTest(RefreshTokensTestFixture fixture)
     {

@@ -39,7 +39,7 @@ public class DatabaseConnectionTests : IClassFixture<DatabaseConnectionTestsFixt
 {
     private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
 
-    DatabaseConnectionTestsFixture fixture;
+    private DatabaseConnectionTestsFixture fixture;
 
     public DatabaseConnectionTests(DatabaseConnectionTestsFixture fixture)
     {

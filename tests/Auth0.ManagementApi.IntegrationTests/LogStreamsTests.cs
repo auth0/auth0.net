@@ -28,7 +28,7 @@ public class LogStreamsTestsFixture : TestBaseFixture
 
 public class LogStreamsTests : IClassFixture<LogStreamsTestsFixture>
 {
-    LogStreamsTestsFixture fixture;
+    private LogStreamsTestsFixture fixture;
     private readonly List<LogStream> _createdStreams = new();
 
     public LogStreamsTests(LogStreamsTestsFixture fixture)

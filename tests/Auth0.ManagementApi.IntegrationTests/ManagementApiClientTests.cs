@@ -13,9 +13,9 @@ namespace Auth0.ManagementApi.IntegrationTests;
 
 public class ManagementApiClientTests : TestBase
 {
-    readonly HeaderGrabberConnection grabber = new();
-    readonly ManagementApiClient management;
-    readonly JObject payload;
+    private readonly HeaderGrabberConnection grabber = new();
+    private readonly ManagementApiClient management;
+    private readonly JObject payload;
 
     public ManagementApiClientTests()
     {
@@ -42,7 +42,7 @@ public class ManagementApiClientTests : TestBase
         Assert.False(doNotDisposeConnection.IsDisposed);
     }
 
-    class FakeConnection : IManagementConnection, IDisposable
+    private class FakeConnection : IManagementConnection, IDisposable
     {
         public bool IsDisposed { get; private set; }
 
@@ -108,7 +108,7 @@ public class ManagementApiClientTests : TestBase
         Assert.NotNull(payload["env"]["target"].ToString());
     }
 
-    class HeaderGrabberConnection : IManagementConnection
+    private class HeaderGrabberConnection : IManagementConnection
     {
         public IDictionary<string, string> LastHeaders { get; private set; } = new Dictionary<string, string>();
 

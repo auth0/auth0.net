@@ -21,11 +21,11 @@ namespace Auth0.AuthenticationApi;
 /// </remarks>
 public class AuthenticationApiClient : IAuthenticationApiClient
 {
-    readonly IdTokenValidator idTokenValidator;
-    readonly TimeSpan idTokenValidationLeeway = TimeSpan.FromMinutes(1);
-    readonly Uri tokenUri;
+    private readonly IdTokenValidator idTokenValidator;
+    private readonly TimeSpan idTokenValidationLeeway = TimeSpan.FromMinutes(1);
+    private readonly Uri tokenUri;
     protected readonly IAuthenticationConnection connection;
-    IDisposable connectionToDispose;
+    private IDisposable connectionToDispose;
 
     /// <inheritdoc />
     public Uri BaseUri { get; private set; }

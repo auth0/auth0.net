@@ -6,14 +6,14 @@ namespace Auth0.AuthenticationApi.Tokens;
 
 internal class AsyncAgedCache<TKey, TValue>
 {
-    struct Entry
+    private struct Entry
     {
         public Task<TValue> Task;
         public DateTime CachedAt;
     }
 
-    readonly ConcurrentDictionary<TKey, Entry> cache = new();
-    readonly Func<TKey, Task<TValue>> valueFactory;
+    private readonly ConcurrentDictionary<TKey, Entry> cache = new();
+    private readonly Func<TKey, Task<TValue>> valueFactory;
 
     public AsyncAgedCache(Func<TKey, Task<TValue>> valueFactory)
     {

@@ -20,11 +20,11 @@ namespace Auth0.AuthenticationApi;
 /// </summary>
 public class HttpClientAuthenticationConnection : IAuthenticationConnection, IDisposable
 {
-    static readonly JsonSerializerSettings jsonSerializerSettings = new() { NullValueHandling = NullValueHandling.Ignore, DateParseHandling = DateParseHandling.DateTime };
+    private static readonly JsonSerializerSettings jsonSerializerSettings = new() { NullValueHandling = NullValueHandling.Ignore, DateParseHandling = DateParseHandling.DateTime };
 
-    readonly HttpClient httpClient;
-    readonly string agentString;
-    bool ownHttpClient;
+    private readonly HttpClient httpClient;
+    private readonly string agentString;
+    private bool ownHttpClient;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="HttpClientAuthenticationConnection"/> class.

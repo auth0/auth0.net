@@ -75,8 +75,7 @@ public class TicketsTestsFixture : TestBaseFixture
 
 public class TicketsTests : IClassFixture<TicketsTestsFixture>
 {
-
-    TicketsTestsFixture fixture;
+    private TicketsTestsFixture fixture;
 
     public TicketsTests(TicketsTestsFixture fixture)
     {
