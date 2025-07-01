@@ -4,48 +4,47 @@ using Auth0.IntegrationTests.Shared.CleanUp;
 using Auth0.Tests.Shared;
 using Xunit;
 
-namespace Auth0.ManagementApi.IntegrationTests
+namespace Auth0.ManagementApi.IntegrationTests;
+
+public class TestBaseFixture : IAsyncLifetime
 {
-    public class TestBaseFixture : IAsyncLifetime
+    public ManagementApiClient ApiClient { get; private set; }
+
+    public Utils Utils { get; private set; }
+
+    protected IDictionary<CleanUpType, IList<string>> identifiers = new Dictionary<CleanUpType, IList<string>>();
+
+    public virtual async Task InitializeAsync()
     {
-        public ManagementApiClient ApiClient { get; private set; }
+        string token = await TestBaseUtils.GenerateManagementApiToken();
 
-        public Utils Utils { get; private set; }
-
-        protected IDictionary<CleanUpType, IList<string>> identifiers = new Dictionary<CleanUpType, IList<string>>();
-
-        public virtual async Task InitializeAsync()
-        {
-            string token = await TestBaseUtils.GenerateManagementApiToken();
-
-            ApiClient = new ManagementApiClient(token, TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
+        ApiClient = new ManagementApiClient(token, TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
             
-            Utils = new Utils(ApiClient);
-        }
+        Utils = new Utils(ApiClient);
+    }
 
-        public virtual async Task DisposeAsync()
+    public virtual async Task DisposeAsync()
+    {
+        await Task.CompletedTask;
+    }
+
+    public void TrackIdentifier(CleanUpType type, string identifier)
+    {
+        if (!identifiers.ContainsKey(type))
         {
-            await Task.CompletedTask;
+            identifiers[type] = new List<string>();
         }
 
-        public void TrackIdentifier(CleanUpType type, string identifier)
+        identifiers[type].Add(identifier);
+    }
+
+    public void UnTrackIdentifier(CleanUpType type, string identifier)
+    {
+        if (!identifiers.ContainsKey(type))
         {
-            if (!identifiers.ContainsKey(type))
-            {
-                identifiers[type] = new List<string>();
-            }
-
-            identifiers[type].Add(identifier);
+            return;
         }
 
-        public void UnTrackIdentifier(CleanUpType type, string identifier)
-        {
-            if (!identifiers.ContainsKey(type))
-            {
-                return;
-            }
-
-            identifiers[type].Remove(identifier);
-        }
+        identifiers[type].Remove(identifier);
     }
 }

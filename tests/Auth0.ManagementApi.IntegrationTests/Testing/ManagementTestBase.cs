@@ -1,20 +1,19 @@
 ﻿using System.Threading.Tasks;
 using Auth0.Tests.Shared;
 
-namespace Auth0.ManagementApi.IntegrationTests.Testing
+namespace Auth0.ManagementApi.IntegrationTests.Testing;
+
+public class ManagementTestBase : TestBase
 {
-    public class ManagementTestBase : TestBase
+    protected ManagementApiClient ApiClient;
+
+    public virtual Task DisposeAsync()
     {
-        protected ManagementApiClient ApiClient;
-
-        public virtual Task DisposeAsync()
+        if (ApiClient != null)
         {
-            if (ApiClient != null)
-            {
-                ApiClient.Dispose();
-            }
-
-            return Task.CompletedTask;
+            ApiClient.Dispose();
         }
+
+        return Task.CompletedTask;
     }
 }

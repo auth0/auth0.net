@@ -3,20 +3,19 @@ using System.Threading.Tasks;
 
 using Microsoft.IdentityModel.Tokens;
 
-namespace Auth0.AuthenticationApi.Tokens
+namespace Auth0.AuthenticationApi.Tokens;
+
+internal class JsonWebKeyCache
 {
-    internal class JsonWebKeyCache
+    readonly AsyncAgedCache<string, JsonWebKeySet> cache;
+
+    public JsonWebKeyCache(JsonWebKeys jsonWebKeys)
     {
-        readonly AsyncAgedCache<string, JsonWebKeySet> cache;
+        cache = new AsyncAgedCache<string, JsonWebKeySet>(jsonWebKeys.GetForIssuer);
+    }
 
-        public JsonWebKeyCache(JsonWebKeys jsonWebKeys)
-        {
-            cache = new AsyncAgedCache<string, JsonWebKeySet>(jsonWebKeys.GetForIssuer);
-        }
-
-        public Task<JsonWebKeySet> Get(string issuer, TimeSpan maxAge)
-        {
-            return cache.GetOrAddAsync(issuer, maxAge);
-        }
+    public Task<JsonWebKeySet> Get(string issuer, TimeSpan maxAge)
+    {
+        return cache.GetOrAddAsync(issuer, maxAge);
     }
 }

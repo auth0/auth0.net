@@ -1,18 +1,17 @@
-namespace Auth0.AuthenticationApi.Models
+namespace Auth0.AuthenticationApi.Models;
+
+/// <summary>
+/// Type of passwordless email request.
+/// </summary>
+public enum PasswordlessEmailRequestType
 {
     /// <summary>
-    /// Type of passwordless email request.
+    /// Send a link.
     /// </summary>
-    public enum PasswordlessEmailRequestType
-    {
-        /// <summary>
-        /// Send a link.
-        /// </summary>
-        Link,
+    Link,
 
-        /// <summary>
-        /// Send a code.
-        /// </summary>
-        Code
-    }
+    /// <summary>
+    /// Send a code.
+    /// </summary>
+    Code
 }

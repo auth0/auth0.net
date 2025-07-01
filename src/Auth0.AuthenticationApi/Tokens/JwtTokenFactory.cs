@@ -5,53 +5,52 @@ using System.Security.Claims;
 
 using Microsoft.IdentityModel.Tokens;
 
-namespace Auth0.AuthenticationApi
+namespace Auth0.AuthenticationApi;
+
+internal class JwtTokenFactory
 {
-    internal class JwtTokenFactory
+    private readonly SecurityKey securityKey;
+    private readonly string algorithm;
+
+    public JwtTokenFactory(SecurityKey securityKey, string algorithm)
     {
-        private readonly SecurityKey securityKey;
-        private readonly string algorithm;
+        this.securityKey = securityKey;
+        this.algorithm = algorithm;
+    }
 
-        public JwtTokenFactory(SecurityKey securityKey, string algorithm)
+    public string GenerateToken(string issuer, string audience, string sub, IList<Claim> additionalClaims = null)
+    {
+        var signingCredentials = new SigningCredentials(securityKey, algorithm);
+
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var tokenDescriptor = CreateSecurityTokenDescriptor(issuer, audience, sub, signingCredentials, additionalClaims);
+
+        var token = tokenHandler.CreateToken(tokenDescriptor);
+
+        return tokenHandler.WriteToken(token);
+    }
+
+    private static SecurityTokenDescriptor CreateSecurityTokenDescriptor(string issuer, string audience, string sub, SigningCredentials signingCredentials, IList<Claim> additionalClaims = null)
+    {
+        var claims = new List<Claim> {
+            new(JwtRegisteredClaimNames.Sub, sub),
+            new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new(JwtRegisteredClaimNames.AuthTime, DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds.ToString()),
+        };
+
+        if (additionalClaims != null)
         {
-            this.securityKey = securityKey;
-            this.algorithm = algorithm;
+            claims.AddRange(additionalClaims);
         }
 
-        public string GenerateToken(string issuer, string audience, string sub, IList<Claim> additionalClaims = null)
+        return new SecurityTokenDescriptor
         {
-            var signingCredentials = new SigningCredentials(securityKey, algorithm);
-
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var tokenDescriptor = CreateSecurityTokenDescriptor(issuer, audience, sub, signingCredentials, additionalClaims);
-
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-
-            return tokenHandler.WriteToken(token);
-        }
-
-        private static SecurityTokenDescriptor CreateSecurityTokenDescriptor(string issuer, string audience, string sub, SigningCredentials signingCredentials, IList<Claim> additionalClaims = null)
-        {
-            var claims = new List<Claim> {
-                new(JwtRegisteredClaimNames.Sub, sub),
-                new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new(JwtRegisteredClaimNames.AuthTime, DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1)).TotalSeconds.ToString()),
-            };
-
-            if (additionalClaims != null)
-            {
-                claims.AddRange(additionalClaims);
-            }
-
-            return new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(claims),
-                IssuedAt = DateTime.UtcNow,
-                Expires = DateTime.UtcNow.AddSeconds(180),
-                Issuer = issuer,
-                Audience = audience,
-                SigningCredentials = signingCredentials
-            };
-        }
+            Subject = new ClaimsIdentity(claims),
+            IssuedAt = DateTime.UtcNow,
+            Expires = DateTime.UtcNow.AddSeconds(180),
+            Issuer = issuer,
+            Audience = audience,
+            SigningCredentials = signingCredentials
+        };
     }
 }
