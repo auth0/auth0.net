@@ -1,10 +1,9 @@
 using Newtonsoft.Json;
 
-namespace Auth0.AuthenticationApi.Models.Ciba
+namespace Auth0.AuthenticationApi.Models.Ciba;
+
+public class ClientInitiatedBackchannelAuthorizationTokenResponse : AccessTokenResponse
 {
-    public class ClientInitiatedBackchannelAuthorizationTokenResponse : AccessTokenResponse
-    {
-        [JsonProperty("scope")]
-        public string Scope { get; set; }
-    }
+    [JsonProperty("scope")]
+    public string Scope { get; set; }
 }

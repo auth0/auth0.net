@@ -1,21 +1,20 @@
-﻿namespace Auth0.IntegrationTests.Shared.CleanUp
+﻿namespace Auth0.IntegrationTests.Shared.CleanUp;
+
+public enum CleanUpType
 {
-    public enum CleanUpType
-    {
-        Actions,
-        ClientGrants,
-        Clients,
-        Connections,
-        Hooks,
-        Organizations,
-        ResourceServers,
-        Users,
-        Roles,
-        Rules,
-        LogStreams,
-        EncryptionKeys,
-        SelfServiceProvider,
-        Forms,
-        Flows
-    }
+    Actions,
+    ClientGrants,
+    Clients,
+    Connections,
+    Hooks,
+    Organizations,
+    ResourceServers,
+    Users,
+    Roles,
+    Rules,
+    LogStreams,
+    EncryptionKeys,
+    SelfServiceProvider,
+    Forms,
+    Flows
 }

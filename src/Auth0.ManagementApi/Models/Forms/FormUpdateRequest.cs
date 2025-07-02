@@ -1,7 +1,6 @@
-namespace Auth0.ManagementApi.Models.Forms
+namespace Auth0.ManagementApi.Models.Forms;
+
+public class FormUpdateRequest : FormCreateRequest
 {
-    public class FormUpdateRequest : FormCreateRequest
-    {
         
-    }
 }

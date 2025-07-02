@@ -1,13 +1,12 @@
 using Newtonsoft.Json;
 
-namespace Auth0.ManagementApi.Models.Forms
+namespace Auth0.ManagementApi.Models.Forms;
+
+public class Redirection
 {
-    public class Redirection
-    {
-        [JsonProperty("delay")]
-        public int Delay { get; set; }
+    [JsonProperty("delay")]
+    public int Delay { get; set; }
         
-        [JsonProperty("target")]
-        public string Target { get; set; }
-    }
+    [JsonProperty("target")]
+    public string Target { get; set; }
 }

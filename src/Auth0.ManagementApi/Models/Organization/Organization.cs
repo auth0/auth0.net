@@ -1,11 +1,9 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
 
-namespace Auth0.ManagementApi.Models
+namespace Auth0.ManagementApi.Models;
+
+public class Organization : OrganizationBase
 {
-    public class Organization : OrganizationBase
-    {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
+    [JsonProperty("id")]
+    public string Id { get; set; }
 }

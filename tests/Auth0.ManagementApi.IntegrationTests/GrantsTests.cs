@@ -7,37 +7,36 @@ using Auth0.ManagementApi.Paging;
 using Xunit;
 
 
-namespace Auth0.ManagementApi.IntegrationTests
+namespace Auth0.ManagementApi.IntegrationTests;
+
+public class GrantsTestsFixture : TestBaseFixture
 {
-    public class GrantsTestsFixture : TestBaseFixture
+    public override async Task DisposeAsync()
     {
-        public override async Task DisposeAsync()
+        foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
         {
-            foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
-            {
-                await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
-            }
-
-            ApiClient.Dispose();
+            await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
         }
+
+        ApiClient.Dispose();
+    }
+}
+
+public class GrantsTests : IClassFixture<GrantsTestsFixture>
+{
+    private GrantsTestsFixture fixture;
+
+    public GrantsTests(GrantsTestsFixture fixture)
+    {
+        this.fixture = fixture;
     }
 
-    public class GrantsTests : IClassFixture<GrantsTestsFixture>
+
+
+    [Fact]
+    public async Task Test_GetAll()
     {
-        GrantsTestsFixture fixture;
-
-        public GrantsTests(GrantsTestsFixture fixture)
-        {
-            this.fixture = fixture;
-        }
-
-
-
-        [Fact]
-        public async Task Test_GetAll()
-        {
-            var grants = await fixture.ApiClient.Grants.GetAllAsync(new GetGrantsRequest(), new PaginationInfo(0, 50, true));
-        }
-
+        var grants = await fixture.ApiClient.Grants.GetAllAsync(new GetGrantsRequest(), new PaginationInfo(0, 50, true));
     }
+
 }

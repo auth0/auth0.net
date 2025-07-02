@@ -27,7 +27,7 @@ public class SessionsTestFixture : TestBaseFixture
 
 public class SessionsTest: IClassFixture<SessionsTestFixture>
 {
-    SessionsTestFixture fixture;
+    private SessionsTestFixture fixture;
     
     public SessionsTest(SessionsTestFixture fixture)
     {

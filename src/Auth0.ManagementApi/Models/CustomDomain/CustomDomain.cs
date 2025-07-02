@@ -1,9 +1,8 @@
-﻿namespace Auth0.ManagementApi.Models
+﻿namespace Auth0.ManagementApi.Models;
+
+/// <summary>
+/// Represents a Custom Domain
+/// </summary>
+public class CustomDomain : CustomDomainBase
 {
-    /// <summary>
-    /// Represents a Custom Domain
-    /// </summary>
-    public class CustomDomain : CustomDomainBase
-    {
-    }
 }

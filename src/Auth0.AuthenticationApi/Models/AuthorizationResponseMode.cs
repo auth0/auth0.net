@@ -1,13 +1,12 @@
-namespace Auth0.AuthenticationApi.Models
+namespace Auth0.AuthenticationApi.Models;
+
+/// <summary>
+/// Represents an authentication response mode.
+/// </summary>
+public enum AuthorizationResponseMode
 {
     /// <summary>
-    /// Represents an authentication response mode.
+    /// Response will be a form POST.
     /// </summary>
-    public enum AuthorizationResponseMode
-    {
-        /// <summary>
-        /// Response will be a form POST.
-        /// </summary>
-        FormPost
-    }
+    FormPost
 }

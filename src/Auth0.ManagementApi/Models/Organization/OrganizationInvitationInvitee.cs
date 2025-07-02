@@ -1,13 +1,12 @@
 ﻿using Newtonsoft.Json;
 
-namespace Auth0.ManagementApi.Models
+namespace Auth0.ManagementApi.Models;
+
+public class OrganizationInvitationInvitee
 {
-    public class OrganizationInvitationInvitee
-    {
-        /// <summary>
-        /// The email for the user that is to be invited.
-        /// </summary>
-        [JsonProperty("email")]
-        public string Email { get; set; }
-    }
+    /// <summary>
+    /// The email for the user that is to be invited.
+    /// </summary>
+    [JsonProperty("email")]
+    public string Email { get; set; }
 }

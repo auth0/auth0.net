@@ -10,7 +10,6 @@ using Auth0.IntegrationTests.Shared.CleanUp;
 using Auth0.ManagementApi.IntegrationTests.Testing;
 using Auth0.ManagementApi.Models.Flow;
 using Auth0.ManagementApi.Paging;
-using Auth0.IntegrationTests.Shared;
 using Auth0.Tests.Shared;
 
 namespace Auth0.ManagementApi.IntegrationTests;
@@ -30,7 +29,7 @@ public class FlowsTestFixture : TestBaseFixture
 
 public class FlowsTest : IClassFixture<FlowsTestFixture>
 {
-    FlowsTestFixture fixture;
+    private FlowsTestFixture fixture;
 
     public FlowsTest(FlowsTestFixture fixture)
     {

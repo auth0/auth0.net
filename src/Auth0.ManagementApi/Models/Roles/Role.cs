@@ -1,16 +1,15 @@
 using Newtonsoft.Json;
 
-namespace Auth0.ManagementApi.Models
+namespace Auth0.ManagementApi.Models;
+
+/// <summary>
+/// Class for roles.
+/// </summary>
+public class Role : RoleBase
 {
     /// <summary>
-    /// Class for roles.
+    /// Gets or sets the id of the role.
     /// </summary>
-    public class Role : RoleBase
-    {
-        /// <summary>
-        /// Gets or sets the id of the role.
-        /// </summary>
-        [JsonProperty("id")]
-        public string Id { get; set; }
-    }
+    [JsonProperty("id")]
+    public string Id { get; set; }
 }

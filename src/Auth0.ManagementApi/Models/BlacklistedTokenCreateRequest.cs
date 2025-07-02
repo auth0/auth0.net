@@ -1,9 +1,8 @@
-﻿namespace Auth0.ManagementApi.Models
+﻿namespace Auth0.ManagementApi.Models;
+
+/// <summary>
+/// 
+/// </summary>
+public class BlacklistedTokenCreateRequest : BlacklistedTokenBase
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    public class BlacklistedTokenCreateRequest : BlacklistedTokenBase
-    {
-    }
 }

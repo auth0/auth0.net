@@ -1,6 +1,5 @@
-namespace Auth0.ManagementApi.Models
+namespace Auth0.ManagementApi.Models;
+
+public class UpdateGuardianFactorResponse : UpdateGuardianFactorBase
 {
-    public class UpdateGuardianFactorResponse : UpdateGuardianFactorBase
-    {
-    }
 }

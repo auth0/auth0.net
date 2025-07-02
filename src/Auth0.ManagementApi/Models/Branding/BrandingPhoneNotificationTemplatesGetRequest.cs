@@ -1,7 +1,6 @@
-namespace Auth0.ManagementApi.Models
+namespace Auth0.ManagementApi.Models;
+
+public class BrandingPhoneNotificationTemplatesGetRequest
 {
-    public class BrandingPhoneNotificationTemplatesGetRequest
-    {
-        public bool? Disabled { get; set; }
-    }
+    public bool? Disabled { get; set; }
 }

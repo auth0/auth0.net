@@ -1,7 +1,6 @@
-﻿namespace Auth0.ManagementApi.Models
+﻿namespace Auth0.ManagementApi.Models;
+
+public class HookUpdateRequest : HookBase
 {
-    public class HookUpdateRequest : HookBase
-    {
         
-    }
 }
