@@ -44,11 +44,13 @@ internal class ApiErrorConverter : JsonConverter
 
             if (prop != null)
             {
-                prop.SetValue(instance, jp.Value.ToObject<string>(serializer));
+                prop.SetValue(instance, jp.Value.ToObject(prop.PropertyType, serializer));
             }
-            else if (extraDataProp != null)
+            else if (extraDataProp != null && extraDataProp.PropertyType == typeof(Dictionary<string, string>))
             {
-                ((IDictionary<string, string?>)extraDataProp.GetValue(instance))[name] = jp.Value.ToObject<string>(serializer);
+                var extraData = (IDictionary<string, string>)extraDataProp.GetValue(instance) ?? new Dictionary<string, string>();
+                extraData[name] = jp.Value.ToString();
+                extraDataProp.SetValue(instance, extraData);
             }
         }
 
