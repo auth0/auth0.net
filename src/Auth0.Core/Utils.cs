@@ -87,7 +87,7 @@ internal static class Utils
         }
         return uri;
     }
-    private static string AddQueryString(IList<Tuple<string, string>> queryStrings, bool includeEmptyParameters)
+    internal static string AddQueryString(IList<Tuple<string, string>> queryStrings, bool includeEmptyParameters)
     {
         var sb = new StringBuilder();
         // Add the query strings
@@ -110,7 +110,7 @@ internal static class Utils
         }
         return sb.ToString();
     }
-    private static string? AddQueryString(IDictionary<string, string> queryStrings, bool includeEmptyParameters)
+    internal static string? AddQueryString(IDictionary<string, string> queryStrings, bool includeEmptyParameters)
     {
         // Add the query strings
         var queryString = queryStrings?.Aggregate(new StringBuilder(), (sb, kvp) =>
@@ -138,7 +138,7 @@ internal static class Utils
     private static string ReplaceUrlSegments(string resource, IDictionary<string, string>? urlSegments)
     {
         // Replace the URL Segments
-        if (urlSegments == null) return resource;
+        if (urlSegments == null) return resource.TrimEnd('/');
         foreach (var urlSegment in urlSegments)
         {
             resource = 
