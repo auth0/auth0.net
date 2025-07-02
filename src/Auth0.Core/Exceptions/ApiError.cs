@@ -48,14 +48,17 @@ public class ApiError
             return null;
 
         var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-        if (string.IsNullOrEmpty(content))
-            return null;
 
         return Parse(content);
     }
 
-    internal static ApiError? Parse(string content)
+    internal static ApiError? Parse(string? content)
     {
+        if (content is null)
+        {
+            return null;
+        }
+        
         try
         {
             return JsonConvert.DeserializeObject<ApiError>(content);
