@@ -1,0 +1,39 @@
+version: 2
+updates:
+  # Check for updates to NuGet packages in the main src projects
+  - package-ecosystem: "nuget"
+    directory: "/src/Auth0.Core"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "nuget"
+    
+  - package-ecosystem: "nuget"
+    directory: "/src/Auth0.ManagementApi"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "nuget"
+    
+  - package-ecosystem: "nuget"
+    directory: "/src/Auth0.AuthenticationApi"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "nuget"
+    
+  # Also check for GitHub Actions updates
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
