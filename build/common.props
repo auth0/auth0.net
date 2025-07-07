@@ -20,7 +20,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-    <Version>7.38.0</Version>
+    <Version>7.39.0</Version>
     <Suffix/>
   </PropertyGroup>
   <PropertyGroup>
