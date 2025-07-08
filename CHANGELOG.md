@@ -1,5 +1,17 @@
 # Change Log
 
+## [7.39.0](https://github.com/auth0/auth0.net/tree/7.39.0) (2025-07-07)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.38.0...7.39.0)
+
+**Added**
+- feature: Add support for managing Network ACLs [\#828](https://github.com/auth0/auth0.net/pull/828) ([kailash-b](https://github.com/kailash-b))
+
+**Changed**
+- fix: data-type from `int` to `float` for Branding related configs [\#824](https://github.com/auth0/auth0.net/pull/824) ([kailash-b](https://github.com/kailash-b))
+
+**Security**
+- chore: Upgrade version of `System.IdentityModel.Tokens.Jwt` and `Microsoft.IdentityModel.Protocols.OpenIdConnect` [\#825](https://github.com/auth0/auth0.net/pull/825) ([kailash-b](https://github.com/kailash-b))
+
 ## [7.38.0](https://github.com/auth0/auth0.net/tree/7.38.0) (2025-06-23)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.37.0...7.38.0)
 
