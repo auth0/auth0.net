@@ -37,8 +37,9 @@ public interface IAuthenticationApiClient : IDisposable
     /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
     /// <returns><see cref="Task"/> which can be used to sign in as the specified user.</returns>
     /// <remarks>This feature has been deprecated and will be removed from Auth0 and this library in a future release.</remarks>
+    [Obsolete("GetImpersonationUrlAsync is deprecated")]
     Task<Uri> GetImpersonationUrlAsync(ImpersonationRequest request, CancellationToken cancellationToken = default);
-
+    
     /// <summary>
     /// Returns user information based on the access token that was obtained during login.
     /// </summary>
@@ -192,8 +193,7 @@ public interface IAuthenticationApiClient : IDisposable
     /// <param name="cancellationToken"></param>
     /// <returns><see cref="Task"/> representing the async operation containing 
     /// a <see cref="ClientInitiatedBackchannelAuthorizationResponse" /> with the details of the response.</returns>
-    Task<ClientInitiatedBackchannelAuthorizationResponse> ClientInitiatedBackchannelAuthorization(ClientInitiatedBackchannelAuthorizationRequest request,
-        CancellationToken cancellationToken = default);
+    Task<ClientInitiatedBackchannelAuthorizationResponse> ClientInitiatedBackchannelAuthorization(ClientInitiatedBackchannelAuthorizationRequest request, CancellationToken cancellationToken = default);
         
     /// <summary>
     /// Requests an Access Token using the CIBA flow
