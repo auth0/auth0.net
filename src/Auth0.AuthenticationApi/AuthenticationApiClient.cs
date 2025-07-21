@@ -89,6 +89,7 @@ public class AuthenticationApiClient : IAuthenticationApiClient
     }
 
     /// <inheritdoc />
+    [Obsolete("GetImpersonationUrlAsync is deprecated")]
     public async Task<Uri> GetImpersonationUrlAsync(ImpersonationRequest request, CancellationToken cancellationToken = default)
     {
         request.ThrowIfNull();
