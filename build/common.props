@@ -21,7 +21,7 @@
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
     <Version>7.39.0</Version>
-    <Suffix/>
+    <Suffix />
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyVersion>$(Version)</AssemblyVersion>
@@ -33,6 +33,6 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="../../build/Auth0Icon.png" Pack="true" Visible="false" PackagePath=""/>
+    <None Include="../../build/Auth0Icon.png" Pack="true" Visible="false" PackagePath="" />
   </ItemGroup>
 </Project>
