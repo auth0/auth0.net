@@ -96,6 +96,11 @@ public class SelfServiceProfileTest : IClassFixture<SelfServiceProfileTestFixtur
                         AssignMembershipOnLogin = false,
                         ShowAsButton = false
                     }
+                },
+                TtlSec = 10000,
+                DomainAliasesConfig = new DomainAliasesConfig()
+                {
+                    DomainVerification = DomainVerification.Optional
                 }
             });
 
