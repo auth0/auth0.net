@@ -392,7 +392,7 @@ public class ConnectionTests : IClassFixture<ConnectionTestsFixture>
 
             var createTokenRequest = new ScimTokenCreateRequest()
             {
-                Scopes = new string[] { "openid", "offline_access" },
+                Scopes = new string[] { "post:users" },
                 TokenLifetime = 1000
             };
                 
@@ -439,7 +439,7 @@ public class ConnectionTests : IClassFixture<ConnectionTestsFixture>
             Assert.NotNull(scimToken.Token);
             Assert.NotNull(scimToken.CreatedAt);
             Assert.NotNull(scimToken.ValidUntil);
-            scimToken.Scopes.Should().HaveCount(2);
+            scimToken.Scopes.Should().HaveCount(1);
             Assert.Equal(createTokenRequest.Scopes, scimToken.Scopes);
             return scimToken;
         }
