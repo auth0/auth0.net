@@ -59,13 +59,13 @@ public interface IClientsClient
   Task<Client> GetAsync(string id, string fields = null, bool includeFields = true, CancellationToken cancellationToken = default);
 
   /// <summary>
-  /// Retrieves a list of all client applications.
+  /// Retrieve all connections that are enabled for the specified client.
   /// </summary>
   /// <param name="id">ID of the client for which to retrieve enabled connections.</param>
   /// <param name="request">Specifies criteria to use when querying clients.</param>
   /// <param name="pagination">Specifies <see cref="CheckpointPaginationInfo"/> to use in requesting checkpoint-paginated results.</param>
   /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
-  /// <returns>An <see cref="ICheckpointPagedList{Client}"/> containing the clients.</returns>
+  /// <returns>An <see cref="ICheckpointPagedList{Connection}"/> containing the enabled connections.</returns>
   public Task<ICheckpointPagedList<Connection>> GetEnabledConnectionsForClientAsync(string id, GetEnabledConnectionsForClientRequest request, CheckpointPaginationInfo pagination, CancellationToken cancellationToken = default);
 
   /// <summary>
