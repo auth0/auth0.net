@@ -59,6 +59,16 @@ public interface IClientsClient
   Task<Client> GetAsync(string id, string fields = null, bool includeFields = true, CancellationToken cancellationToken = default);
 
   /// <summary>
+  /// Retrieves a list of all client applications.
+  /// </summary>
+  /// <param name="id">ID of the client for which to retrieve enabled connections.</param>
+  /// <param name="request">Specifies criteria to use when querying clients.</param>
+  /// <param name="pagination">Specifies <see cref="CheckpointPaginationInfo"/> to use in requesting checkpoint-paginated results.</param>
+  /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+  /// <returns>An <see cref="ICheckpointPagedList{Client}"/> containing the clients.</returns>
+  public Task<ICheckpointPagedList<Connection>> GetEnabledConnectionsForClientAsync(string id, GetEnabledConnectionsForClientRequest request, CheckpointPaginationInfo pagination, CancellationToken cancellationToken = default);
+
+  /// <summary>
   /// Rotate a client secret. The generated secret is NOT base64 encoded.
   /// </summary>
   /// <param name="id">The id of the client which secret needs to be rotated.</param>

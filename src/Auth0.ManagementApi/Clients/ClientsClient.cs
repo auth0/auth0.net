@@ -91,6 +91,29 @@ public class ClientsClient : BaseClient, IClientsClient
     }
 
     /// <summary>
+    /// Retrieves a list of all client applications.
+    /// </summary>
+    /// <param name="id">ID of the client for which to retrieve enabled connections.</param>
+    /// <param name="request">Specifies criteria to use when querying clients.</param>
+    /// <param name="pagination">Specifies <see cref="CheckpointPaginationInfo"/> to use in requesting checkpoint-paginated results.</param>
+    /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+    /// <returns>An <see cref="ICheckpointPagedList{Client}"/> containing the clients.</returns>
+    public Task<ICheckpointPagedList<Connection>> GetEnabledConnectionsForClientAsync(string id, GetEnabledConnectionsForClientRequest request, CheckpointPaginationInfo pagination, CancellationToken cancellationToken = default)
+    {
+        request.ThrowIfNull();
+
+        var queryStrings = BuildClientQueryStrings(request);
+
+        if (pagination != null)
+        {
+            queryStrings["from"] = pagination.From?.ToString();
+            queryStrings["take"] = pagination.Take.ToString();
+        }
+
+        return Connection.GetAsync<ICheckpointPagedList<Connection>>(BuildUri($"clients/{EncodePath(id)}/connections", queryStrings), DefaultHeaders, checkpointConverters, cancellationToken);
+    }
+
+    /// <summary>
     /// Retrieves a client by its id.
     /// </summary>
     /// <param name="id">The id of the client to retrieve.</param>
@@ -215,6 +238,22 @@ public class ClientsClient : BaseClient, IClientsClient
 
         if (request.AppType != null)
             queryStrings.Add("app_type", string.Join(",", request.AppType.Select(ExtensionMethods.ToEnumString)));
+
+        return queryStrings;
+    }
+
+    /// <summary>
+    /// Builds common query strings for client requests.
+    /// </summary>
+    /// <param name="request">The client request containing query parameters.</param>
+    /// <returns>A dictionary of query string parameters.</returns>
+    private Dictionary<string, string> BuildClientQueryStrings(GetEnabledConnectionsForClientRequest request)
+    {
+        var queryStrings = new Dictionary<string, string>
+        {
+            {"fields", request.Fields},
+            {"include_fields", request.IncludeFields?.ToString().ToLower()},
+        };
 
         return queryStrings;
     }
