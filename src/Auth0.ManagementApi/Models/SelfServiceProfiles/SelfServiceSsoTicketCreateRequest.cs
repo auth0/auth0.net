@@ -31,4 +31,12 @@ public class SelfServiceSsoTicketCreateRequest
     /// </summary>
     [JsonProperty("ttl_sec")]
     public int? TtlSec { get; set; }
+    
+    /// <inheritdoc cref="Auth0.ManagementApi.Models.SelfServiceProfiles.DomainAliasesConfig"/>
+    [JsonProperty("domain_aliases_config")]
+    public DomainAliasesConfig DomainAliasesConfig { get; set; }
+    
+    /// <inheritdoc cref="Auth0.ManagementApi.Models.SelfServiceProfiles.ProvisioningConfig"/>
+    [JsonProperty("provisioning_config")]
+    public ProvisioningConfig ProvisioningConfig { get; set; }
 }
