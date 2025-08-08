@@ -49,8 +49,8 @@ public class RateLimit
     /// <returns>Instance of <see cref="RateLimit"/> containing parsed rate limit headers.</returns>
     public static RateLimit? Parse(HttpHeaders headers)
     {
-        var headersKvp = 
-            headers?.ToDictionary(h => h.Key, h => h.Value);
+        var headersKvp =
+            headers?.ToDictionary(h => h.Key, h => h.Value, StringComparer.OrdinalIgnoreCase);
         var reset = GetHeaderValue(headersKvp, "x-ratelimit-reset");
         return new RateLimit
         {
