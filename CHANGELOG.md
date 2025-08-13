@@ -1,5 +1,21 @@
 # Change Log
 
+## [7.39.1](https://github.com/auth0/auth0.net/tree/7.39.1) (2025-08-13)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.39.0...7.39.1)
+
+**Added**
+- Add support for DomainAliasesConfig in SelfService SSO create request [\#847](https://github.com/auth0/auth0.net/pull/847) ([kailash-b](https://github.com/kailash-b))
+
+**Deprecated**
+- feat: Deprecate GetImpersonationUrlAsync [\#839](https://github.com/auth0/auth0.net/pull/839) ([kailash-b](https://github.com/kailash-b))
+
+**Fixed**
+- fix: Use case-insensitive string comparer for HTTP header parsing [\#857](https://github.com/auth0/auth0.net/pull/857) ([kailash-b](https://github.com/kailash-b))
+
+**Security**
+- deps: Bump `Microsoft.IdentityModel.Protocols.OpenIdConnect` and `System.IdentityModel.Tokens.Jwt` to 8.13.0 [\#846](https://github.com/auth0/auth0.net/pull/846) ([kailash-b](https://github.com/kailash-b))
+- deps: Upgrade dependencies [\#841](https://github.com/auth0/auth0.net/pull/841) ([kailash-b](https://github.com/kailash-b))
+
 ## [7.39.0](https://github.com/auth0/auth0.net/tree/7.39.0) (2025-07-07)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.38.0...7.39.0)
 
