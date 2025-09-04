@@ -390,15 +390,20 @@ public class ConnectionTests : IClassFixture<ConnectionTestsFixture>
                     Mapping = expectedScimConfiguration.Mapping
                 });
 
-            var createTokenRequest = new ScimTokenCreateRequest()
+            var createTokenRequest1 = new ScimTokenCreateRequest()
             {
                 Scopes = new string[] { "post:users" },
                 TokenLifetime = 1000
             };
+            var createTokenRequest2 = new ScimTokenCreateRequest()
+            {
+                Scopes = new string[] { "post:users" },
+                TokenLifetime = null
+            };
                 
             // Create two SCIM tokens and Validate
-            var scimTokenOne = await CreateScimTokenAndValidate(createTokenRequest);
-            var scimTokenTwo = await CreateScimTokenAndValidate(createTokenRequest);
+            var scimTokenOne = await CreateScimTokenAndValidate(createTokenRequest1);
+            var scimTokenTwo = await CreateScimTokenAndValidate(createTokenRequest2);
 
             // Retrieve the token and validate
             var retrievedScimTokens = 
