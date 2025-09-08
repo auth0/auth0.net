@@ -67,17 +67,13 @@ public class UsersClient : BaseClient, IUsersClient
         return Connection.SendAsync<User>(HttpMethod.Post, BuildUri("users"), request, DefaultHeaders, cancellationToken: cancellationToken);
     }
 
-    /// <summary>
-    /// Deletes a user.
-    /// </summary>
-    /// <param name="id">The id of the user to delete.</param>
-    /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-    public Task DeleteAsync(string id)
+    /// <inheritdoc />
+    public Task DeleteAsync(string id, CancellationToken cancellationToken)
     {
         if (string.IsNullOrWhiteSpace(id))
             throw new ArgumentException("Value cannot be null or whitespace.", nameof(id));
 
-        return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"users/{EncodePath(id)}"), null, DefaultHeaders);
+        return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"users/{EncodePath(id)}"), null, DefaultHeaders, cancellationToken: cancellationToken);
     }
 
     /// <summary>
