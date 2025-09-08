@@ -46,7 +46,7 @@ public class ActionsTests : IClassFixture<ActionsTestsFixture>
         {
             Name = $"{TestingConstants.ActionPrefix}-{Guid.NewGuid()}",
             Code = "module.exports = () => {}",
-            Runtime = "node12",
+            Runtime = "node18",
             Secrets = new List<ActionSecret> { new() { Name = "My_Secret", Value = "Test123" } },
             SupportedTriggers = new List<ActionSupportedTrigger>
                 { new() { Id = "post-login", Version = "v2" } }
@@ -102,7 +102,7 @@ public class ActionsTests : IClassFixture<ActionsTestsFixture>
         {
             Name = $"{TestingConstants.ActionPrefix}-{Guid.NewGuid()}",
             Code = "module.exports = () => {}",
-            Runtime = "node12",
+            Runtime = "node18",
             Secrets = new List<ActionSecret> { new() { Name = "My_Secret", Value = "Test123" } },
             SupportedTriggers = new List<ActionSupportedTrigger>
                 { new() { Id = "post-login", Version = "v2" } }
@@ -158,7 +158,7 @@ public class ActionsTests : IClassFixture<ActionsTestsFixture>
         {
             Name = $"{TestingConstants.ActionPrefix}-{Guid.NewGuid()}",
             Code = "module.exports = () => {}",
-            Runtime = "node12",
+            Runtime = "node18",
             Secrets = new List<ActionSecret> { new() { Name = "My_Secret", Value = "Test123" } },
             SupportedTriggers = new List<ActionSupportedTrigger>
                 { new() { Id = "post-login", Version = "v2" } }
