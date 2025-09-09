@@ -34,8 +34,9 @@ public interface IUsersClient
   /// Deletes a user.
   /// </summary>
   /// <param name="id">The id of the user to delete.</param>
+  /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
   /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-  Task DeleteAsync(string id);
+  Task DeleteAsync(string id, CancellationToken cancellationToken = default);
 
   /// <summary>
   /// Deletes a user's multifactor provider.
