@@ -49,7 +49,7 @@ public abstract class BaseClient
         return Utils.BuildUri(BaseUri.AbsoluteUri, resource, null, queryStrings);
     }
         
-    protected Uri BuildUri(string resource, IList<Tuple<string, string>> queryStrings)
+    protected Uri BuildUri(string resource, IList<Tuple<string, string?>> queryStrings)
     {
         return Utils.BuildUri(BaseUri.AbsoluteUri, resource, null, queryStrings);
     }

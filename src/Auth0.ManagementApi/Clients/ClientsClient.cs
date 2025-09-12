@@ -17,6 +17,7 @@ public class ClientsClient : BaseClient, IClientsClient
 {
     private readonly JsonConverter[] converters = [new PagedListConverter<Client>("clients")];
     private readonly JsonConverter[] checkpointConverters = [new CheckpointPagedListConverter<Client>("clients")];
+    private readonly JsonConverter[] enabledClientsConverters = [new CheckpointPagedListConverter<Connection>("connections")];
 
     /// <summary>
     /// Initializes a new instance of <see cref="ClientsClient"/>.
@@ -195,6 +196,39 @@ public class ClientsClient : BaseClient, IClientsClient
     public Task DeleteCredentialAsync(string clientId, string credentialId, CancellationToken cancellationToken = default)
     {
         return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"clients/{EncodePath(clientId)}/credentials/{EncodePath(credentialId)}"), null, DefaultHeaders, cancellationToken: cancellationToken);
+    }
+
+    /// <inheritdoc cref="IClientsClient.GetEnabledConnectionsForClientAsync(string,Auth0.ManagementApi.Models.EnabledConnectionsForClientGetRequest,Auth0.ManagementApi.Paging.CheckpointPaginationInfo,System.Threading.CancellationToken)"/>
+    public Task<ICheckpointPagedList<Connection>> GetEnabledConnectionsForClientAsync(
+        string id,
+        EnabledConnectionsForClientGetRequest? request,
+        CheckpointPaginationInfo? pagination, CancellationToken cancellationToken = default)
+    {
+        id.ThrowIfNull();
+        
+        var queryStrings = new List<Tuple<string, string?>>()
+        {
+            new("fields", request?.Fields),
+            new("include_fields", request?.IncludeFields?.ToString().ToLower())
+        };
+
+        if (request?.Strategy != null)
+        {
+            queryStrings.AddRange(
+                request.Strategy.Select(eachStrategy => new Tuple<string, string?>("strategy", eachStrategy)));    
+        }
+
+        if (pagination != null)
+        {
+            queryStrings.Add(new Tuple<string, string?>("from", pagination.From));
+            queryStrings.Add(new Tuple<string, string?>("take", pagination.Take.ToString()));
+        }
+        
+        return Connection.GetAsync<ICheckpointPagedList<Connection>>(
+            BuildUri($"clients/{EncodePath(id)}/connections", queryStrings),
+            DefaultHeaders,
+            enabledClientsConverters,
+            cancellationToken);
     }
 
     /// <summary>
