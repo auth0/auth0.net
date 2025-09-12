@@ -251,7 +251,7 @@ public class OrganizationTests : IClassFixture<OrganizationTestsFixture>
             members[0].Name.Should().BeNull();
             members[1].Name.Should().BeNull();
 
-            await fixture.ApiClient.Organizations.DeleteMemberAsync(ExistingOrganizationId, new OrganizationDeleteMembersRequest
+            await fixture.ApiClient.Organizations.DeleteMembersAsync(ExistingOrganizationId, new OrganizationDeleteMembersRequest
             {
                 Members = new List<string> { user2.UserId }
             });
@@ -314,7 +314,7 @@ public class OrganizationTests : IClassFixture<OrganizationTestsFixture>
         }
         finally
         {
-            await fixture.ApiClient.Organizations.DeleteMemberAsync(ExistingOrganizationId, new OrganizationDeleteMembersRequest { Members = new List<string> { user.UserId, user2.UserId } });
+            await fixture.ApiClient.Organizations.DeleteMembersAsync(ExistingOrganizationId, new OrganizationDeleteMembersRequest { Members = new List<string> { user.UserId, user2.UserId } });
 
             await fixture.ApiClient.Users.DeleteAsync(user.UserId);
             fixture.UnTrackIdentifier(CleanUpType.Users, user.UserId);

@@ -112,7 +112,7 @@ public class JobsTest : IClassFixture<JobsTestsFixture>
         job.Status.Should().Be("pending");
         job.CreatedAt.Should().BeCloseTo(DateTime.UtcNow, TimeSpan.FromMinutes(5));
 
-        await fixture.ApiClient.Organizations.DeleteMemberAsync(existingOrganizationId, new OrganizationDeleteMembersRequest
+        await fixture.ApiClient.Organizations.DeleteMembersAsync(existingOrganizationId, new OrganizationDeleteMembersRequest
         {
             Members = new List<string> { fixture.TestAuth0User.UserId }
         });

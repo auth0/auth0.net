@@ -1,3 +1,5 @@
+using System;
+
 namespace Auth0.ManagementApi.Clients;
 
 using System.Threading;
@@ -157,6 +159,9 @@ public interface IOrganizationsClient
   /// <returns>An <see cref="ICheckpointPagedList{OrganizationMember}"/> containing the organization members.</returns>
   Task<ICheckpointPagedList<OrganizationMember>> GetAllMembersAsync(string organizationId, OrganizationGetAllMembersRequest request, CheckpointPaginationInfo pagination, CancellationToken cancellationToken = default);
 
+  [Obsolete("Deprecated in favour of IOrganizationsClient.DeleteMembersAsync")]
+  Task DeleteMemberAsync(string organizationId, OrganizationDeleteMembersRequest request, CancellationToken cancellationToken = default);
+  
   /// <summary>
   /// Deletes members from an organization.
   /// </summary>
@@ -164,7 +169,7 @@ public interface IOrganizationsClient
   /// <param name="request">The <see cref="OrganizationDeleteMembersRequest"/> containing the members.</param>
   /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
   /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
-  Task DeleteMemberAsync(string organizationId, OrganizationDeleteMembersRequest request, CancellationToken cancellationToken = default);
+  Task DeleteMembersAsync(string organizationId, OrganizationDeleteMembersRequest request, CancellationToken cancellationToken = default);
 
   /// <summary>
   /// Add members to an organization.

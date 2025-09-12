@@ -114,7 +114,7 @@ public class TicketsTests : IClassFixture<TicketsTestsFixture>
         changeTicketRsponse.Should().NotBeNull();
         changeTicketRsponse.Value.Should().NotBeNull();
 
-        await fixture.ApiClient.Organizations.DeleteMemberAsync(existingOrganizationId, new OrganizationDeleteMembersRequest
+        await fixture.ApiClient.Organizations.DeleteMembersAsync(existingOrganizationId, new OrganizationDeleteMembersRequest
         {
             Members = new List<string> { fixture.Auth0User.UserId }
         });
