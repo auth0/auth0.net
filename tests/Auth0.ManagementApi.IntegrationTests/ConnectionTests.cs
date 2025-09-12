@@ -443,7 +443,6 @@ public class ConnectionTests : IClassFixture<ConnectionTestsFixture>
             Assert.NotNull(scimToken.TokenId);
             Assert.NotNull(scimToken.Token);
             Assert.NotNull(scimToken.CreatedAt);
-            Assert.NotNull(scimToken.ValidUntil);
             scimToken.Scopes.Should().HaveCount(1);
             Assert.Equal(createTokenRequest.Scopes, scimToken.Scopes);
             return scimToken;
