@@ -2,21 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
+using System.Threading;
 using System.Threading.Tasks;
 using Auth0.Core.Exceptions;
 using Auth0.IntegrationTests.Shared.CleanUp;
+using Auth0.ManagementApi.Clients;
 using Auth0.ManagementApi.IntegrationTests.Testing;
 using Auth0.ManagementApi.Models;
 using Auth0.ManagementApi.Paging;
 using Auth0.Tests.Shared;
 using FluentAssertions;
+using Moq;
+using Newtonsoft.Json;
 using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests;
 
 public class ClientTestsFixture : TestBaseFixture
 {
-
     public override async Task DisposeAsync()
     {
         foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
@@ -50,7 +53,7 @@ public class ClientTests : IClassFixture<ClientTestsFixture>
             LogoutInitiators.AccountDeleted,
             LogoutInitiators.EmailIdentifierChanged
         };
-            
+
         // Add a new client
         var newClientRequest = new ClientCreateRequest
         {
@@ -79,7 +82,7 @@ public class ClientTests : IClassFixture<ClientTestsFixture>
                     Mode = LogoutInitiatorModes.Custom,
                     SelectedInitiators = selectedInitiators
                 },
-                BackchannelLogoutUrls = new [] { "https://create.com/logout" }
+                BackchannelLogoutUrls = new[] { "https://create.com/logout" }
             },
             DefaultOrganization = new DefaultOrganization()
             {
@@ -127,7 +130,8 @@ public class ClientTests : IClassFixture<ClientTestsFixture>
         newClientResponse.OrganizationRequireBehavior.Should().Be(OrganizationRequireBehavior.PreLoginPrompt);
         newClientResponse.OidcLogout.BackchannelLogoutUrls[0].Should().Be("https://create.com/logout");
         newClientResponse.OidcLogout.BackchannelLogoutInitiators.Mode.Should().Be(LogoutInitiatorModes.Custom);
-        newClientResponse.OidcLogout.BackchannelLogoutInitiators.SelectedInitiators.Should().BeEquivalentTo(selectedInitiators);
+        newClientResponse.OidcLogout.BackchannelLogoutInitiators.SelectedInitiators.Should()
+            .BeEquivalentTo(selectedInitiators);
         newClientResponse.DefaultOrganization.OrganizationId.Should().Be(existingOrganizationId);
         newClientResponse.RequirePushedAuthorizationRequests.Should().BeTrue();
         newClientResponse.SignedRequestObject.Should().NotBeNull();
@@ -175,8 +179,9 @@ public class ClientTests : IClassFixture<ClientTestsFixture>
                 }
             }
         };
-            
-        var updateClientResponse = await fixture.ApiClient.Clients.UpdateAsync(newClientResponse.ClientId, updateClientRequest);
+
+        var updateClientResponse =
+            await fixture.ApiClient.Clients.UpdateAsync(newClientResponse.ClientId, updateClientRequest);
         updateClientResponse.Should().NotBeNull();
         updateClientResponse.Name.Should().Be(updateClientRequest.Name);
         updateClientResponse.TokenEndpointAuthMethod.Should().Be(TokenEndpointAuthMethod.ClientSecretPost);
@@ -191,7 +196,8 @@ public class ClientTests : IClassFixture<ClientTestsFixture>
         updateClientResponse.OrganizationRequireBehavior.Should().Be(OrganizationRequireBehavior.NoPrompt);
         updateClientResponse.OidcLogout.BackchannelLogoutUrls[0].Should().Be("https://create.com/logout");
         updateClientResponse.OidcLogout.BackchannelLogoutInitiators.Mode.Should().Be(LogoutInitiatorModes.Custom);
-        updateClientResponse.OidcLogout.BackchannelLogoutInitiators.SelectedInitiators.Should().BeEquivalentTo(selectedInitiators);
+        updateClientResponse.OidcLogout.BackchannelLogoutInitiators.SelectedInitiators.Should()
+            .BeEquivalentTo(selectedInitiators);
         updateClientResponse.DefaultOrganization.OrganizationId.Should().Be(existingOrganizationId);
         updateClientResponse.DefaultOrganization.Flows.Should().HaveCount(1);
         updateClientResponse.DefaultOrganization.Flows.First().Should().Be(Flows.ClientCredentials);
@@ -261,7 +267,8 @@ public class ClientTests : IClassFixture<ClientTestsFixture>
     public async Task Test_paging_does_not_include_totals()
     {
         // Act
-        var clients = await fixture.ApiClient.Clients.GetAllAsync(new GetClientsRequest(), new PaginationInfo(0, 50, false));
+        var clients =
+            await fixture.ApiClient.Clients.GetAllAsync(new GetClientsRequest(), new PaginationInfo(0, 50, false));
 
         // Assert
         Assert.Null(clients.Paging);
@@ -271,7 +278,8 @@ public class ClientTests : IClassFixture<ClientTestsFixture>
     public async Task Test_paging_includes_totals()
     {
         // Act
-        var clients = await fixture.ApiClient.Clients.GetAllAsync(new GetClientsRequest(), new PaginationInfo(0, 50, true));
+        var clients =
+            await fixture.ApiClient.Clients.GetAllAsync(new GetClientsRequest(), new PaginationInfo(0, 50, true));
 
         // Assert
         Assert.NotNull(clients.Paging);
@@ -309,7 +317,7 @@ public class ClientTests : IClassFixture<ClientTestsFixture>
         // Rotate the secret
         var connections = await fixture.ApiClient.Clients.GetAllAsync(new GetClientsRequest
         {
-            AppType = new[] {ClientApplicationType.Native}
+            AppType = new[] { ClientApplicationType.Native }
         }, new PaginationInfo());
 
         // Assert
@@ -353,7 +361,8 @@ public class ClientTests : IClassFixture<ClientTestsFixture>
         newClient.ClientAuthenticationMethods.PrivateKeyJwt.Credentials[0].Id.Should().NotBeNull();
 
         var allCredentialsForClient = await fixture.ApiClient.Clients.GetAllCredentialsAsync(newClient.ClientId);
-        var credential1 = await fixture.ApiClient.Clients.GetCredentialAsync(newClient.ClientId, newClient.ClientAuthenticationMethods.PrivateKeyJwt.Credentials[0].Id);
+        var credential1 = await fixture.ApiClient.Clients.GetCredentialAsync(newClient.ClientId,
+            newClient.ClientAuthenticationMethods.PrivateKeyJwt.Credentials[0].Id);
 
         allCredentialsForClient.Should().NotBeNull();
         allCredentialsForClient.Should().NotBeEmpty();
@@ -363,22 +372,24 @@ public class ClientTests : IClassFixture<ClientTestsFixture>
         credential1.Name.Should().Be("Test Credential 1");
         credential1.CredentialType.Should().Be("public_key");
 
-        var newCredential = await fixture.ApiClient.Clients.CreateCredentialAsync(newClient.ClientId, new ClientCredentialCreateRequest
-        {
-            CredentialType = "public_key",
-            Name = "Test Credential 2",
-            Pem = RsaTestUtils.ExportPublicKey(new RSACryptoServiceProvider(2048)),
-        });
+        var newCredential = await fixture.ApiClient.Clients.CreateCredentialAsync(newClient.ClientId,
+            new ClientCredentialCreateRequest
+            {
+                CredentialType = "public_key",
+                Name = "Test Credential 2",
+                Pem = RsaTestUtils.ExportPublicKey(new RSACryptoServiceProvider(2048)),
+            });
 
 
         newCredential.ExpiresAt.Should().BeNull();
 
-        var newExpiry =  DateTime.UtcNow.AddDays(2);
+        var newExpiry = DateTime.UtcNow.AddDays(2);
         var newExpiryWithoutMilliSeconds = new DateTime(
             newExpiry.Ticks - (newExpiry.Ticks % TimeSpan.TicksPerSecond),
             newExpiry.Kind
         );
-        var newCredential2 = await fixture.ApiClient.Clients.UpdateCredentialAsync(newClient.ClientId, newCredential.Id, new ClientCredentialUpdateRequest { ExpiresAt = newExpiryWithoutMilliSeconds });
+        var newCredential2 = await fixture.ApiClient.Clients.UpdateCredentialAsync(newClient.ClientId, newCredential.Id,
+            new ClientCredentialUpdateRequest { ExpiresAt = newExpiryWithoutMilliSeconds });
 
         newCredential2.ExpiresAt?.ToString("o").Should().Be(newExpiryWithoutMilliSeconds.ToString("o"));
 
@@ -428,7 +439,6 @@ public class ClientTests : IClassFixture<ClientTestsFixture>
                 {
                     Credentials = new List<CredentialId>
                     {
-                            
                     }
                 }
             }
@@ -441,5 +451,85 @@ public class ClientTests : IClassFixture<ClientTestsFixture>
 
         allCredentialsForClient.Should().NotBeNull();
         allCredentialsForClient.Should().BeEmpty();
+    }
+
+    [Fact]
+    public async Task Test_GetEnabledConnectionsForClient()
+    {
+        var enabledConnections =
+            await fixture.ApiClient.Clients.GetEnabledConnectionsForClientAsync(
+                TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"),
+                new EnabledConnectionsForClientGetRequest()
+                {
+                    IncludeFields = true,
+                    Strategy = new[] { "google-oauth2", "auth0" },
+                },
+                new CheckpointPaginationInfo()
+            );
+        enabledConnections.Should().NotBeNull();
+        enabledConnections.Count.Should().BeGreaterThan(0);
+    }
+
+    [Fact]
+    public async Task GetEnabledConnectionsForClientAsync_WithNullId_ThrowsArgumentNullException()
+    {
+        await Assert.ThrowsAsync<ArgumentNullException>(() =>
+            fixture.ApiClient.Clients.GetEnabledConnectionsForClientAsync(null, null, null));
+    }
+
+    [Fact]
+    public async Task GetEnabledConnectionsForClientAsync_WithEmptyStrategyArray_DoesNotPassStrategyInQuery()
+    {
+        var clientId = "client123";
+        var request = new EnabledConnectionsForClientGetRequest { Strategy = new string[0] };
+
+        var mockConnection = new Mock<IManagementConnection>();
+        mockConnection.Setup(c => c.GetAsync<ICheckpointPagedList<Connection>>(
+                It.Is<Uri>(uri => !uri.Query.Contains("strategy=")),
+                It.IsAny<IDictionary<string, string>>(),
+                It.IsAny<JsonConverter[]>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new CheckpointPagedList<Connection>());
+
+        var client = new ClientsClient(mockConnection.Object, new Uri("https://test.auth0.com"),
+            new Dictionary<string, string>());
+
+        await client.GetEnabledConnectionsForClientAsync(clientId, request, null);
+
+        mockConnection.Verify();
+    }
+
+    [Fact]
+    public async Task GetEnabledConnectionsForClientAsync_WithAllParameters_PassesAllParametersInQuery()
+    {
+        var clientId = "client123";
+        var request = new EnabledConnectionsForClientGetRequest
+        {
+            Fields = "id,name",
+            IncludeFields = true,
+            Strategy = new[] { "auth0", "google-oauth2" }
+        };
+        var pagination = new CheckpointPaginationInfo(10, "token");
+
+        var mockConnection = new Mock<IManagementConnection>();
+        mockConnection.Setup(c => c.GetAsync<ICheckpointPagedList<Connection>>(
+                It.Is<Uri>(uri =>
+                    uri.Query.Contains("fields=id%2Cname") &&
+                    uri.Query.Contains("include_fields=true") &&
+                    uri.Query.Contains("strategy=auth0") &&
+                    uri.Query.Contains("strategy=google-oauth2") &&
+                    uri.Query.Contains("from=token") &&
+                    uri.Query.Contains("take=10")),
+                It.IsAny<IDictionary<string, string>>(),
+                It.IsAny<JsonConverter[]>(),
+                It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new CheckpointPagedList<Connection>());
+
+        var client = new ClientsClient(mockConnection.Object, new Uri("https://test.auth0.com"),
+            new Dictionary<string, string>());
+
+        await client.GetEnabledConnectionsForClientAsync(clientId, request, pagination);
+
+        mockConnection.Verify();
     }
 }
