@@ -14,8 +14,8 @@ public class ScimTokenCreateRequest
     public string[] Scopes { get; set; }
         
     /// <summary>
-    /// Lifetime of the token in seconds. Must be greater than 900
+    /// Lifetime of the token in seconds. Must be greater than 900 or be null
     /// </summary>
     [JsonProperty("token_lifetime")]
-    public int TokenLifetime { get; set; }
+    public int? TokenLifetime { get; set; }
 }
