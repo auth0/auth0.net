@@ -609,7 +609,7 @@ public class UsersTests : IClassFixture<UsersTestsFixture>
         organizations.Should().NotBeNull();
         organizations.Count.Should().Be(1);
 
-        await fixture.ApiClient.Organizations.DeleteMemberAsync(existingOrganizationId, new OrganizationDeleteMembersRequest
+        await fixture.ApiClient.Organizations.DeleteMembersAsync(existingOrganizationId, new OrganizationDeleteMembersRequest
         {
             Members = new List<string> { user.UserId }
         });

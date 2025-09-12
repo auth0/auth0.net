@@ -305,6 +305,12 @@ public class OrganizationsClient : BaseClient, IOrganizationsClient
     /// <returns>A <see cref="Task"/> that represents the asynchronous delete operation.</returns>
     public Task DeleteMemberAsync(string organizationId, OrganizationDeleteMembersRequest request, CancellationToken cancellationToken = default)
     {
+        return DeleteMembersAsync(organizationId, request, cancellationToken);
+    }
+    
+    /// <inheritdoc />
+    public Task DeleteMembersAsync(string organizationId, OrganizationDeleteMembersRequest request, CancellationToken cancellationToken = default)
+    {
         return Connection.SendAsync<object>(HttpMethod.Delete, BuildUri($"organizations/{EncodePath(organizationId)}/members"), request, DefaultHeaders, cancellationToken: cancellationToken);
     }
 
