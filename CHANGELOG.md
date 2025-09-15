@@ -1,5 +1,19 @@
 # Change Log
 
+## [7.41.0](https://github.com/auth0/auth0.net/tree/7.41.0) (2025-09-15)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.40.0...7.41.0)
+
+**Added**
+- Adds support for getting connections enabled for a specific client [\#877](https://github.com/auth0/auth0.net/pull/877) ([mikejr83](https://github.com/mikejr83) / [kailash-b](https://github.com/kailash-b))
+- Adds CancellationToken parameter in IUsersClient.DeleteAsync [\#873](https://github.com/auth0/auth0.net/pull/873) ([kailash-b](https://github.com/kailash-b))
+
+**Fixed**
+- Allowing TokenLifeType to be null [\#878](https://github.com/auth0/auth0.net/pull/878) ([chris31389](https://github.com/chris31389) / [kailash-b](https://github.com/kailash-b))
+- Fix inconsistent naming in Organizations.DeleteMemberAsync [\#876](https://github.com/auth0/auth0.net/pull/876) ([kailash-b](https://github.com/kailash-b))
+
+**Security**
+- Upgrade Dependencies [\#879](https://github.com/auth0/auth0.net/pull/879) ([kailash-b](https://github.com/kailash-b))
+
 ## [7.40.0](https://github.com/auth0/auth0.net/tree/7.40.0) (2025-08-13)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.39.0...7.40.0)
 
