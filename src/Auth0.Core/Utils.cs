@@ -50,7 +50,7 @@ internal static class Utils
 
         return new Uri(resource, UriKind.RelativeOrAbsolute);
     }
-    internal static Uri BuildUri(string baseUrl, string resource, IDictionary<string, string>? urlSegments, IList<Tuple<string, string>> queryStringsTuple, bool includeEmptyParameters = false)
+    internal static Uri BuildUri(string baseUrl, string resource, IDictionary<string, string>? urlSegments, IList<Tuple<string, string?>> queryStringsTuple, bool includeEmptyParameters = false)
     {
         resource = ReplaceUrlSegments(resource, urlSegments);
 
@@ -87,7 +87,7 @@ internal static class Utils
         }
         return uri;
     }
-    internal static string AddQueryString(IList<Tuple<string, string>> queryStrings, bool includeEmptyParameters)
+    internal static string AddQueryString(IList<Tuple<string, string?>> queryStrings, bool includeEmptyParameters)
     {
         var sb = new StringBuilder();
         // Add the query strings
