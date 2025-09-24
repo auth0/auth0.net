@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using System.Runtime.Serialization;
 
 namespace Auth0.ManagementApi.Models;
 
@@ -222,4 +223,10 @@ public abstract class ClientBase
     /// </summary>
     [JsonProperty("token_quota")]
     public TokenQuota TokenQuota { get; set; }
+
+    /// <summary>
+    /// Session transfer configuration for the client.
+    /// </summary>
+    [JsonProperty("session_transfer")]
+    public SessionTransfer SessionTransfer { get; set; }
 }
