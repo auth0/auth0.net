@@ -114,6 +114,15 @@ public class ClientTests : IClassFixture<ClientTestsFixture>
                     PerHour = 10,
                     Enforce = true
                 }
+            },
+            SessionTransfer = new SessionTransfer()
+            {
+                AllowedAuthenticationMethods = ["cookie"],
+                AllowRefreshToken = true,
+                CanCreateSessionTransferToken = true,
+                EnforceCascadeRevocation = true,
+                EnforceDeviceBinding = "ip",
+                EnforceOnlineRefreshTokens = true
             }
         };
         var newClientResponse = await fixture.ApiClient.Clients.CreateAsync(newClientRequest);
@@ -140,6 +149,15 @@ public class ClientTests : IClassFixture<ClientTestsFixture>
         newClientResponse.ComplianceLevel.Should().Be(ComplianceLevel.FAPI1_ADV_PKJ_PAR);
         newClientResponse.RequireProofOfPossession.Should().BeTrue();
         newClientResponse.TokenQuota.Should().BeEquivalentTo(newClientRequest.TokenQuota);
+        
+        // Session transfer assertions
+        newClientResponse.SessionTransfer.Should().NotBeNull();
+        newClientResponse.SessionTransfer?.AllowRefreshToken.Should().BeTrue();
+        newClientResponse.SessionTransfer?.EnforceCascadeRevocation.Should().BeTrue();
+        newClientResponse.SessionTransfer?.EnforceOnlineRefreshTokens.Should().BeTrue();
+        newClientResponse.SessionTransfer?.CanCreateSessionTransferToken.Should().BeTrue();
+        newClientResponse.SessionTransfer?.AllowedAuthenticationMethods.Should().BeEquivalentTo(["cookie"]);
+        newClientResponse.SessionTransfer?.EnforceDeviceBinding.Should().Be("ip");
 
         string prop1 = newClientResponse.ClientMetaData.Prop1;
         prop1.Should().Be("1");
@@ -177,6 +195,15 @@ public class ClientTests : IClassFixture<ClientTestsFixture>
                 {
                     Enforce = false
                 }
+            },
+            SessionTransfer = new SessionTransfer()
+            {
+                AllowedAuthenticationMethods = ["query"],
+                AllowRefreshToken = false,
+                CanCreateSessionTransferToken = false,
+                EnforceCascadeRevocation = false,
+                EnforceDeviceBinding = "asn",
+                EnforceOnlineRefreshTokens = false
             }
         };
 
@@ -206,6 +233,14 @@ public class ClientTests : IClassFixture<ClientTestsFixture>
         updateClientResponse.ComplianceLevel.Should().Be(ComplianceLevel.NONE);
         updateClientResponse.RequireProofOfPossession.Should().BeFalse();
         updateClientResponse.TokenQuota.Should().BeEquivalentTo(updateClientRequest.TokenQuota);
+        // Session transfer assertions
+        updateClientResponse.SessionTransfer.Should().NotBeNull();
+        updateClientResponse.SessionTransfer?.AllowRefreshToken.Should().BeFalse();
+        updateClientResponse.SessionTransfer?.EnforceCascadeRevocation.Should().BeFalse();
+        updateClientResponse.SessionTransfer?.EnforceOnlineRefreshTokens.Should().BeFalse();
+        updateClientResponse.SessionTransfer?.CanCreateSessionTransferToken.Should().BeFalse();
+        updateClientResponse.SessionTransfer?.AllowedAuthenticationMethods.Should().BeEquivalentTo(["query"]);
+        updateClientResponse.SessionTransfer?.EnforceDeviceBinding.Should().Be("asn");
 
         // Get a single client
         var client = await fixture.ApiClient.Clients.GetAsync(newClientResponse.ClientId);
@@ -218,6 +253,13 @@ public class ClientTests : IClassFixture<ClientTestsFixture>
         client.SignedRequestObject.Required.Should().BeFalse();
         client.ComplianceLevel.Should().Be(ComplianceLevel.NONE);
         client.TokenQuota.ClientCredentials.Enforce.Should().Be(false);
+        client.SessionTransfer.Should().NotBeNull();
+        client.SessionTransfer?.AllowRefreshToken.Should().BeFalse();
+        client.SessionTransfer?.EnforceCascadeRevocation.Should().BeFalse();
+        client.SessionTransfer?.EnforceOnlineRefreshTokens.Should().BeFalse();
+        client.SessionTransfer?.CanCreateSessionTransferToken.Should().BeFalse();
+        client.SessionTransfer?.AllowedAuthenticationMethods.Should().BeEquivalentTo(["query"]);
+        client.SessionTransfer?.EnforceDeviceBinding.Should().Be("asn");
 
         // Delete the client, and ensure we get exception when trying to fetch client again
         await fixture.ApiClient.Clients.DeleteAsync(client.ClientId);
