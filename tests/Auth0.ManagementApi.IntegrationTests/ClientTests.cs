@@ -284,6 +284,7 @@ public class ClientTests : IClassFixture<ClientTestsFixture>
             ApplicationType = ClientApplicationType.Native
         };
         var newClientResponse = await fixture.ApiClient.Clients.CreateAsync(newClientRequest);
+        fixture.TrackIdentifier(CleanUpType.Clients, newClientResponse.ClientId);
 
         // Rotate the secret
         var updateClientResponse = await fixture.ApiClient.Clients.RotateClientSecret(newClientResponse.ClientId);
@@ -355,6 +356,7 @@ public class ClientTests : IClassFixture<ClientTestsFixture>
             ApplicationType = ClientApplicationType.Native
         };
         var newClientResponse = await fixture.ApiClient.Clients.CreateAsync(newClientRequest);
+        fixture.TrackIdentifier(CleanUpType.Clients, newClientResponse.ClientId);
 
         // Rotate the secret
         var connections = await fixture.ApiClient.Clients.GetAllAsync(new GetClientsRequest
@@ -397,7 +399,7 @@ public class ClientTests : IClassFixture<ClientTestsFixture>
                 }
             }
         });
-
+        fixture.TrackIdentifier(CleanUpType.Clients, newClient.ClientId);
         newClient.ClientAuthenticationMethods.PrivateKeyJwt.Credentials.Should().NotBeNull();
         newClient.ClientAuthenticationMethods.PrivateKeyJwt.Credentials.Should().NotBeEmpty();
         newClient.ClientAuthenticationMethods.PrivateKeyJwt.Credentials[0].Id.Should().NotBeNull();
