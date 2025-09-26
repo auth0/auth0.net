@@ -223,7 +223,9 @@ public abstract class ClientBase
     [JsonProperty("token_quota")]
     public TokenQuota TokenQuota { get; set; }
     
-    ///  <inheritdoc cref="Auth0.ManagementApi.Models.SessionTransfer"/>
+    /// <summary>
+    /// Native to Web SSO configuration.
+    /// </summary>
     [JsonProperty("session_transfer")]
     public SessionTransfer? SessionTransfer { get; set; }
 }

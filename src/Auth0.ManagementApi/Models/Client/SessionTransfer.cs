@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Auth0.ManagementApi.Models;
 
@@ -29,8 +30,9 @@ public class SessionTransfer
     /// If set to 'null', device binding is not enforced.
     /// </summary>
     /// <remarks>Possible values: [ip, asn, none]</remarks>
+    [JsonConverter(typeof(StringEnumConverter))]
     [JsonProperty("enforce_device_binding")]
-    public string? EnforceDeviceBinding { get; set; }
+    public DeviceBindingType? EnforceDeviceBinding { get; set; }
     
     /// <summary>
     /// Indicates whether Refresh Tokens are allowed to be issued when authenticating with a session_transfer_token.
