@@ -222,4 +222,10 @@ public abstract class ClientBase
     /// </summary>
     [JsonProperty("token_quota")]
     public TokenQuota TokenQuota { get; set; }
+    
+    /// <summary>
+    /// Native to Web SSO configuration.
+    /// </summary>
+    [JsonProperty("session_transfer")]
+    public SessionTransfer? SessionTransfer { get; set; }
 }
