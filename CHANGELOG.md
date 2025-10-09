@@ -1,5 +1,11 @@
 # Change Log
 
+## [7.42.0](https://github.com/auth0/auth0.net/tree/7.42.0) (2025-10-09)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.41.0...7.42.0)
+
+**Added**
+- Adds support to manage Native to SSO configuration on clients [\#885](https://github.com/auth0/auth0.net/pull/885) ([kailash-b](https://github.com/kailash-b))
+
 ## [7.41.0](https://github.com/auth0/auth0.net/tree/7.41.0) (2025-09-15)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.40.0...7.41.0)
 
