@@ -141,7 +141,7 @@ public class ResourceServerTests : IClassFixture<ResourceServerTestsFixture>
             },
             ProofOfPossession = new ProofOfPossession()
             {
-                Mechanism = Mechanism.Mtls,
+                Mechanism = Mechanism.DPoP,
                 Required = true
             }
         };
@@ -153,7 +153,7 @@ public class ResourceServerTests : IClassFixture<ResourceServerTestsFixture>
         updateResourceServerResponse.AuthorizationDetails.Should().NotBeNullOrEmpty();
         updateResourceServerResponse.TokenEncryption.Should().NotBeNull();
         updateResourceServerResponse.ProofOfPossession.Should().NotBeNull();
-        updateResourceServerResponse.ProofOfPossession.Mechanism.Should().Be(Mechanism.Mtls);
+        updateResourceServerResponse.ProofOfPossession.Mechanism.Should().Be(Mechanism.DPoP);
 
         // Get a single resource server
         var resourceServer = await fixture.ApiClient.ResourceServers.GetAsync(newResourceServerResponse.Id);
