@@ -12,4 +12,10 @@ public enum Mechanism
     /// </summary>
     [EnumMember(Value = "mtls")]
     Mtls,
+    
+    /// <summary>
+    /// Mechanism 'dpop'
+    /// </summary>
+    [EnumMember(Value = "dpop")]
+    DPoP,
 }
