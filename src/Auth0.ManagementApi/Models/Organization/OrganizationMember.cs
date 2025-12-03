@@ -32,6 +32,10 @@ public class OrganizationMember
     /// <summary>
     /// The roles of the user
     /// </summary>
+    /// <remarks>
+    /// This property is optional and may be null.
+    /// It will only be present if OrganizationGetAllMembersRequest.Fields includes "roles" and OrganizationGetAllMembersRequest.IncludeFields is true.
+    /// </remarks>
     [JsonProperty("roles")]
-    public IList<Role> Roles { get; set; }
+    public IList<Role>? Roles { get; set; }
 }
