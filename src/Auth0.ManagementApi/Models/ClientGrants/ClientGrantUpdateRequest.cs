@@ -30,4 +30,10 @@ public class ClientGrantUpdateRequest
     /// </summary>
     [JsonProperty("allow_any_organization")]
     public bool? AllowAnyOrganization { get; set; }
+    
+    /// <summary>
+    /// Types of authorization_details allowed for this client grant.
+    /// </summary>
+    [JsonProperty("authorization_details_types")]
+    public string[]? AuthorizationDetailsTypes { get; set; }
 }

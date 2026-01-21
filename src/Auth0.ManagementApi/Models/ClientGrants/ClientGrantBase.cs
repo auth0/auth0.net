@@ -42,4 +42,17 @@ public class ClientGrantBase
     /// </summary>
     [JsonProperty("allow_any_organization")]
     public bool? AllowAnyOrganization { get; set; }
+    
+    /// <summary>
+    /// <inheritdoc cref="ClientGrantSubjectType"/>
+    /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonProperty("subject_type")]
+    public ClientGrantSubjectType? SubjectType { get; set; }
+    
+    /// <summary>
+    /// Types of authorization_details allowed for this client grant.
+    /// </summary>
+    [JsonProperty("authorization_details_types")]
+    public string[]? AuthorizationDetailsTypes { get; set; }
 }

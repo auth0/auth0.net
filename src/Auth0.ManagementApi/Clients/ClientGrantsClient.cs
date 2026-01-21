@@ -68,6 +68,7 @@ public class ClientGrantsClient : BaseClient, IClientGrantsClient
         };
             
         queryStrings.AddIfNotEmpty("allow_any_organization", request.AllowAnyOrganization?.ToString() ?? string.Empty);
+        queryStrings.AddIfNotEmpty("subject_type", request.SubjectType?.ToString() ?? string.Empty);
 
         if (pagination != null)
         {

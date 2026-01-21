@@ -1,4 +1,7 @@
-﻿namespace Auth0.ManagementApi.Models;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+
+namespace Auth0.ManagementApi.Models;
 
 /// <summary>
 /// Specifies criteria to use when querying all client grants.
@@ -19,4 +22,11 @@ public class GetClientGrantsRequest
     /// If enabled, any organization can be used with this grant. If disabled (default), the grant must be explicitly assigned to the desired organizations. 
     /// </summary>
     public bool? AllowAnyOrganization { get; set; }  
+    
+    /// <summary>
+    /// <inheritdoc cref="ClientGrantSubjectType"/>
+    /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonProperty("subject_type")]
+    public ClientGrantSubjectType? SubjectType { get; set; }
 }
