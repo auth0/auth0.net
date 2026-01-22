@@ -83,6 +83,17 @@ public class ResourceServerTests : IClassFixture<ResourceServerTestsFixture>
             {
                 Mechanism = Mechanism.Mtls,
                 Required = true
+            },
+            SubjectTypeAuthorization =  new SubjectTypeAuthorization
+            {
+                User = new SubjectTypeAuthorizationUser
+                {
+                    Policy = SubjectTypeAuthorizationUserPolicy.RequireClientGrant
+                },
+                Client = new SubjectTypeAuthorizationClient()
+                {
+                    Policy = SubjectTypeAuthorizationClientPolicy.DenyAll
+                }
             }
         };
 
@@ -143,6 +154,17 @@ public class ResourceServerTests : IClassFixture<ResourceServerTestsFixture>
             {
                 Mechanism = Mechanism.DPoP,
                 Required = true
+            },
+            SubjectTypeAuthorization = new SubjectTypeAuthorization()
+            {
+                User = new SubjectTypeAuthorizationUser
+                {
+                    Policy = SubjectTypeAuthorizationUserPolicy.DenyAll
+                },
+                Client = new SubjectTypeAuthorizationClient()
+                {
+                    Policy = SubjectTypeAuthorizationClientPolicy.DenyAll
+                }
             }
         };
         var updateResourceServerResponse = await fixture.ApiClient.ResourceServers.UpdateAsync(newResourceServerResponse.Id, updateResourceServerRequest);

@@ -105,4 +105,10 @@ public class ResourceServerBase
     /// </summary>
     [JsonProperty("proof_of_possession")]
     public ProofOfPossession ProofOfPossession { get; set; }
+    
+    /// <summary>
+    /// <inheritdoc cref="Auth0.ManagementApi.Models.SubjectTypeAuthorization"/>
+    /// </summary>
+    [JsonProperty("subject_type_authorization")]
+    public SubjectTypeAuthorization? SubjectTypeAuthorization { get; set; }
 }
