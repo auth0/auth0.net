@@ -36,4 +36,10 @@ public class ClientGrantUpdateRequest
     /// </summary>
     [JsonProperty("authorization_details_types")]
     public string[]? AuthorizationDetailsTypes { get; set; }
+    
+    /// <summary>
+    /// When enabled, all scopes configured on the resource server are allowed for by this client grant.
+    /// </summary>
+    [JsonProperty("allow_all_scopes")]
+    public bool? AllowAllScopes { get; set; }
 }
