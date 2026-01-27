@@ -33,6 +33,14 @@ public interface IClientGrantsClient
   Task<IPagedList<ClientGrant>> GetAllAsync(GetClientGrantsRequest request, PaginationInfo pagination = null, CancellationToken cancellationToken = default);
 
   /// <summary>
+  /// Fetches a client grant.
+  /// </summary>
+  /// <param name="id">The identifier of the client grant to fetch.</param>
+  /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+  /// <returns>The <see cref="ClientGrant"/>.</returns>
+  Task<ClientGrant> GetAsync(string id, CancellationToken cancellationToken = default);
+  
+  /// <summary>
   /// Updates a client grant.
   /// </summary>
   /// <param name="id">The identifier of the client grant to update.</param>

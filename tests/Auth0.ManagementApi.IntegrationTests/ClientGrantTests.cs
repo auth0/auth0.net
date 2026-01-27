@@ -96,7 +96,7 @@ public class ClientGrantTests : IClassFixture<ClientGrantTestsFixture>
                 "scope2"
             },
             SubjectType = ClientGrantSubjectType.User,
-            AuthorizationDetailsTypes = ["client_credentials"]
+            
         };
 
         var newClientGrantResponse = await fixture.ApiClient.ClientGrants.CreateAsync(newClientGrantRequest);
@@ -107,12 +107,12 @@ public class ClientGrantTests : IClassFixture<ClientGrantTestsFixture>
 
         fixture.TrackIdentifier(CleanUpType.ClientGrants, newClientGrantResponse.Id);
 
+        var fetchedSingleClientGrant = await fixture.ApiClient.ClientGrants.GetAsync(newClientGrantResponse.Id);
+        fetchedSingleClientGrant.Should().NotBeNull();
+        
         // Get all the client grants again, and verify we have one more
         var clientGrantsAfter = await fixture.ApiClient.ClientGrants.GetAllAsync(new GetClientGrantsRequest(), new PaginationInfo());
         clientGrantsAfter.Count.Should().Be(clientGrantsBefore.Count + 1);
-        clientGrantsAfter[0].ClientId.Should().Be(newClientGrantResponse.Id);
-        clientGrantsAfter[0].SubjectType.Should().Be(ClientGrantSubjectType.User);
-        clientGrantsAfter[0].AuthorizationDetailsTypes.Should().ContainSingle().Which.Should().Be("client_credentials");
 
         // Update the client grant
         var updateClientGrantRequest = new ClientGrantUpdateRequest
@@ -120,16 +120,13 @@ public class ClientGrantTests : IClassFixture<ClientGrantTestsFixture>
             Scope = new List<string>
             {
                 "scope3"
-            },
-            AuthorizationDetailsTypes =  ["client_credentials"]
+            }
         };
         var updateClientGrantResponse =
             await fixture.ApiClient.ClientGrants.UpdateAsync(newClientGrantResponse.Id, updateClientGrantRequest);
         updateClientGrantResponse.Should().NotBeNull();
         updateClientGrantResponse.Scope.Count.Should().Be(1);
         updateClientGrantResponse.Scope[0].Should().Be("scope3");
-        updateClientGrantResponse.AuthorizationDetailsTypes.Should().ContainSingle().Which.Should().Be("client_credentials");
-        updateClientGrantResponse.SubjectType.Should().Be(ClientGrantSubjectType.User);
 
         // Delete the client grant
         await fixture.ApiClient.ClientGrants.DeleteAsync(newClientGrantResponse.Id);

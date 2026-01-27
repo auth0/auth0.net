@@ -80,6 +80,14 @@ public class ClientGrantsClient : BaseClient, IClientGrantsClient
         return Connection.GetAsync<IPagedList<ClientGrant>>(BuildUri("client-grants", queryStrings), DefaultHeaders, converters, cancellationToken);
     }
 
+    
+    /// <inheritdoc/>
+    public Task<ClientGrant> GetAsync(string id, CancellationToken cancellationToken = default)
+    {
+        id.ThrowIfNull();
+        return Connection.GetAsync<ClientGrant>(BuildUri($"client-grants/{EncodePath(id)}"), DefaultHeaders, cancellationToken: cancellationToken);
+    }
+
     /// <summary>
     /// Updates a client grant.
     /// </summary>
