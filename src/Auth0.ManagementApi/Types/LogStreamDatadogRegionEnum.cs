@@ -1,0 +1,73 @@
+using System.Text.Json.Serialization;
+using Auth0.ManagementApi.Core;
+
+namespace Auth0.ManagementApi;
+
+[JsonConverter(typeof(StringEnumSerializer<LogStreamDatadogRegionEnum>))]
+[Serializable]
+public readonly record struct LogStreamDatadogRegionEnum : IStringEnum
+{
+    public static readonly LogStreamDatadogRegionEnum Us = new(Values.Us);
+
+    public static readonly LogStreamDatadogRegionEnum Eu = new(Values.Eu);
+
+    public static readonly LogStreamDatadogRegionEnum Us3 = new(Values.Us3);
+
+    public static readonly LogStreamDatadogRegionEnum Us5 = new(Values.Us5);
+
+    public LogStreamDatadogRegionEnum(string value)
+    {
+        Value = value;
+    }
+
+    /// <summary>
+    /// The string value of the enum.
+    /// </summary>
+    public string Value { get; }
+
+    /// <summary>
+    /// Create a string enum with the given value.
+    /// </summary>
+    public static LogStreamDatadogRegionEnum FromCustom(string value)
+    {
+        return new LogStreamDatadogRegionEnum(value);
+    }
+
+    public bool Equals(string? other)
+    {
+        return Value.Equals(other);
+    }
+
+    /// <summary>
+    /// Returns the string value of the enum.
+    /// </summary>
+    public override string ToString()
+    {
+        return Value;
+    }
+
+    public static bool operator ==(LogStreamDatadogRegionEnum value1, string value2) =>
+        value1.Value.Equals(value2);
+
+    public static bool operator !=(LogStreamDatadogRegionEnum value1, string value2) =>
+        !value1.Value.Equals(value2);
+
+    public static explicit operator string(LogStreamDatadogRegionEnum value) => value.Value;
+
+    public static explicit operator LogStreamDatadogRegionEnum(string value) => new(value);
+
+    /// <summary>
+    /// Constant strings for enum values
+    /// </summary>
+    [Serializable]
+    public static class Values
+    {
+        public const string Us = "us";
+
+        public const string Eu = "eu";
+
+        public const string Us3 = "us3";
+
+        public const string Us5 = "us5";
+    }
+}

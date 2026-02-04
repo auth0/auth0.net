@@ -1,0 +1,85 @@
+using System.Text.Json.Serialization;
+using Auth0.ManagementApi.Core;
+
+namespace Auth0.ManagementApi;
+
+[JsonConverter(
+    typeof(StringEnumSerializer<GuardianFactorsProviderPushNotificationProviderDataEnum>)
+)]
+[Serializable]
+public readonly record struct GuardianFactorsProviderPushNotificationProviderDataEnum : IStringEnum
+{
+    public static readonly GuardianFactorsProviderPushNotificationProviderDataEnum Guardian = new(
+        Values.Guardian
+    );
+
+    public static readonly GuardianFactorsProviderPushNotificationProviderDataEnum Sns = new(
+        Values.Sns
+    );
+
+    public static readonly GuardianFactorsProviderPushNotificationProviderDataEnum Direct = new(
+        Values.Direct
+    );
+
+    public GuardianFactorsProviderPushNotificationProviderDataEnum(string value)
+    {
+        Value = value;
+    }
+
+    /// <summary>
+    /// The string value of the enum.
+    /// </summary>
+    public string Value { get; }
+
+    /// <summary>
+    /// Create a string enum with the given value.
+    /// </summary>
+    public static GuardianFactorsProviderPushNotificationProviderDataEnum FromCustom(string value)
+    {
+        return new GuardianFactorsProviderPushNotificationProviderDataEnum(value);
+    }
+
+    public bool Equals(string? other)
+    {
+        return Value.Equals(other);
+    }
+
+    /// <summary>
+    /// Returns the string value of the enum.
+    /// </summary>
+    public override string ToString()
+    {
+        return Value;
+    }
+
+    public static bool operator ==(
+        GuardianFactorsProviderPushNotificationProviderDataEnum value1,
+        string value2
+    ) => value1.Value.Equals(value2);
+
+    public static bool operator !=(
+        GuardianFactorsProviderPushNotificationProviderDataEnum value1,
+        string value2
+    ) => !value1.Value.Equals(value2);
+
+    public static explicit operator string(
+        GuardianFactorsProviderPushNotificationProviderDataEnum value
+    ) => value.Value;
+
+    public static explicit operator GuardianFactorsProviderPushNotificationProviderDataEnum(
+        string value
+    ) => new(value);
+
+    /// <summary>
+    /// Constant strings for enum values
+    /// </summary>
+    [Serializable]
+    public static class Values
+    {
+        public const string Guardian = "guardian";
+
+        public const string Sns = "sns";
+
+        public const string Direct = "direct";
+    }
+}

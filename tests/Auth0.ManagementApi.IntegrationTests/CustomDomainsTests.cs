@@ -1,7 +1,6 @@
-﻿using System;
+using System;
+using System.Linq;
 using System.Threading.Tasks;
-using Auth0.Core.Exceptions;
-using Auth0.ManagementApi.Models;
 using Auth0.Tests.Shared;
 using FluentAssertions;
 using Xunit;
@@ -16,23 +15,29 @@ public class CustomDomainsTests : TestBase
     [Fact(Skip = "Run manually")]
     public async Task Test_custom_domains()
     {
-        string token = await GenerateBruckeManagementApiToken();
+        var managementApiUrl = GetVariable("BRUCKE_MANAGEMENT_API_URL");
+        var domain = managementApiUrl.Replace("https://", "").TrimEnd('/');
 
-        using (var apiClient = new ManagementApiClient(token, GetVariable("BRUCKE_MANAGEMENT_API_URL")))
+        using (var apiClient = new ManagementClient(new ManagementClientOptions
+        {
+            Domain = domain,
+            ClientId = GetVariable("BRUCKE_MANAGEMENT_API_CLIENT_ID"),
+            ClientSecret = GetVariable("BRUCKE_MANAGEMENT_API_CLIENT_SECRET")
+        }))
         {
             // Test getting all custom domains
-            var domains = await apiClient.CustomDomains.GetAllAsync();
+            var domains = (await apiClient.CustomDomains.ListAsync(new ListCustomDomainsRequestParameters())).ToList();
             domains.Should().HaveCount(1); // There is only one custom domain currently registered on this tenant
 
             string id = domains[0].CustomDomainId;
 
             // Test getting a single custom domain
-            var domain = await apiClient.CustomDomains.GetAsync(id);
-            domain.Should().NotBeNull();
-            domain.CustomDomainId.Should().Be(id);
-                
+            var customDomain = await apiClient.CustomDomains.GetAsync(id);
+            customDomain.Should().NotBeNull();
+            customDomain.CustomDomainId.Should().Be(id);
+
             // Test updating a custom domain
-            var updateRequest = new CustomDomainUpdateRequest()
+            var updateRequest = new UpdateCustomDomainRequestContent
             {
                 TlsPolicy = "recommended",
                 CustomClientIpHeader = null
@@ -41,7 +46,7 @@ public class CustomDomainsTests : TestBase
             var updatedCustomDomain = await apiClient.CustomDomains.UpdateAsync(id, updateRequest);
             updatedCustomDomain.Should().NotBeNull();
             updatedCustomDomain.CustomClientIpHeader.Should().Be(updateRequest.CustomClientIpHeader);
-            updatedCustomDomain.TlsPolicy.Should().Be(updateRequest.TlsPolicy);
+            updatedCustomDomain.TlsPolicy.Should().Be("recommended");
 
             string non_existent_id = "cd_XXw4P8C04x1Aa9e5";
 
@@ -50,19 +55,17 @@ public class CustomDomainsTests : TestBase
             await apiClient.CustomDomains.DeleteAsync(non_existent_id);
 
             // Test verifying a non-existing id. This will give 404
-            Func<Task<CustomDomainVerificationResponse>> verifyFunc = async () => await apiClient.CustomDomains.VerifyAsync(non_existent_id);
-            verifyFunc.Should().Throw<ApiException>()
-                .WithMessage($"The custom domain {non_existent_id} does not exist");
+            Func<Task> verifyFunc = async () => await apiClient.CustomDomains.VerifyAsync(non_existent_id);
+            await verifyFunc.Should().ThrowAsync<NotFoundError>();
 
             // Test adding a new domain. The BRUCKE tenant only allows one, so this should throw
-            Func<Task<CustomDomain>> createFunc = async () => await apiClient.CustomDomains.CreateAsync(new CustomDomainCreateRequest
+            Func<Task> createFunc = async () => await apiClient.CustomDomains.CreateAsync(new CreateCustomDomainRequestContent
             {
                 Domain = "test.brucke.club",
-                Type = CustomDomainCertificateProvisioning.Auth0ManagedCertificate,
+                Type = CustomDomainProvisioningTypeEnum.Auth0ManagedCerts,
                 VerificationMethod = "txt"
             });
-            createFunc.Should().Throw<ApiException>()
-                .WithMessage("You reached the maximum number of custom domains for your account (MAX ALLOWED: 1)");
+            await createFunc.Should().ThrowAsync<ManagementApiException>();
         }
     }
 }

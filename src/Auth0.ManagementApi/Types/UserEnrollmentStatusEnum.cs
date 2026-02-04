@@ -1,0 +1,65 @@
+using System.Text.Json.Serialization;
+using Auth0.ManagementApi.Core;
+
+namespace Auth0.ManagementApi;
+
+[JsonConverter(typeof(StringEnumSerializer<UserEnrollmentStatusEnum>))]
+[Serializable]
+public readonly record struct UserEnrollmentStatusEnum : IStringEnum
+{
+    public static readonly UserEnrollmentStatusEnum Pending = new(Values.Pending);
+
+    public static readonly UserEnrollmentStatusEnum Confirmed = new(Values.Confirmed);
+
+    public UserEnrollmentStatusEnum(string value)
+    {
+        Value = value;
+    }
+
+    /// <summary>
+    /// The string value of the enum.
+    /// </summary>
+    public string Value { get; }
+
+    /// <summary>
+    /// Create a string enum with the given value.
+    /// </summary>
+    public static UserEnrollmentStatusEnum FromCustom(string value)
+    {
+        return new UserEnrollmentStatusEnum(value);
+    }
+
+    public bool Equals(string? other)
+    {
+        return Value.Equals(other);
+    }
+
+    /// <summary>
+    /// Returns the string value of the enum.
+    /// </summary>
+    public override string ToString()
+    {
+        return Value;
+    }
+
+    public static bool operator ==(UserEnrollmentStatusEnum value1, string value2) =>
+        value1.Value.Equals(value2);
+
+    public static bool operator !=(UserEnrollmentStatusEnum value1, string value2) =>
+        !value1.Value.Equals(value2);
+
+    public static explicit operator string(UserEnrollmentStatusEnum value) => value.Value;
+
+    public static explicit operator UserEnrollmentStatusEnum(string value) => new(value);
+
+    /// <summary>
+    /// Constant strings for enum values
+    /// </summary>
+    [Serializable]
+    public static class Values
+    {
+        public const string Pending = "pending";
+
+        public const string Confirmed = "confirmed";
+    }
+}

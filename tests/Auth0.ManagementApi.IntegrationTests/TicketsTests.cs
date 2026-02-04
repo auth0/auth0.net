@@ -1,66 +1,62 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
-using Auth0.ManagementApi.Models;
 using FluentAssertions;
 using Xunit;
 using System.Collections.Generic;
 using Auth0.IntegrationTests.Shared.CleanUp;
 using Auth0.ManagementApi.IntegrationTests.Testing;
+using Auth0.ManagementApi.Organizations;
 using Auth0.Tests.Shared;
 
 namespace Auth0.ManagementApi.IntegrationTests;
 
 public class TicketsTestsFixture : TestBaseFixture
 {
-
-    public Connection AuthConnection;
-    public Connection EmailConnection;
-    public User Auth0User;
-    public User EmailUser;
+    public CreateConnectionResponseContent AuthConnection;
+    public CreateConnectionResponseContent EmailConnection;
+    public CreateUserResponseContent Auth0User;
+    public CreateUserResponseContent EmailUser;
     public const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
 
     public override async Task InitializeAsync()
     {
         await base.InitializeAsync();
 
-        AuthConnection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
+        AuthConnection = await ApiClient.Connections.CreateAsync(new CreateConnectionRequestContent
         {
             Name = $"{TestingConstants.ConnectionPrefix}-{TestBaseUtils.MakeRandomName()}",
-            Strategy = "auth0",
+            Strategy = ConnectionIdentityProviderEnum.Auth0,
             EnabledClients = new[] { TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
         });
 
         TrackIdentifier(CleanUpType.Connections, AuthConnection.Id);
 
-        EmailConnection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
+        EmailConnection = await ApiClient.Connections.CreateAsync(new CreateConnectionRequestContent
         {
             Name = $"{TestingConstants.ConnectionPrefix}-{TestBaseUtils.MakeRandomName()}",
-            Strategy = "email",
+            Strategy = ConnectionIdentityProviderEnum.Email,
             EnabledClients = new[] { TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
         });
 
         TrackIdentifier(CleanUpType.Connections, EmailConnection.Id);
 
-        Auth0User = await ApiClient.Users.CreateAsync(new UserCreateRequest
-        {
-            Connection = AuthConnection.Name,
-            Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
-            EmailVerified = true,
-            Password = Password
-        });
+        Auth0User = await ApiClient.Users.CreateAsync(TestBaseUtils.CreateUserRequest(
+            connection: AuthConnection.Name,
+            email: $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
+            emailVerified: true,
+            password: Password
+        ));
 
         TrackIdentifier(CleanUpType.Users, Auth0User.UserId);
 
-        EmailUser = await ApiClient.Users.CreateAsync(new UserCreateRequest
-        {
-            Connection = EmailConnection.Name,
-            Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
-            EmailVerified = true,
-        });
+        EmailUser = await ApiClient.Users.CreateAsync(TestBaseUtils.CreateUserRequest(
+            connection: EmailConnection.Name,
+            email: $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
+            emailVerified: true
+        ));
 
         TrackIdentifier(CleanUpType.Users, EmailUser.UserId);
     }
-
 
     public override async Task DisposeAsync()
     {
@@ -87,34 +83,32 @@ public class TicketsTests : IClassFixture<TicketsTestsFixture>
     {
         var existingOrganizationId = "org_x2j4mAL75v96wKkt";
 
-        await fixture.ApiClient.Organizations.AddMembersAsync(existingOrganizationId, new OrganizationAddMembersRequest
+        await fixture.ApiClient.Organizations.Members.CreateAsync(existingOrganizationId, new CreateOrganizationMemberRequestContent
         {
             Members = new List<string> { fixture.Auth0User.UserId }
         });
 
         // Send email verification ticket
-        var verificationTicketRequest = new EmailVerificationTicketRequest
-        {
-            UserId = fixture.Auth0User.UserId,
-            OrganizationId = "org_x2j4mAL75v96wKkt"
-        };
-        var verificationTicketResponse = await fixture.ApiClient.Tickets.CreateEmailVerificationTicketAsync(verificationTicketRequest);
+        var verifyRequest = TestBaseUtils.CreateVerifyEmailTicketRequest(
+            userId: fixture.Auth0User.UserId
+        );
+        verifyRequest.OrganizationId = existingOrganizationId;
+        var verificationTicketResponse = await fixture.ApiClient.Tickets.VerifyEmailAsync(verifyRequest);
         verificationTicketResponse.Should().NotBeNull();
-        verificationTicketResponse.Value.Should().NotBeNull();
+        verificationTicketResponse.Ticket.Should().NotBeNull();
 
         // Send password change ticket
-        var changeTicketRequest = new PasswordChangeTicketRequest
-        {
-            UserId = fixture.Auth0User.UserId,
-            ResultUrl = "http://www.nonexistingdomain.aaa/success",
-            MarkEmailAsVerified = true,
-            IncludeEmailInRedirect = true,
-        };
-        var changeTicketRsponse = await fixture.ApiClient.Tickets.CreatePasswordChangeTicketAsync(changeTicketRequest);
-        changeTicketRsponse.Should().NotBeNull();
-        changeTicketRsponse.Value.Should().NotBeNull();
+        var changeRequest = TestBaseUtils.CreateChangePasswordTicketRequest(
+            userId: fixture.Auth0User.UserId
+        );
+        changeRequest.ResultUrl = "http://www.nonexistingdomain.aaa/success";
+        changeRequest.MarkEmailAsVerified = true;
+        changeRequest.IncludeEmailInRedirect = true;
+        var changeTicketResponse = await fixture.ApiClient.Tickets.ChangePasswordAsync(changeRequest);
+        changeTicketResponse.Should().NotBeNull();
+        changeTicketResponse.Ticket.Should().NotBeNull();
 
-        await fixture.ApiClient.Organizations.DeleteMembersAsync(existingOrganizationId, new OrganizationDeleteMembersRequest
+        await fixture.ApiClient.Organizations.Members.DeleteAsync(existingOrganizationId, new DeleteOrganizationMembersRequestContent
         {
             Members = new List<string> { fixture.Auth0User.UserId }
         });
@@ -123,29 +117,29 @@ public class TicketsTests : IClassFixture<TicketsTestsFixture>
     [Fact]
     public async Task Can_send_verification_email_with_identity()
     {
-        var verificationTicketResponse = await fixture.ApiClient.Tickets.CreateEmailVerificationTicketAsync(new EmailVerificationTicketRequest
+        var verifyRequest = TestBaseUtils.CreateVerifyEmailTicketRequest(
+            userId: fixture.EmailUser.UserId
+        );
+        verifyRequest.ResultUrl = "http://www.nonexistingdomain.aaa/success";
+        verifyRequest.Identity = new Identity
         {
-            UserId = fixture.EmailUser.UserId,
-            ResultUrl = "http://www.nonexistingdomain.aaa/success",
-            Identity = new EmailVerificationIdentity
-            {
-                Provider = "email",
-                UserId = fixture.EmailUser.UserId.Replace("email|", "")
-            }
-        });
+            Provider = (IdentityProviderEnum)"email",
+            UserId = fixture.EmailUser.UserId.Replace("email|", "")
+        };
+        var verificationTicketResponse = await fixture.ApiClient.Tickets.VerifyEmailAsync(verifyRequest);
         verificationTicketResponse.Should().NotBeNull();
-        verificationTicketResponse.Value.Should().NotBeNull();
+        verificationTicketResponse.Ticket.Should().NotBeNull();
     }
 
     [Fact]
     public async Task Can_send_verification_email_with_client_id()
     {
-        var verificationTicketResponse = await fixture.ApiClient.Tickets.CreateEmailVerificationTicketAsync(new EmailVerificationTicketRequest
-        {
-            UserId = fixture.Auth0User.UserId,
-            ClientId = TestBaseUtils.GetVariable("AUTH0_CLIENT_ID")
-        });
+        var verifyRequest = TestBaseUtils.CreateVerifyEmailTicketRequest(
+            userId: fixture.Auth0User.UserId,
+            clientId: TestBaseUtils.GetVariable("AUTH0_CLIENT_ID")
+        );
+        var verificationTicketResponse = await fixture.ApiClient.Tickets.VerifyEmailAsync(verifyRequest);
         verificationTicketResponse.Should().NotBeNull();
-        verificationTicketResponse.Value.Should().NotBeNull();
+        verificationTicketResponse.Ticket.Should().NotBeNull();
     }
 }

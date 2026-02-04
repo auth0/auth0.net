@@ -1,0 +1,29 @@
+using Auth0.ManagementApi;
+
+namespace Auth0.ManagementApi.SelfServiceProfiles;
+
+public partial interface ICustomTextClient
+{
+    /// <summary>
+    /// Retrieves text customizations for a given self-service profile, language and Self Service SSO Flow page.
+    /// </summary>
+    WithRawResponseTask<Dictionary<string, string>> ListAsync(
+        string id,
+        string language,
+        string page,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Updates text customizations for a given self-service profile, language and Self Service SSO Flow page.
+    /// </summary>
+    WithRawResponseTask<Dictionary<string, string>> SetAsync(
+        string id,
+        string language,
+        string page,
+        Dictionary<string, string> request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+}

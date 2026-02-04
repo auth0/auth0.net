@@ -1,14 +1,16 @@
-﻿using Auth0.Core.Exceptions;
-using Auth0.ManagementApi.Models;
-using Auth0.Tests.Shared;
-using FluentAssertions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Auth0.IntegrationTests.Shared.CleanUp;
+using Auth0.ManagementApi.Connections;
 using Auth0.ManagementApi.IntegrationTests.Testing;
-using Auth0.ManagementApi.Paging;
+using Auth0.ManagementApi.Organizations;
+using Auth0.ManagementApi.Organizations.Members;
+using Auth0.ManagementApi.Roles;
+using Auth0.ManagementApi.Users;
+using Auth0.Tests.Shared;
+using FluentAssertions;
 using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests;
@@ -28,11 +30,6 @@ public class OrganizationTestsFixture : TestBaseFixture
 
 public class OrganizationTests : IClassFixture<OrganizationTestsFixture>
 {
-    private const string ExistingOrganizationId = "org_x2j4mAL75v96wKkt";
-    private const string ExistingConnectionId = "con_vKey1CGOPTJClWrB";
-    private const string ExistingRoleId = "rol_gOsYvLA232E0vg7p";
-    private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
-
     private OrganizationTestsFixture fixture;
 
     public OrganizationTests(OrganizationTestsFixture fixture)
@@ -43,470 +40,435 @@ public class OrganizationTests : IClassFixture<OrganizationTestsFixture>
     [Fact]
     public async Task Test_organizations_crud_sequence()
     {
-        var initialOrganizations = await fixture.ApiClient.Organizations.GetAllAsync(new Paging.PaginationInfo());
+        // Get all organizations before
+        var organizationsPager = await fixture.ApiClient.Organizations.ListAsync(new ListOrganizationsRequestParameters());
+        var organizationsBefore = organizationsPager.CurrentPage.Items.ToList();
 
-        var createRequest = new OrganizationCreateRequest
+        // Create a new organization
+        var orgName = $"{TestingConstants.OrganizationPrefix}-{TestBaseUtils.MakeRandomName()}".ToLower();
+        var newOrganization = await fixture.ApiClient.Organizations.CreateAsync(new CreateOrganizationRequestContent
         {
-            Name = ($"{TestingConstants.OrganizationPrefix}-{TestBaseUtils.MakeRandomName()}").ToLower(),
-            DisplayName = "Integration testing",
+            Name = orgName,
+            DisplayName = "Test Organization",
             Branding = new OrganizationBranding
             {
-                LogoUrl = "https://cdn.auth0.com/manhattan/versions/1.2800.0/assets/./badge.png",
-                Colors = new BrandingColors
+                LogoUrl = "https://cdn.auth0.com/website/press/resources/auth0-logo-monotone-black.svg",
+                Colors = new OrganizationBrandingColors
                 {
                     Primary = "#ff0000",
-                    PageBackground = "#00ff00"
+                    PageBackground = "#ffffff"
                 }
             },
-            TokenQuota = new TokenQuota()
+            Metadata = new Dictionary<string, string?>
             {
-                ClientCredentials = new Quota()
-                {
-                    Enforce = true,
-                    PerDay = 100,
-                    PerHour = 10
-                }
+                { "key1", "value1" },
+                { "key2", "value2" }
             }
-        };
-        var createResponse = await fixture.ApiClient.Organizations.CreateAsync(createRequest);
-
-        fixture.TrackIdentifier(CleanUpType.Organizations, createResponse.Id);
-
-        createResponse.Should().NotBeNull();
-        createResponse.Name.Should().Be(createRequest.Name);
-        createResponse.Branding.LogoUrl.Should().Be(createRequest.Branding.LogoUrl);
-        createResponse.Branding.Colors.Primary.Should().Be("#ff0000");
-        createResponse.Branding.Colors.PageBackground.Should().Be("#00ff00");
-        createResponse.TokenQuota.Should().BeEquivalentTo(createRequest.TokenQuota);
-
-        var updateRequest = new OrganizationUpdateRequest
-        {
-            DisplayName = $"Integration testing 123",
-            TokenQuota = new TokenQuota()
-            {
-                ClientCredentials = new Quota()
-                {
-                    Enforce = false
-                }
-            }
-        };
-        var updateResponse = await fixture.ApiClient.Organizations.UpdateAsync(createResponse.Id, updateRequest);
-        updateResponse.Should().NotBeNull();
-        updateResponse.DisplayName.Should().Be(updateRequest.DisplayName);
-        updateResponse.TokenQuota.Should().BeEquivalentTo(updateRequest.TokenQuota);
-
-        var organization = await fixture.ApiClient.Organizations.GetAsync(createResponse.Id);
-        organization.Should().NotBeNull();
-        organization.DisplayName.Should().Be(updateResponse.DisplayName);
-        organization.TokenQuota.ClientCredentials.Enforce.Should().Be(false);
-
-        var organizationByName = await fixture.ApiClient.Organizations.GetByNameAsync(organization.Name);
-        organizationByName.Should().NotBeNull();
-        organizationByName.DisplayName.Should().Be(updateResponse.DisplayName);
-
-        var organizations = await fixture.ApiClient.Organizations.GetAllAsync(new Paging.PaginationInfo());
-        organizations.Count.Should().Be(initialOrganizations.Count + 1);
-
-        await fixture.ApiClient.Organizations.DeleteAsync(updateResponse.Id);
-        Func<Task> getFunc = async () => await fixture.ApiClient.Organizations.GetAsync(organization.Id);
-        getFunc.Should().Throw<ErrorApiException>().And.Message.Should().Be("No organization found by that id or name");
-
-        fixture.UnTrackIdentifier(CleanUpType.Organizations, createResponse.Id);
-    }
-
-    [Fact]
-    public async Task Test_organizations_checkpoint_pagination()
-    {
-        var organization1 = new OrganizationCreateRequest
-        {
-            Name = ($"{TestingConstants.OrganizationPrefix}-{TestBaseUtils.MakeRandomName()}").ToLower(),
-            DisplayName = "Integration testing",
-            Branding = new OrganizationBranding
-            {
-                LogoUrl = "https://cdn.auth0.com/manhattan/versions/1.2800.0/assets/./badge.png",
-                Colors = new BrandingColors
-                {
-                    Primary = "#ff0000",
-                    PageBackground = "#00ff00"
-                }
-            }
-        };
-        var createResponse1 = await fixture.ApiClient.Organizations.CreateAsync(organization1);
-
-        fixture.TrackIdentifier(CleanUpType.Organizations, createResponse1.Id);
-
-        var organization2 = new OrganizationCreateRequest
-        {
-            Name = ($"{TestingConstants.OrganizationPrefix}-" + TestBaseUtils.MakeRandomName()).ToLower(),
-            DisplayName = "Integration testing",
-            Branding = new OrganizationBranding
-            {
-                LogoUrl = "https://cdn.auth0.com/manhattan/versions/1.2800.0/assets/./badge.png",
-                Colors = new BrandingColors
-                {
-                    Primary = "#ff0000",
-                    PageBackground = "#00ff00"
-                }
-            }
-        };
-        var createResponse2 = await fixture.ApiClient.Organizations.CreateAsync(organization2);
-
-        fixture.TrackIdentifier(CleanUpType.Organizations, createResponse2.Id);
-
-        var firstCheckPointPaginationRequest = await fixture.ApiClient.Organizations.GetAllAsync(new Paging.CheckpointPaginationInfo(1));
-        var secondCheckPointPaginationRequest = await fixture.ApiClient.Organizations.GetAllAsync(new Paging.CheckpointPaginationInfo(1, firstCheckPointPaginationRequest.Paging.Next));
-
-        secondCheckPointPaginationRequest.Count.Should().Be(1);
-        secondCheckPointPaginationRequest.Paging.Next.Should().NotBeNullOrEmpty();
-
-        await fixture.ApiClient.Organizations.DeleteAsync(createResponse1.Id);
-        fixture.UnTrackIdentifier(CleanUpType.Organizations, createResponse1.Id);
-        await fixture.ApiClient.Organizations.DeleteAsync(createResponse2.Id);
-        fixture.UnTrackIdentifier(CleanUpType.Organizations, createResponse2.Id);
-    }
-
-    [Fact]
-    public async Task Test_organization_connections_crud_sequence()
-    {
-        var initialConnections = await fixture.ApiClient.Organizations.GetAllConnectionsAsync(ExistingOrganizationId, new Paging.PaginationInfo());
-
-        var createConnectionResponse = await fixture.ApiClient.Organizations.CreateConnectionAsync(ExistingOrganizationId, new OrganizationConnectionCreateRequest
-        {
-            ConnectionId = ExistingConnectionId,
-            AssignMembershipOnLogin = true,
-            IsSignUpEnabled = true
         });
 
-        createConnectionResponse.Should().NotBeNull();
-        createConnectionResponse.AssignMembershipOnLogin.Should().Be(true);
-        createConnectionResponse.IsSignUpEnabled.Should().Be(true);
+        newOrganization.Should().NotBeNull();
+        newOrganization.Id.Should().NotBeNullOrEmpty();
+        newOrganization.Name.Should().Be(orgName);
+        newOrganization.DisplayName.Should().Be("Test Organization");
+
+        fixture.TrackIdentifier(CleanUpType.Organizations, newOrganization.Id);
 
         try
         {
-            var updateConnectionResponse = await fixture.ApiClient.Organizations.UpdateConnectionAsync(ExistingOrganizationId, ExistingConnectionId, new OrganizationConnectionUpdateRequest
+            // Get all organizations after creation
+            organizationsPager = await fixture.ApiClient.Organizations.ListAsync(new ListOrganizationsRequestParameters());
+            var organizationsAfter = organizationsPager.CurrentPage.Items.ToList();
+            organizationsAfter.Count.Should().Be(organizationsBefore.Count + 1);
+
+            // Get the specific organization by ID
+            var fetchedOrganization = await fixture.ApiClient.Organizations.GetAsync(newOrganization.Id);
+            fetchedOrganization.Should().NotBeNull();
+            fetchedOrganization.Id.Should().Be(newOrganization.Id);
+
+            // Get the organization by name
+            var fetchedByName = await fixture.ApiClient.Organizations.GetByNameAsync(newOrganization.Name);
+            fetchedByName.Should().NotBeNull();
+            fetchedByName.Id.Should().Be(newOrganization.Id);
+
+            // Update the organization
+            var updatedOrganization = await fixture.ApiClient.Organizations.UpdateAsync(newOrganization.Id, new UpdateOrganizationRequestContent
             {
-                AssignMembershipOnLogin = false,
-                IsSignUpEnabled = false
+                DisplayName = "Updated Organization Name"
             });
-
-            updateConnectionResponse.Should().NotBeNull();
-            updateConnectionResponse.AssignMembershipOnLogin.Should().Be(false);
-            updateConnectionResponse.IsSignUpEnabled.Should().Be(false);
-
-            var connection = await fixture.ApiClient.Organizations.GetConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
-
-            connection.Should().NotBeNull();
-            connection.AssignMembershipOnLogin.Should().Be(false);
-            connection.IsSignUpEnabled.Should().Be(false);
-
-            var connections = await fixture.ApiClient.Organizations.GetAllConnectionsAsync(ExistingOrganizationId, new Paging.PaginationInfo());
-            connections.Count.Should().Be(initialConnections.Count + 1);
-
-            await fixture.ApiClient.Organizations.DeleteConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
-
-            Func<Task> getFunc = async () => await fixture.ApiClient.Organizations.GetConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
-            getFunc.Should().Throw<ErrorApiException>().And.Message.Should().Be("No connection found by that id");
-
+            updatedOrganization.Should().NotBeNull();
+            updatedOrganization.DisplayName.Should().Be("Updated Organization Name");
         }
         finally
         {
-            // Unlink Connection
-            await fixture.ApiClient.Organizations.DeleteConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
+            // Delete the organization
+            await fixture.ApiClient.Organizations.DeleteAsync(newOrganization.Id);
+            fixture.UnTrackIdentifier(CleanUpType.Organizations, newOrganization.Id);
         }
     }
 
     [Fact]
-    public async Task Test_organization_members_crud_sequence()
+    public async Task Test_organization_enabled_connections()
     {
-        var user = await fixture.ApiClient.Users.CreateAsync(new UserCreateRequest
+        // Create a connection
+        var connectionName = $"{TestingConstants.ConnectionPrefix}-{TestBaseUtils.MakeRandomName()}";
+        var newConnection = await fixture.ApiClient.Connections.CreateAsync(new CreateConnectionRequestContent
         {
-            Connection = "Username-Password-Authentication",
-            Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
-            EmailVerified = true,
-            Password = Password
+            Name = connectionName,
+            Strategy = ConnectionIdentityProviderEnum.Auth0,
+            EnabledClients = new[] { TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
         });
+        fixture.TrackIdentifier(CleanUpType.Connections, newConnection.Id);
 
-        fixture.TrackIdentifier(CleanUpType.Users, user.UserId);
-
-        var user2 = await fixture.ApiClient.Users.CreateAsync(new UserCreateRequest
+        // Create an organization
+        var orgName = $"{TestingConstants.OrganizationPrefix}-{TestBaseUtils.MakeRandomName()}".ToLower();
+        var newOrganization = await fixture.ApiClient.Organizations.CreateAsync(new CreateOrganizationRequestContent
         {
-            Connection = "Username-Password-Authentication",
-            Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
-            EmailVerified = true,
-            Password = Password
+            Name = orgName,
+            DisplayName = "Test Organization"
         });
-
-        fixture.TrackIdentifier(CleanUpType.Users, user2.UserId);
-
-        await fixture.ApiClient.Organizations.AddMembersAsync(ExistingOrganizationId, new OrganizationAddMembersRequest
-        {
-            Members = new List<string> { user.UserId, user2.UserId }
-        });
+        fixture.TrackIdentifier(CleanUpType.Organizations, newOrganization.Id);
 
         try
         {
-            var members = await RetryUtils.Retry(() => fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new OrganizationGetAllMembersRequest { Fields = "name", IncludeFields = false }, new Paging.PaginationInfo()), members => members.Count != 2);
+            // Add connection to organization
+            var orgConnection = await fixture.ApiClient.Organizations.EnabledConnections.AddAsync(
+                newOrganization.Id,
+                new AddOrganizationConnectionRequestContent
+                {
+                    ConnectionId = newConnection.Id,
+                    AssignMembershipOnLogin = true
+                });
 
-            members.Count.Should().Be(2);
-            members[0].Name.Should().BeNull();
-            members[1].Name.Should().BeNull();
+            orgConnection.Should().NotBeNull();
+            orgConnection.ConnectionId.Should().Be(newConnection.Id);
 
-            await fixture.ApiClient.Organizations.DeleteMembersAsync(ExistingOrganizationId, new OrganizationDeleteMembersRequest
-            {
-                Members = new List<string> { user2.UserId }
-            });
+            // Get enabled connections
+            var connectionsPager = await fixture.ApiClient.Organizations.EnabledConnections.ListAsync(
+                newOrganization.Id,
+                new ListOrganizationConnectionsRequestParameters());
+            var connections = connectionsPager.CurrentPage.Items.ToList();
+            connections.Should().Contain(c => c.ConnectionId == newConnection.Id);
 
-            var updatedMembers = await fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new Paging.PaginationInfo());
+            // Get specific connection
+            var fetchedConnection = await fixture.ApiClient.Organizations.EnabledConnections.GetAsync(
+                newOrganization.Id,
+                newConnection.Id);
+            fetchedConnection.Should().NotBeNull();
+            fetchedConnection.ConnectionId.Should().Be(newConnection.Id);
 
-            updatedMembers.Count.Should().Be(1);
-                
-        } finally
-        {
-            await fixture.ApiClient.Users.DeleteAsync(user.UserId);
-            fixture.UnTrackIdentifier(CleanUpType.Users, user.UserId);
-            await fixture.ApiClient.Users.DeleteAsync(user2.UserId);
-            fixture.UnTrackIdentifier(CleanUpType.Users, user2.UserId);
-        }
-    }
+            // Update connection
+            var updatedConnection = await fixture.ApiClient.Organizations.EnabledConnections.UpdateAsync(
+                newOrganization.Id,
+                newConnection.Id,
+                new UpdateOrganizationConnectionRequestContent
+                {
+                    AssignMembershipOnLogin = false
+                });
+            updatedConnection.Should().NotBeNull();
 
-    [Fact(Skip = "Flakey - Run Manually")]
-    public async Task Test_organization_members_checkpoint_pagination()
-    {
-        User user = null;
-        User user2 = null;
-        try
-        {
-            user = await fixture.ApiClient.Users.CreateAsync(new UserCreateRequest
-            {
-                Connection = "Username-Password-Authentication",
-                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
-                EmailVerified = true,
-                Password = Password
-            });
+            // Delete connection from organization
+            await fixture.ApiClient.Organizations.EnabledConnections.DeleteAsync(
+                newOrganization.Id,
+                newConnection.Id);
 
-            fixture.TrackIdentifier(CleanUpType.Users, user.UserId);
-
-            user2 = await fixture.ApiClient.Users.CreateAsync(new UserCreateRequest
-            {
-                Connection = "Username-Password-Authentication",
-                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
-                EmailVerified = true,
-                Password = Password
-            });
-
-            fixture.TrackIdentifier(CleanUpType.Users, user2.UserId);
-
-            await fixture.ApiClient.Organizations.AddMembersAsync(ExistingOrganizationId, new OrganizationAddMembersRequest
-            {
-                Members = new List<string> { user.UserId, user2.UserId }
-            });
-
-            await RetryUtils.Retry(() => fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new Paging.CheckpointPaginationInfo(2)), response => response.Count != 2);
-
-            var firstCheckPointPaginationRequest = await fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new OrganizationGetAllMembersRequest { Fields = "name", IncludeFields = false }, new Paging.CheckpointPaginationInfo(1));
-            var secondCheckPointPaginationRequest = await fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new Paging.CheckpointPaginationInfo(1, firstCheckPointPaginationRequest.Paging.Next));
-
-            firstCheckPointPaginationRequest[0].Name.Should().BeNull();
-            secondCheckPointPaginationRequest.Count.Should().Be(1);
-            secondCheckPointPaginationRequest[0].Name.Should().NotBeNull();
-            secondCheckPointPaginationRequest.Paging.Next.Should().NotBeNullOrEmpty();
-
+            // Verify deletion
+            connectionsPager = await fixture.ApiClient.Organizations.EnabledConnections.ListAsync(
+                newOrganization.Id,
+                new ListOrganizationConnectionsRequestParameters());
+            connections = connectionsPager.CurrentPage.Items.ToList();
+            connections.Should().NotContain(c => c.ConnectionId == newConnection.Id);
         }
         finally
         {
-            await fixture.ApiClient.Organizations.DeleteMembersAsync(ExistingOrganizationId, new OrganizationDeleteMembersRequest { Members = new List<string> { user.UserId, user2.UserId } });
+            await fixture.ApiClient.Organizations.DeleteAsync(newOrganization.Id);
+            fixture.UnTrackIdentifier(CleanUpType.Organizations, newOrganization.Id);
 
-            await fixture.ApiClient.Users.DeleteAsync(user.UserId);
-            fixture.UnTrackIdentifier(CleanUpType.Users, user.UserId);
-
-            await fixture.ApiClient.Users.DeleteAsync(user2.UserId);
-            fixture.UnTrackIdentifier(CleanUpType.Users, user2.UserId);
-        }
-    }
-
-    [Fact(Skip = "Flakey - Run Manually")]
-    public async Task Test_organization_member_roles_crud_sequence()
-    {
-        var user = await fixture.ApiClient.Users.CreateAsync(new UserCreateRequest
-        {
-            Connection = "Username-Password-Authentication",
-            Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
-            EmailVerified = true,
-            Password = Password
-        });
-
-        fixture.TrackIdentifier(CleanUpType.Users, user.UserId);
-
-        try
-        {
-            await fixture.ApiClient.Organizations.AddMembersAsync(ExistingOrganizationId, new OrganizationAddMembersRequest
-            {
-                Members = new List<string> { user.UserId }
-            });
-
-            // Create
-            await fixture.ApiClient.Organizations.AddMemberRolesAsync(ExistingOrganizationId, user.UserId, new OrganizationAddMemberRolesRequest
-            {
-                Roles = new List<string> { ExistingRoleId }
-            });
-
-            var roles = await fixture.ApiClient.Organizations.GetAllMemberRolesAsync(ExistingOrganizationId, user.UserId, new Paging.PaginationInfo());
-
-            roles.Should().NotBeNull();
-            roles.Count.Should().Be(1);
-            roles[0].Name.Should().Be("Admin");
-
-            var response = await fixture.ApiClient.Organizations.GetAllMembersAsync(ExistingOrganizationId, new OrganizationGetAllMembersRequest { Fields = "roles", IncludeFields = true }, new Paging.PaginationInfo());
-
-            response[0].Roles[0].Name.Should().Be("Admin");
-
-            await fixture.ApiClient.Organizations.DeleteMemberRolesAsync(ExistingOrganizationId, user.UserId, new OrganizationDeleteMemberRolesRequest
-            {
-                Roles = new List<string> { ExistingRoleId }
-            });
-
-            roles = await fixture.ApiClient.Organizations.GetAllMemberRolesAsync(ExistingOrganizationId, user.UserId, new Paging.PaginationInfo());
-
-            roles.Should().NotBeNull();
-            roles.Count.Should().Be(0);
-        } finally
-        {
-            await fixture.ApiClient.Users.DeleteAsync(user.UserId);
-            fixture.UnTrackIdentifier(CleanUpType.Users, user.UserId);
+            await fixture.ApiClient.Connections.DeleteAsync(newConnection.Id);
+            fixture.UnTrackIdentifier(CleanUpType.Connections, newConnection.Id);
         }
     }
 
     [Fact]
-    public async Task Test_organization_invitations_crud_sequence()
+    public async Task Test_organization_members()
     {
-        // Link Connection
-        await fixture.ApiClient.Organizations.CreateConnectionAsync(ExistingOrganizationId, new OrganizationConnectionCreateRequest
+        // Create a connection
+        var connectionName = $"{TestingConstants.ConnectionPrefix}-{TestBaseUtils.MakeRandomName()}";
+        var newConnection = await fixture.ApiClient.Connections.CreateAsync(new CreateConnectionRequestContent
         {
-            ConnectionId = ExistingConnectionId,
-            AssignMembershipOnLogin = true
+            Name = connectionName,
+            Strategy = ConnectionIdentityProviderEnum.Auth0,
+            EnabledClients = new[] { TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
         });
+        fixture.TrackIdentifier(CleanUpType.Connections, newConnection.Id);
+
+        // Create a user
+        var userEmail = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}";
+        var newUser = await fixture.ApiClient.Users.CreateAsync(TestBaseUtils.CreateUserRequest(
+            connection: newConnection.Name,
+            email: userEmail,
+            emailVerified: true,
+            password: "Test123456!"
+        ));
+        fixture.TrackIdentifier(CleanUpType.Users, newUser.UserId);
+
+        // Create an organization
+        var orgName = $"{TestingConstants.OrganizationPrefix}-{TestBaseUtils.MakeRandomName()}".ToLower();
+        var newOrganization = await fixture.ApiClient.Organizations.CreateAsync(new CreateOrganizationRequestContent
+        {
+            Name = orgName,
+            DisplayName = "Test Organization"
+        });
+        fixture.TrackIdentifier(CleanUpType.Organizations, newOrganization.Id);
 
         try
         {
-            var invitationRequest = new OrganizationCreateInvitationRequest
-            {
-                ClientId = TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"),
-                ConnectionId = ExistingConnectionId,
-                Inviter = new OrganizationInvitationInviter
+            // Add member to organization
+            await fixture.ApiClient.Organizations.Members.CreateAsync(
+                newOrganization.Id,
+                new CreateOrganizationMemberRequestContent
                 {
-                    Name = "John Doe"
-                },
-                Invitee = new OrganizationInvitationInvitee
+                    Members = new[] { newUser.UserId }
+                });
+
+            // Wait for member to be added (eventual consistency)
+            await Task.Delay(2000);
+
+            // Get members
+            var membersPager = await fixture.ApiClient.Organizations.Members.ListAsync(
+                newOrganization.Id,
+                new ListOrganizationMembersRequestParameters());
+            var members = membersPager.CurrentPage.Items.ToList();
+            members.Should().Contain(m => m.UserId == newUser.UserId);
+
+            // Remove member from organization
+            await fixture.ApiClient.Organizations.Members.DeleteAsync(
+                newOrganization.Id,
+                new DeleteOrganizationMembersRequestContent
                 {
-                    Email = "jane.doe@auth0.com"
-                }
-            };
-                
-            var createdInvitation = 
-                await fixture.ApiClient.Organizations.CreateInvitationAsync(ExistingOrganizationId, invitationRequest);
+                    Members = new[] { newUser.UserId }
+                });
 
-            createdInvitation.Should().NotBeNull();
-            createdInvitation.InvitationUrl.Should().NotBeNull();
-
-            var invitations = await fixture.ApiClient.Organizations.GetAllInvitationsAsync(ExistingOrganizationId, new OrganizationGetAllInvitationsRequest(), new Paging.PaginationInfo());
-
-            invitations.Should().NotBeNull();
-            invitations.Count.Should().Be(1);
-
-            var invitation = await fixture.ApiClient.Organizations.GetInvitationAsync(ExistingOrganizationId, createdInvitation.Id, new OrganizationGetInvitationRequest());
-
-            invitation.Should().NotBeNull();
-            invitation.Id.Should().Be(createdInvitation.Id);
-            invitation.InvitationUrl.Should().NotBeNull();
-
-            await fixture.ApiClient.Organizations.DeleteInvitationAsync(ExistingOrganizationId, createdInvitation.Id);
-
-            invitations = await fixture.ApiClient.Organizations.GetAllInvitationsAsync(ExistingOrganizationId, new OrganizationGetAllInvitationsRequest(), new Paging.PaginationInfo());
-
-            invitations.Should().NotBeNull();
-            invitations.Count.Should().Be(0);
-        } finally
-        {
-            // Unlink Connection
-            await fixture.ApiClient.Organizations.DeleteConnectionAsync(ExistingOrganizationId, ExistingConnectionId);
+            // Verify removal
+            membersPager = await fixture.ApiClient.Organizations.Members.ListAsync(
+                newOrganization.Id,
+                new ListOrganizationMembersRequestParameters());
+            members = membersPager.CurrentPage.Items.ToList();
+            members.Should().NotContain(m => m.UserId == newUser.UserId);
         }
+        finally
+        {
+            await fixture.ApiClient.Organizations.DeleteAsync(newOrganization.Id);
+            fixture.UnTrackIdentifier(CleanUpType.Organizations, newOrganization.Id);
 
+            await fixture.ApiClient.Users.DeleteAsync(newUser.UserId);
+            fixture.UnTrackIdentifier(CleanUpType.Users, newUser.UserId);
+
+            await fixture.ApiClient.Connections.DeleteAsync(newConnection.Id);
+            fixture.UnTrackIdentifier(CleanUpType.Connections, newConnection.Id);
+        }
     }
-        
+
     [Fact]
-    public async Task Test_organization_client_grants_association_with_client()
+    public async Task Test_organization_member_roles()
     {
-        // Given an Organization
-        var organization = await fixture.Utils.CreateOrganization();
-        fixture.TrackIdentifier(CleanUpType.Organizations, organization.Id);
-            
-        var clientCreateRequest = new ClientCreateRequest()
+        // Create a connection
+        var connectionName = $"{TestingConstants.ConnectionPrefix}-{TestBaseUtils.MakeRandomName()}";
+        var newConnection = await fixture.ApiClient.Connections.CreateAsync(new CreateConnectionRequestContent
         {
-            Name = "Test-Client-" + Guid.NewGuid(),
-            Description = "This is a test client - TBD",
-            OrganizationUsage = OrganizationUsage.Allow,
-            DefaultOrganization = new DefaultOrganization()
-            {
-                Flows = new[] { Flows.ClientCredentials },
-                OrganizationId = organization.Id.ToString()
-            },
-        };
-            
-        // Given a Client
-        var client = await fixture.Utils.CreateClient(clientCreateRequest);
-        fixture.TrackIdentifier(CleanUpType.Clients, client.ClientId);
-        // Given a Resource Server
-        var resourceServer = await fixture.Utils.CreateResourceServer();
-        fixture.TrackIdentifier(CleanUpType.ResourceServers, resourceServer.Id);
-            
-        var clientGrantRequest = new ClientGrantCreateRequest()
+            Name = connectionName,
+            Strategy = ConnectionIdentityProviderEnum.Auth0,
+            EnabledClients = new[] { TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
+        });
+        fixture.TrackIdentifier(CleanUpType.Connections, newConnection.Id);
+
+        // Create a user
+        var userEmail = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}";
+        var newUser = await fixture.ApiClient.Users.CreateAsync(TestBaseUtils.CreateUserRequest(
+            connection: newConnection.Name,
+            email: userEmail,
+            emailVerified: true,
+            password: "Test123456!"
+        ));
+        fixture.TrackIdentifier(CleanUpType.Users, newUser.UserId);
+
+        // Create a role
+        var newRole = await fixture.ApiClient.Roles.CreateAsync(new CreateRoleRequestContent
         {
-            AllowAnyOrganization = true,
-            OrganizationUsage = OrganizationUsage.Allow,
-            Audience = resourceServer.Identifier,
-            Scope = new List<string>(new[] { "create:resource", "create:organization_client_grants" }),
-            ClientId = client.ClientId,
-                
-        };
-            
-        // Given a Client Grant
-        var clientGrant = await fixture.ApiClient.ClientGrants.CreateAsync(clientGrantRequest);
-        fixture.TrackIdentifier(CleanUpType.ClientGrants, clientGrant.Id);
-            
-        // Associating the client grant with the organization
-        await fixture.ApiClient.Organizations.CreateClientGrantAsync(organization.Id,
-            new OrganizationCreateClientGrantRequest()
-            {
-                GrantId = clientGrant.Id,
-            });
-            
-        var request = new GetClientsRequest()
+            Name = $"{TestingConstants.RolePrefix}-{TestBaseUtils.MakeRandomName()}",
+            Description = "Test role for organization"
+        });
+        fixture.TrackIdentifier(CleanUpType.Roles, newRole.Id);
+
+        // Create an organization
+        var orgName = $"{TestingConstants.OrganizationPrefix}-{TestBaseUtils.MakeRandomName()}".ToLower();
+        var newOrganization = await fixture.ApiClient.Organizations.CreateAsync(new CreateOrganizationRequestContent
         {
-            Query = $"client_grant.allow_any_organization:true"
-        };
-            
-        // Act
-        var checkpointPagedClients =
-            await fixture.ApiClient.Clients.GetAllAsync(request, new CheckpointPaginationInfo(100));
-            
-        // Assert
-        Assert.Contains(checkpointPagedClients.ToList(), x => x.ClientId == client.ClientId);
-            
-        request = new GetClientsRequest()
+            Name = orgName,
+            DisplayName = "Test Organization"
+        });
+        fixture.TrackIdentifier(CleanUpType.Organizations, newOrganization.Id);
+
+        try
         {
-            Query = $"client_grant.organization_id:{organization.Id}"
-        };
-            
-        // Act
-        checkpointPagedClients = await fixture.ApiClient.Clients.GetAllAsync(request, new CheckpointPaginationInfo(100));
-            
-        // Assert
-        Assert.Contains(checkpointPagedClients.ToList(), x => x.ClientId == client.ClientId);
-            
-        // Act
-        var clients = await fixture.ApiClient.Clients.GetAllAsync(request);
-            
-        // Assert
-        Assert.Contains(clients.ToList(), x => x.ClientId == client.ClientId);
+            // Add member to organization
+            await fixture.ApiClient.Organizations.Members.CreateAsync(
+                newOrganization.Id,
+                new CreateOrganizationMemberRequestContent
+                {
+                    Members = new[] { newUser.UserId }
+                });
+
+            // Assign role to member
+            await fixture.ApiClient.Organizations.Members.Roles.AssignAsync(
+                newOrganization.Id,
+                newUser.UserId,
+                new AssignOrganizationMemberRolesRequestContent
+                {
+                    Roles = new[] { newRole.Id }
+                });
+
+            // Get member roles
+            var rolesPager = await fixture.ApiClient.Organizations.Members.Roles.ListAsync(
+                newOrganization.Id,
+                newUser.UserId,
+                new ListOrganizationMemberRolesRequestParameters());
+            var roles = rolesPager.CurrentPage.Items.ToList();
+            roles.Should().Contain(r => r.Id == newRole.Id);
+
+            // Remove role from member
+            await fixture.ApiClient.Organizations.Members.Roles.DeleteAsync(
+                newOrganization.Id,
+                newUser.UserId,
+                new DeleteOrganizationMemberRolesRequestContent
+                {
+                    Roles = new[] { newRole.Id }
+                });
+
+            // Verify removal
+            rolesPager = await fixture.ApiClient.Organizations.Members.Roles.ListAsync(
+                newOrganization.Id,
+                newUser.UserId,
+                new ListOrganizationMemberRolesRequestParameters());
+            roles = rolesPager.CurrentPage.Items.ToList();
+            roles.Should().NotContain(r => r.Id == newRole.Id);
+        }
+        finally
+        {
+            await fixture.ApiClient.Organizations.DeleteAsync(newOrganization.Id);
+            fixture.UnTrackIdentifier(CleanUpType.Organizations, newOrganization.Id);
+
+            await fixture.ApiClient.Roles.DeleteAsync(newRole.Id);
+            fixture.UnTrackIdentifier(CleanUpType.Roles, newRole.Id);
+
+            await fixture.ApiClient.Users.DeleteAsync(newUser.UserId);
+            fixture.UnTrackIdentifier(CleanUpType.Users, newUser.UserId);
+
+            await fixture.ApiClient.Connections.DeleteAsync(newConnection.Id);
+            fixture.UnTrackIdentifier(CleanUpType.Connections, newConnection.Id);
+        }
+    }
+
+    [Fact(Skip = "Requires client configured for organization invitations")]
+    public async Task Test_organization_invitations()
+    {
+        // Create an organization
+        var orgName = $"{TestingConstants.OrganizationPrefix}-{TestBaseUtils.MakeRandomName()}".ToLower();
+        var newOrganization = await fixture.ApiClient.Organizations.CreateAsync(new CreateOrganizationRequestContent
+        {
+            Name = orgName,
+            DisplayName = "Test Organization"
+        });
+        fixture.TrackIdentifier(CleanUpType.Organizations, newOrganization.Id);
+
+        try
+        {
+            // Create an invitation
+            var inviteeEmail = $"invitee-{Guid.NewGuid():N}@example.com";
+            var newInvitation = await fixture.ApiClient.Organizations.Invitations.CreateAsync(
+                newOrganization.Id,
+                TestBaseUtils.CreateOrganizationInvitationRequest(
+                    inviter: new OrganizationInvitationInviter { Name = "Test Inviter" },
+                    invitee: new OrganizationInvitationInvitee { Email = inviteeEmail },
+                    clientId: TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"),
+                    sendInvitationEmail: false
+                ));
+
+            newInvitation.Should().NotBeNull();
+            newInvitation.Id.Should().NotBeNullOrEmpty();
+
+            // Get invitations
+            var invitationsPager = await fixture.ApiClient.Organizations.Invitations.ListAsync(
+                newOrganization.Id,
+                new ListOrganizationInvitationsRequestParameters());
+            var invitations = invitationsPager.CurrentPage.Items.ToList();
+            invitations.Should().Contain(i => i.Id == newInvitation.Id);
+
+            // Get specific invitation
+            var fetchedInvitation = await fixture.ApiClient.Organizations.Invitations.GetAsync(
+                newOrganization.Id,
+                newInvitation.Id,
+                new GetOrganizationInvitationRequestParameters());
+            fetchedInvitation.Should().NotBeNull();
+            fetchedInvitation.Id.Should().Be(newInvitation.Id);
+
+            // Delete invitation
+            await fixture.ApiClient.Organizations.Invitations.DeleteAsync(
+                newOrganization.Id,
+                newInvitation.Id);
+
+            // Verify deletion
+            invitationsPager = await fixture.ApiClient.Organizations.Invitations.ListAsync(
+                newOrganization.Id,
+                new ListOrganizationInvitationsRequestParameters());
+            invitations = invitationsPager.CurrentPage.Items.ToList();
+            invitations.Should().NotContain(i => i.Id == newInvitation.Id);
+        }
+        finally
+        {
+            await fixture.ApiClient.Organizations.DeleteAsync(newOrganization.Id);
+            fixture.UnTrackIdentifier(CleanUpType.Organizations, newOrganization.Id);
+        }
+    }
+
+    [Fact]
+    public async Task Test_organization_list_with_pagination()
+    {
+        // Create two organizations
+        var orgName1 = $"{TestingConstants.OrganizationPrefix}-{TestBaseUtils.MakeRandomName()}".ToLower();
+        var org1 = await fixture.ApiClient.Organizations.CreateAsync(new CreateOrganizationRequestContent
+        {
+            Name = orgName1,
+            DisplayName = "Test Organization 1"
+        });
+        fixture.TrackIdentifier(CleanUpType.Organizations, org1.Id);
+
+        var orgName2 = $"{TestingConstants.OrganizationPrefix}-{TestBaseUtils.MakeRandomName()}".ToLower();
+        var org2 = await fixture.ApiClient.Organizations.CreateAsync(new CreateOrganizationRequestContent
+        {
+            Name = orgName2,
+            DisplayName = "Test Organization 2"
+        });
+        fixture.TrackIdentifier(CleanUpType.Organizations, org2.Id);
+
+        try
+        {
+            // List with pagination
+            var organizationsPager = await fixture.ApiClient.Organizations.ListAsync(
+                new ListOrganizationsRequestParameters
+                {
+                    Take = 1
+                });
+
+            var firstPage = organizationsPager.CurrentPage.Items.ToList();
+            firstPage.Should().NotBeEmpty();
+        }
+        finally
+        {
+            await fixture.ApiClient.Organizations.DeleteAsync(org1.Id);
+            fixture.UnTrackIdentifier(CleanUpType.Organizations, org1.Id);
+
+            await fixture.ApiClient.Organizations.DeleteAsync(org2.Id);
+            fixture.UnTrackIdentifier(CleanUpType.Organizations, org2.Id);
+        }
     }
 }

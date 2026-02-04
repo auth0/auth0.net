@@ -1,0 +1,65 @@
+using System.Text.Json.Serialization;
+using Auth0.ManagementApi.Core;
+
+namespace Auth0.ManagementApi;
+
+[JsonConverter(typeof(StringEnumSerializer<TenantSettingsDeviceFlowCharset>))]
+[Serializable]
+public readonly record struct TenantSettingsDeviceFlowCharset : IStringEnum
+{
+    public static readonly TenantSettingsDeviceFlowCharset Base20 = new(Values.Base20);
+
+    public static readonly TenantSettingsDeviceFlowCharset Digits = new(Values.Digits);
+
+    public TenantSettingsDeviceFlowCharset(string value)
+    {
+        Value = value;
+    }
+
+    /// <summary>
+    /// The string value of the enum.
+    /// </summary>
+    public string Value { get; }
+
+    /// <summary>
+    /// Create a string enum with the given value.
+    /// </summary>
+    public static TenantSettingsDeviceFlowCharset FromCustom(string value)
+    {
+        return new TenantSettingsDeviceFlowCharset(value);
+    }
+
+    public bool Equals(string? other)
+    {
+        return Value.Equals(other);
+    }
+
+    /// <summary>
+    /// Returns the string value of the enum.
+    /// </summary>
+    public override string ToString()
+    {
+        return Value;
+    }
+
+    public static bool operator ==(TenantSettingsDeviceFlowCharset value1, string value2) =>
+        value1.Value.Equals(value2);
+
+    public static bool operator !=(TenantSettingsDeviceFlowCharset value1, string value2) =>
+        !value1.Value.Equals(value2);
+
+    public static explicit operator string(TenantSettingsDeviceFlowCharset value) => value.Value;
+
+    public static explicit operator TenantSettingsDeviceFlowCharset(string value) => new(value);
+
+    /// <summary>
+    /// Constant strings for enum values
+    /// </summary>
+    [Serializable]
+    public static class Values
+    {
+        public const string Base20 = "base20";
+
+        public const string Digits = "digits";
+    }
+}

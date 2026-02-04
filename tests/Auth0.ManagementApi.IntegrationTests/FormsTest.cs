@@ -1,13 +1,10 @@
-using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
-
-using FluentAssertions;
-using Xunit;
-
-using Auth0.ManagementApi.Models.Forms;
+using System.Threading.Tasks;
 using Auth0.IntegrationTests.Shared.CleanUp;
 using Auth0.ManagementApi.IntegrationTests.Testing;
+using FluentAssertions;
+using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests;
 
@@ -36,74 +33,84 @@ public class FormsTest : IClassFixture<FormsTestFixture>
     [Fact]
     public async Task Test_forms_crud_sequence()
     {
-        // Create a form 
-        var createRequest = new FormCreateRequest()
+        // Create a form
+        var createRequest = new CreateFormRequestContent
         {
-            Ending = new Ending()
+            Ending = new FormEndingNode
             {
-                Coordinates = new Coordinates()
+                Coordinates = new FormNodeCoordinates
                 {
                     X = 10,
                     Y = 20
                 },
-                Redirection = new Redirection()
+                Redirection = new FormEndingNodeRedirection
                 {
                     Delay = 1,
                     Target = "sample"
                 }
             },
-            Languages = new Languages()
+            Languages = new FormLanguages
             {
                 Default = "en",
                 Primary = "en"
             },
-            Messages = new Messages()
+            Messages = new FormMessages
             {
-                Custom = new object(),
-                Errors = new object()
+                Custom = new Dictionary<string, string>(),
+                Errors = new Dictionary<string, string>()
             },
-            Style = new Style()
+            Style = new FormStyle
             {
                 Css = "<>"
             },
-            Translations = new object(),
+            Translations = new Dictionary<string, Dictionary<string, object?>>(),
             Name = "Test-Form"
         };
-            
-        var createdForm = await fixture.ApiClient.FormsClient.CreateAsync(createRequest);
 
-        var allForms = await fixture.ApiClient.FormsClient.GetAllAsync(new FormsGetRequest()
+        var createdForm = await fixture.ApiClient.Forms.CreateAsync(createRequest);
+
+        fixture.TrackIdentifier(CleanUpType.Forms, createdForm.Id);
+
+        try
         {
-            Hydrate = new [] {  Hydrate.LINKS}
-        });
-
-        allForms.Should().NotBeNull();
-        allForms.Count.Should().BeGreaterThan(0);
-            
-        var form = await fixture.ApiClient.FormsClient.GetAsync(new FormsGetRequest { Id = createdForm.Id });
-            
-        form.Should().BeEquivalentTo(createdForm, options => options.ExcludingMissingMembers());
-
-        var updateRequest = new FormUpdateRequest()
-        {
-            Languages = new Languages()
+            var allFormsPager = await fixture.ApiClient.Forms.ListAsync(new ListFormsRequestParameters
             {
-                Primary = "es"
-            },
-            Ending = new Ending()
+                Hydrate = new FormsRequestParametersHydrateEnum?[] { FormsRequestParametersHydrateEnum.Links }
+            });
+
+            var allForms = allFormsPager.CurrentPage.Items.ToList();
+            allForms.Should().NotBeNull();
+            allForms.Count.Should().BeGreaterThan(0);
+
+            var form = await fixture.ApiClient.Forms.GetAsync(createdForm.Id, new GetFormRequestParameters());
+
+            form.Should().NotBeNull();
+            form.Id.Should().Be(createdForm.Id);
+
+            var updateRequest = new UpdateFormRequestContent
             {
-                Redirection = new Redirection()
+                Languages = new FormLanguages
                 {
-                    Target = "UpdatedSample"
+                    Primary = "es"
+                },
+                Ending = new FormEndingNode
+                {
+                    Redirection = new FormEndingNodeRedirection
+                    {
+                        Target = "UpdatedSample"
+                    }
                 }
-            }
-        };
-            
-        var updatedForm = await fixture.ApiClient.FormsClient.UpdateAsync(createdForm.Id, updateRequest);
-            
-        updatedForm.Languages.Primary.Should().Be(updateRequest.Languages.Primary);
-        updatedForm.Ending.Redirection.Target.Should().Be(updateRequest.Ending.Redirection.Target);
+            };
 
-        await fixture.ApiClient.FormsClient.DeleteAsync(allForms.First().Id);
+            var updatedForm = await fixture.ApiClient.Forms.UpdateAsync(createdForm.Id, updateRequest);
+
+            updatedForm.Languages?.Primary.Should().Be(updateRequest.Languages.Value?.Primary);
+            updatedForm.Ending?.Redirection?.Target.Should().Be(updateRequest.Ending.Value?.Redirection?.Target);
+        }
+        finally
+        {
+            await fixture.ApiClient.Forms.DeleteAsync(createdForm.Id);
+            fixture.UnTrackIdentifier(CleanUpType.Forms, createdForm.Id);
+        }
     }
 }

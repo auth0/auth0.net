@@ -1,0 +1,65 @@
+using System.Text.Json.Serialization;
+using Auth0.ManagementApi.Core;
+
+namespace Auth0.ManagementApi;
+
+[JsonConverter(typeof(StringEnumSerializer<MfaPolicyEnum>))]
+[Serializable]
+public readonly record struct MfaPolicyEnum : IStringEnum
+{
+    public static readonly MfaPolicyEnum AllApplications = new(Values.AllApplications);
+
+    public static readonly MfaPolicyEnum ConfidenceScore = new(Values.ConfidenceScore);
+
+    public MfaPolicyEnum(string value)
+    {
+        Value = value;
+    }
+
+    /// <summary>
+    /// The string value of the enum.
+    /// </summary>
+    public string Value { get; }
+
+    /// <summary>
+    /// Create a string enum with the given value.
+    /// </summary>
+    public static MfaPolicyEnum FromCustom(string value)
+    {
+        return new MfaPolicyEnum(value);
+    }
+
+    public bool Equals(string? other)
+    {
+        return Value.Equals(other);
+    }
+
+    /// <summary>
+    /// Returns the string value of the enum.
+    /// </summary>
+    public override string ToString()
+    {
+        return Value;
+    }
+
+    public static bool operator ==(MfaPolicyEnum value1, string value2) =>
+        value1.Value.Equals(value2);
+
+    public static bool operator !=(MfaPolicyEnum value1, string value2) =>
+        !value1.Value.Equals(value2);
+
+    public static explicit operator string(MfaPolicyEnum value) => value.Value;
+
+    public static explicit operator MfaPolicyEnum(string value) => new(value);
+
+    /// <summary>
+    /// Constant strings for enum values
+    /// </summary>
+    [Serializable]
+    public static class Values
+    {
+        public const string AllApplications = "all-applications";
+
+        public const string ConfidenceScore = "confidence-score";
+    }
+}

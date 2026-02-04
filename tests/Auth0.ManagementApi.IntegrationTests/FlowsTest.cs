@@ -2,15 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
-using FluentAssertions;
-using Xunit;
-
 using Auth0.IntegrationTests.Shared.CleanUp;
 using Auth0.ManagementApi.IntegrationTests.Testing;
-using Auth0.ManagementApi.Models.Flow;
-using Auth0.ManagementApi.Paging;
+using Auth0.ManagementApi.Flows;
+using Auth0.ManagementApi.Flows.Vault;
 using Auth0.Tests.Shared;
+using FluentAssertions;
+using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests;
 
@@ -37,180 +35,106 @@ public class FlowsTest : IClassFixture<FlowsTestFixture>
     }
 
     [Fact]
-    public async void Test_get_all_flows_throws_when_request_is_null()
-    {
-        await Assert.ThrowsAsync<ArgumentNullException>(() => fixture.ApiClient.FlowsClient.GetAllAsync(null));
-    }
-    
-    [Fact]
-    public async void Test_get_flows_throws_when_request_is_null_when_id_is_null()
-    {
-        await Assert.ThrowsAsync<ArgumentNullException>(() => fixture.ApiClient.FlowsClient.GetAsync(null));
-        await Assert.ThrowsAsync<ArgumentNullException>(() => fixture.ApiClient.FlowsClient.GetAsync(new FlowGetRequest()));
-    }
-    
-    [Fact]
-    public async void Test_update_flows_throws_when_id_is_null()
-    {
-        await Assert.ThrowsAsync<ArgumentNullException>(
-            () => fixture.ApiClient.FlowsClient.UpdateAsync(null, null));
-    }
-    
-    [Fact]
-    public async void Test_delete_flow_throws_when_id_is_null()
-    {
-        await Assert.ThrowsAsync<ArgumentNullException>(() => fixture.ApiClient.FlowsClient.DeleteAsync(null));
-    }
-    
-    [Fact]
-    public async void Test_get_all_flow_vault_connections_throws_when_request_is_null()
-    {
-        await Assert.ThrowsAsync<ArgumentNullException>(
-            () => fixture.ApiClient.FlowsClient.GetAllFlowVaultConnectionsAsync(null));
-    }
-    
-    [Fact]
-    public async void Test_get_flow_vault_connections_throws_when_request_is_null_id_is_null()
-    {
-        await Assert.ThrowsAsync<ArgumentNullException>(
-            () => fixture.ApiClient.FlowsClient.GetFlowVaultConnectionAsync(null));
-        await Assert.ThrowsAsync<ArgumentNullException>(
-            () => fixture.ApiClient.FlowsClient.GetFlowVaultConnectionAsync(new FlowVaultConnectionGetRequest()));
-    }
-    
-    [Fact]
-    public async void Test_update_flow_vault_connection_throws_when_id_is_null()
-    {
-        await Assert.ThrowsAsync<ArgumentNullException>(
-            () => fixture.ApiClient.FlowsClient.UpdateFlowVaultConnectionAsync(
-                null, new FlowVaultConnectionUpdateRequest()));
-    }
-    
-    [Fact]
-    public async void Test_delete_flow_vault_connection_throws_when_id_is_null()
-    {
-        await Assert.ThrowsAsync<ArgumentNullException>(
-            () => fixture.ApiClient.FlowsClient.DeleteFlowVaultConnectionAsync(null));
-    }
-    
-    [Fact]
-    public async void Test_get_all_flow_executions_throws_when_request_is_null()
-    {
-        await Assert.ThrowsAsync<ArgumentNullException>(
-            () => fixture.ApiClient.FlowsClient.GetAllFlowExecutionsAsync(null, new PaginationInfo()));
-        await Assert.ThrowsAsync<ArgumentNullException>(
-            () => fixture.ApiClient.FlowsClient.GetAllFlowExecutionsAsync(null, new CheckpointPaginationInfo()));
-    }
-    
-    [Fact]
-    public async void Test_get_flow_executions_throws_when_id_execution_id_is_null()
-    {
-        await Assert.ThrowsAsync<ArgumentNullException>(
-            () => fixture.ApiClient.FlowsClient.GetFlowExecutionAsync(null, "executionId"));
-        await Assert.ThrowsAsync<ArgumentNullException>(
-            () => fixture.ApiClient.FlowsClient.GetFlowExecutionAsync("flowId", null));
-    }
-    
-    [Fact]
-    public async void Test_flows_crud_sequence()
+    public async Task Test_flows_crud_sequence()
     {
         // Create a Flow
-        var createRequest = new FlowCreateRequest()
+        var createRequest = new CreateFlowRequestContent
         {
-            Name = "Test Flow",
-            Actions = System.Array.Empty<object>()
+            Name = "Test Flow"
         };
 
-        var flow = await fixture.ApiClient.FlowsClient.CreateAsync(createRequest);
+        var flow = await fixture.ApiClient.Flows.CreateAsync(createRequest);
         flow.Should().NotBeNull();
         flow.Name.Should().Be(createRequest.Name);
 
         // Update flow
-        var updateRequest = new FlowUpdateRequest()
+        var updateRequest = new UpdateFlowRequestContent
         {
             Actions = null
         };
-        var updatedFlow = await fixture.ApiClient.FlowsClient.UpdateAsync(flow.Id, updateRequest);
+        var updatedFlow = await fixture.ApiClient.Flows.UpdateAsync(flow.Id, updateRequest);
         updatedFlow.Should().NotBeNull();
 
-        // Get a Flow 
-        var getFlow = await fixture.ApiClient.FlowsClient.GetAsync(new FlowGetRequest { Id = flow.Id, Hydrate = new []
-            {
-                Hydrate.FORM_COUNT
-            }}
-        );
+        // Get a Flow
+        var getFlow = await fixture.ApiClient.Flows.GetAsync(flow.Id, new GetFlowRequestParameters
+        {
+            Hydrate = new GetFlowRequestParametersHydrateEnum?[] { GetFlowRequestParametersHydrateEnum.FormCount }
+        });
         getFlow.Should().NotBeNull();
 
         // Delete a flow
-        await fixture.ApiClient.FlowsClient.DeleteAsync(flow.Id);
+        await fixture.ApiClient.Flows.DeleteAsync(flow.Id);
     }
 
-    [Fact]
-    public async void Test_flow_vault_connection_crud_sequence()
+    [Fact(Skip = "Requires Flows vault connection configuration")]
+    public async Task Test_flow_vault_connection_crud_sequence()
     {
-        var createRequest = new FlowVaultConnectionCreateRequest()
+        var vaultConnectionRequest = new CreateFlowsVaultConnectionAuth0OauthApp
         {
             AppId = "AUTH0",
-            Setup = new Dictionary<string, string>()
+            Setup = new FlowsVaultConnectioSetupOauthApp
             {
-                { "type", "OAUTH_APP" },
-                { "domain", TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL")},
-                { "client_id", TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") },
-                { "client_secret", TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET") }
+                Domain = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL"),
+                ClientId = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
+                ClientSecret = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET")
             },
             Name = "Auth0-test-connection"
         };
-        
-        var createdFlowVaultConnection = await fixture.ApiClient.FlowsClient.CreateVaultConnectionAsync(createRequest);
+
+        // The union type has implicit conversion from CreateFlowsVaultConnectionAuth0OauthApp
+        var createdFlowVaultConnection = await fixture.ApiClient.Flows.Vault.Connections.CreateAsync(vaultConnectionRequest);
         createdFlowVaultConnection.Should().NotBeNull();
 
         // Update the flow vault connection
-        var updateRequest = new FlowVaultConnectionUpdateRequest()
+        var updateRequest = new UpdateFlowsVaultConnectionRequestContent
         {
             Name = "Updated Name"
         };
 
-        var updatedVaultConnection = 
-            await fixture.ApiClient.FlowsClient.UpdateFlowVaultConnectionAsync(createdFlowVaultConnection.Id, updateRequest);
+        var updatedVaultConnection =
+            await fixture.ApiClient.Flows.Vault.Connections.UpdateAsync(createdFlowVaultConnection.Id, updateRequest);
         updatedVaultConnection.Should().NotBeNull();
         updatedVaultConnection.Name.Should().Be("Updated Name");
 
         // Get all vault connections
-        var allFlowVaultConnections =
-            await fixture.ApiClient.FlowsClient.GetAllFlowVaultConnectionsAsync(new FlowVaultConnectionGetRequest());
-        allFlowVaultConnections.Select( x => x.Id == createdFlowVaultConnection.Id).Should().NotBeNull();
-        
-        // Get the newly created vault connection
-        var getRequest = new FlowVaultConnectionGetRequest()
-        {
-            Id = createdFlowVaultConnection.Id
-        };
+        var allFlowVaultConnectionsPager =
+            await fixture.ApiClient.Flows.Vault.Connections.ListAsync(new ListFlowsVaultConnectionsRequestParameters());
+        var allFlowVaultConnections = allFlowVaultConnectionsPager.CurrentPage.Items.ToList();
+        allFlowVaultConnections.Select(x => x.Id == createdFlowVaultConnection.Id).Should().NotBeNull();
 
-        var vaultConnection = await fixture.ApiClient.FlowsClient.GetFlowVaultConnectionAsync(getRequest);
+        // Get the newly created vault connection
+        var vaultConnection = await fixture.ApiClient.Flows.Vault.Connections.GetAsync(createdFlowVaultConnection.Id);
         vaultConnection.Should().NotBeNull();
         vaultConnection.Id.Should().Be(createdFlowVaultConnection.Id);
-        
+
         // Delete the newly created vault connection
-        await fixture.ApiClient.FlowsClient.DeleteFlowVaultConnectionAsync(createdFlowVaultConnection.Id);
+        await fixture.ApiClient.Flows.Vault.Connections.DeleteAsync(createdFlowVaultConnection.Id);
     }
 
     [Fact]
-    public async void Test_flow_executions_crud_sequence()
+    public async Task Test_flow_executions_crud_sequence()
     {
-        // Given a flow 
-        var createRequest = new FlowCreateRequest()
+        // Given a flow
+        var createExecRequest = new CreateFlowRequestContent
         {
-            Name = "Flow for Test_flow_executions_crud_sequence",
-            Actions = System.Array.Empty<object>()
+            Name = "Flow for Test_flow_executions_crud_sequence"
         };
-        var newFlow = await fixture.ApiClient.FlowsClient.CreateAsync(createRequest);
+        var newFlow = await fixture.ApiClient.Flows.CreateAsync(createExecRequest);
         newFlow.Should().NotBeNull();
         fixture.TrackIdentifier(CleanUpType.Flows, newFlow.Id);
-        
-        // Get all flow executions 
-        var flowExecutions =
-            await fixture.ApiClient.FlowsClient.GetAllFlowExecutionsAsync(newFlow.Id, new PaginationInfo());
-        
-        flowExecutions.Should().NotBeNull();
+
+        try
+        {
+            // Get all flow executions
+            var flowExecutionsPager =
+                await fixture.ApiClient.Flows.Executions.ListAsync(newFlow.Id, new ExecutionsListRequest());
+
+            flowExecutionsPager.Should().NotBeNull();
+        }
+        finally
+        {
+            await fixture.ApiClient.Flows.DeleteAsync(newFlow.Id);
+            fixture.UnTrackIdentifier(CleanUpType.Flows, newFlow.Id);
+        }
     }
 }

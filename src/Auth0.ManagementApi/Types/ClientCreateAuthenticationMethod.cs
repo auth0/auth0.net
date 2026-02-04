@@ -1,0 +1,40 @@
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using Auth0.ManagementApi.Core;
+
+namespace Auth0.ManagementApi;
+
+/// <summary>
+/// Defines client authentication methods.
+/// </summary>
+[Serializable]
+public record ClientCreateAuthenticationMethod : IJsonOnDeserialized
+{
+    [JsonExtensionData]
+    private readonly IDictionary<string, JsonElement> _extensionData =
+        new Dictionary<string, JsonElement>();
+
+    [Optional]
+    [JsonPropertyName("private_key_jwt")]
+    public PrivateKeyJwt? PrivateKeyJwt { get; set; }
+
+    [Optional]
+    [JsonPropertyName("tls_client_auth")]
+    public ClientAuthenticationMethodTlsClientAuth? TlsClientAuth { get; set; }
+
+    [Optional]
+    [JsonPropertyName("self_signed_tls_client_auth")]
+    public ClientAuthenticationMethodSelfSignedTlsClientAuth? SelfSignedTlsClientAuth { get; set; }
+
+    [JsonIgnore]
+    public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
+
+    void IJsonOnDeserialized.OnDeserialized() =>
+        AdditionalProperties.CopyFromExtensionData(_extensionData);
+
+    /// <inheritdoc />
+    public override string ToString()
+    {
+        return JsonUtils.Serialize(this);
+    }
+}

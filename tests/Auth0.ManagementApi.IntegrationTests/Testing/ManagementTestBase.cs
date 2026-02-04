@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi.IntegrationTests.Testing;
 
 public class ManagementTestBase : TestBase
 {
-    protected ManagementApiClient ApiClient;
+    protected ManagementClient ApiClient;
 
     public virtual Task DisposeAsync()
     {

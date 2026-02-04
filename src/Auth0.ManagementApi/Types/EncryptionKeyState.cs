@@ -1,0 +1,73 @@
+using System.Text.Json.Serialization;
+using Auth0.ManagementApi.Core;
+
+namespace Auth0.ManagementApi;
+
+[JsonConverter(typeof(StringEnumSerializer<EncryptionKeyState>))]
+[Serializable]
+public readonly record struct EncryptionKeyState : IStringEnum
+{
+    public static readonly EncryptionKeyState PreActivation = new(Values.PreActivation);
+
+    public static readonly EncryptionKeyState Active = new(Values.Active);
+
+    public static readonly EncryptionKeyState Deactivated = new(Values.Deactivated);
+
+    public static readonly EncryptionKeyState Destroyed = new(Values.Destroyed);
+
+    public EncryptionKeyState(string value)
+    {
+        Value = value;
+    }
+
+    /// <summary>
+    /// The string value of the enum.
+    /// </summary>
+    public string Value { get; }
+
+    /// <summary>
+    /// Create a string enum with the given value.
+    /// </summary>
+    public static EncryptionKeyState FromCustom(string value)
+    {
+        return new EncryptionKeyState(value);
+    }
+
+    public bool Equals(string? other)
+    {
+        return Value.Equals(other);
+    }
+
+    /// <summary>
+    /// Returns the string value of the enum.
+    /// </summary>
+    public override string ToString()
+    {
+        return Value;
+    }
+
+    public static bool operator ==(EncryptionKeyState value1, string value2) =>
+        value1.Value.Equals(value2);
+
+    public static bool operator !=(EncryptionKeyState value1, string value2) =>
+        !value1.Value.Equals(value2);
+
+    public static explicit operator string(EncryptionKeyState value) => value.Value;
+
+    public static explicit operator EncryptionKeyState(string value) => new(value);
+
+    /// <summary>
+    /// Constant strings for enum values
+    /// </summary>
+    [Serializable]
+    public static class Values
+    {
+        public const string PreActivation = "pre-activation";
+
+        public const string Active = "active";
+
+        public const string Deactivated = "deactivated";
+
+        public const string Destroyed = "destroyed";
+    }
+}

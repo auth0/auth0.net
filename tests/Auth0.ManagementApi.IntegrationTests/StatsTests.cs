@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Xunit;
@@ -12,25 +12,42 @@ public class StatsTests : TestBase
     [Fact]
     public async Task Daily_Stats_Returns_Values()
     {
-        string token = await GenerateManagementApiToken();
+        var managementApiUrl = GetVariable("AUTH0_MANAGEMENT_API_URL");
+        var domain = managementApiUrl.Replace("https://", "").TrimEnd('/');
 
-        using (var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 })))
+        using (var apiClient = new ManagementClient(new ManagementClientOptions
         {
-            var dailyStats = await apiClient.Stats.GetDailyStatsAsync(DateTime.Now.AddDays(-100), DateTime.Now);
+            Domain = domain,
+            ClientId = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
+            ClientSecret = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET"),
+            MaxRetries = 9
+        }))
+        {
+            var dailyStats = await apiClient.Stats.GetDailyAsync(new GetDailyStatsRequestParameters
+            {
+                From = DateTime.Now.AddDays(-100).ToString("yyyyMMdd"),
+                To = DateTime.Now.ToString("yyyyMMdd")
+            });
             dailyStats.Should().NotBeNull();
-            dailyStats.Count.Should().BeGreaterOrEqualTo(1);
-            dailyStats.Max(d => d.Logins).Should().BeGreaterThan(0);
+            dailyStats.Count().Should().BeGreaterOrEqualTo(1);
+            dailyStats.Max(d => d.Logins ?? 0).Should().BeGreaterThan(0);
         }
     }
 
     [Fact(Skip = "Inactivity causes these to fail")]
     public async Task Active_Users_Returns_Values()
     {
-        string token = await GenerateManagementApiToken();
+        var managementApiUrl = GetVariable("AUTH0_MANAGEMENT_API_URL");
+        var domain = managementApiUrl.Replace("https://", "").TrimEnd('/');
 
-        using (var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL")))
+        using (var apiClient = new ManagementClient(new ManagementClientOptions
         {
-            var activeUsers = await apiClient.Stats.GetActiveUsersAsync();
+            Domain = domain,
+            ClientId = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
+            ClientSecret = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET")
+        }))
+        {
+            var activeUsers = await apiClient.Stats.GetActiveUsersCountAsync();
             activeUsers.Should().BeGreaterThan(0);
         }
     }

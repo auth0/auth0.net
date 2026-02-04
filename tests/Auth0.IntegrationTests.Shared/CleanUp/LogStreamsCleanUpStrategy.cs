@@ -5,7 +5,7 @@ namespace Auth0.IntegrationTests.Shared.CleanUp;
 
 public class LogStreamsCleanUpStrategy : CleanUpStrategy
 {
-    public LogStreamsCleanUpStrategy(ManagementApiClient apiClient) : base(CleanUpType.LogStreams, apiClient)
+    public LogStreamsCleanUpStrategy(ManagementClient apiClient) : base(CleanUpType.LogStreams, apiClient)
     {
 
     }
