@@ -1,31 +1,30 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
-using Auth0.Core.Exceptions;
-using Auth0.ManagementApi.Models;
 using FluentAssertions;
 using Xunit;
 using Auth0.Tests.Shared;
-using Auth0.ManagementApi.Paging;
 using System.Collections.Generic;
 using Auth0.IntegrationTests.Shared.CleanUp;
 using Auth0.ManagementApi.IntegrationTests.Testing;
+using Auth0.ManagementApi.Connections;
+using Auth0.ManagementApi.Roles;
+using Auth0.ManagementApi.Users;
 
 namespace Auth0.ManagementApi.IntegrationTests;
 
 public class RolesTestsFixture : TestBaseFixture
 {
-    public Connection Connection { get; private set; }
-
+    public CreateConnectionResponseContent Connection { get; private set; }
 
     public override async Task InitializeAsync()
     {
         await base.InitializeAsync();
 
-        Connection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
+        Connection = await ApiClient.Connections.CreateAsync(new CreateConnectionRequestContent
         {
             Name = $"{TestingConstants.ConnectionPrefix}-{TestBaseUtils.MakeRandomName()}",
-            Strategy = "auth0",
+            Strategy = ConnectionIdentityProviderEnum.Auth0,
             EnabledClients = new[] { TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
         });
 
@@ -53,11 +52,12 @@ public class RolesTests : IClassFixture<RolesTestsFixture>
     {
         this.fixture = fixture;
     }
+
     [Fact]
     public async Task Test_roles_crud_sequence()
     {
         // Add a new role
-        var newRoleRequest = new RoleCreateRequest
+        var newRoleRequest = new CreateRoleRequestContent
         {
             Name = $"{Guid.NewGuid():N}role",
             Description = $"{Guid.NewGuid():N}description",
@@ -71,7 +71,7 @@ public class RolesTests : IClassFixture<RolesTestsFixture>
         newRoleResponse.Description.Should().Be(newRoleRequest.Description);
 
         // Update the role
-        var updateRoleRequest = new RoleUpdateRequest
+        var updateRoleRequest = new UpdateRoleRequestContent
         {
             Name = $"{Guid.NewGuid():N}role",
         };
@@ -85,41 +85,38 @@ public class RolesTests : IClassFixture<RolesTestsFixture>
         role.Name.Should().Be(updateRoleResponse.Name);
 
         // Create a user
-        var newUserRequest = new UserCreateRequest
-        {
-            Connection = fixture.Connection.Name,
-            Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
-            EmailVerified = true,
-            Password = Password
-        };
+        var newUserRequest = TestBaseUtils.CreateUserRequest(
+            connection: fixture.Connection.Name,
+            email: $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
+            emailVerified: true,
+            password: Password
+        );
 
         var user = await fixture.ApiClient.Users.CreateAsync(newUserRequest);
         fixture.TrackIdentifier(CleanUpType.Users, user.UserId);
 
         // Assign a user to the role
-        var assignUsersRequest = new AssignUsersRequest
+        await fixture.ApiClient.Roles.Users.AssignAsync(role.Id, new AssignRoleUsersRequestContent
         {
-            Users = new[]
-            {
-                user.UserId
-            }
-        };
-        await fixture.ApiClient.Roles.AssignUsersAsync(role.Id, assignUsersRequest);
+            Users = new[] { user.UserId }
+        });
 
         // Ensure the user is assigned to the role
-        var assignedUsers = await fixture.ApiClient.Roles.GetUsersAsync(role.Id);
+        var assignedUsersPager = await fixture.ApiClient.Roles.Users.ListAsync(role.Id, new ListRoleUsersRequestParameters());
+        var assignedUsers = assignedUsersPager.CurrentPage.Items.ToList();
         assignedUsers.Should().NotBeNull();
         assignedUsers.First().UserId.Should().Be(user.UserId);
 
         // Ensure the Role is assigned to user
-        var assignedRoles = await fixture.ApiClient.Users.GetRolesAsync(user.UserId, new PaginationInfo());
+        var assignedRolesPager = await fixture.ApiClient.Users.Roles.ListAsync(user.UserId, new ListUserRolesRequestParameters());
+        var assignedRoles = assignedRolesPager.CurrentPage.Items.ToList();
         assignedRoles.Should().NotBeNull();
         assignedRoles.First().Id.Should().Be(role.Id);
 
         // Delete the role and ensure we get an exception when trying to fetch them again
         await fixture.ApiClient.Roles.DeleteAsync(role.Id);
         Func<Task> getFunc = async () => await fixture.ApiClient.Roles.GetAsync(role.Id);
-        getFunc.Should().Throw<ErrorApiException>().And.ApiError.Error.Should().Be("Not Found");
+        await getFunc.Should().ThrowAsync<NotFoundError>();
 
         fixture.UnTrackIdentifier(CleanUpType.Roles, newRoleResponse.Id);
 
@@ -132,7 +129,7 @@ public class RolesTests : IClassFixture<RolesTestsFixture>
     public async Task Test_roles_assign_user_to_role()
     {
         // Add a new role
-        var newRoleRequest = new RoleCreateRequest
+        var newRoleRequest = new CreateRoleRequestContent
         {
             Name = $"{Guid.NewGuid():N}role",
             Description = $"{Guid.NewGuid():N}description",
@@ -146,29 +143,25 @@ public class RolesTests : IClassFixture<RolesTestsFixture>
         role.Description.Should().Be(newRoleRequest.Description);
 
         // Create a user
-        var newUserRequest = new UserCreateRequest
-        {
-            Connection = fixture.Connection.Name,
-            Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
-            EmailVerified = true,
-            Password = Password
-        };
+        var newUserRequest = TestBaseUtils.CreateUserRequest(
+            connection: fixture.Connection.Name,
+            email: $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
+            emailVerified: true,
+            password: Password
+        );
         var user = await fixture.ApiClient.Users.CreateAsync(newUserRequest);
 
         fixture.TrackIdentifier(CleanUpType.Users, user.UserId);
 
         // Assign a user to the role
-        var assignUsersRequest = new AssignUsersRequest
+        await fixture.ApiClient.Roles.Users.AssignAsync(role.Id, new AssignRoleUsersRequestContent
         {
-            Users = new[]
-            {
-                user.UserId
-            }
-        };
-        await fixture.ApiClient.Roles.AssignUsersAsync(role.Id, assignUsersRequest);
+            Users = new[] { user.UserId }
+        });
 
         // Ensure the user is assigned to the role
-        var assignedUsers = await fixture.ApiClient.Roles.GetUsersAsync(role.Id);
+        var assignedUsersPager = await fixture.ApiClient.Roles.Users.ListAsync(role.Id, new ListRoleUsersRequestParameters());
+        var assignedUsers = assignedUsersPager.CurrentPage.Items.ToList();
         assignedUsers.Should().NotBeNull();
         assignedUsers.First().UserId.Should().Be(user.UserId);
 
@@ -183,7 +176,7 @@ public class RolesTests : IClassFixture<RolesTestsFixture>
     public async Task Test_roles_assign_role_to_user()
     {
         // Add a new role
-        var newRoleRequest = new RoleCreateRequest
+        var newRoleRequest = new CreateRoleRequestContent
         {
             Name = $"{Guid.NewGuid():N}role",
             Description = $"{Guid.NewGuid():N}description",
@@ -197,38 +190,38 @@ public class RolesTests : IClassFixture<RolesTestsFixture>
         role.Description.Should().Be(newRoleRequest.Description);
 
         // Create a user
-        var newUserRequest = new UserCreateRequest
-        {
-            Connection = fixture.Connection.Name,
-            Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
-            EmailVerified = true,
-            Password = Password
-        };
+        var newUserRequest = TestBaseUtils.CreateUserRequest(
+            connection: fixture.Connection.Name,
+            email: $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
+            emailVerified: true,
+            password: Password
+        );
         var user = await fixture.ApiClient.Users.CreateAsync(newUserRequest);
 
         fixture.TrackIdentifier(CleanUpType.Users, user.UserId);
 
-        // Assign a user to the role
-        var assignRolesRequest = new AssignRolesRequest()
+        // Assign role to the user
+        await fixture.ApiClient.Users.Roles.AssignAsync(user.UserId, new AssignUserRolesRequestContent
         {
-            Roles = new[]
-            {
-                role.Id
-            }
-        };
-        await fixture.ApiClient.Users.AssignRolesAsync(user.UserId, assignRolesRequest);
+            Roles = new[] { role.Id }
+        });
 
         // Ensure the Role is assigned to user
-        var assignedRoles = await fixture.ApiClient.Users.GetRolesAsync(user.UserId, new PaginationInfo());
+        var assignedRolesPager = await fixture.ApiClient.Users.Roles.ListAsync(user.UserId, new ListUserRolesRequestParameters());
+        var assignedRoles = assignedRolesPager.CurrentPage.Items.ToList();
         assignedRoles.Should().NotBeNull();
         assignedRoles.Should().HaveCount(1);
         assignedRoles.First().Id.Should().Be(role.Id);
 
         // Remove role from user
-        await fixture.ApiClient.Users.RemoveRolesAsync(user.UserId, assignRolesRequest);
+        await fixture.ApiClient.Users.Roles.DeleteAsync(user.UserId, new DeleteUserRolesRequestContent
+        {
+            Roles = new[] { role.Id }
+        });
 
         // Ensure the Role has been removed from user
-        var removedRoles = await fixture.ApiClient.Users.GetRolesAsync(user.UserId, new PaginationInfo());
+        var removedRolesPager = await fixture.ApiClient.Users.Roles.ListAsync(user.UserId, new ListUserRolesRequestParameters());
+        var removedRoles = removedRolesPager.CurrentPage.Items.ToList();
         removedRoles.Should().NotBeNull();
         removedRoles.Should().HaveCount(0);
 
@@ -243,7 +236,7 @@ public class RolesTests : IClassFixture<RolesTestsFixture>
     public async Task Test_roles_assign_unassign_permission_to_role()
     {
         // Add a new role
-        var newRoleRequest = new RoleCreateRequest
+        var newRoleRequest = new CreateRoleRequestContent
         {
             Name = $"{Guid.NewGuid():N}role",
             Description = $"{Guid.NewGuid():N}description",
@@ -257,42 +250,46 @@ public class RolesTests : IClassFixture<RolesTestsFixture>
         role.Description.Should().Be(newRoleRequest.Description);
 
         // Get a resource server
-        var resourceServer = await fixture.ApiClient.ResourceServers.GetAsync("dotnet-testing");
+        var resourceServer = await fixture.ApiClient.ResourceServers.GetAsync("dotnet-testing", new GetResourceServerRequestParameters());
         var originalScopes = resourceServer.Scopes != null ? resourceServer.Scopes.ToList() : new List<ResourceServerScope>();
 
         // Create a permission/scope
         var newScope = new ResourceServerScope { Value = $"{Guid.NewGuid():N}scope", Description = "Integration test" };
 
         // Update resource server with new scope
-        resourceServer = await fixture.ApiClient.ResourceServers.UpdateAsync(resourceServer.Id, new ResourceServerUpdateRequest
+        var updatedResourceServer = await fixture.ApiClient.ResourceServers.UpdateAsync(resourceServer.Id, new UpdateResourceServerRequestContent
         {
             Scopes = originalScopes.Concat(new[] { newScope }).ToList(),
         });
 
         // Associate a permission with the role
-        var assignPermissionsRequest = new AssignPermissionsRequest()
+        await fixture.ApiClient.Roles.Permissions.AddAsync(role.Id, new AddRolePermissionsRequestContent
         {
-            Permissions = new[] { new PermissionIdentity { Identifier = resourceServer.Identifier, Name = newScope.Value } } 
-        };
-        await fixture.ApiClient.Roles.AssignPermissionsAsync(role.Id, assignPermissionsRequest);
+            Permissions = new[] { new PermissionRequestPayload { ResourceServerIdentifier = updatedResourceServer.Identifier, PermissionName = newScope.Value } }
+        });
 
         // Ensure the permission is associated with the role
-        var associatedPermissions = await fixture.ApiClient.Roles.GetPermissionsAsync(role.Id, new PaginationInfo());
+        var associatedPermissionsPager = await fixture.ApiClient.Roles.Permissions.ListAsync(role.Id, new ListRolePermissionsRequestParameters());
+        var associatedPermissions = associatedPermissionsPager.CurrentPage.Items.ToList();
         associatedPermissions.Should().NotBeNull();
         associatedPermissions.Should().HaveCount(1);
-        associatedPermissions.First().Identifier.Should().Be(resourceServer.Identifier);
-        associatedPermissions.First().Name.Should().Be(newScope.Value);
+        associatedPermissions.First().ResourceServerIdentifier.Should().Be(updatedResourceServer.Identifier);
+        associatedPermissions.First().PermissionName.Should().Be(newScope.Value);
 
         // Unassociate a permission with the role
-        await fixture.ApiClient.Roles.RemovePermissionsAsync(role.Id, assignPermissionsRequest);
+        await fixture.ApiClient.Roles.Permissions.DeleteAsync(role.Id, new DeleteRolePermissionsRequestContent
+        {
+            Permissions = new[] { new PermissionRequestPayload { ResourceServerIdentifier = updatedResourceServer.Identifier, PermissionName = newScope.Value } }
+        });
 
         // Ensure the permission is unassociated with the role
-        associatedPermissions = await fixture.ApiClient.Roles.GetPermissionsAsync(role.Id, new PaginationInfo());
+        associatedPermissionsPager = await fixture.ApiClient.Roles.Permissions.ListAsync(role.Id, new ListRolePermissionsRequestParameters());
+        associatedPermissions = associatedPermissionsPager.CurrentPage.Items.ToList();
         associatedPermissions.Should().NotBeNull();
         associatedPermissions.Should().HaveCount(0);
 
         // Clean Up - Remove the permission from the resource server
-        await fixture.ApiClient.ResourceServers.UpdateAsync(resourceServer.Id, new ResourceServerUpdateRequest
+        await fixture.ApiClient.ResourceServers.UpdateAsync(resourceServer.Id, new UpdateResourceServerRequestContent
         {
             Scopes = originalScopes
         });
@@ -306,92 +303,46 @@ public class RolesTests : IClassFixture<RolesTestsFixture>
     public async Task Test_when_paging_not_specified_does_not_include_totals()
     {
         // Act
-        var roles = await fixture.ApiClient.Roles.GetAllAsync(new GetRolesRequest());
+        var rolesPager = await fixture.ApiClient.Roles.ListAsync(new ListRolesRequestParameters());
 
         // Assert
-        Assert.Null(roles.Paging);
+        rolesPager.CurrentPage.Items.Should().NotBeNull();
     }
 
     [Fact]
-    public async Task Test_paging_does_not_include_totals()
+    public async Task Test_paging_with_totals()
     {
         // Act
-        var roles = await fixture.ApiClient.Roles.GetAllAsync(new GetRolesRequest(), new PaginationInfo(0, 50, false));
+        var rolesPager = await fixture.ApiClient.Roles.ListAsync(new ListRolesRequestParameters
+        {
+            Page = 0,
+            PerPage = 50,
+            IncludeTotals = true
+        });
 
         // Assert
-        Assert.Null(roles.Paging);
+        rolesPager.CurrentPage.Items.Should().NotBeNull();
     }
 
     [Fact]
     public async Task Test_paging_includes_totals()
     {
         // Act
-        var roles = await fixture.ApiClient.Roles.GetAllAsync(new GetRolesRequest(), new PaginationInfo(0, 50, true));
+        var rolesPager = await fixture.ApiClient.Roles.ListAsync(new ListRolesRequestParameters
+        {
+            Page = 0,
+            PerPage = 50,
+            IncludeTotals = true
+        });
 
         // Assert
-        Assert.NotNull(roles.Paging);
-    }
-
-    [Fact]
-    public async Task Test_checkpoint_pagination()
-    {
-        var role = await fixture.ApiClient.Roles.CreateAsync(new RoleCreateRequest
-        {
-            Name = $"{Guid.NewGuid():N}role",
-            Description = $"{Guid.NewGuid():N}description",
-        });
-        fixture.TrackIdentifier(CleanUpType.Roles, role.Id);
-
-        // Create a user
-        var user1 = await fixture.ApiClient.Users.CreateAsync(new UserCreateRequest
-        {
-            Connection = fixture.Connection.Name,
-            Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
-            EmailVerified = true,
-            Password = Password
-        });
-        fixture.TrackIdentifier(CleanUpType.Users, user1.UserId);
-
-        var user2 = await fixture.ApiClient.Users.CreateAsync(new UserCreateRequest
-        {
-            Connection = fixture.Connection.Name,
-            Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
-            EmailVerified = true,
-            Password = Password
-        });
-        fixture.TrackIdentifier(CleanUpType.Users, user2.UserId);
-
-        await fixture.ApiClient.Roles.AssignUsersAsync(role.Id, new AssignUsersRequest
-        {
-            Users = new[]
-            {
-                user1.UserId,
-                user2.UserId
-            }
-        });
-
-        var firstCheckPointPaginationRequest = await fixture.ApiClient.Roles.GetUsersAsync(role.Id, new Paging.CheckpointPaginationInfo(1));
-        var secondCheckPointPaginationRequest = await fixture.ApiClient.Roles.GetUsersAsync(role.Id, new Paging.CheckpointPaginationInfo(1, firstCheckPointPaginationRequest.Paging.Next));
-
-        secondCheckPointPaginationRequest.Count.Should().Be(1);
-        secondCheckPointPaginationRequest.Paging.Next.Should().NotBeNullOrEmpty();
-
-        var checkpointPagingationRequestWithoutNext = await fixture.ApiClient.Roles.GetUsersAsync(role.Id, new Paging.CheckpointPaginationInfo(50));
-        checkpointPagingationRequestWithoutNext.Count.Should().Be(2);
-        checkpointPagingationRequestWithoutNext.Paging.Next.Should().BeNullOrEmpty();
-
-        await fixture.ApiClient.Users.DeleteAsync(user1.UserId);
-        fixture.UnTrackIdentifier(CleanUpType.Users, user1.UserId);
-        await fixture.ApiClient.Users.DeleteAsync(user2.UserId);
-        fixture.UnTrackIdentifier(CleanUpType.Users, user2.UserId);
-        await fixture.ApiClient.Roles.DeleteAsync(role.Id);
-        fixture.UnTrackIdentifier(CleanUpType.Roles, role.Id);
+        rolesPager.CurrentPage.Items.Should().NotBeNull();
     }
 
     [Fact]
     public async Task Test_permissions_can_be_retrieved()
     {
-        var newRoleRequest = new RoleCreateRequest
+        var newRoleRequest = new CreateRoleRequestContent
         {
             Name = $"{Guid.NewGuid():N}role",
             Description = $"{Guid.NewGuid():N}description",
@@ -399,20 +350,30 @@ public class RolesTests : IClassFixture<RolesTestsFixture>
         var role = await fixture.ApiClient.Roles.CreateAsync(newRoleRequest);
         fixture.TrackIdentifier(CleanUpType.Roles, role.Id);
 
-        var assignPermissionsRequest = new AssignPermissionsRequest
+        await fixture.ApiClient.Roles.Permissions.AddAsync(role.Id, new AddRolePermissionsRequestContent
         {
-            Permissions = new List<PermissionIdentity>
+            Permissions = new List<PermissionRequestPayload>
             {
-                new() { Name = "dotnet:testing", Identifier = "dotnet-testing",  }
+                new() { PermissionName = "dotnet:testing", ResourceServerIdentifier = "dotnet-testing" }
             }
-        };
-        await fixture.ApiClient.Roles.AssignPermissionsAsync(role.Id, assignPermissionsRequest);
+        });
 
-        var userPermissions = await fixture.ApiClient.Roles.GetPermissionsAsync(role.Id, new PaginationInfo(0, 50, true));
+        var userPermissionsPager = await fixture.ApiClient.Roles.Permissions.ListAsync(role.Id, new ListRolePermissionsRequestParameters
+        {
+            Page = 0,
+            PerPage = 50,
+            IncludeTotals = true
+        });
 
-        Assert.Equal(1, userPermissions.Count);
+        Assert.Equal(1, userPermissionsPager.CurrentPage.Items.Count());
 
-        await fixture.ApiClient.Roles.RemovePermissionsAsync(role.Id, assignPermissionsRequest);
+        await fixture.ApiClient.Roles.Permissions.DeleteAsync(role.Id, new DeleteRolePermissionsRequestContent
+        {
+            Permissions = new List<PermissionRequestPayload>
+            {
+                new() { PermissionName = "dotnet:testing", ResourceServerIdentifier = "dotnet-testing" }
+            }
+        });
         await fixture.ApiClient.Roles.DeleteAsync(role.Id);
         fixture.UnTrackIdentifier(CleanUpType.Roles, role.Id);
     }

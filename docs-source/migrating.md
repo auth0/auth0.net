@@ -1,5 +1,9 @@
 # Migration Guide
 
+## Migrating from v7 to v8
+
+Please follow the information in our [v8 migration guide](../V8_MIGRATION_GUIDE.md).
+
 ## Migrating from v6 to v7
 
 Please follow the information in our [v7 migration guide](migrating-to-v7.md).

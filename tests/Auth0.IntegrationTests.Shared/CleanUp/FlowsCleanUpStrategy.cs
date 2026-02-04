@@ -5,7 +5,7 @@ namespace Auth0.IntegrationTests.Shared.CleanUp;
 
 public class FlowsCleanUpStrategy : CleanUpStrategy
 {
-    public FlowsCleanUpStrategy(ManagementApiClient apiClient) : base(CleanUpType.Flows, apiClient)
+    public FlowsCleanUpStrategy(ManagementClient apiClient) : base(CleanUpType.Flows, apiClient)
     {
 
     }
@@ -13,6 +13,6 @@ public class FlowsCleanUpStrategy : CleanUpStrategy
     public override async Task Run(string id)
     {
         System.Diagnostics.Debug.WriteLine("Running FlowsCleanup");
-        await ApiClient.FlowsClient.DeleteAsync(id);
+        await ApiClient.Flows.DeleteAsync(id);
     }
 }

@@ -1,0 +1,71 @@
+using System.Text.Json.Serialization;
+using Auth0.ManagementApi.Core;
+
+namespace Auth0.ManagementApi;
+
+[JsonConverter(typeof(StringEnumSerializer<ResourceServerProofOfPossessionMechanismEnum>))]
+[Serializable]
+public readonly record struct ResourceServerProofOfPossessionMechanismEnum : IStringEnum
+{
+    public static readonly ResourceServerProofOfPossessionMechanismEnum Mtls = new(Values.Mtls);
+
+    public static readonly ResourceServerProofOfPossessionMechanismEnum Dpop = new(Values.Dpop);
+
+    public ResourceServerProofOfPossessionMechanismEnum(string value)
+    {
+        Value = value;
+    }
+
+    /// <summary>
+    /// The string value of the enum.
+    /// </summary>
+    public string Value { get; }
+
+    /// <summary>
+    /// Create a string enum with the given value.
+    /// </summary>
+    public static ResourceServerProofOfPossessionMechanismEnum FromCustom(string value)
+    {
+        return new ResourceServerProofOfPossessionMechanismEnum(value);
+    }
+
+    public bool Equals(string? other)
+    {
+        return Value.Equals(other);
+    }
+
+    /// <summary>
+    /// Returns the string value of the enum.
+    /// </summary>
+    public override string ToString()
+    {
+        return Value;
+    }
+
+    public static bool operator ==(
+        ResourceServerProofOfPossessionMechanismEnum value1,
+        string value2
+    ) => value1.Value.Equals(value2);
+
+    public static bool operator !=(
+        ResourceServerProofOfPossessionMechanismEnum value1,
+        string value2
+    ) => !value1.Value.Equals(value2);
+
+    public static explicit operator string(ResourceServerProofOfPossessionMechanismEnum value) =>
+        value.Value;
+
+    public static explicit operator ResourceServerProofOfPossessionMechanismEnum(string value) =>
+        new(value);
+
+    /// <summary>
+    /// Constant strings for enum values
+    /// </summary>
+    [Serializable]
+    public static class Values
+    {
+        public const string Mtls = "mtls";
+
+        public const string Dpop = "dpop";
+    }
+}

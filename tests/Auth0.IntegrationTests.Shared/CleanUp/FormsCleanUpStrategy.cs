@@ -5,7 +5,7 @@ namespace Auth0.IntegrationTests.Shared.CleanUp;
 
 public class FormsCleanUpStrategy : CleanUpStrategy
 {
-    public FormsCleanUpStrategy(ManagementApiClient apiClient) : base(CleanUpType.Forms, apiClient)
+    public FormsCleanUpStrategy(ManagementClient apiClient) : base(CleanUpType.Forms, apiClient)
     {
 
     }
@@ -13,6 +13,6 @@ public class FormsCleanUpStrategy : CleanUpStrategy
     public override async Task Run(string id)
     {
         System.Diagnostics.Debug.WriteLine("Running FormsCleanup");
-        await ApiClient.FormsClient.DeleteAsync(id);
+        await ApiClient.Forms.DeleteAsync(id);
     }
 }

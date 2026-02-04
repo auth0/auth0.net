@@ -1,0 +1,7 @@
+<Project>
+  <PropertyGroup>
+    <!-- Enable strong-name signing to match Auth0.ManagementApi -->
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\..\build\Auth0NetStrongName.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+</Project>

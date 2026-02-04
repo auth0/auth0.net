@@ -2,22 +2,21 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Auth0.IntegrationTests.Shared.CleanUp;
-using Auth0.ManagementApi.Models;
 
 namespace Auth0.ManagementApi.IntegrationTests;
 
 public class Utils
 {
-    private readonly ManagementApiClient _apiClient;
+    private readonly ManagementClient _apiClient;
 
-    public Utils(ManagementApiClient apiClient)
+    public Utils(ManagementClient apiClient)
     {
         _apiClient = apiClient;
     }
 
-    internal async Task<Client> CreateClient(ClientCreateRequest request = null)
+    internal async Task<CreateClientResponseContent> CreateClient(CreateClientRequestContent request = null)
     {
-        request ??= new ClientCreateRequest()
+        request ??= new CreateClientRequestContent
         {
             Name = "Test client " + Guid.NewGuid(),
             Description = "This is a dummy client - TBD"
@@ -26,29 +25,28 @@ public class Utils
         var client = await _apiClient.Clients.CreateAsync(request);
         return client;
     }
-        
-    internal async Task<Organization> CreateOrganization(OrganizationCreateRequest request = null)
+
+    internal async Task<CreateOrganizationResponseContent> CreateOrganization(CreateOrganizationRequestContent request = null)
     {
-        request??= new OrganizationCreateRequest()
+        request ??= new CreateOrganizationRequestContent
         {
             Name = "tbd-organisation",
             DisplayName = "Test organization display name",
         };
-            
+
         var organization = await _apiClient.Organizations.CreateAsync(request);
         return organization;
     }
-        
-    internal async Task<ResourceServer> CreateResourceServer(ResourceServerCreateRequest request = null)
+
+    internal async Task<CreateResourceServerResponseContent> CreateResourceServer(CreateResourceServerRequestContent request = null)
     {
         var identifier = Guid.NewGuid();
-        request??= new ResourceServerCreateRequest
+        request ??= new CreateResourceServerRequestContent
         {
             Identifier = identifier.ToString("N"),
             Name = $"{TestingConstants.ResourceServerPrefix} {identifier:N}",
             TokenLifetime = 1,
-            TokenLifetimeForWeb = 1,
-            SigningAlgorithm = SigningAlgorithm.HS256,
+            SigningAlg = SigningAlgorithmEnum.Hs256,
             SigningSecret = "thisismysecret0123456789",
             Scopes = new List<ResourceServerScope>
             {
@@ -59,7 +57,6 @@ public class Utils
                 }
             },
             AllowOfflineAccess = true,
-            VerificationLocation = "https://abc.auth0.com/def",
             SkipConsentForVerifiableFirstPartyClients = true,
         };
         var resourceServer = await _apiClient.ResourceServers.CreateAsync(request);

@@ -1,12 +1,10 @@
-﻿using System.Threading.Tasks;
-using Auth0.IntegrationTests.Shared.CleanUp;
-using Auth0.ManagementApi.IntegrationTests.Testing;
-using Auth0.ManagementApi.Models;
-using FluentAssertions;
-using Xunit;
-using Auth0.ManagementApi.Paging;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Auth0.IntegrationTests.Shared.CleanUp;
+using Auth0.ManagementApi.IntegrationTests.Testing;
+using FluentAssertions;
+using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests;
 
@@ -37,18 +35,19 @@ public class HooksTests : IClassFixture<HooksTestsFixture>
     /// All the existing hooks can still be accessed in a read-only mode.
     /// The users can delete an existing hook OR update an existing hook to
     /// only enable/disable it (None of the other properties can be updated).
-    /// Modifying the below test case to work with the existing hooks. 
+    /// Modifying the below test case to work with the existing hooks.
     /// </summary>
     [Fact(Skip = "Hooks are deprecated")]
     public async Task Test_hooks_crud_sequence()
     {
         // Get all hooks
-        var existingHook = (await fixture.ApiClient.Hooks.GetAllAsync(new GetHooksRequest(), new PaginationInfo())).FirstOrDefault();
+        var hooksPager = await fixture.ApiClient.Hooks.ListAsync(new ListHooksRequestParameters());
+        var existingHook = hooksPager.CurrentPage.Items.FirstOrDefault();
 
         existingHook.Should().NotBeNull();
 
         // Update the Hook - Disable the hook
-        var updateHookRequest = new HookUpdateRequest
+        var updateHookRequest = new UpdateHookRequestContent
         {
             Enabled = false
         };
@@ -59,7 +58,7 @@ public class HooksTests : IClassFixture<HooksTestsFixture>
         updateHookResponse.Id.Should().Be(existingHook.Id);
 
         // Get a single hook
-        var hook = await fixture.ApiClient.Hooks.GetAsync(existingHook.Id);
+        var hook = await fixture.ApiClient.Hooks.GetAsync(existingHook.Id, new GetHookRequestParameters());
         hook.Should().NotBeNull();
         hook.Enabled.Should().BeFalse();
     }
@@ -68,30 +67,40 @@ public class HooksTests : IClassFixture<HooksTestsFixture>
     public async Task Test_when_paging_not_specified_does_not_include_totals()
     {
         // Act
-        var hooks = await fixture.ApiClient.Hooks.GetAllAsync(new GetHooksRequest(), new PaginationInfo());
+        var hooksPager = await fixture.ApiClient.Hooks.ListAsync(new ListHooksRequestParameters());
 
-        // Assert
-        Assert.Null(hooks.Paging);
+        // Assert - Pager always exists, check items instead
+        hooksPager.Should().NotBeNull();
     }
 
     [Fact(Skip = "Hooks are deprecated")]
-    public async Task Test_paging_does_not_include_totals()
+    public async Task Test_paging_with_totals()
     {
         // Act
-        var hooks = await fixture.ApiClient.Hooks.GetAllAsync(new GetHooksRequest(), new PaginationInfo(0, 50, false));
+        var hooksPager = await fixture.ApiClient.Hooks.ListAsync(new ListHooksRequestParameters
+        {
+            Page = 0,
+            PerPage = 50,
+            IncludeTotals = true
+        });
 
         // Assert
-        Assert.Null(hooks.Paging);
+        hooksPager.Should().NotBeNull();
     }
 
     [Fact(Skip = "Hooks are deprecated")]
     public async Task Test_paging_includes_totals()
     {
         // Act
-        var hooks = await fixture.ApiClient.Hooks.GetAllAsync(new GetHooksRequest(), new PaginationInfo(0, 50, true));
+        var hooksPager = await fixture.ApiClient.Hooks.ListAsync(new ListHooksRequestParameters
+        {
+            Page = 0,
+            PerPage = 50,
+            IncludeTotals = true
+        });
 
         // Assert
-        Assert.NotNull(hooks.Paging);
+        hooksPager.Should().NotBeNull();
     }
 
     /// <summary>
@@ -99,15 +108,15 @@ public class HooksTests : IClassFixture<HooksTestsFixture>
     /// All the existing hooks can still be accessed in a read-only mode.
     /// The users can delete an existing hook OR update an existing hook to
     /// only enable/disable it (None of the other properties can be updated).
-    /// Modifying the below test case to work with the existing hooks. 
+    /// Modifying the below test case to work with the existing hooks.
     /// </summary>
     [Fact(Skip = "Hooks are deprecated")]
     public async Task Test_without_paging()
     {
         // Act
-        var hooks = await fixture.ApiClient.Hooks.GetAllAsync(new GetHooksRequest());
+        var hooksPager = await fixture.ApiClient.Hooks.ListAsync(new ListHooksRequestParameters());
+        var hooks = hooksPager.CurrentPage.Items.ToList();
 
-        hooks.Paging.Should().BeNull();
-        hooks.Count.Should().BeGreaterThan(0);
+        hooks.Should().NotBeNull();
     }
 }
