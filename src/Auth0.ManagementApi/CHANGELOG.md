@@ -1,0 +1,763 @@
+# Change Log
+
+## [8.0.0-beta.0](https://github.com/auth0/auth0.net/tree/8.0.0-beta.0) (2026-02-04)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.44.0...8.0.0-beta.0)
+
+This is a major version update that represents a complete modernization of the Management API SDK architecture and developer experience. 
+
+**What's New:**
+- **OpenAPI-Generated SDK**: The Management API SDK is now generated from Auth0's OpenAPI specifications using Fern, ensuring consistency, accuracy, and easier maintenance going forward.
+- **Automatic Token Management**: Introduced a new `ManagementClient` wrapper that handles token acquisition and refresh automatically using client credentials, eliminating the need for manual token management.
+- **Improved Type Safety**: All API operations now use strongly typed request and response models with proper validation and clear naming conventions (`*RequestContent`, `*ResponseContent`, `*RequestParameters`).
+- **Better Organization**: API operations are now organized into logical hierarchical sub-clients (e.g., `client.Users.Permissions`, `client.Users.Roles`, `client.Organizations.Members`) for better discoverability and cleaner code.
+- **Enhanced Exception Handling**: Unified exception hierarchy based on `ManagementApiException` with specific exception types for different HTTP status codes (`NotFoundError`, `BadRequestError`, `TooManyRequestsError`, etc.).
+- **New Features**:
+  - Raw response access via `.WithRawResponse()` for accessing status codes, headers, and other HTTP metadata
+  - `Optional<T>` type for distinguishing between undefined and explicitly null values in PATCH operations
+  - Built-in pagination support with async enumeration
+  - Comprehensive interfaces for dependency injection and testing
+
+**Breaking Changes:**
+
+This is a major version with breaking changes to client initialization, request/response types, method signatures, and exception handling. All existing v7 Management API code will require updates to work with v8. The Authentication API (`Auth0.AuthenticationApi`) remains unchanged and fully compatible.
+
+**Migration Guide:**
+
+Please refer to the comprehensive migration guide at [V8_MIGRATION_GUIDE.md](https://github.com/auth0/auth0.net/blob/master/V8_MIGRATION_GUIDE.md) which includes side-by-side examples and detailed mappings from v7 to v8.
+
+**Changed**
+- Adds v8 for ManagementApi [\#911](https://github.com/auth0/auth0.net/pull/911) ([kailash-b](https://github.com/kailash-b))
+
+## [7.44.0](https://github.com/auth0/auth0.net/tree/7.44.0) (2026-01-29)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.43.1...7.44.0)
+
+**Added**
+- feat(mgmt): Adds support to manage App Access configuration [\#904](https://github.com/auth0/auth0.net/pull/904) ([kailash-b](https://github.com/kailash-b))
+
+## [7.43.1](https://github.com/auth0/auth0.net/tree/7.43.1) (2026-01-15)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.43.0...7.43.1)
+
+**Added**
+- Updates ClientApplicationType Enum to include newly added app_types [\#901](https://github.com/auth0/auth0.net/pull/901) ([kailash-b](https://github.com/kailash-b))
+
+## [7.43.0](https://github.com/auth0/auth0.net/tree/7.43.0) (2025-12-05)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.42.0...7.43.0)
+
+**Added**
+- Adds support for managing DPoP configuration [\#891](https://github.com/auth0/auth0.net/pull/891) ([kailash-b](https://github.com/kailash-b))
+
+**Fixed**
+- Make OrganizationMember.Roles nullable [\#895](https://github.com/auth0/auth0.net/pull/895) ([g1n93r](https://github.com/g1n93r))
+
+**Security**
+- Bump actions/checkout from `v5` to `v6` [\#896](https://github.com/auth0/auth0.net/pull/896) ([kailash-b](https://github.com/kailash-b))
+- Bump `System.IdentityModel.Tokens.Jwt` to `8.15.0` [\#896](https://github.com/auth0/auth0.net/pull/896) ([kailash-b](https://github.com/kailash-b))
+- Bump `Microsoft.IdentityModel.Protocols.OpenIdConnect` to `8.15.0` [\#896](https://github.com/auth0/auth0.net/pull/896) ([kailash-b](https://github.com/kailash-b))
+- Bump `Newtonsoft.Json` from `13.0.3` to `13.0.4` [\#889](https://github.com/auth0/auth0.net/pull/889) ([kailash-b](https://github.com/kailash-b))
+
+## [7.42.0](https://github.com/auth0/auth0.net/tree/7.42.0) (2025-10-09)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.41.0...7.42.0)
+
+**Added**
+- Adds support to manage Native to SSO configuration on clients [\#885](https://github.com/auth0/auth0.net/pull/885) ([kailash-b](https://github.com/kailash-b))
+
+## [7.41.0](https://github.com/auth0/auth0.net/tree/7.41.0) (2025-09-15)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.40.0...7.41.0)
+
+**Added**
+- Adds support for getting connections enabled for a specific client [\#877](https://github.com/auth0/auth0.net/pull/877) ([mikejr83](https://github.com/mikejr83) / [kailash-b](https://github.com/kailash-b))
+- Adds CancellationToken parameter in IUsersClient.DeleteAsync [\#873](https://github.com/auth0/auth0.net/pull/873) ([kailash-b](https://github.com/kailash-b))
+
+**Fixed**
+- Allowing TokenLifeType to be null [\#878](https://github.com/auth0/auth0.net/pull/878) ([chris31389](https://github.com/chris31389) / [kailash-b](https://github.com/kailash-b))
+- Fix inconsistent naming in Organizations.DeleteMemberAsync [\#876](https://github.com/auth0/auth0.net/pull/876) ([kailash-b](https://github.com/kailash-b))
+
+**Security**
+- Upgrade Dependencies [\#879](https://github.com/auth0/auth0.net/pull/879) ([kailash-b](https://github.com/kailash-b))
+
+## [7.40.0](https://github.com/auth0/auth0.net/tree/7.40.0) (2025-08-13)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.39.0...7.40.0)
+
+**Added**
+- Add support for DomainAliasesConfig in SelfService SSO create request [\#847](https://github.com/auth0/auth0.net/pull/847) ([kailash-b](https://github.com/kailash-b))
+
+**Deprecated**
+- feat: Deprecate GetImpersonationUrlAsync [\#839](https://github.com/auth0/auth0.net/pull/839) ([kailash-b](https://github.com/kailash-b))
+
+**Fixed**
+- fix: Use case-insensitive string comparer for HTTP header parsing [\#857](https://github.com/auth0/auth0.net/pull/857) ([mikejr83](https://github.com/mikejr83))
+
+**Security**
+- deps: Bump `Microsoft.IdentityModel.Protocols.OpenIdConnect` and `System.IdentityModel.Tokens.Jwt` to 8.13.0 [\#846](https://github.com/auth0/auth0.net/pull/846) ([kailash-b](https://github.com/kailash-b))
+- deps: Upgrade dependencies [\#841](https://github.com/auth0/auth0.net/pull/841) ([kailash-b](https://github.com/kailash-b))
+
+## [7.39.0](https://github.com/auth0/auth0.net/tree/7.39.0) (2025-07-07)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.38.0...7.39.0)
+
+**Added**
+- feature: Add support for managing Network ACLs [\#828](https://github.com/auth0/auth0.net/pull/828) ([kailash-b](https://github.com/kailash-b))
+
+**Changed**
+- fix: data-type from `int` to `float` for Branding related configs [\#824](https://github.com/auth0/auth0.net/pull/824) ([kailash-b](https://github.com/kailash-b))
+
+**Security**
+- chore: Upgrade version of `System.IdentityModel.Tokens.Jwt` and `Microsoft.IdentityModel.Protocols.OpenIdConnect` [\#825](https://github.com/auth0/auth0.net/pull/825) ([kailash-b](https://github.com/kailash-b))
+
+## [7.38.0](https://github.com/auth0/auth0.net/tree/7.38.0) (2025-06-23)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.37.0...7.38.0)
+
+**Added**
+- Add support for `v2/jobs/get-errors` API [\#819](https://github.com/auth0/auth0.net/pull/819) ([kailash-b](https://github.com/kailash-b))
+- Use Polysharp to take advantage of latest language features [\#813](https://github.com/auth0/auth0.net/pull/813) ([kailash-b](https://github.com/kailash-b))
+
+**Deprecated**
+- Deprecate `EnabledClients` in `Connections` in favour of Get and Update EnabledClients [\#821](https://github.com/auth0/auth0.net/pull/821) ([kailash-b](https://github.com/kailash-b))
+
+**Fixed**
+- Fix query generation in GetAllAsync [\#820](https://github.com/auth0/auth0.net/pull/820) ([kailash-b](https://github.com/kailash-b))
+
+## [7.37.0](https://github.com/auth0/auth0.net/tree/7.37.0) (2025-05-30)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.36.0...7.37.0)
+
+**Added**
+- Allow monitoring Token Quota limits on every M2M authentication call [\#808](https://github.com/auth0/auth0.net/pull/808) ([kailash-b](https://github.com/kailash-b))
+- Add support for Delete authenticators registered to a user [\#810](https://github.com/auth0/auth0.net/pull/810) ([kailash-b](https://github.com/kailash-b))
+- Adds missing fields in Tenant Settings and Tenant flags [\#809](https://github.com/auth0/auth0.net/pull/809) ([kailash-b](https://github.com/kailash-b))
+- Adds support to update Token Quota at different levels [\#805](https://github.com/auth0/auth0.net/pull/805) ([kailash-b](https://github.com/kailash-b))
+
+**Changed**
+- Change `scope` from `string` to `dynamic` in `LogEntry` [\#811](https://github.com/auth0/auth0.net/pull/811) ([kailash-b](https://github.com/kailash-b))
+
+**Fixed**
+- Fix typo in `RelyingPartyIdentifier` [\#812](https://github.com/auth0/auth0.net/pull/812) ([kailash-b](https://github.com/kailash-b))
+
+## [7.36.0](https://github.com/auth0/auth0.net/tree/7.36.0) (2025-04-10)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.35.0...7.36.0)
+
+**Added**
+- Adds support to Enroll / Verify / List / Challenge / Delete Multi Factor Authenticators [\#798](https://github.com/auth0/auth0.net/pull/798) ([czf](https://github.com/czf) / [kailash-b](https://github.com/kailash-b))
+- Adds missing backchannel logout initiators [\#796](https://github.com/auth0/auth0.net/pull/796) ([dmarjoram](https://github.com/dmarjoram))
+
+**Fixed**
+- Fix for PasswordlessEmailRequest passing literal NULL when no client_secre… [\#800](https://github.com/auth0/auth0.net/pull/800) ([kailash-b](https://github.com/kailash-b))
+
+## [7.35.0](https://github.com/auth0/auth0.net/tree/7.35.0) (2025-03-24)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.34.0...7.35.0)
+
+**Added**
+- Add missing fields in SelfServiceSso config [\#793](https://github.com/auth0/auth0.net/pull/793) ([kll2105](https://github.com/kll2105))
+- Adds support for email verification_method in ConnectionOptions [\#792](https://github.com/auth0/auth0.net/pull/792) ([hdmoreland](https://github.com/hdmoreland))
+- Support for LogFilterStream [\#791](https://github.com/auth0/auth0.net/pull/791) ([iamsushantk](https://github.com/iamsushantk))
+
+## [7.34.0](https://github.com/auth0/auth0.net/tree/7.34.0) (2025-02-19)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.33.0...7.34.0)
+
+**Added**
+- Adding support for managing branding theme [\#784](https://github.com/auth0/auth0.net/pull/784) ([kailash-b](https://github.com/kailash-b))
+- Add support for managing Branding Phone Notification Templates [\#783](https://github.com/auth0/auth0.net/pull/783) ([kailash-b](https://github.com/kailash-b))
+- Add support for managing Branding Phone Provider settings [\#780](https://github.com/auth0/auth0.net/pull/780) ([kailash-b](https://github.com/kailash-b))
+
+**Fixed**
+- Update ChangeLog with for v7.30.0 [\#782](https://github.com/auth0/auth0.net/pull/782) ([kailash-b](https://github.com/kailash-b))
+
+## [7.33.0](https://github.com/auth0/auth0.net/tree/7.33.0) (2025-02-05)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.32.0...7.33.0)
+
+**Added**
+- Adds support for managing SNS configuration - Push Notification - MFA policies [\#775](https://github.com/auth0/auth0.net/pull/775) ([kailash-b](https://github.com/kailash-b))
+- Update documentation to clarify LoginHint.Issuer field usage in CIBA context [\#773](https://github.com/auth0/auth0.net/pull/773) ([kailash-b](https://github.com/kailash-b))
+- Add support for /guardian end-points [\#771](https://github.com/auth0/auth0.net/pull/771) ([kailash-b](https://github.com/kailash-b))
+
+**Changed**
+- Allow Optional AssignMembershipOnLogin field to be nullable [\#776](https://github.com/auth0/auth0.net/pull/776) ([kailash-b](https://github.com/kailash-b))
+
+## [7.32.0](https://github.com/auth0/auth0.net/tree/7.32.0) (2025-01-22)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.31.0...7.32.0)
+
+**Added**
+- Add support to manage /flows endpoints [\#765](https://github.com/auth0/auth0.net/pull/765) ([kailash-b](https://github.com/kailash-b))
+- Add support to Update a Custom Domain [\#763](https://github.com/auth0/auth0.net/pull/763) ([kailash-b](https://github.com/kailash-b))
+- Adds CnameApiKey to CustomDomainVerificationResponse (#757) [\#764](https://github.com/auth0/auth0.net/pull/764) ([tmschlot](https://github.com/tmschlot))
+
+**Fixed**
+- Added missing user ID field in Device Credentials class [\#768](https://github.com/auth0/auth0.net/pull/768) ([Mohsens22](https://github.com/Mohsens22))
+- Added missing fields to LogEntry (#766) [\#767](https://github.com/auth0/auth0.net/pull/767) ([Mohsens22](https://github.com/Mohsens22))
+
+## [7.31.0](https://github.com/auth0/auth0.net/tree/7.31.0) (2025-01-08)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.30.0...7.31.0)
+
+**Added**
+- Adds support for managing Forms [\#760](https://github.com/auth0/auth0.net/pull/760) ([kailash-b](https://github.com/kailash-b))
+- Adds support for CIBA [\#755](https://github.com/auth0/auth0.net/pull/755) ([kailash-b](https://github.com/kailash-b))
+
+## [7.30.0](https://github.com/auth0/auth0.net/tree/7.30.0) (2024-11-28)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.29.0...7.30.0)
+
+**Added**
+- Adds support for managing custom-text and partial-prompts [\#749](https://github.com/auth0/auth0.net/pull/749) ([kailash-b](https://github.com/kailash-b))
+- Adds support for Self-Service-Profile endpoints [\#747](https://github.com/auth0/auth0.net/pull/747) ([kailash-b](https://github.com/kailash-b))
+- Support PhoneNumber as a flexible identifier [\#746](https://github.com/auth0/auth0.net/pull/746) ([kailash-b](https://github.com/kailash-b))
+
+**Changed**
+- Adds Checkpoint Pagination support for fetching all connections [\#752](https://github.com/auth0/auth0.net/pull/752) ([kailash-b](https://github.com/kailash-b))
+
+Note this change can cause compilation errors (ambiguous invocation) in cases where the code was calling `GetAllAsync` method in `ConnectionsClient` with only the first parameter. The users are recommended to choose the pagination explicitly after going through the recommendations in the [documentation](https://auth0.com/docs/api/management/v2/connections/get-connections)
+
+## [7.29.0](https://github.com/auth0/auth0.net/tree/7.29.0) (2024-11-08)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.28.0...7.29.0)
+
+**Added**
+- Adds support for CYOK end-points [\#744](https://github.com/auth0/auth0.net/pull/744) ([kailash-b](https://github.com/kailash-b))
+- Adds support for BYOK end-points [\#743](https://github.com/auth0/auth0.net/pull/743) ([kailash-b](https://github.com/kailash-b))
+- Adds missing EmailTemplate types [\#742](https://github.com/auth0/auth0.net/pull/742) ([kailash-b](https://github.com/kailash-b))
+- Support CheckPointPagination for fetching all clients [\#741](https://github.com/auth0/auth0.net/pull/741) ([kailash-b](https://github.com/kailash-b))
+- Adds Integration information in Actions response [\#740](https://github.com/auth0/auth0.net/pull/740) ([kailash-b](https://github.com/kailash-b))
+
+## [7.28.0](https://github.com/auth0/auth0.net/tree/7.28.0) (2024-10-25)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.27.0...7.28.0)
+
+**Added**
+- Adds support for HRI [\#738](https://github.com/auth0/auth0.net/pull/738) ([kailash-b](https://github.com/kailash-b))
+- Adds support for session management and refresh-tokens [\#737](https://github.com/auth0/auth0.net/pull/737) ([kailash-b](https://github.com/kailash-b))
+- Organization support for client credentials [\#733](https://github.com/auth0/auth0.net/pull/733) ([kailash-b](https://github.com/kailash-b))
+
+## [7.27.0](https://github.com/auth0/auth0.net/tree/7.27.0) (2024-09-30)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.26.2...7.27.0)
+
+**Added**
+- Add support for Managing SCIM configuration [\#726](https://github.com/auth0/auth0.net/pull/726) ([kailash-b](https://github.com/kailash-b))
+- Adds 'is_signup_enabled' for OrganisationConnection [\#724](https://github.com/auth0/auth0.net/pull/724) ([kailash-b](https://github.com/kailash-b))
+
+**Fixed**
+- Fixes issue where SendInvitationEmail is not defaulting to True [\#728](https://github.com/auth0/auth0.net/pull/728) ([kailash-b](https://github.com/kailash-b))
+
+## [7.26.2](https://github.com/auth0/auth0.net/tree/7.26.2) (2024-04-03)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.26.1...7.26.2)
+
+**Changed**
+- Add show_as_button to organizations connection [\#706](https://github.com/auth0/auth0.net/pull/706) ([jpealing-fiscaltec](https://github.com/jpealing-fiscaltec))
+- Update LogStreamType to include all types [\#713](https://github.com/auth0/auth0.net/pull/713) ([frederikprijck](https://github.com/frederikprijck))
+- Support JWT Access Token Profile values in TokenDialect [\#714](https://github.com/auth0/auth0.net/pull/714) ([stevehobbsdev](https://github.com/stevehobbsdev))
+
+## [7.26.1](https://github.com/auth0/auth0.net/tree/7.26.1) (2024-01-11)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.26.0...7.26.1)
+
+**Fixed**
+- Do not crash when User.Locale and UserInfo.Locale are an object [\#699](https://github.com/auth0/auth0.net/pull/699) ([frederikprijck](https://github.com/frederikprijck))
+- Ensure AsyncAgedCache is correctly updated [\#693](https://github.com/auth0/auth0.net/pull/693) ([frederikprijck](https://github.com/frederikprijck))
+
+## [7.26.0](https://github.com/auth0/auth0.net/tree/7.26.0) (2023-12-21)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.25.1...7.26.0)
+
+**Changed**
+- Target .NET Framework 4.6.2 instead of 4.5.2 [\#687](https://github.com/auth0/auth0.net/pull/687) ([frederikprijck](https://github.com/frederikprijck))
+
+**Note:** This release drops support for .NET Framework 4.5.2, 4.6.0 and 4.6.1, [which have no longer been supported by Microsoft since April 2022](https://learn.microsoft.com/en-us/lifecycle/products/microsoft-net-framework?branch=live).
+
+## [7.25.1](https://github.com/auth0/auth0.net/tree/7.25.1) (2023-12-14)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.25.0...7.25.1)
+
+**Added**
+- Add OIDC back channel logout [\#682](https://github.com/auth0/auth0.net/pull/682) ([mfolker-sage](https://github.com/mfolker-sage))
+
+## [7.25.0](https://github.com/auth0/auth0.net/tree/7.25.0) (2023-11-28)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.24.0...7.25.0)
+
+**Added**
+- Add support for Pushed Authorization Request [\#677](https://github.com/auth0/auth0.net/pull/677) ([frederikprijck](https://github.com/frederikprijck))
+
+**Fixed**
+- Ensure external_id is defined as string instead of int [\#679](https://github.com/auth0/auth0.net/pull/679) ([frederikprijck](https://github.com/frederikprijck))
+- Add Grants to IManagementApiClient [\#681](https://github.com/auth0/auth0.net/pull/681) ([pabrodez](https://github.com/pabrodez))
+
+## [7.24.0](https://github.com/auth0/auth0.net/tree/7.24.0) (2023-11-08)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.23.1...7.24.0)
+
+**Added**
+- Add Organizations in Client Credentials [\#673](https://github.com/auth0/auth0.net/pull/673) ([frederikprijck](https://github.com/frederikprijck))
+
+## [7.23.1](https://github.com/auth0/auth0.net/tree/7.23.1) (2023-10-25)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.23.0...7.23.1)
+
+**Changed**
+- Add customize_mfa_in_postlogin_action to TenantSettings [\#670](https://github.com/auth0/auth0.net/pull/670) ([frederikprijck](https://github.com/frederikprijck))
+- Add passkey properties to AuthenticationMethod [\#669](https://github.com/auth0/auth0.net/pull/669) ([frederikprijck](https://github.com/frederikprijck))
+
+## [7.23.0](https://github.com/auth0/auth0.net/tree/7.23.0) (2023-10-19)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.22.3...7.23.0)
+
+**Added**
+- Add roles to OrganizationMember [\#661](https://github.com/auth0/auth0.net/pull/661) ([frederikprijck](https://github.com/frederikprijck))
+- Add fields to Organizations Get All Members [\#660](https://github.com/auth0/auth0.net/pull/660) ([frederikprijck](https://github.com/frederikprijck))
+- Add external_id on Job [\#658](https://github.com/auth0/auth0.net/pull/658) ([frederikprijck](https://github.com/frederikprijck))
+- Add show_as_button to ConnectionBase.cs [\#647](https://github.com/auth0/auth0.net/pull/647) ([dylanAtWork](https://github.com/dylanAtWork))
+
+**Changed**
+- Move IsDomainConnection down into ConnectionBase [\#656](https://github.com/auth0/auth0.net/pull/656) ([amummaprojectmanager](https://github.com/amummaprojectmanager))
+
+## [7.22.3](https://github.com/auth0/auth0.net/tree/7.22.3) (2023-08-29)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.22.2...7.22.3)
+
+**Changed**
+- added generic get/set metadata methods on UserBase [\#646](https://github.com/auth0/auth0.net/pull/646) ([MichaelPruefer](https://github.com/MichaelPruefer))
+
+## [7.22.2](https://github.com/auth0/auth0.net/tree/7.22.2) (2023-08-14)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.22.1...7.22.2)
+
+**Changed**
+- Support providing Organization when resetting password [\#635](https://github.com/auth0/auth0.net/pull/635) ([frederikprijck](https://github.com/frederikprijck))
+- Add cross_origin_authentication on Clients [\#643](https://github.com/auth0/auth0.net/pull/643) ([frederikprijck](https://github.com/frederikprijck))
+
+## [7.22.1](https://github.com/auth0/auth0.net/tree/7.22.1) (2023-07-28)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.22.0...7.22.1)
+
+**Changed**
+- Add Name to Org Update Request [\#639](https://github.com/auth0/auth0.net/pull/639) ([amummaprojectmanager](https://github.com/amummaprojectmanager))
+
+**Fixed**
+- Add post_login_prompt to OrganizationRequireBehavior [\#637](https://github.com/auth0/auth0.net/pull/637) ([frederikprijck](https://github.com/frederikprijck))
+
+## [7.22.0](https://github.com/auth0/auth0.net/tree/7.22.0) (2023-07-19)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.21.1...7.22.0)
+
+**Added**
+- Add Grants endpoint [\#633](https://github.com/auth0/auth0.net/pull/633) ([frederikprijck](https://github.com/frederikprijck))
+- Support Organization Name [\#631](https://github.com/auth0/auth0.net/pull/631) ([frederikprijck](https://github.com/frederikprijck))
+
+## [7.21.1](https://github.com/auth0/auth0.net/tree/7.21.1) (2023-07-03)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.21.0...7.21.1)
+
+**Fixed**
+- Add ClientId to EmailVerificationTicket [\#629](https://github.com/auth0/auth0.net/pull/629) ([bellascalzi1](https://github.com/bellascalzi1))
+
+## [7.21.0](https://github.com/auth0/auth0.net/tree/7.21.0) (2023-06-05)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.20.0...7.21.0)
+
+**Added**
+- Add support for Client Credentials endpoint support in Management API [\#607](https://github.com/auth0/auth0.net/pull/607) ([frederikprijck](https://github.com/frederikprijck))
+- Added cancellation token to device credentials request [\#619](https://github.com/auth0/auth0.net/pull/619) ([msmolka](https://github.com/msmolka))
+
+## [7.20.0](https://github.com/auth0/auth0.net/tree/7.20.0) (2023-05-16)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.19.1...7.20.0)
+
+**Added**
+- Added revoke refresh token endpoint support [\#617](https://github.com/auth0/auth0.net/pull/617) ([msmolka](https://github.com/msmolka))
+
+## [7.19.1](https://github.com/auth0/auth0.net/tree/7.19.1) (2023-04-25)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.19.0...7.19.1)
+
+**Changed**
+- Move IDisposable to IAuthenticationApiClient [\#611](https://github.com/auth0/auth0.net/pull/611) ([frederikprijck](https://github.com/frederikprijck))
+
+## [7.19.0](https://github.com/auth0/auth0.net/tree/7.19.0) (2023-03-13)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.18.0...7.19.0)
+
+**Added**
+- Add Factor Management Endpoints [\#608](https://github.com/auth0/auth0.net/pull/608) ([frederikprijck](https://github.com/frederikprijck))
+
+## [7.18.0](https://github.com/auth0/auth0.net/tree/7.18.0) (2023-01-18)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.17.4...7.18.0)
+
+**Added**
+- Add support for Client Assertion [\#605](https://github.com/auth0/auth0.net/pull/605) ([frederikprijck](https://github.com/frederikprijck))
+- Add support for the connection status API [\#601](https://github.com/auth0/auth0.net/pull/601) ([Hawxy](https://github.com/Hawxy))
+
+## [7.17.4](https://github.com/auth0/auth0.net/tree/7.17.4) (2022-10-17)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.17.3...7.17.4)
+
+**Changed**
+- Rework IdTokenValidator to be able to use a proxy [\#596](https://github.com/auth0/auth0.net/pull/596) ([frederikprijck](https://github.com/frederikprijck))
+- Add support for Ephemeral sessions [\#593](https://github.com/auth0/auth0.net/pull/593) ([frederikprijck](https://github.com/frederikprijck))
+
+## [7.17.3](https://github.com/auth0/auth0.net/tree/7.17.3) (2022-10-03)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.17.2...7.17.3)
+
+**Changed**
+- [SDK-3641] Support stage property in Breached Password Detection configuration [\#591](https://github.com/auth0/auth0.net/pull/591) ([ewanharris](https://github.com/ewanharris))
+
+## [7.17.2](https://github.com/auth0/auth0.net/tree/7.17.2) (2022-09-12)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.17.1...7.17.2)
+
+**Changed**
+- Support EnabledConnections in OrganizationCreateRequest [\#585](https://github.com/auth0/auth0.net/pull/585) ([ssurowiec](https://github.com/ssurowiec))
+
+## [7.17.1](https://github.com/auth0/auth0.net/tree/7.17.1) (2022-09-12)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.17.0...7.17.1)
+
+**Fixed**
+- Moving IDisposable on to IManagementApiClient [\#581](https://github.com/auth0/auth0.net/pull/581) ([kevbite](https://github.com/kevbite))
+
+## [7.17.0](https://github.com/auth0/auth0.net/tree/7.17.0) (2022-07-26)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.16.1...7.17.0)
+
+**Added**
+- Add interfaces for Management Clients [\#569](https://github.com/auth0/auth0.net/pull/569) ([DerKobe](https://github.com/derkobe))
+
+## [7.16.1](https://github.com/auth0/auth0.net/tree/7.16.1) (2022-07-12)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.16.0...7.16.1)
+
+**Changed**
+- Add display_name to ConnectionCreateRequest and ConnectionUpdateRequest [\#573](https://github.com/auth0/auth0.net/pull/573) ([rinkeb](https://github.com/rinkeb))
+
+## [release-7.16.0](https://github.com/auth0/auth0.net/tree/release-7.16.0) (2022-05-03)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.15.0...release-7.16.0)
+
+**Changed**
+- Add ProvisioningTicketUrl [\#562](https://github.com/auth0/auth0.net/pull/562) ([zzanol](https://github.com/zzanol))
+
+**Security**
+- [Snyk] Security upgrade Newtonsoft.Json from 12.0.3 to 13.0.1 [\#560](https://github.com/auth0/auth0.net/pull/560) ([crew-security](https://github.com/crew-security))
+- [Snyk] Security upgrade Microsoft.IdentityModel.Protocols.OpenIdConnect from 5.6.0 to 6.5.0 [\#559](https://github.com/auth0/auth0.net/pull/559) ([snyk-bot](https://github.com/snyk-bot))
+
+## [release-7.15.0](https://github.com/auth0/auth0.net/tree/release-7.15.0) (2022-03-04)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.14.0...release-7.15.0)
+
+**Added**
+- Add support for Rules Configs endpoints  [\#552](https://github.com/auth0/auth0.net/pull/552) ([caldwell0414](https://github.com/caldwell0414))
+
+**Changed**
+- Add ID Token validation to device-code and passwordless  [\#553](https://github.com/auth0/auth0.net/pull/553) ([frederikprijck](https://github.com/frederikprijck))
+
+**Note** that with this release, ID Token validation has been added when retrieving a token using any of the Device Code or Passwordless flows.
+There might be a rare occasion where this could break your application, in the situation where you are using invalid ID Tokens.
+However, typically this should not cause any issues as ID Tokens are supposed to be valid. If they aren't, you probably want to get notified about it as soon as possible.
+
+Prior to this change, those methods would return the tokens without checking the validaty of your ID Token.
+However, given the fact that this should realy be an edge case, and we believe it's a good idea to inform you about invalid tokens sooner rather than later, we decided to introduce this change in a minor release.
+
+## [release-7.14.0](https://github.com/auth0/auth0.net/tree/release-7.14.0) (2022-02-15)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.13.0...release-7.14.0)
+
+**Added**
+- Implement Attack Protection Endpoints [\#547](https://github.com/auth0/auth0.net/pull/547) ([frederikprijck](https://github.com/frederikprijck))
+
+## [release-7.13.0](https://github.com/auth0/auth0.net/tree/release-7.13.0) (2022-02-11)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.12.1...release-7.13.0)
+
+**Added**
+- Retrieve and Update the Enabled Phone Factors [\#544](https://github.com/auth0/auth0.net/pull/544) ([frederikprijck](https://github.com/frederikprijck))
+
+## [release-7.12.1](https://github.com/auth0/auth0.net/tree/release-7.12.1) (2022-01-07)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.12.0...release-7.12.1)
+
+**Changed**
+- Increase delay between subsequent retries [\#540](https://github.com/auth0/auth0.net/pull/540) ([frederikprijck](https://github.com/frederikprijck))
+
+**Fixed**
+- add webauthn-* enrollment auth methods [\#539](https://github.com/auth0/auth0.net/pull/539) ([frederikprijck](https://github.com/frederikprijck))
+- Support updating all guardian factors [\#536](https://github.com/auth0/auth0.net/pull/536) ([frederikprijck](https://github.com/frederikprijck))
+
+## [release-7.12.0](https://github.com/auth0/auth0.net/tree/release-7.12.0) (2021-10-27)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.11.0...release-7.12.0)
+
+**Added**
+- Support setting access token after instantiation of ManagementApiClient [\#532](https://github.com/auth0/auth0.net/pull/532) ([mfolker](https://github.com/mfolker))
+- Add auth0-forwarded-for header to passwordless sms authentication for… [\#530](https://github.com/auth0/auth0.net/pull/530) ([rhyswilliamszip](https://github.com/rhyswilliamszip))
+
+## [release-7.11.0](https://github.com/auth0/auth0.net/tree/release-7.11.0) (2021-10-01)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.10.0...release-7.11.0)
+
+**Added**
+- Add Keys Endpoints [\#527](https://github.com/auth0/auth0.net/pull/527) ([colinbobolin](https://github.com/colinbobolin))
+- Added Prompt Client to Management API SDK [\#522](https://github.com/auth0/auth0.net/pull/522) ([hakuna-matata-in](https://github.com/hakuna-matata-in))
+
+**Changed**
+- [SDK-2548] Support unpaginated requests for some endpoints [\#525](https://github.com/auth0/auth0.net/pull/525) ([frederikprijck](https://github.com/frederikprijck))
+
+## [release-7.10.0](https://github.com/auth0/auth0.net/tree/release-7.10.0) (2021-08-30)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.9.0...release-7.10.0)
+
+**Added**
+- Add support for Actions Management APIs [\#517](https://github.com/auth0/auth0.net/pull/517) ([frederikprijck](https://github.com/frederikprijck))
+
+**Fixed**
+- Ensure Checkpoint Pagination works when no next is returned [\#520](https://github.com/auth0/auth0.net/pull/520) ([frederikprijck](https://github.com/frederikprijck))
+
+## [release-7.9.0](https://github.com/auth0/auth0.net/tree/release-7.9.0) (2021-08-24)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.8.1...release-7.9.0)
+
+**Added**
+- Add cancellation token support [\#513](https://github.com/auth0/auth0.net/pull/513) ([hawxy](https://github.com/hawxy))
+- Implement automatic rate-limit handling [\#512](https://github.com/auth0/auth0.net/pull/512) ([frederikprijck](https://github.com/frederikprijck))
+- Add connection property to OrganizationConnection [\#511](https://github.com/auth0/auth0.net/pull/511) ([frederikprijck](https://github.com/frederikprijck))
+- Update pagination interface to support 'from' and 'take' checkpoint pagination parameters [\#507](https://github.com/auth0/auth0.net/pull/514) ([evansims](https://github.com/evansims))
+
+**Fixed**
+- GetAllMemberRolesAsync should return a list of Role instances [\#514](https://github.com/auth0/auth0.net/pull/514) ([frederikprijck](https://github.com/frederikprijck))
+- Ensure CustomDomainVerification.Methods can be serialized [\#509](https://github.com/auth0/auth0.net/pull/509) ([frederikprijck](https://github.com/frederikprijck))
+
+**Note**: In the situation where you are providing your own implementation for `IManagementConnection` or `IAuthenticationConnection`, upgrading to `7.9.0` will require changing your implementations to also include the optional `CancellationToken` parameters.
+
+## [release-7.8.1](https://github.com/auth0/auth0.net/tree/release-7.8.1) (2021-07-07)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.8.0...release-7.8.1)
+
+**Fixed**
+- Make GuardianFactor serialization a bit more resilient to new factor names [\#504](https://github.com/auth0/auth0.net/pull/504) ([frederikprijck](https://github.com/frederikprijck))
+- Set ClientSecret if defined when using PKCE [\#503](https://github.com/auth0/auth0.net/pull/503) ([frederikprijck](https://github.com/frederikprijck))
+
+## [release-7.8.0](https://github.com/auth0/auth0.net/tree/release-7.8.0) (2021-04-02)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.7.0...release-7.8.0)
+
+**Added**
+- [SDK-2438] Add support for Organizations in Management API [\#489](https://github.com/auth0/auth0.net/pull/489) ([frederikprijck](https://github.com/frederikprijck))
+
+## [release-7.7.0](https://github.com/auth0/auth0.net/tree/release-7.7.0) (2021-03-23)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.6.1...release-7.7.0)
+
+**Added**
+- [SDK-2400] Add support for Organizations [\#486](https://github.com/auth0/auth0.net/pull/486) ([frederikprijck](https://github.com/frederikprijck))
+
+## [release-7.6.1](https://github.com/auth0/auth0.net/tree/release-7.6.1) (2021-03-12)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.6.0...release-7.6.1)
+
+**Changed**
+- Add ApiError to RateLimitException to access the response body [\#480](https://github.com/auth0/auth0.net/pull/480) ([fernandozpiccin](https://github.com/fernandozpiccin))
+
+## [release-7.6.0](https://github.com/auth0/auth0.net/tree/release-7.6.0) (2021-02-15)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.5.1...release-7.6.0)
+
+**Added**
+- Adds support for /branding endpoints [\#475](https://github.com/auth0/auth0.net/pull/475) ([connorconway](https://github.com/connorconway))
+- Adds support for /hooks endpoints [\#471](https://github.com/auth0/auth0.net/pull/471) ([connorconway](https://github.com/connorconway))
+
+**Changed**
+- Ensure await is using ConfigureAwait [\#474](https://github.com/auth0/auth0.net/pull/474) ([frederikprijck](https://github.com/frederikprijck))
+
+## [release-7.5.1](https://github.com/auth0/auth0.net/tree/release-7.5.1) (2021-02-02)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.5.0...release-7.5.1)
+
+**Changed**
+- Sync Tenant Flags with API v2 [\#467](https://github.com/auth0/auth0.net/pull/467) ([frederikprijck](https://github.com/frederikprijck))
+- Add ClientId to PasswordChangeTicketRequest [\#464](https://github.com/auth0/auth0.net/pull/464) ([frederikprijck](https://github.com/frederikprijck))
+
+## [release-7.5.0](https://github.com/auth0/auth0.net/tree/release-7.5.0) (2021-01-21)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.4.0...release-7.5.0)
+
+**Added**
+- Add pagination to retrieving Device Credentials [\#460](https://github.com/auth0/auth0.net/pull/460) ([frederikprijck](https://github.com/frederikprijck))
+
+## [release-7.4.0](https://github.com/auth0/auth0.net/tree/release-7.4.0) (2020-12-11)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.3.2...release-7.4.0)
+
+**Added**
+- Add Device Authorization flow [\#456](https://github.com/auth0/auth0.net/pull/456) ([acraven](https://github.com/acraven))
+
+## [release-7.3.2](https://github.com/auth0/auth0.net/tree/release-7.3.2) (2020-11-13)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.3.1...release-7.3.2)
+
+**Added**
+- Allow creating and updating RefreshToken settings for Clients [\#451](https://github.com/auth0/auth0.net/pull/451) ([SamTheWizard](https://github.com/SamTheWizard))
+
+## [release-7.3.1](https://github.com/auth0/auth0.net/tree/release-7.3.1) (2020-11-12)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.3.0...release-7.3.1)
+
+**Fixed**
+- Include WebAuthn Guardian Factory names [\#446](https://github.com/auth0/auth0.net/pull/446) ([frederikprijck](https://github.com/frederikprijck))
+
+## [release-7.3.0](https://github.com/auth0/auth0.net/tree/release-7.3.0) (2020-10-23)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.2.0...release-7.3.0)
+
+**Added**
+- Complete passwordless API [\#438](https://github.com/auth0/auth0.net/pull/438) ([frederikprijck](https://github.com/frederikprijck))
+- Implement the POST Job Users Export endpoint [\#436](https://github.com/auth0/auth0.net/pull/436) ([frederikprijck](https://github.com/frederikprijck))
+
+## [release-7.2.0](https://github.com/auth0/auth0.net/tree/release-7.2.0)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.1.0...release-7.2.0)
+
+- Support passing the Identity property to the payload sent to JobsClient.SendVerificationEmailAsync 
+and TicketClient.CreateEmailVerificationTicketAsync in Auth0.ManagementApi
+- Fix ConnectionsClient.GetAllAsync when trying to use multiple strategies in Auth0.ManagementApi
+- Add Sources to the User's Permissions when using UserClient.GetPermissionsAsync in Auth0.ManagementApi.
+The return type of the UserClient.GetPermissionsAsync method has been changed, 
+so there might be use-cases where this is breaking your existing code base.
+In case you are inheriting the UserClient and overriding the GetPermissionsAsync method, you will need to update your code
+to ensure the return type matches the return type of the updated UserClient.GetPermissionsAsync method.
+
+## [release-7.1.0](https://github.com/auth0/auth0.net/tree/release-7.1.0)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.0.9...release-7.1.0)
+
+- Add support for Log Streams API in Auth0.ManagementApi
+
+## [release-7.0.9](https://github.com/auth0/auth0.net/tree/release-7.0.9)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.0.8...release-7.0.9)
+
+- Fix boolean casing on form post operations such as ImportUsersAsync so that upsert and sendCompletionEmail work.
+
+## [release-7.0.8](https://github.com/auth0/auth0.net/tree/release-7.0.8)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.0.7...release-7.0.8)
+
+- Add missing "connections" property on UserBlock class
+
+## [release-7.0.7](https://github.com/auth0/auth0.net/tree/release-7.0.7)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.0.6...release-7.0.7)
+
+- AuthenticationApiClient now respects path portions of the URI passed to the constructor.
+
+## [release-7.0.6](https://github.com/auth0/auth0.net/tree/release-7.0.6)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.0.5...release-7.0.6)
+
+- Force DateParseHandling of DateTime in JSON.NET serialization to avoid global setting.
+
+## [release-7.0.5](https://github.com/auth0/auth0.net/tree/release-7.0.5)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.0.4...release-7.0.5)
+
+- Use own JSON.NET serialization settings (avoids conflicts with changes to global)
+- Fix Jobs ImportUsersAsync function, add new SendVerificationEmail setting.
+- Add missing properties to Jobs class.
+- Add client_secret support to passwordless authentication.
+
+## [release-7.0.4](https://github.com/auth0/auth0.net/tree/release-7.0.4)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.0.3...release-7.0.4)
+
+- Ensure JWKS keys are cached for the correct period.
+- Raise RateLimitApiException on 429/TooManyRequests status code response.
+
+## [release-7.0.3](https://github.com/auth0/auth0.net/tree/release-7.0.3)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.0.2...release-7.0.3)
+
+- Fixed path encoding allowing ResourceServers.GetAsync to work with HTTP URLs #377
+- Add support for extra error properties to faciliate mfa_required etc. #376
+
+## [release-7.0.2](https://github.com/auth0/auth0.net/tree/release-7.0.2)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.0.1...release-7.0.2)
+
+- Fixed a concurrency issue - missing ConfigureAwait(false) in HttpClient*Connections.
+
+## [release-7.0.1](https://github.com/auth0/auth0.net/tree/release-7.0.1)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-7.0.0...release-7.0.1)
+
+- Fixes request message disposal issue in HttpClient*Connection.GetAsync on .NET Framework 4.x
+
+## [release-7.0.0](https://github.com/auth0/auth0.net/tree/release-7.0.0)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-6.5.6...release-7.0.0)
+
+There are many breaking changes in this release. Please see our Migration Guide for v7 at
+https://auth0.github.io/auth0.net/migrating.html
+
+The summary of changes is:
+
+- Authentication SDK includes new ID Token Validation. If your application uses HS256
+signing you should set either SigningAlgorithm to SigningAlgorithm.HS256 on requests
+you make to AuthenticationApiClient or switch to RS256 if your application is not confidential.
+
+- Improved testing and mocking support. You can now mock `IAuthenticationConnection` /
+`IManagementConnection` classes to provide local unit-testing functionality for
+`AuthenticationApiClient` and `ManagementApiClient` respectively.
+
+- Many classes moved namespace and assembly primarily ones in `Core` that were around paging.
+Visual Studio should be able to suggest where classes you were using now reside.
+
+- Disposal is now consistent. If `AuthenticationApiClient` or `ManagementApiClient` create a
+connection for you they will manage its lifecycle. If you pass in a connection then it will be your
+responsibility to manage it. This also applies to how `HttpClientAuthenticationConnection` and
+`HttpClientManagementConnection` will only dispose of a `HttpClient` they create and not ones they
+are given.
+
+- Rate Limiting information is now only available on the `RateLimitApiException` which is raised when
+the rate limit is exceeded.
+
+- `ApiException` is now `ErrorApiException`. If you use the status code or error message on exception
+you will need to switch to catching the later. The former is now a base class that does not have
+this information but ensures any old catch `ApiException` will continue to catch rate limit
+exceptions which also now inherit from this class.
+
+- Microsoft recommends `HttpClient` is reused as much as possible.  Therefore you should use
+dependency injection or inversion of control to ensure that either a single instance of
+`AuthenticationApiClient` / `ManagementApiClient` or its connections `HttpClientXConnection` are
+created to ensure sharing.  These classes are now thread-safe. You can additionally share
+`HttpClient` objects between them if you wish by injecting it into the `HttpClientXConnection`
+constructor.
+
+- Connections now have DisplayName, Realms and IsDomainConnection properties.
+
+## [release-6.5.6](https://github.com/auth0/auth0.net/tree/release-6.5.6)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-6.5.5...release-6.5.6)
+
+- Fix sharing of ApiConnection objects (would keep expanding default Auth0-Client header)
+
+## [release-6.5.5](https://github.com/auth0/auth0.net/tree/release-6.5.5)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-6.5.4...release-6.5.5)
+
+- Signup API result now handles custom databases returning variations of "id" name
+- Fix EnrollmentAuthMethod.Authenticator enum name
+- ClientBase now has property for `initiate_login_uri`
+
+## [release-6.5.4](https://github.com/auth0/auth0.net/tree/release-6.5.4)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-6.5.3...release-6.5.4)
+
+SECURITY FIX for CVE-2019-16929. See https://github.com/auth0/auth0.net/blob/master/SECURITY-NOTICE.md#idtokenvalidator-public for more details.
+
+## [release-6.5.3](https://github.com/auth0/auth0.net/tree/release-6.5.3)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-6.5.2...release-6.5.3)
+
+WARNING: If you generate tokens in your project via System.IdentityModel.Tokens.Jwt
+please read the important notice at https://github.com/auth0/auth0.net/issues/300
+
+- Upgraded System.IdentityModel.Tokens.Jwt to 5.5 to fix incompatible kid
+- Upgraded Microsoft.IdentityModel.Protocols.OpenIdConnect to 5.5
+- Add ClientId to VerifyEmailJobRequest
+- Updated all test dependencies (xunit, FluentAssertions, .NET Test SDK)
+- Removed unused Console Workbench project
+
+## [release-6.5.2](https://github.com/auth0/auth0.net/tree/release-6.5.2)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-6.5.1...release-6.5.2)
+
+- UserClient.GetEnrollments now correctly passes user id.
+
+## [release-6.5.1](https://github.com/auth0/auth0.net/tree/release-6.5.1)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-6.5.0...release-6.5.1)
+
+- User and role permissions endpoints in UsersClient and RolesClient paging fix.
+
+## [release-6.5.0](https://github.com/auth0/auth0.net/tree/release-6.5.0)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-6.4.0...release-6.5.0)
+
+- Assembly is now strong-name-signed so it can be used by other strong-name-signed packages.
+- NOTE: This is code signing only using a non-secret key. It is not authenticode or tamper protection.
+- User and role permissions endpoints in UsersClient and RolesClient now correctly honoring paging.
+- User model optional fields (CreatedAt, UpdatedAt, LastLogin) are now nullable.
+
+## [release-6.4.0](https://github.com/auth0/auth0.net/tree/release-6.4.0)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-6.3.0...release-6.4.0)
+
+- TenantSettings lifetimes are now double not integer.
+- Added various Guardian-related endpoints on UserClient.
+
+## [release-6.3.0](https://github.com/auth0/auth0.net/tree/release-6.3.0)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-6.2.0...release-6.3.0)
+
+- Missing Tenant settings now available (device flow, Guardian MFA, Change Password, flags etc.
+
+## [release-6.2.0](https://github.com/auth0/auth0.net/tree/release-6.2.0)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-6.1.0...release-6.2.0)
+
+- Added client_id to GetDeviceCredentials response
+- Added various user properties to UserUpdateRequest
+
+## [release-6.1.0](https://github.com/auth0/auth0.net/tree/release-6.1.0)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-6.0.0...release-6.1.0)
+
+- New user permission endpoints added to UsersClient
+- New role permission endpoints added to RolesClient
+- AuthenticationApiClient now implements IDisposable to dispose ApiConnection and HttpClient
+- Added various new and missing properties to Resource Servers (ResourceServerBase)
+
+## [release-6.0.0](https://github.com/auth0/auth0.net/tree/release-6.0.0)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/release-6.0.0...release-5.11.0)
+
+- New GuardianClient for managing /guardian endpoints
+- New RolesClient for managing /roles endpoints
+- PasswordChangeTicket now has IncludeEmailInRedirect and MailEmailAsVerified
+- ApiConnection now has Dispose to dispose the HttpClient it creates
+- ManagementApiClient now has Dispose to dispose the ApiConnection it creates
+- XML documentation tweaks
+- Dependencies updated
+
+BREAKING CHANGES
+See our migration guide at https://github.com/auth0/auth0.net/blob/master/docs-source/migrating-to-v6.md
+
+- All I*Client interfaces have been removed so adding endpoints is no longer breaking
+- IManagementApi interface was removed so adding new clients is no longer breaking
+- All non-paging GetAll methods have been removed
+- DiagnosticsHeader/DiagnosticsComponent are no longer available
+
