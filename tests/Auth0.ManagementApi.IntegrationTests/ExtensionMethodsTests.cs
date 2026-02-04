@@ -6,23 +6,15 @@ namespace Auth0.ManagementApi.IntegrationTests;
 
 public class ExtensionMethodsTests
 {
-    [Fact]
+    [Fact(Skip = "ThrowIfNull extension method no longer exists in new API")]
     public void ThrowsArgumentNullException_WhenInputIsNull()
     {
-        // Act & Assert
-        void ValidateInput(object input)
-        {
-            var exception = Assert.Throws<ArgumentNullException>(() => input.ThrowIfNull());
-            exception.Message.Should().Contain($"{nameof(input)}");
-        }
-        ValidateInput(null);
+        // This test is skipped because ThrowIfNull extension no longer exists in the new Fern-generated API
     }
 
-    [Fact]
+    [Fact(Skip = "ThrowIfNull extension method no longer exists in new API")]
     public void DoesNotThrowException_WhenInputIsNotNull()
     {
-        // Act & Assert
-        var input = new object();
-        input.ThrowIfNull(); // Should not throw
+        // This test is skipped because ThrowIfNull extension no longer exists in the new Fern-generated API
     }
 }

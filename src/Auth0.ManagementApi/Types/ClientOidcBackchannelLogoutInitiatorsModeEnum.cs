@@ -1,0 +1,73 @@
+using System.Text.Json.Serialization;
+using Auth0.ManagementApi.Core;
+
+namespace Auth0.ManagementApi;
+
+[JsonConverter(typeof(StringEnumSerializer<ClientOidcBackchannelLogoutInitiatorsModeEnum>))]
+[Serializable]
+public readonly record struct ClientOidcBackchannelLogoutInitiatorsModeEnum : IStringEnum
+{
+    public static readonly ClientOidcBackchannelLogoutInitiatorsModeEnum Custom = new(
+        Values.Custom
+    );
+
+    public static readonly ClientOidcBackchannelLogoutInitiatorsModeEnum All = new(Values.All);
+
+    public ClientOidcBackchannelLogoutInitiatorsModeEnum(string value)
+    {
+        Value = value;
+    }
+
+    /// <summary>
+    /// The string value of the enum.
+    /// </summary>
+    public string Value { get; }
+
+    /// <summary>
+    /// Create a string enum with the given value.
+    /// </summary>
+    public static ClientOidcBackchannelLogoutInitiatorsModeEnum FromCustom(string value)
+    {
+        return new ClientOidcBackchannelLogoutInitiatorsModeEnum(value);
+    }
+
+    public bool Equals(string? other)
+    {
+        return Value.Equals(other);
+    }
+
+    /// <summary>
+    /// Returns the string value of the enum.
+    /// </summary>
+    public override string ToString()
+    {
+        return Value;
+    }
+
+    public static bool operator ==(
+        ClientOidcBackchannelLogoutInitiatorsModeEnum value1,
+        string value2
+    ) => value1.Value.Equals(value2);
+
+    public static bool operator !=(
+        ClientOidcBackchannelLogoutInitiatorsModeEnum value1,
+        string value2
+    ) => !value1.Value.Equals(value2);
+
+    public static explicit operator string(ClientOidcBackchannelLogoutInitiatorsModeEnum value) =>
+        value.Value;
+
+    public static explicit operator ClientOidcBackchannelLogoutInitiatorsModeEnum(string value) =>
+        new(value);
+
+    /// <summary>
+    /// Constant strings for enum values
+    /// </summary>
+    [Serializable]
+    public static class Values
+    {
+        public const string Custom = "custom";
+
+        public const string All = "all";
+    }
+}

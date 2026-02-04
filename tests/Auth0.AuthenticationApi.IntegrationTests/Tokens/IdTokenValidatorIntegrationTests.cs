@@ -1,6 +1,7 @@
 ﻿using Auth0.AuthenticationApi.Models;
 using Auth0.AuthenticationApi.Tokens;
-using Auth0.ManagementApi.Models;
+using Auth0.ManagementApi;
+using Auth0.ManagementApi.Tenants;
 using Auth0.Tests.Shared;
 using FluentAssertions;
 using System;
@@ -14,8 +15,8 @@ namespace Auth0.AuthenticationApi.IntegrationTests.Tokens;
 
 public class IdTokenValidatorIntegrationTestsFixture : TestBaseFixture
 {
-    public Connection Connection;
-    public User User;
+    public CreateConnectionResponseContent Connection;
+    public CreateUserResponseContent User;
     public string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
 
 
@@ -23,7 +24,7 @@ public class IdTokenValidatorIntegrationTestsFixture : TestBaseFixture
     {
         await base.InitializeAsync();
 
-        var tenantSettings = await ApiClient.TenantSettings.GetAsync();
+        var tenantSettings = await ApiClient.Tenants.Settings.GetAsync(new GetTenantSettingsRequestParameters());
 
         if (string.IsNullOrEmpty(tenantSettings.DefaultDirectory))
         {
@@ -33,10 +34,10 @@ public class IdTokenValidatorIntegrationTestsFixture : TestBaseFixture
         }
 
         // We will need a connection to add the users to...
-        Connection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
+        Connection = await ApiClient.Connections.CreateAsync(new CreateConnectionRequestContent
         {
             Name = $"{TestingConstants.ConnectionPrefix}-{TestBaseUtils.MakeRandomName()}",
-            Strategy = "auth0",
+            Strategy = ConnectionIdentityProviderEnum.Auth0,
             EnabledClients = new[] {
                 TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"),
                 TestBaseUtils.GetVariable("AUTH0_HS256_CLIENT_ID"),
@@ -47,7 +48,7 @@ public class IdTokenValidatorIntegrationTestsFixture : TestBaseFixture
         TrackIdentifier(CleanUpType.Connections, Connection.Id);
 
         // And add a dummy user to test against
-        User = await ApiClient.Users.CreateAsync(new UserCreateRequest
+        User = await ApiClient.Users.CreateAsync(new CreateUserRequestContent
         {
             Connection = Connection.Name,
             Email = $"{TestBaseUtils.MakeRandomName()}{TestingConstants.UserEmailDomain}",

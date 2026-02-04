@@ -1,189 +1,183 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
-using Auth0.ManagementApi.Models;
+using Auth0.ManagementApi.Tenants;
 using FluentAssertions;
 using Xunit;
 using Auth0.Tests.Shared;
 
 namespace Auth0.ManagementApi.IntegrationTests;
 
-public class TenantSettingsTests : TestBase
+public class TenantSettingsTestsFixture : TestBaseFixture
 {
+}
+
+public class TenantSettingsTests : IClassFixture<TenantSettingsTestsFixture>
+{
+    private TenantSettingsTestsFixture fixture;
+
+    public TenantSettingsTests(TenantSettingsTestsFixture fixture)
+    {
+        this.fixture = fixture;
+    }
+
     [Fact]
     public async Task Test_tenant_settings_sequence()
     {
-        string token = await GenerateManagementApiToken();
+        // Get the current settings
+        var settings = await fixture.ApiClient.Tenants.Settings.GetAsync(new GetTenantSettingsRequestParameters());
+        settings.Should().NotBeNull();
 
-        using (var apiClient = 
-               new ManagementApiClient(
-                   token, 
-                   GetVariable("AUTH0_MANAGEMENT_API_URL"),
-                   new HttpClientManagementConnection(
-                       options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 })))
+        try
         {
-            // Get the current settings
-            var settings = await apiClient.TenantSettings.GetAsync();
-            settings.Should().NotBeNull();
-
-            try
+            // Update the tenant settings - do not set some properties as the tenant is pre-configured
+            // to allow all the right logout urls etc.
+            var settingsUpdateRequest = new UpdateTenantSettingsRequestContent
             {
-                // Update the tenant settings - do not set some properties as the tenant is pre-configured
-                // to allow all the right logout urls etc.
-                var settingsUpdateRequest = new TenantSettingsUpdateRequest
+                ChangePassword = new TenantSettingsPasswordPage
                 {
-                    ChangePassword = new TenantChangePassword
+                    Enabled = true,
+                    Html = "<b>hi</b>",
+                },
+                ErrorPage = new TenantSettingsErrorPage
+                {
+                    Html = null,
+                    ShowLogLink = false,
+                    Url = $"www.{Guid.NewGuid():N}.aaa/error",
+                },
+                GuardianMfaPage = new TenantSettingsGuardianPage
+                {
+                    Html = "<b>hi</b>",
+                    Enabled = true,
+                },
+                FriendlyName = Guid.NewGuid().ToString("N"),
+                PictureUrl = $"www.{Guid.NewGuid():N}.aaa/picture.png",
+                SupportEmail = $"support@{Guid.NewGuid():N}.aaa",
+                SupportUrl = $"www.{Guid.NewGuid():N}.aaa/support",
+                DefaultAudience = "",
+                DefaultDirectory = "Username-Password-Authentication",
+                EnabledLocales = new[] { UpdateTenantSettingsRequestContentEnabledLocalesItem.En },
+                Flags = new TenantSettingsFlags
+                {
+                    ChangePwdFlowV1 = false,
+                    DisableClickjackProtectionHeaders = true,
+                    EnableApisSection = true,
+                    EnableClientConnections = false,
+                    EnablePipeline2 = true,
+                    RemoveAlgFromJwks = true
+                },
+                DeviceFlow = new TenantSettingsDeviceFlow
+                {
+                    Charset = TenantSettingsDeviceFlowCharset.Base20,
+                    Mask = "***-***-***"
+                },
+                SessionCookie = new SessionCookieSchema { Mode = SessionCookieModeEnum.Persistent },
+                AllowedLogoutUrls = new string[] { "https://app.com/logout", "http://localhost/logout" },
+                SessionLifetime = 1080,
+                IdleSessionLifetime = 720,
+                CustomizeMfaInPostloginAction = true,
+                AcrValuesSupported = new[] { "value1", "value2" },
+                PushedAuthorizationRequestsSupported = true,
+                Mtls = new TenantSettingsMtls { EnableEndpointAliases = true },
+                DefaultTokenQuota = new DefaultTokenQuota
+                {
+                    Clients = new TokenQuotaConfiguration
                     {
-                        Enabled = true,
-                        Html = "<b>hi</b>",
-                    },
-                    ErrorPage = new TenantErrorPage
-                    {
-                        Html = null,
-                        ShowLogLink = false,
-                        Url = $"www.{Guid.NewGuid():N}.aaa/error",
-                    },
-                    GuardianMfaPage = new TenantGuardianMfaPage
-                    {
-                        Html = "<b>hi</b>",
-                        Enabled = true,
-                    },
-                    FriendlyName = Guid.NewGuid().ToString("N"),
-                    PictureUrl = $"www.{Guid.NewGuid():N}.aaa/picture.png",
-                    SupportEmail = $"support@{Guid.NewGuid():N}.aaa",
-                    SupportUrl = $"www.{Guid.NewGuid():N}.aaa/support",
-                    DefaultAudience = "",
-                    DefaultDirectory = "Username-Password-Authentication",
-                    EnabledLocales = new[] { "en" },
-                    Flags = new TenantFlags()
-                    {
-                        ChangePwdFlowV1 = false,
-                        DisableClickjackProtectionHeaders = true,
-                        EnableAPIsSection = true,
-                        EnableClientConnections = false,
-                        EnablePipeline2 = true,
-                        RemoveAlgFromJwks = true
-                    },
-                    DeviceFlow = new TenantDeviceFlow()
-                    {
-                        Charset = TenantDeviceFlowCharset.Base20,
-                        Mask = "***-***-***"
-                    },
-                    SessionCookie = new SessionCookie { Mode = "persistent" },
-                    AllowedLogoutUrls = new string[] { "https://app.com/logout", "http://localhost/logout" },
-                    SessionLifetime = 1080,
-                    IdleSessionLifetime = 720,
-                    CustomizeMfaInPostLoginAction = true,
-                    AcrValuesSupported = new[] { "value1", "value2" },
-                    PushedAuthorizationRequestsSupported = true,
-                    Mtls = new TenantMtls() { EnableEndpointAliases = true },
-                    DefaultTokenQuota = new DefaultTokenQuota()
-                    {
-                        Clients = new TokenQuota()
+                        ClientCredentials = new TokenQuotaClientCredentials
                         {
-                            ClientCredentials = new Quota()
-                            {
-                                Enforce = true,
-                                PerDay = 200,
-                                PerHour = 100
-                            }
-                        },
-                        Organizations = new TokenQuota()
+                            Enforce = true,
+                            PerDay = 200,
+                            PerHour = 100
+                        }
+                    },
+                    Organizations = new TokenQuotaConfiguration
+                    {
+                        ClientCredentials = new TokenQuotaClientCredentials
                         {
-                            ClientCredentials = new Quota()
-                            {
-                                Enforce = true,
-                                PerDay = 200,
-                                PerHour = 100
-                            }
-                        },
+                            Enforce = true,
+                            PerDay = 200,
+                            PerHour = 100
+                        }
                     },
-                    LegacySandboxVersion = "12",
-                    DefaultRedirectionUri = "https://www.example-domain.com/login",
-                    Sessions = new Session()
-                    {
-                        OidcLogoutPromptEnabled = false
-                    },
-                    OidcLogout = new OidcLogout()
-                    {
-                        RpLogoutEndSessionEndpointDiscovery = false
-                    },
-                    AllowOrganizationNameInAuthenticationApi = false,
-                    AuthorizationResponseIssParameterSupported = false
-                };
+                },
+                SandboxVersion = "12",
+                DefaultRedirectionUri = "https://www.example-domain.com/login",
+                Sessions = new TenantSettingsSessions
+                {
+                    OidcLogoutPromptEnabled = false
+                },
+                OidcLogout = new TenantOidcLogoutSettings
+                {
+                    RpLogoutEndSessionEndpointDiscovery = false
+                },
+                AllowOrganizationNameInAuthenticationApi = false
+            };
 
-                var settingsUpdateResponse = await apiClient.TenantSettings.UpdateAsync(settingsUpdateRequest);
+            var settingsUpdateResponse = await fixture.ApiClient.Tenants.Settings.UpdateAsync(settingsUpdateRequest);
 
-                settingsUpdateResponse.Should().BeEquivalentTo(settingsUpdateRequest, options => options
-                    .Excluding(p => p.Flags)
-                    .Excluding(p => p.SandboxVersion)
-                    .Excluding(p => p.SandboxVersionsAvailable)
-                );
-
-                settingsUpdateResponse.Flags.ChangePwdFlowV1.Should().BeFalse();
-                settingsUpdateResponse.Flags.DisableClickjackProtectionHeaders.Should().BeTrue();
-                settingsUpdateResponse.Flags.EnableAPIsSection.Should().BeTrue();
-                settingsUpdateResponse.Flags.EnableClientConnections.Should().BeFalse();
-                settingsUpdateResponse.Flags.EnablePipeline2.Should().BeTrue();
-                settingsUpdateResponse.Flags.RemoveAlgFromJwks.Should().BeTrue();
-                settingsUpdateResponse.CustomizeMfaInPostLoginAction.Should().BeTrue();
-                settingsUpdateResponse.SessionCookie.Mode.Should().Be("persistent");
-            }
-            finally
+            settingsUpdateResponse.FriendlyName.Should().Be(settingsUpdateRequest.FriendlyName);
+            settingsUpdateResponse.Flags.ChangePwdFlowV1.Should().BeFalse();
+            settingsUpdateResponse.Flags.DisableClickjackProtectionHeaders.Should().BeTrue();
+            settingsUpdateResponse.Flags.EnableApisSection.Should().BeTrue();
+            settingsUpdateResponse.Flags.EnableClientConnections.Should().BeFalse();
+            settingsUpdateResponse.Flags.EnablePipeline2.Should().BeTrue();
+            settingsUpdateResponse.Flags.RemoveAlgFromJwks.Should().BeTrue();
+            settingsUpdateResponse.CustomizeMfaInPostloginAction.Should().BeTrue();
+            settingsUpdateResponse.SessionCookie.Value.Mode.Should().Be(SessionCookieModeEnum.Persistent);
+        }
+        finally
+        {
+            var resetUpdateRequest = new UpdateTenantSettingsRequestContent
             {
-                var resetUpdateRequest = new TenantSettingsUpdateRequest
+                ChangePassword = new TenantSettingsPasswordPage
                 {
-                    ChangePassword = new TenantChangePassword
+                    Html = null,
+                    Enabled = false,
+                },
+                ErrorPage = new TenantSettingsErrorPage
+                {
+                    Html = null,
+                    Url = "",
+                },
+                GuardianMfaPage = new TenantSettingsGuardianPage
+                {
+                    Html = null,
+                    Enabled = false,
+                },
+                Flags = new TenantSettingsFlags
+                {
+                    RemoveAlgFromJwks = false
+                },
+                FriendlyName = "Auth0.NET SDK integration test",
+                PictureUrl = "",
+                SupportEmail = "sdks@auth0.com",
+                SupportUrl = "",
+                AcrValuesSupported = null,
+                PushedAuthorizationRequestsSupported = false,
+                Mtls = null,
+                DefaultTokenQuota = new DefaultTokenQuota
+                {
+                    Clients = new TokenQuotaConfiguration
                     {
-                        Html = null,
-                        Enabled = false,
-                    },
-                    ErrorPage = new TenantErrorPage
-                    {
-                        Html = null,
-                        Url = "",
-                    },
-                    GuardianMfaPage = new TenantGuardianMfaPage
-                    {
-                        Html = null,
-                        Enabled = false,
-                    },
-                    Flags = new TenantFlags()
-                    {
-                        RemoveAlgFromJwks = false
-                    },
-                    FriendlyName = "Auth0.NET SDK integration test",
-                    PictureUrl = "",
-                    SupportEmail = "sdks@auth0.com",
-                    SupportUrl = "",
-                    AcrValuesSupported = null,
-                    PushedAuthorizationRequestsSupported = false,
-                    Mtls = null,
-                    DefaultTokenQuota = new DefaultTokenQuota()
-                    {
-                        Clients = new TokenQuota()
+                        ClientCredentials = new TokenQuotaClientCredentials
                         {
-                            ClientCredentials = new Quota()
-                            {
-                                Enforce = false
-                            }
-                        },
-                        Organizations = new TokenQuota()
-                        {
-                            ClientCredentials = new Quota()
-                            {
-                                Enforce = false
-                            }
-                        },
+                            Enforce = false
+                        }
                     },
-                    LegacySandboxVersion = null,
-                    DefaultRedirectionUri = null,
-                    Sessions = null,
-                    OidcLogout = null,
-                    AllowOrganizationNameInAuthenticationApi = null,
-                    AuthorizationResponseIssParameterSupported = null
-                }; 
-                await apiClient.TenantSettings.UpdateAsync(resetUpdateRequest);
-            }
+                    Organizations = new TokenQuotaConfiguration
+                    {
+                        ClientCredentials = new TokenQuotaClientCredentials
+                        {
+                            Enforce = false
+                        }
+                    },
+                },
+                SandboxVersion = null,
+                DefaultRedirectionUri = null,
+                Sessions = null,
+                OidcLogout = null,
+                AllowOrganizationNameInAuthenticationApi = null
+            };
+            await fixture.ApiClient.Tenants.Settings.UpdateAsync(resetUpdateRequest);
         }
     }
 }

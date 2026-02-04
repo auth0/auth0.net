@@ -29,9 +29,8 @@ public class TestBaseUtils
             // Get the access token
             var token = await authenticationApiClient.GetTokenAsync(new ClientCredentialsTokenRequest
             {
-                ClientId = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
-                ClientSecret = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET"),
-                Audience = GetVariable("AUTH0_MANAGEMENT_API_AUDIENCE")
+
+                
             });
 
             return token.AccessToken;

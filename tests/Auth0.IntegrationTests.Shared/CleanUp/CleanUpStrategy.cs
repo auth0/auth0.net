@@ -5,10 +5,10 @@ namespace Auth0.IntegrationTests.Shared.CleanUp;
 
 public abstract class CleanUpStrategy
 {
-    public ManagementApiClient ApiClient { get; }
+    public ManagementClient ApiClient { get; }
     public CleanUpType Type { get; }
 
-    protected CleanUpStrategy(CleanUpType type, ManagementApiClient apiClient)
+    protected CleanUpStrategy(CleanUpType type, ManagementClient apiClient)
     {
         Type = type;
         ApiClient = apiClient;

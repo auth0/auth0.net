@@ -5,8 +5,6 @@ using FluentAssertions;
 using Xunit;
 using Auth0.IntegrationTests.Shared.CleanUp;
 using Auth0.ManagementApi.IntegrationTests.Testing;
-using Auth0.ManagementApi.Models.NetworkAcl;
-using Auth0.ManagementApi.Paging;
 
 namespace Auth0.ManagementApi.IntegrationTests;
 
@@ -29,26 +27,27 @@ public class NetworkAclTest(NetworkAclTestFixture fixture) : IClassFixture<Netwo
     public async Task Test_NetworkAcl_crud_sequence()
     {
         // Create a Network ACL entry
-        var networkAcl = new NetworkAclCreateRequest
+        var networkAcl = new CreateNetworkAclRequestContent
         {
             Active = false,
             Priority = 1,
             Description = "Reject all traffic from test cases",
-            NetworkAclRule = new NetworkAclRule
+            Rule = new NetworkAclRule
             {
                 Action = new NetworkAclAction { Block = true },
                 Match = new NetworkAclMatch
                 {
                     GeoCountryCodes = new List<string> { "CN" }
                 },
-                Scope = NetworkAclScope.Management
+                Scope = NetworkAclRuleScopeEnum.Management
             }
         };
 
         // Create the Network ACL, should not throw an exception
-        await fixture.ApiClient.NetworkAclClient.CreateAsync(networkAcl);
+        await fixture.ApiClient.NetworkAcls.CreateAsync(networkAcl);
 
-        var networkAcls = await fixture.ApiClient.NetworkAclClient.GetAllAsync(new PaginationInfo());
+        var networkAclsPager = await fixture.ApiClient.NetworkAcls.ListAsync(new ListNetworkAclsRequestParameters());
+        var networkAcls = networkAclsPager.CurrentPage.Items.ToList();
         networkAcls.Should().NotBeNullOrEmpty();
         try
         {
@@ -60,12 +59,12 @@ public class NetworkAclTest(NetworkAclTestFixture fixture) : IClassFixture<Netwo
                 .Should()
                 .Be(networkAcl.Description);
 
-            var patchUpdateRequest = new NetworkAclPatchUpdateRequest()
+            var patchUpdateRequest = new UpdateNetworkAclRequestContent
             {
                 Active = false,
                 Priority = 2,
                 Description = "Updated description for test cases",
-                NetworkAclRule = new NetworkAclRule
+                Rule = new NetworkAclRule
                 {
                     Action = new NetworkAclAction { Block = true },
                     Match = new NetworkAclMatch
@@ -75,59 +74,61 @@ public class NetworkAclTest(NetworkAclTestFixture fixture) : IClassFixture<Netwo
                     NotMatch = new NetworkAclMatch
                     {
                         GeoCountryCodes = new List<string> { "CA" }
-                    }
+                    },
+                    Scope = NetworkAclRuleScopeEnum.Management
                 }
             };
 
             // Get the Network ACL entry, should not throw an exception
             var networkAclEntry =
-                await fixture.ApiClient.NetworkAclClient.GetAsync(networkAcls
+                await fixture.ApiClient.NetworkAcls.GetAsync(networkAcls
                     .FirstOrDefault(x => x.Description == networkAcl.Description).Id);
             networkAclEntry.Should().NotBeNull();
-            networkAclEntry.NetworkAclRule.Should().NotBeNull();
-            networkAclEntry.NetworkAclRule.Match.Should().NotBeNull();
-            networkAclEntry.NetworkAclRule.Match?.GeoCountryCodes.Should()
+            networkAclEntry.Rule.Should().NotBeNull();
+            networkAclEntry.Rule.Match.Should().NotBeNull();
+            networkAclEntry.Rule.Match?.GeoCountryCodes.Should()
                 .BeEquivalentTo(new List<string> { "CN" });
-            networkAclEntry.NetworkAclRule.NotMatch.Should().BeNull();
+            networkAclEntry.Rule.NotMatch.Should().BeNull();
             networkAclEntry.Description.Should().Be(networkAcl.Description);
 
-            // Update the Network ACL, should not throw an exception
+            // Update the Network ACL using PATCH, should not throw an exception
             var networkAclToBeUpdated = networkAcls.FirstOrDefault(x => x.Description == networkAcl.Description);
             var patchUpdatedNetworkAclEntry =
-                await fixture.ApiClient.NetworkAclClient.UpdateAsync(networkAclToBeUpdated.Id, patchUpdateRequest);
+                await fixture.ApiClient.NetworkAcls.UpdateAsync(networkAclToBeUpdated.Id, patchUpdateRequest);
 
             patchUpdatedNetworkAclEntry.Should().NotBeNull();
-            patchUpdatedNetworkAclEntry.NetworkAclRule.Should().NotBeNull();
-            patchUpdatedNetworkAclEntry.NetworkAclRule.NotMatch.Should().NotBeNull();
+            patchUpdatedNetworkAclEntry.Rule.Should().NotBeNull();
+            patchUpdatedNetworkAclEntry.Rule.NotMatch.Should().NotBeNull();
             patchUpdatedNetworkAclEntry.Description.Should().Be(patchUpdateRequest.Description);
-            patchUpdatedNetworkAclEntry.NetworkAclRule.NotMatch?.GeoCountryCodes.Should()
+            patchUpdatedNetworkAclEntry.Rule.NotMatch?.GeoCountryCodes.Should()
                 .BeEquivalentTo(new List<string> { "CA" });
 
-            var putUpdateRequest = new NetworkAclPutUpdateRequest
+            var putUpdateRequest = new SetNetworkAclRequestContent
             {
                 Active = false,
                 Priority = 3,
                 Description = "Updated description for test cases with PUT",
-                NetworkAclRule = new NetworkAclRule
+                Rule = new NetworkAclRule
                 {
                     Action = new NetworkAclAction { Block = true },
                     NotMatch = new NetworkAclMatch
                     {
                         GeoCountryCodes = new List<string> { "DE" }
-                    }
+                    },
+                    Scope = NetworkAclRuleScopeEnum.Management
                 }
             };
 
             var putUpdatedNetworkAclEntry =
-                await fixture.ApiClient.NetworkAclClient.UpdateAsync(
+                await fixture.ApiClient.NetworkAcls.SetAsync(
                     networkAclToBeUpdated.Id, putUpdateRequest);
 
             putUpdatedNetworkAclEntry.Should().NotBeNull();
-            putUpdatedNetworkAclEntry.NetworkAclRule.Should().NotBeNull();
-            putUpdatedNetworkAclEntry.NetworkAclRule.NotMatch.Should().NotBeNull();
+            putUpdatedNetworkAclEntry.Rule.Should().NotBeNull();
+            putUpdatedNetworkAclEntry.Rule.NotMatch.Should().NotBeNull();
             putUpdatedNetworkAclEntry.Description.Should().Be(putUpdateRequest.Description);
             putUpdatedNetworkAclEntry.Priority.Should().Be(putUpdateRequest.Priority);
-            putUpdatedNetworkAclEntry.NetworkAclRule.NotMatch?.GeoCountryCodes.Should()
+            putUpdatedNetworkAclEntry.Rule.NotMatch?.GeoCountryCodes.Should()
                 .BeEquivalentTo(new List<string> { "DE" });
         }
         finally
@@ -135,7 +136,7 @@ public class NetworkAclTest(NetworkAclTestFixture fixture) : IClassFixture<Netwo
             // Delete all Network ACLs, should not throw an exception
             foreach (var acl in networkAcls)
             {
-                await fixture.ApiClient.NetworkAclClient.DeleteAsync(acl.Id);
+                await fixture.ApiClient.NetworkAcls.DeleteAsync(acl.Id);
             }
         }
     }

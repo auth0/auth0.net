@@ -1,127 +1,89 @@
-﻿using Auth0.Tests.Shared;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
+using Auth0.Tests.Shared;
+using FluentAssertions;
 using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests;
 
-public class ManagementApiClientTests : TestBase
+public class ManagementApiClientTestsFixture : TestBaseFixture
 {
-    private readonly HeaderGrabberConnection grabber = new();
-    private readonly ManagementApiClient management;
-    private readonly JObject payload;
+}
 
-    public ManagementApiClientTests()
+public class ManagementApiClientTests : IClassFixture<ManagementApiClientTestsFixture>
+{
+    private ManagementApiClientTestsFixture fixture;
+
+    public ManagementApiClientTests(ManagementApiClientTestsFixture fixture)
     {
-        management = new ManagementApiClient("fake", GetVariable("AUTH0_MANAGEMENT_API_URL"), grabber);
-
-        management.TenantSettings.GetAsync(); // Cause headers to be "sent" to the grabber for testing
-        payload = JObject.Parse(Encoding.ASCII.GetString(Auth0.Core.Http.Utils.Base64UrlDecode(grabber.LastHeaders["Auth0-Client"])));
+        this.fixture = fixture;
     }
 
     [Fact]
-    public async Task Disposes_Connection_it_creates_on_dispose()
+    public void Test_management_client_creation_with_credentials()
     {
-        var diposeManagement = new ManagementApiClient("token", "test");
-        diposeManagement.Dispose();
-        await Assert.ThrowsAsync<ObjectDisposedException>(() => diposeManagement.Clients.GetAsync("1"));
-    }
-
-    [Fact]
-    public void Does_not_dispose_connection_it_does_not_create()
-    {
-        var doNotDisposeConnection = new FakeConnection();
-        var disposeManagement = new ManagementApiClient("token", "test", doNotDisposeConnection);
-        disposeManagement.Dispose();
-        Assert.False(doNotDisposeConnection.IsDisposed);
-    }
-
-    private class FakeConnection : IManagementConnection, IDisposable
-    {
-        public bool IsDisposed { get; private set; }
-
-        public void Dispose()
+        var client = new ManagementClient(new ManagementClientOptions
         {
-            IsDisposed = true;
-        }
+            Domain = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL").Replace("https://", "").TrimEnd('/'),
+            ClientId = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
+            ClientSecret = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET")
+        });
 
-        public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, JsonConverter[] converters = null, CancellationToken cancellationToken = default)
+        client.Should().NotBeNull();
+        client.Users.Should().NotBeNull();
+        client.Connections.Should().NotBeNull();
+        client.Clients.Should().NotBeNull();
+    }
+
+    [Fact]
+    public void Test_management_client_creation_with_max_retries()
+    {
+        var client = new ManagementClient(new ManagementClientOptions
         {
-            return Task.FromResult(default(T));
-        }
+            Domain = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL").Replace("https://", "").TrimEnd('/'),
+            ClientId = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
+            ClientSecret = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET"),
+            MaxRetries = 5
+        });
 
-        public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, IList<FileUploadParameter> files = null, JsonConverter[] converters = null, CancellationToken cancellationToken = default)
+        client.Should().NotBeNull();
+    }
+
+    [Fact]
+    public async Task Test_management_client_can_make_requests()
+    {
+        // Verify the client can make actual API calls
+        var usersPager = await fixture.ApiClient.Users.ListAsync(new ListUsersRequestParameters
         {
-            return Task.FromResult(default(T));
-        }
+            PerPage = 1
+        });
+
+        usersPager.Should().NotBeNull();
     }
 
     [Fact]
-    public void Auth0Client_headers_added()
+    public void Test_management_client_dispose()
     {
-        Assert.Contains(grabber.LastHeaders, k => k.Key == "Auth0-Client");
-    }
-
-    [Fact]
-    public async Task Auth0Client_authorization_header_updated()
-    {
-        //Arrange
-        string newToken = "new_token";
-
-        //Act
-        management.UpdateAccessToken(newToken);
-
-        Models.Client result = await management.Clients.GetAsync("test_id");
-
-        //Assert
-        Assert.Contains(grabber.LastHeaders, v => v.Value == $"Bearer {newToken}");
-    }
-
-    [Fact]
-    public void Auth0Client_payload_is_valid_base64_url_json()
-    {
-        Assert.NotNull(payload);
-    }
-
-    [Fact]
-    public void Auth0Client_has_name_auth0_dot_net()
-    {
-        Assert.Equal("Auth0.Net", payload["name"].ToString());
-    }
-
-    [Fact]
-    public void Auth0Client_has_version_from_auth_assembly()
-    {
-        var v = typeof(ManagementApiClient).Assembly.GetName().Version;
-        Assert.Equal($"{v.Major}.{v.Minor}.{v.Revision}", payload["version"].ToString());
-    }
-
-    [Fact]
-    public void Auth0Client_has_a_target_inside_env()
-    {
-        Assert.NotNull(payload["env"]["target"].ToString());
-    }
-
-    private class HeaderGrabberConnection : IManagementConnection
-    {
-        public IDictionary<string, string> LastHeaders { get; private set; } = new Dictionary<string, string>();
-
-        public Task<T> GetAsync<T>(Uri uri, IDictionary<string, string> headers = null, JsonConverter[] converters = null, CancellationToken cancellationToken = default)
+        var client = new ManagementClient(new ManagementClientOptions
         {
-            LastHeaders = headers;
-            return Task.FromResult(default(T));
-        }
+            Domain = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL").Replace("https://", "").TrimEnd('/'),
+            ClientId = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
+            ClientSecret = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET")
+        });
 
-        public Task<T> SendAsync<T>(HttpMethod method, Uri uri, object body, IDictionary<string, string> headers = null, IList<FileUploadParameter> files = null, JsonConverter[] converters = null, CancellationToken cancellationToken = default)
-        {
-            LastHeaders = headers;
-            return Task.FromResult(default(T));
-        }
+        // Should not throw
+        client.Dispose();
+    }
+
+    [Fact]
+    public void Test_nested_clients_accessible()
+    {
+        // Verify nested clients are accessible
+        fixture.ApiClient.Keys.Signing.Should().NotBeNull();
+        fixture.ApiClient.Keys.Encryption.Should().NotBeNull();
+        fixture.ApiClient.Actions.Triggers.Should().NotBeNull();
+        fixture.ApiClient.Jobs.UsersImports.Should().NotBeNull();
+        fixture.ApiClient.Jobs.UsersExports.Should().NotBeNull();
+        fixture.ApiClient.Organizations.Members.Should().NotBeNull();
+        fixture.ApiClient.Organizations.Invitations.Should().NotBeNull();
     }
 }

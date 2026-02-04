@@ -1,5 +1,5 @@
 ﻿using Auth0.AuthenticationApi.Models;
-using Auth0.ManagementApi.Models;
+using Auth0.ManagementApi;
 using Auth0.Tests.Shared;
 using FluentAssertions;
 using System;
@@ -8,7 +8,6 @@ using Auth0.AuthenticationApi.IntegrationTests.Testing;
 using Auth0.IntegrationTests.Shared.CleanUp;
 using Xunit;
 using System.Collections.Generic;
-using Auth0.ManagementApi.Models.Connections;
 
 namespace Auth0.AuthenticationApi.IntegrationTests;
 
@@ -50,10 +49,10 @@ public class DatabaseConnectionTests : IClassFixture<DatabaseConnectionTestsFixt
     public async Task Can_signup_user_and_change_password()
     {
         // We will need a connection to add the users to...
-        var connection = await fixture.ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
+        var connection = await fixture.ApiClient.Connections.CreateAsync(new CreateConnectionRequestContent
         {
             Name = $"{TestingConstants.ConnectionPrefix}-{TestBaseUtils.MakeRandomName()}",
-            Strategy = "auth0",
+            Strategy = ConnectionIdentityProviderEnum.Auth0,
             EnabledClients = new[] { TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
         });
 
@@ -94,10 +93,10 @@ public class DatabaseConnectionTests : IClassFixture<DatabaseConnectionTestsFixt
     public async Task Can_signup_user_with_phonenumber()
     {
         // We will need a connection that supports phone numbers
-        var connection = await fixture.ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
+        var connection = await fixture.ApiClient.Connections.CreateAsync(new CreateConnectionRequestContent
         {
             Name = $"{TestingConstants.ConnectionPrefix}-{TestBaseUtils.MakeRandomName()}",
-            Strategy = "auth0",
+            Strategy = ConnectionIdentityProviderEnum.Auth0,
             Options = GetConnectionOptionsRequest(),
             EnabledClients = new[] { TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
         });
@@ -153,60 +152,60 @@ public class DatabaseConnectionTests : IClassFixture<DatabaseConnectionTestsFixt
         signupUserResponse.Email.Should().Be(signupUserRequest.Email);
     }
         
-    private ConnectionOptions GetConnectionOptionsRequest()
+    private ConnectionPropertiesOptions GetConnectionOptionsRequest()
     {
-        var optionsRequestObject = new ConnectionOptions()
+        var optionsRequestObject = new ConnectionPropertiesOptions()
         {
-            Attributes = new ConnectionOptionsAttributes()
+            Attributes = new ConnectionAttributes()
             {
-                Email = new ConnectionOptionsEmailAttribute()
+                Email = new EmailAttribute()
                 {
                     ProfileRequired = false,
-                    Identifier = new ConnectionOptionsAttributeIdentifier()
+                    Identifier = new ConnectionAttributeIdentifier()
                     {
                         Active = true
                     },
-                    Signup = new ConnectionOptionsEmailSignup()
+                    Signup = new SignupVerified()
                     {
-                        Status = ConnectionOptionsAttributeStatus.Optional,
-                        Verification = new ConnectionOptionsVerification()
+                        Status = SignupStatusEnum.Optional,
+                        Verification = new SignupVerification()
                         {
                             Active = false
                         }
                     }
                 },
-                PhoneNumber = new ConnectionOptionsPhoneNumberAttribute()
+                PhoneNumber = new PhoneAttribute()
                 {
                     ProfileRequired = true,
-                    Identifier = new ConnectionOptionsAttributeIdentifier()
+                    Identifier = new ConnectionAttributeIdentifier()
                     {
                         Active = true
                     },
-                    Signup = new ConnectionOptionsPhoneNumberSignup()
+                    Signup = new SignupVerified()
                     {
-                        Status = ConnectionOptionsAttributeStatus.Required,
-                        Verification = new ConnectionOptionsVerification()
+                        Status = SignupStatusEnum.Required,
+                        Verification = new SignupVerification()
                         {
                             Active = false
                         }
                     }
                 },
-                Username = new ConnectionOptionsUsernameAttribute()
+                Username = new UsernameAttribute()
                 {
                     ProfileRequired = true,
-                    Identifier = new ConnectionOptionsAttributeIdentifier()
+                    Identifier = new ConnectionAttributeIdentifier()
                     {
                         Active = true
                     },
-                    Signup = new ConnectionOptionsUsernameSignup()
+                    Signup = new SignupSchema()
                     {
-                        Status = ConnectionOptionsAttributeStatus.Required
+                        Status = SignupStatusEnum.Required
                     },
-                    Validation = new ConnectionOptionsAttributeValidation()
+                    Validation = new UsernameValidation()
                     {
                         MinLength = 5,
                         MaxLength = 10,
-                        AllowedTypes = new ConnectionOptionsAttributeAllowedTypes()
+                        AllowedTypes = new UsernameAllowedTypes()
                         {
                             PhoneNumber = false,
                             Email = true

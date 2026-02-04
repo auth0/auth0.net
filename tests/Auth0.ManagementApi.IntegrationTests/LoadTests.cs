@@ -1,52 +1,74 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Auth0.IntegrationTests.Shared.CleanUp;
-using Auth0.ManagementApi.Models;
+using Auth0.ManagementApi.Connections;
+using Auth0.ManagementApi.IntegrationTests.Testing;
+using Auth0.ManagementApi.Users;
 using Auth0.Tests.Shared;
+using FluentAssertions;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace Auth0.ManagementApi.IntegrationTests;
 
-public class LoadTests : TestBase
+public class LoadTestsFixture : TestBaseFixture
 {
-    private readonly ITestOutputHelper _outputHelper;
-    private const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
-
-    public LoadTests(ITestOutputHelper outputHelper)
+    public override async Task DisposeAsync()
     {
-        _outputHelper = outputHelper;
-    }
-
-    [Fact(Skip = "Should run manually")]
-    public async Task LoadTestAddUsers()
-    {
-        string token = await GenerateManagementApiToken();
-
-        var apiClient = new ManagementApiClient(token, GetVariable("AUTH0_MANAGEMENT_API_URL"), new HttpClientManagementConnection(options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 9 }));
-
-        var connection = await apiClient.Connections.CreateAsync(new ConnectionCreateRequest
+        foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
         {
-            Name = $"{TestingConstants.ConnectionPrefix}-{MakeRandomName()}",
-            Strategy = "auth0",
-            EnabledClients = new[] { GetVariable("AUTH0_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
-        });
-
-        // Add a new user
-        for (int i = 1; i <= 200; i++)
-        {
-            _outputHelper.WriteLine($"Adding user {i}");
-
-            var newUserRequest = new UserCreateRequest
-            {
-                Connection = connection.Name,
-                Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
-                EmailVerified = true,
-                Password = Password
-            };
-            await apiClient.Users.CreateAsync(newUserRequest);
+            await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
         }
 
-        await apiClient.Connections.DeleteAsync(connection.Id);
+        ApiClient.Dispose();
+    }
+}
+
+public class LoadTests : IClassFixture<LoadTestsFixture>
+{
+    private LoadTestsFixture fixture;
+
+    public LoadTests(LoadTestsFixture fixture)
+    {
+        this.fixture = fixture;
+    }
+
+    [Fact(Skip = "Load test - run manually")]
+    public async Task Test_create_many_users()
+    {
+        // Create a connection
+        var connectionName = $"{TestingConstants.ConnectionPrefix}-{TestBaseUtils.MakeRandomName()}";
+        var newConnection = await fixture.ApiClient.Connections.CreateAsync(new CreateConnectionRequestContent
+        {
+            Name = connectionName,
+            Strategy = ConnectionIdentityProviderEnum.Auth0,
+            EnabledClients = new[] { TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
+        });
+        fixture.TrackIdentifier(CleanUpType.Connections, newConnection.Id);
+
+        try
+        {
+            // Create multiple users in parallel
+            var tasks = Enumerable.Range(0, 100).Select(async i =>
+            {
+                var user = await fixture.ApiClient.Users.CreateAsync(TestBaseUtils.CreateUserRequest(
+                    connection: newConnection.Name,
+                    email: $"test-user-{i}-{Guid.NewGuid():N}@example.com",
+                    emailVerified: true,
+                    password: "Test123456!"
+                ));
+                fixture.TrackIdentifier(CleanUpType.Users, user.UserId);
+                return user;
+            }).ToList();
+
+            var users = await Task.WhenAll(tasks);
+            users.Length.Should().Be(100);
+        }
+        finally
+        {
+            await fixture.ApiClient.Connections.DeleteAsync(newConnection.Id);
+            fixture.UnTrackIdentifier(CleanUpType.Connections, newConnection.Id);
+        }
     }
 }

@@ -7,8 +7,7 @@ on:
       - opened
       - synchronize
   push:
-    branches:
-      - master
+    branches: [ master, v8 ]
   schedule:
     - cron: "30 0 1,15 * *"
 
@@ -30,7 +29,7 @@ jobs:
       - if: github.actor == 'dependabot[bot]' || github.event_name == 'merge_group'
         run: exit 0 # Skip unnecessary test runs for dependabot and merge queues. Artifically flag as successful, as this is a required check for branch protection.
 
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v5
         with:
           ref: ${{ github.event.pull_request.merge_commit_sha || github.ref }}
 
@@ -47,4 +46,4 @@ jobs:
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          args: --file=Auth0.Net.sln --severity-threshold=medium
+          args: --file=Auth0.Net.sln --policy-path=.snyk --severity-threshold=medium

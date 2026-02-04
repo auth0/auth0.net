@@ -1,0 +1,75 @@
+using System.Text.Json.Serialization;
+using Auth0.ManagementApi.Core;
+
+namespace Auth0.ManagementApi;
+
+[JsonConverter(typeof(StringEnumSerializer<DomainCertificateStatusEnum>))]
+[Serializable]
+public readonly record struct DomainCertificateStatusEnum : IStringEnum
+{
+    public static readonly DomainCertificateStatusEnum Provisioning = new(Values.Provisioning);
+
+    public static readonly DomainCertificateStatusEnum ProvisioningFailed = new(
+        Values.ProvisioningFailed
+    );
+
+    public static readonly DomainCertificateStatusEnum Provisioned = new(Values.Provisioned);
+
+    public static readonly DomainCertificateStatusEnum RenewingFailed = new(Values.RenewingFailed);
+
+    public DomainCertificateStatusEnum(string value)
+    {
+        Value = value;
+    }
+
+    /// <summary>
+    /// The string value of the enum.
+    /// </summary>
+    public string Value { get; }
+
+    /// <summary>
+    /// Create a string enum with the given value.
+    /// </summary>
+    public static DomainCertificateStatusEnum FromCustom(string value)
+    {
+        return new DomainCertificateStatusEnum(value);
+    }
+
+    public bool Equals(string? other)
+    {
+        return Value.Equals(other);
+    }
+
+    /// <summary>
+    /// Returns the string value of the enum.
+    /// </summary>
+    public override string ToString()
+    {
+        return Value;
+    }
+
+    public static bool operator ==(DomainCertificateStatusEnum value1, string value2) =>
+        value1.Value.Equals(value2);
+
+    public static bool operator !=(DomainCertificateStatusEnum value1, string value2) =>
+        !value1.Value.Equals(value2);
+
+    public static explicit operator string(DomainCertificateStatusEnum value) => value.Value;
+
+    public static explicit operator DomainCertificateStatusEnum(string value) => new(value);
+
+    /// <summary>
+    /// Constant strings for enum values
+    /// </summary>
+    [Serializable]
+    public static class Values
+    {
+        public const string Provisioning = "provisioning";
+
+        public const string ProvisioningFailed = "provisioning_failed";
+
+        public const string Provisioned = "provisioned";
+
+        public const string RenewingFailed = "renewing_failed";
+    }
+}

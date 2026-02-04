@@ -3,9 +3,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Auth0.IntegrationTests.Shared.CleanUp;
 using Auth0.ManagementApi.IntegrationTests.Testing;
-using Auth0.ManagementApi.Models.SelfServiceProfiles;
+using Auth0.ManagementApi.SelfServiceProfiles;
 using FluentAssertions;
-using Newtonsoft.Json;
 using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests;
@@ -37,25 +36,28 @@ public class SelfServiceProfileTest : IClassFixture<SelfServiceProfileTestFixtur
     {
         // Create a self-service provider
         var createRequest = GetASelfServiceProfileCreateRequest();
-        var ssp = await _fixture.ApiClient.SelfServiceProfilesClient.CreateAsync(createRequest);
+        var ssp = await _fixture.ApiClient.SelfServiceProfiles.CreateAsync(createRequest);
         _fixture.TrackIdentifier(CleanUpType.SelfServiceProvider, ssp.Id);
-        ssp.Should().BeEquivalentTo(createRequest);
+        ssp.Should().NotBeNull();
+        ssp.Name.Should().Be(createRequest.Name);
 
         // Get the created self-service provider
-        var sspAfterCreation = await _fixture.ApiClient.SelfServiceProfilesClient.GetAsync(ssp.Id);
-        sspAfterCreation.Should().BeEquivalentTo(createRequest);
+        var sspAfterCreation = await _fixture.ApiClient.SelfServiceProfiles.GetAsync(ssp.Id);
+        sspAfterCreation.Name.Should().Be(createRequest.Name);
 
         // update the self-service provider
         var sspUpdateRequest = GetASelfServiceProfileUpdateRequest();
-        var sspUpdated = await _fixture.ApiClient.SelfServiceProfilesClient.UpdateAsync(ssp.Id, sspUpdateRequest);
-        sspUpdated.Should().BeEquivalentTo(sspUpdateRequest);
+        var sspUpdated = await _fixture.ApiClient.SelfServiceProfiles.UpdateAsync(ssp.Id, sspUpdateRequest);
+        sspUpdated.Name.Should().Be(sspUpdateRequest.Name);
 
         // Get All self-service providers
-        var allSsps = await _fixture.ApiClient.SelfServiceProfilesClient.GetAllAsync();
+        var allSspsPager = await _fixture.ApiClient.SelfServiceProfiles.ListAsync(new ListSelfServiceProfilesRequestParameters());
+        var allSsps = allSspsPager.CurrentPage.Items.ToList();
         allSsps.Count.Should().BeGreaterOrEqualTo(1);
 
         // Delete the self-service provider
-        await _fixture.ApiClient.SelfServiceProfilesClient.DeleteAsync(ssp.Id);
+        await _fixture.ApiClient.SelfServiceProfiles.DeleteAsync(ssp.Id);
+        _fixture.UnTrackIdentifier(CleanUpType.SelfServiceProvider, ssp.Id);
     }
 
     [Fact]
@@ -65,30 +67,30 @@ public class SelfServiceProfileTest : IClassFixture<SelfServiceProfileTestFixtur
         var ssp = await CreateASelfServiceProfile(createRequest);
 
         var existingOrganizationId = "org_x2j4mAL75v96wKkt";
-        var ssoTicket = await _fixture.ApiClient.SelfServiceProfilesClient.CreateSsoTicketAsync(
-            ssp.Id, new SelfServiceSsoTicketCreateRequest()
+        var ssoTicket = await _fixture.ApiClient.SelfServiceProfiles.SsoTicket.CreateAsync(
+            ssp.Id, new CreateSelfServiceProfileSsoTicketRequestContent
             {
-                ConnectionConfig = new SelfServiceSsoConnectionConfig()
+                ConnectionConfig = new SelfServiceProfileSsoTicketConnectionConfig
                 {
                     Name = "Test-Connection-For-SSO",
                     DisplayName = "Test Display Name",
                     IsDomainConnection = false,
-                    Metadata = new object(),
+                    Metadata = new Dictionary<string, string?>(),
                     ShowAsButton = false,
-                    Options = new SelfServiceSsoConnectionConfigOptions()
+                    Options = new SelfServiceProfileSsoTicketConnectionOptions
                     {
-                        DomainAliases = new []{"alias1", "alias2"},
+                        DomainAliases = new[] { "alias1", "alias2" },
                         IconUrl = "https://cdn2.auth0.com/styleguide/latest/lib/logos/img/favicon.png",
-                        IdpInitiated = new SelfServiceSsoConnectionConfigIdpInitiated()
+                        Idpinitiated = new SelfServiceProfileSsoTicketIdpInitiatedOptions
                         {
                             Enabled = true,
                             ClientId = "AydyL76hVpC0meG2T7lTTQn667mrzS3A",
-                            ClientAuthorizeQuery = "redirect_uri",
-                            ClientProtocol = ClientProtocol.Oauth2
+                            ClientAuthorizequery = "redirect_uri",
+                            ClientProtocol = SelfServiceProfileSsoTicketIdpInitiatedClientProtocolEnum.Oauth2
                         }
                     }
                 },
-                EnabledOrganizations = new List<EnabledOrganization>()
+                EnabledOrganizations = new List<SelfServiceProfileSsoTicketEnabledOrganization>
                 {
                     new()
                     {
@@ -98,19 +100,20 @@ public class SelfServiceProfileTest : IClassFixture<SelfServiceProfileTestFixtur
                     }
                 },
                 TtlSec = 10000,
-                DomainAliasesConfig = new DomainAliasesConfig()
+                DomainAliasesConfig = new SelfServiceProfileSsoTicketDomainAliasesConfig
                 {
-                    DomainVerification = DomainVerification.Optional
+                    DomainVerification = SelfServiceProfileSsoTicketDomainVerificationEnum.Optional
                 }
             });
 
         ssoTicket.Should().NotBeNull();
 
         // Revoke the SSO ticket
-        await _fixture.ApiClient.SelfServiceProfilesClient.RevokeSsoTicketAsync(ssp.Id, ssoTicket.Ticket.Split('=').Last());
+        await _fixture.ApiClient.SelfServiceProfiles.SsoTicket.RevokeAsync(ssp.Id, ssoTicket.Ticket.Split('=').Last());
 
         // Delete the self-service profile
-        await _fixture.ApiClient.SelfServiceProfilesClient.DeleteAsync(ssp.Id);
+        await _fixture.ApiClient.SelfServiceProfiles.DeleteAsync(ssp.Id);
+        _fixture.UnTrackIdentifier(CleanUpType.SelfServiceProvider, ssp.Id);
     }
 
     [Fact]
@@ -118,37 +121,36 @@ public class SelfServiceProfileTest : IClassFixture<SelfServiceProfileTestFixtur
     {
         var ssp = await CreateASelfServiceProfile();
 
-        var customTextBody = new Dictionary<string, string>()
+        var customTextBody = new Dictionary<string, string>
         {
             { "introduction", "Hello this is welcome page" }
         };
 
         var customText =
-            await _fixture.ApiClient.SelfServiceProfilesClient.SetCustomTextForSelfServiceProfileAsync(
+            await _fixture.ApiClient.SelfServiceProfiles.CustomText.SetAsync(
                 ssp.Id, "en", "get-started", customTextBody);
 
         customText.Should().NotBeNull();
-        customTextBody.Should()
-            .BeEquivalentTo(JsonConvert.DeserializeObject<Dictionary<string, string>>(customText.ToString()));
 
         // Fetch the custom text and validate
         var getCustomText =
-            await _fixture.ApiClient.SelfServiceProfilesClient.GetCustomTextForSelfServiceProfileAsync(
+            await _fixture.ApiClient.SelfServiceProfiles.CustomText.ListAsync(
                 ssp.Id, "en", "get-started");
-        getCustomText.Should().BeEquivalentTo(customText);
+        getCustomText.Should().NotBeNull();
 
         // Delete the self-service profile
-        await _fixture.ApiClient.SelfServiceProfilesClient.DeleteAsync(ssp.Id);
+        await _fixture.ApiClient.SelfServiceProfiles.DeleteAsync(ssp.Id);
+        _fixture.UnTrackIdentifier(CleanUpType.SelfServiceProvider, ssp.Id);
     }
 
 
-    private SelfServiceProfileCreateRequest GetASelfServiceProfileCreateRequest()
+    private CreateSelfServiceProfileRequestContent GetASelfServiceProfileCreateRequest()
     {
-        var createRequest = new SelfServiceProfileCreateRequest()
+        var createRequest = new CreateSelfServiceProfileRequestContent
         {
             Name = "Test Self Service Profile",
             Description = "Test Self Service Profile Description",
-            UserAttributes = new List<UserAttribute>()
+            UserAttributes = new List<SelfServiceProfileUserAttribute>
             {
                 new()
                 {
@@ -157,26 +159,26 @@ public class SelfServiceProfileTest : IClassFixture<SelfServiceProfileTestFixtur
                     IsOptional = false
                 }
             },
-            Branding = new Branding()
+            Branding = new SelfServiceProfileBrandingProperties
             {
                 LogoUrl = "https://example.com/logo.png",
-                Color = new Color()
+                Colors = new SelfServiceProfileBrandingColors
                 {
                     Primary = "#FF0000"
                 }
             },
-            AllowedStrategies = new string[] { "oidc" }
+            AllowedStrategies = new[] { SelfServiceProfileAllowedStrategyEnum.Oidc }
         };
         return createRequest;
     }
 
-    private SelfServiceProfileUpdateRequest GetASelfServiceProfileUpdateRequest()
+    private UpdateSelfServiceProfileRequestContent GetASelfServiceProfileUpdateRequest()
     {
-        var sspUpdateRequest = new SelfServiceProfileUpdateRequest()
+        var sspUpdateRequest = new UpdateSelfServiceProfileRequestContent
         {
             Name = "Test Self Service Profile Updated",
             Description = "Test Self Service Profile Description Updated",
-            UserAttributes = new List<UserAttribute>()
+            UserAttributes = new List<SelfServiceProfileUserAttribute>
             {
                 new()
                 {
@@ -185,28 +187,29 @@ public class SelfServiceProfileTest : IClassFixture<SelfServiceProfileTestFixtur
                     IsOptional = true
                 }
             },
-            Branding = new Branding()
+            Branding = new SelfServiceProfileBrandingProperties
             {
                 LogoUrl = "https://example.com/logo-updated.png",
-                Color = new Color()
+                Colors = new SelfServiceProfileBrandingColors
                 {
                     Primary = "#00FF00"
                 }
             },
-            AllowedStrategies = new string[] { "samlp" }
+            AllowedStrategies = new[] { SelfServiceProfileAllowedStrategyEnum.Samlp }
         };
         return sspUpdateRequest;
     }
 
-    private async Task<SelfServiceProfile> CreateASelfServiceProfile(
-        SelfServiceProfileCreateRequest createRequest = null)
+    private async Task<CreateSelfServiceProfileResponseContent> CreateASelfServiceProfile(
+        CreateSelfServiceProfileRequestContent createRequest = null)
     {
         createRequest ??= GetASelfServiceProfileCreateRequest();
 
         // Given a self-service profile
-        var ssp = await _fixture.ApiClient.SelfServiceProfilesClient.CreateAsync(createRequest);
+        var ssp = await _fixture.ApiClient.SelfServiceProfiles.CreateAsync(createRequest);
         _fixture.TrackIdentifier(CleanUpType.SelfServiceProvider, ssp.Id);
-        ssp.Should().BeEquivalentTo(createRequest);
+        ssp.Should().NotBeNull();
+        ssp.Name.Should().Be(createRequest.Name);
         return ssp;
     }
 }

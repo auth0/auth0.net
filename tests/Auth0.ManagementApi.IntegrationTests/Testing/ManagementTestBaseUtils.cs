@@ -7,7 +7,7 @@ namespace Auth0.ManagementApi.IntegrationTests.Testing;
 
 public class ManagementTestBaseUtils
 {
-    public static async Task CleanupAsync(ManagementApiClient client, CleanUpType type, IList<string> identifiers)
+    public static async Task CleanupAsync(ManagementClient client, CleanUpType type, IList<string> identifiers)
     {
         var strategies = new List<CleanUpStrategy>
         {

@@ -5,7 +5,7 @@ namespace Auth0.IntegrationTests.Shared.CleanUp;
 
 public class ResourceServersCleanUpStrategy : CleanUpStrategy
 {
-    public ResourceServersCleanUpStrategy(ManagementApiClient apiClient) : base(CleanUpType.ResourceServers, apiClient)
+    public ResourceServersCleanUpStrategy(ManagementClient apiClient) : base(CleanUpType.ResourceServers, apiClient)
     {
 
     }

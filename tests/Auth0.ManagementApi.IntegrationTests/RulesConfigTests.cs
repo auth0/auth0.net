@@ -1,8 +1,5 @@
-﻿using Auth0.ManagementApi.Models;
 using Auth0.Tests.Shared;
 using FluentAssertions;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -10,20 +7,10 @@ namespace Auth0.ManagementApi.IntegrationTests;
 
 public class RulesConfigTestsFixture : TestBaseFixture
 {
-    public readonly List<LogStream> TestCreatedStreams = new();
-
-    public override async Task DisposeAsync()
-    {
-        // Clean up any log stream entities on the tenant after every test executes
-        var deleteTasks = TestCreatedStreams.Select(stream => ApiClient.LogStreams.DeleteAsync(stream.Id));
-
-        await Task.WhenAll(deleteTasks.ToArray());
-        await base.DisposeAsync();
-    }
 }
 
 /// <summary>
-/// Tests functionality of the <see cref="RulesConfigClient"/> in the <see cref="ManagementApiClient"/>.
+/// Tests functionality of the RulesConfigsClient in the ManagementClient.
 /// </summary>
 public class RulesConfigTests : IClassFixture<RulesConfigTestsFixture>
 {
@@ -37,60 +24,51 @@ public class RulesConfigTests : IClassFixture<RulesConfigTestsFixture>
     /// <summary>
     /// Tests that a rules config variable can be created and then deleted
     /// </summary>
-    /// <returns></returns>
     [Fact]
     public async Task Test_ruleConfigs_limited_crud_sequence()
     {
         //NOTE: cannot read config, so create a unique name and just test PUT + DELETE
+        var key = TestBaseUtils.MakeRandomName();
 
-        // Add a new rule
-        var newRuleConfigRequest = new RulesConfigCreateOrUpdateRequest
+        // Add a new rule config
+        var newRuleConfigResponse = await fixture.ApiClient.RulesConfigs.SetAsync(key, new SetRulesConfigRequestContent
         {
-            Key = TestBaseUtils.MakeRandomName(),
             Value = "i am iron man!"
-        };
-        var newRuleConfigResponse = await fixture.ApiClient.RulesConfig.CreateOrUpdateAsync(newRuleConfigRequest);
-        newRuleConfigResponse.Should().NotBeNull();
-        newRuleConfigResponse.Key.Should().Be(newRuleConfigRequest.Key);
+        });
+        newRuleConfigResponse.Key.Should().Be(key);
         newRuleConfigResponse.Value.Should().NotBeNullOrEmpty();
 
-        // delete the rule
-        await fixture.ApiClient.RulesConfig.DeleteAsync(newRuleConfigRequest.Key);
+        // delete the rule config
+        await fixture.ApiClient.RulesConfigs.DeleteAsync(key);
     }
 
     /// <summary>
     /// Tests that the same method can be used to create a new variable and also update an existing variable.
     /// This is necessary because we cannot use the API to get existing variables, so it cannot be known if we are creating or updating an entry.
     /// </summary>
-    /// <returns></returns>
     [Fact]
     public async Task Test_ruleConfigs_can_update_existing()
     {
-        // Add a new rule
-        var newRuleConfigRequest = new RulesConfigCreateOrUpdateRequest
+        var key = TestBaseUtils.MakeRandomName();
+
+        // Add a new rule config
+        var newRuleConfigResponse = await fixture.ApiClient.RulesConfigs.SetAsync(key, new SetRulesConfigRequestContent
         {
-            Key = TestBaseUtils.MakeRandomName(),
             Value = "i am iron man!"
-        };
-        var newRuleConfigResponse = await fixture.ApiClient.RulesConfig.CreateOrUpdateAsync(newRuleConfigRequest);
-        newRuleConfigResponse.Should().NotBeNull();
-        newRuleConfigResponse.Key.Should().Be(newRuleConfigRequest.Key);
+        });
+        newRuleConfigResponse.Key.Should().Be(key);
         newRuleConfigResponse.Value.Should().NotBeNullOrEmpty();
 
-        // update the rule
-        var updateRuleConfigRequest = new RulesConfigCreateOrUpdateRequest
+        // update the rule config
+        var updateRuleConfigResponse = await fixture.ApiClient.RulesConfigs.SetAsync(key, new SetRulesConfigRequestContent
         {
-            Key = newRuleConfigResponse.Key,
             Value = "avengers assemble!"
-        };
-        var updateRuleConfigResponse = await fixture.ApiClient.RulesConfig.CreateOrUpdateAsync(updateRuleConfigRequest);
-        updateRuleConfigResponse.Should().NotBeNull();
-        updateRuleConfigResponse.Key.Should().Be(newRuleConfigRequest.Key);
+        });
+        updateRuleConfigResponse.Key.Should().Be(key);
         updateRuleConfigResponse.Value.Should().NotBeNullOrEmpty();
-        updateRuleConfigResponse.Value.Should().NotBe(newRuleConfigRequest.Value);
+        updateRuleConfigResponse.Value.Should().NotBe(newRuleConfigResponse.Value);
 
-        // delete the rule
-        await fixture.ApiClient.RulesConfig.DeleteAsync(newRuleConfigRequest.Key);
-
+        // delete the rule config
+        await fixture.ApiClient.RulesConfigs.DeleteAsync(key);
     }
 }

@@ -1,10 +1,9 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Auth0.AuthenticationApi;
 using Auth0.AuthenticationApi.Models;
 using Auth0.Core.Exceptions;
 using Auth0.IntegrationTests.Shared.CleanUp;
-using Auth0.ManagementApi.Models;
 using Auth0.Tests.Shared;
 using FluentAssertions;
 using Xunit;
@@ -14,8 +13,8 @@ namespace Auth0.ManagementApi.IntegrationTests;
 public class UserBlockTestsFixture : TestBaseFixture
 {
     public AuthenticationApiClient TestAuthenticationApiClient;
-    public Connection TestConnection;
-    public User TestUser;
+    public CreateConnectionResponseContent TestConnection;
+    public CreateUserResponseContent TestUser;
     public const string Password = "4cX8awB3T%@Aw-R:=h@ae@k?";
 
     public override async Task InitializeAsync()
@@ -25,26 +24,23 @@ public class UserBlockTestsFixture : TestBaseFixture
         TestAuthenticationApiClient = new TestAuthenticationApiClient(TestBaseUtils.GetVariable("AUTH0_AUTHENTICATION_API_URL"));
 
         // We will need a connection to add the users to...
-        TestConnection = await ApiClient.Connections.CreateAsync(new ConnectionCreateRequest
+        TestConnection = await ApiClient.Connections.CreateAsync(new CreateConnectionRequestContent
         {
             Name = $"{TestingConstants.ConnectionPrefix}-{TestBaseUtils.MakeRandomName()}",
-            Strategy = "auth0",
+            Strategy = ConnectionIdentityProviderEnum.Auth0,
             EnabledClients = new[] { TestBaseUtils.GetVariable("AUTH0_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID") }
         });
 
         // Add a new user
-        var newUserRequest = new UserCreateRequest
-        {
-            Connection = TestConnection.Name,
-            Email = $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
-            EmailVerified = true,
-            Password = Password
-        };
+        var newUserRequest = TestBaseUtils.CreateUserRequest(
+            connection: TestConnection.Name,
+            email: $"{Guid.NewGuid():N}{TestingConstants.UserEmailDomain}",
+            emailVerified: true,
+            password: Password
+        );
         TestUser = await ApiClient.Users.CreateAsync(newUserRequest);
-
-            
-
     }
+
     public override async Task DisposeAsync()
     {
         await ApiClient.Users.DeleteAsync(TestUser.UserId);
@@ -104,14 +100,23 @@ public class UserBlockTests : IClassFixture<UserBlockTestsFixture>, IAsyncLifeti
     public async Task Test_user_blocks_by_identifier()
     {
         // Check we should have 1 block for the user
-        var userBlocks = await fixture.ApiClient.UserBlocks.GetByIdentifierAsync(fixture.TestUser.Email);
+        var userBlocks = await fixture.ApiClient.UserBlocks.ListByIdentifierAsync(new ListUserBlocksByIdentifierRequestParameters
+        {
+            Identifier = fixture.TestUser.Email
+        });
         userBlocks.BlockedFor.Should().HaveCount(1);
 
         // Now unblock the user
-        await fixture.ApiClient.UserBlocks.UnblockByIdentifierAsync(fixture.TestUser.Email);
+        await fixture.ApiClient.UserBlocks.DeleteByIdentifierAsync(new DeleteUserBlocksByIdentifierRequestParameters
+        {
+            Identifier = fixture.TestUser.Email
+        });
 
         // Now ensure user is not blocked anymore
-        userBlocks = await fixture.ApiClient.UserBlocks.GetByIdentifierAsync(fixture.TestUser.Email);
+        userBlocks = await fixture.ApiClient.UserBlocks.ListByIdentifierAsync(new ListUserBlocksByIdentifierRequestParameters
+        {
+            Identifier = fixture.TestUser.Email
+        });
         userBlocks.BlockedFor.Should().BeEmpty();
     }
 
@@ -120,14 +125,14 @@ public class UserBlockTests : IClassFixture<UserBlockTestsFixture>, IAsyncLifeti
     public async Task Test_user_blocks_by_userid()
     {
         // Check we should have 1 block for the user
-        var userBlocks = await fixture.ApiClient.UserBlocks.GetByUserIdAsync(fixture.TestUser.UserId);
+        var userBlocks = await fixture.ApiClient.UserBlocks.ListAsync(fixture.TestUser.UserId, new ListUserBlocksRequestParameters());
         userBlocks.BlockedFor.Should().HaveCount(1);
 
         // Now unblock the user
-        await fixture.ApiClient.UserBlocks.UnblockByUserIdAsync(fixture.TestUser.UserId);
+        await fixture.ApiClient.UserBlocks.DeleteAsync(fixture.TestUser.UserId);
 
         // Now ensure user is not blocked anymore
-        userBlocks = await fixture.ApiClient.UserBlocks.GetByUserIdAsync(fixture.TestUser.UserId);
+        userBlocks = await fixture.ApiClient.UserBlocks.ListAsync(fixture.TestUser.UserId, new ListUserBlocksRequestParameters());
         userBlocks.BlockedFor.Should().BeEmpty();
     }
 }

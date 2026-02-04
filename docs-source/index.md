@@ -14,7 +14,7 @@
 ## Getting started
 
 ### Requirements
-This library supports .NET Standard 2.0 and .NET Framework 4.5.2 as well as later versions of both.
+This library supports .NET Standard 2.0 and .NET Framework 4.6.2 as well as later versions of both.
 
 ### Management API
 
@@ -26,16 +26,45 @@ Install-Package Auth0.ManagementApi
 
 #### Usage
 
-Generate a token for the API calls you wish to make (see [Access Tokens for the Management API](https://auth0.com/docs/api/management/v2/tokens)). Create an instance of the `ManagementApiClient` class with the token and the API URL of your Auth0 instance:
+The recommended way to use the Management API is with the `ManagementClient` wrapper, which provides automatic token management and a simpler configuration experience:
 
 ```csharp
-var client = new ManagementApiClient("your token", new Uri("https://YOUR_AUTH0_DOMAIN/api/v2"));
+var client = new ManagementClient(new ManagementClientOptions
+{
+    Domain = "YOUR_AUTH0_DOMAIN",
+    ClientId = "YOUR_CLIENT_ID",
+    ClientSecret = "YOUR_CLIENT_SECRET"
+});
+
+// Tokens are automatically acquired and refreshed
+var users = await client.Users.ListAsync(new ListUsersRequestParameters());
 ```
 
-The API calls are divided into groups which correlate to the [Management API documentation](https://auth0.com/docs/api/v2). For example all Connection related methods can be found under the `ManagementApiClient.Connections` property. So to get a list of all database (Auth0) connections, you can make the following API call:
+You can also use a static token or a dynamic token provider:
 
 ```csharp
-await client.Connections.GetAllAsync("auth0");
+// With a static token
+var client = new ManagementClient(new ManagementClientOptions
+{
+    Domain = "YOUR_AUTH0_DOMAIN",
+    Token = "your-access-token"
+});
+
+// With a dynamic token provider (e.g., from a vault or external service)
+var client = new ManagementClient(new ManagementClientOptions
+{
+    Domain = "YOUR_AUTH0_DOMAIN",
+    TokenProvider = () => GetTokenFromVault()
+});
+```
+
+The API calls are divided into groups which correlate to the [Management API documentation](https://auth0.com/docs/api/v2). For example all Connection related methods can be found under the `Connections` property. So to get a list of all database (Auth0) connections, you can make the following API call:
+
+```csharp
+var connections = await client.Connections.ListAsync(new ListConnectionsQueryParameters
+{
+    Strategy = new List<ConnectionStrategyEnum?> { ConnectionStrategyEnum.Auth0 }
+});
 ```
 
 ### Authentication API
