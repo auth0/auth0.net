@@ -1,7 +1,4 @@
 <Project>
-  <!-- Import common build properties -->
-  <Import Project="..\..\build\common.props" />
-
   <ItemGroup>
     <!-- Remove the InternalsVisibleTo without public key from the main csproj -->
     <AssemblyAttribute Remove="System.Runtime.CompilerServices.InternalsVisibleTo" />
