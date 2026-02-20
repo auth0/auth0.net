@@ -19,4 +19,22 @@ public class ManagementApiException(
     /// The body of the response that triggered the exception.
     /// </summary>
     public object Body => body;
+
+    public override string ToString()
+    {
+        var sb = new System.Text.StringBuilder();
+        sb.Append(GetType().FullName);
+        sb.Append($": {Message}");
+        sb.Append($" (Status Code: {StatusCode})");
+        if (InnerException != null)
+        {
+            sb.Append($"\n ---> {InnerException}");
+            sb.Append("\n --- End of inner exception stack trace ---");
+        }
+        if (StackTrace != null)
+        {
+            sb.Append($"\n{StackTrace}");
+        }
+        return sb.ToString();
+    }
 }

@@ -89,7 +89,7 @@ public partial class ConnectedAccountsClient : IConnectedAccountsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

@@ -71,7 +71,7 @@ public partial class SsoTicketClient : ISsoTicketClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

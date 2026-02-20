@@ -65,7 +65,7 @@ public partial class FederatedConnectionsTokensetsClient : IFederatedConnections
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

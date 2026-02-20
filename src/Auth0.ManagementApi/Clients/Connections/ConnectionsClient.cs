@@ -101,7 +101,7 @@ public partial class ConnectionsClient : IConnectionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

@@ -92,7 +92,7 @@ public partial class ClientsClient : IClientsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

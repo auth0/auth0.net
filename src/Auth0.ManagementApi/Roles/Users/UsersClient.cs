@@ -104,7 +104,7 @@ public partial class UsersClient : IUsersClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

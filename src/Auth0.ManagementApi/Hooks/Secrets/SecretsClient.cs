@@ -63,7 +63,7 @@ public partial class SecretsClient : ISecretsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

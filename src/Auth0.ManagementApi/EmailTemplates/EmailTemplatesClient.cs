@@ -63,7 +63,7 @@ public partial class EmailTemplatesClient : IEmailTemplatesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
@@ -150,7 +150,7 @@ public partial class EmailTemplatesClient : IEmailTemplatesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
@@ -238,7 +238,7 @@ public partial class EmailTemplatesClient : IEmailTemplatesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
@@ -328,7 +328,7 @@ public partial class EmailTemplatesClient : IEmailTemplatesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

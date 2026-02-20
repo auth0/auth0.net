@@ -60,7 +60,7 @@ public partial class SupplementalSignalsClient : ISupplementalSignalsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
@@ -144,7 +144,7 @@ public partial class SupplementalSignalsClient : ISupplementalSignalsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

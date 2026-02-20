@@ -67,7 +67,7 @@ public partial class EnrollmentsClient : IEnrollmentsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
@@ -152,7 +152,7 @@ public partial class EnrollmentsClient : IEnrollmentsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
