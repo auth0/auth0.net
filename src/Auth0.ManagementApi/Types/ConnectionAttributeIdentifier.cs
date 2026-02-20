@@ -18,6 +18,10 @@ public record ConnectionAttributeIdentifier : IJsonOnDeserialized
     [JsonPropertyName("active")]
     public bool? Active { get; set; }
 
+    [Optional]
+    [JsonPropertyName("default_method")]
+    public DefaultMethodEmailIdentifierEnum? DefaultMethod { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

@@ -26,7 +26,7 @@ public partial interface IAuthenticationMethodsClient
     );
 
     /// <summary>
-    /// Replace the specified user <a href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors"> authentication methods</a> with supplied values.
+    /// Replace the specified user <see href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors"> authentication methods</see> with supplied values.
     ///
     ///     <b>Note</b>: Authentication methods supplied through this action do not iterate on existing methods. Instead, any methods passed will overwrite the user&#8217s existing settings.
     /// </summary>
@@ -54,7 +54,7 @@ public partial interface IAuthenticationMethodsClient
     );
 
     /// <summary>
-    /// Remove the authentication method with the given ID from the specified user. For more information, review <a href="https://auth0.com/docs/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authentication-methods-with-management-api">Manage Authentication Methods with Management API</a>.
+    /// Remove the authentication method with the given ID from the specified user. For more information, review <see href="https://auth0.com/docs/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authentication-methods-with-management-api">Manage Authentication Methods with Management API</see>.
     /// </summary>
     Task DeleteAsync(
         string id,
@@ -64,7 +64,7 @@ public partial interface IAuthenticationMethodsClient
     );
 
     /// <summary>
-    /// Modify the authentication method with the given ID from the specified user. For more information, review <a href="https://auth0.com/docs/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authentication-methods-with-management-api">Manage Authentication Methods with Management API</a>.
+    /// Modify the authentication method with the given ID from the specified user. For more information, review <see href="https://auth0.com/docs/secure/multi-factor-authentication/manage-mfa-auth0-apis/manage-authentication-methods-with-management-api">Manage Authentication Methods with Management API</see>.
     /// </summary>
     WithRawResponseTask<UpdateUserAuthenticationMethodResponseContent> UpdateAsync(
         string id,

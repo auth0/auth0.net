@@ -97,6 +97,9 @@ public class CreateTest : BaseMockServerTest
                   {
                     "id": "id"
                   }
+                ],
+                "modules": [
+                  {}
                 ]
               },
               "installed_integration_id": "installed_integration_id",
@@ -130,7 +133,15 @@ public class CreateTest : BaseMockServerTest
               },
               "status": "pending",
               "built_at": "2024-01-15T09:30:00.000Z",
-              "deploy": true
+              "deploy": true,
+              "modules": [
+                {
+                  "module_id": "module_id",
+                  "module_name": "module_name",
+                  "module_version_id": "module_version_id",
+                  "module_version_number": 1
+                }
+              ]
             }
             """;
 

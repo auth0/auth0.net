@@ -25,14 +25,23 @@ public record AculConfigsItem : IJsonOnDeserialized
     [JsonPropertyName("context_configuration")]
     public IEnumerable<AculContextConfigurationItem>? ContextConfiguration { get; set; }
 
+    /// <summary>
+    /// Override Universal Login default head tags
+    /// </summary>
     [Nullable, Optional]
     [JsonPropertyName("default_head_tags_disabled")]
     public Optional<bool?> DefaultHeadTagsDisabled { get; set; }
 
+    /// <summary>
+    /// Use page template with ACUL
+    /// </summary>
     [Nullable, Optional]
     [JsonPropertyName("use_page_template")]
     public Optional<bool?> UsePageTemplate { get; set; }
 
+    /// <summary>
+    /// An array of head tags
+    /// </summary>
     [Optional]
     [JsonPropertyName("head_tags")]
     public IEnumerable<AculHeadTag>? HeadTags { get; set; }

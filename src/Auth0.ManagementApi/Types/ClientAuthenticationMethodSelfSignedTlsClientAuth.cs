@@ -14,9 +14,6 @@ public record ClientAuthenticationMethodSelfSignedTlsClientAuth : IJsonOnDeseria
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
-    /// <summary>
-    /// A list of unique and previously created credential IDs enabled on the client for mTLS authentication utilizing self-signed certificate.
-    /// </summary>
     [JsonPropertyName("credentials")]
     public IEnumerable<CredentialId> Credentials { get; set; } = new List<CredentialId>();
 

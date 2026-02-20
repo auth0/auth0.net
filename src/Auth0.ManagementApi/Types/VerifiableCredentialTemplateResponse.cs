@@ -45,16 +45,16 @@ public record VerifiableCredentialTemplateResponse : IJsonOnDeserialized, IJsonO
     /// <summary>
     /// The custom certificate authority.
     /// </summary>
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("custom_certificate_authority")]
-    public string? CustomCertificateAuthority { get; set; }
+    public Optional<string?> CustomCertificateAuthority { get; set; }
 
     /// <summary>
     /// The well-known trusted issuers, comma separated.
     /// </summary>
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("well_known_trusted_issuers")]
-    public string? WellKnownTrustedIssuers { get; set; }
+    public Optional<string?> WellKnownTrustedIssuers { get; set; }
 
     /// <summary>
     /// The date and time the template was created.

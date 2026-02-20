@@ -203,7 +203,7 @@ public partial class UserBlocksClient : IUserBlocksClient
     }
 
     /// <summary>
-    /// Retrieve details of all <a href="https://auth0.com/docs/secure/attack-protection/brute-force-protection">Brute-force Protection</a> blocks for a user with the given identifier (username, phone number, or email).
+    /// Retrieve details of all <see href="https://auth0.com/docs/secure/attack-protection/brute-force-protection">Brute-force Protection</see> blocks for a user with the given identifier (username, phone number, or email).
     /// </summary>
     /// <example><code>
     /// await client.UserBlocks.ListByIdentifierAsync(
@@ -226,9 +226,9 @@ public partial class UserBlocksClient : IUserBlocksClient
     }
 
     /// <summary>
-    /// Remove all <a href="https://auth0.com/docs/secure/attack-protection/brute-force-protection">Brute-force Protection</a> blocks for the user with the given identifier (username, phone number, or email).
+    /// Remove all <see href="https://auth0.com/docs/secure/attack-protection/brute-force-protection">Brute-force Protection</see> blocks for the user with the given identifier (username, phone number, or email).
     ///
-    /// Note: This endpoint does not unblock users that were <a href="https://auth0.com/docs/user-profile#block-and-unblock-a-user">blocked by a tenant administrator</a>.
+    /// Note: This endpoint does not unblock users that were <see href="https://auth0.com/docs/user-profile#block-and-unblock-a-user">blocked by a tenant administrator</see>.
     /// </summary>
     /// <example><code>
     /// await client.UserBlocks.DeleteByIdentifierAsync(
@@ -298,7 +298,7 @@ public partial class UserBlocksClient : IUserBlocksClient
     }
 
     /// <summary>
-    /// Retrieve details of all <a href="https://auth0.com/docs/secure/attack-protection/brute-force-protection">Brute-force Protection</a> blocks for the user with the given ID.
+    /// Retrieve details of all <see href="https://auth0.com/docs/secure/attack-protection/brute-force-protection">Brute-force Protection</see> blocks for the user with the given ID.
     /// </summary>
     /// <example><code>
     /// await client.UserBlocks.ListAsync(
@@ -319,9 +319,9 @@ public partial class UserBlocksClient : IUserBlocksClient
     }
 
     /// <summary>
-    /// Remove all <a href="https://auth0.com/docs/secure/attack-protection/brute-force-protection">Brute-force Protection</a> blocks for the user with the given ID.
+    /// Remove all <see href="https://auth0.com/docs/secure/attack-protection/brute-force-protection">Brute-force Protection</see> blocks for the user with the given ID.
     ///
-    /// Note: This endpoint does not unblock users that were <a href="https://auth0.com/docs/user-profile#block-and-unblock-a-user">blocked by a tenant administrator</a>.
+    /// Note: This endpoint does not unblock users that were <see href="https://auth0.com/docs/user-profile#block-and-unblock-a-user">blocked by a tenant administrator</see>.
     /// </summary>
     /// <example><code>
     /// await client.UserBlocks.DeleteAsync("id");

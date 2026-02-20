@@ -22,7 +22,7 @@ public record CreatePublicKeyDeviceCredentialRequestContent
     public required string Value { get; set; }
 
     /// <summary>
-    /// Unique identifier for the device. Recommend using <a href="http://developer.android.com/reference/android/provider/Settings.Secure.html#ANDROID_ID">Android_ID</a> on Android and <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDevice_Class/index.html#//apple_ref/occ/instp/UIDevice/identifierForVendor">identifierForVendor</a>.
+    /// Unique identifier for the device. Recommend using <see href="http://developer.android.com/reference/android/provider/Settings.Secure.html#ANDROID_ID">Android_ID</see> on Android and <see href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIDevice_Class/index.html#//apple_ref/occ/instp/UIDevice/identifierForVendor">identifierForVendor</see>.
     /// </summary>
     [JsonPropertyName("device_id")]
     public required string DeviceId { get; set; }

@@ -19,4 +19,14 @@ public partial interface IRefreshTokensClient
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
+
+    /// <summary>
+    /// Update a refresh token by its ID.
+    /// </summary>
+    WithRawResponseTask<UpdateRefreshTokenResponseContent> UpdateAsync(
+        string id,
+        UpdateRefreshTokenRequestContent request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
 }

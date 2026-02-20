@@ -114,6 +114,13 @@ public record GetActionResponseContent : IJsonOnDeserialized
     [JsonPropertyName("deploy")]
     public bool? Deploy { get; set; }
 
+    /// <summary>
+    /// The list of action modules and their versions used by this action.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("modules")]
+    public IEnumerable<ActionModuleReference>? Modules { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

@@ -13,26 +13,43 @@ public class GetTest_ : BaseMockServerTest
         const string mockResponse = """
             {
               "id": "id",
-              "trigger_id": "trigger_id",
-              "status": "unspecified",
-              "results": [
+              "name": "name",
+              "code": "code",
+              "dependencies": [
                 {
-                  "action_name": "action_name",
-                  "started_at": "2024-01-15T09:30:00.000Z",
-                  "ended_at": "2024-01-15T09:30:00.000Z"
+                  "name": "name",
+                  "version": "version"
                 }
               ],
+              "secrets": [
+                {
+                  "name": "name",
+                  "updated_at": "2024-01-15T09:30:00.000Z"
+                }
+              ],
+              "actions_using_module_total": 1,
+              "all_changes_published": true,
+              "latest_version_number": 1,
               "created_at": "2024-01-15T09:30:00.000Z",
-              "updated_at": "2024-01-15T09:30:00.000Z"
+              "updated_at": "2024-01-15T09:30:00.000Z",
+              "latest_version": {
+                "id": "id",
+                "version_number": 1,
+                "code": "code",
+                "dependencies": [
+                  {}
+                ],
+                "secrets": [
+                  {}
+                ],
+                "created_at": "2024-01-15T09:30:00.000Z"
+              }
             }
             """;
 
         Server
             .Given(
-                WireMock
-                    .RequestBuilders.Request.Create()
-                    .WithPath("/actions/executions/id")
-                    .UsingGet()
+                WireMock.RequestBuilders.Request.Create().WithPath("/actions/modules/id").UsingGet()
             )
             .RespondWith(
                 WireMock
@@ -41,7 +58,7 @@ public class GetTest_ : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var response = await Client.Actions.Executions.GetAsync("id");
+        var response = await Client.Actions.Modules.GetAsync("id");
         JsonAssert.AreEqual(response, mockResponse);
     }
 }

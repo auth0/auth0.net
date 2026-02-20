@@ -37,6 +37,27 @@ public class CreateFlowsVaultConnectionHttp
     ) => new("createFlowsVaultConnectionHttpBearer", value);
 
     /// <summary>
+    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBasicAuth value.
+    /// </summary>
+    public static CreateFlowsVaultConnectionHttp FromCreateFlowsVaultConnectionHttpBasicAuth(
+        Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBasicAuth value
+    ) => new("createFlowsVaultConnectionHttpBasicAuth", value);
+
+    /// <summary>
+    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionHttpApiKey value.
+    /// </summary>
+    public static CreateFlowsVaultConnectionHttp FromCreateFlowsVaultConnectionHttpApiKey(
+        Auth0.ManagementApi.CreateFlowsVaultConnectionHttpApiKey value
+    ) => new("createFlowsVaultConnectionHttpApiKey", value);
+
+    /// <summary>
+    /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionHttpOauthClientCredentials value.
+    /// </summary>
+    public static CreateFlowsVaultConnectionHttp FromCreateFlowsVaultConnectionHttpOauthClientCredentials(
+        Auth0.ManagementApi.CreateFlowsVaultConnectionHttpOauthClientCredentials value
+    ) => new("createFlowsVaultConnectionHttpOauthClientCredentials", value);
+
+    /// <summary>
     /// Factory method to create a union from a Auth0.ManagementApi.CreateFlowsVaultConnectionHttpUninitialized value.
     /// </summary>
     public static CreateFlowsVaultConnectionHttp FromCreateFlowsVaultConnectionHttpUninitialized(
@@ -48,6 +69,24 @@ public class CreateFlowsVaultConnectionHttp
     /// </summary>
     public bool IsCreateFlowsVaultConnectionHttpBearer() =>
         Type == "createFlowsVaultConnectionHttpBearer";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "createFlowsVaultConnectionHttpBasicAuth"
+    /// </summary>
+    public bool IsCreateFlowsVaultConnectionHttpBasicAuth() =>
+        Type == "createFlowsVaultConnectionHttpBasicAuth";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "createFlowsVaultConnectionHttpApiKey"
+    /// </summary>
+    public bool IsCreateFlowsVaultConnectionHttpApiKey() =>
+        Type == "createFlowsVaultConnectionHttpApiKey";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "createFlowsVaultConnectionHttpOauthClientCredentials"
+    /// </summary>
+    public bool IsCreateFlowsVaultConnectionHttpOauthClientCredentials() =>
+        Type == "createFlowsVaultConnectionHttpOauthClientCredentials";
 
     /// <summary>
     /// Returns true if <see cref="Type"/> is "createFlowsVaultConnectionHttpUninitialized"
@@ -64,6 +103,39 @@ public class CreateFlowsVaultConnectionHttp
             ? (Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBearer)Value!
             : throw new ManagementException(
                 "Union type is not 'createFlowsVaultConnectionHttpBearer'"
+            );
+
+    /// <summary>
+    /// Returns the value as a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBasicAuth"/> if <see cref="Type"/> is 'createFlowsVaultConnectionHttpBasicAuth', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="ManagementException">Thrown when <see cref="Type"/> is not 'createFlowsVaultConnectionHttpBasicAuth'.</exception>
+    public Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBasicAuth AsCreateFlowsVaultConnectionHttpBasicAuth() =>
+        IsCreateFlowsVaultConnectionHttpBasicAuth()
+            ? (Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBasicAuth)Value!
+            : throw new ManagementException(
+                "Union type is not 'createFlowsVaultConnectionHttpBasicAuth'"
+            );
+
+    /// <summary>
+    /// Returns the value as a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionHttpApiKey"/> if <see cref="Type"/> is 'createFlowsVaultConnectionHttpApiKey', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="ManagementException">Thrown when <see cref="Type"/> is not 'createFlowsVaultConnectionHttpApiKey'.</exception>
+    public Auth0.ManagementApi.CreateFlowsVaultConnectionHttpApiKey AsCreateFlowsVaultConnectionHttpApiKey() =>
+        IsCreateFlowsVaultConnectionHttpApiKey()
+            ? (Auth0.ManagementApi.CreateFlowsVaultConnectionHttpApiKey)Value!
+            : throw new ManagementException(
+                "Union type is not 'createFlowsVaultConnectionHttpApiKey'"
+            );
+
+    /// <summary>
+    /// Returns the value as a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionHttpOauthClientCredentials"/> if <see cref="Type"/> is 'createFlowsVaultConnectionHttpOauthClientCredentials', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="ManagementException">Thrown when <see cref="Type"/> is not 'createFlowsVaultConnectionHttpOauthClientCredentials'.</exception>
+    public Auth0.ManagementApi.CreateFlowsVaultConnectionHttpOauthClientCredentials AsCreateFlowsVaultConnectionHttpOauthClientCredentials() =>
+        IsCreateFlowsVaultConnectionHttpOauthClientCredentials()
+            ? (Auth0.ManagementApi.CreateFlowsVaultConnectionHttpOauthClientCredentials)Value!
+            : throw new ManagementException(
+                "Union type is not 'createFlowsVaultConnectionHttpOauthClientCredentials'"
             );
 
     /// <summary>
@@ -94,6 +166,55 @@ public class CreateFlowsVaultConnectionHttp
     }
 
     /// <summary>
+    /// Attempts to cast the value to a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBasicAuth"/> and returns true if successful.
+    /// </summary>
+    public bool TryGetCreateFlowsVaultConnectionHttpBasicAuth(
+        out Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBasicAuth? value
+    )
+    {
+        if (Type == "createFlowsVaultConnectionHttpBasicAuth")
+        {
+            value = (Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBasicAuth)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionHttpApiKey"/> and returns true if successful.
+    /// </summary>
+    public bool TryGetCreateFlowsVaultConnectionHttpApiKey(
+        out Auth0.ManagementApi.CreateFlowsVaultConnectionHttpApiKey? value
+    )
+    {
+        if (Type == "createFlowsVaultConnectionHttpApiKey")
+        {
+            value = (Auth0.ManagementApi.CreateFlowsVaultConnectionHttpApiKey)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionHttpOauthClientCredentials"/> and returns true if successful.
+    /// </summary>
+    public bool TryGetCreateFlowsVaultConnectionHttpOauthClientCredentials(
+        out Auth0.ManagementApi.CreateFlowsVaultConnectionHttpOauthClientCredentials? value
+    )
+    {
+        if (Type == "createFlowsVaultConnectionHttpOauthClientCredentials")
+        {
+            value = (Auth0.ManagementApi.CreateFlowsVaultConnectionHttpOauthClientCredentials)
+                Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
     /// Attempts to cast the value to a <see cref="Auth0.ManagementApi.CreateFlowsVaultConnectionHttpUninitialized"/> and returns true if successful.
     /// </summary>
     public bool TryGetCreateFlowsVaultConnectionHttpUninitialized(
@@ -115,6 +236,18 @@ public class CreateFlowsVaultConnectionHttp
             T
         > onCreateFlowsVaultConnectionHttpBearer,
         Func<
+            Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBasicAuth,
+            T
+        > onCreateFlowsVaultConnectionHttpBasicAuth,
+        Func<
+            Auth0.ManagementApi.CreateFlowsVaultConnectionHttpApiKey,
+            T
+        > onCreateFlowsVaultConnectionHttpApiKey,
+        Func<
+            Auth0.ManagementApi.CreateFlowsVaultConnectionHttpOauthClientCredentials,
+            T
+        > onCreateFlowsVaultConnectionHttpOauthClientCredentials,
+        Func<
             Auth0.ManagementApi.CreateFlowsVaultConnectionHttpUninitialized,
             T
         > onCreateFlowsVaultConnectionHttpUninitialized
@@ -125,6 +258,16 @@ public class CreateFlowsVaultConnectionHttp
             "createFlowsVaultConnectionHttpBearer" => onCreateFlowsVaultConnectionHttpBearer(
                 AsCreateFlowsVaultConnectionHttpBearer()
             ),
+            "createFlowsVaultConnectionHttpBasicAuth" => onCreateFlowsVaultConnectionHttpBasicAuth(
+                AsCreateFlowsVaultConnectionHttpBasicAuth()
+            ),
+            "createFlowsVaultConnectionHttpApiKey" => onCreateFlowsVaultConnectionHttpApiKey(
+                AsCreateFlowsVaultConnectionHttpApiKey()
+            ),
+            "createFlowsVaultConnectionHttpOauthClientCredentials" =>
+                onCreateFlowsVaultConnectionHttpOauthClientCredentials(
+                    AsCreateFlowsVaultConnectionHttpOauthClientCredentials()
+                ),
             "createFlowsVaultConnectionHttpUninitialized" =>
                 onCreateFlowsVaultConnectionHttpUninitialized(
                     AsCreateFlowsVaultConnectionHttpUninitialized()
@@ -135,6 +278,9 @@ public class CreateFlowsVaultConnectionHttp
 
     public void Visit(
         System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBearer> onCreateFlowsVaultConnectionHttpBearer,
+        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBasicAuth> onCreateFlowsVaultConnectionHttpBasicAuth,
+        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHttpApiKey> onCreateFlowsVaultConnectionHttpApiKey,
+        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHttpOauthClientCredentials> onCreateFlowsVaultConnectionHttpOauthClientCredentials,
         System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHttpUninitialized> onCreateFlowsVaultConnectionHttpUninitialized
     )
     {
@@ -142,6 +288,19 @@ public class CreateFlowsVaultConnectionHttp
         {
             case "createFlowsVaultConnectionHttpBearer":
                 onCreateFlowsVaultConnectionHttpBearer(AsCreateFlowsVaultConnectionHttpBearer());
+                break;
+            case "createFlowsVaultConnectionHttpBasicAuth":
+                onCreateFlowsVaultConnectionHttpBasicAuth(
+                    AsCreateFlowsVaultConnectionHttpBasicAuth()
+                );
+                break;
+            case "createFlowsVaultConnectionHttpApiKey":
+                onCreateFlowsVaultConnectionHttpApiKey(AsCreateFlowsVaultConnectionHttpApiKey());
+                break;
+            case "createFlowsVaultConnectionHttpOauthClientCredentials":
+                onCreateFlowsVaultConnectionHttpOauthClientCredentials(
+                    AsCreateFlowsVaultConnectionHttpOauthClientCredentials()
+                );
                 break;
             case "createFlowsVaultConnectionHttpUninitialized":
                 onCreateFlowsVaultConnectionHttpUninitialized(
@@ -193,6 +352,18 @@ public class CreateFlowsVaultConnectionHttp
     ) => new("createFlowsVaultConnectionHttpBearer", value);
 
     public static implicit operator CreateFlowsVaultConnectionHttp(
+        Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBasicAuth value
+    ) => new("createFlowsVaultConnectionHttpBasicAuth", value);
+
+    public static implicit operator CreateFlowsVaultConnectionHttp(
+        Auth0.ManagementApi.CreateFlowsVaultConnectionHttpApiKey value
+    ) => new("createFlowsVaultConnectionHttpApiKey", value);
+
+    public static implicit operator CreateFlowsVaultConnectionHttp(
+        Auth0.ManagementApi.CreateFlowsVaultConnectionHttpOauthClientCredentials value
+    ) => new("createFlowsVaultConnectionHttpOauthClientCredentials", value);
+
+    public static implicit operator CreateFlowsVaultConnectionHttp(
         Auth0.ManagementApi.CreateFlowsVaultConnectionHttpUninitialized value
     ) => new("createFlowsVaultConnectionHttpUninitialized", value);
 
@@ -219,6 +390,18 @@ public class CreateFlowsVaultConnectionHttp
                     (
                         "createFlowsVaultConnectionHttpBearer",
                         typeof(Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBearer)
+                    ),
+                    (
+                        "createFlowsVaultConnectionHttpBasicAuth",
+                        typeof(Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBasicAuth)
+                    ),
+                    (
+                        "createFlowsVaultConnectionHttpApiKey",
+                        typeof(Auth0.ManagementApi.CreateFlowsVaultConnectionHttpApiKey)
+                    ),
+                    (
+                        "createFlowsVaultConnectionHttpOauthClientCredentials",
+                        typeof(Auth0.ManagementApi.CreateFlowsVaultConnectionHttpOauthClientCredentials)
                     ),
                     (
                         "createFlowsVaultConnectionHttpUninitialized",
@@ -262,6 +445,9 @@ public class CreateFlowsVaultConnectionHttp
             }
 
             value.Visit(
+                obj => JsonSerializer.Serialize(writer, obj, options),
+                obj => JsonSerializer.Serialize(writer, obj, options),
+                obj => JsonSerializer.Serialize(writer, obj, options),
                 obj => JsonSerializer.Serialize(writer, obj, options),
                 obj => JsonSerializer.Serialize(writer, obj, options)
             );

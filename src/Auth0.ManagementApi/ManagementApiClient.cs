@@ -21,7 +21,6 @@ public partial class ManagementApiClient : IManagementApiClient
                 { "X-Fern-Language", "C#" },
                 { "X-Fern-SDK-Name", "Auth0.ManagementApi" },
                 { "X-Fern-SDK-Version", Version.Current },
-                { "User-Agent", "Ferncustom/0.0.1" },
             }
         );
         foreach (var header in platformHeaders)
@@ -53,6 +52,7 @@ public partial class ManagementApiClient : IManagementApiClient
         Flows = new FlowsClient(_client);
         Forms = new FormsClient(_client);
         UserGrants = new UserGrantsClient(_client);
+        Groups = new GroupsClient(_client);
         Hooks = new HooksClient(_client);
         Jobs = new JobsClient(_client);
         LogStreams = new LogStreamsClient(_client);
@@ -109,6 +109,8 @@ public partial class ManagementApiClient : IManagementApiClient
     public IFormsClient Forms { get; }
 
     public IUserGrantsClient UserGrants { get; }
+
+    public IGroupsClient Groups { get; }
 
     public IHooksClient Hooks { get; }
 

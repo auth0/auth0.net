@@ -18,7 +18,7 @@ public class GetTest : BaseMockServerTest
               "screen": "screen",
               "rendering_mode": "advanced",
               "context_configuration": [
-                "context_configuration"
+                "branding.settings"
               ],
               "default_head_tags_disabled": true,
               "use_page_template": true,

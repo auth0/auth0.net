@@ -22,17 +22,17 @@ public record FederatedConnectionTokenSet : IJsonOnDeserialized, IJsonOnSerializ
     [JsonPropertyName("scope")]
     public string? Scope { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("expires_at")]
-    public DateTime? ExpiresAt { get; set; }
+    public Optional<DateTime?> ExpiresAt { get; set; }
 
     [Optional]
     [JsonPropertyName("issued_at")]
     public DateTime? IssuedAt { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("last_used_at")]
-    public DateTime? LastUsedAt { get; set; }
+    public Optional<DateTime?> LastUsedAt { get; set; }
 
     [JsonIgnore]
     public AdditionalProperties AdditionalProperties { get; set; } = new();

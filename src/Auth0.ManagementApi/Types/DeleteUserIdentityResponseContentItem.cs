@@ -30,7 +30,7 @@ public record DeleteUserIdentityResponseContentItem : IJsonOnDeserialized
     public required string Provider { get; set; }
 
     /// <summary>
-    /// <code>true</code> if the identity provider is a social provider, <code>false</code>s otherwise
+    /// <c>true</c> if the identity provider is a social provider, <c>false</c>s otherwise
     /// </summary>
     [Optional]
     [JsonPropertyName("isSocial")]

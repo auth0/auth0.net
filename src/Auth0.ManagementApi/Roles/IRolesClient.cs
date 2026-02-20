@@ -19,7 +19,7 @@ public partial interface IRolesClient
     );
 
     /// <summary>
-    /// Create a user role for <a href="https://auth0.com/docs/manage-users/access-control/rbac">Role-Based Access Control</a>.
+    /// Create a user role for <see href="https://auth0.com/docs/manage-users/access-control/rbac">Role-Based Access Control</see>.
     ///
     /// <b>Note</b>: New roles are not associated with any permissions by default. To assign existing permissions to your role, review Associate Permissions with a Role. To create new permissions, review Add API Permissions.
     /// </summary>
@@ -30,7 +30,7 @@ public partial interface IRolesClient
     );
 
     /// <summary>
-    /// Retrieve details about a specific <a href="https://auth0.com/docs/manage-users/access-control/rbac">user role</a> specified by ID.
+    /// Retrieve details about a specific <see href="https://auth0.com/docs/manage-users/access-control/rbac">user role</see> specified by ID.
     /// </summary>
     WithRawResponseTask<GetRoleResponseContent> GetAsync(
         string id,
@@ -39,7 +39,7 @@ public partial interface IRolesClient
     );
 
     /// <summary>
-    /// Delete a specific <a href="https://auth0.com/docs/manage-users/access-control/rbac">user role</a> from your tenant. Once deleted, it is removed from any user who was previously assigned that role. This action cannot be undone.
+    /// Delete a specific <see href="https://auth0.com/docs/manage-users/access-control/rbac">user role</see> from your tenant. Once deleted, it is removed from any user who was previously assigned that role. This action cannot be undone.
     /// </summary>
     Task DeleteAsync(
         string id,
@@ -48,7 +48,7 @@ public partial interface IRolesClient
     );
 
     /// <summary>
-    /// Modify the details of a specific <a href="https://auth0.com/docs/manage-users/access-control/rbac">user role</a> specified by ID.
+    /// Modify the details of a specific <see href="https://auth0.com/docs/manage-users/access-control/rbac">user role</see> specified by ID.
     /// </summary>
     WithRawResponseTask<UpdateRoleResponseContent> UpdateAsync(
         string id,

@@ -1,4 +1,3 @@
-using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
@@ -8,11 +7,46 @@ namespace Auth0.ManagementApi;
 /// Options for the 'google-oauth2' connection
 /// </summary>
 [Serializable]
-public record ConnectionOptionsGoogleOAuth2 : IJsonOnDeserialized
+public record ConnectionOptionsGoogleOAuth2 : IJsonOnDeserialized, IJsonOnSerializing
 {
     [JsonExtensionData]
-    private readonly IDictionary<string, JsonElement> _extensionData =
-        new Dictionary<string, JsonElement>();
+    private readonly IDictionary<string, object?> _extensionData =
+        new Dictionary<string, object?>();
+
+    [Optional]
+    [JsonPropertyName("allowed_audiences")]
+    public IEnumerable<string>? AllowedAudiences { get; set; }
+
+    [Optional]
+    [JsonPropertyName("client_id")]
+    public string? ClientId { get; set; }
+
+    [Optional]
+    [JsonPropertyName("client_secret")]
+    public string? ClientSecret { get; set; }
+
+    [Optional]
+    [JsonPropertyName("freeform_scopes")]
+    public IEnumerable<string>? FreeformScopes { get; set; }
+
+    [Optional]
+    [JsonPropertyName("icon_url")]
+    public string? IconUrl { get; set; }
+
+    [Optional]
+    [JsonPropertyName("scope")]
+    public IEnumerable<string>? Scope { get; set; }
+
+    [Optional]
+    [JsonPropertyName("set_user_root_attributes")]
+    public ConnectionSetUserRootAttributesEnum? SetUserRootAttributes { get; set; }
+
+    [Nullable, Optional]
+    [JsonPropertyName("upstream_params")]
+    public Optional<Dictionary<
+        string,
+        ConnectionUpstreamAdditionalProperties?
+    >?> UpstreamParams { get; set; }
 
     /// <summary>
     /// View and manage user's ad applications, ad units, and channels in AdSense
@@ -20,10 +54,6 @@ public record ConnectionOptionsGoogleOAuth2 : IJsonOnDeserialized
     [Optional]
     [JsonPropertyName("adsense_management")]
     public bool? AdsenseManagement { get; set; }
-
-    [Optional]
-    [JsonPropertyName("allowed_audiences")]
-    public IEnumerable<string>? AllowedAudiences { get; set; }
 
     /// <summary>
     /// View user's configuration information and reports
@@ -80,14 +110,6 @@ public record ConnectionOptionsGoogleOAuth2 : IJsonOnDeserialized
     [Optional]
     [JsonPropertyName("chrome_web_store")]
     public bool? ChromeWebStore { get; set; }
-
-    [Nullable, Optional]
-    [JsonPropertyName("client_id")]
-    public Optional<string?> ClientId { get; set; }
-
-    [Nullable, Optional]
-    [JsonPropertyName("client_secret")]
-    public Optional<string?> ClientSecret { get; set; }
 
     /// <summary>
     /// Full access to the authenticated user's contacts
@@ -236,10 +258,6 @@ public record ConnectionOptionsGoogleOAuth2 : IJsonOnDeserialized
     [JsonPropertyName("email")]
     public bool? Email { get; set; }
 
-    [Optional]
-    [JsonPropertyName("freeform_scopes")]
-    public IEnumerable<string>? FreeformScopes { get; set; }
-
     /// <summary>
     /// Full access to the account's mailboxes, including permanent deletion of threads and messages
     /// </summary>
@@ -359,10 +377,6 @@ public record ConnectionOptionsGoogleOAuth2 : IJsonOnDeserialized
     [JsonPropertyName("google_plus")]
     public bool? GooglePlus { get; set; }
 
-    [Optional]
-    [JsonPropertyName("icon_url")]
-    public string? IconUrl { get; set; }
-
     /// <summary>
     /// View and manage user's best-available current location and location history in Google Latitude
     /// </summary>
@@ -412,14 +426,6 @@ public record ConnectionOptionsGoogleOAuth2 : IJsonOnDeserialized
     [JsonPropertyName("profile")]
     public bool? Profile { get; set; }
 
-    [Optional]
-    [JsonPropertyName("scope")]
-    public IEnumerable<string>? Scope { get; set; }
-
-    [Optional]
-    [JsonPropertyName("set_user_root_attributes")]
-    public ConnectionSetUserRootAttributesEnum? SetUserRootAttributes { get; set; }
-
     /// <summary>
     /// View and manage user's sites on Google Sites
     /// </summary>
@@ -440,13 +446,6 @@ public record ConnectionOptionsGoogleOAuth2 : IJsonOnDeserialized
     [Optional]
     [JsonPropertyName("tasks_readonly")]
     public bool? TasksReadonly { get; set; }
-
-    [Nullable, Optional]
-    [JsonPropertyName("upstream_params")]
-    public Optional<Dictionary<
-        string,
-        ConnectionUpstreamAdditionalProperties?
-    >?> UpstreamParams { get; set; }
 
     /// <summary>
     /// View, manage and view statistics user's short URLs
@@ -509,10 +508,13 @@ public record ConnectionOptionsGoogleOAuth2 : IJsonOnDeserialized
     public IEnumerable<string>? NonPersistentAttrs { get; set; }
 
     [JsonIgnore]
-    public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
+    public AdditionalProperties AdditionalProperties { get; set; } = new();
 
     void IJsonOnDeserialized.OnDeserialized() =>
         AdditionalProperties.CopyFromExtensionData(_extensionData);
+
+    void IJsonOnSerializing.OnSerializing() =>
+        AdditionalProperties.CopyToExtensionData(_extensionData);
 
     /// <inheritdoc />
     public override string ToString()

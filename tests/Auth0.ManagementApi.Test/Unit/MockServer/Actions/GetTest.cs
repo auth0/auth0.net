@@ -71,6 +71,14 @@ public class GetTest : BaseMockServerTest
                   ],
                   "binding_policy": "trigger-bound"
                 }
+              ],
+              "modules": [
+                {
+                  "module_id": "module_id",
+                  "module_name": "module_name",
+                  "module_version_id": "module_version_id",
+                  "module_version_number": 1
+                }
               ]
             }
             """;

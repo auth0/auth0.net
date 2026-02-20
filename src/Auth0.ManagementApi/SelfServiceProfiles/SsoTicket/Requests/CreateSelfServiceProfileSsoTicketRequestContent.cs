@@ -47,6 +47,13 @@ public record CreateSelfServiceProfileSsoTicketRequestContent
     [JsonPropertyName("provisioning_config")]
     public SelfServiceProfileSsoTicketProvisioningConfig? ProvisioningConfig { get; set; }
 
+    /// <summary>
+    /// Indicates whether a verified domain should be used for organization discovery during authentication.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("use_for_organization_discovery")]
+    public bool? UseForOrganizationDiscovery { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

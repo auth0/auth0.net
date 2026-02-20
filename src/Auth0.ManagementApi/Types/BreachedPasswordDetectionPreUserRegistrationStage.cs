@@ -13,7 +13,7 @@ public record BreachedPasswordDetectionPreUserRegistrationStage : IJsonOnDeseria
 
     /// <summary>
     /// Action to take when a breached password is detected during a signup.
-    ///               Possible values: <code>block</code>, <code>admin_notification</code>.
+    ///               Possible values: <c>block</c>, <c>admin_notification</c>.
     /// </summary>
     [Optional]
     [JsonPropertyName("shields")]

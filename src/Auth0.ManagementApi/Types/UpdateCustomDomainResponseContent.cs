@@ -29,6 +29,13 @@ public record UpdateCustomDomainResponseContent : IJsonOnDeserialized
     [JsonPropertyName("primary")]
     public required bool Primary { get; set; }
 
+    /// <summary>
+    /// Whether this is the default custom domain (true) or not (false).
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("is_default")]
+    public bool? IsDefault { get; set; }
+
     [JsonPropertyName("status")]
     public required CustomDomainStatusFilterEnum Status { get; set; }
 
@@ -59,6 +66,13 @@ public record UpdateCustomDomainResponseContent : IJsonOnDeserialized
     [Optional]
     [JsonPropertyName("certificate")]
     public DomainCertificate? Certificate { get; set; }
+
+    /// <summary>
+    /// Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not present, the full domain will be used.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("relying_party_identifier")]
+    public string? RelyingPartyIdentifier { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

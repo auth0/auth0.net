@@ -101,7 +101,7 @@ public partial class EnrollmentsClient : IEnrollmentsClient
     }
 
     /// <summary>
-    /// Retrieve the first <a href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors">multi-factor authentication</a> enrollment that a specific user has confirmed.
+    /// Retrieve the first <see href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors">multi-factor authentication</see> enrollment that a specific user has confirmed.
     /// </summary>
     /// <example><code>
     /// await client.Users.Enrollments.GetAsync("id");

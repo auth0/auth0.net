@@ -5,7 +5,7 @@ using Auth0.ManagementApi.Core;
 namespace Auth0.ManagementApi;
 
 /// <summary>
-/// Mapping of claims received from the identity provider (IdP)
+/// Configuration for mapping claims from the identity provider to Auth0 user profile attributes. Allows customizing which IdP claims populate user fields and how they are transformed.
 /// </summary>
 [Serializable]
 public record ConnectionAttributeMapOidc : IJsonOnDeserialized

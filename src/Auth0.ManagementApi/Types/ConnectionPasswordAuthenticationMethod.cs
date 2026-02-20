@@ -21,6 +21,14 @@ public record ConnectionPasswordAuthenticationMethod : IJsonOnDeserialized
     [JsonPropertyName("enabled")]
     public bool? Enabled { get; set; }
 
+    [Optional]
+    [JsonPropertyName("api_behavior")]
+    public ConnectionApiBehaviorEnum? ApiBehavior { get; set; }
+
+    [Optional]
+    [JsonPropertyName("signup_behavior")]
+    public ConnectionSignupBehaviorEnum? SignupBehavior { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

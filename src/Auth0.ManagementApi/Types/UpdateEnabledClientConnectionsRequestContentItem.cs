@@ -12,7 +12,7 @@ public record UpdateEnabledClientConnectionsRequestContentItem : IJsonOnDeserial
         new Dictionary<string, JsonElement>();
 
     /// <summary>
-    /// The client_id of the client to be the subject to change status
+    /// The client_id of the client whose status will be changed. Note that the limit per PATCH request is 50 clients.
     /// </summary>
     [JsonPropertyName("client_id")]
     public required string ClientId { get; set; }

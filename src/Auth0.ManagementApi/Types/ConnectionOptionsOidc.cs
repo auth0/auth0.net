@@ -1,4 +1,3 @@
-using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
@@ -8,11 +7,11 @@ namespace Auth0.ManagementApi;
 /// Options for the 'oidc' connection
 /// </summary>
 [Serializable]
-public record ConnectionOptionsOidc : IJsonOnDeserialized
+public record ConnectionOptionsOidc : IJsonOnDeserialized, IJsonOnSerializing
 {
     [JsonExtensionData]
-    private readonly IDictionary<string, JsonElement> _extensionData =
-        new Dictionary<string, JsonElement>();
+    private readonly IDictionary<string, object?> _extensionData =
+        new Dictionary<string, object?>();
 
     [Optional]
     [JsonPropertyName("attribute_map")]
@@ -81,9 +80,9 @@ public record ConnectionOptionsOidc : IJsonOnDeserialized
     [JsonPropertyName("set_user_root_attributes")]
     public ConnectionSetUserRootAttributesEnum? SetUserRootAttributes { get; set; }
 
-    [Nullable, Optional]
+    [Optional]
     [JsonPropertyName("tenant_domain")]
-    public Optional<string?> TenantDomain { get; set; }
+    public string? TenantDomain { get; set; }
 
     [Optional]
     [JsonPropertyName("token_endpoint")]
@@ -113,10 +112,13 @@ public record ConnectionOptionsOidc : IJsonOnDeserialized
     public IEnumerable<string>? NonPersistentAttrs { get; set; }
 
     [JsonIgnore]
-    public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
+    public AdditionalProperties AdditionalProperties { get; set; } = new();
 
     void IJsonOnDeserialized.OnDeserialized() =>
         AdditionalProperties.CopyFromExtensionData(_extensionData);
+
+    void IJsonOnSerializing.OnSerializing() =>
+        AdditionalProperties.CopyToExtensionData(_extensionData);
 
     /// <inheritdoc />
     public override string ToString()

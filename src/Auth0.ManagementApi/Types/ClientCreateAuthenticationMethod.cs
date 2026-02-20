@@ -16,15 +16,15 @@ public record ClientCreateAuthenticationMethod : IJsonOnDeserialized
 
     [Optional]
     [JsonPropertyName("private_key_jwt")]
-    public PrivateKeyJwt? PrivateKeyJwt { get; set; }
+    public ClientCreateAuthenticationMethodPrivateKeyJwt? PrivateKeyJwt { get; set; }
 
     [Optional]
     [JsonPropertyName("tls_client_auth")]
-    public ClientAuthenticationMethodTlsClientAuth? TlsClientAuth { get; set; }
+    public ClientCreateAuthenticationMethodTlsClientAuth? TlsClientAuth { get; set; }
 
     [Optional]
     [JsonPropertyName("self_signed_tls_client_auth")]
-    public ClientAuthenticationMethodSelfSignedTlsClientAuth? SelfSignedTlsClientAuth { get; set; }
+    public CreateClientAuthenticationMethodSelfSignedTlsClientAuth? SelfSignedTlsClientAuth { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

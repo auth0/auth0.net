@@ -48,6 +48,13 @@ public record UpdateActionRequestContent
     [JsonPropertyName("secrets")]
     public IEnumerable<ActionSecretRequest>? Secrets { get; set; }
 
+    /// <summary>
+    /// The list of action modules and their versions used by this action.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("modules")]
+    public IEnumerable<ActionModuleReference>? Modules { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

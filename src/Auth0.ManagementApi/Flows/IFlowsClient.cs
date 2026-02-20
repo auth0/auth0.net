@@ -8,7 +8,7 @@ public partial interface IFlowsClient
     public Auth0.ManagementApi.Flows.IExecutionsClient Executions { get; }
     public IVaultClient Vault { get; }
     Task<Pager<FlowSummary>> ListAsync(
-        FlowsListRequest request,
+        ListFlowsRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );

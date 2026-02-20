@@ -22,6 +22,14 @@ public record ConnectionAuthenticationMethods : IJsonOnDeserialized
     [JsonPropertyName("passkey")]
     public ConnectionPasskeyAuthenticationMethod? Passkey { get; set; }
 
+    [Optional]
+    [JsonPropertyName("email_otp")]
+    public ConnectionEmailOtpAuthenticationMethod? EmailOtp { get; set; }
+
+    [Optional]
+    [JsonPropertyName("phone_otp")]
+    public ConnectionPhoneOtpAuthenticationMethod? PhoneOtp { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

@@ -115,7 +115,9 @@ public class UpdateTest : BaseMockServerTest
               "pushed_authorization_requests_supported": true,
               "authorization_response_iss_parameter_supported": true,
               "skip_non_verifiable_callback_uri_confirmation_prompt": true,
-              "resource_parameter_profile": "audience"
+              "resource_parameter_profile": "audience",
+              "phone_consolidated_experience": true,
+              "enable_ai_guide": true
             }
             """;
 

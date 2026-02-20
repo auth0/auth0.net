@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi.Guardian.Factors;
 public partial interface IPhoneClient
 {
     /// <summary>
-    /// Retrieve list of <a href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-sms-voice-notifications-mfa">phone-type MFA factors</a> (i.e., sms and voice) that are enabled for your tenant.
+    /// Retrieve list of <see href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-sms-voice-notifications-mfa">phone-type MFA factors</see> (i.e., sms and voice) that are enabled for your tenant.
     /// </summary>
     WithRawResponseTask<GetGuardianFactorPhoneMessageTypesResponseContent> GetMessageTypesAsync(
         RequestOptions? options = null,
@@ -13,7 +13,7 @@ public partial interface IPhoneClient
     );
 
     /// <summary>
-    /// Replace the list of <a href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-sms-voice-notifications-mfa">phone-type MFA factors</a> (i.e., sms and voice) that are enabled for your tenant.
+    /// Replace the list of <see href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-sms-voice-notifications-mfa">phone-type MFA factors</see> (i.e., sms and voice) that are enabled for your tenant.
     /// </summary>
     WithRawResponseTask<SetGuardianFactorPhoneMessageTypesResponseContent> SetMessageTypesAsync(
         SetGuardianFactorPhoneMessageTypesRequestContent request,
@@ -22,7 +22,7 @@ public partial interface IPhoneClient
     );
 
     /// <summary>
-    /// Retrieve configuration details for a Twilio phone provider that has been set up in your tenant. To learn more, review <a href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-sms-voice-notifications-mfa">Configure SMS and Voice Notifications for MFA</a>.
+    /// Retrieve configuration details for a Twilio phone provider that has been set up in your tenant. To learn more, review <see href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-sms-voice-notifications-mfa">Configure SMS and Voice Notifications for MFA</see>.
     /// </summary>
     WithRawResponseTask<GetGuardianFactorsProviderPhoneTwilioResponseContent> GetTwilioProviderAsync(
         RequestOptions? options = null,
@@ -30,7 +30,7 @@ public partial interface IPhoneClient
     );
 
     /// <summary>
-    /// Update the configuration of a Twilio phone provider that has been set up in your tenant. To learn more, review <a href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-sms-voice-notifications-mfa">Configure SMS and Voice Notifications for MFA</a>.
+    /// Update the configuration of a Twilio phone provider that has been set up in your tenant. To learn more, review <see href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-sms-voice-notifications-mfa">Configure SMS and Voice Notifications for MFA</see>.
     /// </summary>
     WithRawResponseTask<SetGuardianFactorsProviderPhoneTwilioResponseContent> SetTwilioProviderAsync(
         SetGuardianFactorsProviderPhoneTwilioRequestContent request,

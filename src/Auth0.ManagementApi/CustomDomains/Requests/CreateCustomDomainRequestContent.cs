@@ -31,6 +31,13 @@ public record CreateCustomDomainRequestContent
     [JsonPropertyName("domain_metadata")]
     public Dictionary<string, string?>? DomainMetadata { get; set; }
 
+    /// <summary>
+    /// Relying Party ID (rpId) to be used for Passkeys on this custom domain. If not provided, the full domain will be used.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("relying_party_identifier")]
+    public string? RelyingPartyIdentifier { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

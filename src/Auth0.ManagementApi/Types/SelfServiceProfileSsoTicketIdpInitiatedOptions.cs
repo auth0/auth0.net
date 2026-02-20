@@ -22,7 +22,7 @@ public record SelfServiceProfileSsoTicketIdpInitiatedOptions : IJsonOnDeserializ
     public bool? Enabled { get; set; }
 
     /// <summary>
-    /// Default application <code>client_id</code> user is redirected to after validated SAML response
+    /// Default application <c>client_id</c> user is redirected to after validated SAML response
     /// </summary>
     [Optional]
     [JsonPropertyName("client_id")]
@@ -33,7 +33,7 @@ public record SelfServiceProfileSsoTicketIdpInitiatedOptions : IJsonOnDeserializ
     public SelfServiceProfileSsoTicketIdpInitiatedClientProtocolEnum? ClientProtocol { get; set; }
 
     /// <summary>
-    /// Query string options to customize the behaviour for OpenID Connect when <code>idpinitiated.client_protocol</code> is <code>oauth2</code>. Allowed parameters: <code>redirect_uri</code>, <code>scope</code>, <code>response_type</code>. For example, <code>redirect_uri=https://jwt.io&scope=openid email&response_type=token</code>
+    /// Query string options to customize the behaviour for OpenID Connect when <c>idpinitiated.client_protocol</c> is <c>oauth2</c>. Allowed parameters: <c>redirect_uri</c>, <c>scope</c>, <c>response_type</c>. For example, <c>redirect_uri=https://jwt.io&scope=openid email&response_type=token</c>
     /// </summary>
     [Optional]
     [JsonPropertyName("client_authorizequery")]

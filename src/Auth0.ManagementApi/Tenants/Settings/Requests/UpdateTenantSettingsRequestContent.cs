@@ -134,7 +134,7 @@ public record UpdateTenantSettingsRequestContent
     /// </summary>
     [Optional]
     [JsonPropertyName("enabled_locales")]
-    public IEnumerable<UpdateTenantSettingsRequestContentEnabledLocalesItem>? EnabledLocales { get; set; }
+    public IEnumerable<TenantSettingsSupportedLocalesEnum>? EnabledLocales { get; set; }
 
     [Nullable, Optional]
     [JsonPropertyName("session_cookie")]
@@ -199,6 +199,20 @@ public record UpdateTenantSettingsRequestContent
     [Optional]
     [JsonPropertyName("resource_parameter_profile")]
     public TenantSettingsResourceParameterProfile? ResourceParameterProfile { get; set; }
+
+    /// <summary>
+    /// Whether Auth0 Guide (AI-powered assistance) is enabled for this tenant.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("enable_ai_guide")]
+    public bool? EnableAiGuide { get; set; }
+
+    /// <summary>
+    /// Whether Phone Consolidated Experience is enabled for this tenant.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("phone_consolidated_experience")]
+    public bool? PhoneConsolidatedExperience { get; set; }
 
     /// <inheritdoc />
     public override string ToString()

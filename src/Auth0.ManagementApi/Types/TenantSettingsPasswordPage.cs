@@ -22,7 +22,7 @@ public record TenantSettingsPasswordPage : IJsonOnDeserialized
     public bool? Enabled { get; set; }
 
     /// <summary>
-    /// Custom change password HTML (<a href='https://github.com/Shopify/liquid/wiki/Liquid-for-Designers'>Liquid syntax</a> supported).
+    /// Custom change password HTML (<see href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers">Liquid syntax</see> supported).
     /// </summary>
     [Optional]
     [JsonPropertyName("html")]

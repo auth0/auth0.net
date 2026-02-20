@@ -9,7 +9,7 @@ public partial interface IScimConfigurationClient
     public ITokensClient Tokens { get; }
 
     /// <summary>
-    /// Retrieves a scim configuration by its <code>connectionId</code>.
+    /// Retrieves a scim configuration by its <c>connectionId</c>.
     /// </summary>
     WithRawResponseTask<GetScimConfigurationResponseContent> GetAsync(
         string id,
@@ -28,7 +28,7 @@ public partial interface IScimConfigurationClient
     );
 
     /// <summary>
-    /// Deletes a scim configuration by its <code>connectionId</code>.
+    /// Deletes a scim configuration by its <c>connectionId</c>.
     /// </summary>
     Task DeleteAsync(
         string id,
@@ -37,7 +37,7 @@ public partial interface IScimConfigurationClient
     );
 
     /// <summary>
-    /// Update a scim configuration by its <code>connectionId</code>.
+    /// Update a scim configuration by its <c>connectionId</c>.
     /// </summary>
     WithRawResponseTask<UpdateScimConfigurationResponseContent> UpdateAsync(
         string id,
@@ -47,7 +47,7 @@ public partial interface IScimConfigurationClient
     );
 
     /// <summary>
-    /// Retrieves a scim configuration's default mapping by its <code>connectionId</code>.
+    /// Retrieves a scim configuration's default mapping by its <c>connectionId</c>.
     /// </summary>
     WithRawResponseTask<GetScimConfigurationDefaultMappingResponseContent> GetDefaultMappingAsync(
         string id,

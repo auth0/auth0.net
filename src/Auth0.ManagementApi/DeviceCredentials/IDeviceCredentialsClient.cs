@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi;
 public partial interface IDeviceCredentialsClient
 {
     /// <summary>
-    /// Retrieve device credential information (<code>public_key</code>, <code>refresh_token</code>, or <code>rotating_refresh_token</code>) associated with a specific user.
+    /// Retrieve device credential information (<c>public_key</c>, <c>refresh_token</c>, or <c>rotating_refresh_token</c>) associated with a specific user.
     /// </summary>
     Task<Pager<DeviceCredential>> ListAsync(
         ListDeviceCredentialsRequestParameters request,
@@ -14,9 +14,9 @@ public partial interface IDeviceCredentialsClient
     );
 
     /// <summary>
-    /// Create a device credential public key to manage refresh token rotation for a given <code>user_id</code>. Device Credentials APIs are designed for ad-hoc administrative use only and paging is by default enabled for GET requests.
+    /// Create a device credential public key to manage refresh token rotation for a given <c>user_id</c>. Device Credentials APIs are designed for ad-hoc administrative use only and paging is by default enabled for GET requests.
     ///
-    /// When refresh token rotation is enabled, the endpoint becomes consistent. For more information, read <a href="https://auth0.com/docs/get-started/tenant-settings/signing-keys"> Signing Keys</a>.
+    /// When refresh token rotation is enabled, the endpoint becomes consistent. For more information, read <see href="https://auth0.com/docs/get-started/tenant-settings/signing-keys"> Signing Keys</see>.
     /// </summary>
     WithRawResponseTask<CreatePublicKeyDeviceCredentialResponseContent> CreatePublicKeyAsync(
         CreatePublicKeyDeviceCredentialRequestContent request,

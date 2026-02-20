@@ -22,24 +22,12 @@ public record ConnectionResponseContentAzureAd : IJsonOnDeserialized
     public ConnectionOptionsAzureAd? Options { get; set; }
 
     [Optional]
-    [JsonPropertyName("provisioning_ticket")]
-    public string? ProvisioningTicket { get; set; }
-
-    [Optional]
     [JsonPropertyName("provisioning_ticket_url")]
     public string? ProvisioningTicketUrl { get; set; }
 
     [Optional]
-    [JsonPropertyName("strategy_version")]
-    public int? StrategyVersion { get; set; }
-
-    [Optional]
-    [JsonPropertyName("id")]
-    public string? Id { get; set; }
-
-    [Optional]
-    [JsonPropertyName("name")]
-    public string? Name { get; set; }
+    [JsonPropertyName("show_as_button")]
+    public bool? ShowAsButton { get; set; }
 
     [Optional]
     [JsonPropertyName("authentication")]
@@ -48,6 +36,18 @@ public record ConnectionResponseContentAzureAd : IJsonOnDeserialized
     [Optional]
     [JsonPropertyName("connected_accounts")]
     public ConnectionConnectedAccountsPurpose? ConnectedAccounts { get; set; }
+
+    [Optional]
+    [JsonPropertyName("id")]
+    public string? Id { get; set; }
+
+    [Optional]
+    [JsonPropertyName("realms")]
+    public IEnumerable<string>? Realms { get; set; }
+
+    [Optional]
+    [JsonPropertyName("name")]
+    public string? Name { get; set; }
 
     [Optional]
     [JsonPropertyName("display_name")]
@@ -64,14 +64,6 @@ public record ConnectionResponseContentAzureAd : IJsonOnDeserialized
     [Optional]
     [JsonPropertyName("metadata")]
     public Dictionary<string, string?>? Metadata { get; set; }
-
-    [Optional]
-    [JsonPropertyName("realms")]
-    public IEnumerable<string>? Realms { get; set; }
-
-    [Optional]
-    [JsonPropertyName("show_as_button")]
-    public bool? ShowAsButton { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

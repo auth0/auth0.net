@@ -15,7 +15,7 @@ public partial class ExecutionsClient : IExecutionsClient
 
     private WithRawResponseTask<ListFlowExecutionsPaginatedResponseContent> ListInternalAsync(
         string flowId,
-        ExecutionsListRequest request,
+        ListFlowExecutionsRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
@@ -29,7 +29,7 @@ public partial class ExecutionsClient : IExecutionsClient
         WithRawResponse<ListFlowExecutionsPaginatedResponseContent>
     > ListInternalAsyncCore(
         string flowId,
-        ExecutionsListRequest request,
+        ListFlowExecutionsRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
@@ -123,7 +123,7 @@ public partial class ExecutionsClient : IExecutionsClient
     private async Task<WithRawResponse<GetFlowExecutionResponseContent>> GetAsyncCore(
         string flowId,
         string executionId,
-        ExecutionsGetRequest request,
+        GetFlowExecutionRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
@@ -216,12 +216,12 @@ public partial class ExecutionsClient : IExecutionsClient
     /// <example><code>
     /// await client.Flows.Executions.ListAsync(
     ///     "flow_id",
-    ///     new ExecutionsListRequest { From = "from", Take = 1 }
+    ///     new ListFlowExecutionsRequestParameters { From = "from", Take = 1 }
     /// );
     /// </code></example>
     public async Task<Pager<FlowExecutionSummary>> ListAsync(
         string flowId,
-        ExecutionsListRequest request,
+        ListFlowExecutionsRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
@@ -231,7 +231,7 @@ public partial class ExecutionsClient : IExecutionsClient
             request = request with { };
         }
         var pager = await CursorPager<
-            ExecutionsListRequest,
+            ListFlowExecutionsRequestParameters,
             RequestOptions?,
             ListFlowExecutionsPaginatedResponseContent,
             string?,
@@ -256,12 +256,16 @@ public partial class ExecutionsClient : IExecutionsClient
     }
 
     /// <example><code>
-    /// await client.Flows.Executions.GetAsync("flow_id", "execution_id", new ExecutionsGetRequest());
+    /// await client.Flows.Executions.GetAsync(
+    ///     "flow_id",
+    ///     "execution_id",
+    ///     new GetFlowExecutionRequestParameters()
+    /// );
     /// </code></example>
     public WithRawResponseTask<GetFlowExecutionResponseContent> GetAsync(
         string flowId,
         string executionId,
-        ExecutionsGetRequest request,
+        GetFlowExecutionRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )

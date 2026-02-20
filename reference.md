@@ -639,6 +639,61 @@ await client.ClientGrants.CreateAsync(
 </dl>
 </details>
 
+<details><summary><code>client.ClientGrants.<a href="/src/Auth0.ManagementApi/ClientGrants/ClientGrantsClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;GetClientGrantResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a single <a href="https://auth0.com/docs/get-started/applications/application-access-to-apis-client-grants">client grant</a>, including the
+scopes associated with the application/API pair.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.ClientGrants.GetAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the client grant to retrieve.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.ClientGrants.<a href="/src/Auth0.ManagementApi/ClientGrants/ClientGrantsClient.cs">DeleteAsync</a>(id)</code></summary>
 <dl>
 <dd>
@@ -1669,7 +1724,9 @@ await client.Connections.ListAsync(
 <dl>
 <dd>
 
-Creates a new connection according to the JSON object received in <code>body</code>.<br/>
+Creates a new connection according to the JSON object received in <code>body</code>.
+
+<b>Note:</b> If a connection with the same name was recently deleted and had a large number of associated users, the deletion may still be processing. Creating a new connection with that name before the deletion completes may fail or produce unexpected results. 
 </dd>
 </dl>
 </dd>
@@ -1795,6 +1852,8 @@ await client.Connections.GetAsync(
 <dd>
 
 Removes a specific <a href="https://auth0.com/docs/authenticate/identity-providers">connection</a> from your tenant. This action cannot be undone. Once removed, users can no longer use this connection to authenticate.
+
+<b>Note:</b> If your connection has a large amount of users associated with it, please be aware that this operation can be long running after the response is returned and may impact concurrent <a href="https://auth0.com/docs/api/management/v2/connections/post-connections">create connection</a> requests, if they use an identical connection name. 
 </dd>
 </dl>
 </dd>
@@ -1985,8 +2044,6 @@ Retrieve details on <a href="https://auth0.com/docs/custom-domains">custom domai
 await client.CustomDomains.ListAsync(
     new ListCustomDomainsRequestParameters
     {
-        Take = 1,
-        From = "from",
         Q = "q",
         Fields = "fields",
         IncludeFields = true,
@@ -2827,7 +2884,7 @@ await client.EmailTemplates.UpdateAsync(
 </details>
 
 ## EventStreams
-<details><summary><code>client.EventStreams.<a href="/src/Auth0.ManagementApi/EventStreams/EventStreamsClient.cs">ListAsync</a>(ListEventStreamsRequestParameters { ... }) -> WithRawResponseTask&lt;IEnumerable&lt;EventStreamResponseContent&gt;&gt;</code></summary>
+<details><summary><code>client.EventStreams.<a href="/src/Auth0.ManagementApi/EventStreams/EventStreamsClient.cs">ListAsync</a>(ListEventStreamsRequestParameters { ... }) -> Pager&lt;EventStreamResponseContent&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3109,7 +3166,7 @@ await client.EventStreams.TestAsync(
 </details>
 
 ## Flows
-<details><summary><code>client.Flows.<a href="/src/Auth0.ManagementApi/Flows/FlowsClient.cs">ListAsync</a>(FlowsListRequest { ... }) -> Pager&lt;FlowSummary&gt;</code></summary>
+<details><summary><code>client.Flows.<a href="/src/Auth0.ManagementApi/Flows/FlowsClient.cs">ListAsync</a>(ListFlowsRequestParameters { ... }) -> Pager&lt;FlowSummary&gt;</code></summary>
 <dl>
 <dd>
 
@@ -3123,7 +3180,7 @@ await client.EventStreams.TestAsync(
 
 ```csharp
 await client.Flows.ListAsync(
-    new FlowsListRequest
+    new ListFlowsRequestParameters
     {
         Page = 1,
         PerPage = 1,
@@ -3145,7 +3202,7 @@ await client.Flows.ListAsync(
 <dl>
 <dd>
 
-**request:** `FlowsListRequest` 
+**request:** `ListFlowsRequestParameters` 
     
 </dd>
 </dl>
@@ -3721,6 +3778,126 @@ await client.UserGrants.DeleteAsync("id");
 <dd>
 
 **id:** `string` — ID of the grant to delete.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Groups
+<details><summary><code>client.Groups.<a href="/src/Auth0.ManagementApi/Groups/GroupsClient.cs">ListAsync</a>(ListGroupsRequestParameters { ... }) -> Pager&lt;Group&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+List all groups in your tenant.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Groups.ListAsync(
+    new ListGroupsRequestParameters
+    {
+        ConnectionId = "connection_id",
+        Name = "name",
+        ExternalId = "external_id",
+        Fields = "fields",
+        IncludeFields = true,
+        From = "from",
+        Take = 1,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ListGroupsRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Groups.<a href="/src/Auth0.ManagementApi/Groups/GroupsClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;GetGroupResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a group by its ID.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Groups.GetAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — Unique identifier for the group (service-generated).
     
 </dd>
 </dl>
@@ -5759,6 +5936,68 @@ await client.RefreshTokens.DeleteAsync("id");
 <dd>
 
 **id:** `string` — ID of the refresh token to delete.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.RefreshTokens.<a href="/src/Auth0.ManagementApi/RefreshTokens/RefreshTokensClient.cs">UpdateAsync</a>(id, UpdateRefreshTokenRequestContent { ... }) -> WithRawResponseTask&lt;UpdateRefreshTokenResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update a refresh token by its ID.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.RefreshTokens.UpdateAsync("id", new UpdateRefreshTokenRequestContent());
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the refresh token to update.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `UpdateRefreshTokenRequestContent` 
     
 </dd>
 </dl>
@@ -9282,7 +9521,7 @@ await client.Actions.Versions.GetAsync("actionId", "id");
 </dl>
 </details>
 
-<details><summary><code>client.Actions.Versions.<a href="/src/Auth0.ManagementApi/Actions/Versions/VersionsClient.cs">DeployAsync</a>(actionId, id, Optional&lt;DeployActionVersionRequestBodyParams?&gt; { ... }) -> WithRawResponseTask&lt;DeployActionVersionResponseContent&gt;</code></summary>
+<details><summary><code>client.Actions.Versions.<a href="/src/Auth0.ManagementApi/Actions/Versions/VersionsClient.cs">DeployAsync</a>(actionId, id, Optional&lt;DeployActionVersionRequestContent?&gt; { ... }) -> WithRawResponseTask&lt;DeployActionVersionResponseContent&gt;</code></summary>
 <dl>
 <dd>
 
@@ -9312,7 +9551,7 @@ Performs the equivalent of a roll-back of an action to an earlier, specified ver
 await client.Actions.Versions.DeployAsync(
     "actionId",
     "id",
-    new DeployActionVersionRequestBodyParams()
+    new DeployActionVersionRequestContent()
 );
 ```
 </dd>
@@ -9344,7 +9583,7 @@ await client.Actions.Versions.DeployAsync(
 <dl>
 <dd>
 
-**request:** `Optional<DeployActionVersionRequestBodyParams?>` 
+**request:** `Optional<DeployActionVersionRequestContent?>` 
     
 </dd>
 </dl>
@@ -9411,6 +9650,419 @@ await client.Actions.Executions.GetAsync("id");
 </dl>
 </details>
 
+## Actions Modules
+<details><summary><code>client.Actions.Modules.<a href="/src/Auth0.ManagementApi/Actions/Modules/ModulesClient.cs">ListAsync</a>(GetActionModulesRequestParameters { ... }) -> Pager&lt;ActionModuleListItem&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a paginated list of all Actions Modules with optional filtering and totals.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Actions.Modules.ListAsync(
+    new GetActionModulesRequestParameters { Page = 1, PerPage = 1 }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `GetActionModulesRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Actions.Modules.<a href="/src/Auth0.ManagementApi/Actions/Modules/ModulesClient.cs">CreateAsync</a>(CreateActionModuleRequestContent { ... }) -> WithRawResponseTask&lt;CreateActionModuleResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Create a new Actions Module for reusable code across actions.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Actions.Modules.CreateAsync(
+    new CreateActionModuleRequestContent { Name = "name", Code = "code" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `CreateActionModuleRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Actions.Modules.<a href="/src/Auth0.ManagementApi/Actions/Modules/ModulesClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;GetActionModuleResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve details of a specific Actions Module by its unique identifier.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Actions.Modules.GetAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the action module to retrieve.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Actions.Modules.<a href="/src/Auth0.ManagementApi/Actions/Modules/ModulesClient.cs">DeleteAsync</a>(id)</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Permanently delete an Actions Module. This will fail if the module is still in use by any actions.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Actions.Modules.DeleteAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the Actions Module to delete.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Actions.Modules.<a href="/src/Auth0.ManagementApi/Actions/Modules/ModulesClient.cs">UpdateAsync</a>(id, UpdateActionModuleRequestContent { ... }) -> WithRawResponseTask&lt;UpdateActionModuleResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Update properties of an existing Actions Module, such as code, dependencies, or secrets.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Actions.Modules.UpdateAsync("id", new UpdateActionModuleRequestContent());
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the action module to update.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `UpdateActionModuleRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Actions.Modules.<a href="/src/Auth0.ManagementApi/Actions/Modules/ModulesClient.cs">ListActionsAsync</a>(id, GetActionModuleActionsRequestParameters { ... }) -> Pager&lt;ActionModuleAction&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Lists all actions that are using a specific Actions Module, showing which deployed action versions reference this Actions Module.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Actions.Modules.ListActionsAsync(
+    "id",
+    new GetActionModuleActionsRequestParameters { Page = 1, PerPage = 1 }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The unique ID of the module.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `GetActionModuleActionsRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Actions.Modules.<a href="/src/Auth0.ManagementApi/Actions/Modules/ModulesClient.cs">RollbackAsync</a>(id, RollbackActionModuleRequestParameters { ... }) -> WithRawResponseTask&lt;RollbackActionModuleResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Rolls back an Actions Module's draft to a previously created version. This action copies the code, dependencies, and secrets from the specified version into the current draft.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Actions.Modules.RollbackAsync(
+    "id",
+    new RollbackActionModuleRequestParameters { ModuleVersionId = "module_version_id" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The unique ID of the module to roll back.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `RollbackActionModuleRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 ## Actions Triggers
 <details><summary><code>client.Actions.Triggers.<a href="/src/Auth0.ManagementApi/Actions/Triggers/TriggersClient.cs">ListAsync</a>() -> WithRawResponseTask&lt;ListActionTriggersResponseContent&gt;</code></summary>
 <dl>
@@ -9441,6 +10093,188 @@ Retrieve the set of triggers currently available within actions. A trigger is an
 ```csharp
 await client.Actions.Triggers.ListAsync();
 ```
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Actions Modules Versions
+<details><summary><code>client.Actions.Modules.Versions.<a href="/src/Auth0.ManagementApi/Actions/Modules/Versions/VersionsClient.cs">ListAsync</a>(id, GetActionModuleVersionsRequestParameters { ... }) -> Pager&lt;ActionModuleVersion&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+List all published versions of a specific Actions Module.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Actions.Modules.Versions.ListAsync(
+    "id",
+    new GetActionModuleVersionsRequestParameters { Page = 1, PerPage = 1 }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The unique ID of the module.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `GetActionModuleVersionsRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Actions.Modules.Versions.<a href="/src/Auth0.ManagementApi/Actions/Modules/Versions/VersionsClient.cs">CreateAsync</a>(id) -> WithRawResponseTask&lt;CreateActionModuleVersionResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Creates a new immutable version of an Actions Module from the current draft version. This publishes the draft as a new version that can be referenced by actions, while maintaining the existing draft for continued development.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Actions.Modules.Versions.CreateAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The ID of the action module to create a version for.
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Actions.Modules.Versions.<a href="/src/Auth0.ManagementApi/Actions/Modules/Versions/VersionsClient.cs">GetAsync</a>(id, versionId) -> WithRawResponseTask&lt;GetActionModuleVersionResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve the details of a specific, immutable version of an Actions Module.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Actions.Modules.Versions.GetAsync("id", "versionId");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The unique ID of the module.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**versionId:** `string` — The unique ID of the module version to retrieve.
+    
 </dd>
 </dl>
 </dd>
@@ -11828,8 +12662,8 @@ await client.Clients.Connections.GetAsync(
 </dl>
 </details>
 
-## Connections Clients
-<details><summary><code>client.Connections.Clients.<a href="/src/Auth0.ManagementApi/Connections/Clients/ClientsClient.cs">GetAsync</a>(id, GetConnectionEnabledClientsRequestParameters { ... }) -> Pager&lt;ConnectionEnabledClient&gt;</code></summary>
+## Connections DirectoryProvisioning
+<details><summary><code>client.Connections.DirectoryProvisioning.<a href="/src/Auth0.ManagementApi/Connections/DirectoryProvisioning/DirectoryProvisioningClient.cs">ListAsync</a>(ListDirectoryProvisioningsRequestParameters { ... }) -> Pager&lt;DirectoryProvisioning&gt;</code></summary>
 <dl>
 <dd>
 
@@ -11841,9 +12675,7 @@ await client.Clients.Connections.GetAsync(
 <dl>
 <dd>
 
-Retrieve all clients that have the specified <a href="https://auth0.com/docs/authenticate/identity-providers">connection</a> enabled.
-
-<b>Note</b>: The first time you call this endpoint, omit the <code>from</code> parameter. If there are more results, a <code>next</code> value is included in the response. You can use this for subsequent API calls. When <code>next</code> is no longer included in the response, no further results are remaining.
+Retrieve a list of directory provisioning configurations of a tenant.
 </dd>
 </dl>
 </dd>
@@ -11858,9 +12690,8 @@ Retrieve all clients that have the specified <a href="https://auth0.com/docs/aut
 <dd>
 
 ```csharp
-await client.Connections.Clients.GetAsync(
-    "id",
-    new GetConnectionEnabledClientsRequestParameters { Take = 1, From = "from" }
+await client.Connections.DirectoryProvisioning.ListAsync(
+    new ListDirectoryProvisioningsRequestParameters { From = "from", Take = 1 }
 );
 ```
 </dd>
@@ -11876,15 +12707,7 @@ await client.Connections.Clients.GetAsync(
 <dl>
 <dd>
 
-**id:** `string` — The id of the connection for which enabled clients are to be retrieved
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `GetConnectionEnabledClientsRequestParameters` 
+**request:** `ListDirectoryProvisioningsRequestParameters` 
     
 </dd>
 </dl>
@@ -11896,65 +12719,6 @@ await client.Connections.Clients.GetAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Connections.Clients.<a href="/src/Auth0.ManagementApi/Connections/Clients/ClientsClient.cs">UpdateAsync</a>(id, IEnumerable&lt;UpdateEnabledClientConnectionsRequestContentItem&gt; { ... })</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.Connections.Clients.UpdateAsync(
-    "id",
-    new List<UpdateEnabledClientConnectionsRequestContentItem>()
-    {
-        new UpdateEnabledClientConnectionsRequestContentItem
-        {
-            ClientId = "client_id",
-            Status = true,
-        },
-    }
-);
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string` — The id of the connection to modify
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `IEnumerable<UpdateEnabledClientConnectionsRequestContentItem>` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-## Connections DirectoryProvisioning
 <details><summary><code>client.Connections.DirectoryProvisioning.<a href="/src/Auth0.ManagementApi/Connections/DirectoryProvisioning/DirectoryProvisioningClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;GetDirectoryProvisioningResponseContent&gt;</code></summary>
 <dl>
 <dd>
@@ -12236,6 +13000,132 @@ await client.Connections.DirectoryProvisioning.GetDefaultMappingAsync("id");
 <dd>
 
 **id:** `string` — The id of the connection to retrieve its directory provisioning configuration
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Connections Clients
+<details><summary><code>client.Connections.Clients.<a href="/src/Auth0.ManagementApi/Connections/Clients/ClientsClient.cs">GetAsync</a>(id, GetConnectionEnabledClientsRequestParameters { ... }) -> Pager&lt;ConnectionEnabledClient&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve all clients that have the specified <a href="https://auth0.com/docs/authenticate/identity-providers">connection</a> enabled.
+
+<b>Note</b>: The first time you call this endpoint, omit the <code>from</code> parameter. If there are more results, a <code>next</code> value is included in the response. You can use this for subsequent API calls. When <code>next</code> is no longer included in the response, no further results are remaining.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Connections.Clients.GetAsync(
+    "id",
+    new GetConnectionEnabledClientsRequestParameters { Take = 1, From = "from" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The id of the connection for which enabled clients are to be retrieved
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `GetConnectionEnabledClientsRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Connections.Clients.<a href="/src/Auth0.ManagementApi/Connections/Clients/ClientsClient.cs">UpdateAsync</a>(id, IEnumerable&lt;UpdateEnabledClientConnectionsRequestContentItem&gt; { ... })</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Connections.Clients.UpdateAsync(
+    "id",
+    new List<UpdateEnabledClientConnectionsRequestContentItem>()
+    {
+        new UpdateEnabledClientConnectionsRequestContentItem
+        {
+            ClientId = "client_id",
+            Status = true,
+        },
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The id of the connection to modify
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `IEnumerable<UpdateEnabledClientConnectionsRequestContentItem>` 
     
 </dd>
 </dl>
@@ -13463,7 +14353,7 @@ await client.EventStreams.Redeliveries.CreateByIdAsync("id", "event_id");
 </details>
 
 ## Flows Executions
-<details><summary><code>client.Flows.Executions.<a href="/src/Auth0.ManagementApi/Flows/Executions/ExecutionsClient.cs">ListAsync</a>(flowId, ExecutionsListRequest { ... }) -> Pager&lt;FlowExecutionSummary&gt;</code></summary>
+<details><summary><code>client.Flows.Executions.<a href="/src/Auth0.ManagementApi/Flows/Executions/ExecutionsClient.cs">ListAsync</a>(flowId, ListFlowExecutionsRequestParameters { ... }) -> Pager&lt;FlowExecutionSummary&gt;</code></summary>
 <dl>
 <dd>
 
@@ -13478,7 +14368,7 @@ await client.EventStreams.Redeliveries.CreateByIdAsync("id", "event_id");
 ```csharp
 await client.Flows.Executions.ListAsync(
     "flow_id",
-    new ExecutionsListRequest { From = "from", Take = 1 }
+    new ListFlowExecutionsRequestParameters { From = "from", Take = 1 }
 );
 ```
 </dd>
@@ -13502,7 +14392,7 @@ await client.Flows.Executions.ListAsync(
 <dl>
 <dd>
 
-**request:** `ExecutionsListRequest` 
+**request:** `ListFlowExecutionsRequestParameters` 
     
 </dd>
 </dl>
@@ -13514,7 +14404,7 @@ await client.Flows.Executions.ListAsync(
 </dl>
 </details>
 
-<details><summary><code>client.Flows.Executions.<a href="/src/Auth0.ManagementApi/Flows/Executions/ExecutionsClient.cs">GetAsync</a>(flowId, executionId, ExecutionsGetRequest { ... }) -> WithRawResponseTask&lt;GetFlowExecutionResponseContent&gt;</code></summary>
+<details><summary><code>client.Flows.Executions.<a href="/src/Auth0.ManagementApi/Flows/Executions/ExecutionsClient.cs">GetAsync</a>(flowId, executionId, GetFlowExecutionRequestParameters { ... }) -> WithRawResponseTask&lt;GetFlowExecutionResponseContent&gt;</code></summary>
 <dl>
 <dd>
 
@@ -13527,7 +14417,11 @@ await client.Flows.Executions.ListAsync(
 <dd>
 
 ```csharp
-await client.Flows.Executions.GetAsync("flow_id", "execution_id", new ExecutionsGetRequest());
+await client.Flows.Executions.GetAsync(
+    "flow_id",
+    "execution_id",
+    new GetFlowExecutionRequestParameters()
+);
 ```
 </dd>
 </dl>
@@ -13558,7 +14452,7 @@ await client.Flows.Executions.GetAsync("flow_id", "execution_id", new Executions
 <dl>
 <dd>
 
-**request:** `ExecutionsGetRequest` 
+**request:** `GetFlowExecutionRequestParameters` 
     
 </dd>
 </dl>
@@ -13838,6 +14732,78 @@ await client.Flows.Vault.Connections.UpdateAsync(
 <dd>
 
 **request:** `UpdateFlowsVaultConnectionRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Groups Members
+<details><summary><code>client.Groups.Members.<a href="/src/Auth0.ManagementApi/Groups/Members/MembersClient.cs">GetAsync</a>(id, GetGroupMembersRequestParameters { ... }) -> Pager&lt;GroupMember&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+List all users that are a member of this group.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Groups.Members.GetAsync(
+    "id",
+    new GetGroupMembersRequestParameters
+    {
+        Fields = "fields",
+        IncludeFields = true,
+        From = "from",
+        Take = 1,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — Unique identifier for the group (service-generated).
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `GetGroupMembersRequestParameters` 
     
 </dd>
 </dl>
@@ -14666,7 +15632,7 @@ await client.Guardian.Factors.PushNotification.GetApnsProviderAsync();
 <dl>
 <dd>
 
-Modify configuration details of the multi-factor authentication APNS provider associated with your tenant.
+Overwrite all configuration details of the multi-factor authentication APNS provider associated with your tenant.
 </dd>
 </dl>
 </dd>
@@ -14710,6 +15676,62 @@ await client.Guardian.Factors.PushNotification.SetApnsProviderAsync(
 </dl>
 </details>
 
+<details><summary><code>client.Guardian.Factors.PushNotification.<a href="/src/Auth0.ManagementApi/Guardian/Factors/PushNotification/PushNotificationClient.cs">UpdateApnsProviderAsync</a>(UpdateGuardianFactorsProviderPushNotificationApnsRequestContent { ... }) -> WithRawResponseTask&lt;UpdateGuardianFactorsProviderPushNotificationApnsResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Modify configuration details of the multi-factor authentication APNS provider associated with your tenant.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Guardian.Factors.PushNotification.UpdateApnsProviderAsync(
+    new UpdateGuardianFactorsProviderPushNotificationApnsRequestContent()
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `UpdateGuardianFactorsProviderPushNotificationApnsRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.Guardian.Factors.PushNotification.<a href="/src/Auth0.ManagementApi/Guardian/Factors/PushNotification/PushNotificationClient.cs">SetFcmProviderAsync</a>(SetGuardianFactorsProviderPushNotificationFcmRequestContent { ... }) -> WithRawResponseTask&lt;Dictionary&lt;string, object?&gt;&gt;</code></summary>
 <dl>
 <dd>
@@ -14722,7 +15744,7 @@ await client.Guardian.Factors.PushNotification.SetApnsProviderAsync(
 <dl>
 <dd>
 
-Modify configuration details of the multi-factor authentication FCM provider associated with your tenant.
+Overwrite all configuration details of the multi-factor authentication FCM provider associated with your tenant.
 </dd>
 </dl>
 </dd>
@@ -14766,6 +15788,62 @@ await client.Guardian.Factors.PushNotification.SetFcmProviderAsync(
 </dl>
 </details>
 
+<details><summary><code>client.Guardian.Factors.PushNotification.<a href="/src/Auth0.ManagementApi/Guardian/Factors/PushNotification/PushNotificationClient.cs">UpdateFcmProviderAsync</a>(UpdateGuardianFactorsProviderPushNotificationFcmRequestContent { ... }) -> WithRawResponseTask&lt;Dictionary&lt;string, object?&gt;&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Modify configuration details of the multi-factor authentication FCM provider associated with your tenant.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Guardian.Factors.PushNotification.UpdateFcmProviderAsync(
+    new UpdateGuardianFactorsProviderPushNotificationFcmRequestContent()
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `UpdateGuardianFactorsProviderPushNotificationFcmRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.Guardian.Factors.PushNotification.<a href="/src/Auth0.ManagementApi/Guardian/Factors/PushNotification/PushNotificationClient.cs">SetFcmv1ProviderAsync</a>(SetGuardianFactorsProviderPushNotificationFcmv1RequestContent { ... }) -> WithRawResponseTask&lt;Dictionary&lt;string, object?&gt;&gt;</code></summary>
 <dl>
 <dd>
@@ -14778,7 +15856,7 @@ await client.Guardian.Factors.PushNotification.SetFcmProviderAsync(
 <dl>
 <dd>
 
-Modify configuration details of the multi-factor authentication FCMV1 provider associated with your tenant.
+Overwrite all configuration details of the multi-factor authentication FCMV1 provider associated with your tenant.
 </dd>
 </dl>
 </dd>
@@ -14811,6 +15889,62 @@ await client.Guardian.Factors.PushNotification.SetFcmv1ProviderAsync(
 <dd>
 
 **request:** `SetGuardianFactorsProviderPushNotificationFcmv1RequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Guardian.Factors.PushNotification.<a href="/src/Auth0.ManagementApi/Guardian/Factors/PushNotification/PushNotificationClient.cs">UpdateFcmv1ProviderAsync</a>(UpdateGuardianFactorsProviderPushNotificationFcmv1RequestContent { ... }) -> WithRawResponseTask&lt;Dictionary&lt;string, object?&gt;&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Modify configuration details of the multi-factor authentication FCMV1 provider associated with your tenant.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Guardian.Factors.PushNotification.UpdateFcmv1ProviderAsync(
+    new UpdateGuardianFactorsProviderPushNotificationFcmv1RequestContent()
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `UpdateGuardianFactorsProviderPushNotificationFcmv1RequestContent` 
     
 </dd>
 </dl>
@@ -16935,7 +18069,7 @@ await client.Organizations.DiscoveryDomains.ListAsync(
 <dl>
 <dd>
 
-Update the verification status for an organization discovery domain. The <code>status</code> field must be either <code>pending</code> or <code>verified</code>.
+Create a new discovery domain for an organization.
 </dd>
 </dl>
 </dd>
@@ -16977,6 +18111,69 @@ await client.Organizations.DiscoveryDomains.CreateAsync(
 <dd>
 
 **request:** `CreateOrganizationDiscoveryDomainRequestContent` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Organizations.DiscoveryDomains.<a href="/src/Auth0.ManagementApi/Organizations/DiscoveryDomains/DiscoveryDomainsClient.cs">GetByNameAsync</a>(id, discoveryDomain) -> WithRawResponseTask&lt;GetOrganizationDiscoveryDomainByNameResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve details about a single organization discovery domain specified by domain name.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Organizations.DiscoveryDomains.GetByNameAsync("id", "discovery_domain");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the organization.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**discoveryDomain:** `string` — Domain name of the discovery domain.
     
 </dd>
 </dl>
@@ -17124,7 +18321,7 @@ await client.Organizations.DiscoveryDomains.DeleteAsync("id", "discovery_domain_
 <dl>
 <dd>
 
-Update the verification status for an organization discovery domain. The <code>status</code> field must be either <code>pending</code> or <code>verified</code>.
+Update the verification status and/or use_for_organization_discovery for an organization discovery domain. The <code>status</code> field must be either <code>pending</code> or <code>verified</code>. The <code>use_for_organization_discovery</code> field can be <code>true</code> or <code>false</code> (default: <code>true</code>).
 </dd>
 </dl>
 </dd>
@@ -18222,7 +19419,7 @@ await client.Organizations.Members.Roles.DeleteAsync(
 </details>
 
 ## Prompts Rendering
-<details><summary><code>client.Prompts.Rendering.<a href="/src/Auth0.ManagementApi/Prompts/Rendering/RenderingClient.cs">ListAsync</a>(ListAculsRequestParameters { ... }) -> Pager&lt;AculResponseContent&gt;</code></summary>
+<details><summary><code>client.Prompts.Rendering.<a href="/src/Auth0.ManagementApi/Prompts/Rendering/RenderingClient.cs">ListAsync</a>(ListAculsRequestParameters { ... }) -> Pager&lt;ListAculsResponseContentItem&gt;</code></summary>
 <dl>
 <dd>
 
@@ -20420,6 +21617,78 @@ await client.Users.FederatedConnectionsTokensets.DeleteAsync("id", "tokenset_id"
 <dd>
 
 **tokensetId:** `string` — The tokenset id
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Users Groups
+<details><summary><code>client.Users.Groups.<a href="/src/Auth0.ManagementApi/Users/Groups/GroupsClient.cs">GetAsync</a>(id, GetUserGroupsRequestParameters { ... }) -> Pager&lt;UserGroupsResponseSchema&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+List all groups to which this user belongs.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Users.Groups.GetAsync(
+    "id",
+    new GetUserGroupsRequestParameters
+    {
+        Fields = "fields",
+        IncludeFields = true,
+        From = "from",
+        Take = 1,
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the user to list groups for.
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `GetUserGroupsRequestParameters` 
     
 </dd>
 </dl>

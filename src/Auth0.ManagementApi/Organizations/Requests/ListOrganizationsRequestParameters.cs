@@ -19,7 +19,7 @@ public record ListOrganizationsRequestParameters
     public Optional<int?> Take { get; set; } = 50;
 
     /// <summary>
-    /// Field to sort by. Use <code>field:order</code> where order is <code>1</code> for ascending and <code>-1</code> for descending. e.g. <code>created_at:1</code>. We currently support sorting by the following fields: <code>name</code>, <code>display_name</code> and <code>created_at</code>.
+    /// Field to sort by. Use <c>field:order</c> where order is <c>1</c> for ascending and <c>-1</c> for descending. e.g. <c>created_at:1</c>. We currently support sorting by the following fields: <c>name</c>, <c>display_name</c> and <c>created_at</c>.
     /// </summary>
     [JsonIgnore]
     public Optional<string?> Sort { get; set; }

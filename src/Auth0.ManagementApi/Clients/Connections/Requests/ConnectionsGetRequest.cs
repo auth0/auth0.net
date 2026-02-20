@@ -33,7 +33,7 @@ public record ConnectionsGetRequest
     public Optional<string?> Fields { get; set; }
 
     /// <summary>
-    /// <code>true</code> if the fields specified are to be included in the result, <code>false</code> otherwise (defaults to <code>true</code>)
+    /// <c>true</c> if the fields specified are to be included in the result, <c>false</c> otherwise (defaults to <c>true</c>)
     /// </summary>
     [JsonIgnore]
     public Optional<bool?> IncludeFields { get; set; }

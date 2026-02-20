@@ -1296,6 +1296,18 @@ public class CreateFlowsVaultConnectionRequestContent
     ) => new("createFlowsVaultConnectionHttp", (CreateFlowsVaultConnectionHttp)value);
 
     public static implicit operator CreateFlowsVaultConnectionRequestContent(
+        Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBasicAuth value
+    ) => new("createFlowsVaultConnectionHttp", (CreateFlowsVaultConnectionHttp)value);
+
+    public static implicit operator CreateFlowsVaultConnectionRequestContent(
+        Auth0.ManagementApi.CreateFlowsVaultConnectionHttpApiKey value
+    ) => new("createFlowsVaultConnectionHttp", (CreateFlowsVaultConnectionHttp)value);
+
+    public static implicit operator CreateFlowsVaultConnectionRequestContent(
+        Auth0.ManagementApi.CreateFlowsVaultConnectionHttpOauthClientCredentials value
+    ) => new("createFlowsVaultConnectionHttp", (CreateFlowsVaultConnectionHttp)value);
+
+    public static implicit operator CreateFlowsVaultConnectionRequestContent(
         Auth0.ManagementApi.CreateFlowsVaultConnectionHttpUninitialized value
     ) => new("createFlowsVaultConnectionHttp", (CreateFlowsVaultConnectionHttp)value);
 

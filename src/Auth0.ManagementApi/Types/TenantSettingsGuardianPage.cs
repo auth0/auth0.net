@@ -22,7 +22,7 @@ public record TenantSettingsGuardianPage : IJsonOnDeserialized
     public bool? Enabled { get; set; }
 
     /// <summary>
-    /// Custom Guardian HTML (<a href='https://github.com/Shopify/liquid/wiki/Liquid-for-Designers'>Liquid syntax</a> is supported).
+    /// Custom Guardian HTML (<see href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers">Liquid syntax</see> is supported).
     /// </summary>
     [Optional]
     [JsonPropertyName("html")]

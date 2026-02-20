@@ -31,7 +31,7 @@ public partial interface IVersionsClient
     WithRawResponseTask<DeployActionVersionResponseContent> DeployAsync(
         string actionId,
         string id,
-        Optional<DeployActionVersionRequestBodyParams?> request,
+        Optional<DeployActionVersionRequestContent?> request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );

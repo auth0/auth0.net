@@ -23,6 +23,8 @@ public readonly record struct PartialGroupsEnum : IStringEnum
 
     public static readonly PartialGroupsEnum CustomizedConsent = new(Values.CustomizedConsent);
 
+    public static readonly PartialGroupsEnum Passkeys = new(Values.Passkeys);
+
     public PartialGroupsEnum(string value)
     {
         Value = value;
@@ -85,5 +87,7 @@ public readonly record struct PartialGroupsEnum : IStringEnum
         public const string SignupPassword = "signup-password";
 
         public const string CustomizedConsent = "customized-consent";
+
+        public const string Passkeys = "passkeys";
     }
 }

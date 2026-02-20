@@ -13,7 +13,7 @@ public record ListAculsOffsetPaginatedResponseContent : IJsonOnDeserialized
 
     [Optional]
     [JsonPropertyName("configs")]
-    public IEnumerable<AculResponseContent>? Configs { get; set; }
+    public IEnumerable<ListAculsResponseContentItem>? Configs { get; set; }
 
     /// <summary>
     /// the index of the first configuration in the response (before filtering)

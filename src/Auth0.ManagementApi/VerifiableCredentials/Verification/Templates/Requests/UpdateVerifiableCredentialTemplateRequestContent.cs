@@ -7,29 +7,29 @@ namespace Auth0.ManagementApi.VerifiableCredentials.Verification;
 [Serializable]
 public record UpdateVerifiableCredentialTemplateRequestContent
 {
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("name")]
-    public string? Name { get; set; }
+    public Optional<string?> Name { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("type")]
-    public string? Type { get; set; }
+    public Optional<string?> Type { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("dialect")]
-    public string? Dialect { get; set; }
+    public Optional<string?> Dialect { get; set; }
 
     [Optional]
     [JsonPropertyName("presentation")]
     public MdlPresentationRequest? Presentation { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("well_known_trusted_issuers")]
-    public string? WellKnownTrustedIssuers { get; set; }
+    public Optional<string?> WellKnownTrustedIssuers { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("version")]
-    public double? Version { get; set; }
+    public Optional<double?> Version { get; set; }
 
     /// <inheritdoc />
     public override string ToString()

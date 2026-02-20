@@ -74,6 +74,10 @@ public record GetJobResponseContent : IJsonOnDeserialized, IJsonOnSerializing
     [JsonPropertyName("status_details")]
     public string? StatusDetails { get; set; }
 
+    [Optional]
+    [JsonPropertyName("summary")]
+    public GetJobSummary? Summary { get; set; }
+
     [JsonIgnore]
     public AdditionalProperties AdditionalProperties { get; set; } = new();
 

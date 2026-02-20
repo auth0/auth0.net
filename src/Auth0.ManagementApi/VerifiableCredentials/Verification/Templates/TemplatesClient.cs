@@ -412,7 +412,7 @@ public partial class TemplatesClient : ITemplatesClient
             ListVerifiableCredentialTemplatesRequestParameters,
             RequestOptions?,
             ListVerifiableCredentialTemplatesPaginatedResponseContent,
-            string?,
+            Optional<string?>,
             VerifiableCredentialTemplateResponse
         >
             .CreateInstanceAsync(

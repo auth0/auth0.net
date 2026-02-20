@@ -1,0 +1,20 @@
+using System.Text.Json.Serialization;
+using Auth0.ManagementApi.Core;
+
+namespace Auth0.ManagementApi.Actions;
+
+[Serializable]
+public record RollbackActionModuleRequestParameters
+{
+    /// <summary>
+    /// The unique ID of the module version to roll back to.
+    /// </summary>
+    [JsonPropertyName("module_version_id")]
+    public required string ModuleVersionId { get; set; }
+
+    /// <inheritdoc />
+    public override string ToString()
+    {
+        return JsonUtils.Serialize(this);
+    }
+}

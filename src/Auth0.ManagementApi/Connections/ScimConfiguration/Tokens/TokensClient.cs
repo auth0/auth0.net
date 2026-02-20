@@ -179,7 +179,7 @@ public partial class TokensClient : ITokensClient
     }
 
     /// <summary>
-    /// Retrieves all scim tokens by its connection <code>id</code>.
+    /// Retrieves all scim tokens by its connection <c>id</c>.
     /// </summary>
     /// <example><code>
     /// await client.Connections.ScimConfiguration.Tokens.GetAsync("id");
@@ -217,7 +217,7 @@ public partial class TokensClient : ITokensClient
     }
 
     /// <summary>
-    /// Deletes a scim token by its connection <code>id</code> and <code>tokenId</code>.
+    /// Deletes a scim token by its connection <c>id</c> and <c>tokenId</c>.
     /// </summary>
     /// <example><code>
     /// await client.Connections.ScimConfiguration.Tokens.DeleteAsync("id", "tokenId");

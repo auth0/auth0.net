@@ -40,6 +40,9 @@ public class ListTest : BaseMockServerTest
                     {
                       "id": "id"
                     }
+                  ],
+                  "modules": [
+                    {}
                   ]
                 }
               ]

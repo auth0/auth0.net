@@ -271,16 +271,16 @@ public readonly record struct ScreenGroupNameEnum : IStringEnum
 
     public static readonly ScreenGroupNameEnum AsyncApprovalError = new(Values.AsyncApprovalError);
 
-    public static readonly ScreenGroupNameEnum AsyncApprovalWrongUser = new(
-        Values.AsyncApprovalWrongUser
-    );
-
     public static readonly ScreenGroupNameEnum AsyncApprovalAccepted = new(
         Values.AsyncApprovalAccepted
     );
 
     public static readonly ScreenGroupNameEnum AsyncApprovalDenied = new(
         Values.AsyncApprovalDenied
+    );
+
+    public static readonly ScreenGroupNameEnum AsyncApprovalWrongUser = new(
+        Values.AsyncApprovalWrongUser
     );
 
     public ScreenGroupNameEnum(string value)
@@ -509,10 +509,10 @@ public readonly record struct ScreenGroupNameEnum : IStringEnum
 
         public const string AsyncApprovalError = "async-approval-error";
 
-        public const string AsyncApprovalWrongUser = "async-approval-wrong-user";
-
         public const string AsyncApprovalAccepted = "async-approval-accepted";
 
         public const string AsyncApprovalDenied = "async-approval-denied";
+
+        public const string AsyncApprovalWrongUser = "async-approval-wrong-user";
     }
 }

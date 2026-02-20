@@ -68,9 +68,9 @@ public record ConnectionOptionsCommonOidc : IJsonOnDeserialized, IJsonOnSerializ
     [JsonPropertyName("set_user_root_attributes")]
     public ConnectionSetUserRootAttributesEnum? SetUserRootAttributes { get; set; }
 
-    [Nullable, Optional]
+    [Optional]
     [JsonPropertyName("tenant_domain")]
-    public Optional<string?> TenantDomain { get; set; }
+    public string? TenantDomain { get; set; }
 
     [Optional]
     [JsonPropertyName("token_endpoint")]

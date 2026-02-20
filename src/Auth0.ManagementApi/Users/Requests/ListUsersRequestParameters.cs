@@ -25,13 +25,13 @@ public record ListUsersRequestParameters
     public Optional<bool?> IncludeTotals { get; set; } = true;
 
     /// <summary>
-    /// Field to sort by. Use <code>field:order</code> where order is <code>1</code> for ascending and <code>-1</code> for descending. e.g. <code>created_at:1</code>
+    /// Field to sort by. Use <c>field:order</c> where order is <c>1</c> for ascending and <c>-1</c> for descending. e.g. <c>created_at:1</c>
     /// </summary>
     [JsonIgnore]
     public Optional<string?> Sort { get; set; }
 
     /// <summary>
-    /// Connection filter. Only applies when using <code>search_engine=v1</code>. To filter by connection with <code>search_engine=v2|v3</code>, use <code>q=identities.connection:"connection_name"</code>
+    /// Connection filter. Only applies when using <c>search_engine=v1</c>. To filter by connection with <c>search_engine=v2|v3</c>, use <c>q=identities.connection:"connection_name"</c>
     /// </summary>
     [JsonIgnore]
     public Optional<string?> Connection { get; set; }
@@ -49,7 +49,7 @@ public record ListUsersRequestParameters
     public Optional<bool?> IncludeFields { get; set; }
 
     /// <summary>
-    /// Query in <a target='_new' href ='http://www.lucenetutorial.com/lucene-query-syntax.html'>Lucene query string syntax</a>. Some query types cannot be used on metadata fields, for details see <a href='https://auth0.com/docs/users/search/v3/query-syntax#searchable-fields'>Searchable Fields</a>.
+    /// Query in <see href="http://www.lucenetutorial.com/lucene-query-syntax.html">Lucene query string syntax</see>. Some query types cannot be used on metadata fields, for details see <see href="https://auth0.com/docs/users/search/v3/query-syntax#searchable-fields">Searchable Fields</see>.
     /// </summary>
     [JsonIgnore]
     public Optional<string?> Q { get; set; }

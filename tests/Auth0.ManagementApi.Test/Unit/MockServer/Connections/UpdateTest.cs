@@ -1,5 +1,6 @@
 using Auth0.ManagementApi;
 using Auth0.ManagementApi.Test.Unit.MockServer;
+using Auth0.ManagementApi.Test.Utils;
 using NUnit.Framework;
 
 namespace Auth0.ManagementApi.Test.Unit.MockServer.Connections;
@@ -8,40 +9,52 @@ namespace Auth0.ManagementApi.Test.Unit.MockServer.Connections;
 public class UpdateTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
-    public void MockServerTest()
+    public async Task MockServerTest()
     {
         const string requestJson = """
-            [
-              {
-                "client_id": "client_id",
-                "status": true
-              }
-            ]
+            {}
+            """;
+
+        const string mockResponse = """
+            {
+              "connection_id": "connection_id",
+              "connection_name": "connection_name",
+              "strategy": "strategy",
+              "mapping": [
+                {
+                  "auth0": "auth0",
+                  "idp": "idp"
+                }
+              ],
+              "synchronize_automatically": true,
+              "created_at": "2024-01-15T09:30:00.000Z",
+              "updated_at": "2024-01-15T09:30:00.000Z",
+              "last_synchronization_at": "2024-01-15T09:30:00.000Z",
+              "last_synchronization_status": "last_synchronization_status",
+              "last_synchronization_error": "last_synchronization_error"
+            }
             """;
 
         Server
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/connections/id/clients")
+                    .WithPath("/connections/id/directory-provisioning")
                     .WithHeader("Content-Type", "application/json")
                     .UsingPatch()
                     .WithBodyAsJson(requestJson)
             )
-            .RespondWith(WireMock.ResponseBuilders.Response.Create().WithStatusCode(200));
+            .RespondWith(
+                WireMock
+                    .ResponseBuilders.Response.Create()
+                    .WithStatusCode(200)
+                    .WithBody(mockResponse)
+            );
 
-        Assert.DoesNotThrowAsync(async () =>
-            await Client.Connections.Clients.UpdateAsync(
-                "id",
-                new List<UpdateEnabledClientConnectionsRequestContentItem>()
-                {
-                    new UpdateEnabledClientConnectionsRequestContentItem
-                    {
-                        ClientId = "client_id",
-                        Status = true,
-                    },
-                }
-            )
+        var response = await Client.Connections.DirectoryProvisioning.UpdateAsync(
+            "id",
+            new UpdateDirectoryProvisioningRequestContent()
         );
+        JsonAssert.AreEqual(response, mockResponse);
     }
 }

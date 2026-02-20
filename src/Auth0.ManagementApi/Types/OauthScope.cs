@@ -8,24 +8,24 @@ namespace Auth0.ManagementApi;
 public readonly record struct OauthScope : IStringEnum
 {
     /// <summary>
-    /// Read Actions
-    /// </summary>
-    public static readonly OauthScope ReadActions = new(Values.ReadActions);
-
-    /// <summary>
     /// Create Actions
     /// </summary>
     public static readonly OauthScope CreateActions = new(Values.CreateActions);
 
     /// <summary>
-    /// Delete Actions
+    /// Read Actions
     /// </summary>
-    public static readonly OauthScope DeleteActions = new(Values.DeleteActions);
+    public static readonly OauthScope ReadActions = new(Values.ReadActions);
 
     /// <summary>
     /// Update Actions
     /// </summary>
     public static readonly OauthScope UpdateActions = new(Values.UpdateActions);
+
+    /// <summary>
+    /// Delete Actions
+    /// </summary>
+    public static readonly OauthScope DeleteActions = new(Values.DeleteActions);
 
     /// <summary>
     /// Read Anomaly Blocks
@@ -38,21 +38,6 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope DeleteAnomalyBlocks = new(Values.DeleteAnomalyBlocks);
 
     /// <summary>
-    /// Read Shields
-    /// </summary>
-    public static readonly OauthScope ReadShields = new(Values.ReadShields);
-
-    /// <summary>
-    /// Create Shields
-    /// </summary>
-    public static readonly OauthScope CreateShields = new(Values.CreateShields);
-
-    /// <summary>
-    /// Update Shields
-    /// </summary>
-    public static readonly OauthScope UpdateShields = new(Values.UpdateShields);
-
-    /// <summary>
     /// Read Attack Protection
     /// </summary>
     public static readonly OauthScope ReadAttackProtection = new(Values.ReadAttackProtection);
@@ -61,6 +46,34 @@ public readonly record struct OauthScope : IStringEnum
     /// Update Attack Protection
     /// </summary>
     public static readonly OauthScope UpdateAttackProtection = new(Values.UpdateAttackProtection);
+
+    /// <summary>
+    /// Create Authentication Methods
+    /// </summary>
+    public static readonly OauthScope CreateAuthenticationMethods = new(
+        Values.CreateAuthenticationMethods
+    );
+
+    /// <summary>
+    /// Read Authentication Methods
+    /// </summary>
+    public static readonly OauthScope ReadAuthenticationMethods = new(
+        Values.ReadAuthenticationMethods
+    );
+
+    /// <summary>
+    /// Update Authentication Methods
+    /// </summary>
+    public static readonly OauthScope UpdateAuthenticationMethods = new(
+        Values.UpdateAuthenticationMethods
+    );
+
+    /// <summary>
+    /// Delete Authentication Methods
+    /// </summary>
+    public static readonly OauthScope DeleteAuthenticationMethods = new(
+        Values.DeleteAuthenticationMethods
+    );
 
     /// <summary>
     /// Read Branding
@@ -73,106 +86,19 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope UpdateBranding = new(Values.UpdateBranding);
 
     /// <summary>
-    /// Read Phone Providers
-    /// </summary>
-    public static readonly OauthScope ReadPhoneProviders = new(Values.ReadPhoneProviders);
-
-    /// <summary>
-    /// Create Phone Providers
-    /// </summary>
-    public static readonly OauthScope CreatePhoneProviders = new(Values.CreatePhoneProviders);
-
-    /// <summary>
-    /// Update Phone Providers
-    /// </summary>
-    public static readonly OauthScope UpdatePhoneProviders = new(Values.UpdatePhoneProviders);
-
-    /// <summary>
-    /// Delete Phone Providers
-    /// </summary>
-    public static readonly OauthScope DeletePhoneProviders = new(Values.DeletePhoneProviders);
-
-    /// <summary>
-    /// Read Phone Templates
-    /// </summary>
-    public static readonly OauthScope ReadPhoneTemplates = new(Values.ReadPhoneTemplates);
-
-    /// <summary>
-    /// Create Phone Templates
-    /// </summary>
-    public static readonly OauthScope CreatePhoneTemplates = new(Values.CreatePhoneTemplates);
-
-    /// <summary>
-    /// Update Phone Templates
-    /// </summary>
-    public static readonly OauthScope UpdatePhoneTemplates = new(Values.UpdatePhoneTemplates);
-
-    /// <summary>
-    /// Delete Phone Templates
-    /// </summary>
-    public static readonly OauthScope DeletePhoneTemplates = new(Values.DeletePhoneTemplates);
-
-    /// <summary>
     /// Delete Branding
     /// </summary>
     public static readonly OauthScope DeleteBranding = new(Values.DeleteBranding);
 
     /// <summary>
-    /// Read Client Grants
+    /// Create Client Credentials
     /// </summary>
-    public static readonly OauthScope ReadClientGrants = new(Values.ReadClientGrants);
-
-    /// <summary>
-    /// Create Client Grants
-    /// </summary>
-    public static readonly OauthScope CreateClientGrants = new(Values.CreateClientGrants);
-
-    /// <summary>
-    /// Update Client Grants
-    /// </summary>
-    public static readonly OauthScope UpdateClientGrants = new(Values.UpdateClientGrants);
-
-    /// <summary>
-    /// Delete Client Grants
-    /// </summary>
-    public static readonly OauthScope DeleteClientGrants = new(Values.DeleteClientGrants);
-
-    /// <summary>
-    /// Read Organization Client Grants
-    /// </summary>
-    public static readonly OauthScope ReadOrganizationClientGrants = new(
-        Values.ReadOrganizationClientGrants
-    );
-
-    /// <summary>
-    /// Read Clients
-    /// </summary>
-    public static readonly OauthScope ReadClients = new(Values.ReadClients);
-
-    /// <summary>
-    /// Read Client Keys
-    /// </summary>
-    public static readonly OauthScope ReadClientKeys = new(Values.ReadClientKeys);
+    public static readonly OauthScope CreateClientCredentials = new(Values.CreateClientCredentials);
 
     /// <summary>
     /// Read Client Credentials
     /// </summary>
     public static readonly OauthScope ReadClientCredentials = new(Values.ReadClientCredentials);
-
-    /// <summary>
-    /// Read Client Summary
-    /// </summary>
-    public static readonly OauthScope ReadClientSummary = new(Values.ReadClientSummary);
-
-    /// <summary>
-    /// Create Clients
-    /// </summary>
-    public static readonly OauthScope CreateClients = new(Values.CreateClients);
-
-    /// <summary>
-    /// Create Client Credentials
-    /// </summary>
-    public static readonly OauthScope CreateClientCredentials = new(Values.CreateClientCredentials);
 
     /// <summary>
     /// Update Client Credentials
@@ -185,14 +111,39 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope DeleteClientCredentials = new(Values.DeleteClientCredentials);
 
     /// <summary>
-    /// Update Clients
+    /// Create Client Grants
     /// </summary>
-    public static readonly OauthScope UpdateClients = new(Values.UpdateClients);
+    public static readonly OauthScope CreateClientGrants = new(Values.CreateClientGrants);
+
+    /// <summary>
+    /// Read Client Grants
+    /// </summary>
+    public static readonly OauthScope ReadClientGrants = new(Values.ReadClientGrants);
+
+    /// <summary>
+    /// Update Client Grants
+    /// </summary>
+    public static readonly OauthScope UpdateClientGrants = new(Values.UpdateClientGrants);
+
+    /// <summary>
+    /// Delete Client Grants
+    /// </summary>
+    public static readonly OauthScope DeleteClientGrants = new(Values.DeleteClientGrants);
+
+    /// <summary>
+    /// Read Client Keys
+    /// </summary>
+    public static readonly OauthScope ReadClientKeys = new(Values.ReadClientKeys);
 
     /// <summary>
     /// Update Client Keys
     /// </summary>
     public static readonly OauthScope UpdateClientKeys = new(Values.UpdateClientKeys);
+
+    /// <summary>
+    /// Read Client Summary
+    /// </summary>
+    public static readonly OauthScope ReadClientSummary = new(Values.ReadClientSummary);
 
     /// <summary>
     /// Update Client Token Vault Privileged Access
@@ -202,19 +153,24 @@ public readonly record struct OauthScope : IStringEnum
     );
 
     /// <summary>
+    /// Create Clients
+    /// </summary>
+    public static readonly OauthScope CreateClients = new(Values.CreateClients);
+
+    /// <summary>
+    /// Read Clients
+    /// </summary>
+    public static readonly OauthScope ReadClients = new(Values.ReadClients);
+
+    /// <summary>
+    /// Update Clients
+    /// </summary>
+    public static readonly OauthScope UpdateClients = new(Values.UpdateClients);
+
+    /// <summary>
     /// Delete Clients
     /// </summary>
     public static readonly OauthScope DeleteClients = new(Values.DeleteClients);
-
-    /// <summary>
-    /// Read Connections
-    /// </summary>
-    public static readonly OauthScope ReadConnections = new(Values.ReadConnections);
-
-    /// <summary>
-    /// Read Connection Profiles
-    /// </summary>
-    public static readonly OauthScope ReadConnectionProfiles = new(Values.ReadConnectionProfiles);
 
     /// <summary>
     /// Create Connection Profiles
@@ -222,6 +178,11 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope CreateConnectionProfiles = new(
         Values.CreateConnectionProfiles
     );
+
+    /// <summary>
+    /// Read Connection Profiles
+    /// </summary>
+    public static readonly OauthScope ReadConnectionProfiles = new(Values.ReadConnectionProfiles);
 
     /// <summary>
     /// Update Connection Profiles
@@ -243,6 +204,11 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope CreateConnections = new(Values.CreateConnections);
 
     /// <summary>
+    /// Read Connections
+    /// </summary>
+    public static readonly OauthScope ReadConnections = new(Values.ReadConnections);
+
+    /// <summary>
     /// Update Connections
     /// </summary>
     public static readonly OauthScope UpdateConnections = new(Values.UpdateConnections);
@@ -253,17 +219,120 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope DeleteConnections = new(Values.DeleteConnections);
 
     /// <summary>
-    /// Read Directory Provisionings
+    /// Create Connections Keys
     /// </summary>
-    public static readonly OauthScope ReadDirectoryProvisionings = new(
-        Values.ReadDirectoryProvisionings
+    public static readonly OauthScope CreateConnectionsKeys = new(Values.CreateConnectionsKeys);
+
+    /// <summary>
+    /// Read Connections Keys
+    /// </summary>
+    public static readonly OauthScope ReadConnectionsKeys = new(Values.ReadConnectionsKeys);
+
+    /// <summary>
+    /// Update Connections Keys
+    /// </summary>
+    public static readonly OauthScope UpdateConnectionsKeys = new(Values.UpdateConnectionsKeys);
+
+    /// <summary>
+    /// Read Current User
+    /// </summary>
+    public static readonly OauthScope ReadCurrentUser = new(Values.ReadCurrentUser);
+
+    /// <summary>
+    /// Delete Current User
+    /// </summary>
+    public static readonly OauthScope DeleteCurrentUser = new(Values.DeleteCurrentUser);
+
+    /// <summary>
+    /// Create Current User Device Credentials
+    /// </summary>
+    public static readonly OauthScope CreateCurrentUserDeviceCredentials = new(
+        Values.CreateCurrentUserDeviceCredentials
     );
+
+    /// <summary>
+    /// Delete Current User Device Credentials
+    /// </summary>
+    public static readonly OauthScope DeleteCurrentUserDeviceCredentials = new(
+        Values.DeleteCurrentUserDeviceCredentials
+    );
+
+    /// <summary>
+    /// Update Current User Identities
+    /// </summary>
+    public static readonly OauthScope UpdateCurrentUserIdentities = new(
+        Values.UpdateCurrentUserIdentities
+    );
+
+    /// <summary>
+    /// Update Current User Metadata
+    /// </summary>
+    public static readonly OauthScope UpdateCurrentUserMetadata = new(
+        Values.UpdateCurrentUserMetadata
+    );
+
+    /// <summary>
+    /// Create Custom Domains
+    /// </summary>
+    public static readonly OauthScope CreateCustomDomains = new(Values.CreateCustomDomains);
+
+    /// <summary>
+    /// Read Custom Domains
+    /// </summary>
+    public static readonly OauthScope ReadCustomDomains = new(Values.ReadCustomDomains);
+
+    /// <summary>
+    /// Update Custom Domains
+    /// </summary>
+    public static readonly OauthScope UpdateCustomDomains = new(Values.UpdateCustomDomains);
+
+    /// <summary>
+    /// Delete Custom Domains
+    /// </summary>
+    public static readonly OauthScope DeleteCustomDomains = new(Values.DeleteCustomDomains);
+
+    /// <summary>
+    /// Create Custom Signing Keys
+    /// </summary>
+    public static readonly OauthScope CreateCustomSigningKeys = new(Values.CreateCustomSigningKeys);
+
+    /// <summary>
+    /// Read Custom Signing Keys
+    /// </summary>
+    public static readonly OauthScope ReadCustomSigningKeys = new(Values.ReadCustomSigningKeys);
+
+    /// <summary>
+    /// Update Custom Signing Keys
+    /// </summary>
+    public static readonly OauthScope UpdateCustomSigningKeys = new(Values.UpdateCustomSigningKeys);
+
+    /// <summary>
+    /// Delete Custom Signing Keys
+    /// </summary>
+    public static readonly OauthScope DeleteCustomSigningKeys = new(Values.DeleteCustomSigningKeys);
+
+    /// <summary>
+    /// Read Device Credentials
+    /// </summary>
+    public static readonly OauthScope ReadDeviceCredentials = new(Values.ReadDeviceCredentials);
+
+    /// <summary>
+    /// Delete Device Credentials
+    /// </summary>
+    public static readonly OauthScope DeleteDeviceCredentials = new(Values.DeleteDeviceCredentials);
 
     /// <summary>
     /// Create Directory Provisionings
     /// </summary>
     public static readonly OauthScope CreateDirectoryProvisionings = new(
         Values.CreateDirectoryProvisionings
+    );
+
+    /// <summary>
+    /// Read Directory Provisionings
+    /// </summary>
+    public static readonly OauthScope ReadDirectoryProvisionings = new(
+        Values.ReadDirectoryProvisionings
     );
 
     /// <summary>
@@ -281,123 +350,24 @@ public readonly record struct OauthScope : IStringEnum
     );
 
     /// <summary>
-    /// Read Users
+    /// Create Email Provider
     /// </summary>
-    public static readonly OauthScope ReadUsers = new(Values.ReadUsers);
+    public static readonly OauthScope CreateEmailProvider = new(Values.CreateEmailProvider);
 
     /// <summary>
-    /// Read Connections Keys
+    /// Read Email Provider
     /// </summary>
-    public static readonly OauthScope ReadConnectionsKeys = new(Values.ReadConnectionsKeys);
+    public static readonly OauthScope ReadEmailProvider = new(Values.ReadEmailProvider);
 
     /// <summary>
-    /// Create Connections Keys
+    /// Update Email Provider
     /// </summary>
-    public static readonly OauthScope CreateConnectionsKeys = new(Values.CreateConnectionsKeys);
+    public static readonly OauthScope UpdateEmailProvider = new(Values.UpdateEmailProvider);
 
     /// <summary>
-    /// Update Connections Keys
+    /// Delete Email Provider
     /// </summary>
-    public static readonly OauthScope UpdateConnectionsKeys = new(Values.UpdateConnectionsKeys);
-
-    /// <summary>
-    /// Read Scim Config
-    /// </summary>
-    public static readonly OauthScope ReadScimConfig = new(Values.ReadScimConfig);
-
-    /// <summary>
-    /// Create Scim Config
-    /// </summary>
-    public static readonly OauthScope CreateScimConfig = new(Values.CreateScimConfig);
-
-    /// <summary>
-    /// Update Scim Config
-    /// </summary>
-    public static readonly OauthScope UpdateScimConfig = new(Values.UpdateScimConfig);
-
-    /// <summary>
-    /// Delete Scim Config
-    /// </summary>
-    public static readonly OauthScope DeleteScimConfig = new(Values.DeleteScimConfig);
-
-    /// <summary>
-    /// Read Scim Token
-    /// </summary>
-    public static readonly OauthScope ReadScimToken = new(Values.ReadScimToken);
-
-    /// <summary>
-    /// Create Scim Token
-    /// </summary>
-    public static readonly OauthScope CreateScimToken = new(Values.CreateScimToken);
-
-    /// <summary>
-    /// Delete Scim Token
-    /// </summary>
-    public static readonly OauthScope DeleteScimToken = new(Values.DeleteScimToken);
-
-    /// <summary>
-    /// Delete Users
-    /// </summary>
-    public static readonly OauthScope DeleteUsers = new(Values.DeleteUsers);
-
-    /// <summary>
-    /// Read Custom Domains
-    /// </summary>
-    public static readonly OauthScope ReadCustomDomains = new(Values.ReadCustomDomains);
-
-    /// <summary>
-    /// Create Custom Domains
-    /// </summary>
-    public static readonly OauthScope CreateCustomDomains = new(Values.CreateCustomDomains);
-
-    /// <summary>
-    /// Update Custom Domains
-    /// </summary>
-    public static readonly OauthScope UpdateCustomDomains = new(Values.UpdateCustomDomains);
-
-    /// <summary>
-    /// Delete Custom Domains
-    /// </summary>
-    public static readonly OauthScope DeleteCustomDomains = new(Values.DeleteCustomDomains);
-
-    /// <summary>
-    /// Read Device Credentials
-    /// </summary>
-    public static readonly OauthScope ReadDeviceCredentials = new(Values.ReadDeviceCredentials);
-
-    /// <summary>
-    /// Create Current User Device Credentials
-    /// </summary>
-    public static readonly OauthScope CreateCurrentUserDeviceCredentials = new(
-        Values.CreateCurrentUserDeviceCredentials
-    );
-
-    /// <summary>
-    /// Delete Device Credentials
-    /// </summary>
-    public static readonly OauthScope DeleteDeviceCredentials = new(Values.DeleteDeviceCredentials);
-
-    /// <summary>
-    /// Delete Current User Device Credentials
-    /// </summary>
-    public static readonly OauthScope DeleteCurrentUserDeviceCredentials = new(
-        Values.DeleteCurrentUserDeviceCredentials
-    );
-
-    /// <summary>
-    /// Update Device Codes
-    /// </summary>
-    public static readonly OauthScope UpdateDeviceCodes = new(Values.UpdateDeviceCodes);
-
-    /// <summary>
-    /// Read Device Codes
-    /// </summary>
-    public static readonly OauthScope ReadDeviceCodes = new(Values.ReadDeviceCodes);
-
-    /// <summary>
-    /// Create Test Email Dispatch
-    /// </summary>
-    public static readonly OauthScope CreateTestEmailDispatch = new(Values.CreateTestEmailDispatch);
+    public static readonly OauthScope DeleteEmailProvider = new(Values.DeleteEmailProvider);
 
     /// <summary>
     /// Create Email Templates
@@ -415,49 +385,24 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope UpdateEmailTemplates = new(Values.UpdateEmailTemplates);
 
     /// <summary>
-    /// Read Email Provider
+    /// Create Encryption Keys
     /// </summary>
-    public static readonly OauthScope ReadEmailProvider = new(Values.ReadEmailProvider);
+    public static readonly OauthScope CreateEncryptionKeys = new(Values.CreateEncryptionKeys);
 
     /// <summary>
-    /// Create Email Provider
+    /// Read Encryption Keys
     /// </summary>
-    public static readonly OauthScope CreateEmailProvider = new(Values.CreateEmailProvider);
+    public static readonly OauthScope ReadEncryptionKeys = new(Values.ReadEncryptionKeys);
 
     /// <summary>
-    /// Update Email Provider
+    /// Update Encryption Keys
     /// </summary>
-    public static readonly OauthScope UpdateEmailProvider = new(Values.UpdateEmailProvider);
+    public static readonly OauthScope UpdateEncryptionKeys = new(Values.UpdateEncryptionKeys);
 
     /// <summary>
-    /// Delete Email Provider
+    /// Delete Encryption Keys
     /// </summary>
-    public static readonly OauthScope DeleteEmailProvider = new(Values.DeleteEmailProvider);
-
-    /// <summary>
-    /// Read Entitlements
-    /// </summary>
-    public static readonly OauthScope ReadEntitlements = new(Values.ReadEntitlements);
-
-    /// <summary>
-    /// Read Event Streams
-    /// </summary>
-    public static readonly OauthScope ReadEventStreams = new(Values.ReadEventStreams);
-
-    /// <summary>
-    /// Create Event Streams
-    /// </summary>
-    public static readonly OauthScope CreateEventStreams = new(Values.CreateEventStreams);
-
-    /// <summary>
-    /// Update Event Streams
-    /// </summary>
-    public static readonly OauthScope UpdateEventStreams = new(Values.UpdateEventStreams);
-
-    /// <summary>
-    /// Delete Event Streams
-    /// </summary>
-    public static readonly OauthScope DeleteEventStreams = new(Values.DeleteEventStreams);
+    public static readonly OauthScope DeleteEncryptionKeys = new(Values.DeleteEncryptionKeys);
 
     /// <summary>
     /// Read Event Deliveries
@@ -470,19 +415,38 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope UpdateEventDeliveries = new(Values.UpdateEventDeliveries);
 
     /// <summary>
-    /// Read Events
+    /// Create Event Streams
     /// </summary>
-    public static readonly OauthScope ReadEvents = new(Values.ReadEvents);
+    public static readonly OauthScope CreateEventStreams = new(Values.CreateEventStreams);
 
     /// <summary>
-    /// Read Extensions
+    /// Read Event Streams
     /// </summary>
-    public static readonly OauthScope ReadExtensions = new(Values.ReadExtensions);
+    public static readonly OauthScope ReadEventStreams = new(Values.ReadEventStreams);
 
     /// <summary>
-    /// Read Flows
+    /// Update Event Streams
     /// </summary>
-    public static readonly OauthScope ReadFlows = new(Values.ReadFlows);
+    public static readonly OauthScope UpdateEventStreams = new(Values.UpdateEventStreams);
+
+    /// <summary>
+    /// Delete Event Streams
+    /// </summary>
+    public static readonly OauthScope DeleteEventStreams = new(Values.DeleteEventStreams);
+
+    /// <summary>
+    /// Read Federated Connections Tokens
+    /// </summary>
+    public static readonly OauthScope ReadFederatedConnectionsTokens = new(
+        Values.ReadFederatedConnectionsTokens
+    );
+
+    /// <summary>
+    /// Delete Federated Connections Tokens
+    /// </summary>
+    public static readonly OauthScope DeleteFederatedConnectionsTokens = new(
+        Values.DeleteFederatedConnectionsTokens
+    );
 
     /// <summary>
     /// Create Flows
@@ -490,17 +454,42 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope CreateFlows = new(Values.CreateFlows);
 
     /// <summary>
-    /// Read Flows Vault Connections
+    /// Read Flows
     /// </summary>
-    public static readonly OauthScope ReadFlowsVaultConnections = new(
-        Values.ReadFlowsVaultConnections
-    );
+    public static readonly OauthScope ReadFlows = new(Values.ReadFlows);
+
+    /// <summary>
+    /// Update Flows
+    /// </summary>
+    public static readonly OauthScope UpdateFlows = new(Values.UpdateFlows);
+
+    /// <summary>
+    /// Delete Flows
+    /// </summary>
+    public static readonly OauthScope DeleteFlows = new(Values.DeleteFlows);
+
+    /// <summary>
+    /// Read Flows Executions
+    /// </summary>
+    public static readonly OauthScope ReadFlowsExecutions = new(Values.ReadFlowsExecutions);
+
+    /// <summary>
+    /// Delete Flows Executions
+    /// </summary>
+    public static readonly OauthScope DeleteFlowsExecutions = new(Values.DeleteFlowsExecutions);
 
     /// <summary>
     /// Create Flows Vault Connections
     /// </summary>
     public static readonly OauthScope CreateFlowsVaultConnections = new(
         Values.CreateFlowsVaultConnections
+    );
+
+    /// <summary>
+    /// Read Flows Vault Connections
+    /// </summary>
+    public static readonly OauthScope ReadFlowsVaultConnections = new(
+        Values.ReadFlowsVaultConnections
     );
 
     /// <summary>
@@ -518,34 +507,14 @@ public readonly record struct OauthScope : IStringEnum
     );
 
     /// <summary>
-    /// Read Flows Executions
+    /// Create Forms
     /// </summary>
-    public static readonly OauthScope ReadFlowsExecutions = new(Values.ReadFlowsExecutions);
-
-    /// <summary>
-    /// Delete Flows Executions
-    /// </summary>
-    public static readonly OauthScope DeleteFlowsExecutions = new(Values.DeleteFlowsExecutions);
-
-    /// <summary>
-    /// Update Flows
-    /// </summary>
-    public static readonly OauthScope UpdateFlows = new(Values.UpdateFlows);
-
-    /// <summary>
-    /// Delete Flows
-    /// </summary>
-    public static readonly OauthScope DeleteFlows = new(Values.DeleteFlows);
+    public static readonly OauthScope CreateForms = new(Values.CreateForms);
 
     /// <summary>
     /// Read Forms
     /// </summary>
     public static readonly OauthScope ReadForms = new(Values.ReadForms);
-
-    /// <summary>
-    /// Create Forms
-    /// </summary>
-    public static readonly OauthScope CreateForms = new(Values.CreateForms);
 
     /// <summary>
     /// Update Forms
@@ -568,14 +537,14 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope DeleteGrants = new(Values.DeleteGrants);
 
     /// <summary>
-    /// Read Groups
-    /// </summary>
-    public static readonly OauthScope ReadGroups = new(Values.ReadGroups);
-
-    /// <summary>
     /// Read Group Members
     /// </summary>
     public static readonly OauthScope ReadGroupMembers = new(Values.ReadGroupMembers);
+
+    /// <summary>
+    /// Read Groups
+    /// </summary>
+    public static readonly OauthScope ReadGroups = new(Values.ReadGroups);
 
     /// <summary>
     /// Create Guardian Enrollment Tickets
@@ -607,24 +576,14 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope UpdateGuardianFactors = new(Values.UpdateGuardianFactors);
 
     /// <summary>
-    /// Read Mfa Policies
+    /// Create Hooks
     /// </summary>
-    public static readonly OauthScope ReadMfaPolicies = new(Values.ReadMfaPolicies);
-
-    /// <summary>
-    /// Update Mfa Policies
-    /// </summary>
-    public static readonly OauthScope UpdateMfaPolicies = new(Values.UpdateMfaPolicies);
+    public static readonly OauthScope CreateHooks = new(Values.CreateHooks);
 
     /// <summary>
     /// Read Hooks
     /// </summary>
     public static readonly OauthScope ReadHooks = new(Values.ReadHooks);
-
-    /// <summary>
-    /// Create Hooks
-    /// </summary>
-    public static readonly OauthScope CreateHooks = new(Values.CreateHooks);
 
     /// <summary>
     /// Update Hooks
@@ -637,109 +596,14 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope DeleteHooks = new(Values.DeleteHooks);
 
     /// <summary>
-    /// Read Insights
+    /// Create Log Streams
     /// </summary>
-    public static readonly OauthScope ReadInsights = new(Values.ReadInsights);
-
-    /// <summary>
-    /// Read Stats
-    /// </summary>
-    public static readonly OauthScope ReadStats = new(Values.ReadStats);
-
-    /// <summary>
-    /// Read Integrations
-    /// </summary>
-    public static readonly OauthScope ReadIntegrations = new(Values.ReadIntegrations);
-
-    /// <summary>
-    /// Create Integrations
-    /// </summary>
-    public static readonly OauthScope CreateIntegrations = new(Values.CreateIntegrations);
-
-    /// <summary>
-    /// Update Integrations
-    /// </summary>
-    public static readonly OauthScope UpdateIntegrations = new(Values.UpdateIntegrations);
-
-    /// <summary>
-    /// Delete Integrations
-    /// </summary>
-    public static readonly OauthScope DeleteIntegrations = new(Values.DeleteIntegrations);
-
-    /// <summary>
-    /// Create Users
-    /// </summary>
-    public static readonly OauthScope CreateUsers = new(Values.CreateUsers);
-
-    /// <summary>
-    /// Update Users
-    /// </summary>
-    public static readonly OauthScope UpdateUsers = new(Values.UpdateUsers);
-
-    /// <summary>
-    /// Read Custom Signing Keys
-    /// </summary>
-    public static readonly OauthScope ReadCustomSigningKeys = new(Values.ReadCustomSigningKeys);
-
-    /// <summary>
-    /// Create Custom Signing Keys
-    /// </summary>
-    public static readonly OauthScope CreateCustomSigningKeys = new(Values.CreateCustomSigningKeys);
-
-    /// <summary>
-    /// Update Custom Signing Keys
-    /// </summary>
-    public static readonly OauthScope UpdateCustomSigningKeys = new(Values.UpdateCustomSigningKeys);
-
-    /// <summary>
-    /// Delete Custom Signing Keys
-    /// </summary>
-    public static readonly OauthScope DeleteCustomSigningKeys = new(Values.DeleteCustomSigningKeys);
-
-    /// <summary>
-    /// Read Encryption Keys
-    /// </summary>
-    public static readonly OauthScope ReadEncryptionKeys = new(Values.ReadEncryptionKeys);
-
-    /// <summary>
-    /// Create Encryption Keys
-    /// </summary>
-    public static readonly OauthScope CreateEncryptionKeys = new(Values.CreateEncryptionKeys);
-
-    /// <summary>
-    /// Update Encryption Keys
-    /// </summary>
-    public static readonly OauthScope UpdateEncryptionKeys = new(Values.UpdateEncryptionKeys);
-
-    /// <summary>
-    /// Delete Encryption Keys
-    /// </summary>
-    public static readonly OauthScope DeleteEncryptionKeys = new(Values.DeleteEncryptionKeys);
-
-    /// <summary>
-    /// Read Signing Keys
-    /// </summary>
-    public static readonly OauthScope ReadSigningKeys = new(Values.ReadSigningKeys);
-
-    /// <summary>
-    /// Create Signing Keys
-    /// </summary>
-    public static readonly OauthScope CreateSigningKeys = new(Values.CreateSigningKeys);
-
-    /// <summary>
-    /// Update Signing Keys
-    /// </summary>
-    public static readonly OauthScope UpdateSigningKeys = new(Values.UpdateSigningKeys);
+    public static readonly OauthScope CreateLogStreams = new(Values.CreateLogStreams);
 
     /// <summary>
     /// Read Log Streams
     /// </summary>
     public static readonly OauthScope ReadLogStreams = new(Values.ReadLogStreams);
-
-    /// <summary>
-    /// Create Log Streams
-    /// </summary>
-    public static readonly OauthScope CreateLogStreams = new(Values.CreateLogStreams);
 
     /// <summary>
     /// Update Log Streams
@@ -762,24 +626,24 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope ReadLogsUsers = new(Values.ReadLogsUsers);
 
     /// <summary>
-    /// Read Tenant Settings
+    /// Read Mfa Policies
     /// </summary>
-    public static readonly OauthScope ReadTenantSettings = new(Values.ReadTenantSettings);
+    public static readonly OauthScope ReadMfaPolicies = new(Values.ReadMfaPolicies);
 
     /// <summary>
-    /// Update Tenant Settings
+    /// Update Mfa Policies
     /// </summary>
-    public static readonly OauthScope UpdateTenantSettings = new(Values.UpdateTenantSettings);
-
-    /// <summary>
-    /// Read Network Acls
-    /// </summary>
-    public static readonly OauthScope ReadNetworkAcls = new(Values.ReadNetworkAcls);
+    public static readonly OauthScope UpdateMfaPolicies = new(Values.UpdateMfaPolicies);
 
     /// <summary>
     /// Create Network Acls
     /// </summary>
     public static readonly OauthScope CreateNetworkAcls = new(Values.CreateNetworkAcls);
+
+    /// <summary>
+    /// Read Network Acls
+    /// </summary>
+    public static readonly OauthScope ReadNetworkAcls = new(Values.ReadNetworkAcls);
 
     /// <summary>
     /// Update Network Acls
@@ -792,40 +656,6 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope DeleteNetworkAcls = new(Values.DeleteNetworkAcls);
 
     /// <summary>
-    /// Read Organizations
-    /// </summary>
-    public static readonly OauthScope ReadOrganizations = new(Values.ReadOrganizations);
-
-    /// <summary>
-    /// Read Organizations Summary
-    /// </summary>
-    public static readonly OauthScope ReadOrganizationsSummary = new(
-        Values.ReadOrganizationsSummary
-    );
-
-    /// <summary>
-    /// Create Organizations
-    /// </summary>
-    public static readonly OauthScope CreateOrganizations = new(Values.CreateOrganizations);
-
-    /// <summary>
-    /// Create Organization Connections
-    /// </summary>
-    public static readonly OauthScope CreateOrganizationConnections = new(
-        Values.CreateOrganizationConnections
-    );
-
-    /// <summary>
-    /// Update Organizations
-    /// </summary>
-    public static readonly OauthScope UpdateOrganizations = new(Values.UpdateOrganizations);
-
-    /// <summary>
-    /// Delete Organizations
-    /// </summary>
-    public static readonly OauthScope DeleteOrganizations = new(Values.DeleteOrganizations);
-
-    /// <summary>
     /// Create Organization Client Grants
     /// </summary>
     public static readonly OauthScope CreateOrganizationClientGrants = new(
@@ -833,10 +663,24 @@ public readonly record struct OauthScope : IStringEnum
     );
 
     /// <summary>
+    /// Read Organization Client Grants
+    /// </summary>
+    public static readonly OauthScope ReadOrganizationClientGrants = new(
+        Values.ReadOrganizationClientGrants
+    );
+
+    /// <summary>
     /// Delete Organization Client Grants
     /// </summary>
     public static readonly OauthScope DeleteOrganizationClientGrants = new(
         Values.DeleteOrganizationClientGrants
+    );
+
+    /// <summary>
+    /// Create Organization Connections
+    /// </summary>
+    public static readonly OauthScope CreateOrganizationConnections = new(
+        Values.CreateOrganizationConnections
     );
 
     /// <summary>
@@ -861,17 +705,17 @@ public readonly record struct OauthScope : IStringEnum
     );
 
     /// <summary>
-    /// Read Organization Discovery Domains
-    /// </summary>
-    public static readonly OauthScope ReadOrganizationDiscoveryDomains = new(
-        Values.ReadOrganizationDiscoveryDomains
-    );
-
-    /// <summary>
     /// Create Organization Discovery Domains
     /// </summary>
     public static readonly OauthScope CreateOrganizationDiscoveryDomains = new(
         Values.CreateOrganizationDiscoveryDomains
+    );
+
+    /// <summary>
+    /// Read Organization Discovery Domains
+    /// </summary>
+    public static readonly OauthScope ReadOrganizationDiscoveryDomains = new(
+        Values.ReadOrganizationDiscoveryDomains
     );
 
     /// <summary>
@@ -889,17 +733,17 @@ public readonly record struct OauthScope : IStringEnum
     );
 
     /// <summary>
-    /// Read Organization Invitations
-    /// </summary>
-    public static readonly OauthScope ReadOrganizationInvitations = new(
-        Values.ReadOrganizationInvitations
-    );
-
-    /// <summary>
     /// Create Organization Invitations
     /// </summary>
     public static readonly OauthScope CreateOrganizationInvitations = new(
         Values.CreateOrganizationInvitations
+    );
+
+    /// <summary>
+    /// Read Organization Invitations
+    /// </summary>
+    public static readonly OauthScope ReadOrganizationInvitations = new(
+        Values.ReadOrganizationInvitations
     );
 
     /// <summary>
@@ -910,22 +754,10 @@ public readonly record struct OauthScope : IStringEnum
     );
 
     /// <summary>
-    /// Read Organization Members
+    /// Create Organization Member Roles
     /// </summary>
-    public static readonly OauthScope ReadOrganizationMembers = new(Values.ReadOrganizationMembers);
-
-    /// <summary>
-    /// Create Organization Members
-    /// </summary>
-    public static readonly OauthScope CreateOrganizationMembers = new(
-        Values.CreateOrganizationMembers
-    );
-
-    /// <summary>
-    /// Delete Organization Members
-    /// </summary>
-    public static readonly OauthScope DeleteOrganizationMembers = new(
-        Values.DeleteOrganizationMembers
+    public static readonly OauthScope CreateOrganizationMemberRoles = new(
+        Values.CreateOrganizationMemberRoles
     );
 
     /// <summary>
@@ -936,18 +768,97 @@ public readonly record struct OauthScope : IStringEnum
     );
 
     /// <summary>
-    /// Create Organization Member Roles
-    /// </summary>
-    public static readonly OauthScope CreateOrganizationMemberRoles = new(
-        Values.CreateOrganizationMemberRoles
-    );
-
-    /// <summary>
     /// Delete Organization Member Roles
     /// </summary>
     public static readonly OauthScope DeleteOrganizationMemberRoles = new(
         Values.DeleteOrganizationMemberRoles
     );
+
+    /// <summary>
+    /// Create Organization Members
+    /// </summary>
+    public static readonly OauthScope CreateOrganizationMembers = new(
+        Values.CreateOrganizationMembers
+    );
+
+    /// <summary>
+    /// Read Organization Members
+    /// </summary>
+    public static readonly OauthScope ReadOrganizationMembers = new(Values.ReadOrganizationMembers);
+
+    /// <summary>
+    /// Delete Organization Members
+    /// </summary>
+    public static readonly OauthScope DeleteOrganizationMembers = new(
+        Values.DeleteOrganizationMembers
+    );
+
+    /// <summary>
+    /// Create Organizations
+    /// </summary>
+    public static readonly OauthScope CreateOrganizations = new(Values.CreateOrganizations);
+
+    /// <summary>
+    /// Read Organizations
+    /// </summary>
+    public static readonly OauthScope ReadOrganizations = new(Values.ReadOrganizations);
+
+    /// <summary>
+    /// Update Organizations
+    /// </summary>
+    public static readonly OauthScope UpdateOrganizations = new(Values.UpdateOrganizations);
+
+    /// <summary>
+    /// Delete Organizations
+    /// </summary>
+    public static readonly OauthScope DeleteOrganizations = new(Values.DeleteOrganizations);
+
+    /// <summary>
+    /// Read Organizations Summary
+    /// </summary>
+    public static readonly OauthScope ReadOrganizationsSummary = new(
+        Values.ReadOrganizationsSummary
+    );
+
+    /// <summary>
+    /// Create Phone Providers
+    /// </summary>
+    public static readonly OauthScope CreatePhoneProviders = new(Values.CreatePhoneProviders);
+
+    /// <summary>
+    /// Read Phone Providers
+    /// </summary>
+    public static readonly OauthScope ReadPhoneProviders = new(Values.ReadPhoneProviders);
+
+    /// <summary>
+    /// Update Phone Providers
+    /// </summary>
+    public static readonly OauthScope UpdatePhoneProviders = new(Values.UpdatePhoneProviders);
+
+    /// <summary>
+    /// Delete Phone Providers
+    /// </summary>
+    public static readonly OauthScope DeletePhoneProviders = new(Values.DeletePhoneProviders);
+
+    /// <summary>
+    /// Create Phone Templates
+    /// </summary>
+    public static readonly OauthScope CreatePhoneTemplates = new(Values.CreatePhoneTemplates);
+
+    /// <summary>
+    /// Read Phone Templates
+    /// </summary>
+    public static readonly OauthScope ReadPhoneTemplates = new(Values.ReadPhoneTemplates);
+
+    /// <summary>
+    /// Update Phone Templates
+    /// </summary>
+    public static readonly OauthScope UpdatePhoneTemplates = new(Values.UpdatePhoneTemplates);
+
+    /// <summary>
+    /// Delete Phone Templates
+    /// </summary>
+    public static readonly OauthScope DeletePhoneTemplates = new(Values.DeletePhoneTemplates);
 
     /// <summary>
     /// Read Prompts
@@ -960,19 +871,14 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope UpdatePrompts = new(Values.UpdatePrompts);
 
     /// <summary>
-    /// Read Resource Servers
-    /// </summary>
-    public static readonly OauthScope ReadResourceServers = new(Values.ReadResourceServers);
-
-    /// <summary>
-    /// Update Resource Servers
-    /// </summary>
-    public static readonly OauthScope UpdateResourceServers = new(Values.UpdateResourceServers);
-
-    /// <summary>
     /// Read Refresh Tokens
     /// </summary>
     public static readonly OauthScope ReadRefreshTokens = new(Values.ReadRefreshTokens);
+
+    /// <summary>
+    /// Update Refresh Tokens
+    /// </summary>
+    public static readonly OauthScope UpdateRefreshTokens = new(Values.UpdateRefreshTokens);
 
     /// <summary>
     /// Delete Refresh Tokens
@@ -985,19 +891,44 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope CreateResourceServers = new(Values.CreateResourceServers);
 
     /// <summary>
+    /// Read Resource Servers
+    /// </summary>
+    public static readonly OauthScope ReadResourceServers = new(Values.ReadResourceServers);
+
+    /// <summary>
+    /// Update Resource Servers
+    /// </summary>
+    public static readonly OauthScope UpdateResourceServers = new(Values.UpdateResourceServers);
+
+    /// <summary>
     /// Delete Resource Servers
     /// </summary>
     public static readonly OauthScope DeleteResourceServers = new(Values.DeleteResourceServers);
 
     /// <summary>
-    /// Read Roles
+    /// Create Role Members
     /// </summary>
-    public static readonly OauthScope ReadRoles = new(Values.ReadRoles);
+    public static readonly OauthScope CreateRoleMembers = new(Values.CreateRoleMembers);
+
+    /// <summary>
+    /// Read Role Members
+    /// </summary>
+    public static readonly OauthScope ReadRoleMembers = new(Values.ReadRoleMembers);
+
+    /// <summary>
+    /// Delete Role Members
+    /// </summary>
+    public static readonly OauthScope DeleteRoleMembers = new(Values.DeleteRoleMembers);
 
     /// <summary>
     /// Create Roles
     /// </summary>
     public static readonly OauthScope CreateRoles = new(Values.CreateRoles);
+
+    /// <summary>
+    /// Read Roles
+    /// </summary>
+    public static readonly OauthScope ReadRoles = new(Values.ReadRoles);
 
     /// <summary>
     /// Update Roles
@@ -1010,14 +941,9 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope DeleteRoles = new(Values.DeleteRoles);
 
     /// <summary>
-    /// Read Role Members
+    /// Create Rules
     /// </summary>
-    public static readonly OauthScope ReadRoleMembers = new(Values.ReadRoleMembers);
-
-    /// <summary>
-    /// Create Role Members
-    /// </summary>
-    public static readonly OauthScope CreateRoleMembers = new(Values.CreateRoleMembers);
+    public static readonly OauthScope CreateRules = new(Values.CreateRules);
 
     /// <summary>
     /// Read Rules
@@ -1025,14 +951,14 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope ReadRules = new(Values.ReadRules);
 
     /// <summary>
-    /// Create Rules
-    /// </summary>
-    public static readonly OauthScope CreateRules = new(Values.CreateRules);
-
-    /// <summary>
     /// Update Rules
     /// </summary>
     public static readonly OauthScope UpdateRules = new(Values.UpdateRules);
+
+    /// <summary>
+    /// Delete Rules
+    /// </summary>
+    public static readonly OauthScope DeleteRules = new(Values.DeleteRules);
 
     /// <summary>
     /// Read Rules Configs
@@ -1050,40 +976,39 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope DeleteRulesConfigs = new(Values.DeleteRulesConfigs);
 
     /// <summary>
-    /// Delete Rules
+    /// Create Scim Config
     /// </summary>
-    public static readonly OauthScope DeleteRules = new(Values.DeleteRules);
+    public static readonly OauthScope CreateScimConfig = new(Values.CreateScimConfig);
 
     /// <summary>
-    /// Read Security Metrics
+    /// Read Scim Config
     /// </summary>
-    public static readonly OauthScope ReadSecurityMetrics = new(Values.ReadSecurityMetrics);
+    public static readonly OauthScope ReadScimConfig = new(Values.ReadScimConfig);
 
     /// <summary>
-    /// Read Self Service Profiles
+    /// Update Scim Config
     /// </summary>
-    public static readonly OauthScope ReadSelfServiceProfiles = new(Values.ReadSelfServiceProfiles);
+    public static readonly OauthScope UpdateScimConfig = new(Values.UpdateScimConfig);
 
     /// <summary>
-    /// Create Self Service Profiles
+    /// Delete Scim Config
     /// </summary>
-    public static readonly OauthScope CreateSelfServiceProfiles = new(
-        Values.CreateSelfServiceProfiles
-    );
+    public static readonly OauthScope DeleteScimConfig = new(Values.DeleteScimConfig);
 
     /// <summary>
-    /// Update Self Service Profiles
+    /// Create Scim Token
     /// </summary>
-    public static readonly OauthScope UpdateSelfServiceProfiles = new(
-        Values.UpdateSelfServiceProfiles
-    );
+    public static readonly OauthScope CreateScimToken = new(Values.CreateScimToken);
 
     /// <summary>
-    /// Delete Self Service Profiles
+    /// Read Scim Token
     /// </summary>
-    public static readonly OauthScope DeleteSelfServiceProfiles = new(
-        Values.DeleteSelfServiceProfiles
-    );
+    public static readonly OauthScope ReadScimToken = new(Values.ReadScimToken);
+
+    /// <summary>
+    /// Delete Scim Token
+    /// </summary>
+    public static readonly OauthScope DeleteScimToken = new(Values.DeleteScimToken);
 
     /// <summary>
     /// Read Self Service Profile Custom Texts
@@ -1100,14 +1025,30 @@ public readonly record struct OauthScope : IStringEnum
     );
 
     /// <summary>
-    /// Create Sso Access Tickets
+    /// Create Self Service Profiles
     /// </summary>
-    public static readonly OauthScope CreateSsoAccessTickets = new(Values.CreateSsoAccessTickets);
+    public static readonly OauthScope CreateSelfServiceProfiles = new(
+        Values.CreateSelfServiceProfiles
+    );
 
     /// <summary>
-    /// Delete Sso Access Tickets
+    /// Read Self Service Profiles
     /// </summary>
-    public static readonly OauthScope DeleteSsoAccessTickets = new(Values.DeleteSsoAccessTickets);
+    public static readonly OauthScope ReadSelfServiceProfiles = new(Values.ReadSelfServiceProfiles);
+
+    /// <summary>
+    /// Update Self Service Profiles
+    /// </summary>
+    public static readonly OauthScope UpdateSelfServiceProfiles = new(
+        Values.UpdateSelfServiceProfiles
+    );
+
+    /// <summary>
+    /// Delete Self Service Profiles
+    /// </summary>
+    public static readonly OauthScope DeleteSelfServiceProfiles = new(
+        Values.DeleteSelfServiceProfiles
+    );
 
     /// <summary>
     /// Read Sessions
@@ -1125,87 +1066,57 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope DeleteSessions = new(Values.DeleteSessions);
 
     /// <summary>
-    /// Delete Tenants
+    /// Create Signing Keys
     /// </summary>
-    public static readonly OauthScope DeleteTenants = new(Values.DeleteTenants);
+    public static readonly OauthScope CreateSigningKeys = new(Values.CreateSigningKeys);
 
     /// <summary>
-    /// Run Checks
+    /// Read Signing Keys
     /// </summary>
-    public static readonly OauthScope RunChecks = new(Values.RunChecks);
+    public static readonly OauthScope ReadSigningKeys = new(Values.ReadSigningKeys);
 
     /// <summary>
-    /// Read Checks
+    /// Update Signing Keys
     /// </summary>
-    public static readonly OauthScope ReadChecks = new(Values.ReadChecks);
+    public static readonly OauthScope UpdateSigningKeys = new(Values.UpdateSigningKeys);
 
     /// <summary>
-    /// Read Tenant Feature Flags
+    /// Create Sso Access Tickets
     /// </summary>
-    public static readonly OauthScope ReadTenantFeatureFlags = new(Values.ReadTenantFeatureFlags);
+    public static readonly OauthScope CreateSsoAccessTickets = new(Values.CreateSsoAccessTickets);
 
     /// <summary>
-    /// Read Tenant Invitations
+    /// Delete Sso Access Tickets
     /// </summary>
-    public static readonly OauthScope ReadTenantInvitations = new(Values.ReadTenantInvitations);
+    public static readonly OauthScope DeleteSsoAccessTickets = new(Values.DeleteSsoAccessTickets);
 
     /// <summary>
-    /// Create Tenant Invitations
+    /// Read Stats
     /// </summary>
-    public static readonly OauthScope CreateTenantInvitations = new(Values.CreateTenantInvitations);
+    public static readonly OauthScope ReadStats = new(Values.ReadStats);
 
     /// <summary>
-    /// Update Tenant Invitations
+    /// Read Tenant Settings
     /// </summary>
-    public static readonly OauthScope UpdateTenantInvitations = new(Values.UpdateTenantInvitations);
+    public static readonly OauthScope ReadTenantSettings = new(Values.ReadTenantSettings);
 
     /// <summary>
-    /// Delete Tenant Invitations
+    /// Update Tenant Settings
     /// </summary>
-    public static readonly OauthScope DeleteTenantInvitations = new(Values.DeleteTenantInvitations);
-
-    /// <summary>
-    /// Read Tenant Members
-    /// </summary>
-    public static readonly OauthScope ReadTenantMembers = new(Values.ReadTenantMembers);
-
-    /// <summary>
-    /// Update Tenant Members
-    /// </summary>
-    public static readonly OauthScope UpdateTenantMembers = new(Values.UpdateTenantMembers);
-
-    /// <summary>
-    /// Delete Tenant Members
-    /// </summary>
-    public static readonly OauthScope DeleteTenantMembers = new(Values.DeleteTenantMembers);
-
-    /// <summary>
-    /// Read Owners
-    /// </summary>
-    public static readonly OauthScope ReadOwners = new(Values.ReadOwners);
-
-    /// <summary>
-    /// Delete Owners
-    /// </summary>
-    public static readonly OauthScope DeleteOwners = new(Values.DeleteOwners);
-
-    /// <summary>
-    /// Create User Tickets
-    /// </summary>
-    public static readonly OauthScope CreateUserTickets = new(Values.CreateUserTickets);
-
-    /// <summary>
-    /// Read Token Exchange Profiles
-    /// </summary>
-    public static readonly OauthScope ReadTokenExchangeProfiles = new(
-        Values.ReadTokenExchangeProfiles
-    );
+    public static readonly OauthScope UpdateTenantSettings = new(Values.UpdateTenantSettings);
 
     /// <summary>
     /// Create Token Exchange Profiles
     /// </summary>
     public static readonly OauthScope CreateTokenExchangeProfiles = new(
         Values.CreateTokenExchangeProfiles
+    );
+
+    /// <summary>
+    /// Read Token Exchange Profiles
+    /// </summary>
+    public static readonly OauthScope ReadTokenExchangeProfiles = new(
+        Values.ReadTokenExchangeProfiles
     );
 
     /// <summary>
@@ -1223,22 +1134,17 @@ public readonly record struct OauthScope : IStringEnum
     );
 
     /// <summary>
-    /// Read Entity Counts
+    /// Create User Attribute Profiles
     /// </summary>
-    public static readonly OauthScope ReadEntityCounts = new(Values.ReadEntityCounts);
+    public static readonly OauthScope CreateUserAttributeProfiles = new(
+        Values.CreateUserAttributeProfiles
+    );
 
     /// <summary>
     /// Read User Attribute Profiles
     /// </summary>
     public static readonly OauthScope ReadUserAttributeProfiles = new(
         Values.ReadUserAttributeProfiles
-    );
-
-    /// <summary>
-    /// Create User Attribute Profiles
-    /// </summary>
-    public static readonly OauthScope CreateUserAttributeProfiles = new(
-        Values.CreateUserAttributeProfiles
     );
 
     /// <summary>
@@ -1261,9 +1167,29 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope ReadUserIdpTokens = new(Values.ReadUserIdpTokens);
 
     /// <summary>
-    /// Read Current User
+    /// Create User Tickets
     /// </summary>
-    public static readonly OauthScope ReadCurrentUser = new(Values.ReadCurrentUser);
+    public static readonly OauthScope CreateUserTickets = new(Values.CreateUserTickets);
+
+    /// <summary>
+    /// Create Users
+    /// </summary>
+    public static readonly OauthScope CreateUsers = new(Values.CreateUsers);
+
+    /// <summary>
+    /// Read Users
+    /// </summary>
+    public static readonly OauthScope ReadUsers = new(Values.ReadUsers);
+
+    /// <summary>
+    /// Update Users
+    /// </summary>
+    public static readonly OauthScope UpdateUsers = new(Values.UpdateUsers);
+
+    /// <summary>
+    /// Delete Users
+    /// </summary>
+    public static readonly OauthScope DeleteUsers = new(Values.DeleteUsers);
 
     /// <summary>
     /// Update Users App Metadata
@@ -1271,101 +1197,14 @@ public readonly record struct OauthScope : IStringEnum
     public static readonly OauthScope UpdateUsersAppMetadata = new(Values.UpdateUsersAppMetadata);
 
     /// <summary>
-    /// Update Current User Metadata
+    /// Create Vdcs Templates
     /// </summary>
-    public static readonly OauthScope UpdateCurrentUserMetadata = new(
-        Values.UpdateCurrentUserMetadata
-    );
-
-    /// <summary>
-    /// Delete Current User
-    /// </summary>
-    public static readonly OauthScope DeleteCurrentUser = new(Values.DeleteCurrentUser);
-
-    /// <summary>
-    /// Read User Application Passwords
-    /// </summary>
-    public static readonly OauthScope ReadUserApplicationPasswords = new(
-        Values.ReadUserApplicationPasswords
-    );
-
-    /// <summary>
-    /// Create User Application Passwords
-    /// </summary>
-    public static readonly OauthScope CreateUserApplicationPasswords = new(
-        Values.CreateUserApplicationPasswords
-    );
-
-    /// <summary>
-    /// Delete User Application Passwords
-    /// </summary>
-    public static readonly OauthScope DeleteUserApplicationPasswords = new(
-        Values.DeleteUserApplicationPasswords
-    );
-
-    /// <summary>
-    /// Read Authentication Methods
-    /// </summary>
-    public static readonly OauthScope ReadAuthenticationMethods = new(
-        Values.ReadAuthenticationMethods
-    );
-
-    /// <summary>
-    /// Update Authentication Methods
-    /// </summary>
-    public static readonly OauthScope UpdateAuthenticationMethods = new(
-        Values.UpdateAuthenticationMethods
-    );
-
-    /// <summary>
-    /// Create Authentication Methods
-    /// </summary>
-    public static readonly OauthScope CreateAuthenticationMethods = new(
-        Values.CreateAuthenticationMethods
-    );
-
-    /// <summary>
-    /// Delete Authentication Methods
-    /// </summary>
-    public static readonly OauthScope DeleteAuthenticationMethods = new(
-        Values.DeleteAuthenticationMethods
-    );
-
-    /// <summary>
-    /// Read Federated Connections Tokens
-    /// </summary>
-    public static readonly OauthScope ReadFederatedConnectionsTokens = new(
-        Values.ReadFederatedConnectionsTokens
-    );
-
-    /// <summary>
-    /// Delete Federated Connections Tokens
-    /// </summary>
-    public static readonly OauthScope DeleteFederatedConnectionsTokens = new(
-        Values.DeleteFederatedConnectionsTokens
-    );
-
-    /// <summary>
-    /// Update Current User Identities
-    /// </summary>
-    public static readonly OauthScope UpdateCurrentUserIdentities = new(
-        Values.UpdateCurrentUserIdentities
-    );
-
-    /// <summary>
-    /// Delete Role Members
-    /// </summary>
-    public static readonly OauthScope DeleteRoleMembers = new(Values.DeleteRoleMembers);
+    public static readonly OauthScope CreateVdcsTemplates = new(Values.CreateVdcsTemplates);
 
     /// <summary>
     /// Read Vdcs Templates
     /// </summary>
     public static readonly OauthScope ReadVdcsTemplates = new(Values.ReadVdcsTemplates);
-
-    /// <summary>
-    /// Create Vdcs Templates
-    /// </summary>
-    public static readonly OauthScope CreateVdcsTemplates = new(Values.CreateVdcsTemplates);
 
     /// <summary>
     /// Update Vdcs Templates
@@ -1424,24 +1263,24 @@ public readonly record struct OauthScope : IStringEnum
     public static class Values
     {
         /// <summary>
-        /// Read Actions
-        /// </summary>
-        public const string ReadActions = "read:actions";
-
-        /// <summary>
         /// Create Actions
         /// </summary>
         public const string CreateActions = "create:actions";
 
         /// <summary>
-        /// Delete Actions
+        /// Read Actions
         /// </summary>
-        public const string DeleteActions = "delete:actions";
+        public const string ReadActions = "read:actions";
 
         /// <summary>
         /// Update Actions
         /// </summary>
         public const string UpdateActions = "update:actions";
+
+        /// <summary>
+        /// Delete Actions
+        /// </summary>
+        public const string DeleteActions = "delete:actions";
 
         /// <summary>
         /// Read Anomaly Blocks
@@ -1454,21 +1293,6 @@ public readonly record struct OauthScope : IStringEnum
         public const string DeleteAnomalyBlocks = "delete:anomaly_blocks";
 
         /// <summary>
-        /// Read Shields
-        /// </summary>
-        public const string ReadShields = "read:shields";
-
-        /// <summary>
-        /// Create Shields
-        /// </summary>
-        public const string CreateShields = "create:shields";
-
-        /// <summary>
-        /// Update Shields
-        /// </summary>
-        public const string UpdateShields = "update:shields";
-
-        /// <summary>
         /// Read Attack Protection
         /// </summary>
         public const string ReadAttackProtection = "read:attack_protection";
@@ -1477,6 +1301,26 @@ public readonly record struct OauthScope : IStringEnum
         /// Update Attack Protection
         /// </summary>
         public const string UpdateAttackProtection = "update:attack_protection";
+
+        /// <summary>
+        /// Create Authentication Methods
+        /// </summary>
+        public const string CreateAuthenticationMethods = "create:authentication_methods";
+
+        /// <summary>
+        /// Read Authentication Methods
+        /// </summary>
+        public const string ReadAuthenticationMethods = "read:authentication_methods";
+
+        /// <summary>
+        /// Update Authentication Methods
+        /// </summary>
+        public const string UpdateAuthenticationMethods = "update:authentication_methods";
+
+        /// <summary>
+        /// Delete Authentication Methods
+        /// </summary>
+        public const string DeleteAuthenticationMethods = "delete:authentication_methods";
 
         /// <summary>
         /// Read Branding
@@ -1489,104 +1333,19 @@ public readonly record struct OauthScope : IStringEnum
         public const string UpdateBranding = "update:branding";
 
         /// <summary>
-        /// Read Phone Providers
-        /// </summary>
-        public const string ReadPhoneProviders = "read:phone_providers";
-
-        /// <summary>
-        /// Create Phone Providers
-        /// </summary>
-        public const string CreatePhoneProviders = "create:phone_providers";
-
-        /// <summary>
-        /// Update Phone Providers
-        /// </summary>
-        public const string UpdatePhoneProviders = "update:phone_providers";
-
-        /// <summary>
-        /// Delete Phone Providers
-        /// </summary>
-        public const string DeletePhoneProviders = "delete:phone_providers";
-
-        /// <summary>
-        /// Read Phone Templates
-        /// </summary>
-        public const string ReadPhoneTemplates = "read:phone_templates";
-
-        /// <summary>
-        /// Create Phone Templates
-        /// </summary>
-        public const string CreatePhoneTemplates = "create:phone_templates";
-
-        /// <summary>
-        /// Update Phone Templates
-        /// </summary>
-        public const string UpdatePhoneTemplates = "update:phone_templates";
-
-        /// <summary>
-        /// Delete Phone Templates
-        /// </summary>
-        public const string DeletePhoneTemplates = "delete:phone_templates";
-
-        /// <summary>
         /// Delete Branding
         /// </summary>
         public const string DeleteBranding = "delete:branding";
 
         /// <summary>
-        /// Read Client Grants
+        /// Create Client Credentials
         /// </summary>
-        public const string ReadClientGrants = "read:client_grants";
-
-        /// <summary>
-        /// Create Client Grants
-        /// </summary>
-        public const string CreateClientGrants = "create:client_grants";
-
-        /// <summary>
-        /// Update Client Grants
-        /// </summary>
-        public const string UpdateClientGrants = "update:client_grants";
-
-        /// <summary>
-        /// Delete Client Grants
-        /// </summary>
-        public const string DeleteClientGrants = "delete:client_grants";
-
-        /// <summary>
-        /// Read Organization Client Grants
-        /// </summary>
-        public const string ReadOrganizationClientGrants = "read:organization_client_grants";
-
-        /// <summary>
-        /// Read Clients
-        /// </summary>
-        public const string ReadClients = "read:clients";
-
-        /// <summary>
-        /// Read Client Keys
-        /// </summary>
-        public const string ReadClientKeys = "read:client_keys";
+        public const string CreateClientCredentials = "create:client_credentials";
 
         /// <summary>
         /// Read Client Credentials
         /// </summary>
         public const string ReadClientCredentials = "read:client_credentials";
-
-        /// <summary>
-        /// Read Client Summary
-        /// </summary>
-        public const string ReadClientSummary = "read:client_summary";
-
-        /// <summary>
-        /// Create Clients
-        /// </summary>
-        public const string CreateClients = "create:clients";
-
-        /// <summary>
-        /// Create Client Credentials
-        /// </summary>
-        public const string CreateClientCredentials = "create:client_credentials";
 
         /// <summary>
         /// Update Client Credentials
@@ -1599,14 +1358,39 @@ public readonly record struct OauthScope : IStringEnum
         public const string DeleteClientCredentials = "delete:client_credentials";
 
         /// <summary>
-        /// Update Clients
+        /// Create Client Grants
         /// </summary>
-        public const string UpdateClients = "update:clients";
+        public const string CreateClientGrants = "create:client_grants";
+
+        /// <summary>
+        /// Read Client Grants
+        /// </summary>
+        public const string ReadClientGrants = "read:client_grants";
+
+        /// <summary>
+        /// Update Client Grants
+        /// </summary>
+        public const string UpdateClientGrants = "update:client_grants";
+
+        /// <summary>
+        /// Delete Client Grants
+        /// </summary>
+        public const string DeleteClientGrants = "delete:client_grants";
+
+        /// <summary>
+        /// Read Client Keys
+        /// </summary>
+        public const string ReadClientKeys = "read:client_keys";
 
         /// <summary>
         /// Update Client Keys
         /// </summary>
         public const string UpdateClientKeys = "update:client_keys";
+
+        /// <summary>
+        /// Read Client Summary
+        /// </summary>
+        public const string ReadClientSummary = "read:client_summary";
 
         /// <summary>
         /// Update Client Token Vault Privileged Access
@@ -1615,24 +1399,34 @@ public readonly record struct OauthScope : IStringEnum
             "update:client_token_vault_privileged_access";
 
         /// <summary>
+        /// Create Clients
+        /// </summary>
+        public const string CreateClients = "create:clients";
+
+        /// <summary>
+        /// Read Clients
+        /// </summary>
+        public const string ReadClients = "read:clients";
+
+        /// <summary>
+        /// Update Clients
+        /// </summary>
+        public const string UpdateClients = "update:clients";
+
+        /// <summary>
         /// Delete Clients
         /// </summary>
         public const string DeleteClients = "delete:clients";
 
         /// <summary>
-        /// Read Connections
+        /// Create Connection Profiles
         /// </summary>
-        public const string ReadConnections = "read:connections";
+        public const string CreateConnectionProfiles = "create:connection_profiles";
 
         /// <summary>
         /// Read Connection Profiles
         /// </summary>
         public const string ReadConnectionProfiles = "read:connection_profiles";
-
-        /// <summary>
-        /// Create Connection Profiles
-        /// </summary>
-        public const string CreateConnectionProfiles = "create:connection_profiles";
 
         /// <summary>
         /// Update Connection Profiles
@@ -1650,6 +1444,11 @@ public readonly record struct OauthScope : IStringEnum
         public const string CreateConnections = "create:connections";
 
         /// <summary>
+        /// Read Connections
+        /// </summary>
+        public const string ReadConnections = "read:connections";
+
+        /// <summary>
         /// Update Connections
         /// </summary>
         public const string UpdateConnections = "update:connections";
@@ -1660,29 +1459,9 @@ public readonly record struct OauthScope : IStringEnum
         public const string DeleteConnections = "delete:connections";
 
         /// <summary>
-        /// Read Directory Provisionings
+        /// Create Connections Keys
         /// </summary>
-        public const string ReadDirectoryProvisionings = "read:directory_provisionings";
-
-        /// <summary>
-        /// Create Directory Provisionings
-        /// </summary>
-        public const string CreateDirectoryProvisionings = "create:directory_provisionings";
-
-        /// <summary>
-        /// Update Directory Provisionings
-        /// </summary>
-        public const string UpdateDirectoryProvisionings = "update:directory_provisionings";
-
-        /// <summary>
-        /// Delete Directory Provisionings
-        /// </summary>
-        public const string DeleteDirectoryProvisionings = "delete:directory_provisionings";
-
-        /// <summary>
-        /// Read Users
-        /// </summary>
-        public const string ReadUsers = "read:users";
+        public const string CreateConnectionsKeys = "create:connections_keys";
 
         /// <summary>
         /// Read Connections Keys
@@ -1690,64 +1469,51 @@ public readonly record struct OauthScope : IStringEnum
         public const string ReadConnectionsKeys = "read:connections_keys";
 
         /// <summary>
-        /// Create Connections Keys
-        /// </summary>
-        public const string CreateConnectionsKeys = "create:connections_keys";
-
-        /// <summary>
         /// Update Connections Keys
         /// </summary>
         public const string UpdateConnectionsKeys = "update:connections_keys";
 
         /// <summary>
-        /// Read Scim Config
+        /// Read Current User
         /// </summary>
-        public const string ReadScimConfig = "read:scim_config";
+        public const string ReadCurrentUser = "read:current_user";
 
         /// <summary>
-        /// Create Scim Config
+        /// Delete Current User
         /// </summary>
-        public const string CreateScimConfig = "create:scim_config";
+        public const string DeleteCurrentUser = "delete:current_user";
 
         /// <summary>
-        /// Update Scim Config
+        /// Create Current User Device Credentials
         /// </summary>
-        public const string UpdateScimConfig = "update:scim_config";
+        public const string CreateCurrentUserDeviceCredentials =
+            "create:current_user_device_credentials";
 
         /// <summary>
-        /// Delete Scim Config
+        /// Delete Current User Device Credentials
         /// </summary>
-        public const string DeleteScimConfig = "delete:scim_config";
+        public const string DeleteCurrentUserDeviceCredentials =
+            "delete:current_user_device_credentials";
 
         /// <summary>
-        /// Read Scim Token
+        /// Update Current User Identities
         /// </summary>
-        public const string ReadScimToken = "read:scim_token";
+        public const string UpdateCurrentUserIdentities = "update:current_user_identities";
 
         /// <summary>
-        /// Create Scim Token
+        /// Update Current User Metadata
         /// </summary>
-        public const string CreateScimToken = "create:scim_token";
-
-        /// <summary>
-        /// Delete Scim Token
-        /// </summary>
-        public const string DeleteScimToken = "delete:scim_token";
-
-        /// <summary>
-        /// Delete Users
-        /// </summary>
-        public const string DeleteUsers = "delete:users";
-
-        /// <summary>
-        /// Read Custom Domains
-        /// </summary>
-        public const string ReadCustomDomains = "read:custom_domains";
+        public const string UpdateCurrentUserMetadata = "update:current_user_metadata";
 
         /// <summary>
         /// Create Custom Domains
         /// </summary>
         public const string CreateCustomDomains = "create:custom_domains";
+
+        /// <summary>
+        /// Read Custom Domains
+        /// </summary>
+        public const string ReadCustomDomains = "read:custom_domains";
 
         /// <summary>
         /// Update Custom Domains
@@ -1760,15 +1526,29 @@ public readonly record struct OauthScope : IStringEnum
         public const string DeleteCustomDomains = "delete:custom_domains";
 
         /// <summary>
+        /// Create Custom Signing Keys
+        /// </summary>
+        public const string CreateCustomSigningKeys = "create:custom_signing_keys";
+
+        /// <summary>
+        /// Read Custom Signing Keys
+        /// </summary>
+        public const string ReadCustomSigningKeys = "read:custom_signing_keys";
+
+        /// <summary>
+        /// Update Custom Signing Keys
+        /// </summary>
+        public const string UpdateCustomSigningKeys = "update:custom_signing_keys";
+
+        /// <summary>
+        /// Delete Custom Signing Keys
+        /// </summary>
+        public const string DeleteCustomSigningKeys = "delete:custom_signing_keys";
+
+        /// <summary>
         /// Read Device Credentials
         /// </summary>
         public const string ReadDeviceCredentials = "read:device_credentials";
-
-        /// <summary>
-        /// Create Current User Device Credentials
-        /// </summary>
-        public const string CreateCurrentUserDeviceCredentials =
-            "create:current_user_device_credentials";
 
         /// <summary>
         /// Delete Device Credentials
@@ -1776,25 +1556,44 @@ public readonly record struct OauthScope : IStringEnum
         public const string DeleteDeviceCredentials = "delete:device_credentials";
 
         /// <summary>
-        /// Delete Current User Device Credentials
+        /// Create Directory Provisionings
         /// </summary>
-        public const string DeleteCurrentUserDeviceCredentials =
-            "delete:current_user_device_credentials";
+        public const string CreateDirectoryProvisionings = "create:directory_provisionings";
 
         /// <summary>
-        /// Update Device Codes
+        /// Read Directory Provisionings
         /// </summary>
-        public const string UpdateDeviceCodes = "update:device_codes";
+        public const string ReadDirectoryProvisionings = "read:directory_provisionings";
 
         /// <summary>
-        /// Read Device Codes
+        /// Update Directory Provisionings
         /// </summary>
-        public const string ReadDeviceCodes = "read:device_codes";
+        public const string UpdateDirectoryProvisionings = "update:directory_provisionings";
 
         /// <summary>
-        /// Create Test Email Dispatch
+        /// Delete Directory Provisionings
         /// </summary>
-        public const string CreateTestEmailDispatch = "create:test_email_dispatch";
+        public const string DeleteDirectoryProvisionings = "delete:directory_provisionings";
+
+        /// <summary>
+        /// Create Email Provider
+        /// </summary>
+        public const string CreateEmailProvider = "create:email_provider";
+
+        /// <summary>
+        /// Read Email Provider
+        /// </summary>
+        public const string ReadEmailProvider = "read:email_provider";
+
+        /// <summary>
+        /// Update Email Provider
+        /// </summary>
+        public const string UpdateEmailProvider = "update:email_provider";
+
+        /// <summary>
+        /// Delete Email Provider
+        /// </summary>
+        public const string DeleteEmailProvider = "delete:email_provider";
 
         /// <summary>
         /// Create Email Templates
@@ -1812,49 +1611,24 @@ public readonly record struct OauthScope : IStringEnum
         public const string UpdateEmailTemplates = "update:email_templates";
 
         /// <summary>
-        /// Read Email Provider
+        /// Create Encryption Keys
         /// </summary>
-        public const string ReadEmailProvider = "read:email_provider";
+        public const string CreateEncryptionKeys = "create:encryption_keys";
 
         /// <summary>
-        /// Create Email Provider
+        /// Read Encryption Keys
         /// </summary>
-        public const string CreateEmailProvider = "create:email_provider";
+        public const string ReadEncryptionKeys = "read:encryption_keys";
 
         /// <summary>
-        /// Update Email Provider
+        /// Update Encryption Keys
         /// </summary>
-        public const string UpdateEmailProvider = "update:email_provider";
+        public const string UpdateEncryptionKeys = "update:encryption_keys";
 
         /// <summary>
-        /// Delete Email Provider
+        /// Delete Encryption Keys
         /// </summary>
-        public const string DeleteEmailProvider = "delete:email_provider";
-
-        /// <summary>
-        /// Read Entitlements
-        /// </summary>
-        public const string ReadEntitlements = "read:entitlements";
-
-        /// <summary>
-        /// Read Event Streams
-        /// </summary>
-        public const string ReadEventStreams = "read:event_streams";
-
-        /// <summary>
-        /// Create Event Streams
-        /// </summary>
-        public const string CreateEventStreams = "create:event_streams";
-
-        /// <summary>
-        /// Update Event Streams
-        /// </summary>
-        public const string UpdateEventStreams = "update:event_streams";
-
-        /// <summary>
-        /// Delete Event Streams
-        /// </summary>
-        public const string DeleteEventStreams = "delete:event_streams";
+        public const string DeleteEncryptionKeys = "delete:encryption_keys";
 
         /// <summary>
         /// Read Event Deliveries
@@ -1867,19 +1641,35 @@ public readonly record struct OauthScope : IStringEnum
         public const string UpdateEventDeliveries = "update:event_deliveries";
 
         /// <summary>
-        /// Read Events
+        /// Create Event Streams
         /// </summary>
-        public const string ReadEvents = "read:events";
+        public const string CreateEventStreams = "create:event_streams";
 
         /// <summary>
-        /// Read Extensions
+        /// Read Event Streams
         /// </summary>
-        public const string ReadExtensions = "read:extensions";
+        public const string ReadEventStreams = "read:event_streams";
 
         /// <summary>
-        /// Read Flows
+        /// Update Event Streams
         /// </summary>
-        public const string ReadFlows = "read:flows";
+        public const string UpdateEventStreams = "update:event_streams";
+
+        /// <summary>
+        /// Delete Event Streams
+        /// </summary>
+        public const string DeleteEventStreams = "delete:event_streams";
+
+        /// <summary>
+        /// Read Federated Connections Tokens
+        /// </summary>
+        public const string ReadFederatedConnectionsTokens = "read:federated_connections_tokens";
+
+        /// <summary>
+        /// Delete Federated Connections Tokens
+        /// </summary>
+        public const string DeleteFederatedConnectionsTokens =
+            "delete:federated_connections_tokens";
 
         /// <summary>
         /// Create Flows
@@ -1887,34 +1677,9 @@ public readonly record struct OauthScope : IStringEnum
         public const string CreateFlows = "create:flows";
 
         /// <summary>
-        /// Read Flows Vault Connections
+        /// Read Flows
         /// </summary>
-        public const string ReadFlowsVaultConnections = "read:flows_vault_connections";
-
-        /// <summary>
-        /// Create Flows Vault Connections
-        /// </summary>
-        public const string CreateFlowsVaultConnections = "create:flows_vault_connections";
-
-        /// <summary>
-        /// Update Flows Vault Connections
-        /// </summary>
-        public const string UpdateFlowsVaultConnections = "update:flows_vault_connections";
-
-        /// <summary>
-        /// Delete Flows Vault Connections
-        /// </summary>
-        public const string DeleteFlowsVaultConnections = "delete:flows_vault_connections";
-
-        /// <summary>
-        /// Read Flows Executions
-        /// </summary>
-        public const string ReadFlowsExecutions = "read:flows_executions";
-
-        /// <summary>
-        /// Delete Flows Executions
-        /// </summary>
-        public const string DeleteFlowsExecutions = "delete:flows_executions";
+        public const string ReadFlows = "read:flows";
 
         /// <summary>
         /// Update Flows
@@ -1927,14 +1692,44 @@ public readonly record struct OauthScope : IStringEnum
         public const string DeleteFlows = "delete:flows";
 
         /// <summary>
-        /// Read Forms
+        /// Read Flows Executions
         /// </summary>
-        public const string ReadForms = "read:forms";
+        public const string ReadFlowsExecutions = "read:flows_executions";
+
+        /// <summary>
+        /// Delete Flows Executions
+        /// </summary>
+        public const string DeleteFlowsExecutions = "delete:flows_executions";
+
+        /// <summary>
+        /// Create Flows Vault Connections
+        /// </summary>
+        public const string CreateFlowsVaultConnections = "create:flows_vault_connections";
+
+        /// <summary>
+        /// Read Flows Vault Connections
+        /// </summary>
+        public const string ReadFlowsVaultConnections = "read:flows_vault_connections";
+
+        /// <summary>
+        /// Update Flows Vault Connections
+        /// </summary>
+        public const string UpdateFlowsVaultConnections = "update:flows_vault_connections";
+
+        /// <summary>
+        /// Delete Flows Vault Connections
+        /// </summary>
+        public const string DeleteFlowsVaultConnections = "delete:flows_vault_connections";
 
         /// <summary>
         /// Create Forms
         /// </summary>
         public const string CreateForms = "create:forms";
+
+        /// <summary>
+        /// Read Forms
+        /// </summary>
+        public const string ReadForms = "read:forms";
 
         /// <summary>
         /// Update Forms
@@ -1957,14 +1752,14 @@ public readonly record struct OauthScope : IStringEnum
         public const string DeleteGrants = "delete:grants";
 
         /// <summary>
-        /// Read Groups
-        /// </summary>
-        public const string ReadGroups = "read:groups";
-
-        /// <summary>
         /// Read Group Members
         /// </summary>
         public const string ReadGroupMembers = "read:group_members";
+
+        /// <summary>
+        /// Read Groups
+        /// </summary>
+        public const string ReadGroups = "read:groups";
 
         /// <summary>
         /// Create Guardian Enrollment Tickets
@@ -1992,24 +1787,14 @@ public readonly record struct OauthScope : IStringEnum
         public const string UpdateGuardianFactors = "update:guardian_factors";
 
         /// <summary>
-        /// Read Mfa Policies
+        /// Create Hooks
         /// </summary>
-        public const string ReadMfaPolicies = "read:mfa_policies";
-
-        /// <summary>
-        /// Update Mfa Policies
-        /// </summary>
-        public const string UpdateMfaPolicies = "update:mfa_policies";
+        public const string CreateHooks = "create:hooks";
 
         /// <summary>
         /// Read Hooks
         /// </summary>
         public const string ReadHooks = "read:hooks";
-
-        /// <summary>
-        /// Create Hooks
-        /// </summary>
-        public const string CreateHooks = "create:hooks";
 
         /// <summary>
         /// Update Hooks
@@ -2022,109 +1807,14 @@ public readonly record struct OauthScope : IStringEnum
         public const string DeleteHooks = "delete:hooks";
 
         /// <summary>
-        /// Read Insights
+        /// Create Log Streams
         /// </summary>
-        public const string ReadInsights = "read:insights";
-
-        /// <summary>
-        /// Read Stats
-        /// </summary>
-        public const string ReadStats = "read:stats";
-
-        /// <summary>
-        /// Read Integrations
-        /// </summary>
-        public const string ReadIntegrations = "read:integrations";
-
-        /// <summary>
-        /// Create Integrations
-        /// </summary>
-        public const string CreateIntegrations = "create:integrations";
-
-        /// <summary>
-        /// Update Integrations
-        /// </summary>
-        public const string UpdateIntegrations = "update:integrations";
-
-        /// <summary>
-        /// Delete Integrations
-        /// </summary>
-        public const string DeleteIntegrations = "delete:integrations";
-
-        /// <summary>
-        /// Create Users
-        /// </summary>
-        public const string CreateUsers = "create:users";
-
-        /// <summary>
-        /// Update Users
-        /// </summary>
-        public const string UpdateUsers = "update:users";
-
-        /// <summary>
-        /// Read Custom Signing Keys
-        /// </summary>
-        public const string ReadCustomSigningKeys = "read:custom_signing_keys";
-
-        /// <summary>
-        /// Create Custom Signing Keys
-        /// </summary>
-        public const string CreateCustomSigningKeys = "create:custom_signing_keys";
-
-        /// <summary>
-        /// Update Custom Signing Keys
-        /// </summary>
-        public const string UpdateCustomSigningKeys = "update:custom_signing_keys";
-
-        /// <summary>
-        /// Delete Custom Signing Keys
-        /// </summary>
-        public const string DeleteCustomSigningKeys = "delete:custom_signing_keys";
-
-        /// <summary>
-        /// Read Encryption Keys
-        /// </summary>
-        public const string ReadEncryptionKeys = "read:encryption_keys";
-
-        /// <summary>
-        /// Create Encryption Keys
-        /// </summary>
-        public const string CreateEncryptionKeys = "create:encryption_keys";
-
-        /// <summary>
-        /// Update Encryption Keys
-        /// </summary>
-        public const string UpdateEncryptionKeys = "update:encryption_keys";
-
-        /// <summary>
-        /// Delete Encryption Keys
-        /// </summary>
-        public const string DeleteEncryptionKeys = "delete:encryption_keys";
-
-        /// <summary>
-        /// Read Signing Keys
-        /// </summary>
-        public const string ReadSigningKeys = "read:signing_keys";
-
-        /// <summary>
-        /// Create Signing Keys
-        /// </summary>
-        public const string CreateSigningKeys = "create:signing_keys";
-
-        /// <summary>
-        /// Update Signing Keys
-        /// </summary>
-        public const string UpdateSigningKeys = "update:signing_keys";
+        public const string CreateLogStreams = "create:log_streams";
 
         /// <summary>
         /// Read Log Streams
         /// </summary>
         public const string ReadLogStreams = "read:log_streams";
-
-        /// <summary>
-        /// Create Log Streams
-        /// </summary>
-        public const string CreateLogStreams = "create:log_streams";
 
         /// <summary>
         /// Update Log Streams
@@ -2147,24 +1837,24 @@ public readonly record struct OauthScope : IStringEnum
         public const string ReadLogsUsers = "read:logs_users";
 
         /// <summary>
-        /// Read Tenant Settings
+        /// Read Mfa Policies
         /// </summary>
-        public const string ReadTenantSettings = "read:tenant_settings";
+        public const string ReadMfaPolicies = "read:mfa_policies";
 
         /// <summary>
-        /// Update Tenant Settings
+        /// Update Mfa Policies
         /// </summary>
-        public const string UpdateTenantSettings = "update:tenant_settings";
-
-        /// <summary>
-        /// Read Network Acls
-        /// </summary>
-        public const string ReadNetworkAcls = "read:network_acls";
+        public const string UpdateMfaPolicies = "update:mfa_policies";
 
         /// <summary>
         /// Create Network Acls
         /// </summary>
         public const string CreateNetworkAcls = "create:network_acls";
+
+        /// <summary>
+        /// Read Network Acls
+        /// </summary>
+        public const string ReadNetworkAcls = "read:network_acls";
 
         /// <summary>
         /// Update Network Acls
@@ -2177,44 +1867,24 @@ public readonly record struct OauthScope : IStringEnum
         public const string DeleteNetworkAcls = "delete:network_acls";
 
         /// <summary>
-        /// Read Organizations
-        /// </summary>
-        public const string ReadOrganizations = "read:organizations";
-
-        /// <summary>
-        /// Read Organizations Summary
-        /// </summary>
-        public const string ReadOrganizationsSummary = "read:organizations_summary";
-
-        /// <summary>
-        /// Create Organizations
-        /// </summary>
-        public const string CreateOrganizations = "create:organizations";
-
-        /// <summary>
-        /// Create Organization Connections
-        /// </summary>
-        public const string CreateOrganizationConnections = "create:organization_connections";
-
-        /// <summary>
-        /// Update Organizations
-        /// </summary>
-        public const string UpdateOrganizations = "update:organizations";
-
-        /// <summary>
-        /// Delete Organizations
-        /// </summary>
-        public const string DeleteOrganizations = "delete:organizations";
-
-        /// <summary>
         /// Create Organization Client Grants
         /// </summary>
         public const string CreateOrganizationClientGrants = "create:organization_client_grants";
 
         /// <summary>
+        /// Read Organization Client Grants
+        /// </summary>
+        public const string ReadOrganizationClientGrants = "read:organization_client_grants";
+
+        /// <summary>
         /// Delete Organization Client Grants
         /// </summary>
         public const string DeleteOrganizationClientGrants = "delete:organization_client_grants";
+
+        /// <summary>
+        /// Create Organization Connections
+        /// </summary>
+        public const string CreateOrganizationConnections = "create:organization_connections";
 
         /// <summary>
         /// Read Organization Connections
@@ -2232,16 +1902,16 @@ public readonly record struct OauthScope : IStringEnum
         public const string DeleteOrganizationConnections = "delete:organization_connections";
 
         /// <summary>
-        /// Read Organization Discovery Domains
-        /// </summary>
-        public const string ReadOrganizationDiscoveryDomains =
-            "read:organization_discovery_domains";
-
-        /// <summary>
         /// Create Organization Discovery Domains
         /// </summary>
         public const string CreateOrganizationDiscoveryDomains =
             "create:organization_discovery_domains";
+
+        /// <summary>
+        /// Read Organization Discovery Domains
+        /// </summary>
+        public const string ReadOrganizationDiscoveryDomains =
+            "read:organization_discovery_domains";
 
         /// <summary>
         /// Update Organization Discovery Domains
@@ -2256,14 +1926,14 @@ public readonly record struct OauthScope : IStringEnum
             "delete:organization_discovery_domains";
 
         /// <summary>
-        /// Read Organization Invitations
-        /// </summary>
-        public const string ReadOrganizationInvitations = "read:organization_invitations";
-
-        /// <summary>
         /// Create Organization Invitations
         /// </summary>
         public const string CreateOrganizationInvitations = "create:organization_invitations";
+
+        /// <summary>
+        /// Read Organization Invitations
+        /// </summary>
+        public const string ReadOrganizationInvitations = "read:organization_invitations";
 
         /// <summary>
         /// Delete Organization Invitations
@@ -2271,19 +1941,9 @@ public readonly record struct OauthScope : IStringEnum
         public const string DeleteOrganizationInvitations = "delete:organization_invitations";
 
         /// <summary>
-        /// Read Organization Members
+        /// Create Organization Member Roles
         /// </summary>
-        public const string ReadOrganizationMembers = "read:organization_members";
-
-        /// <summary>
-        /// Create Organization Members
-        /// </summary>
-        public const string CreateOrganizationMembers = "create:organization_members";
-
-        /// <summary>
-        /// Delete Organization Members
-        /// </summary>
-        public const string DeleteOrganizationMembers = "delete:organization_members";
+        public const string CreateOrganizationMemberRoles = "create:organization_member_roles";
 
         /// <summary>
         /// Read Organization Member Roles
@@ -2291,14 +1951,89 @@ public readonly record struct OauthScope : IStringEnum
         public const string ReadOrganizationMemberRoles = "read:organization_member_roles";
 
         /// <summary>
-        /// Create Organization Member Roles
-        /// </summary>
-        public const string CreateOrganizationMemberRoles = "create:organization_member_roles";
-
-        /// <summary>
         /// Delete Organization Member Roles
         /// </summary>
         public const string DeleteOrganizationMemberRoles = "delete:organization_member_roles";
+
+        /// <summary>
+        /// Create Organization Members
+        /// </summary>
+        public const string CreateOrganizationMembers = "create:organization_members";
+
+        /// <summary>
+        /// Read Organization Members
+        /// </summary>
+        public const string ReadOrganizationMembers = "read:organization_members";
+
+        /// <summary>
+        /// Delete Organization Members
+        /// </summary>
+        public const string DeleteOrganizationMembers = "delete:organization_members";
+
+        /// <summary>
+        /// Create Organizations
+        /// </summary>
+        public const string CreateOrganizations = "create:organizations";
+
+        /// <summary>
+        /// Read Organizations
+        /// </summary>
+        public const string ReadOrganizations = "read:organizations";
+
+        /// <summary>
+        /// Update Organizations
+        /// </summary>
+        public const string UpdateOrganizations = "update:organizations";
+
+        /// <summary>
+        /// Delete Organizations
+        /// </summary>
+        public const string DeleteOrganizations = "delete:organizations";
+
+        /// <summary>
+        /// Read Organizations Summary
+        /// </summary>
+        public const string ReadOrganizationsSummary = "read:organizations_summary";
+
+        /// <summary>
+        /// Create Phone Providers
+        /// </summary>
+        public const string CreatePhoneProviders = "create:phone_providers";
+
+        /// <summary>
+        /// Read Phone Providers
+        /// </summary>
+        public const string ReadPhoneProviders = "read:phone_providers";
+
+        /// <summary>
+        /// Update Phone Providers
+        /// </summary>
+        public const string UpdatePhoneProviders = "update:phone_providers";
+
+        /// <summary>
+        /// Delete Phone Providers
+        /// </summary>
+        public const string DeletePhoneProviders = "delete:phone_providers";
+
+        /// <summary>
+        /// Create Phone Templates
+        /// </summary>
+        public const string CreatePhoneTemplates = "create:phone_templates";
+
+        /// <summary>
+        /// Read Phone Templates
+        /// </summary>
+        public const string ReadPhoneTemplates = "read:phone_templates";
+
+        /// <summary>
+        /// Update Phone Templates
+        /// </summary>
+        public const string UpdatePhoneTemplates = "update:phone_templates";
+
+        /// <summary>
+        /// Delete Phone Templates
+        /// </summary>
+        public const string DeletePhoneTemplates = "delete:phone_templates";
 
         /// <summary>
         /// Read Prompts
@@ -2311,19 +2046,14 @@ public readonly record struct OauthScope : IStringEnum
         public const string UpdatePrompts = "update:prompts";
 
         /// <summary>
-        /// Read Resource Servers
-        /// </summary>
-        public const string ReadResourceServers = "read:resource_servers";
-
-        /// <summary>
-        /// Update Resource Servers
-        /// </summary>
-        public const string UpdateResourceServers = "update:resource_servers";
-
-        /// <summary>
         /// Read Refresh Tokens
         /// </summary>
         public const string ReadRefreshTokens = "read:refresh_tokens";
+
+        /// <summary>
+        /// Update Refresh Tokens
+        /// </summary>
+        public const string UpdateRefreshTokens = "update:refresh_tokens";
 
         /// <summary>
         /// Delete Refresh Tokens
@@ -2336,19 +2066,44 @@ public readonly record struct OauthScope : IStringEnum
         public const string CreateResourceServers = "create:resource_servers";
 
         /// <summary>
+        /// Read Resource Servers
+        /// </summary>
+        public const string ReadResourceServers = "read:resource_servers";
+
+        /// <summary>
+        /// Update Resource Servers
+        /// </summary>
+        public const string UpdateResourceServers = "update:resource_servers";
+
+        /// <summary>
         /// Delete Resource Servers
         /// </summary>
         public const string DeleteResourceServers = "delete:resource_servers";
 
         /// <summary>
-        /// Read Roles
+        /// Create Role Members
         /// </summary>
-        public const string ReadRoles = "read:roles";
+        public const string CreateRoleMembers = "create:role_members";
+
+        /// <summary>
+        /// Read Role Members
+        /// </summary>
+        public const string ReadRoleMembers = "read:role_members";
+
+        /// <summary>
+        /// Delete Role Members
+        /// </summary>
+        public const string DeleteRoleMembers = "delete:role_members";
 
         /// <summary>
         /// Create Roles
         /// </summary>
         public const string CreateRoles = "create:roles";
+
+        /// <summary>
+        /// Read Roles
+        /// </summary>
+        public const string ReadRoles = "read:roles";
 
         /// <summary>
         /// Update Roles
@@ -2361,14 +2116,9 @@ public readonly record struct OauthScope : IStringEnum
         public const string DeleteRoles = "delete:roles";
 
         /// <summary>
-        /// Read Role Members
+        /// Create Rules
         /// </summary>
-        public const string ReadRoleMembers = "read:role_members";
-
-        /// <summary>
-        /// Create Role Members
-        /// </summary>
-        public const string CreateRoleMembers = "create:role_members";
+        public const string CreateRules = "create:rules";
 
         /// <summary>
         /// Read Rules
@@ -2376,14 +2126,14 @@ public readonly record struct OauthScope : IStringEnum
         public const string ReadRules = "read:rules";
 
         /// <summary>
-        /// Create Rules
-        /// </summary>
-        public const string CreateRules = "create:rules";
-
-        /// <summary>
         /// Update Rules
         /// </summary>
         public const string UpdateRules = "update:rules";
+
+        /// <summary>
+        /// Delete Rules
+        /// </summary>
+        public const string DeleteRules = "delete:rules";
 
         /// <summary>
         /// Read Rules Configs
@@ -2401,34 +2151,39 @@ public readonly record struct OauthScope : IStringEnum
         public const string DeleteRulesConfigs = "delete:rules_configs";
 
         /// <summary>
-        /// Delete Rules
+        /// Create Scim Config
         /// </summary>
-        public const string DeleteRules = "delete:rules";
+        public const string CreateScimConfig = "create:scim_config";
 
         /// <summary>
-        /// Read Security Metrics
+        /// Read Scim Config
         /// </summary>
-        public const string ReadSecurityMetrics = "read:security_metrics";
+        public const string ReadScimConfig = "read:scim_config";
 
         /// <summary>
-        /// Read Self Service Profiles
+        /// Update Scim Config
         /// </summary>
-        public const string ReadSelfServiceProfiles = "read:self_service_profiles";
+        public const string UpdateScimConfig = "update:scim_config";
 
         /// <summary>
-        /// Create Self Service Profiles
+        /// Delete Scim Config
         /// </summary>
-        public const string CreateSelfServiceProfiles = "create:self_service_profiles";
+        public const string DeleteScimConfig = "delete:scim_config";
 
         /// <summary>
-        /// Update Self Service Profiles
+        /// Create Scim Token
         /// </summary>
-        public const string UpdateSelfServiceProfiles = "update:self_service_profiles";
+        public const string CreateScimToken = "create:scim_token";
 
         /// <summary>
-        /// Delete Self Service Profiles
+        /// Read Scim Token
         /// </summary>
-        public const string DeleteSelfServiceProfiles = "delete:self_service_profiles";
+        public const string ReadScimToken = "read:scim_token";
+
+        /// <summary>
+        /// Delete Scim Token
+        /// </summary>
+        public const string DeleteScimToken = "delete:scim_token";
 
         /// <summary>
         /// Read Self Service Profile Custom Texts
@@ -2443,14 +2198,24 @@ public readonly record struct OauthScope : IStringEnum
             "update:self_service_profile_custom_texts";
 
         /// <summary>
-        /// Create Sso Access Tickets
+        /// Create Self Service Profiles
         /// </summary>
-        public const string CreateSsoAccessTickets = "create:sso_access_tickets";
+        public const string CreateSelfServiceProfiles = "create:self_service_profiles";
 
         /// <summary>
-        /// Delete Sso Access Tickets
+        /// Read Self Service Profiles
         /// </summary>
-        public const string DeleteSsoAccessTickets = "delete:sso_access_tickets";
+        public const string ReadSelfServiceProfiles = "read:self_service_profiles";
+
+        /// <summary>
+        /// Update Self Service Profiles
+        /// </summary>
+        public const string UpdateSelfServiceProfiles = "update:self_service_profiles";
+
+        /// <summary>
+        /// Delete Self Service Profiles
+        /// </summary>
+        public const string DeleteSelfServiceProfiles = "delete:self_service_profiles";
 
         /// <summary>
         /// Read Sessions
@@ -2468,84 +2233,54 @@ public readonly record struct OauthScope : IStringEnum
         public const string DeleteSessions = "delete:sessions";
 
         /// <summary>
-        /// Delete Tenants
+        /// Create Signing Keys
         /// </summary>
-        public const string DeleteTenants = "delete:tenants";
+        public const string CreateSigningKeys = "create:signing_keys";
 
         /// <summary>
-        /// Run Checks
+        /// Read Signing Keys
         /// </summary>
-        public const string RunChecks = "run:checks";
+        public const string ReadSigningKeys = "read:signing_keys";
 
         /// <summary>
-        /// Read Checks
+        /// Update Signing Keys
         /// </summary>
-        public const string ReadChecks = "read:checks";
+        public const string UpdateSigningKeys = "update:signing_keys";
 
         /// <summary>
-        /// Read Tenant Feature Flags
+        /// Create Sso Access Tickets
         /// </summary>
-        public const string ReadTenantFeatureFlags = "read:tenant_feature_flags";
+        public const string CreateSsoAccessTickets = "create:sso_access_tickets";
 
         /// <summary>
-        /// Read Tenant Invitations
+        /// Delete Sso Access Tickets
         /// </summary>
-        public const string ReadTenantInvitations = "read:tenant_invitations";
+        public const string DeleteSsoAccessTickets = "delete:sso_access_tickets";
 
         /// <summary>
-        /// Create Tenant Invitations
+        /// Read Stats
         /// </summary>
-        public const string CreateTenantInvitations = "create:tenant_invitations";
+        public const string ReadStats = "read:stats";
 
         /// <summary>
-        /// Update Tenant Invitations
+        /// Read Tenant Settings
         /// </summary>
-        public const string UpdateTenantInvitations = "update:tenant_invitations";
+        public const string ReadTenantSettings = "read:tenant_settings";
 
         /// <summary>
-        /// Delete Tenant Invitations
+        /// Update Tenant Settings
         /// </summary>
-        public const string DeleteTenantInvitations = "delete:tenant_invitations";
-
-        /// <summary>
-        /// Read Tenant Members
-        /// </summary>
-        public const string ReadTenantMembers = "read:tenant_members";
-
-        /// <summary>
-        /// Update Tenant Members
-        /// </summary>
-        public const string UpdateTenantMembers = "update:tenant_members";
-
-        /// <summary>
-        /// Delete Tenant Members
-        /// </summary>
-        public const string DeleteTenantMembers = "delete:tenant_members";
-
-        /// <summary>
-        /// Read Owners
-        /// </summary>
-        public const string ReadOwners = "read:owners";
-
-        /// <summary>
-        /// Delete Owners
-        /// </summary>
-        public const string DeleteOwners = "delete:owners";
-
-        /// <summary>
-        /// Create User Tickets
-        /// </summary>
-        public const string CreateUserTickets = "create:user_tickets";
-
-        /// <summary>
-        /// Read Token Exchange Profiles
-        /// </summary>
-        public const string ReadTokenExchangeProfiles = "read:token_exchange_profiles";
+        public const string UpdateTenantSettings = "update:tenant_settings";
 
         /// <summary>
         /// Create Token Exchange Profiles
         /// </summary>
         public const string CreateTokenExchangeProfiles = "create:token_exchange_profiles";
+
+        /// <summary>
+        /// Read Token Exchange Profiles
+        /// </summary>
+        public const string ReadTokenExchangeProfiles = "read:token_exchange_profiles";
 
         /// <summary>
         /// Update Token Exchange Profiles
@@ -2558,19 +2293,14 @@ public readonly record struct OauthScope : IStringEnum
         public const string DeleteTokenExchangeProfiles = "delete:token_exchange_profiles";
 
         /// <summary>
-        /// Read Entity Counts
+        /// Create User Attribute Profiles
         /// </summary>
-        public const string ReadEntityCounts = "read:entity_counts";
+        public const string CreateUserAttributeProfiles = "create:user_attribute_profiles";
 
         /// <summary>
         /// Read User Attribute Profiles
         /// </summary>
         public const string ReadUserAttributeProfiles = "read:user_attribute_profiles";
-
-        /// <summary>
-        /// Create User Attribute Profiles
-        /// </summary>
-        public const string CreateUserAttributeProfiles = "create:user_attribute_profiles";
 
         /// <summary>
         /// Update User Attribute Profiles
@@ -2588,9 +2318,29 @@ public readonly record struct OauthScope : IStringEnum
         public const string ReadUserIdpTokens = "read:user_idp_tokens";
 
         /// <summary>
-        /// Read Current User
+        /// Create User Tickets
         /// </summary>
-        public const string ReadCurrentUser = "read:current_user";
+        public const string CreateUserTickets = "create:user_tickets";
+
+        /// <summary>
+        /// Create Users
+        /// </summary>
+        public const string CreateUsers = "create:users";
+
+        /// <summary>
+        /// Read Users
+        /// </summary>
+        public const string ReadUsers = "read:users";
+
+        /// <summary>
+        /// Update Users
+        /// </summary>
+        public const string UpdateUsers = "update:users";
+
+        /// <summary>
+        /// Delete Users
+        /// </summary>
+        public const string DeleteUsers = "delete:users";
 
         /// <summary>
         /// Update Users App Metadata
@@ -2598,80 +2348,14 @@ public readonly record struct OauthScope : IStringEnum
         public const string UpdateUsersAppMetadata = "update:users_app_metadata";
 
         /// <summary>
-        /// Update Current User Metadata
+        /// Create Vdcs Templates
         /// </summary>
-        public const string UpdateCurrentUserMetadata = "update:current_user_metadata";
-
-        /// <summary>
-        /// Delete Current User
-        /// </summary>
-        public const string DeleteCurrentUser = "delete:current_user";
-
-        /// <summary>
-        /// Read User Application Passwords
-        /// </summary>
-        public const string ReadUserApplicationPasswords = "read:user_application_passwords";
-
-        /// <summary>
-        /// Create User Application Passwords
-        /// </summary>
-        public const string CreateUserApplicationPasswords = "create:user_application_passwords";
-
-        /// <summary>
-        /// Delete User Application Passwords
-        /// </summary>
-        public const string DeleteUserApplicationPasswords = "delete:user_application_passwords";
-
-        /// <summary>
-        /// Read Authentication Methods
-        /// </summary>
-        public const string ReadAuthenticationMethods = "read:authentication_methods";
-
-        /// <summary>
-        /// Update Authentication Methods
-        /// </summary>
-        public const string UpdateAuthenticationMethods = "update:authentication_methods";
-
-        /// <summary>
-        /// Create Authentication Methods
-        /// </summary>
-        public const string CreateAuthenticationMethods = "create:authentication_methods";
-
-        /// <summary>
-        /// Delete Authentication Methods
-        /// </summary>
-        public const string DeleteAuthenticationMethods = "delete:authentication_methods";
-
-        /// <summary>
-        /// Read Federated Connections Tokens
-        /// </summary>
-        public const string ReadFederatedConnectionsTokens = "read:federated_connections_tokens";
-
-        /// <summary>
-        /// Delete Federated Connections Tokens
-        /// </summary>
-        public const string DeleteFederatedConnectionsTokens =
-            "delete:federated_connections_tokens";
-
-        /// <summary>
-        /// Update Current User Identities
-        /// </summary>
-        public const string UpdateCurrentUserIdentities = "update:current_user_identities";
-
-        /// <summary>
-        /// Delete Role Members
-        /// </summary>
-        public const string DeleteRoleMembers = "delete:role_members";
+        public const string CreateVdcsTemplates = "create:vdcs_templates";
 
         /// <summary>
         /// Read Vdcs Templates
         /// </summary>
         public const string ReadVdcsTemplates = "read:vdcs_templates";
-
-        /// <summary>
-        /// Create Vdcs Templates
-        /// </summary>
-        public const string CreateVdcsTemplates = "create:vdcs_templates";
 
         /// <summary>
         /// Update Vdcs Templates

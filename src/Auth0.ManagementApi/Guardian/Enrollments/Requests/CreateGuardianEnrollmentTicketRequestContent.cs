@@ -39,7 +39,7 @@ public record CreateGuardianEnrollmentTicketRequestContent
     public GuardianEnrollmentFactorEnum? Factor { get; set; }
 
     /// <summary>
-    /// Optional. Allows a user who has previously enrolled in MFA to enroll with additional factors.<br />Note: Parameter can only be used with Universal Login; it cannot be used with Classic Login or custom MFA pages.
+    /// Optional. Allows a user who has previously enrolled in MFA to enroll with additional factors.<br/>Note: Parameter can only be used with Universal Login; it cannot be used with Classic Login or custom MFA pages.
     /// </summary>
     [Optional]
     [JsonPropertyName("allow_multiple_enrollments")]

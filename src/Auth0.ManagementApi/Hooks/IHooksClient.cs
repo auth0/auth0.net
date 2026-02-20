@@ -8,7 +8,7 @@ public partial interface IHooksClient
     public ISecretsClient Secrets { get; }
 
     /// <summary>
-    /// Retrieve all <a href="https://auth0.com/docs/hooks">hooks</a>. Accepts a list of fields to include or exclude in the result.
+    /// Retrieve all <see href="https://auth0.com/docs/hooks">hooks</see>. Accepts a list of fields to include or exclude in the result.
     /// </summary>
     Task<Pager<Hook>> ListAsync(
         ListHooksRequestParameters request,
@@ -26,7 +26,7 @@ public partial interface IHooksClient
     );
 
     /// <summary>
-    /// Retrieve <a href="https://auth0.com/docs/hooks">a hook</a> by its ID. Accepts a list of fields to include in the result.
+    /// Retrieve <see href="https://auth0.com/docs/hooks">a hook</see> by its ID. Accepts a list of fields to include in the result.
     /// </summary>
     WithRawResponseTask<GetHookResponseContent> GetAsync(
         string id,

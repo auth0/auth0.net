@@ -13,25 +13,25 @@ public record ListLogsRequestParameters
     public Optional<int?> Page { get; set; } = 0;
 
     /// <summary>
-    /// Number of results per page. Paging is disabled if parameter not sent. Default: <code>50</code>. Max value: <code>100</code>
+    /// Number of results per page. Paging is disabled if parameter not sent. Default: <c>50</c>. Max value: <c>100</c>
     /// </summary>
     [JsonIgnore]
     public Optional<int?> PerPage { get; set; } = 50;
 
     /// <summary>
-    /// Field to use for sorting appended with <code>:1</code>  for ascending and <code>:-1</code> for descending. e.g. <code>date:-1</code>
+    /// Field to use for sorting appended with <c>:1</c>  for ascending and <c>:-1</c> for descending. e.g. <c>date:-1</c>
     /// </summary>
     [JsonIgnore]
     public Optional<string?> Sort { get; set; }
 
     /// <summary>
-    /// Comma-separated list of fields to include or exclude (based on value provided for <code>include_fields</code>) in the result. Leave empty to retrieve all fields.
+    /// Comma-separated list of fields to include or exclude (based on value provided for <c>include_fields</c>) in the result. Leave empty to retrieve all fields.
     /// </summary>
     [JsonIgnore]
     public Optional<string?> Fields { get; set; }
 
     /// <summary>
-    /// Whether specified fields are to be included (<code>true</code>) or excluded (<code>false</code>)
+    /// Whether specified fields are to be included (<c>true</c>) or excluded (<c>false</c>)
     /// </summary>
     [JsonIgnore]
     public Optional<bool?> IncludeFields { get; set; }

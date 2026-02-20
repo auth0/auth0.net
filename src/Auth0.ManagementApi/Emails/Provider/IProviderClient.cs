@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi.Emails;
 public partial interface IProviderClient
 {
     /// <summary>
-    /// Retrieve details of the <a href="https://auth0.com/docs/customize/email/smtp-email-providers">email provider configuration</a> in your tenant. A list of fields to include or exclude may also be specified.
+    /// Retrieve details of the <see href="https://auth0.com/docs/customize/email/smtp-email-providers">email provider configuration</see> in your tenant. A list of fields to include or exclude may also be specified.
     /// </summary>
     WithRawResponseTask<GetEmailProviderResponseContent> GetAsync(
         GetEmailProviderRequestParameters request,
@@ -14,48 +14,48 @@ public partial interface IProviderClient
     );
 
     /// <summary>
-    /// Create an <a href="https://auth0.com/docs/email/providers">email provider</a>. The <code>credentials</code> object
-    /// requires different properties depending on the email provider (which is specified using the <code>name</code> property):
-    /// <ul>
-    ///   <li><code>mandrill</code> requires <code>api_key</code></li>
-    ///   <li><code>sendgrid</code> requires <code>api_key</code></li>
-    ///   <li>
-    ///     <code>sparkpost</code> requires <code>api_key</code>. Optionally, set <code>region</code> to <code>eu</code> to use
-    ///     the SparkPost service hosted in Western Europe; set to <code>null</code> to use the SparkPost service hosted in
-    ///     North America. <code>eu</code> or <code>null</code> are the only valid values for <code>region</code>.
-    ///   </li>
-    ///   <li>
-    ///     <code>mailgun</code> requires <code>api_key</code> and <code>domain</code>. Optionally, set <code>region</code> to
-    ///     <code>eu</code> to use the Mailgun service hosted in Europe; set to <code>null</code> otherwise. <code>eu</code> or
-    ///     <code>null</code> are the only valid values for <code>region</code>.
-    ///   </li>
-    ///   <li><code>ses</code> requires <code>accessKeyId</code>, <code>secretAccessKey</code>, and <code>region</code></li>
-    ///   <li>
-    ///     <code>smtp</code> requires <code>smtp_host</code>, <code>smtp_port</code>, <code>smtp_user</code>, and
-    ///     <code>smtp_pass</code>
-    ///   </li>
-    /// </ul>
-    /// Depending on the type of provider it is possible to specify <code>settings</code> object with different configuration
+    /// Create an <see href="https://auth0.com/docs/email/providers">email provider</see>. The <c>credentials</c> object
+    /// requires different properties depending on the email provider (which is specified using the <c>name</c> property):
+    /// <list type="bullet">
+    ///   <item><description><c>mandrill</c> requires <c>api_key</c></description></item>
+    ///   <item><description><c>sendgrid</c> requires <c>api_key</c></description></item>
+    ///   <item><description>
+    ///     <c>sparkpost</c> requires <c>api_key</c>. Optionally, set <c>region</c> to <c>eu</c> to use
+    ///     the SparkPost service hosted in Western Europe; set to <c>null</c> to use the SparkPost service hosted in
+    ///     North America. <c>eu</c> or <c>null</c> are the only valid values for <c>region</c>.
+    ///   </description></item>
+    ///   <item><description>
+    ///     <c>mailgun</c> requires <c>api_key</c> and <c>domain</c>. Optionally, set <c>region</c> to
+    ///     <c>eu</c> to use the Mailgun service hosted in Europe; set to <c>null</c> otherwise. <c>eu</c> or
+    ///     <c>null</c> are the only valid values for <c>region</c>.
+    ///   </description></item>
+    ///   <item><description><c>ses</c> requires <c>accessKeyId</c>, <c>secretAccessKey</c>, and <c>region</c></description></item>
+    ///   <item><description>
+    ///     <c>smtp</c> requires <c>smtp_host</c>, <c>smtp_port</c>, <c>smtp_user</c>, and
+    ///     <c>smtp_pass</c>
+    ///   </description></item>
+    /// </list>
+    /// Depending on the type of provider it is possible to specify <c>settings</c> object with different configuration
     /// options, which will be used when sending an email:
-    /// <ul>
-    ///   <li>
-    ///     <code>smtp</code> provider, <code>settings</code> may contain <code>headers</code> object.
-    ///     <ul>
-    ///       <li>
+    /// <list type="bullet">
+    ///   <item><description>
+    ///     <c>smtp</c> provider, <c>settings</c> may contain <c>headers</c> object.
+    ///     <list type="bullet">
+    ///       <item><description>
     ///         When using AWS SES SMTP host, you may provide a name of configuration set in
-    ///         <code>X-SES-Configuration-Set</code> header. Value must be a string.
-    ///       </li>
-    ///       <li>
+    ///         <c>X-SES-Configuration-Set</c> header. Value must be a string.
+    ///       </description></item>
+    ///       <item><description>
     ///         When using Sparkpost host, you may provide value for
-    ///         <code>X-MSYS_API</code> header. Value must be an object.
-    ///       </li>
-    ///     </ul>
-    ///   </li>
-    ///   <li>
-    ///     for <code>ses</code> provider, <code>settings</code> may contain <code>message</code> object, where you can provide
-    ///     a name of configuration set in <code>configuration_set_name</code> property. Value must be a string.
-    ///   </li>
-    /// </ul>
+    ///         <c>X-MSYS_API</c> header. Value must be an object.
+    ///       </description></item>
+    ///     </list>
+    ///   </description></item>
+    ///   <item><description>
+    ///     for <c>ses</c> provider, <c>settings</c> may contain <c>message</c> object, where you can provide
+    ///     a name of configuration set in <c>configuration_set_name</c> property. Value must be a string.
+    ///   </description></item>
+    /// </list>
     /// </summary>
     WithRawResponseTask<CreateEmailProviderResponseContent> CreateAsync(
         CreateEmailProviderRequestContent request,
@@ -69,46 +69,46 @@ public partial interface IProviderClient
     Task DeleteAsync(RequestOptions? options = null, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Update an <a href="https://auth0.com/docs/email/providers">email provider</a>. The <code>credentials</code> object
-    /// requires different properties depending on the email provider (which is specified using the <code>name</code> property):
-    /// <ul>
-    ///   <li><code>mandrill</code> requires <code>api_key</code></li>
-    ///   <li><code>sendgrid</code> requires <code>api_key</code></li>
-    ///   <li>
-    ///     <code>sparkpost</code> requires <code>api_key</code>. Optionally, set <code>region</code> to <code>eu</code> to use
-    ///     the SparkPost service hosted in Western Europe; set to <code>null</code> to use the SparkPost service hosted in
-    ///     North America. <code>eu</code> or <code>null</code> are the only valid values for <code>region</code>.
-    ///   </li>
-    ///   <li>
-    ///     <code>mailgun</code> requires <code>api_key</code> and <code>domain</code>. Optionally, set <code>region</code> to
-    ///     <code>eu</code> to use the Mailgun service hosted in Europe; set to <code>null</code> otherwise. <code>eu</code> or
-    ///     <code>null</code> are the only valid values for <code>region</code>.
-    ///   </li>
-    ///   <li><code>ses</code> requires <code>accessKeyId</code>, <code>secretAccessKey</code>, and <code>region</code></li>
-    ///   <li>
-    ///     <code>smtp</code> requires <code>smtp_host</code>, <code>smtp_port</code>, <code>smtp_user</code>, and
-    ///     <code>smtp_pass</code>
-    ///   </li>
-    /// </ul>
-    /// Depending on the type of provider it is possible to specify <code>settings</code> object with different configuration
+    /// Update an <see href="https://auth0.com/docs/email/providers">email provider</see>. The <c>credentials</c> object
+    /// requires different properties depending on the email provider (which is specified using the <c>name</c> property):
+    /// <list type="bullet">
+    ///   <item><description><c>mandrill</c> requires <c>api_key</c></description></item>
+    ///   <item><description><c>sendgrid</c> requires <c>api_key</c></description></item>
+    ///   <item><description>
+    ///     <c>sparkpost</c> requires <c>api_key</c>. Optionally, set <c>region</c> to <c>eu</c> to use
+    ///     the SparkPost service hosted in Western Europe; set to <c>null</c> to use the SparkPost service hosted in
+    ///     North America. <c>eu</c> or <c>null</c> are the only valid values for <c>region</c>.
+    ///   </description></item>
+    ///   <item><description>
+    ///     <c>mailgun</c> requires <c>api_key</c> and <c>domain</c>. Optionally, set <c>region</c> to
+    ///     <c>eu</c> to use the Mailgun service hosted in Europe; set to <c>null</c> otherwise. <c>eu</c> or
+    ///     <c>null</c> are the only valid values for <c>region</c>.
+    ///   </description></item>
+    ///   <item><description><c>ses</c> requires <c>accessKeyId</c>, <c>secretAccessKey</c>, and <c>region</c></description></item>
+    ///   <item><description>
+    ///     <c>smtp</c> requires <c>smtp_host</c>, <c>smtp_port</c>, <c>smtp_user</c>, and
+    ///     <c>smtp_pass</c>
+    ///   </description></item>
+    /// </list>
+    /// Depending on the type of provider it is possible to specify <c>settings</c> object with different configuration
     /// options, which will be used when sending an email:
-    /// <ul>
-    ///   <li>
-    ///     <code>smtp</code> provider, <code>settings</code> may contain <code>headers</code> object.
-    ///     <ul>
-    ///       <li>
+    /// <list type="bullet">
+    ///   <item><description>
+    ///     <c>smtp</c> provider, <c>settings</c> may contain <c>headers</c> object.
+    ///     <list type="bullet">
+    ///       <item><description>
     ///         When using AWS SES SMTP host, you may provide a name of configuration set in
-    ///         <code>X-SES-Configuration-Set</code> header. Value must be a string.
-    ///       </li>
-    ///       <li>
+    ///         <c>X-SES-Configuration-Set</c> header. Value must be a string.
+    ///       </description></item>
+    ///       <item><description>
     ///         When using Sparkpost host, you may provide value for
-    ///         <code>X-MSYS_API</code> header. Value must be an object.
-    ///       </li>
-    ///     </ul>
-    ///     for <code>ses</code> provider, <code>settings</code> may contain <code>message</code> object, where you can provide
-    ///     a name of configuration set in <code>configuration_set_name</code> property. Value must be a string.
-    ///   </li>
-    /// </ul>
+    ///         <c>X-MSYS_API</c> header. Value must be an object.
+    ///       </description></item>
+    ///     </list>
+    ///     for <c>ses</c> provider, <c>settings</c> may contain <c>message</c> object, where you can provide
+    ///     a name of configuration set in <c>configuration_set_name</c> property. Value must be a string.
+    ///   </description></item>
+    /// </list>
     /// </summary>
     WithRawResponseTask<UpdateEmailProviderResponseContent> UpdateAsync(
         UpdateEmailProviderRequestContent request,

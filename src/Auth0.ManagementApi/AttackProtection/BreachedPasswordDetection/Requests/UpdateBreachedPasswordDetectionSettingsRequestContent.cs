@@ -16,7 +16,7 @@ public record UpdateBreachedPasswordDetectionSettingsRequestContent
 
     /// <summary>
     /// Action to take when a breached password is detected during a login.
-    ///       Possible values: <code>block</code>, <code>user_notification</code>, <code>admin_notification</code>.
+    ///       Possible values: <c>block</c>, <c>user_notification</c>, <c>admin_notification</c>.
     /// </summary>
     [Optional]
     [JsonPropertyName("shields")]
@@ -24,7 +24,7 @@ public record UpdateBreachedPasswordDetectionSettingsRequestContent
 
     /// <summary>
     /// When "admin_notification" is enabled, determines how often email notifications are sent.
-    ///         Possible values: <code>immediately</code>, <code>daily</code>, <code>weekly</code>, <code>monthly</code>.
+    ///         Possible values: <c>immediately</c>, <c>daily</c>, <c>weekly</c>, <c>monthly</c>.
     /// </summary>
     [Optional]
     [JsonPropertyName("admin_notification_frequency")]

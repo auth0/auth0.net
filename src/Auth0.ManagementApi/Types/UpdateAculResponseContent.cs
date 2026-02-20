@@ -14,12 +14,9 @@ public record UpdateAculResponseContent : IJsonOnDeserialized, IJsonOnSerializin
     [JsonPropertyName("rendering_mode")]
     public AculRenderingModeEnum? RenderingMode { get; set; }
 
-    /// <summary>
-    /// Context values to make available
-    /// </summary>
     [Optional]
     [JsonPropertyName("context_configuration")]
-    public IEnumerable<string>? ContextConfiguration { get; set; }
+    public IEnumerable<AculContextConfigurationItem>? ContextConfiguration { get; set; }
 
     /// <summary>
     /// Override Universal Login default head tags

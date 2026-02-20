@@ -684,7 +684,7 @@ public partial class PhoneClient : IPhoneClient
     }
 
     /// <summary>
-    /// Retrieve list of <a href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-sms-voice-notifications-mfa">phone-type MFA factors</a> (i.e., sms and voice) that are enabled for your tenant.
+    /// Retrieve list of <see href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-sms-voice-notifications-mfa">phone-type MFA factors</see> (i.e., sms and voice) that are enabled for your tenant.
     /// </summary>
     /// <example><code>
     /// await client.Guardian.Factors.Phone.GetMessageTypesAsync();
@@ -700,7 +700,7 @@ public partial class PhoneClient : IPhoneClient
     }
 
     /// <summary>
-    /// Replace the list of <a href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-sms-voice-notifications-mfa">phone-type MFA factors</a> (i.e., sms and voice) that are enabled for your tenant.
+    /// Replace the list of <see href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-sms-voice-notifications-mfa">phone-type MFA factors</see> (i.e., sms and voice) that are enabled for your tenant.
     /// </summary>
     /// <example><code>
     /// await client.Guardian.Factors.Phone.SetMessageTypesAsync(
@@ -725,7 +725,7 @@ public partial class PhoneClient : IPhoneClient
     }
 
     /// <summary>
-    /// Retrieve configuration details for a Twilio phone provider that has been set up in your tenant. To learn more, review <a href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-sms-voice-notifications-mfa">Configure SMS and Voice Notifications for MFA</a>.
+    /// Retrieve configuration details for a Twilio phone provider that has been set up in your tenant. To learn more, review <see href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-sms-voice-notifications-mfa">Configure SMS and Voice Notifications for MFA</see>.
     /// </summary>
     /// <example><code>
     /// await client.Guardian.Factors.Phone.GetTwilioProviderAsync();
@@ -741,7 +741,7 @@ public partial class PhoneClient : IPhoneClient
     }
 
     /// <summary>
-    /// Update the configuration of a Twilio phone provider that has been set up in your tenant. To learn more, review <a href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-sms-voice-notifications-mfa">Configure SMS and Voice Notifications for MFA</a>.
+    /// Update the configuration of a Twilio phone provider that has been set up in your tenant. To learn more, review <see href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-sms-voice-notifications-mfa">Configure SMS and Voice Notifications for MFA</see>.
     /// </summary>
     /// <example><code>
     /// await client.Guardian.Factors.Phone.SetTwilioProviderAsync(

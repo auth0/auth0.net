@@ -14,9 +14,9 @@ public record ListVerifiableCredentialTemplatesPaginatedResponseContent : IJsonO
     /// <summary>
     /// Opaque identifier for use with the <i>from</i> query parameter for the next page of results.<br/>This identifier is valid for 24 hours.
     /// </summary>
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("next")]
-    public string? Next { get; set; }
+    public Optional<string?> Next { get; set; }
 
     [Optional]
     [JsonPropertyName("templates")]

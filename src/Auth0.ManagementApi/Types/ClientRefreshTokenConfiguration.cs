@@ -55,6 +55,13 @@ public record ClientRefreshTokenConfiguration : IJsonOnDeserialized
     [JsonPropertyName("infinite_idle_token_lifetime")]
     public bool? InfiniteIdleTokenLifetime { get; set; }
 
+    /// <summary>
+    /// A collection of policies governing multi-resource refresh token exchange (MRRT), defining how refresh tokens can be used across different resource servers
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("policies")]
+    public IEnumerable<ClientRefreshTokenPolicy>? Policies { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

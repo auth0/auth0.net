@@ -461,7 +461,7 @@ public partial class ProvidersClient : IProvidersClient
     }
 
     /// <summary>
-    /// Retrieve a list of <a href="https://auth0.com/docs/customize/phone-messages/configure-phone-messaging-providers">phone providers</a> details set for a Tenant. A list of fields to include or exclude may also be specified.
+    /// Retrieve a list of <see href="https://auth0.com/docs/customize/phone-messages/configure-phone-messaging-providers">phone providers</see> details set for a Tenant. A list of fields to include or exclude may also be specified.
     /// </summary>
     /// <example><code>
     /// await client.Branding.Phone.Providers.ListAsync(
@@ -480,8 +480,8 @@ public partial class ProvidersClient : IProvidersClient
     }
 
     /// <summary>
-    /// Create a <a href="https://auth0.com/docs/customize/phone-messages/configure-phone-messaging-providers">phone provider</a>.
-    /// The <code>credentials</code> object requires different properties depending on the phone provider (which is specified using the <code>name</code> property).
+    /// Create a <see href="https://auth0.com/docs/customize/phone-messages/configure-phone-messaging-providers">phone provider</see>.
+    /// The <c>credentials</c> object requires different properties depending on the phone provider (which is specified using the <c>name</c> property).
     /// </summary>
     /// <example><code>
     /// await client.Branding.Phone.Providers.CreateAsync(
@@ -504,7 +504,7 @@ public partial class ProvidersClient : IProvidersClient
     }
 
     /// <summary>
-    /// Retrieve <a href="https://auth0.com/docs/customize/phone-messages/configure-phone-messaging-providers">phone provider</a> details. A list of fields to include or exclude may also be specified.
+    /// Retrieve <see href="https://auth0.com/docs/customize/phone-messages/configure-phone-messaging-providers">phone provider</see> details. A list of fields to include or exclude may also be specified.
     /// </summary>
     /// <example><code>
     /// await client.Branding.Phone.Providers.GetAsync("id");
@@ -587,8 +587,8 @@ public partial class ProvidersClient : IProvidersClient
     }
 
     /// <summary>
-    /// Update a <a href="https://auth0.com/docs/customize/phone-messages/configure-phone-messaging-providers">phone provider</a>.
-    /// The <code>credentials</code> object requires different properties depending on the phone provider (which is specified using the <code>name</code> property).
+    /// Update a <see href="https://auth0.com/docs/customize/phone-messages/configure-phone-messaging-providers">phone provider</see>.
+    /// The <c>credentials</c> object requires different properties depending on the phone provider (which is specified using the <c>name</c> property).
     /// </summary>
     /// <example><code>
     /// await client.Branding.Phone.Providers.UpdateAsync(

@@ -11,6 +11,13 @@ public record UpdateOrganizationDiscoveryDomainRequestContent
     [JsonPropertyName("status")]
     public OrganizationDiscoveryDomainStatus? Status { get; set; }
 
+    /// <summary>
+    /// Indicates whether this domain should be used for organization discovery.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("use_for_organization_discovery")]
+    public bool? UseForOrganizationDiscovery { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

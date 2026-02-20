@@ -110,6 +110,13 @@ public record GetActionVersionResponseContent : IJsonOnDeserialized
     [JsonPropertyName("supported_triggers")]
     public IEnumerable<ActionTrigger>? SupportedTriggers { get; set; }
 
+    /// <summary>
+    /// The list of action modules and their versions used by this action version.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("modules")]
+    public IEnumerable<ActionModuleReference>? Modules { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

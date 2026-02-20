@@ -220,6 +220,98 @@ public partial class DiscoveryDomainsClient : IDiscoveryDomainsClient
         }
     }
 
+    private async Task<
+        WithRawResponse<GetOrganizationDiscoveryDomainByNameResponseContent>
+    > GetByNameAsyncCore(
+        string id,
+        string discoveryDomain,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
+            .Add(_client.Options.Headers)
+            .Add(_client.Options.AdditionalHeaders)
+            .Add(options?.AdditionalHeaders)
+            .BuildAsync()
+            .ConfigureAwait(false);
+        var response = await _client
+            .SendRequestAsync(
+                new JsonRequest
+                {
+                    BaseUrl = _client.Options.BaseUrl,
+                    Method = HttpMethod.Get,
+                    Path = string.Format(
+                        "organizations/{0}/discovery-domains/name/{1}",
+                        ValueConvert.ToPathParameterString(id),
+                        ValueConvert.ToPathParameterString(discoveryDomain)
+                    ),
+                    Headers = _headers,
+                    Options = options,
+                },
+                cancellationToken
+            )
+            .ConfigureAwait(false);
+        if (response.StatusCode is >= 200 and < 400)
+        {
+            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            try
+            {
+                var responseData =
+                    JsonUtils.Deserialize<GetOrganizationDiscoveryDomainByNameResponseContent>(
+                        responseBody
+                    )!;
+                return new WithRawResponse<GetOrganizationDiscoveryDomainByNameResponseContent>()
+                {
+                    Data = responseData,
+                    RawResponse = new RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    },
+                };
+            }
+            catch (JsonException e)
+            {
+                throw new ManagementApiException(
+                    "Failed to deserialize response",
+                    response.StatusCode,
+                    responseBody,
+                    e
+                );
+            }
+        }
+        {
+            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            try
+            {
+                switch (response.StatusCode)
+                {
+                    case 400:
+                        throw new BadRequestError(JsonUtils.Deserialize<object>(responseBody));
+                    case 401:
+                        throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
+                    case 403:
+                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                    case 404:
+                        throw new NotFoundError(JsonUtils.Deserialize<object>(responseBody));
+                    case 429:
+                        throw new TooManyRequestsError(JsonUtils.Deserialize<object>(responseBody));
+                }
+            }
+            catch (JsonException)
+            {
+                // unable to map error response, throwing generic error
+            }
+            throw new ManagementApiException(
+                $"Error with status code {response.StatusCode}",
+                response.StatusCode,
+                responseBody
+            );
+        }
+    }
+
     private async Task<WithRawResponse<GetOrganizationDiscoveryDomainResponseContent>> GetAsyncCore(
         string id,
         string discoveryDomainId,
@@ -445,7 +537,7 @@ public partial class DiscoveryDomainsClient : IDiscoveryDomainsClient
     }
 
     /// <summary>
-    /// Update the verification status for an organization discovery domain. The <code>status</code> field must be either <code>pending</code> or <code>verified</code>.
+    /// Create a new discovery domain for an organization.
     /// </summary>
     /// <example><code>
     /// await client.Organizations.DiscoveryDomains.CreateAsync(
@@ -462,6 +554,24 @@ public partial class DiscoveryDomainsClient : IDiscoveryDomainsClient
     {
         return new WithRawResponseTask<CreateOrganizationDiscoveryDomainResponseContent>(
             CreateAsyncCore(id, request, options, cancellationToken)
+        );
+    }
+
+    /// <summary>
+    /// Retrieve details about a single organization discovery domain specified by domain name.
+    /// </summary>
+    /// <example><code>
+    /// await client.Organizations.DiscoveryDomains.GetByNameAsync("id", "discovery_domain");
+    /// </code></example>
+    public WithRawResponseTask<GetOrganizationDiscoveryDomainByNameResponseContent> GetByNameAsync(
+        string id,
+        string discoveryDomain,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        return new WithRawResponseTask<GetOrganizationDiscoveryDomainByNameResponseContent>(
+            GetByNameAsyncCore(id, discoveryDomain, options, cancellationToken)
         );
     }
 
@@ -552,7 +662,7 @@ public partial class DiscoveryDomainsClient : IDiscoveryDomainsClient
     }
 
     /// <summary>
-    /// Update the verification status for an organization discovery domain. The <code>status</code> field must be either <code>pending</code> or <code>verified</code>.
+    /// Update the verification status and/or use_for_organization_discovery for an organization discovery domain. The <c>status</c> field must be either <c>pending</c> or <c>verified</c>. The <c>use_for_organization_discovery</c> field can be <c>true</c> or <c>false</c> (default: <c>true</c>).
     /// </summary>
     /// <example><code>
     /// await client.Organizations.DiscoveryDomains.UpdateAsync(

@@ -1,4 +1,3 @@
-using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
@@ -8,11 +7,11 @@ namespace Auth0.ManagementApi;
 /// Options for the 'auth0' connection
 /// </summary>
 [Serializable]
-public record ConnectionOptionsAuth0 : IJsonOnDeserialized
+public record ConnectionOptionsAuth0 : IJsonOnDeserialized, IJsonOnSerializing
 {
     [JsonExtensionData]
-    private readonly IDictionary<string, JsonElement> _extensionData =
-        new Dictionary<string, JsonElement>();
+    private readonly IDictionary<string, object?> _extensionData =
+        new Dictionary<string, object?>();
 
     [Optional]
     [JsonPropertyName("attributes")]
@@ -103,10 +102,13 @@ public record ConnectionOptionsAuth0 : IJsonOnDeserialized
     public IEnumerable<string>? NonPersistentAttrs { get; set; }
 
     [JsonIgnore]
-    public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
+    public AdditionalProperties AdditionalProperties { get; set; } = new();
 
     void IJsonOnDeserialized.OnDeserialized() =>
         AdditionalProperties.CopyFromExtensionData(_extensionData);
+
+    void IJsonOnSerializing.OnSerializing() =>
+        AdditionalProperties.CopyToExtensionData(_extensionData);
 
     /// <inheritdoc />
     public override string ToString()

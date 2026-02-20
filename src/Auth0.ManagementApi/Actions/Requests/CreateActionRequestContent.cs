@@ -47,6 +47,13 @@ public record CreateActionRequestContent
     public IEnumerable<ActionSecretRequest>? Secrets { get; set; }
 
     /// <summary>
+    /// The list of action modules and their versions used by this action.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("modules")]
+    public IEnumerable<ActionModuleReference>? Modules { get; set; }
+
+    /// <summary>
     /// True if the action should be deployed after creation.
     /// </summary>
     [Optional]

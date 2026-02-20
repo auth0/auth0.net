@@ -16,11 +16,21 @@ public partial interface IDiscoveryDomainsClient
     );
 
     /// <summary>
-    /// Update the verification status for an organization discovery domain. The <code>status</code> field must be either <code>pending</code> or <code>verified</code>.
+    /// Create a new discovery domain for an organization.
     /// </summary>
     WithRawResponseTask<CreateOrganizationDiscoveryDomainResponseContent> CreateAsync(
         string id,
         CreateOrganizationDiscoveryDomainRequestContent request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
+    /// Retrieve details about a single organization discovery domain specified by domain name.
+    /// </summary>
+    WithRawResponseTask<GetOrganizationDiscoveryDomainByNameResponseContent> GetByNameAsync(
+        string id,
+        string discoveryDomain,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
@@ -46,7 +56,7 @@ public partial interface IDiscoveryDomainsClient
     );
 
     /// <summary>
-    /// Update the verification status for an organization discovery domain. The <code>status</code> field must be either <code>pending</code> or <code>verified</code>.
+    /// Update the verification status and/or use_for_organization_discovery for an organization discovery domain. The <c>status</c> field must be either <c>pending</c> or <c>verified</c>. The <c>use_for_organization_discovery</c> field can be <c>true</c> or <c>false</c> (default: <c>true</c>).
     /// </summary>
     WithRawResponseTask<UpdateOrganizationDiscoveryDomainResponseContent> UpdateAsync(
         string id,
