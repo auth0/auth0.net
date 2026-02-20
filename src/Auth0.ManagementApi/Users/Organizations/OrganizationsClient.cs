@@ -94,7 +94,7 @@ public partial class OrganizationsClient : IOrganizationsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

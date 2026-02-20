@@ -91,7 +91,7 @@ public partial class UserGrantsClient : IUserGrantsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

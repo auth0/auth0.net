@@ -68,7 +68,7 @@ public partial class SynchronizationsClient : ISynchronizationsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

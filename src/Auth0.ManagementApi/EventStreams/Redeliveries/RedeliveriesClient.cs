@@ -69,7 +69,7 @@ public partial class RedeliveriesClient : IRedeliveriesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

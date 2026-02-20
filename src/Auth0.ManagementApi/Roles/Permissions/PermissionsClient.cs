@@ -94,7 +94,7 @@ public partial class PermissionsClient : IPermissionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

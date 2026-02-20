@@ -72,7 +72,7 @@ public partial class JobsClient : IJobsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

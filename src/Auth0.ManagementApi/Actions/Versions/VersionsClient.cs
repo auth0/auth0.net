@@ -90,7 +90,7 @@ public partial class VersionsClient : IVersionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
@@ -177,7 +177,7 @@ public partial class VersionsClient : IVersionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
@@ -269,7 +269,7 @@ public partial class VersionsClient : IVersionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

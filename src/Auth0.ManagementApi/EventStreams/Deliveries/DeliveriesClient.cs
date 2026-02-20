@@ -76,7 +76,7 @@ public partial class DeliveriesClient : IDeliveriesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
@@ -168,7 +168,7 @@ public partial class DeliveriesClient : IDeliveriesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

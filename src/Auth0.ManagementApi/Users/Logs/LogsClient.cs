@@ -97,7 +97,7 @@ public partial class LogsClient : ILogsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

@@ -99,7 +99,7 @@ public partial class RenderingClient : IRenderingClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
@@ -185,7 +185,7 @@ public partial class RenderingClient : IRenderingClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
@@ -272,7 +272,7 @@ public partial class RenderingClient : IRenderingClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
@@ -364,7 +364,7 @@ public partial class RenderingClient : IRenderingClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

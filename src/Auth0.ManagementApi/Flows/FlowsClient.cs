@@ -93,7 +93,7 @@ public partial class FlowsClient : IFlowsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
@@ -175,7 +175,7 @@ public partial class FlowsClient : IFlowsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
@@ -261,7 +261,7 @@ public partial class FlowsClient : IFlowsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
@@ -346,7 +346,7 @@ public partial class FlowsClient : IFlowsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

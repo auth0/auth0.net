@@ -89,7 +89,7 @@ public partial class SessionsClient : ISessionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

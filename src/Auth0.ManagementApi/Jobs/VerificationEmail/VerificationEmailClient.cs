@@ -64,7 +64,7 @@ public partial class VerificationEmailClient : IVerificationEmailClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

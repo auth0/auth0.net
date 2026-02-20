@@ -12,11 +12,12 @@
     "use-default-request-parameter-values": true,
     "experimental-explicit-nullable-optional": true,
     "use-undiscriminated-unions": true,
+    "redact-response-body-on-error": true,
     "output-path": {
       "library": "src",
       "test": "tests",
       "solution": "."
     }
   },
-  "sdkVersion": "0.0.1763"
+  "sdkVersion": "0.0.1764"
 }

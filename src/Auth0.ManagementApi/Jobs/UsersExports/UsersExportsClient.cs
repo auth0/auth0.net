@@ -64,7 +64,7 @@ public partial class UsersExportsClient : IUsersExportsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

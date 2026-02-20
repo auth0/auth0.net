@@ -89,7 +89,7 @@ public partial class RefreshTokenClient : IRefreshTokenClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }

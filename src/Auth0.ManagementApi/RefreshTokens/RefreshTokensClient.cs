@@ -64,7 +64,7 @@ public partial class RefreshTokensClient : IRefreshTokensClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
@@ -152,7 +152,7 @@ public partial class RefreshTokensClient : IRefreshTokensClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
