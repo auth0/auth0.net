@@ -1,5 +1,3 @@
-using System.Text;
-using System.Text.Json;
 using Auth0.ManagementApi.Anomaly;
 using Auth0.ManagementApi.AttackProtection;
 using Auth0.ManagementApi.Core;
@@ -20,7 +18,10 @@ public partial class ManagementApiClient : IManagementApiClient
         var platformHeaders = new Headers(
             new Dictionary<string, string>()
             {
-                { "Auth0-Client", CreateAgentString() },
+                { "X-Fern-Language", "C#" },
+                { "X-Fern-SDK-Name", "Auth0.ManagementApi" },
+                { "X-Fern-SDK-Version", Version.Current },
+                { "User-Agent", "Ferncustom/0.0.1" },
             }
         );
         foreach (var header in platformHeaders)
@@ -166,38 +167,4 @@ public partial class ManagementApiClient : IManagementApiClient
     public ITenantsClient Tenants { get; }
 
     public IVerifiableCredentialsClient VerifiableCredentials { get; }
-
-    internal static string CreateAgentString()
-    {
-#if NET462
-        var target = "NET462";
-#elif NETSTANDARD2_0
-        var target = "NETSTANDARD2.0";
-#elif NET6_0
-        var target = "NET6.0";
-#elif NET7_0
-        var target = "NET7.0";
-#elif NET8_0
-        var target = "NET8.0";
-#else
-        var target = "UNKNOWN";
-#endif
-
-        var agentJson = JsonSerializer.Serialize(new
-        {
-            name = "Auth0.Net",
-            version = Version.Current,
-            env = new { target }
-        });
-        return Base64UrlEncode(Encoding.UTF8.GetBytes(agentJson));
-    }
-
-    private static string Base64UrlEncode(byte[] input)
-    {
-        var output = Convert.ToBase64String(input);
-        output = output.Replace('+', '-');  // 62nd char of encoding
-        output = output.Replace('/', '_');  // 63rd char of encoding
-        output = output.TrimEnd('=');       // Remove padding
-        return output;
-    }
 }
