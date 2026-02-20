@@ -37,7 +37,10 @@ public class ListTest : BaseMockServerTest
                   "installed_integration_id": "installed_integration_id",
                   "status": "pending",
                   "built_at": "2024-01-15T09:30:00.000Z",
-                  "deploy": true
+                  "deploy": true,
+                  "modules": [
+                    {}
+                  ]
                 }
               ]
             }

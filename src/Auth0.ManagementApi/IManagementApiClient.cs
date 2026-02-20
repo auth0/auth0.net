@@ -22,6 +22,7 @@ public partial interface IManagementApiClient
     public IFlowsClient Flows { get; }
     public IFormsClient Forms { get; }
     public IUserGrantsClient UserGrants { get; }
+    public IGroupsClient Groups { get; }
     public IHooksClient Hooks { get; }
     public IJobsClient Jobs { get; }
     public ILogStreamsClient LogStreams { get; }

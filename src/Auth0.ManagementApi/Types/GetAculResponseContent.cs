@@ -35,19 +35,16 @@ public record GetAculResponseContent : IJsonOnDeserialized, IJsonOnSerializing
     [JsonPropertyName("rendering_mode")]
     public AculRenderingModeEnum? RenderingMode { get; set; }
 
-    /// <summary>
-    /// Context values to make available
-    /// </summary>
     [Optional]
     [JsonPropertyName("context_configuration")]
-    public IEnumerable<string>? ContextConfiguration { get; set; }
+    public IEnumerable<AculContextConfigurationItem>? ContextConfiguration { get; set; }
 
     /// <summary>
     /// Override Universal Login default head tags
     /// </summary>
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("default_head_tags_disabled")]
-    public bool? DefaultHeadTagsDisabled { get; set; }
+    public Optional<bool?> DefaultHeadTagsDisabled { get; set; }
 
     /// <summary>
     /// Use page template with ACUL

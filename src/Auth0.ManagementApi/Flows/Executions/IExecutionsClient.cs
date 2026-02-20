@@ -7,7 +7,7 @@ public partial interface IExecutionsClient
 {
     Task<Pager<FlowExecutionSummary>> ListAsync(
         string flowId,
-        ExecutionsListRequest request,
+        ListFlowExecutionsRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
@@ -15,7 +15,7 @@ public partial interface IExecutionsClient
     WithRawResponseTask<GetFlowExecutionResponseContent> GetAsync(
         string flowId,
         string executionId,
-        ExecutionsGetRequest request,
+        GetFlowExecutionRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );

@@ -75,6 +75,27 @@ public class UpdateFlowsVaultConnectionSetup
     ) => new("flowsVaultConnectioSetupHttpBearer", value);
 
     /// <summary>
+    /// Factory method to create a union from a Auth0.ManagementApi.FlowsVaultConnectionHttpBasicAuthSetup value.
+    /// </summary>
+    public static UpdateFlowsVaultConnectionSetup FromFlowsVaultConnectionHttpBasicAuthSetup(
+        Auth0.ManagementApi.FlowsVaultConnectionHttpBasicAuthSetup value
+    ) => new("flowsVaultConnectionHttpBasicAuthSetup", value);
+
+    /// <summary>
+    /// Factory method to create a union from a Auth0.ManagementApi.FlowsVaultConnectionHttpApiKeySetup value.
+    /// </summary>
+    public static UpdateFlowsVaultConnectionSetup FromFlowsVaultConnectionHttpApiKeySetup(
+        Auth0.ManagementApi.FlowsVaultConnectionHttpApiKeySetup value
+    ) => new("flowsVaultConnectionHttpApiKeySetup", value);
+
+    /// <summary>
+    /// Factory method to create a union from a Auth0.ManagementApi.FlowsVaultConnectionHttpOauthClientCredentialsSetup value.
+    /// </summary>
+    public static UpdateFlowsVaultConnectionSetup FromFlowsVaultConnectionHttpOauthClientCredentialsSetup(
+        Auth0.ManagementApi.FlowsVaultConnectionHttpOauthClientCredentialsSetup value
+    ) => new("flowsVaultConnectionHttpOauthClientCredentialsSetup", value);
+
+    /// <summary>
     /// Factory method to create a union from a Auth0.ManagementApi.FlowsVaultConnectioSetupJwt value.
     /// </summary>
     public static UpdateFlowsVaultConnectionSetup FromFlowsVaultConnectioSetupJwt(
@@ -156,6 +177,24 @@ public class UpdateFlowsVaultConnectionSetup
     /// </summary>
     public bool IsFlowsVaultConnectioSetupHttpBearer() =>
         Type == "flowsVaultConnectioSetupHttpBearer";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "flowsVaultConnectionHttpBasicAuthSetup"
+    /// </summary>
+    public bool IsFlowsVaultConnectionHttpBasicAuthSetup() =>
+        Type == "flowsVaultConnectionHttpBasicAuthSetup";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "flowsVaultConnectionHttpApiKeySetup"
+    /// </summary>
+    public bool IsFlowsVaultConnectionHttpApiKeySetup() =>
+        Type == "flowsVaultConnectionHttpApiKeySetup";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "flowsVaultConnectionHttpOauthClientCredentialsSetup"
+    /// </summary>
+    public bool IsFlowsVaultConnectionHttpOauthClientCredentialsSetup() =>
+        Type == "flowsVaultConnectionHttpOauthClientCredentialsSetup";
 
     /// <summary>
     /// Returns true if <see cref="Type"/> is "flowsVaultConnectioSetupJwt"
@@ -256,6 +295,39 @@ public class UpdateFlowsVaultConnectionSetup
             ? (Auth0.ManagementApi.FlowsVaultConnectioSetupHttpBearer)Value!
             : throw new ManagementException(
                 "Union type is not 'flowsVaultConnectioSetupHttpBearer'"
+            );
+
+    /// <summary>
+    /// Returns the value as a <see cref="Auth0.ManagementApi.FlowsVaultConnectionHttpBasicAuthSetup"/> if <see cref="Type"/> is 'flowsVaultConnectionHttpBasicAuthSetup', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="ManagementException">Thrown when <see cref="Type"/> is not 'flowsVaultConnectionHttpBasicAuthSetup'.</exception>
+    public Auth0.ManagementApi.FlowsVaultConnectionHttpBasicAuthSetup AsFlowsVaultConnectionHttpBasicAuthSetup() =>
+        IsFlowsVaultConnectionHttpBasicAuthSetup()
+            ? (Auth0.ManagementApi.FlowsVaultConnectionHttpBasicAuthSetup)Value!
+            : throw new ManagementException(
+                "Union type is not 'flowsVaultConnectionHttpBasicAuthSetup'"
+            );
+
+    /// <summary>
+    /// Returns the value as a <see cref="Auth0.ManagementApi.FlowsVaultConnectionHttpApiKeySetup"/> if <see cref="Type"/> is 'flowsVaultConnectionHttpApiKeySetup', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="ManagementException">Thrown when <see cref="Type"/> is not 'flowsVaultConnectionHttpApiKeySetup'.</exception>
+    public Auth0.ManagementApi.FlowsVaultConnectionHttpApiKeySetup AsFlowsVaultConnectionHttpApiKeySetup() =>
+        IsFlowsVaultConnectionHttpApiKeySetup()
+            ? (Auth0.ManagementApi.FlowsVaultConnectionHttpApiKeySetup)Value!
+            : throw new ManagementException(
+                "Union type is not 'flowsVaultConnectionHttpApiKeySetup'"
+            );
+
+    /// <summary>
+    /// Returns the value as a <see cref="Auth0.ManagementApi.FlowsVaultConnectionHttpOauthClientCredentialsSetup"/> if <see cref="Type"/> is 'flowsVaultConnectionHttpOauthClientCredentialsSetup', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="ManagementException">Thrown when <see cref="Type"/> is not 'flowsVaultConnectionHttpOauthClientCredentialsSetup'.</exception>
+    public Auth0.ManagementApi.FlowsVaultConnectionHttpOauthClientCredentialsSetup AsFlowsVaultConnectionHttpOauthClientCredentialsSetup() =>
+        IsFlowsVaultConnectionHttpOauthClientCredentialsSetup()
+            ? (Auth0.ManagementApi.FlowsVaultConnectionHttpOauthClientCredentialsSetup)Value!
+            : throw new ManagementException(
+                "Union type is not 'flowsVaultConnectionHttpOauthClientCredentialsSetup'"
             );
 
     /// <summary>
@@ -426,6 +498,54 @@ public class UpdateFlowsVaultConnectionSetup
     }
 
     /// <summary>
+    /// Attempts to cast the value to a <see cref="Auth0.ManagementApi.FlowsVaultConnectionHttpBasicAuthSetup"/> and returns true if successful.
+    /// </summary>
+    public bool TryGetFlowsVaultConnectionHttpBasicAuthSetup(
+        out Auth0.ManagementApi.FlowsVaultConnectionHttpBasicAuthSetup? value
+    )
+    {
+        if (Type == "flowsVaultConnectionHttpBasicAuthSetup")
+        {
+            value = (Auth0.ManagementApi.FlowsVaultConnectionHttpBasicAuthSetup)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="Auth0.ManagementApi.FlowsVaultConnectionHttpApiKeySetup"/> and returns true if successful.
+    /// </summary>
+    public bool TryGetFlowsVaultConnectionHttpApiKeySetup(
+        out Auth0.ManagementApi.FlowsVaultConnectionHttpApiKeySetup? value
+    )
+    {
+        if (Type == "flowsVaultConnectionHttpApiKeySetup")
+        {
+            value = (Auth0.ManagementApi.FlowsVaultConnectionHttpApiKeySetup)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="Auth0.ManagementApi.FlowsVaultConnectionHttpOauthClientCredentialsSetup"/> and returns true if successful.
+    /// </summary>
+    public bool TryGetFlowsVaultConnectionHttpOauthClientCredentialsSetup(
+        out Auth0.ManagementApi.FlowsVaultConnectionHttpOauthClientCredentialsSetup? value
+    )
+    {
+        if (Type == "flowsVaultConnectionHttpOauthClientCredentialsSetup")
+        {
+            value = (Auth0.ManagementApi.FlowsVaultConnectionHttpOauthClientCredentialsSetup)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
     /// Attempts to cast the value to a <see cref="Auth0.ManagementApi.FlowsVaultConnectioSetupJwt"/> and returns true if successful.
     /// </summary>
     public bool TryGetFlowsVaultConnectioSetupJwt(
@@ -562,6 +682,18 @@ public class UpdateFlowsVaultConnectionSetup
             Auth0.ManagementApi.FlowsVaultConnectioSetupHttpBearer,
             T
         > onFlowsVaultConnectioSetupHttpBearer,
+        Func<
+            Auth0.ManagementApi.FlowsVaultConnectionHttpBasicAuthSetup,
+            T
+        > onFlowsVaultConnectionHttpBasicAuthSetup,
+        Func<
+            Auth0.ManagementApi.FlowsVaultConnectionHttpApiKeySetup,
+            T
+        > onFlowsVaultConnectionHttpApiKeySetup,
+        Func<
+            Auth0.ManagementApi.FlowsVaultConnectionHttpOauthClientCredentialsSetup,
+            T
+        > onFlowsVaultConnectionHttpOauthClientCredentialsSetup,
         Func<Auth0.ManagementApi.FlowsVaultConnectioSetupJwt, T> onFlowsVaultConnectioSetupJwt,
         Func<
             Auth0.ManagementApi.FlowsVaultConnectioSetupMailjetApiKey,
@@ -608,6 +740,16 @@ public class UpdateFlowsVaultConnectionSetup
             "flowsVaultConnectioSetupHttpBearer" => onFlowsVaultConnectioSetupHttpBearer(
                 AsFlowsVaultConnectioSetupHttpBearer()
             ),
+            "flowsVaultConnectionHttpBasicAuthSetup" => onFlowsVaultConnectionHttpBasicAuthSetup(
+                AsFlowsVaultConnectionHttpBasicAuthSetup()
+            ),
+            "flowsVaultConnectionHttpApiKeySetup" => onFlowsVaultConnectionHttpApiKeySetup(
+                AsFlowsVaultConnectionHttpApiKeySetup()
+            ),
+            "flowsVaultConnectionHttpOauthClientCredentialsSetup" =>
+                onFlowsVaultConnectionHttpOauthClientCredentialsSetup(
+                    AsFlowsVaultConnectionHttpOauthClientCredentialsSetup()
+                ),
             "flowsVaultConnectioSetupJwt" => onFlowsVaultConnectioSetupJwt(
                 AsFlowsVaultConnectioSetupJwt()
             ),
@@ -640,6 +782,9 @@ public class UpdateFlowsVaultConnectionSetup
         System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupBigqueryOauthJwt> onFlowsVaultConnectioSetupBigqueryOauthJwt,
         System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupSecretApiKey> onFlowsVaultConnectioSetupSecretApiKey,
         System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupHttpBearer> onFlowsVaultConnectioSetupHttpBearer,
+        System.Action<Auth0.ManagementApi.FlowsVaultConnectionHttpBasicAuthSetup> onFlowsVaultConnectionHttpBasicAuthSetup,
+        System.Action<Auth0.ManagementApi.FlowsVaultConnectionHttpApiKeySetup> onFlowsVaultConnectionHttpApiKeySetup,
+        System.Action<Auth0.ManagementApi.FlowsVaultConnectionHttpOauthClientCredentialsSetup> onFlowsVaultConnectionHttpOauthClientCredentialsSetup,
         System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupJwt> onFlowsVaultConnectioSetupJwt,
         System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupMailjetApiKey> onFlowsVaultConnectioSetupMailjetApiKey,
         System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupToken> onFlowsVaultConnectioSetupToken,
@@ -672,6 +817,19 @@ public class UpdateFlowsVaultConnectionSetup
                 break;
             case "flowsVaultConnectioSetupHttpBearer":
                 onFlowsVaultConnectioSetupHttpBearer(AsFlowsVaultConnectioSetupHttpBearer());
+                break;
+            case "flowsVaultConnectionHttpBasicAuthSetup":
+                onFlowsVaultConnectionHttpBasicAuthSetup(
+                    AsFlowsVaultConnectionHttpBasicAuthSetup()
+                );
+                break;
+            case "flowsVaultConnectionHttpApiKeySetup":
+                onFlowsVaultConnectionHttpApiKeySetup(AsFlowsVaultConnectionHttpApiKeySetup());
+                break;
+            case "flowsVaultConnectionHttpOauthClientCredentialsSetup":
+                onFlowsVaultConnectionHttpOauthClientCredentialsSetup(
+                    AsFlowsVaultConnectionHttpOauthClientCredentialsSetup()
+                );
                 break;
             case "flowsVaultConnectioSetupJwt":
                 onFlowsVaultConnectioSetupJwt(AsFlowsVaultConnectioSetupJwt());
@@ -759,6 +917,18 @@ public class UpdateFlowsVaultConnectionSetup
     ) => new("flowsVaultConnectioSetupHttpBearer", value);
 
     public static implicit operator UpdateFlowsVaultConnectionSetup(
+        Auth0.ManagementApi.FlowsVaultConnectionHttpBasicAuthSetup value
+    ) => new("flowsVaultConnectionHttpBasicAuthSetup", value);
+
+    public static implicit operator UpdateFlowsVaultConnectionSetup(
+        Auth0.ManagementApi.FlowsVaultConnectionHttpApiKeySetup value
+    ) => new("flowsVaultConnectionHttpApiKeySetup", value);
+
+    public static implicit operator UpdateFlowsVaultConnectionSetup(
+        Auth0.ManagementApi.FlowsVaultConnectionHttpOauthClientCredentialsSetup value
+    ) => new("flowsVaultConnectionHttpOauthClientCredentialsSetup", value);
+
+    public static implicit operator UpdateFlowsVaultConnectionSetup(
         Auth0.ManagementApi.FlowsVaultConnectioSetupJwt value
     ) => new("flowsVaultConnectioSetupJwt", value);
 
@@ -831,6 +1001,18 @@ public class UpdateFlowsVaultConnectionSetup
                         typeof(Auth0.ManagementApi.FlowsVaultConnectioSetupHttpBearer)
                     ),
                     (
+                        "flowsVaultConnectionHttpBasicAuthSetup",
+                        typeof(Auth0.ManagementApi.FlowsVaultConnectionHttpBasicAuthSetup)
+                    ),
+                    (
+                        "flowsVaultConnectionHttpApiKeySetup",
+                        typeof(Auth0.ManagementApi.FlowsVaultConnectionHttpApiKeySetup)
+                    ),
+                    (
+                        "flowsVaultConnectionHttpOauthClientCredentialsSetup",
+                        typeof(Auth0.ManagementApi.FlowsVaultConnectionHttpOauthClientCredentialsSetup)
+                    ),
+                    (
                         "flowsVaultConnectioSetupJwt",
                         typeof(Auth0.ManagementApi.FlowsVaultConnectioSetupJwt)
                     ),
@@ -896,6 +1078,9 @@ public class UpdateFlowsVaultConnectionSetup
             }
 
             value.Visit(
+                obj => JsonSerializer.Serialize(writer, obj, options),
+                obj => JsonSerializer.Serialize(writer, obj, options),
+                obj => JsonSerializer.Serialize(writer, obj, options),
                 obj => JsonSerializer.Serialize(writer, obj, options),
                 obj => JsonSerializer.Serialize(writer, obj, options),
                 obj => JsonSerializer.Serialize(writer, obj, options),

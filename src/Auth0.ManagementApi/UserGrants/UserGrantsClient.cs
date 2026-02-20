@@ -13,7 +13,7 @@ public partial class UserGrantsClient : IUserGrantsClient
     }
 
     /// <summary>
-    /// Retrieve the <a href="https://auth0.com/docs/api-auth/which-oauth-flow-to-use">grants</a> associated with your account.
+    /// Retrieve the <see href="https://auth0.com/docs/api-auth/which-oauth-flow-to-use">grants</see> associated with your account.
     /// </summary>
     private WithRawResponseTask<ListUserGrantsOffsetPaginatedResponseContent> ListInternalAsync(
         ListUserGrantsRequestParameters request,
@@ -123,7 +123,7 @@ public partial class UserGrantsClient : IUserGrantsClient
     }
 
     /// <summary>
-    /// Retrieve the <a href="https://auth0.com/docs/api-auth/which-oauth-flow-to-use">grants</a> associated with your account.
+    /// Retrieve the <see href="https://auth0.com/docs/api-auth/which-oauth-flow-to-use">grants</see> associated with your account.
     /// </summary>
     /// <example><code>
     /// await client.UserGrants.ListAsync(

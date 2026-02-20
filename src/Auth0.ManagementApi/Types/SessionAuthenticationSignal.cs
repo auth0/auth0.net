@@ -28,7 +28,7 @@ public record SessionAuthenticationSignal : IJsonOnDeserialized, IJsonOnSerializ
     /// A specific MFA factor. Only present when "name" is set to "mfa"
     /// </summary>
     [Optional]
-    [JsonPropertyName("^type$")]
+    [JsonPropertyName("type")]
     public string? Type { get; set; }
 
     [JsonIgnore]

@@ -34,14 +34,14 @@ public record CreateConnectionRequestContent
     public IEnumerable<string>? EnabledClients { get; set; }
 
     /// <summary>
-    /// <code>true</code> promotes to a domain-level connection so that third-party applications can use it. <code>false</code> does not promote the connection, so only first-party applications with the connection enabled can use it. (Defaults to <code>false</code>.)
+    /// <c>true</c> promotes to a domain-level connection so that third-party applications can use it. <c>false</c> does not promote the connection, so only first-party applications with the connection enabled can use it. (Defaults to <c>false</c>.)
     /// </summary>
     [Optional]
     [JsonPropertyName("is_domain_connection")]
     public bool? IsDomainConnection { get; set; }
 
     /// <summary>
-    /// Enables showing a button for the connection in the login page (new experience only). If false, it will be usable only by HRD. (Defaults to <code>false</code>.)
+    /// Enables showing a button for the connection in the login page (new experience only). If false, it will be usable only by HRD. (Defaults to <c>false</c>.)
     /// </summary>
     [Optional]
     [JsonPropertyName("show_as_button")]

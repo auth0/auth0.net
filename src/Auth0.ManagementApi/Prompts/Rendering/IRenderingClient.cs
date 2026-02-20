@@ -8,14 +8,14 @@ public partial interface IRenderingClient
     /// <summary>
     /// Get render setting configurations for all screens.
     /// </summary>
-    Task<Pager<AculResponseContent>> ListAsync(
+    Task<Pager<ListAculsResponseContentItem>> ListAsync(
         ListAculsRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
 
     /// <summary>
-    /// Learn more about <a href='https://auth0.com/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens'>configuring render settings</a> for advanced customization.
+    /// Learn more about <see href="https://auth0.com/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens">configuring render settings</see> for advanced customization.
     /// </summary>
     WithRawResponseTask<BulkUpdateAculResponseContent> BulkUpdateAsync(
         BulkUpdateAculRequestContent request,
@@ -34,7 +34,7 @@ public partial interface IRenderingClient
     );
 
     /// <summary>
-    /// Learn more about <a href='https://auth0.com/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens'>configuring render settings</a> for advanced customization.
+    /// Learn more about <see href="https://auth0.com/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens">configuring render settings</see> for advanced customization.
     /// </summary>
     WithRawResponseTask<UpdateAculResponseContent> UpdateAsync(
         PromptGroupNameEnum prompt,

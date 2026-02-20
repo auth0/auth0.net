@@ -7,7 +7,7 @@ namespace Auth0.ManagementApi;
 public record ListResourceServerRequestParameters
 {
     /// <summary>
-    /// An optional filter on the resource server identifier. Must be URL encoded and may be specified multiple times (max 10).<br /><b>e.g.</b> <i>../resource-servers?identifiers=id1&identifiers=id2</i>
+    /// An optional filter on the resource server identifier. Must be URL encoded and may be specified multiple times (max 10).<br/><b>e.g.</b> <i>../resource-servers?identifiers=id1&identifiers=id2</i>
     /// </summary>
     [JsonIgnore]
     public IEnumerable<string?> Identifiers { get; set; } = new List<string?>();

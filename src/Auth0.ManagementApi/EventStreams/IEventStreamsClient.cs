@@ -1,3 +1,4 @@
+using Auth0.ManagementApi.Core;
 using Auth0.ManagementApi.EventStreams;
 
 namespace Auth0.ManagementApi;
@@ -6,7 +7,7 @@ public partial interface IEventStreamsClient
 {
     public IDeliveriesClient Deliveries { get; }
     public IRedeliveriesClient Redeliveries { get; }
-    WithRawResponseTask<IEnumerable<EventStreamResponseContent>> ListAsync(
+    Task<Pager<EventStreamResponseContent>> ListAsync(
         ListEventStreamsRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

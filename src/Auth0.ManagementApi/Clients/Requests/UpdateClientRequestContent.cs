@@ -14,7 +14,7 @@ public record UpdateClientRequestContent
     public string? Name { get; set; }
 
     /// <summary>
-    /// Free text description of the purpose of the Client. (Max character length: <code>140</code>)
+    /// Free text description of the purpose of the Client. (Max character length: <c>140</c>)
     /// </summary>
     [Optional]
     [JsonPropertyName("description")]
@@ -89,7 +89,7 @@ public record UpdateClientRequestContent
     public IEnumerable<string>? AllowedClients { get; set; }
 
     /// <summary>
-    /// URLs that are valid to redirect to after logout from Auth0.
+    /// URLs that are valid to redirect to after logout from Auth0
     /// </summary>
     [Optional]
     [JsonPropertyName("allowed_logout_urls")]
@@ -104,14 +104,14 @@ public record UpdateClientRequestContent
     public Optional<ClientEncryptionKey?> EncryptionKey { get; set; }
 
     /// <summary>
-    /// <code>true</code> to use Auth0 instead of the IdP to do Single Sign On, <code>false</code> otherwise (default: <code>false</code>)
+    /// <c>true</c> to use Auth0 instead of the IdP to do Single Sign On, <c>false</c> otherwise (default: <c>false</c>)
     /// </summary>
     [Optional]
     [JsonPropertyName("sso")]
     public bool? Sso { get; set; }
 
     /// <summary>
-    /// <code>true</code> if this client can be used to make cross-origin authentication requests, <code>false</code> otherwise if cross origin is disabled
+    /// <c>true</c> if this client can be used to make cross-origin authentication requests, <c>false</c> otherwise if cross origin is disabled
     /// </summary>
     [Optional]
     [JsonPropertyName("cross_origin_authentication")]
@@ -125,14 +125,14 @@ public record UpdateClientRequestContent
     public Optional<string?> CrossOriginLoc { get; set; }
 
     /// <summary>
-    /// <code>true</code> to disable Single Sign On, <code>false</code> otherwise (default: <code>false</code>)
+    /// <c>true</c> to disable Single Sign On, <c>false</c> otherwise (default: <c>false</c>)
     /// </summary>
     [Optional]
     [JsonPropertyName("sso_disabled")]
     public bool? SsoDisabled { get; set; }
 
     /// <summary>
-    /// <code>true</code> if the custom login page is to be used, <code>false</code> otherwise.
+    /// <c>true</c> if the custom login page is to be used, <c>false</c> otherwise.
     /// </summary>
     [Optional]
     [JsonPropertyName("custom_login_page_on")]

@@ -19,7 +19,7 @@ public record ClientTokenExchangeConfiguration : IJsonOnDeserialized
     /// </summary>
     [Optional]
     [JsonPropertyName("allow_any_profile_of_type")]
-    public IEnumerable<string>? AllowAnyProfileOfType { get; set; }
+    public IEnumerable<ClientTokenExchangeTypeEnum>? AllowAnyProfileOfType { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

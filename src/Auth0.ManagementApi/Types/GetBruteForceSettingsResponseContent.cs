@@ -20,11 +20,11 @@ public record GetBruteForceSettingsResponseContent : IJsonOnDeserialized
 
     /// <summary>
     /// Action to take when a brute force protection threshold is violated.
-    ///         Possible values: <code>block</code>, <code>user_notification</code>.
+    ///         Possible values: <c>block</c>, <c>user_notification</c>.
     /// </summary>
     [Optional]
     [JsonPropertyName("shields")]
-    public IEnumerable<GetBruteForceSettingsResponseContentShieldsItem>? Shields { get; set; }
+    public IEnumerable<BruteForceProtectionShieldsEnum>? Shields { get; set; }
 
     /// <summary>
     /// List of trusted IP addresses that will not have attack protection enforced against them.
@@ -33,13 +33,9 @@ public record GetBruteForceSettingsResponseContent : IJsonOnDeserialized
     [JsonPropertyName("allowlist")]
     public IEnumerable<string>? Allowlist { get; set; }
 
-    /// <summary>
-    /// Account Lockout: Determines whether or not IP address is used when counting failed attempts.
-    ///           Possible values: <code>count_per_identifier_and_ip</code>, <code>count_per_identifier</code>.
-    /// </summary>
     [Optional]
     [JsonPropertyName("mode")]
-    public GetBruteForceSettingsResponseContentMode? Mode { get; set; }
+    public BruteForceProtectionModeEnum? Mode { get; set; }
 
     /// <summary>
     /// Maximum number of unsuccessful attempts.

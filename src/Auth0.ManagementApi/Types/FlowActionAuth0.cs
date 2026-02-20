@@ -65,6 +65,20 @@ public class FlowActionAuth0
     ) => new("flowActionAuth0SendEmail", value);
 
     /// <summary>
+    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionAuth0SendSms value.
+    /// </summary>
+    public static FlowActionAuth0 FromFlowActionAuth0SendSms(
+        Auth0.ManagementApi.FlowActionAuth0SendSms value
+    ) => new("flowActionAuth0SendSms", value);
+
+    /// <summary>
+    /// Factory method to create a union from a Auth0.ManagementApi.FlowActionAuth0MakeCall value.
+    /// </summary>
+    public static FlowActionAuth0 FromFlowActionAuth0MakeCall(
+        Auth0.ManagementApi.FlowActionAuth0MakeCall value
+    ) => new("flowActionAuth0MakeCall", value);
+
+    /// <summary>
     /// Returns true if <see cref="Type"/> is "flowActionAuth0CreateUser"
     /// </summary>
     public bool IsFlowActionAuth0CreateUser() => Type == "flowActionAuth0CreateUser";
@@ -88,6 +102,16 @@ public class FlowActionAuth0
     /// Returns true if <see cref="Type"/> is "flowActionAuth0SendEmail"
     /// </summary>
     public bool IsFlowActionAuth0SendEmail() => Type == "flowActionAuth0SendEmail";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "flowActionAuth0SendSms"
+    /// </summary>
+    public bool IsFlowActionAuth0SendSms() => Type == "flowActionAuth0SendSms";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "flowActionAuth0MakeCall"
+    /// </summary>
+    public bool IsFlowActionAuth0MakeCall() => Type == "flowActionAuth0MakeCall";
 
     /// <summary>
     /// Returns the value as a <see cref="Auth0.ManagementApi.FlowActionAuth0CreateUser"/> if <see cref="Type"/> is 'flowActionAuth0CreateUser', otherwise throws an exception.
@@ -133,6 +157,24 @@ public class FlowActionAuth0
         IsFlowActionAuth0SendEmail()
             ? (Auth0.ManagementApi.FlowActionAuth0SendEmail)Value!
             : throw new ManagementException("Union type is not 'flowActionAuth0SendEmail'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="Auth0.ManagementApi.FlowActionAuth0SendSms"/> if <see cref="Type"/> is 'flowActionAuth0SendSms', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="ManagementException">Thrown when <see cref="Type"/> is not 'flowActionAuth0SendSms'.</exception>
+    public Auth0.ManagementApi.FlowActionAuth0SendSms AsFlowActionAuth0SendSms() =>
+        IsFlowActionAuth0SendSms()
+            ? (Auth0.ManagementApi.FlowActionAuth0SendSms)Value!
+            : throw new ManagementException("Union type is not 'flowActionAuth0SendSms'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="Auth0.ManagementApi.FlowActionAuth0MakeCall"/> if <see cref="Type"/> is 'flowActionAuth0MakeCall', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="ManagementException">Thrown when <see cref="Type"/> is not 'flowActionAuth0MakeCall'.</exception>
+    public Auth0.ManagementApi.FlowActionAuth0MakeCall AsFlowActionAuth0MakeCall() =>
+        IsFlowActionAuth0MakeCall()
+            ? (Auth0.ManagementApi.FlowActionAuth0MakeCall)Value!
+            : throw new ManagementException("Union type is not 'flowActionAuth0MakeCall'");
 
     /// <summary>
     /// Attempts to cast the value to a <see cref="Auth0.ManagementApi.FlowActionAuth0CreateUser"/> and returns true if successful.
@@ -212,12 +254,44 @@ public class FlowActionAuth0
         return false;
     }
 
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="Auth0.ManagementApi.FlowActionAuth0SendSms"/> and returns true if successful.
+    /// </summary>
+    public bool TryGetFlowActionAuth0SendSms(out Auth0.ManagementApi.FlowActionAuth0SendSms? value)
+    {
+        if (Type == "flowActionAuth0SendSms")
+        {
+            value = (Auth0.ManagementApi.FlowActionAuth0SendSms)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="Auth0.ManagementApi.FlowActionAuth0MakeCall"/> and returns true if successful.
+    /// </summary>
+    public bool TryGetFlowActionAuth0MakeCall(
+        out Auth0.ManagementApi.FlowActionAuth0MakeCall? value
+    )
+    {
+        if (Type == "flowActionAuth0MakeCall")
+        {
+            value = (Auth0.ManagementApi.FlowActionAuth0MakeCall)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
     public T Match<T>(
         Func<Auth0.ManagementApi.FlowActionAuth0CreateUser, T> onFlowActionAuth0CreateUser,
         Func<Auth0.ManagementApi.FlowActionAuth0GetUser, T> onFlowActionAuth0GetUser,
         Func<Auth0.ManagementApi.FlowActionAuth0UpdateUser, T> onFlowActionAuth0UpdateUser,
         Func<Auth0.ManagementApi.FlowActionAuth0SendRequest, T> onFlowActionAuth0SendRequest,
-        Func<Auth0.ManagementApi.FlowActionAuth0SendEmail, T> onFlowActionAuth0SendEmail
+        Func<Auth0.ManagementApi.FlowActionAuth0SendEmail, T> onFlowActionAuth0SendEmail,
+        Func<Auth0.ManagementApi.FlowActionAuth0SendSms, T> onFlowActionAuth0SendSms,
+        Func<Auth0.ManagementApi.FlowActionAuth0MakeCall, T> onFlowActionAuth0MakeCall
     )
     {
         return Type switch
@@ -233,6 +307,8 @@ public class FlowActionAuth0
                 AsFlowActionAuth0SendRequest()
             ),
             "flowActionAuth0SendEmail" => onFlowActionAuth0SendEmail(AsFlowActionAuth0SendEmail()),
+            "flowActionAuth0SendSms" => onFlowActionAuth0SendSms(AsFlowActionAuth0SendSms()),
+            "flowActionAuth0MakeCall" => onFlowActionAuth0MakeCall(AsFlowActionAuth0MakeCall()),
             _ => throw new ManagementException($"Unknown union type: {Type}"),
         };
     }
@@ -242,7 +318,9 @@ public class FlowActionAuth0
         System.Action<Auth0.ManagementApi.FlowActionAuth0GetUser> onFlowActionAuth0GetUser,
         System.Action<Auth0.ManagementApi.FlowActionAuth0UpdateUser> onFlowActionAuth0UpdateUser,
         System.Action<Auth0.ManagementApi.FlowActionAuth0SendRequest> onFlowActionAuth0SendRequest,
-        System.Action<Auth0.ManagementApi.FlowActionAuth0SendEmail> onFlowActionAuth0SendEmail
+        System.Action<Auth0.ManagementApi.FlowActionAuth0SendEmail> onFlowActionAuth0SendEmail,
+        System.Action<Auth0.ManagementApi.FlowActionAuth0SendSms> onFlowActionAuth0SendSms,
+        System.Action<Auth0.ManagementApi.FlowActionAuth0MakeCall> onFlowActionAuth0MakeCall
     )
     {
         switch (Type)
@@ -261,6 +339,12 @@ public class FlowActionAuth0
                 break;
             case "flowActionAuth0SendEmail":
                 onFlowActionAuth0SendEmail(AsFlowActionAuth0SendEmail());
+                break;
+            case "flowActionAuth0SendSms":
+                onFlowActionAuth0SendSms(AsFlowActionAuth0SendSms());
+                break;
+            case "flowActionAuth0MakeCall":
+                onFlowActionAuth0MakeCall(AsFlowActionAuth0MakeCall());
                 break;
             default:
                 throw new ManagementException($"Unknown union type: {Type}");
@@ -322,6 +406,14 @@ public class FlowActionAuth0
         Auth0.ManagementApi.FlowActionAuth0SendEmail value
     ) => new("flowActionAuth0SendEmail", value);
 
+    public static implicit operator FlowActionAuth0(
+        Auth0.ManagementApi.FlowActionAuth0SendSms value
+    ) => new("flowActionAuth0SendSms", value);
+
+    public static implicit operator FlowActionAuth0(
+        Auth0.ManagementApi.FlowActionAuth0MakeCall value
+    ) => new("flowActionAuth0MakeCall", value);
+
     [Serializable]
     internal sealed class JsonConverter : JsonConverter<FlowActionAuth0>
     {
@@ -358,6 +450,11 @@ public class FlowActionAuth0
                     (
                         "flowActionAuth0SendEmail",
                         typeof(Auth0.ManagementApi.FlowActionAuth0SendEmail)
+                    ),
+                    ("flowActionAuth0SendSms", typeof(Auth0.ManagementApi.FlowActionAuth0SendSms)),
+                    (
+                        "flowActionAuth0MakeCall",
+                        typeof(Auth0.ManagementApi.FlowActionAuth0MakeCall)
                     ),
                 };
 
@@ -397,6 +494,8 @@ public class FlowActionAuth0
             }
 
             value.Visit(
+                obj => JsonSerializer.Serialize(writer, obj, options),
+                obj => JsonSerializer.Serialize(writer, obj, options),
                 obj => JsonSerializer.Serialize(writer, obj, options),
                 obj => JsonSerializer.Serialize(writer, obj, options),
                 obj => JsonSerializer.Serialize(writer, obj, options),

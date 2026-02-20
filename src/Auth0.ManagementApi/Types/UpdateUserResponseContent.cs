@@ -39,7 +39,7 @@ public record UpdateUserResponseContent : IJsonOnDeserialized, IJsonOnSerializin
     public string? Username { get; set; }
 
     /// <summary>
-    /// Phone number for this user. Follows the <a href="https://en.wikipedia.org/wiki/E.164">E.164 recommendation</a>.
+    /// Phone number for this user. Follows the <see href="https://en.wikipedia.org/wiki/E.164">E.164 recommendation</see>.
     /// </summary>
     [Optional]
     [JsonPropertyName("phone_number")]

@@ -5,7 +5,7 @@ using Auth0.ManagementApi.Core;
 namespace Auth0.ManagementApi;
 
 /// <summary>
-/// Defines application access permission for a resource server. Use of this field is subject to the applicable Free Trial terms in Okta’s <a href="https://www.okta.com/legal/"> Master Subscription Agreement.</a>
+/// Defines application access permission for a resource server
 /// </summary>
 [Serializable]
 public record ResourceServerSubjectTypeAuthorization : IJsonOnDeserialized

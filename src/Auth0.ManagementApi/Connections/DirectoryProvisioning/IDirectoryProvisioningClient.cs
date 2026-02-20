@@ -9,6 +9,15 @@ public partial interface IDirectoryProvisioningClient
     public ISynchronizationsClient Synchronizations { get; }
 
     /// <summary>
+    /// Retrieve a list of directory provisioning configurations of a tenant.
+    /// </summary>
+    Task<Pager<DirectoryProvisioning>> ListAsync(
+        ListDirectoryProvisioningsRequestParameters request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
     /// Retrieve the directory provisioning configuration of a connection.
     /// </summary>
     WithRawResponseTask<GetDirectoryProvisioningResponseContent> GetAsync(

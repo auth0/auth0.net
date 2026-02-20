@@ -270,7 +270,15 @@ public class RotateSecretTest : BaseMockServerTest
                 "token_lifetime": 1,
                 "infinite_token_lifetime": true,
                 "idle_token_lifetime": 1,
-                "infinite_idle_token_lifetime": true
+                "infinite_idle_token_lifetime": true,
+                "policies": [
+                  {
+                    "audience": "audience",
+                    "scope": [
+                      "scope"
+                    ]
+                  }
+                ]
               },
               "default_organization": {
                 "organization_id": "organization_id",

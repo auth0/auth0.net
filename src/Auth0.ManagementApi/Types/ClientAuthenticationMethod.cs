@@ -16,7 +16,7 @@ public record ClientAuthenticationMethod : IJsonOnDeserialized
 
     [Optional]
     [JsonPropertyName("private_key_jwt")]
-    public PrivateKeyJwt? PrivateKeyJwt { get; set; }
+    public ClientAuthenticationMethodPrivateKeyJwt? PrivateKeyJwt { get; set; }
 
     [Optional]
     [JsonPropertyName("tls_client_auth")]

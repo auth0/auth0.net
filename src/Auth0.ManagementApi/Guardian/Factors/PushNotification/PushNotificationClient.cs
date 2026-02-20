@@ -114,7 +114,7 @@ public partial class PushNotificationClient : IPushNotificationClient
                 new JsonRequest
                 {
                     BaseUrl = _client.Options.BaseUrl,
-                    Method = HttpMethodExtensions.Patch,
+                    Method = HttpMethod.Put,
                     Path = "guardian/factors/push-notification/providers/apns",
                     Body = request,
                     Headers = _headers,
@@ -180,8 +180,175 @@ public partial class PushNotificationClient : IPushNotificationClient
         }
     }
 
+    private async Task<
+        WithRawResponse<UpdateGuardianFactorsProviderPushNotificationApnsResponseContent>
+    > UpdateApnsProviderAsyncCore(
+        UpdateGuardianFactorsProviderPushNotificationApnsRequestContent request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
+            .Add(_client.Options.Headers)
+            .Add(_client.Options.AdditionalHeaders)
+            .Add(options?.AdditionalHeaders)
+            .BuildAsync()
+            .ConfigureAwait(false);
+        var response = await _client
+            .SendRequestAsync(
+                new JsonRequest
+                {
+                    BaseUrl = _client.Options.BaseUrl,
+                    Method = HttpMethodExtensions.Patch,
+                    Path = "guardian/factors/push-notification/providers/apns",
+                    Body = request,
+                    Headers = _headers,
+                    ContentType = "application/json",
+                    Options = options,
+                },
+                cancellationToken
+            )
+            .ConfigureAwait(false);
+        if (response.StatusCode is >= 200 and < 400)
+        {
+            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            try
+            {
+                var responseData =
+                    JsonUtils.Deserialize<UpdateGuardianFactorsProviderPushNotificationApnsResponseContent>(
+                        responseBody
+                    )!;
+                return new WithRawResponse<UpdateGuardianFactorsProviderPushNotificationApnsResponseContent>()
+                {
+                    Data = responseData,
+                    RawResponse = new RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    },
+                };
+            }
+            catch (JsonException e)
+            {
+                throw new ManagementApiException(
+                    "Failed to deserialize response",
+                    response.StatusCode,
+                    responseBody,
+                    e
+                );
+            }
+        }
+        {
+            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            try
+            {
+                switch (response.StatusCode)
+                {
+                    case 400:
+                        throw new BadRequestError(JsonUtils.Deserialize<object>(responseBody));
+                    case 401:
+                        throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
+                    case 403:
+                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                }
+            }
+            catch (JsonException)
+            {
+                // unable to map error response, throwing generic error
+            }
+            throw new ManagementApiException(
+                $"Error with status code {response.StatusCode}",
+                response.StatusCode,
+                responseBody
+            );
+        }
+    }
+
     private async Task<WithRawResponse<Dictionary<string, object?>>> SetFcmProviderAsyncCore(
         SetGuardianFactorsProviderPushNotificationFcmRequestContent request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
+            .Add(_client.Options.Headers)
+            .Add(_client.Options.AdditionalHeaders)
+            .Add(options?.AdditionalHeaders)
+            .BuildAsync()
+            .ConfigureAwait(false);
+        var response = await _client
+            .SendRequestAsync(
+                new JsonRequest
+                {
+                    BaseUrl = _client.Options.BaseUrl,
+                    Method = HttpMethod.Put,
+                    Path = "guardian/factors/push-notification/providers/fcm",
+                    Body = request,
+                    Headers = _headers,
+                    ContentType = "application/json",
+                    Options = options,
+                },
+                cancellationToken
+            )
+            .ConfigureAwait(false);
+        if (response.StatusCode is >= 200 and < 400)
+        {
+            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            try
+            {
+                var responseData = JsonUtils.Deserialize<Dictionary<string, object?>>(
+                    responseBody
+                )!;
+                return new WithRawResponse<Dictionary<string, object?>>()
+                {
+                    Data = responseData,
+                    RawResponse = new RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    },
+                };
+            }
+            catch (JsonException e)
+            {
+                throw new ManagementApiException(
+                    "Failed to deserialize response",
+                    response.StatusCode,
+                    responseBody,
+                    e
+                );
+            }
+        }
+        {
+            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            try
+            {
+                switch (response.StatusCode)
+                {
+                    case 400:
+                        throw new BadRequestError(JsonUtils.Deserialize<object>(responseBody));
+                    case 401:
+                        throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
+                    case 403:
+                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                }
+            }
+            catch (JsonException)
+            {
+                // unable to map error response, throwing generic error
+            }
+            throw new ManagementApiException(
+                $"Error with status code {response.StatusCode}",
+                response.StatusCode,
+                responseBody
+            );
+        }
+    }
+
+    private async Task<WithRawResponse<Dictionary<string, object?>>> UpdateFcmProviderAsyncCore(
+        UpdateGuardianFactorsProviderPushNotificationFcmRequestContent request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
@@ -264,6 +431,88 @@ public partial class PushNotificationClient : IPushNotificationClient
 
     private async Task<WithRawResponse<Dictionary<string, object?>>> SetFcmv1ProviderAsyncCore(
         SetGuardianFactorsProviderPushNotificationFcmv1RequestContent request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
+            .Add(_client.Options.Headers)
+            .Add(_client.Options.AdditionalHeaders)
+            .Add(options?.AdditionalHeaders)
+            .BuildAsync()
+            .ConfigureAwait(false);
+        var response = await _client
+            .SendRequestAsync(
+                new JsonRequest
+                {
+                    BaseUrl = _client.Options.BaseUrl,
+                    Method = HttpMethod.Put,
+                    Path = "guardian/factors/push-notification/providers/fcmv1",
+                    Body = request,
+                    Headers = _headers,
+                    ContentType = "application/json",
+                    Options = options,
+                },
+                cancellationToken
+            )
+            .ConfigureAwait(false);
+        if (response.StatusCode is >= 200 and < 400)
+        {
+            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            try
+            {
+                var responseData = JsonUtils.Deserialize<Dictionary<string, object?>>(
+                    responseBody
+                )!;
+                return new WithRawResponse<Dictionary<string, object?>>()
+                {
+                    Data = responseData,
+                    RawResponse = new RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    },
+                };
+            }
+            catch (JsonException e)
+            {
+                throw new ManagementApiException(
+                    "Failed to deserialize response",
+                    response.StatusCode,
+                    responseBody,
+                    e
+                );
+            }
+        }
+        {
+            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            try
+            {
+                switch (response.StatusCode)
+                {
+                    case 400:
+                        throw new BadRequestError(JsonUtils.Deserialize<object>(responseBody));
+                    case 401:
+                        throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
+                    case 403:
+                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                }
+            }
+            catch (JsonException)
+            {
+                // unable to map error response, throwing generic error
+            }
+            throw new ManagementApiException(
+                $"Error with status code {response.StatusCode}",
+                response.StatusCode,
+                responseBody
+            );
+        }
+    }
+
+    private async Task<WithRawResponse<Dictionary<string, object?>>> UpdateFcmv1ProviderAsyncCore(
+        UpdateGuardianFactorsProviderPushNotificationFcmv1RequestContent request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
@@ -780,7 +1029,7 @@ public partial class PushNotificationClient : IPushNotificationClient
     }
 
     /// <summary>
-    /// Modify configuration details of the multi-factor authentication APNS provider associated with your tenant.
+    /// Overwrite all configuration details of the multi-factor authentication APNS provider associated with your tenant.
     /// </summary>
     /// <example><code>
     /// await client.Guardian.Factors.PushNotification.SetApnsProviderAsync(
@@ -799,7 +1048,26 @@ public partial class PushNotificationClient : IPushNotificationClient
     }
 
     /// <summary>
-    /// Modify configuration details of the multi-factor authentication FCM provider associated with your tenant.
+    /// Modify configuration details of the multi-factor authentication APNS provider associated with your tenant.
+    /// </summary>
+    /// <example><code>
+    /// await client.Guardian.Factors.PushNotification.UpdateApnsProviderAsync(
+    ///     new UpdateGuardianFactorsProviderPushNotificationApnsRequestContent()
+    /// );
+    /// </code></example>
+    public WithRawResponseTask<UpdateGuardianFactorsProviderPushNotificationApnsResponseContent> UpdateApnsProviderAsync(
+        UpdateGuardianFactorsProviderPushNotificationApnsRequestContent request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        return new WithRawResponseTask<UpdateGuardianFactorsProviderPushNotificationApnsResponseContent>(
+            UpdateApnsProviderAsyncCore(request, options, cancellationToken)
+        );
+    }
+
+    /// <summary>
+    /// Overwrite all configuration details of the multi-factor authentication FCM provider associated with your tenant.
     /// </summary>
     /// <example><code>
     /// await client.Guardian.Factors.PushNotification.SetFcmProviderAsync(
@@ -818,7 +1086,26 @@ public partial class PushNotificationClient : IPushNotificationClient
     }
 
     /// <summary>
-    /// Modify configuration details of the multi-factor authentication FCMV1 provider associated with your tenant.
+    /// Modify configuration details of the multi-factor authentication FCM provider associated with your tenant.
+    /// </summary>
+    /// <example><code>
+    /// await client.Guardian.Factors.PushNotification.UpdateFcmProviderAsync(
+    ///     new UpdateGuardianFactorsProviderPushNotificationFcmRequestContent()
+    /// );
+    /// </code></example>
+    public WithRawResponseTask<Dictionary<string, object?>> UpdateFcmProviderAsync(
+        UpdateGuardianFactorsProviderPushNotificationFcmRequestContent request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        return new WithRawResponseTask<Dictionary<string, object?>>(
+            UpdateFcmProviderAsyncCore(request, options, cancellationToken)
+        );
+    }
+
+    /// <summary>
+    /// Overwrite all configuration details of the multi-factor authentication FCMV1 provider associated with your tenant.
     /// </summary>
     /// <example><code>
     /// await client.Guardian.Factors.PushNotification.SetFcmv1ProviderAsync(
@@ -837,7 +1124,26 @@ public partial class PushNotificationClient : IPushNotificationClient
     }
 
     /// <summary>
-    /// Retrieve configuration details for an AWS SNS push notification provider that has been enabled for MFA. To learn more, review <a href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-push-notifications-for-mfa">Configure Push Notifications for MFA</a>.
+    /// Modify configuration details of the multi-factor authentication FCMV1 provider associated with your tenant.
+    /// </summary>
+    /// <example><code>
+    /// await client.Guardian.Factors.PushNotification.UpdateFcmv1ProviderAsync(
+    ///     new UpdateGuardianFactorsProviderPushNotificationFcmv1RequestContent()
+    /// );
+    /// </code></example>
+    public WithRawResponseTask<Dictionary<string, object?>> UpdateFcmv1ProviderAsync(
+        UpdateGuardianFactorsProviderPushNotificationFcmv1RequestContent request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        return new WithRawResponseTask<Dictionary<string, object?>>(
+            UpdateFcmv1ProviderAsyncCore(request, options, cancellationToken)
+        );
+    }
+
+    /// <summary>
+    /// Retrieve configuration details for an AWS SNS push notification provider that has been enabled for MFA. To learn more, review <see href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-push-notifications-for-mfa">Configure Push Notifications for MFA</see>.
     /// </summary>
     /// <example><code>
     /// await client.Guardian.Factors.PushNotification.GetSnsProviderAsync();
@@ -853,7 +1159,7 @@ public partial class PushNotificationClient : IPushNotificationClient
     }
 
     /// <summary>
-    /// Configure the <a href="https://auth0.com/docs/multifactor-authentication/developer/sns-configuration">AWS SNS push notification provider configuration</a> (subscription required).
+    /// Configure the <see href="https://auth0.com/docs/multifactor-authentication/developer/sns-configuration">AWS SNS push notification provider configuration</see> (subscription required).
     /// </summary>
     /// <example><code>
     /// await client.Guardian.Factors.PushNotification.SetSnsProviderAsync(
@@ -872,7 +1178,7 @@ public partial class PushNotificationClient : IPushNotificationClient
     }
 
     /// <summary>
-    /// Configure the <a href="https://auth0.com/docs/multifactor-authentication/developer/sns-configuration">AWS SNS push notification provider configuration</a> (subscription required).
+    /// Configure the <see href="https://auth0.com/docs/multifactor-authentication/developer/sns-configuration">AWS SNS push notification provider configuration</see> (subscription required).
     /// </summary>
     /// <example><code>
     /// await client.Guardian.Factors.PushNotification.UpdateSnsProviderAsync(
@@ -891,7 +1197,7 @@ public partial class PushNotificationClient : IPushNotificationClient
     }
 
     /// <summary>
-    /// Modify the push notification provider configured for your tenant. For more information, review <a href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-push-notifications-for-mfa">Configure Push Notifications for MFA</a>.
+    /// Modify the push notification provider configured for your tenant. For more information, review <see href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-push-notifications-for-mfa">Configure Push Notifications for MFA</see>.
     /// </summary>
     /// <example><code>
     /// await client.Guardian.Factors.PushNotification.GetSelectedProviderAsync();
@@ -907,7 +1213,7 @@ public partial class PushNotificationClient : IPushNotificationClient
     }
 
     /// <summary>
-    /// Modify the push notification provider configured for your tenant. For more information, review <a href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-push-notifications-for-mfa">Configure Push Notifications for MFA</a>.
+    /// Modify the push notification provider configured for your tenant. For more information, review <see href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors/configure-push-notifications-for-mfa">Configure Push Notifications for MFA</see>.
     /// </summary>
     /// <example><code>
     /// await client.Guardian.Factors.PushNotification.SetProviderAsync(

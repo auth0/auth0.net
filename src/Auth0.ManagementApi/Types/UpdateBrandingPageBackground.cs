@@ -9,16 +9,16 @@ namespace Auth0.ManagementApi;
 
 /// <summary>
 /// Page Background Color or Gradient.
-/// Property contains either <code>null</code> to unset, a solid color as a string value <code>#FFFFFF</code>, or a gradient as an object.
+/// Property contains either <c>null</c> to unset, a solid color as a string value <c>#FFFFFF</c>, or a gradient as an object.
 ///
-/// <pre><code>
+/// <code>
 /// {
 ///   type: 'linear-gradient',
 ///   start: '#FFFFFF',
 ///   end: '#000000',
 ///   angle_deg: 35
 /// }
-/// </code></pre>
+/// </code>
 /// </summary>
 [JsonConverter(typeof(UpdateBrandingPageBackground.JsonConverter))]
 [Serializable]

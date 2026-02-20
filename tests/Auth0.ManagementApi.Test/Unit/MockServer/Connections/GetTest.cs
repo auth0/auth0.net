@@ -1,5 +1,5 @@
-using Auth0.ManagementApi.Connections;
 using Auth0.ManagementApi.Test.Unit.MockServer;
+using Auth0.ManagementApi.Test.Utils;
 using NUnit.Framework;
 
 namespace Auth0.ManagementApi.Test.Unit.MockServer.Connections;
@@ -12,12 +12,21 @@ public class GetTest : BaseMockServerTest
     {
         const string mockResponse = """
             {
-              "clients": [
+              "connection_id": "connection_id",
+              "connection_name": "connection_name",
+              "strategy": "strategy",
+              "mapping": [
                 {
-                  "client_id": "client_id"
+                  "auth0": "auth0",
+                  "idp": "idp"
                 }
               ],
-              "next": "next"
+              "synchronize_automatically": true,
+              "created_at": "2024-01-15T09:30:00.000Z",
+              "updated_at": "2024-01-15T09:30:00.000Z",
+              "last_synchronization_at": "2024-01-15T09:30:00.000Z",
+              "last_synchronization_status": "last_synchronization_status",
+              "last_synchronization_error": "last_synchronization_error"
             }
             """;
 
@@ -25,9 +34,7 @@ public class GetTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/connections/id/clients")
-                    .WithParam("take", "1")
-                    .WithParam("from", "from")
+                    .WithPath("/connections/id/directory-provisioning")
                     .UsingGet()
             )
             .RespondWith(
@@ -37,14 +44,7 @@ public class GetTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var items = await Client.Connections.Clients.GetAsync(
-            "id",
-            new GetConnectionEnabledClientsRequestParameters { Take = 1, From = "from" }
-        );
-        await foreach (var item in items)
-        {
-            Assert.That(item, Is.Not.Null);
-            break; // Only check the first item
-        }
+        var response = await Client.Connections.DirectoryProvisioning.GetAsync("id");
+        JsonAssert.AreEqual(response, mockResponse);
     }
 }

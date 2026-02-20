@@ -5,7 +5,7 @@ using Auth0.ManagementApi.Core;
 namespace Auth0.ManagementApi;
 
 /// <summary>
-/// Common attributes for connection options including non-persistent attributes and cross-app access
+/// Common attributes for connection options including non-persistent attributes and Cross App Access
 /// </summary>
 [Serializable]
 public record ConnectionOptionsCommon : IJsonOnDeserialized

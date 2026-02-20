@@ -190,7 +190,7 @@ public record TenantSettingsFlags : IJsonOnDeserialized
     public bool? GenaiTrial { get; set; }
 
     /// <summary>
-    /// Whether third-party developers can <a href="https://auth0.com/docs/api-auth/dynamic-client-registration">dynamically register</a> applications for your APIs (true) or not (false). This flag enables dynamic client registration.
+    /// Whether third-party developers can <see href="https://auth0.com/docs/api-auth/dynamic-client-registration">dynamically register</see> applications for your APIs (true) or not (false). This flag enables dynamic client registration.
     /// </summary>
     [Optional]
     [JsonPropertyName("enable_dynamic_client_registration")]

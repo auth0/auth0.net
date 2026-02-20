@@ -3,7 +3,7 @@ namespace Auth0.ManagementApi;
 public partial interface ICustomDomainsClient
 {
     /// <summary>
-    /// Retrieve details on <a href="https://auth0.com/docs/custom-domains">custom domains</a>.
+    /// Retrieve details on <see href="https://auth0.com/docs/custom-domains">custom domains</see>.
     /// </summary>
     WithRawResponseTask<IEnumerable<CustomDomain>> ListAsync(
         ListCustomDomainsRequestParameters request,
@@ -59,12 +59,12 @@ public partial interface ICustomDomainsClient
     /// - custom_client_ip_header
     /// - tls_policy
     ///
-    /// &lt;h5&gt;Updating CUSTOM_CLIENT_IP_HEADER for a custom domain&lt;/h5&gt;To update the <code>custom_client_ip_header</code> for a domain, the body to
+    /// <para>Updating CUSTOM_CLIENT_IP_HEADER for a custom domain</para>To update the <c>custom_client_ip_header</c> for a domain, the body to
     /// send should be:
-    /// <pre><code>{ "custom_client_ip_header": "cf-connecting-ip" }</code></pre>
+    /// <code>{ "custom_client_ip_header": "cf-connecting-ip" }</code>
     ///
-    /// &lt;h5&gt;Updating TLS_POLICY for a custom domain&lt;/h5&gt;To update the <code>tls_policy</code> for a domain, the body to send should be:
-    /// <pre><code>{ "tls_policy": "recommended" }</code></pre>
+    /// <para>Updating TLS_POLICY for a custom domain</para>To update the <c>tls_policy</c> for a domain, the body to send should be:
+    /// <code>{ "tls_policy": "recommended" }</code>
     ///
     ///
     /// TLS Policies:
@@ -75,7 +75,7 @@ public partial interface ICustomDomainsClient
     /// Some considerations:
     ///
     /// - The TLS ciphers and protocols available in each TLS policy follow industry recommendations, and may be updated occasionally.
-    /// - The <code>compatible</code> TLS policy is no longer supported.
+    /// - The <c>compatible</c> TLS policy is no longer supported.
     /// </summary>
     WithRawResponseTask<UpdateCustomDomainResponseContent> UpdateAsync(
         string id,
@@ -96,12 +96,12 @@ public partial interface ICustomDomainsClient
     /// <summary>
     /// Run the verification process on a custom domain.
     ///
-    /// Note: Check the <code>status</code> field to see its verification status. Once verification is complete, it may take up to 10 minutes before the custom domain can start accepting requests.
+    /// Note: Check the <c>status</c> field to see its verification status. Once verification is complete, it may take up to 10 minutes before the custom domain can start accepting requests.
     ///
-    /// For <code>self_managed_certs</code>, when the custom domain is verified for the first time, the response will also include the <code>cname_api_key</code> which you will need to configure your proxy. This key must be kept secret, and is used to validate the proxy requests.
+    /// For <c>self_managed_certs</c>, when the custom domain is verified for the first time, the response will also include the <c>cname_api_key</c> which you will need to configure your proxy. This key must be kept secret, and is used to validate the proxy requests.
     ///
-    /// <a href="https://auth0.com/docs/custom-domains#step-2-verify-ownership">Learn more</a> about verifying custom domains that use Auth0 Managed certificates.
-    /// <a href="https://auth0.com/docs/custom-domains/self-managed-certificates#step-2-verify-ownership">Learn more</a> about verifying custom domains that use Self Managed certificates.
+    /// <see href="https://auth0.com/docs/custom-domains#step-2-verify-ownership">Learn more</see> about verifying custom domains that use Auth0 Managed certificates.
+    /// <see href="https://auth0.com/docs/custom-domains/self-managed-certificates#step-2-verify-ownership">Learn more</see> about verifying custom domains that use Self Managed certificates.
     /// </summary>
     WithRawResponseTask<VerifyCustomDomainResponseContent> VerifyAsync(
         string id,

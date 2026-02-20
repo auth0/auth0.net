@@ -417,7 +417,7 @@ public partial class RenderingClient : IRenderingClient
     ///     }
     /// );
     /// </code></example>
-    public async Task<Pager<AculResponseContent>> ListAsync(
+    public async Task<Pager<ListAculsResponseContentItem>> ListAsync(
         ListAculsRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -430,7 +430,7 @@ public partial class RenderingClient : IRenderingClient
             ListAculsOffsetPaginatedResponseContent,
             int?,
             int?,
-            AculResponseContent
+            ListAculsResponseContentItem
         >
             .CreateInstanceAsync(
                 request,
@@ -452,7 +452,7 @@ public partial class RenderingClient : IRenderingClient
     }
 
     /// <summary>
-    /// Learn more about <a href='https://auth0.com/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens'>configuring render settings</a> for advanced customization.
+    /// Learn more about <see href="https://auth0.com/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens">configuring render settings</see> for advanced customization.
     /// </summary>
     /// <example><code>
     /// await client.Prompts.Rendering.BulkUpdateAsync(
@@ -499,7 +499,7 @@ public partial class RenderingClient : IRenderingClient
     }
 
     /// <summary>
-    /// Learn more about <a href='https://auth0.com/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens'>configuring render settings</a> for advanced customization.
+    /// Learn more about <see href="https://auth0.com/docs/customize/login-pages/advanced-customizations/getting-started/configure-acul-screens">configuring render settings</see> for advanced customization.
     /// </summary>
     /// <example><code>
     /// await client.Prompts.Rendering.UpdateAsync(

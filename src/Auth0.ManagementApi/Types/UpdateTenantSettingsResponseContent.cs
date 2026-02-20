@@ -211,6 +211,20 @@ public record UpdateTenantSettingsResponseContent : IJsonOnDeserialized
     [JsonPropertyName("resource_parameter_profile")]
     public TenantSettingsResourceParameterProfile? ResourceParameterProfile { get; set; }
 
+    /// <summary>
+    /// Whether Phone Consolidated Experience is enabled for this tenant.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("phone_consolidated_experience")]
+    public bool? PhoneConsolidatedExperience { get; set; }
+
+    /// <summary>
+    /// Whether Auth0 Guide (AI-powered assistance) is enabled for this tenant.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("enable_ai_guide")]
+    public bool? EnableAiGuide { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

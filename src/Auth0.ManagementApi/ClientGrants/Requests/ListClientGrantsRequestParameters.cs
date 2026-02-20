@@ -37,7 +37,7 @@ public record ListClientGrantsRequestParameters
     public Optional<bool?> AllowAnyOrganization { get; set; }
 
     /// <summary>
-    /// The type of application access the client grant allows. Use of this field is subject to the applicable Free Trial terms in Okta’s <a href="https://www.okta.com/legal/"> Master Subscription Agreement.</a>
+    /// The type of application access the client grant allows.
     /// </summary>
     [JsonIgnore]
     public Optional<ClientGrantSubjectTypeEnum?> SubjectType { get; set; }

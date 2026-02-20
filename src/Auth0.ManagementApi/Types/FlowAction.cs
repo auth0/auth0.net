@@ -1203,6 +1203,12 @@ public class FlowAction
         Auth0.ManagementApi.FlowActionAuth0SendEmail value
     ) => new("flowActionAuth0", (FlowActionAuth0)value);
 
+    public static implicit operator FlowAction(Auth0.ManagementApi.FlowActionAuth0SendSms value) =>
+        new("flowActionAuth0", (FlowActionAuth0)value);
+
+    public static implicit operator FlowAction(Auth0.ManagementApi.FlowActionAuth0MakeCall value) =>
+        new("flowActionAuth0", (FlowActionAuth0)value);
+
     public static implicit operator FlowAction(
         Auth0.ManagementApi.FlowActionClearbitFindPerson value
     ) => new("flowActionClearbit", (FlowActionClearbit)value);

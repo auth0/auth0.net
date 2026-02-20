@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi;
 public partial interface IRulesClient
 {
     /// <summary>
-    /// Retrieve a filtered list of <a href="https://auth0.com/docs/rules">rules</a>. Accepts a list of fields to include or exclude.
+    /// Retrieve a filtered list of <see href="https://auth0.com/docs/rules">rules</see>. Accepts a list of fields to include or exclude.
     /// </summary>
     Task<Pager<Rule>> ListAsync(
         ListRulesRequestParameters request,
@@ -14,9 +14,9 @@ public partial interface IRulesClient
     );
 
     /// <summary>
-    /// Create a <a href="https://auth0.com/docs/rules#create-a-new-rule-using-the-management-api">new rule</a>.
+    /// Create a <see href="https://auth0.com/docs/rules#create-a-new-rule-using-the-management-api">new rule</see>.
     ///
-    /// Note: Changing a rule's stage of execution from the default <code>login_success</code> can change the rule's function signature to have user omitted.
+    /// Note: Changing a rule's stage of execution from the default <c>login_success</c> can change the rule's function signature to have user omitted.
     /// </summary>
     WithRawResponseTask<CreateRuleResponseContent> CreateAsync(
         CreateRuleRequestContent request,
@@ -25,7 +25,7 @@ public partial interface IRulesClient
     );
 
     /// <summary>
-    /// Retrieve <a href="https://auth0.com/docs/rules">rule</a> details. Accepts a list of fields to include or exclude in the result.
+    /// Retrieve <see href="https://auth0.com/docs/rules">rule</see> details. Accepts a list of fields to include or exclude in the result.
     /// </summary>
     WithRawResponseTask<GetRuleResponseContent> GetAsync(
         string id,

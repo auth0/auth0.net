@@ -14,7 +14,7 @@ public partial class OrganizationsClient : IOrganizationsClient
     }
 
     /// <summary>
-    /// Retrieve list of the specified user's current Organization memberships. User must be specified by user ID. For more information, review <a href="https://auth0.com/docs/manage-users/organizations">Auth0 Organizations</a>.
+    /// Retrieve list of the specified user's current Organization memberships. User must be specified by user ID. For more information, review <see href="https://auth0.com/docs/manage-users/organizations">Auth0 Organizations</see>.
     /// </summary>
     private WithRawResponseTask<ListUserOrganizationsOffsetPaginatedResponseContent> ListInternalAsync(
         string id,
@@ -126,7 +126,7 @@ public partial class OrganizationsClient : IOrganizationsClient
     }
 
     /// <summary>
-    /// Retrieve list of the specified user's current Organization memberships. User must be specified by user ID. For more information, review <a href="https://auth0.com/docs/manage-users/organizations">Auth0 Organizations</a>.
+    /// Retrieve list of the specified user's current Organization memberships. User must be specified by user ID. For more information, review <see href="https://auth0.com/docs/manage-users/organizations">Auth0 Organizations</see>.
     /// </summary>
     /// <example><code>
     /// await client.Users.Organizations.ListAsync(

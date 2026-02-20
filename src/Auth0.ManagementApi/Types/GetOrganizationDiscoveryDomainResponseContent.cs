@@ -27,6 +27,13 @@ public record GetOrganizationDiscoveryDomainResponseContent : IJsonOnDeserialize
     public required OrganizationDiscoveryDomainStatus Status { get; set; }
 
     /// <summary>
+    /// Indicates whether this domain should be used for organization discovery.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("use_for_organization_discovery")]
+    public bool? UseForOrganizationDiscovery { get; set; }
+
+    /// <summary>
     /// A unique token generated for the discovery domain. This must be placed in a DNS TXT record at the location specified by the verification_host field to prove domain ownership.
     /// </summary>
     [JsonPropertyName("verification_txt")]

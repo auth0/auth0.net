@@ -18,6 +18,13 @@ public record UpdateCustomDomainRequestContent
     [JsonPropertyName("domain_metadata")]
     public Dictionary<string, string?>? DomainMetadata { get; set; }
 
+    /// <summary>
+    /// Relying Party ID (rpId) to be used for Passkeys on this custom domain. Set to null to remove the rpId and fall back to using the full domain.
+    /// </summary>
+    [Nullable, Optional]
+    [JsonPropertyName("relying_party_identifier")]
+    public Optional<string?> RelyingPartyIdentifier { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

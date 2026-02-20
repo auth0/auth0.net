@@ -44,7 +44,7 @@ public class GetTest : BaseMockServerTest
         var response = await Client.Flows.Executions.GetAsync(
             "flow_id",
             "execution_id",
-            new ExecutionsGetRequest()
+            new GetFlowExecutionRequestParameters()
         );
         JsonAssert.AreEqual(response, mockResponse);
     }

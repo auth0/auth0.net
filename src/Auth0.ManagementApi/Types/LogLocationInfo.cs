@@ -14,14 +14,14 @@ public record LogLocationInfo : IJsonOnDeserialized, IJsonOnSerializing
         new Dictionary<string, object?>();
 
     /// <summary>
-    /// Two-letter <a href="https://www.iso.org/iso-3166-country-codes.html">Alpha-2 ISO 3166-1</a> country code.
+    /// Two-letter <see href="https://www.iso.org/iso-3166-country-codes.html">Alpha-2 ISO 3166-1</see> country code.
     /// </summary>
     [Optional]
     [JsonPropertyName("country_code")]
     public string? CountryCode { get; set; }
 
     /// <summary>
-    /// Three-letter <a href="https://www.iso.org/iso-3166-country-codes.html">Alpha-3 ISO 3166-1</a> country code.
+    /// Three-letter <see href="https://www.iso.org/iso-3166-country-codes.html">Alpha-3 ISO 3166-1</see> country code.
     /// </summary>
     [Optional]
     [JsonPropertyName("country_code3")]
@@ -46,17 +46,17 @@ public record LogLocationInfo : IJsonOnDeserialized, IJsonOnSerializing
     /// </summary>
     [Optional]
     [JsonPropertyName("latitude")]
-    public string? Latitude { get; set; }
+    public double? Latitude { get; set; }
 
     /// <summary>
     /// Global longitude (vertical) position.
     /// </summary>
     [Optional]
     [JsonPropertyName("longitude")]
-    public string? Longitude { get; set; }
+    public double? Longitude { get; set; }
 
     /// <summary>
-    /// Time zone name as found in the <a href="https://www.iana.org/time-zones">tz database</a>.
+    /// Time zone name as found in the <see href="https://www.iana.org/time-zones">tz database</see>.
     /// </summary>
     [Optional]
     [JsonPropertyName("time_zone")]

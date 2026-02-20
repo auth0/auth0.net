@@ -21,6 +21,12 @@ public readonly record struct SelfServiceProfileAllowedStrategyEnum : IStringEnu
 
     public static readonly SelfServiceProfileAllowedStrategyEnum Okta = new(Values.Okta);
 
+    public static readonly SelfServiceProfileAllowedStrategyEnum Auth0Samlp = new(
+        Values.Auth0Samlp
+    );
+
+    public static readonly SelfServiceProfileAllowedStrategyEnum OktaSamlp = new(Values.OktaSamlp);
+
     public static readonly SelfServiceProfileAllowedStrategyEnum KeycloakSamlp = new(
         Values.KeycloakSamlp
     );
@@ -89,6 +95,10 @@ public readonly record struct SelfServiceProfileAllowedStrategyEnum : IStringEnu
         public const string Adfs = "adfs";
 
         public const string Okta = "okta";
+
+        public const string Auth0Samlp = "auth0-samlp";
+
+        public const string OktaSamlp = "okta-samlp";
 
         public const string KeycloakSamlp = "keycloak-samlp";
 

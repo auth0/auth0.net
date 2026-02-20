@@ -20,7 +20,7 @@ public record VerifyEmailTicketRequestContent
     public required string UserId { get; set; }
 
     /// <summary>
-    /// ID of the client (application). If provided for tenants using the New Universal Login experience, the email template and UI displays application details, and the user is prompted to redirect to the application's <a target='' href='https://auth0.com/docs/authenticate/login/auth0-universal-login/configure-default-login-routes#completing-the-password-reset-flow'>default login route</a> after the ticket is used. client_id is required to use the <a target='' href='https://auth0.com/docs/customize/actions/flows-and-triggers/post-change-password-flow'>Password Reset Post Challenge</a> trigger.
+    /// ID of the client (application). If provided for tenants using the New Universal Login experience, the email template and UI displays application details, and the user is prompted to redirect to the application's <see href="https://auth0.com/docs/authenticate/login/auth0-universal-login/configure-default-login-routes#completing-the-password-reset-flow">default login route</see> after the ticket is used. client_id is required to use the <see href="https://auth0.com/docs/customize/actions/flows-and-triggers/post-change-password-flow">Password Reset Post Challenge</see> trigger.
     /// </summary>
     [Optional]
     [JsonPropertyName("client_id")]

@@ -71,7 +71,7 @@ public record Client : IJsonOnDeserialized, IJsonOnSerializing
     public bool? IsFirstParty { get; set; }
 
     /// <summary>
-    /// Whether this client conforms to <a href='https://auth0.com/docs/api-auth/tutorials/adoption'>strict OIDC specifications</a> (true) or uses legacy features (false).
+    /// Whether this client conforms to <see href="https://auth0.com/docs/api-auth/tutorials/adoption">strict OIDC specifications</see> (true) or uses legacy features (false).
     /// </summary>
     [Optional]
     [JsonPropertyName("oidc_conformant")]
@@ -92,7 +92,7 @@ public record Client : IJsonOnDeserialized, IJsonOnSerializing
     public IEnumerable<string>? AllowedOrigins { get; set; }
 
     /// <summary>
-    /// Comma-separated list of allowed origins for use with <a href='https://auth0.com/docs/cross-origin-authentication'>Cross-Origin Authentication</a>, <a href='https://auth0.com/docs/flows/concepts/device-auth'>Device Flow</a>, and <a href='https://auth0.com/docs/protocols/oauth2#how-response-mode-works'>web message response mode</a>.
+    /// Comma-separated list of allowed origins for use with <see href="https://auth0.com/docs/cross-origin-authentication">Cross-Origin Authentication</see>, <see href="https://auth0.com/docs/flows/concepts/device-auth">Device Flow</see>, and <see href="https://auth0.com/docs/protocols/oauth2#how-response-mode-works">web message response mode</see>.
     /// </summary>
     [Optional]
     [JsonPropertyName("web_origins")]

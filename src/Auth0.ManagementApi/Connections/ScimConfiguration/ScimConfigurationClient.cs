@@ -351,7 +351,7 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
     }
 
     /// <summary>
-    /// Retrieves a scim configuration by its <code>connectionId</code>.
+    /// Retrieves a scim configuration by its <c>connectionId</c>.
     /// </summary>
     /// <example><code>
     /// await client.Connections.ScimConfiguration.GetAsync("id");
@@ -389,7 +389,7 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
     }
 
     /// <summary>
-    /// Deletes a scim configuration by its <code>connectionId</code>.
+    /// Deletes a scim configuration by its <c>connectionId</c>.
     /// </summary>
     /// <example><code>
     /// await client.Connections.ScimConfiguration.DeleteAsync("id");
@@ -451,7 +451,7 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
     }
 
     /// <summary>
-    /// Update a scim configuration by its <code>connectionId</code>.
+    /// Update a scim configuration by its <c>connectionId</c>.
     /// </summary>
     /// <example><code>
     /// await client.Connections.ScimConfiguration.UpdateAsync(
@@ -476,7 +476,7 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
     }
 
     /// <summary>
-    /// Retrieves a scim configuration's default mapping by its <code>connectionId</code>.
+    /// Retrieves a scim configuration's default mapping by its <c>connectionId</c>.
     /// </summary>
     /// <example><code>
     /// await client.Connections.ScimConfiguration.GetDefaultMappingAsync("id");

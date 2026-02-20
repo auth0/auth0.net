@@ -215,7 +215,7 @@ public partial class VersionsClient : IVersionsClient
     private async Task<WithRawResponse<DeployActionVersionResponseContent>> DeployAsyncCore(
         string actionId,
         string id,
-        Optional<DeployActionVersionRequestBodyParams?> request,
+        Optional<DeployActionVersionRequestContent?> request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
@@ -372,13 +372,13 @@ public partial class VersionsClient : IVersionsClient
     /// await client.Actions.Versions.DeployAsync(
     ///     "actionId",
     ///     "id",
-    ///     new DeployActionVersionRequestBodyParams()
+    ///     new DeployActionVersionRequestContent()
     /// );
     /// </code></example>
     public WithRawResponseTask<DeployActionVersionResponseContent> DeployAsync(
         string actionId,
         string id,
-        Optional<DeployActionVersionRequestBodyParams?> request,
+        Optional<DeployActionVersionRequestContent?> request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )

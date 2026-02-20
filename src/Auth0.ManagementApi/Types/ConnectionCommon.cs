@@ -12,14 +12,6 @@ public record ConnectionCommon : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [Optional]
-    [JsonPropertyName("authentication")]
-    public ConnectionAuthenticationPurpose? Authentication { get; set; }
-
-    [Optional]
-    [JsonPropertyName("connected_accounts")]
-    public ConnectionConnectedAccountsPurpose? ConnectedAccounts { get; set; }
-
-    [Optional]
     [JsonPropertyName("display_name")]
     public string? DisplayName { get; set; }
 
@@ -34,14 +26,6 @@ public record ConnectionCommon : IJsonOnDeserialized
     [Optional]
     [JsonPropertyName("metadata")]
     public Dictionary<string, string?>? Metadata { get; set; }
-
-    [Optional]
-    [JsonPropertyName("realms")]
-    public IEnumerable<string>? Realms { get; set; }
-
-    [Optional]
-    [JsonPropertyName("show_as_button")]
-    public bool? ShowAsButton { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

@@ -14,7 +14,7 @@ public partial class InvitationsClient : IInvitationsClient
     }
 
     /// <summary>
-    /// Retrieve a detailed list of invitations sent to users for a specific Organization. The list includes details such as inviter and invitee information, invitation URLs, and dates of creation and expiration. To learn more about Organization invitations, review <a href="https://auth0.com/docs/manage-users/organizations/configure-organizations/invite-members">Invite Organization Members</a>.
+    /// Retrieve a detailed list of invitations sent to users for a specific Organization. The list includes details such as inviter and invitee information, invitation URLs, and dates of creation and expiration. To learn more about Organization invitations, review <see href="https://auth0.com/docs/manage-users/organizations/configure-organizations/invite-members">Invite Organization Members</see>.
     /// </summary>
     private WithRawResponseTask<ListOrganizationInvitationsOffsetPaginatedResponseContent> ListInternalAsync(
         string id,
@@ -328,7 +328,7 @@ public partial class InvitationsClient : IInvitationsClient
     }
 
     /// <summary>
-    /// Retrieve a detailed list of invitations sent to users for a specific Organization. The list includes details such as inviter and invitee information, invitation URLs, and dates of creation and expiration. To learn more about Organization invitations, review <a href="https://auth0.com/docs/manage-users/organizations/configure-organizations/invite-members">Invite Organization Members</a>.
+    /// Retrieve a detailed list of invitations sent to users for a specific Organization. The list includes details such as inviter and invitee information, invitation URLs, and dates of creation and expiration. To learn more about Organization invitations, review <see href="https://auth0.com/docs/manage-users/organizations/configure-organizations/invite-members">Invite Organization Members</see>.
     /// </summary>
     /// <example><code>
     /// await client.Organizations.Invitations.ListAsync(
@@ -381,7 +381,7 @@ public partial class InvitationsClient : IInvitationsClient
     }
 
     /// <summary>
-    /// Create a user invitation for a specific Organization. Upon creation, the listed user receives an email inviting them to join the Organization. To learn more about Organization invitations, review <a href="https://auth0.com/docs/manage-users/organizations/configure-organizations/invite-members">Invite Organization Members</a>.
+    /// Create a user invitation for a specific Organization. Upon creation, the listed user receives an email inviting them to join the Organization. To learn more about Organization invitations, review <see href="https://auth0.com/docs/manage-users/organizations/configure-organizations/invite-members">Invite Organization Members</see>.
     /// </summary>
     /// <example><code>
     /// await client.Organizations.Invitations.CreateAsync(

@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Auth0.ManagementApi;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi.AttackProtection;
@@ -15,11 +16,11 @@ public record UpdateBruteForceSettingsRequestContent
 
     /// <summary>
     /// Action to take when a brute force protection threshold is violated.
-    ///         Possible values: <code>block</code>, <code>user_notification</code>.
+    ///         Possible values: <c>block</c>, <c>user_notification</c>.
     /// </summary>
     [Optional]
     [JsonPropertyName("shields")]
-    public IEnumerable<UpdateBruteForceSettingsRequestContentShieldsItem>? Shields { get; set; }
+    public IEnumerable<BruteForceProtectionShieldsEnum>? Shields { get; set; }
 
     /// <summary>
     /// List of trusted IP addresses that will not have attack protection enforced against them.
@@ -28,13 +29,9 @@ public record UpdateBruteForceSettingsRequestContent
     [JsonPropertyName("allowlist")]
     public IEnumerable<string>? Allowlist { get; set; }
 
-    /// <summary>
-    /// Account Lockout: Determines whether or not IP address is used when counting failed attempts.
-    ///           Possible values: <code>count_per_identifier_and_ip</code>, <code>count_per_identifier</code>.
-    /// </summary>
     [Optional]
     [JsonPropertyName("mode")]
-    public UpdateBruteForceSettingsRequestContentMode? Mode { get; set; }
+    public BruteForceProtectionModeEnum? Mode { get; set; }
 
     /// <summary>
     /// Maximum number of unsuccessful attempts.

@@ -14,7 +14,7 @@ public partial class BlocksClient : IBlocksClient
     }
 
     /// <summary>
-    /// Check if the given IP address is blocked via the <a href="https://auth0.com/docs/configure/attack-protection/suspicious-ip-throttling">Suspicious IP Throttling</a> due to multiple suspicious attempts.
+    /// Check if the given IP address is blocked via the <see href="https://auth0.com/docs/configure/attack-protection/suspicious-ip-throttling">Suspicious IP Throttling</see> due to multiple suspicious attempts.
     /// </summary>
     /// <example><code>
     /// await client.Anomaly.Blocks.CheckIpAsync("id");
@@ -82,7 +82,7 @@ public partial class BlocksClient : IBlocksClient
     }
 
     /// <summary>
-    /// Remove a block imposed by <a href="https://auth0.com/docs/configure/attack-protection/suspicious-ip-throttling">Suspicious IP Throttling</a> for the given IP address.
+    /// Remove a block imposed by <see href="https://auth0.com/docs/configure/attack-protection/suspicious-ip-throttling">Suspicious IP Throttling</see> for the given IP address.
     /// </summary>
     /// <example><code>
     /// await client.Anomaly.Blocks.UnblockIpAsync("id");

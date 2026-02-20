@@ -19,7 +19,7 @@ public record ListOrganizationClientGrantsRequestParameters
     public Optional<string?> ClientId { get; set; }
 
     /// <summary>
-    /// Optional filter on the ID of the client grant. Must be URL encoded and may be specified multiple times (max 10).<br /><b>e.g.</b> <i>../client-grants?grant_ids=id1&grant_ids=id2</i>
+    /// Optional filter on the ID of the client grant. Must be URL encoded and may be specified multiple times (max 10).<br/><b>e.g.</b> <i>../client-grants?grant_ids=id1&grant_ids=id2</i>
     /// </summary>
     [JsonIgnore]
     public IEnumerable<string?> GrantIds { get; set; } = new List<string?>();

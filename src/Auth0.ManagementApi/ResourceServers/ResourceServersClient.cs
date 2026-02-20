@@ -447,7 +447,7 @@ public partial class ResourceServersClient : IResourceServersClient
     }
 
     /// <summary>
-    /// Create a new API associated with your tenant. Note that all new APIs must be registered with Auth0. For more information, read <a href="https://www.auth0.com/docs/get-started/apis"> APIs</a>.
+    /// Create a new API associated with your tenant. Note that all new APIs must be registered with Auth0. For more information, read <see href="https://www.auth0.com/docs/get-started/apis"> APIs</see>.
     /// </summary>
     /// <example><code>
     /// await client.ResourceServers.CreateAsync(
@@ -466,7 +466,7 @@ public partial class ResourceServersClient : IResourceServersClient
     }
 
     /// <summary>
-    /// Retrieve <a href="https://auth0.com/docs/apis">API</a> details with the given ID.
+    /// Retrieve <see href="https://auth0.com/docs/apis">API</see> details with the given ID.
     /// </summary>
     /// <example><code>
     /// await client.ResourceServers.GetAsync(
@@ -487,7 +487,7 @@ public partial class ResourceServersClient : IResourceServersClient
     }
 
     /// <summary>
-    /// Delete an existing API by ID. For more information, read <a href="https://www.auth0.com/docs/get-started/apis/api-settings">API Settings</a>.
+    /// Delete an existing API by ID. For more information, read <see href="https://www.auth0.com/docs/get-started/apis/api-settings">API Settings</see>.
     /// </summary>
     /// <example><code>
     /// await client.ResourceServers.DeleteAsync("id");
@@ -553,7 +553,7 @@ public partial class ResourceServersClient : IResourceServersClient
     }
 
     /// <summary>
-    /// Change an existing API setting by resource server ID. For more information, read <a href="https://www.auth0.com/docs/get-started/apis/api-settings">API Settings</a>.
+    /// Change an existing API setting by resource server ID. For more information, read <see href="https://www.auth0.com/docs/get-started/apis/api-settings">API Settings</see>.
     /// </summary>
     /// <example><code>
     /// await client.ResourceServers.UpdateAsync("id", new UpdateResourceServerRequestContent());

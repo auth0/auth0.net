@@ -17,7 +17,7 @@ public partial class HooksClient : IHooksClient
     public ISecretsClient Secrets { get; }
 
     /// <summary>
-    /// Retrieve all <a href="https://auth0.com/docs/hooks">hooks</a>. Accepts a list of fields to include or exclude in the result.
+    /// Retrieve all <see href="https://auth0.com/docs/hooks">hooks</see>. Accepts a list of fields to include or exclude in the result.
     /// </summary>
     private WithRawResponseTask<ListHooksOffsetPaginatedResponseContent> ListInternalAsync(
         ListHooksRequestParameters request,
@@ -389,7 +389,7 @@ public partial class HooksClient : IHooksClient
     }
 
     /// <summary>
-    /// Retrieve all <a href="https://auth0.com/docs/hooks">hooks</a>. Accepts a list of fields to include or exclude in the result.
+    /// Retrieve all <see href="https://auth0.com/docs/hooks">hooks</see>. Accepts a list of fields to include or exclude in the result.
     /// </summary>
     /// <example><code>
     /// await client.Hooks.ListAsync(
@@ -463,7 +463,7 @@ public partial class HooksClient : IHooksClient
     }
 
     /// <summary>
-    /// Retrieve <a href="https://auth0.com/docs/hooks">a hook</a> by its ID. Accepts a list of fields to include in the result.
+    /// Retrieve <see href="https://auth0.com/docs/hooks">a hook</see> by its ID. Accepts a list of fields to include in the result.
     /// </summary>
     /// <example><code>
     /// await client.Hooks.GetAsync("id", new GetHookRequestParameters { Fields = "fields" });

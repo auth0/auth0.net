@@ -19,16 +19,20 @@ public record ConnectionOptionsOAuth2Common : IJsonOnDeserialized
     [JsonPropertyName("client_secret")]
     public string? ClientSecret { get; set; }
 
+    [Optional]
+    [JsonPropertyName("scope")]
+    public ConnectionScopeOAuth2? Scope { get; set; }
+
+    [Optional]
+    [JsonPropertyName("set_user_root_attributes")]
+    public ConnectionSetUserRootAttributesEnum? SetUserRootAttributes { get; set; }
+
     [Nullable, Optional]
     [JsonPropertyName("upstream_params")]
     public Optional<Dictionary<
         string,
         ConnectionUpstreamAdditionalProperties?
     >?> UpstreamParams { get; set; }
-
-    [Optional]
-    [JsonPropertyName("set_user_root_attributes")]
-    public ConnectionSetUserRootAttributesEnum? SetUserRootAttributes { get; set; }
 
     [Optional]
     [JsonPropertyName("non_persistent_attrs")]

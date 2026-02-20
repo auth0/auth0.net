@@ -347,8 +347,8 @@ public partial class LogStreamsClient : ILogStreamsClient
     }
 
     /// <summary>
-    /// Retrieve details on <a href="https://auth0.com/docs/logs/streams">log streams</a>.
-    /// &lt;h5&gt;Sample Response&lt;/h5&gt;<pre><code>[{
+    /// Retrieve details on <see href="https://auth0.com/docs/logs/streams">log streams</see>.
+    /// <para>Sample Response</para><code>[{
     /// 	"id": "string",
     /// 	"name": "string",
     /// 	"type": "eventbridge",
@@ -412,7 +412,7 @@ public partial class LogStreamsClient : ILogStreamsClient
     /// 		"datadogRegion": "string",
     /// 		"datadogApiKey": "string"
     /// 	}
-    /// }]</code></pre>
+    /// }]</code>
     /// </summary>
     /// <example><code>
     /// await client.LogStreams.ListAsync();
@@ -429,9 +429,9 @@ public partial class LogStreamsClient : ILogStreamsClient
 
     /// <summary>
     /// Create a log stream.
-    /// &lt;h5&gt;Log Stream Types&lt;/h5&gt; The <code>type</code> of log stream being created determines the properties required in the <code>sink</code> payload.
-    /// &lt;h5&gt;HTTP Stream&lt;/h5&gt; For an <code>http</code> Stream, the <code>sink</code> properties are listed in the payload below
-    /// Request: <pre><code>{
+    /// <para>Log Stream Types</para> The <c>type</c> of log stream being created determines the properties required in the <c>sink</c> payload.
+    /// <para>HTTP Stream</para> For an <c>http</c> Stream, the <c>sink</c> properties are listed in the payload below
+    /// Request: <code>{
     /// 	"name": "string",
     /// 	"type": "http",
     /// 	"sink": {
@@ -440,8 +440,8 @@ public partial class LogStreamsClient : ILogStreamsClient
     /// 		"httpContentFormat": "JSONLINES|JSONARRAY",
     /// 		"httpAuthorization": "string"
     /// 	}
-    /// }</code></pre>
-    /// Response: <pre><code>{
+    /// }</code>
+    /// Response: <code>{
     /// 	"id": "string",
     /// 	"name": "string",
     /// 	"type": "http",
@@ -452,17 +452,17 @@ public partial class LogStreamsClient : ILogStreamsClient
     /// 		"httpContentFormat": "JSONLINES|JSONARRAY",
     /// 		"httpAuthorization": "string"
     /// 	}
-    /// }</code></pre>
-    /// &lt;h5&gt;Amazon EventBridge Stream&lt;/h5&gt; For an <code>eventbridge</code> Stream, the <code>sink</code> properties are listed in the payload below
-    /// Request: <pre><code>{
+    /// }</code>
+    /// <para>Amazon EventBridge Stream</para> For an <c>eventbridge</c> Stream, the <c>sink</c> properties are listed in the payload below
+    /// Request: <code>{
     /// 	"name": "string",
     /// 	"type": "eventbridge",
     /// 	"sink": {
     /// 		"awsRegion": "string",
     /// 		"awsAccountId": "string"
     /// 	}
-    /// }</code></pre>
-    /// The response will include an additional field <code>awsPartnerEventSource</code> in the <code>sink</code>: <pre><code>{
+    /// }</code>
+    /// The response will include an additional field <c>awsPartnerEventSource</c> in the <c>sink</c>: <code>{
     /// 	"id": "string",
     /// 	"name": "string",
     /// 	"type": "eventbridge",
@@ -472,9 +472,9 @@ public partial class LogStreamsClient : ILogStreamsClient
     /// 		"awsRegion": "string",
     /// 		"awsPartnerEventSource": "string"
     /// 	}
-    /// }</code></pre>
-    /// &lt;h5&gt;Azure Event Grid Stream&lt;/h5&gt; For an <code>Azure Event Grid</code> Stream, the <code>sink</code> properties are listed in the payload below
-    /// Request: <pre><code>{
+    /// }</code>
+    /// <para>Azure Event Grid Stream</para> For an <c>Azure Event Grid</c> Stream, the <c>sink</c> properties are listed in the payload below
+    /// Request: <code>{
     /// 	"name": "string",
     /// 	"type": "eventgrid",
     /// 	"sink": {
@@ -482,8 +482,8 @@ public partial class LogStreamsClient : ILogStreamsClient
     /// 		"azureResourceGroup": "string",
     /// 		"azureRegion": "string"
     /// 	}
-    /// }</code></pre>
-    /// Response: <pre><code>{
+    /// }</code>
+    /// Response: <code>{
     /// 	"id": "string",
     /// 	"name": "string",
     /// 	"type": "http",
@@ -494,17 +494,17 @@ public partial class LogStreamsClient : ILogStreamsClient
     /// 		"azureRegion": "string",
     /// 		"azurePartnerTopic": "string"
     /// 	}
-    /// }</code></pre>
-    /// &lt;h5&gt;Datadog Stream&lt;/h5&gt; For a <code>Datadog</code> Stream, the <code>sink</code> properties are listed in the payload below
-    /// Request: <pre><code>{
+    /// }</code>
+    /// <para>Datadog Stream</para> For a <c>Datadog</c> Stream, the <c>sink</c> properties are listed in the payload below
+    /// Request: <code>{
     /// 	"name": "string",
     /// 	"type": "datadog",
     /// 	"sink": {
     /// 		"datadogRegion": "string",
     /// 		"datadogApiKey": "string"
     /// 	}
-    /// }</code></pre>
-    /// Response: <pre><code>{
+    /// }</code>
+    /// Response: <code>{
     /// 	"id": "string",
     /// 	"name": "string",
     /// 	"type": "datadog",
@@ -513,9 +513,9 @@ public partial class LogStreamsClient : ILogStreamsClient
     /// 		"datadogRegion": "string",
     /// 		"datadogApiKey": "string"
     /// 	}
-    /// }</code></pre>
-    /// &lt;h5&gt;Splunk Stream&lt;/h5&gt; For a <code>Splunk</code> Stream, the <code>sink</code> properties are listed in the payload below
-    /// Request: <pre><code>{
+    /// }</code>
+    /// <para>Splunk Stream</para> For a <c>Splunk</c> Stream, the <c>sink</c> properties are listed in the payload below
+    /// Request: <code>{
     /// 	"name": "string",
     /// 	"type": "splunk",
     /// 	"sink": {
@@ -524,8 +524,8 @@ public partial class LogStreamsClient : ILogStreamsClient
     /// 		"splunkPort": "string",
     /// 		"splunkSecure": "boolean"
     /// 	}
-    /// }</code></pre>
-    /// Response: <pre><code>{
+    /// }</code>
+    /// Response: <code>{
     /// 	"id": "string",
     /// 	"name": "string",
     /// 	"type": "splunk",
@@ -536,16 +536,16 @@ public partial class LogStreamsClient : ILogStreamsClient
     /// 		"splunkPort": "string",
     /// 		"splunkSecure": "boolean"
     /// 	}
-    /// }</code></pre>
-    /// &lt;h5&gt;Sumo Logic Stream&lt;/h5&gt; For a <code>Sumo Logic</code> Stream, the <code>sink</code> properties are listed in the payload below
-    /// Request: <pre><code>{
+    /// }</code>
+    /// <para>Sumo Logic Stream</para> For a <c>Sumo Logic</c> Stream, the <c>sink</c> properties are listed in the payload below
+    /// Request: <code>{
     /// 	"name": "string",
     /// 	"type": "sumo",
     /// 	"sink": {
     /// 		"sumoSourceAddress": "string",
     /// 	}
-    /// }</code></pre>
-    /// Response: <pre><code>{
+    /// }</code>
+    /// Response: <code>{
     /// 	"id": "string",
     /// 	"name": "string",
     /// 	"type": "sumo",
@@ -553,7 +553,7 @@ public partial class LogStreamsClient : ILogStreamsClient
     /// 	"sink": {
     /// 		"sumoSourceAddress": "string",
     /// 	}
-    /// }</code></pre>
+    /// }</code>
     /// </summary>
     /// <example><code>
     /// await client.LogStreams.CreateAsync(
@@ -577,7 +577,7 @@ public partial class LogStreamsClient : ILogStreamsClient
 
     /// <summary>
     /// Retrieve a log stream configuration and status.
-    /// &lt;h5&gt;Sample responses&lt;/h5&gt;&lt;h5&gt;Amazon EventBridge Log Stream&lt;/h5&gt;<pre><code>{
+    /// <para>Sample responses</para><para>Amazon EventBridge Log Stream</para><code>{
     /// 	"id": "string",
     /// 	"name": "string",
     /// 	"type": "eventbridge",
@@ -587,7 +587,7 @@ public partial class LogStreamsClient : ILogStreamsClient
     /// 		"awsRegion": "string",
     /// 		"awsPartnerEventSource": "string"
     /// 	}
-    /// }</code></pre> &lt;h5&gt;HTTP Log Stream&lt;/h5&gt;<pre><code>{
+    /// }</code> <para>HTTP Log Stream</para><code>{
     /// 	"id": "string",
     /// 	"name": "string",
     /// 	"type": "http",
@@ -598,7 +598,7 @@ public partial class LogStreamsClient : ILogStreamsClient
     /// 		"httpEndpoint": "string",
     /// 		"httpAuthorization": "string"
     /// 	}
-    /// }</code></pre> &lt;h5&gt;Datadog Log Stream&lt;/h5&gt;<pre><code>{
+    /// }</code> <para>Datadog Log Stream</para><code>{
     /// 	"id": "string",
     /// 	"name": "string",
     /// 	"type": "datadog",
@@ -608,9 +608,9 @@ public partial class LogStreamsClient : ILogStreamsClient
     /// 		"datadogApiKey": "string"
     /// 	}
     ///
-    /// }</code></pre>&lt;h5&gt;Mixpanel&lt;/h5&gt;
+    /// }</code><para>Mixpanel</para>
     ///
-    /// 	Request: <pre><code>{
+    /// 	Request: <code>{
     /// 	  "name": "string",
     /// 	  "type": "mixpanel",
     /// 	  "sink": {
@@ -619,10 +619,10 @@ public partial class LogStreamsClient : ILogStreamsClient
     /// 		"mixpanelServiceAccountUsername": "string",
     /// 		"mixpanelServiceAccountPassword": "string"
     /// 	  }
-    /// 	} </code></pre>
+    /// 	} </code>
     ///
     ///
-    /// 	Response: <pre><code>{
+    /// 	Response: <code>{
     /// 		"id": "string",
     /// 		"name": "string",
     /// 		"type": "mixpanel",
@@ -633,19 +633,19 @@ public partial class LogStreamsClient : ILogStreamsClient
     /// 		  "mixpanelServiceAccountUsername": "string",
     /// 		  "mixpanelServiceAccountPassword": "string" // the following is redacted on return
     /// 		}
-    /// 	  } </code></pre>
+    /// 	  } </code>
     ///
-    /// 	&lt;h5&gt;Segment&lt;/h5&gt;
+    /// 	<para>Segment</para>
     ///
-    /// 	Request: <pre><code> {
+    /// 	Request: <code> {
     /// 	  "name": "string",
     /// 	  "type": "segment",
     /// 	  "sink": {
     /// 		"segmentWriteKey": "string"
     /// 	  }
-    /// 	}</code></pre>
+    /// 	}</code>
     ///
-    /// 	Response: <pre><code>{
+    /// 	Response: <code>{
     /// 	  "id": "string",
     /// 	  "name": "string",
     /// 	  "type": "segment",
@@ -653,9 +653,9 @@ public partial class LogStreamsClient : ILogStreamsClient
     /// 	  "sink": {
     /// 		"segmentWriteKey": "string"
     /// 	  }
-    /// 	} </code></pre>
+    /// 	} </code>
     ///
-    /// &lt;h5&gt;Splunk Log Stream&lt;/h5&gt;<pre><code>{
+    /// <para>Splunk Log Stream</para><code>{
     /// 	"id": "string",
     /// 	"name": "string",
     /// 	"type": "splunk",
@@ -666,7 +666,7 @@ public partial class LogStreamsClient : ILogStreamsClient
     /// 		"splunkPort": "string",
     /// 		"splunkSecure": "boolean"
     /// 	}
-    /// }</code></pre> &lt;h5&gt;Sumo Logic Log Stream&lt;/h5&gt;<pre><code>{
+    /// }</code> <para>Sumo Logic Log Stream</para><code>{
     /// 	"id": "string",
     /// 	"name": "string",
     /// 	"type": "sumo",
@@ -674,10 +674,10 @@ public partial class LogStreamsClient : ILogStreamsClient
     /// 	"sink": {
     /// 		"sumoSourceAddress": "string",
     /// 	}
-    /// }</code></pre> &lt;h5&gt;Status&lt;/h5&gt; The <code>status</code> of a log stream maybe any of the following:
-    /// 1. <code>active</code> - Stream is currently enabled.
-    /// 2. <code>paused</code> - Stream is currently user disabled and will not attempt log delivery.
-    /// 3. <code>suspended</code> - Stream is currently disabled because of errors and will not attempt log delivery.
+    /// }</code> <para>Status</para> The <c>status</c> of a log stream maybe any of the following:
+    /// 1. <c>active</c> - Stream is currently enabled.
+    /// 2. <c>paused</c> - Stream is currently user disabled and will not attempt log delivery.
+    /// 3. <c>suspended</c> - Stream is currently disabled because of errors and will not attempt log delivery.
     /// </summary>
     /// <example><code>
     /// await client.LogStreams.GetAsync("id");
@@ -760,40 +760,40 @@ public partial class LogStreamsClient : ILogStreamsClient
 
     /// <summary>
     /// Update a log stream.
-    /// &lt;h4&gt;Examples of how to use the PATCH endpoint.&lt;/h4&gt; The following fields may be updated in a PATCH operation: <ul><li>name</li><li>status</li><li>sink</li></ul> Note: For log streams of type <code>eventbridge</code> and <code>eventgrid</code>, updating the <code>sink</code> is not permitted.
-    /// &lt;h5&gt;Update the status of a log stream&lt;/h5&gt;<pre><code>{
+    /// <para>Examples of how to use the PATCH endpoint.</para> The following fields may be updated in a PATCH operation: <list type="bullet"><item><description>name</description></item><item><description>status</description></item><item><description>sink</description></item></list> Note: For log streams of type <c>eventbridge</c> and <c>eventgrid</c>, updating the <c>sink</c> is not permitted.
+    /// <para>Update the status of a log stream</para><code>{
     /// 	"status": "active|paused"
-    /// }</code></pre>
-    /// &lt;h5&gt;Update the name of a log stream&lt;/h5&gt;<pre><code>{
+    /// }</code>
+    /// <para>Update the name of a log stream</para><code>{
     /// 	"name": "string"
-    /// }</code></pre>
-    /// &lt;h5&gt;Update the sink properties of a stream of type <code>http</code>&lt;/h5&gt;<pre><code>{
+    /// }</code>
+    /// <para>Update the sink properties of a stream of type <c>http</c></para><code>{
     ///   "sink": {
     ///     "httpEndpoint": "string",
     ///     "httpContentType": "string",
     ///     "httpContentFormat": "JSONARRAY|JSONLINES",
     ///     "httpAuthorization": "string"
     ///   }
-    /// }</code></pre>
-    /// &lt;h5&gt;Update the sink properties of a stream of type <code>datadog</code>&lt;/h5&gt;<pre><code>{
+    /// }</code>
+    /// <para>Update the sink properties of a stream of type <c>datadog</c></para><code>{
     ///   "sink": {
     /// 		"datadogRegion": "string",
     /// 		"datadogApiKey": "string"
     ///   }
-    /// }</code></pre>
-    /// &lt;h5&gt;Update the sink properties of a stream of type <code>splunk</code>&lt;/h5&gt;<pre><code>{
+    /// }</code>
+    /// <para>Update the sink properties of a stream of type <c>splunk</c></para><code>{
     ///   "sink": {
     ///     "splunkDomain": "string",
     ///     "splunkToken": "string",
     ///     "splunkPort": "string",
     ///     "splunkSecure": "boolean"
     ///   }
-    /// }</code></pre>
-    /// &lt;h5&gt;Update the sink properties of a stream of type <code>sumo</code>&lt;/h5&gt;<pre><code>{
+    /// }</code>
+    /// <para>Update the sink properties of a stream of type <c>sumo</c></para><code>{
     ///   "sink": {
     ///     "sumoSourceAddress": "string"
     ///   }
-    /// }</code></pre>
+    /// }</code>
     /// </summary>
     /// <example><code>
     /// await client.LogStreams.UpdateAsync("id", new UpdateLogStreamRequestContent());

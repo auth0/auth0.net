@@ -20,7 +20,7 @@ public partial class FlowsClient : IFlowsClient
     public IVaultClient Vault { get; }
 
     private WithRawResponseTask<ListFlowsOffsetPaginatedResponseContent> ListInternalAsync(
-        FlowsListRequest request,
+        ListFlowsRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
@@ -33,7 +33,7 @@ public partial class FlowsClient : IFlowsClient
     private async Task<
         WithRawResponse<ListFlowsOffsetPaginatedResponseContent>
     > ListInternalAsyncCore(
-        FlowsListRequest request,
+        ListFlowsRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
@@ -381,7 +381,7 @@ public partial class FlowsClient : IFlowsClient
 
     /// <example><code>
     /// await client.Flows.ListAsync(
-    ///     new FlowsListRequest
+    ///     new ListFlowsRequestParameters
     ///     {
     ///         Page = 1,
     ///         PerPage = 1,
@@ -391,14 +391,14 @@ public partial class FlowsClient : IFlowsClient
     /// );
     /// </code></example>
     public async Task<Pager<FlowSummary>> ListAsync(
-        FlowsListRequest request,
+        ListFlowsRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
     {
         request = request with { };
         var pager = await OffsetPager<
-            FlowsListRequest,
+            ListFlowsRequestParameters,
             RequestOptions?,
             ListFlowsOffsetPaginatedResponseContent,
             int?,

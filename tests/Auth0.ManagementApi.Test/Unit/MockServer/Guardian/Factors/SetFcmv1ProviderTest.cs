@@ -1,4 +1,4 @@
-using Auth0.ManagementApi;
+using Auth0.ManagementApi.Guardian.Factors;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using Auth0.ManagementApi.Test.Utils;
 using NUnit.Framework;
@@ -27,7 +27,7 @@ public class SetFcmv1ProviderTest : BaseMockServerTest
                     .RequestBuilders.Request.Create()
                     .WithPath("/guardian/factors/push-notification/providers/fcmv1")
                     .WithHeader("Content-Type", "application/json")
-                    .UsingPatch()
+                    .UsingPut()
                     .WithBodyAsJson(requestJson)
             )
             .RespondWith(

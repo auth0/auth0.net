@@ -11,14 +11,17 @@ public partial class ActionsClient : IActionsClient
     internal ActionsClient(RawClient client)
     {
         _client = client;
-        Versions = new VersionsClient(_client);
+        Versions = new Auth0.ManagementApi.Actions.VersionsClient(_client);
         Executions = new Auth0.ManagementApi.Actions.ExecutionsClient(_client);
+        Modules = new ModulesClient(_client);
         Triggers = new TriggersClient(_client);
     }
 
-    public IVersionsClient Versions { get; }
+    public Auth0.ManagementApi.Actions.IVersionsClient Versions { get; }
 
     public Auth0.ManagementApi.Actions.IExecutionsClient Executions { get; }
+
+    public IModulesClient Modules { get; }
 
     public ITriggersClient Triggers { get; }
 
@@ -723,7 +726,7 @@ public partial class ActionsClient : IActionsClient
     }
 
     /// <summary>
-    /// Update an existing action. If this action is currently bound to a trigger, updating it will <strong>not</strong> affect any user flows until the action is deployed.
+    /// Update an existing action. If this action is currently bound to a trigger, updating it will <b>not</b> affect any user flows until the action is deployed.
     /// </summary>
     /// <example><code>
     /// await client.Actions.UpdateAsync("id", new UpdateActionRequestContent());

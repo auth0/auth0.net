@@ -65,6 +65,10 @@ public record GetRefreshTokenResponseContent : IJsonOnDeserialized, IJsonOnSeria
     [JsonPropertyName("resource_servers")]
     public IEnumerable<RefreshTokenResourceServer>? ResourceServers { get; set; }
 
+    [Nullable, Optional]
+    [JsonPropertyName("refresh_token_metadata")]
+    public Optional<Dictionary<string, object?>?> RefreshTokenMetadata { get; set; }
+
     [Optional]
     [JsonPropertyName("last_exchanged_at")]
     public RefreshTokenDate? LastExchangedAt { get; set; }

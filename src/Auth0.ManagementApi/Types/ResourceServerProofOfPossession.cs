@@ -23,6 +23,10 @@ public record ResourceServerProofOfPossession : IJsonOnDeserialized
     [JsonPropertyName("required")]
     public required bool Required { get; set; }
 
+    [Optional]
+    [JsonPropertyName("required_for")]
+    public ResourceServerProofOfPossessionRequiredForEnum? RequiredFor { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

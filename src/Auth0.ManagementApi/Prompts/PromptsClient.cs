@@ -184,7 +184,7 @@ public partial class PromptsClient : IPromptsClient
     }
 
     /// <summary>
-    /// Retrieve details of the Universal Login configuration of your tenant. This includes the <a href="https://auth0.com/docs/authenticate/login/auth0-universal-login/identifier-first">Identifier First Authentication</a> and <a href="https://auth0.com/docs/secure/multi-factor-authentication/fido-authentication-with-webauthn/configure-webauthn-device-biometrics-for-mfa">WebAuthn with Device Biometrics for MFA</a> features.
+    /// Retrieve details of the Universal Login configuration of your tenant. This includes the <see href="https://auth0.com/docs/authenticate/login/auth0-universal-login/identifier-first">Identifier First Authentication</see> and <see href="https://auth0.com/docs/secure/multi-factor-authentication/fido-authentication-with-webauthn/configure-webauthn-device-biometrics-for-mfa">WebAuthn with Device Biometrics for MFA</see> features.
     /// </summary>
     /// <example><code>
     /// await client.Prompts.GetSettingsAsync();
@@ -200,7 +200,7 @@ public partial class PromptsClient : IPromptsClient
     }
 
     /// <summary>
-    /// Update the Universal Login configuration of your tenant. This includes the <a href="https://auth0.com/docs/authenticate/login/auth0-universal-login/identifier-first">Identifier First Authentication</a> and <a href="https://auth0.com/docs/secure/multi-factor-authentication/fido-authentication-with-webauthn/configure-webauthn-device-biometrics-for-mfa">WebAuthn with Device Biometrics for MFA</a> features.
+    /// Update the Universal Login configuration of your tenant. This includes the <see href="https://auth0.com/docs/authenticate/login/auth0-universal-login/identifier-first">Identifier First Authentication</see> and <see href="https://auth0.com/docs/secure/multi-factor-authentication/fido-authentication-with-webauthn/configure-webauthn-device-biometrics-for-mfa">WebAuthn with Device Biometrics for MFA</see> features.
     /// </summary>
     /// <example><code>
     /// await client.Prompts.UpdateSettingsAsync(new UpdateSettingsRequestContent());

@@ -7,19 +7,7 @@ namespace Auth0.ManagementApi;
 public record ListCustomDomainsRequestParameters
 {
     /// <summary>
-    /// Number of results per page. Defaults to 50.
-    /// </summary>
-    [JsonIgnore]
-    public Optional<int?> Take { get; set; } = 50;
-
-    /// <summary>
-    /// Optional Id from which to start selection.
-    /// </summary>
-    [JsonIgnore]
-    public Optional<string?> From { get; set; }
-
-    /// <summary>
-    /// Query in <a href ="http://www.lucenetutorial.com/lucene-query-syntax.html">Lucene query string syntax</a>.
+    /// Query in <see href="http://www.lucenetutorial.com/lucene-query-syntax.html">Lucene query string syntax</see>.
     /// </summary>
     [JsonIgnore]
     public Optional<string?> Q { get; set; }
@@ -37,7 +25,7 @@ public record ListCustomDomainsRequestParameters
     public Optional<bool?> IncludeFields { get; set; }
 
     /// <summary>
-    /// Field to sort by. Only <code>domain:1</code> (ascending order by domain) is supported at this time.
+    /// Field to sort by. Only <c>domain:1</c> (ascending order by domain) is supported at this time.
     /// </summary>
     [JsonIgnore]
     public Optional<string?> Sort { get; set; }

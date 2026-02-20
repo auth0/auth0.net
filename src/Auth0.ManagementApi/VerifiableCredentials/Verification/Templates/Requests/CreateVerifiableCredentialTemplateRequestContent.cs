@@ -19,9 +19,9 @@ public record CreateVerifiableCredentialTemplateRequestContent
     [JsonPropertyName("presentation")]
     public required MdlPresentationRequest Presentation { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("custom_certificate_authority")]
-    public string? CustomCertificateAuthority { get; set; }
+    public Optional<string?> CustomCertificateAuthority { get; set; }
 
     [JsonPropertyName("well_known_trusted_issuers")]
     public required string WellKnownTrustedIssuers { get; set; }

@@ -16,7 +16,7 @@ public record UpdateSuspiciousIpThrottlingSettingsRequestContent
 
     /// <summary>
     /// Action to take when a suspicious IP throttling threshold is violated.
-    ///           Possible values: <code>block</code>, <code>admin_notification</code>.
+    ///           Possible values: <c>block</c>, <c>admin_notification</c>.
     /// </summary>
     [Optional]
     [JsonPropertyName("shields")]

@@ -193,7 +193,7 @@ public partial class FactorsClient : IFactorsClient
     }
 
     /// <summary>
-    /// Retrieve details of all <a href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors">multi-factor authentication factors</a> associated with your tenant.
+    /// Retrieve details of all <see href="https://auth0.com/docs/secure/multi-factor-authentication/multi-factor-authentication-factors">multi-factor authentication factors</see> associated with your tenant.
     /// </summary>
     /// <example><code>
     /// await client.Guardian.Factors.ListAsync();

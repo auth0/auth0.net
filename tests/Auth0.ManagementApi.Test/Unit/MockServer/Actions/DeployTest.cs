@@ -76,6 +76,14 @@ public class DeployTest : BaseMockServerTest
                   ],
                   "binding_policy": "trigger-bound"
                 }
+              ],
+              "modules": [
+                {
+                  "module_id": "module_id",
+                  "module_name": "module_name",
+                  "module_version_id": "module_version_id",
+                  "module_version_number": 1
+                }
               ]
             }
             """;
@@ -99,7 +107,7 @@ public class DeployTest : BaseMockServerTest
         var response = await Client.Actions.Versions.DeployAsync(
             "actionId",
             "id",
-            new DeployActionVersionRequestBodyParams()
+            new DeployActionVersionRequestContent()
         );
         JsonAssert.AreEqual(response, mockResponse);
     }

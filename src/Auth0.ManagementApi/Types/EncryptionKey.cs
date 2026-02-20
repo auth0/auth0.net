@@ -41,15 +41,16 @@ public record EncryptionKey : IJsonOnDeserialized
     /// <summary>
     /// ID of parent wrapping key
     /// </summary>
+    [Nullable, Optional]
     [JsonPropertyName("parent_kid")]
-    public required string ParentKid { get; set; }
+    public Optional<string?> ParentKid { get; set; }
 
     /// <summary>
     /// Public key in PEM format
     /// </summary>
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("public_key")]
-    public string? PublicKey { get; set; }
+    public Optional<string?> PublicKey { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

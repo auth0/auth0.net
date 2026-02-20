@@ -25,11 +25,18 @@ public record UpdateClientGrantRequestContent
     public Optional<bool?> AllowAnyOrganization { get; set; }
 
     /// <summary>
-    /// Types of authorization_details allowed for this client grant. Use of this field is subject to the applicable Free Trial terms in Okta’s <a href= "https://www.okta.com/legal/"> Master Subscription Agreement.</a>
+    /// Types of authorization_details allowed for this client grant.
     /// </summary>
     [Optional]
     [JsonPropertyName("authorization_details_types")]
     public IEnumerable<string>? AuthorizationDetailsTypes { get; set; }
+
+    /// <summary>
+    /// If enabled, all scopes configured on the resource server are allowed for this grant.
+    /// </summary>
+    [Nullable, Optional]
+    [JsonPropertyName("allow_all_scopes")]
+    public Optional<bool?> AllowAllScopes { get; set; }
 
     /// <inheritdoc />
     public override string ToString()

@@ -16,6 +16,7 @@ public partial class UsersClient : IUsersClient
         ConnectedAccounts = new ConnectedAccountsClient(_client);
         Enrollments = new Auth0.ManagementApi.Users.EnrollmentsClient(_client);
         FederatedConnectionsTokensets = new FederatedConnectionsTokensetsClient(_client);
+        Groups = new Auth0.ManagementApi.Users.GroupsClient(_client);
         Identities = new IdentitiesClient(_client);
         Logs = new Auth0.ManagementApi.Users.LogsClient(_client);
         Multifactor = new MultifactorClient(_client);
@@ -36,6 +37,8 @@ public partial class UsersClient : IUsersClient
     public Auth0.ManagementApi.Users.IEnrollmentsClient Enrollments { get; }
 
     public IFederatedConnectionsTokensetsClient FederatedConnectionsTokensets { get; }
+
+    public Auth0.ManagementApi.Users.IGroupsClient Groups { get; }
 
     public IIdentitiesClient Identities { get; }
 
@@ -62,14 +65,14 @@ public partial class UsersClient : IUsersClient
     /// - Sort the users to be returned
     /// - Select the fields to be returned
     /// - Specify the number of users to retrieve per page and the page index
-    ///  &lt;!-- only v3 is available --&gt;
-    /// The <code>q</code> query parameter can be used to get users that match the specified criteria <a href="https://auth0.com/docs/users/search/v3/query-syntax">using query string syntax.</a>
     ///
-    /// <a href="https://auth0.com/docs/users/search/v3">Learn more about searching for users.</a>
+    /// The <c>q</c> query parameter can be used to get users that match the specified criteria <see href="https://auth0.com/docs/users/search/v3/query-syntax">using query string syntax.</see>
     ///
-    /// Read about <a href="https://auth0.com/docs/users/search/best-practices">best practices</a> when working with the API endpoints for retrieving users.
+    /// <see href="https://auth0.com/docs/users/search/v3">Learn more about searching for users.</see>
     ///
-    /// Auth0 limits the number of users you can return. If you exceed this threshold, please redefine your search, use the <a href="https://auth0.com/docs/api/management/v2#!/Jobs/post_users_exports">export job</a>, or the <a href="https://auth0.com/docs/extensions/user-import-export">User Import / Export</a> extension.
+    /// Read about <see href="https://auth0.com/docs/users/search/best-practices">best practices</see> when working with the API endpoints for retrieving users.
+    ///
+    /// Auth0 limits the number of users you can return. If you exceed this threshold, please redefine your search, use the <see href="https://auth0.com/docs/api/management/v2#!/Jobs/post_users_exports">export job</see>, or the <see href="https://auth0.com/docs/extensions/user-import-export">User Import / Export</see> extension.
     /// </summary>
     private WithRawResponseTask<ListUsersOffsetPaginatedResponseContent> ListInternalAsync(
         ListUsersRequestParameters request,
@@ -644,14 +647,14 @@ public partial class UsersClient : IUsersClient
     /// - Sort the users to be returned
     /// - Select the fields to be returned
     /// - Specify the number of users to retrieve per page and the page index
-    ///  &lt;!-- only v3 is available --&gt;
-    /// The <code>q</code> query parameter can be used to get users that match the specified criteria <a href="https://auth0.com/docs/users/search/v3/query-syntax">using query string syntax.</a>
     ///
-    /// <a href="https://auth0.com/docs/users/search/v3">Learn more about searching for users.</a>
+    /// The <c>q</c> query parameter can be used to get users that match the specified criteria <see href="https://auth0.com/docs/users/search/v3/query-syntax">using query string syntax.</see>
     ///
-    /// Read about <a href="https://auth0.com/docs/users/search/best-practices">best practices</a> when working with the API endpoints for retrieving users.
+    /// <see href="https://auth0.com/docs/users/search/v3">Learn more about searching for users.</see>
     ///
-    /// Auth0 limits the number of users you can return. If you exceed this threshold, please redefine your search, use the <a href="https://auth0.com/docs/api/management/v2#!/Jobs/post_users_exports">export job</a>, or the <a href="https://auth0.com/docs/extensions/user-import-export">User Import / Export</a> extension.
+    /// Read about <see href="https://auth0.com/docs/users/search/best-practices">best practices</see> when working with the API endpoints for retrieving users.
+    ///
+    /// Auth0 limits the number of users you can return. If you exceed this threshold, please redefine your search, use the <see href="https://auth0.com/docs/api/management/v2#!/Jobs/post_users_exports">export job</see>, or the <see href="https://auth0.com/docs/extensions/user-import-export">User Import / Export</see> extension.
     /// </summary>
     /// <example><code>
     /// await client.Users.ListAsync(
@@ -705,9 +708,9 @@ public partial class UsersClient : IUsersClient
     }
 
     /// <summary>
-    /// Create a new user for a given <a href="https://auth0.com/docs/connections/database">database</a> or <a href="https://auth0.com/docs/connections/passwordless">passwordless</a> connection.
+    /// Create a new user for a given <see href="https://auth0.com/docs/connections/database">database</see> or <see href="https://auth0.com/docs/connections/passwordless">passwordless</see> connection.
     ///
-    /// Note: <code>connection</code> is required but other parameters such as <code>email</code> and <code>password</code> are dependent upon the type of connection.
+    /// Note: <c>connection</c> is required but other parameters such as <c>email</c> and <c>password</c> are dependent upon the type of connection.
     /// </summary>
     /// <example><code>
     /// await client.Users.CreateAsync(new CreateUserRequestContent { Connection = "connection" });
@@ -752,7 +755,7 @@ public partial class UsersClient : IUsersClient
     }
 
     /// <summary>
-    /// Retrieve user details. A list of fields to include or exclude may also be specified. For more information, see <a href="https://auth0.com/docs/manage-users/user-search/retrieve-users-with-get-users-endpoint">Retrieve Users with the Get Users Endpoint</a>.
+    /// Retrieve user details. A list of fields to include or exclude may also be specified. For more information, see <see href="https://auth0.com/docs/manage-users/user-search/retrieve-users-with-get-users-endpoint">Retrieve Users with the Get Users Endpoint</see>.
     /// </summary>
     /// <example><code>
     /// await client.Users.GetAsync(
@@ -773,7 +776,7 @@ public partial class UsersClient : IUsersClient
     }
 
     /// <summary>
-    /// Delete a user by user ID. This action cannot be undone. For Auth0 Dashboard instructions, see <a href="https://auth0.com/docs/manage-users/user-accounts/delete-users">Delete Users</a>.
+    /// Delete a user by user ID. This action cannot be undone. For Auth0 Dashboard instructions, see <see href="https://auth0.com/docs/manage-users/user-accounts/delete-users">Delete Users</see>.
     /// </summary>
     /// <example><code>
     /// await client.Users.DeleteAsync("id");
@@ -840,64 +843,64 @@ public partial class UsersClient : IUsersClient
     ///
     /// These are the attributes that can be updated at the root level:
     ///
-    /// <ul>
-    ///     <li>app_metadata</li>
-    ///     <li>blocked</li>
-    ///     <li>email</li>
-    ///     <li>email_verified</li>
-    ///     <li>family_name</li>
-    ///     <li>given_name</li>
-    ///     <li>name</li>
-    ///     <li>nickname</li>
-    ///     <li>password</li>
-    ///     <li>phone_number</li>
-    ///     <li>phone_verified</li>
-    ///     <li>picture</li>
-    ///     <li>username</li>
-    ///     <li>user_metadata</li>
-    ///     <li>verify_email</li>
-    /// </ul>
+    /// <list type="bullet">
+    ///     <item><description>app_metadata</description></item>
+    ///     <item><description>blocked</description></item>
+    ///     <item><description>email</description></item>
+    ///     <item><description>email_verified</description></item>
+    ///     <item><description>family_name</description></item>
+    ///     <item><description>given_name</description></item>
+    ///     <item><description>name</description></item>
+    ///     <item><description>nickname</description></item>
+    ///     <item><description>password</description></item>
+    ///     <item><description>phone_number</description></item>
+    ///     <item><description>phone_verified</description></item>
+    ///     <item><description>picture</description></item>
+    ///     <item><description>username</description></item>
+    ///     <item><description>user_metadata</description></item>
+    ///     <item><description>verify_email</description></item>
+    /// </list>
     ///
     /// Some considerations:
-    /// <ul>
-    ///     <li>The properties of the new object will replace the old ones.</li>
-    ///     <li>The metadata fields are an exception to this rule (<code>user_metadata</code> and <code>app_metadata</code>). These properties are merged instead of being replaced but be careful, the merge only occurs on the first level.</li>
-    ///     <li>If you are updating <code>email</code>, <code>email_verified</code>, <code>phone_number</code>, <code>phone_verified</code>, <code>username</code> or <code>password</code> of a secondary identity, you need to specify the <code>connection</code> property too.</li>
-    ///     <li>If you are updating <code>email</code> or <code>phone_number</code> you can specify, optionally, the <code>client_id</code> property.</li>
-    ///     <li>Updating <code>email_verified</code> is not supported for enterprise and passwordless sms connections.</li>
-    ///     <li>Updating the <code>blocked</code> to <code>false</code> does not affect the user's blocked state from an excessive amount of incorrectly provided credentials. Use the "Unblock a user" endpoint from the "User Blocks" API to change the user's state.</li>
-    ///     <li>Supported attributes can be unset by supplying <code>null</code> as the value.</li>
-    /// </ul>
+    /// <list type="bullet">
+    ///     <item><description>The properties of the new object will replace the old ones.</description></item>
+    ///     <item><description>The metadata fields are an exception to this rule (<c>user_metadata</c> and <c>app_metadata</c>). These properties are merged instead of being replaced but be careful, the merge only occurs on the first level.</description></item>
+    ///     <item><description>If you are updating <c>email</c>, <c>email_verified</c>, <c>phone_number</c>, <c>phone_verified</c>, <c>username</c> or <c>password</c> of a secondary identity, you need to specify the <c>connection</c> property too.</description></item>
+    ///     <item><description>If you are updating <c>email</c> or <c>phone_number</c> you can specify, optionally, the <c>client_id</c> property.</description></item>
+    ///     <item><description>Updating <c>email_verified</c> is not supported for enterprise and passwordless sms connections.</description></item>
+    ///     <item><description>Updating the <c>blocked</c> to <c>false</c> does not affect the user's blocked state from an excessive amount of incorrectly provided credentials. Use the "Unblock a user" endpoint from the "User Blocks" API to change the user's state.</description></item>
+    ///     <item><description>Supported attributes can be unset by supplying <c>null</c> as the value.</description></item>
+    /// </list>
     ///
-    /// &lt;h5&gt;Updating a field (non-metadata property)&lt;/h5&gt;
+    /// <para>Updating a field (non-metadata property)</para>
     /// To mark the email address of a user as verified, the body to send should be:
-    /// <pre><code>{ "email_verified": true }</code></pre>
+    /// <code>{ "email_verified": true }</code>
     ///
-    /// &lt;h5&gt;Updating a user metadata root property&lt;/h5&gt;Let's assume that our test user has the following <code>user_metadata</code>:
-    /// <pre><code>{ "user_metadata" : { "profileCode": 1479 } }</code></pre>
+    /// <para>Updating a user metadata root property</para>Let's assume that our test user has the following <c>user_metadata</c>:
+    /// <code>{ "user_metadata" : { "profileCode": 1479 } }</code>
     ///
-    /// To add the field <code>addresses</code> the body to send should be:
-    /// <pre><code>{ "user_metadata" : { "addresses": {"work_address": "100 Industrial Way"} }}</code></pre>
+    /// To add the field <c>addresses</c> the body to send should be:
+    /// <code>{ "user_metadata" : { "addresses": {"work_address": "100 Industrial Way"} }}</code>
     ///
-    /// The modified object ends up with the following <code>user_metadata</code> property:<pre><code>{
+    /// The modified object ends up with the following <c>user_metadata</c> property:<code>{
     ///   "user_metadata": {
     ///     "profileCode": 1479,
     ///     "addresses": { "work_address": "100 Industrial Way" }
     ///   }
-    /// }</code></pre>
+    /// }</code>
     ///
-    /// &lt;h5&gt;Updating an inner user metadata property&lt;/h5&gt;If there's existing user metadata to which we want to add  <code>"home_address": "742 Evergreen Terrace"</code> (using the <code>addresses</code> property) we should send the whole <code>addresses</code> object. Since this is a first-level object, the object will be merged in, but its own properties will not be. The body to send should be:
-    /// <pre><code>{
+    /// <para>Updating an inner user metadata property</para>If there's existing user metadata to which we want to add  <c>"home_address": "742 Evergreen Terrace"</c> (using the <c>addresses</c> property) we should send the whole <c>addresses</c> object. Since this is a first-level object, the object will be merged in, but its own properties will not be. The body to send should be:
+    /// <code>{
     ///   "user_metadata": {
     ///     "addresses": {
     ///       "work_address": "100 Industrial Way",
     ///       "home_address": "742 Evergreen Terrace"
     ///     }
     ///   }
-    /// }</code></pre>
+    /// }</code>
     ///
-    /// The modified object ends up with the following <code>user_metadata</code> property:
-    /// <pre><code>{
+    /// The modified object ends up with the following <c>user_metadata</c> property:
+    /// <code>{
     ///   "user_metadata": {
     ///     "profileCode": 1479,
     ///     "addresses": {
@@ -905,7 +908,7 @@ public partial class UsersClient : IUsersClient
     ///       "home_address": "742 Evergreen Terrace"
     ///     }
     ///   }
-    /// }</code></pre>
+    /// }</code>
     /// </summary>
     /// <example><code>
     /// await client.Users.UpdateAsync("id", new UpdateUserRequestContent());
@@ -923,7 +926,7 @@ public partial class UsersClient : IUsersClient
     }
 
     /// <summary>
-    /// Remove an existing multi-factor authentication (MFA) <a href="https://auth0.com/docs/secure/multi-factor-authentication/reset-user-mfa">recovery code</a> and generate a new one. If a user cannot access the original device or account used for MFA enrollment, they can use a recovery code to authenticate.
+    /// Remove an existing multi-factor authentication (MFA) <see href="https://auth0.com/docs/secure/multi-factor-authentication/reset-user-mfa">recovery code</see> and generate a new one. If a user cannot access the original device or account used for MFA enrollment, they can use a recovery code to authenticate.
     /// </summary>
     /// <example><code>
     /// await client.Users.RegenerateRecoveryCodeAsync("id");
