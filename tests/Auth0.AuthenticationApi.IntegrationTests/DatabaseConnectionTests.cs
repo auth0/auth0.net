@@ -29,7 +29,7 @@ public class DatabaseConnectionTestsFixture : TestBaseFixture
             await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
         }
 
-        ApiClient.Dispose();
+        await Task.CompletedTask;
     }
         
 }
