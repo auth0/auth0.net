@@ -55,7 +55,7 @@ public class TenantSettingsTests : IClassFixture<TenantSettingsTestsFixture>
                 SupportUrl = $"www.{Guid.NewGuid():N}.aaa/support",
                 DefaultAudience = "",
                 DefaultDirectory = "Username-Password-Authentication",
-                EnabledLocales = new[] { UpdateTenantSettingsRequestContentEnabledLocalesItem.En },
+                EnabledLocales = new[] { TenantSettingsSupportedLocalesEnum.En },
                 Flags = new TenantSettingsFlags
                 {
                     ChangePwdFlowV1 = false,

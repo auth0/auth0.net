@@ -131,9 +131,9 @@ public class AttackProtectionTests : IClassFixture<AttackProtectionTestsFixture>
             var toUpdate = new UpdateBruteForceSettingsRequestContent
             {
                 Enabled = true,
-                Shields = new[] { UpdateBruteForceSettingsRequestContentShieldsItem.Block },
+                Shields = new[] { BruteForceProtectionShieldsEnum.Block },
                 Allowlist = new[] { "1.1.1.1", "2.2.2.2" },
-                Mode = UpdateBruteForceSettingsRequestContentMode.CountPerIdentifier,
+                Mode = BruteForceProtectionModeEnum.CountPerIdentifier,
                 MaxAttempts = 11,
             };
 
@@ -150,9 +150,9 @@ public class AttackProtectionTests : IClassFixture<AttackProtectionTestsFixture>
             await fixture.ApiClient.AttackProtection.BruteForceProtection.UpdateAsync(new UpdateBruteForceSettingsRequestContent
             {
                 Enabled = before.Enabled,
-                Shields = before.Shields?.Select(s => (UpdateBruteForceSettingsRequestContentShieldsItem)(string)s),
+                Shields = before.Shields,
                 Allowlist = before.Allowlist,
-                Mode = before.Mode != null ? (UpdateBruteForceSettingsRequestContentMode?)(string)before.Mode : null,
+                Mode = before.Mode,
                 MaxAttempts = before.MaxAttempts
             });
         }

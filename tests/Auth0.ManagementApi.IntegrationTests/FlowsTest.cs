@@ -127,7 +127,7 @@ public class FlowsTest : IClassFixture<FlowsTestFixture>
         {
             // Get all flow executions
             var flowExecutionsPager =
-                await fixture.ApiClient.Flows.Executions.ListAsync(newFlow.Id, new ExecutionsListRequest());
+                await fixture.ApiClient.Flows.Executions.ListAsync(newFlow.Id, new ListFlowExecutionsRequestParameters());
 
             flowExecutionsPager.Should().NotBeNull();
         }
