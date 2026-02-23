@@ -66,10 +66,7 @@ public sealed class ManagementClient : IDisposable
         };
 
         // Set up headers with dynamic token supplier
-        var headers = new Headers(new Dictionary<string, string>
-        {
-            { "Auth0-Client", ManagementApiClient.CreateAgentString() }
-        });
+        var headers = new Headers(new Dictionary<string, string>());
 
         // Add Authorization header with token supplier (supports Func<string>)
         Func<string> authHeaderSupplier = () => $"Bearer {tokenSupplier()}";
