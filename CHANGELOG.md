@@ -1,5 +1,14 @@
 # Change Log
 
+## [7.45.0](https://github.com/auth0/auth0.net/tree/7.45.0) (2026-02-24)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.44.0...7.45.0)
+
+**Fixed**
+- Fix Base64Url encoding and harden authentication input validation [\#919](https://github.com/auth0/auth0.net/pull/919) ([kailash-b](https://github.com/kailash-b))
+
+**Security**
+- Upgrade Microsoft.IdentityModel.Protocols.OpenIdConnect & System.IdentityModel.Tokens.Jwt to 8.16.0 [\#922](https://github.com/auth0/auth0.net/pull/922) ([kailash-b](https://github.com/kailash-b))
+
 ## [7.44.0](https://github.com/auth0/auth0.net/tree/7.44.0) (2026-01-29)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.43.1...7.44.0)
 
