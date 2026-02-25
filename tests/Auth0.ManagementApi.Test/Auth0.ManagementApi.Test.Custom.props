@@ -4,4 +4,14 @@
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\build\Auth0NetStrongName.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="10.0.3" />
+  </ItemGroup>
+  <!-- Auth0.ManagementApi (netstandard2.0/net462) embeds PolySharp-generated internal types
+       (e.g. IsExternalInit, RequiresLocationAttribute) and exposes them via InternalsVisibleTo.
+       This test project targets net8.0, where those types already exist in System.Runtime.
+       Keeping PolySharp here causes CS0433 (type exists in both assemblies), so we remove it. -->
+  <ItemGroup>
+    <PackageReference Remove="PolySharp" />
+  </ItemGroup>
 </Project>
