@@ -18,6 +18,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Auth0.AuthenticationApi\Auth0.AuthenticationApi.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFrameworks>net462;netstandard2.0</TargetFrameworks>
   </PropertyGroup>

@@ -91,31 +91,39 @@ var client = new ManagementApiClient(token, new Uri("https://YOUR_DOMAIN/api/v2"
 ```csharp
 using Auth0.ManagementApi;
 
-// Automatic token acquisition and refresh
+// Automatic token acquisition and refresh via client credentials
 var client = new ManagementClient(new ManagementClientOptions
 {
     Domain = "YOUR_DOMAIN",
-    ClientId = "YOUR_CLIENT_ID",
-    ClientSecret = "YOUR_CLIENT_SECRET"
+    TokenProvider = new ClientCredentialsTokenProvider(
+        domain: "YOUR_DOMAIN",
+        clientId: "YOUR_CLIENT_ID",
+        clientSecret: "YOUR_CLIENT_SECRET"
+    )
 });
 ```
 
-**v8 (Alternative - with manual token):**
+**v8 (Alternative - pre-obtained token, use `ManagementApiClient` directly):**
 ```csharp
 using Auth0.ManagementApi;
 
-// If you prefer to manage tokens yourself
+// Use a pre-obtained access token directly — no wrapper needed
+var client = new ManagementApiClient(
+    token: "YOUR_ACCESS_TOKEN",
+    clientOptions: new ClientOptions { BaseUrl = "https://YOUR_DOMAIN/api/v2" });
+
+// Or retrieve tokens asynchronously (e.g., from a secret manager) via ManagementClient
 var client = new ManagementClient(new ManagementClientOptions
 {
     Domain = "YOUR_DOMAIN",
-    Token = "YOUR_ACCESS_TOKEN"
+    TokenProvider = new DelegateTokenProvider(ct => secretManager.GetSecretAsync("auth0-token", ct))
 });
 
-// Or with a dynamic token provider
+// Or implement ITokenProvider for any other strategy
 var client = new ManagementClient(new ManagementClientOptions
 {
     Domain = "YOUR_DOMAIN",
-    TokenProvider = () => GetTokenFromVault()
+    TokenProvider = new MyCustomTokenProvider()
 });
 ```
 
@@ -124,8 +132,11 @@ var client = new ManagementClient(new ManagementClientOptions
 | Option | v7 | v8 |
 |--------|----|----|
 | Domain/URL | Constructor parameter (`Uri`) | `ManagementClientOptions.Domain` |
-| Token | Constructor parameter | `ManagementClientOptions.Token` or `TokenProvider` |
-| Client Credentials | Not supported (manual token) | `ManagementClientOptions.ClientId` + `ClientSecret` |
+| Token | Constructor parameter (string) | `new ManagementApiClient(token: "…", clientOptions: …)` |
+| Dynamic token | Not supported | `new DelegateTokenProvider(factory)` |
+| Client Credentials | Not supported (manual token) | `new ClientCredentialsTokenProvider(...)` |
+| Custom token strategy | Not supported | Implement `ITokenProvider` |
+| Audience | N/A | `ClientCredentialsTokenProvider` constructor parameter |
 | Timeout | Via `HttpClientManagementConnection` | `ManagementClientOptions.Timeout` |
 | Max Retries | Via `HttpClientManagementConnection` | `ManagementClientOptions.MaxRetries` |
 | Custom HttpClient | Via `HttpClientManagementConnection` | `ManagementClientOptions.HttpClient` |
@@ -378,8 +389,11 @@ var client = new ManagementApiClient(token, new Uri("https://YOUR_DOMAIN/api/v2"
 var client = new ManagementClient(new ManagementClientOptions
 {
     Domain = "YOUR_DOMAIN",
-    ClientId = "YOUR_CLIENT_ID",
-    ClientSecret = "YOUR_CLIENT_SECRET"
+    TokenProvider = new ClientCredentialsTokenProvider(
+        domain: "YOUR_DOMAIN",
+        clientId: "YOUR_CLIENT_ID",
+        clientSecret: "YOUR_CLIENT_SECRET"
+    )
 });
 ```
 
@@ -673,8 +687,11 @@ services.AddSingleton<IManagementApiClient>(provider =>
     return new ManagementClient(new ManagementClientOptions
     {
         Domain = "YOUR_AUTH0_DOMAIN",
-        ClientId = "YOUR_CLIENT_ID",
-        ClientSecret = "YOUR_CLIENT_SECRET"
+        TokenProvider = new ClientCredentialsTokenProvider(
+            domain: "YOUR_AUTH0_DOMAIN",
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET"
+        )
     });
 });
 

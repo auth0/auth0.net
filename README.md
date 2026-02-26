@@ -33,35 +33,41 @@ The recommended way to use the Management API is with the `ManagementClient` wra
 
 ##### Using ManagementClient (Recommended)
 
-The `ManagementClient` wrapper handles token acquisition and refresh automatically using client credentials:
+The `ManagementClient` wrapper abstracts token management through an `ITokenProvider`. Choose the built-in provider that fits your scenario, or implement the interface for full control.
+
+**Client credentials** (recommended for server-to-server — tokens are acquired and refreshed automatically):
 
 ```csharp
 var client = new ManagementClient(new ManagementClientOptions
 {
     Domain = "YOUR_AUTH0_DOMAIN",
-    ClientId = "YOUR_CLIENT_ID",
-    ClientSecret = "YOUR_CLIENT_SECRET"
+    TokenProvider = new ClientCredentialsTokenProvider(
+        domain: "YOUR_AUTH0_DOMAIN",
+        clientId: "YOUR_CLIENT_ID",
+        clientSecret: "YOUR_CLIENT_SECRET"
+    )
 });
 
 // Tokens are automatically acquired and refreshed
 var users = await client.Users.GetAllAsync();
 ```
 
-You can also use a static token or a dynamic token provider:
+> **Note:** The domain is specified twice — once in `ManagementClientOptions` (to build the base API URL `https://{domain}/api/v2`) and once in `ClientCredentialsTokenProvider` (to build the token endpoint URL `https://{domain}/oauth/token`). Both must match your Auth0 tenant domain.
+
+> **Already have a token?** Use `ManagementApiClient` directly:
+> ```csharp
+> var client = new ManagementApiClient(
+>     token: "your-access-token",
+>     clientOptions: new ClientOptions { BaseUrl = "https://YOUR_AUTH0_DOMAIN/api/v2" });
+> ```
+
+**Async delegate** (retrieve tokens from an external source such as a secret manager):
 
 ```csharp
-// With a static token
 var client = new ManagementClient(new ManagementClientOptions
 {
     Domain = "YOUR_AUTH0_DOMAIN",
-    Token = "your-access-token"
-});
-
-// With a dynamic token provider (e.g., from a vault or external service)
-var client = new ManagementClient(new ManagementClientOptions
-{
-    Domain = "YOUR_AUTH0_DOMAIN",
-    TokenProvider = () => GetTokenFromVault()
+    TokenProvider = new DelegateTokenProvider(ct => secretManager.GetSecretAsync("auth0-token", ct))
 });
 ```
 
@@ -71,9 +77,12 @@ Additional configuration options:
 var client = new ManagementClient(new ManagementClientOptions
 {
     Domain = "YOUR_AUTH0_DOMAIN",
-    ClientId = "YOUR_CLIENT_ID",
-    ClientSecret = "YOUR_CLIENT_SECRET",
-    Audience = "https://custom-audience/",  // Optional: defaults to https://{domain}/api/v2/
+    TokenProvider = new ClientCredentialsTokenProvider(
+        domain: "YOUR_AUTH0_DOMAIN",
+        clientId: "YOUR_CLIENT_ID",
+        clientSecret: "YOUR_CLIENT_SECRET",
+        audience: "https://custom-audience/"  // Optional: defaults to https://{domain}/api/v2/
+    ),
     Timeout = TimeSpan.FromSeconds(60),     // Optional: request timeout
     MaxRetries = 3,                         // Optional: retry attempts
     HttpClient = customHttpClient,          // Optional: bring your own HttpClient
@@ -89,7 +98,10 @@ var client = new ManagementClient(new ManagementClientOptions
 If you prefer to manage tokens yourself, you can use the `ManagementApiClient` directly. Generate a token for the API calls you wish to make (see [Access Tokens for the Management API](https://auth0.com/docs/api/management/v2/tokens)):
 
 ```csharp
-var client = new ManagementApiClient("your token", new Uri("https://YOUR_AUTH0_DOMAIN/api/v2"));
+var client = new ManagementApiClient(
+    token: "your-access-token",
+    clientOptions: new ClientOptions { BaseUrl = "https://YOUR_AUTH0_DOMAIN/api/v2" }
+);
 ```
 
 ##### Making API Calls
@@ -238,8 +250,11 @@ services.AddSingleton<IManagementApiClient>(provider =>
     return new ManagementClient(new ManagementClientOptions
     {
         Domain = "YOUR_AUTH0_DOMAIN",
-        ClientId = "YOUR_CLIENT_ID",
-        ClientSecret = "YOUR_CLIENT_SECRET"
+        TokenProvider = new ClientCredentialsTokenProvider(
+            domain: "YOUR_AUTH0_DOMAIN",
+            clientId: "YOUR_CLIENT_ID",
+            clientSecret: "YOUR_CLIENT_SECRET"
+        )
     });
 });
 ```

@@ -1,7 +1,7 @@
 namespace Auth0.ManagementApi;
 
 /// <summary>
-/// Configuration options for the ManagementClient.
+/// Configuration options for <see cref="ManagementClient"/>.
 /// </summary>
 public class ManagementClientOptions
 {
@@ -11,38 +11,21 @@ public class ManagementClientOptions
     public required string Domain { get; init; }
 
     /// <summary>
-    /// A static access token for authentication.
-    /// Either Token/TokenProvider or ClientId+ClientSecret must be provided.
+    /// The token provider responsible for supplying access tokens to the Management API.
+    ///
+    /// Built-in options:
+    /// <list type="bullet">
+    ///   <item><see cref="DelegateTokenProvider"/> — for retrieving tokens from an external source (e.g., a secret manager).</item>
+    ///   <item><see cref="ClientCredentialsTokenProvider"/> — for automatic token acquisition and refresh via client credentials.</item>
+    /// </list>
+    ///
+    /// Implement <see cref="ITokenProvider"/> to supply tokens from any custom source.
     /// </summary>
-    public string? Token { get; init; }
+    public required ITokenProvider TokenProvider { get; init; }
 
     /// <summary>
-    /// A function that returns an access token.
-    /// Useful for dynamic token retrieval from external sources.
-    /// Either Token/TokenProvider or ClientId+ClientSecret must be provided.
-    /// </summary>
-    public Func<string>? TokenProvider { get; init; }
-
-    /// <summary>
-    /// Your Auth0 application client ID.
-    /// Required along with ClientSecret for automatic token acquisition.
-    /// </summary>
-    public string? ClientId { get; init; }
-
-    /// <summary>
-    /// Your Auth0 application client secret.
-    /// Required along with ClientId for automatic token acquisition.
-    /// </summary>
-    public string? ClientSecret { get; init; }
-
-    /// <summary>
-    /// The API audience. Defaults to https://{Domain}/api/v2/
-    /// </summary>
-    public string? Audience { get; init; }
-
-    /// <summary>
-    /// Custom HttpClient for making requests.
-    /// If not provided, a new HttpClient will be created.
+    /// Custom <see cref="System.Net.Http.HttpClient"/> for making Management API requests.
+    /// If not provided, a new instance will be created and managed internally.
     /// </summary>
     public HttpClient? HttpClient { get; init; }
 
@@ -57,7 +40,7 @@ public class ManagementClientOptions
     public int? MaxRetries { get; init; }
 
     /// <summary>
-    /// Additional headers to send with requests.
+    /// Additional headers to include with every request.
     /// </summary>
     public IDictionary<string, string>? AdditionalHeaders { get; init; }
 }

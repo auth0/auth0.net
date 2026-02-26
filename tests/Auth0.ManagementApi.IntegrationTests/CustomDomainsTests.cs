@@ -21,8 +21,7 @@ public class CustomDomainsTests : TestBase
         using (var apiClient = new ManagementClient(new ManagementClientOptions
         {
             Domain = domain,
-            ClientId = GetVariable("BRUCKE_MANAGEMENT_API_CLIENT_ID"),
-            ClientSecret = GetVariable("BRUCKE_MANAGEMENT_API_CLIENT_SECRET")
+            TokenProvider = new ClientCredentialsTokenProvider(domain, GetVariable("BRUCKE_MANAGEMENT_API_CLIENT_ID"), GetVariable("BRUCKE_MANAGEMENT_API_CLIENT_SECRET"))
         }))
         {
             // Test getting all custom domains

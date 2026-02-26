@@ -18,8 +18,7 @@ public class EmailProviderTests : TestBase
         using (var apiClient = new ManagementClient(new ManagementClientOptions
         {
             Domain = domain,
-            ClientId = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
-            ClientSecret = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET"),
+            TokenProvider = new ClientCredentialsTokenProvider(domain, GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET")),
             MaxRetries = 9
         }))
         {
@@ -88,8 +87,7 @@ public class EmailProviderTests : TestBase
         using (var apiClient = new ManagementClient(new ManagementClientOptions
         {
             Domain = domain,
-            ClientId = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
-            ClientSecret = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET")
+            TokenProvider = new ClientCredentialsTokenProvider(domain, GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET"))
         }))
         {
             // Delete the email provider to ensure we start on a clean slate
