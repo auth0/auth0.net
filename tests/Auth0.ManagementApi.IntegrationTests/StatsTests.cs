@@ -18,8 +18,7 @@ public class StatsTests : TestBase
         using (var apiClient = new ManagementClient(new ManagementClientOptions
         {
             Domain = domain,
-            ClientId = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
-            ClientSecret = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET"),
+            TokenProvider = new ClientCredentialsTokenProvider(domain, GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET")),
             MaxRetries = 9
         }))
         {
@@ -43,8 +42,7 @@ public class StatsTests : TestBase
         using (var apiClient = new ManagementClient(new ManagementClientOptions
         {
             Domain = domain,
-            ClientId = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
-            ClientSecret = GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET")
+            TokenProvider = new ClientCredentialsTokenProvider(domain, GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"), GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET"))
         }))
         {
             var activeUsers = await apiClient.Stats.GetActiveUsersCountAsync();

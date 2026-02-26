@@ -22,8 +22,7 @@ public class TestBaseFixture : IAsyncLifetime
         ApiClient = new ManagementClient(new ManagementClientOptions
         {
             Domain = domain,
-            ClientId = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
-            ClientSecret = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET"),
+            TokenProvider = new ClientCredentialsTokenProvider(domain, TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET")),
             MaxRetries = 9
         });
 

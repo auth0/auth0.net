@@ -77,8 +77,7 @@ public class PromptsTests : IClassFixture<PromptsTestsFixture>
         using (var apiClient = new ManagementClient(new ManagementClientOptions
         {
             Domain = domain,
-            ClientId = TestBaseUtils.GetVariable("BRUCKE_MANAGEMENT_API_CLIENT_ID"),
-            ClientSecret = TestBaseUtils.GetVariable("BRUCKE_MANAGEMENT_API_CLIENT_SECRET")
+            TokenProvider = new ClientCredentialsTokenProvider(domain, TestBaseUtils.GetVariable("BRUCKE_MANAGEMENT_API_CLIENT_ID"), TestBaseUtils.GetVariable("BRUCKE_MANAGEMENT_API_CLIENT_SECRET"))
         }))
         {
             var partial = new Dictionary<string, object?>
