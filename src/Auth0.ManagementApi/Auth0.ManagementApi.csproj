@@ -7,7 +7,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>12</LangVersion>
     <Nullable>enable</Nullable>
-    <Version>8.0.0-beta.0</Version>
+    <Version>8.0.0-beta.1</Version>
     <AssemblyVersionNumber>0.0.0</AssemblyVersionNumber>
     <AssemblyVersion>$(AssemblyVersionNumber)</AssemblyVersion>
     <AssemblyFileVersion>$(AssemblyVersionNumber)</AssemblyFileVersion>  
