@@ -21,11 +21,11 @@ public class ManagementApiClientTests : IClassFixture<ManagementApiClientTestsFi
     [Fact]
     public void Test_management_client_creation_with_credentials()
     {
+        var domain = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL").Replace("https://", "").TrimEnd('/');
         var client = new ManagementClient(new ManagementClientOptions
         {
-            Domain = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL").Replace("https://", "").TrimEnd('/'),
-            ClientId = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
-            ClientSecret = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET")
+            Domain = domain,
+            TokenProvider = new ClientCredentialsTokenProvider(domain, TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET"))
         });
 
         client.Should().NotBeNull();
@@ -37,11 +37,11 @@ public class ManagementApiClientTests : IClassFixture<ManagementApiClientTestsFi
     [Fact]
     public void Test_management_client_creation_with_max_retries()
     {
+        var domain = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL").Replace("https://", "").TrimEnd('/');
         var client = new ManagementClient(new ManagementClientOptions
         {
-            Domain = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL").Replace("https://", "").TrimEnd('/'),
-            ClientId = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
-            ClientSecret = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET"),
+            Domain = domain,
+            TokenProvider = new ClientCredentialsTokenProvider(domain, TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET")),
             MaxRetries = 5
         });
 
@@ -63,11 +63,11 @@ public class ManagementApiClientTests : IClassFixture<ManagementApiClientTestsFi
     [Fact]
     public void Test_management_client_dispose()
     {
+        var domain = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL").Replace("https://", "").TrimEnd('/');
         var client = new ManagementClient(new ManagementClientOptions
         {
-            Domain = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL").Replace("https://", "").TrimEnd('/'),
-            ClientId = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
-            ClientSecret = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET")
+            Domain = domain,
+            TokenProvider = new ClientCredentialsTokenProvider(domain, TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"), TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET"))
         });
 
         // Should not throw

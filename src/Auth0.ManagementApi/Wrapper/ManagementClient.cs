@@ -11,48 +11,52 @@ namespace Auth0.ManagementApi;
 /// <summary>
 /// Auth0 Management API client with automatic token management.
 ///
-/// Supports two initialization patterns:
+/// Token handling is provided by an <see cref="ITokenProvider"/>:
+/// <list type="bullet">
+///   <item><see cref="DelegateTokenProvider"/> — retrieve tokens from a custom async source.</item>
+///   <item><see cref="ClientCredentialsTokenProvider"/> — automatic token acquisition and refresh via OAuth 2.0 client credentials.</item>
+/// </list>
 ///
-/// 1. With an existing token:
-///    <code>
-///    var client = new ManagementClient(new ManagementClientOptions
-///    {
-///        Domain = "tenant.auth0.com",
-///        Token = "your_token"
-///    });
-///    </code>
-///
-/// 2. With client credentials (automatic token acquisition and refresh):
-///    <code>
-///    var client = new ManagementClient(new ManagementClientOptions
-///    {
-///        Domain = "tenant.auth0.com",
-///        ClientId = "your_client_id",
-///        ClientSecret = "your_client_secret"
-///    });
-///    </code>
+/// Example (client credentials):
+/// <code>
+/// var client = new ManagementClient(new ManagementClientOptions
+/// {
+///     Domain = "tenant.auth0.com",
+///     TokenProvider = new ClientCredentialsTokenProvider("tenant.auth0.com", "client_id", "client_secret")
+/// });
+/// </code>
 /// </summary>
-public sealed class ManagementClient : IDisposable
+public sealed class ManagementClient : IManagementApiClient, IDisposable
 {
     private readonly RawClient _client;
     private readonly HttpClient _httpClient;
     private readonly bool _ownsHttpClient;
+    private readonly ITokenProvider _tokenProvider;
 
     /// <summary>
-    /// Creates a new Management API client instance.
+    /// Creates a new <see cref="ManagementClient"/> instance.
     /// </summary>
     /// <param name="options">Configuration options for the client.</param>
-    /// <exception cref="ArgumentNullException">Thrown when options is null.</exception>
-    /// <exception cref="ArgumentException">Thrown when required authentication options are missing.</exception>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="options"/> is null.</exception>
+    /// <exception cref="ArgumentException">Thrown when <see cref="ManagementClientOptions.Domain"/> is empty, whitespace, or contains a scheme prefix.</exception>
     public ManagementClient(ManagementClientOptions options)
     {
-        if (options == null)
-            throw new ArgumentNullException(nameof(options));
+        if (options == null) throw new ArgumentNullException(nameof(options));
 
-        ValidateOptions(options);
+        if (string.IsNullOrWhiteSpace(options.Domain))
+            throw new ArgumentException(
+                "Domain must not be empty or whitespace.", nameof(options));
+        if (options.Domain.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
+            options.Domain.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+            throw new ArgumentException(
+                "Domain must not include a scheme prefix (e.g. use 'tenant.auth0.com', not 'https://tenant.auth0.com').",
+                nameof(options));
+        if (options.TokenProvider == null)
+            throw new ArgumentNullException(nameof(options), "TokenProvider must not be null.");
+
+        _tokenProvider = options.TokenProvider;
 
         var baseUrl = $"https://{options.Domain}/api/v2";
-        var tokenSupplier = CreateTokenSupplier(options);
 
         _ownsHttpClient = options.HttpClient == null;
         _httpClient = options.HttpClient ?? new HttpClient();
@@ -68,11 +72,6 @@ public sealed class ManagementClient : IDisposable
         // Set up headers with dynamic token supplier
         var headers = new Headers(new Dictionary<string, string>());
 
-        // Add Authorization header with token supplier (supports Func<string>)
-        Func<string> authHeaderSupplier = () => $"Bearer {tokenSupplier()}";
-        headers["Authorization"] = authHeaderSupplier;
-
-        // Add any additional headers
         if (options.AdditionalHeaders != null)
         {
             foreach (var header in options.AdditionalHeaders)
@@ -80,8 +79,13 @@ public sealed class ManagementClient : IDisposable
                 headers[header.Key] = new HeaderValue(header.Value);
             }
         }
+        
+        // Wire the async token supplier into the Authorization header.
+        // HeaderValue supports Func<Task<string>> which is evaluated per-request.
+        Func<Task<string>> authHeaderSupplier = async () =>
+            $"Bearer {await _tokenProvider.GetTokenAsync(default).ConfigureAwait(false)}";
+        headers["Authorization"] = authHeaderSupplier;
 
-        // Copy headers to ClientOptions
         foreach (var header in headers)
         {
             clientOptions.Headers[header.Key] = header.Value;
@@ -89,11 +93,11 @@ public sealed class ManagementClient : IDisposable
 
         _client = new RawClient(clientOptions);
 
-        // Initialize all sub-clients
         Actions = new ActionsClient(_client);
         Branding = new BrandingClient(_client);
         ClientGrants = new ClientGrantsClient(_client);
         Clients = new ClientsClient(_client);
+        ConnectionProfiles = new ConnectionProfilesClient(_client);
         Connections = new ConnectionsClient(_client);
         CustomDomains = new CustomDomainsClient(_client);
         DeviceCredentials = new DeviceCredentialsClient(_client);
@@ -102,6 +106,7 @@ public sealed class ManagementClient : IDisposable
         Flows = new FlowsClient(_client);
         Forms = new FormsClient(_client);
         UserGrants = new UserGrantsClient(_client);
+        Groups = new GroupsClient(_client);
         Hooks = new HooksClient(_client);
         Jobs = new JobsClient(_client);
         LogStreams = new LogStreamsClient(_client);
@@ -120,6 +125,7 @@ public sealed class ManagementClient : IDisposable
         SupplementalSignals = new SupplementalSignalsClient(_client);
         Tickets = new TicketsClient(_client);
         TokenExchangeProfiles = new TokenExchangeProfilesClient(_client);
+        UserAttributeProfiles = new UserAttributeProfilesClient(_client);
         UserBlocks = new UserBlocksClient(_client);
         Users = new UsersClient(_client);
         Anomaly = new AnomalyClient(_client);
@@ -127,185 +133,144 @@ public sealed class ManagementClient : IDisposable
         Emails = new EmailsClient(_client);
         Guardian = new GuardianClient(_client);
         Keys = new Auth0.ManagementApi.Keys.KeysClient(_client);
+        RiskAssessments = new Auth0.ManagementApi.RiskAssessments.RiskAssessmentsClient(_client);
         Tenants = new TenantsClient(_client);
         VerifiableCredentials = new VerifiableCredentialsClient(_client);
     }
 
-    private static void ValidateOptions(ManagementClientOptions options)
-    {
-        var hasToken = options.Token != null || options.TokenProvider != null;
-        var hasClientId = options.ClientId != null;
-        var hasClientSecret = options.ClientSecret != null;
-        var hasCredentials = hasClientId && hasClientSecret;
+    /// <inheritdoc />
+    public IActionsClient Actions { get; }
 
-        if (!hasToken && !hasCredentials)
-        {
-            throw new ArgumentException(
-                "Either 'Token'/'TokenProvider' or both 'ClientId' and 'ClientSecret' must be provided.",
-                nameof(options));
-        }
+    /// <inheritdoc />
+    public IBrandingClient Branding { get; }
 
-        if (hasClientId && !hasClientSecret)
-        {
-            throw new ArgumentException(
-                "'ClientSecret' is required when 'ClientId' is provided.",
-                nameof(options));
-        }
+    /// <inheritdoc />
+    public IClientGrantsClient ClientGrants { get; }
 
-        if (!hasClientId && hasClientSecret)
-        {
-            throw new ArgumentException(
-                "'ClientId' is required when 'ClientSecret' is provided.",
-                nameof(options));
-        }
-    }
+    /// <inheritdoc />
+    public IClientsClient Clients { get; }
 
-    private static Func<string> CreateTokenSupplier(ManagementClientOptions options)
-    {
-        // If a token provider function is provided, use it
-        if (options.TokenProvider != null)
-        {
-            return options.TokenProvider;
-        }
+    /// <inheritdoc />
+    public IConnectionProfilesClient ConnectionProfiles { get; }
 
-        // If a static token is provided, return it
-        if (options.Token != null)
-        {
-            var token = options.Token;
-            return () => token;
-        }
+    /// <inheritdoc />
+    public IConnectionsClient Connections { get; }
 
-        // Otherwise, create a TokenProvider for client credentials
-        var tokenProvider = new TokenProvider(
-            domain: options.Domain,
-            clientId: options.ClientId!,
-            clientSecret: options.ClientSecret!,
-            audience: options.Audience,
-            httpClient: options.HttpClient);
+    /// <inheritdoc />
+    public ICustomDomainsClient CustomDomains { get; }
 
-        return tokenProvider.GetToken;
-    }
+    /// <inheritdoc />
+    public IDeviceCredentialsClient DeviceCredentials { get; }
 
-    /// <summary>Actions management.</summary>
-    public ActionsClient Actions { get; }
+    /// <inheritdoc />
+    public IEmailTemplatesClient EmailTemplates { get; }
 
-    /// <summary>Branding settings management.</summary>
-    public BrandingClient Branding { get; }
+    /// <inheritdoc />
+    public IEventStreamsClient EventStreams { get; }
 
-    /// <summary>Client grants management.</summary>
-    public ClientGrantsClient ClientGrants { get; }
+    /// <inheritdoc />
+    public IFlowsClient Flows { get; }
 
-    /// <summary>OAuth applications management.</summary>
-    public ClientsClient Clients { get; }
+    /// <inheritdoc />
+    public IFormsClient Forms { get; }
 
-    /// <summary>Connections management.</summary>
-    public ConnectionsClient Connections { get; }
+    /// <inheritdoc />
+    public IUserGrantsClient UserGrants { get; }
 
-    /// <summary>Custom domains management.</summary>
-    public CustomDomainsClient CustomDomains { get; }
+    /// <inheritdoc />
+    public IGroupsClient Groups { get; }
 
-    /// <summary>Device credentials management.</summary>
-    public DeviceCredentialsClient DeviceCredentials { get; }
+    /// <inheritdoc />
+    public IHooksClient Hooks { get; }
 
-    /// <summary>Email templates management.</summary>
-    public EmailTemplatesClient EmailTemplates { get; }
+    /// <inheritdoc />
+    public IJobsClient Jobs { get; }
 
-    /// <summary>Event streams management.</summary>
-    public EventStreamsClient EventStreams { get; }
+    /// <inheritdoc />
+    public ILogStreamsClient LogStreams { get; }
 
-    /// <summary>Flows management.</summary>
-    public FlowsClient Flows { get; }
+    /// <inheritdoc />
+    public ILogsClient Logs { get; }
 
-    /// <summary>Forms management.</summary>
-    public FormsClient Forms { get; }
+    /// <inheritdoc />
+    public INetworkAclsClient NetworkAcls { get; }
 
-    /// <summary>User grants management.</summary>
-    public UserGrantsClient UserGrants { get; }
+    /// <inheritdoc />
+    public IOrganizationsClient Organizations { get; }
 
-    /// <summary>Hooks management.</summary>
-    public HooksClient Hooks { get; }
+    /// <inheritdoc />
+    public IPromptsClient Prompts { get; }
 
-    /// <summary>Background jobs management.</summary>
-    public JobsClient Jobs { get; }
+    /// <inheritdoc />
+    public IRefreshTokensClient RefreshTokens { get; }
 
-    /// <summary>Log streams management.</summary>
-    public LogStreamsClient LogStreams { get; }
+    /// <inheritdoc />
+    public IResourceServersClient ResourceServers { get; }
 
-    /// <summary>Auth logs access.</summary>
-    public LogsClient Logs { get; }
+    /// <inheritdoc />
+    public IRolesClient Roles { get; }
 
-    /// <summary>Network ACLs management.</summary>
-    public NetworkAclsClient NetworkAcls { get; }
+    /// <inheritdoc />
+    public IRulesClient Rules { get; }
 
-    /// <summary>Organizations management.</summary>
-    public OrganizationsClient Organizations { get; }
+    /// <inheritdoc />
+    public IRulesConfigsClient RulesConfigs { get; }
 
-    /// <summary>Prompts customization.</summary>
-    public PromptsClient Prompts { get; }
+    /// <inheritdoc />
+    public ISelfServiceProfilesClient SelfServiceProfiles { get; }
 
-    /// <summary>Refresh tokens management.</summary>
-    public RefreshTokensClient RefreshTokens { get; }
+    /// <inheritdoc />
+    public ISessionsClient Sessions { get; }
 
-    /// <summary>Resource servers (APIs) management.</summary>
-    public ResourceServersClient ResourceServers { get; }
+    /// <inheritdoc />
+    public IStatsClient Stats { get; }
 
-    /// <summary>Roles management.</summary>
-    public RolesClient Roles { get; }
+    /// <inheritdoc />
+    public ISupplementalSignalsClient SupplementalSignals { get; }
 
-    /// <summary>Rules management.</summary>
-    public RulesClient Rules { get; }
+    /// <inheritdoc />
+    public ITicketsClient Tickets { get; }
 
-    /// <summary>Rules configs management.</summary>
-    public RulesConfigsClient RulesConfigs { get; }
+    /// <inheritdoc />
+    public ITokenExchangeProfilesClient TokenExchangeProfiles { get; }
 
-    /// <summary>Self-service profiles management.</summary>
-    public SelfServiceProfilesClient SelfServiceProfiles { get; }
+    /// <inheritdoc />
+    public IUserAttributeProfilesClient UserAttributeProfiles { get; }
 
-    /// <summary>Sessions management.</summary>
-    public SessionsClient Sessions { get; }
+    /// <inheritdoc />
+    public IUserBlocksClient UserBlocks { get; }
 
-    /// <summary>Statistics access.</summary>
-    public StatsClient Stats { get; }
+    /// <inheritdoc />
+    public IUsersClient Users { get; }
 
-    /// <summary>Supplemental signals management.</summary>
-    public SupplementalSignalsClient SupplementalSignals { get; }
+    /// <inheritdoc />
+    public IAnomalyClient Anomaly { get; }
 
-    /// <summary>Email/password reset tickets.</summary>
-    public TicketsClient Tickets { get; }
+    /// <inheritdoc />
+    public IAttackProtectionClient AttackProtection { get; }
 
-    /// <summary>Token exchange profiles management.</summary>
-    public TokenExchangeProfilesClient TokenExchangeProfiles { get; }
+    /// <inheritdoc />
+    public IEmailsClient Emails { get; }
 
-    /// <summary>User blocks management.</summary>
-    public UserBlocksClient UserBlocks { get; }
+    /// <inheritdoc />
+    public IGuardianClient Guardian { get; }
 
-    /// <summary>Users management.</summary>
-    public UsersClient Users { get; }
+    /// <inheritdoc />
+    public Auth0.ManagementApi.Keys.IKeysClient Keys { get; }
 
-    /// <summary>Anomaly detection settings.</summary>
-    public AnomalyClient Anomaly { get; }
+    /// <inheritdoc />
+    public Auth0.ManagementApi.RiskAssessments.IRiskAssessmentsClient RiskAssessments { get; }
 
-    /// <summary>Attack protection settings.</summary>
-    public AttackProtectionClient AttackProtection { get; }
+    /// <inheritdoc />
+    public ITenantsClient Tenants { get; }
 
-    /// <summary>Email provider settings.</summary>
-    public EmailsClient Emails { get; }
-
-    /// <summary>Guardian MFA settings.</summary>
-    public GuardianClient Guardian { get; }
-
-    /// <summary>Signing keys management.</summary>
-    public Auth0.ManagementApi.Keys.KeysClient Keys { get; }
-
-    /// <summary>Tenant settings.</summary>
-    public TenantsClient Tenants { get; }
-
-    /// <summary>Verifiable credentials management.</summary>
-    public VerifiableCredentialsClient VerifiableCredentials { get; }
+    /// <inheritdoc />
+    public IVerifiableCredentialsClient VerifiableCredentials { get; }
 
     /// <summary>
-    /// Disposes the ManagementClient and releases resources.
-    /// Only disposes the HttpClient if it was created internally (not provided via options).
+    /// Disposes the <see cref="ManagementClient"/> and releases managed resources.
+    /// Only disposes the internal <see cref="HttpClient"/> if it was created by this instance.
+    /// The <see cref="ITokenProvider"/> is not disposed — the caller owns it and is responsible for its lifetime.
     /// </summary>
     public void Dispose()
     {
