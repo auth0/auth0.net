@@ -1,7 +1,19 @@
 # Change Log
+## [8.0.0-beta.1](https://github.com/auth0/auth0.net/tree/8.0.0-beta.1) (2026-03-02)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-8.0.0-beta.0...mgmt-8.0.0-beta.1)
+
+**Added**
+- Generated the SDK against the latest available spec.
+
+**Changed**
+- Dropped compile time support for .NET 8.0. 
+
+**Fixed**
+- Issue with rendering summary docs for some methods/classes.
+- Refactored automatic token management wrapper to support custom token providers and asynchronous token acquisition. [\#926](https://github.com/auth0/auth0.net/pull/926) ([kailash-b](https://github.com/kailash-b))
 
 ## [8.0.0-beta.0](https://github.com/auth0/auth0.net/tree/8.0.0-beta.0) (2026-02-04)
-[Full Changelog](https://github.com/auth0/auth0.net/compare/7.44.0...8.0.0-beta.0)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.44.0...mgmt-8.0.0-beta.0)
 
 This is a major version update that represents a complete modernization of the Management API SDK architecture and developer experience. 
 
