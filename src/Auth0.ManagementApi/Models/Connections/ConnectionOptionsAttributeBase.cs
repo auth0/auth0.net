@@ -1,4 +1,6 @@
+using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace Auth0.ManagementApi.Models.Connections;
 
@@ -24,4 +26,21 @@ public class ConnectionOptionsAttributeIdentifier
     /// </summary>
     [JsonProperty("active")]
     public bool? Active { get; set; }
+
+    /// <inheritdoc cref="ConnectionOptionsAttributeDefaultMethod"/>
+    [JsonProperty("default_method")]
+    [JsonConverter(typeof(StringEnumConverter))]
+    public ConnectionOptionsAttributeDefaultMethod? DefaultMethod { get; set; }
+}
+
+/// <summary>
+/// Default authentication method for email identifier
+/// </summary>
+public enum ConnectionOptionsAttributeDefaultMethod
+{
+    [EnumMember(Value ="password")]
+    Password,
+
+    [EnumMember(Value ="email_otp")]
+    EmailOtp
 }

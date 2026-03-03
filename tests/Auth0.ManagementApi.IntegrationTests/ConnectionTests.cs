@@ -129,6 +129,7 @@ public class ConnectionTests : IClassFixture<ConnectionTestsFixture>
             Strategy = "auth0",
             DisplayName = "displayname",
             Options = optionsCreateRequestObject
+            
         };
         var newConnectionResponse = await fixture.ApiClient.Connections.CreateAsync(newConnectionRequest);
 
@@ -614,7 +615,8 @@ public class ConnectionTests : IClassFixture<ConnectionTestsFixture>
                             Active = false
                         }
                     },
-                    VerificationMethod = ConnectionOptionsEmailVerificationMethod.Otp
+                    VerificationMethod = ConnectionOptionsEmailVerificationMethod.Otp,
+                    Unique = true
                 },
                 PhoneNumber = new ConnectionOptionsPhoneNumberAttribute()
                 {
@@ -674,7 +676,9 @@ public class ConnectionTests : IClassFixture<ConnectionTestsFixture>
             {
                 Password = new ConnectionOptionsPasswordAuthenticationMethod()
                 {
-                    Enabled = true
+                    Enabled = true,
+                    ApiBehavior = ConnectionOptionsPasswordAuthenticationMethodApiBehavior.Required,
+                    SignupBehavior = ConnectionOptionsPasswordAuthenticationMethodSignupBehavior.Allow
                 },
                 Passkey = new ConnectionOptionsPasskeyAuthenticationMethod()
                 {

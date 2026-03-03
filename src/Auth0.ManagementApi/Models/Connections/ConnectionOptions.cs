@@ -117,7 +117,11 @@ public class ConnectionOptions
     [JsonConverter(typeof(StringEnumConverter))]
     public SetUserRootAttributes? SetUserRootAttributes { get; set; }
         
-    /// <inheritdoc cref="Auth0.ManagementApi.Models.Connections.SetUserRootAttributes"/>
+    /// <inheritdoc cref="Auth0.ManagementApi.Models.Connections.GatewayAuthentication"/>
     [JsonProperty("gateway_authentication")]
     public GatewayAuthentication GatewayAuthentication { get; set; }
+    
+    /// <inheritdoc cref="ConnectionOptionsFederatedConnectionsAccessTokens"/>
+    [JsonProperty("federated_connections_access_tokens")]
+    public ConnectionOptionsFederatedConnectionsAccessTokens? FederatedConnectionsAccessTokens { get; set; }
 }
