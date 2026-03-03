@@ -21,7 +21,7 @@ public record LogStreamPiiConfig : IJsonOnDeserialized
 
     [Optional]
     [JsonPropertyName("algorithm")]
-    public string? Algorithm { get; set; }
+    public LogStreamPiiAlgorithmEnum? Algorithm { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

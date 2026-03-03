@@ -60,7 +60,6 @@ public partial class HooksClient : IHooksClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "hooks",
                     QueryString = _queryString,
@@ -94,7 +93,7 @@ public partial class HooksClient : IHooksClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -145,7 +144,6 @@ public partial class HooksClient : IHooksClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "hooks",
                     Body = request,
@@ -178,7 +176,7 @@ public partial class HooksClient : IHooksClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -234,7 +232,6 @@ public partial class HooksClient : IHooksClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("hooks/{0}", ValueConvert.ToPathParameterString(id)),
                     QueryString = _queryString,
@@ -266,7 +263,7 @@ public partial class HooksClient : IHooksClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -318,7 +315,6 @@ public partial class HooksClient : IHooksClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format("hooks/{0}", ValueConvert.ToPathParameterString(id)),
                     Body = request,
@@ -351,7 +347,7 @@ public partial class HooksClient : IHooksClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -502,7 +498,6 @@ public partial class HooksClient : IHooksClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format("hooks/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,

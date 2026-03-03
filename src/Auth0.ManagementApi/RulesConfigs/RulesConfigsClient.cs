@@ -27,7 +27,6 @@ public partial class RulesConfigsClient : IRulesConfigsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "rules-configs",
                     Headers = _headers,
@@ -58,7 +57,7 @@ public partial class RulesConfigsClient : IRulesConfigsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -106,7 +105,6 @@ public partial class RulesConfigsClient : IRulesConfigsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = string.Format(
                         "rules-configs/{0}",
@@ -144,7 +142,7 @@ public partial class RulesConfigsClient : IRulesConfigsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -233,7 +231,6 @@ public partial class RulesConfigsClient : IRulesConfigsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "rules-configs/{0}",

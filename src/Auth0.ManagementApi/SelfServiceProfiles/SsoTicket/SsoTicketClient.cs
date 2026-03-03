@@ -32,7 +32,6 @@ public partial class SsoTicketClient : ISsoTicketClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "self-service-profiles/{0}/sso-ticket",
@@ -71,7 +70,7 @@ public partial class SsoTicketClient : ISsoTicketClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -149,7 +148,6 @@ public partial class SsoTicketClient : ISsoTicketClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "self-service-profiles/{0}/sso-ticket/{1}/revoke",

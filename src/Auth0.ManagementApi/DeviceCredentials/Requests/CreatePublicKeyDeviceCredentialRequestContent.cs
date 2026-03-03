@@ -13,7 +13,7 @@ public record CreatePublicKeyDeviceCredentialRequestContent
     public required string DeviceName { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "public_key";
+    public required DeviceCredentialPublicKeyTypeEnum Type { get; set; }
 
     /// <summary>
     /// Base64 encoded string containing the credential.

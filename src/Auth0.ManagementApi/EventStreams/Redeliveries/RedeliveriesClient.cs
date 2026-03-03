@@ -30,7 +30,6 @@ public partial class RedeliveriesClient : IRedeliveriesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "event-streams/{0}/redeliver",
@@ -69,7 +68,7 @@ public partial class RedeliveriesClient : IRedeliveriesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -142,7 +141,6 @@ public partial class RedeliveriesClient : IRedeliveriesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "event-streams/{0}/redeliver/{1}",

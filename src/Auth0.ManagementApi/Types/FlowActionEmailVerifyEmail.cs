@@ -19,10 +19,10 @@ public record FlowActionEmailVerifyEmail : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "EMAIL";
+    public required FlowActionEmailVerifyEmailType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "VERIFY_EMAIL";
+    public required FlowActionEmailVerifyEmailAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

@@ -28,7 +28,6 @@ public partial class SigningClient : ISigningClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "keys/signing",
                     Headers = _headers,
@@ -59,7 +58,7 @@ public partial class SigningClient : ISigningClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -107,7 +106,6 @@ public partial class SigningClient : ISigningClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "keys/signing/rotate",
                     Headers = _headers,
@@ -140,7 +138,7 @@ public partial class SigningClient : ISigningClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -187,7 +185,6 @@ public partial class SigningClient : ISigningClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "keys/signing/{0}",
@@ -223,7 +220,7 @@ public partial class SigningClient : ISigningClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -272,7 +269,6 @@ public partial class SigningClient : ISigningClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = string.Format(
                         "keys/signing/{0}/revoke",
@@ -308,7 +304,7 @@ public partial class SigningClient : ISigningClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

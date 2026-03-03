@@ -29,7 +29,6 @@ public partial class KeysClient : IKeysClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "connections/{0}/keys",
@@ -63,7 +62,7 @@ public partial class KeysClient : IKeysClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -98,6 +97,99 @@ public partial class KeysClient : IKeysClient
         }
     }
 
+    private async Task<
+        WithRawResponse<IEnumerable<PostConnectionsKeysResponseContentItem>>
+    > CreateAsyncCore(
+        string id,
+        Optional<PostConnectionKeysRequestContent?> request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
+            .Add(_client.Options.Headers)
+            .Add(_client.Options.AdditionalHeaders)
+            .Add(options?.AdditionalHeaders)
+            .BuildAsync()
+            .ConfigureAwait(false);
+        var response = await _client
+            .SendRequestAsync(
+                new JsonRequest
+                {
+                    Method = HttpMethod.Post,
+                    Path = string.Format(
+                        "connections/{0}/keys",
+                        ValueConvert.ToPathParameterString(id)
+                    ),
+                    Body = request,
+                    Headers = _headers,
+                    ContentType = "application/json",
+                    Options = options,
+                },
+                cancellationToken
+            )
+            .ConfigureAwait(false);
+        if (response.StatusCode is >= 200 and < 400)
+        {
+            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            try
+            {
+                var responseData = JsonUtils.Deserialize<
+                    IEnumerable<PostConnectionsKeysResponseContentItem>
+                >(responseBody)!;
+                return new WithRawResponse<IEnumerable<PostConnectionsKeysResponseContentItem>>()
+                {
+                    Data = responseData,
+                    RawResponse = new RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    },
+                };
+            }
+            catch (JsonException e)
+            {
+                throw new ManagementApiException(
+                    "Failed to deserialize response",
+                    response.StatusCode,
+                    responseBody,
+                    e
+                );
+            }
+        }
+        {
+            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            try
+            {
+                switch (response.StatusCode)
+                {
+                    case 400:
+                        throw new BadRequestError(JsonUtils.Deserialize<object>(responseBody));
+                    case 401:
+                        throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
+                    case 403:
+                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                    case 404:
+                        throw new NotFoundError(JsonUtils.Deserialize<object>(responseBody));
+                    case 409:
+                        throw new ConflictError(JsonUtils.Deserialize<object>(responseBody));
+                    case 429:
+                        throw new TooManyRequestsError(JsonUtils.Deserialize<object>(responseBody));
+                }
+            }
+            catch (JsonException)
+            {
+                // unable to map error response, throwing generic error
+            }
+            throw new ManagementApiException(
+                $"Error with status code {response.StatusCode}",
+                response.StatusCode,
+                responseBody
+            );
+        }
+    }
+
     private async Task<WithRawResponse<RotateConnectionsKeysResponseContent>> RotateAsyncCore(
         string id,
         Optional<RotateConnectionKeysRequestContent?> request,
@@ -115,7 +207,6 @@ public partial class KeysClient : IKeysClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "connections/{0}/keys/rotate",
@@ -153,7 +244,7 @@ public partial class KeysClient : IKeysClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -202,6 +293,24 @@ public partial class KeysClient : IKeysClient
     {
         return new WithRawResponseTask<IEnumerable<ConnectionKey>>(
             GetAsyncCore(id, options, cancellationToken)
+        );
+    }
+
+    /// <summary>
+    /// Provision initial connection keys for Okta or OIDC connection strategies. This endpoint allows you to create keys before configuring the connection to use Private Key JWT authentication, enabling zero-downtime transitions.
+    /// </summary>
+    /// <example><code>
+    /// await client.Connections.Keys.CreateAsync("id", new PostConnectionKeysRequestContent());
+    /// </code></example>
+    public WithRawResponseTask<IEnumerable<PostConnectionsKeysResponseContentItem>> CreateAsync(
+        string id,
+        Optional<PostConnectionKeysRequestContent?> request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        return new WithRawResponseTask<IEnumerable<PostConnectionsKeysResponseContentItem>>(
+            CreateAsyncCore(id, request, options, cancellationToken)
         );
     }
 

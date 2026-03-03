@@ -30,7 +30,6 @@ public partial class PushNotificationClient : IPushNotificationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "guardian/factors/push-notification/providers/apns",
                     Headers = _headers,
@@ -64,7 +63,7 @@ public partial class PushNotificationClient : IPushNotificationClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -113,7 +112,6 @@ public partial class PushNotificationClient : IPushNotificationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = "guardian/factors/push-notification/providers/apns",
                     Body = request,
@@ -149,7 +147,7 @@ public partial class PushNotificationClient : IPushNotificationClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -198,7 +196,6 @@ public partial class PushNotificationClient : IPushNotificationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "guardian/factors/push-notification/providers/apns",
                     Body = request,
@@ -234,7 +231,7 @@ public partial class PushNotificationClient : IPushNotificationClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -281,7 +278,6 @@ public partial class PushNotificationClient : IPushNotificationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = "guardian/factors/push-notification/providers/fcm",
                     Body = request,
@@ -316,7 +312,7 @@ public partial class PushNotificationClient : IPushNotificationClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -363,7 +359,6 @@ public partial class PushNotificationClient : IPushNotificationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "guardian/factors/push-notification/providers/fcm",
                     Body = request,
@@ -398,7 +393,7 @@ public partial class PushNotificationClient : IPushNotificationClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -445,7 +440,6 @@ public partial class PushNotificationClient : IPushNotificationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = "guardian/factors/push-notification/providers/fcmv1",
                     Body = request,
@@ -480,7 +474,7 @@ public partial class PushNotificationClient : IPushNotificationClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -527,7 +521,6 @@ public partial class PushNotificationClient : IPushNotificationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "guardian/factors/push-notification/providers/fcmv1",
                     Body = request,
@@ -562,7 +555,7 @@ public partial class PushNotificationClient : IPushNotificationClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -610,7 +603,6 @@ public partial class PushNotificationClient : IPushNotificationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "guardian/factors/push-notification/providers/sns",
                     Headers = _headers,
@@ -644,7 +636,7 @@ public partial class PushNotificationClient : IPushNotificationClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -693,7 +685,6 @@ public partial class PushNotificationClient : IPushNotificationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = "guardian/factors/push-notification/providers/sns",
                     Body = request,
@@ -729,7 +720,7 @@ public partial class PushNotificationClient : IPushNotificationClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -778,7 +769,6 @@ public partial class PushNotificationClient : IPushNotificationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "guardian/factors/push-notification/providers/sns",
                     Body = request,
@@ -814,7 +804,7 @@ public partial class PushNotificationClient : IPushNotificationClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -862,7 +852,6 @@ public partial class PushNotificationClient : IPushNotificationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "guardian/factors/push-notification/selected-provider",
                     Headers = _headers,
@@ -896,7 +885,7 @@ public partial class PushNotificationClient : IPushNotificationClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -945,7 +934,6 @@ public partial class PushNotificationClient : IPushNotificationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = "guardian/factors/push-notification/selected-provider",
                     Body = request,
@@ -981,7 +969,7 @@ public partial class PushNotificationClient : IPushNotificationClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

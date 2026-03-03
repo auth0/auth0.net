@@ -15,7 +15,7 @@ public record ConnectionResponseContentEmail : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "email";
+    public required ConnectionResponseContentEmailStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

@@ -29,7 +29,6 @@ public partial class PartialsClient : IPartialsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "prompts/{0}/partials",
@@ -65,7 +64,7 @@ public partial class PartialsClient : IPartialsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -143,7 +142,6 @@ public partial class PartialsClient : IPartialsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = string.Format(
                         "prompts/{0}/partials",

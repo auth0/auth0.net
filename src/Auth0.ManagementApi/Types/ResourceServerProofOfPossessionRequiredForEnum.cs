@@ -11,10 +11,6 @@ public readonly record struct ResourceServerProofOfPossessionRequiredForEnum : I
         Values.PublicClients
     );
 
-    public static readonly ResourceServerProofOfPossessionRequiredForEnum ConfidentialClients = new(
-        Values.ConfidentialClients
-    );
-
     public static readonly ResourceServerProofOfPossessionRequiredForEnum AllClients = new(
         Values.AllClients
     );
@@ -73,8 +69,6 @@ public readonly record struct ResourceServerProofOfPossessionRequiredForEnum : I
     public static class Values
     {
         public const string PublicClients = "public_clients";
-
-        public const string ConfidentialClients = "confidential_clients";
 
         public const string AllClients = "all_clients";
     }

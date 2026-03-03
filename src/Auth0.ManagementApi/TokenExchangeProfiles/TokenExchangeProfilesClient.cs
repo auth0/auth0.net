@@ -59,7 +59,6 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "token-exchange-profiles",
                     QueryString = _queryString,
@@ -93,7 +92,7 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -142,7 +141,6 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "token-exchange-profiles",
                     Body = request,
@@ -177,7 +175,7 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -228,7 +226,6 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "token-exchange-profiles/{0}",
@@ -264,7 +261,7 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -363,7 +360,7 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
     ///         Name = "name",
     ///         SubjectTokenType = "subject_token_type",
     ///         ActionId = "action_id",
-    ///         Type = "custom_authentication",
+    ///         Type = TokenExchangeProfileTypeEnum.CustomAuthentication,
     ///     }
     /// );
     /// </code></example>
@@ -421,7 +418,6 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "token-exchange-profiles/{0}",
@@ -491,7 +487,6 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "token-exchange-profiles/{0}",

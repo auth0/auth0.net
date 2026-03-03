@@ -56,7 +56,6 @@ public partial class EnabledConnectionsClient : IEnabledConnectionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "organizations/{0}/enabled_connections",
@@ -94,7 +93,7 @@ public partial class EnabledConnectionsClient : IEnabledConnectionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -144,7 +143,6 @@ public partial class EnabledConnectionsClient : IEnabledConnectionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "organizations/{0}/enabled_connections",
@@ -182,7 +180,7 @@ public partial class EnabledConnectionsClient : IEnabledConnectionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -232,7 +230,6 @@ public partial class EnabledConnectionsClient : IEnabledConnectionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "organizations/{0}/enabled_connections/{1}",
@@ -269,7 +266,7 @@ public partial class EnabledConnectionsClient : IEnabledConnectionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -320,7 +317,6 @@ public partial class EnabledConnectionsClient : IEnabledConnectionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "organizations/{0}/enabled_connections/{1}",
@@ -360,7 +356,7 @@ public partial class EnabledConnectionsClient : IEnabledConnectionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -509,7 +505,6 @@ public partial class EnabledConnectionsClient : IEnabledConnectionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "organizations/{0}/enabled_connections/{1}",

@@ -15,7 +15,7 @@ public record ConnectionResponseContentPaypal : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "paypal";
+    public required ConnectionResponseContentPaypalStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

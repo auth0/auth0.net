@@ -38,7 +38,6 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "custom-domains",
                     QueryString = _queryString,
@@ -70,7 +69,7 @@ public partial class CustomDomainsClient : ICustomDomainsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -117,7 +116,6 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "custom-domains",
                     Body = request,
@@ -152,7 +150,7 @@ public partial class CustomDomainsClient : ICustomDomainsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -203,7 +201,6 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "custom-domains/{0}",
@@ -239,7 +236,7 @@ public partial class CustomDomainsClient : ICustomDomainsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -291,7 +288,6 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "custom-domains/{0}",
@@ -329,7 +325,7 @@ public partial class CustomDomainsClient : ICustomDomainsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -378,7 +374,6 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "custom-domains/{0}/test",
@@ -414,7 +409,7 @@ public partial class CustomDomainsClient : ICustomDomainsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -465,7 +460,6 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "custom-domains/{0}/verify",
@@ -501,7 +495,7 @@ public partial class CustomDomainsClient : ICustomDomainsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -636,7 +630,6 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "custom-domains/{0}",

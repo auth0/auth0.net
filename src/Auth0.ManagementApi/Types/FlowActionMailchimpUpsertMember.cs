@@ -19,10 +19,10 @@ public record FlowActionMailchimpUpsertMember : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "MAILCHIMP";
+    public required FlowActionMailchimpUpsertMemberType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "UPSERT_MEMBER";
+    public required FlowActionMailchimpUpsertMemberAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

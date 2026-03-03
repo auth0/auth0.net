@@ -27,7 +27,6 @@ public partial class SuspiciousIpThrottlingClient : ISuspiciousIpThrottlingClien
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "attack-protection/suspicious-ip-throttling",
                     Headers = _headers,
@@ -61,7 +60,7 @@ public partial class SuspiciousIpThrottlingClient : ISuspiciousIpThrottlingClien
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -110,7 +109,6 @@ public partial class SuspiciousIpThrottlingClient : ISuspiciousIpThrottlingClien
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "attack-protection/suspicious-ip-throttling",
                     Body = request,
@@ -146,7 +144,7 @@ public partial class SuspiciousIpThrottlingClient : ISuspiciousIpThrottlingClien
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

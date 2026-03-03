@@ -56,7 +56,6 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "users/{0}/authentication-methods",
@@ -94,7 +93,7 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -148,7 +147,6 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "users/{0}/authentication-methods",
@@ -187,7 +185,7 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -243,7 +241,6 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = string.Format(
                         "users/{0}/authentication-methods",
@@ -283,7 +280,7 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -335,7 +332,6 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "users/{0}/authentication-methods/{1}",
@@ -373,7 +369,7 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -428,7 +424,6 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "users/{0}/authentication-methods/{1}",
@@ -468,7 +463,7 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -625,7 +620,6 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "users/{0}/authentication-methods",
@@ -707,7 +701,6 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "users/{0}/authentication-methods/{1}",

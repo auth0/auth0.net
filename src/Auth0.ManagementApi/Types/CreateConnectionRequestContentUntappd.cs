@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentUntappd : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "untappd";
+    public required CreateConnectionRequestContentUntappdStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

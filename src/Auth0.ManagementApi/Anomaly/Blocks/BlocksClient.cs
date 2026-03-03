@@ -35,7 +35,6 @@ public partial class BlocksClient : IBlocksClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "anomaly/blocks/ips/{0}",
@@ -103,7 +102,6 @@ public partial class BlocksClient : IBlocksClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "anomaly/blocks/ips/{0}",

@@ -27,7 +27,6 @@ public partial class NewDeviceClient : INewDeviceClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "risk-assessments/settings/new-device",
                     Headers = _headers,
@@ -61,7 +60,7 @@ public partial class NewDeviceClient : INewDeviceClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -112,7 +111,6 @@ public partial class NewDeviceClient : INewDeviceClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "risk-assessments/settings/new-device",
                     Body = request,
@@ -148,7 +146,7 @@ public partial class NewDeviceClient : INewDeviceClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

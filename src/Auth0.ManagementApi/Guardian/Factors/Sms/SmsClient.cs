@@ -30,7 +30,6 @@ public partial class SmsClient : ISmsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "guardian/factors/sms/providers/twilio",
                     Headers = _headers,
@@ -64,7 +63,7 @@ public partial class SmsClient : ISmsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -113,7 +112,6 @@ public partial class SmsClient : ISmsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = "guardian/factors/sms/providers/twilio",
                     Body = request,
@@ -149,7 +147,7 @@ public partial class SmsClient : ISmsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -197,7 +195,6 @@ public partial class SmsClient : ISmsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "guardian/factors/sms/selected-provider",
                     Headers = _headers,
@@ -231,7 +228,7 @@ public partial class SmsClient : ISmsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -280,7 +277,6 @@ public partial class SmsClient : ISmsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = "guardian/factors/sms/selected-provider",
                     Body = request,
@@ -316,7 +312,7 @@ public partial class SmsClient : ISmsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -364,7 +360,6 @@ public partial class SmsClient : ISmsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "guardian/factors/sms/templates",
                     Headers = _headers,
@@ -398,7 +393,7 @@ public partial class SmsClient : ISmsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -447,7 +442,6 @@ public partial class SmsClient : ISmsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = "guardian/factors/sms/templates",
                     Body = request,
@@ -483,7 +477,7 @@ public partial class SmsClient : ISmsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

@@ -29,7 +29,6 @@ public partial class CredentialsClient : ICredentialsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "clients/{0}/credentials",
@@ -65,7 +64,7 @@ public partial class CredentialsClient : ICredentialsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -115,7 +114,6 @@ public partial class CredentialsClient : ICredentialsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "clients/{0}/credentials",
@@ -153,7 +151,7 @@ public partial class CredentialsClient : ICredentialsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -205,7 +203,6 @@ public partial class CredentialsClient : ICredentialsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "clients/{0}/credentials/{1}",
@@ -242,7 +239,7 @@ public partial class CredentialsClient : ICredentialsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -293,7 +290,6 @@ public partial class CredentialsClient : ICredentialsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "clients/{0}/credentials/{1}",
@@ -332,7 +328,7 @@ public partial class CredentialsClient : ICredentialsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -482,7 +478,6 @@ public partial class CredentialsClient : ICredentialsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "clients/{0}/credentials/{1}",

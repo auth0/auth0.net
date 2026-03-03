@@ -56,7 +56,6 @@ public partial class PermissionsClient : IPermissionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "users/{0}/permissions",
@@ -94,7 +93,7 @@ public partial class PermissionsClient : IPermissionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -215,7 +214,6 @@ public partial class PermissionsClient : IPermissionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "users/{0}/permissions",
@@ -297,7 +295,6 @@ public partial class PermissionsClient : IPermissionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "users/{0}/permissions",

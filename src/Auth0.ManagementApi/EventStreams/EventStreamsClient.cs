@@ -51,7 +51,6 @@ public partial class EventStreamsClient : IEventStreamsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "event-streams",
                     QueryString = _queryString,
@@ -85,7 +84,7 @@ public partial class EventStreamsClient : IEventStreamsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -134,7 +133,6 @@ public partial class EventStreamsClient : IEventStreamsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "event-streams",
                     Body = request,
@@ -169,7 +167,7 @@ public partial class EventStreamsClient : IEventStreamsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -220,7 +218,6 @@ public partial class EventStreamsClient : IEventStreamsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "event-streams/{0}",
@@ -256,7 +253,7 @@ public partial class EventStreamsClient : IEventStreamsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -306,7 +303,6 @@ public partial class EventStreamsClient : IEventStreamsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "event-streams/{0}",
@@ -344,7 +340,7 @@ public partial class EventStreamsClient : IEventStreamsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -394,7 +390,6 @@ public partial class EventStreamsClient : IEventStreamsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "event-streams/{0}/test",
@@ -432,7 +427,7 @@ public partial class EventStreamsClient : IEventStreamsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -508,13 +503,13 @@ public partial class EventStreamsClient : IEventStreamsClient
     ///     {
     ///         Destination = new EventStreamWebhookDestination
     ///         {
-    ///             Type = "webhook",
+    ///             Type = EventStreamWebhookDestinationTypeEnum.Webhook,
     ///             Configuration = new EventStreamWebhookConfiguration
     ///             {
     ///                 WebhookEndpoint = "webhook_endpoint",
     ///                 WebhookAuthorization = new EventStreamWebhookBasicAuth
     ///                 {
-    ///                     Method = "basic",
+    ///                     Method = EventStreamWebhookBasicAuthMethodEnum.Basic,
     ///                     Username = "username",
     ///                 },
     ///             },
@@ -566,7 +561,6 @@ public partial class EventStreamsClient : IEventStreamsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "event-streams/{0}",

@@ -19,10 +19,10 @@ public record FlowActionPipedriveAddOrganization : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "PIPEDRIVE";
+    public required FlowActionPipedriveAddOrganizationType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "ADD_ORGANIZATION";
+    public required FlowActionPipedriveAddOrganizationAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

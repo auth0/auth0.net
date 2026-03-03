@@ -19,10 +19,10 @@ public record FlowActionWhatsappSendMessage : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "WHATSAPP";
+    public required FlowActionWhatsappSendMessageType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "SEND_MESSAGE";
+    public required FlowActionWhatsappSendMessageAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

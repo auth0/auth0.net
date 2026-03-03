@@ -15,7 +15,7 @@ public record ConnectionResponseContentInstagram : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "instagram";
+    public required ConnectionResponseContentInstagramStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

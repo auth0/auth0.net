@@ -29,7 +29,6 @@ public partial class EnrollmentsClient : IEnrollmentsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "users/{0}/enrollments",
@@ -65,7 +64,7 @@ public partial class EnrollmentsClient : IEnrollmentsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

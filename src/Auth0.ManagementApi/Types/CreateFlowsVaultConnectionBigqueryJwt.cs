@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionBigqueryJwt : IJsonOnDeserialized
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "BIGQUERY";
+    public required FlowsVaultConnectionAppIdBigqueryEnum AppId { get; set; }
 
     [JsonPropertyName("setup")]
     public required FlowsVaultConnectioSetupBigqueryOauthJwt Setup { get; set; }

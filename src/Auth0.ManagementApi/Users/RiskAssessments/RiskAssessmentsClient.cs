@@ -22,7 +22,7 @@ public partial class RiskAssessmentsClient : IRiskAssessmentsClient
     ///     new ClearAssessorsRequestContent
     ///     {
     ///         Connection = "connection",
-    ///         Assessors = new List&lt;string&gt;() { "new-device" },
+    ///         Assessors = new List&lt;AssessorsTypeEnum&gt;() { AssessorsTypeEnum.NewDevice },
     ///     }
     /// );
     /// </code></example>
@@ -43,7 +43,6 @@ public partial class RiskAssessmentsClient : IRiskAssessmentsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "users/{0}/risk-assessments/clear",

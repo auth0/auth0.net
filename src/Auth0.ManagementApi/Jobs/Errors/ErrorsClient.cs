@@ -29,7 +29,6 @@ public partial class ErrorsClient : IErrorsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("jobs/{0}/errors", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,
@@ -60,7 +59,7 @@ public partial class ErrorsClient : IErrorsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

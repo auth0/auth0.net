@@ -40,7 +40,6 @@ public partial class UserBlocksClient : IUserBlocksClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "user-blocks",
                     QueryString = _queryString,
@@ -74,7 +73,7 @@ public partial class UserBlocksClient : IUserBlocksClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -133,7 +132,6 @@ public partial class UserBlocksClient : IUserBlocksClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("user-blocks/{0}", ValueConvert.ToPathParameterString(id)),
                     QueryString = _queryString,
@@ -167,7 +165,7 @@ public partial class UserBlocksClient : IUserBlocksClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -255,7 +253,6 @@ public partial class UserBlocksClient : IUserBlocksClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = "user-blocks",
                     QueryString = _queryString,
@@ -342,7 +339,6 @@ public partial class UserBlocksClient : IUserBlocksClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format("user-blocks/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,

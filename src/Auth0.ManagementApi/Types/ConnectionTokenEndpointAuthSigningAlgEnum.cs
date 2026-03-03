@@ -9,9 +9,15 @@ public readonly record struct ConnectionTokenEndpointAuthSigningAlgEnum : IStrin
 {
     public static readonly ConnectionTokenEndpointAuthSigningAlgEnum Es256 = new(Values.Es256);
 
+    public static readonly ConnectionTokenEndpointAuthSigningAlgEnum Es384 = new(Values.Es384);
+
     public static readonly ConnectionTokenEndpointAuthSigningAlgEnum Ps256 = new(Values.Ps256);
 
+    public static readonly ConnectionTokenEndpointAuthSigningAlgEnum Ps384 = new(Values.Ps384);
+
     public static readonly ConnectionTokenEndpointAuthSigningAlgEnum Rs256 = new(Values.Rs256);
+
+    public static readonly ConnectionTokenEndpointAuthSigningAlgEnum Rs384 = new(Values.Rs384);
 
     public static readonly ConnectionTokenEndpointAuthSigningAlgEnum Rs512 = new(Values.Rs512);
 
@@ -70,9 +76,15 @@ public readonly record struct ConnectionTokenEndpointAuthSigningAlgEnum : IStrin
     {
         public const string Es256 = "ES256";
 
+        public const string Es384 = "ES384";
+
         public const string Ps256 = "PS256";
 
+        public const string Ps384 = "PS384";
+
         public const string Rs256 = "RS256";
+
+        public const string Rs384 = "RS384";
 
         public const string Rs512 = "RS512";
     }

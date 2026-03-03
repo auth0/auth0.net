@@ -33,7 +33,6 @@ public partial class ProvidersClient : IProvidersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "branding/phone/providers",
                     QueryString = _queryString,
@@ -67,7 +66,7 @@ public partial class ProvidersClient : IProvidersClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -116,7 +115,6 @@ public partial class ProvidersClient : IProvidersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "branding/phone/providers",
                     Body = request,
@@ -152,7 +150,7 @@ public partial class ProvidersClient : IProvidersClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -203,7 +201,6 @@ public partial class ProvidersClient : IProvidersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "branding/phone/providers/{0}",
@@ -239,7 +236,7 @@ public partial class ProvidersClient : IProvidersClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -291,7 +288,6 @@ public partial class ProvidersClient : IProvidersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "branding/phone/providers/{0}",
@@ -330,7 +326,7 @@ public partial class ProvidersClient : IProvidersClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -384,7 +380,6 @@ public partial class ProvidersClient : IProvidersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "branding/phone/providers/{0}/try",
@@ -423,7 +418,7 @@ public partial class ProvidersClient : IProvidersClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -542,7 +537,6 @@ public partial class ProvidersClient : IProvidersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "branding/phone/providers/{0}",

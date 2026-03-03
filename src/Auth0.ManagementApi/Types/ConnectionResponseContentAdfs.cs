@@ -15,7 +15,7 @@ public record ConnectionResponseContentAdfs : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "adfs";
+    public required ConnectionResponseContentAdfsStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

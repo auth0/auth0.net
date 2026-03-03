@@ -11,6 +11,9 @@ public record UpdateTenantSettingsRequestContent
     [JsonPropertyName("change_password")]
     public Optional<TenantSettingsPasswordPage?> ChangePassword { get; set; }
 
+    /// <summary>
+    /// Device Flow configuration.
+    /// </summary>
     [Nullable, Optional]
     [JsonPropertyName("device_flow")]
     public Optional<TenantSettingsDeviceFlow?> DeviceFlow { get; set; }

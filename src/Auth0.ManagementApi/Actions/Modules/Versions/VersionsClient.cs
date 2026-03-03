@@ -52,7 +52,6 @@ public partial class VersionsClient : IVersionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "actions/modules/{0}/versions",
@@ -89,7 +88,7 @@ public partial class VersionsClient : IVersionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -140,7 +139,6 @@ public partial class VersionsClient : IVersionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "actions/modules/{0}/versions",
@@ -176,7 +174,7 @@ public partial class VersionsClient : IVersionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -232,7 +230,6 @@ public partial class VersionsClient : IVersionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "actions/modules/{0}/versions/{1}",
@@ -269,7 +266,7 @@ public partial class VersionsClient : IVersionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

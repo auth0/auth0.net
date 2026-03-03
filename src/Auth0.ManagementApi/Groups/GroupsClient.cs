@@ -61,7 +61,6 @@ public partial class GroupsClient : IGroupsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "groups",
                     QueryString = _queryString,
@@ -95,7 +94,7 @@ public partial class GroupsClient : IGroupsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -144,7 +143,6 @@ public partial class GroupsClient : IGroupsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("groups/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,
@@ -175,7 +173,7 @@ public partial class GroupsClient : IGroupsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

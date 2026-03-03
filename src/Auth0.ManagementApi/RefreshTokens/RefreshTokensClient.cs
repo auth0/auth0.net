@@ -28,7 +28,6 @@ public partial class RefreshTokensClient : IRefreshTokensClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "refresh-tokens/{0}",
@@ -64,7 +63,7 @@ public partial class RefreshTokensClient : IRefreshTokensClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -114,7 +113,6 @@ public partial class RefreshTokensClient : IRefreshTokensClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "refresh-tokens/{0}",
@@ -152,7 +150,7 @@ public partial class RefreshTokensClient : IRefreshTokensClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -226,7 +224,6 @@ public partial class RefreshTokensClient : IRefreshTokensClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "refresh-tokens/{0}",

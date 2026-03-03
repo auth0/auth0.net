@@ -64,7 +64,6 @@ public partial class ConnectionsClient : IConnectionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "clients/{0}/connections",
@@ -101,7 +100,7 @@ public partial class ConnectionsClient : IConnectionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

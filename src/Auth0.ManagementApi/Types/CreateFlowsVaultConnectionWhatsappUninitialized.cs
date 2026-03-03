@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionWhatsappUninitialized : IJsonOnDeseriali
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "WHATSAPP";
+    public required FlowsVaultConnectionAppIdWhatsappEnum AppId { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

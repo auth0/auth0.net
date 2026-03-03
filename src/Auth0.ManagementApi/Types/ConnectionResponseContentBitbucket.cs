@@ -15,7 +15,7 @@ public record ConnectionResponseContentBitbucket : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "bitbucket";
+    public required ConnectionResponseContentBitbucketStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

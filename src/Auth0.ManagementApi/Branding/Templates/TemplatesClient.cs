@@ -30,7 +30,6 @@ public partial class TemplatesClient : ITemplatesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "branding/templates/universal-login",
                     Headers = _headers,
@@ -63,7 +62,7 @@ public partial class TemplatesClient : ITemplatesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -156,7 +155,6 @@ public partial class TemplatesClient : ITemplatesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = "branding/templates/universal-login",
                     Body = request,
@@ -221,7 +219,6 @@ public partial class TemplatesClient : ITemplatesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = "branding/templates/universal-login",
                     Headers = _headers,

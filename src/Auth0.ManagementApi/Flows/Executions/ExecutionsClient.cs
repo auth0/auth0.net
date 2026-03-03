@@ -49,7 +49,6 @@ public partial class ExecutionsClient : IExecutionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "flows/{0}/executions",
@@ -87,7 +86,7 @@ public partial class ExecutionsClient : IExecutionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -142,7 +141,6 @@ public partial class ExecutionsClient : IExecutionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "flows/{0}/executions/{1}",
@@ -180,7 +178,7 @@ public partial class ExecutionsClient : IExecutionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -295,7 +293,6 @@ public partial class ExecutionsClient : IExecutionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "flows/{0}/executions/{1}",

@@ -17,11 +17,11 @@ public record CreateCustomDomainRequestContent
 
     [Optional]
     [JsonPropertyName("verification_method")]
-    public string? VerificationMethod { get; set; }
+    public CustomDomainVerificationMethodEnum? VerificationMethod { get; set; }
 
     [Optional]
     [JsonPropertyName("tls_policy")]
-    public string? TlsPolicy { get; set; }
+    public CustomDomainTlsPolicyEnum? TlsPolicy { get; set; }
 
     [Nullable, Optional]
     [JsonPropertyName("custom_client_ip_header")]

@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionPipedriveToken : IJsonOnDeserialized
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "PIPEDRIVE";
+    public required FlowsVaultConnectionAppIdPipedriveEnum AppId { get; set; }
 
     [JsonPropertyName("setup")]
     public required FlowsVaultConnectioSetupToken Setup { get; set; }

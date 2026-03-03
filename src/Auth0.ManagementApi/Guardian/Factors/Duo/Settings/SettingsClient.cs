@@ -28,7 +28,6 @@ public partial class SettingsClient : ISettingsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "guardian/factors/duo/settings",
                     Headers = _headers,
@@ -62,7 +61,7 @@ public partial class SettingsClient : ISettingsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -109,7 +108,6 @@ public partial class SettingsClient : ISettingsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = "guardian/factors/duo/settings",
                     Body = request,
@@ -145,7 +143,7 @@ public partial class SettingsClient : ISettingsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -194,7 +192,6 @@ public partial class SettingsClient : ISettingsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "guardian/factors/duo/settings",
                     Body = request,
@@ -230,7 +227,7 @@ public partial class SettingsClient : ISettingsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

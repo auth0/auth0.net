@@ -88,7 +88,6 @@ public partial class LogsClient : ILogsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "logs",
                     QueryString = _queryString,
@@ -122,7 +121,7 @@ public partial class LogsClient : ILogsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -171,7 +170,6 @@ public partial class LogsClient : ILogsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("logs/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,
@@ -202,7 +200,7 @@ public partial class LogsClient : ILogsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

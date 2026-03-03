@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentIp : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "ip";
+    public required CreateConnectionRequestContentIpStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

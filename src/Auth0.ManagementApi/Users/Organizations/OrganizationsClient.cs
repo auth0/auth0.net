@@ -56,7 +56,6 @@ public partial class OrganizationsClient : IOrganizationsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "users/{0}/organizations",
@@ -94,7 +93,7 @@ public partial class OrganizationsClient : IOrganizationsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

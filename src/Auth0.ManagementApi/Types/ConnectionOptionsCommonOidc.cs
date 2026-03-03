@@ -28,13 +28,17 @@ public record ConnectionOptionsCommonOidc : IJsonOnDeserialized, IJsonOnSerializ
     [JsonPropertyName("connection_settings")]
     public ConnectionConnectionSettings? ConnectionSettings { get; set; }
 
-    [Nullable, Optional]
-    [JsonPropertyName("federated_connections_access_tokens")]
-    public Optional<ConnectionFederatedConnectionsAccessTokens?> FederatedConnectionsAccessTokens { get; set; }
-
     [Optional]
     [JsonPropertyName("domain_aliases")]
     public IEnumerable<string>? DomainAliases { get; set; }
+
+    [Optional]
+    [JsonPropertyName("dpop_signing_alg")]
+    public ConnectionDpopSigningAlgEnum? DpopSigningAlg { get; set; }
+
+    [Nullable, Optional]
+    [JsonPropertyName("federated_connections_access_tokens")]
+    public Optional<ConnectionFederatedConnectionsAccessTokens?> FederatedConnectionsAccessTokens { get; set; }
 
     [Optional]
     [JsonPropertyName("icon_url")]

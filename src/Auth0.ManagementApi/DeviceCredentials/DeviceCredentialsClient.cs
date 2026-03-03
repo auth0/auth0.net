@@ -61,7 +61,6 @@ public partial class DeviceCredentialsClient : IDeviceCredentialsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "device-credentials",
                     QueryString = _queryString,
@@ -96,7 +95,7 @@ public partial class DeviceCredentialsClient : IDeviceCredentialsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -147,7 +146,6 @@ public partial class DeviceCredentialsClient : IDeviceCredentialsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "device-credentials",
                     Body = request,
@@ -183,7 +181,7 @@ public partial class DeviceCredentialsClient : IDeviceCredentialsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -280,7 +278,7 @@ public partial class DeviceCredentialsClient : IDeviceCredentialsClient
     ///     new CreatePublicKeyDeviceCredentialRequestContent
     ///     {
     ///         DeviceName = "device_name",
-    ///         Type = "public_key",
+    ///         Type = DeviceCredentialPublicKeyTypeEnum.PublicKey,
     ///         Value = "value",
     ///         DeviceId = "device_id",
     ///     }
@@ -319,7 +317,6 @@ public partial class DeviceCredentialsClient : IDeviceCredentialsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "device-credentials/{0}",

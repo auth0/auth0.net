@@ -28,7 +28,6 @@ public partial class BruteForceProtectionClient : IBruteForceProtectionClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "attack-protection/brute-force-protection",
                     Headers = _headers,
@@ -61,7 +60,7 @@ public partial class BruteForceProtectionClient : IBruteForceProtectionClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -108,7 +107,6 @@ public partial class BruteForceProtectionClient : IBruteForceProtectionClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "attack-protection/brute-force-protection",
                     Body = request,
@@ -143,7 +141,7 @@ public partial class BruteForceProtectionClient : IBruteForceProtectionClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

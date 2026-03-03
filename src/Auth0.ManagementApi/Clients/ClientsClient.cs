@@ -104,7 +104,6 @@ public partial class ClientsClient : IClientsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "clients",
                     QueryString = _queryString,
@@ -138,7 +137,7 @@ public partial class ClientsClient : IClientsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -187,7 +186,6 @@ public partial class ClientsClient : IClientsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "clients",
                     Body = request,
@@ -222,7 +220,7 @@ public partial class ClientsClient : IClientsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -282,7 +280,6 @@ public partial class ClientsClient : IClientsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("clients/{0}", ValueConvert.ToPathParameterString(id)),
                     QueryString = _queryString,
@@ -314,7 +311,7 @@ public partial class ClientsClient : IClientsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -366,7 +363,6 @@ public partial class ClientsClient : IClientsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format("clients/{0}", ValueConvert.ToPathParameterString(id)),
                     Body = request,
@@ -401,7 +397,7 @@ public partial class ClientsClient : IClientsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -452,7 +448,6 @@ public partial class ClientsClient : IClientsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "clients/{0}/rotate-secret",
@@ -488,7 +483,7 @@ public partial class ClientsClient : IClientsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -711,7 +706,6 @@ public partial class ClientsClient : IClientsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format("clients/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,

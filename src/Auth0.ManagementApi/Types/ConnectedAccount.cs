@@ -36,7 +36,7 @@ public record ConnectedAccount : IJsonOnDeserialized
     public required string Strategy { get; set; }
 
     [JsonPropertyName("access_type")]
-    public string AccessType { get; set; } = "offline";
+    public required ConnectedAccountAccessTypeEnum AccessType { get; set; }
 
     /// <summary>
     /// The scopes granted for this connected account.

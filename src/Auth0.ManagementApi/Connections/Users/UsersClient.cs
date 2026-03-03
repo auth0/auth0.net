@@ -43,7 +43,6 @@ public partial class UsersClient : IUsersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "connections/{0}/users",

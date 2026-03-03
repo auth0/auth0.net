@@ -62,7 +62,6 @@ public partial class RolesClient : IRolesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "roles",
                     QueryString = _queryString,
@@ -96,7 +95,7 @@ public partial class RolesClient : IRolesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -145,7 +144,6 @@ public partial class RolesClient : IRolesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "roles",
                     Body = request,
@@ -178,7 +176,7 @@ public partial class RolesClient : IRolesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -229,7 +227,6 @@ public partial class RolesClient : IRolesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("roles/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,
@@ -260,7 +257,7 @@ public partial class RolesClient : IRolesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -312,7 +309,6 @@ public partial class RolesClient : IRolesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format("roles/{0}", ValueConvert.ToPathParameterString(id)),
                     Body = request,
@@ -345,7 +341,7 @@ public partial class RolesClient : IRolesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -486,7 +482,6 @@ public partial class RolesClient : IRolesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format("roles/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,

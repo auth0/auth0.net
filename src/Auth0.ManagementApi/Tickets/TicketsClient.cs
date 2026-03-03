@@ -28,7 +28,6 @@ public partial class TicketsClient : ITicketsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "tickets/email-verification",
                     Body = request,
@@ -63,7 +62,7 @@ public partial class TicketsClient : ITicketsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -116,7 +115,6 @@ public partial class TicketsClient : ITicketsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "tickets/password-change",
                     Body = request,
@@ -151,7 +149,7 @@ public partial class TicketsClient : ITicketsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

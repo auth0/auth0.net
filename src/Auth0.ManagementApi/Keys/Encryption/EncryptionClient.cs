@@ -54,7 +54,6 @@ public partial class EncryptionClient : IEncryptionClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "keys/encryption",
                     QueryString = _queryString,
@@ -89,7 +88,7 @@ public partial class EncryptionClient : IEncryptionClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -138,7 +137,6 @@ public partial class EncryptionClient : IEncryptionClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "keys/encryption",
                     Body = request,
@@ -173,7 +171,7 @@ public partial class EncryptionClient : IEncryptionClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -224,7 +222,6 @@ public partial class EncryptionClient : IEncryptionClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "keys/encryption/{0}",
@@ -260,7 +257,7 @@ public partial class EncryptionClient : IEncryptionClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -312,7 +309,6 @@ public partial class EncryptionClient : IEncryptionClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "keys/encryption/{0}",
@@ -350,7 +346,7 @@ public partial class EncryptionClient : IEncryptionClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -403,7 +399,6 @@ public partial class EncryptionClient : IEncryptionClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "keys/encryption/{0}/wrapping-key",
@@ -440,7 +435,7 @@ public partial class EncryptionClient : IEncryptionClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -562,7 +557,6 @@ public partial class EncryptionClient : IEncryptionClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "keys/encryption/rekey",
                     Headers = _headers,
@@ -661,7 +655,6 @@ public partial class EncryptionClient : IEncryptionClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "keys/encryption/{0}",

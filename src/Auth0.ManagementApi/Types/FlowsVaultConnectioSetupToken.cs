@@ -12,7 +12,7 @@ public record FlowsVaultConnectioSetupToken : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "TOKEN";
+    public required FlowsVaultConnectioSetupTypeTokenEnum Type { get; set; }
 
     [JsonPropertyName("token")]
     public required string Token { get; set; }

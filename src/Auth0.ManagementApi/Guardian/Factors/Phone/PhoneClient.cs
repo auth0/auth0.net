@@ -30,7 +30,6 @@ public partial class PhoneClient : IPhoneClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "guardian/factors/phone/message-types",
                     Headers = _headers,
@@ -64,7 +63,7 @@ public partial class PhoneClient : IPhoneClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -113,7 +112,6 @@ public partial class PhoneClient : IPhoneClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = "guardian/factors/phone/message-types",
                     Body = request,
@@ -149,7 +147,7 @@ public partial class PhoneClient : IPhoneClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -199,7 +197,6 @@ public partial class PhoneClient : IPhoneClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "guardian/factors/phone/providers/twilio",
                     Headers = _headers,
@@ -233,7 +230,7 @@ public partial class PhoneClient : IPhoneClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -282,7 +279,6 @@ public partial class PhoneClient : IPhoneClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = "guardian/factors/phone/providers/twilio",
                     Body = request,
@@ -318,7 +314,7 @@ public partial class PhoneClient : IPhoneClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -366,7 +362,6 @@ public partial class PhoneClient : IPhoneClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "guardian/factors/phone/selected-provider",
                     Headers = _headers,
@@ -400,7 +395,7 @@ public partial class PhoneClient : IPhoneClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -449,7 +444,6 @@ public partial class PhoneClient : IPhoneClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = "guardian/factors/phone/selected-provider",
                     Body = request,
@@ -485,7 +479,7 @@ public partial class PhoneClient : IPhoneClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -533,7 +527,6 @@ public partial class PhoneClient : IPhoneClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "guardian/factors/phone/templates",
                     Headers = _headers,
@@ -567,7 +560,7 @@ public partial class PhoneClient : IPhoneClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -616,7 +609,6 @@ public partial class PhoneClient : IPhoneClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = "guardian/factors/phone/templates",
                     Body = request,
@@ -652,7 +644,7 @@ public partial class PhoneClient : IPhoneClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

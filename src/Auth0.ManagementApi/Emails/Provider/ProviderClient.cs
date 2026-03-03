@@ -37,7 +37,6 @@ public partial class ProviderClient : IProviderClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "emails/provider",
                     QueryString = _queryString,
@@ -71,7 +70,7 @@ public partial class ProviderClient : IProviderClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -122,7 +121,6 @@ public partial class ProviderClient : IProviderClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "emails/provider",
                     Body = request,
@@ -157,7 +155,7 @@ public partial class ProviderClient : IProviderClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -208,7 +206,6 @@ public partial class ProviderClient : IProviderClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "emails/provider",
                     Body = request,
@@ -243,7 +240,7 @@ public partial class ProviderClient : IProviderClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -384,7 +381,6 @@ public partial class ProviderClient : IProviderClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = "emails/provider",
                     Headers = _headers,

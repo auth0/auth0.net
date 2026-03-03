@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionActivecampaignUninitialized : IJsonOnDes
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "ACTIVECAMPAIGN";
+    public required FlowsVaultConnectionAppIdActivecampaignEnum AppId { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

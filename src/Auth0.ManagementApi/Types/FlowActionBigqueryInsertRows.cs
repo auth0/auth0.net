@@ -19,10 +19,10 @@ public record FlowActionBigqueryInsertRows : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "BIGQUERY";
+    public required FlowActionBigqueryInsertRowsType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "INSERT_ROWS";
+    public required FlowActionBigqueryInsertRowsAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

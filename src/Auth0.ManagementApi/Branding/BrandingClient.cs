@@ -37,7 +37,6 @@ public partial class BrandingClient : IBrandingClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "branding",
                     Headers = _headers,
@@ -68,7 +67,7 @@ public partial class BrandingClient : IBrandingClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -115,7 +114,6 @@ public partial class BrandingClient : IBrandingClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "branding",
                     Body = request,
@@ -150,7 +148,7 @@ public partial class BrandingClient : IBrandingClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

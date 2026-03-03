@@ -12,19 +12,19 @@ public partial class ConnectionsClient : IConnectionsClient
     {
         _client = client;
         DirectoryProvisioning = new DirectoryProvisioningClient(_client);
+        ScimConfiguration = new ScimConfigurationClient(_client);
         Clients = new Auth0.ManagementApi.Connections.ClientsClient(_client);
         Keys = new Auth0.ManagementApi.Connections.KeysClient(_client);
-        ScimConfiguration = new ScimConfigurationClient(_client);
         Users = new Auth0.ManagementApi.Connections.UsersClient(_client);
     }
 
     public IDirectoryProvisioningClient DirectoryProvisioning { get; }
 
+    public IScimConfigurationClient ScimConfiguration { get; }
+
     public Auth0.ManagementApi.Connections.IClientsClient Clients { get; }
 
     public Auth0.ManagementApi.Connections.IKeysClient Keys { get; }
-
-    public IScimConfigurationClient ScimConfiguration { get; }
 
     public Auth0.ManagementApi.Connections.IUsersClient Users { get; }
 
@@ -90,7 +90,6 @@ public partial class ConnectionsClient : IConnectionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "connections",
                     QueryString = _queryString,
@@ -125,7 +124,7 @@ public partial class ConnectionsClient : IConnectionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -174,7 +173,6 @@ public partial class ConnectionsClient : IConnectionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "connections",
                     Body = request,
@@ -209,7 +207,7 @@ public partial class ConnectionsClient : IConnectionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -269,7 +267,6 @@ public partial class ConnectionsClient : IConnectionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("connections/{0}", ValueConvert.ToPathParameterString(id)),
                     QueryString = _queryString,
@@ -303,7 +300,7 @@ public partial class ConnectionsClient : IConnectionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -355,7 +352,6 @@ public partial class ConnectionsClient : IConnectionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format("connections/{0}", ValueConvert.ToPathParameterString(id)),
                     Body = request,
@@ -390,7 +386,7 @@ public partial class ConnectionsClient : IConnectionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -564,7 +560,6 @@ public partial class ConnectionsClient : IConnectionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format("connections/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,
@@ -647,7 +642,6 @@ public partial class ConnectionsClient : IConnectionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "connections/{0}/status",

@@ -29,7 +29,6 @@ public partial class VerificationEmailClient : IVerificationEmailClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "jobs/verification-email",
                     Body = request,
@@ -64,7 +63,7 @@ public partial class VerificationEmailClient : IVerificationEmailClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

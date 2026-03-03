@@ -51,7 +51,6 @@ public partial class ConnectionsClient : IConnectionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "flows/vault/connections",
                     QueryString = _queryString,
@@ -86,7 +85,7 @@ public partial class ConnectionsClient : IConnectionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -135,7 +134,6 @@ public partial class ConnectionsClient : IConnectionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "flows/vault/connections",
                     Body = request,
@@ -170,7 +168,7 @@ public partial class ConnectionsClient : IConnectionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -219,7 +217,6 @@ public partial class ConnectionsClient : IConnectionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "flows/vault/connections/{0}",
@@ -255,7 +252,7 @@ public partial class ConnectionsClient : IConnectionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -307,7 +304,6 @@ public partial class ConnectionsClient : IConnectionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "flows/vault/connections/{0}",
@@ -345,7 +341,7 @@ public partial class ConnectionsClient : IConnectionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -429,10 +425,10 @@ public partial class ConnectionsClient : IConnectionsClient
     ///     new CreateFlowsVaultConnectionActivecampaignApiKey
     ///     {
     ///         Name = "name",
-    ///         AppId = "ACTIVECAMPAIGN",
+    ///         AppId = FlowsVaultConnectionAppIdActivecampaignEnum.Activecampaign,
     ///         Setup = new FlowsVaultConnectioSetupApiKeyWithBaseUrl
     ///         {
-    ///             Type = "API_KEY",
+    ///             Type = FlowsVaultConnectioSetupTypeApiKeyEnum.ApiKey,
     ///             ApiKey = "api_key",
     ///             BaseUrl = "base_url",
     ///         },
@@ -483,7 +479,6 @@ public partial class ConnectionsClient : IConnectionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "flows/vault/connections/{0}",

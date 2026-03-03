@@ -51,7 +51,6 @@ public partial class FormsClient : IFormsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "forms",
                     QueryString = _queryString,
@@ -85,7 +84,7 @@ public partial class FormsClient : IFormsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -134,7 +133,6 @@ public partial class FormsClient : IFormsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "forms",
                     Body = request,
@@ -167,7 +165,7 @@ public partial class FormsClient : IFormsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -221,7 +219,6 @@ public partial class FormsClient : IFormsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("forms/{0}", ValueConvert.ToPathParameterString(id)),
                     QueryString = _queryString,
@@ -253,7 +250,7 @@ public partial class FormsClient : IFormsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -305,7 +302,6 @@ public partial class FormsClient : IFormsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format("forms/{0}", ValueConvert.ToPathParameterString(id)),
                     Body = request,
@@ -338,7 +334,7 @@ public partial class FormsClient : IFormsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -461,7 +457,6 @@ public partial class FormsClient : IFormsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format("forms/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,

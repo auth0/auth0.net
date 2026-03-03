@@ -55,7 +55,6 @@ public partial class MembersClient : IMembersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "groups/{0}/members",
@@ -92,7 +91,7 @@ public partial class MembersClient : IMembersClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

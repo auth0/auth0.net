@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionAuth0OauthApp : IJsonOnDeserialized
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "AUTH0";
+    public required FlowsVaultConnectionAppIdAuth0Enum AppId { get; set; }
 
     [JsonPropertyName("setup")]
     public required FlowsVaultConnectioSetupOauthApp Setup { get; set; }

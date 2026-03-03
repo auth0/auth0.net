@@ -53,7 +53,6 @@ public partial class NetworkAclsClient : INetworkAclsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "network-acls",
                     QueryString = _queryString,
@@ -88,7 +87,7 @@ public partial class NetworkAclsClient : INetworkAclsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -137,7 +136,6 @@ public partial class NetworkAclsClient : INetworkAclsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "network-acls/{0}",
@@ -173,7 +171,7 @@ public partial class NetworkAclsClient : INetworkAclsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -223,7 +221,6 @@ public partial class NetworkAclsClient : INetworkAclsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = string.Format(
                         "network-acls/{0}",
@@ -261,7 +258,7 @@ public partial class NetworkAclsClient : INetworkAclsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -313,7 +310,6 @@ public partial class NetworkAclsClient : INetworkAclsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "network-acls/{0}",
@@ -351,7 +347,7 @@ public partial class NetworkAclsClient : INetworkAclsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -467,7 +463,6 @@ public partial class NetworkAclsClient : INetworkAclsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "network-acls",
                     Body = request,
@@ -584,7 +579,6 @@ public partial class NetworkAclsClient : INetworkAclsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "network-acls/{0}",

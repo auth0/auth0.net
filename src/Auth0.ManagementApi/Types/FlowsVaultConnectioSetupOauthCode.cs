@@ -12,7 +12,7 @@ public record FlowsVaultConnectioSetupOauthCode : IJsonOnDeserialized, IJsonOnSe
 
     [Optional]
     [JsonPropertyName("type")]
-    public string? Type { get; set; }
+    public FlowsVaultConnectioSetupTypeOauthCodeEnum? Type { get; set; }
 
     [Optional]
     [JsonPropertyName("code")]

@@ -31,7 +31,6 @@ public partial class SynchronizationsClient : ISynchronizationsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "connections/{0}/directory-provisioning/synchronizations",
@@ -68,7 +67,7 @@ public partial class SynchronizationsClient : ISynchronizationsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

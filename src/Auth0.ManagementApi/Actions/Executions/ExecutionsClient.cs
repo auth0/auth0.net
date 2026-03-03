@@ -29,7 +29,6 @@ public partial class ExecutionsClient : IExecutionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "actions/executions/{0}",
@@ -65,7 +64,7 @@ public partial class ExecutionsClient : IExecutionsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

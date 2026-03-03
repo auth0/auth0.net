@@ -29,7 +29,6 @@ public partial class FederatedConnectionsTokensetsClient : IFederatedConnections
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "users/{0}/federated-connections-tokensets",
@@ -65,7 +64,7 @@ public partial class FederatedConnectionsTokensetsClient : IFederatedConnections
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -135,7 +134,6 @@ public partial class FederatedConnectionsTokensetsClient : IFederatedConnections
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "users/{0}/federated-connections-tokensets/{1}",

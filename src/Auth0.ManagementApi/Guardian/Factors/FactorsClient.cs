@@ -42,7 +42,6 @@ public partial class FactorsClient : IFactorsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "guardian/factors",
                     Headers = _headers,
@@ -75,7 +74,7 @@ public partial class FactorsClient : IFactorsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -123,7 +122,6 @@ public partial class FactorsClient : IFactorsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = string.Format(
                         "guardian/factors/{0}",
@@ -161,7 +159,7 @@ public partial class FactorsClient : IFactorsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

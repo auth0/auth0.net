@@ -49,7 +49,6 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "connection-profiles",
                     QueryString = _queryString,
@@ -84,7 +83,7 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -133,7 +132,6 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "connection-profiles",
                     Body = request,
@@ -168,7 +166,7 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -220,7 +218,6 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "connection-profiles/templates",
                     Headers = _headers,
@@ -254,7 +251,7 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -303,7 +300,6 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "connection-profiles/templates/{0}",
@@ -340,7 +336,7 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -389,7 +385,6 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "connection-profiles/{0}",
@@ -425,7 +420,7 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -475,7 +470,6 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "connection-profiles/{0}",
@@ -513,7 +507,7 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -679,7 +673,6 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "connection-profiles/{0}",

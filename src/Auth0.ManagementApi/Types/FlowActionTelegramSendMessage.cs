@@ -19,10 +19,10 @@ public record FlowActionTelegramSendMessage : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "TELEGRAM";
+    public required FlowActionTelegramSendMessageType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "SEND_MESSAGE";
+    public required FlowActionTelegramSendMessageAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

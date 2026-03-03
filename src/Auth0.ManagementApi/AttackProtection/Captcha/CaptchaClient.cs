@@ -28,7 +28,6 @@ public partial class CaptchaClient : ICaptchaClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "attack-protection/captcha",
                     Headers = _headers,
@@ -61,7 +60,7 @@ public partial class CaptchaClient : ICaptchaClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -112,7 +111,6 @@ public partial class CaptchaClient : ICaptchaClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "attack-protection/captcha",
                     Body = request,
@@ -148,7 +146,7 @@ public partial class CaptchaClient : ICaptchaClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

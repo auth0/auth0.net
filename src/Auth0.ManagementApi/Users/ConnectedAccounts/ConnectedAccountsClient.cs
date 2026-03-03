@@ -52,7 +52,6 @@ public partial class ConnectedAccountsClient : IConnectedAccountsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "users/{0}/connected-accounts",
@@ -89,7 +88,7 @@ public partial class ConnectedAccountsClient : IConnectedAccountsClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

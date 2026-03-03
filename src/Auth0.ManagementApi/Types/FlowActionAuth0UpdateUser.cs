@@ -19,10 +19,10 @@ public record FlowActionAuth0UpdateUser : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "AUTH0";
+    public required FlowActionAuth0UpdateUserType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "UPDATE_USER";
+    public required FlowActionAuth0UpdateUserAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

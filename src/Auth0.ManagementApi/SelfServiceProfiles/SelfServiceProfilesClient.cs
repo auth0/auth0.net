@@ -60,7 +60,6 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "self-service-profiles",
                     QueryString = _queryString,
@@ -95,7 +94,7 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -144,7 +143,6 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "self-service-profiles",
                     Body = request,
@@ -179,7 +177,7 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -232,7 +230,6 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "self-service-profiles/{0}",
@@ -268,7 +265,7 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -322,7 +319,6 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "self-service-profiles/{0}",
@@ -360,7 +356,7 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -502,7 +498,6 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "self-service-profiles/{0}",

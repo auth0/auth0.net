@@ -30,7 +30,6 @@ public partial class IdentitiesClient : IIdentitiesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "users/{0}/identities",
@@ -66,7 +65,7 @@ public partial class IdentitiesClient : IIdentitiesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -121,7 +120,6 @@ public partial class IdentitiesClient : IIdentitiesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "users/{0}/identities/{1}/{2}",
@@ -159,7 +157,7 @@ public partial class IdentitiesClient : IIdentitiesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

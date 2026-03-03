@@ -28,7 +28,6 @@ public partial class BotDetectionClient : IBotDetectionClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "attack-protection/bot-detection",
                     Headers = _headers,
@@ -61,7 +60,7 @@ public partial class BotDetectionClient : IBotDetectionClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -110,7 +109,6 @@ public partial class BotDetectionClient : IBotDetectionClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "attack-protection/bot-detection",
                     Body = request,
@@ -145,7 +143,7 @@ public partial class BotDetectionClient : IBotDetectionClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

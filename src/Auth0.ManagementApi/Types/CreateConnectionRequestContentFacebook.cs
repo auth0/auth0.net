@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentFacebook : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "facebook";
+    public required CreateConnectionRequestContentFacebookStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

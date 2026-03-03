@@ -32,7 +32,6 @@ public partial class TriggersClient : ITriggersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "actions/triggers",
                     Headers = _headers,
@@ -65,7 +64,7 @@ public partial class TriggersClient : ITriggersClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }

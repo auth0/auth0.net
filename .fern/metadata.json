@@ -1,7 +1,7 @@
 {
-  "cliVersion": "3.82.0",
+  "cliVersion": "3.79.2",
   "generatorName": "fernapi/fern-csharp-sdk",
-  "generatorVersion": "2.22.0",
+  "generatorVersion": "2.23.1",
   "generatorConfig": {
     "namespace": "Auth0.ManagementApi",
     "package-id": "Auth0.ManagementApi",
@@ -12,12 +12,11 @@
     "use-default-request-parameter-values": true,
     "experimental-explicit-nullable-optional": true,
     "use-undiscriminated-unions": true,
-    "redact-response-body-on-error": true,
     "output-path": {
       "library": "src",
       "test": "tests",
       "solution": "."
     }
   },
-  "sdkVersion": "0.0.1764"
+  "sdkVersion": "7.44.0"
 }

@@ -19,10 +19,10 @@ public record FlowActionGoogleSheetsAddRow : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "GOOGLE_SHEETS";
+    public required FlowActionGoogleSheetsAddRowType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "ADD_ROW";
+    public required FlowActionGoogleSheetsAddRowAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

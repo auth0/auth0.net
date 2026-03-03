@@ -39,7 +39,6 @@ public partial class DeliveriesClient : IDeliveriesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "event-streams/{0}/deliveries",
@@ -76,7 +75,7 @@ public partial class DeliveriesClient : IDeliveriesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
@@ -130,7 +129,6 @@ public partial class DeliveriesClient : IDeliveriesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "event-streams/{0}/deliveries/{1}",
@@ -168,7 +166,7 @@ public partial class DeliveriesClient : IDeliveriesClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    null,
+                    responseBody,
                     e
                 );
             }
