@@ -1,4 +1,5 @@
 using System;
+using Auth0.ManagementApi.Models.Connections;
 using Newtonsoft.Json;
 
 namespace Auth0.ManagementApi.Models;
@@ -50,4 +51,12 @@ public abstract class ConnectionBase
     /// </summary>
     [JsonProperty("is_domain_connection")]
     public bool IsDomainConnection { get; set; }
+
+    /// <inheritdoc cref="ConnectionAuthenticationPurpose" />
+    [JsonProperty("authentication")]
+    public ConnectionAuthenticationPurpose? Authentication { get; set; }
+
+    /// <inheritdoc cref="ConnectionConnectedAccountsPurpose" />
+    [JsonProperty("connected_accounts")]
+    public ConnectionConnectedAccountsPurpose? ConnectedAccounts { get; set; }
 }

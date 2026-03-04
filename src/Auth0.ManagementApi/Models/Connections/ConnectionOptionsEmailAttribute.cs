@@ -22,6 +22,12 @@ public class ConnectionOptionsEmailAttribute : ConnectionOptionsAttributeBase
     [JsonConverter(typeof(StringEnumConverter))]
     [JsonProperty("verification_method")]
     public ConnectionOptionsEmailVerificationMethod? VerificationMethod { get; set; }
+    
+    /// <summary>
+    /// Determines if the attribute is unique in a given connection
+    /// </summary>
+    [JsonProperty("unique")]
+    public bool? Unique { get; set; }
 }
 
 /// <summary>
