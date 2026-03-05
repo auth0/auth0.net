@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using Auth0.ManagementApi;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi.Flows;
@@ -10,7 +11,8 @@ public record GetFlowExecutionRequestParameters
     /// Hydration param
     /// </summary>
     [JsonIgnore]
-    public IEnumerable<string?> Hydrate { get; set; } = new List<string?>();
+    public IEnumerable<GetFlowExecutionRequestParametersHydrateEnum?> Hydrate { get; set; } =
+        new List<GetFlowExecutionRequestParametersHydrateEnum?>();
 
     /// <inheritdoc />
     public override string ToString()

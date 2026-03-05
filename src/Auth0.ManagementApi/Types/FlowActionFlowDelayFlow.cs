@@ -19,10 +19,10 @@ public record FlowActionFlowDelayFlow : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "FLOW";
+    public required FlowActionFlowDelayFlowType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "DELAY_FLOW";
+    public required FlowActionFlowDelayFlowAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

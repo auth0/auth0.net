@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Users;
 
 public partial class LogsClient : ILogsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal LogsClient(RawClient client)
     {
@@ -63,7 +63,6 @@ public partial class LogsClient : ILogsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("users/{0}/logs", ValueConvert.ToPathParameterString(id)),
                     QueryString = _queryString,
@@ -75,7 +74,9 @@ public partial class LogsClient : ILogsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<UserListLogOffsetPaginatedResponseContent>(
@@ -103,7 +104,9 @@ public partial class LogsClient : ILogsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

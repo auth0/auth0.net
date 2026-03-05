@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Connections;
 
 public partial class ClientsClient : IClientsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal ClientsClient(RawClient client)
     {
@@ -54,7 +54,6 @@ public partial class ClientsClient : IClientsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "connections/{0}/clients",
@@ -69,7 +68,9 @@ public partial class ClientsClient : IClientsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -98,7 +99,9 @@ public partial class ClientsClient : IClientsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -204,7 +207,6 @@ public partial class ClientsClient : IClientsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "connections/{0}/clients",
@@ -223,7 +225,9 @@ public partial class ClientsClient : IClientsClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

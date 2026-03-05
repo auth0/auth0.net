@@ -15,10 +15,10 @@ public record FormFieldUrl : IJsonOnDeserialized
     public required string Id { get; set; }
 
     [JsonPropertyName("category")]
-    public string Category { get; set; } = "FIELD";
+    public required FormComponentCategoryFieldConst Category { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "URL";
+    public required FormFieldTypeUrlConst Type { get; set; }
 
     [Optional]
     [JsonPropertyName("config")]

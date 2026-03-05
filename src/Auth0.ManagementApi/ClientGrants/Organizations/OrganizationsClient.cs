@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.ClientGrants;
 
 public partial class OrganizationsClient : IOrganizationsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal OrganizationsClient(RawClient client)
     {
@@ -49,7 +49,6 @@ public partial class OrganizationsClient : IOrganizationsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "client-grants/{0}/organizations",
@@ -64,7 +63,9 @@ public partial class OrganizationsClient : IOrganizationsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -93,7 +94,9 @@ public partial class OrganizationsClient : IOrganizationsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

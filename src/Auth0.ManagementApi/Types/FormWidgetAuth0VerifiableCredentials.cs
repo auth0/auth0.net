@@ -15,10 +15,10 @@ public record FormWidgetAuth0VerifiableCredentials : IJsonOnDeserialized
     public required string Id { get; set; }
 
     [JsonPropertyName("category")]
-    public string Category { get; set; } = "WIDGET";
+    public required FormComponentCategoryWidgetConst Category { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "AUTH0_VERIFIABLE_CREDENTIALS";
+    public required FormWidgetTypeAuth0VerifiableCredentialsConst Type { get; set; }
 
     [JsonPropertyName("config")]
     public required FormWidgetAuth0VerifiableCredentialsConfig Config { get; set; }

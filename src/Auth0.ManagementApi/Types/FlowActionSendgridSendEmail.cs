@@ -19,10 +19,10 @@ public record FlowActionSendgridSendEmail : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "SENDGRID";
+    public required FlowActionSendgridSendEmailType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "SEND_EMAIL";
+    public required FlowActionSendgridSendEmailAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

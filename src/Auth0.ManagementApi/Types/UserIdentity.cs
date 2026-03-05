@@ -17,6 +17,9 @@ public record UserIdentity : IJsonOnDeserialized
     [JsonPropertyName("connection")]
     public required string Connection { get; set; }
 
+    /// <summary>
+    /// user_id of this identity.
+    /// </summary>
     [JsonPropertyName("user_id")]
     public required UserId UserId { get; set; }
 

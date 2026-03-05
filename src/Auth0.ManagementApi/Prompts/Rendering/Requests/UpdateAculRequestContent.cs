@@ -7,6 +7,9 @@ namespace Auth0.ManagementApi.Prompts;
 [Serializable]
 public record UpdateAculRequestContent
 {
+    /// <summary>
+    /// Rendering mode
+    /// </summary>
     [Optional]
     [JsonPropertyName("rendering_mode")]
     public AculRenderingModeEnum? RenderingMode { get; set; }

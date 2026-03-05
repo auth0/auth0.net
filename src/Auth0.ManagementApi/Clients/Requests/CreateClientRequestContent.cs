@@ -37,6 +37,9 @@ public record CreateClientRequestContent
     [JsonPropertyName("oidc_logout")]
     public ClientOidcBackchannelLogoutSettings? OidcLogout { get; set; }
 
+    /// <summary>
+    /// Configuration for OIDC backchannel logout (deprecated, in favor of oidc_logout)
+    /// </summary>
     [Optional]
     [JsonPropertyName("oidc_backchannel_logout")]
     public ClientOidcBackchannelLogoutSettings? OidcBackchannelLogout { get; set; }

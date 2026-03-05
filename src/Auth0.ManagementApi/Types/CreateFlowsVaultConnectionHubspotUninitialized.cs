@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionHubspotUninitialized : IJsonOnDeserializ
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "HUBSPOT";
+    public required FlowsVaultConnectionAppIdHubspotEnum AppId { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

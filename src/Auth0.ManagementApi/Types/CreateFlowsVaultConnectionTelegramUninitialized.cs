@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionTelegramUninitialized : IJsonOnDeseriali
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "TELEGRAM";
+    public required FlowsVaultConnectionAppIdTelegramEnum AppId { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

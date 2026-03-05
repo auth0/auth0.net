@@ -19,10 +19,10 @@ public record FlowActionActivecampaignListContacts : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "ACTIVECAMPAIGN";
+    public required FlowActionActivecampaignListContactsType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "LIST_CONTACTS";
+    public required FlowActionActivecampaignListContactsAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi;
 
 public partial class UserBlocksClient : IUserBlocksClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal UserBlocksClient(RawClient client)
     {
@@ -40,7 +40,6 @@ public partial class UserBlocksClient : IUserBlocksClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "user-blocks",
                     QueryString = _queryString,
@@ -52,7 +51,9 @@ public partial class UserBlocksClient : IUserBlocksClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<ListUserBlocksByIdentifierResponseContent>(
@@ -80,7 +81,9 @@ public partial class UserBlocksClient : IUserBlocksClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -133,7 +136,6 @@ public partial class UserBlocksClient : IUserBlocksClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("user-blocks/{0}", ValueConvert.ToPathParameterString(id)),
                     QueryString = _queryString,
@@ -145,7 +147,9 @@ public partial class UserBlocksClient : IUserBlocksClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<ListUserBlocksResponseContent>(
@@ -173,7 +177,9 @@ public partial class UserBlocksClient : IUserBlocksClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -255,7 +261,6 @@ public partial class UserBlocksClient : IUserBlocksClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = "user-blocks",
                     QueryString = _queryString,
@@ -270,7 +275,9 @@ public partial class UserBlocksClient : IUserBlocksClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -342,7 +349,6 @@ public partial class UserBlocksClient : IUserBlocksClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format("user-blocks/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,
@@ -356,7 +362,9 @@ public partial class UserBlocksClient : IUserBlocksClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Users;
 
 public partial class MultifactorClient : IMultifactorClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal MultifactorClient(RawClient client)
     {
@@ -35,7 +35,6 @@ public partial class MultifactorClient : IMultifactorClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "users/{0}/multifactor/actions/invalidate-remember-browser",
@@ -52,7 +51,9 @@ public partial class MultifactorClient : IMultifactorClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -100,7 +101,6 @@ public partial class MultifactorClient : IMultifactorClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "users/{0}/multifactor/{1}",
@@ -118,7 +118,9 @@ public partial class MultifactorClient : IMultifactorClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

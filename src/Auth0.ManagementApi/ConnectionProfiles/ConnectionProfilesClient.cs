@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi;
 
 public partial class ConnectionProfilesClient : IConnectionProfilesClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal ConnectionProfilesClient(RawClient client)
     {
@@ -49,7 +49,6 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "connection-profiles",
                     QueryString = _queryString,
@@ -61,7 +60,9 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -90,7 +91,9 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -133,7 +136,6 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "connection-profiles",
                     Body = request,
@@ -146,7 +148,9 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<CreateConnectionProfileResponseContent>(
@@ -174,7 +178,9 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -220,7 +226,6 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "connection-profiles/templates",
                     Headers = _headers,
@@ -231,7 +236,9 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -260,7 +267,9 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -303,7 +312,6 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "connection-profiles/templates/{0}",
@@ -317,7 +325,9 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -346,7 +356,9 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -389,7 +401,6 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "connection-profiles/{0}",
@@ -403,7 +414,9 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetConnectionProfileResponseContent>(
@@ -431,7 +444,9 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -475,7 +490,6 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "connection-profiles/{0}",
@@ -491,7 +505,9 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<UpdateConnectionProfileResponseContent>(
@@ -519,7 +535,9 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -679,7 +697,6 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "connection-profiles/{0}",
@@ -696,7 +713,9 @@ public partial class ConnectionProfilesClient : IConnectionProfilesClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

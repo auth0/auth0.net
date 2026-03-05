@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.AttackProtection;
 
 public partial class SuspiciousIpThrottlingClient : ISuspiciousIpThrottlingClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal SuspiciousIpThrottlingClient(RawClient client)
     {
@@ -27,7 +27,6 @@ public partial class SuspiciousIpThrottlingClient : ISuspiciousIpThrottlingClien
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "attack-protection/suspicious-ip-throttling",
                     Headers = _headers,
@@ -38,7 +37,9 @@ public partial class SuspiciousIpThrottlingClient : ISuspiciousIpThrottlingClien
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -67,7 +68,9 @@ public partial class SuspiciousIpThrottlingClient : ISuspiciousIpThrottlingClien
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -110,7 +113,6 @@ public partial class SuspiciousIpThrottlingClient : ISuspiciousIpThrottlingClien
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "attack-protection/suspicious-ip-throttling",
                     Body = request,
@@ -123,7 +125,9 @@ public partial class SuspiciousIpThrottlingClient : ISuspiciousIpThrottlingClien
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -152,7 +156,9 @@ public partial class SuspiciousIpThrottlingClient : ISuspiciousIpThrottlingClien
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

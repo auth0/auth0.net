@@ -19,7 +19,7 @@ public record CreateLogStreamSplunkRequestBody : IJsonOnDeserialized
     public string? Name { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "splunk";
+    public required LogStreamSplunkEnum Type { get; set; }
 
     /// <summary>
     /// True for priority log streams, false for non-priority

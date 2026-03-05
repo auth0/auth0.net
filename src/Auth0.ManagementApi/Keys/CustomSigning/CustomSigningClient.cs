@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Keys;
 
 public partial class CustomSigningClient : ICustomSigningClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal CustomSigningClient(RawClient client)
     {
@@ -28,7 +28,6 @@ public partial class CustomSigningClient : ICustomSigningClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "keys/custom-signing",
                     Headers = _headers,
@@ -39,7 +38,9 @@ public partial class CustomSigningClient : ICustomSigningClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetCustomSigningKeysResponseContent>(
@@ -67,7 +68,9 @@ public partial class CustomSigningClient : ICustomSigningClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -110,7 +113,6 @@ public partial class CustomSigningClient : ICustomSigningClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = "keys/custom-signing",
                     Body = request,
@@ -123,7 +125,9 @@ public partial class CustomSigningClient : ICustomSigningClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<SetCustomSigningKeysResponseContent>(
@@ -151,7 +155,9 @@ public partial class CustomSigningClient : ICustomSigningClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -240,7 +246,6 @@ public partial class CustomSigningClient : ICustomSigningClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = "keys/custom-signing",
                     Headers = _headers,
@@ -254,7 +259,9 @@ public partial class CustomSigningClient : ICustomSigningClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

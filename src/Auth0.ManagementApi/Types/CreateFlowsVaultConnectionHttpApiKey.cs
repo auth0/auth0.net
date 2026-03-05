@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionHttpApiKey : IJsonOnDeserialized
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "HTTP";
+    public required FlowsVaultConnectionAppIdHttpEnum AppId { get; set; }
 
     [JsonPropertyName("setup")]
     public required FlowsVaultConnectionHttpApiKeySetup Setup { get; set; }

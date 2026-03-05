@@ -6,9 +6,12 @@ namespace Auth0.ManagementApi;
 [Serializable]
 public record UpdateCustomDomainRequestContent
 {
+    /// <summary>
+    /// recommended includes TLS 1.2
+    /// </summary>
     [Optional]
     [JsonPropertyName("tls_policy")]
-    public string? TlsPolicy { get; set; }
+    public CustomDomainTlsPolicyEnum? TlsPolicy { get; set; }
 
     [Nullable, Optional]
     [JsonPropertyName("custom_client_ip_header")]

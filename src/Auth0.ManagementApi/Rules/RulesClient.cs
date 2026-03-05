@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi;
 
 public partial class RulesClient : IRulesClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal RulesClient(RawClient client)
     {
@@ -59,7 +59,6 @@ public partial class RulesClient : IRulesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "rules",
                     QueryString = _queryString,
@@ -71,7 +70,9 @@ public partial class RulesClient : IRulesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<ListRulesOffsetPaginatedResponseContent>(
@@ -99,7 +100,9 @@ public partial class RulesClient : IRulesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -144,7 +147,6 @@ public partial class RulesClient : IRulesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "rules",
                     Body = request,
@@ -157,7 +159,9 @@ public partial class RulesClient : IRulesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<CreateRuleResponseContent>(responseBody)!;
@@ -183,7 +187,9 @@ public partial class RulesClient : IRulesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -237,7 +243,6 @@ public partial class RulesClient : IRulesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("rules/{0}", ValueConvert.ToPathParameterString(id)),
                     QueryString = _queryString,
@@ -249,7 +254,9 @@ public partial class RulesClient : IRulesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetRuleResponseContent>(responseBody)!;
@@ -275,7 +282,9 @@ public partial class RulesClient : IRulesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -321,7 +330,6 @@ public partial class RulesClient : IRulesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format("rules/{0}", ValueConvert.ToPathParameterString(id)),
                     Body = request,
@@ -334,7 +342,9 @@ public partial class RulesClient : IRulesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<UpdateRuleResponseContent>(responseBody)!;
@@ -360,7 +370,9 @@ public partial class RulesClient : IRulesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -503,7 +515,6 @@ public partial class RulesClient : IRulesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format("rules/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,
@@ -517,7 +528,9 @@ public partial class RulesClient : IRulesClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
