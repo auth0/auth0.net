@@ -406,6 +406,11 @@ internal partial class RawClient(ClientOptions clientOptions)
         {
             options.Headers["Auth0-Client"] = CreateAgentString();
         }
+
+        options.Headers.Remove("X-Fern-Language");
+        options.Headers.Remove("X-Fern-SDK-Name");
+        options.Headers.Remove("X-Fern-SDK-Version");
+
         return options;
     }
 
