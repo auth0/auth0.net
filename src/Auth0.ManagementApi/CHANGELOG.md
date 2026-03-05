@@ -1,5 +1,11 @@
 # Change Log
 
+## [mgmt-7.45.1](https://github.com/auth0/auth0.net/tree/mgmt-7.45.1) (2026-03-05)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-7.45.0...mgmt-7.45.1)
+
+**Added**
+- mgmt: Adds missing fields in Create/Update connections [\#929](https://github.com/auth0/auth0.net/pull/929) ([kailash-b](https://github.com/kailash-b))
+
 ## [mgmt-7.45.0](https://github.com/auth0/auth0.net/tree/mgmt-7.45.0) (2026-02-23)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.44.0...mgmt-7.45.0)
 
