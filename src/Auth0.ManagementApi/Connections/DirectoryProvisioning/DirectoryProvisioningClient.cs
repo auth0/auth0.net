@@ -7,7 +7,7 @@ namespace Auth0.ManagementApi.Connections;
 
 public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal DirectoryProvisioningClient(RawClient client)
     {
@@ -54,7 +54,6 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "connections-directory-provisionings",
                     QueryString = _queryString,
@@ -66,7 +65,9 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<ListDirectoryProvisioningsResponseContent>(
@@ -88,13 +89,15 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -137,7 +140,6 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "connections/{0}/directory-provisioning",
@@ -151,7 +153,9 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetDirectoryProvisioningResponseContent>(
@@ -173,13 +177,15 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -225,7 +231,6 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "connections/{0}/directory-provisioning",
@@ -241,7 +246,9 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -264,13 +271,15 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -318,7 +327,6 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "connections/{0}/directory-provisioning",
@@ -334,7 +342,9 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -357,13 +367,15 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -410,7 +422,6 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "connections/{0}/directory-provisioning/default-mapping",
@@ -424,7 +435,9 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -447,13 +460,15 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -490,7 +505,7 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
     ///     new ListDirectoryProvisioningsRequestParameters { From = "from", Take = 1 }
     /// );
     /// </code></example>
-    public async Task<Pager<global::Auth0.ManagementApi.DirectoryProvisioning>> ListAsync(
+    public async Task<Pager<DirectoryProvisioning>> ListAsync(
         ListDirectoryProvisioningsRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -505,7 +520,7 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
             RequestOptions?,
             ListDirectoryProvisioningsResponseContent,
             string?,
-            global::Auth0.ManagementApi.DirectoryProvisioning
+            DirectoryProvisioning
         >
             .CreateInstanceAsync(
                 request,
@@ -584,7 +599,6 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "connections/{0}/directory-provisioning",
@@ -601,7 +615,9 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

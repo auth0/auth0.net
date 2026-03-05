@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.SelfServiceProfiles;
 
 public partial class SsoTicketClient : ISsoTicketClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal SsoTicketClient(RawClient client)
     {
@@ -32,7 +32,6 @@ public partial class SsoTicketClient : ISsoTicketClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "self-service-profiles/{0}/sso-ticket",
@@ -48,7 +47,9 @@ public partial class SsoTicketClient : ISsoTicketClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -77,7 +78,9 @@ public partial class SsoTicketClient : ISsoTicketClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -149,7 +152,6 @@ public partial class SsoTicketClient : ISsoTicketClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "self-service-profiles/{0}/sso-ticket/{1}/revoke",
@@ -167,7 +169,9 @@ public partial class SsoTicketClient : ISsoTicketClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

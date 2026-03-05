@@ -19,10 +19,10 @@ public record FlowActionFlowDoNothing : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "FLOW";
+    public required FlowActionFlowDoNothingType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "DO_NOTHING";
+    public required FlowActionFlowDoNothingAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

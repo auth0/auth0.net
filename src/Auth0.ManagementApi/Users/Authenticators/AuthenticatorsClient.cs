@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Users;
 
 public partial class AuthenticatorsClient : IAuthenticatorsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal AuthenticatorsClient(RawClient client)
     {
@@ -35,7 +35,6 @@ public partial class AuthenticatorsClient : IAuthenticatorsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "users/{0}/authenticators",
@@ -52,7 +51,9 @@ public partial class AuthenticatorsClient : IAuthenticatorsClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

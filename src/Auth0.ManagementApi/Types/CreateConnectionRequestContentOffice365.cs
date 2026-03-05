@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentOffice365 : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "office365";
+    public required CreateConnectionRequestContentOffice365Strategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

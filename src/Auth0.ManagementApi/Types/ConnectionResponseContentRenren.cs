@@ -15,7 +15,7 @@ public record ConnectionResponseContentRenren : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "renren";
+    public required ConnectionResponseContentRenrenStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

@@ -19,10 +19,10 @@ public record FlowActionAuth0SendEmail : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "AUTH0";
+    public required FlowActionAuth0SendEmailType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "SEND_EMAIL";
+    public required FlowActionAuth0SendEmailAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

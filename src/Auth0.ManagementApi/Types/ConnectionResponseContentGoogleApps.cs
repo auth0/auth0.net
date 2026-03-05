@@ -15,7 +15,7 @@ public record ConnectionResponseContentGoogleApps : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "google-apps";
+    public required ConnectionResponseContentGoogleAppsStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

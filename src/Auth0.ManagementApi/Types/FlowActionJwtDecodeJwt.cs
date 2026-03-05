@@ -19,10 +19,10 @@ public record FlowActionJwtDecodeJwt : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "JWT";
+    public required FlowActionJwtDecodeJwtType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "DECODE_JWT";
+    public required FlowActionJwtDecodeJwtAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

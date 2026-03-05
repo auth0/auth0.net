@@ -15,7 +15,7 @@ public record ConnectionResponseContentCustom : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "custom";
+    public required ConnectionResponseContentCustomStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

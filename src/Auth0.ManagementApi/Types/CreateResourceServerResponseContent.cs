@@ -102,7 +102,7 @@ public record CreateResourceServerResponseContent : IJsonOnDeserialized
 
     [Nullable, Optional]
     [JsonPropertyName("consent_policy")]
-    public Optional<string?> ConsentPolicy { get; set; }
+    public Optional<ResourceServerConsentPolicyEnum?> ConsentPolicy { get; set; }
 
     [Optional]
     [JsonPropertyName("authorization_details")]

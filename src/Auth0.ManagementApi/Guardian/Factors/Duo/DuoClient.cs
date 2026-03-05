@@ -4,7 +4,7 @@ namespace Auth0.ManagementApi.Guardian.Factors.Duo;
 
 public partial class DuoClient : IDuoClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal DuoClient(RawClient client)
     {

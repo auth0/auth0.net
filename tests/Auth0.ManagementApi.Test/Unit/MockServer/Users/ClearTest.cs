@@ -1,3 +1,4 @@
+using Auth0.ManagementApi;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using Auth0.ManagementApi.Users;
 using NUnit.Framework;
@@ -36,7 +37,7 @@ public class ClearTest : BaseMockServerTest
                 new ClearAssessorsRequestContent
                 {
                     Connection = "connection",
-                    Assessors = new List<string>() { "new-device" },
+                    Assessors = new List<AssessorsTypeEnum>() { AssessorsTypeEnum.NewDevice },
                 }
             )
         );

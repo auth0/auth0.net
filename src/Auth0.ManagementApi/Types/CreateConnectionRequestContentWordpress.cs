@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentWordpress : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "wordpress";
+    public required CreateConnectionRequestContentWordpressStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

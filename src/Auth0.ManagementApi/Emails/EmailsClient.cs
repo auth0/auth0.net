@@ -4,7 +4,7 @@ namespace Auth0.ManagementApi.Emails;
 
 public partial class EmailsClient : IEmailsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal EmailsClient(RawClient client)
     {

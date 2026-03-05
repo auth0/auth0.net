@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Users;
 
 public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal AuthenticationMethodsClient(RawClient client)
     {
@@ -56,7 +56,6 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "users/{0}/authentication-methods",
@@ -71,7 +70,9 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -100,7 +101,9 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -148,7 +151,6 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "users/{0}/authentication-methods",
@@ -164,7 +166,9 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -193,7 +197,9 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -243,7 +249,6 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = string.Format(
                         "users/{0}/authentication-methods",
@@ -259,7 +264,9 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<
@@ -289,7 +296,9 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -335,7 +344,6 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "users/{0}/authentication-methods/{1}",
@@ -350,7 +358,9 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -379,7 +389,9 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -428,7 +440,6 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "users/{0}/authentication-methods/{1}",
@@ -445,7 +456,9 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -474,7 +487,9 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -625,7 +640,6 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "users/{0}/authentication-methods",
@@ -642,7 +656,9 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -707,7 +723,6 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "users/{0}/authentication-methods/{1}",
@@ -725,7 +740,9 @@ public partial class AuthenticationMethodsClient : IAuthenticationMethodsClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

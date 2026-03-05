@@ -31,7 +31,7 @@ public record ConnectionEmailEmail : IJsonOnDeserialized
     /// </summary>
     [Optional]
     [JsonPropertyName("syntax")]
-    public string? Syntax { get; set; }
+    public ConnectionEmailEmailSyntax? Syntax { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

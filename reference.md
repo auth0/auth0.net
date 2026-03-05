@@ -2557,7 +2557,7 @@ await client.DeviceCredentials.CreatePublicKeyAsync(
     new CreatePublicKeyDeviceCredentialRequestContent
     {
         DeviceName = "device_name",
-        Type = "public_key",
+        Type = DeviceCredentialPublicKeyTypeEnum.PublicKey,
         Value = "value",
         DeviceId = "device_id",
     }
@@ -2944,13 +2944,13 @@ await client.EventStreams.CreateAsync(
     {
         Destination = new EventStreamWebhookDestination
         {
-            Type = "webhook",
+            Type = EventStreamWebhookDestinationTypeEnum.Webhook,
             Configuration = new EventStreamWebhookConfiguration
             {
                 WebhookEndpoint = "webhook_endpoint",
                 WebhookAuthorization = new EventStreamWebhookBasicAuth
                 {
-                    Method = "basic",
+                    Method = EventStreamWebhookBasicAuthMethodEnum.Basic,
                     Username = "username",
                 },
             },
@@ -4528,7 +4528,7 @@ Response: <pre><code>{
 await client.LogStreams.CreateAsync(
     new CreateLogStreamHttpRequestBody
     {
-        Type = "http",
+        Type = LogStreamHttpEnum.Http,
         Sink = new LogStreamHttpSink { HttpEndpoint = "httpEndpoint" },
     }
 );
@@ -7976,7 +7976,7 @@ await client.TokenExchangeProfiles.CreateAsync(
         Name = "name",
         SubjectTokenType = "subject_token_type",
         ActionId = "action_id",
-        Type = "custom_authentication",
+        Type = TokenExchangeProfileTypeEnum.CustomAuthentication,
     }
 );
 ```
@@ -13011,250 +13011,63 @@ await client.Connections.DirectoryProvisioning.GetDefaultMappingAsync("id");
 </dl>
 </details>
 
-## Connections Clients
-<details><summary><code>client.Connections.Clients.<a href="/src/Auth0.ManagementApi/Connections/Clients/ClientsClient.cs">GetAsync</a>(id, GetConnectionEnabledClientsRequestParameters { ... }) -> Pager&lt;ConnectionEnabledClient&gt;</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Retrieve all clients that have the specified <a href="https://auth0.com/docs/authenticate/identity-providers">connection</a> enabled.
-
-<b>Note</b>: The first time you call this endpoint, omit the <code>from</code> parameter. If there are more results, a <code>next</code> value is included in the response. You can use this for subsequent API calls. When <code>next</code> is no longer included in the response, no further results are remaining.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.Connections.Clients.GetAsync(
-    "id",
-    new GetConnectionEnabledClientsRequestParameters { Take = 1, From = "from" }
-);
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string` — The id of the connection for which enabled clients are to be retrieved
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `GetConnectionEnabledClientsRequestParameters` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.Connections.Clients.<a href="/src/Auth0.ManagementApi/Connections/Clients/ClientsClient.cs">UpdateAsync</a>(id, IEnumerable&lt;UpdateEnabledClientConnectionsRequestContentItem&gt; { ... })</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.Connections.Clients.UpdateAsync(
-    "id",
-    new List<UpdateEnabledClientConnectionsRequestContentItem>()
-    {
-        new UpdateEnabledClientConnectionsRequestContentItem
-        {
-            ClientId = "client_id",
-            Status = true,
-        },
-    }
-);
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string` — The id of the connection to modify
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `IEnumerable<UpdateEnabledClientConnectionsRequestContentItem>` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-## Connections Keys
-<details><summary><code>client.Connections.Keys.<a href="/src/Auth0.ManagementApi/Connections/Keys/KeysClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;IEnumerable&lt;ConnectionKey&gt;&gt;</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Gets the connection keys for the Okta or OIDC connection strategy.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.Connections.Keys.GetAsync("id");
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string` — ID of the connection
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.Connections.Keys.<a href="/src/Auth0.ManagementApi/Connections/Keys/KeysClient.cs">RotateAsync</a>(id, Optional&lt;RotateConnectionKeysRequestContent?&gt; { ... }) -> WithRawResponseTask&lt;RotateConnectionsKeysResponseContent&gt;</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Rotates the connection keys for the Okta or OIDC connection strategies.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.Connections.Keys.RotateAsync("id", new RotateConnectionKeysRequestContent());
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string` — ID of the connection
-    
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `Optional<RotateConnectionKeysRequestContent?>` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
 ## Connections ScimConfiguration
+<details><summary><code>client.Connections.ScimConfiguration.<a href="/src/Auth0.ManagementApi/Connections/ScimConfiguration/ScimConfigurationClient.cs">ListAsync</a>(ListScimConfigurationsRequestParameters { ... }) -> Pager&lt;ScimConfiguration&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve a list of SCIM configurations of a tenant.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Connections.ScimConfiguration.ListAsync(
+    new ListScimConfigurationsRequestParameters { From = "from", Take = 1 }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `ListScimConfigurationsRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.Connections.ScimConfiguration.<a href="/src/Auth0.ManagementApi/Connections/ScimConfiguration/ScimConfigurationClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;GetScimConfigurationResponseContent&gt;</code></summary>
 <dl>
 <dd>
@@ -13540,6 +13353,311 @@ await client.Connections.ScimConfiguration.GetDefaultMappingAsync("id");
 <dd>
 
 **id:** `string` — The id of the connection to retrieve its default SCIM mapping
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Connections Clients
+<details><summary><code>client.Connections.Clients.<a href="/src/Auth0.ManagementApi/Connections/Clients/ClientsClient.cs">GetAsync</a>(id, GetConnectionEnabledClientsRequestParameters { ... }) -> Pager&lt;ConnectionEnabledClient&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Retrieve all clients that have the specified <a href="https://auth0.com/docs/authenticate/identity-providers">connection</a> enabled.
+
+<b>Note</b>: The first time you call this endpoint, omit the <code>from</code> parameter. If there are more results, a <code>next</code> value is included in the response. You can use this for subsequent API calls. When <code>next</code> is no longer included in the response, no further results are remaining.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Connections.Clients.GetAsync(
+    "id",
+    new GetConnectionEnabledClientsRequestParameters { Take = 1, From = "from" }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The id of the connection for which enabled clients are to be retrieved
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `GetConnectionEnabledClientsRequestParameters` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Connections.Clients.<a href="/src/Auth0.ManagementApi/Connections/Clients/ClientsClient.cs">UpdateAsync</a>(id, IEnumerable&lt;UpdateEnabledClientConnectionsRequestContentItem&gt; { ... })</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Connections.Clients.UpdateAsync(
+    "id",
+    new List<UpdateEnabledClientConnectionsRequestContentItem>()
+    {
+        new UpdateEnabledClientConnectionsRequestContentItem
+        {
+            ClientId = "client_id",
+            Status = true,
+        },
+    }
+);
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — The id of the connection to modify
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `IEnumerable<UpdateEnabledClientConnectionsRequestContentItem>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+## Connections Keys
+<details><summary><code>client.Connections.Keys.<a href="/src/Auth0.ManagementApi/Connections/Keys/KeysClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;IEnumerable&lt;ConnectionKey&gt;&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Gets the connection keys for the Okta or OIDC connection strategy.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Connections.Keys.GetAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the connection
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Connections.Keys.<a href="/src/Auth0.ManagementApi/Connections/Keys/KeysClient.cs">CreateAsync</a>(id, Optional&lt;PostConnectionKeysRequestContent?&gt; { ... }) -> WithRawResponseTask&lt;IEnumerable&lt;PostConnectionsKeysResponseContentItem&gt;&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Provision initial connection keys for Okta or OIDC connection strategies. This endpoint allows you to create keys before configuring the connection to use Private Key JWT authentication, enabling zero-downtime transitions.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Connections.Keys.CreateAsync("id", new PostConnectionKeysRequestContent());
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the connection
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Optional<PostConnectionKeysRequestContent?>` 
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Connections.Keys.<a href="/src/Auth0.ManagementApi/Connections/Keys/KeysClient.cs">RotateAsync</a>(id, Optional&lt;RotateConnectionKeysRequestContent?&gt; { ... }) -> WithRawResponseTask&lt;RotateConnectionsKeysResponseContent&gt;</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Rotates the connection keys for the Okta or OIDC connection strategies.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Connections.Keys.RotateAsync("id", new RotateConnectionKeysRequestContent());
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — ID of the connection
+    
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `Optional<RotateConnectionKeysRequestContent?>` 
     
 </dd>
 </dl>
@@ -14577,10 +14695,10 @@ await client.Flows.Vault.Connections.CreateAsync(
     new CreateFlowsVaultConnectionActivecampaignApiKey
     {
         Name = "name",
-        AppId = "ACTIVECAMPAIGN",
+        AppId = FlowsVaultConnectionAppIdActivecampaignEnum.Activecampaign,
         Setup = new FlowsVaultConnectioSetupApiKeyWithBaseUrl
         {
-            Type = "API_KEY",
+            Type = FlowsVaultConnectioSetupTypeApiKeyEnum.ApiKey,
             ApiKey = "api_key",
             BaseUrl = "base_url",
         },
@@ -20536,7 +20654,11 @@ Retrieves text customizations for a given self-service profile, language and Sel
 <dd>
 
 ```csharp
-await client.SelfServiceProfiles.CustomText.ListAsync("id", "en", "get-started");
+await client.SelfServiceProfiles.CustomText.ListAsync(
+    "id",
+    SelfServiceProfileCustomTextLanguageEnum.En,
+    SelfServiceProfileCustomTextPageEnum.GetStarted
+);
 ```
 </dd>
 </dl>
@@ -20559,7 +20681,7 @@ await client.SelfServiceProfiles.CustomText.ListAsync("id", "en", "get-started")
 <dl>
 <dd>
 
-**language:** `string` — The language of the custom text.
+**language:** `SelfServiceProfileCustomTextLanguageEnum` — The language of the custom text.
     
 </dd>
 </dl>
@@ -20567,7 +20689,7 @@ await client.SelfServiceProfiles.CustomText.ListAsync("id", "en", "get-started")
 <dl>
 <dd>
 
-**page:** `string` — The page where the custom text is shown.
+**page:** `SelfServiceProfileCustomTextPageEnum` — The page where the custom text is shown.
     
 </dd>
 </dl>
@@ -20608,8 +20730,8 @@ Updates text customizations for a given self-service profile, language and Self 
 ```csharp
 await client.SelfServiceProfiles.CustomText.SetAsync(
     "id",
-    "en",
-    "get-started",
+    SelfServiceProfileCustomTextLanguageEnum.En,
+    SelfServiceProfileCustomTextPageEnum.GetStarted,
     new Dictionary<string, string>() { { "key", "value" } }
 );
 ```
@@ -20634,7 +20756,7 @@ await client.SelfServiceProfiles.CustomText.SetAsync(
 <dl>
 <dd>
 
-**language:** `string` — The language of the custom text.
+**language:** `SelfServiceProfileCustomTextLanguageEnum` — The language of the custom text.
     
 </dd>
 </dl>
@@ -20642,7 +20764,7 @@ await client.SelfServiceProfiles.CustomText.SetAsync(
 <dl>
 <dd>
 
-**page:** `string` — The page where the custom text is shown.
+**page:** `SelfServiceProfileCustomTextPageEnum` — The page where the custom text is shown.
     
 </dd>
 </dl>
@@ -22382,7 +22504,7 @@ await client.Users.RiskAssessments.ClearAsync(
     new ClearAssessorsRequestContent
     {
         Connection = "connection",
-        Assessors = new List<string>() { "new-device" },
+        Assessors = new List<AssessorsTypeEnum>() { AssessorsTypeEnum.NewDevice },
     }
 );
 ```
@@ -23164,3 +23286,4 @@ await client.VerifiableCredentials.Verification.Templates.UpdateAsync(
 </dd>
 </dl>
 </details>
+

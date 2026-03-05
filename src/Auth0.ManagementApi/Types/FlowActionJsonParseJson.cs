@@ -19,10 +19,10 @@ public record FlowActionJsonParseJson : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "JSON";
+    public required FlowActionJsonParseJsonType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "PARSE_JSON";
+    public required FlowActionJsonParseJsonAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

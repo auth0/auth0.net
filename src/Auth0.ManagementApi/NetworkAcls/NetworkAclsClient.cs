@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi;
 
 public partial class NetworkAclsClient : INetworkAclsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal NetworkAclsClient(RawClient client)
     {
@@ -53,7 +53,6 @@ public partial class NetworkAclsClient : INetworkAclsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "network-acls",
                     QueryString = _queryString,
@@ -65,7 +64,9 @@ public partial class NetworkAclsClient : INetworkAclsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -94,7 +95,9 @@ public partial class NetworkAclsClient : INetworkAclsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -137,7 +140,6 @@ public partial class NetworkAclsClient : INetworkAclsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "network-acls/{0}",
@@ -151,7 +153,9 @@ public partial class NetworkAclsClient : INetworkAclsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetNetworkAclsResponseContent>(
@@ -179,7 +183,9 @@ public partial class NetworkAclsClient : INetworkAclsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -223,7 +229,6 @@ public partial class NetworkAclsClient : INetworkAclsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = string.Format(
                         "network-acls/{0}",
@@ -239,7 +244,9 @@ public partial class NetworkAclsClient : INetworkAclsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<SetNetworkAclsResponseContent>(
@@ -267,7 +274,9 @@ public partial class NetworkAclsClient : INetworkAclsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -313,7 +322,6 @@ public partial class NetworkAclsClient : INetworkAclsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "network-acls/{0}",
@@ -329,7 +337,9 @@ public partial class NetworkAclsClient : INetworkAclsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<UpdateNetworkAclResponseContent>(
@@ -357,7 +367,9 @@ public partial class NetworkAclsClient : INetworkAclsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -467,7 +479,6 @@ public partial class NetworkAclsClient : INetworkAclsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "network-acls",
                     Body = request,
@@ -483,7 +494,9 @@ public partial class NetworkAclsClient : INetworkAclsClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -584,7 +597,6 @@ public partial class NetworkAclsClient : INetworkAclsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "network-acls/{0}",
@@ -601,7 +613,9 @@ public partial class NetworkAclsClient : INetworkAclsClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

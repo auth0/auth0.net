@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi;
 
 public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal TokenExchangeProfilesClient(RawClient client)
     {
@@ -59,7 +59,6 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "token-exchange-profiles",
                     QueryString = _queryString,
@@ -71,7 +70,9 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<ListTokenExchangeProfileResponseContent>(
@@ -99,7 +100,9 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -142,7 +145,6 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "token-exchange-profiles",
                     Body = request,
@@ -155,7 +157,9 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<CreateTokenExchangeProfileResponseContent>(
@@ -183,7 +187,9 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -228,7 +234,6 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "token-exchange-profiles/{0}",
@@ -242,7 +247,9 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetTokenExchangeProfileResponseContent>(
@@ -270,7 +277,9 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -363,7 +372,7 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
     ///         Name = "name",
     ///         SubjectTokenType = "subject_token_type",
     ///         ActionId = "action_id",
-    ///         Type = "custom_authentication",
+    ///         Type = TokenExchangeProfileTypeEnum.CustomAuthentication,
     ///     }
     /// );
     /// </code></example>
@@ -421,7 +430,6 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "token-exchange-profiles/{0}",
@@ -438,7 +446,9 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -491,7 +501,6 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "token-exchange-profiles/{0}",
@@ -510,7 +519,9 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

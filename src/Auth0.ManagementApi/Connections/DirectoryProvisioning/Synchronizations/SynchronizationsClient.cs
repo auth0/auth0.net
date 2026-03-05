@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Connections.DirectoryProvisioning;
 
 public partial class SynchronizationsClient : ISynchronizationsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal SynchronizationsClient(RawClient client)
     {
@@ -31,7 +31,6 @@ public partial class SynchronizationsClient : ISynchronizationsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "connections/{0}/directory-provisioning/synchronizations",
@@ -45,7 +44,9 @@ public partial class SynchronizationsClient : ISynchronizationsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -74,7 +75,9 @@ public partial class SynchronizationsClient : ISynchronizationsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

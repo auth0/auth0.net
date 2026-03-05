@@ -19,10 +19,10 @@ public record FlowActionAuth0GetUser : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "AUTH0";
+    public required FlowActionAuth0GetUserType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "GET_USER";
+    public required FlowActionAuth0GetUserAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

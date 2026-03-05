@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionAirtableUninitialized : IJsonOnDeseriali
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "AIRTABLE";
+    public required FlowsVaultConnectionAppIdAirtableEnum AppId { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Connections;
 
 public partial class UsersClient : IUsersClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal UsersClient(RawClient client)
     {
@@ -43,7 +43,6 @@ public partial class UsersClient : IUsersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "connections/{0}/users",
@@ -61,7 +60,9 @@ public partial class UsersClient : IUsersClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

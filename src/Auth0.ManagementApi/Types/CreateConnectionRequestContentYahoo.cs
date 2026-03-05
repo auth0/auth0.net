@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentYahoo : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "yahoo";
+    public required CreateConnectionRequestContentYahooStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

@@ -15,6 +15,16 @@ public partial interface IKeysClient
     );
 
     /// <summary>
+    /// Provision initial connection keys for Okta or OIDC connection strategies. This endpoint allows you to create keys before configuring the connection to use Private Key JWT authentication, enabling zero-downtime transitions.
+    /// </summary>
+    WithRawResponseTask<IEnumerable<PostConnectionsKeysResponseContentItem>> CreateAsync(
+        string id,
+        Optional<PostConnectionKeysRequestContent?> request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
     /// Rotates the connection keys for the Okta or OIDC connection strategies.
     /// </summary>
     WithRawResponseTask<RotateConnectionsKeysResponseContent> RotateAsync(

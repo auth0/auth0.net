@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentOAuth1 : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "oauth1";
+    public required CreateConnectionRequestContentOAuth1Strategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

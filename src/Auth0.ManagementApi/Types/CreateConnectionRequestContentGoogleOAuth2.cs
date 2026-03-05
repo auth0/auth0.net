@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentGoogleOAuth2 : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "google-oauth2";
+    public required CreateConnectionRequestContentGoogleOAuth2Strategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

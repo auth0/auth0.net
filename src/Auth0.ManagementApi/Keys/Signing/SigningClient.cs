@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Keys;
 
 public partial class SigningClient : ISigningClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal SigningClient(RawClient client)
     {
@@ -28,7 +28,6 @@ public partial class SigningClient : ISigningClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "keys/signing",
                     Headers = _headers,
@@ -39,7 +38,9 @@ public partial class SigningClient : ISigningClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<IEnumerable<SigningKeys>>(responseBody)!;
@@ -65,7 +66,9 @@ public partial class SigningClient : ISigningClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -107,7 +110,6 @@ public partial class SigningClient : ISigningClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "keys/signing/rotate",
                     Headers = _headers,
@@ -118,7 +120,9 @@ public partial class SigningClient : ISigningClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<RotateSigningKeysResponseContent>(
@@ -146,7 +150,9 @@ public partial class SigningClient : ISigningClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -187,7 +193,6 @@ public partial class SigningClient : ISigningClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "keys/signing/{0}",
@@ -201,7 +206,9 @@ public partial class SigningClient : ISigningClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetSigningKeysResponseContent>(
@@ -229,7 +236,9 @@ public partial class SigningClient : ISigningClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -272,7 +281,6 @@ public partial class SigningClient : ISigningClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = string.Format(
                         "keys/signing/{0}/revoke",
@@ -286,7 +294,9 @@ public partial class SigningClient : ISigningClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<RevokedSigningKeysResponseContent>(
@@ -314,7 +324,9 @@ public partial class SigningClient : ISigningClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
