@@ -59,7 +59,7 @@ jobs:
     needs: [rl-scanner-core, rl-scanner-authentication, rl-scanner-management]
     uses: ./.github/workflows/nuget-release.yml
     with:
-      dotnet-version: 8.0.x
+      dotnet-version: 10.0.x
       project-paths: "['src/Auth0.Core/Auth0.Core.csproj', 'src/Auth0.AuthenticationApi/Auth0.AuthenticationApi.csproj']"
       working-directory: "./"
       tag-prefix: ""
@@ -72,7 +72,7 @@ jobs:
     needs: [rl-scanner-core, rl-scanner-authentication, rl-scanner-management]
     uses: ./.github/workflows/nuget-release.yml
     with:
-      dotnet-version: 8.0.x
+      dotnet-version: 10.0.x
       project-paths: "['src/Auth0.ManagementApi/Auth0.ManagementApi.csproj']"
       working-directory: "src/Auth0.ManagementApi"
       tag-prefix: "mgmt-"
@@ -95,7 +95,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: 10.0.x
 
       - name: Install DocFX
         run: dotnet tool install -g docfx        
