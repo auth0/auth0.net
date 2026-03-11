@@ -505,7 +505,7 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
     ///     new ListDirectoryProvisioningsRequestParameters { From = "from", Take = 1 }
     /// );
     /// </code></example>
-    public async Task<Pager<DirectoryProvisioning>> ListAsync(
+    public async Task<Pager<global::Auth0.ManagementApi.DirectoryProvisioning>> ListAsync(
         ListDirectoryProvisioningsRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -520,7 +520,7 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
             RequestOptions?,
             ListDirectoryProvisioningsResponseContent,
             string?,
-            DirectoryProvisioning
+            global::Auth0.ManagementApi.DirectoryProvisioning
         >
             .CreateInstanceAsync(
                 request,

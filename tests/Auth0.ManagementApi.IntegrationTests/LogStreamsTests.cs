@@ -48,7 +48,8 @@ public class LogStreamsTests : IClassFixture<LogStreamsTestsFixture>
                 HttpContentType = "application/json",
                 HttpContentFormat = LogStreamHttpContentFormatEnum.Jsonlines,
                 HttpAuthorization = "Bearer test-token"
-            }
+            },
+            Type = LogStreamHttpEnum.Http
         });
 
         var createdLogStream = newLogStream.AsLogStreamHttpResponseSchema(); // HTTP log stream
@@ -103,7 +104,8 @@ public class LogStreamsTests : IClassFixture<LogStreamsTestsFixture>
                 HttpEndpoint = "https://example.com/logs",
                 HttpContentType = "application/json",
                 HttpContentFormat = LogStreamHttpContentFormatEnum.Jsonlines
-            }
+            },
+            Type = LogStreamHttpEnum.Http
         });
 
         var createdLogStream = newLogStream.AsLogStreamHttpResponseSchema();

@@ -128,14 +128,14 @@ public class SelfServiceProfileTest : IClassFixture<SelfServiceProfileTestFixtur
 
         var customText =
             await _fixture.ApiClient.SelfServiceProfiles.CustomText.SetAsync(
-                ssp.Id, "en", "get-started", customTextBody);
+                ssp.Id, SelfServiceProfileCustomTextLanguageEnum.En, SelfServiceProfileCustomTextPageEnum.GetStarted, customTextBody);
 
         customText.Should().NotBeNull();
 
         // Fetch the custom text and validate
         var getCustomText =
             await _fixture.ApiClient.SelfServiceProfiles.CustomText.ListAsync(
-                ssp.Id, "en", "get-started");
+                ssp.Id, SelfServiceProfileCustomTextLanguageEnum.En, SelfServiceProfileCustomTextPageEnum.GetStarted);
         getCustomText.Should().NotBeNull();
 
         // Delete the self-service profile
