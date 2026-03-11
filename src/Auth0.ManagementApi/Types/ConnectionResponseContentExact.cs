@@ -15,7 +15,7 @@ public record ConnectionResponseContentExact : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "exact";
+    public required ConnectionResponseContentExactStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

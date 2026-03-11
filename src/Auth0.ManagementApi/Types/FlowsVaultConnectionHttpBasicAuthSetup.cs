@@ -12,7 +12,7 @@ public record FlowsVaultConnectionHttpBasicAuthSetup : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "BASIC_AUTH";
+    public required FlowsVaultConnectionSetupTypeBasicAuthEnum Type { get; set; }
 
     [JsonPropertyName("username")]
     public required string Username { get; set; }

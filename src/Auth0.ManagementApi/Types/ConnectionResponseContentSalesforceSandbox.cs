@@ -15,7 +15,7 @@ public record ConnectionResponseContentSalesforceSandbox : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "salesforce-sandbox";
+    public required ConnectionResponseContentSalesforceSandboxStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

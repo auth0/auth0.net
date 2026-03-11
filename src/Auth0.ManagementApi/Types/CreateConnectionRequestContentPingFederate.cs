@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentPingFederate : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "pingfederate";
+    public required CreateConnectionRequestContentPingFederateStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

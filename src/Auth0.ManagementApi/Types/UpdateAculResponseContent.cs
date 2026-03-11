@@ -10,6 +10,9 @@ public record UpdateAculResponseContent : IJsonOnDeserialized, IJsonOnSerializin
     private readonly IDictionary<string, object?> _extensionData =
         new Dictionary<string, object?>();
 
+    /// <summary>
+    /// Rendering mode
+    /// </summary>
     [Optional]
     [JsonPropertyName("rendering_mode")]
     public AculRenderingModeEnum? RenderingMode { get; set; }

@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentAzureAd : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "waad";
+    public required CreateConnectionRequestContentAzureAdStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

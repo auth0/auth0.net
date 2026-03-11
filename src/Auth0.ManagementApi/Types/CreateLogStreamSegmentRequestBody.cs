@@ -19,7 +19,7 @@ public record CreateLogStreamSegmentRequestBody : IJsonOnDeserialized
     public string? Name { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "segment";
+    public required LogStreamSegmentEnum Type { get; set; }
 
     /// <summary>
     /// True for priority log streams, false for non-priority

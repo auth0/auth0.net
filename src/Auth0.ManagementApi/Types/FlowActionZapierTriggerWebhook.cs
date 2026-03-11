@@ -19,10 +19,10 @@ public record FlowActionZapierTriggerWebhook : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "ZAPIER";
+    public required FlowActionZapierTriggerWebhookType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "TRIGGER_WEBHOOK";
+    public required FlowActionZapierTriggerWebhookAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

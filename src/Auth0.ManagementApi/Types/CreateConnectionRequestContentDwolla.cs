@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentDwolla : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "dwolla";
+    public required CreateConnectionRequestContentDwollaStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

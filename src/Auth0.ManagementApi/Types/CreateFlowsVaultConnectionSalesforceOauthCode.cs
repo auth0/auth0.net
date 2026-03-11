@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionSalesforceOauthCode : IJsonOnDeserialize
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "SALESFORCE";
+    public required FlowsVaultConnectionAppIdSalesforceEnum AppId { get; set; }
 
     [JsonPropertyName("setup")]
     public required FlowsVaultConnectioSetupOauthCode Setup { get; set; }

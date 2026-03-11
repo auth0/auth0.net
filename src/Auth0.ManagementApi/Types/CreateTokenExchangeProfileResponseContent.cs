@@ -40,7 +40,7 @@ public record CreateTokenExchangeProfileResponseContent : IJsonOnDeserialized, I
 
     [Optional]
     [JsonPropertyName("type")]
-    public string? Type { get; set; }
+    public TokenExchangeProfileTypeEnum? Type { get; set; }
 
     /// <summary>
     /// The time when this profile was created.

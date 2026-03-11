@@ -15,7 +15,7 @@ public record ConnectionResponseContentWindowsLive : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "windowslive";
+    public required ConnectionResponseContentWindowsLiveStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

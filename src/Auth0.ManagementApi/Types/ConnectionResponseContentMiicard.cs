@@ -15,7 +15,7 @@ public record ConnectionResponseContentMiicard : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "miicard";
+    public required ConnectionResponseContentMiicardStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentThirtySevenSignals : IJsonOnDeserial
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "thirtysevensignals";
+    public required CreateConnectionRequestContentThirtySevenSignalsStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

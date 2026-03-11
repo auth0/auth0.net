@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentEvernote : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "evernote";
+    public required CreateConnectionRequestContentEvernoteStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionClearbitUninitialized : IJsonOnDeseriali
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "CLEARBIT";
+    public required FlowsVaultConnectionAppIdClearbitEnum AppId { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

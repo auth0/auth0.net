@@ -1,3 +1,4 @@
+using Auth0.ManagementApi;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using Auth0.ManagementApi.Test.Utils;
 using NUnit.Framework;
@@ -40,8 +41,8 @@ public class SetTest : BaseMockServerTest
 
         var response = await Client.SelfServiceProfiles.CustomText.SetAsync(
             "id",
-            "en",
-            "get-started",
+            SelfServiceProfileCustomTextLanguageEnum.En,
+            SelfServiceProfileCustomTextPageEnum.GetStarted,
             new Dictionary<string, string>() { { "key", "value" } }
         );
         JsonAssert.AreEqual(response, mockResponse);

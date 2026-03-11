@@ -363,7 +363,7 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
     ///         Name = "name",
     ///         SubjectTokenType = "subject_token_type",
     ///         ActionId = "action_id",
-    ///         Type = "custom_authentication",
+    ///         Type = TokenExchangeProfileTypeEnum.CustomAuthentication,
     ///     }
     /// );
     /// </code></example>

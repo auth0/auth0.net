@@ -16,6 +16,7 @@ public record ConnectionOptionsPingFederate : IJsonOnDeserialized, IJsonOnSerial
     [JsonPropertyName("pingFederateBaseUrl")]
     public required string PingFederateBaseUrl { get; set; }
 
+    [JsonAccess(JsonAccessType.WriteOnly)]
     [Optional]
     [JsonPropertyName("signingCert")]
     public string? SigningCert { get; set; }

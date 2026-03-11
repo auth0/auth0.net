@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentSaml : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "samlp";
+    public required CreateConnectionRequestContentSamlStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

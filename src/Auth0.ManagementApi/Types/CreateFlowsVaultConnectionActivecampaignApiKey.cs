@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionActivecampaignApiKey : IJsonOnDeserializ
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "ACTIVECAMPAIGN";
+    public required FlowsVaultConnectionAppIdActivecampaignEnum AppId { get; set; }
 
     [JsonPropertyName("setup")]
     public required FlowsVaultConnectioSetupApiKeyWithBaseUrl Setup { get; set; }

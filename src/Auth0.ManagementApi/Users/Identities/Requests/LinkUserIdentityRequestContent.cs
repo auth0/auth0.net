@@ -7,6 +7,9 @@ namespace Auth0.ManagementApi.Users;
 [Serializable]
 public record LinkUserIdentityRequestContent
 {
+    /// <summary>
+    /// Identity provider of the secondary user account being linked.
+    /// </summary>
     [Optional]
     [JsonPropertyName("provider")]
     public UserIdentityProviderEnum? Provider { get; set; }

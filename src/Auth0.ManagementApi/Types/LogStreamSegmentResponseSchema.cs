@@ -30,7 +30,7 @@ public record LogStreamSegmentResponseSchema : IJsonOnDeserialized, IJsonOnSeria
 
     [Optional]
     [JsonPropertyName("type")]
-    public string? Type { get; set; }
+    public LogStreamSegmentEnum? Type { get; set; }
 
     /// <summary>
     /// True for priority log streams, false for non-priority

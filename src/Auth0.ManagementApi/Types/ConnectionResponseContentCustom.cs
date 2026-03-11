@@ -15,12 +15,13 @@ public record ConnectionResponseContentCustom : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "custom";
+    public required ConnectionResponseContentCustomStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]
     public Dictionary<string, object?>? Options { get; set; }
 
+    [JsonAccess(JsonAccessType.ReadOnly)]
     [Optional]
     [JsonPropertyName("provisioning_ticket_url")]
     public string? ProvisioningTicketUrl { get; set; }

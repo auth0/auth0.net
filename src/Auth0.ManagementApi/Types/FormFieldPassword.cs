@@ -15,10 +15,10 @@ public record FormFieldPassword : IJsonOnDeserialized
     public required string Id { get; set; }
 
     [JsonPropertyName("category")]
-    public string Category { get; set; } = "FIELD";
+    public required FormComponentCategoryFieldConst Category { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "PASSWORD";
+    public required FormFieldTypePasswordConst Type { get; set; }
 
     [JsonPropertyName("config")]
     public required FormFieldPasswordConfig Config { get; set; }

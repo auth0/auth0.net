@@ -12,7 +12,7 @@ public record EventStreamWebhookDestination : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "webhook";
+    public required EventStreamWebhookDestinationTypeEnum Type { get; set; }
 
     [JsonPropertyName("configuration")]
     public required EventStreamWebhookConfiguration Configuration { get; set; }

@@ -15,12 +15,13 @@ public record ConnectionResponseContentGoogleApps : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "google-apps";
+    public required ConnectionResponseContentGoogleAppsStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]
     public ConnectionOptionsGoogleApps? Options { get; set; }
 
+    [JsonAccess(JsonAccessType.ReadOnly)]
     [Optional]
     [JsonPropertyName("provisioning_ticket_url")]
     public string? ProvisioningTicketUrl { get; set; }

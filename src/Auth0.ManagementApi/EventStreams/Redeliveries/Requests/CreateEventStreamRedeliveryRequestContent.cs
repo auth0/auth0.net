@@ -26,7 +26,7 @@ public record CreateEventStreamRedeliveryRequestContent
     /// </summary>
     [Optional]
     [JsonPropertyName("statuses")]
-    public IEnumerable<string>? Statuses { get; set; }
+    public IEnumerable<EventStreamDeliveryStatusEnum>? Statuses { get; set; }
 
     /// <summary>
     /// Filter by event type

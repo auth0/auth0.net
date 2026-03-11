@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionSlackUninitialized : IJsonOnDeserialized
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "SLACK";
+    public required FlowsVaultConnectionAppIdSlackEnum AppId { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

@@ -15,7 +15,7 @@ public record ConnectionResponseContentFlickr : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "flickr";
+    public required ConnectionResponseContentFlickrStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

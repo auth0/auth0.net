@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentSalesforceSandbox : IJsonOnDeseriali
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "salesforce-sandbox";
+    public required CreateConnectionRequestContentSalesforceSandboxStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]
