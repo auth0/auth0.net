@@ -25,14 +25,20 @@ runs:
     
     - name: Create NuGet packages
       shell: pwsh
+      env:
+        PROJECT_PATHS: ${{ inputs.project-paths }}
+        NUGET_DIRECTORY: ${{ inputs.nuget-directory }}
       run: |
-        foreach($file in (ConvertFrom-Json -InputObject "${{ inputs.project-paths }}")) {
-            dotnet pack $file --configuration Release --output ${{ inputs.nuget-directory }}
+        foreach($file in (ConvertFrom-Json -InputObject "$env:PROJECT_PATHS")) {
+            dotnet pack $file --configuration Release --output $env:NUGET_DIRECTORY
         }
 
     - name: Publish NuGet packages
       shell: pwsh
+      env:
+        NUGET_DIRECTORY: ${{ inputs.nuget-directory }}
+        NUGET_TOKEN: ${{ inputs.nuget-token }}
       run: |
-        foreach($file in (Get-ChildItem "${{ inputs.nuget-directory }}" -Recurse -Include *.nupkg)) {
-            dotnet nuget push $file --api-key "${{ inputs.nuget-token }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+        foreach($file in (Get-ChildItem "$env:NUGET_DIRECTORY" -Recurse -Include *.nupkg)) {
+            dotnet nuget push $file --api-key "$env:NUGET_TOKEN" --source https://api.nuget.org/v3/index.json --skip-duplicate
         }

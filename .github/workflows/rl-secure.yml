@@ -45,12 +45,18 @@ jobs:
 
       - name: Create NuGet packages
         shell: pwsh
-        run: |          
-            dotnet pack ${{ inputs.project-path }} --configuration Release --output ${{ github.workspace }}/nuget
-    
-      - name: Create tgz build artifact
+        env:
+          PROJECT_PATH: ${{ inputs.project-path }}
+          NUGET_OUTPUT: ${{ github.workspace }}/nuget
         run: |
-          tar -czvf ${{ github.workspace }}/${{ inputs.artifact-name }} ${{ github.workspace }}/nuget
+          dotnet pack $env:PROJECT_PATH --configuration Release --output $env:NUGET_OUTPUT
+
+      - name: Create tgz build artifact
+        env:
+          ARTIFACT_NAME: ${{ inputs.artifact-name }}
+          WORKSPACE: ${{ github.workspace }}
+        run: |
+          tar -czvf "$WORKSPACE/$ARTIFACT_NAME" "$WORKSPACE/nuget"
       
       - id: get_version
         uses: ./.github/actions/get-version
