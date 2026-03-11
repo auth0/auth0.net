@@ -26,14 +26,14 @@ public record CustomSigningKeyJwk : IJsonOnDeserialized
 
     [Optional]
     [JsonPropertyName("use")]
-    public string? Use { get; set; }
+    public CustomSigningKeyUseEnum? Use { get; set; }
 
     /// <summary>
     /// Key operations
     /// </summary>
     [Optional]
     [JsonPropertyName("key_ops")]
-    public IEnumerable<string>? KeyOps { get; set; }
+    public IEnumerable<CustomSigningKeyOperationEnum>? KeyOps { get; set; }
 
     [Optional]
     [JsonPropertyName("alg")]

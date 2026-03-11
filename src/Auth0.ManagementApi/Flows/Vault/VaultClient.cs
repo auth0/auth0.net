@@ -4,7 +4,7 @@ namespace Auth0.ManagementApi.Flows.Vault;
 
 public partial class VaultClient : IVaultClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal VaultClient(RawClient client)
     {

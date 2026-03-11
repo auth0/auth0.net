@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Actions.Triggers;
 
 public partial class BindingsClient : IBindingsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal BindingsClient(RawClient client)
     {
@@ -52,7 +52,6 @@ public partial class BindingsClient : IBindingsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "actions/triggers/{0}/bindings",
@@ -67,7 +66,9 @@ public partial class BindingsClient : IBindingsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -96,7 +97,9 @@ public partial class BindingsClient : IBindingsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -140,7 +143,6 @@ public partial class BindingsClient : IBindingsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "actions/triggers/{0}/bindings",
@@ -156,7 +158,9 @@ public partial class BindingsClient : IBindingsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<UpdateActionBindingsResponseContent>(
@@ -184,7 +188,9 @@ public partial class BindingsClient : IBindingsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

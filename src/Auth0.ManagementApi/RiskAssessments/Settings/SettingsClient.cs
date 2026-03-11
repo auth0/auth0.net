@@ -7,7 +7,7 @@ namespace Auth0.ManagementApi.RiskAssessments;
 
 public partial class SettingsClient : ISettingsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal SettingsClient(RawClient client)
     {
@@ -32,7 +32,6 @@ public partial class SettingsClient : ISettingsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "risk-assessments/settings",
                     Headers = _headers,
@@ -43,7 +42,9 @@ public partial class SettingsClient : ISettingsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetRiskAssessmentsSettingsResponseContent>(
@@ -71,7 +72,9 @@ public partial class SettingsClient : ISettingsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -116,7 +119,6 @@ public partial class SettingsClient : ISettingsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "risk-assessments/settings",
                     Body = request,
@@ -129,7 +131,9 @@ public partial class SettingsClient : ISettingsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -158,7 +162,9 @@ public partial class SettingsClient : ISettingsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

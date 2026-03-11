@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Users;
 
 public partial class FederatedConnectionsTokensetsClient : IFederatedConnectionsTokensetsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal FederatedConnectionsTokensetsClient(RawClient client)
     {
@@ -29,7 +29,6 @@ public partial class FederatedConnectionsTokensetsClient : IFederatedConnections
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "users/{0}/federated-connections-tokensets",
@@ -43,7 +42,9 @@ public partial class FederatedConnectionsTokensetsClient : IFederatedConnections
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<IEnumerable<FederatedConnectionTokenSet>>(
@@ -71,7 +72,9 @@ public partial class FederatedConnectionsTokensetsClient : IFederatedConnections
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -135,7 +138,6 @@ public partial class FederatedConnectionsTokensetsClient : IFederatedConnections
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "users/{0}/federated-connections-tokensets/{1}",
@@ -153,7 +155,9 @@ public partial class FederatedConnectionsTokensetsClient : IFederatedConnections
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

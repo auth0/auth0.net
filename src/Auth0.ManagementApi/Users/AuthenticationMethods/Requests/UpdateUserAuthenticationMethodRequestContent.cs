@@ -14,6 +14,9 @@ public record UpdateUserAuthenticationMethodRequestContent
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
+    /// <summary>
+    /// Preferred phone authentication method
+    /// </summary>
     [Optional]
     [JsonPropertyName("preferred_authentication_method")]
     public PreferredAuthenticationMethodEnum? PreferredAuthenticationMethod { get; set; }

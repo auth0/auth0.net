@@ -19,7 +19,7 @@ public record CreateLogStreamEventBridgeRequestBody : IJsonOnDeserialized
     public string? Name { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "eventbridge";
+    public required LogStreamEventBridgeEnum Type { get; set; }
 
     /// <summary>
     /// True for priority log streams, false for non-priority

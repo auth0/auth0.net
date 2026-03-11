@@ -32,6 +32,9 @@ public record DeviceCredential : IJsonOnDeserialized
     [JsonPropertyName("device_id")]
     public string? DeviceId { get; set; }
 
+    /// <summary>
+    /// Type of credential. Can be `public_key`, `refresh_token`, or `rotating_refresh_token`.
+    /// </summary>
     [Optional]
     [JsonPropertyName("type")]
     public DeviceCredentialTypeEnum? Type { get; set; }

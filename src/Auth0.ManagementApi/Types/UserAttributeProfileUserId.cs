@@ -16,7 +16,7 @@ public record UserAttributeProfileUserId : IJsonOnDeserialized
 
     [Optional]
     [JsonPropertyName("oidc_mapping")]
-    public string? OidcMapping { get; set; }
+    public UserAttributeProfileUserIdOidcMappingEnum? OidcMapping { get; set; }
 
     [Optional]
     [JsonPropertyName("saml_mapping")]

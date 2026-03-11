@@ -12,7 +12,7 @@ public record FlowsVaultConnectioSetupOauthApp : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "OAUTH_APP";
+    public required FlowsVaultConnectioSetupTypeOauthAppEnum Type { get; set; }
 
     [JsonPropertyName("client_id")]
     public required string ClientId { get; set; }

@@ -71,12 +71,13 @@ public class FlowsTest : IClassFixture<FlowsTestFixture>
     {
         var vaultConnectionRequest = new CreateFlowsVaultConnectionAuth0OauthApp
         {
-            AppId = "AUTH0",
+            AppId = FlowsVaultConnectionAppIdAuth0Enum.Auth0,
             Setup = new FlowsVaultConnectioSetupOauthApp
             {
                 Domain = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_URL"),
                 ClientId = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_ID"),
-                ClientSecret = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET")
+                ClientSecret = TestBaseUtils.GetVariable("AUTH0_MANAGEMENT_API_CLIENT_SECRET"),
+                Type = FlowsVaultConnectioSetupTypeOauthAppEnum.OauthApp
             },
             Name = "Auth0-test-connection"
         };

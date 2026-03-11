@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionSlackOauthCode : IJsonOnDeserialized
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "SLACK";
+    public required FlowsVaultConnectionAppIdSlackEnum AppId { get; set; }
 
     [JsonPropertyName("setup")]
     public required FlowsVaultConnectioSetupOauthCode Setup { get; set; }

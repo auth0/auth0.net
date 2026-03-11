@@ -1,13 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-  <!-- Import common build properties -->
-  <Import Project="..\..\build\common.props" />
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <PackageId>Auth0.ManagementApi</PackageId>
     <TargetFrameworks>net462;net8.0;netstandard2.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>12</LangVersion>
     <Nullable>enable</Nullable>
-
+    <Version>7.44.0</Version>
+    <AssemblyVersion>$(Version)</AssemblyVersion>
+    <FileVersion>$(Version)</FileVersion>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageProjectUrl>https://github.com/auth0/auth0.net</PackageProjectUrl>
     <PolySharpIncludeRuntimeSupportedAttributes>true</PolySharpIncludeRuntimeSupportedAttributes>

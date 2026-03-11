@@ -4,7 +4,7 @@ namespace Auth0.ManagementApi.AttackProtection;
 
 public partial class AttackProtectionClient : IAttackProtectionClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal AttackProtectionClient(RawClient client)
     {

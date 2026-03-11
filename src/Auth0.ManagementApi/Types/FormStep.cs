@@ -15,7 +15,7 @@ public record FormStep : IJsonOnDeserialized
     public required string Id { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "STEP";
+    public required FormNodeTypeStepConst Type { get; set; }
 
     [Optional]
     [JsonPropertyName("coordinates")]

@@ -12,7 +12,7 @@ public record FlowsVaultConnectionHttpOauthClientCredentialsSetup : IJsonOnDeser
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "OAUTH_CLIENT_CREDENTIALS";
+    public required FlowsVaultConnectionSetupTypeOauthClientCredentialsEnum Type { get; set; }
 
     [JsonPropertyName("client_id")]
     public required string ClientId { get; set; }

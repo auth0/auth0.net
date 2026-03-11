@@ -18,9 +18,8 @@ public record ResourceServerTokenEncryptionKey : IJsonOnDeserialized
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
-    [Optional]
     [JsonPropertyName("alg")]
-    public ResourceServerTokenEncryptionAlgorithmEnum? Alg { get; set; }
+    public required ResourceServerTokenEncryptionAlgorithmEnum Alg { get; set; }
 
     /// <summary>
     /// Key ID.
@@ -32,9 +31,8 @@ public record ResourceServerTokenEncryptionKey : IJsonOnDeserialized
     /// <summary>
     /// PEM-formatted public key. Must be JSON escaped.
     /// </summary>
-    [Optional]
     [JsonPropertyName("pem")]
-    public string? Pem { get; set; }
+    public required string Pem { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

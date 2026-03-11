@@ -19,10 +19,10 @@ public record FlowActionOtpGenerateCode : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "OTP";
+    public required FlowActionOtpGenerateCodeType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "GENERATE_CODE";
+    public required FlowActionOtpGenerateCodeAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

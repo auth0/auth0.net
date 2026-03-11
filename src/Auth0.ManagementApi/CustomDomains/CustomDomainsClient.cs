@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi;
 
 public partial class CustomDomainsClient : ICustomDomainsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal CustomDomainsClient(RawClient client)
     {
@@ -38,7 +38,6 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "custom-domains",
                     QueryString = _queryString,
@@ -50,7 +49,9 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<IEnumerable<CustomDomain>>(responseBody)!;
@@ -76,7 +77,9 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -117,7 +120,6 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "custom-domains",
                     Body = request,
@@ -130,7 +132,9 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<CreateCustomDomainResponseContent>(
@@ -158,7 +162,9 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -203,7 +209,6 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "custom-domains/{0}",
@@ -217,7 +222,9 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetCustomDomainResponseContent>(
@@ -245,7 +252,9 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -291,7 +300,6 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "custom-domains/{0}",
@@ -307,7 +315,9 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<UpdateCustomDomainResponseContent>(
@@ -335,7 +345,9 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -378,7 +390,6 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "custom-domains/{0}/test",
@@ -392,7 +403,9 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<TestCustomDomainResponseContent>(
@@ -420,7 +433,9 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -465,7 +480,6 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "custom-domains/{0}/verify",
@@ -479,7 +493,9 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<VerifyCustomDomainResponseContent>(
@@ -507,7 +523,9 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -636,7 +654,6 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "custom-domains/{0}",
@@ -653,7 +670,9 @@ public partial class CustomDomainsClient : ICustomDomainsClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

@@ -55,14 +55,14 @@ public class ResourceServerTests : IClassFixture<ResourceServerTestsFixture>
             },
             AllowOfflineAccess = true,
             SkipConsentForVerifiableFirstPartyClients = true,
-            ConsentPolicy = "transactional-authorization-with-mfa",
+            ConsentPolicy = ResourceServerConsentPolicyEnum.TransactionalAuthorizationWithMfa,
             AuthorizationDetails = new List<object>
             {
                 new { type = "Sample" }
             },
             TokenEncryption = new ResourceServerTokenEncryption
             {
-                Format = "compact-nested-jwe",
+                Format = ResourceServerTokenEncryptionFormatEnum.CompactNestedJwe,
                 EncryptionKey = new ResourceServerTokenEncryptionKey
                 {
                     Name = "Sample",
@@ -110,14 +110,14 @@ public class ResourceServerTests : IClassFixture<ResourceServerTestsFixture>
             EnforcePolicies = false,
             TokenDialect = ResourceServerTokenDialectSchemaEnum.AccessToken,
             SkipConsentForVerifiableFirstPartyClients = false,
-            ConsentPolicy = "transactional-authorization-with-mfa",
+            ConsentPolicy = ResourceServerConsentPolicyEnum.TransactionalAuthorizationWithMfa,
             AuthorizationDetails = new List<object>
             {
                 new { type = "Sample" }
             },
             TokenEncryption = new ResourceServerTokenEncryption
             {
-                Format = "compact-nested-jwe",
+                Format = ResourceServerTokenEncryptionFormatEnum.CompactNestedJwe,
                 EncryptionKey = new ResourceServerTokenEncryptionKey
                 {
                     Name = "Sample",

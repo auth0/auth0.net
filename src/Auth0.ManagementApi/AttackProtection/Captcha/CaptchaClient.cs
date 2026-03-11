@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.AttackProtection;
 
 public partial class CaptchaClient : ICaptchaClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal CaptchaClient(RawClient client)
     {
@@ -28,7 +28,6 @@ public partial class CaptchaClient : ICaptchaClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "attack-protection/captcha",
                     Headers = _headers,
@@ -39,7 +38,9 @@ public partial class CaptchaClient : ICaptchaClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetAttackProtectionCaptchaResponseContent>(
@@ -67,7 +68,9 @@ public partial class CaptchaClient : ICaptchaClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -112,7 +115,6 @@ public partial class CaptchaClient : ICaptchaClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "attack-protection/captcha",
                     Body = request,
@@ -125,7 +127,9 @@ public partial class CaptchaClient : ICaptchaClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -154,7 +158,9 @@ public partial class CaptchaClient : ICaptchaClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

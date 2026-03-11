@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi;
 
 public partial class HooksClient : IHooksClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal HooksClient(RawClient client)
     {
@@ -60,7 +60,6 @@ public partial class HooksClient : IHooksClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "hooks",
                     QueryString = _queryString,
@@ -72,7 +71,9 @@ public partial class HooksClient : IHooksClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<ListHooksOffsetPaginatedResponseContent>(
@@ -100,7 +101,9 @@ public partial class HooksClient : IHooksClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -145,7 +148,6 @@ public partial class HooksClient : IHooksClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "hooks",
                     Body = request,
@@ -158,7 +160,9 @@ public partial class HooksClient : IHooksClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<CreateHookResponseContent>(responseBody)!;
@@ -184,7 +188,9 @@ public partial class HooksClient : IHooksClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -234,7 +240,6 @@ public partial class HooksClient : IHooksClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("hooks/{0}", ValueConvert.ToPathParameterString(id)),
                     QueryString = _queryString,
@@ -246,7 +251,9 @@ public partial class HooksClient : IHooksClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetHookResponseContent>(responseBody)!;
@@ -272,7 +279,9 @@ public partial class HooksClient : IHooksClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -318,7 +327,6 @@ public partial class HooksClient : IHooksClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format("hooks/{0}", ValueConvert.ToPathParameterString(id)),
                     Body = request,
@@ -331,7 +339,9 @@ public partial class HooksClient : IHooksClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<UpdateHookResponseContent>(responseBody)!;
@@ -357,7 +367,9 @@ public partial class HooksClient : IHooksClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -502,7 +514,6 @@ public partial class HooksClient : IHooksClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format("hooks/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,
@@ -516,7 +527,9 @@ public partial class HooksClient : IHooksClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

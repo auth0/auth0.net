@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionTelegramToken : IJsonOnDeserialized
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "TELEGRAM";
+    public required FlowsVaultConnectionAppIdTelegramEnum AppId { get; set; }
 
     [JsonPropertyName("setup")]
     public required FlowsVaultConnectioSetupToken Setup { get; set; }

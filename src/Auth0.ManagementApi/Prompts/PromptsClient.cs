@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi;
 
 public partial class PromptsClient : IPromptsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal PromptsClient(RawClient client)
     {
@@ -37,7 +37,6 @@ public partial class PromptsClient : IPromptsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "prompts",
                     Headers = _headers,
@@ -48,7 +47,9 @@ public partial class PromptsClient : IPromptsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetSettingsResponseContent>(responseBody)!;
@@ -74,7 +75,9 @@ public partial class PromptsClient : IPromptsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -115,7 +118,6 @@ public partial class PromptsClient : IPromptsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "prompts",
                     Body = request,
@@ -128,7 +130,9 @@ public partial class PromptsClient : IPromptsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<UpdateSettingsResponseContent>(
@@ -156,7 +160,9 @@ public partial class PromptsClient : IPromptsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

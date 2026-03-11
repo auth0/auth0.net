@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Users;
 
 public partial class RiskAssessmentsClient : IRiskAssessmentsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal RiskAssessmentsClient(RawClient client)
     {
@@ -22,7 +22,7 @@ public partial class RiskAssessmentsClient : IRiskAssessmentsClient
     ///     new ClearAssessorsRequestContent
     ///     {
     ///         Connection = "connection",
-    ///         Assessors = new List&lt;string&gt;() { "new-device" },
+    ///         Assessors = new List&lt;AssessorsTypeEnum&gt;() { AssessorsTypeEnum.NewDevice },
     ///     }
     /// );
     /// </code></example>
@@ -43,7 +43,6 @@ public partial class RiskAssessmentsClient : IRiskAssessmentsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "users/{0}/risk-assessments/clear",
@@ -62,7 +61,9 @@ public partial class RiskAssessmentsClient : IRiskAssessmentsClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

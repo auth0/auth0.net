@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.RiskAssessments.Settings;
 
 public partial class NewDeviceClient : INewDeviceClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal NewDeviceClient(RawClient client)
     {
@@ -27,7 +27,6 @@ public partial class NewDeviceClient : INewDeviceClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "risk-assessments/settings/new-device",
                     Headers = _headers,
@@ -38,7 +37,9 @@ public partial class NewDeviceClient : INewDeviceClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -67,7 +68,9 @@ public partial class NewDeviceClient : INewDeviceClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -112,7 +115,6 @@ public partial class NewDeviceClient : INewDeviceClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "risk-assessments/settings/new-device",
                     Body = request,
@@ -125,7 +127,9 @@ public partial class NewDeviceClient : INewDeviceClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -154,7 +158,9 @@ public partial class NewDeviceClient : INewDeviceClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
