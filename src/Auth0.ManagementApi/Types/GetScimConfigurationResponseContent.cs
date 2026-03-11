@@ -14,58 +14,50 @@ public record GetScimConfigurationResponseContent : IJsonOnDeserialized
     /// <summary>
     /// The connection's identifier
     /// </summary>
-    [Optional]
     [JsonPropertyName("connection_id")]
-    public string? ConnectionId { get; set; }
+    public required string ConnectionId { get; set; }
 
     /// <summary>
-    /// The connection's identifier
+    /// The connection's name
     /// </summary>
-    [Optional]
     [JsonPropertyName("connection_name")]
-    public string? ConnectionName { get; set; }
+    public required string ConnectionName { get; set; }
 
     /// <summary>
     /// The connection's strategy
     /// </summary>
-    [Optional]
     [JsonPropertyName("strategy")]
-    public string? Strategy { get; set; }
+    public required string Strategy { get; set; }
 
     /// <summary>
     /// The tenant's name
     /// </summary>
-    [Optional]
     [JsonPropertyName("tenant_name")]
-    public string? TenantName { get; set; }
+    public required string TenantName { get; set; }
 
     /// <summary>
     /// User ID attribute for generating unique user ids
     /// </summary>
-    [Optional]
     [JsonPropertyName("user_id_attribute")]
-    public string? UserIdAttribute { get; set; }
+    public required string UserIdAttribute { get; set; }
 
     /// <summary>
     /// The mapping between auth0 and SCIM
     /// </summary>
-    [Optional]
     [JsonPropertyName("mapping")]
-    public IEnumerable<ScimMappingItem>? Mapping { get; set; }
+    public IEnumerable<ScimMappingItem> Mapping { get; set; } = new List<ScimMappingItem>();
 
     /// <summary>
-    /// The Date Time Scim Configuration was created
+    /// The ISO 8601 date and time the SCIM configuration was created at
     /// </summary>
-    [Optional]
     [JsonPropertyName("created_at")]
-    public string? CreatedAt { get; set; }
+    public required DateTime CreatedAt { get; set; }
 
     /// <summary>
-    /// The Date Time Scim Configuration was last updated
+    /// The ISO 8601 date and time the SCIM configuration was last updated on
     /// </summary>
-    [Optional]
     [JsonPropertyName("updated_on")]
-    public string? UpdatedOn { get; set; }
+    public required DateTime UpdatedOn { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

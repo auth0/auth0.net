@@ -19,10 +19,10 @@ public record FlowActionAirtableListRecords : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "AIRTABLE";
+    public required FlowActionAirtableListRecordsType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "LIST_RECORDS";
+    public required FlowActionAirtableListRecordsAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

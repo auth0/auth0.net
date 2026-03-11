@@ -15,10 +15,10 @@ public record FormBlockHtml : IJsonOnDeserialized
     public required string Id { get; set; }
 
     [JsonPropertyName("category")]
-    public string Category { get; set; } = "BLOCK";
+    public required FormComponentCategoryBlockConst Category { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "HTML";
+    public required FormBlockTypeHtmlConst Type { get; set; }
 
     [Optional]
     [JsonPropertyName("config")]

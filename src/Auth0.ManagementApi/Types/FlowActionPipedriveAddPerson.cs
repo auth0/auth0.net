@@ -19,10 +19,10 @@ public record FlowActionPipedriveAddPerson : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "PIPEDRIVE";
+    public required FlowActionPipedriveAddPersonType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "ADD_PERSON";
+    public required FlowActionPipedriveAddPersonAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

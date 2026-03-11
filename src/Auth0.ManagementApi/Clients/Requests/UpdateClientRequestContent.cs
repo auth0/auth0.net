@@ -45,6 +45,9 @@ public record UpdateClientRequestContent
     [JsonPropertyName("oidc_logout")]
     public ClientOidcBackchannelLogoutSettings? OidcLogout { get; set; }
 
+    /// <summary>
+    /// Configuration for OIDC backchannel logout (deprecated, in favor of oidc_logout)
+    /// </summary>
     [Optional]
     [JsonPropertyName("oidc_backchannel_logout")]
     public ClientOidcBackchannelLogoutSettings? OidcBackchannelLogout { get; set; }
@@ -95,10 +98,16 @@ public record UpdateClientRequestContent
     [JsonPropertyName("allowed_logout_urls")]
     public IEnumerable<string>? AllowedLogoutUrls { get; set; }
 
+    /// <summary>
+    /// An object that holds settings related to how JWTs are created
+    /// </summary>
     [Optional]
     [JsonPropertyName("jwt_configuration")]
     public ClientJwtConfiguration? JwtConfiguration { get; set; }
 
+    /// <summary>
+    /// The client's encryption key
+    /// </summary>
     [Nullable, Optional]
     [JsonPropertyName("encryption_key")]
     public Optional<ClientEncryptionKey?> EncryptionKey { get; set; }
@@ -197,6 +206,9 @@ public record UpdateClientRequestContent
     [JsonPropertyName("client_metadata")]
     public Dictionary<string, object?>? ClientMetadata { get; set; }
 
+    /// <summary>
+    /// Configuration related to native mobile apps
+    /// </summary>
     [Optional]
     [JsonPropertyName("mobile")]
     public ClientMobile? Mobile { get; set; }

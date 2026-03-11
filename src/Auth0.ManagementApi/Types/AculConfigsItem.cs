@@ -17,6 +17,9 @@ public record AculConfigsItem : IJsonOnDeserialized
     [JsonPropertyName("screen")]
     public required ScreenGroupNameEnum Screen { get; set; }
 
+    /// <summary>
+    /// Rendering mode
+    /// </summary>
     [Optional]
     [JsonPropertyName("rendering_mode")]
     public AculRenderingModeEnum? RenderingMode { get; set; }

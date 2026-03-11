@@ -19,10 +19,10 @@ public record FlowActionSlackPostMessage : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "SLACK";
+    public required FlowActionSlackPostMessageType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "POST_MESSAGE";
+    public required FlowActionSlackPostMessageAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

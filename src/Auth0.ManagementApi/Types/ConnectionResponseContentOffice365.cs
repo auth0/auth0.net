@@ -15,12 +15,13 @@ public record ConnectionResponseContentOffice365 : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "office365";
+    public required ConnectionResponseContentOffice365Strategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]
     public ConnectionOptionsOffice365? Options { get; set; }
 
+    [JsonAccess(JsonAccessType.ReadOnly)]
     [Optional]
     [JsonPropertyName("provisioning_ticket_url")]
     public string? ProvisioningTicketUrl { get; set; }

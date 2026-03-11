@@ -15,12 +15,13 @@ public record ConnectionResponseContentSaml : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "samlp";
+    public required ConnectionResponseContentSamlStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]
     public ConnectionOptionsSaml? Options { get; set; }
 
+    [JsonAccess(JsonAccessType.ReadOnly)]
     [Optional]
     [JsonPropertyName("provisioning_ticket_url")]
     public string? ProvisioningTicketUrl { get; set; }

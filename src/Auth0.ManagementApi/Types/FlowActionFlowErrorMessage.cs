@@ -19,10 +19,10 @@ public record FlowActionFlowErrorMessage : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "FLOW";
+    public required FlowActionFlowErrorMessageType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "ERROR_MESSAGE";
+    public required FlowActionFlowErrorMessageAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

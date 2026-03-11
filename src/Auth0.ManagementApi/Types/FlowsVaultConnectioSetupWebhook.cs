@@ -12,7 +12,7 @@ public record FlowsVaultConnectioSetupWebhook : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "WEBHOOK";
+    public required FlowsVaultConnectioSetupTypeWebhookEnum Type { get; set; }
 
     [JsonPropertyName("url")]
     public required string Url { get; set; }

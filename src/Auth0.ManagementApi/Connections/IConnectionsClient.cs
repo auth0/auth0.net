@@ -6,9 +6,9 @@ namespace Auth0.ManagementApi;
 public partial interface IConnectionsClient
 {
     public IDirectoryProvisioningClient DirectoryProvisioning { get; }
+    public IScimConfigurationClient ScimConfiguration { get; }
     public Auth0.ManagementApi.Connections.IClientsClient Clients { get; }
     public Auth0.ManagementApi.Connections.IKeysClient Keys { get; }
-    public IScimConfigurationClient ScimConfiguration { get; }
     public Auth0.ManagementApi.Connections.IUsersClient Users { get; }
 
     /// <summary>

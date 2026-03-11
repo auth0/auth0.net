@@ -19,10 +19,10 @@ public record FlowActionStripeCreatePortalSession : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "STRIPE";
+    public required FlowActionStripeCreatePortalSessionType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "CREATE_PORTAL_SESSION";
+    public required FlowActionStripeCreatePortalSessionAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

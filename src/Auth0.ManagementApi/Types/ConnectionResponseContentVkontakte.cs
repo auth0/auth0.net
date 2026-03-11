@@ -15,7 +15,7 @@ public record ConnectionResponseContentVkontakte : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "vkontakte";
+    public required ConnectionResponseContentVkontakteStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

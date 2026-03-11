@@ -15,7 +15,7 @@ public record ConnectionResponseContentSalesforceCommunity : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "salesforce-community";
+    public required ConnectionResponseContentSalesforceCommunityStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

@@ -13,7 +13,7 @@ public record FormFieldPaymentConfig : IJsonOnDeserialized
 
     [Optional]
     [JsonPropertyName("provider")]
-    public string? Provider { get; set; }
+    public FormFieldPaymentConfigProviderEnum? Provider { get; set; }
 
     [JsonPropertyName("charge")]
     public required FormFieldPaymentConfigCharge Charge { get; set; }

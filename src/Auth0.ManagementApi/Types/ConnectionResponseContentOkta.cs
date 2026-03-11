@@ -15,7 +15,7 @@ public record ConnectionResponseContentOkta : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "okta";
+    public required ConnectionResponseContentOktaStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

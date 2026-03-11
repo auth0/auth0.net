@@ -19,10 +19,10 @@ public record FlowActionPipedriveAddDeal : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "PIPEDRIVE";
+    public required FlowActionPipedriveAddDealType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "ADD_DEAL";
+    public required FlowActionPipedriveAddDealAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

@@ -19,10 +19,10 @@ public record FlowActionXmlSerializeXml : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "XML";
+    public required FlowActionXmlSerializeXmlType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "SERIALIZE_XML";
+    public required FlowActionXmlSerializeXmlAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

@@ -31,6 +31,9 @@ public record GetAculResponseContent : IJsonOnDeserialized, IJsonOnSerializing
     [JsonPropertyName("screen")]
     public string? Screen { get; set; }
 
+    /// <summary>
+    /// Rendering mode
+    /// </summary>
     [Optional]
     [JsonPropertyName("rendering_mode")]
     public AculRenderingModeEnum? RenderingMode { get; set; }

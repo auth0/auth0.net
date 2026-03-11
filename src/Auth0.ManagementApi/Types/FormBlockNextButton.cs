@@ -15,10 +15,10 @@ public record FormBlockNextButton : IJsonOnDeserialized
     public required string Id { get; set; }
 
     [JsonPropertyName("category")]
-    public string Category { get; set; } = "BLOCK";
+    public required FormComponentCategoryBlockConst Category { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "NEXT_BUTTON";
+    public required FormBlockTypeNextButtonConst Type { get; set; }
 
     [JsonPropertyName("config")]
     public required FormBlockNextButtonConfig Config { get; set; }

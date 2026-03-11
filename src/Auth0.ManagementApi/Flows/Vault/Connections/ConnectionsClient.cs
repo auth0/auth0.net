@@ -429,10 +429,10 @@ public partial class ConnectionsClient : IConnectionsClient
     ///     new CreateFlowsVaultConnectionActivecampaignApiKey
     ///     {
     ///         Name = "name",
-    ///         AppId = "ACTIVECAMPAIGN",
+    ///         AppId = FlowsVaultConnectionAppIdActivecampaignEnum.Activecampaign,
     ///         Setup = new FlowsVaultConnectioSetupApiKeyWithBaseUrl
     ///         {
-    ///             Type = "API_KEY",
+    ///             Type = FlowsVaultConnectioSetupTypeApiKeyEnum.ApiKey,
     ///             ApiKey = "api_key",
     ///             BaseUrl = "base_url",
     ///         },

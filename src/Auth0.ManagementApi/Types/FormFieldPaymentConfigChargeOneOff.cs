@@ -12,7 +12,7 @@ public record FormFieldPaymentConfigChargeOneOff : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "ONE_OFF";
+    public required FormFieldPaymentConfigChargeTypeOneOffConst Type { get; set; }
 
     [JsonPropertyName("one_off")]
     public required FormFieldPaymentConfigChargeOneOffOneOff OneOff { get; set; }

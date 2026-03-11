@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentAmazon : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "amazon";
+    public required CreateConnectionRequestContentAmazonStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]
