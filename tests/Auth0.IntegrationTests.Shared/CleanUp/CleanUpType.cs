@@ -16,5 +16,6 @@ public enum CleanUpType
     EncryptionKeys,
     SelfServiceProvider,
     Forms,
-    Flows
+    Flows,
+    CustomDomains,
 }

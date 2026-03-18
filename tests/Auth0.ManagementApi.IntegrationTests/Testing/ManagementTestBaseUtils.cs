@@ -25,7 +25,8 @@ public class ManagementTestBaseUtils
             new EncryptionKeysCleanupStrategy(client),
             new SelfServiceProviderCleanUpStrategy(client),
             new FormsCleanUpStrategy(client),
-            new FlowsCleanUpStrategy(client)
+            new FlowsCleanUpStrategy(client),
+            new CustomDomainsCleanUpStrategy(client),
         };
 
         var cleanUpStrategy = strategies.Single(s => s.Type == type);
