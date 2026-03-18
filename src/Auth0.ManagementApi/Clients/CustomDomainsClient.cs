@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Auth0.ManagementApi.Paging;
+using Newtonsoft.Json;
 
 namespace Auth0.ManagementApi.Clients;
 
@@ -12,6 +14,8 @@ namespace Auth0.ManagementApi.Clients;
 /// </summary>
 public class CustomDomainsClient : BaseClient, ICustomDomainsClient
 {
+    private readonly JsonConverter[] checkpointConverters = [new CheckpointPagedListConverter<CustomDomain>("custom_domains")];
+    
     /// <summary>
     /// Initializes a new instance of <see cref="CustomDomainsClient"/>.
     /// </summary>
@@ -54,6 +58,28 @@ public class CustomDomainsClient : BaseClient, ICustomDomainsClient
     public Task<IList<CustomDomain>> GetAllAsync(CancellationToken cancellationToken = default)
     {
         return Connection.GetAsync<IList<CustomDomain>>(BuildUri("custom-domains"), DefaultHeaders, cancellationToken: cancellationToken);
+    }
+
+    /// <inheritdoc />
+    public Task<ICheckpointPagedList<CustomDomain>> GetAllAsync(
+        CustomDomainsGetAllRequest request,
+        CheckpointPaginationInfo? checkpointPaginationInfo,
+        CancellationToken cancellationToken = default)
+    {
+        request.ThrowIfNull();
+        
+        var queryStrings = new Dictionary<string, string>();
+        queryStrings.AddIfNotEmpty("q", request.Query!);
+        queryStrings.AddIfNotEmpty("fields", request.Fields!);
+        queryStrings.AddIfNotEmpty("include_fields", request.IncludeFields.ToString().ToLower());
+        queryStrings.AddIfNotEmpty("sort", request.Sort!);
+        
+        if (checkpointPaginationInfo != null)
+        {
+            queryStrings["from"] = checkpointPaginationInfo.From?.ToString();
+            queryStrings["take"] = checkpointPaginationInfo.Take.ToString();
+        }
+        return Connection.GetAsync<ICheckpointPagedList<CustomDomain>>(BuildUri("custom-domains", queryStrings), DefaultHeaders, checkpointConverters , cancellationToken: cancellationToken);
     }
 
     /// <summary>
