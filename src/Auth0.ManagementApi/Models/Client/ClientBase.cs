@@ -229,6 +229,9 @@ public abstract class ClientBase
     [JsonProperty("session_transfer")]
     public SessionTransfer? SessionTransfer { get; set; }
 
+    /// <summary>
+    /// Configure the notification channel(s) to use with the CIBA flow
+    /// </summary>
     [JsonProperty("async_approval_notification_channels")]
     [JsonConverter(typeof(StringEnumConverter))]
     public AsyncApprovalNotificationChannels[]? AsyncApprovalNotificationChannels { get; set; }
