@@ -228,4 +228,7 @@ public abstract class ClientBase
     /// </summary>
     [JsonProperty("session_transfer")]
     public SessionTransfer? SessionTransfer { get; set; }
+
+    [JsonProperty("async_approval_notification_channels")]
+    public AsyncApprovalNotificationChannels[]? AsyncApprovalNotificationChannels { get; set; }
 }
