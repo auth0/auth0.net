@@ -230,5 +230,6 @@ public abstract class ClientBase
     public SessionTransfer? SessionTransfer { get; set; }
 
     [JsonProperty("async_approval_notification_channels")]
+    [JsonConverter(typeof(StringEnumConverter))]
     public AsyncApprovalNotificationChannels[]? AsyncApprovalNotificationChannels { get; set; }
 }
