@@ -232,7 +232,6 @@ public abstract class ClientBase
     /// <summary>
     /// Configure the notification channel(s) to use with the CIBA flow
     /// </summary>
-    [JsonProperty("async_approval_notification_channels")]
-    [JsonConverter(typeof(StringEnumConverter))]
+    [JsonProperty("async_approval_notification_channels", ItemConverterType = typeof(StringEnumConverter))]
     public AsyncApprovalNotificationChannels[]? AsyncApprovalNotificationChannels { get; set; }
 }
