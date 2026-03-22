@@ -66,4 +66,20 @@ public interface ICustomDomainsClient
   /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
   /// <returns>Updated <see cref="CustomDomain"/></returns>
   Task<CustomDomain> UpdateAsync(string id, CustomDomainUpdateRequest request, CancellationToken cancellationToken = default);
+
+  /// <summary>
+  /// Retrieves the default custom domain for the tenant.
+  /// Returns the custom domain marked as default, or the canonical domain if none is set.
+  /// </summary>
+  /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+  /// <returns>The default <see cref="CustomDomain"/>.</returns>
+  Task<CustomDomain> GetDefaultAsync(CancellationToken cancellationToken = default);
+
+  /// <summary>
+  /// Sets the default custom domain for the tenant.
+  /// </summary>
+  /// <param name="request">A <see cref="CustomDomainSetDefaultRequest"/> containing the domain to set as default.</param>
+  /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
+  /// <returns>The updated default <see cref="CustomDomain"/>.</returns>
+  Task<CustomDomain> SetDefaultAsync(CustomDomainSetDefaultRequest request, CancellationToken cancellationToken = default);
 }

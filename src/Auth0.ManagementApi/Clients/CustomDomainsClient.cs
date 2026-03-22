@@ -109,4 +109,16 @@ public class CustomDomainsClient : BaseClient, ICustomDomainsClient
     {
         return Connection.SendAsync<CustomDomain>(new HttpMethod("PATCH"), BuildUri($"custom-domains/{EncodePath(id)}"), request, DefaultHeaders, cancellationToken: cancellationToken);
     }
+
+    /// <inheritdoc />
+    public Task<CustomDomain> GetDefaultAsync(CancellationToken cancellationToken = default)
+    {
+        return Connection.GetAsync<CustomDomain>(BuildUri("custom-domains/default"), DefaultHeaders, cancellationToken: cancellationToken);
+    }
+
+    /// <inheritdoc />
+    public Task<CustomDomain> SetDefaultAsync(CustomDomainSetDefaultRequest request, CancellationToken cancellationToken = default)
+    {
+        return Connection.SendAsync<CustomDomain>(new HttpMethod("PATCH"), BuildUri("custom-domains/default"), request, DefaultHeaders, cancellationToken: cancellationToken);
+    }
 }
