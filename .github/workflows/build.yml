@@ -64,7 +64,7 @@ jobs:
       run: dotnet test tests/Auth0.Core.UnitTests/Auth0.Core.UnitTests.csproj  --collect:"XPlat Code coverage" --results-directory ./TestResults/ /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
     
     - name: Update codecov report
-      uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # pin@5.5.2
+      uses: codecov/codecov-action@1af58845a975a7985b0beb0cbe6fbbb71a41dbad # pin@5.5.3
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./TestResults/**/coverage.cobertura.xml
@@ -91,7 +91,7 @@ jobs:
       run: dotnet test tests/Auth0.AuthenticationApi.IntegrationTests/Auth0.AuthenticationApi.IntegrationTests.csproj --collect:"XPlat Code coverage" --results-directory ./TestResults/ /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
 
     - name: Update codecov report
-      uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # pin@5.5.2
+      uses: codecov/codecov-action@1af58845a975a7985b0beb0cbe6fbbb71a41dbad # pin@5.5.3
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./TestResults/**/coverage.cobertura.xml
@@ -117,7 +117,7 @@ jobs:
       run: dotnet test tests/Auth0.ManagementApi.IntegrationTests/Auth0.ManagementApi.IntegrationTests.csproj --collect:"XPlat Code coverage" --results-directory ./TestResults/ /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
     
     - name: Update codecov report
-      uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # pin@5.5.2
+      uses: codecov/codecov-action@1af58845a975a7985b0beb0cbe6fbbb71a41dbad # pin@5.5.3
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         files: ./TestResults/**/coverage.cobertura.xml
