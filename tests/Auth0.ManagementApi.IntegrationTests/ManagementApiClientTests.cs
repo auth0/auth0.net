@@ -108,6 +108,28 @@ public class ManagementApiClientTests : TestBase
         Assert.NotNull(payload["env"]["target"].ToString());
     }
 
+    [Fact]
+    public async Task Custom_domain_header_not_present_in_default_headers()
+    {
+        var customDomainGrabber = new HeaderGrabberConnection();
+        var client = new ManagementApiClient("fake", GetVariable("AUTH0_MANAGEMENT_API_URL"), customDomainGrabber, "custom.example.com");
+
+        await client.TenantSettings.GetAsync();
+
+        Assert.DoesNotContain(customDomainGrabber.LastHeaders, k => k.Key == "Auth0-Custom-Domain");
+    }
+
+    [Fact]
+    public async Task Custom_domain_header_absent_from_default_headers_when_not_set()
+    {
+        var customDomainGrabber = new HeaderGrabberConnection();
+        var client = new ManagementApiClient("fake", GetVariable("AUTH0_MANAGEMENT_API_URL"), customDomainGrabber);
+
+        await client.TenantSettings.GetAsync();
+
+        Assert.DoesNotContain(customDomainGrabber.LastHeaders, k => k.Key == "Auth0-Custom-Domain");
+    }
+
     private class HeaderGrabberConnection : IManagementConnection
     {
         public IDictionary<string, string> LastHeaders { get; private set; } = new Dictionary<string, string>();

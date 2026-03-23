@@ -192,10 +192,27 @@ public class ManagementApiClient : IManagementApiClient
     /// <param name="baseUri"><see cref="Uri"/> of the tenant to manage.</param>
     /// <param name="managementConnection"><see cref="IManagementConnection"/> to facilitate communication with server.</param>
     public ManagementApiClient(string token, Uri baseUri, IManagementConnection managementConnection = null)
+        : this(token, baseUri, managementConnection, null)
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
+    /// </summary>
+    /// <param name="token">A valid Auth0 Management API v2 token.</param>
+    /// <param name="baseUri"><see cref="Uri"/> of the tenant to manage.</param>
+    /// <param name="managementConnection"><see cref="IManagementConnection"/> to facilitate communication with server.</param>
+    /// <param name="customDomain">
+    /// Optional Auth0 custom domain to include via the <c>Auth0-Custom-Domain</c> header on
+    /// whitelisted endpoints. When set, the header is automatically sent on requests to
+    /// endpoints that support it (e.g., <c>/api/v2/users</c>, <c>/api/v2/tickets/email-verification</c>).
+    /// It is silently omitted from all other endpoints.
+    /// </param>
+    public ManagementApiClient(string token, Uri baseUri, IManagementConnection managementConnection, string? customDomain)
     {
         if (managementConnection == null)
         {
-            var ownedManagementConnection = new HttpClientManagementConnection();
+            var ownedManagementConnection = new HttpClientManagementConnection(null, null, customDomain);
             managementConnection = ownedManagementConnection;
             connectionToDispose = ownedManagementConnection;
         }
@@ -246,9 +263,26 @@ public class ManagementApiClient : IManagementApiClient
     /// </summary>
     /// <param name="token">A valid Auth0 Management API v2 token.</param>
     /// <param name="domain">Your Auth0 domain. <example>tenant.auth0.com</example></param>
-    /// <param name="connection"></param>
+    /// <param name="connection"><see cref="IManagementConnection"/> to facilitate communication with server.</param>
     public ManagementApiClient(string token, string domain, IManagementConnection connection = null)
-        : this(token, new Uri($"https://{domain}/api/v2"), connection)
+        : this(token, new Uri($"https://{domain}/api/v2"), connection, null)
+    {
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ManagementApiClient"/> class.
+    /// </summary>
+    /// <param name="token">A valid Auth0 Management API v2 token.</param>
+    /// <param name="domain">Your Auth0 domain. <example>tenant.auth0.com</example></param>
+    /// <param name="connection"><see cref="IManagementConnection"/> to facilitate communication with server.</param>
+    /// <param name="customDomain">
+    /// Optional Auth0 custom domain to include via the <c>Auth0-Custom-Domain</c> header on
+    /// whitelisted endpoints. When set, the header is automatically sent on requests to
+    /// endpoints that support it (e.g., <c>/api/v2/users</c>, <c>/api/v2/tickets/email-verification</c>).
+    /// It is silently omitted from all other endpoints.
+    /// </param>
+    public ManagementApiClient(string token, string domain, IManagementConnection connection, string? customDomain)
+        : this(token, new Uri($"https://{domain}/api/v2"), connection, customDomain)
     {
     }
 
