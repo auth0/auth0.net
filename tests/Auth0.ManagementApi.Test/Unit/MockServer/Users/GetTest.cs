@@ -1,3 +1,4 @@
+using Auth0.ManagementApi;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using Auth0.ManagementApi.Test.Utils;
 using NUnit.Framework;
@@ -5,6 +6,7 @@ using NUnit.Framework;
 namespace Auth0.ManagementApi.Test.Unit.MockServer.Users;
 
 [TestFixture]
+[Parallelizable(ParallelScope.Self)]
 public class GetTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
@@ -12,31 +14,43 @@ public class GetTest : BaseMockServerTest
     {
         const string mockResponse = """
             {
-              "id": "id",
-              "type": "recovery-code",
-              "confirmed": true,
-              "name": "name",
-              "authentication_methods": [
+              "user_id": "user_id",
+              "email": "email",
+              "email_verified": true,
+              "username": "username",
+              "phone_number": "phone_number",
+              "phone_verified": true,
+              "created_at": "created_at",
+              "updated_at": "updated_at",
+              "identities": [
                 {
-                  "type": "totp",
-                  "id": "id"
+                  "connection": "connection",
+                  "user_id": "user_id",
+                  "provider": "ad",
+                  "isSocial": true,
+                  "access_token": "access_token",
+                  "access_token_secret": "access_token_secret",
+                  "refresh_token": "refresh_token"
                 }
               ],
-              "preferred_authentication_method": "voice",
-              "link_id": "link_id",
-              "phone_number": "phone_number",
-              "email": "email",
-              "key_id": "key_id",
-              "public_key": "public_key",
-              "created_at": "2024-01-15T09:30:00.000Z",
-              "enrolled_at": "2024-01-15T09:30:00.000Z",
-              "last_auth_at": "2024-01-15T09:30:00.000Z",
-              "credential_device_type": "credential_device_type",
-              "credential_backed_up": true,
-              "identity_user_id": "identity_user_id",
-              "user_agent": "user_agent",
-              "aaguid": "aaguid",
-              "relying_party_identifier": "relying_party_identifier"
+              "app_metadata": {
+                "key": "value"
+              },
+              "user_metadata": {
+                "key": "value"
+              },
+              "picture": "picture",
+              "name": "name",
+              "nickname": "nickname",
+              "multifactor": [
+                "multifactor"
+              ],
+              "last_ip": "last_ip",
+              "last_login": "last_login",
+              "logins_count": 1,
+              "blocked": true,
+              "given_name": "given_name",
+              "family_name": "family_name"
             }
             """;
 
@@ -44,7 +58,8 @@ public class GetTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/users/id/authentication-methods/authentication_method_id")
+                    .WithPath("/users/id")
+                    .WithParam("fields", "fields")
                     .UsingGet()
             )
             .RespondWith(
@@ -54,9 +69,9 @@ public class GetTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var response = await Client.Users.AuthenticationMethods.GetAsync(
+        var response = await Client.Users.GetAsync(
             "id",
-            "authentication_method_id"
+            new GetUserRequestParameters { Fields = "fields", IncludeFields = true }
         );
         JsonAssert.AreEqual(response, mockResponse);
     }

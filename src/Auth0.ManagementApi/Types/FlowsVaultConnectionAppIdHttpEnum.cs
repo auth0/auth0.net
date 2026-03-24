@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FlowsVaultConnectionAppIdHttpEnum>))]
+[JsonConverter(
+    typeof(FlowsVaultConnectionAppIdHttpEnum.FlowsVaultConnectionAppIdHttpEnumSerializer)
+)]
 [Serializable]
 public readonly record struct FlowsVaultConnectionAppIdHttpEnum : IStringEnum
 {
@@ -49,6 +52,33 @@ public readonly record struct FlowsVaultConnectionAppIdHttpEnum : IStringEnum
     public static explicit operator string(FlowsVaultConnectionAppIdHttpEnum value) => value.Value;
 
     public static explicit operator FlowsVaultConnectionAppIdHttpEnum(string value) => new(value);
+
+    internal class FlowsVaultConnectionAppIdHttpEnumSerializer
+        : JsonConverter<FlowsVaultConnectionAppIdHttpEnum>
+    {
+        public override FlowsVaultConnectionAppIdHttpEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FlowsVaultConnectionAppIdHttpEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FlowsVaultConnectionAppIdHttpEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

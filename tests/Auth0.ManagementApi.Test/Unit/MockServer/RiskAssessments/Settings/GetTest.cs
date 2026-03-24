@@ -5,6 +5,7 @@ using NUnit.Framework;
 namespace Auth0.ManagementApi.Test.Unit.MockServer.RiskAssessments.Settings;
 
 [TestFixture]
+[Parallelizable(ParallelScope.Self)]
 public class GetTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
@@ -12,7 +13,7 @@ public class GetTest : BaseMockServerTest
     {
         const string mockResponse = """
             {
-              "remember_for": 1
+              "enabled": true
             }
             """;
 
@@ -20,7 +21,7 @@ public class GetTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/risk-assessments/settings/new-device")
+                    .WithPath("/risk-assessments/settings")
                     .UsingGet()
             )
             .RespondWith(
@@ -30,7 +31,7 @@ public class GetTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var response = await Client.RiskAssessments.Settings.NewDevice.GetAsync();
+        var response = await Client.RiskAssessments.Settings.GetAsync();
         JsonAssert.AreEqual(response, mockResponse);
     }
 }

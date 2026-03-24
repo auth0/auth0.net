@@ -1,10 +1,11 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
 [JsonConverter(
-    typeof(StringEnumSerializer<BreachedPasswordDetectionAdminNotificationFrequencyEnum>)
+    typeof(BreachedPasswordDetectionAdminNotificationFrequencyEnum.BreachedPasswordDetectionAdminNotificationFrequencyEnumSerializer)
 )]
 [Serializable]
 public readonly record struct BreachedPasswordDetectionAdminNotificationFrequencyEnum : IStringEnum
@@ -72,6 +73,33 @@ public readonly record struct BreachedPasswordDetectionAdminNotificationFrequenc
     public static explicit operator BreachedPasswordDetectionAdminNotificationFrequencyEnum(
         string value
     ) => new(value);
+
+    internal class BreachedPasswordDetectionAdminNotificationFrequencyEnumSerializer
+        : JsonConverter<BreachedPasswordDetectionAdminNotificationFrequencyEnum>
+    {
+        public override BreachedPasswordDetectionAdminNotificationFrequencyEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new BreachedPasswordDetectionAdminNotificationFrequencyEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            BreachedPasswordDetectionAdminNotificationFrequencyEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

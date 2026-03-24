@@ -1,4 +1,4 @@
-using Auth0.ManagementApi.Organizations;
+using Auth0.ManagementApi;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using Auth0.ManagementApi.Test.Utils;
 using NUnit.Framework;
@@ -6,6 +6,7 @@ using NUnit.Framework;
 namespace Auth0.ManagementApi.Test.Unit.MockServer.Organizations;
 
 [TestFixture]
+[Parallelizable(ParallelScope.Self)]
 public class UpdateTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
@@ -18,11 +19,25 @@ public class UpdateTest : BaseMockServerTest
         const string mockResponse = """
             {
               "id": "id",
-              "domain": "domain",
-              "status": "pending",
-              "use_for_organization_discovery": true,
-              "verification_txt": "verification_txt",
-              "verification_host": "verification_host"
+              "name": "name",
+              "display_name": "display_name",
+              "branding": {
+                "logo_url": "logo_url",
+                "colors": {
+                  "primary": "primary",
+                  "page_background": "page_background"
+                }
+              },
+              "metadata": {
+                "key": "value"
+              },
+              "token_quota": {
+                "client_credentials": {
+                  "enforce": true,
+                  "per_day": 1,
+                  "per_hour": 1
+                }
+              }
             }
             """;
 
@@ -30,7 +45,7 @@ public class UpdateTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/organizations/id/discovery-domains/discovery_domain_id")
+                    .WithPath("/organizations/id")
                     .WithHeader("Content-Type", "application/json")
                     .UsingPatch()
                     .WithBodyAsJson(requestJson)
@@ -42,10 +57,9 @@ public class UpdateTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var response = await Client.Organizations.DiscoveryDomains.UpdateAsync(
+        var response = await Client.Organizations.UpdateAsync(
             "id",
-            "discovery_domain_id",
-            new UpdateOrganizationDiscoveryDomainRequestContent()
+            new UpdateOrganizationRequestContent()
         );
         JsonAssert.AreEqual(response, mockResponse);
     }

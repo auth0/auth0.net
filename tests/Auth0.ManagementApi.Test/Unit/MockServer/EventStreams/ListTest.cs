@@ -1,50 +1,49 @@
-using Auth0.ManagementApi.EventStreams;
+using Auth0.ManagementApi;
 using Auth0.ManagementApi.Test.Unit.MockServer;
-using Auth0.ManagementApi.Test.Utils;
 using NUnit.Framework;
 
 namespace Auth0.ManagementApi.Test.Unit.MockServer.EventStreams;
 
 [TestFixture]
+[Parallelizable(ParallelScope.Self)]
 public class ListTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
     public async Task MockServerTest()
     {
         const string mockResponse = """
-            [
-              {
-                "id": "id",
-                "event_stream_id": "event_stream_id",
-                "status": "failed",
-                "event_type": "user.created",
-                "attempts": [
-                  {
-                    "status": "failed",
-                    "timestamp": "2024-01-15T09:30:00.000Z"
-                  }
-                ],
-                "event": {
+            {
+              "eventStreams": [
+                {
                   "id": "id",
-                  "source": "source",
-                  "specversion": "specversion",
-                  "type": "type",
-                  "time": "2024-01-15T09:30:00.000Z",
-                  "data": "data"
+                  "name": "name",
+                  "subscriptions": [
+                    {}
+                  ],
+                  "destination": {
+                    "type": "webhook",
+                    "configuration": {
+                      "webhook_endpoint": "webhook_endpoint",
+                      "webhook_authorization": {
+                        "method": "basic",
+                        "username": "username"
+                      }
+                    }
+                  },
+                  "status": "enabled",
+                  "created_at": "2024-01-15T09:30:00.000Z",
+                  "updated_at": "2024-01-15T09:30:00.000Z"
                 }
-              }
-            ]
+              ],
+              "next": "next"
+            }
             """;
 
         Server
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/event-streams/id/deliveries")
-                    .WithParam("statuses", "statuses")
-                    .WithParam("event_types", "event_types")
-                    .WithParam("date_from", "date_from")
-                    .WithParam("date_to", "date_to")
+                    .WithPath("/event-streams")
                     .WithParam("from", "from")
                     .WithParam("take", "1")
                     .UsingGet()
@@ -56,18 +55,13 @@ public class ListTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var response = await Client.EventStreams.Deliveries.ListAsync(
-            "id",
-            new ListEventStreamDeliveriesRequestParameters
-            {
-                Statuses = "statuses",
-                EventTypes = "event_types",
-                DateFrom = "date_from",
-                DateTo = "date_to",
-                From = "from",
-                Take = 1,
-            }
+        var items = await Client.EventStreams.ListAsync(
+            new ListEventStreamsRequestParameters { From = "from", Take = 1 }
         );
-        JsonAssert.AreEqual(response, mockResponse);
+        await foreach (var item in items)
+        {
+            Assert.That(item, Is.Not.Null);
+            break; // Only check the first item
+        }
     }
 }

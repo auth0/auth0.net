@@ -4,7 +4,7 @@ namespace Auth0.ManagementApi.Guardian;
 
 public partial class GuardianClient : IGuardianClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal GuardianClient(RawClient client)
     {

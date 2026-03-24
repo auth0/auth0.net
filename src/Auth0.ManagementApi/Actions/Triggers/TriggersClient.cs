@@ -7,7 +7,7 @@ namespace Auth0.ManagementApi.Actions;
 
 public partial class TriggersClient : ITriggersClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal TriggersClient(RawClient client)
     {
@@ -32,7 +32,6 @@ public partial class TriggersClient : ITriggersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "actions/triggers",
                     Headers = _headers,
@@ -43,7 +42,9 @@ public partial class TriggersClient : ITriggersClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<ListActionTriggersResponseContent>(
@@ -71,7 +72,9 @@ public partial class TriggersClient : ITriggersClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

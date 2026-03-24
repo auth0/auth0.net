@@ -1,10 +1,11 @@
-using Auth0.ManagementApi.Organizations.Members;
+using Auth0.ManagementApi.Organizations;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using NUnit.Framework;
 
 namespace Auth0.ManagementApi.Test.Unit.MockServer.Organizations.Members;
 
 [TestFixture]
+[Parallelizable(ParallelScope.Self)]
 public class DeleteTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
@@ -12,8 +13,8 @@ public class DeleteTest : BaseMockServerTest
     {
         const string requestJson = """
             {
-              "roles": [
-                "roles"
+              "members": [
+                "members"
               ]
             }
             """;
@@ -22,7 +23,7 @@ public class DeleteTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/organizations/id/members/user_id/roles")
+                    .WithPath("/organizations/id/members")
                     .WithHeader("Content-Type", "application/json")
                     .UsingDelete()
                     .WithBodyAsJson(requestJson)
@@ -30,12 +31,11 @@ public class DeleteTest : BaseMockServerTest
             .RespondWith(WireMock.ResponseBuilders.Response.Create().WithStatusCode(200));
 
         Assert.DoesNotThrowAsync(async () =>
-            await Client.Organizations.Members.Roles.DeleteAsync(
+            await Client.Organizations.Members.DeleteAsync(
                 "id",
-                "user_id",
-                new DeleteOrganizationMemberRolesRequestContent
+                new DeleteOrganizationMembersRequestContent
                 {
-                    Roles = new List<string>() { "roles" },
+                    Members = new List<string>() { "members" },
                 }
             )
         );

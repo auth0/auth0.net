@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<SelfServiceProfileAllowedStrategyEnum>))]
+[JsonConverter(
+    typeof(SelfServiceProfileAllowedStrategyEnum.SelfServiceProfileAllowedStrategyEnumSerializer)
+)]
 [Serializable]
 public readonly record struct SelfServiceProfileAllowedStrategyEnum : IStringEnum
 {
@@ -77,6 +80,33 @@ public readonly record struct SelfServiceProfileAllowedStrategyEnum : IStringEnu
 
     public static explicit operator SelfServiceProfileAllowedStrategyEnum(string value) =>
         new(value);
+
+    internal class SelfServiceProfileAllowedStrategyEnumSerializer
+        : JsonConverter<SelfServiceProfileAllowedStrategyEnum>
+    {
+        public override SelfServiceProfileAllowedStrategyEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new SelfServiceProfileAllowedStrategyEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            SelfServiceProfileAllowedStrategyEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

@@ -1,10 +1,11 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
 [JsonConverter(
-    typeof(StringEnumSerializer<CreateConnectionRequestContentThirtySevenSignalsStrategy>)
+    typeof(CreateConnectionRequestContentThirtySevenSignalsStrategy.CreateConnectionRequestContentThirtySevenSignalsStrategySerializer)
 )]
 [Serializable]
 public readonly record struct CreateConnectionRequestContentThirtySevenSignalsStrategy : IStringEnum
@@ -60,6 +61,33 @@ public readonly record struct CreateConnectionRequestContentThirtySevenSignalsSt
     public static explicit operator CreateConnectionRequestContentThirtySevenSignalsStrategy(
         string value
     ) => new(value);
+
+    internal class CreateConnectionRequestContentThirtySevenSignalsStrategySerializer
+        : JsonConverter<CreateConnectionRequestContentThirtySevenSignalsStrategy>
+    {
+        public override CreateConnectionRequestContentThirtySevenSignalsStrategy Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new CreateConnectionRequestContentThirtySevenSignalsStrategy(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            CreateConnectionRequestContentThirtySevenSignalsStrategy value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

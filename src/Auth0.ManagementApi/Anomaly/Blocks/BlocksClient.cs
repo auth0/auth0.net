@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Anomaly;
 
 public partial class BlocksClient : IBlocksClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal BlocksClient(RawClient client)
     {
@@ -35,7 +35,6 @@ public partial class BlocksClient : IBlocksClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "anomaly/blocks/ips/{0}",
@@ -52,7 +51,9 @@ public partial class BlocksClient : IBlocksClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -103,7 +104,6 @@ public partial class BlocksClient : IBlocksClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "anomaly/blocks/ips/{0}",
@@ -120,7 +120,9 @@ public partial class BlocksClient : IBlocksClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

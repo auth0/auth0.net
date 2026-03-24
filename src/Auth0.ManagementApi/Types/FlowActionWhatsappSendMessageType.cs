@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FlowActionWhatsappSendMessageType>))]
+[JsonConverter(
+    typeof(FlowActionWhatsappSendMessageType.FlowActionWhatsappSendMessageTypeSerializer)
+)]
 [Serializable]
 public readonly record struct FlowActionWhatsappSendMessageType : IStringEnum
 {
@@ -49,6 +52,33 @@ public readonly record struct FlowActionWhatsappSendMessageType : IStringEnum
     public static explicit operator string(FlowActionWhatsappSendMessageType value) => value.Value;
 
     public static explicit operator FlowActionWhatsappSendMessageType(string value) => new(value);
+
+    internal class FlowActionWhatsappSendMessageTypeSerializer
+        : JsonConverter<FlowActionWhatsappSendMessageType>
+    {
+        public override FlowActionWhatsappSendMessageType Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FlowActionWhatsappSendMessageType(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FlowActionWhatsappSendMessageType value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

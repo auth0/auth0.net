@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FormBlockTypePreviousButtonConst>))]
+[JsonConverter(typeof(FormBlockTypePreviousButtonConst.FormBlockTypePreviousButtonConstSerializer))]
 [Serializable]
 public readonly record struct FormBlockTypePreviousButtonConst : IStringEnum
 {
@@ -51,6 +52,33 @@ public readonly record struct FormBlockTypePreviousButtonConst : IStringEnum
     public static explicit operator string(FormBlockTypePreviousButtonConst value) => value.Value;
 
     public static explicit operator FormBlockTypePreviousButtonConst(string value) => new(value);
+
+    internal class FormBlockTypePreviousButtonConstSerializer
+        : JsonConverter<FormBlockTypePreviousButtonConst>
+    {
+        public override FormBlockTypePreviousButtonConst Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FormBlockTypePreviousButtonConst(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FormBlockTypePreviousButtonConst value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

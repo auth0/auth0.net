@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi;
 
 public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal UserAttributeProfilesClient(RawClient client)
     {
@@ -49,7 +49,6 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "user-attribute-profiles",
                     QueryString = _queryString,
@@ -61,7 +60,9 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -90,7 +91,9 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -133,7 +136,6 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "user-attribute-profiles",
                     Body = request,
@@ -146,7 +148,9 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<CreateUserAttributeProfileResponseContent>(
@@ -174,7 +178,9 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -220,7 +226,6 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "user-attribute-profiles/templates",
                     Headers = _headers,
@@ -231,7 +236,9 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -260,7 +267,9 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -303,7 +312,6 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "user-attribute-profiles/templates/{0}",
@@ -317,7 +325,9 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -346,7 +356,9 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -389,7 +401,6 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "user-attribute-profiles/{0}",
@@ -403,7 +414,9 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetUserAttributeProfileResponseContent>(
@@ -431,7 +444,9 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -475,7 +490,6 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "user-attribute-profiles/{0}",
@@ -491,7 +505,9 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<UpdateUserAttributeProfileResponseContent>(
@@ -519,7 +535,9 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -698,7 +716,6 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "user-attribute-profiles/{0}",
@@ -715,7 +732,9 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

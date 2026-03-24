@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FlowActionHubspotUpsertContactType>))]
+[JsonConverter(
+    typeof(FlowActionHubspotUpsertContactType.FlowActionHubspotUpsertContactTypeSerializer)
+)]
 [Serializable]
 public readonly record struct FlowActionHubspotUpsertContactType : IStringEnum
 {
@@ -49,6 +52,33 @@ public readonly record struct FlowActionHubspotUpsertContactType : IStringEnum
     public static explicit operator string(FlowActionHubspotUpsertContactType value) => value.Value;
 
     public static explicit operator FlowActionHubspotUpsertContactType(string value) => new(value);
+
+    internal class FlowActionHubspotUpsertContactTypeSerializer
+        : JsonConverter<FlowActionHubspotUpsertContactType>
+    {
+        public override FlowActionHubspotUpsertContactType Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FlowActionHubspotUpsertContactType(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FlowActionHubspotUpsertContactType value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

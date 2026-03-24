@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi;
 
 public partial class TicketsClient : ITicketsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal TicketsClient(RawClient client)
     {
@@ -28,7 +28,6 @@ public partial class TicketsClient : ITicketsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "tickets/email-verification",
                     Body = request,
@@ -41,7 +40,9 @@ public partial class TicketsClient : ITicketsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<VerifyEmailTicketResponseContent>(
@@ -69,7 +70,9 @@ public partial class TicketsClient : ITicketsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -116,7 +119,6 @@ public partial class TicketsClient : ITicketsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "tickets/password-change",
                     Body = request,
@@ -129,7 +131,9 @@ public partial class TicketsClient : ITicketsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<ChangePasswordTicketResponseContent>(
@@ -157,7 +161,9 @@ public partial class TicketsClient : ITicketsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

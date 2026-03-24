@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi;
 
 public partial class EmailTemplatesClient : IEmailTemplatesClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal EmailTemplatesClient(RawClient client)
     {
@@ -28,7 +28,6 @@ public partial class EmailTemplatesClient : IEmailTemplatesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "email-templates",
                     Body = request,
@@ -41,7 +40,9 @@ public partial class EmailTemplatesClient : IEmailTemplatesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<CreateEmailTemplateResponseContent>(
@@ -69,7 +70,9 @@ public partial class EmailTemplatesClient : IEmailTemplatesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -114,7 +117,6 @@ public partial class EmailTemplatesClient : IEmailTemplatesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "email-templates/{0}",
@@ -128,7 +130,9 @@ public partial class EmailTemplatesClient : IEmailTemplatesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetEmailTemplateResponseContent>(
@@ -156,7 +160,9 @@ public partial class EmailTemplatesClient : IEmailTemplatesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -200,7 +206,6 @@ public partial class EmailTemplatesClient : IEmailTemplatesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = string.Format(
                         "email-templates/{0}",
@@ -216,7 +221,9 @@ public partial class EmailTemplatesClient : IEmailTemplatesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<SetEmailTemplateResponseContent>(
@@ -244,7 +251,9 @@ public partial class EmailTemplatesClient : IEmailTemplatesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -290,7 +299,6 @@ public partial class EmailTemplatesClient : IEmailTemplatesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "email-templates/{0}",
@@ -306,7 +314,9 @@ public partial class EmailTemplatesClient : IEmailTemplatesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<UpdateEmailTemplateResponseContent>(
@@ -334,7 +344,9 @@ public partial class EmailTemplatesClient : IEmailTemplatesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<ActionBindingRefTypeEnum>))]
+[JsonConverter(typeof(ActionBindingRefTypeEnum.ActionBindingRefTypeEnumSerializer))]
 [Serializable]
 public readonly record struct ActionBindingRefTypeEnum : IStringEnum
 {
@@ -53,6 +54,32 @@ public readonly record struct ActionBindingRefTypeEnum : IStringEnum
     public static explicit operator string(ActionBindingRefTypeEnum value) => value.Value;
 
     public static explicit operator ActionBindingRefTypeEnum(string value) => new(value);
+
+    internal class ActionBindingRefTypeEnumSerializer : JsonConverter<ActionBindingRefTypeEnum>
+    {
+        public override ActionBindingRefTypeEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new ActionBindingRefTypeEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            ActionBindingRefTypeEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

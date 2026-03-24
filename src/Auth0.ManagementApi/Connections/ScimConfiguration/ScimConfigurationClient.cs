@@ -7,7 +7,7 @@ namespace Auth0.ManagementApi.Connections;
 
 public partial class ScimConfigurationClient : IScimConfigurationClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal ScimConfigurationClient(RawClient client)
     {
@@ -54,7 +54,6 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "connections-scim-configurations",
                     QueryString = _queryString,
@@ -66,7 +65,9 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<ListScimConfigurationsResponseContent>(
@@ -94,7 +95,9 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -137,7 +140,6 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "connections/{0}/scim-configuration",
@@ -151,7 +153,9 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetScimConfigurationResponseContent>(
@@ -179,7 +183,9 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -219,7 +225,6 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "connections/{0}/scim-configuration",
@@ -235,7 +240,9 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<CreateScimConfigurationResponseContent>(
@@ -263,7 +270,9 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -303,7 +312,6 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "connections/{0}/scim-configuration",
@@ -319,7 +327,9 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<UpdateScimConfigurationResponseContent>(
@@ -347,7 +357,9 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -388,7 +400,6 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "connections/{0}/scim-configuration/default-mapping",
@@ -402,7 +413,9 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -431,7 +444,9 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -462,7 +477,7 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
     ///     new ListScimConfigurationsRequestParameters { From = "from", Take = 1 }
     /// );
     /// </code></example>
-    public async Task<Pager<ManagementApi.ScimConfiguration>> ListAsync(
+    public async Task<Pager<ScimConfiguration>> ListAsync(
         ListScimConfigurationsRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -477,7 +492,7 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             RequestOptions?,
             ListScimConfigurationsResponseContent,
             string?,
-            ManagementApi.ScimConfiguration
+            ScimConfiguration
         >
             .CreateInstanceAsync(
                 request,
@@ -556,7 +571,6 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "connections/{0}/scim-configuration",
@@ -573,7 +587,9 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

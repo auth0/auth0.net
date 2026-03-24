@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<GuardianFactorPhoneFactorMessageTypeEnum>))]
+[JsonConverter(
+    typeof(GuardianFactorPhoneFactorMessageTypeEnum.GuardianFactorPhoneFactorMessageTypeEnumSerializer)
+)]
 [Serializable]
 public readonly record struct GuardianFactorPhoneFactorMessageTypeEnum : IStringEnum
 {
@@ -57,6 +60,33 @@ public readonly record struct GuardianFactorPhoneFactorMessageTypeEnum : IString
 
     public static explicit operator GuardianFactorPhoneFactorMessageTypeEnum(string value) =>
         new(value);
+
+    internal class GuardianFactorPhoneFactorMessageTypeEnumSerializer
+        : JsonConverter<GuardianFactorPhoneFactorMessageTypeEnum>
+    {
+        public override GuardianFactorPhoneFactorMessageTypeEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new GuardianFactorPhoneFactorMessageTypeEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            GuardianFactorPhoneFactorMessageTypeEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

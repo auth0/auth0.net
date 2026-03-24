@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi;
 
 public partial class LogStreamsClient : ILogStreamsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal LogStreamsClient(RawClient client)
     {
@@ -27,7 +27,6 @@ public partial class LogStreamsClient : ILogStreamsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "log-streams",
                     Headers = _headers,
@@ -38,7 +37,9 @@ public partial class LogStreamsClient : ILogStreamsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<IEnumerable<LogStreamResponseSchema>>(
@@ -66,7 +67,9 @@ public partial class LogStreamsClient : ILogStreamsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -109,7 +112,6 @@ public partial class LogStreamsClient : ILogStreamsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "log-streams",
                     Body = request,
@@ -122,7 +124,9 @@ public partial class LogStreamsClient : ILogStreamsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<CreateLogStreamResponseContent>(
@@ -150,7 +154,9 @@ public partial class LogStreamsClient : ILogStreamsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -195,7 +201,6 @@ public partial class LogStreamsClient : ILogStreamsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("log-streams/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,
@@ -206,7 +211,9 @@ public partial class LogStreamsClient : ILogStreamsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetLogStreamResponseContent>(
@@ -234,7 +241,9 @@ public partial class LogStreamsClient : ILogStreamsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -278,7 +287,6 @@ public partial class LogStreamsClient : ILogStreamsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format("log-streams/{0}", ValueConvert.ToPathParameterString(id)),
                     Body = request,
@@ -291,7 +299,9 @@ public partial class LogStreamsClient : ILogStreamsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<UpdateLogStreamResponseContent>(
@@ -319,7 +329,9 @@ public partial class LogStreamsClient : ILogStreamsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -715,7 +727,6 @@ public partial class LogStreamsClient : ILogStreamsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format("log-streams/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,
@@ -729,7 +740,9 @@ public partial class LogStreamsClient : ILogStreamsClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FormFieldTypeDropdownConst>))]
+[JsonConverter(typeof(FormFieldTypeDropdownConst.FormFieldTypeDropdownConstSerializer))]
 [Serializable]
 public readonly record struct FormFieldTypeDropdownConst : IStringEnum
 {
@@ -49,6 +50,32 @@ public readonly record struct FormFieldTypeDropdownConst : IStringEnum
     public static explicit operator string(FormFieldTypeDropdownConst value) => value.Value;
 
     public static explicit operator FormFieldTypeDropdownConst(string value) => new(value);
+
+    internal class FormFieldTypeDropdownConstSerializer : JsonConverter<FormFieldTypeDropdownConst>
+    {
+        public override FormFieldTypeDropdownConst Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FormFieldTypeDropdownConst(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FormFieldTypeDropdownConst value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

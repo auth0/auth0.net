@@ -1,4 +1,4 @@
-using Auth0.ManagementApi.EventStreams;
+using Auth0.ManagementApi;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using Auth0.ManagementApi.Test.Utils;
 using NUnit.Framework;
@@ -6,25 +6,49 @@ using NUnit.Framework;
 namespace Auth0.ManagementApi.Test.Unit.MockServer.EventStreams;
 
 [TestFixture]
+[Parallelizable(ParallelScope.Self)]
 public class CreateTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
     public async Task MockServerTest()
     {
         const string requestJson = """
-            {}
+            {
+              "destination": {
+                "type": "webhook",
+                "configuration": {
+                  "webhook_endpoint": "webhook_endpoint",
+                  "webhook_authorization": {
+                    "method": "basic",
+                    "username": "username"
+                  }
+                }
+              }
+            }
             """;
 
         const string mockResponse = """
             {
-              "date_from": "2024-01-15T09:30:00.000Z",
-              "date_to": "2024-01-15T09:30:00.000Z",
-              "statuses": [
-                "failed"
+              "id": "id",
+              "name": "name",
+              "subscriptions": [
+                {
+                  "event_type": "event_type"
+                }
               ],
-              "event_types": [
-                "user.created"
-              ]
+              "destination": {
+                "type": "webhook",
+                "configuration": {
+                  "webhook_endpoint": "webhook_endpoint",
+                  "webhook_authorization": {
+                    "method": "basic",
+                    "username": "username"
+                  }
+                }
+              },
+              "status": "enabled",
+              "created_at": "2024-01-15T09:30:00.000Z",
+              "updated_at": "2024-01-15T09:30:00.000Z"
             }
             """;
 
@@ -32,7 +56,7 @@ public class CreateTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/event-streams/id/redeliver")
+                    .WithPath("/event-streams")
                     .WithHeader("Content-Type", "application/json")
                     .UsingPost()
                     .WithBodyAsJson(requestJson)
@@ -44,9 +68,23 @@ public class CreateTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var response = await Client.EventStreams.Redeliveries.CreateAsync(
-            "id",
-            new CreateEventStreamRedeliveryRequestContent()
+        var response = await Client.EventStreams.CreateAsync(
+            new CreateEventStreamWebHookRequestContent
+            {
+                Destination = new EventStreamWebhookDestination
+                {
+                    Type = EventStreamWebhookDestinationTypeEnum.Webhook,
+                    Configuration = new EventStreamWebhookConfiguration
+                    {
+                        WebhookEndpoint = "webhook_endpoint",
+                        WebhookAuthorization = new EventStreamWebhookBasicAuth
+                        {
+                            Method = EventStreamWebhookBasicAuthMethodEnum.Basic,
+                            Username = "username",
+                        },
+                    },
+                },
+            }
         );
         JsonAssert.AreEqual(response, mockResponse);
     }

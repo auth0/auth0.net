@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi;
 
 public partial class RolesClient : IRolesClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal RolesClient(RawClient client)
     {
@@ -62,7 +62,6 @@ public partial class RolesClient : IRolesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "roles",
                     QueryString = _queryString,
@@ -74,7 +73,9 @@ public partial class RolesClient : IRolesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<ListRolesOffsetPaginatedResponseContent>(
@@ -102,7 +103,9 @@ public partial class RolesClient : IRolesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -145,7 +148,6 @@ public partial class RolesClient : IRolesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "roles",
                     Body = request,
@@ -158,7 +160,9 @@ public partial class RolesClient : IRolesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<CreateRoleResponseContent>(responseBody)!;
@@ -184,7 +188,9 @@ public partial class RolesClient : IRolesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -229,7 +235,6 @@ public partial class RolesClient : IRolesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("roles/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,
@@ -240,7 +245,9 @@ public partial class RolesClient : IRolesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetRoleResponseContent>(responseBody)!;
@@ -266,7 +273,9 @@ public partial class RolesClient : IRolesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -312,7 +321,6 @@ public partial class RolesClient : IRolesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format("roles/{0}", ValueConvert.ToPathParameterString(id)),
                     Body = request,
@@ -325,7 +333,9 @@ public partial class RolesClient : IRolesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<UpdateRoleResponseContent>(responseBody)!;
@@ -351,7 +361,9 @@ public partial class RolesClient : IRolesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -486,7 +498,6 @@ public partial class RolesClient : IRolesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format("roles/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,
@@ -500,7 +511,9 @@ public partial class RolesClient : IRolesClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

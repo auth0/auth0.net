@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<ConnectionEmailEmailSyntax>))]
+[JsonConverter(typeof(ConnectionEmailEmailSyntax.ConnectionEmailEmailSyntaxSerializer))]
 [Serializable]
 public readonly record struct ConnectionEmailEmailSyntax : IStringEnum
 {
@@ -49,6 +50,32 @@ public readonly record struct ConnectionEmailEmailSyntax : IStringEnum
     public static explicit operator string(ConnectionEmailEmailSyntax value) => value.Value;
 
     public static explicit operator ConnectionEmailEmailSyntax(string value) => new(value);
+
+    internal class ConnectionEmailEmailSyntaxSerializer : JsonConverter<ConnectionEmailEmailSyntax>
+    {
+        public override ConnectionEmailEmailSyntax Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new ConnectionEmailEmailSyntax(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            ConnectionEmailEmailSyntax value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

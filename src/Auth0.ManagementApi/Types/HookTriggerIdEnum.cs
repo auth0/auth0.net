@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<HookTriggerIdEnum>))]
+[JsonConverter(typeof(HookTriggerIdEnum.HookTriggerIdEnumSerializer))]
 [Serializable]
 public readonly record struct HookTriggerIdEnum : IStringEnum
 {
@@ -59,6 +60,32 @@ public readonly record struct HookTriggerIdEnum : IStringEnum
     public static explicit operator string(HookTriggerIdEnum value) => value.Value;
 
     public static explicit operator HookTriggerIdEnum(string value) => new(value);
+
+    internal class HookTriggerIdEnumSerializer : JsonConverter<HookTriggerIdEnum>
+    {
+        public override HookTriggerIdEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new HookTriggerIdEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            HookTriggerIdEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

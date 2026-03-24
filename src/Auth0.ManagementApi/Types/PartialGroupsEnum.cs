@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<PartialGroupsEnum>))]
+[JsonConverter(typeof(PartialGroupsEnum.PartialGroupsEnumSerializer))]
 [Serializable]
 public readonly record struct PartialGroupsEnum : IStringEnum
 {
@@ -65,6 +66,32 @@ public readonly record struct PartialGroupsEnum : IStringEnum
     public static explicit operator string(PartialGroupsEnum value) => value.Value;
 
     public static explicit operator PartialGroupsEnum(string value) => new(value);
+
+    internal class PartialGroupsEnumSerializer : JsonConverter<PartialGroupsEnum>
+    {
+        public override PartialGroupsEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new PartialGroupsEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            PartialGroupsEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values
