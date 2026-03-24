@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionMailjetApiKey : IJsonOnDeserialized
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "MAILJET";
+    public required FlowsVaultConnectionAppIdMailjetEnum AppId { get; set; }
 
     [JsonPropertyName("setup")]
     public required FlowsVaultConnectioSetupMailjetApiKey Setup { get; set; }

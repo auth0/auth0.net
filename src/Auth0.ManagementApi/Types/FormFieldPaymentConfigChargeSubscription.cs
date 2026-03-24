@@ -12,7 +12,7 @@ public record FormFieldPaymentConfigChargeSubscription : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "SUBSCRIPTION";
+    public required FormFieldPaymentConfigChargeTypeSubscriptionConst Type { get; set; }
 
     [JsonPropertyName("subscription")]
     public Dictionary<string, object?> Subscription { get; set; } =

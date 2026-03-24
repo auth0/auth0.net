@@ -11,7 +11,7 @@ public record FlowsVaultConnectioSetupJwt : IJsonOnDeserialized, IJsonOnSerializ
         new Dictionary<string, object?>();
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "JWT";
+    public required FlowsVaultConnectioSetupTypeJwtEnum Type { get; set; }
 
     [JsonPropertyName("algorithm")]
     public required FlowsVaultConnectioSetupJwtAlgorithmEnum Algorithm { get; set; }

@@ -15,12 +15,13 @@ public record ConnectionResponseContentAdfs : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "adfs";
+    public required ConnectionResponseContentAdfsStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]
     public ConnectionOptionsAdfs? Options { get; set; }
 
+    [JsonAccess(JsonAccessType.ReadOnly)]
     [Optional]
     [JsonPropertyName("provisioning_ticket_url")]
     public string? ProvisioningTicketUrl { get; set; }

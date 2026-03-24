@@ -15,6 +15,7 @@ public partial class DiscoveryDomainsClient : IDiscoveryDomainsClient
 
     /// <summary>
     /// Retrieve list of all organization discovery domains associated with the specified organization.
+    /// This endpoint is subject to eventual consistency; newly created, updated, or deleted discovery domains may not immediately appear in the response.
     /// </summary>
     private WithRawResponseTask<ListOrganizationDiscoveryDomainsResponseContent> ListInternalAsync(
         string id,
@@ -493,6 +494,7 @@ public partial class DiscoveryDomainsClient : IDiscoveryDomainsClient
 
     /// <summary>
     /// Retrieve list of all organization discovery domains associated with the specified organization.
+    /// This endpoint is subject to eventual consistency; newly created, updated, or deleted discovery domains may not immediately appear in the response.
     /// </summary>
     /// <example><code>
     /// await client.Organizations.DiscoveryDomains.ListAsync(
@@ -559,6 +561,7 @@ public partial class DiscoveryDomainsClient : IDiscoveryDomainsClient
 
     /// <summary>
     /// Retrieve details about a single organization discovery domain specified by domain name.
+    /// This endpoint is subject to eventual consistency; newly created, updated, or deleted discovery domains may not immediately appear in the response.
     /// </summary>
     /// <example><code>
     /// await client.Organizations.DiscoveryDomains.GetByNameAsync("id", "discovery_domain");
@@ -577,6 +580,7 @@ public partial class DiscoveryDomainsClient : IDiscoveryDomainsClient
 
     /// <summary>
     /// Retrieve details about a single organization discovery domain specified by ID.
+    /// This endpoint is subject to eventual consistency; newly created, updated, or deleted discovery domains may not immediately appear in the response.
     /// </summary>
     /// <example><code>
     /// await client.Organizations.DiscoveryDomains.GetAsync("id", "discovery_domain_id");

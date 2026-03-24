@@ -15,7 +15,7 @@ public record ConnectionResponseContentAuth0Oidc : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "auth0-oidc";
+    public required ConnectionResponseContentAuth0OidcStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

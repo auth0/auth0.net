@@ -12,7 +12,7 @@ public record LogStreamFilter : IJsonOnDeserialized, IJsonOnSerializing
 
     [Optional]
     [JsonPropertyName("type")]
-    public string? Type { get; set; }
+    public LogStreamFilterTypeEnum? Type { get; set; }
 
     [Optional]
     [JsonPropertyName("name")]

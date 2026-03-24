@@ -187,6 +187,165 @@ public partial class CustomDomainsClient : ICustomDomainsClient
         }
     }
 
+    private async Task<WithRawResponse<GetDefaultDomainResponseContent>> GetDefaultAsyncCore(
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
+            .Add(_client.Options.Headers)
+            .Add(_client.Options.AdditionalHeaders)
+            .Add(options?.AdditionalHeaders)
+            .BuildAsync()
+            .ConfigureAwait(false);
+        var response = await _client
+            .SendRequestAsync(
+                new JsonRequest
+                {
+                    BaseUrl = _client.Options.BaseUrl,
+                    Method = HttpMethod.Get,
+                    Path = "custom-domains/default",
+                    Headers = _headers,
+                    Options = options,
+                },
+                cancellationToken
+            )
+            .ConfigureAwait(false);
+        if (response.StatusCode is >= 200 and < 400)
+        {
+            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            try
+            {
+                var responseData = JsonUtils.Deserialize<GetDefaultDomainResponseContent>(
+                    responseBody
+                )!;
+                return new WithRawResponse<GetDefaultDomainResponseContent>()
+                {
+                    Data = responseData,
+                    RawResponse = new RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    },
+                };
+            }
+            catch (JsonException e)
+            {
+                throw new ManagementApiException(
+                    "Failed to deserialize response",
+                    response.StatusCode,
+                    null,
+                    e
+                );
+            }
+        }
+        {
+            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            try
+            {
+                switch (response.StatusCode)
+                {
+                    case 401:
+                        throw new UnauthorizedError(JsonUtils.Deserialize<object>(responseBody));
+                    case 403:
+                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                    case 429:
+                        throw new TooManyRequestsError(JsonUtils.Deserialize<object>(responseBody));
+                }
+            }
+            catch (JsonException)
+            {
+                // unable to map error response, throwing generic error
+            }
+            throw new ManagementApiException(
+                $"Error with status code {response.StatusCode}",
+                response.StatusCode,
+                responseBody
+            );
+        }
+    }
+
+    private async Task<WithRawResponse<UpdateDefaultDomainResponseContent>> SetDefaultAsyncCore(
+        SetDefaultCustomDomainRequestContent request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        var _headers = await new Auth0.ManagementApi.Core.HeadersBuilder.Builder()
+            .Add(_client.Options.Headers)
+            .Add(_client.Options.AdditionalHeaders)
+            .Add(options?.AdditionalHeaders)
+            .BuildAsync()
+            .ConfigureAwait(false);
+        var response = await _client
+            .SendRequestAsync(
+                new JsonRequest
+                {
+                    BaseUrl = _client.Options.BaseUrl,
+                    Method = HttpMethodExtensions.Patch,
+                    Path = "custom-domains/default",
+                    Body = request,
+                    Headers = _headers,
+                    ContentType = "application/json",
+                    Options = options,
+                },
+                cancellationToken
+            )
+            .ConfigureAwait(false);
+        if (response.StatusCode is >= 200 and < 400)
+        {
+            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            try
+            {
+                var responseData = JsonUtils.Deserialize<UpdateDefaultDomainResponseContent>(
+                    responseBody
+                )!;
+                return new WithRawResponse<UpdateDefaultDomainResponseContent>()
+                {
+                    Data = responseData,
+                    RawResponse = new RawResponse()
+                    {
+                        StatusCode = response.Raw.StatusCode,
+                        Url = response.Raw.RequestMessage?.RequestUri ?? new Uri("about:blank"),
+                        Headers = ResponseHeaders.FromHttpResponseMessage(response.Raw),
+                    },
+                };
+            }
+            catch (JsonException e)
+            {
+                throw new ManagementApiException(
+                    "Failed to deserialize response",
+                    response.StatusCode,
+                    null,
+                    e
+                );
+            }
+        }
+        {
+            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            try
+            {
+                switch (response.StatusCode)
+                {
+                    case 400:
+                        throw new BadRequestError(JsonUtils.Deserialize<object>(responseBody));
+                    case 403:
+                        throw new ForbiddenError(JsonUtils.Deserialize<object>(responseBody));
+                }
+            }
+            catch (JsonException)
+            {
+                // unable to map error response, throwing generic error
+            }
+            throw new ManagementApiException(
+                $"Error with status code {response.StatusCode}",
+                response.StatusCode,
+                responseBody
+            );
+        }
+    }
+
     private async Task<WithRawResponse<GetCustomDomainResponseContent>> GetAsyncCore(
         string id,
         RequestOptions? options = null,
@@ -594,6 +753,41 @@ public partial class CustomDomainsClient : ICustomDomainsClient
     {
         return new WithRawResponseTask<CreateCustomDomainResponseContent>(
             CreateAsyncCore(request, options, cancellationToken)
+        );
+    }
+
+    /// <summary>
+    /// Retrieve the tenant's default domain.
+    /// </summary>
+    /// <example><code>
+    /// await client.CustomDomains.GetDefaultAsync();
+    /// </code></example>
+    public WithRawResponseTask<GetDefaultDomainResponseContent> GetDefaultAsync(
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        return new WithRawResponseTask<GetDefaultDomainResponseContent>(
+            GetDefaultAsyncCore(options, cancellationToken)
+        );
+    }
+
+    /// <summary>
+    /// Set the default custom domain for the tenant.
+    /// </summary>
+    /// <example><code>
+    /// await client.CustomDomains.SetDefaultAsync(
+    ///     new SetDefaultCustomDomainRequestContent { Domain = "domain" }
+    /// );
+    /// </code></example>
+    public WithRawResponseTask<UpdateDefaultDomainResponseContent> SetDefaultAsync(
+        SetDefaultCustomDomainRequestContent request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    )
+    {
+        return new WithRawResponseTask<UpdateDefaultDomainResponseContent>(
+            SetDefaultAsyncCore(request, options, cancellationToken)
         );
     }
 

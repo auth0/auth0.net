@@ -18,9 +18,7 @@ public class GetTest_ : BaseMockServerTest
                   "name": "name",
                   "external_id": "external_id",
                   "connection_id": "connection_id",
-                  "organization_id": "organization_id",
                   "tenant_name": "tenant_name",
-                  "description": "description",
                   "created_at": "2024-01-15T09:30:00.000Z",
                   "updated_at": "2024-01-15T09:30:00.000Z",
                   "membership_created_at": "2024-01-15T09:30:00.000Z"

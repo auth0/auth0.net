@@ -9,8 +9,9 @@ public record CreateClientGrantRequestContent
     /// <summary>
     /// ID of the client.
     /// </summary>
+    [Optional]
     [JsonPropertyName("client_id")]
-    public required string ClientId { get; set; }
+    public string? ClientId { get; set; }
 
     /// <summary>
     /// The audience (API identifier) of this client grant

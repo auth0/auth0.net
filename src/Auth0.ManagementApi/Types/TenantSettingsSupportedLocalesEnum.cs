@@ -167,6 +167,8 @@ public readonly record struct TenantSettingsSupportedLocalesEnum : IStringEnum
 
     public static readonly TenantSettingsSupportedLocalesEnum ZhHk = new(Values.ZhHk);
 
+    public static readonly TenantSettingsSupportedLocalesEnum ZhMo = new(Values.ZhMo);
+
     public static readonly TenantSettingsSupportedLocalesEnum ZhTw = new(Values.ZhTw);
 
     public TenantSettingsSupportedLocalesEnum(string value)
@@ -375,6 +377,8 @@ public readonly record struct TenantSettingsSupportedLocalesEnum : IStringEnum
         public const string ZhCn = "zh-CN";
 
         public const string ZhHk = "zh-HK";
+
+        public const string ZhMo = "zh-MO";
 
         public const string ZhTw = "zh-TW";
     }

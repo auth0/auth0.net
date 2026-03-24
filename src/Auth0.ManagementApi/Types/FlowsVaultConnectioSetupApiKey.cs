@@ -12,7 +12,7 @@ public record FlowsVaultConnectioSetupApiKey : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "API_KEY";
+    public required FlowsVaultConnectioSetupTypeApiKeyEnum Type { get; set; }
 
     [JsonPropertyName("api_key")]
     public required string ApiKey { get; set; }

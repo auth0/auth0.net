@@ -19,10 +19,10 @@ public record FlowActionClearbitFindCompany : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "CLEARBIT";
+    public required FlowActionClearbitFindCompanyType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "FIND_COMPANY";
+    public required FlowActionClearbitFindCompanyAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

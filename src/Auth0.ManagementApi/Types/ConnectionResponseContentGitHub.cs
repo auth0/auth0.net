@@ -15,7 +15,7 @@ public record ConnectionResponseContentGitHub : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "github";
+    public required ConnectionResponseContentGitHubStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

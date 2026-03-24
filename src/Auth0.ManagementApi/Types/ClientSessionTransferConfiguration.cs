@@ -31,9 +31,9 @@ public record ClientSessionTransferConfiguration : IJsonOnDeserialized
     /// <summary>
     /// Indicates whether an app can create a session from a Session Transfer Token received via indicated methods. Can include `cookie` and/or `query`. Usually configured in the web application. Default value is an empty array [].
     /// </summary>
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("allowed_authentication_methods")]
-    public IEnumerable<ClientSessionTransferAllowedAuthenticationMethodsEnum>? AllowedAuthenticationMethods { get; set; }
+    public Optional<IEnumerable<ClientSessionTransferAllowedAuthenticationMethodsEnum>?> AllowedAuthenticationMethods { get; set; }
 
     [Optional]
     [JsonPropertyName("enforce_device_binding")]

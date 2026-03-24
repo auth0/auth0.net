@@ -19,10 +19,10 @@ public record FlowActionHubspotUpsertContact : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "HUBSPOT";
+    public required FlowActionHubspotUpsertContactType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "UPSERT_CONTACT";
+    public required FlowActionHubspotUpsertContactAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentDropbox : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "dropbox";
+    public required CreateConnectionRequestContentDropboxStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

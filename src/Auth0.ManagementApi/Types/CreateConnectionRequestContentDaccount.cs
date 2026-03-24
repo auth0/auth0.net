@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentDaccount : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "daccount";
+    public required CreateConnectionRequestContentDaccountStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

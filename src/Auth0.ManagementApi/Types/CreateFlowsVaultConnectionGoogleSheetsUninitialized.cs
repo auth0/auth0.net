@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionGoogleSheetsUninitialized : IJsonOnDeser
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "GOOGLE_SHEETS";
+    public required FlowsVaultConnectionAppIdGoogleSheetsEnum AppId { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

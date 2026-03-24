@@ -35,10 +35,11 @@ public class FormNodePointer
     public static FormNodePointer FromString(string value) => new("string", value);
 
     /// <summary>
-    /// Factory method to create a union from a string value.
+    /// Factory method to create a union from a Auth0.ManagementApi.FormEndingNodeId value.
     /// </summary>
-    public static FormNodePointer FromFormEndingNodeId(string value) =>
-        new("formEndingNodeId", value);
+    public static FormNodePointer FromFormEndingNodeId(
+        Auth0.ManagementApi.FormEndingNodeId value
+    ) => new("formEndingNodeId", value);
 
     /// <summary>
     /// Returns true if <see cref="Type"/> is "string"
@@ -58,12 +59,12 @@ public class FormNodePointer
         IsString() ? (string)Value! : throw new ManagementException("Union type is not 'string'");
 
     /// <summary>
-    /// Returns the value as a <see cref="string"/> if <see cref="Type"/> is 'formEndingNodeId', otherwise throws an exception.
+    /// Returns the value as a <see cref="Auth0.ManagementApi.FormEndingNodeId"/> if <see cref="Type"/> is 'formEndingNodeId', otherwise throws an exception.
     /// </summary>
     /// <exception cref="ManagementException">Thrown when <see cref="Type"/> is not 'formEndingNodeId'.</exception>
-    public string AsFormEndingNodeId() =>
+    public Auth0.ManagementApi.FormEndingNodeId AsFormEndingNodeId() =>
         IsFormEndingNodeId()
-            ? (string)Value!
+            ? (Auth0.ManagementApi.FormEndingNodeId)Value!
             : throw new ManagementException("Union type is not 'formEndingNodeId'");
 
     /// <summary>
@@ -81,20 +82,23 @@ public class FormNodePointer
     }
 
     /// <summary>
-    /// Attempts to cast the value to a <see cref="string"/> and returns true if successful.
+    /// Attempts to cast the value to a <see cref="Auth0.ManagementApi.FormEndingNodeId"/> and returns true if successful.
     /// </summary>
-    public bool TryGetFormEndingNodeId(out string? value)
+    public bool TryGetFormEndingNodeId(out Auth0.ManagementApi.FormEndingNodeId? value)
     {
         if (Type == "formEndingNodeId")
         {
-            value = (string)Value!;
+            value = (Auth0.ManagementApi.FormEndingNodeId)Value!;
             return true;
         }
         value = null;
         return false;
     }
 
-    public T Match<T>(Func<string, T> onString, Func<string, T> onFormEndingNodeId)
+    public T Match<T>(
+        Func<string, T> onString,
+        Func<Auth0.ManagementApi.FormEndingNodeId, T> onFormEndingNodeId
+    )
     {
         return Type switch
         {
@@ -104,7 +108,10 @@ public class FormNodePointer
         };
     }
 
-    public void Visit(System.Action<string> onString, System.Action<string> onFormEndingNodeId)
+    public void Visit(
+        System.Action<string> onString,
+        System.Action<Auth0.ManagementApi.FormEndingNodeId> onFormEndingNodeId
+    )
     {
         switch (Type)
         {
@@ -156,6 +163,9 @@ public class FormNodePointer
 
     public static implicit operator FormNodePointer(string value) => new("string", value);
 
+    public static implicit operator FormNodePointer(Auth0.ManagementApi.FormEndingNodeId value) =>
+        new("formEndingNodeId", value);
+
     [Serializable]
     internal sealed class JsonConverter : JsonConverter<FormNodePointer>
     {
@@ -184,7 +194,7 @@ public class FormNodePointer
 
                 var types = new (string Key, System.Type Type)[]
                 {
-                    ("formEndingNodeId", typeof(string)),
+                    ("formEndingNodeId", typeof(Auth0.ManagementApi.FormEndingNodeId)),
                 };
 
                 foreach (var (key, type) in types)

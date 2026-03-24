@@ -7,6 +7,7 @@ public partial interface IDiscoveryDomainsClient
 {
     /// <summary>
     /// Retrieve list of all organization discovery domains associated with the specified organization.
+    /// This endpoint is subject to eventual consistency; newly created, updated, or deleted discovery domains may not immediately appear in the response.
     /// </summary>
     Task<Pager<OrganizationDiscoveryDomain>> ListAsync(
         string id,
@@ -27,6 +28,7 @@ public partial interface IDiscoveryDomainsClient
 
     /// <summary>
     /// Retrieve details about a single organization discovery domain specified by domain name.
+    /// This endpoint is subject to eventual consistency; newly created, updated, or deleted discovery domains may not immediately appear in the response.
     /// </summary>
     WithRawResponseTask<GetOrganizationDiscoveryDomainByNameResponseContent> GetByNameAsync(
         string id,
@@ -37,6 +39,7 @@ public partial interface IDiscoveryDomainsClient
 
     /// <summary>
     /// Retrieve details about a single organization discovery domain specified by ID.
+    /// This endpoint is subject to eventual consistency; newly created, updated, or deleted discovery domains may not immediately appear in the response.
     /// </summary>
     WithRawResponseTask<GetOrganizationDiscoveryDomainResponseContent> GetAsync(
         string id,

@@ -15,8 +15,8 @@ public partial class CustomTextClient : ICustomTextClient
 
     private async Task<WithRawResponse<Dictionary<string, string>>> ListAsyncCore(
         string id,
-        string language,
-        string page,
+        SelfServiceProfileCustomTextLanguageEnum language,
+        SelfServiceProfileCustomTextPageEnum page,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
@@ -102,8 +102,8 @@ public partial class CustomTextClient : ICustomTextClient
 
     private async Task<WithRawResponse<Dictionary<string, string>>> SetAsyncCore(
         string id,
-        string language,
-        string page,
+        SelfServiceProfileCustomTextLanguageEnum language,
+        SelfServiceProfileCustomTextPageEnum page,
         Dictionary<string, string> request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -194,12 +194,16 @@ public partial class CustomTextClient : ICustomTextClient
     /// Retrieves text customizations for a given self-service profile, language and Self Service SSO Flow page.
     /// </summary>
     /// <example><code>
-    /// await client.SelfServiceProfiles.CustomText.ListAsync("id", "en", "get-started");
+    /// await client.SelfServiceProfiles.CustomText.ListAsync(
+    ///     "id",
+    ///     SelfServiceProfileCustomTextLanguageEnum.En,
+    ///     SelfServiceProfileCustomTextPageEnum.GetStarted
+    /// );
     /// </code></example>
     public WithRawResponseTask<Dictionary<string, string>> ListAsync(
         string id,
-        string language,
-        string page,
+        SelfServiceProfileCustomTextLanguageEnum language,
+        SelfServiceProfileCustomTextPageEnum page,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     )
@@ -215,15 +219,15 @@ public partial class CustomTextClient : ICustomTextClient
     /// <example><code>
     /// await client.SelfServiceProfiles.CustomText.SetAsync(
     ///     "id",
-    ///     "en",
-    ///     "get-started",
+    ///     SelfServiceProfileCustomTextLanguageEnum.En,
+    ///     SelfServiceProfileCustomTextPageEnum.GetStarted,
     ///     new Dictionary&lt;string, string&gt;() { { "key", "value" } }
     /// );
     /// </code></example>
     public WithRawResponseTask<Dictionary<string, string>> SetAsync(
         string id,
-        string language,
-        string page,
+        SelfServiceProfileCustomTextLanguageEnum language,
+        SelfServiceProfileCustomTextPageEnum page,
         Dictionary<string, string> request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

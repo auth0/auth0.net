@@ -176,9 +176,9 @@ public record UpdateTenantSettingsResponseContent : IJsonOnDeserialized
     /// <summary>
     /// Supported ACR values
     /// </summary>
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("acr_values_supported")]
-    public IEnumerable<string>? AcrValuesSupported { get; set; }
+    public Optional<IEnumerable<string>?> AcrValuesSupported { get; set; }
 
     [Nullable, Optional]
     [JsonPropertyName("mtls")]

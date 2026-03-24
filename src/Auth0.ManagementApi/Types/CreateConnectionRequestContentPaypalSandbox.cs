@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentPaypalSandbox : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "paypal-sandbox";
+    public required CreateConnectionRequestContentPaypalSandboxStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

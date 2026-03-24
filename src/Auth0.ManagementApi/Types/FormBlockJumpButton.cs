@@ -15,10 +15,10 @@ public record FormBlockJumpButton : IJsonOnDeserialized
     public required string Id { get; set; }
 
     [JsonPropertyName("category")]
-    public string Category { get; set; } = "BLOCK";
+    public required FormComponentCategoryBlockConst Category { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "JUMP_BUTTON";
+    public required FormBlockTypeJumpButtonConst Type { get; set; }
 
     [JsonPropertyName("config")]
     public required FormBlockJumpButtonConfig Config { get; set; }

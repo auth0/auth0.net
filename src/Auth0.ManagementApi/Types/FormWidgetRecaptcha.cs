@@ -15,10 +15,10 @@ public record FormWidgetRecaptcha : IJsonOnDeserialized
     public required string Id { get; set; }
 
     [JsonPropertyName("category")]
-    public string Category { get; set; } = "WIDGET";
+    public required FormComponentCategoryWidgetConst Category { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "RECAPTCHA";
+    public required FormWidgetTypeRecaptchaConst Type { get; set; }
 
     [JsonPropertyName("config")]
     public required FormWidgetRecaptchaConfig Config { get; set; }
