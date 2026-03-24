@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -48,7 +48,8 @@ public class LogStreamsTests : IClassFixture<LogStreamsTestsFixture>
                 HttpContentType = "application/json",
                 HttpContentFormat = LogStreamHttpContentFormatEnum.Jsonlines,
                 HttpAuthorization = "Bearer test-token"
-            }
+            },
+            Type = LogStreamHttpEnum.Http
         });
 
         var createdLogStream = newLogStream.AsLogStreamHttpResponseSchema(); // HTTP log stream
@@ -97,6 +98,7 @@ public class LogStreamsTests : IClassFixture<LogStreamsTestsFixture>
         // Create a new HTTP log stream
         var newLogStream = await fixture.ApiClient.LogStreams.CreateAsync(new CreateLogStreamHttpRequestBody
         {
+            Type =  LogStreamHttpEnum.Http,
             Name = $"{TestingConstants.EntityPrefix}-LogStream-{Guid.NewGuid():N}",
             Sink = new LogStreamHttpSink
             {

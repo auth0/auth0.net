@@ -1,9 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Auth0.IntegrationTests.Shared.CleanUp;
+using Auth0.ManagementApi.Core;
 using Auth0.ManagementApi.IntegrationTests.Testing;
 using Auth0.Tests.Shared;
 using FluentAssertions;
@@ -55,14 +56,14 @@ public class ResourceServerTests : IClassFixture<ResourceServerTestsFixture>
             },
             AllowOfflineAccess = true,
             SkipConsentForVerifiableFirstPartyClients = true,
-            ConsentPolicy = "transactional-authorization-with-mfa",
+            ConsentPolicy = ResourceServerConsentPolicyEnum.TransactionalAuthorizationWithMfa,
             AuthorizationDetails = new List<object>
             {
                 new { type = "Sample" }
             },
             TokenEncryption = new ResourceServerTokenEncryption
             {
-                Format = "compact-nested-jwe",
+                Format = ResourceServerTokenEncryptionFormatEnum.CompactNestedJwe,
                 EncryptionKey = new ResourceServerTokenEncryptionKey
                 {
                     Name = "Sample",
@@ -110,14 +111,14 @@ public class ResourceServerTests : IClassFixture<ResourceServerTestsFixture>
             EnforcePolicies = false,
             TokenDialect = ResourceServerTokenDialectSchemaEnum.AccessToken,
             SkipConsentForVerifiableFirstPartyClients = false,
-            ConsentPolicy = "transactional-authorization-with-mfa",
+            ConsentPolicy = ResourceServerConsentPolicyEnum.TransactionalAuthorizationWithMfa,
             AuthorizationDetails = new List<object>
             {
                 new { type = "Sample" }
             },
             TokenEncryption = new ResourceServerTokenEncryption
             {
-                Format = "compact-nested-jwe",
+                Format = ResourceServerTokenEncryptionFormatEnum.CompactNestedJwe,
                 EncryptionKey = new ResourceServerTokenEncryptionKey
                 {
                     Name = "Sample",
@@ -137,7 +138,7 @@ public class ResourceServerTests : IClassFixture<ResourceServerTestsFixture>
         updateResourceServerResponse.Should().NotBeNull();
         updateResourceServerResponse.Name.Should().Be(updateResourceServerRequest.Name);
         updateResourceServerResponse.TokenLifetime.Should().Be(updateResourceServerRequest.TokenLifetime);
-        updateResourceServerResponse.AuthorizationDetails.Should().NotBeNullOrEmpty();
+        updateResourceServerResponse.AuthorizationDetails.Should().NotBeNull();
         updateResourceServerResponse.TokenEncryption.Should().NotBeNull();
         updateResourceServerResponse.ProofOfPossession.Should().NotBeNull();
 

@@ -63,7 +63,7 @@ public class CustomDomainsTests : IClassFixture<CustomDomainsTestsFixture>
             // Test updating a custom domain
             var updateRequest = new UpdateCustomDomainRequestContent
             {
-                TlsPolicy = "recommended",
+                TlsPolicy = CustomDomainTlsPolicyEnum.Recommended,
                 CustomClientIpHeader = null
             };
 
@@ -87,7 +87,7 @@ public class CustomDomainsTests : IClassFixture<CustomDomainsTestsFixture>
             {
                 Domain = "test.brucke.club",
                 Type = CustomDomainProvisioningTypeEnum.Auth0ManagedCerts,
-                VerificationMethod = "txt"
+                VerificationMethod = CustomDomainVerificationMethodEnum.Txt
             });
             await createFunc.Should().ThrowAsync<ManagementApiException>();
         }
