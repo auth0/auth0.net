@@ -185,6 +185,7 @@ public class HttpClientManagementConnectionTests
     [InlineData("https://tenant.auth0.com/api/v2/connections")]
     [InlineData("https://tenant.auth0.com/api/v2/tenant/settings")]
     [InlineData("https://tenant.auth0.com/api/v2/logs")]
+    [InlineData("https://tenant.auth0.com/api/v2/users/")]
     [InlineData("https://tenant.auth0.com/api/v2/users/auth0|123/roles")]
     [InlineData("https://tenant.auth0.com/api/v2/users/auth0|123/permissions")]
     [InlineData("https://tenant.auth0.com/api/v2/users/auth0|123/logs")]
@@ -252,24 +253,21 @@ public class HttpClientManagementConnectionTests
     }
 
     [Fact]
-    public async Task Custom_domain_header_sent_via_management_client_convenience_constructor()
+    public void Custom_domain_wired_into_internally_created_connection_when_null_connection_passed()
     {
-        HttpRequestMessage capturedRequest = null;
-        var mockHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
-        mockHandler.Protected()
-            .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
-            .Callback<HttpRequestMessage, CancellationToken>((req, _) => capturedRequest = req)
-            .ReturnsAsync(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("[]", Encoding.UTF8, "application/json") });
+        // Exercises ManagementApiClient(token, domain, connection: null, customDomain:) — the client
+        // creates its own HttpClientManagementConnection and must wire the custom domain into it.
+        var client = new InspectableManagementApiClient("fake", "tenant.auth0.com", null, "custom.example.com");
 
-        // Exercises ManagementApiClient(token, domain, customDomain:) — no explicit connection passed,
-        // so the client creates its own HttpClientManagementConnection with the custom domain wired in.
-        var client = new ManagementApiClient("fake", "tenant.auth0.com", new HttpClientManagementConnection(new HttpClient(mockHandler.Object), null, "custom.example.com"), null);
+        var conn = client.ExposedConnection as HttpClientManagementConnection;
+        Assert.NotNull(conn);
+        Assert.Equal("custom.example.com", conn.customDomain);
+    }
 
-        await client.Users.GetAllAsync(new ManagementApi.Models.GetUsersRequest(), new ManagementApi.Paging.PaginationInfo());
-
-        Assert.NotNull(capturedRequest);
-        Assert.True(capturedRequest.Headers.Contains(CustomDomainHeader.HeaderName));
-        Assert.Equal("custom.example.com", capturedRequest.Headers.GetValues(CustomDomainHeader.HeaderName).Single());
+    private class InspectableManagementApiClient(string token, string domain, IManagementConnection conn, string customDomain)
+        : ManagementApiClient(token, domain, conn, customDomain)
+    {
+        public IManagementConnection ExposedConnection => connection;
     }
 
     [Fact]
@@ -311,10 +309,51 @@ public class HttpClientManagementConnectionTests
         Assert.False(capturedRequest.Headers.Contains(CustomDomainHeader.HeaderName));
     }
 
+    [Fact]
+    public async Task Custom_domain_header_sent_when_connection_and_custom_domain_both_provided_and_connection_has_custom_domain()
+    {
+        HttpRequestMessage capturedRequest = null;
+        var mockHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+        mockHandler.Protected()
+            .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
+            .Callback<HttpRequestMessage, CancellationToken>((req, _) => capturedRequest = req)
+            .ReturnsAsync(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("[]", Encoding.UTF8, "application/json") });
+
+        // Both connection (with custom domain wired in) and customDomain are provided.
+        // The connection's own custom domain takes effect; the constructor customDomain parameter is redundant but harmless.
+        var connection = new HttpClientManagementConnection(new HttpClient(mockHandler.Object), null, "custom.example.com");
+        var client = new ManagementApiClient("fake", "tenant.auth0.com", connection, "custom.example.com");
+
+        await client.Users.GetAllAsync(new ManagementApi.Models.GetUsersRequest(), new ManagementApi.Paging.PaginationInfo());
+
+        Assert.NotNull(capturedRequest);
+        Assert.True(capturedRequest.Headers.Contains(CustomDomainHeader.HeaderName));
+        Assert.Equal("custom.example.com", capturedRequest.Headers.GetValues(CustomDomainHeader.HeaderName).Single());
+    }
+
+    [Fact]
+    public async Task Custom_domain_header_not_sent_when_connection_provided_without_custom_domain()
+    {
+        HttpRequestMessage capturedRequest = null;
+        var mockHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+        mockHandler.Protected()
+            .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
+            .Callback<HttpRequestMessage, CancellationToken>((req, _) => capturedRequest = req)
+            .ReturnsAsync(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("[]", Encoding.UTF8, "application/json") });
+
+        // Connection has no custom domain; customDomain on the constructor is ignored when a connection is supplied.
+        var connection = new HttpClientManagementConnection(new HttpClient(mockHandler.Object));
+        var client = new ManagementApiClient("fake", "tenant.auth0.com", connection, "custom.example.com");
+
+        await client.Users.GetAllAsync(new ManagementApi.Models.GetUsersRequest(), new ManagementApi.Paging.PaginationInfo());
+
+        Assert.NotNull(capturedRequest);
+        Assert.False(capturedRequest.Headers.Contains(CustomDomainHeader.HeaderName));
+    }
+
     [Theory]
     [InlineData("https://tenant.auth0.com/api/v2/users?page=0&per_page=10")]
     [InlineData("https://tenant.auth0.com/api/v2/users/auth0%7C123")]
-    [InlineData("https://tenant.auth0.com/api/v2/users/")]
     public async Task Custom_domain_header_sent_on_allowed_endpoint_with_query_and_encoding(string url)
     {
         HttpRequestMessage capturedRequest = null;

@@ -26,14 +26,14 @@ public class HttpClientManagementConnection : IManagementConnection, IDisposable
         new Regex(@"^tickets/email-verification/?$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
         new Regex(@"^tickets/password-change/?$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
         new Regex(@"^organizations/[^/]+/invitations/?$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
-        new Regex(@"^users(/[^/]+)?/?$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        new Regex(@"^users(/[^/]+/?)?$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
         new Regex(@"^guardian/enrollments/ticket/?$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
         new Regex(@"^self-service-profiles/[^/]+/sso-ticket/?$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
     };
 
     private readonly HttpClient httpClient;
     private readonly HttpClientManagementConnectionOptions options;
-    private readonly string? customDomain;
+    internal readonly string? customDomain;
     private bool ownHttpClient;
 
     private readonly ConcurrentRandom random = new();
