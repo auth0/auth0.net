@@ -9,9 +9,9 @@ public record UpdateClientGrantRequestContent
     /// <summary>
     /// Scopes allowed for this client grant.
     /// </summary>
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("scope")]
-    public IEnumerable<string>? Scope { get; set; }
+    public Optional<IEnumerable<string>?> Scope { get; set; }
 
     [Nullable, Optional]
     [JsonPropertyName("organization_usage")]

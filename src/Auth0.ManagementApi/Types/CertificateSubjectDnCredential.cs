@@ -12,7 +12,7 @@ public record CertificateSubjectDnCredential : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("credential_type")]
-    public string CredentialType { get; set; } = "cert_subject_dn";
+    public required CertificateSubjectDnCredentialTypeEnum CredentialType { get; set; }
 
     /// <summary>
     /// Friendly name for a credential.

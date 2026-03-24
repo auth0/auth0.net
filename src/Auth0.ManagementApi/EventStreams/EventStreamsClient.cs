@@ -508,13 +508,13 @@ public partial class EventStreamsClient : IEventStreamsClient
     ///     {
     ///         Destination = new EventStreamWebhookDestination
     ///         {
-    ///             Type = "webhook",
+    ///             Type = EventStreamWebhookDestinationTypeEnum.Webhook,
     ///             Configuration = new EventStreamWebhookConfiguration
     ///             {
     ///                 WebhookEndpoint = "webhook_endpoint",
     ///                 WebhookAuthorization = new EventStreamWebhookBasicAuth
     ///                 {
-    ///                     Method = "basic",
+    ///                     Method = EventStreamWebhookBasicAuthMethodEnum.Basic,
     ///                     Username = "username",
     ///                 },
     ///             },

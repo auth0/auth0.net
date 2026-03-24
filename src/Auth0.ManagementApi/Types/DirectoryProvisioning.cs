@@ -42,6 +42,10 @@ public record DirectoryProvisioning : IJsonOnDeserialized
     [JsonPropertyName("synchronize_automatically")]
     public required bool SynchronizeAutomatically { get; set; }
 
+    [Optional]
+    [JsonPropertyName("synchronize_groups")]
+    public string? SynchronizeGroups { get; set; }
+
     /// <summary>
     /// The timestamp at which the directory provisioning configuration was created
     /// </summary>

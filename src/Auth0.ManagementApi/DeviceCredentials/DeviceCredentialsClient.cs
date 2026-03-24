@@ -280,7 +280,7 @@ public partial class DeviceCredentialsClient : IDeviceCredentialsClient
     ///     new CreatePublicKeyDeviceCredentialRequestContent
     ///     {
     ///         DeviceName = "device_name",
-    ///         Type = "public_key",
+    ///         Type = DeviceCredentialPublicKeyTypeEnum.PublicKey,
     ///         Value = "value",
     ///         DeviceId = "device_id",
     ///     }

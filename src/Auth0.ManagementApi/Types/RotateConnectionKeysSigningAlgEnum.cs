@@ -9,11 +9,17 @@ public readonly record struct RotateConnectionKeysSigningAlgEnum : IStringEnum
 {
     public static readonly RotateConnectionKeysSigningAlgEnum Rs256 = new(Values.Rs256);
 
+    public static readonly RotateConnectionKeysSigningAlgEnum Rs384 = new(Values.Rs384);
+
     public static readonly RotateConnectionKeysSigningAlgEnum Rs512 = new(Values.Rs512);
 
     public static readonly RotateConnectionKeysSigningAlgEnum Ps256 = new(Values.Ps256);
 
+    public static readonly RotateConnectionKeysSigningAlgEnum Ps384 = new(Values.Ps384);
+
     public static readonly RotateConnectionKeysSigningAlgEnum Es256 = new(Values.Es256);
+
+    public static readonly RotateConnectionKeysSigningAlgEnum Es384 = new(Values.Es384);
 
     public RotateConnectionKeysSigningAlgEnum(string value)
     {
@@ -64,10 +70,16 @@ public readonly record struct RotateConnectionKeysSigningAlgEnum : IStringEnum
     {
         public const string Rs256 = "RS256";
 
+        public const string Rs384 = "RS384";
+
         public const string Rs512 = "RS512";
 
         public const string Ps256 = "PS256";
 
+        public const string Ps384 = "PS384";
+
         public const string Es256 = "ES256";
+
+        public const string Es384 = "ES384";
     }
 }

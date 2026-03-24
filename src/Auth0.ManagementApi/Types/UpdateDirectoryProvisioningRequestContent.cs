@@ -25,6 +25,10 @@ public record UpdateDirectoryProvisioningRequestContent : IJsonOnDeserialized
     [JsonPropertyName("synchronize_automatically")]
     public bool? SynchronizeAutomatically { get; set; }
 
+    [Optional]
+    [JsonPropertyName("synchronize_groups")]
+    public string? SynchronizeGroups { get; set; }
+
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();
 

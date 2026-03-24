@@ -19,7 +19,7 @@ public record CreateLogStreamSumoRequestBody : IJsonOnDeserialized
     public string? Name { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "sumo";
+    public required LogStreamSumoEnum Type { get; set; }
 
     /// <summary>
     /// True for priority log streams, false for non-priority

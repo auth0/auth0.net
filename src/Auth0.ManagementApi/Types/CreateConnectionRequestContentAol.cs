@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentAol : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "aol";
+    public required CreateConnectionRequestContentAolStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

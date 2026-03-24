@@ -19,10 +19,10 @@ public record FlowActionFlowStoreVars : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "FLOW";
+    public required FlowActionFlowStoreVarsType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "STORE_VARS";
+    public required FlowActionFlowStoreVarsAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

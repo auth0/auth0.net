@@ -12,7 +12,7 @@ public record FlowsVaultConnectioSetupStripeKeyPair : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "KEY_PAIR";
+    public required FlowsVaultConnectioSetupTypeKeyPairEnum Type { get; set; }
 
     [JsonPropertyName("private_key")]
     public required string PrivateKey { get; set; }

@@ -1,0 +1,67 @@
+using System.Text.Json.Serialization;
+using Auth0.ManagementApi.Core;
+
+namespace Auth0.ManagementApi;
+
+[JsonConverter(typeof(StringEnumSerializer<CreateConnectionRequestContentYahooStrategy>))]
+[Serializable]
+public readonly record struct CreateConnectionRequestContentYahooStrategy : IStringEnum
+{
+    public static readonly CreateConnectionRequestContentYahooStrategy Yahoo = new(Values.Yahoo);
+
+    public CreateConnectionRequestContentYahooStrategy(string value)
+    {
+        Value = value;
+    }
+
+    /// <summary>
+    /// The string value of the enum.
+    /// </summary>
+    public string Value { get; }
+
+    /// <summary>
+    /// Create a string enum with the given value.
+    /// </summary>
+    public static CreateConnectionRequestContentYahooStrategy FromCustom(string value)
+    {
+        return new CreateConnectionRequestContentYahooStrategy(value);
+    }
+
+    public bool Equals(string? other)
+    {
+        return Value.Equals(other);
+    }
+
+    /// <summary>
+    /// Returns the string value of the enum.
+    /// </summary>
+    public override string ToString()
+    {
+        return Value;
+    }
+
+    public static bool operator ==(
+        CreateConnectionRequestContentYahooStrategy value1,
+        string value2
+    ) => value1.Value.Equals(value2);
+
+    public static bool operator !=(
+        CreateConnectionRequestContentYahooStrategy value1,
+        string value2
+    ) => !value1.Value.Equals(value2);
+
+    public static explicit operator string(CreateConnectionRequestContentYahooStrategy value) =>
+        value.Value;
+
+    public static explicit operator CreateConnectionRequestContentYahooStrategy(string value) =>
+        new(value);
+
+    /// <summary>
+    /// Constant strings for enum values
+    /// </summary>
+    [Serializable]
+    public static class Values
+    {
+        public const string Yahoo = "yahoo";
+    }
+}

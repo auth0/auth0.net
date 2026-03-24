@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionTwilioUninitialized : IJsonOnDeserialize
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "TWILIO";
+    public required FlowsVaultConnectionAppIdTwilioEnum AppId { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

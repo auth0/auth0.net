@@ -19,10 +19,10 @@ public record FlowActionTwilioSendSms : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "TWILIO";
+    public required FlowActionTwilioSendSmsType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "SEND_SMS";
+    public required FlowActionTwilioSendSmsAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

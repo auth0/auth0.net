@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionMailchimpApiKey : IJsonOnDeserialized
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "MAILCHIMP";
+    public required FlowsVaultConnectionAppIdMailchimpEnum AppId { get; set; }
 
     [JsonPropertyName("setup")]
     public required FlowsVaultConnectioSetupSecretApiKey Setup { get; set; }
