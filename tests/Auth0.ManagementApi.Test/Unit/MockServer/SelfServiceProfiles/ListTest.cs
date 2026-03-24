@@ -1,3 +1,4 @@
+using Auth0.ManagementApi;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using Auth0.ManagementApi.Test.Utils;
 using NUnit.Framework;
@@ -32,8 +33,8 @@ public class ListTest : BaseMockServerTest
 
         var response = await Client.SelfServiceProfiles.CustomText.ListAsync(
             "id",
-            "en",
-            "get-started"
+            SelfServiceProfileCustomTextLanguageEnum.En,
+            SelfServiceProfileCustomTextPageEnum.GetStarted
         );
         JsonAssert.AreEqual(response, mockResponse);
     }

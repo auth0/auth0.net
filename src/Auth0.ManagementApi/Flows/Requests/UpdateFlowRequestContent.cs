@@ -10,9 +10,9 @@ public record UpdateFlowRequestContent
     [JsonPropertyName("name")]
     public string? Name { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("actions")]
-    public IEnumerable<FlowAction>? Actions { get; set; }
+    public Optional<IEnumerable<FlowAction>?> Actions { get; set; }
 
     /// <inheritdoc />
     public override string ToString()

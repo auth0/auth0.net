@@ -12,7 +12,7 @@ public record EventStreamActionDestination : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "action";
+    public required EventStreamActionDestinationTypeEnum Type { get; set; }
 
     [JsonPropertyName("configuration")]
     public required EventStreamActionConfiguration Configuration { get; set; }

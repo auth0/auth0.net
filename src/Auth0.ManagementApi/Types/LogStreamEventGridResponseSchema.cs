@@ -30,7 +30,7 @@ public record LogStreamEventGridResponseSchema : IJsonOnDeserialized, IJsonOnSer
 
     [Optional]
     [JsonPropertyName("type")]
-    public string? Type { get; set; }
+    public LogStreamEventGridEnum? Type { get; set; }
 
     /// <summary>
     /// True for priority log streams, false for non-priority

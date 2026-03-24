@@ -13,6 +13,9 @@ public record CreatePhoneTemplateTestNotificationRequestContent
     [JsonPropertyName("to")]
     public required string To { get; set; }
 
+    /// <summary>
+    /// Medium to use to send the notification
+    /// </summary>
     [Optional]
     [JsonPropertyName("delivery_method")]
     public PhoneProviderDeliveryMethodEnum? DeliveryMethod { get; set; }

@@ -559,7 +559,7 @@ public partial class LogStreamsClient : ILogStreamsClient
     /// await client.LogStreams.CreateAsync(
     ///     new CreateLogStreamHttpRequestBody
     ///     {
-    ///         Type = "http",
+    ///         Type = LogStreamHttpEnum.Http,
     ///         Sink = new LogStreamHttpSink { HttpEndpoint = "httpEndpoint" },
     ///     }
     /// );

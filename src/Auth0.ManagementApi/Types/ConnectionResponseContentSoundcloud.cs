@@ -15,7 +15,7 @@ public record ConnectionResponseContentSoundcloud : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "soundcloud";
+    public required ConnectionResponseContentSoundcloudStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

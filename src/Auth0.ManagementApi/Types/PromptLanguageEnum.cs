@@ -167,6 +167,8 @@ public readonly record struct PromptLanguageEnum : IStringEnum
 
     public static readonly PromptLanguageEnum ZhHk = new(Values.ZhHk);
 
+    public static readonly PromptLanguageEnum ZhMo = new(Values.ZhMo);
+
     public static readonly PromptLanguageEnum ZhTw = new(Values.ZhTw);
 
     public PromptLanguageEnum(string value)
@@ -375,6 +377,8 @@ public readonly record struct PromptLanguageEnum : IStringEnum
         public const string ZhCn = "zh-CN";
 
         public const string ZhHk = "zh-HK";
+
+        public const string ZhMo = "zh-MO";
 
         public const string ZhTw = "zh-TW";
     }

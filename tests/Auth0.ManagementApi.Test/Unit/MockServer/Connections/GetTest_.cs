@@ -11,28 +11,29 @@ public class GetTest_ : BaseMockServerTest
     public async Task MockServerTest()
     {
         const string mockResponse = """
-            {
-              "connection_id": "connection_id",
-              "connection_name": "connection_name",
-              "strategy": "strategy",
-              "tenant_name": "tenant_name",
-              "user_id_attribute": "user_id_attribute",
-              "mapping": [
-                {
-                  "auth0": "auth0",
-                  "scim": "scim"
-                }
-              ],
-              "created_at": "created_at",
-              "updated_on": "updated_on"
-            }
+            [
+              {
+                "kid": "kid",
+                "cert": "cert",
+                "pkcs": "pkcs",
+                "current": true,
+                "next": true,
+                "previous": true,
+                "current_since": "current_since",
+                "fingerprint": "fingerprint",
+                "thumbprint": "thumbprint",
+                "algorithm": "algorithm",
+                "key_use": "encryption",
+                "subject_dn": "subject_dn"
+              }
+            ]
             """;
 
         Server
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/connections/id/scim-configuration")
+                    .WithPath("/connections/id/keys")
                     .UsingGet()
             )
             .RespondWith(
@@ -42,7 +43,7 @@ public class GetTest_ : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var response = await Client.Connections.ScimConfiguration.GetAsync("id");
+        var response = await Client.Connections.Keys.GetAsync("id");
         JsonAssert.AreEqual(response, mockResponse);
     }
 }

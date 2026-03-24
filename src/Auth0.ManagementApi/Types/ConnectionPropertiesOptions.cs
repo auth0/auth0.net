@@ -20,9 +20,9 @@ public record ConnectionPropertiesOptions : IJsonOnDeserialized, IJsonOnSerializ
     /// <summary>
     /// An array of user fields that should not be stored in the Auth0 database (https://auth0.com/docs/security/data-security/denylist)
     /// </summary>
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("non_persistent_attrs")]
-    public IEnumerable<string>? NonPersistentAttrs { get; set; }
+    public Optional<IEnumerable<string>?> NonPersistentAttrs { get; set; }
 
     /// <summary>
     /// Order of precedence for attribute types. If the property is not specified, the default precedence of attributes will be used.
@@ -55,6 +55,13 @@ public record ConnectionPropertiesOptions : IJsonOnDeserialized, IJsonOnSerializ
     [Optional]
     [JsonPropertyName("import_mode")]
     public bool? ImportMode { get; set; }
+
+    /// <summary>
+    /// Stores encrypted string only configurations for connections
+    /// </summary>
+    [Nullable, Optional]
+    [JsonPropertyName("configuration")]
+    public Optional<Dictionary<string, string?>?> Configuration { get; set; }
 
     [Optional]
     [JsonPropertyName("customScripts")]

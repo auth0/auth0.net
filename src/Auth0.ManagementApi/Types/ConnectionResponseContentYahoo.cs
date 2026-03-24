@@ -15,7 +15,7 @@ public record ConnectionResponseContentYahoo : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "yahoo";
+    public required ConnectionResponseContentYahooStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

@@ -19,10 +19,10 @@ public record FlowActionStripeAddTaxId : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "STRIPE";
+    public required FlowActionStripeAddTaxIdType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "ADD_TAX_ID";
+    public required FlowActionStripeAddTaxIdAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

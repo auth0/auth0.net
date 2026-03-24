@@ -88,7 +88,7 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
@@ -173,7 +173,7 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
@@ -264,7 +264,7 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
@@ -357,7 +357,7 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
@@ -447,7 +447,7 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
                 throw new ManagementApiException(
                     "Failed to deserialize response",
                     response.StatusCode,
-                    responseBody,
+                    null,
                     e
                 );
             }
@@ -490,7 +490,7 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
     ///     new ListDirectoryProvisioningsRequestParameters { From = "from", Take = 1 }
     /// );
     /// </code></example>
-    public async Task<Pager<global::Auth0.ManagementApi.DirectoryProvisioning>> ListAsync(
+    public async Task<Pager<DirectoryProvisioning>> ListAsync(
         ListDirectoryProvisioningsRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -505,7 +505,7 @@ public partial class DirectoryProvisioningClient : IDirectoryProvisioningClient
             RequestOptions?,
             ListDirectoryProvisioningsResponseContent,
             string?,
-            global::Auth0.ManagementApi.DirectoryProvisioning
+            DirectoryProvisioning
         >
             .CreateInstanceAsync(
                 request,

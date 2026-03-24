@@ -33,6 +33,10 @@ public record ConnectionOptionsGoogleApps : IJsonOnDeserialized, IJsonOnSerializ
     public bool? AllowSettingLoginScopes { get; set; }
 
     [Optional]
+    [JsonPropertyName("api_enable_groups")]
+    public bool? ApiEnableGroups { get; set; }
+
+    [Optional]
     [JsonPropertyName("api_enable_users")]
     public bool? ApiEnableUsers { get; set; }
 

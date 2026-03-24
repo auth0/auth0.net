@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionZapierWebhook : IJsonOnDeserialized
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "ZAPIER";
+    public required FlowsVaultConnectionAppIdZapierEnum AppId { get; set; }
 
     [JsonPropertyName("setup")]
     public required FlowsVaultConnectioSetupWebhook Setup { get; set; }

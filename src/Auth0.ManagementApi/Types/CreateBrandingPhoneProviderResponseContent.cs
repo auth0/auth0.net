@@ -30,7 +30,7 @@ public record CreateBrandingPhoneProviderResponseContent : IJsonOnDeserialized
 
     [Optional]
     [JsonPropertyName("channel")]
-    public string? Channel { get; set; }
+    public PhoneProviderChannelEnum? Channel { get; set; }
 
     /// <summary>
     /// Whether the provider is enabled (false) or disabled (true).

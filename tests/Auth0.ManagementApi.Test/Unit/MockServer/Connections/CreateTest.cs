@@ -27,6 +27,7 @@ public class CreateTest : BaseMockServerTest
                 }
               ],
               "synchronize_automatically": true,
+              "synchronize_groups": "synchronize_groups",
               "created_at": "2024-01-15T09:30:00.000Z",
               "updated_at": "2024-01-15T09:30:00.000Z",
               "last_synchronization_at": "2024-01-15T09:30:00.000Z",

@@ -24,9 +24,9 @@ public record SelfServiceProfileSsoTicketConnectionOptions : IJsonOnDeserialized
     /// <summary>
     /// List of domain_aliases that can be authenticated in the Identity Provider
     /// </summary>
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("domain_aliases")]
-    public IEnumerable<string>? DomainAliases { get; set; }
+    public Optional<IEnumerable<string>?> DomainAliases { get; set; }
 
     [Nullable, Optional]
     [JsonPropertyName("idpinitiated")]

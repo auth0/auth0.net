@@ -15,7 +15,7 @@ public record ConnectionResponseContentEvernoteSandbox : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "evernote-sandbox";
+    public required ConnectionResponseContentEvernoteSandboxStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentTwitter : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "twitter";
+    public required CreateConnectionRequestContentTwitterStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

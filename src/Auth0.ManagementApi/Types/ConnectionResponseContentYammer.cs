@@ -15,7 +15,7 @@ public record ConnectionResponseContentYammer : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "yammer";
+    public required ConnectionResponseContentYammerStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

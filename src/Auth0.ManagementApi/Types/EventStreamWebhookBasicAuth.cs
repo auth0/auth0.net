@@ -15,7 +15,7 @@ public record EventStreamWebhookBasicAuth : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("method")]
-    public string Method { get; set; } = "basic";
+    public required EventStreamWebhookBasicAuthMethodEnum Method { get; set; }
 
     /// <summary>
     /// Username

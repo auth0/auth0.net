@@ -19,10 +19,10 @@ public record FlowActionSalesforceGetLead : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "SALESFORCE";
+    public required FlowActionSalesforceGetLeadType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "GET_LEAD";
+    public required FlowActionSalesforceGetLeadAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

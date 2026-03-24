@@ -20,9 +20,9 @@ public record UpdateConnectionRequestContent
     /// <summary>
     /// DEPRECATED property. Use the PATCH /v2/connections/{id}/clients endpoint to enable or disable the connection for any clients.
     /// </summary>
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("enabled_clients")]
-    public IEnumerable<string>? EnabledClients { get; set; }
+    public Optional<IEnumerable<string>?> EnabledClients { get; set; }
 
     /// <summary>
     /// <c>true</c> promotes to a domain-level connection so that third-party applications can use it. <c>false</c> does not promote the connection, so only first-party applications with the connection enabled can use it. (Defaults to <c>false</c>.)

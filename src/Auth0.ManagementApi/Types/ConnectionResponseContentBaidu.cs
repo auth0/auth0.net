@@ -15,7 +15,7 @@ public record ConnectionResponseContentBaidu : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "baidu";
+    public required ConnectionResponseContentBaiduStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]
