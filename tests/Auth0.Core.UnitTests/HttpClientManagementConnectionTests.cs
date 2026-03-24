@@ -255,8 +255,6 @@ public class HttpClientManagementConnectionTests
     [Fact]
     public void Custom_domain_wired_into_internally_created_connection_when_null_connection_passed()
     {
-        // Exercises ManagementApiClient(token, domain, connection: null, customDomain:) — the client
-        // creates its own HttpClientManagementConnection and must wire the custom domain into it.
         var client = new InspectableManagementApiClient("fake", "tenant.auth0.com", null, "custom.example.com");
 
         var conn = client.ExposedConnection as HttpClientManagementConnection;
@@ -318,9 +316,7 @@ public class HttpClientManagementConnectionTests
             .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
             .Callback<HttpRequestMessage, CancellationToken>((req, _) => capturedRequest = req)
             .ReturnsAsync(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("[]", Encoding.UTF8, "application/json") });
-
-        // Both connection (with custom domain wired in) and customDomain are provided.
-        // The connection's own custom domain takes effect; the constructor customDomain parameter is redundant but harmless.
+            
         var connection = new HttpClientManagementConnection(new HttpClient(mockHandler.Object), null, "custom.example.com");
         var client = new ManagementApiClient("fake", "tenant.auth0.com", connection, "custom.example.com");
 
