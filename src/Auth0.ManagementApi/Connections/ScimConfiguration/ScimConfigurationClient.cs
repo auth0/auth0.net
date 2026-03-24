@@ -462,7 +462,7 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
     ///     new ListScimConfigurationsRequestParameters { From = "from", Take = 1 }
     /// );
     /// </code></example>
-    public async Task<Pager<ScimConfiguration>> ListAsync(
+    public async Task<Pager<ManagementApi.ScimConfiguration>> ListAsync(
         ListScimConfigurationsRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -477,7 +477,7 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             RequestOptions?,
             ListScimConfigurationsResponseContent,
             string?,
-            ScimConfiguration
+            ManagementApi.ScimConfiguration
         >
             .CreateInstanceAsync(
                 request,
