@@ -15,12 +15,13 @@ public record ConnectionResponseContentPingFederate : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "pingfederate";
+    public required ConnectionResponseContentPingFederateStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]
     public ConnectionOptionsPingFederate? Options { get; set; }
 
+    [JsonAccess(JsonAccessType.ReadOnly)]
     [Optional]
     [JsonPropertyName("provisioning_ticket_url")]
     public string? ProvisioningTicketUrl { get; set; }

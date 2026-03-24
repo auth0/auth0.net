@@ -442,7 +442,7 @@ public partial class ClientGrantsClient : IClientGrantsClient
     /// </summary>
     /// <example><code>
     /// await client.ClientGrants.CreateAsync(
-    ///     new CreateClientGrantRequestContent { ClientId = "client_id", Audience = "audience" }
+    ///     new CreateClientGrantRequestContent { Audience = "audience" }
     /// );
     /// </code></example>
     public WithRawResponseTask<CreateClientGrantResponseContent> CreateAsync(

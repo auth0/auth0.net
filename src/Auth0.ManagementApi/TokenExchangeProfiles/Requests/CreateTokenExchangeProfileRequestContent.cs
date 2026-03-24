@@ -25,7 +25,7 @@ public record CreateTokenExchangeProfileRequestContent
     public required string ActionId { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "custom_authentication";
+    public required TokenExchangeProfileTypeEnum Type { get; set; }
 
     /// <inheritdoc />
     public override string ToString()

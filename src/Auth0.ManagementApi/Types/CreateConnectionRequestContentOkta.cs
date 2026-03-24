@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentOkta : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "okta";
+    public required CreateConnectionRequestContentOktaStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

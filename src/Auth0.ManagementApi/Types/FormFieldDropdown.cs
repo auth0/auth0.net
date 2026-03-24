@@ -15,10 +15,10 @@ public record FormFieldDropdown : IJsonOnDeserialized
     public required string Id { get; set; }
 
     [JsonPropertyName("category")]
-    public string Category { get; set; } = "FIELD";
+    public required FormComponentCategoryFieldConst Category { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "DROPDOWN";
+    public required FormFieldTypeDropdownConst Type { get; set; }
 
     [Optional]
     [JsonPropertyName("config")]

@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionJwtUninitialized : IJsonOnDeserialized
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "JWT";
+    public required FlowsVaultConnectionAppIdJwtEnum AppId { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

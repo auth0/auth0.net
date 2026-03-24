@@ -17,13 +17,16 @@ public record AculConfigsItem : IJsonOnDeserialized
     [JsonPropertyName("screen")]
     public required ScreenGroupNameEnum Screen { get; set; }
 
+    /// <summary>
+    /// Rendering mode
+    /// </summary>
     [Optional]
     [JsonPropertyName("rendering_mode")]
     public AculRenderingModeEnum? RenderingMode { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("context_configuration")]
-    public IEnumerable<AculContextConfigurationItem>? ContextConfiguration { get; set; }
+    public Optional<IEnumerable<AculContextConfigurationItem>?> ContextConfiguration { get; set; }
 
     /// <summary>
     /// Override Universal Login default head tags
@@ -42,9 +45,9 @@ public record AculConfigsItem : IJsonOnDeserialized
     /// <summary>
     /// An array of head tags
     /// </summary>
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("head_tags")]
-    public IEnumerable<AculHeadTag>? HeadTags { get; set; }
+    public Optional<IEnumerable<AculHeadTag>?> HeadTags { get; set; }
 
     [Nullable, Optional]
     [JsonPropertyName("filters")]

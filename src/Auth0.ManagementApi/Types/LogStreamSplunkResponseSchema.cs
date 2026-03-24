@@ -30,7 +30,7 @@ public record LogStreamSplunkResponseSchema : IJsonOnDeserialized, IJsonOnSerial
 
     [Optional]
     [JsonPropertyName("type")]
-    public string? Type { get; set; }
+    public LogStreamSplunkEnum? Type { get; set; }
 
     /// <summary>
     /// True for priority log streams, false for non-priority

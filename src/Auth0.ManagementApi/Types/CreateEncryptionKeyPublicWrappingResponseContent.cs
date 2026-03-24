@@ -19,7 +19,7 @@ public record CreateEncryptionKeyPublicWrappingResponseContent
     public required string PublicKey { get; set; }
 
     [JsonPropertyName("algorithm")]
-    public string Algorithm { get; set; } = "CKM_RSA_AES_KEY_WRAP";
+    public required EncryptionKeyPublicWrappingAlgorithm Algorithm { get; set; }
 
     [JsonIgnore]
     public AdditionalProperties AdditionalProperties { get; set; } = new();

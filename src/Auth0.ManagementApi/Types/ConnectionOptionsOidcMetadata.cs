@@ -41,6 +41,10 @@ public record ConnectionOptionsOidcMetadata : IJsonOnDeserialized, IJsonOnSerial
     public IEnumerable<string>? DisplayValuesSupported { get; set; }
 
     [Optional]
+    [JsonPropertyName("dpop_signing_alg_values_supported")]
+    public IEnumerable<string>? DpopSigningAlgValuesSupported { get; set; }
+
+    [Optional]
     [JsonPropertyName("end_session_endpoint")]
     public string? EndSessionEndpoint { get; set; }
 

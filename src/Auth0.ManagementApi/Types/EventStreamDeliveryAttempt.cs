@@ -12,7 +12,7 @@ public record EventStreamDeliveryAttempt : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("status")]
-    public string Status { get; set; } = "failed";
+    public required EventStreamDeliveryStatusEnum Status { get; set; }
 
     /// <summary>
     /// Timestamp of delivery attempt

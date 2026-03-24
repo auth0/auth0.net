@@ -27,6 +27,26 @@ public readonly record struct SelfServiceProfileSsoTicketProvisioningScopeEnum :
         Values.DeleteUsers
     );
 
+    public static readonly SelfServiceProfileSsoTicketProvisioningScopeEnum GetGroups = new(
+        Values.GetGroups
+    );
+
+    public static readonly SelfServiceProfileSsoTicketProvisioningScopeEnum PostGroups = new(
+        Values.PostGroups
+    );
+
+    public static readonly SelfServiceProfileSsoTicketProvisioningScopeEnum PutGroups = new(
+        Values.PutGroups
+    );
+
+    public static readonly SelfServiceProfileSsoTicketProvisioningScopeEnum PatchGroups = new(
+        Values.PatchGroups
+    );
+
+    public static readonly SelfServiceProfileSsoTicketProvisioningScopeEnum DeleteGroups = new(
+        Values.DeleteGroups
+    );
+
     public SelfServiceProfileSsoTicketProvisioningScopeEnum(string value)
     {
         Value = value;
@@ -91,5 +111,15 @@ public readonly record struct SelfServiceProfileSsoTicketProvisioningScopeEnum :
         public const string PatchUsers = "patch:users";
 
         public const string DeleteUsers = "delete:users";
+
+        public const string GetGroups = "get:groups";
+
+        public const string PostGroups = "post:groups";
+
+        public const string PutGroups = "put:groups";
+
+        public const string PatchGroups = "patch:groups";
+
+        public const string DeleteGroups = "delete:groups";
     }
 }

@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentSalesforceCommunity : IJsonOnDeseria
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "salesforce-community";
+    public required CreateConnectionRequestContentSalesforceCommunityStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

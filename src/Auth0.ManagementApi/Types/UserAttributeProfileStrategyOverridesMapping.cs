@@ -11,6 +11,9 @@ public record UserAttributeProfileStrategyOverridesMapping : IJsonOnDeserialized
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
+    /// <summary>
+    /// OIDC mapping override for this strategy
+    /// </summary>
     [Optional]
     [JsonPropertyName("oidc_mapping")]
     public UserAttributeProfileOidcMapping? OidcMapping { get; set; }

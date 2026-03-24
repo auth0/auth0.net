@@ -28,7 +28,8 @@ public record ListFlowsRequestParameters
     /// hydration param
     /// </summary>
     [JsonIgnore]
-    public IEnumerable<string?> Hydrate { get; set; } = new List<string?>();
+    public IEnumerable<ListFlowsRequestParametersHydrateEnum?> Hydrate { get; set; } =
+        new List<ListFlowsRequestParametersHydrateEnum?>();
 
     /// <summary>
     /// flag to filter by sync/async flows

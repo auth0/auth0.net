@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionStripeKeyPair : IJsonOnDeserialized
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "STRIPE";
+    public required FlowsVaultConnectionAppIdStripeEnum AppId { get; set; }
 
     [JsonPropertyName("setup")]
     public required FlowsVaultConnectioSetupStripeKeyPair Setup { get; set; }

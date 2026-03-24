@@ -9,8 +9,8 @@ public partial interface ICustomTextClient
     /// </summary>
     WithRawResponseTask<Dictionary<string, string>> ListAsync(
         string id,
-        string language,
-        string page,
+        SelfServiceProfileCustomTextLanguageEnum language,
+        SelfServiceProfileCustomTextPageEnum page,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
@@ -20,8 +20,8 @@ public partial interface ICustomTextClient
     /// </summary>
     WithRawResponseTask<Dictionary<string, string>> SetAsync(
         string id,
-        string language,
-        string page,
+        SelfServiceProfileCustomTextLanguageEnum language,
+        SelfServiceProfileCustomTextPageEnum page,
         Dictionary<string, string> request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

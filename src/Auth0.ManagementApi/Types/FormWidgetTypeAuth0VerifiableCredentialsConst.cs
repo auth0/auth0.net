@@ -1,0 +1,68 @@
+using System.Text.Json.Serialization;
+using Auth0.ManagementApi.Core;
+
+namespace Auth0.ManagementApi;
+
+[JsonConverter(typeof(StringEnumSerializer<FormWidgetTypeAuth0VerifiableCredentialsConst>))]
+[Serializable]
+public readonly record struct FormWidgetTypeAuth0VerifiableCredentialsConst : IStringEnum
+{
+    public static readonly FormWidgetTypeAuth0VerifiableCredentialsConst Auth0VerifiableCredentials =
+        new(Values.Auth0VerifiableCredentials);
+
+    public FormWidgetTypeAuth0VerifiableCredentialsConst(string value)
+    {
+        Value = value;
+    }
+
+    /// <summary>
+    /// The string value of the enum.
+    /// </summary>
+    public string Value { get; }
+
+    /// <summary>
+    /// Create a string enum with the given value.
+    /// </summary>
+    public static FormWidgetTypeAuth0VerifiableCredentialsConst FromCustom(string value)
+    {
+        return new FormWidgetTypeAuth0VerifiableCredentialsConst(value);
+    }
+
+    public bool Equals(string? other)
+    {
+        return Value.Equals(other);
+    }
+
+    /// <summary>
+    /// Returns the string value of the enum.
+    /// </summary>
+    public override string ToString()
+    {
+        return Value;
+    }
+
+    public static bool operator ==(
+        FormWidgetTypeAuth0VerifiableCredentialsConst value1,
+        string value2
+    ) => value1.Value.Equals(value2);
+
+    public static bool operator !=(
+        FormWidgetTypeAuth0VerifiableCredentialsConst value1,
+        string value2
+    ) => !value1.Value.Equals(value2);
+
+    public static explicit operator string(FormWidgetTypeAuth0VerifiableCredentialsConst value) =>
+        value.Value;
+
+    public static explicit operator FormWidgetTypeAuth0VerifiableCredentialsConst(string value) =>
+        new(value);
+
+    /// <summary>
+    /// Constant strings for enum values
+    /// </summary>
+    [Serializable]
+    public static class Values
+    {
+        public const string Auth0VerifiableCredentials = "AUTH0_VERIFIABLE_CREDENTIALS";
+    }
+}

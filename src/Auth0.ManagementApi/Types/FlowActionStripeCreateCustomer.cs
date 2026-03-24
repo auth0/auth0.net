@@ -19,10 +19,10 @@ public record FlowActionStripeCreateCustomer : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "STRIPE";
+    public required FlowActionStripeCreateCustomerType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "CREATE_CUSTOMER";
+    public required FlowActionStripeCreateCustomerAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

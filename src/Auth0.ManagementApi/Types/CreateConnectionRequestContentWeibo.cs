@@ -15,7 +15,7 @@ public record CreateConnectionRequestContentWeibo : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "weibo";
+    public required CreateConnectionRequestContentWeiboStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

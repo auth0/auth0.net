@@ -24,7 +24,8 @@ public record ClientDefaultOrganization : IJsonOnDeserialized
     /// The default Organization usage
     /// </summary>
     [JsonPropertyName("flows")]
-    public IEnumerable<string> Flows { get; set; } = new List<string>();
+    public IEnumerable<ClientDefaultOrganizationFlowsEnum> Flows { get; set; } =
+        new List<ClientDefaultOrganizationFlowsEnum>();
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

@@ -138,9 +138,9 @@ public record RotateClientSecretResponseContent : IJsonOnDeserialized, IJsonOnSe
     [JsonPropertyName("jwt_configuration")]
     public ClientJwtConfiguration? JwtConfiguration { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("signing_keys")]
-    public IEnumerable<ClientSigningKey>? SigningKeys { get; set; }
+    public Optional<IEnumerable<ClientSigningKey>?> SigningKeys { get; set; }
 
     [Nullable, Optional]
     [JsonPropertyName("encryption_key")]

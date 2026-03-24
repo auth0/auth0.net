@@ -19,10 +19,10 @@ public record FlowActionMailjetSendEmail : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "MAILJET";
+    public required FlowActionMailjetSendEmailType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "SEND_EMAIL";
+    public required FlowActionMailjetSendEmailAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

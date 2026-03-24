@@ -21,7 +21,7 @@ public record Group : IJsonOnDeserialized, IJsonOnSerializing
     public string? Id { get; set; }
 
     /// <summary>
-    /// Name of the group. Must be unique within its scope (connection, organization, or tenant). Must contain between 1 and 128 printable ASCII characters.
+    /// Name of the group. Must be unique within its connection. Must contain between 1 and 128 printable ASCII characters.
     /// </summary>
     [Optional]
     [JsonPropertyName("name")]
@@ -42,22 +42,11 @@ public record Group : IJsonOnDeserialized, IJsonOnSerializing
     public string? ConnectionId { get; set; }
 
     /// <summary>
-    /// Identifier for the organization this group belongs to (if an organization group).
-    /// </summary>
-    [Nullable, Optional]
-    [JsonPropertyName("organization_id")]
-    public Optional<string?> OrganizationId { get; set; }
-
-    /// <summary>
     /// Identifier for the tenant this group belongs to.
     /// </summary>
     [Optional]
     [JsonPropertyName("tenant_name")]
     public string? TenantName { get; set; }
-
-    [Nullable, Optional]
-    [JsonPropertyName("description")]
-    public Optional<string?> Description { get; set; }
 
     /// <summary>
     /// Timestamp of when the group was created.

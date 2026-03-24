@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionDocusignOauthCode : IJsonOnDeserialized
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "DOCUSIGN";
+    public required FlowsVaultConnectionAppIdDocusignEnum AppId { get; set; }
 
     [JsonPropertyName("setup")]
     public required FlowsVaultConnectioSetupOauthCode Setup { get; set; }

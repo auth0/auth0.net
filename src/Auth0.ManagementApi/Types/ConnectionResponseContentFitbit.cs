@@ -15,7 +15,7 @@ public record ConnectionResponseContentFitbit : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "fitbit";
+    public required ConnectionResponseContentFitbitStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

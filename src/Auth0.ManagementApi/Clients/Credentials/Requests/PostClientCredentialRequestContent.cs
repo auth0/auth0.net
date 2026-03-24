@@ -49,6 +49,13 @@ public record PostClientCredentialRequestContent
     [JsonPropertyName("expires_at")]
     public DateTime? ExpiresAt { get; set; }
 
+    /// <summary>
+    /// Optional kid (Key ID), used to uniquely identify the credential. If not specified, a kid value will be auto-generated. The kid header parameter in JWTs sent by your client should match this value. Valid format is [0-9a-zA-Z-_]{10,64}
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("kid")]
+    public string? Kid { get; set; }
+
     /// <inheritdoc />
     public override string ToString()
     {

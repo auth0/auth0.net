@@ -15,7 +15,7 @@ public record EventStreamWebhookBearerAuth : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("method")]
-    public string Method { get; set; } = "bearer";
+    public required EventStreamWebhookBearerAuthMethodEnum Method { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

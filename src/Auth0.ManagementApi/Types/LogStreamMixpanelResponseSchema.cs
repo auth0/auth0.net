@@ -30,7 +30,7 @@ public record LogStreamMixpanelResponseSchema : IJsonOnDeserialized, IJsonOnSeri
 
     [Optional]
     [JsonPropertyName("type")]
-    public string? Type { get; set; }
+    public LogStreamMixpanelEnum? Type { get; set; }
 
     /// <summary>
     /// True for priority log streams, false for non-priority

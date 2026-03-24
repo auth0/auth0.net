@@ -21,7 +21,7 @@ public record ChangePasswordTicketIdentity : IJsonOnDeserialized
     public required string UserId { get; set; }
 
     [JsonPropertyName("provider")]
-    public string Provider { get; set; } = "auth0";
+    public required IdentityProviderOnlyAuth0Enum Provider { get; set; }
 
     /// <summary>
     /// connection_id of the identity.
