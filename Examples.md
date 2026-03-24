@@ -290,6 +290,9 @@ public async Task LoginWithClientCredentialsAndMonitorClientQuota()
   - [4.3 Get a specific Network ACL configuration](#43-get-a-specific-network-acl-configuration)
   - [4.4 Update Network ACL with a PATCH request](#44-update-network-acl-with-a-patch-request)
   - [4.5 Update Network ACL with a PUT request](#45-update-network-acl-with-a-put-request)
+- [5. Using a Custom Domain with the Management API](#5-using-a-custom-domain-with-the-management-api)
+  - [5.1 Let the client manage the connection (simplest)](#51-let-the-client-manage-the-connection-simplest)
+  - [5.2 Bring your own connection](#52-bring-your-own-connection)
 
 ## 1. Management Client Initialization
 
@@ -568,5 +571,78 @@ public async void UpdateNetworkAcl() {
     await apiClient.NetworkAclClient.UpdateAsync(aclId, putUpdateRequest);
 }
 ```
+
+⬆️ [Go to Top](#)
+
+## 5. Using a Custom Domain with the Management API
+
+When your tenant uses a [custom domain](https://auth0.com/docs/customize/custom-domains), certain Management API endpoints accept an `Auth0-Custom-Domain` header so that generated URLs (e.g. in email verification tickets or password-change tickets) use your custom domain instead of the default Auth0 domain. The SDK can add this header automatically on the [supported endpoints](#supported-endpoints).
+
+### 5.1 Let the client manage the connection (simplest)
+
+Pass `customDomain` to the `ManagementApiClient` constructor and omit the `connection` argument. The client creates its own `HttpClientManagementConnection` internally with the custom domain already wired in.
+
+```csharp
+public async Task InitializeWithCustomDomain()
+{
+    var authClient = new AuthenticationApiClient("tenant.auth0.com");
+
+    var accessTokenResponse = await authClient.GetTokenAsync(new ClientCredentialsTokenRequest()
+    {
+        Audience = "https://tenant.auth0.com/api/v2/",
+        ClientId = "clientId",
+        ClientSecret = "clientSecret",
+    });
+
+    // No explicit connection — the client creates one internally and wires in the custom domain.
+    var managementClient = new ManagementApiClient(
+        accessTokenResponse.AccessToken,
+        "tenant.auth0.com",
+        connection: null,
+        customDomain: "login.example.com");
+}
+```
+
+### 5.2 Bring your own connection
+
+If you already supply an `HttpClientManagementConnection` (e.g. to configure retries or inject an `HttpClient`), pass the custom domain directly to the connection constructor instead.
+
+```csharp
+public async Task InitializeWithCustomDomainAndOwnConnection()
+{
+    var authClient = new AuthenticationApiClient("tenant.auth0.com");
+
+    var accessTokenResponse = await authClient.GetTokenAsync(new ClientCredentialsTokenRequest()
+    {
+        Audience = "https://tenant.auth0.com/api/v2/",
+        ClientId = "clientId",
+        ClientSecret = "clientSecret",
+    });
+
+    var connection = new HttpClientManagementConnection(
+        httpClient: null,
+        options: new HttpClientManagementConnectionOptions { NumberOfHttpRetries = 5 },
+        customDomain: "login.example.com");
+
+    var managementClient = new ManagementApiClient(
+        accessTokenResponse.AccessToken,
+        "tenant.auth0.com",
+        connection);
+}
+```
+
+### Supported endpoints
+
+The `Auth0-Custom-Domain` header is automatically included only on the following endpoints. It is silently omitted from all others.
+
+| Endpoint |
+|---|
+| `POST /api/v2/jobs/verification-email` |
+| `POST /api/v2/tickets/email-verification` |
+| `POST /api/v2/tickets/password-change` |
+| `GET/POST /api/v2/organizations/{id}/invitations` |
+| `GET/POST /api/v2/users` and `GET /api/v2/users/{id}` |
+| `POST /api/v2/guardian/enrollments/ticket` |
+| `POST /api/v2/self-service-profiles/{id}/sso-ticket` |
 
 ⬆️ [Go to Top](#)

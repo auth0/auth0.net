@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Auth0.Core;
@@ -19,8 +20,20 @@ public class HttpClientManagementConnection : IManagementConnection, IDisposable
 {
     private static readonly JsonSerializerSettings jsonSerializerSettings = new() { NullValueHandling = NullValueHandling.Ignore, DateParseHandling = DateParseHandling.DateTime };
 
+    private static readonly Regex[] CustomDomainAllowlist = new[]
+    {
+        new Regex(@"^jobs/verification-email/?$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        new Regex(@"^tickets/email-verification/?$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        new Regex(@"^tickets/password-change/?$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        new Regex(@"^organizations/[^/]+/invitations/?$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        new Regex(@"^users(/[^/]+/?)?$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        new Regex(@"^guardian/enrollments/ticket/?$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        new Regex(@"^self-service-profiles/[^/]+/sso-ticket/?$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+    };
+
     private readonly HttpClient httpClient;
     private readonly HttpClientManagementConnectionOptions options;
+    internal readonly string? customDomain;
     private bool ownHttpClient;
 
     private readonly ConcurrentRandom random = new();
@@ -38,16 +51,42 @@ public class HttpClientManagementConnection : IManagementConnection, IDisposable
     /// be created and be used for all requests made by this instance.</param>
     /// <param name="options">Optional <see cref="HttpClientManagementConnectionOptions"/> to use.</param>
     public HttpClientManagementConnection(HttpClient httpClient = null, HttpClientManagementConnectionOptions options = null)
+        : this(httpClient, options, null)
     {
-        ownHttpClient = httpClient == null;
-        this.httpClient = httpClient ?? new HttpClient();
-        this.options = options ?? new HttpClientManagementConnectionOptions();
     }
 
     /// <summary>
     /// Initializes a new instance of the <see cref="HttpClientManagementConnection"/> class.
     /// </summary>
-    /// <param name="handler"><see cref="HttpMessageHandler"/> to use with the managed 
+    /// <param name="httpClient">Optional <see cref="HttpClient"/> to use. If not specified one will
+    /// be created and be used for all requests made by this instance.</param>
+    /// <param name="options">Optional <see cref="HttpClientManagementConnectionOptions"/> to use.</param>
+    /// <param name="customDomain">Optional Auth0 custom domain. When set, the <c>Auth0-Custom-Domain</c>
+    /// header is automatically added to requests targeting allowed endpoints.</param>
+    /// <exception cref="ArgumentException">Thrown when <paramref name="customDomain"/> contains a URI scheme or whitespace.</exception>
+    public HttpClientManagementConnection(HttpClient? httpClient, HttpClientManagementConnectionOptions? options, string? customDomain)
+    {
+        if (customDomain != null)
+        {
+            customDomain = customDomain.Trim();
+            if (string.IsNullOrWhiteSpace(customDomain))
+                throw new ArgumentException("Custom domain must not be empty or whitespace.", nameof(customDomain));
+            if (customDomain.Contains("://"))
+                throw new ArgumentException("Custom domain must be a domain name without a URI scheme (e.g., 'login.example.com').", nameof(customDomain));
+            if (customDomain.Contains('/'))
+                throw new ArgumentException("Custom domain must be a domain name without a path (e.g., 'login.example.com').", nameof(customDomain));
+        }
+
+        ownHttpClient = httpClient == null;
+        this.httpClient = httpClient ?? new HttpClient();
+        this.options = options ?? new HttpClientManagementConnectionOptions();
+        this.customDomain = customDomain;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="HttpClientManagementConnection"/> class.
+    /// </summary>
+    /// <param name="handler"><see cref="HttpMessageHandler"/> to use with the managed
     /// <see cref="HttpClient"/> that will be created and used for all requests made
     /// by this instance.</param>
     /// <param name="options">Optional <see cref="HttpClientManagementConnectionOptions"/> to use.</param>
@@ -74,6 +113,7 @@ public class HttpClientManagementConnection : IManagementConnection, IDisposable
         using (var request = new HttpRequestMessage(HttpMethod.Get, uri))
         {
             ApplyHeaders(request.Headers, headers);
+            ApplyCustomDomainHeader(request.Headers, uri);
             return await SendRequest<T>(request, converters, cancellationToken).ConfigureAwait(false);
         }
     }
@@ -83,6 +123,7 @@ public class HttpClientManagementConnection : IManagementConnection, IDisposable
         using (var request = new HttpRequestMessage(method, uri) { Content = BuildMessageContent(body, files) })
         {
             ApplyHeaders(request.Headers, headers);
+            ApplyCustomDomainHeader(request.Headers, uri);
             return await SendRequest<T>(request, converters, cancellationToken).ConfigureAwait(false);
         }
     }
@@ -136,6 +177,27 @@ public class HttpClientManagementConnection : IManagementConnection, IDisposable
         foreach (var pair in input)
             if (pair.Key != null && pair.Value != null)
                 current.Add(pair.Key, pair.Value);
+    }
+
+    private void ApplyCustomDomainHeader(HttpHeaders current, Uri uri)
+    {
+        if (!string.IsNullOrWhiteSpace(customDomain) && IsCustomDomainAllowed(uri))
+            current.Add(CustomDomainHeader.HeaderName, customDomain);
+    }
+
+    private static bool IsCustomDomainAllowed(Uri uri)
+    {
+        var path = uri.AbsolutePath;
+        const string apiPrefix = "/api/v2/";
+        var index = path.IndexOf(apiPrefix, StringComparison.OrdinalIgnoreCase);
+        if (index < 0) return false;
+        var relativePath = path.Substring(index + apiPrefix.Length);
+
+        foreach (var pattern in CustomDomainAllowlist)
+            if (pattern.IsMatch(relativePath))
+                return true;
+
+        return false;
     }
 
     private HttpContent BuildMessageContent(object body, IList<FileUploadParameter> files = null)
