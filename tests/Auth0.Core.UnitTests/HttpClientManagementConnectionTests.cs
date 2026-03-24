@@ -142,15 +142,23 @@ public class HttpClientManagementConnectionTests
     }
 
     [Theory]
-    [InlineData("https://tenant.auth0.com/api/v2/jobs/verification-email")]
-    [InlineData("https://tenant.auth0.com/api/v2/tickets/email-verification")]
-    [InlineData("https://tenant.auth0.com/api/v2/tickets/password-change")]
-    [InlineData("https://tenant.auth0.com/api/v2/organizations/org_123/invitations")]
-    [InlineData("https://tenant.auth0.com/api/v2/users")]
-    [InlineData("https://tenant.auth0.com/api/v2/users/auth0|123")]
-    [InlineData("https://tenant.auth0.com/api/v2/guardian/enrollments/ticket")]
-    [InlineData("https://tenant.auth0.com/api/v2/self-service-profiles/ssp_123/sso-ticket")]
-    public async Task Custom_domain_header_sent_on_whitelisted_endpoint(string url)
+    [InlineData("https://tenant.auth0.com/api/v2/jobs/verification-email", "GET")]
+    [InlineData("https://tenant.auth0.com/api/v2/jobs/verification-email", "POST")]
+    [InlineData("https://tenant.auth0.com/api/v2/tickets/email-verification", "GET")]
+    [InlineData("https://tenant.auth0.com/api/v2/tickets/email-verification", "POST")]
+    [InlineData("https://tenant.auth0.com/api/v2/tickets/password-change", "GET")]
+    [InlineData("https://tenant.auth0.com/api/v2/tickets/password-change", "POST")]
+    [InlineData("https://tenant.auth0.com/api/v2/organizations/org_123/invitations", "GET")]
+    [InlineData("https://tenant.auth0.com/api/v2/organizations/org_123/invitations", "POST")]
+    [InlineData("https://tenant.auth0.com/api/v2/users", "GET")]
+    [InlineData("https://tenant.auth0.com/api/v2/users", "POST")]
+    [InlineData("https://tenant.auth0.com/api/v2/users/auth0|123", "GET")]
+    [InlineData("https://tenant.auth0.com/api/v2/users/auth0|123", "POST")]
+    [InlineData("https://tenant.auth0.com/api/v2/guardian/enrollments/ticket", "GET")]
+    [InlineData("https://tenant.auth0.com/api/v2/guardian/enrollments/ticket", "POST")]
+    [InlineData("https://tenant.auth0.com/api/v2/self-service-profiles/ssp_123/sso-ticket", "GET")]
+    [InlineData("https://tenant.auth0.com/api/v2/self-service-profiles/ssp_123/sso-ticket", "POST")]
+    public async Task Custom_domain_header_sent_on_allowed_endpoint(string url, string httpMethod)
     {
         HttpRequestMessage capturedRequest = null;
         var mockHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
@@ -160,7 +168,11 @@ public class HttpClientManagementConnectionTests
             .ReturnsAsync(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("", Encoding.UTF8, "application/json") });
 
         var connection = new HttpClientManagementConnection(new HttpClient(mockHandler.Object), null, "custom.example.com");
-        await connection.GetAsync<object>(new Uri(url), null);
+        var method = new HttpMethod(httpMethod);
+        if (method == HttpMethod.Get)
+            await connection.GetAsync<object>(new Uri(url), null);
+        else
+            await connection.SendAsync<object>(method, new Uri(url), null, null);
 
         Assert.NotNull(capturedRequest);
         Assert.True(capturedRequest.Headers.Contains(CustomDomainHeader.HeaderName));
@@ -178,7 +190,7 @@ public class HttpClientManagementConnectionTests
     [InlineData("https://tenant.auth0.com/api/v2/users/auth0|123/logs")]
     [InlineData("https://tenant.auth0.com/api/v2/users/auth0|123/identities")]
     [InlineData("https://tenant.auth0.com/api/v2/users/auth0|123/enrollments")]
-    public async Task Custom_domain_header_not_sent_on_non_whitelisted_endpoint(string url)
+    public async Task Custom_domain_header_not_sent_on_non_allowed_endpoint(string url)
     {
         HttpRequestMessage capturedRequest = null;
         var mockHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
@@ -209,6 +221,196 @@ public class HttpClientManagementConnectionTests
 
         Assert.NotNull(capturedRequest);
         Assert.False(capturedRequest.Headers.Contains(CustomDomainHeader.HeaderName));
+    }
+
+    [Theory]
+    [InlineData(" ")]
+    [InlineData("   ")]
+    [InlineData("\t")]
+    public void Custom_domain_throws_when_whitespace(string customDomain)
+    {
+        Assert.Throws<ArgumentException>(() =>
+            new HttpClientManagementConnection(new HttpClient(), null, customDomain));
+    }
+
+    [Theory]
+    [InlineData("https://login.example.com")]
+    [InlineData("http://login.example.com")]
+    public void Custom_domain_throws_when_contains_scheme(string customDomain)
+    {
+        Assert.Throws<ArgumentException>(() =>
+            new HttpClientManagementConnection(new HttpClient(), null, customDomain));
+    }
+
+    [Theory]
+    [InlineData("login.example.com/path")]
+    [InlineData("login.example.com/")]
+    public void Custom_domain_throws_when_contains_path(string customDomain)
+    {
+        Assert.Throws<ArgumentException>(() =>
+            new HttpClientManagementConnection(new HttpClient(), null, customDomain));
+    }
+
+    [Fact]
+    public async Task Custom_domain_header_sent_via_management_client_convenience_constructor()
+    {
+        HttpRequestMessage capturedRequest = null;
+        var mockHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+        mockHandler.Protected()
+            .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
+            .Callback<HttpRequestMessage, CancellationToken>((req, _) => capturedRequest = req)
+            .ReturnsAsync(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("[]", Encoding.UTF8, "application/json") });
+
+        // Exercises ManagementApiClient(token, domain, customDomain:) — no explicit connection passed,
+        // so the client creates its own HttpClientManagementConnection with the custom domain wired in.
+        var client = new ManagementApiClient("fake", "tenant.auth0.com", new HttpClientManagementConnection(new HttpClient(mockHandler.Object), null, "custom.example.com"), null);
+
+        await client.Users.GetAllAsync(new ManagementApi.Models.GetUsersRequest(), new ManagementApi.Paging.PaginationInfo());
+
+        Assert.NotNull(capturedRequest);
+        Assert.True(capturedRequest.Headers.Contains(CustomDomainHeader.HeaderName));
+        Assert.Equal("custom.example.com", capturedRequest.Headers.GetValues(CustomDomainHeader.HeaderName).Single());
+    }
+
+    [Fact]
+    public async Task Custom_domain_header_sent_on_allowed_endpoint_via_management_client()
+    {
+        HttpRequestMessage capturedRequest = null;
+        var mockHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+        mockHandler.Protected()
+            .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
+            .Callback<HttpRequestMessage, CancellationToken>((req, _) => capturedRequest = req)
+            .ReturnsAsync(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("[]", Encoding.UTF8, "application/json") });
+
+        var connection = new HttpClientManagementConnection(new HttpClient(mockHandler.Object), null, "custom.example.com");
+        var client = new ManagementApiClient("fake", "tenant.auth0.com", connection);
+
+        await client.Users.GetAllAsync(new ManagementApi.Models.GetUsersRequest(), new ManagementApi.Paging.PaginationInfo());
+
+        Assert.NotNull(capturedRequest);
+        Assert.True(capturedRequest.Headers.Contains(CustomDomainHeader.HeaderName));
+        Assert.Equal("custom.example.com", capturedRequest.Headers.GetValues(CustomDomainHeader.HeaderName).Single());
+    }
+
+    [Fact]
+    public async Task Custom_domain_header_not_sent_on_non_allowed_endpoint_via_management_client()
+    {
+        HttpRequestMessage capturedRequest = null;
+        var mockHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+        mockHandler.Protected()
+            .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
+            .Callback<HttpRequestMessage, CancellationToken>((req, _) => capturedRequest = req)
+            .ReturnsAsync(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("{}", Encoding.UTF8, "application/json") });
+
+        var connection = new HttpClientManagementConnection(new HttpClient(mockHandler.Object), null, "custom.example.com");
+        var client = new ManagementApiClient("fake", "tenant.auth0.com", connection);
+
+        await client.TenantSettings.GetAsync();
+
+        Assert.NotNull(capturedRequest);
+        Assert.False(capturedRequest.Headers.Contains(CustomDomainHeader.HeaderName));
+    }
+
+    [Theory]
+    [InlineData("https://tenant.auth0.com/api/v2/users?page=0&per_page=10")]
+    [InlineData("https://tenant.auth0.com/api/v2/users/auth0%7C123")]
+    [InlineData("https://tenant.auth0.com/api/v2/users/")]
+    public async Task Custom_domain_header_sent_on_allowed_endpoint_with_query_and_encoding(string url)
+    {
+        HttpRequestMessage capturedRequest = null;
+        var mockHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+        mockHandler.Protected()
+            .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
+            .Callback<HttpRequestMessage, CancellationToken>((req, _) => capturedRequest = req)
+            .ReturnsAsync(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("", Encoding.UTF8, "application/json") });
+
+        var connection = new HttpClientManagementConnection(new HttpClient(mockHandler.Object), null, "custom.example.com");
+        await connection.GetAsync<object>(new Uri(url), null);
+
+        Assert.NotNull(capturedRequest);
+        Assert.True(capturedRequest.Headers.Contains(CustomDomainHeader.HeaderName));
+    }
+
+    [Theory]
+    [InlineData("https://tenant.auth0.com/api/v2/organizations/org_123/invitations/inv_456")]
+    [InlineData("https://tenant.auth0.com/api/v2/guardian/enrollments/ticket/extra")]
+    [InlineData("https://tenant.auth0.com/api/v2/jobs/verification-email/extra")]
+    public async Task Custom_domain_header_not_sent_on_sub_paths_of_allowed_endpoints(string url)
+    {
+        HttpRequestMessage capturedRequest = null;
+        var mockHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+        mockHandler.Protected()
+            .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
+            .Callback<HttpRequestMessage, CancellationToken>((req, _) => capturedRequest = req)
+            .ReturnsAsync(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("", Encoding.UTF8, "application/json") });
+
+        var connection = new HttpClientManagementConnection(new HttpClient(mockHandler.Object), null, "custom.example.com");
+        await connection.GetAsync<object>(new Uri(url), null);
+
+        Assert.NotNull(capturedRequest);
+        Assert.False(capturedRequest.Headers.Contains(CustomDomainHeader.HeaderName));
+    }
+
+    [Fact]
+    public void Custom_domain_throws_when_empty_string()
+    {
+        Assert.Throws<ArgumentException>(() =>
+            new HttpClientManagementConnection(new HttpClient(), null, ""));
+    }
+
+    [Fact]
+    public void Custom_domain_trims_whitespace()
+    {
+        var connection = new HttpClientManagementConnection(new HttpClient(), null, "  custom.example.com  ");
+        // Should not throw — whitespace is trimmed, not rejected
+    }
+
+    [Theory]
+    [InlineData("https://tenant.auth0.com/api/v2/USERS")]
+    [InlineData("https://tenant.auth0.com/api/v2/Users/auth0|123")]
+    [InlineData("https://tenant.auth0.com/api/v2/TICKETS/Password-Change")]
+    [InlineData("https://tenant.auth0.com/api/v2/Jobs/Verification-Email")]
+    public async Task Custom_domain_header_sent_on_allowed_endpoint_case_insensitive(string url)
+    {
+        HttpRequestMessage capturedRequest = null;
+        var mockHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+        mockHandler.Protected()
+            .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
+            .Callback<HttpRequestMessage, CancellationToken>((req, _) => capturedRequest = req)
+            .ReturnsAsync(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("", Encoding.UTF8, "application/json") });
+
+        var connection = new HttpClientManagementConnection(new HttpClient(mockHandler.Object), null, "custom.example.com");
+        await connection.GetAsync<object>(new Uri(url), null);
+
+        Assert.NotNull(capturedRequest);
+        Assert.True(capturedRequest.Headers.Contains(CustomDomainHeader.HeaderName));
+    }
+
+    [Theory]
+    [InlineData("https://evil.com/users")]
+    [InlineData("https://example.com/tickets/password-change")]
+    [InlineData("https://example.com/some/path/users")]
+    public async Task Custom_domain_header_not_sent_when_api_v2_prefix_missing(string url)
+    {
+        HttpRequestMessage capturedRequest = null;
+        var mockHandler = new Mock<HttpMessageHandler>(MockBehavior.Strict);
+        mockHandler.Protected()
+            .Setup<Task<HttpResponseMessage>>("SendAsync", ItExpr.IsAny<HttpRequestMessage>(), ItExpr.IsAny<CancellationToken>())
+            .Callback<HttpRequestMessage, CancellationToken>((req, _) => capturedRequest = req)
+            .ReturnsAsync(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("", Encoding.UTF8, "application/json") });
+
+        var connection = new HttpClientManagementConnection(new HttpClient(mockHandler.Object), null, "custom.example.com");
+        await connection.GetAsync<object>(new Uri(url), null);
+
+        Assert.NotNull(capturedRequest);
+        Assert.False(capturedRequest.Headers.Contains(CustomDomainHeader.HeaderName));
+    }
+
+    [Fact]
+    public void Custom_domain_accepts_domain_with_port()
+    {
+        var connection = new HttpClientManagementConnection(new HttpClient(), null, "login.example.com:8443");
+        // Should not throw — port numbers are valid in domain specifications
     }
 
     [Fact]

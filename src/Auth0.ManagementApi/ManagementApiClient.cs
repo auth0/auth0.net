@@ -204,7 +204,7 @@ public class ManagementApiClient : IManagementApiClient
     /// <param name="managementConnection"><see cref="IManagementConnection"/> to facilitate communication with server.</param>
     /// <param name="customDomain">
     /// Optional Auth0 custom domain to include via the <c>Auth0-Custom-Domain</c> header on
-    /// whitelisted endpoints. When set, the header is automatically sent on requests to
+    /// allowed endpoints. When set, the header is automatically sent on requests to
     /// endpoints that support it (e.g., <c>/api/v2/users</c>, <c>/api/v2/tickets/email-verification</c>).
     /// It is silently omitted from all other endpoints.
     /// </param>
@@ -277,7 +277,7 @@ public class ManagementApiClient : IManagementApiClient
     /// <param name="connection"><see cref="IManagementConnection"/> to facilitate communication with server.</param>
     /// <param name="customDomain">
     /// Optional Auth0 custom domain to include via the <c>Auth0-Custom-Domain</c> header on
-    /// whitelisted endpoints. When set, the header is automatically sent on requests to
+    /// allowed endpoints. When set, the header is automatically sent on requests to
     /// endpoints that support it (e.g., <c>/api/v2/users</c>, <c>/api/v2/tickets/email-verification</c>).
     /// It is silently omitted from all other endpoints.
     /// </param>

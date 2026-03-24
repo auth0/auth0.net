@@ -20,15 +20,15 @@ public class HttpClientManagementConnection : IManagementConnection, IDisposable
 {
     private static readonly JsonSerializerSettings jsonSerializerSettings = new() { NullValueHandling = NullValueHandling.Ignore, DateParseHandling = DateParseHandling.DateTime };
 
-    private static readonly Regex[] CustomDomainWhitelist = new[]
+    private static readonly Regex[] CustomDomainAllowlist = new[]
     {
-        new Regex(@"^jobs/verification-email(/|$)", RegexOptions.Compiled | RegexOptions.IgnoreCase),
-        new Regex(@"^tickets/email-verification(/|$)", RegexOptions.Compiled | RegexOptions.IgnoreCase),
-        new Regex(@"^tickets/password-change(/|$)", RegexOptions.Compiled | RegexOptions.IgnoreCase),
-        new Regex(@"^organizations/[^/]+/invitations(/|$)", RegexOptions.Compiled | RegexOptions.IgnoreCase),
-        new Regex(@"^users(/[^/]+)?/$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
-        new Regex(@"^guardian/enrollments/ticket(/|$)", RegexOptions.Compiled | RegexOptions.IgnoreCase),
-        new Regex(@"^self-service-profiles/[^/]+/sso-ticket(/|$)", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        new Regex(@"^jobs/verification-email/?$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        new Regex(@"^tickets/email-verification/?$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        new Regex(@"^tickets/password-change/?$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        new Regex(@"^organizations/[^/]+/invitations/?$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        new Regex(@"^users(/[^/]+)?/?$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        new Regex(@"^guardian/enrollments/ticket/?$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
+        new Regex(@"^self-service-profiles/[^/]+/sso-ticket/?$", RegexOptions.Compiled | RegexOptions.IgnoreCase),
     };
 
     private readonly HttpClient httpClient;
@@ -62,9 +62,21 @@ public class HttpClientManagementConnection : IManagementConnection, IDisposable
     /// be created and be used for all requests made by this instance.</param>
     /// <param name="options">Optional <see cref="HttpClientManagementConnectionOptions"/> to use.</param>
     /// <param name="customDomain">Optional Auth0 custom domain. When set, the <c>Auth0-Custom-Domain</c>
-    /// header is automatically added to requests targeting whitelisted endpoints.</param>
+    /// header is automatically added to requests targeting allowed endpoints.</param>
+    /// <exception cref="ArgumentException">Thrown when <paramref name="customDomain"/> contains a URI scheme or whitespace.</exception>
     public HttpClientManagementConnection(HttpClient? httpClient, HttpClientManagementConnectionOptions? options, string? customDomain)
     {
+        if (customDomain != null)
+        {
+            customDomain = customDomain.Trim();
+            if (string.IsNullOrWhiteSpace(customDomain))
+                throw new ArgumentException("Custom domain must not be empty or whitespace.", nameof(customDomain));
+            if (customDomain.Contains("://"))
+                throw new ArgumentException("Custom domain must be a domain name without a URI scheme (e.g., 'login.example.com').", nameof(customDomain));
+            if (customDomain.Contains('/'))
+                throw new ArgumentException("Custom domain must be a domain name without a path (e.g., 'login.example.com').", nameof(customDomain));
+        }
+
         ownHttpClient = httpClient == null;
         this.httpClient = httpClient ?? new HttpClient();
         this.options = options ?? new HttpClientManagementConnectionOptions();
@@ -169,21 +181,20 @@ public class HttpClientManagementConnection : IManagementConnection, IDisposable
 
     private void ApplyCustomDomainHeader(HttpHeaders current, Uri uri)
     {
-        if (!string.IsNullOrEmpty(customDomain) && IsCustomDomainWhitelisted(uri))
+        if (!string.IsNullOrWhiteSpace(customDomain) && IsCustomDomainAllowed(uri))
             current.Add(CustomDomainHeader.HeaderName, customDomain);
     }
 
-    private static bool IsCustomDomainWhitelisted(Uri uri)
+    private static bool IsCustomDomainAllowed(Uri uri)
     {
         var path = uri.AbsolutePath;
         const string apiPrefix = "/api/v2/";
         var index = path.IndexOf(apiPrefix, StringComparison.OrdinalIgnoreCase);
-        var relativePath = index >= 0 ? path.Substring(index + apiPrefix.Length) : path.TrimStart('/');
+        if (index < 0) return false;
+        var relativePath = path.Substring(index + apiPrefix.Length);
 
-        var pathToMatch = relativePath.TrimEnd('/') + "/";
-
-        foreach (var pattern in CustomDomainWhitelist)
-            if (pattern.IsMatch(pathToMatch))
+        foreach (var pattern in CustomDomainAllowlist)
+            if (pattern.IsMatch(relativePath))
                 return true;
 
         return false;

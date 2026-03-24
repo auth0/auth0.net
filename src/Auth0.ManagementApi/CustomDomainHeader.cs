@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi;
 /// </summary>
 /// <remarks>
 /// Use this when constructing a <see cref="ManagementApiClient"/> with a custom domain.
-/// The header is automatically included on whitelisted endpoints only.
+/// The header is automatically included on allowed endpoints only.
 /// </remarks>
 public static class CustomDomainHeader
 {
