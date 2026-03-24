@@ -28,7 +28,6 @@ public partial class CustomSigningClient : ICustomSigningClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "keys/custom-signing",
                     Headers = _headers,
@@ -110,7 +109,6 @@ public partial class CustomSigningClient : ICustomSigningClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = "keys/custom-signing",
                     Body = request,
@@ -240,7 +238,6 @@ public partial class CustomSigningClient : ICustomSigningClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = "keys/custom-signing",
                     Headers = _headers,

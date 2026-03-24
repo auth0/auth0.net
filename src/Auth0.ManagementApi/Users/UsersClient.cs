@@ -128,7 +128,6 @@ public partial class UsersClient : IUsersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "users",
                     QueryString = _queryString,
@@ -215,7 +214,6 @@ public partial class UsersClient : IUsersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "users",
                     Body = request,
@@ -308,7 +306,6 @@ public partial class UsersClient : IUsersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "users-by-email",
                     QueryString = _queryString,
@@ -400,7 +397,6 @@ public partial class UsersClient : IUsersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("users/{0}", ValueConvert.ToPathParameterString(id)),
                     QueryString = _queryString,
@@ -484,7 +480,6 @@ public partial class UsersClient : IUsersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format("users/{0}", ValueConvert.ToPathParameterString(id)),
                     Body = request,
@@ -570,7 +565,6 @@ public partial class UsersClient : IUsersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "users/{0}/recovery-code-regeneration",
@@ -797,7 +791,6 @@ public partial class UsersClient : IUsersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format("users/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,
@@ -965,7 +958,6 @@ public partial class UsersClient : IUsersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "users/{0}/revoke-access",

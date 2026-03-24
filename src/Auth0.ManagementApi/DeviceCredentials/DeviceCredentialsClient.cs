@@ -61,7 +61,6 @@ public partial class DeviceCredentialsClient : IDeviceCredentialsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "device-credentials",
                     QueryString = _queryString,
@@ -147,7 +146,6 @@ public partial class DeviceCredentialsClient : IDeviceCredentialsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "device-credentials",
                     Body = request,
@@ -319,7 +317,6 @@ public partial class DeviceCredentialsClient : IDeviceCredentialsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "device-credentials/{0}",

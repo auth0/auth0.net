@@ -56,7 +56,6 @@ public partial class ClientGrantsClient : IClientGrantsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "organizations/{0}/client-grants",
@@ -146,7 +145,6 @@ public partial class ClientGrantsClient : IClientGrantsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "organizations/{0}/client-grants",
@@ -309,7 +307,6 @@ public partial class ClientGrantsClient : IClientGrantsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "organizations/{0}/client-grants/{1}",

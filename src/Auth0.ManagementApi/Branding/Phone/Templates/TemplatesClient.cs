@@ -33,7 +33,6 @@ public partial class TemplatesClient : ITemplatesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "branding/phone/templates",
                     QueryString = _queryString,
@@ -116,7 +115,6 @@ public partial class TemplatesClient : ITemplatesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "branding/phone/templates",
                     Body = request,
@@ -202,7 +200,6 @@ public partial class TemplatesClient : ITemplatesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "branding/phone/templates/{0}",
@@ -290,7 +287,6 @@ public partial class TemplatesClient : ITemplatesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "branding/phone/templates/{0}",
@@ -380,7 +376,6 @@ public partial class TemplatesClient : ITemplatesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "branding/phone/templates/{0}/reset",
@@ -470,7 +465,6 @@ public partial class TemplatesClient : ITemplatesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "branding/phone/templates/{0}/try",
@@ -607,7 +601,6 @@ public partial class TemplatesClient : ITemplatesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "branding/phone/templates/{0}",

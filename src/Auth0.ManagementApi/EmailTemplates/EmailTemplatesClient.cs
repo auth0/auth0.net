@@ -28,7 +28,6 @@ public partial class EmailTemplatesClient : IEmailTemplatesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "email-templates",
                     Body = request,
@@ -114,7 +113,6 @@ public partial class EmailTemplatesClient : IEmailTemplatesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "email-templates/{0}",
@@ -200,7 +198,6 @@ public partial class EmailTemplatesClient : IEmailTemplatesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = string.Format(
                         "email-templates/{0}",
@@ -290,7 +287,6 @@ public partial class EmailTemplatesClient : IEmailTemplatesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "email-templates/{0}",

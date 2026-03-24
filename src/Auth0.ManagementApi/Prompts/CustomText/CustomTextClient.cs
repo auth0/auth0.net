@@ -30,7 +30,6 @@ public partial class CustomTextClient : ICustomTextClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "prompts/{0}/custom-text/{1}",
@@ -148,7 +147,6 @@ public partial class CustomTextClient : ICustomTextClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = string.Format(
                         "prompts/{0}/custom-text/{1}",

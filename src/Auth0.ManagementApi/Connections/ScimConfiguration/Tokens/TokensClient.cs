@@ -29,7 +29,6 @@ public partial class TokensClient : ITokensClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "connections/{0}/scim-configuration/tokens",
@@ -109,7 +108,6 @@ public partial class TokensClient : ITokensClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "connections/{0}/scim-configuration/tokens",
@@ -239,7 +237,6 @@ public partial class TokensClient : ITokensClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "connections/{0}/scim-configuration/tokens/{1}",

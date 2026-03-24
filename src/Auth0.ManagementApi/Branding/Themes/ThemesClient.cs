@@ -29,7 +29,6 @@ public partial class ThemesClient : IThemesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "branding/themes",
                     Body = request,
@@ -114,7 +113,6 @@ public partial class ThemesClient : IThemesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "branding/themes/default",
                     Headers = _headers,
@@ -196,7 +194,6 @@ public partial class ThemesClient : IThemesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "branding/themes/{0}",
@@ -282,7 +279,6 @@ public partial class ThemesClient : IThemesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "branding/themes/{0}",
@@ -488,7 +484,6 @@ public partial class ThemesClient : IThemesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "branding/themes/{0}",

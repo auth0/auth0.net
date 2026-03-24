@@ -28,7 +28,6 @@ public partial class BotDetectionClient : IBotDetectionClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "attack-protection/bot-detection",
                     Headers = _headers,
@@ -110,7 +109,6 @@ public partial class BotDetectionClient : IBotDetectionClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "attack-protection/bot-detection",
                     Body = request,

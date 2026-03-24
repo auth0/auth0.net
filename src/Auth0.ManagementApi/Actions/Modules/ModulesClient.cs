@@ -51,7 +51,6 @@ public partial class ModulesClient : IModulesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "actions/modules",
                     QueryString = _queryString,
@@ -134,7 +133,6 @@ public partial class ModulesClient : IModulesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "actions/modules",
                     Body = request,
@@ -220,7 +218,6 @@ public partial class ModulesClient : IModulesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "actions/modules/{0}",
@@ -308,7 +305,6 @@ public partial class ModulesClient : IModulesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "actions/modules/{0}",
@@ -422,7 +418,6 @@ public partial class ModulesClient : IModulesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "actions/modules/{0}/actions",
@@ -511,7 +506,6 @@ public partial class ModulesClient : IModulesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "actions/modules/{0}/rollback",
@@ -686,7 +680,6 @@ public partial class ModulesClient : IModulesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "actions/modules/{0}",

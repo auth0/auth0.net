@@ -39,7 +39,6 @@ public partial class DeliveriesClient : IDeliveriesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "event-streams/{0}/deliveries",
@@ -130,7 +129,6 @@ public partial class DeliveriesClient : IDeliveriesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "event-streams/{0}/deliveries/{1}",

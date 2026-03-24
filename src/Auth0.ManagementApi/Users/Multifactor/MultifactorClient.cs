@@ -35,7 +35,6 @@ public partial class MultifactorClient : IMultifactorClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "users/{0}/multifactor/actions/invalidate-remember-browser",
@@ -100,7 +99,6 @@ public partial class MultifactorClient : IMultifactorClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "users/{0}/multifactor/{1}",

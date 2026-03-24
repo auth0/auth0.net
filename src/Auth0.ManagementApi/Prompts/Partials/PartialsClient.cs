@@ -29,7 +29,6 @@ public partial class PartialsClient : IPartialsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "prompts/{0}/partials",
@@ -143,7 +142,6 @@ public partial class PartialsClient : IPartialsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = string.Format(
                         "prompts/{0}/partials",

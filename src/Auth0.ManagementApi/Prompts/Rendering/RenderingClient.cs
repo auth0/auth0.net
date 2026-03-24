@@ -65,7 +65,6 @@ public partial class RenderingClient : IRenderingClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "prompts/rendering",
                     QueryString = _queryString,
@@ -150,7 +149,6 @@ public partial class RenderingClient : IRenderingClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "prompts/rendering",
                     Body = request,
@@ -237,7 +235,6 @@ public partial class RenderingClient : IRenderingClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "prompts/{0}/screen/{1}/rendering",
@@ -327,7 +324,6 @@ public partial class RenderingClient : IRenderingClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "prompts/{0}/screen/{1}/rendering",

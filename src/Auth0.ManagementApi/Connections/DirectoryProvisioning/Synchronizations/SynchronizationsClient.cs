@@ -31,7 +31,6 @@ public partial class SynchronizationsClient : ISynchronizationsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "connections/{0}/directory-provisioning/synchronizations",

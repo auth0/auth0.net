@@ -59,7 +59,6 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "token-exchange-profiles",
                     QueryString = _queryString,
@@ -142,7 +141,6 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "token-exchange-profiles",
                     Body = request,
@@ -228,7 +226,6 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "token-exchange-profiles/{0}",
@@ -421,7 +418,6 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "token-exchange-profiles/{0}",
@@ -491,7 +487,6 @@ public partial class TokenExchangeProfilesClient : ITokenExchangeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "token-exchange-profiles/{0}",

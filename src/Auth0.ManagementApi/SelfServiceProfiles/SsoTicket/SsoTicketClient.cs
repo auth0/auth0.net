@@ -32,7 +32,6 @@ public partial class SsoTicketClient : ISsoTicketClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "self-service-profiles/{0}/sso-ticket",
@@ -149,7 +148,6 @@ public partial class SsoTicketClient : ISsoTicketClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "self-service-profiles/{0}/sso-ticket/{1}/revoke",

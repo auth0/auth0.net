@@ -29,7 +29,6 @@ public partial class SecretsClient : ISecretsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "hooks/{0}/secrets",
@@ -141,7 +140,6 @@ public partial class SecretsClient : ISecretsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "hooks/{0}/secrets",
@@ -212,7 +210,6 @@ public partial class SecretsClient : ISecretsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "hooks/{0}/secrets",
@@ -284,7 +281,6 @@ public partial class SecretsClient : ISecretsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "hooks/{0}/secrets",

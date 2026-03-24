@@ -37,7 +37,6 @@ public partial class BrandingClient : IBrandingClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "branding",
                     Headers = _headers,
@@ -115,7 +114,6 @@ public partial class BrandingClient : IBrandingClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "branding",
                     Body = request,

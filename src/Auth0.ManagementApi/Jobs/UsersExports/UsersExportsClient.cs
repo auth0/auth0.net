@@ -29,7 +29,6 @@ public partial class UsersExportsClient : IUsersExportsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "jobs/users-exports",
                     Body = request,

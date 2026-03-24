@@ -50,7 +50,6 @@ public partial class TemplatesClient : ITemplatesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "verifiable-credentials/verification/templates",
                     QueryString = _queryString,
@@ -136,7 +135,6 @@ public partial class TemplatesClient : ITemplatesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "verifiable-credentials/verification/templates",
                     Body = request,
@@ -225,7 +223,6 @@ public partial class TemplatesClient : ITemplatesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "verifiable-credentials/verification/templates/{0}",
@@ -316,7 +313,6 @@ public partial class TemplatesClient : ITemplatesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "verifiable-credentials/verification/templates/{0}",
@@ -503,7 +499,6 @@ public partial class TemplatesClient : ITemplatesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "verifiable-credentials/verification/templates/{0}",

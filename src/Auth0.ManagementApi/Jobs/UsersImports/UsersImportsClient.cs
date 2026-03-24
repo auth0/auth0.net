@@ -27,7 +27,6 @@ public partial class UsersImportsClient : IUsersImportsClient
             .ConfigureAwait(false);
         var multipartFormRequest_ = new MultipartFormRequest
         {
-            BaseUrl = _client.Options.BaseUrl,
             Method = HttpMethod.Post,
             Path = "jobs/users-imports",
             Headers = _headers,

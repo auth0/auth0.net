@@ -37,7 +37,6 @@ public partial class SettingsClient : ISettingsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "tenants/settings",
                     QueryString = _queryString,
@@ -120,7 +119,6 @@ public partial class SettingsClient : ISettingsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "tenants/settings",
                     Body = request,

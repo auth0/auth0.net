@@ -28,7 +28,6 @@ public partial class SessionsClient : ISessionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("sessions/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,
@@ -109,7 +108,6 @@ public partial class SessionsClient : ISessionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format("sessions/{0}", ValueConvert.ToPathParameterString(id)),
                     Body = request,
@@ -218,7 +216,6 @@ public partial class SessionsClient : ISessionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format("sessions/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,
@@ -299,7 +296,6 @@ public partial class SessionsClient : ISessionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "sessions/{0}/revoke",

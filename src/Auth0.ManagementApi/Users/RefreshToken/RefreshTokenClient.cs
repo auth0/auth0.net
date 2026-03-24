@@ -52,7 +52,6 @@ public partial class RefreshTokenClient : IRefreshTokenClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "users/{0}/refresh-tokens",
@@ -189,7 +188,6 @@ public partial class RefreshTokenClient : IRefreshTokenClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "users/{0}/refresh-tokens",

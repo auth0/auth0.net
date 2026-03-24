@@ -49,7 +49,6 @@ public partial class OrganizationsClient : IOrganizationsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "client-grants/{0}/organizations",

@@ -31,7 +31,6 @@ public partial class CustomTextClient : ICustomTextClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "self-service-profiles/{0}/custom-text/{1}/{2}",
@@ -119,7 +118,6 @@ public partial class CustomTextClient : ICustomTextClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = string.Format(
                         "self-service-profiles/{0}/custom-text/{1}/{2}",

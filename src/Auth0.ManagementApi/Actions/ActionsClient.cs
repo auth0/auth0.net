@@ -64,7 +64,6 @@ public partial class ActionsClient : IActionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "actions/actions",
                     QueryString = _queryString,
@@ -147,7 +146,6 @@ public partial class ActionsClient : IActionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "actions/actions",
                     Body = request,
@@ -231,7 +229,6 @@ public partial class ActionsClient : IActionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "actions/actions/{0}",
@@ -317,7 +314,6 @@ public partial class ActionsClient : IActionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "actions/actions/{0}",
@@ -406,7 +402,6 @@ public partial class ActionsClient : IActionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "actions/actions/{0}/deploy",
@@ -492,7 +487,6 @@ public partial class ActionsClient : IActionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "actions/actions/{0}/test",
@@ -678,7 +672,6 @@ public partial class ActionsClient : IActionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "actions/actions/{0}",

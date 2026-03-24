@@ -70,7 +70,6 @@ public partial class UsersClient : IUsersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("roles/{0}/users", ValueConvert.ToPathParameterString(id)),
                     QueryString = _queryString,
@@ -230,7 +229,6 @@ public partial class UsersClient : IUsersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format("roles/{0}/users", ValueConvert.ToPathParameterString(id)),
                     Body = request,

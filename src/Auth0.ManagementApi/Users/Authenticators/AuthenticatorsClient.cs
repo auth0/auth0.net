@@ -35,7 +35,6 @@ public partial class AuthenticatorsClient : IAuthenticatorsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "users/{0}/authenticators",

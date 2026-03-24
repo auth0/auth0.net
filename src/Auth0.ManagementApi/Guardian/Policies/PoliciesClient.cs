@@ -28,7 +28,6 @@ public partial class PoliciesClient : IPoliciesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "guardian/policies",
                     Headers = _headers,
@@ -106,7 +105,6 @@ public partial class PoliciesClient : IPoliciesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = "guardian/policies",
                     Body = request,

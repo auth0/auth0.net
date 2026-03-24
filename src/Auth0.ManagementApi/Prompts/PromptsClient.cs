@@ -37,7 +37,6 @@ public partial class PromptsClient : IPromptsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "prompts",
                     Headers = _headers,
@@ -115,7 +114,6 @@ public partial class PromptsClient : IPromptsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "prompts",
                     Body = request,

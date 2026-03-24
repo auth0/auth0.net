@@ -27,7 +27,6 @@ public partial class SupplementalSignalsClient : ISupplementalSignalsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "supplemental-signals",
                     Headers = _headers,
@@ -109,7 +108,6 @@ public partial class SupplementalSignalsClient : ISupplementalSignalsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "supplemental-signals",
                     Body = request,

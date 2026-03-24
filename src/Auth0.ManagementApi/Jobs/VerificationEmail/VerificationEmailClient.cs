@@ -29,7 +29,6 @@ public partial class VerificationEmailClient : IVerificationEmailClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "jobs/verification-email",
                     Body = request,

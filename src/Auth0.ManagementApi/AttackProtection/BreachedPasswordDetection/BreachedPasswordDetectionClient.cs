@@ -27,7 +27,6 @@ public partial class BreachedPasswordDetectionClient : IBreachedPasswordDetectio
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "attack-protection/breached-password-detection",
                     Headers = _headers,
@@ -110,7 +109,6 @@ public partial class BreachedPasswordDetectionClient : IBreachedPasswordDetectio
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "attack-protection/breached-password-detection",
                     Body = request,

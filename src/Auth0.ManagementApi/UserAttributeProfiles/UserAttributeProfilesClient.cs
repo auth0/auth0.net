@@ -49,7 +49,6 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "user-attribute-profiles",
                     QueryString = _queryString,
@@ -133,7 +132,6 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "user-attribute-profiles",
                     Body = request,
@@ -220,7 +218,6 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "user-attribute-profiles/templates",
                     Headers = _headers,
@@ -303,7 +300,6 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "user-attribute-profiles/templates/{0}",
@@ -389,7 +385,6 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "user-attribute-profiles/{0}",
@@ -475,7 +470,6 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "user-attribute-profiles/{0}",
@@ -698,7 +692,6 @@ public partial class UserAttributeProfilesClient : IUserAttributeProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "user-attribute-profiles/{0}",

@@ -43,7 +43,6 @@ public partial class RiskAssessmentsClient : IRiskAssessmentsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "users/{0}/risk-assessments/clear",

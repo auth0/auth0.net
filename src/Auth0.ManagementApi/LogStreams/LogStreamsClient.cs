@@ -27,7 +27,6 @@ public partial class LogStreamsClient : ILogStreamsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "log-streams",
                     Headers = _headers,
@@ -109,7 +108,6 @@ public partial class LogStreamsClient : ILogStreamsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "log-streams",
                     Body = request,
@@ -195,7 +193,6 @@ public partial class LogStreamsClient : ILogStreamsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("log-streams/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,
@@ -278,7 +275,6 @@ public partial class LogStreamsClient : ILogStreamsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format("log-streams/{0}", ValueConvert.ToPathParameterString(id)),
                     Body = request,
@@ -715,7 +711,6 @@ public partial class LogStreamsClient : ILogStreamsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format("log-streams/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,

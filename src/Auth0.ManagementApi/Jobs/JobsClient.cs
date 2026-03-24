@@ -41,7 +41,6 @@ public partial class JobsClient : IJobsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("jobs/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,

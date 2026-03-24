@@ -63,7 +63,6 @@ public partial class LogsClient : ILogsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("users/{0}/logs", ValueConvert.ToPathParameterString(id)),
                     QueryString = _queryString,

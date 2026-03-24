@@ -59,7 +59,6 @@ public partial class RulesClient : IRulesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "rules",
                     QueryString = _queryString,
@@ -144,7 +143,6 @@ public partial class RulesClient : IRulesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "rules",
                     Body = request,
@@ -237,7 +235,6 @@ public partial class RulesClient : IRulesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("rules/{0}", ValueConvert.ToPathParameterString(id)),
                     QueryString = _queryString,
@@ -321,7 +318,6 @@ public partial class RulesClient : IRulesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format("rules/{0}", ValueConvert.ToPathParameterString(id)),
                     Body = request,
@@ -503,7 +499,6 @@ public partial class RulesClient : IRulesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format("rules/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,

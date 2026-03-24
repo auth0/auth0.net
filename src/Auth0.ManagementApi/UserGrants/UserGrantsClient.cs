@@ -56,7 +56,6 @@ public partial class UserGrantsClient : IUserGrantsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "grants",
                     QueryString = _queryString,
@@ -200,7 +199,6 @@ public partial class UserGrantsClient : IUserGrantsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = "grants",
                     QueryString = _queryString,
@@ -262,7 +260,6 @@ public partial class UserGrantsClient : IUserGrantsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format("grants/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,

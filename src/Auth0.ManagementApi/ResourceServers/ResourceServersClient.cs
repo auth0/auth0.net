@@ -58,7 +58,6 @@ public partial class ResourceServersClient : IResourceServersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "resource-servers",
                     QueryString = _queryString,
@@ -142,7 +141,6 @@ public partial class ResourceServersClient : IResourceServersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "resource-servers",
                     Body = request,
@@ -236,7 +234,6 @@ public partial class ResourceServersClient : IResourceServersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "resource-servers/{0}",
@@ -325,7 +322,6 @@ public partial class ResourceServersClient : IResourceServersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "resource-servers/{0}",
@@ -508,7 +504,6 @@ public partial class ResourceServersClient : IResourceServersClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "resource-servers/{0}",

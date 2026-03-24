@@ -52,7 +52,6 @@ public partial class BindingsClient : IBindingsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "actions/triggers/{0}/bindings",
@@ -140,7 +139,6 @@ public partial class BindingsClient : IBindingsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "actions/triggers/{0}/bindings",

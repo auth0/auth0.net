@@ -27,7 +27,6 @@ public partial class StatsClient : IStatsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "stats/active-users",
                     Headers = _headers,
@@ -110,7 +109,6 @@ public partial class StatsClient : IStatsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "stats/daily",
                     QueryString = _queryString,

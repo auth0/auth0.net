@@ -28,7 +28,6 @@ public partial class TicketsClient : ITicketsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "tickets/email-verification",
                     Body = request,
@@ -116,7 +115,6 @@ public partial class TicketsClient : ITicketsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "tickets/password-change",
                     Body = request,

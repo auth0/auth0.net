@@ -32,7 +32,6 @@ public partial class SettingsClient : ISettingsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "risk-assessments/settings",
                     Headers = _headers,
@@ -116,7 +115,6 @@ public partial class SettingsClient : ISettingsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "risk-assessments/settings",
                     Body = request,

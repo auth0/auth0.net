@@ -54,7 +54,6 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "connections-scim-configurations",
                     QueryString = _queryString,
@@ -137,7 +136,6 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "connections/{0}/scim-configuration",
@@ -219,7 +217,6 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "connections/{0}/scim-configuration",
@@ -303,7 +300,6 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "connections/{0}/scim-configuration",
@@ -388,7 +384,6 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "connections/{0}/scim-configuration/default-mapping",
@@ -462,7 +457,7 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
     ///     new ListScimConfigurationsRequestParameters { From = "from", Take = 1 }
     /// );
     /// </code></example>
-    public async Task<Pager<ManagementApi.ScimConfiguration>> ListAsync(
+    public async Task<Pager<ScimConfiguration>> ListAsync(
         ListScimConfigurationsRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -477,7 +472,7 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             RequestOptions?,
             ListScimConfigurationsResponseContent,
             string?,
-            ManagementApi.ScimConfiguration
+            ScimConfiguration
         >
             .CreateInstanceAsync(
                 request,
@@ -556,7 +551,6 @@ public partial class ScimConfigurationClient : IScimConfigurationClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "connections/{0}/scim-configuration",
