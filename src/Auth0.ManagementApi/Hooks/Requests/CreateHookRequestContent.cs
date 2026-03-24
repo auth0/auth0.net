@@ -29,6 +29,9 @@ public record CreateHookRequestContent
     [JsonPropertyName("dependencies")]
     public Dictionary<string, string>? Dependencies { get; set; }
 
+    /// <summary>
+    /// Execution stage of this rule. Can be `credentials-exchange`, `pre-user-registration`, `post-user-registration`, `post-change-password`, or `send-phone-message`.
+    /// </summary>
     [JsonPropertyName("triggerId")]
     public required HookTriggerIdEnum TriggerId { get; set; }
 

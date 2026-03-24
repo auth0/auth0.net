@@ -19,10 +19,10 @@ public record FlowActionActivecampaignUpsertContact : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "ACTIVECAMPAIGN";
+    public required FlowActionActivecampaignUpsertContactType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "UPSERT_CONTACT";
+    public required FlowActionActivecampaignUpsertContactAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

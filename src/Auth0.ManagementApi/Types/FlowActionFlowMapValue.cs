@@ -19,10 +19,10 @@ public record FlowActionFlowMapValue : IJsonOnDeserialized
     public string? Alias { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "FLOW";
+    public required FlowActionFlowMapValueType Type { get; set; }
 
     [JsonPropertyName("action")]
-    public string Action { get; set; } = "MAP_VALUE";
+    public required FlowActionFlowMapValueAction Action { get; set; }
 
     [Optional]
     [JsonPropertyName("allow_failure")]

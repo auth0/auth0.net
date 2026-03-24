@@ -49,7 +49,7 @@ public record ListUsersRequestParameters
     public Optional<bool?> IncludeFields { get; set; }
 
     /// <summary>
-    /// Query in <see href="http://www.lucenetutorial.com/lucene-query-syntax.html">Lucene query string syntax</see>. Some query types cannot be used on metadata fields, for details see <see href="https://auth0.com/docs/users/search/v3/query-syntax#searchable-fields">Searchable Fields</see>.
+    /// Query in <see href="https://lucene.apache.org/core/2_9_4/queryparsersyntax.html">Lucene query string syntax</see>. Some query types cannot be used on metadata fields, for details see <see href="https://auth0.com/docs/users/search/v3/query-syntax#searchable-fields">Searchable Fields</see>.
     /// </summary>
     [JsonIgnore]
     public Optional<string?> Q { get; set; }

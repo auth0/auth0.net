@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionSendgridApiKey : IJsonOnDeserialized
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "SENDGRID";
+    public required FlowsVaultConnectionAppIdSendgridEnum AppId { get; set; }
 
     [JsonPropertyName("setup")]
     public required FlowsVaultConnectioSetupApiKey Setup { get; set; }

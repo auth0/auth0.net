@@ -18,7 +18,7 @@ public record CreateFlowsVaultConnectionSalesforceUninitialized : IJsonOnDeseria
     public required string Name { get; set; }
 
     [JsonPropertyName("app_id")]
-    public string AppId { get; set; } = "SALESFORCE";
+    public required FlowsVaultConnectionAppIdSalesforceEnum AppId { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

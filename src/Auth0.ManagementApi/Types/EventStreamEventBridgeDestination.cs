@@ -12,7 +12,7 @@ public record EventStreamEventBridgeDestination : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "eventbridge";
+    public required EventStreamEventBridgeDestinationTypeEnum Type { get; set; }
 
     [JsonPropertyName("configuration")]
     public required EventStreamEventBridgeConfiguration Configuration { get; set; }

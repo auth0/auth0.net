@@ -15,7 +15,7 @@ public record FormFlow : IJsonOnDeserialized
     public required string Id { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "FLOW";
+    public required FormNodeTypeFlowConst Type { get; set; }
 
     [Optional]
     [JsonPropertyName("coordinates")]

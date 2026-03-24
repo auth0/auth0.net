@@ -15,10 +15,10 @@ public record FormFieldBoolean : IJsonOnDeserialized
     public required string Id { get; set; }
 
     [JsonPropertyName("category")]
-    public string Category { get; set; } = "FIELD";
+    public required FormComponentCategoryFieldConst Category { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "BOOLEAN";
+    public required FormFieldTypeBooleanConst Type { get; set; }
 
     [JsonPropertyName("config")]
     public required FormFieldBooleanConfig Config { get; set; }

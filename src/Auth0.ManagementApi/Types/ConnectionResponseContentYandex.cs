@@ -15,7 +15,7 @@ public record ConnectionResponseContentYandex : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("strategy")]
-    public string Strategy { get; set; } = "yandex";
+    public required ConnectionResponseContentYandexStrategy Strategy { get; set; }
 
     [Optional]
     [JsonPropertyName("options")]

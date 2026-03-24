@@ -41,10 +41,16 @@ public record UpdateUserRequestContent
     [JsonPropertyName("phone_verified")]
     public bool? PhoneVerified { get; set; }
 
+    /// <summary>
+    /// User metadata to which this user has read/write access.
+    /// </summary>
     [Optional]
     [JsonPropertyName("user_metadata")]
     public Dictionary<string, object?>? UserMetadata { get; set; }
 
+    /// <summary>
+    /// User metadata to which this user has read-only access.
+    /// </summary>
     [Optional]
     [JsonPropertyName("app_metadata")]
     public Dictionary<string, object?>? AppMetadata { get; set; }

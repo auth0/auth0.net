@@ -12,7 +12,7 @@ public record ResourceServerTokenEncryption : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("format")]
-    public string Format { get; set; } = "compact-nested-jwe";
+    public required ResourceServerTokenEncryptionFormatEnum Format { get; set; }
 
     [JsonPropertyName("encryption_key")]
     public required ResourceServerTokenEncryptionKey EncryptionKey { get; set; }

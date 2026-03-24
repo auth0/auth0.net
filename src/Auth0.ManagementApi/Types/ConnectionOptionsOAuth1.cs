@@ -14,12 +14,43 @@ public record ConnectionOptionsOAuth1 : IJsonOnDeserialized, IJsonOnSerializing
         new Dictionary<string, object?>();
 
     [Optional]
+    [JsonPropertyName("accessTokenURL")]
+    public string? AccessTokenUrl { get; set; }
+
+    [Optional]
     [JsonPropertyName("client_id")]
     public string? ClientId { get; set; }
 
     [Optional]
     [JsonPropertyName("client_secret")]
     public string? ClientSecret { get; set; }
+
+    [Optional]
+    [JsonPropertyName("requestTokenURL")]
+    public string? RequestTokenUrl { get; set; }
+
+    [Optional]
+    [JsonPropertyName("scripts")]
+    public ConnectionScriptsOAuth1? Scripts { get; set; }
+
+    [Optional]
+    [JsonPropertyName("signatureMethod")]
+    public ConnectionSignatureMethodOAuth1? SignatureMethod { get; set; }
+
+    [Nullable, Optional]
+    [JsonPropertyName("upstream_params")]
+    public Optional<Dictionary<
+        string,
+        ConnectionUpstreamAdditionalProperties?
+    >?> UpstreamParams { get; set; }
+
+    [Optional]
+    [JsonPropertyName("userAuthorizationURL")]
+    public string? UserAuthorizationUrl { get; set; }
+
+    [Optional]
+    [JsonPropertyName("non_persistent_attrs")]
+    public IEnumerable<string>? NonPersistentAttrs { get; set; }
 
     [JsonIgnore]
     public AdditionalProperties AdditionalProperties { get; set; } = new();

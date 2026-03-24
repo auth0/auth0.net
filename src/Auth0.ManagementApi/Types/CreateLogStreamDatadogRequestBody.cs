@@ -19,7 +19,7 @@ public record CreateLogStreamDatadogRequestBody : IJsonOnDeserialized
     public string? Name { get; set; }
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "datadog";
+    public required LogStreamDatadogEnum Type { get; set; }
 
     /// <summary>
     /// True for priority log streams, false for non-priority

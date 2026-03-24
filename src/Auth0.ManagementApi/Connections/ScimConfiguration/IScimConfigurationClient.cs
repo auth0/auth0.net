@@ -9,6 +9,15 @@ public partial interface IScimConfigurationClient
     public ITokensClient Tokens { get; }
 
     /// <summary>
+    /// Retrieve a list of SCIM configurations of a tenant.
+    /// </summary>
+    Task<Pager<ManagementApi.ScimConfiguration>> ListAsync(
+        ListScimConfigurationsRequestParameters request,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
+
+    /// <summary>
     /// Retrieves a scim configuration by its <c>connectionId</c>.
     /// </summary>
     WithRawResponseTask<GetScimConfigurationResponseContent> GetAsync(

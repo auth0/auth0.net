@@ -12,7 +12,7 @@ public record FlowsVaultConnectioSetupTwilioApiKey : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "API_KEY";
+    public required FlowsVaultConnectioSetupTypeApiKeyEnum Type { get; set; }
 
     [JsonPropertyName("account_id")]
     public required string AccountId { get; set; }

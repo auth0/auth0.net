@@ -39,6 +39,9 @@ public record UserAttributeProfileUserAttributeAdditionalProperties : IJsonOnDes
     [JsonPropertyName("oidc_mapping")]
     public UserAttributeProfileOidcMapping? OidcMapping { get; set; }
 
+    /// <summary>
+    /// SAML mapping for this attribute
+    /// </summary>
     [Optional]
     [JsonPropertyName("saml_mapping")]
     public IEnumerable<string>? SamlMapping { get; set; }

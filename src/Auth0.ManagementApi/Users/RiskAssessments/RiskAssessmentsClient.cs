@@ -22,7 +22,7 @@ public partial class RiskAssessmentsClient : IRiskAssessmentsClient
     ///     new ClearAssessorsRequestContent
     ///     {
     ///         Connection = "connection",
-    ///         Assessors = new List&lt;string&gt;() { "new-device" },
+    ///         Assessors = new List&lt;AssessorsTypeEnum&gt;() { AssessorsTypeEnum.NewDevice },
     ///     }
     /// );
     /// </code></example>

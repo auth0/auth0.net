@@ -13,7 +13,7 @@ public record FlowsVaultConnectioSetupBigqueryOauthJwt : IJsonOnDeserialized
 
     [Optional]
     [JsonPropertyName("type")]
-    public string? Type { get; set; }
+    public FlowsVaultConnectioSetupTypeOauthJwtEnum? Type { get; set; }
 
     [Optional]
     [JsonPropertyName("project_id")]

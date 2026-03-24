@@ -27,7 +27,7 @@ public record GetEventStreamDeliveryHistoryResponseContent : IJsonOnDeserialized
     public required string EventStreamId { get; set; }
 
     [JsonPropertyName("status")]
-    public string Status { get; set; } = "failed";
+    public required EventStreamDeliveryStatusEnum Status { get; set; }
 
     [JsonPropertyName("event_type")]
     public required EventStreamDeliveryEventTypeEnum EventType { get; set; }

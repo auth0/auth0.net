@@ -12,7 +12,7 @@ public record FlowsVaultConnectioSetupHttpBearer : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("type")]
-    public string Type { get; set; } = "BEARER";
+    public required FlowsVaultConnectioSetupTypeBearerEnum Type { get; set; }
 
     [JsonPropertyName("token")]
     public required string Token { get; set; }

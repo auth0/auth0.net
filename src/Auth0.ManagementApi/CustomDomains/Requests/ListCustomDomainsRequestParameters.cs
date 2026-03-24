@@ -7,7 +7,7 @@ namespace Auth0.ManagementApi;
 public record ListCustomDomainsRequestParameters
 {
     /// <summary>
-    /// Query in <see href="http://www.lucenetutorial.com/lucene-query-syntax.html">Lucene query string syntax</see>.
+    /// Query in <see href="https://lucene.apache.org/core/2_9_4/queryparsersyntax.html">Lucene query string syntax</see>.
     /// </summary>
     [JsonIgnore]
     public Optional<string?> Q { get; set; }

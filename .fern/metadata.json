@@ -1,5 +1,5 @@
 {
-  "cliVersion": "3.82.0",
+  "cliVersion": "4.23.1",
   "generatorName": "fernapi/fern-csharp-sdk",
   "generatorVersion": "2.22.0",
   "generatorConfig": {
@@ -13,11 +13,13 @@
     "experimental-explicit-nullable-optional": true,
     "use-undiscriminated-unions": true,
     "redact-response-body-on-error": true,
+    "omitFernHeaders": true,
     "output-path": {
       "library": "src",
       "test": "tests",
       "solution": "."
     }
   },
-  "sdkVersion": "0.0.1764"
+  "originGitCommit": "33bcc5d4e893559e35a90ad0025a42cfb645c687",
+  "sdkVersion": "7.44.0"
 }

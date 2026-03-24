@@ -102,11 +102,11 @@ public record UpdateResourceServerResponseContent : IJsonOnDeserialized
 
     [Nullable, Optional]
     [JsonPropertyName("consent_policy")]
-    public Optional<string?> ConsentPolicy { get; set; }
+    public Optional<ResourceServerConsentPolicyEnum?> ConsentPolicy { get; set; }
 
-    [Optional]
+    [Nullable, Optional]
     [JsonPropertyName("authorization_details")]
-    public IEnumerable<object>? AuthorizationDetails { get; set; }
+    public Optional<IEnumerable<object>?> AuthorizationDetails { get; set; }
 
     [Nullable, Optional]
     [JsonPropertyName("proof_of_possession")]

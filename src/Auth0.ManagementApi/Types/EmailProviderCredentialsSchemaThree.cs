@@ -20,7 +20,7 @@ public record EmailProviderCredentialsSchemaThree : IJsonOnDeserialized
 
     [Optional]
     [JsonPropertyName("region")]
-    public string? Region { get; set; }
+    public EmailSparkPostRegionEnum? Region { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

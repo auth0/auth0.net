@@ -12,19 +12,19 @@ public partial class ConnectionsClient : IConnectionsClient
     {
         _client = client;
         DirectoryProvisioning = new DirectoryProvisioningClient(_client);
+        ScimConfiguration = new ScimConfigurationClient(_client);
         Clients = new Auth0.ManagementApi.Connections.ClientsClient(_client);
         Keys = new Auth0.ManagementApi.Connections.KeysClient(_client);
-        ScimConfiguration = new ScimConfigurationClient(_client);
         Users = new Auth0.ManagementApi.Connections.UsersClient(_client);
     }
 
     public IDirectoryProvisioningClient DirectoryProvisioning { get; }
 
+    public IScimConfigurationClient ScimConfiguration { get; }
+
     public Auth0.ManagementApi.Connections.IClientsClient Clients { get; }
 
     public Auth0.ManagementApi.Connections.IKeysClient Keys { get; }
-
-    public IScimConfigurationClient ScimConfiguration { get; }
 
     public Auth0.ManagementApi.Connections.IUsersClient Users { get; }
 
