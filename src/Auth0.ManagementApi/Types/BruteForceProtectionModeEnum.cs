@@ -82,6 +82,29 @@ public readonly record struct BruteForceProtectionModeEnum : IStringEnum
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override BruteForceProtectionModeEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new BruteForceProtectionModeEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            BruteForceProtectionModeEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

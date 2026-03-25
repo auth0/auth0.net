@@ -80,6 +80,29 @@ public readonly record struct ConnectionResponseContentShopStrategy : IStringEnu
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override ConnectionResponseContentShopStrategy ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new ConnectionResponseContentShopStrategy(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            ConnectionResponseContentShopStrategy value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

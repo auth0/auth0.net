@@ -85,6 +85,29 @@ public readonly record struct FormWidgetTypeAuth0VerifiableCredentialsConst : IS
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override FormWidgetTypeAuth0VerifiableCredentialsConst ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new FormWidgetTypeAuth0VerifiableCredentialsConst(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            FormWidgetTypeAuth0VerifiableCredentialsConst value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

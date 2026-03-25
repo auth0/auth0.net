@@ -78,6 +78,29 @@ public readonly record struct PhoneProviderDeliveryMethodEnum : IStringEnum
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override PhoneProviderDeliveryMethodEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new PhoneProviderDeliveryMethodEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            PhoneProviderDeliveryMethodEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

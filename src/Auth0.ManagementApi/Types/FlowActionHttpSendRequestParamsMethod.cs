@@ -88,6 +88,29 @@ public readonly record struct FlowActionHttpSendRequestParamsMethod : IStringEnu
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override FlowActionHttpSendRequestParamsMethod ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new FlowActionHttpSendRequestParamsMethod(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            FlowActionHttpSendRequestParamsMethod value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

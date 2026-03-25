@@ -84,6 +84,29 @@ public readonly record struct ConnectionResponseContentUntappdStrategy : IString
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override ConnectionResponseContentUntappdStrategy ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new ConnectionResponseContentUntappdStrategy(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            ConnectionResponseContentUntappdStrategy value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

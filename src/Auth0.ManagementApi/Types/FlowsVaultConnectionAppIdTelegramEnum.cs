@@ -80,6 +80,29 @@ public readonly record struct FlowsVaultConnectionAppIdTelegramEnum : IStringEnu
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override FlowsVaultConnectionAppIdTelegramEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new FlowsVaultConnectionAppIdTelegramEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            FlowsVaultConnectionAppIdTelegramEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

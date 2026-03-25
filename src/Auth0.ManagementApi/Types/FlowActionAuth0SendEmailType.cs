@@ -76,6 +76,29 @@ public readonly record struct FlowActionAuth0SendEmailType : IStringEnum
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override FlowActionAuth0SendEmailType ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new FlowActionAuth0SendEmailType(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            FlowActionAuth0SendEmailType value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

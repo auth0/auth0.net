@@ -77,6 +77,29 @@ public readonly record struct CustomSigningKeyTypeEnum : IStringEnum
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override CustomSigningKeyTypeEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new CustomSigningKeyTypeEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            CustomSigningKeyTypeEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

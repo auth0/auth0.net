@@ -88,6 +88,29 @@ public readonly record struct FormBlockResendButtonConfigTextAlignmentEnum : ISt
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override FormBlockResendButtonConfigTextAlignmentEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new FormBlockResendButtonConfigTextAlignmentEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            FormBlockResendButtonConfigTextAlignmentEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

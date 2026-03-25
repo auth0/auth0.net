@@ -76,6 +76,29 @@ public readonly record struct FlowActionOtpGenerateCodeAction : IStringEnum
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override FlowActionOtpGenerateCodeAction ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new FlowActionOtpGenerateCodeAction(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            FlowActionOtpGenerateCodeAction value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

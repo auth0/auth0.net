@@ -86,6 +86,29 @@ public readonly record struct ConnectionResponseContentGoogleOAuth2Strategy : IS
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override ConnectionResponseContentGoogleOAuth2Strategy ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new ConnectionResponseContentGoogleOAuth2Strategy(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            ConnectionResponseContentGoogleOAuth2Strategy value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

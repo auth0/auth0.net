@@ -75,6 +75,29 @@ public readonly record struct LogStreamMixpanelEnum : IStringEnum
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override LogStreamMixpanelEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new LogStreamMixpanelEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            LogStreamMixpanelEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

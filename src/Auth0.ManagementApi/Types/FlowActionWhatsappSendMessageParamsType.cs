@@ -98,6 +98,29 @@ public readonly record struct FlowActionWhatsappSendMessageParamsType : IStringE
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override FlowActionWhatsappSendMessageParamsType ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new FlowActionWhatsappSendMessageParamsType(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            FlowActionWhatsappSendMessageParamsType value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

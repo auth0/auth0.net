@@ -91,6 +91,29 @@ public readonly record struct BreachedPasswordDetectionPreUserRegistrationShield
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override BreachedPasswordDetectionPreUserRegistrationShieldsEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new BreachedPasswordDetectionPreUserRegistrationShieldsEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            BreachedPasswordDetectionPreUserRegistrationShieldsEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

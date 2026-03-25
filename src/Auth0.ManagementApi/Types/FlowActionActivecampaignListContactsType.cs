@@ -86,6 +86,29 @@ public readonly record struct FlowActionActivecampaignListContactsType : IString
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override FlowActionActivecampaignListContactsType ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new FlowActionActivecampaignListContactsType(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            FlowActionActivecampaignListContactsType value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

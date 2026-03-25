@@ -80,6 +80,29 @@ public readonly record struct ClientOrganizationUsageEnum : IStringEnum
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override ClientOrganizationUsageEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new ClientOrganizationUsageEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            ClientOrganizationUsageEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

@@ -82,6 +82,29 @@ public readonly record struct FlowActionSalesforceSearchLeadsAction : IStringEnu
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override FlowActionSalesforceSearchLeadsAction ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new FlowActionSalesforceSearchLeadsAction(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            FlowActionSalesforceSearchLeadsAction value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

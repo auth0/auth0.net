@@ -86,6 +86,29 @@ public readonly record struct FlowActionActivecampaignUpsertContactAction : IStr
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override FlowActionActivecampaignUpsertContactAction ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new FlowActionActivecampaignUpsertContactAction(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            FlowActionActivecampaignUpsertContactAction value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

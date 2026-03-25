@@ -80,6 +80,29 @@ public readonly record struct SelfServiceProfileCustomTextPageEnum : IStringEnum
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override SelfServiceProfileCustomTextPageEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new SelfServiceProfileCustomTextPageEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            SelfServiceProfileCustomTextPageEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>
