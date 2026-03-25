@@ -44,6 +44,6 @@ src/Auth0.ManagementApi/Connections/DirectoryProvisioning/DirectoryProvisioningC
 src/Auth0.ManagementApi/Connections/DirectoryProvisioning/IDirectoryProvisioningClient.cs
 src/Auth0.ManagementApi/Types/ResourceServerTokenEncryptionKey.cs
 
-src/Auth0.ManagementApi/Core/RawClient.cs
+
 src/Auth0.ManagementApi/Wrapper
 src/Auth0.ManagementApi/CHANGELOG.md
