@@ -78,6 +78,29 @@ public readonly record struct X509CertificateCredentialTypeEnum : IStringEnum
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override X509CertificateCredentialTypeEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new X509CertificateCredentialTypeEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            X509CertificateCredentialTypeEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

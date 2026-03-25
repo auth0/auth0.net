@@ -79,6 +79,29 @@ public readonly record struct FlowsVaultConnectioSetupTypeJwtEnum : IStringEnum
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override FlowsVaultConnectioSetupTypeJwtEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new FlowsVaultConnectioSetupTypeJwtEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            FlowsVaultConnectioSetupTypeJwtEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

@@ -77,6 +77,29 @@ public readonly record struct MfaPolicyEnum : IStringEnum
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override MfaPolicyEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new MfaPolicyEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            MfaPolicyEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

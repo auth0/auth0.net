@@ -84,6 +84,29 @@ public readonly record struct UserAttributeProfileUserIdOidcMappingEnum : IStrin
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override UserAttributeProfileUserIdOidcMappingEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new UserAttributeProfileUserIdOidcMappingEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            UserAttributeProfileUserIdOidcMappingEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

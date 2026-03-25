@@ -118,6 +118,29 @@ public readonly record struct ClientOidcBackchannelLogoutInitiatorsEnum : IStrin
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override ClientOidcBackchannelLogoutInitiatorsEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new ClientOidcBackchannelLogoutInitiatorsEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            ClientOidcBackchannelLogoutInitiatorsEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

@@ -78,6 +78,29 @@ public readonly record struct TokenExchangeProfileTypeEnum : IStringEnum
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override TokenExchangeProfileTypeEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new TokenExchangeProfileTypeEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            TokenExchangeProfileTypeEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

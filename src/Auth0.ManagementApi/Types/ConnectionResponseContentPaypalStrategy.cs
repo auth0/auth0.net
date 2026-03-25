@@ -80,6 +80,29 @@ public readonly record struct ConnectionResponseContentPaypalStrategy : IStringE
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override ConnectionResponseContentPaypalStrategy ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new ConnectionResponseContentPaypalStrategy(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            ConnectionResponseContentPaypalStrategy value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

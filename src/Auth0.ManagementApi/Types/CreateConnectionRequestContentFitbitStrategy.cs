@@ -84,6 +84,29 @@ public readonly record struct CreateConnectionRequestContentFitbitStrategy : ISt
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override CreateConnectionRequestContentFitbitStrategy ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new CreateConnectionRequestContentFitbitStrategy(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            CreateConnectionRequestContentFitbitStrategy value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

@@ -90,6 +90,29 @@ public readonly record struct CreatedUserAuthenticationMethodTypeEnum : IStringE
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override CreatedUserAuthenticationMethodTypeEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new CreatedUserAuthenticationMethodTypeEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            CreatedUserAuthenticationMethodTypeEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

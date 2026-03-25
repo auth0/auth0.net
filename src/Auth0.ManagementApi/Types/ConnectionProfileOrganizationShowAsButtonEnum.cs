@@ -92,6 +92,29 @@ public readonly record struct ConnectionProfileOrganizationShowAsButtonEnum : IS
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override ConnectionProfileOrganizationShowAsButtonEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new ConnectionProfileOrganizationShowAsButtonEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            ConnectionProfileOrganizationShowAsButtonEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

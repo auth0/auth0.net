@@ -78,6 +78,29 @@ public readonly record struct UniversalLoginExperienceEnum : IStringEnum
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override UniversalLoginExperienceEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new UniversalLoginExperienceEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            UniversalLoginExperienceEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

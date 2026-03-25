@@ -84,6 +84,29 @@ public readonly record struct CreateConnectionRequestContentAzureAdStrategy : IS
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override CreateConnectionRequestContentAzureAdStrategy ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new CreateConnectionRequestContentAzureAdStrategy(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            CreateConnectionRequestContentAzureAdStrategy value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

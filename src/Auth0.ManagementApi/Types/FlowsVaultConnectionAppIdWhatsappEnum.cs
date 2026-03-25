@@ -80,6 +80,29 @@ public readonly record struct FlowsVaultConnectionAppIdWhatsappEnum : IStringEnu
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override FlowsVaultConnectionAppIdWhatsappEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new FlowsVaultConnectionAppIdWhatsappEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            FlowsVaultConnectionAppIdWhatsappEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

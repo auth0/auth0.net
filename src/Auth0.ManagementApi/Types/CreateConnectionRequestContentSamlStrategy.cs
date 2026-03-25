@@ -84,6 +84,29 @@ public readonly record struct CreateConnectionRequestContentSamlStrategy : IStri
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override CreateConnectionRequestContentSamlStrategy ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new CreateConnectionRequestContentSamlStrategy(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            CreateConnectionRequestContentSamlStrategy value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

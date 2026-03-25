@@ -87,6 +87,29 @@ public readonly record struct CreateConnectionRequestContentPlanningCenterStrate
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override CreateConnectionRequestContentPlanningCenterStrategy ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new CreateConnectionRequestContentPlanningCenterStrategy(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            CreateConnectionRequestContentPlanningCenterStrategy value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>
