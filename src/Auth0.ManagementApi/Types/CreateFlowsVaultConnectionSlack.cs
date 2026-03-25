@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -182,9 +182,9 @@ public class CreateFlowsVaultConnectionSlack
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionSlackWebhook> onCreateFlowsVaultConnectionSlackWebhook,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionSlackOauthCode> onCreateFlowsVaultConnectionSlackOauthCode,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionSlackUninitialized> onCreateFlowsVaultConnectionSlackUninitialized
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionSlackWebhook> onCreateFlowsVaultConnectionSlackWebhook,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionSlackOauthCode> onCreateFlowsVaultConnectionSlackOauthCode,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionSlackUninitialized> onCreateFlowsVaultConnectionSlackUninitialized
     )
     {
         switch (Type)
@@ -261,7 +261,7 @@ public class CreateFlowsVaultConnectionSlack
     {
         public override CreateFlowsVaultConnectionSlack? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -334,7 +334,7 @@ public class CreateFlowsVaultConnectionSlack
 
         public override CreateFlowsVaultConnectionSlack ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

@@ -1,6 +1,6 @@
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -546,6 +546,11 @@ public readonly record struct OauthScope : IStringEnum
     /// Read Groups
     /// </summary>
     public static readonly OauthScope ReadGroups = new(Values.ReadGroups);
+
+    /// <summary>
+    /// Delete Groups
+    /// </summary>
+    public static readonly OauthScope DeleteGroups = new(Values.DeleteGroups);
 
     /// <summary>
     /// Create Guardian Enrollment Tickets
@@ -1810,6 +1815,11 @@ public readonly record struct OauthScope : IStringEnum
         /// Read Groups
         /// </summary>
         public const string ReadGroups = "read:groups";
+
+        /// <summary>
+        /// Delete Groups
+        /// </summary>
+        public const string DeleteGroups = "delete:groups";
 
         /// <summary>
         /// Create Guardian Enrollment Tickets

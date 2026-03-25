@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -103,7 +103,10 @@ public class FlowActionAuth0SendRequestParamsQueryParamsValue
         };
     }
 
-    public void Visit(System.Action<double> onDouble, System.Action<string> onString)
+    public void Visit(
+        global::System.Action<double> onDouble,
+        global::System.Action<string> onString
+    )
     {
         switch (Type)
         {
@@ -167,7 +170,7 @@ public class FlowActionAuth0SendRequestParamsQueryParamsValue
     {
         public override FlowActionAuth0SendRequestParamsQueryParamsValue? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -218,7 +221,7 @@ public class FlowActionAuth0SendRequestParamsQueryParamsValue
 
         public override FlowActionAuth0SendRequestParamsQueryParamsValue ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

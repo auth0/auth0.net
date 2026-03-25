@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -420,14 +420,14 @@ public class EmailProviderCredentialsSchema
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.EmailProviderCredentialsSchemaZero> onEmailProviderCredentialsSchemaZero,
-        System.Action<Auth0.ManagementApi.EmailProviderCredentialsSchemaAccessKeyId> onEmailProviderCredentialsSchemaAccessKeyId,
-        System.Action<Auth0.ManagementApi.EmailProviderCredentialsSchemaSmtpHost> onEmailProviderCredentialsSchemaSmtpHost,
-        System.Action<Auth0.ManagementApi.EmailProviderCredentialsSchemaThree> onEmailProviderCredentialsSchemaThree,
-        System.Action<Auth0.ManagementApi.EmailProviderCredentialsSchemaApiKey> onEmailProviderCredentialsSchemaApiKey,
-        System.Action<Auth0.ManagementApi.EmailProviderCredentialsSchemaConnectionString> onEmailProviderCredentialsSchemaConnectionString,
-        System.Action<Auth0.ManagementApi.EmailProviderCredentialsSchemaClientId> onEmailProviderCredentialsSchemaClientId,
-        System.Action<Auth0.ManagementApi.ExtensibilityEmailProviderCredentials> onExtensibilityEmailProviderCredentials
+        global::System.Action<Auth0.ManagementApi.EmailProviderCredentialsSchemaZero> onEmailProviderCredentialsSchemaZero,
+        global::System.Action<Auth0.ManagementApi.EmailProviderCredentialsSchemaAccessKeyId> onEmailProviderCredentialsSchemaAccessKeyId,
+        global::System.Action<Auth0.ManagementApi.EmailProviderCredentialsSchemaSmtpHost> onEmailProviderCredentialsSchemaSmtpHost,
+        global::System.Action<Auth0.ManagementApi.EmailProviderCredentialsSchemaThree> onEmailProviderCredentialsSchemaThree,
+        global::System.Action<Auth0.ManagementApi.EmailProviderCredentialsSchemaApiKey> onEmailProviderCredentialsSchemaApiKey,
+        global::System.Action<Auth0.ManagementApi.EmailProviderCredentialsSchemaConnectionString> onEmailProviderCredentialsSchemaConnectionString,
+        global::System.Action<Auth0.ManagementApi.EmailProviderCredentialsSchemaClientId> onEmailProviderCredentialsSchemaClientId,
+        global::System.Action<Auth0.ManagementApi.ExtensibilityEmailProviderCredentials> onExtensibilityEmailProviderCredentials
     )
     {
         switch (Type)
@@ -541,7 +541,7 @@ public class EmailProviderCredentialsSchema
     {
         public override EmailProviderCredentialsSchema? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -639,7 +639,7 @@ public class EmailProviderCredentialsSchema
 
         public override EmailProviderCredentialsSchema ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

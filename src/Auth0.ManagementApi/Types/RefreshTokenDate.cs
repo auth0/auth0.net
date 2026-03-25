@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -110,8 +110,8 @@ public class RefreshTokenDate
     }
 
     public void Visit(
-        System.Action<DateTime> onDateTime,
-        System.Action<Dictionary<string, object?>> onRefreshTokenDateObject
+        global::System.Action<DateTime> onDateTime,
+        global::System.Action<Dictionary<string, object?>> onRefreshTokenDateObject
     )
     {
         switch (Type)
@@ -172,7 +172,7 @@ public class RefreshTokenDate
     {
         public override RefreshTokenDate? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -244,7 +244,7 @@ public class RefreshTokenDate
 
         public override RefreshTokenDate ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

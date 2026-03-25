@@ -34,23 +34,6 @@ public partial interface ICustomDomainsClient
     );
 
     /// <summary>
-    /// Retrieve the tenant's default domain.
-    /// </summary>
-    WithRawResponseTask<GetDefaultDomainResponseContent> GetDefaultAsync(
-        RequestOptions? options = null,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <summary>
-    /// Set the default custom domain for the tenant.
-    /// </summary>
-    WithRawResponseTask<UpdateDefaultDomainResponseContent> SetDefaultAsync(
-        SetDefaultCustomDomainRequestContent request,
-        RequestOptions? options = null,
-        CancellationToken cancellationToken = default
-    );
-
-    /// <summary>
     /// Retrieve a custom domain configuration and status.
     /// </summary>
     WithRawResponseTask<GetCustomDomainResponseContent> GetAsync(

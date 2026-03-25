@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -776,22 +776,22 @@ public class UpdateFlowsVaultConnectionSetup
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupApiKeyWithBaseUrl> onFlowsVaultConnectioSetupApiKeyWithBaseUrl,
-        System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupApiKey> onFlowsVaultConnectioSetupApiKey,
-        System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupOauthApp> onFlowsVaultConnectioSetupOauthApp,
-        System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupBigqueryOauthJwt> onFlowsVaultConnectioSetupBigqueryOauthJwt,
-        System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupSecretApiKey> onFlowsVaultConnectioSetupSecretApiKey,
-        System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupHttpBearer> onFlowsVaultConnectioSetupHttpBearer,
-        System.Action<Auth0.ManagementApi.FlowsVaultConnectionHttpBasicAuthSetup> onFlowsVaultConnectionHttpBasicAuthSetup,
-        System.Action<Auth0.ManagementApi.FlowsVaultConnectionHttpApiKeySetup> onFlowsVaultConnectionHttpApiKeySetup,
-        System.Action<Auth0.ManagementApi.FlowsVaultConnectionHttpOauthClientCredentialsSetup> onFlowsVaultConnectionHttpOauthClientCredentialsSetup,
-        System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupJwt> onFlowsVaultConnectioSetupJwt,
-        System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupMailjetApiKey> onFlowsVaultConnectioSetupMailjetApiKey,
-        System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupToken> onFlowsVaultConnectioSetupToken,
-        System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupWebhook> onFlowsVaultConnectioSetupWebhook,
-        System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupStripeKeyPair> onFlowsVaultConnectioSetupStripeKeyPair,
-        System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupOauthCode> onFlowsVaultConnectioSetupOauthCode,
-        System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupTwilioApiKey> onFlowsVaultConnectioSetupTwilioApiKey
+        global::System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupApiKeyWithBaseUrl> onFlowsVaultConnectioSetupApiKeyWithBaseUrl,
+        global::System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupApiKey> onFlowsVaultConnectioSetupApiKey,
+        global::System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupOauthApp> onFlowsVaultConnectioSetupOauthApp,
+        global::System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupBigqueryOauthJwt> onFlowsVaultConnectioSetupBigqueryOauthJwt,
+        global::System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupSecretApiKey> onFlowsVaultConnectioSetupSecretApiKey,
+        global::System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupHttpBearer> onFlowsVaultConnectioSetupHttpBearer,
+        global::System.Action<Auth0.ManagementApi.FlowsVaultConnectionHttpBasicAuthSetup> onFlowsVaultConnectionHttpBasicAuthSetup,
+        global::System.Action<Auth0.ManagementApi.FlowsVaultConnectionHttpApiKeySetup> onFlowsVaultConnectionHttpApiKeySetup,
+        global::System.Action<Auth0.ManagementApi.FlowsVaultConnectionHttpOauthClientCredentialsSetup> onFlowsVaultConnectionHttpOauthClientCredentialsSetup,
+        global::System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupJwt> onFlowsVaultConnectioSetupJwt,
+        global::System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupMailjetApiKey> onFlowsVaultConnectioSetupMailjetApiKey,
+        global::System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupToken> onFlowsVaultConnectioSetupToken,
+        global::System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupWebhook> onFlowsVaultConnectioSetupWebhook,
+        global::System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupStripeKeyPair> onFlowsVaultConnectioSetupStripeKeyPair,
+        global::System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupOauthCode> onFlowsVaultConnectioSetupOauthCode,
+        global::System.Action<Auth0.ManagementApi.FlowsVaultConnectioSetupTwilioApiKey> onFlowsVaultConnectioSetupTwilioApiKey
     )
     {
         switch (Type)
@@ -961,7 +961,7 @@ public class UpdateFlowsVaultConnectionSetup
     {
         public override UpdateFlowsVaultConnectionSetup? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -1099,7 +1099,7 @@ public class UpdateFlowsVaultConnectionSetup
 
         public override UpdateFlowsVaultConnectionSetup ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

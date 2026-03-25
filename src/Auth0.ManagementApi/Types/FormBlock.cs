@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -333,14 +333,14 @@ public class FormBlock
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.FormBlockDivider> onFormBlockDivider,
-        System.Action<Auth0.ManagementApi.FormBlockHtml> onFormBlockHtml,
-        System.Action<Auth0.ManagementApi.FormBlockImage> onFormBlockImage,
-        System.Action<Auth0.ManagementApi.FormBlockJumpButton> onFormBlockJumpButton,
-        System.Action<Auth0.ManagementApi.FormBlockResendButton> onFormBlockResendButton,
-        System.Action<Auth0.ManagementApi.FormBlockNextButton> onFormBlockNextButton,
-        System.Action<Auth0.ManagementApi.FormBlockPreviousButton> onFormBlockPreviousButton,
-        System.Action<Auth0.ManagementApi.FormBlockRichText> onFormBlockRichText
+        global::System.Action<Auth0.ManagementApi.FormBlockDivider> onFormBlockDivider,
+        global::System.Action<Auth0.ManagementApi.FormBlockHtml> onFormBlockHtml,
+        global::System.Action<Auth0.ManagementApi.FormBlockImage> onFormBlockImage,
+        global::System.Action<Auth0.ManagementApi.FormBlockJumpButton> onFormBlockJumpButton,
+        global::System.Action<Auth0.ManagementApi.FormBlockResendButton> onFormBlockResendButton,
+        global::System.Action<Auth0.ManagementApi.FormBlockNextButton> onFormBlockNextButton,
+        global::System.Action<Auth0.ManagementApi.FormBlockPreviousButton> onFormBlockPreviousButton,
+        global::System.Action<Auth0.ManagementApi.FormBlockRichText> onFormBlockRichText
     )
     {
         switch (Type)
@@ -438,7 +438,7 @@ public class FormBlock
     {
         public override FormBlock? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -515,7 +515,7 @@ public class FormBlock
 
         public override FormBlock ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -209,10 +209,10 @@ public class FlowActionSalesforce
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.FlowActionSalesforceCreateLead> onFlowActionSalesforceCreateLead,
-        System.Action<Auth0.ManagementApi.FlowActionSalesforceGetLead> onFlowActionSalesforceGetLead,
-        System.Action<Auth0.ManagementApi.FlowActionSalesforceSearchLeads> onFlowActionSalesforceSearchLeads,
-        System.Action<Auth0.ManagementApi.FlowActionSalesforceUpdateLead> onFlowActionSalesforceUpdateLead
+        global::System.Action<Auth0.ManagementApi.FlowActionSalesforceCreateLead> onFlowActionSalesforceCreateLead,
+        global::System.Action<Auth0.ManagementApi.FlowActionSalesforceGetLead> onFlowActionSalesforceGetLead,
+        global::System.Action<Auth0.ManagementApi.FlowActionSalesforceSearchLeads> onFlowActionSalesforceSearchLeads,
+        global::System.Action<Auth0.ManagementApi.FlowActionSalesforceUpdateLead> onFlowActionSalesforceUpdateLead
     )
     {
         switch (Type)
@@ -290,7 +290,7 @@ public class FlowActionSalesforce
     {
         public override FlowActionSalesforce? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -368,7 +368,7 @@ public class FlowActionSalesforce
 
         public override FlowActionSalesforce ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

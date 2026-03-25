@@ -1,5 +1,5 @@
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -149,6 +149,10 @@ public record UpdateConnectionOptions : IJsonOnDeserialized, IJsonOnSerializing
     [Nullable, Optional]
     [JsonPropertyName("federated_connections_access_tokens")]
     public Optional<ConnectionFederatedConnectionsAccessTokens?> FederatedConnectionsAccessTokens { get; set; }
+
+    [Optional]
+    [JsonPropertyName("password_options")]
+    public ConnectionPasswordOptions? PasswordOptions { get; set; }
 
     [JsonIgnore]
     public AdditionalProperties AdditionalProperties { get; set; } = new();

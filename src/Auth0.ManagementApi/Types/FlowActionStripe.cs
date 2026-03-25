@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -333,13 +333,13 @@ public class FlowActionStripe
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.FlowActionStripeAddTaxId> onFlowActionStripeAddTaxId,
-        System.Action<Auth0.ManagementApi.FlowActionStripeCreateCustomer> onFlowActionStripeCreateCustomer,
-        System.Action<Auth0.ManagementApi.FlowActionStripeCreatePortalSession> onFlowActionStripeCreatePortalSession,
-        System.Action<Auth0.ManagementApi.FlowActionStripeDeleteTaxId> onFlowActionStripeDeleteTaxId,
-        System.Action<Auth0.ManagementApi.FlowActionStripeFindCustomers> onFlowActionStripeFindCustomers,
-        System.Action<Auth0.ManagementApi.FlowActionStripeGetCustomer> onFlowActionStripeGetCustomer,
-        System.Action<Auth0.ManagementApi.FlowActionStripeUpdateCustomer> onFlowActionStripeUpdateCustomer
+        global::System.Action<Auth0.ManagementApi.FlowActionStripeAddTaxId> onFlowActionStripeAddTaxId,
+        global::System.Action<Auth0.ManagementApi.FlowActionStripeCreateCustomer> onFlowActionStripeCreateCustomer,
+        global::System.Action<Auth0.ManagementApi.FlowActionStripeCreatePortalSession> onFlowActionStripeCreatePortalSession,
+        global::System.Action<Auth0.ManagementApi.FlowActionStripeDeleteTaxId> onFlowActionStripeDeleteTaxId,
+        global::System.Action<Auth0.ManagementApi.FlowActionStripeFindCustomers> onFlowActionStripeFindCustomers,
+        global::System.Action<Auth0.ManagementApi.FlowActionStripeGetCustomer> onFlowActionStripeGetCustomer,
+        global::System.Action<Auth0.ManagementApi.FlowActionStripeUpdateCustomer> onFlowActionStripeUpdateCustomer
     )
     {
         switch (Type)
@@ -438,7 +438,7 @@ public class FlowActionStripe
     {
         public override FlowActionStripe? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -531,7 +531,7 @@ public class FlowActionStripe
 
         public override FlowActionStripe ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

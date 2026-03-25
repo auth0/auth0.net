@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -317,13 +317,13 @@ public class FlowActionFlow
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.FlowActionFlowBooleanCondition> onFlowActionFlowBooleanCondition,
-        System.Action<Auth0.ManagementApi.FlowActionFlowDelayFlow> onFlowActionFlowDelayFlow,
-        System.Action<Auth0.ManagementApi.FlowActionFlowDoNothing> onFlowActionFlowDoNothing,
-        System.Action<Auth0.ManagementApi.FlowActionFlowErrorMessage> onFlowActionFlowErrorMessage,
-        System.Action<Auth0.ManagementApi.FlowActionFlowMapValue> onFlowActionFlowMapValue,
-        System.Action<Auth0.ManagementApi.FlowActionFlowReturnJson> onFlowActionFlowReturnJson,
-        System.Action<Auth0.ManagementApi.FlowActionFlowStoreVars> onFlowActionFlowStoreVars
+        global::System.Action<Auth0.ManagementApi.FlowActionFlowBooleanCondition> onFlowActionFlowBooleanCondition,
+        global::System.Action<Auth0.ManagementApi.FlowActionFlowDelayFlow> onFlowActionFlowDelayFlow,
+        global::System.Action<Auth0.ManagementApi.FlowActionFlowDoNothing> onFlowActionFlowDoNothing,
+        global::System.Action<Auth0.ManagementApi.FlowActionFlowErrorMessage> onFlowActionFlowErrorMessage,
+        global::System.Action<Auth0.ManagementApi.FlowActionFlowMapValue> onFlowActionFlowMapValue,
+        global::System.Action<Auth0.ManagementApi.FlowActionFlowReturnJson> onFlowActionFlowReturnJson,
+        global::System.Action<Auth0.ManagementApi.FlowActionFlowStoreVars> onFlowActionFlowStoreVars
     )
     {
         switch (Type)
@@ -422,7 +422,7 @@ public class FlowActionFlow
     {
         public override FlowActionFlow? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -512,7 +512,7 @@ public class FlowActionFlow
 
         public override FlowActionFlow ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

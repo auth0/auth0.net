@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -385,14 +385,14 @@ public class UpdateLogStreamResponseContent
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.LogStreamHttpResponseSchema> onLogStreamHttpResponseSchema,
-        System.Action<Auth0.ManagementApi.LogStreamEventBridgeResponseSchema> onLogStreamEventBridgeResponseSchema,
-        System.Action<Auth0.ManagementApi.LogStreamEventGridResponseSchema> onLogStreamEventGridResponseSchema,
-        System.Action<Auth0.ManagementApi.LogStreamDatadogResponseSchema> onLogStreamDatadogResponseSchema,
-        System.Action<Auth0.ManagementApi.LogStreamSplunkResponseSchema> onLogStreamSplunkResponseSchema,
-        System.Action<Auth0.ManagementApi.LogStreamSumoResponseSchema> onLogStreamSumoResponseSchema,
-        System.Action<Auth0.ManagementApi.LogStreamSegmentResponseSchema> onLogStreamSegmentResponseSchema,
-        System.Action<Auth0.ManagementApi.LogStreamMixpanelResponseSchema> onLogStreamMixpanelResponseSchema
+        global::System.Action<Auth0.ManagementApi.LogStreamHttpResponseSchema> onLogStreamHttpResponseSchema,
+        global::System.Action<Auth0.ManagementApi.LogStreamEventBridgeResponseSchema> onLogStreamEventBridgeResponseSchema,
+        global::System.Action<Auth0.ManagementApi.LogStreamEventGridResponseSchema> onLogStreamEventGridResponseSchema,
+        global::System.Action<Auth0.ManagementApi.LogStreamDatadogResponseSchema> onLogStreamDatadogResponseSchema,
+        global::System.Action<Auth0.ManagementApi.LogStreamSplunkResponseSchema> onLogStreamSplunkResponseSchema,
+        global::System.Action<Auth0.ManagementApi.LogStreamSumoResponseSchema> onLogStreamSumoResponseSchema,
+        global::System.Action<Auth0.ManagementApi.LogStreamSegmentResponseSchema> onLogStreamSegmentResponseSchema,
+        global::System.Action<Auth0.ManagementApi.LogStreamMixpanelResponseSchema> onLogStreamMixpanelResponseSchema
     )
     {
         switch (Type)
@@ -498,7 +498,7 @@ public class UpdateLogStreamResponseContent
     {
         public override UpdateLogStreamResponseContent? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -596,7 +596,7 @@ public class UpdateLogStreamResponseContent
 
         public override UpdateLogStreamResponseContent ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -177,9 +177,9 @@ public class EventStreamResponseContent
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.EventStreamWebhookResponseContent> onEventStreamWebhookResponseContent,
-        System.Action<Auth0.ManagementApi.EventStreamEventBridgeResponseContent> onEventStreamEventBridgeResponseContent,
-        System.Action<Auth0.ManagementApi.EventStreamActionResponseContent> onEventStreamActionResponseContent
+        global::System.Action<Auth0.ManagementApi.EventStreamWebhookResponseContent> onEventStreamWebhookResponseContent,
+        global::System.Action<Auth0.ManagementApi.EventStreamEventBridgeResponseContent> onEventStreamEventBridgeResponseContent,
+        global::System.Action<Auth0.ManagementApi.EventStreamActionResponseContent> onEventStreamActionResponseContent
     )
     {
         switch (Type)
@@ -250,7 +250,7 @@ public class EventStreamResponseContent
     {
         public override EventStreamResponseContent? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -323,7 +323,7 @@ public class EventStreamResponseContent
 
         public override EventStreamResponseContent ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

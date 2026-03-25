@@ -1,10 +1,10 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi.Jobs;
 
@@ -126,8 +126,10 @@ public class ErrorsGetResponse
     }
 
     public void Visit(
-        System.Action<IEnumerable<GetJobErrorResponseContent>> onListOfGetJobErrorResponseContent,
-        System.Action<Auth0.ManagementApi.GetJobGenericErrorResponseContent> onGetJobGenericErrorResponseContent
+        global::System.Action<
+            IEnumerable<GetJobErrorResponseContent>
+        > onListOfGetJobErrorResponseContent,
+        global::System.Action<Auth0.ManagementApi.GetJobGenericErrorResponseContent> onGetJobGenericErrorResponseContent
     )
     {
         switch (Type)
@@ -187,7 +189,7 @@ public class ErrorsGetResponse
     {
         public override ErrorsGetResponse? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -278,7 +280,7 @@ public class ErrorsGetResponse
 
         public override ErrorsGetResponse ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

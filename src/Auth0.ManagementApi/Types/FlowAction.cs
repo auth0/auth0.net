@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -944,31 +944,31 @@ public class FlowAction
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.FlowActionActivecampaign> onFlowActionActivecampaign,
-        System.Action<Auth0.ManagementApi.FlowActionAirtable> onFlowActionAirtable,
-        System.Action<Auth0.ManagementApi.FlowActionAuth0> onFlowActionAuth0,
-        System.Action<FlowActionBigqueryInsertRows> onFlowActionBigquery,
-        System.Action<Auth0.ManagementApi.FlowActionClearbit> onFlowActionClearbit,
-        System.Action<FlowActionEmailVerifyEmail> onFlowActionEmail,
-        System.Action<Auth0.ManagementApi.FlowActionFlow> onFlowActionFlow,
-        System.Action<FlowActionGoogleSheetsAddRow> onFlowActionGoogleSheets,
-        System.Action<FlowActionHttpSendRequest> onFlowActionHttp,
-        System.Action<Auth0.ManagementApi.FlowActionHubspot> onFlowActionHubspot,
-        System.Action<Auth0.ManagementApi.FlowActionJson> onFlowActionJson,
-        System.Action<Auth0.ManagementApi.FlowActionJwt> onFlowActionJwt,
-        System.Action<FlowActionMailchimpUpsertMember> onFlowActionMailchimp,
-        System.Action<FlowActionMailjetSendEmail> onFlowActionMailjet,
-        System.Action<Auth0.ManagementApi.FlowActionOtp> onFlowActionOtp,
-        System.Action<Auth0.ManagementApi.FlowActionPipedrive> onFlowActionPipedrive,
-        System.Action<Auth0.ManagementApi.FlowActionSalesforce> onFlowActionSalesforce,
-        System.Action<FlowActionSendgridSendEmail> onFlowActionSendgrid,
-        System.Action<FlowActionSlackPostMessage> onFlowActionSlack,
-        System.Action<Auth0.ManagementApi.FlowActionStripe> onFlowActionStripe,
-        System.Action<FlowActionTelegramSendMessage> onFlowActionTelegram,
-        System.Action<Auth0.ManagementApi.FlowActionTwilio> onFlowActionTwilio,
-        System.Action<FlowActionWhatsappSendMessage> onFlowActionWhatsapp,
-        System.Action<Auth0.ManagementApi.FlowActionXml> onFlowActionXml,
-        System.Action<FlowActionZapierTriggerWebhook> onFlowActionZapier
+        global::System.Action<Auth0.ManagementApi.FlowActionActivecampaign> onFlowActionActivecampaign,
+        global::System.Action<Auth0.ManagementApi.FlowActionAirtable> onFlowActionAirtable,
+        global::System.Action<Auth0.ManagementApi.FlowActionAuth0> onFlowActionAuth0,
+        global::System.Action<FlowActionBigqueryInsertRows> onFlowActionBigquery,
+        global::System.Action<Auth0.ManagementApi.FlowActionClearbit> onFlowActionClearbit,
+        global::System.Action<FlowActionEmailVerifyEmail> onFlowActionEmail,
+        global::System.Action<Auth0.ManagementApi.FlowActionFlow> onFlowActionFlow,
+        global::System.Action<FlowActionGoogleSheetsAddRow> onFlowActionGoogleSheets,
+        global::System.Action<FlowActionHttpSendRequest> onFlowActionHttp,
+        global::System.Action<Auth0.ManagementApi.FlowActionHubspot> onFlowActionHubspot,
+        global::System.Action<Auth0.ManagementApi.FlowActionJson> onFlowActionJson,
+        global::System.Action<Auth0.ManagementApi.FlowActionJwt> onFlowActionJwt,
+        global::System.Action<FlowActionMailchimpUpsertMember> onFlowActionMailchimp,
+        global::System.Action<FlowActionMailjetSendEmail> onFlowActionMailjet,
+        global::System.Action<Auth0.ManagementApi.FlowActionOtp> onFlowActionOtp,
+        global::System.Action<Auth0.ManagementApi.FlowActionPipedrive> onFlowActionPipedrive,
+        global::System.Action<Auth0.ManagementApi.FlowActionSalesforce> onFlowActionSalesforce,
+        global::System.Action<FlowActionSendgridSendEmail> onFlowActionSendgrid,
+        global::System.Action<FlowActionSlackPostMessage> onFlowActionSlack,
+        global::System.Action<Auth0.ManagementApi.FlowActionStripe> onFlowActionStripe,
+        global::System.Action<FlowActionTelegramSendMessage> onFlowActionTelegram,
+        global::System.Action<Auth0.ManagementApi.FlowActionTwilio> onFlowActionTwilio,
+        global::System.Action<FlowActionWhatsappSendMessage> onFlowActionWhatsapp,
+        global::System.Action<Auth0.ManagementApi.FlowActionXml> onFlowActionXml,
+        global::System.Action<FlowActionZapierTriggerWebhook> onFlowActionZapier
     )
     {
         switch (Type)
@@ -1355,7 +1355,7 @@ public class FlowAction
     {
         public override FlowAction? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -1466,7 +1466,7 @@ public class FlowAction
 
         public override FlowAction ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

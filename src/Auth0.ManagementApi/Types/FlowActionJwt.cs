@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -150,9 +150,9 @@ public class FlowActionJwt
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.FlowActionJwtDecodeJwt> onFlowActionJwtDecodeJwt,
-        System.Action<Auth0.ManagementApi.FlowActionJwtSignJwt> onFlowActionJwtSignJwt,
-        System.Action<Auth0.ManagementApi.FlowActionJwtVerifyJwt> onFlowActionJwtVerifyJwt
+        global::System.Action<Auth0.ManagementApi.FlowActionJwtDecodeJwt> onFlowActionJwtDecodeJwt,
+        global::System.Action<Auth0.ManagementApi.FlowActionJwtSignJwt> onFlowActionJwtSignJwt,
+        global::System.Action<Auth0.ManagementApi.FlowActionJwtVerifyJwt> onFlowActionJwtVerifyJwt
     )
     {
         switch (Type)
@@ -222,7 +222,7 @@ public class FlowActionJwt
     {
         public override FlowActionJwt? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -286,7 +286,7 @@ public class FlowActionJwt
 
         public override FlowActionJwt ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

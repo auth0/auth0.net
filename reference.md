@@ -2149,101 +2149,6 @@ await client.CustomDomains.CreateAsync(
 </dl>
 </details>
 
-<details><summary><code>client.CustomDomains.<a href="/src/Auth0.ManagementApi/CustomDomains/CustomDomainsClient.cs">GetDefaultAsync</a>() -> WithRawResponseTask&lt;GetDefaultDomainResponseContent&gt;</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Retrieve the tenant's default domain.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.CustomDomains.GetDefaultAsync();
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.CustomDomains.<a href="/src/Auth0.ManagementApi/CustomDomains/CustomDomainsClient.cs">SetDefaultAsync</a>(SetDefaultCustomDomainRequestContent { ... }) -> WithRawResponseTask&lt;UpdateDefaultDomainResponseContent&gt;</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Set the default custom domain for the tenant.
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```csharp
-await client.CustomDomains.SetDefaultAsync(
-    new SetDefaultCustomDomainRequestContent { Domain = "domain" }
-);
-```
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `SetDefaultCustomDomainRequestContent` 
-    
-</dd>
-</dl>
-</dd>
-</dl>
-
-
-</dd>
-</dl>
-</details>
-
 <details><summary><code>client.CustomDomains.<a href="/src/Auth0.ManagementApi/CustomDomains/CustomDomainsClient.cs">GetAsync</a>(id) -> WithRawResponseTask&lt;GetCustomDomainResponseContent&gt;</code></summary>
 <dl>
 <dd>
@@ -3978,6 +3883,60 @@ Retrieve a group by its ID.
 
 ```csharp
 await client.Groups.GetAsync("id");
+```
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — Unique identifier for the group (service-generated).
+    
+</dd>
+</dl>
+</dd>
+</dl>
+
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.Groups.<a href="/src/Auth0.ManagementApi/Groups/GroupsClient.cs">DeleteAsync</a>(id)</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Delete a group by its ID.
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```csharp
+await client.Groups.DeleteAsync("id");
 ```
 </dd>
 </dl>
