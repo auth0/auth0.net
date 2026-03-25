@@ -15,14 +15,7 @@ public partial class ManagementApiClient : IManagementApiClient
     public ManagementApiClient(string? token = null, ClientOptions? clientOptions = null)
     {
         clientOptions ??= new ClientOptions();
-        var platformHeaders = new Headers(
-            new Dictionary<string, string>()
-            {
-                { "X-Fern-Language", "C#" },
-                { "X-Fern-SDK-Name", "Auth0.ManagementApi" },
-                { "X-Fern-SDK-Version", Version.Current },
-            }
-        );
+        var platformHeaders = new Headers(new Dictionary<string, string>() { });
         foreach (var header in platformHeaders)
         {
             if (!clientOptions.Headers.ContainsKey(header.Key))
