@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<LogStreamMixpanelEnum>))]
+[JsonConverter(typeof(LogStreamMixpanelEnum.LogStreamMixpanelEnumSerializer))]
 [Serializable]
 public readonly record struct LogStreamMixpanelEnum : IStringEnum
 {
@@ -49,6 +50,32 @@ public readonly record struct LogStreamMixpanelEnum : IStringEnum
     public static explicit operator string(LogStreamMixpanelEnum value) => value.Value;
 
     public static explicit operator LogStreamMixpanelEnum(string value) => new(value);
+
+    internal class LogStreamMixpanelEnumSerializer : JsonConverter<LogStreamMixpanelEnum>
+    {
+        public override LogStreamMixpanelEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new LogStreamMixpanelEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            LogStreamMixpanelEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

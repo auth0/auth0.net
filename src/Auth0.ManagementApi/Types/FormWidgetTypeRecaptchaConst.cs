@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FormWidgetTypeRecaptchaConst>))]
+[JsonConverter(typeof(FormWidgetTypeRecaptchaConst.FormWidgetTypeRecaptchaConstSerializer))]
 [Serializable]
 public readonly record struct FormWidgetTypeRecaptchaConst : IStringEnum
 {
@@ -49,6 +50,33 @@ public readonly record struct FormWidgetTypeRecaptchaConst : IStringEnum
     public static explicit operator string(FormWidgetTypeRecaptchaConst value) => value.Value;
 
     public static explicit operator FormWidgetTypeRecaptchaConst(string value) => new(value);
+
+    internal class FormWidgetTypeRecaptchaConstSerializer
+        : JsonConverter<FormWidgetTypeRecaptchaConst>
+    {
+        public override FormWidgetTypeRecaptchaConst Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FormWidgetTypeRecaptchaConst(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FormWidgetTypeRecaptchaConst value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

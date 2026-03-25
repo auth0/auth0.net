@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FlowActionAuth0UpdateUserAction>))]
+[JsonConverter(typeof(FlowActionAuth0UpdateUserAction.FlowActionAuth0UpdateUserActionSerializer))]
 [Serializable]
 public readonly record struct FlowActionAuth0UpdateUserAction : IStringEnum
 {
@@ -49,6 +50,33 @@ public readonly record struct FlowActionAuth0UpdateUserAction : IStringEnum
     public static explicit operator string(FlowActionAuth0UpdateUserAction value) => value.Value;
 
     public static explicit operator FlowActionAuth0UpdateUserAction(string value) => new(value);
+
+    internal class FlowActionAuth0UpdateUserActionSerializer
+        : JsonConverter<FlowActionAuth0UpdateUserAction>
+    {
+        public override FlowActionAuth0UpdateUserAction Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FlowActionAuth0UpdateUserAction(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FlowActionAuth0UpdateUserAction value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

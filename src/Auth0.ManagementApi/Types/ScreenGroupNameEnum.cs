@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<ScreenGroupNameEnum>))]
+[JsonConverter(typeof(ScreenGroupNameEnum.ScreenGroupNameEnumSerializer))]
 [Serializable]
 public readonly record struct ScreenGroupNameEnum : IStringEnum
 {
@@ -323,6 +324,32 @@ public readonly record struct ScreenGroupNameEnum : IStringEnum
     public static explicit operator string(ScreenGroupNameEnum value) => value.Value;
 
     public static explicit operator ScreenGroupNameEnum(string value) => new(value);
+
+    internal class ScreenGroupNameEnumSerializer : JsonConverter<ScreenGroupNameEnum>
+    {
+        public override ScreenGroupNameEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new ScreenGroupNameEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            ScreenGroupNameEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

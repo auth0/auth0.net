@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FormWidgetTypeAuth0VerifiableCredentialsConst>))]
+[JsonConverter(
+    typeof(FormWidgetTypeAuth0VerifiableCredentialsConst.FormWidgetTypeAuth0VerifiableCredentialsConstSerializer)
+)]
 [Serializable]
 public readonly record struct FormWidgetTypeAuth0VerifiableCredentialsConst : IStringEnum
 {
@@ -56,6 +59,33 @@ public readonly record struct FormWidgetTypeAuth0VerifiableCredentialsConst : IS
 
     public static explicit operator FormWidgetTypeAuth0VerifiableCredentialsConst(string value) =>
         new(value);
+
+    internal class FormWidgetTypeAuth0VerifiableCredentialsConstSerializer
+        : JsonConverter<FormWidgetTypeAuth0VerifiableCredentialsConst>
+    {
+        public override FormWidgetTypeAuth0VerifiableCredentialsConst Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FormWidgetTypeAuth0VerifiableCredentialsConst(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FormWidgetTypeAuth0VerifiableCredentialsConst value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

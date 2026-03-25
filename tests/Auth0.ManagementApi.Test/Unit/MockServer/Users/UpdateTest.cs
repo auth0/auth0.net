@@ -1,11 +1,12 @@
+using Auth0.ManagementApi;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using Auth0.ManagementApi.Test.Utils;
-using Auth0.ManagementApi.Users;
 using NUnit.Framework;
 
 namespace Auth0.ManagementApi.Test.Unit.MockServer.Users;
 
 [TestFixture]
+[Parallelizable(ParallelScope.Self)]
 public class UpdateTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
@@ -17,24 +18,43 @@ public class UpdateTest : BaseMockServerTest
 
         const string mockResponse = """
             {
-              "id": "id",
-              "type": "phone",
-              "name": "name",
-              "totp_secret": "totp_secret",
-              "phone_number": "phone_number",
+              "user_id": "user_id",
               "email": "email",
-              "authentication_methods": [
+              "email_verified": true,
+              "username": "username",
+              "phone_number": "phone_number",
+              "phone_verified": true,
+              "created_at": "created_at",
+              "updated_at": "updated_at",
+              "identities": [
                 {
-                  "type": "totp",
-                  "id": "id"
+                  "connection": "connection",
+                  "user_id": "user_id",
+                  "provider": "ad",
+                  "isSocial": true,
+                  "access_token": "access_token",
+                  "access_token_secret": "access_token_secret",
+                  "refresh_token": "refresh_token"
                 }
               ],
-              "preferred_authentication_method": "voice",
-              "key_id": "key_id",
-              "public_key": "public_key",
-              "aaguid": "aaguid",
-              "relying_party_identifier": "relying_party_identifier",
-              "created_at": "2024-01-15T09:30:00.000Z"
+              "app_metadata": {
+                "key": "value"
+              },
+              "user_metadata": {
+                "key": "value"
+              },
+              "picture": "picture",
+              "name": "name",
+              "nickname": "nickname",
+              "multifactor": [
+                "multifactor"
+              ],
+              "last_ip": "last_ip",
+              "last_login": "last_login",
+              "logins_count": 1,
+              "blocked": true,
+              "given_name": "given_name",
+              "family_name": "family_name"
             }
             """;
 
@@ -42,7 +62,7 @@ public class UpdateTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/users/id/authentication-methods/authentication_method_id")
+                    .WithPath("/users/id")
                     .WithHeader("Content-Type", "application/json")
                     .UsingPatch()
                     .WithBodyAsJson(requestJson)
@@ -54,11 +74,7 @@ public class UpdateTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var response = await Client.Users.AuthenticationMethods.UpdateAsync(
-            "id",
-            "authentication_method_id",
-            new UpdateUserAuthenticationMethodRequestContent()
-        );
+        var response = await Client.Users.UpdateAsync("id", new UpdateUserRequestContent());
         JsonAssert.AreEqual(response, mockResponse);
     }
 }

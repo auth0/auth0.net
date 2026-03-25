@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<LogStreamEventGridEnum>))]
+[JsonConverter(typeof(LogStreamEventGridEnum.LogStreamEventGridEnumSerializer))]
 [Serializable]
 public readonly record struct LogStreamEventGridEnum : IStringEnum
 {
@@ -49,6 +50,32 @@ public readonly record struct LogStreamEventGridEnum : IStringEnum
     public static explicit operator string(LogStreamEventGridEnum value) => value.Value;
 
     public static explicit operator LogStreamEventGridEnum(string value) => new(value);
+
+    internal class LogStreamEventGridEnumSerializer : JsonConverter<LogStreamEventGridEnum>
+    {
+        public override LogStreamEventGridEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new LogStreamEventGridEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            LogStreamEventGridEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

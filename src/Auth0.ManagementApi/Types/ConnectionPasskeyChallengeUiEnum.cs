@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<ConnectionPasskeyChallengeUiEnum>))]
+[JsonConverter(typeof(ConnectionPasskeyChallengeUiEnum.ConnectionPasskeyChallengeUiEnumSerializer))]
 [Serializable]
 public readonly record struct ConnectionPasskeyChallengeUiEnum : IStringEnum
 {
@@ -53,6 +54,33 @@ public readonly record struct ConnectionPasskeyChallengeUiEnum : IStringEnum
     public static explicit operator string(ConnectionPasskeyChallengeUiEnum value) => value.Value;
 
     public static explicit operator ConnectionPasskeyChallengeUiEnum(string value) => new(value);
+
+    internal class ConnectionPasskeyChallengeUiEnumSerializer
+        : JsonConverter<ConnectionPasskeyChallengeUiEnum>
+    {
+        public override ConnectionPasskeyChallengeUiEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new ConnectionPasskeyChallengeUiEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            ConnectionPasskeyChallengeUiEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

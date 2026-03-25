@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<ListFlowsRequestParametersHydrateEnum>))]
+[JsonConverter(
+    typeof(ListFlowsRequestParametersHydrateEnum.ListFlowsRequestParametersHydrateEnumSerializer)
+)]
 [Serializable]
 public readonly record struct ListFlowsRequestParametersHydrateEnum : IStringEnum
 {
@@ -51,6 +54,33 @@ public readonly record struct ListFlowsRequestParametersHydrateEnum : IStringEnu
 
     public static explicit operator ListFlowsRequestParametersHydrateEnum(string value) =>
         new(value);
+
+    internal class ListFlowsRequestParametersHydrateEnumSerializer
+        : JsonConverter<ListFlowsRequestParametersHydrateEnum>
+    {
+        public override ListFlowsRequestParametersHydrateEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new ListFlowsRequestParametersHydrateEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            ListFlowsRequestParametersHydrateEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

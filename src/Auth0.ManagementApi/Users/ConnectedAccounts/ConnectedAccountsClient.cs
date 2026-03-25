@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Users;
 
 public partial class ConnectedAccountsClient : IConnectedAccountsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal ConnectedAccountsClient(RawClient client)
     {
@@ -52,7 +52,6 @@ public partial class ConnectedAccountsClient : IConnectedAccountsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "users/{0}/connected-accounts",
@@ -67,7 +66,9 @@ public partial class ConnectedAccountsClient : IConnectedAccountsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<ListUserConnectedAccountsResponseContent>(
@@ -95,7 +96,9 @@ public partial class ConnectedAccountsClient : IConnectedAccountsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

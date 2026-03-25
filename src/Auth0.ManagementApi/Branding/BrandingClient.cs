@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi;
 
 public partial class BrandingClient : IBrandingClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal BrandingClient(RawClient client)
     {
@@ -37,7 +37,6 @@ public partial class BrandingClient : IBrandingClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "branding",
                     Headers = _headers,
@@ -48,7 +47,9 @@ public partial class BrandingClient : IBrandingClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetBrandingResponseContent>(responseBody)!;
@@ -74,7 +75,9 @@ public partial class BrandingClient : IBrandingClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -115,7 +118,6 @@ public partial class BrandingClient : IBrandingClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "branding",
                     Body = request,
@@ -128,7 +130,9 @@ public partial class BrandingClient : IBrandingClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<UpdateBrandingResponseContent>(
@@ -156,7 +160,9 @@ public partial class BrandingClient : IBrandingClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

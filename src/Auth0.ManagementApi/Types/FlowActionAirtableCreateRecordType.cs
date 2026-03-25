@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FlowActionAirtableCreateRecordType>))]
+[JsonConverter(
+    typeof(FlowActionAirtableCreateRecordType.FlowActionAirtableCreateRecordTypeSerializer)
+)]
 [Serializable]
 public readonly record struct FlowActionAirtableCreateRecordType : IStringEnum
 {
@@ -49,6 +52,33 @@ public readonly record struct FlowActionAirtableCreateRecordType : IStringEnum
     public static explicit operator string(FlowActionAirtableCreateRecordType value) => value.Value;
 
     public static explicit operator FlowActionAirtableCreateRecordType(string value) => new(value);
+
+    internal class FlowActionAirtableCreateRecordTypeSerializer
+        : JsonConverter<FlowActionAirtableCreateRecordType>
+    {
+        public override FlowActionAirtableCreateRecordType Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FlowActionAirtableCreateRecordType(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FlowActionAirtableCreateRecordType value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

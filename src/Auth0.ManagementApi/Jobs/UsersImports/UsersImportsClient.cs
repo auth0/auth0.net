@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Jobs;
 
 public partial class UsersImportsClient : IUsersImportsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal UsersImportsClient(RawClient client)
     {
@@ -27,7 +27,6 @@ public partial class UsersImportsClient : IUsersImportsClient
             .ConfigureAwait(false);
         var multipartFormRequest_ = new MultipartFormRequest
         {
-            BaseUrl = _client.Options.BaseUrl,
             Method = HttpMethod.Post,
             Path = "jobs/users-imports",
             Headers = _headers,
@@ -43,7 +42,9 @@ public partial class UsersImportsClient : IUsersImportsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<CreateImportUsersResponseContent>(
@@ -71,7 +72,9 @@ public partial class UsersImportsClient : IUsersImportsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

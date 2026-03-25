@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FlowActionFlowDelayFlowType>))]
+[JsonConverter(typeof(FlowActionFlowDelayFlowType.FlowActionFlowDelayFlowTypeSerializer))]
 [Serializable]
 public readonly record struct FlowActionFlowDelayFlowType : IStringEnum
 {
@@ -49,6 +50,33 @@ public readonly record struct FlowActionFlowDelayFlowType : IStringEnum
     public static explicit operator string(FlowActionFlowDelayFlowType value) => value.Value;
 
     public static explicit operator FlowActionFlowDelayFlowType(string value) => new(value);
+
+    internal class FlowActionFlowDelayFlowTypeSerializer
+        : JsonConverter<FlowActionFlowDelayFlowType>
+    {
+        public override FlowActionFlowDelayFlowType Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FlowActionFlowDelayFlowType(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FlowActionFlowDelayFlowType value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

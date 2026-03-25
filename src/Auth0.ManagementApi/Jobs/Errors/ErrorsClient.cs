@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Jobs;
 
 public partial class ErrorsClient : IErrorsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal ErrorsClient(RawClient client)
     {
@@ -29,7 +29,6 @@ public partial class ErrorsClient : IErrorsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("jobs/{0}/errors", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,
@@ -40,7 +39,9 @@ public partial class ErrorsClient : IErrorsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<ErrorsGetResponse>(responseBody)!;
@@ -66,7 +67,9 @@ public partial class ErrorsClient : IErrorsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

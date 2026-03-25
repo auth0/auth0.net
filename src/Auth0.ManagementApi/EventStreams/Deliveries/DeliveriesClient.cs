@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.EventStreams;
 
 public partial class DeliveriesClient : IDeliveriesClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal DeliveriesClient(RawClient client)
     {
@@ -39,7 +39,6 @@ public partial class DeliveriesClient : IDeliveriesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "event-streams/{0}/deliveries",
@@ -54,7 +53,9 @@ public partial class DeliveriesClient : IDeliveriesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<IEnumerable<EventStreamDelivery>>(
@@ -82,7 +83,9 @@ public partial class DeliveriesClient : IDeliveriesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -130,7 +133,6 @@ public partial class DeliveriesClient : IDeliveriesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "event-streams/{0}/deliveries/{1}",
@@ -145,7 +147,9 @@ public partial class DeliveriesClient : IDeliveriesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -174,7 +178,9 @@ public partial class DeliveriesClient : IDeliveriesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

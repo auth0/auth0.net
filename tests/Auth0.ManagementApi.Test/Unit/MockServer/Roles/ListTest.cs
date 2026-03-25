@@ -1,10 +1,11 @@
-using Auth0.ManagementApi.Roles;
+using Auth0.ManagementApi;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using NUnit.Framework;
 
 namespace Auth0.ManagementApi.Test.Unit.MockServer.Roles;
 
 [TestFixture]
+[Parallelizable(ParallelScope.Self)]
 public class ListTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
@@ -15,11 +16,10 @@ public class ListTest : BaseMockServerTest
               "start": 1.1,
               "limit": 1.1,
               "total": 1.1,
-              "permissions": [
+              "roles": [
                 {
-                  "resource_server_identifier": "resource_server_identifier",
-                  "permission_name": "permission_name",
-                  "resource_server_name": "resource_server_name",
+                  "id": "id",
+                  "name": "name",
                   "description": "description"
                 }
               ]
@@ -30,9 +30,10 @@ public class ListTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/roles/id/permissions")
+                    .WithPath("/roles")
                     .WithParam("per_page", "1")
                     .WithParam("page", "1")
+                    .WithParam("name_filter", "name_filter")
                     .UsingGet()
             )
             .RespondWith(
@@ -42,13 +43,13 @@ public class ListTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var items = await Client.Roles.Permissions.ListAsync(
-            "id",
-            new ListRolePermissionsRequestParameters
+        var items = await Client.Roles.ListAsync(
+            new ListRolesRequestParameters
             {
                 PerPage = 1,
                 Page = 1,
                 IncludeTotals = true,
+                NameFilter = "name_filter",
             }
         );
         await foreach (var item in items)

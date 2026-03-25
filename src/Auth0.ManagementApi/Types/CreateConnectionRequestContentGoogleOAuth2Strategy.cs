@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<CreateConnectionRequestContentGoogleOAuth2Strategy>))]
+[JsonConverter(
+    typeof(CreateConnectionRequestContentGoogleOAuth2Strategy.CreateConnectionRequestContentGoogleOAuth2StrategySerializer)
+)]
 [Serializable]
 public readonly record struct CreateConnectionRequestContentGoogleOAuth2Strategy : IStringEnum
 {
@@ -59,6 +62,33 @@ public readonly record struct CreateConnectionRequestContentGoogleOAuth2Strategy
     public static explicit operator CreateConnectionRequestContentGoogleOAuth2Strategy(
         string value
     ) => new(value);
+
+    internal class CreateConnectionRequestContentGoogleOAuth2StrategySerializer
+        : JsonConverter<CreateConnectionRequestContentGoogleOAuth2Strategy>
+    {
+        public override CreateConnectionRequestContentGoogleOAuth2Strategy Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new CreateConnectionRequestContentGoogleOAuth2Strategy(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            CreateConnectionRequestContentGoogleOAuth2Strategy value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

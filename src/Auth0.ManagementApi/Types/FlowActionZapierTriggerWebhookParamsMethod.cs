@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FlowActionZapierTriggerWebhookParamsMethod>))]
+[JsonConverter(
+    typeof(FlowActionZapierTriggerWebhookParamsMethod.FlowActionZapierTriggerWebhookParamsMethodSerializer)
+)]
 [Serializable]
 public readonly record struct FlowActionZapierTriggerWebhookParamsMethod : IStringEnum
 {
@@ -59,6 +62,33 @@ public readonly record struct FlowActionZapierTriggerWebhookParamsMethod : IStri
 
     public static explicit operator FlowActionZapierTriggerWebhookParamsMethod(string value) =>
         new(value);
+
+    internal class FlowActionZapierTriggerWebhookParamsMethodSerializer
+        : JsonConverter<FlowActionZapierTriggerWebhookParamsMethod>
+    {
+        public override FlowActionZapierTriggerWebhookParamsMethod Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FlowActionZapierTriggerWebhookParamsMethod(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FlowActionZapierTriggerWebhookParamsMethod value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

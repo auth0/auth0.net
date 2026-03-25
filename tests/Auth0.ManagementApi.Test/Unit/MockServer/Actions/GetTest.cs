@@ -5,6 +5,7 @@ using NUnit.Framework;
 namespace Auth0.ManagementApi.Test.Unit.MockServer.Actions;
 
 [TestFixture]
+[Parallelizable(ParallelScope.Self)]
 public class GetTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
@@ -13,47 +14,7 @@ public class GetTest : BaseMockServerTest
         const string mockResponse = """
             {
               "id": "id",
-              "action_id": "action_id",
-              "code": "code",
-              "dependencies": [
-                {
-                  "name": "name",
-                  "version": "version",
-                  "registry_url": "registry_url"
-                }
-              ],
-              "deployed": true,
-              "runtime": "runtime",
-              "secrets": [
-                {
-                  "name": "name",
-                  "updated_at": "2024-01-15T09:30:00.000Z"
-                }
-              ],
-              "status": "pending",
-              "number": 1.1,
-              "errors": [
-                {
-                  "id": "id",
-                  "msg": "msg",
-                  "url": "url"
-                }
-              ],
-              "action": {
-                "id": "id",
-                "name": "name",
-                "supported_triggers": [
-                  {
-                    "id": "id"
-                  }
-                ],
-                "all_changes_deployed": true,
-                "created_at": "2024-01-15T09:30:00.000Z",
-                "updated_at": "2024-01-15T09:30:00.000Z"
-              },
-              "built_at": "2024-01-15T09:30:00.000Z",
-              "created_at": "2024-01-15T09:30:00.000Z",
-              "updated_at": "2024-01-15T09:30:00.000Z",
+              "name": "name",
               "supported_triggers": [
                 {
                   "id": "id",
@@ -72,6 +33,97 @@ public class GetTest : BaseMockServerTest
                   "binding_policy": "trigger-bound"
                 }
               ],
+              "all_changes_deployed": true,
+              "created_at": "2024-01-15T09:30:00.000Z",
+              "updated_at": "2024-01-15T09:30:00.000Z",
+              "code": "code",
+              "dependencies": [
+                {
+                  "name": "name",
+                  "version": "version",
+                  "registry_url": "registry_url"
+                }
+              ],
+              "runtime": "runtime",
+              "secrets": [
+                {
+                  "name": "name",
+                  "updated_at": "2024-01-15T09:30:00.000Z"
+                }
+              ],
+              "deployed_version": {
+                "id": "id",
+                "action_id": "action_id",
+                "code": "code",
+                "dependencies": [
+                  {}
+                ],
+                "deployed": true,
+                "runtime": "runtime",
+                "secrets": [
+                  {}
+                ],
+                "status": "pending",
+                "number": 1.1,
+                "errors": [
+                  {}
+                ],
+                "action": {
+                  "id": "id",
+                  "name": "name",
+                  "supported_triggers": [
+                    {
+                      "id": "id"
+                    }
+                  ],
+                  "all_changes_deployed": true,
+                  "created_at": "2024-01-15T09:30:00.000Z",
+                  "updated_at": "2024-01-15T09:30:00.000Z"
+                },
+                "built_at": "2024-01-15T09:30:00.000Z",
+                "created_at": "2024-01-15T09:30:00.000Z",
+                "updated_at": "2024-01-15T09:30:00.000Z",
+                "supported_triggers": [
+                  {
+                    "id": "id"
+                  }
+                ],
+                "modules": [
+                  {}
+                ]
+              },
+              "installed_integration_id": "installed_integration_id",
+              "integration": {
+                "id": "id",
+                "catalog_id": "catalog_id",
+                "url_slug": "url_slug",
+                "partner_id": "partner_id",
+                "name": "name",
+                "description": "description",
+                "short_description": "short_description",
+                "logo": "logo",
+                "feature_type": "unspecified",
+                "terms_of_use_url": "terms_of_use_url",
+                "privacy_policy_url": "privacy_policy_url",
+                "public_support_link": "public_support_link",
+                "current_release": {
+                  "id": "id",
+                  "trigger": {
+                    "id": "id"
+                  },
+                  "required_secrets": [
+                    {}
+                  ],
+                  "required_configuration": [
+                    {}
+                  ]
+                },
+                "created_at": "2024-01-15T09:30:00.000Z",
+                "updated_at": "2024-01-15T09:30:00.000Z"
+              },
+              "status": "pending",
+              "built_at": "2024-01-15T09:30:00.000Z",
+              "deploy": true,
               "modules": [
                 {
                   "module_id": "module_id",
@@ -85,10 +137,7 @@ public class GetTest : BaseMockServerTest
 
         Server
             .Given(
-                WireMock
-                    .RequestBuilders.Request.Create()
-                    .WithPath("/actions/actions/actionId/versions/id")
-                    .UsingGet()
+                WireMock.RequestBuilders.Request.Create().WithPath("/actions/actions/id").UsingGet()
             )
             .RespondWith(
                 WireMock
@@ -97,7 +146,7 @@ public class GetTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var response = await Client.Actions.Versions.GetAsync("actionId", "id");
+        var response = await Client.Actions.GetAsync("id");
         JsonAssert.AreEqual(response, mockResponse);
     }
 }

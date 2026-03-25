@@ -4,7 +4,7 @@ namespace Auth0.ManagementApi.Branding.Phone;
 
 public partial class PhoneClient : IPhoneClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal PhoneClient(RawClient client)
     {

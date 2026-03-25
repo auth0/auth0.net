@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<AttackProtectionCaptchaProviderId>))]
+[JsonConverter(
+    typeof(AttackProtectionCaptchaProviderId.AttackProtectionCaptchaProviderIdSerializer)
+)]
 [Serializable]
 public readonly record struct AttackProtectionCaptchaProviderId : IStringEnum
 {
@@ -69,6 +72,33 @@ public readonly record struct AttackProtectionCaptchaProviderId : IStringEnum
     public static explicit operator string(AttackProtectionCaptchaProviderId value) => value.Value;
 
     public static explicit operator AttackProtectionCaptchaProviderId(string value) => new(value);
+
+    internal class AttackProtectionCaptchaProviderIdSerializer
+        : JsonConverter<AttackProtectionCaptchaProviderId>
+    {
+        public override AttackProtectionCaptchaProviderId Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new AttackProtectionCaptchaProviderId(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            AttackProtectionCaptchaProviderId value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

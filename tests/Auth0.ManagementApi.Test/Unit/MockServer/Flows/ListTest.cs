@@ -1,10 +1,11 @@
-using Auth0.ManagementApi.Flows;
+using Auth0.ManagementApi;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using NUnit.Framework;
 
 namespace Auth0.ManagementApi.Test.Unit.MockServer.Flows;
 
 [TestFixture]
+[Parallelizable(ParallelScope.Self)]
 public class ListTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
@@ -12,17 +13,16 @@ public class ListTest : BaseMockServerTest
     {
         const string mockResponse = """
             {
-              "next": "next",
-              "executions": [
+              "start": 1.1,
+              "limit": 1.1,
+              "total": 1.1,
+              "flows": [
                 {
                   "id": "id",
-                  "trace_id": "trace_id",
-                  "journey_id": "journey_id",
-                  "status": "status",
+                  "name": "name",
                   "created_at": "2024-01-15T09:30:00.000Z",
                   "updated_at": "2024-01-15T09:30:00.000Z",
-                  "started_at": "2024-01-15T09:30:00.000Z",
-                  "ended_at": "2024-01-15T09:30:00.000Z"
+                  "executed_at": "executed_at"
                 }
               ]
             }
@@ -32,9 +32,9 @@ public class ListTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/flows/flow_id/executions")
-                    .WithParam("from", "from")
-                    .WithParam("take", "1")
+                    .WithPath("/flows")
+                    .WithParam("page", "1")
+                    .WithParam("per_page", "1")
                     .UsingGet()
             )
             .RespondWith(
@@ -44,9 +44,14 @@ public class ListTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var items = await Client.Flows.Executions.ListAsync(
-            "flow_id",
-            new ListFlowExecutionsRequestParameters { From = "from", Take = 1 }
+        var items = await Client.Flows.ListAsync(
+            new ListFlowsRequestParameters
+            {
+                Page = 1,
+                PerPage = 1,
+                IncludeTotals = true,
+                Synchronous = true,
+            }
         );
         await foreach (var item in items)
         {

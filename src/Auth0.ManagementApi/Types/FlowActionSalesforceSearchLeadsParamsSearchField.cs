@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FlowActionSalesforceSearchLeadsParamsSearchField>))]
+[JsonConverter(
+    typeof(FlowActionSalesforceSearchLeadsParamsSearchField.FlowActionSalesforceSearchLeadsParamsSearchFieldSerializer)
+)]
 [Serializable]
 public readonly record struct FlowActionSalesforceSearchLeadsParamsSearchField : IStringEnum
 {
@@ -67,6 +70,33 @@ public readonly record struct FlowActionSalesforceSearchLeadsParamsSearchField :
     public static explicit operator FlowActionSalesforceSearchLeadsParamsSearchField(
         string value
     ) => new(value);
+
+    internal class FlowActionSalesforceSearchLeadsParamsSearchFieldSerializer
+        : JsonConverter<FlowActionSalesforceSearchLeadsParamsSearchField>
+    {
+        public override FlowActionSalesforceSearchLeadsParamsSearchField Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FlowActionSalesforceSearchLeadsParamsSearchField(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FlowActionSalesforceSearchLeadsParamsSearchField value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

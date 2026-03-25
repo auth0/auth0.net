@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<ConnectionShouldTrustEmailVerifiedConnectionEnum>))]
+[JsonConverter(
+    typeof(ConnectionShouldTrustEmailVerifiedConnectionEnum.ConnectionShouldTrustEmailVerifiedConnectionEnumSerializer)
+)]
 [Serializable]
 public readonly record struct ConnectionShouldTrustEmailVerifiedConnectionEnum : IStringEnum
 {
@@ -61,6 +64,33 @@ public readonly record struct ConnectionShouldTrustEmailVerifiedConnectionEnum :
     public static explicit operator ConnectionShouldTrustEmailVerifiedConnectionEnum(
         string value
     ) => new(value);
+
+    internal class ConnectionShouldTrustEmailVerifiedConnectionEnumSerializer
+        : JsonConverter<ConnectionShouldTrustEmailVerifiedConnectionEnum>
+    {
+        public override ConnectionShouldTrustEmailVerifiedConnectionEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new ConnectionShouldTrustEmailVerifiedConnectionEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            ConnectionShouldTrustEmailVerifiedConnectionEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

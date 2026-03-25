@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<LogStreamFilterTypeEnum>))]
+[JsonConverter(typeof(LogStreamFilterTypeEnum.LogStreamFilterTypeEnumSerializer))]
 [Serializable]
 public readonly record struct LogStreamFilterTypeEnum : IStringEnum
 {
@@ -49,6 +50,32 @@ public readonly record struct LogStreamFilterTypeEnum : IStringEnum
     public static explicit operator string(LogStreamFilterTypeEnum value) => value.Value;
 
     public static explicit operator LogStreamFilterTypeEnum(string value) => new(value);
+
+    internal class LogStreamFilterTypeEnumSerializer : JsonConverter<LogStreamFilterTypeEnum>
+    {
+        public override LogStreamFilterTypeEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new LogStreamFilterTypeEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            LogStreamFilterTypeEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<JobFileFormatEnum>))]
+[JsonConverter(typeof(JobFileFormatEnum.JobFileFormatEnumSerializer))]
 [Serializable]
 public readonly record struct JobFileFormatEnum : IStringEnum
 {
@@ -51,6 +52,32 @@ public readonly record struct JobFileFormatEnum : IStringEnum
     public static explicit operator string(JobFileFormatEnum value) => value.Value;
 
     public static explicit operator JobFileFormatEnum(string value) => new(value);
+
+    internal class JobFileFormatEnumSerializer : JsonConverter<JobFileFormatEnum>
+    {
+        public override JobFileFormatEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new JobFileFormatEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            JobFileFormatEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

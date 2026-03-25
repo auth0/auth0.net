@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<ConnectedAccountAccessTypeEnum>))]
+[JsonConverter(typeof(ConnectedAccountAccessTypeEnum.ConnectedAccountAccessTypeEnumSerializer))]
 [Serializable]
 public readonly record struct ConnectedAccountAccessTypeEnum : IStringEnum
 {
@@ -49,6 +50,33 @@ public readonly record struct ConnectedAccountAccessTypeEnum : IStringEnum
     public static explicit operator string(ConnectedAccountAccessTypeEnum value) => value.Value;
 
     public static explicit operator ConnectedAccountAccessTypeEnum(string value) => new(value);
+
+    internal class ConnectedAccountAccessTypeEnumSerializer
+        : JsonConverter<ConnectedAccountAccessTypeEnum>
+    {
+        public override ConnectedAccountAccessTypeEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new ConnectedAccountAccessTypeEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            ConnectedAccountAccessTypeEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

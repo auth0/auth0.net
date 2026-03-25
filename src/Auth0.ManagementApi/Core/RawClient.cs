@@ -1,9 +1,6 @@
-using global::System.Collections.Generic;
-using global::System.Linq;
 using global::System.Net.Http;
 using global::System.Net.Http.Headers;
 using global::System.Text;
-using global::System.Text.Json;
 using SystemTask = global::System.Threading.Tasks.Task;
 
 namespace Auth0.ManagementApi.Core;
@@ -26,7 +23,7 @@ internal partial class RawClient(ClientOptions clientOptions)
     /// <summary>
     /// The client options applied on every request.
     /// </summary>
-    internal readonly ClientOptions Options = InjectAuth0ClientHeader(clientOptions);
+    internal readonly ClientOptions Options = clientOptions;
 
     internal async global::System.Threading.Tasks.Task<global::Auth0.ManagementApi.Core.ApiResponse> SendRequestAsync(
         global::Auth0.ManagementApi.Core.BaseRequest request,
@@ -65,50 +62,53 @@ internal partial class RawClient(ClientOptions clientOptions)
     {
         var clonedRequest = new HttpRequestMessage(request.Method, request.RequestUri);
         clonedRequest.Version = request.Version;
-        switch (request.Content)
+
+        if (request.Content != null)
         {
-            case null:
-                clonedRequest.Content = null;
-                break;
-            case MultipartContent oldMultipartFormContent:
-                var originalBoundary =
-                    oldMultipartFormContent
-                        .Headers.ContentType?.Parameters.First(p =>
-                            p.Name.Equals("boundary", StringComparison.OrdinalIgnoreCase)
-                        )
-                        .Value?.Trim('"') ?? Guid.NewGuid().ToString();
-                var newMultipartContent = oldMultipartFormContent switch
-                {
-                    MultipartFormDataContent => new MultipartFormDataContent(originalBoundary),
-                    _ => new MultipartContent(),
-                };
-                foreach (var content in oldMultipartFormContent)
-                {
-                    var ms = new MemoryStream();
-                    await content.CopyToAsync(ms).ConfigureAwait(false);
-                    ms.Position = 0;
-                    var newPart = new StreamContent(ms);
-                    foreach (var header in oldMultipartFormContent.Headers)
+            switch (request.Content)
+            {
+                case MultipartContent oldMultipartFormContent:
+                    var originalBoundary =
+                        oldMultipartFormContent
+                            .Headers.ContentType?.Parameters.First(p =>
+                                p.Name.Equals("boundary", StringComparison.OrdinalIgnoreCase)
+                            )
+                            .Value?.Trim('"')
+                        ?? Guid.NewGuid().ToString();
+                    var newMultipartContent = oldMultipartFormContent switch
                     {
-                        newPart.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                        MultipartFormDataContent => new MultipartFormDataContent(originalBoundary),
+                        _ => new MultipartContent(),
+                    };
+                    foreach (var content in oldMultipartFormContent)
+                    {
+                        var ms = new MemoryStream();
+                        await content.CopyToAsync(ms).ConfigureAwait(false);
+                        ms.Position = 0;
+                        var newPart = new StreamContent(ms);
+                        foreach (var header in content.Headers)
+                        {
+                            newPart.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                        }
+
+                        newMultipartContent.Add(newPart);
                     }
 
-                    newMultipartContent.Add(newPart);
-                }
+                    clonedRequest.Content = newMultipartContent;
+                    break;
+                default:
+                    var bodyStream = new MemoryStream();
+                    await request.Content.CopyToAsync(bodyStream).ConfigureAwait(false);
+                    bodyStream.Position = 0;
+                    var clonedContent = new StreamContent(bodyStream);
+                    foreach (var header in request.Content.Headers)
+                    {
+                        clonedContent.Headers.TryAddWithoutValidation(header.Key, header.Value);
+                    }
 
-                clonedRequest.Content = newMultipartContent;
-                break;
-            default:
-                // Clone other content types (StringContent, ByteArrayContent, etc.)
-                var contentBytes = await request.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
-                var newContent = new ByteArrayContent(contentBytes);
-                // Copy content headers
-                foreach (var header in request.Content.Headers)
-                {
-                    newContent.Headers.TryAddWithoutValidation(header.Key, header.Value);
-                }
-                clonedRequest.Content = newContent;
-                break;
+                    clonedRequest.Content = clonedContent;
+                    break;
+            }
         }
 
         foreach (var header in request.Headers)
@@ -131,20 +131,10 @@ internal partial class RawClient(ClientOptions clientOptions)
     {
         var httpClient = options?.HttpClient ?? Options.HttpClient;
         var maxRetries = options?.MaxRetries ?? Options.MaxRetries;
-        var isRetryableContent = IsRetryableContent(request);
-
-        // Preserve content bytes before sending if we might need to retry
-        byte[]? contentBytes = null;
-        Dictionary<string, IEnumerable<string>>? contentHeaders = null;
-        if (isRetryableContent && maxRetries > 0 && request.Content != null)
-        {
-            contentBytes = await request.Content.ReadAsByteArrayAsync().ConfigureAwait(false);
-            contentHeaders = request.Content.Headers.ToDictionary(h => h.Key, h => h.Value);
-        }
-
         var response = await httpClient
             .SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken)
             .ConfigureAwait(false);
+        var isRetryableContent = IsRetryableContent(request);
 
         if (!isRetryableContent)
         {
@@ -164,7 +154,7 @@ internal partial class RawClient(ClientOptions clientOptions)
 
             var delayMs = GetRetryDelayFromHeaders(response, i);
             await SystemTask.Delay(delayMs, cancellationToken).ConfigureAwait(false);
-            using var retryRequest = CloneRequestWithContent(request, contentBytes, contentHeaders);
+            using var retryRequest = await CloneRequestAsync(request).ConfigureAwait(false);
             response = await httpClient
                 .SendAsync(
                     retryRequest,
@@ -179,36 +169,6 @@ internal partial class RawClient(ClientOptions clientOptions)
             StatusCode = (int)response.StatusCode,
             Raw = response,
         };
-    }
-
-    private static HttpRequestMessage CloneRequestWithContent(
-        HttpRequestMessage request,
-        byte[]? contentBytes,
-        Dictionary<string, IEnumerable<string>>? contentHeaders
-    )
-    {
-        var clonedRequest = new HttpRequestMessage(request.Method, request.RequestUri);
-        clonedRequest.Version = request.Version;
-
-        if (contentBytes != null)
-        {
-            var newContent = new ByteArrayContent(contentBytes);
-            if (contentHeaders != null)
-            {
-                foreach (var header in contentHeaders)
-                {
-                    newContent.Headers.TryAddWithoutValidation(header.Key, header.Value);
-                }
-            }
-            clonedRequest.Content = newContent;
-        }
-
-        foreach (var header in request.Headers)
-        {
-            clonedRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
-        }
-
-        return clonedRequest;
     }
 
     private static bool ShouldRetry(HttpResponseMessage response)
@@ -314,9 +274,10 @@ internal partial class RawClient(ClientOptions clientOptions)
         return httpRequest;
     }
 
-    private static string BuildUrl(global::Auth0.ManagementApi.Core.BaseRequest request)
+    private string BuildUrl(global::Auth0.ManagementApi.Core.BaseRequest request)
     {
-        var baseUrl = request.Options?.BaseUrl ?? request.BaseUrl;
+        var baseUrl = request.Options?.BaseUrl ?? request.BaseUrl ?? Options.BaseUrl;
+
         var trimmedBaseUrl = baseUrl.TrimEnd('/');
         var trimmedBasePath = request.Path.TrimStart('/');
         var url = $"{trimmedBaseUrl}/{trimmedBasePath}";
@@ -345,25 +306,6 @@ internal partial class RawClient(ClientOptions clientOptions)
             }
 
             httpRequest.Headers.TryAddWithoutValidation(kv.Key, kv.Value);
-        }
-    }
-
-    private async SystemTask SetHeadersAsync(HttpRequestMessage httpRequest, Headers? headers)
-    {
-        if (headers is null)
-        {
-            return;
-        }
-
-        foreach (var kv in headers)
-        {
-            var value = await kv.Value.ResolveAsync().ConfigureAwait(false);
-            if (value is null)
-            {
-                continue;
-            }
-
-            httpRequest.Headers.TryAddWithoutValidation(kv.Key, value);
         }
     }
 
@@ -398,53 +340,5 @@ internal partial class RawClient(ClientOptions clientOptions)
         }
 
         return (encoding, charset, mediaType);
-    }
-
-    private static ClientOptions InjectAuth0ClientHeader(ClientOptions options)
-    {
-        if (!options.Headers.ContainsKey("Auth0-Client"))
-        {
-            options.Headers["Auth0-Client"] = CreateAgentString();
-        }
-
-        options.Headers.Remove("X-Fern-Language");
-        options.Headers.Remove("X-Fern-SDK-Name");
-        options.Headers.Remove("X-Fern-SDK-Version");
-
-        return options;
-    }
-
-    private static string CreateAgentString()
-    {
-#if NET462
-        var target = "NET462";
-#elif NETSTANDARD2_0
-        var target = "NETSTANDARD2.0";
-#elif NET6_0
-        var target = "NET6.0";
-#elif NET7_0
-        var target = "NET7.0";
-#elif NET8_0
-        var target = "NET8.0";
-#else
-        var target = "UNKNOWN";
-#endif
-
-        var agentJson = JsonSerializer.Serialize(new
-        {
-            name = "Auth0.Net",
-            version = Version.Current,
-            env = new { target }
-        });
-        return Base64UrlEncode(Encoding.UTF8.GetBytes(agentJson));
-    }
-
-    private static string Base64UrlEncode(byte[] input)
-    {
-        var output = Convert.ToBase64String(input);
-        output = output.Replace('+', '-');  // 62nd char of encoding
-        output = output.Replace('/', '_');  // 63rd char of encoding
-        output = output.TrimEnd('=');       // Remove padding
-        return output;
     }
 }

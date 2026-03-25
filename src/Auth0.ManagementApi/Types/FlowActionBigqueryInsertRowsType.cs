@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FlowActionBigqueryInsertRowsType>))]
+[JsonConverter(typeof(FlowActionBigqueryInsertRowsType.FlowActionBigqueryInsertRowsTypeSerializer))]
 [Serializable]
 public readonly record struct FlowActionBigqueryInsertRowsType : IStringEnum
 {
@@ -49,6 +50,33 @@ public readonly record struct FlowActionBigqueryInsertRowsType : IStringEnum
     public static explicit operator string(FlowActionBigqueryInsertRowsType value) => value.Value;
 
     public static explicit operator FlowActionBigqueryInsertRowsType(string value) => new(value);
+
+    internal class FlowActionBigqueryInsertRowsTypeSerializer
+        : JsonConverter<FlowActionBigqueryInsertRowsType>
+    {
+        public override FlowActionBigqueryInsertRowsType Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FlowActionBigqueryInsertRowsType(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FlowActionBigqueryInsertRowsType value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

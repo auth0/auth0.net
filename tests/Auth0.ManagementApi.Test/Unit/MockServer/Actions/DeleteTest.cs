@@ -1,9 +1,11 @@
+using Auth0.ManagementApi;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using NUnit.Framework;
 
 namespace Auth0.ManagementApi.Test.Unit.MockServer.Actions;
 
 [TestFixture]
+[Parallelizable(ParallelScope.Self)]
 public class DeleteTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
@@ -13,11 +15,16 @@ public class DeleteTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/actions/modules/id")
+                    .WithPath("/actions/actions/id")
                     .UsingDelete()
             )
             .RespondWith(WireMock.ResponseBuilders.Response.Create().WithStatusCode(200));
 
-        Assert.DoesNotThrowAsync(async () => await Client.Actions.Modules.DeleteAsync("id"));
+        Assert.DoesNotThrowAsync(async () =>
+            await Client.Actions.DeleteAsync(
+                "id",
+                new DeleteActionRequestParameters { Force = true }
+            )
+        );
     }
 }

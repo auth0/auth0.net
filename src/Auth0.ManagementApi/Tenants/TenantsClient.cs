@@ -4,7 +4,7 @@ namespace Auth0.ManagementApi.Tenants;
 
 public partial class TenantsClient : ITenantsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal TenantsClient(RawClient client)
     {

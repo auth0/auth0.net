@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FormFieldFileConfigStorageTypeEnum>))]
+[JsonConverter(
+    typeof(FormFieldFileConfigStorageTypeEnum.FormFieldFileConfigStorageTypeEnumSerializer)
+)]
 [Serializable]
 public readonly record struct FormFieldFileConfigStorageTypeEnum : IStringEnum
 {
@@ -51,6 +54,33 @@ public readonly record struct FormFieldFileConfigStorageTypeEnum : IStringEnum
     public static explicit operator string(FormFieldFileConfigStorageTypeEnum value) => value.Value;
 
     public static explicit operator FormFieldFileConfigStorageTypeEnum(string value) => new(value);
+
+    internal class FormFieldFileConfigStorageTypeEnumSerializer
+        : JsonConverter<FormFieldFileConfigStorageTypeEnum>
+    {
+        public override FormFieldFileConfigStorageTypeEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FormFieldFileConfigStorageTypeEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FormFieldFileConfigStorageTypeEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

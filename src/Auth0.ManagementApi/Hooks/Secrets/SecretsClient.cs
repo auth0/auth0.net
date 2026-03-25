@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Hooks;
 
 public partial class SecretsClient : ISecretsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal SecretsClient(RawClient client)
     {
@@ -29,7 +29,6 @@ public partial class SecretsClient : ISecretsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "hooks/{0}/secrets",
@@ -43,7 +42,9 @@ public partial class SecretsClient : ISecretsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<Dictionary<string, string>>(responseBody)!;
@@ -69,7 +70,9 @@ public partial class SecretsClient : ISecretsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -141,7 +144,6 @@ public partial class SecretsClient : ISecretsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "hooks/{0}/secrets",
@@ -160,7 +162,9 @@ public partial class SecretsClient : ISecretsClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -212,7 +216,6 @@ public partial class SecretsClient : ISecretsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "hooks/{0}/secrets",
@@ -231,7 +234,9 @@ public partial class SecretsClient : ISecretsClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -284,7 +289,6 @@ public partial class SecretsClient : ISecretsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "hooks/{0}/secrets",
@@ -303,7 +307,9 @@ public partial class SecretsClient : ISecretsClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
