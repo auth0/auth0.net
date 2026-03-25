@@ -13,13 +13,13 @@
     "experimental-explicit-nullable-optional": true,
     "use-undiscriminated-unions": true,
     "redact-response-body-on-error": true,
-    "omitFernHeaders": true,
+    "omit-fern-headers": true,
     "output-path": {
       "library": "src",
       "test": "tests",
       "solution": "."
     }
   },
-  "originGitCommit": "bb07071c8a7241ccd1ad9c6b0e2c12cced17646b",
+  "originGitCommit": "5fe3ae441d4b601a94f7d148a4cd1aee411058b3",
   "sdkVersion": "7.44.0"
 }
