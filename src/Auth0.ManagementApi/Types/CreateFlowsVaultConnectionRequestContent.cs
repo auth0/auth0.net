@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -1003,27 +1003,27 @@ public class CreateFlowsVaultConnectionRequestContent
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionActivecampaign> onCreateFlowsVaultConnectionActivecampaign,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionAirtable> onCreateFlowsVaultConnectionAirtable,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionAuth0> onCreateFlowsVaultConnectionAuth0,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionBigquery> onCreateFlowsVaultConnectionBigquery,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionClearbit> onCreateFlowsVaultConnectionClearbit,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionDocusign> onCreateFlowsVaultConnectionDocusign,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionGoogleSheets> onCreateFlowsVaultConnectionGoogleSheets,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHttp> onCreateFlowsVaultConnectionHttp,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHubspot> onCreateFlowsVaultConnectionHubspot,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionJwt> onCreateFlowsVaultConnectionJwt,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionMailchimp> onCreateFlowsVaultConnectionMailchimp,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionMailjet> onCreateFlowsVaultConnectionMailjet,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionPipedrive> onCreateFlowsVaultConnectionPipedrive,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionSalesforce> onCreateFlowsVaultConnectionSalesforce,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionSendgrid> onCreateFlowsVaultConnectionSendgrid,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionSlack> onCreateFlowsVaultConnectionSlack,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionStripe> onCreateFlowsVaultConnectionStripe,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionTelegram> onCreateFlowsVaultConnectionTelegram,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionTwilio> onCreateFlowsVaultConnectionTwilio,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionWhatsapp> onCreateFlowsVaultConnectionWhatsapp,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionZapier> onCreateFlowsVaultConnectionZapier
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionActivecampaign> onCreateFlowsVaultConnectionActivecampaign,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionAirtable> onCreateFlowsVaultConnectionAirtable,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionAuth0> onCreateFlowsVaultConnectionAuth0,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionBigquery> onCreateFlowsVaultConnectionBigquery,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionClearbit> onCreateFlowsVaultConnectionClearbit,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionDocusign> onCreateFlowsVaultConnectionDocusign,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionGoogleSheets> onCreateFlowsVaultConnectionGoogleSheets,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHttp> onCreateFlowsVaultConnectionHttp,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHubspot> onCreateFlowsVaultConnectionHubspot,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionJwt> onCreateFlowsVaultConnectionJwt,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionMailchimp> onCreateFlowsVaultConnectionMailchimp,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionMailjet> onCreateFlowsVaultConnectionMailjet,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionPipedrive> onCreateFlowsVaultConnectionPipedrive,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionSalesforce> onCreateFlowsVaultConnectionSalesforce,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionSendgrid> onCreateFlowsVaultConnectionSendgrid,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionSlack> onCreateFlowsVaultConnectionSlack,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionStripe> onCreateFlowsVaultConnectionStripe,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionTelegram> onCreateFlowsVaultConnectionTelegram,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionTwilio> onCreateFlowsVaultConnectionTwilio,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionWhatsapp> onCreateFlowsVaultConnectionWhatsapp,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionZapier> onCreateFlowsVaultConnectionZapier
     )
     {
         switch (Type)
@@ -1440,7 +1440,7 @@ public class CreateFlowsVaultConnectionRequestContent
     {
         public override CreateFlowsVaultConnectionRequestContent? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -1603,7 +1603,7 @@ public class CreateFlowsVaultConnectionRequestContent
 
         public override CreateFlowsVaultConnectionRequestContent ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

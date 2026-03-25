@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -121,8 +121,8 @@ public class FlowActionClearbit
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.FlowActionClearbitFindPerson> onFlowActionClearbitFindPerson,
-        System.Action<Auth0.ManagementApi.FlowActionClearbitFindCompany> onFlowActionClearbitFindCompany
+        global::System.Action<Auth0.ManagementApi.FlowActionClearbitFindPerson> onFlowActionClearbitFindPerson,
+        global::System.Action<Auth0.ManagementApi.FlowActionClearbitFindCompany> onFlowActionClearbitFindCompany
     )
     {
         switch (Type)
@@ -186,7 +186,7 @@ public class FlowActionClearbit
     {
         public override FlowActionClearbit? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -254,7 +254,7 @@ public class FlowActionClearbit
 
         public override FlowActionClearbit ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

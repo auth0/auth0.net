@@ -1,8 +1,8 @@
-using System.Text.Json;
 using Auth0.ManagementApi;
 using Auth0.ManagementApi.Core;
 using Auth0.ManagementApi.Guardian.Factors;
 using Auth0.ManagementApi.Guardian.Factors.Duo;
+using global::System.Text.Json;
 
 namespace Auth0.ManagementApi.Guardian;
 

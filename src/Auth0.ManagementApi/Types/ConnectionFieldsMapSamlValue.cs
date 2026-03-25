@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -105,8 +105,8 @@ public class ConnectionFieldsMapSamlValue
     }
 
     public void Visit(
-        System.Action<string> onString,
-        System.Action<IEnumerable<string>> onListOfString
+        global::System.Action<string> onString,
+        global::System.Action<IEnumerable<string>> onListOfString
     )
     {
         switch (Type)
@@ -165,7 +165,7 @@ public class ConnectionFieldsMapSamlValue
     {
         public override ConnectionFieldsMapSamlValue? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -234,7 +234,7 @@ public class ConnectionFieldsMapSamlValue
 
         public override ConnectionFieldsMapSamlValue ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

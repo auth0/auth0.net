@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -277,11 +277,11 @@ public class CreateFlowsVaultConnectionHttp
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBearer> onCreateFlowsVaultConnectionHttpBearer,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBasicAuth> onCreateFlowsVaultConnectionHttpBasicAuth,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHttpApiKey> onCreateFlowsVaultConnectionHttpApiKey,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHttpOauthClientCredentials> onCreateFlowsVaultConnectionHttpOauthClientCredentials,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHttpUninitialized> onCreateFlowsVaultConnectionHttpUninitialized
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBearer> onCreateFlowsVaultConnectionHttpBearer,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHttpBasicAuth> onCreateFlowsVaultConnectionHttpBasicAuth,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHttpApiKey> onCreateFlowsVaultConnectionHttpApiKey,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHttpOauthClientCredentials> onCreateFlowsVaultConnectionHttpOauthClientCredentials,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHttpUninitialized> onCreateFlowsVaultConnectionHttpUninitialized
     )
     {
         switch (Type)
@@ -372,7 +372,7 @@ public class CreateFlowsVaultConnectionHttp
     {
         public override CreateFlowsVaultConnectionHttp? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -455,7 +455,7 @@ public class CreateFlowsVaultConnectionHttp
 
         public override CreateFlowsVaultConnectionHttp ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

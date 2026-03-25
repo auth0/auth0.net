@@ -1,5 +1,5 @@
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -80,6 +80,10 @@ public record ConnectionOptionsAuth0 : IJsonOnDeserialized, IJsonOnSerializing
     [Nullable, Optional]
     [JsonPropertyName("password_no_personal_info")]
     public Optional<ConnectionPasswordNoPersonalInfoOptions?> PasswordNoPersonalInfo { get; set; }
+
+    [Optional]
+    [JsonPropertyName("password_options")]
+    public ConnectionPasswordOptions? PasswordOptions { get; set; }
 
     [Optional]
     [JsonPropertyName("precedence")]

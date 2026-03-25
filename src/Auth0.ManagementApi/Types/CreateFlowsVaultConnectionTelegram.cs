@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -134,8 +134,8 @@ public class CreateFlowsVaultConnectionTelegram
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionTelegramToken> onCreateFlowsVaultConnectionTelegramToken,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionTelegramUninitialized> onCreateFlowsVaultConnectionTelegramUninitialized
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionTelegramToken> onCreateFlowsVaultConnectionTelegramToken,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionTelegramUninitialized> onCreateFlowsVaultConnectionTelegramUninitialized
     )
     {
         switch (Type)
@@ -203,7 +203,7 @@ public class CreateFlowsVaultConnectionTelegram
     {
         public override CreateFlowsVaultConnectionTelegram? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -271,7 +271,7 @@ public class CreateFlowsVaultConnectionTelegram
 
         public override CreateFlowsVaultConnectionTelegram ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

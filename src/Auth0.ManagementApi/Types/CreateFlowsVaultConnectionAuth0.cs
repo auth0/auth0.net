@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -134,8 +134,8 @@ public class CreateFlowsVaultConnectionAuth0
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionAuth0OauthApp> onCreateFlowsVaultConnectionAuth0OauthApp,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionAuth0Uninitialized> onCreateFlowsVaultConnectionAuth0Uninitialized
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionAuth0OauthApp> onCreateFlowsVaultConnectionAuth0OauthApp,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionAuth0Uninitialized> onCreateFlowsVaultConnectionAuth0Uninitialized
     )
     {
         switch (Type)
@@ -203,7 +203,7 @@ public class CreateFlowsVaultConnectionAuth0
     {
         public override CreateFlowsVaultConnectionAuth0? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -271,7 +271,7 @@ public class CreateFlowsVaultConnectionAuth0
 
         public override CreateFlowsVaultConnectionAuth0 ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

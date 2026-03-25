@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -189,10 +189,12 @@ public class FlowActionFlowMapValueParamsFallback
     }
 
     public void Visit(
-        System.Action<string> onString,
-        System.Action<double> onDouble,
-        System.Action<Dictionary<string, object?>> onFlowActionFlowMapValueParamsFallbackObject,
-        System.Action<IEnumerable<object>> onListOfUnknown
+        global::System.Action<string> onString,
+        global::System.Action<double> onDouble,
+        global::System.Action<
+            Dictionary<string, object?>
+        > onFlowActionFlowMapValueParamsFallbackObject,
+        global::System.Action<IEnumerable<object>> onListOfUnknown
     )
     {
         switch (Type)
@@ -266,7 +268,7 @@ public class FlowActionFlowMapValueParamsFallback
     {
         public override FlowActionFlowMapValueParamsFallback? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -376,7 +378,7 @@ public class FlowActionFlowMapValueParamsFallback
 
         public override FlowActionFlowMapValueParamsFallback ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -117,8 +117,8 @@ public class FlowActionTwilio
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.FlowActionTwilioMakeCall> onFlowActionTwilioMakeCall,
-        System.Action<Auth0.ManagementApi.FlowActionTwilioSendSms> onFlowActionTwilioSendSms
+        global::System.Action<Auth0.ManagementApi.FlowActionTwilioMakeCall> onFlowActionTwilioMakeCall,
+        global::System.Action<Auth0.ManagementApi.FlowActionTwilioSendSms> onFlowActionTwilioSendSms
     )
     {
         switch (Type)
@@ -182,7 +182,7 @@ public class FlowActionTwilio
     {
         public override FlowActionTwilio? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -250,7 +250,7 @@ public class FlowActionTwilio
 
         public override FlowActionTwilio ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

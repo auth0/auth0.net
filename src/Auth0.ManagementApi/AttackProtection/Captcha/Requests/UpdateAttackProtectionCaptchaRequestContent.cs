@@ -1,6 +1,6 @@
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi.AttackProtection;
 

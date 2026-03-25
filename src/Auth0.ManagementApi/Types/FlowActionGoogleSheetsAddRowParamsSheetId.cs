@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -102,7 +102,7 @@ public class FlowActionGoogleSheetsAddRowParamsSheetId
         };
     }
 
-    public void Visit(System.Action<int> onInt, System.Action<string> onString)
+    public void Visit(global::System.Action<int> onInt, global::System.Action<string> onString)
     {
         switch (Type)
         {
@@ -163,7 +163,7 @@ public class FlowActionGoogleSheetsAddRowParamsSheetId
     {
         public override FlowActionGoogleSheetsAddRowParamsSheetId? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -220,7 +220,7 @@ public class FlowActionGoogleSheetsAddRowParamsSheetId
 
         public override FlowActionGoogleSheetsAddRowParamsSheetId ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

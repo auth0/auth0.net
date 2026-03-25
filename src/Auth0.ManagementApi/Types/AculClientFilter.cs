@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -120,8 +120,8 @@ public class AculClientFilter
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.AculClientFilterById> onAculClientFilterById,
-        System.Action<Auth0.ManagementApi.AculClientFilterByMetadata> onAculClientFilterByMetadata
+        global::System.Action<Auth0.ManagementApi.AculClientFilterById> onAculClientFilterById,
+        global::System.Action<Auth0.ManagementApi.AculClientFilterByMetadata> onAculClientFilterByMetadata
     )
     {
         switch (Type)
@@ -185,7 +185,7 @@ public class AculClientFilter
     {
         public override AculClientFilter? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -250,7 +250,7 @@ public class AculClientFilter
 
         public override AculClientFilter ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
