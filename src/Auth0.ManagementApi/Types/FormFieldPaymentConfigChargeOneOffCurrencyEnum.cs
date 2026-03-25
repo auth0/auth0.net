@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FormFieldPaymentConfigChargeOneOffCurrencyEnum>))]
+[JsonConverter(
+    typeof(FormFieldPaymentConfigChargeOneOffCurrencyEnum.FormFieldPaymentConfigChargeOneOffCurrencyEnumSerializer)
+)]
 [Serializable]
 public readonly record struct FormFieldPaymentConfigChargeOneOffCurrencyEnum : IStringEnum
 {
@@ -71,6 +74,33 @@ public readonly record struct FormFieldPaymentConfigChargeOneOffCurrencyEnum : I
 
     public static explicit operator FormFieldPaymentConfigChargeOneOffCurrencyEnum(string value) =>
         new(value);
+
+    internal class FormFieldPaymentConfigChargeOneOffCurrencyEnumSerializer
+        : JsonConverter<FormFieldPaymentConfigChargeOneOffCurrencyEnum>
+    {
+        public override FormFieldPaymentConfigChargeOneOffCurrencyEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FormFieldPaymentConfigChargeOneOffCurrencyEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FormFieldPaymentConfigChargeOneOffCurrencyEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

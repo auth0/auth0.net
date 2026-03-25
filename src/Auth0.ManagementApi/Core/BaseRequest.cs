@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Core;
 
 internal abstract record BaseRequest
 {
-    internal required string BaseUrl { get; init; }
+    internal string? BaseUrl { get; init; }
 
     internal required HttpMethod Method { get; init; }
 

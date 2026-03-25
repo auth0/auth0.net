@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Guardian;
 
 public partial class PoliciesClient : IPoliciesClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal PoliciesClient(RawClient client)
     {
@@ -28,7 +28,6 @@ public partial class PoliciesClient : IPoliciesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "guardian/policies",
                     Headers = _headers,
@@ -39,7 +38,9 @@ public partial class PoliciesClient : IPoliciesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<IEnumerable<MfaPolicyEnum>>(responseBody)!;
@@ -65,7 +66,9 @@ public partial class PoliciesClient : IPoliciesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -106,7 +109,6 @@ public partial class PoliciesClient : IPoliciesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = "guardian/policies",
                     Body = request,
@@ -119,7 +121,9 @@ public partial class PoliciesClient : IPoliciesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<IEnumerable<MfaPolicyEnum>>(responseBody)!;
@@ -145,7 +149,9 @@ public partial class PoliciesClient : IPoliciesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

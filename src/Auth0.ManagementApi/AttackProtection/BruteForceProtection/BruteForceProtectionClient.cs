@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.AttackProtection;
 
 public partial class BruteForceProtectionClient : IBruteForceProtectionClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal BruteForceProtectionClient(RawClient client)
     {
@@ -28,7 +28,6 @@ public partial class BruteForceProtectionClient : IBruteForceProtectionClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "attack-protection/brute-force-protection",
                     Headers = _headers,
@@ -39,7 +38,9 @@ public partial class BruteForceProtectionClient : IBruteForceProtectionClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetBruteForceSettingsResponseContent>(
@@ -67,7 +68,9 @@ public partial class BruteForceProtectionClient : IBruteForceProtectionClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -108,7 +111,6 @@ public partial class BruteForceProtectionClient : IBruteForceProtectionClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "attack-protection/brute-force-protection",
                     Body = request,
@@ -121,7 +123,9 @@ public partial class BruteForceProtectionClient : IBruteForceProtectionClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<UpdateBruteForceSettingsResponseContent>(
@@ -149,7 +153,9 @@ public partial class BruteForceProtectionClient : IBruteForceProtectionClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<EmailSparkPostRegionEnum>))]
+[JsonConverter(typeof(EmailSparkPostRegionEnum.EmailSparkPostRegionEnumSerializer))]
 [Serializable]
 public readonly record struct EmailSparkPostRegionEnum : IStringEnum
 {
@@ -49,6 +50,32 @@ public readonly record struct EmailSparkPostRegionEnum : IStringEnum
     public static explicit operator string(EmailSparkPostRegionEnum value) => value.Value;
 
     public static explicit operator EmailSparkPostRegionEnum(string value) => new(value);
+
+    internal class EmailSparkPostRegionEnumSerializer : JsonConverter<EmailSparkPostRegionEnum>
+    {
+        public override EmailSparkPostRegionEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new EmailSparkPostRegionEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            EmailSparkPostRegionEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

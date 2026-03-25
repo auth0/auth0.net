@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<BruteForceProtectionModeEnum>))]
+[JsonConverter(typeof(BruteForceProtectionModeEnum.BruteForceProtectionModeEnumSerializer))]
 [Serializable]
 public readonly record struct BruteForceProtectionModeEnum : IStringEnum
 {
@@ -55,6 +56,33 @@ public readonly record struct BruteForceProtectionModeEnum : IStringEnum
     public static explicit operator string(BruteForceProtectionModeEnum value) => value.Value;
 
     public static explicit operator BruteForceProtectionModeEnum(string value) => new(value);
+
+    internal class BruteForceProtectionModeEnumSerializer
+        : JsonConverter<BruteForceProtectionModeEnum>
+    {
+        public override BruteForceProtectionModeEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new BruteForceProtectionModeEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            BruteForceProtectionModeEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

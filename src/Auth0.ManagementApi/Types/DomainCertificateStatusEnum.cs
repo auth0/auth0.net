@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<DomainCertificateStatusEnum>))]
+[JsonConverter(typeof(DomainCertificateStatusEnum.DomainCertificateStatusEnumSerializer))]
 [Serializable]
 public readonly record struct DomainCertificateStatusEnum : IStringEnum
 {
@@ -57,6 +58,33 @@ public readonly record struct DomainCertificateStatusEnum : IStringEnum
     public static explicit operator string(DomainCertificateStatusEnum value) => value.Value;
 
     public static explicit operator DomainCertificateStatusEnum(string value) => new(value);
+
+    internal class DomainCertificateStatusEnumSerializer
+        : JsonConverter<DomainCertificateStatusEnum>
+    {
+        public override DomainCertificateStatusEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new DomainCertificateStatusEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            DomainCertificateStatusEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

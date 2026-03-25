@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Emails;
 
 public partial class ProviderClient : IProviderClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal ProviderClient(RawClient client)
     {
@@ -37,7 +37,6 @@ public partial class ProviderClient : IProviderClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "emails/provider",
                     QueryString = _queryString,
@@ -49,7 +48,9 @@ public partial class ProviderClient : IProviderClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetEmailProviderResponseContent>(
@@ -77,7 +78,9 @@ public partial class ProviderClient : IProviderClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -122,7 +125,6 @@ public partial class ProviderClient : IProviderClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "emails/provider",
                     Body = request,
@@ -135,7 +137,9 @@ public partial class ProviderClient : IProviderClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<CreateEmailProviderResponseContent>(
@@ -163,7 +167,9 @@ public partial class ProviderClient : IProviderClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -208,7 +214,6 @@ public partial class ProviderClient : IProviderClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "emails/provider",
                     Body = request,
@@ -221,7 +226,9 @@ public partial class ProviderClient : IProviderClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<UpdateEmailProviderResponseContent>(
@@ -249,7 +256,9 @@ public partial class ProviderClient : IProviderClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -384,7 +393,6 @@ public partial class ProviderClient : IProviderClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = "emails/provider",
                     Headers = _headers,
@@ -398,7 +406,9 @@ public partial class ProviderClient : IProviderClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

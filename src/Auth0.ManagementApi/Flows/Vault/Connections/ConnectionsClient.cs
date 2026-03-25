@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Flows.Vault;
 
 public partial class ConnectionsClient : IConnectionsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal ConnectionsClient(RawClient client)
     {
@@ -51,7 +51,6 @@ public partial class ConnectionsClient : IConnectionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "flows/vault/connections",
                     QueryString = _queryString,
@@ -63,7 +62,9 @@ public partial class ConnectionsClient : IConnectionsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -92,7 +93,9 @@ public partial class ConnectionsClient : IConnectionsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -135,7 +138,6 @@ public partial class ConnectionsClient : IConnectionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "flows/vault/connections",
                     Body = request,
@@ -148,7 +150,9 @@ public partial class ConnectionsClient : IConnectionsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<CreateFlowsVaultConnectionResponseContent>(
@@ -176,7 +180,9 @@ public partial class ConnectionsClient : IConnectionsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -219,7 +225,6 @@ public partial class ConnectionsClient : IConnectionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "flows/vault/connections/{0}",
@@ -233,7 +238,9 @@ public partial class ConnectionsClient : IConnectionsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetFlowsVaultConnectionResponseContent>(
@@ -261,7 +268,9 @@ public partial class ConnectionsClient : IConnectionsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -307,7 +316,6 @@ public partial class ConnectionsClient : IConnectionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "flows/vault/connections/{0}",
@@ -323,7 +331,9 @@ public partial class ConnectionsClient : IConnectionsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<UpdateFlowsVaultConnectionResponseContent>(
@@ -351,7 +361,9 @@ public partial class ConnectionsClient : IConnectionsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -483,7 +495,6 @@ public partial class ConnectionsClient : IConnectionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "flows/vault/connections/{0}",
@@ -500,7 +511,9 @@ public partial class ConnectionsClient : IConnectionsClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

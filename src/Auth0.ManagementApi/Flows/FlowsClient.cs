@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi;
 
 public partial class FlowsClient : IFlowsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal FlowsClient(RawClient client)
     {
@@ -59,7 +59,6 @@ public partial class FlowsClient : IFlowsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "flows",
                     QueryString = _queryString,
@@ -71,7 +70,9 @@ public partial class FlowsClient : IFlowsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<ListFlowsOffsetPaginatedResponseContent>(
@@ -99,7 +100,9 @@ public partial class FlowsClient : IFlowsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -142,7 +145,6 @@ public partial class FlowsClient : IFlowsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "flows",
                     Body = request,
@@ -155,7 +157,9 @@ public partial class FlowsClient : IFlowsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<CreateFlowResponseContent>(responseBody)!;
@@ -181,7 +185,9 @@ public partial class FlowsClient : IFlowsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -229,7 +235,6 @@ public partial class FlowsClient : IFlowsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("flows/{0}", ValueConvert.ToPathParameterString(id)),
                     QueryString = _queryString,
@@ -241,7 +246,9 @@ public partial class FlowsClient : IFlowsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetFlowResponseContent>(responseBody)!;
@@ -267,7 +274,9 @@ public partial class FlowsClient : IFlowsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -313,7 +322,6 @@ public partial class FlowsClient : IFlowsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format("flows/{0}", ValueConvert.ToPathParameterString(id)),
                     Body = request,
@@ -326,7 +334,9 @@ public partial class FlowsClient : IFlowsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<UpdateFlowResponseContent>(responseBody)!;
@@ -352,7 +362,9 @@ public partial class FlowsClient : IFlowsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -472,7 +484,6 @@ public partial class FlowsClient : IFlowsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format("flows/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,
@@ -486,7 +497,9 @@ public partial class FlowsClient : IFlowsClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi.VerifiableCredentials;
 
 public partial class VerifiableCredentialsClient : IVerifiableCredentialsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal VerifiableCredentialsClient(RawClient client)
     {

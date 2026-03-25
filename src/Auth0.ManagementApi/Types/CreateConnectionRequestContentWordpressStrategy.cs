@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<CreateConnectionRequestContentWordpressStrategy>))]
+[JsonConverter(
+    typeof(CreateConnectionRequestContentWordpressStrategy.CreateConnectionRequestContentWordpressStrategySerializer)
+)]
 [Serializable]
 public readonly record struct CreateConnectionRequestContentWordpressStrategy : IStringEnum
 {
@@ -57,6 +60,33 @@ public readonly record struct CreateConnectionRequestContentWordpressStrategy : 
 
     public static explicit operator CreateConnectionRequestContentWordpressStrategy(string value) =>
         new(value);
+
+    internal class CreateConnectionRequestContentWordpressStrategySerializer
+        : JsonConverter<CreateConnectionRequestContentWordpressStrategy>
+    {
+        public override CreateConnectionRequestContentWordpressStrategy Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new CreateConnectionRequestContentWordpressStrategy(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            CreateConnectionRequestContentWordpressStrategy value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

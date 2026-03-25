@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<ConnectionResponseContentBitbucketStrategy>))]
+[JsonConverter(
+    typeof(ConnectionResponseContentBitbucketStrategy.ConnectionResponseContentBitbucketStrategySerializer)
+)]
 [Serializable]
 public readonly record struct ConnectionResponseContentBitbucketStrategy : IStringEnum
 {
@@ -57,6 +60,33 @@ public readonly record struct ConnectionResponseContentBitbucketStrategy : IStri
 
     public static explicit operator ConnectionResponseContentBitbucketStrategy(string value) =>
         new(value);
+
+    internal class ConnectionResponseContentBitbucketStrategySerializer
+        : JsonConverter<ConnectionResponseContentBitbucketStrategy>
+    {
+        public override ConnectionResponseContentBitbucketStrategy Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new ConnectionResponseContentBitbucketStrategy(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            ConnectionResponseContentBitbucketStrategy value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

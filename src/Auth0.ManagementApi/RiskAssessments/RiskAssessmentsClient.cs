@@ -4,7 +4,7 @@ namespace Auth0.ManagementApi.RiskAssessments;
 
 public partial class RiskAssessmentsClient : IRiskAssessmentsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal RiskAssessmentsClient(RawClient client)
     {

@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<CustomSigningKeyTypeEnum>))]
+[JsonConverter(typeof(CustomSigningKeyTypeEnum.CustomSigningKeyTypeEnumSerializer))]
 [Serializable]
 public readonly record struct CustomSigningKeyTypeEnum : IStringEnum
 {
@@ -51,6 +52,32 @@ public readonly record struct CustomSigningKeyTypeEnum : IStringEnum
     public static explicit operator string(CustomSigningKeyTypeEnum value) => value.Value;
 
     public static explicit operator CustomSigningKeyTypeEnum(string value) => new(value);
+
+    internal class CustomSigningKeyTypeEnumSerializer : JsonConverter<CustomSigningKeyTypeEnum>
+    {
+        public override CustomSigningKeyTypeEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new CustomSigningKeyTypeEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            CustomSigningKeyTypeEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

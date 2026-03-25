@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Prompts;
 
 public partial class RenderingClient : IRenderingClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal RenderingClient(RawClient client)
     {
@@ -65,7 +65,6 @@ public partial class RenderingClient : IRenderingClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "prompts/rendering",
                     QueryString = _queryString,
@@ -77,7 +76,9 @@ public partial class RenderingClient : IRenderingClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<ListAculsOffsetPaginatedResponseContent>(
@@ -105,7 +106,9 @@ public partial class RenderingClient : IRenderingClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -150,7 +153,6 @@ public partial class RenderingClient : IRenderingClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "prompts/rendering",
                     Body = request,
@@ -163,7 +165,9 @@ public partial class RenderingClient : IRenderingClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<BulkUpdateAculResponseContent>(
@@ -191,7 +195,9 @@ public partial class RenderingClient : IRenderingClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -237,7 +243,6 @@ public partial class RenderingClient : IRenderingClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "prompts/{0}/screen/{1}/rendering",
@@ -252,7 +257,9 @@ public partial class RenderingClient : IRenderingClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetAculResponseContent>(responseBody)!;
@@ -278,7 +285,9 @@ public partial class RenderingClient : IRenderingClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -327,7 +336,6 @@ public partial class RenderingClient : IRenderingClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "prompts/{0}/screen/{1}/rendering",
@@ -344,7 +352,9 @@ public partial class RenderingClient : IRenderingClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<UpdateAculResponseContent>(responseBody)!;
@@ -370,7 +380,9 @@ public partial class RenderingClient : IRenderingClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

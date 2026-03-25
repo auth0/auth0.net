@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<EventStreamWebhookDestinationTypeEnum>))]
+[JsonConverter(
+    typeof(EventStreamWebhookDestinationTypeEnum.EventStreamWebhookDestinationTypeEnumSerializer)
+)]
 [Serializable]
 public readonly record struct EventStreamWebhookDestinationTypeEnum : IStringEnum
 {
@@ -51,6 +54,33 @@ public readonly record struct EventStreamWebhookDestinationTypeEnum : IStringEnu
 
     public static explicit operator EventStreamWebhookDestinationTypeEnum(string value) =>
         new(value);
+
+    internal class EventStreamWebhookDestinationTypeEnumSerializer
+        : JsonConverter<EventStreamWebhookDestinationTypeEnum>
+    {
+        public override EventStreamWebhookDestinationTypeEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new EventStreamWebhookDestinationTypeEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            EventStreamWebhookDestinationTypeEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

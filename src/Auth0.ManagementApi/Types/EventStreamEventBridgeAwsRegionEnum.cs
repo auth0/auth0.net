@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<EventStreamEventBridgeAwsRegionEnum>))]
+[JsonConverter(
+    typeof(EventStreamEventBridgeAwsRegionEnum.EventStreamEventBridgeAwsRegionEnumSerializer)
+)]
 [Serializable]
 public readonly record struct EventStreamEventBridgeAwsRegionEnum : IStringEnum
 {
@@ -140,6 +143,33 @@ public readonly record struct EventStreamEventBridgeAwsRegionEnum : IStringEnum
         value.Value;
 
     public static explicit operator EventStreamEventBridgeAwsRegionEnum(string value) => new(value);
+
+    internal class EventStreamEventBridgeAwsRegionEnumSerializer
+        : JsonConverter<EventStreamEventBridgeAwsRegionEnum>
+    {
+        public override EventStreamEventBridgeAwsRegionEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new EventStreamEventBridgeAwsRegionEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            EventStreamEventBridgeAwsRegionEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

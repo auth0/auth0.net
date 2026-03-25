@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<BrandingThemeWidgetHeaderTextAlignmentEnum>))]
+[JsonConverter(
+    typeof(BrandingThemeWidgetHeaderTextAlignmentEnum.BrandingThemeWidgetHeaderTextAlignmentEnumSerializer)
+)]
 [Serializable]
 public readonly record struct BrandingThemeWidgetHeaderTextAlignmentEnum : IStringEnum
 {
@@ -59,6 +62,33 @@ public readonly record struct BrandingThemeWidgetHeaderTextAlignmentEnum : IStri
 
     public static explicit operator BrandingThemeWidgetHeaderTextAlignmentEnum(string value) =>
         new(value);
+
+    internal class BrandingThemeWidgetHeaderTextAlignmentEnumSerializer
+        : JsonConverter<BrandingThemeWidgetHeaderTextAlignmentEnum>
+    {
+        public override BrandingThemeWidgetHeaderTextAlignmentEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new BrandingThemeWidgetHeaderTextAlignmentEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            BrandingThemeWidgetHeaderTextAlignmentEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

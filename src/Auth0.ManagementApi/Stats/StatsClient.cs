@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi;
 
 public partial class StatsClient : IStatsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal StatsClient(RawClient client)
     {
@@ -27,7 +27,6 @@ public partial class StatsClient : IStatsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "stats/active-users",
                     Headers = _headers,
@@ -38,7 +37,9 @@ public partial class StatsClient : IStatsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<double>(responseBody)!;
@@ -64,7 +65,9 @@ public partial class StatsClient : IStatsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -110,7 +113,6 @@ public partial class StatsClient : IStatsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "stats/daily",
                     QueryString = _queryString,
@@ -122,7 +124,9 @@ public partial class StatsClient : IStatsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<IEnumerable<DailyStats>>(responseBody)!;
@@ -148,7 +152,9 @@ public partial class StatsClient : IStatsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

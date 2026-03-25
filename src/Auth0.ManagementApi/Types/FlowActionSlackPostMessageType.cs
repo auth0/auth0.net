@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FlowActionSlackPostMessageType>))]
+[JsonConverter(typeof(FlowActionSlackPostMessageType.FlowActionSlackPostMessageTypeSerializer))]
 [Serializable]
 public readonly record struct FlowActionSlackPostMessageType : IStringEnum
 {
@@ -49,6 +50,33 @@ public readonly record struct FlowActionSlackPostMessageType : IStringEnum
     public static explicit operator string(FlowActionSlackPostMessageType value) => value.Value;
 
     public static explicit operator FlowActionSlackPostMessageType(string value) => new(value);
+
+    internal class FlowActionSlackPostMessageTypeSerializer
+        : JsonConverter<FlowActionSlackPostMessageType>
+    {
+        public override FlowActionSlackPostMessageType Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FlowActionSlackPostMessageType(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FlowActionSlackPostMessageType value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

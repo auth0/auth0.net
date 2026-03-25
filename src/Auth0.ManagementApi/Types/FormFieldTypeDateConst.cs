@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FormFieldTypeDateConst>))]
+[JsonConverter(typeof(FormFieldTypeDateConst.FormFieldTypeDateConstSerializer))]
 [Serializable]
 public readonly record struct FormFieldTypeDateConst : IStringEnum
 {
@@ -49,6 +50,32 @@ public readonly record struct FormFieldTypeDateConst : IStringEnum
     public static explicit operator string(FormFieldTypeDateConst value) => value.Value;
 
     public static explicit operator FormFieldTypeDateConst(string value) => new(value);
+
+    internal class FormFieldTypeDateConstSerializer : JsonConverter<FormFieldTypeDateConst>
+    {
+        public override FormFieldTypeDateConst Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FormFieldTypeDateConst(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FormFieldTypeDateConst value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

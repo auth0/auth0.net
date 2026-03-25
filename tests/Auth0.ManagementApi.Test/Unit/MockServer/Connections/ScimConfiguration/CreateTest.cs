@@ -1,4 +1,4 @@
-using Auth0.ManagementApi.Connections.ScimConfiguration;
+using Auth0.ManagementApi;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using Auth0.ManagementApi.Test.Utils;
 using NUnit.Framework;
@@ -6,6 +6,7 @@ using NUnit.Framework;
 namespace Auth0.ManagementApi.Test.Unit.MockServer.Connections.ScimConfiguration;
 
 [TestFixture]
+[Parallelizable(ParallelScope.Self)]
 public class CreateTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
@@ -17,13 +18,19 @@ public class CreateTest : BaseMockServerTest
 
         const string mockResponse = """
             {
-              "token_id": "token_id",
-              "token": "token",
-              "scopes": [
-                "scopes"
+              "connection_id": "connection_id",
+              "connection_name": "connection_name",
+              "strategy": "strategy",
+              "tenant_name": "tenant_name",
+              "user_id_attribute": "user_id_attribute",
+              "mapping": [
+                {
+                  "auth0": "auth0",
+                  "scim": "scim"
+                }
               ],
-              "created_at": "created_at",
-              "valid_until": "valid_until"
+              "created_at": "2024-01-15T09:30:00.000Z",
+              "updated_on": "2024-01-15T09:30:00.000Z"
             }
             """;
 
@@ -31,7 +38,7 @@ public class CreateTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/connections/id/scim-configuration/tokens")
+                    .WithPath("/connections/id/scim-configuration")
                     .WithHeader("Content-Type", "application/json")
                     .UsingPost()
                     .WithBodyAsJson(requestJson)
@@ -43,9 +50,9 @@ public class CreateTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var response = await Client.Connections.ScimConfiguration.Tokens.CreateAsync(
+        var response = await Client.Connections.ScimConfiguration.CreateAsync(
             "id",
-            new CreateScimTokenRequestContent()
+            new CreateScimConfigurationRequestContent()
         );
         JsonAssert.AreEqual(response, mockResponse);
     }

@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<PhoneProviderDeliveryMethodEnum>))]
+[JsonConverter(typeof(PhoneProviderDeliveryMethodEnum.PhoneProviderDeliveryMethodEnumSerializer))]
 [Serializable]
 public readonly record struct PhoneProviderDeliveryMethodEnum : IStringEnum
 {
@@ -51,6 +52,33 @@ public readonly record struct PhoneProviderDeliveryMethodEnum : IStringEnum
     public static explicit operator string(PhoneProviderDeliveryMethodEnum value) => value.Value;
 
     public static explicit operator PhoneProviderDeliveryMethodEnum(string value) => new(value);
+
+    internal class PhoneProviderDeliveryMethodEnumSerializer
+        : JsonConverter<PhoneProviderDeliveryMethodEnum>
+    {
+        public override PhoneProviderDeliveryMethodEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new PhoneProviderDeliveryMethodEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            PhoneProviderDeliveryMethodEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

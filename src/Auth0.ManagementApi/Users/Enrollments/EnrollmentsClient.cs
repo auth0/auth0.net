@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Users;
 
 public partial class EnrollmentsClient : IEnrollmentsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal EnrollmentsClient(RawClient client)
     {
@@ -29,7 +29,6 @@ public partial class EnrollmentsClient : IEnrollmentsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "users/{0}/enrollments",
@@ -43,7 +42,9 @@ public partial class EnrollmentsClient : IEnrollmentsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<IEnumerable<UsersEnrollment>>(
@@ -71,7 +72,9 @@ public partial class EnrollmentsClient : IEnrollmentsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

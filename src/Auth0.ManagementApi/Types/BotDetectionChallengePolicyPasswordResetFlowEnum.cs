@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<BotDetectionChallengePolicyPasswordResetFlowEnum>))]
+[JsonConverter(
+    typeof(BotDetectionChallengePolicyPasswordResetFlowEnum.BotDetectionChallengePolicyPasswordResetFlowEnumSerializer)
+)]
 [Serializable]
 public readonly record struct BotDetectionChallengePolicyPasswordResetFlowEnum : IStringEnum
 {
@@ -67,6 +70,33 @@ public readonly record struct BotDetectionChallengePolicyPasswordResetFlowEnum :
     public static explicit operator BotDetectionChallengePolicyPasswordResetFlowEnum(
         string value
     ) => new(value);
+
+    internal class BotDetectionChallengePolicyPasswordResetFlowEnumSerializer
+        : JsonConverter<BotDetectionChallengePolicyPasswordResetFlowEnum>
+    {
+        public override BotDetectionChallengePolicyPasswordResetFlowEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new BotDetectionChallengePolicyPasswordResetFlowEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            BotDetectionChallengePolicyPasswordResetFlowEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

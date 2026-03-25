@@ -1,10 +1,11 @@
-using Auth0.ManagementApi.Actions;
+using Auth0.ManagementApi;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using NUnit.Framework;
 
 namespace Auth0.ManagementApi.Test.Unit.MockServer.Actions;
 
 [TestFixture]
+[Parallelizable(ParallelScope.Self)]
 public class ListTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
@@ -15,32 +16,30 @@ public class ListTest : BaseMockServerTest
               "total": 1.1,
               "page": 1.1,
               "per_page": 1.1,
-              "versions": [
+              "actions": [
                 {
                   "id": "id",
-                  "action_id": "action_id",
-                  "code": "code",
-                  "dependencies": [
-                    {}
-                  ],
-                  "deployed": true,
-                  "runtime": "runtime",
-                  "secrets": [
-                    {}
-                  ],
-                  "status": "pending",
-                  "number": 1.1,
-                  "errors": [
-                    {}
-                  ],
-                  "built_at": "2024-01-15T09:30:00.000Z",
-                  "created_at": "2024-01-15T09:30:00.000Z",
-                  "updated_at": "2024-01-15T09:30:00.000Z",
+                  "name": "name",
                   "supported_triggers": [
                     {
                       "id": "id"
                     }
                   ],
+                  "all_changes_deployed": true,
+                  "created_at": "2024-01-15T09:30:00.000Z",
+                  "updated_at": "2024-01-15T09:30:00.000Z",
+                  "code": "code",
+                  "dependencies": [
+                    {}
+                  ],
+                  "runtime": "runtime",
+                  "secrets": [
+                    {}
+                  ],
+                  "installed_integration_id": "installed_integration_id",
+                  "status": "pending",
+                  "built_at": "2024-01-15T09:30:00.000Z",
+                  "deploy": true,
                   "modules": [
                     {}
                   ]
@@ -53,7 +52,9 @@ public class ListTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/actions/actions/actionId/versions")
+                    .WithPath("/actions/actions")
+                    .WithParam("triggerId", "triggerId")
+                    .WithParam("actionName", "actionName")
                     .WithParam("page", "1")
                     .WithParam("per_page", "1")
                     .UsingGet()
@@ -65,9 +66,16 @@ public class ListTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var items = await Client.Actions.Versions.ListAsync(
-            "actionId",
-            new ListActionVersionsRequestParameters { Page = 1, PerPage = 1 }
+        var items = await Client.Actions.ListAsync(
+            new ListActionsRequestParameters
+            {
+                TriggerId = "triggerId",
+                ActionName = "actionName",
+                Deployed = true,
+                Page = 1,
+                PerPage = 1,
+                Installed = true,
+            }
         );
         await foreach (var item in items)
         {

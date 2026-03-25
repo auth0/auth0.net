@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<TenantSettingsResourceParameterProfile>))]
+[JsonConverter(
+    typeof(TenantSettingsResourceParameterProfile.TenantSettingsResourceParameterProfileSerializer)
+)]
 [Serializable]
 public readonly record struct TenantSettingsResourceParameterProfile : IStringEnum
 {
@@ -55,6 +58,33 @@ public readonly record struct TenantSettingsResourceParameterProfile : IStringEn
 
     public static explicit operator TenantSettingsResourceParameterProfile(string value) =>
         new(value);
+
+    internal class TenantSettingsResourceParameterProfileSerializer
+        : JsonConverter<TenantSettingsResourceParameterProfile>
+    {
+        public override TenantSettingsResourceParameterProfile Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new TenantSettingsResourceParameterProfile(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            TenantSettingsResourceParameterProfile value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

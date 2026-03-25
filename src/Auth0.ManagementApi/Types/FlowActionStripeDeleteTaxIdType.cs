@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FlowActionStripeDeleteTaxIdType>))]
+[JsonConverter(typeof(FlowActionStripeDeleteTaxIdType.FlowActionStripeDeleteTaxIdTypeSerializer))]
 [Serializable]
 public readonly record struct FlowActionStripeDeleteTaxIdType : IStringEnum
 {
@@ -49,6 +50,33 @@ public readonly record struct FlowActionStripeDeleteTaxIdType : IStringEnum
     public static explicit operator string(FlowActionStripeDeleteTaxIdType value) => value.Value;
 
     public static explicit operator FlowActionStripeDeleteTaxIdType(string value) => new(value);
+
+    internal class FlowActionStripeDeleteTaxIdTypeSerializer
+        : JsonConverter<FlowActionStripeDeleteTaxIdType>
+    {
+        public override FlowActionStripeDeleteTaxIdType Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FlowActionStripeDeleteTaxIdType(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FlowActionStripeDeleteTaxIdType value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

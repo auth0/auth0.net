@@ -1,10 +1,11 @@
-using Auth0.ManagementApi.Organizations;
+using Auth0.ManagementApi;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using NUnit.Framework;
 
 namespace Auth0.ManagementApi.Test.Unit.MockServer.Organizations;
 
 [TestFixture]
+[Parallelizable(ParallelScope.Self)]
 public class ListTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
@@ -12,19 +13,15 @@ public class ListTest : BaseMockServerTest
     {
         const string mockResponse = """
             {
-              "start": 1.1,
-              "limit": 1.1,
-              "total": 1.1,
-              "client_grants": [
+              "next": "next",
+              "organizations": [
                 {
                   "id": "id",
-                  "client_id": "client_id",
-                  "audience": "audience",
-                  "scope": [
-                    "scope"
-                  ],
-                  "organization_usage": "deny",
-                  "allow_any_organization": true
+                  "name": "name",
+                  "display_name": "display_name",
+                  "token_quota": {
+                    "client_credentials": {}
+                  }
                 }
               ]
             }
@@ -34,11 +31,10 @@ public class ListTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/organizations/id/client-grants")
-                    .WithParam("audience", "audience")
-                    .WithParam("client_id", "client_id")
-                    .WithParam("page", "1")
-                    .WithParam("per_page", "1")
+                    .WithPath("/organizations")
+                    .WithParam("from", "from")
+                    .WithParam("take", "1")
+                    .WithParam("sort", "sort")
                     .UsingGet()
             )
             .RespondWith(
@@ -48,15 +44,12 @@ public class ListTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var items = await Client.Organizations.ClientGrants.ListAsync(
-            "id",
-            new ListOrganizationClientGrantsRequestParameters
+        var items = await Client.Organizations.ListAsync(
+            new ListOrganizationsRequestParameters
             {
-                Audience = "audience",
-                ClientId = "client_id",
-                Page = 1,
-                PerPage = 1,
-                IncludeTotals = true,
+                From = "from",
+                Take = 1,
+                Sort = "sort",
             }
         );
         await foreach (var item in items)

@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<BreachedPasswordDetectionPreChangePasswordShieldsEnum>))]
+[JsonConverter(
+    typeof(BreachedPasswordDetectionPreChangePasswordShieldsEnum.BreachedPasswordDetectionPreChangePasswordShieldsEnumSerializer)
+)]
 [Serializable]
 public readonly record struct BreachedPasswordDetectionPreChangePasswordShieldsEnum : IStringEnum
 {
@@ -62,6 +65,33 @@ public readonly record struct BreachedPasswordDetectionPreChangePasswordShieldsE
     public static explicit operator BreachedPasswordDetectionPreChangePasswordShieldsEnum(
         string value
     ) => new(value);
+
+    internal class BreachedPasswordDetectionPreChangePasswordShieldsEnumSerializer
+        : JsonConverter<BreachedPasswordDetectionPreChangePasswordShieldsEnum>
+    {
+        public override BreachedPasswordDetectionPreChangePasswordShieldsEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new BreachedPasswordDetectionPreChangePasswordShieldsEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            BreachedPasswordDetectionPreChangePasswordShieldsEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

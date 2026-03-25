@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<NetworkAclRuleScopeEnum>))]
+[JsonConverter(typeof(NetworkAclRuleScopeEnum.NetworkAclRuleScopeEnumSerializer))]
 [Serializable]
 public readonly record struct NetworkAclRuleScopeEnum : IStringEnum
 {
@@ -57,6 +58,32 @@ public readonly record struct NetworkAclRuleScopeEnum : IStringEnum
     public static explicit operator string(NetworkAclRuleScopeEnum value) => value.Value;
 
     public static explicit operator NetworkAclRuleScopeEnum(string value) => new(value);
+
+    internal class NetworkAclRuleScopeEnumSerializer : JsonConverter<NetworkAclRuleScopeEnum>
+    {
+        public override NetworkAclRuleScopeEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new NetworkAclRuleScopeEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            NetworkAclRuleScopeEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

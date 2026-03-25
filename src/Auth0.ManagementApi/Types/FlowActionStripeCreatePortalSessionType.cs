@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FlowActionStripeCreatePortalSessionType>))]
+[JsonConverter(
+    typeof(FlowActionStripeCreatePortalSessionType.FlowActionStripeCreatePortalSessionTypeSerializer)
+)]
 [Serializable]
 public readonly record struct FlowActionStripeCreatePortalSessionType : IStringEnum
 {
@@ -51,6 +54,33 @@ public readonly record struct FlowActionStripeCreatePortalSessionType : IStringE
 
     public static explicit operator FlowActionStripeCreatePortalSessionType(string value) =>
         new(value);
+
+    internal class FlowActionStripeCreatePortalSessionTypeSerializer
+        : JsonConverter<FlowActionStripeCreatePortalSessionType>
+    {
+        public override FlowActionStripeCreatePortalSessionType Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FlowActionStripeCreatePortalSessionType(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FlowActionStripeCreatePortalSessionType value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

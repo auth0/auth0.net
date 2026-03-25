@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<CustomSigningKeyCurveEnum>))]
+[JsonConverter(typeof(CustomSigningKeyCurveEnum.CustomSigningKeyCurveEnumSerializer))]
 [Serializable]
 public readonly record struct CustomSigningKeyCurveEnum : IStringEnum
 {
@@ -53,6 +54,32 @@ public readonly record struct CustomSigningKeyCurveEnum : IStringEnum
     public static explicit operator string(CustomSigningKeyCurveEnum value) => value.Value;
 
     public static explicit operator CustomSigningKeyCurveEnum(string value) => new(value);
+
+    internal class CustomSigningKeyCurveEnumSerializer : JsonConverter<CustomSigningKeyCurveEnum>
+    {
+        public override CustomSigningKeyCurveEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new CustomSigningKeyCurveEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            CustomSigningKeyCurveEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

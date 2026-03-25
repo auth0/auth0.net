@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<EnabledFeaturesEnum>))]
+[JsonConverter(typeof(EnabledFeaturesEnum.EnabledFeaturesEnumSerializer))]
 [Serializable]
 public readonly record struct EnabledFeaturesEnum : IStringEnum
 {
@@ -51,6 +52,32 @@ public readonly record struct EnabledFeaturesEnum : IStringEnum
     public static explicit operator string(EnabledFeaturesEnum value) => value.Value;
 
     public static explicit operator EnabledFeaturesEnum(string value) => new(value);
+
+    internal class EnabledFeaturesEnumSerializer : JsonConverter<EnabledFeaturesEnum>
+    {
+        public override EnabledFeaturesEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new EnabledFeaturesEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            EnabledFeaturesEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

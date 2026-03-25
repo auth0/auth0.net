@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<SupportedLocales>))]
+[JsonConverter(typeof(SupportedLocales.SupportedLocalesSerializer))]
 [Serializable]
 public readonly record struct SupportedLocales : IStringEnum
 {
@@ -211,6 +212,32 @@ public readonly record struct SupportedLocales : IStringEnum
     public static explicit operator string(SupportedLocales value) => value.Value;
 
     public static explicit operator SupportedLocales(string value) => new(value);
+
+    internal class SupportedLocalesSerializer : JsonConverter<SupportedLocales>
+    {
+        public override SupportedLocales Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new SupportedLocales(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            SupportedLocales value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FlowsVaultConnectionAppIdMailchimpEnum>))]
+[JsonConverter(
+    typeof(FlowsVaultConnectionAppIdMailchimpEnum.FlowsVaultConnectionAppIdMailchimpEnumSerializer)
+)]
 [Serializable]
 public readonly record struct FlowsVaultConnectionAppIdMailchimpEnum : IStringEnum
 {
@@ -51,6 +54,33 @@ public readonly record struct FlowsVaultConnectionAppIdMailchimpEnum : IStringEn
 
     public static explicit operator FlowsVaultConnectionAppIdMailchimpEnum(string value) =>
         new(value);
+
+    internal class FlowsVaultConnectionAppIdMailchimpEnumSerializer
+        : JsonConverter<FlowsVaultConnectionAppIdMailchimpEnum>
+    {
+        public override FlowsVaultConnectionAppIdMailchimpEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FlowsVaultConnectionAppIdMailchimpEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FlowsVaultConnectionAppIdMailchimpEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

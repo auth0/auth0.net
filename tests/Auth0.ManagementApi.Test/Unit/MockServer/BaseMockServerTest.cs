@@ -6,14 +6,13 @@ using WireMock.Settings;
 
 namespace Auth0.ManagementApi.Test.Unit.MockServer;
 
-[SetUpFixture]
 public class BaseMockServerTest
 {
-    protected static WireMockServer Server { get; set; } = null!;
+    protected WireMockServer Server { get; set; } = null!;
 
-    protected static ManagementApiClient Client { get; set; } = null!;
+    protected ManagementApiClient Client { get; set; } = null!;
 
-    protected static RequestOptions RequestOptions { get; set; } = new();
+    protected RequestOptions RequestOptions { get; set; } = new();
 
     [OneTimeSetUp]
     public void GlobalSetup()

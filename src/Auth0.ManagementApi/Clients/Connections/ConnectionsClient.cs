@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Clients;
 
 public partial class ConnectionsClient : IConnectionsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal ConnectionsClient(RawClient client)
     {
@@ -64,7 +64,6 @@ public partial class ConnectionsClient : IConnectionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "clients/{0}/connections",
@@ -79,7 +78,9 @@ public partial class ConnectionsClient : IConnectionsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<ListClientConnectionsResponseContent>(
@@ -107,7 +108,9 @@ public partial class ConnectionsClient : IConnectionsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

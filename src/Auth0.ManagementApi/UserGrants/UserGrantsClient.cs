@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi;
 
 public partial class UserGrantsClient : IUserGrantsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal UserGrantsClient(RawClient client)
     {
@@ -56,7 +56,6 @@ public partial class UserGrantsClient : IUserGrantsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "grants",
                     QueryString = _queryString,
@@ -68,7 +67,9 @@ public partial class UserGrantsClient : IUserGrantsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -97,7 +98,9 @@ public partial class UserGrantsClient : IUserGrantsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -200,7 +203,6 @@ public partial class UserGrantsClient : IUserGrantsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = "grants",
                     QueryString = _queryString,
@@ -215,7 +217,9 @@ public partial class UserGrantsClient : IUserGrantsClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -262,7 +266,6 @@ public partial class UserGrantsClient : IUserGrantsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format("grants/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,
@@ -276,7 +279,9 @@ public partial class UserGrantsClient : IUserGrantsClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

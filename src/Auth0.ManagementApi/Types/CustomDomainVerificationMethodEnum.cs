@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<CustomDomainVerificationMethodEnum>))]
+[JsonConverter(
+    typeof(CustomDomainVerificationMethodEnum.CustomDomainVerificationMethodEnumSerializer)
+)]
 [Serializable]
 public readonly record struct CustomDomainVerificationMethodEnum : IStringEnum
 {
@@ -49,6 +52,33 @@ public readonly record struct CustomDomainVerificationMethodEnum : IStringEnum
     public static explicit operator string(CustomDomainVerificationMethodEnum value) => value.Value;
 
     public static explicit operator CustomDomainVerificationMethodEnum(string value) => new(value);
+
+    internal class CustomDomainVerificationMethodEnumSerializer
+        : JsonConverter<CustomDomainVerificationMethodEnum>
+    {
+        public override CustomDomainVerificationMethodEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new CustomDomainVerificationMethodEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            CustomDomainVerificationMethodEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

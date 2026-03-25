@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<DeviceCredentialTypeEnum>))]
+[JsonConverter(typeof(DeviceCredentialTypeEnum.DeviceCredentialTypeEnumSerializer))]
 [Serializable]
 public readonly record struct DeviceCredentialTypeEnum : IStringEnum
 {
@@ -55,6 +56,32 @@ public readonly record struct DeviceCredentialTypeEnum : IStringEnum
     public static explicit operator string(DeviceCredentialTypeEnum value) => value.Value;
 
     public static explicit operator DeviceCredentialTypeEnum(string value) => new(value);
+
+    internal class DeviceCredentialTypeEnumSerializer : JsonConverter<DeviceCredentialTypeEnum>
+    {
+        public override DeviceCredentialTypeEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new DeviceCredentialTypeEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            DeviceCredentialTypeEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

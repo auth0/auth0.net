@@ -1,4 +1,4 @@
-using Auth0.ManagementApi.RiskAssessments.Settings;
+using Auth0.ManagementApi.RiskAssessments;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using Auth0.ManagementApi.Test.Utils;
 using NUnit.Framework;
@@ -6,6 +6,7 @@ using NUnit.Framework;
 namespace Auth0.ManagementApi.Test.Unit.MockServer.RiskAssessments.Settings;
 
 [TestFixture]
+[Parallelizable(ParallelScope.Self)]
 public class UpdateTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
@@ -13,13 +14,13 @@ public class UpdateTest : BaseMockServerTest
     {
         const string requestJson = """
             {
-              "remember_for": 1
+              "enabled": true
             }
             """;
 
         const string mockResponse = """
             {
-              "remember_for": 1
+              "enabled": true
             }
             """;
 
@@ -27,7 +28,7 @@ public class UpdateTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/risk-assessments/settings/new-device")
+                    .WithPath("/risk-assessments/settings")
                     .WithHeader("Content-Type", "application/json")
                     .UsingPatch()
                     .WithBodyAsJson(requestJson)
@@ -39,8 +40,8 @@ public class UpdateTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var response = await Client.RiskAssessments.Settings.NewDevice.UpdateAsync(
-            new UpdateRiskAssessmentsSettingsNewDeviceRequestContent { RememberFor = 1 }
+        var response = await Client.RiskAssessments.Settings.UpdateAsync(
+            new UpdateRiskAssessmentsSettingsRequestContent { Enabled = true }
         );
         JsonAssert.AreEqual(response, mockResponse);
     }

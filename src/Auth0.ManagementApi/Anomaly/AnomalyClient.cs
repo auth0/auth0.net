@@ -4,7 +4,7 @@ namespace Auth0.ManagementApi.Anomaly;
 
 public partial class AnomalyClient : IAnomalyClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal AnomalyClient(RawClient client)
     {

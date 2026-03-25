@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi;
 
 public partial class FormsClient : IFormsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal FormsClient(RawClient client)
     {
@@ -51,7 +51,6 @@ public partial class FormsClient : IFormsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "forms",
                     QueryString = _queryString,
@@ -63,7 +62,9 @@ public partial class FormsClient : IFormsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<ListFormsOffsetPaginatedResponseContent>(
@@ -91,7 +92,9 @@ public partial class FormsClient : IFormsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -134,7 +137,6 @@ public partial class FormsClient : IFormsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "forms",
                     Body = request,
@@ -147,7 +149,9 @@ public partial class FormsClient : IFormsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<CreateFormResponseContent>(responseBody)!;
@@ -173,7 +177,9 @@ public partial class FormsClient : IFormsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -221,7 +227,6 @@ public partial class FormsClient : IFormsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("forms/{0}", ValueConvert.ToPathParameterString(id)),
                     QueryString = _queryString,
@@ -233,7 +238,9 @@ public partial class FormsClient : IFormsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetFormResponseContent>(responseBody)!;
@@ -259,7 +266,9 @@ public partial class FormsClient : IFormsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -305,7 +314,6 @@ public partial class FormsClient : IFormsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format("forms/{0}", ValueConvert.ToPathParameterString(id)),
                     Body = request,
@@ -318,7 +326,9 @@ public partial class FormsClient : IFormsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<UpdateFormResponseContent>(responseBody)!;
@@ -344,7 +354,9 @@ public partial class FormsClient : IFormsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -461,7 +473,6 @@ public partial class FormsClient : IFormsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format("forms/{0}", ValueConvert.ToPathParameterString(id)),
                     Headers = _headers,
@@ -475,7 +486,9 @@ public partial class FormsClient : IFormsClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

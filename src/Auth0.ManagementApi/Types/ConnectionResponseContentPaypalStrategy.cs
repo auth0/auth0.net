@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<ConnectionResponseContentPaypalStrategy>))]
+[JsonConverter(
+    typeof(ConnectionResponseContentPaypalStrategy.ConnectionResponseContentPaypalStrategySerializer)
+)]
 [Serializable]
 public readonly record struct ConnectionResponseContentPaypalStrategy : IStringEnum
 {
@@ -51,6 +54,33 @@ public readonly record struct ConnectionResponseContentPaypalStrategy : IStringE
 
     public static explicit operator ConnectionResponseContentPaypalStrategy(string value) =>
         new(value);
+
+    internal class ConnectionResponseContentPaypalStrategySerializer
+        : JsonConverter<ConnectionResponseContentPaypalStrategy>
+    {
+        public override ConnectionResponseContentPaypalStrategy Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new ConnectionResponseContentPaypalStrategy(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            ConnectionResponseContentPaypalStrategy value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

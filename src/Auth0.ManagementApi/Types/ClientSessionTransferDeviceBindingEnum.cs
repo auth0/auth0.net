@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<ClientSessionTransferDeviceBindingEnum>))]
+[JsonConverter(
+    typeof(ClientSessionTransferDeviceBindingEnum.ClientSessionTransferDeviceBindingEnumSerializer)
+)]
 [Serializable]
 public readonly record struct ClientSessionTransferDeviceBindingEnum : IStringEnum
 {
@@ -55,6 +58,33 @@ public readonly record struct ClientSessionTransferDeviceBindingEnum : IStringEn
 
     public static explicit operator ClientSessionTransferDeviceBindingEnum(string value) =>
         new(value);
+
+    internal class ClientSessionTransferDeviceBindingEnumSerializer
+        : JsonConverter<ClientSessionTransferDeviceBindingEnum>
+    {
+        public override ClientSessionTransferDeviceBindingEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new ClientSessionTransferDeviceBindingEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            ClientSessionTransferDeviceBindingEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

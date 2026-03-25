@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<BotDetectionLevelEnum>))]
+[JsonConverter(typeof(BotDetectionLevelEnum.BotDetectionLevelEnumSerializer))]
 [Serializable]
 public readonly record struct BotDetectionLevelEnum : IStringEnum
 {
@@ -53,6 +54,32 @@ public readonly record struct BotDetectionLevelEnum : IStringEnum
     public static explicit operator string(BotDetectionLevelEnum value) => value.Value;
 
     public static explicit operator BotDetectionLevelEnum(string value) => new(value);
+
+    internal class BotDetectionLevelEnumSerializer : JsonConverter<BotDetectionLevelEnum>
+    {
+        public override BotDetectionLevelEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new BotDetectionLevelEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            BotDetectionLevelEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

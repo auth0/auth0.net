@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FlowActionMailchimpUpsertMemberAction>))]
+[JsonConverter(
+    typeof(FlowActionMailchimpUpsertMemberAction.FlowActionMailchimpUpsertMemberActionSerializer)
+)]
 [Serializable]
 public readonly record struct FlowActionMailchimpUpsertMemberAction : IStringEnum
 {
@@ -53,6 +56,33 @@ public readonly record struct FlowActionMailchimpUpsertMemberAction : IStringEnu
 
     public static explicit operator FlowActionMailchimpUpsertMemberAction(string value) =>
         new(value);
+
+    internal class FlowActionMailchimpUpsertMemberActionSerializer
+        : JsonConverter<FlowActionMailchimpUpsertMemberAction>
+    {
+        public override FlowActionMailchimpUpsertMemberAction Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FlowActionMailchimpUpsertMemberAction(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FlowActionMailchimpUpsertMemberAction value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

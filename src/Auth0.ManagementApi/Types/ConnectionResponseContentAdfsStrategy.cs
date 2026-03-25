@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<ConnectionResponseContentAdfsStrategy>))]
+[JsonConverter(
+    typeof(ConnectionResponseContentAdfsStrategy.ConnectionResponseContentAdfsStrategySerializer)
+)]
 [Serializable]
 public readonly record struct ConnectionResponseContentAdfsStrategy : IStringEnum
 {
@@ -51,6 +54,33 @@ public readonly record struct ConnectionResponseContentAdfsStrategy : IStringEnu
 
     public static explicit operator ConnectionResponseContentAdfsStrategy(string value) =>
         new(value);
+
+    internal class ConnectionResponseContentAdfsStrategySerializer
+        : JsonConverter<ConnectionResponseContentAdfsStrategy>
+    {
+        public override ConnectionResponseContentAdfsStrategy Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new ConnectionResponseContentAdfsStrategy(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            ConnectionResponseContentAdfsStrategy value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values
