@@ -78,6 +78,29 @@ public readonly record struct FormFieldDateConfigFormatEnum : IStringEnum
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override FormFieldDateConfigFormatEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new FormFieldDateConfigFormatEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            FormFieldDateConfigFormatEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

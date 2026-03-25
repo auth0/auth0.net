@@ -75,6 +75,29 @@ public readonly record struct FormFieldTypePasswordConst : IStringEnum
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override FormFieldTypePasswordConst ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new FormFieldTypePasswordConst(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            FormFieldTypePasswordConst value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

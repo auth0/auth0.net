@@ -78,6 +78,29 @@ public readonly record struct FlowActionSalesforceCreateLeadType : IStringEnum
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override FlowActionSalesforceCreateLeadType ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new FlowActionSalesforceCreateLeadType(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            FlowActionSalesforceCreateLeadType value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

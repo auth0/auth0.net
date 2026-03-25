@@ -82,6 +82,29 @@ public readonly record struct ConnectionIdentityApiEnumAzureAd : IStringEnum
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override ConnectionIdentityApiEnumAzureAd ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new ConnectionIdentityApiEnumAzureAd(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            ConnectionIdentityApiEnumAzureAd value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

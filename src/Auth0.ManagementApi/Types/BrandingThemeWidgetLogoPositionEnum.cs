@@ -85,6 +85,29 @@ public readonly record struct BrandingThemeWidgetLogoPositionEnum : IStringEnum
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override BrandingThemeWidgetLogoPositionEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new BrandingThemeWidgetLogoPositionEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            BrandingThemeWidgetLogoPositionEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

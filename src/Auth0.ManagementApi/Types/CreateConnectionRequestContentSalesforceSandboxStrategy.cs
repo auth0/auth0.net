@@ -87,6 +87,29 @@ public readonly record struct CreateConnectionRequestContentSalesforceSandboxStr
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override CreateConnectionRequestContentSalesforceSandboxStrategy ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new CreateConnectionRequestContentSalesforceSandboxStrategy(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            CreateConnectionRequestContentSalesforceSandboxStrategy value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

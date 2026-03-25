@@ -84,6 +84,29 @@ public readonly record struct SelfServiceProfileCustomTextLanguageEnum : IString
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override SelfServiceProfileCustomTextLanguageEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new SelfServiceProfileCustomTextLanguageEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            SelfServiceProfileCustomTextLanguageEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

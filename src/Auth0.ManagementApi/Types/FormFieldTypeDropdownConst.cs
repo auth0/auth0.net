@@ -75,6 +75,29 @@ public readonly record struct FormFieldTypeDropdownConst : IStringEnum
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override FormFieldTypeDropdownConst ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new FormFieldTypeDropdownConst(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            FormFieldTypeDropdownConst value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

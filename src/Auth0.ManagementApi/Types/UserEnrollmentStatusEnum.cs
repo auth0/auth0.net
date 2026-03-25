@@ -77,6 +77,29 @@ public readonly record struct UserEnrollmentStatusEnum : IStringEnum
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override UserEnrollmentStatusEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new UserEnrollmentStatusEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            UserEnrollmentStatusEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

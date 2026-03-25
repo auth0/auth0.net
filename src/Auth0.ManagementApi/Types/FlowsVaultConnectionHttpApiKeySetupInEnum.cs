@@ -86,6 +86,29 @@ public readonly record struct FlowsVaultConnectionHttpApiKeySetupInEnum : IStrin
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override FlowsVaultConnectionHttpApiKeySetupInEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new FlowsVaultConnectionHttpApiKeySetupInEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            FlowsVaultConnectionHttpApiKeySetupInEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

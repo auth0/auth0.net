@@ -94,6 +94,29 @@ public readonly record struct ResourceServerTokenDialectResponseEnum : IStringEn
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override ResourceServerTokenDialectResponseEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new ResourceServerTokenDialectResponseEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            ResourceServerTokenDialectResponseEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

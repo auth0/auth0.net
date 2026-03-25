@@ -88,6 +88,29 @@ public readonly record struct ClientGrantOrganizationNullableUsageEnum : IString
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override ClientGrantOrganizationNullableUsageEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new ClientGrantOrganizationNullableUsageEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            ClientGrantOrganizationNullableUsageEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

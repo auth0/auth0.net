@@ -106,6 +106,29 @@ public readonly record struct SelfServiceProfileAllowedStrategyEnum : IStringEnu
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override SelfServiceProfileAllowedStrategyEnum ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new SelfServiceProfileAllowedStrategyEnum(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            SelfServiceProfileAllowedStrategyEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>

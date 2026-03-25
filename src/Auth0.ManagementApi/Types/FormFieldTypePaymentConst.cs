@@ -75,6 +75,29 @@ public readonly record struct FormFieldTypePaymentConst : IStringEnum
         {
             writer.WriteStringValue(value.Value);
         }
+
+        public override FormFieldTypePaymentConst ReadAsPropertyName(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON property name could not be read as a string."
+                );
+            return new FormFieldTypePaymentConst(stringValue);
+        }
+
+        public override void WriteAsPropertyName(
+            Utf8JsonWriter writer,
+            FormFieldTypePaymentConst value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WritePropertyName(value.Value);
+        }
     }
 
     /// <summary>
