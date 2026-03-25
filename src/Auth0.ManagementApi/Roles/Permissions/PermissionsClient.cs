@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Roles;
 
 public partial class PermissionsClient : IPermissionsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal PermissionsClient(RawClient client)
     {
@@ -56,7 +56,6 @@ public partial class PermissionsClient : IPermissionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "roles/{0}/permissions",
@@ -71,7 +70,9 @@ public partial class PermissionsClient : IPermissionsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -100,7 +101,9 @@ public partial class PermissionsClient : IPermissionsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -215,7 +218,6 @@ public partial class PermissionsClient : IPermissionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "roles/{0}/permissions",
@@ -234,7 +236,9 @@ public partial class PermissionsClient : IPermissionsClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -297,7 +301,6 @@ public partial class PermissionsClient : IPermissionsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "roles/{0}/permissions",
@@ -316,7 +319,9 @@ public partial class PermissionsClient : IPermissionsClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

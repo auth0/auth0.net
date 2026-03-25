@@ -1,10 +1,11 @@
-using Auth0.ManagementApi.Connections;
+using Auth0.ManagementApi;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using NUnit.Framework;
 
 namespace Auth0.ManagementApi.Test.Unit.MockServer.Connections;
 
 [TestFixture]
+[Parallelizable(ParallelScope.Self)]
 public class ListTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
@@ -12,27 +13,29 @@ public class ListTest : BaseMockServerTest
     {
         const string mockResponse = """
             {
-              "directory_provisionings": [
+              "next": "next",
+              "connections": [
                 {
-                  "connection_id": "connection_id",
-                  "connection_name": "connection_name",
+                  "name": "name",
+                  "display_name": "display_name",
+                  "options": {
+                    "key": "value"
+                  },
+                  "id": "id",
                   "strategy": "strategy",
-                  "mapping": [
-                    {
-                      "auth0": "auth0",
-                      "idp": "idp"
-                    }
+                  "realms": [
+                    "realms"
                   ],
-                  "synchronize_automatically": true,
-                  "synchronize_groups": "synchronize_groups",
-                  "created_at": "2024-01-15T09:30:00.000Z",
-                  "updated_at": "2024-01-15T09:30:00.000Z",
-                  "last_synchronization_at": "2024-01-15T09:30:00.000Z",
-                  "last_synchronization_status": "last_synchronization_status",
-                  "last_synchronization_error": "last_synchronization_error"
+                  "is_domain_connection": true,
+                  "show_as_button": true,
+                  "authentication": {
+                    "active": true
+                  },
+                  "connected_accounts": {
+                    "active": true
+                  }
                 }
-              ],
-              "next": "next"
+              ]
             }
             """;
 
@@ -40,9 +43,11 @@ public class ListTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/connections-directory-provisionings")
+                    .WithPath("/connections")
                     .WithParam("from", "from")
                     .WithParam("take", "1")
+                    .WithParam("name", "name")
+                    .WithParam("fields", "fields")
                     .UsingGet()
             )
             .RespondWith(
@@ -52,8 +57,15 @@ public class ListTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var items = await Client.Connections.DirectoryProvisioning.ListAsync(
-            new ListDirectoryProvisioningsRequestParameters { From = "from", Take = 1 }
+        var items = await Client.Connections.ListAsync(
+            new ListConnectionsQueryParameters
+            {
+                From = "from",
+                Take = 1,
+                Name = "name",
+                Fields = "fields",
+                IncludeFields = true,
+            }
         );
         await foreach (var item in items)
         {

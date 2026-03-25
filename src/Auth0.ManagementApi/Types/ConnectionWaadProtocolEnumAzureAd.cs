@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<ConnectionWaadProtocolEnumAzureAd>))]
+[JsonConverter(
+    typeof(ConnectionWaadProtocolEnumAzureAd.ConnectionWaadProtocolEnumAzureAdSerializer)
+)]
 [Serializable]
 public readonly record struct ConnectionWaadProtocolEnumAzureAd : IStringEnum
 {
@@ -55,6 +58,33 @@ public readonly record struct ConnectionWaadProtocolEnumAzureAd : IStringEnum
     public static explicit operator string(ConnectionWaadProtocolEnumAzureAd value) => value.Value;
 
     public static explicit operator ConnectionWaadProtocolEnumAzureAd(string value) => new(value);
+
+    internal class ConnectionWaadProtocolEnumAzureAdSerializer
+        : JsonConverter<ConnectionWaadProtocolEnumAzureAd>
+    {
+        public override ConnectionWaadProtocolEnumAzureAd Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new ConnectionWaadProtocolEnumAzureAd(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            ConnectionWaadProtocolEnumAzureAd value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

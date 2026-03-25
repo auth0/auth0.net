@@ -4,7 +4,7 @@ namespace Auth0.ManagementApi.Keys;
 
 public partial class KeysClient : IKeysClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal KeysClient(RawClient client)
     {

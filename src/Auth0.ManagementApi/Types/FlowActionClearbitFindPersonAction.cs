@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FlowActionClearbitFindPersonAction>))]
+[JsonConverter(
+    typeof(FlowActionClearbitFindPersonAction.FlowActionClearbitFindPersonActionSerializer)
+)]
 [Serializable]
 public readonly record struct FlowActionClearbitFindPersonAction : IStringEnum
 {
@@ -49,6 +52,33 @@ public readonly record struct FlowActionClearbitFindPersonAction : IStringEnum
     public static explicit operator string(FlowActionClearbitFindPersonAction value) => value.Value;
 
     public static explicit operator FlowActionClearbitFindPersonAction(string value) => new(value);
+
+    internal class FlowActionClearbitFindPersonActionSerializer
+        : JsonConverter<FlowActionClearbitFindPersonAction>
+    {
+        public override FlowActionClearbitFindPersonAction Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FlowActionClearbitFindPersonAction(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FlowActionClearbitFindPersonAction value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

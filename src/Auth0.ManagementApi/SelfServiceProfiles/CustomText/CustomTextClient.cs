@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.SelfServiceProfiles;
 
 public partial class CustomTextClient : ICustomTextClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal CustomTextClient(RawClient client)
     {
@@ -31,7 +31,6 @@ public partial class CustomTextClient : ICustomTextClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "self-service-profiles/{0}/custom-text/{1}/{2}",
@@ -47,7 +46,9 @@ public partial class CustomTextClient : ICustomTextClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<Dictionary<string, string>>(responseBody)!;
@@ -73,7 +74,9 @@ public partial class CustomTextClient : ICustomTextClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -119,7 +122,6 @@ public partial class CustomTextClient : ICustomTextClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = string.Format(
                         "self-service-profiles/{0}/custom-text/{1}/{2}",
@@ -137,7 +139,9 @@ public partial class CustomTextClient : ICustomTextClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<Dictionary<string, string>>(responseBody)!;
@@ -163,7 +167,9 @@ public partial class CustomTextClient : ICustomTextClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

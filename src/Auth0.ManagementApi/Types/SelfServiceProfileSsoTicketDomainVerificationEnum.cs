@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<SelfServiceProfileSsoTicketDomainVerificationEnum>))]
+[JsonConverter(
+    typeof(SelfServiceProfileSsoTicketDomainVerificationEnum.SelfServiceProfileSsoTicketDomainVerificationEnumSerializer)
+)]
 [Serializable]
 public readonly record struct SelfServiceProfileSsoTicketDomainVerificationEnum : IStringEnum
 {
@@ -67,6 +70,33 @@ public readonly record struct SelfServiceProfileSsoTicketDomainVerificationEnum 
     public static explicit operator SelfServiceProfileSsoTicketDomainVerificationEnum(
         string value
     ) => new(value);
+
+    internal class SelfServiceProfileSsoTicketDomainVerificationEnumSerializer
+        : JsonConverter<SelfServiceProfileSsoTicketDomainVerificationEnum>
+    {
+        public override SelfServiceProfileSsoTicketDomainVerificationEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new SelfServiceProfileSsoTicketDomainVerificationEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            SelfServiceProfileSsoTicketDomainVerificationEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

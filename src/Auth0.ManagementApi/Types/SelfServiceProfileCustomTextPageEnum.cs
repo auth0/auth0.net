@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<SelfServiceProfileCustomTextPageEnum>))]
+[JsonConverter(
+    typeof(SelfServiceProfileCustomTextPageEnum.SelfServiceProfileCustomTextPageEnumSerializer)
+)]
 [Serializable]
 public readonly record struct SelfServiceProfileCustomTextPageEnum : IStringEnum
 {
@@ -51,6 +54,33 @@ public readonly record struct SelfServiceProfileCustomTextPageEnum : IStringEnum
 
     public static explicit operator SelfServiceProfileCustomTextPageEnum(string value) =>
         new(value);
+
+    internal class SelfServiceProfileCustomTextPageEnumSerializer
+        : JsonConverter<SelfServiceProfileCustomTextPageEnum>
+    {
+        public override SelfServiceProfileCustomTextPageEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new SelfServiceProfileCustomTextPageEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            SelfServiceProfileCustomTextPageEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

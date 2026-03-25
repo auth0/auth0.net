@@ -1,10 +1,11 @@
-using Auth0.ManagementApi.Actions.Modules;
+using Auth0.ManagementApi.Actions;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using NUnit.Framework;
 
 namespace Auth0.ManagementApi.Test.Unit.MockServer.Actions.Modules;
 
 [TestFixture]
+[Parallelizable(ParallelScope.Self)]
 public class ListTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
@@ -12,19 +13,22 @@ public class ListTest : BaseMockServerTest
     {
         const string mockResponse = """
             {
-              "versions": [
+              "modules": [
                 {
                   "id": "id",
-                  "module_id": "module_id",
-                  "version_number": 1,
+                  "name": "name",
                   "code": "code",
-                  "secrets": [
-                    {}
-                  ],
                   "dependencies": [
                     {}
                   ],
-                  "created_at": "2024-01-15T09:30:00.000Z"
+                  "secrets": [
+                    {}
+                  ],
+                  "actions_using_module_total": 1,
+                  "all_changes_published": true,
+                  "latest_version_number": 1,
+                  "created_at": "2024-01-15T09:30:00.000Z",
+                  "updated_at": "2024-01-15T09:30:00.000Z"
                 }
               ],
               "total": 1,
@@ -37,7 +41,7 @@ public class ListTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/actions/modules/id/versions")
+                    .WithPath("/actions/modules")
                     .WithParam("page", "1")
                     .WithParam("per_page", "1")
                     .UsingGet()
@@ -49,9 +53,8 @@ public class ListTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var items = await Client.Actions.Modules.Versions.ListAsync(
-            "id",
-            new GetActionModuleVersionsRequestParameters { Page = 1, PerPage = 1 }
+        var items = await Client.Actions.Modules.ListAsync(
+            new GetActionModulesRequestParameters { Page = 1, PerPage = 1 }
         );
         await foreach (var item in items)
         {

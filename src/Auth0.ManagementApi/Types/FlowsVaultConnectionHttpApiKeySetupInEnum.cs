@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FlowsVaultConnectionHttpApiKeySetupInEnum>))]
+[JsonConverter(
+    typeof(FlowsVaultConnectionHttpApiKeySetupInEnum.FlowsVaultConnectionHttpApiKeySetupInEnumSerializer)
+)]
 [Serializable]
 public readonly record struct FlowsVaultConnectionHttpApiKeySetupInEnum : IStringEnum
 {
@@ -57,6 +60,33 @@ public readonly record struct FlowsVaultConnectionHttpApiKeySetupInEnum : IStrin
 
     public static explicit operator FlowsVaultConnectionHttpApiKeySetupInEnum(string value) =>
         new(value);
+
+    internal class FlowsVaultConnectionHttpApiKeySetupInEnumSerializer
+        : JsonConverter<FlowsVaultConnectionHttpApiKeySetupInEnum>
+    {
+        public override FlowsVaultConnectionHttpApiKeySetupInEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FlowsVaultConnectionHttpApiKeySetupInEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FlowsVaultConnectionHttpApiKeySetupInEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

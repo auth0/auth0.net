@@ -1,4 +1,3 @@
-using Auth0.ManagementApi;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using Auth0.ManagementApi.Test.Utils;
 using NUnit.Framework;
@@ -6,15 +5,12 @@ using NUnit.Framework;
 namespace Auth0.ManagementApi.Test.Unit.MockServer.Actions;
 
 [TestFixture]
+[Parallelizable(ParallelScope.Self)]
 public class DeployTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
     public async Task MockServerTest()
     {
-        const string requestJson = """
-            {}
-            """;
-
         const string mockResponse = """
             {
               "id": "id",
@@ -92,10 +88,8 @@ public class DeployTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/actions/actions/actionId/versions/id/deploy")
-                    .WithHeader("Content-Type", "application/json")
+                    .WithPath("/actions/actions/id/deploy")
                     .UsingPost()
-                    .WithBodyAsJson(requestJson)
             )
             .RespondWith(
                 WireMock
@@ -104,11 +98,7 @@ public class DeployTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var response = await Client.Actions.Versions.DeployAsync(
-            "actionId",
-            "id",
-            new DeployActionVersionRequestContent()
-        );
+        var response = await Client.Actions.DeployAsync("id");
         JsonAssert.AreEqual(response, mockResponse);
     }
 }

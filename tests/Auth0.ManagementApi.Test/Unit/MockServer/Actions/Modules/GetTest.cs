@@ -5,6 +5,7 @@ using NUnit.Framework;
 namespace Auth0.ManagementApi.Test.Unit.MockServer.Actions.Modules;
 
 [TestFixture]
+[Parallelizable(ParallelScope.Self)]
 public class GetTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
@@ -13,31 +14,43 @@ public class GetTest : BaseMockServerTest
         const string mockResponse = """
             {
               "id": "id",
-              "module_id": "module_id",
-              "version_number": 1,
+              "name": "name",
               "code": "code",
-              "secrets": [
-                {
-                  "name": "name",
-                  "updated_at": "2024-01-15T09:30:00.000Z"
-                }
-              ],
               "dependencies": [
                 {
                   "name": "name",
                   "version": "version"
                 }
               ],
-              "created_at": "2024-01-15T09:30:00.000Z"
+              "secrets": [
+                {
+                  "name": "name",
+                  "updated_at": "2024-01-15T09:30:00.000Z"
+                }
+              ],
+              "actions_using_module_total": 1,
+              "all_changes_published": true,
+              "latest_version_number": 1,
+              "created_at": "2024-01-15T09:30:00.000Z",
+              "updated_at": "2024-01-15T09:30:00.000Z",
+              "latest_version": {
+                "id": "id",
+                "version_number": 1,
+                "code": "code",
+                "dependencies": [
+                  {}
+                ],
+                "secrets": [
+                  {}
+                ],
+                "created_at": "2024-01-15T09:30:00.000Z"
+              }
             }
             """;
 
         Server
             .Given(
-                WireMock
-                    .RequestBuilders.Request.Create()
-                    .WithPath("/actions/modules/id/versions/versionId")
-                    .UsingGet()
+                WireMock.RequestBuilders.Request.Create().WithPath("/actions/modules/id").UsingGet()
             )
             .RespondWith(
                 WireMock
@@ -46,7 +59,7 @@ public class GetTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var response = await Client.Actions.Modules.Versions.GetAsync("id", "versionId");
+        var response = await Client.Actions.Modules.GetAsync("id");
         JsonAssert.AreEqual(response, mockResponse);
     }
 }

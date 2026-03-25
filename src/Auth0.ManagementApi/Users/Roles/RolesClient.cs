@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Users;
 
 public partial class RolesClient : IRolesClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal RolesClient(RawClient client)
     {
@@ -58,7 +58,6 @@ public partial class RolesClient : IRolesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format("users/{0}/roles", ValueConvert.ToPathParameterString(id)),
                     QueryString = _queryString,
@@ -70,7 +69,9 @@ public partial class RolesClient : IRolesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -99,7 +100,9 @@ public partial class RolesClient : IRolesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -204,7 +207,6 @@ public partial class RolesClient : IRolesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format("users/{0}/roles", ValueConvert.ToPathParameterString(id)),
                     Body = request,
@@ -220,7 +222,9 @@ public partial class RolesClient : IRolesClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -275,7 +279,6 @@ public partial class RolesClient : IRolesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format("users/{0}/roles", ValueConvert.ToPathParameterString(id)),
                     Body = request,
@@ -291,7 +294,9 @@ public partial class RolesClient : IRolesClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

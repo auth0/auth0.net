@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<LogStreamEventBridgeSinkRegionEnum>))]
+[JsonConverter(
+    typeof(LogStreamEventBridgeSinkRegionEnum.LogStreamEventBridgeSinkRegionEnumSerializer)
+)]
 [Serializable]
 public readonly record struct LogStreamEventBridgeSinkRegionEnum : IStringEnum
 {
@@ -139,6 +142,33 @@ public readonly record struct LogStreamEventBridgeSinkRegionEnum : IStringEnum
     public static explicit operator string(LogStreamEventBridgeSinkRegionEnum value) => value.Value;
 
     public static explicit operator LogStreamEventBridgeSinkRegionEnum(string value) => new(value);
+
+    internal class LogStreamEventBridgeSinkRegionEnumSerializer
+        : JsonConverter<LogStreamEventBridgeSinkRegionEnum>
+    {
+        public override LogStreamEventBridgeSinkRegionEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new LogStreamEventBridgeSinkRegionEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            LogStreamEventBridgeSinkRegionEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

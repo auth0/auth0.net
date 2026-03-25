@@ -1,3 +1,4 @@
+using Auth0.ManagementApi;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using Auth0.ManagementApi.Test.Utils;
 using NUnit.Framework;
@@ -5,6 +6,7 @@ using NUnit.Framework;
 namespace Auth0.ManagementApi.Test.Unit.MockServer.Connections;
 
 [TestFixture]
+[Parallelizable(ParallelScope.Self)]
 public class GetTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
@@ -12,22 +14,31 @@ public class GetTest : BaseMockServerTest
     {
         const string mockResponse = """
             {
-              "connection_id": "connection_id",
-              "connection_name": "connection_name",
+              "name": "name",
+              "display_name": "display_name",
+              "options": {
+                "key": "value"
+              },
+              "id": "id",
               "strategy": "strategy",
-              "mapping": [
-                {
-                  "auth0": "auth0",
-                  "idp": "idp"
-                }
+              "realms": [
+                "realms"
               ],
-              "synchronize_automatically": true,
-              "synchronize_groups": "synchronize_groups",
-              "created_at": "2024-01-15T09:30:00.000Z",
-              "updated_at": "2024-01-15T09:30:00.000Z",
-              "last_synchronization_at": "2024-01-15T09:30:00.000Z",
-              "last_synchronization_status": "last_synchronization_status",
-              "last_synchronization_error": "last_synchronization_error"
+              "enabled_clients": [
+                "enabled_clients"
+              ],
+              "is_domain_connection": true,
+              "show_as_button": true,
+              "metadata": {
+                "key": "value"
+              },
+              "authentication": {
+                "active": true
+              },
+              "connected_accounts": {
+                "active": true,
+                "cross_app_access": true
+              }
             }
             """;
 
@@ -35,7 +46,8 @@ public class GetTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/connections/id/directory-provisioning")
+                    .WithPath("/connections/id")
+                    .WithParam("fields", "fields")
                     .UsingGet()
             )
             .RespondWith(
@@ -45,7 +57,10 @@ public class GetTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var response = await Client.Connections.DirectoryProvisioning.GetAsync("id");
+        var response = await Client.Connections.GetAsync(
+            "id",
+            new GetConnectionRequestParameters { Fields = "fields", IncludeFields = true }
+        );
         JsonAssert.AreEqual(response, mockResponse);
     }
 }

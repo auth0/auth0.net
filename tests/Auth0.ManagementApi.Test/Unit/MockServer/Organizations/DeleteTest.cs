@@ -4,6 +4,7 @@ using NUnit.Framework;
 namespace Auth0.ManagementApi.Test.Unit.MockServer.Organizations;
 
 [TestFixture]
+[Parallelizable(ParallelScope.Self)]
 public class DeleteTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
@@ -13,13 +14,11 @@ public class DeleteTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/organizations/id/client-grants/grant_id")
+                    .WithPath("/organizations/id")
                     .UsingDelete()
             )
             .RespondWith(WireMock.ResponseBuilders.Response.Create().WithStatusCode(200));
 
-        Assert.DoesNotThrowAsync(async () =>
-            await Client.Organizations.ClientGrants.DeleteAsync("id", "grant_id")
-        );
+        Assert.DoesNotThrowAsync(async () => await Client.Organizations.DeleteAsync("id"));
     }
 }

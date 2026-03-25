@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi;
 
 public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal SelfServiceProfilesClient(RawClient client)
     {
@@ -60,7 +60,6 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "self-service-profiles",
                     QueryString = _queryString,
@@ -72,7 +71,9 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -101,7 +102,9 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -144,7 +147,6 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "self-service-profiles",
                     Body = request,
@@ -157,7 +159,9 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<CreateSelfServiceProfileResponseContent>(
@@ -185,7 +189,9 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -232,7 +238,6 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "self-service-profiles/{0}",
@@ -246,7 +251,9 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetSelfServiceProfileResponseContent>(
@@ -274,7 +281,9 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -322,7 +331,6 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "self-service-profiles/{0}",
@@ -338,7 +346,9 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<UpdateSelfServiceProfileResponseContent>(
@@ -366,7 +376,9 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -502,7 +514,6 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "self-service-profiles/{0}",
@@ -519,7 +530,9 @@ public partial class SelfServiceProfilesClient : ISelfServiceProfilesClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

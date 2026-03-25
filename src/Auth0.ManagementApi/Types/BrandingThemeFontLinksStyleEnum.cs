@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<BrandingThemeFontLinksStyleEnum>))]
+[JsonConverter(typeof(BrandingThemeFontLinksStyleEnum.BrandingThemeFontLinksStyleEnumSerializer))]
 [Serializable]
 public readonly record struct BrandingThemeFontLinksStyleEnum : IStringEnum
 {
@@ -51,6 +52,33 @@ public readonly record struct BrandingThemeFontLinksStyleEnum : IStringEnum
     public static explicit operator string(BrandingThemeFontLinksStyleEnum value) => value.Value;
 
     public static explicit operator BrandingThemeFontLinksStyleEnum(string value) => new(value);
+
+    internal class BrandingThemeFontLinksStyleEnumSerializer
+        : JsonConverter<BrandingThemeFontLinksStyleEnum>
+    {
+        public override BrandingThemeFontLinksStyleEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new BrandingThemeFontLinksStyleEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            BrandingThemeFontLinksStyleEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

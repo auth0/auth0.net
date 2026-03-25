@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FlowsVaultConnectionAppIdSlackEnum>))]
+[JsonConverter(
+    typeof(FlowsVaultConnectionAppIdSlackEnum.FlowsVaultConnectionAppIdSlackEnumSerializer)
+)]
 [Serializable]
 public readonly record struct FlowsVaultConnectionAppIdSlackEnum : IStringEnum
 {
@@ -49,6 +52,33 @@ public readonly record struct FlowsVaultConnectionAppIdSlackEnum : IStringEnum
     public static explicit operator string(FlowsVaultConnectionAppIdSlackEnum value) => value.Value;
 
     public static explicit operator FlowsVaultConnectionAppIdSlackEnum(string value) => new(value);
+
+    internal class FlowsVaultConnectionAppIdSlackEnumSerializer
+        : JsonConverter<FlowsVaultConnectionAppIdSlackEnum>
+    {
+        public override FlowsVaultConnectionAppIdSlackEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FlowsVaultConnectionAppIdSlackEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FlowsVaultConnectionAppIdSlackEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

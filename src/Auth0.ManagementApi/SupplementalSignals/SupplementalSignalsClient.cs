@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi;
 
 public partial class SupplementalSignalsClient : ISupplementalSignalsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal SupplementalSignalsClient(RawClient client)
     {
@@ -27,7 +27,6 @@ public partial class SupplementalSignalsClient : ISupplementalSignalsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "supplemental-signals",
                     Headers = _headers,
@@ -38,7 +37,9 @@ public partial class SupplementalSignalsClient : ISupplementalSignalsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetSupplementalSignalsResponseContent>(
@@ -66,7 +67,9 @@ public partial class SupplementalSignalsClient : ISupplementalSignalsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -109,7 +112,6 @@ public partial class SupplementalSignalsClient : ISupplementalSignalsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = "supplemental-signals",
                     Body = request,
@@ -122,7 +124,9 @@ public partial class SupplementalSignalsClient : ISupplementalSignalsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<PatchSupplementalSignalsResponseContent>(
@@ -150,7 +154,9 @@ public partial class SupplementalSignalsClient : ISupplementalSignalsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

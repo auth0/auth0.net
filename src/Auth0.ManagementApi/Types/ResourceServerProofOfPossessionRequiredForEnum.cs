@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<ResourceServerProofOfPossessionRequiredForEnum>))]
+[JsonConverter(
+    typeof(ResourceServerProofOfPossessionRequiredForEnum.ResourceServerProofOfPossessionRequiredForEnumSerializer)
+)]
 [Serializable]
 public readonly record struct ResourceServerProofOfPossessionRequiredForEnum : IStringEnum
 {
@@ -61,6 +64,33 @@ public readonly record struct ResourceServerProofOfPossessionRequiredForEnum : I
 
     public static explicit operator ResourceServerProofOfPossessionRequiredForEnum(string value) =>
         new(value);
+
+    internal class ResourceServerProofOfPossessionRequiredForEnumSerializer
+        : JsonConverter<ResourceServerProofOfPossessionRequiredForEnum>
+    {
+        public override ResourceServerProofOfPossessionRequiredForEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new ResourceServerProofOfPossessionRequiredForEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            ResourceServerProofOfPossessionRequiredForEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

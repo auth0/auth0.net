@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<UserAuthenticationMethodPropertiesEnum>))]
+[JsonConverter(
+    typeof(UserAuthenticationMethodPropertiesEnum.UserAuthenticationMethodPropertiesEnumSerializer)
+)]
 [Serializable]
 public readonly record struct UserAuthenticationMethodPropertiesEnum : IStringEnum
 {
@@ -57,6 +60,33 @@ public readonly record struct UserAuthenticationMethodPropertiesEnum : IStringEn
 
     public static explicit operator UserAuthenticationMethodPropertiesEnum(string value) =>
         new(value);
+
+    internal class UserAuthenticationMethodPropertiesEnumSerializer
+        : JsonConverter<UserAuthenticationMethodPropertiesEnum>
+    {
+        public override UserAuthenticationMethodPropertiesEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new UserAuthenticationMethodPropertiesEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            UserAuthenticationMethodPropertiesEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

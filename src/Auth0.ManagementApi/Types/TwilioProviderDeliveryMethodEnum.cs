@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<TwilioProviderDeliveryMethodEnum>))]
+[JsonConverter(typeof(TwilioProviderDeliveryMethodEnum.TwilioProviderDeliveryMethodEnumSerializer))]
 [Serializable]
 public readonly record struct TwilioProviderDeliveryMethodEnum : IStringEnum
 {
@@ -51,6 +52,33 @@ public readonly record struct TwilioProviderDeliveryMethodEnum : IStringEnum
     public static explicit operator string(TwilioProviderDeliveryMethodEnum value) => value.Value;
 
     public static explicit operator TwilioProviderDeliveryMethodEnum(string value) => new(value);
+
+    internal class TwilioProviderDeliveryMethodEnumSerializer
+        : JsonConverter<TwilioProviderDeliveryMethodEnum>
+    {
+        public override TwilioProviderDeliveryMethodEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new TwilioProviderDeliveryMethodEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            TwilioProviderDeliveryMethodEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

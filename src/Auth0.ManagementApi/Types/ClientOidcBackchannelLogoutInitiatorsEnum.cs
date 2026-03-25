@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<ClientOidcBackchannelLogoutInitiatorsEnum>))]
+[JsonConverter(
+    typeof(ClientOidcBackchannelLogoutInitiatorsEnum.ClientOidcBackchannelLogoutInitiatorsEnumSerializer)
+)]
 [Serializable]
 public readonly record struct ClientOidcBackchannelLogoutInitiatorsEnum : IStringEnum
 {
@@ -89,6 +92,33 @@ public readonly record struct ClientOidcBackchannelLogoutInitiatorsEnum : IStrin
 
     public static explicit operator ClientOidcBackchannelLogoutInitiatorsEnum(string value) =>
         new(value);
+
+    internal class ClientOidcBackchannelLogoutInitiatorsEnumSerializer
+        : JsonConverter<ClientOidcBackchannelLogoutInitiatorsEnum>
+    {
+        public override ClientOidcBackchannelLogoutInitiatorsEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new ClientOidcBackchannelLogoutInitiatorsEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            ClientOidcBackchannelLogoutInitiatorsEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

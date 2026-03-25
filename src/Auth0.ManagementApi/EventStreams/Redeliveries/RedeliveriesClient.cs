@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.EventStreams;
 
 public partial class RedeliveriesClient : IRedeliveriesClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal RedeliveriesClient(RawClient client)
     {
@@ -30,7 +30,6 @@ public partial class RedeliveriesClient : IRedeliveriesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "event-streams/{0}/redeliver",
@@ -46,7 +45,9 @@ public partial class RedeliveriesClient : IRedeliveriesClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData =
@@ -75,7 +76,9 @@ public partial class RedeliveriesClient : IRedeliveriesClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -142,7 +145,6 @@ public partial class RedeliveriesClient : IRedeliveriesClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "event-streams/{0}/redeliver/{1}",
@@ -160,7 +162,9 @@ public partial class RedeliveriesClient : IRedeliveriesClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

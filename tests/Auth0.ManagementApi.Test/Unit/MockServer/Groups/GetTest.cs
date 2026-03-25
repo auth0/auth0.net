@@ -1,10 +1,11 @@
-using Auth0.ManagementApi.Groups;
 using Auth0.ManagementApi.Test.Unit.MockServer;
+using Auth0.ManagementApi.Test.Utils;
 using NUnit.Framework;
 
 namespace Auth0.ManagementApi.Test.Unit.MockServer.Groups;
 
 [TestFixture]
+[Parallelizable(ParallelScope.Self)]
 public class GetTest : BaseMockServerTest
 {
     [NUnit.Framework.Test]
@@ -12,29 +13,18 @@ public class GetTest : BaseMockServerTest
     {
         const string mockResponse = """
             {
-              "members": [
-                {
-                  "id": "id",
-                  "member_type": "user",
-                  "type": "connection",
-                  "connection_id": "connection_id",
-                  "created_at": "2024-01-15T09:30:00.000Z"
-                }
-              ],
-              "next": "next"
+              "id": "id",
+              "name": "name",
+              "external_id": "external_id",
+              "connection_id": "connection_id",
+              "tenant_name": "tenant_name",
+              "created_at": "2024-01-15T09:30:00.000Z",
+              "updated_at": "2024-01-15T09:30:00.000Z"
             }
             """;
 
         Server
-            .Given(
-                WireMock
-                    .RequestBuilders.Request.Create()
-                    .WithPath("/groups/id/members")
-                    .WithParam("fields", "fields")
-                    .WithParam("from", "from")
-                    .WithParam("take", "1")
-                    .UsingGet()
-            )
+            .Given(WireMock.RequestBuilders.Request.Create().WithPath("/groups/id").UsingGet())
             .RespondWith(
                 WireMock
                     .ResponseBuilders.Response.Create()
@@ -42,20 +32,7 @@ public class GetTest : BaseMockServerTest
                     .WithBody(mockResponse)
             );
 
-        var items = await Client.Groups.Members.GetAsync(
-            "id",
-            new GetGroupMembersRequestParameters
-            {
-                Fields = "fields",
-                IncludeFields = true,
-                From = "from",
-                Take = 1,
-            }
-        );
-        await foreach (var item in items)
-        {
-            Assert.That(item, Is.Not.Null);
-            break; // Only check the first item
-        }
+        var response = await Client.Groups.GetAsync("id");
+        JsonAssert.AreEqual(response, mockResponse);
     }
 }

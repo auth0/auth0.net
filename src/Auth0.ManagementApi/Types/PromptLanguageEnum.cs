@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<PromptLanguageEnum>))]
+[JsonConverter(typeof(PromptLanguageEnum.PromptLanguageEnumSerializer))]
 [Serializable]
 public readonly record struct PromptLanguageEnum : IStringEnum
 {
@@ -211,6 +212,32 @@ public readonly record struct PromptLanguageEnum : IStringEnum
     public static explicit operator string(PromptLanguageEnum value) => value.Value;
 
     public static explicit operator PromptLanguageEnum(string value) => new(value);
+
+    internal class PromptLanguageEnumSerializer : JsonConverter<PromptLanguageEnum>
+    {
+        public override PromptLanguageEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new PromptLanguageEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            PromptLanguageEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

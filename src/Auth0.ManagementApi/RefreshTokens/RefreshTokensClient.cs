@@ -5,7 +5,7 @@ namespace Auth0.ManagementApi;
 
 public partial class RefreshTokensClient : IRefreshTokensClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal RefreshTokensClient(RawClient client)
     {
@@ -28,7 +28,6 @@ public partial class RefreshTokensClient : IRefreshTokensClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "refresh-tokens/{0}",
@@ -42,7 +41,9 @@ public partial class RefreshTokensClient : IRefreshTokensClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<GetRefreshTokenResponseContent>(
@@ -70,7 +71,9 @@ public partial class RefreshTokensClient : IRefreshTokensClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -114,7 +117,6 @@ public partial class RefreshTokensClient : IRefreshTokensClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethodExtensions.Patch,
                     Path = string.Format(
                         "refresh-tokens/{0}",
@@ -130,7 +132,9 @@ public partial class RefreshTokensClient : IRefreshTokensClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<UpdateRefreshTokenResponseContent>(
@@ -158,7 +162,9 @@ public partial class RefreshTokensClient : IRefreshTokensClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -226,7 +232,6 @@ public partial class RefreshTokensClient : IRefreshTokensClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "refresh-tokens/{0}",
@@ -243,7 +248,9 @@ public partial class RefreshTokensClient : IRefreshTokensClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

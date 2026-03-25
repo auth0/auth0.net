@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<FormBlockResendButtonConfigTextAlignmentEnum>))]
+[JsonConverter(
+    typeof(FormBlockResendButtonConfigTextAlignmentEnum.FormBlockResendButtonConfigTextAlignmentEnumSerializer)
+)]
 [Serializable]
 public readonly record struct FormBlockResendButtonConfigTextAlignmentEnum : IStringEnum
 {
@@ -59,6 +62,33 @@ public readonly record struct FormBlockResendButtonConfigTextAlignmentEnum : ISt
 
     public static explicit operator FormBlockResendButtonConfigTextAlignmentEnum(string value) =>
         new(value);
+
+    internal class FormBlockResendButtonConfigTextAlignmentEnumSerializer
+        : JsonConverter<FormBlockResendButtonConfigTextAlignmentEnum>
+    {
+        public override FormBlockResendButtonConfigTextAlignmentEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new FormBlockResendButtonConfigTextAlignmentEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            FormBlockResendButtonConfigTextAlignmentEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

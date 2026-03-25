@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<PublicKeyCredentialAlgorithmEnum>))]
+[JsonConverter(typeof(PublicKeyCredentialAlgorithmEnum.PublicKeyCredentialAlgorithmEnumSerializer))]
 [Serializable]
 public readonly record struct PublicKeyCredentialAlgorithmEnum : IStringEnum
 {
@@ -53,6 +54,33 @@ public readonly record struct PublicKeyCredentialAlgorithmEnum : IStringEnum
     public static explicit operator string(PublicKeyCredentialAlgorithmEnum value) => value.Value;
 
     public static explicit operator PublicKeyCredentialAlgorithmEnum(string value) => new(value);
+
+    internal class PublicKeyCredentialAlgorithmEnumSerializer
+        : JsonConverter<PublicKeyCredentialAlgorithmEnum>
+    {
+        public override PublicKeyCredentialAlgorithmEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new PublicKeyCredentialAlgorithmEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            PublicKeyCredentialAlgorithmEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

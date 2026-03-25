@@ -1,9 +1,10 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<ConnectionTypeEnumOkta>))]
+[JsonConverter(typeof(ConnectionTypeEnumOkta.ConnectionTypeEnumOktaSerializer))]
 [Serializable]
 public readonly record struct ConnectionTypeEnumOkta : IStringEnum
 {
@@ -49,6 +50,32 @@ public readonly record struct ConnectionTypeEnumOkta : IStringEnum
     public static explicit operator string(ConnectionTypeEnumOkta value) => value.Value;
 
     public static explicit operator ConnectionTypeEnumOkta(string value) => new(value);
+
+    internal class ConnectionTypeEnumOktaSerializer : JsonConverter<ConnectionTypeEnumOkta>
+    {
+        public override ConnectionTypeEnumOkta Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new ConnectionTypeEnumOkta(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            ConnectionTypeEnumOkta value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values

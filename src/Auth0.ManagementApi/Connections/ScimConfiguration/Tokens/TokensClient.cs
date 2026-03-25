@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Connections.ScimConfiguration;
 
 public partial class TokensClient : ITokensClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal TokensClient(RawClient client)
     {
@@ -29,7 +29,6 @@ public partial class TokensClient : ITokensClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = string.Format(
                         "connections/{0}/scim-configuration/tokens",
@@ -43,7 +42,9 @@ public partial class TokensClient : ITokensClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<IEnumerable<ScimTokenItem>>(responseBody)!;
@@ -69,7 +70,9 @@ public partial class TokensClient : ITokensClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -109,7 +112,6 @@ public partial class TokensClient : ITokensClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = string.Format(
                         "connections/{0}/scim-configuration/tokens",
@@ -125,7 +127,9 @@ public partial class TokensClient : ITokensClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<CreateScimTokenResponseContent>(
@@ -153,7 +157,9 @@ public partial class TokensClient : ITokensClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -239,7 +245,6 @@ public partial class TokensClient : ITokensClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Delete,
                     Path = string.Format(
                         "connections/{0}/scim-configuration/tokens/{1}",
@@ -257,7 +262,9 @@ public partial class TokensClient : ITokensClient
             return;
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

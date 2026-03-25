@@ -8,7 +8,7 @@ namespace Auth0.ManagementApi.Guardian;
 
 public partial class FactorsClient : IFactorsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal FactorsClient(RawClient client)
     {
@@ -42,7 +42,6 @@ public partial class FactorsClient : IFactorsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Get,
                     Path = "guardian/factors",
                     Headers = _headers,
@@ -53,7 +52,9 @@ public partial class FactorsClient : IFactorsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<IEnumerable<GuardianFactor>>(
@@ -81,7 +82,9 @@ public partial class FactorsClient : IFactorsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)
@@ -123,7 +126,6 @@ public partial class FactorsClient : IFactorsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Put,
                     Path = string.Format(
                         "guardian/factors/{0}",
@@ -139,7 +141,9 @@ public partial class FactorsClient : IFactorsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<SetGuardianFactorResponseContent>(
@@ -167,7 +171,9 @@ public partial class FactorsClient : IFactorsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

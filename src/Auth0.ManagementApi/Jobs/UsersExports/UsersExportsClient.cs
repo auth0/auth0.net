@@ -6,7 +6,7 @@ namespace Auth0.ManagementApi.Jobs;
 
 public partial class UsersExportsClient : IUsersExportsClient
 {
-    private RawClient _client;
+    private readonly RawClient _client;
 
     internal UsersExportsClient(RawClient client)
     {
@@ -29,7 +29,6 @@ public partial class UsersExportsClient : IUsersExportsClient
             .SendRequestAsync(
                 new JsonRequest
                 {
-                    BaseUrl = _client.Options.BaseUrl,
                     Method = HttpMethod.Post,
                     Path = "jobs/users-exports",
                     Body = request,
@@ -42,7 +41,9 @@ public partial class UsersExportsClient : IUsersExportsClient
             .ConfigureAwait(false);
         if (response.StatusCode is >= 200 and < 400)
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 var responseData = JsonUtils.Deserialize<CreateExportUsersResponseContent>(
@@ -70,7 +71,9 @@ public partial class UsersExportsClient : IUsersExportsClient
             }
         }
         {
-            var responseBody = await response.Raw.Content.ReadAsStringAsync();
+            var responseBody = await response
+                .Raw.Content.ReadAsStringAsync(cancellationToken)
+                .ConfigureAwait(false);
             try
             {
                 switch (response.StatusCode)

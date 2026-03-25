@@ -1,9 +1,12 @@
+using System.Text.Json;
 using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
 
 namespace Auth0.ManagementApi;
 
-[JsonConverter(typeof(StringEnumSerializer<BrandingThemeColorsCaptchaWidgetThemeEnum>))]
+[JsonConverter(
+    typeof(BrandingThemeColorsCaptchaWidgetThemeEnum.BrandingThemeColorsCaptchaWidgetThemeEnumSerializer)
+)]
 [Serializable]
 public readonly record struct BrandingThemeColorsCaptchaWidgetThemeEnum : IStringEnum
 {
@@ -59,6 +62,33 @@ public readonly record struct BrandingThemeColorsCaptchaWidgetThemeEnum : IStrin
 
     public static explicit operator BrandingThemeColorsCaptchaWidgetThemeEnum(string value) =>
         new(value);
+
+    internal class BrandingThemeColorsCaptchaWidgetThemeEnumSerializer
+        : JsonConverter<BrandingThemeColorsCaptchaWidgetThemeEnum>
+    {
+        public override BrandingThemeColorsCaptchaWidgetThemeEnum Read(
+            ref Utf8JsonReader reader,
+            Type typeToConvert,
+            JsonSerializerOptions options
+        )
+        {
+            var stringValue =
+                reader.GetString()
+                ?? throw new global::System.Exception(
+                    "The JSON value could not be read as a string."
+                );
+            return new BrandingThemeColorsCaptchaWidgetThemeEnum(stringValue);
+        }
+
+        public override void Write(
+            Utf8JsonWriter writer,
+            BrandingThemeColorsCaptchaWidgetThemeEnum value,
+            JsonSerializerOptions options
+        )
+        {
+            writer.WriteStringValue(value.Value);
+        }
+    }
 
     /// <summary>
     /// Constant strings for enum values
