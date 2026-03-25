@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -103,7 +103,7 @@ public class FlowActionHubspotEnrollContactParamsWorkflowId
         };
     }
 
-    public void Visit(System.Action<string> onString, System.Action<int> onInt)
+    public void Visit(global::System.Action<string> onString, global::System.Action<int> onInt)
     {
         switch (Type)
         {
@@ -165,7 +165,7 @@ public class FlowActionHubspotEnrollContactParamsWorkflowId
     {
         public override FlowActionHubspotEnrollContactParamsWorkflowId? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -225,7 +225,7 @@ public class FlowActionHubspotEnrollContactParamsWorkflowId
 
         public override FlowActionHubspotEnrollContactParamsWorkflowId ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

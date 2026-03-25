@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -117,8 +117,8 @@ public class FlowActionXml
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.FlowActionXmlParseXml> onFlowActionXmlParseXml,
-        System.Action<Auth0.ManagementApi.FlowActionXmlSerializeXml> onFlowActionXmlSerializeXml
+        global::System.Action<Auth0.ManagementApi.FlowActionXmlParseXml> onFlowActionXmlParseXml,
+        global::System.Action<Auth0.ManagementApi.FlowActionXmlSerializeXml> onFlowActionXmlSerializeXml
     )
     {
         switch (Type)
@@ -182,7 +182,7 @@ public class FlowActionXml
     {
         public override FlowActionXml? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -247,7 +247,7 @@ public class FlowActionXml
 
         public override FlowActionXml ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

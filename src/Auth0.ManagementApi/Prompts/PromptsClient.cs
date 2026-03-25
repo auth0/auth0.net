@@ -1,6 +1,6 @@
-using System.Text.Json;
 using Auth0.ManagementApi.Core;
 using Auth0.ManagementApi.Prompts;
+using global::System.Text.Json;
 
 namespace Auth0.ManagementApi;
 

@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -135,8 +135,8 @@ public class CreateFlowsVaultConnectionGoogleSheets
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionGoogleSheetsOauthCode> onCreateFlowsVaultConnectionGoogleSheetsOauthCode,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionGoogleSheetsUninitialized> onCreateFlowsVaultConnectionGoogleSheetsUninitialized
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionGoogleSheetsOauthCode> onCreateFlowsVaultConnectionGoogleSheetsOauthCode,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionGoogleSheetsUninitialized> onCreateFlowsVaultConnectionGoogleSheetsUninitialized
     )
     {
         switch (Type)
@@ -204,7 +204,7 @@ public class CreateFlowsVaultConnectionGoogleSheets
     {
         public override CreateFlowsVaultConnectionGoogleSheets? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -272,7 +272,7 @@ public class CreateFlowsVaultConnectionGoogleSheets
 
         public override CreateFlowsVaultConnectionGoogleSheets ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

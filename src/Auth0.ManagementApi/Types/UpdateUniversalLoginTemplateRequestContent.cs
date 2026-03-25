@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -121,8 +121,8 @@ public class UpdateUniversalLoginTemplateRequestContent
     }
 
     public void Visit(
-        System.Action<string> onString,
-        System.Action<Auth0.ManagementApi.UpdateUniversalLoginTemplateRequestContentTemplate> onUpdateUniversalLoginTemplateRequestContentTemplate
+        global::System.Action<string> onString,
+        global::System.Action<Auth0.ManagementApi.UpdateUniversalLoginTemplateRequestContentTemplate> onUpdateUniversalLoginTemplateRequestContentTemplate
     )
     {
         switch (Type)
@@ -187,7 +187,7 @@ public class UpdateUniversalLoginTemplateRequestContent
     {
         public override UpdateUniversalLoginTemplateRequestContent? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -262,7 +262,7 @@ public class UpdateUniversalLoginTemplateRequestContent
 
         public override UpdateUniversalLoginTemplateRequestContent ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

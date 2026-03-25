@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -134,8 +134,8 @@ public class CreateFlowsVaultConnectionMailjet
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionMailjetApiKey> onCreateFlowsVaultConnectionMailjetApiKey,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionMailjetUninitialized> onCreateFlowsVaultConnectionMailjetUninitialized
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionMailjetApiKey> onCreateFlowsVaultConnectionMailjetApiKey,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionMailjetUninitialized> onCreateFlowsVaultConnectionMailjetUninitialized
     )
     {
         switch (Type)
@@ -203,7 +203,7 @@ public class CreateFlowsVaultConnectionMailjet
     {
         public override CreateFlowsVaultConnectionMailjet? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -271,7 +271,7 @@ public class CreateFlowsVaultConnectionMailjet
 
         public override CreateFlowsVaultConnectionMailjet ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

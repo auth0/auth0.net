@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -406,14 +406,14 @@ public class CreateLogStreamRequestContent
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.CreateLogStreamHttpRequestBody> onCreateLogStreamHttpRequestBody,
-        System.Action<Auth0.ManagementApi.CreateLogStreamEventBridgeRequestBody> onCreateLogStreamEventBridgeRequestBody,
-        System.Action<Auth0.ManagementApi.CreateLogStreamEventGridRequestBody> onCreateLogStreamEventGridRequestBody,
-        System.Action<Auth0.ManagementApi.CreateLogStreamDatadogRequestBody> onCreateLogStreamDatadogRequestBody,
-        System.Action<Auth0.ManagementApi.CreateLogStreamSplunkRequestBody> onCreateLogStreamSplunkRequestBody,
-        System.Action<Auth0.ManagementApi.CreateLogStreamSumoRequestBody> onCreateLogStreamSumoRequestBody,
-        System.Action<Auth0.ManagementApi.CreateLogStreamSegmentRequestBody> onCreateLogStreamSegmentRequestBody,
-        System.Action<Auth0.ManagementApi.CreateLogStreamMixpanelRequestBody> onCreateLogStreamMixpanelRequestBody
+        global::System.Action<Auth0.ManagementApi.CreateLogStreamHttpRequestBody> onCreateLogStreamHttpRequestBody,
+        global::System.Action<Auth0.ManagementApi.CreateLogStreamEventBridgeRequestBody> onCreateLogStreamEventBridgeRequestBody,
+        global::System.Action<Auth0.ManagementApi.CreateLogStreamEventGridRequestBody> onCreateLogStreamEventGridRequestBody,
+        global::System.Action<Auth0.ManagementApi.CreateLogStreamDatadogRequestBody> onCreateLogStreamDatadogRequestBody,
+        global::System.Action<Auth0.ManagementApi.CreateLogStreamSplunkRequestBody> onCreateLogStreamSplunkRequestBody,
+        global::System.Action<Auth0.ManagementApi.CreateLogStreamSumoRequestBody> onCreateLogStreamSumoRequestBody,
+        global::System.Action<Auth0.ManagementApi.CreateLogStreamSegmentRequestBody> onCreateLogStreamSegmentRequestBody,
+        global::System.Action<Auth0.ManagementApi.CreateLogStreamMixpanelRequestBody> onCreateLogStreamMixpanelRequestBody
     )
     {
         switch (Type)
@@ -519,7 +519,7 @@ public class CreateLogStreamRequestContent
     {
         public override CreateLogStreamRequestContent? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -617,7 +617,7 @@ public class CreateLogStreamRequestContent
 
         public override CreateLogStreamRequestContent ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

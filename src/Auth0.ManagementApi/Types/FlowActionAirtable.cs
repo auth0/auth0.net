@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -165,9 +165,9 @@ public class FlowActionAirtable
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.FlowActionAirtableCreateRecord> onFlowActionAirtableCreateRecord,
-        System.Action<Auth0.ManagementApi.FlowActionAirtableListRecords> onFlowActionAirtableListRecords,
-        System.Action<Auth0.ManagementApi.FlowActionAirtableUpdateRecord> onFlowActionAirtableUpdateRecord
+        global::System.Action<Auth0.ManagementApi.FlowActionAirtableCreateRecord> onFlowActionAirtableCreateRecord,
+        global::System.Action<Auth0.ManagementApi.FlowActionAirtableListRecords> onFlowActionAirtableListRecords,
+        global::System.Action<Auth0.ManagementApi.FlowActionAirtableUpdateRecord> onFlowActionAirtableUpdateRecord
     )
     {
         switch (Type)
@@ -238,7 +238,7 @@ public class FlowActionAirtable
     {
         public override FlowActionAirtable? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -311,7 +311,7 @@ public class FlowActionAirtable
 
         public override FlowActionAirtable ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

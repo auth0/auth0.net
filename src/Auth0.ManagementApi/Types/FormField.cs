@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -615,22 +615,22 @@ public class FormField
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.FormFieldBoolean> onFormFieldBoolean,
-        System.Action<Auth0.ManagementApi.FormFieldCards> onFormFieldCards,
-        System.Action<Auth0.ManagementApi.FormFieldChoice> onFormFieldChoice,
-        System.Action<Auth0.ManagementApi.FormFieldCustom> onFormFieldCustom,
-        System.Action<Auth0.ManagementApi.FormFieldDate> onFormFieldDate,
-        System.Action<Auth0.ManagementApi.FormFieldDropdown> onFormFieldDropdown,
-        System.Action<Auth0.ManagementApi.FormFieldEmail> onFormFieldEmail,
-        System.Action<Auth0.ManagementApi.FormFieldFile> onFormFieldFile,
-        System.Action<Auth0.ManagementApi.FormFieldLegal> onFormFieldLegal,
-        System.Action<Auth0.ManagementApi.FormFieldNumber> onFormFieldNumber,
-        System.Action<Auth0.ManagementApi.FormFieldPassword> onFormFieldPassword,
-        System.Action<Auth0.ManagementApi.FormFieldPayment> onFormFieldPayment,
-        System.Action<Auth0.ManagementApi.FormFieldSocial> onFormFieldSocial,
-        System.Action<Auth0.ManagementApi.FormFieldTel> onFormFieldTel,
-        System.Action<Auth0.ManagementApi.FormFieldText> onFormFieldText,
-        System.Action<Auth0.ManagementApi.FormFieldUrl> onFormFieldUrl
+        global::System.Action<Auth0.ManagementApi.FormFieldBoolean> onFormFieldBoolean,
+        global::System.Action<Auth0.ManagementApi.FormFieldCards> onFormFieldCards,
+        global::System.Action<Auth0.ManagementApi.FormFieldChoice> onFormFieldChoice,
+        global::System.Action<Auth0.ManagementApi.FormFieldCustom> onFormFieldCustom,
+        global::System.Action<Auth0.ManagementApi.FormFieldDate> onFormFieldDate,
+        global::System.Action<Auth0.ManagementApi.FormFieldDropdown> onFormFieldDropdown,
+        global::System.Action<Auth0.ManagementApi.FormFieldEmail> onFormFieldEmail,
+        global::System.Action<Auth0.ManagementApi.FormFieldFile> onFormFieldFile,
+        global::System.Action<Auth0.ManagementApi.FormFieldLegal> onFormFieldLegal,
+        global::System.Action<Auth0.ManagementApi.FormFieldNumber> onFormFieldNumber,
+        global::System.Action<Auth0.ManagementApi.FormFieldPassword> onFormFieldPassword,
+        global::System.Action<Auth0.ManagementApi.FormFieldPayment> onFormFieldPayment,
+        global::System.Action<Auth0.ManagementApi.FormFieldSocial> onFormFieldSocial,
+        global::System.Action<Auth0.ManagementApi.FormFieldTel> onFormFieldTel,
+        global::System.Action<Auth0.ManagementApi.FormFieldText> onFormFieldText,
+        global::System.Action<Auth0.ManagementApi.FormFieldUrl> onFormFieldUrl
     )
     {
         switch (Type)
@@ -776,7 +776,7 @@ public class FormField
     {
         public override FormField? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -866,7 +866,7 @@ public class FormField
 
         public override FormField ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

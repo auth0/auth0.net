@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -168,9 +168,9 @@ public class FlowActionPipedrive
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.FlowActionPipedriveAddDeal> onFlowActionPipedriveAddDeal,
-        System.Action<Auth0.ManagementApi.FlowActionPipedriveAddOrganization> onFlowActionPipedriveAddOrganization,
-        System.Action<Auth0.ManagementApi.FlowActionPipedriveAddPerson> onFlowActionPipedriveAddPerson
+        global::System.Action<Auth0.ManagementApi.FlowActionPipedriveAddDeal> onFlowActionPipedriveAddDeal,
+        global::System.Action<Auth0.ManagementApi.FlowActionPipedriveAddOrganization> onFlowActionPipedriveAddOrganization,
+        global::System.Action<Auth0.ManagementApi.FlowActionPipedriveAddPerson> onFlowActionPipedriveAddPerson
     )
     {
         switch (Type)
@@ -241,7 +241,7 @@ public class FlowActionPipedrive
     {
         public override FlowActionPipedrive? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -314,7 +314,7 @@ public class FlowActionPipedrive
 
         public override FlowActionPipedrive ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

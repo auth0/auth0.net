@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -160,9 +160,9 @@ public class FormWidget
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.FormWidgetAuth0VerifiableCredentials> onFormWidgetAuth0VerifiableCredentials,
-        System.Action<Auth0.ManagementApi.FormWidgetGMapsAddress> onFormWidgetGMapsAddress,
-        System.Action<Auth0.ManagementApi.FormWidgetRecaptcha> onFormWidgetRecaptcha
+        global::System.Action<Auth0.ManagementApi.FormWidgetAuth0VerifiableCredentials> onFormWidgetAuth0VerifiableCredentials,
+        global::System.Action<Auth0.ManagementApi.FormWidgetGMapsAddress> onFormWidgetGMapsAddress,
+        global::System.Action<Auth0.ManagementApi.FormWidgetRecaptcha> onFormWidgetRecaptcha
     )
     {
         switch (Type)
@@ -231,7 +231,7 @@ public class FormWidget
     {
         public override FormWidget? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -298,7 +298,7 @@ public class FormWidget
 
         public override FormWidget ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

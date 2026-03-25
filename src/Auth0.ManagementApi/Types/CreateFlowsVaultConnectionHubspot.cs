@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -182,9 +182,9 @@ public class CreateFlowsVaultConnectionHubspot
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHubspotApiKey> onCreateFlowsVaultConnectionHubspotApiKey,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHubspotOauthCode> onCreateFlowsVaultConnectionHubspotOauthCode,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHubspotUninitialized> onCreateFlowsVaultConnectionHubspotUninitialized
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHubspotApiKey> onCreateFlowsVaultConnectionHubspotApiKey,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHubspotOauthCode> onCreateFlowsVaultConnectionHubspotOauthCode,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionHubspotUninitialized> onCreateFlowsVaultConnectionHubspotUninitialized
     )
     {
         switch (Type)
@@ -261,7 +261,7 @@ public class CreateFlowsVaultConnectionHubspot
     {
         public override CreateFlowsVaultConnectionHubspot? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -334,7 +334,7 @@ public class CreateFlowsVaultConnectionHubspot
 
         public override CreateFlowsVaultConnectionHubspot ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

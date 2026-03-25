@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -265,12 +265,12 @@ public class LogStreamSinkPatch
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.LogStreamHttpSink> onLogStreamHttpSink,
-        System.Action<Auth0.ManagementApi.LogStreamDatadogSink> onLogStreamDatadogSink,
-        System.Action<Auth0.ManagementApi.LogStreamSplunkSink> onLogStreamSplunkSink,
-        System.Action<Auth0.ManagementApi.LogStreamSumoSink> onLogStreamSumoSink,
-        System.Action<Auth0.ManagementApi.LogStreamSegmentSink> onLogStreamSegmentSink,
-        System.Action<Auth0.ManagementApi.LogStreamMixpanelSinkPatch> onLogStreamMixpanelSinkPatch
+        global::System.Action<Auth0.ManagementApi.LogStreamHttpSink> onLogStreamHttpSink,
+        global::System.Action<Auth0.ManagementApi.LogStreamDatadogSink> onLogStreamDatadogSink,
+        global::System.Action<Auth0.ManagementApi.LogStreamSplunkSink> onLogStreamSplunkSink,
+        global::System.Action<Auth0.ManagementApi.LogStreamSumoSink> onLogStreamSumoSink,
+        global::System.Action<Auth0.ManagementApi.LogStreamSegmentSink> onLogStreamSegmentSink,
+        global::System.Action<Auth0.ManagementApi.LogStreamMixpanelSinkPatch> onLogStreamMixpanelSinkPatch
     )
     {
         switch (Type)
@@ -362,7 +362,7 @@ public class LogStreamSinkPatch
     {
         public override LogStreamSinkPatch? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -435,7 +435,7 @@ public class LogStreamSinkPatch
 
         public override LogStreamSinkPatch ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

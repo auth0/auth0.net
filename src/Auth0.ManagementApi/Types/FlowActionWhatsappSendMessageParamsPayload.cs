@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -118,10 +118,10 @@ public class FlowActionWhatsappSendMessageParamsPayload
     }
 
     public void Visit(
-        System.Action<
+        global::System.Action<
             Dictionary<string, object?>
         > onFlowActionWhatsappSendMessageParamsPayloadObject,
-        System.Action<string> onString
+        global::System.Action<string> onString
     )
     {
         switch (Type)
@@ -186,7 +186,7 @@ public class FlowActionWhatsappSendMessageParamsPayload
     {
         public override FlowActionWhatsappSendMessageParamsPayload? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -261,7 +261,7 @@ public class FlowActionWhatsappSendMessageParamsPayload
 
         public override FlowActionWhatsappSendMessageParamsPayload ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

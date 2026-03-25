@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -136,8 +136,8 @@ public class CreateFlowsVaultConnectionActivecampaign
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionActivecampaignApiKey> onCreateFlowsVaultConnectionActivecampaignApiKey,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionActivecampaignUninitialized> onCreateFlowsVaultConnectionActivecampaignUninitialized
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionActivecampaignApiKey> onCreateFlowsVaultConnectionActivecampaignApiKey,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionActivecampaignUninitialized> onCreateFlowsVaultConnectionActivecampaignUninitialized
     )
     {
         switch (Type)
@@ -205,7 +205,7 @@ public class CreateFlowsVaultConnectionActivecampaign
     {
         public override CreateFlowsVaultConnectionActivecampaign? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -273,7 +273,7 @@ public class CreateFlowsVaultConnectionActivecampaign
 
         public override CreateFlowsVaultConnectionActivecampaign ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

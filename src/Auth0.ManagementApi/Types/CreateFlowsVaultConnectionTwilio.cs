@@ -1,9 +1,9 @@
 // ReSharper disable NullableWarningSuppressionIsUsed
 // ReSharper disable InconsistentNaming
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Auth0.ManagementApi.Core;
+using global::System.Text.Json;
+using global::System.Text.Json.Serialization;
 
 namespace Auth0.ManagementApi;
 
@@ -134,8 +134,8 @@ public class CreateFlowsVaultConnectionTwilio
     }
 
     public void Visit(
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionTwilioApiKey> onCreateFlowsVaultConnectionTwilioApiKey,
-        System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionTwilioUninitialized> onCreateFlowsVaultConnectionTwilioUninitialized
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionTwilioApiKey> onCreateFlowsVaultConnectionTwilioApiKey,
+        global::System.Action<Auth0.ManagementApi.CreateFlowsVaultConnectionTwilioUninitialized> onCreateFlowsVaultConnectionTwilioUninitialized
     )
     {
         switch (Type)
@@ -203,7 +203,7 @@ public class CreateFlowsVaultConnectionTwilio
     {
         public override CreateFlowsVaultConnectionTwilio? Read(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {
@@ -271,7 +271,7 @@ public class CreateFlowsVaultConnectionTwilio
 
         public override CreateFlowsVaultConnectionTwilio ReadAsPropertyName(
             ref Utf8JsonReader reader,
-            System.Type typeToConvert,
+            global::System.Type typeToConvert,
             JsonSerializerOptions options
         )
         {

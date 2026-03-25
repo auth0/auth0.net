@@ -23,4 +23,13 @@ public partial interface IGroupsClient
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
     );
+
+    /// <summary>
+    /// Delete a group by its ID.
+    /// </summary>
+    Task DeleteAsync(
+        string id,
+        RequestOptions? options = null,
+        CancellationToken cancellationToken = default
+    );
 }
