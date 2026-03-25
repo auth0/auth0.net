@@ -31,6 +31,7 @@ src/Auth0.ManagementApi/Auth0.ManagementApi.Custom.props
 src/Auth0.ManagementApi/.shiprc
 src/Auth0.ManagementApi/.version
 src/Auth0.ManagementApi/ManagementApiClient.Internal.cs
+src/Auth0.ManagementApi/Core/Public/ClientOptions.Custom.cs
 
 tests/Auth0.AuthenticationApi.IntegrationTests
 tests/Auth0.Core.UnitTests
