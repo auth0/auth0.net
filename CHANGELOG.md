@@ -1,5 +1,11 @@
 # Change Log
 
+## [7.45.1](https://github.com/auth0/auth0.net/tree/7.45.1) (2026-03-26)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/7.45.0...7.45.1)
+
+**Security**
+- Bump Microsoft.IdentityModel.Protocols.OpenIdConnect and System.IdentityModel.Tokens.Jwt to v8.17.0 [\#955](https://github.com/auth0/auth0.net/pull/955) ([kailash-b](https://github.com/kailash-b))
+
 ## [7.45.0](https://github.com/auth0/auth0.net/tree/7.45.0) (2026-02-24)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/7.44.0...7.45.0)
 
