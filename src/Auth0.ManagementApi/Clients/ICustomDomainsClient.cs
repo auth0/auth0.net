@@ -1,3 +1,5 @@
+using Auth0.ManagementApi.Paging;
+
 namespace Auth0.ManagementApi.Clients;
 
 using System.Collections.Generic;
@@ -30,6 +32,15 @@ public interface ICustomDomainsClient
   /// </summary>
   /// <returns>A <see cref="IList{CustomDomain}"/> containing the details of every custom domain.</returns>
   Task<IList<CustomDomain>> GetAllAsync(CancellationToken cancellationToken = default);
+  
+  /// <summary>
+  /// Retrieve details on <a href="https://auth0.com/docs/custom-domains"> custom domains </a>.
+  /// </summary>
+  /// <param name="request"><see cref="CustomDomainsGetAllRequest"/></param>
+  /// <param name="checkpointPaginationInfo"><see cref="CheckpointPaginationInfo"/></param>
+  /// <param name="cancellationToken"><see cref="CancellationToken"/></param>
+  /// <returns></returns>
+  Task<ICheckpointPagedList<CustomDomain>> GetAllAsync(CustomDomainsGetAllRequest request, CheckpointPaginationInfo? checkpointPaginationInfo, CancellationToken cancellationToken = default);
 
   /// <summary>
   /// Retrieves a custom domain status by its ID
