@@ -1,5 +1,15 @@
 # Change Log
 
+## [mgmt-7.46.0](https://github.com/auth0/auth0.net/tree/mgmt-7.46.0) (2026-03-26)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-7.45.1...mgmt-7.46.0)
+
+**Added**
+- mgmt: Adds Checkpoint Pagination support for fetching CustomDomains [\#939](https://github.com/auth0/auth0.net/pull/939) ([kailash-b](https://github.com/kailash-b))
+- mgmt: Add support for optional custom domain header on whitelisted endpoints [\#943](https://github.com/auth0/auth0.net/pull/943) ([kailash-b](https://github.com/kailash-b))
+
+**Fixed**
+- mgmt: Add async_approval_notification_channels property to client model [\#938](https://github.com/auth0/auth0.net/pull/938) ([trivm963](https://github.com/trivm963))
+
 ## [mgmt-7.45.1](https://github.com/auth0/auth0.net/tree/mgmt-7.45.1) (2026-03-05)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-7.45.0...mgmt-7.45.1)
 

@@ -10,7 +10,7 @@
 
   <!-- Management-specific overrides (independent versioning) -->
   <PropertyGroup>
-    <Version>7.45.1</Version>
+    <Version>7.46.0</Version>
     <AssemblyVersion>$(Version)</AssemblyVersion>
     <AssemblyFileVersion>$(Version)</AssemblyFileVersion>
     <InformationalVersion>$(Version)</InformationalVersion>
