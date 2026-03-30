@@ -54,4 +54,13 @@ public abstract class AuthorizationCodeRequestBase : IClientAuthentication
     /// - If you provide an Organization Name (a string *without* the prefix `org_`), it will be validated against the `org_name` claim of your user's ID Token.The validation is case-insensitive.
     /// </remarks>
     public string Organization { get; set; }
+
+    /// <summary>
+    /// Optional nonce to validate against the nonce claim in the returned ID token.
+    /// </summary>
+    /// <remarks>
+    /// When set, the nonce claim in the returned ID token must exactly match this value.
+    /// Leave null (the default) to skip nonce validation.
+    /// </remarks>
+    public string? Nonce { get; set; }
 }

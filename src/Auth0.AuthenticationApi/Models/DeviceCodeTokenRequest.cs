@@ -20,4 +20,5 @@ public class DeviceCodeTokenRequest
     /// of Id Tokens.
     /// </summary>
     public JwtSignatureAlgorithm SigningAlgorithm { get; set; }
+
 }

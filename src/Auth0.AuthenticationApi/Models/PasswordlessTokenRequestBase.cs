@@ -53,4 +53,13 @@ public abstract class PasswordlessTokenRequestBase : IClientAuthentication
     /// of Id Tokens.
     /// </summary>
     public JwtSignatureAlgorithm SigningAlgorithm { get; set; }
+
+    /// <summary>
+    /// Optional nonce to validate against the nonce claim in the returned ID token.
+    /// </summary>
+    /// <remarks>
+    /// When set, the nonce claim in the returned ID token must exactly match this value.
+    /// Leave null (the default) to skip nonce validation.
+    /// </remarks>
+    public string? Nonce { get; set; }
 }
