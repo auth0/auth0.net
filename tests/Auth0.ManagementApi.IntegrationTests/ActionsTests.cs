@@ -47,7 +47,7 @@ public class ActionsTests : IClassFixture<ActionsTestsFixture>
             Runtime = "node18",
             Secrets = new List<ActionSecretRequest> { new() { Name = "My_Secret", Value = "Test123" } },
             SupportedTriggers = new List<ActionTrigger>
-                { new() { Id = "post-login", Version = "v2" } }
+                { new() { Id = ActionTriggerTypeEnum.PostLogin, Version = "v2" } }
         });
 
         fixture.TrackIdentifier(CleanUpType.Actions, createdAction.Id);
@@ -97,7 +97,7 @@ public class ActionsTests : IClassFixture<ActionsTestsFixture>
     public async Task Test_get_and_update_trigger_bindings()
     {
         var triggerBindingsBeforeCreatePager =
-            await fixture.ApiClient.Actions.Triggers.Bindings.ListAsync("post-login", new ListActionTriggerBindingsRequestParameters());
+            await fixture.ApiClient.Actions.Triggers.Bindings.ListAsync(ActionTriggerTypeEnum.PostLogin, new ListActionTriggerBindingsRequestParameters());
         var triggerBindingsBeforeCreate = triggerBindingsBeforeCreatePager.CurrentPage.Items.ToList();
 
         var createdAction = await fixture.ApiClient.Actions.CreateAsync(new CreateActionRequestContent
@@ -107,7 +107,7 @@ public class ActionsTests : IClassFixture<ActionsTestsFixture>
             Runtime = "node18",
             Secrets = new List<ActionSecretRequest> { new() { Name = "My_Secret", Value = "Test123" } },
             SupportedTriggers = new List<ActionTrigger>
-                { new() { Id = "post-login", Version = "v2" } }
+                { new() { Id = ActionTriggerTypeEnum.PostLogin, Version = "v2" } }
         });
 
         fixture.TrackIdentifier(CleanUpType.Actions, createdAction.Id);
@@ -120,7 +120,7 @@ public class ActionsTests : IClassFixture<ActionsTestsFixture>
         await RetryUtils.Retry<GetActionResponseContent>(async () => await fixture.ApiClient.Actions.GetAsync(createdAction.Id),
             response => response.AllChangesDeployed != true);
 
-        await fixture.ApiClient.Actions.Triggers.Bindings.UpdateManyAsync("post-login", new UpdateActionBindingsRequestContent
+        await fixture.ApiClient.Actions.Triggers.Bindings.UpdateManyAsync(ActionTriggerTypeEnum.PostLogin, new UpdateActionBindingsRequestContent
         {
             Bindings = new List<ActionBindingWithRef>
             {
@@ -140,13 +140,13 @@ public class ActionsTests : IClassFixture<ActionsTestsFixture>
         await Task.Delay(2000);
 
         var triggerBindingsAfterCreatePager =
-            await fixture.ApiClient.Actions.Triggers.Bindings.ListAsync("post-login", new ListActionTriggerBindingsRequestParameters());
+            await fixture.ApiClient.Actions.Triggers.Bindings.ListAsync(ActionTriggerTypeEnum.PostLogin, new ListActionTriggerBindingsRequestParameters());
         var triggerBindingsAfterCreate = triggerBindingsAfterCreatePager.CurrentPage.Items.ToList();
 
         // Verify our binding was added (check for presence rather than exact count since other bindings may exist)
         triggerBindingsAfterCreate.Should().Contain(b => b.Action.Id == createdAction.Id);
 
-        await fixture.ApiClient.Actions.Triggers.Bindings.UpdateManyAsync("post-login", new UpdateActionBindingsRequestContent
+        await fixture.ApiClient.Actions.Triggers.Bindings.UpdateManyAsync(ActionTriggerTypeEnum.PostLogin, new UpdateActionBindingsRequestContent
         {
             Bindings = new List<ActionBindingWithRef>()
         });
@@ -167,7 +167,7 @@ public class ActionsTests : IClassFixture<ActionsTestsFixture>
             Runtime = "node18",
             Secrets = new List<ActionSecretRequest> { new() { Name = "My_Secret", Value = "Test123" } },
             SupportedTriggers = new List<ActionTrigger>
-                { new() { Id = "post-login", Version = "v2" } }
+                { new() { Id = ActionTriggerTypeEnum.PostLogin, Version = "v2" } }
         });
 
         fixture.TrackIdentifier(CleanUpType.Actions, createdAction.Id);
