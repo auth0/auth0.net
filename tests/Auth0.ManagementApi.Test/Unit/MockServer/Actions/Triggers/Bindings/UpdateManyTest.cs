@@ -1,3 +1,4 @@
+using Auth0.ManagementApi;
 using Auth0.ManagementApi.Actions.Triggers;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using Auth0.ManagementApi.Test.Utils;
@@ -21,7 +22,7 @@ public class UpdateManyTest : BaseMockServerTest
               "bindings": [
                 {
                   "id": "id",
-                  "trigger_id": "trigger_id",
+                  "trigger_id": "post-login",
                   "display_name": "display_name",
                   "created_at": "2024-01-15T09:30:00.000Z",
                   "updated_at": "2024-01-15T09:30:00.000Z"
@@ -34,7 +35,7 @@ public class UpdateManyTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/actions/triggers/triggerId/bindings")
+                    .WithPath("/actions/triggers/post-login/bindings")
                     .WithHeader("Content-Type", "application/json")
                     .UsingPatch()
                     .WithBodyAsJson(requestJson)
@@ -47,7 +48,7 @@ public class UpdateManyTest : BaseMockServerTest
             );
 
         var response = await Client.Actions.Triggers.Bindings.UpdateManyAsync(
-            "triggerId",
+            ActionTriggerTypeEnum.PostLogin,
             new UpdateActionBindingsRequestContent()
         );
         JsonAssert.AreEqual(response, mockResponse);

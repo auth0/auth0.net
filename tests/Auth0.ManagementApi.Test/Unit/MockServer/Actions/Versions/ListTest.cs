@@ -39,7 +39,7 @@ public class ListTest : BaseMockServerTest
                   "updated_at": "2024-01-15T09:30:00.000Z",
                   "supported_triggers": [
                     {
-                      "id": "id"
+                      "id": "post-login"
                     }
                   ],
                   "modules": [

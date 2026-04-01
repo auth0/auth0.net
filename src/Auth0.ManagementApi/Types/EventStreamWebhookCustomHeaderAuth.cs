@@ -5,34 +5,23 @@ using global::System.Text.Json.Serialization;
 namespace Auth0.ManagementApi;
 
 /// <summary>
-/// Update a connection with strategy=yammer
+/// Custom header authorization for HTTP requests.
 /// </summary>
 [Serializable]
-public record UpdateConnectionRequestContentYammer : IJsonOnDeserialized
+public record EventStreamWebhookCustomHeaderAuth : IJsonOnDeserialized
 {
     [JsonExtensionData]
     private readonly IDictionary<string, JsonElement> _extensionData =
         new Dictionary<string, JsonElement>();
 
-    [Optional]
-    [JsonPropertyName("options")]
-    public ConnectionOptionsYammer? Options { get; set; }
+    [JsonPropertyName("method")]
+    public required EventStreamWebhookCustomHeaderAuthMethodEnum Method { get; set; }
 
-    [Optional]
-    [JsonPropertyName("display_name")]
-    public string? DisplayName { get; set; }
-
-    [Optional]
-    [JsonPropertyName("enabled_clients")]
-    public IEnumerable<string>? EnabledClients { get; set; }
-
-    [Optional]
-    [JsonPropertyName("is_domain_connection")]
-    public bool? IsDomainConnection { get; set; }
-
-    [Optional]
-    [JsonPropertyName("metadata")]
-    public Dictionary<string, string?>? Metadata { get; set; }
+    /// <summary>
+    /// HTTP header name.
+    /// </summary>
+    [JsonPropertyName("header_key")]
+    public required string HeaderKey { get; set; }
 
     [JsonIgnore]
     public ReadOnlyAdditionalProperties AdditionalProperties { get; private set; } = new();

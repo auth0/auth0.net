@@ -66,8 +66,6 @@ public readonly record struct ConnectionStrategyEnum : IStringEnum
 
     public static readonly ConnectionStrategyEnum Linkedin = new(Values.Linkedin);
 
-    public static readonly ConnectionStrategyEnum Miicard = new(Values.Miicard);
-
     public static readonly ConnectionStrategyEnum Oauth1 = new(Values.Oauth1);
 
     public static readonly ConnectionStrategyEnum Oauth2 = new(Values.Oauth2);
@@ -85,8 +83,6 @@ public readonly record struct ConnectionStrategyEnum : IStringEnum
     public static readonly ConnectionStrategyEnum Pingfederate = new(Values.Pingfederate);
 
     public static readonly ConnectionStrategyEnum Planningcenter = new(Values.Planningcenter);
-
-    public static readonly ConnectionStrategyEnum Renren = new(Values.Renren);
 
     public static readonly ConnectionStrategyEnum SalesforceCommunity = new(
         Values.SalesforceCommunity
@@ -108,10 +104,6 @@ public readonly record struct ConnectionStrategyEnum : IStringEnum
 
     public static readonly ConnectionStrategyEnum Soundcloud = new(Values.Soundcloud);
 
-    public static readonly ConnectionStrategyEnum ThecitySandbox = new(Values.ThecitySandbox);
-
-    public static readonly ConnectionStrategyEnum Thecity = new(Values.Thecity);
-
     public static readonly ConnectionStrategyEnum Thirtysevensignals = new(
         Values.Thirtysevensignals
     );
@@ -131,8 +123,6 @@ public readonly record struct ConnectionStrategyEnum : IStringEnum
     public static readonly ConnectionStrategyEnum Wordpress = new(Values.Wordpress);
 
     public static readonly ConnectionStrategyEnum Yahoo = new(Values.Yahoo);
-
-    public static readonly ConnectionStrategyEnum Yammer = new(Values.Yammer);
 
     public static readonly ConnectionStrategyEnum Yandex = new(Values.Yandex);
 
@@ -292,8 +282,6 @@ public readonly record struct ConnectionStrategyEnum : IStringEnum
 
         public const string Linkedin = "linkedin";
 
-        public const string Miicard = "miicard";
-
         public const string Oauth1 = "oauth1";
 
         public const string Oauth2 = "oauth2";
@@ -311,8 +299,6 @@ public readonly record struct ConnectionStrategyEnum : IStringEnum
         public const string Pingfederate = "pingfederate";
 
         public const string Planningcenter = "planningcenter";
-
-        public const string Renren = "renren";
 
         public const string SalesforceCommunity = "salesforce-community";
 
@@ -332,10 +318,6 @@ public readonly record struct ConnectionStrategyEnum : IStringEnum
 
         public const string Soundcloud = "soundcloud";
 
-        public const string ThecitySandbox = "thecity-sandbox";
-
-        public const string Thecity = "thecity";
-
         public const string Thirtysevensignals = "thirtysevensignals";
 
         public const string Twitter = "twitter";
@@ -353,8 +335,6 @@ public readonly record struct ConnectionStrategyEnum : IStringEnum
         public const string Wordpress = "wordpress";
 
         public const string Yahoo = "yahoo";
-
-        public const string Yammer = "yammer";
 
         public const string Yandex = "yandex";
 

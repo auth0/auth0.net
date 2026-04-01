@@ -1,3 +1,4 @@
+using Auth0.ManagementApi;
 using Auth0.ManagementApi.Actions.Triggers;
 using Auth0.ManagementApi.Test.Unit.MockServer;
 using NUnit.Framework;
@@ -19,7 +20,7 @@ public class ListTest : BaseMockServerTest
               "bindings": [
                 {
                   "id": "id",
-                  "trigger_id": "trigger_id",
+                  "trigger_id": "post-login",
                   "display_name": "display_name",
                   "created_at": "2024-01-15T09:30:00.000Z",
                   "updated_at": "2024-01-15T09:30:00.000Z"
@@ -32,7 +33,7 @@ public class ListTest : BaseMockServerTest
             .Given(
                 WireMock
                     .RequestBuilders.Request.Create()
-                    .WithPath("/actions/triggers/triggerId/bindings")
+                    .WithPath("/actions/triggers/post-login/bindings")
                     .WithParam("page", "1")
                     .WithParam("per_page", "1")
                     .UsingGet()
@@ -45,7 +46,7 @@ public class ListTest : BaseMockServerTest
             );
 
         var items = await Client.Actions.Triggers.Bindings.ListAsync(
-            "triggerId",
+            ActionTriggerTypeEnum.PostLogin,
             new ListActionTriggerBindingsRequestParameters { Page = 1, PerPage = 1 }
         );
         await foreach (var item in items)

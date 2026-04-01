@@ -73,7 +73,7 @@ public partial class ClientsClient : IClientsClient
         CancellationToken cancellationToken = default
     )
     {
-        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 9)
+        var _queryString = new Auth0.ManagementApi.Core.QueryStringBuilder.Builder(capacity: 10)
             .Add("fields", request.Fields.IsDefined ? request.Fields.Value : null)
             .Add(
                 "include_fields",
@@ -91,6 +91,10 @@ public partial class ClientsClient : IClientsClient
                 request.IsFirstParty.IsDefined ? request.IsFirstParty.Value : null
             )
             .Add("app_type", request.AppType.IsDefined ? request.AppType.Value : null)
+            .Add(
+                "external_client_id",
+                request.ExternalClientId.IsDefined ? request.ExternalClientId.Value : null
+            )
             .Add("q", request.Q.IsDefined ? request.Q.Value : null)
             .MergeAdditional(options?.AdditionalQueryParameters)
             .Build();
@@ -585,6 +589,7 @@ public partial class ClientsClient : IClientsClient
     ///         IsGlobal = true,
     ///         IsFirstParty = true,
     ///         AppType = "app_type",
+    ///         ExternalClientId = "external_client_id",
     ///         Q = "q",
     ///     }
     /// );

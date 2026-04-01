@@ -17,7 +17,7 @@ public class CreateTest : BaseMockServerTest
               "name": "name",
               "supported_triggers": [
                 {
-                  "id": "id"
+                  "id": "post-login"
                 }
               ]
             }
@@ -29,7 +29,7 @@ public class CreateTest : BaseMockServerTest
               "name": "name",
               "supported_triggers": [
                 {
-                  "id": "id",
+                  "id": "post-login",
                   "version": "version",
                   "status": "status",
                   "runtimes": [
@@ -38,7 +38,7 @@ public class CreateTest : BaseMockServerTest
                   "default_runtime": "default_runtime",
                   "compatible_triggers": [
                     {
-                      "id": "id",
+                      "id": "post-login",
                       "version": "version"
                     }
                   ],
@@ -85,7 +85,7 @@ public class CreateTest : BaseMockServerTest
                   "name": "name",
                   "supported_triggers": [
                     {
-                      "id": "id"
+                      "id": "post-login"
                     }
                   ],
                   "all_changes_deployed": true,
@@ -97,7 +97,7 @@ public class CreateTest : BaseMockServerTest
                 "updated_at": "2024-01-15T09:30:00.000Z",
                 "supported_triggers": [
                   {
-                    "id": "id"
+                    "id": "post-login"
                   }
                 ],
                 "modules": [
@@ -121,7 +121,7 @@ public class CreateTest : BaseMockServerTest
                 "current_release": {
                   "id": "id",
                   "trigger": {
-                    "id": "id"
+                    "id": "post-login"
                   },
                   "required_secrets": [
                     {}
@@ -167,7 +167,10 @@ public class CreateTest : BaseMockServerTest
             new CreateActionRequestContent
             {
                 Name = "name",
-                SupportedTriggers = new List<ActionTrigger>() { new ActionTrigger { Id = "id" } },
+                SupportedTriggers = new List<ActionTrigger>()
+                {
+                    new ActionTrigger { Id = ActionTriggerTypeEnum.PostLogin },
+                },
             }
         );
         JsonAssert.AreEqual(response, mockResponse);

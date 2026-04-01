@@ -12,7 +12,7 @@ public record ActionTrigger : IJsonOnDeserialized
         new Dictionary<string, JsonElement>();
 
     [JsonPropertyName("id")]
-    public required string Id { get; set; }
+    public required ActionTriggerTypeEnum Id { get; set; }
 
     /// <summary>
     /// The version of a trigger. v1, v2, etc.

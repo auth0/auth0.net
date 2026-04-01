@@ -65,6 +65,13 @@ public record GetResourceServerResponseContent : IJsonOnDeserialized
     public bool? AllowOfflineAccess { get; set; }
 
     /// <summary>
+    /// Whether Online Refresh Tokens can be issued for this API (true) or not (false).
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("allow_online_access")]
+    public bool? AllowOnlineAccess { get; set; }
+
+    /// <summary>
     /// Whether to skip user consent for applications flagged as first party (true) or not (false).
     /// </summary>
     [Optional]

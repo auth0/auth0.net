@@ -44,6 +44,13 @@ public class EventStreamWebhookAuthorizationResponse
     ) => new("eventStreamWebhookBearerAuth", value);
 
     /// <summary>
+    /// Factory method to create a union from a Auth0.ManagementApi.EventStreamWebhookCustomHeaderAuth value.
+    /// </summary>
+    public static EventStreamWebhookAuthorizationResponse FromEventStreamWebhookCustomHeaderAuth(
+        Auth0.ManagementApi.EventStreamWebhookCustomHeaderAuth value
+    ) => new("eventStreamWebhookCustomHeaderAuth", value);
+
+    /// <summary>
     /// Returns true if <see cref="Type"/> is "eventStreamWebhookBasicAuth"
     /// </summary>
     public bool IsEventStreamWebhookBasicAuth() => Type == "eventStreamWebhookBasicAuth";
@@ -52,6 +59,12 @@ public class EventStreamWebhookAuthorizationResponse
     /// Returns true if <see cref="Type"/> is "eventStreamWebhookBearerAuth"
     /// </summary>
     public bool IsEventStreamWebhookBearerAuth() => Type == "eventStreamWebhookBearerAuth";
+
+    /// <summary>
+    /// Returns true if <see cref="Type"/> is "eventStreamWebhookCustomHeaderAuth"
+    /// </summary>
+    public bool IsEventStreamWebhookCustomHeaderAuth() =>
+        Type == "eventStreamWebhookCustomHeaderAuth";
 
     /// <summary>
     /// Returns the value as a <see cref="Auth0.ManagementApi.EventStreamWebhookBasicAuth"/> if <see cref="Type"/> is 'eventStreamWebhookBasicAuth', otherwise throws an exception.
@@ -70,6 +83,17 @@ public class EventStreamWebhookAuthorizationResponse
         IsEventStreamWebhookBearerAuth()
             ? (Auth0.ManagementApi.EventStreamWebhookBearerAuth)Value!
             : throw new ManagementException("Union type is not 'eventStreamWebhookBearerAuth'");
+
+    /// <summary>
+    /// Returns the value as a <see cref="Auth0.ManagementApi.EventStreamWebhookCustomHeaderAuth"/> if <see cref="Type"/> is 'eventStreamWebhookCustomHeaderAuth', otherwise throws an exception.
+    /// </summary>
+    /// <exception cref="ManagementException">Thrown when <see cref="Type"/> is not 'eventStreamWebhookCustomHeaderAuth'.</exception>
+    public Auth0.ManagementApi.EventStreamWebhookCustomHeaderAuth AsEventStreamWebhookCustomHeaderAuth() =>
+        IsEventStreamWebhookCustomHeaderAuth()
+            ? (Auth0.ManagementApi.EventStreamWebhookCustomHeaderAuth)Value!
+            : throw new ManagementException(
+                "Union type is not 'eventStreamWebhookCustomHeaderAuth'"
+            );
 
     /// <summary>
     /// Attempts to cast the value to a <see cref="Auth0.ManagementApi.EventStreamWebhookBasicAuth"/> and returns true if successful.
@@ -103,9 +127,29 @@ public class EventStreamWebhookAuthorizationResponse
         return false;
     }
 
+    /// <summary>
+    /// Attempts to cast the value to a <see cref="Auth0.ManagementApi.EventStreamWebhookCustomHeaderAuth"/> and returns true if successful.
+    /// </summary>
+    public bool TryGetEventStreamWebhookCustomHeaderAuth(
+        out Auth0.ManagementApi.EventStreamWebhookCustomHeaderAuth? value
+    )
+    {
+        if (Type == "eventStreamWebhookCustomHeaderAuth")
+        {
+            value = (Auth0.ManagementApi.EventStreamWebhookCustomHeaderAuth)Value!;
+            return true;
+        }
+        value = null;
+        return false;
+    }
+
     public T Match<T>(
         Func<Auth0.ManagementApi.EventStreamWebhookBasicAuth, T> onEventStreamWebhookBasicAuth,
-        Func<Auth0.ManagementApi.EventStreamWebhookBearerAuth, T> onEventStreamWebhookBearerAuth
+        Func<Auth0.ManagementApi.EventStreamWebhookBearerAuth, T> onEventStreamWebhookBearerAuth,
+        Func<
+            Auth0.ManagementApi.EventStreamWebhookCustomHeaderAuth,
+            T
+        > onEventStreamWebhookCustomHeaderAuth
     )
     {
         return Type switch
@@ -116,13 +160,17 @@ public class EventStreamWebhookAuthorizationResponse
             "eventStreamWebhookBearerAuth" => onEventStreamWebhookBearerAuth(
                 AsEventStreamWebhookBearerAuth()
             ),
+            "eventStreamWebhookCustomHeaderAuth" => onEventStreamWebhookCustomHeaderAuth(
+                AsEventStreamWebhookCustomHeaderAuth()
+            ),
             _ => throw new ManagementException($"Unknown union type: {Type}"),
         };
     }
 
     public void Visit(
         global::System.Action<Auth0.ManagementApi.EventStreamWebhookBasicAuth> onEventStreamWebhookBasicAuth,
-        global::System.Action<Auth0.ManagementApi.EventStreamWebhookBearerAuth> onEventStreamWebhookBearerAuth
+        global::System.Action<Auth0.ManagementApi.EventStreamWebhookBearerAuth> onEventStreamWebhookBearerAuth,
+        global::System.Action<Auth0.ManagementApi.EventStreamWebhookCustomHeaderAuth> onEventStreamWebhookCustomHeaderAuth
     )
     {
         switch (Type)
@@ -132,6 +180,9 @@ public class EventStreamWebhookAuthorizationResponse
                 break;
             case "eventStreamWebhookBearerAuth":
                 onEventStreamWebhookBearerAuth(AsEventStreamWebhookBearerAuth());
+                break;
+            case "eventStreamWebhookCustomHeaderAuth":
+                onEventStreamWebhookCustomHeaderAuth(AsEventStreamWebhookCustomHeaderAuth());
                 break;
             default:
                 throw new ManagementException($"Unknown union type: {Type}");
@@ -181,6 +232,10 @@ public class EventStreamWebhookAuthorizationResponse
         Auth0.ManagementApi.EventStreamWebhookBearerAuth value
     ) => new("eventStreamWebhookBearerAuth", value);
 
+    public static implicit operator EventStreamWebhookAuthorizationResponse(
+        Auth0.ManagementApi.EventStreamWebhookCustomHeaderAuth value
+    ) => new("eventStreamWebhookCustomHeaderAuth", value);
+
     [Serializable]
     internal sealed class JsonConverter : JsonConverter<EventStreamWebhookAuthorizationResponse>
     {
@@ -208,6 +263,10 @@ public class EventStreamWebhookAuthorizationResponse
                     (
                         "eventStreamWebhookBearerAuth",
                         typeof(Auth0.ManagementApi.EventStreamWebhookBearerAuth)
+                    ),
+                    (
+                        "eventStreamWebhookCustomHeaderAuth",
+                        typeof(Auth0.ManagementApi.EventStreamWebhookCustomHeaderAuth)
                     ),
                 };
 
@@ -247,6 +306,7 @@ public class EventStreamWebhookAuthorizationResponse
             }
 
             value.Visit(
+                obj => JsonSerializer.Serialize(writer, obj, options),
                 obj => JsonSerializer.Serialize(writer, obj, options),
                 obj => JsonSerializer.Serialize(writer, obj, options)
             );
