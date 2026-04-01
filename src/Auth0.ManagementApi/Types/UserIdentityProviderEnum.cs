@@ -66,8 +66,6 @@ public readonly record struct UserIdentityProviderEnum : IStringEnum
 
     public static readonly UserIdentityProviderEnum Linkedin = new(Values.Linkedin);
 
-    public static readonly UserIdentityProviderEnum Miicard = new(Values.Miicard);
-
     public static readonly UserIdentityProviderEnum Oauth1 = new(Values.Oauth1);
 
     public static readonly UserIdentityProviderEnum Oauth2 = new(Values.Oauth2);
@@ -85,8 +83,6 @@ public readonly record struct UserIdentityProviderEnum : IStringEnum
     public static readonly UserIdentityProviderEnum Pingfederate = new(Values.Pingfederate);
 
     public static readonly UserIdentityProviderEnum Planningcenter = new(Values.Planningcenter);
-
-    public static readonly UserIdentityProviderEnum Renren = new(Values.Renren);
 
     public static readonly UserIdentityProviderEnum SalesforceCommunity = new(
         Values.SalesforceCommunity
@@ -110,10 +106,6 @@ public readonly record struct UserIdentityProviderEnum : IStringEnum
 
     public static readonly UserIdentityProviderEnum Soundcloud = new(Values.Soundcloud);
 
-    public static readonly UserIdentityProviderEnum ThecitySandbox = new(Values.ThecitySandbox);
-
-    public static readonly UserIdentityProviderEnum Thecity = new(Values.Thecity);
-
     public static readonly UserIdentityProviderEnum Thirtysevensignals = new(
         Values.Thirtysevensignals
     );
@@ -133,8 +125,6 @@ public readonly record struct UserIdentityProviderEnum : IStringEnum
     public static readonly UserIdentityProviderEnum Wordpress = new(Values.Wordpress);
 
     public static readonly UserIdentityProviderEnum Yahoo = new(Values.Yahoo);
-
-    public static readonly UserIdentityProviderEnum Yammer = new(Values.Yammer);
 
     public static readonly UserIdentityProviderEnum Yandex = new(Values.Yandex);
 
@@ -292,8 +282,6 @@ public readonly record struct UserIdentityProviderEnum : IStringEnum
 
         public const string Linkedin = "linkedin";
 
-        public const string Miicard = "miicard";
-
         public const string Oauth1 = "oauth1";
 
         public const string Oauth2 = "oauth2";
@@ -311,8 +299,6 @@ public readonly record struct UserIdentityProviderEnum : IStringEnum
         public const string Pingfederate = "pingfederate";
 
         public const string Planningcenter = "planningcenter";
-
-        public const string Renren = "renren";
 
         public const string SalesforceCommunity = "salesforce-community";
 
@@ -332,10 +318,6 @@ public readonly record struct UserIdentityProviderEnum : IStringEnum
 
         public const string Soundcloud = "soundcloud";
 
-        public const string ThecitySandbox = "thecity-sandbox";
-
-        public const string Thecity = "thecity";
-
         public const string Thirtysevensignals = "thirtysevensignals";
 
         public const string Twitter = "twitter";
@@ -353,8 +335,6 @@ public readonly record struct UserIdentityProviderEnum : IStringEnum
         public const string Wordpress = "wordpress";
 
         public const string Yahoo = "yahoo";
-
-        public const string Yammer = "yammer";
 
         public const string Yandex = "yandex";
     }

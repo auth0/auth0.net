@@ -586,7 +586,7 @@ public partial class ActionsClient : IActionsClient
     /// await client.Actions.ListAsync(
     ///     new ListActionsRequestParameters
     ///     {
-    ///         TriggerId = "triggerId",
+    ///         TriggerId = ActionTriggerTypeEnum.PostLogin,
     ///         ActionName = "actionName",
     ///         Deployed = true,
     ///         Page = 1,
@@ -637,7 +637,10 @@ public partial class ActionsClient : IActionsClient
     ///     new CreateActionRequestContent
     ///     {
     ///         Name = "name",
-    ///         SupportedTriggers = new List&lt;ActionTrigger&gt;() { new ActionTrigger { Id = "id" } },
+    ///         SupportedTriggers = new List&lt;ActionTrigger&gt;()
+    ///         {
+    ///             new ActionTrigger { Id = ActionTriggerTypeEnum.PostLogin },
+    ///         },
     ///     }
     /// );
     /// </code></example>

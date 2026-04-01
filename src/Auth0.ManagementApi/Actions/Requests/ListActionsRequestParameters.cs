@@ -10,7 +10,7 @@ public record ListActionsRequestParameters
     /// An actions extensibility point.
     /// </summary>
     [JsonIgnore]
-    public Optional<string?> TriggerId { get; set; }
+    public Optional<ActionTriggerTypeEnum?> TriggerId { get; set; }
 
     /// <summary>
     /// The name of the action to retrieve.

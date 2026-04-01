@@ -30,7 +30,7 @@ Retrieve all actions.
 await client.Actions.ListAsync(
     new ListActionsRequestParameters
     {
-        TriggerId = "triggerId",
+        TriggerId = ActionTriggerTypeEnum.PostLogin,
         ActionName = "actionName",
         Deployed = true,
         Page = 1,
@@ -95,7 +95,10 @@ await client.Actions.CreateAsync(
     new CreateActionRequestContent
     {
         Name = "name",
-        SupportedTriggers = new List<ActionTrigger>() { new ActionTrigger { Id = "id" } },
+        SupportedTriggers = new List<ActionTrigger>()
+        {
+            new ActionTrigger { Id = ActionTriggerTypeEnum.PostLogin },
+        },
     }
 );
 ```
@@ -881,6 +884,7 @@ await client.Clients.ListAsync(
         IsGlobal = true,
         IsFirstParty = true,
         AppType = "app_type",
+        ExternalClientId = "external_client_id",
         Q = "q",
     }
 );
@@ -5159,7 +5163,6 @@ await client.NetworkAcls.CreateAsync(
     {
         Description = "description",
         Active = true,
-        Priority = 1.1,
         Rule = new NetworkAclRule
         {
             Action = new NetworkAclAction(),
@@ -5280,7 +5283,6 @@ await client.NetworkAcls.SetAsync(
     {
         Description = "description",
         Active = true,
-        Priority = 1.1,
         Rule = new NetworkAclRule
         {
             Action = new NetworkAclAction(),
@@ -10368,7 +10370,7 @@ Retrieve the actions that are bound to a trigger. Once an action is created and 
 
 ```csharp
 await client.Actions.Triggers.Bindings.ListAsync(
-    "triggerId",
+    ActionTriggerTypeEnum.PostLogin,
     new ListActionTriggerBindingsRequestParameters { Page = 1, PerPage = 1 }
 );
 ```
@@ -10385,7 +10387,7 @@ await client.Actions.Triggers.Bindings.ListAsync(
 <dl>
 <dd>
 
-**triggerId:** `string` — An actions extensibility point.
+**triggerId:** `ActionTriggerTypeEnum` — An actions extensibility point.
     
 </dd>
 </dl>
@@ -10433,7 +10435,7 @@ Update the actions that are bound (i.e. attached) to a trigger. Once an action i
 
 ```csharp
 await client.Actions.Triggers.Bindings.UpdateManyAsync(
-    "triggerId",
+    ActionTriggerTypeEnum.PostLogin,
     new UpdateActionBindingsRequestContent()
 );
 ```
@@ -10450,7 +10452,7 @@ await client.Actions.Triggers.Bindings.UpdateManyAsync(
 <dl>
 <dd>
 
-**triggerId:** `string` — An actions extensibility point.
+**triggerId:** `ActionTriggerTypeEnum` — An actions extensibility point.
     
 </dd>
 </dl>

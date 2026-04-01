@@ -38,9 +38,8 @@ public record ConnectionOptionsAzureAd : IJsonOnDeserialized, IJsonOnSerializing
     [JsonPropertyName("basic_profile")]
     public bool? BasicProfile { get; set; }
 
-    [Optional]
     [JsonPropertyName("client_id")]
-    public string? ClientId { get; set; }
+    public required string ClientId { get; set; }
 
     [Optional]
     [JsonPropertyName("client_secret")]

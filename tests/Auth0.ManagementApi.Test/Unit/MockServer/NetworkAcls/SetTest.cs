@@ -16,7 +16,6 @@ public class SetTest : BaseMockServerTest
             {
               "description": "description",
               "active": true,
-              "priority": 1.1,
               "rule": {
                 "action": {},
                 "scope": "management"
@@ -125,7 +124,6 @@ public class SetTest : BaseMockServerTest
             {
                 Description = "description",
                 Active = true,
-                Priority = 1.1,
                 Rule = new NetworkAclRule
                 {
                     Action = new NetworkAclAction(),

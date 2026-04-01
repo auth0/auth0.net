@@ -14,7 +14,7 @@ public class GetTest : BaseMockServerTest
         const string mockResponse = """
             {
               "id": "id",
-              "trigger_id": "trigger_id",
+              "trigger_id": "post-login",
               "status": "unspecified",
               "results": [
                 {
