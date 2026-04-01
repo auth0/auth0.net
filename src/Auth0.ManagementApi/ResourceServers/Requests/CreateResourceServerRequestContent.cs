@@ -45,6 +45,13 @@ public record CreateResourceServerRequestContent
     public bool? AllowOfflineAccess { get; set; }
 
     /// <summary>
+    /// Whether Online Refresh Tokens can be issued for this API (true) or not (false).
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("allow_online_access")]
+    public bool? AllowOnlineAccess { get; set; }
+
+    /// <summary>
     /// Expiration value (in seconds) for access tokens issued for this API from the token endpoint.
     /// </summary>
     [Optional]

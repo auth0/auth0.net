@@ -18,8 +18,9 @@ public record SetNetworkAclRequestContent
     /// <summary>
     /// Indicates the order in which the ACL will be evaluated relative to other ACL rules.
     /// </summary>
+    [Optional]
     [JsonPropertyName("priority")]
-    public required double Priority { get; set; }
+    public double? Priority { get; set; }
 
     [JsonPropertyName("rule")]
     public required NetworkAclRule Rule { get; set; }

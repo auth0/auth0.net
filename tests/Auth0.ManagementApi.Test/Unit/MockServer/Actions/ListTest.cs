@@ -22,7 +22,7 @@ public class ListTest : BaseMockServerTest
                   "name": "name",
                   "supported_triggers": [
                     {
-                      "id": "id"
+                      "id": "post-login"
                     }
                   ],
                   "all_changes_deployed": true,
@@ -53,7 +53,7 @@ public class ListTest : BaseMockServerTest
                 WireMock
                     .RequestBuilders.Request.Create()
                     .WithPath("/actions/actions")
-                    .WithParam("triggerId", "triggerId")
+                    .WithParam("triggerId", "post-login")
                     .WithParam("actionName", "actionName")
                     .WithParam("page", "1")
                     .WithParam("per_page", "1")
@@ -69,7 +69,7 @@ public class ListTest : BaseMockServerTest
         var items = await Client.Actions.ListAsync(
             new ListActionsRequestParameters
             {
-                TriggerId = "triggerId",
+                TriggerId = ActionTriggerTypeEnum.PostLogin,
                 ActionName = "actionName",
                 Deployed = true,
                 Page = 1,

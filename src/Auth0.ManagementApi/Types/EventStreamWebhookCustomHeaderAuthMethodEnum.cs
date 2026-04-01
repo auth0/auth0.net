@@ -5,14 +5,16 @@ using global::System.Text.Json.Serialization;
 namespace Auth0.ManagementApi;
 
 [JsonConverter(
-    typeof(ConnectionResponseContentYammerStrategy.ConnectionResponseContentYammerStrategySerializer)
+    typeof(EventStreamWebhookCustomHeaderAuthMethodEnum.EventStreamWebhookCustomHeaderAuthMethodEnumSerializer)
 )]
 [Serializable]
-public readonly record struct ConnectionResponseContentYammerStrategy : IStringEnum
+public readonly record struct EventStreamWebhookCustomHeaderAuthMethodEnum : IStringEnum
 {
-    public static readonly ConnectionResponseContentYammerStrategy Yammer = new(Values.Yammer);
+    public static readonly EventStreamWebhookCustomHeaderAuthMethodEnum CustomHeader = new(
+        Values.CustomHeader
+    );
 
-    public ConnectionResponseContentYammerStrategy(string value)
+    public EventStreamWebhookCustomHeaderAuthMethodEnum(string value)
     {
         Value = value;
     }
@@ -25,9 +27,9 @@ public readonly record struct ConnectionResponseContentYammerStrategy : IStringE
     /// <summary>
     /// Create a string enum with the given value.
     /// </summary>
-    public static ConnectionResponseContentYammerStrategy FromCustom(string value)
+    public static EventStreamWebhookCustomHeaderAuthMethodEnum FromCustom(string value)
     {
-        return new ConnectionResponseContentYammerStrategy(value);
+        return new EventStreamWebhookCustomHeaderAuthMethodEnum(value);
     }
 
     public bool Equals(string? other)
@@ -43,22 +45,26 @@ public readonly record struct ConnectionResponseContentYammerStrategy : IStringE
         return Value;
     }
 
-    public static bool operator ==(ConnectionResponseContentYammerStrategy value1, string value2) =>
-        value1.Value.Equals(value2);
+    public static bool operator ==(
+        EventStreamWebhookCustomHeaderAuthMethodEnum value1,
+        string value2
+    ) => value1.Value.Equals(value2);
 
-    public static bool operator !=(ConnectionResponseContentYammerStrategy value1, string value2) =>
-        !value1.Value.Equals(value2);
+    public static bool operator !=(
+        EventStreamWebhookCustomHeaderAuthMethodEnum value1,
+        string value2
+    ) => !value1.Value.Equals(value2);
 
-    public static explicit operator string(ConnectionResponseContentYammerStrategy value) =>
+    public static explicit operator string(EventStreamWebhookCustomHeaderAuthMethodEnum value) =>
         value.Value;
 
-    public static explicit operator ConnectionResponseContentYammerStrategy(string value) =>
+    public static explicit operator EventStreamWebhookCustomHeaderAuthMethodEnum(string value) =>
         new(value);
 
-    internal class ConnectionResponseContentYammerStrategySerializer
-        : JsonConverter<ConnectionResponseContentYammerStrategy>
+    internal class EventStreamWebhookCustomHeaderAuthMethodEnumSerializer
+        : JsonConverter<EventStreamWebhookCustomHeaderAuthMethodEnum>
     {
-        public override ConnectionResponseContentYammerStrategy Read(
+        public override EventStreamWebhookCustomHeaderAuthMethodEnum Read(
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options
@@ -69,19 +75,19 @@ public readonly record struct ConnectionResponseContentYammerStrategy : IStringE
                 ?? throw new global::System.Exception(
                     "The JSON value could not be read as a string."
                 );
-            return new ConnectionResponseContentYammerStrategy(stringValue);
+            return new EventStreamWebhookCustomHeaderAuthMethodEnum(stringValue);
         }
 
         public override void Write(
             Utf8JsonWriter writer,
-            ConnectionResponseContentYammerStrategy value,
+            EventStreamWebhookCustomHeaderAuthMethodEnum value,
             JsonSerializerOptions options
         )
         {
             writer.WriteStringValue(value.Value);
         }
 
-        public override ConnectionResponseContentYammerStrategy ReadAsPropertyName(
+        public override EventStreamWebhookCustomHeaderAuthMethodEnum ReadAsPropertyName(
             ref Utf8JsonReader reader,
             Type typeToConvert,
             JsonSerializerOptions options
@@ -92,12 +98,12 @@ public readonly record struct ConnectionResponseContentYammerStrategy : IStringE
                 ?? throw new global::System.Exception(
                     "The JSON property name could not be read as a string."
                 );
-            return new ConnectionResponseContentYammerStrategy(stringValue);
+            return new EventStreamWebhookCustomHeaderAuthMethodEnum(stringValue);
         }
 
         public override void WriteAsPropertyName(
             Utf8JsonWriter writer,
-            ConnectionResponseContentYammerStrategy value,
+            EventStreamWebhookCustomHeaderAuthMethodEnum value,
             JsonSerializerOptions options
         )
         {
@@ -111,6 +117,6 @@ public readonly record struct ConnectionResponseContentYammerStrategy : IStringE
     [Serializable]
     public static class Values
     {
-        public const string Yammer = "yammer";
+        public const string CustomHeader = "custom_header";
     }
 }

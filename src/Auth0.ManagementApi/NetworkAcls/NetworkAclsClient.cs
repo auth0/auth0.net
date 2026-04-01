@@ -454,7 +454,6 @@ public partial class NetworkAclsClient : INetworkAclsClient
     ///     {
     ///         Description = "description",
     ///         Active = true,
-    ///         Priority = 1.1,
     ///         Rule = new NetworkAclRule
     ///         {
     ///             Action = new NetworkAclAction(),
@@ -554,7 +553,6 @@ public partial class NetworkAclsClient : INetworkAclsClient
     ///     {
     ///         Description = "description",
     ///         Active = true,
-    ///         Priority = 1.1,
     ///         Rule = new NetworkAclRule
     ///         {
     ///             Action = new NetworkAclAction(),

@@ -23,7 +23,7 @@ public record GetActionExecutionResponseContent : IJsonOnDeserialized
 
     [Optional]
     [JsonPropertyName("trigger_id")]
-    public string? TriggerId { get; set; }
+    public ActionTriggerTypeEnum? TriggerId { get; set; }
 
     [Optional]
     [JsonPropertyName("status")]

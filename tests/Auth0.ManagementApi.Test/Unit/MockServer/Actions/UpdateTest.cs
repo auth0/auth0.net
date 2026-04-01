@@ -22,7 +22,7 @@ public class UpdateTest : BaseMockServerTest
               "name": "name",
               "supported_triggers": [
                 {
-                  "id": "id",
+                  "id": "post-login",
                   "version": "version",
                   "status": "status",
                   "runtimes": [
@@ -31,7 +31,7 @@ public class UpdateTest : BaseMockServerTest
                   "default_runtime": "default_runtime",
                   "compatible_triggers": [
                     {
-                      "id": "id",
+                      "id": "post-login",
                       "version": "version"
                     }
                   ],
@@ -78,7 +78,7 @@ public class UpdateTest : BaseMockServerTest
                   "name": "name",
                   "supported_triggers": [
                     {
-                      "id": "id"
+                      "id": "post-login"
                     }
                   ],
                   "all_changes_deployed": true,
@@ -90,7 +90,7 @@ public class UpdateTest : BaseMockServerTest
                 "updated_at": "2024-01-15T09:30:00.000Z",
                 "supported_triggers": [
                   {
-                    "id": "id"
+                    "id": "post-login"
                   }
                 ],
                 "modules": [
@@ -114,7 +114,7 @@ public class UpdateTest : BaseMockServerTest
                 "current_release": {
                   "id": "id",
                   "trigger": {
-                    "id": "id"
+                    "id": "post-login"
                   },
                   "required_secrets": [
                     {}

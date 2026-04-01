@@ -29,17 +29,19 @@ public record CreateConnectionRequestContentBox : IJsonOnDeserialized
     [JsonPropertyName("connected_accounts")]
     public ConnectionConnectedAccountsPurpose? ConnectedAccounts { get; set; }
 
-    [Optional]
     [JsonPropertyName("name")]
-    public string? Name { get; set; }
+    public required string Name { get; set; }
+
+    /// <summary>
+    /// Use of this property is NOT RECOMMENDED. Use the PATCH /v2/connections/{id}/clients endpoint to enable the connection for a set of clients.
+    /// </summary>
+    [Optional]
+    [JsonPropertyName("enabled_clients")]
+    public IEnumerable<string>? EnabledClients { get; set; }
 
     [Optional]
     [JsonPropertyName("display_name")]
     public string? DisplayName { get; set; }
-
-    [Optional]
-    [JsonPropertyName("enabled_clients")]
-    public IEnumerable<string>? EnabledClients { get; set; }
 
     [Optional]
     [JsonPropertyName("is_domain_connection")]

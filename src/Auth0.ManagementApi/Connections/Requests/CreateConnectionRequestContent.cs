@@ -27,7 +27,7 @@ public record CreateConnectionRequestContent
     public ConnectionPropertiesOptions? Options { get; set; }
 
     /// <summary>
-    /// DEPRECATED property. Use the PATCH /v2/connections/{id}/clients endpoint to enable the connection for a set of clients.
+    /// Use of this property is NOT RECOMMENDED. Use the PATCH /v2/connections/{id}/clients endpoint to enable the connection for a set of clients.
     /// </summary>
     [Optional]
     [JsonPropertyName("enabled_clients")]

@@ -116,6 +116,7 @@ public class ListTest : BaseMockServerTest
                     .WithParam("page", "1")
                     .WithParam("per_page", "1")
                     .WithParam("app_type", "app_type")
+                    .WithParam("external_client_id", "external_client_id")
                     .WithParam("q", "q")
                     .UsingGet()
             )
@@ -137,6 +138,7 @@ public class ListTest : BaseMockServerTest
                 IsGlobal = true,
                 IsFirstParty = true,
                 AppType = "app_type",
+                ExternalClientId = "external_client_id",
                 Q = "q",
             }
         );

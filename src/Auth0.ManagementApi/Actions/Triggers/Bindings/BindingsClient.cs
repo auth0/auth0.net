@@ -17,7 +17,7 @@ public partial class BindingsClient : IBindingsClient
     /// Retrieve the actions that are bound to a trigger. Once an action is created and deployed, it must be attached (i.e. bound) to a trigger so that it will be executed as part of a flow. The list of actions returned reflects the order in which they will be executed during the appropriate flow.
     /// </summary>
     private WithRawResponseTask<ListActionBindingsPaginatedResponseContent> ListInternalAsync(
-        string triggerId,
+        ActionTriggerTypeEnum triggerId,
         ListActionTriggerBindingsRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -31,7 +31,7 @@ public partial class BindingsClient : IBindingsClient
     private async Task<
         WithRawResponse<ListActionBindingsPaginatedResponseContent>
     > ListInternalAsyncCore(
-        string triggerId,
+        ActionTriggerTypeEnum triggerId,
         ListActionTriggerBindingsRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -127,7 +127,7 @@ public partial class BindingsClient : IBindingsClient
     }
 
     private async Task<WithRawResponse<UpdateActionBindingsResponseContent>> UpdateManyAsyncCore(
-        string triggerId,
+        ActionTriggerTypeEnum triggerId,
         UpdateActionBindingsRequestContent request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -222,12 +222,12 @@ public partial class BindingsClient : IBindingsClient
     /// </summary>
     /// <example><code>
     /// await client.Actions.Triggers.Bindings.ListAsync(
-    ///     "triggerId",
+    ///     ActionTriggerTypeEnum.PostLogin,
     ///     new ListActionTriggerBindingsRequestParameters { Page = 1, PerPage = 1 }
     /// );
     /// </code></example>
     public async Task<Pager<ActionBinding>> ListAsync(
-        string triggerId,
+        ActionTriggerTypeEnum triggerId,
         ListActionTriggerBindingsRequestParameters request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default
@@ -267,12 +267,12 @@ public partial class BindingsClient : IBindingsClient
     /// </summary>
     /// <example><code>
     /// await client.Actions.Triggers.Bindings.UpdateManyAsync(
-    ///     "triggerId",
+    ///     ActionTriggerTypeEnum.PostLogin,
     ///     new UpdateActionBindingsRequestContent()
     /// );
     /// </code></example>
     public WithRawResponseTask<UpdateActionBindingsResponseContent> UpdateManyAsync(
-        string triggerId,
+        ActionTriggerTypeEnum triggerId,
         UpdateActionBindingsRequestContent request,
         RequestOptions? options = null,
         CancellationToken cancellationToken = default

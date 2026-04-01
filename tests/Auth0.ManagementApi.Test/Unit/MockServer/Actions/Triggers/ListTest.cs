@@ -15,7 +15,7 @@ public class ListTest : BaseMockServerTest
             {
               "triggers": [
                 {
-                  "id": "id",
+                  "id": "post-login",
                   "version": "version",
                   "status": "status",
                   "runtimes": [
@@ -24,7 +24,7 @@ public class ListTest : BaseMockServerTest
                   "default_runtime": "default_runtime",
                   "compatible_triggers": [
                     {
-                      "id": "id",
+                      "id": "post-login",
                       "version": "version"
                     }
                   ],

@@ -23,7 +23,7 @@ public record ActionBinding : IJsonOnDeserialized
 
     [Optional]
     [JsonPropertyName("trigger_id")]
-    public string? TriggerId { get; set; }
+    public ActionTriggerTypeEnum? TriggerId { get; set; }
 
     /// <summary>
     /// The name of the binding.

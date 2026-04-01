@@ -21,7 +21,7 @@ public class ListActionsTest : BaseMockServerTest
                   "module_version_number": 1,
                   "supported_triggers": [
                     {
-                      "id": "id"
+                      "id": "post-login"
                     }
                   ]
                 }

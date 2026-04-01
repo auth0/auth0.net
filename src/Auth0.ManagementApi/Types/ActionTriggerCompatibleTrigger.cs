@@ -11,7 +11,7 @@ public record ActionTriggerCompatibleTrigger : IJsonOnDeserialized, IJsonOnSeria
         new Dictionary<string, object?>();
 
     [JsonPropertyName("id")]
-    public required string Id { get; set; }
+    public required ActionTriggerTypeEnum Id { get; set; }
 
     /// <summary>
     /// The version of a trigger. v1, v2, etc.
