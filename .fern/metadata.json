@@ -1,7 +1,7 @@
 {
   "cliVersion": "4.43.0",
   "generatorName": "fernapi/fern-csharp-sdk",
-  "generatorVersion": "2.54.1",
+  "generatorVersion": "2.55.2",
   "generatorConfig": {
     "namespace": "Auth0.ManagementApi",
     "package-id": "Auth0.ManagementApi",
