@@ -3,41 +3,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Auth0.Tests.Shared;
 using FluentAssertions;
-using Moq;
-using Newtonsoft.Json;
 using Xunit;
 
 namespace Auth0.ManagementApi.IntegrationTests;
 
-public class CustomDomainsTestsFixture : TestBaseFixture
+public class CustomDomainsTests : TestBase
 {
-    public override async Task DisposeAsync()
-    {
-        foreach (KeyValuePair<CleanUpType, IList<string>> entry in identifiers)
-        {
-            await ManagementTestBaseUtils.CleanupAsync(ApiClient, entry.Key, entry.Value);
-        }
-
-        ApiClient.Dispose();
-    }
-}
-
-public class CustomDomainsTests : IClassFixture<CustomDomainsTestsFixture>
-{
-    private readonly Mock<IManagementConnection> _mockConnection;
-    private readonly CustomDomainsClient _client;
-    private readonly CustomDomainsTestsFixture fixture;
-
-    public CustomDomainsTests(CustomDomainsTestsFixture fixture)
-    {
-        this.fixture = fixture;
-        _mockConnection = new Mock<IManagementConnection>();
-        _client = new CustomDomainsClient(
-            _mockConnection.Object,
-            new Uri("https://test.auth0.com/api/v2/"),
-            new Dictionary<string, string>());
-    }
-    [Fact]
+    // Tests for custom domains are limited. This is available only on the brucke tenant, and also, we cannot test full CRUD sequence because (1) the tenant
+    // allow for only one custom domain and (2) others depend on that domain, so we cannot just go and delete it. We are therefore limited in scope to
+    // what we can test. For now, this at least allow us to test that the serialization and the GET methods work correctly
+    [Fact(Skip = "Run manually")]
     public async Task Test_custom_domains()
     {
         var managementApiUrl = GetVariable("BRUCKE_MANAGEMENT_API_URL");

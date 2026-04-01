@@ -79,7 +79,7 @@ public class SelfServiceProfileTest : IClassFixture<SelfServiceProfileTestFixtur
                     ShowAsButton = false,
                     Options = new SelfServiceProfileSsoTicketConnectionOptions
                     {
-                        DomainAliases = new[] { "alias1", "alias2" },
+                        DomainAliases = new[] { "example.com", "test.example.com" },
                         IconUrl = "https://cdn2.auth0.com/styleguide/latest/lib/logos/img/favicon.png",
                         Idpinitiated = new SelfServiceProfileSsoTicketIdpInitiatedOptions
                         {
