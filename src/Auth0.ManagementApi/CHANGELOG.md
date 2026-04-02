@@ -1,4 +1,45 @@
 # Change Log
+## [mgmt-8.0.0](https://github.com/auth0/auth0.net/tree/mgmt-8.0.0) (2026-04-02)
+[Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-7.46.0...mgmt-8.0.0)
+
+v8 is a major release of `Auth0.ManagementApi` featuring a completely redesigned, OpenAPI-generated SDK. The Authentication API (`Auth0.AuthenticationApi`) remains **unchanged**.
+
+For a comprehensive migration guide with side-by-side examples, see [V8_MIGRATION_GUIDE.md](https://github.com/auth0/auth0.net/blob/master/V8_MIGRATION_GUIDE.md).
+
+**Added**
+- OpenAPI-generated Management API SDK using [Fern](https://github.com/fern-api/fern), ensuring the SDK stays up-to-date and consistent with the Auth0 Management API [\#964](https://github.com/auth0/auth0.net/pull/964) ([kailash-b](https://github.com/kailash-b))
+- Automatic token management via `ManagementClient` wrapper with built-in `ClientCredentialsTokenProvider` for token acquisition and refresh [\#964](https://github.com/auth0/auth0.net/pull/964) ([kailash-b](https://github.com/kailash-b))
+- Custom token provider support via pluggable `ITokenProvider` interface, including `DelegateTokenProvider` for async token retrieval [\#926](https://github.com/auth0/auth0.net/pull/926) ([kailash-b](https://github.com/kailash-b))
+- Strongly typed request and response models (`*RequestContent`, `*ResponseContent`, `*RequestParameters`) for all API operations [\#964](https://github.com/auth0/auth0.net/pull/964) ([kailash-b](https://github.com/kailash-b))
+- Hierarchical sub-client organization for improved discoverability (e.g., `client.Users.Roles.ListAsync()`, `client.Users.Permissions.ListAsync()`) [\#964](https://github.com/auth0/auth0.net/pull/964) ([kailash-b](https://github.com/kailash-b))
+- Unified exception hierarchy with specific exception types per HTTP status code (`BadRequestError`, `NotFoundError`, `TooManyRequestsError`, etc.) [\#964](https://github.com/auth0/auth0.net/pull/964) ([kailash-b](https://github.com/kailash-b))
+- Raw HTTP response access via `.WithRawResponse()` method for status codes, headers, and URL metadata [\#964](https://github.com/auth0/auth0.net/pull/964) ([kailash-b](https://github.com/kailash-b))
+- `Optional<T>` type to distinguish between undefined and explicitly null values in PATCH operations [\#964](https://github.com/auth0/auth0.net/pull/964) ([kailash-b](https://github.com/kailash-b))
+- Async pagination support via `Pager<T>` with `IAsyncEnumerable<T>` for automatic multi-page iteration [\#964](https://github.com/auth0/auth0.net/pull/964) ([kailash-b](https://github.com/kailash-b))
+- Comprehensive interfaces (`IManagementApiClient`, `IUsersClient`, etc.) for all clients to simplify dependency injection and testing [\#964](https://github.com/auth0/auth0.net/pull/964) ([kailash-b](https://github.com/kailash-b))
+- Per-request configuration via `RequestOptions` (timeout, retries, custom headers) [\#964](https://github.com/auth0/auth0.net/pull/964) ([kailash-b](https://github.com/kailash-b))
+- `Auth0-Client` telemetry header via `ClientOptions.Internal` partial class [\#964](https://github.com/auth0/auth0.net/pull/964) ([kailash-b](https://github.com/kailash-b))
+
+**Changed**
+- Serialization library changed from Newtonsoft.Json to System.Text.Json for `Auth0.ManagementApi` [\#964](https://github.com/auth0/auth0.net/pull/964) ([kailash-b](https://github.com/kailash-b))
+- `ManagementClient` now inherits from the generated `ManagementApiClient`, simplifying internals [\#964](https://github.com/auth0/auth0.net/pull/964) ([kailash-b](https://github.com/kailash-b))
+- Client initialization redesigned — use `ManagementClient` with `ManagementClientOptions` or `ManagementApiClient` with a pre-obtained token [\#964](https://github.com/auth0/auth0.net/pull/964) ([kailash-b](https://github.com/kailash-b))
+- Request types renamed from `*CreateRequest`/`*UpdateRequest` to `*RequestContent` naming convention [\#964](https://github.com/auth0/auth0.net/pull/964) ([kailash-b](https://github.com/kailash-b))
+- Response types renamed from domain objects (e.g., `User`) to `*ResponseContent` naming convention [\#964](https://github.com/auth0/auth0.net/pull/964) ([kailash-b](https://github.com/kailash-b))
+- Pagination changed from `IPagedList<T>` with `PaginationInfo` to `Pager<T>` with built-in parameters [\#964](https://github.com/auth0/auth0.net/pull/964) ([kailash-b](https://github.com/kailash-b))
+- Exception handling changed from `ErrorApiException`/`RateLimitApiException` to typed exceptions (`NotFoundError`, `TooManyRequestsError`, etc.) [\#964](https://github.com/auth0/auth0.net/pull/964) ([kailash-b](https://github.com/kailash-b))
+- Namespace imports changed from `Auth0.ManagementApi.Models` to `Auth0.ManagementApi` and `Auth0.ManagementApi.Core` [\#964](https://github.com/auth0/auth0.net/pull/964) ([kailash-b](https://github.com/kailash-b))
+- Dropped .NET 8 as a build-time dependency while maintaining full runtime support [\#927](https://github.com/auth0/auth0.net/pull/927) ([kailash-b](https://github.com/kailash-b))
+
+**Breaking Changes**
+
+This release contains breaking changes to client initialization, request/response types, method signatures, serialization, and exception handling. **All existing v7 Management API code will require updates to work with v8.** See the [V8 Migration Guide](https://github.com/auth0/auth0.net/blob/master/V8_MIGRATION_GUIDE.md) for detailed upgrade instructions.
+
+**Supported Platforms**
+- .NET 8.0+
+- .NET Framework 4.6.2+
+- .NET Standard 2.0+
+
 ## [8.0.0-beta.1](https://github.com/auth0/auth0.net/tree/8.0.0-beta.1) (2026-03-02)
 [Full Changelog](https://github.com/auth0/auth0.net/compare/mgmt-8.0.0-beta.0...mgmt-8.0.0-beta.1)
 
