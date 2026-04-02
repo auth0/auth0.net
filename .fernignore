@@ -20,6 +20,7 @@ opslevel.yml
 README.md
 SECURITY-NOTICE.md
 V8_MIGRATION_GUIDE.md
+.fern/
 
 Auth0.ManagementApi.slnx
 Auth0.Net.slnx
@@ -44,7 +45,6 @@ tests/Auth0.ManagementApi.Test/Wrapper
 src/Auth0.ManagementApi/Connections/DirectoryProvisioning/DirectoryProvisioningClient.cs
 src/Auth0.ManagementApi/Connections/DirectoryProvisioning/IDirectoryProvisioningClient.cs
 src/Auth0.ManagementApi/Types/ResourceServerTokenEncryptionKey.cs
-
 
 src/Auth0.ManagementApi/Wrapper
 src/Auth0.ManagementApi/CHANGELOG.md
